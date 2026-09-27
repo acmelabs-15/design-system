@@ -1,0 +1,101 @@
+{
+  "pass": true,
+  "version": "0.2.0",
+  "skills": 7,
+  "references": 4341,
+  "referenceCounts": {
+    "component": 4319,
+    "foundation": 7,
+    "recipe": 15
+  },
+  "commands": [
+    {
+      "args": [
+        "validate",
+        "/tmp/acme-m24-release-consumer/node_modules/@acmelabs/design-system/skills"
+      ],
+      "status": 0,
+      "stderr": "",
+      "stdout": "✅ Validated 7 skill files — all passed\n\nWarnings:\n  ⚠ @tanstack/intent is not in devDependencies\n  ⚠ \"!skills/_artifacts\" is not in the \"files\" array — artifacts will be published unnecessarily\n"
+    },
+    {
+      "args": [
+        "list",
+        "--json"
+      ],
+      "status": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "load",
+        "@acmelabs/design-system#forms-and-accessibility",
+        "--json"
+      ],
+      "status": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "load",
+        "@acmelabs/design-system#html-artifacts",
+        "--json"
+      ],
+      "status": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "load",
+        "@acmelabs/design-system#react-integration",
+        "--json"
+      ],
+      "status": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "load",
+        "@acmelabs/design-system#choose-and-compose",
+        "--json"
+      ],
+      "status": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "load",
+        "@acmelabs/design-system#migration-between-releases",
+        "--json"
+      ],
+      "status": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "load",
+        "@acmelabs/design-system#lit-integration",
+        "--json"
+      ],
+      "status": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "load",
+        "@acmelabs/design-system#data-layouts",
+        "--json"
+      ],
+      "status": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "load",
+        "@acmelabs/design-system#html-artifacts"
+      ],
+      "status": 1,
+      "stderr": "Cannot load skill use \"@acmelabs/design-system#html-artifacts\": package \"@acmelabs/design-system\" is not listed in intent.skills.\n"
+    }
+  ]
+}

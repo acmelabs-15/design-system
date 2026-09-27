@@ -1,0 +1,275 @@
+{
+  "bun": "1.4.2",
+  "reports": [
+    {
+      "id": "absent-star-plain",
+      "sideEffects": "absent",
+      "reexport": "star",
+      "shape": "plain",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "absent-star-derived",
+      "sideEffects": "absent",
+      "reexport": "star",
+      "shape": "derived",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "absent-star-decorated",
+      "sideEffects": "absent",
+      "reexport": "star",
+      "shape": "decorated",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "absent-named-plain",
+      "sideEffects": "absent",
+      "reexport": "named",
+      "shape": "plain",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "absent-named-derived",
+      "sideEffects": "absent",
+      "reexport": "named",
+      "shape": "derived",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "absent-named-decorated",
+      "sideEffects": "absent",
+      "reexport": "named",
+      "shape": "decorated",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "absent-direct-plain",
+      "sideEffects": "absent",
+      "reexport": "direct",
+      "shape": "plain",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "absent-direct-derived",
+      "sideEffects": "absent",
+      "reexport": "direct",
+      "shape": "derived",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "absent-direct-decorated",
+      "sideEffects": "absent",
+      "reexport": "direct",
+      "shape": "decorated",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "define-only-star-plain",
+      "sideEffects": "define-only",
+      "reexport": "star",
+      "shape": "plain",
+      "before": "undefined",
+      "after": "function",
+      "same": true,
+      "pass": false
+    },
+    {
+      "id": "define-only-star-derived",
+      "sideEffects": "define-only",
+      "reexport": "star",
+      "shape": "derived",
+      "before": "undefined",
+      "after": "function",
+      "same": true,
+      "pass": false
+    },
+    {
+      "id": "define-only-star-decorated",
+      "sideEffects": "define-only",
+      "reexport": "star",
+      "shape": "decorated",
+      "before": "undefined",
+      "after": "function",
+      "same": true,
+      "pass": false
+    },
+    {
+      "id": "define-only-named-plain",
+      "sideEffects": "define-only",
+      "reexport": "named",
+      "shape": "plain",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "define-only-named-derived",
+      "sideEffects": "define-only",
+      "reexport": "named",
+      "shape": "derived",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "define-only-named-decorated",
+      "sideEffects": "define-only",
+      "reexport": "named",
+      "shape": "decorated",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "define-only-direct-plain",
+      "sideEffects": "define-only",
+      "reexport": "direct",
+      "shape": "plain",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "define-only-direct-derived",
+      "sideEffects": "define-only",
+      "reexport": "direct",
+      "shape": "derived",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "define-only-direct-decorated",
+      "sideEffects": "define-only",
+      "reexport": "direct",
+      "shape": "decorated",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "all-star-plain",
+      "sideEffects": "all",
+      "reexport": "star",
+      "shape": "plain",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "all-star-derived",
+      "sideEffects": "all",
+      "reexport": "star",
+      "shape": "derived",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "all-star-decorated",
+      "sideEffects": "all",
+      "reexport": "star",
+      "shape": "decorated",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "all-named-plain",
+      "sideEffects": "all",
+      "reexport": "named",
+      "shape": "plain",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "all-named-derived",
+      "sideEffects": "all",
+      "reexport": "named",
+      "shape": "derived",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "all-named-decorated",
+      "sideEffects": "all",
+      "reexport": "named",
+      "shape": "decorated",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "all-direct-plain",
+      "sideEffects": "all",
+      "reexport": "direct",
+      "shape": "plain",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "all-direct-derived",
+      "sideEffects": "all",
+      "reexport": "direct",
+      "shape": "derived",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "id": "all-direct-decorated",
+      "sideEffects": "all",
+      "reexport": "direct",
+      "shape": "decorated",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    }
+  ]
+}

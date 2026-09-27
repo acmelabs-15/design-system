@@ -22,7 +22,9 @@
         resolve(true);
       });
       setTimeout(() => {
-        if (!done) resolve(false);
+        if (!done) {
+          resolve(false);
+        }
       }, timeoutMs);
     });
 
@@ -56,16 +58,20 @@
         a.currentTime = duration * frac;
         const cs = getComputedStyle(target);
         const out = { at: frac };
-        for (const p of props) out[p] = cs.getPropertyValue(p);
+        for (const p of props) {
+          out[p] = cs.getPropertyValue(p);
+        }
         return out;
       });
       a.currentTime = was;
-      if (wasPlaying) a.play();
+      if (wasPlaying) {
+        a.play();
+      }
       const cs = getComputedStyle(target);
       return {
         name: a.animationName ?? a.transitionProperty ?? null,
         kind: a.constructor.name,
-        target: target === el ? "self" : (target.className || target.tagName),
+        target: target === el ? "self" : target.className || target.tagName,
         durationMs: duration,
         // Three places an easing can live. The keyframe and CSS values are the ones that bite.
         easing: { effect: t.easing, keyframes: a.effect.getKeyframes().map((k) => k.easing), css: cs.animationTimingFunction, transition: cs.transitionTimingFunction },

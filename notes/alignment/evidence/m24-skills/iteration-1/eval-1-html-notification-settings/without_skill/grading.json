@@ -1,0 +1,65 @@
+{
+  "expectations": [
+    {
+      "text": "All browser URLs use the same exact installed package version and each used element is defined.",
+      "passed": true,
+      "evidence": "outputs/index.html imports six selective definitions including Option at exactly 0.2.0, matching the installed package manifest. result.json registration contains six true entries; initial attempt timed out before Option was defined and that failure is retained."
+    },
+    {
+      "text": "Submitting changed values produces a receipt from actual FormData with the expected control names and values.",
+      "passed": true,
+      "evidence": "index.html serializes Array.from(new FormData(form).entries()). result.json changedReceipt is email=changed@example.com and plan=pro, with unchecked notifications omitted."
+    },
+    {
+      "text": "Reset restores the initial submitted values and required validation remains native.",
+      "passed": true,
+      "evidence": "result.json required is valid=false/valueMissing=true and requiredBlocksSave=true. reset and resetReceipt restore alex@example.com, starter, enabled. index.html uses required and native type=reset."
+    },
+    {
+      "text": "The artifact has no full-library or devtools import and no duplicate form state implementation.",
+      "passed": true,
+      "evidence": "index.html has one native form owner and a FormData-only receipt, six selective definitions, no full-library/devtools entry or duplicate control store. result.json records selectiveOnly and noNetworkSubmission=true."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1
+  },
+  "execution_metrics": null,
+  "timing": null,
+  "metrics_availability": "Host did not supply token counts, duration or full executor tool metrics. Unavailable, not zero.",
+  "claims": [
+    {
+      "claim": "Final native labels exist.",
+      "type": "quality",
+      "verified": true,
+      "evidence": "result.json nativeAccessibility records Email textbox, Plan combobox, Email notifications switch, Save and Reset."
+    }
+  ],
+  "user_notes_summary": {
+    "uncertainties": [
+      "Artifact repair: add the omitted Option definition. Harness repairs: scope the outer form; use the observed custom Option locator after Playwright role lookup failed.",
+      "CDN routes were mapped to installed files; no publication test. Screenshot shows the restored values in the visible receipt."
+    ],
+    "needs_review": [],
+    "workarounds": []
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "reason": "CDN routing proves exact installed files, not registry publication. Add a separate published-release check when publication is in scope."
+      },
+      {
+        "reason": "The prompt asks for labels, but the four assertions omit accessible names. Native AX was captured; preserve this as a shared explicit check."
+      }
+    ],
+    "overall": "Same four original assertions applied to both configurations. Final functional harness passes and proof of the compound assertions are recorded separately."
+  },
+  "evidence_scope": "Original final source, saved results/attempts, verification source, screenshots, current installed version manifests and independent typechecks. Full agent transcripts were not supplied; process claims based only on self-reports are not independently established.",
+  "notes": [
+    "Artifact repair: add the omitted Option definition. Harness repairs: scope the outer form; use the observed custom Option locator after Playwright role lookup failed.",
+    "CDN routes were mapped to installed files; no publication test. Screenshot shows the restored values in the visible receipt."
+  ]
+}

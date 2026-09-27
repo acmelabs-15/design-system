@@ -1,0 +1,153 @@
+{
+  "date": "2026-09-26",
+  "scope": "Compiled optional runtime rebundled with actual Lit and React consumers",
+  "runtime": "1.4.0",
+  "packageVersion": "0.2.0",
+  "browsers": [
+    {
+      "engine": "chromium",
+      "checks": [
+        "root-scoped Lit and React components with no persisted settings",
+        "JSON inspection can expand and collapse with the keyboard",
+        "visible desktop and narrow inspector surface",
+        "secret redaction before snapshots and visible UI",
+        "packaged runtime preserves null field labels and fonts through rebundling",
+        "property-only updates in both frameworks",
+        "bounded public events retain component identity and redact nested secrets",
+        "external ancestor theme updates effective appearance and token values",
+        "detach and reconnect reattach scoped observation",
+        "UI unmount and remount",
+        "dispose removes surface and retained observations",
+        "disposed inspector rejects remount",
+        "no outbound requests or browser errors"
+      ],
+      "errors": [],
+      "failedRequests": [],
+      "outbound": []
+    },
+    {
+      "engine": "firefox",
+      "checks": [
+        "root-scoped Lit and React components with no persisted settings",
+        "JSON inspection can expand and collapse with the keyboard",
+        "visible desktop and narrow inspector surface",
+        "secret redaction before snapshots and visible UI",
+        "packaged runtime preserves null field labels and fonts through rebundling",
+        "property-only updates in both frameworks",
+        "bounded public events retain component identity and redact nested secrets",
+        "external ancestor theme updates effective appearance and token values",
+        "detach and reconnect reattach scoped observation",
+        "UI unmount and remount",
+        "dispose removes surface and retained observations",
+        "disposed inspector rejects remount",
+        "no outbound requests or browser errors"
+      ],
+      "errors": [],
+      "failedRequests": [],
+      "outbound": []
+    },
+    {
+      "engine": "webkit",
+      "checks": [
+        "root-scoped Lit and React components with no persisted settings",
+        "JSON inspection can expand and collapse with the keyboard",
+        "visible desktop and narrow inspector surface",
+        "secret redaction before snapshots and visible UI",
+        "packaged runtime preserves null field labels and fonts through rebundling",
+        "property-only updates in both frameworks",
+        "bounded public events retain component identity and redact nested secrets",
+        "external ancestor theme updates effective appearance and token values",
+        "detach and reconnect reattach scoped observation",
+        "UI unmount and remount",
+        "dispose removes surface and retained observations",
+        "disposed inspector rejects remount",
+        "no outbound requests or browser errors"
+      ],
+      "errors": [],
+      "failedRequests": [],
+      "outbound": []
+    }
+  ],
+  "production": {
+    "passed": true,
+    "inputs": 102,
+    "outputs": 1,
+    "devtoolsOrSolidInputs": [],
+    "fonts": 0
+  },
+  "unitChecks": {
+    "tests": 8,
+    "assertions": 36,
+    "strictTypes": "passed"
+  },
+  "sources": {
+    "manifestSha256": "0a34956ec3fad2814807ff0a4e5153b8c798a4179e3284f508963f186133cd24",
+    "tokensSha256": "dc5b5e78447d2c6fb6a98c559a39e0f343b2be6bf96050daa3e3b051609b889f",
+    "metadataSha256": "a229b5834cf9fe278b923de90929db966623c7d238e5a3e3d131334dd37f7089"
+  },
+  "provenance": {
+    "packages": [
+      {
+        "name": "@tanstack/devtools-ui",
+        "version": "0.7.1",
+        "license": "MIT"
+      },
+      {
+        "name": "solid-js",
+        "version": "1.9.15",
+        "license": "MIT"
+      },
+      {
+        "name": "goober",
+        "version": "2.1.19",
+        "license": "MIT"
+      },
+      {
+        "name": "clsx",
+        "version": "2.1.1",
+        "license": "MIT"
+      },
+      {
+        "name": "dayjs",
+        "version": "1.11.23",
+        "license": "MIT"
+      }
+    ],
+    "fonts": [
+      {
+        "file": "BricolageGrotesque-Bold-BIJrwikb.ttf",
+        "bytes": 82204,
+        "sha256": "913ee3631949ee1b4fb2601269412fca5775eb994d4f87be2c366c94ac123dc5",
+        "delivery": "embedded data URL"
+      },
+      {
+        "file": "Inter-latin-BwkfbSeq.woff2",
+        "bytes": 72920,
+        "sha256": "2c295d99e26dcf357d4d01bcf270fd6924b600c9a13dd8c363ef114f4c6976fa",
+        "delivery": "embedded data URL"
+      }
+    ],
+    "correction": {
+      "package": "@tanstack/devtools-ui",
+      "version": "0.7.1",
+      "file": "dist/esm/components/tree.js",
+      "originalSha256": "a7a7a305ff7256bc71e423fc6cefdf14726bc1d57dc19e1ab0ea0a49beaa06a3",
+      "original": "props.keyName && typeof props.value !== \"object\"",
+      "corrected": "props.keyName && (props.value === null || typeof props.value !== \"object\")",
+      "reason": "Null is a JSON primitive; its field name must remain visible"
+    },
+    "assets": [],
+    "inputs": 19
+  },
+  "findings": [
+    "Read-only public validity getters synchronize native control attributes; scoped observation prevents feedback loops.",
+    "Pinned upstream JsonTree correction preserves field keys for null primitives.",
+    "Embedded fonts survive the second bundle and load in all engines.",
+    "Firefox serializes FontFace.family with quotes; assertion normalizes observed serialization."
+  ],
+  "limits": [
+    "Final packed-consumer installation is a separate release gate.",
+    "Closed shadow roots and standalone external CSSOM mutations are outside automatic observation.",
+    "The three engine checks do not replace actual Safari or assistive technology testing."
+  ]
+}

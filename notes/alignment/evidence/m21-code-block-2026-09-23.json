@@ -1,0 +1,291 @@
+{
+  "date": "2026-09-23",
+  "batch": "M21",
+  "entry": "RC-01 Code Block",
+  "status": "complete at native/Lit boundary",
+  "implementation": {
+    "source": "code alone; core TanStack tokenization preserves leading/trailing whitespace; exact Copy Button value",
+    "state": "Canonical atoms; immutable positive line-number lists; referencedLine is application-owned",
+    "actions": "One roving line-number entry; arrow/Home/End navigation; cancelable acme-request reference-line; no URL/history mutation",
+    "composition": "Scroll Area/Viewport, Copy Button, description icon; header/start/end/footer/empty slots; application-owned Select/Tabs",
+    "failure": "Safe escaped plain source remains visible and acme-error reports once per prepared source",
+    "focus": "A replaced source that removes the focused line restores focus to the remaining line; custom slotted controls stay mounted"
+  },
+  "references": {
+    "local": [
+      "notes/alignment/inventory/rich-content.md#rc-01-code-block",
+      "src/shared/highlight.ts"
+    ],
+    "package": "@tanstack/highlight 0.0.10",
+    "readInFull": [
+      "configure-selective-highlighting and languages reference",
+      "theme-and-annotate-code and themes/tokens reference",
+      "integrate-framework-code-blocks",
+      "integrate-markdown-pipelines and direct fences reference"
+    ],
+    "criticalFinding": "Block/fence helpers trim trailing whitespace; core tokenization is the selected exact-source path"
+  },
+  "checks": {
+    "unit": {
+      "pass": 4,
+      "assertions": 14
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "exact source includes leading/trailing whitespace and copy emits once",
+            "pass": true
+          },
+          {
+            "name": "one keyboard entry moves between references and requests without owning state or history",
+            "pass": true
+          },
+          {
+            "name": "overlapping decorations remain explicit and out-of-range values add no lines",
+            "pass": true
+          },
+          {
+            "name": "long code scrolls internally and wrapping preserves source",
+            "pass": true
+          },
+          {
+            "name": "failure renders safe plain text and reports once per prepared source",
+            "pass": true
+          },
+          {
+            "name": "empty source, authored controls and changed source preserve their owners",
+            "pass": true
+          },
+          {
+            "name": "replacing short source recovers focused line navigation",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "exact source includes leading/trailing whitespace and copy emits once",
+            "pass": true
+          },
+          {
+            "name": "one keyboard entry moves between references and requests without owning state or history",
+            "pass": true
+          },
+          {
+            "name": "overlapping decorations remain explicit and out-of-range values add no lines",
+            "pass": true
+          },
+          {
+            "name": "long code scrolls internally and wrapping preserves source",
+            "pass": true
+          },
+          {
+            "name": "failure renders safe plain text and reports once per prepared source",
+            "pass": true
+          },
+          {
+            "name": "empty source, authored controls and changed source preserve their owners",
+            "pass": true
+          },
+          {
+            "name": "replacing short source recovers focused line navigation",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "exact source includes leading/trailing whitespace and copy emits once",
+            "pass": true
+          },
+          {
+            "name": "one keyboard entry moves between references and requests without owning state or history",
+            "pass": true
+          },
+          {
+            "name": "overlapping decorations remain explicit and out-of-range values add no lines",
+            "pass": true
+          },
+          {
+            "name": "long code scrolls internally and wrapping preserves source",
+            "pass": true
+          },
+          {
+            "name": "failure renders safe plain text and reports once per prepared source",
+            "pass": true
+          },
+          {
+            "name": "empty source, authored controls and changed source preserve their owners",
+            "pass": true
+          },
+          {
+            "name": "replacing short source recovers focused line navigation",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "exact source includes leading/trailing whitespace and copy emits once",
+            "pass": true
+          },
+          {
+            "name": "one keyboard entry moves between references and requests without owning state or history",
+            "pass": true
+          },
+          {
+            "name": "overlapping decorations remain explicit and out-of-range values add no lines",
+            "pass": true
+          },
+          {
+            "name": "long code scrolls internally and wrapping preserves source",
+            "pass": true
+          },
+          {
+            "name": "failure renders safe plain text and reports once per prepared source",
+            "pass": true
+          },
+          {
+            "name": "empty source, authored controls and changed source preserve their owners",
+            "pass": true
+          },
+          {
+            "name": "replacing short source recovers focused line navigation",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "exact source includes leading/trailing whitespace and copy emits once",
+            "pass": true
+          },
+          {
+            "name": "one keyboard entry moves between references and requests without owning state or history",
+            "pass": true
+          },
+          {
+            "name": "overlapping decorations remain explicit and out-of-range values add no lines",
+            "pass": true
+          },
+          {
+            "name": "long code scrolls internally and wrapping preserves source",
+            "pass": true
+          },
+          {
+            "name": "failure renders safe plain text and reports once per prepared source",
+            "pass": true
+          },
+          {
+            "name": "empty source, authored controls and changed source preserve their owners",
+            "pass": true
+          },
+          {
+            "name": "replacing short source recovers focused line navigation",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "exact source includes leading/trailing whitespace and copy emits once",
+            "pass": true
+          },
+          {
+            "name": "one keyboard entry moves between references and requests without owning state or history",
+            "pass": true
+          },
+          {
+            "name": "overlapping decorations remain explicit and out-of-range values add no lines",
+            "pass": true
+          },
+          {
+            "name": "long code scrolls internally and wrapping preserves source",
+            "pass": true
+          },
+          {
+            "name": "failure renders safe plain text and reports once per prepared source",
+            "pass": true
+          },
+          {
+            "name": "empty source, authored controls and changed source preserve their owners",
+            "pass": true
+          },
+          {
+            "name": "replacing short source recovers focused line navigation",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "liveDocs": [
+      {
+        "engine": "chromium",
+        "pass": true,
+        "checks": 5,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "pass": true,
+        "checks": 5,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "pass": true,
+        "checks": 5,
+        "errors": []
+      }
+    ],
+    "strictPackageBuild": true,
+    "siteBuild": {
+      "pages": 108,
+      "elements": 4319,
+      "undocumented": 0
+    },
+    "fullSuite": {
+      "pass": 866,
+      "fail": 0,
+      "assertions": 151975
+    },
+    "visual": "Code reference and application Select screenshot inspected"
+  },
+  "deviations": [
+    "Reference line buttons stay available on narrow screens and use one roving tab entry; per-line hidden/untabbable controls are removed.",
+    "The source 13px/20px code text, border/syntax colors and line treatments remain. Filename actions use canonical Copy Button geometry. Outside spacing belongs to layout.",
+    "File/language switching is authored composition; v0 coupling and inline brand artwork are removed.",
+    "Line background priority is referenced, removed, added, highlighted; all supplied flags remain available."
+  ],
+  "removal": [
+    "Old switcher/tabs/v0 properties and CodeBlockOption export",
+    "Old decoration names, hideLineNumbers, public copy/source facade, content-as-source and acme-reference",
+    "Old style map/structure output and raw .code-block rules",
+    "Unused sourceOf helper"
+  ],
+  "remaining": [
+    "JSON View, Markdown, Book, Video",
+    "Final M22/M26 integration, including the recorded old Firefox test-runtime constraint"
+  ],
+  "reproduction": "m21-code-block-checks.ts"
+}

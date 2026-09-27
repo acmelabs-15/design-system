@@ -36,4 +36,12 @@ Peter answered “Align with what chakra does” for attached wrapping. Re-read 
 
 Peter again chose Chakra's behaviour for nested appearance defaults. Each nested Group supplies a fresh set of compatible defaults. Unspecified settings use the component defaults, rather than merge the outer Group's defaults. Explicit child settings still override them. CSS theme inheritance is a separate contract and remains unchanged.
 
+The later [Stack separator choice](stack-layout.md#separator-spacing-and-wrapped-lines) makes automatic Stack dividers follow visible rows/columns. It does not revise this Group decision: attached corners still follow member order, without per-wrapped-row correction. Review the two presentation contracts separately when composing them.
+
 Sources: [Group implementation](https://github.com/chakra-ui/chakra-ui/blob/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/group/group.tsx), [ButtonGroup provider](https://github.com/chakra-ui/chakra-ui/blob/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/button/button-group.tsx), [choice record](../alignment/evidence/phase-4-checkpoint-2026-09-19.json). These choices do not approve the entire Group inventory entry or source implementation.
+
+## Foundation implementation — 2026-09-21
+
+The complete inventory and migration were approved on 2026-09-20. Group's layout, explicit membership and shared presentation protocol are now implemented under Peter's execution delegation. [Foundation evidence and acceptance boundary](../alignment/evidence/m07-group-2026-09-21.json).
+
+M09–M11 still own real action/card/input participation and their paint/focus checks. The native-control protocol fixture does not certify those unmodified families. The shared indicator remains owned by the later single-selection family; this Group foundation introduces no selected value or keyboard manager. ButtonGroup is removed outright. The actual house radius token is --r, so it supplies the outline default rather than the proposal's nonexistent --acme-radius token.

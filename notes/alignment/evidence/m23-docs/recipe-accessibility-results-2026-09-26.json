@@ -1,0 +1,22 @@
+{
+  "engine": "chromium",
+  "oracle": "native Accessibility.getFullAXTree",
+  "switches": [
+    {
+      "name": "Email updates",
+      "description": "Receive product news by email."
+    },
+    {
+      "name": "Security alerts",
+      "description": "Receive account security notices."
+    }
+  ],
+  "options": [
+    "10",
+    "25",
+    "50"
+  ],
+  "submittedSettings": true,
+  "changedPageSize": 25,
+  "passed": true
+}

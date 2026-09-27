@@ -1,0 +1,916 @@
+{
+  "date": "2026-09-23",
+  "status": "M15 Steps/Timeline complete at assigned native/Lit boundary",
+  "implementation": [
+    "Canonical numeric Steps value and explicit value=count completion, with keyed members and retained named panels",
+    "Cancelable validation requests, silent controlled updates and one change event per accepted user move",
+    "Manual roving keyboard focus, both orientations, RTL, linear progression and disabled-step skipping",
+    "Shared action implementation and localized completion descriptions; no Zag state runtime",
+    "Native ordered Timeline with authored dates, headings, descriptions and decorative connectors"
+  ],
+  "verification": {
+    "build": "Strict build passes",
+    "site": {
+      "pages": 103,
+      "elements": 4295,
+      "undocumented": 0
+    },
+    "suite": {
+      "passed": 932,
+      "failed": 0,
+      "assertions": 149426,
+      "files": 160
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "Steps exposes named tabs and linked retained panels",
+            "pass": true
+          },
+          {
+            "name": "manual arrow navigation has one entry and does not advance",
+            "pass": true
+          },
+          {
+            "name": "RTL and vertical keys follow the current orientation",
+            "pass": true
+          },
+          {
+            "name": "cancelable validation keeps the current panel and application can resume silently",
+            "pass": true
+          },
+          {
+            "name": "linear progression and explicit completion keep a usable focus destination",
+            "pass": true
+          },
+          {
+            "name": "disabled steps are skipped by progression and keyboard",
+            "pass": true
+          },
+          {
+            "name": "panel input identity is preserved and focused content recovers on a programmatic move",
+            "pass": true
+          },
+          {
+            "name": "Timeline is an ordered list without a selection owner",
+            "pass": true
+          },
+          {
+            "name": "Timeline changes orientation and final connector without replacing content",
+            "pass": true
+          },
+          {
+            "name": "reordered steps derive indexes and reconnect without duplicate changes",
+            "pass": true
+          },
+          {
+            "name": "duplicate values block ambiguous navigation and recover after correction",
+            "pass": true
+          },
+          {
+            "name": "native form validation can cancel and then permit a forward request",
+            "pass": true
+          },
+          {
+            "name": "controlled request overrides stay authoritative and silent",
+            "pass": true
+          },
+          {
+            "name": "keyboard focus and narrow layout remain visible",
+            "pass": true
+          },
+          {
+            "name": "pointer focus follows the bare native button baseline",
+            "pass": true
+          },
+          {
+            "name": "removed numeric and orientation attributes restore defaults",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "Steps exposes named tabs and linked retained panels",
+            "pass": true
+          },
+          {
+            "name": "manual arrow navigation has one entry and does not advance",
+            "pass": true
+          },
+          {
+            "name": "RTL and vertical keys follow the current orientation",
+            "pass": true
+          },
+          {
+            "name": "cancelable validation keeps the current panel and application can resume silently",
+            "pass": true
+          },
+          {
+            "name": "linear progression and explicit completion keep a usable focus destination",
+            "pass": true
+          },
+          {
+            "name": "disabled steps are skipped by progression and keyboard",
+            "pass": true
+          },
+          {
+            "name": "panel input identity is preserved and focused content recovers on a programmatic move",
+            "pass": true
+          },
+          {
+            "name": "Timeline is an ordered list without a selection owner",
+            "pass": true
+          },
+          {
+            "name": "Timeline changes orientation and final connector without replacing content",
+            "pass": true
+          },
+          {
+            "name": "reordered steps derive indexes and reconnect without duplicate changes",
+            "pass": true
+          },
+          {
+            "name": "duplicate values block ambiguous navigation and recover after correction",
+            "pass": true
+          },
+          {
+            "name": "native form validation can cancel and then permit a forward request",
+            "pass": true
+          },
+          {
+            "name": "controlled request overrides stay authoritative and silent",
+            "pass": true
+          },
+          {
+            "name": "keyboard focus and narrow layout remain visible",
+            "pass": true
+          },
+          {
+            "name": "pointer focus follows the bare native button baseline",
+            "pass": true
+          },
+          {
+            "name": "removed numeric and orientation attributes restore defaults",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "Steps exposes named tabs and linked retained panels",
+            "pass": true
+          },
+          {
+            "name": "manual arrow navigation has one entry and does not advance",
+            "pass": true
+          },
+          {
+            "name": "RTL and vertical keys follow the current orientation",
+            "pass": true
+          },
+          {
+            "name": "cancelable validation keeps the current panel and application can resume silently",
+            "pass": true
+          },
+          {
+            "name": "linear progression and explicit completion keep a usable focus destination",
+            "pass": true
+          },
+          {
+            "name": "disabled steps are skipped by progression and keyboard",
+            "pass": true
+          },
+          {
+            "name": "panel input identity is preserved and focused content recovers on a programmatic move",
+            "pass": true
+          },
+          {
+            "name": "Timeline is an ordered list without a selection owner",
+            "pass": true
+          },
+          {
+            "name": "Timeline changes orientation and final connector without replacing content",
+            "pass": true
+          },
+          {
+            "name": "reordered steps derive indexes and reconnect without duplicate changes",
+            "pass": true
+          },
+          {
+            "name": "duplicate values block ambiguous navigation and recover after correction",
+            "pass": true
+          },
+          {
+            "name": "native form validation can cancel and then permit a forward request",
+            "pass": true
+          },
+          {
+            "name": "controlled request overrides stay authoritative and silent",
+            "pass": true
+          },
+          {
+            "name": "keyboard focus and narrow layout remain visible",
+            "pass": true
+          },
+          {
+            "name": "pointer focus follows the bare native button baseline",
+            "pass": true
+          },
+          {
+            "name": "removed numeric and orientation attributes restore defaults",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "Steps exposes named tabs and linked retained panels",
+            "pass": true
+          },
+          {
+            "name": "manual arrow navigation has one entry and does not advance",
+            "pass": true
+          },
+          {
+            "name": "RTL and vertical keys follow the current orientation",
+            "pass": true
+          },
+          {
+            "name": "cancelable validation keeps the current panel and application can resume silently",
+            "pass": true
+          },
+          {
+            "name": "linear progression and explicit completion keep a usable focus destination",
+            "pass": true
+          },
+          {
+            "name": "disabled steps are skipped by progression and keyboard",
+            "pass": true
+          },
+          {
+            "name": "panel input identity is preserved and focused content recovers on a programmatic move",
+            "pass": true
+          },
+          {
+            "name": "Timeline is an ordered list without a selection owner",
+            "pass": true
+          },
+          {
+            "name": "Timeline changes orientation and final connector without replacing content",
+            "pass": true
+          },
+          {
+            "name": "reordered steps derive indexes and reconnect without duplicate changes",
+            "pass": true
+          },
+          {
+            "name": "duplicate values block ambiguous navigation and recover after correction",
+            "pass": true
+          },
+          {
+            "name": "native form validation can cancel and then permit a forward request",
+            "pass": true
+          },
+          {
+            "name": "controlled request overrides stay authoritative and silent",
+            "pass": true
+          },
+          {
+            "name": "keyboard focus and narrow layout remain visible",
+            "pass": true
+          },
+          {
+            "name": "pointer focus follows the bare native button baseline",
+            "pass": true
+          },
+          {
+            "name": "removed numeric and orientation attributes restore defaults",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "Steps exposes named tabs and linked retained panels",
+            "pass": true
+          },
+          {
+            "name": "manual arrow navigation has one entry and does not advance",
+            "pass": true
+          },
+          {
+            "name": "RTL and vertical keys follow the current orientation",
+            "pass": true
+          },
+          {
+            "name": "cancelable validation keeps the current panel and application can resume silently",
+            "pass": true
+          },
+          {
+            "name": "linear progression and explicit completion keep a usable focus destination",
+            "pass": true
+          },
+          {
+            "name": "disabled steps are skipped by progression and keyboard",
+            "pass": true
+          },
+          {
+            "name": "panel input identity is preserved and focused content recovers on a programmatic move",
+            "pass": true
+          },
+          {
+            "name": "Timeline is an ordered list without a selection owner",
+            "pass": true
+          },
+          {
+            "name": "Timeline changes orientation and final connector without replacing content",
+            "pass": true
+          },
+          {
+            "name": "reordered steps derive indexes and reconnect without duplicate changes",
+            "pass": true
+          },
+          {
+            "name": "duplicate values block ambiguous navigation and recover after correction",
+            "pass": true
+          },
+          {
+            "name": "native form validation can cancel and then permit a forward request",
+            "pass": true
+          },
+          {
+            "name": "controlled request overrides stay authoritative and silent",
+            "pass": true
+          },
+          {
+            "name": "keyboard focus and narrow layout remain visible",
+            "pass": true
+          },
+          {
+            "name": "pointer focus follows the bare native button baseline",
+            "pass": true
+          },
+          {
+            "name": "removed numeric and orientation attributes restore defaults",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "Steps exposes named tabs and linked retained panels",
+            "pass": true
+          },
+          {
+            "name": "manual arrow navigation has one entry and does not advance",
+            "pass": true
+          },
+          {
+            "name": "RTL and vertical keys follow the current orientation",
+            "pass": true
+          },
+          {
+            "name": "cancelable validation keeps the current panel and application can resume silently",
+            "pass": true
+          },
+          {
+            "name": "linear progression and explicit completion keep a usable focus destination",
+            "pass": true
+          },
+          {
+            "name": "disabled steps are skipped by progression and keyboard",
+            "pass": true
+          },
+          {
+            "name": "panel input identity is preserved and focused content recovers on a programmatic move",
+            "pass": true
+          },
+          {
+            "name": "Timeline is an ordered list without a selection owner",
+            "pass": true
+          },
+          {
+            "name": "Timeline changes orientation and final connector without replacing content",
+            "pass": true
+          },
+          {
+            "name": "reordered steps derive indexes and reconnect without duplicate changes",
+            "pass": true
+          },
+          {
+            "name": "duplicate values block ambiguous navigation and recover after correction",
+            "pass": true
+          },
+          {
+            "name": "native form validation can cancel and then permit a forward request",
+            "pass": true
+          },
+          {
+            "name": "controlled request overrides stay authoritative and silent",
+            "pass": true
+          },
+          {
+            "name": "keyboard focus and narrow layout remain visible",
+            "pass": true
+          },
+          {
+            "name": "pointer focus follows the bare native button baseline",
+            "pass": true
+          },
+          {
+            "name": "removed numeric and orientation attributes restore defaults",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "documentation": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "Steps next/previous",
+          "native validation cancellation/resumption",
+          "Timeline named lists and authored headings"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "Steps next/previous",
+          "native validation cancellation/resumption",
+          "Timeline named lists and authored headings"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "Steps next/previous",
+          "native validation cancellation/resumption",
+          "Timeline named lists and authored headings"
+        ],
+        "errors": []
+      }
+    ],
+    "listAccessibilityProbe": [
+      {
+        "id": "1",
+        "role": "RootWebArea",
+        "name": "",
+        "children": [
+          "2"
+        ],
+        "ignored": false
+      },
+      {
+        "id": "2",
+        "role": "none",
+        "children": [
+          "5"
+        ],
+        "ignored": true
+      },
+      {
+        "id": "5",
+        "role": "generic",
+        "name": "",
+        "children": [
+          "7"
+        ],
+        "ignored": false
+      },
+      {
+        "id": "7",
+        "role": "list",
+        "name": "",
+        "children": [
+          "9",
+          "12"
+        ],
+        "ignored": false
+      },
+      {
+        "id": "9",
+        "role": "none",
+        "children": [
+          "10"
+        ],
+        "ignored": true
+      },
+      {
+        "id": "10",
+        "role": "listitem",
+        "name": "",
+        "children": [
+          "15",
+          "16"
+        ],
+        "ignored": false
+      },
+      {
+        "id": "12",
+        "role": "none",
+        "children": [
+          "13"
+        ],
+        "ignored": true
+      },
+      {
+        "id": "13",
+        "role": "listitem",
+        "name": "",
+        "children": [
+          "17",
+          "18"
+        ],
+        "ignored": false
+      },
+      {
+        "id": "15",
+        "role": "ListMarker",
+        "name": "1. ",
+        "children": [
+          "-1000000002"
+        ],
+        "ignored": false
+      },
+      {
+        "id": "16",
+        "role": "StaticText",
+        "name": "Ordered",
+        "children": [
+          "-1000000003"
+        ],
+        "ignored": false
+      },
+      {
+        "id": "17",
+        "role": "ListMarker",
+        "name": "2. ",
+        "children": [
+          "-1000000004"
+        ],
+        "ignored": false
+      },
+      {
+        "id": "18",
+        "role": "StaticText",
+        "name": "Shipped",
+        "children": [
+          "-1000000005"
+        ],
+        "ignored": false
+      },
+      {
+        "id": "-1000000002",
+        "role": "none",
+        "children": [],
+        "ignored": true
+      },
+      {
+        "id": "-1000000003",
+        "role": "InlineTextBox",
+        "name": "Ordered",
+        "children": [],
+        "ignored": false
+      },
+      {
+        "id": "-1000000004",
+        "role": "none",
+        "children": [],
+        "ignored": true
+      },
+      {
+        "id": "-1000000005",
+        "role": "InlineTextBox",
+        "name": "Shipped",
+        "children": [],
+        "ignored": false
+      }
+    ],
+    "fieldInputNativeAccessibility": [
+      {
+        "name": "Name",
+        "properties": [
+          {
+            "name": "invalid",
+            "value": {
+              "type": "token",
+              "value": "false"
+            }
+          },
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "editable",
+            "value": {
+              "type": "token",
+              "value": "plaintext"
+            }
+          },
+          {
+            "name": "settable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "multiline",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "readonly",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "required",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "labelledby",
+            "value": {
+              "type": "nodeList",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 353,
+                  "idref": "acme-field-content-1-label-0",
+                  "text": "Name"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Name",
+        "properties": [
+          {
+            "name": "invalid",
+            "value": {
+              "type": "token",
+              "value": "false"
+            }
+          },
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "editable",
+            "value": {
+              "type": "token",
+              "value": "plaintext"
+            }
+          },
+          {
+            "name": "settable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "multiline",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "readonly",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "required",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "labelledby",
+            "value": {
+              "type": "nodeList",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 552,
+                  "idref": "acme-field-content-2-label-0",
+                  "text": "Name"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Name",
+        "properties": [
+          {
+            "name": "invalid",
+            "value": {
+              "type": "token",
+              "value": "false"
+            }
+          },
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "editable",
+            "value": {
+              "type": "token",
+              "value": "plaintext"
+            }
+          },
+          {
+            "name": "settable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "multiline",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "readonly",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "required",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "labelledby",
+            "value": {
+              "type": "nodeList",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 751,
+                  "idref": "acme-field-content-3-label-0",
+                  "text": "Name"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Name",
+        "properties": [
+          {
+            "name": "invalid",
+            "value": {
+              "type": "token",
+              "value": "false"
+            }
+          },
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "editable",
+            "value": {
+              "type": "token",
+              "value": "plaintext"
+            }
+          },
+          {
+            "name": "settable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "multiline",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "readonly",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "required",
+            "value": {
+              "type": "boolean",
+              "value": true
+            }
+          },
+          {
+            "name": "labelledby",
+            "value": {
+              "type": "nodeList",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 952,
+                  "idref": "acme-field-content-4-label-0",
+                  "text": "Name"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    "https://chakra-ui.com/docs/components/steps",
+    "https://chakra-ui.com/docs/components/timeline",
+    "https://github.com/chakra-ui/zag/tree/53327acb58fedbd12b1a5702f7c51baf4aa3c6b0/packages/machines/steps",
+    "Private Pro step-001/block.tsx, step-002/block.tsx, Docs Kit components/mdx/steps.tsx, webhooks-event-log-03/webhook-event-status.tsx, changelog-001/block.tsx"
+  ],
+  "corrections": [
+    "Guard identical hidden/inert writes so context change observation cannot cause a repeated update cycle.",
+    "Use explicit previous/next constructor input instead of accessing an abstract property during construction.",
+    "WebKit pointer clicks follow its bare native button focus behavior. Keyboard completion focus passes in all engines; no pointer-focus workaround is added.",
+    "Run site generation before the full suite; an earlier run failed only because its two new pages were not generated yet.",
+    "The Field/Input documentation change initially reused the prior plain-input result in the acceptance record before its new check completed. The new Playwright name query timed out because it did not resolve ARIA element-reference naming. Actual Chromium accessibility exposes Name on all four textboxes. The corrected checks verify those element references and real validation/editing in all engines; this record now contains the corrected run."
+  ],
+  "fixtures": [
+    "src/components/steps/__tests__/steps.browser.ts",
+    "src/components/steps/__tests__/steps.test.ts",
+    "src/components/timeline/__tests__/timeline.test.ts",
+    "/tmp/acme-m15-steps/run.ts",
+    "/tmp/acme-m15-steps/run-compiled.ts",
+    "/tmp/acme-m15-steps/docs-check.ts"
+  ],
+  "limits": [
+    "Actual Safari and assistive-technology interaction remain M22/M26.",
+    "Final React wrappers and scoped-registry acceptance remain M22.",
+    "M15 still requires Toolbar/App Bar/Breadcrumbs and Command Menu, with Dialog brought forward from M17."
+  ]
+}

@@ -1,0 +1,117 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const switchStructureCss = css`:host {
+  vertical-align: middle;
+  display: inline-flex;
+}
+
+.switch {
+  --switch-width: 28px;
+  --switch-height: 14px;
+  --switch-thumb: 11px;
+  --switch-inset: 1.5px;
+  --switch-travel: 14px;
+  align-items: center;
+  gap: 8px;
+  min-block-size: 24px;
+}
+
+.switch[data-size="medium"] {
+  --switch-width: 36px;
+  --switch-height: 20px;
+  --switch-thumb: 17px;
+  --switch-travel: 16px;
+}
+
+.switch[data-size="large"] {
+  --switch-width: 40px;
+  --switch-height: 24px;
+  --switch-thumb: 21px;
+  --switch-travel: 16px;
+}
+
+.switch-control {
+  inline-size: var(--switch-width);
+  block-size: var(--switch-height);
+  flex: none;
+  display: inline-flex;
+  position: relative;
+}
+
+.switch[data-label-position="start"] [part="label"] {
+  order: -1;
+}
+
+.track {
+  background: var(--ds-gray-700);
+  pointer-events: none;
+  border-radius: 999px;
+  position: absolute;
+  inset: 0;
+}
+
+.thumb {
+  inline-size: var(--switch-thumb);
+  block-size: var(--switch-thumb);
+  background: var(--ds-white);
+  transform: translateX(calc(var(--switch-progress)*var(--switch-travel)));
+  border-radius: 50%;
+  position: absolute;
+  inset-block-start: var(--switch-inset);
+  inset-inline-start: var(--switch-inset);
+}
+
+:host(:dir(rtl)) .thumb {
+  transform: translateX(calc(-1*var(--switch-progress)*var(--switch-travel)));
+}
+
+.switch[data-checked] .track {
+  background: var(--ds-blue-700);
+}
+
+.switch[data-disabled] .track {
+  background: var(--ds-gray-400);
+}
+
+.switch[data-disabled] .thumb {
+  background: var(--ds-gray-100);
+}
+
+.native:focus-visible + .track {
+  box-shadow: var(--ds-focus-ring);
+}
+
+@media (forced-colors: active) {
+  .track {
+    forced-color-adjust: none;
+    background: canvas;
+    border: 1px solid buttontext;
+  }
+
+  .thumb {
+    background: buttontext;
+  }
+
+  .switch[data-checked] .track {
+    background: highlight;
+  }
+
+  .switch[data-checked] .thumb {
+    background: highlighttext;
+  }
+
+  .switch[data-disabled] .track {
+    background: canvas;
+    border-color: graytext;
+  }
+
+  .switch[data-disabled] .thumb {
+    background: graytext;
+  }
+
+  .native:focus-visible + .track {
+    outline-offset: 2px;
+    outline: 2px solid highlight;
+  }
+}
+`;

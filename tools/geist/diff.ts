@@ -34,36 +34,67 @@ const gam = (c: number) => (c <= 0.0031308 ? 12.92 * c : 1.055 * c ** (1 / 2.4) 
 const linToSrgb = (r: number, g: number, b: number) => [r, g, b].map((c) => Math.round(clamp(gam(c)) * 255));
 const xyzToLin = (x: number, y: number, z: number) => [3.2404542 * x - 1.5371385 * y - 0.4985314 * z, -0.969266 * x + 1.8760108 * y + 0.041556 * z, 0.0556434 * x - 0.2040259 * y + 1.0572252 * z];
 const oklabToSrgb = (L: number, a: number, b: number) => {
-  const l = (L + 0.3963377774 * a + 0.2158037573 * b) ** 3, m = (L - 0.1055613458 * a - 0.0638541728 * b) ** 3, s2 = (L - 0.0894841775 * a - 1.291485548 * b) ** 3;
+  const l = (L + 0.3963377774 * a + 0.2158037573 * b) ** 3,
+    m = (L - 0.1055613458 * a - 0.0638541728 * b) ** 3,
+    s2 = (L - 0.0894841775 * a - 1.291485548 * b) ** 3;
   return linToSrgb(4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s2, -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s2, -0.0041960863 * l - 0.7034186147 * m + 1.707614701 * s2);
 };
 const labToSrgb = (L: number, a: number, b: number) => {
-  const fy = (L + 16) / 116, fx = fy + a / 500, fz = fy - b / 200;
+  const fy = (L + 16) / 116,
+    fx = fy + a / 500,
+    fz = fy - b / 200;
   const f = (t: number) => (t ** 3 > 0.008856 ? t ** 3 : (t - 16 / 116) / 7.787);
   // D50 white, then Bradford to D65
-  const X = 0.96422 * f(fx), Y = 1.0 * f(fy), Z = 0.82521 * f(fz);
-  const x = 0.9555766 * X - 0.0230393 * Y + 0.0631636 * Z, y = -0.0282895 * X + 1.0099416 * Y + 0.0210077 * Z, z = 0.0122982 * X - 0.020483 * Y + 1.3299098 * Z;
+  const X = 0.96422 * f(fx),
+    Y = 1.0 * f(fy),
+    Z = 0.82521 * f(fz);
+  const x = 0.9555766 * X - 0.0230393 * Y + 0.0631636 * Z,
+    y = -0.0282895 * X + 1.0099416 * Y + 0.0210077 * Z,
+    z = 0.0122982 * X - 0.020483 * Y + 1.3299098 * Z;
   return linToSrgb(...(xyzToLin(x, y, z) as [number, number, number]));
 };
 const num = (s: string) => (s.endsWith("%") ? parseFloat(s) / 100 : parseFloat(s));
 const toRgb = (v: string): number[] | null => {
   let m = v.match(/^rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)(?:,\s*([\d.]+))?\)$/);
-  if (m) return [Math.round(+m[1]), Math.round(+m[2]), Math.round(+m[3]), m[4] === undefined ? 1 : +m[4]];
+  if (m) {
+    return [Math.round(+m[1]), Math.round(+m[2]), Math.round(+m[3]), m[4] === undefined ? 1 : +m[4]];
+  }
   m = v.match(/^oklch\(([\d.%]+) ([\d.]+) ([\d.]+)(?: \/ ([\d.%]+))?\)$/);
-  if (m) { const L = num(m[1]), C = +m[2], h = (+m[3] * Math.PI) / 180; return [...oklabToSrgb(L, C * Math.cos(h), C * Math.sin(h)), m[4] ? num(m[4]) : 1]; }
+  if (m) {
+    const L = num(m[1]),
+      C = +m[2],
+      h = (+m[3] * Math.PI) / 180;
+    return [...oklabToSrgb(L, C * Math.cos(h), C * Math.sin(h)), m[4] ? num(m[4]) : 1];
+  }
   m = v.match(/^oklab\(([\d.%]+) (-?[\d.]+) (-?[\d.]+)(?: \/ ([\d.%]+))?\)$/);
-  if (m) return [...oklabToSrgb(num(m[1]), +m[2], +m[3]), m[4] ? num(m[4]) : 1];
+  if (m) {
+    return [...oklabToSrgb(num(m[1]), +m[2], +m[3]), m[4] ? num(m[4]) : 1];
+  }
   m = v.match(/^lab\(([\d.]+)%? (-?[\d.]+) (-?[\d.]+)(?: \/ ([\d.%]+))?\)$/);
-  if (m) return [...labToSrgb(+m[1], +m[2], +m[3]), m[4] ? num(m[4]) : 1];
+  if (m) {
+    return [...labToSrgb(+m[1], +m[2], +m[3]), m[4] ? num(m[4]) : 1];
+  }
   return null;
 };
-const normColors = (s: string) => s.replace(/(rgba?|oklch|oklab|lab)\([^()]*\)/g, (c) => { const t = toRgb(c); return t ? `rgb(${t[0]},${t[1]},${t[2]}${t[3] < 1 ? `,${t[3].toFixed(2)}` : ""})` : c; });
+const normColors = (s: string) =>
+  s.replace(/(rgba?|oklch|oklab|lab)\([^()]*\)/g, (c) => {
+    const t = toRgb(c);
+    return t ? `rgb(${t[0]},${t[1]},${t[2]}${t[3] < 1 ? `,${t[3].toFixed(2)}` : ""})` : c;
+  });
 const norm = (p: string, v: string) => {
   let s = normColors((v ?? "").trim().replace(/\s+/g, " "));
-  if (p === "transition-property" && s === "all") s = "all";
+  if (p === "transition-property" && s === "all") {
+    s = "all";
+  }
   // colors: rgb(a) with identical channels; drop trailing zeros
   s = s.replace(/(\d+\.\d*?)0+(?=px|,|\)|\s|$)/g, "$1").replace(/\.(?=px|,|\)|\s|$)/g, "");
-  if (p === "box-shadow") { const parts = s.split(/,(?![^(]*\))/).map((x) => x.trim()).filter((x) => !/^rgb\(0,0,0(,0(\.00)?)?\) 0px 0px 0px 0px$/.test(x)); s = parts.length ? parts.join(", ") : "none"; }
+  if (p === "box-shadow") {
+    const parts = s
+      .split(/,(?![^(]*\))/)
+      .map((x) => x.trim())
+      .filter((x) => !/^rgb\(0,0,0(,0(\.00)?)?\) 0px 0px 0px 0px$/.test(x));
+    s = parts.length ? parts.join(", ") : "none";
+  }
   return s;
 };
 
@@ -84,27 +115,32 @@ const ACCEPTED: { why: string; test: (part: string, prop: string, geist: string,
     // `.ic { flex: none }`. Demo markup on both sides, like the badge case. Every geometry reading
     // on this page matches exactly — 162 of 162 — so the books themselves agree.
     why: "book icon element type: theirs is an <img> logo, ours an inline <svg>; these four are UA defaults and each page's own demo styling, not the element",
-    test: (part, prop, gv, ov) =>
-      part === "icon" &&
-      // An SVG element returns an empty string from getComputedStyle for a layout property it does
-      // not apply, where their <img> returns a real value. Root 10's icon is our slotted
-      // illustration in a `simple` book, hidden with zero height on both sides, so all 38 of its
-      // properties read this way.
-      // In DARK their custom icon is a light/dark IMAGE PAIR: the light file is display:none and
-      // querySelector returns it, so the census reads a 0x0 hidden twin while the visible dark file
-      // reads 16x16 exactly like ours. No selector fixes that in both themes at once, because the
-      // hidden twin swaps sides. Verified in the browser, both themes.
-      (gv === "none" && ov === "block") ||
+    test: (part, prop, gv, ov) => {
+      if (part !== "icon") {
+        return false;
+      }
+      return (
+        // An SVG element returns an empty string from getComputedStyle for a layout property it does
+        // not apply, where their <img> returns a real value. Root 10's icon is our slotted
+        // illustration in a `simple` book, hidden with zero height on both sides, so all 38 of its
+        // properties read this way.
+        // In DARK their custom icon is a light/dark IMAGE PAIR: the light file is display:none and
+        // querySelector returns it, so the census reads a 0x0 hidden twin while the visible dark file
+        // reads 16x16 exactly like ours. No selector fixes that in both themes at once, because the
+        // hidden twin swaps sides. Verified in the browser, both themes.
+        (gv === "none" && ov === "block") ||
         (prop === "height" && gv === "auto" && ov === "16px") ||
         (prop === "__rect" && String(gv) === "0,0" && /^1[56],1[67]$/.test(String(ov))) ||
-      // Its rect follows: a box with no layout reports 0x0 on ours, 156x0 on theirs. Zero height on
-      // both sides, so neither renders anything.
-      ((prop === "__rect" && /^\d+,[01]$/.test(String(gv)) && String(ov) === "0,0") ||
+        // Its rect follows: a box with no layout reports 0x0 on ours, 156x0 on theirs. Zero height on
+        // both sides, so neither renders anything.
+        (prop === "__rect" && /^\d+,[01]$/.test(String(gv)) && String(ov) === "0,0") ||
         (ov === "" && gv !== "") ||
         (prop === "overflow" && gv === "clip" && ov === "hidden") ||
         (prop === "color" && /^rgba?\(0, ?0, ?0, ?0\)$/.test(gv)) ||
         (prop === "max-width" && gv === "100%" && ov === "none") ||
-        (prop === "flex-shrink" && gv === "1" && ov === "0")),
+        (prop === "flex-shrink" && gv === "1" && ov === "0")
+      );
+    },
   },
   {
     // Accepted by Peter 2026-09-10 rather than fixed. The reference has exactly one elementChild
@@ -123,7 +159,7 @@ const ACCEPTED: { why: string; test: (part: string, prop: string, geist: string,
     // identity transform on a slotted icon — never position — and ours reproduces all three. The
     // captured spec has zero icons carrying the class, so their demo markup changed after it was
     // taken. This is the reference's page styling its own demo content, like the my-4 case.
-    why: "slotted icon position: the reference's badge demos author class=\"relative\" on the icon they pass in; neither badge sets position",
+    why: 'slotted icon position: the reference\'s badge demos author class="relative" on the icon they pass in; neither badge sets position',
     test: (part, prop, gv, ov) => part === "icon" && prop === "position" && gv === "relative" && ov === "static",
   },
   {
@@ -154,7 +190,9 @@ let accepted = 0;
 const acceptedWhy = new Map<string, number>();
 const lines: string[] = [];
 const n = Math.min(g.roots.length, o.roots.length);
-if (g.roots.length !== o.roots.length) lines.push(`root count differs: geist ${g.roots.length}, ours ${o.roots.length}`);
+if (g.roots.length !== o.roots.length) {
+  lines.push(`root count differs: geist ${g.roots.length}, ours ${o.roots.length}`);
+}
 for (let i = 0; i < n; i++) {
   const a = g.roots[i];
   const b = o.roots[i];
@@ -179,7 +217,9 @@ for (let i = 0; i < n; i++) {
       for (const prop of Object.keys(pa)) {
         const va = norm(prop, String(pa[prop]));
         const vb = norm(prop, String(pb[prop]));
-        if (va === vb) continue;
+        if (va === vb) {
+          continue;
+        }
         if (softFor(part, prop) || (centred && (prop === "margin-left" || prop === "margin-right"))) {
           soft++;
           diffs.push(`  [${state}] ${part}.${prop}: ${va} | ${vb}   (soft)`);
@@ -197,11 +237,15 @@ for (let i = 0; i < n; i++) {
       }
     }
   }
-  if (diffs.length) lines.push(head, ...diffs);
+  if (diffs.length) {
+    lines.push(head, ...diffs);
+  }
 }
 console.log(lines.join("\n"));
 console.log(`\n${page}: ${n} roots compared, ${hard} hard, ${accepted} accepted, ${soft} soft (font-driven)`);
-for (const [why, count] of [...acceptedWhy].sort((a, b) => b[1] - a[1])) console.log(`  accepted x${count}: ${why}`);
+for (const [why, count] of [...acceptedWhy].sort((a, b) => b[1] - a[1])) {
+  console.log(`  accepted x${count}: ${why}`);
+}
 // Zero roots compared is never a pass: it reads as clean while measuring nothing. The usual cause is a
 // selector in the config that matches nothing on one side. Fail loudly rather than report success.
 if (n === 0) {

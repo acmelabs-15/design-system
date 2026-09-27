@@ -1,0 +1,2523 @@
+{
+  "date": "2026-09-20",
+  "phase": "Phase 6",
+  "batch": "M05-07",
+  "status": "document-aware static stylesheet delivery implemented and verified",
+  "files": [
+    "src/base.ts",
+    "src/shared/static-styles.ts",
+    "src/__tests__/base.test.ts",
+    "src/shared/__tests__/static-styles.test.ts"
+  ],
+  "baseline": {
+    "adoption": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "errors": [],
+        "stages": [
+          {
+            "stage": "before",
+            "button": {
+              "document": "main",
+              "adoptedSheets": 3,
+              "styleTags": 0,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "literalControl": {
+              "document": "main",
+              "adoptedSheets": 0,
+              "styleTags": 1,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            }
+          },
+          {
+            "stage": "adopted",
+            "button": {
+              "document": "iframe",
+              "adoptedSheets": 0,
+              "styleTags": 0,
+              "height": 21,
+              "width": 68.625,
+              "padding": "1px 6px",
+              "background": "rgb(239, 239, 239)",
+              "color": "rgb(0, 0, 0)",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "lineHeight": "normal",
+              "labelPadding": "0px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "literalControl": {
+              "document": "iframe",
+              "adoptedSheets": 0,
+              "styleTags": 1,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "destinationTokenSheet": true
+          },
+          {
+            "stage": "returned",
+            "button": {
+              "document": "main",
+              "adoptedSheets": 0,
+              "styleTags": 0,
+              "height": 21,
+              "width": 68.625,
+              "padding": "1px 6px",
+              "background": "rgb(239, 239, 239)",
+              "color": "rgb(0, 0, 0)",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "lineHeight": "normal",
+              "labelPadding": "0px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "literalControl": {
+              "document": "main",
+              "adoptedSheets": 0,
+              "styleTags": 1,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            }
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "errors": [],
+        "stages": [
+          {
+            "stage": "before",
+            "button": {
+              "document": "main",
+              "adoptedSheets": 3,
+              "styleTags": 0,
+              "height": 36,
+              "width": 95.36666870117188,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "literalControl": {
+              "document": "main",
+              "adoptedSheets": 0,
+              "styleTags": 1,
+              "height": 36,
+              "width": 95.36666870117188,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            }
+          },
+          {
+            "stage": "adopted",
+            "button": {
+              "document": "iframe",
+              "adoptedSheets": 0,
+              "styleTags": 0,
+              "height": 22,
+              "width": 67.81666564941406,
+              "padding": "1px 4px",
+              "background": "rgb(233, 233, 237)",
+              "color": "rgb(0, 0, 0)",
+              "borderRadius": "0px",
+              "fontSize": "13.3281px",
+              "lineHeight": "normal",
+              "labelPadding": "0px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "literalControl": {
+              "document": "iframe",
+              "adoptedSheets": 0,
+              "styleTags": 1,
+              "height": 36,
+              "width": 95.36666870117188,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "destinationTokenSheet": true
+          },
+          {
+            "stage": "returned",
+            "button": {
+              "document": "main",
+              "adoptedSheets": 0,
+              "styleTags": 0,
+              "height": 22,
+              "width": 67.81666564941406,
+              "padding": "1px 4px",
+              "background": "rgb(233, 233, 237)",
+              "color": "rgb(0, 0, 0)",
+              "borderRadius": "0px",
+              "fontSize": "13.3281px",
+              "lineHeight": "normal",
+              "labelPadding": "0px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "literalControl": {
+              "document": "main",
+              "adoptedSheets": 0,
+              "styleTags": 1,
+              "height": 36,
+              "width": 95.36666870117188,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            }
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "errors": [],
+        "stages": [
+          {
+            "stage": "before",
+            "button": {
+              "document": "main",
+              "adoptedSheets": 3,
+              "styleTags": 0,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "literalControl": {
+              "document": "main",
+              "adoptedSheets": 0,
+              "styleTags": 1,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            }
+          },
+          {
+            "stage": "adopted",
+            "button": {
+              "document": "iframe",
+              "adoptedSheets": 0,
+              "styleTags": 0,
+              "height": 18,
+              "width": 63.21875,
+              "padding": "0px 6px 1px",
+              "background": "rgb(192, 192, 192)",
+              "color": "rgba(0, 0, 0, 0.847)",
+              "borderRadius": "0px",
+              "fontSize": "11px",
+              "lineHeight": "normal",
+              "labelPadding": "0px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "literalControl": {
+              "document": "iframe",
+              "adoptedSheets": 0,
+              "styleTags": 1,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "destinationTokenSheet": true
+          },
+          {
+            "stage": "returned",
+            "button": {
+              "document": "main",
+              "adoptedSheets": 0,
+              "styleTags": 0,
+              "height": 18,
+              "width": 63.21875,
+              "padding": "0px 6px 1px",
+              "background": "rgb(192, 192, 192)",
+              "color": "rgba(0, 0, 0, 0.847)",
+              "borderRadius": "0px",
+              "fontSize": "11px",
+              "lineHeight": "normal",
+              "labelPadding": "0px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "literalControl": {
+              "document": "main",
+              "adoptedSheets": 0,
+              "styleTags": 1,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            }
+          }
+        ]
+      }
+    ],
+    "initialization": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "pageErrors": [
+          "NotSupportedError: Failed to execute 'createElement' on 'Document': The result must be in the same document",
+          "NotAllowedError: Failed to set the 'adoptedStyleSheets' property on 'ShadowRoot': Sharing constructed stylesheets in multiple documents is not allowed",
+          "TypeError: custom element constructors must call super() first and must not return a different object",
+          "NotAllowedError: Failed to set the 'adoptedStyleSheets' property on 'ShadowRoot': Sharing constructed stylesheets in multiple documents is not allowed",
+          "NotAllowedError: Failed to set the 'adoptedStyleSheets' property on 'ShadowRoot': Sharing constructed stylesheets in multiple documents is not allowed",
+          "NotAllowedError: Failed to set the 'adoptedStyleSheets' property on 'ShadowRoot': Sharing constructed stylesheets in multiple documents is not allowed"
+        ],
+        "results": [
+          {
+            "name": "define same constructor in iframe",
+            "registered": true
+          },
+          {
+            "name": "iframe createElement with main constructor",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "HTMLUnknownElement",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": false,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "iframe createElement with main constructor",
+                "message": "Uncaught "
+              }
+            ]
+          },
+          {
+            "name": "new main constructor adopted before first connection",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": true,
+              "adoptedSheets": 0,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "new main constructor adopted before first connection",
+                "message": "Uncaught NotAllowedError: Failed to set the 'adoptedStyleSheets' property on 'ShadowRoot': Sharing constructed stylesheets in multiple documents is not allowed"
+              }
+            ]
+          },
+          {
+            "name": "iframe importNode with default registry",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "HTMLElement",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": false,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "iframe importNode with default registry",
+                "message": "Uncaught TypeError: custom element constructors must call super() first and must not return a different object"
+              }
+            ]
+          },
+          {
+            "name": "iframe importNode with explicit scoped registry",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "ScopedButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": true,
+              "adoptedSheets": 0,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "iframe importNode with explicit scoped registry",
+                "message": "Uncaught NotAllowedError: Failed to set the 'adoptedStyleSheets' property on 'ShadowRoot': Sharing constructed stylesheets in multiple documents is not allowed"
+              }
+            ]
+          },
+          {
+            "name": "iframe imports its own definition",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": true,
+              "shadow": true,
+              "adoptedSheets": 3,
+              "rendered": true,
+              "height": 36,
+              "background": "rgb(23, 23, 23)"
+            },
+            "errors": []
+          },
+          {
+            "name": "detached document createElement",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "HTMLElement",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": false
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": false,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": []
+          },
+          {
+            "name": "main constructor adopted into detached document before first connection",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": false
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": true,
+              "adoptedSheets": 0,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "main constructor adopted into detached document before first connection",
+                "message": "Uncaught NotAllowedError: Failed to set the 'adoptedStyleSheets' property on 'ShadowRoot': Sharing constructed stylesheets in multiple documents is not allowed"
+              }
+            ]
+          },
+          {
+            "name": "detached transit then iframe before first connection",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": true,
+              "adoptedSheets": 0,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "detached transit then iframe before first connection",
+                "message": "Uncaught NotAllowedError: Failed to set the 'adoptedStyleSheets' property on 'ShadowRoot': Sharing constructed stylesheets in multiple documents is not allowed"
+              }
+            ]
+          }
+        ],
+        "errors": [
+          {
+            "case": "iframe createElement with main constructor",
+            "message": "Uncaught "
+          },
+          {
+            "case": "new main constructor adopted before first connection",
+            "message": "Uncaught NotAllowedError: Failed to set the 'adoptedStyleSheets' property on 'ShadowRoot': Sharing constructed stylesheets in multiple documents is not allowed"
+          },
+          {
+            "case": "iframe importNode with default registry",
+            "message": "Uncaught TypeError: custom element constructors must call super() first and must not return a different object"
+          },
+          {
+            "case": "iframe importNode with explicit scoped registry",
+            "message": "Uncaught NotAllowedError: Failed to set the 'adoptedStyleSheets' property on 'ShadowRoot': Sharing constructed stylesheets in multiple documents is not allowed"
+          },
+          {
+            "case": "main constructor adopted into detached document before first connection",
+            "message": "Uncaught NotAllowedError: Failed to set the 'adoptedStyleSheets' property on 'ShadowRoot': Sharing constructed stylesheets in multiple documents is not allowed"
+          },
+          {
+            "case": "detached transit then iframe before first connection",
+            "message": "Uncaught NotAllowedError: Failed to set the 'adoptedStyleSheets' property on 'ShadowRoot': Sharing constructed stylesheets in multiple documents is not allowed"
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "pageErrors": [
+          "NotSupportedError: Operation is not supported",
+          "NotAllowedError: Adopted style sheet's constructor document must match the document or shadow root's node document",
+          "TypeError: Custom element constructor returned a wrong element",
+          "NotAllowedError: Adopted style sheet's constructor document must match the document or shadow root's node document",
+          "NotAllowedError: Adopted style sheet's constructor document must match the document or shadow root's node document"
+        ],
+        "results": [
+          {
+            "name": "define same constructor in iframe",
+            "registered": true
+          },
+          {
+            "name": "iframe createElement with main constructor",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "HTMLUnknownElement",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": false,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "iframe createElement with main constructor",
+                "message": "NotSupportedError: Operation is not supported"
+              }
+            ]
+          },
+          {
+            "name": "new main constructor adopted before first connection",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": true,
+              "adoptedSheets": 0,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "new main constructor adopted before first connection",
+                "message": "NotAllowedError: Adopted style sheet's constructor document must match the document or shadow root's node document"
+              }
+            ]
+          },
+          {
+            "name": "iframe importNode with default registry",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "HTMLElement",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": false,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "iframe importNode with default registry",
+                "message": "TypeError: Custom element constructor returned a wrong element"
+              }
+            ]
+          },
+          {
+            "name": "scoped registry setup",
+            "unsupported": "TypeError: Illegal constructor."
+          },
+          {
+            "name": "iframe imports its own definition",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": true,
+              "shadow": true,
+              "adoptedSheets": 3,
+              "rendered": true,
+              "height": 36,
+              "background": "rgb(23, 23, 23)"
+            },
+            "errors": []
+          },
+          {
+            "name": "detached document createElement",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "HTMLElement",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": false
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": false,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": []
+          },
+          {
+            "name": "main constructor adopted into detached document before first connection",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": false
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": true,
+              "adoptedSheets": 0,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "main constructor adopted into detached document before first connection",
+                "message": "NotAllowedError: Adopted style sheet's constructor document must match the document or shadow root's node document"
+              }
+            ]
+          },
+          {
+            "name": "detached transit then iframe before first connection",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": true,
+              "adoptedSheets": 0,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "detached transit then iframe before first connection",
+                "message": "NotAllowedError: Adopted style sheet's constructor document must match the document or shadow root's node document"
+              }
+            ]
+          }
+        ],
+        "errors": [
+          {
+            "case": "iframe createElement with main constructor",
+            "message": "NotSupportedError: Operation is not supported"
+          },
+          {
+            "case": "new main constructor adopted before first connection",
+            "message": "NotAllowedError: Adopted style sheet's constructor document must match the document or shadow root's node document"
+          },
+          {
+            "case": "iframe importNode with default registry",
+            "message": "TypeError: Custom element constructor returned a wrong element"
+          },
+          {
+            "case": "main constructor adopted into detached document before first connection",
+            "message": "NotAllowedError: Adopted style sheet's constructor document must match the document or shadow root's node document"
+          },
+          {
+            "case": "detached transit then iframe before first connection",
+            "message": "NotAllowedError: Adopted style sheet's constructor document must match the document or shadow root's node document"
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "pageErrors": [
+          "NotSupportedError: A newly constructed custom element belongs to a wrong document",
+          "NotAllowedError: Sheet constructor document doesn't match",
+          "TypeError: Custom element constructor returned a wrong element",
+          "NotAllowedError: Sheet constructor document doesn't match",
+          "NotAllowedError: Sheet constructor document doesn't match",
+          "NotAllowedError: Sheet constructor document doesn't match"
+        ],
+        "results": [
+          {
+            "name": "define same constructor in iframe",
+            "registered": true
+          },
+          {
+            "name": "iframe createElement with main constructor",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "HTMLUnknownElement",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": false,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "iframe createElement with main constructor",
+                "message": "NotSupportedError: A newly constructed custom element belongs to a wrong document"
+              }
+            ]
+          },
+          {
+            "name": "new main constructor adopted before first connection",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": true,
+              "adoptedSheets": 0,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "new main constructor adopted before first connection",
+                "message": "NotAllowedError: Sheet constructor document doesn't match"
+              }
+            ]
+          },
+          {
+            "name": "iframe importNode with default registry",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "HTMLElement",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": false,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "iframe importNode with default registry",
+                "message": "TypeError: Custom element constructor returned a wrong element"
+              }
+            ]
+          },
+          {
+            "name": "iframe importNode with explicit scoped registry",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "ScopedButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": true,
+              "adoptedSheets": 0,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "iframe importNode with explicit scoped registry",
+                "message": "NotAllowedError: Sheet constructor document doesn't match"
+              }
+            ]
+          },
+          {
+            "name": "iframe imports its own definition",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": true,
+              "shadow": true,
+              "adoptedSheets": 3,
+              "rendered": true,
+              "height": 36,
+              "background": "rgb(23, 23, 23)"
+            },
+            "errors": []
+          },
+          {
+            "name": "detached document createElement",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "HTMLElement",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": false
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": false,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": []
+          },
+          {
+            "name": "main constructor adopted into detached document before first connection",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": false
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": true,
+              "adoptedSheets": 0,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "main constructor adopted into detached document before first connection",
+                "message": "NotAllowedError: Sheet constructor document doesn't match"
+              }
+            ]
+          },
+          {
+            "name": "detached transit then iframe before first connection",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": true,
+              "adoptedSheets": 0,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "detached transit then iframe before first connection",
+                "message": "NotAllowedError: Sheet constructor document doesn't match"
+              }
+            ]
+          }
+        ],
+        "errors": [
+          {
+            "case": "iframe createElement with main constructor",
+            "message": "NotSupportedError: A newly constructed custom element belongs to a wrong document"
+          },
+          {
+            "case": "new main constructor adopted before first connection",
+            "message": "NotAllowedError: Sheet constructor document doesn't match"
+          },
+          {
+            "case": "iframe importNode with default registry",
+            "message": "TypeError: Custom element constructor returned a wrong element"
+          },
+          {
+            "case": "iframe importNode with explicit scoped registry",
+            "message": "NotAllowedError: Sheet constructor document doesn't match"
+          },
+          {
+            "case": "main constructor adopted into detached document before first connection",
+            "message": "NotAllowedError: Sheet constructor document doesn't match"
+          },
+          {
+            "case": "detached transit then iframe before first connection",
+            "message": "NotAllowedError: Sheet constructor document doesn't match"
+          }
+        ]
+      }
+    ],
+    "finding": "Adoption drops the actual Button's3static sheets in every engine. Height changes36px to21/22/18px. Valid instances adopted before initial connection throw NotAllowedError when Lit applies a sheet created in another document.",
+    "control": "An equivalent literal-style shadow control preserves measurements, isolating static stylesheet lifetime from token loading."
+  },
+  "change": [
+    "Use the owner's CSSStyleSheet constructor and cache per document/source through public APIs.",
+    "Apply finalized styles during root creation and adoption, including closed roots.",
+    "Use owned literal nodes without a browsing context; a stable comment preserves Lit's rendering boundary when those nodes are removed.",
+    "Preserve present unowned sheets and author nodes. Preserve same-document raw sheet identity; refresh foreign snapshots including media/disabled state.",
+    "Retain Lit's HTMLElement|DocumentFragment return contract and distinguish shadow roots by node type plus host. Honor owner-view nonce and native-shadow guard."
+  ],
+  "verification": {
+    "fullSuite": {
+      "passed": 744,
+      "failed": 0,
+      "assertions": 10182,
+      "files": 100
+    },
+    "focused": {
+      "passed": 12,
+      "assertions": 67
+    },
+    "strictAndNonStrict": "passed",
+    "review": {
+      "agent": "/root/review_style_pipeline",
+      "verdict": "approved after return-type/runtime-guard correction"
+    },
+    "split": "$ bun scripts/split-css.ts\nstyles: 75 house families and document tokens\n",
+    "build": "$ bun scripts/build.ts\nmodules: 473 files, 98 with compiled templates\nmanifest: 109 elements\nbundle 2227.9 KB min 1080.4 KB tokens.css 152.1 KB dashboard.css 13.8 KB\n",
+    "docs": "$ bun site/build.ts\ndocs: 80 pages, 109 elements (0 undocumented), app.js 1154 KB\n",
+    "adoption": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "errors": [],
+        "stages": [
+          {
+            "stage": "before",
+            "button": {
+              "document": "main",
+              "adoptedSheets": 3,
+              "styleTags": 0,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "literalControl": {
+              "document": "main",
+              "adoptedSheets": 0,
+              "styleTags": 1,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            }
+          },
+          {
+            "stage": "adopted",
+            "button": {
+              "document": "iframe",
+              "adoptedSheets": 3,
+              "styleTags": 0,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "literalControl": {
+              "document": "iframe",
+              "adoptedSheets": 0,
+              "styleTags": 1,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "destinationTokenSheet": true
+          },
+          {
+            "stage": "returned",
+            "button": {
+              "document": "main",
+              "adoptedSheets": 3,
+              "styleTags": 0,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "literalControl": {
+              "document": "main",
+              "adoptedSheets": 0,
+              "styleTags": 1,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            }
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "errors": [],
+        "stages": [
+          {
+            "stage": "before",
+            "button": {
+              "document": "main",
+              "adoptedSheets": 3,
+              "styleTags": 0,
+              "height": 36,
+              "width": 95.36666870117188,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "literalControl": {
+              "document": "main",
+              "adoptedSheets": 0,
+              "styleTags": 1,
+              "height": 36,
+              "width": 95.36666870117188,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            }
+          },
+          {
+            "stage": "adopted",
+            "button": {
+              "document": "iframe",
+              "adoptedSheets": 3,
+              "styleTags": 0,
+              "height": 36,
+              "width": 95.36666870117188,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "literalControl": {
+              "document": "iframe",
+              "adoptedSheets": 0,
+              "styleTags": 1,
+              "height": 36,
+              "width": 95.36666870117188,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "destinationTokenSheet": true
+          },
+          {
+            "stage": "returned",
+            "button": {
+              "document": "main",
+              "adoptedSheets": 3,
+              "styleTags": 0,
+              "height": 36,
+              "width": 95.36666870117188,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "literalControl": {
+              "document": "main",
+              "adoptedSheets": 0,
+              "styleTags": 1,
+              "height": 36,
+              "width": 95.36666870117188,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            }
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "errors": [],
+        "stages": [
+          {
+            "stage": "before",
+            "button": {
+              "document": "main",
+              "adoptedSheets": 3,
+              "styleTags": 0,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "literalControl": {
+              "document": "main",
+              "adoptedSheets": 0,
+              "styleTags": 1,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            }
+          },
+          {
+            "stage": "adopted",
+            "button": {
+              "document": "iframe",
+              "adoptedSheets": 3,
+              "styleTags": 0,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "literalControl": {
+              "document": "iframe",
+              "adoptedSheets": 0,
+              "styleTags": 1,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "destinationTokenSheet": true
+          },
+          {
+            "stage": "returned",
+            "button": {
+              "document": "main",
+              "adoptedSheets": 3,
+              "styleTags": 0,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            },
+            "literalControl": {
+              "document": "main",
+              "adoptedSheets": 0,
+              "styleTags": 1,
+              "height": 36,
+              "width": 95.59375,
+              "padding": "0px 10px",
+              "background": "rgb(23, 23, 23)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "labelPadding": "0px 6px",
+              "formHeight": "36px",
+              "gray1000": "hsla(0, 0%, 9%, 1)",
+              "sameInner": true
+            }
+          }
+        ]
+      }
+    ],
+    "adoptionVerdict": {
+      "failures": [],
+      "engines": 3,
+      "stages": [
+        3,
+        3,
+        3
+      ]
+    },
+    "initialization": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "pageErrors": [
+          "NotSupportedError: Failed to execute 'createElement' on 'Document': The result must be in the same document",
+          "TypeError: custom element constructors must call super() first and must not return a different object"
+        ],
+        "results": [
+          {
+            "name": "define same constructor in iframe",
+            "registered": true
+          },
+          {
+            "name": "iframe createElement with main constructor",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "HTMLUnknownElement",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": false,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "iframe createElement with main constructor",
+                "message": "Uncaught "
+              }
+            ]
+          },
+          {
+            "name": "new main constructor adopted before first connection",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": true,
+              "shadow": true,
+              "adoptedSheets": 3,
+              "rendered": true,
+              "height": 36,
+              "background": "rgb(23, 23, 23)"
+            },
+            "errors": []
+          },
+          {
+            "name": "iframe importNode with default registry",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "HTMLElement",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": false,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "iframe importNode with default registry",
+                "message": "Uncaught TypeError: custom element constructors must call super() first and must not return a different object"
+              }
+            ]
+          },
+          {
+            "name": "iframe importNode with explicit scoped registry",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "ScopedButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": true,
+              "shadow": true,
+              "adoptedSheets": 3,
+              "rendered": true,
+              "height": 36,
+              "background": "rgb(23, 23, 23)"
+            },
+            "errors": []
+          },
+          {
+            "name": "iframe imports its own definition",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": true,
+              "shadow": true,
+              "adoptedSheets": 3,
+              "rendered": true,
+              "height": 36,
+              "background": "rgb(23, 23, 23)"
+            },
+            "errors": []
+          },
+          {
+            "name": "detached document createElement",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "HTMLElement",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": false
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": false,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": []
+          },
+          {
+            "name": "main constructor adopted into detached document before first connection",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": false
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": true,
+              "shadow": true,
+              "adoptedSheets": 0,
+              "rendered": true,
+              "height": null,
+              "background": null
+            },
+            "errors": []
+          },
+          {
+            "name": "detached transit then iframe before first connection",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": true,
+              "shadow": true,
+              "adoptedSheets": 3,
+              "rendered": true,
+              "height": 36,
+              "background": "rgb(23, 23, 23)"
+            },
+            "errors": []
+          }
+        ],
+        "errors": [
+          {
+            "case": "iframe createElement with main constructor",
+            "message": "Uncaught "
+          },
+          {
+            "case": "iframe importNode with default registry",
+            "message": "Uncaught TypeError: custom element constructors must call super() first and must not return a different object"
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "pageErrors": [
+          "NotSupportedError: Operation is not supported",
+          "TypeError: Custom element constructor returned a wrong element"
+        ],
+        "results": [
+          {
+            "name": "define same constructor in iframe",
+            "registered": true
+          },
+          {
+            "name": "iframe createElement with main constructor",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "HTMLUnknownElement",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": false,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "iframe createElement with main constructor",
+                "message": "NotSupportedError: Operation is not supported"
+              }
+            ]
+          },
+          {
+            "name": "new main constructor adopted before first connection",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": true,
+              "shadow": true,
+              "adoptedSheets": 3,
+              "rendered": true,
+              "height": 36,
+              "background": "rgb(23, 23, 23)"
+            },
+            "errors": []
+          },
+          {
+            "name": "iframe importNode with default registry",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "HTMLElement",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": false,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "iframe importNode with default registry",
+                "message": "TypeError: Custom element constructor returned a wrong element"
+              }
+            ]
+          },
+          {
+            "name": "scoped registry setup",
+            "unsupported": "TypeError: Illegal constructor."
+          },
+          {
+            "name": "iframe imports its own definition",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": true,
+              "shadow": true,
+              "adoptedSheets": 3,
+              "rendered": true,
+              "height": 36,
+              "background": "rgb(23, 23, 23)"
+            },
+            "errors": []
+          },
+          {
+            "name": "detached document createElement",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "HTMLElement",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": false
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": false,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": []
+          },
+          {
+            "name": "main constructor adopted into detached document before first connection",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": false
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": true,
+              "shadow": true,
+              "adoptedSheets": 0,
+              "rendered": true,
+              "height": null,
+              "background": null
+            },
+            "errors": []
+          },
+          {
+            "name": "detached transit then iframe before first connection",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": true,
+              "shadow": true,
+              "adoptedSheets": 3,
+              "rendered": true,
+              "height": 36,
+              "background": "rgb(23, 23, 23)"
+            },
+            "errors": []
+          }
+        ],
+        "errors": [
+          {
+            "case": "iframe createElement with main constructor",
+            "message": "NotSupportedError: Operation is not supported"
+          },
+          {
+            "case": "iframe importNode with default registry",
+            "message": "TypeError: Custom element constructor returned a wrong element"
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "pageErrors": [
+          "NotSupportedError: A newly constructed custom element belongs to a wrong document",
+          "TypeError: Custom element constructor returned a wrong element"
+        ],
+        "results": [
+          {
+            "name": "define same constructor in iframe",
+            "registered": true
+          },
+          {
+            "name": "iframe createElement with main constructor",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "HTMLUnknownElement",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": false,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "iframe createElement with main constructor",
+                "message": "NotSupportedError: A newly constructed custom element belongs to a wrong document"
+              }
+            ]
+          },
+          {
+            "name": "new main constructor adopted before first connection",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": true,
+              "shadow": true,
+              "adoptedSheets": 3,
+              "rendered": true,
+              "height": 36,
+              "background": "rgb(23, 23, 23)"
+            },
+            "errors": []
+          },
+          {
+            "name": "iframe importNode with default registry",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "HTMLElement",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": false,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": [
+              {
+                "case": "iframe importNode with default registry",
+                "message": "TypeError: Custom element constructor returned a wrong element"
+              }
+            ]
+          },
+          {
+            "name": "iframe importNode with explicit scoped registry",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "ScopedButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": true,
+              "shadow": true,
+              "adoptedSheets": 3,
+              "rendered": true,
+              "height": 36,
+              "background": "rgb(23, 23, 23)"
+            },
+            "errors": []
+          },
+          {
+            "name": "iframe imports its own definition",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": true,
+              "shadow": true,
+              "adoptedSheets": 3,
+              "rendered": true,
+              "height": 36,
+              "background": "rgb(23, 23, 23)"
+            },
+            "errors": []
+          },
+          {
+            "name": "detached document createElement",
+            "initial": {
+              "constructorMatch": false,
+              "constructorName": "HTMLElement",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": false
+            },
+            "after": {
+              "constructorMatch": false,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": false,
+              "shadow": false,
+              "rendered": false,
+              "height": null,
+              "background": null
+            },
+            "errors": []
+          },
+          {
+            "name": "main constructor adopted into detached document before first connection",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": false
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": true,
+              "shadow": true,
+              "adoptedSheets": 0,
+              "rendered": true,
+              "height": null,
+              "background": null
+            },
+            "errors": []
+          },
+          {
+            "name": "detached transit then iframe before first connection",
+            "initial": {
+              "constructorMatch": true,
+              "constructorName": "AcmeButton",
+              "ownerIsMain": false,
+              "ownerIsDestination": true,
+              "hasView": true
+            },
+            "after": {
+              "constructorMatch": true,
+              "ownerIsDestination": true,
+              "connected": true,
+              "renderRoot": true,
+              "shadow": true,
+              "adoptedSheets": 3,
+              "rendered": true,
+              "height": 36,
+              "background": "rgb(23, 23, 23)"
+            },
+            "errors": []
+          }
+        ],
+        "errors": [
+          {
+            "case": "iframe createElement with main constructor",
+            "message": "NotSupportedError: A newly constructed custom element belongs to a wrong document"
+          },
+          {
+            "case": "iframe importNode with default registry",
+            "message": "TypeError: Custom element constructor returned a wrong element"
+          }
+        ]
+      }
+    ],
+    "initializationFailures": [],
+    "fallbackRoundtrip": [
+      {
+        "engine": "chromium",
+        "errors": [],
+        "checks": [
+          {
+            "name": "inert first render",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "inert uses three literal styles",
+            "actual": 3,
+            "expected": 3,
+            "pass": true
+          },
+          {
+            "name": "inert boundary is attached",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "adoption preserves native node",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "adoption preserves author node",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "literal styles removed",
+            "actual": 0,
+            "expected": 0,
+            "pass": true
+          },
+          {
+            "name": "constructed styles restored",
+            "actual": 3,
+            "expected": 3,
+            "pass": true
+          },
+          {
+            "name": "boundary remains stable",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "template branch updates after fallback removal",
+            "actual": "/action",
+            "expected": "/action",
+            "pass": true
+          },
+          {
+            "name": "return to inert restores literal styles",
+            "actual": 3,
+            "expected": 3,
+            "pass": true
+          },
+          {
+            "name": "second return renders button",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "second return keeps own boundary",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "second return removes only owned literal styles",
+            "actual": 0,
+            "expected": 0,
+            "pass": true
+          },
+          {
+            "name": "author node identity stays",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "errors": [],
+        "checks": [
+          {
+            "name": "inert first render",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "inert uses three literal styles",
+            "actual": 3,
+            "expected": 3,
+            "pass": true
+          },
+          {
+            "name": "inert boundary is attached",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "adoption preserves native node",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "adoption preserves author node",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "literal styles removed",
+            "actual": 0,
+            "expected": 0,
+            "pass": true
+          },
+          {
+            "name": "constructed styles restored",
+            "actual": 3,
+            "expected": 3,
+            "pass": true
+          },
+          {
+            "name": "boundary remains stable",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "template branch updates after fallback removal",
+            "actual": "/action",
+            "expected": "/action",
+            "pass": true
+          },
+          {
+            "name": "return to inert restores literal styles",
+            "actual": 3,
+            "expected": 3,
+            "pass": true
+          },
+          {
+            "name": "second return renders button",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "second return keeps own boundary",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "second return removes only owned literal styles",
+            "actual": 0,
+            "expected": 0,
+            "pass": true
+          },
+          {
+            "name": "author node identity stays",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "errors": [],
+        "checks": [
+          {
+            "name": "inert first render",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "inert uses three literal styles",
+            "actual": 3,
+            "expected": 3,
+            "pass": true
+          },
+          {
+            "name": "inert boundary is attached",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "adoption preserves native node",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "adoption preserves author node",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "literal styles removed",
+            "actual": 0,
+            "expected": 0,
+            "pass": true
+          },
+          {
+            "name": "constructed styles restored",
+            "actual": 3,
+            "expected": 3,
+            "pass": true
+          },
+          {
+            "name": "boundary remains stable",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "template branch updates after fallback removal",
+            "actual": "/action",
+            "expected": "/action",
+            "pass": true
+          },
+          {
+            "name": "return to inert restores literal styles",
+            "actual": 3,
+            "expected": 3,
+            "pass": true
+          },
+          {
+            "name": "second return renders button",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "second return keeps own boundary",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "second return removes only owned literal styles",
+            "actual": 0,
+            "expected": 0,
+            "pass": true
+          },
+          {
+            "name": "author node identity stays",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          }
+        ]
+      }
+    ],
+    "rawSheetMetadata": [
+      {
+        "engine": "chromium",
+        "steps": [
+          {
+            "label": "foreign media excludes",
+            "color": "rgb(0, 0, 0)",
+            "media": "not all",
+            "disabled": false
+          },
+          {
+            "label": "foreign disabled",
+            "color": "rgb(0, 0, 0)",
+            "media": "all",
+            "disabled": true
+          },
+          {
+            "label": "foreign enabled",
+            "color": "rgb(17, 34, 51)",
+            "media": "all",
+            "disabled": false
+          },
+          {
+            "label": "literal disabled",
+            "color": "rgb(0, 0, 0)",
+            "media": "all",
+            "disabled": true,
+            "nonce": "first"
+          },
+          {
+            "label": "literal enabled",
+            "color": "rgb(17, 34, 51)",
+            "media": "all",
+            "disabled": false,
+            "nonce": "second"
+          }
+        ],
+        "pass": true
+      },
+      {
+        "engine": "firefox",
+        "steps": [
+          {
+            "label": "foreign media excludes",
+            "color": "rgb(0, 0, 0)",
+            "media": "not all",
+            "disabled": false
+          },
+          {
+            "label": "foreign disabled",
+            "color": "rgb(0, 0, 0)",
+            "media": "all",
+            "disabled": true
+          },
+          {
+            "label": "foreign enabled",
+            "color": "rgb(17, 34, 51)",
+            "media": "all",
+            "disabled": false
+          },
+          {
+            "label": "literal disabled",
+            "color": "rgb(0, 0, 0)",
+            "media": "all",
+            "disabled": true,
+            "nonce": "first"
+          },
+          {
+            "label": "literal enabled",
+            "color": "rgb(17, 34, 51)",
+            "media": "all",
+            "disabled": false,
+            "nonce": "second"
+          }
+        ],
+        "pass": true
+      },
+      {
+        "engine": "webkit",
+        "steps": [
+          {
+            "label": "foreign media excludes",
+            "color": "rgb(0, 0, 0)",
+            "media": "not all",
+            "disabled": false
+          },
+          {
+            "label": "foreign disabled",
+            "color": "rgb(0, 0, 0)",
+            "media": "all",
+            "disabled": true
+          },
+          {
+            "label": "foreign enabled",
+            "color": "rgb(17, 34, 51)",
+            "media": "all",
+            "disabled": false
+          },
+          {
+            "label": "literal disabled",
+            "color": "rgb(0, 0, 0)",
+            "media": "all",
+            "disabled": true,
+            "nonce": "first"
+          },
+          {
+            "label": "literal enabled",
+            "color": "rgb(17, 34, 51)",
+            "media": "all",
+            "disabled": false,
+            "nonce": "second"
+          }
+        ],
+        "pass": true
+      }
+    ],
+    "pageComparison": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "comparisons": 38,
+          "nodes": 30712
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "comparisons": 38,
+          "nodes": 30712
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "comparisons": 38,
+          "nodes": 30712
+        }
+      ],
+      "differences": [],
+      "errors": []
+    }
+  },
+  "reproduction": {
+    "entry": "import '/Users/peterkloss/Dev/ACMElabs/design-system/dist/define/button.js';\nwindow.buttonReady=true;\n",
+    "adoption": "process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';\nconst pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');\nconst repo='/Users/peterkloss/Dev/ACMElabs/design-system',directory='/tmp/acme-m05-button-adoption';\nconst built=await Bun.build({entrypoints:[directory+'/entry.ts'],outdir:directory+'/bundle',target:'browser',format:'esm'});if(!built.success)throw new AggregateError(built.logs);\nconst html='<!doctype html><html data-theme=\"light\"><head><link rel=\"stylesheet\" href=\"/tokens.css\"></head><body><script type=\"module\" src=\"/entry.js\"></script></body></html>';\nconst server=Bun.serve({hostname:'127.0.0.1',port:0,fetch(req){const path=new URL(req.url).pathname;if(path==='/entry.js')return new Response(Bun.file(directory+'/bundle/entry.js'),{headers:{'content-type':'text/javascript'}});if(path==='/tokens.css')return new Response(Bun.file(repo+'/dist/styles/tokens.css'),{headers:{'content-type':'text/css'}});return new Response(html,{headers:{'content-type':'text/html'}});}});\nconst report=[];\nfor(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch({headless:true,...(engine==='chromium'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{})});const page=await browser.newPage();const errors=[];page.on('pageerror',error=>errors.push(String(error)));await page.emulateMedia({colorScheme:'light'});await page.goto(server.url.href);await page.waitForFunction(()=>window.buttonReady===true&&document.querySelector('link').sheet!==null);\n const results=await page.evaluate(async()=>{\n  const button=document.createElement('acme-button');button.textContent='Adoption';document.body.append(button);await button.updateComplete;\n  const frame=document.createElement('iframe');frame.src='/frame';const loaded=new Promise(resolve=>frame.onload=resolve);document.body.append(frame);await loaded;const destination=frame.contentDocument;\n  const control=document.createElement('div');control.textContent='Adoption';const shadow=control.attachShadow({mode:'open'});const css=document.createElement('style');css.textContent=button.constructor.elementStyles.map(style=>style.cssText??Array.from(style.cssRules,rule=>rule.cssText).join('\\n')).join('\\n');shadow.append(css,button.shadowRoot.querySelector('button').cloneNode(true));document.body.append(control);\n  const originalInner=button.shadowRoot.querySelector('button');\n  const settle=async(doc)=>{await button.updateComplete;await doc.fonts.ready;await new Promise(resolve=>doc.defaultView.requestAnimationFrame(()=>doc.defaultView.requestAnimationFrame(resolve)));};\n  const measure=(host)=>{const doc=host.ownerDocument,root=host.shadowRoot,inner=root.querySelector('button'),label=root.querySelector('.label'),computed=doc.defaultView.getComputedStyle(inner),labelStyle=doc.defaultView.getComputedStyle(label),box=inner.getBoundingClientRect();return {document:doc===document?'main':'iframe',adoptedSheets:root.adoptedStyleSheets.length,styleTags:root.querySelectorAll('style').length,height:box.height,width:box.width,padding:computed.padding,background:computed.backgroundColor,color:computed.color,borderRadius:computed.borderRadius,fontSize:computed.fontSize,lineHeight:computed.lineHeight,labelPadding:labelStyle.padding,formHeight:computed.getPropertyValue('--acme-form-height').trim(),gray1000:computed.getPropertyValue('--ds-gray-1000').trim(),sameInner:host===control||inner===originalInner};};\n  const stages=[];await settle(document);stages.push({stage:'before',button:measure(button),literalControl:measure(control)});\n  destination.adoptNode(button);destination.body.append(button);destination.adoptNode(control);destination.body.append(control);await settle(destination);stages.push({stage:'adopted',button:measure(button),literalControl:measure(control),destinationTokenSheet:!!destination.querySelector('link').sheet});\n  document.adoptNode(button);document.body.append(button);document.adoptNode(control);document.body.append(control);await settle(document);stages.push({stage:'returned',button:measure(button),literalControl:measure(control)});\n  return {stages};\n });report.push({engine,version:browser.version(),errors,...results});await browser.close();}\nserver.stop();await Bun.write(directory+'/production-results.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));\n\nconst keys=['height','width','padding','background','color','borderRadius','fontSize','lineHeight','labelPadding','formHeight','gray1000'];const failures=[];for(const r of report){if(r.errors.length)failures.push({engine:r.engine,errors:r.errors});const before=r.stages[0].button;for(const stage of r.stages){for(const key of keys)if(stage.button[key]!==before[key])failures.push({engine:r.engine,stage:stage.stage,key,before:before[key],after:stage.button[key]});if(stage.button.adoptedSheets!==3||!stage.button.sameInner)failures.push({engine:r.engine,stage:stage.stage,stylesOrIdentity:true});}}await Bun.write(directory+'/production-verdict.json',JSON.stringify({failures,engines:report.length,stages:report.map(r=>r.stages.length)},null,2));if(failures.length)process.exitCode=1;\n",
+    "initialization": "process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');\nconst repo='/Users/peterkloss/Dev/ACMElabs/design-system',directory='/tmp/acme-m05-button-adoption';\nconst server=Bun.serve({hostname:'127.0.0.1',port:0,fetch(req){const url=new URL(req.url);if(url.pathname==='/entry.js')return new Response(Bun.file(directory+'/bundle/entry.js'),{headers:{'content-type':'text/javascript'}});if(url.pathname==='/tokens.css')return new Response(Bun.file(repo+'/dist/styles/tokens.css'),{headers:{'content-type':'text/css'}});return new Response('<!doctype html><html data-theme=\"light\"><link rel=\"stylesheet\" href=\"/tokens.css\"><body>'+(url.pathname==='/frame-empty'?'':'<script type=\"module\" src=\"/entry.js\"></script>')+'</body></html>',{headers:{'content-type':'text/html'}});}});\nconst report=[];\nfor(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch({headless:true,...(engine==='chromium'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{})});const page=await browser.newPage();const pageErrors=[];page.on('pageerror',e=>pageErrors.push(String(e)));await page.emulateMedia({colorScheme:'light'});await page.goto(server.url.href);await page.waitForFunction(()=>window.buttonReady);\n const result=await page.evaluate(async()=>{\n  const Main=customElements.get('acme-button');const results=[];let current='setup';const errors=[];window.addEventListener('error',event=>errors.push({case:current,message:event.message}));\n  async function frame(src){const frame=document.createElement('iframe');frame.src=src;await new Promise(resolve=>{frame.onload=resolve;document.body.append(frame);});frame.contentWindow.addEventListener('error',event=>errors.push({case:current,message:event.message}));return frame;}\n  const sharedFrame=await frame('/frame-empty'),shared=sharedFrame.contentDocument;\n  async function record(name,create,destination=shared,append=true){current=name;let element;const beforeErrors=errors.length;try{element=create();const initial={constructorMatch:element instanceof Main,constructorName:element.constructor.name,ownerIsMain:element.ownerDocument===document,ownerIsDestination:element.ownerDocument===destination,hasView:!!element.ownerDocument.defaultView};element.textContent='Initial';if(append)destination.body.append(element);if(element.renderRoot)await element.updateComplete;await new Promise(resolve=>requestAnimationFrame(resolve));const inner=element.shadowRoot?.querySelector('button');const view=destination.defaultView;results.push({name,initial,after:{constructorMatch:element instanceof Main,ownerIsDestination:element.ownerDocument===destination,connected:element.isConnected,renderRoot:!!element.renderRoot,shadow:!!element.shadowRoot,adoptedSheets:element.shadowRoot?.adoptedStyleSheets.length,rendered:!!inner,height:inner&&view?inner.getBoundingClientRect().height:null,background:inner&&view?view.getComputedStyle(inner).backgroundColor:null},errors:errors.slice(beforeErrors)});}catch(error){results.push({name,error:String(error),errors:errors.slice(beforeErrors)});}element?.remove();}\n  current='define same constructor in iframe';try{sharedFrame.contentWindow.customElements.define('acme-button',Main);results.push({name:current,registered:sharedFrame.contentWindow.customElements.get('acme-button')===Main});}catch(error){results.push({name:current,error:String(error)});}\n  await record('iframe createElement with main constructor',()=>shared.createElement('acme-button'));\n  await record('new main constructor adopted before first connection',()=>shared.adoptNode(new Main()));\n  const template=document.createElement('template');template.innerHTML='<acme-button></acme-button>';\n  await record('iframe importNode with default registry',()=>shared.importNode(template.content,true).firstElementChild);\n  let registry;try{registry=new CustomElementRegistry();registry.define('acme-button',class ScopedButton extends Main{});}catch(error){results.push({name:'scoped registry setup',unsupported:String(error)});}\n  if(registry)await record('iframe importNode with explicit scoped registry',()=>shared.importNode(template.content,{customElementRegistry:registry,selfOnly:false}).firstElementChild);\n  const ownFrame=await frame('/frame-own'),own=ownFrame.contentDocument;await record('iframe imports its own definition',()=>own.createElement('acme-button'),own);\n  const inert=document.implementation.createHTMLDocument('Detached');await record('detached document createElement',()=>inert.createElement('acme-button'),inert);\n  await record('main constructor adopted into detached document before first connection',()=>inert.adoptNode(new Main()),inert);\n  const unconnected=new Main();current='detached transit before first connection';inert.adoptNode(unconnected);shared.adoptNode(unconnected);await record('detached transit then iframe before first connection',()=>unconnected);\n  return {results,errors};\n });report.push({engine,version:browser.version(),pageErrors,...result});await browser.close();}\nserver.stop();await Bun.write(directory+'/production-initialization.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));\n",
+    "fallbackRoundtrip": "process.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst dir=\"/tmp/acme-m05-button-adoption\",repo=\"/Users/peterkloss/Dev/ACMElabs/design-system\";\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const p=new URL(req.url).pathname;if(p===\"/entry.js\")return new Response(Bun.file(dir+\"/bundle/entry.js\"),{headers:{\"content-type\":\"text/javascript\"}});if(p===\"/tokens.css\")return new Response(Bun.file(repo+\"/dist/styles/tokens.css\"),{headers:{\"content-type\":\"text/css\"}});return new Response('<!doctype html><html data-theme=\"light\"><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/entry.js\"></script><body></body>',{headers:{\"content-type\":\"text/html\"}});}});\nconst report=[];try{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();const errors=[];page.on(\"pageerror\",e=>errors.push(e.message));await page.goto(server.url.href);await page.waitForFunction(()=>window.buttonReady&&document.querySelector(\"link\").sheet);const result=await page.evaluate(async()=>{\nconst checks=[];const check=(name,actual,expected)=>checks.push({name,actual,expected,pass:JSON.stringify(actual)===JSON.stringify(expected)});\nconst Main=customElements.get(\"acme-button\");const element=new Main();const child=document.createTextNode(\"Inert\");element.append(child);const inert=document.implementation.createHTMLDocument(\"Detached\");inert.adoptNode(element);inert.body.append(element);await element.updateComplete;\nconst native=element.shadowRoot.querySelector(\"button\");const boundary=element.renderOptions.renderBefore;\ncheck(\"inert first render\",!!native,true);check(\"inert uses three literal styles\",element.shadowRoot.querySelectorAll(\"style\").length,3);check(\"inert boundary is attached\",boundary.parentNode===element.shadowRoot,true);\ndocument.adoptNode(element);document.body.append(element);await element.updateComplete;check(\"adoption preserves native node\",element.shadowRoot.querySelector(\"button\")===native,true);check(\"adoption preserves author node\",element.firstChild===child,true);check(\"literal styles removed\",element.shadowRoot.querySelectorAll(\"style\").length,0);check(\"constructed styles restored\",element.shadowRoot.adoptedStyleSheets.length,3);check(\"boundary remains stable\",element.renderOptions.renderBefore===boundary&&boundary.parentNode===element.shadowRoot,true);\nelement.href=\"/action\";await element.updateComplete;check(\"template branch updates after fallback removal\",element.shadowRoot.querySelector(\"a\")?.getAttribute(\"href\"),\"/action\");\ninert.adoptNode(element);inert.body.append(element);await element.updateComplete;check(\"return to inert restores literal styles\",element.shadowRoot.querySelectorAll(\"style\").length,3);\ndocument.adoptNode(element);document.body.append(element);element.href=\"\";element.disabled=true;await element.updateComplete;check(\"second return renders button\",element.shadowRoot.querySelector(\"button\")?.disabled,true);check(\"second return keeps own boundary\",element.renderOptions.renderBefore===boundary&&boundary.parentNode===element.shadowRoot,true);check(\"second return removes only owned literal styles\",element.shadowRoot.querySelectorAll(\"style\").length,0);check(\"author node identity stays\",element.firstChild===child,true);element.remove();return checks;});report.push({engine,errors,checks:result});console.log({engine,passed:result.filter(x=>x.pass).length,total:result.length,failures:result.filter(x=>!x.pass)});}finally{await browser.close();}}}finally{server.stop(true);}await Bun.write(dir+\"/fallback-roundtrip.json\",JSON.stringify(report,null,2)+\"\\n\");if(report.some(r=>r.errors.length||r.checks.some(x=>!x.pass)))process.exitCode=1;",
+    "comparison": "import fs from \"node:fs\";import path from \"node:path\";import assert from \"node:assert/strict\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\",baseline=\"/tmp/acme-m05-token-baseline\";\nconst pages=[\"button\",\"badge\",\"input\",\"select\",\"checkbox\",\"radio\",\"toggle\",\"tabs\",\"table\",\"modal\",\"sheet\",\"code-block\",\"command-menu\",\"multi-select\",\"book\",\"breadcrumbs\",\"tooltip\",\"card\",\"stat\"];\nconst requests=[];\nconst server=Bun.serve({port:0,fetch(req){\n const u=new URL(req.url),old=u.pathname.startsWith(\"/baseline\"),base=old?baseline:root,prefix=old?\"/baseline\":\"/candidate\";\n if(u.pathname.endsWith(\"/bundle.js\"))return new Response(Bun.file(path.join(base,\"dist/bundle/design-system.min.js\")),{headers:{\"Content-Type\":\"text/javascript\"}});\n if(u.pathname.endsWith(\"/tokens.css\"))return new Response(Bun.file(path.join(base,\"dist/styles/tokens.css\")),{headers:{\"Content-Type\":\"text/css\"}});\n if(u.pathname.endsWith(\"/dashboard.css\"))return new Response(Bun.file(path.join(base,\"dist/styles/dashboard.css\")),{headers:{\"Content-Type\":\"text/css\"}});\n const name=u.searchParams.get(\"page\"),theme=u.searchParams.get(\"theme\")??\"light\";\n if(!pages.includes(name))return new Response(\"not found\",{status:404});\n const fragment=fs.readFileSync(path.join(root,\"_site/pages/components\",name+\".html\"),\"utf8\");\n return new Response('<!doctype html><html data-theme=\"'+theme+'\"><head><link rel=\"stylesheet\" href=\"'+prefix+'/tokens.css\"><link rel=\"stylesheet\" href=\"'+prefix+'/dashboard.css\"><style>body{width:1100px;margin:0}*{animation:none!important;transition:none!important}</style></head><body>'+fragment+'<script type=\"module\" src=\"'+prefix+'/bundle.js\"></script></body></html>',{headers:{\"Content-Type\":\"text/html\"}});\n}});\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst report={engines:[],differences:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){\n const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});\n try{const page=await browser.newPage({viewport:{width:1200,height:900}});page.on(\"pageerror\",e=>report.errors.push({engine,message:e.message}));let comparisons=0,nodes=0;\n for(const name of pages)for(const theme of [\"light\",\"dark\"]){\n const results=[];\n for(const version of [\"baseline\",\"candidate\"]){\n await page.goto(server.url.href+version+\"?page=\"+name+\"&theme=\"+theme);\n await page.waitForFunction(()=>!!customElements.get(\"acme-button\"));\n await page.evaluate(async()=>{\n const all=[];const visit=root=>{for(const e of root.querySelectorAll(\"*\")){all.push(e);if(e.shadowRoot)visit(e.shadowRoot);}};visit(document);\n await Promise.all(all.map(x=>x.updateComplete));\n for(const el of all){if(el.shadowRoot){const style=document.createElement(\"style\");style.textContent=\"*,*::before,*::after{animation:none!important;transition:none!important}\";el.shadowRoot.append(style);}}\n await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));\n });\n results.push(await page.evaluate(()=>{\n const properties=[\"display\",\"position\",\"color\",\"backgroundColor\",\"paddingTop\",\"paddingRight\",\"paddingBottom\",\"paddingLeft\",\"marginTop\",\"marginRight\",\"marginBottom\",\"marginLeft\",\"borderTopWidth\",\"borderRightWidth\",\"borderBottomWidth\",\"borderLeftWidth\",\"borderTopColor\",\"borderTopStyle\",\"borderRadius\",\"fontSize\",\"fontFamily\",\"fontWeight\",\"lineHeight\",\"letterSpacing\",\"gap\",\"boxShadow\",\"opacity\",\"transform\",\"width\",\"height\",\"alignItems\",\"justifyContent\",\"flexDirection\",\"overflow\"];\n const out=[];function visit(root,prefix){let index=0;for(const el of root.children){if([\"STYLE\",\"SCRIPT\"].includes(el.tagName))continue;const p=prefix+\"/\"+el.localName+\":\"+index++;if(el.getClientRects().length){const style=getComputedStyle(el);out.push({path:p,values:Object.fromEntries(properties.map(n=>[n,style[n]]))});}if(el.shadowRoot)visit(el.shadowRoot,p+\"#\");visit(el,p);}}visit(document.body,\"body\");return out;\n }));\n }\n const [a,b]=results;nodes+=a.length;comparisons++;\n if(a.length!==b.length)report.differences.push({engine,page:name,theme,kind:\"count\",before:a.length,after:b.length});\n for(let i=0;i<Math.min(a.length,b.length);i++){if(a[i].path!==b[i].path){report.differences.push({engine,page:name,theme,kind:\"path\",before:a[i].path,after:b[i].path});break;}for(const k of Object.keys(a[i].values))if(a[i].values[k]!==b[i].values[k])report.differences.push({engine,page:name,theme,path:a[i].path,property:k,before:a[i].values[k],after:b[i].values[k]});}\n }\n report.engines.push({engine,version:browser.version(),comparisons,nodes});\n console.log(JSON.stringify({engine,comparisons,nodes,differences:report.differences.filter(x=>x.engine===engine).length}));\n }finally{await browser.close();}\n}}finally{server.stop(true);}\nawait Bun.write(\"/tmp/acme-m05-adoption-comparisons.json\",JSON.stringify(report,null,2));console.log(JSON.stringify({differences:report.differences.length,errors:report.errors.length,first:report.differences.slice(0,12)}));\n\n"
+  },
+  "corrections": [
+    {
+      "issue": "Narrowing createRenderRoot to ShadowRoot rejected Lit's light-DOM override and host-only detection could inject styles into a light-DOM element.",
+      "proof": "TS2416 and unwanted-style runtime regression were red before preserving the inherited union and requiring nodeType11."
+    }
+  ],
+  "limits": [
+    "No CSS declarations are rewritten by this fix.",
+    "Foreign global registries still reject constructors from another realm before styling; import definitions in their window or use supported scoped-registry paths. These negative controls remain recorded.",
+    "Firefox lacks the native scoped-registry surface in this run; the supported adoption/own-realm paths pass.",
+    "This restores owned static styles; the browser may discard untracked externally added sheets during adoption.",
+    "Theme provider discovery, arbitrary custom-token coverage and the remaining base appearance/storage replacement stay open."
+  ]
+}

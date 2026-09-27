@@ -11,7 +11,8 @@ export type RovingOptions = {
   /** Called with the item the keys moved focus to. */
   onMove: (item: HTMLElement, index: number) => void;
   /** Which arrow keys move (default horizontal). */
-  orientation?: "horizontal" | "vertical" | "both";
+  orientation?: "horizontal" | "vertical" | "both" | (() => "horizontal" | "vertical" | "both");
+  rtl?: boolean | (() => boolean);
   /** Wrap around at the ends (default false); a function is read at each key. */
   wrap?: boolean | (() => boolean);
   /** Step over disabled items (default false: a disabled neighbour stops the move). */
@@ -38,32 +39,45 @@ export class RovingTabindex implements ReactiveController {
     return this.options.disabled?.(item) ?? !!(item as HTMLButtonElement).disabled;
   }
   /** Handles a keydown on the container; returns true when it moved focus (the event is then consumed). */
-  handleKey(e: KeyboardEvent): boolean {
+  handleKey(e: KeyboardEvent, current = this.options.current()): boolean {
     const o = this.options;
-    const orientation = o.orientation ?? "horizontal";
+    const orientation = (typeof o.orientation === "function" ? o.orientation() : o.orientation) ?? "horizontal";
+    const rtl = typeof o.rtl === "function" ? o.rtl() : o.rtl === true;
     const horizontal = orientation !== "vertical";
     const vertical = orientation !== "horizontal";
-    const prev = (horizontal && e.key === "ArrowLeft") || (vertical && e.key === "ArrowUp");
-    const next = (horizontal && e.key === "ArrowRight") || (vertical && e.key === "ArrowDown");
+    const prev = (horizontal && e.key === (rtl ? "ArrowRight" : "ArrowLeft")) || (vertical && e.key === "ArrowUp");
+    const next = (horizontal && e.key === (rtl ? "ArrowLeft" : "ArrowRight")) || (vertical && e.key === "ArrowDown");
     const home = o.homeEnd && e.key === "Home";
     const end = o.homeEnd && e.key === "End";
-    if (!prev && !next && !home && !end) return false;
+    if (!prev && !next && !home && !end) {
+      return false;
+    }
     const items = o.items();
-    if (!items.length) return false;
+    if (!items.length) {
+      return false;
+    }
     let j: number;
     if (home || end) {
       const dir = home ? 1 : -1;
       j = home ? 0 : items.length - 1;
-      while (j >= 0 && j < items.length && this.isOff(items[j])) j += dir;
+      while (j >= 0 && j < items.length && this.isOff(items[j])) {
+        j += dir;
+      }
     } else {
       const dir = next ? 1 : -1;
-      j = o.current() + dir;
+      j = current + dir;
       const wraps = typeof o.wrap === "function" ? o.wrap() : !!o.wrap;
       const wrap = (k: number) => (wraps ? (k + items.length) % items.length : k);
       j = wrap(j);
-      if (o.skipDisabled) for (let n = 0; n < items.length && j >= 0 && j < items.length && this.isOff(items[j]); n++) j = wrap(j + dir);
+      if (o.skipDisabled) {
+        for (let n = 0; n < items.length && j >= 0 && j < items.length && this.isOff(items[j]); n++) {
+          j = wrap(j + dir);
+        }
+      }
     }
-    if (j < 0 || j >= items.length || this.isOff(items[j])) return false;
+    if (j < 0 || j >= items.length || this.isOff(items[j])) {
+      return false;
+    }
     e.preventDefault();
     items[j].focus({ preventScroll: true });
     o.onMove(items[j], j);

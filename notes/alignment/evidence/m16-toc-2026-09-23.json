@@ -1,0 +1,488 @@
+{
+  "date": "2026-09-23",
+  "status": "TOC complete at the assigned native/Lit boundary; M16 Sidebar and Tree View remain",
+  "implementation": [
+    "Native fragment links; authored IDs; no content mutation or private shadow traversal",
+    "Existing HeadingTargets discovery for native and registered headings; explicit entries override discovery",
+    "Canonical TanStack state, scoped target observers, scroll-root and CSS-length offsets",
+    "Current-location semantics, focus transfer, preserved application history state, reduced-motion navigation",
+    "Line/minimal/numbers variants, generated CSS, public entries and complete documentation"
+  ],
+  "verification": {
+    "build": "Strict package build passes",
+    "site": {
+      "pages": 104,
+      "elements": 4305,
+      "undocumented": 0
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "discovers native and registered headings inside the named source",
+            "pass": true
+          },
+          {
+            "name": "real fragment navigation focuses and offsets a heading inside a bordered scroll root",
+            "pass": true
+          },
+          {
+            "name": "registered heading receives native focus and retains its authored ID",
+            "pass": true
+          },
+          {
+            "name": "explicit entries replace discovery and an empty list stays empty",
+            "pass": true
+          },
+          {
+            "name": "malformed fragment entries are omitted without breaking future updates",
+            "pass": true
+          },
+          {
+            "name": "missing and duplicate IDs are omitted without changing author content",
+            "pass": true
+          },
+          {
+            "name": "live labels and replacement source nodes update the links",
+            "pass": true
+          },
+          {
+            "name": "a short non-scrolling source keeps its first section current",
+            "pass": true
+          },
+          {
+            "name": "disconnect and reconnect restore observation without duplicate links",
+            "pass": true
+          },
+          {
+            "name": "scrolling selects the crossed heading and the last section at the bottom",
+            "pass": true
+          },
+          {
+            "name": "levels and registered heading labels update without manual refresh",
+            "pass": true
+          },
+          {
+            "name": "modified clicks retain native link behavior and do not force focus",
+            "pass": true
+          },
+          {
+            "name": "history keeps application state and Back restores the previous fragment",
+            "pass": true
+          },
+          {
+            "name": "document scrolling and a ShadowRoot source both use real native links",
+            "pass": true
+          },
+          {
+            "name": "all variants fit a narrow RTL viewport and expose only one current location",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "discovers native and registered headings inside the named source",
+            "pass": true
+          },
+          {
+            "name": "real fragment navigation focuses and offsets a heading inside a bordered scroll root",
+            "pass": true
+          },
+          {
+            "name": "registered heading receives native focus and retains its authored ID",
+            "pass": true
+          },
+          {
+            "name": "explicit entries replace discovery and an empty list stays empty",
+            "pass": true
+          },
+          {
+            "name": "malformed fragment entries are omitted without breaking future updates",
+            "pass": true
+          },
+          {
+            "name": "missing and duplicate IDs are omitted without changing author content",
+            "pass": true
+          },
+          {
+            "name": "live labels and replacement source nodes update the links",
+            "pass": true
+          },
+          {
+            "name": "a short non-scrolling source keeps its first section current",
+            "pass": true
+          },
+          {
+            "name": "disconnect and reconnect restore observation without duplicate links",
+            "pass": true
+          },
+          {
+            "name": "scrolling selects the crossed heading and the last section at the bottom",
+            "pass": true
+          },
+          {
+            "name": "levels and registered heading labels update without manual refresh",
+            "pass": true
+          },
+          {
+            "name": "modified clicks retain native link behavior and do not force focus",
+            "pass": true
+          },
+          {
+            "name": "history keeps application state and Back restores the previous fragment",
+            "pass": true
+          },
+          {
+            "name": "document scrolling and a ShadowRoot source both use real native links",
+            "pass": true
+          },
+          {
+            "name": "all variants fit a narrow RTL viewport and expose only one current location",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "discovers native and registered headings inside the named source",
+            "pass": true
+          },
+          {
+            "name": "real fragment navigation focuses and offsets a heading inside a bordered scroll root",
+            "pass": true
+          },
+          {
+            "name": "registered heading receives native focus and retains its authored ID",
+            "pass": true
+          },
+          {
+            "name": "explicit entries replace discovery and an empty list stays empty",
+            "pass": true
+          },
+          {
+            "name": "malformed fragment entries are omitted without breaking future updates",
+            "pass": true
+          },
+          {
+            "name": "missing and duplicate IDs are omitted without changing author content",
+            "pass": true
+          },
+          {
+            "name": "live labels and replacement source nodes update the links",
+            "pass": true
+          },
+          {
+            "name": "a short non-scrolling source keeps its first section current",
+            "pass": true
+          },
+          {
+            "name": "disconnect and reconnect restore observation without duplicate links",
+            "pass": true
+          },
+          {
+            "name": "scrolling selects the crossed heading and the last section at the bottom",
+            "pass": true
+          },
+          {
+            "name": "levels and registered heading labels update without manual refresh",
+            "pass": true
+          },
+          {
+            "name": "modified clicks retain native link behavior and do not force focus",
+            "pass": true
+          },
+          {
+            "name": "history keeps application state and Back restores the previous fragment",
+            "pass": true
+          },
+          {
+            "name": "document scrolling and a ShadowRoot source both use real native links",
+            "pass": true
+          },
+          {
+            "name": "all variants fit a narrow RTL viewport and expose only one current location",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "discovers native and registered headings inside the named source",
+            "pass": true
+          },
+          {
+            "name": "real fragment navigation focuses and offsets a heading inside a bordered scroll root",
+            "pass": true
+          },
+          {
+            "name": "registered heading receives native focus and retains its authored ID",
+            "pass": true
+          },
+          {
+            "name": "explicit entries replace discovery and an empty list stays empty",
+            "pass": true
+          },
+          {
+            "name": "malformed fragment entries are omitted without breaking future updates",
+            "pass": true
+          },
+          {
+            "name": "missing and duplicate IDs are omitted without changing author content",
+            "pass": true
+          },
+          {
+            "name": "live labels and replacement source nodes update the links",
+            "pass": true
+          },
+          {
+            "name": "a short non-scrolling source keeps its first section current",
+            "pass": true
+          },
+          {
+            "name": "disconnect and reconnect restore observation without duplicate links",
+            "pass": true
+          },
+          {
+            "name": "scrolling selects the crossed heading and the last section at the bottom",
+            "pass": true
+          },
+          {
+            "name": "levels and registered heading labels update without manual refresh",
+            "pass": true
+          },
+          {
+            "name": "modified clicks retain native link behavior and do not force focus",
+            "pass": true
+          },
+          {
+            "name": "history keeps application state and Back restores the previous fragment",
+            "pass": true
+          },
+          {
+            "name": "document scrolling and a ShadowRoot source both use real native links",
+            "pass": true
+          },
+          {
+            "name": "all variants fit a narrow RTL viewport and expose only one current location",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "discovers native and registered headings inside the named source",
+            "pass": true
+          },
+          {
+            "name": "real fragment navigation focuses and offsets a heading inside a bordered scroll root",
+            "pass": true
+          },
+          {
+            "name": "registered heading receives native focus and retains its authored ID",
+            "pass": true
+          },
+          {
+            "name": "explicit entries replace discovery and an empty list stays empty",
+            "pass": true
+          },
+          {
+            "name": "malformed fragment entries are omitted without breaking future updates",
+            "pass": true
+          },
+          {
+            "name": "missing and duplicate IDs are omitted without changing author content",
+            "pass": true
+          },
+          {
+            "name": "live labels and replacement source nodes update the links",
+            "pass": true
+          },
+          {
+            "name": "a short non-scrolling source keeps its first section current",
+            "pass": true
+          },
+          {
+            "name": "disconnect and reconnect restore observation without duplicate links",
+            "pass": true
+          },
+          {
+            "name": "scrolling selects the crossed heading and the last section at the bottom",
+            "pass": true
+          },
+          {
+            "name": "levels and registered heading labels update without manual refresh",
+            "pass": true
+          },
+          {
+            "name": "modified clicks retain native link behavior and do not force focus",
+            "pass": true
+          },
+          {
+            "name": "history keeps application state and Back restores the previous fragment",
+            "pass": true
+          },
+          {
+            "name": "document scrolling and a ShadowRoot source both use real native links",
+            "pass": true
+          },
+          {
+            "name": "all variants fit a narrow RTL viewport and expose only one current location",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "discovers native and registered headings inside the named source",
+            "pass": true
+          },
+          {
+            "name": "real fragment navigation focuses and offsets a heading inside a bordered scroll root",
+            "pass": true
+          },
+          {
+            "name": "registered heading receives native focus and retains its authored ID",
+            "pass": true
+          },
+          {
+            "name": "explicit entries replace discovery and an empty list stays empty",
+            "pass": true
+          },
+          {
+            "name": "malformed fragment entries are omitted without breaking future updates",
+            "pass": true
+          },
+          {
+            "name": "missing and duplicate IDs are omitted without changing author content",
+            "pass": true
+          },
+          {
+            "name": "live labels and replacement source nodes update the links",
+            "pass": true
+          },
+          {
+            "name": "a short non-scrolling source keeps its first section current",
+            "pass": true
+          },
+          {
+            "name": "disconnect and reconnect restore observation without duplicate links",
+            "pass": true
+          },
+          {
+            "name": "scrolling selects the crossed heading and the last section at the bottom",
+            "pass": true
+          },
+          {
+            "name": "levels and registered heading labels update without manual refresh",
+            "pass": true
+          },
+          {
+            "name": "modified clicks retain native link behavior and do not force focus",
+            "pass": true
+          },
+          {
+            "name": "history keeps application state and Back restores the previous fragment",
+            "pass": true
+          },
+          {
+            "name": "document scrolling and a ShadowRoot source both use real native links",
+            "pass": true
+          },
+          {
+            "name": "all variants fit a narrow RTL viewport and expose only one current location",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "documentation": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "native fragment and observed current",
+          "numbered links",
+          "explicit entries",
+          "narrow viewport"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "native fragment and observed current",
+          "numbered links",
+          "explicit entries",
+          "narrow viewport"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "native fragment and observed current",
+          "numbered links",
+          "explicit entries",
+          "narrow viewport"
+        ],
+        "errors": []
+      }
+    ],
+    "visual": "Chromium source RTL and narrow documentation screenshots inspected",
+    "lint": "No errors after import organization; two established controller-registration unused-field warnings and one template-string suggestion remain",
+    "tests": {
+      "passed": 919,
+      "failed": 0,
+      "assertions": 151186,
+      "files": 164
+    }
+  },
+  "corrections": [
+    "Bordered scroll roots now account for clientTop in navigation and tracking",
+    "Malformed encoded fragments are omitted without aborting updates",
+    "Non-scrolling short sources retain their first section",
+    "Documentation capture handler previously intercepted shadow-component fragments; it now leaves them to the component and preserves application history state",
+    "Corrected the documentation HStack tag to acme-h-stack; full-suite render check exposed it",
+    "Synthetic modified-click default navigation differs across engines; verification checks uncanceled native behavior and absence of component focus overrides"
+  ],
+  "references": [
+    "notes/decisions/table-of-contents.md",
+    "notes/alignment/inventory/navigation-disclosure.md#n-04-table-of-contents",
+    "src/shared/heading-targets.ts",
+    "Chakra Pro toc-line/block.tsx, use-scroll-spy.ts and toc-link.tsx, read in full from the saved reference collection"
+  ],
+  "reproduce": {
+    "fixture": "src/components/toc/__tests__/toc.browser.ts",
+    "runner": "/tmp/acme-m16-navigation/run.ts",
+    "compiled": "/tmp/acme-m16-navigation/run-compiled.ts",
+    "documentation": "/tmp/acme-m16-navigation/docs-check.ts"
+  },
+  "limits": [
+    "Actual Safari, assistive technology, generated React wrappers and final package/removal acceptance retain M22/M26 owners"
+  ]
+}

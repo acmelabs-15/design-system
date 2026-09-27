@@ -13,3 +13,21 @@ Peter first considered classic Material Icons plus selected newer Symbols and ho
 Google publishes the artwork under Apache-2.0; retain the required licence and notices. Replacements of existing glyphs are named visual deviations. Verify required artwork, size, visual weight, accessibility and both themes before implementation acceptance. The Home SVG files were inspected across all three families and both fill states; that sample does not establish complete catalog coverage or final bundle costs.
 
 Evidence: [icon investigation and SVG source links](../analysis/icon-library.md#material-svg-investigation-and-peters-selection), [Google's collection comparison](https://github.com/google/material-design-icons#material-symbols), and [Material Symbols guide](https://developers.google.com/fonts/docs/material_symbols). Source changes remain gated by Phase 5 approval.
+
+## Pinned baseline catalog — 2026-09-21
+
+Under Peter's execution delegation, package the complete 4,135-symbol catalog from Google revision 27e9ef1dbeedc13d682fece4a58e1eda4cb0961a at weight 400, grade 0 and optical size 24. All 24,810 baseline SVGs exist: three families multiplied by two fill states. The asset manifest records the source path and SHA-256 of every unmodified SVG; the Apache-2.0 license is retained. Fixed SVG sizes scale this artwork, without implying continuously variable font axes.
+
+Retain separate icon/style imports. The main artifact must not acquire the whole catalog merely because optional per-icon entries exist. The base renderer owns no network loader. Missing requested artwork is an explicit visible marker, a bounded diagnostic and a localized accessible description. An explicit artwork import can resolve an already mounted marker. Library defaults use canonical TanStack state; explicit icon properties remain independent. Named images expose one SVG image name; unnamed artwork is decorative.
+
+This is the catalog/base implementation checkpoint. Per-icon entry generation, package delivery, internal glyph migration and full M09 action acceptance are still in progress. [Implementation evidence](../alignment/evidence/m09-icon-foundation-2026-09-21.json).
+
+## Entry and configuration delivery — 2026-09-21
+
+Under the same delegation, keep icon classes in explicit icons/<symbol> entries and generate definitions and artwork imports from the full pinned catalog. The main component entry loads only owned icon dependencies. An explicit icons/all entry registers the complete optional catalog; whole-family imports are also explicit. The catalog remains searchable in the documentation and available as package metadata.
+
+Expose the shared configuration functions through a browser configure entry. A shared-graph standalone bootstrap installs tokens while remaining compatible with selective icon/artwork modules. Retain the self-contained single-file bundle as a separate delivery mode. Consumers use one graph per page. This supports the selected script-only static-artifact use case without duplicating the icon state or Theme context.
+
+Registration declarations retain their class module so a definition-only import carries the native tag-to-class types. The standard analyzer processes independent generated icon leaves with their real ancestors in bounded partitions; all public records are compared against the complete analyzer baseline. Private/protected controller details are omitted from the public manifest.
+
+[Delivery evidence](../alignment/evidence/m09-icon-delivery-2026-09-21.json) closes these prerequisites. Internal glyph replacement, Spinner, action controls and identity families remain M09 work. Split Button's Menu composition remains M13; Theme Switcher remains M10. No icon replacement is declared complete while its internal consumer still uses the earlier glyph implementation.

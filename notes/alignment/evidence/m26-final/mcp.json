@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "version": "0.3.0",
+  "records": 4343,
+  "components": 4319,
+  "recipes": 17,
+  "recipeVariants": 20,
+  "checks": [
+    "exact four read-only tool contracts",
+    "exact version/framework resolution and explicit missing/unavailable errors",
+    "invalid schema, missing versions, bounds, framework and file arguments rejected",
+    "bounded release-qualified search",
+    "all 4319 component contracts equal the installed core manifest",
+    "all 4343 listed resources read at the same release",
+    "all 20 recipe/framework variants return their exact runnable records",
+    "no cross-version, missing-ID, framework or filesystem fallback",
+    "actual archive rejects package/documentation mismatch before opening stdio"
+  ]
+}

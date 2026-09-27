@@ -1,0 +1,921 @@
+{
+  "date": "2026-09-27T00:15:49.081Z",
+  "preset": {
+    "name": "ultracite/oxlint/core",
+    "version": "7.12.0"
+  },
+  "source": "oxlint.config.ts",
+  "sourceSha256": "a45a8ea999750cccd9c4937fa97832d72cbc0f7c21a0609357671a9a1d431bd5",
+  "changes": [
+    {
+      "rule": "class-methods-use-this",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Lit/native-content classes implement inherited instance hooks even when a particular override returns static content or a constant.",
+      "line": 127
+    },
+    {
+      "rule": "complexity",
+      "preset": "error",
+      "selected": "off",
+      "reason": "No project-wide cyclomatic threshold was approved. Parsers, keyboard state handling and value validators retain capability-focused tests; do not split domain logic merely to satisfy the preset default20.",
+      "line": 143
+    },
+    {
+      "rule": "default-case",
+      "preset": "error",
+      "selected": [
+        "error",
+        {
+          "commentPattern": "^no default:"
+        }
+      ],
+      "reason": "Comments name deliberately exhaustive switches and keys intentionally left to native behavior.",
+      "line": 91
+    },
+    {
+      "rule": "eqeqeq",
+      "preset": "error",
+      "selected": [
+        "error",
+        "smart"
+      ],
+      "reason": "Nullish checks intentionally match null and undefined; other loose comparisons remain errors.",
+      "line": 231
+    },
+    {
+      "rule": "func-style",
+      "preset": [
+        "error",
+        "expression",
+        {
+          "allowArrowFunctions": true
+        }
+      ],
+      "selected": "off",
+      "reason": "Hoisted function declarations and local expression callbacks are both intentional (scripts/styles.ts and component callbacks); converting declarations can change initialization/cycle behavior.",
+      "line": 109
+    },
+    {
+      "rule": "max-classes-per-file",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Private controllers and related helper classes may share a module with one public capability; file count does not determine interface quality.",
+      "line": 175
+    },
+    {
+      "rule": "no-await-in-loop",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Sequential cleanup, overlays, builds and browser checks intentionally await each operation.",
+      "line": 241
+    },
+    {
+      "rule": "no-bitwise",
+      "preset": "error",
+      "selected": "off",
+      "reason": "TypeScript flags, DOM position flags and numeric algorithms intentionally use bitwise operators.",
+      "line": 157
+    },
+    {
+      "rule": "no-eq-null",
+      "preset": "error",
+      "selected": "off",
+      "reason": "A nullish check intentionally covers both null and undefined. Other loose equality remains rejected by eqeqeq smart mode.",
+      "line": 185
+    },
+    {
+      "rule": "no-inline-comments",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Short inline comments explain non-obvious arguments and generated-field ownership; their placement is not banned.",
+      "line": 167
+    },
+    {
+      "rule": "no-multi-assign",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Some coordinated local resets intentionally share one assigned value; the value/order are tested rather than banning assignment syntax.",
+      "line": 177
+    },
+    {
+      "rule": "no-negated-condition",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Early checks and fallback condition order follow the domain rather than a global positive-first branch style.",
+      "line": 153
+    },
+    {
+      "rule": "no-nested-ternary",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Lit render expressions and typed value normalization use conditional expressions; Oxfmt lays them out without moving reads across reactive branches.",
+      "line": 129
+    },
+    {
+      "rule": "no-new",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Lit controllers register themselves with their host during construction.",
+      "line": 243
+    },
+    {
+      "rule": "no-param-reassign",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Reassigning a local scalar parameter normalizes the received value without mutating the caller. This does not authorize object/property mutation.",
+      "line": 171
+    },
+    {
+      "rule": "no-plusplus",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Loop counters and monotonic component IDs use standard increment/decrement operators; the numeric type is checked separately.",
+      "line": 119
+    },
+    {
+      "rule": "no-sequences",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Comma expressions are retained where deliberate evaluation order is part of compact parser/visitor operations.",
+      "line": 207
+    },
+    {
+      "rule": "no-shadow",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Lexically separate callbacks reuse the same domain names (row, item, value); restricted global names remain protected.",
+      "line": 105
+    },
+    {
+      "rule": "no-use-before-define",
+      "preset": "error",
+      "selected": [
+        "error",
+        {
+          "functions": false,
+          "variables": false,
+          "classes": true,
+          "ignoreTypeReferences": true
+        }
+      ],
+      "reason": "Hoisted functions and later-bound callback dependencies are intentional; TypeScript remains the initialization-order check.",
+      "line": 107
+    },
+    {
+      "rule": "no-void",
+      "preset": [
+        "error",
+        {
+          "allowAsStatement": true
+        }
+      ],
+      "selected": "off",
+      "reason": "void explicitly marks intentionally discarded results/dependency reads and Promise-returning event work; its use is not limited to standalone statements.",
+      "line": 197
+    },
+    {
+      "rule": "one-var",
+      "preset": [
+        "error",
+        "never"
+      ],
+      "selected": "off",
+      "reason": "Multiple related local bindings use one declaration with ordered initializers; Oxfmt supplies consistent layout without rewriting declaration structure.",
+      "line": 111
+    },
+    {
+      "rule": "prefer-destructuring",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Explicit member access makes owner/receiver relationships visible and preserves access timing for reactive getters.",
+      "line": 123
+    },
+    {
+      "rule": "prefer-named-capture-group",
+      "preset": "error",
+      "selected": "off",
+      "reason": "CSS/source parsers use numbered capture groups and positional replace callbacks; named captures change match/replace result contracts.",
+      "line": 125
+    },
+    {
+      "rule": "prefer-template",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Generator and documentation code deliberately compose strings containing template syntax. Both concatenation and template literals remain supported; coercion hints can differ.",
+      "line": 117
+    },
+    {
+      "rule": "require-await",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Framework callbacks may intentionally satisfy a Promise-returning contract before they need to await anything.",
+      "line": 183
+    },
+    {
+      "rule": "require-unicode-regexp",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Unicode mode changes regexp grammar and matching; each expression chooses its flags.",
+      "line": 245
+    },
+    {
+      "rule": "sort-keys",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Key and declaration order are observable: ordered style inputs and dependent initializers use it.",
+      "line": 237
+    },
+    {
+      "rule": "sort-vars",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Initializers may depend on earlier bindings; alphabetical declaration order is not a safe convention.",
+      "line": 239
+    },
+    {
+      "rule": "import/consistent-type-specifier-style",
+      "preset": [
+        "error",
+        "prefer-top-level"
+      ],
+      "selected": "off",
+      "reason": "Inline type specifiers keep a dependency in one import declaration; separate type imports remain valid where an entire declaration is type-only.",
+      "line": 113
+    },
+    {
+      "rule": "import/first",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Preserve authored dependency declaration order, including re-exports and ordered registration imports; formatting does not reorder the module graph.",
+      "line": 121
+    },
+    {
+      "rule": "jsdoc/check-tag-names",
+      "preset": "error",
+      "selected": [
+        "error",
+        {
+          "definedTags": [
+            "attr",
+            "attribute",
+            "csspart",
+            "cssprop",
+            "cssproperty",
+            "slot",
+            "fires",
+            "event",
+            "element",
+            "customElement",
+            "tagname",
+            "default",
+            "acmeDefault",
+            "acmeNativeRoot",
+            "acmeNativeContentTarget",
+            "internal"
+          ]
+        }
+      ],
+      "reason": "These tags are inputs to the custom-elements manifest generator.",
+      "line": 255
+    },
+    {
+      "rule": "oxc/no-barrel-file",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Public helper entrypoints intentionally re-export the documented surface; they are explicit package boundaries.",
+      "line": 225
+    },
+    {
+      "rule": "promise/avoid-new",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Native timers, animation frames and callback APIs require explicit Promise construction. Async-promise-executor and multiple-resolution correctness checks stay active.",
+      "line": 161
+    },
+    {
+      "rule": "promise/prefer-await-to-then",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Promise continuations are required in synchronous Lit lifecycle hooks and cleanup paths; async/await remains used where the containing function owns the wait.",
+      "line": 169
+    },
+    {
+      "rule": "typescript/array-type",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Both Array<T> and T[] preserve existing public type contracts; a syntax migration is not required.",
+      "line": 103
+    },
+    {
+      "rule": "typescript/ban-types",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Preserve the prior explicit noBannedTypes setting instead of adding an implicit type-spelling migration.",
+      "line": 253
+    },
+    {
+      "rule": "typescript/class-literal-property-style",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Getter overrides can be read by a base constructor before subclass fields initialize.",
+      "line": 247
+    },
+    {
+      "rule": "typescript/consistent-generic-constructors",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Type annotations and constructor type arguments both express valid generic ownership; no global placement preference.",
+      "line": 199
+    },
+    {
+      "rule": "typescript/consistent-indexed-object-style",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Record and index signatures serve authored public types; no global interface spelling preference.",
+      "line": 219
+    },
+    {
+      "rule": "typescript/consistent-type-definitions",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Interfaces and type aliases serve distinct extension/composition needs in the approved contracts; no global syntax replacement.",
+      "line": 135
+    },
+    {
+      "rule": "typescript/method-signature-style",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Public controller/owner interfaces use method signatures. Changing methods into function properties changes TypeScript variance and is not a formatting migration.",
+      "line": 115
+    },
+    {
+      "rule": "typescript/no-explicit-any",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Preserve the prior explicit noExplicitAny setting; strict TypeScript remains required.",
+      "line": 251
+    },
+    {
+      "rule": "typescript/no-inferrable-types",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Explicit public literal/property types support metadata generation and stable declarations even where an initializer is inferable.",
+      "line": 217
+    },
+    {
+      "rule": "typescript/no-non-null-assertion",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Preserve the three explicit TypeScript conventions from the previous configuration.",
+      "line": 249
+    },
+    {
+      "rule": "typescript/no-this-alias",
+      "preset": "error",
+      "selected": [
+        "error",
+        {
+          "allowedNames": [
+            "host",
+            "owner",
+            "root"
+          ]
+        }
+      ],
+      "reason": "Getter objects capture their owner, and parent traversal uses an explicit owner/root cursor.",
+      "line": 233
+    },
+    {
+      "rule": "typescript/parameter-properties",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Constructor parameter properties are the existing TypeScript dependency-injection style; expanding them adds repeated declarations without improving ownership.",
+      "line": 133
+    },
+    {
+      "rule": "typescript/prefer-as-const",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Explicit literal annotations are valid public/manifest type contracts.",
+      "line": 95
+    },
+    {
+      "rule": "unicorn/catch-error-name",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Catch binding names match their local domain; no fixed variable-name convention is adopted.",
+      "line": 227
+    },
+    {
+      "rule": "unicorn/consistent-date-clone",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Date snapshots explicitly copy epoch milliseconds and do not depend on subclass primitive conversion.",
+      "line": 97
+    },
+    {
+      "rule": "unicorn/consistent-existence-index-check",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Explicit findIndex result checks express collection positions; no additional spelling rule for equivalent comparisons.",
+      "line": 163
+    },
+    {
+      "rule": "unicorn/consistent-function-scoping",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Small helpers stay with the operation they explain; hoisting closure-free functions is not automatically better module locality.",
+      "line": 139
+    },
+    {
+      "rule": "unicorn/import-style",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Namespace/default imports have different module shapes; both are intentional in dynamic Bun fixtures.",
+      "line": 101
+    },
+    {
+      "rule": "unicorn/new-for-builtins",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Callable platform constructors are retained where the platform permits either spelling; actual constructor-only misuse remains a correctness error.",
+      "line": 195
+    },
+    {
+      "rule": "unicorn/no-array-for-each",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Synchronous forEach expresses iteration with scoped callbacks; it is not automatically replaced by loop statements.",
+      "line": 189
+    },
+    {
+      "rule": "unicorn/no-array-reduce",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Reducers can express accumulation or set intersection. Algorithmic complexity is reviewed separately; reduce itself is not banned.",
+      "line": 215
+    },
+    {
+      "rule": "unicorn/no-array-reverse",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Reverse operates on owned arrays/snapshots where mutation is intentional; do not force an additional allocation.",
+      "line": 179
+    },
+    {
+      "rule": "unicorn/no-array-sort",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Mutating sorts are used on owned snapshots and temporary arrays; readonly typing protects immutable inputs. Replacing every sort with copying changes allocation and intended mutation.",
+      "line": 137
+    },
+    {
+      "rule": "unicorn/no-await-expression-member",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Reading a result immediately after awaited I/O is valid; splitting every read into an extra binding is not a correctness change.",
+      "line": 165
+    },
+    {
+      "rule": "unicorn/no-immediate-mutation",
+      "preset": "error",
+      "selected": "off",
+      "reason": "A newly constructed owned array can be mutated before use; immutability applies to published snapshots, not every local temporary.",
+      "line": 209
+    },
+    {
+      "rule": "unicorn/no-negated-condition",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Early checks and fallback condition order follow the domain rather than a global positive-first branch style.",
+      "line": 155
+    },
+    {
+      "rule": "unicorn/no-this-assignment",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Owner captures support getter objects whose this is the returned object, and parent-walking cursors; typed no-this-alias remains restricted to named owners.",
+      "line": 205
+    },
+    {
+      "rule": "unicorn/no-typeof-undefined",
+      "preset": "error",
+      "selected": "off",
+      "reason": "typeof also safely handles absent optional platform globals; both undefined checks remain valid.",
+      "line": 99
+    },
+    {
+      "rule": "unicorn/no-useless-undefined",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Explicit undefined expresses omitted/reset callback results and public reset/default boundaries; omission is not uniformly clearer.",
+      "line": 149
+    },
+    {
+      "rule": "unicorn/no-zero-fractions",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Numeric literal spelling can reflect reference coefficients. Equal-value textual rewrites are formatting preferences.",
+      "line": 229
+    },
+    {
+      "rule": "unicorn/numeric-separators-style",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Both plain and separated numeric literals are valid; formatting must preserve literals without a new numeric spelling policy.",
+      "line": 147
+    },
+    {
+      "rule": "unicorn/prefer-at",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Direct indexing is the existing typed collection convention; .at() has different negative-index and undefined-return behavior.",
+      "line": 191
+    },
+    {
+      "rule": "unicorn/prefer-code-point",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Some parsers intentionally operate on UTF-16 code units and indices; replacing charCodeAt/code-unit handling changes their contract.",
+      "line": 213
+    },
+    {
+      "rule": "unicorn/prefer-dom-node-append",
+      "preset": "error",
+      "selected": "off",
+      "reason": "appendChild returns the appended node; append does not. Keep the selected native API and its return contract.",
+      "line": 187
+    },
+    {
+      "rule": "unicorn/prefer-dom-node-dataset",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Attribute APIs preserve exact platform names, handle non-HTMLElement nodes and share code with observed-attribute contracts; dataset is not mandatory.",
+      "line": 145
+    },
+    {
+      "rule": "unicorn/prefer-native-coercion-functions",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Typed conversion callbacks retain their declared parameter boundary instead of widening to a built-in constructor.",
+      "line": 93
+    },
+    {
+      "rule": "unicorn/prefer-number-coercion",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Number construction and unary plus are both supported explicit coercions; numeric validation retains behavioral tests.",
+      "line": 173
+    },
+    {
+      "rule": "unicorn/prefer-number-properties",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Global parseInt/parseFloat/isFinite are legitimate APIs with intentionally chosen coercion behavior; numeric safety rules remain active.",
+      "line": 159
+    },
+    {
+      "rule": "unicorn/prefer-query-selector",
+      "preset": "error",
+      "selected": "off",
+      "reason": "getElementById expresses exact IDs without CSS-selector escaping, while querySelector expresses selectors; both APIs are valid.",
+      "line": 181
+    },
+    {
+      "rule": "unicorn/prefer-set-has",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Small fixed vocabularies may use arrays; an additional Set allocation is not required without measured benefit.",
+      "line": 221
+    },
+    {
+      "rule": "unicorn/prefer-single-call",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Separate native operations may intentionally establish order or keep ownership steps explicit; do not merge them solely for call-count style.",
+      "line": 193
+    },
+    {
+      "rule": "unicorn/prefer-spread",
+      "preset": "error",
+      "selected": "off",
+      "reason": "concat and spread have different one-level array flattening and symbol-spreadability behavior; retain the chosen operation.",
+      "line": 151
+    },
+    {
+      "rule": "unicorn/prefer-string-replace-all",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Existing global regex replacements preserve intentional regex flags and replacement callback behavior. Literal/global regex spelling is not a correctness requirement.",
+      "line": 131
+    },
+    {
+      "rule": "unicorn/prefer-string-starts-ends-with",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Regex checks may be part of existing parser contracts and flags; string/regex spelling is not uniformly interchangeable.",
+      "line": 223
+    },
+    {
+      "rule": "unicorn/prefer-ternary",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Statement and expression branches follow the operation and side effects; the linter does not force either branch representation.",
+      "line": 211
+    },
+    {
+      "rule": "unicorn/prefer-type-error",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Error subclasses are part of observable behavior; a lint migration does not reclassify errors.",
+      "line": 203
+    },
+    {
+      "rule": "unicorn/relative-url-style",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Explicit ./ URL paths are retained in worker/module asset constructors for consistent local-source references.",
+      "line": 201
+    },
+    {
+      "rule": "unicorn/switch-case-braces",
+      "preset": "error",
+      "selected": "off",
+      "reason": "Cases get lexical blocks where needed. no-case-declarations remains enabled; a mandatory extra block around every branch is a separate style convention.",
+      "line": 141
+    },
+    {
+      "rule": "unicorn/text-encoding-identifier-case",
+      "preset": [
+        "error",
+        {
+          "withDash": true
+        }
+      ],
+      "selected": [
+        "error",
+        {
+          "withDash": false
+        }
+      ],
+      "reason": "Bun and the existing file/buffer APIs consistently use the valid utf8 spelling.",
+      "line": 235
+    }
+  ],
+  "overrides": [
+    {
+      "files": [
+        "**/*.{test,spec,test-d,spec-d}.{ts,tsx,js,jsx}",
+        "**/__tests__/**/*.{ts,tsx,js,jsx}"
+      ],
+      "rules": {
+        "no-empty-function": "off",
+        "promise/prefer-await-to-then": "off"
+      }
+    },
+    {
+      "files": [
+        "**/*.astro"
+      ],
+      "rules": {
+        "import/no-commonjs": "error",
+        "no-restricted-globals": [
+          "error",
+          "__dirname",
+          "__filename"
+        ],
+        "unicorn/prefer-module": "off"
+      }
+    },
+    {
+      "files": [
+        "src/shared/__tests__/native-form.test.ts"
+      ],
+      "rules": {
+        "prefer-const": "off"
+      }
+    },
+    {
+      "files": [
+        "src/shared/static-styles.ts",
+        "src/components/json-view/json-view.ts"
+      ],
+      "rules": {
+        "unicorn/prefer-modern-dom-apis": "off"
+      }
+    },
+    {
+      "files": [
+        "src/components/book/book.ts"
+      ],
+      "rules": {
+        "unicorn/prefer-math-trunc": "off"
+      }
+    },
+    {
+      "files": [
+        "src/shared/flow-layout.ts"
+      ],
+      "rules": {
+        "promise/prefer-catch": "off",
+        "promise/prefer-await-to-callbacks": "off"
+      }
+    },
+    {
+      "files": [
+        "src/shared/overlay-placement.ts"
+      ],
+      "rules": {
+        "promise/prefer-await-to-callbacks": "off"
+      }
+    },
+    {
+      "files": [
+        "scripts/manifest.ts",
+        "tools/geist/gen.ts"
+      ],
+      "rules": {
+        "unicorn/no-useless-spread": "off"
+      }
+    },
+    {
+      "files": [
+        "scripts/styles.ts",
+        "scripts/__tests__/styles.test.ts"
+      ],
+      "rules": {
+        "eslint/no-useless-concat": "off"
+      }
+    },
+    {
+      "files": [
+        "src/base.ts"
+      ],
+      "rules": {
+        "import/no-mutable-exports": "off"
+      }
+    },
+    {
+      "files": [
+        "src/shared/theme-scope.ts",
+        "src/shared/typography-element.ts",
+        "packages/react/src/create-component.ts",
+        "scripts/styles.ts",
+        "tools/geist/gen.ts"
+      ],
+      "rules": {
+        "typescript/no-dynamic-delete": "off"
+      }
+    },
+    {
+      "files": [
+        "src/shared/date.ts"
+      ],
+      "rules": {
+        "no-redeclare": "off"
+      }
+    },
+    {
+      "files": [
+        "src/components/tree-view/tree-view.ts",
+        "tools/geist/gen.ts",
+        "scripts/dev.ts"
+      ],
+      "rules": {
+        "no-loop-func": "off"
+      }
+    },
+    {
+      "files": [
+        "site/app/example.ts",
+        "site/__tests__/format.test.ts",
+        "site/__tests__/recipes.test.ts",
+        "site/build.ts",
+        "tools/geist/census.js"
+      ],
+      "rules": {
+        "no-new-func": "off"
+      }
+    },
+    {
+      "files": [
+        "tools/geist/census.js"
+      ],
+      "rules": {
+        "unicorn/prefer-module": "off"
+      }
+    },
+    {
+      "files": [
+        "tools/geist/gen.ts"
+      ],
+      "rules": {
+        "oxc/no-accumulating-spread": "off"
+      }
+    },
+    {
+      "files": [
+        "src/components/tree-view/tree-view.ts",
+        "tools/geist/census.js"
+      ],
+      "rules": {
+        "no-unused-expressions": [
+          "error",
+          {
+            "allowTernary": true,
+            "allowShortCircuit": true
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "src/shared/theme-context.ts",
+        "src/shared/composed-participants.ts",
+        "src/shared/field-association.ts",
+        "src/shared/toast-store.ts",
+        "packages/devtools/src/diagnostics.ts"
+      ],
+      "rules": {
+        "unicorn/no-useless-spread": "off"
+      }
+    },
+    {
+      "files": [
+        "examples/table/worker-session.ts"
+      ],
+      "rules": {
+        "unicorn/require-post-message-target-origin": "off"
+      }
+    },
+    {
+      "files": [
+        "site/pages/components/button.ts",
+        "site/pages/components/code-block.ts",
+        "site/pages/components/scroll-area.ts",
+        "scripts/__tests__/entries.test.ts",
+        "scripts/__tests__/lint-policy.test.ts"
+      ],
+      "rules": {
+        "no-template-curly-in-string": "off"
+      }
+    },
+    {
+      "files": [
+        "src/shared/responsive-input.ts",
+        "src/components/slider/__tests__/slider-values.test.ts"
+      ],
+      "rules": {
+        "unicorn/no-new-array": "off"
+      }
+    },
+    {
+      "files": [
+        "src/shared/__tests__/responsive-input.test.ts",
+        "src/shared/__tests__/responsive.test.ts"
+      ],
+      "rules": {
+        "no-sparse-arrays": "off"
+      }
+    },
+    {
+      "files": [
+        "src/shared/semantic-element.ts",
+        "src/shared/action-element.ts",
+        "src/shared/single-line-control.ts",
+        "src/shared/text-control.ts",
+        "src/shared/option-control.ts",
+        "src/shared/selection-control.ts",
+        "src/shared/roving-tabindex.ts"
+      ],
+      "rules": {
+        "no-empty-function": [
+          "error",
+          {
+            "allow": [
+              "methods"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "scope": {
+    "excluded": "Generated classes/styles/entries, compiled packages, published site snapshot, downloaded corpus and build artifacts",
+    "css": "147 authored CSS files and167 compiled CSS outputs; only actual css-tagged TS templates enter postcss-lit",
+    "format": "Authored JS/TS;200 columns, all trailing commas,2 spaces, no import/package sorting or embedded-language rewriting; tools/geist/gen.ts uses280 columns to retain inline JSDoc attachment"
+  },
+  "tests": [
+    "scripts/__tests__/lint-policy.test.ts",
+    "scripts/__tests__/lint-source-guard.test.ts",
+    "scripts/__tests__/lint-lit-syntax.test.ts",
+    "scripts/__tests__/lint-files.test.ts",
+    "scripts/__tests__/lint.test.ts"
+  ],
+  "limits": [
+    "TypeScript5.9 remains the required compiler gate; no claim of TypeScript-Go equivalence.",
+    "This configuration does not validate CSS strings hidden inside arbitrary JavaScript strings; CSS producers and their canonical compiled outputs own that coverage.",
+    "The published website snapshot and historical corpus are not formatter targets."
+  ]
+}

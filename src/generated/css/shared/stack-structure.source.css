@@ -1,0 +1,37 @@
+@property --acme-stack-separator-width {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 1px;
+}
+@property --acme-stack-separator-inset {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+:host {
+  flex-direction: column;
+  align-items: stretch;
+  align-content: stretch;
+  justify-content: flex-start;
+  gap: var(--acme-layout-gap-2, var(--acme-spacing-2, .5rem));
+}
+[data-stack-overlay] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+[data-stack-measure] {
+  position: absolute;
+  width: max(0px, var(--acme-stack-separator-width, 1px));
+  height: max(0px, var(--acme-stack-separator-inset, 0px));
+  visibility: hidden;
+  pointer-events: none;
+}
+[data-stack-separator] {
+  position: absolute;
+  pointer-events: none;
+  --acme-separator-color: var(--acme-stack-separator-color, var(--ds-gray-200));
+  --acme-separator-width: max(0px, var(--acme-stack-separator-width, 1px));
+}

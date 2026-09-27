@@ -1,124 +1,67 @@
-import { describe, expect, test } from "bun:test";
-import "../../../index";
-import type { AcmeCodeBlock } from "../code-block";
+import { expect, test, spyOn } from "bun:test";
+import "../../../all";
+import { highlighter } from "../../../shared/highlight";
 
-const mount = async (markup: string) => {
-  document.body.innerHTML = markup;
-  const el = document.body.firstElementChild as AcmeCodeBlock;
-  await el.updateComplete;
-  return el;
-};
-const root = (el: AcmeCodeBlock) => el.shadowRoot!.querySelector(".code-block") as HTMLElement;
-const src = `function a() {\n  return 1;\n}`;
-
-describe("acme-code-block", () => {
-  test("a filename renders the bar with the file icon, the name and the copy button; the content is a grid of numbered lines", async () => {
-    const el = await mount(`<acme-code-block aria-label="Hello world" filename="Table.jsx" language="jsx">${src}</acme-code-block>`);
-    const r = root(el);
-    expect(r.classList.contains("with-bar")).toBe(true);
-    expect(r.getAttribute("aria-label")).toBe("Hello world");
-    expect(r.querySelector(".bar > .name > .file-icon svg")).not.toBeNull();
-    expect(r.querySelector(".bar > .name > .filename")!.textContent).toBe("Table.jsx");
-    // The button is acme-copy-button, composed rather than rebuilt: this asserts what the code
-    // block asks of it, and the button's own tests cover its icon stack and clipboard behaviour.
-    const copy = r.querySelector(".bar > .actions > acme-copy-button")!;
-    expect(copy.getAttribute("label")).toBe("Copy to clipboard");
-    expect(copy.getAttribute("text-to-copy")).toBe(src.trim());
-    expect(r.querySelector("acme-copy-button.floating")).toBeNull();
-    const lines = r.querySelectorAll(".content > pre.pre > code.body > .line");
-    expect(lines.length).toBe(3);
-    expect(lines[1].id).toBe("L2");
-    expect(lines[1].querySelector("button.ln")!.textContent).toBe("2");
-    expect(lines[1].querySelector(".ln")!.getAttribute("tabindex")).toBe("-1");
-    expect(lines[0].querySelector(".tokens .token.keyword")!.textContent).toBe("function");
-    expect(lines[0].hasAttribute("data-highlighted")).toBe(false);
+async function mount(code: string) {
+  const element = document.createElement("acme-code-block");
+  element.code = code;
+  document.body.replaceChildren(element);
+  await element.updateComplete;
+  return element;
+}
+test("Code Block preserves all source whitespace and exposes one code source", async () => {
+  const code = "\n  const answer = 42;  \n";
+  const element = await mount(code);
+  element.textContent = "not a second source";
+  await element.updateComplete;
+  expect(element.shadowRoot!.querySelector("acme-copy-button")!.value).toBe(code);
+  expect(element.shadowRoot!.querySelectorAll("[part=line]").length).toBe(3);
+  expect(element.shadowRoot!.textContent).not.toContain("not a second source");
+});
+test("line activation requests application state without changing the URL", async () => {
+  const element = await mount("one\ntwo\nthree");
+  const before = location.href,
+    requests: unknown[] = [];
+  element.addEventListener("acme-request", (event) => requests.push((event as CustomEvent).detail));
+  (element.shadowRoot!.querySelectorAll("[part=line-number]")[1] as HTMLButtonElement).click();
+  expect(requests).toEqual([{ action: "reference-line", line: 2 }]);
+  expect(element.referencedLine).toBeUndefined();
+  expect(location.href).toBe(before);
+  element.referencedLine = 2;
+  await element.updateComplete;
+  expect(element.shadowRoot!.querySelectorAll("[part=line]")[1].hasAttribute("data-active")).toBe(true);
+});
+test("line decorations are snapshotted and never create phantom lines", async () => {
+  const element = await mount("one\ntwo"),
+    values = [1, 9];
+  element.highlightedLines = values;
+  values.push(2);
+  element.addedLines = [2];
+  element.removedLines = [2];
+  await element.updateComplete;
+  expect(element.highlightedLines).toEqual([1, 9]);
+  expect(element.shadowRoot!.querySelectorAll("[part=line]").length).toBe(2);
+  expect(() => {
+    element.addedLines = [0];
+  }).toThrow();
+});
+test("a failed highlighter keeps escaped source and reports failure once", async () => {
+  const mock = spyOn(highlighter, "tokenize").mockImplementation(() => {
+    throw new Error("highlight failed");
   });
-
-  test("without a filename the copy button floats over the code", async () => {
-    const el = await mount(`<acme-code-block language="jsx">${src}</acme-code-block>`);
-    const r = root(el);
-    expect(r.classList.contains("with-bar")).toBe(false);
-    expect(r.querySelector(".bar")).toBeNull();
-    expect(r.querySelector(":scope > acme-copy-button.floating")).not.toBeNull();
-  });
-
-  test("highlighted, added and removed lines mark every line; hide-line-numbers marks the root", async () => {
-    const el = await mount(
-      `<acme-code-block filename="a.js" highlighted-lines-numbers="[1]" added-lines-numbers="[3]" removed-lines-numbers="[2]" hide-line-numbers language="js">${src}</acme-code-block>`,
-    );
-    const r = root(el);
-    expect(r.classList.contains("hide-numbers")).toBe(true);
-    const lines = r.querySelectorAll(".line");
-    expect(lines[0].getAttribute("data-highlighted")).toBe("true");
-    expect(lines[1].getAttribute("data-highlighted")).toBe("false");
-    expect(lines[1].getAttribute("data-removed")).toBe("true");
-    expect(lines[2].getAttribute("data-added")).toBe("true");
-  });
-
-  test("pressing a line number references the line and fires acme-reference; pressing again clears it", async () => {
-    const el = await mount(`<acme-code-block language="js">${src}</acme-code-block>`);
-    const seen: number[] = [];
-    el.addEventListener("acme-reference", (e) => seen.push((e as CustomEvent).detail.line));
-    (root(el).querySelectorAll(".ln")[1] as HTMLButtonElement).click();
-    await el.updateComplete;
-    expect(el.referencedLine).toBe(2);
-    expect(root(el).querySelectorAll(".line")[1].getAttribute("data-active")).toBe("true");
-    (root(el).querySelectorAll(".ln")[1] as HTMLButtonElement).click();
-    await el.updateComplete;
-    expect(el.referencedLine).toBe(0);
-    expect(seen).toEqual([2, 0]);
-  });
-
-  test("switcher composes an acme-select in the actions; its acme-change fires ours", async () => {
-    const el = await mount(
-      `<acme-code-block filename="a.js" language="js" switcher='[{"label":"JavaScript","value":"js"},{"label":"Lua","value":"lua"}]' switcher-value="js">${src}</acme-code-block>`,
-    );
-    const sw = root(el).querySelector(".actions > acme-select.switcher") as HTMLElement & { options: unknown[]; value: string };
-    expect(sw.options.length).toBe(2);
-    expect(sw.value).toBe("js");
-    const seen: string[] = [];
-    el.addEventListener("acme-change", (e) => seen.push((e as CustomEvent).detail.value));
-    // The composed select reports the new language the way it reports it to anyone.
-    sw.dispatchEvent(new CustomEvent("acme-change", { detail: { value: "lua" }, bubbles: true, composed: true }));
-    await el.updateComplete;
-    expect(seen).toEqual(["lua"]);
-    expect(sw.value).toBe("lua");
-  });
-
-  test("tabs render a strip with an acme-switch above the bar; the reference form with options and value is read too", async () => {
-    const el = await mount(
-      `<acme-code-block filename="a.js" language="js" tabs='{"options":[{"label":"JavaScript","value":"js"},{"label":"Lua","value":"lua"}],"value":"lua"}'>${src}</acme-code-block>`,
-    );
-    const strip = root(el).querySelector(":scope > .strip")!;
-    const group = strip.querySelector("acme-switch")!;
-    expect(group.getAttribute("value")).toBe("lua");
-    const controls = group.querySelectorAll("acme-switch-control");
-    expect(controls.length).toBe(2);
-    expect(controls[0].getAttribute("label")).toBe("JavaScript");
-    expect(root(el).querySelector(".switcher")).toBeNull();
-  });
-
-  test("v0 adds a foot: ask is a link button, build a split button", async () => {
-    const ask = await mount(`<acme-code-block filename="a.js" language="js" v0="ask">${src}</acme-code-block>`);
-    expect(root(ask).classList.contains("ask")).toBe(true);
-    const link = root(ask).querySelector(".foot > acme-button")!;
-    expect(link.getAttribute("href")!.startsWith("https://v0.app/chat?q=")).toBe(true);
-    expect(link.querySelector(".sr")!.textContent).toBe("Open in v0");
-    const build = await mount(`<acme-code-block filename="a.js" language="js" v0="build">${src}</acme-code-block>`);
-    expect(root(build).querySelector(".foot > acme-split-button")).not.toBeNull();
-  });
-
-  test("copy writes the source to the clipboard and fires acme-copy", async () => {
-    const written: string[] = [];
-    Object.defineProperty(navigator, "clipboard", { value: { writeText: async (t: string) => void written.push(t) }, configurable: true });
-    const el = await mount(`<acme-code-block filename="a.js" language="js" code="let x = 1">ignored</acme-code-block>`);
-    const seen: string[] = [];
-    el.addEventListener("acme-copy", (e) => seen.push((e as CustomEvent).detail.text));
-    // acme-copy is composed, so the button's event bubbles through the code block.
-    el.copy();
-    await new Promise((r) => setTimeout(r, 0));
-    await el.updateComplete;
-    expect(written).toEqual(["let x = 1"]);
-    expect(seen).toEqual(["let x = 1"]);
-  });
+  try {
+    const element = document.createElement("acme-code-block");
+    element.code = "<script>bad()</script>";
+    element.language = "html";
+    const errors: unknown[] = [];
+    element.addEventListener("acme-error", (event) => errors.push((event as CustomEvent).detail));
+    document.body.replaceChildren(element);
+    await element.updateComplete;
+    expect(element.shadowRoot!.querySelector("script")).toBeNull();
+    expect(element.shadowRoot!.querySelector("[part=code]")!.textContent).toContain("<script>bad()</script>");
+    expect(errors).toHaveLength(1);
+    expect((errors[0] as { code: string }).code).toBe("highlight");
+  } finally {
+    mock.mockRestore();
+  }
 });

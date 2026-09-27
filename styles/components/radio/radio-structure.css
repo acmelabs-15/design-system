@@ -1,0 +1,14 @@
+.indicator { border-radius:50%; }
+.indicator:before { content:""; inline-size:8px; block-size:8px; border-radius:50%; background:transparent; }
+.selection-label[data-checked] .indicator { border-color:var(--accent); }
+.selection-label[data-checked] .indicator:before { background:var(--accent); }
+.selection-label[data-checked][data-hover] .indicator:before { background:var(--accent-hover); }
+.selection-label[data-checked][data-active] .indicator:before { background:var(--accent-active); }
+.selection-label[data-disabled][data-checked] .indicator { border-color:var(--border); }
+.selection-label[data-disabled][data-checked] .indicator:before { background:var(--ds-gray-700); }
+@media(forced-colors:active){.selection-label[data-checked] .indicator { background:Canvas; border-color:Highlight; }.selection-label[data-checked] .indicator:before { background:Highlight; }}
+
+.selection-label[data-size=small] .indicator:before { inline-size:6px; block-size:6px; }
+.selection-label[data-size=large] .indicator:before { inline-size:10px; block-size:10px; }
+
+@media(forced-colors:active) { .selection-label[data-disabled] .indicator, .selection-label[data-disabled][data-checked] .indicator { background:Canvas; border-color:GrayText; } .selection-label[data-disabled][data-checked] .indicator:before { background:GrayText; } }

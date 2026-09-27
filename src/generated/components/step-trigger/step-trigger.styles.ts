@@ -1,0 +1,67 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const stepTriggerCss = css`:host {
+  min-inline-size: 0;
+  display: block;
+}
+
+button {
+  align-items: center;
+  gap: var(--acme-spacing-2);
+  padding: var(--acme-spacing-2) 0;
+  color: var(--ds-gray-1000);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  display: flex;
+}
+
+[part="label"] {
+  overflow-wrap: anywhere;
+}
+
+[part="indicator"] {
+  border: 1px solid var(--ds-gray-alpha-400);
+  block-size: 24px;
+  inline-size: 24px;
+  color: var(--ds-gray-900);
+  font-size: .75rem;
+  font-weight: var(--acme-font-weight-600);
+  border-radius: 50%;
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+[data-current] [part="indicator"], [data-complete] [part="indicator"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--ds-focus-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: highlight;
+  }
+
+  [data-current] [part="indicator"], [data-complete] [part="indicator"] {
+    color: highlighttext;
+    background: highlight;
+    border-color: highlight;
+  }
+}
+`;

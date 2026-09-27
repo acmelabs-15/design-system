@@ -21,6 +21,21 @@ const mount = async (markup: string) => {
 };
 
 describe("Places", () => {
+  test("a nested child's slot does not occupy the host's place", async () => {
+    const el = await mount('<places-probe><span><svg slot="start"></svg></span></places-probe>');
+    expect(el.places.has("start")).toBe(false);
+  });
+
+  test("changing a direct child's slot updates occupancy without an explicit read", async () => {
+    const el = await mount('<places-probe><span slot="start">Icon</span></places-probe>');
+    el.firstElementChild!.setAttribute("slot", "end");
+    await new Promise((resolve) => {
+      setTimeout(resolve, 0);
+    });
+    await el.updateComplete;
+    expect(el.places.has("start")).toBe(false);
+    expect(el.places.has("end")).toBe(true);
+  });
   test("an empty element fills no place and renders no place span", async () => {
     const el = await mount(`<places-probe>Text</places-probe>`);
     expect(el.places.has("start")).toBe(false);
@@ -72,4 +87,51 @@ describe("Places", () => {
     el.places.read();
     expect(updates).toBe(0);
   });
+});
+
+@customElement("places-default-probe")
+class DefaultPlacesProbe extends LitElement {
+  places = new Places(this, { places: [""] });
+  render() {
+    return html`<slot></slot>`;
+  }
+}
+test("default content tracks text edits and excludes private named children", async () => {
+  const host = document.createElement("places-default-probe") as DefaultPlacesProbe;
+  const privateChild = document.createElement("button");
+  privateChild.slot = "acme-form-submitter";
+  host.append(privateChild);
+  document.body.append(host);
+  await host.updateComplete;
+  expect(host.places.has("")).toBe(false);
+  const label = document.createTextNode("Copy");
+  host.append(label);
+  await new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
+  expect(host.places.has("")).toBe(true);
+  label.data = "   ";
+  await new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
+  expect(host.places.has("")).toBe(false);
+  host.remove();
+});
+@customElement("places-fallback-probe")
+class FallbackPlacesProbe extends LitElement {
+  places = new Places(this, { places: [""] });
+  render() {
+    return html`<slot><span>Default content</span></slot>`;
+  }
+}
+test("a component fallback does not count as author-assigned content", async () => {
+  const host = document.createElement("places-fallback-probe") as FallbackPlacesProbe;
+  document.body.append(host);
+  await host.updateComplete;
+  host.places.read();
+  expect(host.places.has("")).toBe(false);
+  host.append(document.createElement("span"));
+  host.places.read();
+  expect(host.places.has("")).toBe(true);
+  host.remove();
 });

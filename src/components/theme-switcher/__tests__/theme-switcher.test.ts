@@ -1,73 +1,88 @@
-import { describe, expect, test } from "bun:test";
-import "../../../index";
-import { themeStore } from "../../../shared/state";
+import { afterEach, expect, test } from "bun:test";
+import "../../../all";
 import type { AcmeThemeSwitcher } from "../theme-switcher";
 
-const mount = async (markup: string) => {
-  document.body.innerHTML = markup;
-  const el = document.body.firstElementChild as AcmeThemeSwitcher;
-  await el.updateComplete;
-  return el;
+afterEach(() => {
+  document.body.replaceChildren();
+});
+const mount = async (attributes = "") => {
+  document.body.innerHTML = `<acme-theme-switcher ${attributes}></acme-theme-switcher>`;
+  const element = document.body.firstElementChild as AcmeThemeSwitcher;
+  await settle(element);
+  return element;
 };
-const options = (el: AcmeThemeSwitcher) => [...el.shadowRoot!.querySelectorAll(".option")] as HTMLElement[];
-const radios = (el: AcmeThemeSwitcher) => [...el.shadowRoot!.querySelectorAll("input")] as HTMLInputElement[];
+const selector = (element: AcmeThemeSwitcher) => element.shadowRoot!.querySelector("acme-segmented-control")!;
+const items = (element: AcmeThemeSwitcher) => [...element.shadowRoot!.querySelectorAll("acme-segmented-control-item")];
+const radios = (element: AcmeThemeSwitcher) => items(element).map((item) => item.shadowRoot!.querySelector("input")!);
+const settle = async (element: AcmeThemeSwitcher) => {
+  await element.updateComplete;
+  await selector(element).updateComplete;
+  await Promise.all(items(element).map((item) => item.updateComplete));
+};
 
-describe("acme-theme-switcher", () => {
-  test("a fieldset with a hidden legend and three radios system, light, dark under round labels", async () => {
-    themeStore.setState(() => "auto");
-    const el = await mount(`<acme-theme-switcher></acme-theme-switcher>`);
-    const root = el.shadowRoot!.querySelector("fieldset.switcher")!;
-    expect(root.querySelector("legend.legend")!.textContent).toBe("Select a display theme:");
-    expect(root.hasAttribute("data-small")).toBe(false);
-    const rs = radios(el);
-    expect(rs.map((r) => r.getAttribute("aria-label"))).toEqual(["system", "light", "dark"]);
-    expect(rs.every((r) => r.type === "radio")).toBe(true);
-    for (const r of rs) {
-      const label = r.nextElementSibling as HTMLLabelElement;
-      expect(label.classList.contains("control")).toBe(true);
-      expect(label.getAttribute("for")).toBe(r.id);
-      expect(label.querySelector(".sr")!.textContent).toBe(r.value);
-      expect(label.querySelector(".icon svg")).not.toBeNull();
-    }
-    expect(rs[0].checked).toBe(true);
-    expect(options(el)[0].hasAttribute("data-checked")).toBe(true);
-    expect(options(el)[1].hasAttribute("data-checked")).toBe(false);
-  });
+test("renders one named native radio group with auto selected and small default size", async () => {
+  const element = await mount();
+  const inputs = radios(element);
+  expect(element.value).toBe("auto");
+  expect(element.size).toBe("small");
+  expect(inputs.map((input) => input.getAttribute("aria-label"))).toEqual(["System", "Light", "Dark"]);
+  expect(inputs.every((input) => input.type === "radio")).toBe(true);
+  expect(selector(element).value).toBe("auto");
+  expect(inputs.map((input) => input.checked)).toEqual([true, false, false]);
+  expect(element.shadowRoot!.querySelector('[part="root"]')).not.toBeNull();
+});
 
-  test("small marks the fieldset and the labels with data-small", async () => {
-    const el = await mount(`<acme-theme-switcher small></acme-theme-switcher>`);
-    expect(el.shadowRoot!.querySelector("fieldset")!.hasAttribute("data-small")).toBe(true);
-    expect([...el.shadowRoot!.querySelectorAll("label")].every((l) => l.hasAttribute("data-small"))).toBe(true);
+test("requests a preference without owning it, writing root attributes or saving storage", async () => {
+  const root = document.documentElement.outerHTML.split("<body")[0];
+  const stored = window.localStorage.getItem("theme-pref");
+  const element = await mount();
+  let detail: unknown;
+  element.addEventListener("acme-request", (event) => {
+    detail = (event as CustomEvent).detail;
   });
+  items(element)[2].click();
+  await settle(element);
+  expect(detail).toEqual({ action: "appearance", value: "dark" });
+  expect(element.value).toBe("auto");
+  expect(radios(element).map((input) => input.checked)).toEqual([true, false, false]);
+  expect(document.documentElement.outerHTML.split("<body")[0]).toBe(root);
+  expect(window.localStorage.getItem("theme-pref")).toBe(stored);
+});
 
-  test("disabled disables every radio and marks every option", async () => {
-    const el = await mount(`<acme-theme-switcher disabled></acme-theme-switcher>`);
-    expect(radios(el).every((r) => r.disabled)).toBe(true);
-    expect(options(el).every((o) => o.hasAttribute("data-disabled"))).toBe(true);
+test("application updates drive the control and programmatic updates emit no request", async () => {
+  const element = await mount();
+  const requests: unknown[] = [];
+  element.addEventListener("acme-request", (event) => {
+    const detail = (event as CustomEvent).detail;
+    requests.push(detail);
+    element.value = detail.value;
   });
+  items(element)[2].click();
+  await settle(element);
+  expect(element.value).toBe("dark");
+  expect(radios(element)[2].checked).toBe(true);
+  element.value = "light";
+  await settle(element);
+  expect(radios(element)[1].checked).toBe(true);
+  expect(requests).toEqual([{ action: "appearance", value: "dark" }]);
+});
 
-  test("choosing a radio writes the theme store and data-theme on the root; the store drives the checked radio back", async () => {
-    themeStore.setState(() => "auto");
-    const el = await mount(`<acme-theme-switcher></acme-theme-switcher>`);
-    let heard = "";
-    el.addEventListener("acme-change", (e) => {
-      heard = (e as CustomEvent).detail.theme;
-    });
-    const dark = radios(el)[2];
-    dark.checked = true;
-    dark.dispatchEvent(new Event("change"));
-    await el.updateComplete;
-    expect(themeStore.state).toBe("dark");
-    expect(document.documentElement.dataset.theme).toBe("dark");
-    expect(heard).toBe("dark");
-    expect(options(el)[2].hasAttribute("data-checked")).toBe(true);
-    themeStore.setState(() => "light");
-    await el.updateComplete;
-    expect(radios(el)[1].checked).toBe(true);
-    expect(options(el)[1].hasAttribute("data-checked")).toBe(true);
-    expect(options(el)[2].hasAttribute("data-checked")).toBe(false);
-    themeStore.setState(() => "auto");
-    await el.updateComplete;
-    expect(document.documentElement.hasAttribute("data-theme")).toBe(false);
-  });
+test("disabled blocks requests and named sizes reach the rendered root", async () => {
+  const element = await mount('disabled size="large" value="dark"');
+  let requests = 0;
+  element.addEventListener("acme-request", () => requests++);
+  expect(radios(element).every((input) => input.disabled)).toBe(true);
+  items(element)[0].click();
+  expect(requests).toBe(0);
+  expect(selector(element).size).toBe("large");
+});
+
+test("removing authored value and size attributes restores the declared defaults", async () => {
+  const element = await mount('size="large" value="dark"');
+  element.removeAttribute("value");
+  element.removeAttribute("size");
+  await settle(element);
+  expect(element.value).toBe("auto");
+  expect(element.size).toBe("small");
+  expect(radios(element).map((input) => input.checked)).toEqual([true, false, false]);
 });

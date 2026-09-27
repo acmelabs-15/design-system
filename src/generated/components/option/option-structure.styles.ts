@@ -1,0 +1,64 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const optionStructureCss = css`:host {
+  min-inline-size: 0;
+  display: block;
+}
+
+:host([data-option-hidden]) {
+  display: none !important;
+}
+
+.option {
+  min-block-size: var(--ds-popover-row-height, 36px);
+  padding: var(--ds-popover-row-padding, 8px);
+  border-radius: var(--ds-popover-row-radius, 6px);
+  color: var(--ds-gray-1000);
+  cursor: pointer;
+  align-items: center;
+  gap: 8px;
+  display: flex;
+}
+
+.option[data-highlighted] {
+  background: var(--ds-gray-alpha-100);
+  box-shadow: inset 0 0 0 1px var(--ds-gray-800);
+}
+
+.option[data-disabled] {
+  color: var(--ds-gray-700);
+  cursor: default;
+}
+
+.content {
+  overflow-wrap: anywhere;
+  flex: 1;
+  min-inline-size: 0;
+}
+
+.description {
+  color: var(--ds-gray-900);
+  font-size: 12px;
+  display: block;
+}
+
+.indicator {
+  visibility: hidden;
+  flex-shrink: 0;
+}
+
+.indicator[data-selected] {
+  visibility: visible;
+}
+
+@media (forced-colors: active) {
+  .option[data-highlighted] {
+    outline-offset: -2px;
+    outline: 2px solid highlight;
+  }
+
+  .option[data-disabled] {
+    color: graytext;
+  }
+}
+`;

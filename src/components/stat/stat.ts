@@ -1,55 +1,59 @@
-import { css, html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base";
-import { badgeCss } from "../badge/badge.styles";
-import { statusDotCss } from "../status-dot/status-dot.styles";
-import { trendCss } from "../trend/trend.styles";
-import { statCss } from "./stat.styles";
-
-/** House Stat: the one component for a headline figure. Slots: label, context, icon, end, default (value), unit, trend, delta, desc, meter, spark, meta, foot. */
-@customElement("acme-stat")
-export class AcmeStat extends AcmeElement {
-  static styles = [
-    sharedCss,
-    statCss,
-    trendCss,
-    badgeCss,
-    statusDotCss,
-    css`
-      :host {
-        display: flex;
-        flex: 1;
-        min-width: 0;
-      }
-      dl {
-        width: 100%;
-      }
-      .value ::slotted(acme-trend) {
-        align-self: center;
-      }
-      .meter ::slotted(*) {
-        display: block;
-      }
-    `,
-  ];
-  @property() label = "";
-  @property() context = "";
-  @property() unit = "";
-  @property({ type: Boolean, attribute: "title-label" }) titleLabel = false;
-  @property({ type: Number }) meter = -1;
-  @property() meterLabel = "";
-  @property({ type: Boolean, attribute: "meter-warn" }) meterWarn = false;
+import { ContextProvider } from "@lit/context";
+import { createAtom } from "@tanstack/lit-store";
+import { html } from "lit";
+import { property } from "lit/decorators.js";
+import { sharedCss } from "../../base";
+import { statSurfaceCss } from "../../generated/shared/stat-surface.styles";
+import { atomState } from "../../shared/atom-state";
+import { ComposedParticipants } from "../../shared/composed-participants";
+import { AcmeSemanticElement } from "../../shared/semantic-element";
+import { isStatBoundary, registerStatBoundary, type StatOwner, type StatPart, statContext, statPartFor } from "../../shared/stat-context";
+/** A named measurement composed from native terms, values and supporting content.
+ * @slot - Stat Label, Value, Description, Change and Footer parts.
+ * @csspart root - Native description list.
+ */
+export class AcmeStat extends AcmeSemanticElement {
+  static styles = [sharedCss, statSurfaceCss];
+  @atomState() private scale: "small" | "medium" | "large" = "medium";
+  /** @default "medium" */
+  @property({ noAccessor: true, useDefault: true }) get size() {
+    return this.scale;
+  }
+  set size(value: "small" | "medium" | "large") {
+    if (!["small", "medium", "large"].includes(value)) {
+      throw new TypeError("Invalid Stat size");
+    }
+    const previous = this.scale;
+    this.scale = value;
+    this.requestUpdate("size", previous);
+  }
+  @atomState() @property({ noAccessor: true, type: Boolean }) loading = false;
+  private readonly state = createAtom(() => ({ loading: this.loading }));
+  private readonly parts = createAtom<readonly StatPart[]>([]);
+  private readonly owner: StatOwner = {
+    state: this.state,
+    register: (part) => {
+      this.parts.set((parts) => [...parts, part]);
+      return () => this.parts.set((parts) => parts.filter((item) => item !== part));
+    },
+  };
+  private readonly provider = new ContextProvider(this, { context: statContext, initialValue: this.owner });
+  private readonly participants = new ComposedParticipants(this, {
+    owner: this.owner,
+    parts: () => this.parts.get(),
+    find: statPartFor,
+    boundary: isStatBoundary,
+    descend: () => true,
+    slots: () => [...this.renderRoot.querySelectorAll("slot")],
+  });
+  constructor() {
+    super();
+    registerStatBoundary(this);
+  }
   render() {
-    return html`<dl class="stat" part="stat">
-      <div class="head"><slot name="icon"></slot><dt class=${this.cls("label", { title: this.titleLabel })}>${this.label}<slot name="label"></slot></dt><dd class=${this.cls("context", { sub: this.titleLabel })}>${this.context}<slot name="context"></slot></dd><span class="end"><slot name="end"></slot></span></div>
-      <dd class="value"><slot></slot>${this.unit ? html`<span class="unit">${this.unit}</span>` : nothing}<slot name="trend"></slot></dd>
-      <slot name="delta"></slot><slot name="desc"></slot>
-      ${this.meter >= 0 ? html`<dd class=${this.cls("meter", { warn: this.meterWarn })}>${this.meterLabel ? html`<div class="meter-label lg">${this.meterLabel}</div>` : nothing}<div class="track"><span class="fill" style=${`width:${Math.min(100, this.meter)}%`}></span></div><slot name="meter-label"></slot></dd>` : nothing}
-      <slot name="spark"></slot><slot name="meta"></slot><slot name="foot"></slot>
-    </dl>`;
+    return html`<dl part="root" data-kind="stat" data-size=${this.size} aria-busy=${String(this.loading)}><slot></slot></dl>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-stat": AcmeStat;

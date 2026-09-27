@@ -1,0 +1,32 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const typographyCss = css`:host {
+  display: inline;
+}
+
+[part~="root"] {
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+}
+
+:host([data-acme-text-inline]:is([truncate], [data-acme-text-clamp])) {
+  max-width: 100%;
+  display: inline-block;
+}
+
+:host([truncate]:not([data-acme-text-clamp])) [part~="root"] {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+:host([data-acme-text-clamp]) [part~="root"] {
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+}
+`;

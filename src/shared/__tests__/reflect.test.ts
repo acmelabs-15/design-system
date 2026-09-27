@@ -1,5 +1,12 @@
 import { describe, expect, test } from "bun:test";
-import "../../index";
+import { LitElement } from "lit";
+import "../../all";
+
+class ReflectionProbe extends LitElement {
+  static properties = { as: { reflect: true, useDefault: true } };
+  as = "li";
+}
+customElements.define("test-reflected-default", ReflectionProbe);
 
 /**
  * A reflected property whose default is not empty writes that default onto the host as an attribute
@@ -16,19 +23,23 @@ describe("reflected properties do not spawn attributes the consumer never set", 
   };
 
   test("a default value reflects nothing", async () => {
-    expect((await mount(`<acme-sheet></acme-sheet>`)).hasAttribute("side")).toBe(false);
-    expect((await mount(`<acme-entity></acme-entity>`)).hasAttribute("as")).toBe(false);
+    expect((await mount(`<acme-app-bar></acme-app-bar>`)).hasAttribute("placement")).toBe(false);
+    expect((await mount(`<test-reflected-default></test-reflected-default>`)).hasAttribute("as")).toBe(false);
   });
 
   test("a value the consumer sets still reflects", async () => {
-    expect((await mount(`<acme-sheet side="left"></acme-sheet>`)).getAttribute("side")).toBe("left");
-    expect((await mount(`<acme-entity as="div"></acme-entity>`)).getAttribute("as")).toBe("div");
+    expect((await mount(`<acme-app-bar placement="sticky"></acme-app-bar>`)).getAttribute("placement")).toBe("sticky");
+    expect((await mount(`<test-reflected-default as="div"></test-reflected-default>`)).getAttribute("as")).toBe("div");
   });
 
   test("a value set through the property reflects too", async () => {
-    const el = (await mount(`<acme-sheet></acme-sheet>`)) as HTMLElement & { side: string; updateComplete: Promise<unknown> };
-    el.side = "top";
+    const el = (await mount(`<acme-app-bar></acme-app-bar>`)) as HTMLElement & { placement: string; updateComplete: Promise<unknown> };
+    el.placement = "sticky";
     await el.updateComplete;
-    expect(el.getAttribute("side")).toBe("top");
+    expect(el.getAttribute("placement")).toBe("sticky");
+    const probe = (await mount(`<test-reflected-default></test-reflected-default>`)) as ReflectionProbe;
+    probe.as = "div";
+    await probe.updateComplete;
+    expect(probe.getAttribute("as")).toBe("div");
   });
 });

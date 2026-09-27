@@ -1,0 +1,19 @@
+:host {
+  display: inline-block;
+  flex-direction: row;
+  align-items: center;
+  align-content: normal;
+  justify-content: flex-start;
+  gap: var(--acme-layout-gap-2, var(--acme-spacing-2, .5rem));
+}
+:host(:where([grow])) { display: block; }
+:host(:where([outline])) {
+  border: var(--acme-group-outline-width, 1px) solid var(--acme-group-outline-color, var(--ds-gray-200));
+  border-radius: var(--acme-group-outline-radius, var(--r, 8px));
+  padding: var(--acme-group-outline-padding, 0px);
+}
+:host([attached]) [part~="root"] {
+  gap: 0 !important;
+  row-gap: 0 !important;
+  column-gap: 0 !important;
+}

@@ -1,0 +1,832 @@
+{
+  "date": "2026-09-21",
+  "batch": "M09 identity",
+  "status": "implemented and verified; M09 complete at its assigned boundary",
+  "entries": [
+    "Avatar",
+    "Avatar Group",
+    "Badge",
+    "Pill",
+    "Tag"
+  ],
+  "native": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "missing src creates no invented network image",
+            "ok": true
+          },
+          {
+            "name": "tiny Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "small Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "medium Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "large Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "explicit Avatar width retains square dimensions",
+            "ok": true
+          },
+          {
+            "name": "native image success hides fallback and emits once",
+            "ok": true
+          },
+          {
+            "name": "native image failure restores fallback with secret-free detail",
+            "ok": true
+          },
+          {
+            "name": "source replacement rejects obsolete completion",
+            "ok": true
+          },
+          {
+            "name": "disconnected image completion emits no result",
+            "ok": true
+          },
+          {
+            "name": "reconnection resolves the current completed image",
+            "ok": true
+          },
+          {
+            "name": "default group shows two people plus an exact count",
+            "ok": true
+          },
+          {
+            "name": "Group composes measured overlapping members",
+            "ok": true
+          },
+          {
+            "name": "avatar overlap follows RTL",
+            "ok": true
+          },
+          {
+            "name": "reordering retains keyed member identity",
+            "ok": true
+          },
+          {
+            "name": "extra-only one is visible and accurately named",
+            "ok": true
+          },
+          {
+            "name": "visual cap retains the full accessible count",
+            "ok": true
+          },
+          {
+            "name": "overflow number order is isolated from RTL membership",
+            "ok": true
+          },
+          {
+            "name": "small identity presentation has distinct source geometry",
+            "ok": true
+          },
+          {
+            "name": "medium identity presentation has distinct source geometry",
+            "ok": true
+          },
+          {
+            "name": "large identity presentation has distinct source geometry",
+            "ok": true
+          },
+          {
+            "name": "Pill href produces a native focusable link",
+            "ok": true
+          },
+          {
+            "name": "identity surfaces inherit the dark theme",
+            "ok": true
+          },
+          {
+            "name": "trusted Pill click navigates",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "missing src creates no invented network image",
+            "ok": true
+          },
+          {
+            "name": "tiny Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "small Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "medium Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "large Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "explicit Avatar width retains square dimensions",
+            "ok": true
+          },
+          {
+            "name": "native image success hides fallback and emits once",
+            "ok": true
+          },
+          {
+            "name": "native image failure restores fallback with secret-free detail",
+            "ok": true
+          },
+          {
+            "name": "source replacement rejects obsolete completion",
+            "ok": true
+          },
+          {
+            "name": "disconnected image completion emits no result",
+            "ok": true
+          },
+          {
+            "name": "reconnection resolves the current completed image",
+            "ok": true
+          },
+          {
+            "name": "default group shows two people plus an exact count",
+            "ok": true
+          },
+          {
+            "name": "Group composes measured overlapping members",
+            "ok": true
+          },
+          {
+            "name": "avatar overlap follows RTL",
+            "ok": true
+          },
+          {
+            "name": "reordering retains keyed member identity",
+            "ok": true
+          },
+          {
+            "name": "extra-only one is visible and accurately named",
+            "ok": true
+          },
+          {
+            "name": "visual cap retains the full accessible count",
+            "ok": true
+          },
+          {
+            "name": "overflow number order is isolated from RTL membership",
+            "ok": true
+          },
+          {
+            "name": "small identity presentation has distinct source geometry",
+            "ok": true
+          },
+          {
+            "name": "medium identity presentation has distinct source geometry",
+            "ok": true
+          },
+          {
+            "name": "large identity presentation has distinct source geometry",
+            "ok": true
+          },
+          {
+            "name": "Pill href produces a native focusable link",
+            "ok": true
+          },
+          {
+            "name": "identity surfaces inherit the dark theme",
+            "ok": true
+          },
+          {
+            "name": "trusted Pill click navigates",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "missing src creates no invented network image",
+            "ok": true
+          },
+          {
+            "name": "tiny Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "small Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "medium Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "large Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "explicit Avatar width retains square dimensions",
+            "ok": true
+          },
+          {
+            "name": "native image success hides fallback and emits once",
+            "ok": true
+          },
+          {
+            "name": "native image failure restores fallback with secret-free detail",
+            "ok": true
+          },
+          {
+            "name": "source replacement rejects obsolete completion",
+            "ok": true
+          },
+          {
+            "name": "disconnected image completion emits no result",
+            "ok": true
+          },
+          {
+            "name": "reconnection resolves the current completed image",
+            "ok": true
+          },
+          {
+            "name": "default group shows two people plus an exact count",
+            "ok": true
+          },
+          {
+            "name": "Group composes measured overlapping members",
+            "ok": true
+          },
+          {
+            "name": "avatar overlap follows RTL",
+            "ok": true
+          },
+          {
+            "name": "reordering retains keyed member identity",
+            "ok": true
+          },
+          {
+            "name": "extra-only one is visible and accurately named",
+            "ok": true
+          },
+          {
+            "name": "visual cap retains the full accessible count",
+            "ok": true
+          },
+          {
+            "name": "overflow number order is isolated from RTL membership",
+            "ok": true
+          },
+          {
+            "name": "small identity presentation has distinct source geometry",
+            "ok": true
+          },
+          {
+            "name": "medium identity presentation has distinct source geometry",
+            "ok": true
+          },
+          {
+            "name": "large identity presentation has distinct source geometry",
+            "ok": true
+          },
+          {
+            "name": "Pill href produces a native focusable link",
+            "ok": true
+          },
+          {
+            "name": "identity surfaces inherit the dark theme",
+            "ok": true
+          },
+          {
+            "name": "trusted Pill click navigates",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "sources": [
+    {
+      "file": "src/components/avatar/avatar.ts",
+      "sha256": "e20ee2fd5875479eae3ac97775a50e538fa7422b981afacdce5faac2265abcba"
+    },
+    {
+      "file": "src/components/avatar-group/avatar-group.ts",
+      "sha256": "aa11b1ab36a0a64d076baace8e51c9965739be7c839b75d843896b24c0ad05b5"
+    },
+    {
+      "file": "src/components/badge/badge.ts",
+      "sha256": "fded40e51287a8208f551239ed095afd655ba434d76eabe5e05aa34f6ca57158"
+    },
+    {
+      "file": "src/components/pill/pill.ts",
+      "sha256": "9dbb4efb9669bccb69930595e4e14d6d457888a84e133de2f6f5cf082aab1c1e"
+    },
+    {
+      "file": "src/components/tag/tag.ts",
+      "sha256": "e5a078bed3a8e13a5d5b0bb48661eb419c8d1b6bb65ccb12123413024e7da2c0"
+    },
+    {
+      "file": "styles/components/avatar/avatar-structure.css",
+      "sha256": "62783d6b312f667be8a4e2df4ceabef2f2b6c5efbcb4806b36bf0c327498df65"
+    },
+    {
+      "file": "styles/components/avatar-group/avatar-group-structure.css",
+      "sha256": "e2db44583dff2ae216a15996cd9f52bef1d8148ae356153fc19577af4c9de3ae"
+    },
+    {
+      "file": "scripts/styles.ts",
+      "sha256": "e06cf7ef366ca52e930f31e39f61a88506dc20d29e40d28f2f73681f86abaa16"
+    },
+    {
+      "file": "scripts/theme-tokens.ts",
+      "sha256": "dccaa201799977425e447d501744adda1a7b2397793f883ec04ba337b2c3fe34"
+    },
+    {
+      "file": "tools/geist/gen.ts",
+      "sha256": "d1b7f2aae86f6f078006e70faae864630eb72bfd46cf4087a2f5a6825c644361"
+    }
+  ],
+  "fixtures": [
+    {
+      "origin": "/tmp/acme-m09-identity/probe.ts",
+      "source": "import {AcmeAvatar} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/avatar/avatar';\nimport {AcmeAvatarGroup} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/avatar-group/avatar-group';\nimport {AcmeBadge} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/badge/badge';\nimport {AcmePill} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/pill/pill';\nimport {AcmeTag} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/tag/tag';\nimport {AcmeGroup} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/group/group';\nimport {AcmeTheme} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/theme/theme';\nimport {AcmePersonIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/icons/classes/person-icon';\nfor(const [tag,constructor]of [['acme-avatar',AcmeAvatar],['acme-avatar-group',AcmeAvatarGroup],['acme-badge',AcmeBadge],['acme-pill',AcmePill],['acme-tag',AcmeTag],['acme-group',AcmeGroup],['acme-theme',AcmeTheme],['acme-person-icon',AcmePersonIcon]] as const)customElements.define(tag,constructor);\nconst results:any[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});const wait=()=>new Promise(r=>setTimeout(r,50));const until=async(fn:()=>boolean)=>{for(let i=0;i<60&&!fn();i++)await wait();if(!fn())throw Error('condition timed out');};const root=(host:Element)=>host.shadowRoot!.querySelector('[part=root]') as HTMLElement;\ntry{\nconst avatar=new AcmeAvatar();avatar.label='Élodie Brontë';document.body.append(avatar);await avatar.updateComplete;check('missing src creates no invented network image',!root(avatar).querySelector('img')&&root(avatar).querySelector('[part=fallback]')!.textContent==='ÉB');\nfor(const [size,px]of [['tiny',16],['small',24],['medium',32],['large',48]] as const){avatar.size=size;await avatar.updateComplete;await wait();check(`${size} Avatar preserves equal source dimensions`,avatar.offsetWidth===px&&avatar.offsetHeight===px,{width:avatar.offsetWidth,height:avatar.offsetHeight});}\navatar.width='64px';await avatar.updateComplete;await wait();check('explicit Avatar width retains square dimensions',avatar.offsetWidth===64&&avatar.offsetHeight===64,{width:avatar.offsetWidth,height:avatar.offsetHeight});avatar.width=undefined;\nlet load=0,errors:any[]=[];avatar.addEventListener('acme-load',()=>load++);avatar.addEventListener('acme-error',e=>errors.push((e as CustomEvent).detail));avatar.src='/good.svg';await until(()=>root(avatar).dataset.state==='loaded');check('native image success hides fallback and emits once',load===1&&root(avatar).querySelector('[part=fallback]')!.hasAttribute('hidden')&&!root(avatar).querySelector('img')!.hidden);\navatar.src='/bad-image?secret=value';await until(()=>root(avatar).dataset.state==='error');check('native image failure restores fallback with secret-free detail',errors.length===1&&!JSON.stringify(errors).includes('secret')&&!root(avatar).querySelector('[part=fallback]')!.hasAttribute('hidden'));\navatar.src='/slow.svg';await avatar.updateComplete;avatar.src='/good.svg?next';await until(()=>root(avatar).dataset.state==='loaded');await new Promise(r=>setTimeout(r,180));check('source replacement rejects obsolete completion',load===2&&errors.length===1);\navatar.src='/slow.svg?disconnect';await avatar.updateComplete;avatar.remove();await new Promise(r=>setTimeout(r,180));check('disconnected image completion emits no result',load===2);document.body.append(avatar);await until(()=>root(avatar).dataset.state==='loaded');check('reconnection resolves the current completed image',load===3);\nconst group=new AcmeAvatarGroup();const members=Array.from({length:5},(_,i)=>({id:String(i),label:`Person ${i}`,initials:String(i)}));group.members=members;document.body.append(group);await wait();await wait();const images=()=>[...group.shadowRoot!.querySelectorAll('acme-avatar')];check('default group shows two people plus an exact count',images().length===2&&group.shadowRoot!.querySelector('.count')!.textContent==='+3');const boxes=images().map(e=>e.getBoundingClientRect());check('Group composes measured overlapping members',boxes[1].left>boxes[0].left&&boxes[1].left<boxes[0].right,{boxes:boxes.map(r=>r.toJSON())});\ngroup.dir='rtl';await wait();check('avatar overlap follows RTL',images()[1].getBoundingClientRect().right>images()[0].getBoundingClientRect().left&&images()[1].getBoundingClientRect().left<images()[0].getBoundingClientRect().left);\ngroup.limit=0;await wait();const first=images()[0];group.members=[...members].reverse();await wait();check('reordering retains keyed member identity',images()[4]===first);group.members=[];group.extra=1;await wait();check('extra-only one is visible and accurately named',images().length===0&&group.shadowRoot!.querySelector('.count')!.textContent==='+1'&&group.shadowRoot!.querySelector('.sr')!.textContent==='1 more person');group.extra=12;await wait();check('visual cap retains the full accessible count',group.shadowRoot!.querySelector('.count')!.textContent==='9+'&&group.shadowRoot!.querySelector('.sr')!.textContent==='12 more people');\ncheck('overflow number order is isolated from RTL membership',group.shadowRoot!.querySelector('.count')!.localName==='bdi'&&getComputedStyle(group.shadowRoot!.querySelector('.count')!).direction==='ltr');const badge=new AcmeBadge();badge.textContent='Ready';const pill=new AcmePill();pill.textContent='Category';const tag=new AcmeTag();tag.textContent='typescript';document.body.append(badge,pill,tag);for(const [i,size]of ['small','medium','large'].entries()){badge.size=size as any;pill.size=size as any;tag.size=size as any;await wait();check(`${size} identity presentation has distinct source geometry`,root(badge).offsetHeight===[20,24,32][i]&&root(pill).offsetHeight===[20,24,32][i]&&root(tag).offsetHeight===[16,20,24][i],{badge:root(badge).offsetHeight,pill:root(pill).offsetHeight,tag:root(tag).offsetHeight});}\npill.href='#destination';pill.id='pill-link';pill.target='_self';await pill.updateComplete;pill.focus();check('Pill href produces a native focusable link',root(pill).localName==='a'&&pill.shadowRoot!.activeElement===root(pill));\nconst theme=new AcmeTheme();theme.appearance='dark';theme.append(badge,tag,group);document.body.append(theme);await wait();check('identity surfaces inherit the dark theme',badge.hasAttribute('data-dark')&&tag.hasAttribute('data-dark')&&group.hasAttribute('data-dark'));(window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n"
+    },
+    {
+      "origin": "/tmp/acme-m09-identity/run.ts",
+      "source": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m09-identity\",root=\"/Users/peterkloss/Dev/ACMElabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\",splitting:true});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname==='/good.svg'||url.pathname==='/slow.svg'){const response=()=>new Response('<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\"><rect width=\"32\" height=\"32\" fill=\"steelblue\"/></svg>',{headers:{'Content-Type':'image/svg+xml'}});if(url.pathname==='/slow.svg')return new Promise(resolve=>setTimeout(()=>resolve(response()),120));return response();}if(url.pathname==='/bad-image')return new Response('not an image',{status:404});if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/src/generated/css/document/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname.endsWith(\".js\")&&url.pathname!==\"/probe.js\")return new Response(Bun.file(directory+\"/bundle\"+url.pathname),{headers:{\"Content-Type\":\"text/javascript\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(!data.error){await page.locator('#pill-link').click();data.results.push({name:'trusted Pill click navigates',ok:new URL(page.url()).hash==='#destination'});if(engine==='chromium')await page.screenshot({path:directory+'/identity.png',fullPage:true});}if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.length!==24||r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+    },
+    {
+      "origin": "/tmp/acme-m09-identity-compiled/probe.ts",
+      "source": "import {AcmeAvatar} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/avatar/avatar.js';\nimport {AcmeAvatarGroup} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/avatar-group/avatar-group.js';\nimport {AcmeBadge} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/badge/badge.js';\nimport {AcmePill} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/pill/pill.js';\nimport {AcmeTag} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/tag/tag.js';\nimport {AcmeGroup} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/group/group.js';\nimport {AcmeTheme} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/theme/theme.js';\nimport {AcmePersonIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/generated/icons/classes/person-icon.js';\nfor(const [tag,constructor]of [['acme-avatar',AcmeAvatar],['acme-avatar-group',AcmeAvatarGroup],['acme-badge',AcmeBadge],['acme-pill',AcmePill],['acme-tag',AcmeTag],['acme-group',AcmeGroup],['acme-theme',AcmeTheme],['acme-person-icon',AcmePersonIcon]] as const)customElements.define(tag,constructor);\nconst results:any[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});const wait=()=>new Promise(r=>setTimeout(r,50));const until=async(fn:()=>boolean)=>{for(let i=0;i<60&&!fn();i++)await wait();if(!fn())throw Error('condition timed out');};const root=(host:Element)=>host.shadowRoot!.querySelector('[part=root]') as HTMLElement;\ntry{\nconst avatar=new AcmeAvatar();avatar.label='Élodie Brontë';document.body.append(avatar);await avatar.updateComplete;check('missing src creates no invented network image',!root(avatar).querySelector('img')&&root(avatar).querySelector('[part=fallback]')!.textContent==='ÉB');\nfor(const [size,px]of [['tiny',16],['small',24],['medium',32],['large',48]] as const){avatar.size=size;await avatar.updateComplete;await wait();check(`${size} Avatar preserves equal source dimensions`,avatar.offsetWidth===px&&avatar.offsetHeight===px,{width:avatar.offsetWidth,height:avatar.offsetHeight});}\navatar.width='64px';await avatar.updateComplete;await wait();check('explicit Avatar width retains square dimensions',avatar.offsetWidth===64&&avatar.offsetHeight===64,{width:avatar.offsetWidth,height:avatar.offsetHeight});avatar.width=undefined;\nlet load=0,errors:any[]=[];avatar.addEventListener('acme-load',()=>load++);avatar.addEventListener('acme-error',e=>errors.push((e as CustomEvent).detail));avatar.src='/good.svg';await until(()=>root(avatar).dataset.state==='loaded');check('native image success hides fallback and emits once',load===1&&root(avatar).querySelector('[part=fallback]')!.hasAttribute('hidden')&&!root(avatar).querySelector('img')!.hidden);\navatar.src='/bad-image?secret=value';await until(()=>root(avatar).dataset.state==='error');check('native image failure restores fallback with secret-free detail',errors.length===1&&!JSON.stringify(errors).includes('secret')&&!root(avatar).querySelector('[part=fallback]')!.hasAttribute('hidden'));\navatar.src='/slow.svg';await avatar.updateComplete;avatar.src='/good.svg?next';await until(()=>root(avatar).dataset.state==='loaded');await new Promise(r=>setTimeout(r,180));check('source replacement rejects obsolete completion',load===2&&errors.length===1);\navatar.src='/slow.svg?disconnect';await avatar.updateComplete;avatar.remove();await new Promise(r=>setTimeout(r,180));check('disconnected image completion emits no result',load===2);document.body.append(avatar);await until(()=>root(avatar).dataset.state==='loaded');check('reconnection resolves the current completed image',load===3);\nconst group=new AcmeAvatarGroup();const members=Array.from({length:5},(_,i)=>({id:String(i),label:`Person ${i}`,initials:String(i)}));group.members=members;document.body.append(group);await wait();await wait();const images=()=>[...group.shadowRoot!.querySelectorAll('acme-avatar')];check('default group shows two people plus an exact count',images().length===2&&group.shadowRoot!.querySelector('.count')!.textContent==='+3');const boxes=images().map(e=>e.getBoundingClientRect());check('Group composes measured overlapping members',boxes[1].left>boxes[0].left&&boxes[1].left<boxes[0].right,{boxes:boxes.map(r=>r.toJSON())});\ngroup.dir='rtl';await wait();check('avatar overlap follows RTL',images()[1].getBoundingClientRect().right>images()[0].getBoundingClientRect().left&&images()[1].getBoundingClientRect().left<images()[0].getBoundingClientRect().left);\ngroup.limit=0;await wait();const first=images()[0];group.members=[...members].reverse();await wait();check('reordering retains keyed member identity',images()[4]===first);group.members=[];group.extra=1;await wait();check('extra-only one is visible and accurately named',images().length===0&&group.shadowRoot!.querySelector('.count')!.textContent==='+1'&&group.shadowRoot!.querySelector('.sr')!.textContent==='1 more person');group.extra=12;await wait();check('visual cap retains the full accessible count',group.shadowRoot!.querySelector('.count')!.textContent==='9+'&&group.shadowRoot!.querySelector('.sr')!.textContent==='12 more people');\ncheck('overflow number order is isolated from RTL membership',group.shadowRoot!.querySelector('.count')!.localName==='bdi'&&getComputedStyle(group.shadowRoot!.querySelector('.count')!).direction==='ltr');const badge=new AcmeBadge();badge.textContent='Ready';const pill=new AcmePill();pill.textContent='Category';const tag=new AcmeTag();tag.textContent='typescript';document.body.append(badge,pill,tag);for(const [i,size]of ['small','medium','large'].entries()){badge.size=size as any;pill.size=size as any;tag.size=size as any;await wait();check(`${size} identity presentation has distinct source geometry`,root(badge).offsetHeight===[20,24,32][i]&&root(pill).offsetHeight===[20,24,32][i]&&root(tag).offsetHeight===[16,20,24][i],{badge:root(badge).offsetHeight,pill:root(pill).offsetHeight,tag:root(tag).offsetHeight});}\npill.href='#destination';pill.id='pill-link';pill.target='_self';await pill.updateComplete;pill.focus();check('Pill href produces a native focusable link',root(pill).localName==='a'&&pill.shadowRoot!.activeElement===root(pill));\nconst theme=new AcmeTheme();theme.appearance='dark';theme.append(badge,tag,group);document.body.append(theme);await wait();check('identity surfaces inherit the dark theme',badge.hasAttribute('data-dark')&&tag.hasAttribute('data-dark')&&group.hasAttribute('data-dark'));(window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n"
+    },
+    {
+      "origin": "/tmp/acme-m09-identity-compiled/run.ts",
+      "source": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m09-identity-compiled\",root=\"/Users/peterkloss/Dev/ACMElabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\",splitting:true});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname==='/good.svg'||url.pathname==='/slow.svg'){const response=()=>new Response('<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\"><rect width=\"32\" height=\"32\" fill=\"steelblue\"/></svg>',{headers:{'Content-Type':'image/svg+xml'}});if(url.pathname==='/slow.svg')return new Promise(resolve=>setTimeout(()=>resolve(response()),120));return response();}if(url.pathname==='/bad-image')return new Response('not an image',{status:404});if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/src/generated/css/document/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname.endsWith(\".js\")&&url.pathname!==\"/probe.js\")return new Response(Bun.file(directory+\"/bundle\"+url.pathname),{headers:{\"Content-Type\":\"text/javascript\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(!data.error){await page.locator('#pill-link').click();data.results.push({name:'trusted Pill click navigates',ok:new URL(page.url()).hash==='#destination'});if(engine==='chromium')await page.screenshot({path:directory+'/identity.png',fullPage:true});}if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.length!==24||r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+    },
+    {
+      "origin": "/tmp/acme-m09-identity/docs-check.ts",
+      "source": "process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');const results=[];\nfor(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true}:{headless:true});try{const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:4180/components/avatar');await page.locator('#avatar-overflow-example acme-icon-button').click();await page.waitForFunction(()=>document.querySelector('#avatar-overflow-result')?.textContent==='Ada Lovelace, Grace Hopper, Alan Turing, Katherine Johnson');await page.goto('http://127.0.0.1:4180/components/tag');await page.locator('#removable-tag-example acme-icon-button').click();await page.waitForFunction(()=>!document.querySelector('#removable-tag-example'));results.push({engine,overflowAction:true,removeTag:true,errors});console.log(results.at(-1));}finally{await browser.close();}}\nawait Bun.write('/tmp/acme-m09-identity/docs-results.json',JSON.stringify(results,null,2)+'\\n');if(results.some(r=>r.errors.length))process.exitCode=1;\n"
+    }
+  ],
+  "references": [
+    "https://vercel.com/geist/avatar",
+    "https://chakra-ui.com/docs/components/avatar",
+    "https://www.radix-ui.com/primitives/docs/components/avatar",
+    "https://raw.githubusercontent.com/radix-ui/primitives/main/packages/react/avatar/src/avatar.tsx",
+    "https://pro.chakra-ui.com/explore/marketing/marketing-all/team-with-avatar",
+    "https://pro.chakra-ui.com/explore/application/application-all/setting-profile",
+    "https://pro.chakra-ui.com/explore/marketing/marketing-all/help-center-collection-03"
+  ],
+  "limits": [
+    "This fixture checks browser DOM, native image events and geometry. It does not claim assistive-technology speech output.",
+    "Application upload, member lookup and overflow actions remain application responsibilities.",
+    "Source-derived Badge palettes and gradients remain retained; complete final contrast/visual acceptance across every library family remains M26."
+  ],
+  "compiled": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "missing src creates no invented network image",
+            "ok": true
+          },
+          {
+            "name": "tiny Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "small Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "medium Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "large Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "explicit Avatar width retains square dimensions",
+            "ok": true
+          },
+          {
+            "name": "native image success hides fallback and emits once",
+            "ok": true
+          },
+          {
+            "name": "native image failure restores fallback with secret-free detail",
+            "ok": true
+          },
+          {
+            "name": "source replacement rejects obsolete completion",
+            "ok": true
+          },
+          {
+            "name": "disconnected image completion emits no result",
+            "ok": true
+          },
+          {
+            "name": "reconnection resolves the current completed image",
+            "ok": true
+          },
+          {
+            "name": "default group shows two people plus an exact count",
+            "ok": true
+          },
+          {
+            "name": "Group composes measured overlapping members",
+            "ok": true
+          },
+          {
+            "name": "avatar overlap follows RTL",
+            "ok": true
+          },
+          {
+            "name": "reordering retains keyed member identity",
+            "ok": true
+          },
+          {
+            "name": "extra-only one is visible and accurately named",
+            "ok": true
+          },
+          {
+            "name": "visual cap retains the full accessible count",
+            "ok": true
+          },
+          {
+            "name": "overflow number order is isolated from RTL membership",
+            "ok": true
+          },
+          {
+            "name": "small identity presentation has distinct source geometry",
+            "ok": true
+          },
+          {
+            "name": "medium identity presentation has distinct source geometry",
+            "ok": true
+          },
+          {
+            "name": "large identity presentation has distinct source geometry",
+            "ok": true
+          },
+          {
+            "name": "Pill href produces a native focusable link",
+            "ok": true
+          },
+          {
+            "name": "identity surfaces inherit the dark theme",
+            "ok": true
+          },
+          {
+            "name": "trusted Pill click navigates",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "missing src creates no invented network image",
+            "ok": true
+          },
+          {
+            "name": "tiny Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "small Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "medium Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "large Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "explicit Avatar width retains square dimensions",
+            "ok": true
+          },
+          {
+            "name": "native image success hides fallback and emits once",
+            "ok": true
+          },
+          {
+            "name": "native image failure restores fallback with secret-free detail",
+            "ok": true
+          },
+          {
+            "name": "source replacement rejects obsolete completion",
+            "ok": true
+          },
+          {
+            "name": "disconnected image completion emits no result",
+            "ok": true
+          },
+          {
+            "name": "reconnection resolves the current completed image",
+            "ok": true
+          },
+          {
+            "name": "default group shows two people plus an exact count",
+            "ok": true
+          },
+          {
+            "name": "Group composes measured overlapping members",
+            "ok": true
+          },
+          {
+            "name": "avatar overlap follows RTL",
+            "ok": true
+          },
+          {
+            "name": "reordering retains keyed member identity",
+            "ok": true
+          },
+          {
+            "name": "extra-only one is visible and accurately named",
+            "ok": true
+          },
+          {
+            "name": "visual cap retains the full accessible count",
+            "ok": true
+          },
+          {
+            "name": "overflow number order is isolated from RTL membership",
+            "ok": true
+          },
+          {
+            "name": "small identity presentation has distinct source geometry",
+            "ok": true
+          },
+          {
+            "name": "medium identity presentation has distinct source geometry",
+            "ok": true
+          },
+          {
+            "name": "large identity presentation has distinct source geometry",
+            "ok": true
+          },
+          {
+            "name": "Pill href produces a native focusable link",
+            "ok": true
+          },
+          {
+            "name": "identity surfaces inherit the dark theme",
+            "ok": true
+          },
+          {
+            "name": "trusted Pill click navigates",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "missing src creates no invented network image",
+            "ok": true
+          },
+          {
+            "name": "tiny Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "small Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "medium Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "large Avatar preserves equal source dimensions",
+            "ok": true
+          },
+          {
+            "name": "explicit Avatar width retains square dimensions",
+            "ok": true
+          },
+          {
+            "name": "native image success hides fallback and emits once",
+            "ok": true
+          },
+          {
+            "name": "native image failure restores fallback with secret-free detail",
+            "ok": true
+          },
+          {
+            "name": "source replacement rejects obsolete completion",
+            "ok": true
+          },
+          {
+            "name": "disconnected image completion emits no result",
+            "ok": true
+          },
+          {
+            "name": "reconnection resolves the current completed image",
+            "ok": true
+          },
+          {
+            "name": "default group shows two people plus an exact count",
+            "ok": true
+          },
+          {
+            "name": "Group composes measured overlapping members",
+            "ok": true
+          },
+          {
+            "name": "avatar overlap follows RTL",
+            "ok": true
+          },
+          {
+            "name": "reordering retains keyed member identity",
+            "ok": true
+          },
+          {
+            "name": "extra-only one is visible and accurately named",
+            "ok": true
+          },
+          {
+            "name": "visual cap retains the full accessible count",
+            "ok": true
+          },
+          {
+            "name": "overflow number order is isolated from RTL membership",
+            "ok": true
+          },
+          {
+            "name": "small identity presentation has distinct source geometry",
+            "ok": true
+          },
+          {
+            "name": "medium identity presentation has distinct source geometry",
+            "ok": true
+          },
+          {
+            "name": "large identity presentation has distinct source geometry",
+            "ok": true
+          },
+          {
+            "name": "Pill href produces a native focusable link",
+            "ok": true
+          },
+          {
+            "name": "identity surfaces inherit the dark theme",
+            "ok": true
+          },
+          {
+            "name": "trusted Pill click navigates",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "docs": [
+    {
+      "engine": "chromium",
+      "overflowAction": true,
+      "removeTag": true,
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "overflowAction": true,
+      "removeTag": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "overflowAction": true,
+      "removeTag": true,
+      "errors": []
+    }
+  ],
+  "manifest": [
+    {
+      "tag": "acme-avatar-group",
+      "slots": [
+        "overflow"
+      ],
+      "parts": [
+        "root",
+        "member",
+        "overflow"
+      ],
+      "defaults": {
+        "size": "\"small\"",
+        "limit": "3",
+        "extra": "0",
+        "members": "[]"
+      }
+    },
+    {
+      "tag": "acme-avatar",
+      "slots": [
+        "fallback",
+        "badge"
+      ],
+      "parts": [
+        "root",
+        "image",
+        "fallback",
+        "badge"
+      ],
+      "defaults": {
+        "size": "\"medium\"",
+        "shape": "\"circle\"",
+        "src": "\"\"",
+        "loading": "false"
+      }
+    },
+    {
+      "tag": "acme-badge",
+      "slots": [
+        "",
+        "start",
+        "end"
+      ],
+      "parts": [
+        "root"
+      ],
+      "defaults": {
+        "size": "\"medium\"",
+        "variant": "\"gray\"",
+        "contrast": "\"high\""
+      }
+    },
+    {
+      "tag": "acme-pill",
+      "slots": [
+        "",
+        "start",
+        "end"
+      ],
+      "parts": [
+        "root"
+      ],
+      "defaults": {
+        "size": "\"medium\"",
+        "variant": "\"outline\"",
+        "count": "false"
+      }
+    },
+    {
+      "tag": "acme-tag",
+      "slots": [
+        "",
+        "start",
+        "end"
+      ],
+      "parts": [
+        "root"
+      ],
+      "defaults": {
+        "size": "\"medium\""
+      }
+    }
+  ],
+  "validation": {
+    "build": "pass",
+    "docs": "93 pages; 4,255 elements; zero undocumented",
+    "publicTypes": {
+      "files": 865,
+      "errors": 0
+    },
+    "suite": {
+      "passed": 894,
+      "failed": 0,
+      "assertions": 119880,
+      "files": 134
+    },
+    "diffCheck": "pass",
+    "review": "Local review covers image event identity and lifecycle, immutable member ownership, exact count boundaries, native link activation, RTL number isolation, shared-theme ownership and safe style retirement. Independent workers remain unavailable."
+  }
+}

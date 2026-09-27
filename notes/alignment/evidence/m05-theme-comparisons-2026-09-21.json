@@ -1,0 +1,297 @@
+{
+  "engines": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.48",
+      "comparisons": 38,
+      "nodes": 30712
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "comparisons": 38,
+      "nodes": 30712
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "comparisons": 38,
+      "nodes": 30712
+    }
+  ],
+  "errors": [],
+  "counts": {
+    "fontFamily": 44922,
+    "boxShadow": 18,
+    "backgroundColor": 51
+  },
+  "uniqueChanges": [
+    {
+      "property": "fontFamily",
+      "before": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+      "after": "\"Google Sans Flex\", Inter, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif",
+      "count": 13158,
+      "pages": [
+        "button",
+        "badge",
+        "input",
+        "select",
+        "checkbox",
+        "radio",
+        "toggle",
+        "tabs",
+        "table",
+        "modal",
+        "sheet",
+        "code-block",
+        "command-menu",
+        "multi-select",
+        "book",
+        "breadcrumbs",
+        "tooltip",
+        "card",
+        "stat"
+      ]
+    },
+    {
+      "property": "fontFamily",
+      "before": "\"GoogleSansCode Nerd Font Mono\", \"GoogleSansCode Nerd Font\", \"Google Sans Code\", ui-monospace, \"SF Mono\", SFMono-Regular, Menlo, Consolas, monospace",
+      "after": "\"GoogleSansCode Nerd Font Mono\", \"Google Sans Code\", Menlo, Monaco, \"Lucida Console\", \"Liberation Mono\", \"DejaVu Sans Mono\", \"Bitstream Vera Sans Mono\", \"Courier New\", monospace",
+      "count": 1816,
+      "pages": [
+        "button",
+        "badge",
+        "input",
+        "select",
+        "checkbox",
+        "radio",
+        "toggle",
+        "tabs",
+        "table",
+        "modal",
+        "sheet",
+        "code-block",
+        "command-menu",
+        "multi-select",
+        "book",
+        "breadcrumbs",
+        "tooltip",
+        "card",
+        "stat"
+      ]
+    },
+    {
+      "property": "boxShadow",
+      "before": "rgb(238, 0, 0) 0px 0px 0px 1px, rgba(203, 42, 47, 0.16) 0px 0px 0px 4px",
+      "after": "rgb(238, 0, 0) 0px 0px 0px 1px, color(srgb 0.7968 0.1632 0.18432 / 0.16) 0px 0px 0px 4px",
+      "count": 6,
+      "pages": [
+        "select"
+      ]
+    },
+    {
+      "property": "boxShadow",
+      "before": "rgb(255, 0, 0) 0px 0px 0px 1px, rgba(255, 97, 102, 0.16) 0px 0px 0px 4px",
+      "after": "rgb(255, 0, 0) 0px 0px 0px 1px, color(srgb 1 0.38 0.400667 / 0.16) 0px 0px 0px 4px",
+      "count": 6,
+      "pages": [
+        "select"
+      ]
+    },
+    {
+      "property": "backgroundColor",
+      "before": "rgba(237, 237, 237, 0.84)",
+      "after": "color(srgb 0.93 0.93 0.93 / 0.84)",
+      "count": 51,
+      "pages": [
+        "toggle"
+      ]
+    },
+    {
+      "property": "fontFamily",
+      "before": "\"Google Sans Flex\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+      "after": "\"Google Sans Flex\", \"Inter\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif",
+      "count": 13158,
+      "pages": [
+        "button",
+        "badge",
+        "input",
+        "select",
+        "checkbox",
+        "radio",
+        "toggle",
+        "tabs",
+        "table",
+        "modal",
+        "sheet",
+        "code-block",
+        "command-menu",
+        "multi-select",
+        "book",
+        "breadcrumbs",
+        "tooltip",
+        "card",
+        "stat"
+      ]
+    },
+    {
+      "property": "fontFamily",
+      "before": "\"GoogleSansCode Nerd Font Mono\", \"GoogleSansCode Nerd Font\", \"Google Sans Code\", ui-monospace, \"SF Mono\", \"SFMono-Regular\", Menlo, Consolas, monospace",
+      "after": "\"GoogleSansCode Nerd Font Mono\", \"Google Sans Code\", Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace",
+      "count": 1816,
+      "pages": [
+        "button",
+        "badge",
+        "input",
+        "select",
+        "checkbox",
+        "radio",
+        "toggle",
+        "tabs",
+        "table",
+        "modal",
+        "sheet",
+        "code-block",
+        "command-menu",
+        "multi-select",
+        "book",
+        "breadcrumbs",
+        "tooltip",
+        "card",
+        "stat"
+      ]
+    },
+    {
+      "property": "fontFamily",
+      "before": "Google Sans Flex, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif",
+      "after": "Google Sans Flex, Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif",
+      "count": 13158,
+      "pages": [
+        "button",
+        "badge",
+        "input",
+        "select",
+        "checkbox",
+        "radio",
+        "toggle",
+        "tabs",
+        "table",
+        "modal",
+        "sheet",
+        "code-block",
+        "command-menu",
+        "multi-select",
+        "book",
+        "breadcrumbs",
+        "tooltip",
+        "card",
+        "stat"
+      ]
+    },
+    {
+      "property": "fontFamily",
+      "before": "GoogleSansCode Nerd Font Mono, GoogleSansCode Nerd Font, Google Sans Code, ui-monospace, SF Mono, SFMono-Regular, Menlo, Consolas, monospace",
+      "after": "GoogleSansCode Nerd Font Mono, Google Sans Code, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace",
+      "count": 1816,
+      "pages": [
+        "button",
+        "badge",
+        "input",
+        "select",
+        "checkbox",
+        "radio",
+        "toggle",
+        "tabs",
+        "table",
+        "modal",
+        "sheet",
+        "code-block",
+        "command-menu",
+        "multi-select",
+        "book",
+        "breadcrumbs",
+        "tooltip",
+        "card",
+        "stat"
+      ]
+    },
+    {
+      "property": "boxShadow",
+      "before": "rgb(238, 0, 0) 0px 0px 0px 1px, rgba(203, 42, 47, 0.16) 0px 0px 0px 4px",
+      "after": "rgb(238, 0, 0) 0px 0px 0px 1px, color(srgb 0.848215 -0.085259 0.105962 / 0.16) 0px 0px 0px 4px",
+      "count": 3,
+      "pages": [
+        "select"
+      ]
+    },
+    {
+      "property": "boxShadow",
+      "before": "rgb(255, 0, 0) 0px 0px 0px 1px, rgba(255, 97, 102, 0.16) 0px 0px 0px 4px",
+      "after": "rgb(255, 0, 0) 0px 0px 0px 1px, color(srgb 1.036499 0.337688 0.370863 / 0.16) 0px 0px 0px 4px",
+      "count": 3,
+      "pages": [
+        "select"
+      ]
+    }
+  ],
+  "scope": "114 whole-page comparisons and92,136 node pairs. Font family aliases consolidate to the canonical primary-family stack. No geometry, line-height, font-weight or other style differences were found. Most relative-color differences normalize to the same8bit channels; six WebKit Select ring results intentionally follow the full public wide-gamut palette instead of the former raw HSL channels.",
+  "reproduction": "import fs from \"node:fs\";import path from \"node:path\";import assert from \"node:assert/strict\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\",baseline=\"/tmp/acme-m05-token-baseline\";\nconst pages=[\"button\",\"badge\",\"input\",\"select\",\"checkbox\",\"radio\",\"toggle\",\"tabs\",\"table\",\"modal\",\"sheet\",\"code-block\",\"command-menu\",\"multi-select\",\"book\",\"breadcrumbs\",\"tooltip\",\"card\",\"stat\"];\nconst requests=[];\nconst server=Bun.serve({port:0,fetch(req){\n const u=new URL(req.url),old=u.pathname.startsWith(\"/baseline\"),base=old?baseline:root,prefix=old?\"/baseline\":\"/candidate\";\n if(u.pathname.endsWith(\"/bundle.js\"))return new Response(Bun.file(path.join(base,\"dist/bundle/design-system.min.js\")),{headers:{\"Content-Type\":\"text/javascript\"}});\n if(u.pathname.endsWith(\"/tokens.css\"))return new Response(Bun.file(path.join(base,\"dist/styles/tokens.css\")),{headers:{\"Content-Type\":\"text/css\"}});\n if(u.pathname.endsWith(\"/dashboard.css\"))return new Response(Bun.file(path.join(base,\"dist/styles/dashboard.css\")),{headers:{\"Content-Type\":\"text/css\"}});\n const name=u.searchParams.get(\"page\"),theme=u.searchParams.get(\"theme\")??\"light\";\n if(!pages.includes(name))return new Response(\"not found\",{status:404});\n const fragment=fs.readFileSync(path.join(root,\"_site/pages/components\",name+\".html\"),\"utf8\");\n return new Response('<!doctype html><html data-theme=\"'+theme+'\"><head><link rel=\"stylesheet\" href=\"'+prefix+'/tokens.css\"><link rel=\"stylesheet\" href=\"'+prefix+'/dashboard.css\"><style>body{width:1100px;margin:0}*{animation:none!important;transition:none!important}</style></head><body>'+fragment+'<script type=\"module\" src=\"'+prefix+'/bundle.js\"></script></body></html>',{headers:{\"Content-Type\":\"text/html\"}});\n}});\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst report={engines:[],differences:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){\n const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});\n try{const page=await browser.newPage({viewport:{width:1200,height:900}});page.on(\"pageerror\",e=>report.errors.push({engine,message:e.message}));let comparisons=0,nodes=0;\n for(const name of pages)for(const theme of [\"light\",\"dark\"]){\n const results=[];await page.emulateMedia({colorScheme:theme});\n for(const version of [\"baseline\",\"candidate\"]){\n await page.goto(server.url.href+version+\"?page=\"+name+\"&theme=\"+theme);\n await page.waitForFunction(()=>!!customElements.get(\"acme-button\"));\n await page.evaluate(async()=>{\n const all=[];const visit=root=>{for(const e of root.querySelectorAll(\"*\")){all.push(e);if(e.shadowRoot)visit(e.shadowRoot);}};visit(document);\n await Promise.all(all.map(x=>x.updateComplete));\n for(const el of all){if(el.shadowRoot){const style=document.createElement(\"style\");style.textContent=\"*,*::before,*::after{animation:none!important;transition:none!important}\";el.shadowRoot.append(style);}}\n await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));\n });\n results.push(await page.evaluate(()=>{\n const properties=[\"display\",\"position\",\"color\",\"backgroundColor\",\"paddingTop\",\"paddingRight\",\"paddingBottom\",\"paddingLeft\",\"marginTop\",\"marginRight\",\"marginBottom\",\"marginLeft\",\"borderTopWidth\",\"borderRightWidth\",\"borderBottomWidth\",\"borderLeftWidth\",\"borderTopColor\",\"borderTopStyle\",\"borderRadius\",\"fontSize\",\"fontFamily\",\"fontWeight\",\"lineHeight\",\"letterSpacing\",\"gap\",\"boxShadow\",\"opacity\",\"transform\",\"width\",\"height\",\"alignItems\",\"justifyContent\",\"flexDirection\",\"overflow\"];\n const out=[];function visit(root,prefix){let index=0;for(const el of root.children){if([\"STYLE\",\"SCRIPT\"].includes(el.tagName))continue;const p=prefix+\"/\"+el.localName+\":\"+index++;if(el.getClientRects().length){const style=getComputedStyle(el);out.push({path:p,values:Object.fromEntries(properties.map(n=>[n,style[n]]))});}if(el.shadowRoot)visit(el.shadowRoot,p+\"#\");visit(el,p);}}visit(document.body,\"body\");return out;\n }));\n }\n const [a,b]=results;nodes+=a.length;comparisons++;\n if(a.length!==b.length)report.differences.push({engine,page:name,theme,kind:\"count\",before:a.length,after:b.length});\n for(let i=0;i<Math.min(a.length,b.length);i++){if(a[i].path!==b[i].path){report.differences.push({engine,page:name,theme,kind:\"path\",before:a[i].path,after:b[i].path});break;}for(const k of Object.keys(a[i].values))if(a[i].values[k]!==b[i].values[k])report.differences.push({engine,page:name,theme,path:a[i].path,property:k,before:a[i].values[k],after:b[i].values[k]});}\n }\n report.engines.push({engine,version:browser.version(),comparisons,nodes});\n console.log(JSON.stringify({engine,comparisons,nodes,differences:report.differences.filter(x=>x.engine===engine).length}));\n }finally{await browser.close();}\n}}finally{server.stop(true);}\nawait Bun.write(\"/tmp/acme-m05-final-comparisons.json\",JSON.stringify(report,null,2));console.log(JSON.stringify({differences:report.differences.length,errors:report.errors.length,first:report.differences.slice(0,12)}));\n\n",
+  "classifiedPaletteChanges": [
+    {
+      "engine": "webkit",
+      "page": "select",
+      "theme": "light",
+      "path": "body/article:0/div:4/div:1/div:0/div:0/div:0/div:0/acme-select:0#/label:0/div:0/select:0",
+      "property": "boxShadow",
+      "before": "rgb(238, 0, 0) 0px 0px 0px 1px, rgba(203, 42, 47, 0.16) 0px 0px 0px 4px",
+      "after": "rgb(238, 0, 0) 0px 0px 0px 1px, color(srgb 0.848215 -0.085259 0.105962 / 0.16) 0px 0px 0px 4px"
+    },
+    {
+      "engine": "webkit",
+      "page": "select",
+      "theme": "light",
+      "path": "body/article:0/div:4/div:1/div:0/div:0/div:0/div:1/acme-select:0#/label:0/div:0/select:0",
+      "property": "boxShadow",
+      "before": "rgb(238, 0, 0) 0px 0px 0px 1px, rgba(203, 42, 47, 0.16) 0px 0px 0px 4px",
+      "after": "rgb(238, 0, 0) 0px 0px 0px 1px, color(srgb 0.848215 -0.085259 0.105962 / 0.16) 0px 0px 0px 4px"
+    },
+    {
+      "engine": "webkit",
+      "page": "select",
+      "theme": "light",
+      "path": "body/article:0/div:4/div:1/div:0/div:0/div:0/div:2/acme-select:0#/label:0/div:0/select:0",
+      "property": "boxShadow",
+      "before": "rgb(238, 0, 0) 0px 0px 0px 1px, rgba(203, 42, 47, 0.16) 0px 0px 0px 4px",
+      "after": "rgb(238, 0, 0) 0px 0px 0px 1px, color(srgb 0.848215 -0.085259 0.105962 / 0.16) 0px 0px 0px 4px"
+    },
+    {
+      "engine": "webkit",
+      "page": "select",
+      "theme": "dark",
+      "path": "body/article:0/div:4/div:1/div:0/div:0/div:0/div:0/acme-select:0#/label:0/div:0/select:0",
+      "property": "boxShadow",
+      "before": "rgb(255, 0, 0) 0px 0px 0px 1px, rgba(255, 97, 102, 0.16) 0px 0px 0px 4px",
+      "after": "rgb(255, 0, 0) 0px 0px 0px 1px, color(srgb 1.036499 0.337688 0.370863 / 0.16) 0px 0px 0px 4px"
+    },
+    {
+      "engine": "webkit",
+      "page": "select",
+      "theme": "dark",
+      "path": "body/article:0/div:4/div:1/div:0/div:0/div:0/div:1/acme-select:0#/label:0/div:0/select:0",
+      "property": "boxShadow",
+      "before": "rgb(255, 0, 0) 0px 0px 0px 1px, rgba(255, 97, 102, 0.16) 0px 0px 0px 4px",
+      "after": "rgb(255, 0, 0) 0px 0px 0px 1px, color(srgb 1.036499 0.337688 0.370863 / 0.16) 0px 0px 0px 4px"
+    },
+    {
+      "engine": "webkit",
+      "page": "select",
+      "theme": "dark",
+      "path": "body/article:0/div:4/div:1/div:0/div:0/div:0/div:2/acme-select:0#/label:0/div:0/select:0",
+      "property": "boxShadow",
+      "before": "rgb(255, 0, 0) 0px 0px 0px 1px, rgba(255, 97, 102, 0.16) 0px 0px 0px 4px",
+      "after": "rgb(255, 0, 0) 0px 0px 0px 1px, color(srgb 1.036499 0.337688 0.370863 / 0.16) 0px 0px 0px 4px"
+    }
+  ],
+  "unexplainedDifferences": [],
+  "physicalWideGamutParity": "not claimed"
+}

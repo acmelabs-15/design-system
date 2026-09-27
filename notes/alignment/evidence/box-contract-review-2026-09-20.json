@@ -1,0 +1,230 @@
+{
+  "date": "2026-09-20",
+  "decisions": [
+    {
+      "id": "L-BOX-03",
+      "answer": "Use this set (Recommended)",
+      "decision": "Box supports div, span, section, article, main, nav, aside, header and footer, with div as default. Forms, lists and tables retain native HTML or dedicated components.",
+      "persisted": true,
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "L-BOX-04",
+      "answer": "Include placement properties (Recommended)",
+      "decision": "Box exposes parent-layout placement through the shared responsive interface: flexBasis, flexGrow, flexShrink, alignSelf, justifySelf, gridArea and grid row/column placement. These affect the outer host.",
+      "persisted": true,
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "L-BOX-05",
+      "answer": "Follow native tag (Recommended)",
+      "decision": "Box defaults to inline display for as=span and block display for its eight other supported native tags. An explicit display value overrides the default, so changing as may change layout.",
+      "persisted": true,
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "L-BOX-06",
+      "answer": "Do what chakra does.",
+      "decision": "For Box visual value inputs, match Chakra by accepting theme tokens and valid explicit CSS values for colors, corners and shadows. This does not adopt all Chakra props, aliases, opacity shorthand or pseudo-state objects.",
+      "persisted": true,
+      "status": "CONFIRMED"
+    }
+  ],
+  "sources": [
+    "https://www.radix-ui.com/themes/docs/components/box",
+    "https://raw.githubusercontent.com/radix-ui/themes/1faff10ac26ae17f09944d418c6949b93fc6b566/packages/radix-ui-themes/src/components/box.props.tsx",
+    "https://raw.githubusercontent.com/radix-ui/themes/1faff10ac26ae17f09944d418c6949b93fc6b566/packages/radix-ui-themes/src/components/box.css",
+    "https://raw.githubusercontent.com/radix-ui/themes/main/packages/radix-ui-themes/src/props/layout.props.ts",
+    "https://chakra-ui.com/docs/styling/color-opacity-modifier",
+    "https://www.chakra-ui.com/docs/styling/style-props/effects",
+    "https://chakra-ui.com/docs/styling/style-props/border"
+  ],
+  "proFilesRead": [
+    "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/kits/course-kit/components/views/lesson-view.tsx",
+    "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/kits/course-kit/components/navbar.tsx"
+  ],
+  "findings": [
+    "Radix Box CSS forces display:block independently of div/span as. Its display enum includes contents; house wrapper-box rule excludes contents.",
+    "Radix full layoutPropDefs source supports flexible CSS placement values and responsive objects; house names and band syntax remain separately selected."
+  ],
+  "draftPropertyGroups": {
+    "status": "Agent-prepared candidate, not row approval or new user selections beyond the four decisions",
+    "semantics": {
+      "as": {
+        "values": [
+          "div",
+          "span",
+          "section",
+          "article",
+          "main",
+          "nav",
+          "aside",
+          "header",
+          "footer"
+        ],
+        "default": "div",
+        "responsive": false
+      }
+    },
+    "spacing": [
+      "margin",
+      "marginInline",
+      "marginBlock",
+      "marginInlineStart",
+      "marginInlineEnd",
+      "marginBlockStart",
+      "marginBlockEnd",
+      "padding",
+      "paddingInline",
+      "paddingBlock",
+      "paddingInlineStart",
+      "paddingInlineEnd",
+      "paddingBlockStart",
+      "paddingBlockEnd"
+    ],
+    "dimensions": [
+      "width",
+      "minWidth",
+      "maxWidth",
+      "height",
+      "minHeight",
+      "maxHeight",
+      "aspectRatio"
+    ],
+    "position": [
+      "position",
+      "inset",
+      "insetInline",
+      "insetBlock",
+      "insetInlineStart",
+      "insetInlineEnd",
+      "insetBlockStart",
+      "insetBlockEnd",
+      "zIndex"
+    ],
+    "displayAndOverflow": [
+      "display",
+      "visibility",
+      "overflow",
+      "overflowX",
+      "overflowY",
+      "opacity"
+    ],
+    "surfaces": [
+      "color",
+      "backgroundColor",
+      "borderWidth",
+      "borderStyle",
+      "borderColor",
+      "borderInlineWidth",
+      "borderInlineStyle",
+      "borderInlineColor",
+      "borderBlockWidth",
+      "borderBlockStyle",
+      "borderBlockColor",
+      "borderInlineStartWidth",
+      "borderInlineStartStyle",
+      "borderInlineStartColor",
+      "borderInlineEndWidth",
+      "borderInlineEndStyle",
+      "borderInlineEndColor",
+      "borderBlockStartWidth",
+      "borderBlockStartStyle",
+      "borderBlockStartColor",
+      "borderBlockEndWidth",
+      "borderBlockEndStyle",
+      "borderBlockEndColor",
+      "borderRadius",
+      "borderStartStartRadius",
+      "borderStartEndRadius",
+      "borderEndStartRadius",
+      "borderEndEndRadius",
+      "boxShadow"
+    ],
+    "parentPlacement": [
+      "flexBasis",
+      "flexGrow",
+      "flexShrink",
+      "alignSelf",
+      "justifySelf",
+      "gridArea",
+      "gridColumn",
+      "gridColumnStart",
+      "gridColumnEnd",
+      "gridRow",
+      "gridRowStart",
+      "gridRowEnd"
+    ],
+    "candidateRules": [
+      "Shared CSS styling properties use C-RESP; as and naming references do not become responsive.",
+      "Optional styling inputs default to absent, avoiding declarations that defeat consumer CSS. Document browser/default generated-reset effects separately from input getter defaults.",
+      "Proposed Box display values are none, inline, inline-block and block, preserving the real-wrapper-box rule. The user-selected default follows as; no contents option.",
+      "Spacing uses the selected scale and valid property-specific CSS; negative-token behavior remains open rather than silently inferred from the positive scale.",
+      "Dimensions, placement and positioning follow their corresponding CSS value grammars; margin/inset auto remains valid where native CSS permits it.",
+      "Visual properties use category-appropriate house theme tokens or valid CSS; exact color/radius/shadow token identifiers remain to specify.",
+      "Parent-placement properties reach the outer host. The complete distribution of dimensions/surfaces/internal layout between host and native element remains to verify.",
+      "Logical border sides/corners are proposed from the selected logical-name rule and reviewed Pro border usage; this list is not separately approved.",
+      "Background images/gradients, transforms and other uncommon declarations remain available through ordinary CSS under the selected focused scope; exact CSS-part contract is open."
+    ]
+  },
+  "remaining": [
+    "Review candidate full property set, types/defaults and declaration precedence",
+    "Close shared condition/configuration, validation and negative-spacing/density contracts",
+    "Specify CSS-part names and host/native style mapping, including explicit sizes and inline mode",
+    "Finish native attribute/ARIA update/reference semantics",
+    "Approve complete Box row after dependencies, then remaining layout/typography rows"
+  ],
+  "proVisualScan": {
+    "scope": "Literal numeric/hex starts in selected JSX visual attributes; lexical only",
+    "matches": 13,
+    "limitations": "Not all matches are raw CSS; values such as 2xl are tokens. Not an evaluated census of all custom values.",
+    "examples": [
+      {
+        "file": "blocks/pricing-with-compare/plan-compare.tsx",
+        "line": 19,
+        "attribute": "boxShadow=\"0 1px 0 0 var(--shadow-color)\""
+      },
+      {
+        "file": "blocks/pricing-with-compare/plan-compare.tsx",
+        "line": 56,
+        "attribute": "boxShadow=\"0 1px 0 0 var(--shadow-color)\""
+      }
+    ]
+  },
+  "coverage": {
+    "radix": "Complete Box component and layoutPropDefs source; Box CSS and box.props.tsx read at 1faff10ac26ae17f09944d418c6949b93fc6b566. Earlier box.tsx/layout.props.ts reads used main, not a proven matching immutable revision.",
+    "chakra": "Full main content of color-opacity modifier, effects and border docs. Effects page identifies 3.36.1; border/opacity pages identify 3.37.0. Their incidental aliases/mapping typos are not copied as house APIs.",
+    "pro": "Full course-kit lesson-view and navbar files re-read; lexical visual-value search across indexed JSX/TSX. No new browser checks."
+  },
+  "next": "Review the candidate Box property set and close shared rules, style targets and native attribute contracts before row approval.",
+  "phase": 4,
+  "scope": "Four Box tag/placement/display/value choices and an unapproved candidate property list",
+  "persisted": true,
+  "implementationChanged": false,
+  "inventoryApproved": false,
+  "migrationApproved": false,
+  "projectDependenciesChanged": false,
+  "newBrowserChecks": false,
+  "commitCreated": false,
+  "pushPerformed": false,
+  "followupStatus": {
+    "scope": "Historical capture; later choices do not rewrite earlier answers or measurements.",
+    "currentHandoff": "../README.md#where-we-are",
+    "laterRecord": "shared-style-values-review-2026-09-20.json",
+    "laterRecords": [
+      "shared-style-values-review-2026-09-20.json"
+    ],
+    "settledSince": [
+      "Signed spacing tokens derived from positive values where CSS permits",
+      "Numeric dimension steps plus CSS values",
+      "Separate size and spacing theme categories with matching defaults",
+      "Chakra declaration-order direction within the same condition; cross-framework representation unresolved"
+    ]
+  },
+  "styleInputFollowup": {
+    "date": "2026-09-20",
+    "evidence": "style-input-integration-review-2026-09-20.json",
+    "note": "The 77-property table remains a draft. Absent CSS styling getters are now selected as undefined; CSS supplies visual defaults, including as-based display. Native as keeps its selected div default.",
+    "originalResultsPreserved": true
+  }
+}

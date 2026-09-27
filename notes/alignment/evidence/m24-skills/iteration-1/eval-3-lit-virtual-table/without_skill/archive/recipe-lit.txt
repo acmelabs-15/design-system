@@ -1,0 +1,1005 @@
+// index.html
+<div id="example-table-tanstack-virtual"
+  ><acme-h-stack flex-wrap="wrap"
+    ><acme-button data-mode="vertical" variant="secondary">Virtual rows</acme-button
+    ><acme-button data-mode="horizontal" variant="secondary">Virtual columns</acme-button
+    ><acme-button data-mode="both" variant="secondary">Both axes</acme-button></acme-h-stack
+  ><docs-table-virtual style="display:block"></docs-table-virtual
+></div>
+<script type="module" src="./main.ts"></script>
+
+// main.ts
+import "@acmelabs/design-system/styles/tokens.css";
+import { registerTableExamples } from "./examples/table/docs-entry.ts";
+registerTableExamples();
+const root = document.getElementById("example-table-tanstack-virtual")!;
+const dispose = mount(root);
+function mount(root: HTMLElement) {
+  root
+    .querySelectorAll("[data-mode]")
+    .forEach((button) =>
+      button.addEventListener("click", () =>
+        root.querySelector("docs-table-virtual").setMode(button.dataset.mode),
+      ),
+    );
+}
+// Call dispose?.() before removing the example.
+
+// examples/table/virtual-lit.ts
+import type { AcmeTable } from "@acmelabs/design-system/components/table";
+import { createAtom, TanStackStoreAtom } from "@tanstack/lit-store";
+import { TableController } from "@tanstack/lit-table";
+import { VirtualizerController } from "@tanstack/lit-virtual";
+import { html, LitElement, nothing } from "lit";
+import { ref } from "lit/directives/ref.js";
+import { repeat } from "lit/directives/repeat.js";
+import { styleMap } from "lit/directives/style-map.js";
+import {
+  columnStyle,
+  columns,
+  type Delivery,
+  type DeliveryCell,
+  type DeliveryRow,
+  type DeliveryTable,
+  data,
+  features,
+  orderedColumns,
+} from "./data";
+import { gridKey, syncGridFocus } from "./grid-interaction";
+import { columnWindow, type VirtualMode, visibleRows, windowCells } from "./virtual-layout";
+export class VirtualDeliveryLit extends LitElement {
+  private readonly source = createAtom(data);
+  private readonly sourceUpdates = new TanStackStoreAtom(this, () => this.source);
+  setRows(rows: Delivery[]) {
+    this.source.set(rows);
+  }
+  updateDetails(id: string, details: string) {
+    this.source.set((rows) => rows.map((row) => (row.id === id ? { ...row, details } : row)));
+  }
+  private readonly mode = createAtom<VirtualMode>("both");
+  private readonly modeUpdates = new TanStackStoreAtom(this, () => this.mode);
+  private readonly controller = new TableController<typeof features, Delivery>(this);
+  model?: DeliveryTable;
+  private currentRows: DeliveryRow[] = [];
+  private readonly rowVirtual = new VirtualizerController<HTMLElement, HTMLTableRowElement>(this, {
+    count: 0,
+    getScrollElement: () => this.container?.getScrollElement() ?? null,
+    estimateSize: () => 64,
+    getItemKey: (index) => this.currentRows[index]?.id ?? index,
+    overscan: 3,
+    useAnimationFrameWithResizeObserver: true,
+  });
+  private readonly columnVirtual = new VirtualizerController<HTMLElement, HTMLElement>(this, {
+    count: 0,
+    horizontal: true,
+    getScrollElement: () => this.container?.getScrollElement() ?? null,
+    estimateSize: (index) => this.model?.getCenterVisibleLeafColumns()[index]?.getSize() ?? 150,
+    getItemKey: (index) => this.model?.getCenterVisibleLeafColumns()[index]?.id ?? index,
+    overscan: 0,
+  });
+  private readonly options = {
+    features,
+    columns,
+    data,
+    getRowId: (row: Delivery) => row.id,
+    getSubRows: (row: Delivery) => row.subRows,
+    initialState: { pagination: { pageIndex: 0, pageSize: 200 } },
+    autoResetPageIndex: false,
+    autoResetCellSelection: false,
+  };
+  setMode(mode: VirtualMode) {
+    this.mode.set(mode);
+  }
+  get container() {
+    return this.renderRoot.querySelector<AcmeTable>("acme-table");
+  }
+  private async reveal(rowId: string, columnId: string) {
+    const row = this.currentRows.findIndex((row) => row.id === rowId),
+      column =
+        this.model?.getCenterVisibleLeafColumns().findIndex((column) => column.id === columnId) ??
+        -1;
+    if (row >= 0 && this.mode.get() !== "horizontal")
+      this.rowVirtual.getVirtualizer().scrollToIndex(row, { align: "auto" });
+    if (column >= 0 && this.mode.get() !== "vertical")
+      this.columnVirtual.getVirtualizer().scrollToIndex(column, { align: "auto" });
+    await this.updateComplete;
+    await new Promise<void>((resolve) =>
+      requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+    );
+  }
+  private columnGeometry = "";
+  protected updated() {
+    const geometry =
+      this.mode.get() !== "vertical"
+        ? this.model
+            ?.getCenterVisibleLeafColumns()
+            .map((column) => column.id + ":" + column.getSize())
+            .join("|")
+        : "";
+    if (geometry !== this.columnGeometry) {
+      this.columnGeometry = geometry ?? "";
+      if (geometry) this.columnVirtual.getVirtualizer().measure();
+    }
+    const body = this.renderRoot.querySelector<HTMLElement>("[data-virtual-body]"),
+      scroll = this.container?.getScrollElement();
+    if (this.mode.get() !== "horizontal" && body && scroll) {
+      const row = this.rowVirtual.getVirtualizer(),
+        margin =
+          body.getBoundingClientRect().top - scroll.getBoundingClientRect().top + scroll.scrollTop;
+      if (Math.abs((row.options.scrollMargin ?? 0) - margin) > 0.1) {
+        row.setOptions({ ...row.options, scrollMargin: margin });
+        this.requestUpdate();
+      }
+    }
+    if (this.mode.get() !== "horizontal")
+      for (const row of this.renderRoot.querySelectorAll<HTMLTableRowElement>("[data-index]"))
+        this.rowVirtual.getVirtualizer().measureElement(row);
+    if (this.model && this.container?.getTableElement())
+      syncGridFocus(this.container.getTableElement()!, this.model);
+  }
+  render() {
+    const mode = this.mode.get(),
+      vertical = mode !== "horizontal",
+      horizontal = mode !== "vertical";
+    const table = this.controller.table({
+      ...this.options,
+      data: this.source.get(),
+      enableCellSpanning: !vertical,
+    });
+    this.model = table;
+    const rows = table.getCenterRows();
+    this.currentRows = rows;
+    const rowVirtual = this.rowVirtual.getVirtualizer(),
+      columnVirtual = this.columnVirtual.getVirtualizer();
+    rowVirtual.setOptions({ ...rowVirtual.options, count: rows.length, enabled: vertical });
+    columnVirtual.setOptions({
+      ...columnVirtual.options,
+      count: table.getCenterVisibleLeafColumns().length,
+      enabled: horizontal,
+      isRtl: this.ownerDocument.defaultView!.getComputedStyle(this).direction === "rtl",
+    });
+    const items = rowVirtual.getVirtualItems(),
+      shown = visibleRows(rows, items, vertical),
+      window = columnWindow(table, rows, columnVirtual.getVirtualItems(), horizontal);
+    const before =
+        vertical && items.length
+          ? Math.max(0, items[0].start - (rowVirtual.options.scrollMargin ?? 0))
+          : 0,
+      after =
+        vertical && items.length
+          ? Math.max(
+              0,
+              rowVirtual.getTotalSize() -
+                (items.at(-1)!.end - (rowVirtual.options.scrollMargin ?? 0)),
+            )
+          : 0;
+    const spacer = (width: number, count: number) =>
+      count
+        ? html`<td aria-hidden="true" colspan=${count} style=${styleMap({ width: `${width}px`, padding: "0", border: "0" })}></td>`
+        : nothing;
+    const row = (row: DeliveryRow, index?: number) => {
+      const cells = windowCells(row, window);
+      return html`<tr data-row=${row.id} data-index=${index ?? nothing} aria-rowindex=${index === undefined ? nothing : index + 2} data-pinned=${row.getIsPinned() || nothing}>${cells.start.map((cell) => this.cell(cell))}${spacer(window.beforeWidth, window.before.length)}${cells.center.map((cell) => this.cell(cell))}${spacer(window.afterWidth, window.after.length)}${cells.end.map((cell) => this.cell(cell))}</tr>`;
+    };
+    return html`<acme-table sticky-header aria-label="Virtual delivery results" style="height:320px;width:480px;max-width:100%"><table role="grid" aria-rowcount=${rows.length + 1} aria-colcount=${window.columns.length} @keydown=${(event: KeyboardEvent) => void gridKey(event, table, this.container!.getTableElement()!, this.reveal.bind(this))} @focusin=${() => syncGridFocus(this.container!.getTableElement()!, table)} style=${styleMap({ width: `${table.getTotalSize()}px`, tableLayout: "fixed" })}><caption>Virtualized consumer data</caption><colgroup>${window.columns.map((column) => html`<col style=${styleMap(columnStyle(column))}>`)}</colgroup><thead><tr>${window.start.map((column) => this.header(column))}${spacer(window.beforeWidth, window.before.length)}${window.center.map((column) => this.header(column))}${spacer(window.afterWidth, window.after.length)}${window.end.map((column) => this.header(column))}</tr></thead><tbody>${table.getTopRows().map((item) => row(item))}</tbody><tbody data-virtual-body>${before ? html`<tr aria-hidden="true" data-acme-table-part="spacer" style=${styleMap({ "--acme-table-spacer-height": `${before}px` })}><td colspan=${window.columns.length}></td></tr>` : nothing}${repeat(
+      shown,
+      (item) => item.row.id,
+      (item) => row(item.row, item.index),
+    )}${after ? html`<tr aria-hidden="true" data-acme-table-part="spacer" style=${styleMap({ "--acme-table-spacer-height": `${after}px` })}><td colspan=${window.columns.length}></td></tr>` : nothing}</tbody><tbody>${table.getBottomRows().map((item) => row(item))}</tbody></table></acme-table>`;
+  }
+  private header(column: ReturnType<DeliveryTable["getAllLeafColumns"]>[number]) {
+    return html`<th data-header data-leaf="true" data-column=${column.id} data-pinned=${column.getIsPinned() || nothing} style=${styleMap(columnStyle(column))}>${String(column.columnDef.header ?? column.id)}</th>`;
+  }
+  private cell(cell: DeliveryCell) {
+    if (cell.getIsCovered()) return nothing;
+    return html`<td role="gridcell" data-cell=${cell.id} data-column=${cell.column.id} aria-colindex=${orderedColumns(this.model!).findIndex((column) => column.id === cell.column.id) + 1} colspan=${cell.getColSpan()} rowspan=${cell.getRowSpan()} data-pinned=${cell.column.getIsPinned() || nothing} style=${styleMap(columnStyle(cell.column))} tabindex="-1">${cell.column.id === "name" ? html`${cell.row.getCanExpand() ? html`<button type="button" @click=${cell.row.getToggleExpandedHandler()} aria-label=${"Expand " + cell.row.id}>Expand</button>` : nothing}${String(cell.getValue() ?? "")}` : String(cell.getValue() ?? "")}</td>`;
+  }
+}
+
+// examples/table/data.ts
+import {
+  aggregationFns,
+  type Cell,
+  type Column,
+  type ColumnDef,
+  createExpandedRowModel,
+  createFacetedMinMaxValues,
+  createFacetedRowModel,
+  createFacetedUniqueValues,
+  createFilteredRowModel,
+  createGroupedRowModel,
+  createPaginatedRowModel,
+  createSortedRowModel,
+  filterFns,
+  type Row,
+  sortFns,
+  stockFeatures,
+  type Table,
+  tableFeatures,
+} from "@tanstack/table-core";
+import { reviewFeature } from "./review-feature";
+/** Comprehensive consumer fixture; production applications select only the features they use. */
+export const features = tableFeatures({
+  ...stockFeatures,
+  reviewFeature,
+  filteredRowModel: createFilteredRowModel(),
+  sortedRowModel: createSortedRowModel(),
+  groupedRowModel: createGroupedRowModel(),
+  expandedRowModel: createExpandedRowModel(),
+  paginatedRowModel: createPaginatedRowModel(),
+  facetedRowModel: createFacetedRowModel(),
+  facetedUniqueValues: createFacetedUniqueValues(),
+  facetedMinMaxValues: createFacetedMinMaxValues(),
+  filterFns,
+  sortFns,
+  aggregationFns,
+});
+export type Delivery = {
+  id: string;
+  name: string;
+  region: string;
+  status: string;
+  amount: number;
+  details: string;
+  subRows?: Delivery[];
+};
+export const data: Delivery[] = Array.from({ length: 200 }, (_, i) => ({
+  id: `delivery-${i}`,
+  name: `Delivery ${String(i).padStart(3, "0")}`,
+  region: i < 100 ? "West" : "East",
+  status: i % 3 === 0 ? "Retry" : "Delivered",
+  amount: i,
+  details: "Delivery details ".repeat((i % 4) + 1),
+  ...(i === 0
+    ? {
+        subRows: [
+          {
+            id: "child-0",
+            name: "Child delivery",
+            region: "West",
+            status: "Delivered",
+            amount: 5,
+            details: "Nested details",
+          },
+        ],
+      }
+    : {}),
+}));
+export const columns: Array<ColumnDef<typeof features, Delivery>> = [
+  {
+    id: "select",
+    header: "Select",
+    size: 64,
+    enableSorting: false,
+    enableColumnFilter: false,
+    enableCellSelection: false,
+  },
+  {
+    id: "identity",
+    header: "Identity",
+    columns: [
+      { accessorKey: "name", header: "Name", size: 220 },
+      { accessorKey: "region", header: "Region", size: 120, spanRows: true },
+    ],
+  },
+  {
+    id: "delivery",
+    header: "Delivery",
+    columns: [
+      {
+        accessorKey: "status",
+        header: "Status",
+        size: 140,
+        spanColumns: ({ row }) => (row.original.id === "delivery-2" ? 2 : 1),
+      },
+      { accessorKey: "amount", header: "Amount", size: 120, aggregationFn: "sum" },
+      { accessorKey: "details", header: "Details", size: 340 },
+    ],
+  },
+];
+export type DeliveryTable = Table<typeof features, Delivery>;
+export type DeliveryRow = Row<typeof features, Delivery>;
+export type DeliveryCell = Cell<typeof features, Delivery>;
+export function orderedColumns(table: DeliveryTable) {
+  return [
+    ...table.getStartVisibleLeafColumns(),
+    ...table.getCenterVisibleLeafColumns(),
+    ...table.getEndVisibleLeafColumns(),
+  ];
+}
+export function orderedCells(row: DeliveryRow) {
+  return [
+    ...row.getStartVisibleCells(),
+    ...row.getCenterVisibleCells(),
+    ...row.getEndVisibleCells(),
+  ];
+}
+export function headerRows(table: DeliveryTable) {
+  const regions = [
+    table.getStartHeaderGroups(),
+    table.getCenterHeaderGroups(),
+    table.getEndHeaderGroups(),
+  ];
+  const count = Math.max(...regions.map((groups) => groups.length));
+  return Array.from({ length: count }, (_, i) => ({
+    id: String(i),
+    headers: regions.flatMap((groups) => groups[i]?.headers ?? []),
+  }));
+}
+export function columnStyle(column: Column<typeof features, Delivery>) {
+  const pin = column.getIsPinned();
+  return {
+    "--acme-table-column-width": `${column.getSize()}px`,
+    "--acme-table-sticky-inline-start": pin === "start" ? `${column.getStart("start")}px` : null,
+    "--acme-table-sticky-inline-end": pin === "end" ? `${column.getAfter("end")}px` : null,
+  };
+}
+
+// examples/table/review-feature.ts
+import {
+  assignTableAPIs,
+  makeStateUpdater,
+  type OnChangeFn,
+  type Plugins,
+  type RowData,
+  type TableFeature,
+  type TableFeatures,
+} from "@tanstack/table-core";
+
+type ReviewState = { reviewedIds: string[] };
+type ReviewOptions = { onReviewedIdsChange?: OnChangeFn<string[]> };
+type ReviewApi = { markReviewed(id: string): void; getReviewedIds(): readonly string[] };
+declare module "@tanstack/table-core" {
+  interface Plugins {
+    reviewFeature: TableFeature;
+  }
+  interface TableState_FeatureMap {
+    reviewFeature: ReviewState;
+  }
+  interface TableOptions_FeatureMap<TFeatures extends TableFeatures, TData extends RowData> {
+    reviewFeature: ReviewOptions;
+  }
+  interface Table_FeatureMap<TFeatures extends TableFeatures, TData extends RowData> {
+    reviewFeature: ReviewApi;
+  }
+}
+type ReviewTable = { atoms: { reviewedIds: { get(): string[] } }; options: ReviewOptions };
+/** Example application plugin with a real reactive state slice. */
+export const reviewFeature: Plugins["reviewFeature"] = {
+  getInitialState: (state) => ({ reviewedIds: [], ...state }),
+  getDefaultTableOptions: (table) => ({
+    onReviewedIdsChange: makeStateUpdater("reviewedIds", table),
+  }),
+  constructTableAPIs: (table) => {
+    const source = table as unknown as ReviewTable;
+    assignTableAPIs("reviewFeature", table, {
+      table_markReviewed: {
+        fn: (id: string) =>
+          source.options.onReviewedIdsChange?.((old) => (old.includes(id) ? old : [...old, id])),
+      },
+      table_getReviewedIds: { fn: () => source.atoms.reviewedIds.get() },
+    });
+  },
+};
+
+// examples/table/grid-interaction.ts
+import type { DeliveryTable } from "./data";
+
+function active(document: Document): Element | null {
+  let element = document.activeElement;
+  while (element?.shadowRoot?.activeElement) element = element.shadowRoot.activeElement;
+  return element;
+}
+const target = (root: HTMLTableElement, id: string) =>
+  root.querySelector<HTMLElement>(`[data-cell="${CSS.escape(id)}"]`);
+/** Application-owned grid focus. Native editors retain their editing keys. */
+export function syncGridFocus(root: HTMLTableElement, table: DeliveryTable) {
+  const current = active(root.ownerDocument);
+  let node: Node | null = current,
+    currentCell: HTMLElement | undefined;
+  while (node && node !== root) {
+    if (
+      node instanceof HTMLElement &&
+      (node.hasAttribute("data-cell") || node.hasAttribute("data-header"))
+    ) {
+      currentCell = node;
+      break;
+    }
+    node =
+      (node as HTMLElement).assignedSlot ??
+      node.parentNode ??
+      (node.getRootNode() as ShadowRoot).host ??
+      null;
+  }
+  const focused =
+    currentCell && root.contains(currentCell)
+      ? currentCell
+      : table.getFocusedCell()
+        ? target(root, table.getFocusedCell()!.id)
+        : undefined;
+  const entry = focused ?? root.querySelector<HTMLElement>("tbody [data-cell]");
+  for (const cell of root.querySelectorAll<HTMLElement>("[data-cell],[data-header]"))
+    cell.tabIndex = cell === entry ? 0 : -1;
+  for (const control of root.querySelectorAll<HTMLElement>(
+    "button,input,select,textarea,a[href],acme-button,acme-input,acme-checkbox",
+  ))
+    control.tabIndex = -1;
+}
+export async function gridKey(
+  event: KeyboardEvent,
+  table: DeliveryTable,
+  root: HTMLTableElement,
+  reveal?: (rowId: string, columnId: string) => Promise<void>,
+) {
+  if (event.defaultPrevented) return;
+  const origin = event.composedPath()[0] as HTMLElement,
+    cell = event
+      .composedPath()
+      .find(
+        (node) =>
+          node instanceof HTMLElement &&
+          (node.hasAttribute("data-cell") || node.hasAttribute("data-header")),
+      ) as HTMLElement | undefined;
+  if (!cell) return;
+  if (origin !== cell) {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      cell.focus();
+      syncGridFocus(root, table);
+    }
+    return;
+  }
+  if (event.key === "Enter" || event.key === "F2") {
+    const control = cell.querySelector<HTMLElement>(
+      event.key === "F2"
+        ? 'input,textarea,acme-input,button[aria-label^="Resize"],acme-button[aria-label^="Resize"]'
+        : "button,input,acme-button,acme-input,acme-checkbox",
+    );
+    if (control) {
+      event.preventDefault();
+      control.focus();
+    }
+    return;
+  }
+  const directions: Record<string, "up" | "down" | "left" | "right"> = {
+    ArrowUp: "up",
+    ArrowDown: "down",
+    ArrowLeft: getComputedStyle(root).direction === "rtl" ? "right" : "left",
+    ArrowRight: getComputedStyle(root).direction === "rtl" ? "left" : "right",
+  };
+  const direction = directions[event.key];
+  if (!direction) return;
+  event.preventDefault();
+  const columnId = cell.dataset.column!;
+  if (cell.dataset.header !== undefined) {
+    if (direction === "down") {
+      const row = table.getRowModel().rows[0];
+      if (row) {
+        await reveal?.(row.id, columnId);
+        const first = row.getAllCells().find((cell) => cell.column.id === columnId);
+        if (first) target(root, first.id)?.focus();
+      }
+    } else if (direction === "left" || direction === "right") {
+      const headers = [
+          ...root.querySelectorAll<HTMLElement>('thead [data-header][data-leaf="true"]'),
+        ],
+        index = headers.indexOf(cell);
+      headers[index + (direction === "left" ? -1 : 1)]?.focus();
+    }
+    syncGridFocus(root, table);
+    return;
+  }
+  const rowId = cell.closest<HTMLElement>("[data-row]")!.dataset.row!,
+    row = table.getRow(rowId),
+    modelCell = row.getAllCells().find((item) => item.column.id === columnId)!;
+  if (direction === "up" && table.getRowModel().rows[0]?.id === rowId) {
+    root
+      .querySelector<HTMLElement>(`thead [data-column="${CSS.escape(columnId)}"][data-leaf="true"]`)
+      ?.focus();
+    syncGridFocus(root, table);
+    return;
+  }
+  if (!modelCell.getCanSelect()) {
+    const siblings = [...cell.parentElement!.querySelectorAll<HTMLElement>("[data-cell]")];
+    siblings[siblings.indexOf(cell) + (direction === "left" ? -1 : 1)]?.focus();
+    syncGridFocus(root, table);
+    return;
+  }
+  if (table.getFocusedCell()?.id !== modelCell.id) table.setFocusedCell(rowId, columnId);
+  if (event.shiftKey) table.extendCellSelection(direction);
+  else table.moveCellSelection(direction);
+  const next = table.getFocusedCell();
+  if (next) {
+    await reveal?.(next.row.id, next.column.id);
+    target(root, next.id)?.focus();
+  }
+  syncGridFocus(root, table);
+}
+
+// examples/table/virtual-layout.ts
+import type { VirtualItem } from "@tanstack/virtual-core";
+import type { DeliveryCell, DeliveryRow, DeliveryTable } from "./data";
+import { orderedCells, orderedColumns } from "./data";
+export type VirtualMode = "vertical" | "horizontal" | "both";
+export function columnWindow(
+  table: DeliveryTable,
+  rows: readonly DeliveryRow[],
+  items: readonly VirtualItem[],
+  enabled: boolean,
+) {
+  const columns = orderedColumns(table),
+    center = table.getCenterVisibleLeafColumns();
+  let start = enabled ? (items[0]?.index ?? 0) : 0,
+    end = enabled ? (items.at(-1)?.index ?? Math.min(2, center.length - 1)) : center.length - 1;
+  let changed = true;
+  while (changed) {
+    changed = false;
+    for (const row of rows) {
+      const cells = row.getCenterVisibleCells();
+      for (let i = 0; i < cells.length; i++) {
+        const span = cells[i].getColSpan();
+        if (span < 2 || i > end || i + span - 1 < start) continue;
+        const a = Math.min(start, i),
+          b = Math.max(end, i + span - 1);
+        if (a !== start || b !== end) {
+          start = a;
+          end = b;
+          changed = true;
+        }
+      }
+    }
+  }
+  const before = center.slice(0, start),
+    after = center.slice(end + 1);
+  return {
+    columns,
+    center: center.slice(start, end + 1),
+    start: table.getStartVisibleLeafColumns(),
+    end: table.getEndVisibleLeafColumns(),
+    before,
+    after,
+    beforeWidth: before.reduce((sum, c) => sum + c.getSize(), 0),
+    afterWidth: after.reduce((sum, c) => sum + c.getSize(), 0),
+  };
+}
+export function windowCells(
+  row: DeliveryRow,
+  window: ReturnType<typeof columnWindow>,
+): { start: DeliveryCell[]; center: DeliveryCell[]; end: DeliveryCell[] } {
+  const current = new Set(window.center.map((column) => column.id));
+  return {
+    start: row.getStartVisibleCells(),
+    center: row.getCenterVisibleCells().filter((cell) => current.has(cell.column.id)),
+    end: row.getEndVisibleCells(),
+  };
+}
+export function columnSpanWidth(cell: DeliveryCell) {
+  const columns = orderedColumns(cell.row.table),
+    index = columns.findIndex((column) => column.id === cell.column.id);
+  return columns
+    .slice(index, index + cell.getColSpan())
+    .reduce((sum, column) => sum + column.getSize(), 0);
+}
+export function visibleRows(
+  rows: readonly DeliveryRow[],
+  items: readonly VirtualItem[],
+  enabled: boolean,
+) {
+  return enabled
+    ? items.map((item) => ({ row: rows[item.index], index: item.index })).filter((item) => item.row)
+    : rows.map((row, index) => ({ row, index }));
+}
+
+// examples/table/docs-entry.ts
+import "./definitions";
+import { createElement } from "react";
+import { createRoot, type Root } from "react-dom/client";
+import { DeliveryTableLit } from "./lit";
+import { DeliveryTableReact } from "./react";
+import { VirtualDeliveryLit } from "./virtual-lit";
+class ReactTableExample extends HTMLElement {
+  private root?: Root;
+  connectedCallback() {
+    this.root ??= createRoot(this);
+    this.root.render(createElement(DeliveryTableReact, { ready: () => {} }));
+  }
+  disconnectedCallback() {
+    this.root?.unmount();
+    this.root = undefined;
+  }
+}
+export function registerTableExamples(): void {
+  customElements.define("docs-table-lit", DeliveryTableLit);
+  customElements.define("docs-table-react", ReactTableExample);
+  customElements.define("docs-table-virtual", VirtualDeliveryLit);
+}
+
+// examples/table/definitions.ts
+import "@acmelabs/design-system/define/table";
+import "@acmelabs/design-system/define/button";
+import "@acmelabs/design-system/define/checkbox";
+import "@acmelabs/design-system/define/input";
+import "@acmelabs/design-system/define/pagination";
+import "@acmelabs/design-system/define/pagination-position";
+import "@acmelabs/design-system/define/pagination-previous";
+import "@acmelabs/design-system/define/pagination-next";
+import "@acmelabs/design-system/define/pagination-page-size";
+
+// examples/table/lit.ts
+import type { AcmeTable } from "@acmelabs/design-system/components/table";
+import { TableController } from "@tanstack/lit-table";
+import { html, LitElement, nothing } from "lit";
+import { repeat } from "lit/directives/repeat.js";
+import { styleMap } from "lit/directives/style-map.js";
+import {
+  columnStyle,
+  columns,
+  type Delivery,
+  type DeliveryCell,
+  type DeliveryRow,
+  type DeliveryTable,
+  data,
+  features,
+  headerRows,
+  orderedCells,
+  orderedColumns,
+} from "./data";
+import { gridKey, syncGridFocus } from "./grid-interaction";
+/** The consuming application owns Table models and native table content. */
+export class DeliveryTableLit extends LitElement {
+  private readonly controller = new TableController<typeof features, Delivery>(this);
+  model?: DeliveryTable;
+  private readonly options = {
+    features,
+    columns,
+    data,
+    getRowId: (row: Delivery) => row.id,
+    getSubRows: (row: Delivery) => row.subRows,
+    initialState: { pagination: { pageIndex: 0, pageSize: 10 } },
+    autoResetPageIndex: false,
+    autoResetCellSelection: false,
+    columnResizeMode: "onChange" as const,
+  };
+  render() {
+    const table = this.controller.table(this.options);
+    this.model = table;
+    const rows = [...table.getTopRows(), ...table.getCenterRows(), ...table.getBottomRows()];
+    return html`<acme-table sticky-header aria-label="Delivery results" style="height:360px;max-width:800px"><table role="grid" @keydown=${(event: KeyboardEvent) => void gridKey(event, table, this.container!.getTableElement()!)} @focusin=${() => syncGridFocus(this.container!.getTableElement()!, table)} style=${styleMap({ width: `${table.getTotalSize()}px`, tableLayout: "fixed" })}><caption>Consumer-owned TanStack Table</caption><colgroup>${repeat(
+      orderedColumns(table),
+      (column) => column.id,
+      (column) => html`<col style=${styleMap(columnStyle(column))}>`,
+    )}</colgroup><thead>${repeat(
+      headerRows(table),
+      (group) => group.id,
+      (group) =>
+        html`<tr>${repeat(
+          group.headers,
+          (header) => header.id,
+          (header) =>
+            header.rowSpan === 0
+              ? nothing
+              : html`<th data-header data-leaf=${String(!header.subHeaders.length)} scope=${header.colSpan > 1 ? "colgroup" : "col"} colspan=${header.colSpan} rowspan=${header.rowSpan ?? 1} data-column=${header.column.id} data-pinned=${header.column.getIsPinned() || nothing} style=${styleMap(columnStyle(header.column))} aria-sort=${header.column.getIsSorted() === "asc" ? "ascending" : header.column.getIsSorted() === "desc" ? "descending" : nothing}>${header.isPlaceholder ? nothing : header.column.getCanSort() ? html`<acme-button size="small" variant="tertiary" @click=${header.column.getToggleSortingHandler()}>${String(header.column.columnDef.header ?? header.column.id)}</acme-button>` : String(header.column.columnDef.header ?? header.column.id)}${
+                  header.column.getCanResize() && !header.subHeaders.length
+                    ? html`<acme-button size="small" variant="tertiary" aria-label=${"Resize " + header.column.id} @mousedown=${header.getResizeHandler()} @touchstart=${header.getResizeHandler()} @keydown=${(
+                        e: KeyboardEvent,
+                      ) => {
+                        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+                        e.preventDefault();
+                        table.setColumnSizing((old) => ({
+                          ...old,
+                          [header.column.id]: Math.max(
+                            40,
+                            header.column.getSize() + (e.key === "ArrowRight" ? 10 : -10),
+                          ),
+                        }));
+                      }}>↔</acme-button>`
+                    : nothing
+                }</th>`,
+        )}</tr>`,
+    )}</thead><tbody>${repeat(
+      rows,
+      (row) => row.id,
+      (row) =>
+        html`<tr data-row=${row.id} aria-selected=${String(row.getIsSelected())} data-pinned=${row.getIsPinned() || nothing}>${repeat(
+          orderedCells(row),
+          (cell) => cell.id,
+          (cell) => this.cell(cell),
+        )}</tr>`,
+    )}</tbody><tfoot><tr><th scope="row" colspan=${Math.max(1, orderedColumns(table).length - 1)}>Filtered amount</th><td>${table.getColumn("amount")?.getAggregationValue({ rows: table.getFilteredRowModel().rows })}</td></tr></tfoot></table></acme-table><acme-pagination .page=${table.state.pagination.pageIndex + 1} .pageSize=${table.state.pagination.pageSize} .count=${table.getRowCount()} @acme-request=${(
+      event: CustomEvent,
+    ) => {
+      if (event.detail.action === "page") {
+        event.stopPropagation();
+        table.setPageIndex(event.detail.page - 1);
+      }
+      if (event.detail.action === "page-size") {
+        event.stopPropagation();
+        table.setPageSize(event.detail.pageSize);
+      }
+    }}><acme-pagination-position></acme-pagination-position><acme-pagination-previous></acme-pagination-previous><acme-pagination-next></acme-pagination-next><acme-pagination-page-size></acme-pagination-page-size></acme-pagination>`;
+  }
+  private cell(cell: DeliveryCell) {
+    if (cell.getIsCovered()) return nothing;
+    const edges = cell.getSelectionEdges();
+    const row = cell.row,
+      pin = cell.column.getIsPinned();
+    return html`<td role="gridcell" ?data-range-start=${edges.left} ?data-range-end=${edges.right} ?data-range-top=${edges.top} ?data-range-bottom=${edges.bottom} data-cell=${cell.id} data-column=${cell.column.id} colspan=${cell.getColSpan()} rowspan=${cell.getRowSpan()} data-pinned=${pin || nothing} style=${styleMap(columnStyle(cell.column))} aria-selected=${String(cell.getIsSelected())} tabindex="-1" @mousedown=${(
+      event: MouseEvent,
+    ) => {
+      if ((event.target as Element).closest("button,input,acme-button,acme-input,acme-checkbox"))
+        return;
+      cell.getSelectionStartHandler()(event);
+      (event.currentTarget as HTMLElement).focus();
+    }} @mouseenter=${cell.getSelectionExtendHandler()}>${cell.column.id === "select" ? html`<acme-checkbox aria-label=${"Select " + row.id} .checked=${row.getIsSelected()} @acme-change=${(event: CustomEvent<{ checked: boolean }>) => row.toggleSelected(event.detail.checked)}></acme-checkbox>` : cell.column.id === "name" ? html`${row.getCanExpand() ? html`<acme-button size="small" variant="tertiary" aria-label=${"Expand " + row.id} aria-expanded=${String(row.getIsExpanded())} @click=${row.getToggleExpandedHandler()}>${row.getIsExpanded() ? "−" : "+"}</acme-button>` : nothing}<span>${String(cell.getValue() ?? "")}</span><acme-input aria-label=${"Note " + row.id} placeholder="Note" size="small"></acme-input>` : String(cell.getValue() ?? "")}</td>`;
+  }
+  protected updated() {
+    const root = this.container?.getTableElement();
+    if (root && this.model) syncGridFocus(root, this.model);
+  }
+  get container() {
+    return this.renderRoot.querySelector<AcmeTable>("acme-table");
+  }
+}
+
+// examples/table/react.ts
+import { Button } from "@acmelabs/design-system-react/components/button";
+import { Checkbox } from "@acmelabs/design-system-react/components/checkbox";
+import { Input } from "@acmelabs/design-system-react/components/input";
+import { Table } from "@acmelabs/design-system-react/components/table";
+import { Pagination } from "@acmelabs/design-system-react/components/pagination";
+import { PaginationPosition } from "@acmelabs/design-system-react/components/pagination-position";
+import { PaginationPrevious } from "@acmelabs/design-system-react/components/pagination-previous";
+import { PaginationNext } from "@acmelabs/design-system-react/components/pagination-next";
+import { PaginationPageSize } from "@acmelabs/design-system-react/components/pagination-page-size";
+import { useTable } from "@tanstack/react-table";
+import { createElement as h, useLayoutEffect, useRef } from "react";
+import {
+  columnStyle,
+  columns,
+  type Delivery,
+  type DeliveryCell,
+  type DeliveryTable,
+  data,
+  features,
+  headerRows,
+  orderedCells,
+  orderedColumns,
+} from "./data";
+import { gridKey, syncGridFocus } from "./grid-interaction";
+
+const button = (props: Record<string, unknown>, ...children: React.ReactNode[]) =>
+  h(Button, { size: "small", variant: "tertiary", ...props }, ...children);
+const options = {
+  features,
+  columns,
+  data,
+  getRowId: (row: Delivery) => row.id,
+  getSubRows: (row: Delivery) => row.subRows,
+  initialState: { pagination: { pageIndex: 0, pageSize: 10 } },
+  autoResetPageIndex: false,
+  autoResetCellSelection: false,
+  columnResizeMode: "onChange" as const,
+};
+/** React owns and reconciles every native table row and cell. */
+export function DeliveryTableReact({ ready }: { ready: (table: DeliveryTable) => void }) {
+  const table = useTable(options);
+  const native = useRef<HTMLTableElement>(null);
+  useLayoutEffect(() => {
+    ready(table);
+    if (native.current) syncGridFocus(native.current, table);
+  });
+  const rows = [...table.getTopRows(), ...table.getCenterRows(), ...table.getBottomRows()];
+  function cell(cell: DeliveryCell) {
+    if (cell.getIsCovered()) return null;
+    const row = cell.row;
+    const edges = cell.getSelectionEdges();
+    return h(
+      "td",
+      {
+        key: cell.id,
+        role: "gridcell",
+        "data-range-start": edges.left ? "" : undefined,
+        "data-range-end": edges.right ? "" : undefined,
+        "data-range-top": edges.top ? "" : undefined,
+        "data-range-bottom": edges.bottom ? "" : undefined,
+        "data-cell": cell.id,
+        "data-column": cell.column.id,
+        colSpan: cell.getColSpan(),
+        rowSpan: cell.getRowSpan(),
+        "data-pinned": cell.column.getIsPinned() || undefined,
+        style: columnStyle(cell.column),
+        "aria-selected": cell.getIsSelected(),
+        tabIndex: -1,
+        onMouseDown: (event: React.MouseEvent<HTMLElement>) => {
+          if (
+            (event.target as Element).closest("button,input,acme-button,acme-input,acme-checkbox")
+          )
+            return;
+          cell.getSelectionStartHandler()(event);
+          event.currentTarget.focus();
+        },
+        onMouseEnter: cell.getSelectionExtendHandler(),
+      },
+      cell.column.id === "select"
+        ? h(Checkbox, {
+            "aria-label": "Select " + row.id,
+            checked: row.getIsSelected(),
+            onAcmeChange: (event: CustomEvent<{ checked: boolean }>) =>
+              row.toggleSelected(event.detail.checked),
+          })
+        : cell.column.id === "name"
+          ? h(
+              "span",
+              null,
+              row.getCanExpand()
+                ? button(
+                    {
+                      "aria-label": "Expand " + row.id,
+                      "aria-expanded": row.getIsExpanded(),
+                      onClick: row.getToggleExpandedHandler(),
+                    },
+                    row.getIsExpanded() ? "−" : "+",
+                  )
+                : null,
+              String(cell.getValue() ?? ""),
+              h(Input, { "aria-label": "Note " + row.id, placeholder: "Note", size: "small" }),
+            )
+          : String(cell.getValue() ?? ""),
+    );
+  }
+  return h(
+    "div",
+    null,
+    h(
+      Table,
+      {
+        stickyHeader: true,
+        "aria-label": "Delivery results",
+        style: { height: 360, maxWidth: 800 },
+      },
+      h(
+        "table",
+        {
+          ref: native,
+          role: "grid",
+          onKeyDown: (event: React.KeyboardEvent) =>
+            void gridKey(event.nativeEvent, table, native.current!),
+          onFocus: () => syncGridFocus(native.current!, table),
+          style: { width: table.getTotalSize(), tableLayout: "fixed" },
+        },
+        h("caption", null, "Consumer-owned TanStack Table"),
+        h(
+          "colgroup",
+          null,
+          ...orderedColumns(table).map((column) =>
+            h("col", { key: column.id, style: columnStyle(column) }),
+          ),
+        ),
+        h(
+          "thead",
+          null,
+          ...headerRows(table).map((group) =>
+            h(
+              "tr",
+              { key: group.id },
+              ...group.headers.map((header) =>
+                header.rowSpan === 0
+                  ? null
+                  : h(
+                      "th",
+                      {
+                        key: header.id,
+                        "data-header": "",
+                        "data-leaf": String(!header.subHeaders.length),
+                        scope: header.colSpan > 1 ? "colgroup" : "col",
+                        colSpan: header.colSpan,
+                        rowSpan: header.rowSpan ?? 1,
+                        "data-column": header.column.id,
+                        "data-pinned": header.column.getIsPinned() || undefined,
+                        style: columnStyle(header.column),
+                        "aria-sort":
+                          header.column.getIsSorted() === "asc"
+                            ? "ascending"
+                            : header.column.getIsSorted() === "desc"
+                              ? "descending"
+                              : undefined,
+                      },
+                      header.isPlaceholder
+                        ? null
+                        : header.column.getCanSort()
+                          ? button(
+                              { onClick: header.column.getToggleSortingHandler() },
+                              String(header.column.columnDef.header ?? header.column.id),
+                            )
+                          : String(header.column.columnDef.header ?? header.column.id),
+                      header.column.getCanResize() && !header.subHeaders.length
+                        ? button(
+                            {
+                              "aria-label": "Resize " + header.column.id,
+                              onMouseDown: header.getResizeHandler(),
+                              onTouchStart: header.getResizeHandler(),
+                              onKeyDown: (event: React.KeyboardEvent) => {
+                                if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+                                event.preventDefault();
+                                table.setColumnSizing((old) => ({
+                                  ...old,
+                                  [header.column.id]: Math.max(
+                                    40,
+                                    header.column.getSize() +
+                                      (event.key === "ArrowRight" ? 10 : -10),
+                                  ),
+                                }));
+                              },
+                            },
+                            "↔",
+                          )
+                        : null,
+                    ),
+              ),
+            ),
+          ),
+        ),
+        h(
+          "tbody",
+          null,
+          ...rows.map((row) =>
+            h(
+              "tr",
+              {
+                key: row.id,
+                "data-row": row.id,
+                "aria-selected": row.getIsSelected(),
+                "data-pinned": row.getIsPinned() || undefined,
+              },
+              ...orderedCells(row).map(cell),
+            ),
+          ),
+        ),
+        h(
+          "tfoot",
+          null,
+          h(
+            "tr",
+            null,
+            h(
+              "th",
+              { scope: "row", colSpan: Math.max(1, orderedColumns(table).length - 1) },
+              "Filtered amount",
+            ),
+            h(
+              "td",
+              null,
+              String(
+                table
+                  .getColumn("amount")
+                  ?.getAggregationValue({ rows: table.getFilteredRowModel().rows }),
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+    h(
+      Pagination,
+      {
+        page: table.state.pagination.pageIndex + 1,
+        pageSize: table.state.pagination.pageSize,
+        count: table.getRowCount(),
+        onAcmeRequest: (event) => {
+          if (event.detail.action === "page") {
+            event.stopPropagation();
+            table.setPageIndex(event.detail.page - 1);
+          }
+          if (event.detail.action === "page-size") {
+            event.stopPropagation();
+            table.setPageSize(event.detail.pageSize);
+          }
+        },
+      },
+      h(PaginationPosition),
+      h(PaginationPrevious),
+      h(PaginationNext),
+      h(PaginationPageSize),
+    ),
+  );
+}

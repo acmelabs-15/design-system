@@ -1,0 +1,298 @@
+{
+  "date": "2026-09-23",
+  "batch": "M21",
+  "entries": [
+    "RC-02 Snippet",
+    "RC-06 Browser"
+  ],
+  "status": "complete at native/Lit boundary",
+  "implementation": {
+    "snippet": "Immutable text/string arrays; explicit empty copy override; prompt/copyable; canonical size and variants; Code/Scroll Area/Copy Button composition; start/end slots; one composed copy result",
+    "browser": "Author-owned preview content; optional named group; escaped formatted address; decorative nonfocusable chrome; no own actions",
+    "shared": "Scroll Viewport handles keys only on its own native scrolling element; physical arrows, logical RTL Home/End, page/space movement; nested input keys remain native"
+  },
+  "deviations": [
+    "Snippet removes the approved retired properties/imperative copy facade; surrounding layout owns width, Theme owns appearance. The source 13px/20px text and default 42px one-line frame are retained; small is 36px.",
+    "Browser removes the approved internal copy action and its style producer. The remaining frame uses its existing generated mapping.",
+    "Plain native WebKit horizontal scroll containers did not respond to ArrowRight in this test environment, with or without shadow DOM or hidden scrollbars. Shared explicit viewport key handling supplies consistent control rather than overriding descendant keys."
+  ],
+  "checks": {
+    "focusedUnit": {
+      "pass": 5,
+      "assertions": 17
+    },
+    "native": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "copy joins source lines and excludes prompts exactly once",
+            "pass": true
+          },
+          {
+            "name": "copy failure remains one composed error and empty override remains empty",
+            "pass": true
+          },
+          {
+            "name": "source text is escaped and changing lines updates the composed Code content",
+            "pass": true
+          },
+          {
+            "name": "long lines scroll with keyboard without widening the surrounding layout",
+            "pass": true
+          },
+          {
+            "name": "Browser preserves preview focus and supplies no false chrome actions",
+            "pass": true
+          },
+          {
+            "name": "viewport keys follow physical arrows, logical RTL ends and native vertical ranges",
+            "pass": true
+          },
+          {
+            "name": "viewport key handling leaves descendant input keys intact",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "copy joins source lines and excludes prompts exactly once",
+            "pass": true
+          },
+          {
+            "name": "copy failure remains one composed error and empty override remains empty",
+            "pass": true
+          },
+          {
+            "name": "source text is escaped and changing lines updates the composed Code content",
+            "pass": true
+          },
+          {
+            "name": "long lines scroll with keyboard without widening the surrounding layout",
+            "pass": true
+          },
+          {
+            "name": "Browser preserves preview focus and supplies no false chrome actions",
+            "pass": true
+          },
+          {
+            "name": "viewport keys follow physical arrows, logical RTL ends and native vertical ranges",
+            "pass": true
+          },
+          {
+            "name": "viewport key handling leaves descendant input keys intact",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "copy joins source lines and excludes prompts exactly once",
+            "pass": true
+          },
+          {
+            "name": "copy failure remains one composed error and empty override remains empty",
+            "pass": true
+          },
+          {
+            "name": "source text is escaped and changing lines updates the composed Code content",
+            "pass": true
+          },
+          {
+            "name": "long lines scroll with keyboard without widening the surrounding layout",
+            "pass": true
+          },
+          {
+            "name": "Browser preserves preview focus and supplies no false chrome actions",
+            "pass": true
+          },
+          {
+            "name": "viewport keys follow physical arrows, logical RTL ends and native vertical ranges",
+            "pass": true
+          },
+          {
+            "name": "viewport key handling leaves descendant input keys intact",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "copy joins source lines and excludes prompts exactly once",
+            "pass": true
+          },
+          {
+            "name": "copy failure remains one composed error and empty override remains empty",
+            "pass": true
+          },
+          {
+            "name": "source text is escaped and changing lines updates the composed Code content",
+            "pass": true
+          },
+          {
+            "name": "long lines scroll with keyboard without widening the surrounding layout",
+            "pass": true
+          },
+          {
+            "name": "Browser preserves preview focus and supplies no false chrome actions",
+            "pass": true
+          },
+          {
+            "name": "viewport keys follow physical arrows, logical RTL ends and native vertical ranges",
+            "pass": true
+          },
+          {
+            "name": "viewport key handling leaves descendant input keys intact",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "copy joins source lines and excludes prompts exactly once",
+            "pass": true
+          },
+          {
+            "name": "copy failure remains one composed error and empty override remains empty",
+            "pass": true
+          },
+          {
+            "name": "source text is escaped and changing lines updates the composed Code content",
+            "pass": true
+          },
+          {
+            "name": "long lines scroll with keyboard without widening the surrounding layout",
+            "pass": true
+          },
+          {
+            "name": "Browser preserves preview focus and supplies no false chrome actions",
+            "pass": true
+          },
+          {
+            "name": "viewport keys follow physical arrows, logical RTL ends and native vertical ranges",
+            "pass": true
+          },
+          {
+            "name": "viewport key handling leaves descendant input keys intact",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "copy joins source lines and excludes prompts exactly once",
+            "pass": true
+          },
+          {
+            "name": "copy failure remains one composed error and empty override remains empty",
+            "pass": true
+          },
+          {
+            "name": "source text is escaped and changing lines updates the composed Code content",
+            "pass": true
+          },
+          {
+            "name": "long lines scroll with keyboard without widening the surrounding layout",
+            "pass": true
+          },
+          {
+            "name": "Browser preserves preview focus and supplies no false chrome actions",
+            "pass": true
+          },
+          {
+            "name": "viewport keys follow physical arrows, logical RTL ends and native vertical ranges",
+            "pass": true
+          },
+          {
+            "name": "viewport key handling leaves descendant input keys intact",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "docs": [
+      {
+        "engine": "chromium",
+        "pass": true,
+        "checks": 4,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "pass": true,
+        "checks": 4,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "pass": true,
+        "checks": 4,
+        "errors": []
+      }
+    ],
+    "webkitNativeControl": [
+      {
+        "hidden": false,
+        "shadow": false,
+        "left": 0
+      },
+      {
+        "hidden": false,
+        "shadow": true,
+        "left": 0
+      },
+      {
+        "hidden": true,
+        "shadow": false,
+        "left": 0
+      },
+      {
+        "hidden": true,
+        "shadow": true,
+        "left": 0
+      }
+    ],
+    "strictPackageBuild": true,
+    "siteBuild": {
+      "pages": 108,
+      "elements": 4319,
+      "undocumented": 0
+    },
+    "fullSuite": {
+      "pass": 870,
+      "fail": 0,
+      "assertions": 151969
+    },
+    "visualInspection": "snippet-docs.png inspected"
+  },
+  "removal": [
+    "Snippet old public properties, copy method, generator map and structure style",
+    "Browser copy state/action/style producer and old formatAddress public helper",
+    "Raw Snippet/Browser legacy selectors removed from styles/house.css and splitter membership"
+  ],
+  "remaining": [
+    "M21 Code Block, JSON View, Markdown, Book and Video",
+    "M22 final React/scoped-registration integration",
+    "M26 final library acceptance and recorded old Firefox test-runtime constraint"
+  ],
+  "reproduction": "m21-snippet-browser-checks.ts"
+}

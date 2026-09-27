@@ -4,6 +4,7 @@
 import { type GeistMap, has } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "copy-button",
   component: "CopyButton",
   root: (n) => n.tag === "div" && has("size-4")(n) && has("relative")(n),

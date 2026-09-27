@@ -1,121 +1,97 @@
-import { css, html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base";
-import type { AcmeButton } from "../button/button";
-import { fieldsetCss } from "./fieldset.styles";
-import "../disabled-wall/disabled-wall";
+import { html } from "lit";
+import { property } from "lit/decorators.js";
+import { sharedCss } from "../../base";
+import { AcmeSemanticElement } from "../../shared/semantic-element";
 import { atomState } from "../../shared/atom-state";
-
-export type FieldsetVariant = "" | "error" | "warning";
-
-/**
- * Fieldset: a card that groups related form controls. The content holds the title, the subtitle,
- * an error or warning line in its own row, and any slotted content; the footer holds a status line
- * and small action buttons, or text of its own. `variant` colors the card's border and its footer;
- * `disabled` dims the content behind a wall (the title stays above it) and grays a button or an
- * icon slotted into it; `highlight` tints the footer. Slots: default (content), `title` (beside
- * `heading`), `subtitle`, `error`, `warning`, `status`, `actions` (one acme-button each, small
- * unless sized), `footer` (text in place of the status and the actions). The actions each get a
- * wrapper of their own, so the element assigns its slots itself.
+import { NativeContentRoot } from "../../shared/native-content-root";
+import { RootStyles } from "../../shared/root-styles";
+import { fieldsetStructureCss } from "../../generated/components/fieldset/fieldset-structure.styles";
+import { fieldsetLightCss } from "../../generated/components/fieldset/fieldset-light.styles";
+/** A native form group with a real fieldset ancestor for its controls.
+ * @acmeNativeRoot fieldset
+ * @slot - Form controls and their layout.
+ * @slot legend - One native legend, optionally containing rich content or controls.
+ * @slot help - Group help text.
+ * @slot error - Group error text, shown when invalid.
+ * @csspart root - The group wrapper.
  */
-@customElement("acme-fieldset")
-export class AcmeFieldset extends AcmeElement {
-  static shadowRootOptions: ShadowRootInit = { ...AcmeElement.shadowRootOptions, slotAssignment: "manual" };
-  static styles = [
-    sharedCss,
-    fieldsetCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
-  ];
-  /** The title line; the `title` slot adds to it. */
-  @property() heading = "";
-  /** `error` or `warning`: a colored border, and a tinted footer. */
-  @property() variant: FieldsetVariant = "";
-  /** Dims the content behind a wall; the footer stays active. */
-  @property({ type: Boolean }) disabled = false;
-  /** A tinted footer. */
-  @property({ type: Boolean }) highlight = false;
-  /** The light-DOM children by slot name (`""` for the default slot). */
-  @atomState() private slotted: Record<string, (Element | Text)[]> = {};
-  private observer = new MutationObserver(() => this.collect());
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.collect();
-    this.observer.observe(this, { childList: true });
+export class AcmeFieldset extends AcmeSemanticElement {
+  static styles = [sharedCss, fieldsetStructureCss];
+  @atomState() private unavailable = false;
+  /** @default false */
+  @property({ noAccessor: true, type: Boolean, reflect: true }) get disabled() {
+    return this.unavailable;
   }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.observer.disconnect();
-  }
-
-  firstUpdated() {
-    // A parser that connects the element before its children (happy-dom does) misses them at connect.
-    if (!Object.keys(this.slotted).length) this.collect();
-  }
-
-  /** Groups the children by slot name; a blank text node counts for nothing. */
-  private collect() {
-    const slotted: Record<string, (Element | Text)[]> = {};
-    for (const n of this.childNodes) {
-      if (n.nodeType === 3 ? !(n.textContent ?? "").trim() : n.nodeType !== 1) continue;
-      const name = n.nodeType === 1 ? ((n as Element).getAttribute("slot") ?? "") : "";
-      slotted[name] ??= [];
-      slotted[name].push(n as Element | Text);
+  set disabled(value: boolean) {
+    const previous = this.unavailable;
+    this.unavailable = Boolean(value);
+    if (this.content) {
+      this.content.root.disabled = this.unavailable;
     }
-    this.slotted = slotted;
+    this.requestUpdate("disabled", previous);
   }
-
-  updated() {
-    // Every slot takes the children of its name; each action takes the slot of its index.
-    const slots = new Map<string, HTMLSlotElement>();
-    for (const s of this.shadowRoot!.querySelectorAll("slot")) slots.set(s.name, s);
-    const assigned = new Map<HTMLSlotElement, (Element | Text)[]>();
-    for (const [name, nodes] of Object.entries(this.slotted))
-      nodes.forEach((n, i) => {
-        const slot = slots.get(name === "actions" ? `action-${i}` : name);
-        if (slot) (assigned.get(slot) ?? assigned.set(slot, []).get(slot)!).push(n);
-      });
-    for (const s of slots.values()) s.assign(...(assigned.get(s) ?? []));
-    for (const b of this.slotted.actions ?? []) if ((b as Element).tagName === "ACME-BUTTON" && !(b as Element).hasAttribute("size")) (b as AcmeButton).size = "small";
+  @atomState() private invalidGroup = false;
+  /** @default false */
+  @property({ noAccessor: true, type: Boolean, reflect: true }) get invalid() {
+    return this.invalidGroup;
   }
-
+  set invalid(value: boolean) {
+    const previous = this.invalidGroup;
+    this.invalidGroup = Boolean(value);
+    if (this.content) {
+      this.syncRoot(this.content.root);
+    }
+    this.requestUpdate("invalid", previous);
+  }
+  private readonly lightStyles = new RootStyles(this, [fieldsetLightCss]);
+  private readonly content = new NativeContentRoot(
+    this,
+    () => this.ownerDocument.createElement("fieldset"),
+    (root) => this.syncRoot(root),
+  );
+  private observed?: HTMLFieldSetElement;
+  private observer?: MutationObserver;
+  private warned = false;
+  private syncRoot(root: HTMLFieldSetElement) {
+    if (root.disabled !== this.disabled) {
+      root.disabled = this.disabled;
+    }
+    if (root.getAttribute("aria-invalid") !== String(this.invalid)) {
+      root.setAttribute("aria-invalid", String(this.invalid));
+    }
+    if (this.observed !== root || !this.observer) {
+      this.observer?.disconnect();
+      this.observed = root;
+      this.observer = new MutationObserver(() => this.requestUpdate());
+      this.observer.observe(root, { childList: true, subtree: true, attributes: true, attributeFilter: ["slot"] });
+      this.requestUpdate();
+    }
+  }
+  private direct(slot: string) {
+    return [...this.content.root.children].filter((element) => element.getAttribute("slot") === slot);
+  }
+  protected get semanticTarget() {
+    return this.content?.root;
+  }
+  protected get semanticDefaults() {
+    return { describedByElements: [...this.direct("help"), ...(this.invalid ? this.direct("error") : [])] };
+  }
+  protected updated() {
+    const legends = this.direct("legend");
+    if (legends.some((element) => element.localName !== "legend") && !this.warned) {
+      this.warned = true;
+      console.warn(this.localName, { code: "fieldset-legend-requires-native-legend" });
+    }
+  }
+  disconnectedCallback() {
+    this.observer?.disconnect();
+    this.observer = undefined;
+    super.disconnectedCallback();
+  }
   render() {
-    const has = (name: string) => !!this.slotted[name]?.length;
-    const actions = this.slotted.actions ?? [];
-    const footer = has("footer") || has("status") || actions.length > 0;
-    const c = this.cls("fieldset", {
-      error: this.variant === "error",
-      warning: this.variant === "warning",
-      disabled: this.disabled,
-      highlight: this.highlight,
-    });
-    return html`<div class=${c} part="fieldset">
-      <div class="content" part="content">
-        ${this.disabled ? html`<acme-disabled-wall></acme-disabled-wall>` : nothing}
-        ${this.heading || has("title") ? html`<h4 class="title">${this.heading}<slot name="title"></slot></h4>` : nothing}
-        ${has("subtitle") ? html`<p class="subtitle"><slot name="subtitle"></slot></p>` : nothing}
-        ${has("error") ? html`<div class="row"><span class="error"><slot name="error"></slot></span></div>` : nothing}
-        ${has("warning") ? html`<div class="row"><span class="warning"><slot name="warning"></slot></span></div>` : nothing}
-        ${has("") ? html`<slot></slot>` : nothing}
-      </div>
-      ${
-        footer
-          ? html`<footer class="footer" part="footer">
-              ${has("footer") ? html`<slot name="footer"></slot>` : nothing}
-              ${has("status") ? html`<div class="status"><slot name="status"></slot></div>` : nothing}
-              ${actions.length ? html`<div class="actions">${actions.map((_, i) => html`<div class="action"><slot name=${`action-${i}`}></slot></div>`)}</div>` : nothing}
-            </footer>`
-          : nothing
-      }
-    </div>`;
+    return html`<div part="root"><slot></slot></div>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-fieldset": AcmeFieldset;

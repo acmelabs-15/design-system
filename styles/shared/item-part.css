@@ -1,0 +1,8 @@
+:host{display:block;min-inline-size:0;max-inline-size:100%;}
+[part~=root]{min-inline-size:0;overflow-wrap:anywhere;}
+[part~=content]{display:flex;flex-direction:column;gap:var(--acme-spacing-1);}
+[part~=media]{display:flex;align-items:center;justify-content:center;}
+[part~=heading]{font-size:14px;line-height:20px;font-weight:var(--acme-font-weight-600);color:var(--ds-gray-1000);}
+[part~=description]{font-size:14px;line-height:20px;color:var(--ds-gray-900);}
+[part~=metadata]{font-size:12px;line-height:20px;color:var(--ds-gray-900);}
+[part~=actions]{display:flex;flex-wrap:wrap;align-items:center;gap:var(--acme-spacing-2);}

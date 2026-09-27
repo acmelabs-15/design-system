@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "kind": "component",
+  "id": "acme-pagination-position",
+  "title": "acme-pagination-position",
+  "text": "# acme-pagination-position\n\nCoordinated result navigation with application-owned pages, page size and data loading.\n\n## `<acme-pagination-position>`\n\nLocalized current page and known total; unknown totals remain unspecified.\n\nVersion: 0.2.0\nSource: src/components/pagination-position/pagination-position.ts\n\n### CSS parts\n\n| Part | Description |\n|---|---|\n| ` position ` | Page position text. |\n\n## Best Practices\n\n**Ownership**\n\n- Handle acme-request to update page or pageSize. The component does not fetch, slice results or reset the current page.\n- The optional Page Size part starts with [10,25,50]. Supply its options property for other choices. The current supplied size is always represented.\n- A failed load can leave the page unchanged. Clear loading to allow retry.\n\n**Semantics**\n\n- Previous, Next and numbered items are ordinary buttons unless href or getPageUrl supplies a destination.\n- A known count of zero reads No results. Without count, the position reads only the current page and Next requires hasNextPage=true.\n- An out-of-range supplied page stays unchanged. Previous requests the last valid page; application code decides whether to accept it.\n- Numbered items announce their page and expose aria-current on the current item. Ellipses are not actions.\n\n**Composition**\n\n- Use ordinary layout for position, actions and page-size controls. Use Group when attached action surfaces are needed.\n- For a jump-to-page field, compose Number Input and handle its requested value in the application.\n- Previous/next documentation links are ordinary Link and Stack composition, separate from result pagination.\n",
+  "frameworks": [
+    "html",
+    "lit",
+    "react"
+  ],
+  "declaration": {
+    "kind": "class",
+    "description": "Localized current page and known total; unknown totals remain unspecified.",
+    "name": "AcmePaginationPosition",
+    "cssParts": [
+      {
+        "description": "Page position text.",
+        "name": "position"
+      }
+    ],
+    "members": [],
+    "superclass": {
+      "name": "AcmeElement",
+      "module": "dist/base.js"
+    },
+    "tagName": "acme-pagination-position",
+    "customElement": true,
+    "module": "dist/components/pagination-position/pagination-position.js"
+  }
+}

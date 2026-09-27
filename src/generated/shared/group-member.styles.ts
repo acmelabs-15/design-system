@@ -1,0 +1,38 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const groupMemberCss = css`:host([data-acme-group-member]:focus-within), :host([data-acme-group-member][data-acme-group-emphasized]), [data-acme-group-surface]:is(:focus-within, [data-focus], [data-active], [aria-checked="true"], [aria-selected="true"], [aria-invalid="true"], [data-selected], [data-invalid], [data-acme-group-emphasized]) {
+  z-index: 1;
+}
+
+[data-acme-group-cut-tl] {
+  border-top-left-radius: 0 !important;
+}
+
+[data-acme-group-cut-tr] {
+  border-top-right-radius: 0 !important;
+}
+
+[data-acme-group-cut-br] {
+  border-bottom-right-radius: 0 !important;
+}
+
+[data-acme-group-cut-bl] {
+  border-bottom-left-radius: 0 !important;
+}
+
+[data-acme-group-frame-top]:not(:focus-within, [data-focus], [data-hover], [data-active], [aria-checked="true"], [aria-selected="true"], [aria-invalid="true"], [data-selected], [data-invalid], [data-acme-group-emphasized]) {
+  border-top-color: #0000;
+}
+
+[data-acme-group-frame-right]:not(:focus-within, [data-focus], [data-hover], [data-active], [aria-checked="true"], [aria-selected="true"], [aria-invalid="true"], [data-selected], [data-invalid], [data-acme-group-emphasized]) {
+  border-right-color: #0000;
+}
+
+[data-acme-group-frame-bottom]:not(:focus-within, [data-focus], [data-hover], [data-active], [aria-checked="true"], [aria-selected="true"], [aria-invalid="true"], [data-selected], [data-invalid], [data-acme-group-emphasized]) {
+  border-bottom-color: #0000;
+}
+
+[data-acme-group-frame-left]:not(:focus-within, [data-focus], [data-hover], [data-active], [aria-checked="true"], [aria-selected="true"], [aria-invalid="true"], [data-selected], [data-invalid], [data-acme-group-emphasized]) {
+  border-left-color: #0000;
+}
+`;

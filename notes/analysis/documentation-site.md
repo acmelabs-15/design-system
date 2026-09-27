@@ -2,6 +2,16 @@
 
 Phase 1.9, researched 2026-09-19. **Recommendation: establish one accurate manifest-driven page contract and reuse the existing shared renderers, then extract the interactive doc components that contract needs.** A framework change is not justified by the evidence.
 
+## M03 manifest implementation — 2026-09-20
+
+The build now runs the pinned standard analyzer 0.11.0 through scripts/manifest.ts and publishes dist/custom-elements.json. site/api.ts reads that manifest for website and Markdown output. Source parsing in the former site extractor is removed. Static Lit templates supply slots, parts and forwarded parts; the TypeScript checker supplies finite event-name unions, payload types and missing member/return types. Fieldset explicitly documents its manually assigned public actions slot. Menu relay and Clearable Input event-name types describe their existing dispatches without changing runtime behavior.
+
+The checked-in Bun patch fixes the analyzer's quote classification, missing programmatic declaration exports, lowercase default Lit attributes, events in callbacks/constructors, and identifier names incorrectly reported as event names. The first independent review found the identifier-event defect and missing/inconsistent type/default facts. A failing test reproduced the gap; the corrected generator synchronizes attributes with their linked fields and rejects undocumented dynamic metadata. The second review approved this bounded slice.
+
+Runtime verification covers every one of the 150 exported/registered classes and all 809 reactive properties. Every public field has a type, every public method has a return type, and attribute type/default facts match their fields. Search/Clearable Input expose exactly their three real events; Slider exposes change/commit. Chrome renders the corrected Stat attribute, Dots Menu events and Fieldset actions slot. Full build and all 104 documentation pages pass. [Reproducible checks and limits](../alignment/evidence/m03-manifest-2026-09-20.json).
+
+The complete DocAPI layout, CSS-property/state annotations for rebuilt families, and final consumer delivery remain assigned to M03/M23. Empty annotation categories are not evidence that a future family has no supported styling API. This slice does not certify the final inventory or selective import delivery.
+
 Walkthrough decision, 2026-09-19: Peter selected `@custom-elements-manifest/analyzer` as the manifest generator. [Decision record](../decisions/custom-elements-manifest.md). Its output still needs a repository-specific trial; the page layout and doc-component interfaces remain proposals.
 
 The later walkthrough reviewed the existing shared renderers, missing API data, example reset/cleanup and matching displayed/executed code. [Material Web's documentation generator](https://github.com/material-components/material-web/blob/main/scripts/analyzer/update-docs.ts) was rechecked: it replaces marked API sections while retaining authored guidance. The discussion carries these findings into Phase 4; it does not approve the final page layout or proposed doc-component names. Separately, Peter selected [workflow-built website publishing](../decisions/documentation-publishing.md) and [selective component loading](../decisions/selective-component-loading.md).
@@ -105,3 +115,64 @@ CodeBlock examples separate title/status, language or file controls, copy, conte
 Docs Kit provides implemented query/index handling, but its search source lacks complete input/dialog/result semantics and turns errors into empty results. Generated search content loses inline code terms. Its generated CodeGroup content also has a nested structure that differs from the text extractor's assumptions; the likely rendering defect is source evidence, not a tested result. Do not adopt its search or MDX packages merely because they appear in the kit.
 
 Documentation pagination and lesson navigation use adjacent-document links, distinct from result-page controls. Timeline examples permit arbitrary date indicators and multiple content regions. Static instructions and scroll-linked reading progress remain separate from interactive Steps. These findings inform the Phase 4 documentation/component review; they do not approve new interfaces or automatic movement.
+
+## Complete Phase 4 documentation proposal
+
+The [documentation/tooling proposal](../alignment/inventory/documentation-tooling.md) now specifies the page contract, seven documentation units, cleanup/reset/source fidelity, complete manifest tables, persistent document navigation, tested recipes and version-matched HTML/Lit/React references. It keeps static rendering functions where they suffice rather than turning every section into a custom element. Results Pagination remains a separate consumer family; the Pro-inspired coordinated parts are Q15 in the [five-question register](../alignment/proposal-questions.md).
+
+This is proposal assembly, not source implementation or final page-layout approval. CEM/private-member classification, packaged API consistency, native table/light-DOM styling delivery and example acceptance remain named engineering gates. Historical API omission/build counts above retain their dated scope; the fresh [source snapshot](../alignment/evidence/current-public-interfaces-2026-09-20.json) is static coverage, not a replacement manifest.
+
+### Whole-set approval and Phase 5 handoff
+
+On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/migration-approval.md) through “approved”. M00 technical prerequisites remain active before dependent implementation. Production implementation has not started; approval is not a runtime result.
+
+## M01/M02 source and output routing
+
+The authored site now lives under site; local generation writes _site. It copies only document styles/maps from dist/styles and continues to build 104 pages documenting 150 current elements. The source move and compiler changes pass the existing rendering suite. [Evidence](../alignment/evidence/m02-css-pipeline-2026-09-20.json).
+
+GitHub Pages still serves main/docs, verified through the repository API on 2026-09-20. The tracked docs tree remains an untouched published snapshot while local development uses _site. Switching the workflow and removing that snapshot remains the publishing migration. No site deployment or repository setting was changed.
+
+
+## Component naming — 2026-09-22
+
+Peter requires component names to stand on their own. The documentation previously separated one subset into a House navigation group, used different badge colors and appended a component-category sentence in Markdown/skill references. Those distinctions are removed. All components share the Components navigation group and badge treatment; Tokens belongs in Foundations. The unused metadata flag is removed from page and navigation types. Current guidance and glossary wording follow the [component-language decision](../decisions/component-language.md). The site rebuild reports 96 pages and 4262 documented elements; 99 documentation tests pass.
+
+## M22 metadata corrections — 2026-09-23
+
+The generated React consumer exposed three factual metadata gaps: nested native assignments could replace host accessor defaults/types; inherited appearance fallbacks were not represented; and repeated dispatches kept only the last payload shape. The standard analyzer remains the source, with bounded source-fact corrections and explicit inherited-default annotations. A live all-element audit verifies every declared default; the final consumer type fixture verifies the complete Pagination event union. [Evidence](../alignment/evidence/m22-react-2026-09-23.json). M23 now owns the final page, example-lifetime, recipe and navigation audit.
+
+## M23 API audit in progress — 2026-09-23
+
+The initial whole-site audit covers 108 pages and 106 example scripts. It finds seven ignored Stack align attributes, two displayed-source overrides, no explicit example reset/cleanup contract and incomplete API categories. The shared API projection now retains methods, attribute-only inputs, descriptions, event types/flags, parts, CSS properties, read-only status and inherited ownership; HTML and Markdown use the same rows.
+
+The audit also reproduced two metadata defects. The form ID attribute was incorrectly linked to the read-only HTMLFormElement property. An inherited abstract getter left writable Radio Group/Segmented Control orientation marked read-only. Source-fact and normalization corrections now pass the complete reactive-property metadata test. The generated React adapter has an explicit attribute-only path; real external-form reassociation/removal and orientation pass all engines. Scratch evidence is in /tmp/acme-m23. Final API/browser/site acceptance and the remaining M23 units are still in progress.
+
+## M23 source, lifecycle and delivery checkpoint — 2026-09-26
+
+The expanded documentation build now renders 123 pages, including 15 recipe families. Ten focused source/formatting/API/lifecycle tests and the 109 built component/foundation-page checks pass. A real-browser smoke scan passes all 123 pages in Chromium, Firefox and WebKit. This is a render/setup check, not complete interaction acceptance: the recipe interaction tests then found that the bundler discarded bare imports of demo registration modules. Explicit registration calls replace those imports; the follow-up build and interactions remain pending.
+
+Copied HTML now includes exact-version selective definitions and shared helpers. All 461 HTML sources resolve their referenced local package outputs. Forty-five copied scripted examples pass across the three engines. Framework examples expose their actual files and transitive local dependencies. The old formatter damaged JavaScript comparisons, string whitespace and quoted HTML attributes. Oxfmt formats source with embedded rewriting disabled; an HTML structure/text comparison preserves significant author whitespace. Foundation Markdown now retains nested content, code, tables, links and decoded text.
+
+The documentation controller owns setup cleanup, reset and visible errors. Persistent navigation passes the real-site first/last, narrow width, mobile focus and 200% text-scale checks. External Google Fonts requests were blocked in these browser runs because DNS was unavailable; these are fallback-font geometry results, not font appearance certification. Chromium's native accessibility tree confirms the Drawer heading relationship; Playwright's JavaScript name calculation misses the element-reference API. No speculative component workaround was added.
+
+Adding every class-only browser entry raised the bundle graph above 33,000 entry points and reproduced Bun 1.4.0 out-of-memory failures. Separating compiler stages reduced peak memory but did not fix that bundle failure. Generated artwork/family modules now retain native ESM delivery and import the same bundled record entries. This reduces the bundler graph while preserving all 24,816 artwork/family modules, all class and definition entries, and one shared runtime. Browser bundling and all 4,319 React wrappers now emit successfully. Final full-build and artwork identity regressions remain required before closure.
+
+### M23 acceptance
+
+[Documentation acceptance](../alignment/evidence/m23-documentation-2026-09-26.json) closes the documentation batch. All thirteen recipe outcomes pass in each engine; the native accessibility checks confirm Switch naming and Pagination option semantics. The full current suite passes 906 tests with 171,288 assertions. Full strict TypeScript passes without exclusions or relaxed settings. Code review reproduced and fixed nested Markdown-fence truncation and missing definition imports inside lazy templates. The corresponding regressions now pass. Copied synthetic Video media/captions pass outside the site in all engines.
+
+The release-versioned website/API/recipe records now also feed MCP and consumer skill references. Their tool/package acceptance remains M24. The separate Bun root-package override installer defect is reproduced and assigned to the M25 package topology correction. Documentation closure is not a claim that M24–M26 or the final real-platform gates are complete.
+
+### Independent consumer evaluations and follow-up
+
+Three matched baseline/skill tasks exercised real HTML forms, React composition and10000-row Lit tables. The original grades and all attempts are retained in [the evaluation archive](../alignment/evidence/m24-skills/iteration-1/README.md); they are not a claim of statistical superiority. Supplemental probes verify named native form integration, detached React callback removal and one table request handler invocation after remount. The original React prompt did not explicitly require a surrounding native form, so that coverage mismatch is recorded rather than rewriting the original result.
+
+The evaluations exposed two delivery improvements. Framework-specific registration entries remove unrelated React code from copied Lit examples. Explicit action dispatch guidance prevents nested Select close requests from being mistaken for Pagination page-size requests. The React visual review also found an actual primary Tabs hover occlusion defect, now fixed and covered by three-engine pixel checks; the initial claim of incorrect target position was disproven. [Indicator evidence](../alignment/evidence/m24-tabs-indicator/README.md).
+
+## M26 actual-font appearance — 2026-09-26
+
+The [actual-font matrix](../alignment/evidence/m26-appearance/README.md) permits real Google Fonts requests and checks Forms, Tabs, Table and Group in light/dark at 1280, 768 and 320 pixels. Under pinned Bun 1.4.2, all 72 cases pass loaded-face, theme, document/example overflow, heading/navigation bounds, bottom content clearance and code-case checks. There are no JavaScript/example errors or failed font requests in the final stable-site run. Chromium's native font report confirms Google Sans Flex 18pt for heading/navigation glyphs. The mono token prefers the locally installed GoogleSansCode Nerd Font Mono on this machine; its TTF naming records confirm the native GoogleSansCode NFM Medium identity. The real web Google Sans Code face also loads. This verifies the declared stack, without substituting font files or claiming the web face wins over an installed preferred family.
+
+The inspection found plain documentation code falling through to Courier and inheriting Badge capitalization. The authored site/docs.css now applies the existing --acme-font-mono token and text-transform:none to code within the documentation main region. Initial failures, corrected font-name assertions and the interrupted concurrent-build run remain in the evidence. Firefox/WebKit loaded-face checks are distinct from Chromium's native glyph-font report; this is representative appearance coverage, not whole-site visual parity, actual Safari or assistive-technology certification.
+
+Screenshot review also identified a separate narrow-form example issue: both managed forms clipped the Remove label at 320 pixels without causing page overflow. The examples now use Box flex longhands to preserve the action width while the field shrinks. The targeted three-engine, light/dark rerun passes all six cases for both Lit and React, with 52px available for the 52px label. All six refreshed phone screenshots are inspected and the label is fully visible. [Action evidence](../alignment/evidence/m26-appearance/action-labels.json) and [managed-form acceptance](../alignment/evidence/m26-managed-forms/README.md) close this follow-up.

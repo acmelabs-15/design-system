@@ -1,0 +1,70 @@
+@media (prefers-color-scheme: dark) {
+
+}
+
+@media (width <= 560px) {
+
+}
+
+.tag {
+  background: var(--comp);
+  height: 20px;
+  color: var(--text-2);
+  font-family: var(--acme-font-mono);
+  font-size: var(--t-2xs);
+  white-space: nowrap;
+  border-radius: 999px;
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px;
+  line-height: 16px;
+  display: inline-flex;
+}
+
+@media (width <= 900px) {
+
+}
+
+@media (width <= 900px) {
+
+}
+
+@media (width <= 760px) {
+
+}
+
+@media (width <= 560px) {
+
+}
+
+@media (pointer: coarse) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+.tag.small {
+  height: 16px;
+  padding-inline: 6px;
+  font-size: 10px;
+}
+
+.tag.large {
+  height: 24px;
+  padding-inline: 10px;
+  font-size: 12px;
+}
+
+@supports (color: color-mix(in oklab,white,black)) {
+
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+  @media (color-gamut: p3) {
+    @supports (color: color-mix(in oklab,white,black)) {
+
+    }
+  }
+}

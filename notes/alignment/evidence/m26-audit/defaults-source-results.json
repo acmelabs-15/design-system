@@ -1,0 +1,3823 @@
+{
+  "date": "2026-09-26",
+  "version": "0.3.0",
+  "source": true,
+  "reports": [
+    {
+      "engine": "chromium",
+      "version": "154.0.8037.57",
+      "defaults": [
+        {
+          "tag": "acme-alert-dialog",
+          "property": "closeOnOutside",
+          "attribute": "close-on-outside",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "modal",
+          "attribute": "modal",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "closeOnEscape",
+          "attribute": "close-on-escape",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "size",
+          "attribute": "size",
+          "before": "medium",
+          "after": "medium",
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "placement",
+          "attribute": "placement",
+          "before": "center",
+          "after": "center",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "loading",
+          "attribute": "loading",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "clearable",
+          "attribute": "clearable",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "inputValue",
+          "attribute": "input-value",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "placeholder",
+          "attribute": "placeholder",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "invalid",
+          "attribute": "invalid",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "side",
+          "attribute": "side",
+          "before": "bottom",
+          "after": "bottom",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "align",
+          "attribute": "align",
+          "before": "start",
+          "after": "start",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "avoidCollisions",
+          "attribute": "avoid-collisions",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "size",
+          "attribute": "size",
+          "before": "medium",
+          "after": "medium",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "name",
+          "attribute": "name",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "required",
+          "attribute": "required",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "closeOnSelect",
+          "attribute": "close-on-select",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "loop",
+          "attribute": "loop",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "placement",
+          "attribute": "placement",
+          "before": "bottom-start",
+          "after": "bottom-start",
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "modal",
+          "attribute": "modal",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "closeOnEscape",
+          "attribute": "close-on-escape",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "closeOnOutside",
+          "attribute": "close-on-outside",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "size",
+          "attribute": "size",
+          "before": "medium",
+          "after": "medium",
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "placement",
+          "attribute": "placement",
+          "before": "center",
+          "after": "center",
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "modal",
+          "attribute": "modal",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "closeOnEscape",
+          "attribute": "close-on-escape",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "closeOnOutside",
+          "attribute": "close-on-outside",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "placement",
+          "attribute": "placement",
+          "before": "end",
+          "after": "end",
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "side",
+          "attribute": "side",
+          "before": "bottom",
+          "after": "bottom",
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "align",
+          "attribute": "align",
+          "before": "start",
+          "after": "start",
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "openDelay",
+          "attribute": "open-delay",
+          "before": 600,
+          "after": 600,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "closeDelay",
+          "attribute": "close-delay",
+          "before": 300,
+          "after": 300,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "value",
+          "attribute": "value",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "type",
+          "attribute": "type",
+          "before": "action",
+          "after": "action",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "checked",
+          "attribute": "checked",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "name",
+          "attribute": "name",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "href",
+          "attribute": "href",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "target",
+          "attribute": "target",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "rel",
+          "attribute": "rel",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "textValue",
+          "attribute": "text-value",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-section",
+          "property": "heading",
+          "attribute": "heading",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "closeOnSelect",
+          "attribute": "close-on-select",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "loop",
+          "attribute": "loop",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "placement",
+          "attribute": "placement",
+          "before": "bottom-start",
+          "after": "bottom-start",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "placeholder",
+          "attribute": "placeholder",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "clearable",
+          "attribute": "clearable",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "invalid",
+          "attribute": "invalid",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "side",
+          "attribute": "side",
+          "before": "bottom",
+          "after": "bottom",
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "align",
+          "attribute": "align",
+          "before": "start",
+          "after": "start",
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "avoidCollisions",
+          "attribute": "avoid-collisions",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "size",
+          "attribute": "size",
+          "before": "medium",
+          "after": "medium",
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "name",
+          "attribute": "name",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "required",
+          "attribute": "required",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-option",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-option",
+          "property": "section",
+          "attribute": "section",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "placeholder",
+          "attribute": "placeholder",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "clearable",
+          "attribute": "clearable",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "invalid",
+          "attribute": "invalid",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "side",
+          "attribute": "side",
+          "before": "bottom",
+          "after": "bottom",
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "align",
+          "attribute": "align",
+          "before": "start",
+          "after": "start",
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "avoidCollisions",
+          "attribute": "avoid-collisions",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "size",
+          "attribute": "size",
+          "before": "medium",
+          "after": "medium",
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "name",
+          "attribute": "name",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "required",
+          "attribute": "required",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "value",
+          "attribute": "value",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "type",
+          "attribute": "type",
+          "before": "action",
+          "after": "action",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "checked",
+          "attribute": "checked",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "name",
+          "attribute": "name",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "href",
+          "attribute": "href",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "target",
+          "attribute": "target",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "rel",
+          "attribute": "rel",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "textValue",
+          "attribute": "text-value",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "size",
+          "attribute": "size",
+          "before": "medium",
+          "after": "medium",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "variant",
+          "attribute": "variant",
+          "before": "default",
+          "after": "default",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "loading",
+          "attribute": "loading",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "menuLabel",
+          "attribute": "menu-label",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "content",
+          "attribute": "content",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "side",
+          "attribute": "side",
+          "before": "top",
+          "after": "top",
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "align",
+          "attribute": "align",
+          "before": "center",
+          "after": "center",
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "openDelay",
+          "attribute": "open-delay",
+          "before": 0,
+          "after": 0,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "closeDelay",
+          "attribute": "close-delay",
+          "before": 100,
+          "after": 100,
+          "pass": true
+        },
+        {
+          "tag": "acme-tree-item",
+          "property": "value",
+          "attribute": "value",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-tree-item",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        }
+      ],
+      "aria": [
+        {
+          "tag": "acme-alert-dialog",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-section",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-section",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-section",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-section",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-option",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-option",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-option",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-option",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tree-item",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tree-item",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tree-item",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tree-item",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "defaults": [
+        {
+          "tag": "acme-alert-dialog",
+          "property": "closeOnOutside",
+          "attribute": "close-on-outside",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "modal",
+          "attribute": "modal",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "closeOnEscape",
+          "attribute": "close-on-escape",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "size",
+          "attribute": "size",
+          "before": "medium",
+          "after": "medium",
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "placement",
+          "attribute": "placement",
+          "before": "center",
+          "after": "center",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "loading",
+          "attribute": "loading",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "clearable",
+          "attribute": "clearable",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "inputValue",
+          "attribute": "input-value",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "placeholder",
+          "attribute": "placeholder",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "invalid",
+          "attribute": "invalid",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "side",
+          "attribute": "side",
+          "before": "bottom",
+          "after": "bottom",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "align",
+          "attribute": "align",
+          "before": "start",
+          "after": "start",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "avoidCollisions",
+          "attribute": "avoid-collisions",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "size",
+          "attribute": "size",
+          "before": "medium",
+          "after": "medium",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "name",
+          "attribute": "name",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "required",
+          "attribute": "required",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "closeOnSelect",
+          "attribute": "close-on-select",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "loop",
+          "attribute": "loop",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "placement",
+          "attribute": "placement",
+          "before": "bottom-start",
+          "after": "bottom-start",
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "modal",
+          "attribute": "modal",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "closeOnEscape",
+          "attribute": "close-on-escape",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "closeOnOutside",
+          "attribute": "close-on-outside",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "size",
+          "attribute": "size",
+          "before": "medium",
+          "after": "medium",
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "placement",
+          "attribute": "placement",
+          "before": "center",
+          "after": "center",
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "modal",
+          "attribute": "modal",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "closeOnEscape",
+          "attribute": "close-on-escape",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "closeOnOutside",
+          "attribute": "close-on-outside",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "placement",
+          "attribute": "placement",
+          "before": "end",
+          "after": "end",
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "side",
+          "attribute": "side",
+          "before": "bottom",
+          "after": "bottom",
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "align",
+          "attribute": "align",
+          "before": "start",
+          "after": "start",
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "openDelay",
+          "attribute": "open-delay",
+          "before": 600,
+          "after": 600,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "closeDelay",
+          "attribute": "close-delay",
+          "before": 300,
+          "after": 300,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "value",
+          "attribute": "value",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "type",
+          "attribute": "type",
+          "before": "action",
+          "after": "action",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "checked",
+          "attribute": "checked",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "name",
+          "attribute": "name",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "href",
+          "attribute": "href",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "target",
+          "attribute": "target",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "rel",
+          "attribute": "rel",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "textValue",
+          "attribute": "text-value",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-section",
+          "property": "heading",
+          "attribute": "heading",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "closeOnSelect",
+          "attribute": "close-on-select",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "loop",
+          "attribute": "loop",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "placement",
+          "attribute": "placement",
+          "before": "bottom-start",
+          "after": "bottom-start",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "placeholder",
+          "attribute": "placeholder",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "clearable",
+          "attribute": "clearable",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "invalid",
+          "attribute": "invalid",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "side",
+          "attribute": "side",
+          "before": "bottom",
+          "after": "bottom",
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "align",
+          "attribute": "align",
+          "before": "start",
+          "after": "start",
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "avoidCollisions",
+          "attribute": "avoid-collisions",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "size",
+          "attribute": "size",
+          "before": "medium",
+          "after": "medium",
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "name",
+          "attribute": "name",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "required",
+          "attribute": "required",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-option",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-option",
+          "property": "section",
+          "attribute": "section",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "placeholder",
+          "attribute": "placeholder",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "clearable",
+          "attribute": "clearable",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "invalid",
+          "attribute": "invalid",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "side",
+          "attribute": "side",
+          "before": "bottom",
+          "after": "bottom",
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "align",
+          "attribute": "align",
+          "before": "start",
+          "after": "start",
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "avoidCollisions",
+          "attribute": "avoid-collisions",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "size",
+          "attribute": "size",
+          "before": "medium",
+          "after": "medium",
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "name",
+          "attribute": "name",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "required",
+          "attribute": "required",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "value",
+          "attribute": "value",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "type",
+          "attribute": "type",
+          "before": "action",
+          "after": "action",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "checked",
+          "attribute": "checked",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "name",
+          "attribute": "name",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "href",
+          "attribute": "href",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "target",
+          "attribute": "target",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "rel",
+          "attribute": "rel",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "textValue",
+          "attribute": "text-value",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "size",
+          "attribute": "size",
+          "before": "medium",
+          "after": "medium",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "variant",
+          "attribute": "variant",
+          "before": "default",
+          "after": "default",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "loading",
+          "attribute": "loading",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "menuLabel",
+          "attribute": "menu-label",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "content",
+          "attribute": "content",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "side",
+          "attribute": "side",
+          "before": "top",
+          "after": "top",
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "align",
+          "attribute": "align",
+          "before": "center",
+          "after": "center",
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "openDelay",
+          "attribute": "open-delay",
+          "before": 0,
+          "after": 0,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "closeDelay",
+          "attribute": "close-delay",
+          "before": 100,
+          "after": 100,
+          "pass": true
+        },
+        {
+          "tag": "acme-tree-item",
+          "property": "value",
+          "attribute": "value",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-tree-item",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        }
+      ],
+      "aria": [
+        {
+          "tag": "acme-alert-dialog",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-section",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-section",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-section",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-section",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-option",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-option",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-option",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-option",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tree-item",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tree-item",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tree-item",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tree-item",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "defaults": [
+        {
+          "tag": "acme-alert-dialog",
+          "property": "closeOnOutside",
+          "attribute": "close-on-outside",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "modal",
+          "attribute": "modal",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "closeOnEscape",
+          "attribute": "close-on-escape",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "size",
+          "attribute": "size",
+          "before": "medium",
+          "after": "medium",
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "placement",
+          "attribute": "placement",
+          "before": "center",
+          "after": "center",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "loading",
+          "attribute": "loading",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "clearable",
+          "attribute": "clearable",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "inputValue",
+          "attribute": "input-value",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "placeholder",
+          "attribute": "placeholder",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "invalid",
+          "attribute": "invalid",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "side",
+          "attribute": "side",
+          "before": "bottom",
+          "after": "bottom",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "align",
+          "attribute": "align",
+          "before": "start",
+          "after": "start",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "avoidCollisions",
+          "attribute": "avoid-collisions",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "size",
+          "attribute": "size",
+          "before": "medium",
+          "after": "medium",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "name",
+          "attribute": "name",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "required",
+          "attribute": "required",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "closeOnSelect",
+          "attribute": "close-on-select",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "loop",
+          "attribute": "loop",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "placement",
+          "attribute": "placement",
+          "before": "bottom-start",
+          "after": "bottom-start",
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "modal",
+          "attribute": "modal",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "closeOnEscape",
+          "attribute": "close-on-escape",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "closeOnOutside",
+          "attribute": "close-on-outside",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "size",
+          "attribute": "size",
+          "before": "medium",
+          "after": "medium",
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "placement",
+          "attribute": "placement",
+          "before": "center",
+          "after": "center",
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "modal",
+          "attribute": "modal",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "closeOnEscape",
+          "attribute": "close-on-escape",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "closeOnOutside",
+          "attribute": "close-on-outside",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "placement",
+          "attribute": "placement",
+          "before": "end",
+          "after": "end",
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "side",
+          "attribute": "side",
+          "before": "bottom",
+          "after": "bottom",
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "align",
+          "attribute": "align",
+          "before": "start",
+          "after": "start",
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "openDelay",
+          "attribute": "open-delay",
+          "before": 600,
+          "after": 600,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "closeDelay",
+          "attribute": "close-delay",
+          "before": 300,
+          "after": 300,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "value",
+          "attribute": "value",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "type",
+          "attribute": "type",
+          "before": "action",
+          "after": "action",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "checked",
+          "attribute": "checked",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "name",
+          "attribute": "name",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "href",
+          "attribute": "href",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "target",
+          "attribute": "target",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "rel",
+          "attribute": "rel",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "textValue",
+          "attribute": "text-value",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-section",
+          "property": "heading",
+          "attribute": "heading",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "closeOnSelect",
+          "attribute": "close-on-select",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "loop",
+          "attribute": "loop",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "placement",
+          "attribute": "placement",
+          "before": "bottom-start",
+          "after": "bottom-start",
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "placeholder",
+          "attribute": "placeholder",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "clearable",
+          "attribute": "clearable",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "invalid",
+          "attribute": "invalid",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "side",
+          "attribute": "side",
+          "before": "bottom",
+          "after": "bottom",
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "align",
+          "attribute": "align",
+          "before": "start",
+          "after": "start",
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "avoidCollisions",
+          "attribute": "avoid-collisions",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "size",
+          "attribute": "size",
+          "before": "medium",
+          "after": "medium",
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "name",
+          "attribute": "name",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "required",
+          "attribute": "required",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-option",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-option",
+          "property": "section",
+          "attribute": "section",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "placeholder",
+          "attribute": "placeholder",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "clearable",
+          "attribute": "clearable",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "invalid",
+          "attribute": "invalid",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "side",
+          "attribute": "side",
+          "before": "bottom",
+          "after": "bottom",
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "align",
+          "attribute": "align",
+          "before": "start",
+          "after": "start",
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "avoidCollisions",
+          "attribute": "avoid-collisions",
+          "before": true,
+          "after": true,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "size",
+          "attribute": "size",
+          "before": "medium",
+          "after": "medium",
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "name",
+          "attribute": "name",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "required",
+          "attribute": "required",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "value",
+          "attribute": "value",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "type",
+          "attribute": "type",
+          "before": "action",
+          "after": "action",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "checked",
+          "attribute": "checked",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "name",
+          "attribute": "name",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "href",
+          "attribute": "href",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "target",
+          "attribute": "target",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "rel",
+          "attribute": "rel",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "textValue",
+          "attribute": "text-value",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "size",
+          "attribute": "size",
+          "before": "medium",
+          "after": "medium",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "variant",
+          "attribute": "variant",
+          "before": "default",
+          "after": "default",
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "loading",
+          "attribute": "loading",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "menuLabel",
+          "attribute": "menu-label",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "content",
+          "attribute": "content",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "open",
+          "attribute": "open",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "side",
+          "attribute": "side",
+          "before": "top",
+          "after": "top",
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "align",
+          "attribute": "align",
+          "before": "center",
+          "after": "center",
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "sideOffset",
+          "attribute": "side-offset",
+          "before": 4,
+          "after": 4,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "openDelay",
+          "attribute": "open-delay",
+          "before": 0,
+          "after": 0,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "closeDelay",
+          "attribute": "close-delay",
+          "before": 100,
+          "after": 100,
+          "pass": true
+        },
+        {
+          "tag": "acme-tree-item",
+          "property": "value",
+          "attribute": "value",
+          "before": "",
+          "after": "",
+          "pass": true
+        },
+        {
+          "tag": "acme-tree-item",
+          "property": "disabled",
+          "attribute": "disabled",
+          "before": false,
+          "after": false,
+          "pass": true
+        }
+      ],
+      "aria": [
+        {
+          "tag": "acme-alert-dialog",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-alert-dialog",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-combobox",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-context-menu",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-dialog",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-drawer",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-hover-card",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-item",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-section",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-section",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-section",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu-section",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-menu",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-multi-select",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-option",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-option",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-option",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-option",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-select",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button-item",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-split-button",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tooltip",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tree-item",
+          "property": "ariaLabel",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tree-item",
+          "property": "ariaExpanded",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tree-item",
+          "property": "ariaHasPopup",
+          "after": null,
+          "pass": true
+        },
+        {
+          "tag": "acme-tree-item",
+          "property": "ariaAutoComplete",
+          "after": null,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}

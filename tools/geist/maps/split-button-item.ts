@@ -3,6 +3,7 @@
 import { type GeistMap, has } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "split-button",
   component: "SplitButtonMenuItem",
   root: (n) => n.tag === "li" && "data-geist-menu-item" in n.attrs,

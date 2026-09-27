@@ -1,0 +1,3 @@
+:host{position:fixed;inset:auto;left:var(--menu-x,0px);top:var(--menu-y,0px);margin:0;padding:var(--ds-popover-padding,8px);border:0;border-radius:12px;background:var(--ds-background-100);color:var(--ds-gray-1000);box-shadow:var(--acme-shadow-5);min-inline-size:150px;max-inline-size:var(--menu-available-width,calc(100vw - 16px));max-block-size:var(--menu-available-height,calc(100vh - 16px));inline-size:max-content;overflow:auto;overscroll-behavior:contain;font:inherit;font-size:14px;line-height:1.5;opacity:var(--menu-opacity,1);}
+:host(:not(:popover-open)){display:none;}
+[part=root]{outline:none;}

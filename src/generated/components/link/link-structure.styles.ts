@@ -1,0 +1,38 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const linkStructureCss = css`:host {
+  color: var(--ds-blue-900);
+}
+
+[part="root"] {
+  text-decoration: none;
+}
+
+:host(:not([underline="none"])) [part="root"]:is(:hover, :focus-visible), :host([underline="always"]) [part="root"] {
+  text-decoration: underline;
+}
+
+:host([disabled]) {
+  color: var(--ds-gray-700);
+}
+
+:host([disabled]) [part="root"] {
+  cursor: not-allowed;
+}
+
+[part="start"] {
+  margin-inline-end: .25em;
+  display: inline-block;
+}
+
+[part="end"] {
+  margin-inline-start: .25em;
+  display: inline-block;
+}
+
+[part="root"]:focus-visible {
+  box-shadow: var(--ds-focus-ring);
+  border-radius: var(--r-sm, 4px);
+  outline: none;
+}
+`;

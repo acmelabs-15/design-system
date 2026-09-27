@@ -1,0 +1,421 @@
+{
+  "capturedAt": "2026-09-20T15:23:47.470Z",
+  "scope": "All remaining Phase 4 proposals assembled before further user questions",
+  "userInstructions": [
+    {
+      "instruction": "When a behavior is definitively based on Chakra/Radix, inspect and apply that reference instead of asking Peter again.",
+      "record": "notes/decisions/reference-systems.md"
+    },
+    {
+      "instruction": "Put every remaining proposal together first; then go over actual unresolved questions.",
+      "record": "notes/decisions/agent-skills-workflow.md"
+    }
+  ],
+  "deliverables": {
+    "groups": 13,
+    "numberedComponentFamilyAdapterEntries": 91,
+    "documentationUnits": 7,
+    "main": "notes/alignment/inventory.md",
+    "familyFiles": [
+      "notes/alignment/inventory/foundations.md",
+      "notes/alignment/inventory/layout.md",
+      "notes/alignment/inventory/typography.md",
+      "notes/alignment/inventory/actions.md",
+      "notes/alignment/inventory/selection.md",
+      "notes/alignment/inventory/inputs-forms.md",
+      "notes/alignment/inventory/surfaces.md",
+      "notes/alignment/inventory/navigation-disclosure.md",
+      "notes/alignment/inventory/messages-statistics.md",
+      "notes/alignment/inventory/overlays-help.md",
+      "notes/alignment/inventory/data-displays.md",
+      "notes/alignment/inventory/rich-content.md",
+      "notes/alignment/inventory/documentation-tooling.md"
+    ],
+    "coverage": "notes/alignment/proposal-coverage.md",
+    "questions": "notes/alignment/proposal-questions.md"
+  },
+  "sourceCoverage": {
+    "registeredClasses": 150,
+    "sourceFiles": 150,
+    "declaredProperties": 778,
+    "extensionRequirements": 30,
+    "extraction": "notes/alignment/evidence/current-public-interfaces-2026-09-20.json",
+    "mapping": "notes/alignment/evidence/full-proposal-coverage-2026-09-20.json"
+  },
+  "conventionCensus": {
+    "tags": 150,
+    "acmePrefixed": 150,
+    "declaredPropertyOccurrences": 778,
+    "camelCaseNames": 778,
+    "sizeDeclarations": 23,
+    "sizeInitials": [
+      {
+        "tag": "acme-avatar",
+        "initial": "32"
+      },
+      {
+        "tag": "acme-avatar-group",
+        "initial": "24"
+      },
+      {
+        "tag": "acme-badge",
+        "initial": "\"md\""
+      },
+      {
+        "tag": "acme-button",
+        "initial": "\"medium\""
+      },
+      {
+        "tag": "acme-calendar",
+        "initial": "\"medium\""
+      },
+      {
+        "tag": "acme-collapse",
+        "initial": "\"medium\""
+      },
+      {
+        "tag": "acme-combobox",
+        "initial": "\"medium\""
+      },
+      {
+        "tag": "acme-combobox-option",
+        "initial": "\"medium\""
+      },
+      {
+        "tag": "acme-copy-button",
+        "initial": "\"medium\""
+      },
+      {
+        "tag": "acme-error",
+        "initial": "\"medium\""
+      },
+      {
+        "tag": "acme-gauge",
+        "initial": "\"small\""
+      },
+      {
+        "tag": "acme-icon-tile",
+        "initial": "\"\""
+      },
+      {
+        "tag": "acme-input",
+        "initial": "\"medium\""
+      },
+      {
+        "tag": "acme-loading-dots",
+        "initial": "\"md\""
+      },
+      {
+        "tag": "acme-note",
+        "initial": "\"medium\""
+      },
+      {
+        "tag": "acme-pill",
+        "initial": "\"md\""
+      },
+      {
+        "tag": "acme-select",
+        "initial": "\"medium\""
+      },
+      {
+        "tag": "acme-spinner",
+        "initial": "\"md\""
+      },
+      {
+        "tag": "acme-split-button",
+        "initial": "\"medium\""
+      },
+      {
+        "tag": "acme-switch",
+        "initial": "\"medium\""
+      },
+      {
+        "tag": "acme-switch-control",
+        "initial": "\"\""
+      },
+      {
+        "tag": "acme-textarea",
+        "initial": "\"medium\""
+      },
+      {
+        "tag": "acme-toggle",
+        "initial": "\"small\""
+      }
+    ],
+    "publicEventLiteralOccurrences": 68,
+    "publicEventPrefixCount": 68,
+    "legacyEventNames": [
+      "acme-change",
+      "acme-input",
+      "acme-clear",
+      "acme-reference",
+      "acme-toggle",
+      "acme-expand",
+      "acme-select",
+      "acme-close",
+      "acme-open",
+      "acme-escape",
+      "acme-copy",
+      "acme-copy-error",
+      "acme-confirm",
+      "acme-retry",
+      "acme-remove",
+      "acme-metric-select",
+      "acme-enter",
+      "acme-action",
+      "acme-commit",
+      "acme-click",
+      "acme-strip-select",
+      "acme-switch-select",
+      "acme-tab-select",
+      "acme-row",
+      "acme-play"
+    ],
+    "slotOccurrences": 124,
+    "legacyTextSlots": [
+      {
+        "tag": "acme-chart",
+        "name": "head"
+      },
+      {
+        "tag": "acme-collapse",
+        "name": "title"
+      },
+      {
+        "tag": "acme-empty-state",
+        "name": "title"
+      },
+      {
+        "tag": "acme-entity-content",
+        "name": "title"
+      },
+      {
+        "tag": "acme-fieldset",
+        "name": "title"
+      },
+      {
+        "tag": "acme-panel",
+        "name": "head"
+      },
+      {
+        "tag": "acme-stat",
+        "name": "desc"
+      },
+      {
+        "tag": "acme-stat",
+        "name": "foot"
+      }
+    ],
+    "startEndSlots": 22
+  },
+  "referenceFollowthrough": [
+    {
+      "subject": "Simple Grid",
+      "basis": "Pinned Chakra source in core-layout-proposal-2026-09-20.json",
+      "result": "No minimum-width clamp, component-level mode choice before responsive mapping, no declared columns=1 default.",
+      "userQuestionRetired": true
+    },
+    {
+      "subject": "General Stack/Group",
+      "basis": "Same complete pinned source",
+      "result": "Column Stack and Group horizontal/center/.5rem defaults carried through selected house names/tokens.",
+      "userQuestionRetired": true
+    },
+    {
+      "subject": "Scroll Area",
+      "url": "https://chakra-ui.com/docs/components/scroll-area",
+      "coverage": "Main examples and API text reviewed; not a new rendered interaction check",
+      "versionLabel": "3.37.0",
+      "result": "hover/always with hover default; remove imagined scrollHideDelay from this source contract"
+    },
+    {
+      "subject": "FormatByte",
+      "urls": [
+        "https://chakra-ui.com/docs/components/format-byte",
+        "https://raw.githubusercontent.com/chakra-ui/ark/main/packages/react/src/components/format/format-byte.tsx",
+        "https://raw.githubusercontent.com/chakra-ui/zag/main/packages/utilities/i18n-utils/src/format-bytes.ts"
+      ],
+      "coverage": "Main component documentation and both complete source files",
+      "result": "decimal/binary API; underlying decimal/byte/short/precision3 defaults and negative signs. Zero hardcoding and binary SI labels require correction/verification, not claimed source fidelity."
+    },
+    {
+      "subject": "Number Input",
+      "urls": [
+        "https://zagjs.com/components/number-input",
+        "https://raw.githubusercontent.com/chakra-ui/zag/main/packages/machines/number-input/src/number-input.machine.ts",
+        "https://raw.githubusercontent.com/chakra-ui/zag/main/packages/machines/number-input/src/number-input.utils.ts"
+      ],
+      "coverage": "API properties, machine defaults/state transitions/effects through displayed source, complete utility file; not a complete new port audit",
+      "result": "String value, numeric derived value, min/max safe integers, step1 or percent.01, scaled modifier steps, blur clamp/overflow/spin defaults; no imported machine"
+    },
+    {
+      "subject": "Pin Input",
+      "urls": [
+        "https://zagjs.com/components/pin-input",
+        "https://raw.githubusercontent.com/chakra-ui/zag/main/packages/machines/pin-input/src/pin-input.machine.ts"
+      ],
+      "coverage": "API properties and complete machine source",
+      "result": "Numeric/placeholder/otp defaults, array/string values, focus/paste/completion behavior; source UTF-16 operations are not a grapheme guarantee"
+    },
+    {
+      "subject": "Hover Card",
+      "url": "https://chakra-ui.com/docs/components/hover-card",
+      "coverage": "Complete main text and API available in output",
+      "versionLabel": "3.37.0",
+      "result": "600ms open, 300ms close; supplementary-content accessibility limit; house explicit-activation rule for interactive rich help stands"
+    },
+    {
+      "subject": "Toast",
+      "url": "https://base-ui.com/react/components/toast",
+      "coverage": "Targeted provider/API sections; not all 3329 example lines reread",
+      "result": "limit3, timeout5000ms, timeout0 persistent, older items marked limited"
+    },
+    {
+      "subject": "Disclosure/Tabs",
+      "urls": [
+        "https://chakra-ui.com/docs/components/accordion",
+        "https://chakra-ui.com/docs/components/collapsible",
+        "https://chakra-ui.com/docs/components/tabs"
+      ],
+      "coverage": "Relevant API/mounting sections and examples; not a new full browser or Material pass",
+      "result": "lazyMount=false, unmountOnExit=false; Accordion multiple/collapsible false; Tabs automatic activation"
+    },
+    {
+      "subject": "Tooltip",
+      "source": "src/components/tooltip/tooltip.ts",
+      "locations": [
+        27,
+        117,
+        213,
+        224
+      ],
+      "result": "Current source delayTime0 and LEAVE_MS100, carried as baseline rather than invented universal delay"
+    },
+    {
+      "subject": "ComboBox",
+      "source": "src/components/combobox/combobox.ts",
+      "locations": [
+        433,
+        590
+      ],
+      "result": "Enter commits a listed row or closes; noRawSelectedValue concerns supplied unmatched-value display, not free-form creation"
+    },
+    {
+      "subject": "Markdown",
+      "sources": [
+        "src/components/markdown/markdown.ts",
+        "node_modules/@tanstack/markdown/package.json",
+        "node_modules/@tanstack/markdown/skills/render-markdown/references/ast-and-options.md"
+      ],
+      "version": "0.0.13",
+      "result": "Raw HTML false default and explicit trusted opt-in; ordinary links/images described as sanitized; no raw HTML sanitizer guarantee"
+    },
+    {
+      "subject": "Table compact example",
+      "source": "src/components/table/table.styles.ts",
+      "locations": [
+        37,
+        38,
+        65
+      ],
+      "result": "Normal .625rem block/.5rem inline; compact5px block with inline unchanged. Numeric density alternatives labelled proposed, not measured future output"
+    }
+  ],
+  "converterProbe": {
+    "source": "node_modules/@lit/reactive-element/development/reactive-element.js",
+    "behavior": "defaultConverter catches malformed structured JSON and returns null; CSS scalar '[start] 1fr' also returns null when forced through Object conversion, supporting house scalar-first requirement.",
+    "cases": [
+      {
+        "input": "{bad",
+        "type": "Object",
+        "result": null
+      },
+      {
+        "input": "[bad",
+        "type": "Array",
+        "result": null
+      },
+      {
+        "input": "{\"medium\":4}",
+        "type": "Object",
+        "result": {
+          "medium": 4
+        }
+      },
+      {
+        "input": "[1,null,4]",
+        "type": "Array",
+        "result": [
+          1,
+          null,
+          4
+        ]
+      },
+      {
+        "input": "[start] 1fr",
+        "type": "Object",
+        "result": null
+      }
+    ],
+    "scope": "Pure Bun converter execution; not DOM/attribute lifecycle or house renderer verification."
+  },
+  "designReconciliations": [
+    "Separate value, open, expanded, visible and current notifications; completed copy/load/complete/dismiss results are not action requests.",
+    "Parent/child components keep a single value/form/keyboard owner; Group only supplies presentation.",
+    "Propose author-owned native Table/List/Data List content plus scoped generated document CSS.",
+    "Propose component-owned native light-DOM Markdown output for real heading fragments/TOC; no arbitrary private-shadow crawling.",
+    "Keep defaultValue/defaultChecked reset targets distinct from current programmatic value writes.",
+    "Map all old tags to a retained/rebuilt contract or replacement recipe; no alias implementation.",
+    "Source Pagination maps to DocNavigation; results Pagination is the separately selected capability.",
+    "Simple Grid numeric zero is explicitly a proposed house normalization, not a copied JavaScript truthiness quirk.",
+    "Named appearance input presence is tracked separately from effective inherited values; raw CSS getter rule remains unchanged."
+  ],
+  "remainingUserQuestions": [
+    "Q02",
+    "Q08",
+    "Q13",
+    "Q14",
+    "Q15"
+  ],
+  "sourceOrEngineeringResolved": [
+    "Q01",
+    "Q03",
+    "Q04",
+    "Q05",
+    "Q06",
+    "Q07",
+    "Q09",
+    "Q10",
+    "Q11",
+    "Q12",
+    "Q16",
+    "Simple Grid overflow"
+  ],
+  "verification": {
+    "productionSourceChanged": false,
+    "dependenciesChanged": false,
+    "unitSuiteRun": false,
+    "browserSuiteRun": false,
+    "bunConverterCases": 5,
+    "inventoryApproved": false,
+    "migrationApproved": false,
+    "committed": false,
+    "pushed": false,
+    "records": 157,
+    "localLinks": 1687,
+    "headingLinks": 484,
+    "protectedFiles": 870,
+    "protectedFileDifferences": [],
+    "markdownTableColumnErrors": [],
+    "componentEntryIds": 91,
+    "documentationUnits": 7,
+    "sourceTagMappings": 150
+  },
+  "limitations": [
+    "Proposal assembly is not implementation, runtime fidelity or user approval.",
+    "The five questions and named interface/style/registry/form/accessibility gates remain.",
+    "No new full Material visual review is claimed; prior completed review is reused, and the Progress visual gap remains explicit.",
+    "Private Chakra Pro code remains in its existing private reference collection.",
+    "Additional public names/props/parts are proposals, not silently recorded user decisions."
+  ]
+}

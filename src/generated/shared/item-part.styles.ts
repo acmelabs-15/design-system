@@ -1,0 +1,51 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const itemPartCss = css`:host {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  display: block;
+}
+
+[part~="root"] {
+  overflow-wrap: anywhere;
+  min-inline-size: 0;
+}
+
+[part~="content"] {
+  gap: var(--acme-spacing-1);
+  flex-direction: column;
+  display: flex;
+}
+
+[part~="media"] {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+[part~="heading"] {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-600);
+  color: var(--ds-gray-1000);
+}
+
+[part~="description"] {
+  color: var(--ds-gray-900);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+[part~="metadata"] {
+  color: var(--ds-gray-900);
+  font-size: 12px;
+  line-height: 20px;
+}
+
+[part~="actions"] {
+  align-items: center;
+  gap: var(--acme-spacing-2);
+  flex-wrap: wrap;
+  display: flex;
+}
+`;

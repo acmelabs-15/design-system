@@ -1,0 +1,54 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const disclosureTriggerCss = css`:host {
+  display: block;
+}
+
+button {
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--acme-spacing-3);
+  min-block-size: 48px;
+  inline-size: 100%;
+  padding: var(--acme-disclosure-trigger-padding, var(--acme-spacing-3) var(--acme-spacing-4));
+  color: var(--ds-gray-1000);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  display: flex;
+}
+
+button:hover {
+  background: var(--ds-gray-alpha-100);
+}
+
+button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--ds-focus-color);
+  outline-offset: -2px;
+}
+
+[part="label"] {
+  overflow-wrap: anywhere;
+  flex: 1;
+  min-inline-size: 0;
+}
+
+[part="indicator"] {
+  transform: rotate(var(--_disclosure-angle, 0deg));
+  flex: none;
+  display: flex;
+}
+
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline-color: highlight;
+  }
+}
+`;

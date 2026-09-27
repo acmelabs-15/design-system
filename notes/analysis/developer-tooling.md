@@ -63,6 +63,7 @@ A conditional development entry compiled to a 59-byte production stub with no De
 ### Remaining design and verification
 
 - Define useful properties/events/theme/state views; read-only inspection versus temporary editing is not selected.
+- If editing is selected, account for [helper-controlled styling inputs](../decisions/layout-spacing-properties.md#external-writes-to-helper-managed-settings): a direct property edit is effective immediately but can be overwritten by the next helper/template render. Distinguish that temporary edit from a persistent change to supplied input. No editing bridge or inspector mutation behavior is selected by this dependency.
 - Verify the real inspector in Chromium, Firefox and WebKit, including repeated mount/unmount, hidden panels, subscriptions and controlled components.
 - Keep all normal library/CDN/React production entries free of the inspector, Solid and developer assets.
 - Design the Bun asset and optional source-location integration; no Vite migration is selected.
@@ -95,3 +96,188 @@ The full local .github/workflows/publish-package.yml is already configured for n
 Bun's publish documentation was read. Examined upstream proposals do not establish a released replacement: [provenance PR 30522](https://github.com/oven-sh/bun/pull/30522) was open/unmerged; [OIDC PR 29374](https://github.com/oven-sh/bun/pull/29374) was closed/unmerged at inspection. This is not an exhaustive proof that every Bun-based route is impossible.
 
 Preserve the existing trusted-publishing/provenance guarantees while resolving a verified path consistent with the pure-Bun rule. Do not silently replace them with a permanent token or claim the runtime conflict is solved. No publication or credential/configuration action was performed.
+
+## Complete inspector proposal
+
+The [Phase 4 inspector contract](../alignment/inventory/documentation-tooling.md#inspector) specifies explicit mounting/disposal, scoped collection, bounded event retention, sensitive-value redaction, Lit/React use of one tool and production exclusion. Q08 asks only the actual remaining read-only-versus-temporary-editing scope. The selected Solid/TanStack Devtools delivery and helper-controlled-input boundary stand; no persistent editing bridge or source rewriting is silently added. Proposal assembly does not certify the real packaged inspector.
+
+### Whole-set approval and Phase 5 handoff
+
+On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/migration-approval.md) through “approved”. M00 technical prerequisites remain active before dependent implementation. Production implementation has not started; approval is not a runtime result.
+
+## M00 Bun release probe, 2026-09-20
+
+The [saved Bun-only probe](../alignment/evidence/m00-prerequisites-2026-09-20.json) runs npm CLI 12.0.2 under Bun 1.4.0 in an isolated scratch package. npm pack succeeds with an explicit file allowlist and lifecycle scripts disabled. Empty temporary npm configuration files and a loopback registry isolate the fixture; no account configuration or project files change.
+
+A local mock exercises the unmodified npm OIDC helper: request an identity token with the registry audience, exchange it for a scoped registry token, query public package visibility and automatically enable provenance for a public repository/package. All assertions pass. Fake tokens stay local. An in-memory configuration recorder prevents disk writes.
+
+This supports a possible Bun-hosted npm CLI route. It does not establish official Bun support or a finished publisher. [npm trusted-publisher documentation](https://docs.npmjs.com/trusted-publishers/) states Node/npm requirements. The installed provenance source invokes Sigstore; actual signing, transparency-log behavior and GitHub Actions integration remain unverified. No package publication or external signing request occurred. Preserve trusted publishing and provenance rather than replacing either with a permanent token.
+
+## M00 release mechanism conclusion, 2026-09-20
+
+The [completion probe](../alignment/evidence/m00-completion-2026-09-20.json) now runs the unmodified npm 12.0.2 publication library and Sigstore signing code under Bun 1.4.0. All endpoints are loopback test services. A local certificate issuer verifies proof of possession; Bun executes real ECDSA signing. Independent signature verification passes, tampering fails, the statement's SHA-512 matches the packed tarball, workflow claims match the fixture, and npm attaches both tarball and provenance to its outgoing local request. The mock witness is explicitly not a real trusted transparency-log proof.
+
+Together with the earlier npm CLI pack and OIDC-exchange tests, this establishes a concrete Bun-hosted npm route without replacing trusted publishing or provenance. Candidate invocation: Bun runs the pinned npm CLI JavaScript entry with the prepacked tarball, public access, provenance and lifecycle scripts disabled. It requires no Node executable and no long-lived publication token. Workspace packing is covered by the package-delivery fixture.
+
+This is bounded local runtime compatibility, not an assertion of official npm support for Bun. npm documentation still names Node. M25 must pin and run the same smoke checks on the Linux release runner, then verify actual GitHub/npm identity configuration and real Sigstore behavior before enabling publication. Those environment checks cannot be represented by fake local credentials. M00 performs no remote publication, signing-service write, account change or workflow dispatch. OpenSSL issues only the local test certificate; production signing remains npm/Sigstore running under Bun.
+
+## Implemented style tooling checkpoint
+
+Lightning CSS is now the build compiler. Its integration, corpus-free build, source-map delivery and before/after browser comparisons are recorded in [M02 evidence](../alignment/evidence/m02-css-pipeline-2026-09-20.json). Biome remains the current authored-code formatter until M25; generated files are excluded because compiler output and map offsets must stay aligned. The obsolete format-generated wrapper is removed. The wider strict TypeScript check retains nine pre-existing diagnostics; the touched generator's four errors are fixed. New script checks and all 624 unit tests pass.
+
+## M24 inspector scope verification — 2026-09-26
+
+The installed official `@tanstack/devtools` 0.14.2 source exposes a scope conflict
+that the earlier synthetic panel probe did not test. `src/devtools.tsx` always
+mounts `SourceInspector`, renders SEO and Marketplace destinations through
+`components/workbench-header.tsx`, and portals its surface to `document.body`.
+`src/core.ts` exposes configuration for source hotkeys/actions but no exclusion
+switch for those capabilities. The shell's context also persists settings.
+Embedding that complete shell would add whole-page inspection beyond the approved
+root-scoped read-only component inspector.
+
+The implementation therefore uses the official `@tanstack/devtools-ui` 0.7.1
+public `MainPanel`, `Section`, `JsonTree` and `ThemeContextProvider` components with
+Solid 1.9.15 in the optional package. This is the selected ecosystem's UI layer,
+not a claim that the full shell's behavior is equivalent. Its source was inspected
+at `dist/esm/components/{main-panel,section,tree,theme}.js` and
+`dist/esm/styles/semantic-theme.js`. The UI layer installs its packaged font and
+forced-colors styles; it has no source inspector, marketplace, event bus or settings
+persistence. The inspector disables JsonTree copying and only displays already
+redacted snapshots. The full shell is not a runtime dependency.
+
+The current official [custom-plugin guide](https://tanstack.com/devtools/latest/docs/building-custom-plugins)
+was also read. Its event client supports application-to-panel communication and
+optional commands, but this inspector needs neither remote transport nor a global
+event bus. It observes only explicitly selected component roots through Lit's
+public controller interface and generated public metadata. `hostUpdated` supplies
+property notifications; DOM observation discovers insertion/removal and public
+attribute changes. No component prototype or private store is patched.
+
+This paragraph records the source-backed implementation choice. Full-browser,
+packaged-asset, redaction and production-exclusion results are recorded separately;
+source inspection alone is not their acceptance result.
+
+### Inspector runtime findings and bounded fixes
+
+The real Input fixture exposed an observation loop absent from synthetic controls.
+Reading the public `validity`, `validationMessage` and `willValidate` accessors
+calls `NativeForm.sync()` (`src/shared/native-form.ts`). That synchronizes internal
+native attributes. Observing every shadow attribute caused those reads to schedule
+themselves again. The optional observer now reacts only to declared public-host
+attributes, real value changes and theme/style dependencies; shadow roots supply
+child discovery. A regression test verifies a public getter can synchronize native
+attributes without an observation loop. Core component behavior stays unchanged.
+
+Visual inspection found that Devtools UI 0.7.1's JsonTree omits keys for null-valued
+fields. Its `dist/esm/components/tree.js` key condition tests only
+`typeof value !== "object"`; JavaScript classifies null as object. The optional
+runtime builder corrects that exact condition to include null. It verifies package
+version and original SHA256 `a7a7a305ff7256bc71e423fc6cefdf14726bc1d57dc19e1ab0ea0a49beaa06a3`
+before applying the one-expression change. Browser verification checks that
+`"form": null` remains visible. The correction is bundled into the optional
+package; consumers do not need to apply a package-manager patch.
+
+The upstream font modules use relative URL expressions. A first bundler can emit
+those assets correctly, but a downstream consumer can move the emitted URL strings
+again. The optional runtime therefore embeds the two small fonts (82,204-byte
+Bricolage Grotesque and 72,920-byte Inter) as data URLs. Both OFL notices, third-party
+MIT notices, font hashes and correction provenance ship in the optional package.
+The normal production graph excludes this package and its font data.
+
+The final scoped fixture uses the compiled optional runtime and bundles it again
+with actual Lit and generated React Input consumers. It passes 13 outcome checks
+in each of Chromium, Firefox and WebKit: scoped collection, no settings record,
+keyboard expansion, desktop/narrow rendering, redaction, visible null-field keys,
+loaded embedded fonts, property-only updates in both frameworks, bounded public
+events, ancestor theme updates, detach/reconnect, unmount/remount/disposal, and no
+outbound requests or browser errors. The runner is
+`notes/alignment/evidence/m24-devtools/browser-run.ts`; results and screenshots are under
+`.artifacts/m24-devtools/`. A separate production branch in that runner contains
+102 input modules and no Devtools UI, Solid or font output. Those are local compiled
+consumer results; final packed-consumer verification remains the release gate.
+
+Firefox returns quoted `FontFace.family` names while Chromium returns unquoted
+names. Both fonts were already loaded; the test now normalizes that serialization
+before asserting family identity. No runtime font workaround was added for this
+harness discrepancy. Public declarations contain no TanStack Devtools UI or Solid
+imports. The runtime has no Lit import either; it uses the host's public controller
+interface and its generated metadata.
+
+## Coordinated release candidate — 2026-09-26
+
+A public registry read confirms @acmelabs/design-system0.2.0 is already published. The replacement API therefore prepares coordinated version0.3.0 for core, React, MCP and Devtools under delegated execution. The optional package metadata now represents implemented release candidates rather than private placeholders. Root remains a private build workspace. Skill version metadata, generated facts and peer versions advance together; this is local release preparation, not publication.
+
+The public0.2.0 package advertises a Sigstore provenance endpoint. Read-only verification of that existing statement can check real trust handling under Bun without issuing a new signature or publishing anything. Actual future OIDC policy, signing and Linux CI still need explicit verification; the publishing workflow remains gated.
+
+### Release runtime verification
+
+The read-only public0.2.0 provenance check fails under Bun1.4.0 while bootstrapping trusted TUF root signatures. The same pinned npm/Sigstore stack succeeds under isolated, checksum-verified Bun1.4.2: tarball integrity, provenance digest, GitHub workflow and certificate identity/issuer, trust verification and rejection of a tampered payload all pass. CI and release checks therefore pin1.4.2; the user's global runtime is unchanged. No signature was issued and nothing was published. Final build/test checks will run with that same isolated runtime.
+
+## M25 toolchain implementation — 2026-09-26
+
+The selected toolchain now has executable project configuration and a Bun-only
+runner. Versions are Oxlint 1.85.0, Oxfmt 0.70.0, Ultracite 7.12.0,
+Stylelint 17.15.0 and postcss-lit 1.4.1. The [tooling evidence](../alignment/evidence/m25-tooling/README.md)
+links the exact preset mapping and repeatable checks. The root command, editor
+and CI cutover remains a separate integration step; this checkpoint does not
+claim publication or a completed release.
+
+The initial full preset check was not treated as a defect count. After the
+selected mechanical formatting pass, it reported 4,694 findings, most involving
+syntax preferences that the project had not adopted. The final configuration
+records each changed setting with a reason. It preserves ordered keys and
+initializers, sequential work, controller registration, getter initialization,
+parser captures, reactive branch reads, and existing public TypeScript type
+shapes. Narrow file overrides cover demonstrated false positives for collection
+snapshots, owner captures, Worker messaging, executable source strings, sparse
+fixtures and concrete extension hooks. There is no diagnostic-count baseline or
+blanket exclusion of authored application code.
+
+The mechanical pass changed 612 tracked JavaScript/TypeScript files. The strengthened
+syntax guard passes for every file. Its regressions distinguish `const` from
+`let`, preserve optional-chain boundaries such as `(obj?.x).y`, retain raw tagged
+template text, and reject changes to key order, dependency reads and JSDoc
+attachment. The pass left all 147 authored CSS files unchanged. At 200 columns,
+Oxfmt changed JSDoc attachment inside the generator's `Entry` type. A tested
+280-column override for that file preserves the original syntax ownership. CSS
+formatting also changed opaque custom-property whitespace in compiled output;
+CSS therefore stays with its compiler and Stylelint rather than receiving a
+formatter rewrite.
+
+Stylelint checks all authored CSS, canonical compiled CSS, and the five source
+test files with actual `css`-tagged templates. It does not send arbitrary
+TypeScript strings to a CSS parser. The syntax boundary disables automatic
+source-map discovery for JavaScript text and fails if postcss-lit skips a real
+CSS template. Tests retain unknown-property and duplicate-declaration errors,
+while permitting consecutive different-value CSS fallbacks.
+
+Two focused cleanup runs pass: 73 runtime/tool tests and 68 generator/package/
+native-content tests. These cover the changed Pin Input bindings, Calendar and
+option-control dependency reads, constructor/event behavior, generated CSS,
+package processing and copied source graphs. Native Chromium accessibility
+checks remain separate from the linter. The consumer-skill tests now derive the
+coordinated core version rather than embedding the previous release number.
+
+The runner captures Oxlint JSON through a fresh truncated file descriptor. A
+regression fixture starts with a larger existing report, then verifies that the
+shorter replacement parses completely. The original pipe-truncation cause is
+still not established; the selected capture path avoids it and separately fixes
+stale trailing bytes on report reuse. TypeScript 5.9 remains the type gate;
+these results do not establish TypeScript-Go equivalence.
+
+### Development dependency audit
+
+Bun's high-severity audit reports three advisories against the direct happy-dom15.11.7 dependency: [VM context escape](https://github.com/advisories/GHSA-37j7-fg3j-429f), [cross-origin cookie selection](https://github.com/advisories/GHSA-w4gp-fjgq-3q4g), and [module export injection](https://github.com/advisories/GHSA-6q6h-j7hj-3r64). Their fixed versions are20.0.0,20.8.9 and20.8.8 respectively. The direct dependency and global registrator are now pinned together at20.14.0, the version already used by the test environment. No Happy DOM code enters the production library. The follow-up audit reports zero vulnerabilities across639 installed packages; eleven affected parser/census tests pass. The final full suite remains part of release acceptance.
+
+### Final local tooling gates
+
+The [final integrated acceptance](../alignment/evidence/m26-final/README.md) runs under Bun1.4.2 and passes963 unit tests, strict types, Oxlint with zero diagnostics across832 authored JS/TS files, Oxfmt and Stylelint. Stylelint covers147 authored CSS files,167 canonical compiled outputs and five Lit-template test files. The final dependency audit reports no vulnerabilities across640 packages.
+
+The committed build reproduces generated output without drift. Four coordinated0.3.0 archives pass local acceptance. All23 required browser invocations are accepted: the initial run passes22, and the corrected strict Intent-link oracle passes its full targeted rerun against the identical archives. Original results and the rerun remain separate. Source publication records distinguish clean/dirty trees, and dirty records cannot publish.
+
+The dev server watches authored examples, keeps the parent Bun runtime for child builds, binds to loopback and rejects encoded traversal before file access. Six actual server regressions pass; the traversal test uses a harmless temporary sentinel. Actual-platform and external Linux/OIDC/publication/Pages checks remain unperformed, with publishing disabled.
+
+### Credential-handling incident
+
+During a delegated registry investigation in this continuation, an unnecessary read of local npm configuration printed an npm authentication token into tool output. The value is not reproduced here, was not added to repository files and was not reused. Peter was informed in commentary. The token should be revoked and replaced by its owner; no credential rotation or account change was attempted. Keep this follow-up visible in the final handoff without reading or printing the token again.

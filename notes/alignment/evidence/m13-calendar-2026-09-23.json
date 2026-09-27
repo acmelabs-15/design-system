@@ -1,0 +1,1021 @@
+{
+  "date": "2026-09-23",
+  "status": "Calendar complete at its assigned native/Lit boundary; M13 complete",
+  "implementation": [
+    "Canonical immutable ISO civil-date or offset-timestamp values, native form/reset/restoration and staged configuration",
+    "Gregorian single/range grid with locale week boundaries, RTL keyboard navigation, native editors, named zones and DST validation",
+    "Native modal and inline presentations, shared placement/motion, noninteractive trigger content and author-owned footer",
+    "Shared semantic updates retain owned popup ARIA; native focus helper contains Tab across slots/nested roots",
+    "Placement schedules outside ResizeObserver delivery; obsolete measurements and frames are cancelled",
+    "Old Calendar interface and 52 dedicated base-sheet rules removed"
+  ],
+  "review": {
+    "reviewer": "Primary agent; earlier isolated implementation integrated and reviewed",
+    "axes": [
+      "Correctness: public values, form state, dates, boundaries, events and lifecycle reviewed against F08",
+      "Architecture: existing store/form/date/motion/overlay mechanisms reused; focus-trap owns only focus resources",
+      "Security: strings render through Lit; structured values validate; no network or application actions",
+      "Readability: civil/instant value rules are isolated in calendar-value.ts",
+      "Performance: bounded 42-day grid; geometry refresh coalesces and cancels"
+    ]
+  },
+  "verification": {
+    "build": "Strict package build passes",
+    "site": {
+      "pages": 96,
+      "elements": 4262,
+      "undocumented": 0
+    },
+    "tests": {
+      "passed": 900,
+      "failed": 0,
+      "assertions": 121328,
+      "files": 149
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "HTML default and immediate native submission",
+            "pass": true
+          },
+          {
+            "name": "native modal opens on the selected day and Escape restores focus",
+            "pass": true
+          },
+          {
+            "name": "inline control label does not replace date button names",
+            "pass": true
+          },
+          {
+            "name": "day selection commits one ISO value",
+            "pass": true
+          },
+          {
+            "name": "native label focuses the actual Calendar trigger",
+            "pass": true
+          },
+          {
+            "name": "Apply explains an incomplete required range",
+            "pass": true
+          },
+          {
+            "name": "selecting the current day does not emit a change",
+            "pass": true
+          },
+          {
+            "name": "range endpoint navigation starts at the focused end",
+            "pass": true
+          },
+          {
+            "name": "date-only selection stays a civil day across zones",
+            "pass": true
+          },
+          {
+            "name": "time-zone changes preserve the timestamp instant",
+            "pass": true
+          },
+          {
+            "name": "DST gap remains invalid until time is corrected",
+            "pass": true
+          },
+          {
+            "name": "bounds restrict native validity and date buttons",
+            "pass": true
+          },
+          {
+            "name": "native reset and restoration stay silent",
+            "pass": true
+          },
+          {
+            "name": "native fieldset disables submission immediately",
+            "pass": true
+          },
+          {
+            "name": "footer identity survives presentation changes",
+            "pass": true
+          },
+          {
+            "name": "range value serializes as one JSON entry",
+            "pass": true
+          },
+          {
+            "name": "open modal can change presentation and reopen",
+            "pass": true
+          },
+          {
+            "name": "controlled rejection does not emit a commit",
+            "pass": true
+          },
+          {
+            "name": "trigger exposes current dialog relationship and expansion",
+            "pass": true
+          },
+          {
+            "name": "external label updates retain owned popup semantics",
+            "pass": true
+          },
+          {
+            "name": "month buttons retain focus for repeated activation",
+            "pass": true
+          },
+          {
+            "name": "short viewport reveals the selected focused day",
+            "pass": true
+          },
+          {
+            "name": "presets use immutable values and native JSON submission",
+            "pass": true
+          },
+          {
+            "name": "changing zone clears a stale local-time draft error",
+            "pass": true
+          },
+          {
+            "name": "RTL day keys follow the visual direction",
+            "pass": true
+          },
+          {
+            "name": "modal Tab stays contained and reaches supplied footer",
+            "pass": true
+          },
+          {
+            "name": "nested modal releases focus back to its open parent",
+            "pass": true
+          },
+          {
+            "name": "removing an open modal releases focus resources before reconnect",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "HTML default and immediate native submission",
+            "pass": true
+          },
+          {
+            "name": "native modal opens on the selected day and Escape restores focus",
+            "pass": true
+          },
+          {
+            "name": "inline control label does not replace date button names",
+            "pass": true
+          },
+          {
+            "name": "day selection commits one ISO value",
+            "pass": true
+          },
+          {
+            "name": "native label focuses the actual Calendar trigger",
+            "pass": true
+          },
+          {
+            "name": "Apply explains an incomplete required range",
+            "pass": true
+          },
+          {
+            "name": "selecting the current day does not emit a change",
+            "pass": true
+          },
+          {
+            "name": "range endpoint navigation starts at the focused end",
+            "pass": true
+          },
+          {
+            "name": "date-only selection stays a civil day across zones",
+            "pass": true
+          },
+          {
+            "name": "time-zone changes preserve the timestamp instant",
+            "pass": true
+          },
+          {
+            "name": "DST gap remains invalid until time is corrected",
+            "pass": true
+          },
+          {
+            "name": "bounds restrict native validity and date buttons",
+            "pass": true
+          },
+          {
+            "name": "native reset and restoration stay silent",
+            "pass": true
+          },
+          {
+            "name": "native fieldset disables submission immediately",
+            "pass": true
+          },
+          {
+            "name": "footer identity survives presentation changes",
+            "pass": true
+          },
+          {
+            "name": "range value serializes as one JSON entry",
+            "pass": true
+          },
+          {
+            "name": "open modal can change presentation and reopen",
+            "pass": true
+          },
+          {
+            "name": "controlled rejection does not emit a commit",
+            "pass": true
+          },
+          {
+            "name": "trigger exposes current dialog relationship and expansion",
+            "pass": true
+          },
+          {
+            "name": "external label updates retain owned popup semantics",
+            "pass": true
+          },
+          {
+            "name": "month buttons retain focus for repeated activation",
+            "pass": true
+          },
+          {
+            "name": "short viewport reveals the selected focused day",
+            "pass": true
+          },
+          {
+            "name": "presets use immutable values and native JSON submission",
+            "pass": true
+          },
+          {
+            "name": "changing zone clears a stale local-time draft error",
+            "pass": true
+          },
+          {
+            "name": "RTL day keys follow the visual direction",
+            "pass": true
+          },
+          {
+            "name": "modal Tab stays contained and reaches supplied footer",
+            "pass": true
+          },
+          {
+            "name": "nested modal releases focus back to its open parent",
+            "pass": true
+          },
+          {
+            "name": "removing an open modal releases focus resources before reconnect",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "HTML default and immediate native submission",
+            "pass": true
+          },
+          {
+            "name": "native modal opens on the selected day and Escape restores focus",
+            "pass": true
+          },
+          {
+            "name": "inline control label does not replace date button names",
+            "pass": true
+          },
+          {
+            "name": "day selection commits one ISO value",
+            "pass": true
+          },
+          {
+            "name": "native label focuses the actual Calendar trigger",
+            "pass": true
+          },
+          {
+            "name": "Apply explains an incomplete required range",
+            "pass": true
+          },
+          {
+            "name": "selecting the current day does not emit a change",
+            "pass": true
+          },
+          {
+            "name": "range endpoint navigation starts at the focused end",
+            "pass": true
+          },
+          {
+            "name": "date-only selection stays a civil day across zones",
+            "pass": true
+          },
+          {
+            "name": "time-zone changes preserve the timestamp instant",
+            "pass": true
+          },
+          {
+            "name": "DST gap remains invalid until time is corrected",
+            "pass": true
+          },
+          {
+            "name": "bounds restrict native validity and date buttons",
+            "pass": true
+          },
+          {
+            "name": "native reset and restoration stay silent",
+            "pass": true
+          },
+          {
+            "name": "native fieldset disables submission immediately",
+            "pass": true
+          },
+          {
+            "name": "footer identity survives presentation changes",
+            "pass": true
+          },
+          {
+            "name": "range value serializes as one JSON entry",
+            "pass": true
+          },
+          {
+            "name": "open modal can change presentation and reopen",
+            "pass": true
+          },
+          {
+            "name": "controlled rejection does not emit a commit",
+            "pass": true
+          },
+          {
+            "name": "trigger exposes current dialog relationship and expansion",
+            "pass": true
+          },
+          {
+            "name": "external label updates retain owned popup semantics",
+            "pass": true
+          },
+          {
+            "name": "month buttons retain focus for repeated activation",
+            "pass": true
+          },
+          {
+            "name": "short viewport reveals the selected focused day",
+            "pass": true
+          },
+          {
+            "name": "presets use immutable values and native JSON submission",
+            "pass": true
+          },
+          {
+            "name": "changing zone clears a stale local-time draft error",
+            "pass": true
+          },
+          {
+            "name": "RTL day keys follow the visual direction",
+            "pass": true
+          },
+          {
+            "name": "modal Tab stays contained and reaches supplied footer",
+            "pass": true
+          },
+          {
+            "name": "nested modal releases focus back to its open parent",
+            "pass": true
+          },
+          {
+            "name": "removing an open modal releases focus resources before reconnect",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "HTML default and immediate native submission",
+            "pass": true
+          },
+          {
+            "name": "native modal opens on the selected day and Escape restores focus",
+            "pass": true
+          },
+          {
+            "name": "inline control label does not replace date button names",
+            "pass": true
+          },
+          {
+            "name": "day selection commits one ISO value",
+            "pass": true
+          },
+          {
+            "name": "native label focuses the actual Calendar trigger",
+            "pass": true
+          },
+          {
+            "name": "Apply explains an incomplete required range",
+            "pass": true
+          },
+          {
+            "name": "selecting the current day does not emit a change",
+            "pass": true
+          },
+          {
+            "name": "range endpoint navigation starts at the focused end",
+            "pass": true
+          },
+          {
+            "name": "date-only selection stays a civil day across zones",
+            "pass": true
+          },
+          {
+            "name": "time-zone changes preserve the timestamp instant",
+            "pass": true
+          },
+          {
+            "name": "DST gap remains invalid until time is corrected",
+            "pass": true
+          },
+          {
+            "name": "bounds restrict native validity and date buttons",
+            "pass": true
+          },
+          {
+            "name": "native reset and restoration stay silent",
+            "pass": true
+          },
+          {
+            "name": "native fieldset disables submission immediately",
+            "pass": true
+          },
+          {
+            "name": "footer identity survives presentation changes",
+            "pass": true
+          },
+          {
+            "name": "range value serializes as one JSON entry",
+            "pass": true
+          },
+          {
+            "name": "open modal can change presentation and reopen",
+            "pass": true
+          },
+          {
+            "name": "controlled rejection does not emit a commit",
+            "pass": true
+          },
+          {
+            "name": "trigger exposes current dialog relationship and expansion",
+            "pass": true
+          },
+          {
+            "name": "external label updates retain owned popup semantics",
+            "pass": true
+          },
+          {
+            "name": "month buttons retain focus for repeated activation",
+            "pass": true
+          },
+          {
+            "name": "short viewport reveals the selected focused day",
+            "pass": true
+          },
+          {
+            "name": "presets use immutable values and native JSON submission",
+            "pass": true
+          },
+          {
+            "name": "changing zone clears a stale local-time draft error",
+            "pass": true
+          },
+          {
+            "name": "RTL day keys follow the visual direction",
+            "pass": true
+          },
+          {
+            "name": "modal Tab stays contained and reaches supplied footer",
+            "pass": true
+          },
+          {
+            "name": "nested modal releases focus back to its open parent",
+            "pass": true
+          },
+          {
+            "name": "removing an open modal releases focus resources before reconnect",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "HTML default and immediate native submission",
+            "pass": true
+          },
+          {
+            "name": "native modal opens on the selected day and Escape restores focus",
+            "pass": true
+          },
+          {
+            "name": "inline control label does not replace date button names",
+            "pass": true
+          },
+          {
+            "name": "day selection commits one ISO value",
+            "pass": true
+          },
+          {
+            "name": "native label focuses the actual Calendar trigger",
+            "pass": true
+          },
+          {
+            "name": "Apply explains an incomplete required range",
+            "pass": true
+          },
+          {
+            "name": "selecting the current day does not emit a change",
+            "pass": true
+          },
+          {
+            "name": "range endpoint navigation starts at the focused end",
+            "pass": true
+          },
+          {
+            "name": "date-only selection stays a civil day across zones",
+            "pass": true
+          },
+          {
+            "name": "time-zone changes preserve the timestamp instant",
+            "pass": true
+          },
+          {
+            "name": "DST gap remains invalid until time is corrected",
+            "pass": true
+          },
+          {
+            "name": "bounds restrict native validity and date buttons",
+            "pass": true
+          },
+          {
+            "name": "native reset and restoration stay silent",
+            "pass": true
+          },
+          {
+            "name": "native fieldset disables submission immediately",
+            "pass": true
+          },
+          {
+            "name": "footer identity survives presentation changes",
+            "pass": true
+          },
+          {
+            "name": "range value serializes as one JSON entry",
+            "pass": true
+          },
+          {
+            "name": "open modal can change presentation and reopen",
+            "pass": true
+          },
+          {
+            "name": "controlled rejection does not emit a commit",
+            "pass": true
+          },
+          {
+            "name": "trigger exposes current dialog relationship and expansion",
+            "pass": true
+          },
+          {
+            "name": "external label updates retain owned popup semantics",
+            "pass": true
+          },
+          {
+            "name": "month buttons retain focus for repeated activation",
+            "pass": true
+          },
+          {
+            "name": "short viewport reveals the selected focused day",
+            "pass": true
+          },
+          {
+            "name": "presets use immutable values and native JSON submission",
+            "pass": true
+          },
+          {
+            "name": "changing zone clears a stale local-time draft error",
+            "pass": true
+          },
+          {
+            "name": "RTL day keys follow the visual direction",
+            "pass": true
+          },
+          {
+            "name": "modal Tab stays contained and reaches supplied footer",
+            "pass": true
+          },
+          {
+            "name": "nested modal releases focus back to its open parent",
+            "pass": true
+          },
+          {
+            "name": "removing an open modal releases focus resources before reconnect",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "HTML default and immediate native submission",
+            "pass": true
+          },
+          {
+            "name": "native modal opens on the selected day and Escape restores focus",
+            "pass": true
+          },
+          {
+            "name": "inline control label does not replace date button names",
+            "pass": true
+          },
+          {
+            "name": "day selection commits one ISO value",
+            "pass": true
+          },
+          {
+            "name": "native label focuses the actual Calendar trigger",
+            "pass": true
+          },
+          {
+            "name": "Apply explains an incomplete required range",
+            "pass": true
+          },
+          {
+            "name": "selecting the current day does not emit a change",
+            "pass": true
+          },
+          {
+            "name": "range endpoint navigation starts at the focused end",
+            "pass": true
+          },
+          {
+            "name": "date-only selection stays a civil day across zones",
+            "pass": true
+          },
+          {
+            "name": "time-zone changes preserve the timestamp instant",
+            "pass": true
+          },
+          {
+            "name": "DST gap remains invalid until time is corrected",
+            "pass": true
+          },
+          {
+            "name": "bounds restrict native validity and date buttons",
+            "pass": true
+          },
+          {
+            "name": "native reset and restoration stay silent",
+            "pass": true
+          },
+          {
+            "name": "native fieldset disables submission immediately",
+            "pass": true
+          },
+          {
+            "name": "footer identity survives presentation changes",
+            "pass": true
+          },
+          {
+            "name": "range value serializes as one JSON entry",
+            "pass": true
+          },
+          {
+            "name": "open modal can change presentation and reopen",
+            "pass": true
+          },
+          {
+            "name": "controlled rejection does not emit a commit",
+            "pass": true
+          },
+          {
+            "name": "trigger exposes current dialog relationship and expansion",
+            "pass": true
+          },
+          {
+            "name": "external label updates retain owned popup semantics",
+            "pass": true
+          },
+          {
+            "name": "month buttons retain focus for repeated activation",
+            "pass": true
+          },
+          {
+            "name": "short viewport reveals the selected focused day",
+            "pass": true
+          },
+          {
+            "name": "presets use immutable values and native JSON submission",
+            "pass": true
+          },
+          {
+            "name": "changing zone clears a stale local-time draft error",
+            "pass": true
+          },
+          {
+            "name": "RTL day keys follow the visual direction",
+            "pass": true
+          },
+          {
+            "name": "modal Tab stays contained and reaches supplied footer",
+            "pass": true
+          },
+          {
+            "name": "nested modal releases focus back to its open parent",
+            "pass": true
+          },
+          {
+            "name": "removing an open modal releases focus resources before reconnect",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "docs": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "range example selects and applies a complete value",
+          "single-date clear action removes selection",
+          "time example applies the selected zone offset",
+          "inline month navigation retains selection",
+          "preset example commits structured values",
+          "form example submits and resets"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "range example selects and applies a complete value",
+          "single-date clear action removes selection",
+          "time example applies the selected zone offset",
+          "inline month navigation retains selection",
+          "preset example commits structured values",
+          "form example submits and resets"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "range example selects and applies a complete value",
+          "single-date clear action removes selection",
+          "time example applies the selected zone offset",
+          "inline month navigation retains selection",
+          "preset example commits structured values",
+          "form example submits and resets"
+        ],
+        "errors": []
+      }
+    ],
+    "overlay": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "native modal opens and locks scrolling",
+              "ok": true
+            },
+            {
+              "name": "owned exit retains modal isolation and scroll lock",
+              "ok": true
+            },
+            {
+              "name": "reopen cancels obsolete exit",
+              "ok": true
+            },
+            {
+              "name": "unrelated child animation does not delay close",
+              "ok": true
+            },
+            {
+              "name": "nested close retains parent lock and modality",
+              "ok": true
+            },
+            {
+              "name": "parent close disposes nested native sessions",
+              "ok": true
+            },
+            {
+              "name": "disconnect closes pending native surface and releases resources",
+              "ok": true
+            },
+            {
+              "name": "stopped placement rejects its outstanding result",
+              "ok": true
+            },
+            {
+              "name": "live placement publishes current geometry",
+              "ok": true
+            },
+            {
+              "name": "removed opener ends its owned native session",
+              "ok": true
+            },
+            {
+              "name": "closed shadow root inside click remains open",
+              "ok": true
+            },
+            {
+              "name": "closed shadow root backdrop closes",
+              "ok": true
+            },
+            {
+              "name": "real inside click retains modal",
+              "ok": true
+            },
+            {
+              "name": "real backdrop click closes modal",
+              "ok": true
+            },
+            {
+              "name": "real Escape closes modal",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "native modal opens and locks scrolling",
+              "ok": true
+            },
+            {
+              "name": "owned exit retains modal isolation and scroll lock",
+              "ok": true
+            },
+            {
+              "name": "reopen cancels obsolete exit",
+              "ok": true
+            },
+            {
+              "name": "unrelated child animation does not delay close",
+              "ok": true
+            },
+            {
+              "name": "nested close retains parent lock and modality",
+              "ok": true
+            },
+            {
+              "name": "parent close disposes nested native sessions",
+              "ok": true
+            },
+            {
+              "name": "disconnect closes pending native surface and releases resources",
+              "ok": true
+            },
+            {
+              "name": "stopped placement rejects its outstanding result",
+              "ok": true
+            },
+            {
+              "name": "live placement publishes current geometry",
+              "ok": true
+            },
+            {
+              "name": "removed opener ends its owned native session",
+              "ok": true
+            },
+            {
+              "name": "closed shadow root inside click remains open",
+              "ok": true
+            },
+            {
+              "name": "closed shadow root backdrop closes",
+              "ok": true
+            },
+            {
+              "name": "real inside click retains modal",
+              "ok": true
+            },
+            {
+              "name": "real backdrop click closes modal",
+              "ok": true
+            },
+            {
+              "name": "real Escape closes modal",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "native modal opens and locks scrolling",
+              "ok": true
+            },
+            {
+              "name": "owned exit retains modal isolation and scroll lock",
+              "ok": true
+            },
+            {
+              "name": "reopen cancels obsolete exit",
+              "ok": true
+            },
+            {
+              "name": "unrelated child animation does not delay close",
+              "ok": true
+            },
+            {
+              "name": "nested close retains parent lock and modality",
+              "ok": true
+            },
+            {
+              "name": "parent close disposes nested native sessions",
+              "ok": true
+            },
+            {
+              "name": "disconnect closes pending native surface and releases resources",
+              "ok": true
+            },
+            {
+              "name": "stopped placement rejects its outstanding result",
+              "ok": true
+            },
+            {
+              "name": "live placement publishes current geometry",
+              "ok": true
+            },
+            {
+              "name": "removed opener ends its owned native session",
+              "ok": true
+            },
+            {
+              "name": "closed shadow root inside click remains open",
+              "ok": true
+            },
+            {
+              "name": "closed shadow root backdrop closes",
+              "ok": true
+            },
+            {
+              "name": "real inside click retains modal",
+              "ok": true
+            },
+            {
+              "name": "real backdrop click closes modal",
+              "ok": true
+            },
+            {
+              "name": "real Escape closes modal",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    }
+  },
+  "failuresResolved": [
+    "Negative fractional UTC offsets and day-zero parsing fixed by the separately accepted pinned date runtime",
+    "Configuration ordering, unchanged defaults, skipped civil days, removed attributes, controlled rejection and delayed labels",
+    "WebKit resize feedback fixed by frame-scheduled placement; the earlier surface-only scroll fix was insufficient",
+    "Native-only Tab cycle escaped to browser chrome or stalled; focus-trap 8.2.2 passes native, nested and reconnect checks"
+  ],
+  "verificationNotes": [
+    "One immediate-action WebKit documentation run missed a preset before the visible opening sequence was settled. Instrumented repetitions passed; final harness waits for visible opacity and published placement, then all six flows pass in all engines. This is not actual Safari certification.",
+    "The historic M06 combined fixture stopped at obsolete Field ID-reference assumptions before overlay tests. Its overlay section was isolated unchanged and all fifteen assertions per engine pass. No obsolete Field assertions were reclassified as passing."
+  ],
+  "references": [
+    "m13-calendar-reference-review-2026-09-22.json",
+    "m13-date-runtime-2026-09-22.json"
+  ],
+  "limits": [
+    "Actual operating-system inputs, assistive technology and Safari interaction remain M22/M26",
+    "Final generated React integration and whole-library release acceptance remain M22/M26"
+  ],
+  "reproduction": {
+    "directory": "/tmp/acme-m13-calendar",
+    "logs": [
+      "accepted-build.log",
+      "accepted-docs.log",
+      "accepted-suite.log",
+      "accepted-native.log",
+      "accepted-compiled.log",
+      "docs-visible.log",
+      "isolated-overlay.log"
+    ],
+    "nativeRunner": "import assert from 'node:assert/strict';const dir='/tmp/acme-m13-calendar';const build=await Bun.build({entrypoints:[dir+'/main-candidate.ts'],outdir:dir+'/main-bundle',target:'browser',format:'esm'});if(!build.success)throw new AggregateError(build.logs);process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');const server=Bun.serve({port:0,fetch(req){const path=new URL(req.url).pathname;return path==='/candidate.js'?new Response(Bun.file(dir+'/main-bundle/main-candidate.js'),{headers:{'Content-Type':'text/javascript'}}):path==='/tokens.css'?new Response(Bun.file('/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/css/document/tokens.css'),{headers:{'Content-Type':'text/css'}}):new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/candidate.js\"></script>',{headers:{'Content-Type':'text/html'}})}});const reports=[];\ntry{for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true}:{headless:true});const page=await browser.newPage({reducedMotion:\"reduce\"});page.setDefaultTimeout(4000);const errors=[],checks=[];page.on('pageerror',e=>errors.push(String(e)));async function check(name,run){try{await page.goto(server.url.href);await page.waitForFunction(()=>customElements.get('acme-calendar'));await run();checks.push({name,pass:true});console.log(engine,'PASS',name)}catch(e){checks.push({name,pass:false,error:String(e)});console.log(engine,'FAIL',name,String(e))}}\nawait check('HTML default and immediate native submission',async()=>{assert.equal(await page.locator('#calendar').evaluate(el=>el.value),'2026-09-10');assert.equal(await page.locator('#form').evaluate(el=>new FormData(el).get('date')),'2026-09-10');});\nawait check('native modal opens on the selected day and Escape restores focus',async()=>{await page.locator('#calendar [part=trigger]').click();await page.waitForFunction(()=>document.querySelector('#calendar').shadowRoot.querySelector('dialog').matches(':modal'));assert.equal(await page.locator('#calendar').evaluate(el=>el.shadowRoot.activeElement?.getAttribute('data-date')),'2026-09-10');await page.keyboard.press('Escape');await page.waitForFunction(()=>!document.querySelector('#calendar').shadowRoot.querySelector('dialog').open);assert.equal(await page.locator('#calendar').evaluate(el=>el.shadowRoot.activeElement===el.shadowRoot.querySelector('[part=trigger]')),true);});\nawait check('inline control label does not replace date button names',async()=>{assert.equal(await page.locator('#inline [data-date=\"2026-09-10\"]').getAttribute('aria-label'),'Thursday, September 10, 2026');assert.equal(await page.locator('#inline div[part=root]').getAttribute('role'),'group');});\nawait check('day selection commits one ISO value',async()=>{await page.locator('#calendar').evaluate(el=>{window.changes=[];el.addEventListener('acme-change',event=>window.changes.push(event.detail.value));el.show()});await page.locator('#calendar [data-date=\"2026-09-11\"]').click();assert.deepEqual(await page.evaluate(()=>window.changes),['2026-09-11']);assert.equal(await page.locator('#form').evaluate(el=>new FormData(el).get('date')),'2026-09-11');});\nawait check('native label focuses the actual Calendar trigger',async()=>{await page.locator('#after').focus();await page.locator('label[for=calendar]').click();assert.equal(await page.locator('#calendar').evaluate(el=>el.shadowRoot.activeElement===el.shadowRoot.querySelector('[part=trigger]')),true);});\nawait check('Apply explains an incomplete required range',async()=>{await page.locator('#calendar').evaluate(el=>{el.mode='range';el.required=true;el.show()});await page.locator('#calendar').getByRole('button',{name:'Apply',exact:true}).click();assert.equal(await page.locator('#calendar [role=alert]').count(),1);assert.equal(await page.locator('#calendar').evaluate(el=>el.open),true);});\nawait check('selecting the current day does not emit a change',async()=>{await page.locator('#inline').evaluate(el=>{window.sameChanges=0;el.addEventListener('acme-change',()=>window.sameChanges++);});await page.locator('#inline [data-date=\"2026-09-10\"]').click();assert.equal(await page.evaluate(()=>window.sameChanges),0);});\nawait check('range endpoint navigation starts at the focused end',async()=>{await page.locator('#inline').evaluate(el=>el.mode='range');await page.locator('#inline [data-date=\"2026-09-12\"]').click();await page.keyboard.press('ArrowRight');assert.equal(await page.locator('#inline').evaluate(el=>el.shadowRoot.activeElement?.getAttribute('data-date')),'2026-09-13');});\nawait check('date-only selection stays a civil day across zones',async()=>{await page.locator('#calendar').evaluate(el=>{el.value='2011-12-30';el.timeZone='Pacific/Apia'});await page.waitForFunction(()=>document.querySelector('#calendar').shadowRoot.querySelector('[part=trigger]').textContent.includes('Dec 30, 2011'));assert.equal(await page.locator('#calendar').evaluate(el=>el.value),'2011-12-30');});\nawait check('time-zone changes preserve the timestamp instant',async()=>{await page.locator('#calendar').evaluate(el=>{el.timeZone='America/Los_Angeles';el.showTimeInput=true;el.value='2026-09-22T01:30:00-07:00';el.timeZone='UTC'});await page.waitForFunction(()=>document.querySelector('#calendar').shadowRoot.querySelector('[data-time=start]').value.startsWith('08:30'));assert.equal(await page.locator('#calendar').evaluate(el=>el.value),'2026-09-22T01:30:00-07:00');});\nawait check('DST gap remains invalid until time is corrected',async()=>{await page.locator('#calendar').evaluate(el=>{el.timeZone='America/Los_Angeles';el.showTimeInput=true;el.value='2026-03-08T01:30:00-08:00';el.show()});await page.locator('#calendar [data-time=start]').fill('02:30');assert.equal(await page.locator('#calendar').evaluate(el=>el.checkValidity()),false);assert.equal(await page.locator('#calendar').evaluate(el=>el.value),'2026-03-08T01:30:00-08:00');await page.locator('#calendar [data-time=start]').fill('03:30');assert.equal(await page.locator('#calendar').evaluate(el=>el.checkValidity()),true);assert.equal(await page.locator('#calendar').evaluate(el=>el.value),'2026-03-08T03:30:00-07:00');});\nawait check('bounds restrict native validity and date buttons',async()=>{await page.locator('#inline').evaluate(el=>{el.minValue='2026-09-05';el.maxValue='2026-09-20';el.value='2026-09-01'});assert.equal(await page.locator('#inline').evaluate(el=>el.validity.rangeUnderflow),true);await page.waitForFunction(()=>document.querySelector('#inline').shadowRoot.querySelector('[data-date=\"2026-09-01\"]').disabled);await page.locator('#inline').evaluate(el=>el.value='2026-09-12');assert.equal(await page.locator('#inline').evaluate(el=>el.checkValidity()),true);});\nawait check('native reset and restoration stay silent',async()=>{assert.deepEqual(await page.locator('#calendar').evaluate(el=>{let changed=0;el.addEventListener('acme-change',()=>changed++);el.value='2026-09-12';HTMLFormElement.prototype.reset.call(el.form);const reset=el.value;el.formStateRestoreCallback('{\"value\":\"2026-09-15\"}','restore');return[reset,el.value,changed,new FormData(el.form).get('date')]}),['2026-09-10','2026-09-15',0,'2026-09-15']);});\nawait check('native fieldset disables submission immediately',async()=>{assert.deepEqual(await page.locator('#calendar').evaluate(el=>{const group=document.createElement('fieldset');el.before(group);group.append(el);group.disabled=true;const absent=!new FormData(el.form).has('date');group.disabled=false;return[absent,new FormData(el.form).get('date')]}),[true,'2026-09-10']);});\nawait check('footer identity survives presentation changes',async()=>{await page.locator('#inline').evaluate(async el=>{const input=document.createElement('input');input.slot='footer';input.id='footer';input.value='Retained';el.append(input);window.footer=input;el.presentation='popover';await el.updateComplete;el.presentation='inline';await el.updateComplete;});assert.equal(await page.locator('#footer').evaluate(el=>el===window.footer&&el.value==='Retained'),true);});\nawait check('range value serializes as one JSON entry',async()=>{assert.deepEqual(await page.locator('#calendar').evaluate(el=>{el.mode='range';el.value={start:'2026-09-10',end:'2026-09-12'};return new FormData(el.form).getAll('date')}),['{\"start\":\"2026-09-10\",\"end\":\"2026-09-12\"}']);});\nawait check('open modal can change presentation and reopen',async()=>{await page.locator('#calendar').evaluate(el=>el.show());await page.waitForFunction(()=>document.querySelector('#calendar').shadowRoot.querySelector('dialog')?.matches(':modal'));await page.locator('#calendar').evaluate(el=>el.presentation='inline');await page.waitForFunction(()=>!document.querySelector('#calendar').shadowRoot.querySelector('dialog'));assert.equal(await page.locator('#calendar').evaluate(el=>el.open),false);await page.locator('#calendar').evaluate(el=>{el.presentation='popover'});await page.locator('#calendar').evaluate(async el=>{await el.updateComplete;el.show()});await page.waitForFunction(()=>document.querySelector('#calendar').shadowRoot.querySelector('dialog')?.matches(':modal'));});\nawait check('controlled rejection does not emit a commit',async()=>{await page.locator('#inline').evaluate(el=>{window.rejectedChanges=0;el.addEventListener('acme-input',()=>el.value='2026-09-10');el.addEventListener('acme-change',()=>window.rejectedChanges++);});await page.locator('#inline [data-date=\"2026-09-11\"]').click();assert.equal(await page.locator('#inline').evaluate(el=>el.value),'2026-09-10');assert.equal(await page.evaluate(()=>window.rejectedChanges),0);});\nawait check('trigger exposes current dialog relationship and expansion',async()=>{assert.equal(await page.locator('#calendar [part=trigger]').getAttribute('aria-haspopup'),'dialog');assert.equal(await page.locator('#calendar [part=trigger]').getAttribute('aria-expanded'),'false');await page.locator('#calendar [part=trigger]').click();assert.equal(await page.locator('#calendar [part=trigger]').getAttribute('aria-expanded'),'true');assert.equal(await page.locator('#calendar [part=trigger]').evaluate(el=>el.ariaControlsElements?.[0]===el.getRootNode().querySelector('dialog')),true);});\nawait check('external label updates retain owned popup semantics',async()=>{await page.locator('#calendar').evaluate(el=>el.show());await page.waitForFunction(()=>document.querySelector('#calendar').shadowRoot.querySelector('dialog').matches(':modal'));await page.evaluate(()=>{const label=document.querySelector('label[for=calendar]');label.textContent='Updated deadline';});await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));assert.equal(await page.locator('#calendar [part=trigger]').getAttribute('aria-haspopup'),'dialog');assert.equal(await page.locator('#calendar [part=trigger]').getAttribute('aria-expanded'),'true');});\nawait check('month buttons retain focus for repeated activation',async()=>{await page.locator('#calendar').evaluate(el=>el.show());const next=page.locator('#calendar').getByRole('button',{name:'Next month',exact:true});await next.focus();await page.keyboard.press('Enter');assert.equal(await page.locator('#calendar').evaluate(el=>el.shadowRoot.activeElement?.getAttribute('aria-label')),'Next month');await page.keyboard.press('Enter');assert.ok((await page.locator('#calendar h2').textContent()).includes('November'));});\nawait check('short viewport reveals the selected focused day',async()=>{await page.setViewportSize({width:400,height:300});await page.locator('#calendar').evaluate(el=>{el.value='2026-09-28';el.show()});await page.waitForFunction(()=>{const r=document.querySelector('#calendar'),d=r.shadowRoot.querySelector('dialog'),b=r.shadowRoot.querySelector('[data-date=\"2026-09-28\"]');return b.getBoundingClientRect().bottom<=d.getBoundingClientRect().bottom+1});const sizes=await page.locator('#calendar').evaluate(el=>{const d=el.shadowRoot.querySelector('dialog').getBoundingClientRect();return{x:d.x,right:d.right,bottom:d.bottom}});assert.ok(sizes.x>=0&&sizes.right<=400&&sizes.bottom<=300);await page.setViewportSize({width:1280,height:720});});\nawait check('presets use immutable values and native JSON submission',async()=>{await page.locator('#calendar').evaluate(el=>{const data=[{label:'Release',value:{start:'2026-09-11',end:'2026-09-15'}}];el.mode='range';el.presets=data;data[0].value.end='2026-09-20';el.show()});await page.locator('#calendar').getByRole('button',{name:'Release',exact:true}).click();assert.equal(await page.locator('#form').evaluate(el=>new FormData(el).get('date')),'{\"start\":\"2026-09-11\",\"end\":\"2026-09-15\"}');});\nawait check('changing zone clears a stale local-time draft error',async()=>{await page.locator('#calendar').evaluate(el=>{el.timeZone='America/Los_Angeles';el.showTimeInput=true;el.value='2026-03-08T01:30:00-08:00';el.show()});await page.locator('#calendar [data-time=start]').fill('02:30');assert.equal(await page.locator('#calendar').evaluate(el=>el.checkValidity()),false);assert.equal(await page.locator('#calendar').evaluate(el=>{el.timeZone='UTC';return el.checkValidity()}),true);});\nawait check('RTL day keys follow the visual direction',async()=>{await page.locator('#inline').evaluate(el=>el.dir='rtl');await page.locator('#inline [data-date=\"2026-09-10\"]').press('ArrowLeft');assert.equal(await page.locator('#inline').evaluate(el=>el.shadowRoot.activeElement?.getAttribute('data-date')),'2026-09-11');});\nawait check('modal Tab stays contained and reaches supplied footer',async()=>{await page.locator('#calendar').evaluate(el=>{const input=document.createElement('input');input.slot='footer';input.id='calendar-footer';input.setAttribute('aria-label','Footer');el.append(input);el.show()});let reached=false;for(let index=0;index<18;index++){await page.keyboard.press('Tab');const result=await page.locator('#calendar').evaluate(el=>{let active=el.ownerDocument.activeElement;while(active?.shadowRoot?.activeElement)active=active.shadowRoot.activeElement;const footer=active?.id==='calendar-footer';const dialog=el.shadowRoot.querySelector('dialog');let node=active;while(node){if(node===dialog)return{inside:true,footer};node=node.assignedSlot??node.parentNode??node.host;}return{inside:false,footer};});assert.equal(result.inside,true);reached ||= result.footer;}assert.equal(reached,true);});\n\nawait check('nested modal releases focus back to its open parent',async()=>{await page.locator('#calendar').evaluate(async el=>{const child=document.createElement('acme-calendar');child.id='child-calendar';child.slot='footer';child.mode='single';child.showTimeInput=false;child.value='2026-09-10';el.append(child);el.show();await el.updateComplete;await child.updateComplete;child.show()});await page.waitForFunction(()=>document.querySelector('#child-calendar').shadowRoot.querySelector('dialog').matches(':modal'));await page.keyboard.press('Escape');await page.waitForFunction(()=>!document.querySelector('#child-calendar').shadowRoot.querySelector('dialog').open);assert.equal(await page.locator('#calendar').evaluate(el=>el.shadowRoot.querySelector('dialog').matches(':modal')),true);assert.equal(await page.locator('#child-calendar').evaluate(el=>el.shadowRoot.activeElement===el.shadowRoot.querySelector('[part=trigger]')),true);await page.keyboard.press('Tab');assert.equal(await page.locator('#calendar').evaluate(el=>{let a=el.ownerDocument.activeElement;while(a?.shadowRoot?.activeElement)a=a.shadowRoot.activeElement;for(let n=a;n;n=n.assignedSlot??n.parentNode??n.host)if(n===el.shadowRoot.querySelector('dialog'))return true;return false}),true);await page.keyboard.press('Escape');await page.waitForFunction(()=>!document.querySelector('#calendar').shadowRoot.querySelector('dialog').open);});\nawait check('removing an open modal releases focus resources before reconnect',async()=>{await page.locator('#calendar').evaluate(el=>el.show());await page.locator('#calendar').evaluate(el=>{window.removedCalendar=el;el.remove()});await page.locator('#after').focus();await page.keyboard.press('Tab');assert.equal(await page.evaluate(()=>document.activeElement?.localName==='body'||!document.activeElement?.closest('#calendar')),true);await page.evaluate(()=>document.querySelector('#form').prepend(window.removedCalendar));await page.locator('#calendar').evaluate(el=>el.show());await page.waitForFunction(()=>document.querySelector('#calendar').shadowRoot.querySelector('dialog').matches(':modal'));await page.keyboard.press('Escape');await page.waitForFunction(()=>!document.querySelector('#calendar').shadowRoot.querySelector('dialog').open);assert.equal(await page.locator('#calendar').evaluate(el=>el.shadowRoot.activeElement===el.shadowRoot.querySelector('[part=trigger]')),true);});\nreports.push({engine,checks,errors});await browser.close();}}finally{server.stop(true)}await Bun.write(dir+'/main-native-results.json',JSON.stringify(reports,null,2)+'\\n');if(reports.some(r=>r.errors.length||r.checks.some(c=>!c.pass)))process.exitCode=1;\n",
+    "overlayFixture": "import { OverlayPresence } from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/overlay-presence';\nimport { OverlayPlacement } from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/overlay-placement';\nconst results=[];const assert=(name,ok,actual)=>results.push({name,ok,...(!ok?{actual}:{})});\ntry {\n  const button = document.createElement(\"button\"); button.textContent = \"Open\"; document.body.append(button); button.focus();\n  const dialog = document.createElement(\"dialog\"); dialog.innerHTML = '<button>Inside</button>'; document.body.append(dialog);\n  const host = {addController() {}} as any;\n  const phases: string[] = [];\n  const presence = new OverlayPresence(host,{surface:()=>dialog,mode:()=>\"modal\",closeOnEscape:()=>true,closeOnOutside:()=>true,dismiss:()=>void presence.hide(),after:phase=>phases.push(phase)});\n  presence.show(button); assert(\"native modal opens and locks scrolling\", dialog.matches(\":modal\") && document.body.hasAttribute(\"data-scroll-lock\"));\n  const exit = dialog.animate([{opacity:1},{opacity:0}],{duration:10000}); exit.pause(); const closing = presence.hide([exit]);\n  assert(\"owned exit retains modal isolation and scroll lock\", presence.phase.get()===\"closing\" && dialog.matches(\":modal\") && document.body.hasAttribute(\"data-scroll-lock\"));\n  presence.show(button); await closing; assert(\"reopen cancels obsolete exit\", presence.phase.get()===\"open\" && dialog.matches(\":modal\"));\n  const unrelated = dialog.firstElementChild!.animate([{opacity:1},{opacity:.9}],{duration:10000,iterations:Infinity});\n  await presence.hide(); assert(\"unrelated child animation does not delay close\", !dialog.open && !document.body.hasAttribute(\"data-scroll-lock\") && document.activeElement===button); unrelated.cancel();\n  presence.show(button);\n  const childDialog = document.createElement(\"dialog\"); childDialog.innerHTML='<button>Nested</button>'; dialog.append(childDialog);\n  const child = new OverlayPresence(host,{surface:()=>childDialog,mode:()=>\"modal\",closeOnEscape:()=>true,closeOnOutside:()=>false,dismiss:()=>void child.hide(),after:()=>{}});\n  child.show(dialog.firstElementChild as HTMLElement); await child.hide(); assert(\"nested close retains parent lock and modality\", dialog.matches(\":modal\") && document.body.hasAttribute(\"data-scroll-lock\"));\n  child.show(dialog.firstElementChild as HTMLElement); await presence.hide(); assert(\"parent close disposes nested native sessions\", !dialog.open && !childDialog.open && !document.body.hasAttribute(\"data-scroll-lock\")); presence.show(button);\n  const exit2 = dialog.animate([{opacity:1},{opacity:0}],{duration:10000}); exit2.pause(); const closing2=presence.hide([exit2]); presence.hostDisconnected(); await closing2;\n  assert(\"disconnect closes pending native surface and releases resources\", !dialog.open && !document.body.hasAttribute(\"data-scroll-lock\") && presence.phase.get()===\"closed\");\n  let applied=0; const errors: unknown[]=[];\n  const placement = new OverlayPlacement(host,{configuration:()=>({placement:\"bottom\"}),apply:()=>applied++,error:error=>errors.push(String(error))});\n  dialog.show(); placement.start(button,dialog); placement.stop(); await new Promise(resolve=>requestAnimationFrame(resolve));\n  assert(\"stopped placement rejects its outstanding result\", applied===0 && errors.length===0);\n  placement.start(button,dialog); await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))); assert(\"live placement publishes current geometry\", applied>0 && errors.length===0); placement.stop(); dialog.close();\n  presence.show(button);button.remove();await new Promise(resolve=>setTimeout(resolve,0));assert(\"removed opener ends its owned native session\",!dialog.open&&!document.body.hasAttribute(\"data-scroll-lock\")&&presence.phase.get()===\"closed\");document.body.append(button);\n  (window as any).__presence = presence;\n  const closedHost = document.createElement(\"section\"); document.body.append(closedHost); const closedRoot = closedHost.attachShadow({mode:\"closed\"});\n  const closedDialog = document.createElement(\"dialog\"); const closedButton=document.createElement(\"button\"); closedButton.textContent=\"Closed root inside\"; closedDialog.append(closedButton); closedRoot.append(closedDialog);\n  const closedPresence = new OverlayPresence(host,{surface:()=>closedDialog,mode:()=>\"modal\",closeOnEscape:()=>true,closeOnOutside:()=>true,dismiss:()=>void closedPresence.hide(),after:()=>{}});\n  (window as any).__closed = {presence:closedPresence,dialog:closedDialog,button:closedButton};\n  (window as any).__results = { results };\n} catch (error) { (window as any).__results = { results, error: String(error), stack: (error as Error).stack }; }\n"
+  }
+}

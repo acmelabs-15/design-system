@@ -1,0 +1,110 @@
+{
+  "date": "2026-09-22",
+  "status": "prerequisite fixed; Menu adoption pending",
+  "finding": "Closing a parent fails to close a child when the child anchor is assigned through the parent surface slot. A direct DOM descendant closes correctly.",
+  "source": "src/shared/overlay-coordination.ts composedContains",
+  "engines": [
+    {
+      "engine": "chromium",
+      "results": [
+        {
+          "slotted": false,
+          "assignedSlot": false,
+          "childClosed": 1
+        },
+        {
+          "slotted": true,
+          "assignedSlot": true,
+          "childClosed": 0
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "results": [
+        {
+          "slotted": false,
+          "assignedSlot": false,
+          "childClosed": 1
+        },
+        {
+          "slotted": true,
+          "assignedSlot": true,
+          "childClosed": 0
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "results": [
+        {
+          "slotted": false,
+          "assignedSlot": false,
+          "childClosed": 1
+        },
+        {
+          "slotted": true,
+          "assignedSlot": true,
+          "childClosed": 0
+        }
+      ]
+    }
+  ],
+  "reproduction": "/tmp/acme-m13-overlay/run.ts",
+  "next": "Continue Menu/Context Menu implementation against the corrected shared coordinator.",
+  "fixedResults": [
+    {
+      "engine": "chromium",
+      "results": [
+        {
+          "slotted": false,
+          "assignedSlot": false,
+          "childClosed": 1
+        },
+        {
+          "slotted": true,
+          "assignedSlot": true,
+          "childClosed": 1
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "results": [
+        {
+          "slotted": false,
+          "assignedSlot": false,
+          "childClosed": 1
+        },
+        {
+          "slotted": true,
+          "assignedSlot": true,
+          "childClosed": 1
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "results": [
+        {
+          "slotted": false,
+          "assignedSlot": false,
+          "childClosed": 1
+        },
+        {
+          "slotted": true,
+          "assignedSlot": true,
+          "childClosed": 1
+        }
+      ]
+    }
+  ],
+  "unitTests": {
+    "passed": 5,
+    "failed": 0,
+    "note": "The test DOM lacks assignedSlot, so its unit fixture models that link; native assignment is verified separately in all three engines."
+  },
+  "strictSourceCheck": {
+    "errors": 0
+  }
+}

@@ -1,66 +1,63 @@
-import { css, html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base";
+import { html } from "lit";
+import { property } from "lit/decorators.js";
+import { AcmeTypographyElement } from "../../shared/typography-element";
 import { atomState } from "../../shared/atom-state";
-import { kbdCss } from "./kbd.styles";
-import { tooltipKbdCss } from "./tooltip-kbd.styles";
+import { keyLabel } from "../../shared/key-labels";
+import { messageCatalogs } from "../../shared/messages";
+import { StoreSelector } from "../../shared/store-connection";
+import { kbdStructureCss } from "../../generated/components/kbd/kbd-structure.styles";
 
-/** True on Apple platforms, where the modifiers render as glyphs (⌘ ⌥ ⌃). */
-export const isMac = () => typeof navigator !== "undefined" && /Mac|iPhone|iPad/.test(navigator.platform);
-
-/**
- * Keyboard input: a key cap. The root carries the small class; each modifier (⌘ ⇧ ⌥ ⌃, in
- * that order, ⌘ as Ctrl and ⌥ as Alt off Apple platforms) is its own span, the meta span an
- * inline block of 1em, and the key given as content is a span after them. 24px high (small 20),
- * radius 4, the background colour with a 1px ring, a 4px (small 2px) left margin. The host is an
- * inline box, so the key cap keeps its inline-flex box in the line of text around it.
+/** A native key cap. Named keys are presentation, never shortcut registration.
+ * @slot - Content used only when keys is absent.
+ * @csspart root - The native kbd element.
  */
-@customElement("acme-kbd")
-export class AcmeKbd extends AcmeElement {
-  static styles = [
-    sharedCss,
-    kbdCss,
-    // A key inside a tooltip's bubble takes the bubble's rules for it (the tooltip marks the key).
-    tooltipKbdCss,
-    css`
-      /* The reference's key is one element: inline-flex in prose, and blockified to flex when a flex
-         row holds it, so the row sizes to the key's own 20px rather than to a line box. A host box of
-         ours would sit between the row and the key and take that place instead, so the host stands
-         aside and the key is the box every container lays out. */
-      :host {
-        display: contents;
+export class AcmeKbd extends AcmeTypographyElement {
+  static styles = [...AcmeTypographyElement.styles, kbdStructureCss];
+  @atomState() @property({ noAccessor: true, reflect: true, useDefault: true }) size: "small" | "medium" = "medium";
+  @atomState() private authoredKeys: readonly string[] | undefined;
+  @property({ noAccessor: true })
+  get keys(): readonly string[] | undefined {
+    return this.authoredKeys;
+  }
+  set keys(value: readonly string[] | undefined) {
+    let owned: readonly string[] | undefined;
+    if (value !== undefined) {
+      if (!Array.isArray(value)) {
+        throw new TypeError("keys must be an array of named key strings");
       }
-    `,
-  ];
-  @property({ type: Boolean }) small = false;
-  @property({ type: Boolean }) meta = false;
-  @property({ type: Boolean }) shift = false;
-  @property({ type: Boolean }) alt = false;
-  @property({ type: Boolean }) ctrl = false;
-  @atomState() private hasKey = false;
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.scan();
+      const keys: string[] = [];
+      for (let index = 0; index < value.length; index++) {
+        const descriptor = Object.getOwnPropertyDescriptor(value, index);
+        if (!descriptor || !("value" in descriptor) || typeof descriptor.value !== "string" || !descriptor.value) {
+          throw new TypeError("keys require nonempty string data entries");
+        }
+        keys.push(descriptor.value);
+      }
+      owned = Object.freeze(keys);
+    }
+    const previous = this.authoredKeys;
+    this.authoredKeys = owned;
+    this.requestUpdate("keys", previous);
   }
-  firstUpdated() {
-    this.scan();
+  private readonly messages = new StoreSelector(this, () => messageCatalogs);
+  private readonly localeChanges = new StoreSelector(this, () => this.themeContext.scope.effective);
+  attributeChangedCallback(name: string, previous: string | null, value: string | null): void {
+    if (name === "keys") {
+      try {
+        this.keys = value === null ? undefined : JSON.parse(value);
+      } catch {
+        this.keys = Object.freeze([]);
+        console.warn(this.localName, { code: "invalid-key-list" });
+      }
+    } else {
+      super.attributeChangedCallback(name, previous, value);
+    }
   }
-  private scan() {
-    this.hasKey = Array.from(this.childNodes).some((n) => n.nodeType === 1 || (n.nodeType === 3 && !!n.textContent?.trim()));
-  }
-
   render() {
-    const mac = isMac();
-    const slot = html`<slot @slotchange=${this.scan}></slot>`;
-    return html`<kbd class=${this.cls("kbd", { sm: this.small })} part="kbd"
-      >${this.meta ? html`<span class="key" style="min-width:1em;display:inline-block">${mac ? "⌘" : "Ctrl"}</span>` : nothing}${this.shift ? html`<span class="key">⇧</span>` : nothing}${
-        this.alt ? html`<span class="key">${mac ? "⌥" : "Alt"}</span>` : nothing
-      }${this.ctrl ? html`<span class="key">${mac ? "⌃" : "Ctrl"}</span>` : nothing}${this.hasKey ? html`<span class="key">${slot}</span>` : slot}</kbd
-    >`;
+    const locale = this.themeContext.scope.effective.get().locale;
+    return html`<kbd part="root">${this.keys === undefined ? html`<slot></slot>` : html`<span class="sr">${this.keys.map((key) => keyLabel(key, locale, true)).join(" + ")}</span>${this.keys.map((key) => html`<span aria-hidden="true">${keyLabel(key, locale)}</span>`)}`}</kbd>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-kbd": AcmeKbd;

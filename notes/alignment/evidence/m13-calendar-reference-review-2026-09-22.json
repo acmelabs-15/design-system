@@ -1,0 +1,571 @@
+{
+  "date": "2026-09-22",
+  "scope": "Bounded read-only M13 Calendar replacement investigation in the current main working tree; selection changes are uncommitted and accepted-direction work.",
+  "status": "Replacement seam recommended. Date parser and delivery prerequisites identified. No Calendar implementation or native component acceptance claimed.",
+  "changes": "This JSON is the only repository file written by this investigation. No source, generated output, package, status, licensed reference source, or upstream service was changed.",
+  "approvedContract": {
+    "source": "notes/alignment/inventory/inputs-forms.md#f-08-calendar",
+    "mode": "single|range, default range",
+    "value": "ISO string | {start: ISO string, end?: ISO string} | undefined",
+    "presentation": "popover|inline, default popover",
+    "showTimeInput": true,
+    "timeZone": "Explicit IANA zone or browser local zone",
+    "locale": "Inherited locale",
+    "bounds": "minValue/maxValue",
+    "events": "acme-input for provisional range; acme-change for committed value",
+    "form": "One scalar or JSON range; only a complete valid range satisfies required",
+    "slots": [
+      "trigger",
+      "footer"
+    ],
+    "excluded": [
+      "network calendars",
+      "recurrence",
+      "multiple arbitrary dates"
+    ]
+  },
+  "localEvidence": {
+    "fingerprints": [
+      {
+        "path": "src/components/calendar/calendar.ts",
+        "sha256": "a1df4e66b1f7938908ec0ca8cc7fca3499fd47d5b63da3137807fe64a73dcfa3",
+        "lines": 388
+      },
+      {
+        "path": "src/components/calendar/__tests__/calendar.test.ts",
+        "sha256": "e57e392996054c3e523815e99ab8d94b274a88b0c4e22a98ac578308a463b39a",
+        "lines": 74
+      },
+      {
+        "path": "site/pages/components/calendar.ts",
+        "sha256": "3b72f59d35942ac7120449ec937a007643d2c901572e4099492d4fbeb87abd81",
+        "lines": 92
+      },
+      {
+        "path": "src/shared/relative-time.ts",
+        "sha256": "b1a548c83080e827e4b1d642f0ccd62d046557f76d12ed46455b44dd1c340a8f",
+        "lines": 45
+      },
+      {
+        "path": "src/shared/native-form.ts",
+        "sha256": "61efd83b99c8bd9918dacd0a064af996a6361a967cb6e236bff54ff300b26031",
+        "lines": 230
+      },
+      {
+        "path": "src/shared/native-form-element.ts",
+        "sha256": "9a23600fe4dfc13102d5b9e6aa003874c839adbf086aae6ca583e286058762b1",
+        "lines": 124
+      },
+      {
+        "path": "src/shared/field-control.ts",
+        "sha256": "1ce415763ce1c41c2a069d2eb40b5824cca80ae88d5210f4f8f963a2ff3a939d",
+        "lines": 65
+      },
+      {
+        "path": "src/shared/field-association.ts",
+        "sha256": "e1a2b2ea4fc083f13c4b851ada904083005ecfa3866725fa20c7e59cd0819e4d",
+        "lines": 146
+      },
+      {
+        "path": "src/shared/overlay-presence.ts",
+        "sha256": "57580973b28663f426e300a2d5d5512766ce1344da1875c1d8f288ad310dfd80",
+        "lines": 143
+      },
+      {
+        "path": "src/shared/overlay-placement.ts",
+        "sha256": "9b817e28d6939c5552289008f5d62c380a7ae9c3eaedcf24fcd8b6260787fa7a",
+        "lines": 67
+      },
+      {
+        "path": "src/shared/spring-value.ts",
+        "sha256": "b6684776b08e637322534da40a68b4b63678af825d758fb41ee11baf9dad5d93",
+        "lines": 59
+      },
+      {
+        "path": "src/shared/option-control.ts",
+        "sha256": "f7e8ace6df72321725061115ab9417397958e03bd9149967ecb621e11b328739",
+        "lines": 552
+      },
+      {
+        "path": "scripts/build.ts",
+        "sha256": "39f1c51f9b3c54414e9b1b77ac405f674828fb09c6374745b01c909d07f38185",
+        "lines": 227
+      },
+      {
+        "path": "scripts/package.ts",
+        "sha256": "14b5dc620032ddc708e6e73af0d2dc0e7661eaedff7f9b792c937a99bb2d808c",
+        "lines": 94
+      },
+      {
+        "path": "tools/geist/contract/calendar.md",
+        "sha256": "61ae98f77b711d1c4f624e738767e9dfb116e1444852850586edadedc6b97720",
+        "lines": 30
+      },
+      {
+        "path": "styles/components/calendar/calendar-structure.css",
+        "sha256": "23cdf19e811a84148e60b37de07b0852ae2424200e51726b070e8a77f79f2ea7",
+        "lines": 21
+      },
+      {
+        "path": "notes/alignment/inventory/inputs-forms.md",
+        "sha256": "601cc93e1442f09827a1a1e4c3cae74fefb28640a86ce42fb8371861f9927c28",
+        "lines": 103
+      },
+      {
+        "path": "notes/decisions/reference-systems.md",
+        "sha256": "43c3553fc4bdcf419999780e9ebee97724e9442ef61bbb7ff31c0a7980fb6779",
+        "lines": 56
+      },
+      {
+        "path": "notes/decisions/floating-surface-shadows.md",
+        "sha256": "c5077d91d0af906952a5813c67f4d9302637303e267b679b6f70b17bbb3f02df",
+        "lines": 41
+      },
+      {
+        "path": "notes/decisions/inventory-approval.md",
+        "sha256": "250b78ee1cb9247f775babb170275eab1f16286e0d9304d448299d0b89c3e7c9",
+        "lines": 22
+      },
+      {
+        "path": "notes/decisions/migration-approval.md",
+        "sha256": "f0def39e1178e7adccfd43833d5d65c11242dc8bec7d3e152ab5234b98aafdc4",
+        "lines": 10
+      },
+      {
+        "path": "notes/analysis/hand-rolled-audit.md",
+        "sha256": "bb6ba05cb14ceeee0571d1056351ebdf34a60ffa11cf47d1d703d2476a47cabd",
+        "lines": 94
+      },
+      {
+        "path": "notes/alignment/chakra-pro-review.md",
+        "sha256": "f6a5b53f881a16a6ad004fcf4a15e24b3297d44afd995d770da1a8451a85f4b3",
+        "lines": 74
+      }
+    ],
+    "findings": [
+      {
+        "location": "src/components/calendar/calendar.ts:31-45",
+        "finding": "toDate matches only the leading YYYY-MM-DD and drops timestamp offsets/time. Invalid day/month fields normalize through native Date. Formatting hard-codes en-US; date arithmetic uses browser-local fields."
+      },
+      {
+        "location": "src/components/calendar/calendar.ts:50-92",
+        "finding": "Public value/end/single/static and time strings are the retired shape. Calendar does not extend AcmeFormElement; selected value is plain Lit property state while internal navigation uses atomState. showTimeInput does not turn date value into a timestamp."
+      },
+      {
+        "location": "src/components/calendar/calendar.ts:96-118,154-182,235-259",
+        "finding": "Global click/resize/scroll handlers, manual geometry, custom Tab wrapping and popup focus restoration duplicate existing overlay controllers. aria-modal=true on a Popover does not itself make the page modal."
+      },
+      {
+        "location": "src/components/calendar/calendar.ts:202-231",
+        "finding": "Day picks mutate value/end directly; only commit dispatches acme-change with the old multi-field payload. Timezone is returned as a label rather than used in arithmetic."
+      },
+      {
+        "location": "src/components/calendar/calendar.ts:267-302",
+        "finding": "Month stepping through native Date can overflow Jan 31 into March. Keyboard mapping ignores RTL; Home/End assume Sunday; header navigation can leave the roving focused day outside the displayed grid."
+      },
+      {
+        "location": "src/components/calendar/__tests__/calendar.test.ts",
+        "finding": "Five happy-dom tests assert the retired interface and selected markup. They do not verify native forms, actual modal focus containment, DST, offset parsing, RTL, lifecycle cleanup, source/compiled parity or renderer child identity. Tests were read, not rerun in this investigation."
+      },
+      {
+        "location": "site/pages/components/calendar.ts",
+        "finding": "Current examples use old compact/stacked/presetIndex/end/allowClear/static/pinnedTimezone interfaces. Replace them with approved single/range, time/date-only, inline/popover, bounds, presets, Field and form flows."
+      },
+      {
+        "location": "src/shared/relative-time.ts:4-14",
+        "finding": "Its date-only meaning is UTC midnight. Calendar date-only values are civil dates. Do not reuse relativeInstant as the Calendar parser. Both timestamp consumers need the corrected upstream parser."
+      }
+    ]
+  },
+  "references": [
+    {
+      "system": "Geist",
+      "url": "https://vercel.com/geist/calendar",
+      "coverage": "Current public documentation extraction and complete saved mechanical contract tools/geist/contract/calendar.md; no live interaction run.",
+      "findings": "Baseline has range/time controls and presets. Saved contract requires contained popup focus, day/week/month keyboard movement, polite range announcement, retained selection on reopen and actual preset buttons."
+    },
+    {
+      "system": "Chakra UI",
+      "url": "https://www.chakra-ui.com/docs/components/date-picker",
+      "observedVersion": "Documentation header 3.37.0",
+      "coverage": "Usage, date values, controlled/store ownership, range, localization, trigger composition, time, native form, Field and reference properties; rendered docs text, not a tested component instance.",
+      "findings": "DatePicker uses internationalized/date objects; inline Calendar shares its date behavior. Selection, focused date, visible view and popup lifetime are separate responsibilities. Current docs explicitly say Field integration needs manual Field.Context wiring; this is not evidence of automatic association."
+    },
+    {
+      "system": "Chakra UI",
+      "url": "https://www.chakra-ui.com/docs/components/calendar",
+      "coverage": "Official component description and inline/range/controlled/bounds documentation.",
+      "findings": "Calendar is DatePicker inline presentation without input, positioner and popup parts; share date behavior rather than build two independent date engines."
+    },
+    {
+      "system": "Radix",
+      "url": "https://www.radix-ui.com/primitives/docs/overview/introduction",
+      "coverage": "Current complete component navigation; no DatePicker/Calendar listed.",
+      "findings": "No directly comparable shipped Calendar primitive established. Do not substitute shadcn/react-day-picker and call it Radix behavior."
+    },
+    {
+      "system": "Radix Themes",
+      "url": "https://www.radix-ui.com/themes/docs/components/popover",
+      "coverage": "Rich-content trigger/content composition and API; existing house shadow decision separately assigns Calendar shadow5.",
+      "findings": "Relevant as floating-content composition/elevation reference, not a date arithmetic or calendar keyboard engine."
+    },
+    {
+      "system": "Material Web",
+      "url": "https://github.com/material-components/material-web/tree/849b4dce877863752bbfd62f74f52829b2430868",
+      "coverage": "Complete recursive GitHub tree response, truncated=false; docs component list and paths containing calendar/date-picker inspected.",
+      "findings": "No date-picker implementation or component doc. Six matching paths are docked/modal Sass token files. M3 Overview independently marks Web unavailable. No Material Web runtime behavior is claimed."
+    },
+    {
+      "system": "WAI APG",
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/datepicker-dialog/",
+      "coverage": "Date-button, dialog, grid keyboard, labeling and focus requirements; no assistive-technology certification claimed.",
+      "findings": "One grid Tab stop, full-date names, month announcement, selected/current initial focus, month/year clamping and Escape return focus. Home/End mean week boundaries; Shift+PageUp/Down mean year movement."
+    },
+    {
+      "system": "Internationalized Date",
+      "url": "https://react-aria.adobe.com/internationalized/date/CalendarDate",
+      "coverage": "Civil date model, immutable arithmetic, week-start/locale and formatting conversion documentation, plus installed package probes.",
+      "findings": "Use CalendarDate/parseDate for date-only values and add/set/compare for grid navigation. Use locale-aware week boundaries; formatting conversions must supply a deliberate zone."
+    },
+    {
+      "system": "Internationalized Date",
+      "url": "https://react-aria.adobe.com/internationalized/date/ZonedDateTime",
+      "coverage": "Absolute/zone parsing and installed conversion source; gap/overlap probes.",
+      "findings": "parseAbsolute converts an existing instant into the display zone. toZoned resolves local editor date/time with explicit ambiguity policy; display-zone changes must not reinterpret an existing timestamp."
+    }
+  ],
+  "materialReview": {
+    "component": "Date pickers",
+    "tabs": [
+      {
+        "url": "https://m3.material.io/components/date-pickers/overview",
+        "coverage": "All extracted rendered prose, headings, tables, examples and captions read.",
+        "capture": "/tmp/acme-m13-calendar/material-overview.txt"
+      },
+      {
+        "url": "https://m3.material.io/components/date-pickers/specs",
+        "coverage": "All extracted rendered prose, headings, tables, examples and captions read.",
+        "capture": "/tmp/acme-m13-calendar/material-specs.txt"
+      },
+      {
+        "url": "https://m3.material.io/components/date-pickers/guidelines",
+        "coverage": "All extracted rendered prose, headings, tables, examples and captions read.",
+        "capture": "/tmp/acme-m13-calendar/material-guidelines.txt"
+      },
+      {
+        "url": "https://m3.material.io/components/date-pickers/accessibility",
+        "coverage": "All extracted rendered prose, headings, tables, examples and captions read.",
+        "capture": "/tmp/acme-m13-calendar/material-accessibility.txt"
+      }
+    ],
+    "tokens": {
+      "variants": [
+        "Date picker - Docked",
+        "Date picker - Modal",
+        "Date picker - Modal input"
+      ],
+      "coverage": "All three selected and Expand all applied; complete extracted Default Light token rows read.",
+      "captures": [
+        "/tmp/acme-m13-calendar/material-specs-docked-expanded.txt",
+        "/tmp/acme-m13-calendar/material-specs-modal-expanded.txt",
+        "/tmp/acme-m13-calendar/material-specs-modal-input-expanded.txt"
+      ],
+      "limits": "Dark token branch and token hover explanations not inspected; no Material color/style values adopted."
+    },
+    "diagrams": {
+      "coverage": "Six measurement targets located. Docked month menu, modal year grid and modal range measurement diagrams successfully inspected. One earlier modal day screenshot also exposed 360 by 524 and 48 target geometry but target mapping was unstable; it is not used as a certified diagram capture.",
+      "verifiedCaptures": [
+        "/tmp/acme-m13-calendar/instant-diagram-1.png",
+        "/tmp/acme-m13-calendar/instant-diagram-3.png",
+        "/tmp/acme-m13-calendar/instant-diagram-4.png"
+      ],
+      "incomplete": [],
+      "reason": "The lazy-page placeholders are resolved by full-resolution asset inspection.",
+      "resolved": {
+        "date": "2026-09-22",
+        "method": "Read full-resolution Google image assets in the in-app browser, verified titles/dimensions and complete screenshots",
+        "images": [
+          {
+            "url": "https://lh3.googleusercontent.com/PTixdykCflNGubuMrHJpl5MMA4Gg3W9U8LDFn2SjrMoswSQ2F_uJAVkm8NtkjoxRvJbQsyUev55lyKIPDhTcgFQlGsMlruJKGYNfdOH9Lu0e1Q=s0",
+            "subject": "Diagram of padding, size, and layout measurements."
+          },
+          {
+            "url": "https://lh3.googleusercontent.com/Qe-iPyRhBKhCxHScEGB4S8BssYvRdETO_pEbYIPRrGLewt2ObrK4fEJXcRN7DnsWZeAWSlL0J1fXPjVuBSfxUt3ZgeFKXuRIojAVlEClcuw=s0",
+            "subject": "Diagram of size and padding measurements in day selection view."
+          },
+          {
+            "url": "https://lh3.googleusercontent.com/M_rfbkLJHuLrKAZGQQmuEVaZMyte_u_3ybmULmG8aiNvTnIcB9OmLtKv9dswOeVNC0NML5TtfQVSUop_Q9vz5pLqrwp9Xchth7vF4cumQCuN=s0",
+            "subject": "Diagram of the padding and size measurements of a modal date input."
+          }
+        ],
+        "observations": [
+          "Docked figure: 360 width, 460 height, 40 date indicator/box measurements, 24 navigation/weekday rows, 36 actions; individual insets/gaps shown and read",
+          "Modal day figure: 360 by 524, 48 target boxes around 40 date indicators, 40 actions; header and edge measurements read",
+          "Modal date-input figure: 24 horizontal insets, 16 top, 36 label region, 24 icon, 40 actions and 12 bottom; no unshown total dimensions inferred"
+        ],
+        "adoption": "Reference measurements only; no automatic dp-to-CSS conversion or component density change"
+      }
+    },
+    "findings": [
+      "Docked entry supports text entry plus date grid; modal and range forms are separately described. Manual input should remain possible and formatting should not rewrite text mid-entry.",
+      "Current, selected and in-range dates have distinct treatments; full-date accessible labels and help text are required.",
+      "Reference tokens use dp/pt (for example docked 360dp width and 48dp date containers); these are not CSS pixel mandates. House shadow5, fonts, blue accent and density decisions remain authoritative.",
+      "Material keyboard prose has ambiguous Home/End wording; use WAI week-boundary behavior where Geist does not specify it. Preserve the explicit Geist Shift+arrow week capability."
+    ],
+    "limitations": "All four tab texts, expanded light tokens and six measurement diagrams are read. Dark token branch, token hover explanations and video interactions remain uninspected; their values/behavior are not adopted. Time-picker clock-face UI is not adopted."
+  },
+  "proReview": {
+    "collection": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19",
+    "ledger": "notes/alignment/evidence/chakra-pro-review-ledger.json",
+    "savedCoverage": "338 blocks / 1003 block files / 250 kit files marked fully read by the existing ledger; this investigation does not re-certify that historical review.",
+    "queries": [
+      {
+        "query": "--component DatePicker",
+        "matches": 0
+      },
+      {
+        "query": "--component Calendar",
+        "matches": 0
+      },
+      {
+        "query": "--component LuCalendar",
+        "matches": 2
+      },
+      {
+        "query": "date range",
+        "finding": "Broad text search returns fixture/documentation dates, not proof of a date-picker implementation."
+      }
+    ],
+    "reread": [
+      "blocks/login-with-email-and-password-03/block.tsx",
+      "blocks/setting-integrations-06/block.tsx"
+    ],
+    "findings": "Both LuCalendar hits are decorative icon uses (demo link and installation date). No matching Calendar/DatePicker implementation or interaction acceptance is available in the saved collection. General Field composition is relevant; no Pro date behavior is invented."
+  },
+  "parserPrerequisite": {
+    "package": "@internationalized/date",
+    "installed": "3.12.4",
+    "upstream": {
+      "mainSha": "8ae29fa17598c840955c6ed0e91b3524d8f13e5a",
+      "mainDate": "2026-09-18T22:50:48Z",
+      "distTags": {
+        "latest": "3.12.4",
+        "nightly": "3.0.0-nightly-8ae29fa17-260922"
+      },
+      "latest": "3.12.4",
+      "published": "2026-09-01T14:27:23.965Z"
+    },
+    "upstreamSource": "https://github.com/adobe/react-spectrum/blob/8ae29fa17598c840955c6ed0e91b3524d8f13e5a/packages/%40internationalized/date/src/string.ts",
+    "comparison": "Installed src/string.ts and fetched main src/string.ts are byte-identical.",
+    "reproduction": {
+      "command": "bun /tmp/acme-m13-calendar/parser-probe.ts",
+      "script": "/tmp/acme-m13-calendar/parser-probe.ts",
+      "results": [
+        {
+          "name": "negative fractional offset",
+          "expected": "2026-09-22T04:00:00+00:00[UTC]",
+          "actual": "2026-09-22T03:00:00+00:00[UTC]",
+          "pass": false
+        },
+        {
+          "name": "negative zero-hour offset",
+          "expected": "2026-09-22T01:00:00+00:00[UTC]",
+          "actual": "2026-09-22T00:00:00+00:00[UTC]",
+          "pass": false
+        },
+        {
+          "name": "positive fractional offset",
+          "expected": "2026-09-21T19:00:00+00:00[UTC]",
+          "actual": "2026-09-21T19:00:00+00:00[UTC]",
+          "pass": true
+        },
+        {
+          "name": "absolute day zero",
+          "expected": "throws",
+          "actual": "2026-08-31T00:00:00+00:00[UTC]",
+          "pass": false
+        },
+        {
+          "name": "date day zero",
+          "expected": "throws",
+          "actual": "throws",
+          "pass": true
+        },
+        {
+          "name": "local datetime day zero",
+          "expected": "throws",
+          "actual": "2026-09-00T12:00:00",
+          "pass": false
+        },
+        {
+          "name": "zoned datetime day zero",
+          "expected": "throws",
+          "actual": "2026-09-01T12:00:00-07:00[America/Los_Angeles]",
+          "pass": false
+        }
+      ]
+    },
+    "defects": [
+      {
+        "location": "src/string.ts parseAbsolute, day check and numeric offset calculation",
+        "finding": "The minute offset is always added to signed hours, so negative fractional offsets and -00:mm change the instant incorrectly."
+      },
+      {
+        "location": "src/string.ts parseDateTime/parseZonedDateTime/parseAbsolute, date.day validation",
+        "finding": "Minimum day is zero; invalid civil date-time input is accepted or normalized. parseDate already uses minimum one."
+      }
+    ],
+    "recommendation": "No fixed latest stable release exists in the checked registry; latest and main both retain the defects. Use an exact-version Bun dependency patch at the package parser, including affected shipped dist/private/string.mjs, string.js and string.cjs paths, with source kept consistent. Compute offset sign from the original +/- token so -00:mm works; require day >= 1 in all three date-time parsers. This is an upstream-package correction, not a second Calendar parser.",
+    "regressionCases": [
+      "-03:30 and -00:30 absolute offsets",
+      "+05:30 and +00:30 controls",
+      "UTC Z and whole-hour negative offsets",
+      "day 00 rejected by date-time parsers",
+      "month end, leap February and out-of-range day/month",
+      "zoned offset validation including zero-hour fractional signs",
+      "RelativeTime offset instant through its public helper"
+    ],
+    "delivery": {
+      "observed": "scripts/build.ts:77-85 transpiles split ESM and preserves external imports; dist/shared/relative-time.js currently imports @internationalized/date. CDN and complete bundles use Bun.build and capture installed code. scripts/package.ts drops patchedDependencies from production manifests and stages only declared files.",
+      "risk": "A repo-local Bun patch alone fixes current bundled output but does not ensure fresh npm/Bun split-ESM consumers run corrected date code.",
+      "recommendation": "Build one private versioned ESM dependency bundle from the patched date package and route all house runtime date imports through that local artifact before CDN/full-bundle generation. Keep the same upstream implementation, exact version, source hash, patch and Apache license/notice provenance. Include the private artifact in dist; do not require consumer patch configuration, postinstall mutation or a registry fork. Prevent mixed raw/patched house runtime imports. Public Calendar values remain ISO strings, so consumers need not share date-class identity.",
+      "acceptance": [
+        "Inspect packed split ESM and metafiles for the private corrected runtime path and absence of escaping bare date-runtime imports.",
+        "In clean temporary npm and Bun consumer directories, install only the staged package without repository patches; run exact parser counterexamples through public RelativeTime/Calendar behavior.",
+        "Run the same probes against selective CDN graph, normal/minified bundles and standalone bundle.",
+        "Verify one house date-runtime graph, retained required license/notice files, and source-to-compiled behavior parity."
+      ],
+      "status": "Recommendation only; no dependency patch, install, build change or publication performed."
+    }
+  },
+  "replacementSeam": {
+    "owner": "AcmeCalendar extends the existing form-element base and owns one NativeFormController<CalendarValue>. Per-instance atomState holds navigation, open state and raw editor text; createAtom derives formatting, grid cells and validity. Do not maintain separate writable value/end/timezone mirrors of the same selection.",
+    "dateModule": "Add a small pure internal Calendar-value module for ISO shape validation, package-backed conversion/comparison, range normalization and grid generation. It consumes the corrected shared date dependency seam; native Date is only an explicit formatting bridge, never Calendar arithmetic.",
+    "values": "showTimeInput=false accepts date-only ISO and preserves that civil date across zones. showTimeInput=true accepts offset-bearing ISO timestamps and preserves the instant when timeZone changes. Public partial ranges remain representable. Reject impossible input rather than normalizing it silently; do not interpret a bare date as a timestamp.",
+    "timeEditing": "Use native time editors with machine-readable HH:mm[:ss] values; convert with parseTime/toCalendarDateTime/toZoned. Avoid hand-written AM/PM arithmetic. If numeric fields need localized input, reuse the approved Number Input/NumberParser responsibilities; never feed an entire date string through NumberParser.",
+    "dst": "Resolve local time explicitly: reject nonexistent times with a visible validation error; for a repeated local time prefer an existing valid selected offset, otherwise choose the package earlier occurrence and display the resulting offset. This is a recommended documented engineering policy, not a new user vote. Include both occurrences and gap tests.",
+    "formAndField": "One root owns the native form name/value and registers once with Field. Reuse FieldControl/FieldAssociation and SemanticAttributes for host name, help/error and activation. Choose a connected visible native focus target for each presentation; inline mode cannot leave reportValidity anchored to a hidden trigger. Submit scalar/JSON without child duplicate successful controls; reset/restoration/programmatic writes remain silent.",
+    "events": "Keep valid provisional range edits in the canonical public value and emit acme-input. Commit emits one acme-change with the approved scalar/range shape only when valid and complete. Raw invalid editor text is separate draft text, not a fake ISO value. Preserve source selection on close/reopen; do not invent cancellation rollback or emit commit just because focus moves. Range/time editors retain an explicit Apply action; date-only single pick may commit directly.",
+    "overlay": "Reuse OverlayPresence, OverlayPlacement and SpringValue/readMotionSpring. The saved source contract requires contained popup focus. Prefer a root-owned anchored native dialog with modal presence for the popover presentation, using Floating UI geometry and the assigned Calendar shadow5; never claim aria-modal on a plain Popover supplies modality. Inline presentation shares date content but has no modal lifetime or focus trap. Confirm this native mechanism in browser before implementation acceptance.",
+    "trigger": "Follow the newly verified selection seam: root-owned native button with noninteractive trigger content slot; preserve supplied node identity. Keep footer independent and account for its focusable descendants through native dialog containment. No cloning, light-DOM movement, private button internals or author callback render engine.",
+    "keyboard": "Real button cells and one grid Tab stop. Day arrows, vertical week movement, source Shift+arrow week jumps, PageUp/Down months, Shift+PageUp/Down years, locale week Home/End, RTL horizontal reversal, Enter/Space selection. Clamp day to destination month and selected bounds. Visible month changes must preserve a reachable roving target.",
+    "presets": "Presets remain data supplied to Calendar and resolved with package date arithmetic in the effective zone. Use a single documented readonly array shape; remove object-record/presetIndex/relative native-Date aliases. Preserve useful fixed/relative presets only through one shape confirmed against the approved capability, without application data fetching.",
+    "replacement": "Remove old single/end/static/allowClear/pinnedTimezone/compact/stacked/horizontalLayout/popoverAlignment/presetIndex shapes where superseded by F08. Update consumer docs/tests/metadata together. All style declarations come from styles and the existing producers; never hand-edit generated style modules."
+  },
+  "nativeAcceptanceMatrix": [
+    {
+      "id": "N01",
+      "surfaces": "HTML/Lit/React",
+      "oracle": "Trigger/footer slotted nodes retain identity across edits, reorder, removal, reconnect and parent updates; no node copying or reparenting.",
+      "status": "not run for replacement"
+    },
+    {
+      "id": "N02",
+      "surfaces": "Chromium/Firefox/WebKit, source+compiled",
+      "oracle": "Enter/Space trigger opens; selected/current/bounded day receives focus; Tab/Shift+Tab includes footer and stays contained only in popup mode.",
+      "status": "not run for replacement"
+    },
+    {
+      "id": "N03",
+      "surfaces": "Chromium/Firefox/WebKit",
+      "oracle": "Escape/outside/top overlay closes exactly the intended surface; focus returns only when appropriate and never steals it from an outside target.",
+      "status": "not run for replacement"
+    },
+    {
+      "id": "N04",
+      "surfaces": "Chromium/Firefox/WebKit",
+      "oracle": "Inline mode remains visible, has one grid Tab stop, does not trap page focus and uses a visible form validation anchor.",
+      "status": "not run for replacement"
+    },
+    {
+      "id": "N05",
+      "surfaces": "Chromium/Firefox/WebKit",
+      "oracle": "One scalar/JSON successful form value; required empty and incomplete range invalid; disabled fieldset/Field excludes submission; reset/default/restoration work.",
+      "status": "not run for replacement"
+    },
+    {
+      "id": "N06",
+      "surfaces": "Chromium/Firefox/WebKit + native AX",
+      "oracle": "Standalone and Field labels/help/errors name the actual trigger/grid/editor; current, selected and provisional days differ; full dates and month changes are announced.",
+      "status": "not run for replacement"
+    },
+    {
+      "id": "N07",
+      "surfaces": "Chromium/Firefox/WebKit",
+      "oracle": "Day/week/month/year navigation, Jan31->Feb28, leap day, locale week Home/End, bounds and no empty roving target after header navigation.",
+      "status": "not run for replacement"
+    },
+    {
+      "id": "N08",
+      "surfaces": "Chromium/Firefox/WebKit",
+      "oracle": "LTR and RTL arrows, visual weekday order and focus order agree. Locale/direction changes update open and closed controls.",
+      "status": "not run for replacement"
+    },
+    {
+      "id": "N09",
+      "surfaces": "Chromium/Firefox/WebKit in two browser zones",
+      "oracle": "Date-only YYYY-MM-DD remains the same civil date; offset timestamps preserve exact instants through effective-zone changes.",
+      "status": "not run for replacement"
+    },
+    {
+      "id": "N10",
+      "surfaces": "Package + native browsers",
+      "oracle": "Negative fractional/zero-hour offsets and day-zero counterexamples pass corrected dependency and compiled consumer paths.",
+      "status": "not run for replacement"
+    },
+    {
+      "id": "N11",
+      "surfaces": "Chromium/Firefox/WebKit",
+      "oracle": "Spring gap rejects nonexistent local time; fall overlap preserves/chooses documented offset; range bounds compare instants when time is enabled.",
+      "status": "not run for replacement"
+    },
+    {
+      "id": "N12",
+      "surfaces": "Chromium/Firefox/WebKit",
+      "oracle": "Typing invalid/partial text and IME never normalizes mid-entry or commits invalid dates; clear/preset/day/time actions emit exact input/change sequence; programmatic writes silent.",
+      "status": "not run for replacement"
+    },
+    {
+      "id": "N13",
+      "surfaces": "Chromium/Firefox/WebKit",
+      "oracle": "Range start-only, reversed click order, same-day range, edited endpoints, required incomplete range, Apply, reopen and no accidental commit on Escape.",
+      "status": "not run for replacement"
+    },
+    {
+      "id": "N14",
+      "surfaces": "Chromium/Firefox/WebKit",
+      "oracle": "Min/max changes, malformed public values, invalid zones, showTimeInput/mode changes and presets handle explicit normalization/validation rules without stale value shape.",
+      "status": "not run for replacement"
+    },
+    {
+      "id": "N15",
+      "surfaces": "Chromium/Firefox/WebKit",
+      "oracle": "Scroll/resize/zoom/viewport-edge placement, rapid reopen, removal/adoption and nesting release observers, scroll locks and obsolete async geometry.",
+      "status": "not run for replacement"
+    },
+    {
+      "id": "N16",
+      "surfaces": "Chromium/Firefox/WebKit",
+      "oracle": "Reduced-motion change mid-animation, forced colors, both themes, narrow layout and touch-sized actual target geometry remain usable.",
+      "status": "not run for replacement"
+    },
+    {
+      "id": "N17",
+      "surfaces": "Fresh npm/Bun consumers + browser distributions",
+      "oracle": "Staged split ESM, selective CDN and complete/standalone bundles all execute corrected date behavior without consumer patch setup.",
+      "status": "not run for replacement"
+    },
+    {
+      "id": "N18",
+      "surfaces": "Live documentation",
+      "oracle": "Every replaced single/range/date-only/time/inline/preset/bounds/Field example completes its stated action; no stale interface remains.",
+      "status": "not run for replacement"
+    }
+  ],
+  "limits": [
+    "No Calendar source or native component tests were changed or executed. Installed date-library probes ran under Bun; cross-engine date parsing and replacement acceptance remain required.",
+    "Material Web absence is tied to the recorded source SHA. Radix absence is documentation/catalog coverage, not a claim about all ecosystem packages.",
+    "Material three measurement diagrams remain unreadable; no full visual-review claim.",
+    "No fixed dependency was installed, no upstream issue was filed and no registry publication is authorized or performed."
+  ]
+}

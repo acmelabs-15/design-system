@@ -1,9 +1,10 @@
 // Maps acme-checkbox (src/components/checkbox) to Geist Checkbox: the generator derives checkbox.styles.ts from this.
-import { type GeistMap, type SpecNode } from "../gen";
+import type { GeistMap, SpecNode } from "../gen";
 
 const tag = (t: string) => (c: SpecNode) => c.tag === t;
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "checkbox",
   component: "Checkbox",
   // The rendered root is the label tied to the hidden checkbox.
@@ -26,7 +27,16 @@ export const geist: GeistMap = {
         {
           ours: ".box",
           pick: (c: SpecNode) => c.tag === "span" && "aria-hidden" in c.attrs,
-          children: [{ ours: "svg", pick: tag("svg"), children: [{ ours: "path", pick: tag("path") }, { ours: "line", pick: tag("line") }] }],
+          children: [
+            {
+              ours: "svg",
+              pick: tag("svg"),
+              children: [
+                { ours: "path", pick: tag("path") },
+                { ours: "line", pick: tag("line") },
+              ],
+            },
+          ],
         },
       ],
     },

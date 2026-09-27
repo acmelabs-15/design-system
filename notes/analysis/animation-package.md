@@ -145,3 +145,43 @@ The initial probe checked finite, nonempty cubic chains and adjacent endpoint co
 A further sampled-area check followed that serialization rule, using 256 samples per cubic. In material-shapes-ts, Ghostish → Arch at progress 1 produced area .8128278860 versus its own target Arch's .8842320248, a relative difference of about 8.08%. In shape-morph, Ghostish → PixelTriangle had a large raw chain gap but matched its own target's sampled area to numerical precision. This distinction prevents overstating the first probe as 73/75 visibly broken morphs. Same-package endpoint comparisons still do not establish fidelity to AndroidX.
 
 [Detailed evidence](../alignment/evidence/shape-geometry-review-2026-09-19.json) preserves versions, methods and limits. These findings remain useful if a future concrete transition needs geometry. They do not justify importing or repairing a complete catalogue now. Phase 1 closes with the needs-driven scope; specific shapes, transitions, algorithms and their acceptance fixtures belong to the inventory and implementation plan.
+
+## M00 motion and lifetime verification, 2026-09-20
+
+The [saved fixtures and results](../alignment/evidence/m00-completion-2026-09-20.json) pass 24 candidate assertions in each required browser. Three original failures remain as explicit red controls: Interaction retains a window press listener and active state on disconnect; removing an open Overlay leaves body scrolling locked; inline flex separators become orphan dividers at line ends.
+
+The scratch Interaction correction owns listeners through the element's document/window and clears transient state on detach. The modal candidate uses native dialog, selected remove-scroll and actual Lit Motion. It retains modality during its own exit, cancels exit on reopen, releases immediately on removal and ignores unrelated child animation lifetime. Resting styles plus fill:none avoid retaining finished animation effects.
+
+The shared indicator contains Lit Motion and one stable TanStack atom for derived geometry. Both axes, movement/resizing, intermediate painted rectangles, interruption within 1px, resize, reduced motion, target removal and owner removal pass. Ignore unchanged ResizeObserver measurements; capture the painted rectangle before cancellation. A microtask lets cancelled-directive completion bookkeeping settle before applying new derived geometry in the tested WebKit reversal. Semantic selection remains with the consumer.
+
+The fixture's 400ms linear timing is a deterministic test instrument, not a new house duration or replacement for approved spring roles. Final spring-role mapping, nested/anchored overlays, all indicator geometry cases and accessibility/visual acceptance remain implementation checks. The probes establish the selected stack's representative feasibility without adding an animation engine.
+
+## M10 shared indicator implementation — 2026-09-21
+
+[The pinned source record](../alignment/evidence/m10-motion-sources-2026-09-21.json) contains the complete AndroidX MotionScheme and both generated token files at revision e2171b56112f43bf962f5d608413f74033b580b6. The installed Lit Motion 1.1.0 SpringController delegates to Wobble 1.5.1. Its public configuration uses physical damping, not a damping ratio: use unit mass and c = 2 × ratio × sqrt(stiffness). Wobble converts the natural frequency to milliseconds internally. Preserve public currentVelocity when replacing a controller; do not access its private/minified spring member.
+
+The generated theme catalog now adds 24 registered numeric spring parameters, for 443 total keys. Standard spatial roles are fast 1400/.9, default 700/.9, slow 300/.9; Expressive spatial roles are 800/.6, 380/.8, 200/.8. Both effects sets are 3800/1, 1600/1, 800/1. Each pair is stiffness/damping ratio. Numerical theme expressions resolve through registered number properties. The utilitarian selection indicator uses Standard/default spatial; no global scheme default is imposed.
+
+The internal element receives target, orientation and an owner geometry function. Its stable TanStack endpoint remains independent of animation. Four Lit Motion springs move/resize the visual from its painted rectangle; Floating UI autoUpdate follows layout, resize and scrolling. Reduced motion snaps to the endpoint. Disconnect/removal tears down observations and owned controllers. Ripple cancellation is scoped to its own directive so it cannot cancel unrelated animations.
+
+[Implementation acceptance](../alignment/evidence/m10-selection-indicator-2026-09-21.json) passes 28 source and compiled checks per engine and the existing 17-check action/ripple regression per engine. Build/site and all 906 tests pass. This includes both axes, interruption, varying target dimensions, scaled parents, owner-defined line geometry, hidden/removed/reinserted targets, reorder, RTL, scroll, reconnection and live reduced motion. Actual family acceptance follows in M10. The source values and mapping are verified; Android frame-by-frame equivalence is not claimed.
+
+## M10 actual selection consumers — 2026-09-21
+
+Segmented Control uses the existing Radio ownership/navigation mechanism, the actual Group outline/inset and the shared indicator. Its selected target has a subscribed TanStack projection so removing and reinserting the same item restores the visual as well as the native form entry. Binary Switch uses a separate scalar Lit Motion spring for its thumb, with Standard/fast spatial parameters, live reduced motion and disconnect cleanup. It does not couple thumb movement to optional press ripple. [Source/compiled/native evidence](../alignment/evidence/m10-segmented-switch-2026-09-21.json).
+
+The requested inset gray fill measured 1.192:1 against white. Retain that fill and add a one-pixel inner outline using gray-800; the native fixture requires at least 3:1 against both adjacent fill and background. The same selected-outline role returns when Tabs implements its approved inset variant. This is a named house accessibility adaptation, not a claim that the supplied screenshot had that contrast.
+
+## M10 complete Material Tabs reference — 2026-09-21
+
+[Four complete articles, two token sets and 28 static figures](../alignment/evidence/m10-tabs-material-review-2026-09-21.json) are reviewed before the Tabs implementation. Primary geometry is 3dp high, at least 24dp long, with a 2dp inset from each side of the label region. The drawing/table shows rounded top corners and a flat bottom. Active text/icon and indicator use the primary role. Material secondary tabs instead use a full-width 2dp line; they are not the house inset treatment.
+
+The 48dp/64dp Material container values and Roboto typography are source facts, not global house replacements. Preserve the approved house primary/inset names, independent focus/selection, vertical adaptation and shared indicator. Material's tab-state diagrams include hover/focus/press treatment; house tokens must retain legible state contrast. Embedded video descriptions are read, but frame-by-frame equivalence is not claimed. Exact house geometry and relationships still require their implementation fixture.
+
+The final selected-outline ratios are 3.45:1 against the light fill and 4.12:1 against white; dark values are 4.00:1 and 4.81:1. All three engines agree. Forced-color emulation uses each engine's Highlight/HighlightText and preserves distinct selected text/surface. These are measured house-theme results, not promises about arbitrary user themes.
+
+The complete Material Web Tab, Tabs and Tabs documentation are also re-read. They use ElementInternals roles on their hosts, presentation divs, manual activation by default and timed per-tab animation. Their panel example uses external labelled panels. These are reference choices, not changes to the approved native-control/canonical-owner/shared-indicator house contract. APG supports both activation modes and separates panel labels/controls relationships from arrow focus. The native-button and panel reference mechanism is being checked before the house Tabs implementation.
+
+## M10 Theme Switcher composition — 2026-09-21
+
+[Source and compiled acceptance](../alignment/evidence/m10-theme-switcher-2026-09-21.json) passes 18 Chromium and 17 Firefox/WebKit checks. The actual Segmented Control owns native radio navigation and its private indicator; Theme Switcher restores its supplied value after an unaccepted request. Application acceptance updates the relevant Theme scope. Nested scope isolation, localization, live system changes in auto, reconnection, root-name forwarding and no storage writes pass. Build/site, all 900 tests, three scoped examples and the application header pass.

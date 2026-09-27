@@ -70,6 +70,25 @@ The Fieldset check covered the form/state/React/reference/composition/Box decisi
 
 ## Deferred decisions
 
+### Lit style authoring and declaration order
+
+- **Resolved question:** Peter selected the complete-input Lit helper. Keep declaration order, individual component properties, static HTML authoring and undefined for omitted styling inputs. Fixed priority was not selected.
+- **Status:** CONFIRMED capability, supplied-setting ownership and reassertion on each helper/template render. Removed input keys clear; unrelated settings survive. Direct external writes work immediately until a later helper render. Final naming/types, helper-expression removal and broader competing-writer/cleanup rules remain Phase 4 work.
+- **Evidence:** the [late/mixed-input comparison](../analysis/lit-practice-review.md#lit-ordering-with-late-and-mixed-inputs) reproduces failures in Chromium, Firefox and WebKit. The [selected helper's lifecycle follow-up](../analysis/lit-practice-review.md#lit-helper-lifecycle-and-registry-boundary) passes 21 global-registry checks per engine before/after compilation with explicit registry selection at node creation; the original WebKit failure is preserved.
+- **Depends on:** the selected individual properties, Chakra-style overlap order, separate responsive-query order, canonical TanStack state and React wrapper requirements. Static HTML authoring and later docs/consumer skills must describe the resulting contract consistently.
+- **Owner and return:** the agent drafts and verifies the remaining C-SPACE contract; Peter decides material author-facing trade-offs and approves the inventory. Do not repeat helper inclusion, overlap order, supplied-setting scope or reassertion questions. The [nineteen-case ownership/batching study](evidence/lit-style-ownership-review-2026-09-20.json) passes in all three engines; full responsive/property types and helper-expression cleanup still precede dependent row approval and the Phase 5 mechanism.
+- **Registry dependency:** bring the native import/upgrade finding into shared element-definition and rendering work. Verify intended scoped registries and adoption into another document; the passing global-registry workaround is not proof of those paths. Preserve and evaluate the [standing mixin/polyfill direction](../../PLAN.md#7-decided-and-deferred); no native-only replacement is selected. Do not put a global-registry assumption inside the final styling helper or silently narrow the existing registry requirements.
+- **Inspector dependency:** whether editing is offered, and whether edits are temporary component-property changes or changes to supplied inputs, remains for the [inspector interface](../decisions/design-system-devtools.md#controlled-styling-input-dependency). The next helper render can restore its supplied values. The agent brings this evidence forward and Peter decides editing scope before the inspector entry is approved; no editing bridge is selected here.
+
+### HTML styling conversion after the Chakra comparison
+
+- **Selected direction:** Peter requested “whatever chakra does” for invalid styling inputs. Follow current-input CSS processing for comparable values; the prior last-valid-value retention proposal is withdrawn.
+- **Open question:** what result and diagnostic should malformed HTML JSON or invalid house responsive structure produce? Neither of the original keep/clear options was selected for this case.
+- **Why it remains open:** Chakra takes JavaScript styling inputs and has no corresponding house HTML JSON decoder. The complete eight-file source follow-up cannot establish a behavior for that additional input boundary.
+- **Depends on:** plain/JSON attribute syntax, valid bracketed scalar CSS, responsive condition structure, canonical inputs and helper lifecycle; preserve the selected shared styling scope and native tag sets.
+- **Owner and return:** R01/E02–E03 prepares the bounded converter contract and verifies it before dependent shared-convention/entry approval. Bring any remaining material author choice with the component proposal; do not reopen the general helper interview. [Analysis](../analysis/design-foundations.md#chakra-style-input-follow-up), [answer/source record](evidence/layout-contract-selections-2026-09-20.json).
+- **Full-set follow-up:** the installed Lit 2.1.2 default converter catches malformed JSON and returns null in a five-case Bun check. The [assembled proposal](inventory/foundations.md#responsive-layout-and-styles) maps that to an absent current style override/undefined, with scalar CSS recognized first. This resolves the proposed engineering direction without claiming Chakra defines the decoder or recording a new Peter vote. Browser lifecycle and structural-validation checks remain before approval; this is no longer a preference question in the register.
+
 ### Toolbar and Group composition
 
 - **Question:** how do generic Group, Toolbar and nested selection/input controls compose without competing keyboard, selection or form owners?
@@ -78,6 +97,8 @@ The Fieldset check covered the form/state/React/reference/composition/Box decisi
 - **Depends on:** Phase 2.4 Group, Radio/Segmented/Checkbox Card responsibilities, Input/Search, and Dialog/Popover focus and Escape rules. Existing source shows distinct jobs in Button Group, Avatar Group, Radio Group and Collapse Group; do not collapse them by suffix.
 - **Return:** the Phase 2 responsibility review is complete. Phase 4 must define contextual slots, properties, events, keyboard rules and overflow together before Phase 5 approval.
 - **Later surface details:** one App Bar now replaces Appbar/Topbar, and Side Nav/Subnav become navigation compositions. Page Head/Shell are removed. Exact Toolbar/Search shadow, expanded Search interface and focus details return in Phase 4; these do not require reopening settled family purposes. The Toolbar decision does not approve those interfaces or Material visual defaults.
+- **Shared appearance return point:** Group's proposed size/variant defaults must use explicit child-supported values. Resolve the exact shared keys/values with the R04–R06 Button, selection-card and input contracts before approving Group. Earlier general shared-default capability remains selected; the two-key proposal is not yet selected. [Complete Group proposal](inventory.md#g-01-group).
+- **Full-set follow-up:** the [action](inventory/actions.md#group-compatibility-resolved-with-these-entries), [selection](inventory/selection.md) and [input](inventory/inputs-forms.md) proposals now supply concrete supported subsets. Group keeps size/variant only as the reviewed house proposal, with explicit child overrides and nested reset; do not ask a disconnected provider-key question before reviewing these together. Native form/keyboard ownership and visual seam checks remain required.
 
 ### Entity and Item
 

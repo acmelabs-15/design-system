@@ -8,7 +8,8 @@
 // Run: bun tools/geist/gen.ts [name ...]   (default: every mapping in tools/geist/maps)
 import fs from "node:fs";
 import path from "node:path";
-import { formatGenerated } from "../../scripts/format-generated";
+import { localInputs } from "../../scripts/local-inputs";
+import { removeStyle, writeStyle, type PropertyRegistration } from "../../scripts/styles";
 import { atoms, type Decl, loadReference, parseDecls, serialize, simplify, twProperty } from "./simplify";
 import { allRules, keyframesOf, resolve } from "./tw";
 
@@ -59,6 +60,8 @@ export type ChildMap = {
   owns?: string[];
 };
 export type GeistMap = {
+  /** Used only as a source-system baseline for composed mappings; emits no production sheet. */
+  referenceOnly?: boolean;
   page: string;
   /** JSX tag(s) whose instances are the rendered roots, in document order; the first is the primary. */
   component: string | string[];
@@ -200,7 +203,10 @@ const specDir = path.join(import.meta.dir, "spec");
  */
 const LAYERS = ["theme", "properties", "base", "components", "utilities"];
 function specificity(sel: string): number {
-  let s = sel.replace(/\\./g, "x").replace(/:where\((?:[^()]|\([^()]*\))*\)/g, "").replace(/:(?:is|not|has)\(/g, "(");
+  let s = sel
+    .replace(/\\./g, "x")
+    .replace(/:where\((?:[^()]|\([^()]*\))*\)/g, "")
+    .replace(/:(?:is|not|has)\(/g, "(");
   const pseudoElements = (s.match(/::[\w-]+/g) ?? []).length;
   s = s.replace(/::[\w-]+/g, "");
   const ids = (s.match(/#[\w-]+/g) ?? []).length;
@@ -238,7 +244,9 @@ function jsxInstances(code: string, tags: string[], inherit: Record<string, stri
       const [, close, tag, attrs, self] = m;
       if (close) {
         const i = stack.map((s) => s.tag).lastIndexOf(tag);
-        if (i >= 0) stack.length = i;
+        if (i >= 0) {
+          stack.length = i;
+        }
         continue;
       }
       const props: Record<string, string> = { $tag: tag };
@@ -246,26 +254,39 @@ function jsxInstances(code: string, tags: string[], inherit: Record<string, stri
       // A prop name may carry an underscore (`unstable_useContainer`).
       for (const p of attrs.matchAll(/([a-zA-Z_][a-zA-Z0-9_-]*)(?:=(?:"([^"]*)"|'([^']*)'|\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}))?/g)) {
         props[p[1]] = (p[2] ?? p[3] ?? p[4] ?? "true").trim().replace(/^["']|["']$/g, "");
-        if (p[4] && /<[A-Za-z]/.test(p[4])) nested.push(p[4]);
+        if (p[4] && /<[A-Za-z]/.test(p[4])) {
+          nested.push(p[4]);
+        }
       }
       if (tags.includes(tag)) {
         for (const [prop, spec] of Object.entries(inherit)) {
           const [from, clone] = spec.split(/\s*>$/);
           const parent = stack[stack.length - 1];
           if (clone !== undefined) {
-            if (parent?.tag !== from) continue;
-            if (prop in parent.props) props[prop] = parent.props[prop];
-            else delete props[prop];
+            if (parent?.tag !== from) {
+              continue;
+            }
+            if (prop in parent.props) {
+              props[prop] = parent.props[prop];
+            } else {
+              delete props[prop];
+            }
           } else {
             const anc = [...stack].reverse().find((s) => s.tag === from);
-            if (!(prop in props) && anc && prop in anc.props) props[prop] = anc.props[prop];
+            if (!(prop in props) && anc && prop in anc.props) {
+              props[prop] = anc.props[prop];
+            }
           }
         }
         out.push(props);
       }
       stack.push({ tag, props });
-      for (const n of nested) scan(n);
-      if (self || VOID.test(tag)) stack.pop();
+      for (const n of nested) {
+        scan(n);
+      }
+      if (self || VOID.test(tag)) {
+        stack.pop();
+      }
     }
   };
   scan(code);
@@ -275,8 +296,12 @@ function jsxInstances(code: string, tags: string[], inherit: Record<string, stri
 /** The roots under `nodes`; with `nested`, the search continues inside a root (see GeistMap.nested). */
 const findRoots = (nodes: SpecNode[], isRoot: (n: SpecNode) => boolean, out: SpecNode[] = [], nested = false) => {
   for (const n of nodes) {
-    if (isRoot(n)) out.push(n);
-    if (!isRoot(n) || nested) findRoots(n.children, isRoot, out, nested);
+    if (isRoot(n)) {
+      out.push(n);
+    }
+    if (!isRoot(n) || nested) {
+      findRoots(n.children, isRoot, out, nested);
+    }
   }
   return out;
 };
@@ -289,10 +314,16 @@ function lastCompound(tail: string): string | null {
 function nodeMatches(compound: string, n: SpecNode): boolean {
   const c = stripParens(compound);
   const type = c.match(/^(?:[a-zA-Z][\w-]*|\*)/)?.[0];
-  if (type && type !== "*" && type.toLowerCase() !== n.tag) return false;
+  if (type && type !== "*" && type.toLowerCase() !== n.tag) {
+    return false;
+  }
   for (const m of c.matchAll(/\[([\w-]+)(?:([*^$|~]?=)"?((?:\\.|[^\]"])*)"?)?\]/g)) {
-    if (!(m[1] in n.attrs)) return false;
-    if (m[2] === "=" && n.attrs[m[1]] !== unesc(m[3])) return false;
+    if (!(m[1] in n.attrs)) {
+      return false;
+    }
+    if (m[2] === "=" && n.attrs[m[1]] !== unesc(m[3])) {
+      return false;
+    }
   }
   const own = classesOf(n);
   return classesIn(compound).every((k) => own.has(k));
@@ -302,8 +333,12 @@ const subtree = (n: SpecNode): SpecNode[] => [n, ...n.children.flatMap(subtree)]
 /** Every root with its ancestors in the spec (the outermost first, the root's parent last). */
 const findRootPaths = (nodes: SpecNode[], isRoot: (n: SpecNode) => boolean, ancestors: SpecNode[] = [], out: { node: SpecNode; ancestors: SpecNode[] }[] = [], nested = false) => {
   for (const n of nodes) {
-    if (isRoot(n)) out.push({ node: n, ancestors });
-    if (!isRoot(n) || nested) findRootPaths(n.children, isRoot, [...ancestors, n], out, nested);
+    if (isRoot(n)) {
+      out.push({ node: n, ancestors });
+    }
+    if (!isRoot(n) || nested) {
+      findRootPaths(n.children, isRoot, [...ancestors, n], out, nested);
+    }
   }
   return out;
 };
@@ -327,9 +362,19 @@ const STATE_RE = /(?:\[[^\]]*\]|:[a-z-]+(?:\([^)]*\))?)*/.source;
 type AncestorState = { depth: number; seg?: number; state: string };
 /** The compiled form of a group variant on the element's own compound (`group-hover:` → `:is(:where(.group):hover *)`), with its name and state. A name is any identifier (`group/row`, `group/toastArea`). */
 const GROUP_FORM = `:is\\(:where\\(\\.group((?:\\\\\\/[\\w-]+)?)\\)(${STATE_RE}) \\*\\)`;
-function parseState(prefixSel: string, rest: string, context: Record<string, string | null> = {}, chain?: Set<string>[], groupOnAncestor = false, levels?: boolean[], groups?: Set<string>[]): { theme: Theme; rootState: string; state: string; ancestors?: AncestorState[]; unmatched?: boolean } {
+function parseState(
+  prefixSel: string,
+  rest: string,
+  context: Record<string, string | null> = {},
+  chain?: Set<string>[],
+  groupOnAncestor = false,
+  levels?: boolean[],
+  groups?: Set<string>[],
+): { theme: Theme; rootState: string; state: string; ancestors?: AncestorState[]; unmatched?: boolean } {
   const skip = { theme: "skip" as Theme, rootState: "", state: "" };
-  if (/^\.invert-theme\s/.test(prefixSel ? `${prefixSel} ${rest}` : rest)) return skip;
+  if (/^\.invert-theme\s/.test(prefixSel ? `${prefixSel} ${rest}` : rest)) {
+    return skip;
+  }
   // Light-only wrappers: `html:not(.dark-theme)` before the compound, or the `not-dark-theme:` variant's `:not(:where(.dark-theme,.dark-theme *))` on it.
   const notDark = /:not\(:where\(\.dark-theme(?:,\s*\.dark-theme \*)?\)\)/;
   const light = /html:not\(\.dark-theme\)/.test(prefixSel) || notDark.test(prefixSel) || notDark.test(rest);
@@ -341,16 +386,22 @@ function parseState(prefixSel: string, rest: string, context: Record<string, str
   const DATA_DARK = /^\[data-theme=(['"]?)dark\1\]\s*/;
   const dark = /dark-theme/.test(`${p} ${r}`) || /^\.dark(\s|$)/.test(p) || DATA_DARK.test(p);
   const noDark = (x: string) => x.replace(/:(where|is)\(\s*\.dark-theme(\s*,\s*\.dark-theme \*)?\s*\)\s*/g, "").replace(/\.dark-theme\s*/g, "");
-  p = noDark(p).replace(/^\.dark(\s+|$)/, "").replace(DATA_DARK, "");
+  p = noDark(p)
+    .replace(/^\.dark(\s+|$)/, "")
+    .replace(DATA_DARK, "");
   r = noDark(r);
   let rootState = "";
   // A context ancestor (see GeistMap.context) becomes the root's state; one the descendant cannot reach drops the rule.
   const consumed: string[] = [];
-  for (let found = true; found; ) {
+  for (let found = true; found;) {
     found = false;
     for (const [anc, ours] of Object.entries(context)) {
-      if (!p.startsWith(anc) || !/[\s>+~]/.test(p[anc.length] ?? " ")) continue;
-      if (ours === null) return skip;
+      if (!p.startsWith(anc) || !/[\s>+~]/.test(p[anc.length] ?? " ")) {
+        continue;
+      }
+      if (ours === null) {
+        return skip;
+      }
       rootState += ours;
       consumed.push(anc);
       p = p.slice(anc.length).replace(/^\s*[>+~]?\s*/, "");
@@ -372,21 +423,31 @@ function parseState(prefixSel: string, rest: string, context: Record<string, str
   // `:is(:where(.group\/x) *)`) is conditioned on the group class being there at all (a class the
   // reference toggles at runtime): its state is that class token, translated through `states` like any other.
   const land = (name: string, state: string, bare = false) => {
-    if (bare && !state && name) state = `.group${name}`;
+    if (bare && !state && name) {
+      state = `.group${name}`;
+    }
     const depth = groupOnAncestor && chain ? (groups ?? chain).findIndex((s) => s.has(`group${unesc(name)}`)) : -1;
-    if (chain && depth >= 0 && depth < chain.length - 1 && (levels?.[depth] ?? true)) ancestors.push({ depth, state });
-    else rootState += state;
+    if (chain && depth >= 0 && depth < chain.length - 1 && (levels?.[depth] ?? true)) {
+      ancestors.push({ depth, state });
+    } else {
+      rootState += state;
+    }
   };
   if (g) {
     land(g[1], g[2], g[0].startsWith(":is("));
-    if (groupOf(p)) p = p.slice(g[0].length);
-    else r = r.slice(g[0].length);
+    if (groupOf(p)) {
+      p = p.slice(g[0].length);
+    } else {
+      r = r.slice(g[0].length);
+    }
   }
   // Group variants stack on one compound (`group-has-checked/x:not-group-has-disabled/x:`): each one after the first lands the same way, a negated one as `:not(state)`.
-  if (!p.trim()) for (let m = groupOf(r) ?? notGroupOf(r); m; m = groupOf(r) ?? notGroupOf(r)) {
-    const own = m[2] || `.group${m[1]}`;
-    land(m[1], m[0].startsWith(":not(") ? `:not(${own})` : own);
-    r = r.slice(m[0].length);
+  if (!p.trim()) {
+    for (let m = groupOf(r) ?? notGroupOf(r); m; m = groupOf(r) ?? notGroupOf(r)) {
+      const own = m[2] || `.group${m[1]}`;
+      land(m[1], m[0].startsWith(":not(") ? `:not(${own})` : own);
+      r = r.slice(m[0].length);
+    }
   }
   // A mapped child's leftover prefix (`.body` in `.body .bind`) names ancestors on its own path: a
   // matched prefix drops out (ours nests the same way), a state on the root's compound is the root's,
@@ -396,16 +457,21 @@ function parseState(prefixSel: string, rest: string, context: Record<string, str
     const below = Math.min(chain.length, ...consumed.map((anc) => chain.findIndex((s) => classesIn(anc).length > 0 && classesIn(anc).every((c) => s.has(c)))).filter((j) => j >= 0));
     const m = matchesChain(p, chain, below);
     // Off the path with classes alone is expected (the same class under another parent); a state that found no place is reported.
-    if (!m) return { ...skip, unmatched: segments(p).segs.some(({ seg }) => removeClasses(seg) !== "") };
+    if (!m) {
+      return { ...skip, unmatched: segments(p).segs.some(({ seg }) => removeClasses(seg) !== "") };
+    }
     rootState += m.rootState;
     p = "";
   }
   let s = p.trim() ? `${p} ${r}` : r;
-  s = s.replace(/\s+/g, " ").replace(/(:[a-z-]+|\[[^\]]+\])\1/g, "$1").replace(/\s+$/, "");
+  s = s
+    .replace(/\s+/g, " ")
+    .replace(/(:[a-z-]+|\[[^\]]+\])\1/g, "$1")
+    .replace(/\s+$/, "");
   return { theme: dark ? "dark" : light ? "light" : "", rootState, state: s, ancestors };
 }
 /** The class names of one compound segment (pseudo-class arguments left out). */
-const classesIn = (seg: string) => [...stripParens(seg).matchAll(/\.((?:\\.|[^\s.:>~+\[\]()])+)/g)].map((m) => unesc(m[1]));
+const classesIn = (seg: string) => [...stripParens(seg).matchAll(/\.((?:\\.|[^\s.:>~+[\]()])+)/g)].map((m) => unesc(m[1]));
 /** A selector's compound segments at paren depth 0, each with the combinator before it (`" "`, `>`, `+` or `~`); `tail` is a combinator the selector ends on. */
 function segments(sel: string): { segs: { comb: string; seg: string }[]; tail: string } {
   const segs: { comb: string; seg: string }[] = [];
@@ -420,8 +486,11 @@ function segments(sel: string): { segs: { comb: string; seg: string }[]; tail: s
       k++;
       continue;
     }
-    if (ch === "(") depth++;
-    else if (ch === ")") depth--;
+    if (ch === "(") {
+      depth++;
+    } else if (ch === ")") {
+      depth--;
+    }
     if (!depth && /[\s>+~]/.test(ch)) {
       if (seg) {
         segs.push({ comb, seg });
@@ -431,10 +500,14 @@ function segments(sel: string): { segs: { comb: string; seg: string }[]; tail: s
       sep += ch;
       continue;
     }
-    if (!seg) comb = sep.replace(/\s/g, "") || " ";
+    if (!seg) {
+      comb = sep.replace(/\s/g, "") || " ";
+    }
     seg += ch;
   }
-  if (seg) segs.push({ comb, seg });
+  if (seg) {
+    segs.push({ comb, seg });
+  }
   return { segs, tail: seg ? "" : sep.replace(/\s/g, "") };
 }
 /**
@@ -445,17 +518,23 @@ function segments(sel: string): { segs: { comb: string; seg: string }[]; tail: s
  */
 function matchesChain(prefix: string, chain: Set<string>[], below = chain.length): { rootState: string } | null {
   const { segs, tail } = segments(prefix);
-  if (/[+~]/.test(tail) || segs.some((s) => /[+~]/.test(s.comb))) return null;
+  if (/[+~]/.test(tail) || segs.some((s) => /[+~]/.test(s.comb))) {
+    return null;
+  }
   let rootState = "";
   let from = 0;
   let child = tail === ">";
   for (const { comb, seg } of [...segs].reverse()) {
     const classes = classesIn(seg);
     const extra = removeClasses(seg);
-    if (!classes.length) return null;
+    if (!classes.length) {
+      return null;
+    }
     const fits = (i: number) => i < below && classes.every((c) => chain[i]?.has(c)) && (!extra || i === chain.length - 1);
     const at = child ? (fits(from) ? from : -1) : chain.findIndex((_, i) => i >= from && fits(i));
-    if (at < 0) return null;
+    if (at < 0) {
+      return null;
+    }
     rootState = extra + rootState;
     from = at + 1;
     child = comb === ">";
@@ -472,9 +551,13 @@ function combinatorAt(sel: string): number {
       k++;
       continue;
     }
-    if (ch === "(") depth++;
-    else if (ch === ")") depth--;
-    else if (!depth && /[\s>+~]/.test(ch)) return k;
+    if (ch === "(") {
+      depth++;
+    } else if (ch === ")") {
+      depth--;
+    } else if (!depth && /[\s>+~]/.test(ch)) {
+      return k;
+    }
   }
   return -1;
 }
@@ -487,16 +570,22 @@ const TOKEN_RE = /::?[a-z-]+(?:\((?:[^()]|\([^()]*\))*\))?|\[[^\]]*\]|\.(?:\\.|[
  * Returns null when a token maps to null: the rule is dropped.
  */
 function applyStates(rootState: string, state: string, states?: StateMap): { rootState: string; state: string; hostState: string } | null {
-  if (!states) return { rootState, state, hostState: "" };
+  if (!states) {
+    return { rootState, state, hostState: "" };
+  }
   let dropped = false;
   let hostState = "";
   const token = (t: string): string => {
     const not = t.match(/^:not\((.*)\)$/);
     // A class token is looked up unescaped (`.peer\/x` under the key `.peer/x`).
     const key = unesc(not ? not[1] : t);
-    if (!(key in states)) return t;
+    if (!(key in states)) {
+      return t;
+    }
     const v = states[key];
-    if (v === null) dropped = true;
+    if (v === null) {
+      dropped = true;
+    }
     return not ? `:not(${v ?? ""})` : (v ?? "");
   };
   const chain = (s: string) => s.replace(TOKEN_RE, token).replace(/[\^@]/g, "");
@@ -506,7 +595,9 @@ function applyStates(rootState: string, state: string, states?: StateMap): { roo
   let root = rootState.replace(TOKEN_RE, (t) => {
     const v = token(t);
     const up = v.match(/^(:not\()?@(.*)$/);
-    if (!up) return v.replace(/\^/g, "");
+    if (!up) {
+      return v.replace(/\^/g, "");
+    }
     hostState += up[1] ? `:not(${up[2]}` : up[2];
     return "";
   });
@@ -525,10 +616,15 @@ function applyStates(rootState: string, state: string, states?: StateMap): { roo
   const head = (i < 0 ? own : own.slice(0, i)).replace(TOKEN_RE, (t) => {
     const v = token(t);
     const up = v.match(/^(:not\()?([\^@])(.*)$/);
-    if (!up) return v;
+    if (!up) {
+      return v;
+    }
     const moved = up[1] ? `:not(${up[3]}` : up[3];
-    if (up[2] === "@") hostState += moved;
-    else root += moved;
+    if (up[2] === "@") {
+      hostState += moved;
+    } else {
+      root += moved;
+    }
     return "";
   });
   const rest = i < 0 ? "" : own.slice(i).replace(TOKEN_RE, (t) => (t in states ? (states[t] ?? t) : t));
@@ -549,18 +645,24 @@ function classAt(sel: string, esc: string): number {
       k++;
       continue;
     }
-    if (sel[k] === "(") depth++;
-    else if (sel[k] === ")") depth--;
-    else if (!depth && sel.startsWith(esc, k) && !/[A-Za-z0-9_-]/.test(sel[k + esc.length] ?? "")) return k;
+    if (sel[k] === "(") {
+      depth++;
+    } else if (sel[k] === ")") {
+      depth--;
+    } else if (!depth && sel.startsWith(esc, k) && !/[A-Za-z0-9_-]/.test(sel[k + esc.length] ?? "")) {
+      return k;
+    }
   }
   return -1;
 }
 /** Every position of the class token `esc` where it names an element of the selector (see {@link classAt}), in order. */
 function classPositions(sel: string, esc: string): number[] {
   const out: number[] = [];
-  for (let from = 0; ; ) {
+  for (let from = 0; ;) {
     const i = classAt(sel.slice(from), esc);
-    if (i < 0) return out;
+    if (i < 0) {
+      return out;
+    }
     out.push(from + i);
     from += i + esc.length;
   }
@@ -572,13 +674,19 @@ function stripParens(s: string): string {
   for (let k = 0; k < s.length; k++) {
     const ch = s[k];
     if (ch === "\\") {
-      if (!depth) out += ch + (s[k + 1] ?? "");
+      if (!depth) {
+        out += ch + (s[k + 1] ?? "");
+      }
       k++;
       continue;
     }
-    if (ch === "(") depth++;
-    else if (ch === ")") depth--;
-    else if (!depth) out += ch;
+    if (ch === "(") {
+      depth++;
+    } else if (ch === ")") {
+      depth--;
+    } else if (!depth) {
+      out += ch;
+    }
   }
   return out;
 }
@@ -588,7 +696,9 @@ function stripParens(s: string): string {
  * list (`:is(a, b) > div`) appended to each.
  */
 function alternatives(sel: string): string[] {
-  if (!sel.startsWith(":is(")) return [sel];
+  if (!sel.startsWith(":is(")) {
+    return [sel];
+  }
   let depth = 0;
   const parts: string[] = [];
   let start = 4;
@@ -597,8 +707,9 @@ function alternatives(sel: string): string[] {
       k++;
       continue;
     }
-    if (sel[k] === "(") depth++;
-    else if (sel[k] === ")") {
+    if (sel[k] === "(") {
+      depth++;
+    } else if (sel[k] === ")") {
       if (depth-- === 0) {
         const tail = sel.slice(k + 1);
         return [...parts, sel.slice(start, k)].map((s) => s.trim() + tail);
@@ -627,24 +738,32 @@ function unwrapStar(sel: string): string {
         k++;
         continue;
       }
-      if (sel[k] === "(") depth++;
-      else if (sel[k] === ")") {
+      if (sel[k] === "(") {
+        depth++;
+      } else if (sel[k] === ")") {
         if (--depth === 0) {
-          if (k === sel.length - 1) return unwrapStar(list ? `:is(${sel.slice(7, k)})` : sel.slice(7, k));
+          if (k === sel.length - 1) {
+            return unwrapStar(list ? `:is(${sel.slice(7, k)})` : sel.slice(7, k));
+          }
           break;
         }
-      } else if (sel[k] === "," && depth === 1) list = true;
+      } else if (sel[k] === "," && depth === 1) {
+        list = true;
+      }
     }
   }
-  if (!sel.startsWith(":is(")) return sel;
+  if (!sel.startsWith(":is(")) {
+    return sel;
+  }
   let depth = 0;
   for (let k = 3; k < sel.length; k++) {
     if (sel[k] === "\\") {
       k++;
       continue;
     }
-    if (sel[k] === "(") depth++;
-    else if (sel[k] === ")" && --depth === 0) {
+    if (sel[k] === "(") {
+      depth++;
+    } else if (sel[k] === ")" && --depth === 0) {
       const m = sel.slice(4, k).match(/^(.*?)(\s*>\s*\*|\s+\*)$/);
       return m ? m[1] + m[2] + sel.slice(k + 1) : sel;
     }
@@ -662,12 +781,17 @@ function removeClasses(seg: string): string {
       k++;
       continue;
     }
-    if (ch === "(") depth++;
-    else if (ch === ")") depth--;
+    if (ch === "(") {
+      depth++;
+    } else if (ch === ")") {
+      depth--;
+    }
     if (!depth && ch === ".") {
       k++;
-      while (k < seg.length && !/[\s.:>~+\[\]()]/.test(seg[k])) {
-        if (seg[k] === "\\") k++;
+      while (k < seg.length && !/[\s.:>~+[\]()]/.test(seg[k])) {
+        if (seg[k] === "\\") {
+          k++;
+        }
         k++;
       }
       k--;
@@ -690,16 +814,24 @@ function compoundAt(sel: string, i: number): { start: number; end: number; class
       k++;
       continue;
     }
-    if (sel[k] === "(") d++;
+    if (sel[k] === "(") {
+      d++;
+    }
     depthAt[k] = d;
-    if (sel[k] === ")") d--;
+    if (sel[k] === ")") {
+      d--;
+    }
   }
   const boundary = (k: number) => /[\s>+~]/.test(sel[k]) && depthAt[k] === 0 && !escaped[k];
   let start = i;
-  while (start > 0 && !boundary(start - 1)) start--;
+  while (start > 0 && !boundary(start - 1)) {
+    start--;
+  }
   let end = i;
-  while (end < sel.length && !boundary(end)) end++;
-  const classes = [...stripParens(sel.slice(start, end)).matchAll(/\.((?:\\.|[^\s.:>~+\[\]()])+)/g)].map((m) => unesc(m[1]));
+  while (end < sel.length && !boundary(end)) {
+    end++;
+  }
+  const classes = [...stripParens(sel.slice(start, end)).matchAll(/\.((?:\\.|[^\s.:>~+[\]()])+)/g)].map((m) => unesc(m[1]));
   return { start, end, classes };
 }
 const FAMILIES: Record<string, RegExp> = {
@@ -766,14 +898,27 @@ const childOf = (tail: string) => {
   const m = tail.match(/^\s*>\s*([a-zA-Z][\w-]*|\*)?((?:\[[^\]]*\]|:[a-z-]+(?:\((?:[^()]|\([^()]*\))*\))?)*)$/);
   return m ? { tag: m[1], state: m[2] } : null;
 };
-function emit(into: Emitted, setters: Setters, mod: string, element: string, classes: string[], ignore: Set<string>, report: { unresolved: Set<string>; dropped?: Set<string>; crossing?: Set<string>; inert?: Set<string> }, present: Set<string>, states?: StateMap, opts: EmitOptions = {}) {
+function emit(
+  into: Emitted,
+  setters: Setters,
+  mod: string,
+  element: string,
+  classes: string[],
+  ignore: Set<string>,
+  report: { unresolved: Set<string>; dropped?: Set<string>; crossing?: Set<string>; inert?: Set<string> },
+  present: Set<string>,
+  states?: StateMap,
+  opts: EmitOptions = {},
+) {
   const { tag, context = {}, marker, inherited, chain, mapped, fromAncestor, crossing, reach, groupOnAncestor, slotted = [], levels, ownSeg = true, above, groups, nodes } = opts;
   /** A base rule of the class on the node itself (no ancestor, no state, no tail, no condition): the node's own value for its properties. */
   const ownRule = (c: string, r: ReturnType<typeof resolve>[number]) =>
     !/@(media|supports|container)/.test(r.at) &&
     alternatives(unwrapStar(r.sel)).some((s) => {
       const at = classAt(s, tokenSel(c));
-      if (at < 0) return false;
+      if (at < 0) {
+        return false;
+      }
       const { start, end } = compoundAt(s, at);
       return end >= s.length && !s.slice(0, start).trim() && removeClasses(s.slice(start, end)).replace(/^[a-zA-Z][\w-]*/, "") === "";
     });
@@ -786,7 +931,9 @@ function emit(into: Emitted, setters: Setters, mod: string, element: string, cla
     .filter((c) => !ignore.has(c))
     .flatMap((c) => {
       const rs = resolve(c);
-      if (!rs.length && !/^(group\/|peer\/|tailwind)/.test(c)) report.unresolved.add(c);
+      if (!rs.length && !/^(group\/|peer\/|tailwind)/.test(c)) {
+        report.unresolved.add(c);
+      }
       // The class token at each of its occurrences (`.stripe .stripe`: the outer one is an ancestor's, the inner one this element's).
       return rs.flatMap((r) => alternatives(unwrapStar(r.sel)).flatMap((sel) => classPositions(sel, tokenSel(c)).map((i) => ({ rule: r, cls: c, sel, i }))));
     })
@@ -794,30 +941,48 @@ function emit(into: Emitted, setters: Setters, mod: string, element: string, cla
       // A compound rule (".a.b") applies only when every class of the compound is on the element; emit it once.
       // A class named only inside an argument (`:not(.x)`) belongs to another rule's element.
       const { classes: comp, start, end } = compoundAt(sel, i);
-      if (!comp.every((k) => present.has(k))) return false;
+      if (!comp.every((k) => present.has(k))) {
+        return false;
+      }
       // A context compound the element carries in full is its own: the rule continues to a descendant and is emitted there.
-      if (start > 0 && segments(sel.slice(0, start)).segs.some(({ seg }) => seg in context && classesIn(seg).length > 0 && classesIn(seg).every((k) => present.has(k)))) return false;
+      if (start > 0 && segments(sel.slice(0, start)).segs.some(({ seg }) => seg in context && classesIn(seg).length > 0 && classesIn(seg).every((k) => present.has(k)))) {
+        return false;
+      }
       // A tail that names a mapped child's class is that child's rule.
-      if (end < sel.length && mapped && classesIn(sel.slice(end)).some((k) => mapped.has(k))) return false;
+      if (end < sel.length && mapped && classesIn(sel.slice(end)).some((k) => mapped.has(k))) {
+        return false;
+      }
       // A type selector on the compound scopes the rule to elements of that tag.
       const type = sel.slice(start, end).match(/^[a-zA-Z][\w-]*/)?.[0];
-      if (type && tag && type.toLowerCase() !== tag) return false;
+      if (type && tag && type.toLowerCase() !== tag) {
+        return false;
+      }
       // An outer ancestor's rule is this element's only when its tail ends on a node of this tree; without a tail it is the ancestor's own box.
       if (reach) {
         const target = end < sel.length ? lastCompound(sel.slice(end)) : null;
-        if (!target || !reach.some((n) => nodeMatches(target, n))) return false;
+        if (!target || !reach.some((n) => nodeMatches(target, n))) {
+          return false;
+        }
       }
       // A class taken from an ancestor styles this element as the ancestor's child: the rule must end on that child, of this element's tag.
       if (fromAncestor?.(cls)) {
         const child = childOf(sel.slice(end));
-        if (!child || (child.tag && child.tag !== "*" && tag && child.tag !== tag)) return false;
+        if (!child || (child.tag && child.tag !== "*" && tag && child.tag !== tag)) {
+          return false;
+        }
       }
       // A node carrying the reference's theme class is a local theme scope: it takes the theme's token
       // block (the rules on the class alone); a rule for another class under that scope belongs to that class.
-      if (THEME_CLASSES.has(cls) && (start > 0 || end < sel.length)) return false;
+      if (THEME_CLASSES.has(cls) && (start > 0 || end < sel.length)) {
+        return false;
+      }
       // A context ancestor's descendant rule is the descendant's (or out of reach), unless it ends on slotted content, which only this side reaches; an extended class keeps its descendant rules only.
-      if (end < sel.length && sel.slice(start, end) in context && !endsOnSlotted(sel.slice(end))) return false;
-      if (inherited?.has(cls) && end >= sel.length) return false;
+      if (end < sel.length && sel.slice(start, end) in context && !endsOnSlotted(sel.slice(end))) {
+        return false;
+      }
+      if (inherited?.has(cls) && end >= sel.length) {
+        return false;
+      }
       // A tail that crosses into a composed child's shadow tree (see GeistMap.crossing) is that element's: its mapping emits the rule through `outer`.
       if (crossing && end < sel.length) {
         const target = lastCompound(sel.slice(end));
@@ -860,7 +1025,9 @@ function emit(into: Emitted, setters: Setters, mod: string, element: string, cla
           .replace(/html:not\(\.dark-theme\)|\.dark-theme|^\.dark(?=\s)/g, "")
           .split(/[\s>+~]+/)
           .filter(Boolean);
-        if (!ancestors.every((a) => a in context)) return false;
+        if (!ancestors.every((a) => a in context)) {
+          return false;
+        }
       }
       return true;
     })
@@ -881,30 +1048,42 @@ function emit(into: Emitted, setters: Setters, mod: string, element: string, cla
     // A class taken from an ancestor: the compound is the ancestor's, and the child it ends on is this element, with that child's own states.
     const child = fromAncestor?.(cls) ? childOf(sel.slice(end)) : null;
     const parsed = parseState(start > 0 ? sel.slice(0, start).trim() : "", child ? child.state : segState + sel.slice(end), context, chain, groupOnAncestor, levels, groups);
-    if (parsed.unmatched) report.dropped?.add(`${element.trim()} ← ${sel}`);
-    if (parsed.theme === "skip") continue;
+    if (parsed.unmatched) {
+      report.dropped?.add(`${element.trim()} ← ${sel}`);
+    }
+    if (parsed.theme === "skip") {
+      continue;
+    }
     const st = applyStates(parsed.rootState, parsed.state, states);
-    if (!st) continue;
+    if (!st) {
+      continue;
+    }
     // An ancestor's state is translated like the root's; a token that maps to null drops the rule. The ancestor's
     // segment is counted from the end of the element's selector: the element's own (when it has one), then one per level with a selector.
     const ancestors: AncestorState[] = [];
     for (const a of parsed.ancestors ?? []) {
       const t = applyStates(a.state, "", states);
-      if (t) ancestors.push({ depth: a.depth, seg: (ownSeg ? 1 : 0) + (levels ?? []).slice(0, a.depth).filter(Boolean).length, state: t.rootState });
+      if (t) {
+        ancestors.push({ depth: a.depth, seg: (ownSeg ? 1 : 0) + (levels ?? []).slice(0, a.depth).filter(Boolean).length, state: t.rootState });
+      }
     }
-    if (ancestors.length < (parsed.ancestors?.length ?? 0)) continue;
+    if (ancestors.length < (parsed.ancestors?.length ?? 0)) {
+      continue;
+    }
     const p = { theme: parsed.theme, ...st };
     const at = foldSupports(r.at.replace(/@layer [a-z]+\s*/g, "").trim(), r.decl);
     const key = entryKey(at, p.theme, mod, element, p.rootState, p.state, p.hostState, ancestors);
     const e = into.get(key) ?? into.set(key, { at, theme: p.theme, mod, element, rootState: p.rootState, state: p.state, hostState: p.hostState, ancestors, decls: [] }).get(key)!;
     e.decls.push({ text: r.decl.replace(/;$/, ""), order: ruleOrder.get(r) ?? 0 });
-    for (const [fam, re] of Object.entries(FAMILIES))
-      for (const m of r.decl.matchAll(/--tw-[a-z-]+(?=\s*:)/g))
+    for (const [fam, re] of Object.entries(FAMILIES)) {
+      for (const m of r.decl.matchAll(/--tw-[a-z-]+(?=\s*:)/g)) {
         if (re.test(m[0])) {
           const k = `${element || "root"}|${fam}`;
           const members = setters.get(k) ?? setters.set(k, new Map()).get(k)!;
           (members.get(m[0]) ?? members.set(m[0], new Set()).get(m[0])!).add(mod);
         }
+      }
+    }
   }
 }
 
@@ -939,26 +1118,40 @@ function assign(items: Labeled[], propMods: Record<string, Record<string, string
   const single: Group[] = [];
   for (const [prop, values] of Object.entries(propMods)) {
     const present = Object.keys(values).filter((v) => items.some((l) => l.props[prop] === v));
-    if (present.length < 2) continue;
+    if (present.length < 2) {
+      continue;
+    }
     for (let mask = 1; mask < (1 << present.length) - 1; mask++) {
       const admitted = present.filter((_, i) => mask & (1 << i));
       const excluded = Object.keys(values).filter((v) => !admitted.includes(v));
       let mod: string;
-      if (admitted.length === 1) mod = values[admitted[0]];
-      else if (excluded.every((v) => simple(values[v]))) mod = `:not(${excluded.map((v) => values[v]).join(",")})`;
-      else if (admitted.every((v) => simple(values[v]))) mod = `:is(${admitted.map((v) => values[v]).join(",")})`;
-      else continue;
-      if (!mod) continue;
+      if (admitted.length === 1) {
+        mod = values[admitted[0]];
+      } else if (excluded.every((v) => simple(values[v]))) {
+        mod = `:not(${excluded.map((v) => values[v]).join(",")})`;
+      } else if (admitted.every((v) => simple(values[v]))) {
+        mod = `:is(${admitted.map((v) => values[v]).join(",")})`;
+      } else {
+        continue;
+      }
+      if (!mod) {
+        continue;
+      }
       single.push({ mod, cons: { [prop]: admitted }, members: new Set(items.filter((l) => admitted.includes(l.props[prop]))) });
     }
   }
   const pairs: Group[] = [];
-  for (let a = 0; a < single.length; a++)
+  for (let a = 0; a < single.length; a++) {
     for (let b = a + 1; b < single.length; b++) {
-      if (Object.keys(single[a].cons)[0] === Object.keys(single[b].cons)[0]) continue;
+      if (Object.keys(single[a].cons)[0] === Object.keys(single[b].cons)[0]) {
+        continue;
+      }
       const members = new Set([...single[a].members].filter((l) => single[b].members.has(l)));
-      if (members.size) pairs.push({ mod: single[a].mod + single[b].mod, cons: { ...single[a].cons, ...single[b].cons }, members });
+      if (members.size) {
+        pairs.push({ mod: single[a].mod + single[b].mod, cons: { ...single[a].cons, ...single[b].cons }, members });
+      }
     }
+  }
   const subset = (g: Set<Labeled>, r: Set<Labeled>) => [...g].every((l) => r.has(l));
   // A group constrained on several props that admits only the default of one of them (P=V and
   // Q=default) is evidence that Q's other values displaced the class: the reference merges Q's
@@ -966,9 +1159,13 @@ function assign(items: Labeled[], propMods: Record<string, Record<string, string
   const learn = (cons: Cons) => {
     const constrained = Object.keys(cons).filter((p) => cons[p].length < Object.keys(propMods[p]).length);
     const nonDefault = constrained.filter((p) => !cons[p].includes(defaults[p]));
-    for (const q of constrained)
-      if (cons[q].length === 1 && cons[q][0] === defaults[q])
-        for (const p of nonDefault) (dominates.get(q) ?? dominates.set(q, new Set()).get(q)!).add(p);
+    for (const q of constrained) {
+      if (cons[q].length === 1 && cons[q][0] === defaults[q]) {
+        for (const p of nonDefault) {
+          (dominates.get(q) ?? dominates.set(q, new Set()).get(q)!).add(p);
+        }
+      }
+    }
   };
   const leftovers: string[] = [];
   for (const c of all) {
@@ -981,25 +1178,33 @@ function assign(items: Labeled[], propMods: Record<string, Record<string, string
     // value sets: `:not(.secondary):not(.unstyled)`, every non-secondary styled button): it is taken
     // over a union of narrower groups, each of which would also fire on a combination the reference
     // never renders (a secondary square button taking the square group's hover).
-    const exact = [...single, ...pairs]
-      .filter((g) => g.members.size === remaining.size && subset(g.members, remaining))
-      .sort((a, b) => rank(a.cons) - rank(b.cons) || Object.keys(a.cons).length - Object.keys(b.cons).length || a.mod.length - b.mod.length)[0];
+    const exact = [...single, ...pairs].filter((g) => g.members.size === remaining.size && subset(g.members, remaining)).sort((a, b) => rank(a.cons) - rank(b.cons) || Object.keys(a.cons).length - Object.keys(b.cons).length || a.mod.length - b.mod.length)[0];
     if (exact) {
       put(exact.mod, exact.cons, exact.members, c);
-      if (pairs.includes(exact)) learn(exact.cons);
+      if (pairs.includes(exact)) {
+        learn(exact.cons);
+      }
       continue;
     }
     // Widest group first (the simpler modifier on a tie), then pairs, until the class's nodes are covered.
     for (const pool of [single, pairs]) {
       const candidates = pool.filter((g) => subset(g.members, remaining)).sort((a, b) => b.members.size - a.members.size || rank(a.cons) - rank(b.cons) || a.mod.length - b.mod.length);
       for (const g of candidates) {
-        if (!subset(g.members, remaining)) continue;
+        if (!subset(g.members, remaining)) {
+          continue;
+        }
         put(g.mod, g.cons, g.members, c);
-        if (pool === pairs) learn(g.cons);
+        if (pool === pairs) {
+          learn(g.cons);
+        }
         remaining = new Set([...remaining].filter((l) => !g.members.has(l)));
-        if (!remaining.size) break;
+        if (!remaining.size) {
+          break;
+        }
       }
-      if (!remaining.size) break;
+      if (!remaining.size) {
+        break;
+      }
     }
     // Last resort: the tightest constraint that admits the remaining members (one value set per
     // prop), then widened prop by prop while the group stays within the class's carriers, so a
@@ -1015,24 +1220,37 @@ function assign(items: Labeled[], propMods: Record<string, Record<string, string
         for (const [prop, admitted] of Object.entries(cons)) {
           const all = Object.keys(propMods[prop]);
           const excluded = all.filter((v) => !admitted.includes(v));
-          if (!excluded.length) continue; // every mapped value admitted (an unmapped value, e.g. a tag alias, adds no constraint)
-          if (admitted.length === 1) mod += propMods[prop][admitted[0]];
-          else if (excluded.every((v) => simple(propMods[prop][v]))) mod += `:not(${excluded.map((v) => propMods[prop][v]).join(",")})`;
-          else if (admitted.every((v) => simple(propMods[prop][v]))) mod += `:is(${admitted.map((v) => propMods[prop][v]).join(",")})`;
-          else return null;
+          if (!excluded.length) {
+            continue;
+          } // every mapped value admitted (an unmapped value, e.g. a tag alias, adds no constraint)
+          if (admitted.length === 1) {
+            mod += propMods[prop][admitted[0]];
+          } else if (excluded.every((v) => simple(propMods[prop][v]))) {
+            mod += `:not(${excluded.map((v) => propMods[prop][v]).join(",")})`;
+          } else if (admitted.every((v) => simple(propMods[prop][v]))) {
+            mod += `:is(${admitted.map((v) => propMods[prop][v]).join(",")})`;
+          } else {
+            return null;
+          }
         }
         return mod;
       };
       const widen = (seed: Set<Labeled>) => {
         let cons = consOf(seed);
-        if (!subset(membersOf(cons), carriers)) return false;
+        if (!subset(membersOf(cons), carriers)) {
+          return false;
+        }
         // A preferred prop's constraint is the last to be dropped.
         for (const prop of Object.keys(cons).sort((a, b) => rank({ [b]: [] }) - rank({ [a]: [] }))) {
           const { [prop]: _, ...rest } = cons;
-          if (subset(membersOf(rest), carriers)) cons = rest;
+          if (subset(membersOf(rest), carriers)) {
+            cons = rest;
+          }
         }
         const mod = modOf(cons);
-        if (mod === null) return false;
+        if (mod === null) {
+          return false;
+        }
         const members = membersOf(cons);
         learn(cons);
         put(mod, cons, members, c);
@@ -1041,17 +1259,26 @@ function assign(items: Labeled[], propMods: Record<string, Record<string, string
       };
       if (!widen(remaining)) {
         // Unrelated clusters: one group per exact signature.
-        const sig = (l: Labeled) => Object.keys(propMods).map((prop) => l.props[prop]).join("|");
+        const sig = (l: Labeled) =>
+          Object.keys(propMods)
+            .map((prop) => l.props[prop])
+            .join("|");
         const bySig = new Map<string, Labeled[]>();
-        for (const l of remaining) (bySig.get(sig(l)) ?? bySig.set(sig(l), []).get(sig(l))!).push(l);
+        for (const l of remaining) {
+          (bySig.get(sig(l)) ?? bySig.set(sig(l), []).get(sig(l))!).push(l);
+        }
         for (const [s, members] of bySig) {
           const same = items.filter((l) => sig(l) === s);
-          if (same.length !== members.length || !widen(new Set(members))) leftovers.push(`${c} (${members.length} of ${same.length} with ${modOf(consOf(members)) || "no modifier"})`);
+          if (same.length !== members.length || !widen(new Set(members))) {
+            leftovers.push(`${c} (${members.length} of ${same.length} with ${modOf(consOf(members)) || "no modifier"})`);
+          }
         }
       }
     }
   }
-  if (leftovers.length) report.push(`${label}: no prop group covers: ${leftovers.join("  ")}`);
+  if (leftovers.length) {
+    report.push(`${label}: no prop group covers: ${leftovers.join("  ")}`);
+  }
   return out;
 }
 
@@ -1071,11 +1298,7 @@ const descendant = (s: string) => {
 const pseudoOf = (s: string) => s.match(/::?(before|after|marker|placeholder|backdrop|selection|first-line|first-letter|-webkit-[a-z-]+)(?![\w-])/)?.[1] ?? "";
 /** Two rules can match one element when they target the same element (the same pseudo-element, if any) and no prop constraint contradicts. */
 const coMatch = (a: Out, b: Out) =>
-  a.element === b.element &&
-  descendant(a.state) === descendant(b.state) &&
-  pseudoOf(a.state) === pseudoOf(b.state) &&
-  !(a.theme && b.theme && a.theme !== b.theme) &&
-  Object.entries(a.cons).every(([p, vs]) => !(p in b.cons) || vs.some((v) => b.cons[p].includes(v)));
+  a.element === b.element && descendant(a.state) === descendant(b.state) && pseudoOf(a.state) === pseudoOf(b.state) && !(a.theme && b.theme && a.theme !== b.theme) && Object.entries(a.cons).every(([p, vs]) => !(p in b.cons) || vs.some((v) => b.cons[p].includes(v)));
 
 /**
  * Orders the rules like the reference cascade. Every modifier is wrapped in :where(), so rules
@@ -1087,8 +1310,12 @@ const coMatch = (a: Out, b: Out) =>
 function order(outs: Out[], report: string[], label: string, defaults: Record<string, string>, dominates: Dominance, items: Labeled[], propMods: Record<string, Record<string, string>>): Out[] {
   // Evidence that says both "Q after P" and "P after Q" is no evidence: drop both directions and say so.
   const contradictory = [...dominates].flatMap(([q, ps]) => [...ps].filter((p) => dominates.get(p)?.has(q)).map((p) => [q, p] as [string, string]));
-  for (const [q, p] of contradictory) dominates.get(q)?.delete(p);
-  if (contradictory.length) report.push(`${label}: contradictory merge-order evidence dropped: ${[...new Set(contradictory.map(([q, p]) => [q, p].sort().join(" vs ")))].join(", ")}`);
+  for (const [q, p] of contradictory) {
+    dominates.get(q)?.delete(p);
+  }
+  if (contradictory.length) {
+    report.push(`${label}: contradictory merge-order evidence dropped: ${[...new Set(contradictory.map(([q, p]) => [q, p].sort().join(" vs ")))].join(", ")}`);
+  }
   const explode = (list: Out[]) => list.flatMap((o) => o.decls.map((d) => ({ ...o, decls: [d] })));
   // Where the reference renders a root that both rules match, its class list is the truth and the
   // sheet order stands. Where it renders none, the learned merge order decides: a is constrained
@@ -1103,23 +1330,35 @@ function order(outs: Out[], report: string[], label: string, defaults: Record<st
     const after = list.map(() => new Set<number>());
     const indeg = list.map(() => 0);
     const edge = (a: number, b: number) => {
-      if (after[a].has(b)) return;
+      if (after[a].has(b)) {
+        return;
+      }
       after[a].add(b);
       indeg[b]++;
     };
-    for (let i = 0; i < list.length; i++)
+    for (let i = 0; i < list.length; i++) {
       for (let j = i + 1; j < list.length; j++) {
-        if (!coMatch(list[i], list[j])) continue;
-        for (const da of list[i].decls)
+        if (!coMatch(list[i], list[j])) {
+          continue;
+        }
+        for (const da of list[i].decls) {
           for (const db of list[j].decls) {
-            if (da.important !== db.important || da.order === db.order || !overlaps(da.prop, db.prop)) continue;
+            if (da.important !== db.important || da.order === db.order || !overlaps(da.prop, db.prop)) {
+              continue;
+            }
             const iAfter = learned && displaces(list[i], list[j]);
             const jAfter = learned && displaces(list[j], list[i]);
-            if (iAfter !== jAfter) edge(jAfter ? i : j, jAfter ? j : i);
-            else if (cascadeKey(da) < cascadeKey(db)) edge(i, j);
-            else edge(j, i);
+            if (iAfter !== jAfter) {
+              edge(jAfter ? i : j, jAfter ? j : i);
+            } else if (cascadeKey(da) < cascadeKey(db)) {
+              edge(i, j);
+            } else {
+              edge(j, i);
+            }
           }
+        }
       }
+    }
     const minOrder = list.map((o) => Math.min(...o.decls.map((d) => d.order ?? 0)));
     const done: Out[] = [];
     const ready = list.map((_, i) => i).filter((i) => !indeg[i]);
@@ -1127,19 +1366,27 @@ function order(outs: Out[], report: string[], label: string, defaults: Record<st
       ready.sort((a, b) => minOrder[a] - minOrder[b] || list[a].idx - list[b].idx);
       const i = ready.shift()!;
       done.push(list[i]);
-      for (const j of after[i]) if (!--indeg[j]) ready.push(j);
+      for (const j of after[i]) {
+        if (!--indeg[j]) {
+          ready.push(j);
+        }
+      }
     }
     return done.length === list.length ? done : null;
   };
   const grouped = sort(outs);
-  if (grouped) return grouped;
+  if (grouped) {
+    return grouped;
+  }
   report.push(`${label}: the reference cascade needs interleaved rules; declarations were split to keep its order`);
   let split = sort(explode(outs));
   if (!split) {
     // The learned merge order is a heuristic for roots the reference never renders together; when
     // it contradicts the sheet order it is dropped for this element and the sheet order stands.
     split = sort(explode(outs), false);
-    if (split) report.push(`${label}: the learned merge order contradicts the sheet order and was dropped (${[...dominates].map(([q, ps]) => `${q} after ${[...ps].join(",")}`).join("; ")})`);
+    if (split) {
+      report.push(`${label}: the learned merge order contradicts the sheet order and was dropped (${[...dominates].map(([q, ps]) => `${q} after ${[...ps].join(",")}`).join("; ")})`);
+    }
   }
   if (!split) {
     // Name the rules that never became ready: they hold the cycle.
@@ -1151,8 +1398,11 @@ function order(outs: Out[], report: string[], label: string, defaults: Record<st
   const merged: Out[] = [];
   for (const o of split) {
     const last = merged[merged.length - 1];
-    if (last && last.at === o.at && last.theme === o.theme && last.mod === o.mod && last.element === o.element && last.rootState === o.rootState && last.state === o.state && last.hostState === o.hostState && ancestorsKey(last.ancestors) === ancestorsKey(o.ancestors)) last.decls.push(...o.decls);
-    else merged.push({ ...o, decls: [...o.decls] });
+    if (last && last.at === o.at && last.theme === o.theme && last.mod === o.mod && last.element === o.element && last.rootState === o.rootState && last.state === o.state && last.hostState === o.hostState && ancestorsKey(last.ancestors) === ancestorsKey(o.ancestors)) {
+      last.decls.push(...o.decls);
+    } else {
+      merged.push({ ...o, decls: [...o.decls] });
+    }
   }
   return merged;
 }
@@ -1166,7 +1416,7 @@ function pickChildren(cm: ChildMap, kids: SpecNode[]): SpecNode[] {
 /** Every class the roots of a mapping carry across its examples: that element's own class universe. */
 function rootClasses(map: GeistMap): Set<string> {
   const spec = JSON.parse(fs.readFileSync(path.join(specDir, `${map.page}.json`), "utf8")) as Spec;
-  const isRoot = typeof map.root === "string" ? (n: SpecNode) => map.root as string in n.attrs : map.root;
+  const isRoot = typeof map.root === "string" ? (n: SpecNode) => (map.root as string) in n.attrs : map.root;
   return new Set(spec.examples.flatMap((ex) => findRoots(ex.dom, isRoot, [], map.nested).flatMap((n) => [...classesOf(n)])));
 }
 /**
@@ -1174,14 +1424,18 @@ function rootClasses(map: GeistMap): Set<string> {
  * child maps reach by `ours` path (`["textarea"]`), picked level by level through the roots.
  */
 function ownClasses(name: string, map: GeistMap, ours: string[]): Set<string> {
-  if (!ours.length) return rootClasses(map);
+  if (!ours.length) {
+    return rootClasses(map);
+  }
   const spec = JSON.parse(fs.readFileSync(path.join(specDir, `${map.page}.json`), "utf8")) as Spec;
-  const isRoot = typeof map.root === "string" ? (n: SpecNode) => map.root as string in n.attrs : map.root;
+  const isRoot = typeof map.root === "string" ? (n: SpecNode) => (map.root as string) in n.attrs : map.root;
   let nodes = spec.examples.flatMap((ex) => findRoots(ex.dom, isRoot, [], map.nested));
   let maps = map.children ?? [];
   for (const seg of ours) {
     const cm = maps.find((c) => c.ours === seg);
-    if (!cm) throw new Error(`${name}: no child "${seg}" in the mapping (extends path ${ours.join("/")})`);
+    if (!cm) {
+      throw new Error(`${name}: no child "${seg}" in the mapping (extends path ${ours.join("/")})`);
+    }
     nodes = nodes.flatMap((n) => pickChildren(cm, n.children));
     maps = cm.children ?? [];
   }
@@ -1194,12 +1448,14 @@ function ownClasses(name: string, map: GeistMap, ours: string[]): Set<string> {
  */
 function ownBelow(name: string, map: GeistMap, ours: string[]): SpecNode[] {
   const spec = JSON.parse(fs.readFileSync(path.join(specDir, `${map.page}.json`), "utf8")) as Spec;
-  const isRoot = typeof map.root === "string" ? (n: SpecNode) => map.root as string in n.attrs : map.root;
+  const isRoot = typeof map.root === "string" ? (n: SpecNode) => (map.root as string) in n.attrs : map.root;
   let nodes = spec.examples.flatMap((ex) => findRoots(ex.dom, isRoot, [], map.nested));
   let maps = map.children ?? [];
   for (const seg of ours) {
     const cm = maps.find((c) => c.ours === seg);
-    if (!cm) throw new Error(`${name}: no child "${seg}" in the mapping (extends path ${ours.join("/")})`);
+    if (!cm) {
+      throw new Error(`${name}: no child "${seg}" in the mapping (extends path ${ours.join("/")})`);
+    }
     nodes = nodes.flatMap((n) => pickChildren(cm, n.children));
     maps = cm.children ?? [];
   }
@@ -1227,7 +1483,9 @@ function deepReach(c: string, reached: SpecNode[]): boolean {
     rs.every((r) => {
       const sel = unwrapStar(r.sel);
       const i = classAt(sel, `.${c.replace(/([^A-Za-z0-9_-])/g, "\\$1")}`);
-      if (i < 0) return false;
+      if (i < 0) {
+        return false;
+      }
       const tail = sel.slice(compoundAt(sel, i).end);
       const target = lastCompound(tail);
       return /^(?:\s+|\s*[+~]\s*)[a-zA-Z*]/.test(tail) && !(target && reached.some((n) => nodeMatches(target, n)));
@@ -1255,7 +1513,9 @@ function reachesOwn(c: string, own: SpecNode[]): boolean {
     rs.every((r) =>
       alternatives(unwrapStar(r.sel)).some((sel) => {
         const i = classAt(sel, tokenSel(c));
-        if (i < 0) return false;
+        if (i < 0) {
+          return false;
+        }
         const tail = sel.slice(compoundAt(sel, i).end);
         const target = lastCompound(tail);
         return /^(?:\s+|\s*[+~]\s*)[a-zA-Z*[.]/.test(tail) && !!target && own.some((n) => nodeMatches(target, n));
@@ -1285,24 +1545,36 @@ function laterOnRoot(own: Iterable<string>, composed: Iterable<string>): string[
   const stateful = (c: string, r: Ref) =>
     alternatives(unwrapStar(r.sel)).some((sel) => {
       const i = classAt(sel, tokenSel(c));
-      if (i < 0) return false;
+      if (i < 0) {
+        return false;
+      }
       const { start, end } = compoundAt(sel, i);
       return start > 0 || removeClasses(sel.slice(start, end)).replace(/^[a-zA-Z][\w-]*/, "") !== "";
     });
   // Normal declarations only: an important one of ours is beaten by no normal rule, and an important one of the composed element wins from its own tree (the inner context wins for important rules).
   const earliest = new Map<string, number>();
-  for (const c of own) for (const r of onBox(c)) for (const d of parseDecls(r.decl)) if (!d.important) earliest.set(d.prop, Math.min(keyOf(r), earliest.get(d.prop) ?? Number.POSITIVE_INFINITY));
-  if (!earliest.size) return [];
+  for (const c of own) {
+    for (const r of onBox(c)) {
+      for (const d of parseDecls(r.decl)) {
+        if (!d.important) {
+          earliest.set(d.prop, Math.min(keyOf(r), earliest.get(d.prop) ?? Number.POSITIVE_INFINITY));
+        }
+      }
+    }
+  }
+  if (!earliest.size) {
+    return [];
+  }
   return [...composed].filter((c) => onBox(c).some((r) => stateful(c, r) && parseDecls(r.decl).some((d) => !d.important && earliest.has(d.prop) && keyOf(r) > (earliest.get(d.prop) ?? 0))));
 }
 
 /** `parent` is the mapping this one `extends`: its roots' classes are the composed element's and are skipped, except those that reach only beyond its tree (see {@link deepReach}), which this element's own tree needs. */
-export function generate(name: string, map: GeistMap, parent?: GeistMap, extended: Record<string, GeistMap> = {}): { css: string; report: string[] } {
+export function generate(name: string, map: GeistMap, parent?: GeistMap, extended: Record<string, GeistMap> = {}): { css: string; report: string[]; properties: PropertyRegistration[] } {
   // The reference sheets load on demand, so read them before anything here touches twProperty.
   loadReference();
   const spec = JSON.parse(fs.readFileSync(path.join(specDir, `${map.page}.json`), "utf8")) as Spec;
   const tags = Array.isArray(map.component) ? map.component : [map.component];
-  const isRoot = typeof map.root === "string" ? (n: SpecNode) => map.root as string in n.attrs : map.root;
+  const isRoot = typeof map.root === "string" ? (n: SpecNode) => (map.root as string) in n.attrs : map.root;
   const labeled: Labeled[] = [];
   const outers: (SpecNode | undefined)[] = [];
   // Classes carried by the roots' ancestors in the spec (see EmitOptions.above).
@@ -1316,21 +1588,30 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
   );
   const declared: Record<string, string> = { ...implicit, ...map.defaults };
   for (const ex of spec.examples) {
-    if (map.skip?.includes(ex.heading)) continue;
+    if (map.skip?.includes(ex.heading)) {
+      continue;
+    }
     const all = jsxInstances(ex.code, tags, map.inherit);
     const branch = map.instances?.[ex.heading];
     const inst = branch === undefined ? all : [branch].flat().map((i) => all[i]);
     const found = findRootPaths(ex.dom, isRoot, [], [], map.nested);
     const roots = found.map((f) => f.node);
     const per = (typeof map.perInstance === "object" ? map.perInstance[ex.heading] : map.perInstance) ?? 1;
-    if (inst.length * per !== roots.length) report.push(`${ex.heading}: ${inst.length} <${tags.join("|")}> in code, ${roots.length} rendered roots; example skipped`);
-    else
+    if (inst.length * per !== roots.length) {
+      report.push(`${ex.heading}: ${inst.length} <${tags.join("|")}> in code, ${roots.length} rendered roots; example skipped`);
+    } else {
       for (let i = 0; i < roots.length; i++) {
         const own = { ...inst[Math.floor(i / per)] };
         // Raw JSX values become the values the props name (`*` is the catch-all); defaults fill in after.
-        for (const [prop, aliases] of Object.entries(map.values ?? {})) if (prop in own) own[prop] = aliases[own[prop]] ?? aliases["*"] ?? own[prop];
+        for (const [prop, aliases] of Object.entries(map.values ?? {})) {
+          if (prop in own) {
+            own[prop] = aliases[own[prop]] ?? aliases["*"] ?? own[prop];
+          }
+        }
         const props = { ...declared, ...own };
-        for (const [prop, fn] of Object.entries(map.derive ?? {})) props[prop] = fn(roots[i], props, found[i].ancestors);
+        for (const [prop, fn] of Object.entries(map.derive ?? {})) {
+          props[prop] = fn(roots[i], props, found[i].ancestors);
+        }
         // An ancestor's classes whose rules reach this root as the ancestor's child, of this root's tag (see GeistMap.fromAncestor), read as the root's own.
         const reaches = (c: string) =>
           resolve(c).some((r) =>
@@ -1344,13 +1625,26 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
         labeled.push({ props, node: taken.length ? { ...roots[i], unresolved: [...roots[i].unresolved, ...taken] } : roots[i] });
         // The nearest outer ancestor of this root (see GeistMap.outer), one entry per labeled root.
         outers.push(map.outer ? [...found[i].ancestors].reverse().find(map.outer) : undefined);
-        for (const a of found[i].ancestors) for (const c of classesOf(a)) aboveRoots.add(c);
+        for (const a of found[i].ancestors) {
+          for (const c of classesOf(a)) {
+            aboveRoots.add(c);
+          }
+        }
       }
+    }
   }
-  if (!labeled.length) throw new Error(`${name}: no labeled roots`);
+  if (!labeled.length) {
+    throw new Error(`${name}: no labeled roots`);
+  }
   // A rule that names the root by its marker attribute (`.system [data-grid]`) is the root's own: the marker joins its class universe.
   const marker = typeof map.root === "string" ? `[${map.root}]` : undefined;
-  if (marker && resolve(marker).length) for (const l of labeled) if (!l.node.styles.some((s) => s.cls === marker)) l.node.styles.push({ cls: marker, state: "", at: "", decl: "" });
+  if (marker && resolve(marker).length) {
+    for (const l of labeled) {
+      if (!l.node.styles.some((s) => s.cls === marker)) {
+        l.node.styles.push({ cls: marker, state: "", at: "", decl: "" });
+      }
+    }
+  }
   // The composed element's own root classes are skipped on the root alone: a child of this element that
   // carries one of them (`flex` on a button inside an input wrapper) styles itself with it.
   // A root that extends a mapped child of another element (`grid/acme-grid-cell`) is that child's box in ours: the
@@ -1361,7 +1655,9 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
   // button's root classes on a menu button (a tertiary look, a disabled fade) are its own too.
   // Only a whole-root `extends` continues the chain (`name/ours` names one child of the element).
   const lineage = (n: string, m: GeistMap | undefined): [string, GeistMap][] => {
-    if (!m) return [];
+    if (!m) {
+      return [];
+    }
     const ext = m.extends ?? "";
     const [next] = ext.split("/");
     return [[n, m], ...(next && !ext.includes("/") ? lineage(next, extended[next]) : [])];
@@ -1372,13 +1668,23 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
   // A slotted root (`ours` ending on `::slotted()`) is light DOM of ours: nothing here reaches into its tree, so the deep rules stay the composed element's own.
   const slottedRoot = /::slotted\(/.test(map.ours);
   // The nodes of this element's own tree below the roots: a composed class that reaches one of them is emitted here too (see `reachesOwn`).
-  const ownRoot = ownTree(map.children, labeled.map((l) => l.node));
+  const ownRoot = ownTree(
+    map.children,
+    labeled.map((l) => l.node),
+  );
   const ignore = new Set([...(map.ignore ?? []), ...chain.flatMap(([, m]) => [...rootClasses(m)]).filter((c) => slottedRoot || !(deepReach(c, reachedRoot) || reachesOwn(c, ownRoot)))]);
   // A root on a part of the composed element is styled from the outer tree: the composed chain's rules the reference orders after this element's own on a property are repeated here (see `laterOnRoot`).
   if (map.part && chain.length) {
-    const later = laterOnRoot(labeled.flatMap((l) => [...classesOf(l.node)]).filter((c) => !ignore.has(c)), ignore);
-    for (const c of later) ignore.delete(c);
-    if (later.length) report.push(`${name}: composed rules the reference orders after this element's own on one property, repeated here: ${later.join("  ")}`);
+    const later = laterOnRoot(
+      labeled.flatMap((l) => [...classesOf(l.node)]).filter((c) => !ignore.has(c)),
+      ignore,
+    );
+    for (const c of later) {
+      ignore.delete(c);
+    }
+    if (later.length) {
+      report.push(`${name}: composed rules the reference orders after this element's own on one property, repeated here: ${later.join("  ")}`);
+    }
   }
   // A composed root's host mirror (see GeistMap.host): the composed element's own module mirrors its
   // root's layout properties on its own host, one box in; this element's host, the parent's item, is a
@@ -1389,12 +1695,22 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
     const common = labeled.map((l) => classesOf(l.node)).reduce((a, b) => new Set([...a].filter((c) => b.has(c))));
     const mirrored = (d: Decl) => map.host!.mirror.some((m) => overlaps(d.prop, m));
     const base = (c: string) => resolve(c).filter((r) => !/@(media|supports|container)/.test(r.at) && alternatives(unwrapStar(r.sel)).includes(tokenSel(c)));
-    const rules = [...common].filter((c) => ignore.has(c)).flatMap(base).sort((a, b) => (ruleOrder.get(a) ?? 0) - (ruleOrder.get(b) ?? 0));
-    composedMirror.push(...simplify(rules.flatMap((r) => parseDecls(r.decl).filter(mirrored)), []));
+    const rules = [...common]
+      .filter((c) => ignore.has(c))
+      .flatMap(base)
+      .sort((a, b) => (ruleOrder.get(a) ?? 0) - (ruleOrder.get(b) ?? 0));
+    composedMirror.push(
+      ...simplify(
+        rules.flatMap((r) => parseDecls(r.decl).filter(mirrored)),
+        [],
+      ),
+    );
     const modifiers = [...new Set(labeled.flatMap((l) => [...classesOf(l.node)]))].filter((c) => !common.has(c) && ignore.has(c) && base(c).some((r) => parseDecls(r.decl).some(mirrored)));
-    if (modifiers.length) report.push(`${name}: composed host mirror takes the base alone; composed modifier classes on a mirrored property left out: ${modifiers.join("  ")}`);
+    if (modifiers.length) {
+      report.push(`${name}: composed host mirror takes the base alone; composed modifier classes on a mirrored property left out: ${modifiers.join("  ")}`);
+    }
   }
-  const childIgnore = new Set(map.ignore ?? []);
+  const childIgnore = new Set(map.ignore);
   // The reference compounds of slotted content, for a context ancestor's rule that ends on one (see EmitOptions.slotted).
   const slottedKeys = Array.isArray(map.slotted) ? map.slotted : Object.keys(map.slotted ?? {});
   const unresolved = { unresolved: new Set<string>(), dropped: new Set<string>(), crossing: new Set<string>(), inert: new Set<string>() };
@@ -1403,7 +1719,9 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
 
   // Every prop value maps to a modifier; a default value maps to the negation of the prop's other modifiers.
   const propMods: Record<string, Record<string, string>> = {};
-  for (const [prop, values] of Object.entries(map.props ?? {})) propMods[prop] = { ...values };
+  for (const [prop, values] of Object.entries(map.props ?? {})) {
+    propMods[prop] = { ...values };
+  }
   const negation = (prop: string, def: string) => {
     const others = Object.entries(propMods[prop] ?? {})
       .filter(([v, m]) => v !== def && m)
@@ -1412,10 +1730,14 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
   };
   for (const [prop, def] of Object.entries(declared)) {
     propMods[prop] ??= {};
-    if (!(def in propMods[prop])) propMods[prop][def] = negation(prop, def);
+    if (!(def in propMods[prop])) {
+      propMods[prop][def] = negation(prop, def);
+    }
   }
   propMods.$tag ??= {};
-  if (!(tags[0] in propMods.$tag)) propMods.$tag[tags[0]] = negation("$tag", tags[0]);
+  if (!(tags[0] in propMods.$tag)) {
+    propMods.$tag[tags[0]] = negation("$tag", tags[0]);
+  }
 
   const defaults: Record<string, string> = { ...declared, $tag: tags[0] };
   const dominates: Dominance = new Map();
@@ -1426,19 +1748,41 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
   const collectMapped = (cms: ChildMap[] | undefined, parents: SpecNode[]) => {
     for (const cm of cms ?? []) {
       const picked = parents.flatMap((p) => pickChildren(cm, p.children));
-      if (cm.ours) for (const n of picked) for (const c of classesOf(n)) mapped.add(c);
+      if (cm.ours) {
+        for (const n of picked) {
+          for (const c of classesOf(n)) {
+            mapped.add(c);
+          }
+        }
+      }
       collectMapped(cm.children, picked);
     }
   };
-  collectMapped(map.children, labeled.map((l) => l.node));
+  collectMapped(
+    map.children,
+    labeled.map((l) => l.node),
+  );
   for (const [mod, a] of rootAssign) {
     cons.set(mod, a.cons);
-    emit(into, setters, mod, "", a.classes, ignore, unresolved, carriedByAll(a.members), map.states, { tag: [...a.members][0]?.node.tag, context: map.context, marker, inherited, mapped, fromAncestor: map.fromAncestor, crossing: map.crossing, slotted: slottedKeys, above: aboveRoots, nodes: [...a.members].map((l) => l.node) });
+    emit(into, setters, mod, "", a.classes, ignore, unresolved, carriedByAll(a.members), map.states, {
+      tag: [...a.members][0]?.node.tag,
+      context: map.context,
+      marker,
+      inherited,
+      mapped,
+      fromAncestor: map.fromAncestor,
+      crossing: map.crossing,
+      slotted: slottedKeys,
+      above: aboveRoots,
+      nodes: [...a.members].map((l) => l.node),
+    });
   }
   // The outer ancestor's rules into this tree (see GeistMap.outer): the classes every outer ancestor carries, emitted on the root like its own base.
   if (map.outer) {
     const missing = outers.filter((o) => !o).length;
-    if (missing) report.push(`${name}: ${missing} root(s) have no outer ancestor`);
+    if (missing) {
+      report.push(`${name}: ${missing} root(s) have no outer ancestor`);
+    }
     const sets = outers.filter((o): o is SpecNode => !!o).map(classesOf);
     if (sets.length) {
       const common = new Set([...sets[0]].filter((c) => sets.every((s) => s.has(c))));
@@ -1450,7 +1794,9 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
           }),
         );
       const uncommon = [...new Set(sets.flatMap((s) => [...s]))].filter((c) => !common.has(c) && tailed(c));
-      if (uncommon.length) report.push(`${name}: outer classes on some outer ancestors only, left out: ${uncommon.join("  ")}`);
+      if (uncommon.length) {
+        report.push(`${name}: outer classes on some outer ancestors only, left out: ${uncommon.join("  ")}`);
+      }
       emit(into, setters, "", "", [...common], ignore, unresolved, common, map.states, { tag: outers.find(Boolean)?.tag, context: map.context, reach: labeled.flatMap((l) => subtree(l.node)) });
     }
   }
@@ -1466,32 +1812,57 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
     const seen = new Set<SpecNode>();
     for (const cm of childMaps ?? []) {
       const picked = parents.flatMap((p) => pickChildren(cm, p.node.children).map((node) => ({ props: p.props, node, path: [...(p.path ?? []), p.node] })));
-      for (const p of picked) seen.add(p.node);
+      for (const p of picked) {
+        seen.add(p.node);
+      }
       // A part with no selector of ours renders on the composed ancestor's tag (see ChildMap.part): its tail is the parent's.
       const tail = cm.ours ? `${parentTail} ${cm.ours}` : parentTail;
       const element = cm.part ? `${tail}::part(${cm.part})` : tail;
-      if (cm.ours || cm.part) nodesOf.set(element, picked.map((p) => p.node));
-      if (cm.ours) (childrenOf.get(parentTail) ?? childrenOf.set(parentTail, []).get(parentTail)!).push({ ours: cm.ours, part: cm.part, tail, nodes: picked.map((p) => p.node), parents: parents.map((p) => p.node) });
+      if (cm.ours || cm.part) {
+        nodesOf.set(
+          element,
+          picked.map((p) => p.node),
+        );
+      }
+      if (cm.ours) {
+        (childrenOf.get(parentTail) ?? childrenOf.set(parentTail, []).get(parentTail)!).push({ ours: cm.ours, part: cm.part, tail, nodes: picked.map((p) => p.node), parents: parents.map((p) => p.node) });
+      }
       if (!picked.length) {
         report.push(`${map.ours}${element}: no reference child matched`);
         continue;
       }
       // A child with no selector of ours (and no part) is a level of a composed element: nothing is emitted for it, its children map on the parent's tail.
       if (!cm.ours && !cm.part) {
-        if (!cm.leaf) walkChildren(cm.children, picked, parentTail, cm.states ?? states, [false, ...levels]);
+        if (!cm.leaf) {
+          walkChildren(cm.children, picked, parentTail, cm.states ?? states, [false, ...levels]);
+        }
         continue;
       }
       const [extName, ...extPath] = cm.extends?.split("/") ?? [];
-      if (cm.extends && !extended[extName]) throw new Error(`${name}: child ${cm.ours} extends an unknown mapping ${extName}`);
+      if (cm.extends && !extended[extName]) {
+        throw new Error(`${name}: child ${cm.ours} extends an unknown mapping ${extName}`);
+      }
       // A whole-root `extends` takes the composed element's chain (see `lineage`); `name/ours` names one child of it.
       const childChain = cm.extends ? (extPath.length ? [[extName, extended[extName]] as [string, GeistMap]] : lineage(extName, extended[extName])) : [];
       const own = cm.extends ? new Set(childChain.flatMap(([n, m]) => [...ownClasses(n, m, extPath)])) : null;
       // The nodes the composed element's own map reaches below this child: a descendant rule ending on one is that module's own.
       const reached = childChain.flatMap(([n, m]) => ownBelow(n, m, extPath));
       // A composed class that reaches a node of this element's own tree under the child (see `reachesOwn`), or one the reference orders after this element's own on a part (see `laterOnRoot`), is emitted here too.
-      const ownChild = ownTree(cm.children, picked.map((p) => p.node));
-      const later = new Set(own && cm.part ? laterOnRoot(picked.flatMap((p) => [...classesOf(p.node)]).filter((c) => !own.has(c)), own) : []);
-      if (later.size) report.push(`${name}: composed rules the reference orders after this element's own on one property, repeated on ${element}: ${[...later].join("  ")}`);
+      const ownChild = ownTree(
+        cm.children,
+        picked.map((p) => p.node),
+      );
+      const later = new Set(
+        own && cm.part
+          ? laterOnRoot(
+              picked.flatMap((p) => [...classesOf(p.node)]).filter((c) => !own.has(c)),
+              own,
+            )
+          : [],
+      );
+      if (later.size) {
+        report.push(`${name}: composed rules the reference orders after this element's own on one property, repeated on ${element}: ${[...later].join("  ")}`);
+      }
       const deepOnly = (c: string) => deepReach(c, reached) || reachesOwn(c, ownChild) || later.has(c);
       // A composed child's own classes (those its module emits, its variants among them) need no prop group of this element:
       // they are left out of the assignment, so a group of mixed variants (a default and a secondary button in one footer) reports nothing.
@@ -1505,19 +1876,65 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
         cons.set(mod, a.cons);
         const chain = chainOf(a.members);
         const groups = chain.map((_, i) => new Set([...a.members].flatMap((l) => [...classesOf([...(l.path ?? [])].reverse()[i])].filter((c) => /^group(\/|$)/.test(c)))));
-        emit(into, setters, mod, element, a.classes.filter((c) => !own?.has(c) || deepOnly(c)), childIgnore, unresolved, carriedByAll(a.members), cm.states ?? states, { tag: [...a.members][0]?.node.tag, context: map.context, chain, mapped, crossing: map.crossing, groupOnAncestor: map.groupOnAncestor, slotted: slottedKeys, levels, ownSeg: !!cm.ours, above: new Set([...aboveRoots, ...chain.flatMap((s) => [...s])]), groups, nodes: [...a.members].map((l) => l.node) });
+        emit(
+          into,
+          setters,
+          mod,
+          element,
+          a.classes.filter((c) => !own?.has(c) || deepOnly(c)),
+          childIgnore,
+          unresolved,
+          carriedByAll(a.members),
+          cm.states ?? states,
+          {
+            tag: [...a.members][0]?.node.tag,
+            context: map.context,
+            chain,
+            mapped,
+            crossing: map.crossing,
+            groupOnAncestor: map.groupOnAncestor,
+            slotted: slottedKeys,
+            levels,
+            ownSeg: !!cm.ours,
+            above: new Set([...aboveRoots, ...chain.flatMap((s) => [...s])]),
+            groups,
+            nodes: [...a.members].map((l) => l.node),
+          },
+        );
       }
-      if (!cm.leaf) walkChildren(cm.children, picked, tail, cm.states ?? states, [!!cm.ours, ...levels]);
+      if (!cm.leaf) {
+        walkChildren(cm.children, picked, tail, cm.states ?? states, [!!cm.ours, ...levels]);
+      }
     }
-    if (parent && !parentTail) return; // a composed root's children belong to the element it extends
-    for (const p of parents) for (const k of p.node.children) if (!seen.has(k) && k.styles.length) report.push(`${map.ours}${parentTail}: unmapped reference child <${k.tag}${k.text ? ` "${k.text}"` : ""}> with ${k.styles.length} rules`);
+    if (parent && !parentTail) {
+      return;
+    } // a composed root's children belong to the element it extends
+    for (const p of parents) {
+      for (const k of p.node.children) {
+        if (!seen.has(k) && k.styles.length) {
+          report.push(`${map.ours}${parentTail}: unmapped reference child <${k.tag}${k.text ? ` "${k.text}"` : ""}> with ${k.styles.length} rules`);
+        }
+      }
+    }
   };
   walkChildren(map.children, labeled, "", map.states);
-  if (unresolved.unresolved.size) report.push(`classes with no rule in the reference CSS: ${[...unresolved.unresolved].join("  ")}`);
-  if (unresolved.dropped.size) report.push(`descendant rules dropped, an ancestor state off the root (name the ancestor in \`context\`): ${[...unresolved.dropped].join("  ")}`);
-  if (unresolved.crossing.size) report.push(`rules crossing into a composed child's tree left out (its mapping emits them through \`outer\`): ${[...unresolved.crossing].join("  ")}`);
-  if (unresolved.inert.size) report.push(`rules that match no element in the reference left out (an empty :is(), a variant its compiler resolved to no selector; a group variant on the group element itself, which needs an outer group; a zero-weight child rule every child's own utilities outrank): ${[...unresolved.inert].join("  ")}`);
-  for (const [q, ps] of dominates) report.push(`cascade: ${q} rules follow ${[...ps].join(", ")} rules (the reference merges ${q}'s classes last)`);
+  if (unresolved.unresolved.size) {
+    report.push(`classes with no rule in the reference CSS: ${[...unresolved.unresolved].join("  ")}`);
+  }
+  if (unresolved.dropped.size) {
+    report.push(`descendant rules dropped, an ancestor state off the root (name the ancestor in \`context\`): ${[...unresolved.dropped].join("  ")}`);
+  }
+  if (unresolved.crossing.size) {
+    report.push(`rules crossing into a composed child's tree left out (its mapping emits them through \`outer\`): ${[...unresolved.crossing].join("  ")}`);
+  }
+  if (unresolved.inert.size) {
+    report.push(
+      `rules that match no element in the reference left out (an empty :is(), a variant its compiler resolved to no selector; a group variant on the group element itself, which needs an outer group; a zero-weight child rule every child's own utilities outrank): ${[...unresolved.inert].join("  ")}`,
+    );
+  }
+  for (const [q, ps] of dominates) {
+    report.push(`cascade: ${q} rules follow ${[...ps].join(", ")} rules (the reference merges ${q}'s classes last)`);
+  }
   // A composite property (box-shadow, transform, filter) is written out evaluated. When different
   // groups set different layers of one composite, the reference composes them at runtime through
   // its variables: that element keeps the family's variables, its rules set them, and the module
@@ -1526,13 +1943,19 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
   const compatible = (a: string, b: string) => Object.entries(cons.get(a) ?? {}).every(([p, vs]) => !(p in (cons.get(b) ?? {})) || vs.some((v) => cons.get(b)![p].includes(v)));
   const kept = new Map<string, Set<string>>(); // element -> variables kept
   for (const [k, members] of setters) {
-    if (members.size < 2) continue;
+    if (members.size < 2) {
+      continue;
+    }
     const mods = [...new Set([...members.values()].flatMap((s) => [...s]))];
-    if (!mods.some((a, i) => mods.slice(i + 1).some((b) => compatible(a, b)))) continue;
+    if (!mods.some((a, i) => mods.slice(i + 1).some((b) => compatible(a, b)))) {
+      continue;
+    }
     const [element, fam] = k.split("|");
     const names = Object.keys(twProperty).filter((n) => FAMILIES[fam].test(n));
     const set = kept.get(element) ?? kept.set(element, new Set()).get(element)!;
-    for (const n of names) set.add(n);
+    for (const n of names) {
+      set.add(n);
+    }
     report.push(`${element} ${fam}: layers set by different groups, kept as variables (${[...members].map(([m, s]) => `${m}: ${[...s].map((x) => x || "base").join(" ")}`).join("; ")})`);
   }
   // A variable that a shipped keyframes body reads (`--tw-enter-opacity` in `enter`, the fade of an
@@ -1541,14 +1964,29 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
   // with the reference's defaults.
   for (const e of into.values()) {
     const read = new Set<string>();
-    for (const d of e.decls)
-      for (const p of parseDecls(d.text))
-        if (p.prop === "animation" || p.prop === "animation-name")
-          for (const part of p.value.split(/,(?![^(]*\))/)) for (const token of part.trim().split(/\s+/)) for (const m of (keyframesOf(token) ?? "").matchAll(/var\((--tw-[\w-]+)/g)) if (twProperty[m[1]]) read.add(m[1]);
-    if (!read.size) continue;
+    for (const d of e.decls) {
+      for (const p of parseDecls(d.text)) {
+        if (p.prop === "animation" || p.prop === "animation-name") {
+          for (const part of p.value.split(/,(?![^(]*\))/)) {
+            for (const token of part.trim().split(/\s+/)) {
+              for (const m of (keyframesOf(token) ?? "").matchAll(/var\((--tw-[\w-]+)/g)) {
+                if (twProperty[m[1]]) {
+                  read.add(m[1]);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    if (!read.size) {
+      continue;
+    }
     const element = e.element || "root";
     const set = kept.get(element) ?? kept.set(element, new Set()).get(element)!;
-    for (const v of read) set.add(v);
+    for (const v of read) {
+      set.add(v);
+    }
   }
   // A layer the reference writes at runtime, in an inline style on the element (a ring colored per
   // variant), composes with the rules at runtime the same way: where a rule of the element sets the
@@ -1557,9 +1995,13 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
     const inline = nodes.flatMap((n) => [...(n.attrs.style ?? "").matchAll(/--tw-[a-z-]+(?=\s*:)/g)].map((m) => m[0]));
     for (const [fam, re] of Object.entries(FAMILIES)) {
       const vars = [...new Set(inline.filter((v) => re.test(v)))];
-      if (!vars.length || !setters.has(`${element}|${fam}`)) continue;
+      if (!vars.length || !setters.has(`${element}|${fam}`)) {
+        continue;
+      }
       const set = kept.get(element) ?? kept.set(element, new Set()).get(element)!;
-      for (const n of Object.keys(twProperty).filter((n) => re.test(n))) set.add(n);
+      for (const n of Object.keys(twProperty).filter((n) => re.test(n))) {
+        set.add(n);
+      }
       report.push(`${element} ${fam}: set at runtime by an inline style (${vars.join(" ")}), kept as variables`);
     }
   }
@@ -1585,13 +2027,18 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
     const setsVars = new Set(own.filter((d) => d.prop.startsWith("--tw-")).map((d) => d.prop));
     if (setsVars.size) {
       const env = Object.fromEntries(inherited.filter((d) => d.prop.startsWith("--tw-")).map((d) => [d.prop, d.value]));
-      const readsVar = (value: string, seen = new Set<string>()): boolean =>
-        [...value.matchAll(/var\((--tw-[\w-]+)/g)].some((m) => setsVars.has(m[1]) || (!seen.has(m[1]) && seen.add(m[1]) && readsVar(env[m[1]] ?? "", seen)));
+      const readsVar = (value: string, seen = new Set<string>()): boolean => [...value.matchAll(/var\((--tw-[\w-]+)/g)].some((m) => setsVars.has(m[1]) || (!seen.has(m[1]) && seen.add(m[1]) && readsVar(env[m[1]] ?? "", seen)));
       const at = Math.max(...own.filter((d) => setsVars.has(d.prop)).map((d) => d.order ?? 0));
-      for (const d of inherited) if (!d.prop.startsWith("--") && !own.some((o) => o.prop === d.prop) && readsVar(d.value)) own.push({ ...d, order: at });
+      for (const d of inherited) {
+        if (!d.prop.startsWith("--") && !own.some((o) => o.prop === d.prop) && readsVar(d.value)) {
+          own.push({ ...d, order: at });
+        }
+      }
     }
     const simple = simplify(own, inherited, kept.get(e.element || "root"));
-    if (simple.length) outs.push({ ...e, decls: simple, idx: idx++, cons: cons.get(e.mod) ?? {} });
+    if (simple.length) {
+      outs.push({ ...e, decls: simple, idx: idx++, cons: cons.get(e.mod) ?? {} });
+    }
   }
   // The host's own states prefix a rule: the theme, and a state moved onto the host (a position among its siblings).
   const prefix = (t: Theme, hostState = "") => {
@@ -1610,7 +2057,9 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
   const slottedChildren = new Set<string>();
   const collectSlotted = (cms?: ChildMap[]) => {
     for (const cm of cms ?? []) {
-      if (cm.slotted) slottedChildren.add(cm.ours);
+      if (cm.slotted) {
+        slottedChildren.add(cm.ours);
+      }
       collectSlotted(cm.children);
     }
   };
@@ -1630,7 +2079,9 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
     }
     let state = o.state;
     // A root mapped onto a part (`part` in the map) is that part's segment itself: its own rules take the part here, so a state or a descendant lands the way a child part's does below.
-    if (map.part && !o.element) element = `::part(${map.part})`;
+    if (map.part && !o.element) {
+      element = `::part(${map.part})`;
+    }
     // An attribute state on a part lands on the part's host (no attribute selector may follow `::part()`); the element keeps the host's state attributes in step with the part's.
     // Read first, so a descendant or a child after the state (`[data-hover=true] [data-suffix]`, a rule keyed on the host's state into this element's own tree) is judged on what follows it.
     const hostAttrs = /::part\([^)]*\)$/.test(element) ? state.match(/^(\[[^\]]+\])+/)?.[0] : undefined;
@@ -1646,7 +2097,7 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
       const { segs, tail: end } = segments(t);
       let key = parentKey;
       let hits = 0;
-      const out = segs.map(({ comb, seg }) => {
+      const out = segs.map(({ comb, seg }, index) => {
         const type = seg.match(/^(?:[a-zA-Z][\w-]*|\*)/)?.[0];
         // Only a child ours composes (a part, or a custom element of ours) replaces the reference's tag; a child that keeps its tag (`input`, `svg`) needs no rewrite.
         // Every node the compound reaches under the rule's own parents (children for `>`, descendants otherwise) must be the mapped child's:
@@ -1655,10 +2106,8 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
         const found =
           key === undefined || !type || classesIn(seg).length
             ? []
-            : (childrenOf.get(key) ?? []).filter(
-                (k) => (k.part || /^[a-zA-Z][\w]*-[\w-]*$/.test(k.ours)) && k.nodes.some((n) => nodeMatches(seg, n)) && k.parents.every((p) => under(p).every((n) => !nodeMatches(seg, n) || k.nodes.includes(n))),
-              );
-        if (found.length !== 1) {
+            : (childrenOf.get(key) ?? []).filter((k) => (k.part || /^[a-zA-Z][\w]*-[\w-]*$/.test(k.ours)) && k.nodes.some((n) => nodeMatches(seg, n)) && k.parents.every((p) => under(p).every((n) => !nodeMatches(seg, n) || k.nodes.includes(n))));
+        if (found.length !== 1 || !type) {
           key = undefined as unknown as string;
           return { comb, seg };
         }
@@ -1666,24 +2115,30 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
         key = found[0].tail;
         const own = seg.slice(type.length);
         const sel = slottedChildren.has(found[0].ours) ? found[0].ours : `:where(${found[0].ours})`;
-        return { comb, seg: found[0].part ? `${sel}${own}::part(${found[0].part})` : `${sel}${own}` };
+        return { comb, seg: found[0].part && index === segs.length - 1 ? `${sel}${own}::part(${found[0].part})` : `${sel}${own}` };
       });
       return hits ? out.map(({ comb, seg }) => `${comb === " " ? " " : ` ${comb} `}${seg}`).join("") + end : t;
     };
-    if (!map.part || o.element) state = retail(o.element.replace(/::part\([^)]*\)$/, ""), state);
+    if (!map.part || o.element) {
+      state = retail(o.element.replace(/::part\([^)]*\)$/, ""), state);
+    }
     // A child of a part (`[&>span]` on a composed button: its label) is the composed element's own shadow child, which its own module reaches and this one cannot: left out and reported.
     if (/::part\([^)]*\)$/.test(element) && /^\s*>/.test(state)) {
       report.push(`${name}: rule on a part's own child left out (the composed element's module carries the child's rules): ${map.ours}${element}${state} {${serialize(o.decls)}}`);
       return { plain: undefined };
     }
     // A descendant or a sibling of a part sits in this element's own tree, slotted into the part's host or beside it: the rule renders on the host tag, not on the part.
-    if (/::part\([^)]*\)$/.test(element) && /^[\s+~]/.test(state)) element = element.replace(/::part\([^)]*\)$/, "");
+    if (/::part\([^)]*\)$/.test(element) && /^[\s+~]/.test(state)) {
+      element = element.replace(/::part\([^)]*\)$/, "");
+    }
     // A root that is our host itself (`ours: ":host"`) takes its theme, modifier and state inside `:host()`.
     const host = map.ours === ":host";
     // A root that is a pseudo-element of our element (`pseudo: "::backdrop"`) takes it after its modifier and state.
     let rest = o.element || !map.pseudo ? `${host ? "" : o.rootState}${element}${state}` : `${o.rootState}${state}${map.pseudo}`;
     // A reference class named in a descendant tail (a CSS-module hash on a line number) becomes our class on that descendant.
-    for (const [theirs, ours] of Object.entries(map.classes ?? {})) rest = rest.replaceAll(theirs.startsWith("[") ? theirs : `.${theirs}`, `.${ours}`);
+    for (const [theirs, ours] of Object.entries(map.classes ?? {})) {
+      rest = rest.replaceAll(theirs.startsWith("[") ? theirs : `.${theirs}`, `.${ours}`);
+    }
     // An unquoted attribute value with escapes (`[style*=border-right\:none]`) is written quoted, the same selector.
     rest = rest.replace(/\[([\w-]+)([*^$|~]?=)((?:\\.|[^\]"'])*\\(?:\\.|[^\]"'])*)\]/g, (_, n, op, v) => `[${n}${op}"${unesc(v)}"]`);
     const mod = o.mod ? `:where(${o.mod})` : "";
@@ -1724,17 +2179,23 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
         return onSlot(str, offset) ? `::slotted(${ours}${compound})` : `${lead}slot${pos}::slotted(${ours}${compound})`;
       });
       fallback = fallback.replace(re, (_, lead, compound, offset: number, str: string) => (onSlot(str, offset) ? `${lead}${ours}${compound}` : `${lead}slot${pos} > ${ours}${compound}`));
-      if (pos) plain = plain.replace(re, (_, lead, compound) => `${lead}${pos}:where(:not(slot))${compound}`);
+      if (pos) {
+        plain = plain.replace(re, (_, lead, compound) => `${lead}${pos}:where(:not(slot))${compound}`);
+      }
     }
     // `::slotted()` takes a compound selector: a `:has()` on the slotted child parses in no browser, so that rule is inert.
-    if (/::slotted\([^)]*:has\(/.test(slotted)) report.push(`${name}: inert rule, ::slotted() cannot carry :has(): ${slotted}`);
+    if (/::slotted\([^)]*:has\(/.test(slotted)) {
+      report.push(`${name}: inert rule, ::slotted() cannot carry :has(): ${slotted}`);
+    }
     // Nothing follows `::slotted()`: a rule into the slotted node's own tree (`.cell > div`) belongs to that element's mapping and is left out here.
     if (/::slotted\((?:[^()]|\([^()]*\))*\)\s*(?:[>+~]|\s\S)/.test(slotted)) {
       report.push(`${name}: rule into a slotted element's tree left out (its own mapping emits it): ${head}${slotted}`);
       return { plain: undefined };
     }
     // `plain` is the selector of a shadow child of ours; `slotted` reaches slotted content and the slot's fallback.
-    if (slotted === rest) return { plain: head + rest };
+    if (slotted === rest) {
+      return { plain: head + rest };
+    }
     return { plain: plain !== rest ? head + plain : undefined, slotted: `${head}${slotted},\n${head}${fallback}`, pageTag };
   };
   // Slotted content also matches the page's own element rules (the global reset's `a`, `code`),
@@ -1746,10 +2207,12 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
   const lines: string[] = [];
   // The kept variables are registered as the reference registers them, document-wide with their
   // defaults: an `@property` rule in a shadow tree's sheet registers nothing, so the module
-  // registers them at runtime (`registerProperties` in src/base.ts) from this list.
+  // registers them when the component uses its styles, from this list.
   const properties = [...new Set([...kept.values()].flatMap((s) => [...s]))].map((n) => {
     const m = twProperty[n].match(/syntax:\s*"([^"]*)";\s*inherits:\s*(true|false)(?:;\s*initial-value:\s*([^;}]*))?/);
-    if (!m) throw new Error(`${name}: unreadable registration of ${n}: ${twProperty[n]}`);
+    if (!m) {
+      throw new Error(`${name}: unreadable registration of ${n}: ${twProperty[n]}`);
+    }
     return { name: n, syntax: m[1], inherits: m[2] === "true", ...(m[3]?.trim() ? { initialValue: m[3].trim() } : {}) };
   });
   let at: string | null = null;
@@ -1763,38 +2226,60 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
     buf = [];
   };
   // The keyframes the module's animations name (and those the mapping lists) ship with it.
-  const animations = new Set(map.keyframes ?? []);
+  const animations = new Set(map.keyframes);
   for (const o of order(outs, report, name, defaults, dominates, labeled, propMods)) {
     if (o.at !== at) {
       flush();
       at = o.at;
     }
     const { plain, slotted, pageTag } = render(o);
-    if (plain) buf.push(`${plain}{${serialize(o.decls)}}`);
-    if (slotted) buf.push(`${slotted}{${serialize(pageTag ? important(o.decls) : o.decls)}}`);
+    if (plain) {
+      buf.push(`${plain}{${serialize(o.decls)}}`);
+    }
+    if (slotted) {
+      buf.push(`${slotted}{${serialize(pageTag ? important(o.decls) : o.decls)}}`);
+    }
     // A root rule on a mirrored property (see GeistMap.host) is repeated on the host, its modifier classes translated to the host's attributes.
     // An at-rule variant (a responsive value, `sm:min-w-0`) is mirrored inside the same at-rule block: the rule lands in the block being buffered.
     if (map.host && !o.element && !o.state && !o.rootState && !o.hostState && !o.theme) {
       const mirrored = o.decls.filter((d) => map.host!.mirror.some((m) => overlaps(d.prop, m)));
       const missing: string[] = [];
       const sel = o.mod.replace(/\.[A-Za-z0-9_-]+/g, (c) => map.host!.mods?.[c] ?? (missing.push(c), c));
-      if (mirrored.length && missing.length) report.push(`${name}: host mirror skipped, no host attribute for ${missing.join(" ")} (${o.mod})`);
-      else if (mirrored.length) buf.push(`:host${sel ? `(${sel})` : ""}{${serialize(mirrored)}}`);
+      if (mirrored.length && missing.length) {
+        report.push(`${name}: host mirror skipped, no host attribute for ${missing.join(" ")} (${o.mod})`);
+      } else if (mirrored.length) {
+        buf.push(`:host${sel ? `(${sel})` : ""}{${serialize(mirrored)}}`);
+      }
     }
-    for (const d of o.decls)
-      if (d.prop === "animation" || d.prop === "animation-name")
-        for (const part of d.value.split(/,(?![^(]*\))/)) for (const token of part.trim().split(/\s+/)) if (keyframesOf(token)) animations.add(token);
+    for (const d of o.decls) {
+      if (d.prop === "animation" || d.prop === "animation-name") {
+        for (const part of d.value.split(/,(?![^(]*\))/)) {
+          for (const token of part.trim().split(/\s+/)) {
+            if (keyframesOf(token)) {
+              animations.add(token);
+            }
+          }
+        }
+      }
+    }
   }
   flush();
-  if (composedMirror.length) lines.push(`:host{${serialize(composedMirror)}}`);
+  if (composedMirror.length) {
+    lines.push(`:host{${serialize(composedMirror)}}`);
+  }
   for (const k of animations) {
     const body = keyframesOf(k);
-    if (body) lines.push(`@keyframes ${k}{${body}}`);
-    else report.push(`${name}: no @keyframes ${k} in the reference CSS`);
+    if (body) {
+      lines.push(`@keyframes ${k}{${body}}`);
+    } else {
+      report.push(`${name}: no @keyframes ${k} in the reference CSS`);
+    }
   }
   let css = lines.join("\n");
   // A reference name in `classes` is renamed wherever it stands, a keyframes name (a CSS-module animation) included.
-  for (const [theirs, ours] of Object.entries(map.classes ?? {})) css = css.replace(new RegExp(`(?<![\\w-])${escRe(theirs)}(?![\\w-])`, "g"), theirs.startsWith("[") ? `.${ours}` : ours);
+  for (const [theirs, ours] of Object.entries(map.classes ?? {})) {
+    css = css.replace(new RegExp(`(?<![\\w-])${escRe(theirs)}(?![\\w-])`, "g"), theirs.startsWith("[") ? `.${ours}` : ours);
+  }
   return { css, report: [...new Set(report)], properties };
 }
 
@@ -1808,13 +2293,9 @@ export const rename = (s: string) =>
     .replace(/--radix-popover-/g, "--acme-popover-")
     .replace(/\[data-slot=geist-icon\]/g, "")
     .replace(/data-geist-/g, "data-acme-");
-const escTpl = (s: string) => s.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$\{/g, "\\${");
 
 /**
- * Writes one element's style module from its mapping.
- *
- * The file is written unformatted; the caller formats the whole batch through
- * {@link formatGenerated} so one Biome process covers every element.
+ * Emits compiled CSS, a source map, a Lit module and input fingerprints for one mapping.
  *
  * @param name* - The element's mapping name under tools/geist/maps.
  *
@@ -1823,36 +2304,57 @@ const escTpl = (s: string) => s.replace(/\\/g, "\\\\").replace(/`/g, "\\`").repl
 export async function writeStyles(name: string): Promise<{ file: string; report: string[] }> {
   const mapFile = path.join(import.meta.dir, "maps", `${name}.ts`);
   const { geist } = (await import(mapFile)) as { geist: GeistMap };
-  const dir = path.join(ROOT, "src/components", geist.element ?? name);
+  if (geist.referenceOnly) {
+    throw new Error(`${name}: reference-only mappings do not emit styles`);
+  }
+  const dir = path.join(ROOT, "src/generated/components", geist.element ?? name);
+  fs.mkdirSync(dir, { recursive: true });
   const load = async (n: string) => ((await import(path.join(import.meta.dir, "maps", `${n}.ts`))) as { geist: GeistMap }).geist;
   const parent = geist.extends ? await load(geist.extends.split("/")[0]) : undefined;
   // The mappings the root and the children extend (instances of other elements inside this one), and those these extend in turn (a menu button that is a button).
   const maps: Record<string, GeistMap> = {};
   const chase = async (n: string) => {
-    if (maps[n]) return;
+    if (maps[n]) {
+      return;
+    }
     maps[n] = await load(n);
     const ext = maps[n].extends ?? "";
-    if (ext && !ext.includes("/")) await chase(ext);
+    if (ext && !ext.includes("/")) {
+      await chase(ext);
+    }
   };
   const collect = async (cms?: ChildMap[]) => {
     for (const cm of cms ?? []) {
-      if (cm.extends) await chase(cm.extends.split("/")[0]);
+      if (cm.extends) {
+        await chase(cm.extends.split("/")[0]);
+      }
       await collect(cm.children);
     }
   };
   if (parent) {
     const ext = parent.extends ?? "";
-    if (ext && !ext.includes("/")) await chase(ext);
+    if (ext && !ext.includes("/")) {
+      await chase(ext);
+    }
   }
   await collect(geist.children);
   const { css, report, properties } = generate(name, geist, parent, maps);
-  const id = `${name.replace(/-([a-z])/g, (_, c) => c.toUpperCase())}Css`;
   let own = rename(css);
-  for (const [theirs, ours] of Object.entries(geist.assets ?? {})) own = own.replaceAll(theirs, ours);
-  // The composition variables the module keeps, registered document-wide with the reference's defaults (see `registerProperties`).
-  const register = properties.length ? `import { registerProperties } from "../../base";\n\nregisterProperties(${JSON.stringify(properties.map((p) => ({ ...p, name: rename(p.name) })))});\n` : "";
-  const file = path.join(dir, `${name}.styles.ts`);
-  fs.writeFileSync(file, `// Generated by the style generator from the reference spec. Do not edit; edit the mapping and regenerate.\nimport { css } from "lit";\n${register}export const ${id} = css\`\n${escTpl(own)}\n\`;\n`);
+  for (const [theirs, ours] of Object.entries(geist.assets ?? {})) {
+    own = own.replaceAll(theirs, ours);
+  }
+  const inputs = localInputs(ROOT, [
+    "tools/geist/gen.ts",
+    "tools/geist/tw.ts",
+    "tools/geist/simplify.ts",
+    "tools/geist/maps/" + name + ".ts",
+    ...Object.keys(maps).map((n) => "tools/geist/maps/" + n + ".ts"),
+    ...(geist.extends ? ["tools/geist/maps/" + geist.extends.split("/")[0] + ".ts"] : []),
+    ...new Set([geist, ...(parent ? [parent] : []), ...Object.values(maps)].map((m) => "tools/geist/spec/" + m.page + ".json")),
+  ]);
+  const externalInputs = [...new Bun.Glob("tools/geist/corpus/css/*.css").scanSync(ROOT), ...new Bun.Glob("tools/geist/corpus/html/*.html").scanSync(ROOT)];
+  writeStyle("components/" + (geist.element ?? name) + "/" + name, own, { producer: "mapped", inputs, externalInputs, properties: properties.map((p) => ({ ...p, name: rename(p.name) })) });
+  const file = path.join(dir, name + ".styles.ts");
   return { file, report };
 }
 
@@ -1864,34 +2366,51 @@ if (import.meta.main) {
         .readdirSync(path.join(import.meta.dir, "maps"))
         .filter((f) => f.endsWith(".ts"))
         .map((f) => f.replace(/\.ts$/, ""));
-  const written: string[] = [];
   for (const n of all) {
-    const { file, report } = await writeStyles(n);
-    written.push(file);
+    const { geist } = (await import(path.join(import.meta.dir, "maps", `${n}.ts`))) as { geist: GeistMap };
+    if (geist.referenceOnly) {
+      removeStyle("components/" + (geist.element ?? n) + "/" + n);
+      console.log(`${n}: reference baseline`);
+      continue;
+    }
+    const { report } = await writeStyles(n);
     console.log(`${n}: ${report.length ? `\n  - ${report.join("\n  - ")}` : "clean"}`);
   }
-
-  // One Biome pass over the batch, so a regenerated module is already formatted.
-  await formatGenerated(written);
 }
 
 /** The per-declaration rules a topological sort cannot place, with their conflicting neighbours, for the cycle report. */
 function cycleMembers(list: Out[]): string[] {
   const name = (o: Out) => `${o.theme ? `[${o.theme}] ` : ""}${o.mod || "(base)"}${o.element}${o.state} { ${o.decls.map((d) => `${d.prop}@${d.order}`).join(" ")} }`;
   const edges: [number, number][] = [];
-  for (let i = 0; i < list.length; i++)
+  for (let i = 0; i < list.length; i++) {
     for (let j = i + 1; j < list.length; j++) {
-      if (!coMatch(list[i], list[j])) continue;
-      for (const da of list[i].decls) for (const db of list[j].decls) if (da.important === db.important && da.order !== db.order && overlaps(da.prop, db.prop)) edges.push([i, j]);
+      if (!coMatch(list[i], list[j])) {
+        continue;
+      }
+      for (const da of list[i].decls) {
+        for (const db of list[j].decls) {
+          if (da.important === db.important && da.order !== db.order && overlaps(da.prop, db.prop)) {
+            edges.push([i, j]);
+          }
+        }
+      }
     }
+  }
   const indeg = list.map(() => 0);
-  for (const [, b] of edges) indeg[b]++;
+  for (const [, b] of edges) {
+    indeg[b]++;
+  }
   // Peel the acyclic part away; what stays is on or behind a cycle.
   const remaining = new Set(list.map((_, i) => i));
   let changed = true;
   while (changed) {
     changed = false;
-    for (const i of [...remaining]) if (edges.every(([a, b]) => !(b === i && remaining.has(a)))) { remaining.delete(i); changed = true; }
+    for (const i of [...remaining]) {
+      if (edges.every(([a, b]) => !(b === i && remaining.has(a)))) {
+        remaining.delete(i);
+        changed = true;
+      }
+    }
   }
   return [...remaining].map((i) => name(list[i]));
 }

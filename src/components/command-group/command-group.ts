@@ -1,33 +1,80 @@
-import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { html } from "lit";
+import { property } from "lit/decorators.js";
+import { repeat } from "lit/directives/repeat.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { commandMenuGroupCss } from "../command-menu/command-menu-group.styles";
-
-/**
- * A group of command menu rows under a `heading` (Title Case, one or two words): a 36px row of
- * 13px gray text over the slotted `acme-command-item` rows. The menu hides the group while no row
- * in it matches the query. `page` keeps the group, rows included, to one page of the menu.
+import { atomState } from "../../shared/atom-state";
+import { CommandBinding, type CommandPart } from "../../shared/command-context";
+import { commandGroupStructureCss } from "../../generated/components/command-group/command-group-structure.styles";
+/** A named, contiguous group of command actions.
+ * @slot - Direct Command Item children.
+ * @slot heading - Heading content in place of heading text.
+ * @csspart group - The result group.
+ * @csspart heading - The visual heading.
  */
-@customElement("acme-command-group")
 export class AcmeCommandGroup extends AcmeElement {
-  static styles = [sharedCss, commandMenuGroupCss];
-  @property() heading = "";
-  /** The page of the menu the group belongs to; unset, the root page. */
-  @property() page = "";
-
-  /** The group's rows, in order. */
-  get items() {
-    return Array.from(this.querySelectorAll("acme-command-item"));
+  static shadowRootOptions = { ...AcmeElement.shadowRootOptions, slotAssignment: "manual" as const };
+  static styles = [sharedCss, commandGroupStructureCss];
+  @atomState() @property({ noAccessor: true, useDefault: true }) heading = "";
+  @atomState() private projected: readonly CommandPart[] = [];
+  @atomState() private headingText = "";
+  private readonly binding = new CommandBinding(this, {
+    kind: "group",
+    value: () => "",
+    label: () => this.headingText || this.heading,
+    keywords: () => [],
+    disabled: () => false,
+    project: (parts) => {
+      if (parts.length !== this.projected.length || parts.some((part, i) => part !== this.projected[i])) {
+        this.projected = Object.freeze([...parts]);
+      }
+    },
+  });
+  private readonly internals = this.attachInternals();
+  private observer?: MutationObserver;
+  private read = () => {
+    const text = [...this.children]
+      .filter((child) => child.getAttribute("slot") === "heading")
+      .map((child) => child.textContent ?? "")
+      .join(" ")
+      .trim();
+    if (text !== this.headingText) {
+      this.headingText = text;
+    }
+  };
+  connectedCallback() {
+    super.connectedCallback();
+    this.read();
+    this.observer = new MutationObserver(this.read);
+    this.observer.observe(this, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ["slot"] });
   }
-
+  disconnectedCallback() {
+    this.observer?.disconnect();
+    this.observer = undefined;
+    super.disconnectedCallback();
+  }
+  protected updated() {
+    this.internals.role = "group";
+    this.internals.ariaLabel = this.headingText || this.heading || null;
+    for (const slot of this.renderRoot.querySelectorAll("slot")) {
+      const index = slot.getAttribute("data-item");
+      const nodes =
+        index === null
+          ? [...this.children].filter((child) => child.getAttribute("slot") === "heading")
+          : [this.projected[Number(index)]?.host].filter((node): node is NonNullable<typeof node> => !!node);
+      const previous = slot.assignedNodes();
+      if (nodes.length !== previous.length || nodes.some((node, i) => node !== previous[i])) {
+        slot.assign(...nodes);
+      }
+    }
+  }
   render() {
-    return html`<div class="group" role="presentation" part="group">
-      ${this.heading ? html`<div class="heading" aria-hidden="true" id="heading" part="heading">${this.heading}</div>` : nothing}
-      <div class="items" role="group" aria-labelledby=${this.heading ? "heading" : nothing} part="items"><slot></slot></div>
-    </div>`;
+    return html`<div part="group"><div part="heading" aria-hidden="true" ?hidden=${!this.headingText && !this.heading}><slot name="heading">${this.heading}</slot></div>${repeat(
+      this.projected,
+      (part) => part.host,
+      (_part, index) => html`<slot data-item=${index}></slot>`,
+    )}</div>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-command-group": AcmeCommandGroup;

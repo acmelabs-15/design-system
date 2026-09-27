@@ -1,0 +1,6 @@
+:host{display:block;inline-size:600px;max-inline-size:100%;min-inline-size:0;}
+[part=root]{position:relative;inline-size:100%;block-size:100%;min-inline-size:0;}
+[part=video]{display:block;inline-size:100%;block-size:100%;object-fit:contain;}
+.fallback{padding:var(--acme-spacing-4);font-family:var(--acme-font-sans);font-size:.875rem;line-height:1.5;color:var(--ds-gray-900);background:var(--ds-background-200);}
+[part=video]:focus-visible{outline:2px solid var(--ds-focus-color);outline-offset:2px;}
+[hidden]{display:none!important;}

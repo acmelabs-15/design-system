@@ -1,0 +1,22 @@
+bun test v1.4.2 (744846f84)
+
+scripts/__tests__/release.test.ts:
+(pass) release validation verifies actual archive identity, tags and immutable bytes [199.21ms]
+(pass) the pinned npm CLI executes under the verified Bun runtime [80.59ms]
+
+scripts/__tests__/release-workflows.test.ts:
+(pass) quality workflow runs every defined gate under the pinned Bun runtime [0.33ms]
+(pass) publication and Pages deployment remain explicitly gated after verification [0.14ms]
+
+scripts/__tests__/release-policy.test.ts:
+(pass) publication retry skips only byte-identical existing versions [0.09ms]
+(pass) release identity requires coordinated packages, peers and exact tag [0.16ms]
+(pass) archive names and digest records cannot escape release artifacts [0.04ms]
+(pass) publishing stays disabled outside explicit verified release context [0.06ms]
+(pass) private packages and mismatched repository metadata block actual publication [0.05ms]
+(pass) npm receives only CI identity context, never inherited local token configuration [0.04ms]
+
+ 10 pass
+ 0 fail
+ 70 expect() calls
+Ran 10 tests across 3 files. [560.00ms]

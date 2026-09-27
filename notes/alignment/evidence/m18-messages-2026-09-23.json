@@ -1,0 +1,245 @@
+{
+  "date": "2026-09-23",
+  "status": "Alert/Banner complete at assigned native/Lit boundary; M18 remains active",
+  "implementation": [
+    "Shared canonical message inputs and slots for Alert and Banner",
+    "Static messages stay passive; explicit role reaches one native semantic root",
+    "Status colors retain the audited Note palette and use existing sizing/spacing tokens",
+    "Named dismiss control emits one cancelable request; application owns removal, persistence and focus",
+    "Authored headings and actions retain native semantics and node identity",
+    "One responsive Banner message replaces duplicate wide/mobile controls",
+    "Note, old Banner interfaces and all corresponding style producers are removed"
+  ],
+  "verification": {
+    "build": "Strict package build passes",
+    "site": {
+      "pages": 106,
+      "elements": 4308,
+      "undocumented": 0
+    },
+    "tests": {
+      "passed": 898,
+      "failed": 0,
+      "assertions": 151383,
+      "files": 167
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "static messages stay passive and authored alert semantics reach one native root",
+            "pass": true
+          },
+          {
+            "name": "dismiss requests are cancelable and never remove application content by themselves",
+            "pass": true
+          },
+          {
+            "name": "heading and action slots stay live and preserve native actions",
+            "pass": true
+          },
+          {
+            "name": "all treatments and sizes use real boxes and fit narrow RTL content",
+            "pass": true
+          },
+          {
+            "name": "Banner keeps one message and action across viewport changes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "static messages stay passive and authored alert semantics reach one native root",
+            "pass": true
+          },
+          {
+            "name": "dismiss requests are cancelable and never remove application content by themselves",
+            "pass": true
+          },
+          {
+            "name": "heading and action slots stay live and preserve native actions",
+            "pass": true
+          },
+          {
+            "name": "all treatments and sizes use real boxes and fit narrow RTL content",
+            "pass": true
+          },
+          {
+            "name": "Banner keeps one message and action across viewport changes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "static messages stay passive and authored alert semantics reach one native root",
+            "pass": true
+          },
+          {
+            "name": "dismiss requests are cancelable and never remove application content by themselves",
+            "pass": true
+          },
+          {
+            "name": "heading and action slots stay live and preserve native actions",
+            "pass": true
+          },
+          {
+            "name": "all treatments and sizes use real boxes and fit narrow RTL content",
+            "pass": true
+          },
+          {
+            "name": "Banner keeps one message and action across viewport changes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "static messages stay passive and authored alert semantics reach one native root",
+            "pass": true
+          },
+          {
+            "name": "dismiss requests are cancelable and never remove application content by themselves",
+            "pass": true
+          },
+          {
+            "name": "heading and action slots stay live and preserve native actions",
+            "pass": true
+          },
+          {
+            "name": "all treatments and sizes use real boxes and fit narrow RTL content",
+            "pass": true
+          },
+          {
+            "name": "Banner keeps one message and action across viewport changes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "static messages stay passive and authored alert semantics reach one native root",
+            "pass": true
+          },
+          {
+            "name": "dismiss requests are cancelable and never remove application content by themselves",
+            "pass": true
+          },
+          {
+            "name": "heading and action slots stay live and preserve native actions",
+            "pass": true
+          },
+          {
+            "name": "all treatments and sizes use real boxes and fit narrow RTL content",
+            "pass": true
+          },
+          {
+            "name": "Banner keeps one message and action across viewport changes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "static messages stay passive and authored alert semantics reach one native root",
+            "pass": true
+          },
+          {
+            "name": "dismiss requests are cancelable and never remove application content by themselves",
+            "pass": true
+          },
+          {
+            "name": "heading and action slots stay live and preserve native actions",
+            "pass": true
+          },
+          {
+            "name": "all treatments and sizes use real boxes and fit narrow RTL content",
+            "pass": true
+          },
+          {
+            "name": "Banner keeps one message and action across viewport changes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "documentation": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "explicit live update",
+          "application dismissal and focus",
+          "restore",
+          "Banner request",
+          "narrow viewport"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "explicit live update",
+          "application dismissal and focus",
+          "restore",
+          "Banner request",
+          "narrow viewport"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "explicit live update",
+          "application dismissal and focus",
+          "restore",
+          "Banner request",
+          "narrow viewport"
+        ],
+        "errors": []
+      }
+    ],
+    "visual": "Chromium narrow documentation screenshot inspected",
+    "retirement": "Generator rerun and fingerprints pass; no legacy message producer or note selector remains in document tokens. An orphan note-text rule was removed after the final audit."
+  },
+  "references": [
+    "notes/alignment/inventory/messages-statistics.md#m-01-alert-and-banner",
+    "notes/decisions/message-context-and-errors.md",
+    "Audited Note/Banner source and generated source CSS, read before replacement"
+  ],
+  "reproduce": {
+    "fixture": "src/components/alert/__tests__/alert.browser.ts",
+    "runner": "/tmp/acme-m18-messages/run.ts",
+    "compiled": "/tmp/acme-m18-messages/run-compiled.ts",
+    "documentation": "/tmp/acme-m18-messages/docs-check.ts"
+  },
+  "limits": [
+    "Live-region structure and updates are verified; actual spoken announcements remain the assigned assistive-technology gate",
+    "React and final whole-library package acceptance remain M22/M26"
+  ]
+}

@@ -1,0 +1,311 @@
+{
+  "date": "2026-09-23",
+  "status": "Card/Inset/Item complete at assigned native/Lit boundary; Scroll Area and Resizable remain in M14",
+  "implementation": [
+    "Card surface with optional Header/Body/Footer, three variants/sizes and native div/section/article meaning",
+    "Inset uses private inherited padding/radius context with nested-surface resets and seven explicit logical sides",
+    "Item supplies six descriptive parts and no competing link/selection/keyboard engine",
+    "Old Card variants and Item href/amount/large/template APIs removed, with all current callers and related style producers migrated"
+  ],
+  "verification": {
+    "build": "Strict full package build passes after complete retired-style cleanup",
+    "site": {
+      "pages": 98,
+      "elements": 4273,
+      "undocumented": 0
+    },
+    "tests": {
+      "passed": 906,
+      "failed": 0,
+      "assertions": 122344,
+      "files": 152
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "Inset reaches the Card content border using its section padding",
+            "pass": true
+          },
+          {
+            "name": "Card padding and radius hooks update Inset without measured constants",
+            "pass": true
+          },
+          {
+            "name": "Inset outside a surface has no bleed and can release clipping",
+            "pass": true
+          },
+          {
+            "name": "logical single-edge Inset follows RTL",
+            "pass": true
+          },
+          {
+            "name": "nested Card resets inherited bleed at its unpadded surface",
+            "pass": true
+          },
+          {
+            "name": "changing Card semantics retains an independently focused child",
+            "pass": true
+          },
+          {
+            "name": "Item wraps independent actions at narrow widths without clipping",
+            "pass": true
+          },
+          {
+            "name": "vertical Item retains all content and natural keyboard order",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "Inset reaches the Card content border using its section padding",
+            "pass": true
+          },
+          {
+            "name": "Card padding and radius hooks update Inset without measured constants",
+            "pass": true
+          },
+          {
+            "name": "Inset outside a surface has no bleed and can release clipping",
+            "pass": true
+          },
+          {
+            "name": "logical single-edge Inset follows RTL",
+            "pass": true
+          },
+          {
+            "name": "nested Card resets inherited bleed at its unpadded surface",
+            "pass": true
+          },
+          {
+            "name": "changing Card semantics retains an independently focused child",
+            "pass": true
+          },
+          {
+            "name": "Item wraps independent actions at narrow widths without clipping",
+            "pass": true
+          },
+          {
+            "name": "vertical Item retains all content and natural keyboard order",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "Inset reaches the Card content border using its section padding",
+            "pass": true
+          },
+          {
+            "name": "Card padding and radius hooks update Inset without measured constants",
+            "pass": true
+          },
+          {
+            "name": "Inset outside a surface has no bleed and can release clipping",
+            "pass": true
+          },
+          {
+            "name": "logical single-edge Inset follows RTL",
+            "pass": true
+          },
+          {
+            "name": "nested Card resets inherited bleed at its unpadded surface",
+            "pass": true
+          },
+          {
+            "name": "changing Card semantics retains an independently focused child",
+            "pass": true
+          },
+          {
+            "name": "Item wraps independent actions at narrow widths without clipping",
+            "pass": true
+          },
+          {
+            "name": "vertical Item retains all content and natural keyboard order",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "Inset reaches the Card content border using its section padding",
+            "pass": true
+          },
+          {
+            "name": "Card padding and radius hooks update Inset without measured constants",
+            "pass": true
+          },
+          {
+            "name": "Inset outside a surface has no bleed and can release clipping",
+            "pass": true
+          },
+          {
+            "name": "logical single-edge Inset follows RTL",
+            "pass": true
+          },
+          {
+            "name": "nested Card resets inherited bleed at its unpadded surface",
+            "pass": true
+          },
+          {
+            "name": "changing Card semantics retains an independently focused child",
+            "pass": true
+          },
+          {
+            "name": "Item wraps independent actions at narrow widths without clipping",
+            "pass": true
+          },
+          {
+            "name": "vertical Item retains all content and natural keyboard order",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "Inset reaches the Card content border using its section padding",
+            "pass": true
+          },
+          {
+            "name": "Card padding and radius hooks update Inset without measured constants",
+            "pass": true
+          },
+          {
+            "name": "Inset outside a surface has no bleed and can release clipping",
+            "pass": true
+          },
+          {
+            "name": "logical single-edge Inset follows RTL",
+            "pass": true
+          },
+          {
+            "name": "nested Card resets inherited bleed at its unpadded surface",
+            "pass": true
+          },
+          {
+            "name": "changing Card semantics retains an independently focused child",
+            "pass": true
+          },
+          {
+            "name": "Item wraps independent actions at narrow widths without clipping",
+            "pass": true
+          },
+          {
+            "name": "vertical Item retains all content and natural keyboard order",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "Inset reaches the Card content border using its section padding",
+            "pass": true
+          },
+          {
+            "name": "Card padding and radius hooks update Inset without measured constants",
+            "pass": true
+          },
+          {
+            "name": "Inset outside a surface has no bleed and can release clipping",
+            "pass": true
+          },
+          {
+            "name": "logical single-edge Inset follows RTL",
+            "pass": true
+          },
+          {
+            "name": "nested Card resets inherited bleed at its unpadded surface",
+            "pass": true
+          },
+          {
+            "name": "changing Card semantics retains an independently focused child",
+            "pass": true
+          },
+          {
+            "name": "Item wraps independent actions at narrow widths without clipping",
+            "pass": true
+          },
+          {
+            "name": "vertical Item retains all content and natural keyboard order",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "docs": [
+      {
+        "engine": "chromium",
+        "pass": true,
+        "checks": 3,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "pass": true,
+        "checks": 3,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "pass": true,
+        "checks": 3,
+        "errors": []
+      }
+    ],
+    "screenshots": [
+      "m14-card-2026-09-23.png",
+      "m14-item-2026-09-23.png"
+    ],
+    "visualInspection": "Chromium Card and Item screenshots inspected"
+  },
+  "review": {
+    "correctness": "Reference geometry, nested resets, RTL, focus retention, independent actions and selection composition verified",
+    "architecture": "No new state engine or content cloning; canonical property helper and generated styles reused",
+    "security": "Author content remains Lit slots; no raw template construction from property strings",
+    "performance": "Static presentation uses inherited CSS rather than geometry observers"
+  },
+  "limits": [
+    "WebKit Tab skips the native button in both this Item case and its plain-native reference under the tested default configuration; this is not actual Safari keyboard certification",
+    "Actual AT, generated React wrappers and whole-library appearance acceptance remain M22/M26"
+  ],
+  "references": [
+    "https://chakra-ui.com/docs/components/card",
+    "https://www.radix-ui.com/themes/docs/components/inset",
+    "https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/inset.css",
+    "https://ui.shadcn.com/docs/components/base/item",
+    "../chakra-pro-review.md"
+  ],
+  "reproduction": {
+    "directory": "/tmp/acme-m14-content",
+    "fixture": "import { AcmeCard } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/card/card\";\ncustomElements.define(\"acme-card\",AcmeCard);\nimport { AcmeCardHeader } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/card-header/card-header\";\ncustomElements.define(\"acme-card-header\",AcmeCardHeader);\nimport { AcmeCardBody } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/card-body/card-body\";\ncustomElements.define(\"acme-card-body\",AcmeCardBody);\nimport { AcmeCardFooter } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/card-footer/card-footer\";\ncustomElements.define(\"acme-card-footer\",AcmeCardFooter);\nimport { AcmeInset } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/inset/inset\";\ncustomElements.define(\"acme-inset\",AcmeInset);\nimport { AcmeItem } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/item/item\";\ncustomElements.define(\"acme-item\",AcmeItem);\nimport { AcmeItemMedia } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/item-media/item-media\";\ncustomElements.define(\"acme-item-media\",AcmeItemMedia);\nimport { AcmeItemContent } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/item-content/item-content\";\ncustomElements.define(\"acme-item-content\",AcmeItemContent);\nimport { AcmeItemHeading } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/item-heading/item-heading\";\ncustomElements.define(\"acme-item-heading\",AcmeItemHeading);\nimport { AcmeItemDescription } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/item-description/item-description\";\ncustomElements.define(\"acme-item-description\",AcmeItemDescription);\nimport { AcmeItemMetadata } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/item-metadata/item-metadata\";\ncustomElements.define(\"acme-item-metadata\",AcmeItemMetadata);\nimport { AcmeItemActions } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/item-actions/item-actions\";\ncustomElements.define(\"acme-item-actions\",AcmeItemActions);\ndocument.body.innerHTML=`<acme-card id=\"card\" variant=\"outline\" style=\"width:400px\"><acme-card-body id=\"body\"><acme-inset id=\"inset\" side=\"block-start\"><div style=\"height:80px;background:var(--ds-blue-300)\">Media</div></acme-inset><p id=\"title\">Related content</p><button id=\"action\">Action</button></acme-card-body></acme-card><acme-inset id=\"outside\"><span>Outside</span></acme-inset><acme-item id=\"item\" variant=\"outline\" style=\"width:400px\"><acme-item-media><span>Icon</span></acme-item-media><acme-item-content><acme-item-heading><a href=\"#record\">Long related record title with independent action</a></acme-item-heading><acme-item-description>Supporting content</acme-item-description><acme-item-metadata>Updated today</acme-item-metadata></acme-item-content><acme-item-actions><button id=\"manage\">Manage</button></acme-item-actions></acme-item>`;\n",
+    "runner": "import assert from 'node:assert/strict';const dir='/tmp/acme-m14-content';const build=await Bun.build({entrypoints:[dir+'/surface-candidate.ts'],outdir:dir+'/surface-bundle',target:'browser',format:'esm'});if(!build.success)throw new AggregateError(build.logs);process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');const server=Bun.serve({port:0,fetch(req){const p=new URL(req.url).pathname;return p==='/candidate.js'?new Response(Bun.file(dir+'/surface-bundle/surface-candidate.js'),{headers:{'Content-Type':'text/javascript'}}):p==='/tokens.css'?new Response(Bun.file('/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/css/document/tokens.css'),{headers:{'Content-Type':'text/css'}}):new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/candidate.js\"></script>',{headers:{'Content-Type':'text/html'}})}});const reports=[];\ntry{for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true}:{headless:true});const page=await browser.newPage();page.setDefaultTimeout(4000);const errors=[],checks=[];page.on('pageerror',e=>{errors.push(String(e));console.log(engine,'PAGEERROR',String(e))});const check=async(name,run)=>{try{await page.goto(server.url.href);await page.waitForFunction(()=>document.querySelector('#inset')?.shadowRoot,null,{timeout:4000});await run();checks.push({name,pass:true});console.log(engine,'PASS',name)}catch(e){checks.push({name,pass:false,error:String(e)});console.log(engine,'FAIL',name,String(e))}};\nawait check('Inset reaches the Card content border using its section padding',async()=>{const r=await page.evaluate(()=>{const c=document.querySelector('#card').shadowRoot.querySelector('[part=root]').getBoundingClientRect(),i=document.querySelector('#inset').getBoundingClientRect();return{left:i.left-c.left,right:c.right-i.right,top:i.top-c.top}});assert.deepEqual(r,{left:1,right:1,top:1});});\nawait check('Card padding and radius hooks update Inset without measured constants',async()=>{await page.locator('#card').evaluate(el=>{el.style.setProperty('--acme-card-padding','32px');el.style.setProperty('--acme-card-radius','14px')});assert.equal(await page.locator('#inset').evaluate(el=>getComputedStyle(el).marginInlineStart),'-32px');assert.equal(await page.locator('#inset').evaluate(el=>getComputedStyle(el).borderStartStartRadius),'13px');});\nawait check('Inset outside a surface has no bleed and can release clipping',async()=>{assert.equal(await page.locator('#outside').evaluate(el=>getComputedStyle(el).marginInlineStart),'0px');await page.locator('#outside').evaluate(async el=>{el.clip=false;await el.updateComplete});assert.equal(await page.locator('#outside').evaluate(el=>getComputedStyle(el).overflow),'visible');});\nawait check('logical single-edge Inset follows RTL',async()=>{await page.locator('#card').evaluate(el=>el.dir='rtl');await page.locator('#inset').evaluate(async el=>{el.side='inline-start';await el.updateComplete});const m=await page.locator('#inset').evaluate(el=>({left:getComputedStyle(el).marginLeft,right:getComputedStyle(el).marginRight}));assert.deepEqual(m,{left:'0px',right:'-20px'});});\nawait check('nested Card resets inherited bleed at its unpadded surface',async()=>{await page.locator('#body').evaluate(el=>el.insertAdjacentHTML('beforeend','<acme-card id=\"nested\"><acme-inset id=\"nested-inset\">Nested media</acme-inset></acme-card>'));await page.waitForFunction(()=>document.querySelector('#nested-inset')?.shadowRoot);assert.equal(await page.locator('#nested-inset').evaluate(el=>getComputedStyle(el).marginInlineStart),'0px');});\nawait check('changing Card semantics retains an independently focused child',async()=>{await page.locator('#action').focus();await page.locator('#card').evaluate(async el=>{window.savedAction=el.querySelector('#action');el.as='article';await el.updateComplete});assert.equal(await page.locator('#card article[part=root]').count(),1);assert.equal(await page.evaluate(()=>document.querySelector('#action')===window.savedAction),true);assert.equal(await page.evaluate(()=>document.activeElement.id),'action');});\nawait check('Item wraps independent actions at narrow widths without clipping',async()=>{await page.locator('#item').evaluate(el=>el.style.width='180px');assert.equal(await page.locator('#item').evaluate(el=>el.scrollWidth<=el.clientWidth+1),true);await page.locator('#manage').click();assert.equal(await page.locator('#item a').count(),1);assert.equal(await page.locator('#item').getAttribute('role'),null);});\nawait check('vertical Item retains all content and natural keyboard order',async()=>{await page.locator('#item').evaluate(async el=>{el.orientation='vertical';await el.updateComplete});await page.locator('#item a').focus();await page.keyboard.press('Tab');const nativeNext=await page.evaluate(()=>document.activeElement?.id);if(engine==='webkit'){await page.evaluate(()=>{document.body.insertAdjacentHTML('beforeend','<div id=bare><a href=#native id=native-link>Native</a><button id=native-button>Button</button></div>')});await page.locator('#native-link').focus();await page.keyboard.press('Tab');const referenceNext=await page.evaluate(()=>document.activeElement?.id);assert.equal(nativeNext==='manage',referenceNext==='native-button');}else assert.equal(nativeNext,'manage');assert.equal(await page.locator('#item').evaluate(el=>getComputedStyle(el.shadowRoot.querySelector('[part=root]')).flexDirection),'column');});\nreports.push({engine,checks,errors});await browser.close();}}finally{server.stop(true)}await Bun.write(dir+'/surface-results.json',JSON.stringify(reports,null,2)+'\\n');if(reports.some(r=>r.errors.length||r.checks.some(c=>!c.pass)))process.exitCode=1;\n",
+    "logs": [
+      "surfaces-clean-build.log",
+      "surfaces-clean-docs.log",
+      "surfaces-clean-suite.log",
+      "surface-native-reference.log",
+      "surface-compiled-final.log",
+      "surface-docs-accepted.log"
+    ]
+  }
+}

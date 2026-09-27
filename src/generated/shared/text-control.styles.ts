@@ -1,0 +1,95 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const textControlCss = css`:host {
+  min-inline-size: 0;
+  display: block;
+}
+
+.root {
+  min-inline-size: 0;
+  min-block-size: var(--acme-control-height);
+  border: 1px solid var(--ds-gray-700);
+  border-radius: var(--r-sm, 6px);
+  background: var(--ds-background-100);
+  color: var(--ds-gray-1000);
+  --acme-control-height: var(--acme-form-height, 36px);
+  --acme-control-font: var(--acme-form-font, 14px);
+  --acme-control-line: var(--acme-form-line-height, 20px);
+  --acme-control-padding: 12px;
+  --acme-icon-size: 16px;
+  align-items: center;
+  display: flex;
+}
+
+.root[data-size="small"] {
+  --acme-control-height: var(--acme-form-small-height, 32px);
+  --acme-control-font: var(--acme-form-small-font, 13px);
+  --acme-control-line: var(--acme-form-small-line-height, 20px);
+  --acme-control-padding: 8px;
+}
+
+.root[data-size="large"] {
+  --acme-control-height: var(--acme-form-large-height, 40px);
+  --acme-control-font: var(--acme-form-large-font, 16px);
+  --acme-control-line: var(--acme-form-large-line-height, 24px);
+  --acme-control-padding: 12px;
+  --acme-icon-size: 20px;
+  border-radius: var(--r, 8px);
+}
+
+.native {
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-inline-size: 0;
+  font: inherit;
+  font-size: var(--acme-control-font);
+  line-height: var(--acme-control-line);
+  color: inherit;
+  padding: 6px var(--acme-control-padding);
+  background: none;
+  border: 0;
+  outline: 0;
+  flex: 1;
+}
+
+.native::placeholder {
+  color: var(--ds-gray-900);
+}
+
+.root:has(.native:focus-visible) {
+  box-shadow: var(--ds-focus-ring);
+}
+
+.root[data-invalid] {
+  border-color: var(--warn-solid);
+}
+
+.root[data-disabled] {
+  background: var(--ds-gray-100);
+  color: var(--ds-gray-700);
+  cursor: not-allowed;
+}
+
+.native:disabled {
+  cursor: not-allowed;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (forced-colors: active) {
+  .root {
+    border-color: buttontext;
+  }
+
+  .root[data-disabled] {
+    border-color: graytext;
+  }
+
+  .root:has(.native:focus-visible) {
+    outline-offset: 2px;
+    outline: 2px solid highlight;
+  }
+}
+`;

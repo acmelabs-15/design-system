@@ -1,434 +1,529 @@
-import { css, html, nothing } from "lit";
-import { customElement, property, query, queryAll } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base";
-import { Interaction } from "../../shared/interaction";
-import { labelCss } from "../label/label.styles";
-import { sliderCss } from "./slider.styles";
-import "../input/input";
+import { createAtom } from "@tanstack/lit-store";
+import { html } from "lit";
+import { property } from "lit/decorators.js";
+import { sharedCss } from "../../base";
+import { AcmeFormElement, nativeValidation } from "../../shared/native-form-element";
+import { NativeFormController } from "../../shared/native-form";
 import { atomState } from "../../shared/atom-state";
+import { addDecimal, snapDecimal } from "../../shared/decimal-step";
+import { optionalString } from "../../shared/attributes";
+import { Interaction } from "../../shared/interaction";
+import { SpringValue } from "../../shared/spring-value";
+import { readMotionSpring } from "../../shared/motion-spring";
+import { message, messageCatalogs } from "../../shared/messages";
+import { StoreSelector } from "../../shared/store-connection";
+import { sliderStructureCss } from "../../generated/components/slider/slider-structure.styles";
+import { sliderBounds, sliderConfigurationValid, sliderMove, sliderNormalize, sliderSnapshot, sameSliderValues, type SliderConfiguration } from "./slider-values";
 
-/** `value` as an attribute: a bare number (`value="40"`) or a JSON list (`value="[50, 75]"`). */
-const values = {
-  fromAttribute: (v: string | null): number[] => (v == null || v.trim() === "" ? [] : v.trim().startsWith("[") ? (JSON.parse(v) as number[]) : [Number(v)]),
-  toAttribute: (v: number[]) => JSON.stringify(v),
+type Gesture = Readonly<{ pointer: number; index: number; start: readonly number[]; offset: number; target: HTMLElement; coincident: readonly number[]; origin: number }>;
+type Configuration = SliderConfiguration & { orientation: "horizontal" | "vertical"; labels: readonly string[] };
+const finite = (value: number, name: string): number => {
+  if (!Number.isFinite(value)) {
+    throw new RangeError(`${name} must be finite`);
+  }
+  return value;
 };
-
-const clamp = (n: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, n));
-/** The decimals a number is written with, so step arithmetic rounds to the precision of its operands. */
-const decimals = (n: number): number => {
-  if (n === 0) return 0;
-  if (Math.abs(n) < 1) {
-    const [mantissa, exp] = n.toExponential().split("e-");
-    const frac = mantissa.split(".")[1];
-    return (frac ? frac.length : 0) + parseInt(exp, 10);
-  }
-  const frac = n.toString().split(".")[1];
-  return frac ? frac.length : 0;
-};
-/** Snaps a value to the step grid that starts at min. */
-const snap = (v: number, step: number, min: number) => Number((Math.round((v - min) / step) * step + min).toFixed(Math.max(decimals(step), decimals(min))));
-/** One step from a value in a direction, kept within the bounds. */
-const stepFrom = (v: number, step: number, dir: 1 | -1, min: number, max: number) =>
-  clamp(Number((dir === 1 ? v + step : v - step).toFixed(Math.max(decimals(v), decimals(step), decimals(min)))), min, max);
-/** Whether neighbouring values keep the minimum gap. */
-const spaced = (vals: number[], step: number, minSteps: number) => vals.length < 2 || Math.min(...vals.slice(1).map((v, i) => Math.abs(vals[i] - v))) >= step * minSteps;
-const same = (a: number[], b: number[]) => a.length === b.length && a.every((v, i) => v === b[i]);
-/**
- * A pointer move of one thumb in a range: the moved thumb pushes its neighbours along, each
- * keeping the minimum gap, and a pushed neighbour returns towards where it stood when the drag
- * started (`initial`) as the moved thumb comes back.
+const optionalNumber = { fromAttribute: (value: string | null) => (value === null ? undefined : Number(value)) };
+/** One ordered numeric value per native slider thumb.
+ * @slot start - Optional controls before the track.
+ * @slot end - Optional controls after the track.
+ * @csspart root - The named slider group.
+ * @csspart track - The full value track.
+ * @csspart range - The active portion of the track.
+ * @csspart thumb - Each thumb surface.
+ * @csspart label - Each thumb's formatted value indicator.
+ * @fires {CustomEvent<{value:readonly number[]}>} acme-input - A live user edit.
+ * @fires {CustomEvent<{value:readonly number[]}>} acme-change - A completed user edit.
  */
-function push(vals: number[], index: number, next: number, min: number, max: number, step: number, minSteps: number, initial: number[]): number[] {
-  const out = vals.slice();
-  const gap = step * minSteps;
-  const last = out.length - 1;
-  out[index] = clamp(next, min + index * gap, max - (last - index) * gap);
-  for (let i = index + 1; i <= last; i++) {
-    const lo = out[i - 1] + gap;
-    const hi = max - (last - i) * gap;
-    const was = initial[i] ?? out[i];
-    let v = Math.max(out[i], lo);
-    if (was < v) v = Math.max(was, lo);
-    out[i] = clamp(v, lo, hi);
+export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration> {
+  static styles = [sharedCss, sliderStructureCss];
+  static shadowRootOptions = { ...AcmeFormElement.shadowRootOptions, delegatesFocus: true };
+  @atomState() private minimum = 0;
+  @atomState() private maximum = 100;
+  @atomState() private increment = 1;
+  @atomState() private largeIncrement = 10;
+  @atomState() private minimumSteps = 0;
+  @atomState() private axis: "horizontal" | "vertical" = "horizontal";
+  @atomState() private names: readonly string[] = Object.freeze([]);
+  @atomState() private formatter?: (value: number, index: number) => string;
+  @atomState() private focused = -1;
+  @atomState() private lastFocused = 0;
+  @atomState() private gesture?: Gesture;
+  private cleanupGesture?: () => void;
+  private readonly nativeEdit = createAtom<readonly number[] | undefined>(undefined);
+  private readonly controls: HTMLInputElement[] = [];
+  private readonly interactions: Interaction[] = [];
+  private readonly constraint = this.ownerDocument.createElement("input");
+  private readonly messages = new StoreSelector(this, () => messageCatalogs);
+  private readonly localeUpdates = new StoreSelector(this, () => this.themeContext.scope.effective);
+  private readonly indicator = new SpringValue(
+    this,
+    () => (this.focused >= 0 || this.gesture ? 1 : 0),
+    () => readMotionSpring(this, "standard", "effects", "fast"),
+  );
+  private text(key: string, fallback: string): string {
+    return message(this.themeContext.scope.effective.get().locale, key, fallback);
   }
-  for (let i = index - 1; i >= 0; i--) {
-    const hi = out[i + 1] - gap;
-    const lo = min + i * gap;
-    const was = initial[i] ?? out[i];
-    let v = Math.min(out[i], hi);
-    if (was > v) v = Math.min(was, hi);
-    out[i] = clamp(v, lo, hi);
+  private configuration(): Configuration {
+    return { min: this.min, max: this.max, step: this.step, minStepsBetweenValues: this.minStepsBetweenValues, orientation: this.orientation, labels: this.thumbLabels };
   }
-  return out.map((v) => Number(v.toFixed(12)));
-}
-/** A keyboard or field change of one thumb: clamped to the bounds and, in a range, between its neighbours; the range stays sorted. */
-function settle(vals: number[], index: number, next: number, min: number, max: number): number[] {
-  const v = clamp(next, min, max);
-  if (vals.length < 2) return [v];
-  const out = vals.slice();
-  out[index] = clamp(v, vals[index - 1] ?? Number.NEGATIVE_INFINITY, vals[index + 1] ?? Number.POSITIVE_INFINITY);
-  return out.sort((a, b) => a - b);
-}
-const ARROWS = new Set(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]);
-const HIDDEN = "clip-path:inset(50%);overflow:hidden;white-space:nowrap;border:0;padding:0;width:100%;height:100%;margin:-1px;position:fixed;top:0;left:0";
-
-/**
- * A slider picks one value, or a range between two thumbs, from a track. The root is a column:
- * the label (a label element with the text block of the Label element, 13px gray-900,
- * capitalized unless `bypass-casing`) above a row that holds the optional start field, the group (the
- * 8px track, its blue fill and the 6×14 thumbs, each around a visually hidden range input) and
- * the optional end field, both 48px small acme-inputs. A thumb carries the focus states
- * (data-focus for a visible focus, data-focus-within for any focus) and data-dragging while it
- * is dragged; the group and its parts carry data-disabled. The pointer picks the nearest thumb
- * and drags it, pushing its neighbour along; the keyboard moves a thumb by `step` (Shift or
- * Page keys by `large-step`) and to its bounds with Home and End. `acme-change` fires on every
- * change, `acme-commit` when a drag ends and after every keyboard change. Form-associated: a
- * range submits `name` twice.
- */
-@customElement("acme-slider")
-export class AcmeSlider extends AcmeElement {
-  static formAssociated = true;
-  static styles = [
-    sharedCss,
-    labelCss,
-    sliderCss,
-    css`
-      /* A block, as the column's context is (a form): the column is its block child and fills its width. */
-      :host {
-        display: block;
+  private constraintsChanged(name: string): void {
+    this.endGesture(false);
+    this.nativeEdit.set(() => undefined);
+    this.nativeForm?.sync();
+    this.requestUpdate(name);
+  }
+  /** @default 0 */
+  @property({ noAccessor: true, type: Number, converter: optionalNumber }) get min(): number {
+    return this.minimum;
+  }
+  set min(value: number | undefined) {
+    this.minimum = finite(value ?? 0, "min");
+    this.constraintsChanged("min");
+  }
+  /** @default 100 */
+  @property({ noAccessor: true, type: Number, converter: optionalNumber }) get max(): number {
+    return this.maximum;
+  }
+  set max(value: number | undefined) {
+    this.maximum = finite(value ?? 100, "max");
+    this.constraintsChanged("max");
+  }
+  /** @default 1 */
+  @property({ noAccessor: true, type: Number, converter: optionalNumber }) get step(): number {
+    return this.increment;
+  }
+  set step(value: number | undefined) {
+    const next = finite(value ?? 1, "step");
+    if (next <= 0) {
+      throw new RangeError("step must be positive");
+    }
+    this.increment = next;
+    this.constraintsChanged("step");
+  }
+  /** @default 10 */
+  @property({ noAccessor: true, attribute: "large-step", converter: optionalNumber }) get largeStep(): number {
+    return this.largeIncrement;
+  }
+  set largeStep(value: number | undefined) {
+    const next = finite(value ?? 10, "largeStep");
+    if (next <= 0) {
+      throw new RangeError("largeStep must be positive");
+    }
+    this.largeIncrement = next;
+    this.constraintsChanged("largeStep");
+  }
+  /** @default 0 */
+  @property({ noAccessor: true, attribute: "min-steps-between-values", converter: optionalNumber }) get minStepsBetweenValues(): number {
+    return this.minimumSteps;
+  }
+  set minStepsBetweenValues(value: number | undefined) {
+    const next = value ?? 0;
+    if (!Number.isInteger(next) || next < 0) {
+      throw new RangeError("minStepsBetweenValues must be a nonnegative integer");
+    }
+    this.minimumSteps = next;
+    this.constraintsChanged("minStepsBetweenValues");
+  }
+  /** @default "horizontal" */
+  @property({ noAccessor: true, converter: optionalString }) get orientation(): "horizontal" | "vertical" {
+    return this.axis;
+  }
+  set orientation(value: "horizontal" | "vertical" | undefined) {
+    const next = value ?? "horizontal";
+    if (next !== "horizontal" && next !== "vertical") {
+      throw new TypeError("Invalid slider orientation");
+    }
+    this.axis = next;
+    this.constraintsChanged("orientation");
+  }
+  /** @default [] */
+  @property({ noAccessor: true, attribute: "thumb-labels", converter: { fromAttribute: (value: string | null) => (value === null ? undefined : JSON.parse(value)) } })
+  get thumbLabels(): readonly string[] {
+    return this.names;
+  }
+  set thumbLabels(value: readonly string[] | undefined) {
+    if (value !== undefined && (!Array.isArray(value) || value.some((name) => typeof name !== "string"))) {
+      throw new TypeError("thumbLabels must be strings");
+    }
+    this.names = Object.freeze([...(value ?? [])]);
+    this.nativeForm?.sync();
+    this.requestUpdate("thumbLabels");
+  }
+  @property({ noAccessor: true, attribute: false }) get formatValue(): ((value: number, index: number) => string) | undefined {
+    return this.formatter;
+  }
+  set formatValue(value: ((value: number, index: number) => string) | undefined) {
+    if (value !== undefined && typeof value !== "function") {
+      throw new TypeError("formatValue must be a function");
+    }
+    this.formatter = value;
+    this.nativeForm?.sync();
+    this.requestUpdate("formatValue");
+  }
+  protected readonly nativeForm: NativeFormController<readonly number[], Configuration> = new NativeFormController(this, {
+    initialValue: Object.freeze([0]),
+    valueAttribute: "value",
+    normalize: (value) => {
+      const next = sliderSnapshot(value),
+        current = this.nativeForm?.value;
+      return current && sameSliderValues(current, next) ? current : next;
+    },
+    fromAttribute: (value) => (value === null ? [0] : sliderSnapshot(JSON.parse(value))),
+    toAttribute: JSON.stringify,
+    extra: () => this.configuration(),
+    serialize: (state) => {
+      if (!state.name) {
+        return null;
       }
-    `,
-  ];
-  /** One value (`[50]` or `50`) or a range (`[50, 75]`). Defaults to `min`. */
-  @property({ converter: values }) value: number[] = [];
-  @property({ type: Number }) min = 0;
-  @property({ type: Number }) max = 100;
-  @property({ type: Number }) step = 1;
-  /** The step of Page Up/Down and of a Shift + arrow key. */
-  @property({ type: Number, attribute: "large-step" }) largeStep = 10;
-  /** The least number of steps two thumbs keep between them. */
-  @property({ type: Number, attribute: "min-steps-between-values" }) minStepsBetweenValues = 0;
-  /** The form field name; a range submits it once per value. */
-  @property() name = "";
-  @property({ type: Boolean, reflect: true }) disabled = false;
-  /** The text above the track. */
-  @property() label = "";
-  /** Keeps the label text as written. */
-  @property({ type: Boolean, attribute: "bypass-casing" }) bypassCasing = false;
-  /** The group fills the row instead of keeping its 216px minimum. */
-  @property({ type: Boolean, attribute: "full-width" }) fullWidth = false;
-  /** A small numeric field before the track, bound to the first value. */
-  @property({ type: Boolean, attribute: "show-start-input" }) showStartInput = false;
-  /** A small numeric field after the track, bound to the second value. */
-  @property({ type: Boolean, attribute: "show-end-input" }) showEndInput = false;
-  /** The accessible name of a thumb, by index. */
-  @property({ attribute: false }) getAriaLabel?: (index: number) => string;
-  /** The spoken value of a thumb: `(formatted, value, index)`. A range says "50 start range" / "75 end range" by default. */
-  @property({ attribute: false }) getAriaValueText?: (formatted: string, value: number, index: number) => string;
-  /** The thumb whose input has focus. */
-  @atomState() private active = -1;
-  /** The thumb used last, kept above the other. */
-  @atomState() private lastUsed = -1;
-  @atomState() private dragging = false;
-  @query(".control") private control!: HTMLElement;
-  @queryAll(".thumb") private thumbs!: NodeListOf<HTMLElement>;
-  private internals?: ElementInternals;
-  private initial: number[] = [];
-  private uid = `slider-${Math.random().toString(36).slice(2, 8)}`;
-  private interactions = [new Interaction(this, { disabled: () => this.disabled }), new Interaction(this, { disabled: () => this.disabled })];
-  /** The thumb under the pointer, its offset from the thumb's centre, the values when the drag began, and the last value the drag set. */
-  private pressed = -1;
-  private offset = 0;
-  private startValues: number[] = [];
-  private lastDrag: number[] | null = null;
-  constructor() {
-    super();
-    try {
-      this.internals = this.attachInternals();
-    } catch {}
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    this.initial = this.value;
-  }
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.endDrag();
-  }
-  formResetCallback() {
-    this.value = this.initial;
-  }
-  /** The values as drawn: a range sorted, a single value kept within the bounds. */
-  private get shown(): number[] {
-    const v = this.value;
-    return v.length > 1 ? [...v].sort((a, b) => a - b) : [clamp(v[0] ?? this.min, this.min, this.max)];
-  }
-  willUpdate() {
-    if (typeof this.value === "number") this.value = [this.value];
-  }
-  updated(ch: Map<string, unknown>) {
-    const thumbs = this.thumbs;
-    this.interactions[0].attach(thumbs[0]);
-    this.interactions[1].attach(thumbs[1] ?? null);
-    if (ch.has("value") || ch.has("name")) {
-      if (!this.name) this.internals?.setFormValue?.(null);
-      else {
-        const data = new FormData();
-        for (const v of this.shown) data.append(this.name, String(v));
-        this.internals?.setFormValue?.(data);
+      const data = new FormData();
+      for (const value of state.value) {
+        data.append(state.name, String(value));
+      }
+      return data;
+    },
+    restoration: (state) => JSON.stringify(state.value),
+    restore: (value) => (typeof value === "string" ? sliderSnapshot(JSON.parse(value)) : [0]),
+    changed: (reason) => {
+      if (reason !== "user") {
+        this.endGesture(false);
+        this.nativeEdit.set(() => undefined);
+      }
+    },
+    target: () => {
+      const control = this.controls[Math.min(this.lastFocused, this.controls.length - 1)];
+      return control && this.renderRoot?.contains(control) ? control : undefined;
+    },
+    synchronize: (state, config) => {
+      this.ensureControls(state.value.length);
+      const valid = sliderConfigurationValid(config, state.value.length),
+        disabled = state.disabled || state.platformDisabled || !valid;
+      if (disabled) {
+        this.endGesture(false);
+      }
+      const displayed = valid ? sliderNormalize(state.value, config) : state.value.map(() => config.min);
+      const invalid = !!state.customValidity || Object.keys(this.validation(state.value, config).flags).length > 0 || !!this.field.description.get()?.invalid;
+      for (const [index, input] of this.controls.entries()) {
+        input.setAttribute("aria-invalid", String(invalid));
+        input.disabled = disabled;
+        input.min = String(config.min);
+        input.max = String(valid ? config.max : config.min);
+        input.step = String(config.step);
+        input.value = String(displayed[index]);
+        const [low, high] = valid ? sliderBounds(displayed, index, config) : [config.min, config.min];
+        input.setAttribute("aria-valuemin", String(low));
+        input.setAttribute("aria-valuemax", String(high));
+        input.setAttribute("aria-valuenow", String(input.valueAsNumber));
+        input.setAttribute("aria-valuetext", this.valueText(input.valueAsNumber, index));
+        input.setAttribute("aria-orientation", config.orientation);
+        const ownName = this.thumbLabels[index] || (state.value.length === 1 ? this.ariaLabel : null);
+        input.setAttribute("aria-label", ownName || this.thumbName(index));
+        input.ariaLabelledByElements = state.value.length === 1 && !ownName ? (this.ariaLabelledByElements ?? [...(super.semanticDefaults.labelledByElements ?? [])]) : null;
+        input.ariaDescribedByElements = [...(super.semanticDefaults.describedByElements ?? []), ...(this.ariaDescribedByElements ?? [])];
+      }
+    },
+    validate: (state, config) => this.validation(state.value, config),
+  });
+  private validation(value: readonly number[], config: SliderConfiguration) {
+    if (!sliderConfigurationValid(config, value.length)) {
+      return { flags: { customError: true }, message: this.text("slider.constraints", "Set valid slider bounds and thumb spacing.") };
+    }
+    this.constraint.type = "number";
+    this.constraint.min = String(config.min);
+    this.constraint.max = String(config.max);
+    this.constraint.step = String(config.step);
+    for (const entry of value) {
+      this.constraint.value = String(entry);
+      const result = nativeValidation(this.constraint);
+      if (Object.keys(result.flags).length) {
+        return result;
       }
     }
+    if (!sameSliderValues(value, sliderNormalize(value, config))) {
+      return { flags: { customError: true }, message: this.text("slider.spacing", "Keep the required space between values.") };
+    }
+    return { flags: {}, message: "" };
   }
-  private emit(type: "acme-change" | "acme-commit", value: number[]) {
-    this.dispatchEvent(new CustomEvent(type, { detail: { value }, bubbles: true, composed: true }));
+  /** @default [0] */
+  @property({ noAccessor: true, type: Array }) get value(): readonly number[] {
+    return this.nativeForm.value;
   }
-  /** Sets the value when it differs; true when it did. */
-  private setValue(next: number[]): boolean {
-    if (next.some((v) => Number.isNaN(v)) || same(next, this.value)) return false;
-    this.value = next;
-    this.emit("acme-change", next);
-    return true;
+  set value(value: readonly number[]) {
+    this.nativeForm.setValue(value);
   }
-  private input(index: number) {
-    return this.thumbs[index]?.querySelector("input") as HTMLInputElement | null;
+  /** @default [0] */
+  @property({ noAccessor: true, attribute: false }) get defaultValue(): readonly number[] {
+    return this.nativeForm.defaultValue;
   }
-  private focusThumb(index: number, visible: boolean) {
-    this.input(index)?.focus({ preventScroll: true, focusVisible: visible } as FocusOptions);
+  set defaultValue(value: readonly number[]) {
+    this.nativeForm.setDefaultValue(value);
   }
-  /** The value under a pointer position, with the thumbs it pushes; null when no thumb is pressed. */
-  private fromPointer(x: number): { value: number[]; index: number } | null {
-    const index = this.pressed;
-    const vals = this.shown;
-    const range = vals.length > 1;
-    if (index < 0 || index >= vals.length) return null;
-    const rect = this.control.getBoundingClientRect();
-    const cs = getComputedStyle(this.control);
-    const px = (s: string) => (Number.isNaN(parseFloat(s)) ? 0 : parseFloat(s));
-    const start = px(cs.borderInlineStartWidth) + px(cs.paddingInlineStart);
-    const end = px(cs.borderInlineEndWidth) + px(cs.paddingInlineEnd);
-    const span = rect.width - start - end;
-    const rtl = getComputedStyle(this).direction === "rtl";
-    const at = x - this.offset;
-    const along = (rtl ? rect.right - at : at - rect.left) - start;
-    let v = (this.max - this.min) * clamp(along / span, 0, 1) + this.min;
-    v = clamp(snap(v, this.step, this.min), this.min, this.max);
-    if (!range) return { value: [v], index };
-    return { value: push(vals, index, v, this.min, this.max, this.step, this.minStepsBetweenValues, this.startValues), index };
+  private thumbName(index: number): string {
+    return (
+      this.thumbLabels[index] ||
+      (this.value.length === 2
+        ? this.text(index ? "slider.maximum" : "slider.minimum", index ? "Maximum" : "Minimum")
+        : this.text("slider.thumb", "Value {index} of {count}")
+            .replaceAll("{index}", String(index + 1))
+            .replaceAll("{count}", String(this.value.length)))
+    );
   }
-  private onPointerDown = (e: PointerEvent) => {
-    if (this.disabled || e.button !== 0 || e.defaultPrevented) return;
-    const thumbs = Array.from(this.thumbs);
-    const target = e.composedPath()[0] as Node;
-    const vals = this.shown;
-    this.startValues = vals.slice();
-    let index = thumbs.findIndex((t) => t.contains(target));
-    if (index >= 0) {
-      const r = thumbs[index].getBoundingClientRect();
-      this.offset = e.clientX - (r.left + r.right) / 2;
-      // Thumbs stacked at the maximum: the first of them moves.
-      if (vals[index] === this.max) while (index > 0 && vals[index - 1] === this.max) index--;
-    } else {
-      this.offset = 0;
-      let best = Number.POSITIVE_INFINITY;
-      index = 0;
-      thumbs.forEach((t, i) => {
-        const r = t.getBoundingClientRect();
-        const d = Math.abs(e.clientX - (r.left + r.right) / 2);
-        if (d <= best) {
-          best = d;
-          index = i;
+  private valueText(value: number, index: number): string {
+    return this.formatValue?.(value, index) ?? new Intl.NumberFormat(this.themeContext.scope.effective.get().locale, { maximumSignificantDigits: 21 }).format(value);
+  }
+  protected get semanticTarget(): HTMLElement | undefined {
+    return this.renderRoot?.querySelector<HTMLElement>("[part=root]") ?? undefined;
+  }
+  protected get semanticDefaults() {
+    return { ...super.semanticDefaults, role: "group" };
+  }
+  private ensureControls(count: number): void {
+    if (this.focused >= count) {
+      this.focused = -1;
+    }
+    this.lastFocused = Math.min(this.lastFocused, count - 1);
+    while (this.controls.length > count) {
+      this.controls.pop()!.remove();
+      const controller = this.interactions.pop()!;
+      controller.detach();
+      this.removeController(controller);
+    }
+    while (this.controls.length < count) {
+      const index = this.controls.length,
+        input = this.ownerDocument.createElement("input");
+      input.type = "range";
+      input.className = "native";
+      input.addEventListener("keydown", (event) => this.key(event, index));
+      input.addEventListener("focus", () => {
+        this.focused = this.lastFocused = index;
+      });
+      input.addEventListener("blur", () => {
+        if (this.gesture?.index === index) {
+          this.endGesture(false);
+        }
+        this.focused = -1;
+      });
+      input.addEventListener("input", (event) => {
+        event.stopPropagation();
+        if (this.gesture || input.disabled) {
+          return;
+        }
+        this.nativeEdit.set(this.nativeEdit.get() ?? this.value);
+        this.edit(index, input.valueAsNumber);
+      });
+      input.addEventListener("change", (event) => {
+        event.stopPropagation();
+        if (this.gesture || input.disabled) {
+          return;
+        }
+        const previous = this.nativeEdit.get() ?? this.value;
+        this.edit(index, input.valueAsNumber);
+        this.nativeEdit.set(() => undefined);
+        if (!sameSliderValues(previous, this.value)) {
+          this.emit("acme-change");
         }
       });
+      this.controls.push(input);
+      this.interactions.push(new Interaction(this, { disabled: () => input.disabled }));
     }
-    this.pressed = index;
-    this.lastDrag = null;
-    // The focus goes to the pressed thumb's input, and stays there.
-    e.preventDefault();
-    if (thumbs[index]?.contains(target) === false) {
-      const next = this.fromPointer(e.clientX);
-      if (next && this.setValue(next.value)) this.lastDrag = next.value;
+  }
+  private emit(type: "acme-input" | "acme-change"): void {
+    this.dispatchEvent(new CustomEvent(type, { detail: { value: this.value }, bubbles: true, composed: true }));
+  }
+  private edit(index: number, candidate: number): boolean {
+    if (this.nativeForm.effectiveDisabled || !sliderConfigurationValid(this.configuration(), this.value.length)) {
+      return false;
     }
-    this.focusThumb(index, false);
-    this.dragging = true;
-    try {
-      this.control.setPointerCapture(e.pointerId);
-    } catch {}
-    window.addEventListener("pointermove", this.onPointerMove);
-    window.addEventListener("pointerup", this.onPointerUp);
-    window.addEventListener("pointercancel", this.onPointerUp);
-  };
-  private onPointerMove = (e: PointerEvent) => {
-    if (e.buttons === 0) {
-      this.onPointerUp(e);
+    const baseline = sliderNormalize(this.value, this.configuration()),
+      next = sliderMove(baseline, index, candidate, this.configuration());
+    if (sameSliderValues(next, this.value)) {
+      this.nativeForm.sync();
+      return false;
+    }
+    this.nativeForm.setValue(next, "user");
+    const accepted = this.value;
+    this.emit("acme-input");
+    return this.value === accepted;
+  }
+  private key(event: KeyboardEvent, index: number): void {
+    if (event.defaultPrevented || event.isComposing || event.altKey || event.ctrlKey || event.metaKey || this.controls[index]?.disabled) {
       return;
     }
-    const next = this.fromPointer(e.clientX);
-    if (!next || !spaced(next.value, this.step, this.minStepsBetweenValues)) return;
-    if (this.setValue(next.value)) this.lastDrag = next.value;
-  };
-  private onPointerUp = (e: PointerEvent) => {
-    this.active = -1;
-    this.dragging = false;
-    if (this.lastDrag) this.emit("acme-commit", this.lastDrag);
-    try {
-      if (this.control?.hasPointerCapture(e.pointerId)) this.control.releasePointerCapture(e.pointerId);
-    } catch {}
-    this.endDrag();
-  };
-  private endDrag() {
-    this.pressed = -1;
-    this.offset = 0;
-    this.startValues = [];
-    this.lastDrag = null;
-    window.removeEventListener("pointermove", this.onPointerMove);
-    window.removeEventListener("pointerup", this.onPointerUp);
-    window.removeEventListener("pointercancel", this.onPointerUp);
-  }
-  /** A keyboard or native change of one thumb's input: the value settles between its neighbours and is committed at once. */
-  private fromInput(index: number, next: number) {
-    const settled = settle(this.shown, index, next, this.min, this.max);
-    if (!spaced(settled, this.step, this.minStepsBetweenValues)) return;
-    if (this.setValue(settled)) this.emit("acme-commit", settled);
-  }
-  private onKeyDown = (index: number) => (e: KeyboardEvent) => {
-    if (e.defaultPrevented) return;
-    const vals = this.shown;
-    const range = vals.length > 1;
-    const { min, max, step, largeStep: large } = this;
-    const gap = step * this.minStepsBetweenValues;
-    const rtl = getComputedStyle(this).direction === "rtl";
-    const n = snap(vals[index], step, min);
-    const by = e.shiftKey ? large : step;
-    let t: number | null = null;
-    switch (e.key) {
-      case "ArrowUp":
-        t = stepFrom(n, by, 1, min, max);
-        break;
-      case "ArrowRight":
-        t = stepFrom(n, by, rtl ? -1 : 1, min, max);
-        break;
-      case "ArrowDown":
-        t = stepFrom(n, by, -1, min, max);
-        break;
-      case "ArrowLeft":
-        t = stepFrom(n, by, rtl ? 1 : -1, min, max);
-        break;
-      case "PageUp":
-        t = stepFrom(n, large, 1, min, max);
-        break;
-      case "PageDown":
-        t = stepFrom(n, large, -1, min, max);
+    const config = this.configuration(),
+      current = sliderNormalize(this.value, config),
+      [low, high] = sliderBounds(current, index, config),
+      amount = event.shiftKey || event.key.startsWith("Page") ? this.largeStep : this.step;
+    const rtl = this.ownerDocument.defaultView!.getComputedStyle(this).direction === "rtl";
+    let next: number;
+    switch (event.key) {
+      case "Home":
+        next = low;
         break;
       case "End":
-        t = range && Number.isFinite(vals[index + 1]) ? vals[index + 1] - gap : max;
+        next = high;
         break;
-      case "Home":
-        t = range && Number.isFinite(vals[index - 1]) ? vals[index - 1] + gap : min;
+      case "ArrowUp":
+      case "PageUp":
+        next = addDecimal(current[index]!, amount);
+        break;
+      case "ArrowDown":
+      case "PageDown":
+        next = addDecimal(current[index]!, -amount);
+        break;
+      case "ArrowRight":
+        next = addDecimal(current[index]!, this.orientation === "horizontal" && rtl ? -amount : amount);
+        break;
+      case "ArrowLeft":
+        next = addDecimal(current[index]!, this.orientation === "horizontal" && rtl ? amount : -amount);
         break;
       default:
         return;
     }
-    if (ARROWS.has(e.key)) e.stopPropagation();
-    // A key press makes the focus visible, on a thumb the pointer focused too.
-    const input = e.currentTarget as HTMLInputElement;
-    let visible = false;
-    try {
-      visible = input.matches(":focus-visible");
-    } catch {}
-    if (!visible) {
-      input.blur();
-      this.focusThumb(index, true);
+    event.preventDefault();
+    this.endGesture(false);
+    this.nativeEdit.set(() => undefined);
+    next = Math.max(low, Math.min(high, next));
+    if (next !== current[index]) {
+      next = snapDecimal(next, this.step, this.min, next > current[index]! ? "ceil" : "floor");
     }
-    this.fromInput(index, t);
-    e.preventDefault();
-  };
-  /** A field change: the typed number replaces the value at that index, as typed. */
-  private fromField = (index: number) => (e: Event) => {
-    const n = Number((e as CustomEvent).detail?.value ?? "");
-    if (Number.isNaN(n)) return;
-    const next = this.value.slice();
-    next[index] = n;
-    this.setValue(next);
-  };
-  /** A click on the label focuses the control it names: the start field, or the first thumb. */
-  private focusLabelled = (e: Event) => {
-    const id = (e.currentTarget as HTMLLabelElement).htmlFor;
-    (this.shadowRoot?.getElementById(id) as HTMLElement | null)?.focus();
-  };
-  private field(kind: "start" | "end", index: number) {
-    const v = this.value[index];
-    return html`<acme-input
-      class=${`${kind}-input`}
-      id=${kind === "start" ? `${this.uid}-start` : `${this.uid}-end`}
-      size="small"
-      type=${kind === "start" ? "text" : "number"}
-      aria-label=${kind === "start" ? "Starting range value" : "Ending range value"}
-      ?disabled=${this.disabled}
-      .value=${v === undefined ? "" : String(v)}
-      @acme-input=${this.fromField(index)}
-    ></acme-input>`;
+    if (this.edit(index, next)) {
+      this.emit("acme-change");
+    }
   }
-  private thumb(v: number, i: number, range: boolean) {
-    const pct = ((v - this.min) * 100) / (this.max - this.min);
-    const z = range ? (this.active === i ? 2 : this.lastUsed === i ? 1 : 0) : this.active === i ? 1 : 0;
-    const style = `position:absolute;inset-inline-start:${pct}%;top:50%;translate:-50% -50%${z ? `;z-index:${z}` : ""}`;
-    const text = this.getAriaValueText ? this.getAriaValueText(String(v), v, i) : range ? `${v} ${i === 0 ? "start" : "end"} range` : nothing;
-    const label = this.getAriaLabel ? this.getAriaLabel(i) : this.label || nothing;
-    const on = (off = false) => (off ? nothing : "");
-    return html`<div class="thumb" data-index=${i} data-orientation="horizontal" data-disabled=${on(!this.disabled)} data-dragging=${on(!this.dragging)} style=${style} part="thumb">
-      <input
-        type="range"
-        id=${`${this.uid}-${i}`}
-        min=${this.min}
-        max=${this.max}
-        step=${this.step}
-        name=${this.name || nothing}
-        ?disabled=${this.disabled}
-        aria-orientation="horizontal"
-        aria-valuenow=${v}
-        aria-valuetext=${text}
-        aria-label=${label}
-        style=${HIDDEN}
-        .value=${String(v)}
-        @keydown=${this.onKeyDown(i)}
-        @change=${(e: Event) => this.fromInput(i, (e.target as HTMLInputElement).valueAsNumber)}
-        @focus=${() => {
-          this.active = i;
-          this.lastUsed = i;
-        }}
-        @blur=${() => {
-          this.active = -1;
-        }}
-      />
-    </div>`;
+  private pointerValue(event: PointerEvent, offset = 0): number | undefined {
+    const track = this.renderRoot.querySelector<HTMLElement>("[part=track]")!,
+      rect = track.getBoundingClientRect(),
+      vertical = this.orientation === "vertical",
+      length = vertical ? rect.height : rect.width;
+    if (!length) {
+      return undefined;
+    }
+    const rtl = this.ownerDocument.defaultView!.getComputedStyle(this).direction === "rtl";
+    const fraction = vertical ? (rect.bottom - event.clientY + offset) / length : rtl ? (rect.right - event.clientX + offset) / length : (event.clientX - rect.left - offset) / length;
+    return this.min + Math.max(0, Math.min(1, fraction)) * (this.max - this.min);
+  }
+  private pointerDown = (event: PointerEvent): void => {
+    if (event.defaultPrevented || event.button !== 0 || !event.isPrimary || this.gesture || this.nativeForm.effectiveDisabled || !sliderConfigurationValid(this.configuration(), this.value.length)) {
+      return;
+    }
+    const candidate = this.pointerValue(event);
+    if (candidate === undefined) {
+      return;
+    }
+    const path = event.composedPath(),
+      actual = this.controls.findIndex((input) => path.includes(input));
+    let index = actual;
+    if (index < 0) {
+      const distances = this.controls.map((control) => Math.abs(control.valueAsNumber - candidate));
+      index = distances.indexOf(Math.min(...distances));
+    }
+    const target = event.currentTarget as HTMLElement,
+      input = this.controls[index]!,
+      thumb = input.parentElement!,
+      rect = thumb.getBoundingClientRect();
+    const offset = actual < 0 ? 0 : this.orientation === "vertical" ? event.clientY - (rect.top + rect.bottom) / 2 : event.clientX - (rect.left + rect.right) / 2;
+    event.preventDefault();
+    input.focus({ preventScroll: true });
+    this.nativeEdit.set(() => undefined);
+    const origin = input.valueAsNumber;
+    const coincident = this.controls.flatMap((control, position) => (control.valueAsNumber === origin ? [position] : []));
+    this.gesture = { pointer: event.pointerId, index, start: this.value, offset, target, coincident, origin };
+    const win = this.ownerDocument.defaultView!;
+    const move = (e: PointerEvent) => {
+      if (e.pointerId !== this.gesture?.pointer) {
+        return;
+      }
+      if (!this.gesture.target.hasPointerCapture(e.pointerId)) {
+        this.endGesture(false);
+        return;
+      }
+      if (!e.buttons) {
+        this.endGesture(false);
+        return;
+      }
+      const next = this.pointerValue(e, this.gesture.offset);
+      if (next !== undefined) {
+        const current = this.gesture;
+        const snapped = snapDecimal(next, this.step, this.min);
+        if (current.coincident.length > 1 && snapped !== current.origin) {
+          const selected = snapped < current.origin ? current.coincident[0]! : current.coincident.at(-1)!;
+          this.gesture = { ...current, index: selected, coincident: [] };
+          this.controls[selected]!.focus({ preventScroll: true });
+        }
+        this.edit(this.gesture!.index, next);
+      }
+    };
+    const up = (e: PointerEvent) => {
+      if (e.pointerId === this.gesture?.pointer) {
+        this.endGesture(this.gesture.target.hasPointerCapture(e.pointerId));
+      }
+    };
+    const cancel = (e: Event) => {
+      if (!("pointerId" in e) || (e as PointerEvent).pointerId === this.gesture?.pointer) {
+        this.endGesture(false);
+      }
+    };
+    win.addEventListener("pointermove", move);
+    win.addEventListener("pointerup", up);
+    win.addEventListener("pointercancel", cancel);
+    win.addEventListener("blur", cancel);
+    target.addEventListener("lostpointercapture", cancel);
+    this.cleanupGesture = () => {
+      win.removeEventListener("pointermove", move);
+      win.removeEventListener("pointerup", up);
+      win.removeEventListener("pointercancel", cancel);
+      win.removeEventListener("blur", cancel);
+      target.removeEventListener("lostpointercapture", cancel);
+    };
+    try {
+      target.setPointerCapture(event.pointerId);
+    } catch {
+      this.endGesture(false);
+      return;
+    }
+    if (actual < 0) {
+      this.edit(index, candidate);
+    }
+  };
+  private endGesture(commit: boolean): void {
+    const gesture = this.gesture;
+    if (!gesture) {
+      return;
+    }
+    this.gesture = undefined;
+    this.cleanupGesture?.();
+    this.cleanupGesture = undefined;
+    if (gesture.target.hasPointerCapture?.(gesture.pointer)) {
+      gesture.target.releasePointerCapture(gesture.pointer);
+    }
+    if (commit && !sameSliderValues(gesture.start, this.value)) {
+      this.emit("acme-change");
+    }
+  }
+  disconnectedCallback(): void {
+    this.endGesture(false);
+    this.nativeEdit.set(() => undefined);
+    this.focused = -1;
+    super.disconnectedCallback();
+  }
+  protected willUpdate(): void {
+    this.indicator.update();
+  }
+  protected updated(): void {
+    this.nativeForm.sync();
+    this.controls.forEach((input, index) => this.interactions[index]!.attach(input.parentElement));
+    this.renderRoot.querySelector<HTMLElement>("[part=root]")?.style.setProperty("--slider-label-opacity", String(Math.max(0, Math.min(1, this.indicator.value))));
   }
   render() {
-    const vals = this.shown;
-    const range = vals.length > 1;
-    const pct = (v: number) => ((v - this.min) * 100) / (this.max - this.min);
-    const a = pct(vals[0]);
-    const b = pct(vals[vals.length - 1]);
-    const fill = range ? `position:relative;height:inherit;inset-inline-start:${a}%;width:${b - a}%` : `position:relative;height:inherit;inset-inline-start:0;width:${b}%`;
-    const off = this.disabled ? "" : nothing;
-    const drag = this.dragging ? "" : nothing;
-    return html`<div class=${this.cls("slider", { full: this.fullWidth })} part="slider">
-      ${this.label ? html`<label class=${this.cls("label", { plain: this.bypassCasing })} for=${this.showStartInput ? `${this.uid}-start` : `${this.uid}-0`} @click=${this.focusLabelled} part="label"><div class="text">${this.label}</div></label>` : nothing}
-      <div class="row">
-        ${this.showStartInput ? this.field("start", 0) : nothing}
-        <div class="group" role="group" id=${this.uid} data-orientation="horizontal" data-disabled=${off} data-dragging=${drag} part="group">
-          <div class="control" data-orientation="horizontal" data-disabled=${off} data-dragging=${drag} @pointerdown=${this.onPointerDown}>
-            <div class="track" data-orientation="horizontal" data-disabled=${off} data-dragging=${drag} style="position:relative" part="track">
-              <div class="fill" data-orientation="horizontal" data-disabled=${off} data-dragging=${drag} style=${fill} part="fill"></div>
-              ${vals.map((v, i) => this.thumb(v, i, range))}
-            </div>
-          </div>
-        </div>
-        ${this.showEndInput ? this.field("end", 1) : nothing}
-      </div>
-    </div>`;
+    const config = this.configuration(),
+      valid = sliderConfigurationValid(config, this.value.length),
+      percent = (value: number) => (valid ? Math.max(0, Math.min(100, ((value - this.min) / (this.max - this.min)) * 100)) : 0);
+    const displayed = this.controls.map((input) => input.valueAsNumber);
+    const start = this.value.length > 1 ? percent(displayed[0]!) : 0,
+      end = percent(displayed.at(-1)!);
+    return html`<div class="root" part="root" data-orientation=${this.orientation} ?data-disabled=${this.nativeForm.effectiveDisabled || !valid}><slot name="start"></slot><div class="control" @pointerdown=${this.pointerDown}><div class="track" part="track"><div class="range" part="range" style=${`--slider-start:${start}%;--slider-end:${100 - end}%`}></div>${this.controls.map((input, index) => html`<span class="thumb" part="thumb" style=${`--slider-position:${percent(displayed[index]!)}%`} ?data-current=${this.focused === index || this.gesture?.index === index}><output class="label" part="label" aria-hidden="true">${this.valueText(displayed[index]!, index)}</output><span class="handle" aria-hidden="true"></span>${input}</span>`)}</div></div><slot name="end"></slot></div>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-slider": AcmeSlider;

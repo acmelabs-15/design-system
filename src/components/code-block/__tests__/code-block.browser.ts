@@ -1,0 +1,36 @@
+const fixture = window as typeof window & { code: AcmeCodeBlock; requests: unknown[]; errors: unknown[]; writes: string[]; highlighter: typeof highlighter };
+import { AcmeCheckIcon } from "../../../generated/icons/classes/check-icon";
+import { AcmeContentCopyIcon } from "../../../generated/icons/classes/content-copy-icon";
+import { AcmeSpinner } from "../../../components/spinner/spinner";
+import { AcmeCopyButton } from "../../../components/copy-button/copy-button";
+import { AcmeDescriptionIcon } from "../../../generated/icons/classes/description-icon";
+import { AcmeScrollCorner } from "../../../components/scroll-corner/scroll-corner";
+import { AcmeScrollThumb } from "../../../components/scroll-thumb/scroll-thumb";
+import { AcmeScrollbar } from "../../../components/scrollbar/scrollbar";
+import { AcmeScrollArea } from "../../../components/scroll-area/scroll-area";
+import { AcmeScrollViewport } from "../../../components/scroll-viewport/scroll-viewport";
+import { AcmeCodeBlock } from "../../../components/code-block/code-block";
+
+customElements.define("acme-check-icon", AcmeCheckIcon);
+customElements.define("acme-content-copy-icon", AcmeContentCopyIcon);
+customElements.define("acme-spinner", AcmeSpinner);
+customElements.define("acme-copy-button", AcmeCopyButton);
+customElements.define("acme-description-icon", AcmeDescriptionIcon);
+customElements.define("acme-scroll-corner", AcmeScrollCorner);
+customElements.define("acme-scroll-thumb", AcmeScrollThumb);
+customElements.define("acme-scrollbar", AcmeScrollbar);
+customElements.define("acme-scroll-area", AcmeScrollArea);
+customElements.define("acme-scroll-viewport", AcmeScrollViewport);
+customElements.define("acme-code-block", AcmeCodeBlock);
+import { highlighter } from "../../../shared/highlight";
+
+document.body.innerHTML = '<acme-code-block id="code" filename="sample.ts" language="ts"></acme-code-block>';
+fixture.code = document.querySelector<AcmeCodeBlock>("#code")!;
+fixture.code.code = "\nconst first = 1;  \nconst second = 2;\n";
+fixture.requests = [];
+fixture.errors = [];
+fixture.writes = [];
+fixture.highlighter = highlighter;
+fixture.code.addEventListener("acme-request", (event) => fixture.requests.push((event as CustomEvent<unknown>).detail));
+fixture.code.addEventListener("acme-error", (event) => fixture.errors.push((event as CustomEvent<unknown>).detail));
+Object.defineProperty(navigator, "clipboard", { configurable: true, value: { writeText: async (value: string) => fixture.writes.push(value) } });

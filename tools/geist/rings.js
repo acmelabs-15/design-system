@@ -19,7 +19,9 @@
   const deep = (root, acc = []) => {
     for (const el of root.querySelectorAll("*")) {
       acc.push(el);
-      if (el.shadowRoot) deep(el.shadowRoot, acc);
+      if (el.shadowRoot) {
+        deep(el.shadowRoot, acc);
+      }
     }
     return acc;
   };
@@ -27,10 +29,16 @@
   /** A box a person can reach with the Tab key. `tabindex="-1"` is script-focusable only, so it
    *  never shows a focus-visible ring and needs none. */
   const focusable = (el) => {
-    if (el.disabled || el.getAttribute("aria-disabled") === "true") return false;
+    if (el.disabled || el.getAttribute("aria-disabled") === "true") {
+      return false;
+    }
     const t = el.localName;
-    if (t === "button" || t === "input" || t === "textarea" || t === "select") return true;
-    if (t === "a" && el.hasAttribute("href")) return true;
+    if (t === "button" || t === "input" || t === "textarea" || t === "select") {
+      return true;
+    }
+    if (t === "a" && el.hasAttribute("href")) {
+      return true;
+    }
     const ti = el.getAttribute("tabindex");
     return ti !== null && ti !== "-1";
   };
@@ -43,32 +51,44 @@
     return { shadow: cs.boxShadow, outlineStyle: cs.outlineStyle, outlineWidth: cs.outlineWidth, outlineColor: cs.outlineColor };
   };
   const label = (v) => {
-    if (v.shadow !== "none") return "own (shadow)";
-    if (v.outlineStyle === "auto") return "browser";
-    if (v.outlineStyle !== "none") return "own (outline)";
+    if (v.shadow !== "none") {
+      return "own (shadow)";
+    }
+    if (v.outlineStyle === "auto") {
+      return "browser";
+    }
+    if (v.outlineStyle !== "none") {
+      return "own (outline)";
+    }
     return "none";
   };
 
   window.__rings = (side) => {
     const previews =
       side === "geist"
-        ? [...document.querySelectorAll('button[aria-controls^="radix-"][data-state]')]
-            .map((b) => b.closest("div.bg-background-200")?.previousElementSibling)
-            .filter(Boolean)
+        ? [...document.querySelectorAll('button[aria-controls^="radix-"][data-state]')].map((b) => b.closest("div.bg-background-200")?.previousElementSibling).filter(Boolean)
         : [...document.querySelectorAll(".showcase .preview")];
     const out = [];
     for (const [pi, p] of previews.entries()) {
       for (const el of deep(p)) {
-        if (!focusable(el)) continue;
+        if (!focusable(el)) {
+          continue;
+        }
         const rest = shown(el);
         // The census's own path: the attribute on the box and on everything under it, so a ring a
         // parent draws for a focused child is reached too.
         const marked = [el, ...deep(el)];
         const kept = marked.filter((n) => n.hasAttribute("data-focus"));
-        for (const n of marked) n.setAttribute("data-focus", "true");
+        for (const n of marked) {
+          n.setAttribute("data-focus", "true");
+        }
         void el.offsetHeight;
         const focused = shown(el);
-        for (const n of marked) if (!kept.includes(n)) n.removeAttribute("data-focus");
+        for (const n of marked) {
+          if (!kept.includes(n)) {
+            n.removeAttribute("data-focus");
+          }
+        }
         // A ring is what focus adds. Nothing changed means the box shows the same thing focused as
         // at rest, which is "browser only" where the user agent draws one and "none" where it does not.
         const changed = JSON.stringify(rest) !== JSON.stringify(focused);
@@ -90,7 +110,9 @@
   window.__ringReport = (side) => {
     const rows = window.__rings(side);
     const tally = {};
-    for (const r of rows) tally[r.ring] = (tally[r.ring] ?? 0) + 1;
+    for (const r of rows) {
+      tally[r.ring] = (tally[r.ring] ?? 0) + 1;
+    }
     return {
       side,
       boxes: rows.length,

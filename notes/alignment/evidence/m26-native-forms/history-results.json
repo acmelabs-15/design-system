@@ -1,0 +1,156 @@
+{
+  "date": "2026-09-27T05:06:05.481Z",
+  "bun": "1.4.2",
+  "version": "0.3.0",
+  "entrySha256": "7c6e569ded204ce2637e68c349f3ee5d66206b7943d80aba86c1088b568f7104",
+  "method": "Real typed edits, link navigation to another document, then browser history back. No restore callback is invoked by the test.",
+  "results": [
+    {
+      "engine": "chromium",
+      "version": "154.0.8037.57",
+      "mode": "fresh-document-history-restoration",
+      "before": {
+        "instance": "ebb1b21f-3651-42ad-9975-69d0a58f3d98",
+        "pageshow": [
+          false
+        ],
+        "navigation": "navigate",
+        "native": "native-typed-history",
+        "custom": "custom-typed-history",
+        "inner": "custom-typed-history",
+        "form": [
+          [
+            "native",
+            "native-typed-history"
+          ],
+          [
+            "custom",
+            "custom-typed-history"
+          ]
+        ]
+      },
+      "after": {
+        "instance": "030f73f9-2d2f-4343-95cb-f5eb89459027",
+        "pageshow": [
+          false
+        ],
+        "navigation": "back_forward",
+        "native": "native-typed-history",
+        "custom": "custom-typed-history",
+        "inner": "custom-typed-history",
+        "form": [
+          [
+            "native",
+            "native-typed-history"
+          ],
+          [
+            "custom",
+            "custom-typed-history"
+          ]
+        ]
+      },
+      "nativeRestored": true,
+      "customRestored": true,
+      "errors": [],
+      "pass": true
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "mode": "fresh-document-history-restoration",
+      "before": {
+        "instance": "73d61dbd-88b6-4802-b305-516056fe11ac",
+        "pageshow": [
+          false
+        ],
+        "navigation": "navigate",
+        "native": "native-typed-history",
+        "custom": "custom-typed-history",
+        "inner": "custom-typed-history",
+        "form": [
+          [
+            "native",
+            "native-typed-history"
+          ],
+          [
+            "custom",
+            "custom-typed-history"
+          ]
+        ]
+      },
+      "after": {
+        "instance": "7239c4ac-b2d7-49d9-9681-95990ef27848",
+        "pageshow": [
+          false
+        ],
+        "navigation": "back_forward",
+        "native": "native-typed-history",
+        "custom": "custom-typed-history",
+        "inner": "custom-typed-history",
+        "form": [
+          [
+            "native",
+            "native-typed-history"
+          ],
+          [
+            "custom",
+            "custom-typed-history"
+          ]
+        ]
+      },
+      "nativeRestored": true,
+      "customRestored": true,
+      "errors": [],
+      "pass": true
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "mode": "fresh-document-history-restoration",
+      "before": {
+        "instance": "0cac5b19-0173-4cef-b66f-2fda69be0fe9",
+        "pageshow": [
+          false
+        ],
+        "navigation": "navigate",
+        "native": "native-typed-history",
+        "custom": "custom-typed-history",
+        "inner": "custom-typed-history",
+        "form": [
+          [
+            "native",
+            "native-typed-history"
+          ],
+          [
+            "custom",
+            "custom-typed-history"
+          ]
+        ]
+      },
+      "after": {
+        "instance": "4f40acf0-9337-436a-b5a3-fb72ba1b9a13",
+        "pageshow": [
+          false
+        ],
+        "navigation": "back_forward",
+        "native": "native-typed-history",
+        "custom": "custom-typed-history",
+        "inner": "custom-typed-history",
+        "form": [
+          [
+            "native",
+            "native-typed-history"
+          ],
+          [
+            "custom",
+            "custom-typed-history"
+          ]
+        ]
+      },
+      "nativeRestored": true,
+      "customRestored": true,
+      "errors": [],
+      "pass": true
+    }
+  ]
+}

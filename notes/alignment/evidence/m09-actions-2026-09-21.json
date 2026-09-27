@@ -1,0 +1,1849 @@
+{
+  "date": "2026-09-21",
+  "batch": "M09 actions",
+  "status": "implemented and verified at the M09 action boundary",
+  "entries": [
+    "Button",
+    "Icon Button",
+    "Toggle Button",
+    "Copy Button"
+  ],
+  "native": {
+    "forms": "m09-submitter-candidate-2026-09-21.json",
+    "actions": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "Button defaults to a real non-submitting native control",
+              "ok": true
+            },
+            {
+              "name": "default geometry retains the 36px baseline",
+              "ok": true
+            },
+            {
+              "name": "Icon Button is a named square",
+              "ok": true
+            },
+            {
+              "name": "loading retains focus while suppressing native action",
+              "ok": true
+            },
+            {
+              "name": "Group supplies named appearance without authoring a child override",
+              "ok": true
+            },
+            {
+              "name": "explicit child size overrides Group and clearing resumes inheritance",
+              "ok": true
+            },
+            {
+              "name": "cleared child size reads the provider again",
+              "ok": true
+            },
+            {
+              "name": "Group owns the actual button surfaces",
+              "ok": true
+            },
+            {
+              "name": "same-task form values use a native persistent submitter",
+              "ok": true
+            },
+            {
+              "name": "click cancellation prevents submission",
+              "ok": true
+            },
+            {
+              "name": "Fieldset blocks action before repaint",
+              "ok": true
+            },
+            {
+              "name": "Fieldset disabled state reaches the visible control",
+              "ok": true
+            },
+            {
+              "name": "first legend restores native activation",
+              "ok": true
+            },
+            {
+              "name": "Group frame masks the real resting button border",
+              "ok": true
+            },
+            {
+              "name": "opt-in pointer press starts one owned ripple",
+              "ok": true,
+              "actual": 1
+            },
+            {
+              "name": "completed ripple releases its element",
+              "ok": true,
+              "actual": null
+            },
+            {
+              "name": "reduced motion suppresses ripple",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "Button defaults to a real non-submitting native control",
+              "ok": true
+            },
+            {
+              "name": "default geometry retains the 36px baseline",
+              "ok": true
+            },
+            {
+              "name": "Icon Button is a named square",
+              "ok": true
+            },
+            {
+              "name": "loading retains focus while suppressing native action",
+              "ok": true
+            },
+            {
+              "name": "Group supplies named appearance without authoring a child override",
+              "ok": true
+            },
+            {
+              "name": "explicit child size overrides Group and clearing resumes inheritance",
+              "ok": true
+            },
+            {
+              "name": "cleared child size reads the provider again",
+              "ok": true
+            },
+            {
+              "name": "Group owns the actual button surfaces",
+              "ok": true
+            },
+            {
+              "name": "same-task form values use a native persistent submitter",
+              "ok": true
+            },
+            {
+              "name": "click cancellation prevents submission",
+              "ok": true
+            },
+            {
+              "name": "Fieldset blocks action before repaint",
+              "ok": true
+            },
+            {
+              "name": "Fieldset disabled state reaches the visible control",
+              "ok": true
+            },
+            {
+              "name": "first legend restores native activation",
+              "ok": true
+            },
+            {
+              "name": "Group frame masks the real resting button border",
+              "ok": true
+            },
+            {
+              "name": "opt-in pointer press starts one owned ripple",
+              "ok": true,
+              "actual": 1
+            },
+            {
+              "name": "completed ripple releases its element",
+              "ok": true,
+              "actual": null
+            },
+            {
+              "name": "reduced motion suppresses ripple",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "Button defaults to a real non-submitting native control",
+              "ok": true
+            },
+            {
+              "name": "default geometry retains the 36px baseline",
+              "ok": true
+            },
+            {
+              "name": "Icon Button is a named square",
+              "ok": true
+            },
+            {
+              "name": "loading retains focus while suppressing native action",
+              "ok": true
+            },
+            {
+              "name": "Group supplies named appearance without authoring a child override",
+              "ok": true
+            },
+            {
+              "name": "explicit child size overrides Group and clearing resumes inheritance",
+              "ok": true
+            },
+            {
+              "name": "cleared child size reads the provider again",
+              "ok": true
+            },
+            {
+              "name": "Group owns the actual button surfaces",
+              "ok": true
+            },
+            {
+              "name": "same-task form values use a native persistent submitter",
+              "ok": true
+            },
+            {
+              "name": "click cancellation prevents submission",
+              "ok": true
+            },
+            {
+              "name": "Fieldset blocks action before repaint",
+              "ok": true
+            },
+            {
+              "name": "Fieldset disabled state reaches the visible control",
+              "ok": true
+            },
+            {
+              "name": "first legend restores native activation",
+              "ok": true
+            },
+            {
+              "name": "Group frame masks the real resting button border",
+              "ok": true
+            },
+            {
+              "name": "opt-in pointer press starts one owned ripple",
+              "ok": true,
+              "actual": 1
+            },
+            {
+              "name": "completed ripple releases its element",
+              "ok": true,
+              "actual": null
+            },
+            {
+              "name": "reduced motion suppresses ripple",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "integration": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "static Lit composition retains name and popup semantics",
+              "ok": true
+            },
+            {
+              "name": "normal tiny native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "normal small native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "normal medium native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "normal large native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact tiny native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact small native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact medium native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact large native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "explicit CSS dimensions reach the actual control",
+              "ok": true
+            },
+            {
+              "name": "Group grow fills one horizontal row",
+              "ok": true
+            },
+            {
+              "name": "RTL attached actions preserve logical ordering",
+              "ok": true
+            },
+            {
+              "name": "vertical attachment joins actual control edges",
+              "ok": true
+            },
+            {
+              "name": "author child replacement preserves same-task form action",
+              "ok": true
+            },
+            {
+              "name": "child reconciliation restores one native submitter",
+              "ok": true
+            },
+            {
+              "name": "programmatic Toggle state is immediate and silent",
+              "ok": true
+            },
+            {
+              "name": "pending clipboard operation shows no premature success",
+              "ok": true
+            },
+            {
+              "name": "copy event contains no copied value",
+              "ok": true
+            },
+            {
+              "name": "successful copy keeps its name and uses one status region",
+              "ok": true
+            },
+            {
+              "name": "copy feedback resets after the configured duration",
+              "ok": true
+            },
+            {
+              "name": "clipboard failure rejects and emits safe detail",
+              "ok": true
+            },
+            {
+              "name": "superseded clipboard completion cannot change feedback",
+              "ok": true
+            },
+            {
+              "name": "disconnected completion emits no success and sets no timer",
+              "ok": true
+            },
+            {
+              "name": "labelled Copy exposes only its approved parts",
+              "ok": true
+            },
+            {
+              "name": "trusted Space toggles once",
+              "ok": true
+            },
+            {
+              "name": "trusted Enter toggles once",
+              "ok": true
+            },
+            {
+              "name": "loading suppresses trusted Toggle activation",
+              "ok": true
+            },
+            {
+              "name": "trusted Copy activation reaches clipboard once",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "static Lit composition retains name and popup semantics",
+              "ok": true
+            },
+            {
+              "name": "normal tiny native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "normal small native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "normal medium native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "normal large native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact tiny native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact small native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact medium native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact large native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "explicit CSS dimensions reach the actual control",
+              "ok": true
+            },
+            {
+              "name": "Group grow fills one horizontal row",
+              "ok": true
+            },
+            {
+              "name": "RTL attached actions preserve logical ordering",
+              "ok": true
+            },
+            {
+              "name": "vertical attachment joins actual control edges",
+              "ok": true
+            },
+            {
+              "name": "author child replacement preserves same-task form action",
+              "ok": true
+            },
+            {
+              "name": "child reconciliation restores one native submitter",
+              "ok": true
+            },
+            {
+              "name": "programmatic Toggle state is immediate and silent",
+              "ok": true
+            },
+            {
+              "name": "pending clipboard operation shows no premature success",
+              "ok": true
+            },
+            {
+              "name": "copy event contains no copied value",
+              "ok": true
+            },
+            {
+              "name": "successful copy keeps its name and uses one status region",
+              "ok": true
+            },
+            {
+              "name": "copy feedback resets after the configured duration",
+              "ok": true
+            },
+            {
+              "name": "clipboard failure rejects and emits safe detail",
+              "ok": true
+            },
+            {
+              "name": "superseded clipboard completion cannot change feedback",
+              "ok": true
+            },
+            {
+              "name": "disconnected completion emits no success and sets no timer",
+              "ok": true
+            },
+            {
+              "name": "labelled Copy exposes only its approved parts",
+              "ok": true
+            },
+            {
+              "name": "trusted Space toggles once",
+              "ok": true
+            },
+            {
+              "name": "trusted Enter toggles once",
+              "ok": true
+            },
+            {
+              "name": "loading suppresses trusted Toggle activation",
+              "ok": true
+            },
+            {
+              "name": "trusted Copy activation reaches clipboard once",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "static Lit composition retains name and popup semantics",
+              "ok": true
+            },
+            {
+              "name": "normal tiny native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "normal small native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "normal medium native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "normal large native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact tiny native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact small native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact medium native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact large native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "explicit CSS dimensions reach the actual control",
+              "ok": true
+            },
+            {
+              "name": "Group grow fills one horizontal row",
+              "ok": true
+            },
+            {
+              "name": "RTL attached actions preserve logical ordering",
+              "ok": true
+            },
+            {
+              "name": "vertical attachment joins actual control edges",
+              "ok": true
+            },
+            {
+              "name": "author child replacement preserves same-task form action",
+              "ok": true
+            },
+            {
+              "name": "child reconciliation restores one native submitter",
+              "ok": true
+            },
+            {
+              "name": "programmatic Toggle state is immediate and silent",
+              "ok": true
+            },
+            {
+              "name": "pending clipboard operation shows no premature success",
+              "ok": true
+            },
+            {
+              "name": "copy event contains no copied value",
+              "ok": true
+            },
+            {
+              "name": "successful copy keeps its name and uses one status region",
+              "ok": true
+            },
+            {
+              "name": "copy feedback resets after the configured duration",
+              "ok": true
+            },
+            {
+              "name": "clipboard failure rejects and emits safe detail",
+              "ok": true
+            },
+            {
+              "name": "superseded clipboard completion cannot change feedback",
+              "ok": true
+            },
+            {
+              "name": "disconnected completion emits no success and sets no timer",
+              "ok": true
+            },
+            {
+              "name": "labelled Copy exposes only its approved parts",
+              "ok": true
+            },
+            {
+              "name": "trusted Space toggles once",
+              "ok": true
+            },
+            {
+              "name": "trusted Enter toggles once",
+              "ok": true
+            },
+            {
+              "name": "loading suppresses trusted Toggle activation",
+              "ok": true
+            },
+            {
+              "name": "trusted Copy activation reaches clipboard once",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "contrast": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "light/default/rest",
+              "ok": true,
+              "text": 5.725560965649308,
+              "ripple": 6.7103441459224245,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(0, 98, 209)"
+            },
+            {
+              "name": "light/default/hover",
+              "ok": true,
+              "text": 5.3149301900426575,
+              "ripple": 6.262347814685359,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(0, 104, 214)"
+            },
+            {
+              "name": "light/default/pressed",
+              "ok": true,
+              "text": 6.7077349531485835,
+              "ripple": 7.762294634693242,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(0, 88, 189)"
+            },
+            {
+              "name": "light/secondary/rest",
+              "ok": true,
+              "text": 17.9278402530276,
+              "ripple": 14.298089285911189,
+              "foreground": "rgb(23, 23, 23)",
+              "background": "rgb(255, 255, 255)"
+            },
+            {
+              "name": "light/secondary/hover",
+              "ok": true,
+              "text": 15.038382524280774,
+              "ripple": 12.035297562609436,
+              "foreground": "rgb(23, 23, 23)",
+              "background": "rgb(235, 235, 235)"
+            },
+            {
+              "name": "light/secondary/pressed",
+              "ok": true,
+              "text": 14.364433409032896,
+              "ripple": 11.507289751255884,
+              "foreground": "rgb(23, 23, 23)",
+              "background": "rgb(230, 230, 230)"
+            },
+            {
+              "name": "light/tertiary/rest",
+              "ok": true,
+              "text": 17.9278402530276,
+              "ripple": 14.298089285911189,
+              "foreground": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "name": "light/tertiary/hover",
+              "ok": true,
+              "text": 15.038382524280774,
+              "ripple": 12.035297562609436,
+              "foreground": "rgb(23, 23, 23)",
+              "background": "rgb(235, 235, 235)"
+            },
+            {
+              "name": "light/tertiary/pressed",
+              "ok": true,
+              "text": 14.364433409032896,
+              "ripple": 11.507289751255884,
+              "foreground": "rgb(23, 23, 23)",
+              "background": "rgb(230, 230, 230)"
+            },
+            {
+              "name": "light/error/rest",
+              "ok": true,
+              "text": 4.73068906632556,
+              "ripple": 5.62977843595429,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(218, 47, 53)"
+            },
+            {
+              "name": "light/error/hover",
+              "ok": true,
+              "text": 5.423928748458129,
+              "ripple": 6.395039862902741,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "color(srgb 0.78752 0.16928 0.189888)"
+            },
+            {
+              "name": "light/error/pressed",
+              "ok": true,
+              "text": 4.73068906632556,
+              "ripple": 5.62977843595429,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(218, 47, 53)"
+            },
+            {
+              "name": "light/warning/rest",
+              "ok": true,
+              "text": 9.812876043943758,
+              "ripple": 7.970219581601979,
+              "foreground": "lab(0 0 0)",
+              "background": "rgb(255, 153, 10)"
+            },
+            {
+              "name": "light/warning/hover",
+              "ok": true,
+              "text": 11.645632868641348,
+              "ripple": 9.411574356312142,
+              "foreground": "lab(0 0 0)",
+              "background": "rgb(255, 178, 36)"
+            },
+            {
+              "name": "light/warning/pressed",
+              "ok": true,
+              "text": 9.812876043943758,
+              "ripple": 7.970219581601979,
+              "foreground": "lab(0 0 0)",
+              "background": "rgb(255, 153, 10)"
+            },
+            {
+              "name": "dark/default/rest",
+              "ok": true,
+              "text": 5.725560965649308,
+              "ripple": 6.7103441459224245,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(0, 98, 209)"
+            },
+            {
+              "name": "dark/default/hover",
+              "ok": true,
+              "text": 5.3149301900426575,
+              "ripple": 6.262347814685359,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(0, 104, 214)"
+            },
+            {
+              "name": "dark/default/pressed",
+              "ok": true,
+              "text": 6.7077349531485835,
+              "ripple": 7.762294634693242,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(0, 88, 189)"
+            },
+            {
+              "name": "dark/secondary/rest",
+              "ok": true,
+              "text": 16.91088278219183,
+              "ripple": 17.008222808567194,
+              "foreground": "rgb(237, 237, 237)",
+              "background": "rgb(10, 10, 10)"
+            },
+            {
+              "name": "dark/secondary/hover",
+              "ok": true,
+              "text": 14.079182164954604,
+              "ripple": 14.572395565224152,
+              "foreground": "rgb(237, 237, 237)",
+              "background": "rgb(31, 31, 31)"
+            },
+            {
+              "name": "dark/secondary/pressed",
+              "ok": true,
+              "text": 12.426561686091064,
+              "ripple": 13.109628384497112,
+              "foreground": "rgb(237, 237, 237)",
+              "background": "rgb(41, 41, 41)"
+            },
+            {
+              "name": "dark/tertiary/rest",
+              "ok": true,
+              "text": 16.91088278219183,
+              "ripple": 17.008222808567194,
+              "foreground": "rgb(237, 237, 237)",
+              "background": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "name": "dark/tertiary/hover",
+              "ok": true,
+              "text": 14.079182164954604,
+              "ripple": 14.572395565224152,
+              "foreground": "rgb(237, 237, 237)",
+              "background": "rgb(31, 31, 31)"
+            },
+            {
+              "name": "dark/tertiary/pressed",
+              "ok": true,
+              "text": 12.426561686091064,
+              "ripple": 13.109628384497112,
+              "foreground": "rgb(237, 237, 237)",
+              "background": "rgb(41, 41, 41)"
+            },
+            {
+              "name": "dark/error/rest",
+              "ok": true,
+              "text": 4.744270217856504,
+              "ripple": 5.644303281643623,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(217, 48, 54)"
+            },
+            {
+              "name": "dark/error/hover",
+              "ok": true,
+              "text": 5.439716806922226,
+              "ripple": 6.411564945258758,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "color(srgb 0.783104 0.173696 0.19401)"
+            },
+            {
+              "name": "dark/error/pressed",
+              "ok": true,
+              "text": 4.744270217856504,
+              "ripple": 5.644303281643623,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(217, 48, 54)"
+            },
+            {
+              "name": "dark/warning/rest",
+              "ok": true,
+              "text": 9.812876043943758,
+              "ripple": 7.970219581601979,
+              "foreground": "lab(0 0 0)",
+              "background": "rgb(255, 153, 10)"
+            },
+            {
+              "name": "dark/warning/hover",
+              "ok": true,
+              "text": 11.645632868641348,
+              "ripple": 9.411574356312142,
+              "foreground": "lab(0 0 0)",
+              "background": "rgb(255, 178, 36)"
+            },
+            {
+              "name": "dark/warning/pressed",
+              "ok": true,
+              "text": 9.812876043943758,
+              "ripple": 7.970219581601979,
+              "foreground": "lab(0 0 0)",
+              "background": "rgb(255, 153, 10)"
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "light/default/rest",
+              "ok": true,
+              "text": 5.725560965649308,
+              "ripple": 6.7103441459224245,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(0, 98, 209)"
+            },
+            {
+              "name": "light/default/hover",
+              "ok": true,
+              "text": 5.3149301900426575,
+              "ripple": 6.262347814685359,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(0, 104, 214)"
+            },
+            {
+              "name": "light/default/pressed",
+              "ok": true,
+              "text": 6.7077349531485835,
+              "ripple": 7.762294634693242,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(0, 88, 189)"
+            },
+            {
+              "name": "light/secondary/rest",
+              "ok": true,
+              "text": 17.9278402530276,
+              "ripple": 14.298089285911189,
+              "foreground": "rgb(23, 23, 23)",
+              "background": "rgb(255, 255, 255)"
+            },
+            {
+              "name": "light/secondary/hover",
+              "ok": true,
+              "text": 15.038382524280774,
+              "ripple": 12.035297562609436,
+              "foreground": "rgb(23, 23, 23)",
+              "background": "rgb(235, 235, 235)"
+            },
+            {
+              "name": "light/secondary/pressed",
+              "ok": true,
+              "text": 14.364433409032896,
+              "ripple": 11.507289751255884,
+              "foreground": "rgb(23, 23, 23)",
+              "background": "rgb(230, 230, 230)"
+            },
+            {
+              "name": "light/tertiary/rest",
+              "ok": true,
+              "text": 17.9278402530276,
+              "ripple": 14.298089285911189,
+              "foreground": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "name": "light/tertiary/hover",
+              "ok": true,
+              "text": 15.038382524280774,
+              "ripple": 12.035297562609436,
+              "foreground": "rgb(23, 23, 23)",
+              "background": "rgb(235, 235, 235)"
+            },
+            {
+              "name": "light/tertiary/pressed",
+              "ok": true,
+              "text": 14.364433409032896,
+              "ripple": 11.507289751255884,
+              "foreground": "rgb(23, 23, 23)",
+              "background": "rgb(230, 230, 230)"
+            },
+            {
+              "name": "light/error/rest",
+              "ok": true,
+              "text": 4.73068906632556,
+              "ripple": 5.62977843595429,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(218, 47, 53)"
+            },
+            {
+              "name": "light/error/hover",
+              "ok": true,
+              "text": 5.423928748458129,
+              "ripple": 6.395039862902741,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "color(srgb 0.78752 0.16928 0.189888)"
+            },
+            {
+              "name": "light/error/pressed",
+              "ok": true,
+              "text": 4.73068906632556,
+              "ripple": 5.62977843595429,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(218, 47, 53)"
+            },
+            {
+              "name": "light/warning/rest",
+              "ok": true,
+              "text": 9.812876043943758,
+              "ripple": 7.970219581601979,
+              "foreground": "lab(0 0 0)",
+              "background": "rgb(255, 153, 10)"
+            },
+            {
+              "name": "light/warning/hover",
+              "ok": true,
+              "text": 11.645632868641348,
+              "ripple": 9.411574356312142,
+              "foreground": "lab(0 0 0)",
+              "background": "rgb(255, 178, 36)"
+            },
+            {
+              "name": "light/warning/pressed",
+              "ok": true,
+              "text": 9.812876043943758,
+              "ripple": 7.970219581601979,
+              "foreground": "lab(0 0 0)",
+              "background": "rgb(255, 153, 10)"
+            },
+            {
+              "name": "dark/default/rest",
+              "ok": true,
+              "text": 5.725560965649308,
+              "ripple": 6.7103441459224245,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(0, 98, 209)"
+            },
+            {
+              "name": "dark/default/hover",
+              "ok": true,
+              "text": 5.3149301900426575,
+              "ripple": 6.262347814685359,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(0, 104, 214)"
+            },
+            {
+              "name": "dark/default/pressed",
+              "ok": true,
+              "text": 6.7077349531485835,
+              "ripple": 7.762294634693242,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(0, 88, 189)"
+            },
+            {
+              "name": "dark/secondary/rest",
+              "ok": true,
+              "text": 16.91088278219183,
+              "ripple": 17.008222808567194,
+              "foreground": "rgb(237, 237, 237)",
+              "background": "rgb(10, 10, 10)"
+            },
+            {
+              "name": "dark/secondary/hover",
+              "ok": true,
+              "text": 14.079182164954604,
+              "ripple": 14.572395565224152,
+              "foreground": "rgb(237, 237, 237)",
+              "background": "rgb(31, 31, 31)"
+            },
+            {
+              "name": "dark/secondary/pressed",
+              "ok": true,
+              "text": 12.426561686091064,
+              "ripple": 13.109628384497112,
+              "foreground": "rgb(237, 237, 237)",
+              "background": "rgb(41, 41, 41)"
+            },
+            {
+              "name": "dark/tertiary/rest",
+              "ok": true,
+              "text": 16.91088278219183,
+              "ripple": 17.008222808567194,
+              "foreground": "rgb(237, 237, 237)",
+              "background": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "name": "dark/tertiary/hover",
+              "ok": true,
+              "text": 14.079182164954604,
+              "ripple": 14.572395565224152,
+              "foreground": "rgb(237, 237, 237)",
+              "background": "rgb(31, 31, 31)"
+            },
+            {
+              "name": "dark/tertiary/pressed",
+              "ok": true,
+              "text": 12.426561686091064,
+              "ripple": 13.109628384497112,
+              "foreground": "rgb(237, 237, 237)",
+              "background": "rgb(41, 41, 41)"
+            },
+            {
+              "name": "dark/error/rest",
+              "ok": true,
+              "text": 4.744270217856504,
+              "ripple": 5.644303281643623,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(217, 48, 54)"
+            },
+            {
+              "name": "dark/error/hover",
+              "ok": true,
+              "text": 5.439716806922226,
+              "ripple": 6.411564945258758,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "color(srgb 0.783104 0.173696 0.19401)"
+            },
+            {
+              "name": "dark/error/pressed",
+              "ok": true,
+              "text": 4.744270217856504,
+              "ripple": 5.644303281643623,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(217, 48, 54)"
+            },
+            {
+              "name": "dark/warning/rest",
+              "ok": true,
+              "text": 9.812876043943758,
+              "ripple": 7.970219581601979,
+              "foreground": "lab(0 0 0)",
+              "background": "rgb(255, 153, 10)"
+            },
+            {
+              "name": "dark/warning/hover",
+              "ok": true,
+              "text": 11.645632868641348,
+              "ripple": 9.411574356312142,
+              "foreground": "lab(0 0 0)",
+              "background": "rgb(255, 178, 36)"
+            },
+            {
+              "name": "dark/warning/pressed",
+              "ok": true,
+              "text": 9.812876043943758,
+              "ripple": 7.970219581601979,
+              "foreground": "lab(0 0 0)",
+              "background": "rgb(255, 153, 10)"
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "light/default/rest",
+              "ok": true,
+              "text": 5.725560965649308,
+              "ripple": 6.7103441459224245,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(0, 98, 209)"
+            },
+            {
+              "name": "light/default/hover",
+              "ok": true,
+              "text": 5.3149301900426575,
+              "ripple": 6.262347814685359,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(0, 104, 214)"
+            },
+            {
+              "name": "light/default/pressed",
+              "ok": true,
+              "text": 6.7077349531485835,
+              "ripple": 7.762294634693242,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(0, 88, 189)"
+            },
+            {
+              "name": "light/secondary/rest",
+              "ok": true,
+              "text": 17.9278402530276,
+              "ripple": 14.298089285911189,
+              "foreground": "rgb(23, 23, 23)",
+              "background": "rgb(255, 255, 255)"
+            },
+            {
+              "name": "light/secondary/hover",
+              "ok": true,
+              "text": 15.038382524280774,
+              "ripple": 12.035297562609436,
+              "foreground": "rgb(23, 23, 23)",
+              "background": "rgb(235, 235, 235)"
+            },
+            {
+              "name": "light/secondary/pressed",
+              "ok": true,
+              "text": 14.364433409032896,
+              "ripple": 11.507289751255884,
+              "foreground": "rgb(23, 23, 23)",
+              "background": "rgb(230, 230, 230)"
+            },
+            {
+              "name": "light/tertiary/rest",
+              "ok": true,
+              "text": 17.9278402530276,
+              "ripple": 14.298089285911189,
+              "foreground": "rgb(23, 23, 23)",
+              "background": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "name": "light/tertiary/hover",
+              "ok": true,
+              "text": 15.038382524280774,
+              "ripple": 12.035297562609436,
+              "foreground": "rgb(23, 23, 23)",
+              "background": "rgb(235, 235, 235)"
+            },
+            {
+              "name": "light/tertiary/pressed",
+              "ok": true,
+              "text": 14.364433409032896,
+              "ripple": 11.507289751255884,
+              "foreground": "rgb(23, 23, 23)",
+              "background": "rgb(230, 230, 230)"
+            },
+            {
+              "name": "light/error/rest",
+              "ok": true,
+              "text": 4.649899421901896,
+              "ripple": 5.5658908385583645,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "oklch(0.5819 0.2482 25.15)"
+            },
+            {
+              "name": "light/error/hover",
+              "ok": true,
+              "text": 5.377389060814101,
+              "ripple": 6.375039005949548,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "color(srgb 0.844822 -0.103739 0.104447)"
+            },
+            {
+              "name": "light/error/pressed",
+              "ok": true,
+              "text": 4.649899421901896,
+              "ripple": 5.5658908385583645,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "oklch(0.5819 0.2482 25.15)"
+            },
+            {
+              "name": "light/warning/rest",
+              "ok": true,
+              "text": 9.425487374990032,
+              "ripple": 7.664879798001656,
+              "foreground": "lab(0 0 0)",
+              "background": "oklch(0.7721 0.1991 64.279999)"
+            },
+            {
+              "name": "light/warning/hover",
+              "ok": true,
+              "text": 11.30642075148077,
+              "ripple": 9.143838365988033,
+              "foreground": "lab(0 0 0)",
+              "background": "oklch(0.8187 0.1969 76.459999)"
+            },
+            {
+              "name": "light/warning/pressed",
+              "ok": true,
+              "text": 9.425487374990032,
+              "ripple": 7.664879798001656,
+              "foreground": "lab(0 0 0)",
+              "background": "oklch(0.7721 0.1991 64.279999)"
+            },
+            {
+              "name": "dark/default/rest",
+              "ok": true,
+              "text": 5.725560965649308,
+              "ripple": 6.7103441459224245,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(0, 98, 209)"
+            },
+            {
+              "name": "dark/default/hover",
+              "ok": true,
+              "text": 5.3149301900426575,
+              "ripple": 6.262347814685359,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(0, 104, 214)"
+            },
+            {
+              "name": "dark/default/pressed",
+              "ok": true,
+              "text": 6.7077349531485835,
+              "ripple": 7.762294634693242,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "rgb(0, 88, 189)"
+            },
+            {
+              "name": "dark/secondary/rest",
+              "ok": true,
+              "text": 16.91088278219183,
+              "ripple": 17.008222808567194,
+              "foreground": "rgb(237, 237, 237)",
+              "background": "rgb(10, 10, 10)"
+            },
+            {
+              "name": "dark/secondary/hover",
+              "ok": true,
+              "text": 14.079182164954604,
+              "ripple": 14.572395565224152,
+              "foreground": "rgb(237, 237, 237)",
+              "background": "rgb(31, 31, 31)"
+            },
+            {
+              "name": "dark/secondary/pressed",
+              "ok": true,
+              "text": 12.426561686091064,
+              "ripple": 13.109628384497112,
+              "foreground": "rgb(237, 237, 237)",
+              "background": "rgb(41, 41, 41)"
+            },
+            {
+              "name": "dark/tertiary/rest",
+              "ok": true,
+              "text": 16.91088278219183,
+              "ripple": 17.008222808567194,
+              "foreground": "rgb(237, 237, 237)",
+              "background": "rgba(0, 0, 0, 0)"
+            },
+            {
+              "name": "dark/tertiary/hover",
+              "ok": true,
+              "text": 14.079182164954604,
+              "ripple": 14.572395565224152,
+              "foreground": "rgb(237, 237, 237)",
+              "background": "rgb(31, 31, 31)"
+            },
+            {
+              "name": "dark/tertiary/pressed",
+              "ok": true,
+              "text": 12.426561686091064,
+              "ripple": 13.109628384497112,
+              "foreground": "rgb(237, 237, 237)",
+              "background": "rgb(41, 41, 41)"
+            },
+            {
+              "name": "dark/error/rest",
+              "ok": true,
+              "text": 4.792389786777758,
+              "ripple": 5.71127680555945,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "oklch(0.5801 0.227 25.120001)"
+            },
+            {
+              "name": "dark/error/hover",
+              "ok": true,
+              "text": 5.511767883862162,
+              "ripple": 6.505857264293212,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "color(srgb 0.813903 0.079351 0.150781)"
+            },
+            {
+              "name": "dark/error/pressed",
+              "ok": true,
+              "text": 4.792389786777758,
+              "ripple": 5.71127680555945,
+              "foreground": "rgb(255, 255, 255)",
+              "background": "oklch(0.5801 0.227 25.120001)"
+            },
+            {
+              "name": "dark/warning/rest",
+              "ok": true,
+              "text": 9.425487374990032,
+              "ripple": 7.664879798001656,
+              "foreground": "lab(0 0 0)",
+              "background": "oklch(0.7721 0.1991 64.279999)"
+            },
+            {
+              "name": "dark/warning/hover",
+              "ok": true,
+              "text": 11.30642075148077,
+              "ripple": 9.143838365988033,
+              "foreground": "lab(0 0 0)",
+              "background": "oklch(0.8187 0.1969 76.459999)"
+            },
+            {
+              "name": "dark/warning/pressed",
+              "ok": true,
+              "text": 9.425487374990032,
+              "ripple": 7.664879798001656,
+              "foreground": "lab(0 0 0)",
+              "background": "oklch(0.7721 0.1991 64.279999)"
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "compiled": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "static Lit composition retains name and popup semantics",
+              "ok": true
+            },
+            {
+              "name": "normal tiny native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "normal small native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "normal medium native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "normal large native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact tiny native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact small native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact medium native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact large native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "explicit CSS dimensions reach the actual control",
+              "ok": true
+            },
+            {
+              "name": "Group grow fills one horizontal row",
+              "ok": true
+            },
+            {
+              "name": "RTL attached actions preserve logical ordering",
+              "ok": true
+            },
+            {
+              "name": "vertical attachment joins actual control edges",
+              "ok": true
+            },
+            {
+              "name": "author child replacement preserves same-task form action",
+              "ok": true
+            },
+            {
+              "name": "child reconciliation restores one native submitter",
+              "ok": true
+            },
+            {
+              "name": "programmatic Toggle state is immediate and silent",
+              "ok": true
+            },
+            {
+              "name": "pending clipboard operation shows no premature success",
+              "ok": true
+            },
+            {
+              "name": "copy event contains no copied value",
+              "ok": true
+            },
+            {
+              "name": "successful copy keeps its name and uses one status region",
+              "ok": true
+            },
+            {
+              "name": "copy feedback resets after the configured duration",
+              "ok": true
+            },
+            {
+              "name": "clipboard failure rejects and emits safe detail",
+              "ok": true
+            },
+            {
+              "name": "superseded clipboard completion cannot change feedback",
+              "ok": true
+            },
+            {
+              "name": "disconnected completion emits no success and sets no timer",
+              "ok": true
+            },
+            {
+              "name": "labelled Copy exposes only its approved parts",
+              "ok": true
+            },
+            {
+              "name": "trusted Space toggles once",
+              "ok": true
+            },
+            {
+              "name": "trusted Enter toggles once",
+              "ok": true
+            },
+            {
+              "name": "loading suppresses trusted Toggle activation",
+              "ok": true
+            },
+            {
+              "name": "trusted Copy activation reaches clipboard once",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "static Lit composition retains name and popup semantics",
+              "ok": true
+            },
+            {
+              "name": "normal tiny native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "normal small native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "normal medium native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "normal large native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact tiny native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact small native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact medium native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact large native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "explicit CSS dimensions reach the actual control",
+              "ok": true
+            },
+            {
+              "name": "Group grow fills one horizontal row",
+              "ok": true
+            },
+            {
+              "name": "RTL attached actions preserve logical ordering",
+              "ok": true
+            },
+            {
+              "name": "vertical attachment joins actual control edges",
+              "ok": true
+            },
+            {
+              "name": "author child replacement preserves same-task form action",
+              "ok": true
+            },
+            {
+              "name": "child reconciliation restores one native submitter",
+              "ok": true
+            },
+            {
+              "name": "programmatic Toggle state is immediate and silent",
+              "ok": true
+            },
+            {
+              "name": "pending clipboard operation shows no premature success",
+              "ok": true
+            },
+            {
+              "name": "copy event contains no copied value",
+              "ok": true
+            },
+            {
+              "name": "successful copy keeps its name and uses one status region",
+              "ok": true
+            },
+            {
+              "name": "copy feedback resets after the configured duration",
+              "ok": true
+            },
+            {
+              "name": "clipboard failure rejects and emits safe detail",
+              "ok": true
+            },
+            {
+              "name": "superseded clipboard completion cannot change feedback",
+              "ok": true
+            },
+            {
+              "name": "disconnected completion emits no success and sets no timer",
+              "ok": true
+            },
+            {
+              "name": "labelled Copy exposes only its approved parts",
+              "ok": true
+            },
+            {
+              "name": "trusted Space toggles once",
+              "ok": true
+            },
+            {
+              "name": "trusted Enter toggles once",
+              "ok": true
+            },
+            {
+              "name": "loading suppresses trusted Toggle activation",
+              "ok": true
+            },
+            {
+              "name": "trusted Copy activation reaches clipboard once",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "static Lit composition retains name and popup semantics",
+              "ok": true
+            },
+            {
+              "name": "normal tiny native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "normal small native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "normal medium native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "normal large native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact tiny native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact small native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact medium native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "compact large native and host geometry",
+              "ok": true
+            },
+            {
+              "name": "explicit CSS dimensions reach the actual control",
+              "ok": true
+            },
+            {
+              "name": "Group grow fills one horizontal row",
+              "ok": true
+            },
+            {
+              "name": "RTL attached actions preserve logical ordering",
+              "ok": true
+            },
+            {
+              "name": "vertical attachment joins actual control edges",
+              "ok": true
+            },
+            {
+              "name": "author child replacement preserves same-task form action",
+              "ok": true
+            },
+            {
+              "name": "child reconciliation restores one native submitter",
+              "ok": true
+            },
+            {
+              "name": "programmatic Toggle state is immediate and silent",
+              "ok": true
+            },
+            {
+              "name": "pending clipboard operation shows no premature success",
+              "ok": true
+            },
+            {
+              "name": "copy event contains no copied value",
+              "ok": true
+            },
+            {
+              "name": "successful copy keeps its name and uses one status region",
+              "ok": true
+            },
+            {
+              "name": "copy feedback resets after the configured duration",
+              "ok": true
+            },
+            {
+              "name": "clipboard failure rejects and emits safe detail",
+              "ok": true
+            },
+            {
+              "name": "superseded clipboard completion cannot change feedback",
+              "ok": true
+            },
+            {
+              "name": "disconnected completion emits no success and sets no timer",
+              "ok": true
+            },
+            {
+              "name": "labelled Copy exposes only its approved parts",
+              "ok": true
+            },
+            {
+              "name": "trusted Space toggles once",
+              "ok": true
+            },
+            {
+              "name": "trusted Enter toggles once",
+              "ok": true
+            },
+            {
+              "name": "loading suppresses trusted Toggle activation",
+              "ok": true
+            },
+            {
+              "name": "trusted Copy activation reaches clipboard once",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "docs": [
+      {
+        "engine": "chromium",
+        "form": true,
+        "toggle": true,
+        "showCode": true,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "form": true,
+        "toggle": true,
+        "showCode": true,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "form": true,
+        "toggle": true,
+        "showCode": true,
+        "errors": []
+      }
+    ]
+  },
+  "decisions": [
+    "One persistent native light-DOM submitter and shadow native form preserve actual form defaults and cancellation. SubmitEvent.submitter is the persistent native button.",
+    "Canonical TanStack stores own current action data and presentation; Group supplies only compatible appearance defaults.",
+    "Loading is soft-disabled and retains existing focus; explicit disabled and native Fieldset disability remove keyboard access.",
+    "Copy feedback uses one status region and contains no copied data in events.",
+    "Static semantic inputs stay on detached template nodes until connection, so cloned composition preserves ARIA values."
+  ],
+  "limits": [
+    "No explicit label-for association to the autonomous action host; content and ARIA provide naming.",
+    "Generic author-child replacement passes; generated React wrappers and their reconciliation acceptance remain M22.",
+    "Contrast uses actual sRGB canvas-converted computed colors and the configured ripple overlay; this is not a physical wide-gamut or speech-output audit.",
+    "Final Split Button/Menu behavior remains M13; Theme Switcher remains M10.",
+    "Independent review workers were unavailable at their account limit; this slice uses local review and independent native behavior oracles."
+  ],
+  "sources": [
+    {
+      "file": "src/shared/action-element.ts",
+      "sha256": "4780bd52ad9cabca9c49d209e16238ca1e780dc9f3e58d6eb08fea4a850a79e9"
+    },
+    {
+      "file": "src/shared/action-submitter.ts",
+      "sha256": "ed1c6427ff3f98d46949ad7cb57f209a7bd596a987b277e21ed42b32ed6f6712"
+    },
+    {
+      "file": "src/shared/form-action-element.ts",
+      "sha256": "64f95a0a6c2f4e797b0ae12c22da8ed3056e1edfcb3860b99a8494be3f86e034"
+    },
+    {
+      "file": "src/shared/action-content.ts",
+      "sha256": "402a5a72d1a525435d9912a4806f350f8e3e469ddc488063897010e7e46e766d"
+    },
+    {
+      "file": "src/shared/ripple.ts",
+      "sha256": "601f188c9affc298b88083e5f24ccf32fe1b23132351c6980733419b64966b26"
+    },
+    {
+      "file": "src/shared/semantic-element.ts",
+      "sha256": "6cd2504746a6883e21cf8b0dae7157688404bcfda8df228f72642c12517b93f5"
+    },
+    {
+      "file": "src/shared/interaction.ts",
+      "sha256": "c1f7d4e3d1460dd0eb2be7049111de11f3e922bb6564830b5f298fb2a6ffa1b5"
+    },
+    {
+      "file": "src/shared/places.ts",
+      "sha256": "b81c96e86ab78bb2878b8ea8cf1b0b3cb2fee374490607a6bd7b778fec363872"
+    },
+    {
+      "file": "src/components/button/button.ts",
+      "sha256": "a03da8e5f8fa8ea9691d315890ae061fcfeca503bcdb676d9938d62e85d65525"
+    },
+    {
+      "file": "src/components/icon-button/icon-button.ts",
+      "sha256": "198ccdd62e37ded1690335a689fea4c569a0884596e816130d9a7da37d70a45e"
+    },
+    {
+      "file": "src/components/toggle-button/toggle-button.ts",
+      "sha256": "ef6b34715ac173176418ccf51e6ecbf085753ec1b738bc6646719b35d5bb585c"
+    },
+    {
+      "file": "src/components/copy-button/copy-button.ts",
+      "sha256": "3f18f74287d5698914c3b5f75b6f10d932b18c2a832ad38065a69ced658ac366"
+    },
+    {
+      "file": "styles/shared/action.css",
+      "sha256": "08d405648628a6b65e535d7ef48991686cd8e44e091dae909e9f52f5b59a989b"
+    }
+  ],
+  "fixtures": [
+    {
+      "origin": "/tmp/acme-m09-buttons/probe.ts",
+      "source": "import {AcmeButton} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/button/button';\nimport {AcmeIconButton} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/icon-button/icon-button';\nimport {AcmeSpinner} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/spinner/spinner';\nimport {AcmeGroup} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/group/group';\nimport {AcmeTheme} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/theme/theme';\nfor(const [tag,constructor]of [['acme-button',AcmeButton],['acme-icon-button',AcmeIconButton],['acme-spinner',AcmeSpinner],['acme-group',AcmeGroup],['acme-theme',AcmeTheme]] as const)customElements.define(tag,constructor);\nconst results:any[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});const wait=()=>new Promise(r=>setTimeout(r,50));const control=(host:Element)=>host.shadowRoot!.querySelector('[part=root]') as HTMLButtonElement;\ntry{\n const button=new AcmeButton();button.textContent='Save';document.body.append(button);await button.updateComplete;await wait();check('Button defaults to a real non-submitting native control',control(button).localName==='button'&&control(button).type==='button'&&button.size==='medium'&&button.variant==='default');\n check('default geometry retains the 36px baseline',button.getBoundingClientRect().height===36&&control(button).getBoundingClientRect().height===36,{host:button.getBoundingClientRect().height,control:control(button).getBoundingClientRect().height});\n const icon=new AcmeIconButton();icon.ariaLabel='Close';icon.textContent='×';document.body.append(icon);await icon.updateComplete;await wait();check('Icon Button is a named square',icon.getBoundingClientRect().width===36&&icon.getBoundingClientRect().height===36&&control(icon).getAttribute('aria-label')==='Close',{width:icon.getBoundingClientRect().width,height:icon.getBoundingClientRect().height});\n button.focus();button.loading=true;await button.updateComplete;await wait();check('loading retains focus while suppressing native action',button.shadowRoot!.activeElement===control(button)&&!control(button).disabled&&control(button).getAttribute('aria-disabled')==='true');button.loading=false;\n const group=new AcmeGroup();group.attached=true;group.variant=\"secondary\";group.outline=true;group.size='small';const first=new AcmeButton(),last=new AcmeIconButton();first.textContent='Save';last.ariaLabel='More';last.textContent='…';group.append(first,last);document.body.append(group);await wait();check('Group supplies named appearance without authoring a child override',first.size==='small'&&last.size==='small'&&!first.hasAttribute('size'));\n first.size='large';await wait();check('explicit child size overrides Group and clearing resumes inheritance',first.size==='large');first.size=undefined;await wait();check('cleared child size reads the provider again',first.size==='small');\n check('Group owns the actual button surfaces',control(first).hasAttribute('data-acme-group-surface')&&control(last).hasAttribute('data-acme-group-surface'));\n const form=document.createElement('form');form.innerHTML='<input name=\"field\" value=\"ready\" required>';document.body.append(form);form.append(button);button.type='submit';button.name='action';button.value='save';await button.updateComplete;let submits=0,lastSubmitter:HTMLButtonElement|undefined;form.addEventListener('submit',event=>{event.preventDefault();submits++;lastSubmitter=event.submitter as HTMLButtonElement;});\n button.value='publish';button.click();check('same-task form values use a native persistent submitter',submits===1&&lastSubmitter?.form===form&&new FormData(form,lastSubmitter).get('action')==='publish');\n const cancel=(event:Event)=>{event.stopPropagation();event.preventDefault();};button.addEventListener('click',cancel);button.click();button.removeEventListener('click',cancel);check('click cancellation prevents submission',submits===1);\n const fieldset=document.createElement('fieldset');fieldset.disabled=true;fieldset.innerHTML='<legend>Allowed</legend>';form.append(fieldset);fieldset.append(button);button.click();check('Fieldset blocks action before repaint',submits===1);await wait();check('Fieldset disabled state reaches the visible control',control(button).disabled);fieldset.querySelector('legend')!.append(button);await wait();button.click();check('first legend restores native activation',submits===2&&!control(button).disabled);\n group.outline=false;await group.updateComplete;for(let i=0;i<20&&control(first).hasAttribute(\"data-acme-group-frame-top\");i++)await wait();const unframed=getComputedStyle(control(first)).borderTopColor;group.outline=true;await group.updateComplete;for(let i=0;i<20&&!control(first).hasAttribute(\"data-acme-group-frame-top\");i++)await wait();const framed=getComputedStyle(control(first)).borderTopColor;check(\"Group frame masks the real resting button border\",unframed!==framed&&framed===\"rgba(0, 0, 0, 0)\",{unframed,framed});\n button.type=\"button\";button.ripple=true;button.id=\"ripple-target\";await button.updateComplete;\n (window as any).__rippleTarget=button;(window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n"
+    },
+    {
+      "origin": "/tmp/acme-m09-buttons/run.ts",
+      "source": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m09-buttons\",root=\"/Users/peterkloss/Dev/ACMElabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\",splitting:true});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/src/generated/css/document/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname.endsWith(\".js\")&&url.pathname!==\"/probe.js\")return new Response(Bun.file(directory+\"/bundle\"+url.pathname),{headers:{\"Content-Type\":\"text/javascript\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(!data.error){const bounds=await page.locator(\"#ripple-target\").boundingBox();await page.mouse.move(bounds.x+bounds.width/2,bounds.y+bounds.height/2);await page.mouse.down();await page.waitForTimeout(20);const active=await page.evaluate(()=>window.__rippleTarget.shadowRoot.querySelector(\".ripple\")?.getAnimations().length??0);data.results.push({name:\"opt-in pointer press starts one owned ripple\",ok:active===1,actual:active});await page.mouse.up();await page.waitForTimeout(250);data.results.push({name:\"completed ripple releases its element\",ok:await page.evaluate(()=>!window.__rippleTarget.shadowRoot.querySelector(\".ripple\")),actual:await page.evaluate(()=>{const n=window.__rippleTarget.shadowRoot.querySelector(\".ripple\");return n?{animations:n.getAnimations().map(a=>({state:a.playState,time:a.currentTime,timing:a.effect.getComputedTiming()})),html:n.outerHTML}:null;})});await page.emulateMedia({reducedMotion:\"reduce\"});await page.mouse.down();await page.waitForTimeout(30);data.results.push({name:\"reduced motion suppresses ripple\",ok:await page.evaluate(()=>!window.__rippleTarget.shadowRoot.querySelector(\".ripple\"))});await page.mouse.up();}if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.length!==17||r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+    },
+    {
+      "origin": "/tmp/acme-m09-action-integration/probe.ts",
+      "source": "import {html,render} from '/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/index.js';\nimport {AcmeButton} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/button/button';\nimport {AcmeIconButton} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/icon-button/icon-button';\nimport {AcmeToggleButton} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/toggle-button/toggle-button';\nimport {AcmeCopyButton} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/copy-button/copy-button';\nimport {AcmeSpinner} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/spinner/spinner';\nimport {AcmeGroup} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/group/group';\nimport {AcmeTheme} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/theme/theme';\nfor(const [tag,constructor]of [['acme-button',AcmeButton],['acme-icon-button',AcmeIconButton],['acme-toggle-button',AcmeToggleButton],['acme-copy-button',AcmeCopyButton],['acme-spinner',AcmeSpinner],['acme-group',AcmeGroup],['acme-theme',AcmeTheme]] as const)customElements.define(tag,constructor);\nconst results:any[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});const wait=()=>new Promise(r=>setTimeout(r,65));const control=(host:Element)=>host.shadowRoot!.querySelector('[part=root]') as HTMLButtonElement;\ntry{\nconst stage=document.createElement('div');document.body.append(stage);render(html`<acme-button aria-label=\"Save changes\" aria-haspopup=\"dialog\" aria-expanded=\"false\">Save</acme-button>`,stage);await wait();const staticButton=stage.querySelector('acme-button')!;check('static Lit composition retains name and popup semantics',control(staticButton).ariaLabel==='Save changes'&&control(staticButton).ariaHasPopup==='dialog'&&control(staticButton).ariaExpanded==='false');\nfor(const density of ['normal','compact'] as const){const theme=new AcmeTheme();theme.density=density;document.body.append(theme);const expected=density==='normal'?[24,32,36,40]:[24,28,32,36];for(const [i,size]of ['tiny','small','medium','large'].entries()){const action=new AcmeButton();action.size=size as any;action.textContent='Action';theme.append(action);await wait();check(`${density} ${size} native and host geometry`,action.offsetHeight===expected[i]&&control(action).offsetHeight===expected[i],{host:action.offsetHeight,control:control(action).offsetHeight});}theme.remove();}\nconst dimension=new AcmeButton();dimension.textContent='Wide';dimension.width='180px';dimension.height='48px';document.body.append(dimension);await wait();check('explicit CSS dimensions reach the actual control',dimension.offsetWidth===180&&dimension.offsetHeight===48&&control(dimension).offsetHeight===48,{width:dimension.offsetWidth,height:dimension.offsetHeight,control:control(dimension).offsetHeight});\nconst group=new AcmeGroup();group.attached=true;group.variant='secondary';group.width='300px';group.grow=true;const first=new AcmeButton(),last=new AcmeButton();first.textContent='One';last.textContent='Two';group.append(first,last);document.body.append(group);await wait();await wait();check('Group grow fills one horizontal row',Math.abs(first.getBoundingClientRect().width-last.getBoundingClientRect().width)<1&&Math.abs(last.getBoundingClientRect().right-first.getBoundingClientRect().left-300)<2,{first:first.getBoundingClientRect().toJSON(),last:last.getBoundingClientRect().toJSON()});\ngroup.dir='rtl';await wait();check('RTL attached actions preserve logical ordering',first.getBoundingClientRect().left>last.getBoundingClientRect().left);\ngroup.orientation='vertical';group.grow=false;await wait();await wait();check('vertical attachment joins actual control edges',Math.abs(control(last).getBoundingClientRect().top-control(first).getBoundingClientRect().bottom)<=1.5,{first:control(first).getBoundingClientRect().toJSON(),last:control(last).getBoundingClientRect().toJSON()});\nconst form=document.createElement('form');form.innerHTML='<input name=\"field\" value=\"ready\">';const action=new AcmeButton();action.name='action';action.value='save';action.type='submit';action.textContent='Save';form.append(action);document.body.append(form);await wait();let submissions=0,submitter:any;form.addEventListener('submit',event=>{event.preventDefault();submissions++;submitter=event.submitter;});action.replaceChildren(document.createTextNode('New label'));action.click();check('author child replacement preserves same-task form action',submissions===1&&new FormData(form,submitter).get('action')==='save');await wait();check('child reconciliation restores one native submitter',action.querySelectorAll('button[slot=acme-form-submitter]').length===1&&form.elements.namedItem('action')===submitter);\nconst toggle=new AcmeToggleButton();toggle.id='toggle';toggle.textContent='Bold';let changes=0;toggle.addEventListener('acme-change',()=>changes++);document.body.append(toggle);await wait();toggle.pressed=true;check('programmatic Toggle state is immediate and silent',control(toggle).getAttribute('aria-pressed')==='true'&&changes===0);toggle.pressed=false;\nconst copy=new AcmeCopyButton();copy.id='copy';copy.value='private example';copy.copiedDuration=70;document.body.append(copy);await wait();let writes:string[]=[],resolveWrite:()=>void=()=>{},rejectWrite:(e:Error)=>void=()=>{};let mode='wait';Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:(text:string)=>{writes.push(text);return mode==='success'?Promise.resolve():new Promise<void>((resolve,reject)=>{resolveWrite=resolve;rejectWrite=reject;});}}});let copied=0,errors:any[]=[];copy.addEventListener('acme-copy',e=>{copied++;check('copy event contains no copied value',JSON.stringify((e as CustomEvent).detail)==='{}');});copy.addEventListener('acme-error',e=>errors.push((e as CustomEvent).detail));const pending=copy.copy();await wait();check('pending clipboard operation shows no premature success',!copy.copied&&copied===0);resolveWrite();await pending;await copy.updateComplete;check('successful copy keeps its name and uses one status region',copy.copied&&control(copy).ariaLabel==='Copy'&&copy.shadowRoot!.querySelectorAll('[role=status]').length===1&&copy.shadowRoot!.querySelector('[role=status]')!.textContent==='Copied');await new Promise(r=>setTimeout(r,100));check('copy feedback resets after the configured duration',!copy.copied&&copy.shadowRoot!.querySelector('[role=status]')!.textContent==='');\nconst failed=copy.copy().catch(e=>e);rejectWrite(Error('private example'));await failed;check('clipboard failure rejects and emits safe detail',errors.length===1&&errors[0].code==='clipboard'&&!JSON.stringify(errors).includes('private example'));\nconst stale=copy.copy();copy.value='replacement';resolveWrite();await stale;check('superseded clipboard completion cannot change feedback',!copy.copied&&copied===1);\nconst disconnected=copy.copy();copy.remove();resolveWrite();await disconnected;check('disconnected completion emits no success and sets no timer',!copy.copied&&copied===1);document.body.append(copy);await wait();\nconst label=document.createElement('span');label.textContent='Copy value';copy.append(label);await wait();check('labelled Copy exposes only its approved parts',Array.from(copy.shadowRoot!.querySelectorAll('[part]')).every(el=>el.getAttribute('part')==='root'||el.getAttribute('part')==='icon'));\n(window as any).__test={toggle,copy,changes:()=>changes,writes:()=>writes,success:()=>{mode='success';copy.copiedDuration=1000},control};(window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n"
+    },
+    {
+      "origin": "/tmp/acme-m09-action-integration/run.ts",
+      "source": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m09-action-integration\",root=\"/Users/peterkloss/Dev/ACMElabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\",splitting:true});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/src/generated/css/document/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname.endsWith(\".js\")&&url.pathname!==\"/probe.js\")return new Response(Bun.file(directory+\"/bundle\"+url.pathname),{headers:{\"Content-Type\":\"text/javascript\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(!data.error){\nawait page.locator('#toggle').press('Space');data.results.push({name:'trusted Space toggles once',ok:await page.evaluate(()=>window.__test.toggle.pressed&&window.__test.changes()===1)});\nawait page.locator('#toggle').press('Enter');data.results.push({name:'trusted Enter toggles once',ok:await page.evaluate(()=>!window.__test.toggle.pressed&&window.__test.changes()===2)});\nawait page.evaluate(()=>window.__test.toggle.loading=true);await page.locator('#toggle').press('Space');data.results.push({name:'loading suppresses trusted Toggle activation',ok:await page.evaluate(()=>window.__test.changes()===2)});\nawait page.evaluate(()=>window.__test.success());await page.locator('#copy').click();await page.waitForFunction(()=>window.__test.copy.copied);data.results.push({name:'trusted Copy activation reaches clipboard once',ok:await page.evaluate(()=>window.__test.writes().length===5&&window.__test.copy.copied)});\n}if(engine==='chromium')await page.screenshot({path:directory+'/actions.png',fullPage:true});if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.length!==28||r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+    },
+    {
+      "origin": "/tmp/acme-m09-contrast/probe.ts",
+      "source": "import {AcmeButton} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/button/button';\nimport {AcmeSpinner} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/spinner/spinner';\nimport {AcmeTheme} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/theme/theme';\ncustomElements.define('acme-button',AcmeButton);customElements.define('acme-spinner',AcmeSpinner);customElements.define('acme-theme',AcmeTheme);\nconst canvas=document.createElement('canvas');canvas.width=canvas.height=1;const context=canvas.getContext('2d',{willReadFrequently:true})!;\nconst color=(value:string)=>{context.clearRect(0,0,1,1);context.fillStyle=value;context.fillRect(0,0,1,1);return [...context.getImageData(0,0,1,1).data];};\nconst luminance=(rgb:number[])=>rgb.slice(0,3).map(channel=>{const value=channel/255;return value<=.04045?value/12.92:((value+.055)/1.055)**2.4;}).reduce((sum,value,index)=>sum+value*[.2126,.7152,.0722][index],0);\nconst ratio=(a:number[],b:number[])=>{const x=luminance(a),y=luminance(b);return(Math.max(x,y)+.05)/(Math.min(x,y)+.05);};\nconst results:any[]=[];\ntry{for(const appearance of ['light','dark'] as const){const theme=new AcmeTheme();theme.appearance=appearance;document.body.append(theme);await theme.updateComplete;for(const variant of ['default','secondary','tertiary','error','warning'] as const){const button=new AcmeButton();button.variant=variant;button.textContent='Action';theme.append(button);await button.updateComplete;const root=button.shadowRoot!.querySelector('[part=root]') as HTMLElement;\n for(const state of ['rest','hover','pressed']){root.toggleAttribute('data-hover',state==='hover');root.toggleAttribute('data-active',state==='pressed');const style=getComputedStyle(root),fg=color(style.color);let bg=color(style.backgroundColor);if(bg[3]===0){const reference=document.createElement('span');reference.style.color='var(--ds-background-100)';theme.append(reference);bg=color(getComputedStyle(reference).color);reference.remove();}const text=ratio(fg,bg),ripple=ratio(fg,bg.map((channel,index)=>index<3?channel*.9:channel));results.push({name:`${appearance}/${variant}/${state}`,ok:text>=4.5&&ripple>=4.5,text,ripple,foreground:style.color,background:style.backgroundColor});}\n button.remove();}theme.remove();}(window as any).__results={results};}catch(error){(window as any).__results={results,error:String(error)}}\n"
+    },
+    {
+      "origin": "/tmp/acme-m09-contrast/run.ts",
+      "source": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m09-contrast\",root=\"/Users/peterkloss/Dev/ACMElabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\",splitting:true});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/src/generated/css/document/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname.endsWith(\".js\")&&url.pathname!==\"/probe.js\")return new Response(Bun.file(directory+\"/bundle\"+url.pathname),{headers:{\"Content-Type\":\"text/javascript\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.length!==30||r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+    },
+    {
+      "origin": "/tmp/acme-m09-action-compiled/probe.ts",
+      "source": "import {html,render} from '/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/index.js';\nimport {AcmeButton} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/button/button.js';\nimport {AcmeIconButton} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/icon-button/icon-button.js';\nimport {AcmeToggleButton} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/toggle-button/toggle-button.js';\nimport {AcmeCopyButton} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/copy-button/copy-button.js';\nimport {AcmeSpinner} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/spinner/spinner.js';\nimport {AcmeGroup} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/group/group.js';\nimport {AcmeTheme} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/theme/theme.js';\nfor(const [tag,constructor]of [['acme-button',AcmeButton],['acme-icon-button',AcmeIconButton],['acme-toggle-button',AcmeToggleButton],['acme-copy-button',AcmeCopyButton],['acme-spinner',AcmeSpinner],['acme-group',AcmeGroup],['acme-theme',AcmeTheme]] as const)customElements.define(tag,constructor);\nconst results:any[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});const wait=()=>new Promise(r=>setTimeout(r,65));const control=(host:Element)=>host.shadowRoot!.querySelector('[part=root]') as HTMLButtonElement;\ntry{\nconst stage=document.createElement('div');document.body.append(stage);render(html`<acme-button aria-label=\"Save changes\" aria-haspopup=\"dialog\" aria-expanded=\"false\">Save</acme-button>`,stage);await wait();const staticButton=stage.querySelector('acme-button')!;check('static Lit composition retains name and popup semantics',control(staticButton).ariaLabel==='Save changes'&&control(staticButton).ariaHasPopup==='dialog'&&control(staticButton).ariaExpanded==='false');\nfor(const density of ['normal','compact'] as const){const theme=new AcmeTheme();theme.density=density;document.body.append(theme);const expected=density==='normal'?[24,32,36,40]:[24,28,32,36];for(const [i,size]of ['tiny','small','medium','large'].entries()){const action=new AcmeButton();action.size=size as any;action.textContent='Action';theme.append(action);await wait();check(`${density} ${size} native and host geometry`,action.offsetHeight===expected[i]&&control(action).offsetHeight===expected[i],{host:action.offsetHeight,control:control(action).offsetHeight});}theme.remove();}\nconst dimension=new AcmeButton();dimension.textContent='Wide';dimension.width='180px';dimension.height='48px';document.body.append(dimension);await wait();check('explicit CSS dimensions reach the actual control',dimension.offsetWidth===180&&dimension.offsetHeight===48&&control(dimension).offsetHeight===48,{width:dimension.offsetWidth,height:dimension.offsetHeight,control:control(dimension).offsetHeight});\nconst group=new AcmeGroup();group.attached=true;group.variant='secondary';group.width='300px';group.grow=true;const first=new AcmeButton(),last=new AcmeButton();first.textContent='One';last.textContent='Two';group.append(first,last);document.body.append(group);await wait();await wait();check('Group grow fills one horizontal row',Math.abs(first.getBoundingClientRect().width-last.getBoundingClientRect().width)<1&&Math.abs(last.getBoundingClientRect().right-first.getBoundingClientRect().left-300)<2,{first:first.getBoundingClientRect().toJSON(),last:last.getBoundingClientRect().toJSON()});\ngroup.dir='rtl';await wait();check('RTL attached actions preserve logical ordering',first.getBoundingClientRect().left>last.getBoundingClientRect().left);\ngroup.orientation='vertical';group.grow=false;await wait();await wait();check('vertical attachment joins actual control edges',Math.abs(control(last).getBoundingClientRect().top-control(first).getBoundingClientRect().bottom)<=1.5,{first:control(first).getBoundingClientRect().toJSON(),last:control(last).getBoundingClientRect().toJSON()});\nconst form=document.createElement('form');form.innerHTML='<input name=\"field\" value=\"ready\">';const action=new AcmeButton();action.name='action';action.value='save';action.type='submit';action.textContent='Save';form.append(action);document.body.append(form);await wait();let submissions=0,submitter:any;form.addEventListener('submit',event=>{event.preventDefault();submissions++;submitter=event.submitter;});action.replaceChildren(document.createTextNode('New label'));action.click();check('author child replacement preserves same-task form action',submissions===1&&new FormData(form,submitter).get('action')==='save');await wait();check('child reconciliation restores one native submitter',action.querySelectorAll('button[slot=acme-form-submitter]').length===1&&form.elements.namedItem('action')===submitter);\nconst toggle=new AcmeToggleButton();toggle.id='toggle';toggle.textContent='Bold';let changes=0;toggle.addEventListener('acme-change',()=>changes++);document.body.append(toggle);await wait();toggle.pressed=true;check('programmatic Toggle state is immediate and silent',control(toggle).getAttribute('aria-pressed')==='true'&&changes===0);toggle.pressed=false;\nconst copy=new AcmeCopyButton();copy.id='copy';copy.value='private example';copy.copiedDuration=70;document.body.append(copy);await wait();let writes:string[]=[],resolveWrite:()=>void=()=>{},rejectWrite:(e:Error)=>void=()=>{};let mode='wait';Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:(text:string)=>{writes.push(text);return mode==='success'?Promise.resolve():new Promise<void>((resolve,reject)=>{resolveWrite=resolve;rejectWrite=reject;});}}});let copied=0,errors:any[]=[];copy.addEventListener('acme-copy',e=>{copied++;check('copy event contains no copied value',JSON.stringify((e as CustomEvent).detail)==='{}');});copy.addEventListener('acme-error',e=>errors.push((e as CustomEvent).detail));const pending=copy.copy();await wait();check('pending clipboard operation shows no premature success',!copy.copied&&copied===0);resolveWrite();await pending;await copy.updateComplete;check('successful copy keeps its name and uses one status region',copy.copied&&control(copy).ariaLabel==='Copy'&&copy.shadowRoot!.querySelectorAll('[role=status]').length===1&&copy.shadowRoot!.querySelector('[role=status]')!.textContent==='Copied');await new Promise(r=>setTimeout(r,100));check('copy feedback resets after the configured duration',!copy.copied&&copy.shadowRoot!.querySelector('[role=status]')!.textContent==='');\nconst failed=copy.copy().catch(e=>e);rejectWrite(Error('private example'));await failed;check('clipboard failure rejects and emits safe detail',errors.length===1&&errors[0].code==='clipboard'&&!JSON.stringify(errors).includes('private example'));\nconst stale=copy.copy();copy.value='replacement';resolveWrite();await stale;check('superseded clipboard completion cannot change feedback',!copy.copied&&copied===1);\nconst disconnected=copy.copy();copy.remove();resolveWrite();await disconnected;check('disconnected completion emits no success and sets no timer',!copy.copied&&copied===1);document.body.append(copy);await wait();\nconst label=document.createElement('span');label.textContent='Copy value';copy.append(label);await wait();check('labelled Copy exposes only its approved parts',Array.from(copy.shadowRoot!.querySelectorAll('[part]')).every(el=>el.getAttribute('part')==='root'||el.getAttribute('part')==='icon'));\n(window as any).__test={toggle,copy,changes:()=>changes,writes:()=>writes,success:()=>{mode='success';copy.copiedDuration=1000},control};(window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n"
+    },
+    {
+      "origin": "/tmp/acme-m09-action-compiled/run.ts",
+      "source": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m09-action-compiled\",root=\"/Users/peterkloss/Dev/ACMElabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\",splitting:true});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/src/generated/css/document/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname.endsWith(\".js\")&&url.pathname!==\"/probe.js\")return new Response(Bun.file(directory+\"/bundle\"+url.pathname),{headers:{\"Content-Type\":\"text/javascript\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(!data.error){\nawait page.locator('#toggle').press('Space');data.results.push({name:'trusted Space toggles once',ok:await page.evaluate(()=>window.__test.toggle.pressed&&window.__test.changes()===1)});\nawait page.locator('#toggle').press('Enter');data.results.push({name:'trusted Enter toggles once',ok:await page.evaluate(()=>!window.__test.toggle.pressed&&window.__test.changes()===2)});\nawait page.evaluate(()=>window.__test.toggle.loading=true);await page.locator('#toggle').press('Space');data.results.push({name:'loading suppresses trusted Toggle activation',ok:await page.evaluate(()=>window.__test.changes()===2)});\nawait page.evaluate(()=>window.__test.success());await page.locator('#copy').click();await page.waitForFunction(()=>window.__test.copy.copied);data.results.push({name:'trusted Copy activation reaches clipboard once',ok:await page.evaluate(()=>window.__test.writes().length===5&&window.__test.copy.copied)});\n}if(engine==='chromium')await page.screenshot({path:directory+'/actions.png',fullPage:true});if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.length!==28||r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+    },
+    {
+      "origin": "/tmp/acme-m09-actions/docs-check.ts",
+      "source": "process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';\nconst pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');\nconst results=[];for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true}:{headless:true});try{const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:4180/components/button');await page.locator('#button-form acme-button').click();await page.waitForFunction(()=>document.querySelector('#button-form output')?.textContent==='save: Example');const toggle=page.locator('.preview acme-toggle-button');await toggle.click();const toggled=await toggle.evaluate(el=>el.pressed===true);await page.locator('.showbar').first().click();const code=await page.locator('.showcase').first().evaluate(el=>el.classList.contains('open')||el.querySelector('.showbar')?.getAttribute('aria-expanded')==='true');results.push({engine,form:true,toggle:toggled,showCode:code,errors});console.log(results.at(-1));if(engine==='chromium')await page.screenshot({path:'/tmp/acme-m09-actions/docs-button.png',fullPage:true});}finally{await browser.close();}}\nawait Bun.write('/tmp/acme-m09-actions/docs-results.json',JSON.stringify(results,null,2)+'\\n');if(results.some(r=>!r.form||!r.toggle||!r.showCode||r.errors.length))process.exitCode=1;\n"
+    }
+  ],
+  "validation": {
+    "build": "pass",
+    "docs": "93 pages; 4,255 elements; zero undocumented",
+    "suite": {
+      "passed": 895,
+      "failed": 0,
+      "assertions": 119769,
+      "files": 134
+    },
+    "diffCheck": "pass",
+    "localReview": "Action state/form ownership, disabled/loading focus, secret-free completion events, ARIA lifecycle, Group surface integration and bounded motion reviewed; no outstanding action-slice defect found."
+  }
+}

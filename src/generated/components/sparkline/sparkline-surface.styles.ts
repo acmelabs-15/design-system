@@ -1,0 +1,29 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const sparklineSurfaceCss = css`:host {
+  min-inline-size: 0;
+  display: block;
+}
+
+[part="root"] {
+  block-size: 40px;
+  inline-size: 100%;
+  color: var(--ds-gray-900);
+  display: block;
+}
+
+[part="root"][data-sentiment="positive"] {
+  color: var(--success-ink);
+}
+
+[part="root"][data-sentiment="negative"] {
+  color: var(--warn-ink);
+}
+
+svg {
+  block-size: 100%;
+  inline-size: 100%;
+  display: block;
+  overflow: visible;
+}
+`;

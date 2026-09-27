@@ -1,0 +1,2646 @@
+{
+  "date": "2026-09-23",
+  "batch": "M20",
+  "status": "complete at native/Lit boundary; old patched Firefox155 failure retained as a test-runtime constraint",
+  "references": [
+    "../../decisions/flow-diagram.md",
+    "../../alignment/inventory/data-displays.md#d-05-flow-diagram"
+  ],
+  "implementation": {
+    "elements": [
+      "acme-flow-diagram",
+      "acme-flow-node"
+    ],
+    "engine": "elkjs 0.12.0 real dedicated worker",
+    "workerDelivery": "Lazy module plus copied unmodified worker; same-origin direct and cross-origin CORS/owned Blob; optional public worker URL config",
+    "state": "Canonical TanStack Store atoms; shared Lit Motion viewport springs; node/edge layouts applied together",
+    "composition": "Author node content remains in its original DOM; explicit activation label; existing Button/Collapsible",
+    "safety": "Validated immutable records, safe text labels, stable IDs, optional cardinal ports, finite geometry, orthogonal tolerance 1e-6 without moving endpoints; clearance-checked rounding",
+    "accessibility": "Keyboard pan/zoom/fit, explicit node activation, preserved custom controls/focus, offscreen focus reveal, structured relationships"
+  },
+  "checks": {
+    "models": {
+      "tests": 7,
+      "assertions": 23
+    },
+    "strictPackageBuild": true,
+    "documentationBuild": {
+      "pages": 108,
+      "elements": 4319,
+      "undocumented": 0
+    },
+    "suite": {
+      "passed": 877,
+      "failed": 1,
+      "reason": "Initial new docs used a nonexistent Field label tag; corrected to public label slot"
+    },
+    "correctedDocumentationSuite": {
+      "passed": 109,
+      "failed": 0
+    },
+    "native": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "real worker renders measured custom nodes and routed edges",
+            "pass": true
+          },
+          {
+            "name": "custom controls retain DOM, focus and values after layout",
+            "pass": true
+          },
+          {
+            "name": "node activation and keyboard viewport controls have distinct events",
+            "pass": true
+          },
+          {
+            "name": "content resize relayout keeps author content mounted",
+            "pass": true
+          },
+          {
+            "name": "invalid references fail clearly and valid data recovers",
+            "pass": true
+          },
+          {
+            "name": "empty, disconnect and reconnect release worker resources",
+            "pass": true
+          },
+          {
+            "name": "background pointer pan never captures nested control gestures",
+            "pass": true
+          },
+          {
+            "name": "invalid data emits once and a changed zoom range clamps current state",
+            "pass": true
+          },
+          {
+            "name": "stale requests reject and latest data wins",
+            "pass": true
+          },
+          {
+            "name": "failed worker delivery has a usable retry and releases resources",
+            "pass": true
+          },
+          {
+            "name": "stress measurements",
+            "pass": true,
+            "measurements": [
+              {
+                "count": 100,
+                "layoutMs": 80.09999996423721,
+                "verificationMs": 105.69999998807907,
+                "ticks": 7,
+                "collisions": 0,
+                "diagonal": 0,
+                "samples": 5559,
+                "nodes": 100,
+                "edges": 109,
+                "workerOwned": true
+              },
+              {
+                "count": 500,
+                "layoutMs": 268.39999997615814,
+                "verificationMs": 339.60000002384186,
+                "ticks": 24,
+                "collisions": 0,
+                "diagonal": 0,
+                "samples": 27999,
+                "nodes": 500,
+                "edges": 549,
+                "workerOwned": true
+              }
+            ]
+          },
+          {
+            "name": "100 and 500 node worker layouts keep the main thread responsive and routes clear",
+            "pass": true
+          },
+          {
+            "name": "keyboard focus brings offscreen node controls into the canvas without native scroll drift",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "real worker renders measured custom nodes and routed edges",
+            "pass": true
+          },
+          {
+            "name": "custom controls retain DOM, focus and values after layout",
+            "pass": true
+          },
+          {
+            "name": "node activation and keyboard viewport controls have distinct events",
+            "pass": true
+          },
+          {
+            "name": "content resize relayout keeps author content mounted",
+            "pass": true
+          },
+          {
+            "name": "invalid references fail clearly and valid data recovers",
+            "pass": true
+          },
+          {
+            "name": "empty, disconnect and reconnect release worker resources",
+            "pass": true
+          },
+          {
+            "name": "background pointer pan never captures nested control gestures",
+            "pass": true
+          },
+          {
+            "name": "invalid data emits once and a changed zoom range clamps current state",
+            "pass": true
+          },
+          {
+            "name": "stale requests reject and latest data wins",
+            "pass": true
+          },
+          {
+            "name": "failed worker delivery has a usable retry and releases resources",
+            "pass": true
+          },
+          {
+            "name": "stress measurements",
+            "pass": true,
+            "measurements": [
+              {
+                "count": 100,
+                "layoutMs": 130,
+                "verificationMs": 168,
+                "ticks": 9,
+                "collisions": 0,
+                "diagonal": 0,
+                "samples": 5559,
+                "nodes": 100,
+                "edges": 109,
+                "workerOwned": true
+              },
+              {
+                "count": 500,
+                "layoutMs": 411,
+                "verificationMs": 586,
+                "ticks": 27,
+                "collisions": 0,
+                "diagonal": 0,
+                "samples": 27999,
+                "nodes": 500,
+                "edges": 549,
+                "workerOwned": true
+              }
+            ]
+          },
+          {
+            "name": "100 and 500 node worker layouts keep the main thread responsive and routes clear",
+            "pass": true
+          },
+          {
+            "name": "keyboard focus brings offscreen node controls into the canvas without native scroll drift",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "real worker renders measured custom nodes and routed edges",
+            "pass": true
+          },
+          {
+            "name": "custom controls retain DOM, focus and values after layout",
+            "pass": true
+          },
+          {
+            "name": "node activation and keyboard viewport controls have distinct events",
+            "pass": true
+          },
+          {
+            "name": "content resize relayout keeps author content mounted",
+            "pass": true
+          },
+          {
+            "name": "invalid references fail clearly and valid data recovers",
+            "pass": true
+          },
+          {
+            "name": "empty, disconnect and reconnect release worker resources",
+            "pass": true
+          },
+          {
+            "name": "background pointer pan never captures nested control gestures",
+            "pass": true
+          },
+          {
+            "name": "invalid data emits once and a changed zoom range clamps current state",
+            "pass": true
+          },
+          {
+            "name": "stale requests reject and latest data wins",
+            "pass": true
+          },
+          {
+            "name": "failed worker delivery has a usable retry and releases resources",
+            "pass": true
+          },
+          {
+            "name": "stress measurements",
+            "pass": true,
+            "measurements": [
+              {
+                "count": 100,
+                "layoutMs": 107,
+                "verificationMs": 233,
+                "ticks": 8,
+                "collisions": 0,
+                "diagonal": 0,
+                "samples": 5559,
+                "nodes": 100,
+                "edges": 109,
+                "workerOwned": true
+              },
+              {
+                "count": 500,
+                "layoutMs": 311,
+                "verificationMs": 2214,
+                "ticks": 22,
+                "collisions": 0,
+                "diagonal": 0,
+                "samples": 27999,
+                "nodes": 500,
+                "edges": 549,
+                "workerOwned": true
+              }
+            ]
+          },
+          {
+            "name": "100 and 500 node worker layouts keep the main thread responsive and routes clear",
+            "pass": true
+          },
+          {
+            "name": "keyboard focus brings offscreen node controls into the canvas without native scroll drift",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiledIndependentCases": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "real worker renders measured custom nodes and routed edges",
+            "pass": true
+          },
+          {
+            "name": "custom controls retain DOM, focus and values after layout",
+            "pass": true
+          },
+          {
+            "name": "node activation and keyboard viewport controls have distinct events",
+            "pass": true
+          },
+          {
+            "name": "content resize relayout keeps author content mounted",
+            "pass": true
+          },
+          {
+            "name": "invalid references fail clearly and valid data recovers",
+            "pass": true
+          },
+          {
+            "name": "empty, disconnect and reconnect release worker resources",
+            "pass": true
+          },
+          {
+            "name": "background pointer pan never captures nested control gestures",
+            "pass": true
+          },
+          {
+            "name": "invalid data emits once and a changed zoom range clamps current state",
+            "pass": true
+          },
+          {
+            "name": "stale requests reject and latest data wins",
+            "pass": true
+          },
+          {
+            "name": "failed worker delivery has a usable retry and releases resources",
+            "pass": true
+          },
+          {
+            "name": "stress measurements",
+            "pass": true,
+            "measurements": [
+              {
+                "count": 100,
+                "layoutMs": 81.19999998807907,
+                "verificationMs": 107.30000001192093,
+                "ticks": 7,
+                "collisions": 0,
+                "diagonal": 0,
+                "samples": 5559,
+                "nodes": 100,
+                "edges": 109,
+                "workerOwned": true
+              },
+              {
+                "count": 500,
+                "layoutMs": 282.69999998807907,
+                "verificationMs": 351.89999997615814,
+                "ticks": 25,
+                "collisions": 0,
+                "diagonal": 0,
+                "samples": 27999,
+                "nodes": 500,
+                "edges": 549,
+                "workerOwned": true
+              }
+            ]
+          },
+          {
+            "name": "100 and 500 node worker layouts keep the main thread responsive and routes clear",
+            "pass": true
+          },
+          {
+            "name": "keyboard focus brings offscreen node controls into the canvas without native scroll drift",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "real worker renders measured custom nodes and routed edges",
+            "pass": true
+          },
+          {
+            "name": "custom controls retain DOM, focus and values after layout",
+            "pass": true
+          },
+          {
+            "name": "node activation and keyboard viewport controls have distinct events",
+            "pass": true
+          },
+          {
+            "name": "content resize relayout keeps author content mounted",
+            "pass": true
+          },
+          {
+            "name": "invalid references fail clearly and valid data recovers",
+            "pass": true
+          },
+          {
+            "name": "empty, disconnect and reconnect release worker resources",
+            "pass": true
+          },
+          {
+            "name": "background pointer pan never captures nested control gestures",
+            "pass": true
+          },
+          {
+            "name": "invalid data emits once and a changed zoom range clamps current state",
+            "pass": true
+          },
+          {
+            "name": "stale requests reject and latest data wins",
+            "pass": true
+          },
+          {
+            "name": "failed worker delivery has a usable retry and releases resources",
+            "pass": true
+          },
+          {
+            "name": "stress measurements",
+            "pass": true,
+            "measurements": [
+              {
+                "count": 100,
+                "layoutMs": 131,
+                "verificationMs": 169,
+                "ticks": 9,
+                "collisions": 0,
+                "diagonal": 0,
+                "samples": 5559,
+                "nodes": 100,
+                "edges": 109,
+                "workerOwned": true
+              },
+              {
+                "count": 500,
+                "layoutMs": 407,
+                "verificationMs": 579,
+                "ticks": 27,
+                "collisions": 0,
+                "diagonal": 0,
+                "samples": 27999,
+                "nodes": 500,
+                "edges": 549,
+                "workerOwned": true
+              }
+            ]
+          },
+          {
+            "name": "100 and 500 node worker layouts keep the main thread responsive and routes clear",
+            "pass": true
+          },
+          {
+            "name": "keyboard focus brings offscreen node controls into the canvas without native scroll drift",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "real worker renders measured custom nodes and routed edges",
+            "pass": true
+          },
+          {
+            "name": "custom controls retain DOM, focus and values after layout",
+            "pass": true
+          },
+          {
+            "name": "node activation and keyboard viewport controls have distinct events",
+            "pass": true
+          },
+          {
+            "name": "content resize relayout keeps author content mounted",
+            "pass": true
+          },
+          {
+            "name": "invalid references fail clearly and valid data recovers",
+            "pass": true
+          },
+          {
+            "name": "empty, disconnect and reconnect release worker resources",
+            "pass": true
+          },
+          {
+            "name": "background pointer pan never captures nested control gestures",
+            "pass": true
+          },
+          {
+            "name": "invalid data emits once and a changed zoom range clamps current state",
+            "pass": true
+          },
+          {
+            "name": "stale requests reject and latest data wins",
+            "pass": true
+          },
+          {
+            "name": "failed worker delivery has a usable retry and releases resources",
+            "pass": true
+          },
+          {
+            "name": "stress measurements",
+            "pass": true,
+            "measurements": [
+              {
+                "count": 100,
+                "layoutMs": 107,
+                "verificationMs": 231,
+                "ticks": 8,
+                "collisions": 0,
+                "diagonal": 0,
+                "samples": 5559,
+                "nodes": 100,
+                "edges": 109,
+                "workerOwned": true
+              },
+              {
+                "count": 500,
+                "layoutMs": 307,
+                "verificationMs": 2218,
+                "ticks": 22,
+                "collisions": 0,
+                "diagonal": 0,
+                "samples": 27999,
+                "nodes": 500,
+                "edges": 549,
+                "workerOwned": true
+              }
+            ]
+          },
+          {
+            "name": "100 and 500 node worker layouts keep the main thread responsive and routes clear",
+            "pass": true
+          },
+          {
+            "name": "keyboard focus brings offscreen node controls into the canvas without native scroll drift",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "extra": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "rounded geometry sample counts",
+            "pass": true,
+            "result": {
+              "collisions": 0,
+              "samples": 404,
+              "dimensions": [
+                [
+                  160,
+                  80
+                ],
+                [
+                  220,
+                  100
+                ],
+                [
+                  150,
+                  60
+                ]
+              ],
+              "edges": 4,
+              "nodes": 3,
+              "html": "<!--?lit$745442450$-->&lt;b&gt;Safe label&lt;/b&gt;"
+            }
+          },
+          {
+            "name": "cyclic, parallel and disconnected graphs retain valid rounded geometry",
+            "pass": true
+          },
+          {
+            "name": "ordinary motion reaches its endpoint and reduced motion does not leave drift",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "rounded geometry sample counts",
+            "pass": true,
+            "result": {
+              "collisions": 0,
+              "samples": 404,
+              "dimensions": [
+                [
+                  160,
+                  80
+                ],
+                [
+                  220,
+                  100
+                ],
+                [
+                  150,
+                  60
+                ]
+              ],
+              "edges": 4,
+              "nodes": 3,
+              "html": "<!--?lit$129231882$-->&lt;b&gt;Safe label&lt;/b&gt;"
+            }
+          },
+          {
+            "name": "cyclic, parallel and disconnected graphs retain valid rounded geometry",
+            "pass": true
+          },
+          {
+            "name": "ordinary motion reaches its endpoint and reduced motion does not leave drift",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "rounded geometry sample counts",
+            "pass": true,
+            "result": {
+              "collisions": 0,
+              "samples": 404,
+              "dimensions": [
+                [
+                  160,
+                  80
+                ],
+                [
+                  220,
+                  100
+                ],
+                [
+                  150,
+                  60
+                ]
+              ],
+              "edges": 4,
+              "nodes": 3,
+              "html": "<!--?lit$293778729$-->&lt;b&gt;Safe label&lt;/b&gt;"
+            }
+          },
+          {
+            "name": "cyclic, parallel and disconnected graphs retain valid rounded geometry",
+            "pass": true
+          },
+          {
+            "name": "ordinary motion reaches its endpoint and reduced motion does not leave drift",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "engine": [
+      {
+        "engine": "chromium",
+        "local": {
+          "width": 1720,
+          "height": 187.33333333333331,
+          "nodes": [
+            [
+              "node-0",
+              {
+                "x": 20,
+                "y": 30,
+                "width": 120,
+                "height": 60
+              }
+            ],
+            [
+              "node-1",
+              {
+                "x": 308,
+                "y": 33.33333333333333,
+                "width": 140,
+                "height": 80
+              }
+            ],
+            [
+              "node-2",
+              {
+                "x": 616,
+                "y": 43.33333333333333,
+                "width": 160,
+                "height": 60
+              }
+            ],
+            [
+              "node-3",
+              {
+                "x": 944,
+                "y": 33.33333333333333,
+                "width": 120,
+                "height": 80
+              }
+            ],
+            [
+              "node-4",
+              {
+                "x": 1232,
+                "y": 30,
+                "width": 140,
+                "height": 60
+              }
+            ],
+            [
+              "node-5",
+              {
+                "x": 1540,
+                "y": 20,
+                "width": 160,
+                "height": 80
+              }
+            ]
+          ],
+          "edges": [
+            {
+              "id": "edge-0",
+              "source": "node-0",
+              "target": "node-1",
+              "sections": [
+                [
+                  {
+                    "x": 140,
+                    "y": 60
+                  },
+                  {
+                    "x": 308,
+                    "y": 60
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 200,
+                  "y": 63,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-1",
+              "source": "node-1",
+              "target": "node-2",
+              "sections": [
+                [
+                  {
+                    "x": 448,
+                    "y": 73.33333333333333
+                  },
+                  {
+                    "x": 616,
+                    "y": 73.33333333333333
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 508,
+                  "y": 50.33333333333333,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-2",
+              "source": "node-2",
+              "target": "node-3",
+              "sections": [
+                [
+                  {
+                    "x": 776,
+                    "y": 73.33333333333333
+                  },
+                  {
+                    "x": 944,
+                    "y": 73.33333333333333
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 836,
+                  "y": 50.33333333333333,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-3",
+              "source": "node-3",
+              "target": "node-4",
+              "sections": [
+                [
+                  {
+                    "x": 1064,
+                    "y": 60
+                  },
+                  {
+                    "x": 1232,
+                    "y": 60
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 1124,
+                  "y": 63,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-4",
+              "source": "node-4",
+              "target": "node-5",
+              "sections": [
+                [
+                  {
+                    "x": 1372,
+                    "y": 60
+                  },
+                  {
+                    "x": 1540,
+                    "y": 60
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 1432,
+                  "y": 63,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "return",
+              "source": "node-3",
+              "target": "node-1",
+              "sections": [
+                [
+                  {
+                    "x": 1064,
+                    "y": 86.66666666666667
+                  },
+                  {
+                    "x": 1074,
+                    "y": 86.66666666666667
+                  },
+                  {
+                    "x": 1074,
+                    "y": 143.33333333333331
+                  },
+                  {
+                    "x": 258,
+                    "y": 143.33333333333331
+                  },
+                  {
+                    "x": 258,
+                    "y": 86.66666666666667
+                  },
+                  {
+                    "x": 308,
+                    "y": 86.66666666666667
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 672,
+                  "y": 146.33333333333331,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Return"
+                }
+              ]
+            }
+          ]
+        },
+        "cross": {
+          "width": 1720,
+          "height": 187.33333333333331,
+          "nodes": [
+            [
+              "node-0",
+              {
+                "x": 20,
+                "y": 30,
+                "width": 120,
+                "height": 60
+              }
+            ],
+            [
+              "node-1",
+              {
+                "x": 308,
+                "y": 33.33333333333333,
+                "width": 140,
+                "height": 80
+              }
+            ],
+            [
+              "node-2",
+              {
+                "x": 616,
+                "y": 43.33333333333333,
+                "width": 160,
+                "height": 60
+              }
+            ],
+            [
+              "node-3",
+              {
+                "x": 944,
+                "y": 33.33333333333333,
+                "width": 120,
+                "height": 80
+              }
+            ],
+            [
+              "node-4",
+              {
+                "x": 1232,
+                "y": 30,
+                "width": 140,
+                "height": 60
+              }
+            ],
+            [
+              "node-5",
+              {
+                "x": 1540,
+                "y": 20,
+                "width": 160,
+                "height": 80
+              }
+            ]
+          ],
+          "edges": [
+            {
+              "id": "edge-0",
+              "source": "node-0",
+              "target": "node-1",
+              "sections": [
+                [
+                  {
+                    "x": 140,
+                    "y": 60
+                  },
+                  {
+                    "x": 308,
+                    "y": 60
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 200,
+                  "y": 63,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-1",
+              "source": "node-1",
+              "target": "node-2",
+              "sections": [
+                [
+                  {
+                    "x": 448,
+                    "y": 73.33333333333333
+                  },
+                  {
+                    "x": 616,
+                    "y": 73.33333333333333
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 508,
+                  "y": 50.33333333333333,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-2",
+              "source": "node-2",
+              "target": "node-3",
+              "sections": [
+                [
+                  {
+                    "x": 776,
+                    "y": 73.33333333333333
+                  },
+                  {
+                    "x": 944,
+                    "y": 73.33333333333333
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 836,
+                  "y": 50.33333333333333,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-3",
+              "source": "node-3",
+              "target": "node-4",
+              "sections": [
+                [
+                  {
+                    "x": 1064,
+                    "y": 60
+                  },
+                  {
+                    "x": 1232,
+                    "y": 60
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 1124,
+                  "y": 63,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-4",
+              "source": "node-4",
+              "target": "node-5",
+              "sections": [
+                [
+                  {
+                    "x": 1372,
+                    "y": 60
+                  },
+                  {
+                    "x": 1540,
+                    "y": 60
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 1432,
+                  "y": 63,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "return",
+              "source": "node-3",
+              "target": "node-1",
+              "sections": [
+                [
+                  {
+                    "x": 1064,
+                    "y": 86.66666666666667
+                  },
+                  {
+                    "x": 1074,
+                    "y": 86.66666666666667
+                  },
+                  {
+                    "x": 1074,
+                    "y": 143.33333333333331
+                  },
+                  {
+                    "x": 258,
+                    "y": 143.33333333333331
+                  },
+                  {
+                    "x": 258,
+                    "y": 86.66666666666667
+                  },
+                  {
+                    "x": 308,
+                    "y": 86.66666666666667
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 672,
+                  "y": 146.33333333333331,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Return"
+                }
+              ]
+            }
+          ]
+        },
+        "canceled": "AbortError",
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "local": {
+          "width": 1720,
+          "height": 187.33333333333331,
+          "nodes": [
+            [
+              "node-0",
+              {
+                "x": 20,
+                "y": 30,
+                "width": 120,
+                "height": 60
+              }
+            ],
+            [
+              "node-1",
+              {
+                "x": 308,
+                "y": 33.33333333333333,
+                "width": 140,
+                "height": 80
+              }
+            ],
+            [
+              "node-2",
+              {
+                "x": 616,
+                "y": 43.33333333333333,
+                "width": 160,
+                "height": 60
+              }
+            ],
+            [
+              "node-3",
+              {
+                "x": 944,
+                "y": 33.33333333333333,
+                "width": 120,
+                "height": 80
+              }
+            ],
+            [
+              "node-4",
+              {
+                "x": 1232,
+                "y": 30,
+                "width": 140,
+                "height": 60
+              }
+            ],
+            [
+              "node-5",
+              {
+                "x": 1540,
+                "y": 20,
+                "width": 160,
+                "height": 80
+              }
+            ]
+          ],
+          "edges": [
+            {
+              "id": "edge-0",
+              "source": "node-0",
+              "target": "node-1",
+              "sections": [
+                [
+                  {
+                    "x": 140,
+                    "y": 60
+                  },
+                  {
+                    "x": 308,
+                    "y": 60
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 200,
+                  "y": 63,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-1",
+              "source": "node-1",
+              "target": "node-2",
+              "sections": [
+                [
+                  {
+                    "x": 448,
+                    "y": 73.33333333333333
+                  },
+                  {
+                    "x": 616,
+                    "y": 73.33333333333333
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 508,
+                  "y": 50.33333333333333,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-2",
+              "source": "node-2",
+              "target": "node-3",
+              "sections": [
+                [
+                  {
+                    "x": 776,
+                    "y": 73.33333333333333
+                  },
+                  {
+                    "x": 944,
+                    "y": 73.33333333333333
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 836,
+                  "y": 50.33333333333333,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-3",
+              "source": "node-3",
+              "target": "node-4",
+              "sections": [
+                [
+                  {
+                    "x": 1064,
+                    "y": 60
+                  },
+                  {
+                    "x": 1232,
+                    "y": 60
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 1124,
+                  "y": 63,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-4",
+              "source": "node-4",
+              "target": "node-5",
+              "sections": [
+                [
+                  {
+                    "x": 1372,
+                    "y": 60
+                  },
+                  {
+                    "x": 1540,
+                    "y": 60
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 1432,
+                  "y": 63,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "return",
+              "source": "node-3",
+              "target": "node-1",
+              "sections": [
+                [
+                  {
+                    "x": 1064,
+                    "y": 86.66666666666667
+                  },
+                  {
+                    "x": 1074,
+                    "y": 86.66666666666667
+                  },
+                  {
+                    "x": 1074,
+                    "y": 143.33333333333331
+                  },
+                  {
+                    "x": 258,
+                    "y": 143.33333333333331
+                  },
+                  {
+                    "x": 258,
+                    "y": 86.66666666666667
+                  },
+                  {
+                    "x": 308,
+                    "y": 86.66666666666667
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 672,
+                  "y": 146.33333333333331,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Return"
+                }
+              ]
+            }
+          ]
+        },
+        "cross": {
+          "width": 1720,
+          "height": 187.33333333333331,
+          "nodes": [
+            [
+              "node-0",
+              {
+                "x": 20,
+                "y": 30,
+                "width": 120,
+                "height": 60
+              }
+            ],
+            [
+              "node-1",
+              {
+                "x": 308,
+                "y": 33.33333333333333,
+                "width": 140,
+                "height": 80
+              }
+            ],
+            [
+              "node-2",
+              {
+                "x": 616,
+                "y": 43.33333333333333,
+                "width": 160,
+                "height": 60
+              }
+            ],
+            [
+              "node-3",
+              {
+                "x": 944,
+                "y": 33.33333333333333,
+                "width": 120,
+                "height": 80
+              }
+            ],
+            [
+              "node-4",
+              {
+                "x": 1232,
+                "y": 30,
+                "width": 140,
+                "height": 60
+              }
+            ],
+            [
+              "node-5",
+              {
+                "x": 1540,
+                "y": 20,
+                "width": 160,
+                "height": 80
+              }
+            ]
+          ],
+          "edges": [
+            {
+              "id": "edge-0",
+              "source": "node-0",
+              "target": "node-1",
+              "sections": [
+                [
+                  {
+                    "x": 140,
+                    "y": 60
+                  },
+                  {
+                    "x": 308,
+                    "y": 60
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 200,
+                  "y": 63,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-1",
+              "source": "node-1",
+              "target": "node-2",
+              "sections": [
+                [
+                  {
+                    "x": 448,
+                    "y": 73.33333333333333
+                  },
+                  {
+                    "x": 616,
+                    "y": 73.33333333333333
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 508,
+                  "y": 50.33333333333333,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-2",
+              "source": "node-2",
+              "target": "node-3",
+              "sections": [
+                [
+                  {
+                    "x": 776,
+                    "y": 73.33333333333333
+                  },
+                  {
+                    "x": 944,
+                    "y": 73.33333333333333
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 836,
+                  "y": 50.33333333333333,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-3",
+              "source": "node-3",
+              "target": "node-4",
+              "sections": [
+                [
+                  {
+                    "x": 1064,
+                    "y": 60
+                  },
+                  {
+                    "x": 1232,
+                    "y": 60
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 1124,
+                  "y": 63,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-4",
+              "source": "node-4",
+              "target": "node-5",
+              "sections": [
+                [
+                  {
+                    "x": 1372,
+                    "y": 60
+                  },
+                  {
+                    "x": 1540,
+                    "y": 60
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 1432,
+                  "y": 63,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "return",
+              "source": "node-3",
+              "target": "node-1",
+              "sections": [
+                [
+                  {
+                    "x": 1064,
+                    "y": 86.66666666666667
+                  },
+                  {
+                    "x": 1074,
+                    "y": 86.66666666666667
+                  },
+                  {
+                    "x": 1074,
+                    "y": 143.33333333333331
+                  },
+                  {
+                    "x": 258,
+                    "y": 143.33333333333331
+                  },
+                  {
+                    "x": 258,
+                    "y": 86.66666666666667
+                  },
+                  {
+                    "x": 308,
+                    "y": 86.66666666666667
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 672,
+                  "y": 146.33333333333331,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Return"
+                }
+              ]
+            }
+          ]
+        },
+        "canceled": "AbortError",
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "local": {
+          "width": 1720,
+          "height": 187.33333333333331,
+          "nodes": [
+            [
+              "node-0",
+              {
+                "x": 20,
+                "y": 30,
+                "width": 120,
+                "height": 60
+              }
+            ],
+            [
+              "node-1",
+              {
+                "x": 308,
+                "y": 33.33333333333333,
+                "width": 140,
+                "height": 80
+              }
+            ],
+            [
+              "node-2",
+              {
+                "x": 616,
+                "y": 43.33333333333333,
+                "width": 160,
+                "height": 60
+              }
+            ],
+            [
+              "node-3",
+              {
+                "x": 944,
+                "y": 33.33333333333333,
+                "width": 120,
+                "height": 80
+              }
+            ],
+            [
+              "node-4",
+              {
+                "x": 1232,
+                "y": 30,
+                "width": 140,
+                "height": 60
+              }
+            ],
+            [
+              "node-5",
+              {
+                "x": 1540,
+                "y": 20,
+                "width": 160,
+                "height": 80
+              }
+            ]
+          ],
+          "edges": [
+            {
+              "id": "edge-0",
+              "source": "node-0",
+              "target": "node-1",
+              "sections": [
+                [
+                  {
+                    "x": 140,
+                    "y": 60
+                  },
+                  {
+                    "x": 308,
+                    "y": 60
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 200,
+                  "y": 63,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-1",
+              "source": "node-1",
+              "target": "node-2",
+              "sections": [
+                [
+                  {
+                    "x": 448,
+                    "y": 73.33333333333333
+                  },
+                  {
+                    "x": 616,
+                    "y": 73.33333333333333
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 508,
+                  "y": 50.33333333333333,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-2",
+              "source": "node-2",
+              "target": "node-3",
+              "sections": [
+                [
+                  {
+                    "x": 776,
+                    "y": 73.33333333333333
+                  },
+                  {
+                    "x": 944,
+                    "y": 73.33333333333333
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 836,
+                  "y": 50.33333333333333,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-3",
+              "source": "node-3",
+              "target": "node-4",
+              "sections": [
+                [
+                  {
+                    "x": 1064,
+                    "y": 60
+                  },
+                  {
+                    "x": 1232,
+                    "y": 60
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 1124,
+                  "y": 63,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-4",
+              "source": "node-4",
+              "target": "node-5",
+              "sections": [
+                [
+                  {
+                    "x": 1372,
+                    "y": 60
+                  },
+                  {
+                    "x": 1540,
+                    "y": 60
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 1432,
+                  "y": 63,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "return",
+              "source": "node-3",
+              "target": "node-1",
+              "sections": [
+                [
+                  {
+                    "x": 1064,
+                    "y": 86.66666666666667
+                  },
+                  {
+                    "x": 1074,
+                    "y": 86.66666666666667
+                  },
+                  {
+                    "x": 1074,
+                    "y": 143.33333333333331
+                  },
+                  {
+                    "x": 258,
+                    "y": 143.33333333333331
+                  },
+                  {
+                    "x": 258,
+                    "y": 86.66666666666667
+                  },
+                  {
+                    "x": 308,
+                    "y": 86.66666666666667
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 672,
+                  "y": 146.33333333333331,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Return"
+                }
+              ]
+            }
+          ]
+        },
+        "cross": {
+          "width": 1720,
+          "height": 187.33333333333331,
+          "nodes": [
+            [
+              "node-0",
+              {
+                "x": 20,
+                "y": 30,
+                "width": 120,
+                "height": 60
+              }
+            ],
+            [
+              "node-1",
+              {
+                "x": 308,
+                "y": 33.33333333333333,
+                "width": 140,
+                "height": 80
+              }
+            ],
+            [
+              "node-2",
+              {
+                "x": 616,
+                "y": 43.33333333333333,
+                "width": 160,
+                "height": 60
+              }
+            ],
+            [
+              "node-3",
+              {
+                "x": 944,
+                "y": 33.33333333333333,
+                "width": 120,
+                "height": 80
+              }
+            ],
+            [
+              "node-4",
+              {
+                "x": 1232,
+                "y": 30,
+                "width": 140,
+                "height": 60
+              }
+            ],
+            [
+              "node-5",
+              {
+                "x": 1540,
+                "y": 20,
+                "width": 160,
+                "height": 80
+              }
+            ]
+          ],
+          "edges": [
+            {
+              "id": "edge-0",
+              "source": "node-0",
+              "target": "node-1",
+              "sections": [
+                [
+                  {
+                    "x": 140,
+                    "y": 60
+                  },
+                  {
+                    "x": 308,
+                    "y": 60
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 200,
+                  "y": 63,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-1",
+              "source": "node-1",
+              "target": "node-2",
+              "sections": [
+                [
+                  {
+                    "x": 448,
+                    "y": 73.33333333333333
+                  },
+                  {
+                    "x": 616,
+                    "y": 73.33333333333333
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 508,
+                  "y": 50.33333333333333,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-2",
+              "source": "node-2",
+              "target": "node-3",
+              "sections": [
+                [
+                  {
+                    "x": 776,
+                    "y": 73.33333333333333
+                  },
+                  {
+                    "x": 944,
+                    "y": 73.33333333333333
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 836,
+                  "y": 50.33333333333333,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-3",
+              "source": "node-3",
+              "target": "node-4",
+              "sections": [
+                [
+                  {
+                    "x": 1064,
+                    "y": 60
+                  },
+                  {
+                    "x": 1232,
+                    "y": 60
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 1124,
+                  "y": 63,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "edge-4",
+              "source": "node-4",
+              "target": "node-5",
+              "sections": [
+                [
+                  {
+                    "x": 1372,
+                    "y": 60
+                  },
+                  {
+                    "x": 1540,
+                    "y": 60
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 1432,
+                  "y": 63,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Next"
+                }
+              ]
+            },
+            {
+              "id": "return",
+              "source": "node-3",
+              "target": "node-1",
+              "sections": [
+                [
+                  {
+                    "x": 1064,
+                    "y": 86.66666666666667
+                  },
+                  {
+                    "x": 1074,
+                    "y": 86.66666666666667
+                  },
+                  {
+                    "x": 1074,
+                    "y": 143.33333333333331
+                  },
+                  {
+                    "x": 258,
+                    "y": 143.33333333333331
+                  },
+                  {
+                    "x": 258,
+                    "y": 86.66666666666667
+                  },
+                  {
+                    "x": 308,
+                    "y": 86.66666666666667
+                  }
+                ]
+              ],
+              "labels": [
+                {
+                  "x": 672,
+                  "y": 146.33333333333331,
+                  "width": 48,
+                  "height": 20,
+                  "text": "Return"
+                }
+              ]
+            }
+          ]
+        },
+        "canceled": "AbortError",
+        "errors": []
+      }
+    ],
+    "distributions": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "entry": "/dist/cdn/define/flow-diagram.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:62597/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/define/flow-diagram.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:62598/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/all.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:62597/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/all.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:62598/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/standalone.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:62597/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/standalone.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:62598/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:62597/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:62598/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.min.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:62597/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.min.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:62598/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.standalone.min.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:62597/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.standalone.min.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:62598/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "entry": "/dist/cdn/define/flow-diagram.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:62597/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/define/flow-diagram.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:62598/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/all.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:62597/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/all.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:62598/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/standalone.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:62597/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/standalone.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:62598/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:62597/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:62598/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.min.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:62597/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.min.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:62598/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.standalone.min.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:62597/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.standalone.min.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:62598/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "entry": "/dist/cdn/define/flow-diagram.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:62597/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/define/flow-diagram.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:62598/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/all.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:62597/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/all.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:62598/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/standalone.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:62597/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/standalone.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:62598/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:62597/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:62598/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.min.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:62597/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.min.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:62598/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.standalone.min.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:62597/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.standalone.min.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:62598/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          }
+        ]
+      }
+    ],
+    "freshConsumer": [
+      {
+        "engine": "chromium",
+        "pass": true,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "pass": true,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "pass": true,
+        "errors": []
+      }
+    ],
+    "liveDocumentation": [
+      {
+        "engine": "chromium",
+        "pass": true,
+        "checks": 5,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "pass": true,
+        "checks": 5,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "pass": true,
+        "checks": 5,
+        "errors": []
+      }
+    ],
+    "chromiumAccessibility": {
+      "inputName": "Specification title",
+      "source": "Accessibility.getFullAXTree",
+      "note": "Native element-reference label is correct; Playwright name matcher missed it."
+    },
+    "firefoxWithoutAutomation": {
+      "sameBinary": "Playwright Firefox155 macOS arm64 launched directly without Juggler or Playwright",
+      "status": "reported",
+      "cycles": [
+        {
+          "cycle": 0,
+          "empty": true
+        },
+        {
+          "cycle": 1,
+          "empty": true
+        },
+        {
+          "cycle": 2,
+          "empty": true
+        },
+        {
+          "cycle": 3,
+          "empty": true
+        },
+        {
+          "cycle": 4,
+          "empty": true
+        },
+        {
+          "cycle": 5,
+          "empty": true
+        },
+        {
+          "cycle": 6,
+          "empty": true
+        },
+        {
+          "cycle": 7,
+          "empty": true
+        },
+        {
+          "cycle": 8,
+          "empty": true
+        },
+        {
+          "cycle": 9,
+          "empty": true
+        },
+        {
+          "cycle": 10,
+          "empty": true
+        },
+        {
+          "cycle": 11,
+          "empty": true
+        },
+        {
+          "cycle": 12,
+          "empty": true
+        },
+        {
+          "cycle": 13,
+          "empty": true
+        },
+        {
+          "cycle": 14,
+          "empty": true
+        },
+        {
+          "cycle": 15,
+          "empty": true
+        },
+        {
+          "cycle": 16,
+          "empty": true
+        },
+        {
+          "cycle": 17,
+          "empty": true
+        },
+        {
+          "cycle": 18,
+          "empty": true
+        },
+        {
+          "cycle": 19,
+          "empty": true
+        }
+      ]
+    },
+    "firefoxDelayedWithoutAutomation": {
+      "sameBinary": "Playwright Firefox155 launched directly",
+      "delaysMs": [
+        0,
+        5,
+        10,
+        16,
+        30,
+        60
+      ],
+      "status": "timeout",
+      "completedCycles": [
+        {
+          "cycle": 0,
+          "empty": true
+        },
+        {
+          "cycle": 1,
+          "empty": true
+        }
+      ],
+      "crash": true
+    },
+    "officialFirefox": {
+      "version": "156.0.1",
+      "verification": {
+        "version": "156.0.1",
+        "file": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks/firefox-156.0.1.dmg",
+        "bytes": 160451034,
+        "sha512": "5aeba2dc2e95e8f042df27e3424463e7cc550ad1a6382d96382563c7aeed3a39945904665659c6079225bbf559bca566c5bfcaab2aa8a5f7edcae9a4df1cde2b"
+      },
+      "signature": "codesign --verify --deep --strict passed",
+      "source": "https://product-details.mozilla.org/1.0/firefox_versions.json",
+      "harness": "m20-flow/firefox-release.ts",
+      "delaysMs": [
+        0,
+        5,
+        10,
+        16,
+        30,
+        60
+      ],
+      "cycles": [
+        {
+          "cycle": 0,
+          "empty": true
+        },
+        {
+          "cycle": 1,
+          "empty": true
+        },
+        {
+          "cycle": 2,
+          "empty": true
+        },
+        {
+          "cycle": 3,
+          "empty": true
+        },
+        {
+          "cycle": 4,
+          "empty": true
+        },
+        {
+          "cycle": 5,
+          "empty": true
+        },
+        {
+          "cycle": 6,
+          "empty": true
+        },
+        {
+          "cycle": 7,
+          "empty": true
+        },
+        {
+          "cycle": 8,
+          "empty": true
+        },
+        {
+          "cycle": 9,
+          "empty": true
+        },
+        {
+          "cycle": 10,
+          "empty": true
+        },
+        {
+          "cycle": 11,
+          "empty": true
+        },
+        {
+          "cycle": 12,
+          "empty": true
+        },
+        {
+          "cycle": 13,
+          "empty": true
+        },
+        {
+          "cycle": 14,
+          "empty": true
+        },
+        {
+          "cycle": 15,
+          "empty": true
+        },
+        {
+          "cycle": 16,
+          "empty": true
+        },
+        {
+          "cycle": 17,
+          "empty": true
+        },
+        {
+          "cycle": 18,
+          "empty": true
+        },
+        {
+          "cycle": 19,
+          "empty": true
+        }
+      ]
+    }
+  },
+  "open": [
+    {
+      "id": "flow-firefox-cancel-navigation",
+      "owner": "M25/M26 test-runtime verification",
+      "severity": "known old test-runtime limitation",
+      "detail": "Playwright Firefox155 on macOS arm64 sometimes crashes its DOM Worker thread after reconnect starts a new worker, immediate cancellation/emptying, then navigation. Also reproduced with isolated FlowLayout. Native simple/ELK Worker immediate-termination controls and ten uninstrumented engine cycles pass. Instrumentation affects timing but is not the cause established: a compiled uninstrumented viewer run also crashed. No browser-specific delay or main-thread fallback added. Need an independent full-browser reproduction or worker-runtime/browser correction before final release readiness. A later direct launch of the same Firefox binary, without Playwright/Juggler, completed twenty self-driven reconnect/cancel/navigation cycles. This narrows the reproduction but does not establish a fixed root cause. Adding 0/5/10/16/30/60 ms timing variation to that direct launch reproduces SIGSEGV after two completed cycles. It is not limited to active Playwright control, though this remains the Playwright-patched Firefox binary rather than a separate official release. Official Mozilla Firefox156.0.1, verified against its published SHA-512 and macOS code signature, passes all twenty identical timing-varied cycles. The specific difference causing the older patched155 crash is unverified. Use the current official-browser check for this regression; M25 must preserve it rather than silently dropping the case.",
+      "evidence": [
+        "m20-flow/firefox-sequence.log",
+        "m20-flow/compiled.log",
+        "m20-flow/run-native-cancel.ts"
+      ],
+      "sources": [
+        "https://developer.mozilla.org/en-US/docs/Web/API/Worker/terminate",
+        "https://firefox-source-docs.mozilla.org/dom/workersAndStorage/WorkerLifeCycleAndWorkerRefs.html",
+        "https://playwright.dev/docs/api/class-worker"
+      ],
+      "status": "Current unmodified release passes; retain the failing patched-runtime reproduction without a source workaround."
+    }
+  ],
+  "limits": [
+    "100/500 graph fixture results are measured examples, not a universal capacity guarantee.",
+    "Stress layoutMs excludes later SVG path verification; verificationMs includes it.",
+    "React generated wrapper/scoped-registry and actual assistive-tech/Safari checks remain M22/M26.",
+    "No graph editing/execution/persistence or fixed-position rerouting."
+  ]
+}

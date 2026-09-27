@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--acme-font-sans);
+}
+[part="root"] {
+  display: block;
+}

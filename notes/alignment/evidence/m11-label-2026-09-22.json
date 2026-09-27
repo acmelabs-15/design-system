@@ -1,0 +1,391 @@
+{
+  "date": "2026-09-22",
+  "batch": "M11 Label",
+  "status": "complete at the assigned Label boundary",
+  "native": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "punctuated IDs resolve through native for/control association",
+            "ok": true
+          },
+          {
+            "name": "custom control native labels retain the real label",
+            "ok": true
+          },
+          {
+            "name": "implicit label associates without an empty for attribute",
+            "ok": true
+          },
+          {
+            "name": "for updates its native target before render",
+            "ok": true
+          },
+          {
+            "name": "reconnection preserves label content identity",
+            "ok": true
+          },
+          {
+            "name": "trusted native label click focuses its native input",
+            "ok": true
+          },
+          {
+            "name": "trusted label click activates and focuses its house checkbox",
+            "ok": true
+          },
+          {
+            "name": "label click focuses the actual group entry without selecting a value",
+            "ok": true
+          },
+          {
+            "name": "disabled control cannot be activated through its label",
+            "ok": true
+          },
+          {
+            "name": "canceling the native label click prevents activation",
+            "ok": true
+          },
+          {
+            "name": "independent interactive label content does not activate its control",
+            "ok": true
+          },
+          {
+            "name": "native accessibility names the text input, checkbox and group",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "punctuated IDs resolve through native for/control association",
+            "ok": true
+          },
+          {
+            "name": "custom control native labels retain the real label",
+            "ok": true
+          },
+          {
+            "name": "implicit label associates without an empty for attribute",
+            "ok": true
+          },
+          {
+            "name": "for updates its native target before render",
+            "ok": true
+          },
+          {
+            "name": "reconnection preserves label content identity",
+            "ok": true
+          },
+          {
+            "name": "trusted native label click focuses its native input",
+            "ok": true
+          },
+          {
+            "name": "trusted label click activates and focuses its house checkbox",
+            "ok": true
+          },
+          {
+            "name": "label click focuses the actual group entry without selecting a value",
+            "ok": true
+          },
+          {
+            "name": "disabled control cannot be activated through its label",
+            "ok": true
+          },
+          {
+            "name": "canceling the native label click prevents activation",
+            "ok": true
+          },
+          {
+            "name": "independent interactive label content does not activate its control",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "punctuated IDs resolve through native for/control association",
+            "ok": true
+          },
+          {
+            "name": "custom control native labels retain the real label",
+            "ok": true
+          },
+          {
+            "name": "implicit label associates without an empty for attribute",
+            "ok": true
+          },
+          {
+            "name": "for updates its native target before render",
+            "ok": true
+          },
+          {
+            "name": "reconnection preserves label content identity",
+            "ok": true
+          },
+          {
+            "name": "trusted native label click focuses its native input",
+            "ok": true
+          },
+          {
+            "name": "trusted label click activates and focuses its house checkbox",
+            "ok": true
+          },
+          {
+            "name": "label click focuses the actual group entry without selecting a value",
+            "ok": true
+          },
+          {
+            "name": "disabled control cannot be activated through its label",
+            "ok": true
+          },
+          {
+            "name": "canceling the native label click prevents activation",
+            "ok": true
+          },
+          {
+            "name": "independent interactive label content does not activate its control",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "verification": {
+    "typecheck": "872 files, zero errors",
+    "unit": "897 pass, zero fail across 139 files",
+    "build": "37,772 modules; 119 compiled templates; 4,256 public elements",
+    "docs": "93 pages; zero undocumented elements; native/checkbox/group activation flows pass in each engine",
+    "native": "12 Chromium and 11 Firefox/WebKit checks in source and compiled modules"
+  },
+  "findings": [
+    "Use the shared native light-DOM root, preserving real HTMLLabelElement control/labels association and exact ID matching.",
+    "Omitted for removes the native for attribute, preserving implicit labeling; an empty for remains an explicit empty association.",
+    "Native label activation does not focus the house group entry; WebKit also needed the checkbox focus bridge. Observe the actual forwarded custom-control click and call its public focus method, preserving native cancellation and independent interactive descendants.",
+    "Trusted event dispatch performs a microtask checkpoint before label activation: the recorded order is label click, microtask, forwarded group click. Temporary forwarding observation therefore closes after activation or the current task, with disconnect cleanup.",
+    "Slider consumed the removed Label style module. Its retained label rules now belong to the Slider generator input until the M13 replacement."
+  ],
+  "limits": [
+    "Actual generated React Label wrapper remains M22 and must follow x-acme-native-root."
+  ],
+  "sources": [
+    {
+      "file": "src/components/label/label.ts",
+      "sha256": "3da3804cb65d13a594cb42bf88e5706a5691ac50877455782e64cf4197f022ed"
+    },
+    {
+      "file": "styles/components/label/label-light.css",
+      "sha256": "31dd3d885a66fe9cacb434e0855be49ff95e6be64f400b49125fae258fb693c6"
+    },
+    {
+      "file": "src/shared/native-content-root.ts",
+      "sha256": "b10dc0615c6c0cdf44a4b14875564b44587b84400584843c45def04ec035b3a6"
+    }
+  ],
+  "fixtures": [
+    {
+      "file": "probe.ts",
+      "source": "import {AcmeLabel} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/label/label';\nimport {AcmeCheckbox} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/checkbox/checkbox';\nimport {AcmeRadioGroup} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/radio-group/radio-group';\nimport {AcmeRadio} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/radio/radio';\nimport {AcmeCheckIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/icons/classes/check-icon';\nimport {AcmeRemoveIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/icons/classes/remove-icon';\ncustomElements.define('acme-label',AcmeLabel);customElements.define('acme-checkbox',AcmeCheckbox);customElements.define('acme-radio-group',AcmeRadioGroup);customElements.define('acme-radio',AcmeRadio);customElements.define('acme-check-icon',AcmeCheckIcon);customElements.define('acme-remove-icon',AcmeRemoveIcon);\nconst results:any[]=[];const check=(name:string,ok:boolean)=>results.push({name,ok});const wait=async(n=3)=>{while(n--)await new Promise(r=>requestAnimationFrame(r));};\ndocument.body.innerHTML='<form><acme-label id=\"native-label\" for=\"native:input\">Native name</acme-label><input id=\"native:input\" name=\"native\"><acme-label id=\"house-label\" for=\"check\">Notifications</acme-label><acme-checkbox id=\"check\" name=\"check\"></acme-checkbox><acme-label id=\"group-label\" for=\"radios\">Plan</acme-label><acme-radio-group id=\"radios\" name=\"plan\"><acme-radio value=\"one\">One</acme-radio><acme-radio value=\"two\">Two</acme-radio></acme-radio-group><acme-label id=\"implicit-label\">Implicit <input name=\"implicit\"></acme-label></form>';\nconst label=document.querySelector<AcmeLabel>('#native-label')!,input=document.getElementById('native:input') as HTMLInputElement,checkbox=document.querySelector('acme-checkbox')!,group=document.querySelector('acme-radio-group')!;\ntry{await wait();check('punctuated IDs resolve through native for/control association',label.querySelector('label')!.control===input&&input.labels?.[0]===label.querySelector('label'));check('custom control native labels retain the real label',checkbox.labels.length===1&&(checkbox.labels[0] as HTMLLabelElement).control===checkbox);check('implicit label associates without an empty for attribute',document.querySelector('#implicit-label label')!.hasAttribute('for')===false&&(document.querySelector('#implicit-label label') as HTMLLabelElement).control===document.querySelector('input[name=implicit]'));label.for='missing';check('for updates its native target before render',label.querySelector('label')!.control===null);label.for='native:input';await wait();const text=label.querySelector('label')!.firstChild;label.remove();document.body.prepend(label);await wait();check('reconnection preserves label content identity',label.querySelector('label')!.firstChild===text&&label.querySelector('label')!.control===input);(window as any).__test={label,input,checkbox,group,wait};}catch(error){(window as any).__error=String(error);}(window as any).__results={results,error:(window as any).__error};\n"
+    },
+    {
+      "file": "run.ts",
+      "source": "import fs from 'node:fs';\nconst directory='/tmp/acme-m11-label',root='/Users/peterkloss/Dev/ACMElabs/design-system';\nconst built=await Bun.build({entrypoints:[directory+'/probe.ts'],outdir:directory+'/bundle',target:'browser',format:'esm',splitting:true});if(!built.success)throw new AggregateError(built.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';\nconst pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');\nconst server=Bun.serve({port:0,hostname:'127.0.0.1',fetch(req){const url=new URL(req.url);if(url.pathname==='/tokens.css')return new Response(Bun.file(root+'/src/generated/css/document/tokens.css'),{headers:{'Content-Type':'text/css'}});if(url.pathname.endsWith('.js'))return new Response(Bun.file(directory+'/bundle'+url.pathname),{headers:{'Content-Type':'text/javascript'}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{'Content-Type':'text/html'}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});try{const page=await browser.newPage();page.on('pageerror',e=>{console.log('PAGEERROR',e.stack);report.errors.push({engine,message:e.message});});await page.goto(server.url.href);await page.waitForFunction(()=>window.__results,{},{timeout:60000});const data=await page.evaluate(()=>window.__results);if(!data.error){await page.locator('#native-label').click();data.results.push({name:'trusted native label click focuses its native input',ok:await page.evaluate(()=>document.activeElement===window.__test.input)});await page.locator('#house-label').click();data.results.push({name:'trusted label click activates and focuses its house checkbox',ok:await page.evaluate(()=>{const c=window.__test.checkbox;return c.checked&&c.shadowRoot.activeElement===c.shadowRoot.querySelector('input');})});await page.locator('#group-label').click();data.results.push({name:'label click focuses the actual group entry without selecting a value',ok:await page.evaluate(()=>{const g=window.__test.group,radio=g.querySelector('acme-radio');return g.value===undefined&&radio.shadowRoot.activeElement===radio.shadowRoot.querySelector('input');})});await page.evaluate(()=>{const c=window.__test.checkbox;c.checked=false;c.disabled=true;});await page.locator('#house-label').click();data.results.push({name:'disabled control cannot be activated through its label',ok:await page.evaluate(()=>!window.__test.checkbox.checked)});await page.evaluate(()=>{window.__test.checkbox.disabled=false;const label=document.querySelector('#house-label label');window.__cancel=e=>e.preventDefault();label.addEventListener('click',window.__cancel);});await page.locator('#house-label').click();data.results.push({name:'canceling the native label click prevents activation',ok:await page.evaluate(()=>!window.__test.checkbox.checked)});await page.evaluate(()=>{const label=document.querySelector('#house-label label');label.removeEventListener('click',window.__cancel);const button=document.createElement('button');button.type='button';button.id='label-independent';button.textContent='Details';label.append(button);});await page.locator('#label-independent').click();data.results.push({name:'independent interactive label content does not activate its control',ok:await page.evaluate(()=>!window.__test.checkbox.checked)});if(engine==='chromium'){const session=await page.context().newCDPSession(page);const tree=await session.send('Accessibility.getFullAXTree');data.results.push({name:'native accessibility names the text input, checkbox and group',ok:tree.nodes.some(n=>n.role?.value==='textbox'&&n.name?.value==='Native name')&&tree.nodes.some(n=>n.role?.value==='checkbox'&&n.name?.value.startsWith('Notifications'))&&tree.nodes.some(n=>n.role?.value==='radiogroup'&&n.name?.value==='Plan')});}}if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(r=>r.ok).length,total:data.results.length,failed:data.results.filter(r=>!r.ok),error:data.error});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+'/results.json',JSON.stringify(report,null,2)+'\\n');if(report.errors.length||report.engines.some(e=>e.results.length!==(e.engine==='chromium'?12:11)||e.results.some(r=>!r.ok)))process.exitCode=1;\n"
+    },
+    {
+      "file": "docs-check.ts",
+      "source": "process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');const results=[];for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});try{const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:4180/components/label');await page.locator('#label-native-example').click();const native=await page.evaluate(()=>document.activeElement===document.querySelector('#label-native-input'));await page.locator('#label-checkbox-label').click();const checkbox=await page.locator('#label-checkbox-example').evaluate(el=>el.checked&&el.shadowRoot.activeElement===el.shadowRoot.querySelector('input'));await page.locator('#label-group-label').click();const group=await page.locator('#label-group-example').evaluate(el=>el.value===undefined&&el.querySelector('acme-radio').shadowRoot.activeElement===el.querySelector('acme-radio').shadowRoot.querySelector('input'));results.push({engine,native,checkbox,group,errors});console.log(results.at(-1));}finally{await browser.close();}}await Bun.write('/tmp/acme-m11-label/docs-results.json',JSON.stringify(results,null,2)+'\\n');if(results.some(r=>!r.native||!r.checkbox||!r.group||r.errors.length))process.exitCode=1;\n"
+    }
+  ],
+  "compiled": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "punctuated IDs resolve through native for/control association",
+            "ok": true
+          },
+          {
+            "name": "custom control native labels retain the real label",
+            "ok": true
+          },
+          {
+            "name": "implicit label associates without an empty for attribute",
+            "ok": true
+          },
+          {
+            "name": "for updates its native target before render",
+            "ok": true
+          },
+          {
+            "name": "reconnection preserves label content identity",
+            "ok": true
+          },
+          {
+            "name": "trusted native label click focuses its native input",
+            "ok": true
+          },
+          {
+            "name": "trusted label click activates and focuses its house checkbox",
+            "ok": true
+          },
+          {
+            "name": "label click focuses the actual group entry without selecting a value",
+            "ok": true
+          },
+          {
+            "name": "disabled control cannot be activated through its label",
+            "ok": true
+          },
+          {
+            "name": "canceling the native label click prevents activation",
+            "ok": true
+          },
+          {
+            "name": "independent interactive label content does not activate its control",
+            "ok": true
+          },
+          {
+            "name": "native accessibility names the text input, checkbox and group",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "punctuated IDs resolve through native for/control association",
+            "ok": true
+          },
+          {
+            "name": "custom control native labels retain the real label",
+            "ok": true
+          },
+          {
+            "name": "implicit label associates without an empty for attribute",
+            "ok": true
+          },
+          {
+            "name": "for updates its native target before render",
+            "ok": true
+          },
+          {
+            "name": "reconnection preserves label content identity",
+            "ok": true
+          },
+          {
+            "name": "trusted native label click focuses its native input",
+            "ok": true
+          },
+          {
+            "name": "trusted label click activates and focuses its house checkbox",
+            "ok": true
+          },
+          {
+            "name": "label click focuses the actual group entry without selecting a value",
+            "ok": true
+          },
+          {
+            "name": "disabled control cannot be activated through its label",
+            "ok": true
+          },
+          {
+            "name": "canceling the native label click prevents activation",
+            "ok": true
+          },
+          {
+            "name": "independent interactive label content does not activate its control",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "punctuated IDs resolve through native for/control association",
+            "ok": true
+          },
+          {
+            "name": "custom control native labels retain the real label",
+            "ok": true
+          },
+          {
+            "name": "implicit label associates without an empty for attribute",
+            "ok": true
+          },
+          {
+            "name": "for updates its native target before render",
+            "ok": true
+          },
+          {
+            "name": "reconnection preserves label content identity",
+            "ok": true
+          },
+          {
+            "name": "trusted native label click focuses its native input",
+            "ok": true
+          },
+          {
+            "name": "trusted label click activates and focuses its house checkbox",
+            "ok": true
+          },
+          {
+            "name": "label click focuses the actual group entry without selecting a value",
+            "ok": true
+          },
+          {
+            "name": "disabled control cannot be activated through its label",
+            "ok": true
+          },
+          {
+            "name": "canceling the native label click prevents activation",
+            "ok": true
+          },
+          {
+            "name": "independent interactive label content does not activate its control",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "docs": [
+    {
+      "engine": "chromium",
+      "native": true,
+      "checkbox": true,
+      "group": true,
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "native": true,
+      "checkbox": true,
+      "group": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "native": true,
+      "checkbox": true,
+      "group": true,
+      "errors": []
+    }
+  ]
+}

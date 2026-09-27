@@ -1,0 +1,24 @@
+:host { display:inline-flex; vertical-align:middle; }
+.selection-label { position:relative; display:inline-flex; align-items:flex-start; gap:8px; padding-block:4px; min-inline-size:24px; min-block-size:24px; cursor:pointer; font-size:13px; line-height:16px; color:var(--ds-gray-1000); isolation:isolate; }
+.control { display:inline-flex; position:relative; inline-size:16px; block-size:16px; flex:none; }
+.native { position:absolute; inset:0; inline-size:100%; block-size:100%; margin:0; opacity:0; cursor:inherit; }
+.indicator { display:flex; align-items:center; justify-content:center; inline-size:100%; block-size:100%; border:1px solid var(--ds-gray-700); border-radius:4px; background:var(--ds-background-100); --acme-icon-size:14px; pointer-events:none; }
+.selection-label[data-invalid] .indicator { border-color:var(--warn-solid); }
+.selection-label[data-disabled] { color:var(--ds-gray-700); cursor:not-allowed; }
+.selection-label[data-disabled] .indicator { background:var(--comp); color:var(--ds-gray-700); border-color:var(--border); }
+.native:focus-visible + .indicator { box-shadow:var(--ds-focus-ring); }
+.content { display:flex; flex-direction:column; gap:4px; }
+[part=description] { color:var(--ds-gray-900); font-size:12px; }
+[hidden] { display:none; }
+.selection-label[data-size=small] { font-size:12px; }
+.selection-label[data-size=small] .control { inline-size:14px; block-size:14px; }
+.selection-label[data-size=small] .indicator { --acme-icon-size:12px; }
+.selection-label[data-size=large] { font-size:14px; line-height:20px; }
+.selection-label[data-size=large] .control { inline-size:20px; block-size:20px; }
+.selection-label[data-size=large] .indicator { --acme-icon-size:18px; }
+.ripple-clip { position:absolute; inset:0; overflow:hidden; border-radius:4px; pointer-events:none; z-index:0; }
+.ripple { position:absolute; border-radius:50%; background:var(--ds-black); opacity:0; pointer-events:none; }
+.control,.content { position:relative; z-index:1; }
+.selection-label { transition-property:none; transition-duration:var(--dur); transition-timing-function:var(--ease); }
+
+@media(forced-colors:active) { .indicator { background:Canvas; color:CanvasText; border-color:ButtonText; forced-color-adjust:none; } .native:focus-visible + .indicator { outline:2px solid Highlight; outline-offset:2px; } .ripple-clip { display:none; } }

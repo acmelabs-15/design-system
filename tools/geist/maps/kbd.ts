@@ -1,15 +1,13 @@
-// Maps acme-kbd (src/components/kbd) to Geist Kbd (the Keyboard Input page): the generator derives kbd.styles.ts from this.
-// Each modifier glyph and the key sit in their own span; the meta span's inline style is the element's.
+// Source baseline for composed references. No production stylesheet is emitted.
 import type { GeistMap, SpecNode } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "keyboard-input",
   component: "Kbd",
   root: "data-geist-kbd",
   ours: ".kbd",
   defaults: { small: "false" },
-  props: {
-    small: { true: ".sm" },
-  },
-  children: [{ ours: ".key", pick: (c: SpecNode) => c.tag === "span" }],
+  props: { small: { true: ".sm" } },
+  children: [{ ours: ".key", pick: (node: SpecNode) => node.tag === "span" }],
 };

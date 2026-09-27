@@ -18,9 +18,13 @@
 // The page's Search and ⌘K examples are SearchInput roots (an Input with an end place and the clearable pad).
 import { type GeistMap, has, type SpecNode } from "../gen";
 
-const flag = (cls: string, yes = "true", no = "false") => (n: SpecNode) => (has(cls)(n) ? yes : no);
+const flag =
+  (cls: string, yes = "true", no = "false") =>
+  (n: SpecNode) =>
+    has(cls)(n) ? yes : no;
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "input",
   component: ["Input", "SearchInput"],
   root: "data-geist-input-wrapper",

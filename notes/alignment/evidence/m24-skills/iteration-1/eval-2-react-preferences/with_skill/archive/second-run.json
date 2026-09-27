@@ -1,0 +1,311 @@
+{
+  "evaluation": "react-skilled",
+  "versions": {
+    "core": "0.2.0",
+    "wrappers": "0.2.0",
+    "react": "19.3.0"
+  },
+  "firstFailures": [
+    {
+      "name": "verification exception",
+      "detail": "TimeoutError: focus: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('acme-tab[value=\"source\"] button')\u001b[22m\n"
+    },
+    {
+      "name": "independent single plan selection"
+    },
+    {
+      "name": "verification exception",
+      "detail": "Error: evaluate: Error: strict mode violation: locator('acme-group') resolved to 2 elements:\n    1) <acme-group grow=\"\" attached=\"\" data-acme-element=\"\">…</acme-group> aka getByText('StarterFor personal projects ProFor growing teams')\n    2) <acme-group data-acme-element=\"\">…</acme-group> aka getByRole('tablist', { name: 'Preferences views' }).locator('acme-group')\n\nCall log:\n\u001b[2m  - waiting for locator('acme-group')\u001b[22m\n"
+    }
+  ],
+  "repairs": [
+    {
+      "kind": "test harness",
+      "description": "Use structural locators: wrapper value props do not reflect as host attributes. No artifact or package repair."
+    }
+  ],
+  "checks": [
+    {
+      "name": "native accessible names",
+      "passed": true,
+      "detail": [
+        {
+          "role": "tablist",
+          "name": "Preferences views",
+          "properties": [
+            {
+              "name": "multiselectable",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "orientation",
+              "value": {
+                "type": "token",
+                "value": "horizontal"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tabpanel",
+          "name": "Source",
+          "properties": [
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "labelledby",
+              "value": {
+                "type": "nodeList",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 30,
+                    "text": "Source"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "role": "radiogroup",
+          "name": "Choose your plan",
+          "properties": [
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "orientation",
+              "value": {
+                "type": "token",
+                "value": "horizontal"
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "labelledby",
+              "value": {
+                "type": "nodeList",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 54,
+                    "idref": "plan-label",
+                    "text": "Choose your plan"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "role": "radio",
+          "name": "Starter",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "checked",
+              "value": {
+                "type": "tristate",
+                "value": "true"
+              }
+            },
+            {
+              "name": "describedby",
+              "value": {
+                "type": "idrefList",
+                "value": "",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 71
+                  }
+                ]
+              }
+            },
+            {
+              "name": "labelledby",
+              "value": {
+                "type": "nodeList",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 67,
+                    "text": "Starter"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "role": "radio",
+          "name": "Pro",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "checked",
+              "value": {
+                "type": "tristate",
+                "value": "false"
+              }
+            },
+            {
+              "name": "describedby",
+              "value": {
+                "type": "idrefList",
+                "value": "",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 91
+                  }
+                ]
+              }
+            },
+            {
+              "name": "labelledby",
+              "value": {
+                "type": "nodeList",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 87,
+                    "text": "Pro"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "role": "tab",
+          "name": "Source",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "selected",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "controls",
+              "value": {
+                "type": "idrefList",
+                "value": "",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 32
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "role": "tab",
+          "name": "Output",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "selected",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "manual arrow focus does not select",
+      "passed": true,
+      "detail": "View: source · Plan: starter"
+    },
+    {
+      "name": "keyboard activates output",
+      "passed": true,
+      "detail": "View: output · Plan: starter"
+    },
+    {
+      "name": "source editor state and node preserved",
+      "passed": true
+    },
+    {
+      "name": "independent single plan selection",
+      "passed": false
+    }
+  ],
+  "errors": [],
+  "exception": "Error: evaluate: Error: strict mode violation: locator('acme-group') resolved to 2 elements:\n    1) <acme-group grow=\"\" attached=\"\" data-acme-element=\"\">…</acme-group> aka getByText('StarterFor personal projects ProFor growing teams')\n    2) <acme-group data-acme-element=\"\">…</acme-group> aka getByRole('tablist', { name: 'Preferences views' }).locator('acme-group')\n\nCall log:\n\u001b[2m  - waiting for locator('acme-group')\u001b[22m\n",
+  "passed": false,
+  "build": "passed",
+  "typecheck": "passed"
+}

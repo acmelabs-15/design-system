@@ -1,0 +1,3143 @@
+{
+  "date": "2026-09-20",
+  "scope": "Read-only analysis of real repository source plus isolated style candidate package/compiler fixtures",
+  "cache": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U",
+  "versions": {
+    "bun": "1.4.0",
+    "analyzer": "0.11.0",
+    "analyzerTypescript": "5.4.5"
+  },
+  "repository": {
+    "modules": 330,
+    "classes": 156,
+    "rawReferenceCount": 1075,
+    "rawReferenceMismatchCount": 321,
+    "mismatchSamples": [
+      {
+        "location": "manifest.modules.1.exports.0.declaration",
+        "module": "src/base",
+        "name": "*"
+      },
+      {
+        "location": "manifest.modules.1.exports.1.declaration",
+        "module": "src/components/appbar/appbar",
+        "name": "*"
+      },
+      {
+        "location": "manifest.modules.1.exports.2.declaration",
+        "module": "src/components/avatar/avatar",
+        "name": "*"
+      }
+    ],
+    "quoteFixed": [
+      {
+        "location": "manifest.modules.2.exports.0.declaration",
+        "before": {
+          "name": "batch",
+          "module": "@tanstack/lit-store"
+        },
+        "after": {
+          "name": "batch",
+          "package": "@tanstack/lit-store"
+        }
+      },
+      {
+        "location": "manifest.modules.2.exports.1.declaration",
+        "before": {
+          "name": "createStore",
+          "module": "@tanstack/lit-store"
+        },
+        "after": {
+          "name": "createStore",
+          "package": "@tanstack/lit-store"
+        }
+      },
+      {
+        "location": "manifest.modules.7.exports.0.declaration",
+        "before": {
+          "name": "TanStackFormController",
+          "module": "@tanstack/lit-form"
+        },
+        "after": {
+          "name": "TanStackFormController",
+          "package": "@tanstack/lit-form"
+        }
+      }
+    ],
+    "manifestHashes": {
+      "raw": "12d1ddca87f47cfc64ac52465b74639e92f2d45b00c08edb4c5904777246a885",
+      "patched": "d340dca87515a0adc9d2bb6797065a4c4311c999703dca3afb98091aab6cbf68",
+      "normalized": "a7fc96b9e165c2a47a24f08c1f1a2867d34e706dc58df05544cc0647f42638f7"
+    },
+    "pathChangesCount": 1072
+  },
+  "normalization": {
+    "reports": [
+      {
+        "kind": "repository",
+        "rawModuleReferencesNotMatchingPaths": 318,
+        "modules": 330,
+        "localReferences": 1072,
+        "dangling": [],
+        "normalizationFailures": [],
+        "missingEmittedFiles": [],
+        "examples": [
+          {
+            "location": "src/components/grid/grid.ts.declarations.8.superclass",
+            "before": "/src/base",
+            "source": "src/base.ts",
+            "after": "dist/base.js"
+          },
+          {
+            "location": "src/components/button-group/button-group.ts.declarations.0.superclass",
+            "before": "/src/base",
+            "source": "src/base.ts",
+            "after": "dist/base.js"
+          },
+          {
+            "location": "src/components/badge/badge.ts.declarations.0.superclass",
+            "before": "/src/base",
+            "source": "src/base.ts",
+            "after": "dist/base.js"
+          },
+          {
+            "location": "src/components/dots-menu/dots-menu.ts.declarations.0.superclass",
+            "before": "/src/base",
+            "source": "src/base.ts",
+            "after": "dist/base.js"
+          },
+          {
+            "location": "src/components/entity-content/entity-content.ts.declarations.0.superclass",
+            "before": "/src/base",
+            "source": "src/base.ts",
+            "after": "dist/base.js"
+          }
+        ]
+      },
+      {
+        "kind": "fixture",
+        "rawModuleReferencesNotMatchingPaths": 3,
+        "modules": 4,
+        "localReferences": 12,
+        "dangling": [],
+        "normalizationFailures": [],
+        "missingEmittedFiles": [],
+        "examples": [
+          {
+            "location": "src/child.ts.declarations.0.superclass",
+            "before": "/src/base.js",
+            "source": "src/base.ts",
+            "after": "dist/base.js"
+          },
+          {
+            "location": "src/index.ts.exports.0.declaration",
+            "before": "./base.js",
+            "source": "src/base.ts",
+            "after": "dist/base.js"
+          },
+          {
+            "location": "src/index.ts.exports.1.declaration",
+            "before": "./child.js",
+            "source": "src/child.ts",
+            "after": "dist/child.js"
+          }
+        ]
+      }
+    ],
+    "quoteAfter": {
+      "singleQuoted": true,
+      "doubleQuoted": true,
+      "unquoted": true
+    },
+    "limits": [
+      "Output path map follows the current scripts/build.ts src-to-dist rule; future package layout still needs its own map.",
+      "No full repository build or all-API runtime comparison.",
+      "Temporary upstream quote patch is not installed in the project; no upstream report sent."
+    ]
+  },
+  "compiler": {
+    "typescript": "5.9.3",
+    "compiler": "1.1.2",
+    "diagnostics": [],
+    "emitSkipped": false,
+    "declarations": {
+      "dist/shared/atom-state.d.ts.map": "{\"version\":3,\"file\":\"atom-state.d.ts\",\"sourceRoot\":\"\",\"sources\":[\"../../src/shared/atom-state.ts\"],\"names\":[],\"mappings\":\"AAkCA,OAAO,EAAE,KAAK,IAAI,EAAiC,MAAM,qBAAqB,CAAC;AAO/E;;;;;;;;;;;;;;;GAeG;AACH,wBAAgB,SAAS,CAAC,CAAC,EAAE,MAAM,CAAC,EAAE,IAAI,CAAC,CAAC,CAAC,EAAE,OAAO,CAAC,EAAE;IAAE,OAAO,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,EAAE,CAAC,KAAK,OAAO,CAAA;CAAE,IACpF,OAAO,MAAM,EAAE,MAAM,WAAW,UAyBzC\"}",
+      "dist/shared/atom-state.d.ts": "import { type Atom } from \"@tanstack/lit-store\";\n/**\n * A reactive field backed by an atom. Reads and writes look like a plain field; the element\n * re-renders when the value changes.\n *\n * With no argument the atom is created per instance, so each element has its own. Passing an atom\n * binds the field to that one instead, which is how several elements follow one value:\n *\n *   const name = createAtom(\"Ada\");\n *   class NameField extends AcmeElement {\n *     `@atomState`(name) private name!: string;   // every instance reads and writes the same atom\n *   }\n *\n * `compare` sets the equality the atom uses to decide whether anything changed. It defaults to\n * identity, so an object mutated in place does not re-render; pass `shallow` from the store package\n * for a field that holds an object it rebuilds.\n */\nexport declare function atomState<T>(shared?: Atom<T>, options?: {\n    compare?: (a: T, b: T) => boolean;\n}): (proto: object, name: PropertyKey) => void;\n//# sourceMappingURL=atom-state.d.ts.map",
+      "dist/base.d.ts.map": "{\"version\":3,\"file\":\"base.d.ts\",\"sourceRoot\":\"\",\"sources\":[\"../src/base.ts\"],\"names\":[],\"mappings\":\"AAAA,OAAO,EAAC,UAAU,EAAU,MAAM,KAAK,CAAC;AAGxC,qBAAa,SAAU,SAAQ,UAAU;IACxC,MAAM,KAAK,kBAAkB,aAAoE;IACjG,yBAAyB,CAAsB,OAAO,EAAC,MAAM,GAAC,SAAS,CAAC;IACxE,gCAAgC,CAAsB,aAAa,EAAC,MAAM,GAAC,SAAS,CAAC;IACrF,gBAAgB,CAAc,gBAAgB,EAAC,MAAM,EAAE,CAAI;IAC3D,OAAO,CAAC,iBAAiB,CAA0B;;IAYnD,gBAAgB,CAAC,MAAM,CAAC,IAAI,EAAC,MAAM,EAAC,KAAK,EAAC,OAAO;IACjD,wBAAwB,CAAC,IAAI,EAAC,MAAM,EAAC,QAAQ,EAAC,MAAM,GAAC,IAAI,EAAC,QAAQ,EAAC,MAAM,GAAC,IAAI;IAK9E,MAAM;CACN\"}",
+      "dist/base.d.ts": "import { LitElement } from \"lit\";\nexport declare class Capturing extends LitElement {\n    static get observedAttributes(): string[];\n    /** @attribute padding */ padding: string | undefined;\n    /** @attribute padding-inline */ paddingInline: string | undefined;\n    /** @internal */ declarationOrder: string[];\n    private initialAttributes;\n    constructor();\n    /** @internal */ record(name: string, value: unknown): void;\n    attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void;\n    render(): import(\"lit-html\").TemplateResult<1>;\n}\n//# sourceMappingURL=base.d.ts.map",
+      "dist/child.d.ts.map": "{\"version\":3,\"file\":\"child.d.ts\",\"sourceRoot\":\"\",\"sources\":[\"../src/child.ts\"],\"names\":[],\"mappings\":\"AACA,OAAO,EAAC,SAAS,EAAC,MAAM,WAAW,CAAC;AACpC,qBAAa,UAAW,SAAQ,SAAS;IAAE,MAAM,CAAC,MAAM,0BAAiD;CAAC\"}",
+      "dist/child.d.ts": "import { Capturing } from \"./base.js\";\nexport declare class StyleProbe extends Capturing {\n    static styles: import(\"lit\").CSSResult;\n}\n//# sourceMappingURL=child.d.ts.map",
+      "dist/index.d.ts.map": "{\"version\":3,\"file\":\"index.d.ts\",\"sourceRoot\":\"\",\"sources\":[\"../src/index.ts\"],\"names\":[],\"mappings\":\"AAAA,OAAO,EAAC,SAAS,EAAC,MAAM,WAAW,CAAC;AACpC,OAAO,EAAC,UAAU,EAAC,MAAM,YAAY,CAAC\"}",
+      "dist/index.d.ts": "export { Capturing } from \"./base.js\";\nexport { StyleProbe } from \"./child.js\";\n//# sourceMappingURL=index.d.ts.map"
+    },
+    "compiledTemplates": {
+      "base.js": {
+        "compiled": true,
+        "stillHasHtmlTag": false
+      },
+      "child.js": {
+        "compiled": false,
+        "stillHasHtmlTag": false
+      },
+      "index.js": {
+        "compiled": false,
+        "stillHasHtmlTag": false
+      },
+      "shared/atom-state.js": {
+        "compiled": false,
+        "stillHasHtmlTag": false
+      }
+    },
+    "fixtureCompiled": true,
+    "fixtureRemainingHtmlTags": 0
+  },
+  "browser": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.48",
+      "errors": [],
+      "result": {
+        "done": true,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "results": [
+          {
+            "name": "pre-definition individual authored own-key order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "pre-definition individual setter order",
+            "actual": [
+              "padding",
+              "paddingInline"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": false
+          },
+          {
+            "name": "pre-definition individual expected declaration result",
+            "actual": [
+              "16px",
+              "8px",
+              "16px",
+              "8px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": false
+          },
+          {
+            "name": "post-definition individual order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "post-definition individual result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "later value update keeps position in fixture",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "later value update does not move declaration",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "initial HTML attribute order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "initial HTML attribute result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "pre-definition object identity preserved",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "pre-definition object order preserved",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "pre-definition object result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "object replacement can reorder same values",
+            "actual": [
+              "16px",
+              "8px",
+              "16px",
+              "8px"
+            ],
+            "expected": [
+              "16px",
+              "8px",
+              "16px",
+              "8px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "object value update keeps key position",
+            "actual": [
+              "padding",
+              "paddingInline"
+            ],
+            "expected": [
+              "padding",
+              "paddingInline"
+            ],
+            "pass": true
+          },
+          {
+            "name": "object value update result",
+            "actual": [
+              "20px",
+              "8px",
+              "20px",
+              "8px"
+            ],
+            "expected": [
+              "20px",
+              "8px",
+              "20px",
+              "8px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "JSON attribute order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "JSON attribute result",
+            "actual": [
+              "12px",
+              "12px",
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px",
+              "12px",
+              "12px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "registered Lit binding order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "registered Lit binding result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "Lit binding before registration order",
+            "actual": [
+              "padding",
+              "paddingInline"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": false
+          },
+          {
+            "name": "Lit binding before registration result",
+            "actual": [
+              "16px",
+              "8px",
+              "16px",
+              "8px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": false
+          },
+          {
+            "name": "capture candidate preserves pre-definition order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate preserves pre-definition result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate update retains position",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate update result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate HTML order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate HTML result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate removal",
+            "actual": [
+              "padding"
+            ],
+            "expected": [
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate re-add appends",
+            "actual": [
+              "padding",
+              "paddingInline"
+            ],
+            "expected": [
+              "padding",
+              "paddingInline"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate re-add result",
+            "actual": [
+              "16px",
+              "4px",
+              "16px",
+              "4px"
+            ],
+            "expected": [
+              "16px",
+              "4px",
+              "16px",
+              "4px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate detached upgrade synchronous value",
+            "actual": "16px",
+            "expected": "16px",
+            "pass": true
+          },
+          {
+            "name": "capture candidate detached upgrade order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate detached upgrade result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate pre-definition property values override initial attributes",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate early Lit binding order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate early Lit binding result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          }
+        ],
+        "passed": 32,
+        "total": 36
+      }
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "errors": [],
+      "result": {
+        "done": true,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:155.0) Gecko/20100101 Firefox/155.0",
+        "results": [
+          {
+            "name": "pre-definition individual authored own-key order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "pre-definition individual setter order",
+            "actual": [
+              "padding",
+              "paddingInline"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": false
+          },
+          {
+            "name": "pre-definition individual expected declaration result",
+            "actual": [
+              "16px",
+              "8px",
+              "16px",
+              "8px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": false
+          },
+          {
+            "name": "post-definition individual order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "post-definition individual result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "later value update keeps position in fixture",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "later value update does not move declaration",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "initial HTML attribute order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "initial HTML attribute result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "pre-definition object identity preserved",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "pre-definition object order preserved",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "pre-definition object result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "object replacement can reorder same values",
+            "actual": [
+              "16px",
+              "8px",
+              "16px",
+              "8px"
+            ],
+            "expected": [
+              "16px",
+              "8px",
+              "16px",
+              "8px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "object value update keeps key position",
+            "actual": [
+              "padding",
+              "paddingInline"
+            ],
+            "expected": [
+              "padding",
+              "paddingInline"
+            ],
+            "pass": true
+          },
+          {
+            "name": "object value update result",
+            "actual": [
+              "20px",
+              "8px",
+              "20px",
+              "8px"
+            ],
+            "expected": [
+              "20px",
+              "8px",
+              "20px",
+              "8px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "JSON attribute order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "JSON attribute result",
+            "actual": [
+              "12px",
+              "12px",
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px",
+              "12px",
+              "12px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "registered Lit binding order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "registered Lit binding result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "Lit binding before registration order",
+            "actual": [
+              "padding",
+              "paddingInline"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": false
+          },
+          {
+            "name": "Lit binding before registration result",
+            "actual": [
+              "16px",
+              "8px",
+              "16px",
+              "8px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": false
+          },
+          {
+            "name": "capture candidate preserves pre-definition order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate preserves pre-definition result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate update retains position",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate update result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate HTML order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate HTML result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate removal",
+            "actual": [
+              "padding"
+            ],
+            "expected": [
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate re-add appends",
+            "actual": [
+              "padding",
+              "paddingInline"
+            ],
+            "expected": [
+              "padding",
+              "paddingInline"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate re-add result",
+            "actual": [
+              "16px",
+              "4px",
+              "16px",
+              "4px"
+            ],
+            "expected": [
+              "16px",
+              "4px",
+              "16px",
+              "4px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate detached upgrade synchronous value",
+            "actual": "16px",
+            "expected": "16px",
+            "pass": true
+          },
+          {
+            "name": "capture candidate detached upgrade order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate detached upgrade result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate pre-definition property values override initial attributes",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate early Lit binding order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate early Lit binding result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          }
+        ],
+        "passed": 32,
+        "total": 36
+      }
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "errors": [],
+      "result": {
+        "done": true,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6 Safari/605.1.15",
+        "results": [
+          {
+            "name": "pre-definition individual authored own-key order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "pre-definition individual setter order",
+            "actual": [
+              "padding",
+              "paddingInline"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": false
+          },
+          {
+            "name": "pre-definition individual expected declaration result",
+            "actual": [
+              "16px",
+              "8px",
+              "16px",
+              "8px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": false
+          },
+          {
+            "name": "post-definition individual order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "post-definition individual result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "later value update keeps position in fixture",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "later value update does not move declaration",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "initial HTML attribute order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "initial HTML attribute result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "pre-definition object identity preserved",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "pre-definition object order preserved",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "pre-definition object result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "object replacement can reorder same values",
+            "actual": [
+              "16px",
+              "8px",
+              "16px",
+              "8px"
+            ],
+            "expected": [
+              "16px",
+              "8px",
+              "16px",
+              "8px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "object value update keeps key position",
+            "actual": [
+              "padding",
+              "paddingInline"
+            ],
+            "expected": [
+              "padding",
+              "paddingInline"
+            ],
+            "pass": true
+          },
+          {
+            "name": "object value update result",
+            "actual": [
+              "20px",
+              "8px",
+              "20px",
+              "8px"
+            ],
+            "expected": [
+              "20px",
+              "8px",
+              "20px",
+              "8px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "JSON attribute order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "JSON attribute result",
+            "actual": [
+              "12px",
+              "12px",
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px",
+              "12px",
+              "12px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "registered Lit binding order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "registered Lit binding result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "Lit binding before registration order",
+            "actual": [
+              "padding",
+              "paddingInline"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": false
+          },
+          {
+            "name": "Lit binding before registration result",
+            "actual": [
+              "16px",
+              "8px",
+              "16px",
+              "8px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": false
+          },
+          {
+            "name": "capture candidate preserves pre-definition order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate preserves pre-definition result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate update retains position",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate update result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate HTML order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate HTML result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate removal",
+            "actual": [
+              "padding"
+            ],
+            "expected": [
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate re-add appends",
+            "actual": [
+              "padding",
+              "paddingInline"
+            ],
+            "expected": [
+              "padding",
+              "paddingInline"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate re-add result",
+            "actual": [
+              "16px",
+              "4px",
+              "16px",
+              "4px"
+            ],
+            "expected": [
+              "16px",
+              "4px",
+              "16px",
+              "4px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate detached upgrade synchronous value",
+            "actual": "16px",
+            "expected": "16px",
+            "pass": true
+          },
+          {
+            "name": "capture candidate detached upgrade order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate detached upgrade result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate pre-definition property values override initial attributes",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate early Lit binding order",
+            "actual": [
+              "paddingInline",
+              "padding"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": true
+          },
+          {
+            "name": "capture candidate early Lit binding result",
+            "actual": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "expected": [
+              "16px",
+              "16px",
+              "16px",
+              "16px"
+            ],
+            "pass": true
+          }
+        ],
+        "passed": 32,
+        "total": 36
+      }
+    }
+  ],
+  "consumer": {
+    "results": [
+      {
+        "name": "valid",
+        "source": "import {StyleProbe} from \"./dist/index.js\";const element=new StyleProbe();const unset:string|undefined=element.padding;element.padding=\"12px\";element.paddingInline=undefined;",
+        "diagnostics": []
+      },
+      {
+        "name": "invalid",
+        "source": "import {StyleProbe} from \"./dist/index.js\";const element=new StyleProbe();const mustBeSet:string=element.padding;element.padding=123;",
+        "diagnostics": [
+          {
+            "code": 2322,
+            "message": "Type 'string | undefined' is not assignable to type 'string'.\n  Type 'undefined' is not assignable to type 'string'."
+          },
+          {
+            "code": 2322,
+            "message": "Type 'number' is not assignable to type 'string'."
+          }
+        ]
+      }
+    ],
+    "checks": [
+      {
+        "name": "valid public declaration consumer",
+        "pass": true
+      },
+      {
+        "name": "missing-value and wrong-type errors remain visible",
+        "pass": true
+      },
+      {
+        "name": "inherited styling fields have matching attribute links and no default",
+        "pass": true
+      },
+      {
+        "name": "manifest internal order helper omitted",
+        "pass": true
+      }
+    ],
+    "passed": 4,
+    "total": 4,
+    "remaining": "@internal helpers still appear in emitted .d.ts because the current build does not set stripInternal; final public/internal type surface remains to specify."
+  },
+  "quotePatch": {
+    "path": "src/utils/index.js",
+    "old": "specifier?.replace(/'/g, '')",
+    "replacement": "specifier?.replace(/['\"]/g, '')",
+    "before": {
+      "singleQuoted": true,
+      "doubleQuoted": false,
+      "unquoted": true
+    },
+    "scope": "Temporary analyzer install only; no project dependency patch"
+  },
+  "fixtureManifest": {
+    "schemaVersion": "1.0.0",
+    "readme": "",
+    "modules": [
+      {
+        "kind": "javascript-module",
+        "path": "src/base.ts",
+        "declarations": [
+          {
+            "kind": "class",
+            "description": "",
+            "name": "Capturing",
+            "members": [
+              {
+                "kind": "field",
+                "name": "padding",
+                "type": {
+                  "text": "string|undefined"
+                },
+                "attribute": "padding"
+              },
+              {
+                "kind": "field",
+                "name": "paddingInline",
+                "type": {
+                  "text": "string|undefined"
+                },
+                "attribute": "padding-inline"
+              },
+              {
+                "kind": "field",
+                "name": "initialAttributes",
+                "privacy": "private",
+                "default": "new Map<string,string>()"
+              }
+            ],
+            "attributes": [
+              {
+                "name": "padding",
+                "type": {
+                  "text": "string|undefined"
+                },
+                "fieldName": "padding"
+              },
+              {
+                "name": "padding-inline",
+                "type": {
+                  "text": "string|undefined"
+                },
+                "fieldName": "paddingInline"
+              }
+            ],
+            "superclass": {
+              "name": "LitElement",
+              "package": "lit"
+            },
+            "customElement": true
+          }
+        ],
+        "exports": [
+          {
+            "kind": "js",
+            "name": "Capturing",
+            "declaration": {
+              "name": "Capturing",
+              "module": "src/base.ts"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "javascript-module",
+        "path": "src/child.ts",
+        "declarations": [
+          {
+            "kind": "class",
+            "description": "",
+            "name": "StyleProbe",
+            "members": [
+              {
+                "kind": "field",
+                "name": "padding",
+                "type": {
+                  "text": "string|undefined"
+                },
+                "attribute": "padding",
+                "inheritedFrom": {
+                  "name": "Capturing",
+                  "module": "src/base.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "paddingInline",
+                "type": {
+                  "text": "string|undefined"
+                },
+                "attribute": "padding-inline",
+                "inheritedFrom": {
+                  "name": "Capturing",
+                  "module": "src/base.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "initialAttributes",
+                "privacy": "private",
+                "default": "new Map<string,string>()",
+                "inheritedFrom": {
+                  "name": "Capturing",
+                  "module": "src/base.ts"
+                }
+              }
+            ],
+            "superclass": {
+              "name": "Capturing",
+              "module": "/src/base.js"
+            },
+            "tagName": "package-style-probe",
+            "customElement": true,
+            "attributes": [
+              {
+                "name": "padding",
+                "type": {
+                  "text": "string|undefined"
+                },
+                "fieldName": "padding",
+                "inheritedFrom": {
+                  "name": "Capturing",
+                  "module": "src/base.ts"
+                }
+              },
+              {
+                "name": "padding-inline",
+                "type": {
+                  "text": "string|undefined"
+                },
+                "fieldName": "paddingInline",
+                "inheritedFrom": {
+                  "name": "Capturing",
+                  "module": "src/base.ts"
+                }
+              }
+            ]
+          }
+        ],
+        "exports": [
+          {
+            "kind": "js",
+            "name": "StyleProbe",
+            "declaration": {
+              "name": "StyleProbe",
+              "module": "src/child.ts"
+            }
+          },
+          {
+            "kind": "custom-element-definition",
+            "name": "package-style-probe",
+            "declaration": {
+              "name": "StyleProbe",
+              "module": "src/child.ts"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "javascript-module",
+        "path": "src/index.ts",
+        "declarations": [],
+        "exports": [
+          {
+            "kind": "js",
+            "name": "Capturing",
+            "declaration": {
+              "name": "Capturing",
+              "module": "./base.js"
+            }
+          },
+          {
+            "kind": "js",
+            "name": "StyleProbe",
+            "declaration": {
+              "name": "StyleProbe",
+              "module": "./child.js"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "javascript-module",
+        "path": "src/shared/atom-state.ts",
+        "declarations": [
+          {
+            "kind": "function",
+            "name": "atomState",
+            "parameters": [
+              {
+                "name": "shared",
+                "optional": true,
+                "type": {
+                  "text": "Atom<T>"
+                }
+              },
+              {
+                "name": "options",
+                "optional": true,
+                "type": {
+                  "text": "{ compare?: (a: T, b: T) => boolean }"
+                }
+              }
+            ],
+            "description": "A reactive field backed by an atom. Reads and writes look like a plain field; the element\nre-renders when the value changes.\n\nWith no argument the atom is created per instance, so each element has its own. Passing an atom\nbinds the field to that one instead, which is how several elements follow one value:\n\n  const name = createAtom(\"Ada\");\n  class NameField extends AcmeElement {\n    `@atomState`(name) private name!: string;   // every instance reads and writes the same atom\n  }\n\n`compare` sets the equality the atom uses to decide whether anything changed. It defaults to\nidentity, so an object mutated in place does not re-render; pass `shallow` from the store package\nfor a field that holds an object it rebuilds."
+          }
+        ],
+        "exports": [
+          {
+            "kind": "js",
+            "name": "atomState",
+            "declaration": {
+              "name": "atomState",
+              "module": "src/shared/atom-state.ts"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "normalizedFixtureManifest": {
+    "schemaVersion": "1.0.0",
+    "readme": "",
+    "modules": [
+      {
+        "kind": "javascript-module",
+        "path": "dist/base.js",
+        "declarations": [
+          {
+            "kind": "class",
+            "description": "",
+            "name": "Capturing",
+            "members": [
+              {
+                "kind": "field",
+                "name": "padding",
+                "type": {
+                  "text": "string|undefined"
+                },
+                "attribute": "padding"
+              },
+              {
+                "kind": "field",
+                "name": "paddingInline",
+                "type": {
+                  "text": "string|undefined"
+                },
+                "attribute": "padding-inline"
+              },
+              {
+                "kind": "field",
+                "name": "initialAttributes",
+                "privacy": "private",
+                "default": "new Map<string,string>()"
+              }
+            ],
+            "attributes": [
+              {
+                "name": "padding",
+                "type": {
+                  "text": "string|undefined"
+                },
+                "fieldName": "padding"
+              },
+              {
+                "name": "padding-inline",
+                "type": {
+                  "text": "string|undefined"
+                },
+                "fieldName": "paddingInline"
+              }
+            ],
+            "superclass": {
+              "name": "LitElement",
+              "package": "lit"
+            },
+            "customElement": true
+          }
+        ],
+        "exports": [
+          {
+            "kind": "js",
+            "name": "Capturing",
+            "declaration": {
+              "name": "Capturing",
+              "module": "dist/base.js"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "javascript-module",
+        "path": "dist/child.js",
+        "declarations": [
+          {
+            "kind": "class",
+            "description": "",
+            "name": "StyleProbe",
+            "members": [
+              {
+                "kind": "field",
+                "name": "padding",
+                "type": {
+                  "text": "string|undefined"
+                },
+                "attribute": "padding",
+                "inheritedFrom": {
+                  "name": "Capturing",
+                  "module": "dist/base.js"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "paddingInline",
+                "type": {
+                  "text": "string|undefined"
+                },
+                "attribute": "padding-inline",
+                "inheritedFrom": {
+                  "name": "Capturing",
+                  "module": "dist/base.js"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "initialAttributes",
+                "privacy": "private",
+                "default": "new Map<string,string>()",
+                "inheritedFrom": {
+                  "name": "Capturing",
+                  "module": "dist/base.js"
+                }
+              }
+            ],
+            "superclass": {
+              "name": "Capturing",
+              "module": "dist/base.js"
+            },
+            "tagName": "package-style-probe",
+            "customElement": true,
+            "attributes": [
+              {
+                "name": "padding",
+                "type": {
+                  "text": "string|undefined"
+                },
+                "fieldName": "padding",
+                "inheritedFrom": {
+                  "name": "Capturing",
+                  "module": "dist/base.js"
+                }
+              },
+              {
+                "name": "padding-inline",
+                "type": {
+                  "text": "string|undefined"
+                },
+                "fieldName": "paddingInline",
+                "inheritedFrom": {
+                  "name": "Capturing",
+                  "module": "dist/base.js"
+                }
+              }
+            ]
+          }
+        ],
+        "exports": [
+          {
+            "kind": "js",
+            "name": "StyleProbe",
+            "declaration": {
+              "name": "StyleProbe",
+              "module": "dist/child.js"
+            }
+          },
+          {
+            "kind": "custom-element-definition",
+            "name": "package-style-probe",
+            "declaration": {
+              "name": "StyleProbe",
+              "module": "dist/child.js"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "javascript-module",
+        "path": "dist/index.js",
+        "declarations": [],
+        "exports": [
+          {
+            "kind": "js",
+            "name": "Capturing",
+            "declaration": {
+              "name": "Capturing",
+              "module": "dist/base.js"
+            }
+          },
+          {
+            "kind": "js",
+            "name": "StyleProbe",
+            "declaration": {
+              "name": "StyleProbe",
+              "module": "dist/child.js"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "javascript-module",
+        "path": "dist/shared/atom-state.js",
+        "declarations": [
+          {
+            "kind": "function",
+            "name": "atomState",
+            "parameters": [
+              {
+                "name": "shared",
+                "optional": true,
+                "type": {
+                  "text": "Atom<T>"
+                }
+              },
+              {
+                "name": "options",
+                "optional": true,
+                "type": {
+                  "text": "{ compare?: (a: T, b: T) => boolean }"
+                }
+              }
+            ],
+            "description": "A reactive field backed by an atom. Reads and writes look like a plain field; the element\nre-renders when the value changes.\n\nWith no argument the atom is created per instance, so each element has its own. Passing an atom\nbinds the field to that one instead, which is how several elements follow one value:\n\n  const name = createAtom(\"Ada\");\n  class NameField extends AcmeElement {\n    `@atomState`(name) private name!: string;   // every instance reads and writes the same atom\n  }\n\n`compare` sets the equality the atom uses to decide whether anything changed. It defaults to\nidentity, so an object mutated in place does not re-render; pass `shallow` from the store package\nfor a field that holds an object it rebuilds."
+          }
+        ],
+        "exports": [
+          {
+            "kind": "js",
+            "name": "atomState",
+            "declaration": {
+              "name": "atomState",
+              "module": "dist/shared/atom-state.js"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "fixtureSources": {
+    "src/base.ts": "import {LitElement,html,css} from \"lit\";\nimport {atomState} from \"./shared/atom-state.js\";\nconst cssText=(entries:[string,unknown][])=>entries.filter(([,v])=>v!=null).map(([k,v])=>k.replace(/[A-Z]/g,c=>\"-\"+c.toLowerCase())+\":\"+v).join(\";\");\nexport class Capturing extends LitElement {\n static get observedAttributes(){return [...super.observedAttributes,\"padding\",\"padding-inline\"];}\n /** @attribute padding */ @atomState() declare padding:string|undefined;\n /** @attribute padding-inline */ @atomState() declare paddingInline:string|undefined;\n /** @internal */ @atomState() declarationOrder:string[]=[];\n private initialAttributes=new Map<string,string>();\n constructor(){\n  super();\n  const keys=Object.keys(this).filter(k=>[\"padding\",\"paddingInline\"].includes(k));\n  const properties=keys.map(k=>[k,(this as any)[k]] as const);\n  for(const key of keys)delete (this as any)[key];\n  for(const a of [...this.attributes])if([\"padding\",\"padding-inline\"].includes(a.name)){\n    this.initialAttributes.set(a.name,a.value);\n    (this as any)[a.name===\"padding-inline\"?\"paddingInline\":\"padding\"]=a.value;\n  }\n  for(const [key,value] of properties)(this as any)[key]=value;\n }\n /** @internal */ record(name:string,value:unknown){if(value==null)this.declarationOrder=this.declarationOrder.filter(k=>k!==name);else if(!this.declarationOrder.includes(name))this.declarationOrder=[...this.declarationOrder,name];}\n attributeChangedCallback(name:string,oldValue:string|null,newValue:string|null){\n  if(![\"padding\",\"padding-inline\"].includes(name)){super.attributeChangedCallback(name,oldValue,newValue);return;}\n  if(oldValue===null&&this.initialAttributes.get(name)===newValue){this.initialAttributes.delete(name);return;}\n  (this as any)[name===\"padding-inline\"?\"paddingInline\":\"padding\"]=newValue??undefined;\n }\n render(){return html`<div id=\"content\" style=${cssText(this.declarationOrder.map(k=>[k,(this as any)[k]]))}>Public capture candidate</div>`;}\n}\nfor(const key of [\"padding\",\"paddingInline\"]){const d=Object.getOwnPropertyDescriptor(Capturing.prototype,key)!;Object.defineProperty(Capturing.prototype,key,{...d,set(value){(this as Capturing).record(key,value);d.set!.call(this,value);}});}\n\n",
+    "src/child.ts": "import {css} from \"lit\";\nimport {Capturing} from \"./base.js\";\nexport class StyleProbe extends Capturing {static styles=css`#content {padding:24px;padding-inline:4px}`;}\ncustomElements.define(\"package-style-probe\",StyleProbe);\n",
+    "src/index.ts": "export {Capturing} from \"./base.js\";\nexport {StyleProbe} from \"./child.js\";\n",
+    "readonly.config.mjs": "export default {globs:[\"src/**/*.ts\"],exclude:[\"src/**/__tests__/**\",\"src/**/*.geist.ts\",\"src/**/*.d.ts\"],litelement:true,packagejson:false,quiet:true,dependencies:false};"
+  },
+  "temporaryLock": "{\n  \"lockfileVersion\": 2,\n  \"configVersion\": 1,\n  \"workspaces\": {\n    \"\": {\n      \"dependencies\": {\n        \"@custom-elements-manifest/analyzer\": \"0.11.0\",\n      },\n    },\n  },\n  \"packages\": {\n    \"@custom-elements-manifest/analyzer\": [\"@custom-elements-manifest/analyzer@0.11.0\", \"\", { \"dependencies\": { \"@custom-elements-manifest/find-dependencies\": \"^0.0.7\", \"@github/catalyst\": \"^1.6.0\", \"@web/config-loader\": \"0.1.3\", \"chokidar\": \"3.5.2\", \"command-line-args\": \"5.1.2\", \"comment-parser\": \"1.2.4\", \"custom-elements-manifest\": \"1.0.0\", \"debounce\": \"1.2.1\", \"globby\": \"11.0.4\", \"typescript\": \"~5.4.2\" }, \"bin\": { \"custom-elements-manifest\": \"cem.js\", \"cem\": \"cem.js\" } }, \"sha512-F2jQFk6igV5vrTZYDBLVr0GDQF3cTJ2VwwzPdsmkzUE+SHiYAQNKYebIq8qphZdJeTcZtVhvw336FQVZsMqh4A==\"],\n\n    \"@custom-elements-manifest/find-dependencies\": [\"@custom-elements-manifest/find-dependencies@0.0.7\", \"\", { \"dependencies\": { \"oxc-resolver\": \"^11.9.0\", \"rs-module-lexer\": \"^2.5.1\" } }, \"sha512-icHEBPHcOXSrpDOFkQhvM7vljEbqrEReW251RBxSzDctXzYWIL0Hk2yMDINn3d6mZ4KSsqLZlaFiGFp/2nn9rA==\"],\n\n    \"@emnapi/core\": [\"@emnapi/core@1.11.2\", \"\", { \"dependencies\": { \"@emnapi/wasi-threads\": \"1.2.2\", \"tslib\": \"^2.4.0\" } }, \"sha512-TC8MkTuZUtcTSiFeuC0ksCh9QIJ5+F21MvZ4Wn4ORfYaFJ/0dsiudv5tVkejgwZlwQ39jL9WWDe2lz8x0WglOA==\"],\n\n    \"@emnapi/runtime\": [\"@emnapi/runtime@1.11.2\", \"\", { \"dependencies\": { \"tslib\": \"^2.4.0\" } }, \"sha512-kyOl3X0DuTiT1h2ft8r2fYO8JYtU9a9Xis/zBSiGArNaagCOWx90N1k2wxp18czFDH+OgcWGb5ZP/XMt3dcyPA==\"],\n\n    \"@emnapi/wasi-threads\": [\"@emnapi/wasi-threads@1.2.2\", \"\", { \"dependencies\": { \"tslib\": \"^2.4.0\" } }, \"sha512-c95qOXkHdydNKhscBTebqEC1CVAZpyqOfVfBzQ1qgzyl3gfeldUjIggDbIZgDKsHLgnsM+igH7TJ/eAasaVuMA==\"],\n\n    \"@github/catalyst\": [\"@github/catalyst@1.8.1\", \"\", {}, \"sha512-dnN4WWpbeuQvA17LvsGdlXEueJdBk9y+I+WO5pdNpoHNOXPsFcz3hJrq1iRmdsNgQOf4S8e83axtwIxvG62eWA==\"],\n\n    \"@napi-rs/wasm-runtime\": [\"@napi-rs/wasm-runtime@1.2.4\", \"\", { \"dependencies\": { \"@tybys/wasm-util\": \"^0.10.3\" }, \"peerDependencies\": { \"@emnapi/core\": \"^1.7.1 || ^2.0.0-alpha.4\", \"@emnapi/runtime\": \"^1.7.1 || ^2.0.0-alpha.4\" } }, \"sha512-AJxoUD2/15ESHbvpcyjU274nsAPLuOtPHCk0vKJM5pj//Fg/B1FXNWjPnXTT9PymCYYiHo4zPj0ZomXBKhoy7g==\"],\n\n    \"@nodelib/fs.scandir\": [\"@nodelib/fs.scandir@2.1.5\", \"\", { \"dependencies\": { \"@nodelib/fs.stat\": \"2.0.5\", \"run-parallel\": \"^1.1.9\" } }, \"sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==\"],\n\n    \"@nodelib/fs.stat\": [\"@nodelib/fs.stat@2.0.5\", \"\", {}, \"sha512-RkhPPp2zrqDAQA/2jNhnztcPAlv64XdhIp7a7454A5ovI7Bukxgt7MX7udwAu3zg1DcpPU0rz3VV1SeaqvY4+A==\"],\n\n    \"@nodelib/fs.walk\": [\"@nodelib/fs.walk@1.2.8\", \"\", { \"dependencies\": { \"@nodelib/fs.scandir\": \"2.1.5\", \"fastq\": \"^1.6.0\" } }, \"sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==\"],\n\n    \"@oxc-resolver/binding-android-arm-eabi\": [\"@oxc-resolver/binding-android-arm-eabi@11.24.2\", \"\", { \"os\": \"android\", \"cpu\": \"arm\" }, \"sha512-y09e0L0SRI2OA2tUIrjBgoV3eH5hvUKXNkJqXmNo5V2WxIjyC7I7aJfRLMEVpA8yi95f90gFDvO0VMgrDw+vwA==\"],\n\n    \"@oxc-resolver/binding-android-arm64\": [\"@oxc-resolver/binding-android-arm64@11.24.2\", \"\", { \"os\": \"android\", \"cpu\": \"arm64\" }, \"sha512-cl4icWaZFnLdg8m6qtnh5rBMuGbxc/ptStFHLeCNwr+2cZjkjNwQu/jYRS0CHlnPecOJMpuS5M6/BH+0J/YkEg==\"],\n\n    \"@oxc-resolver/binding-darwin-arm64\": [\"@oxc-resolver/binding-darwin-arm64@11.24.2\", \"\", { \"os\": \"darwin\", \"cpu\": \"arm64\" }, \"sha512-At29QEMF6HajbQvgY8K6OXnHD1x9rad74xBEfmCB6ZqCGsdq75aK7tOYcTbOanMy8qdIBrfL3SMr3p/lfSlb9w==\"],\n\n    \"@oxc-resolver/binding-darwin-x64\": [\"@oxc-resolver/binding-darwin-x64@11.24.2\", \"\", { \"os\": \"darwin\", \"cpu\": \"x64\" }, \"sha512-A5Kqr1EUj4oIL5CF4WRssq/o5P0Y11cwoFouMRmQ7YnC/A8V93nv1nb7aSU8HwcgmXropjLNkVTl4MN87cu28Q==\"],\n\n    \"@oxc-resolver/binding-freebsd-x64\": [\"@oxc-resolver/binding-freebsd-x64@11.24.2\", \"\", { \"os\": \"freebsd\", \"cpu\": \"x64\" }, \"sha512-R5xkRBRRz7ceH/P5Jrc6G7FmdUdgpLYyESFAUDVTNQ9K0sGPxcp4ljiwEwEqsvNcQ4sYbMRrWcHHBCu7ksAJVw==\"],\n\n    \"@oxc-resolver/binding-linux-arm-gnueabihf\": [\"@oxc-resolver/binding-linux-arm-gnueabihf@11.24.2\", \"\", { \"os\": \"linux\", \"cpu\": \"arm\" }, \"sha512-k/RuYL4L/R58IBn3wT5ma3Wh4k62bp1eYCFRWCmMsasUOqL+H6sW0VGFadEzKWXFFlz+2uIMoeMk9ySSZJHgbg==\"],\n\n    \"@oxc-resolver/binding-linux-arm-musleabihf\": [\"@oxc-resolver/binding-linux-arm-musleabihf@11.24.2\", \"\", { \"os\": \"linux\", \"cpu\": \"arm\" }, \"sha512-bnHAak3ujYfH5pKk4NieFNbvYvernfoQDgwLddbZ3OtMYrem87/qjlA+u+aKG0oZcqSLGCful/6/CEA+aeAgaA==\"],\n\n    \"@oxc-resolver/binding-linux-arm64-gnu\": [\"@oxc-resolver/binding-linux-arm64-gnu@11.24.2\", \"\", { \"os\": \"linux\", \"cpu\": \"arm64\" }, \"sha512-vDT3KHgzYp47gmtNOqL2VNhCyl5Zv643eyxm//A68J8DeUGXrvD1pZFiaT4jSfe+RInfnn1R2yVHye4enx6RnA==\"],\n\n    \"@oxc-resolver/binding-linux-arm64-musl\": [\"@oxc-resolver/binding-linux-arm64-musl@11.24.2\", \"\", { \"os\": \"linux\", \"cpu\": \"arm64\" }, \"sha512-+kMlQvbzfyEYtu5FcjE4p+ttBLpKW4d/AsAsuE69BxV6V4twZJeIQZFfD8gh/wqglY0MkPSezWXQH0jBV13MUw==\"],\n\n    \"@oxc-resolver/binding-linux-ppc64-gnu\": [\"@oxc-resolver/binding-linux-ppc64-gnu@11.24.2\", \"\", { \"os\": \"linux\", \"cpu\": \"ppc64\" }, \"sha512-shjfMhmZ3gq9fv/w7bi3PnZlgOPG+2QAOFf0BJF0EgBSIGZ6PMLN2zbGEblTUYB/NKVDRyYhE2ff3dJ1QqNPkA==\"],\n\n    \"@oxc-resolver/binding-linux-riscv64-gnu\": [\"@oxc-resolver/binding-linux-riscv64-gnu@11.24.2\", \"\", { \"os\": \"linux\", \"cpu\": \"none\" }, \"sha512-zGelwFR5oRo+b69k8Lrzun86DyUHzfKN6cnjbR9l7Z7NIRznOE/2ZvPa1IUKqAL2PzAXOdwkfVqNvO1H2RlpAw==\"],\n\n    \"@oxc-resolver/binding-linux-riscv64-musl\": [\"@oxc-resolver/binding-linux-riscv64-musl@11.24.2\", \"\", { \"os\": \"linux\", \"cpu\": \"none\" }, \"sha512-qxZ1SWCXJY0eyhAlP6Lmo9F2Nrtx7EkYj9oCgL8apDPCwXwCEDA2U697bbT81JIc2IrVjxO4KX6WU2N+oN9Z4w==\"],\n\n    \"@oxc-resolver/binding-linux-s390x-gnu\": [\"@oxc-resolver/binding-linux-s390x-gnu@11.24.2\", \"\", { \"os\": \"linux\", \"cpu\": \"s390x\" }, \"sha512-sGCecF3cx2DFlH4t/z7ApnOnXqN48p5p5mlHDEnHTAukQa2P+qMVE4CwyWE9W+q/m3QJ7kKfGrIjax31f44oFQ==\"],\n\n    \"@oxc-resolver/binding-linux-x64-gnu\": [\"@oxc-resolver/binding-linux-x64-gnu@11.24.2\", \"\", { \"os\": \"linux\", \"cpu\": \"x64\" }, \"sha512-k/VlMMcSzMlahb3/fENM4rTlsJ0s3fFROA0KXPBmKggqmTSaE383sl8F3KCOXPLmVsYfW6hCitMhXCEtNeZxxg==\"],\n\n    \"@oxc-resolver/binding-linux-x64-musl\": [\"@oxc-resolver/binding-linux-x64-musl@11.24.2\", \"\", { \"os\": \"linux\", \"cpu\": \"x64\" }, \"sha512-8hbnZyNi97b/8wapYaIF9+t9GmZKBW2vunaOc3h9HGJptH7b7XpvZqOTBSm/MpTjr7H497BlgOaSfLUdhmy2bw==\"],\n\n    \"@oxc-resolver/binding-openharmony-arm64\": [\"@oxc-resolver/binding-openharmony-arm64@11.24.2\", \"\", { \"os\": \"none\", \"cpu\": \"arm64\" }, \"sha512-MvyGik3a6pVgZ0t/kWlbmFxFLmXQJwgLsY2eYFHLpy0wGwRbfzeIGgDwQ3kXqE30z+kSXennRkCrT7TUvkptNg==\"],\n\n    \"@oxc-resolver/binding-wasm32-wasi\": [\"@oxc-resolver/binding-wasm32-wasi@11.24.2\", \"\", { \"dependencies\": { \"@emnapi/core\": \"1.11.2\", \"@emnapi/runtime\": \"1.11.2\", \"@napi-rs/wasm-runtime\": \"^1.1.6\" }, \"cpu\": \"none\" }, \"sha512-vHcssMPwO08RTvj/c0iOBz90attxyG3wQJ0dTcyEQK43LRpcdLWZlV5feBhv6Isn6ahbQIzHbCgfa81+RiML0Q==\"],\n\n    \"@oxc-resolver/binding-win32-arm64-msvc\": [\"@oxc-resolver/binding-win32-arm64-msvc@11.24.2\", \"\", { \"os\": \"win32\", \"cpu\": \"arm64\" }, \"sha512-uokJqro2iBqkFvJdKQLP7d8/BUmFwESQFVmIJUQKj1Xn1a/LysJoe1vmeECLF5b3jsV8CAL5sEMJXX6SdK9Nhg==\"],\n\n    \"@oxc-resolver/binding-win32-x64-msvc\": [\"@oxc-resolver/binding-win32-x64-msvc@11.24.2\", \"\", { \"os\": \"win32\", \"cpu\": \"x64\" }, \"sha512-UqGPmo56KDfLlfXFAFIrNflHT8tFxWGEivWg3Zeyp4Uy2NlKN1FGPr6/BxcLGG3+kZ6Wp14g5Uj+n71boqZfiw==\"],\n\n    \"@tybys/wasm-util\": [\"@tybys/wasm-util@0.10.4\", \"\", { \"dependencies\": { \"tslib\": \"^2.4.0\" } }, \"sha512-W3c4gRigFS0T/Ma4qIYF3GDAc5AQdHb1yL5znJT1Zv1YaD9Kitx656wBjvr19qbiosmZT8lWDM5BEMynUqX65A==\"],\n\n    \"@web/config-loader\": [\"@web/config-loader@0.1.3\", \"\", { \"dependencies\": { \"semver\": \"^7.3.4\" } }, \"sha512-XVKH79pk4d3EHRhofete8eAnqto1e8mCRAqPV00KLNFzCWSe8sWmLnqKCqkPNARC6nksMaGrATnA5sPDRllMpQ==\"],\n\n    \"@xn-sakina/rml-darwin-arm64\": [\"@xn-sakina/rml-darwin-arm64@2.9.0\", \"\", { \"os\": \"darwin\", \"cpu\": \"arm64\" }, \"sha512-aCuqvf1+52HBnNHFYem9KSICyd0i6SaC9eXnHUvPmQM+mKWUHWA+5t5GubHHDRMstpYNFAKxePAl+ToeKs9hxw==\"],\n\n    \"@xn-sakina/rml-darwin-x64\": [\"@xn-sakina/rml-darwin-x64@2.9.0\", \"\", { \"os\": \"darwin\", \"cpu\": \"x64\" }, \"sha512-oT7T6rogIpMU38ZwI1HlagTaaavMNyTDmJE9V1sVLlPU981bIKp61qkSFXNhaUeL608uP/ZzdK+qIPCLyHBCbQ==\"],\n\n    \"@xn-sakina/rml-linux-arm-gnueabihf\": [\"@xn-sakina/rml-linux-arm-gnueabihf@2.9.0\", \"\", { \"os\": \"linux\", \"cpu\": \"arm\" }, \"sha512-NDY7Bj0PsGTbB/nm4FV3hxZrnufiAk5OOmFGPGvS3bL9Hfq3Jru/aI5CHN1HFfp4iLA7HevpSU1inlAFgWKqKg==\"],\n\n    \"@xn-sakina/rml-linux-arm64-gnu\": [\"@xn-sakina/rml-linux-arm64-gnu@2.9.0\", \"\", { \"os\": \"linux\", \"cpu\": \"arm64\" }, \"sha512-wg/g15e9XGiVMcr7wwwk2T5d30wxlcg+SqAu4qMj+2JSfaYzfFuFYfpBo6Dv9myYFm0+LdejbL1/0iJrs4i/vA==\"],\n\n    \"@xn-sakina/rml-linux-arm64-musl\": [\"@xn-sakina/rml-linux-arm64-musl@2.9.0\", \"\", { \"os\": \"linux\", \"cpu\": \"arm64\" }, \"sha512-VEXjE3H0TtXz3aijzqioJ1xhv2yEvH+yge4F9KOzsuflSCWf+nX0VLNpIuvk2w3slH5cUMqR6uGUDL0tsdaryg==\"],\n\n    \"@xn-sakina/rml-linux-x64-gnu\": [\"@xn-sakina/rml-linux-x64-gnu@2.9.0\", \"\", { \"os\": \"linux\", \"cpu\": \"x64\" }, \"sha512-pPV0gVgEQlw1NusKiDNA5ZNcGLM3Z36/LIZdHP8voXlY4OlGEsJspJSz+7NB47xLQvdybv83DTgnsqhU6nQJMg==\"],\n\n    \"@xn-sakina/rml-linux-x64-musl\": [\"@xn-sakina/rml-linux-x64-musl@2.9.0\", \"\", { \"os\": \"linux\", \"cpu\": \"x64\" }, \"sha512-IQniBDS3d74Xn4xybRC9rjxIbRnXmSuiToNCvMvre1AghUvzk/PIZ7F7beo9RLXgjeyQvEMAxhfBpJuMlEjS9A==\"],\n\n    \"@xn-sakina/rml-win32-arm64-msvc\": [\"@xn-sakina/rml-win32-arm64-msvc@2.9.0\", \"\", { \"os\": \"win32\", \"cpu\": \"arm64\" }, \"sha512-Q+Rpfm8KqMFaTUXgaUPClMEeNOXXG6LtEhuaVzpbj6omOy6AVWxSl6qJkxNQDe49Dmua7WRZK3HHidjczQjsCw==\"],\n\n    \"@xn-sakina/rml-win32-x64-msvc\": [\"@xn-sakina/rml-win32-x64-msvc@2.9.0\", \"\", { \"os\": \"win32\", \"cpu\": \"x64\" }, \"sha512-FkbgYRj3+5l8D4ufTDAQ1eP8cCZjmt0XK41eNJvGguvokFCpH0y0HscVhDPjrH4EuLP9/8pZ4bEFFcSEZeFoZQ==\"],\n\n    \"anymatch\": [\"anymatch@3.1.3\", \"\", { \"dependencies\": { \"normalize-path\": \"^3.0.0\", \"picomatch\": \"^2.0.4\" } }, \"sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==\"],\n\n    \"array-back\": [\"array-back@6.2.3\", \"\", {}, \"sha512-SGDvmg6QTYiTxCBkYVmThcoa67uLl35pyzRHdpCGBOcqFy6BtwnphoFPk7LhJshD+Yk1Kt35WGWeZPTgwR4Fhw==\"],\n\n    \"array-union\": [\"array-union@2.1.0\", \"\", {}, \"sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==\"],\n\n    \"binary-extensions\": [\"binary-extensions@2.3.0\", \"\", {}, \"sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==\"],\n\n    \"braces\": [\"braces@3.0.3\", \"\", { \"dependencies\": { \"fill-range\": \"^7.1.1\" } }, \"sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==\"],\n\n    \"chokidar\": [\"chokidar@3.5.2\", \"\", { \"dependencies\": { \"anymatch\": \"~3.1.2\", \"braces\": \"~3.0.2\", \"glob-parent\": \"~5.1.2\", \"is-binary-path\": \"~2.1.0\", \"is-glob\": \"~4.0.1\", \"normalize-path\": \"~3.0.0\", \"readdirp\": \"~3.6.0\" }, \"optionalDependencies\": { \"fsevents\": \"~2.3.2\" } }, \"sha512-ekGhOnNVPgT77r4K/U3GDhu+FQ2S8TnK/s2KbIGXi0SZWuwkZ2QNyfWdZW+TVfn84DpEP7rLeCt2UI6bJ8GwbQ==\"],\n\n    \"command-line-args\": [\"command-line-args@5.1.2\", \"\", { \"dependencies\": { \"array-back\": \"^6.1.2\", \"find-replace\": \"^3.0.0\", \"lodash.camelcase\": \"^4.3.0\", \"typical\": \"^4.0.0\" } }, \"sha512-fytTsbndLbl+pPWtS0CxLV3BEWw9wJayB8NnU2cbQqVPsNdYezQeT+uIQv009m+GShnMNyuoBrRo8DTmuTfSCA==\"],\n\n    \"comment-parser\": [\"comment-parser@1.2.4\", \"\", {}, \"sha512-pm0b+qv+CkWNriSTMsfnjChF9kH0kxz55y44Wo5le9qLxMj5xDQAaEd9ZN1ovSuk9CsrncWaFwgpOMg7ClJwkw==\"],\n\n    \"custom-elements-manifest\": [\"custom-elements-manifest@1.0.0\", \"\", {}, \"sha512-j59k0ExGCKA8T6Mzaq+7axc+KVHwpEphEERU7VZ99260npu/p/9kd+Db+I3cGKxHkM5y6q5gnlXn00mzRQkX2A==\"],\n\n    \"debounce\": [\"debounce@1.2.1\", \"\", {}, \"sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==\"],\n\n    \"dir-glob\": [\"dir-glob@3.0.1\", \"\", { \"dependencies\": { \"path-type\": \"^4.0.0\" } }, \"sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==\"],\n\n    \"fast-glob\": [\"fast-glob@3.3.3\", \"\", { \"dependencies\": { \"@nodelib/fs.stat\": \"^2.0.2\", \"@nodelib/fs.walk\": \"^1.2.3\", \"glob-parent\": \"^5.1.2\", \"merge2\": \"^1.3.0\", \"micromatch\": \"^4.0.8\" } }, \"sha512-7MptL8U0cqcFdzIzwOTHoilX9x5BrNqye7Z/LuC7kCMRio1EMSyqRK3BEAUD7sXRq4iT4AzTVuZdhgQ2TCvYLg==\"],\n\n    \"fastq\": [\"fastq@1.20.3\", \"\", { \"dependencies\": { \"reusify\": \"^1.0.4\" } }, \"sha512-XKv5nnLs6nLF71NgiKJLIZFLkPyIEuOselLG7ujZnGrRfQK8HpvY+WqKhAJUAdLomwVHErVS4LfxFlPq0/FTAw==\"],\n\n    \"fill-range\": [\"fill-range@7.1.1\", \"\", { \"dependencies\": { \"to-regex-range\": \"^5.0.1\" } }, \"sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==\"],\n\n    \"find-replace\": [\"find-replace@3.0.0\", \"\", { \"dependencies\": { \"array-back\": \"^3.0.1\" } }, \"sha512-6Tb2myMioCAgv5kfvP5/PkZZ/ntTpVK39fHY7WkWBgvbeE+VHd/tZuZ4mrC+bxh4cfOZeYKVPaJIZtZXV7GNCQ==\"],\n\n    \"fsevents\": [\"fsevents@2.3.3\", \"\", { \"os\": \"darwin\" }, \"sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==\"],\n\n    \"glob-parent\": [\"glob-parent@5.1.2\", \"\", { \"dependencies\": { \"is-glob\": \"^4.0.1\" } }, \"sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==\"],\n\n    \"globby\": [\"globby@11.0.4\", \"\", { \"dependencies\": { \"array-union\": \"^2.1.0\", \"dir-glob\": \"^3.0.1\", \"fast-glob\": \"^3.1.1\", \"ignore\": \"^5.1.4\", \"merge2\": \"^1.3.0\", \"slash\": \"^3.0.0\" } }, \"sha512-9O4MVG9ioZJ08ffbcyVYyLOJLk5JQ688pJ4eMGLpdWLHq/Wr1D9BlriLQyL0E+jbkuePVZXYFj47QM/v093wHg==\"],\n\n    \"ignore\": [\"ignore@5.3.2\", \"\", {}, \"sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==\"],\n\n    \"is-binary-path\": [\"is-binary-path@2.1.0\", \"\", { \"dependencies\": { \"binary-extensions\": \"^2.0.0\" } }, \"sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==\"],\n\n    \"is-extglob\": [\"is-extglob@2.1.1\", \"\", {}, \"sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==\"],\n\n    \"is-glob\": [\"is-glob@4.0.3\", \"\", { \"dependencies\": { \"is-extglob\": \"^2.1.1\" } }, \"sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==\"],\n\n    \"is-number\": [\"is-number@7.0.0\", \"\", {}, \"sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==\"],\n\n    \"lodash.camelcase\": [\"lodash.camelcase@4.3.0\", \"\", {}, \"sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==\"],\n\n    \"merge2\": [\"merge2@1.4.1\", \"\", {}, \"sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==\"],\n\n    \"micromatch\": [\"micromatch@4.0.8\", \"\", { \"dependencies\": { \"braces\": \"^3.0.3\", \"picomatch\": \"^2.3.1\" } }, \"sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==\"],\n\n    \"normalize-path\": [\"normalize-path@3.0.0\", \"\", {}, \"sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==\"],\n\n    \"oxc-resolver\": [\"oxc-resolver@11.24.2\", \"\", { \"optionalDependencies\": { \"@oxc-resolver/binding-android-arm-eabi\": \"11.24.2\", \"@oxc-resolver/binding-android-arm64\": \"11.24.2\", \"@oxc-resolver/binding-darwin-arm64\": \"11.24.2\", \"@oxc-resolver/binding-darwin-x64\": \"11.24.2\", \"@oxc-resolver/binding-freebsd-x64\": \"11.24.2\", \"@oxc-resolver/binding-linux-arm-gnueabihf\": \"11.24.2\", \"@oxc-resolver/binding-linux-arm-musleabihf\": \"11.24.2\", \"@oxc-resolver/binding-linux-arm64-gnu\": \"11.24.2\", \"@oxc-resolver/binding-linux-arm64-musl\": \"11.24.2\", \"@oxc-resolver/binding-linux-ppc64-gnu\": \"11.24.2\", \"@oxc-resolver/binding-linux-riscv64-gnu\": \"11.24.2\", \"@oxc-resolver/binding-linux-riscv64-musl\": \"11.24.2\", \"@oxc-resolver/binding-linux-s390x-gnu\": \"11.24.2\", \"@oxc-resolver/binding-linux-x64-gnu\": \"11.24.2\", \"@oxc-resolver/binding-linux-x64-musl\": \"11.24.2\", \"@oxc-resolver/binding-openharmony-arm64\": \"11.24.2\", \"@oxc-resolver/binding-wasm32-wasi\": \"11.24.2\", \"@oxc-resolver/binding-win32-arm64-msvc\": \"11.24.2\", \"@oxc-resolver/binding-win32-x64-msvc\": \"11.24.2\" } }, \"sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==\"],\n\n    \"path-type\": [\"path-type@4.0.0\", \"\", {}, \"sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==\"],\n\n    \"picomatch\": [\"picomatch@2.3.2\", \"\", {}, \"sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==\"],\n\n    \"queue-microtask\": [\"queue-microtask@1.2.3\", \"\", {}, \"sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==\"],\n\n    \"readdirp\": [\"readdirp@3.6.0\", \"\", { \"dependencies\": { \"picomatch\": \"^2.2.1\" } }, \"sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==\"],\n\n    \"reusify\": [\"reusify@1.1.0\", \"\", {}, \"sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==\"],\n\n    \"rs-module-lexer\": [\"rs-module-lexer@2.9.0\", \"\", { \"optionalDependencies\": { \"@xn-sakina/rml-darwin-arm64\": \"2.9.0\", \"@xn-sakina/rml-darwin-x64\": \"2.9.0\", \"@xn-sakina/rml-linux-arm-gnueabihf\": \"2.9.0\", \"@xn-sakina/rml-linux-arm64-gnu\": \"2.9.0\", \"@xn-sakina/rml-linux-arm64-musl\": \"2.9.0\", \"@xn-sakina/rml-linux-x64-gnu\": \"2.9.0\", \"@xn-sakina/rml-linux-x64-musl\": \"2.9.0\", \"@xn-sakina/rml-win32-arm64-msvc\": \"2.9.0\", \"@xn-sakina/rml-win32-x64-msvc\": \"2.9.0\" } }, \"sha512-kJ/M0Y0kzDM9VqK7zakLkyeLiiCJNgiqMHfK6KZcS/pj4Boy6AHlt/QHnS/wTRgx1D7dtaogRk6gApfsMofHjQ==\"],\n\n    \"run-parallel\": [\"run-parallel@1.2.0\", \"\", { \"dependencies\": { \"queue-microtask\": \"^1.2.2\" } }, \"sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==\"],\n\n    \"semver\": [\"semver@7.8.5\", \"\", { \"bin\": { \"semver\": \"bin/semver.js\" } }, \"sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==\"],\n\n    \"slash\": [\"slash@3.0.0\", \"\", {}, \"sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==\"],\n\n    \"to-regex-range\": [\"to-regex-range@5.0.1\", \"\", { \"dependencies\": { \"is-number\": \"^7.0.0\" } }, \"sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==\"],\n\n    \"tslib\": [\"tslib@2.8.1\", \"\", {}, \"sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==\"],\n\n    \"typescript\": [\"typescript@5.4.5\", \"\", { \"bin\": { \"tsc\": \"bin/tsc\", \"tsserver\": \"bin/tsserver\" } }, \"sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==\"],\n\n    \"typical\": [\"typical@4.0.0\", \"\", {}, \"sha512-VAH4IvQ7BDFYglMd7BPRDfLgxZZX4O4TFcRDA6EN5X7erNJJq+McIEp8np9aVtxrCJ6qx4GTYVfOWNjcqwZgRw==\"],\n\n    \"find-replace/array-back\": [\"array-back@3.1.0\", \"\", {}, \"sha512-TkuxA4UCOvxuDK6NZYXCalszEzj+TLszyASooky+i742l9TqsOdYCMJJupxRic61hwquNtppB3hgcuq9SVSH1Q==\"],\n  }\n}\n",
+  "kind": "style-package-and-compiler-verification",
+  "capturedAt": "2026-09-20T10:45:41.136Z",
+  "phase": 4,
+  "persisted": true,
+  "resourcesStopped": true,
+  "implementationChanged": false,
+  "projectDependenciesChanged": false,
+  "decisionsCaptured": 0,
+  "inventoryApproved": false,
+  "migrationApproved": false,
+  "commitCreated": false,
+  "pushPerformed": false,
+  "scripts": {
+    "readOnlyRepositoryAnalyzer": "const {cli}=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U/node_modules/@custom-elements-manifest/analyzer/cli.js\");const m=await cli({argv:[\"analyze\",\"--config\",\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U/readonly.config.mjs\"],cwd:process.cwd(),noWrite:true});await Bun.write(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U/current-source-manifest.json\",JSON.stringify(m,null,2));const mods=new Set(m.modules.map(x=>x.path));const refs=[];function visit(x,loc){if(!x||typeof x!==\"object\")return;if(x.module&&!x.package)refs.push({location:loc,module:x.module,name:x.name,exists:mods.has(x.module)});for(const [k,v]of Object.entries(x))if(v&&typeof v===\"object\")visit(v,loc+\".\"+k);}visit(m,\"manifest\");const ds=m.modules.flatMap(x=>(x.declarations||[]).map(d=>({module:x.path,...d})));const out={modules:m.modules.length,classes:ds.filter(x=>x.kind===\"class\").length,customElements:ds.filter(x=>x.customElement).length,localReferences:refs.length,unresolvedReferences:refs.filter(x=>!x.exists),samples:ds.filter(x=>[\"AcmeButton\",\"AcmeElement\",\"AcmeCopyButton\"].includes(x.name))};console.log(JSON.stringify(out));",
+    "compileAndDeclarations": "\nimport {mkdirSync,symlinkSync,existsSync} from \"node:fs\";import path from \"node:path\";\nconst root=process.cwd(),scratch=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U\";\nconst ts=(await import(path.join(root,\"node_modules/typescript/lib/typescript.js\"))).default;\nconst {compileLitTemplates}=await import(path.join(root,\"node_modules/@lit-labs/compiler/index.js\"));\nfor(const name of [\"lit\",\"@tanstack\"]){const link=path.join(scratch,\"node_modules\",name);if(!existsSync(link))symlinkSync(path.join(root,\"node_modules\",name),link,\"dir\");}\nmkdirSync(path.join(scratch,\"src/shared\"),{recursive:true});\nconst old=await Bun.file(\"notes/alignment/evidence/declaration-order-probe-2026-09-20.json\").json();\nconst code=old.entrySource;\nlet base='import {LitElement,html,css} from \"lit\";\\nimport {atomState} from \"./shared/atom-state.js\";\\n'+code.slice(code.indexOf(\"const cssText=\"),code.indexOf(\"class Individual\"))+code.slice(code.indexOf(\"class Capturing\"),code.indexOf(\"class Ordered\"));\nbase=base.replace(\"class Capturing\",\"export class Capturing\").replace(\"@atomState() declare padding:\",\"/** @attribute padding */ @atomState() declare padding:\").replace(\"@atomState() declare paddingInline:\",\"/** @attribute padding-inline */ @atomState() declare paddingInline:\").replace(\"@atomState() declarationOrder:\",\"/** @internal */ @atomState() declarationOrder:\").replace(\" record(name:\",\" /** @internal */ record(name:\");\nconst child='import {css} from \"lit\";\\nimport {Capturing} from \"./base.js\";\\nexport class StyleProbe extends Capturing {static styles=css\\x60#content {padding:24px;padding-inline:4px}\\x60;}\\ncustomElements.define(\"package-style-probe\",StyleProbe);\\n';\nawait Bun.write(path.join(scratch,\"src/base.ts\"),base);await Bun.write(path.join(scratch,\"src/child.ts\"),child);\nawait Bun.write(path.join(scratch,\"src/index.ts\"),'export {Capturing} from \"./base.js\";\\nexport {StyleProbe} from \"./child.js\";\\n');\nawait Bun.write(path.join(scratch,\"src/shared/atom-state.ts\"),await Bun.file(\"src/shared/atom-state.ts\").text());\nconst options={target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext,experimentalDecorators:true,useDefineForClassFields:false,moduleResolution:ts.ModuleResolutionKind.Bundler,strict:true,skipLibCheck:true,types:[],lib:[\"lib.es2022.d.ts\",\"lib.dom.d.ts\",\"lib.dom.iterable.d.ts\"],declaration:true,declarationMap:true,emitDeclarationOnly:true,rootDir:path.join(scratch,\"src\"),outDir:path.join(scratch,\"dist\")};\nconst files=[\"src/base.ts\",\"src/child.ts\",\"src/index.ts\",\"src/shared/atom-state.ts\"].map(x=>path.join(scratch,x));\nconst outputs={};const program=ts.createProgram(files,options);const emit=program.emit(undefined,(f,s)=>{outputs[path.relative(scratch,f)]=s});\nconst diagnostics=[...ts.getPreEmitDiagnostics(program),...emit.diagnostics].filter(x=>x.category===ts.DiagnosticCategory.Error).map(x=>({code:x.code,file:x.file?.fileName,line:x.file&&x.start!=null?x.file.getLineAndCharacterOfPosition(x.start).line+1:null,message:ts.flattenDiagnosticMessageText(x.messageText,\"\\n\")}));\nconst compilerOptions={target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext,experimentalDecorators:true,useDefineForClassFields:false,moduleResolution:ts.ModuleResolutionKind.Bundler};\nconst compiled={};\nfor(const file of files){const result=ts.transpileModule(await Bun.file(file).text(),{compilerOptions,fileName:file,transformers:{before:[compileLitTemplates()]}});const out=path.relative(path.join(scratch,\"src\"),file).replace(/\\.ts$/,\".js\");compiled[out]=result.outputText;await Bun.write(path.join(scratch,\"dist\",out),result.outputText);}\nfor(const [f,s]of Object.entries(outputs))await Bun.write(path.join(scratch,f),s);\nconst fixture=ts.transpileModule(code,{compilerOptions,fileName:path.join(root,\"notes/alignment/evidence/compiler-fixture.ts\"),transformers:{before:[compileLitTemplates()]}});\nawait Bun.write(path.join(scratch,\"compiled-order-fixture.js\"),fixture.outputText);\nconst report={typescript:ts.version,compiler:(await Bun.file(path.join(root,\"node_modules/@lit-labs/compiler/package.json\")).json()).version,diagnostics,emitSkipped:emit.emitSkipped,declarations:outputs,compiledTemplates:Object.fromEntries(Object.entries(compiled).map(([k,s])=>[k,{compiled:s.includes(\"_$litType$\"),stillHasHtmlTag:/html\\x60/.test(s)}])),fixtureCompiled:fixture.outputText.includes(\"_$litType$\"),fixtureRemainingHtmlTags:(fixture.outputText.match(/html\\x60/g)||[]).length};\nawait Bun.write(path.join(scratch,\"compiler-result.json\"),JSON.stringify(report,null,2));\nconsole.log(JSON.stringify(report));\n",
+    "temporaryQuotePatch": "\nimport path from \"node:path\";\nconst scratch=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U\",file=path.join(scratch,\"node_modules/@custom-elements-manifest/analyzer/src/utils/index.js\");\nconst original=await Bun.file(file).text();const old=\"specifier?.replace(/'/g, '')\";const replacement=\"specifier?.replace(/['\\\"]/g, '')\";\nif(original.split(old).length!==2)throw Error(\"Unexpected analyzer source\");\nconst {isBareModuleSpecifier}=await import(file);\nconst before={singleQuoted:isBareModuleSpecifier(\"'@tanstack/lit-store'\"),doubleQuoted:isBareModuleSpecifier('\"@tanstack/lit-store\"'),unquoted:isBareModuleSpecifier(\"@tanstack/lit-store\")};\nawait Bun.write(file,original.replace(old,replacement));\nawait Bun.write(path.join(scratch,\"analyzer-quote-patch.json\"),JSON.stringify({path:\"src/utils/index.js\",old,replacement,before,scope:\"Temporary analyzer install only; no project dependency patch\"},null,2));\nconsole.log(JSON.stringify({before,temporaryPackagePatched:true}));\n",
+    "normalizePublishedPaths": "\nimport path from \"node:path\";\nconst root=process.cwd(),scratch=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U\";\nconst {cli}=await import(path.join(scratch,\"node_modules/@custom-elements-manifest/analyzer/cli.js\"));\nconst ts=(await import(path.join(root,\"node_modules/typescript/lib/typescript.js\"))).default;\nconst opts={moduleResolution:ts.ModuleResolutionKind.Bundler,module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022};\nfunction normalize(sourceManifest,cwd){\n const m=JSON.parse(JSON.stringify(sourceManifest));const sourcePaths=new Set(m.modules.map(x=>x.path));const changes=[];const failures=[];\n const emitted=p=>{if(!p.startsWith(\"src/\")||!p.endsWith(\".ts\"))throw Error(\"Unexpected source module \"+p);return p.replace(/^src\\//,\"dist/\").replace(/\\.ts$/,\".js\");};\n function resolve(mod,owner){\n  if(sourcePaths.has(mod))return mod;\n  let from,spec;if(mod.startsWith(\"./\")||mod.startsWith(\"../\")){from=path.join(cwd,owner);spec=mod;}else if(mod.startsWith(\"/\")||mod.startsWith(\"src/\")){from=path.join(cwd,\"__cem_resolution__.ts\");spec=\"./\"+mod.replace(/^\\/+/, \"\");}else throw Error(\"Unclassified reference \"+mod+\" in \"+owner);\n  const found=ts.resolveModuleName(spec,from,opts,ts.sys).resolvedModule;\n  if(!found)throw Error(\"Unresolved \"+mod+\" in \"+owner);\n  const rel=path.relative(cwd,found.resolvedFileName).replaceAll(path.sep,\"/\");\n  if(!sourcePaths.has(rel))throw Error(\"Reference is outside analyzed modules: \"+rel);\n  return rel;\n }\n function visit(x,owner,loc){\n  if(!x||typeof x!==\"object\")return;\n  if(typeof x.module===\"string\"&&!x.package){try{const before=x.module;const canonical=resolve(before,owner);x.module=emitted(canonical);changes.push({location:loc,before,source:canonical,after:x.module});}catch(error){failures.push(String(error));}}\n  for(const [k,v]of Object.entries(x))if(v&&typeof v===\"object\")visit(v,owner,loc+\".\"+k);\n }\n for(const mod of m.modules){const old=mod.path;visit(mod,old,old);mod.path=emitted(old);}\n const paths=new Set(m.modules.map(x=>x.path));let references=0;const dangling=[];\n function check(x){if(!x||typeof x!==\"object\")return;if(x.module&&!x.package){references++;if(!paths.has(x.module))dangling.push(x.module);}for(const v of Object.values(x))if(v&&typeof v===\"object\")check(v);}check(m);\n return {manifest:m,changes,failures,verification:{modules:m.modules.length,localReferences:references,dangling}};\n}\nconst reports=[];\nfor(const [kind,cwd]of [[\"repository\",root],[\"fixture\",scratch]]){\n const raw=await cli({argv:[\"analyze\",\"--config\",path.join(scratch,\"readonly.config.mjs\")],cwd,noWrite:true});\n const normalized=normalize(raw,cwd);await Bun.write(path.join(scratch,kind+\"-normalized-manifest.json\"),JSON.stringify(normalized.manifest,null,2));\n await Bun.write(path.join(scratch,kind+\"-patched-raw-manifest.json\"),JSON.stringify(raw,null,2));\n const unresolvedBefore=[];const keys=new Set(raw.modules.map(m=>m.path));function scan(x){if(!x||typeof x!==\"object\")return;if(x.module&&!x.package&&!keys.has(x.module))unresolvedBefore.push(x.module);for(const v of Object.values(x))if(v&&typeof v===\"object\")scan(v);}scan(raw);\n const missingFiles=[];if(kind===\"fixture\")for(const m of normalized.manifest.modules)if(!await Bun.file(path.join(cwd,m.path)).exists())missingFiles.push(m.path);\n const summary={kind,rawModuleReferencesNotMatchingPaths:unresolvedBefore.length,...normalized.verification,normalizationFailures:normalized.failures,missingEmittedFiles:missingFiles,examples:normalized.changes.filter(x=>x.before!==x.source).slice(-5)};\n reports.push(summary);await Bun.write(path.join(scratch,kind+\"-path-changes.json\"),JSON.stringify(normalized.changes,null,2));\n}\nconst {isBareModuleSpecifier}=await import(path.join(scratch,\"node_modules/@custom-elements-manifest/analyzer/src/utils/index.js\"));\nconst quoteAfter={singleQuoted:isBareModuleSpecifier(\"'@tanstack/lit-store'\"),doubleQuoted:isBareModuleSpecifier('\"@tanstack/lit-store\"'),unquoted:isBareModuleSpecifier(\"@tanstack/lit-store\")};\nconst out={reports,quoteAfter,limits:[\"Output path map follows the current scripts/build.ts src-to-dist rule; future package layout still needs its own map.\",\"No full repository build or all-API runtime comparison.\",\"Temporary upstream quote patch is not installed in the project; no upstream report sent.\"]};\nawait Bun.write(path.join(scratch,\"normalization-result.json\"),JSON.stringify(out,null,2));\nconsole.log(JSON.stringify(out));\n",
+    "declarationConsumer": "\nimport path from \"node:path\";\nconst root=process.cwd(),scratch=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U\",ts=(await import(path.join(root,\"node_modules/typescript/lib/typescript.js\"))).default;\nconst good='import {StyleProbe} from \"./dist/index.js\";const element=new StyleProbe();const unset:string|undefined=element.padding;element.padding=\"12px\";element.paddingInline=undefined;';\nconst bad='import {StyleProbe} from \"./dist/index.js\";const element=new StyleProbe();const mustBeSet:string=element.padding;element.padding=123;';\nconst options={target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext,moduleResolution:ts.ModuleResolutionKind.Bundler,strict:true,skipLibCheck:true,noEmit:true,types:[],lib:[\"lib.es2022.d.ts\",\"lib.dom.d.ts\",\"lib.dom.iterable.d.ts\"]};\nconst results=[];\nfor(const [name,source]of [[\"valid\",good],[\"invalid\",bad]]){const file=path.join(scratch,name+\"-consumer.ts\");await Bun.write(file,source);const program=ts.createProgram([file],options);const ds=ts.getPreEmitDiagnostics(program).filter(x=>x.category===ts.DiagnosticCategory.Error).map(x=>({code:x.code,message:ts.flattenDiagnosticMessageText(x.messageText,\"\\n\")}));results.push({name,source,diagnostics:ds});}\nconst checks=[{name:\"valid public declaration consumer\",pass:results[0].diagnostics.length===0},{name:\"missing-value and wrong-type errors remain visible\",pass:results[1].diagnostics.length===2&&results[1].diagnostics.every(x=>x.code===2322)}];\nconst m=await Bun.file(path.join(scratch,\"fixture-normalized-manifest.json\")).json();const child=m.modules.flatMap(x=>x.declarations||[]).find(x=>x.name===\"StyleProbe\");\nchecks.push({name:\"inherited styling fields have matching attribute links and no default\",pass:[\"padding\",\"paddingInline\"].every(n=>{const f=child.members.find(x=>x.name===n);return f?.type?.text===\"string|undefined\"&&!(\"default\" in f)&&child.attributes.some(a=>a.fieldName===n);})});\nchecks.push({name:\"manifest internal order helper omitted\",pass:!child.members.some(x=>[\"declarationOrder\",\"record\"].includes(x.name))});\nconst out={results,checks,passed:checks.filter(x=>x.pass).length,total:checks.length,remaining:\"@internal helpers still appear in emitted .d.ts because the current build does not set stripInternal; final public/internal type surface remains to specify.\"};\nawait Bun.write(path.join(scratch,\"consumer-result.json\"),JSON.stringify(out,null,2));console.log(JSON.stringify(out));\n",
+    "compiledBrowserServer": "\nimport path from \"node:path\";\nconst root=process.cwd(),scratch=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U\";\nconst old=await Bun.file(path.join(scratch,\"compiled-order-fixture.js\")).text();\nawait Bun.write(path.join(scratch,\"compiled-order-fixture.js\"),old.replace(path.join(root,\"src/shared/atom-state.ts\"),path.join(scratch,\"dist/shared/atom-state.js\")));\nconst result=await Bun.build({entrypoints:[path.join(scratch,\"compiled-order-fixture.js\")],target:\"browser\",format:\"esm\",write:false});\nif(!result.success)throw Error(JSON.stringify(result.logs));const js=await result.outputs[0].text();\nconst server=Bun.serve({hostname:\"127.0.0.1\",port:0,fetch(r){return new URL(r.url).pathname===\"/probe.js\"?new Response(js,{headers:{\"content-type\":\"text/javascript\"}}):new Response('<!doctype html><title>Compiled style input probe</title><p id=\"status\">Running</p><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"content-type\":\"text/html\"}})}});\nconsole.log(JSON.stringify({url:server.url.href,bytes:js.length,compiledTemplates:js.includes(\"_$litType$\")}));\n",
+    "compiledBrowserDriver": "\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst {chromium,firefox,webkit}=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst outputs=await Promise.all([{engine:\"chromium\",type:chromium,options:{executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}},{engine:\"firefox\",type:firefox},{engine:\"webkit\",type:webkit}].map(async({engine,type,options})=>{const browser=await type.launch({headless:true,...options});try{const page=await browser.newPage();const errors=[];page.on(\"pageerror\",e=>errors.push(String(e)));await page.goto(\"http://127.0.0.1:54311/\");await page.waitForFunction(()=>window.__orderProbe?.done,undefined,{timeout:30000});return {engine,version:browser.version(),errors,result:await page.evaluate(()=>window.__orderProbe)};}finally{await browser.close();}}));\nawait Bun.write(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U/compiled-browser-results.json\",JSON.stringify(outputs,null,2));console.log(JSON.stringify(outputs.map(x=>({engine:x.engine,version:x.version,errors:x.errors,passed:x.result.passed,total:x.result.total,failures:x.result.results.filter(y=>!y.pass).map(y=>y.name)}))));\n"
+  },
+  "sources": [
+    "https://custom-elements-manifest.open-wc.org/analyzer/config/",
+    "https://custom-elements-manifest.open-wc.org/analyzer/plugins/authoring/",
+    "https://github.com/open-wc/custom-elements-manifest/blob/master/packages/analyzer/src/utils/index.js",
+    "https://github.com/open-wc/custom-elements-manifest/blob/master/packages/analyzer/src/features/analyse-phase/exports.js",
+    "https://github.com/lit/lit/tree/main/packages/labs/compiler",
+    "scripts/build.ts",
+    "tsconfig.json",
+    "src/shared/atom-state.ts"
+  ],
+  "findings": [
+    "Analyzer 0.11.0 CLI ran under Bun with noWrite:true and a scratch config explicitly setting packagejson:false; no analyzer output was written into the repository.",
+    "Raw output for 330 modules has 321 module references not matching declared module paths. Three of those are external packages misclassified as local modules by double-quote handling. This is not 321 broken runtime imports.",
+    "Temporary correction of isBareModuleSpecifier quote removal repairs the three external named exports; published-path normalization through installed TypeScript resolution then maps all 1072 local references with no dangling targets.",
+    "The fixture uses .js source imports; TypeScript resolves them to .ts source for analysis. The house does not need to adopt .ts imports simply to satisfy the initial browser manifest experiment.",
+    "Path output mapping follows current src-to-dist build rules, not an approved future package layout. Only the four-module fixture's emitted file existence was checked; the complete project was not built.",
+    "Strict TypeScript 5.9.3 declaration emission and positive/negative public consumer checks pass for the two-field candidate and copied unchanged atomState. Fields retain string|undefined; manifest inheritance/attribute links work without custom decorator analysis.",
+    "Installed Lit compiler 1.1.2 compiles the fixture templates. All three engines preserve the expected 9/13 baseline, 8/8 object and 15/15 capture results with compiled output; no page errors.",
+    "CEM @internal hides helper members in that manifest but the current declaration build still exposes annotated public helpers in .d.ts. Final internal/public type visibility remains to resolve."
+  ],
+  "setup": {
+    "temporaryInstall": "bun install --ignore-scripts in dedicated scratch directory: 50 packages; one lifecycle script blocked and not enabled. Analyzer execution succeeded.",
+    "dependencyLinks": "Existing project lit, lit-html and @tanstack were linked only into the scratch node_modules for fixture resolution.",
+    "compileFirstBundleFailure": "The isolated fixture initially lacked a lit-html resolution link for the compiler-generated lit-html/private-ssr-support.js import. Added the link to the installed dependency and reran successfully. No production dependency failure is claimed.",
+    "limitations": [
+      "No production suite or full build rerun.",
+      "Two scalar style inputs; no complete 77-property, responsive or CSS-generation acceptance.",
+      "The package path transform is a tested proposal; the temporary analyzer patch is not installed in the project and no upstream report was sent.",
+      "Future export layout and package manifests remain part of inventory/migration approval.",
+      "Browser/temporary servers stopped; dedicated test caches retained for reproduction."
+    ]
+  },
+  "lateLitOrdering": {
+    "sources": [
+      "https://lit.dev/docs/templates/expressions/#property-expressions",
+      "https://lit.dev/docs/templates/custom-directives/#imperative-dom-access-update",
+      "node_modules/lit-html/development/lit-html.js:1197",
+      "node_modules/lit-html/development/directive.d.ts"
+    ],
+    "initialSource": "\nimport {html,render} from \"lit\";\nimport {Capturing} from \"./dist/base.js\";\nimport {Directive,PartType,directive} from \"lit/directive.js\";\ncustomElements.define(\"late-input-order-probe\",Capturing);\nconst results=[];\nconst check=(name,actual,expected)=>results.push({name,actual,expected,pass:JSON.stringify(actual)===JSON.stringify(expected)});\nconst edges=e=>{const s=getComputedStyle(e.shadowRoot.querySelector(\"#content\"));return[s.paddingTop,s.paddingRight,s.paddingBottom,s.paddingLeft];};\nconst box=()=>{const e=document.createElement(\"div\");document.body.append(e);return e;};\nconst synchronize=directive(class extends Directive{\n constructor(info){super(info);if(info.type!==PartType.ELEMENT)throw Error(\"Element-only\");}\n render(values){}\n update(part,[values]){const e=part.element;for(const key of [\"padding\",\"paddingInline\"])e[key]=values[key];e.declarationOrder=Object.keys(values).filter(k=>values[k]!==undefined);return this.render(values);}\n});\ntry{\n const a=box();const drawA=padding=>render(html`<late-input-order-probe .padding=${padding} .paddingInline=${\"8px\"}></late-input-order-probe>`,a);\n drawA(undefined);const ae=a.firstElementChild;await ae.updateComplete;drawA(\"16px\");await ae.updateComplete;\n check(\"ordinary bindings preserve child identity\",a.firstElementChild===ae,true);\n check(\"ordinary late broad input retains template order\",ae.declarationOrder,[\"padding\",\"paddingInline\"]);\n check(\"ordinary late broad input respects later inline declaration\",edges(ae),[\"16px\",\"8px\",\"16px\",\"8px\"]);\n const b=box();const drawB=paddingInline=>render(html`<late-input-order-probe .paddingInline=${paddingInline} .padding=${\"16px\"}></late-input-order-probe>`,b);\n drawB(undefined);const be=b.firstElementChild;await be.updateComplete;drawB(\"8px\");await be.updateComplete;\n check(\"ordinary late inline input respects later broad declaration\",edges(be),[\"16px\",\"16px\",\"16px\",\"16px\"]);\n const c=box();render(html`<late-input-order-probe .paddingInline=${\"8px\"} padding=\"16px\"></late-input-order-probe>`,c);const ce=c.firstElementChild;await ce.updateComplete;\n check(\"mixed static attribute and property follow template order\",edges(ce),[\"16px\",\"16px\",\"16px\",\"16px\"]);\n const d=box();const drawD=padding=>render(html`<late-input-order-probe ${synchronize({padding,paddingInline:\"8px\"})}></late-input-order-probe>`,d);\n drawD(undefined);const de=d.firstElementChild;await de.updateComplete;drawD(\"16px\");await de.updateComplete;\n check(\"complete-input directive preserves child identity\",d.firstElementChild===de,true);\n check(\"complete-input directive preserves canonical input\",de.padding,\"16px\");\n check(\"complete-input directive late broad input order\",de.declarationOrder,[\"padding\",\"paddingInline\"]);\n check(\"complete-input directive late broad result\",edges(de),[\"16px\",\"8px\",\"16px\",\"8px\"]);\n drawD(undefined);await de.updateComplete;check(\"complete-input directive removal\",de.padding===undefined,true);\n const e=box();const drawE=paddingInline=>render(html`<late-input-order-probe ${synchronize({paddingInline,padding:\"16px\"})}></late-input-order-probe>`,e);\n drawE(undefined);const ee=e.firstElementChild;await ee.updateComplete;drawE(\"8px\");await ee.updateComplete;check(\"complete-input directive late inline result\",edges(ee),[\"16px\",\"16px\",\"16px\",\"16px\"]);\n window.__lateOrder={done:true,results,passed:results.filter(x=>x.pass).length,total:results.length};\n}catch(error){window.__lateOrder={done:true,error:String(error),stack:error.stack,results};}\n",
+    "retainedPositionSource": "\nimport {html,render} from \"lit\";\nimport {Capturing} from \"./dist/base.js\";\nimport {Directive,PartType,directive} from \"lit/directive.js\";\nclass RetainsUndefined extends Capturing { record(name,value){if(!this.declarationOrder.includes(name))this.declarationOrder=[...this.declarationOrder,name];} }\ncustomElements.define(\"late-input-order-probe\",RetainsUndefined);\nconst results=[];\nconst check=(name,actual,expected)=>results.push({name,actual,expected,pass:JSON.stringify(actual)===JSON.stringify(expected)});\nconst edges=e=>{const s=getComputedStyle(e.shadowRoot.querySelector(\"#content\"));return[s.paddingTop,s.paddingRight,s.paddingBottom,s.paddingLeft];};\nconst box=()=>{const e=document.createElement(\"div\");document.body.append(e);return e;};\nconst synchronize=directive(class extends Directive{\n constructor(info){super(info);if(info.type!==PartType.ELEMENT)throw Error(\"Element-only\");}\n render(values){}\n update(part,[values]){const e=part.element;for(const key of [\"padding\",\"paddingInline\"])e[key]=values[key];e.declarationOrder=Object.keys(values).filter(k=>values[k]!==undefined);return this.render(values);}\n});\ntry{\n const a=box();const drawA=padding=>render(html`<late-input-order-probe .padding=${padding} .paddingInline=${\"8px\"}></late-input-order-probe>`,a);\n drawA(undefined);const ae=a.firstElementChild;await ae.updateComplete;drawA(\"16px\");await ae.updateComplete;\n check(\"ordinary bindings preserve child identity\",a.firstElementChild===ae,true);\n check(\"ordinary late broad input retains template order\",ae.declarationOrder,[\"padding\",\"paddingInline\"]);\n check(\"ordinary late broad input respects later inline declaration\",edges(ae),[\"16px\",\"8px\",\"16px\",\"8px\"]);\n const b=box();const drawB=paddingInline=>render(html`<late-input-order-probe .paddingInline=${paddingInline} .padding=${\"16px\"}></late-input-order-probe>`,b);\n drawB(undefined);const be=b.firstElementChild;await be.updateComplete;drawB(\"8px\");await be.updateComplete;\n check(\"ordinary late inline input respects later broad declaration\",edges(be),[\"16px\",\"16px\",\"16px\",\"16px\"]);\n const c=box();render(html`<late-input-order-probe .paddingInline=${\"8px\"} padding=\"16px\"></late-input-order-probe>`,c);const ce=c.firstElementChild;await ce.updateComplete;\n check(\"mixed static attribute and property follow template order\",edges(ce),[\"16px\",\"16px\",\"16px\",\"16px\"]);\n const d=box();const drawD=padding=>render(html`<late-input-order-probe ${synchronize({padding,paddingInline:\"8px\"})}></late-input-order-probe>`,d);\n drawD(undefined);const de=d.firstElementChild;await de.updateComplete;drawD(\"16px\");await de.updateComplete;\n check(\"complete-input directive preserves child identity\",d.firstElementChild===de,true);\n check(\"complete-input directive preserves canonical input\",de.padding,\"16px\");\n check(\"complete-input directive late broad input order\",de.declarationOrder,[\"padding\",\"paddingInline\"]);\n check(\"complete-input directive late broad result\",edges(de),[\"16px\",\"8px\",\"16px\",\"8px\"]);\n drawD(undefined);await de.updateComplete;check(\"complete-input directive removal\",de.padding===undefined,true);\n const e=box();const drawE=paddingInline=>render(html`<late-input-order-probe ${synchronize({paddingInline,padding:\"16px\"})}></late-input-order-probe>`,e);\n drawE(undefined);const ee=e.firstElementChild;await ee.updateComplete;drawE(\"8px\");await ee.updateComplete;check(\"complete-input directive late inline result\",edges(ee),[\"16px\",\"16px\",\"16px\",\"16px\"]);\n window.__lateOrder={done:true,results,passed:results.filter(x=>x.pass).length,total:results.length};\n}catch(error){window.__lateOrder={done:true,error:String(error),stack:error.stack,results};}\n",
+    "initialServer": "\nimport path from\"node:path\";const scratch=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U\";\nawait Bun.write(path.join(scratch,\"late-order-probe.js\"),\"\\nimport {html,render} from \\\"lit\\\";\\nimport {Capturing} from \\\"./dist/base.js\\\";\\nimport {Directive,PartType,directive} from \\\"lit/directive.js\\\";\\ncustomElements.define(\\\"late-input-order-probe\\\",Capturing);\\nconst results=[];\\nconst check=(name,actual,expected)=>results.push({name,actual,expected,pass:JSON.stringify(actual)===JSON.stringify(expected)});\\nconst edges=e=>{const s=getComputedStyle(e.shadowRoot.querySelector(\\\"#content\\\"));return[s.paddingTop,s.paddingRight,s.paddingBottom,s.paddingLeft];};\\nconst box=()=>{const e=document.createElement(\\\"div\\\");document.body.append(e);return e;};\\nconst synchronize=directive(class extends Directive{\\n constructor(info){super(info);if(info.type!==PartType.ELEMENT)throw Error(\\\"Element-only\\\");}\\n render(values){}\\n update(part,[values]){const e=part.element;for(const key of [\\\"padding\\\",\\\"paddingInline\\\"])e[key]=values[key];e.declarationOrder=Object.keys(values).filter(k=>values[k]!==undefined);return this.render(values);}\\n});\\ntry{\\n const a=box();const drawA=padding=>render(html`<late-input-order-probe .padding=${padding} .paddingInline=${\\\"8px\\\"}></late-input-order-probe>`,a);\\n drawA(undefined);const ae=a.firstElementChild;await ae.updateComplete;drawA(\\\"16px\\\");await ae.updateComplete;\\n check(\\\"ordinary bindings preserve child identity\\\",a.firstElementChild===ae,true);\\n check(\\\"ordinary late broad input retains template order\\\",ae.declarationOrder,[\\\"padding\\\",\\\"paddingInline\\\"]);\\n check(\\\"ordinary late broad input respects later inline declaration\\\",edges(ae),[\\\"16px\\\",\\\"8px\\\",\\\"16px\\\",\\\"8px\\\"]);\\n const b=box();const drawB=paddingInline=>render(html`<late-input-order-probe .paddingInline=${paddingInline} .padding=${\\\"16px\\\"}></late-input-order-probe>`,b);\\n drawB(undefined);const be=b.firstElementChild;await be.updateComplete;drawB(\\\"8px\\\");await be.updateComplete;\\n check(\\\"ordinary late inline input respects later broad declaration\\\",edges(be),[\\\"16px\\\",\\\"16px\\\",\\\"16px\\\",\\\"16px\\\"]);\\n const c=box();render(html`<late-input-order-probe .paddingInline=${\\\"8px\\\"} padding=\\\"16px\\\"></late-input-order-probe>`,c);const ce=c.firstElementChild;await ce.updateComplete;\\n check(\\\"mixed static attribute and property follow template order\\\",edges(ce),[\\\"16px\\\",\\\"16px\\\",\\\"16px\\\",\\\"16px\\\"]);\\n const d=box();const drawD=padding=>render(html`<late-input-order-probe ${synchronize({padding,paddingInline:\\\"8px\\\"})}></late-input-order-probe>`,d);\\n drawD(undefined);const de=d.firstElementChild;await de.updateComplete;drawD(\\\"16px\\\");await de.updateComplete;\\n check(\\\"complete-input directive preserves child identity\\\",d.firstElementChild===de,true);\\n check(\\\"complete-input directive preserves canonical input\\\",de.padding,\\\"16px\\\");\\n check(\\\"complete-input directive late broad input order\\\",de.declarationOrder,[\\\"padding\\\",\\\"paddingInline\\\"]);\\n check(\\\"complete-input directive late broad result\\\",edges(de),[\\\"16px\\\",\\\"8px\\\",\\\"16px\\\",\\\"8px\\\"]);\\n drawD(undefined);await de.updateComplete;check(\\\"complete-input directive removal\\\",de.padding===undefined,true);\\n const e=box();const drawE=paddingInline=>render(html`<late-input-order-probe ${synchronize({paddingInline,padding:\\\"16px\\\"})}></late-input-order-probe>`,e);\\n drawE(undefined);const ee=e.firstElementChild;await ee.updateComplete;drawE(\\\"8px\\\");await ee.updateComplete;check(\\\"complete-input directive late inline result\\\",edges(ee),[\\\"16px\\\",\\\"16px\\\",\\\"16px\\\",\\\"16px\\\"]);\\n window.__lateOrder={done:true,results,passed:results.filter(x=>x.pass).length,total:results.length};\\n}catch(error){window.__lateOrder={done:true,error:String(error),stack:error.stack,results};}\\n\");\nconst b=await Bun.build({entrypoints:[path.join(scratch,\"late-order-probe.js\")],target:\"browser\",format:\"esm\",write:false});if(!b.success)throw Error(JSON.stringify(b.logs));const js=await b.outputs[0].text();const server=Bun.serve({hostname:\"127.0.0.1\",port:0,fetch(r){return new URL(r.url).pathname===\"/probe.js\"?new Response(js,{headers:{\"content-type\":\"text/javascript\"}}):new Response('<!doctype html><title>Late style input order</title><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"content-type\":\"text/html\"}})}});console.log(JSON.stringify({url:server.url.href}));\n",
+    "retainedServer": "\nimport path from\"node:path\";const scratch=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U\";\nawait Bun.write(path.join(scratch,\"late-order-probe.js\"),\"\\nimport {html,render} from \\\"lit\\\";\\nimport {Capturing} from \\\"./dist/base.js\\\";\\nimport {Directive,PartType,directive} from \\\"lit/directive.js\\\";\\nclass RetainsUndefined extends Capturing { record(name,value){if(!this.declarationOrder.includes(name))this.declarationOrder=[...this.declarationOrder,name];} }\\ncustomElements.define(\\\"late-input-order-probe\\\",RetainsUndefined);\\nconst results=[];\\nconst check=(name,actual,expected)=>results.push({name,actual,expected,pass:JSON.stringify(actual)===JSON.stringify(expected)});\\nconst edges=e=>{const s=getComputedStyle(e.shadowRoot.querySelector(\\\"#content\\\"));return[s.paddingTop,s.paddingRight,s.paddingBottom,s.paddingLeft];};\\nconst box=()=>{const e=document.createElement(\\\"div\\\");document.body.append(e);return e;};\\nconst synchronize=directive(class extends Directive{\\n constructor(info){super(info);if(info.type!==PartType.ELEMENT)throw Error(\\\"Element-only\\\");}\\n render(values){}\\n update(part,[values]){const e=part.element;for(const key of [\\\"padding\\\",\\\"paddingInline\\\"])e[key]=values[key];e.declarationOrder=Object.keys(values).filter(k=>values[k]!==undefined);return this.render(values);}\\n});\\ntry{\\n const a=box();const drawA=padding=>render(html`<late-input-order-probe .padding=${padding} .paddingInline=${\\\"8px\\\"}></late-input-order-probe>`,a);\\n drawA(undefined);const ae=a.firstElementChild;await ae.updateComplete;drawA(\\\"16px\\\");await ae.updateComplete;\\n check(\\\"ordinary bindings preserve child identity\\\",a.firstElementChild===ae,true);\\n check(\\\"ordinary late broad input retains template order\\\",ae.declarationOrder,[\\\"padding\\\",\\\"paddingInline\\\"]);\\n check(\\\"ordinary late broad input respects later inline declaration\\\",edges(ae),[\\\"16px\\\",\\\"8px\\\",\\\"16px\\\",\\\"8px\\\"]);\\n const b=box();const drawB=paddingInline=>render(html`<late-input-order-probe .paddingInline=${paddingInline} .padding=${\\\"16px\\\"}></late-input-order-probe>`,b);\\n drawB(undefined);const be=b.firstElementChild;await be.updateComplete;drawB(\\\"8px\\\");await be.updateComplete;\\n check(\\\"ordinary late inline input respects later broad declaration\\\",edges(be),[\\\"16px\\\",\\\"16px\\\",\\\"16px\\\",\\\"16px\\\"]);\\n const c=box();render(html`<late-input-order-probe .paddingInline=${\\\"8px\\\"} padding=\\\"16px\\\"></late-input-order-probe>`,c);const ce=c.firstElementChild;await ce.updateComplete;\\n check(\\\"mixed static attribute and property follow template order\\\",edges(ce),[\\\"16px\\\",\\\"16px\\\",\\\"16px\\\",\\\"16px\\\"]);\\n const d=box();const drawD=padding=>render(html`<late-input-order-probe ${synchronize({padding,paddingInline:\\\"8px\\\"})}></late-input-order-probe>`,d);\\n drawD(undefined);const de=d.firstElementChild;await de.updateComplete;drawD(\\\"16px\\\");await de.updateComplete;\\n check(\\\"complete-input directive preserves child identity\\\",d.firstElementChild===de,true);\\n check(\\\"complete-input directive preserves canonical input\\\",de.padding,\\\"16px\\\");\\n check(\\\"complete-input directive late broad input order\\\",de.declarationOrder,[\\\"padding\\\",\\\"paddingInline\\\"]);\\n check(\\\"complete-input directive late broad result\\\",edges(de),[\\\"16px\\\",\\\"8px\\\",\\\"16px\\\",\\\"8px\\\"]);\\n drawD(undefined);await de.updateComplete;check(\\\"complete-input directive removal\\\",de.padding===undefined,true);\\n const e=box();const drawE=paddingInline=>render(html`<late-input-order-probe ${synchronize({paddingInline,padding:\\\"16px\\\"})}></late-input-order-probe>`,e);\\n drawE(undefined);const ee=e.firstElementChild;await ee.updateComplete;drawE(\\\"8px\\\");await ee.updateComplete;check(\\\"complete-input directive late inline result\\\",edges(ee),[\\\"16px\\\",\\\"16px\\\",\\\"16px\\\",\\\"16px\\\"]);\\n window.__lateOrder={done:true,results,passed:results.filter(x=>x.pass).length,total:results.length};\\n}catch(error){window.__lateOrder={done:true,error:String(error),stack:error.stack,results};}\\n\");\nconst b=await Bun.build({entrypoints:[path.join(scratch,\"late-order-probe.js\")],target:\"browser\",format:\"esm\",write:false});if(!b.success)throw Error(JSON.stringify(b.logs));const js=await b.outputs[0].text();const server=Bun.serve({hostname:\"127.0.0.1\",port:0,fetch(r){return new URL(r.url).pathname===\"/probe.js\"?new Response(js,{headers:{\"content-type\":\"text/javascript\"}}):new Response('<!doctype html><title>Late style input order</title><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"content-type\":\"text/html\"}})}});console.log(JSON.stringify({url:server.url.href}));\n",
+    "initialDriver": "\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst {chromium,firefox,webkit}=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst outputs=await Promise.all([{engine:\"chromium\",type:chromium,options:{executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}},{engine:\"firefox\",type:firefox},{engine:\"webkit\",type:webkit}].map(async({engine,type,options})=>{const browser=await type.launch({headless:true,...options});try{const page=await browser.newPage();const errors=[];page.on(\"pageerror\",e=>errors.push(String(e)));await page.goto(\"http://127.0.0.1:54777/\");await page.waitForFunction(()=>window.__lateOrder?.done,undefined,{timeout:30000});return {engine,version:browser.version(),errors,result:await page.evaluate(()=>window.__lateOrder)};}finally{await browser.close();}}));\nawait Bun.write(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U/late-order-browser-results.json\",JSON.stringify(outputs,null,2));console.log(JSON.stringify(outputs.map(x=>({engine:x.engine,version:x.version,errors:x.errors,passed:x.result.passed,total:x.result.total,failures:x.result.results.filter(y=>!y.pass).map(y=>y.name)}))));\n",
+    "retainedDriver": "\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst {chromium,firefox,webkit}=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst outputs=await Promise.all([{engine:\"chromium\",type:chromium,options:{executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}},{engine:\"firefox\",type:firefox},{engine:\"webkit\",type:webkit}].map(async({engine,type,options})=>{const browser=await type.launch({headless:true,...options});try{const page=await browser.newPage();const errors=[];page.on(\"pageerror\",e=>errors.push(String(e)));await page.goto(\"http://127.0.0.1:54851/\");await page.waitForFunction(()=>window.__lateOrder?.done,undefined,{timeout:30000});return {engine,version:browser.version(),errors,result:await page.evaluate(()=>window.__lateOrder)};}finally{await browser.close();}}));\nawait Bun.write(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U/late-order-retained-results.json\",JSON.stringify(outputs,null,2));console.log(JSON.stringify(outputs.map(x=>({engine:x.engine,version:x.version,errors:x.errors,passed:x.result.passed,total:x.result.total,failures:x.result.results.filter(y=>!y.pass).map(y=>y.name)}))));\n",
+    "results": {
+      "initial": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "errors": [],
+          "result": {
+            "done": true,
+            "results": [
+              {
+                "name": "ordinary bindings preserve child identity",
+                "actual": true,
+                "expected": true,
+                "pass": true
+              },
+              {
+                "name": "ordinary late broad input retains template order",
+                "actual": [
+                  "paddingInline",
+                  "padding"
+                ],
+                "expected": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "pass": false
+              },
+              {
+                "name": "ordinary late broad input respects later inline declaration",
+                "actual": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "expected": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "pass": false
+              },
+              {
+                "name": "ordinary late inline input respects later broad declaration",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "pass": false
+              },
+              {
+                "name": "mixed static attribute and property follow template order",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "pass": false
+              },
+              {
+                "name": "complete-input directive preserves child identity",
+                "actual": true,
+                "expected": true,
+                "pass": true
+              },
+              {
+                "name": "complete-input directive preserves canonical input",
+                "actual": "16px",
+                "expected": "16px",
+                "pass": true
+              },
+              {
+                "name": "complete-input directive late broad input order",
+                "actual": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "expected": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "pass": true
+              },
+              {
+                "name": "complete-input directive late broad result",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "pass": true
+              },
+              {
+                "name": "complete-input directive removal",
+                "actual": true,
+                "expected": true,
+                "pass": true
+              },
+              {
+                "name": "complete-input directive late inline result",
+                "actual": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "pass": true
+              }
+            ],
+            "passed": 7,
+            "total": 11
+          }
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "errors": [],
+          "result": {
+            "done": true,
+            "results": [
+              {
+                "name": "ordinary bindings preserve child identity",
+                "actual": true,
+                "expected": true,
+                "pass": true
+              },
+              {
+                "name": "ordinary late broad input retains template order",
+                "actual": [
+                  "paddingInline",
+                  "padding"
+                ],
+                "expected": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "pass": false
+              },
+              {
+                "name": "ordinary late broad input respects later inline declaration",
+                "actual": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "expected": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "pass": false
+              },
+              {
+                "name": "ordinary late inline input respects later broad declaration",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "pass": false
+              },
+              {
+                "name": "mixed static attribute and property follow template order",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "pass": false
+              },
+              {
+                "name": "complete-input directive preserves child identity",
+                "actual": true,
+                "expected": true,
+                "pass": true
+              },
+              {
+                "name": "complete-input directive preserves canonical input",
+                "actual": "16px",
+                "expected": "16px",
+                "pass": true
+              },
+              {
+                "name": "complete-input directive late broad input order",
+                "actual": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "expected": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "pass": true
+              },
+              {
+                "name": "complete-input directive late broad result",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "pass": true
+              },
+              {
+                "name": "complete-input directive removal",
+                "actual": true,
+                "expected": true,
+                "pass": true
+              },
+              {
+                "name": "complete-input directive late inline result",
+                "actual": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "pass": true
+              }
+            ],
+            "passed": 7,
+            "total": 11
+          }
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "errors": [],
+          "result": {
+            "done": true,
+            "results": [
+              {
+                "name": "ordinary bindings preserve child identity",
+                "actual": true,
+                "expected": true,
+                "pass": true
+              },
+              {
+                "name": "ordinary late broad input retains template order",
+                "actual": [
+                  "paddingInline",
+                  "padding"
+                ],
+                "expected": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "pass": false
+              },
+              {
+                "name": "ordinary late broad input respects later inline declaration",
+                "actual": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "expected": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "pass": false
+              },
+              {
+                "name": "ordinary late inline input respects later broad declaration",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "pass": false
+              },
+              {
+                "name": "mixed static attribute and property follow template order",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "pass": false
+              },
+              {
+                "name": "complete-input directive preserves child identity",
+                "actual": true,
+                "expected": true,
+                "pass": true
+              },
+              {
+                "name": "complete-input directive preserves canonical input",
+                "actual": "16px",
+                "expected": "16px",
+                "pass": true
+              },
+              {
+                "name": "complete-input directive late broad input order",
+                "actual": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "expected": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "pass": true
+              },
+              {
+                "name": "complete-input directive late broad result",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "pass": true
+              },
+              {
+                "name": "complete-input directive removal",
+                "actual": true,
+                "expected": true,
+                "pass": true
+              },
+              {
+                "name": "complete-input directive late inline result",
+                "actual": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "pass": true
+              }
+            ],
+            "passed": 7,
+            "total": 11
+          }
+        }
+      ],
+      "retained": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "errors": [],
+          "result": {
+            "done": true,
+            "results": [
+              {
+                "name": "ordinary bindings preserve child identity",
+                "actual": true,
+                "expected": true,
+                "pass": true
+              },
+              {
+                "name": "ordinary late broad input retains template order",
+                "actual": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "expected": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "pass": true
+              },
+              {
+                "name": "ordinary late broad input respects later inline declaration",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "pass": true
+              },
+              {
+                "name": "ordinary late inline input respects later broad declaration",
+                "actual": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "pass": true
+              },
+              {
+                "name": "mixed static attribute and property follow template order",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "pass": false
+              },
+              {
+                "name": "complete-input directive preserves child identity",
+                "actual": true,
+                "expected": true,
+                "pass": true
+              },
+              {
+                "name": "complete-input directive preserves canonical input",
+                "actual": "16px",
+                "expected": "16px",
+                "pass": true
+              },
+              {
+                "name": "complete-input directive late broad input order",
+                "actual": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "expected": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "pass": true
+              },
+              {
+                "name": "complete-input directive late broad result",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "pass": true
+              },
+              {
+                "name": "complete-input directive removal",
+                "actual": true,
+                "expected": true,
+                "pass": true
+              },
+              {
+                "name": "complete-input directive late inline result",
+                "actual": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "pass": true
+              }
+            ],
+            "passed": 10,
+            "total": 11
+          }
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "errors": [],
+          "result": {
+            "done": true,
+            "results": [
+              {
+                "name": "ordinary bindings preserve child identity",
+                "actual": true,
+                "expected": true,
+                "pass": true
+              },
+              {
+                "name": "ordinary late broad input retains template order",
+                "actual": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "expected": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "pass": true
+              },
+              {
+                "name": "ordinary late broad input respects later inline declaration",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "pass": true
+              },
+              {
+                "name": "ordinary late inline input respects later broad declaration",
+                "actual": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "pass": true
+              },
+              {
+                "name": "mixed static attribute and property follow template order",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "pass": false
+              },
+              {
+                "name": "complete-input directive preserves child identity",
+                "actual": true,
+                "expected": true,
+                "pass": true
+              },
+              {
+                "name": "complete-input directive preserves canonical input",
+                "actual": "16px",
+                "expected": "16px",
+                "pass": true
+              },
+              {
+                "name": "complete-input directive late broad input order",
+                "actual": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "expected": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "pass": true
+              },
+              {
+                "name": "complete-input directive late broad result",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "pass": true
+              },
+              {
+                "name": "complete-input directive removal",
+                "actual": true,
+                "expected": true,
+                "pass": true
+              },
+              {
+                "name": "complete-input directive late inline result",
+                "actual": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "pass": true
+              }
+            ],
+            "passed": 10,
+            "total": 11
+          }
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "errors": [],
+          "result": {
+            "done": true,
+            "results": [
+              {
+                "name": "ordinary bindings preserve child identity",
+                "actual": true,
+                "expected": true,
+                "pass": true
+              },
+              {
+                "name": "ordinary late broad input retains template order",
+                "actual": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "expected": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "pass": true
+              },
+              {
+                "name": "ordinary late broad input respects later inline declaration",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "pass": true
+              },
+              {
+                "name": "ordinary late inline input respects later broad declaration",
+                "actual": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "pass": true
+              },
+              {
+                "name": "mixed static attribute and property follow template order",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "pass": false
+              },
+              {
+                "name": "complete-input directive preserves child identity",
+                "actual": true,
+                "expected": true,
+                "pass": true
+              },
+              {
+                "name": "complete-input directive preserves canonical input",
+                "actual": "16px",
+                "expected": "16px",
+                "pass": true
+              },
+              {
+                "name": "complete-input directive late broad input order",
+                "actual": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "expected": [
+                  "padding",
+                  "paddingInline"
+                ],
+                "pass": true
+              },
+              {
+                "name": "complete-input directive late broad result",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "pass": true
+              },
+              {
+                "name": "complete-input directive removal",
+                "actual": true,
+                "expected": true,
+                "pass": true
+              },
+              {
+                "name": "complete-input directive late inline result",
+                "actual": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "pass": true
+              }
+            ],
+            "passed": 10,
+            "total": 11
+          }
+        }
+      ]
+    },
+    "findings": [
+      "Original capture candidate fails four of five ordinary-binding assertions in each engine when overlapping inputs are initially undefined or mix a literal attribute with a property binding.",
+      "Keeping first-seen positions even for undefined values fixes the three late-value assertions. This is a bounded alternative; its complete removal/other-path behaviour has not been retested.",
+      "The literal-attribute/property-binding case still fails: .paddingInline=${'8px'} before literal padding='16px' yields 8px inline instead of the declaration-order requirement's 16px.",
+      "A public ElementPart directive receiving the complete style input object passes all six targeted helper assertions per engine, retaining element identity and canonical input access. No private Lit API is used.",
+      "The helper is unapproved. Its prototype supports two already-defined string properties only; early definition, complete cleanup, responsive values and other paths remain to test.",
+      "Do not infer a complete declaration order from setter arrival or claim it is impossible through every API. If preserving the selected order requires a new Lit authoring helper, Peter decides that API trade-off."
+    ],
+    "nextDecision": {
+      "status": "Open; no user selection this turn",
+      "recommendation": "Evaluate a complete-input Lit helper as the companion to the React wrapper, retaining individual component properties and the already-selected declaration-order semantics.",
+      "alternative": "Revisit fixed overlap priority if avoiding a Lit authoring helper is more important; this would revise the prior declaration-order choice and must not be done silently.",
+      "otherNarrowerRoute": "Consistent ordinary property bindings plus preserved undefined positions fix the tested late-value cases, but do not solve mixed literal-attribute/binding order; any restriction requires explicit scope and further verification."
+    },
+    "resourcesStopped": true
+  },
+  "litHelperFollowup": {
+    "date": "2026-09-20",
+    "evidence": "lit-style-helper-review-2026-09-20.json",
+    "decision": "C-STYLE-03: Add Lit helper (Recommended)",
+    "note": "Original proposal and tests remain a dated snapshot. Helper inclusion is now selected. Global-registry lifecycle/compiled checks pass with explicit registry selection; full types/ownership/responsive/scoped-registry work remains."
+  }
+}

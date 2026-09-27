@@ -4,6 +4,7 @@
 import type { GeistMap } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "tabs",
   component: "Tabs",
   root: "data-geist-tabs",

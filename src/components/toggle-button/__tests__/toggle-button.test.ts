@@ -1,0 +1,22 @@
+import { afterEach, expect, test } from "bun:test";
+import "../../../all";
+import type { AcmeToggleButton } from "../toggle-button";
+
+afterEach(() => document.body.replaceChildren());
+test("user activation changes pressed once and programmatic assignment stays silent", async () => {
+  const button = document.createElement("acme-toggle-button") as AcmeToggleButton;
+  button.textContent = "Pin";
+  document.body.append(button);
+  await button.updateComplete;
+  const changes: boolean[] = [];
+  button.addEventListener("acme-change", (event) => changes.push((event as CustomEvent).detail.pressed));
+  button.click();
+  expect(button.pressed).toBe(true);
+  expect(button.shadowRoot!.querySelector("button")!.getAttribute("aria-pressed")).toBe("true");
+  expect(changes).toEqual([true]);
+  button.pressed = false;
+  await button.updateComplete;
+  expect(changes).toEqual([true]);
+  expect(button.shadowRoot!.querySelector("button")!.type).toBe("button");
+  expect("href" in button).toBe(false);
+});

@@ -1,0 +1,1074 @@
+{
+  "date": "2026-09-22",
+  "batch": "M12 Pin Input",
+  "status": "complete at assigned native and Lit boundary; closes M12",
+  "components": [
+    "acme-pin-input",
+    "acme-pin-input-field"
+  ],
+  "implementation": [
+    "one immutable canonical character array and one native joined submission",
+    "indexed field ownership through existing Lit context and TanStack state",
+    "shared naming, Field, native form and Group mechanisms",
+    "separate full-code replacement and partial paste; no-hole deletion",
+    "composition buffering and controlled-value echo normalization",
+    "user-only completion and explicit auto-submit",
+    "readonly navigation, masking, OTP authoring, reset and restoration",
+    "generated field styles and exact native field geometry"
+  ],
+  "checks": {
+    "strictPackageBuild": true,
+    "focusedStrictFiles": 893,
+    "focusedStrictErrors": 0,
+    "unitTests": 916,
+    "unitFailures": 0,
+    "site": {
+      "pages": 96,
+      "elements": 4262,
+      "undocumented": 0
+    },
+    "source": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "results": [
+            {
+              "name": "initial cells and joined native submission",
+              "ok": true
+            },
+            {
+              "name": "partial code fails native validity",
+              "ok": true
+            },
+            {
+              "name": "typing advances focus",
+              "ok": true
+            },
+            {
+              "name": "complete code satisfies native validation",
+              "ok": true
+            },
+            {
+              "name": "deletion shifts without holes",
+              "ok": true
+            },
+            {
+              "name": "native reset restores cells",
+              "ok": true
+            },
+            {
+              "name": "backspace from empty removes prior value",
+              "ok": true
+            },
+            {
+              "name": "completed-code focus navigation still works",
+              "ok": true
+            },
+            {
+              "name": "completion emits one commit and one completion",
+              "ok": true
+            },
+            {
+              "name": "blurOnComplete blurs only on the completion transition",
+              "ok": true
+            },
+            {
+              "name": "completion does not submit by default",
+              "ok": true
+            },
+            {
+              "name": "explicit autoSubmit uses the complete native value",
+              "ok": true
+            },
+            {
+              "name": "programmatic assignment and autocomplete restoration stay silent",
+              "ok": true
+            },
+            {
+              "name": "composition keeps the current field and defers committed characters",
+              "ok": true
+            },
+            {
+              "name": "composition completion advances once",
+              "ok": true
+            },
+            {
+              "name": "native reset cancels an unfinished composition",
+              "ok": true
+            },
+            {
+              "name": "readonly keeps navigation without editing",
+              "ok": true
+            },
+            {
+              "name": "masking and OTP configure native controls",
+              "ok": true
+            },
+            {
+              "name": "disabled fieldset excludes the one logical value",
+              "ok": true
+            },
+            {
+              "name": "count changes resize the value and native fields",
+              "ok": true
+            },
+            {
+              "name": "full-code paste replaces from the first field",
+              "ok": true
+            },
+            {
+              "name": "partial paste preserves the left prefix and clears the remaining suffix",
+              "ok": true
+            },
+            {
+              "name": "supplied fields replace the defaults and retain authored names",
+              "ok": true
+            },
+            {
+              "name": "provided fields support real Group attachment",
+              "ok": true
+            },
+            {
+              "name": "RTL navigation follows logical code order",
+              "ok": true
+            },
+            {
+              "name": "missing provided fields fail configuration validity and orphaned fields disable",
+              "ok": true
+            },
+            {
+              "name": "field ownership transfer edits only the new root",
+              "ok": true
+            },
+            {
+              "name": "autofocus waits for default field rendering",
+              "ok": true
+            },
+            {
+              "name": "shrinking a focused code retains one reachable field",
+              "ok": true
+            },
+            {
+              "name": "OTP hint preserves an alphanumeric keyboard policy",
+              "ok": true
+            },
+            {
+              "name": "Enter uses native form submission for a complete code",
+              "ok": true
+            },
+            {
+              "name": "late owner upgrade connects indexed fields",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "results": [
+            {
+              "name": "initial cells and joined native submission",
+              "ok": true
+            },
+            {
+              "name": "partial code fails native validity",
+              "ok": true
+            },
+            {
+              "name": "typing advances focus",
+              "ok": true
+            },
+            {
+              "name": "complete code satisfies native validation",
+              "ok": true
+            },
+            {
+              "name": "deletion shifts without holes",
+              "ok": true
+            },
+            {
+              "name": "native reset restores cells",
+              "ok": true
+            },
+            {
+              "name": "backspace from empty removes prior value",
+              "ok": true
+            },
+            {
+              "name": "completed-code focus navigation still works",
+              "ok": true
+            },
+            {
+              "name": "completion emits one commit and one completion",
+              "ok": true
+            },
+            {
+              "name": "blurOnComplete blurs only on the completion transition",
+              "ok": true
+            },
+            {
+              "name": "completion does not submit by default",
+              "ok": true
+            },
+            {
+              "name": "explicit autoSubmit uses the complete native value",
+              "ok": true
+            },
+            {
+              "name": "programmatic assignment and autocomplete restoration stay silent",
+              "ok": true
+            },
+            {
+              "name": "composition keeps the current field and defers committed characters",
+              "ok": true
+            },
+            {
+              "name": "composition completion advances once",
+              "ok": true
+            },
+            {
+              "name": "native reset cancels an unfinished composition",
+              "ok": true
+            },
+            {
+              "name": "readonly keeps navigation without editing",
+              "ok": true
+            },
+            {
+              "name": "masking and OTP configure native controls",
+              "ok": true
+            },
+            {
+              "name": "disabled fieldset excludes the one logical value",
+              "ok": true
+            },
+            {
+              "name": "count changes resize the value and native fields",
+              "ok": true
+            },
+            {
+              "name": "full-code paste replaces from the first field",
+              "ok": true
+            },
+            {
+              "name": "partial paste preserves the left prefix and clears the remaining suffix",
+              "ok": true
+            },
+            {
+              "name": "supplied fields replace the defaults and retain authored names",
+              "ok": true
+            },
+            {
+              "name": "provided fields support real Group attachment",
+              "ok": true
+            },
+            {
+              "name": "RTL navigation follows logical code order",
+              "ok": true
+            },
+            {
+              "name": "missing provided fields fail configuration validity and orphaned fields disable",
+              "ok": true
+            },
+            {
+              "name": "field ownership transfer edits only the new root",
+              "ok": true
+            },
+            {
+              "name": "autofocus waits for default field rendering",
+              "ok": true
+            },
+            {
+              "name": "shrinking a focused code retains one reachable field",
+              "ok": true
+            },
+            {
+              "name": "OTP hint preserves an alphanumeric keyboard policy",
+              "ok": true
+            },
+            {
+              "name": "Enter uses native form submission for a complete code",
+              "ok": true
+            },
+            {
+              "name": "late owner upgrade connects indexed fields",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "results": [
+            {
+              "name": "initial cells and joined native submission",
+              "ok": true
+            },
+            {
+              "name": "partial code fails native validity",
+              "ok": true
+            },
+            {
+              "name": "typing advances focus",
+              "ok": true
+            },
+            {
+              "name": "complete code satisfies native validation",
+              "ok": true
+            },
+            {
+              "name": "deletion shifts without holes",
+              "ok": true
+            },
+            {
+              "name": "native reset restores cells",
+              "ok": true
+            },
+            {
+              "name": "backspace from empty removes prior value",
+              "ok": true
+            },
+            {
+              "name": "completed-code focus navigation still works",
+              "ok": true
+            },
+            {
+              "name": "completion emits one commit and one completion",
+              "ok": true
+            },
+            {
+              "name": "blurOnComplete blurs only on the completion transition",
+              "ok": true
+            },
+            {
+              "name": "completion does not submit by default",
+              "ok": true
+            },
+            {
+              "name": "explicit autoSubmit uses the complete native value",
+              "ok": true
+            },
+            {
+              "name": "programmatic assignment and autocomplete restoration stay silent",
+              "ok": true
+            },
+            {
+              "name": "composition keeps the current field and defers committed characters",
+              "ok": true
+            },
+            {
+              "name": "composition completion advances once",
+              "ok": true
+            },
+            {
+              "name": "native reset cancels an unfinished composition",
+              "ok": true
+            },
+            {
+              "name": "readonly keeps navigation without editing",
+              "ok": true
+            },
+            {
+              "name": "masking and OTP configure native controls",
+              "ok": true
+            },
+            {
+              "name": "disabled fieldset excludes the one logical value",
+              "ok": true
+            },
+            {
+              "name": "count changes resize the value and native fields",
+              "ok": true
+            },
+            {
+              "name": "full-code paste replaces from the first field",
+              "ok": true
+            },
+            {
+              "name": "partial paste preserves the left prefix and clears the remaining suffix",
+              "ok": true
+            },
+            {
+              "name": "supplied fields replace the defaults and retain authored names",
+              "ok": true
+            },
+            {
+              "name": "provided fields support real Group attachment",
+              "ok": true
+            },
+            {
+              "name": "RTL navigation follows logical code order",
+              "ok": true
+            },
+            {
+              "name": "missing provided fields fail configuration validity and orphaned fields disable",
+              "ok": true
+            },
+            {
+              "name": "field ownership transfer edits only the new root",
+              "ok": true
+            },
+            {
+              "name": "autofocus waits for default field rendering",
+              "ok": true
+            },
+            {
+              "name": "shrinking a focused code retains one reachable field",
+              "ok": true
+            },
+            {
+              "name": "OTP hint preserves an alphanumeric keyboard policy",
+              "ok": true
+            },
+            {
+              "name": "Enter uses native form submission for a complete code",
+              "ok": true
+            },
+            {
+              "name": "late owner upgrade connects indexed fields",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "compiled": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "results": [
+            {
+              "name": "initial cells and joined native submission",
+              "ok": true
+            },
+            {
+              "name": "partial code fails native validity",
+              "ok": true
+            },
+            {
+              "name": "typing advances focus",
+              "ok": true
+            },
+            {
+              "name": "complete code satisfies native validation",
+              "ok": true
+            },
+            {
+              "name": "deletion shifts without holes",
+              "ok": true
+            },
+            {
+              "name": "native reset restores cells",
+              "ok": true
+            },
+            {
+              "name": "backspace from empty removes prior value",
+              "ok": true
+            },
+            {
+              "name": "completed-code focus navigation still works",
+              "ok": true
+            },
+            {
+              "name": "completion emits one commit and one completion",
+              "ok": true
+            },
+            {
+              "name": "blurOnComplete blurs only on the completion transition",
+              "ok": true
+            },
+            {
+              "name": "completion does not submit by default",
+              "ok": true
+            },
+            {
+              "name": "explicit autoSubmit uses the complete native value",
+              "ok": true
+            },
+            {
+              "name": "programmatic assignment and autocomplete restoration stay silent",
+              "ok": true
+            },
+            {
+              "name": "composition keeps the current field and defers committed characters",
+              "ok": true
+            },
+            {
+              "name": "composition completion advances once",
+              "ok": true
+            },
+            {
+              "name": "native reset cancels an unfinished composition",
+              "ok": true
+            },
+            {
+              "name": "readonly keeps navigation without editing",
+              "ok": true
+            },
+            {
+              "name": "masking and OTP configure native controls",
+              "ok": true
+            },
+            {
+              "name": "disabled fieldset excludes the one logical value",
+              "ok": true
+            },
+            {
+              "name": "count changes resize the value and native fields",
+              "ok": true
+            },
+            {
+              "name": "full-code paste replaces from the first field",
+              "ok": true
+            },
+            {
+              "name": "partial paste preserves the left prefix and clears the remaining suffix",
+              "ok": true
+            },
+            {
+              "name": "supplied fields replace the defaults and retain authored names",
+              "ok": true
+            },
+            {
+              "name": "provided fields support real Group attachment",
+              "ok": true
+            },
+            {
+              "name": "RTL navigation follows logical code order",
+              "ok": true
+            },
+            {
+              "name": "missing provided fields fail configuration validity and orphaned fields disable",
+              "ok": true
+            },
+            {
+              "name": "field ownership transfer edits only the new root",
+              "ok": true
+            },
+            {
+              "name": "autofocus waits for default field rendering",
+              "ok": true
+            },
+            {
+              "name": "shrinking a focused code retains one reachable field",
+              "ok": true
+            },
+            {
+              "name": "OTP hint preserves an alphanumeric keyboard policy",
+              "ok": true
+            },
+            {
+              "name": "Enter uses native form submission for a complete code",
+              "ok": true
+            },
+            {
+              "name": "late owner upgrade connects indexed fields",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "results": [
+            {
+              "name": "initial cells and joined native submission",
+              "ok": true
+            },
+            {
+              "name": "partial code fails native validity",
+              "ok": true
+            },
+            {
+              "name": "typing advances focus",
+              "ok": true
+            },
+            {
+              "name": "complete code satisfies native validation",
+              "ok": true
+            },
+            {
+              "name": "deletion shifts without holes",
+              "ok": true
+            },
+            {
+              "name": "native reset restores cells",
+              "ok": true
+            },
+            {
+              "name": "backspace from empty removes prior value",
+              "ok": true
+            },
+            {
+              "name": "completed-code focus navigation still works",
+              "ok": true
+            },
+            {
+              "name": "completion emits one commit and one completion",
+              "ok": true
+            },
+            {
+              "name": "blurOnComplete blurs only on the completion transition",
+              "ok": true
+            },
+            {
+              "name": "completion does not submit by default",
+              "ok": true
+            },
+            {
+              "name": "explicit autoSubmit uses the complete native value",
+              "ok": true
+            },
+            {
+              "name": "programmatic assignment and autocomplete restoration stay silent",
+              "ok": true
+            },
+            {
+              "name": "composition keeps the current field and defers committed characters",
+              "ok": true
+            },
+            {
+              "name": "composition completion advances once",
+              "ok": true
+            },
+            {
+              "name": "native reset cancels an unfinished composition",
+              "ok": true
+            },
+            {
+              "name": "readonly keeps navigation without editing",
+              "ok": true
+            },
+            {
+              "name": "masking and OTP configure native controls",
+              "ok": true
+            },
+            {
+              "name": "disabled fieldset excludes the one logical value",
+              "ok": true
+            },
+            {
+              "name": "count changes resize the value and native fields",
+              "ok": true
+            },
+            {
+              "name": "full-code paste replaces from the first field",
+              "ok": true
+            },
+            {
+              "name": "partial paste preserves the left prefix and clears the remaining suffix",
+              "ok": true
+            },
+            {
+              "name": "supplied fields replace the defaults and retain authored names",
+              "ok": true
+            },
+            {
+              "name": "provided fields support real Group attachment",
+              "ok": true
+            },
+            {
+              "name": "RTL navigation follows logical code order",
+              "ok": true
+            },
+            {
+              "name": "missing provided fields fail configuration validity and orphaned fields disable",
+              "ok": true
+            },
+            {
+              "name": "field ownership transfer edits only the new root",
+              "ok": true
+            },
+            {
+              "name": "autofocus waits for default field rendering",
+              "ok": true
+            },
+            {
+              "name": "shrinking a focused code retains one reachable field",
+              "ok": true
+            },
+            {
+              "name": "OTP hint preserves an alphanumeric keyboard policy",
+              "ok": true
+            },
+            {
+              "name": "Enter uses native form submission for a complete code",
+              "ok": true
+            },
+            {
+              "name": "late owner upgrade connects indexed fields",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "results": [
+            {
+              "name": "initial cells and joined native submission",
+              "ok": true
+            },
+            {
+              "name": "partial code fails native validity",
+              "ok": true
+            },
+            {
+              "name": "typing advances focus",
+              "ok": true
+            },
+            {
+              "name": "complete code satisfies native validation",
+              "ok": true
+            },
+            {
+              "name": "deletion shifts without holes",
+              "ok": true
+            },
+            {
+              "name": "native reset restores cells",
+              "ok": true
+            },
+            {
+              "name": "backspace from empty removes prior value",
+              "ok": true
+            },
+            {
+              "name": "completed-code focus navigation still works",
+              "ok": true
+            },
+            {
+              "name": "completion emits one commit and one completion",
+              "ok": true
+            },
+            {
+              "name": "blurOnComplete blurs only on the completion transition",
+              "ok": true
+            },
+            {
+              "name": "completion does not submit by default",
+              "ok": true
+            },
+            {
+              "name": "explicit autoSubmit uses the complete native value",
+              "ok": true
+            },
+            {
+              "name": "programmatic assignment and autocomplete restoration stay silent",
+              "ok": true
+            },
+            {
+              "name": "composition keeps the current field and defers committed characters",
+              "ok": true
+            },
+            {
+              "name": "composition completion advances once",
+              "ok": true
+            },
+            {
+              "name": "native reset cancels an unfinished composition",
+              "ok": true
+            },
+            {
+              "name": "readonly keeps navigation without editing",
+              "ok": true
+            },
+            {
+              "name": "masking and OTP configure native controls",
+              "ok": true
+            },
+            {
+              "name": "disabled fieldset excludes the one logical value",
+              "ok": true
+            },
+            {
+              "name": "count changes resize the value and native fields",
+              "ok": true
+            },
+            {
+              "name": "full-code paste replaces from the first field",
+              "ok": true
+            },
+            {
+              "name": "partial paste preserves the left prefix and clears the remaining suffix",
+              "ok": true
+            },
+            {
+              "name": "supplied fields replace the defaults and retain authored names",
+              "ok": true
+            },
+            {
+              "name": "provided fields support real Group attachment",
+              "ok": true
+            },
+            {
+              "name": "RTL navigation follows logical code order",
+              "ok": true
+            },
+            {
+              "name": "missing provided fields fail configuration validity and orphaned fields disable",
+              "ok": true
+            },
+            {
+              "name": "field ownership transfer edits only the new root",
+              "ok": true
+            },
+            {
+              "name": "autofocus waits for default field rendering",
+              "ok": true
+            },
+            {
+              "name": "shrinking a focused code retains one reachable field",
+              "ok": true
+            },
+            {
+              "name": "OTP hint preserves an alphanumeric keyboard policy",
+              "ok": true
+            },
+            {
+              "name": "Enter uses native form submission for a complete code",
+              "ok": true
+            },
+            {
+              "name": "late owner upgrade connects indexed fields",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "managed": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "results": [
+            {
+              "name": "array binding receives the complete code once",
+              "ok": true
+            },
+            {
+              "name": "native submission has one joined value",
+              "ok": true
+            },
+            {
+              "name": "managed submission uses the same array state",
+              "ok": true
+            },
+            {
+              "name": "managed reset clears without another completion",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "results": [
+            {
+              "name": "array binding receives the complete code once",
+              "ok": true
+            },
+            {
+              "name": "native submission has one joined value",
+              "ok": true
+            },
+            {
+              "name": "managed submission uses the same array state",
+              "ok": true
+            },
+            {
+              "name": "managed reset clears without another completion",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "results": [
+            {
+              "name": "array binding receives the complete code once",
+              "ok": true
+            },
+            {
+              "name": "native submission has one joined value",
+              "ok": true
+            },
+            {
+              "name": "managed submission uses the same array state",
+              "ok": true
+            },
+            {
+              "name": "managed reset clears without another completion",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "managedCompiled": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "results": [
+            {
+              "name": "array binding receives the complete code once",
+              "ok": true
+            },
+            {
+              "name": "native submission has one joined value",
+              "ok": true
+            },
+            {
+              "name": "managed submission uses the same array state",
+              "ok": true
+            },
+            {
+              "name": "managed reset clears without another completion",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "results": [
+            {
+              "name": "array binding receives the complete code once",
+              "ok": true
+            },
+            {
+              "name": "native submission has one joined value",
+              "ok": true
+            },
+            {
+              "name": "managed submission uses the same array state",
+              "ok": true
+            },
+            {
+              "name": "managed reset clears without another completion",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "results": [
+            {
+              "name": "array binding receives the complete code once",
+              "ok": true
+            },
+            {
+              "name": "native submission has one joined value",
+              "ok": true
+            },
+            {
+              "name": "managed submission uses the same array state",
+              "ok": true
+            },
+            {
+              "name": "managed reset clears without another completion",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "liveDocs": [
+      {
+        "engine": "chromium",
+        "results": [
+          {
+            "name": "live native code is joined correctly",
+            "ok": true
+          },
+          {
+            "name": "live native example submits",
+            "ok": true
+          },
+          {
+            "name": "live reset clears every field",
+            "ok": true
+          },
+          {
+            "name": "live completion notification appears",
+            "ok": true
+          },
+          {
+            "name": "live field geometry follows house dimensions",
+            "ok": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "results": [
+          {
+            "name": "live native code is joined correctly",
+            "ok": true
+          },
+          {
+            "name": "live native example submits",
+            "ok": true
+          },
+          {
+            "name": "live reset clears every field",
+            "ok": true
+          },
+          {
+            "name": "live completion notification appears",
+            "ok": true
+          },
+          {
+            "name": "live field geometry follows house dimensions",
+            "ok": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "results": [
+          {
+            "name": "live native code is joined correctly",
+            "ok": true
+          },
+          {
+            "name": "live native example submits",
+            "ok": true
+          },
+          {
+            "name": "live reset clears every field",
+            "ok": true
+          },
+          {
+            "name": "live completion notification appears",
+            "ok": true
+          },
+          {
+            "name": "live field geometry follows house dimensions",
+            "ok": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "manifestSharedReferenceRegression": true
+  },
+  "browserFacts": [
+    "Firefox composition end required saving the native final text before clearing the canonical draft buffer.",
+    "Firefox synthetic ClipboardEvent uses its own clipboardData; fixtures populate that actual object.",
+    "Firefox preserves one-time-code as an attribute while the password input autocomplete getter returns an empty string, also seen on a plain native control.",
+    "Readonly Backspace is consumed to prevent the observed WebKit history navigation.",
+    "Pin late-owner initialization schedules one bounded follow-up Lit update; no ongoing render loop was observed."
+  ],
+  "sourceRecord": "m12-port-sources-2026-09-22.json",
+  "reproductions": [
+    "/tmp/acme-m12-pin",
+    "/tmp/acme-m12-pin-compiled",
+    "/tmp/acme-m12-pin-managed-compiled"
+  ],
+  "limits": [
+    "Actual OS IME, real clipboard/autofill/history, speech input and actual Safari remain M26 platform gates; synthetic composition and restore callbacks are not equivalent.",
+    "Generated React wrappers remain M22.",
+    "Independent review workers remain unavailable; local review and native browser comparisons were used."
+  ]
+}

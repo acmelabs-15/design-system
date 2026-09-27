@@ -1,0 +1,63 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const commandMenuStructureCss = css`:host {
+  min-inline-size: 0;
+  display: block;
+}
+
+acme-dialog::part(surface) {
+  max-block-size: calc(85dvh - 16px);
+  inline-size: min(640px, 100vw - 32px);
+  margin-block: max(16px, 15dvh) auto;
+}
+
+acme-dialog::part(header) {
+  padding: var(--acme-spacing-3);
+  border-block-end: 1px solid var(--ds-gray-alpha-400);
+}
+
+acme-dialog::part(body) {
+  --_acme-inset-inline-start: 0px;
+  --_acme-inset-inline-end: 0px;
+  padding: 0;
+}
+
+acme-dialog::part(footer) {
+  padding: 0;
+}
+
+.search {
+  min-inline-size: 0;
+}
+
+acme-input {
+  inline-size: 100%;
+}
+
+acme-scroll-area {
+  block-size: min(var(--_command-list-height, 48px),55dvh);
+}
+
+[part="list"] {
+  padding: var(--acme-spacing-2);
+  min-inline-size: 0;
+}
+
+[part="empty"], [part="loading"] {
+  padding: var(--acme-spacing-5);
+  color: var(--ds-gray-900);
+  text-align: center;
+  font-size: .875rem;
+}
+
+.sr {
+  clip-path: inset(50%);
+  white-space: nowrap;
+  block-size: 1px;
+  inline-size: 1px;
+  margin: -1px;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+}
+`;

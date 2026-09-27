@@ -1,26 +1,40 @@
-import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { html } from "lit";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { iconTileCss } from "./icon-tile.styles";
+import { atomState } from "../../shared/atom-state";
+import { optionalString } from "../../shared/attributes";
+import { ResponsiveStyleRenderer } from "../../shared/style-renderer";
+import { responsiveStyleDelivery } from "../../generated/responsive-styles";
+import { iconTileCss } from "../../generated/components/icon-tile/icon-tile.styles";
+import { iconTileStructureCss } from "../../generated/components/icon-tile/icon-tile-structure.styles";
 
-/**
- * Icon tile: the bordered 8px-radius tile around an empty state's icon (the `icon` slot of
- * `acme-empty-state`). A centred flex box with 10px padding, the gray-alpha-400 border and gray-900
- * text; the slotted icon sets its own size (32px in an empty state). `size` fixes the tile's width
- * and height (a number is pixels).
+/** A presentation container around author-owned icon content.
+ * @slot - The icon content, which retains its own accessible meaning.
+ * @csspart root - The tile surface.
  */
-@customElement("acme-icon-tile")
 export class AcmeIconTile extends AcmeElement {
-  static styles = [sharedCss, iconTileCss];
-  /** Width and height of the tile: a number in pixels, or any CSS length. Unset, the tile wraps its icon. */
-  @property() size = "";
-
+  static styles = [sharedCss, iconTileCss, iconTileStructureCss];
+  @atomState() @property({ noAccessor: true, converter: optionalString }) size?: string;
+  private readonly dimensions = new ResponsiveStyleRenderer(this, responsiveStyleDelivery, {
+    root: () => (this.renderRoot?.nodeType === 11 ? (this.renderRoot as ShadowRoot) : undefined),
+    state: () => ({
+      inputs:
+        this.size === undefined
+          ? []
+          : [
+              ["width", this.size],
+              ["height", this.size],
+            ],
+    }),
+  });
+  adoptedCallback() {
+    super.adoptedCallback();
+    this.dimensions.adopted();
+  }
   render() {
-    const size = this.size && (/^\d+(\.\d+)?$/.test(this.size) ? `${this.size}px` : this.size);
-    return html`<div class="tile" aria-hidden="true" style=${size ? `width:${size};height:${size}` : nothing} part="tile"><slot></slot></div>`;
+    return html`<div class="tile" part="root"><slot></slot></div>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-icon-tile": AcmeIconTile;

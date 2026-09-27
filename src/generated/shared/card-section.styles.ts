@@ -1,0 +1,29 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const cardSectionCss = css`:host {
+  min-inline-size: 0;
+  display: block;
+}
+
+[part~="root"] {
+  padding: var(--_acme-card-padding, var(--acme-spacing-5));
+  --_acme-inset-inline-start: var(--_acme-card-padding, var(--acme-spacing-5));
+  --_acme-inset-inline-end: var(--_acme-card-padding, var(--acme-spacing-5));
+  --_acme-inset-block-start: var(--_acme-card-padding, var(--acme-spacing-5));
+  --_acme-inset-block-end: var(--_acme-card-padding, var(--acme-spacing-5));
+  min-inline-size: 0;
+}
+
+[part~="header"] {
+  gap: var(--acme-spacing-2);
+  flex-direction: column;
+  display: flex;
+}
+
+[part~="footer"] {
+  align-items: center;
+  gap: var(--acme-spacing-2);
+  flex-wrap: wrap;
+  display: flex;
+}
+`;

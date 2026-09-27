@@ -1,0 +1,1473 @@
+{
+  "date": "2026-09-22",
+  "batch": "M11",
+  "status": "complete at assigned native and Lit boundary",
+  "implemented": [
+    "Input/Search/Password Input/Textarea canonical native string state",
+    "raw reset defaults with native current-value sanitation",
+    "native constraints, Field association, Group participation and all four affix positions",
+    "Icon Button clear/reveal actions and localized built-in labels",
+    "native implicit form submission and engine-specific hard-wrap serialization",
+    "Textarea content sizing and resize limits",
+    "typed TanStack Form field-store binding with cleanup, nested and array fields",
+    "strict TypeScript package build"
+  ],
+  "removed": [
+    "Clearable Input class, registration, export, styles and page",
+    "control-owned label/error/rounded/width/readonly property aliases and old clear events"
+  ],
+  "checks": {
+    "unitTests": 896,
+    "unitFailures": 0,
+    "strictImportedSourceGraphFiles": 875,
+    "strictImportedSourceGraphErrors": 0,
+    "strictFullPackageBuild": true,
+    "site": {
+      "pages": 94,
+      "elements": 4257,
+      "undocumented": 0
+    },
+    "source": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "email keeps raw default and native sanitized current",
+              "ok": true
+            },
+            {
+              "name": "immediate native submission",
+              "ok": true
+            },
+            {
+              "name": "native reset",
+              "ok": true
+            },
+            {
+              "name": "required validity",
+              "ok": true
+            },
+            {
+              "name": "native readonly validation",
+              "ok": true
+            },
+            {
+              "name": "Field names actual input",
+              "ok": true
+            },
+            {
+              "name": "search fixed native type and default clear",
+              "ok": true
+            },
+            {
+              "name": "password native type",
+              "ok": true
+            },
+            {
+              "name": "reveal retains selection and value",
+              "ok": true
+            },
+            {
+              "name": "textarea native rows and value",
+              "ok": true
+            },
+            {
+              "name": "clear emits exactly one live and committed sequence",
+              "ok": true
+            },
+            {
+              "name": "readonly cannot clear",
+              "ok": true
+            },
+            {
+              "name": "size small",
+              "ok": true
+            },
+            {
+              "name": "size medium",
+              "ok": true
+            },
+            {
+              "name": "size large",
+              "ok": true
+            },
+            {
+              "name": "auto resize grows and shrinks",
+              "ok": true
+            },
+            {
+              "name": "platform restoration updates state and native projection",
+              "ok": true
+            },
+            {
+              "name": "Field disables native interaction and submission",
+              "ok": true
+            },
+            {
+              "name": "Field release preserves own disabled and value",
+              "ok": true
+            },
+            {
+              "name": "pattern validation is native and immediate",
+              "ok": true
+            },
+            {
+              "name": "Input participates in actual Group attachment",
+              "ok": true
+            },
+            {
+              "name": "all four affixes are visible together",
+              "ok": true
+            },
+            {
+              "name": "native editing publishes separate live and committed notifications",
+              "ok": true
+            },
+            {
+              "name": "Enter submits the surrounding native form",
+              "ok": true
+            },
+            {
+              "name": "actual reveal action preserves selection and emits only visibility",
+              "ok": true
+            },
+            {
+              "name": "actual clear action updates native value and retains input focus",
+              "ok": true
+            },
+            {
+              "name": "hard wrap serialization matches the actual native textarea",
+              "ok": true
+            },
+            {
+              "name": "visible field boundary contrast: light",
+              "ok": true,
+              "border": "rgb(143, 143, 143)",
+              "background": "rgb(255, 255, 255)",
+              "ratio": 3.2339802043350576
+            },
+            {
+              "name": "visible field boundary contrast: dark",
+              "ok": true,
+              "border": "rgb(143, 143, 143)",
+              "background": "rgb(10, 10, 10)",
+              "ratio": 6.121913079117171
+            },
+            {
+              "name": "native implicit submission comparison: submitter",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: disabled-first",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: no-button-one",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: no-button-two",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: invalid",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: cancel-key",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: cancel-click",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: house-button",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: external-button",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "email keeps raw default and native sanitized current",
+              "ok": true
+            },
+            {
+              "name": "immediate native submission",
+              "ok": true
+            },
+            {
+              "name": "native reset",
+              "ok": true
+            },
+            {
+              "name": "required validity",
+              "ok": true
+            },
+            {
+              "name": "native readonly validation",
+              "ok": true
+            },
+            {
+              "name": "Field names actual input",
+              "ok": true
+            },
+            {
+              "name": "search fixed native type and default clear",
+              "ok": true
+            },
+            {
+              "name": "password native type",
+              "ok": true
+            },
+            {
+              "name": "reveal retains selection and value",
+              "ok": true
+            },
+            {
+              "name": "textarea native rows and value",
+              "ok": true
+            },
+            {
+              "name": "clear emits exactly one live and committed sequence",
+              "ok": true
+            },
+            {
+              "name": "readonly cannot clear",
+              "ok": true
+            },
+            {
+              "name": "size small",
+              "ok": true
+            },
+            {
+              "name": "size medium",
+              "ok": true
+            },
+            {
+              "name": "size large",
+              "ok": true
+            },
+            {
+              "name": "auto resize grows and shrinks",
+              "ok": true
+            },
+            {
+              "name": "platform restoration updates state and native projection",
+              "ok": true
+            },
+            {
+              "name": "Field disables native interaction and submission",
+              "ok": true
+            },
+            {
+              "name": "Field release preserves own disabled and value",
+              "ok": true
+            },
+            {
+              "name": "pattern validation is native and immediate",
+              "ok": true
+            },
+            {
+              "name": "Input participates in actual Group attachment",
+              "ok": true
+            },
+            {
+              "name": "all four affixes are visible together",
+              "ok": true
+            },
+            {
+              "name": "native editing publishes separate live and committed notifications",
+              "ok": true
+            },
+            {
+              "name": "Enter submits the surrounding native form",
+              "ok": true
+            },
+            {
+              "name": "actual reveal action preserves selection and emits only visibility",
+              "ok": true
+            },
+            {
+              "name": "actual clear action updates native value and retains input focus",
+              "ok": true
+            },
+            {
+              "name": "hard wrap serialization matches the actual native textarea",
+              "ok": true
+            },
+            {
+              "name": "visible field boundary contrast: light",
+              "ok": true,
+              "border": "rgb(143, 143, 143)",
+              "background": "rgb(255, 255, 255)",
+              "ratio": 3.2339802043350576
+            },
+            {
+              "name": "visible field boundary contrast: dark",
+              "ok": true,
+              "border": "rgb(143, 143, 143)",
+              "background": "rgb(10, 10, 10)",
+              "ratio": 6.121913079117171
+            },
+            {
+              "name": "native implicit submission comparison: submitter",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: disabled-first",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: no-button-one",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: no-button-two",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: invalid",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: cancel-key",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: cancel-click",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: house-button",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: external-button",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "email keeps raw default and native sanitized current",
+              "ok": true
+            },
+            {
+              "name": "immediate native submission",
+              "ok": true
+            },
+            {
+              "name": "native reset",
+              "ok": true
+            },
+            {
+              "name": "required validity",
+              "ok": true
+            },
+            {
+              "name": "native readonly validation",
+              "ok": true
+            },
+            {
+              "name": "Field names actual input",
+              "ok": true
+            },
+            {
+              "name": "search fixed native type and default clear",
+              "ok": true
+            },
+            {
+              "name": "password native type",
+              "ok": true
+            },
+            {
+              "name": "reveal retains selection and value",
+              "ok": true
+            },
+            {
+              "name": "textarea native rows and value",
+              "ok": true
+            },
+            {
+              "name": "clear emits exactly one live and committed sequence",
+              "ok": true
+            },
+            {
+              "name": "readonly cannot clear",
+              "ok": true
+            },
+            {
+              "name": "size small",
+              "ok": true
+            },
+            {
+              "name": "size medium",
+              "ok": true
+            },
+            {
+              "name": "size large",
+              "ok": true
+            },
+            {
+              "name": "auto resize grows and shrinks",
+              "ok": true
+            },
+            {
+              "name": "platform restoration updates state and native projection",
+              "ok": true
+            },
+            {
+              "name": "Field disables native interaction and submission",
+              "ok": true
+            },
+            {
+              "name": "Field release preserves own disabled and value",
+              "ok": true
+            },
+            {
+              "name": "pattern validation is native and immediate",
+              "ok": true
+            },
+            {
+              "name": "Input participates in actual Group attachment",
+              "ok": true
+            },
+            {
+              "name": "all four affixes are visible together",
+              "ok": true
+            },
+            {
+              "name": "native editing publishes separate live and committed notifications",
+              "ok": true
+            },
+            {
+              "name": "Enter submits the surrounding native form",
+              "ok": true
+            },
+            {
+              "name": "actual reveal action preserves selection and emits only visibility",
+              "ok": true
+            },
+            {
+              "name": "actual clear action updates native value and retains input focus",
+              "ok": true
+            },
+            {
+              "name": "hard wrap serialization matches the actual native textarea",
+              "ok": true
+            },
+            {
+              "name": "visible field boundary contrast: light",
+              "ok": true,
+              "border": "rgb(143, 143, 143)",
+              "background": "rgb(255, 255, 255)",
+              "ratio": 3.2339802043350576
+            },
+            {
+              "name": "visible field boundary contrast: dark",
+              "ok": true,
+              "border": "rgb(143, 143, 143)",
+              "background": "rgb(10, 10, 10)",
+              "ratio": 6.121913079117171
+            },
+            {
+              "name": "native implicit submission comparison: submitter",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: disabled-first",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: no-button-one",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: no-button-two",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: invalid",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: cancel-key",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: cancel-click",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: house-button",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: external-button",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "compiled": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "email keeps raw default and native sanitized current",
+              "ok": true
+            },
+            {
+              "name": "immediate native submission",
+              "ok": true
+            },
+            {
+              "name": "native reset",
+              "ok": true
+            },
+            {
+              "name": "required validity",
+              "ok": true
+            },
+            {
+              "name": "native readonly validation",
+              "ok": true
+            },
+            {
+              "name": "Field names actual input",
+              "ok": true
+            },
+            {
+              "name": "search fixed native type and default clear",
+              "ok": true
+            },
+            {
+              "name": "password native type",
+              "ok": true
+            },
+            {
+              "name": "reveal retains selection and value",
+              "ok": true
+            },
+            {
+              "name": "textarea native rows and value",
+              "ok": true
+            },
+            {
+              "name": "clear emits exactly one live and committed sequence",
+              "ok": true
+            },
+            {
+              "name": "readonly cannot clear",
+              "ok": true
+            },
+            {
+              "name": "size small",
+              "ok": true
+            },
+            {
+              "name": "size medium",
+              "ok": true
+            },
+            {
+              "name": "size large",
+              "ok": true
+            },
+            {
+              "name": "auto resize grows and shrinks",
+              "ok": true
+            },
+            {
+              "name": "platform restoration updates state and native projection",
+              "ok": true
+            },
+            {
+              "name": "Field disables native interaction and submission",
+              "ok": true
+            },
+            {
+              "name": "Field release preserves own disabled and value",
+              "ok": true
+            },
+            {
+              "name": "pattern validation is native and immediate",
+              "ok": true
+            },
+            {
+              "name": "Input participates in actual Group attachment",
+              "ok": true
+            },
+            {
+              "name": "all four affixes are visible together",
+              "ok": true
+            },
+            {
+              "name": "native editing publishes separate live and committed notifications",
+              "ok": true
+            },
+            {
+              "name": "Enter submits the surrounding native form",
+              "ok": true
+            },
+            {
+              "name": "actual reveal action preserves selection and emits only visibility",
+              "ok": true
+            },
+            {
+              "name": "actual clear action updates native value and retains input focus",
+              "ok": true
+            },
+            {
+              "name": "hard wrap serialization matches the actual native textarea",
+              "ok": true
+            },
+            {
+              "name": "visible field boundary contrast: light",
+              "ok": true,
+              "border": "rgb(143, 143, 143)",
+              "background": "rgb(255, 255, 255)",
+              "ratio": 3.2339802043350576
+            },
+            {
+              "name": "visible field boundary contrast: dark",
+              "ok": true,
+              "border": "rgb(143, 143, 143)",
+              "background": "rgb(10, 10, 10)",
+              "ratio": 6.121913079117171
+            },
+            {
+              "name": "native implicit submission comparison: submitter",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: disabled-first",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: no-button-one",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: no-button-two",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: invalid",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: cancel-key",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: cancel-click",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: house-button",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: external-button",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "email keeps raw default and native sanitized current",
+              "ok": true
+            },
+            {
+              "name": "immediate native submission",
+              "ok": true
+            },
+            {
+              "name": "native reset",
+              "ok": true
+            },
+            {
+              "name": "required validity",
+              "ok": true
+            },
+            {
+              "name": "native readonly validation",
+              "ok": true
+            },
+            {
+              "name": "Field names actual input",
+              "ok": true
+            },
+            {
+              "name": "search fixed native type and default clear",
+              "ok": true
+            },
+            {
+              "name": "password native type",
+              "ok": true
+            },
+            {
+              "name": "reveal retains selection and value",
+              "ok": true
+            },
+            {
+              "name": "textarea native rows and value",
+              "ok": true
+            },
+            {
+              "name": "clear emits exactly one live and committed sequence",
+              "ok": true
+            },
+            {
+              "name": "readonly cannot clear",
+              "ok": true
+            },
+            {
+              "name": "size small",
+              "ok": true
+            },
+            {
+              "name": "size medium",
+              "ok": true
+            },
+            {
+              "name": "size large",
+              "ok": true
+            },
+            {
+              "name": "auto resize grows and shrinks",
+              "ok": true
+            },
+            {
+              "name": "platform restoration updates state and native projection",
+              "ok": true
+            },
+            {
+              "name": "Field disables native interaction and submission",
+              "ok": true
+            },
+            {
+              "name": "Field release preserves own disabled and value",
+              "ok": true
+            },
+            {
+              "name": "pattern validation is native and immediate",
+              "ok": true
+            },
+            {
+              "name": "Input participates in actual Group attachment",
+              "ok": true
+            },
+            {
+              "name": "all four affixes are visible together",
+              "ok": true
+            },
+            {
+              "name": "native editing publishes separate live and committed notifications",
+              "ok": true
+            },
+            {
+              "name": "Enter submits the surrounding native form",
+              "ok": true
+            },
+            {
+              "name": "actual reveal action preserves selection and emits only visibility",
+              "ok": true
+            },
+            {
+              "name": "actual clear action updates native value and retains input focus",
+              "ok": true
+            },
+            {
+              "name": "hard wrap serialization matches the actual native textarea",
+              "ok": true
+            },
+            {
+              "name": "visible field boundary contrast: light",
+              "ok": true,
+              "border": "rgb(143, 143, 143)",
+              "background": "rgb(255, 255, 255)",
+              "ratio": 3.2339802043350576
+            },
+            {
+              "name": "visible field boundary contrast: dark",
+              "ok": true,
+              "border": "rgb(143, 143, 143)",
+              "background": "rgb(10, 10, 10)",
+              "ratio": 6.121913079117171
+            },
+            {
+              "name": "native implicit submission comparison: submitter",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: disabled-first",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: no-button-one",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: no-button-two",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: invalid",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: cancel-key",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: cancel-click",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: house-button",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: external-button",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "email keeps raw default and native sanitized current",
+              "ok": true
+            },
+            {
+              "name": "immediate native submission",
+              "ok": true
+            },
+            {
+              "name": "native reset",
+              "ok": true
+            },
+            {
+              "name": "required validity",
+              "ok": true
+            },
+            {
+              "name": "native readonly validation",
+              "ok": true
+            },
+            {
+              "name": "Field names actual input",
+              "ok": true
+            },
+            {
+              "name": "search fixed native type and default clear",
+              "ok": true
+            },
+            {
+              "name": "password native type",
+              "ok": true
+            },
+            {
+              "name": "reveal retains selection and value",
+              "ok": true
+            },
+            {
+              "name": "textarea native rows and value",
+              "ok": true
+            },
+            {
+              "name": "clear emits exactly one live and committed sequence",
+              "ok": true
+            },
+            {
+              "name": "readonly cannot clear",
+              "ok": true
+            },
+            {
+              "name": "size small",
+              "ok": true
+            },
+            {
+              "name": "size medium",
+              "ok": true
+            },
+            {
+              "name": "size large",
+              "ok": true
+            },
+            {
+              "name": "auto resize grows and shrinks",
+              "ok": true
+            },
+            {
+              "name": "platform restoration updates state and native projection",
+              "ok": true
+            },
+            {
+              "name": "Field disables native interaction and submission",
+              "ok": true
+            },
+            {
+              "name": "Field release preserves own disabled and value",
+              "ok": true
+            },
+            {
+              "name": "pattern validation is native and immediate",
+              "ok": true
+            },
+            {
+              "name": "Input participates in actual Group attachment",
+              "ok": true
+            },
+            {
+              "name": "all four affixes are visible together",
+              "ok": true
+            },
+            {
+              "name": "native editing publishes separate live and committed notifications",
+              "ok": true
+            },
+            {
+              "name": "Enter submits the surrounding native form",
+              "ok": true
+            },
+            {
+              "name": "actual reveal action preserves selection and emits only visibility",
+              "ok": true
+            },
+            {
+              "name": "actual clear action updates native value and retains input focus",
+              "ok": true
+            },
+            {
+              "name": "hard wrap serialization matches the actual native textarea",
+              "ok": true
+            },
+            {
+              "name": "visible field boundary contrast: light",
+              "ok": true,
+              "border": "rgb(143, 143, 143)",
+              "background": "rgb(255, 255, 255)",
+              "ratio": 3.2339802043350576
+            },
+            {
+              "name": "visible field boundary contrast: dark",
+              "ok": true,
+              "border": "rgb(143, 143, 143)",
+              "background": "rgb(10, 10, 10)",
+              "ratio": 6.121913079117171
+            },
+            {
+              "name": "native implicit submission comparison: submitter",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: disabled-first",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: no-button-one",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: no-button-two",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: invalid",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: cancel-key",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: cancel-click",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: house-button",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: external-button",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "managed": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "nested field editing reaches actual TanStack state",
+              "ok": true
+            },
+            {
+              "name": "blur exposes Field error and control invalid presentation",
+              "ok": true
+            },
+            {
+              "name": "array path and native FormData agree",
+              "ok": true
+            },
+            {
+              "name": "boolean binding uses checked",
+              "ok": true
+            },
+            {
+              "name": "commit does not repeat unchanged validation",
+              "ok": true
+            },
+            {
+              "name": "managed submit sees canonical nested values",
+              "ok": true
+            },
+            {
+              "name": "managed reset updates native controls and clears presentation",
+              "ok": true
+            },
+            {
+              "name": "store updates reach the control before host rendering",
+              "ok": true
+            },
+            {
+              "name": "disconnect releases adapter subscription",
+              "ok": true
+            },
+            {
+              "name": "reconnect restores current field state",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "nested field editing reaches actual TanStack state",
+              "ok": true
+            },
+            {
+              "name": "blur exposes Field error and control invalid presentation",
+              "ok": true
+            },
+            {
+              "name": "array path and native FormData agree",
+              "ok": true
+            },
+            {
+              "name": "boolean binding uses checked",
+              "ok": true
+            },
+            {
+              "name": "commit does not repeat unchanged validation",
+              "ok": true
+            },
+            {
+              "name": "managed submit sees canonical nested values",
+              "ok": true
+            },
+            {
+              "name": "managed reset updates native controls and clears presentation",
+              "ok": true
+            },
+            {
+              "name": "store updates reach the control before host rendering",
+              "ok": true
+            },
+            {
+              "name": "disconnect releases adapter subscription",
+              "ok": true
+            },
+            {
+              "name": "reconnect restores current field state",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "nested field editing reaches actual TanStack state",
+              "ok": true
+            },
+            {
+              "name": "blur exposes Field error and control invalid presentation",
+              "ok": true
+            },
+            {
+              "name": "array path and native FormData agree",
+              "ok": true
+            },
+            {
+              "name": "boolean binding uses checked",
+              "ok": true
+            },
+            {
+              "name": "commit does not repeat unchanged validation",
+              "ok": true
+            },
+            {
+              "name": "managed submit sees canonical nested values",
+              "ok": true
+            },
+            {
+              "name": "managed reset updates native controls and clears presentation",
+              "ok": true
+            },
+            {
+              "name": "store updates reach the control before host rendering",
+              "ok": true
+            },
+            {
+              "name": "disconnect releases adapter subscription",
+              "ok": true
+            },
+            {
+              "name": "reconnect restores current field state",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "managedCompiled": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "nested field editing reaches actual TanStack state",
+              "ok": true
+            },
+            {
+              "name": "blur exposes Field error and control invalid presentation",
+              "ok": true
+            },
+            {
+              "name": "array path and native FormData agree",
+              "ok": true
+            },
+            {
+              "name": "boolean binding uses checked",
+              "ok": true
+            },
+            {
+              "name": "commit does not repeat unchanged validation",
+              "ok": true
+            },
+            {
+              "name": "managed submit sees canonical nested values",
+              "ok": true
+            },
+            {
+              "name": "managed reset updates native controls and clears presentation",
+              "ok": true
+            },
+            {
+              "name": "store updates reach the control before host rendering",
+              "ok": true
+            },
+            {
+              "name": "disconnect releases adapter subscription",
+              "ok": true
+            },
+            {
+              "name": "reconnect restores current field state",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "nested field editing reaches actual TanStack state",
+              "ok": true
+            },
+            {
+              "name": "blur exposes Field error and control invalid presentation",
+              "ok": true
+            },
+            {
+              "name": "array path and native FormData agree",
+              "ok": true
+            },
+            {
+              "name": "boolean binding uses checked",
+              "ok": true
+            },
+            {
+              "name": "commit does not repeat unchanged validation",
+              "ok": true
+            },
+            {
+              "name": "managed submit sees canonical nested values",
+              "ok": true
+            },
+            {
+              "name": "managed reset updates native controls and clears presentation",
+              "ok": true
+            },
+            {
+              "name": "store updates reach the control before host rendering",
+              "ok": true
+            },
+            {
+              "name": "disconnect releases adapter subscription",
+              "ok": true
+            },
+            {
+              "name": "reconnect restores current field state",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "nested field editing reaches actual TanStack state",
+              "ok": true
+            },
+            {
+              "name": "blur exposes Field error and control invalid presentation",
+              "ok": true
+            },
+            {
+              "name": "array path and native FormData agree",
+              "ok": true
+            },
+            {
+              "name": "boolean binding uses checked",
+              "ok": true
+            },
+            {
+              "name": "commit does not repeat unchanged validation",
+              "ok": true
+            },
+            {
+              "name": "managed submit sees canonical nested values",
+              "ok": true
+            },
+            {
+              "name": "managed reset updates native controls and clears presentation",
+              "ok": true
+            },
+            {
+              "name": "store updates reach the control before host rendering",
+              "ok": true
+            },
+            {
+              "name": "disconnect releases adapter subscription",
+              "ok": true
+            },
+            {
+              "name": "reconnect restores current field state",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "liveDocs": [
+      {
+        "engine": "chromium",
+        "results": [
+          {
+            "name": "documented native form submits through Enter",
+            "ok": true
+          },
+          {
+            "name": "documented clear button clears",
+            "ok": true
+          },
+          {
+            "name": "documented password reveal works",
+            "ok": true
+          },
+          {
+            "name": "documented auto resize respects maximum",
+            "ok": true
+          },
+          {
+            "name": "documented auto resize shrinks to minimum",
+            "ok": true
+          },
+          {
+            "name": "managed example shows error through Field",
+            "ok": true
+          },
+          {
+            "name": "managed example submits its form",
+            "ok": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "results": [
+          {
+            "name": "documented native form submits through Enter",
+            "ok": true
+          },
+          {
+            "name": "documented clear button clears",
+            "ok": true
+          },
+          {
+            "name": "documented password reveal works",
+            "ok": true
+          },
+          {
+            "name": "documented auto resize respects maximum",
+            "ok": true
+          },
+          {
+            "name": "documented auto resize shrinks to minimum",
+            "ok": true
+          },
+          {
+            "name": "managed example shows error through Field",
+            "ok": true
+          },
+          {
+            "name": "managed example submits its form",
+            "ok": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "results": [
+          {
+            "name": "documented native form submits through Enter",
+            "ok": true
+          },
+          {
+            "name": "documented clear button clears",
+            "ok": true
+          },
+          {
+            "name": "documented password reveal works",
+            "ok": true
+          },
+          {
+            "name": "documented auto resize respects maximum",
+            "ok": true
+          },
+          {
+            "name": "documented auto resize shrinks to minimum",
+            "ok": true
+          },
+          {
+            "name": "managed example shows error through Field",
+            "ok": true
+          },
+          {
+            "name": "managed example submits its form",
+            "ok": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "m10TypeOnly": [
+      {
+        "path": "src/components/radio-group/radio-group.ts",
+        "unchangedJavaScript": true
+      },
+      {
+        "path": "src/components/segmented-control/segmented-control.ts",
+        "unchangedJavaScript": true
+      },
+      {
+        "path": "src/components/switch/switch.ts",
+        "unchangedJavaScript": true
+      },
+      {
+        "path": "src/components/tabs/tabs.ts",
+        "unchangedJavaScript": true
+      },
+      {
+        "path": "src/components/theme-switcher/theme-switcher.ts",
+        "unchangedJavaScript": true
+      },
+      {
+        "path": "src/shared/single-selection-group.ts",
+        "unchangedJavaScript": true
+      }
+    ],
+    "chromiumNativeAccessibility": {
+      "names": [
+        "Email",
+        "Project name"
+      ],
+      "verified": true,
+      "toolLimit": "Playwright role-name calculation did not resolve cross-root element-reference names; native Accessibility tree verified separately."
+    }
+  },
+  "findings": [
+    "Firefox Tab probe needed a next focus target",
+    "Private native forms bridge implicit submit after normal key cancellation; default, disabled, external and house submitters agree with native controls",
+    "Native hard wrap differs across engines and remains delegated to each native textarea",
+    "Getter return annotations prevent undefined-accepting setters from widening public reads",
+    "A 32px action plus field borders enlarged small Input; tiny action preserves the 32px field",
+    "Documentation uses actual acme-h-stack/acme-v-stack tags"
+  ],
+  "sources": [
+    "https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#implicit-submission",
+    "installed @tanstack/lit-form 1.25.5 and @tanstack/form-core 1.33.5",
+    "approved inputs-forms inventory and prior Field/affix/native-form evidence"
+  ],
+  "reproductions": [
+    "/tmp/acme-m11-text",
+    "/tmp/acme-m11-text-compiled",
+    "/tmp/acme-m11-managed-compiled"
+  ],
+  "limits": [
+    "Actual OS IME, password-manager autofill, browser history restoration, speech input and actual Safari remain M26 platform acceptance; synthetic restoration is not equivalent.",
+    "Final generated React wrapper reconciliation remains M22.",
+    "Slider retains its current behavior with text/decimal-mode entry until its M13 Number Input composition.",
+    "Independent review workers remain unavailable; local implementation review and independent native control comparisons were used."
+  ]
+}

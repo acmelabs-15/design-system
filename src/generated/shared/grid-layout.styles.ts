@@ -1,0 +1,27 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const gridLayoutCss = css`:host {
+  grid: none;
+  place-content: normal;
+  place-items: normal;
+  gap: 0;
+  display: block;
+}
+
+[part~="root"] {
+  grid-template-columns: inherit;
+  grid-template-rows: inherit;
+  grid-template-areas: inherit;
+  grid-auto-columns: inherit;
+  grid-auto-rows: inherit;
+  grid-auto-flow: inherit;
+  align-items: inherit;
+  justify-items: inherit;
+  align-content: inherit;
+  justify-content: inherit;
+  gap: inherit;
+  row-gap: inherit;
+  column-gap: inherit;
+  display: grid;
+}
+`;

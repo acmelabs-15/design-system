@@ -1,0 +1,2281 @@
+{
+  "date": "2026-09-20",
+  "phase": "M03",
+  "status": "complete;approved by independent reviews",
+  "scope": [
+    "Class-only root and component entries",
+    "Generated selective/full registration entries with owned dependencies",
+    "Shared browser CDN graph",
+    "Connection-owned CSS registration and document effects",
+    "Runtime reconnect correction in existing TanStack helpers",
+    "Production package staging",
+    "Private React/Devtools/MCP workspace skeletons"
+  ],
+  "components": {
+    "count": 149,
+    "ownedEdges": 56,
+    "records": [
+      {
+        "name": "appbar",
+        "tag": "acme-appbar",
+        "className": "AcmeAppbar",
+        "file": "src/components/appbar/appbar.ts",
+        "dependencies": [
+          "theme-switcher"
+        ]
+      },
+      {
+        "name": "avatar",
+        "tag": "acme-avatar",
+        "className": "AcmeAvatar",
+        "file": "src/components/avatar/avatar.ts",
+        "dependencies": []
+      },
+      {
+        "name": "avatar-group",
+        "tag": "acme-avatar-group",
+        "className": "AcmeAvatarGroup",
+        "file": "src/components/avatar-group/avatar-group.ts",
+        "dependencies": [
+          "avatar"
+        ]
+      },
+      {
+        "name": "badge",
+        "tag": "acme-badge",
+        "className": "AcmeBadge",
+        "file": "src/components/badge/badge.ts",
+        "dependencies": []
+      },
+      {
+        "name": "banner",
+        "tag": "acme-banner",
+        "className": "AcmeBanner",
+        "file": "src/components/banner/banner.ts",
+        "dependencies": [
+          "button"
+        ]
+      },
+      {
+        "name": "bar-row",
+        "tag": "acme-bar-row",
+        "className": "AcmeBarRow",
+        "file": "src/components/bar-row/bar-row.ts",
+        "dependencies": []
+      },
+      {
+        "name": "bar-rows",
+        "tag": "acme-bar-rows",
+        "className": "AcmeBarRows",
+        "file": "src/components/bar-rows/bar-rows.ts",
+        "dependencies": []
+      },
+      {
+        "name": "book",
+        "tag": "acme-book",
+        "className": "AcmeBook",
+        "file": "src/components/book/book.ts",
+        "dependencies": []
+      },
+      {
+        "name": "breadcrumb",
+        "tag": "acme-breadcrumb",
+        "className": "AcmeBreadcrumb",
+        "file": "src/components/breadcrumb/breadcrumb.ts",
+        "dependencies": [
+          "tooltip"
+        ]
+      },
+      {
+        "name": "breadcrumbs",
+        "tag": "acme-breadcrumbs",
+        "className": "AcmeBreadcrumbs",
+        "file": "src/components/breadcrumbs/breadcrumbs.ts",
+        "dependencies": []
+      },
+      {
+        "name": "browser",
+        "tag": "acme-browser",
+        "className": "AcmeBrowser",
+        "file": "src/components/browser/browser.ts",
+        "dependencies": [
+          "button"
+        ]
+      },
+      {
+        "name": "button",
+        "tag": "acme-button",
+        "className": "AcmeButton",
+        "file": "src/components/button/button.ts",
+        "dependencies": [
+          "spinner"
+        ]
+      },
+      {
+        "name": "button-group",
+        "tag": "acme-button-group",
+        "className": "AcmeButtonGroup",
+        "file": "src/components/button-group/button-group.ts",
+        "dependencies": []
+      },
+      {
+        "name": "calendar",
+        "tag": "acme-calendar",
+        "className": "AcmeCalendar",
+        "file": "src/components/calendar/calendar.ts",
+        "dependencies": []
+      },
+      {
+        "name": "card",
+        "tag": "acme-card",
+        "className": "AcmeCard",
+        "file": "src/components/card/card.ts",
+        "dependencies": []
+      },
+      {
+        "name": "chart",
+        "tag": "acme-chart",
+        "className": "AcmeChart",
+        "file": "src/components/chart/chart.ts",
+        "dependencies": []
+      },
+      {
+        "name": "check",
+        "tag": "acme-check",
+        "className": "AcmeCheck",
+        "file": "src/components/check/check.ts",
+        "dependencies": []
+      },
+      {
+        "name": "checkbox",
+        "tag": "acme-checkbox",
+        "className": "AcmeCheckbox",
+        "file": "src/components/checkbox/checkbox.ts",
+        "dependencies": []
+      },
+      {
+        "name": "chip",
+        "tag": "acme-chip",
+        "className": "AcmeChip",
+        "file": "src/components/chip/chip.ts",
+        "dependencies": []
+      },
+      {
+        "name": "choicebox",
+        "tag": "acme-choicebox",
+        "className": "AcmeChoicebox",
+        "file": "src/components/choicebox/choicebox.ts",
+        "dependencies": []
+      },
+      {
+        "name": "choicebox-item",
+        "tag": "acme-choicebox-item",
+        "className": "AcmeChoiceboxItem",
+        "file": "src/components/choicebox-item/choicebox-item.ts",
+        "dependencies": [
+          "checkbox",
+          "radio",
+          "tooltip"
+        ]
+      },
+      {
+        "name": "clearable-input",
+        "tag": "acme-clearable-input",
+        "className": "AcmeClearableInput",
+        "file": "src/components/clearable-input/clearable-input.ts",
+        "dependencies": [
+          "input",
+          "kbd"
+        ]
+      },
+      {
+        "name": "code",
+        "tag": "acme-code",
+        "className": "AcmeCode",
+        "file": "src/components/code/code.ts",
+        "dependencies": []
+      },
+      {
+        "name": "code-block",
+        "tag": "acme-code-block",
+        "className": "AcmeCodeBlock",
+        "file": "src/components/code-block/code-block.ts",
+        "dependencies": [
+          "button",
+          "copy-button",
+          "select",
+          "split-button",
+          "split-button-item",
+          "switch",
+          "switch-control"
+        ]
+      },
+      {
+        "name": "collapse",
+        "tag": "acme-collapse",
+        "className": "AcmeCollapse",
+        "file": "src/components/collapse/collapse.ts",
+        "dependencies": []
+      },
+      {
+        "name": "collapse-group",
+        "tag": "acme-collapse-group",
+        "className": "AcmeCollapseGroup",
+        "file": "src/components/collapse-group/collapse-group.ts",
+        "dependencies": []
+      },
+      {
+        "name": "combobox",
+        "tag": "acme-combobox",
+        "className": "AcmeCombobox",
+        "file": "src/components/combobox/combobox.ts",
+        "dependencies": [
+          "spinner"
+        ]
+      },
+      {
+        "name": "combobox-option",
+        "tag": "acme-combobox-option",
+        "className": "AcmeComboboxOption",
+        "file": "src/components/combobox-option/combobox-option.ts",
+        "dependencies": []
+      },
+      {
+        "name": "command-divider",
+        "tag": "acme-command-divider",
+        "className": "AcmeCommandDivider",
+        "file": "src/components/command-divider/command-divider.ts",
+        "dependencies": []
+      },
+      {
+        "name": "command-group",
+        "tag": "acme-command-group",
+        "className": "AcmeCommandGroup",
+        "file": "src/components/command-group/command-group.ts",
+        "dependencies": []
+      },
+      {
+        "name": "command-item",
+        "tag": "acme-command-item",
+        "className": "AcmeCommandItem",
+        "file": "src/components/command-item/command-item.ts",
+        "dependencies": []
+      },
+      {
+        "name": "command-menu",
+        "tag": "acme-command-menu",
+        "className": "AcmeCommandMenu",
+        "file": "src/components/command-menu/command-menu.ts",
+        "dependencies": [
+          "breadcrumb",
+          "breadcrumbs"
+        ]
+      },
+      {
+        "name": "context-card",
+        "tag": "acme-context-card",
+        "className": "AcmeContextCard",
+        "file": "src/components/context-card/context-card.ts",
+        "dependencies": []
+      },
+      {
+        "name": "context-menu",
+        "tag": "acme-context-menu",
+        "className": "AcmeContextMenu",
+        "file": "src/components/context-menu/context-menu.ts",
+        "dependencies": [
+          "menu",
+          "menu-item"
+        ]
+      },
+      {
+        "name": "copy-button",
+        "tag": "acme-copy-button",
+        "className": "AcmeCopyButton",
+        "file": "src/components/copy-button/copy-button.ts",
+        "dependencies": [
+          "button"
+        ]
+      },
+      {
+        "name": "description",
+        "tag": "acme-description",
+        "className": "AcmeDescription",
+        "file": "src/components/description/description.ts",
+        "dependencies": [
+          "tooltip"
+        ]
+      },
+      {
+        "name": "destructive-modal",
+        "tag": "acme-destructive-modal",
+        "className": "AcmeDestructiveModal",
+        "file": "src/components/destructive-modal/destructive-modal.ts",
+        "dependencies": [
+          "button",
+          "error",
+          "input",
+          "modal",
+          "note"
+        ]
+      },
+      {
+        "name": "disabled-wall",
+        "tag": "acme-disabled-wall",
+        "className": "AcmeDisabledWall",
+        "file": "src/components/disabled-wall/disabled-wall.ts",
+        "dependencies": []
+      },
+      {
+        "name": "dots-menu",
+        "tag": "acme-dots-menu",
+        "className": "AcmeDotsMenu",
+        "file": "src/components/dots-menu/dots-menu.ts",
+        "dependencies": [
+          "menu",
+          "menu-button"
+        ]
+      },
+      {
+        "name": "drawer",
+        "tag": "acme-drawer",
+        "className": "AcmeDrawer",
+        "file": "src/components/drawer/drawer.ts",
+        "dependencies": []
+      },
+      {
+        "name": "empty-state",
+        "tag": "acme-empty-state",
+        "className": "AcmeEmptyState",
+        "file": "src/components/empty-state/empty-state.ts",
+        "dependencies": []
+      },
+      {
+        "name": "entity",
+        "tag": "acme-entity",
+        "className": "AcmeEntity",
+        "file": "src/components/entity/entity.ts",
+        "dependencies": []
+      },
+      {
+        "name": "entity-content",
+        "tag": "acme-entity-content",
+        "className": "AcmeEntityContent",
+        "file": "src/components/entity-content/entity-content.ts",
+        "dependencies": []
+      },
+      {
+        "name": "entity-list",
+        "tag": "acme-entity-list",
+        "className": "AcmeEntityList",
+        "file": "src/components/entity-list/entity-list.ts",
+        "dependencies": []
+      },
+      {
+        "name": "error",
+        "tag": "acme-error",
+        "className": "AcmeError",
+        "file": "src/components/error/error.ts",
+        "dependencies": []
+      },
+      {
+        "name": "error-card",
+        "tag": "acme-error-card",
+        "className": "AcmeErrorCard",
+        "file": "src/components/error-card/error-card.ts",
+        "dependencies": []
+      },
+      {
+        "name": "feedback",
+        "tag": "acme-feedback",
+        "className": "AcmeFeedback",
+        "file": "src/components/feedback/feedback.ts",
+        "dependencies": [
+          "button",
+          "input",
+          "select",
+          "textarea"
+        ]
+      },
+      {
+        "name": "fieldset",
+        "tag": "acme-fieldset",
+        "className": "AcmeFieldset",
+        "file": "src/components/fieldset/fieldset.ts",
+        "dependencies": [
+          "disabled-wall"
+        ]
+      },
+      {
+        "name": "file",
+        "tag": "acme-file",
+        "className": "AcmeFile",
+        "file": "src/components/file/file.ts",
+        "dependencies": []
+      },
+      {
+        "name": "file-tree",
+        "tag": "acme-file-tree",
+        "className": "AcmeFileTree",
+        "file": "src/components/file-tree/file-tree.ts",
+        "dependencies": []
+      },
+      {
+        "name": "filter",
+        "tag": "acme-filter",
+        "className": "AcmeFilter",
+        "file": "src/components/filter/filter.ts",
+        "dependencies": []
+      },
+      {
+        "name": "filters",
+        "tag": "acme-filters",
+        "className": "AcmeFilters",
+        "file": "src/components/filters/filters.ts",
+        "dependencies": []
+      },
+      {
+        "name": "fold",
+        "tag": "acme-fold",
+        "className": "AcmeFold",
+        "file": "src/components/fold/fold.ts",
+        "dependencies": []
+      },
+      {
+        "name": "folder",
+        "tag": "acme-folder",
+        "className": "AcmeFolder",
+        "file": "src/components/folder/folder.ts",
+        "dependencies": []
+      },
+      {
+        "name": "gauge",
+        "tag": "acme-gauge",
+        "className": "AcmeGauge",
+        "file": "src/components/gauge/gauge.ts",
+        "dependencies": []
+      },
+      {
+        "name": "grid",
+        "tag": "acme-grid",
+        "className": "AcmeGrid",
+        "file": "src/components/grid/grid.ts",
+        "dependencies": []
+      },
+      {
+        "name": "grid-cell",
+        "tag": "acme-grid-cell",
+        "className": "AcmeGridCell",
+        "file": "src/components/grid-cell/grid-cell.ts",
+        "dependencies": []
+      },
+      {
+        "name": "grid-cross",
+        "tag": "acme-grid-cross",
+        "className": "AcmeGridCross",
+        "file": "src/components/grid-cross/grid-cross.ts",
+        "dependencies": []
+      },
+      {
+        "name": "grid-page",
+        "tag": "acme-grid-page",
+        "className": "AcmeGridPage",
+        "file": "src/components/grid-page/grid-page.ts",
+        "dependencies": []
+      },
+      {
+        "name": "grid-system",
+        "tag": "acme-grid-system",
+        "className": "AcmeGridSystem",
+        "file": "src/components/grid-system/grid-system.ts",
+        "dependencies": []
+      },
+      {
+        "name": "icon-tile",
+        "tag": "acme-icon-tile",
+        "className": "AcmeIconTile",
+        "file": "src/components/icon-tile/icon-tile.ts",
+        "dependencies": []
+      },
+      {
+        "name": "input",
+        "tag": "acme-input",
+        "className": "AcmeInput",
+        "file": "src/components/input/input.ts",
+        "dependencies": [
+          "error"
+        ]
+      },
+      {
+        "name": "item",
+        "tag": "acme-item",
+        "className": "AcmeItem",
+        "file": "src/components/item/item.ts",
+        "dependencies": []
+      },
+      {
+        "name": "items",
+        "tag": "acme-items",
+        "className": "AcmeItems",
+        "file": "src/components/items/items.ts",
+        "dependencies": []
+      },
+      {
+        "name": "json-view",
+        "tag": "acme-json-view",
+        "className": "AcmeJsonView",
+        "file": "src/components/json-view/json-view.ts",
+        "dependencies": []
+      },
+      {
+        "name": "kbd",
+        "tag": "acme-kbd",
+        "className": "AcmeKbd",
+        "file": "src/components/kbd/kbd.ts",
+        "dependencies": []
+      },
+      {
+        "name": "kv",
+        "tag": "acme-kv",
+        "className": "AcmeKv",
+        "file": "src/components/kv/kv.ts",
+        "dependencies": []
+      },
+      {
+        "name": "label",
+        "tag": "acme-label",
+        "className": "AcmeLabel",
+        "file": "src/components/label/label.ts",
+        "dependencies": []
+      },
+      {
+        "name": "legend",
+        "tag": "acme-legend",
+        "className": "AcmeLegend",
+        "file": "src/components/legend/legend.ts",
+        "dependencies": []
+      },
+      {
+        "name": "legend-item",
+        "tag": "acme-legend-item",
+        "className": "AcmeLegendItem",
+        "file": "src/components/legend-item/legend-item.ts",
+        "dependencies": []
+      },
+      {
+        "name": "link-card",
+        "tag": "acme-link-card",
+        "className": "AcmeLinkCard",
+        "file": "src/components/link-card/link-card.ts",
+        "dependencies": []
+      },
+      {
+        "name": "load-more",
+        "tag": "acme-load-more",
+        "className": "AcmeLoadMore",
+        "file": "src/components/load-more/load-more.ts",
+        "dependencies": [
+          "button"
+        ]
+      },
+      {
+        "name": "loading-dots",
+        "tag": "acme-loading-dots",
+        "className": "AcmeLoadingDots",
+        "file": "src/components/loading-dots/loading-dots.ts",
+        "dependencies": []
+      },
+      {
+        "name": "logs",
+        "tag": "acme-logs",
+        "className": "AcmeLogs",
+        "file": "src/components/logs/logs.ts",
+        "dependencies": []
+      },
+      {
+        "name": "markdown",
+        "tag": "acme-markdown",
+        "className": "AcmeMarkdown",
+        "file": "src/components/markdown/markdown.ts",
+        "dependencies": []
+      },
+      {
+        "name": "menu",
+        "tag": "acme-menu",
+        "className": "AcmeMenu",
+        "file": "src/components/menu/menu.ts",
+        "dependencies": []
+      },
+      {
+        "name": "menu-button",
+        "tag": "acme-menu-button",
+        "className": "AcmeMenuButton",
+        "file": "src/components/menu-button/menu-button.ts",
+        "dependencies": [
+          "spinner"
+        ]
+      },
+      {
+        "name": "menu-divider",
+        "tag": "acme-menu-divider",
+        "className": "AcmeMenuDivider",
+        "file": "src/components/menu-divider/menu-divider.ts",
+        "dependencies": []
+      },
+      {
+        "name": "menu-item",
+        "tag": "acme-menu-item",
+        "className": "AcmeMenuItem",
+        "file": "src/components/menu-item/menu-item.ts",
+        "dependencies": []
+      },
+      {
+        "name": "menu-section",
+        "tag": "acme-menu-section",
+        "className": "AcmeMenuSection",
+        "file": "src/components/menu-section/menu-section.ts",
+        "dependencies": []
+      },
+      {
+        "name": "metric",
+        "tag": "acme-metric",
+        "className": "AcmeMetric",
+        "file": "src/components/metric/metric.ts",
+        "dependencies": []
+      },
+      {
+        "name": "metric-list",
+        "tag": "acme-metric-list",
+        "className": "AcmeMetricList",
+        "file": "src/components/metric-list/metric-list.ts",
+        "dependencies": []
+      },
+      {
+        "name": "middle-truncate",
+        "tag": "acme-middle-truncate",
+        "className": "AcmeMiddleTruncate",
+        "file": "src/components/middle-truncate/middle-truncate.ts",
+        "dependencies": []
+      },
+      {
+        "name": "modal",
+        "tag": "acme-modal",
+        "className": "AcmeModal",
+        "file": "src/components/modal/modal.ts",
+        "dependencies": []
+      },
+      {
+        "name": "modal-inset",
+        "tag": "acme-modal-inset",
+        "className": "AcmeModalInset",
+        "file": "src/components/modal-inset/modal-inset.ts",
+        "dependencies": []
+      },
+      {
+        "name": "multi-select",
+        "tag": "acme-multi-select",
+        "className": "AcmeMultiSelect",
+        "file": "src/components/multi-select/multi-select.ts",
+        "dependencies": []
+      },
+      {
+        "name": "multi-select-row",
+        "tag": "acme-multi-select-row",
+        "className": "AcmeMultiSelectRow",
+        "file": "src/components/multi-select-row/multi-select-row.ts",
+        "dependencies": [
+          "checkbox"
+        ]
+      },
+      {
+        "name": "note",
+        "tag": "acme-note",
+        "className": "AcmeNote",
+        "file": "src/components/note/note.ts",
+        "dependencies": []
+      },
+      {
+        "name": "page-head",
+        "tag": "acme-page-head",
+        "className": "AcmePageHead",
+        "file": "src/components/page-head/page-head.ts",
+        "dependencies": []
+      },
+      {
+        "name": "pagination",
+        "tag": "acme-pagination",
+        "className": "AcmePagination",
+        "file": "src/components/pagination/pagination.ts",
+        "dependencies": []
+      },
+      {
+        "name": "panel",
+        "tag": "acme-panel",
+        "className": "AcmePanel",
+        "file": "src/components/panel/panel.ts",
+        "dependencies": []
+      },
+      {
+        "name": "panel-foot",
+        "tag": "acme-panel-foot",
+        "className": "AcmePanelFoot",
+        "file": "src/components/panel-foot/panel-foot.ts",
+        "dependencies": []
+      },
+      {
+        "name": "panel-head",
+        "tag": "acme-panel-head",
+        "className": "AcmePanelHead",
+        "file": "src/components/panel-head/panel-head.ts",
+        "dependencies": []
+      },
+      {
+        "name": "panels",
+        "tag": "acme-panels",
+        "className": "AcmePanels",
+        "file": "src/components/panels/panels.ts",
+        "dependencies": []
+      },
+      {
+        "name": "phone",
+        "tag": "acme-phone",
+        "className": "AcmePhone",
+        "file": "src/components/phone/phone.ts",
+        "dependencies": []
+      },
+      {
+        "name": "pill",
+        "tag": "acme-pill",
+        "className": "AcmePill",
+        "file": "src/components/pill/pill.ts",
+        "dependencies": []
+      },
+      {
+        "name": "progress",
+        "tag": "acme-progress",
+        "className": "AcmeProgress",
+        "file": "src/components/progress/progress.ts",
+        "dependencies": [
+          "tooltip"
+        ]
+      },
+      {
+        "name": "project-banner",
+        "tag": "acme-project-banner",
+        "className": "AcmeProjectBanner",
+        "file": "src/components/project-banner/project-banner.ts",
+        "dependencies": []
+      },
+      {
+        "name": "radio",
+        "tag": "acme-radio",
+        "className": "AcmeRadio",
+        "file": "src/components/radio/radio.ts",
+        "dependencies": []
+      },
+      {
+        "name": "radio-group",
+        "tag": "acme-radio-group",
+        "className": "AcmeRadioGroup",
+        "file": "src/components/radio-group/radio-group.ts",
+        "dependencies": []
+      },
+      {
+        "name": "relative-time",
+        "tag": "acme-relative-time",
+        "className": "AcmeRelativeTime",
+        "file": "src/components/relative-time/relative-time.ts",
+        "dependencies": [
+          "context-card"
+        ]
+      },
+      {
+        "name": "ricon",
+        "tag": "acme-ricon",
+        "className": "AcmeRicon",
+        "file": "src/components/ricon/ricon.ts",
+        "dependencies": []
+      },
+      {
+        "name": "scroller",
+        "tag": "acme-scroller",
+        "className": "AcmeScroller",
+        "file": "src/components/scroller/scroller.ts",
+        "dependencies": [
+          "button"
+        ]
+      },
+      {
+        "name": "search",
+        "tag": "acme-search",
+        "className": "AcmeSearch",
+        "file": "src/components/search/search.ts",
+        "dependencies": [
+          "input",
+          "kbd",
+          "spinner"
+        ]
+      },
+      {
+        "name": "select",
+        "tag": "acme-select",
+        "className": "AcmeSelect",
+        "file": "src/components/select/select.ts",
+        "dependencies": [
+          "error"
+        ]
+      },
+      {
+        "name": "separator",
+        "tag": "acme-separator",
+        "className": "AcmeSeparator",
+        "file": "src/components/separator/separator.ts",
+        "dependencies": []
+      },
+      {
+        "name": "setting-row",
+        "tag": "acme-setting-row",
+        "className": "AcmeSettingRow",
+        "file": "src/components/setting-row/setting-row.ts",
+        "dependencies": []
+      },
+      {
+        "name": "setting-rows",
+        "tag": "acme-setting-rows",
+        "className": "AcmeSettingRows",
+        "file": "src/components/setting-rows/setting-rows.ts",
+        "dependencies": []
+      },
+      {
+        "name": "sheet",
+        "tag": "acme-sheet",
+        "className": "AcmeSheet",
+        "file": "src/components/sheet/sheet.ts",
+        "dependencies": []
+      },
+      {
+        "name": "shell",
+        "tag": "acme-shell",
+        "className": "AcmeShell",
+        "file": "src/components/shell/shell.ts",
+        "dependencies": []
+      },
+      {
+        "name": "show-more",
+        "tag": "acme-show-more",
+        "className": "AcmeShowMore",
+        "file": "src/components/show-more/show-more.ts",
+        "dependencies": [
+          "button"
+        ]
+      },
+      {
+        "name": "side-nav",
+        "tag": "acme-side-nav",
+        "className": "AcmeSideNav",
+        "file": "src/components/side-nav/side-nav.ts",
+        "dependencies": []
+      },
+      {
+        "name": "skeleton",
+        "tag": "acme-skeleton",
+        "className": "AcmeSkeleton",
+        "file": "src/components/skeleton/skeleton.ts",
+        "dependencies": []
+      },
+      {
+        "name": "slider",
+        "tag": "acme-slider",
+        "className": "AcmeSlider",
+        "file": "src/components/slider/slider.ts",
+        "dependencies": [
+          "input"
+        ]
+      },
+      {
+        "name": "snippet",
+        "tag": "acme-snippet",
+        "className": "AcmeSnippet",
+        "file": "src/components/snippet/snippet.ts",
+        "dependencies": [
+          "copy-button"
+        ]
+      },
+      {
+        "name": "spark",
+        "tag": "acme-spark",
+        "className": "AcmeSpark",
+        "file": "src/components/spark/spark.ts",
+        "dependencies": []
+      },
+      {
+        "name": "spinner",
+        "tag": "acme-spinner",
+        "className": "AcmeSpinner",
+        "file": "src/components/spinner/spinner.ts",
+        "dependencies": []
+      },
+      {
+        "name": "split-button",
+        "tag": "acme-split-button",
+        "className": "AcmeSplitButton",
+        "file": "src/components/split-button/split-button.ts",
+        "dependencies": [
+          "button"
+        ]
+      },
+      {
+        "name": "split-button-item",
+        "tag": "acme-split-button-item",
+        "className": "AcmeSplitButtonItem",
+        "file": "src/components/split-button-item/split-button-item.ts",
+        "dependencies": []
+      },
+      {
+        "name": "stat",
+        "tag": "acme-stat",
+        "className": "AcmeStat",
+        "file": "src/components/stat/stat.ts",
+        "dependencies": []
+      },
+      {
+        "name": "stat-delta",
+        "tag": "acme-stat-delta",
+        "className": "AcmeStatDelta",
+        "file": "src/components/stat-delta/stat-delta.ts",
+        "dependencies": []
+      },
+      {
+        "name": "stat-desc",
+        "tag": "acme-stat-desc",
+        "className": "AcmeStatDesc",
+        "file": "src/components/stat-desc/stat-desc.ts",
+        "dependencies": []
+      },
+      {
+        "name": "stat-foot",
+        "tag": "acme-stat-foot",
+        "className": "AcmeStatFoot",
+        "file": "src/components/stat-foot/stat-foot.ts",
+        "dependencies": []
+      },
+      {
+        "name": "stat-strip",
+        "tag": "acme-stat-strip",
+        "className": "AcmeStatStrip",
+        "file": "src/components/stat-strip/stat-strip.ts",
+        "dependencies": []
+      },
+      {
+        "name": "status-dot",
+        "tag": "acme-status-dot",
+        "className": "AcmeStatusDot",
+        "file": "src/components/status-dot/status-dot.ts",
+        "dependencies": []
+      },
+      {
+        "name": "strip-item",
+        "tag": "acme-strip-item",
+        "className": "AcmeStripItem",
+        "file": "src/components/strip-item/strip-item.ts",
+        "dependencies": []
+      },
+      {
+        "name": "subnav",
+        "tag": "acme-subnav",
+        "className": "AcmeSubnav",
+        "file": "src/components/subnav/subnav.ts",
+        "dependencies": []
+      },
+      {
+        "name": "switch",
+        "tag": "acme-switch",
+        "className": "AcmeSwitch",
+        "file": "src/components/switch/switch.ts",
+        "dependencies": []
+      },
+      {
+        "name": "switch-control",
+        "tag": "acme-switch-control",
+        "className": "AcmeSwitchControl",
+        "file": "src/components/switch-control/switch-control.ts",
+        "dependencies": []
+      },
+      {
+        "name": "tab",
+        "tag": "acme-tab",
+        "className": "AcmeTab",
+        "file": "src/components/tab/tab.ts",
+        "dependencies": [
+          "tooltip"
+        ]
+      },
+      {
+        "name": "tab-panel",
+        "tag": "acme-tab-panel",
+        "className": "AcmeTabPanel",
+        "file": "src/components/tab-panel/tab-panel.ts",
+        "dependencies": []
+      },
+      {
+        "name": "table",
+        "tag": "acme-table",
+        "className": "AcmeTable",
+        "file": "src/components/table/table.ts",
+        "dependencies": [
+          "checkbox"
+        ]
+      },
+      {
+        "name": "tabs",
+        "tag": "acme-tabs",
+        "className": "AcmeTabs",
+        "file": "src/components/tabs/tabs.ts",
+        "dependencies": []
+      },
+      {
+        "name": "tag",
+        "tag": "acme-tag",
+        "className": "AcmeTag",
+        "file": "src/components/tag/tag.ts",
+        "dependencies": []
+      },
+      {
+        "name": "tags",
+        "tag": "acme-tags",
+        "className": "AcmeTags",
+        "file": "src/components/tags/tags.ts",
+        "dependencies": []
+      },
+      {
+        "name": "task",
+        "tag": "acme-task",
+        "className": "AcmeTask",
+        "file": "src/components/task/task.ts",
+        "dependencies": []
+      },
+      {
+        "name": "tasks",
+        "tag": "acme-tasks",
+        "className": "AcmeTasks",
+        "file": "src/components/tasks/tasks.ts",
+        "dependencies": []
+      },
+      {
+        "name": "textarea",
+        "tag": "acme-textarea",
+        "className": "AcmeTextarea",
+        "file": "src/components/textarea/textarea.ts",
+        "dependencies": [
+          "error"
+        ]
+      },
+      {
+        "name": "theme-switcher",
+        "tag": "acme-theme-switcher",
+        "className": "AcmeThemeSwitcher",
+        "file": "src/components/theme-switcher/theme-switcher.ts",
+        "dependencies": []
+      },
+      {
+        "name": "tile",
+        "tag": "acme-tile",
+        "className": "AcmeTile",
+        "file": "src/components/tile/tile.ts",
+        "dependencies": []
+      },
+      {
+        "name": "tiles",
+        "tag": "acme-tiles",
+        "className": "AcmeTiles",
+        "file": "src/components/tiles/tiles.ts",
+        "dependencies": []
+      },
+      {
+        "name": "toast",
+        "tag": "acme-toast",
+        "className": "AcmeToast",
+        "file": "src/components/toast/toast.ts",
+        "dependencies": []
+      },
+      {
+        "name": "toaster",
+        "tag": "acme-toaster",
+        "className": "AcmeToaster",
+        "file": "src/components/toaster/toaster.ts",
+        "dependencies": [
+          "toast"
+        ]
+      },
+      {
+        "name": "toggle",
+        "tag": "acme-toggle",
+        "className": "AcmeToggle",
+        "file": "src/components/toggle/toggle.ts",
+        "dependencies": []
+      },
+      {
+        "name": "toolbar",
+        "tag": "acme-toolbar",
+        "className": "AcmeToolbar",
+        "file": "src/components/toolbar/toolbar.ts",
+        "dependencies": []
+      },
+      {
+        "name": "tooltip",
+        "tag": "acme-tooltip",
+        "className": "AcmeTooltip",
+        "file": "src/components/tooltip/tooltip.ts",
+        "dependencies": []
+      },
+      {
+        "name": "topbar",
+        "tag": "acme-topbar",
+        "className": "AcmeTopbar",
+        "file": "src/components/topbar/topbar.ts",
+        "dependencies": []
+      },
+      {
+        "name": "trend",
+        "tag": "acme-trend",
+        "className": "AcmeTrend",
+        "file": "src/components/trend/trend.ts",
+        "dependencies": []
+      },
+      {
+        "name": "video",
+        "tag": "acme-video",
+        "className": "AcmeVideo",
+        "file": "src/components/video/video.ts",
+        "dependencies": []
+      }
+    ],
+    "removed": [
+      {
+        "tag": "acme-text-copy",
+        "reason": "Approved dependency-closed removal pulled forward from M04; unrestricted dynamic tag blocked complete owned dependency discovery",
+        "replacement": "Copy Button (A-05); full replacement API remains M09"
+      }
+    ]
+  },
+  "checks": {
+    "build": "606 modules; 127 compiled Lit templates;149 manifest elements",
+    "docs": "103 pages;149 elements;0 undocumented",
+    "fullSuite": "660 passed;8492 assertions;95 files",
+    "siteAfterExplicitRegistration": "104 passed;618 assertions",
+    "focusedTypecheck": "Changed scripts and shared mechanisms pass strict TypeScript",
+    "styles": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "comparisons": 38,
+          "nodes": 30426
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "comparisons": 38,
+          "nodes": 30426
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "comparisons": 38,
+          "nodes": 30426
+        }
+      ],
+      "differences": [],
+      "errors": []
+    },
+    "browser": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "pure": {
+            "calls": {
+              "definitions": 0,
+              "registrations": 0,
+              "listeners": 0,
+              "storage": 0
+            },
+            "unchanged": true,
+            "classes": 150
+          },
+          "selective": {
+            "before": {
+              "button": true,
+              "spinner": true,
+              "chart": false,
+              "search": false,
+              "rendered": true
+            },
+            "all": true,
+            "sameButton": true
+          },
+          "owned": [
+            {
+              "name": "appbar",
+              "dependencies": [
+                "theme-switcher"
+              ],
+              "passed": true
+            },
+            {
+              "name": "code-block",
+              "dependencies": [
+                "split-button-item"
+              ],
+              "passed": true
+            },
+            {
+              "name": "search",
+              "dependencies": [
+                "input",
+                "kbd",
+                "spinner"
+              ],
+              "passed": true
+            },
+            {
+              "name": "menu-button",
+              "dependencies": [
+                "spinner"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "pure": {
+            "calls": {
+              "definitions": 0,
+              "registrations": 0,
+              "listeners": 0,
+              "storage": 0
+            },
+            "unchanged": true,
+            "classes": 150
+          },
+          "selective": {
+            "before": {
+              "button": true,
+              "spinner": true,
+              "chart": false,
+              "search": false,
+              "rendered": true
+            },
+            "all": true,
+            "sameButton": true
+          },
+          "owned": [
+            {
+              "name": "appbar",
+              "dependencies": [
+                "theme-switcher"
+              ],
+              "passed": true
+            },
+            {
+              "name": "code-block",
+              "dependencies": [
+                "split-button-item"
+              ],
+              "passed": true
+            },
+            {
+              "name": "search",
+              "dependencies": [
+                "input",
+                "kbd",
+                "spinner"
+              ],
+              "passed": true
+            },
+            {
+              "name": "menu-button",
+              "dependencies": [
+                "spinner"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "pure": {
+            "calls": {
+              "definitions": 0,
+              "registrations": 0,
+              "listeners": 0,
+              "storage": 0
+            },
+            "unchanged": true,
+            "classes": 150
+          },
+          "selective": {
+            "before": {
+              "button": true,
+              "spinner": true,
+              "chart": false,
+              "search": false,
+              "rendered": true
+            },
+            "all": true,
+            "sameButton": true
+          },
+          "owned": [
+            {
+              "name": "appbar",
+              "dependencies": [
+                "theme-switcher"
+              ],
+              "passed": true
+            },
+            {
+              "name": "code-block",
+              "dependencies": [
+                "split-button-item"
+              ],
+              "passed": true
+            },
+            {
+              "name": "search",
+              "dependencies": [
+                "input",
+                "kbd",
+                "spinner"
+              ],
+              "passed": true
+            },
+            {
+              "name": "menu-button",
+              "dependencies": [
+                "spinner"
+              ],
+              "passed": true
+            }
+          ]
+        }
+      ],
+      "errors": [],
+      "failedRequests": []
+    },
+    "packedBrowser": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "pure": {
+            "undefinedExports": [],
+            "registered": false
+          },
+          "background": "rgb(23, 23, 23)",
+          "before": "light",
+          "moved": [
+            "dark",
+            "system",
+            "light"
+          ],
+          "caughtUp": "dark",
+          "formController": "function",
+          "bindField": "function"
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "pure": {
+            "undefinedExports": [],
+            "registered": false
+          },
+          "background": "rgb(23, 23, 23)",
+          "before": "light",
+          "moved": [
+            "dark",
+            "system",
+            "light"
+          ],
+          "caughtUp": "dark",
+          "formController": "function",
+          "bindField": "function"
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "pure": {
+            "undefinedExports": [],
+            "registered": false
+          },
+          "background": "rgb(23, 23, 23)",
+          "before": "light",
+          "moved": [
+            "dark",
+            "system",
+            "light"
+          ],
+          "caughtUp": "dark",
+          "formController": "function",
+          "bindField": "function"
+        }
+      ],
+      "errors": [],
+      "requests": [],
+      "unpatchedUpstream": true,
+      "productionMetadata": true
+    },
+    "docsBrowser": {
+      "version": "153.0.8010.48",
+      "pages": [
+        {
+          "name": "stat",
+          "expected": "meterlabel",
+          "passed": true
+        },
+        {
+          "name": "dots-menu",
+          "expected": "acme-open",
+          "passed": true
+        },
+        {
+          "name": "fieldset",
+          "expected": "actions",
+          "passed": true
+        }
+      ],
+      "errors": []
+    },
+    "selectiveGraph": {
+      "files": 12,
+      "bytes": 68651,
+      "inputs": 43,
+      "forbidden": []
+    },
+    "docsAppRegistration": "All four documentation elements registered explicitly after the side-effect pruning regression; Chrome navigation and 104 site tests pass"
+  },
+  "package": {
+    "command": "bun run pack",
+    "archive": ".artifacts/packages/acmelabs-design-system-0.2.0.tgz",
+    "sha256": "18ee0ffff9bcc4ae6d8a8438f3a19d9e50704d699b2442b94a12800be580fdb3",
+    "cleanInstall": "78 runtime dependencies;no consumer patches/configuration",
+    "metadata": "Runtime field allowlist; development scripts, patches, overrides and workspace settings omitted; authoring manifest unchanged",
+    "runtimeStore": "Unpatched @tanstack/lit-store0.13.2 plus owned per-host connection controller; no second store/subscription engine"
+  },
+  "patchDelivery": {
+    "tarball": {
+      "bun": "1.4.0",
+      "sourceTar": "/tmp/acme-m03-packed-w8qBCv/acmelabs-design-system-0.2.0.tgz",
+      "results": {
+        "both-patches": {
+          "installExit": 1,
+          "log": "bun install v1.4.0 (34cbb9a40)\nResolving dependencies\nerror: Couldn't find patch file: 'patches/@tanstack%2Flit-store@0.13.2.patch'\n\nTo create a new patch file run:\n\n  bun patch patches/@tanstack%2Flit-store@0.13.2.patch\n"
+        },
+        "runtime-only": {
+          "installExit": 1,
+          "log": "bun install v1.4.0 (34cbb9a40)\nResolving dependencies\nerror: Couldn't find patch file: 'patches/@tanstack%2Flit-store@0.13.2.patch'\n\nTo create a new patch file run:\n\n  bun patch patches/@tanstack%2Flit-store@0.13.2.patch\n"
+        },
+        "no-patch-config": {
+          "installExit": 0,
+          "log": "bun install v1.4.0 (34cbb9a40)\n\n+ @acmelabs/design-system@../acmelabs-design-system-0.2.0-patch-probe.2.tgz\n\n78 packages installed [511.00ms]\nResolving dependencies\nResolved, downloaded and extracted [4]\nSaved lockfile\n",
+          "selector": {
+            "file": "/private/tmp/acme-patch-delivery-kZ9qOn/no-patch-config/consumer/node_modules/@tanstack/lit-store/dist/tan-stack-store-selector.js",
+            "hostConnectedPresent": false,
+            "projectPatchComment": false,
+            "sha256": "4748252ca26a72610c52d46696156f8e7731d96d2fbec2507ef54fdf0d93cbf3"
+          }
+        }
+      }
+    },
+    "registry": {
+      "registry": {
+        "both-patches": {
+          "exit": 0,
+          "log": "bun install v1.4.0 (34cbb9a40)\n\n+ @acmelabs/design-system@0.2.0-patch-probe.0\n\n78 packages installed [299.00ms]\nResolving dependencies\nResolved, downloaded and extracted [3]\nSaved lockfile\n",
+          "selectorPresent": true,
+          "hostConnectedPresent": false,
+          "patchedComment": false
+        },
+        "runtime-only": {
+          "exit": 0,
+          "log": "bun install v1.4.0 (34cbb9a40)\n\n+ @acmelabs/design-system@0.2.0-patch-probe.1\n\n78 packages installed [304.00ms]\nResolving dependencies\nResolved, downloaded and extracted [1]\nSaved lockfile\n",
+          "selectorPresent": true,
+          "hostConnectedPresent": false,
+          "patchedComment": false
+        },
+        "no-patch-config": {
+          "exit": 0,
+          "log": "bun install v1.4.0 (34cbb9a40)\n\n+ @acmelabs/design-system@0.2.0-patch-probe.2\n\n78 packages installed [301.00ms]\nResolving dependencies\nResolved, downloaded and extracted [1]\nSaved lockfile\n",
+          "selectorPresent": true,
+          "hostConnectedPresent": false,
+          "patchedComment": false
+        }
+      },
+      "consumerRootPatchFilesDiagnostic": {
+        "exit": 0,
+        "log": "bun install v1.4.0 (34cbb9a40)\n\n+ @acmelabs/design-system@../acmelabs-design-system-0.2.0-patch-probe.0.tgz\n\n78 packages installed [305.00ms]\nResolving dependencies\nResolved, downloaded and extracted [2]\nSaved lockfile\n",
+        "selectorPresent": true,
+        "hostConnectedPresent": true,
+        "patchedComment": true
+      }
+    },
+    "runtime": {
+      "chromium": {
+        "version": "153.0.8010.48",
+        "cases": {
+          "unpatched": {
+            "initial": "0",
+            "updated": "1",
+            "afterMove": "1",
+            "errors": []
+          },
+          "patchedDiagnostic": {
+            "initial": "0",
+            "updated": "1",
+            "afterMove": "2",
+            "errors": []
+          }
+        }
+      },
+      "firefox": {
+        "version": "155.0",
+        "cases": {
+          "unpatched": {
+            "initial": "0",
+            "updated": "1",
+            "afterMove": "1",
+            "errors": []
+          },
+          "patchedDiagnostic": {
+            "initial": "0",
+            "updated": "1",
+            "afterMove": "2",
+            "errors": []
+          }
+        }
+      },
+      "webkit": {
+        "version": "26.6",
+        "cases": {
+          "unpatched": {
+            "initial": "0",
+            "updated": "1",
+            "afterMove": "1",
+            "errors": []
+          },
+          "patchedDiagnostic": {
+            "initial": "0",
+            "updated": "1",
+            "afterMove": "2",
+            "errors": []
+          }
+        }
+      }
+    },
+    "m00Limit": "M00 consumer supplied its own patch; transitive patch delivery was not established"
+  },
+  "bunDirectEntry": {
+    "browser": {
+      "bun": "1.4.0",
+      "chromium": "153.0.8010.48",
+      "results": [
+        {
+          "name": "minimal-direct",
+          "ok": false,
+          "error": "SyntaxError: Export 'value' is not defined in module",
+          "pageErrors": []
+        },
+        {
+          "name": "minimal-consumer",
+          "ok": true,
+          "exportCount": 1,
+          "undefinedExports": [],
+          "bindField": "undefined",
+          "TanStackFormController": "undefined",
+          "AcmeButton": "undefined",
+          "answer": 42,
+          "registeredButton": false,
+          "pageErrors": []
+        },
+        {
+          "name": "actual-direct",
+          "ok": false,
+          "error": "SyntaxError: Export 'TanStackFormController' is not defined in module",
+          "pageErrors": []
+        },
+        {
+          "name": "actual-consumer",
+          "ok": true,
+          "exportCount": 185,
+          "undefinedExports": [],
+          "bindField": "function",
+          "TanStackFormController": "function",
+          "AcmeButton": "function",
+          "answer": null,
+          "registeredButton": false,
+          "pageErrors": []
+        },
+        {
+          "name": "namespace-consumer",
+          "ok": true,
+          "exportCount": 185,
+          "undefinedExports": [],
+          "bindField": "function",
+          "TanStackFormController": "function",
+          "AcmeButton": "function",
+          "answer": null,
+          "registeredButton": false,
+          "pageErrors": []
+        },
+        {
+          "name": "button-consumer",
+          "ok": true,
+          "exportCount": 1,
+          "undefinedExports": [],
+          "bindField": "undefined",
+          "TanStackFormController": "undefined",
+          "AcmeButton": "function",
+          "answer": null,
+          "registeredButton": false,
+          "pageErrors": []
+        }
+      ]
+    },
+    "matrix": [
+      {
+        "name": "without-name",
+        "extra": {
+          "main": "./dist/index.js",
+          "module": "./dist/index.js",
+          "exports": {
+            ".": {
+              "import": "./dist/index.js",
+              "default": "./dist/index.js"
+            }
+          },
+          "sideEffects": [
+            "./dist/define/*.js",
+            "./dist/all.js",
+            "./dist/cdn/**",
+            "./dist/bundle/**",
+            "**/*.css"
+          ]
+        },
+        "output": "// ../../../../../private/tmp/acme-m03-bun-form-rEwSyE/meta-without-name/dist/value.js\nvar value = () => 42;\nexport {\n  value as answer\n};\n"
+      },
+      {
+        "name": "without-main",
+        "extra": {
+          "name": "@acmelabs/test",
+          "module": "./dist/index.js",
+          "exports": {
+            ".": {
+              "import": "./dist/index.js",
+              "default": "./dist/index.js"
+            }
+          },
+          "sideEffects": [
+            "./dist/define/*.js",
+            "./dist/all.js",
+            "./dist/cdn/**",
+            "./dist/bundle/**",
+            "**/*.css"
+          ]
+        },
+        "output": "export {\n  value as answer\n};\n",
+        "error": "BuildMessage: \"value\" is not declared in this file"
+      },
+      {
+        "name": "without-module",
+        "extra": {
+          "name": "@acmelabs/test",
+          "main": "./dist/index.js",
+          "exports": {
+            ".": {
+              "import": "./dist/index.js",
+              "default": "./dist/index.js"
+            }
+          },
+          "sideEffects": [
+            "./dist/define/*.js",
+            "./dist/all.js",
+            "./dist/cdn/**",
+            "./dist/bundle/**",
+            "**/*.css"
+          ]
+        },
+        "output": "export {\n  value as answer\n};\n",
+        "error": "BuildMessage: \"value\" is not declared in this file"
+      },
+      {
+        "name": "without-exports",
+        "extra": {
+          "name": "@acmelabs/test",
+          "main": "./dist/index.js",
+          "module": "./dist/index.js",
+          "sideEffects": [
+            "./dist/define/*.js",
+            "./dist/all.js",
+            "./dist/cdn/**",
+            "./dist/bundle/**",
+            "**/*.css"
+          ]
+        },
+        "output": "export {\n  value as answer\n};\n",
+        "error": "BuildMessage: \"value\" is not declared in this file"
+      },
+      {
+        "name": "without-sideEffects",
+        "extra": {
+          "name": "@acmelabs/test",
+          "main": "./dist/index.js",
+          "module": "./dist/index.js",
+          "exports": {
+            ".": {
+              "import": "./dist/index.js",
+              "default": "./dist/index.js"
+            }
+          }
+        },
+        "output": "// ../../../../../private/tmp/acme-m03-bun-form-rEwSyE/meta-without-sideEffects/dist/value.js\nvar value = () => 42;\nexport {\n  value as answer\n};\n"
+      },
+      {
+        "name": "pattern-5",
+        "extra": {
+          "sideEffects": [
+            "./dist/define/*.js"
+          ]
+        },
+        "output": "// ../../../../../private/tmp/acme-m03-bun-form-rEwSyE/meta-pattern-5/dist/value.js\nvar value = () => 42;\nexport {\n  value as answer\n};\n"
+      },
+      {
+        "name": "pattern-6",
+        "extra": {
+          "sideEffects": [
+            "./dist/all.js"
+          ]
+        },
+        "output": "// ../../../../../private/tmp/acme-m03-bun-form-rEwSyE/meta-pattern-6/dist/value.js\nvar value = () => 42;\nexport {\n  value as answer\n};\n"
+      },
+      {
+        "name": "pattern-7",
+        "extra": {
+          "sideEffects": [
+            "./dist/cdn/**"
+          ]
+        },
+        "output": "// ../../../../../private/tmp/acme-m03-bun-form-rEwSyE/meta-pattern-7/dist/value.js\nvar value = () => 42;\nexport {\n  value as answer\n};\n"
+      },
+      {
+        "name": "pattern-8",
+        "extra": {
+          "sideEffects": [
+            "./dist/bundle/**"
+          ]
+        },
+        "output": "// ../../../../../private/tmp/acme-m03-bun-form-rEwSyE/meta-pattern-8/dist/value.js\nvar value = () => 42;\nexport {\n  value as answer\n};\n"
+      },
+      {
+        "name": "pattern-9",
+        "extra": {
+          "sideEffects": [
+            "**/*.css"
+          ]
+        },
+        "output": "// ../../../../../private/tmp/acme-m03-bun-form-rEwSyE/meta-pattern-9/dist/value.js\nvar value = () => 42;\nexport {\n  value as answer\n};\n"
+      },
+      {
+        "name": "simpleListAll",
+        "extra": {
+          "name": "@acmelabs/test",
+          "main": "./dist/index.js",
+          "module": "./dist/index.js",
+          "exports": {
+            ".": {
+              "import": "./dist/index.js",
+              "default": "./dist/index.js"
+            }
+          },
+          "sideEffects": [
+            "./dist/define/*.js",
+            "./dist/all.js"
+          ]
+        },
+        "output": "export {\n  value as answer\n};\n",
+        "error": "BuildMessage: \"value\" is not declared in this file"
+      },
+      {
+        "name": "falseAll",
+        "extra": {
+          "name": "@acmelabs/test",
+          "main": "./dist/index.js",
+          "module": "./dist/index.js",
+          "exports": {
+            ".": {
+              "import": "./dist/index.js",
+              "default": "./dist/index.js"
+            }
+          },
+          "sideEffects": false
+        },
+        "output": "export {\n  value as answer\n};\n",
+        "error": "BuildMessage: \"value\" is not declared in this file"
+      },
+      {
+        "name": "dotCss",
+        "extra": {
+          "name": "@acmelabs/test",
+          "main": "./dist/index.js",
+          "module": "./dist/index.js",
+          "exports": {
+            ".": {
+              "import": "./dist/index.js",
+              "default": "./dist/index.js"
+            }
+          },
+          "sideEffects": [
+            "./**/*.css"
+          ]
+        },
+        "output": "export {\n  value as answer\n};\n",
+        "error": "BuildMessage: \"value\" is not declared in this file"
+      }
+    ],
+    "conclusion": "Named side-effect-free direct entry can emit undefined reexports in Bun1.4; normal consumer namespace/star/selective imports pass. Public API and side-effect metadata preserved."
+  },
+  "workspaces": {
+    "packages": [
+      "@acmelabs/design-system-react",
+      "@acmelabs/design-system-devtools",
+      "@acmelabs/design-system-mcp"
+    ],
+    "version": "0.2.0",
+    "private": true,
+    "implementation": "Skeletons only; wrappers M22, inspector/MCP M24",
+    "localResolution": "Exact core peer, file:. root override, hoisted linker; no global link configuration",
+    "officialSource": "https://bun.com/docs/runtime/bunfig#installlinker",
+    "verification": {
+      "bun": "1.4.0",
+      "root": "/private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl",
+      "install": {
+        "exit": 0,
+        "log": "bun install v1.4.0 (34cbb9a40)\n\nChecked 4 installs across 5 packages (no changes) [3.00ms]\n"
+      },
+      "unchangedLock": true,
+      "runtime": {
+        "exit": 0,
+        "output": "{\"values\":[\"rebuilt\",\"rebuilt\",\"rebuilt\"],\"same\":true}\n",
+        "error": ""
+      },
+      "bundled": {
+        "exit": 0,
+        "output": "{\"values\":[\"rebuilt\",\"rebuilt\",\"rebuilt\"],\"same\":true}\n",
+        "error": ""
+      },
+      "actualRoot": "/private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl",
+      "pass": true
+    },
+    "detailed": {
+      "root": "/private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl",
+      "stages": [
+        {
+          "stage": "initial",
+          "install": {
+            "exit": 0,
+            "log": "bun install v1.4.0 (34cbb9a40)\n\n4 packages installed [3.00ms]\nSaved lockfile\n"
+          },
+          "runtime": {
+            "exit": 0,
+            "out": "{\"values\":[\"before\",\"before\",\"before\"],\"same\":true}\n",
+            "error": ""
+          },
+          "links": {
+            "root": {
+              "target": "../..",
+              "real": "/private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl"
+            },
+            "packages/react/": "Error: ENOENT: no such file or directory, readlink '/private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/react/node_modules/@acme/root-probe'",
+            "packages/devtools/": "Error: ENOENT: no such file or directory, readlink '/private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/devtools/node_modules/@acme/root-probe'",
+            "packages/mcp/": "Error: ENOENT: no such file or directory, readlink '/private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/mcp/node_modules/@acme/root-probe'"
+          },
+          "build": {
+            "success": true,
+            "metafile": {
+              "inputs": {
+                "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/consumer.js": {
+                  "bytes": 313,
+                  "imports": [
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/react/index.js",
+                      "kind": "import-statement",
+                      "original": "@acme/react-probe"
+                    },
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/devtools/index.js",
+                      "kind": "import-statement",
+                      "original": "@acme/devtools-probe"
+                    },
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/mcp/index.js",
+                      "kind": "import-statement",
+                      "original": "@acme/mcp-probe"
+                    },
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/dist/index.js",
+                      "kind": "import-statement",
+                      "original": "./dist/index.js"
+                    }
+                  ],
+                  "format": "esm"
+                },
+                "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/devtools/index.js": {
+                  "bytes": 48,
+                  "imports": [
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/dist/index.js",
+                      "kind": "import-statement",
+                      "original": "@acme/root-probe"
+                    }
+                  ],
+                  "format": "esm"
+                },
+                "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/react/index.js": {
+                  "bytes": 48,
+                  "imports": [
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/dist/index.js",
+                      "kind": "import-statement",
+                      "original": "@acme/root-probe"
+                    }
+                  ],
+                  "format": "esm"
+                },
+                "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/mcp/index.js": {
+                  "bytes": 48,
+                  "imports": [
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/dist/index.js",
+                      "kind": "import-statement",
+                      "original": "@acme/root-probe"
+                    }
+                  ],
+                  "format": "esm"
+                },
+                "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/dist/index.js": {
+                  "bytes": 53,
+                  "imports": [],
+                  "format": "esm"
+                }
+              },
+              "outputs": {
+                "./consumer.js": {
+                  "bytes": 360,
+                  "inputs": {
+                    "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/dist/index.js": {
+                      "bytesInOutput": 41
+                    },
+                    "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/react/index.js": {
+                      "bytesInOutput": 0
+                    },
+                    "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/devtools/index.js": {
+                      "bytesInOutput": 0
+                    },
+                    "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/mcp/index.js": {
+                      "bytesInOutput": 0
+                    },
+                    "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/consumer.js": {
+                      "bytesInOutput": 143
+                    }
+                  },
+                  "imports": [],
+                  "exports": [],
+                  "entryPoint": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/consumer.js"
+                }
+              }
+            }
+          }
+        },
+        {
+          "stage": "frozen-clean",
+          "install": {
+            "exit": 0,
+            "log": "bun install v1.4.0 (34cbb9a40)\n\n4 packages installed [3.00ms]\n"
+          },
+          "runtime": {
+            "exit": 0,
+            "out": "{\"values\":[\"before\",\"before\",\"before\"],\"same\":true}\n",
+            "error": ""
+          },
+          "links": {
+            "root": {
+              "target": "../..",
+              "real": "/private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl"
+            },
+            "packages/react/": "Error: ENOENT: no such file or directory, readlink '/private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/react/node_modules/@acme/root-probe'",
+            "packages/devtools/": "Error: ENOENT: no such file or directory, readlink '/private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/devtools/node_modules/@acme/root-probe'",
+            "packages/mcp/": "Error: ENOENT: no such file or directory, readlink '/private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/mcp/node_modules/@acme/root-probe'"
+          },
+          "build": {
+            "success": true,
+            "metafile": {
+              "inputs": {
+                "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/consumer.js": {
+                  "bytes": 313,
+                  "imports": [
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/react/index.js",
+                      "kind": "import-statement",
+                      "original": "@acme/react-probe"
+                    },
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/devtools/index.js",
+                      "kind": "import-statement",
+                      "original": "@acme/devtools-probe"
+                    },
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/mcp/index.js",
+                      "kind": "import-statement",
+                      "original": "@acme/mcp-probe"
+                    },
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/dist/index.js",
+                      "kind": "import-statement",
+                      "original": "./dist/index.js"
+                    }
+                  ],
+                  "format": "esm"
+                },
+                "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/devtools/index.js": {
+                  "bytes": 48,
+                  "imports": [
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/dist/index.js",
+                      "kind": "import-statement",
+                      "original": "@acme/root-probe"
+                    }
+                  ],
+                  "format": "esm"
+                },
+                "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/react/index.js": {
+                  "bytes": 48,
+                  "imports": [
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/dist/index.js",
+                      "kind": "import-statement",
+                      "original": "@acme/root-probe"
+                    }
+                  ],
+                  "format": "esm"
+                },
+                "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/mcp/index.js": {
+                  "bytes": 48,
+                  "imports": [
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/dist/index.js",
+                      "kind": "import-statement",
+                      "original": "@acme/root-probe"
+                    }
+                  ],
+                  "format": "esm"
+                },
+                "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/dist/index.js": {
+                  "bytes": 53,
+                  "imports": [],
+                  "format": "esm"
+                }
+              },
+              "outputs": {
+                "./consumer.js": {
+                  "bytes": 360,
+                  "inputs": {
+                    "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/dist/index.js": {
+                      "bytesInOutput": 41
+                    },
+                    "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/react/index.js": {
+                      "bytesInOutput": 0
+                    },
+                    "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/devtools/index.js": {
+                      "bytesInOutput": 0
+                    },
+                    "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/mcp/index.js": {
+                      "bytesInOutput": 0
+                    },
+                    "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/consumer.js": {
+                      "bytesInOutput": 143
+                    }
+                  },
+                  "imports": [],
+                  "exports": [],
+                  "entryPoint": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/consumer.js"
+                }
+              }
+            }
+          }
+        },
+        {
+          "stage": "rebuilt",
+          "runtime": {
+            "exit": 0,
+            "out": "{\"values\":[\"rebuilt\",\"rebuilt\",\"rebuilt\"],\"same\":true}\n",
+            "error": ""
+          },
+          "links": {
+            "root": {
+              "target": "../..",
+              "real": "/private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl"
+            },
+            "packages/react/": "Error: ENOENT: no such file or directory, readlink '/private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/react/node_modules/@acme/root-probe'",
+            "packages/devtools/": "Error: ENOENT: no such file or directory, readlink '/private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/devtools/node_modules/@acme/root-probe'",
+            "packages/mcp/": "Error: ENOENT: no such file or directory, readlink '/private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/mcp/node_modules/@acme/root-probe'"
+          },
+          "build": {
+            "success": true,
+            "metafile": {
+              "inputs": {
+                "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/consumer.js": {
+                  "bytes": 313,
+                  "imports": [
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/react/index.js",
+                      "kind": "import-statement",
+                      "original": "@acme/react-probe"
+                    },
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/devtools/index.js",
+                      "kind": "import-statement",
+                      "original": "@acme/devtools-probe"
+                    },
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/mcp/index.js",
+                      "kind": "import-statement",
+                      "original": "@acme/mcp-probe"
+                    },
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/dist/index.js",
+                      "kind": "import-statement",
+                      "original": "./dist/index.js"
+                    }
+                  ],
+                  "format": "esm"
+                },
+                "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/devtools/index.js": {
+                  "bytes": 48,
+                  "imports": [
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/dist/index.js",
+                      "kind": "import-statement",
+                      "original": "@acme/root-probe"
+                    }
+                  ],
+                  "format": "esm"
+                },
+                "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/react/index.js": {
+                  "bytes": 48,
+                  "imports": [
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/dist/index.js",
+                      "kind": "import-statement",
+                      "original": "@acme/root-probe"
+                    }
+                  ],
+                  "format": "esm"
+                },
+                "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/mcp/index.js": {
+                  "bytes": 48,
+                  "imports": [
+                    {
+                      "path": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/dist/index.js",
+                      "kind": "import-statement",
+                      "original": "@acme/root-probe"
+                    }
+                  ],
+                  "format": "esm"
+                },
+                "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/dist/index.js": {
+                  "bytes": 54,
+                  "imports": [],
+                  "format": "esm"
+                }
+              },
+              "outputs": {
+                "./consumer.js": {
+                  "bytes": 361,
+                  "inputs": {
+                    "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/dist/index.js": {
+                      "bytesInOutput": 42
+                    },
+                    "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/react/index.js": {
+                      "bytesInOutput": 0
+                    },
+                    "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/devtools/index.js": {
+                      "bytesInOutput": 0
+                    },
+                    "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/packages/mcp/index.js": {
+                      "bytesInOutput": 0
+                    },
+                    "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/consumer.js": {
+                      "bytesInOutput": 143
+                    }
+                  },
+                  "imports": [],
+                  "exports": [],
+                  "entryPoint": "../../../../../private/tmp/acme-root-link-hwiUZg/fresh-three-VNiLXl/consumer.js"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "actualRepository": "Fresh and repeated frozen installs and post-rebuild resolution all point to real root/dist/index.js; stale isolated package-local links were removed during linker transition"
+  },
+  "review": {
+    "manifest": "Approved in df48e4c",
+    "registration": "Approve, no required defects",
+    "packaging": "Approve, no required defects",
+    "lastDelta": "Approve: private workspaces, production metadata and explicit docs registration"
+  },
+  "reproduce": [
+    "bun install --ignore-scripts --frozen-lockfile",
+    "bun run split",
+    "bun run build",
+    "bun run docs",
+    "bun test",
+    "bun run pack",
+    "Install the staged archive into a fresh consumer; run the saved browser fixtures with Playwright1.63.0 and installed browser engines"
+  ],
+  "sources": {
+    "/tmp/acme-m03-browser-imports.ts": {
+      "source": "import fs from \"node:fs\";import path from \"node:path\";import assert from \"node:assert/strict\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\";\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",async fetch(req){const url=new URL(req.url);if(url.pathname===\"/favicon.ico\")return new Response(null,{status:204});if(url.pathname===\"/\")return new Response(\"<!doctype html><html data-theme='light'><head></head><body></body></html>\",{headers:{\"Content-Type\":\"text/html\"}});const file=url.pathname===\"/classes.js\"?\"/tmp/acme-m03-imports/consumer.js\":path.join(root,\"dist\",url.pathname);return new Response(Bun.file(file),{headers:{\"Content-Type\":file.endsWith(\".js\")?\"text/javascript\":\"text/plain\"}});}});\nconst report={engines:[],errors:[],failedRequests:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){\nconst browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});\ntry{const context=await browser.newContext();const page=await context.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));page.on(\"requestfailed\",request=>report.failedRequests.push({engine,url:request.url()}));\nawait page.goto(server.url.href);\nconst pure=await page.evaluate(async()=>{\n const before=document.documentElement.outerHTML,calls={definitions:0,registrations:0,listeners:0,storage:0};\n const define=customElements.define.bind(customElements);customElements.define=(...args)=>{calls.definitions++;return define(...args);};\n const register=CSS.registerProperty?.bind(CSS);if(register)CSS.registerProperty=(...args)=>{calls.registrations++;return register(...args);};\n const listen=document.addEventListener.bind(document);document.addEventListener=(...args)=>{calls.listeners++;return listen(...args);};\n const set=Storage.prototype.setItem;Storage.prototype.setItem=function(...args){calls.storage++;return set.apply(this,args);};\n const {classes}=await import(\"/classes.js\");\n return {calls,unchanged:before===document.documentElement.outerHTML,classes:Object.keys(classes).filter(name=>name.startsWith(\"Acme\")).length};\n});\nassert(pure.classes>=149);assert(pure.unchanged);assert.deepEqual(pure.calls,{definitions:0,registrations:0,listeners:0,storage:0});\nawait page.goto(server.url.href);\nconst selective=await page.evaluate(async()=>{\n await import(\"/cdn/define/button.js\");\n const button=document.createElement(\"acme-button\");button.loading=true;button.textContent=\"Working\";document.body.append(button);await button.updateComplete;\n const spinner=button.shadowRoot.querySelector(\"acme-spinner\");if(spinner)await spinner.updateComplete;\n const before={button:!!customElements.get(\"acme-button\"),spinner:!!customElements.get(\"acme-spinner\"),chart:!!customElements.get(\"acme-chart\"),search:!!customElements.get(\"acme-search\"),rendered:!!button.shadowRoot.querySelector(\"button\")&&!!spinner?.shadowRoot};\n await import(\"/cdn/all.js\");return{before,all:!!customElements.get(\"acme-chart\"),sameButton:customElements.get(\"acme-button\")===button.constructor};\n});\nassert.deepEqual(selective.before,{button:true,spinner:true,chart:false,search:false,rendered:true});assert(selective.all&&selective.sameButton);\nconst owned=[];\nfor(const [name,dependencies] of [[\"appbar\",[\"theme-switcher\"]],[\"code-block\",[\"split-button-item\"]],[\"search\",[\"input\",\"kbd\",\"spinner\"]],[\"menu-button\",[\"spinner\"]]]){\n await page.goto(server.url.href);const result=await page.evaluate(async({name,dependencies})=>{await import(\"/cdn/define/\"+name+\".js\");return{owner:!!customElements.get(\"acme-\"+name),dependencies:dependencies.map(n=>!!customElements.get(\"acme-\"+n))};},{name,dependencies});assert(result.owner&&result.dependencies.every(Boolean));owned.push({name,dependencies,passed:true});\n}\nreport.engines.push({engine,version:browser.version(),pure,selective,owned});console.log(engine+\" passed\");\n}finally{await browser.close();}\n}}finally{server.stop(true);}\nassert.equal(report.errors.length,0);assert.equal(report.failedRequests.length,0);\nfs.writeFileSync(\"/tmp/acme-m03-browser-imports.json\",JSON.stringify(report,null,2)+\"\\n\");console.log({errors:report.errors.length,failedRequests:report.failedRequests.length});"
+    },
+    "/tmp/acme-m03-packed-browser-ready.ts": {
+      "source": "import fs from \"node:fs\";import path from \"node:path\";import assert from \"node:assert/strict\";\nconst root=\"/tmp/acme-m03-packed-w8qBCv/ready-consumer\";\nawait Bun.write(root+\"/classes.ts\",'import * as classes from \"@acmelabs/design-system\"; export {classes};');\nawait Bun.write(root+\"/elements.ts\",'import \"@acmelabs/design-system/define/button\"; import \"@acmelabs/design-system/define/theme-switcher\";');\nfor(const name of [\"classes\",\"elements\"]){const result=await Bun.build({entrypoints:[root+\"/\"+name+\".ts\"],outdir:root+\"/build\",target:\"browser\",format:\"esm\",minify:true,metafile:true});if(!result.success)throw new AggregateError(result.logs);new Bun.Transpiler({loader:\"js\"}).scan(await result.outputs[0].text());await Bun.write(root+\"/build/\"+name+\"-metafile.json\",JSON.stringify(result.metafile,null,2));}\nconst pkg=root+\"/node_modules/@acmelabs/design-system\";\nconst metadata=JSON.parse(fs.readFileSync(pkg+\"/package.json\",\"utf8\"));\nassert(!metadata.patchedDependencies&&!metadata.devDependencies);\nassert(!fs.readFileSync(root+\"/node_modules/@tanstack/lit-store/dist/tan-stack-store-selector.js\",\"utf8\").includes(\"hostConnected\"));\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",async fetch(req){\n const url=new URL(req.url);if(url.pathname===\"/favicon.ico\")return new Response(null,{status:204});\n if(url.pathname===\"/\")return new Response('<!doctype html><html data-theme=\"light\"><head><link rel=\"stylesheet\" href=\"/tokens.css\"></head><body><main id=\"first\"></main><main id=\"second\"></main></body></html>',{headers:{\"Content-Type\":\"text/html\"}});\n const file=url.pathname===\"/tokens.css\"?pkg+\"/dist/styles/tokens.css\":root+\"/build\"+url.pathname;\n return new Response(Bun.file(file),{headers:{\"Content-Type\":file.endsWith(\".css\")?\"text/css\":\"text/javascript\"}});\n}});\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst report={engines:[],errors:[],requests:[],unpatchedUpstream:true,productionMetadata:true};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){\n const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});\n try{\n const page=await browser.newPage();page.on(\"pageerror\",e=>report.errors.push({engine,message:e.message}));page.on(\"requestfailed\",r=>report.requests.push({engine,url:r.url()}));await page.goto(server.url.href);\n const result=await page.evaluate(async()=>{\n const {classes}=await import(\"/classes.js\");\n const pure={undefinedExports:Object.entries(classes).filter(([_,value])=>value===undefined).map(([name])=>name),registered:!!customElements.get(\"acme-button\")};\n await import(\"/elements.js\");\n const first=document.querySelector(\"#first\"),second=document.querySelector(\"#second\");\n const button=document.createElement(\"acme-button\");button.textContent=\"Ready\";first.append(button);await button.updateComplete;\n const background=getComputedStyle(button.shadowRoot.querySelector(\"button\")).backgroundColor;\n const control=document.createElement(\"acme-theme-switcher\");first.append(control);await control.updateComplete;\n const choose=async name=>{control.shadowRoot.querySelector('input[aria-label=\"'+name+'\"]').click();await control.updateComplete;return control.shadowRoot.querySelector(\".option[data-checked] input\").getAttribute(\"aria-label\");};\n const before=await choose(\"light\");second.append(control);await control.updateComplete;const moved=[await choose(\"dark\"),await choose(\"system\"),await choose(\"light\")];\n control.remove();const other=document.createElement(\"acme-theme-switcher\");first.append(other);await other.updateComplete;other.shadowRoot.querySelector('input[aria-label=\"dark\"]').click();await other.updateComplete;\n second.append(control);await control.updateComplete;const caughtUp=control.shadowRoot.querySelector(\".option[data-checked] input\").getAttribute(\"aria-label\");\n return{pure,background,before,moved,caughtUp,formController:typeof classes.TanStackFormController,bindField:typeof classes.bindField};\n });\n assert.deepEqual(result.pure,{undefinedExports:[],registered:false});assert.notEqual(result.background,\"rgba(0, 0, 0, 0)\");assert.notEqual(result.background,\"transparent\");assert.equal(result.before,\"light\");assert.deepEqual(result.moved,[\"dark\",\"system\",\"light\"]);assert.equal(result.caughtUp,\"dark\");assert.equal(result.formController,\"function\");assert.equal(result.bindField,\"function\");\n report.engines.push({engine,version:browser.version(),...result});console.log(engine+\" packed consumer passed\");\n }finally{await browser.close();}\n}}finally{server.stop(true);}\nassert.equal(report.errors.length,0);assert.equal(report.requests.length,0);\nawait Bun.write(\"/tmp/acme-m03-packed-browser.json\",JSON.stringify(report,null,2)+\"\\n\");"
+    },
+    "/tmp/acme-m03-doc-browser.ts": {
+      "source": "import assert from \"node:assert/strict\";\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst {chromium}=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst browser=await chromium.launch({headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"});\nconst report={version:browser.version(),pages:[],errors:[]};\ntry{\nconst page=await browser.newPage();\npage.on(\"pageerror\",e=>report.errors.push(e.message));\nfor(const [name,expected] of [[\"stat\",\"meterlabel\"],[\"dots-menu\",\"acme-open\"],[\"fieldset\",\"actions\"]]){\nawait page.goto(\"http://localhost:4180/components/\"+name);\nawait page.locator(\"#api\").waitFor();\nconst api=await page.locator(\"#api\").textContent();\nassert(api?.includes(expected), name+\" API must include \"+expected);\nreport.pages.push({name,expected,passed:true});\n}\nassert.equal(report.errors.length,0);\n}finally{await browser.close();}\nawait Bun.write(\"/tmp/acme-m03-doc-browser.json\",JSON.stringify(report,null,2));\nconsole.log(report);"
+    },
+    "/tmp/acme-patch-delivery-kZ9qOn/README.md": {
+      "source": "# Patched dependency delivery probe\n\nRuntime: Bun 1.4.0 (34cbb9a40). No publication, repository edits or other runtime.\nInput: /tmp/acme-m03-packed-w8qBCv/acmelabs-design-system-0.2.0.tgz.\n\n## Result\n\n| Metadata/files in dependency tarball | Fresh local-tarball install | Fresh loopback-registry install | Installed lit-store patch |\n| --- | --- | --- | --- |\n| Both patch entries and both patch files | Fails: patch path not found | Succeeds | Absent after registry install |\n| Runtime patch entry and patch files | Fails: patch path not found | Succeeds | Absent after registry install |\n| No patchedDependencies metadata | Succeeds | Succeeds | Absent |\n\nThe fixture pins lit-store to 0.13.2 so patch absence cannot be explained by a semver update. File hashes/source checks and reconnect browser outcomes verify the installed behavior.\n\nDiagnostic only: copying patches into the local-tarball CONSUMER root allows installation and applies the runtime patch, without adding patchedDependencies to the consumer manifest. This shows that local-tarball handling resolves those patch paths against the wrong delivery boundary for a published library. This is not a proposed consumer requirement. All registry consumers remain independent of those copied files.\n\n## Recommendation\n\nGuarantee reconnect behavior in owned library helpers rather than depending on a transitive package-manager patch. Remove the runtime patch once that behavior has an independent regression test against unpatched upstream code. Keep the analyzer patch in the development checkout, but omit development patchedDependencies from staged production package metadata. Use the same staged package for pack verification and eventual publication. Simply adding patch files does not meet the consumer contract.\n\nThe M00 delivery fixture used an explicit patchedDependencies entry in its consumer/package.json plus its consumer/patches/lit-store.patch. It established mounting and bundle feasibility with a patched consumer, not delivery of a patch from a transitive package. That is the boundary this probe corrects.\n\n## Files\n\n- probe.ts: extract original package; create and pack the three metadata variants; install clean local-tarball consumers.\n- results.json and original-manifest-subset.json: exact local-install outcomes/configuration.\n- registry-and-root-probe.ts: serve immutable variant tarballs from a loopback-only registry, install fresh consumers, then run the consumer-root path diagnostic; shuts down the server.\n- registry-results.json: exact registry and diagnostic outcomes.\n- reconnect.ts: bundle directly from the actual installed dependency trees and exercise initial update, DOM reparenting, and the next store update in Chromium/Firefox/WebKit; closes browsers/server.\n- reconnect-results.json: browser outcomes.\n- Each variant directory contains its staged package, tarball, consumer manifests/locks, pack log and original install log. Registry consumers have their own .npmrc scoped only to the loopback registry. No account credentials were used.\n\n## Official guidance checked\n\nhttps://bun.com/docs/pm/cli/patch documents project patch files, package.json/lockfile entries and applying patches to dependencies. It does not establish published-library transitive patch behavior. The install/browser probes above are the evidence for that boundary. No claim is made about other Bun versions or package managers.\n\n## Development-patch boundary\n\nAn analyzer-only package variant installs successfully when the consumer has no analyzer dependency: an unused development patch does not alone force analyzer installation. When the consumer independently installs analyzer 0.11.0, however, Bun 1.4.0 crashes with SIGABRT and `Option::unwrap()` on `None` for that local-tarball metadata. This reproduced in two fresh directories. The equivalent consumer with the no-patch-config tarball installs 128 packages successfully. These are Bun-version-specific observations, not a diagnosis of Bun's internal cause.\n\nFiles: analyzer-only/results.json, analyzer-only/consumer-with-analyzer-results.json, analyzer-only/consumer-with-analyzer-fresh-results.json, no-patch-config/consumer-with-analyzer-results.json. dev-patch-probe.ts reproduces the two failing cases plus the clean control in fresh directories. The analyzer-only tarball preserves the exact existing development patch and excludes the runtime patch entry.\n"
+    },
+    "/tmp/acme-patch-delivery-kZ9qOn/probe.ts": {
+      "source": "import fs from 'node:fs';import path from 'node:path';\nconst dir=import.meta.dir,root='/Users/peterkloss/Dev/ACMElabs/design-system',tar='/tmp/acme-m03-packed-w8qBCv/acmelabs-design-system-0.2.0.tgz';\nfs.mkdirSync(dir+'/base');let p=Bun.spawnSync(['tar','-xf',tar,'-C',dir+'/base']);if(p.exitCode)throw new Error(p.stderr.toString());const original=await Bun.file(dir+'/base/package/package.json').json();await Bun.write(dir+'/original-manifest-subset.json',JSON.stringify({files:original.files,patchedDependencies:original.patchedDependencies,dependencies:original.dependencies,devDependencies:original.devDependencies},null,2));\nconst results={};for(const [index,variant]of ['both-patches','runtime-only','no-patch-config'].entries()){\n const stage=dir+'/'+variant+'/package',consumer=dir+'/'+variant+'/consumer';fs.cpSync(dir+'/base/package',stage,{recursive:true});fs.mkdirSync(consumer,{recursive:true});const pkg=structuredClone(original);pkg.version='0.2.0-patch-probe.'+index;pkg.dependencies['@tanstack/lit-store']='0.13.2';if(variant==='no-patch-config')delete pkg.patchedDependencies;else{pkg.files.push('patches');fs.cpSync(root+'/patches',stage+'/patches',{recursive:true});if(variant==='runtime-only')delete pkg.patchedDependencies['@custom-elements-manifest/analyzer@0.11.0'];}await Bun.write(stage+'/package.json',JSON.stringify(pkg,null,2));let pack=Bun.spawnSync(['bun','pm','pack','--ignore-scripts','--destination','..'],{cwd:stage});await Bun.write(dir+'/'+variant+'/pack.log',pack.stdout.toString()+pack.stderr.toString());if(pack.exitCode)throw new Error('pack failed '+variant);const filename='acmelabs-design-system-'+pkg.version+'.tgz';await Bun.write(consumer+'/package.json',JSON.stringify({name:'patch-consumer-'+index,private:true,type:'module',dependencies:{'@acmelabs/design-system':'file:../'+filename}}));let install=Bun.spawnSync(['bun','install','--ignore-scripts'],{cwd:consumer});const log=install.stdout.toString()+install.stderr.toString();await Bun.write(dir+'/'+variant+'/install.log',log);let status={installExit:install.exitCode,log};const file=consumer+'/node_modules/@tanstack/lit-store/dist/tan-stack-store-selector.js';if(fs.existsSync(file)){const text=await Bun.file(file).text();status.selector={file,hostConnectedPresent:/hostConnected\\(\\)/.test(text),projectPatchComment:text.includes('Re-subscribes after the host is moved'),sha256:new Bun.CryptoHasher('sha256').update(text).digest('hex')};}results[variant]=status;console.log(variant,status.installExit,status.selector||log);}\nawait Bun.write(dir+'/results.json',JSON.stringify({bun:Bun.version,sourceTar:tar,results},null,2));\n"
+    },
+    "/tmp/acme-patch-delivery-kZ9qOn/registry-and-root-probe.ts": {
+      "source": "import fs from 'node:fs';const d=import.meta.dir;const variants=['both-patches','runtime-only','no-patch-config'];const versions={};for(const [i,v]of variants.entries()){const p=await Bun.file(d+'/'+v+'/package/package.json').json();versions[p.version]={...p,dist:{tarball:'',integrity:'sha512-'+new Bun.CryptoHasher('sha512').update(await Bun.file(d+'/'+v+'/acmelabs-design-system-'+p.version+'.tgz').arrayBuffer()).digest('base64')}};}\nconst server=Bun.serve({hostname:'127.0.0.1',port:0,async fetch(req){const u=new URL(req.url);if(u.pathname.endsWith('.tgz')){const name=u.pathname.split('/').pop();const v=variants.find((v,i)=>name==='acmelabs-design-system-0.2.0-patch-probe.'+i+'.tgz');return v?new Response(Bun.file(d+'/'+v+'/'+name)):new Response('',{status:404});}if(decodeURIComponent(u.pathname.slice(1))!=='@acmelabs/design-system')return new Response('',{status:404});const meta=structuredClone(versions);for(const p of Object.values(meta))p.dist.tarball=server.url+'acmelabs-design-system-'+p.version+'.tgz';return Response.json({name:'@acmelabs/design-system','dist-tags':{latest:'0.2.0-patch-probe.2'},versions:meta});}});\nconst report={registry:{}};async function install(c){const p=Bun.spawn(['bun','install','--ignore-scripts'],{cwd:c,stdout:'pipe',stderr:'pipe'});const [out,err,exit]=await Promise.all([new Response(p.stdout).text(),new Response(p.stderr).text(),p.exited]);const file=c+'/node_modules/@tanstack/lit-store/dist/tan-stack-store-selector.js';const text=fs.existsSync(file)?await Bun.file(file).text():'';return{exit,log:out+err,selectorPresent:!!text,hostConnectedPresent:/hostConnected\\(\\)/.test(text),patchedComment:text.includes('Re-subscribes after the host is moved')};}\ntry{for(const [i,v]of variants.entries()){const c=d+'/'+v+'/registry-consumer';fs.mkdirSync(c,{recursive:true});await Bun.write(c+'/package.json',JSON.stringify({private:true,type:'module',dependencies:{'@acmelabs/design-system':'0.2.0-patch-probe.'+i}}));await Bun.write(c+'/.npmrc','@acmelabs:registry='+server.url);report.registry[v]=await install(c);console.log('registry',v,report.registry[v]);}\nconst c=d+'/both-patches/consumer';fs.cpSync('/Users/peterkloss/Dev/ACMElabs/design-system/patches',c+'/patches',{recursive:true});report.consumerRootPatchFilesDiagnostic=await install(c);console.log('consumer root files diagnostic',report.consumerRootPatchFilesDiagnostic);\n}finally{server.stop();}await Bun.write(d+'/registry-results.json',JSON.stringify(report,null,2));\n"
+    },
+    "/tmp/acme-patch-delivery-kZ9qOn/reconnect.ts": {
+      "source": "import path from 'node:path';\nconst d=import.meta.dir;\nconst fixture=`import {html,LitElement} from 'lit';import {createStore,TanStackStoreSelector} from '@tanstack/lit-store';const store=createStore(0);class Probe extends LitElement { selector=new TanStackStoreSelector(this,()=>store);render(){return html\\`<span>\\${store.get()}</span>\\`;}}customElements.define('reconnect-probe',Probe);window.run=async()=>{const first=document.body.appendChild(document.createElement('div')),second=document.body.appendChild(document.createElement('div'));const probe=first.appendChild(document.createElement('reconnect-probe'));await probe.updateComplete;const initial=probe.shadowRoot.textContent.trim();store.setState(()=>1);await probe.updateComplete;const updated=probe.shadowRoot.textContent.trim();second.appendChild(probe);await probe.updateComplete;store.setState(()=>2);await new Promise(requestAnimationFrame);await probe.updateComplete;return{initial,updated,afterMove:probe.shadowRoot.textContent.trim()};};`;\nfor(const [name,consumer]of Object.entries({unpatched:'both-patches/registry-consumer',patchedDiagnostic:'both-patches/consumer'})){await Bun.write(d+'/'+consumer+'/reconnect-entry.js',fixture);const b=await Bun.build({entrypoints:[d+'/'+consumer+'/reconnect-entry.js'],outdir:d+'/browser/'+name,target:'browser',naming:'entry.js'});if(!b.success)throw new Error(JSON.stringify(b.logs));await Bun.write(d+'/browser/'+name+'/index.html','<script type=\"module\" src=\"./entry.js\"></script>');}\nprocess.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const {chromium,firefox,webkit}=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');const server=Bun.serve({hostname:'127.0.0.1',port:0,fetch(req){const url=new URL(req.url);if(url.pathname==='/favicon.ico')return new Response(null,{status:204});return new Response(Bun.file(d+'/browser'+url.pathname));}});const results={};try{for(const [name,driver]of Object.entries({chromium,firefox,webkit})){const b=await driver.launch(name==='chromium'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true}:{headless:true});results[name]={version:b.version(),cases:{}};try{for(const variant of ['unpatched','patchedDiagnostic']){const p=await b.newPage(),errors=[];p.on('pageerror',e=>errors.push(String(e)));await p.goto(server.url+variant+'/index.html');await p.waitForFunction(()=>!!window.run);results[name].cases[variant]={...await p.evaluate(()=>window.run()),errors};await p.close();}}finally{await b.close();}}}finally{server.stop();}await Bun.write(d+'/reconnect-results.json',JSON.stringify(results,null,2));console.log(JSON.stringify(results,null,2));\n"
+    },
+    "/tmp/acme-root-link-hwiUZg/README.md": {
+      "source": "# Root package / child workspace linkage\n\nVerified Bun 1.4.0. Scratch only. No global bun link registration or project edits.\n\nSelected approach: preserve required exact core peers in child packages; keep root's local override `core-name: file:.`; configure the project-local bunfig.toml with `[install] linker = \"hoisted\"`. The production staging manifest must omit the local override.\n\n## Results\n\n- Hoisted: node_modules/@acme/root-probe is a symlink to the actual root (`../..`). Three packages resolve the same root/dist/index.js and share exactly the same exported object identity as a direct root import.\n- Initial clean install, fully clean frozen reinstall, and repeated frozen reinstall without cleanup all pass. Lock remains unchanged during final frozen verification.\n- Deleting/recreating the entire dist directory preserves live resolution. Runtime and bundled output both report the rebuilt value from all three packages. Bun metafiles show one actual root/dist module.\n- Isolated: its package-local symlink targets the installed `.bun/...@root/...` copy. In-place edits can appear through shared file backing, but deleting/recreating dist leaves stale output. `--backend symlink` does not correct this. Do not call this a live root link.\n- Relative `link:../..` in a child requests global registration. Listing `.` as a workspace does not make workspace:* resolve root. Neither is selected.\n\n## Transition failure\n\nThe older single-workspace fixture was expanded and reinstalled without fully clearing its prior package-local installation state. A nested core link under packages/react pointed at `../..` (the React directory), shadowing the correct root link and breaking imports. Its files/lock remain in override-file-hoisted. This is not reproduced by the clean three-workspace fixture. Changing linkers needs a clean reinstall of root and package-local node_modules and an actual-root-resolution regression check; an install exit code alone is insufficient.\n\n## Reproduce\n\n- `bun probe.ts`: initial protocol/linker matrix, results.json.\n- `bun fresh-three.ts`: creates a new three-workspace fixture, runs initial and clean frozen installs, checks rebuild/runtime/bundler, writes fresh-three-results.json with full metafiles.\n- `bun final-verification.ts`: repeated frozen reinstall and runtime/bundled singleton check; writes final-verification.json and exits nonzero on failure.\n\n`verify-hoisted.ts` preserves the transition experiment; it is expected to expose that earlier contaminated state. An optional-peer/file-devDependency alternative finished before the stop instruction and is recorded in probe-alternative.ts/alternative-results.json; it is not the selected recommendation, because required production peer semantics should remain intact.\n\n## Official sources\n\n- https://bun.com/docs/runtime/bunfig#installlinker explicitly supports project-local `[install] linker = \"hoisted\"`.\n- https://bun.com/docs/pm/cli/install#installation-strategies describes hoisted versus isolated installation.\n- https://bun.com/docs/pm/cli/install#overrides-and-resolutions documents root dependency overrides.\n- https://bun.com/docs/pm/cli/link documents registered linkable packages; no global registration was used here.\n- https://bun.com/docs/pm/workspaces documents child workspace references and packaging rewrites. The root behavior above is established by executable evidence, not assumed from the workspace examples.\n\nNo server or browser processes were started for this investigation.\n"
+    },
+    "/tmp/acme-root-link-hwiUZg/fresh-three.ts": {
+      "source": "import fs from 'node:fs';import path from 'node:path';const d=import.meta.dir,root=fs.mkdtempSync(d+'/fresh-three-'),name='@acme/root-probe';await Bun.write(root+'/package.json',JSON.stringify({name,version:'0.2.0',type:'module',exports:{'.':'./dist/index.js'},files:['dist'],workspaces:['packages/*'],overrides:{[name]:'file:.'}}));await Bun.write(root+'/bunfig.toml','[install]\\nlinker = \"hoisted\"\\n');await Bun.write(root+'/dist/index.js','export const value=\"before\";export const identity={};');for(const n of ['react','devtools','mcp']){await Bun.write(root+'/packages/'+n+'/package.json',JSON.stringify({name:'@acme/'+n+'-probe',version:'0.2.0',private:true,type:'module',exports:{'.':'./index.js'},peerDependencies:{[name]:'0.2.0'}}));await Bun.write(root+'/packages/'+n+'/index.js',`export {value,identity} from '${name}';`);}await Bun.write(root+'/consumer.js',`import {value as a,identity as ia} from '@acme/react-probe';import {value as b,identity as ib} from '@acme/devtools-probe';import {value as c,identity as ic} from '@acme/mcp-probe';import {identity as actual} from './dist/index.js';console.log(JSON.stringify({values:[a,b,c],same:ia===ib&&ib===ic&&ic===actual}));`);const report={root,stages:[]};\nfor(const stage of ['initial','frozen-clean','rebuilt']){let install;if(stage!=='rebuilt'){if(stage==='frozen-clean'){fs.rmSync(root+'/node_modules',{recursive:true,force:true});for(const n of ['react','devtools','mcp'])fs.rmSync(root+'/packages/'+n+'/node_modules',{recursive:true,force:true});}const p=Bun.spawnSync(['bun','install','--ignore-scripts',...(stage==='frozen-clean'?['--frozen-lockfile']:[])],{cwd:root});install={exit:p.exitCode,log:p.stdout.toString()+p.stderr.toString()};}else{fs.rmSync(root+'/dist',{recursive:true});await Bun.write(root+'/dist/index.js','export const value=\"rebuilt\";export const identity={};');}const p=Bun.spawnSync(['bun',root+'/consumer.js'],{cwd:root}),links={};for(const prefix of ['',...['react','devtools','mcp'].map(n=>'packages/'+n+'/')]){const link=root+'/'+prefix+'node_modules/'+name;try{links[prefix||'root']={target:fs.readlinkSync(link),real:fs.realpathSync(link)}}catch(e){links[prefix||'root']=String(e)}}let build;try{const b=await Bun.build({entrypoints:[root+'/consumer.js'],outdir:root+'/built',target:'bun',metafile:true});build={success:b.success,metafile:b.metafile};}catch(e){build={error:String(e)}}report.stages.push({stage,install,runtime:{exit:p.exitCode,out:p.stdout.toString(),error:p.stderr.toString()},links,build});}\nawait Bun.write(d+'/fresh-three-results.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));\n"
+    },
+    "/tmp/acme-root-link-hwiUZg/final-verification.ts": {
+      "source": "import fs from 'node:fs';const d=import.meta.dir,fixture=await Bun.file(d+'/fresh-three-results.json').json(),root=fixture.root;const before=await Bun.file(root+'/bun.lock').text(),p=Bun.spawnSync(['bun','install','--frozen-lockfile','--ignore-scripts'],{cwd:root}),after=await Bun.file(root+'/bun.lock').text();const result={bun:Bun.version,root,install:{exit:p.exitCode,log:p.stdout.toString()+p.stderr.toString()},unchangedLock:before===after,runtime:{},bundled:{}};for(const [key,file]of [['runtime','consumer.js'],['bundled','built/consumer.js']]){const proc=Bun.spawnSync(['bun',root+'/'+file],{cwd:root});result[key]={exit:proc.exitCode,output:proc.stdout.toString(),error:proc.stderr.toString()};}result.actualRoot=fs.realpathSync(root+'/node_modules/@acme/root-probe');result.pass=result.install.exit===0&&result.unchangedLock&&result.actualRoot===root&&['runtime','bundled'].every(k=>result[k].exit===0&&JSON.parse(result[k].output).same&&JSON.parse(result[k].output).values.every(x=>x==='rebuilt'));await Bun.write(d+'/final-verification.json',JSON.stringify(result,null,2));console.log(result);if(!result.pass)process.exitCode=1;\n"
+    }
+  }
+}

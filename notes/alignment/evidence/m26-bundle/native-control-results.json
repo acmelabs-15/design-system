@@ -1,0 +1,86 @@
+{
+  "bun": "1.4.2",
+  "reports": [
+    {
+      "engine": "chromium",
+      "browser": "154.0.8037.57",
+      "mode": "native",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "engine": "chromium",
+      "browser": "154.0.8037.57",
+      "mode": "single",
+      "before": "undefined",
+      "after": "function",
+      "same": true,
+      "pass": false
+    },
+    {
+      "engine": "chromium",
+      "browser": "154.0.8037.57",
+      "mode": "split",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "mode": "native",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "mode": "single",
+      "before": "undefined",
+      "after": "function",
+      "same": true,
+      "pass": false
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "mode": "split",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "engine": "webkit",
+      "browser": "26.6",
+      "mode": "native",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "engine": "webkit",
+      "browser": "26.6",
+      "mode": "single",
+      "before": "undefined",
+      "after": "function",
+      "same": true,
+      "pass": false
+    },
+    {
+      "engine": "webkit",
+      "browser": "26.6",
+      "mode": "split",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    }
+  ]
+}

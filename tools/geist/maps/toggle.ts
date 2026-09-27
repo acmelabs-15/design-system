@@ -4,6 +4,7 @@
 import { type GeistMap, has, type SpecNode } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "toggle",
   component: "Toggle",
   root: (n: SpecNode) => n.tag === "label" && has("touch-manipulation")(n),
@@ -27,7 +28,13 @@ export const geist: GeistMap = {
     {
       ours: ".track",
       pick: has("peer-focus-visible:ring"),
-      children: [{ ours: ".thumb", pick: (c: SpecNode) => c.tag === "div", children: [{ ours: ".icon", pick: (c: SpecNode) => c.tag === "div", children: [{ ours: "svg", pick: (c: SpecNode) => c.tag === "svg", leaf: true }] }] }],
+      children: [
+        {
+          ours: ".thumb",
+          pick: (c: SpecNode) => c.tag === "div",
+          children: [{ ours: ".icon", pick: (c: SpecNode) => c.tag === "div", children: [{ ours: "svg", pick: (c: SpecNode) => c.tag === "svg", leaf: true }] }],
+        },
+      ],
     },
   ],
   ignore: ["peer"],

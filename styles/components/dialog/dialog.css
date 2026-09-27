@@ -1,0 +1,19 @@
+:host{display:block;min-inline-size:0;}
+[part=root]{min-inline-size:0;}
+dialog{position:fixed;inset:0;margin:auto;padding:0;border:0;border-radius:var(--r-lg,12px);inline-size:min(540px,calc(100vw - 32px));max-inline-size:calc(100vw - 32px);max-block-size:calc(100dvh - 32px);background:var(--ds-background-100);color:var(--ds-gray-1000);box-shadow:var(--acme-shadow-6);font:inherit;overflow:auto;opacity:var(--_dialog-progress,0);transform:scale(calc(var(--ds-motion-overlay-scale,.96) + (1 - var(--ds-motion-overlay-scale,.96)) * var(--_dialog-spatial,0)));}
+dialog:not([open]){display:none;}
+dialog[data-size=small]{inline-size:min(400px,calc(100vw - 32px));}
+dialog[data-size=large]{inline-size:min(800px,calc(100vw - 32px));}
+dialog::backdrop{background:rgb(0 0 0 / .4);opacity:var(--_dialog-progress,0);}
+.frame{display:flex;flex-direction:column;min-inline-size:0;}
+[part=header],[part=body],[part=footer]{padding:var(--acme-spacing-5);min-inline-size:0;}
+[part=header]{padding-block-end:0;}
+[part=heading]{font-weight:var(--acme-font-weight-600);font-size:1.25rem;line-height:1.4;}
+[part=description]{margin-block-start:var(--acme-spacing-2);color:var(--ds-gray-900);font-size:.875rem;line-height:1.5;}
+[part=footer]{display:flex;align-items:center;justify-content:flex-end;gap:var(--acme-spacing-2);padding-block-start:0;}
+[part=root]:focus-visible,[part=heading]:focus-visible{outline:2px solid var(--ds-focus-color);outline-offset:2px;}
+[hidden]{display:none!important;}
+@media(forced-colors:active){dialog{border:1px solid CanvasText;background:Canvas;color:CanvasText;box-shadow:none;}[part=root]:focus-visible,[part=heading]:focus-visible{outline-color:Highlight;}}
+::slotted(h1[slot=heading]),::slotted(h2[slot=heading]),::slotted(h3[slot=heading]),::slotted(h4[slot=heading]),::slotted(h5[slot=heading]),::slotted(h6[slot=heading]){margin:0;font:inherit;}
+::slotted([slot=description]){margin:0;}
+[part=body]{--_acme-inset-inline-start:var(--acme-spacing-5);--_acme-inset-inline-end:var(--acme-spacing-5);--_acme-inset-block-start:var(--acme-spacing-5);--_acme-inset-block-end:var(--acme-spacing-5);}

@@ -1,0 +1,5 @@
+--- official/eval-viewer/generate_review.py
++++ temporary/eval-viewer/generate_review.py
+@@
+-    data_json = json.dumps(embedded)
++    data_json = json.dumps(embedded).replace("<", "\\u003c")

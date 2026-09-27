@@ -1,0 +1,29 @@
+import { expect, test } from "bun:test";
+import "../../../all";
+
+test("Segmented Control owns one value while items expose only their own inputs", async () => {
+  const group = document.createElement("acme-segmented-control");
+  group.innerHTML = '<acme-segmented-control-item value="first">First</acme-segmented-control-item><acme-segmented-control-item value="second">Second</acme-segmented-control-item>';
+  document.body.append(group);
+  await group.updateComplete;
+  const [first, second] = [...group.querySelectorAll("acme-segmented-control-item")];
+  await first.updateComplete;
+  await second.updateComplete;
+  expect(group.value).toBeUndefined();
+  expect(group.orientation).toBe("horizontal");
+  expect(group.size).toBe("medium");
+  expect("checked" in first).toBe(false);
+  expect("name" in first).toBe(false);
+  expect("size" in first).toBe(false);
+  expect("loop" in group).toBe(false);
+  const seen: unknown[] = [];
+  group.addEventListener("acme-change", (e) => seen.push((e as CustomEvent).detail));
+  first.click();
+  expect(group.value).toBe("first");
+  expect(seen).toEqual([{ value: "first" }]);
+  group.value = "second";
+  expect(seen).toHaveLength(1);
+  group.formResetCallback();
+  expect(group.value).toBeUndefined();
+  group.remove();
+});

@@ -1,77 +1,78 @@
-import { describe, expect, test } from "bun:test";
-import "../../../index";
+import { afterEach, expect, test } from "bun:test";
+import "../../../all";
 import type { AcmeAvatar } from "../avatar";
 
-const mount = async (markup: string) => {
+afterEach(() => document.body.replaceChildren());
+async function mount(markup: string) {
   document.body.innerHTML = markup;
-  const el = document.body.firstElementChild as AcmeAvatar;
-  await el.updateComplete;
-  return el;
-};
-const root = (el: AcmeAvatar) => el.shadowRoot!.querySelector(".avatar") as HTMLElement;
+  const element = document.body.firstElementChild as AcmeAvatar;
+  await element.updateComplete;
+  return element;
+}
+const root = (avatar: AcmeAvatar) => avatar.shadowRoot!.querySelector("[part=root]")!;
+test("Avatar has no invented image and derives grapheme-aware initials from its label", async () => {
+  const avatar = await mount('<acme-avatar label="Élodie Brontë"></acme-avatar>');
+  expect(root(avatar).getAttribute("role")).toBe("img");
+  expect(root(avatar).getAttribute("aria-label")).toBe("Élodie Brontë");
+  expect(root(avatar).querySelector("img")).toBeNull();
+  expect(root(avatar).querySelector("[part=fallback]")!.textContent).toBe("ÉB");
+  expect("username" in avatar).toBe(false);
+  avatar.initials = "E";
+  await avatar.updateComplete;
+  expect(root(avatar).querySelector("[part=fallback]")!.textContent).toBe("E");
+});
+test("Avatar image success and error have separate state and secret-free events", async () => {
+  const avatar = await mount('<acme-avatar src="/image.png?secret=private" label="Person"></acme-avatar>');
+  const events: unknown[] = [];
+  avatar.addEventListener("acme-error", (e) => events.push((e as CustomEvent).detail));
+  const image = root(avatar).querySelector("img")!;
+  image.dispatchEvent(new Event("error"));
+  await avatar.updateComplete;
+  expect(root(avatar).getAttribute("data-state")).toBe("error");
+  expect(root(avatar).querySelector("[part=fallback]")!.hasAttribute("hidden")).toBe(false);
+  expect(JSON.stringify(events)).not.toContain("private");
+  avatar.src = "/second.png";
+  await avatar.updateComplete;
+  let loaded = 0;
+  avatar.addEventListener("acme-load", () => loaded++);
+  const next = root(avatar).querySelector("img")!;
+  next.dispatchEvent(new Event("load"));
+  await avatar.updateComplete;
+  expect(root(avatar).getAttribute("data-state")).toBe("loaded");
+  expect(loaded).toBe(1);
+  next.dispatchEvent(new Event("load"));
+  expect(loaded).toBe(1);
+});
+test("replaced and disconnected image completions cannot publish", async () => {
+  const avatar = await mount('<acme-avatar src="/old.png"></acme-avatar>');
+  const old = root(avatar).querySelector("img")!;
+  let loaded = 0;
+  avatar.addEventListener("acme-load", () => loaded++);
+  avatar.src = "/new.png";
+  old.dispatchEvent(new Event("load"));
+  await avatar.updateComplete;
+  expect(loaded).toBe(0);
+  const current = root(avatar).querySelector("img")!;
+  avatar.remove();
+  current.dispatchEvent(new Event("load"));
+  expect(loaded).toBe(0);
+});
+test("decorative avatar preserves fallback and badge author content without a second image name", async () => {
+  const avatar = await mount('<acme-avatar shape="square" loading><span slot="fallback">?</span><span slot="badge">Online</span></acme-avatar>');
+  expect(root(avatar).getAttribute("aria-hidden")).toBe("true");
+  expect(root(avatar).getAttribute("data-shape")).toBe("square");
+  expect(root(avatar).getAttribute("aria-busy")).toBe("true");
+  expect(avatar.shadowRoot!.querySelector("[part=badge] slot")).not.toBeNull();
+});
 
-describe("acme-avatar", () => {
-  test("username renders the image at twice the size, labels the root and starts unresolved", async () => {
-    const el = await mount(`<acme-avatar username="rauchg" size="32"></acme-avatar>`);
-    const a = root(el);
-    expect(a.getAttribute("role")).toBe("img");
-    expect(a.getAttribute("aria-label")).toBe("Avatar for rauchg");
-    expect(a.getAttribute("style")).toContain("--size:32px");
-    expect(a.getAttribute("data-mask")).toBe("true");
-    expect(a.getAttribute("data-resolved")).toBe("false");
-    const img = a.querySelector("img")!;
-    expect(img.getAttribute("src")).toBe("https://vercel.com/api/www/avatar?u=rauchg&s=64");
-    expect(img.getAttribute("alt")).toBe("Avatar for rauchg");
-    expect(el.shadowRoot!.querySelector(".avatar-wrap")).toBeNull();
-  });
-
-  test("the image's load resolves the root; a new source starts over", async () => {
-    const el = await mount(`<acme-avatar username="rauchg"></acme-avatar>`);
-    root(el).querySelector("img")!.dispatchEvent(new Event("load"));
-    await el.updateComplete;
-    expect(root(el).getAttribute("data-resolved")).toBe("true");
-    el.username = "shuding";
-    await el.updateComplete;
-    expect(root(el).getAttribute("data-resolved")).toBe("false");
-  });
-
-  test("title names the entity and leaves the host without a tooltip; mask=false is an attribute state", async () => {
-    const el = await mount(`<acme-avatar src="/me.png" title="Jane Doe" mask="false"></acme-avatar>`);
-    expect(root(el).getAttribute("aria-label")).toBe("Jane Doe");
-    expect(el.hasAttribute("title")).toBe(false);
-    expect(root(el).getAttribute("data-mask")).toBe("false");
-  });
-
-  test("letter renders uppercase initials with the screen-reader prefix; placeholder drops the image and renders the empty shell", async () => {
-    const initials = await mount(`<acme-avatar letter="sl" size="32"></acme-avatar>`);
-    expect(root(initials).querySelector(".letter")!.textContent).toBe("SL");
-    expect(root(initials).getAttribute("aria-label")).toBe("Avatar with initials: SL");
-    const el = await mount(`<acme-avatar letter="sl" placeholder size="32"></acme-avatar>`);
-    expect(root(el).querySelector(".letter")!.textContent).toBe("SL");
-    expect(root(el).getAttribute("aria-label")).toBe("Placeholder Avatar");
-    expect(root(el).querySelector("img")).toBeNull();
-    const shell = await mount(`<acme-avatar placeholder size="90"></acme-avatar>`);
-    expect(root(shell).children.length).toBe(0);
-    expect(root(shell).getAttribute("aria-label")).toBe("Placeholder Avatar");
-  });
-
-  test("git wraps the avatar with the service dot and the provider's mark; GitHub images come from GitHub", async () => {
-    const el = await mount(`<acme-avatar git="github" username="rauchg" size="32"></acme-avatar>`);
-    const wrap = el.shadowRoot!.querySelector(".avatar-wrap")!;
-    expect(wrap.classList.contains("github")).toBe(true);
-    expect(wrap.getAttribute("style")).toContain("--size:32px");
-    const dot = wrap.querySelector(".service")!;
-    expect(dot.getAttribute("data-git-type")).toBe("github");
-    expect(dot.getAttribute("data-icon-background")).toBe("true");
-    expect(dot.querySelector("slot[name=icon] > svg path")).not.toBeNull();
-    expect(root(el).querySelector("img")!.getAttribute("src")).toBe("https://avatars.githubusercontent.com/rauchg?s=64");
-  });
-
-  test("a slotted icon gets the dot; icon-background marks its disc", async () => {
-    const el = await mount(`<acme-avatar icon-background size="32"><svg slot="icon" width="14" height="14"></svg></acme-avatar>`);
-    const dot = el.shadowRoot!.querySelector(".avatar-wrap .service")!;
-    expect(dot.hasAttribute("data-git-type")).toBe(false);
-    expect(dot.getAttribute("data-icon-background")).toBe("true");
-    expect((dot.querySelector("slot[name=icon]") as HTMLSlotElement).assignedElements().length).toBe(1);
-  });
+test("removing scalar attributes restores authored defaults", async () => {
+  const avatar = await mount('<acme-avatar label="Person" initials="P" size="large" shape="square"></acme-avatar>');
+  for (const attr of ["label", "initials", "size", "shape"]) {
+    avatar.removeAttribute(attr);
+  }
+  await avatar.updateComplete;
+  expect(avatar.label).toBe("");
+  expect(avatar.initials).toBe("");
+  expect(avatar.size).toBe("medium");
+  expect(avatar.shape).toBe("circle");
 });

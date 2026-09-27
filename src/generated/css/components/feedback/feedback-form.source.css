@@ -1,0 +1,7 @@
+:host{display:block;min-inline-size:0;}
+[part=root]{box-sizing:border-box;inline-size:100%;min-inline-size:0;}
+[part=form]{display:flex;flex-direction:column;gap:var(--acme-spacing-4);margin:0;}
+header{display:flex;flex-direction:column;gap:var(--acme-spacing-2);}
+h2{font-size:16px;line-height:1.5;font-weight:var(--acme-font-weight-600);margin:0;}
+p{font-size:14px;line-height:1.5;color:var(--ds-gray-900);margin:0;}
+[part=actions]{display:flex;justify-content:flex-end;gap:var(--acme-spacing-2);}
