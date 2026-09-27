@@ -11,7 +11,7 @@ test("feedback snapshots own only serializable application fields", () => {
   expect(() =>
     feedbackValue({
       get message() {
-        throw Error("getter");
+        throw new Error("getter");
       },
     }),
   ).toThrow();

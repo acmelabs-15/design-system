@@ -1,6 +1,6 @@
 import { ContextProvider } from "@lit/context";
 import { createAtom } from "@tanstack/lit-store";
-import { html, nothing } from "lit";
+import { html } from "lit";
 import { property } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import { boolish, sharedCss } from "../../base";
@@ -12,7 +12,7 @@ import { message, messageCatalogs } from "../../shared/messages";
 import { AcmeSemanticElement } from "../../shared/semantic-element";
 import { StoreSelector } from "../../shared/store-connection";
 import { type ToastGeometry, type ToastOwner, type ToastPart, type ToastPlacement, type ToastView, toastContext, toastPartFor } from "../../shared/toast-context";
-import { type ToastEntry, type ToastRuntime, type ToastStore, toastRuntime } from "../../shared/toast-store";
+import { type ToastRuntime, type ToastStore, toastRuntime } from "../../shared/toast-store";
 /** Presents one explicit notification store with limited, overlapping messages.
  * @slot - Optional direct Toast children keyed by toast-id for authored content.
  * @csspart root - Stable viewport wrapper.

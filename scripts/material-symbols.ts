@@ -187,7 +187,7 @@ export async function verifySymbols(root = ROOT): Promise<SymbolCatalog> {
   if (catalog.baseline.weight !== 400 || catalog.baseline.grade !== 0 || catalog.baseline.opticalSize !== 24) {
     throw new Error("Unexpected symbol baseline");
   }
-  const actual = new Set([...new Bun.Glob("**/*.svg").scanSync({ cwd: directory })]);
+  const actual = new Set(new Bun.Glob("**/*.svg").scanSync({ cwd: directory }));
   for (const symbol of catalog.symbols) {
     if (symbol.tag !== symbolTag(symbol.name) || symbol.className !== symbolClassName(symbol.name) || symbol.assets.length !== 6) {
       throw new Error("Invalid symbol manifest");

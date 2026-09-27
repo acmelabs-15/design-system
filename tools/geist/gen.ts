@@ -8,6 +8,7 @@
 // Run: bun tools/geist/gen.ts [name ...]   (default: every mapping in tools/geist/maps)
 import fs from "node:fs";
 import path from "node:path";
+import { localInputs } from "../../scripts/local-inputs";
 import { removeStyle, writeStyle, type PropertyRegistration } from "../../scripts/styles";
 import { atoms, type Decl, loadReference, parseDecls, serialize, simplify, twProperty } from "./simplify";
 import { allRules, keyframesOf, resolve } from "./tw";
@@ -470,7 +471,7 @@ function parseState(
   return { theme: dark ? "dark" : light ? "light" : "", rootState, state: s, ancestors };
 }
 /** The class names of one compound segment (pseudo-class arguments left out). */
-const classesIn = (seg: string) => [...stripParens(seg).matchAll(/\.((?:\\.|[^\s.:>~+\[\]()])+)/g)].map((m) => unesc(m[1]));
+const classesIn = (seg: string) => [...stripParens(seg).matchAll(/\.((?:\\.|[^\s.:>~+[\]()])+)/g)].map((m) => unesc(m[1]));
 /** A selector's compound segments at paren depth 0, each with the combinator before it (`" "`, `>`, `+` or `~`); `tail` is a combinator the selector ends on. */
 function segments(sel: string): { segs: { comb: string; seg: string }[]; tail: string } {
   const segs: { comb: string; seg: string }[] = [];
@@ -787,7 +788,7 @@ function removeClasses(seg: string): string {
     }
     if (!depth && ch === ".") {
       k++;
-      while (k < seg.length && !/[\s.:>~+\[\]()]/.test(seg[k])) {
+      while (k < seg.length && !/[\s.:>~+[\]()]/.test(seg[k])) {
         if (seg[k] === "\\") {
           k++;
         }
@@ -830,7 +831,7 @@ function compoundAt(sel: string, i: number): { start: number; end: number; class
   while (end < sel.length && !boundary(end)) {
     end++;
   }
-  const classes = [...stripParens(sel.slice(start, end)).matchAll(/\.((?:\\.|[^\s.:>~+\[\]()])+)/g)].map((m) => unesc(m[1]));
+  const classes = [...stripParens(sel.slice(start, end)).matchAll(/\.((?:\\.|[^\s.:>~+[\]()])+)/g)].map((m) => unesc(m[1]));
   return { start, end, classes };
 }
 const FAMILIES: Record<string, RegExp> = {
@@ -1709,7 +1710,7 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
       report.push(`${name}: composed host mirror takes the base alone; composed modifier classes on a mirrored property left out: ${modifiers.join("  ")}`);
     }
   }
-  const childIgnore = new Set(map.ignore ?? []);
+  const childIgnore = new Set(map.ignore);
   // The reference compounds of slotted content, for a context ancestor's rule that ends on one (see EmitOptions.slotted).
   const slottedKeys = Array.isArray(map.slotted) ? map.slotted : Object.keys(map.slotted ?? {});
   const unresolved = { unresolved: new Set<string>(), dropped: new Set<string>(), crossing: new Set<string>(), inert: new Set<string>() };
@@ -2225,7 +2226,7 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
     buf = [];
   };
   // The keyframes the module's animations name (and those the mapping lists) ship with it.
-  const animations = new Set(map.keyframes ?? []);
+  const animations = new Set(map.keyframes);
   for (const o of order(outs, report, name, defaults, dominates, labeled, propMods)) {
     if (o.at !== at) {
       flush();
@@ -2342,7 +2343,7 @@ export async function writeStyles(name: string): Promise<{ file: string; report:
   for (const [theirs, ours] of Object.entries(geist.assets ?? {})) {
     own = own.replaceAll(theirs, ours);
   }
-  const inputs = [
+  const inputs = localInputs(ROOT, [
     "tools/geist/gen.ts",
     "tools/geist/tw.ts",
     "tools/geist/simplify.ts",
@@ -2350,7 +2351,7 @@ export async function writeStyles(name: string): Promise<{ file: string; report:
     ...Object.keys(maps).map((n) => "tools/geist/maps/" + n + ".ts"),
     ...(geist.extends ? ["tools/geist/maps/" + geist.extends.split("/")[0] + ".ts"] : []),
     ...new Set([geist, ...(parent ? [parent] : []), ...Object.values(maps)].map((m) => "tools/geist/spec/" + m.page + ".json")),
-  ];
+  ]);
   const externalInputs = [...new Bun.Glob("tools/geist/corpus/css/*.css").scanSync(ROOT), ...new Bun.Glob("tools/geist/corpus/html/*.html").scanSync(ROOT)];
   writeStyle("components/" + (geist.element ?? name) + "/" + name, own, { producer: "mapped", inputs, externalInputs, properties: properties.map((p) => ({ ...p, name: rename(p.name) })) });
   const file = path.join(dir, name + ".styles.ts");

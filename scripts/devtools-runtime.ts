@@ -67,7 +67,7 @@ export async function buildDevtoolsRuntime(root = path.resolve(import.meta.dir, 
     plugins: [devtoolsRuntimePlugin()],
   });
   if (!result.success) {
-    throw new AggregateError(result.logs);
+    throw new AggregateError(result.logs, "Devtools bundle compilation failed");
   }
   const names = ["@tanstack/devtools-ui", "solid-js", "goober", "clsx", "dayjs"];
   await mkdir(path.join(outdir, "licenses"), { recursive: true });

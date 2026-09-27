@@ -72,7 +72,7 @@ const render = (b: Out) => {
 const cssText = sheetOrder()
   .map((f) => fs.readFileSync(path.join(import.meta.dir, "corpus/css", f), "utf8"))
   .join("\n");
-const props = Array.from(new Set(cssText.match(/@property --tw-[a-z0-9-]+\{[^}]*\}/g) ?? [])).join("\n");
+const props = Array.from(new Set(cssText.match(/@property --tw-[a-z0-9-]+\{[^}]*\}/g))).join("\n");
 
 const fonts = `:root {
   --font-geist-sans: "Google Sans Flex", var(--font-sans-fallback);

@@ -1,4 +1,4 @@
-import { html, nothing } from "lit";
+import { html } from "lit";
 import { property } from "lit/decorators.js";
 import { tabbable } from "tabbable";
 import { boolish, sharedCss } from "../../base";

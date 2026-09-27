@@ -1,0 +1,217 @@
+{
+  "evaluation": "react-baseline",
+  "packages": {
+    "core": "0.2.0",
+    "reactWrappers": "0.2.0",
+    "react": "19.3.0",
+    "reactDOM": "19.3.0"
+  },
+  "build": "pass",
+  "typecheck": "pass",
+  "checks": [
+    {
+      "name": "Native AX names",
+      "pass": true,
+      "detail": [
+        "tablist:Editor views",
+        "tabpanel:Source",
+        "radiogroup:Plan",
+        "radio:Starter",
+        "radio:Pro",
+        "tab:Source",
+        "tab:Output"
+      ]
+    },
+    {
+      "name": "Attached surfaces",
+      "pass": true
+    },
+    {
+      "name": "Keyboard Tab enters selected Source tab",
+      "pass": true
+    },
+    {
+      "name": "ArrowRight activates Output",
+      "pass": true
+    },
+    {
+      "name": "Editor state preserved",
+      "pass": true
+    },
+    {
+      "name": "Editor mounted once while switching",
+      "pass": true,
+      "detail": {
+        "events": [
+          {
+            "kind": "tab",
+            "value": "output"
+          },
+          {
+            "kind": "tab",
+            "value": "source"
+          }
+        ],
+        "mounts": 1,
+        "cleanups": 0
+      }
+    },
+    {
+      "name": "Plan changes independently of tab",
+      "pass": true
+    },
+    {
+      "name": "Exactly one radio selected",
+      "pass": true
+    },
+    {
+      "name": "One typed callback per action",
+      "pass": true,
+      "detail": [
+        {
+          "kind": "tab",
+          "value": "output"
+        },
+        {
+          "kind": "tab",
+          "value": "source"
+        },
+        {
+          "kind": "plan",
+          "value": "pro"
+        }
+      ]
+    },
+    {
+      "name": "Unmount removes preferences and cleans editor",
+      "pass": true
+    },
+    {
+      "name": "Remount has fresh editor state",
+      "pass": true
+    },
+    {
+      "name": "Remount callbacks are not duplicated",
+      "pass": true,
+      "detail": [
+        {
+          "kind": "tab",
+          "value": "output"
+        },
+        {
+          "kind": "tab",
+          "value": "source"
+        },
+        {
+          "kind": "plan",
+          "value": "pro"
+        },
+        {
+          "kind": "tab",
+          "value": "output"
+        },
+        {
+          "kind": "plan",
+          "value": "pro"
+        }
+      ]
+    },
+    {
+      "name": "Remount lifecycle counts",
+      "pass": true,
+      "detail": {
+        "events": [
+          {
+            "kind": "tab",
+            "value": "output"
+          },
+          {
+            "kind": "tab",
+            "value": "source"
+          },
+          {
+            "kind": "plan",
+            "value": "pro"
+          },
+          {
+            "kind": "tab",
+            "value": "output"
+          },
+          {
+            "kind": "plan",
+            "value": "pro"
+          }
+        ],
+        "mounts": 2,
+        "cleanups": 1
+      }
+    },
+    {
+      "name": "No page errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "firstFailuresAndRepairs": [
+    {
+      "phase": "browser harness",
+      "error": "Plan summary assertion ran after native value changed but before React committed the event update.",
+      "repair": "Wait for rendered summary as the end-to-end oracle; preserve first-browser-result.json."
+    },
+    {
+      "phase": "setup",
+      "error": "Evaluation directory did not exist; initial ls returned ENOENT.",
+      "repair": "Created assigned evaluation directory."
+    },
+    {
+      "phase": "API discovery",
+      "error": "card-group.d.ts did not exist.",
+      "repair": "Read Group declarations; composed RadioGroup > Group attached > RadioCard."
+    },
+    {
+      "phase": "typecheck",
+      "error": "TS5103: Invalid value for '--ignoreDeprecations' (6.0).",
+      "repair": "Removed unnecessary ignoreDeprecations setting; typecheck passes."
+    },
+    {
+      "phase": "result reporting",
+      "error": "Pass threshold expected 15 checks but harness defines 14; all 14 passed.",
+      "repair": "Corrected check count to 14."
+    },
+    {
+      "phase": "dev server",
+      "error": "Browser favicon.ico request produced ENOENT in development server; no page JavaScript error.",
+      "repair": "Server returns 204 for favicon.ico."
+    }
+  ],
+  "pass": true,
+  "evidence": {
+    "events": [
+      {
+        "kind": "tab",
+        "value": "output"
+      },
+      {
+        "kind": "tab",
+        "value": "source"
+      },
+      {
+        "kind": "plan",
+        "value": "pro"
+      },
+      {
+        "kind": "tab",
+        "value": "output"
+      },
+      {
+        "kind": "plan",
+        "value": "pro"
+      }
+    ],
+    "mounts": 2,
+    "cleanups": 1
+  },
+  "visualObservations": [
+    "Native screenshot shows attached cards with unequal heights because descriptions wrap differently and Group uses its default cross-axis alignment. Functional attachment markers and shared-edge corner cuts are present. No visual repair attempted in this bounded evaluation."
+  ]
+}

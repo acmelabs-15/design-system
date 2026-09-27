@@ -9,7 +9,7 @@ export function installTestInternals(): void {
   Object.defineProperty(HTMLElement.prototype, "attachInternals", {
     configurable: true,
     writable: true,
-    value: function (this: HTMLElement) {
+    value(this: HTMLElement) {
       if (attached.has(this)) {
         throw new DOMException("Internals already attached", "NotSupportedError");
       }
@@ -18,7 +18,9 @@ export function installTestInternals(): void {
       let flags: ValidityStateFlags = {},
         message = "";
       return {
-        setFormValue(_value: unknown, _state?: unknown) {},
+        setFormValue(_value: unknown, _state?: unknown) {
+          /* Native form submission is verified by the browser fixtures. */
+        },
         setValidity(next: ValidityStateFlags, nextMessage = "") {
           flags = { ...next };
           message = nextMessage;

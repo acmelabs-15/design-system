@@ -26,7 +26,7 @@ export class AcmeAccordion extends AcmeElement {
       throw new TypeError("expanded requires nonempty string keys");
     }
     const previous = this.values;
-    this.values = Object.freeze([...new Set(value ?? [])]);
+    this.values = Object.freeze([...new Set(value)]);
     this.requestUpdate("expanded", previous);
   }
   @atomState() @property({ noAccessor: true, type: Boolean }) multiple = false;

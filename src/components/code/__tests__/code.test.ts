@@ -24,7 +24,9 @@ test("highlighting uses escaped token text and reacts to language/text changes",
   expect(code.shadowRoot!.querySelector(".token.keyword")?.textContent).toBe("const");
   code.textContent = '<img src=x onerror="bad()">';
   code.syntax = "html";
-  await new Promise((resolve) => setTimeout(resolve, 0));
+  await new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
   await code.updateComplete;
   expect(code.shadowRoot!.querySelector("img")).toBeNull();
   expect(code.shadowRoot!.querySelector("code")!.textContent).toBe('<img src=x onerror="bad()">');

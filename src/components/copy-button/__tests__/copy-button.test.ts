@@ -23,7 +23,9 @@ test("copy waits for success, reports no copied data and owns readonly feedback"
   const received: string[] = [];
   write((value) => {
     received.push(value);
-    return new Promise((resolve) => (complete = resolve));
+    return new Promise((resolve) => {
+      complete = resolve;
+    });
   });
   const button = await mount();
   const events: unknown[] = [];
@@ -51,7 +53,12 @@ test("clipboard failures reject and emit a safe message", async () => {
 });
 test("changing the value invalidates stale completion and feedback", async () => {
   let complete!: () => void;
-  write(() => new Promise((resolve) => (complete = resolve)));
+  write(
+    () =>
+      new Promise((resolve) => {
+        complete = resolve;
+      }),
+  );
   const button = await mount();
   let events = 0;
   button.addEventListener("acme-copy", () => events++);
@@ -67,7 +74,9 @@ test("feedback duration and disconnect release the timer", async () => {
   const button = await mount('<acme-copy-button value="x" copied-duration="5"></acme-copy-button>');
   await button.copy();
   expect(button.copied).toBe(true);
-  await new Promise((resolve) => setTimeout(resolve, 15));
+  await new Promise((resolve) => {
+    setTimeout(resolve, 15);
+  });
   expect(button.copied).toBe(false);
   await button.copy();
   button.remove();

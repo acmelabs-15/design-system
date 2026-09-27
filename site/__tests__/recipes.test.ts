@@ -13,9 +13,11 @@ describe("published recipe records", () => {
     expect(recipes.map((recipe) => recipe.id).sort()).toEqual([
       "checkbox-rows",
       "document-navigation",
+      "experimental-worker-table",
       "file-tree",
       "input-addons",
       "integration-cards",
+      "managed-forms",
       "measurement-cards",
       "measurement-rows",
       "relative-time-details",

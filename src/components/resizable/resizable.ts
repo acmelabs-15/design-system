@@ -358,7 +358,9 @@ export class AcmeResizable extends AcmeSemanticElement {
       kind: "keyboard",
       keys: new Set(),
       target,
-      release: () => {},
+      release: () => {
+        /* Listener cleanup is assigned before the gesture is activated. */
+      },
     };
     const view = this.ownerDocument.defaultView!,
       keyup = (event: KeyboardEvent) => {
@@ -438,7 +440,9 @@ export class AcmeResizable extends AcmeSemanticElement {
       point: this.orientation === "horizontal" ? event.clientX : event.clientY,
       keys: new Set(),
       target,
-      release: () => {},
+      release: () => {
+        /* Listener cleanup is assigned before the gesture is activated. */
+      },
     };
     const move = (input: PointerEvent) => {
       if (input.pointerId !== gesture.pointer || this.gesture !== gesture) {

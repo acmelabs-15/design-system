@@ -2,8 +2,10 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import type { Doc, Example } from "./site";
 import { exampleFiles } from "./example-files";
+import { readCorePackage } from "../scripts/core-package";
 import { doc as alertDialog } from "./pages/components/alert-dialog";
 import { doc as input } from "./pages/components/input";
+import { doc as forms } from "./pages/components/forms";
 import { doc as pagination } from "./pages/components/pagination";
 import { doc as stat } from "./pages/components/stat";
 import { doc as table } from "./pages/components/table";
@@ -55,6 +57,7 @@ const slug = (value: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 const root = path.resolve(import.meta.dir, "..");
+const releaseVersion = readCorePackage(root).version;
 const scanner = new Bun.Transpiler({ loader: "tsx" });
 function example(pageId: string, value: Example, sourceFile = "site/recipes.ts", framework: RecipeExample["framework"] = "html"): RecipeExample {
   const components = [...new Set([...value.html.matchAll(/<(acme-[a-z0-9-]+)/g)].map((match) => match[1]))].sort();
@@ -89,6 +92,26 @@ const htmlCleanup = "Remove the mounted example. Component disconnection release
 const recipe = (record: RecipeRecord) => record;
 
 export const recipes: readonly RecipeRecord[] = [
+  recipe({
+    id: "managed-forms",
+    heading: "Managed forms",
+    purpose: "Connect native form controls to application-owned TanStack Form state, including nested fields and editable arrays.",
+    applicationInputs: ["Initial values, stable field paths, validation rules and submission handling. React uses @tanstack/react-form 1.33.5; Lit uses the core package's installed controller."],
+    ownership: [
+      "TanStack Form owns managed values and metadata. Controls retain native validity and FormData. Field presents labels and errors. The application owns disabled state and submission feedback.",
+    ],
+    cleanup: "Removing the Lit element releases its field bindings and controller. Removing the React entry unmounts its root. Reconnection mounts a usable form without retaining detached edits.",
+    accessibility: [
+      "Native required validation focuses the first invalid control. Managed errors are distinct from native validity. Named nested fields submit through FormData; disabled controls are excluded. Reset restores values and clears managed errors.",
+    ],
+    references: [
+      "notes/alignment/inventory/inputs-forms.md#f-10-optional-managed-forms",
+      "https://tanstack.com/form/latest/docs/framework/react/guides/arrays",
+      "https://tanstack.com/form/latest/docs/framework/react/guides/ui-libraries",
+    ],
+    deviations: ["Lit field directive names remain stable for their lifetime, so array fields are keyed by their index path. React fields support rebinding names and retain application row keys."],
+    examples: [existing(forms, "Managed form", "lit"), existing(forms, "Managed form in React", "react")],
+  }),
   recipe({
     id: "settings-rows",
     heading: "Settings rows",
@@ -234,19 +257,50 @@ export const recipes: readonly RecipeRecord[] = [
           sourcePath: "examples/table/virtual-react.ts",
           entryPath: "examples/recipes/virtual-react-entry.ts",
           registerFunction: "registerReactVirtualTableExample",
-          sourceFiles: [
-            "examples/recipes/virtual-react-entry.ts",
-            "examples/table/definitions.ts",
-            "examples/table/data.ts",
-            "examples/table/review-feature.ts",
-            "examples/table/grid-interaction.ts",
-            "examples/table/virtual-layout.ts",
-          ],
         },
         "examples/table/virtual-react.ts",
         "react",
       ),
     ],
+  }),
+  recipe({
+    id: "experimental-worker-table",
+    heading: "Experimental Table workers",
+    purpose: "Keep expensive Table processing in an application-owned worker with visible pending, failure and recovery states.",
+    applicationInputs: [
+      "Rows, worker features, matching worker columns and application recovery policy.",
+      "Copy all supplied files preserving paths, including main.ts and index.html. Use Bun 1.4.2 and run bun init -y in the application directory.",
+      `Lit install: bun add --exact @acmelabs/design-system@${releaseVersion} lit@3.3.3 @tanstack/lit-table@9.2.4 @tanstack/lit-store@0.13.2 @tanstack/table-core@9.2.4 @tanstack/store@0.11.1`,
+      `React install: bun add --exact @acmelabs/design-system@${releaseVersion} @acmelabs/design-system-react@${releaseVersion} react@19.3.0 react-dom@19.3.0 @tanstack/react-table@9.2.4 @tanstack/react-store@0.11.1 @tanstack/table-core@9.2.4 @tanstack/store@0.11.1`,
+      "For Table 9.2.4 with custom features in the same application, run bun examples/table/setup.ts once. It verifies the exact version and declaration hashes, then persists the two-line correction using Bun patch. Keep the application patch, package.json and bun.lock together.",
+      "Run bun examples/table/build-worker.ts. Serve dist over HTTP.",
+    ],
+    ownership: [
+      "The application creates and disposes the worker session. Table renders its supplied native content and loading state.",
+      "setup.ts and build-worker.ts are application setup commands. Browser entries never import the patch helper.",
+    ],
+    cleanup: "Lit disconnection disposes its session. React entry disconnection unmounts the root and disposes its session; reconnection creates a new session.",
+    accessibility: ["A live status reports pending, ready and failure. Native controls filter results, simulate failure, retry or show application-owned server results."],
+    references: ["notes/alignment/inventory/data-displays.md#d-01-table", "https://tanstack.com/table/latest/docs/guide/worker-row-models", "https://bun.sh/docs/pm/cli/patch"],
+    deviations: ["The experimental upstream plugin remains application-owned. Its Table 9.2.4 declaration correction changes no runtime JavaScript."],
+    examples: (["lit", "react"] as const).map((framework) =>
+      example(
+        "experimental-worker-table",
+        {
+          h: framework === "lit" ? "Lit worker Table" : "React worker Table",
+          p: "Copy the complete source set. The README at examples/table/README.md lists exact install, optional patch setup and build commands. Run setup only when combining Table 9.2.4 experimental workers and custom features.",
+          html: `<docs-table-worker-${framework} style="display:block"></docs-table-worker-${framework}>`,
+          code: readFileSync(path.join(root, `examples/table/worker-${framework}.ts`), "utf8"),
+          language: "typescript",
+          sourcePath: `examples/table/worker-${framework}.ts`,
+          entryPath: `examples/table/worker-${framework}-entry.ts`,
+          registerFunction: framework === "lit" ? "registerLitWorkerTableExample" : "registerReactWorkerTableExample",
+          sourceFiles: ["examples/table/table-worker.ts", "examples/table/setup.ts", "examples/table/build-worker.ts"],
+        },
+        `examples/table/worker-${framework}.ts`,
+        framework,
+      ),
+    ),
   }),
   recipe({
     id: "relative-time-details",

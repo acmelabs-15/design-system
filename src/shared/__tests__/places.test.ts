@@ -29,7 +29,9 @@ describe("Places", () => {
   test("changing a direct child's slot updates occupancy without an explicit read", async () => {
     const el = await mount('<places-probe><span slot="start">Icon</span></places-probe>');
     el.firstElementChild!.setAttribute("slot", "end");
-    await new Promise((resolve) => setTimeout(resolve, 0));
+    await new Promise((resolve) => {
+      setTimeout(resolve, 0);
+    });
     await el.updateComplete;
     expect(el.places.has("start")).toBe(false);
     expect(el.places.has("end")).toBe(true);
@@ -104,10 +106,14 @@ test("default content tracks text edits and excludes private named children", as
   expect(host.places.has("")).toBe(false);
   const label = document.createTextNode("Copy");
   host.append(label);
-  await new Promise((resolve) => setTimeout(resolve, 0));
+  await new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
   expect(host.places.has("")).toBe(true);
   label.data = "   ";
-  await new Promise((resolve) => setTimeout(resolve, 0));
+  await new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
   expect(host.places.has("")).toBe(false);
   host.remove();
 });

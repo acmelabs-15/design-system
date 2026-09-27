@@ -203,3 +203,85 @@ before asserting family identity. No runtime font workaround was added for this
 harness discrepancy. Public declarations contain no TanStack Devtools UI or Solid
 imports. The runtime has no Lit import either; it uses the host's public controller
 interface and its generated metadata.
+
+## Coordinated release candidate — 2026-09-26
+
+A public registry read confirms @acmelabs/design-system0.2.0 is already published. The replacement API therefore prepares coordinated version0.3.0 for core, React, MCP and Devtools under delegated execution. The optional package metadata now represents implemented release candidates rather than private placeholders. Root remains a private build workspace. Skill version metadata, generated facts and peer versions advance together; this is local release preparation, not publication.
+
+The public0.2.0 package advertises a Sigstore provenance endpoint. Read-only verification of that existing statement can check real trust handling under Bun without issuing a new signature or publishing anything. Actual future OIDC policy, signing and Linux CI still need explicit verification; the publishing workflow remains gated.
+
+### Release runtime verification
+
+The read-only public0.2.0 provenance check fails under Bun1.4.0 while bootstrapping trusted TUF root signatures. The same pinned npm/Sigstore stack succeeds under isolated, checksum-verified Bun1.4.2: tarball integrity, provenance digest, GitHub workflow and certificate identity/issuer, trust verification and rejection of a tampered payload all pass. CI and release checks therefore pin1.4.2; the user's global runtime is unchanged. No signature was issued and nothing was published. Final build/test checks will run with that same isolated runtime.
+
+## M25 toolchain implementation — 2026-09-26
+
+The selected toolchain now has executable project configuration and a Bun-only
+runner. Versions are Oxlint 1.85.0, Oxfmt 0.70.0, Ultracite 7.12.0,
+Stylelint 17.15.0 and postcss-lit 1.4.1. The [tooling evidence](../alignment/evidence/m25-tooling/README.md)
+links the exact preset mapping and repeatable checks. The root command, editor
+and CI cutover remains a separate integration step; this checkpoint does not
+claim publication or a completed release.
+
+The initial full preset check was not treated as a defect count. After the
+selected mechanical formatting pass, it reported 4,694 findings, most involving
+syntax preferences that the project had not adopted. The final configuration
+records each changed setting with a reason. It preserves ordered keys and
+initializers, sequential work, controller registration, getter initialization,
+parser captures, reactive branch reads, and existing public TypeScript type
+shapes. Narrow file overrides cover demonstrated false positives for collection
+snapshots, owner captures, Worker messaging, executable source strings, sparse
+fixtures and concrete extension hooks. There is no diagnostic-count baseline or
+blanket exclusion of authored application code.
+
+The mechanical pass changed 612 tracked JavaScript/TypeScript files. The strengthened
+syntax guard passes for every file. Its regressions distinguish `const` from
+`let`, preserve optional-chain boundaries such as `(obj?.x).y`, retain raw tagged
+template text, and reject changes to key order, dependency reads and JSDoc
+attachment. The pass left all 147 authored CSS files unchanged. At 200 columns,
+Oxfmt changed JSDoc attachment inside the generator's `Entry` type. A tested
+280-column override for that file preserves the original syntax ownership. CSS
+formatting also changed opaque custom-property whitespace in compiled output;
+CSS therefore stays with its compiler and Stylelint rather than receiving a
+formatter rewrite.
+
+Stylelint checks all authored CSS, canonical compiled CSS, and the five source
+test files with actual `css`-tagged templates. It does not send arbitrary
+TypeScript strings to a CSS parser. The syntax boundary disables automatic
+source-map discovery for JavaScript text and fails if postcss-lit skips a real
+CSS template. Tests retain unknown-property and duplicate-declaration errors,
+while permitting consecutive different-value CSS fallbacks.
+
+Two focused cleanup runs pass: 73 runtime/tool tests and 68 generator/package/
+native-content tests. These cover the changed Pin Input bindings, Calendar and
+option-control dependency reads, constructor/event behavior, generated CSS,
+package processing and copied source graphs. Native Chromium accessibility
+checks remain separate from the linter. The consumer-skill tests now derive the
+coordinated core version rather than embedding the previous release number.
+
+The runner captures Oxlint JSON through a fresh truncated file descriptor. A
+regression fixture starts with a larger existing report, then verifies that the
+shorter replacement parses completely. The original pipe-truncation cause is
+still not established; the selected capture path avoids it and separately fixes
+stale trailing bytes on report reuse. TypeScript 5.9 remains the type gate;
+these results do not establish TypeScript-Go equivalence.
+
+### Development dependency audit
+
+Bun's high-severity audit reports three advisories against the direct happy-dom15.11.7 dependency: [VM context escape](https://github.com/advisories/GHSA-37j7-fg3j-429f), [cross-origin cookie selection](https://github.com/advisories/GHSA-w4gp-fjgq-3q4g), and [module export injection](https://github.com/advisories/GHSA-6q6h-j7hj-3r64). Their fixed versions are20.0.0,20.8.9 and20.8.8 respectively. The direct dependency and global registrator are now pinned together at20.14.0, the version already used by the test environment. No Happy DOM code enters the production library. The follow-up audit reports zero vulnerabilities across639 installed packages; eleven affected parser/census tests pass. The final full suite remains part of release acceptance.
+
+### Final local tooling gates
+
+The [final Bun 1.4.2 run](../alignment/evidence/m25-tooling/2026-09-26.json)
+passes Oxlint with **zero diagnostics across 811 authored JS/TS files and 342
+active native rules**, Oxfmt, Stylelint and the strict root TypeScript check.
+Stylelint covers 147 authored CSS files, 167 canonical compiled CSS outputs and
+the five actual Lit-template test files. The combined toolchain/release/version
+fixture run passes 26 tests with 151 assertions. The saved focused groups overlap
+and are not presented as one summed suite count. This closes the local toolchain
+implementation; final build/package acceptance and command/editor/CI integration
+remain the root task's responsibility.
+
+### Credential-handling incident
+
+During a delegated registry investigation in this continuation, an unnecessary read of local npm configuration printed an npm authentication token into tool output. The value is not reproduced here, was not added to repository files and was not reused. Peter was informed in commentary. The token should be revoked and replaced by its owner; no credential rotation or account change was attempted. Keep this follow-up visible in the final handoff without reading or printing the token again.

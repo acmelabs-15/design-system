@@ -235,7 +235,9 @@ export class AcmeFlowDiagram extends AcmeElement {
     }
     this.frame = this.ownerDocument.defaultView!.requestAnimationFrame(() => {
       this.frame = undefined;
-      void this.runLayout(false).catch(() => {});
+      void this.runLayout(false).catch(() => {
+        /* Layout code owns failure reporting and cancellation. */
+      });
     });
   };
   private targets() {
@@ -522,7 +524,16 @@ export class AcmeFlowDiagram extends AcmeElement {
           visibility: box ? "visible" : "hidden",
         })}><button type="button" @click=${() => this.activate(node.id)}>${node.label}</button></article>`;
       },
-    )}</div>${!this.nodes.length ? html`<div class="empty">${this.text("empty", "No nodes")}</div>` : nothing}${this.edges.filter((edge) => edge.label).map((edge) => html`<span part="edge-label" class="measure" data-flow-measure=${edge.id} aria-hidden="true">${edge.label}</span>`)}</div><div class="status" role="status">${this.failure ? html`${this.text("error", "Could not lay out this diagram.")} <acme-button size="small" variant="secondary" @click=${() => void this.layout().catch(() => {})}>${this.text("retry", "Retry")}</acme-button>` : this.busy ? this.text("loading", "Arranging diagram…") : nothing}</div><acme-collapsible><acme-collapsible-trigger>${this.text("relationships", "View relationships")}</acme-collapsible-trigger><acme-collapsible-content><ul>${this.nodes.map(
+    )}</div>${!this.nodes.length ? html`<div class="empty">${this.text("empty", "No nodes")}</div>` : nothing}${this.edges.filter((edge) => edge.label).map((edge) => html`<span part="edge-label" class="measure" data-flow-measure=${edge.id} aria-hidden="true">${edge.label}</span>`)}</div><div class="status" role="status">${
+      this.failure
+        ? html`${this.text("error", "Could not lay out this diagram.")} <acme-button size="small" variant="secondary" @click=${() =>
+            void this.layout().catch(() => {
+              /* Layout code owns failure reporting and cancellation. */
+            })}>${this.text("retry", "Retry")}</acme-button>`
+        : this.busy
+          ? this.text("loading", "Arranging diagram…")
+          : nothing
+    }</div><acme-collapsible><acme-collapsible-trigger>${this.text("relationships", "View relationships")}</acme-collapsible-trigger><acme-collapsible-content><ul>${this.nodes.map(
       (node) =>
         html`<li>${node.label}${
           this.relationships.get().has(node.id)

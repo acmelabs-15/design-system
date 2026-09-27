@@ -37,7 +37,9 @@ const metadata: DiagnosticMetadata = {
   tokens: [],
 };
 const tick = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 0));
+  await new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
 };
 test("public property snapshots update without changing component state or reading undeclared fields", async () => {
   const root = document.createElement("div"),

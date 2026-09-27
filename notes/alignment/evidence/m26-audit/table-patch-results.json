@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-26",
+  "package": "@tanstack/table-core@9.2.4",
+  "method": "TypeScript CompilerHost substitutes published declaration text without changing the installed dependency",
+  "result": [
+    {
+      "mode": "patched",
+      "diagnostics": []
+    },
+    {
+      "mode": "published",
+      "diagnostics": [
+        {
+          "file": "examples/table/data.ts",
+          "line": 25,
+          "code": 2353,
+          "message": "Object literal may only specify known properties, and 'reviewFeature' does not exist in type 'TableFeatures & { aggregationFns?: Record<string, AggregationFnDef<any, any, any, any>> | undefined; expandedRowModel?: ((table: any) => () => RowModel<...>) | undefined; ... 11 more ...; globalFilteringFeature?: TableFeature | undefined; }'."
+        },
+        {
+          "file": "examples/table/data.ts",
+          "line": 63,
+          "code": 2322,
+          "message": "Type '\"sum\"' is not assignable to type 'AggregationFnOption<TableFeatures, Delivery, unknown> | undefined'."
+        },
+        {
+          "file": "examples/table/review-feature.ts",
+          "line": 24,
+          "code": 2322,
+          "message": "Type '<TFeatures extends TableFeatures, TData extends RowData>(table: Table<TFeatures, TData>) => { onReviewedIdsChange: (updater: (old: never) => never) => void; }' is not assignable to type '<TFeatures extends TableFeatures, TData extends RowData>(table: Table<TFeatures, TData>) => Partial<TableOptions_All<TFeatures, TData>>'.\n  Call signature return types '{ onReviewedIdsChange: (updater: (old: never) => never) => void; }' and 'Partial<TableOptions_All<TFeatures, TData>>' are incompatible.\n    The types of 'onReviewedIdsChange' are incompatible between these types.\n      Type '(updater: (old: never) => never) => void' is not assignable to type 'OnChangeFn<string[]>'.\n        Types of parameters 'updater' and 'updaterOrValue' are incompatible.\n          Type 'Updater<string[]>' is not assignable to type '(old: never) => never'.\n            Type 'string[]' is not assignable to type '(old: never) => never'.\n              Type 'string[]' provides no match for the signature '(old: never): never'."
+        },
+        {
+          "file": "examples/table/review-feature.ts",
+          "line": 27,
+          "code": 2345,
+          "message": "Argument of type 'string' is not assignable to parameter of type 'keyof TFeatures & string'.\n  Type 'string' is not assignable to type 'keyof TFeatures'.\n    Type '\"reviewFeature\"' is not assignable to type '\"cellSelectionFeature\" | \"cellSpanningFeature\" | \"columnFilteringFeature\" | \"columnGroupingFeature\" | \"columnOrderingFeature\" | \"columnPinningFeature\" | \"columnResizingFeature\" | ... 32 more ... | \"coreTablesFeature\"'."
+        }
+      ]
+    }
+  ]
+}

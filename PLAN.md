@@ -1,6 +1,6 @@
 # Parity port plan
 
-The record of the parity port, and the standing rules that came out of it. Updated 2026-09-10.
+The historical parity-port record and current standing rules. Active guidance aligned 2026-09-26; dated measurements retain their original scope.
 
 > **The parity port is closed. The current work is the systematization pass:
 > [notes/alignment/README.md](notes/alignment/README.md).** `AGENTS.md` is the entry point for any
@@ -13,7 +13,7 @@ Phase 1 selected [Lit Motion](notes/decisions/animation-package.md), [per-icon M
 
 Research and terminology are closed; [Phase 3 architecture responsibilities](notes/alignment/phase-3-review.md#phase-3-closure) are recorded. Peter approved the complete [Phase 4 inventory, conventions and documentation/tooling](notes/decisions/inventory-approval.md), then the [Phase 5 migration plan](notes/decisions/migration-approval.md). Phase 6 implementation is authorized; no repeated approval is required for its slices.
 
-M00 prerequisites and M01–M04 are complete. The [M03 delivery record](notes/alignment/evidence/m03-delivery-2026-09-20.json) covers explicit registration, selective browser delivery, production packing, reconnect correction and private workspace boundaries. The [removal ledger](notes/alignment/evidence/m04-removals-2026-09-20.json) records completed and coupled retirements. Continue with the shared M05 mechanisms. The [central handoff](notes/alignment/README.md#where-we-are) owns current progress and acceptance limits. Publishing remains separately authorized.
+The [central handoff](notes/alignment/README.md#where-we-are) owns implementation progress and acceptance limits. Read it instead of treating the dated parity tasks below as the active queue. The [execution delegation](notes/decisions/execution-delegation.md) authorizes continued implementation, supported engineering choices and local commits without further questions. Push, publication and deployment remain outside that authorization.
 
 Status legend: `[x]` done · `[~]` running · `[ ]` queued · `[?]` needs Peter
 
@@ -23,9 +23,11 @@ Status legend: `[x]` done · `[~]` running · `[ ]` queued · `[?]` needs Peter
 
 `@acmelabs/design-system` is Peter's design system, built as Lit web components with the
 `acme-` prefix. Repo `~/dev/ACMElabs/design-system`. Pure Bun: no Node runtime, no Python.
-Docs on GitHub Pages, package on npm (0.1.1 published).
+Docs use GitHub Pages. Public npm metadata confirms0.2.0 is published; the replacement implementation prepares coordinated0.3.0 locally. Publication remains disabled during verification.
 
-**The goal is a one-to-one port of the reference design system at <https://vercel.com/geist>**: style,
+**Current goal:** the approved systematization inventory, consistent interfaces and reusable composition govern. Reference systems provide evidence; named adaptations and current acceptance records determine behavior and appearance.
+
+**Historical port scope (closed): a one-to-one port of <https://vercel.com/geist>**: style,
 behaviour and functionality. Confirmed against the live site on 2026-09-10 — our saved snapshot holds
 all 77 of its pages, name for name, and the pages carry that address in their own markup. Every docs page shows the same sections as the reference page. The
 foundations pages match too.
@@ -48,9 +50,7 @@ Our public API therefore does not have to be identical to theirs. It has to be, 
 Where the reference contradicts itself, that is a licence to choose the better name, not an
 instruction to reproduce the contradiction.
 
-What this does **not** loosen: style parity stays exact and census-proven to zero hard differences
-in both themes; behaviour and functionality stay exact, including states, keyboard handling, focus
-movement and motion.
+The closed port used exact census parity. The current pass uses the approved component contracts, recorded reference adaptations and interaction/appearance evidence. A historical zero-difference census does not certify a rebuilt component.
 
 **Functionality counts as much as appearance, and the census cannot see it.** The census reads
 computed styles. It cannot tell you that a button does nothing when clicked. So every element and
@@ -93,23 +93,23 @@ Behaviour is built on these, not on the reference's own dependencies:
 - A vendored copy of cmdk's command-score
 - Our own controllers: `Interaction`, `RovingTabindex`
 
-Phase 1 additions selected 2026-09-19, for implementation only after Phase 5 approval:
+Additional selections made during the pass (Phase5 approval is complete):
 
 - [Native Lit behaviour ports](notes/decisions/zag-behaviour-ports.md) for Pin Input, Number Input, Scroll Area, Steps and resizable panes. This supersedes the earlier actual Zag component dependency/adapter selection. Use TanStack Store, Lit Motion, generated styling and every other applicable package and convention. Zag is a source reference; do not use its createMachine/interpreter, vanilla runtime or state store. Ports may create new components, rebuild existing ones or replace them outright. The selected capabilities and Phase 5 gate stand.
 - Published `match-sorter` for ComboBox ranking, replacing the local copy after [compatibility verification](notes/decisions/match-sorter.md). Command Menu's separate scorer stays unchanged.
-- [@internationalized/number](notes/decisions/number-utilities.md) as an independent Number Input utility, retaining the complete component implementation. It is selected but not installed; 3.6.8 was researched, not pinned for the eventual migration.
-- A [separate React integration package](notes/decisions/react-integration.md) and [native forms with optional TanStack Form](notes/decisions/native-and-managed-forms.md). Exact exports and integration versions remain for the later reviews.
-- Development tooling: [Oxlint + Oxfmt with Ultracite and Stylelint](notes/decisions/lint-toolchain.md), replacing Biome through a coordinated future migration. Current project configuration remains Biome.
+- [@internationalized/number](notes/decisions/number-utilities.md) as an independent Number Input utility, retaining the complete component implementation. It is installed; packages/core/package.json and the lockfile own the exact runtime version.
+- A [separate React integration package](notes/decisions/react-integration.md) and [native forms with optional TanStack Form](notes/decisions/native-and-managed-forms.md). The coordinated core and React exports are implemented; consumer references describe their exact interfaces.
+- Development tooling: [Oxlint + Oxfmt with Ultracite and Stylelint](notes/decisions/lint-toolchain.md), now implemented with explicit rule mapping, CSS checks and source-preserving formatting. Biome is removed.
 
 The extension also selects [Material motion roles](notes/decisions/material-motion-system.md), [shape support](notes/decisions/shape-support.md), [full custom themes](notes/decisions/custom-themes.md) and the [blue accent](notes/decisions/blue-accent.md). The font/appearance table above describes the default appearance; consumer themes can override visual settings under the new theme contract. [SSR is excluded altogether](notes/decisions/server-rendering.md). [Toast uses the selected packages](notes/decisions/toast-behaviour.md), not an extension of the four-control Zag approval. The later review selects [versioned consumer skills](notes/decisions/consumer-skills.md), a [documentation/API MCP](notes/decisions/design-system-mcp.md), [Intent development tooling](notes/decisions/intent-tooling.md), and [TanStack Devtools for the optional inspector](notes/decisions/design-system-devtools.md). [Live AI control is outside this pass](notes/decisions/ai-authoring-scope.md). [Responsive scope/defaults](notes/decisions/responsive-system.md) and [Box](notes/decisions/box-primitive.md) are also selected. TanStack Config practices remain migration recommendations, not package or automation adoption.
 
-The latest control review selects [darker blue with white text](notes/decisions/blue-accent.md) and [optional ripples, off by default](notes/decisions/optional-ripples.md). The example colours are not a complete approved state palette; ripple configuration remains for the inventory.
+The latest control review selects [darker blue with white text](notes/decisions/blue-accent.md) and [optional ripples, off by default](notes/decisions/optional-ripples.md). Approved state roles and ripple interfaces are recorded in the inventory and component acceptance.
 
-The foundation follow-up selects [shared spacing-only density](notes/decisions/density.md), normal by default, with normal inherited spacing for menus/dialogs/Toasts and a 24 × 24 CSS-pixel clickable-area floor in explicitly selected compact mode. Larger touch-friendly sizing remains available; no new universal normal-mode target is selected. [LTR/RTL support](notes/decisions/bidirectional-support.md) covers pages/sections in Lit/React. [Shared moving indicators](notes/decisions/shared-selection-indicator.md) use Lit Motion for suitable single-selection groups without adding another Zag dependency. Exact interfaces and component eligibility remain in later reviews.
+The foundation follow-up selects [shared spacing-only density](notes/decisions/density.md), normal by default, with normal inherited spacing for menus/dialogs/Toasts and a 24 × 24 CSS-pixel clickable-area floor in explicitly selected compact mode. Larger touch-friendly sizing remains available; no new universal normal-mode target is selected. [LTR/RTL support](notes/decisions/bidirectional-support.md) covers pages/sections in Lit/React. [Shared moving indicators](notes/decisions/shared-selection-indicator.md) use Lit Motion for suitable single-selection groups without adding another Zag dependency. The approved inventory and implemented family evidence specify their interfaces and eligibility.
 
 [Shape morphing follows demonstrated component needs](notes/decisions/shape-support.md). The full Material shape catalogue is not required. Use ordinary shape properties first; add custom geometry only for a concrete inventory need. No geometry package is selected.
 
-[Table must support consumers who use TanStack Table](notes/decisions/tanstack-table-compatibility.md); the design system does not integrate or run that package. Applications own its processing, state and optional experimental workers. TanStack Table is not part of the mandated design-system runtime stack. Consumer examples/checks can use TanStack Table; 9.2.4 is its investigated baseline, not a future pin. The later [Flow Diagram decision](notes/decisions/flow-diagram.md) separately selects ELK for layout/routing with a Lit viewer; its delivery contract and version remain inventory work. **TanStack Virtual is chosen for virtualization in both Lit and React.** [Reusable results pagination](notes/decisions/results-pagination.md) supplies numbered/compact navigation and unknown-total support, with application-owned page state and data loading. The page-position/page-size/navigation parts boundary is [under review](notes/decisions/results-pagination.md#review-pending-after-the-chakra-ui-pro-example); jump-to-page detail remains separate. Follow the [current handoff](notes/alignment/README.md#where-we-are) for the active inventory work.
+[Table must support consumers who use TanStack Table](notes/decisions/tanstack-table-compatibility.md); the design system does not integrate or run that package. Applications own its processing, state and optional experimental workers. TanStack Table is not part of the mandated design-system runtime stack. Consumer examples/checks can use TanStack Table; 9.2.4 is the pinned consumer-example baseline; its experimental worker declaration correction belongs to application setup. The later [Flow Diagram decision](notes/decisions/flow-diagram.md) separately selects ELK for layout/routing with a Lit viewer; its implemented worker delivery and acceptance are recorded in M20. **TanStack Virtual is chosen for virtualization in both Lit and React.** [Reusable results pagination](notes/decisions/results-pagination.md) supplies numbered/compact navigation and unknown-total support, with application-owned page state and data loading. The page-position, page-size and navigation parts are approved and implemented; application-owned results state remains separate from document navigation. Follow the [current handoff](notes/alignment/README.md#where-we-are) for the active inventory work.
 
 These are not suggestions. **When a piece of functionality falls to one of these packages, that
 package is the one to use** — for every item on the list, not only the obvious ones. Syntax
@@ -132,29 +132,26 @@ for that before choosing, and say in the report what you compared.
 
 The data layer (TanStack Query and DB) is a separate package, later.
 
-### Which chosen packages are in use today
+### Package ownership
 
-A blank row means the port has not yet reached work that needs it. That is expected, not a gap.
+Runtime dependencies and public exports live in packages/core/package.json. Root package.json is private build tooling. React, MCP and Devtools have separate coordinated manifests. Source and generated artifacts have one owner; see [the current producer map](AGENTS.md#where-things-are-and-what-is-generated). The exact lockfile and current build evidence replace hand-maintained import counts.
 
-| Package | Files importing it in `src/` |
-|---|---|
-| `@floating-ui/dom` | 6 |
-| `@zag-js/remove-scroll` | 5 |
-| `@tanstack/highlight` | 2 |
-| `@tanstack/lit-store` | 2 |
-| `@tanstack/charts` | 1 |
-| `@tanstack/lit-form` | 1 |
-| `@tanstack/lit-hotkeys` | 1 |
-| `@tanstack/lit-virtual` | 1 |
-| `@tanstack/markdown` | 1 |
-| `@tanstack/pacer` | 1 |
-| `@internationalized/date` | 1 |
-| `@lit-labs/motion` | the book's cover hover — see `notes/decisions/motion-on-the-book.md`; the rest is the task in 5.6 |
+### Current standing build rules
 
-No rival library has crept in: a sweep for shiki, highlight.js, prismjs, marked, markdown-it,
-date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` returns nothing.
+- Implement the approved inventory and decisions. Record new evidence and delegated engineering choices in the existing analysis and decision records.
+- Use the selected package stack. TanStack Store remains authoritative; React wraps the same Lit behavior. Keep application Table/Virtual/Form ownership explicit.
+- Author CSS in its producer inputs. Compile CSS, maps and Lit modules through the shared pipeline; never edit generated styles by hand.
+- Keep real wrapper boxes. Use native content where semantics require it.
+- Replace retired interfaces outright. Consumer code and documentation describe only the current API; history belongs in notes and Git.
+- Build with pinned Bun1.4.2. Use colocated bun:test tests, Oxlint/Ultracite, Oxfmt, Stylelint and strict TypeScript. Preserve required controller registrations and live-collection snapshots.
+- Run split, required mapped producers, build, docs, build:tooling, types, tests and appropriate browser checks. Authored docs live in site; output is _site. Package preparation is local and does not publish.
+- Documentation examples must execute their displayed source, clean up on reset/removal and have explicit outcome checks. Use current documentation units and recipes rather than recreating the old reference page structure.
+- Keep analysis, decisions, alignment status and acceptance evidence current. Follow the active execution delegation; do not reintroduce approval stops for already-authorized work.
 
-### Standing build rules
+### Historical parity-port rules and observations (2026-09-10)
+
+These explain the old investigations and their safeguards. Where their old component names, paths, exact-parity scope or approval cadence differ from the current rules above, the approved systematization records govern.
+
 
 - Every CSS declaration ships through the generator. Fix a defect **in the generator**, never
   work around it in an element.

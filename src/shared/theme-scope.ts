@@ -93,6 +93,8 @@ export function createThemeScope(initialSources: ThemeScopeSources): ThemeScope 
             }
             next.density = value;
             break;
+
+          // no default: Validated ThemeInput keys are exhaustively handled.
         }
       }
       authoredState.set(Object.freeze(next));

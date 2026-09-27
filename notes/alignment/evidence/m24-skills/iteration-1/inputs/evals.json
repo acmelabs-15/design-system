@@ -1,0 +1,41 @@
+{
+  "skill_name": "design-system-consumer-guidance",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Using the installed @acmelabs/design-system package and its matching release records, create a standalone HTML notification settings form. It needs a labeled email input, a plan choice, a notification switch, Save and Reset. Save should show the browser FormData as a receipt without sending a request. Use selective browser modules. Supply the complete runnable file and test it in a browser.",
+      "expected_output": "A complete HTML artifact with exact-version selective imports, valid labels/names, one native form owner, a visible submission receipt, and working native reset.",
+      "files": [],
+      "assertions": [
+        "All browser URLs use the same exact installed package version and each used element is defined.",
+        "Submitting changed values produces a receipt from actual FormData with the expected control names and values.",
+        "Reset restores the initial submitted values and required validation remains native.",
+        "The artifact has no full-library or devtools import and no duplicate form state implementation."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Build a React preferences panel with Source/Output tabs and a single-choice plan selection displayed as attached radio cards. Use the installed matching core and React packages. Keep a stateful editor in the Source panel through tab changes, and include an unmount/remount control in the test app. Supply the runnable component and a browser verification report.",
+      "expected_output": "Typed generated wrappers with Tabs owning panel selection, Radio Group owning the plan value, Group owning visual attachment, and React owning content and cleanup.",
+      "files": [],
+      "assertions": [
+        "The React fixture typechecks against exact matching package versions and individual wrapper imports.",
+        "Keyboard tab activation updates the associated panel and radio selection remains an independent single-choice form value.",
+        "State preservation uses the documented content API and a typed custom event callback receives actual event detail.",
+        "Unmount removes active callbacks and remount restores correct behavior without duplicated state owners."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Create a Lit data table for 10,000 application-owned records using the installed design system's Table and Pagination plus TanStack Table and TanStack Virtual. Include sorting, page size, selection and virtual scrolling. Follow the matching packaged recipe. Keep Table as presentation and native table structure. Supply the runnable source and verify scrolling, filtering, selection and cleanup.",
+      "expected_output": "A real consumer integration with TanStack engines in application code, native table content, optional Pagination parts and tested lifecycle behavior.",
+      "files": [],
+      "assertions": [
+        "The actual recipe and generated APIs determine all imports and properties, with no invented table engine inside the design-system component.",
+        "Sorting and page-size changes update displayed records while selection remains owned by the application table model.",
+        "Virtual scrolling uses TanStack Virtual and renders a bounded number of native rows while reaching records beyond the first viewport.",
+        "Removing the consumer releases listeners and observers, and remount succeeds without duplicate event processing."
+      ]
+    }
+  ]
+}

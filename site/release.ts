@@ -1,7 +1,7 @@
 import type { Package } from "custom-elements-manifest/schema";
 import type { DocumentationRelease, DocumentationRecord, Framework } from "../packages/mcp/src/catalog";
 import { validateRelease } from "../packages/mcp/src/catalog";
-import { type ElementApi } from "./api";
+import type { ElementApi } from "./api";
 import type { Doc } from "./site";
 import { docToMarkdown } from "./markdown";
 import { exampleSources } from "./example-source";

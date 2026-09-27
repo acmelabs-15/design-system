@@ -19,6 +19,7 @@ export function WorkerDeliveryReact({ session, ready }: { session: WorkerSession
     "div",
     null,
     h("p", { role: "status" }, failed ? "Worker failed" : table.state.workerRowModels.isPending ? "Worker pending" : "Worker ready"),
+    h("label", null, "Filter worker rows ", h("input", { onChange: (event) => table.setGlobalFilter(event.currentTarget.value) })),
     h("output", { "data-count": "" }, rows.length),
     h(
       Table,
@@ -35,6 +36,8 @@ export function WorkerDeliveryReact({ session, ready }: { session: WorkerSession
         ),
       ),
     ),
+    h("button", { type: "button", onClick: () => session.simulateFailure() }, "Fail worker"),
     h("button", { type: "button", onClick: () => session.retry() }, "Retry worker"),
+    h("button", { type: "button", onClick: () => session.useServerRows([{ id: "server", name: "Server result", amount: 42 }]) }, "Use server results"),
   );
 }

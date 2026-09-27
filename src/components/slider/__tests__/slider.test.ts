@@ -32,7 +32,7 @@ test("Slider publishes live and committed keyboard edits once, keeping thumb ord
   try {
     const seen: string[] = [];
     for (const name of ["acme-input", "acme-change", "acme-commit"]) {
-      slider.addEventListener(name, (e) => seen.push(name));
+      slider.addEventListener(name, () => seen.push(name));
     }
     const input = slider.shadowRoot!.querySelector("input")!;
     input.dispatchEvent(new KeyboardEvent("keydown", { key: "End", bubbles: true, cancelable: true }));

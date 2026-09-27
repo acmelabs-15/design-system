@@ -7,7 +7,7 @@ import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { SpringValue } from "../../shared/spring-value";
 import { readMotionSpring } from "../../shared/motion-spring";
-import { ScrollPartBinding, scrollbarContext, type ScrollAxis } from "../../shared/scroll-area-context";
+import { ScrollPartBinding, scrollbarContext } from "../../shared/scroll-area-context";
 import { scrollGeometry, scrollFromPointer, nativeScrollLeft, physicalScrollLeft } from "../../shared/scroll-geometry";
 import { scrollbarCss } from "../../generated/components/scrollbar/scrollbar.styles";
 /** Custom track and thumb over native scrolling.

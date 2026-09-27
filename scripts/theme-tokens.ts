@@ -1,9 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
-import { type Declaration, type Rule, type Selector, transform } from "lightningcss";
+import { type Rule, type Selector, transform } from "lightningcss";
 import { motionTokenDefinitions } from "../src/shared/motion-tokens";
 import { numericTokenDefinitions } from "../src/shared/numeric-tokens";
-import { densityTokenDefinitions, fontWeightTokenDefinitions, themeTokenDefinitions } from "../src/shared/theme-tokens";
+import { densityTokenDefinitions, fontWeightTokenDefinitions } from "../src/shared/theme-tokens";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 type Mode = "base" | "light" | "dark";

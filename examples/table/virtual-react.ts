@@ -94,7 +94,9 @@ export function VirtualDeliveryReact({
     if (column >= 0 && horizontal) {
       columnVirtual.scrollToIndex(column, { align: "auto" });
     }
-    await new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+    await new Promise<void>((resolve) => {
+      requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+    });
   }
   const spacer = (width: number, count: number, key: string) => (count ? h("td", { key, "aria-hidden": true, colSpan: count, style: { width, padding: 0, border: 0 } }) : null);
   function cell(cell: DeliveryCell) {

@@ -1,0 +1,22 @@
+bun test v1.4.2 (744846f84)
+
+scripts/__tests__/check.test.ts:
+(pass) every browser gate runs and records failure before the aggregate verdict [0.93ms]
+(pass) package scripts use the verified parent Bun executable [118.11ms]
+(pass) generated verification rejects tracked, staged and untracked output changes [356.92ms]
+(pass) browser gates consume the reviewed package set and both scoped delivery paths [1.18ms]
+(pass) browser overrides cannot replace the pinned Bun executable search path [7.78ms]
+
+scripts/__tests__/release-policy.test.ts:
+(pass) dirty local candidates cannot be published as committed source [0.31ms]
+(pass) publication retry skips only byte-identical existing versions [0.11ms]
+(pass) release identity requires coordinated packages, peers and exact tag [0.20ms]
+(pass) archive names and digest records cannot escape release artifacts [0.11ms]
+(pass) publishing stays disabled outside explicit verified release context [0.07ms]
+(pass) private packages and mismatched repository metadata block actual publication [0.05ms]
+(pass) npm receives only CI identity context, never inherited local token configuration [0.07ms]
+
+ 12 pass
+ 0 fail
+ 124 expect() calls
+Ran 12 tests across 2 files. [1190.00ms]

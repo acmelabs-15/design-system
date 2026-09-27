@@ -85,7 +85,14 @@ export function coordinateOverlay(registration: OverlayRegistration): () => void
   }
   const parentTarget = registration.parentFrom === "surface" ? registration.surface : (registration.anchor ?? registration.surface);
   const parent = [...coordination.sessions].reverse().find((session) => composedContains(session.registration.surface, parentTarget));
-  const session: Session = { registration, inside: new WeakSet<Event>(), parent, release() {} };
+  const session: Session = {
+    registration,
+    inside: new WeakSet<Event>(),
+    parent,
+    release() {
+      /* The release callback is assigned after listeners are installed. */
+    },
+  };
   const roots = new Set([registration.surface.getRootNode(), registration.anchor?.getRootNode()].filter((root): root is Node => !!root));
   const captureInside = (event: Event) => {
     if (contains(registration, event)) {

@@ -16,11 +16,6 @@ const api = readApi();
 const byTag = new Map(api.map((e) => [e.tag, e]));
 const docs: Doc[] = (await loadDocs()).sort((a, b) => a.title.localeCompare(b.title));
 
-const strip = (s: string) =>
-  s
-    .replace(/<[^>]+>/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
 const lines: string[] = [
   `# Elements of @acmelabs/design-system ${pkg.version}`,
   "",

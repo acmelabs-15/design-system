@@ -83,11 +83,9 @@ class SemanticAttributes implements ReactiveController {
       return true;
     }
     this.set(name, value);
-    if (value !== null && this.connected) {
-      if (Element.prototype.hasAttribute.call(this.host, name)) {
-        this.removals.set(name, (this.removals.get(name) ?? 0) + 1);
-        Element.prototype.removeAttribute.call(this.host, name);
-      }
+    if (value !== null && this.connected && Element.prototype.hasAttribute.call(this.host, name)) {
+      this.removals.set(name, (this.removals.get(name) ?? 0) + 1);
+      Element.prototype.removeAttribute.call(this.host, name);
     }
     return true;
   }

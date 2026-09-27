@@ -116,7 +116,7 @@ function parse() {
   // A bare attribute token (`[data-grid]`, a component's marker) indexes it too, so a rule that names an element by its marker resolves from the marker.
   for (const r of rules) {
     const seen = new Set<string>();
-    for (const m of r.sel.matchAll(/\.((?:\\.|[^\s.:>~+\[\]()])+)|(\[[\w-]+\])/g)) {
+    for (const m of r.sel.matchAll(/\.((?:\\.|[^\s.:>~+[\]()])+)|(\[[\w-]+\])/g)) {
       const cls = m[1] === undefined ? m[2] : unesc(m[1]);
       if (seen.has(cls)) {
         continue;

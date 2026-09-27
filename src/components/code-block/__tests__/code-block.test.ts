@@ -47,7 +47,7 @@ test("line decorations are snapshotted and never create phantom lines", async ()
 });
 test("a failed highlighter keeps escaped source and reports failure once", async () => {
   const mock = spyOn(highlighter, "tokenize").mockImplementation(() => {
-    throw Error("highlight failed");
+    throw new Error("highlight failed");
   });
   try {
     const element = document.createElement("acme-code-block");

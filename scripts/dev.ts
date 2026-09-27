@@ -11,7 +11,7 @@ const build = async (regenerateStyles = false) => {
   const t = Date.now();
   const scripts = [...(regenerateStyles ? ["scripts/split-css.ts"] : []), "scripts/build.ts", "site/build.ts"];
   for (const script of scripts) {
-    const result = Bun.spawnSync(["bun", script], { cwd: ROOT, stdout: "inherit", stderr: "inherit" });
+    const result = Bun.spawnSync([process.execPath, script], { cwd: ROOT, stdout: "inherit", stderr: "inherit" });
     if (result.exitCode !== 0) {
       return;
     }

@@ -1,0 +1,11 @@
+{
+  "eval_id": 1,
+  "eval_name": "html-notification-settings",
+  "prompt": "Using the installed @acmelabs/design-system package and its matching release records, create a standalone HTML notification settings form. It needs a labeled email input, a plan choice, a notification switch, Save and Reset. Save should show the browser FormData as a receipt without sending a request. Use selective browser modules. Supply the complete runnable file and test it in a browser.",
+  "assertions": [
+    "All browser URLs use the same exact installed package version and each used element is defined.",
+    "Submitting changed values produces a receipt from actual FormData with the expected control names and values.",
+    "Reset restores the initial submitted values and required validation remains native.",
+    "The artifact has no full-library or devtools import and no duplicate form state implementation."
+  ]
+}

@@ -12,7 +12,9 @@ function sameWidths(a: ResponsiveBreakpoints, b: ResponsiveBreakpoints): boolean
   return (Object.keys(defaultBreakpoints) as (keyof ResponsiveBreakpoints)[]).every((name) => a[name] === b[name]);
 }
 
-/** @internal A separate owner makes startup transitions testable without resetting application state. */
+/** A separate owner makes startup transitions testable without resetting application state.
+ * @internal
+ */
 export function createBreakpointConfiguration(): BreakpointConfiguration {
   const state = createAtom<ConfigurationState>(Object.freeze({ widths: defaultBreakpoints, configured: false, used: false }));
   return Object.freeze({

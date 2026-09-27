@@ -3,7 +3,7 @@ import { createAtom, TanStackStoreAtom } from "@tanstack/lit-store";
 import { TableController } from "@tanstack/lit-table";
 import { VirtualizerController } from "@tanstack/lit-virtual";
 import { html, LitElement, nothing } from "lit";
-import { ref } from "lit/directives/ref.js";
+import "lit/directives/ref.js";
 import { repeat } from "lit/directives/repeat.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { columnStyle, columns, type Delivery, type DeliveryCell, type DeliveryRow, type DeliveryTable, data, features, orderedColumns } from "./data";
@@ -66,7 +66,9 @@ export class VirtualDeliveryLit extends LitElement {
       this.columnVirtual.getVirtualizer().scrollToIndex(column, { align: "auto" });
     }
     await this.updateComplete;
-    await new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+    await new Promise<void>((resolve) => {
+      requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+    });
   }
   private columnGeometry = "";
   protected updated() {

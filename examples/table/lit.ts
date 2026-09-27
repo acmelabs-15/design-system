@@ -3,7 +3,7 @@ import { TableController } from "@tanstack/lit-table";
 import { html, LitElement, nothing } from "lit";
 import { repeat } from "lit/directives/repeat.js";
 import { styleMap } from "lit/directives/style-map.js";
-import { columnStyle, columns, type Delivery, type DeliveryCell, type DeliveryRow, type DeliveryTable, data, features, headerRows, orderedCells, orderedColumns } from "./data";
+import { columnStyle, columns, type Delivery, type DeliveryCell, type DeliveryTable, data, features, headerRows, orderedCells, orderedColumns } from "./data";
 import { gridKey, syncGridFocus } from "./grid-interaction";
 /** The consuming application owns Table models and native table content. */
 export class DeliveryTableLit extends LitElement {

@@ -15,7 +15,7 @@ export type Example = {
   p?: string;
   html: string;
   code?: string;
-  language?: "html" | "typescript";
+  language?: "html" | "typescript" | "tsx";
   sourcePath?: string;
   entryPath?: string;
   registerFunction?: string;
@@ -53,7 +53,7 @@ export const REPO = repository.url.replace(/^git\+/, "").replace(/\.git$/, "");
 
 export const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 export { iconMarkup as ic } from "./icon-markup";
-import { iconMarkup as ic } from "./icon-markup";
+import "./icon-markup";
 
 /* ---------- renderers ---------- */
 const slug = (h: string) =>
@@ -67,7 +67,7 @@ export const section = (h: string, inner: string, p?: string, id = slug(h)) =>
 export const showcase = async (e: Example, id = exampleId("example", e.h)) => {
   const sources = await exampleSources(e, id);
   const attr = e.script ? ` data-script="${esc(e.script).replace(/"/g, "&quot;")}"` : "";
-  return `<div class="showcase" data-example="${id}"${attr}><template data-example-markup>${e.html}</template><div class="preview">${e.html}</div><p class="example-error" data-example-error role="alert" hidden></p><acme-collapsible class="example-source" lazy-mount><acme-h-stack justify-content="space-between" flex-wrap="wrap" gap="2"><acme-collapsible-trigger>Source code</acme-collapsible-trigger><acme-button data-example-reset variant="tertiary" size="small">Reset example</acme-button></acme-h-stack><acme-collapsible-content><template>${sources.map((source) => `<acme-code-block language="${source.language === "typescript" ? "ts" : "html"}" code="${esc(source.code).replace(/"/g, "&quot;")}" filename="${esc(source.label)}" copyable wrap></acme-code-block>`).join("")}</template></acme-collapsible-content></acme-collapsible></div>`;
+  return `<div class="showcase" data-example="${id}"${attr}><template data-example-markup>${e.html}</template><div class="preview">${e.html}</div><p class="example-error" data-example-error role="alert" hidden></p><acme-collapsible class="example-source" lazy-mount><acme-h-stack justify-content="space-between" flex-wrap="wrap" gap="2"><acme-collapsible-trigger>Source code</acme-collapsible-trigger><acme-button data-example-reset variant="tertiary" size="small">Reset example</acme-button></acme-h-stack><acme-collapsible-content><template>${sources.map((source) => `<acme-code-block language="${source.language === "typescript" ? "ts" : source.language}" code="${esc(source.code).replace(/"/g, "&quot;")}" filename="${esc(source.label)}" copyable wrap></acme-code-block>`).join("")}</template></acme-collapsible-content></acme-collapsible></div>`;
 };
 
 const practices = (p?: Record<string, string[]>) =>

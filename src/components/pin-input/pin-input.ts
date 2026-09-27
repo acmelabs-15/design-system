@@ -365,7 +365,7 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
       }
       this.nativeForm.sync();
     });
-    on("blur", (event) => {
+    on("blur", () => {
       if (this.composition.get().index === getIndex()) {
         this.composition.set({});
         this.nativeForm.sync();
@@ -385,10 +385,8 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
         return;
       }
       event.preventDefault();
-      if (pinCharacters(text, this.type)) {
-        if (!this.edit(pinPaste(this.value, getIndex(), text), () => this.move(pinInsertion(this.value)))) {
-          this.move(pinInsertion(this.value));
-        }
+      if (pinCharacters(text, this.type) && !this.edit(pinPaste(this.value, getIndex(), text), () => this.move(pinInsertion(this.value)))) {
+        this.move(pinInsertion(this.value));
       }
     });
     on("beforeinput", (raw) => {
@@ -479,6 +477,8 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
         event.preventDefault();
         this.move(Math.max(0, this.value.filter(Boolean).length - 1));
         break;
+
+      // no default: Other keys keep their native text-input behavior.
     }
   }
   private input(event: InputEvent, index: number) {

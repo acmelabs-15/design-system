@@ -67,7 +67,9 @@ test("Pin Input fields transfer ownership on DOM moves and reconnect", async () 
   app.querySelector("acme-pin-input")!.append(...parts.children);
   const settle = async () => {
     for (let i = 0; i < 3; i++) {
-      await new Promise((resolve) => setTimeout(resolve, 0));
+      await new Promise((resolve) => {
+        setTimeout(resolve, 0);
+      });
     }
   };
   document.body.append(app);

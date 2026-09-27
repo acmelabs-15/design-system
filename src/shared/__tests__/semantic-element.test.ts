@@ -65,12 +65,16 @@ test("ID references resolve in the author's scope and late IDs update without an
   help.id = "help";
   help.textContent = "Help";
   document.body.append(label, help);
-  await new Promise((resolve) => setTimeout(resolve, 0));
+  await new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
   expect(host.ariaLabelledByElements).toEqual([label]);
   expect(root(host).ariaLabelledByElements).toEqual([label]);
   expect(root(host).ariaDescribedByElements).toEqual([help]);
   label.id = "changed";
-  await new Promise((resolve) => setTimeout(resolve, 0));
+  await new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
   expect(root(host).ariaLabelledByElements).toEqual([]);
 });
 test("explicit references replace strings and string writes replace explicit references", async () => {
@@ -112,7 +116,9 @@ test("active descendants and autocomplete reach the native semantic root", async
   option.id = "option";
   option.setAttribute("role", "option");
   document.body.append(option);
-  await new Promise((resolve) => setTimeout(resolve, 0));
+  await new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
   expect(root(host).getAttribute("aria-autocomplete")).toBe("list");
   expect(root(host).ariaActiveDescendantElement).toBe(option);
   host.ariaActiveDescendantElement = null;

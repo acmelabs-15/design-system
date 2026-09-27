@@ -121,7 +121,9 @@ export class AcmeSteps extends AcmeSemanticElement {
     rtl: () => getComputedStyle(this).direction === "rtl",
     wrap: true,
     homeEnd: true,
-    onMove: () => {},
+    onMove: () => {
+      /* Focus movement does not change the current step. */
+    },
   });
   private diagnostic = "";
   constructor() {

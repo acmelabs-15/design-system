@@ -1,7 +1,7 @@
 import { McpServer, ResourceTemplate } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { ErrorCode, McpError, type CallToolResult } from "@modelcontextprotocol/sdk/types.js";
 import * as z from "zod/v4";
-import { DocumentationCatalog, type Result } from "./catalog";
+import type { DocumentationCatalog, Result } from "./catalog";
 
 const framework = z.enum(["html", "lit", "react"]);
 const version = z.string().min(1).max(100);

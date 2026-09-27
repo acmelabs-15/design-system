@@ -50,7 +50,7 @@ test("numeric and date x values retain their semantic kind and source indices", 
 });
 
 import { createChartScene, type SceneNode } from "@tanstack/charts";
-import { chartDefinition } from "../chart-definition";
+import { chartDefinition, formatChartX, formatChartY } from "../chart-definition";
 
 test("the selected engine preserves line gaps and groups bar series beside each other", () => {
   const series = snapshotChartSeries([
@@ -111,13 +111,9 @@ test("the selected engine preserves line gaps and groups bar series beside each 
   expect(paths).toHaveLength(2);
 });
 
-import { formatChartX } from "../chart-definition";
-
 test("exact date values remain distinct within the same UTC day", () => {
   expect(formatChartX(new Date("2026-01-01T12:00:00Z"))).not.toBe(formatChartX(new Date("2026-01-01T13:00:00Z")));
 });
-
-import { formatChartY } from "../chart-definition";
 
 test("default exact-value formatting preserves small finite values", () => {
   expect(formatChartY(0.0001, undefined, "en-US")).toBe("0.0001");

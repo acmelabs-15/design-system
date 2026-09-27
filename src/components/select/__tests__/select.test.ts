@@ -62,6 +62,8 @@ test("Option labels ignore renderer marker comments", async () => {
   const select = await mount();
   const option = select.querySelector("acme-option")!;
   option.prepend(document.createComment("renderer marker"));
-  await new Promise((resolve) => setTimeout(resolve, 0));
+  await new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
   expect(option.label).toBe("Alpha");
 });

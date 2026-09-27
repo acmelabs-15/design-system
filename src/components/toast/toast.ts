@@ -12,7 +12,7 @@ import { AcmeSemanticElement } from "../../shared/semantic-element";
 import { SpringValue } from "../../shared/spring-value";
 import { StoreSelector } from "../../shared/store-connection";
 import { ToastBinding, type ToastGeometry } from "../../shared/toast-context";
-import { type ToastDismissReason, type ToastRuntime, type ToastStore, toastRuntime } from "../../shared/toast-store";
+import { type ToastDismissReason, type ToastStore, toastRuntime } from "../../shared/toast-store";
 
 export type { ToastDismissReason, ToastInput, ToastPatch, ToastRecord, ToastStore, ToastVariant } from "../../shared/toast-store";
 export { createToastStore } from "../../shared/toast-store";

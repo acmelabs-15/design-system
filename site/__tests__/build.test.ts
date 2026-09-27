@@ -19,7 +19,10 @@ for (const entry of documentationIconEntries(fragments.map((file) => fs.readFile
 
 // Elements whose own shadow root is legitimately empty, plus the docs-only token rows the app defines.
 const LIGHT = new Set(["acme-tab-panel", "acme-toast", "docs-tokens"]);
-const settle = () => new Promise((r) => setTimeout(r, 20));
+const settle = () =>
+  new Promise((resolve) => {
+    setTimeout(resolve, 20);
+  });
 
 describe("docs site", () => {
   test("the shell, its 404 twin, the app and every authored page are built", async () => {

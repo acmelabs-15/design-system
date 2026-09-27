@@ -14,7 +14,10 @@ class TestForm extends LitElement {
 }
 customElements.define("test-form", TestForm);
 
-const tick = () => new Promise((r) => setTimeout(r, 0));
+const tick = () =>
+  new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
 
 describe("bindField", () => {
   test("pushes input events into the field and invalid presentation back into the control", async () => {

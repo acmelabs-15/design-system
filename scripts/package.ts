@@ -104,7 +104,7 @@ export async function packPackage(sourceRoot = corePackageDirectory(ROOT), desti
   const stage = fs.mkdtempSync(path.join(os.tmpdir(), "acme-package-"));
   try {
     for (const file of source.files) {
-      if (typeof file !== "string" || /[*?!\[\]{}]/.test(file)) {
+      if (typeof file !== "string" || /[*?![\]{}]/.test(file)) {
         throw new Error("Package staging requires explicit file or directory paths");
       }
       if (path.isAbsolute(file) || file === "package.json") {

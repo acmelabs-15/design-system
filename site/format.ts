@@ -2,9 +2,10 @@ import { format } from "oxfmt";
 import { createHighlighter } from "@tanstack/highlight/core";
 import { html as htmlLang } from "@tanstack/highlight/languages/html";
 import { ts } from "@tanstack/highlight/languages/ts";
+import { tsx } from "@tanstack/highlight/languages/tsx";
 import { Window } from "happy-dom";
 
-const highlighter = createHighlighter({ languages: [htmlLang, ts], fallbackLanguage: "html" });
+const highlighter = createHighlighter({ languages: [htmlLang, ts, tsx], fallbackLanguage: "html" });
 const formatted = new Map<string, Promise<string>>();
 const document = new Window().document;
 const htmlShape = (source: string): string => {
@@ -26,11 +27,11 @@ const htmlShape = (source: string): string => {
   ];
   return JSON.stringify(shape(template.content));
 };
-export function formatSource(source: string, language: "html" | "typescript" = "html"): Promise<string> {
+export function formatSource(source: string, language: "html" | "typescript" | "tsx" = "html"): Promise<string> {
   const key = language + "\0" + source;
   let result = formatted.get(key);
   if (!result) {
-    result = format(language === "html" ? "example.html" : "example.ts", source, {
+    result = format(language === "html" ? "example.html" : language === "tsx" ? "example.tsx" : "example.ts", source, {
       htmlWhitespaceSensitivity: "strict",
       embeddedLanguageFormatting: "off",
       sortImports: false,
@@ -49,6 +50,6 @@ export function formatSource(source: string, language: "html" | "typescript" = "
 }
 export const formatHtml = (source: string) => formatSource(source, "html");
 /** Highlight the supplied source without rewriting its syntax or text. */
-export function highlightHtml(source: string, language: "html" | "typescript" = "html"): string {
+export function highlightHtml(source: string, language: "html" | "typescript" | "tsx" = "html"): string {
   return highlighter.highlightToHtml(source, { lang: language === "typescript" ? "ts" : language, lineNumbers: true });
 }

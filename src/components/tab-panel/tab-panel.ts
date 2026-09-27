@@ -1,6 +1,6 @@
 import { OwnedContent } from "../../shared/owned-content";
 import { createAtom } from "@tanstack/lit-store";
-import { html, nothing, type TemplateResult } from "lit";
+import { html, type nothing, type TemplateResult } from "lit";
 import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";

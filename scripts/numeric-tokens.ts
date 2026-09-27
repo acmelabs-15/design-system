@@ -13,7 +13,7 @@ function manifestText(): string {
     const numeric = numericTokenDefinitions.find((token) => token.cssProperty === definition.cssProperty);
     return {
       ...definition,
-      ...(numeric ?? {}),
+      ...numeric,
       source: numeric
         ? "src/shared/numeric-tokens.ts"
         : motionTokenDefinitions.some((token) => token.cssProperty === definition.cssProperty)

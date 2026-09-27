@@ -5,7 +5,7 @@ import path from "node:path";
 import { packPackage, productionManifest } from "../package";
 import { corePackageDirectory, ensureCorePackageLinks, readCorePackage } from "../core-package";
 
-test("private workspaces resolve the one live core build", () => {
+test("consumer workspaces resolve one live core with coordinated release metadata", () => {
   const root = path.resolve(import.meta.dir, "../..");
   const core = readCorePackage(root);
   const workspace = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
@@ -15,7 +15,9 @@ test("private workspaces resolve the one live core build", () => {
   for (const name of ["react", "devtools", "mcp"]) {
     const directory = path.join(root, "packages", name);
     const pkg = JSON.parse(fs.readFileSync(path.join(directory, "package.json"), "utf8"));
-    expect(pkg.private).toBe(true);
+    expect(pkg.private).not.toBe(true);
+    expect(pkg.version).toBe(core.version);
+    expect(pkg.repository).toEqual(core.repository);
     expect(pkg.peerDependencies[core.name]).toBe(core.version);
     const probe = Bun.spawnSync([process.execPath, "-e", "console.log(Bun.resolveSync(process.argv[1],process.argv[2]))", core.name, directory], { stdout: "pipe", stderr: "pipe" });
     expect(probe.exitCode).toBe(0);

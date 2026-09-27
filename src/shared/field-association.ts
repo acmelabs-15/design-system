@@ -53,7 +53,7 @@ export class FieldRegistry {
       throw new Error("The control is already registered with this Field");
     }
     registrations.get(participant)?.release();
-    const registration = Symbol();
+    const registration = Symbol("field-registration");
     this.members.set(participant, registration);
     if (this.members.size === 2) {
       this.diagnostic("A Field requires one logical control. Use separate Fields or a Fieldset for multiple controls.");

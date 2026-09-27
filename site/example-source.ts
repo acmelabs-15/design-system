@@ -5,7 +5,7 @@ import path from "node:path";
 import { formatSource } from "./format";
 import type { Example } from "./site";
 
-export type ExampleSource = Readonly<{ label: string; language: "html" | "typescript"; code: string; path?: string }>;
+export type ExampleSource = Readonly<{ label: string; language: "html" | "typescript" | "tsx"; code: string; path?: string }>;
 const root = path.resolve(import.meta.dir, "..");
 const document = new Window().document;
 const manifest = JSON.parse(fs.readFileSync(path.join(root, "dist/custom-elements.json"), "utf8"));
@@ -44,7 +44,8 @@ export async function exampleSources(example: Example, id: string): Promise<read
       { label: "main.ts", language: "typescript", code: await formatSource(main, "typescript") },
     ];
     for (const file of exampleFiles([example.sourcePath, entry, ...(example.sourceFiles ?? [])], root)) {
-      sources.push({ label: file, language: "typescript", code: await formatSource(fs.readFileSync(path.join(root, file), "utf8"), "typescript"), path: file });
+      const language = file.endsWith(".tsx") ? "tsx" : "typescript";
+      sources.push({ label: file, language, code: await formatSource(fs.readFileSync(path.join(root, file), "utf8"), language), path: file });
     }
     return sources;
   }

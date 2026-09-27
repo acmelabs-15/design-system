@@ -1,0 +1,42 @@
+{
+  "verifiedOn": "2026-09-26",
+  "bun": "1.4.2",
+  "browserPlan": {
+    "uniqueRunners": 20,
+    "invocations": 21,
+    "aggregatesFailuresAfterAll": true,
+    "rejectsEmptyPlan": true,
+    "preservesExitAndError": true,
+    "partialReportFlag": true,
+    "officialFirefoxMandatory": true,
+    "firefox155": "isolated-render; original sequential failure preserved"
+  },
+  "generatedGate": {
+    "command": "git status --porcelain=v1 --untracked-files=all -- <generated paths>",
+    "trackedStagedUntrackedCovered": true
+  },
+  "releaseRecord": {
+    "schemaVersion": 2,
+    "sourceTreeRequired": true,
+    "dirtyLocalCandidatesAllowed": true,
+    "dirtyPublicationRejected": true,
+    "oldShapeRejected": true
+  },
+  "tests": {
+    "orchestrationAndPolicy": {
+      "passed": 12,
+      "assertions": 124
+    },
+    "sourceRecordArchive": {
+      "passed": 2,
+      "assertions": 5
+    }
+  },
+  "execution": {
+    "heavyBuild": false,
+    "fullBrowserPlan": "not run by this subtask",
+    "linux": "unverified",
+    "publication": false,
+    "deployment": false
+  }
+}

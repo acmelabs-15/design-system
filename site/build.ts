@@ -15,6 +15,7 @@ import { loadDocs } from "./pages/components/index";
 import { colors, icons, intro, materials, tokens, typeface, typography } from "./pages/foundations";
 import { censusPage, type Doc, docPage, type Nav, OUT, shell, writeFragment } from "./site";
 import { writeDocumentationIconEntry } from "../scripts/docs-icons";
+import { buildTableWorker, tableWorkerPlugin } from "../examples/table/build-worker";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 if (!fs.existsSync(path.join(ROOT, "dist/index.js"))) {
@@ -153,7 +154,7 @@ const r = await Bun.build({
   outdir: OUT,
   naming: { entry: "app.js", chunk: "chunks/[name]-[hash].[ext]", asset: "assets/[name]-[hash].[ext]" },
   splitting: true,
-  plugins: [browserAssetPlugin(path.join(ROOT, "dist"))],
+  plugins: [browserAssetPlugin(path.join(ROOT, "dist")), tableWorkerPlugin(await buildTableWorker(ROOT, OUT))],
   target: "browser",
   format: "esm",
   minify: true,

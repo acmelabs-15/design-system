@@ -53,7 +53,7 @@ test("code fences highlight and failed highlighting preserves safe source", asyn
   const errors: any[] = [];
   el.addEventListener("acme-error", (e) => errors.push((e as CustomEvent).detail));
   const mock = spyOn(highlighter, "tokenize").mockImplementation(() => {
-    throw Error("broken highlighter");
+    throw new Error("broken highlighter");
   });
   try {
     el.text = "```html\n<img src=x>\n```";
@@ -74,7 +74,7 @@ test("table alignment uses generated hooks and relative links retain page resolu
 
 test("parser failure keeps safe source and reports its failure", async () => {
   const mock = spyOn(markdownParser, "parseMarkdown").mockImplementation(() => {
-    throw Error("parser unavailable");
+    throw new Error("parser unavailable");
   });
   try {
     const el = document.createElement("acme-markdown");

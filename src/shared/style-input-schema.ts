@@ -188,6 +188,8 @@ export function isStyleScalar<Property extends StyleInputKey>(property: Property
       return value === 0;
     case "none":
       return false;
+
+    // no default: The declared numeric input kinds are exhaustively handled.
   }
 }
 

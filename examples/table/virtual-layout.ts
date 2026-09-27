@@ -1,6 +1,6 @@
 import type { VirtualItem } from "@tanstack/virtual-core";
 import type { DeliveryCell, DeliveryRow, DeliveryTable } from "./data";
-import { orderedCells, orderedColumns } from "./data";
+import { orderedColumns } from "./data";
 
 export type VirtualMode = "vertical" | "horizontal" | "both";
 export function columnWindow(table: DeliveryTable, rows: readonly DeliveryRow[], items: readonly VirtualItem[], enabled: boolean) {

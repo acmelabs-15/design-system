@@ -11,7 +11,7 @@ import { OverlayPlacement } from "../../shared/overlay-placement";
 import { SpringValue } from "../../shared/spring-value";
 import { readMotionSpring } from "../../shared/motion-spring";
 import { deepActiveElement, composedContains } from "../../shared/composed-tree";
-import { DateFormatter, parseDate, toCalendarDate, startOfMonth, startOfWeek, getDayOfWeek, today, getLocalTimeZone, type CalendarDate } from "../../shared/date";
+import { DateFormatter, toCalendarDate, startOfMonth, getDayOfWeek, today, getLocalTimeZone, type CalendarDate } from "../../shared/date";
 import { calendarEndpoint, calendarEdit, calendarGrid, calendarValue, calendarSnapshot, type CalendarValue, type CalendarMode, type CalendarPreset } from "../../shared/calendar-value";
 import { optionalString } from "../../shared/attributes";
 import { message, messageCatalogs } from "../../shared/messages";
@@ -302,12 +302,12 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
     },
     target: () => (this.presentation === "inline" || this.open ? (this.renderRoot?.querySelector<HTMLButtonElement>('[data-date][tabindex="0"]') ?? undefined) : this.trigger),
     extra: () => {
-      this.minValue;
-      this.maxValue;
-      this.editorError;
-      this.mode;
-      this.showTimeInput;
-      this.timeZone;
+      void this.minValue;
+      void this.maxValue;
+      void this.editorError;
+      void this.mode;
+      void this.showTimeInput;
+      void this.timeZone;
       return undefined;
     },
     validate: (state) => this.validation(state.value, state.required),
@@ -404,7 +404,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
       if (this.maxValue && result.compare(this.day(this.maxValue)) > 0) {
         result = this.day(this.maxValue);
       }
-    } catch {}
+    } catch {
+      /* Validation reports invalid bounds; retain the last valid day. */
+    }
     return result;
   }
   private resetView() {

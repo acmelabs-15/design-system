@@ -1,0 +1,59 @@
+{
+  "bun": "1.4.2",
+  "npm": "12.0.2",
+  "calls": [
+    {
+      "method": "GET",
+      "path": "/oidc",
+      "audience": "npm:127.0.0.1"
+    },
+    {
+      "method": "POST",
+      "path": "/-/npm/v1/oidc/token/exchange/package/acme-release-probe",
+      "audience": null
+    },
+    {
+      "method": "GET",
+      "path": "/-/package/acme-release-probe/visibility",
+      "audience": null
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/signingCert",
+      "audience": null
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/log/entries",
+      "audience": null
+    },
+    {
+      "method": "PUT",
+      "path": "/acme-release-probe",
+      "audience": null
+    }
+  ],
+  "writes": [
+    {
+      "key": "//127.0.0.1:50589/:_authToken",
+      "value": "[LOCAL FIXTURE]",
+      "where": "user"
+    },
+    {
+      "key": "provenance",
+      "value": true,
+      "where": "user"
+    }
+  ],
+  "proofOfPossession": true,
+  "signatureVerified": true,
+  "tamperingRejected": true,
+  "tarballDigestMatches": true,
+  "workflowClaimsMatch": true,
+  "attachmentsMatch": true,
+  "limits": [
+    "Only loopback identity/issuer/registry/witness services",
+    "Mock witness is not a trusted transparency proof",
+    "No external identity request, publication or signing"
+  ]
+}

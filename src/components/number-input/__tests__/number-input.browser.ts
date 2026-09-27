@@ -17,7 +17,9 @@ export async function numberInputSlotRegression() {
   app.innerHTML = '<acme-number-input-increment slot="left"></acme-number-input-increment><acme-number-input-decrement slot="left"></acme-number-input-decrement>';
   const settle = async () => {
     for (let i = 0; i < 3; i++) {
-      await new Promise((resolve) => setTimeout(resolve, 0));
+      await new Promise((resolve) => {
+        setTimeout(resolve, 0);
+      });
     }
   };
   document.body.append(app);
@@ -40,7 +42,9 @@ export async function numberInputSlotRegression() {
     for (const part of [increment, decrement]) {
       expect(part.shadowRoot!.querySelector("button")!.disabled).toBe(true);
     }
-    await new Promise((resolve) => setTimeout(resolve, 400));
+    await new Promise((resolve) => {
+      setTimeout(resolve, 400);
+    });
     expect([left.value, right.value]).toEqual(["1", "11"]);
     increment.slot = decrement.slot = "left";
     await settle();

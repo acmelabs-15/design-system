@@ -69,7 +69,9 @@ describe("a store selector across a move", () => {
     await el.updateComplete;
 
     store.setState(() => 2);
-    await new Promise((r) => setTimeout(r, 0));
+    await new Promise((resolve) => {
+      setTimeout(resolve, 0);
+    });
     await el.updateComplete;
     expect(el.textContent!.trim()).toBe("2");
   });
@@ -85,7 +87,9 @@ describe("a store selector across a move", () => {
 
     for (const n of [10, 11, 12]) {
       store.setState(() => n);
-      await new Promise((r) => setTimeout(r, 0));
+      await new Promise((resolve) => {
+        setTimeout(resolve, 0);
+      });
       await el.updateComplete;
     }
     expect(el.textContent!.trim()).toBe("12");

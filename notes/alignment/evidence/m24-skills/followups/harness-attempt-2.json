@@ -1,0 +1,65 @@
+[
+  {
+    "variant": "react-baseline",
+    "check": "native FormData after application supplies form/name",
+    "pass": true,
+    "original": {
+      "name": "plan",
+      "form": false
+    },
+    "formData": {
+      "owner": "followup-form",
+      "value": "starter",
+      "entries": [
+        [
+          "plan",
+          "starter"
+        ]
+      ]
+    },
+    "scope": "Supplemental named-form integration, not an assertion that the original artifact authored a form/name"
+  },
+  {
+    "variant": "react-baseline",
+    "check": "detached wrapper callback removed",
+    "pass": true,
+    "evidence": {
+      "before": 0,
+      "after": 0
+    }
+  },
+  {
+    "variant": "react-skilled",
+    "check": "native FormData after application supplies form/name",
+    "pass": true,
+    "original": {
+      "name": "plan",
+      "form": false
+    },
+    "formData": {
+      "owner": "followup-form",
+      "value": "starter",
+      "entries": [
+        [
+          "plan",
+          "starter"
+        ]
+      ]
+    },
+    "scope": "Supplemental named-form integration, not an assertion that the original artifact authored a form/name"
+  },
+  {
+    "variant": "table-baseline",
+    "check": "one application page change after same-element remount",
+    "pass": true,
+    "evidence": {
+      "calls": 1,
+      "pageIndex": 1
+    }
+  },
+  {
+    "variant": "table-skilled",
+    "pass": false,
+    "error": "TimeoutError: click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('delivery-app acme-pagination-next button:not([hidden])')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled type=\"button\" class=\"action\" part=\"root item\" aria-busy=\"false\" data-size=\"medium\" aria-disabled=\"true\" data-variant=\"tertiary\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    56 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+  }
+]

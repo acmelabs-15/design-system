@@ -1,6 +1,5 @@
 import { expect, test } from "bun:test";
 import "../../../all";
-import type { AcmeSnippet } from "../snippet";
 
 async function mount(text: string | readonly string[]) {
   const el = document.createElement("acme-snippet");

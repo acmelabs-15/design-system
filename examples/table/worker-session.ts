@@ -1,4 +1,4 @@
-import { createAtom } from "@tanstack/lit-store";
+import { createAtom } from "@tanstack/store";
 import { columnFilteringFeature, createSortedRowModel, filterFns, globalFilteringFeature, rowSortingFeature, sortFns, tableFeatures } from "@tanstack/table-core";
 import { createTableWorker, createWorkerRowModel, workerRowModelsFeature } from "@tanstack/table-core/experimental-worker-plugin";
 
@@ -17,7 +17,7 @@ export function createWorkerSession() {
   const workers = new Set<Worker>();
   const handle = createTableWorker({
     createWorker: () => {
-      const worker = new Worker(new URL("./table-worker.ts", import.meta.url), { type: "module" });
+      const worker = new Worker(new URL("./table-worker.js", import.meta.url), { type: "module" });
       workers.add(worker);
       const failure = (event: Event) => {
         workers.delete(worker);

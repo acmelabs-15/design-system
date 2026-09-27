@@ -61,7 +61,9 @@ async function fixture() {
   const port = Number(output.match(/TEST_PORT=(\d+)/)?.[1]);
   expect(port).toBeGreaterThan(0);
   void (async () => {
-    while (!(await reader.read()).done) {}
+    while (!(await reader.read()).done) {
+      /* Drain remaining output so the child pipe cannot block. */
+    }
   })();
   void new Response(child.stderr).text();
   return {

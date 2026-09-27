@@ -1,7 +1,6 @@
 {
   "name": "@acmelabs/design-system-devtools",
-  "version": "0.2.0",
-  "private": true,
+  "version": "0.3.0",
   "description": "Optional read-only design-system inspector",
   "license": "MIT",
   "type": "module",
@@ -10,7 +9,7 @@
     "README.md"
   ],
   "peerDependencies": {
-    "@acmelabs/design-system": "0.2.0"
+    "@acmelabs/design-system": "0.3.0"
   },
   "exports": {
     ".": {
@@ -19,8 +18,12 @@
     }
   },
   "sideEffects": false,
-  "dependencies": {
+  "devDependencies": {
     "@tanstack/devtools-ui": "0.7.1",
     "solid-js": "1.9.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acmelabs-15/design-system.git"
   }
 }

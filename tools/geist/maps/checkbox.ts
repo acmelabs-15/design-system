@@ -1,5 +1,5 @@
 // Maps acme-checkbox (src/components/checkbox) to Geist Checkbox: the generator derives checkbox.styles.ts from this.
-import { type GeistMap, type SpecNode } from "../gen";
+import type { GeistMap, SpecNode } from "../gen";
 
 const tag = (t: string) => (c: SpecNode) => c.tag === t;
 

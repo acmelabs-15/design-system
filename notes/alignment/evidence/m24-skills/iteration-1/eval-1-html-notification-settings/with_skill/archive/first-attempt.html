@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notification settings</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/styles/tokens.css">
+  <style>
+    body { margin: 0; padding: 48px 24px; font-family: system-ui, sans-serif; color: #171717; background: #fafafa; }
+    main { max-width: 520px; margin: auto; padding: 32px; border: 1px solid #e5e5e5; border-radius: 12px; background: white; }
+    h1 { margin: 0 0 8px; font-size: 28px; letter-spacing: -0.04em; }
+    p { color: #666; line-height: 1.5; }
+    .fields { display: grid; gap: 24px; }
+    .actions { display: flex; gap: 12px; margin-top: 28px; }
+    output { display: block; margin-top: 24px; padding: 16px; border: 1px solid #e5e5e5; border-radius: 8px; white-space: pre-wrap; font: 13px/1.6 monospace; }
+    @media (max-width: 480px) { body { padding: 16px; } main { padding: 24px; } }
+  </style>
+</head>
+<body>
+<main id="notification-settings">
+  <h1>Notification settings</h1>
+  <p>Choose where and how you receive updates. Changes stay in this page.</p>
+  <form>
+    <acme-fieldset>
+      <legend slot="legend">Your preferences</legend>
+      <div class="fields">
+        <acme-field required>
+          <span slot="label">Email address</span>
+          <acme-input name="email" type="email" autocomplete="email" value="reader@example.com" required></acme-input>
+          <span slot="help">Required. We use this address for your notifications.</span>
+        </acme-field>
+        <acme-field>
+          <span slot="label">Plan</span>
+          <acme-radio-group name="plan" value="personal">
+            <acme-radio value="personal">Personal</acme-radio>
+            <acme-radio value="team">Team</acme-radio>
+          </acme-radio-group>
+        </acme-field>
+        <acme-field orientation="horizontal">
+          <span slot="label">Email notifications</span>
+          <acme-switch name="notifications" value="enabled" checked></acme-switch>
+          <span slot="help">Receive product updates by email.</span>
+        </acme-field>
+      </div>
+    </acme-fieldset>
+    <div class="actions">
+      <acme-button type="submit">Save</acme-button>
+      <acme-button type="reset" variant="secondary">Reset</acme-button>
+    </div>
+    <output aria-live="polite" aria-label="Save receipt">No settings saved yet.</output>
+  </form>
+</main>
+<script type="module">
+  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/field.js";
+  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/fieldset.js";
+  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/input.js";
+  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/radio-group.js";
+  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/radio.js";
+  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/switch.js";
+  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/button.js";
+
+  const root = document.getElementById("notification-settings");
+  const dispose = mount(root);
+  window.addEventListener("pagehide", dispose, { once: true });
+
+  function mount(root) {
+    const form = root.querySelector("form");
+    const receipt = root.querySelector("output");
+    const save = (event) => {
+      event.preventDefault();
+      const data = new FormData(form, event.submitter);
+      receipt.textContent = "Saved locally — browser FormData:\n" + JSON.stringify([...data.entries()], null, 2);
+    };
+    const reset = () => { receipt.textContent = "Initial preferences restored. No settings saved yet."; };
+    form.addEventListener("submit", save);
+    form.addEventListener("reset", reset);
+    return () => {
+      form.removeEventListener("submit", save);
+      form.removeEventListener("reset", reset);
+    };
+  }
+</script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test";
-import { AcmeDataList } from "../data-list";
+import type { AcmeDataList } from "../data-list";
 import "../../../define/data-list";
 
 test("Data List keeps native pairs and rich values owned by the author", async () => {

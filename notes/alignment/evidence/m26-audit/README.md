@@ -1,0 +1,37 @@
+# M26 bounded completion audit — 2026-09-26
+
+This audit reads the approved migration and source-to-destination coverage. It checks current source and the local 0.3.0 build. It does not certify the complete migration or a publication.
+
+## Findings and corrections
+
+| Check | Result | Evidence or remaining action |
+| --- | --- | --- |
+| Original component removal map | All 150 original tags accounted for by this scan. Seventy-nine old names are absent from current source declarations. No removed name remains in a component export, source/site/example markup or definition. | `removals-results.json`, reproducible with `bun notes/alignment/evidence/m26-audit/removals-run.ts`. The retained `acme-error` event and CSS token are distinct from the removed element. This scan does not replace property/event/slot contract tests. |
+| Scalar default restoration | Baseline: 41 of 704 declared nonnullable scalar defaults fail in each engine after attribute removal. Native ARIA clearing passes 736 checks per engine. | `defaults-baseline.json`. Thirty-six failures arise from 19 missing `useDefault` declarations, including inherited occurrences. Five are subclass default capture, owned by the main integration work. |
+| Missing `useDefault` corrections | Corrected OptionControl, Menu, MenuItem, MenuSection, Option, SplitButton and TreeItem. Source probes pass 78 default-removal and 44 ARIA-null checks per engine. | `defaults-source-results.json`; adjacent `src/shared/__tests__/public-defaults.test.ts` first reproduced `select.placeholder` returning null. The combined rebuilt0.3 matrix now passes all704 defaults and736 ARIA resets in each engine; defaults-results.json records every case. |
+| Generator transitive inputs | Added statically named local runtime import closure, with cycle handling and sorted deduplication. Package and Node imports are excluded. Computed imports stay owned by explicit producer seeds. | `scripts/local-inputs.ts`, adjacent tests, integration in `tools/geist/gen.ts`. A helper-only edit now makes generated output stale. Seven current mapped outputs retain identical CSS, maps and Lit module bytes. Their current graphs had no missing live helper; this closes the producer-correctness return point. |
+| TanStack Table declaration patch | Still required for custom features and experimental workers in the same TypeScript program. Current patched declarations pass; published 9.2.4 declarations produce four errors. | `table-patch-results.json` and `table-patch-run.ts`. The test overrides CompilerHost reads; installed dependencies are unchanged. The delivered worker recipe now supplies guarded application setup and fresh-consumer proof; see the closure below. The core component does not acquire a Table dependency. |
+| Single-bundle import initialization | Exact earlier reproduction reduced to the pure export-star barrel/static namespace read/dynamic import pattern; explicit named exports pass the scratch archive. Fresh final-package rerun remains integration-owned. | `../m08-typography-2026-09-21.json` → `sources.consumerProbe` and `sources.consumerRunner`. Runner currently selects `splitting:true`; repeat with false. The early `typeof library.AcmeHeading` precedes dynamic definition imports. Do not attribute the historical failure to an upstream cause without reproduction. |
+| Scoped registration and adoption | Final source, compiled and CDN scope fixtures pass17 cases in each engine; fresh archive confirmation remains. See ../m26-scoped/README.md for registry transport, inert registrations and independent platform controls. | `../m00-prerequisites-2026-09-20.json` registry artifacts and `../m00-completion-2026-09-20.json` stateSemantics artifacts preserve native/polyfill controls and adoption cases. Final package fixtures must distinguish current supported browser behavior from the earlier Firefox late-definition-after-adoption limit. React's global registry contract is separate. |
+| Actual-platform checks | Not performed by this bounded audit. | OS IME, dictation, browser autofill/history, actual Safari settings and assistive technologies remain explicit manual/external evidence limits; headless engine results do not establish them. |
+
+## Commands and scope
+
+- `bun test scripts/__tests__/local-inputs.test.ts scripts/__tests__/styles.test.ts`: 19 tests, 76 assertions pass at the generator checkpoint.
+- `bun test src/shared/__tests__/public-defaults.test.ts scripts/__tests__/local-inputs.test.ts tools/geist/__tests__/gen.test.ts`: 5 tests, 46 assertions pass after the source default corrections and generator fixture dependency update.
+- `ACME_AUDIT_SOURCE=1 bun notes/alignment/evidence/m26-audit/defaults-run.ts`: corrected source family checks in Chromium, Firefox and WebKit.
+- `bun notes/alignment/evidence/m26-audit/defaults-run.ts`: all 184 non-icon classes in the built CDN; writes `defaults-results.json`. Run after the coordinated build. A failing result returns nonzero.
+- `bun notes/alignment/evidence/m26-audit/table-patch-run.ts`: patched/published declaration comparison without editing installed modules.
+- `bun tools/geist/gen.ts badge browser button code icon-tile middle-truncate separator`: regenerated seven current mapped style families. All recorded output hashes match the pre-correction output; the input set adds the new helper.
+
+No push, publication, global configuration change or credentials are involved. Root owns final shared-note synchronization, combined rebuild, complete acceptance and commits.
+
+## Worker example delivery closure
+
+[Fresh application results](worker-consumer-results.json) now close the earlier Table declaration-patch delivery finding. The verified npm latest remains 9.2.4. `examples/table/setup.ts` supplies the exact version/hash-guarded correction using persistent Bun patch metadata. Ordinary Table/Virtual consumers do not need it.
+
+The new `experimental-worker-table` recipe contains both framework source sets, explicit registration, setup and a separate worker build. Six fresh application/engine combinations pass eight outcomes each: real worker loading, filtering, deliberate failure, retry, server data, remount, cancellation/removal and no page errors. Both applications first reproduce the published declaration failure, then pass strict types after setup. Clean frozen-lockfile reinstall and a repeat setup also pass. The test copies the delivered example sources and uses local packed 0.3.0 archives because publication remains unauthorized; exact archive paths are in the evidence. Re-run with final coordinated archives when root completes its remaining changes.
+
+Runner: `ACME_BUN=<pinned-bun-1.4.2> bun notes/alignment/evidence/m26-audit/worker-consumer-run.ts <core-tarball> <react-tarball>`. Browser cache and Chrome paths support `ACME_BROWSER_CACHE`/`ACME_CHROMIUM` overrides. The final runner uses the application's own copied `setup.ts` and `build-worker.ts`, with no authoring-workspace patch metadata.
+
+Recipe count increases from fifteen to sixteen; total documentation pages increase from 123 to 124 after rebuild. Root owns the final generated website/tooling records and handoff counts.

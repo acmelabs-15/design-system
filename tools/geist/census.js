@@ -100,7 +100,9 @@ window.__census = async (cfg) => {
       if (r.selectorText && /:(hover|focus|active)/.test(r.selectorText)) {
         try {
           r.selectorText = attr(r.selectorText);
-        } catch {}
+        } catch {
+          /* Read-only stylesheet selectors cannot be rewritten; retain their native rule. */
+        }
       }
       if (r.cssRules?.length) {
         rewrite(r.cssRules);
@@ -161,10 +163,16 @@ window.__census = async (cfg) => {
     for (const el of root.children) {
       if (el.localName === "slot") {
         for (const a of el.assignedElements({ flatten: true })) {
-          (a.matches(sel) && out.push(a), flat(a, sel, out));
+          if (a.matches(sel)) {
+            out.push(a);
+          }
+          flat(a, sel, out);
         }
       } else {
-        (el.matches(sel) && out.push(el), flat(el, sel, out));
+        if (el.matches(sel)) {
+          out.push(el);
+        }
+        flat(el, sel, out);
       }
     }
     return out;
@@ -289,7 +297,8 @@ window.__census = async (cfg) => {
           }
           if (st && cfg.side === "ours" && !marked.includes(c)) {
             for (const el of [c, ...deep(c)]) {
-              (marked.push(el), el.setAttribute(st, "true"));
+              marked.push(el);
+              el.setAttribute(st, "true");
             }
           }
           entry.states[st || "base"][name] = read(c, pseudo);

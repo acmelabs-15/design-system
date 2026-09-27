@@ -1,20 +1,16 @@
 import { readFileSync } from "node:fs";
 import type { Doc } from "../../site";
 
-const source = (file: string) => ({
+const entries = {
+  "lit.ts": { entryPath: "examples/table/lit-entry.ts", registerFunction: "registerLitTableExample" },
+  "react.ts": { entryPath: "examples/table/react-entry.ts", registerFunction: "registerReactTableExample" },
+  "virtual-lit.ts": { entryPath: "examples/table/virtual-lit-entry.ts", registerFunction: "registerLitVirtualTableExample" },
+} as const;
+const source = (file: keyof typeof entries) => ({
   language: "typescript" as const,
-  registerFunction: "registerTableExamples",
-  entryPath: "examples/table/docs-entry.ts",
+  ...entries[file],
   sourcePath: "examples/table/" + file,
   code: readFileSync(new URL("../../../examples/table/" + file, import.meta.url), "utf8"),
-  sourceFiles: [
-    "examples/table/docs-entry.ts",
-    "examples/table/definitions.ts",
-    "examples/table/data.ts",
-    "examples/table/review-feature.ts",
-    "examples/table/grid-interaction.ts",
-    "examples/table/virtual-layout.ts",
-  ],
 });
 
 const rows =
@@ -77,6 +73,10 @@ export const doc: Doc = {
     Ownership: [
       "The application creates its TanStack Table and TanStack Virtual instances, renders their final row/column models and retains refs for measurement and focus.",
       "loading changes aria-busy only. Supply application-owned loading, empty, error and recovery content.",
+    ],
+    "Experimental workers": [
+      'The <a href="/recipes/experimental-worker-table">worker recipe</a> includes Lit and React source, a separate worker build and explicit cleanup.',
+      'When Table 9.2.4 experimental workers and custom features share one application, follow <a href="/examples/table/README.md">the application setup</a>. Its version- and hash-checked Bun patch changes two declaration module targets. Ordinary Table and Virtual examples do not need this setup.',
     ],
   },
 };

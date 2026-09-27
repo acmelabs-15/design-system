@@ -1,0 +1,1813 @@
+[
+  {
+    "engine": "chromium",
+    "suite": "accordion",
+    "results": [
+      {
+        "name": "native headings and trigger/content relationships remain named",
+        "pass": true
+      },
+      {
+        "name": "single mode keeps one open and disallows closing the selected item",
+        "pass": true
+      },
+      {
+        "name": "multiple mode allows independent opening and closing",
+        "pass": true
+      },
+      {
+        "name": "arrows and endpoints move focus without changing expansion",
+        "pass": true
+      },
+      {
+        "name": "default content stays mounted while hidden and inert",
+        "pass": true
+      },
+      {
+        "name": "controlled mounting creates and removes actual template children",
+        "pass": true
+      },
+      {
+        "name": "collapse recovers focus before making descendants inert",
+        "pass": true
+      },
+      {
+        "name": "root disability wins and programmatic state remains silent",
+        "pass": true
+      },
+      {
+        "name": "disabled trigger collapse retains focus at its named section",
+        "pass": true
+      },
+      {
+        "name": "Show removes inactive content and resets a remounted input",
+        "pass": true
+      },
+      {
+        "name": "Show preservation retains nodes and blocks the inactive branch",
+        "pass": true
+      },
+      {
+        "name": "Show transfers departing focus to a fallback control",
+        "pass": true
+      },
+      {
+        "name": "Show focuses its named branch when the fallback is empty",
+        "pass": true
+      },
+      {
+        "name": "Show More toggles once and blocks loading activation",
+        "pass": true
+      },
+      {
+        "name": "Load More never submits and blocks repeat requests while loading",
+        "pass": true
+      },
+      {
+        "name": "Tab Panel controlled lifetime still follows its selected tab",
+        "pass": true
+      },
+      {
+        "name": "duplicate and missing item values are disabled, then recover",
+        "pass": true
+      },
+      {
+        "name": "dynamic hidden triggers are skipped by keyboard navigation",
+        "pass": true
+      },
+      {
+        "name": "renderer content disconnects and remounts after exit",
+        "pass": true
+      },
+      {
+        "name": "rapid motion reversal retains the open content",
+        "pass": true
+      },
+      {
+        "name": "nested sections retain independent owners and reconnect once",
+        "pass": true
+      },
+      {
+        "name": "open content grows naturally after its content changes",
+        "pass": true
+      },
+      {
+        "name": "keyboard focus has a visible outline",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "alert",
+    "results": [
+      {
+        "name": "static messages stay passive and authored alert semantics reach one native root",
+        "pass": true
+      },
+      {
+        "name": "dismiss requests are cancelable and never remove application content by themselves",
+        "pass": true
+      },
+      {
+        "name": "heading and action slots stay live and preserve native actions",
+        "pass": true
+      },
+      {
+        "name": "all treatments and sizes use real boxes and fit narrow RTL content",
+        "pass": true
+      },
+      {
+        "name": "Banner keeps one message and action across viewport changes",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "book",
+    "results": [
+      {
+        "name": "default and CSS widths preserve the cover ratio",
+        "pass": true
+      },
+      {
+        "name": "responsive widths use window and named-container queries",
+        "pass": true
+      },
+      {
+        "name": "real hover starts from rest and reversal does not continue outward",
+        "pass": true
+      },
+      {
+        "name": "reduced motion and a changed preference cancel active animations",
+        "pass": true
+      },
+      {
+        "name": "touch stays at rest and authored marks remain owned across variants",
+        "pass": true
+      },
+      {
+        "name": "disconnect ends motion and reconnect starts from rest",
+        "pass": true
+      },
+      {
+        "name": "texture loads the packaged image only when requested",
+        "pass": true
+      },
+      {
+        "name": "reenabling motion does not replay a consumed reduced-motion gesture",
+        "pass": true
+      },
+      {
+        "name": "page zoom preserves measured cover geometry",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "calendar",
+    "results": [
+      {
+        "name": "HTML default and immediate native submission",
+        "pass": true
+      },
+      {
+        "name": "native modal opens on the selected day and Escape restores focus",
+        "pass": true
+      },
+      {
+        "name": "inline control label does not replace date button names",
+        "pass": true
+      },
+      {
+        "name": "day selection commits one ISO value",
+        "pass": true
+      },
+      {
+        "name": "native label focuses the actual Calendar trigger",
+        "pass": true
+      },
+      {
+        "name": "Apply explains an incomplete required range",
+        "pass": true
+      },
+      {
+        "name": "selecting the current day does not emit a change",
+        "pass": true
+      },
+      {
+        "name": "range endpoint navigation starts at the focused end",
+        "pass": true
+      },
+      {
+        "name": "date-only selection stays a civil day across zones",
+        "pass": true
+      },
+      {
+        "name": "time-zone changes preserve the timestamp instant",
+        "pass": true
+      },
+      {
+        "name": "DST gap remains invalid until time is corrected",
+        "pass": true
+      },
+      {
+        "name": "bounds restrict native validity and date buttons",
+        "pass": true
+      },
+      {
+        "name": "native reset and restoration stay silent",
+        "pass": true
+      },
+      {
+        "name": "native fieldset disables submission immediately",
+        "pass": true
+      },
+      {
+        "name": "footer identity survives presentation changes",
+        "pass": true
+      },
+      {
+        "name": "range value serializes as one JSON entry",
+        "pass": true
+      },
+      {
+        "name": "open modal can change presentation and reopen",
+        "pass": true
+      },
+      {
+        "name": "controlled rejection does not emit a commit",
+        "pass": true
+      },
+      {
+        "name": "trigger exposes current dialog relationship and expansion",
+        "pass": true
+      },
+      {
+        "name": "external label updates retain owned popup semantics",
+        "pass": true
+      },
+      {
+        "name": "month buttons retain focus for repeated activation",
+        "pass": true
+      },
+      {
+        "name": "short viewport reveals the selected focused day",
+        "pass": true
+      },
+      {
+        "name": "presets use immutable values and native JSON submission",
+        "pass": true
+      },
+      {
+        "name": "changing zone clears a stale local-time draft error",
+        "pass": true
+      },
+      {
+        "name": "RTL day keys follow the visual direction",
+        "pass": true
+      },
+      {
+        "name": "modal Tab stays contained and reaches supplied footer",
+        "pass": true
+      },
+      {
+        "name": "nested modal releases focus back to its open parent",
+        "pass": true
+      },
+      {
+        "name": "removing an open modal releases focus resources before reconnect",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "chart",
+    "results": [
+      {
+        "name": "the chart exposes a meaningful native name and exact values",
+        "pass": false,
+        "error": "Error: waitFor: Error: strict mode violation: locator('#chart svg') resolved to 2 elements:\n    1) <svg role=\"img\" width=\"100%\" tabindex=\"0\" height=\"100%\" class=\"ts-chart\" viewBox=\"0 0 1280 180\" aria-roledescription=\"chart\" aria-label=\"Weekly requests\">…</svg> aka getByRole('img', { name: 'Weekly requests' })\n    2) <svg part=\"root\" focusable=\"false\" aria-hidden=\"true\" viewBox=\"0 -960 960 960\">…</svg> aka getByRole('button', { name: 'View data' })\n\nCall log:\n\u001b[2m  - waiting for locator('#chart svg') to be visible\u001b[22m\n"
+      },
+      {
+        "name": "all three mark types rebuild without leaking extra SVG surfaces",
+        "pass": false,
+        "error": "Error: waitFor: Error: strict mode violation: locator('#chart svg') resolved to 2 elements:\n    1) <svg role=\"img\" width=\"100%\" tabindex=\"0\" height=\"100%\" class=\"ts-chart\" viewBox=\"0 0 1280 180\" aria-roledescription=\"chart\" aria-label=\"Weekly requests\">…</svg> aka getByRole('img', { name: 'Weekly requests' })\n    2) <svg part=\"root\" focusable=\"false\" aria-hidden=\"true\" viewBox=\"0 -960 960 960\">…</svg> aka getByRole('button', { name: 'View data' })\n\nCall log:\n\u001b[2m  - waiting for locator('#chart svg') to be visible\u001b[22m\n"
+      },
+      {
+        "name": "keyboard inspection is available while activation remains explicitly opt-in",
+        "pass": false,
+        "error": "Error: waitFor: Error: strict mode violation: locator('#chart svg') resolved to 2 elements:\n    1) <svg role=\"img\" width=\"100%\" tabindex=\"0\" height=\"100%\" class=\"ts-chart\" viewBox=\"0 0 1280 180\" aria-roledescription=\"chart\" aria-label=\"Weekly requests\">…</svg> aka getByRole('img', { name: 'Weekly requests' })\n    2) <svg part=\"root\" focusable=\"false\" aria-hidden=\"true\" viewBox=\"0 -960 960 960\">…</svg> aka getByRole('button', { name: 'View data' })\n\nCall log:\n\u001b[2m  - waiting for locator('#chart svg') to be visible\u001b[22m\n"
+      },
+      {
+        "name": "clearing data removes the renderer and reconnect creates one current surface",
+        "pass": false,
+        "error": "Error: waitFor: Error: strict mode violation: locator('#chart svg') resolved to 2 elements:\n    1) <svg role=\"img\" width=\"100%\" tabindex=\"0\" height=\"100%\" class=\"ts-chart\" viewBox=\"0 0 1280 180\" aria-roledescription=\"chart\" aria-label=\"Weekly requests\">…</svg> aka getByRole('img', { name: 'Weekly requests' })\n    2) <svg part=\"root\" focusable=\"false\" aria-hidden=\"true\" viewBox=\"0 -960 960 960\">…</svg> aka getByRole('button', { name: 'View data' })\n\nCall log:\n\u001b[2m  - waiting for locator('#chart svg') to be visible\u001b[22m\n"
+      },
+      {
+        "name": "height, width and typed numerical/date axes use current measurements",
+        "pass": false,
+        "error": "Error: waitFor: Error: strict mode violation: locator('#chart svg') resolved to 2 elements:\n    1) <svg role=\"img\" width=\"100%\" tabindex=\"0\" height=\"100%\" class=\"ts-chart\" viewBox=\"0 0 1280 180\" aria-roledescription=\"chart\" aria-label=\"Weekly requests\">…</svg> aka getByRole('img', { name: 'Weekly requests' })\n    2) <svg part=\"root\" focusable=\"false\" aria-hidden=\"true\" viewBox=\"0 -960 960 960\">…</svg> aka getByRole('button', { name: 'View data' })\n\nCall log:\n\u001b[2m  - waiting for locator('#chart svg') to be visible\u001b[22m\n"
+      },
+      {
+        "name": "Sparkline keeps gaps, separate sentiment and decorative semantics",
+        "pass": false,
+        "error": "Error: waitFor: Error: strict mode violation: locator('#chart svg') resolved to 2 elements:\n    1) <svg role=\"img\" width=\"100%\" tabindex=\"0\" height=\"100%\" class=\"ts-chart\" viewBox=\"0 0 1280 180\" aria-roledescription=\"chart\" aria-label=\"Weekly requests\">…</svg> aka getByRole('img', { name: 'Weekly requests' })\n    2) <svg part=\"root\" focusable=\"false\" aria-hidden=\"true\" viewBox=\"0 -960 960 960\">…</svg> aka getByRole('button', { name: 'View data' })\n\nCall log:\n\u001b[2m  - waiting for locator('#chart svg') to be visible\u001b[22m\n"
+      },
+      {
+        "name": "Legend labels and authored controls remain passive and native hidden stays hidden",
+        "pass": false,
+        "error": "Error: waitFor: Error: strict mode violation: locator('#chart svg') resolved to 2 elements:\n    1) <svg role=\"img\" width=\"100%\" tabindex=\"0\" height=\"100%\" class=\"ts-chart\" viewBox=\"0 0 1280 180\" aria-roledescription=\"chart\" aria-label=\"Weekly requests\">…</svg> aka getByRole('img', { name: 'Weekly requests' })\n    2) <svg part=\"root\" focusable=\"false\" aria-hidden=\"true\" viewBox=\"0 -960 960 960\">…</svg> aka getByRole('button', { name: 'View data' })\n\nCall log:\n\u001b[2m  - waiting for locator('#chart svg') to be visible\u001b[22m\n"
+      },
+      {
+        "name": "supplementary tooltip content retains author nodes and formatters remain text",
+        "pass": false,
+        "error": "Error: waitFor: Error: strict mode violation: locator('#chart svg') resolved to 2 elements:\n    1) <svg role=\"img\" width=\"100%\" tabindex=\"0\" height=\"100%\" class=\"ts-chart\" viewBox=\"0 0 1280 180\" aria-roledescription=\"chart\" aria-label=\"Weekly requests\">…</svg> aka getByRole('img', { name: 'Weekly requests' })\n    2) <svg part=\"root\" focusable=\"false\" aria-hidden=\"true\" viewBox=\"0 -960 960 960\">…</svg> aka getByRole('button', { name: 'View data' })\n\nCall log:\n\u001b[2m  - waiting for locator('#chart svg') to be visible\u001b[22m\n"
+      },
+      {
+        "name": "a missing required label does not mount an unnamed interactive graphic",
+        "pass": false,
+        "error": "Error: waitFor: Error: strict mode violation: locator('#chart svg') resolved to 2 elements:\n    1) <svg role=\"img\" width=\"100%\" tabindex=\"0\" height=\"100%\" class=\"ts-chart\" viewBox=\"0 0 1280 180\" aria-roledescription=\"chart\" aria-label=\"Weekly requests\">…</svg> aka getByRole('img', { name: 'Weekly requests' })\n    2) <svg part=\"root\" focusable=\"false\" aria-hidden=\"true\" viewBox=\"0 -960 960 960\">…</svg> aka getByRole('button', { name: 'View data' })\n\nCall log:\n\u001b[2m  - waiting for locator('#chart svg') to be visible\u001b[22m\n"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "code-block",
+    "results": [
+      {
+        "name": "exact source includes leading/trailing whitespace and copy emits once",
+        "pass": true
+      },
+      {
+        "name": "one keyboard entry moves between references and requests without owning state or history",
+        "pass": true
+      },
+      {
+        "name": "overlapping decorations remain explicit and out-of-range values add no lines",
+        "pass": true
+      },
+      {
+        "name": "long code scrolls internally and wrapping preserves source",
+        "pass": true
+      },
+      {
+        "name": "failure renders safe plain text and reports once per prepared source",
+        "pass": true
+      },
+      {
+        "name": "empty source, authored controls and changed source preserve their owners",
+        "pass": true
+      },
+      {
+        "name": "replacing short source recovers focused line navigation",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "command-menu",
+    "results": [
+      {
+        "name": "Command Menu composes one native Dialog and an active-descendant Input",
+        "pass": true
+      },
+      {
+        "name": "typing searches visible labels and aliases without moving author nodes",
+        "pass": true
+      },
+      {
+        "name": "arrow activation reports one serializable request and closes",
+        "pass": true
+      },
+      {
+        "name": "canceling a selection keeps the menu and its query",
+        "pass": true
+      },
+      {
+        "name": "disabled items cannot activate",
+        "pass": true
+      },
+      {
+        "name": "Escape cancellation and completion follow the shared Dialog path",
+        "pass": true
+      },
+      {
+        "name": "empty results and programmatic query updates stay usable",
+        "pass": true
+      },
+      {
+        "name": "custom scoring reorders projections while every author node stays in place",
+        "pass": true
+      },
+      {
+        "name": "composition Enter does not select and its completed edit reaches the query",
+        "pass": true
+      },
+      {
+        "name": "shortcut configuration and disconnection have one registration lifetime",
+        "pass": true
+      },
+      {
+        "name": "application-owned pages can intercept Escape and keep the same dialog",
+        "pass": true
+      },
+      {
+        "name": "load-more requests are explicit and coalesced until the data changes",
+        "pass": true
+      },
+      {
+        "name": "late result changes use the current query and clear stale active descendants",
+        "pass": true
+      },
+      {
+        "name": "Lit can delete and replace its ranked children after filtering",
+        "pass": true
+      },
+      {
+        "name": "long results stay inside a scroll area and keyboard movement reveals the active row",
+        "pass": true
+      },
+      {
+        "name": "supporting text describes options without replacing their action names",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "dialog",
+    "results": [
+      {
+        "name": "Dialog opens with native modality, name references and editing focus",
+        "pass": true
+      },
+      {
+        "name": "Escape closes once and returns to the opener",
+        "pass": true
+      },
+      {
+        "name": "canceling close preserves the native session",
+        "pass": true
+      },
+      {
+        "name": "Alert Dialog focuses Cancel without transient destructive focus",
+        "pass": true
+      },
+      {
+        "name": "nonmodal mode permits background interaction and explicit focus targets",
+        "pass": true
+      },
+      {
+        "name": "a removed opener does not close an independent Dialog",
+        "pass": true
+      },
+      {
+        "name": "Menu escape does not dismiss its parent Dialog",
+        "pass": true
+      },
+      {
+        "name": "a Dialog opened by a menu survives that menu closing",
+        "pass": true
+      },
+      {
+        "name": "reopening during exit restores interaction without dropping native modality",
+        "pass": true
+      },
+      {
+        "name": "changing native mode after opener removal preserves the dialog",
+        "pass": true
+      },
+      {
+        "name": "the after-close callback runs after focus restoration",
+        "pass": true
+      },
+      {
+        "name": "Dialog follows the opener theme and live appearance changes",
+        "pass": true
+      },
+      {
+        "name": "an external default-theme opener resets a differently themed Dialog",
+        "pass": true
+      },
+      {
+        "name": "Drawer supports every logical edge and keeps author input state",
+        "pass": true
+      },
+      {
+        "name": "Drawer reverses logical edges in RTL and remains bounded after resize",
+        "pass": true
+      },
+      {
+        "name": "Drawer default size responds to a registered theme token",
+        "pass": true
+      },
+      {
+        "name": "Drawer preserves live local CSS theme overrides",
+        "pass": true
+      },
+      {
+        "name": "modal Tab traversal contains all slotted controls",
+        "pass": true
+      },
+      {
+        "name": "native modality blocks background activation through the owned exit",
+        "pass": true
+      },
+      {
+        "name": "unrelated infinite child animation cannot hold the native session open",
+        "pass": true
+      },
+      {
+        "name": "removing an open owner releases modality and scroll resources",
+        "pass": true
+      },
+      {
+        "name": "nested Dialog closes before its parent and parent cleanup closes descendants",
+        "pass": true
+      },
+      {
+        "name": "same-task open and close do not create a ghost session",
+        "pass": true
+      },
+      {
+        "name": "the native backdrop is styled through the surface part",
+        "pass": true
+      },
+      {
+        "name": "a nested editor can consume Tab even at the modal boundary",
+        "pass": true
+      },
+      {
+        "name": "native date editor segments keep their Tab steps before moving to the next control",
+        "pass": true
+      },
+      {
+        "name": "an opener removed during the request does not prevent opening",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "empty-state",
+    "results": [
+      {
+        "name": "empty-state slots preserve authored headings, descriptions and native action behavior",
+        "pass": true
+      },
+      {
+        "name": "optional parts update after insertion and removal without stale empty boxes",
+        "pass": true
+      },
+      {
+        "name": "all empty-state variants and sizes retain content and fit a narrow viewport",
+        "pass": true
+      },
+      {
+        "name": "Status shows meaningful text while its indicator remains decorative and passive",
+        "pass": true
+      },
+      {
+        "name": "slotted Status labels and explicit live semantics do not create duplicate indicators",
+        "pass": true
+      },
+      {
+        "name": "Status pulse uses owned motion and responds to reduced motion and disconnection",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "feedback",
+    "results": [
+      {
+        "name": "required message validation prevents application submission and focuses the editor",
+        "pass": true
+      },
+      {
+        "name": "submission is application-owned and repeated activation cannot duplicate it",
+        "pass": true
+      },
+      {
+        "name": "canceling a submit request leaves the form available",
+        "pass": true
+      },
+      {
+        "name": "optional email uses native validity and preserves a failed draft",
+        "pass": true
+      },
+      {
+        "name": "rating and topic selection publish whole-form values with no scalar event leak",
+        "pass": true
+      },
+      {
+        "name": "reset restores the initial supplied value without emitting user edits",
+        "pass": true
+      },
+      {
+        "name": "busy state prevents edits and submission while retaining the draft",
+        "pass": true
+      },
+      {
+        "name": "custom actions submit and reset while authored nodes remain stable",
+        "pass": true
+      },
+      {
+        "name": "form fields retain accessible names and narrow RTL layout",
+        "pass": true
+      },
+      {
+        "name": "immediate programmatic submission validates the current value rather than the previous render",
+        "pass": true
+      },
+      {
+        "name": "Toggle Tip composition retains the draft and owns dismissal",
+        "pass": true
+      },
+      {
+        "name": "rating keyboard navigation updates one form value and both edit events",
+        "pass": true
+      },
+      {
+        "name": "Dialog composition exposes one form and retains draft across dismissal",
+        "pass": true
+      },
+      {
+        "name": "a tall Toggle Tip form remains reachable when neither side of its trigger fits",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "flow-diagram",
+    "results": [
+      {
+        "name": "real worker renders measured custom nodes and routed edges",
+        "pass": true
+      },
+      {
+        "name": "custom controls retain DOM, focus and values after layout",
+        "pass": true
+      },
+      {
+        "name": "node activation and keyboard viewport controls have distinct events",
+        "pass": true
+      },
+      {
+        "name": "content resize relayout keeps author content mounted",
+        "pass": true
+      },
+      {
+        "name": "invalid references fail clearly and valid data recovers",
+        "pass": true
+      },
+      {
+        "name": "empty, disconnect and reconnect release worker resources",
+        "pass": true
+      },
+      {
+        "name": "background pointer pan never captures nested control gestures",
+        "pass": true
+      },
+      {
+        "name": "invalid data emits once and a changed zoom range clamps current state",
+        "pass": true
+      },
+      {
+        "name": "stale requests reject and latest data wins",
+        "pass": true
+      },
+      {
+        "name": "failed worker delivery has a usable retry and releases resources",
+        "pass": true
+      },
+      {
+        "name": "stress measurements",
+        "pass": true,
+        "measurements": [
+          {
+            "count": 100,
+            "layoutMs": 84.40000003576279,
+            "verificationMs": 109.90000003576279,
+            "ticks": 8,
+            "collisions": 0,
+            "diagonal": 0,
+            "samples": 5559,
+            "nodes": 100,
+            "edges": 109,
+            "workerOwned": true
+          },
+          {
+            "count": 500,
+            "layoutMs": 279,
+            "verificationMs": 346.89999997615814,
+            "ticks": 25,
+            "collisions": 0,
+            "diagonal": 0,
+            "samples": 27999,
+            "nodes": 500,
+            "edges": 549,
+            "workerOwned": true
+          }
+        ]
+      },
+      {
+        "name": "100 and 500 node worker layouts keep the main thread responsive and routes clear",
+        "pass": true
+      },
+      {
+        "name": "keyboard focus brings offscreen node controls into the canvas without native scroll drift",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "json-view",
+    "results": [
+      {
+        "name": "owned hierarchy, one focus entry and keyboard expansion",
+        "pass": true
+      },
+      {
+        "name": "typeahead, RTL expansion and collapse focus recovery",
+        "pass": true
+      },
+      {
+        "name": "getter/cycle/special-value input stays safe and escaped",
+        "pass": true
+      },
+      {
+        "name": "unchanged subtree state survives replacement and highlighting does not replace rows",
+        "pass": true
+      },
+      {
+        "name": "deep/large measurements",
+        "pass": true,
+        "result": {
+          "collapsed": 4,
+          "expanded": 1002,
+          "large": 1001,
+          "ms": 990.3000000119209
+        }
+      },
+      {
+        "name": "deep data and large collections avoid recursive render overflow",
+        "pass": true
+      },
+      {
+        "name": "default attributes restore and source updates stay presentation-only",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "markdown",
+    "results": [
+      {
+        "name": "native headings are discoverable and TOC/fragment navigation targets them",
+        "pass": true
+      },
+      {
+        "name": "repeated headings and footnotes are unique across instances and references resolve",
+        "pass": true
+      },
+      {
+        "name": "default source blocks executable HTML/URLs and trusted opt-in remains explicit",
+        "pass": true
+      },
+      {
+        "name": "highlight failure preserves escaped source and reports once",
+        "pass": true
+      },
+      {
+        "name": "tables use generated alignment and long fences retain keyboard scrolling",
+        "pass": true
+      },
+      {
+        "name": "prose nodes survive theme-only updates and reconnect, and styles remain scoped",
+        "pass": true
+      },
+      {
+        "name": "built-in prose labels react to message catalog changes without replacing headings",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "meter",
+    "results": [
+      {
+        "name": "native progress distinguishes zero from absent progress",
+        "pass": true
+      },
+      {
+        "name": "progress clamps only its display and reports invalid ranges without a fabricated bar value",
+        "pass": true
+      },
+      {
+        "name": "meter exposes native bounded measurement semantics and a real zero",
+        "pass": true
+      },
+      {
+        "name": "absent and loading measurements have distinct nonnumeric descriptions",
+        "pass": true
+      },
+      {
+        "name": "threshold colors follow explicit optimal regions and custom value text reaches the native meter",
+        "pass": true
+      },
+      {
+        "name": "invalid meter bounds omit numerical semantics and recover after correction",
+        "pass": true
+      },
+      {
+        "name": "all meter sizes produce nonnegative arcs at endpoints and small values",
+        "pass": true
+      },
+      {
+        "name": "Skeleton preserves author content and prevents hidden input interaction",
+        "pass": true
+      },
+      {
+        "name": "Skeleton dimensions and circular shape retain a real wrapper",
+        "pass": true
+      },
+      {
+        "name": "repeating motion cancels on preference and disconnection across Progress Skeleton and Spinner",
+        "pass": true
+      },
+      {
+        "name": "Spinner retains all blade counts and durations after lifecycle extraction",
+        "pass": true
+      },
+      {
+        "name": "RTL determinate progress fills from the end and static indeterminate activity stays visible",
+        "pass": true
+      },
+      {
+        "name": "visible Progress label and value text reach native semantics",
+        "pass": true
+      },
+      {
+        "name": "indeterminate motion remains visible when direction changes during the effect",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "pagination",
+    "results": [
+      {
+        "name": "numbered navigation requests a page without rewriting application state",
+        "pass": true
+      },
+      {
+        "name": "compact known and unknown totals never fabricate a final page",
+        "pass": true
+      },
+      {
+        "name": "zero results disable both controls and out-of-range page retains the supplied value",
+        "pass": true
+      },
+      {
+        "name": "authored Position and Page Size parts share context and preserve controlled size",
+        "pass": true
+      },
+      {
+        "name": "URL navigation uses real anchors and cancellation preserves the document",
+        "pass": true
+      },
+      {
+        "name": "loading and disabled block page and size actions without altering their values",
+        "pass": true
+      },
+      {
+        "name": "parts reconnect to a new owner through an attached Group",
+        "pass": true
+      },
+      {
+        "name": "page-size choices revert when the application declines the request",
+        "pass": true
+      },
+      {
+        "name": "a focused page removed by a new range recovers inside the navigation",
+        "pass": true
+      },
+      {
+        "name": "HTML default removal and supplied page-size options retain their declared types",
+        "pass": true
+      },
+      {
+        "name": "removing authored page-size choices restores its default options",
+        "pass": true
+      },
+      {
+        "name": "the page-size value remains readable in a narrow pagination row",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "resizable",
+    "results": [
+      {
+        "name": "shares occupy pane space and the separator describes its primary pane",
+        "pass": true
+      },
+      {
+        "name": "keyboard changes one percentage point and commits once",
+        "pass": true
+      },
+      {
+        "name": "pointer movement excludes handle width from its percentage denominator",
+        "pass": true
+      },
+      {
+        "name": "Enter collapses and restores the saved open size",
+        "pass": true
+      },
+      {
+        "name": "programmatic collapse recovers stranded focus and emits no user commit",
+        "pass": true
+      },
+      {
+        "name": "vertical and RTL keys track the physical handle direction",
+        "pass": true
+      },
+      {
+        "name": "reordering retains keyed shares and updates the primary accessible name",
+        "pass": true
+      },
+      {
+        "name": "complete snapshots restore independently of caller mutation",
+        "pass": true
+      },
+      {
+        "name": "disconnect and reconnect retain the complete keyed state",
+        "pass": true
+      },
+      {
+        "name": "controlled rejection cancels the user commit",
+        "pass": true
+      },
+      {
+        "name": "pointer cancellation retains live edits without a commit",
+        "pass": true
+      },
+      {
+        "name": "disabling the handle cancels an active drag",
+        "pass": true
+      },
+      {
+        "name": "restoration respects changed size limits",
+        "pass": true
+      },
+      {
+        "name": "a third pane stays unchanged when a different adjacent pair resizes",
+        "pass": true
+      },
+      {
+        "name": "Home End and Shift arrows retain their percentage meanings",
+        "pass": true
+      },
+      {
+        "name": "primary pane label changes reach the separator",
+        "pass": true
+      },
+      {
+        "name": "impossible constraints disable resizing and recover after correction",
+        "pass": true
+      },
+      {
+        "name": "a resized container cancels drag without changing keyed shares",
+        "pass": true
+      },
+      {
+        "name": "nested resizable layouts keep independent keyed state",
+        "pass": true
+      },
+      {
+        "name": "Scroll Area remains the native scroll owner inside a resized pane",
+        "pass": true
+      },
+      {
+        "name": "collapse animation stays bounded and leaves an unrelated pane fixed",
+        "pass": true
+      },
+      {
+        "name": "adoption releases the old document drag listener",
+        "pass": true
+      },
+      {
+        "name": "reduced motion disables CSS transitions rather than creating micro transitions",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "sidebar",
+    "results": [
+      {
+        "name": "desktop starts expanded with a named complementary region",
+        "pass": true
+      },
+      {
+        "name": "desktop collapse changes only desktop state and exposes authored compact content",
+        "pass": true
+      },
+      {
+        "name": "collapse recovers focused content to the trigger and preserves input identity and value",
+        "pass": true
+      },
+      {
+        "name": "mobile uses one named native modal Drawer and restores focus on Escape",
+        "pass": true
+      },
+      {
+        "name": "mode changes retain a single author node and independent desktop collapse",
+        "pass": true
+      },
+      {
+        "name": "desktop to closed mobile transfers focus before hiding the content",
+        "pass": true
+      },
+      {
+        "name": "non-collapsible desktop disables its trigger while mobile remains available",
+        "pass": true
+      },
+      {
+        "name": "the shared medium threshold is 37.5rem with an exclusive upper boundary",
+        "pass": true
+      },
+      {
+        "name": "close controls and reconnected ownership produce one mobile change event",
+        "pass": true
+      },
+      {
+        "name": "logical placements follow direction and custom width",
+        "pass": true
+      },
+      {
+        "name": "collapsible policy changes preserve focus when content stays visible and recover it when hidden",
+        "pass": true
+      },
+      {
+        "name": "rapid viewport reversals keep one modal and complete the final desktop transition",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "snippet",
+    "results": [
+      {
+        "name": "copy joins source lines and excludes prompts exactly once",
+        "pass": true
+      },
+      {
+        "name": "copy failure remains one composed error and empty override remains empty",
+        "pass": true
+      },
+      {
+        "name": "source text is escaped and changing lines updates the composed Code content",
+        "pass": true
+      },
+      {
+        "name": "long lines scroll with keyboard without widening the surrounding layout",
+        "pass": true
+      },
+      {
+        "name": "Browser preserves preview focus and supplies no false chrome actions",
+        "pass": true
+      },
+      {
+        "name": "viewport keys follow physical arrows, logical RTL ends and native vertical ranges",
+        "pass": true
+      },
+      {
+        "name": "viewport key handling leaves descendant input keys intact",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "stat",
+    "results": [
+      {
+        "name": "native terms and definitions retain zero and authored units",
+        "pass": true
+      },
+      {
+        "name": "direction and favorable meaning are separate and both have readable text",
+        "pass": true
+      },
+      {
+        "name": "loading masks data and change text without replacing author nodes",
+        "pass": true
+      },
+      {
+        "name": "parts follow their new Stat owner after moving and reconnecting",
+        "pass": true
+      },
+      {
+        "name": "all sizes and long labels wrap in narrow RTL layouts",
+        "pass": true
+      },
+      {
+        "name": "optional numeric formatting preserves application options and never invents direction",
+        "pass": true
+      },
+      {
+        "name": "forwarded slot changes refresh the loading owner without moving the value node",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "steps",
+    "results": [
+      {
+        "name": "Steps exposes named tabs and linked retained panels",
+        "pass": true
+      },
+      {
+        "name": "manual arrow navigation has one entry and does not advance",
+        "pass": true
+      },
+      {
+        "name": "RTL and vertical keys follow the current orientation",
+        "pass": true
+      },
+      {
+        "name": "cancelable validation keeps the current panel and application can resume silently",
+        "pass": true
+      },
+      {
+        "name": "linear progression and explicit completion keep a usable focus destination",
+        "pass": true
+      },
+      {
+        "name": "disabled steps are skipped by progression and keyboard",
+        "pass": true
+      },
+      {
+        "name": "panel input identity is preserved and focused content recovers on a programmatic move",
+        "pass": true
+      },
+      {
+        "name": "Timeline is an ordered list without a selection owner",
+        "pass": true
+      },
+      {
+        "name": "Timeline changes orientation and final connector without replacing content",
+        "pass": true
+      },
+      {
+        "name": "reordered steps derive indexes and reconnect without duplicate changes",
+        "pass": true
+      },
+      {
+        "name": "duplicate values block ambiguous navigation and recover after correction",
+        "pass": true
+      },
+      {
+        "name": "native form validation can cancel and then permit a forward request",
+        "pass": true
+      },
+      {
+        "name": "controlled request overrides stay authoritative and silent",
+        "pass": true
+      },
+      {
+        "name": "keyboard focus and narrow layout remain visible",
+        "pass": true
+      },
+      {
+        "name": "pointer focus follows the bare native button baseline",
+        "pass": true
+      },
+      {
+        "name": "removed numeric and orientation attributes restore defaults",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "table",
+    "results": [
+      {
+        "name": "Table preserves author-owned native content and direct references",
+        "pass": true
+      },
+      {
+        "name": "native caption, headers and cells survive the shadow scrolling box",
+        "pass": true
+      },
+      {
+        "name": "variant, density and size affect the native cells without changing author state",
+        "pass": true
+      },
+      {
+        "name": "light styles follow a table into another shadow root and do not style unrelated tables",
+        "pass": true
+      },
+      {
+        "name": "sticky headers and logical column pins retain geometry during two-axis scroll in RTL",
+        "pass": true
+      },
+      {
+        "name": "native spans, grouped headings and footer markup remain application-owned",
+        "pass": true
+      },
+      {
+        "name": "loading changes only busy presentation and never disables or discards content",
+        "pass": true
+      },
+      {
+        "name": "cell range outlines do not change row or column geometry",
+        "pass": true
+      },
+      {
+        "name": "fallback rendering is distinct from authored content in real slot assignment",
+        "pass": true
+      },
+      {
+        "name": "nested tables do not inherit outer row selection or range decoration",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "toast",
+    "results": [
+      {
+        "name": "explicit store shows a native top-layer notification and one live announcement",
+        "pass": true
+      },
+      {
+        "name": "newest records are visible and older records beyond the limit cannot receive focus",
+        "pass": true
+      },
+      {
+        "name": "focus expands the stack and dismissal preserves a remaining focus destination",
+        "pass": true
+      },
+      {
+        "name": "application action emits one serializable request and does not dismiss automatically",
+        "pass": true
+      },
+      {
+        "name": "user dismissal reports one reason without duplicate wrapper notification",
+        "pass": true
+      },
+      {
+        "name": "timers pause for pointer interaction and resume their remaining duration",
+        "pass": true
+      },
+      {
+        "name": "custom content keeps its node identity through updates and stack changes",
+        "pass": true
+      },
+      {
+        "name": "normal-motion dismissal retains the closing surface until its own exit settles",
+        "pass": true
+      },
+      {
+        "name": "updates replace announcement content and lowering the visible limit removes hidden messages",
+        "pass": true
+      },
+      {
+        "name": "a new visible-limit arrival transfers focus before hiding the focused record",
+        "pass": true
+      },
+      {
+        "name": "a disconnected presentation pauses the remaining duration until reconnect",
+        "pass": true
+      },
+      {
+        "name": "two independent stores and a same-store viewport handoff keep one presentation per store",
+        "pass": true
+      },
+      {
+        "name": "dismiss and immediate same-id replacement retain the new lifetime",
+        "pass": true
+      },
+      {
+        "name": "outward drag dismisses once while reverse and short drags preserve the record",
+        "pass": true
+      },
+      {
+        "name": "RTL end placement dismisses toward the left",
+        "pass": true
+      },
+      {
+        "name": "persistent non-dismissible records ignore Escape and expose no close action",
+        "pass": true
+      },
+      {
+        "name": "viewport handoff does not announce an unchanged record twice",
+        "pass": true
+      },
+      {
+        "name": "long content can be scrolled in the expanded viewport without horizontal overflow",
+        "pass": true
+      },
+      {
+        "name": "touch expansion and pointer cancellation retain the record",
+        "pass": true
+      },
+      {
+        "name": "Escape closes a nested help surface before its notification",
+        "pass": true
+      },
+      {
+        "name": "visibility-event integration preserves remaining time under an injected hidden state",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "toc",
+    "results": [
+      {
+        "name": "discovers native and registered headings inside the named source",
+        "pass": true
+      },
+      {
+        "name": "real fragment navigation focuses and offsets a heading inside a bordered scroll root",
+        "pass": true
+      },
+      {
+        "name": "registered heading receives native focus and retains its authored ID",
+        "pass": true
+      },
+      {
+        "name": "explicit entries replace discovery and an empty list stays empty",
+        "pass": true
+      },
+      {
+        "name": "malformed fragment entries are omitted without breaking future updates",
+        "pass": true
+      },
+      {
+        "name": "missing and duplicate IDs are omitted without changing author content",
+        "pass": true
+      },
+      {
+        "name": "live labels and replacement source nodes update the links",
+        "pass": true
+      },
+      {
+        "name": "a short non-scrolling source keeps its first section current",
+        "pass": true
+      },
+      {
+        "name": "disconnect and reconnect restore observation without duplicate links",
+        "pass": true
+      },
+      {
+        "name": "scrolling selects the crossed heading and the last section at the bottom",
+        "pass": true
+      },
+      {
+        "name": "levels and registered heading labels update without manual refresh",
+        "pass": true
+      },
+      {
+        "name": "modified clicks retain native link behavior and do not force focus",
+        "pass": true
+      },
+      {
+        "name": "history keeps application state and Back restores the previous fragment",
+        "pass": true
+      },
+      {
+        "name": "document scrolling and a ShadowRoot source both use real native links",
+        "pass": true
+      },
+      {
+        "name": "all variants fit a narrow RTL viewport and expose only one current location",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "toolbar",
+    "results": [
+      {
+        "name": "Toolbar has one named tab entry across actions and radio controls",
+        "pass": true
+      },
+      {
+        "name": "arrows skip disabled actions and focus radio choices without selecting",
+        "pass": true
+      },
+      {
+        "name": "editing keys remain inside the trailing input and reentry reaches actions",
+        "pass": true
+      },
+      {
+        "name": "Menu keeps its own keys and restores focus to its toolbar trigger",
+        "pass": true
+      },
+      {
+        "name": "orientation, RTL and loop=false have one focus owner",
+        "pass": true
+      },
+      {
+        "name": "disabling the toolbar preserves children and moves focus outside inert content",
+        "pass": true
+      },
+      {
+        "name": "leaving a toolbar restores authored tabindex",
+        "pass": true
+      },
+      {
+        "name": "App Bar preserves the header baseline and explicit content regions",
+        "pass": true
+      },
+      {
+        "name": "App Bar remains a real header without a dialog banner",
+        "pass": true
+      },
+      {
+        "name": "App Bar keeps author nodes through orientation and placement changes",
+        "pass": true
+      },
+      {
+        "name": "Breadcrumbs exposes navigation, native list items and current-page meaning",
+        "pass": true
+      },
+      {
+        "name": "disabled Breadcrumb links cannot navigate and the final separator follows removal",
+        "pass": true
+      },
+      {
+        "name": "Segmented Control delegates arrows without changing its value",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "tooltip",
+    "results": [
+      {
+        "name": "Tooltip opens on native focus without adding a wrapper tab stop",
+        "pass": true
+      },
+      {
+        "name": "Tooltip preserves prior descriptions and adds readable help for native and component buttons",
+        "pass": true
+      },
+      {
+        "name": "Escape closes without stealing focus or reopening while focus stays on the trigger",
+        "pass": true
+      },
+      {
+        "name": "pointer moves between trigger and preview without flicker and leave closes",
+        "pass": true
+      },
+      {
+        "name": "Hover Card preserves native destination activation and never focuses its preview",
+        "pass": true
+      },
+      {
+        "name": "delayed opening is canceled by pointer departure and disconnection",
+        "pass": true
+      },
+      {
+        "name": "changing content updates the existing description and disabled closes the surface",
+        "pass": true
+      },
+      {
+        "name": "Toggle Tip opens only on explicit activation and exposes dialog relationships",
+        "pass": true
+      },
+      {
+        "name": "keyboard activation moves into content and Escape returns to its native button",
+        "pass": true
+      },
+      {
+        "name": "Toggle Tip preserves content state through close and reopen without modal isolation",
+        "pass": true
+      },
+      {
+        "name": "outside focus closes Toggle Tip without stealing the new focus",
+        "pass": true
+      },
+      {
+        "name": "cancelable dismissal and explicit flags preserve an open Toggle Tip",
+        "pass": true
+      },
+      {
+        "name": "nested help consumes Escape once without dismissing its parent Dialog",
+        "pass": true
+      },
+      {
+        "name": "removing an open anchor closes its surface and native top-layer lifetime",
+        "pass": true
+      },
+      {
+        "name": "noninteractive preview content cannot add unreachable focus stops",
+        "pass": true
+      },
+      {
+        "name": "Tooltip preserves complete punctuation and owns no shadow",
+        "pass": true
+      },
+      {
+        "name": "repeated reconnect cleans descriptions without duplicating them",
+        "pass": true
+      },
+      {
+        "name": "normal-motion close and reopen retain one native surface and finish cleanly",
+        "pass": true
+      },
+      {
+        "name": "normal-motion Toggle Tip exit restores focus only after its owned fade",
+        "pass": true
+      },
+      {
+        "name": "all preferred sides stay inside a narrow viewport and maintain the native top layer",
+        "pass": true
+      },
+      {
+        "name": "the visible tooltip has its own readable text in the native accessibility tree",
+        "pass": true
+      },
+      {
+        "name": "live trigger labels name the dialog through native element references",
+        "pass": true
+      },
+      {
+        "name": "open help follows its trigger theme, public token changes and direction",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "tree-view",
+    "results": [
+      {
+        "name": "data creates a named hierarchy with one tab entry and collapsed child groups",
+        "pass": true
+      },
+      {
+        "name": "arrows expand, enter children, skip disabled nodes and return to parents without selecting",
+        "pass": true
+      },
+      {
+        "name": "activation selects one node and emits serializable activation and expansion events",
+        "pass": true
+      },
+      {
+        "name": "Home End and typeahead move focus through visible enabled nodes",
+        "pass": true
+      },
+      {
+        "name": "explicit content overrides presentation while data retains identity and accessible label",
+        "pass": true
+      },
+      {
+        "name": "collapsed selected descendants retain selection while focus recovers to the branch",
+        "pass": true
+      },
+      {
+        "name": "removing a focused node recovers visible focus without rewriting selected state",
+        "pass": true
+      },
+      {
+        "name": "disabled nodes cannot activate and selection none emits only activation",
+        "pass": true
+      },
+      {
+        "name": "native leaf links navigate and canceled activation prevents their default navigation",
+        "pass": true
+      },
+      {
+        "name": "programmatic methods stay silent and disconnected trees reconnect",
+        "pass": true
+      },
+      {
+        "name": "RTL reverses hierarchy arrows and narrow layout stays contained",
+        "pass": true
+      },
+      {
+        "name": "rich descriptions remain accessible without replacing the node label",
+        "pass": true
+      },
+      {
+        "name": "data order changes keep authored content in place and derived part state updates",
+        "pass": true
+      },
+      {
+        "name": "Tree Item disabled input participates in the keyboard and activation state",
+        "pass": true
+      },
+      {
+        "name": "selection background and corner radius use registered theme tokens",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "combobox",
+    "results": [
+      {
+        "name": "ranked option identity and keyed removal",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "number-input",
+    "results": [
+      {
+        "name": "numberInputSlotRegression",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "pin-input",
+    "results": [
+      {
+        "name": "pinInputSlotRegression",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "slider",
+    "results": [
+      {
+        "name": "native associated labels retain NodeList",
+        "pass": true
+      },
+      {
+        "name": "immediate repeated FormData",
+        "pass": true
+      },
+      {
+        "name": "immutable value snapshot",
+        "pass": true
+      },
+      {
+        "name": "form current inside acme-input",
+        "pass": true
+      },
+      {
+        "name": "form current inside acme-change",
+        "pass": true
+      },
+      {
+        "name": "key emits one live and one completion",
+        "pass": true
+      },
+      {
+        "name": "native form reset default",
+        "pass": true
+      },
+      {
+        "name": "restoration",
+        "pass": true
+      },
+      {
+        "name": "supplied invalid values retained and invalid",
+        "pass": true
+      },
+      {
+        "name": "native displayed and announced values project into bounds",
+        "pass": true
+      },
+      {
+        "name": "transient impossible config is invalid",
+        "pass": true
+      },
+      {
+        "name": "staged properties recover exact value and submission",
+        "pass": true
+      },
+      {
+        "name": "projected thumb recovers",
+        "pass": true
+      },
+      {
+        "name": "attribute order value=\"[300]\" min=\"200\" max=\"400\"",
+        "pass": true
+      },
+      {
+        "name": "attribute order max=\"400\" min=\"200\" value=\"[300]\"",
+        "pass": true
+      },
+      {
+        "name": "Lit value-first bindings recover",
+        "pass": true
+      },
+      {
+        "name": "custom validity reaches the native slider",
+        "pass": true
+      },
+      {
+        "name": "clearing custom validity updates the native slider",
+        "pass": true
+      },
+      {
+        "name": "form current inside acme-input",
+        "pass": true
+      },
+      {
+        "name": "form current inside acme-change",
+        "pass": true
+      },
+      {
+        "name": "native completion clears its edit baseline",
+        "pass": true
+      },
+      {
+        "name": "fieldset immediate omission",
+        "pass": true
+      },
+      {
+        "name": "fieldset native disabled",
+        "pass": true
+      },
+      {
+        "name": "fieldset reenables",
+        "pass": true
+      },
+      {
+        "name": "three distinct native thumbs",
+        "pass": true
+      },
+      {
+        "name": "gap native bounds",
+        "pass": true
+      },
+      {
+        "name": "distinct authored names",
+        "pass": true
+      },
+      {
+        "name": "formatted accessible value",
+        "pass": true
+      }
+    ],
+    "errors": []
+  }
+]

@@ -116,7 +116,9 @@ const ACCEPTED: { why: string; test: (part: string, prop: string, geist: string,
     // on this page matches exactly — 162 of 162 — so the books themselves agree.
     why: "book icon element type: theirs is an <img> logo, ours an inline <svg>; these four are UA defaults and each page's own demo styling, not the element",
     test: (part, prop, gv, ov) => {
-      if (part !== "icon") return false;
+      if (part !== "icon") {
+        return false;
+      }
       return (
         // An SVG element returns an empty string from getComputedStyle for a layout property it does
         // not apply, where their <img> returns a real value. Root 10's icon is our slotted

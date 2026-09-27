@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test";
-import { LitElement, html, nothing } from "lit";
+import { LitElement, html, type nothing } from "lit";
 import { AsyncDirective } from "lit/async-directive.js";
 import { directive } from "lit/directive.js";
 import { OwnedContent, getContentMount } from "../owned-content";

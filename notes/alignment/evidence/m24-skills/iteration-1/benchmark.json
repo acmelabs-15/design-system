@@ -1,0 +1,310 @@
+{
+  "metadata": {
+    "skill_name": "design-system-consumer-guidance",
+    "skill_path": "skills/",
+    "executor_model": "unavailable from saved run evidence",
+    "analyzer_model": "independent grader; model not recorded",
+    "timestamp": "2026-09-27T00:08:58.352Z",
+    "evals_run": [
+      1,
+      2,
+      3
+    ],
+    "runs_per_configuration": 1,
+    "aggregation_scope": "Descriptive across three distinct prompts; not repeated-run variance."
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "html-notification-settings",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "All browser URLs use the same exact installed package version and each used element is defined.",
+          "passed": true,
+          "evidence": "outputs/index.html imports seven selective definitions and tokens.css at exactly 0.2.0. result.json all-markup-registered check confirms all seven tags; grader static inventory and installed manifest confirm the version. Requests were served from installed files through a CDN route; publication was not tested."
+        },
+        {
+          "text": "Submitting changed values produces a receipt from actual FormData with the expected control names and values.",
+          "passed": true,
+          "evidence": "outputs/index.html constructs new FormData(form, event.submitter). result.json changed-values check records email=changed@example.com and plan=team, omits unchecked notifications, and compares the receipt to actual entries."
+        },
+        {
+          "text": "Reset restores the initial submitted values and required validation remains native.",
+          "passed": true,
+          "evidence": "result.json required validity has valid=false, missing=true, focused=INPUT and an unchanged receipt. Recovery/reset restores reader@example.com, personal, enabled with valid=true; index.html uses required and a native type=reset button."
+        },
+        {
+          "text": "The artifact has no full-library or devtools import and no duplicate form state implementation.",
+          "passed": true,
+          "evidence": "index.html has one native form, no state store, and no all/standalone/devtools import. Submission only renders FormData; the request graph check records no submission or page errors."
+        }
+      ],
+      "notes": [
+        "Original artifact and first-attempt.html are byte-identical. Harness-only repair narrowed Save/Reset to the visible button root; the first strict-locator failures also contaminated the keyboard check.",
+        "Final eight harness checks pass. Labels and receipt are readable in screenshot.png."
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "html-notification-settings",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "All browser URLs use the same exact installed package version and each used element is defined.",
+          "passed": true,
+          "evidence": "outputs/index.html imports six selective definitions including Option at exactly 0.2.0, matching the installed package manifest. result.json registration contains six true entries; initial attempt timed out before Option was defined and that failure is retained."
+        },
+        {
+          "text": "Submitting changed values produces a receipt from actual FormData with the expected control names and values.",
+          "passed": true,
+          "evidence": "index.html serializes Array.from(new FormData(form).entries()). result.json changedReceipt is email=changed@example.com and plan=pro, with unchecked notifications omitted."
+        },
+        {
+          "text": "Reset restores the initial submitted values and required validation remains native.",
+          "passed": true,
+          "evidence": "result.json required is valid=false/valueMissing=true and requiredBlocksSave=true. reset and resetReceipt restore alex@example.com, starter, enabled. index.html uses required and native type=reset."
+        },
+        {
+          "text": "The artifact has no full-library or devtools import and no duplicate form state implementation.",
+          "passed": true,
+          "evidence": "index.html has one native form owner and a FormData-only receipt, six selective definitions, no full-library/devtools entry or duplicate control store. result.json records selectiveOnly and noNetworkSubmission=true."
+        }
+      ],
+      "notes": [
+        "Artifact repair: add the omitted Option definition. Harness repairs: scope the outer form; use the observed custom Option locator after Playwright role lookup failed.",
+        "CDN routes were mapped to installed files; no publication test. Screenshot shows the restored values in the visible receipt."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "react-preferences",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "The React fixture typechecks against exact matching package versions and individual wrapper imports.",
+          "passed": true,
+          "evidence": "app.tsx imports Tabs, Tab, TabPanel, RadioGroup, RadioCard and Group from individual generated wrapper paths. Installed core and React manifests both say 0.2.0. Grader reran strict tsc against the supplied tsconfig with exit 0; skipLibCheck=true limits dependency checking."
+        },
+        {
+          "text": "Keyboard tab activation updates the associated panel and radio selection remains an independent single-choice form value.",
+          "passed": false,
+          "evidence": "Keyboard Output activation and independent exclusive radio selection pass in result.json. However app.tsx has no native form owner and verify.mjs never constructs FormData. The compound assertion requires a single-choice form value, which the original run does not establish. This is an evidence gap and prompt/assertion mismatch, not a proven RadioGroup defect."
+        },
+        {
+          "text": "State preservation uses the documented content API and a typed custom event callback receives actual event detail.",
+          "passed": true,
+          "evidence": "app.tsx uses ordinary React children in TabPanel. verify.mjs captures editor node identity and confirms Preserved draft plus Edits:1 after switching. Both callback types derive from ComponentProps; the logged native CustomEvents contain actual string detail.value."
+        },
+        {
+          "text": "Unmount removes active callbacks and remount restores correct behavior without duplicated state owners.",
+          "passed": true,
+          "evidence": "verify.mjs retains the detached Tabs reference, unmounts, dispatches acme-change, and confirms no callback increment plus null ref. After remount one keyboard activation adds exactly one callback. React state mirrors each owning component value; there is no second selection engine."
+        }
+      ],
+      "notes": [
+        "Ten functional harness checks pass. The appended visual selected-tab-underlining failure in original result.json is preserved but its claim that the target stayed under Source is disproven.",
+        "Corrected package finding: focused/hovered tab background occludes the correctly targeted primary indicator. See ../../../../m24-tabs-indicator/README.md. Source regression passes 12 cases across three browsers; rebuilt consumer validation was pending when this archive was graded.",
+        "Harness repairs fixed unreflected value-attribute locators, a broad Group locator and a React commit timing race. Artifact presentation repair stretched attached cards."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "react-preferences",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 2,
+        "failed": 2,
+        "total": 4,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "The React fixture typechecks against exact matching package versions and individual wrapper imports.",
+          "passed": true,
+          "evidence": "app.tsx uses six individual generated wrapper imports. Installed core and React manifests both say 0.2.0. Grader reran strict tsc with the supplied tsconfig: exit 0; skipLibCheck=true limits dependency checking."
+        },
+        {
+          "text": "Keyboard tab activation updates the associated panel and radio selection remains an independent single-choice form value.",
+          "passed": false,
+          "evidence": "verify.ts ArrowRight changes the selected value and rendered summary; independent plan selection and exactly one checked RadioCard pass. But app.tsx has no native form, verify.ts has no FormData check, and Output panel visibility is not directly asserted on activation. The full compound assertion is unproven; the prompt did not explicitly ask for form submission."
+        },
+        {
+          "text": "State preservation uses the documented content API and a typed custom event callback receives actual event detail.",
+          "passed": true,
+          "evidence": "Tabs lazyMount with unmountOnExit=false and TabPanel renderContent preserve the editor. result.json records the edited text and one mount/zero cleanups across tab changes. Inferred wrapper callbacks statically type event.detail.value as string; actual event log values are output, source and pro."
+        },
+        {
+          "text": "Unmount removes active callbacks and remount restores correct behavior without duplicated state owners.",
+          "passed": false,
+          "evidence": "result.json proves editor effect cleanup (mounts=2, cleanups=1) and no duplicate callbacks on the new mounted instance. It never retains a detached wrapper or dispatches to it, so removal of active callbacks from the old instance is unproven. No second selection engine appears in source."
+        }
+      ],
+      "notes": [
+        "Fourteen final harness checks pass, but two original compound assertions are not fully evidenced.",
+        "The screenshot shows unequal attached-card heights. It also captures native Pro checked before the summary commit (still starter); it is not a settled end-to-end rendering oracle.",
+        "Repairs were in discovery/setup/harness: missing card-group declaration, invalid TS option, early React summary observation, check-count bookkeeping and favicon serving."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "lit-virtual-table",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "The actual recipe and generated APIs determine all imports and properties, with no invented table engine inside the design-system component.",
+          "passed": true,
+          "evidence": "main.ts/data.ts instantiate application-owned TableController and VirtualizerController over 10,000 records; Table receives author native table children and presentation attributes only. recipe-lit.txt and setup.ts preserve the matching recipe; generated Table/Pagination API records are archived. Grader strict tsc rerun exits 0."
+        },
+        {
+          "text": "Sorting and page-size changes update displayed records while selection remains owned by the application table model.",
+          "passed": true,
+          "evidence": "result.json records descending first amount 9999 then ascending 0, pageSize=100/pageIndex=1 with first amount 100, and stable independent delivery-1 selection. main.ts sends exact page/page-size requests to the application table model."
+        },
+        {
+          "text": "Virtual scrolling uses TanStack Virtual and renders a bounded number of native rows while reaching records beyond the first viewport.",
+          "passed": true,
+          "evidence": "main.ts uses @tanstack/lit-virtual VirtualizerController, keyed native tr rows and spacers. result.json records 10 initial rows and 15 far rows delivery-9497 through delivery-9511 for virtualCount=10000; keyboard then reaches delivery-9512."
+        },
+        {
+          "text": "Removing the consumer releases listeners and observers, and remount succeeds without duplicate event processing.",
+          "passed": false,
+          "evidence": "result.json shows all 18 observed ResizeObserver targets released, scrollElement=null and same-instance reconnect rendering delivery-100 with retained selection. But the harness never counts handler/model invocations after remount, so duplicate event processing is unproven. Observer cleanup is supported; this is not evidence of a leak."
+        }
+      ],
+      "notes": [
+        "Both Table configurations originally interpret descendant Select close requests as page-size; explicit action dispatch repairs the consumer bug. main-attempt-1.ts and probe.log retain the failure.",
+        "Nine final browser checks pass. Development/update warnings and a favicon 500 remain in the minimal server. Recipe React-source noise is a documentation finding, not a Table runtime defect."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "lit-virtual-table",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": null
+      },
+      "expectations": [
+        {
+          "text": "The actual recipe and generated APIs determine all imports and properties, with no invented table engine inside the design-system component.",
+          "passed": true,
+          "evidence": "app.ts imports the public Table/Pagination definitions, TableController, VirtualizerController and table-core feature APIs. The consumer owns 10,000 records and native table markup; AcmeTable only supplies the viewport. Matching recipe-lit.txt is archived; strict tsc rerun exits 0."
+        },
+        {
+          "text": "Sorting and page-size changes update displayed records while selection remains owned by the application table model.",
+          "passed": true,
+          "evidence": "result.json shows descending record-9999 then ascending record-0, pageSize=50/pageIndex=1 starting record-50, and application rowSelection retaining record-3 through filtering/sorting."
+        },
+        {
+          "text": "Virtual scrolling uses TanStack Virtual and renders a bounded number of native rows while reaching records beyond the first viewport.",
+          "passed": true,
+          "evidence": "app.ts uses TanStack Virtual with keyed native tr rows/spacers. result.json starts with 10 rendered rows, then reaches record-9999 with 12 rows on a 10,000-row page; Control+End focuses row 9999 column 1."
+        },
+        {
+          "text": "Removing the consumer releases listeners and observers, and remount succeeds without duplicate event processing.",
+          "passed": false,
+          "evidence": "Disconnect sets virtualizer scrollElement=null, and model mutation leaves renderCount=20 unchanged while detached. Reconnect resumes bounded rendering. The harness neither instruments all observer targets nor counts repeated handler/model invocations after remount, so the full listener/observer/no-duplicate claim remains unproven."
+        }
+      ],
+      "notes": [
+        "Initial consumer build syntax and nullable lookup errors are preserved. The harness first assumed a native select; later it exposed the consumer close-request dispatch bug. Explicit page/page-size dispatch repairs it.",
+        "Nine final browser checks pass. Selection, sorting, filtering, page size and far-window keyboard navigation have concrete record/value oracles."
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.8333333333333334,
+        "stddev": 0.14433756729740646,
+        "min": 0.75,
+        "max": 1
+      },
+      "time_seconds": null,
+      "tokens": null
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.75,
+        "stddev": 0.25,
+        "min": 0.5,
+        "max": 1
+      },
+      "time_seconds": null,
+      "tokens": null
+    },
+    "delta": {
+      "pass_rate": "+0.0833",
+      "time_seconds": "unavailable",
+      "tokens": "unavailable"
+    }
+  },
+  "notes": [
+    "One original run per prompt/configuration. Multiple repair attempts belong to that one run, not independent samples. No statistical superiority or repeatability claim is supported.",
+    "Original independent grades: HTML 4/4 for both, React 3/4 with skills and 2/4 baseline, Table 3/4 for both. Failed compound assertions are unproven portions, not confirmed runtime defects.",
+    "All original assertions remain unchanged. React form-value wording exceeds the prompt: neither artifact has a native form or FormData proof. React baseline lacks a detached-wrapper callback probe; both Table runs lack duplicate-processing counts after remount.",
+    "Final harness checks are HTML 8 with skills and 7 baseline booleans plus registration, React 10 functional with skills and 14 baseline, Table 9 each. These different harness counts are not the benchmark denominator.",
+    "Both Table artifacts had the same consumer action-dispatch defect and both repaired it. Matching source/attempt evidence remains archived.",
+    "Original React skilled result appends a visual failure with an incorrect target diagnosis. Corrected package evidence proves focused-hover primary-indicator occlusion; 12 source-level browser cases pass after the fix. Original result remains untouched; rebuilt installed consumer verification is separate.",
+    "Metric means are descriptive across three different prompts; the displayed standard deviation is across prompts, not repeated-run uncertainty. Timing, tokens, tool calls and full transcript metrics are unavailable.",
+    "All baselines had matching package README/API/recipe access; with-skill runs additionally used packaged consumer guidance. HTML/React and Table came from different local package builds with the same version; package inputs are archived separately.",
+    "Native Chrome AX and screenshots provide browser evidence; screen readers, mobile interaction and public CDN availability were not tested by these consumer runs."
+  ]
+}

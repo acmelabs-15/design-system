@@ -1,0 +1,255 @@
+[
+  {
+    "role": "tablist",
+    "name": "Editor views",
+    "properties": [
+      {
+        "name": "multiselectable",
+        "value": {
+          "type": "boolean",
+          "value": false
+        }
+      },
+      {
+        "name": "orientation",
+        "value": {
+          "type": "token",
+          "value": "horizontal"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tabpanel",
+    "name": "Source",
+    "properties": [
+      {
+        "name": "focusable",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      },
+      {
+        "name": "labelledby",
+        "value": {
+          "type": "nodeList",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 26,
+              "text": "Source"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "role": "radiogroup",
+    "name": "Plan",
+    "properties": [
+      {
+        "name": "focusable",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      },
+      {
+        "name": "orientation",
+        "value": {
+          "type": "token",
+          "value": "horizontal"
+        }
+      },
+      {
+        "name": "required",
+        "value": {
+          "type": "boolean",
+          "value": false
+        }
+      },
+      {
+        "name": "labelledby",
+        "value": {
+          "type": "nodeList",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 49,
+              "idref": "plan-label",
+              "text": "Plan"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "role": "radio",
+    "name": "Starter",
+    "properties": [
+      {
+        "name": "invalid",
+        "value": {
+          "type": "token",
+          "value": "false"
+        }
+      },
+      {
+        "name": "focusable",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      },
+      {
+        "name": "checked",
+        "value": {
+          "type": "tristate",
+          "value": "true"
+        }
+      },
+      {
+        "name": "describedby",
+        "value": {
+          "type": "idrefList",
+          "value": "",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 66
+            }
+          ]
+        }
+      },
+      {
+        "name": "labelledby",
+        "value": {
+          "type": "nodeList",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 62,
+              "text": "Starter"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "role": "radio",
+    "name": "Pro",
+    "properties": [
+      {
+        "name": "invalid",
+        "value": {
+          "type": "token",
+          "value": "false"
+        }
+      },
+      {
+        "name": "focusable",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      },
+      {
+        "name": "checked",
+        "value": {
+          "type": "tristate",
+          "value": "false"
+        }
+      },
+      {
+        "name": "describedby",
+        "value": {
+          "type": "idrefList",
+          "value": "",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 86
+            }
+          ]
+        }
+      },
+      {
+        "name": "labelledby",
+        "value": {
+          "type": "nodeList",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 82,
+              "text": "Pro"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "role": "tab",
+    "name": "Source",
+    "properties": [
+      {
+        "name": "invalid",
+        "value": {
+          "type": "token",
+          "value": "false"
+        }
+      },
+      {
+        "name": "focusable",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      },
+      {
+        "name": "selected",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      },
+      {
+        "name": "controls",
+        "value": {
+          "type": "idrefList",
+          "value": "",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 28
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "role": "tab",
+    "name": "Output",
+    "properties": [
+      {
+        "name": "invalid",
+        "value": {
+          "type": "token",
+          "value": "false"
+        }
+      },
+      {
+        "name": "focusable",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      },
+      {
+        "name": "selected",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": false
+        }
+      }
+    ]
+  }
+]

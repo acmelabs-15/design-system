@@ -4,7 +4,7 @@ description: Update a consumer between explicit @acmelabs/design-system releases
 license: MIT
 metadata:
   library: "@acmelabs/design-system"
-  library_version: "0.2.0"
+  library_version: "0.3.0"
   type: "sub-skill"
 ---
 

@@ -124,6 +124,8 @@ test("an independent dialog does not close when its opener is removed", async ()
     }),
   );
   opener.remove();
-  await new Promise((resolve) => setTimeout(resolve, 0));
+  await new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
   expect(removed).toBe(0);
 });

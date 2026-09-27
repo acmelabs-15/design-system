@@ -343,7 +343,7 @@ export function writeStyle(
     lock = fs.openSync(lockFile, "wx");
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === "EEXIST") {
-      throw new Error("Style output is locked. Confirm the recorded producer has stopped before clearing: " + lockFile);
+      throw new Error("Style output is locked. Confirm the recorded producer has stopped before clearing: " + lockFile, { cause: error });
     }
     throw error;
   }

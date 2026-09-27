@@ -32,8 +32,9 @@ test("guard rejects changes to declaration lifetime and optional-chain boundarie
     ["using value=resource();", "const value=resource();"],
     ["const value=(obj?.x).y;", "const value=obj?.x.y;"],
     ["const value=(obj?.method)();", "const value=obj?.method();"],
-  ])
+  ]) {
     expect(() => assertLintSourcePreserved(before, after, "example.ts")).toThrow("syntax contract");
+  }
 });
 
 test("guard preserves the raw text observed by tagged templates", () => {

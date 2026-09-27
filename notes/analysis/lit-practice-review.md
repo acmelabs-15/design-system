@@ -980,3 +980,25 @@ A complete constructor audit found fifteen inherited appearance-default discrepa
 The wrapper projection restores concrete defaults where required, clears optional inputs through their existing setters, and sends actual styling keys only through the shared ownership mechanism. Fieldset, native Video targets and controlled content portals keep React’s own DOM ranges and state. No second selection or form model is introduced. The wrappers explicitly register global definitions; scoped class authoring and actual-platform gates remain M26. Strict build/site and all 860 tests pass.
 
 Final M22 lifecycle check: retaining an unmounted element and dispatching its custom event reproduced a stale React callback in @lit/react. The adapter now owns the declared native subscriptions and removes them on effect cleanup. All thirteen wrapper cases pass in Chromium/Firefox/WebKit on workspace React 19.2.4 and a fresh React 19.3.0 installation. The nineteen real Table/Virtual/Worker cases were rerun against that final adapter and pass. Prior twelve-case/fresh-19.2.4 results above retain their earlier scope.
+
+## Final attribute-removal audit — 2026-09-26
+
+The compiled0.3 candidate audit tested704 declared nonnullable scalar defaults and736 native ARIA-null resets per engine. It found41 consistent default failures across all3 engines; ARIA resets passed. Nineteen missing useDefault declarations caused36 inherited scalar failures. Adding the declaration option preserves the canonical atom-backed property and restores its documented value when its attribute is removed.
+
+Hover Card's constructor assignments captured Tooltip's earlier defaults in Lit's useDefault bookkeeping. Its initial values now come from a protected default definition before the atom-backed public accessors are initialized, and public Lit requestUpdate records those defaults before attributes override them. Tooltip retains its own defaults. Alert Dialog's converter returned true for absence, preventing Lit from using its false default; the optional boolean converter preserves absence for useDefault. No private Lit state is patched and no second state owner is introduced.
+
+Focused unit regressions reproduce the failures and pass after correction. The combined source matrix passes110 defaults and64 ARIA-null resets per engine. The rebuilt0.3 distribution passes all704 default-removal checks and736 native ARIA resets per engine, with no failures. Evidence: [M26 audit](../alignment/evidence/m26-audit/README.md).
+
+## Scoped component creation and registration — 2026-09-26
+
+The final source audit reproduces unupgraded owned children in all three engines when a locally registered component creates its own shadow root. The base now transports the host registry into that root and supplies Lit’s public creationScope. Generated inert register/<name> entries register the same dependency graph used by global definitions, including private parts. Application subclasses remain intact; conflicting constructors fail explicitly.
+
+Markdown and JSONView also create custom children imperatively. The shared factory uses the selected registry and current document. WebKit’s destination-document createElement failure reproduces with a bare HTMLElement control; importing a new empty inert element through the standard registry-aware importNode operation succeeds. Author content is not cloned. The dependency collector reads concrete factory call arguments and treats the generic implementation as a boundary, avoiding a reproduced self-cycle.
+
+The source and rebuilt0.3 matrices both pass all17 cases per engine. Fresh packed and CDN matrices remain the final acceptance gate. Firefox’s tested scoped-registry polyfill still requires definitions before cross-document adoption; independent native controls establish this boundary. [Reproductions, source references and limits](../alignment/evidence/m26-scoped/README.md).
+
+## Managed form examples and field lifetime — 2026-09-26
+
+The F-10 completion audit finds that the delivered managed form is Lit-only and lacks nested/array examples, although the earlier adapter probes cover those value shapes. The missing React consumer now uses the official typed React Form 1.33.5 API and generated component wrappers; both examples expose nested profile fields, editable contacts, native validity, managed errors, reset and application-owned disabled state.
+
+The first real array-removal check reproduces a Lit integration failure. The installed Lit FieldDirective captures its FieldApi options at creation and does not update its field name when the renderer reuses an item with a different array index. Keying the directive lifetime by the field path retains correct values without replacing the controller or accessing private state. React's useField updates its options and retains the stable item-key example. The fresh archive consumer verifies actual native FormData and submission before the next render, not only store snapshots. [Evidence, source references and remaining visual check](../alignment/evidence/m26-managed-forms/README.md).

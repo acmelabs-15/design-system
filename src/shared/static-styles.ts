@@ -62,7 +62,7 @@ function replaceOwnedSheets(root: ShadowRoot, previous: readonly CSSStyleSheet[]
   }
   const firstOwned = current.findIndex((sheet) => owned.has(sheet));
   const retained = current.filter((sheet) => !owned.has(sheet));
-  retained.splice(firstOwned < 0 ? 0 : firstOwned, 0, ...next);
+  retained.splice(Math.max(0, firstOwned), 0, ...next);
   if (current.length !== retained.length || current.some((sheet, index) => sheet !== retained[index])) {
     root.adoptedStyleSheets = retained;
   }

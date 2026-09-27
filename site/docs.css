@@ -11,6 +11,7 @@
 .docs-side a:hover{color:var(--text);background:var(--comp);text-decoration:none}
 .docs-side a[aria-current="page"]{color:var(--text);background:var(--ds-gray-200)}
 .docs-main{min-width:0;padding:0 48px 96px}
+.docs-main code{font-family:var(--acme-font-mono);text-transform:none}
 .doc{max-width:960px;margin:0 auto}
 .doc-hero{padding:48px 0 32px}
 .doc-hero h1{font-size:40px;line-height:48px;letter-spacing:-2.4px;font-weight:600}

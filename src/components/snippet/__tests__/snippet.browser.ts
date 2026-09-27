@@ -41,7 +41,7 @@ Object.defineProperty(navigator, "clipboard", {
   value: {
     writeText: async (value: string) => {
       if (fixture.fail) {
-        throw Error("denied");
+        throw new Error("denied");
       }
       fixture.copied.push(value);
     },

@@ -64,7 +64,8 @@ function walk(el: Element, depth = 0): Node {
   const attrs: Record<string, string> = {};
   for (const a of Array.from(el.attributes)) {
     if (KEEP_ATTRS.test(a.name)) {
-      attrs[a.name] = a.name === "id" || (a.name.startsWith("aria-") && /radix/.test(a.value)) ? a.value.replace(/radix-[A-Za-z0-9_]+/g, "radix-*") : a.value;
+      const value = a.value ?? "";
+      attrs[a.name] = a.name === "id" || (a.name.startsWith("aria-") && /radix/.test(value)) ? value.replace(/radix-[A-Za-z0-9_]+/g, "radix-*") : value;
     }
   }
   const classes = splitClasses(el.getAttribute("class") ?? "");
@@ -106,7 +107,6 @@ export function extract(page: string): Spec {
       continue;
     }
     // Nearest preceding h2 in document order.
-    let h: Element | null = bar.closest("section, div")?.parentElement ?? null;
     let heading = "";
     let node: Element | null = bar.parentElement;
     while (node && !heading) {
@@ -121,7 +121,6 @@ export function extract(page: string): Spec {
       }
       node = node.parentElement;
     }
-    h = null;
     const code = codes[examples.length];
     examples.push({
       heading: heading || code?.heading || `example ${examples.length + 1}`,

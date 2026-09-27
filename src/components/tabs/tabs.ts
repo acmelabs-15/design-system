@@ -118,7 +118,9 @@ export class AcmeTabs extends AcmeSemanticElement {
     rtl: () => getComputedStyle(this).direction === "rtl",
     wrap: true,
     homeEnd: true,
-    onMove: () => {},
+    onMove: () => {
+      /* Tab focus handling owns activation; roving only moves focus. */
+    },
   });
   private observer?: ResizeObserver;
   private mutation?: MutationObserver;

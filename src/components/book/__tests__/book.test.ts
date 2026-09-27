@@ -17,7 +17,9 @@ test("Book exposes heading and start content while keeping its cover structure",
   icon.slot = "start";
   icon.textContent = "Mark";
   element.append(icon);
-  await new Promise((resolve) => setTimeout(resolve, 0));
+  await new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
   await element.updateComplete;
   expect(element.shadowRoot!.querySelector("acme-layers-icon")).toBeNull();
 });

@@ -1,5 +1,17 @@
 import { expect, test } from "bun:test";
-import { formatHtml } from "../format";
+import { formatHtml, formatSource, highlightHtml } from "../format";
+
+test("copied React source preserves executable TSX and highlights its actual language", async () => {
+  const source = 'export const example = <Input value="A > B" onAcmeInput={(event) => save(event.detail.value)} />;';
+  const formatted = await formatSource(source, "tsx");
+  expect(formatted).toContain('value="A > B"');
+  expect(new Bun.Transpiler({ loader: "tsx" }).transformSync(formatted)).toContain("save(event.detail.value)");
+  const highlighted = highlightHtml(formatted, "tsx");
+  const content = document.createElement("div");
+  content.innerHTML = highlighted;
+  expect(content.textContent).toContain('value="A > B"');
+  expect(content.querySelector("input")).toBeNull();
+});
 
 test("example formatting preserves executable comparisons and string contents", async () => {
   const formatted = await formatHtml('<script>const values=[];for(let i=0;i<2;i++)values.push("two  spaces");</script>');

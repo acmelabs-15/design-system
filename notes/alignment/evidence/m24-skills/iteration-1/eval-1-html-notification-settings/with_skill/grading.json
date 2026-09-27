@@ -1,0 +1,71 @@
+{
+  "expectations": [
+    {
+      "text": "All browser URLs use the same exact installed package version and each used element is defined.",
+      "passed": true,
+      "evidence": "outputs/index.html imports seven selective definitions and tokens.css at exactly 0.2.0. result.json all-markup-registered check confirms all seven tags; grader static inventory and installed manifest confirm the version. Requests were served from installed files through a CDN route; publication was not tested."
+    },
+    {
+      "text": "Submitting changed values produces a receipt from actual FormData with the expected control names and values.",
+      "passed": true,
+      "evidence": "outputs/index.html constructs new FormData(form, event.submitter). result.json changed-values check records email=changed@example.com and plan=team, omits unchecked notifications, and compares the receipt to actual entries."
+    },
+    {
+      "text": "Reset restores the initial submitted values and required validation remains native.",
+      "passed": true,
+      "evidence": "result.json required validity has valid=false, missing=true, focused=INPUT and an unchanged receipt. Recovery/reset restores reader@example.com, personal, enabled with valid=true; index.html uses required and a native type=reset button."
+    },
+    {
+      "text": "The artifact has no full-library or devtools import and no duplicate form state implementation.",
+      "passed": true,
+      "evidence": "index.html has one native form, no state store, and no all/standalone/devtools import. Submission only renders FormData; the request graph check records no submission or page errors."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1
+  },
+  "execution_metrics": null,
+  "timing": null,
+  "metrics_availability": "Host did not supply token counts, duration or full executor tool metrics. Unavailable, not zero.",
+  "claims": [
+    {
+      "claim": "The artifact is unchanged after the first attempt.",
+      "type": "quality",
+      "verified": true,
+      "evidence": "Byte comparison of index.html and first-attempt.html; only verify.ts changes."
+    },
+    {
+      "claim": "The published CDN was tested.",
+      "type": "quality",
+      "verified": false,
+      "evidence": "verify.ts routes exact version URLs to installed package files; publication remains untested."
+    }
+  ],
+  "user_notes_summary": {
+    "uncertainties": [
+      "Original artifact and first-attempt.html are byte-identical. Harness-only repair narrowed Save/Reset to the visible button root; the first strict-locator failures also contaminated the keyboard check.",
+      "Final eight harness checks pass. Labels and receipt are readable in screenshot.png."
+    ],
+    "needs_review": [],
+    "workarounds": []
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "reason": "CDN routing proves exact installed files, not registry publication. Add a separate published-release check when publication is in scope."
+      },
+      {
+        "reason": "The prompt asks for labels, but the four assertions omit accessible names. Native AX was captured; preserve this as a shared explicit check."
+      }
+    ],
+    "overall": "Same four original assertions applied to both configurations. Final functional harness passes and proof of the compound assertions are recorded separately."
+  },
+  "evidence_scope": "Original final source, saved results/attempts, verification source, screenshots, current installed version manifests and independent typechecks. Full agent transcripts were not supplied; process claims based only on self-reports are not independently established.",
+  "notes": [
+    "Original artifact and first-attempt.html are byte-identical. Harness-only repair narrowed Save/Reset to the visible button root; the first strict-locator failures also contaminated the keyboard check.",
+    "Final eight harness checks pass. Labels and receipt are readable in screenshot.png."
+  ]
+}

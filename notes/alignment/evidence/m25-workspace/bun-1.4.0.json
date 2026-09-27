@@ -1,0 +1,317 @@
+{
+  "version": "1.4.0",
+  "revision": "1.4.0+34cbb9a40",
+  "sha256": "539598c775882420b9d8deb7dc14d845f20f7d26f5600c50ab067dde6ac3f3bf",
+  "cases": [
+    {
+      "mode": "file:.",
+      "pass": false,
+      "failure": "changed-mcp-zod-3.25.76: packages/mcp does not resolve the live core",
+      "checks": [
+        {
+          "step": "fresh",
+          "workspace": "packages/react",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-G6IW2N/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "fresh",
+          "workspace": "packages/devtools",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-G6IW2N/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "fresh",
+          "workspace": "packages/mcp",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-G6IW2N/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "repeat",
+          "workspace": "packages/react",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-G6IW2N/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "repeat",
+          "workspace": "packages/devtools",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-G6IW2N/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "repeat",
+          "workspace": "packages/mcp",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-G6IW2N/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "child-add",
+          "workspace": "packages/react",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-G6IW2N/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "child-add",
+          "workspace": "packages/devtools",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-G6IW2N/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "child-add",
+          "workspace": "packages/mcp",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-G6IW2N/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "changed-mcp-zod-3.25.76",
+          "workspace": "packages/react",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-G6IW2N/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "changed-mcp-zod-3.25.76",
+          "workspace": "packages/devtools",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-G6IW2N/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "changed-mcp-zod-3.25.76",
+          "workspace": "packages/mcp",
+          "target": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-G6IW2N/packages/mcp",
+          "error": "error: Cannot find module '@acmelabs/design-system' from '/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-G6IW2N/packages/mcp'\n\nBun v1.4.0 (macOS arm64)",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "mode": "link:.",
+      "pass": false,
+      "failure": "changed-mcp-zod-3.25.76: packages/mcp does not resolve the live core",
+      "checks": [
+        {
+          "step": "fresh",
+          "workspace": "packages/react",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-XfwqAE/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "fresh",
+          "workspace": "packages/devtools",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-XfwqAE/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "fresh",
+          "workspace": "packages/mcp",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-XfwqAE/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "repeat",
+          "workspace": "packages/react",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-XfwqAE/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "repeat",
+          "workspace": "packages/devtools",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-XfwqAE/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "repeat",
+          "workspace": "packages/mcp",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-XfwqAE/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "child-add",
+          "workspace": "packages/react",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-XfwqAE/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "child-add",
+          "workspace": "packages/devtools",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-XfwqAE/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "child-add",
+          "workspace": "packages/mcp",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-XfwqAE/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "changed-mcp-zod-3.25.76",
+          "workspace": "packages/react",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-XfwqAE/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "changed-mcp-zod-3.25.76",
+          "workspace": "packages/devtools",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-XfwqAE/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "changed-mcp-zod-3.25.76",
+          "workspace": "packages/mcp",
+          "target": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-XfwqAE/packages/mcp",
+          "error": "error: Cannot find module '@acmelabs/design-system' from '/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-XfwqAE/packages/mcp'\n\nBun v1.4.0 (macOS arm64)",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "mode": "workspace",
+      "pass": true,
+      "checks": [
+        {
+          "step": "fresh",
+          "workspace": "packages/react",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "fresh",
+          "workspace": "packages/devtools",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "fresh",
+          "workspace": "packages/mcp",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "fresh",
+          "workspace": "packages/core",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "repeat",
+          "workspace": "packages/react",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "repeat",
+          "workspace": "packages/devtools",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "repeat",
+          "workspace": "packages/mcp",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "repeat",
+          "workspace": "packages/core",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "child-add",
+          "workspace": "packages/react",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "child-add",
+          "workspace": "packages/devtools",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "child-add",
+          "workspace": "packages/mcp",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "child-add",
+          "workspace": "packages/core",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "changed-mcp-zod-3.25.76",
+          "workspace": "packages/react",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "changed-mcp-zod-3.25.76",
+          "workspace": "packages/devtools",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "changed-mcp-zod-3.25.76",
+          "workspace": "packages/mcp",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "changed-mcp-zod-3.25.76",
+          "workspace": "packages/core",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "changed-mcp-zod-4.6.5",
+          "workspace": "packages/react",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "changed-mcp-zod-4.6.5",
+          "workspace": "packages/devtools",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "changed-mcp-zod-4.6.5",
+          "workspace": "packages/mcp",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "changed-mcp-zod-4.6.5",
+          "workspace": "packages/core",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "final-frozen",
+          "workspace": "packages/react",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "final-frozen",
+          "workspace": "packages/devtools",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "final-frozen",
+          "workspace": "packages/mcp",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        },
+        {
+          "step": "final-frozen",
+          "workspace": "packages/core",
+          "resolved": "../../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workspace-evidence-fbMOv1/dist/index.js",
+          "pass": true
+        }
+      ]
+    }
+  ]
+}

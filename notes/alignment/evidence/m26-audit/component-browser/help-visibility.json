@@ -1,0 +1,66 @@
+[
+  {
+    "engine": "chromium",
+    "count": 1,
+    "nestedVisible": false,
+    "geometry": {
+      "host": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "content": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "popover": false,
+      "display": "flex",
+      "dialogOpen": false,
+      "nestedOpen": false
+    },
+    "snapshot": "- button \"Save\"\n- button \"Publish\"\n- link \"Ada\":\n  - /url: \"#profile\"\n- button \"After\"\n- button \"Help with billing\" [expanded]\n- dialog:\n  - paragraph: Billing details\n  - link \"Billing guide\":\n    - /url: \"#billing\"\n  - text: Reference\n  - textbox \"Reference\": Kept\n  - button \"Close\""
+  },
+  {
+    "engine": "webkit",
+    "count": 2,
+    "nestedVisible": false,
+    "geometry": {
+      "host": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "content": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "popover": false,
+      "display": "flex",
+      "dialogOpen": false,
+      "nestedOpen": false
+    },
+    "snapshot": "- button \"Save\"\n- button \"Publish\"\n- link \"Ada\":\n  - /url: \"#profile\"\n- button \"After\"\n- button \"Help with billing\" [expanded]\n- dialog:\n  - paragraph: Billing details\n  - link \"Billing guide\":\n    - /url: \"#billing\"\n  - text: Reference\n  - textbox \"Reference\": Kept\n  - button \"Close\""
+  }
+]

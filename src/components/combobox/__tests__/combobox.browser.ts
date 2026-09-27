@@ -5,7 +5,9 @@ export async function rankedOptionIdentity(root: AcmeCombobox, renderOptions: (v
   const settle = async () => {
     await root.updateComplete;
     for (let index = 0; index < 3; index++) {
-      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+      await new Promise<void>((resolve) => {
+        requestAnimationFrame(() => resolve());
+      });
     }
   };
   const equal = (actual: unknown, expected: unknown) => {

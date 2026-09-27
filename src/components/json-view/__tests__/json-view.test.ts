@@ -15,7 +15,7 @@ test("JSON View renders safe typed values, accessors and cycles without calling 
     enumerable: true,
     get() {
       calls++;
-      throw Error("must not run");
+      throw new Error("must not run");
     },
   });
   value.self = value;

@@ -108,7 +108,9 @@ export class AcmeCopyButton extends AcmeActionElement {
     }
   }
   protected activate() {
-    void this.copy().catch(() => {});
+    void this.copy().catch(() => {
+      /* copy owns clipboard feedback and error events. */
+    });
   }
   disconnectedCallback() {
     this.generation++;
