@@ -334,6 +334,8 @@ The first Linux 0.3.1 run exposes a format-check portability defect in `scripts/
 
 All 19 focused package/release tests pass, including 11 archive tests. The five actual candidate archives revalidate. Independent review confirms that disabling strict mode makes three malformed-archive tests fail. The fresh Linux run passes unit tests and archive validation; browser and cryptographic gates remain separate. [Exact failure, correction and evidence](../alignment/evidence/release-0.3.1/linux-archive-finding.json).
 
+The complete 0.3.1 PR and exact-tag workflows subsequently pass. All five signed archives verify locally against the release commit. npm accepts the browser archive for staging, and the downloaded staged bytes match its signed SHA-512. Its CLI status remains `validating`; the authenticated Versions tab confirms pending automated review and an unavailable 0.3.1 version. This is a registry review wait, not evidence of missing login. [Official staging documentation](https://docs.npmjs.com/staged-publishing/) confirms that new names receive npm's public 0.0.0-stage placeholder until their real staged version is approved. [Current stage evidence](../alignment/evidence/release-0.3.1/browser-stage.json).
+
 ### Credential-handling incident
 
 During a delegated registry investigation in this continuation, an unnecessary read of local npm configuration printed an npm authentication token into tool output. The value is not reproduced here, was not added to repository files and was not reused. Peter was informed in commentary. The token should be revoked and replaced by its owner; no credential rotation or account change was attempted. Keep this follow-up visible in the final handoff without reading or printing the token again.
