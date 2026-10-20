@@ -1,0 +1,18 @@
+{
+  "run": 36313857937,
+  "rows": 1446,
+  "failures": [
+    {
+      "engine": "firefox",
+      "suite": "flow-diagram",
+      "results": [
+        {
+          "name": "empty, disconnect and reconnect release worker resources",
+          "pass": false,
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n"
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const syntaxCss = css`.token.keyword, .token.selector {
+  color: var(--ds-pink-900);
+}
+
+.token.string, .token.attr-value, .token.inserted, .token.number, .token.boolean, .token.variable, .token.constant, .token.tag, .token.class-name {
+  color: var(--ds-green-900);
+}
+
+.token.comment, .token.prolog {
+  color: var(--ds-gray-900);
+}
+
+.token.function, .token.attr-name, .token.regex {
+  color: var(--ds-purple-900);
+}
+
+.token.deleted, .token.property {
+  color: var(--ds-red-900);
+}
+
+.token.punctuation, .token.operator {
+  color: var(--ds-gray-1000);
+}
+
+.token.title, .token.url {
+  color: var(--ds-blue-900);
+}
+
+.token.bold {
+  font-weight: var(--acme-font-weight-700);
+}
+
+.token.italic {
+  font-style: italic;
+}
+`;

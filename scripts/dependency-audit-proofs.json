@@ -1,0 +1,116 @@
+[
+  {
+    "package": "braces",
+    "version": "3.0.3",
+    "path": "braces",
+    "url": "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm",
+    "severity": "high",
+    "range": "<=3.0.3",
+    "disposition": "patched",
+    "reason": "Pinned Bun patch bounds parser and AST-walker nesting; regression covers strings and supplied ASTs.",
+    "reviewBefore": "2026-11-20",
+    "files": [
+      {
+        "path": "patches/braces@3.0.3.patch",
+        "sha256": "30adab7273c3435edee28bc4d0bcc3886201b4777479f5308ff6bf51db8732e8"
+      },
+      {
+        "path": "node_modules/braces/package.json",
+        "sha256": "56f08b888a4f30dc7cf8a7dbb36ffe92b737912ba36abe9d069d32167c957ac7"
+      },
+      {
+        "path": "node_modules/braces/lib/compile.js",
+        "sha256": "4cbe77e7c8524e8f9e22da0d18fe74de5bb27fe79df65d86091de68e1cb8bc5a"
+      },
+      {
+        "path": "node_modules/braces/lib/expand.js",
+        "sha256": "52b24562f623cb001cf4ffbba19634ab18dc1f12731004fbe54b2bf848090031"
+      },
+      {
+        "path": "node_modules/braces/lib/parse.js",
+        "sha256": "7efb28a66017d64eb8f5e294912a419cfb256a0b6a62fce8c2a138c36d9116cb"
+      },
+      {
+        "path": "node_modules/braces/lib/stringify.js",
+        "sha256": "7f52ce39ed43176f9d0f7c45d1aa15230efb13d7031c52c2feef8d52cd391d81"
+      },
+      {
+        "path": "node_modules/braces/lib/utils.js",
+        "sha256": "95e1740a254252bcdaf1cc496210aa8242d1db36b8d0f40002b60746c9257fa0"
+      }
+    ]
+  },
+  {
+    "package": "http-cache-semantics",
+    "version": "4.2.0",
+    "path": "npm/http-cache-semantics",
+    "url": "https://github.com/advisories/GHSA-ch52-4w7c-c8xp",
+    "severity": "high",
+    "range": "<=4.2.0",
+    "disposition": "not-reachable-in-reviewed-npm-path",
+    "reason": "Pinned npm caller uses a private cache and omits Set-Cookie from persisted responses; release commands use isolated cache directories. This does not certify shared caches or other cache defects.",
+    "reviewBefore": "2026-11-20",
+    "files": [
+      {
+        "path": "node_modules/npm/package.json",
+        "sha256": "f9759fe0a10ad3c8388ff19fade9d87ffdf0b16466a84d16cf2add09e69bbcd1"
+      },
+      {
+        "path": "node_modules/npm/node_modules/http-cache-semantics/package.json",
+        "sha256": "bee0609d5ab09a590afe0e1209d3702b0afb0a3c158492f90902a724d889d22b"
+      },
+      {
+        "path": "node_modules/npm/node_modules/http-cache-semantics/index.js",
+        "sha256": "01b7d66c854b2fe53ac05c98feb6e0d64722ab8898a778e2d2426a8b468d178f"
+      },
+      {
+        "path": "node_modules/npm/node_modules/http-cache-semantics/LICENSE",
+        "sha256": "ab868ad5a2ef5068560d9cd3b2180ec63c140bb4c5cae1ba779d300a0ac74fa3"
+      },
+      {
+        "path": "node_modules/npm/node_modules/make-fetch-happen/package.json",
+        "sha256": "81aef6b930cb2462c5f5e9215c3d0ed4e682ae6277709870bf4bbf20ff13fda1"
+      },
+      {
+        "path": "node_modules/npm/node_modules/make-fetch-happen/lib/cache/policy.js",
+        "sha256": "2014cf549fceb8808cba81e8760315b9060f502b6c62b7cb79e1b024abde54c3"
+      },
+      {
+        "path": "node_modules/npm/node_modules/make-fetch-happen/lib/cache/entry.js",
+        "sha256": "c448d1d1601ad2ec99c2963fc4dd093a57d884ff4ea089bb08a05496d01015c7"
+      },
+      {
+        "path": "node_modules/npm/node_modules/make-fetch-happen/lib/cache/key.js",
+        "sha256": "ae7da8b3fbc282391fc70df8a625de765062f955fc85587e575479cbe9c33adb"
+      },
+      {
+        "path": "node_modules/npm/node_modules/make-fetch-happen/lib/cache/index.js",
+        "sha256": "b9a47e604b9d6ec9211e5129636ba7366c408c074ea1d4b8c859cf221c347071"
+      },
+      {
+        "path": "node_modules/npm/node_modules/make-fetch-happen/lib/options.js",
+        "sha256": "b067a3566cf03d9a4cc77478efb88c2b3d8cc4081a311b2ae9ea67a500bf3c0e"
+      },
+      {
+        "path": "node_modules/npm/node_modules/make-fetch-happen/lib/index.js",
+        "sha256": "c6fa07e324498f7bbd05e98892790186556bf55c6265d0c07f45900a6941a57c"
+      },
+      {
+        "path": "node_modules/npm/node_modules/make-fetch-happen/lib/fetch.js",
+        "sha256": "7d57bfd656a6ae2a53738fb3f25365d074d9cb7364794005bc70317ff2bf81e8"
+      },
+      {
+        "path": "node_modules/npm/node_modules/npm-registry-fetch/package.json",
+        "sha256": "5bbf80cc6d910b5b260493202d67176e4bd7abf28ece92f424fdcc2a657c6686"
+      },
+      {
+        "path": "node_modules/npm/node_modules/npm-registry-fetch/lib/index.js",
+        "sha256": "9757d6aa767884be9e566ebfeaca76c94d80bbea854b41a42ce8648feb2fca42"
+      },
+      {
+        "path": "scripts/release-npm.ts",
+        "sha256": "4509a204e76299f5e1ec2e237f035efc3957a039a2a56bca01ecba0a9046d87e"
+      }
+    ]
+  }
+]

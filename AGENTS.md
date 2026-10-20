@@ -1,6 +1,6 @@
 # Working in this repository
 
-This is `@acmelabs/design-system`: Peter's house design system, Lit web components with the `acme-` prefix, built so AI-generated artifacts have a real design language to render. The Geist port is closed. The current work is the **systematization pass**: fewer elements, one name per concept, one shape per kind of interface, a small set of primitives the rest compose.
+This is `@acmelabs/design-system`: Peter's design system, Lit web components with the `acme-` prefix, built so AI-generated artifacts have a real design language to render. The Geist port is closed. The current work is the **systematization pass**: fewer elements, one name per concept, one shape per kind of interface, a small set of primitives the rest compose.
 
 Your global `AGENTS.md` carries how Peter works everywhere. This file carries what is specific here.
 
@@ -14,9 +14,11 @@ Read these in order, in full.
 4. `notes/analysis/*.md` — living analysis. Extend the file on a subject; a second file on the same subject is a mistake.
 5. `README.md` — the consumer's view, and the list of generated files.
 
-Then tell Peter where we are and what the next step is, in your own words, and wait.
+For the approved migration, read and follow `notes/decisions/execution-delegation.md`: continue the remaining work without another decision or approval pause. For other requests, report where we are and the next step, then follow Peter’s current instruction.
 
 ## Rules this repo adds
+
+- **Use component names directly.** Every component belongs to this design system. Describe a component, its behavior and its reference sources without a separate “house” version or category.
 
 - **Best, not fastest.** Every decision is the best decision for what we are building. Where the best path and the quick path differ, name both and take the best one.
 - **Investigate first.** Every item Peter lists, and everything you find, gets analysis before a recommendation: what the code does (file and line), what the community does (a source you read), what a reference system does (its docs or rendered output). Unsure means ask.
@@ -62,16 +64,32 @@ Several **generated files are committed**, in places that read as source. The sc
 
 | Path | Written by | Source of truth |
 |---|---|---|
-| `tokens.css` (repo root) | `bun run split` → `scripts/split-css.ts` | the audited house sheet in `tools/geist/` |
-| `dashboard.css` (repo root) | `bun run build` → `scripts/build.ts` | `scripts/build.ts` |
-| `src/components/<name>/<name>.styles.ts` | `bun run split` / `bun tools/geist/gen.ts <name>` | `tools/geist/maps/<name>.ts` and the spec |
-| `docs/` (entire directory) | `bun run docs` → `docs-src/build.ts` | `docs-src/` |
-| `dist/` (gitignored) | `bun run build` | `src/` |
+| `src/generated/css/` | style producers | `styles/`, mappings and committed specs |
+| `src/generated/components/` and `src/generated/shared/` | `scripts/styles.ts` | compiled CSS under `src/generated/css/` |
+| `src/generated/style-manifest.json` | style producers | input/output fingerprints and registration definitions |
+| `src/generated/tokens.json` and `dist/tokens.json` | `split`, then `build` | `src/shared/numeric-tokens.ts` through `scripts/numeric-tokens.ts` |
+| `src/define/`, `src/register/`, their `src/internal/` counterparts, `src/all.ts` and component package exports | `scripts/entries.ts` | `HTMLElementTagNameMap` records, explicit internal annotations, owned markup and literal scoped-factory calls |
+| `dist/shared/date.js` and `dist/licenses/` | `scripts/date-runtime.ts` during build | exact patched date dependency and `src/shared/date.ts` |
+| `dist/custom-elements.json` | `scripts/manifest.ts` | component declarations, templates and annotations |
+| `dist/styles/` | `bun run build` | compiled document/token/recipe CSS and maps |
+| `dist/cdn/` | `bun run build` | selective definitions and one shared browser module graph |
+| `packages/core/{dist,assets,README.md,skills}` | `scripts/core-package.ts` | approved links to the single source/build tree |
+| `packages/react/.build-src/` and `packages/react/dist/` | `scripts/react.ts` | CEM and the authored React bridge |
+| `dist/skills/` and MCP documentation records | `bun run docs` | authored `skills/`, CEM and `site/` records |
+| `packages/devtools/src/generated/metadata.ts` | `scripts/devtools-metadata.ts` | public CEM and token metadata |
+| `packages/{mcp,devtools}/dist/` | `bun run build:tooling` | their authored sources and generated metadata |
+| `.artifacts/packages/` | `bun run pack` | built outputs and production-only package metadata |
+| `_site/` | `bun run docs` → `site/build.ts` | `site/` and `dist/` |
+| `dist/` (gitignored) | `bun run build` | `src/` and verified generated inputs |
 
-Hand-written: `src/` except `*.styles.ts`, `docs-src/`, `scripts/`, `tools/geist/` except `corpus/`, `notes/`, `.agents/`, `README.md`, `PLAN.md`, this file.
+The tracked `docs/` tree is the published snapshot while Pages still serves main/docs. Its removal and the workflow deployment switch remain assigned to the publishing migration; it is not the local build output.
+
+Hand-written: `styles/`, `src/` except `src/generated/`, `src/define/`, `src/register/`, their `src/internal/` counterparts and `src/all.ts`; `site/`, `scripts/`, `packages/` except the generated paths above, `tools/geist/` except `corpus/`, `notes/`, `.agents/`, `README.md`, `PLAN.md`, this file.
 
 `CLAUDE.md` is a symlink to this file. Edit `AGENTS.md`; the link follows.
 
-Build order: `bun run split && bun run build && bun run docs && bun test`. `docs` needs `dist/` from `build`.
+Build order: `bun run split && bun run build && bun run docs && bun run build:tooling && bun test`. `docs` needs `dist/` from `build`.
 
-Phase 1.7 of the pass reviews this layout; until it lands, the table above is the map.
+The public core manifest is `packages/core/package.json`; the repository root is a private build workspace. Use `scripts/core-package.ts` to read consumer metadata. Normal workspaces resolve one generated runtime without root-package overrides.
+
+Mapped-source changes use `bun tools/geist/gen.ts <name>`; `split` regenerates base and component styles. Build rejects stale generated inputs and refreshes registration entries, exports and API metadata. `bun run pack` stages production metadata; development patch settings stay in the authoring package.

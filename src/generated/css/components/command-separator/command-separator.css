@@ -1,0 +1,9 @@
+:host {
+  display: block;
+}
+
+[part="separator"] {
+  background: var(--ds-gray-alpha-400);
+  block-size: 1px;
+  margin-block: var(--acme-spacing-2);
+}

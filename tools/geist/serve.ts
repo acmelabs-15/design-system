@@ -16,7 +16,9 @@ const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
  */
 const sketches = (name: string, html: string) => {
   const f = path.join(import.meta.dir, "spec", `${name}.json`);
-  if (!fs.existsSync(f)) return "";
+  if (!fs.existsSync(f)) {
+    return "";
+  }
   const spec = JSON.parse(fs.readFileSync(f, "utf8")) as { examples: { heading: string; dom: SpecNode[] }[] };
   const render = (n: SpecNode): string => {
     const cls = [...new Set([...n.styles.map((s) => s.cls), ...n.unresolved])].join(" ");
@@ -25,18 +27,22 @@ const sketches = (name: string, html: string) => {
       .join("");
     return `<${n.tag}${cls ? ` class="${esc(cls)}"` : ""}${attrs}>${n.children.map(render).join("")}${esc(n.text ?? "")}</${n.tag}>`;
   };
-  return spec.examples
-    // A sketch stands in for a showcase the page lacks: its heading is matched whole (`>Controls</h2>`), so "Controls" is not read as the tail of "No Controls".
-    .filter((e) => !html.includes(`>${e.heading}</h2>`))
-    .map(
-      (e) =>
-        `<section data-sketch style="width:600px;margin:48px auto"><h2 class="text-heading-24">${esc(e.heading)}</h2><div class="w-full p-6">${e.dom.map(render).join("")}</div><div class="bg-background-200"><button type="button" aria-controls="radix-sketch" data-state="closed"></button></div></section>`,
-    )
-    .join("");
+  return (
+    spec.examples
+      // A sketch stands in for a showcase the page lacks: its heading is matched whole (`>Controls</h2>`), so "Controls" is not read as the tail of "No Controls".
+      .filter((e) => !html.includes(`>${e.heading}</h2>`))
+      .map(
+        (e) =>
+          `<section data-sketch style="width:600px;margin:48px auto"><h2 class="text-heading-24">${esc(e.heading)}</h2><div class="w-full p-6">${e.dom.map(render).join("")}</div><div class="bg-background-200"><button type="button" aria-controls="radix-sketch" data-state="closed"></button></div></section>`,
+      )
+      .join("")
+  );
 };
 const page = (name: string) => {
   const f = path.join(DIR, "html", `${name}.html`);
-  if (!fs.existsSync(f)) return null;
+  if (!fs.existsSync(f)) {
+    return null;
+  }
   // A streamed boundary's content is put where it renders (see stream.ts): the script that would move it is stripped below.
   const html = settleStreamed(fs.readFileSync(f, "utf8"))
     .replace(/<script[\s\S]*?<\/script>/g, "")
@@ -50,7 +56,9 @@ Bun.serve({
   port: Number(process.env.PORT) || 4184,
   fetch(req) {
     const p = decodeURIComponent(new URL(req.url).pathname);
-    if (p.startsWith("/css/")) return new Response(Bun.file(path.join(DIR, "css", p.slice(5))), { headers: { "content-type": "text/css" } });
+    if (p.startsWith("/css/")) {
+      return new Response(Bun.file(path.join(DIR, "css", p.slice(5))), { headers: { "content-type": "text/css" } });
+    }
     // Static media the pages reference (logos, textures), fetched into corpus/media with the owner's approval.
     const media = p.match(/^\/vc-ap-[a-z0-9]+\/_next\/static\/immutable\/media\/([^/]+)$/);
     if (media) {

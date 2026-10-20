@@ -1,79 +1,222 @@
-// Interaction states as attributes on the styled element, so styles key off plain selectors:
-// data-hover (mouse and pen pointers only, never touch),
-// data-active (pressed), data-focus (keyboard focus, the focus-visible rule), plus data-focus-within
-// on a wrapper. Attach to the element that carries the styles: `interaction(this, el)`.
+import { createAtom } from "@tanstack/lit-store";
 import type { ReactiveController, ReactiveControllerHost } from "lit";
 
 export type InteractionOptions = {
   disabled?: () => boolean;
-  onPress?: (e: Event) => void;
-  /** data-focus on any focus, not only a visible one (a control whose rules key off `:focus`). */
   anyFocus?: boolean;
-  /** data-focus only when the element itself is the focused node, never a descendant (a wrapper whose ring is its own, around a field with its own). */
   ownFocus?: boolean;
+  onPress?: (event: PointerEvent | KeyboardEvent) => void;
+  onCancel?: () => void;
 };
+type State = Readonly<{ hover: boolean; focus: boolean; within: boolean; pointer: number | undefined; space: boolean; enter: boolean }>;
+const empty: State = Object.freeze({ hover: false, focus: false, within: false, pointer: undefined, space: false, enter: false });
 
+/** Owns visual interaction state and its temporary listeners; native controls own activation. */
 export class Interaction implements ReactiveController {
-  private el?: HTMLElement;
+  private target?: HTMLElement;
+  private connected = false;
   private cleanup: (() => void)[] = [];
+  private releases: (() => void)[] = [];
+  private subscription?: { unsubscribe(): void };
+  private readonly state = createAtom<State>(empty, {
+    compare: (a, b) => a.hover === b.hover && a.focus === b.focus && a.within === b.within && a.pointer === b.pointer && a.space === b.space && a.enter === b.enter,
+  });
+
   constructor(
-    private host: ReactiveControllerHost,
+    host: ReactiveControllerHost,
     private options: InteractionOptions = {},
   ) {
     host.addController(this);
   }
-  /** Binds to the styled element; call from firstUpdated or whenever the element changes. */
-  attach(el: HTMLElement | null | undefined) {
-    if (this.el === el) return;
-    this.detach();
-    if (!el) return;
-    this.el = el;
-    const on = <K extends keyof HTMLElementEventMap>(type: K, fn: (e: HTMLElementEventMap[K]) => void, opts?: AddEventListenerOptions) => {
-      el.addEventListener(type, fn as EventListener, opts);
-      this.cleanup.push(() => el.removeEventListener(type, fn as EventListener, opts));
+
+  attach(target: HTMLElement | null | undefined): void {
+    if (this.target === target && this.cleanup.length) {
+      return;
+    }
+    this.unbind();
+    this.target = target ?? undefined;
+    this.bind();
+  }
+
+  private disabled(): boolean {
+    return this.options.disabled?.() ?? (!!(this.target as HTMLButtonElement | undefined)?.disabled || this.target?.getAttribute("aria-disabled") === "true");
+  }
+  private set(patch: Partial<State>): void {
+    this.state.set((previous) => Object.freeze({ ...previous, ...patch }));
+  }
+  private pressed(): boolean {
+    const state = this.state.get();
+    return state.pointer !== undefined || state.space || state.enter;
+  }
+  private paint = (): void => {
+    const target = this.target;
+    if (!target) {
+      return;
+    }
+    const state = this.state.get();
+    for (const [name, present] of [
+      ["data-hover", state.hover],
+      ["data-active", this.pressed()],
+      ["data-focus", state.focus],
+      ["data-focus-within", state.within],
+    ] as const) {
+      if (present) {
+        if (target.getAttribute(name) !== "true") {
+          target.setAttribute(name, "true");
+        }
+      } else {
+        target.removeAttribute(name);
+      }
+    }
+  };
+  private releaseListeners(): void {
+    for (const remove of this.releases.splice(0)) {
+      remove();
+    }
+  }
+  private endPress(): void {
+    this.set({ pointer: undefined, space: false, enter: false });
+    this.releaseListeners();
+  }
+  private listenForRelease(): void {
+    if (this.releases.length || !this.target) {
+      return;
+    }
+    const owner: EventTarget = this.target.ownerDocument.defaultView ?? this.target.ownerDocument;
+    const released = (event: Event) => {
+      const pointer = this.state.get().pointer;
+      if (pointer === undefined || (event as PointerEvent).pointerId !== pointer) {
+        return;
+      }
+      this.set({ pointer: undefined });
+      if (event.type === "pointercancel") {
+        this.options.onCancel?.();
+      }
+      if (!this.pressed()) {
+        this.releaseListeners();
+      }
     };
-    const disabled = () => this.options.disabled?.() ?? ((el as HTMLButtonElement).disabled || el.getAttribute("aria-disabled") === "true");
-    on("pointerenter", (e) => {
-      if (e.pointerType !== "touch" && !disabled()) el.setAttribute("data-hover", "true");
+    const blurred = () => {
+      this.endPress();
+      this.options.onCancel?.();
+    };
+    for (const [type, handler] of [
+      ["pointerup", released],
+      ["pointercancel", released],
+      ["blur", blurred],
+    ] as const) {
+      owner.addEventListener(type, handler);
+      this.releases.push(() => owner.removeEventListener(type, handler));
+    }
+  }
+  private bind(): void {
+    const target = this.target;
+    if (!this.connected || !target || this.cleanup.length) {
+      return;
+    }
+    this.subscription = this.state.subscribe(this.paint);
+    this.paint();
+    const on = <Key extends keyof HTMLElementEventMap>(type: Key, handler: (event: HTMLElementEventMap[Key]) => void) => {
+      target.addEventListener(type, handler);
+      this.cleanup.push(() => target.removeEventListener(type, handler));
+    };
+    on("pointerenter", (event) => {
+      if ((event.pointerType === "mouse" || event.pointerType === "pen") && !this.disabled()) {
+        this.set({ hover: true });
+      }
     });
     on("pointerleave", () => {
-      el.removeAttribute("data-hover");
-      el.removeAttribute("data-active");
+      this.options.onCancel?.();
+      this.set({ hover: false, pointer: undefined });
+      if (!this.pressed()) {
+        this.releaseListeners();
+      }
     });
-    on("pointerdown", (e) => {
-      if (disabled() || e.button !== 0) return;
-      el.setAttribute("data-active", "true");
-      const up = () => {
-        el.removeAttribute("data-active");
-        window.removeEventListener("pointerup", up);
-        window.removeEventListener("pointercancel", up);
-      };
-      window.addEventListener("pointerup", up);
-      window.addEventListener("pointercancel", up);
+    on("pointerdown", (event) => {
+      if (this.disabled() || event.button !== 0 || !event.isPrimary) {
+        return;
+      }
+      const pressed = this.pressed();
+      this.set({ pointer: event.pointerId });
+      if (!pressed) {
+        this.options.onPress?.(event);
+      }
+      this.listenForRelease();
     });
-    on("keydown", (e) => {
-      if ((e.key === " " || e.key === "Enter") && !disabled()) el.setAttribute("data-active", "true");
+    on("lostpointercapture", (event) => {
+      if (this.state.get().pointer === event.pointerId) {
+        this.options.onCancel?.();
+        this.set({ pointer: undefined });
+        if (!this.pressed()) {
+          this.releaseListeners();
+        }
+      }
     });
-    on("keyup", () => el.removeAttribute("data-active"));
-    // focusin/focusout bubble, so a wrapper (a label around a hidden input) sees its control's focus too.
-    on("focusin", (e) => {
-      const target = e.target as Element;
-      const own = !this.options.ownFocus || target === el;
-      if (own && (this.options.anyFocus || target.matches(":focus-visible"))) el.setAttribute("data-focus", "true");
-      el.setAttribute("data-focus-within", "true");
+    on("keydown", (event) => {
+      if (this.disabled() || (event.key !== " " && event.key !== "Enter")) {
+        return;
+      }
+      const pressed = this.pressed();
+      this.set(event.key === " " ? { space: true } : { enter: true });
+      if (!pressed) {
+        this.options.onPress?.(event);
+      }
+      this.listenForRelease();
+    });
+    on("keyup", (event) => {
+      if (event.key === " ") {
+        this.set({ space: false });
+      } else if (event.key === "Enter") {
+        this.set({ enter: false });
+      }
+      if (!this.pressed()) {
+        this.releaseListeners();
+      }
+    });
+    on("focusin", (event) => {
+      if (this.disabled()) {
+        return;
+      }
+      const focused = event.composedPath()[0] as Element;
+      const own = !this.options.ownFocus || focused === target;
+      this.set({ focus: own && (this.options.anyFocus || focused.matches(":focus-visible")) === true, within: true });
     });
     on("focusout", () => {
-      el.removeAttribute("data-focus");
-      el.removeAttribute("data-focus-within");
-      el.removeAttribute("data-active");
+      this.set({ focus: false, within: false, space: false, enter: false });
+      if (this.state.get().pointer === undefined) {
+        this.options.onCancel?.();
+        this.releaseListeners();
+      }
     });
   }
-  detach() {
-    for (const c of this.cleanup) c();
-    this.cleanup = [];
-    this.el = undefined;
+  private unbind(): void {
+    this.options.onCancel?.();
+    this.releaseListeners();
+    for (const remove of this.cleanup.splice(0)) {
+      remove();
+    }
+    this.state.set(empty);
+    this.subscription?.unsubscribe();
+    this.subscription = undefined;
   }
-  hostDisconnected() {
-    this.detach();
+  detach(): void {
+    this.unbind();
+    this.target = undefined;
+  }
+  hostConnected(): void {
+    this.connected = true;
+    this.bind();
+  }
+  hostDisconnected(): void {
+    this.connected = false;
+    this.unbind();
+  }
+  hostUpdated(): void {
+    if (!this.connected || !this.target || !this.disabled()) {
+      return;
+    }
+    this.options.onCancel?.();
+    this.releaseListeners();
+    this.state.set(empty);
   }
 }

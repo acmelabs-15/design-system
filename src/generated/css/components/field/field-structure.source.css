@@ -1,0 +1,10 @@
+:host{display:block;min-inline-size:0;}
+.field{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;min-inline-size:0;}
+[part=label]{display:flex;align-items:center;gap:4px;font-size:13px;line-height:20px;font-weight:var(--acme-font-weight-500);color:var(--ds-gray-1000);}
+[part=control]{min-inline-size:0;}
+[part=help],[part=error],.optional{font-size:13px;line-height:20px;color:var(--ds-gray-900);}
+[part=error],.required{color:var(--ds-red-900);}
+.field[data-disabled] [part=label]{color:var(--ds-gray-700);}
+.field[data-orientation=horizontal]{grid-template-columns:minmax(0,12rem) minmax(0,1fr);column-gap:16px;align-items:start;}
+.field[data-orientation=horizontal] [part=help],.field[data-orientation=horizontal] [part=error]{grid-column:2;}
+[hidden]{display:none!important;}

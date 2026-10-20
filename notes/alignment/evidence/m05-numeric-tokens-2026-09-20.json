@@ -1,0 +1,3974 @@
+{
+  "date": "2026-09-20",
+  "phase": "Phase 6",
+  "batch": "M05-05",
+  "status": "numeric CSS and manifest delivery implemented and verified",
+  "catalog": "src/shared/numeric-tokens.ts",
+  "naming": {
+    "spacing": "--acme-spacing-<key>",
+    "sizes": "--acme-size-<key>",
+    "decimal": "Replace the decimal dot with a hyphen:0.5 becomes0-5.",
+    "negative": "Derived calc(var(positive spacing)*-1); no negative variable aliases."
+  },
+  "outputs": [
+    "src/generated/tokens.json",
+    "dist/tokens.json",
+    "dist/styles/tokens.css"
+  ],
+  "migration": {
+    "houseDefinitionsRemoved": 9,
+    "houseReferencesUpdated": 13,
+    "importedDefinitionsRemoved": 84,
+    "importedRoleReferencesRewritten": 8,
+    "preserved": "Named form heights, gap roles and nonnumeric theme tokens retain their values.",
+    "mapping": [
+      {
+        "from": "--space and --s-N",
+        "to": "--acme-spacing-1 and --acme-spacing-N"
+      },
+      {
+        "from": "--acme-space and --acme-space-Nx",
+        "to": "--acme-spacing-1 and --acme-spacing-N"
+      },
+      {
+        "from": "numeric negative variants",
+        "to": "Derived negative of the corresponding positive spacing token"
+      }
+    ]
+  },
+  "verification": {
+    "focused": {
+      "tests": 23,
+      "assertions": 2137
+    },
+    "fullSuite": {
+      "passed": 713,
+      "failed": 0,
+      "assertions": 10018,
+      "files": 96
+    },
+    "review": {
+      "agent": "/root/review_style_pipeline",
+      "verdict": "approved",
+      "requiredFindings": []
+    },
+    "strictTypes": "targeted source/tests passed",
+    "vars": "theme.css: 53 blocks, 1767 root decls, 1596 dark decls, 92 @property\n",
+    "split": "$ bun scripts/split-css.ts\nstyles: 75 house families and document tokens\n",
+    "build": "$ bun scripts/build.ts\nmodules: 470 files, 98 with compiled templates\nmanifest: 109 elements\nbundle 2223.6 KB min 1078.1 KB tokens.css 152.1 KB dashboard.css 13.8 KB\n",
+    "docs": "$ bun site/build.ts\ndocs: 80 pages, 109 elements (0 undocumented), app.js 1151 KB\n",
+    "browser": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "results": [
+            {
+              "name": "16px --acme-spacing-0",
+              "actual": "0px",
+              "expected": "0px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-0-5",
+              "actual": "2px",
+              "expected": "2px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-1",
+              "actual": "4px",
+              "expected": "4px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-1-5",
+              "actual": "6px",
+              "expected": "6px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-2",
+              "actual": "8px",
+              "expected": "8px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-2-5",
+              "actual": "10px",
+              "expected": "10px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-3",
+              "actual": "12px",
+              "expected": "12px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-3-5",
+              "actual": "14px",
+              "expected": "14px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-4",
+              "actual": "16px",
+              "expected": "16px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-4-5",
+              "actual": "18px",
+              "expected": "18px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-5",
+              "actual": "20px",
+              "expected": "20px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-6",
+              "actual": "24px",
+              "expected": "24px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-7",
+              "actual": "28px",
+              "expected": "28px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-8",
+              "actual": "32px",
+              "expected": "32px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-9",
+              "actual": "36px",
+              "expected": "36px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-10",
+              "actual": "40px",
+              "expected": "40px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-11",
+              "actual": "44px",
+              "expected": "44px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-12",
+              "actual": "48px",
+              "expected": "48px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-14",
+              "actual": "56px",
+              "expected": "56px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-16",
+              "actual": "64px",
+              "expected": "64px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-20",
+              "actual": "80px",
+              "expected": "80px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-24",
+              "actual": "96px",
+              "expected": "96px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-28",
+              "actual": "112px",
+              "expected": "112px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-32",
+              "actual": "128px",
+              "expected": "128px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-36",
+              "actual": "144px",
+              "expected": "144px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-40",
+              "actual": "160px",
+              "expected": "160px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-44",
+              "actual": "176px",
+              "expected": "176px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-48",
+              "actual": "192px",
+              "expected": "192px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-52",
+              "actual": "208px",
+              "expected": "208px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-56",
+              "actual": "224px",
+              "expected": "224px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-60",
+              "actual": "240px",
+              "expected": "240px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-64",
+              "actual": "256px",
+              "expected": "256px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-72",
+              "actual": "288px",
+              "expected": "288px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-80",
+              "actual": "320px",
+              "expected": "320px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-96",
+              "actual": "384px",
+              "expected": "384px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-0",
+              "actual": "0px",
+              "expected": "0px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-0-5",
+              "actual": "2px",
+              "expected": "2px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-1",
+              "actual": "4px",
+              "expected": "4px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-1-5",
+              "actual": "6px",
+              "expected": "6px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-2",
+              "actual": "8px",
+              "expected": "8px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-2-5",
+              "actual": "10px",
+              "expected": "10px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-3",
+              "actual": "12px",
+              "expected": "12px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-3-5",
+              "actual": "14px",
+              "expected": "14px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-4",
+              "actual": "16px",
+              "expected": "16px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-4-5",
+              "actual": "18px",
+              "expected": "18px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-5",
+              "actual": "20px",
+              "expected": "20px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-6",
+              "actual": "24px",
+              "expected": "24px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-7",
+              "actual": "28px",
+              "expected": "28px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-8",
+              "actual": "32px",
+              "expected": "32px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-9",
+              "actual": "36px",
+              "expected": "36px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-10",
+              "actual": "40px",
+              "expected": "40px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-11",
+              "actual": "44px",
+              "expected": "44px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-12",
+              "actual": "48px",
+              "expected": "48px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-14",
+              "actual": "56px",
+              "expected": "56px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-16",
+              "actual": "64px",
+              "expected": "64px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-20",
+              "actual": "80px",
+              "expected": "80px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-24",
+              "actual": "96px",
+              "expected": "96px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-28",
+              "actual": "112px",
+              "expected": "112px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-32",
+              "actual": "128px",
+              "expected": "128px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-36",
+              "actual": "144px",
+              "expected": "144px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-40",
+              "actual": "160px",
+              "expected": "160px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-44",
+              "actual": "176px",
+              "expected": "176px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-48",
+              "actual": "192px",
+              "expected": "192px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-52",
+              "actual": "208px",
+              "expected": "208px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-56",
+              "actual": "224px",
+              "expected": "224px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-60",
+              "actual": "240px",
+              "expected": "240px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-64",
+              "actual": "256px",
+              "expected": "256px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-72",
+              "actual": "288px",
+              "expected": "288px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-80",
+              "actual": "320px",
+              "expected": "320px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-96",
+              "actual": "384px",
+              "expected": "384px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-0",
+              "actual": "0px",
+              "expected": "0px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-0-5",
+              "actual": "2.5px",
+              "expected": "2.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-1",
+              "actual": "5px",
+              "expected": "5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-1-5",
+              "actual": "7.5px",
+              "expected": "7.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-2",
+              "actual": "10px",
+              "expected": "10px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-2-5",
+              "actual": "12.5px",
+              "expected": "12.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-3",
+              "actual": "15px",
+              "expected": "15px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-3-5",
+              "actual": "17.5px",
+              "expected": "17.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-4",
+              "actual": "20px",
+              "expected": "20px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-4-5",
+              "actual": "22.5px",
+              "expected": "22.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-5",
+              "actual": "25px",
+              "expected": "25px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-6",
+              "actual": "30px",
+              "expected": "30px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-7",
+              "actual": "35px",
+              "expected": "35px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-8",
+              "actual": "40px",
+              "expected": "40px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-9",
+              "actual": "45px",
+              "expected": "45px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-10",
+              "actual": "50px",
+              "expected": "50px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-11",
+              "actual": "55px",
+              "expected": "55px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-12",
+              "actual": "60px",
+              "expected": "60px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-14",
+              "actual": "70px",
+              "expected": "70px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-16",
+              "actual": "80px",
+              "expected": "80px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-20",
+              "actual": "100px",
+              "expected": "100px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-24",
+              "actual": "120px",
+              "expected": "120px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-28",
+              "actual": "140px",
+              "expected": "140px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-32",
+              "actual": "160px",
+              "expected": "160px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-36",
+              "actual": "180px",
+              "expected": "180px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-40",
+              "actual": "200px",
+              "expected": "200px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-44",
+              "actual": "220px",
+              "expected": "220px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-48",
+              "actual": "240px",
+              "expected": "240px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-52",
+              "actual": "260px",
+              "expected": "260px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-56",
+              "actual": "280px",
+              "expected": "280px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-60",
+              "actual": "300px",
+              "expected": "300px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-64",
+              "actual": "320px",
+              "expected": "320px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-72",
+              "actual": "360px",
+              "expected": "360px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-80",
+              "actual": "400px",
+              "expected": "400px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-96",
+              "actual": "480px",
+              "expected": "480px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-0",
+              "actual": "0px",
+              "expected": "0px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-0-5",
+              "actual": "2.5px",
+              "expected": "2.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-1",
+              "actual": "5px",
+              "expected": "5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-1-5",
+              "actual": "7.5px",
+              "expected": "7.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-2",
+              "actual": "10px",
+              "expected": "10px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-2-5",
+              "actual": "12.5px",
+              "expected": "12.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-3",
+              "actual": "15px",
+              "expected": "15px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-3-5",
+              "actual": "17.5px",
+              "expected": "17.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-4",
+              "actual": "20px",
+              "expected": "20px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-4-5",
+              "actual": "22.5px",
+              "expected": "22.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-5",
+              "actual": "25px",
+              "expected": "25px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-6",
+              "actual": "30px",
+              "expected": "30px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-7",
+              "actual": "35px",
+              "expected": "35px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-8",
+              "actual": "40px",
+              "expected": "40px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-9",
+              "actual": "45px",
+              "expected": "45px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-10",
+              "actual": "50px",
+              "expected": "50px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-11",
+              "actual": "55px",
+              "expected": "55px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-12",
+              "actual": "60px",
+              "expected": "60px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-14",
+              "actual": "70px",
+              "expected": "70px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-16",
+              "actual": "80px",
+              "expected": "80px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-20",
+              "actual": "100px",
+              "expected": "100px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-24",
+              "actual": "120px",
+              "expected": "120px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-28",
+              "actual": "140px",
+              "expected": "140px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-32",
+              "actual": "160px",
+              "expected": "160px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-36",
+              "actual": "180px",
+              "expected": "180px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-40",
+              "actual": "200px",
+              "expected": "200px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-44",
+              "actual": "220px",
+              "expected": "220px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-48",
+              "actual": "240px",
+              "expected": "240px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-52",
+              "actual": "260px",
+              "expected": "260px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-56",
+              "actual": "280px",
+              "expected": "280px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-60",
+              "actual": "300px",
+              "expected": "300px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-64",
+              "actual": "320px",
+              "expected": "320px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-72",
+              "actual": "360px",
+              "expected": "360px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-80",
+              "actual": "400px",
+              "expected": "400px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-96",
+              "actual": "480px",
+              "expected": "480px",
+              "ok": true
+            },
+            {
+              "name": "spacing override",
+              "actual": "48px",
+              "expected": "48px",
+              "ok": true
+            },
+            {
+              "name": "spacing override leaves size independent",
+              "actual": "16px",
+              "expected": "16px",
+              "ok": true
+            },
+            {
+              "name": "size override",
+              "actual": "64px",
+              "expected": "64px",
+              "ok": true
+            },
+            {
+              "name": "size override leaves spacing independent",
+              "actual": "48px",
+              "expected": "48px",
+              "ok": true
+            },
+            {
+              "name": "negative spacing default",
+              "actual": "-8px",
+              "expected": "-8px",
+              "ok": true
+            },
+            {
+              "name": "negative spacing follows positive override",
+              "actual": "-24px",
+              "expected": "-24px",
+              "ok": true
+            },
+            {
+              "name": "named default control height unchanged",
+              "actual": "36px",
+              "expected": "36px",
+              "ok": true
+            },
+            {
+              "name": "numeric rem scale leaves named control height fixed",
+              "actual": "36px",
+              "expected": "36px",
+              "ok": true
+            },
+            {
+              "name": "light retired --space",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-1",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-2",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-3",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-4",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-5",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-6",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-8",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-10",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-2x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-3x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-4x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-6x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-8x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-10x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-16x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-24x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-32x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-48x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-64x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-2x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-4x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-8x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-16x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-24x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-32x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-48x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-64x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --space",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-1",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-2",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-3",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-4",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-5",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-6",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-8",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-10",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-2x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-3x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-4x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-6x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-8x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-10x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-16x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-24x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-32x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-48x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-64x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-2x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-4x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-8x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-16x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-24x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-32x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-48x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-64x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "manifest has70 independent variables",
+              "actual": 70,
+              "expected": 70,
+              "ok": true
+            },
+            {
+              "name": "manifest covers numeric categories",
+              "actual": [
+                "spacing",
+                "sizes"
+              ],
+              "expected": [
+                "spacing",
+                "sizes"
+              ],
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "16px --acme-spacing-0",
+              "actual": "0px",
+              "expected": "0px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-0-5",
+              "actual": "2px",
+              "expected": "2px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-1",
+              "actual": "4px",
+              "expected": "4px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-1-5",
+              "actual": "6px",
+              "expected": "6px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-2",
+              "actual": "8px",
+              "expected": "8px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-2-5",
+              "actual": "10px",
+              "expected": "10px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-3",
+              "actual": "12px",
+              "expected": "12px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-3-5",
+              "actual": "14px",
+              "expected": "14px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-4",
+              "actual": "16px",
+              "expected": "16px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-4-5",
+              "actual": "18px",
+              "expected": "18px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-5",
+              "actual": "20px",
+              "expected": "20px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-6",
+              "actual": "24px",
+              "expected": "24px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-7",
+              "actual": "28px",
+              "expected": "28px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-8",
+              "actual": "32px",
+              "expected": "32px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-9",
+              "actual": "36px",
+              "expected": "36px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-10",
+              "actual": "40px",
+              "expected": "40px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-11",
+              "actual": "44px",
+              "expected": "44px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-12",
+              "actual": "48px",
+              "expected": "48px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-14",
+              "actual": "56px",
+              "expected": "56px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-16",
+              "actual": "64px",
+              "expected": "64px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-20",
+              "actual": "80px",
+              "expected": "80px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-24",
+              "actual": "96px",
+              "expected": "96px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-28",
+              "actual": "112px",
+              "expected": "112px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-32",
+              "actual": "128px",
+              "expected": "128px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-36",
+              "actual": "144px",
+              "expected": "144px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-40",
+              "actual": "160px",
+              "expected": "160px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-44",
+              "actual": "176px",
+              "expected": "176px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-48",
+              "actual": "192px",
+              "expected": "192px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-52",
+              "actual": "208px",
+              "expected": "208px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-56",
+              "actual": "224px",
+              "expected": "224px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-60",
+              "actual": "240px",
+              "expected": "240px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-64",
+              "actual": "256px",
+              "expected": "256px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-72",
+              "actual": "288px",
+              "expected": "288px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-80",
+              "actual": "320px",
+              "expected": "320px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-96",
+              "actual": "384px",
+              "expected": "384px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-0",
+              "actual": "0px",
+              "expected": "0px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-0-5",
+              "actual": "2px",
+              "expected": "2px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-1",
+              "actual": "4px",
+              "expected": "4px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-1-5",
+              "actual": "6px",
+              "expected": "6px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-2",
+              "actual": "8px",
+              "expected": "8px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-2-5",
+              "actual": "10px",
+              "expected": "10px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-3",
+              "actual": "12px",
+              "expected": "12px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-3-5",
+              "actual": "14px",
+              "expected": "14px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-4",
+              "actual": "16px",
+              "expected": "16px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-4-5",
+              "actual": "18px",
+              "expected": "18px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-5",
+              "actual": "20px",
+              "expected": "20px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-6",
+              "actual": "24px",
+              "expected": "24px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-7",
+              "actual": "28px",
+              "expected": "28px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-8",
+              "actual": "32px",
+              "expected": "32px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-9",
+              "actual": "36px",
+              "expected": "36px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-10",
+              "actual": "40px",
+              "expected": "40px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-11",
+              "actual": "44px",
+              "expected": "44px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-12",
+              "actual": "48px",
+              "expected": "48px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-14",
+              "actual": "56px",
+              "expected": "56px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-16",
+              "actual": "64px",
+              "expected": "64px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-20",
+              "actual": "80px",
+              "expected": "80px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-24",
+              "actual": "96px",
+              "expected": "96px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-28",
+              "actual": "112px",
+              "expected": "112px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-32",
+              "actual": "128px",
+              "expected": "128px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-36",
+              "actual": "144px",
+              "expected": "144px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-40",
+              "actual": "160px",
+              "expected": "160px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-44",
+              "actual": "176px",
+              "expected": "176px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-48",
+              "actual": "192px",
+              "expected": "192px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-52",
+              "actual": "208px",
+              "expected": "208px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-56",
+              "actual": "224px",
+              "expected": "224px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-60",
+              "actual": "240px",
+              "expected": "240px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-64",
+              "actual": "256px",
+              "expected": "256px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-72",
+              "actual": "288px",
+              "expected": "288px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-80",
+              "actual": "320px",
+              "expected": "320px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-96",
+              "actual": "384px",
+              "expected": "384px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-0",
+              "actual": "0px",
+              "expected": "0px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-0-5",
+              "actual": "2.5px",
+              "expected": "2.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-1",
+              "actual": "5px",
+              "expected": "5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-1-5",
+              "actual": "7.5px",
+              "expected": "7.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-2",
+              "actual": "10px",
+              "expected": "10px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-2-5",
+              "actual": "12.5px",
+              "expected": "12.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-3",
+              "actual": "15px",
+              "expected": "15px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-3-5",
+              "actual": "17.5px",
+              "expected": "17.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-4",
+              "actual": "20px",
+              "expected": "20px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-4-5",
+              "actual": "22.5px",
+              "expected": "22.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-5",
+              "actual": "25px",
+              "expected": "25px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-6",
+              "actual": "30px",
+              "expected": "30px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-7",
+              "actual": "35px",
+              "expected": "35px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-8",
+              "actual": "40px",
+              "expected": "40px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-9",
+              "actual": "45px",
+              "expected": "45px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-10",
+              "actual": "50px",
+              "expected": "50px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-11",
+              "actual": "55px",
+              "expected": "55px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-12",
+              "actual": "60px",
+              "expected": "60px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-14",
+              "actual": "70px",
+              "expected": "70px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-16",
+              "actual": "80px",
+              "expected": "80px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-20",
+              "actual": "100px",
+              "expected": "100px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-24",
+              "actual": "120px",
+              "expected": "120px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-28",
+              "actual": "140px",
+              "expected": "140px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-32",
+              "actual": "160px",
+              "expected": "160px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-36",
+              "actual": "180px",
+              "expected": "180px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-40",
+              "actual": "200px",
+              "expected": "200px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-44",
+              "actual": "220px",
+              "expected": "220px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-48",
+              "actual": "240px",
+              "expected": "240px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-52",
+              "actual": "260px",
+              "expected": "260px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-56",
+              "actual": "280px",
+              "expected": "280px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-60",
+              "actual": "300px",
+              "expected": "300px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-64",
+              "actual": "320px",
+              "expected": "320px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-72",
+              "actual": "360px",
+              "expected": "360px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-80",
+              "actual": "400px",
+              "expected": "400px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-96",
+              "actual": "480px",
+              "expected": "480px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-0",
+              "actual": "0px",
+              "expected": "0px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-0-5",
+              "actual": "2.5px",
+              "expected": "2.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-1",
+              "actual": "5px",
+              "expected": "5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-1-5",
+              "actual": "7.5px",
+              "expected": "7.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-2",
+              "actual": "10px",
+              "expected": "10px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-2-5",
+              "actual": "12.5px",
+              "expected": "12.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-3",
+              "actual": "15px",
+              "expected": "15px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-3-5",
+              "actual": "17.5px",
+              "expected": "17.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-4",
+              "actual": "20px",
+              "expected": "20px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-4-5",
+              "actual": "22.5px",
+              "expected": "22.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-5",
+              "actual": "25px",
+              "expected": "25px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-6",
+              "actual": "30px",
+              "expected": "30px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-7",
+              "actual": "35px",
+              "expected": "35px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-8",
+              "actual": "40px",
+              "expected": "40px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-9",
+              "actual": "45px",
+              "expected": "45px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-10",
+              "actual": "50px",
+              "expected": "50px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-11",
+              "actual": "55px",
+              "expected": "55px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-12",
+              "actual": "60px",
+              "expected": "60px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-14",
+              "actual": "70px",
+              "expected": "70px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-16",
+              "actual": "80px",
+              "expected": "80px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-20",
+              "actual": "100px",
+              "expected": "100px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-24",
+              "actual": "120px",
+              "expected": "120px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-28",
+              "actual": "140px",
+              "expected": "140px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-32",
+              "actual": "160px",
+              "expected": "160px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-36",
+              "actual": "180px",
+              "expected": "180px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-40",
+              "actual": "200px",
+              "expected": "200px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-44",
+              "actual": "220px",
+              "expected": "220px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-48",
+              "actual": "240px",
+              "expected": "240px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-52",
+              "actual": "260px",
+              "expected": "260px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-56",
+              "actual": "280px",
+              "expected": "280px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-60",
+              "actual": "300px",
+              "expected": "300px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-64",
+              "actual": "320px",
+              "expected": "320px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-72",
+              "actual": "360px",
+              "expected": "360px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-80",
+              "actual": "400px",
+              "expected": "400px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-96",
+              "actual": "480px",
+              "expected": "480px",
+              "ok": true
+            },
+            {
+              "name": "spacing override",
+              "actual": "48px",
+              "expected": "48px",
+              "ok": true
+            },
+            {
+              "name": "spacing override leaves size independent",
+              "actual": "16px",
+              "expected": "16px",
+              "ok": true
+            },
+            {
+              "name": "size override",
+              "actual": "64px",
+              "expected": "64px",
+              "ok": true
+            },
+            {
+              "name": "size override leaves spacing independent",
+              "actual": "48px",
+              "expected": "48px",
+              "ok": true
+            },
+            {
+              "name": "negative spacing default",
+              "actual": "-8px",
+              "expected": "-8px",
+              "ok": true
+            },
+            {
+              "name": "negative spacing follows positive override",
+              "actual": "-24px",
+              "expected": "-24px",
+              "ok": true
+            },
+            {
+              "name": "named default control height unchanged",
+              "actual": "36px",
+              "expected": "36px",
+              "ok": true
+            },
+            {
+              "name": "numeric rem scale leaves named control height fixed",
+              "actual": "36px",
+              "expected": "36px",
+              "ok": true
+            },
+            {
+              "name": "light retired --space",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-1",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-2",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-3",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-4",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-5",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-6",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-8",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-10",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-2x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-3x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-4x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-6x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-8x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-10x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-16x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-24x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-32x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-48x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-64x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-2x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-4x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-8x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-16x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-24x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-32x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-48x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-64x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --space",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-1",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-2",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-3",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-4",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-5",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-6",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-8",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-10",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-2x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-3x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-4x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-6x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-8x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-10x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-16x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-24x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-32x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-48x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-64x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-2x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-4x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-8x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-16x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-24x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-32x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-48x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-64x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "manifest has70 independent variables",
+              "actual": 70,
+              "expected": 70,
+              "ok": true
+            },
+            {
+              "name": "manifest covers numeric categories",
+              "actual": [
+                "spacing",
+                "sizes"
+              ],
+              "expected": [
+                "spacing",
+                "sizes"
+              ],
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "16px --acme-spacing-0",
+              "actual": "0px",
+              "expected": "0px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-0-5",
+              "actual": "2px",
+              "expected": "2px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-1",
+              "actual": "4px",
+              "expected": "4px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-1-5",
+              "actual": "6px",
+              "expected": "6px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-2",
+              "actual": "8px",
+              "expected": "8px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-2-5",
+              "actual": "10px",
+              "expected": "10px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-3",
+              "actual": "12px",
+              "expected": "12px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-3-5",
+              "actual": "14px",
+              "expected": "14px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-4",
+              "actual": "16px",
+              "expected": "16px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-4-5",
+              "actual": "18px",
+              "expected": "18px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-5",
+              "actual": "20px",
+              "expected": "20px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-6",
+              "actual": "24px",
+              "expected": "24px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-7",
+              "actual": "28px",
+              "expected": "28px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-8",
+              "actual": "32px",
+              "expected": "32px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-9",
+              "actual": "36px",
+              "expected": "36px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-10",
+              "actual": "40px",
+              "expected": "40px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-11",
+              "actual": "44px",
+              "expected": "44px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-12",
+              "actual": "48px",
+              "expected": "48px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-14",
+              "actual": "56px",
+              "expected": "56px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-16",
+              "actual": "64px",
+              "expected": "64px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-20",
+              "actual": "80px",
+              "expected": "80px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-24",
+              "actual": "96px",
+              "expected": "96px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-28",
+              "actual": "112px",
+              "expected": "112px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-32",
+              "actual": "128px",
+              "expected": "128px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-36",
+              "actual": "144px",
+              "expected": "144px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-40",
+              "actual": "160px",
+              "expected": "160px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-44",
+              "actual": "176px",
+              "expected": "176px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-48",
+              "actual": "192px",
+              "expected": "192px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-52",
+              "actual": "208px",
+              "expected": "208px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-56",
+              "actual": "224px",
+              "expected": "224px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-60",
+              "actual": "240px",
+              "expected": "240px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-64",
+              "actual": "256px",
+              "expected": "256px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-72",
+              "actual": "288px",
+              "expected": "288px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-80",
+              "actual": "320px",
+              "expected": "320px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-spacing-96",
+              "actual": "384px",
+              "expected": "384px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-0",
+              "actual": "0px",
+              "expected": "0px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-0-5",
+              "actual": "2px",
+              "expected": "2px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-1",
+              "actual": "4px",
+              "expected": "4px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-1-5",
+              "actual": "6px",
+              "expected": "6px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-2",
+              "actual": "8px",
+              "expected": "8px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-2-5",
+              "actual": "10px",
+              "expected": "10px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-3",
+              "actual": "12px",
+              "expected": "12px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-3-5",
+              "actual": "14px",
+              "expected": "14px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-4",
+              "actual": "16px",
+              "expected": "16px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-4-5",
+              "actual": "18px",
+              "expected": "18px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-5",
+              "actual": "20px",
+              "expected": "20px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-6",
+              "actual": "24px",
+              "expected": "24px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-7",
+              "actual": "28px",
+              "expected": "28px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-8",
+              "actual": "32px",
+              "expected": "32px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-9",
+              "actual": "36px",
+              "expected": "36px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-10",
+              "actual": "40px",
+              "expected": "40px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-11",
+              "actual": "44px",
+              "expected": "44px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-12",
+              "actual": "48px",
+              "expected": "48px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-14",
+              "actual": "56px",
+              "expected": "56px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-16",
+              "actual": "64px",
+              "expected": "64px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-20",
+              "actual": "80px",
+              "expected": "80px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-24",
+              "actual": "96px",
+              "expected": "96px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-28",
+              "actual": "112px",
+              "expected": "112px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-32",
+              "actual": "128px",
+              "expected": "128px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-36",
+              "actual": "144px",
+              "expected": "144px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-40",
+              "actual": "160px",
+              "expected": "160px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-44",
+              "actual": "176px",
+              "expected": "176px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-48",
+              "actual": "192px",
+              "expected": "192px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-52",
+              "actual": "208px",
+              "expected": "208px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-56",
+              "actual": "224px",
+              "expected": "224px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-60",
+              "actual": "240px",
+              "expected": "240px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-64",
+              "actual": "256px",
+              "expected": "256px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-72",
+              "actual": "288px",
+              "expected": "288px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-80",
+              "actual": "320px",
+              "expected": "320px",
+              "ok": true
+            },
+            {
+              "name": "16px --acme-size-96",
+              "actual": "384px",
+              "expected": "384px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-0",
+              "actual": "0px",
+              "expected": "0px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-0-5",
+              "actual": "2.5px",
+              "expected": "2.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-1",
+              "actual": "5px",
+              "expected": "5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-1-5",
+              "actual": "7.5px",
+              "expected": "7.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-2",
+              "actual": "10px",
+              "expected": "10px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-2-5",
+              "actual": "12.5px",
+              "expected": "12.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-3",
+              "actual": "15px",
+              "expected": "15px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-3-5",
+              "actual": "17.5px",
+              "expected": "17.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-4",
+              "actual": "20px",
+              "expected": "20px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-4-5",
+              "actual": "22.5px",
+              "expected": "22.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-5",
+              "actual": "25px",
+              "expected": "25px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-6",
+              "actual": "30px",
+              "expected": "30px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-7",
+              "actual": "35px",
+              "expected": "35px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-8",
+              "actual": "40px",
+              "expected": "40px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-9",
+              "actual": "45px",
+              "expected": "45px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-10",
+              "actual": "50px",
+              "expected": "50px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-11",
+              "actual": "55px",
+              "expected": "55px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-12",
+              "actual": "60px",
+              "expected": "60px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-14",
+              "actual": "70px",
+              "expected": "70px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-16",
+              "actual": "80px",
+              "expected": "80px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-20",
+              "actual": "100px",
+              "expected": "100px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-24",
+              "actual": "120px",
+              "expected": "120px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-28",
+              "actual": "140px",
+              "expected": "140px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-32",
+              "actual": "160px",
+              "expected": "160px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-36",
+              "actual": "180px",
+              "expected": "180px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-40",
+              "actual": "200px",
+              "expected": "200px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-44",
+              "actual": "220px",
+              "expected": "220px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-48",
+              "actual": "240px",
+              "expected": "240px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-52",
+              "actual": "260px",
+              "expected": "260px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-56",
+              "actual": "280px",
+              "expected": "280px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-60",
+              "actual": "300px",
+              "expected": "300px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-64",
+              "actual": "320px",
+              "expected": "320px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-72",
+              "actual": "360px",
+              "expected": "360px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-80",
+              "actual": "400px",
+              "expected": "400px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-spacing-96",
+              "actual": "480px",
+              "expected": "480px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-0",
+              "actual": "0px",
+              "expected": "0px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-0-5",
+              "actual": "2.5px",
+              "expected": "2.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-1",
+              "actual": "5px",
+              "expected": "5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-1-5",
+              "actual": "7.5px",
+              "expected": "7.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-2",
+              "actual": "10px",
+              "expected": "10px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-2-5",
+              "actual": "12.5px",
+              "expected": "12.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-3",
+              "actual": "15px",
+              "expected": "15px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-3-5",
+              "actual": "17.5px",
+              "expected": "17.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-4",
+              "actual": "20px",
+              "expected": "20px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-4-5",
+              "actual": "22.5px",
+              "expected": "22.5px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-5",
+              "actual": "25px",
+              "expected": "25px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-6",
+              "actual": "30px",
+              "expected": "30px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-7",
+              "actual": "35px",
+              "expected": "35px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-8",
+              "actual": "40px",
+              "expected": "40px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-9",
+              "actual": "45px",
+              "expected": "45px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-10",
+              "actual": "50px",
+              "expected": "50px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-11",
+              "actual": "55px",
+              "expected": "55px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-12",
+              "actual": "60px",
+              "expected": "60px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-14",
+              "actual": "70px",
+              "expected": "70px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-16",
+              "actual": "80px",
+              "expected": "80px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-20",
+              "actual": "100px",
+              "expected": "100px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-24",
+              "actual": "120px",
+              "expected": "120px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-28",
+              "actual": "140px",
+              "expected": "140px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-32",
+              "actual": "160px",
+              "expected": "160px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-36",
+              "actual": "180px",
+              "expected": "180px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-40",
+              "actual": "200px",
+              "expected": "200px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-44",
+              "actual": "220px",
+              "expected": "220px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-48",
+              "actual": "240px",
+              "expected": "240px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-52",
+              "actual": "260px",
+              "expected": "260px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-56",
+              "actual": "280px",
+              "expected": "280px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-60",
+              "actual": "300px",
+              "expected": "300px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-64",
+              "actual": "320px",
+              "expected": "320px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-72",
+              "actual": "360px",
+              "expected": "360px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-80",
+              "actual": "400px",
+              "expected": "400px",
+              "ok": true
+            },
+            {
+              "name": "20px --acme-size-96",
+              "actual": "480px",
+              "expected": "480px",
+              "ok": true
+            },
+            {
+              "name": "spacing override",
+              "actual": "48px",
+              "expected": "48px",
+              "ok": true
+            },
+            {
+              "name": "spacing override leaves size independent",
+              "actual": "16px",
+              "expected": "16px",
+              "ok": true
+            },
+            {
+              "name": "size override",
+              "actual": "64px",
+              "expected": "64px",
+              "ok": true
+            },
+            {
+              "name": "size override leaves spacing independent",
+              "actual": "48px",
+              "expected": "48px",
+              "ok": true
+            },
+            {
+              "name": "negative spacing default",
+              "actual": "-8px",
+              "expected": "-8px",
+              "ok": true
+            },
+            {
+              "name": "negative spacing follows positive override",
+              "actual": "-24px",
+              "expected": "-24px",
+              "ok": true
+            },
+            {
+              "name": "named default control height unchanged",
+              "actual": "36px",
+              "expected": "36px",
+              "ok": true
+            },
+            {
+              "name": "numeric rem scale leaves named control height fixed",
+              "actual": "36px",
+              "expected": "36px",
+              "ok": true
+            },
+            {
+              "name": "light retired --space",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-1",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-2",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-3",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-4",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-5",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-6",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-8",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --s-10",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-2x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-3x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-4x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-6x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-8x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-10x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-16x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-24x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-32x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-48x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-64x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-2x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-4x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-8x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-16x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-24x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-32x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-48x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "light retired --acme-space-64x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --space",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-1",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-2",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-3",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-4",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-5",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-6",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-8",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --s-10",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-2x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-3x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-4x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-6x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-8x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-10x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-16x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-24x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-32x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-48x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-64x",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-2x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-4x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-8x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-16x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-24x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-32x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-48x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "dark retired --acme-space-64x-negative",
+              "actual": "",
+              "expected": "",
+              "ok": true
+            },
+            {
+              "name": "manifest has70 independent variables",
+              "actual": 70,
+              "expected": 70,
+              "ok": true
+            },
+            {
+              "name": "manifest covers numeric categories",
+              "actual": [
+                "spacing",
+                "sizes"
+              ],
+              "expected": [
+                "spacing",
+                "sizes"
+              ],
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "pageComparison": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "comparisons": 38,
+          "nodes": 30712
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "comparisons": 38,
+          "nodes": 30712
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "comparisons": 38,
+          "nodes": 30712
+        }
+      ],
+      "differences": [],
+      "errors": []
+    },
+    "generation": {
+      "generatedFiles": 921,
+      "repeatChanges": [],
+      "changedCss": [
+        "src/generated/theme.css",
+        "src/generated/css/components/card/card.source.css",
+        "src/generated/css/components/card/card.css",
+        "src/generated/css/components/appbar/appbar.css",
+        "src/generated/css/components/appbar/appbar.source.css",
+        "src/generated/css/document/dashboard.source.css",
+        "src/generated/css/document/dashboard.css",
+        "src/generated/css/document/tokens.css",
+        "src/generated/css/document/tokens.source.css",
+        "src/generated/css/shared/rail.source.css",
+        "src/generated/css/shared/rail.css"
+      ],
+      "retiredNumericNamesInShippedCss": []
+    },
+    "packedConsumer": {
+      "root": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-m05-token-consumer-HC8cpX",
+      "tarball": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/packages/acmelabs-design-system-0.2.0.tgz",
+      "install": {
+        "exitCode": 0,
+        "stdout": "bun install v1.4.0 (34cbb9a40)\n\n+ @acmelabs/design-system@/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/packages/acmelabs-design-system-0.2.0.tgz\n\n78 packages installed [1.74s]\n",
+        "stderr": "Resolving dependencies\nResolved, downloaded and extracted [53]\nSaved lockfile\n"
+      },
+      "consumer": "import tokens from '@acmelabs/design-system/tokens.json'; if(tokens.tokens.length!==70)throw Error('Expected70 tokens');const pair=tokens.tokens.filter(t=>t.key===2);if(pair.length!==2||pair.some(t=>t.defaultValue!=='0.5rem')||new Set(pair.map(t=>t.cssProperty)).size!==2)throw Error('Expected independent step2');console.log(JSON.stringify({count:tokens.tokens.length,step2:pair}));",
+      "check": {
+        "exitCode": 0,
+        "result": {
+          "count": 70,
+          "step2": [
+            {
+              "category": "spacing",
+              "key": 2,
+              "cssProperty": "--acme-spacing-2",
+              "defaultValue": "0.5rem",
+              "source": "src/shared/numeric-tokens.ts"
+            },
+            {
+              "category": "sizes",
+              "key": 2,
+              "cssProperty": "--acme-size-2",
+              "defaultValue": "0.5rem",
+              "source": "src/shared/numeric-tokens.ts"
+            }
+          ]
+        }
+      }
+    },
+    "themeSemantics": {
+      "expectedAndActualNormalizedCssEqual": true,
+      "bytes": 122469,
+      "normalization": "Lightning CSS after applying only the intended84deletions and8reference rewrites to the baseline. Original generated whitespace differs; no unrelated semantic change."
+    }
+  },
+  "reproduction": {
+    "browser": "import {numericTokenDefinitions,numericTokenValue} from \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/shared/numeric-tokens.js\";\nconst results=[];const check=(name,actual,expected)=>results.push({name,actual,expected,ok:JSON.stringify(actual)===JSON.stringify(expected)});\nconst link=document.createElement(\"link\");link.rel=\"stylesheet\";link.href=\"/tokens.css\";document.head.append(link);await new Promise((resolve,reject)=>{link.onload=resolve;link.onerror=reject;});\nconst root=document.documentElement;const box=document.createElement(\"div\");document.body.append(box);\nfor(const font of [16,20]){root.style.fontSize=font+\"px\";for(const definition of numericTokenDefinitions){const property=definition.category===\"spacing\"?\"paddingLeft\":\"width\";box.style.cssText=property===\"width\"?\"padding:0\":\"width:auto\";box.style[property]=\"var(\"+definition.cssProperty+\")\";check(font+\"px \"+definition.cssProperty,getComputedStyle(box)[property],String(definition.key*.25*font)+\"px\");}}\nroot.style.fontSize=\"16px\";box.style.cssText=\"margin-left:var(--acme-spacing-4);width:var(--acme-size-4);--acme-spacing-4:3rem\";\ncheck(\"spacing override\",getComputedStyle(box).marginLeft,\"48px\");check(\"spacing override leaves size independent\",getComputedStyle(box).width,\"16px\");\nbox.style.setProperty(\"--acme-size-4\",\"4rem\");check(\"size override\",getComputedStyle(box).width,\"64px\");check(\"size override leaves spacing independent\",getComputedStyle(box).marginLeft,\"48px\");\nbox.style.marginLeft=numericTokenValue(\"spacing\",-2);check(\"negative spacing default\",getComputedStyle(box).marginLeft,\"-8px\");box.style.setProperty(\"--acme-spacing-2\",\"1.5rem\");check(\"negative spacing follows positive override\",getComputedStyle(box).marginLeft,\"-24px\");\nbox.style.cssText=\"height:var(--acme-form-height)\";check(\"named default control height unchanged\",getComputedStyle(box).height,\"36px\");\nroot.style.fontSize=\"20px\";check(\"numeric rem scale leaves named control height fixed\",getComputedStyle(box).height,\"36px\");\nfor(const theme of [\"light\",\"dark\"]){root.dataset.theme=theme;const css=getComputedStyle(root);for(const name of [\"--space\",... [1,2,3,4,5,6,8,10].map(n=>\"--s-\"+n),\"--acme-space\",... [2,3,4,6,8,10,16,24,32,48,64].map(n=>\"--acme-space-\"+n+\"x\"),\"--acme-space-negative\",... [2,4,8,16,24,32,48,64].map(n=>\"--acme-space-\"+n+\"x-negative\")])check(theme+\" retired \"+name,css.getPropertyValue(name).trim(),\"\");}\nconst manifest=await(await fetch(\"/tokens.json\")).json();check(\"manifest has70 independent variables\",new Set(manifest.tokens.map(t=>t.cssProperty)).size,70);check(\"manifest covers numeric categories\",Array.from(new Set(manifest.tokens.map(t=>t.category))),[\"spacing\",\"sizes\"]);\nbox.remove();window.__results={results};",
+    "runner": "import fs from \"node:fs\";import path from \"node:path\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\",directory=\"/tmp/acme-m05-tokens\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\"});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/dist/styles/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname===\"/tokens.json\")return new Response(Bun.file(root+\"/dist/tokens.json\"),{headers:{\"Content-Type\":\"application/json\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;\n",
+    "comparison": "import fs from \"node:fs\";import path from \"node:path\";import assert from \"node:assert/strict\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\",baseline=\"/tmp/acme-m05-token-baseline\";\nconst pages=[\"button\",\"badge\",\"input\",\"select\",\"checkbox\",\"radio\",\"toggle\",\"tabs\",\"table\",\"modal\",\"sheet\",\"code-block\",\"command-menu\",\"multi-select\",\"book\",\"breadcrumbs\",\"tooltip\",\"card\",\"stat\"];\nconst requests=[];\nconst server=Bun.serve({port:0,fetch(req){\n const u=new URL(req.url),old=u.pathname.startsWith(\"/baseline\"),base=old?baseline:root,prefix=old?\"/baseline\":\"/candidate\";\n if(u.pathname.endsWith(\"/bundle.js\"))return new Response(Bun.file(path.join(base,\"dist/bundle/design-system.min.js\")),{headers:{\"Content-Type\":\"text/javascript\"}});\n if(u.pathname.endsWith(\"/tokens.css\"))return new Response(Bun.file(path.join(base,\"dist/styles/tokens.css\")),{headers:{\"Content-Type\":\"text/css\"}});\n if(u.pathname.endsWith(\"/dashboard.css\"))return new Response(Bun.file(path.join(base,\"dist/styles/dashboard.css\")),{headers:{\"Content-Type\":\"text/css\"}});\n const name=u.searchParams.get(\"page\"),theme=u.searchParams.get(\"theme\")??\"light\";\n if(!pages.includes(name))return new Response(\"not found\",{status:404});\n const fragment=fs.readFileSync(path.join(root,\"_site/pages/components\",name+\".html\"),\"utf8\");\n return new Response('<!doctype html><html data-theme=\"'+theme+'\"><head><link rel=\"stylesheet\" href=\"'+prefix+'/tokens.css\"><link rel=\"stylesheet\" href=\"'+prefix+'/dashboard.css\"><style>body{width:1100px;margin:0}*{animation:none!important;transition:none!important}</style></head><body>'+fragment+'<script type=\"module\" src=\"'+prefix+'/bundle.js\"></script></body></html>',{headers:{\"Content-Type\":\"text/html\"}});\n}});\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst report={engines:[],differences:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){\n const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});\n try{const page=await browser.newPage({viewport:{width:1200,height:900}});page.on(\"pageerror\",e=>report.errors.push({engine,message:e.message}));let comparisons=0,nodes=0;\n for(const name of pages)for(const theme of [\"light\",\"dark\"]){\n const results=[];\n for(const version of [\"baseline\",\"candidate\"]){\n await page.goto(server.url.href+version+\"?page=\"+name+\"&theme=\"+theme);\n await page.waitForFunction(()=>!!customElements.get(\"acme-button\"));\n await page.evaluate(async()=>{\n const all=[];const visit=root=>{for(const e of root.querySelectorAll(\"*\")){all.push(e);if(e.shadowRoot)visit(e.shadowRoot);}};visit(document);\n await Promise.all(all.map(x=>x.updateComplete));\n for(const el of all){if(el.shadowRoot){const style=document.createElement(\"style\");style.textContent=\"*,*::before,*::after{animation:none!important;transition:none!important}\";el.shadowRoot.append(style);}}\n await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));\n });\n results.push(await page.evaluate(()=>{\n const properties=[\"display\",\"position\",\"color\",\"backgroundColor\",\"paddingTop\",\"paddingRight\",\"paddingBottom\",\"paddingLeft\",\"marginTop\",\"marginRight\",\"marginBottom\",\"marginLeft\",\"borderTopWidth\",\"borderRightWidth\",\"borderBottomWidth\",\"borderLeftWidth\",\"borderTopColor\",\"borderTopStyle\",\"borderRadius\",\"fontSize\",\"fontFamily\",\"fontWeight\",\"lineHeight\",\"letterSpacing\",\"gap\",\"boxShadow\",\"opacity\",\"transform\",\"width\",\"height\",\"alignItems\",\"justifyContent\",\"flexDirection\",\"overflow\"];\n const out=[];function visit(root,prefix){let index=0;for(const el of root.children){if([\"STYLE\",\"SCRIPT\"].includes(el.tagName))continue;const p=prefix+\"/\"+el.localName+\":\"+index++;if(el.getClientRects().length){const style=getComputedStyle(el);out.push({path:p,values:Object.fromEntries(properties.map(n=>[n,style[n]]))});}if(el.shadowRoot)visit(el.shadowRoot,p+\"#\");visit(el,p);}}visit(document.body,\"body\");return out;\n }));\n }\n const [a,b]=results;nodes+=a.length;comparisons++;\n if(a.length!==b.length)report.differences.push({engine,page:name,theme,kind:\"count\",before:a.length,after:b.length});\n for(let i=0;i<Math.min(a.length,b.length);i++){if(a[i].path!==b[i].path){report.differences.push({engine,page:name,theme,kind:\"path\",before:a[i].path,after:b[i].path});break;}for(const k of Object.keys(a[i].values))if(a[i].values[k]!==b[i].values[k])report.differences.push({engine,page:name,theme,path:a[i].path,property:k,before:a[i].values[k],after:b[i].values[k]});}\n }\n report.engines.push({engine,version:browser.version(),comparisons,nodes});\n console.log(JSON.stringify({engine,comparisons,nodes,differences:report.differences.filter(x=>x.engine===engine).length}));\n }finally{await browser.close();}\n}}finally{server.stop(true);}\nawait Bun.write(\"/tmp/acme-m05-token-comparisons.json\",JSON.stringify(report,null,2));console.log(JSON.stringify({differences:report.differences.length,errors:report.errors.length,first:report.differences.slice(0,12)}));\n\n",
+    "packedConsumer": "import fs from \"node:fs\";import os from \"node:os\";import path from \"node:path\";\nconst root=fs.mkdtempSync(path.join(os.tmpdir(),\"acme-m05-token-consumer-\"));\nconst tarball=\"/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/packages/acmelabs-design-system-0.2.0.tgz\";\nfs.writeFileSync(path.join(root,\"package.json\"),JSON.stringify({name:\"numeric-token-consumer\",private:true,type:\"module\",dependencies:{\"@acmelabs/design-system\":\"file:\"+tarball}},null,2));\nconst install=Bun.spawnSync([process.execPath,\"install\"],{cwd:root,stdout:\"pipe\",stderr:\"pipe\"});if(install.exitCode)throw Error(install.stderr.toString());\nconst consumer=\"import tokens from '@acmelabs/design-system/tokens.json'; if(tokens.tokens.length!==70)throw Error('Expected70 tokens');const pair=tokens.tokens.filter(t=>t.key===2);if(pair.length!==2||pair.some(t=>t.defaultValue!=='0.5rem')||new Set(pair.map(t=>t.cssProperty)).size!==2)throw Error('Expected independent step2');console.log(JSON.stringify({count:tokens.tokens.length,step2:pair}));\";\nconst check=Bun.spawnSync([process.execPath,\"-e\",consumer],{cwd:root,stdout:\"pipe\",stderr:\"pipe\"});if(check.exitCode)throw Error(check.stderr.toString());\nconst report={root,tarball,install:{exitCode:install.exitCode,stdout:install.stdout.toString(),stderr:install.stderr.toString()},consumer,check:{exitCode:check.exitCode,result:JSON.parse(check.stdout.toString())}};\nawait Bun.write(\"/tmp/acme-m05-tokens/packed-consumer.json\",JSON.stringify(report,null,2)+\"\\n\");console.log({root,count:report.check.result.count});\n"
+  },
+  "limits": [
+    "The manifest currently covers numeric spacing and sizes; other theme categories remain to integrate.",
+    "Root20px spacing growth is selected behavior, not a parity difference to hide. Default16px page comparisons have zero differences/errors.",
+    "Full nested-theme scope, density mappings, public layout property integration and responsive rendering remain with their owning work.",
+    "Negative imported references with fallbacks fail explicitly; no such input exists in the current reference corpus.",
+    "No public style-helper cleanup choice, push, publication or Pages configuration change occurred."
+  ]
+}

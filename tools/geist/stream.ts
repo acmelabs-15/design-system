@@ -20,7 +20,9 @@ export function settleStreamed(html: string): string {
     while (t && depth > 0) {
       depth += t[0] === "</div" ? -1 : 1;
       j = t.index + (t[0] === "</div" ? "</div>".length : 0);
-      if (depth > 0) t = tag.exec(html);
+      if (depth > 0) {
+        t = tag.exec(html);
+      }
     }
     segments.set(m[1], html.slice(m.index + m[0].length, j - "</div>".length));
     out += html.slice(i, m.index);
@@ -29,6 +31,8 @@ export function settleStreamed(html: string): string {
     m = open.exec(html);
   }
   out += html.slice(i);
-  if (!segments.size) return html;
+  if (!segments.size) {
+    return html;
+  }
   return out.replace(/<template id="(B:[0-9a-z]+)"><\/template>/g, (whole, id: string) => segments.get(id.replace(/^B/, "S")) ?? whole);
 }

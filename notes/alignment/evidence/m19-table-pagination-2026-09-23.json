@@ -1,0 +1,1960 @@
+{
+  "date": "2026-09-23",
+  "status": "accepted at assigned native/Lit and consumer-rendering boundaries",
+  "scope": [
+    "D-01 Table",
+    "D-02 Pagination",
+    "Lit and React consumer-owned Table/Virtual examples"
+  ],
+  "sources": [
+    {
+      "url": "https://chakra-ui.com/docs/components/table",
+      "read": "complete page and current recipe"
+    },
+    {
+      "url": "https://chakra-ui.com/docs/components/pagination",
+      "read": "complete page and upstream range helper"
+    },
+    {
+      "url": "https://www.radix-ui.com/themes/docs/components/table",
+      "read": "complete page"
+    },
+    {
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/table/",
+      "read": "complete pattern"
+    },
+    {
+      "url": "https://tanstack.com/table/latest/docs/overview",
+      "read": "overview, installed 9.2.4 declarations and consumed feature/framework skills"
+    },
+    {
+      "url": "https://tanstack.com/virtual/latest/docs/framework/lit/lit-virtual",
+      "read": "complete adapter page and installed implementation"
+    },
+    {
+      "url": "https://pro.chakra-ui.com/explore/application/application-all/webhooks-event-log-03",
+      "read": "complete delivery-log-pagination.tsx and delivery-log-table.tsx from private reviewed collection"
+    },
+    {
+      "url": "https://github.com/material-components/material-web/blob/main/all.ts",
+      "read": "complete exports; no Table or Pagination export"
+    }
+  ],
+  "implementation": [
+    "Table retains one native author-owned table; RootStyles supplies scoped generated light-DOM CSS",
+    "Direct native scrolling and table refs; no rows/columns/data processor or virtualizer inside Table",
+    "Logical sticky hooks, density/size, selection/range decoration, native spans and isolated nested tables",
+    "Pagination composes shared actions, optional Position and Page Size parts; request-only state ownership",
+    "Known, unknown and zero totals, out-of-range application values, real URL mapping and localization",
+    "Applications own each Table, Virtual and experimental Worker instance; each framework retains its native cells"
+  ],
+  "coverage": [
+    "Cell selection and merge-aware ranges with keyboard editor boundaries",
+    "Native row/column spanning and covered-cell omission",
+    "Faceting and column/global filtering",
+    "Grouped headings and row aggregation/grouping",
+    "Column ordering, pinning, resizing, sizing and visibility",
+    "Row expansion, pagination, pinning and selection",
+    "Sorting and custom-feature state",
+    "Vertical, horizontal and combined virtualization; dynamic measurements and offscreen focus",
+    "Actual experimental worker pending, failure, retry, manual server data and disposal"
+  ],
+  "adaptations": [
+    "Default Table typography, body padding, header height and stripe radii retain the prior generated baseline. Size increments follow the read Chakra recipe relative to those values.",
+    "Native semantic tags and CSS hooks replace custom row/cell wrappers. Data-index and measurements belong to the consumer.",
+    "The vertical virtual example uses unmerged measured rows; the horizontal example tests native merges with pinned/virtual columns. This does not claim every possible combination is certified."
+  ],
+  "corrections": [
+    "Range outlines use inset shadows and do not change geometry",
+    "Nested tables reset private row/range presentation so outer selection cannot leak inward",
+    "Places distinguishes author assignment from rendered fallback; actual-browser control caught a gap in Happy DOM",
+    "Pagination does not retain inactive fallback parts when authored parts are present",
+    "Page-size Field composition uses content-sized horizontal layout rather than the settings-form label width",
+    "Virtual rows are measured only while their virtualizer is enabled; ResizeObserver work uses the public frame option",
+    "Horizontal virtual measurements are invalidated after column geometry changes"
+  ],
+  "versions": {
+    "table": "9.2.4",
+    "virtual": "3.14.0",
+    "react": "19.2.4"
+  },
+  "declarationPatch": {
+    "file": "patches/@tanstack%2Ftable-core@9.2.4.patch",
+    "reason": "The experimental worker augmented private type modules while custom features augmented the public barrel. Two module targets now agree.",
+    "runtimeChanged": false,
+    "regression": "examples/table/__tests__/review-feature.test.ts"
+  },
+  "verification": {
+    "strictBuild": true,
+    "site": {
+      "pages": 105,
+      "elements": 4317,
+      "undocumented": 0
+    },
+    "suite": {
+      "pass": 864,
+      "fail": 0
+    },
+    "freshPackedConsumer": {
+      "file": "/tmp/acme-m19/package/acmelabs-design-system-0.2.0.tgz",
+      "typecheck": true,
+      "bundle": true,
+      "tableRuntimeDependency": false
+    },
+    "results": {
+      "native-results.json": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "checks": [
+            {
+              "name": "Table preserves author-owned native content and direct references",
+              "pass": true
+            },
+            {
+              "name": "native caption, headers and cells survive the shadow scrolling box",
+              "pass": true
+            },
+            {
+              "name": "variant, density and size affect the native cells without changing author state",
+              "pass": true
+            },
+            {
+              "name": "light styles follow a table into another shadow root and do not style unrelated tables",
+              "pass": true
+            },
+            {
+              "name": "sticky headers and logical column pins retain geometry during two-axis scroll in RTL",
+              "pass": true
+            },
+            {
+              "name": "native spans, grouped headings and footer markup remain application-owned",
+              "pass": true
+            },
+            {
+              "name": "loading changes only busy presentation and never disables or discards content",
+              "pass": true
+            },
+            {
+              "name": "cell range outlines do not change row or column geometry",
+              "pass": true
+            },
+            {
+              "name": "fallback rendering is distinct from authored content in real slot assignment",
+              "pass": true
+            },
+            {
+              "name": "nested tables do not inherit outer row selection or range decoration",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            {
+              "name": "Table preserves author-owned native content and direct references",
+              "pass": true
+            },
+            {
+              "name": "native caption, headers and cells survive the shadow scrolling box",
+              "pass": true
+            },
+            {
+              "name": "variant, density and size affect the native cells without changing author state",
+              "pass": true
+            },
+            {
+              "name": "light styles follow a table into another shadow root and do not style unrelated tables",
+              "pass": true
+            },
+            {
+              "name": "sticky headers and logical column pins retain geometry during two-axis scroll in RTL",
+              "pass": true
+            },
+            {
+              "name": "native spans, grouped headings and footer markup remain application-owned",
+              "pass": true
+            },
+            {
+              "name": "loading changes only busy presentation and never disables or discards content",
+              "pass": true
+            },
+            {
+              "name": "cell range outlines do not change row or column geometry",
+              "pass": true
+            },
+            {
+              "name": "fallback rendering is distinct from authored content in real slot assignment",
+              "pass": true
+            },
+            {
+              "name": "nested tables do not inherit outer row selection or range decoration",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            {
+              "name": "Table preserves author-owned native content and direct references",
+              "pass": true
+            },
+            {
+              "name": "native caption, headers and cells survive the shadow scrolling box",
+              "pass": true
+            },
+            {
+              "name": "variant, density and size affect the native cells without changing author state",
+              "pass": true
+            },
+            {
+              "name": "light styles follow a table into another shadow root and do not style unrelated tables",
+              "pass": true
+            },
+            {
+              "name": "sticky headers and logical column pins retain geometry during two-axis scroll in RTL",
+              "pass": true
+            },
+            {
+              "name": "native spans, grouped headings and footer markup remain application-owned",
+              "pass": true
+            },
+            {
+              "name": "loading changes only busy presentation and never disables or discards content",
+              "pass": true
+            },
+            {
+              "name": "cell range outlines do not change row or column geometry",
+              "pass": true
+            },
+            {
+              "name": "fallback rendering is distinct from authored content in real slot assignment",
+              "pass": true
+            },
+            {
+              "name": "nested tables do not inherit outer row selection or range decoration",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "compiled-results.json": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "checks": [
+            {
+              "name": "Table preserves author-owned native content and direct references",
+              "pass": true
+            },
+            {
+              "name": "native caption, headers and cells survive the shadow scrolling box",
+              "pass": true
+            },
+            {
+              "name": "variant, density and size affect the native cells without changing author state",
+              "pass": true
+            },
+            {
+              "name": "light styles follow a table into another shadow root and do not style unrelated tables",
+              "pass": true
+            },
+            {
+              "name": "sticky headers and logical column pins retain geometry during two-axis scroll in RTL",
+              "pass": true
+            },
+            {
+              "name": "native spans, grouped headings and footer markup remain application-owned",
+              "pass": true
+            },
+            {
+              "name": "loading changes only busy presentation and never disables or discards content",
+              "pass": true
+            },
+            {
+              "name": "cell range outlines do not change row or column geometry",
+              "pass": true
+            },
+            {
+              "name": "fallback rendering is distinct from authored content in real slot assignment",
+              "pass": true
+            },
+            {
+              "name": "nested tables do not inherit outer row selection or range decoration",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            {
+              "name": "Table preserves author-owned native content and direct references",
+              "pass": true
+            },
+            {
+              "name": "native caption, headers and cells survive the shadow scrolling box",
+              "pass": true
+            },
+            {
+              "name": "variant, density and size affect the native cells without changing author state",
+              "pass": true
+            },
+            {
+              "name": "light styles follow a table into another shadow root and do not style unrelated tables",
+              "pass": true
+            },
+            {
+              "name": "sticky headers and logical column pins retain geometry during two-axis scroll in RTL",
+              "pass": true
+            },
+            {
+              "name": "native spans, grouped headings and footer markup remain application-owned",
+              "pass": true
+            },
+            {
+              "name": "loading changes only busy presentation and never disables or discards content",
+              "pass": true
+            },
+            {
+              "name": "cell range outlines do not change row or column geometry",
+              "pass": true
+            },
+            {
+              "name": "fallback rendering is distinct from authored content in real slot assignment",
+              "pass": true
+            },
+            {
+              "name": "nested tables do not inherit outer row selection or range decoration",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            {
+              "name": "Table preserves author-owned native content and direct references",
+              "pass": true
+            },
+            {
+              "name": "native caption, headers and cells survive the shadow scrolling box",
+              "pass": true
+            },
+            {
+              "name": "variant, density and size affect the native cells without changing author state",
+              "pass": true
+            },
+            {
+              "name": "light styles follow a table into another shadow root and do not style unrelated tables",
+              "pass": true
+            },
+            {
+              "name": "sticky headers and logical column pins retain geometry during two-axis scroll in RTL",
+              "pass": true
+            },
+            {
+              "name": "native spans, grouped headings and footer markup remain application-owned",
+              "pass": true
+            },
+            {
+              "name": "loading changes only busy presentation and never disables or discards content",
+              "pass": true
+            },
+            {
+              "name": "cell range outlines do not change row or column geometry",
+              "pass": true
+            },
+            {
+              "name": "fallback rendering is distinct from authored content in real slot assignment",
+              "pass": true
+            },
+            {
+              "name": "nested tables do not inherit outer row selection or range decoration",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "pagination/native-results.json": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "checks": [
+            {
+              "name": "numbered navigation requests a page without rewriting application state",
+              "pass": true
+            },
+            {
+              "name": "compact known and unknown totals never fabricate a final page",
+              "pass": true
+            },
+            {
+              "name": "zero results disable both controls and out-of-range page retains the supplied value",
+              "pass": true
+            },
+            {
+              "name": "authored Position and Page Size parts share context and preserve controlled size",
+              "pass": true
+            },
+            {
+              "name": "URL navigation uses real anchors and cancellation preserves the document",
+              "pass": true
+            },
+            {
+              "name": "loading and disabled block page and size actions without altering their values",
+              "pass": true
+            },
+            {
+              "name": "parts reconnect to a new owner through an attached Group",
+              "pass": true
+            },
+            {
+              "name": "page-size choices revert when the application declines the request",
+              "pass": true
+            },
+            {
+              "name": "a focused page removed by a new range recovers inside the navigation",
+              "pass": true
+            },
+            {
+              "name": "HTML default removal and supplied page-size options retain their declared types",
+              "pass": true
+            },
+            {
+              "name": "removing authored page-size choices restores its default options",
+              "pass": true
+            },
+            {
+              "name": "the page-size value remains readable in a narrow pagination row",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            {
+              "name": "numbered navigation requests a page without rewriting application state",
+              "pass": true
+            },
+            {
+              "name": "compact known and unknown totals never fabricate a final page",
+              "pass": true
+            },
+            {
+              "name": "zero results disable both controls and out-of-range page retains the supplied value",
+              "pass": true
+            },
+            {
+              "name": "authored Position and Page Size parts share context and preserve controlled size",
+              "pass": true
+            },
+            {
+              "name": "URL navigation uses real anchors and cancellation preserves the document",
+              "pass": true
+            },
+            {
+              "name": "loading and disabled block page and size actions without altering their values",
+              "pass": true
+            },
+            {
+              "name": "parts reconnect to a new owner through an attached Group",
+              "pass": true
+            },
+            {
+              "name": "page-size choices revert when the application declines the request",
+              "pass": true
+            },
+            {
+              "name": "a focused page removed by a new range recovers inside the navigation",
+              "pass": true
+            },
+            {
+              "name": "HTML default removal and supplied page-size options retain their declared types",
+              "pass": true
+            },
+            {
+              "name": "removing authored page-size choices restores its default options",
+              "pass": true
+            },
+            {
+              "name": "the page-size value remains readable in a narrow pagination row",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            {
+              "name": "numbered navigation requests a page without rewriting application state",
+              "pass": true
+            },
+            {
+              "name": "compact known and unknown totals never fabricate a final page",
+              "pass": true
+            },
+            {
+              "name": "zero results disable both controls and out-of-range page retains the supplied value",
+              "pass": true
+            },
+            {
+              "name": "authored Position and Page Size parts share context and preserve controlled size",
+              "pass": true
+            },
+            {
+              "name": "URL navigation uses real anchors and cancellation preserves the document",
+              "pass": true
+            },
+            {
+              "name": "loading and disabled block page and size actions without altering their values",
+              "pass": true
+            },
+            {
+              "name": "parts reconnect to a new owner through an attached Group",
+              "pass": true
+            },
+            {
+              "name": "page-size choices revert when the application declines the request",
+              "pass": true
+            },
+            {
+              "name": "a focused page removed by a new range recovers inside the navigation",
+              "pass": true
+            },
+            {
+              "name": "HTML default removal and supplied page-size options retain their declared types",
+              "pass": true
+            },
+            {
+              "name": "removing authored page-size choices restores its default options",
+              "pass": true
+            },
+            {
+              "name": "the page-size value remains readable in a narrow pagination row",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "pagination/compiled-results.json": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "checks": [
+            {
+              "name": "numbered navigation requests a page without rewriting application state",
+              "pass": true
+            },
+            {
+              "name": "compact known and unknown totals never fabricate a final page",
+              "pass": true
+            },
+            {
+              "name": "zero results disable both controls and out-of-range page retains the supplied value",
+              "pass": true
+            },
+            {
+              "name": "authored Position and Page Size parts share context and preserve controlled size",
+              "pass": true
+            },
+            {
+              "name": "URL navigation uses real anchors and cancellation preserves the document",
+              "pass": true
+            },
+            {
+              "name": "loading and disabled block page and size actions without altering their values",
+              "pass": true
+            },
+            {
+              "name": "parts reconnect to a new owner through an attached Group",
+              "pass": true
+            },
+            {
+              "name": "page-size choices revert when the application declines the request",
+              "pass": true
+            },
+            {
+              "name": "a focused page removed by a new range recovers inside the navigation",
+              "pass": true
+            },
+            {
+              "name": "HTML default removal and supplied page-size options retain their declared types",
+              "pass": true
+            },
+            {
+              "name": "removing authored page-size choices restores its default options",
+              "pass": true
+            },
+            {
+              "name": "the page-size value remains readable in a narrow pagination row",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            {
+              "name": "numbered navigation requests a page without rewriting application state",
+              "pass": true
+            },
+            {
+              "name": "compact known and unknown totals never fabricate a final page",
+              "pass": true
+            },
+            {
+              "name": "zero results disable both controls and out-of-range page retains the supplied value",
+              "pass": true
+            },
+            {
+              "name": "authored Position and Page Size parts share context and preserve controlled size",
+              "pass": true
+            },
+            {
+              "name": "URL navigation uses real anchors and cancellation preserves the document",
+              "pass": true
+            },
+            {
+              "name": "loading and disabled block page and size actions without altering their values",
+              "pass": true
+            },
+            {
+              "name": "parts reconnect to a new owner through an attached Group",
+              "pass": true
+            },
+            {
+              "name": "page-size choices revert when the application declines the request",
+              "pass": true
+            },
+            {
+              "name": "a focused page removed by a new range recovers inside the navigation",
+              "pass": true
+            },
+            {
+              "name": "HTML default removal and supplied page-size options retain their declared types",
+              "pass": true
+            },
+            {
+              "name": "removing authored page-size choices restores its default options",
+              "pass": true
+            },
+            {
+              "name": "the page-size value remains readable in a narrow pagination row",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            {
+              "name": "numbered navigation requests a page without rewriting application state",
+              "pass": true
+            },
+            {
+              "name": "compact known and unknown totals never fabricate a final page",
+              "pass": true
+            },
+            {
+              "name": "zero results disable both controls and out-of-range page retains the supplied value",
+              "pass": true
+            },
+            {
+              "name": "authored Position and Page Size parts share context and preserve controlled size",
+              "pass": true
+            },
+            {
+              "name": "URL navigation uses real anchors and cancellation preserves the document",
+              "pass": true
+            },
+            {
+              "name": "loading and disabled block page and size actions without altering their values",
+              "pass": true
+            },
+            {
+              "name": "parts reconnect to a new owner through an attached Group",
+              "pass": true
+            },
+            {
+              "name": "page-size choices revert when the application declines the request",
+              "pass": true
+            },
+            {
+              "name": "a focused page removed by a new range recovers inside the navigation",
+              "pass": true
+            },
+            {
+              "name": "HTML default removal and supplied page-size options retain their declared types",
+              "pass": true
+            },
+            {
+              "name": "removing authored page-size choices restores its default options",
+              "pass": true
+            },
+            {
+              "name": "the page-size value remains readable in a narrow pagination row",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "consumer-results.json": [
+        {
+          "engine": "chromium",
+          "framework": "lit",
+          "checks": [
+            {
+              "name": "framework owns real rows and custom cell content",
+              "pass": true
+            },
+            {
+              "name": "ordering and visibility update grouped native headers and matching cells",
+              "pass": true
+            },
+            {
+              "name": "row selection persists by identity through filtering and pagination",
+              "pass": true
+            },
+            {
+              "name": "column resizing and logical pinning keep header and cell geometry aligned in RTL",
+              "pass": true
+            },
+            {
+              "name": "cell spans and row pinning omit covered cells and preserve native span meaning",
+              "pass": true
+            },
+            {
+              "name": "cell range selection follows logical identities through column ordering",
+              "pass": true
+            },
+            {
+              "name": "faceting aggregation and row grouping use the supplied Table models",
+              "pass": true
+            },
+            {
+              "name": "custom plugin state remains independent of sorting and filtering",
+              "pass": true
+            },
+            {
+              "name": "application grid keyboard navigation and native cell editors keep separate keys",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "chromium",
+          "framework": "react",
+          "checks": [
+            {
+              "name": "framework owns real rows and custom cell content",
+              "pass": true
+            },
+            {
+              "name": "ordering and visibility update grouped native headers and matching cells",
+              "pass": true
+            },
+            {
+              "name": "row selection persists by identity through filtering and pagination",
+              "pass": true
+            },
+            {
+              "name": "column resizing and logical pinning keep header and cell geometry aligned in RTL",
+              "pass": true
+            },
+            {
+              "name": "cell spans and row pinning omit covered cells and preserve native span meaning",
+              "pass": true
+            },
+            {
+              "name": "cell range selection follows logical identities through column ordering",
+              "pass": true
+            },
+            {
+              "name": "faceting aggregation and row grouping use the supplied Table models",
+              "pass": true
+            },
+            {
+              "name": "custom plugin state remains independent of sorting and filtering",
+              "pass": true
+            },
+            {
+              "name": "application grid keyboard navigation and native cell editors keep separate keys",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "framework": "lit",
+          "checks": [
+            {
+              "name": "framework owns real rows and custom cell content",
+              "pass": true
+            },
+            {
+              "name": "ordering and visibility update grouped native headers and matching cells",
+              "pass": true
+            },
+            {
+              "name": "row selection persists by identity through filtering and pagination",
+              "pass": true
+            },
+            {
+              "name": "column resizing and logical pinning keep header and cell geometry aligned in RTL",
+              "pass": true
+            },
+            {
+              "name": "cell spans and row pinning omit covered cells and preserve native span meaning",
+              "pass": true
+            },
+            {
+              "name": "cell range selection follows logical identities through column ordering",
+              "pass": true
+            },
+            {
+              "name": "faceting aggregation and row grouping use the supplied Table models",
+              "pass": true
+            },
+            {
+              "name": "custom plugin state remains independent of sorting and filtering",
+              "pass": true
+            },
+            {
+              "name": "application grid keyboard navigation and native cell editors keep separate keys",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "framework": "react",
+          "checks": [
+            {
+              "name": "framework owns real rows and custom cell content",
+              "pass": true
+            },
+            {
+              "name": "ordering and visibility update grouped native headers and matching cells",
+              "pass": true
+            },
+            {
+              "name": "row selection persists by identity through filtering and pagination",
+              "pass": true
+            },
+            {
+              "name": "column resizing and logical pinning keep header and cell geometry aligned in RTL",
+              "pass": true
+            },
+            {
+              "name": "cell spans and row pinning omit covered cells and preserve native span meaning",
+              "pass": true
+            },
+            {
+              "name": "cell range selection follows logical identities through column ordering",
+              "pass": true
+            },
+            {
+              "name": "faceting aggregation and row grouping use the supplied Table models",
+              "pass": true
+            },
+            {
+              "name": "custom plugin state remains independent of sorting and filtering",
+              "pass": true
+            },
+            {
+              "name": "application grid keyboard navigation and native cell editors keep separate keys",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "framework": "lit",
+          "checks": [
+            {
+              "name": "framework owns real rows and custom cell content",
+              "pass": true
+            },
+            {
+              "name": "ordering and visibility update grouped native headers and matching cells",
+              "pass": true
+            },
+            {
+              "name": "row selection persists by identity through filtering and pagination",
+              "pass": true
+            },
+            {
+              "name": "column resizing and logical pinning keep header and cell geometry aligned in RTL",
+              "pass": true
+            },
+            {
+              "name": "cell spans and row pinning omit covered cells and preserve native span meaning",
+              "pass": true
+            },
+            {
+              "name": "cell range selection follows logical identities through column ordering",
+              "pass": true
+            },
+            {
+              "name": "faceting aggregation and row grouping use the supplied Table models",
+              "pass": true
+            },
+            {
+              "name": "custom plugin state remains independent of sorting and filtering",
+              "pass": true
+            },
+            {
+              "name": "application grid keyboard navigation and native cell editors keep separate keys",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "framework": "react",
+          "checks": [
+            {
+              "name": "framework owns real rows and custom cell content",
+              "pass": true
+            },
+            {
+              "name": "ordering and visibility update grouped native headers and matching cells",
+              "pass": true
+            },
+            {
+              "name": "row selection persists by identity through filtering and pagination",
+              "pass": true
+            },
+            {
+              "name": "column resizing and logical pinning keep header and cell geometry aligned in RTL",
+              "pass": true
+            },
+            {
+              "name": "cell spans and row pinning omit covered cells and preserve native span meaning",
+              "pass": true
+            },
+            {
+              "name": "cell range selection follows logical identities through column ordering",
+              "pass": true
+            },
+            {
+              "name": "faceting aggregation and row grouping use the supplied Table models",
+              "pass": true
+            },
+            {
+              "name": "custom plugin state remains independent of sorting and filtering",
+              "pass": true
+            },
+            {
+              "name": "application grid keyboard navigation and native cell editors keep separate keys",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "virtual-results.json": [
+        {
+          "engine": "chromium",
+          "framework": "lit",
+          "checks": [
+            {
+              "name": "both axes virtualize with native counts and direct measurement references",
+              "pass": true
+            },
+            {
+              "name": "expanded rows and changing native heights update vertical measurement",
+              "pass": true
+            },
+            {
+              "name": "horizontal virtualization preserves spans and pinned columns",
+              "pass": true
+            },
+            {
+              "name": "ten thousand supplied rows retain a bounded rendered window through end scrolling",
+              "pass": true
+            },
+            {
+              "name": "column size changes refresh the horizontal virtual window",
+              "pass": true
+            },
+            {
+              "name": "keyboard movement reveals and focuses an offscreen logical row",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "chromium",
+          "framework": "react",
+          "checks": [
+            {
+              "name": "both axes virtualize with native counts and direct measurement references",
+              "pass": true
+            },
+            {
+              "name": "expanded rows and changing native heights update vertical measurement",
+              "pass": true
+            },
+            {
+              "name": "horizontal virtualization preserves spans and pinned columns",
+              "pass": true
+            },
+            {
+              "name": "ten thousand supplied rows retain a bounded rendered window through end scrolling",
+              "pass": true
+            },
+            {
+              "name": "column size changes refresh the horizontal virtual window",
+              "pass": true
+            },
+            {
+              "name": "keyboard movement reveals and focuses an offscreen logical row",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "framework": "lit",
+          "checks": [
+            {
+              "name": "both axes virtualize with native counts and direct measurement references",
+              "pass": true
+            },
+            {
+              "name": "expanded rows and changing native heights update vertical measurement",
+              "pass": true
+            },
+            {
+              "name": "horizontal virtualization preserves spans and pinned columns",
+              "pass": true
+            },
+            {
+              "name": "ten thousand supplied rows retain a bounded rendered window through end scrolling",
+              "pass": true
+            },
+            {
+              "name": "column size changes refresh the horizontal virtual window",
+              "pass": true
+            },
+            {
+              "name": "keyboard movement reveals and focuses an offscreen logical row",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "framework": "react",
+          "checks": [
+            {
+              "name": "both axes virtualize with native counts and direct measurement references",
+              "pass": true
+            },
+            {
+              "name": "expanded rows and changing native heights update vertical measurement",
+              "pass": true
+            },
+            {
+              "name": "horizontal virtualization preserves spans and pinned columns",
+              "pass": true
+            },
+            {
+              "name": "ten thousand supplied rows retain a bounded rendered window through end scrolling",
+              "pass": true
+            },
+            {
+              "name": "column size changes refresh the horizontal virtual window",
+              "pass": true
+            },
+            {
+              "name": "keyboard movement reveals and focuses an offscreen logical row",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "framework": "lit",
+          "checks": [
+            {
+              "name": "both axes virtualize with native counts and direct measurement references",
+              "pass": true
+            },
+            {
+              "name": "expanded rows and changing native heights update vertical measurement",
+              "pass": true
+            },
+            {
+              "name": "horizontal virtualization preserves spans and pinned columns",
+              "pass": true
+            },
+            {
+              "name": "ten thousand supplied rows retain a bounded rendered window through end scrolling",
+              "pass": true
+            },
+            {
+              "name": "column size changes refresh the horizontal virtual window",
+              "pass": true
+            },
+            {
+              "name": "keyboard movement reveals and focuses an offscreen logical row",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "framework": "react",
+          "checks": [
+            {
+              "name": "both axes virtualize with native counts and direct measurement references",
+              "pass": true
+            },
+            {
+              "name": "expanded rows and changing native heights update vertical measurement",
+              "pass": true
+            },
+            {
+              "name": "horizontal virtualization preserves spans and pinned columns",
+              "pass": true
+            },
+            {
+              "name": "ten thousand supplied rows retain a bounded rendered window through end scrolling",
+              "pass": true
+            },
+            {
+              "name": "column size changes refresh the horizontal virtual window",
+              "pass": true
+            },
+            {
+              "name": "keyboard movement reveals and focuses an offscreen logical row",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "worker-results.json": [
+        {
+          "engine": "chromium",
+          "framework": "lit",
+          "checks": [
+            {
+              "name": "a real application worker filters data and updates pending presentation",
+              "pass": true
+            },
+            {
+              "name": "worker failure retains data and application retry creates a working worker",
+              "pass": true
+            },
+            {
+              "name": "manual server rows are not filtered or sorted again by the Table component",
+              "pass": true
+            },
+            {
+              "name": "disposing the application terminates its worker resources",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "chromium",
+          "framework": "react",
+          "checks": [
+            {
+              "name": "a real application worker filters data and updates pending presentation",
+              "pass": true
+            },
+            {
+              "name": "worker failure retains data and application retry creates a working worker",
+              "pass": true
+            },
+            {
+              "name": "manual server rows are not filtered or sorted again by the Table component",
+              "pass": true
+            },
+            {
+              "name": "disposing the application terminates its worker resources",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "framework": "lit",
+          "checks": [
+            {
+              "name": "a real application worker filters data and updates pending presentation",
+              "pass": true
+            },
+            {
+              "name": "worker failure retains data and application retry creates a working worker",
+              "pass": true
+            },
+            {
+              "name": "manual server rows are not filtered or sorted again by the Table component",
+              "pass": true
+            },
+            {
+              "name": "disposing the application terminates its worker resources",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "framework": "react",
+          "checks": [
+            {
+              "name": "a real application worker filters data and updates pending presentation",
+              "pass": true
+            },
+            {
+              "name": "worker failure retains data and application retry creates a working worker",
+              "pass": true
+            },
+            {
+              "name": "manual server rows are not filtered or sorted again by the Table component",
+              "pass": true
+            },
+            {
+              "name": "disposing the application terminates its worker resources",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "framework": "lit",
+          "checks": [
+            {
+              "name": "a real application worker filters data and updates pending presentation",
+              "pass": true
+            },
+            {
+              "name": "worker failure retains data and application retry creates a working worker",
+              "pass": true
+            },
+            {
+              "name": "manual server rows are not filtered or sorted again by the Table component",
+              "pass": true
+            },
+            {
+              "name": "disposing the application terminates its worker resources",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "framework": "react",
+          "checks": [
+            {
+              "name": "a real application worker filters data and updates pending presentation",
+              "pass": true
+            },
+            {
+              "name": "worker failure retains data and application retry creates a working worker",
+              "pass": true
+            },
+            {
+              "name": "manual server rows are not filtered or sorted again by the Table component",
+              "pass": true
+            },
+            {
+              "name": "disposing the application terminates its worker resources",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "packed-consumer-results.json": [
+        {
+          "engine": "chromium",
+          "framework": "lit",
+          "checks": [
+            {
+              "name": "framework owns real rows and custom cell content",
+              "pass": true
+            },
+            {
+              "name": "ordering and visibility update grouped native headers and matching cells",
+              "pass": true
+            },
+            {
+              "name": "row selection persists by identity through filtering and pagination",
+              "pass": true
+            },
+            {
+              "name": "column resizing and logical pinning keep header and cell geometry aligned in RTL",
+              "pass": true
+            },
+            {
+              "name": "cell spans and row pinning omit covered cells and preserve native span meaning",
+              "pass": true
+            },
+            {
+              "name": "cell range selection follows logical identities through column ordering",
+              "pass": true
+            },
+            {
+              "name": "faceting aggregation and row grouping use the supplied Table models",
+              "pass": true
+            },
+            {
+              "name": "custom plugin state remains independent of sorting and filtering",
+              "pass": true
+            },
+            {
+              "name": "application grid keyboard navigation and native cell editors keep separate keys",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "chromium",
+          "framework": "react",
+          "checks": [
+            {
+              "name": "framework owns real rows and custom cell content",
+              "pass": true
+            },
+            {
+              "name": "ordering and visibility update grouped native headers and matching cells",
+              "pass": true
+            },
+            {
+              "name": "row selection persists by identity through filtering and pagination",
+              "pass": true
+            },
+            {
+              "name": "column resizing and logical pinning keep header and cell geometry aligned in RTL",
+              "pass": true
+            },
+            {
+              "name": "cell spans and row pinning omit covered cells and preserve native span meaning",
+              "pass": true
+            },
+            {
+              "name": "cell range selection follows logical identities through column ordering",
+              "pass": true
+            },
+            {
+              "name": "faceting aggregation and row grouping use the supplied Table models",
+              "pass": true
+            },
+            {
+              "name": "custom plugin state remains independent of sorting and filtering",
+              "pass": true
+            },
+            {
+              "name": "application grid keyboard navigation and native cell editors keep separate keys",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "framework": "lit",
+          "checks": [
+            {
+              "name": "framework owns real rows and custom cell content",
+              "pass": true
+            },
+            {
+              "name": "ordering and visibility update grouped native headers and matching cells",
+              "pass": true
+            },
+            {
+              "name": "row selection persists by identity through filtering and pagination",
+              "pass": true
+            },
+            {
+              "name": "column resizing and logical pinning keep header and cell geometry aligned in RTL",
+              "pass": true
+            },
+            {
+              "name": "cell spans and row pinning omit covered cells and preserve native span meaning",
+              "pass": true
+            },
+            {
+              "name": "cell range selection follows logical identities through column ordering",
+              "pass": true
+            },
+            {
+              "name": "faceting aggregation and row grouping use the supplied Table models",
+              "pass": true
+            },
+            {
+              "name": "custom plugin state remains independent of sorting and filtering",
+              "pass": true
+            },
+            {
+              "name": "application grid keyboard navigation and native cell editors keep separate keys",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "framework": "react",
+          "checks": [
+            {
+              "name": "framework owns real rows and custom cell content",
+              "pass": true
+            },
+            {
+              "name": "ordering and visibility update grouped native headers and matching cells",
+              "pass": true
+            },
+            {
+              "name": "row selection persists by identity through filtering and pagination",
+              "pass": true
+            },
+            {
+              "name": "column resizing and logical pinning keep header and cell geometry aligned in RTL",
+              "pass": true
+            },
+            {
+              "name": "cell spans and row pinning omit covered cells and preserve native span meaning",
+              "pass": true
+            },
+            {
+              "name": "cell range selection follows logical identities through column ordering",
+              "pass": true
+            },
+            {
+              "name": "faceting aggregation and row grouping use the supplied Table models",
+              "pass": true
+            },
+            {
+              "name": "custom plugin state remains independent of sorting and filtering",
+              "pass": true
+            },
+            {
+              "name": "application grid keyboard navigation and native cell editors keep separate keys",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "framework": "lit",
+          "checks": [
+            {
+              "name": "framework owns real rows and custom cell content",
+              "pass": true
+            },
+            {
+              "name": "ordering and visibility update grouped native headers and matching cells",
+              "pass": true
+            },
+            {
+              "name": "row selection persists by identity through filtering and pagination",
+              "pass": true
+            },
+            {
+              "name": "column resizing and logical pinning keep header and cell geometry aligned in RTL",
+              "pass": true
+            },
+            {
+              "name": "cell spans and row pinning omit covered cells and preserve native span meaning",
+              "pass": true
+            },
+            {
+              "name": "cell range selection follows logical identities through column ordering",
+              "pass": true
+            },
+            {
+              "name": "faceting aggregation and row grouping use the supplied Table models",
+              "pass": true
+            },
+            {
+              "name": "custom plugin state remains independent of sorting and filtering",
+              "pass": true
+            },
+            {
+              "name": "application grid keyboard navigation and native cell editors keep separate keys",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "framework": "react",
+          "checks": [
+            {
+              "name": "framework owns real rows and custom cell content",
+              "pass": true
+            },
+            {
+              "name": "ordering and visibility update grouped native headers and matching cells",
+              "pass": true
+            },
+            {
+              "name": "row selection persists by identity through filtering and pagination",
+              "pass": true
+            },
+            {
+              "name": "column resizing and logical pinning keep header and cell geometry aligned in RTL",
+              "pass": true
+            },
+            {
+              "name": "cell spans and row pinning omit covered cells and preserve native span meaning",
+              "pass": true
+            },
+            {
+              "name": "cell range selection follows logical identities through column ordering",
+              "pass": true
+            },
+            {
+              "name": "faceting aggregation and row grouping use the supplied Table models",
+              "pass": true
+            },
+            {
+              "name": "custom plugin state remains independent of sorting and filtering",
+              "pass": true
+            },
+            {
+              "name": "application grid keyboard navigation and native cell editors keep separate keys",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "packed-virtual-results.json": [
+        {
+          "engine": "chromium",
+          "framework": "lit",
+          "checks": [
+            {
+              "name": "both axes virtualize with native counts and direct measurement references",
+              "pass": true
+            },
+            {
+              "name": "expanded rows and changing native heights update vertical measurement",
+              "pass": true
+            },
+            {
+              "name": "horizontal virtualization preserves spans and pinned columns",
+              "pass": true
+            },
+            {
+              "name": "ten thousand supplied rows retain a bounded rendered window through end scrolling",
+              "pass": true
+            },
+            {
+              "name": "column size changes refresh the horizontal virtual window",
+              "pass": true
+            },
+            {
+              "name": "keyboard movement reveals and focuses an offscreen logical row",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "chromium",
+          "framework": "react",
+          "checks": [
+            {
+              "name": "both axes virtualize with native counts and direct measurement references",
+              "pass": true
+            },
+            {
+              "name": "expanded rows and changing native heights update vertical measurement",
+              "pass": true
+            },
+            {
+              "name": "horizontal virtualization preserves spans and pinned columns",
+              "pass": true
+            },
+            {
+              "name": "ten thousand supplied rows retain a bounded rendered window through end scrolling",
+              "pass": true
+            },
+            {
+              "name": "column size changes refresh the horizontal virtual window",
+              "pass": true
+            },
+            {
+              "name": "keyboard movement reveals and focuses an offscreen logical row",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "framework": "lit",
+          "checks": [
+            {
+              "name": "both axes virtualize with native counts and direct measurement references",
+              "pass": true
+            },
+            {
+              "name": "expanded rows and changing native heights update vertical measurement",
+              "pass": true
+            },
+            {
+              "name": "horizontal virtualization preserves spans and pinned columns",
+              "pass": true
+            },
+            {
+              "name": "ten thousand supplied rows retain a bounded rendered window through end scrolling",
+              "pass": true
+            },
+            {
+              "name": "column size changes refresh the horizontal virtual window",
+              "pass": true
+            },
+            {
+              "name": "keyboard movement reveals and focuses an offscreen logical row",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "framework": "react",
+          "checks": [
+            {
+              "name": "both axes virtualize with native counts and direct measurement references",
+              "pass": true
+            },
+            {
+              "name": "expanded rows and changing native heights update vertical measurement",
+              "pass": true
+            },
+            {
+              "name": "horizontal virtualization preserves spans and pinned columns",
+              "pass": true
+            },
+            {
+              "name": "ten thousand supplied rows retain a bounded rendered window through end scrolling",
+              "pass": true
+            },
+            {
+              "name": "column size changes refresh the horizontal virtual window",
+              "pass": true
+            },
+            {
+              "name": "keyboard movement reveals and focuses an offscreen logical row",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "framework": "lit",
+          "checks": [
+            {
+              "name": "both axes virtualize with native counts and direct measurement references",
+              "pass": true
+            },
+            {
+              "name": "expanded rows and changing native heights update vertical measurement",
+              "pass": true
+            },
+            {
+              "name": "horizontal virtualization preserves spans and pinned columns",
+              "pass": true
+            },
+            {
+              "name": "ten thousand supplied rows retain a bounded rendered window through end scrolling",
+              "pass": true
+            },
+            {
+              "name": "column size changes refresh the horizontal virtual window",
+              "pass": true
+            },
+            {
+              "name": "keyboard movement reveals and focuses an offscreen logical row",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "framework": "react",
+          "checks": [
+            {
+              "name": "both axes virtualize with native counts and direct measurement references",
+              "pass": true
+            },
+            {
+              "name": "expanded rows and changing native heights update vertical measurement",
+              "pass": true
+            },
+            {
+              "name": "horizontal virtualization preserves spans and pinned columns",
+              "pass": true
+            },
+            {
+              "name": "ten thousand supplied rows retain a bounded rendered window through end scrolling",
+              "pass": true
+            },
+            {
+              "name": "column size changes refresh the horizontal virtual window",
+              "pass": true
+            },
+            {
+              "name": "keyboard movement reveals and focuses an offscreen logical row",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "packed-worker-results.json": [
+        {
+          "engine": "chromium",
+          "framework": "lit",
+          "checks": [
+            {
+              "name": "a real application worker filters data and updates pending presentation",
+              "pass": true
+            },
+            {
+              "name": "worker failure retains data and application retry creates a working worker",
+              "pass": true
+            },
+            {
+              "name": "manual server rows are not filtered or sorted again by the Table component",
+              "pass": true
+            },
+            {
+              "name": "disposing the application terminates its worker resources",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "chromium",
+          "framework": "react",
+          "checks": [
+            {
+              "name": "a real application worker filters data and updates pending presentation",
+              "pass": true
+            },
+            {
+              "name": "worker failure retains data and application retry creates a working worker",
+              "pass": true
+            },
+            {
+              "name": "manual server rows are not filtered or sorted again by the Table component",
+              "pass": true
+            },
+            {
+              "name": "disposing the application terminates its worker resources",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "framework": "lit",
+          "checks": [
+            {
+              "name": "a real application worker filters data and updates pending presentation",
+              "pass": true
+            },
+            {
+              "name": "worker failure retains data and application retry creates a working worker",
+              "pass": true
+            },
+            {
+              "name": "manual server rows are not filtered or sorted again by the Table component",
+              "pass": true
+            },
+            {
+              "name": "disposing the application terminates its worker resources",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "framework": "react",
+          "checks": [
+            {
+              "name": "a real application worker filters data and updates pending presentation",
+              "pass": true
+            },
+            {
+              "name": "worker failure retains data and application retry creates a working worker",
+              "pass": true
+            },
+            {
+              "name": "manual server rows are not filtered or sorted again by the Table component",
+              "pass": true
+            },
+            {
+              "name": "disposing the application terminates its worker resources",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "framework": "lit",
+          "checks": [
+            {
+              "name": "a real application worker filters data and updates pending presentation",
+              "pass": true
+            },
+            {
+              "name": "worker failure retains data and application retry creates a working worker",
+              "pass": true
+            },
+            {
+              "name": "manual server rows are not filtered or sorted again by the Table component",
+              "pass": true
+            },
+            {
+              "name": "disposing the application terminates its worker resources",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "framework": "react",
+          "checks": [
+            {
+              "name": "a real application worker filters data and updates pending presentation",
+              "pass": true
+            },
+            {
+              "name": "worker failure retains data and application retry creates a working worker",
+              "pass": true
+            },
+            {
+              "name": "manual server rows are not filtered or sorted again by the Table component",
+              "pass": true
+            },
+            {
+              "name": "disposing the application terminates its worker resources",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "docs-results.json": [
+        {
+          "engine": "chromium",
+          "checks": [
+            "numbered requests",
+            "controlled page size",
+            "native application action",
+            "live Lit consumer",
+            "live React consumer",
+            "virtual mode changes",
+            "narrow layout"
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "checks": [
+            "numbered requests",
+            "controlled page size",
+            "native application action",
+            "live Lit consumer",
+            "live React consumer",
+            "virtual mode changes",
+            "narrow layout"
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "checks": [
+            "numbered requests",
+            "controlled page size",
+            "native application action",
+            "live Lit consumer",
+            "live React consumer",
+            "virtual mode changes",
+            "narrow layout"
+          ],
+          "errors": []
+        }
+      ]
+    }
+  },
+  "reproduce": {
+    "examples": "examples/table",
+    "tableFixture": "src/components/table/__tests__/table.browser.ts",
+    "paginationFixture": "src/components/pagination/__tests__/pagination.browser.ts",
+    "tableCases": "await check('Table preserves author-owned native content and direct references',async()=>{await page.getByRole('button',{name:'Retry delivery'}).click();assert.equal(await page.evaluate(()=>window.table.getTableElement()===window.nativeTable),true);assert.equal(await page.evaluate(()=>window.row.parentElement===window.nativeTable.tBodies[0]),true);assert.deepEqual(await page.evaluate(()=>window.events),['retry']);assert.equal(await page.evaluate(()=>window.table.getScrollElement().getAttribute('part')),'viewport');});\nawait check('native caption, headers and cells survive the shadow scrolling box',async()=>{if(engine==='chromium'){const client=await page.context().newCDPSession(page),ax=await client.send('Accessibility.getFullAXTree');assert.ok(ax.nodes.some(n=>!n.ignored&&n.role?.value==='table'&&n.name?.value==='Deliveries'));assert.ok(ax.nodes.some(n=>!n.ignored&&n.role?.value==='rowheader'&&n.name?.value==='Order created'));await client.detach();}assert.equal(await page.locator('#table > table').evaluate(el=>getComputedStyle(el).fontSize),'14px');});\nawait check('variant, density and size affect the native cells without changing author state',async()=>{const cell=page.locator('#table > table > tbody > tr > td');assert.equal(await cell.evaluate(el=>getComputedStyle(el).paddingBlockStart),'10px');await page.evaluate(()=>{const theme=document.createElement('acme-theme');theme.density='compact';window.table.before(theme);theme.append(window.table)});await page.waitForFunction(()=>getComputedStyle(window.table.querySelector('td')).paddingBlockStart==='5px');await page.evaluate(()=>{window.table.variant='striped';window.table.size='small'});assert.ok(await cell.evaluate(el=>parseFloat(getComputedStyle(el).paddingBlockStart)<5));await page.evaluate(()=>window.table.size='large');assert.equal(await cell.evaluate(el=>getComputedStyle(el).fontSize),'16px');assert.equal(await page.evaluate(()=>window.table.getTableElement()===window.nativeTable),true);});\nawait check('light styles follow a table into another shadow root and do not style unrelated tables',async()=>{await page.evaluate(()=>{const sibling=document.createElement('table');sibling.id='plain';sibling.innerHTML='<tbody><tr><td>Plain</td></tr></tbody>';document.body.append(sibling);const host=document.createElement('div');document.body.append(host);host.attachShadow({mode:'open'}).append(window.table)});assert.equal(await page.locator('#table td').evaluate(el=>getComputedStyle(el).paddingBlockStart),'10px');assert.notEqual(await page.locator('#plain td').evaluate(el=>getComputedStyle(el).paddingBlockStart),'10px');});\nawait check('sticky headers and logical column pins retain geometry during two-axis scroll in RTL',async()=>{await page.evaluate(()=>{document.documentElement.dir='rtl';window.table.stickyHeader=true;window.table.style.cssText='width:400px;height:200px';window.nativeTable.style.cssText='width:900px;table-layout:fixed';const head=window.nativeTable.querySelector('th');head.dataset.pinned='start';head.style.width='160px';window.nativeTable.tBodies[0].innerHTML=Array.from({length:30},(_,i)=>'<tr><th scope=\"row\" data-pinned=\"start\">Endpoint '+i+'</th><td>Delivered '+i+'</td></tr>').join('')});await page.evaluate(()=>window.table.getScrollElement().scrollTop=80);await page.waitForTimeout(100);const header=page.locator('#table > table > thead th').first(),before=await header.boundingBox();await page.evaluate(()=>{const viewport=window.table.getScrollElement();viewport.scrollTop=300;viewport.scrollLeft=-300});await page.waitForTimeout(100);const after=await header.boundingBox();assert.ok(Math.abs(after.y-before.y)<1);assert.ok(Math.abs(after.x-before.x)<1);assert.equal(await page.evaluate(()=>window.table.getScrollElement().tabIndex),0);});\nawait check('native spans, grouped headings and footer markup remain application-owned',async()=>{await page.evaluate(()=>{window.nativeTable.innerHTML='<caption>Grouped deliveries</caption><thead><tr><th colspan=\"2\">Delivery</th><th rowspan=\"2\">Result</th></tr><tr><th>ID</th><th>Endpoint</th></tr></thead><tbody><tr><th rowspan=\"2\">1</th><td>A</td><td>Done</td></tr><tr><td colspan=\"2\">Expanded details</td></tr></tbody><tfoot><tr><th colspan=\"2\">Total</th><td>2</td></tr></tfoot>'});assert.equal(await page.locator('#table [colspan=\"2\"]').count(),3);assert.equal(await page.locator('#table [rowspan=\"2\"]').count(),2);assert.equal(await page.locator('#table > table').evaluate(el=>el.rows.length),5);});\nawait check('loading changes only busy presentation and never disables or discards content',async()=>{await page.evaluate(()=>window.table.loading=true);assert.equal(await page.evaluate(()=>window.table.getScrollElement().getAttribute('aria-busy')),'true');await page.getByRole('button',{name:'Retry delivery'}).click();assert.deepEqual(await page.evaluate(()=>window.events),['retry']);assert.equal(await page.evaluate(()=>window.row.isConnected),true);});\nawait check('cell range outlines do not change row or column geometry',async()=>{const cell=page.locator('#table td');const before=await cell.boundingBox();await cell.evaluate(el=>{el.setAttribute('data-range-top','');el.setAttribute('data-range-bottom','');el.setAttribute('data-range-start','');el.setAttribute('data-range-end','')});const after=await cell.boundingBox();assert.equal(after.height,before.height);assert.equal(after.width,before.width);});\nawait check('fallback rendering is distinct from authored content in real slot assignment',async()=>{await page.evaluate(()=>document.body.append(document.createElement('places-fallback-check')));await page.locator('places-fallback-check span').waitFor();assert.equal(await page.locator('places-fallback-check').evaluate(el=>el.places.has('')),false);});\nawait check('nested tables do not inherit outer row selection or range decoration',async()=>{await page.locator('#table td').evaluate(el=>el.innerHTML='<acme-table id=\"nested\"><table><tbody><tr><td>Nested</td></tr></tbody></table></acme-table>');const nested=page.locator('#nested td');await nested.waitFor();const before=await nested.evaluate(el=>({background:getComputedStyle(el).backgroundColor,shadow:getComputedStyle(el).boxShadow}));await page.locator('#row').evaluate(el=>{el.setAttribute('aria-selected','true');el.querySelector('td').setAttribute('data-range-top','')});const after=await nested.evaluate(el=>({background:getComputedStyle(el).backgroundColor,shadow:getComputedStyle(el).boxShadow}));assert.deepEqual(after,before);});\n",
+    "paginationCases": "await check('numbered navigation requests a page without rewriting application state',async()=>{await page.getByRole('button',{name:'Next',exact:true}).click();assert.deepEqual(await page.evaluate(()=>window.requests),[{action:'page',page:2}]);assert.equal(await page.evaluate(()=>window.pager.page),1);assert.equal(await page.getByRole('button',{name:'Page 1',exact:true}).getAttribute('aria-current'),'page');await page.evaluate(()=>window.pager.page=2);assert.equal(await page.getByRole('button',{name:'Page 2',exact:true}).getAttribute('aria-current'),'page');});\nawait check('compact known and unknown totals never fabricate a final page',async()=>{await page.evaluate(()=>{window.pager.variant='compact';window.pager.page=3;window.pager.count=undefined});await page.getByText('Page 3',{exact:true}).waitFor();assert.equal(await page.getByRole('button',{name:'Next',exact:true}).isDisabled(),true);await page.evaluate(()=>window.pager.hasNextPage=true);await page.getByRole('button',{name:'Next',exact:true}).click();assert.deepEqual(await page.evaluate(()=>window.requests),[{action:'page',page:4}]);await page.evaluate(()=>window.pager.count=42);await page.getByText('Page 3 of 5',{exact:true}).waitFor();});\nawait check('zero results disable both controls and out-of-range page retains the supplied value',async()=>{await page.evaluate(()=>{window.pager.variant='compact';window.pager.count=0});await page.getByText('No results',{exact:true}).waitFor();assert.equal(await page.getByRole('button',{name:'Previous',exact:true}).isDisabled(),true);assert.equal(await page.getByRole('button',{name:'Next',exact:true}).isDisabled(),true);await page.evaluate(()=>{window.pager.count=25;window.pager.page=9});await page.getByRole('button',{name:'Previous',exact:true}).click();assert.deepEqual(await page.evaluate(()=>window.requests),[{action:'page',page:3}]);assert.equal(await page.evaluate(()=>window.pager.page),9);});\nawait check('authored Position and Page Size parts share context and preserve controlled size',async()=>{await page.locator('#pager').evaluate(el=>el.innerHTML='<acme-pagination-position></acme-pagination-position><acme-pagination-previous></acme-pagination-previous><acme-pagination-next></acme-pagination-next><acme-pagination-page-size></acme-pagination-page-size>');await page.getByText('Page 1 of 10',{exact:true}).waitFor();await page.getByRole('combobox').click();await page.locator('acme-option').filter({hasText:/^25$/}).click();assert.deepEqual(await page.evaluate(()=>window.requests.filter(e=>e.action==='page-size')),[{action:'page-size',pageSize:25}]);assert.equal(await page.evaluate(()=>window.pager.pageSize),10);await page.evaluate(()=>window.pager.pageSize=25);await page.getByText('Page 1 of 4',{exact:true}).waitFor();});\nawait check('URL navigation uses real anchors and cancellation preserves the document',async()=>{await page.evaluate(()=>{window.pager.getPageUrl=page=>'#page-'+page;window.pager.addEventListener('acme-request',e=>e.preventDefault())});const next=page.getByRole('link',{name:'Next',exact:true});assert.equal(await next.getAttribute('href'),'#page-2');await next.click();assert.equal(new URL(page.url()).hash,'');assert.deepEqual(await page.evaluate(()=>window.requests),[{action:'page',page:2}]);});\nawait check('loading and disabled block page and size actions without altering their values',async()=>{await page.evaluate(()=>window.pager.loading=true);assert.equal(await page.getByRole('button',{name:'Next',exact:true}).isDisabled(),true);await page.evaluate(()=>{window.pager.loading=false;window.pager.disabled=true});assert.equal(await page.getByRole('button',{name:'Page 2',exact:true}).isDisabled(),true);assert.equal(await page.evaluate(()=>window.requests.length),0);});\nawait check('parts reconnect to a new owner through an attached Group',async()=>{await page.locator('#pager').evaluate(el=>el.innerHTML='<acme-group attached><acme-pagination-previous></acme-pagination-previous><acme-pagination-next id=\"move\"></acme-pagination-next></acme-group>');await page.evaluate(()=>{const other=document.createElement('acme-pagination');other.page=4;other.count=100;other.id='other';document.body.append(other);other.append(document.querySelector('#move'));other.addEventListener('acme-request',e=>window.otherRequest=e.detail)});await page.locator('#move').getByRole('button',{name:'Next',exact:true}).click();assert.deepEqual(await page.evaluate(()=>window.otherRequest),{action:'page',page:5});assert.equal(await page.evaluate(()=>window.requests.length),0);});\nawait check('page-size choices revert when the application declines the request',async()=>{await page.locator('#pager').evaluate(el=>{el.innerHTML='<acme-pagination-page-size></acme-pagination-page-size>';el.addEventListener('acme-request',event=>event.preventDefault())});await page.getByRole('combobox').click();await page.locator('acme-option').filter({hasText:/^25$/}).click();await page.waitForFunction(()=>document.querySelector('acme-pagination-page-size').shadowRoot.querySelector('acme-select').value==='10');});\nawait check('a focused page removed by a new range recovers inside the navigation',async()=>{await page.getByRole('button',{name:'Page 2',exact:true}).focus();await page.evaluate(()=>window.pager.page=9);await page.waitForFunction(()=>{let active=document.activeElement;while(active?.shadowRoot?.activeElement)active=active.shadowRoot.activeElement;return active&&active!==document.body&&active.getRootNode().host?.closest('acme-pagination')!==null});assert.equal(await page.evaluate(()=>document.activeElement?.localName),'acme-pagination');});\nawait check('HTML default removal and supplied page-size options retain their declared types',async()=>{await page.locator('#pager').evaluate(el=>{el.setAttribute('page','4');el.removeAttribute('page');el.setAttribute('page-size','25');el.removeAttribute('page-size');el.setAttribute('has-next-page','false');el.removeAttribute('has-next-page')});assert.deepEqual(await page.evaluate(()=>[window.pager.page,window.pager.pageSize,window.pager.hasNextPage]),[1,10,undefined]);});\nawait check('removing authored page-size choices restores its default options',async()=>{await page.locator('#pager').evaluate(el=>el.innerHTML='<acme-pagination-page-size options=\"[20,40]\"></acme-pagination-page-size>');await page.locator('acme-pagination-page-size').evaluate(el=>el.removeAttribute('options'));assert.deepEqual(await page.locator('acme-pagination-page-size').evaluate(el=>el.options),[10,25,50]);});\nawait check('the page-size value remains readable in a narrow pagination row',async()=>{await page.locator('#pager').evaluate(el=>{el.style.width='240px';el.innerHTML='<acme-pagination-page-size></acme-pagination-page-size>'});const control=page.getByRole('combobox');await control.waitFor();assert.equal(await control.evaluate(el=>el.scrollWidth<=el.clientWidth),true);});\n",
+    "consumerRunner": "import assert from 'node:assert/strict';\nconst dir='/tmp/acme-m19',root='/Users/peterkloss/Dev/ACMElabs/design-system';\nprocess.env.PLAYWRIGHT_BROWSERS_PATH='/Users/peterkloss/Library/Caches/acme-design-system/browser-checks/browsers';const pw=await import('/Users/peterkloss/Library/Caches/acme-design-system/browser-checks/node_modules/playwright/index.mjs');\nconst server=Bun.serve({port:0,fetch(req){const url=new URL(req.url);return url.pathname==='/consumer.js'?new Response(Bun.file(dir+'/consumer.js'),{headers:{'Content-Type':'text/javascript'}}):url.pathname==='/tokens.css'?new Response(Bun.file(root+'/src/generated/css/document/tokens.css'),{headers:{'Content-Type':'text/css'}}):new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/consumer.js\"></script>',{headers:{'Content-Type':'text/html'}})}});\nconst reports=[];\ntry{for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true}:{headless:true});for(const framework of ['lit','react']){const page=await browser.newPage({reducedMotion:'reduce'});page.setDefaultTimeout(6000);const errors=[],checks=[];page.on('pageerror',e=>{errors.push(String(e));console.log(engine,framework,'ERROR',String(e))});const check=async(name,run)=>{try{await page.goto(server.url.href+'?framework='+framework+'&case='+checks.length);await page.waitForFunction(()=>window.model&&document.querySelector('acme-table,delivery-table-lit'));await page.locator('[data-row=\"delivery-0\"]').waitFor();await run();checks.push({name,pass:true});console.log(engine,framework,'PASS',name)}catch(error){checks.push({name,pass:false,error:String(error)});console.log(engine,framework,'FAIL',name,String(error))}};\nawait check('framework owns real rows and custom cell content',async()=>{await page.getByRole('textbox',{name:'Note delivery-0'}).fill('Retained');assert.equal(await page.locator('[data-row]').count(),10);await page.evaluate(()=>window.model.setColumnOrder(['select','region','name','amount','status','details']));assert.equal(await page.getByRole('textbox',{name:'Note delivery-0'}).inputValue(),'Retained');});\nawait check('ordering and visibility update grouped native headers and matching cells',async()=>{await page.evaluate(()=>{window.model.setColumnOrder(['select','region','name','amount','status','details']);window.model.getColumn('status').toggleVisibility(false)});await page.waitForTimeout(100);assert.equal(await page.locator('tbody [data-column=\"status\"]').count(),0);assert.equal(await page.locator('thead [data-column=\"status\"]').count(),0);assert.equal(await page.locator('thead th[colspan=\"2\"]').count(),2);});\nawait check('row selection persists by identity through filtering and pagination',async()=>{await page.getByRole('checkbox',{name:'Select delivery-0',exact:true}).check();await page.evaluate(()=>window.model.getColumn('status').setFilterValue('Retry'));await page.waitForTimeout(100);assert.equal(await page.getByRole('checkbox',{name:'Select delivery-0',exact:true}).isChecked(),true);await page.getByRole('button',{name:'Next',exact:true}).click();await page.waitForTimeout(100);assert.equal(await page.evaluate(()=>window.model.atoms.pagination.get().pageIndex),1);assert.equal(await page.evaluate(()=>window.model.atoms.rowSelection.get()['delivery-0']),true);});\nawait check('column resizing and logical pinning keep header and cell geometry aligned in RTL',async()=>{await page.evaluate(()=>{document.documentElement.dir='rtl';window.model.getColumn('name').pin('start');window.model.getColumn('amount').pin('end');window.model.setColumnSizing({name:180,amount:120})});await page.waitForTimeout(100);const header=page.locator('thead [data-column=\"name\"]'),cell=page.locator('tbody [data-column=\"name\"]').first();assert.ok(Math.abs((await header.boundingBox()).width-(await cell.boundingBox()).width)<1);await page.getByRole('button',{name:'Resize name',exact:true}).focus();await page.keyboard.press('ArrowRight');await page.waitForFunction(()=>window.model.getColumn('name').getSize()===190);const before=await header.boundingBox();await page.locator('acme-table').evaluate(el=>el.getScrollElement().scrollLeft=-300);await page.waitForTimeout(100);const after=await header.boundingBox();assert.ok(Math.abs(before.x-after.x)<1);assert.ok(Math.abs((await header.boundingBox()).width-(await cell.boundingBox()).width)<1);});\nawait check('cell spans and row pinning omit covered cells and preserve native span meaning',async()=>{assert.equal(await page.locator('tbody [data-column=\"region\"]').count(),1);assert.equal(await page.locator('tbody [data-column=\"region\"]').getAttribute('rowspan'),'10');await page.evaluate(()=>window.model.getRow('delivery-0').pin('top'));await page.waitForTimeout(100);assert.equal(await page.locator('tbody [rowspan=\"0\"]').count(),0);assert.equal(await page.locator('[data-row=\"delivery-2\"] [data-column=\"status\"]').getAttribute('colspan'),'2');assert.equal(await page.locator('tbody [data-row=\"delivery-0\"]').count(),1);assert.equal(await page.locator('tbody [data-row=\"delivery-0\"]').getAttribute('data-pinned'),'top');assert.equal(await page.locator('tbody [data-column=\"region\"]').count(),2);});\nawait check('cell range selection follows logical identities through column ordering',async()=>{await page.evaluate(()=>window.model.selectCellRange({anchorRowId:'delivery-1',focusRowId:'delivery-3',anchorColumnId:'status',focusColumnId:'amount'}));await page.waitForTimeout(100);assert.equal(await page.evaluate(()=>window.model.getSelectedCellCount()),5);assert.equal(await page.locator('td[aria-selected=\"true\"]').count(),5);await page.evaluate(()=>window.model.setColumnOrder(['select','name','region','amount','status','details']));await page.waitForTimeout(100);assert.equal(await page.evaluate(()=>window.model.getSelectedCellCount()),8);assert.equal(await page.locator('td[aria-selected=\"true\"]').count(),8);});\nawait check('faceting aggregation and row grouping use the supplied Table models',async()=>{await page.evaluate(()=>{window.model.setGlobalFilter('Delivery 00');window.model.setGrouping(['status'])});await page.waitForTimeout(100);assert.equal(await page.evaluate(()=>window.model.getColumn('status').getFacetedUniqueValues().get('Retry')),4);assert.equal(await page.evaluate(()=>window.model.getRowModel().rows.length),2);assert.equal(await page.locator('tbody tr').count(),2);assert.equal(await page.locator('tfoot td').textContent(),String(await page.evaluate(()=>window.model.getColumn('amount').getAggregationValue({rows:window.model.getFilteredRowModel().rows}))));});\nawait check('custom plugin state remains independent of sorting and filtering',async()=>{await page.evaluate(()=>{window.model.markReviewed('delivery-0');window.model.setSorting([{id:'amount',desc:true}]);window.model.getColumn('status').setFilterValue('Retry')});await page.waitForTimeout(100);assert.deepEqual(await page.evaluate(()=>window.model.getReviewedIds()),['delivery-0']);assert.equal(await page.locator('tbody tr').first().getAttribute('data-row'),'delivery-198');});\n\nawait check('application grid keyboard navigation and native cell editors keep separate keys',async()=>{const status=page.locator('[data-row=\"delivery-0\"]>[data-column=\"status\"]');await status.focus();await page.keyboard.press('ArrowRight');await page.waitForTimeout(100);assert.equal(await page.evaluate(()=>window.model.getFocusedCell()?.column.id),'amount');await page.keyboard.press('ArrowDown');await page.waitForTimeout(100);assert.equal(await page.evaluate(()=>window.model.getFocusedCell()?.row.id),'delivery-1');await page.locator('[data-row=\"delivery-0\"]>[data-column=\"name\"]').focus();await page.keyboard.press('F2');await page.keyboard.type('Edited');assert.equal(await page.getByRole('textbox',{name:'Note delivery-0'}).inputValue(),'Edited');await page.keyboard.press('ArrowLeft');assert.equal(await page.getByRole('textbox',{name:'Note delivery-0'}).evaluate(el=>el===el.getRootNode().activeElement),true);await page.keyboard.press('Escape');assert.equal(await page.locator('[data-row=\"delivery-0\"]>[data-column=\"name\"]').evaluate(el=>el===el.getRootNode().activeElement),true);});\nreports.push({engine,framework,checks,errors});await page.close();}await browser.close();}}finally{server.stop(true)}await Bun.write(dir+'/consumer-results.json',JSON.stringify(reports,null,2));if(reports.some(r=>r.errors.length||r.checks.some(c=>!c.pass)))process.exitCode=1;\n",
+    "virtualCases": "await check('both axes virtualize with native counts and direct measurement references',async()=>{await page.waitForTimeout(200);assert.ok(await page.locator('tbody [data-row]').count()<25);assert.equal(await page.locator('table[role=grid]').getAttribute('aria-rowcount'),'201');assert.equal(await page.locator('table[role=grid]').getAttribute('aria-colcount'),'6');await page.locator('acme-table').evaluate(el=>{const v=el.getScrollElement();v.scrollTop=3000;v.scrollLeft=500});await page.waitForTimeout(200);assert.ok(!(await page.locator('tbody [data-row]').first().getAttribute('data-row')).endsWith('-0'));assert.ok(await page.locator('tbody [data-column=\"details\"]').count()>0);});\nawait check('expanded rows and changing native heights update vertical measurement',async()=>{await page.evaluate(()=>window.setMode('vertical'));await page.getByRole('button',{name:'Expand delivery-0',exact:true}).click();await page.locator('[data-row=\"child-0\"]').waitFor();const original=await page.locator('[data-row=\"delivery-1\"]').boundingBox();await page.evaluate(()=>window.updateDetails('delivery-0','Long detail '.repeat(150)));await page.waitForTimeout(200);const changed=await page.locator('[data-row=\"delivery-1\"]').boundingBox();assert.ok(changed.y>original.y);await page.locator('acme-table').evaluate(el=>el.getScrollElement().scrollTop=2000);await page.waitForTimeout(200);assert.ok(await page.locator('tbody [data-row]').count()<30);});\nawait check('horizontal virtualization preserves spans and pinned columns',async()=>{await page.evaluate(()=>{window.setMode('horizontal');window.model.getColumn('name').pin('start');window.model.getColumn('amount').pin('end')});await page.waitForTimeout(200);assert.equal(await page.locator('tbody [rowspan=\"0\"]').count(),0);assert.ok(await page.locator('tbody [data-column=\"region\"]').count()<=2);const first=page.locator('tbody [data-column=\"name\"]').first(),before=await first.boundingBox();await page.locator('acme-table').evaluate(el=>el.getScrollElement().scrollLeft=500);await page.waitForTimeout(200);const after=await first.boundingBox();assert.ok(Math.abs(before.x-after.x)<1);assert.ok(await page.locator('tbody [data-column=\"amount\"]').count()>0);});\nawait check('ten thousand supplied rows retain a bounded rendered window through end scrolling',async()=>{await page.evaluate(()=>{window.setRows(Array.from({length:10000},(_,i)=>({id:'large-'+i,name:'Large '+i,region:'West',status:'Delivered',amount:i,details:'Details'})));window.model.setPageSize(10000)});await page.waitForFunction(()=>{const host=document.querySelector('virtual-delivery-lit');const root=host?.shadowRoot??document;return root.querySelector('table[aria-rowcount=\"10001\"]')});await page.locator('acme-table').evaluate(el=>{const v=el.getScrollElement();v.scrollTop=v.scrollHeight});await page.waitForTimeout(300);assert.ok(await page.locator('tbody [data-row]').count()<30);await page.locator('[data-row=\"large-9999\"]').waitFor();});\nawait check('column size changes refresh the horizontal virtual window',async()=>{await page.evaluate(()=>{window.setMode('horizontal');window.model.setColumnSizing({name:800})});await page.locator('acme-table').evaluate(el=>el.getScrollElement().scrollLeft=400);await page.waitForTimeout(200);assert.ok(await page.locator('tbody [data-column=\"name\"]').count()>0);});\nawait check('keyboard movement reveals and focuses an offscreen logical row',async()=>{await page.waitForTimeout(150);const values=await page.locator('[data-virtual-body] [data-index]').evaluateAll(rows=>rows.map(row=>Number(row.dataset.index)));const last=Math.max(...values),next=await page.evaluate(index=>window.model.getRowModel().rows[index+1].id,last);assert.equal(await page.locator('[data-row=\"'+next+'\"]').count(),0);await page.locator('[data-index=\"'+last+'\"] [data-column=\"status\"]').evaluate(el=>el.focus({preventScroll:true}));await page.keyboard.press('ArrowDown');await page.locator('[data-row=\"'+next+'\"] [data-column=\"status\"]').waitFor();await page.waitForFunction(()=>{let active=document.activeElement;while(active?.shadowRoot?.activeElement)active=active.shadowRoot.activeElement;return active?.getAttribute('data-cell')===window.model.getFocusedCell()?.id});assert.equal(await page.evaluate(()=>window.model.getFocusedCell()?.row.id),next);});\n",
+    "workerCases": "await check('a real application worker filters data and updates pending presentation',async()=>{await page.evaluate(()=>window.model.setGlobalFilter('Record 49'));await page.waitForFunction(()=>window.model.getRowModel().rows.length===10&&!window.model.atoms.workerRowModels.get().isPending);assert.equal(await page.locator('[data-count]').textContent(),'10');assert.equal(await page.locator('acme-table').evaluate(el=>el.loading),false);assert.equal(await page.evaluate(()=>window.session.liveWorkers),1);});\nawait check('worker failure retains data and application retry creates a working worker',async()=>{await page.evaluate(()=>window.session.simulateFailure());await page.getByText('Worker failed',{exact:true}).waitFor();assert.ok(await page.locator('tbody tr').count()>0);await page.getByRole('button',{name:'Retry worker'}).click();await page.getByText('Worker ready',{exact:true}).waitFor();await page.evaluate(()=>window.model.setGlobalFilter('Record 499'));await page.waitForFunction(()=>window.model.getRowModel().rows.length===1&&!window.model.atoms.workerRowModels.get().isPending);assert.equal(await page.locator('tbody tr').getAttribute('data-row'),'work-499');});\nawait check('manual server rows are not filtered or sorted again by the Table component',async()=>{await page.evaluate(()=>{window.model.setGlobalFilter('Does not match');window.model.setSorting([{id:'amount',desc:true}]);window.session.useServerRows([{id:'server-first',name:'Server order A',amount:1},{id:'server-second',name:'Server order B',amount:99}])});await page.waitForFunction(()=>window.model.getRowModel().rows[0]?.id==='server-first');assert.deepEqual(await page.locator('tbody tr').evaluateAll(rows=>rows.map(row=>row.dataset.row)),['server-first','server-second']);});\nawait check('disposing the application terminates its worker resources',async()=>{await page.evaluate(()=>{window.dispose()});assert.equal(await page.evaluate(()=>window.session.liveWorkers),0);assert.equal(await page.locator('acme-table').count(),0);});\n"
+  },
+  "limits": [
+    "The Table package versions and listed feature combinations are tested; future versions and untested combinations are not guaranteed.",
+    "Final generated React wrappers and actual Safari/assistive-technology acceptance remain M22/M26.",
+    "The 10,000-row run checks bounded rendering and end scrolling, not a general latency or maximum-size guarantee.",
+    "M25 will consolidate temporary browser runners into the durable CI harness; fixture sources and case bodies are retained here."
+  ]
+}

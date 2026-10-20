@@ -1,0 +1,1 @@
+{"version":3,"sourceRoot":null,"mappings":"AAAA;;;;;AAIA;;;;AAGA","sources":["layout-structure.source.css"],"sourcesContent":[":host {\n  display: block;\n  box-sizing: border-box;\n}\n:host(:where([as=\"span\"])) {\n  display: inline;\n}\n[part~=\"root\"] {\n  display: inherit;\n  box-sizing: border-box;\n  width: 100%;\n  height: 100%;\n}\n"],"names":[]}

@@ -4,9 +4,10 @@
 // field has a value (`data-animate` on the input host).
 import { type GeistMap, has, type SpecNode } from "../gen";
 
-const kbd = (ours: string, index: number, children?: GeistMap["children"]) => ({ ours, pick: (c: SpecNode, i: number) => c.tag === "kbd" && i === index, extends: "kbd", part: "kbd", children });
+const kbd = (ours: string, index: number, children?: GeistMap["children"]) => ({ ours, pick: (c: SpecNode, i: number) => c.tag === "kbd" && i === index, extends: "kbd", part: "root", children });
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "clearable-input",
   component: "ClearableInput",
   root: "data-geist-input-wrapper",
@@ -24,7 +25,16 @@ export const geist: GeistMap = {
           ours: ".cmdk",
           pick: has("clearable-input"),
           children: [
-            kbd(".k-esc", 0, [{ ours: ".keys", pick: (c: SpecNode) => c.tag === "span", children: [{ ours: "[data-key=esc]", pick: (c: SpecNode) => c.attrs["data-key"] === "esc" }, { ours: "[data-key=cmd]", pick: (c: SpecNode) => c.attrs["data-key"] === "cmd" }] }]),
+            kbd(".k-esc", 0, [
+              {
+                ours: ".keys",
+                pick: (c: SpecNode) => c.tag === "span",
+                children: [
+                  { ours: "[data-key=esc]", pick: (c: SpecNode) => c.attrs["data-key"] === "esc" },
+                  { ours: "[data-key=cmd]", pick: (c: SpecNode) => c.attrs["data-key"] === "cmd" },
+                ],
+              },
+            ]),
             kbd(".k-k", 1),
           ],
         },

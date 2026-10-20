@@ -1,0 +1,40 @@
+:host {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+[part="position"] {
+  color: var(--ds-gray-900);
+  white-space: nowrap;
+  font-size: .875rem;
+  line-height: 1.5;
+}
+
+[part="item"] {
+  min-inline-size: var(--acme-spacing-6);
+  color: var(--ds-gray-900);
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+
+[part="page-size"] {
+  min-inline-size: 8rem;
+}
+
+[part="page-size"]::part(root) {
+  align-items: center;
+  gap: var(--acme-spacing-2);
+  display: flex;
+}
+
+[part="page-size"]::part(control) {
+  flex: 0 auto;
+  min-inline-size: 6rem;
+}
+
+acme-select {
+  inline-size: max-content;
+  min-inline-size: 6rem;
+  max-inline-size: 100%;
+}

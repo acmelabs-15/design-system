@@ -1,0 +1,790 @@
+{
+  "files": [
+    {
+      "source": "/tmp/acme-m24-evals/html-skilled/accessibility-first.json",
+      "path": "eval-1-html-notification-settings/with_skill/archive/accessibility-first.json",
+      "bytes": 89397,
+      "sha256": "7f9875a088f64d22f720db8e99a069bef2a58242616455284905acac9ad271c6"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-skilled/index.html",
+      "path": "eval-1-html-notification-settings/with_skill/outputs/index.html",
+      "bytes": 4031,
+      "sha256": "ec679088bfab9763e0e4cb4dccba73d9c07986d4764700180438f694ba8f1363"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-skilled/result.json",
+      "path": "eval-1-html-notification-settings/with_skill/outputs/result.json",
+      "bytes": 21606,
+      "sha256": "701732bd52bac842b1525d637e53763f0cfa52ef928a790f18a00c0f20483324"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-skilled/verify.ts",
+      "path": "eval-1-html-notification-settings/with_skill/archive/verify.ts",
+      "bytes": 8049,
+      "sha256": "7e1738dcd9ca16b3d35458d293bfdd1df21f7acaa148507fa311bbeec0b78208"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-skilled/first-attempt-verify.ts",
+      "path": "eval-1-html-notification-settings/with_skill/archive/first-attempt-verify.ts",
+      "bytes": 7596,
+      "sha256": "7388fd3ed4b64202060a8f0e5780bc6b074455c8dd84429d2f3beed7407c8838"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-skilled/screenshot.png",
+      "path": "eval-1-html-notification-settings/with_skill/outputs/screenshot.png",
+      "bytes": 39855,
+      "sha256": "85b20ae111aa1b51ba1ace84fb0f763c5d6e67177f621ba6a5a903621fc3dedd"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-skilled/bun.lock",
+      "path": "eval-1-html-notification-settings/with_skill/archive/bun.lock",
+      "bytes": 19218,
+      "sha256": "13badc08639a00cd7d5deeb5877473431c13e9479493ae7d5d18dde78312f2a4"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-skilled/README.md",
+      "path": "eval-1-html-notification-settings/with_skill/outputs/README.md",
+      "bytes": 1703,
+      "sha256": "950e82fd4ae846a02af851990d31ad52a903b40604e09a42ad7140c5fa8a2bae"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-skilled/package.json",
+      "path": "eval-1-html-notification-settings/with_skill/archive/package.json",
+      "bytes": 202,
+      "sha256": "18820750276c275c44760170dd82d2bbe2d8d456058ab33deec8400051ac20ad"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-skilled/first-attempt-result.json",
+      "path": "eval-1-html-notification-settings/with_skill/archive/first-attempt-result.json",
+      "bytes": 21854,
+      "sha256": "1c3c536e5386deed22acb11c8ad23ef20289e5775ec43fc769830feea162cee8"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-skilled/accessibility-final.json",
+      "path": "eval-1-html-notification-settings/with_skill/archive/accessibility-final.json",
+      "bytes": 89397,
+      "sha256": "79adaf6d9a3e230a039c1e4ff1c4c79adb005ac72637fa6b783e12ab5f04f096"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-skilled/server.ts",
+      "path": "eval-1-html-notification-settings/with_skill/archive/server.ts",
+      "bytes": 590,
+      "sha256": "99c77ab84177aaf0cc9c4fa6a1b81719e139bc679637c1dd4e6ccb66bda490be"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-skilled/first-attempt.html",
+      "path": "eval-1-html-notification-settings/with_skill/archive/first-attempt.html",
+      "bytes": 4031,
+      "sha256": "ec679088bfab9763e0e4cb4dccba73d9c07986d4764700180438f694ba8f1363"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-baseline/index.html",
+      "path": "eval-1-html-notification-settings/without_skill/outputs/index.html",
+      "bytes": 2996,
+      "sha256": "be15c3cd526a0d473d4cc38105796744372e906ffa4d154e36fa890b81de3e15"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-baseline/result.json",
+      "path": "eval-1-html-notification-settings/without_skill/outputs/result.json",
+      "bytes": 10702,
+      "sha256": "e23f43f13aa9bbe09b999bfb7feaa585be7ec9aa55bfb728301db273731e179a"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-baseline/verify.ts",
+      "path": "eval-1-html-notification-settings/without_skill/archive/verify.ts",
+      "bytes": 5355,
+      "sha256": "7458b3faa6974e4be8a9746d277916bc080afc1c7a301dd633df1c5673deb90e"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-baseline/run.log",
+      "path": "eval-1-html-notification-settings/without_skill/archive/run.log",
+      "bytes": 10703,
+      "sha256": "a266fce32a5f37fced88866d29acdacc1e0c0ebf36135586f628bffde57b99c0"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-baseline/verified.png",
+      "path": "eval-1-html-notification-settings/without_skill/outputs/verified.png",
+      "bytes": 40262,
+      "sha256": "9bc7f7594495457e12931d5e61ba2ba1dffa42281af06c57f119735555482e04"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-baseline/attempt-2.json",
+      "path": "eval-1-html-notification-settings/without_skill/archive/attempt-2.json",
+      "bytes": 9558,
+      "sha256": "bcb3af8c85fe46f93802887ac0545639014da13fb2b159ed162ca0f917346fd6"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-baseline/attempt-3.json",
+      "path": "eval-1-html-notification-settings/without_skill/archive/attempt-3.json",
+      "bytes": 9247,
+      "sha256": "f3f7c48dc502614d0dd61d7a7ed302f81f439654b176bdd88eff6f7768560834"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-baseline/attempt-1.json",
+      "path": "eval-1-html-notification-settings/without_skill/archive/attempt-1.json",
+      "bytes": 7733,
+      "sha256": "5224a580b281ba8a3e1f7d99090849d32dc74e0dac5b3f049c05e965060dc365"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/html-baseline/failure.png",
+      "path": "eval-1-html-notification-settings/without_skill/archive/failure.png",
+      "bytes": 39377,
+      "sha256": "88e5c78261e4d07773bddfaa6cef4f9967bee4823b567de60a5c469e40ccda10"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/app.tsx",
+      "path": "eval-2-react-preferences/with_skill/outputs/app.tsx",
+      "bytes": 3469,
+      "sha256": "9b7c71dd75c55dac386f7d005ebbd45d269d6cd8f8b73afbd79960cf158864f1"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/verify.first.mjs",
+      "path": "eval-2-react-preferences/with_skill/archive/verify.first.mjs",
+      "bytes": 5215,
+      "sha256": "449920da3e5e4f7b58d82ef028b488746ef5938189f5cf25f601390aa32ad87a"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/index.html",
+      "path": "eval-2-react-preferences/with_skill/outputs/index.html",
+      "bytes": 295,
+      "sha256": "3eb91e9bbe9651dea12754bce8d49dc91fb1848968e8d18a30bbbd8fae94e797"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/result.json",
+      "path": "eval-2-react-preferences/with_skill/outputs/result.json",
+      "bytes": 12474,
+      "sha256": "a3ec36e167e91247a59f59920a9f487602496a8f87f8d5ff7243cde6f86a5197"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/first-run.json",
+      "path": "eval-2-react-preferences/with_skill/archive/first-run.json",
+      "bytes": 6908,
+      "sha256": "f41a17eb6cd6e4a2dc2482a6888513abe84e50f6ebef403d6a9d84505c2269e2"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/second-run.json",
+      "path": "eval-2-react-preferences/with_skill/archive/second-run.json",
+      "bytes": 8473,
+      "sha256": "68b362271e3b953c883cec18f4bad9dca9076d6912a66a44654ac6866ee371be"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/typecheck.log",
+      "path": "eval-2-react-preferences/with_skill/archive/typecheck.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/verify.mjs",
+      "path": "eval-2-react-preferences/with_skill/archive/verify.mjs",
+      "bytes": 6135,
+      "sha256": "22cd3ad3b75213e4a969d190c8832e0b8624d1b8d6295fa6fdd0938e4476f1ab"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/README.md",
+      "path": "eval-2-react-preferences/with_skill/outputs/README.md",
+      "bytes": 1340,
+      "sha256": "b7d0cefbb418b52caf33019fb2f907af936e735139a26925dd99333d7d14f984"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/package.json",
+      "path": "eval-2-react-preferences/with_skill/archive/package.json",
+      "bytes": 261,
+      "sha256": "95bdf17906a232031ee34dbd2b87938fd86d62ffe4a17216bf3b4689e4d5c923"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/app.first.tsx",
+      "path": "eval-2-react-preferences/with_skill/archive/app.first.tsx",
+      "bytes": 3435,
+      "sha256": "3f77f0941c8d7ebcaf28bd85cff3666fbedf9072392bf2897db457d3620cda4f"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/indicator.json",
+      "path": "eval-2-react-preferences/with_skill/archive/indicator.json",
+      "bytes": 420,
+      "sha256": "2a153d81257da12a82725844bf7e9b2a4e9aeb1aae1a67816b722dd9a345c73c"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/ax.json",
+      "path": "eval-2-react-preferences/with_skill/archive/ax.json",
+      "bytes": 4701,
+      "sha256": "2f2ea8c01803c2a8a402b97fb7e929af1a9f12462aa07ec94a2bc5c65f59d8d5"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/style.css",
+      "path": "eval-2-react-preferences/with_skill/outputs/style.css",
+      "bytes": 748,
+      "sha256": "fa97af4c78d2194de1abfa26ecc70d4ecff964a712c6bce539a539e41ddd7ae4"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/tsconfig.json",
+      "path": "eval-2-react-preferences/with_skill/archive/tsconfig.json",
+      "bytes": 569,
+      "sha256": "0d5bffc89296fd23d64a0d6e6885bbcc3e9c3f350b6ea5b1663411ab747050c4"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/verify.second.mjs",
+      "path": "eval-2-react-preferences/with_skill/archive/verify.second.mjs",
+      "bytes": 5532,
+      "sha256": "e7e154e630f8c9a5e4613a1edb557c79ea051b9b5cd9c2df3f1bfab13f28c02b"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/inspect-indicator.mjs",
+      "path": "eval-2-react-preferences/with_skill/archive/inspect-indicator.mjs",
+      "bytes": 1254,
+      "sha256": "256d184f774ff2959ff515856f3e0609588d83d57aab1d3f3610227829392c44"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/preferences.png",
+      "path": "eval-2-react-preferences/with_skill/outputs/preferences.png",
+      "bytes": 32189,
+      "sha256": "f8a86baefa3a40a222d2610d35e07f4387fa8049eb2dd070fff37272cb54b473"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/server.ts",
+      "path": "eval-2-react-preferences/with_skill/archive/server.ts",
+      "bytes": 224,
+      "sha256": "15e5769a3b1fabb384aebc320bb639e245654c5576f1eaa0298b8bca75c80430"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/final-run.log",
+      "path": "eval-2-react-preferences/with_skill/archive/final-run.log",
+      "bytes": 10483,
+      "sha256": "bae7228d54e66171e62e546774fb8db043eb407ede412fa27693eb2a0fb4ac7e"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-skilled/inspect.mjs",
+      "path": "eval-2-react-preferences/with_skill/archive/inspect.mjs",
+      "bytes": 505,
+      "sha256": "636ec33a5fe4f392fc2c651b1231a9f899484d33bdd2a050cefb27d14176a367"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-baseline/app.tsx",
+      "path": "eval-2-react-preferences/without_skill/outputs/app.tsx",
+      "bytes": 2743,
+      "sha256": "f80e612ac4485220bcc7bd33a0d2784f982d4ad885f0edc05a6b78b3e7740266"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-baseline/index.html",
+      "path": "eval-2-react-preferences/without_skill/outputs/index.html",
+      "bytes": 310,
+      "sha256": "6506bec4e7f58fdbdd0e3bf8eaa6751ed083acacd9b594979f0ca536ec43705f"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-baseline/result.json",
+      "path": "eval-2-react-preferences/without_skill/outputs/result.json",
+      "bytes": 4928,
+      "sha256": "042c353502ba6a51bc4c6c5b8a199356ed11e5698bf59097e0e7a3f45b1de1e0"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-baseline/verify.ts",
+      "path": "eval-2-react-preferences/without_skill/archive/verify.ts",
+      "bytes": 6048,
+      "sha256": "7111254d93f92df391bbfdb333ef403441896da24d8301f1130cf07b1dba33ae"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-baseline/verified.png",
+      "path": "eval-2-react-preferences/without_skill/outputs/verified.png",
+      "bytes": 25682,
+      "sha256": "145f94d7beae3858463787263a7d314596ce2b3a49f684102e2c89d11b0c8863"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-baseline/app.css",
+      "path": "eval-2-react-preferences/without_skill/outputs/app.css",
+      "bytes": 489,
+      "sha256": "413085d039a40165da1ce003f18e4cd0b8067f3e01e814aaab1b0e324df5698e"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-baseline/initial.png",
+      "path": "eval-2-react-preferences/without_skill/archive/initial.png",
+      "bytes": 26837,
+      "sha256": "2959b83802e11e0a735615d32258a5e75415151ba3769131f06dbc588705e3b4"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-baseline/inspect.ts",
+      "path": "eval-2-react-preferences/without_skill/archive/inspect.ts",
+      "bytes": 1038,
+      "sha256": "6b84d7003f2773eb10f16dd8251043381e121cfc49583f7a36327821996ad729"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-baseline/first-browser-result.json",
+      "path": "eval-2-react-preferences/without_skill/archive/first-browser-result.json",
+      "bytes": 2217,
+      "sha256": "b493fbeb37bbc9ffed9173be3a434f611e258756ceb6318cb6e5da7c61f85b29"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-baseline/README.md",
+      "path": "eval-2-react-preferences/without_skill/outputs/README.md",
+      "bytes": 1023,
+      "sha256": "1bdbd6c75c57f7ecc0171ed481b2f64493139018d5fefb6095dff237761b64fb"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-baseline/tsconfig.json",
+      "path": "eval-2-react-preferences/without_skill/archive/tsconfig.json",
+      "bytes": 761,
+      "sha256": "8b13a4f7f055c18058166aa0a005c28b3d3236aea1283a335667df84e0c1ef2d"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-baseline/server.ts",
+      "path": "eval-2-react-preferences/without_skill/archive/server.ts",
+      "bytes": 265,
+      "sha256": "b3e22fc3f8d66956f53fea9ed6a67de3bcd3481d26226370f76264ac11eb15f9"
+    },
+    {
+      "source": "/tmp/acme-m24-evals/react-baseline/ax-initial.json",
+      "path": "eval-2-react-preferences/without_skill/archive/ax-initial.json",
+      "bytes": 4672,
+      "sha256": "964529840cea1a9e0c1dc7f4d6a5df3a4d335df32e4f11f0c93071c1eaed940a"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/data.ts",
+      "path": "eval-3-lit-virtual-table/with_skill/outputs/data.ts",
+      "bytes": 1000,
+      "sha256": "ac160af846aae2cd9c624fe832f97ab3e572c684deb58407c914e213a01d4e35"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/options-ax.json",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/options-ax.json",
+      "bytes": 208960,
+      "sha256": "de6b68a530c4a6054efb3483cf950127b17360e875ccef5470d6f0a31ce7ebf0"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/index.html",
+      "path": "eval-3-lit-virtual-table/with_skill/outputs/index.html",
+      "bytes": 291,
+      "sha256": "f2ba65194afe899ec071d4aefad1ffd3a5f4a841f9146793cabe1c203bbb3dda"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/result-attempt-2.json",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/result-attempt-2.json",
+      "bytes": 16705,
+      "sha256": "ff09da36e01bb8ab3235ba623204d01e25ba8ac07c9fbc3b8629d32bf813e2b0"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/main.ts",
+      "path": "eval-3-lit-virtual-table/with_skill/outputs/main.ts",
+      "bytes": 5809,
+      "sha256": "c4660e8b8b69171231071be96587ca73436d383b215013095d57654c17cc82f3"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/result.json",
+      "path": "eval-3-lit-virtual-table/with_skill/outputs/result.json",
+      "bytes": 26302,
+      "sha256": "7dc1c1f802690e2a813e0aa90d3859e593e0f2a3c7b87e7440ee874370acf18c"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/verify.ts",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/verify.ts",
+      "bytes": 8965,
+      "sha256": "7afd2d3d5905f42bfdfd01bd73059f9649923a9f80f2bd9b8ce11bb2d336289b"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/inspect-options.ts",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/inspect-options.ts",
+      "bytes": 884,
+      "sha256": "304db25296275c2f6f8aec3329e03bf2eb24a8517a14014869e787a12bacd4b6"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/verified.png",
+      "path": "eval-3-lit-virtual-table/with_skill/outputs/verified.png",
+      "bytes": 40820,
+      "sha256": "8c0d4e6b5a71b6f9165d3d5add9ee43cde897db6ca92b878a28564a5c32e3396"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/probe.ts",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/probe.ts",
+      "bytes": 1004,
+      "sha256": "cc40a2dd36d9785d3de80a93bcd3196bb391f315df745c6253239f33c1d9f5ea"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/probe.log",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/probe.log",
+      "bytes": 889,
+      "sha256": "020595a2a5c022713329050f205f3680c3dd0b057f4db971a04440fde3ef4c40"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/acme-pagination-previous.json",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/acme-pagination-previous.json",
+      "bytes": 22437,
+      "sha256": "05829e039eb07085aa9535bb9a77744e311adc467f6b6e10bb7aaf45b3bb6509"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/acme-table.json",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/acme-table.json",
+      "bytes": 17410,
+      "sha256": "6b41d2fb40042458095cf063ce8d7a60893252b539de828ce5ed1d7aee25c6fd"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/recipe-lit.txt",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/recipe-lit.txt",
+      "bytes": 41372,
+      "sha256": "ed0445695dd7b07f2600d254a126b491ca6769b2808ebda8296e129641fe1cb8"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/setup.ts",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/setup.ts",
+      "bytes": 414,
+      "sha256": "6f65de6f0239c18768ab15ae143c4b155db0a15e63ba4e4e5cd45fca4a8754e0"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/initial.png",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/initial.png",
+      "bytes": 41851,
+      "sha256": "d4db29b73d5cbdddf54e7621cb31ee5a838bc3d933f0ee4b0aa12619537efd4e"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/inspect.ts",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/inspect.ts",
+      "bytes": 933,
+      "sha256": "0299e51d2fd8c5fe459a0b69683cb08325c1543e3b695c77b982b12bdb0ef615"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/inspect-options.log",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/inspect-options.log",
+      "bytes": 4339,
+      "sha256": "2be91e65e4d78d4e0e0ac564af49e484882a48b07ce01281882d33d5a723b4b4"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/README.md",
+      "path": "eval-3-lit-virtual-table/with_skill/outputs/README.md",
+      "bytes": 2684,
+      "sha256": "de2127f11ee01f9fc82fadcabf35fd9ae8ca8d637ffa1ed4893cd064b7696baf"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/serve.ts",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/serve.ts",
+      "bytes": 338,
+      "sha256": "d53ecb942a0692339894cdfae0c58b3afd827ebe26abcf37c47d5bc993f3491c"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/main-attempt-1.ts",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/main-attempt-1.ts",
+      "bytes": 5775,
+      "sha256": "1b2dd645ade0aeb2882765799283156ac50838b9594e590bb6da15b81474f370"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/native-ax.json",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/native-ax.json",
+      "bytes": 193914,
+      "sha256": "aca2a320a8d2c0726f172eb20765d804f53198a7f27e4e10cbe475a9e36d5c22"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/typecheck-final.txt",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/typecheck-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/acme-pagination-next.json",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/acme-pagination-next.json",
+      "bytes": 22381,
+      "sha256": "7efe2133ed351f522eb008922b61a63435a0261dda3f8c7e1b0911bad3ce4909"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/grid-interaction.ts",
+      "path": "eval-3-lit-virtual-table/with_skill/outputs/grid-interaction.ts",
+      "bytes": 4795,
+      "sha256": "2f433e3415da8aca865e707b2e39a67e570cbf466b43ec22fea1ea43ce5d7a84"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/options.png",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/options.png",
+      "bytes": 43161,
+      "sha256": "5e3f3adb7cc64204b3342fc94e66a5b3b57c0a331f6f9579e78369196214721d"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/typecheck-attempt-1.txt",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/typecheck-attempt-1.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/tsconfig.json",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/tsconfig.json",
+      "bytes": 244,
+      "sha256": "4180755ec384d57a2089b1d71d4f83021a5478562ab51a78753a6818385cbe38"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/acme-pagination-page-size.json",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/acme-pagination-page-size.json",
+      "bytes": 3048,
+      "sha256": "b6e26d6807b457f213b31ebb8d4a3c80aa43c185fcdec69378d5720d6463ccae"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/definitions.ts",
+      "path": "eval-3-lit-virtual-table/with_skill/outputs/definitions.ts",
+      "bytes": 484,
+      "sha256": "76cb8dc468513960f44ae84040511897b057a77c0d3d0c77504717773fc28acf"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/result-attempt-1.json",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/result-attempt-1.json",
+      "bytes": 7194,
+      "sha256": "b7c3cb0a1db49e1dd3f180b6c465aef6549a4540802fa91452ca9950e232c7a9"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/verify-attempt-1.log",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/verify-attempt-1.log",
+      "bytes": 2212,
+      "sha256": "3d80aa8af849144ab1cac6cf0b214c7a98e2a5f3d5b47ae14f00a77ded355650"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/verify-attempt-1.ts",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/verify-attempt-1.ts",
+      "bytes": 8545,
+      "sha256": "7a5d654a9348bc8e64834d4ce0271acb8ef4cc2c1c6e66e5a5997cade4a53672"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/acme-pagination.json",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/acme-pagination.json",
+      "bytes": 17117,
+      "sha256": "b7aa2f3c5a7168db5a53559c285b30c5b97da0da5d335476e75fb03495c3231b"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/acme-pagination-position.json",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/acme-pagination-position.json",
+      "bytes": 2401,
+      "sha256": "b378012a0c3c17a89b4c280b93ed82a5bec99cc36f212a14a7cedfdab5c33f59"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/verify-attempt-2.log",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/verify-attempt-2.log",
+      "bytes": 1997,
+      "sha256": "93d71441024272921fdbd2c92e57631d4122c82394bd161835d76bead2adf4dc"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/skilled/verify-attempt-3.log",
+      "path": "eval-3-lit-virtual-table/with_skill/archive/verify-attempt-3.log",
+      "bytes": 2812,
+      "sha256": "430429f47ddeb778865f2986078cbd69568a95099f4b968b463fa5eb4c276d97"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/result-attempt1.json",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/result-attempt1.json",
+      "bytes": 6629,
+      "sha256": "00161e202409bf2c970f99d343800ac9751048db44da0bdd449ecfe7a266a4ff"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/browser-attempt2.json",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/browser-attempt2.json",
+      "bytes": 6402,
+      "sha256": "990575433b3d5c08e60236c5d65a4643049616e54c677c6498cff06064db307c"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/index.html",
+      "path": "eval-3-lit-virtual-table/without_skill/outputs/index.html",
+      "bytes": 241,
+      "sha256": "51e0f79350bd1c3ab2ec81d923adef4331e372aa68994c043ef5f92bef833f90"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/requests.ts",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/requests.ts",
+      "bytes": 1060,
+      "sha256": "9df008e49cfa889857159f1e7b583d010c080833a9dd9424239517a3dc245879"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/result.json",
+      "path": "eval-3-lit-virtual-table/without_skill/outputs/result.json",
+      "bytes": 9720,
+      "sha256": "f21cc16daa1fa419432a67d1bcdf1bca89249dd381b2513059f9f17249ec1457"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/controls2.ts",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/controls2.ts",
+      "bytes": 672,
+      "sha256": "9a361590457072c824a16912e6ef715768fb8c23a4ce4770d0781fde8848ce80"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/verify.ts",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/verify.ts",
+      "bytes": 7543,
+      "sha256": "808d4c941c077b6dacf05b0cd322628d2d30ebf55c0598141f337ca5bf03fd29"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/inspect-attempt1.json",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/inspect-attempt1.json",
+      "bytes": 10547,
+      "sha256": "fd137065b4b4b014c3267e4bb02bcd5337725b58ef898d42c38ebd896b44dd80"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/browser-attempt3.json",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/browser-attempt3.json",
+      "bytes": 8069,
+      "sha256": "36a89e6cf211aff5624e4ebd6798a47db5f324c0feb94da2406dbd7941d893bf"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/verification-attempt3.log",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/verification-attempt3.log",
+      "bytes": 8086,
+      "sha256": "3b85444c979305afefb7628634094f4b5fbc4a2f6325a989fed4b7571ddcbb9c"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/verification-attempt2.log",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/verification-attempt2.log",
+      "bytes": 6420,
+      "sha256": "1bd8e9526208e76311cb2b3d32fdafa30a6d9a8b6483417555e04af183891a4a"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/verify-attempt2.ts",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/verify-attempt2.ts",
+      "bytes": 7254,
+      "sha256": "d17cb2631fa7243745d8ac573bae3603fb33130e029745c503892ae624b224a8"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/app-attempt2.ts",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/app-attempt2.ts",
+      "bytes": 7184,
+      "sha256": "97f765c4c6f6d34b0f711f944f6fa8f7e2f030988f6e34807374ab18a3750561"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/baseline.png",
+      "path": "eval-3-lit-virtual-table/without_skill/outputs/baseline.png",
+      "bytes": 37477,
+      "sha256": "0a968374e500dab63e1bb1a5f18de546f4c201336fae6e604df30a3852cb8e44"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/app.ts",
+      "path": "eval-3-lit-virtual-table/without_skill/outputs/app.ts",
+      "bytes": 7231,
+      "sha256": "b7b8d289ee2be04853890765bdc769a6761694204081186ac1471f696f65b3c1"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/recipe-lit.txt",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/recipe-lit.txt",
+      "bytes": 41372,
+      "sha256": "ed0445695dd7b07f2600d254a126b491ca6769b2808ebda8296e129641fe1cb8"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/controls-attempt2.log",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/controls-attempt2.log",
+      "bytes": 3039,
+      "sha256": "b6908a3759bb35b454e242e25bfc1ecbfed2111bdedba933b3f70a40474e0d1f"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/inspect.ts",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/inspect.ts",
+      "bytes": 731,
+      "sha256": "02aa8c6b844052ed8e9082e61461740583197221ffed998bed7b383b4fa7f057"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/app-attempt3.ts",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/app-attempt3.ts",
+      "bytes": 7185,
+      "sha256": "82ed6df091e350d08396c7e816f194cfbbbc70263171f80b76333736d2d47861"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/controls-attempt1.log",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/controls-attempt1.log",
+      "bytes": 712,
+      "sha256": "51ed9acb85ba6801179479914d915a2e1a935320e1d36845d3a99781003010ed"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/README.md",
+      "path": "eval-3-lit-virtual-table/without_skill/outputs/README.md",
+      "bytes": 1784,
+      "sha256": "a09e432d9f9bca8a3bf80354376b12ee56fb596f530b5c3487bffb5cfa16725e"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/serve.ts",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/serve.ts",
+      "bytes": 212,
+      "sha256": "7e163038c382bef91ac1f8c2566c231ba8870431292791ad378e49da1e3a89f1"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/build-attempt4.log",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/build-attempt4.log",
+      "bytes": 94,
+      "sha256": "bf52f734d0d97b522bcfcfd7f9354cc74d5c53ab4d6998f0e94568a1960f365a"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/typecheck-attempt2.log",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/typecheck-attempt2.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/build-attempt1.log",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/build-attempt1.log",
+      "bytes": 2233,
+      "sha256": "e205df941d25166dcf8d77d0c35e442a3fb0350f5ac56d432ef36a5f5c714ddc"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/app-attempt1.ts",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/app-attempt1.ts",
+      "bytes": 7183,
+      "sha256": "a0a8a0700446fab8ad61b077715fe8bacb3b5974c88b85795ac7ae1187515f8e"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/typecheck-attempt3.log",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/typecheck-attempt3.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/typecheck-attempt1.log",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/typecheck-attempt1.log",
+      "bytes": 62,
+      "sha256": "aca1cdd5d66698115d0df9bbed3f85591b89b0e8e2d629dbffcb9a49fea259fe"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/build-attempt2.log",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/build-attempt2.log",
+      "bytes": 95,
+      "sha256": "d4798ed8d01e9c0658c38450974e47d13fed3c7d6385fde2c19354d68138ac6c"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/build-attempt3.log",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/build-attempt3.log",
+      "bytes": 94,
+      "sha256": "7b8516e30d98a56bf9783481f8517c64658dad9560360e46bee863750fb74053"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/tsconfig.json",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/tsconfig.json",
+      "bytes": 195,
+      "sha256": "199f3b851910e899e87a3b998a5fe142af696f9c878714b5da91dd403cd97912"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/verify-attempt1.ts",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/verify-attempt1.ts",
+      "bytes": 6934,
+      "sha256": "fc99128f30f1455e6755f37cadcf038074364d4e94f80b4c4feec83658aeadb5"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/chrome-ax.json",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/chrome-ax.json",
+      "bytes": 212850,
+      "sha256": "3daa9798eceb696b5ce5e39d64fd6bff290d216620aec143ece065c4c4500bb8"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/controls.ts",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/controls.ts",
+      "bytes": 713,
+      "sha256": "76a4c88201797451a9fa725cfcfad8d983887df8cdfe074bee8e47e97da57c4d"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/requests-attempt1.log",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/requests-attempt1.log",
+      "bytes": 742,
+      "sha256": "ecd2c2d7127f2eb76cf6a216b3e4a3f9f984a728b2799db86db34796ae29c7b0"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/result-attempt2.json",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/result-attempt2.json",
+      "bytes": 6419,
+      "sha256": "9bffbe25204f0ab7adb5026707c3357ef48e9d052446552b1869199cc2cdf9e7"
+    },
+    {
+      "source": "/tmp/acme-m24-table-evals/baseline/browser-attempt1.json",
+      "path": "eval-3-lit-virtual-table/without_skill/archive/browser-attempt1.json",
+      "bytes": 6612,
+      "sha256": "4b1c8c77ed8d2918bf812050d66bdbe4874a87ff40206c7c53b66b67fe1943da"
+    }
+  ],
+  "excluded": [
+    "node_modules/",
+    "dist/",
+    "generated build bundles (Table baseline app.js and app.css)"
+  ],
+  "preservation": "All included original files are byte-for-byte copies; relative paths locate them independently of /tmp."
+}

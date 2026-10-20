@@ -12,7 +12,7 @@ browser. Everything here is a build-time tool; nothing under `tools/` ships, and
 | `tw.ts` | Parses the sheets in link order; `resolve(class)` → rules; `allRules()`; `sheetOrder()`. |
 | `extract.ts` | `bun tools/geist/extract.ts <page>` writes `spec/<page>.json`: every example's DOM with resolved styles per state. `synth <page> <sketch.json>` adds a client-only state (open menu, tooltip, toast) drawn by hand from a class string found in `corpus/js`. |
 | `maps/<name>.ts` | The mapping for one element: reference page and JSX tags, root marker, our root selector, prop → modifier class, children, slotted tags. See `maps/button.ts`. |
-| `gen.ts` | `bun tools/geist/gen.ts <name>` writes `src/components/<name>/<name>.styles.ts`. Reports classes no group covers, unmapped children, composition hazards. |
+| `gen.ts` | `bun tools/geist/gen.ts <name>` writes `src/generated/components/<name>/<name>.styles.ts` and its compiled CSS/maps. Reports classes no group covers, unmapped children, composition hazards. |
 | `vars.ts` | Writes `src/generated/theme.css` (all token tiers, light and dark). Rerun only when the corpus changes. |
 | `serve.ts` (:4184) | Mirror of the reference: `http://localhost:4184/geist/<page>`. Scripts stripped, so overlays do not open there. |
 | `collector.ts` (:4183) | Receives census results → `census/<page>[.dark].<side>.json`. Also serves `/census.js`. |

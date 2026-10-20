@@ -1,0 +1,37 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const scrollbarCss = css`:host {
+  inset-block: 0 var(--_scroll-corner-height);
+  inline-size: var(--_scroll-thickness);
+  opacity: var(--_scroll-opacity, 0);
+  z-index: 2;
+  pointer-events: none;
+  display: block;
+  position: absolute;
+  inset-inline-end: 0;
+}
+
+:host([orientation="horizontal"]) {
+  inset-block: auto 0;
+  inset-inline: 0 var(--_scroll-corner-width);
+  block-size: var(--_scroll-thickness);
+  inline-size: auto;
+}
+
+:host([data-visible]) {
+  pointer-events: auto;
+}
+
+:host([data-inactive]) {
+  display: none;
+}
+
+[part="scrollbar"] {
+  touch-action: none;
+  user-select: none;
+  direction: ltr;
+  block-size: 100%;
+  inline-size: 100%;
+  position: relative;
+}
+`;

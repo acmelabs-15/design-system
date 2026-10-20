@@ -1,0 +1,266 @@
+{
+  "variant": "baseline",
+  "checks": [
+    {
+      "name": "10000 application records, native table and bounded initial window",
+      "pass": true,
+      "evidence": {
+        "source": 10000,
+        "rows": 1000,
+        "pagination": {
+          "pageIndex": 0,
+          "pageSize": 1000
+        },
+        "filtered": 10000,
+        "first": "record-0",
+        "last": "record-999",
+        "selected": [],
+        "rendered": 10,
+        "shown": [
+          "record-0",
+          "record-1",
+          "record-2",
+          "record-3",
+          "record-4",
+          "record-5",
+          "record-6",
+          "record-7",
+          "record-8",
+          "record-9"
+        ]
+      }
+    },
+    {
+      "name": "independent row selection",
+      "pass": true,
+      "evidence": {
+        "source": 10000,
+        "rows": 1000,
+        "pagination": {
+          "pageIndex": 0,
+          "pageSize": 1000
+        },
+        "filtered": 10000,
+        "first": "record-0",
+        "last": "record-999",
+        "selected": [
+          "record-3"
+        ],
+        "rendered": 10,
+        "shown": [
+          "record-0",
+          "record-1",
+          "record-2",
+          "record-3",
+          "record-4",
+          "record-5",
+          "record-6",
+          "record-7",
+          "record-8",
+          "record-9"
+        ]
+      }
+    },
+    {
+      "name": "sorting descending then ascending",
+      "pass": true,
+      "evidence": {
+        "desc": {
+          "source": 10000,
+          "rows": 1000,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 1000
+          },
+          "filtered": 10000,
+          "first": "record-9999",
+          "last": "record-9000",
+          "selected": [
+            "record-3"
+          ],
+          "rendered": 10,
+          "shown": [
+            "record-9999",
+            "record-9998",
+            "record-9997",
+            "record-9996",
+            "record-9995",
+            "record-9994",
+            "record-9993",
+            "record-9992",
+            "record-9991",
+            "record-9990"
+          ]
+        },
+        "asc": {
+          "source": 10000,
+          "rows": 1000,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 1000
+          },
+          "filtered": 10000,
+          "first": "record-0",
+          "last": "record-999",
+          "selected": [
+            "record-3"
+          ],
+          "rendered": 10,
+          "shown": [
+            "record-0",
+            "record-1",
+            "record-2",
+            "record-3",
+            "record-4",
+            "record-5",
+            "record-6",
+            "record-7",
+            "record-8",
+            "record-9"
+          ]
+        }
+      }
+    },
+    {
+      "name": "filter exact matching subset and selection persists",
+      "pass": true,
+      "evidence": {
+        "source": 10000,
+        "rows": 100,
+        "pagination": {
+          "pageIndex": 0,
+          "pageSize": 1000
+        },
+        "filtered": 100,
+        "first": "record-9900",
+        "last": "record-9999",
+        "selected": [
+          "record-3"
+        ],
+        "rendered": 10,
+        "shown": [
+          "record-9900",
+          "record-9901",
+          "record-9902",
+          "record-9903",
+          "record-9904",
+          "record-9905",
+          "record-9906",
+          "record-9907",
+          "record-9908",
+          "record-9909"
+        ]
+      }
+    },
+    {
+      "name": "page size 50 then next page request",
+      "pass": false,
+      "error": "TimeoutError: selectOption: Timeout 4000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('acme-pagination-page-size select')\u001b[22m\n"
+    },
+    {
+      "name": "page size 10000 and scrolling reaches far records with bounded rows",
+      "pass": false,
+      "error": "TimeoutError: selectOption: Timeout 4000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('acme-pagination-page-size select')\u001b[22m\n"
+    },
+    {
+      "name": "keyboard crosses virtual window and preserves logical cell focus",
+      "pass": false,
+      "error": "Error: keyboard focus lost at virtual boundary"
+    },
+    {
+      "name": "Chrome AX names for table, pagination, controls",
+      "pass": true,
+      "evidence": [
+        {
+          "role": "navigation",
+          "name": "Record pages"
+        },
+        {
+          "role": "grid",
+          "name": "Application records"
+        },
+        {
+          "role": "combobox",
+          "name": "Show"
+        }
+      ]
+    },
+    {
+      "name": "disconnect releases virtual scroll and table subscription, same-instance remount works",
+      "pass": true,
+      "evidence": {
+        "detached": {
+          "scrollReleased": true,
+          "before": 15,
+          "after": 15
+        },
+        "remounted": {
+          "source": 10000,
+          "rows": 1000,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 1000
+          },
+          "filtered": 10000,
+          "first": "record-9999",
+          "last": "record-9000",
+          "selected": [
+            "record-3"
+          ],
+          "rendered": 12,
+          "shown": [
+            "record-9011",
+            "record-9010",
+            "record-9009",
+            "record-9008",
+            "record-9007",
+            "record-9006",
+            "record-9005",
+            "record-9004",
+            "record-9003",
+            "record-9002",
+            "record-9001",
+            "record-9000"
+          ]
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "attempts": [
+    {
+      "step": "initial directory read",
+      "result": "baseline directory did not exist; created own directory"
+    },
+    {
+      "step": "recipe read",
+      "result": "whole JSON output truncated; extracted only Lit source, read needed table data and keyboard sections plus public declarations"
+    },
+    {
+      "step": "build attempt 1",
+      "result": "own source syntax error; missing interpolation closing brace",
+      "evidence": "build-attempt1.log"
+    },
+    {
+      "step": "build attempt 2",
+      "result": "pass",
+      "evidence": "build-attempt2.log"
+    },
+    {
+      "step": "typecheck attempt 1",
+      "result": "own source possibly undefined getColumn result",
+      "evidence": "typecheck-attempt1.log"
+    },
+    {
+      "step": "typecheck attempt 2",
+      "result": "pass; strict, skipLibCheck false",
+      "evidence": "typecheck-attempt2.log"
+    },
+    {
+      "step": "runtime inspect attempt 1",
+      "result": "pass; no browser errors",
+      "evidence": "inspect-attempt1.json"
+    }
+  ],
+  "pass": false
+}

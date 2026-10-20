@@ -1,0 +1,11 @@
+:host{display:block;min-inline-size:0;}
+acme-dialog::part(surface){inline-size:min(640px,calc(100vw - 32px));margin-block-start:max(16px,15dvh);margin-block-end:auto;max-block-size:calc(85dvh - 16px);}
+acme-dialog::part(header){padding:var(--acme-spacing-3);border-block-end:1px solid var(--ds-gray-alpha-400);}
+acme-dialog::part(body){padding:0;--_acme-inset-inline-start:0px;--_acme-inset-inline-end:0px;}
+acme-dialog::part(footer){padding:0;}
+.search{min-inline-size:0;}
+acme-input{inline-size:100%;}
+acme-scroll-area{block-size:min(var(--_command-list-height,48px),55dvh);}
+[part=list]{padding:var(--acme-spacing-2);min-inline-size:0;}
+[part=empty],[part=loading]{padding:var(--acme-spacing-5);color:var(--ds-gray-900);font-size:.875rem;text-align:center;}
+.sr{position:absolute;inline-size:1px;block-size:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}

@@ -1,0 +1,31 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const listLightCss = css`acme-list > ul, acme-list > ol {
+  font: inherit;
+  color: inherit;
+  flex-direction: column;
+  margin: 0;
+  padding-inline-start: var(--acme-spacing-6);
+  display: flex;
+}
+
+acme-list > ul > li, acme-list > ol > li {
+  min-inline-size: 0;
+}
+
+acme-list > ul > li::marker, acme-list > ol > li::marker {
+  color: var(--acme-list-marker-color, currentColor);
+}
+
+acme-list[marker="none"] > ul, acme-list[marker="none"] > ol, acme-list[marker="custom"] > ul, acme-list[marker="custom"] > ol {
+  padding-inline-start: 0;
+  list-style: none;
+}
+
+acme-list [data-acme-list-part="marker"] {
+  vertical-align: middle;
+  color: var(--acme-list-marker-color, currentColor);
+  margin-inline-end: var(--acme-spacing-2);
+  display: inline-flex;
+}
+`;

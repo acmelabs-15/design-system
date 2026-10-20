@@ -1,0 +1,1932 @@
+{
+  "date": "2026-09-20",
+  "phase": "Phase 6 M05",
+  "scope": "Pure common-style plan from canonical ordered inputs; no public helper or component renderer claimed",
+  "files": [
+    "src/shared/responsive-style-plan.ts",
+    "src/shared/__tests__/responsive-style-plan.test.ts"
+  ],
+  "unit": {
+    "tests": 7,
+    "assertions": 24,
+    "result": "pass",
+    "red": "bun test v1.4.0 (34cbb9a40)\n\nsrc/shared/__tests__/responsive-style-plan.test.ts:\n\n# Unhandled error between tests\n-------------------------------\nerror: Cannot find module '../responsive-style-plan' from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/__tests__/responsive-style-plan.test.ts'\n-------------------------------\n\n\n 0 pass\n 1 fail\n 1 error\nRan 1 test across 1 file. [104.00ms]\n",
+    "green": "bun test v1.4.0 (34cbb9a40)\n\nsrc/shared/__tests__/responsive-style-plan.test.ts:\n(pass) merges equivalent conditions across properties before applying authored declaration order [0.42ms]\n(pass) query order wins across conditions even when the broad shorthand is authored last [0.06ms]\n(pass) preserves raw CSS and uses independent numeric categories with signed spacing [0.07ms]\n(pass) display reaches both boxes while ordinary geometry reaches only the host [0.23ms]\n(pass) a fresh empty input plan removes all prior declarations, without a saved last-valid result [0.06ms]\n(pass) validates whole inputs and duplicate fields before returning a plan [0.14ms]\n(pass) snapshots supplied transitions and authored values into deeply immutable plans [0.06ms]\n\n 7 pass\n 0 fail\n 24 expect() calls\nRan 7 tests across 1 file. [96.00ms]\n"
+  },
+  "browser": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "500px cross-condition shorthand false",
+            "ok": true,
+            "actual": [
+              "8px",
+              "8px"
+            ],
+            "expected": [
+              "8px",
+              "8px"
+            ]
+          },
+          {
+            "name": "500px same-condition authored broad last false",
+            "ok": true,
+            "actual": [
+              "4px",
+              "4px"
+            ],
+            "expected": [
+              "4px",
+              "4px"
+            ]
+          },
+          {
+            "name": "500px same-condition authored narrow last false",
+            "ok": true,
+            "actual": [
+              "8px",
+              "4px"
+            ],
+            "expected": [
+              "8px",
+              "4px"
+            ]
+          },
+          {
+            "name": "500px cross-condition shorthand true",
+            "ok": true,
+            "actual": [
+              "8px",
+              "8px"
+            ],
+            "expected": [
+              "8px",
+              "8px"
+            ]
+          },
+          {
+            "name": "500px same-condition authored broad last true",
+            "ok": true,
+            "actual": [
+              "4px",
+              "4px"
+            ],
+            "expected": [
+              "4px",
+              "4px"
+            ]
+          },
+          {
+            "name": "500px same-condition authored narrow last true",
+            "ok": true,
+            "actual": [
+              "8px",
+              "4px"
+            ],
+            "expected": [
+              "8px",
+              "4px"
+            ]
+          },
+          {
+            "name": "500px independent numeric token categories",
+            "ok": true,
+            "actual": [
+              "32px",
+              "-8px"
+            ],
+            "expected": [
+              "32px",
+              "-8px"
+            ]
+          },
+          {
+            "name": "500px live token overrides",
+            "ok": true,
+            "actual": [
+              "45px",
+              "-11px"
+            ],
+            "expected": [
+              "45px",
+              "-11px"
+            ]
+          },
+          {
+            "name": "500px sparse band continues prior declaration",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "500px display affects both boxes",
+            "ok": true,
+            "actual": [
+              "block",
+              "block"
+            ],
+            "expected": [
+              "block",
+              "block"
+            ]
+          },
+          {
+            "name": "500px container boundary 599",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "500px container boundary 600",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "500px container boundary 839",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "500px container boundary 840",
+            "ok": true,
+            "actual": "12px",
+            "expected": "12px"
+          },
+          {
+            "name": "500px missing named container retains baseline",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "500px native invalid computed value",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "500px empty plan exposes native default",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "600px cross-condition shorthand false",
+            "ok": true,
+            "actual": [
+              "8px",
+              "8px"
+            ],
+            "expected": [
+              "8px",
+              "8px"
+            ]
+          },
+          {
+            "name": "600px same-condition authored broad last false",
+            "ok": true,
+            "actual": [
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px"
+            ]
+          },
+          {
+            "name": "600px same-condition authored narrow last false",
+            "ok": true,
+            "actual": [
+              "16px",
+              "12px"
+            ],
+            "expected": [
+              "16px",
+              "12px"
+            ]
+          },
+          {
+            "name": "600px cross-condition shorthand true",
+            "ok": true,
+            "actual": [
+              "8px",
+              "8px"
+            ],
+            "expected": [
+              "8px",
+              "8px"
+            ]
+          },
+          {
+            "name": "600px same-condition authored broad last true",
+            "ok": true,
+            "actual": [
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px"
+            ]
+          },
+          {
+            "name": "600px same-condition authored narrow last true",
+            "ok": true,
+            "actual": [
+              "16px",
+              "12px"
+            ],
+            "expected": [
+              "16px",
+              "12px"
+            ]
+          },
+          {
+            "name": "600px independent numeric token categories",
+            "ok": true,
+            "actual": [
+              "32px",
+              "-8px"
+            ],
+            "expected": [
+              "32px",
+              "-8px"
+            ]
+          },
+          {
+            "name": "600px live token overrides",
+            "ok": true,
+            "actual": [
+              "45px",
+              "-11px"
+            ],
+            "expected": [
+              "45px",
+              "-11px"
+            ]
+          },
+          {
+            "name": "600px sparse band continues prior declaration",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "600px display affects both boxes",
+            "ok": true,
+            "actual": [
+              "none",
+              "none"
+            ],
+            "expected": [
+              "none",
+              "none"
+            ]
+          },
+          {
+            "name": "600px container boundary 599",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "600px container boundary 600",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "600px container boundary 839",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "600px container boundary 840",
+            "ok": true,
+            "actual": "12px",
+            "expected": "12px"
+          },
+          {
+            "name": "600px missing named container retains baseline",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "600px native invalid computed value",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "600px empty plan exposes native default",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "840px cross-condition shorthand false",
+            "ok": true,
+            "actual": [
+              "8px",
+              "8px"
+            ],
+            "expected": [
+              "8px",
+              "8px"
+            ]
+          },
+          {
+            "name": "840px same-condition authored broad last false",
+            "ok": true,
+            "actual": [
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px"
+            ]
+          },
+          {
+            "name": "840px same-condition authored narrow last false",
+            "ok": true,
+            "actual": [
+              "16px",
+              "12px"
+            ],
+            "expected": [
+              "16px",
+              "12px"
+            ]
+          },
+          {
+            "name": "840px cross-condition shorthand true",
+            "ok": true,
+            "actual": [
+              "8px",
+              "8px"
+            ],
+            "expected": [
+              "8px",
+              "8px"
+            ]
+          },
+          {
+            "name": "840px same-condition authored broad last true",
+            "ok": true,
+            "actual": [
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px"
+            ]
+          },
+          {
+            "name": "840px same-condition authored narrow last true",
+            "ok": true,
+            "actual": [
+              "16px",
+              "12px"
+            ],
+            "expected": [
+              "16px",
+              "12px"
+            ]
+          },
+          {
+            "name": "840px independent numeric token categories",
+            "ok": true,
+            "actual": [
+              "32px",
+              "-8px"
+            ],
+            "expected": [
+              "32px",
+              "-8px"
+            ]
+          },
+          {
+            "name": "840px live token overrides",
+            "ok": true,
+            "actual": [
+              "45px",
+              "-11px"
+            ],
+            "expected": [
+              "45px",
+              "-11px"
+            ]
+          },
+          {
+            "name": "840px sparse band continues prior declaration",
+            "ok": true,
+            "actual": "12px",
+            "expected": "12px"
+          },
+          {
+            "name": "840px display affects both boxes",
+            "ok": true,
+            "actual": [
+              "none",
+              "none"
+            ],
+            "expected": [
+              "none",
+              "none"
+            ]
+          },
+          {
+            "name": "840px container boundary 599",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "840px container boundary 600",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "840px container boundary 839",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "840px container boundary 840",
+            "ok": true,
+            "actual": "12px",
+            "expected": "12px"
+          },
+          {
+            "name": "840px missing named container retains baseline",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "840px native invalid computed value",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "840px empty plan exposes native default",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "1200px cross-condition shorthand false",
+            "ok": true,
+            "actual": [
+              "16px",
+              "8px"
+            ],
+            "expected": [
+              "16px",
+              "8px"
+            ]
+          },
+          {
+            "name": "1200px same-condition authored broad last false",
+            "ok": true,
+            "actual": [
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px"
+            ]
+          },
+          {
+            "name": "1200px same-condition authored narrow last false",
+            "ok": true,
+            "actual": [
+              "16px",
+              "12px"
+            ],
+            "expected": [
+              "16px",
+              "12px"
+            ]
+          },
+          {
+            "name": "1200px cross-condition shorthand true",
+            "ok": true,
+            "actual": [
+              "16px",
+              "8px"
+            ],
+            "expected": [
+              "16px",
+              "8px"
+            ]
+          },
+          {
+            "name": "1200px same-condition authored broad last true",
+            "ok": true,
+            "actual": [
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px"
+            ]
+          },
+          {
+            "name": "1200px same-condition authored narrow last true",
+            "ok": true,
+            "actual": [
+              "16px",
+              "12px"
+            ],
+            "expected": [
+              "16px",
+              "12px"
+            ]
+          },
+          {
+            "name": "1200px independent numeric token categories",
+            "ok": true,
+            "actual": [
+              "32px",
+              "-8px"
+            ],
+            "expected": [
+              "32px",
+              "-8px"
+            ]
+          },
+          {
+            "name": "1200px live token overrides",
+            "ok": true,
+            "actual": [
+              "45px",
+              "-11px"
+            ],
+            "expected": [
+              "45px",
+              "-11px"
+            ]
+          },
+          {
+            "name": "1200px sparse band continues prior declaration",
+            "ok": true,
+            "actual": "12px",
+            "expected": "12px"
+          },
+          {
+            "name": "1200px display affects both boxes",
+            "ok": true,
+            "actual": [
+              "none",
+              "none"
+            ],
+            "expected": [
+              "none",
+              "none"
+            ]
+          },
+          {
+            "name": "1200px container boundary 599",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "1200px container boundary 600",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "1200px container boundary 839",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "1200px container boundary 840",
+            "ok": true,
+            "actual": "12px",
+            "expected": "12px"
+          },
+          {
+            "name": "1200px missing named container retains baseline",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "1200px native invalid computed value",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "1200px empty plan exposes native default",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "500px cross-condition shorthand false",
+            "ok": true,
+            "actual": [
+              "8px",
+              "8px"
+            ],
+            "expected": [
+              "8px",
+              "8px"
+            ]
+          },
+          {
+            "name": "500px same-condition authored broad last false",
+            "ok": true,
+            "actual": [
+              "4px",
+              "4px"
+            ],
+            "expected": [
+              "4px",
+              "4px"
+            ]
+          },
+          {
+            "name": "500px same-condition authored narrow last false",
+            "ok": true,
+            "actual": [
+              "8px",
+              "4px"
+            ],
+            "expected": [
+              "8px",
+              "4px"
+            ]
+          },
+          {
+            "name": "500px cross-condition shorthand true",
+            "ok": true,
+            "actual": [
+              "8px",
+              "8px"
+            ],
+            "expected": [
+              "8px",
+              "8px"
+            ]
+          },
+          {
+            "name": "500px same-condition authored broad last true",
+            "ok": true,
+            "actual": [
+              "4px",
+              "4px"
+            ],
+            "expected": [
+              "4px",
+              "4px"
+            ]
+          },
+          {
+            "name": "500px same-condition authored narrow last true",
+            "ok": true,
+            "actual": [
+              "8px",
+              "4px"
+            ],
+            "expected": [
+              "8px",
+              "4px"
+            ]
+          },
+          {
+            "name": "500px independent numeric token categories",
+            "ok": true,
+            "actual": [
+              "32px",
+              "-8px"
+            ],
+            "expected": [
+              "32px",
+              "-8px"
+            ]
+          },
+          {
+            "name": "500px live token overrides",
+            "ok": true,
+            "actual": [
+              "45px",
+              "-11px"
+            ],
+            "expected": [
+              "45px",
+              "-11px"
+            ]
+          },
+          {
+            "name": "500px sparse band continues prior declaration",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "500px display affects both boxes",
+            "ok": true,
+            "actual": [
+              "block",
+              "block"
+            ],
+            "expected": [
+              "block",
+              "block"
+            ]
+          },
+          {
+            "name": "500px container boundary 599",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "500px container boundary 600",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "500px container boundary 839",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "500px container boundary 840",
+            "ok": true,
+            "actual": "12px",
+            "expected": "12px"
+          },
+          {
+            "name": "500px missing named container retains baseline",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "500px native invalid computed value",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "500px empty plan exposes native default",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "600px cross-condition shorthand false",
+            "ok": true,
+            "actual": [
+              "8px",
+              "8px"
+            ],
+            "expected": [
+              "8px",
+              "8px"
+            ]
+          },
+          {
+            "name": "600px same-condition authored broad last false",
+            "ok": true,
+            "actual": [
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px"
+            ]
+          },
+          {
+            "name": "600px same-condition authored narrow last false",
+            "ok": true,
+            "actual": [
+              "16px",
+              "12px"
+            ],
+            "expected": [
+              "16px",
+              "12px"
+            ]
+          },
+          {
+            "name": "600px cross-condition shorthand true",
+            "ok": true,
+            "actual": [
+              "8px",
+              "8px"
+            ],
+            "expected": [
+              "8px",
+              "8px"
+            ]
+          },
+          {
+            "name": "600px same-condition authored broad last true",
+            "ok": true,
+            "actual": [
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px"
+            ]
+          },
+          {
+            "name": "600px same-condition authored narrow last true",
+            "ok": true,
+            "actual": [
+              "16px",
+              "12px"
+            ],
+            "expected": [
+              "16px",
+              "12px"
+            ]
+          },
+          {
+            "name": "600px independent numeric token categories",
+            "ok": true,
+            "actual": [
+              "32px",
+              "-8px"
+            ],
+            "expected": [
+              "32px",
+              "-8px"
+            ]
+          },
+          {
+            "name": "600px live token overrides",
+            "ok": true,
+            "actual": [
+              "45px",
+              "-11px"
+            ],
+            "expected": [
+              "45px",
+              "-11px"
+            ]
+          },
+          {
+            "name": "600px sparse band continues prior declaration",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "600px display affects both boxes",
+            "ok": true,
+            "actual": [
+              "none",
+              "none"
+            ],
+            "expected": [
+              "none",
+              "none"
+            ]
+          },
+          {
+            "name": "600px container boundary 599",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "600px container boundary 600",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "600px container boundary 839",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "600px container boundary 840",
+            "ok": true,
+            "actual": "12px",
+            "expected": "12px"
+          },
+          {
+            "name": "600px missing named container retains baseline",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "600px native invalid computed value",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "600px empty plan exposes native default",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "840px cross-condition shorthand false",
+            "ok": true,
+            "actual": [
+              "8px",
+              "8px"
+            ],
+            "expected": [
+              "8px",
+              "8px"
+            ]
+          },
+          {
+            "name": "840px same-condition authored broad last false",
+            "ok": true,
+            "actual": [
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px"
+            ]
+          },
+          {
+            "name": "840px same-condition authored narrow last false",
+            "ok": true,
+            "actual": [
+              "16px",
+              "12px"
+            ],
+            "expected": [
+              "16px",
+              "12px"
+            ]
+          },
+          {
+            "name": "840px cross-condition shorthand true",
+            "ok": true,
+            "actual": [
+              "8px",
+              "8px"
+            ],
+            "expected": [
+              "8px",
+              "8px"
+            ]
+          },
+          {
+            "name": "840px same-condition authored broad last true",
+            "ok": true,
+            "actual": [
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px"
+            ]
+          },
+          {
+            "name": "840px same-condition authored narrow last true",
+            "ok": true,
+            "actual": [
+              "16px",
+              "12px"
+            ],
+            "expected": [
+              "16px",
+              "12px"
+            ]
+          },
+          {
+            "name": "840px independent numeric token categories",
+            "ok": true,
+            "actual": [
+              "32px",
+              "-8px"
+            ],
+            "expected": [
+              "32px",
+              "-8px"
+            ]
+          },
+          {
+            "name": "840px live token overrides",
+            "ok": true,
+            "actual": [
+              "45px",
+              "-11px"
+            ],
+            "expected": [
+              "45px",
+              "-11px"
+            ]
+          },
+          {
+            "name": "840px sparse band continues prior declaration",
+            "ok": true,
+            "actual": "12px",
+            "expected": "12px"
+          },
+          {
+            "name": "840px display affects both boxes",
+            "ok": true,
+            "actual": [
+              "none",
+              "none"
+            ],
+            "expected": [
+              "none",
+              "none"
+            ]
+          },
+          {
+            "name": "840px container boundary 599",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "840px container boundary 600",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "840px container boundary 839",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "840px container boundary 840",
+            "ok": true,
+            "actual": "12px",
+            "expected": "12px"
+          },
+          {
+            "name": "840px missing named container retains baseline",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "840px native invalid computed value",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "840px empty plan exposes native default",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "1200px cross-condition shorthand false",
+            "ok": true,
+            "actual": [
+              "16px",
+              "8px"
+            ],
+            "expected": [
+              "16px",
+              "8px"
+            ]
+          },
+          {
+            "name": "1200px same-condition authored broad last false",
+            "ok": true,
+            "actual": [
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px"
+            ]
+          },
+          {
+            "name": "1200px same-condition authored narrow last false",
+            "ok": true,
+            "actual": [
+              "16px",
+              "12px"
+            ],
+            "expected": [
+              "16px",
+              "12px"
+            ]
+          },
+          {
+            "name": "1200px cross-condition shorthand true",
+            "ok": true,
+            "actual": [
+              "16px",
+              "8px"
+            ],
+            "expected": [
+              "16px",
+              "8px"
+            ]
+          },
+          {
+            "name": "1200px same-condition authored broad last true",
+            "ok": true,
+            "actual": [
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px"
+            ]
+          },
+          {
+            "name": "1200px same-condition authored narrow last true",
+            "ok": true,
+            "actual": [
+              "16px",
+              "12px"
+            ],
+            "expected": [
+              "16px",
+              "12px"
+            ]
+          },
+          {
+            "name": "1200px independent numeric token categories",
+            "ok": true,
+            "actual": [
+              "32px",
+              "-8px"
+            ],
+            "expected": [
+              "32px",
+              "-8px"
+            ]
+          },
+          {
+            "name": "1200px live token overrides",
+            "ok": true,
+            "actual": [
+              "45px",
+              "-11px"
+            ],
+            "expected": [
+              "45px",
+              "-11px"
+            ]
+          },
+          {
+            "name": "1200px sparse band continues prior declaration",
+            "ok": true,
+            "actual": "12px",
+            "expected": "12px"
+          },
+          {
+            "name": "1200px display affects both boxes",
+            "ok": true,
+            "actual": [
+              "none",
+              "none"
+            ],
+            "expected": [
+              "none",
+              "none"
+            ]
+          },
+          {
+            "name": "1200px container boundary 599",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "1200px container boundary 600",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "1200px container boundary 839",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "1200px container boundary 840",
+            "ok": true,
+            "actual": "12px",
+            "expected": "12px"
+          },
+          {
+            "name": "1200px missing named container retains baseline",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "1200px native invalid computed value",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "1200px empty plan exposes native default",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "500px cross-condition shorthand false",
+            "ok": true,
+            "actual": [
+              "8px",
+              "8px"
+            ],
+            "expected": [
+              "8px",
+              "8px"
+            ]
+          },
+          {
+            "name": "500px same-condition authored broad last false",
+            "ok": true,
+            "actual": [
+              "4px",
+              "4px"
+            ],
+            "expected": [
+              "4px",
+              "4px"
+            ]
+          },
+          {
+            "name": "500px same-condition authored narrow last false",
+            "ok": true,
+            "actual": [
+              "8px",
+              "4px"
+            ],
+            "expected": [
+              "8px",
+              "4px"
+            ]
+          },
+          {
+            "name": "500px cross-condition shorthand true",
+            "ok": true,
+            "actual": [
+              "8px",
+              "8px"
+            ],
+            "expected": [
+              "8px",
+              "8px"
+            ]
+          },
+          {
+            "name": "500px same-condition authored broad last true",
+            "ok": true,
+            "actual": [
+              "4px",
+              "4px"
+            ],
+            "expected": [
+              "4px",
+              "4px"
+            ]
+          },
+          {
+            "name": "500px same-condition authored narrow last true",
+            "ok": true,
+            "actual": [
+              "8px",
+              "4px"
+            ],
+            "expected": [
+              "8px",
+              "4px"
+            ]
+          },
+          {
+            "name": "500px independent numeric token categories",
+            "ok": true,
+            "actual": [
+              "32px",
+              "-8px"
+            ],
+            "expected": [
+              "32px",
+              "-8px"
+            ]
+          },
+          {
+            "name": "500px live token overrides",
+            "ok": true,
+            "actual": [
+              "45px",
+              "-11px"
+            ],
+            "expected": [
+              "45px",
+              "-11px"
+            ]
+          },
+          {
+            "name": "500px sparse band continues prior declaration",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "500px display affects both boxes",
+            "ok": true,
+            "actual": [
+              "block",
+              "block"
+            ],
+            "expected": [
+              "block",
+              "block"
+            ]
+          },
+          {
+            "name": "500px container boundary 599",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "500px container boundary 600",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "500px container boundary 839",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "500px container boundary 840",
+            "ok": true,
+            "actual": "12px",
+            "expected": "12px"
+          },
+          {
+            "name": "500px missing named container retains baseline",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "500px native invalid computed value",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "500px empty plan exposes native default",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "600px cross-condition shorthand false",
+            "ok": true,
+            "actual": [
+              "8px",
+              "8px"
+            ],
+            "expected": [
+              "8px",
+              "8px"
+            ]
+          },
+          {
+            "name": "600px same-condition authored broad last false",
+            "ok": true,
+            "actual": [
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px"
+            ]
+          },
+          {
+            "name": "600px same-condition authored narrow last false",
+            "ok": true,
+            "actual": [
+              "16px",
+              "12px"
+            ],
+            "expected": [
+              "16px",
+              "12px"
+            ]
+          },
+          {
+            "name": "600px cross-condition shorthand true",
+            "ok": true,
+            "actual": [
+              "8px",
+              "8px"
+            ],
+            "expected": [
+              "8px",
+              "8px"
+            ]
+          },
+          {
+            "name": "600px same-condition authored broad last true",
+            "ok": true,
+            "actual": [
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px"
+            ]
+          },
+          {
+            "name": "600px same-condition authored narrow last true",
+            "ok": true,
+            "actual": [
+              "16px",
+              "12px"
+            ],
+            "expected": [
+              "16px",
+              "12px"
+            ]
+          },
+          {
+            "name": "600px independent numeric token categories",
+            "ok": true,
+            "actual": [
+              "32px",
+              "-8px"
+            ],
+            "expected": [
+              "32px",
+              "-8px"
+            ]
+          },
+          {
+            "name": "600px live token overrides",
+            "ok": true,
+            "actual": [
+              "45px",
+              "-11px"
+            ],
+            "expected": [
+              "45px",
+              "-11px"
+            ]
+          },
+          {
+            "name": "600px sparse band continues prior declaration",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "600px display affects both boxes",
+            "ok": true,
+            "actual": [
+              "none",
+              "none"
+            ],
+            "expected": [
+              "none",
+              "none"
+            ]
+          },
+          {
+            "name": "600px container boundary 599",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "600px container boundary 600",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "600px container boundary 839",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "600px container boundary 840",
+            "ok": true,
+            "actual": "12px",
+            "expected": "12px"
+          },
+          {
+            "name": "600px missing named container retains baseline",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "600px native invalid computed value",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "600px empty plan exposes native default",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "840px cross-condition shorthand false",
+            "ok": true,
+            "actual": [
+              "8px",
+              "8px"
+            ],
+            "expected": [
+              "8px",
+              "8px"
+            ]
+          },
+          {
+            "name": "840px same-condition authored broad last false",
+            "ok": true,
+            "actual": [
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px"
+            ]
+          },
+          {
+            "name": "840px same-condition authored narrow last false",
+            "ok": true,
+            "actual": [
+              "16px",
+              "12px"
+            ],
+            "expected": [
+              "16px",
+              "12px"
+            ]
+          },
+          {
+            "name": "840px cross-condition shorthand true",
+            "ok": true,
+            "actual": [
+              "8px",
+              "8px"
+            ],
+            "expected": [
+              "8px",
+              "8px"
+            ]
+          },
+          {
+            "name": "840px same-condition authored broad last true",
+            "ok": true,
+            "actual": [
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px"
+            ]
+          },
+          {
+            "name": "840px same-condition authored narrow last true",
+            "ok": true,
+            "actual": [
+              "16px",
+              "12px"
+            ],
+            "expected": [
+              "16px",
+              "12px"
+            ]
+          },
+          {
+            "name": "840px independent numeric token categories",
+            "ok": true,
+            "actual": [
+              "32px",
+              "-8px"
+            ],
+            "expected": [
+              "32px",
+              "-8px"
+            ]
+          },
+          {
+            "name": "840px live token overrides",
+            "ok": true,
+            "actual": [
+              "45px",
+              "-11px"
+            ],
+            "expected": [
+              "45px",
+              "-11px"
+            ]
+          },
+          {
+            "name": "840px sparse band continues prior declaration",
+            "ok": true,
+            "actual": "12px",
+            "expected": "12px"
+          },
+          {
+            "name": "840px display affects both boxes",
+            "ok": true,
+            "actual": [
+              "none",
+              "none"
+            ],
+            "expected": [
+              "none",
+              "none"
+            ]
+          },
+          {
+            "name": "840px container boundary 599",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "840px container boundary 600",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "840px container boundary 839",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "840px container boundary 840",
+            "ok": true,
+            "actual": "12px",
+            "expected": "12px"
+          },
+          {
+            "name": "840px missing named container retains baseline",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "840px native invalid computed value",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "840px empty plan exposes native default",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "1200px cross-condition shorthand false",
+            "ok": true,
+            "actual": [
+              "16px",
+              "8px"
+            ],
+            "expected": [
+              "16px",
+              "8px"
+            ]
+          },
+          {
+            "name": "1200px same-condition authored broad last false",
+            "ok": true,
+            "actual": [
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px"
+            ]
+          },
+          {
+            "name": "1200px same-condition authored narrow last false",
+            "ok": true,
+            "actual": [
+              "16px",
+              "12px"
+            ],
+            "expected": [
+              "16px",
+              "12px"
+            ]
+          },
+          {
+            "name": "1200px cross-condition shorthand true",
+            "ok": true,
+            "actual": [
+              "16px",
+              "8px"
+            ],
+            "expected": [
+              "16px",
+              "8px"
+            ]
+          },
+          {
+            "name": "1200px same-condition authored broad last true",
+            "ok": true,
+            "actual": [
+              "12px",
+              "12px"
+            ],
+            "expected": [
+              "12px",
+              "12px"
+            ]
+          },
+          {
+            "name": "1200px same-condition authored narrow last true",
+            "ok": true,
+            "actual": [
+              "16px",
+              "12px"
+            ],
+            "expected": [
+              "16px",
+              "12px"
+            ]
+          },
+          {
+            "name": "1200px independent numeric token categories",
+            "ok": true,
+            "actual": [
+              "32px",
+              "-8px"
+            ],
+            "expected": [
+              "32px",
+              "-8px"
+            ]
+          },
+          {
+            "name": "1200px live token overrides",
+            "ok": true,
+            "actual": [
+              "45px",
+              "-11px"
+            ],
+            "expected": [
+              "45px",
+              "-11px"
+            ]
+          },
+          {
+            "name": "1200px sparse band continues prior declaration",
+            "ok": true,
+            "actual": "12px",
+            "expected": "12px"
+          },
+          {
+            "name": "1200px display affects both boxes",
+            "ok": true,
+            "actual": [
+              "none",
+              "none"
+            ],
+            "expected": [
+              "none",
+              "none"
+            ]
+          },
+          {
+            "name": "1200px container boundary 599",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "1200px container boundary 600",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "1200px container boundary 839",
+            "ok": true,
+            "actual": "8px",
+            "expected": "8px"
+          },
+          {
+            "name": "1200px container boundary 840",
+            "ok": true,
+            "actual": "12px",
+            "expected": "12px"
+          },
+          {
+            "name": "1200px missing named container retains baseline",
+            "ok": true,
+            "actual": "4px",
+            "expected": "4px"
+          },
+          {
+            "name": "1200px native invalid computed value",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          },
+          {
+            "name": "1200px empty plan exposes native default",
+            "ok": true,
+            "actual": "0px",
+            "expected": "0px"
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "reproduction": {
+    "probe": "\nimport {createResponsiveStylePlan} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/responsive-style-plan.ts\";\nconst style=document.createElement(\"style\");style.textContent=\":root{--acme-spacing-0:0rem;--acme-spacing-1:.25rem;--acme-spacing-2:.5rem;--acme-spacing-3:.75rem;--acme-spacing-4:1rem;--acme-size-2:2rem}\";document.head.append(style);\nclass Probe extends HTMLElement { constructor(){super();const root=this.attachShadow({mode:\"open\"});root.innerHTML=\"<style>:host{display:block;box-sizing:border-box} #root{display:block}</style><div id='root'>Content</div>\";}}\ncustomElements.define(\"plan-probe\",Probe);\nfunction fixture(inputs,options={}){\n const host=document.createElement(\"plan-probe\"); const owner=document.createElement(\"div\");document.body.append(owner);owner.append(host);\n if(options.container){owner.style.containerType=\"inline-size\";owner.style.containerName=options.missing?\"different\":\"subject\";owner.style.width=options.width+\"px\";}\n if(options.rtl)owner.dir=\"rtl\";\n const sheet=new CSSStyleSheet();\n const plan=createResponsiveStylePlan(inputs,{supports:CSS.supports,displayModes:[\"block\",\"none\"]});\n for(const block of plan){\n   const range=block.range;const query=[range.min>0?\"(width >= \"+range.min+\"rem)\":\"\",range.max!==undefined?\"(width < \"+range.max+\"rem)\":\"\"] .filter(Boolean).join(\" and \");\n   const selector=target=>target===\"host-and-root\"?\":host,#root\":\":host\";\n   const rules=block.declarations.map(d=>selector(d.target)+\"{\"+d.property+\":\"+d.value+\"}\").join(\"\");\n   sheet.insertRule(query?(options.container?\"@container subject \":\"@media \")+query+\"{\"+rules+\"}\":\"@media all{\"+rules+\"}\",sheet.cssRules.length);\n }\n host.shadowRoot.adoptedStyleSheets=[sheet];\n return {host,owner,root:host.shadowRoot.querySelector(\"#root\")};\n}\nconst checks=[];\nfunction check(name,actual,expected){checks.push({name,ok:JSON.stringify(actual)===JSON.stringify(expected),actual,expected});}\nconst styles=el=>{const s=getComputedStyle(el);return {start:s.paddingInlineStart,end:s.paddingInlineEnd,top:s.paddingTop,width:s.width,margin:s.marginInlineStart,display:s.display};};\nwindow.__run=async()=>{\n document.body.replaceChildren();checks.length=0;\n const width=innerWidth;\n for(const rtl of [false,true]){\n  const broad=fixture([[\"paddingInline\",{large:4}],[\"padding\",2]],{rtl});const actual=styles(broad.host);\n  check(\"cross-condition shorthand \"+rtl,[actual.start,actual.top],[width>=1200?\"16px\":\"8px\",\"8px\"]);\n  const lastBroad=fixture([[\"paddingInline\",{compactOnly:2,medium:4}],[\"padding\",{mediumDown:1,medium:3}]],{rtl});\n  check(\"same-condition authored broad last \"+rtl,[styles(lastBroad.host).start,styles(lastBroad.host).top],width<600?[\"4px\",\"4px\"]:[\"12px\",\"12px\"]);\n  const lastNarrow=fixture([[\"padding\",{mediumDown:1,medium:3}],[\"paddingInline\",{compactOnly:2,medium:4}]],{rtl});\n  check(\"same-condition authored narrow last \"+rtl,[styles(lastNarrow.host).start,styles(lastNarrow.host).top],width<600?[\"8px\",\"4px\"]:[\"16px\",\"12px\"]);\n }\n const tokens=fixture([[\"width\",2],[\"padding\",0],[\"marginInlineStart\",-2]]);\n check(\"independent numeric token categories\",[styles(tokens.host).width,styles(tokens.host).margin],[\"32px\",\"-8px\"]);\n tokens.owner.style.setProperty(\"--acme-spacing-2\",\"11px\");tokens.owner.style.setProperty(\"--acme-size-2\",\"45px\");\n check(\"live token overrides\",[styles(tokens.host).width,styles(tokens.host).margin],[\"45px\",\"-11px\"]);\n const sparse=fixture([[\"padding\",[1,null,3]]]);\n check(\"sparse band continues prior declaration\",styles(sparse.host).top,width>=840?\"12px\":\"4px\");\n const visible=fixture([[\"display\",{compact:\"block\",medium:\"none\"}]]);\n check(\"display affects both boxes\",[styles(visible.host).display,styles(visible.root).display],width>=600?[\"none\",\"none\"]:[\"block\",\"block\"]);\n for(const cw of [599,600,839,840]){\n  const p=fixture([[\"padding\",{compact:1,medium:2,expanded:3}]],{container:true,width:cw});\n  check(\"container boundary \"+cw,styles(p.host).top,cw>=840?\"12px\":cw>=600?\"8px\":\"4px\");\n }\n const missing=fixture([[\"padding\",{compact:1,medium:2}]],{container:true,missing:true,width:1000});\n check(\"missing named container retains baseline\",styles(missing.host).top,\"4px\");\n const invalid=fixture([[\"padding\",2],[\"paddingInlineStart\",\"var(--unknown)\"]]);\n check(\"native invalid computed value\",styles(invalid.host).start,\"0px\");\n const removed=fixture([[\"padding\",undefined]]);check(\"empty plan exposes native default\",styles(removed.host).top,\"0px\");\n return {width,results:[...checks]};\n};\nwindow.__ready=true;\n",
+    "runner": "import fs from \"node:fs\";import path from \"node:path\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\",directory=\"/tmp/acme-m05-style-plan\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\"});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__ready);const results=[];for(const width of [500,600,840,1200]){await page.setViewportSize({width,height:900});const data=await page.evaluate(()=>window.__run());results.push(...data.results.map(r=>({...r,name:width+'px '+r.name})));}const data={results};report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+  },
+  "limits": [
+    "The native CSSOM fixture consumes the plan, but the production generated renderer is not yet implemented.",
+    "The public styleInputs lifecycle revision remains unanswered.",
+    "Family-specific style keys and container diagnostics belong to their later integration.",
+    "Callers supply a captured breakpoint table; planning does not lock global startup configuration.",
+    "This function receives canonical validated inputs. It is not the public invalid-write policy."
+  ],
+  "integratedVerification": {
+    "split": "pass",
+    "build": "pass",
+    "docs": "pass",
+    "tests": 762,
+    "assertions": 10241,
+    "files": 102,
+    "failed": 0,
+    "review": "approved"
+  }
+}

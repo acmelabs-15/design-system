@@ -1,4 +1,8 @@
 {
-    "biomeInspector.scanMode": "onSave",
-    "biomeInspector.publishToProblems": true
+  "[javascript][javascriptreact][typescript][typescriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.oxc": "never"
+  }
 }

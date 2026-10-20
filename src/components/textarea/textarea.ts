@@ -1,100 +1,132 @@
-import { css, html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base";
-import { Interaction } from "../../shared/interaction";
-import { textareaCss } from "./textarea.styles";
-import "../error/error";
+import { html } from "lit";
+import { optionalString } from "../../shared/attributes";
+import { property } from "lit/decorators.js";
+import { styleMap } from "lit/directives/style-map.js";
+import { atomState } from "../../shared/atom-state";
+import { AcmeTextControl, type TextNativeControl } from "../../shared/text-control";
+import { textareaStructureCss } from "../../generated/components/textarea/textarea-structure.styles";
 
 export type TextareaSize = "small" | "medium" | "large";
-
-/**
- * A multi-line text field: a full-width wrapper (radius 6, large 8) around a textarea padded
- * 10 / 12 that does not resize by hand; `rows` fixes its height, `min-height` gives it a floor.
- * The wrapper carries the size and `error` modifiers and the interaction states (data-hover,
- * data-focus: focus within the field, data-active); `error` renders the message under it and
- * marks the field invalid. Form-associated and labelable.
+/** A native multiline field with optional content sizing.
+ * @csspart root - The field surface.
+ * @csspart textarea - The native editing control.
+ * @fires {CustomEvent<{value:string}>} acme-input - A live value edit.
+ * @fires {CustomEvent<{value:string}>} acme-change - A committed value edit.
  */
-@customElement("acme-textarea")
-export class AcmeTextarea extends AcmeElement {
-  static formAssociated = true;
-  static styles = [
-    sharedCss,
-    textareaCss,
-    css`
-      :host {
-        display: block;
-      }
-      .field {
-        display: block;
-      }
-    `,
-  ];
-  @property() placeholder = "";
-  @property() value = "";
-  @property() name = "";
-  @property() size: TextareaSize = "medium";
-  /** The message under the field; the wrapper turns red and the field reads as invalid. */
-  @property() error = "";
-  /** A fixed number of rows. */
-  @property({ type: Number }) rows = 0;
-  /** The field's minimum height, as CSS (a number is px). */
-  @property({ attribute: "min-height" }) minHeight = "";
-  @property({ type: Boolean, reflect: true }) disabled = false;
-  @property({ type: Boolean }) readonly = false;
-  @property({ type: Boolean }) required = false;
-  @property({ attribute: "aria-label" }) ariaLabelText = "";
-  @query("textarea") textarea!: HTMLTextAreaElement;
-  @query(".wrap") private wrap!: HTMLElement;
-  private internals?: ElementInternals;
-  private uid = `textarea-${Math.random().toString(36).slice(2, 8)}`;
-  private interaction = new Interaction(this, { disabled: () => false });
+export class AcmeTextarea extends AcmeTextControl {
+  static styles = [...AcmeTextControl.styles, textareaStructureCss];
+  protected createControl() {
+    return this.ownerDocument.createElement("textarea");
+  }
+  @atomState() private rowCount = 3;
+  /** @default 3 */
+  @property({ noAccessor: true, converter: { fromAttribute: (value: string | null) => (value === null ? 3 : Number(value)) } }) get rows(): number {
+    return this.rowCount ?? 3;
+  }
+  set rows(value: number | undefined) {
+    value ??= 3;
+    if (!Number.isInteger(value) || value < 1) {
+      throw new RangeError("rows must be a positive integer");
+    }
+    this.rowCount = value;
+    this.nativeForm?.sync();
+    this.requestUpdate("rows");
+  }
+  @atomState() private resizeDirection: "none" | "vertical" | "horizontal" | "both" = "vertical";
+  /** @default "vertical" */
+  @property({ noAccessor: true, converter: optionalString }) get resize(): "none" | "vertical" | "horizontal" | "both" {
+    return this.resizeDirection;
+  }
+  set resize(value: "none" | "vertical" | "horizontal" | "both" | undefined) {
+    value ??= "vertical";
+    if (!["none", "vertical", "horizontal", "both"].includes(value)) {
+      throw new TypeError("Invalid resize direction");
+    }
+    this.resizeDirection = value;
+    this.requestUpdate("resize");
+  }
+  @atomState() @property({ noAccessor: true, type: Boolean, attribute: "auto-resize" }) autoResize = false;
+  @atomState() @property({ noAccessor: true, attribute: "min-height" }) minHeight?: string;
+  @atomState() @property({ noAccessor: true, attribute: "max-height" }) maxHeight?: string;
+  @atomState() private wrapping: "soft" | "hard" = "soft";
+  /** @default "soft" */
+  @property({ noAccessor: true, converter: optionalString }) get wrap(): "soft" | "hard" {
+    return this.wrapping ?? "soft";
+  }
+  set wrap(value: "soft" | "hard" | undefined) {
+    value ??= "soft";
+    if (!["soft", "hard"].includes(value)) {
+      throw new TypeError("Invalid textarea wrap");
+    }
+    this.wrapping = value;
+    this.nativeForm?.sync();
+    this.requestUpdate("wrap");
+  }
+  protected configuration() {
+    return `${this.rows}:${this.wrap}`;
+  }
+  protected configure(control: TextNativeControl) {
+    const textarea = control as HTMLTextAreaElement;
+    if (textarea.rows !== this.rows) {
+      textarea.rows = this.rows;
+    }
+    if (textarea.wrap !== this.wrap) {
+      textarea.wrap = this.wrap;
+    }
+  }
+  protected serializeValue(value: string): string {
+    const form = this.control.form;
+    if (this.wrap !== "hard" || !form || !this.control.name) {
+      return value;
+    }
+    const result = new this.ownerDocument.defaultView!.FormData(form).get(this.control.name);
+    return typeof result === "string" ? result : value;
+  }
+  private observer?: ResizeObserver;
+  private width = -1;
   constructor() {
     super();
-    try {
-      this.internals = this.attachInternals();
-    } catch {}
+    this.control.setAttribute("part", "textarea");
   }
-  updated(ch: Map<string, unknown>) {
-    this.interaction.attach(this.wrap);
-    if (ch.has("value")) this.internals?.setFormValue?.(this.value);
+  connectedCallback() {
+    super.connectedCallback();
+    this.observer = new ResizeObserver((entries) => {
+      const width = entries[0]?.contentRect.width;
+      if (width !== undefined && width !== this.width) {
+        this.width = width;
+        this.edited();
+        this.nativeForm.sync();
+      }
+    });
+    this.observer.observe(this.control);
   }
-  formResetCallback() {
-    this.value = this.getAttribute("value") ?? "";
+  disconnectedCallback() {
+    this.observer?.disconnect();
+    this.observer = undefined;
+    super.disconnectedCallback();
   }
-  focus(options?: FocusOptions) {
-    this.textarea?.focus(options);
+  protected edited() {
+    if (!this.control.isConnected) {
+      return;
+    }
+    this.control.style.removeProperty("--acme-textarea-height");
+    if (!this.autoResize) {
+      return;
+    }
+    const scroll = this.control.scrollTop;
+    this.control.style.setProperty("--acme-textarea-height", "0px");
+    const height = this.control.scrollHeight;
+    this.control.style.setProperty("--acme-textarea-height", `${height}px`);
+    this.control.scrollTop = scroll;
   }
-  private onInput = (e: Event) => {
-    this.value = (e.target as HTMLTextAreaElement).value;
-    this.dispatchEvent(new CustomEvent("acme-input", { detail: { value: this.value }, bubbles: true, composed: true }));
-  };
-  private onChange = () => this.dispatchEvent(new CustomEvent("acme-change", { detail: { value: this.value }, bubbles: true, composed: true }));
+  protected updated() {
+    super.updated();
+    this.edited();
+  }
   render() {
-    const minHeight = this.minHeight ? (/^\d+$/.test(this.minHeight) ? `${this.minHeight}px` : this.minHeight) : "";
-    return html`<label class="field" part="field"
-      ><div class=${this.cls("wrap", { sm: this.size === "small", lg: this.size === "large", error: !!this.error })} part="wrap">
-        <textarea
-          id=${this.uid}
-          .value=${this.value}
-          placeholder=${this.placeholder || nothing}
-          name=${this.name || nothing}
-          rows=${this.rows || nothing}
-          style=${minHeight ? `min-height:${minHeight}` : nothing}
-          ?disabled=${this.disabled}
-          ?readonly=${this.readonly}
-          ?required=${this.required}
-          autocomplete="off"
-          aria-label=${this.ariaLabelText || nothing}
-          aria-invalid=${this.error ? "true" : nothing}
-          @input=${this.onInput}
-          @change=${this.onChange}
-          part="textarea"
-        ></textarea></div
-      >${this.error ? html`<acme-error size=${this.size} style="margin-top:var(--acme-gap-quarter)">${this.error}</acme-error>` : nothing}</label
-    >`;
+    return html`<form novalidate @submit=${(event: Event) => event.preventDefault()} class="root" part="root" data-size=${this.size} data-resize=${this.autoResize ? "none" : this.resize} ?data-disabled=${this.nativeForm.effectiveDisabled} ?data-invalid=${this.effectiveInvalid} style=${styleMap({ "--acme-textarea-rows": String(this.rows), "--acme-textarea-min": this.minHeight ?? null, "--acme-textarea-max": this.maxHeight ?? null })}>${this.control}</form>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-textarea": AcmeTextarea;

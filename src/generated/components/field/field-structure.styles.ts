@@ -1,0 +1,56 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const fieldStructureCss = css`:host {
+  min-inline-size: 0;
+  display: block;
+}
+
+.field {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  min-inline-size: 0;
+  display: grid;
+}
+
+[part="label"] {
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-500);
+  color: var(--ds-gray-1000);
+  align-items: center;
+  gap: 4px;
+  display: flex;
+}
+
+[part="control"] {
+  min-inline-size: 0;
+}
+
+[part="help"], [part="error"], .optional {
+  color: var(--ds-gray-900);
+  font-size: 13px;
+  line-height: 20px;
+}
+
+[part="error"], .required {
+  color: var(--ds-red-900);
+}
+
+.field[data-disabled] [part="label"] {
+  color: var(--ds-gray-700);
+}
+
+.field[data-orientation="horizontal"] {
+  grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
+  align-items: start;
+  column-gap: 16px;
+}
+
+.field[data-orientation="horizontal"] [part="help"], .field[data-orientation="horizontal"] [part="error"] {
+  grid-column: 2;
+}
+
+[hidden] {
+  display: none !important;
+}
+`;

@@ -1,0 +1,1237 @@
+{
+  "date": "2026-09-22",
+  "status": "Complete at the assigned native/Lit selection-family boundary; M13 still contains Slider and Calendar",
+  "families": [
+    "Option",
+    "Select",
+    "ComboBox",
+    "Multi Select"
+  ],
+  "contractChanges": "See execution-delegation.md and F-06: root-owned trigger content; direct-child ranked ComboBox options with contiguous section runs; Multi Select arrays remain property-only.",
+  "implementation": {
+    "state": "One canonical NativeFormController value per root; explicit derived Option presentation",
+    "composition": "Shared placement, presence, motion, Field/Group and form contracts; Code Block and Feedback callers migrated",
+    "ranking": "Pinned match-sorter 8.3.0, NFC-normalized built-in keys/query; author node order stays stable while manual slots project ranked results",
+    "removals": [
+      "ComboBox Option",
+      "Multi Select Row",
+      "local match-sorter copy",
+      "old Select option-array and native-select clone path",
+      "old selection maps, structural styles and 26 house-sheet rule blocks"
+    ]
+  },
+  "verification": {
+    "build": "strict full package build",
+    "site": {
+      "pages": 96,
+      "elements": 4262,
+      "undocumented": 0
+    },
+    "unit": {
+      "passed": 881,
+      "failed": 0,
+      "assertions": 121235,
+      "files": 145
+    },
+    "source": {
+      "select": [
+        {
+          "engine": "chromium",
+          "passed": [
+            "initial required validity and empty submission",
+            "keyboard highlight is separate from committed value",
+            "Enter commits one native value",
+            "changing an option label updates selected display",
+            "reset clears current selection",
+            "native label activates the actual trigger"
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "passed": [
+            "initial required validity and empty submission",
+            "keyboard highlight is separate from committed value",
+            "Enter commits one native value",
+            "changing an option label updates selected display",
+            "reset clears current selection",
+            "native label activates the actual trigger"
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "passed": [
+            "initial required validity and empty submission",
+            "keyboard highlight is separate from committed value",
+            "Enter commits one native value",
+            "changing an option label updates selected display",
+            "reset clears current selection",
+            "native label activates the actual trigger"
+          ],
+          "errors": []
+        }
+      ],
+      "multiSelect": [
+        {
+          "engine": "chromium",
+          "passed": [
+            "empty required multiple selection is invalid",
+            "opening moves focus to the multi-select listbox",
+            "Space toggles one value without closing",
+            "disabled options are skipped",
+            "Escape returns focus to the named button"
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "passed": [
+            "empty required multiple selection is invalid",
+            "opening moves focus to the multi-select listbox",
+            "Space toggles one value without closing",
+            "disabled options are skipped",
+            "Escape returns focus to the named button"
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "passed": [
+            "empty required multiple selection is invalid",
+            "opening moves focus to the multi-select listbox",
+            "Space toggles one value without closing",
+            "disabled options are skipped",
+            "Escape returns focus to the named button"
+          ],
+          "errors": []
+        }
+      ],
+      "formsAndLifecycle": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "checks": [
+            {
+              "name": "immediate selected value, disabled and reenabled native FormData",
+              "pass": true
+            },
+            {
+              "name": "disabled selected option is omitted without losing canonical value",
+              "pass": true
+            },
+            {
+              "name": "unmatched programmatic value resolves when asynchronous option arrives",
+              "pass": true
+            },
+            {
+              "name": "duplicate option values invalidate the collection",
+              "pass": true
+            },
+            {
+              "name": "hidden options cannot become the active descendant",
+              "pass": true
+            },
+            {
+              "name": "hidden sections cannot supply active options",
+              "pass": true
+            },
+            {
+              "name": "active removal clears the reference without changing selected value",
+              "pass": true
+            },
+            {
+              "name": "multiple default values are property-only and reset independently",
+              "pass": true
+            },
+            {
+              "name": "nested owners do not register each other options",
+              "pass": true
+            },
+            {
+              "name": "focus can enter footer and closes when it leaves owner",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            {
+              "name": "immediate selected value, disabled and reenabled native FormData",
+              "pass": true
+            },
+            {
+              "name": "disabled selected option is omitted without losing canonical value",
+              "pass": true
+            },
+            {
+              "name": "unmatched programmatic value resolves when asynchronous option arrives",
+              "pass": true
+            },
+            {
+              "name": "duplicate option values invalidate the collection",
+              "pass": true
+            },
+            {
+              "name": "hidden options cannot become the active descendant",
+              "pass": true
+            },
+            {
+              "name": "hidden sections cannot supply active options",
+              "pass": true
+            },
+            {
+              "name": "active removal clears the reference without changing selected value",
+              "pass": true
+            },
+            {
+              "name": "multiple default values are property-only and reset independently",
+              "pass": true
+            },
+            {
+              "name": "nested owners do not register each other options",
+              "pass": true
+            },
+            {
+              "name": "focus can enter footer and closes when it leaves owner",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            {
+              "name": "immediate selected value, disabled and reenabled native FormData",
+              "pass": true
+            },
+            {
+              "name": "disabled selected option is omitted without losing canonical value",
+              "pass": true
+            },
+            {
+              "name": "unmatched programmatic value resolves when asynchronous option arrives",
+              "pass": true
+            },
+            {
+              "name": "duplicate option values invalidate the collection",
+              "pass": true
+            },
+            {
+              "name": "hidden options cannot become the active descendant",
+              "pass": true
+            },
+            {
+              "name": "hidden sections cannot supply active options",
+              "pass": true
+            },
+            {
+              "name": "active removal clears the reference without changing selected value",
+              "pass": true
+            },
+            {
+              "name": "multiple default values are property-only and reset independently",
+              "pass": true
+            },
+            {
+              "name": "nested owners do not register each other options",
+              "pass": true
+            },
+            {
+              "name": "focus can enter footer and closes when it leaves owner",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "combobox": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "checks": [
+            {
+              "name": "typing ranks projected options without changing authored order",
+              "pass": true
+            },
+            {
+              "name": "Enter commits ranked active value and restores label",
+              "pass": true
+            },
+            {
+              "name": "custom filter order and section runs remain authoritative",
+              "pass": true
+            },
+            {
+              "name": "Escape discards uncommitted query and keeps selected value",
+              "pass": true
+            },
+            {
+              "name": "unmatched text cannot become a form value",
+              "pass": true
+            },
+            {
+              "name": "async option arrival updates ranked projection",
+              "pass": true
+            },
+            {
+              "name": "composition input is not committed or intercepted",
+              "pass": true
+            },
+            {
+              "name": "Lit keyed updates retain identity and remove deleted ranked options",
+              "pass": true
+            },
+            {
+              "name": "native Enter submits after committing and closing the popup",
+              "pass": true
+            },
+            {
+              "name": "projected grouped accessibility order matches result order",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            {
+              "name": "typing ranks projected options without changing authored order",
+              "pass": true
+            },
+            {
+              "name": "Enter commits ranked active value and restores label",
+              "pass": true
+            },
+            {
+              "name": "custom filter order and section runs remain authoritative",
+              "pass": true
+            },
+            {
+              "name": "Escape discards uncommitted query and keeps selected value",
+              "pass": true
+            },
+            {
+              "name": "unmatched text cannot become a form value",
+              "pass": true
+            },
+            {
+              "name": "async option arrival updates ranked projection",
+              "pass": true
+            },
+            {
+              "name": "composition input is not committed or intercepted",
+              "pass": true
+            },
+            {
+              "name": "Lit keyed updates retain identity and remove deleted ranked options",
+              "pass": true
+            },
+            {
+              "name": "native Enter submits after committing and closing the popup",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            {
+              "name": "typing ranks projected options without changing authored order",
+              "pass": true
+            },
+            {
+              "name": "Enter commits ranked active value and restores label",
+              "pass": true
+            },
+            {
+              "name": "custom filter order and section runs remain authoritative",
+              "pass": true
+            },
+            {
+              "name": "Escape discards uncommitted query and keeps selected value",
+              "pass": true
+            },
+            {
+              "name": "unmatched text cannot become a form value",
+              "pass": true
+            },
+            {
+              "name": "async option arrival updates ranked projection",
+              "pass": true
+            },
+            {
+              "name": "composition input is not committed or intercepted",
+              "pass": true
+            },
+            {
+              "name": "Lit keyed updates retain identity and remove deleted ranked options",
+              "pass": true
+            },
+            {
+              "name": "native Enter submits after committing and closing the popup",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "renderers": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "checks": [
+            {
+              "name": "shared native oracle verifies Lit identity and visual order",
+              "pass": true
+            },
+            {
+              "name": "shared native oracle verifies React identity and visual order",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            {
+              "name": "shared native oracle verifies Lit identity and visual order",
+              "pass": true
+            },
+            {
+              "name": "shared native oracle verifies React identity and visual order",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            {
+              "name": "shared native oracle verifies Lit identity and visual order",
+              "pass": true
+            },
+            {
+              "name": "shared native oracle verifies React identity and visual order",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "feedback": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "checks": [
+            {
+              "name": "Feedback topics use current Select and submit the chosen topic",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            {
+              "name": "Feedback topics use current Select and submit the chosen topic",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            {
+              "name": "Feedback topics use current Select and submit the chosen topic",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "longLabels": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "checks": [
+            {
+              "name": "long selected labels stay within a single-line trigger",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            {
+              "name": "long selected labels stay within a single-line trigger",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            {
+              "name": "long selected labels stay within a single-line trigger",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ]
+    },
+    "compiled": {
+      "select": [
+        {
+          "engine": "chromium",
+          "passed": [
+            "initial required validity and empty submission",
+            "keyboard highlight is separate from committed value",
+            "Enter commits one native value",
+            "changing an option label updates selected display",
+            "reset clears current selection",
+            "native label activates the actual trigger"
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "passed": [
+            "initial required validity and empty submission",
+            "keyboard highlight is separate from committed value",
+            "Enter commits one native value",
+            "changing an option label updates selected display",
+            "reset clears current selection",
+            "native label activates the actual trigger"
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "passed": [
+            "initial required validity and empty submission",
+            "keyboard highlight is separate from committed value",
+            "Enter commits one native value",
+            "changing an option label updates selected display",
+            "reset clears current selection",
+            "native label activates the actual trigger"
+          ],
+          "errors": []
+        }
+      ],
+      "multiSelect": [
+        {
+          "engine": "chromium",
+          "passed": [
+            "empty required multiple selection is invalid",
+            "opening moves focus to the multi-select listbox",
+            "Space toggles one value without closing",
+            "disabled options are skipped",
+            "Escape returns focus to the named button"
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "passed": [
+            "empty required multiple selection is invalid",
+            "opening moves focus to the multi-select listbox",
+            "Space toggles one value without closing",
+            "disabled options are skipped",
+            "Escape returns focus to the named button"
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "passed": [
+            "empty required multiple selection is invalid",
+            "opening moves focus to the multi-select listbox",
+            "Space toggles one value without closing",
+            "disabled options are skipped",
+            "Escape returns focus to the named button"
+          ],
+          "errors": []
+        }
+      ],
+      "formsAndLifecycle": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "checks": [
+            {
+              "name": "immediate selected value, disabled and reenabled native FormData",
+              "pass": true
+            },
+            {
+              "name": "disabled selected option is omitted without losing canonical value",
+              "pass": true
+            },
+            {
+              "name": "unmatched programmatic value resolves when asynchronous option arrives",
+              "pass": true
+            },
+            {
+              "name": "duplicate option values invalidate the collection",
+              "pass": true
+            },
+            {
+              "name": "hidden options cannot become the active descendant",
+              "pass": true
+            },
+            {
+              "name": "hidden sections cannot supply active options",
+              "pass": true
+            },
+            {
+              "name": "active removal clears the reference without changing selected value",
+              "pass": true
+            },
+            {
+              "name": "multiple default values are property-only and reset independently",
+              "pass": true
+            },
+            {
+              "name": "nested owners do not register each other options",
+              "pass": true
+            },
+            {
+              "name": "focus can enter footer and closes when it leaves owner",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            {
+              "name": "immediate selected value, disabled and reenabled native FormData",
+              "pass": true
+            },
+            {
+              "name": "disabled selected option is omitted without losing canonical value",
+              "pass": true
+            },
+            {
+              "name": "unmatched programmatic value resolves when asynchronous option arrives",
+              "pass": true
+            },
+            {
+              "name": "duplicate option values invalidate the collection",
+              "pass": true
+            },
+            {
+              "name": "hidden options cannot become the active descendant",
+              "pass": true
+            },
+            {
+              "name": "hidden sections cannot supply active options",
+              "pass": true
+            },
+            {
+              "name": "active removal clears the reference without changing selected value",
+              "pass": true
+            },
+            {
+              "name": "multiple default values are property-only and reset independently",
+              "pass": true
+            },
+            {
+              "name": "nested owners do not register each other options",
+              "pass": true
+            },
+            {
+              "name": "focus can enter footer and closes when it leaves owner",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            {
+              "name": "immediate selected value, disabled and reenabled native FormData",
+              "pass": true
+            },
+            {
+              "name": "disabled selected option is omitted without losing canonical value",
+              "pass": true
+            },
+            {
+              "name": "unmatched programmatic value resolves when asynchronous option arrives",
+              "pass": true
+            },
+            {
+              "name": "duplicate option values invalidate the collection",
+              "pass": true
+            },
+            {
+              "name": "hidden options cannot become the active descendant",
+              "pass": true
+            },
+            {
+              "name": "hidden sections cannot supply active options",
+              "pass": true
+            },
+            {
+              "name": "active removal clears the reference without changing selected value",
+              "pass": true
+            },
+            {
+              "name": "multiple default values are property-only and reset independently",
+              "pass": true
+            },
+            {
+              "name": "nested owners do not register each other options",
+              "pass": true
+            },
+            {
+              "name": "focus can enter footer and closes when it leaves owner",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "combobox": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "checks": [
+            {
+              "name": "typing ranks projected options without changing authored order",
+              "pass": true
+            },
+            {
+              "name": "Enter commits ranked active value and restores label",
+              "pass": true
+            },
+            {
+              "name": "custom filter order and section runs remain authoritative",
+              "pass": true
+            },
+            {
+              "name": "Escape discards uncommitted query and keeps selected value",
+              "pass": true
+            },
+            {
+              "name": "unmatched text cannot become a form value",
+              "pass": true
+            },
+            {
+              "name": "async option arrival updates ranked projection",
+              "pass": true
+            },
+            {
+              "name": "composition input is not committed or intercepted",
+              "pass": true
+            },
+            {
+              "name": "Lit keyed updates retain identity and remove deleted ranked options",
+              "pass": true
+            },
+            {
+              "name": "native Enter submits after committing and closing the popup",
+              "pass": true
+            },
+            {
+              "name": "projected grouped accessibility order matches result order",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            {
+              "name": "typing ranks projected options without changing authored order",
+              "pass": true
+            },
+            {
+              "name": "Enter commits ranked active value and restores label",
+              "pass": true
+            },
+            {
+              "name": "custom filter order and section runs remain authoritative",
+              "pass": true
+            },
+            {
+              "name": "Escape discards uncommitted query and keeps selected value",
+              "pass": true
+            },
+            {
+              "name": "unmatched text cannot become a form value",
+              "pass": true
+            },
+            {
+              "name": "async option arrival updates ranked projection",
+              "pass": true
+            },
+            {
+              "name": "composition input is not committed or intercepted",
+              "pass": true
+            },
+            {
+              "name": "Lit keyed updates retain identity and remove deleted ranked options",
+              "pass": true
+            },
+            {
+              "name": "native Enter submits after committing and closing the popup",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            {
+              "name": "typing ranks projected options without changing authored order",
+              "pass": true
+            },
+            {
+              "name": "Enter commits ranked active value and restores label",
+              "pass": true
+            },
+            {
+              "name": "custom filter order and section runs remain authoritative",
+              "pass": true
+            },
+            {
+              "name": "Escape discards uncommitted query and keeps selected value",
+              "pass": true
+            },
+            {
+              "name": "unmatched text cannot become a form value",
+              "pass": true
+            },
+            {
+              "name": "async option arrival updates ranked projection",
+              "pass": true
+            },
+            {
+              "name": "composition input is not committed or intercepted",
+              "pass": true
+            },
+            {
+              "name": "Lit keyed updates retain identity and remove deleted ranked options",
+              "pass": true
+            },
+            {
+              "name": "native Enter submits after committing and closing the popup",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "customTriggerAndClear": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "checks": [
+            {
+              "name": "custom trigger content stays in the owned native button",
+              "pass": true
+            },
+            {
+              "name": "clear action resets value and query and retains focus",
+              "pass": true
+            },
+            {
+              "name": "outside pointer dismissal preserves the new focus target",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            {
+              "name": "custom trigger content stays in the owned native button",
+              "pass": true
+            },
+            {
+              "name": "clear action resets value and query and retains focus",
+              "pass": true
+            },
+            {
+              "name": "outside pointer dismissal preserves the new focus target",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            {
+              "name": "custom trigger content stays in the owned native button",
+              "pass": true
+            },
+            {
+              "name": "clear action resets value and query and retains focus",
+              "pass": true
+            },
+            {
+              "name": "outside pointer dismissal preserves the new focus target",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "renderers": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "checks": [
+            {
+              "name": "shared native oracle verifies Lit identity and visual order",
+              "pass": true
+            },
+            {
+              "name": "shared native oracle verifies React identity and visual order",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            {
+              "name": "shared native oracle verifies Lit identity and visual order",
+              "pass": true
+            },
+            {
+              "name": "shared native oracle verifies React identity and visual order",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            {
+              "name": "shared native oracle verifies Lit identity and visual order",
+              "pass": true
+            },
+            {
+              "name": "shared native oracle verifies React identity and visual order",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "geometry": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "checks": [
+            {
+              "name": "popup width follows the full field surface",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            {
+              "name": "popup width follows the full field surface",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            {
+              "name": "popup width follows the full field surface",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "forcedColors": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "checks": [
+            {
+              "name": "forced colors retains visible active option",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            {
+              "name": "forced colors retains visible active option",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            {
+              "name": "forced colors retains visible active option",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "feedback": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "checks": [
+            {
+              "name": "Feedback topics use current Select and submit the chosen topic",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            {
+              "name": "Feedback topics use current Select and submit the chosen topic",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            {
+              "name": "Feedback topics use current Select and submit the chosen topic",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ]
+    },
+    "docs": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "Select documentation commits a choice",
+          "Select form submits and resets",
+          "Multi Select documentation toggles repeated values",
+          "Multi Select clear action removes defaults",
+          "ComboBox documentation ranks and commits",
+          "ComboBox custom filter preserves application order"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "Select documentation commits a choice",
+          "Select form submits and resets",
+          "Multi Select documentation toggles repeated values",
+          "Multi Select clear action removes defaults",
+          "ComboBox documentation ranks and commits",
+          "ComboBox custom filter preserves application order"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "Select documentation commits a choice",
+          "Select form submits and resets",
+          "Multi Select documentation toggles repeated values",
+          "Multi Select clear action removes defaults",
+          "ComboBox documentation ranks and commits",
+          "ComboBox custom filter preserves application order"
+        ],
+        "errors": []
+      }
+    ],
+    "visual": [
+      {
+        "mode": "light",
+        "geometry": {
+          "x": 333,
+          "right": 927,
+          "y": 466,
+          "bottom": 715,
+          "width": 594,
+          "viewport": 1000,
+          "background": "rgb(255, 255, 255)"
+        }
+      },
+      {
+        "mode": "dark",
+        "geometry": {
+          "x": 333,
+          "right": 927,
+          "y": 466,
+          "bottom": 715,
+          "width": 594,
+          "viewport": 1000,
+          "background": "rgb(10, 10, 10)"
+        }
+      }
+    ]
+  },
+  "review": [
+    {
+      "engine": "chromium",
+      "changedLabel": {
+        "before": "Apple",
+        "inputValue": "Pink Lady",
+        "native": "Pink Lady",
+        "label": "Pink Lady"
+      },
+      "asyncSelected": {
+        "value": "pear",
+        "inputValue": "Juicy Pear",
+        "native": "Juicy Pear",
+        "label": "Juicy Pear"
+      },
+      "emptyEnter": {
+        "open": false,
+        "inputValue": ""
+      },
+      "escapeEvents": {
+        "inputValue": "Apple",
+        "events": [
+          "pine",
+          "Apple"
+        ]
+      },
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "changedLabel": {
+        "before": "Apple",
+        "inputValue": "Pink Lady",
+        "native": "Pink Lady",
+        "label": "Pink Lady"
+      },
+      "asyncSelected": {
+        "value": "pear",
+        "inputValue": "Juicy Pear",
+        "native": "Juicy Pear",
+        "label": "Juicy Pear"
+      },
+      "emptyEnter": {
+        "open": false,
+        "inputValue": ""
+      },
+      "escapeEvents": {
+        "inputValue": "Apple",
+        "events": [
+          "pine",
+          "Apple"
+        ]
+      },
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "changedLabel": {
+        "before": "Apple",
+        "inputValue": "Pink Lady",
+        "native": "Pink Lady",
+        "label": "Pink Lady"
+      },
+      "asyncSelected": {
+        "value": "pear",
+        "inputValue": "Juicy Pear",
+        "native": "Juicy Pear",
+        "label": "Juicy Pear"
+      },
+      "emptyEnter": {
+        "open": false,
+        "inputValue": ""
+      },
+      "escapeEvents": {
+        "inputValue": "Apple",
+        "events": [
+          "pine",
+          "Apple"
+        ]
+      },
+      "errors": []
+    }
+  ],
+  "references": "m13-selection-preparation-2026-09-22.json",
+  "reproductions": {
+    "directory": "/tmp/acme-m13-selection/",
+    "rendererFixture": "src/components/combobox/__tests__/combobox.browser.ts",
+    "compiledSelect": "compiled-select-check.ts",
+    "compiledMulti": "compiled-multi-check.ts",
+    "compiledLifecycle": "compiled-extended-check.ts",
+    "compiledCombo": "compiled-combo-check.ts",
+    "compiledRenderers": "compiled-renderer-check.ts",
+    "compiledFeedback": "compiled-feedback-check.ts",
+    "docs": "docs-check.ts"
+  },
+  "limits": [
+    "Chromium native accessibility tree verifies grouped reading order; Firefox/WebKit use actual visual/keyboard/projection checks. Actual screen-reader interaction remains a final acceptance gate.",
+    "Composition tests use synthetic composition events. Real OS IME, voice, autofill/history, actual Safari and complete platform acceptance remain M22/M26.",
+    "React 19.3.0 authored child identity is verified; final generated React-wrapper props/events/lifecycle remain M22.",
+    "Visual checks cover settled light/dark controls and popup geometry, not the whole-library appearance audit.",
+    "No push, publication or Pages change."
+  ]
+}

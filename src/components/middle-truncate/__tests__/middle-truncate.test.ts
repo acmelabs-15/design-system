@@ -1,5 +1,6 @@
+import "../../../define/middle-truncate";
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import { type AcmeMiddleTruncate, cut, expandSelection, fitCut } from "../middle-truncate";
 
 const mount = async (markup: string) => {
@@ -18,7 +19,7 @@ const narrow = async (el: AcmeMiddleTruncate, px: number) => {
   const probe = el.shadowRoot!.querySelector(".measure") as HTMLElement;
   Object.defineProperty(root, "clientWidth", { value: px, configurable: true });
   Object.defineProperty(probe, "scrollWidth", { get: () => width(probe.textContent ?? ""), configurable: true });
-  el.refit();
+  el.requestUpdate("value", undefined);
   await el.updateComplete;
 };
 

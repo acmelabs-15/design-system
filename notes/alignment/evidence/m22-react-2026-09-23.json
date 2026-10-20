@@ -1,0 +1,936 @@
+{
+  "date": "2026-09-23",
+  "batch": "M22",
+  "status": "complete for generated browser React wrappers",
+  "implementation": {
+    "package": "@acmelabs/design-system-react",
+    "wrappers": 4319,
+    "metadata": "Standard CEM supplies writable inputs, typed event unions, native-root/target metadata, declared defaults and explicit omission semantics.",
+    "runtime": "@lit/react supplies native DOM/attribute rendering. The adapter owns declared-event listener cleanup and projects typed inputs through existing canonical setters; actual styling keys use the shared ownership connection.",
+    "content": "Fieldset supplies its native ancestor before connection. OwnedContent exposes the existing mount decision through useSyncExternalStore. React portals own Show/disclosure/Tabs content and native Video sources/tracks.",
+    "refs": "Actual custom-element refs, including React callback-ref cleanup.",
+    "registry": "Generated wrappers use global definitions. Core class entries and final scoped-registry/platform acceptance remain separately owned by M26.",
+    "build": "The root build emits the separate React package after the core package and standard manifest."
+  },
+  "versions": {
+    "litReact": "1.0.8",
+    "workspaceReact": "19.2.4",
+    "freshConsumers": [
+      "19.3.0"
+    ],
+    "table": "9.2.4",
+    "virtual": "3.14.0",
+    "playwright": "1.63.0"
+  },
+  "verification": {
+    "build": "Strict core and all-wrapper build passed",
+    "docs": "108 pages, 4319 elements, zero undocumented",
+    "unit": {
+      "pass": 860,
+      "fail": 0,
+      "assertions": 152070,
+      "files": 174
+    },
+    "workspace": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "ordered style inputs reorder, remove, reassert and preserve unrelated writes",
+            "pass": true
+          },
+          {
+            "name": "Strict Mode retains actual element refs and stateful child identity",
+            "pass": true
+          },
+          {
+            "name": "native fieldset ancestor retains React-owned controls, form values and events",
+            "pass": true
+          },
+          {
+            "name": "Show mounts React branches and preserves state only when selected",
+            "pass": true
+          },
+          {
+            "name": "Tabs uses canonical mount decisions for React state retention and exit removal",
+            "pass": true
+          },
+          {
+            "name": "Collapsible removes React content after the owned exit lifetime",
+            "pass": true
+          },
+          {
+            "name": "Video renders real React track nodes into the native target",
+            "pass": true
+          },
+          {
+            "name": "removing an ordinary input restores its declared default",
+            "pass": true
+          },
+          {
+            "name": "callback refs receive React cleanup in Strict Mode and on unmount",
+            "pass": true
+          },
+          {
+            "name": "React retains host and child identity through document adoption and updates",
+            "pass": true
+          },
+          {
+            "name": "removing a React style prop preserves a newer helper owner",
+            "pass": true
+          },
+          {
+            "name": "removing an authored size restores Group inheritance",
+            "pass": true
+          },
+          {
+            "name": "unmount releases custom event callbacks on a retained element",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "ordered style inputs reorder, remove, reassert and preserve unrelated writes",
+            "pass": true
+          },
+          {
+            "name": "Strict Mode retains actual element refs and stateful child identity",
+            "pass": true
+          },
+          {
+            "name": "native fieldset ancestor retains React-owned controls, form values and events",
+            "pass": true
+          },
+          {
+            "name": "Show mounts React branches and preserves state only when selected",
+            "pass": true
+          },
+          {
+            "name": "Tabs uses canonical mount decisions for React state retention and exit removal",
+            "pass": true
+          },
+          {
+            "name": "Collapsible removes React content after the owned exit lifetime",
+            "pass": true
+          },
+          {
+            "name": "Video renders real React track nodes into the native target",
+            "pass": true
+          },
+          {
+            "name": "removing an ordinary input restores its declared default",
+            "pass": true
+          },
+          {
+            "name": "callback refs receive React cleanup in Strict Mode and on unmount",
+            "pass": true
+          },
+          {
+            "name": "React retains host and child identity through document adoption and updates",
+            "pass": true
+          },
+          {
+            "name": "removing a React style prop preserves a newer helper owner",
+            "pass": true
+          },
+          {
+            "name": "removing an authored size restores Group inheritance",
+            "pass": true
+          },
+          {
+            "name": "unmount releases custom event callbacks on a retained element",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "ordered style inputs reorder, remove, reassert and preserve unrelated writes",
+            "pass": true
+          },
+          {
+            "name": "Strict Mode retains actual element refs and stateful child identity",
+            "pass": true
+          },
+          {
+            "name": "native fieldset ancestor retains React-owned controls, form values and events",
+            "pass": true
+          },
+          {
+            "name": "Show mounts React branches and preserves state only when selected",
+            "pass": true
+          },
+          {
+            "name": "Tabs uses canonical mount decisions for React state retention and exit removal",
+            "pass": true
+          },
+          {
+            "name": "Collapsible removes React content after the owned exit lifetime",
+            "pass": true
+          },
+          {
+            "name": "Video renders real React track nodes into the native target",
+            "pass": true
+          },
+          {
+            "name": "removing an ordinary input restores its declared default",
+            "pass": true
+          },
+          {
+            "name": "callback refs receive React cleanup in Strict Mode and on unmount",
+            "pass": true
+          },
+          {
+            "name": "React retains host and child identity through document adoption and updates",
+            "pass": true
+          },
+          {
+            "name": "removing a React style prop preserves a newer helper owner",
+            "pass": true
+          },
+          {
+            "name": "removing an authored size restores Group inheritance",
+            "pass": true
+          },
+          {
+            "name": "unmount releases custom event callbacks on a retained element",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "fresh1930": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "ordered style inputs reorder, remove, reassert and preserve unrelated writes",
+            "pass": true
+          },
+          {
+            "name": "Strict Mode retains actual element refs and stateful child identity",
+            "pass": true
+          },
+          {
+            "name": "native fieldset ancestor retains React-owned controls, form values and events",
+            "pass": true
+          },
+          {
+            "name": "Show mounts React branches and preserves state only when selected",
+            "pass": true
+          },
+          {
+            "name": "Tabs uses canonical mount decisions for React state retention and exit removal",
+            "pass": true
+          },
+          {
+            "name": "Collapsible removes React content after the owned exit lifetime",
+            "pass": true
+          },
+          {
+            "name": "Video renders real React track nodes into the native target",
+            "pass": true
+          },
+          {
+            "name": "removing an ordinary input restores its declared default",
+            "pass": true
+          },
+          {
+            "name": "callback refs receive React cleanup in Strict Mode and on unmount",
+            "pass": true
+          },
+          {
+            "name": "React retains host and child identity through document adoption and updates",
+            "pass": true
+          },
+          {
+            "name": "removing a React style prop preserves a newer helper owner",
+            "pass": true
+          },
+          {
+            "name": "removing an authored size restores Group inheritance",
+            "pass": true
+          },
+          {
+            "name": "unmount releases custom event callbacks on a retained element",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "ordered style inputs reorder, remove, reassert and preserve unrelated writes",
+            "pass": true
+          },
+          {
+            "name": "Strict Mode retains actual element refs and stateful child identity",
+            "pass": true
+          },
+          {
+            "name": "native fieldset ancestor retains React-owned controls, form values and events",
+            "pass": true
+          },
+          {
+            "name": "Show mounts React branches and preserves state only when selected",
+            "pass": true
+          },
+          {
+            "name": "Tabs uses canonical mount decisions for React state retention and exit removal",
+            "pass": true
+          },
+          {
+            "name": "Collapsible removes React content after the owned exit lifetime",
+            "pass": true
+          },
+          {
+            "name": "Video renders real React track nodes into the native target",
+            "pass": true
+          },
+          {
+            "name": "removing an ordinary input restores its declared default",
+            "pass": true
+          },
+          {
+            "name": "callback refs receive React cleanup in Strict Mode and on unmount",
+            "pass": true
+          },
+          {
+            "name": "React retains host and child identity through document adoption and updates",
+            "pass": true
+          },
+          {
+            "name": "removing a React style prop preserves a newer helper owner",
+            "pass": true
+          },
+          {
+            "name": "removing an authored size restores Group inheritance",
+            "pass": true
+          },
+          {
+            "name": "unmount releases custom event callbacks on a retained element",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "ordered style inputs reorder, remove, reassert and preserve unrelated writes",
+            "pass": true
+          },
+          {
+            "name": "Strict Mode retains actual element refs and stateful child identity",
+            "pass": true
+          },
+          {
+            "name": "native fieldset ancestor retains React-owned controls, form values and events",
+            "pass": true
+          },
+          {
+            "name": "Show mounts React branches and preserves state only when selected",
+            "pass": true
+          },
+          {
+            "name": "Tabs uses canonical mount decisions for React state retention and exit removal",
+            "pass": true
+          },
+          {
+            "name": "Collapsible removes React content after the owned exit lifetime",
+            "pass": true
+          },
+          {
+            "name": "Video renders real React track nodes into the native target",
+            "pass": true
+          },
+          {
+            "name": "removing an ordinary input restores its declared default",
+            "pass": true
+          },
+          {
+            "name": "callback refs receive React cleanup in Strict Mode and on unmount",
+            "pass": true
+          },
+          {
+            "name": "React retains host and child identity through document adoption and updates",
+            "pass": true
+          },
+          {
+            "name": "removing a React style prop preserves a newer helper owner",
+            "pass": true
+          },
+          {
+            "name": "removing an authored size restores Group inheritance",
+            "pass": true
+          },
+          {
+            "name": "unmount releases custom event callbacks on a retained element",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "defaults": [
+      {
+        "engine": "chromium",
+        "elements": 4319,
+        "fields": 741,
+        "failures": [],
+        "errors": [],
+        "pageErrors": []
+      },
+      {
+        "engine": "firefox",
+        "elements": 4319,
+        "fields": 741,
+        "failures": [],
+        "errors": [],
+        "pageErrors": []
+      },
+      {
+        "engine": "webkit",
+        "elements": 4319,
+        "fields": 741,
+        "failures": [],
+        "errors": [],
+        "pageErrors": []
+      }
+    ],
+    "table": [
+      {
+        "engine": "chromium",
+        "framework": "react",
+        "checks": [
+          {
+            "name": "framework owns real rows and custom cell content",
+            "pass": true
+          },
+          {
+            "name": "ordering and visibility update grouped native headers and matching cells",
+            "pass": true
+          },
+          {
+            "name": "row selection persists by identity through filtering and pagination",
+            "pass": true
+          },
+          {
+            "name": "column resizing and logical pinning keep header and cell geometry aligned in RTL",
+            "pass": true
+          },
+          {
+            "name": "cell spans and row pinning omit covered cells and preserve native span meaning",
+            "pass": true
+          },
+          {
+            "name": "cell range selection follows logical identities through column ordering",
+            "pass": true
+          },
+          {
+            "name": "faceting aggregation and row grouping use the supplied Table models",
+            "pass": true
+          },
+          {
+            "name": "custom plugin state remains independent of sorting and filtering",
+            "pass": true
+          },
+          {
+            "name": "application grid keyboard navigation and native cell editors keep separate keys",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "framework": "react",
+        "checks": [
+          {
+            "name": "framework owns real rows and custom cell content",
+            "pass": true
+          },
+          {
+            "name": "ordering and visibility update grouped native headers and matching cells",
+            "pass": true
+          },
+          {
+            "name": "row selection persists by identity through filtering and pagination",
+            "pass": true
+          },
+          {
+            "name": "column resizing and logical pinning keep header and cell geometry aligned in RTL",
+            "pass": true
+          },
+          {
+            "name": "cell spans and row pinning omit covered cells and preserve native span meaning",
+            "pass": true
+          },
+          {
+            "name": "cell range selection follows logical identities through column ordering",
+            "pass": true
+          },
+          {
+            "name": "faceting aggregation and row grouping use the supplied Table models",
+            "pass": true
+          },
+          {
+            "name": "custom plugin state remains independent of sorting and filtering",
+            "pass": true
+          },
+          {
+            "name": "application grid keyboard navigation and native cell editors keep separate keys",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "framework": "react",
+        "checks": [
+          {
+            "name": "framework owns real rows and custom cell content",
+            "pass": true
+          },
+          {
+            "name": "ordering and visibility update grouped native headers and matching cells",
+            "pass": true
+          },
+          {
+            "name": "row selection persists by identity through filtering and pagination",
+            "pass": true
+          },
+          {
+            "name": "column resizing and logical pinning keep header and cell geometry aligned in RTL",
+            "pass": true
+          },
+          {
+            "name": "cell spans and row pinning omit covered cells and preserve native span meaning",
+            "pass": true
+          },
+          {
+            "name": "cell range selection follows logical identities through column ordering",
+            "pass": true
+          },
+          {
+            "name": "faceting aggregation and row grouping use the supplied Table models",
+            "pass": true
+          },
+          {
+            "name": "custom plugin state remains independent of sorting and filtering",
+            "pass": true
+          },
+          {
+            "name": "application grid keyboard navigation and native cell editors keep separate keys",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "virtual": [
+      {
+        "engine": "chromium",
+        "framework": "react",
+        "checks": [
+          {
+            "name": "both axes virtualize with native counts and direct measurement references",
+            "pass": true
+          },
+          {
+            "name": "expanded rows and changing native heights update vertical measurement",
+            "pass": true
+          },
+          {
+            "name": "horizontal virtualization preserves spans and pinned columns",
+            "pass": true
+          },
+          {
+            "name": "ten thousand supplied rows retain a bounded rendered window through end scrolling",
+            "pass": true
+          },
+          {
+            "name": "column size changes refresh the horizontal virtual window",
+            "pass": true
+          },
+          {
+            "name": "keyboard movement reveals and focuses an offscreen logical row",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "framework": "react",
+        "checks": [
+          {
+            "name": "both axes virtualize with native counts and direct measurement references",
+            "pass": true
+          },
+          {
+            "name": "expanded rows and changing native heights update vertical measurement",
+            "pass": true
+          },
+          {
+            "name": "horizontal virtualization preserves spans and pinned columns",
+            "pass": true
+          },
+          {
+            "name": "ten thousand supplied rows retain a bounded rendered window through end scrolling",
+            "pass": true
+          },
+          {
+            "name": "column size changes refresh the horizontal virtual window",
+            "pass": true
+          },
+          {
+            "name": "keyboard movement reveals and focuses an offscreen logical row",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "framework": "react",
+        "checks": [
+          {
+            "name": "both axes virtualize with native counts and direct measurement references",
+            "pass": true
+          },
+          {
+            "name": "expanded rows and changing native heights update vertical measurement",
+            "pass": true
+          },
+          {
+            "name": "horizontal virtualization preserves spans and pinned columns",
+            "pass": true
+          },
+          {
+            "name": "ten thousand supplied rows retain a bounded rendered window through end scrolling",
+            "pass": true
+          },
+          {
+            "name": "column size changes refresh the horizontal virtual window",
+            "pass": true
+          },
+          {
+            "name": "keyboard movement reveals and focuses an offscreen logical row",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "worker": [
+      {
+        "engine": "chromium",
+        "framework": "react",
+        "checks": [
+          {
+            "name": "a real application worker filters data and updates pending presentation",
+            "pass": true
+          },
+          {
+            "name": "worker failure retains data and application retry creates a working worker",
+            "pass": true
+          },
+          {
+            "name": "manual server rows are not filtered or sorted again by the Table component",
+            "pass": true
+          },
+          {
+            "name": "disposing the application terminates its worker resources",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "framework": "react",
+        "checks": [
+          {
+            "name": "a real application worker filters data and updates pending presentation",
+            "pass": true
+          },
+          {
+            "name": "worker failure retains data and application retry creates a working worker",
+            "pass": true
+          },
+          {
+            "name": "manual server rows are not filtered or sorted again by the Table component",
+            "pass": true
+          },
+          {
+            "name": "disposing the application terminates its worker resources",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "framework": "react",
+        "checks": [
+          {
+            "name": "a real application worker filters data and updates pending presentation",
+            "pass": true
+          },
+          {
+            "name": "worker failure retains data and application retry creates a working worker",
+            "pass": true
+          },
+          {
+            "name": "manual server rows are not filtered or sorted again by the Table component",
+            "pass": true
+          },
+          {
+            "name": "disposing the application terminates its worker resources",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "types": "Fresh package positive/negative JSX checks and final Table/Virtual/Worker example type checks passed.",
+    "eventTypingRuntimeComparison": {
+      "files": 4321,
+      "changed": [],
+      "note": "This comparison predates the later listener-cleanup change; final runtime evidence is the thirteen-case workspace/fresh-consumer matrix."
+    },
+    "priorFresh1924": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "ordered style inputs reorder, remove, reassert and preserve unrelated writes",
+            "pass": true
+          },
+          {
+            "name": "Strict Mode retains actual element refs and stateful child identity",
+            "pass": true
+          },
+          {
+            "name": "native fieldset ancestor retains React-owned controls, form values and events",
+            "pass": true
+          },
+          {
+            "name": "Show mounts React branches and preserves state only when selected",
+            "pass": true
+          },
+          {
+            "name": "Tabs uses canonical mount decisions for React state retention and exit removal",
+            "pass": true
+          },
+          {
+            "name": "Collapsible removes React content after the owned exit lifetime",
+            "pass": true
+          },
+          {
+            "name": "Video renders real React track nodes into the native target",
+            "pass": true
+          },
+          {
+            "name": "removing an ordinary input restores its declared default",
+            "pass": true
+          },
+          {
+            "name": "callback refs receive React cleanup in Strict Mode and on unmount",
+            "pass": true
+          },
+          {
+            "name": "React retains host and child identity through document adoption and updates",
+            "pass": true
+          },
+          {
+            "name": "removing a React style prop preserves a newer helper owner",
+            "pass": true
+          },
+          {
+            "name": "removing an authored size restores Group inheritance",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "ordered style inputs reorder, remove, reassert and preserve unrelated writes",
+            "pass": true
+          },
+          {
+            "name": "Strict Mode retains actual element refs and stateful child identity",
+            "pass": true
+          },
+          {
+            "name": "native fieldset ancestor retains React-owned controls, form values and events",
+            "pass": true
+          },
+          {
+            "name": "Show mounts React branches and preserves state only when selected",
+            "pass": true
+          },
+          {
+            "name": "Tabs uses canonical mount decisions for React state retention and exit removal",
+            "pass": true
+          },
+          {
+            "name": "Collapsible removes React content after the owned exit lifetime",
+            "pass": true
+          },
+          {
+            "name": "Video renders real React track nodes into the native target",
+            "pass": true
+          },
+          {
+            "name": "removing an ordinary input restores its declared default",
+            "pass": true
+          },
+          {
+            "name": "callback refs receive React cleanup in Strict Mode and on unmount",
+            "pass": true
+          },
+          {
+            "name": "React retains host and child identity through document adoption and updates",
+            "pass": true
+          },
+          {
+            "name": "removing a React style prop preserves a newer helper owner",
+            "pass": true
+          },
+          {
+            "name": "removing an authored size restores Group inheritance",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "ordered style inputs reorder, remove, reassert and preserve unrelated writes",
+            "pass": true
+          },
+          {
+            "name": "Strict Mode retains actual element refs and stateful child identity",
+            "pass": true
+          },
+          {
+            "name": "native fieldset ancestor retains React-owned controls, form values and events",
+            "pass": true
+          },
+          {
+            "name": "Show mounts React branches and preserves state only when selected",
+            "pass": true
+          },
+          {
+            "name": "Tabs uses canonical mount decisions for React state retention and exit removal",
+            "pass": true
+          },
+          {
+            "name": "Collapsible removes React content after the owned exit lifetime",
+            "pass": true
+          },
+          {
+            "name": "Video renders real React track nodes into the native target",
+            "pass": true
+          },
+          {
+            "name": "removing an ordinary input restores its declared default",
+            "pass": true
+          },
+          {
+            "name": "callback refs receive React cleanup in Strict Mode and on unmount",
+            "pass": true
+          },
+          {
+            "name": "React retains host and child identity through document adoption and updates",
+            "pass": true
+          },
+          {
+            "name": "removing a React style prop preserves a newer helper owner",
+            "pass": true
+          },
+          {
+            "name": "removing an authored size restores Group inheritance",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "listenerCleanup": {
+      "red": "Retained-node custom events called the stale React handler in all three engines.",
+      "green": "The thirteenth case now passes in all three engines, in the workspace and fresh package."
+    },
+    "liveDocs": [
+      {
+        "engine": "chromium",
+        "pass": true,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "pass": true,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "pass": true,
+        "errors": []
+      }
+    ]
+  },
+  "corrections": [
+    "A nested media.preload assignment no longer overwrites the host accessor default/type.",
+    "Inherited appearance defaults match the live elements. Setters accepting omission restore inheritance rather than a fixed visual fallback.",
+    "Multiple dispatches of the same event retain all payload shapes, including both Pagination requests.",
+    "Ordinary author content retains priority over renderer callbacks.",
+    "Removing a React styling prop does not clear a newer input owner.",
+    "The captions oracle now explicitly selects the recreated native track. Firefox does not automatically enable that replacement; plain React and native controls were compared.",
+    "The Table worker test build now writes its in-memory Bun artifact before serving it.",
+    "A retained-node regression exposed custom listeners left by @lit/react after unmount. The adapter now owns declared-event subscriptions and removes them in its React effect cleanup; native attributes remain with @lit/react."
+  ],
+  "sources": [
+    "https://lit.dev/docs/frameworks/react/",
+    "https://react.dev/reference/react/useSyncExternalStore",
+    "https://react.dev/reference/react-dom/createPortal",
+    "node_modules/@lit/react/development/create-component.js",
+    "notes/decisions/react-integration.md"
+  ],
+  "reproduction": {
+    "portable": "m22-react/README.md",
+    "fixtures": "m22-react/",
+    "tableExamples": "examples/table/",
+    "tableRunners": "m22-react/table/",
+    "scratch": "/tmp/acme-m22",
+    "packageArchives": {
+      "core": "/tmp/acme-m22/packed-events",
+      "react": "/tmp/acme-m22/packed-cleanup"
+    },
+    "note": "Final wrapper runtime: thirteen cases per engine on workspace React 19.2.4 and independently installed React 19.3.0, plus nineteen Table/Virtual/Worker cases per engine. The prior fresh 19.2.4 matrix is historical, before listener cleanup."
+  },
+  "remaining": [
+    "M23 generated documentation units, recipes, references and navigation audit.",
+    "M24 consumer skills, documentation MCP and read-only inspector.",
+    "M25 lint/CI/package workflow and durable consolidation of the older browser runners.",
+    "M26 whole-library acceptance, actual platforms and the existing scoped-registry/late-definition return points. No push or publication."
+  ]
+}

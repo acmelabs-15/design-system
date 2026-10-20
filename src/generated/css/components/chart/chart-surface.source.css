@@ -1,0 +1,14 @@
+:host{display:block;min-inline-size:0;}
+figure{margin:0;display:flex;flex-direction:column;gap:var(--acme-spacing-3);min-inline-size:0;}
+.plot-frame{position:relative;block-size:var(--_chart-height,180px);min-inline-size:0;}
+[part=plot]{inline-size:100%;block-size:100%;font-family:var(--acme-font-mono);font-size:10px;color:var(--ds-gray-900);}
+[part=plot] svg{display:block;overflow:visible;}
+[part=plot] svg:focus-visible{outline:2px solid var(--ds-focus-color);outline-offset:2px;}
+.empty{block-size:100%;display:flex;align-items:center;justify-content:center;color:var(--ds-gray-900);font-size:.875rem;}
+.chart-tooltip{--ts-chart-tooltip-background:var(--ds-background-100);--ts-chart-tooltip-color:var(--ds-gray-1000);--ts-chart-tooltip-border:1px solid var(--ds-gray-400);--ts-chart-tooltip-border-radius:var(--r);--ts-chart-tooltip-shadow:var(--acme-shadow-4);--ts-chart-tooltip-padding:var(--acme-spacing-3);--ts-chart-tooltip-font:var(--acme-font-sans);}
+[part=tooltip]{font-family:var(--acme-font-sans);font-size:.875rem;line-height:1.5;}
+.tooltip-title{font-weight:var(--acme-font-weight-600);margin-block-end:var(--acme-spacing-1);}
+.tooltip-row{display:flex;align-items:center;gap:var(--acme-spacing-2);}
+.tooltip-row b{font-family:var(--acme-font-mono);font-weight:var(--acme-font-weight-500);margin-inline-start:auto;}
+.swatch{inline-size:6px;block-size:6px;border-radius:50%;flex:none;}
+[hidden]{display:none!important;}

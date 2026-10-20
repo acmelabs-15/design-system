@@ -7,7 +7,7 @@ The reusable elements and documented arrangements that give artifacts a consiste
 ### Building blocks and interfaces
 
 **Component**:
-A reusable part of the house design system with a defined purpose and a consistent interface.
+A reusable part of the design system with a defined purpose and a consistent interface.
 _Avoid_: Widget as a competing name for a component.
 
 **Primitive**:
@@ -38,7 +38,7 @@ _Avoid_: Using prefix / suffix to mean both inside content and an attached add-o
 
 **Toast**:
 A brief result of a recent action, displayed in a corner overlay and normally dismissed automatically.
-_Avoid_: Snackbar as a second name for the same house concept; Toast for a persistent notice that must be addressed.
+_Avoid_: Snackbar as a second name for the same concept; Toast for a persistent notice that must be addressed.
 
 **Alert**:
 A message about a section, form or content block, displayed inside that context while relevant.
@@ -61,6 +61,21 @@ Content that explains why an expected collection or view has nothing to display 
 _Avoid_: Alert as a synonym for absent content; treating missing content alone as a failure.
 
 ### Containers and form groups
+
+**Resizable**:
+A layout of adjacent panes whose relative sizes the user can change.
+_Avoid_: Splitter as a competing component name.
+
+**Resizable Panel**:
+One pane of a Resizable layout, with its own content and size limits.
+_Avoid_: Panel as a general content surface; Card as a synonym for a resizable pane.
+
+**Resize Handle**:
+A focusable separator that controls the sizes of two adjacent panes.
+_Avoid_: Separator when referring to this interactive resize control.
+
+**Primary pane**:
+The pane whose size and name a Resize Handle represents.
 
 **Card**:
 A presentation container for related content and actions about one subject. It can have sections or serve as a link.
@@ -156,7 +171,7 @@ _Avoid_: Scroller as a competing component name; treating scrolling as ownership
 
 **Spinner**:
 An animated indication that work is running without a measured completion value.
-_Avoid_: Loading Dots as another house loading component.
+_Avoid_: Loading Dots as another loading component.
 
 **Progress**:
 The completion state of an ongoing task, which may be measured or not yet known.
@@ -228,7 +243,7 @@ _Avoid_: Treating location, focus and selection as interchangeable.
 
 **Heading / Label**:
 A heading identifies a component's visible content; a label names a control or option.
-_Avoid_: Title for the house heading concept; forcing an HTML heading level from the name alone.
+_Avoid_: Title for the heading concept; forcing an HTML heading level from the name alone.
 
 **Description / Metadata**:
 A description is supporting prose; metadata consists of structured facts about a subject.

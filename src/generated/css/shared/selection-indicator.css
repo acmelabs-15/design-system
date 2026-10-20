@@ -1,0 +1,28 @@
+:host {
+  pointer-events: none;
+  border-radius: inherit;
+  display: block;
+  position: absolute;
+  inset: 0;
+  overflow: clip;
+}
+
+.paint {
+  inline-size: var(--indicator-width);
+  block-size: var(--indicator-height);
+  transform: translate(var(--indicator-x),var(--indicator-y)) scale(var(--indicator-scale-x),var(--indicator-scale-y));
+  transform-origin: 0 0;
+  border-radius: var(--acme-indicator-radius, 4px);
+  background: var(--acme-indicator-color, currentColor);
+  opacity: var(--acme-indicator-opacity, 1);
+  pointer-events: none;
+  will-change: transform;
+  box-shadow: var(--acme-indicator-shadow, none);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+[hidden] {
+  display: none;
+}

@@ -1,0 +1,695 @@
+{
+  "date": "2026-09-23",
+  "status": "Tooltip, Hover Card and Toggle Tip complete at assigned native/Lit boundaries; M17 complete",
+  "implementation": [
+    "Shared native popover presence, Floating UI placement and owned Lit Motion effect lifetime",
+    "Tooltip preserves native focus targets, exact text, prior descriptions and a readable tooltip name; no plain-tooltip shadow",
+    "Hover Card keeps native destination activation; supplementary inert preview text supplies an accessible description",
+    "Toggle Tip composes native Buttons and an explicitly activated nonmodal dialog; keyboard focus, outside dismissal and cancelable close follow one owner",
+    "Native element references keep Toggle Tip names current when trigger text changes",
+    "Same-scope owned description mirrors integrate with the existing semantic bridge and preserve application/Field descriptions",
+    "Live trigger themes, public token overrides and direction reach the top-layer surface",
+    "Context Card, the old Tooltip interface, all corresponding style producers and the obsolete local palette controller are removed",
+    "Progress and documentation consumers use content; the Snippet preview uses Toggle Tip"
+  ],
+  "verification": {
+    "build": "Strict package build passes for the accepted runtime source; final unreferenced style-producer cleanup is separately verified by the generator audit",
+    "site": {
+      "pages": 106,
+      "elements": 4308,
+      "undocumented": 0
+    },
+    "tests": {
+      "passed": 906,
+      "failed": 0,
+      "assertions": 151312,
+      "files": 168
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "Tooltip opens on native focus without adding a wrapper tab stop",
+            "pass": true
+          },
+          {
+            "name": "Tooltip preserves prior descriptions and adds readable help for native and component buttons",
+            "pass": true
+          },
+          {
+            "name": "Escape closes without stealing focus or reopening while focus stays on the trigger",
+            "pass": true
+          },
+          {
+            "name": "pointer moves between trigger and preview without flicker and leave closes",
+            "pass": true
+          },
+          {
+            "name": "Hover Card preserves native destination activation and never focuses its preview",
+            "pass": true
+          },
+          {
+            "name": "delayed opening is canceled by pointer departure and disconnection",
+            "pass": true
+          },
+          {
+            "name": "changing content updates the existing description and disabled closes the surface",
+            "pass": true
+          },
+          {
+            "name": "Toggle Tip opens only on explicit activation and exposes dialog relationships",
+            "pass": true
+          },
+          {
+            "name": "keyboard activation moves into content and Escape returns to its native button",
+            "pass": true
+          },
+          {
+            "name": "Toggle Tip preserves content state through close and reopen without modal isolation",
+            "pass": true
+          },
+          {
+            "name": "outside focus closes Toggle Tip without stealing the new focus",
+            "pass": true
+          },
+          {
+            "name": "cancelable dismissal and explicit flags preserve an open Toggle Tip",
+            "pass": true
+          },
+          {
+            "name": "nested help consumes Escape once without dismissing its parent Dialog",
+            "pass": true
+          },
+          {
+            "name": "removing an open anchor closes its surface and native top-layer lifetime",
+            "pass": true
+          },
+          {
+            "name": "noninteractive preview content cannot add unreachable focus stops",
+            "pass": true
+          },
+          {
+            "name": "Tooltip preserves complete punctuation and owns no shadow",
+            "pass": true
+          },
+          {
+            "name": "repeated reconnect cleans descriptions without duplicating them",
+            "pass": true
+          },
+          {
+            "name": "normal-motion close and reopen retain one native surface and finish cleanly",
+            "pass": true
+          },
+          {
+            "name": "normal-motion Toggle Tip exit restores focus only after its owned fade",
+            "pass": true
+          },
+          {
+            "name": "all preferred sides stay inside a narrow viewport and maintain the native top layer",
+            "pass": true
+          },
+          {
+            "name": "the visible tooltip has its own readable text in the native accessibility tree",
+            "pass": true
+          },
+          {
+            "name": "live trigger labels name the dialog through native element references",
+            "pass": true
+          },
+          {
+            "name": "open help follows its trigger theme, public token changes and direction",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "Tooltip opens on native focus without adding a wrapper tab stop",
+            "pass": true
+          },
+          {
+            "name": "Tooltip preserves prior descriptions and adds readable help for native and component buttons",
+            "pass": true
+          },
+          {
+            "name": "Escape closes without stealing focus or reopening while focus stays on the trigger",
+            "pass": true
+          },
+          {
+            "name": "pointer moves between trigger and preview without flicker and leave closes",
+            "pass": true
+          },
+          {
+            "name": "Hover Card preserves native destination activation and never focuses its preview",
+            "pass": true
+          },
+          {
+            "name": "delayed opening is canceled by pointer departure and disconnection",
+            "pass": true
+          },
+          {
+            "name": "changing content updates the existing description and disabled closes the surface",
+            "pass": true
+          },
+          {
+            "name": "Toggle Tip opens only on explicit activation and exposes dialog relationships",
+            "pass": true
+          },
+          {
+            "name": "keyboard activation moves into content and Escape returns to its native button",
+            "pass": true
+          },
+          {
+            "name": "Toggle Tip preserves content state through close and reopen without modal isolation",
+            "pass": true
+          },
+          {
+            "name": "outside focus closes Toggle Tip without stealing the new focus",
+            "pass": true
+          },
+          {
+            "name": "cancelable dismissal and explicit flags preserve an open Toggle Tip",
+            "pass": true
+          },
+          {
+            "name": "nested help consumes Escape once without dismissing its parent Dialog",
+            "pass": true
+          },
+          {
+            "name": "removing an open anchor closes its surface and native top-layer lifetime",
+            "pass": true
+          },
+          {
+            "name": "noninteractive preview content cannot add unreachable focus stops",
+            "pass": true
+          },
+          {
+            "name": "Tooltip preserves complete punctuation and owns no shadow",
+            "pass": true
+          },
+          {
+            "name": "repeated reconnect cleans descriptions without duplicating them",
+            "pass": true
+          },
+          {
+            "name": "normal-motion close and reopen retain one native surface and finish cleanly",
+            "pass": true
+          },
+          {
+            "name": "normal-motion Toggle Tip exit restores focus only after its owned fade",
+            "pass": true
+          },
+          {
+            "name": "all preferred sides stay inside a narrow viewport and maintain the native top layer",
+            "pass": true
+          },
+          {
+            "name": "the visible tooltip has its own readable text in the native accessibility tree",
+            "pass": true
+          },
+          {
+            "name": "live trigger labels name the dialog through native element references",
+            "pass": true
+          },
+          {
+            "name": "open help follows its trigger theme, public token changes and direction",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "Tooltip opens on native focus without adding a wrapper tab stop",
+            "pass": true
+          },
+          {
+            "name": "Tooltip preserves prior descriptions and adds readable help for native and component buttons",
+            "pass": true
+          },
+          {
+            "name": "Escape closes without stealing focus or reopening while focus stays on the trigger",
+            "pass": true
+          },
+          {
+            "name": "pointer moves between trigger and preview without flicker and leave closes",
+            "pass": true
+          },
+          {
+            "name": "Hover Card preserves native destination activation and never focuses its preview",
+            "pass": true
+          },
+          {
+            "name": "delayed opening is canceled by pointer departure and disconnection",
+            "pass": true
+          },
+          {
+            "name": "changing content updates the existing description and disabled closes the surface",
+            "pass": true
+          },
+          {
+            "name": "Toggle Tip opens only on explicit activation and exposes dialog relationships",
+            "pass": true
+          },
+          {
+            "name": "keyboard activation moves into content and Escape returns to its native button",
+            "pass": true
+          },
+          {
+            "name": "Toggle Tip preserves content state through close and reopen without modal isolation",
+            "pass": true
+          },
+          {
+            "name": "outside focus closes Toggle Tip without stealing the new focus",
+            "pass": true
+          },
+          {
+            "name": "cancelable dismissal and explicit flags preserve an open Toggle Tip",
+            "pass": true
+          },
+          {
+            "name": "nested help consumes Escape once without dismissing its parent Dialog",
+            "pass": true
+          },
+          {
+            "name": "removing an open anchor closes its surface and native top-layer lifetime",
+            "pass": true
+          },
+          {
+            "name": "noninteractive preview content cannot add unreachable focus stops",
+            "pass": true
+          },
+          {
+            "name": "Tooltip preserves complete punctuation and owns no shadow",
+            "pass": true
+          },
+          {
+            "name": "repeated reconnect cleans descriptions without duplicating them",
+            "pass": true
+          },
+          {
+            "name": "normal-motion close and reopen retain one native surface and finish cleanly",
+            "pass": true
+          },
+          {
+            "name": "normal-motion Toggle Tip exit restores focus only after its owned fade",
+            "pass": true
+          },
+          {
+            "name": "all preferred sides stay inside a narrow viewport and maintain the native top layer",
+            "pass": true
+          },
+          {
+            "name": "the visible tooltip has its own readable text in the native accessibility tree",
+            "pass": true
+          },
+          {
+            "name": "live trigger labels name the dialog through native element references",
+            "pass": true
+          },
+          {
+            "name": "open help follows its trigger theme, public token changes and direction",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "Tooltip opens on native focus without adding a wrapper tab stop",
+            "pass": true
+          },
+          {
+            "name": "Tooltip preserves prior descriptions and adds readable help for native and component buttons",
+            "pass": true
+          },
+          {
+            "name": "Escape closes without stealing focus or reopening while focus stays on the trigger",
+            "pass": true
+          },
+          {
+            "name": "pointer moves between trigger and preview without flicker and leave closes",
+            "pass": true
+          },
+          {
+            "name": "Hover Card preserves native destination activation and never focuses its preview",
+            "pass": true
+          },
+          {
+            "name": "delayed opening is canceled by pointer departure and disconnection",
+            "pass": true
+          },
+          {
+            "name": "changing content updates the existing description and disabled closes the surface",
+            "pass": true
+          },
+          {
+            "name": "Toggle Tip opens only on explicit activation and exposes dialog relationships",
+            "pass": true
+          },
+          {
+            "name": "keyboard activation moves into content and Escape returns to its native button",
+            "pass": true
+          },
+          {
+            "name": "Toggle Tip preserves content state through close and reopen without modal isolation",
+            "pass": true
+          },
+          {
+            "name": "outside focus closes Toggle Tip without stealing the new focus",
+            "pass": true
+          },
+          {
+            "name": "cancelable dismissal and explicit flags preserve an open Toggle Tip",
+            "pass": true
+          },
+          {
+            "name": "nested help consumes Escape once without dismissing its parent Dialog",
+            "pass": true
+          },
+          {
+            "name": "removing an open anchor closes its surface and native top-layer lifetime",
+            "pass": true
+          },
+          {
+            "name": "noninteractive preview content cannot add unreachable focus stops",
+            "pass": true
+          },
+          {
+            "name": "Tooltip preserves complete punctuation and owns no shadow",
+            "pass": true
+          },
+          {
+            "name": "repeated reconnect cleans descriptions without duplicating them",
+            "pass": true
+          },
+          {
+            "name": "normal-motion close and reopen retain one native surface and finish cleanly",
+            "pass": true
+          },
+          {
+            "name": "normal-motion Toggle Tip exit restores focus only after its owned fade",
+            "pass": true
+          },
+          {
+            "name": "all preferred sides stay inside a narrow viewport and maintain the native top layer",
+            "pass": true
+          },
+          {
+            "name": "the visible tooltip has its own readable text in the native accessibility tree",
+            "pass": true
+          },
+          {
+            "name": "live trigger labels name the dialog through native element references",
+            "pass": true
+          },
+          {
+            "name": "open help follows its trigger theme, public token changes and direction",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "Tooltip opens on native focus without adding a wrapper tab stop",
+            "pass": true
+          },
+          {
+            "name": "Tooltip preserves prior descriptions and adds readable help for native and component buttons",
+            "pass": true
+          },
+          {
+            "name": "Escape closes without stealing focus or reopening while focus stays on the trigger",
+            "pass": true
+          },
+          {
+            "name": "pointer moves between trigger and preview without flicker and leave closes",
+            "pass": true
+          },
+          {
+            "name": "Hover Card preserves native destination activation and never focuses its preview",
+            "pass": true
+          },
+          {
+            "name": "delayed opening is canceled by pointer departure and disconnection",
+            "pass": true
+          },
+          {
+            "name": "changing content updates the existing description and disabled closes the surface",
+            "pass": true
+          },
+          {
+            "name": "Toggle Tip opens only on explicit activation and exposes dialog relationships",
+            "pass": true
+          },
+          {
+            "name": "keyboard activation moves into content and Escape returns to its native button",
+            "pass": true
+          },
+          {
+            "name": "Toggle Tip preserves content state through close and reopen without modal isolation",
+            "pass": true
+          },
+          {
+            "name": "outside focus closes Toggle Tip without stealing the new focus",
+            "pass": true
+          },
+          {
+            "name": "cancelable dismissal and explicit flags preserve an open Toggle Tip",
+            "pass": true
+          },
+          {
+            "name": "nested help consumes Escape once without dismissing its parent Dialog",
+            "pass": true
+          },
+          {
+            "name": "removing an open anchor closes its surface and native top-layer lifetime",
+            "pass": true
+          },
+          {
+            "name": "noninteractive preview content cannot add unreachable focus stops",
+            "pass": true
+          },
+          {
+            "name": "Tooltip preserves complete punctuation and owns no shadow",
+            "pass": true
+          },
+          {
+            "name": "repeated reconnect cleans descriptions without duplicating them",
+            "pass": true
+          },
+          {
+            "name": "normal-motion close and reopen retain one native surface and finish cleanly",
+            "pass": true
+          },
+          {
+            "name": "normal-motion Toggle Tip exit restores focus only after its owned fade",
+            "pass": true
+          },
+          {
+            "name": "all preferred sides stay inside a narrow viewport and maintain the native top layer",
+            "pass": true
+          },
+          {
+            "name": "the visible tooltip has its own readable text in the native accessibility tree",
+            "pass": true
+          },
+          {
+            "name": "live trigger labels name the dialog through native element references",
+            "pass": true
+          },
+          {
+            "name": "open help follows its trigger theme, public token changes and direction",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "Tooltip opens on native focus without adding a wrapper tab stop",
+            "pass": true
+          },
+          {
+            "name": "Tooltip preserves prior descriptions and adds readable help for native and component buttons",
+            "pass": true
+          },
+          {
+            "name": "Escape closes without stealing focus or reopening while focus stays on the trigger",
+            "pass": true
+          },
+          {
+            "name": "pointer moves between trigger and preview without flicker and leave closes",
+            "pass": true
+          },
+          {
+            "name": "Hover Card preserves native destination activation and never focuses its preview",
+            "pass": true
+          },
+          {
+            "name": "delayed opening is canceled by pointer departure and disconnection",
+            "pass": true
+          },
+          {
+            "name": "changing content updates the existing description and disabled closes the surface",
+            "pass": true
+          },
+          {
+            "name": "Toggle Tip opens only on explicit activation and exposes dialog relationships",
+            "pass": true
+          },
+          {
+            "name": "keyboard activation moves into content and Escape returns to its native button",
+            "pass": true
+          },
+          {
+            "name": "Toggle Tip preserves content state through close and reopen without modal isolation",
+            "pass": true
+          },
+          {
+            "name": "outside focus closes Toggle Tip without stealing the new focus",
+            "pass": true
+          },
+          {
+            "name": "cancelable dismissal and explicit flags preserve an open Toggle Tip",
+            "pass": true
+          },
+          {
+            "name": "nested help consumes Escape once without dismissing its parent Dialog",
+            "pass": true
+          },
+          {
+            "name": "removing an open anchor closes its surface and native top-layer lifetime",
+            "pass": true
+          },
+          {
+            "name": "noninteractive preview content cannot add unreachable focus stops",
+            "pass": true
+          },
+          {
+            "name": "Tooltip preserves complete punctuation and owns no shadow",
+            "pass": true
+          },
+          {
+            "name": "repeated reconnect cleans descriptions without duplicating them",
+            "pass": true
+          },
+          {
+            "name": "normal-motion close and reopen retain one native surface and finish cleanly",
+            "pass": true
+          },
+          {
+            "name": "normal-motion Toggle Tip exit restores focus only after its owned fade",
+            "pass": true
+          },
+          {
+            "name": "all preferred sides stay inside a narrow viewport and maintain the native top layer",
+            "pass": true
+          },
+          {
+            "name": "the visible tooltip has its own readable text in the native accessibility tree",
+            "pass": true
+          },
+          {
+            "name": "live trigger labels name the dialog through native element references",
+            "pass": true
+          },
+          {
+            "name": "open help follows its trigger theme, public token changes and direction",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "documentation": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "Tooltip description and Escape",
+          "Hover Card preview and shadow",
+          "Toggle Tip keyboard focus",
+          "narrow interactive help",
+          "Snippet explicit-help composition"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "Tooltip description and Escape",
+          "Hover Card preview and shadow",
+          "Toggle Tip keyboard focus",
+          "narrow interactive help",
+          "Snippet explicit-help composition"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "Tooltip description and Escape",
+          "Hover Card preview and shadow",
+          "Toggle Tip keyboard focus",
+          "narrow interactive help",
+          "Snippet explicit-help composition"
+        ],
+        "errors": []
+      }
+    ],
+    "visual": "Chromium narrow source and documentation screenshots inspected",
+    "retirement": "Regenerated all remaining mappings; verifyStyleManifest passes and no context-card/legacy-tooltip/file-tree style entry remains",
+    "lint": "No errors after import organization; controller-registration warnings and template-string suggestions remain for the lint migration"
+  },
+  "corrections": [
+    "Outside-focus dismissal must listen at the document: WebKit pointer clicks do not always focus the trigger first",
+    "Exit focus return is captured before inertness and retained through the owned fade; external focus remains external",
+    "A visible inert Tooltip body needs an explicit readable tooltip name in addition to the trigger description",
+    "Snapshot text did not update an open Toggle Tip name; native labelled-by element references now track the trigger",
+    "Playwright name/role queries do not fully account for these shadow references and inert slots; native Chrome accessibility results and actual focus provide the stronger oracle",
+    "Browser cases reset viewport, pointer and document URL so an earlier hover/fragment does not leak into the next case",
+    "Final producer audit found three independently named legacy trigger/backdrop maps; they are removed together with their outputs"
+  ],
+  "references": [
+    "notes/decisions/overlay-help-components.md",
+    "notes/decisions/rich-help-activation.md",
+    "notes/alignment/inventory/overlays-help.md",
+    "notes/analysis/floating-surface-shadows.md",
+    "src/shared/overlay-presence.ts",
+    "src/shared/overlay-placement.ts",
+    "src/shared/field-association.ts",
+    "src/shared/dialog-lifetime.ts"
+  ],
+  "reproduce": {
+    "fixture": "src/components/tooltip/__tests__/tooltip.browser.ts",
+    "runner": "/tmp/acme-m17-help/run.ts",
+    "compiled": "/tmp/acme-m17-help/run-compiled.ts",
+    "documentation": "/tmp/acme-m17-help/docs-check.ts"
+  },
+  "limits": [
+    "Actual Safari/assistive technology and generated React integration retain M22/M26 owners",
+    "Native accessibility tree inspection is Chromium-specific; all three engines additionally verify DOM references and actual focus",
+    "Final package/removal acceptance rebuilds and audits the complete distribution in M26"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "expectations": [
+    {
+      "text": "The actual recipe and generated APIs determine all imports and properties, with no invented table engine inside the design-system component.",
+      "passed": true,
+      "evidence": "main.ts/data.ts instantiate application-owned TableController and VirtualizerController over 10,000 records; Table receives author native table children and presentation attributes only. recipe-lit.txt and setup.ts preserve the matching recipe; generated Table/Pagination API records are archived. Grader strict tsc rerun exits 0."
+    },
+    {
+      "text": "Sorting and page-size changes update displayed records while selection remains owned by the application table model.",
+      "passed": true,
+      "evidence": "result.json records descending first amount 9999 then ascending 0, pageSize=100/pageIndex=1 with first amount 100, and stable independent delivery-1 selection. main.ts sends exact page/page-size requests to the application table model."
+    },
+    {
+      "text": "Virtual scrolling uses TanStack Virtual and renders a bounded number of native rows while reaching records beyond the first viewport.",
+      "passed": true,
+      "evidence": "main.ts uses @tanstack/lit-virtual VirtualizerController, keyed native tr rows and spacers. result.json records 10 initial rows and 15 far rows delivery-9497 through delivery-9511 for virtualCount=10000; keyboard then reaches delivery-9512."
+    },
+    {
+      "text": "Removing the consumer releases listeners and observers, and remount succeeds without duplicate event processing.",
+      "passed": false,
+      "evidence": "result.json shows all 18 observed ResizeObserver targets released, scrollElement=null and same-instance reconnect rendering delivery-100 with retained selection. But the harness never counts handler/model invocations after remount, so duplicate event processing is unproven. Observer cleanup is supported; this is not evidence of a leak."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 1,
+    "total": 4,
+    "pass_rate": 0.75
+  },
+  "execution_metrics": null,
+  "timing": null,
+  "metrics_availability": "Host did not supply token counts, duration or full executor tool metrics. Unavailable, not zero.",
+  "claims": [
+    {
+      "claim": "All 18 observed ResizeObserver targets release on disconnect.",
+      "type": "quality",
+      "verified": true,
+      "evidence": "result.json lifecycle details: before=18, removed.observed=0, removed.scroll=null."
+    },
+    {
+      "claim": "Remount is proved free of duplicate event processing.",
+      "type": "quality",
+      "verified": false,
+      "evidence": "The lifecycle check asserts recovered scrolling/selection but does not instrument callback or update counts."
+    }
+  ],
+  "user_notes_summary": {
+    "uncertainties": [
+      "Both Table configurations originally interpret descendant Select close requests as page-size; explicit action dispatch repairs the consumer bug. main-attempt-1.ts and probe.log retain the failure.",
+      "Nine final browser checks pass. Development/update warnings and a favicon 500 remain in the minimal server. Recipe React-source noise is a documentation finding, not a Table runtime defect."
+    ],
+    "needs_review": [],
+    "workarounds": []
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "assertion": "Removing the consumer releases listeners and observers, and remount succeeds without duplicate event processing.",
+        "reason": "Count request/model invocations before and after repeated same-instance reconnects. Recovered scrolling alone cannot rule out duplicate processing; track observer targets and inactive subscriptions too."
+      },
+      {
+        "reason": "Both artifacts initially mishandle bubbled nested close requests. Add an explicit unknown-action invariant: page and page size stay finite and unchanged after unrelated requests."
+      },
+      {
+        "reason": "Filtering is requested by the prompt but is not one of the four assertions. Both saved harnesses exercise it; include stable selection and empty results in common acceptance coverage."
+      }
+    ],
+    "overall": "Same four original assertions applied to both configurations. Final functional harness passes and proof of the compound assertions are recorded separately."
+  },
+  "evidence_scope": "Original final source, saved results/attempts, verification source, screenshots, current installed version manifests and independent typechecks. Full agent transcripts were not supplied; process claims based only on self-reports are not independently established.",
+  "notes": [
+    "Both Table configurations originally interpret descendant Select close requests as page-size; explicit action dispatch repairs the consumer bug. main-attempt-1.ts and probe.log retain the failure.",
+    "Nine final browser checks pass. Development/update warnings and a favicon 500 remain in the minimal server. Recipe React-source noise is a documentation finding, not a Table runtime defect."
+  ]
+}

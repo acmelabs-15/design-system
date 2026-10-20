@@ -1,0 +1,7 @@
+:host{display:inline-block;vertical-align:middle;}
+[part=position]{font-size:.875rem;line-height:1.5;color:var(--ds-gray-900);white-space:nowrap;}
+[part=item]{display:inline-flex;align-items:center;justify-content:center;min-inline-size:var(--acme-spacing-6);color:var(--ds-gray-900);}
+[part=page-size]{min-inline-size:8rem;}
+[part=page-size]::part(root){display:flex;align-items:center;gap:var(--acme-spacing-2);}
+[part=page-size]::part(control){flex:0 1 auto;min-inline-size:6rem;}
+acme-select{inline-size:max-content;min-inline-size:6rem;max-inline-size:100%;}

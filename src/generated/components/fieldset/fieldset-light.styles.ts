@@ -1,0 +1,46 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const fieldsetLightCss = css`[data-acme-native-root="fieldset"] {
+  inline-size: 100%;
+  min-inline-size: 0;
+  font: inherit;
+  color: inherit;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+[data-acme-native-root="fieldset"] > legend {
+  font-family: var(--acme-font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-500);
+  color: var(--ds-gray-1000);
+  margin-block-end: 8px;
+  padding: 0;
+}
+
+[data-acme-native-root="fieldset"] > [slot="help"], [data-acme-native-root="fieldset"] > [slot="error"] {
+  color: var(--ds-gray-900);
+  margin-block: 8px;
+  font-size: 13px;
+  line-height: 20px;
+  display: block;
+}
+
+[data-acme-native-root="fieldset"] > [slot="error"] {
+  color: var(--ds-red-900);
+}
+
+[data-acme-native-root="fieldset"]:not([aria-invalid="true"]) > [slot="error"] {
+  display: none;
+}
+
+[data-acme-native-root="fieldset"]:disabled > legend, [data-acme-native-root="fieldset"]:disabled > [slot="help"] {
+  color: var(--ds-gray-700);
+}
+
+[data-acme-native-root="fieldset"] > [hidden] {
+  display: none !important;
+}
+`;

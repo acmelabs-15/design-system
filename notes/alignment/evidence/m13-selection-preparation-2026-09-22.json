@@ -1,0 +1,1525 @@
+{
+  "date": "2026-09-22",
+  "status": "Preparation and intermediate findings; final acceptance is m13-selection-2026-09-22.json",
+  "localSources": [
+    {
+      "path": "src/components/select/select.ts",
+      "sha256": "0c528d03a23ac9b45d06b52cef280992758ca6cab66c3f41d2d71b6a488dab4c",
+      "coverage": "Read completely"
+    },
+    {
+      "path": "src/components/combobox/combobox.ts",
+      "sha256": "f926e711b28e2586e97cc9e06811a7d6ff6f23c893f7a73fedcc41ea9f4843c6",
+      "coverage": "Read completely"
+    },
+    {
+      "path": "src/components/combobox-option/combobox-option.ts",
+      "sha256": "2a48ce92c08dd6bdb90d273d23c86a615108e7a17ef7ba9c355b9018da860773",
+      "coverage": "Read completely"
+    },
+    {
+      "path": "src/components/multi-select/multi-select.ts",
+      "sha256": "3229fb949fdab83d0166bf2be3f40cee43c81434e948476cb4d71c720a8b69dd",
+      "coverage": "Read completely"
+    },
+    {
+      "path": "src/components/multi-select-row/multi-select-row.ts",
+      "sha256": "5e4aadeaf97a7c4af61f173cbf8349827a4c39f598a04ad0bcad42b45ae848eb",
+      "coverage": "Read completely"
+    },
+    {
+      "path": "src/shared/native-form.ts",
+      "sha256": "61efd83b99c8bd9918dacd0a064af996a6361a967cb6e236bff54ff300b26031",
+      "coverage": "Read completely"
+    },
+    {
+      "path": "src/shared/native-form-element.ts",
+      "sha256": "9a23600fe4dfc13102d5b9e6aa003874c839adbf086aae6ca583e286058762b1",
+      "coverage": "Read completely"
+    }
+  ],
+  "docs": [
+    {
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/",
+      "coverage": "Full article"
+    },
+    {
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/listbox/",
+      "coverage": "Full article"
+    },
+    {
+      "url": "https://chakra-ui.com/docs/components/combobox",
+      "coverage": "Full rendered documentation, guides, props and anatomy; individual example Code tabs not opened"
+    },
+    {
+      "url": "https://chakra-ui.com/docs/components/select",
+      "coverage": "Full rendered documentation, guides, props and anatomy; individual example Code tabs not opened"
+    },
+    {
+      "url": "https://www.radix-ui.com/primitives/docs/components/select",
+      "coverage": "Complete 745-line official Markdown document"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaActiveDescendantElement",
+      "coverage": "Property description, reference scope and example"
+    }
+  ],
+  "pro": {
+    "selectEntries": 15,
+    "comboboxEntries": 0,
+    "coverage": "All matching prior full-review findings consulted; not a fresh reread of licensed source"
+  },
+  "relationProbe": {
+    "fixture": "/tmp/acme-m13-selection/relations.ts",
+    "results": [
+      {
+        "engine": "chromium",
+        "refs": {
+          "supported": true,
+          "active": true,
+          "controls": true,
+          "focus": true
+        },
+        "ax": [
+          {
+            "role": "combobox",
+            "name": "Choice",
+            "properties": [
+              {
+                "name": "invalid",
+                "value": {
+                  "type": "token",
+                  "value": "false"
+                }
+              },
+              {
+                "name": "focusable",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "focused",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "editable",
+                "value": {
+                  "type": "token",
+                  "value": "plaintext"
+                }
+              },
+              {
+                "name": "settable",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "hasPopup",
+                "value": {
+                  "type": "token",
+                  "value": "listbox"
+                }
+              },
+              {
+                "name": "required",
+                "value": {
+                  "type": "boolean",
+                  "value": false
+                }
+              },
+              {
+                "name": "expanded",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "activedescendant",
+                "value": {
+                  "type": "idref",
+                  "relatedNodes": [
+                    {
+                      "backendDOMNodeId": 7,
+                      "idref": "option"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "controls",
+                "value": {
+                  "type": "idrefList",
+                  "value": "",
+                  "relatedNodes": [
+                    {
+                      "backendDOMNodeId": 8
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "role": "listbox",
+            "name": "Choices",
+            "properties": [
+              {
+                "name": "multiselectable",
+                "value": {
+                  "type": "boolean",
+                  "value": false
+                }
+              },
+              {
+                "name": "orientation",
+                "value": {
+                  "type": "token",
+                  "value": "vertical"
+                }
+              },
+              {
+                "name": "required",
+                "value": {
+                  "type": "boolean",
+                  "value": false
+                }
+              }
+            ]
+          },
+          {
+            "role": "option",
+            "name": "First",
+            "properties": [
+              {
+                "name": "selected",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "refs": {
+          "supported": true,
+          "active": true,
+          "controls": true,
+          "focus": true
+        }
+      },
+      {
+        "engine": "webkit",
+        "refs": {
+          "supported": true,
+          "active": true,
+          "controls": true,
+          "focus": true
+        }
+      }
+    ],
+    "scope": "Minimal native shadow/slot candidate, not a completed Lit Select. Input references a public role=option host and native listbox through element-reference properties. Actual focus stays on the input. Chromium AX tree exposes the named combobox, listbox, option and active-descendant relationship.",
+    "limits": [
+      "Firefox/WebKit property and focus checks only; Chromium provides the native accessibility-tree inspection.",
+      "No collection, forms, filtering, IME or selected-value implementation acceptance claimed."
+    ]
+  },
+  "remainingBeforeAcceptance": [
+    "Finish concrete option ownership/filter-order/keyboard and form choices against source before family acceptance",
+    "Complete shared-option/native-form/collection replacement",
+    "All source/compiled/browser/form/documentation gates from F-06"
+  ],
+  "materialWeb": [
+    {
+      "url": "https://github.com/material-components/material-web/blob/9200eb8a0eef99c6bd439ce3968952d76e9ec1b4/select/internal/select.ts",
+      "sha256": "afbe80f31d4e8d3de331eeecde292e2cf2a85a3078ae738f857eeef0e87f1864",
+      "coverage": "Read completely"
+    },
+    {
+      "url": "https://github.com/material-components/material-web/blob/9200eb8a0eef99c6bd439ce3968952d76e9ec1b4/select/internal/selectoption/select-option.ts",
+      "sha256": "0e1efc5689ddd6e3237108bb7055032e9361b7f21e82c42a12f7500c894c7a0b",
+      "coverage": "Read completely"
+    },
+    {
+      "url": "https://github.com/material-components/material-web/blob/9200eb8a0eef99c6bd439ce3968952d76e9ec1b4/select/internal/selectoption/selectOptionController.ts",
+      "sha256": "94cf51389a7211d8f25d13118d28fb77834dfacae4396ce54abc95521a0205dd",
+      "coverage": "Read completely"
+    },
+    {
+      "url": "https://github.com/material-components/material-web/blob/9200eb8a0eef99c6bd439ce3968952d76e9ec1b4/labs/behaviors/validators/select-validator.ts",
+      "sha256": "186b103e08f3668e318caed923b6495c684a5a46bc2da131d56bc18b610a66e5",
+      "coverage": "Read completely"
+    },
+    {
+      "url": "https://github.com/material-components/material-web/blob/9200eb8a0eef99c6bd439ce3968952d76e9ec1b4/docs/components/select.md",
+      "sha256": "1bec6e91b1c0008485b46568d263b28029b70b23e8879215e2d89e5f0738b456",
+      "coverage": "Read completely"
+    }
+  ],
+  "materialGuidance": "The complete M3 Menu Overview/Specs/Guidelines/Accessibility review in m13-menu-reference-review-2026-09-22.json covers the select-menu pattern linked by Material Web Select. No Material sizes/colors are adopted.",
+  "buttonRelationProbe": [
+    {
+      "engine": "chromium",
+      "refs": {
+        "supported": true,
+        "active": true,
+        "controls": true,
+        "focus": true
+      },
+      "ax": [
+        {
+          "role": "combobox",
+          "name": "Choice",
+          "value": "First",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "focused",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "hasPopup",
+              "value": {
+                "type": "token",
+                "value": "listbox"
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "expanded",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "activedescendant",
+              "value": {
+                "type": "idref",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 7,
+                    "idref": "option"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "controls",
+              "value": {
+                "type": "idrefList",
+                "value": "",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 8
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "role": "listbox",
+          "name": "Choices",
+          "properties": [
+            {
+              "name": "multiselectable",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "orientation",
+              "value": {
+                "type": "token",
+                "value": "vertical"
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            }
+          ]
+        },
+        {
+          "role": "option",
+          "name": "First",
+          "properties": [
+            {
+              "name": "selected",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "refs": {
+        "supported": true,
+        "active": true,
+        "controls": true,
+        "focus": true
+      }
+    },
+    {
+      "engine": "webkit",
+      "refs": {
+        "supported": true,
+        "active": true,
+        "controls": true,
+        "focus": true
+      }
+    }
+  ],
+  "progress": {
+    "select": [
+      {
+        "engine": "chromium",
+        "passed": [
+          "initial required validity and empty submission",
+          "keyboard highlight is separate from committed value",
+          "Enter commits one native value",
+          "changing an option label updates selected display",
+          "reset clears current selection",
+          "native label activates the actual trigger"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "passed": [
+          "initial required validity and empty submission",
+          "keyboard highlight is separate from committed value",
+          "Enter commits one native value",
+          "changing an option label updates selected display",
+          "reset clears current selection",
+          "native label activates the actual trigger"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "passed": [
+          "initial required validity and empty submission",
+          "keyboard highlight is separate from committed value",
+          "Enter commits one native value",
+          "changing an option label updates selected display",
+          "reset clears current selection",
+          "native label activates the actual trigger"
+        ],
+        "errors": []
+      }
+    ],
+    "multiCandidate": [
+      {
+        "engine": "chromium",
+        "passed": [
+          "empty required multiple selection is invalid",
+          "opening moves focus to the multi-select listbox",
+          "Space toggles one value without closing",
+          "disabled options are skipped",
+          "Escape returns focus to the named button"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "passed": [
+          "empty required multiple selection is invalid",
+          "opening moves focus to the multi-select listbox",
+          "Space toggles one value without closing",
+          "disabled options are skipped",
+          "Escape returns focus to the named button"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "passed": [
+          "empty required multiple selection is invalid",
+          "opening moves focus to the multi-select listbox",
+          "Space toggles one value without closing",
+          "disabled options are skipped",
+          "Escape returns focus to the named button"
+        ],
+        "errors": []
+      }
+    ],
+    "slotTransfer": [
+      {
+        "engine": "chromium",
+        "before": [
+          "Ex",
+          "x"
+        ],
+        "after": [
+          "x",
+          "Ex"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "before": [
+          "Ex",
+          "x"
+        ],
+        "after": [
+          "x",
+          "Ex"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "before": [
+          "Ex",
+          "x"
+        ],
+        "after": [
+          "x",
+          "Ex"
+        ],
+        "errors": []
+      }
+    ],
+    "unit": {
+      "passed": 15,
+      "failed": 0,
+      "assertions": 73
+    },
+    "limitations": [
+      "No final package/site/compiled acceptance yet",
+      "Actual OS IME, speech, Safari, clipboard/history/autofill and React wrapper gates remain assigned to M22/M26",
+      "Chromium native accessibility-tree order checked; Firefox/WebKit DOM projection and keyboard checks only"
+    ],
+    "multiPublic": [
+      {
+        "engine": "chromium",
+        "passed": [
+          "empty required multiple selection is invalid",
+          "opening moves focus to the multi-select listbox",
+          "Space toggles one value without closing",
+          "disabled options are skipped",
+          "Escape returns focus to the named button"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "passed": [
+          "empty required multiple selection is invalid",
+          "opening moves focus to the multi-select listbox",
+          "Space toggles one value without closing",
+          "disabled options are skipped",
+          "Escape returns focus to the named button"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "passed": [
+          "empty required multiple selection is invalid",
+          "opening moves focus to the multi-select listbox",
+          "Space toggles one value without closing",
+          "disabled options are skipped",
+          "Escape returns focus to the named button"
+        ],
+        "errors": []
+      }
+    ],
+    "extended": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "immediate selected value, disabled and reenabled native FormData",
+            "pass": true
+          },
+          {
+            "name": "disabled selected option is omitted without losing canonical value",
+            "pass": true
+          },
+          {
+            "name": "unmatched programmatic value resolves when asynchronous option arrives",
+            "pass": true
+          },
+          {
+            "name": "duplicate option values invalidate the collection",
+            "pass": true
+          },
+          {
+            "name": "hidden options cannot become the active descendant",
+            "pass": true
+          },
+          {
+            "name": "hidden sections cannot supply active options",
+            "pass": true
+          },
+          {
+            "name": "active removal clears the reference without changing selected value",
+            "pass": true
+          },
+          {
+            "name": "multiple default values are property-only and reset independently",
+            "pass": true
+          },
+          {
+            "name": "nested owners do not register each other options",
+            "pass": true
+          },
+          {
+            "name": "focus can enter footer and closes when it leaves owner",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "immediate selected value, disabled and reenabled native FormData",
+            "pass": true
+          },
+          {
+            "name": "disabled selected option is omitted without losing canonical value",
+            "pass": true
+          },
+          {
+            "name": "unmatched programmatic value resolves when asynchronous option arrives",
+            "pass": true
+          },
+          {
+            "name": "duplicate option values invalidate the collection",
+            "pass": true
+          },
+          {
+            "name": "hidden options cannot become the active descendant",
+            "pass": true
+          },
+          {
+            "name": "hidden sections cannot supply active options",
+            "pass": true
+          },
+          {
+            "name": "active removal clears the reference without changing selected value",
+            "pass": true
+          },
+          {
+            "name": "multiple default values are property-only and reset independently",
+            "pass": true
+          },
+          {
+            "name": "nested owners do not register each other options",
+            "pass": true
+          },
+          {
+            "name": "focus can enter footer and closes when it leaves owner",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "immediate selected value, disabled and reenabled native FormData",
+            "pass": true
+          },
+          {
+            "name": "disabled selected option is omitted without losing canonical value",
+            "pass": true
+          },
+          {
+            "name": "unmatched programmatic value resolves when asynchronous option arrives",
+            "pass": true
+          },
+          {
+            "name": "duplicate option values invalidate the collection",
+            "pass": true
+          },
+          {
+            "name": "hidden options cannot become the active descendant",
+            "pass": true
+          },
+          {
+            "name": "hidden sections cannot supply active options",
+            "pass": true
+          },
+          {
+            "name": "active removal clears the reference without changing selected value",
+            "pass": true
+          },
+          {
+            "name": "multiple default values are property-only and reset independently",
+            "pass": true
+          },
+          {
+            "name": "nested owners do not register each other options",
+            "pass": true
+          },
+          {
+            "name": "focus can enter footer and closes when it leaves owner",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "combo": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "typing ranks projected options without changing authored order",
+            "pass": true
+          },
+          {
+            "name": "Enter commits ranked active value and restores label",
+            "pass": true
+          },
+          {
+            "name": "custom filter order and section runs remain authoritative",
+            "pass": true
+          },
+          {
+            "name": "Escape discards uncommitted query and keeps selected value",
+            "pass": true
+          },
+          {
+            "name": "unmatched text cannot become a form value",
+            "pass": true
+          },
+          {
+            "name": "async option arrival updates ranked projection",
+            "pass": true
+          },
+          {
+            "name": "composition input is not committed or intercepted",
+            "pass": true
+          },
+          {
+            "name": "Lit keyed updates retain identity and remove deleted ranked options",
+            "pass": true
+          },
+          {
+            "name": "native Enter submits after committing and closing the popup",
+            "pass": true
+          },
+          {
+            "name": "projected grouped accessibility order matches result order",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "typing ranks projected options without changing authored order",
+            "pass": true
+          },
+          {
+            "name": "Enter commits ranked active value and restores label",
+            "pass": true
+          },
+          {
+            "name": "custom filter order and section runs remain authoritative",
+            "pass": true
+          },
+          {
+            "name": "Escape discards uncommitted query and keeps selected value",
+            "pass": true
+          },
+          {
+            "name": "unmatched text cannot become a form value",
+            "pass": true
+          },
+          {
+            "name": "async option arrival updates ranked projection",
+            "pass": true
+          },
+          {
+            "name": "composition input is not committed or intercepted",
+            "pass": true
+          },
+          {
+            "name": "Lit keyed updates retain identity and remove deleted ranked options",
+            "pass": true
+          },
+          {
+            "name": "native Enter submits after committing and closing the popup",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "typing ranks projected options without changing authored order",
+            "pass": true
+          },
+          {
+            "name": "Enter commits ranked active value and restores label",
+            "pass": true
+          },
+          {
+            "name": "custom filter order and section runs remain authoritative",
+            "pass": true
+          },
+          {
+            "name": "Escape discards uncommitted query and keeps selected value",
+            "pass": true
+          },
+          {
+            "name": "unmatched text cannot become a form value",
+            "pass": true
+          },
+          {
+            "name": "async option arrival updates ranked projection",
+            "pass": true
+          },
+          {
+            "name": "composition input is not committed or intercepted",
+            "pass": true
+          },
+          {
+            "name": "Lit keyed updates retain identity and remove deleted ranked options",
+            "pass": true
+          },
+          {
+            "name": "native Enter submits after committing and closing the popup",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "independentReview": {
+      "findings": [
+        {
+          "issue": "selected label and async selected metadata remained stale",
+          "before": [
+            "Apple after label Pink Lady",
+            "pear after arriving Juicy Pear"
+          ]
+        },
+        {
+          "issue": "Enter with no active result retained popup",
+          "before": {
+            "open": true,
+            "inputValue": "zzz"
+          }
+        }
+      ],
+      "verification": [
+        {
+          "engine": "chromium",
+          "changedLabel": {
+            "before": "Apple",
+            "inputValue": "Pink Lady",
+            "native": "Pink Lady",
+            "label": "Pink Lady"
+          },
+          "asyncSelected": {
+            "value": "pear",
+            "inputValue": "Juicy Pear",
+            "native": "Juicy Pear",
+            "label": "Juicy Pear"
+          },
+          "emptyEnter": {
+            "open": false,
+            "inputValue": ""
+          },
+          "escapeEvents": {
+            "inputValue": "Apple",
+            "events": [
+              "pine",
+              "Apple"
+            ]
+          },
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "changedLabel": {
+            "before": "Apple",
+            "inputValue": "Pink Lady",
+            "native": "Pink Lady",
+            "label": "Pink Lady"
+          },
+          "asyncSelected": {
+            "value": "pear",
+            "inputValue": "Juicy Pear",
+            "native": "Juicy Pear",
+            "label": "Juicy Pear"
+          },
+          "emptyEnter": {
+            "open": false,
+            "inputValue": ""
+          },
+          "escapeEvents": {
+            "inputValue": "Apple",
+            "events": [
+              "pine",
+              "Apple"
+            ]
+          },
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "changedLabel": {
+            "before": "Apple",
+            "inputValue": "Pink Lady",
+            "native": "Pink Lady",
+            "label": "Pink Lady"
+          },
+          "asyncSelected": {
+            "value": "pear",
+            "inputValue": "Juicy Pear",
+            "native": "Juicy Pear",
+            "label": "Juicy Pear"
+          },
+          "emptyEnter": {
+            "open": false,
+            "inputValue": ""
+          },
+          "escapeEvents": {
+            "inputValue": "Apple",
+            "events": [
+              "pine",
+              "Apple"
+            ]
+          },
+          "errors": []
+        }
+      ]
+    }
+  },
+  "orderingReview": [
+    {
+      "engine": "chromium",
+      "manual": {
+        "slotAssignment": "manual",
+        "direct": {
+          "assigned": [
+            "b",
+            "a"
+          ],
+          "dom": [
+            "a",
+            "b"
+          ],
+          "positions": [
+            8,
+            26
+          ]
+        },
+        "nested": {
+          "assigned": [],
+          "positions": [
+            0,
+            0
+          ]
+        }
+      },
+      "ax": [
+        {
+          "name": "Nested",
+          "children": []
+        },
+        {
+          "name": "Direct",
+          "children": [
+            "Beta",
+            "Alpha"
+          ]
+        }
+      ],
+      "lit": {
+        "moved": [
+          "b",
+          "c",
+          "a"
+        ],
+        "afterDelete": [
+          "b",
+          "c",
+          "a"
+        ],
+        "deletedStillConnected": true
+      }
+    },
+    {
+      "engine": "firefox",
+      "manual": {
+        "slotAssignment": "manual",
+        "direct": {
+          "assigned": [
+            "b",
+            "a"
+          ],
+          "dom": [
+            "a",
+            "b"
+          ],
+          "positions": [
+            8,
+            27.199996948242188
+          ]
+        },
+        "nested": {
+          "assigned": [],
+          "positions": [
+            0,
+            0
+          ]
+        }
+      },
+      "lit": {
+        "moved": [
+          "b",
+          "c",
+          "a"
+        ],
+        "afterDelete": [
+          "b",
+          "c",
+          "a"
+        ],
+        "deletedStillConnected": true
+      }
+    },
+    {
+      "engine": "webkit",
+      "manual": {
+        "slotAssignment": "manual",
+        "direct": {
+          "assigned": [
+            "b",
+            "a"
+          ],
+          "dom": [
+            "a",
+            "b"
+          ],
+          "positions": [
+            8,
+            26
+          ]
+        },
+        "nested": {
+          "assigned": [],
+          "positions": [
+            0,
+            0
+          ]
+        }
+      },
+      "lit": {
+        "moved": [
+          "b",
+          "c",
+          "a"
+        ],
+        "afterDelete": [
+          "b",
+          "c",
+          "a"
+        ],
+        "deletedStillConnected": true
+      }
+    }
+  ],
+  "menuSlotTransfer": [
+    {
+      "engine": "chromium",
+      "result": {
+        "chosen": 1,
+        "open": false
+      },
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "result": {
+        "chosen": 1,
+        "open": false
+      },
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "result": {
+        "chosen": 1,
+        "open": false
+      },
+      "errors": []
+    }
+  ],
+  "customTriggerReview": {
+    "refs": {
+      "controls": [],
+      "active": "a",
+      "focused": true
+    },
+    "externalCombo": [
+      {
+        "role": "combobox",
+        "name": "Flavor",
+        "description": "Choose your flavor",
+        "properties": [
+          {
+            "name": "invalid",
+            "value": {
+              "type": "token",
+              "value": "false"
+            }
+          },
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "focused",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "hasPopup",
+            "value": {
+              "type": "token",
+              "value": "listbox"
+            }
+          },
+          {
+            "name": "required",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "expanded",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "describedby",
+            "value": {
+              "type": "idrefList",
+              "value": "",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 7,
+                  "idref": "fieldhelp"
+                }
+              ]
+            }
+          },
+          {
+            "name": "activedescendant",
+            "value": {
+              "type": "idref",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 12,
+                  "idref": "a"
+                }
+              ]
+            }
+          },
+          {
+            "name": "labelledby",
+            "value": {
+              "type": "nodeList",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 6,
+                  "idref": "fieldlabel",
+                  "text": "Flavor"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "role": "listbox",
+        "name": "Flavor",
+        "properties": [
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "multiselectable",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "orientation",
+            "value": {
+              "type": "token",
+              "value": "vertical"
+            }
+          },
+          {
+            "name": "required",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "role": "option",
+        "name": "Vanilla",
+        "properties": [
+          {
+            "name": "selected",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "role": "option",
+        "name": "Chocolate",
+        "properties": [
+          {
+            "name": "selected",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": false
+            }
+          }
+        ]
+      }
+    ],
+    "focusList": {
+      "focused": true,
+      "active": "a"
+    },
+    "listFocus": [
+      {
+        "role": "button",
+        "name": "Flavor",
+        "description": "Choose your flavor",
+        "properties": [
+          {
+            "name": "invalid",
+            "value": {
+              "type": "token",
+              "value": "false"
+            }
+          },
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "hasPopup",
+            "value": {
+              "type": "token",
+              "value": "listbox"
+            }
+          },
+          {
+            "name": "expanded",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "describedby",
+            "value": {
+              "type": "idrefList",
+              "value": "",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 7,
+                  "idref": "fieldhelp"
+                }
+              ]
+            }
+          },
+          {
+            "name": "labelledby",
+            "value": {
+              "type": "nodeList",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 6,
+                  "idref": "fieldlabel",
+                  "text": "Flavor"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "role": "listbox",
+        "name": "Flavor",
+        "description": "Choose your flavor",
+        "properties": [
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "focused",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "multiselectable",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "orientation",
+            "value": {
+              "type": "token",
+              "value": "vertical"
+            }
+          },
+          {
+            "name": "required",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "describedby",
+            "value": {
+              "type": "idrefList",
+              "value": "",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 7,
+                  "idref": "fieldhelp"
+                }
+              ]
+            }
+          },
+          {
+            "name": "activedescendant",
+            "value": {
+              "type": "idref",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 12,
+                  "idref": "a"
+                }
+              ]
+            }
+          },
+          {
+            "name": "labelledby",
+            "value": {
+              "type": "nodeList",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 6,
+                  "idref": "fieldlabel",
+                  "text": "Flavor"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "role": "option",
+        "name": "Vanilla",
+        "properties": [
+          {
+            "name": "selected",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "role": "option",
+        "name": "Chocolate",
+        "properties": [
+          {
+            "name": "selected",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "customTriggerResolution": "Root owns native button; trigger slot supplies noninteractive content in same shadow tree as popup.",
+  "matchSorter": {
+    "version": "8.3.0",
+    "legacySourceCommit": "924ad0bd9",
+    "labels": [
+      "France",
+      "france",
+      "South Korea",
+      "South Africa",
+      "Dominican Republic",
+      "Bahamas",
+      "United States",
+      "United States of America",
+      "Uruguay",
+      "Zimbabwe",
+      "Kuwait",
+      "alpha",
+      "Alpha",
+      "ALPHA",
+      "A apple",
+      "B apple",
+      "C apple",
+      "app",
+      "apple",
+      "crabapple",
+      "fiji apple",
+      "jalapeño",
+      "à la carte",
+      "café",
+      "café",
+      "papier-mâché",
+      "à la mode",
+      "Łódź",
+      "lodz",
+      "Æther",
+      "aether",
+      "øya",
+      "oya",
+      "foo-bar",
+      "foo bar",
+      "FooBar",
+      "日本",
+      "日本語",
+      "中文",
+      "한글",
+      "😀 Smile",
+      ""
+    ],
+    "queries": [
+      "",
+      "France",
+      "france",
+      "Sou",
+      "Repub",
+      "ham",
+      "us",
+      "ua",
+      "iw",
+      "apple",
+      "app",
+      "aa",
+      "à",
+      "cafe",
+      "lodz",
+      "aether",
+      "oya",
+      "fb",
+      "日本",
+      "😀",
+      "not found"
+    ],
+    "comparisons": 672,
+    "identical": 577,
+    "differences": 95,
+    "differenceQueries": [
+      "à",
+      "cafe",
+      "lodz",
+      "aether",
+      "oya"
+    ],
+    "resolution": "Published accent mapping additionally finds Łódź, Æther and øya. Accept the upstream behavior. NFC-normalize the built-in query and text keys so canonically equivalent composed/decomposed strings rank equally. Custom filters receive authored query text.",
+    "coverage": "All 8 thresholds, keepDiacritics true/false for string inputs, property and callback keys, ties and normalization. Not an exhaustive Unicode or performance guarantee."
+  }
+}

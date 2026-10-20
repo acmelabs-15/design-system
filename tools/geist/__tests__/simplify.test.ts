@@ -43,3 +43,26 @@ describe("simplify: shorthand reset", () => {
     expect(dir).toContain("flex-direction:column");
   });
 });
+
+test("reference defaults use linked CSS sheets rather than sidecar files", async () => {
+  const { copyFile, mkdir, mkdtemp, rm, writeFile } = await import("node:fs/promises");
+  const { tmpdir } = await import("node:os");
+  const path = await import("node:path");
+  const scratch = await mkdtemp(path.join(tmpdir(), "acme-reference-inputs-"));
+  try {
+    await mkdir(path.join(scratch, "corpus/css"), { recursive: true });
+    await mkdir(path.join(scratch, "corpus/html"), { recursive: true });
+    for (const file of ["simplify.ts", "tw.ts"]) {
+      await copyFile(path.join(import.meta.dir, "..", file), path.join(scratch, file));
+    }
+    await writeFile(path.join(scratch, "corpus/html/page.html"), '<link rel="stylesheet" href="/linked.css">');
+    await writeFile(path.join(scratch, "corpus/css/linked.css"), '@property --tw-linked{syntax:"*";inherits:false;initial-value:1;}');
+    await writeFile(path.join(scratch, "corpus/css/notes.txt"), '@property --tw-sidecar{syntax:"*";inherits:false;initial-value:999;}');
+    const module = await import(path.join(scratch, "simplify.ts"));
+    module.loadReference();
+    expect(module.twDefaults["--tw-linked"]).toBe("1");
+    expect(module.twDefaults["--tw-sidecar"]).toBeUndefined();
+  } finally {
+    await rm(scratch, { recursive: true, force: true });
+  }
+});

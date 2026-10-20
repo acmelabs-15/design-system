@@ -1,0 +1,447 @@
+{
+  "evaluation": "react-skilled",
+  "versions": {
+    "core": "0.2.0",
+    "wrappers": "0.2.0",
+    "react": "19.3.0"
+  },
+  "firstFailures": [
+    {
+      "name": "verification exception",
+      "detail": "TimeoutError: focus: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('acme-tab[value=\"source\"] button')\u001b[22m\n"
+    },
+    {
+      "name": "independent single plan selection"
+    },
+    {
+      "name": "verification exception",
+      "detail": "Error: evaluate: Error: strict mode violation: locator('acme-group') resolved to 2 elements:\n    1) <acme-group grow=\"\" attached=\"\" data-acme-element=\"\">…</acme-group> aka getByText('StarterFor personal projects ProFor growing teams')\n    2) <acme-group data-acme-element=\"\">…</acme-group> aka getByRole('tablist', { name: 'Preferences views' }).locator('acme-group')\n\nCall log:\n\u001b[2m  - waiting for locator('acme-group')\u001b[22m\n"
+    },
+    {
+      "name": "visual attached edges",
+      "detail": "Initial screenshot showed different card heights because Group default cross-axis alignment does not stretch; repaired via documented alignItems prop."
+    },
+    {
+      "name": "selected tab underline",
+      "detail": "After keyboard activation of Output and 300ms screenshot settling, underline remains below Source. A separate 1000ms check confirms Tabs.value=output, Source aria-selected=false and Output aria-selected=true. Screenshot provides position evidence; indicator locator did not expose its node."
+    }
+  ],
+  "repairs": [
+    {
+      "kind": "test harness",
+      "description": "Use structural locators: wrapper value props do not reflect as host attributes. No artifact or package repair."
+    },
+    {
+      "kind": "test harness",
+      "description": "Scope attached Group locator to Radio Group because Tabs owns an internal Group. Await committed React status before checking controlled plan selection."
+    },
+    {
+      "kind": "artifact presentation",
+      "description": "Screenshot showed unequal attached card heights from different text wrapping. Set Group alignItems=stretch and width=100% to align attached edges."
+    }
+  ],
+  "checks": [
+    {
+      "name": "native accessible names",
+      "passed": true,
+      "detail": [
+        {
+          "role": "tablist",
+          "name": "Preferences views",
+          "properties": [
+            {
+              "name": "multiselectable",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "orientation",
+              "value": {
+                "type": "token",
+                "value": "horizontal"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tabpanel",
+          "name": "Source",
+          "properties": [
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "labelledby",
+              "value": {
+                "type": "nodeList",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 30,
+                    "text": "Source"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "role": "radiogroup",
+          "name": "Choose your plan",
+          "properties": [
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "orientation",
+              "value": {
+                "type": "token",
+                "value": "horizontal"
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "labelledby",
+              "value": {
+                "type": "nodeList",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 54,
+                    "idref": "plan-label",
+                    "text": "Choose your plan"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "role": "radio",
+          "name": "Starter",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "checked",
+              "value": {
+                "type": "tristate",
+                "value": "true"
+              }
+            },
+            {
+              "name": "describedby",
+              "value": {
+                "type": "idrefList",
+                "value": "",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 71
+                  }
+                ]
+              }
+            },
+            {
+              "name": "labelledby",
+              "value": {
+                "type": "nodeList",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 67,
+                    "text": "Starter"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "role": "radio",
+          "name": "Pro",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "checked",
+              "value": {
+                "type": "tristate",
+                "value": "false"
+              }
+            },
+            {
+              "name": "describedby",
+              "value": {
+                "type": "idrefList",
+                "value": "",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 91
+                  }
+                ]
+              }
+            },
+            {
+              "name": "labelledby",
+              "value": {
+                "type": "nodeList",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 87,
+                    "text": "Pro"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "role": "tab",
+          "name": "Source",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "selected",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "controls",
+              "value": {
+                "type": "idrefList",
+                "value": "",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 32
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "role": "tab",
+          "name": "Output",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "selected",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "manual arrow focus does not select",
+      "passed": true,
+      "detail": "View: source · Plan: starter"
+    },
+    {
+      "name": "keyboard activates output",
+      "passed": true,
+      "detail": "View: output · Plan: starter"
+    },
+    {
+      "name": "source editor state and node preserved",
+      "passed": true
+    },
+    {
+      "name": "independent single plan selection",
+      "passed": true
+    },
+    {
+      "name": "attached group",
+      "passed": true,
+      "detail": [
+        {
+          "value": "starter",
+          "attrs": [
+            [
+              "data-acme-element",
+              ""
+            ],
+            [
+              "data-acme-group-member",
+              ""
+            ],
+            [
+              "data-acme-group-joined",
+              ""
+            ]
+          ]
+        },
+        {
+          "value": "pro",
+          "attrs": [
+            [
+              "data-acme-element",
+              ""
+            ],
+            [
+              "data-acme-group-member",
+              ""
+            ],
+            [
+              "data-acme-group-joined",
+              ""
+            ],
+            [
+              "data-acme-group-emphasized",
+              ""
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "callback replacement and ref identity",
+      "passed": true
+    },
+    {
+      "name": "unmount clears refs and callbacks",
+      "passed": true
+    },
+    {
+      "name": "remount produces one native typed callback",
+      "passed": true,
+      "detail": [
+        {
+          "owner": "tabs",
+          "value": "output",
+          "native": true,
+          "revision": 0
+        },
+        {
+          "owner": "tabs",
+          "value": "source",
+          "native": true,
+          "revision": 0
+        },
+        {
+          "owner": "plan",
+          "value": "pro",
+          "native": true,
+          "revision": 0
+        },
+        {
+          "owner": "plan",
+          "value": "starter",
+          "native": true,
+          "revision": 1
+        },
+        {
+          "owner": "tabs",
+          "value": "output",
+          "native": true,
+          "revision": 1
+        }
+      ]
+    },
+    {
+      "name": "no browser errors",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "visual selected tab underline",
+      "passed": false,
+      "detail": "After keyboard activation of Output and 300ms screenshot settling, underline remains below Source. A separate 1000ms check confirms Tabs.value=output, Source aria-selected=false and Output aria-selected=true. Screenshot provides position evidence; indicator locator did not expose its node."
+    }
+  ],
+  "errors": [],
+  "passed": false,
+  "build": "passed",
+  "typecheck": "passed",
+  "documentationNotes": [
+    "The component reference index has no matching React Tabs or Radio Cards recipe; used full component records, typed wrapper declarations, and installed React README alongside the requested skills."
+  ],
+  "sources": [
+    "skills/react-integration/SKILL.md",
+    "skills/choose-and-compose/SKILL.md",
+    "skills/references/release.json",
+    "skills/references/0.2.0/component/acme-tabs.json",
+    "skills/references/0.2.0/component/acme-tab.json",
+    "skills/references/0.2.0/component/acme-tab-panel.json",
+    "skills/references/0.2.0/component/acme-radio-group.json",
+    "skills/references/0.2.0/component/acme-radio-card.json",
+    "skills/references/0.2.0/component/acme-group.json"
+  ],
+  "functionalPassed": true,
+  "visualObservation": {
+    "status": "unresolved",
+    "detail": "After keyboard activation of Output and 300ms screenshot settling, underline remains below Source. A separate 1000ms check confirms Tabs.value=output, Source aria-selected=false and Output aria-selected=true. Screenshot provides position evidence; indicator locator did not expose its node.",
+    "evidence": [
+      "preferences.png",
+      "indicator.json"
+    ]
+  }
+}

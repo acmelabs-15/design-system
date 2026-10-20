@@ -1,136 +1,223 @@
-import { areaY, barY, defineChart, lineY } from "@tanstack/charts";
-import { mountChart } from "@tanstack/charts/dom";
-import { scaleBand } from "@tanstack/charts/scales/band";
-import { scaleLinear } from "@tanstack/charts/scales/linear";
-import { scalePoint } from "@tanstack/charts/scales/point";
-import { tooltip } from "@tanstack/charts/tooltip";
-import { css, html } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base";
-import { legendCss } from "../legend/legend.styles";
-import { chartCss } from "./chart.styles";
+import type { ChartRendererRenderContext, ChartTooltipBodyTarget, ChartValue } from "@tanstack/charts";
+import { createAtom } from "@tanstack/lit-store";
+import { html, nothing, render } from "lit";
+import { property } from "lit/decorators.js";
+import { styleMap } from "lit/directives/style-map.js";
+import { AcmeElement, boolish, sharedCss } from "../../base";
+import { chartSurfaceCss } from "../../generated/components/chart/chart-surface.styles";
+import { atomState } from "../../shared/atom-state";
+import { type ChartDatum, type ChartRow, type ChartSeries, snapshotChartData, snapshotChartSeries } from "../../shared/chart-data";
+import { type ChartPointInfo, type ChartType, chartDefinition, formatChartX, formatChartY } from "../../shared/chart-definition";
+import { ChartSurface } from "../../shared/chart-surface";
+import { message, messageCatalogs } from "../../shared/messages";
+import { StoreSelector } from "../../shared/store-connection";
 
-type Row = Record<string, unknown>;
-type Host = { update(options: Record<string, unknown>): void; destroy(): void };
-
-/**
- * House chart frame on TanStack Charts. Pass `data` (rows), `x` and one or more `y` keys and the
- * element draws a line, bar or area chart in the house series colors, with Geist's grid, mono
- * axes and the tooltip. Without `data`, the default slot takes a hand-drawn SVG as before.
- * Slots: head, default (custom plot), tip, legend.
+export type { ChartRow, ChartSeries } from "../../shared/chart-data";
+/** A named data chart with keyboard inspection and an exact-value table.
+ * @slot header - Visible heading and explanatory content.
+ * @slot legend - Application-owned Legend or visibility controls.
+ * @slot tooltip - Supplementary noninteractive point information.
+ * @slot empty - Empty-data presentation.
+ * @csspart root - Figure container.
+ * @csspart plot - Chart renderer container.
+ * @csspart axes - Rendered axis group.
+ * @csspart grid - Rendered grid group.
+ * @csspart tooltip - Point information body.
+ * @csspart data - Exact-value disclosure.
+ * @fires {CustomEvent<{action:"point",seriesKey:string,index:number}>} acme-request - Opt-in point activation request.
  */
-@customElement("acme-chart")
 export class AcmeChart extends AcmeElement {
-  static styles = [
-    sharedCss,
-    chartCss,
-    legendCss,
-    css`
-      :host {
-        display: block;
-      }
-      ::slotted(svg) {
-        display: block;
-        width: 100%;
-        height: 100%;
-        overflow: visible;
-      }
-      .host {
-        width: 100%;
-        height: 100%;
-        font-family: var(--mono);
-        font-size: 10px;
-        color: var(--text-2);
-      }
-      .host svg {
-        display: block;
-        overflow: visible;
-      }
-      .host text {
-        fill: var(--text-2);
-      }
-    `,
-  ];
-  @property({ type: Number }) height = 180;
-  /** line, bar or area. */
-  @property() type: "line" | "bar" | "area" = "line";
-  /** Rows as JSON. */
-  @property({ type: Array }) data: Row[] = [];
-  /** The category or time key. */
-  @property() x = "x";
-  /** One key, or several separated by commas, each drawn as a series. */
-  @property() y = "y";
-  /** Show points on a line. */
-  @property({ type: Boolean }) points = false;
-  /** Hide the horizontal grid. */
-  @property({ type: Boolean, attribute: "no-grid" }) noGrid = false;
-  /** Hide the tooltip. */
-  @property({ type: Boolean, attribute: "no-tooltip" }) noTooltip = false;
-  @property({ attribute: "aria-label" }) label = "";
-  @query(".host") private hostEl!: HTMLElement;
-  private chart?: Host;
-
-  private colors(): string[] {
-    const s = getComputedStyle(this);
-    return [1, 2, 3, 4, 5].map((i) => s.getPropertyValue(`--chart-${i}`).trim() || "currentColor");
+  static styles = [sharedCss, chartSurfaceCss];
+  @atomState() private records: readonly ChartRow[] = Object.freeze([]);
+  /** @default [] */
+  @property({ noAccessor: true, type: Array, useDefault: true }) get data() {
+    return this.records;
   }
-
-  private definition() {
-    const keys = this.y
-      .split(",")
-      .map((k) => k.trim())
-      .filter(Boolean);
-    const colors = this.colors();
-    const x = this.x;
-    const marks = keys.map((key, i) => {
-      const color = colors[i % colors.length];
-      const common = { id: key, x: (d: Row) => String(d[x]), y: (d: Row) => Number(d[key]) };
-      if (this.type === "bar") return barY(this.data, { ...common, fill: color, radius: 2 });
-      if (this.type === "area") return areaY(this.data, { ...common, fill: color, fillOpacity: 0.16, stroke: color, strokeWidth: 2 });
-      return lineY(this.data, { ...common, stroke: color, strokeWidth: 2, points: this.points });
-    });
-    const spec = {
-      marks,
-      scales: {
-        x: { scale: this.type === "bar" ? () => scaleBand<string>().padding(0.3) : () => scalePoint<string>().padding(0.2), grid: false },
-        y: { scale: scaleLinear, nice: true, grid: !this.noGrid },
-      },
-    };
-    return this.noTooltip ? defineChart(spec as never) : defineChart(spec as never, { tooltip });
+  set data(value: readonly ChartRow[]) {
+    const previous = this.records;
+    this.records = snapshotChartData(value);
+    this.requestUpdate("data", previous);
   }
-
-  private options() {
-    return { definition: this.definition(), height: this.height, ariaLabel: this.label || `${this.type} chart of ${this.y} by ${this.x}` };
+  @atomState() private seriesRecords: readonly ChartSeries[] = Object.freeze([]);
+  /** @default [] */
+  @property({ noAccessor: true, type: Array, useDefault: true }) get series() {
+    return this.seriesRecords;
   }
-
-  updated() {
-    if (!this.data.length || typeof ResizeObserver === "undefined" || !this.hostEl) return;
-    if (this.chart) this.chart.update(this.options());
-    else this.chart = mountChart(this.hostEl, this.options() as never) as unknown as Host;
+  set series(value: readonly ChartSeries[]) {
+    const next = snapshotChartSeries(value);
+    for (const series of next) {
+      if (series.color && this.ownerDocument.defaultView?.CSS && !this.ownerDocument.defaultView.CSS.supports("color", series.color)) {
+        throw new TypeError("Chart series color requires a CSS color");
+      }
+    }
+    const previous = this.seriesRecords;
+    this.seriesRecords = next;
+    this.requestUpdate("series", previous);
   }
-
+  @atomState() @property({ noAccessor: true, useDefault: true }) x = "x";
+  @atomState() private kind: ChartType = "line";
+  /** @default "line" */
+  @property({ noAccessor: true, useDefault: true }) get type() {
+    return this.kind;
+  }
+  set type(value: ChartType) {
+    if (!["line", "bar", "area"].includes(value)) {
+      throw new TypeError("Invalid Chart type");
+    }
+    const previous = this.kind;
+    this.kind = value;
+    this.requestUpdate("type", previous);
+  }
+  @atomState() private blockSize = "180px";
+  /** @default "180px" */
+  @property({ noAccessor: true, useDefault: true }) get height() {
+    return this.blockSize;
+  }
+  set height(value: string) {
+    if (
+      typeof value !== "string" ||
+      !value.trim() ||
+      /^(initial|inherit|unset|revert)/i.test(value) ||
+      (this.ownerDocument.defaultView?.CSS && !this.ownerDocument.defaultView.CSS.supports("height", value))
+    ) {
+      throw new TypeError("Chart height requires a CSS dimension");
+    }
+    const previous = this.blockSize;
+    this.blockSize = value;
+    this.requestUpdate("height", previous);
+  }
+  @atomState() @property({ noAccessor: true, type: Boolean }) points = false;
+  @atomState() @property({ noAccessor: true, converter: boolish, useDefault: true }) grid = true;
+  @atomState() @property({ noAccessor: true, converter: boolish, useDefault: true }) tooltip = true;
+  @atomState() @property({ noAccessor: true, useDefault: true }) label = "";
+  @atomState() @property({ noAccessor: true, type: Boolean }) interactive = false;
+  @atomState() private measuredHeight = 180;
+  private readonly prepared = createAtom(() =>
+    chartDefinition({
+      data: this.data,
+      series: this.series,
+      x: this.x,
+      type: this.type,
+      points: this.points,
+      grid: this.grid,
+      tooltip: this.tooltip,
+      locale: this.themeContext.scope.effective.get().locale,
+    }),
+  );
+  private readonly updates = new StoreSelector(this, () => this.prepared);
+  private readonly messages = new StoreSelector(this, () => messageCatalogs);
+  private readonly plot = new ChartSurface(
+    this,
+    () => this.plotElement,
+    () =>
+      this.hasValues && this.label.trim() && this.measuredHeight > 0
+        ? {
+            definition: this.prepared.get().definition,
+            height: this.measuredHeight,
+            ariaLabel: this.label,
+            ariaDescription: this.text("description", "Use arrow keys to inspect points. Open View data for exact values."),
+            idPrefix: this.chartId,
+            onSelect: this.selectPoint,
+            onRender: this.rendered,
+            onTooltipBodyChange: this.tooltipBody,
+          }
+        : undefined,
+  );
+  private static sequence = 0;
+  private readonly chartId = "acme-chart-" + ++AcmeChart.sequence;
+  private tooltipTarget?: HTMLElement;
+  private resize?: ResizeObserver;
+  private warned = false;
+  private get plotElement() {
+    return this.renderRoot?.querySelector<HTMLElement>("[part=plot]") ?? undefined;
+  }
+  private get hasValues() {
+    return this.prepared.get().model.values.some((point) => point.x !== undefined && point.y !== undefined);
+  }
+  private text(key: string, fallback: string) {
+    return message(this.themeContext.scope.effective.get().locale, "chart." + key, fallback);
+  }
+  private selectPoint = (point: ChartPointInfo | null) => {
+    if (!this.interactive || !point) {
+      return;
+    }
+    const current = this.prepared.get().model.values.find((value) => value.key === point.datum.key);
+    if (current) {
+      this.dispatchEvent(
+        new CustomEvent("acme-request", { detail: Object.freeze({ action: "point", seriesKey: current.seriesKey, index: current.index }), bubbles: true, composed: true, cancelable: true }),
+      );
+    }
+  };
+  private rendered = ({ surface }: ChartRendererRenderContext<ChartDatum, ChartValue, number>) => {
+    const root = surface.element;
+    root.querySelector(".ts-chart__axes")?.setAttribute("part", "axes");
+    root.querySelector(".ts-chart__grid")?.setAttribute("part", "grid");
+  };
+  private tooltipBody = (target: ChartTooltipBodyTarget<ChartDatum, ChartValue, number> | null) => {
+    if (this.tooltipTarget && this.tooltipTarget !== target?.element) {
+      render(nothing, this.tooltipTarget);
+    }
+    this.tooltipTarget = target?.element;
+    if (!target) {
+      return;
+    }
+    const content = target.content;
+    render(
+      html`<div part="tooltip">${typeof content === "string" ? content : html`<div class="tooltip-title">${content.title}</div>${content.rows.map((row) => html`<div class="tooltip-row"><span class="swatch" aria-hidden="true" style=${styleMap({ background: row.color ?? "currentColor" })}></span><span>${row.label}</span><b>${row.value}</b></div>`)}`}<slot name="tooltip"></slot></div>`,
+      target.element,
+    );
+  };
+  private measure = () => {
+    const height = this.plotElement?.getBoundingClientRect().height ?? 0;
+    if (Math.abs(height - this.measuredHeight) > 0.1) {
+      this.measuredHeight = height;
+    }
+  };
+  protected firstUpdated() {
+    this.resize = new ResizeObserver(this.measure);
+    if (this.plotElement) {
+      this.resize.observe(this.plotElement);
+    }
+    this.measure();
+  }
+  protected updated() {
+    if (this.hasValues && !this.label.trim() && !this.warned) {
+      console.warn(this.localName, { code: "missing-label", message: "Chart requires a meaningful label" });
+      this.warned = true;
+    } else if (this.label.trim()) {
+      this.warned = false;
+    }
+    this.measure();
+  }
   connectedCallback() {
     super.connectedCallback();
-    document.addEventListener("acme-change", this.onTheme);
+    if (this.hasUpdated) {
+      this.resize = new ResizeObserver(this.measure);
+      if (this.plotElement) {
+        this.resize.observe(this.plotElement);
+      }
+      this.measure();
+      this.requestUpdate();
+    }
   }
   disconnectedCallback() {
+    this.resize?.disconnect();
+    this.resize = undefined;
+    if (this.tooltipTarget) {
+      render(nothing, this.tooltipTarget);
+    }
+    this.tooltipTarget = undefined;
     super.disconnectedCallback();
-    document.removeEventListener("acme-change", this.onTheme);
-    this.chart?.destroy();
-    this.chart = undefined;
   }
-  /** The series colors are read from the tokens, so a theme change redraws. */
-  private onTheme = (e: Event) => {
-    if ((e as CustomEvent).detail?.theme !== undefined) this.requestUpdate();
-  };
-
+  focus(options?: FocusOptions) {
+    this.plotElement?.querySelector<SVGSVGElement>("svg")?.focus(options);
+  }
   render() {
-    return html`<div class="chart" part="chart"><slot name="head"></slot><div class="plot" style=${`min-height:${this.height}px;height:${this.height}px`}>${
-      this.data.length ? html`<div class="host"></div>` : html`<slot></slot>`
-    }<slot name="tip"></slot></div><slot name="legend"></slot></div>`;
+    const locale = this.themeContext.scope.effective.get().locale,
+      model = this.prepared.get().model;
+    return html`<figure part="root"><slot name="header"></slot><div class="plot-frame" style=${styleMap({ "--_chart-height": this.height })}><div part="plot" ?hidden=${!this.hasValues}></div>${this.hasValues ? nothing : html`<div class="empty"><slot name="empty">${this.text("empty", "No data")}</slot></div>`}</div><slot name="legend"></slot>${this.data.length && this.series.length ? html`<acme-collapsible part="data"><acme-collapsible-trigger>${this.text("viewData", "View data")}</acme-collapsible-trigger><acme-collapsible-content><acme-table><table><caption>${this.label}</caption><thead><tr><th scope="col">${this.x}</th>${this.series.map((series) => html`<th scope="col">${series.label}</th>`)}</tr></thead><tbody>${this.data.map((_, index) => html`<tr><th scope="row">${formatChartX(model.rows[index]?.[0]?.x, locale)}</th>${this.series.map((series, seriesIndex) => html`<td>${formatChartY(model.rows[index]?.[seriesIndex]?.y, series, locale)}</td>`)}</tr>`)}</tbody></table></acme-table></acme-collapsible-content></acme-collapsible>` : nothing}</figure>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-chart": AcmeChart;

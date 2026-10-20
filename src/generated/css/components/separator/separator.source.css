@@ -1,0 +1,3 @@
+.separator:where(.vertical){height:100%;width:1px}
+.separator:where(:not(.vertical)){height:1px;width:100%}
+.separator{flex-shrink:0;background-color:var(--ds-gray-200)}

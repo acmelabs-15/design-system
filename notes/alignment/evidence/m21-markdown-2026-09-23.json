@@ -1,0 +1,319 @@
+{
+  "date": "2026-09-23",
+  "batch": "M21",
+  "entry": "RC-04 Markdown",
+  "status": "complete at native/Lit boundary",
+  "implementation": {
+    "source": "text alone, canonical atoms and cached parse/render projections",
+    "output": "Owned native light-DOM prose; actual root-scoped generated CSS; private DOM slot is not a consumer content interface",
+    "navigation": "Stable host-id prefix or instance prefix, local fragment and ID-reference rewriting, native heading discovery without duplicate HeadingTargets registration",
+    "composition": "Shared selective TanStack highlighter and Scroll Area/Viewport for fences and failure fallback",
+    "trust": "Default raw HTML escaping and parser URL filtering; explicit trusted-only allowHtml, no added sanitizer or evaluation",
+    "errors": "parse/highlight events and safe plain source; failure enum reflects the existing no-sanitizer decision",
+    "labels": "Message-catalog updates refresh code/footnote labels without replacing heading nodes"
+  },
+  "checks": {
+    "unit": {
+      "pass": 6,
+      "assertions": 22
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "native headings are discoverable and TOC/fragment navigation targets them",
+            "pass": true
+          },
+          {
+            "name": "repeated headings and footnotes are unique across instances and references resolve",
+            "pass": true
+          },
+          {
+            "name": "default source blocks executable HTML/URLs and trusted opt-in remains explicit",
+            "pass": true
+          },
+          {
+            "name": "highlight failure preserves escaped source and reports once",
+            "pass": true
+          },
+          {
+            "name": "tables use generated alignment and long fences retain keyboard scrolling",
+            "pass": true
+          },
+          {
+            "name": "prose nodes survive theme-only updates and reconnect, and styles remain scoped",
+            "pass": true
+          },
+          {
+            "name": "built-in prose labels react to message catalog changes without replacing headings",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "native headings are discoverable and TOC/fragment navigation targets them",
+            "pass": true
+          },
+          {
+            "name": "repeated headings and footnotes are unique across instances and references resolve",
+            "pass": true
+          },
+          {
+            "name": "default source blocks executable HTML/URLs and trusted opt-in remains explicit",
+            "pass": true
+          },
+          {
+            "name": "highlight failure preserves escaped source and reports once",
+            "pass": true
+          },
+          {
+            "name": "tables use generated alignment and long fences retain keyboard scrolling",
+            "pass": true
+          },
+          {
+            "name": "prose nodes survive theme-only updates and reconnect, and styles remain scoped",
+            "pass": true
+          },
+          {
+            "name": "built-in prose labels react to message catalog changes without replacing headings",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "native headings are discoverable and TOC/fragment navigation targets them",
+            "pass": true
+          },
+          {
+            "name": "repeated headings and footnotes are unique across instances and references resolve",
+            "pass": true
+          },
+          {
+            "name": "default source blocks executable HTML/URLs and trusted opt-in remains explicit",
+            "pass": true
+          },
+          {
+            "name": "highlight failure preserves escaped source and reports once",
+            "pass": true
+          },
+          {
+            "name": "tables use generated alignment and long fences retain keyboard scrolling",
+            "pass": true
+          },
+          {
+            "name": "prose nodes survive theme-only updates and reconnect, and styles remain scoped",
+            "pass": true
+          },
+          {
+            "name": "built-in prose labels react to message catalog changes without replacing headings",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "native headings are discoverable and TOC/fragment navigation targets them",
+            "pass": true
+          },
+          {
+            "name": "repeated headings and footnotes are unique across instances and references resolve",
+            "pass": true
+          },
+          {
+            "name": "default source blocks executable HTML/URLs and trusted opt-in remains explicit",
+            "pass": true
+          },
+          {
+            "name": "highlight failure preserves escaped source and reports once",
+            "pass": true
+          },
+          {
+            "name": "tables use generated alignment and long fences retain keyboard scrolling",
+            "pass": true
+          },
+          {
+            "name": "prose nodes survive theme-only updates and reconnect, and styles remain scoped",
+            "pass": true
+          },
+          {
+            "name": "built-in prose labels react to message catalog changes without replacing headings",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "native headings are discoverable and TOC/fragment navigation targets them",
+            "pass": true
+          },
+          {
+            "name": "repeated headings and footnotes are unique across instances and references resolve",
+            "pass": true
+          },
+          {
+            "name": "default source blocks executable HTML/URLs and trusted opt-in remains explicit",
+            "pass": true
+          },
+          {
+            "name": "highlight failure preserves escaped source and reports once",
+            "pass": true
+          },
+          {
+            "name": "tables use generated alignment and long fences retain keyboard scrolling",
+            "pass": true
+          },
+          {
+            "name": "prose nodes survive theme-only updates and reconnect, and styles remain scoped",
+            "pass": true
+          },
+          {
+            "name": "built-in prose labels react to message catalog changes without replacing headings",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "native headings are discoverable and TOC/fragment navigation targets them",
+            "pass": true
+          },
+          {
+            "name": "repeated headings and footnotes are unique across instances and references resolve",
+            "pass": true
+          },
+          {
+            "name": "default source blocks executable HTML/URLs and trusted opt-in remains explicit",
+            "pass": true
+          },
+          {
+            "name": "highlight failure preserves escaped source and reports once",
+            "pass": true
+          },
+          {
+            "name": "tables use generated alignment and long fences retain keyboard scrolling",
+            "pass": true
+          },
+          {
+            "name": "prose nodes survive theme-only updates and reconnect, and styles remain scoped",
+            "pass": true
+          },
+          {
+            "name": "built-in prose labels react to message catalog changes without replacing headings",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "scriptInsertion": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "HTML insertion and code fences do not execute script bodies",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "HTML insertion and code fences do not execute script bodies",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "HTML insertion and code fences do not execute script bodies",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "liveDocs": [
+      {
+        "engine": "chromium",
+        "pass": true,
+        "checks": 6,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "pass": true,
+        "checks": 6,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "pass": true,
+        "checks": 6,
+        "errors": []
+      }
+    ],
+    "strictPackageBuild": true,
+    "siteBuild": {
+      "pages": 108,
+      "elements": 4319,
+      "undocumented": 0
+    },
+    "fullSuite": {
+      "pass": 867,
+      "fail": 0,
+      "assertions": 152005
+    },
+    "visual": "markdown-docs.png inspected"
+  },
+  "reproduction": "m21-markdown-checks.ts",
+  "references": {
+    "packages": [
+      "@tanstack/markdown 0.0.13",
+      "@tanstack/highlight 0.0.10"
+    ],
+    "readInFull": [
+      "render-markdown skill and AST/options reference",
+      "production-pipelines skill",
+      "installed HTML renderer and URL/slug utilities",
+      "highlight Markdown pipeline skills and adapter source",
+      "RootStyles, NativeContentRoot, HeadingTargets"
+    ],
+    "inventory": "notes/alignment/inventory/rich-content.md#rc-04-markdown"
+  },
+  "deviations": [
+    "Prose is native light DOM; its styles retain the source scale while using logical spacing and accessible line-number color.",
+    "Native table alignment is represented by generated CSS hooks. Code fences delegate scrolling to the shared viewport.",
+    "Component id supplies a stable namespace for generated IDs and their references.",
+    "The former child-text source and rendered getter are removed. The old raw .markdown rules and splitter entry are removed."
+  ],
+  "limits": [
+    "No arbitrary CommonMark/GFM/plugin conformance claim.",
+    "Trusted HTML remains the application’s responsibility; defaults are not a general HTML sanitizer.",
+    "M22/M26 retain final React, scoped-registry and actual assistive-tech checks."
+  ]
+}

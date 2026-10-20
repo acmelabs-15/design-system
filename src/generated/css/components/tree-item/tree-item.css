@@ -1,0 +1,32 @@
+:host {
+  min-inline-size: 0;
+  display: block;
+}
+
+[part="root"] {
+  align-items: center;
+  gap: var(--acme-spacing-2);
+  min-inline-size: 0;
+  display: flex;
+}
+
+.text {
+  flex: 1;
+  min-inline-size: 0;
+}
+
+[part="start"], [part="end"] {
+  flex: none;
+  align-items: center;
+  display: flex;
+}
+
+[part="description"] {
+  color: var(--ds-gray-900);
+  font-size: .75rem;
+  display: block;
+}
+
+[hidden] {
+  display: none;
+}

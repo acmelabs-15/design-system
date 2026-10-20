@@ -33,7 +33,9 @@ const read = (page: string, side: string): Result | null => {
 export function fromResult(page: string) {
   const g = read(page, "geist");
   const o = read(page, "ours");
-  if (!g || !o) return null;
+  if (!g || !o) {
+    return null;
+  }
   const parts = Object.keys(g.roots[0]?.states?.base ?? {}).filter((p) => p !== "root");
   return {
     page,
@@ -59,7 +61,9 @@ if (import.meta.main) {
     );
     const configs = new Set<string>();
     for (const f of fs.readdirSync(CENSUS).filter((x) => x.endsWith(".config.json"))) {
-      for (const m of fs.readFileSync(path.join(CENSUS, f), "utf8").matchAll(/"page"\s*:\s*"([^"]+)"/g)) configs.add(m[1]);
+      for (const m of fs.readFileSync(path.join(CENSUS, f), "utf8").matchAll(/"page"\s*:\s*"([^"]+)"/g)) {
+        configs.add(m[1]);
+      }
     }
     const missing = [...results].filter((p) => !configs.has(p)).sort();
     console.log(`${results.size} measured pages, ${missing.length} with no config naming them:\n`);

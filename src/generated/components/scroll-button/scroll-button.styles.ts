@@ -1,0 +1,14 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const scrollButtonCss = css`:host {
+  display: inline-block;
+}
+
+.step {
+  pointer-events: none;
+  visibility: hidden;
+  inline-size: var(--_scroll-step, 0px);
+  block-size: 0;
+  position: absolute;
+}
+`;

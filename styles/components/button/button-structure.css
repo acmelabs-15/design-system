@@ -1,0 +1,10 @@
+:host {
+        display: inline-flex;
+        max-width: 100%;
+      }
+      :host([block]) {
+        display: flex;
+      }
+      :host([block]) .btn {
+        width: 100%;
+      }

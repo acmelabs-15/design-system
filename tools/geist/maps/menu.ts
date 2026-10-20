@@ -7,6 +7,7 @@ import type { GeistMap } from "../gen";
 /** The page's own examples: every menu is closed there. */
 export const CLOSED = ["Default", "With chevron", "Disabled items", "Locked items", "Link items", "Custom trigger", "Prefix and suffix", "Menu position", "With section"];
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "menu",
   component: "Menu",
   root: (n) => n.tag === "div" && "data-phase" in n.attrs,

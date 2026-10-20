@@ -1,0 +1,1499 @@
+{
+  "date": "2026-09-23",
+  "status": "Progress/Skeleton/Meter complete at assigned native/Lit boundaries; M18 Stat/Toast/Feedback remain",
+  "implementation": [
+    "Native progress distinguishes omitted value from real zero; numerical semantics use the current value while decorative motion interpolates",
+    "Native meter is present only for known valid measurements; loading/missing data use distinct nonnumeric alternatives",
+    "Explicit low/high/optimum bounds determine quality regions; no built-in percentage cut points",
+    "Circular sizes and split-arc geometry retain the audited reference; scalar arithmetic handles large finite ranges without overflow",
+    "Skeleton retains authored content, hides/inerts it during loading and keeps a real sized wrapper",
+    "RepeatingMotion extracts existing Spinner/Status lifetime through public Lit Motion 1.1.0 APIs and serves Progress/Skeleton too",
+    "The existing optional-number converter moves to shared attributes and is reused by the formatters and measurement components",
+    "Gauge and retired Progress/Skeleton interfaces and producers are removed; foundation examples use explicitly configured Meter data"
+  ],
+  "verification": {
+    "build": "Strict package build passes",
+    "site": {
+      "pages": 107,
+      "elements": 4310,
+      "undocumented": 0
+    },
+    "tests": {
+      "passed": 885,
+      "failed": 0,
+      "assertions": 151587,
+      "files": 168
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "native progress distinguishes zero from absent progress",
+            "pass": true
+          },
+          {
+            "name": "progress clamps only its display and reports invalid ranges without a fabricated bar value",
+            "pass": true
+          },
+          {
+            "name": "meter exposes native bounded measurement semantics and a real zero",
+            "pass": true
+          },
+          {
+            "name": "absent and loading measurements have distinct nonnumeric descriptions",
+            "pass": true
+          },
+          {
+            "name": "threshold colors follow explicit optimal regions and custom value text reaches the native meter",
+            "pass": true
+          },
+          {
+            "name": "invalid meter bounds omit numerical semantics and recover after correction",
+            "pass": true
+          },
+          {
+            "name": "all meter sizes produce nonnegative arcs at endpoints and small values",
+            "pass": true
+          },
+          {
+            "name": "Skeleton preserves author content and prevents hidden input interaction",
+            "pass": true
+          },
+          {
+            "name": "Skeleton dimensions and circular shape retain a real wrapper",
+            "pass": true
+          },
+          {
+            "name": "repeating motion cancels on preference and disconnection across Progress Skeleton and Spinner",
+            "pass": true
+          },
+          {
+            "name": "Spinner retains all blade counts and durations after lifecycle extraction",
+            "pass": true
+          },
+          {
+            "name": "RTL determinate progress fills from the end and static indeterminate activity stays visible",
+            "pass": true
+          },
+          {
+            "name": "visible Progress label and value text reach native semantics",
+            "pass": true
+          },
+          {
+            "name": "indeterminate motion remains visible when direction changes during the effect",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "native progress distinguishes zero from absent progress",
+            "pass": true
+          },
+          {
+            "name": "progress clamps only its display and reports invalid ranges without a fabricated bar value",
+            "pass": true
+          },
+          {
+            "name": "meter exposes native bounded measurement semantics and a real zero",
+            "pass": true
+          },
+          {
+            "name": "absent and loading measurements have distinct nonnumeric descriptions",
+            "pass": true
+          },
+          {
+            "name": "threshold colors follow explicit optimal regions and custom value text reaches the native meter",
+            "pass": true
+          },
+          {
+            "name": "invalid meter bounds omit numerical semantics and recover after correction",
+            "pass": true
+          },
+          {
+            "name": "all meter sizes produce nonnegative arcs at endpoints and small values",
+            "pass": true
+          },
+          {
+            "name": "Skeleton preserves author content and prevents hidden input interaction",
+            "pass": true
+          },
+          {
+            "name": "Skeleton dimensions and circular shape retain a real wrapper",
+            "pass": true
+          },
+          {
+            "name": "repeating motion cancels on preference and disconnection across Progress Skeleton and Spinner",
+            "pass": true
+          },
+          {
+            "name": "Spinner retains all blade counts and durations after lifecycle extraction",
+            "pass": true
+          },
+          {
+            "name": "RTL determinate progress fills from the end and static indeterminate activity stays visible",
+            "pass": true
+          },
+          {
+            "name": "visible Progress label and value text reach native semantics",
+            "pass": true
+          },
+          {
+            "name": "indeterminate motion remains visible when direction changes during the effect",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "native progress distinguishes zero from absent progress",
+            "pass": true
+          },
+          {
+            "name": "progress clamps only its display and reports invalid ranges without a fabricated bar value",
+            "pass": true
+          },
+          {
+            "name": "meter exposes native bounded measurement semantics and a real zero",
+            "pass": true
+          },
+          {
+            "name": "absent and loading measurements have distinct nonnumeric descriptions",
+            "pass": true
+          },
+          {
+            "name": "threshold colors follow explicit optimal regions and custom value text reaches the native meter",
+            "pass": true
+          },
+          {
+            "name": "invalid meter bounds omit numerical semantics and recover after correction",
+            "pass": true
+          },
+          {
+            "name": "all meter sizes produce nonnegative arcs at endpoints and small values",
+            "pass": true
+          },
+          {
+            "name": "Skeleton preserves author content and prevents hidden input interaction",
+            "pass": true
+          },
+          {
+            "name": "Skeleton dimensions and circular shape retain a real wrapper",
+            "pass": true
+          },
+          {
+            "name": "repeating motion cancels on preference and disconnection across Progress Skeleton and Spinner",
+            "pass": true
+          },
+          {
+            "name": "Spinner retains all blade counts and durations after lifecycle extraction",
+            "pass": true
+          },
+          {
+            "name": "RTL determinate progress fills from the end and static indeterminate activity stays visible",
+            "pass": true
+          },
+          {
+            "name": "visible Progress label and value text reach native semantics",
+            "pass": true
+          },
+          {
+            "name": "indeterminate motion remains visible when direction changes during the effect",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "native progress distinguishes zero from absent progress",
+            "pass": true
+          },
+          {
+            "name": "progress clamps only its display and reports invalid ranges without a fabricated bar value",
+            "pass": true
+          },
+          {
+            "name": "meter exposes native bounded measurement semantics and a real zero",
+            "pass": true
+          },
+          {
+            "name": "absent and loading measurements have distinct nonnumeric descriptions",
+            "pass": true
+          },
+          {
+            "name": "threshold colors follow explicit optimal regions and custom value text reaches the native meter",
+            "pass": true
+          },
+          {
+            "name": "invalid meter bounds omit numerical semantics and recover after correction",
+            "pass": true
+          },
+          {
+            "name": "all meter sizes produce nonnegative arcs at endpoints and small values",
+            "pass": true
+          },
+          {
+            "name": "Skeleton preserves author content and prevents hidden input interaction",
+            "pass": true
+          },
+          {
+            "name": "Skeleton dimensions and circular shape retain a real wrapper",
+            "pass": true
+          },
+          {
+            "name": "repeating motion cancels on preference and disconnection across Progress Skeleton and Spinner",
+            "pass": true
+          },
+          {
+            "name": "Spinner retains all blade counts and durations after lifecycle extraction",
+            "pass": true
+          },
+          {
+            "name": "RTL determinate progress fills from the end and static indeterminate activity stays visible",
+            "pass": true
+          },
+          {
+            "name": "visible Progress label and value text reach native semantics",
+            "pass": true
+          },
+          {
+            "name": "indeterminate motion remains visible when direction changes during the effect",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "native progress distinguishes zero from absent progress",
+            "pass": true
+          },
+          {
+            "name": "progress clamps only its display and reports invalid ranges without a fabricated bar value",
+            "pass": true
+          },
+          {
+            "name": "meter exposes native bounded measurement semantics and a real zero",
+            "pass": true
+          },
+          {
+            "name": "absent and loading measurements have distinct nonnumeric descriptions",
+            "pass": true
+          },
+          {
+            "name": "threshold colors follow explicit optimal regions and custom value text reaches the native meter",
+            "pass": true
+          },
+          {
+            "name": "invalid meter bounds omit numerical semantics and recover after correction",
+            "pass": true
+          },
+          {
+            "name": "all meter sizes produce nonnegative arcs at endpoints and small values",
+            "pass": true
+          },
+          {
+            "name": "Skeleton preserves author content and prevents hidden input interaction",
+            "pass": true
+          },
+          {
+            "name": "Skeleton dimensions and circular shape retain a real wrapper",
+            "pass": true
+          },
+          {
+            "name": "repeating motion cancels on preference and disconnection across Progress Skeleton and Spinner",
+            "pass": true
+          },
+          {
+            "name": "Spinner retains all blade counts and durations after lifecycle extraction",
+            "pass": true
+          },
+          {
+            "name": "RTL determinate progress fills from the end and static indeterminate activity stays visible",
+            "pass": true
+          },
+          {
+            "name": "visible Progress label and value text reach native semantics",
+            "pass": true
+          },
+          {
+            "name": "indeterminate motion remains visible when direction changes during the effect",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "native progress distinguishes zero from absent progress",
+            "pass": true
+          },
+          {
+            "name": "progress clamps only its display and reports invalid ranges without a fabricated bar value",
+            "pass": true
+          },
+          {
+            "name": "meter exposes native bounded measurement semantics and a real zero",
+            "pass": true
+          },
+          {
+            "name": "absent and loading measurements have distinct nonnumeric descriptions",
+            "pass": true
+          },
+          {
+            "name": "threshold colors follow explicit optimal regions and custom value text reaches the native meter",
+            "pass": true
+          },
+          {
+            "name": "invalid meter bounds omit numerical semantics and recover after correction",
+            "pass": true
+          },
+          {
+            "name": "all meter sizes produce nonnegative arcs at endpoints and small values",
+            "pass": true
+          },
+          {
+            "name": "Skeleton preserves author content and prevents hidden input interaction",
+            "pass": true
+          },
+          {
+            "name": "Skeleton dimensions and circular shape retain a real wrapper",
+            "pass": true
+          },
+          {
+            "name": "repeating motion cancels on preference and disconnection across Progress Skeleton and Spinner",
+            "pass": true
+          },
+          {
+            "name": "Spinner retains all blade counts and durations after lifecycle extraction",
+            "pass": true
+          },
+          {
+            "name": "RTL determinate progress fills from the end and static indeterminate activity stays visible",
+            "pass": true
+          },
+          {
+            "name": "visible Progress label and value text reach native semantics",
+            "pass": true
+          },
+          {
+            "name": "indeterminate motion remains visible when direction changes during the effect",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "documentation": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "Progress update and real zero",
+          "Meter native measurement",
+          "missing/loading alternatives",
+          "narrow layout",
+          "Skeleton content reveal"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "Progress update and real zero",
+          "Meter native measurement",
+          "missing/loading alternatives",
+          "narrow layout",
+          "Skeleton content reveal"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "Progress update and real zero",
+          "Meter native measurement",
+          "missing/loading alternatives",
+          "narrow layout",
+          "Skeleton content reveal"
+        ],
+        "errors": []
+      }
+    ],
+    "contrast": [
+      {
+        "engine": "chromium",
+        "measurements": [
+          {
+            "appearance": "light",
+            "tone": "success",
+            "stroke": "rgb(41, 122, 58)",
+            "background": "--ds-background-100",
+            "ratio": 5.3310391496236464
+          },
+          {
+            "appearance": "light",
+            "tone": "success",
+            "stroke": "rgb(41, 122, 58)",
+            "background": "--ds-background-200",
+            "ratio": 5.107507933000117
+          },
+          {
+            "appearance": "light",
+            "tone": "warning",
+            "stroke": "rgb(163, 82, 0)",
+            "background": "--ds-background-100",
+            "ratio": 5.578840030422265
+          },
+          {
+            "appearance": "light",
+            "tone": "warning",
+            "stroke": "rgb(163, 82, 0)",
+            "background": "--ds-background-200",
+            "ratio": 5.344918488233558
+          },
+          {
+            "appearance": "light",
+            "tone": "error",
+            "stroke": "rgb(218, 47, 53)",
+            "background": "--ds-background-100",
+            "ratio": 4.73068906632556
+          },
+          {
+            "appearance": "light",
+            "tone": "error",
+            "stroke": "rgb(218, 47, 53)",
+            "background": "--ds-background-200",
+            "ratio": 4.532330612601198
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "default",
+            "stroke": "rgb(23, 23, 23)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 15.038382524280774
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "success",
+            "stroke": "rgb(0, 114, 245)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 3.7277793620961273
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "error",
+            "stroke": "rgb(229, 72, 77)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 3.282955593350847
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "warning",
+            "stroke": "rgb(163, 82, 0)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 4.679689758229075
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "secondary",
+            "stroke": "rgb(77, 77, 77)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 7.090770261740658
+          },
+          {
+            "appearance": "dark",
+            "tone": "success",
+            "stroke": "rgb(98, 192, 115)",
+            "background": "--ds-background-100",
+            "ratio": 8.774113713330097
+          },
+          {
+            "appearance": "dark",
+            "tone": "success",
+            "stroke": "rgb(98, 192, 115)",
+            "background": "--ds-background-200",
+            "ratio": 9.306749767074411
+          },
+          {
+            "appearance": "dark",
+            "tone": "warning",
+            "stroke": "rgb(242, 162, 13)",
+            "background": "--ds-background-100",
+            "ratio": 9.379977699269237
+          },
+          {
+            "appearance": "dark",
+            "tone": "warning",
+            "stroke": "rgb(242, 162, 13)",
+            "background": "--ds-background-200",
+            "ratio": 9.949392966632148
+          },
+          {
+            "appearance": "dark",
+            "tone": "error",
+            "stroke": "rgb(217, 48, 54)",
+            "background": "--ds-background-100",
+            "ratio": 4.1730645181230335
+          },
+          {
+            "appearance": "dark",
+            "tone": "error",
+            "stroke": "rgb(217, 48, 54)",
+            "background": "--ds-background-200",
+            "ratio": 4.426392055191147
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "default",
+            "stroke": "rgb(237, 237, 237)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 14.079182164954604
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "success",
+            "stroke": "rgb(0, 114, 245)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 3.70901525307663
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "error",
+            "stroke": "rgb(229, 72, 77)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 4.211567936563676
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "warning",
+            "stroke": "rgb(242, 162, 13)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 7.809315245818685
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "secondary",
+            "stroke": "rgb(161, 161, 161)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 6.3796994494552
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "measurements": [
+          {
+            "appearance": "light",
+            "tone": "success",
+            "stroke": "rgb(41, 122, 58)",
+            "background": "--ds-background-100",
+            "ratio": 5.3310391496236464
+          },
+          {
+            "appearance": "light",
+            "tone": "success",
+            "stroke": "rgb(41, 122, 58)",
+            "background": "--ds-background-200",
+            "ratio": 5.107507933000117
+          },
+          {
+            "appearance": "light",
+            "tone": "warning",
+            "stroke": "rgb(163, 82, 0)",
+            "background": "--ds-background-100",
+            "ratio": 5.578840030422265
+          },
+          {
+            "appearance": "light",
+            "tone": "warning",
+            "stroke": "rgb(163, 82, 0)",
+            "background": "--ds-background-200",
+            "ratio": 5.344918488233558
+          },
+          {
+            "appearance": "light",
+            "tone": "error",
+            "stroke": "rgb(218, 47, 53)",
+            "background": "--ds-background-100",
+            "ratio": 4.73068906632556
+          },
+          {
+            "appearance": "light",
+            "tone": "error",
+            "stroke": "rgb(218, 47, 53)",
+            "background": "--ds-background-200",
+            "ratio": 4.532330612601198
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "default",
+            "stroke": "rgb(23, 23, 23)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 15.038382524280774
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "success",
+            "stroke": "rgb(0, 114, 245)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 3.7277793620961273
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "error",
+            "stroke": "rgb(229, 72, 77)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 3.282955593350847
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "warning",
+            "stroke": "rgb(163, 82, 0)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 4.679689758229075
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "secondary",
+            "stroke": "rgb(77, 77, 77)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 7.090770261740658
+          },
+          {
+            "appearance": "dark",
+            "tone": "success",
+            "stroke": "rgb(98, 192, 115)",
+            "background": "--ds-background-100",
+            "ratio": 8.774113713330097
+          },
+          {
+            "appearance": "dark",
+            "tone": "success",
+            "stroke": "rgb(98, 192, 115)",
+            "background": "--ds-background-200",
+            "ratio": 9.306749767074411
+          },
+          {
+            "appearance": "dark",
+            "tone": "warning",
+            "stroke": "rgb(242, 162, 13)",
+            "background": "--ds-background-100",
+            "ratio": 9.379977699269237
+          },
+          {
+            "appearance": "dark",
+            "tone": "warning",
+            "stroke": "rgb(242, 162, 13)",
+            "background": "--ds-background-200",
+            "ratio": 9.949392966632148
+          },
+          {
+            "appearance": "dark",
+            "tone": "error",
+            "stroke": "rgb(217, 48, 54)",
+            "background": "--ds-background-100",
+            "ratio": 4.1730645181230335
+          },
+          {
+            "appearance": "dark",
+            "tone": "error",
+            "stroke": "rgb(217, 48, 54)",
+            "background": "--ds-background-200",
+            "ratio": 4.426392055191147
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "default",
+            "stroke": "rgb(237, 237, 237)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 14.079182164954604
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "success",
+            "stroke": "rgb(0, 114, 245)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 3.70901525307663
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "error",
+            "stroke": "rgb(229, 72, 77)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 4.211567936563676
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "warning",
+            "stroke": "rgb(242, 162, 13)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 7.809315245818685
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "secondary",
+            "stroke": "rgb(161, 161, 161)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 6.3796994494552
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "measurements": [
+          {
+            "appearance": "light",
+            "tone": "success",
+            "stroke": "oklch(0.5175 0.1453 147.649994)",
+            "background": "--ds-background-100",
+            "ratio": 5.247984870762389
+          },
+          {
+            "appearance": "light",
+            "tone": "success",
+            "stroke": "oklch(0.5175 0.1453 147.649994)",
+            "background": "--ds-background-200",
+            "ratio": 5.027936131659393
+          },
+          {
+            "appearance": "light",
+            "tone": "warning",
+            "stroke": "oklch(0.5279 0.1496 54.650002)",
+            "background": "--ds-background-100",
+            "ratio": 5.569168486310038
+          },
+          {
+            "appearance": "light",
+            "tone": "warning",
+            "stroke": "oklch(0.5279 0.1496 54.650002)",
+            "background": "--ds-background-200",
+            "ratio": 5.335652473317677
+          },
+          {
+            "appearance": "light",
+            "tone": "error",
+            "stroke": "oklch(0.5819 0.2482 25.15)",
+            "background": "--ds-background-100",
+            "ratio": 4.649899421901896
+          },
+          {
+            "appearance": "light",
+            "tone": "error",
+            "stroke": "oklch(0.5819 0.2482 25.15)",
+            "background": "--ds-background-200",
+            "ratio": 4.454928489259589
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "default",
+            "stroke": "rgb(23, 23, 23)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 15.038382524280774
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "success",
+            "stroke": "oklch(0.5761 0.2508 258.230011)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 3.874003801580774
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "error",
+            "stroke": "oklch(0.6256 0.2524 23.030001)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 3.3937781391533512
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "warning",
+            "stroke": "oklch(0.5279 0.1496 54.650002)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 4.671576991832935
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "secondary",
+            "stroke": "rgb(76, 76, 76)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 7.2033740542869555
+          },
+          {
+            "appearance": "dark",
+            "tone": "success",
+            "stroke": "oklch(0.731 0.2158 148.289993)",
+            "background": "--ds-background-100",
+            "ratio": 9.016687716222888
+          },
+          {
+            "appearance": "dark",
+            "tone": "success",
+            "stroke": "oklch(0.731 0.2158 148.289993)",
+            "background": "--ds-background-200",
+            "ratio": 9.564049321044285
+          },
+          {
+            "appearance": "dark",
+            "tone": "warning",
+            "stroke": "oklch(0.7721 0.1991 64.279999)",
+            "background": "--ds-background-100",
+            "ratio": 8.886055830607841
+          },
+          {
+            "appearance": "dark",
+            "tone": "warning",
+            "stroke": "oklch(0.7721 0.1991 64.279999)",
+            "background": "--ds-background-200",
+            "ratio": 9.425487374990032
+          },
+          {
+            "appearance": "dark",
+            "tone": "error",
+            "stroke": "oklch(0.5801 0.227 25.120001)",
+            "background": "--ds-background-100",
+            "ratio": 4.131163488651957
+          },
+          {
+            "appearance": "dark",
+            "tone": "error",
+            "stroke": "oklch(0.5801 0.227 25.120001)",
+            "background": "--ds-background-200",
+            "ratio": 4.381947407103481
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "default",
+            "stroke": "rgb(237, 237, 237)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 14.079182164954604
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "success",
+            "stroke": "oklch(0.5761 0.2321 258.230011)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 3.6588470440194385
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "error",
+            "stroke": "oklch(0.6256 0.2234 23.030001)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 4.140417828966695
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "warning",
+            "stroke": "oklch(0.7721 0.1991 64.279999)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 7.398099814093171
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "secondary",
+            "stroke": "rgb(161, 161, 161)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 6.3796994494552
+          }
+        ]
+      }
+    ],
+    "contrastBaseline": [
+      {
+        "engine": "chromium",
+        "measurements": [
+          {
+            "appearance": "light",
+            "tone": "success",
+            "stroke": "rgb(69, 165, 87)",
+            "background": "--ds-background-100",
+            "ratio": 3.1006748487970697
+          },
+          {
+            "appearance": "light",
+            "tone": "success",
+            "stroke": "rgb(69, 165, 87)",
+            "background": "--ds-background-200",
+            "ratio": 2.970663119028678
+          },
+          {
+            "appearance": "light",
+            "tone": "warning",
+            "stroke": "rgb(255, 178, 36)",
+            "background": "--ds-background-100",
+            "ratio": 1.803251075907392
+          },
+          {
+            "appearance": "light",
+            "tone": "warning",
+            "stroke": "rgb(255, 178, 36)",
+            "background": "--ds-background-200",
+            "ratio": 1.7276405062675642
+          },
+          {
+            "appearance": "light",
+            "tone": "error",
+            "stroke": "rgb(218, 47, 53)",
+            "background": "--ds-background-100",
+            "ratio": 4.73068906632556
+          },
+          {
+            "appearance": "light",
+            "tone": "error",
+            "stroke": "rgb(218, 47, 53)",
+            "background": "--ds-background-200",
+            "ratio": 4.532330612601198
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "default",
+            "stroke": "rgb(23, 23, 23)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 15.038382524280774
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "success",
+            "stroke": "rgb(0, 114, 245)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 3.7277793620961273
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "error",
+            "stroke": "rgb(229, 72, 77)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 3.282955593350847
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "warning",
+            "stroke": "rgb(255, 178, 36)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 1.5126183123054446
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "secondary",
+            "stroke": "rgb(143, 143, 143)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 2.7127546152989153
+          },
+          {
+            "appearance": "dark",
+            "tone": "success",
+            "stroke": "rgb(69, 165, 87)",
+            "background": "--ds-background-100",
+            "ratio": 6.385108621823295
+          },
+          {
+            "appearance": "dark",
+            "tone": "success",
+            "stroke": "rgb(69, 165, 87)",
+            "background": "--ds-background-200",
+            "ratio": 6.772719173746034
+          },
+          {
+            "appearance": "dark",
+            "tone": "warning",
+            "stroke": "rgb(255, 178, 36)",
+            "background": "--ds-background-100",
+            "ratio": 10.979139829744689
+          },
+          {
+            "appearance": "dark",
+            "tone": "warning",
+            "stroke": "rgb(255, 178, 36)",
+            "background": "--ds-background-200",
+            "ratio": 11.645632868641348
+          },
+          {
+            "appearance": "dark",
+            "tone": "error",
+            "stroke": "rgb(217, 48, 54)",
+            "background": "--ds-background-100",
+            "ratio": 4.1730645181230335
+          },
+          {
+            "appearance": "dark",
+            "tone": "error",
+            "stroke": "rgb(217, 48, 54)",
+            "background": "--ds-background-200",
+            "ratio": 4.426392055191147
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "default",
+            "stroke": "rgb(237, 237, 237)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 14.079182164954604
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "success",
+            "stroke": "rgb(0, 114, 245)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 3.70901525307663
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "error",
+            "stroke": "rgb(229, 72, 77)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 4.211567936563676
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "warning",
+            "stroke": "rgb(255, 178, 36)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 9.140700202845903
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "secondary",
+            "stroke": "rgb(143, 143, 143)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 5.096808401372968
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "measurements": [
+          {
+            "appearance": "light",
+            "tone": "success",
+            "stroke": "rgb(69, 165, 87)",
+            "background": "--ds-background-100",
+            "ratio": 3.1006748487970697
+          },
+          {
+            "appearance": "light",
+            "tone": "success",
+            "stroke": "rgb(69, 165, 87)",
+            "background": "--ds-background-200",
+            "ratio": 2.970663119028678
+          },
+          {
+            "appearance": "light",
+            "tone": "warning",
+            "stroke": "rgb(255, 178, 36)",
+            "background": "--ds-background-100",
+            "ratio": 1.803251075907392
+          },
+          {
+            "appearance": "light",
+            "tone": "warning",
+            "stroke": "rgb(255, 178, 36)",
+            "background": "--ds-background-200",
+            "ratio": 1.7276405062675642
+          },
+          {
+            "appearance": "light",
+            "tone": "error",
+            "stroke": "rgb(218, 47, 53)",
+            "background": "--ds-background-100",
+            "ratio": 4.73068906632556
+          },
+          {
+            "appearance": "light",
+            "tone": "error",
+            "stroke": "rgb(218, 47, 53)",
+            "background": "--ds-background-200",
+            "ratio": 4.532330612601198
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "default",
+            "stroke": "rgb(23, 23, 23)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 15.038382524280774
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "success",
+            "stroke": "rgb(0, 114, 245)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 3.7277793620961273
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "error",
+            "stroke": "rgb(229, 72, 77)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 3.282955593350847
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "warning",
+            "stroke": "rgb(255, 178, 36)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 1.5126183123054446
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "secondary",
+            "stroke": "rgb(143, 143, 143)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 2.7127546152989153
+          },
+          {
+            "appearance": "dark",
+            "tone": "success",
+            "stroke": "rgb(69, 165, 87)",
+            "background": "--ds-background-100",
+            "ratio": 6.385108621823295
+          },
+          {
+            "appearance": "dark",
+            "tone": "success",
+            "stroke": "rgb(69, 165, 87)",
+            "background": "--ds-background-200",
+            "ratio": 6.772719173746034
+          },
+          {
+            "appearance": "dark",
+            "tone": "warning",
+            "stroke": "rgb(255, 178, 36)",
+            "background": "--ds-background-100",
+            "ratio": 10.979139829744689
+          },
+          {
+            "appearance": "dark",
+            "tone": "warning",
+            "stroke": "rgb(255, 178, 36)",
+            "background": "--ds-background-200",
+            "ratio": 11.645632868641348
+          },
+          {
+            "appearance": "dark",
+            "tone": "error",
+            "stroke": "rgb(217, 48, 54)",
+            "background": "--ds-background-100",
+            "ratio": 4.1730645181230335
+          },
+          {
+            "appearance": "dark",
+            "tone": "error",
+            "stroke": "rgb(217, 48, 54)",
+            "background": "--ds-background-200",
+            "ratio": 4.426392055191147
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "default",
+            "stroke": "rgb(237, 237, 237)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 14.079182164954604
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "success",
+            "stroke": "rgb(0, 114, 245)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 3.70901525307663
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "error",
+            "stroke": "rgb(229, 72, 77)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 4.211567936563676
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "warning",
+            "stroke": "rgb(255, 178, 36)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 9.140700202845903
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "secondary",
+            "stroke": "rgb(143, 143, 143)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 5.096808401372968
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "measurements": [
+          {
+            "appearance": "light",
+            "tone": "success",
+            "stroke": "oklch(0.6458 0.1746 147.270004)",
+            "background": "--ds-background-100",
+            "ratio": 3.0616770603281136
+          },
+          {
+            "appearance": "light",
+            "tone": "success",
+            "stroke": "oklch(0.6458 0.1746 147.270004)",
+            "background": "--ds-background-200",
+            "ratio": 2.9333005132806567
+          },
+          {
+            "appearance": "light",
+            "tone": "warning",
+            "stroke": "oklch(0.8187 0.1969 76.459999)",
+            "background": "--ds-background-100",
+            "ratio": 1.8573517173637546
+          },
+          {
+            "appearance": "light",
+            "tone": "warning",
+            "stroke": "oklch(0.8187 0.1969 76.459999)",
+            "background": "--ds-background-200",
+            "ratio": 1.779472700266416
+          },
+          {
+            "appearance": "light",
+            "tone": "error",
+            "stroke": "oklch(0.5819 0.2482 25.15)",
+            "background": "--ds-background-100",
+            "ratio": 4.649899421901896
+          },
+          {
+            "appearance": "light",
+            "tone": "error",
+            "stroke": "oklch(0.5819 0.2482 25.15)",
+            "background": "--ds-background-200",
+            "ratio": 4.454928489259589
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "default",
+            "stroke": "rgb(23, 23, 23)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 15.038382524280774
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "success",
+            "stroke": "oklch(0.5761 0.2508 258.230011)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 3.874003801580774
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "error",
+            "stroke": "oklch(0.6256 0.2524 23.030001)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 3.3937781391533512
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "warning",
+            "stroke": "oklch(0.8187 0.1969 76.459999)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 1.55799946974254
+          },
+          {
+            "component": "progress",
+            "appearance": "light",
+            "variant": "secondary",
+            "stroke": "rgb(143, 143, 143)",
+            "background": "rgb(235, 235, 235)",
+            "ratio": 2.7127546152989153
+          },
+          {
+            "appearance": "dark",
+            "tone": "success",
+            "stroke": "oklch(0.6458 0.199 147.270004)",
+            "background": "--ds-background-100",
+            "ratio": 6.563657771334215
+          },
+          {
+            "appearance": "dark",
+            "tone": "success",
+            "stroke": "oklch(0.6458 0.199 147.270004)",
+            "background": "--ds-background-200",
+            "ratio": 6.962107220210207
+          },
+          {
+            "appearance": "dark",
+            "tone": "warning",
+            "stroke": "oklch(0.8187 0.1969 76.459999)",
+            "background": "--ds-background-100",
+            "ratio": 10.65934121439608
+          },
+          {
+            "appearance": "dark",
+            "tone": "warning",
+            "stroke": "oklch(0.8187 0.1969 76.459999)",
+            "background": "--ds-background-200",
+            "ratio": 11.30642075148077
+          },
+          {
+            "appearance": "dark",
+            "tone": "error",
+            "stroke": "oklch(0.5801 0.227 25.120001)",
+            "background": "--ds-background-100",
+            "ratio": 4.131163488651957
+          },
+          {
+            "appearance": "dark",
+            "tone": "error",
+            "stroke": "oklch(0.5801 0.227 25.120001)",
+            "background": "--ds-background-200",
+            "ratio": 4.381947407103481
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "default",
+            "stroke": "rgb(237, 237, 237)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 14.079182164954604
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "success",
+            "stroke": "oklch(0.5761 0.2321 258.230011)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 3.6588470440194385
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "error",
+            "stroke": "oklch(0.6256 0.2234 23.030001)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 4.140417828966695
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "warning",
+            "stroke": "oklch(0.8187 0.1969 76.459999)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 8.874451360630836
+          },
+          {
+            "component": "progress",
+            "appearance": "dark",
+            "variant": "secondary",
+            "stroke": "rgb(143, 143, 143)",
+            "background": "rgb(31, 31, 31)",
+            "ratio": 5.096808401372968
+          }
+        ]
+      }
+    ],
+    "helperTests": "13 focused model/formatter/Spinner/Status tests pass; source Status regression passes all engines",
+    "visual": "Chromium circular measurement and documentation screenshots inspected",
+    "retirement": "Style fingerprints and producer absence verify; private Video scrubber rules retain their separate owner",
+    "generatedSources": "Retiring obsolete media blocks also removes empty wrappers from other generated source/map outputs; compiled CSS is unchanged and full fingerprint verification passes."
+  },
+  "corrections": [
+    "RTL static indeterminate range was positioned outside its track; logical anchoring and direction-dependent transforms fix both static and moving states",
+    "Meter green-700/amber-700 and Progress amber-700/gray-700 failed the tested 3:1 foreground threshold; named deviation changes only those foregrounds to existing 900 tokens",
+    "All final foreground measurements exceed 3:1: minimum 3.28 in Chromium/Firefox and 3.39 in WebKit"
+  ],
+  "references": [
+    {
+      "url": "https://html.spec.whatwg.org/multipage/form-elements.html#the-progress-element",
+      "use": "Absent value, zero, maximum and native progress meaning"
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element",
+      "use": "Bounded measurements and optimum regions"
+    },
+    {
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
+      "use": "Meaningful graphical foreground contrast"
+    },
+    "notes/analysis/design-foundations.md#m18-measurement-foreground-contrast-deviation--2026-09-23",
+    "Existing Gauge/Progress/Skeleton generated source CSS and Spinner/Status lifecycle implementations"
+  ],
+  "reproduce": {
+    "fixture": "src/components/meter/__tests__/meter.browser.ts",
+    "runner": "/tmp/acme-m18-measurements/run.ts",
+    "compiled": "/tmp/acme-m18-measurements/run-compiled.ts",
+    "documentation": "/tmp/acme-m18-measurements/docs-check.ts",
+    "contrast": "/tmp/acme-m18-measurements/run-contrast-all.ts"
+  },
+  "limits": [
+    "Contrast measurements use sRGB canvas-resolved computed colors on the named default surfaces, not arbitrary custom themes",
+    "Actual assistive technology and generated React/final package gates remain M22/M26"
+  ]
+}

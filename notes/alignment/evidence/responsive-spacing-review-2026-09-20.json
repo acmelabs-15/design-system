@@ -1,0 +1,173 @@
+{
+  "date": "2026-09-20",
+  "phase": 4,
+  "scope": "Responsive JSON authoring, Chakra overlap ordering and rem spacing; partial inventory choices",
+  "decisions": [
+    {
+      "id": "C-RESP-09",
+      "question": "Responsive HTML format",
+      "answer": "JSON values (Recommended)",
+      "decision": "One HTML attribute per responsive property accepts plain values or JSON objects/arrays. Lit and React pass corresponding JavaScript values.",
+      "persisted": true,
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "C-RESP-10",
+      "answer": "Chakra ordering (Recommended)",
+      "decision": "Use Chakra's generated-query ordering model for overlaps, independent of responsive-object key insertion order; preserve native exact boundary syntax.",
+      "persisted": true,
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "C-SPACE-04",
+      "answer": "Use rem (Recommended)",
+      "decision": "Use rem for house spacing token values converted at a 16px reference. Token 2 becomes 0.5rem. Density remains independent of text size; theme overrides and explicit CSS lengths remain supported. Does not select additional token keys or all third-party scale values.",
+      "persisted": true,
+      "status": "CONFIRMED"
+    }
+  ],
+  "findings": [
+    {
+      "subject": "overlap ordering",
+      "sourcePin": "1ff9873754e9913fc3d849d23c0844a628f5f20d",
+      "source": "packages/react/src/styled-system/sort-at-params.ts",
+      "check": "Executed pinned source in Bun, replacing memo wrapper only with identity and transpiling TypeScript.",
+      "ordered": [
+        "min52.5rem/max99.9975rem",
+        "min75rem",
+        "max99.9975rem"
+      ],
+      "limit": "Source-level comparator check only; not generated house CSS or browser validation."
+    },
+    {
+      "subject": "current converter",
+      "source": "src/components/grid/grid.ts:19-22",
+      "scope": "Exact isolated converter extracted/transpiled/executed in Bun",
+      "results": [
+        {
+          "input": "{\"compact\":1,\"medium\":2}",
+          "output": {
+            "compact": 1,
+            "medium": 2
+          }
+        },
+        {
+          "input": "[1,null,3]",
+          "output": [
+            1,
+            null,
+            3
+          ]
+        },
+        {
+          "input": "[content-start] 1fr [content-end]",
+          "error": "SyntaxError"
+        },
+        {
+          "input": "0",
+          "output": "0"
+        }
+      ],
+      "implication": "Future shared converter must recognize valid scalar CSS rather than infer JSON from initial bracket alone; no production source changed."
+    },
+    {
+      "subject": "Chakra array normalization",
+      "sourcePin": "1ff9873754e9913fc3d849d23c0844a628f5f20d",
+      "file": "packages/react/src/styled-system/system.ts",
+      "coverage": "Full source read",
+      "finding": "normalization loops positions and copies values only when current != null; 0 and false remain. House limits/index names require own contract, not blindly copied."
+    }
+  ],
+  "sources": [
+    "https://lit.dev/docs/components/properties/#using-the-default-converter",
+    "https://chakra-ui.com/docs/theming/spacing",
+    "https://www.radix-ui.com/themes/docs/theme/spacing",
+    "https://drafts.csswg.org/css-values-4/#rem",
+    "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/system.ts",
+    "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/grid-template-columns",
+    "https://drafts.csswg.org/css-conditional-5/#query-container",
+    "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/breakpoints.ts",
+    "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/sort-at-params.ts",
+    "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/normalize.ts"
+  ],
+  "localEvidence": [
+    {
+      "file": "src/components/grid/grid.ts",
+      "coverage": "Full source read; exact converter extracted for isolated Bun check"
+    },
+    {
+      "file": "node_modules/@lit/reactive-element/development/reactive-element.js",
+      "coverage": "Default converter lines 88–132 read; object/array JSON conversion and parse catch"
+    },
+    {
+      "file": "src/generated/theme.css",
+      "coverage": "Spacing declarations and form-font declarations inspected; current pixel spacing vs rem form text"
+    }
+  ],
+  "referenceCoverage": {
+    "chakraPin": "1ff9873754e9913fc3d849d23c0844a628f5f20d",
+    "completeSourceFiles": [
+      "breakpoints.ts",
+      "sort-at-params.ts",
+      "normalize.ts",
+      "system.ts"
+    ],
+    "proFileReRead": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/charts-02/block.tsx",
+    "proRangeSearch": {
+      "scope": "Lexical search under private blocks directory",
+      "patterns": [
+        "mdTo",
+        "lgOnly",
+        "lgDown",
+        "mdOnly",
+        "smDown",
+        "mdDown"
+      ],
+      "matches": 0,
+      "limit": "Not an AST/runtime evaluation or proof that no dynamic ranges occur."
+    }
+  },
+  "draftRules": {
+    "status": "Agent-prepared draft, not complete inventory approval",
+    "arrayMapping": "compact, medium, expanded, large, extraLarge; null or omitted JavaScript entries emit no new value, preserving preceding applicable values or component defaults; preserve 0 and false.",
+    "arraySource": "Pinned Chakra system.ts normalizeValue skips only null/undefined.",
+    "conditionMapping": "Band name = threshold upward; Only = named band until next threshold (last band unbounded); Down = below named threshold, with no empty compactDown; lowerToUpper = lower inclusive and upper exclusive. Complete emitted ordering and duplicate-bound equivalence need final source-to-native-range verification.",
+    "scalarCSS": "A full property-valid CSS scalar remains valid even when starting with [; do not use the existing first-character JSON guess.",
+    "reflection": "Draft follows Lit guidance: do not automatically reflect object/array property writes to attributes; retain HTML input conversion.",
+    "containerMissing": "Use native container-query matching; confirm baseline compact-value behavior explicitly in final contract.",
+    "stillOpen": [
+      "Exact startup configuration and container declaration/target API",
+      "Final validation policy and scalar-array ambiguity where a scalar itself is an array",
+      "Complete focused property lists, supported spacing keys/density values and native-attribute routing",
+      "Final row approvals and browser acceptance checks"
+    ]
+  },
+  "limitations": [
+    "No production converter, style generator, dependency, build output or runtime implementation changed.",
+    "Comparator and converter checks ran in Bun in isolation, not in the house rendering pipeline or browser engines.",
+    "Existing Grid does not expose a generic grid-template-columns property; bracketed CSS rejection is a hazard for the planned shared CSS-valued converter.",
+    "No claim of full Chakra ordering parity for native syntax, every tie case or all condition combinations.",
+    "Rem spacing selection does not adopt all Chakra spacing keys, change text size or authorize a global conversion of every CSS length.",
+    "Draft condition mapping, reflection, skipped positions and remaining interfaces are distinct from the three user decisions."
+  ],
+  "next": "Complete input/condition mapping, configuration/container interfaces and exact layout/typography property/token entries; seek row approval after dependencies are resolved.",
+  "persisted": true,
+  "implementationChanged": false,
+  "inventoryApproved": false,
+  "migrationApproved": false,
+  "commitCreated": false,
+  "pushPerformed": false,
+  "followupStatus": {
+    "scope": "Snapshot at capture time; later selections do not alter earlier answers or measurements.",
+    "currentHandoff": "../README.md#where-we-are",
+    "laterRecord": "spacing-stack-review-2026-09-20.json",
+    "laterRecords": [
+      "spacing-stack-review-2026-09-20.json"
+    ],
+    "settledSince": [
+      "Complete 34-step positive Chakra spacing scale plus zero",
+      "Automatic Stack separator spacing matches Chakra: gap on each side plus divider thickness",
+      "Automatic Stack separators follow visible flex lines; Group member-order corners unchanged"
+    ]
+  }
+}

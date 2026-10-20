@@ -1,0 +1,69 @@
+[
+  {
+    "variant": "react-baseline",
+    "check": "native FormData after application supplies form/name",
+    "pass": true,
+    "original": {
+      "name": "plan",
+      "form": false
+    },
+    "formData": {
+      "owner": "followup-form",
+      "value": "starter",
+      "entries": [
+        [
+          "plan",
+          "starter"
+        ]
+      ]
+    },
+    "scope": "Supplemental named-form integration, not an assertion that the original artifact authored a form/name"
+  },
+  {
+    "variant": "react-baseline",
+    "check": "detached wrapper callback removed",
+    "pass": true,
+    "evidence": {
+      "before": 0,
+      "after": 0
+    }
+  },
+  {
+    "variant": "react-skilled",
+    "check": "native FormData after application supplies form/name",
+    "pass": true,
+    "original": {
+      "name": "plan",
+      "form": false
+    },
+    "formData": {
+      "owner": "followup-form",
+      "value": "starter",
+      "entries": [
+        [
+          "plan",
+          "starter"
+        ]
+      ]
+    },
+    "scope": "Supplemental named-form integration, not an assertion that the original artifact authored a form/name"
+  },
+  {
+    "variant": "table-baseline",
+    "check": "one application page change after same-element remount",
+    "pass": true,
+    "evidence": {
+      "calls": 1,
+      "pageIndex": 1
+    }
+  },
+  {
+    "variant": "table-skilled",
+    "check": "one application page change after same-element remount",
+    "pass": true,
+    "evidence": {
+      "calls": 1,
+      "pageIndex": 1
+    }
+  }
+]

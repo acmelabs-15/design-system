@@ -1,0 +1,904 @@
+{
+  "date": "2026-09-20",
+  "phase": "Phase 6",
+  "batch": "M05",
+  "status": "technical conflict; revised authoring contract is proposed, not approved",
+  "approvedRequirement": "Removing the style helper expression clears its owned inputs; temporary disconnection alone preserves them.",
+  "finding": "Public AsyncDirective hooks do not distinguish permanent expression removal from temporary disconnection. Replacement while already disconnected issues no second disconnected callback.",
+  "sources": [
+    "https://lit.dev/docs/templates/custom-directives/#async-directives",
+    "https://lit.dev/docs/api/custom-directives/",
+    "https://raw.githubusercontent.com/lit/lit/main/packages/lit-html/src/async-directive.ts"
+  ],
+  "installed": {
+    "lit": "3.3.3",
+    "litHtml": "3.3.3",
+    "implementation": "node_modules/lit-html/development/async-directive.js",
+    "internalDiscriminator": "_$notifyDirectiveConnectionChanged(isConnected, isClearingDirective); marked internal and absent from public AsyncDirective type"
+  },
+  "reproduction": {
+    "browserSource": "import {createOrderedStyleInputs} from \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/shared/ordered-style-inputs.js\";\nconst { html, render, LitElement, noChange, nothing } = await import(\"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/index.js\");\nconst { AsyncDirective, directive } = await import(\"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/async-directive.js\");\nconst { cache } = await import(\"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/directives/cache.js\");\nconst logs: Record<string, unknown>[] = [];\nclass Probe extends AsyncDirective {\n  part: any;\n  label = \"\";\n  render(label: string) { return noChange; }\n  update(part: any, [label]: [string]) {\n    this.part = part;\n    this.label = label;\n    this.record(\"update\");\n    return noChange;\n  }\n  disconnected() { this.record(\"disconnected\"); }\n  reconnected() { this.record(\"reconnected\"); }\n  record(kind: string) {\n    logs.push({ kind, label: this.label, directiveConnected: this.isConnected,\n      optionInitialConnected: this.part?.options?.isConnected,\n      hostConnected: this.part?.options?.host?.isConnected,\n      targetConnected: this.part?.element?.isConnected });\n  }\n}\nconst probe = directive(Probe);\nclass Other extends AsyncDirective {\n  render() { return noChange; }\n  disconnected() { logs.push({kind:\"other-disconnected\", directiveConnected:this.isConnected}); }\n  reconnected() { logs.push({kind:\"other-reconnected\", directiveConnected:this.isConnected}); }\n}\nconst other = directive(Other);\nclass Host extends LitElement {\n  mode = \"probe\";\n  cacheOn = true;\n  render() {\n    if (this.mode === \"cache\") return html`${cache(this.cacheOn ? html`<div ${probe(\"cache\")}></div>` : html`<span>cached away</span>`)}`;\n    return html`<div ${this.mode === \"probe\" ? probe(\"direct\") : this.mode === \"other\" ? other() : nothing}></div>`;\n  }\n}\ncustomElements.define(\"life-host\", Host);\nasync function fresh() {\n  const host = document.createElement(\"life-host\") as Host;\n  document.body.append(host);\n  await host.updateComplete;\n  return host;\n}\nfunction mark(caseName: string) { logs.push({case:caseName}); }\nmark(\"direct removal while connected\");\nlet host = await fresh();\nhost.mode = \"none\"; host.requestUpdate(); await host.updateComplete; host.remove();\nmark(\"temporary host disconnect and reconnect\");\nhost = await fresh(); host.remove(); document.body.append(host); await host.updateComplete; host.remove();\nmark(\"replacement while already disconnected\");\nhost = await fresh(); host.remove(); host.mode = \"other\"; host.requestUpdate(); await host.updateComplete; document.body.append(host); await host.updateComplete; host.remove();\nmark(\"cache temporarily disconnects while host stays connected\");\nhost = await fresh(); host.mode = \"cache\"; host.requestUpdate(); await host.updateComplete;\nhost.cacheOn = false; host.requestUpdate(); await host.updateComplete;\nhost.cacheOn = true; host.requestUpdate(); await host.updateComplete; host.remove();\n\nconst cases={};let current;for(const entry of logs){if(entry.case){current=entry.case;cases[current]=[];}else cases[current].push(entry);}\nconst results=[];const check=(name,actual,expected)=>results.push({name,actual,expected,ok:JSON.stringify(actual)===JSON.stringify(expected)});\nconst direct=cases[\"direct removal while connected\"].find(row=>row.kind===\"disconnected\");\nconst cached=cases[\"cache temporarily disconnects while host stays connected\"].find(row=>row.kind===\"disconnected\"&&row.label===\"cache\");\nconst view=row=>({directive:row.directiveConnected,host:row.hostConnected,target:row.targetConnected});\ncheck(\"removal public state\",view(direct),{directive:false,host:true,target:true});\ncheck(\"temporary cache has identical public state\",view(cached),view(direct));\nconst replacement=cases[\"replacement while already disconnected\"];\ncheck(\"already-disconnected replacement provides no second removal callback\",replacement.filter(row=>row.kind===\"disconnected\"&&row.label===\"direct\").length,1);\ncheck(\"removed original directive does not reconnect\",replacement.filter(row=>row.kind===\"reconnected\"&&row.label===\"direct\").length,0);\n\nclass StyleTarget extends HTMLElement {\n  inputs=createOrderedStyleInputs({padding:(value)=>{if(typeof value!==\"number\")throw Error(\"numeric fixture\");return value;}});\n}\ncustomElements.define(\"explicit-clear-target\",StyleTarget);\nclass ExplicitInputs extends AsyncDirective {\n  previousKeys=[];\n  render(values){return noChange;}\n  update(part,[values]){this.previousKeys=part.element.inputs.apply(values,this.previousKeys);return noChange;}\n}\nconst explicitInputs=directive(ExplicitInputs);\nconst container=document.createElement(\"div\");document.body.append(container);\nconst draw=(values)=>render(html`<explicit-clear-target ${explicitInputs(values)}></explicit-clear-target>`,container);\nconst root=draw({padding:16});const target=container.firstElementChild;\ncheck(\"explicit helper applies supplied input\",target.inputs.get(\"padding\"),16);\nroot.setConnected(false);\ncheck(\"temporary disconnect preserves supplied input\",target.inputs.get(\"padding\"),16);\ndraw({});\ncheck(\"empty helper clears while disconnected\",target.inputs.get(\"padding\")===undefined,true);\nroot.setConnected(true);\ncheck(\"reconnect does not restore cleared input\",target.inputs.get(\"padding\")===undefined,true);\ndraw({padding:20});draw({});\ncheck(\"empty helper clears while connected\",target.inputs.get(\"padding\")===undefined,true);\ncontainer.remove();\nwindow.__results={results,logs};\n\n\n",
+    "runner": "import fs from \"node:fs\";import path from \"node:path\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\",directory=\"/tmp/acme-m05-lifecycle\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\"});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;\n",
+    "browser": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "results": [
+            {
+              "name": "removal public state",
+              "actual": {
+                "directive": false,
+                "host": true,
+                "target": true
+              },
+              "expected": {
+                "directive": false,
+                "host": true,
+                "target": true
+              },
+              "ok": true
+            },
+            {
+              "name": "temporary cache has identical public state",
+              "actual": {
+                "directive": false,
+                "host": true,
+                "target": true
+              },
+              "expected": {
+                "directive": false,
+                "host": true,
+                "target": true
+              },
+              "ok": true
+            },
+            {
+              "name": "already-disconnected replacement provides no second removal callback",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "removed original directive does not reconnect",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "explicit helper applies supplied input",
+              "actual": 16,
+              "expected": 16,
+              "ok": true
+            },
+            {
+              "name": "temporary disconnect preserves supplied input",
+              "actual": 16,
+              "expected": 16,
+              "ok": true
+            },
+            {
+              "name": "empty helper clears while disconnected",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "reconnect does not restore cleared input",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "empty helper clears while connected",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            }
+          ],
+          "logs": [
+            {
+              "case": "direct removal while connected"
+            },
+            {
+              "kind": "update",
+              "label": "direct",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": false
+            },
+            {
+              "kind": "disconnected",
+              "label": "direct",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": true
+            },
+            {
+              "case": "temporary host disconnect and reconnect"
+            },
+            {
+              "kind": "update",
+              "label": "direct",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": false
+            },
+            {
+              "kind": "disconnected",
+              "label": "direct",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": false,
+              "targetConnected": false
+            },
+            {
+              "kind": "reconnected",
+              "label": "direct",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": true
+            },
+            {
+              "kind": "disconnected",
+              "label": "direct",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": false,
+              "targetConnected": false
+            },
+            {
+              "case": "replacement while already disconnected"
+            },
+            {
+              "kind": "update",
+              "label": "direct",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": false
+            },
+            {
+              "kind": "disconnected",
+              "label": "direct",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": false,
+              "targetConnected": false
+            },
+            {
+              "kind": "other-reconnected",
+              "directiveConnected": true
+            },
+            {
+              "kind": "other-disconnected",
+              "directiveConnected": false
+            },
+            {
+              "case": "cache temporarily disconnects while host stays connected"
+            },
+            {
+              "kind": "update",
+              "label": "direct",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": false
+            },
+            {
+              "kind": "update",
+              "label": "cache",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": false
+            },
+            {
+              "kind": "disconnected",
+              "label": "direct",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": true
+            },
+            {
+              "kind": "disconnected",
+              "label": "cache",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": true
+            },
+            {
+              "kind": "reconnected",
+              "label": "cache",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": false
+            },
+            {
+              "kind": "update",
+              "label": "cache",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": true
+            },
+            {
+              "kind": "disconnected",
+              "label": "cache",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": false,
+              "targetConnected": false
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "removal public state",
+              "actual": {
+                "directive": false,
+                "host": true,
+                "target": true
+              },
+              "expected": {
+                "directive": false,
+                "host": true,
+                "target": true
+              },
+              "ok": true
+            },
+            {
+              "name": "temporary cache has identical public state",
+              "actual": {
+                "directive": false,
+                "host": true,
+                "target": true
+              },
+              "expected": {
+                "directive": false,
+                "host": true,
+                "target": true
+              },
+              "ok": true
+            },
+            {
+              "name": "already-disconnected replacement provides no second removal callback",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "removed original directive does not reconnect",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "explicit helper applies supplied input",
+              "actual": 16,
+              "expected": 16,
+              "ok": true
+            },
+            {
+              "name": "temporary disconnect preserves supplied input",
+              "actual": 16,
+              "expected": 16,
+              "ok": true
+            },
+            {
+              "name": "empty helper clears while disconnected",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "reconnect does not restore cleared input",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "empty helper clears while connected",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            }
+          ],
+          "logs": [
+            {
+              "case": "direct removal while connected"
+            },
+            {
+              "kind": "update",
+              "label": "direct",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": false
+            },
+            {
+              "kind": "disconnected",
+              "label": "direct",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": true
+            },
+            {
+              "case": "temporary host disconnect and reconnect"
+            },
+            {
+              "kind": "update",
+              "label": "direct",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": false
+            },
+            {
+              "kind": "disconnected",
+              "label": "direct",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": false,
+              "targetConnected": false
+            },
+            {
+              "kind": "reconnected",
+              "label": "direct",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": true
+            },
+            {
+              "kind": "disconnected",
+              "label": "direct",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": false,
+              "targetConnected": false
+            },
+            {
+              "case": "replacement while already disconnected"
+            },
+            {
+              "kind": "update",
+              "label": "direct",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": false
+            },
+            {
+              "kind": "disconnected",
+              "label": "direct",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": false,
+              "targetConnected": false
+            },
+            {
+              "kind": "other-reconnected",
+              "directiveConnected": true
+            },
+            {
+              "kind": "other-disconnected",
+              "directiveConnected": false
+            },
+            {
+              "case": "cache temporarily disconnects while host stays connected"
+            },
+            {
+              "kind": "update",
+              "label": "direct",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": false
+            },
+            {
+              "kind": "update",
+              "label": "cache",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": false
+            },
+            {
+              "kind": "disconnected",
+              "label": "direct",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": true
+            },
+            {
+              "kind": "disconnected",
+              "label": "cache",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": true
+            },
+            {
+              "kind": "reconnected",
+              "label": "cache",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": false
+            },
+            {
+              "kind": "update",
+              "label": "cache",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": true
+            },
+            {
+              "kind": "disconnected",
+              "label": "cache",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": false,
+              "targetConnected": false
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "removal public state",
+              "actual": {
+                "directive": false,
+                "host": true,
+                "target": true
+              },
+              "expected": {
+                "directive": false,
+                "host": true,
+                "target": true
+              },
+              "ok": true
+            },
+            {
+              "name": "temporary cache has identical public state",
+              "actual": {
+                "directive": false,
+                "host": true,
+                "target": true
+              },
+              "expected": {
+                "directive": false,
+                "host": true,
+                "target": true
+              },
+              "ok": true
+            },
+            {
+              "name": "already-disconnected replacement provides no second removal callback",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "removed original directive does not reconnect",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "explicit helper applies supplied input",
+              "actual": 16,
+              "expected": 16,
+              "ok": true
+            },
+            {
+              "name": "temporary disconnect preserves supplied input",
+              "actual": 16,
+              "expected": 16,
+              "ok": true
+            },
+            {
+              "name": "empty helper clears while disconnected",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "reconnect does not restore cleared input",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "empty helper clears while connected",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            }
+          ],
+          "logs": [
+            {
+              "case": "direct removal while connected"
+            },
+            {
+              "kind": "update",
+              "label": "direct",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": false
+            },
+            {
+              "kind": "disconnected",
+              "label": "direct",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": true
+            },
+            {
+              "case": "temporary host disconnect and reconnect"
+            },
+            {
+              "kind": "update",
+              "label": "direct",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": false
+            },
+            {
+              "kind": "disconnected",
+              "label": "direct",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": false,
+              "targetConnected": false
+            },
+            {
+              "kind": "reconnected",
+              "label": "direct",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": true
+            },
+            {
+              "kind": "disconnected",
+              "label": "direct",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": false,
+              "targetConnected": false
+            },
+            {
+              "case": "replacement while already disconnected"
+            },
+            {
+              "kind": "update",
+              "label": "direct",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": false
+            },
+            {
+              "kind": "disconnected",
+              "label": "direct",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": false,
+              "targetConnected": false
+            },
+            {
+              "kind": "other-reconnected",
+              "directiveConnected": true
+            },
+            {
+              "kind": "other-disconnected",
+              "directiveConnected": false
+            },
+            {
+              "case": "cache temporarily disconnects while host stays connected"
+            },
+            {
+              "kind": "update",
+              "label": "direct",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": false
+            },
+            {
+              "kind": "update",
+              "label": "cache",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": false
+            },
+            {
+              "kind": "disconnected",
+              "label": "direct",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": true
+            },
+            {
+              "kind": "disconnected",
+              "label": "cache",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": true
+            },
+            {
+              "kind": "reconnected",
+              "label": "cache",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": false
+            },
+            {
+              "kind": "update",
+              "label": "cache",
+              "directiveConnected": true,
+              "optionInitialConnected": true,
+              "hostConnected": true,
+              "targetConnected": true
+            },
+            {
+              "kind": "disconnected",
+              "label": "cache",
+              "directiveConnected": false,
+              "optionInitialConnected": true,
+              "hostConnected": false,
+              "targetConnected": false
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "additionalRootPartSource": "import { GlobalRegistrator } from \"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/@happy-dom/global-registrator/lib/index.js\";\nGlobalRegistrator.register();\nconst { html, render, noChange, nothing } = await import(\"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/index.js\");\nconst { AsyncDirective, directive } = await import(\"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/async-directive.js\");\nconst events: unknown[] = [];\nclass Probe extends AsyncDirective {\n  part: any;\n  render() { return noChange; }\n  update(part: any) { this.part = part; events.push({event:\"update\", connected:this.isConnected, optionConnected:part.options?.isConnected, host:part.options?.host}); return noChange; }\n  disconnected() { events.push({event:\"disconnected\", connected:this.isConnected, optionConnected:this.part.options?.isConnected, host:this.part.options?.host}); }\n  reconnected() { events.push({event:\"reconnected\", connected:this.isConnected}); }\n}\nconst probe = directive(Probe);\nconst container = document.createElement(\"div\");\ndocument.body.append(container);\nconst root = render(html`<div ${probe()}></div>`, container, {isConnected:true});\nroot.setConnected(false);\nrender(html`<div ${nothing}></div>`, container);\nroot.setConnected(true);\nconsole.log(JSON.stringify(events, null, 2));\n"
+  },
+  "alternatives": [
+    {
+      "id": "explicit-clear",
+      "recommended": true,
+      "contract": "Keep styleInputs in the expression and clear its supplied settings with styleInputs({}); temporary disconnect preserves inputs. Removing the helper itself is not an automatic clear.",
+      "reason": "Uses supported Lit APIs and preserves detached/cached component state; no runtime fork or private hook.",
+      "cost": "Authors clear inputs explicitly instead of relying on expression removal."
+    },
+    {
+      "id": "automatic-clear",
+      "recommended": false,
+      "contract": "Retain exact automatic expression-removal cleanup and preservation on temporary disconnect.",
+      "reason": "Preserves the approved convenience.",
+      "cost": "Requires a supported disposal signal from Lit or a maintained dependency extension/fork; no such implementation is built or selected."
+    }
+  ],
+  "decisionRequired": "Peter selects whether to revise this observable authoring contract.",
+  "actions": "No production directive, private hook, runtime fork, or changed approved cleanup behavior added. Unrelated shared mechanisms remain verified.",
+  "proposedAlternativeVerification": "Five additional explicit-clear checks per engine pass using the built ordered-state module in a scratch Lit directive. This verifies the proposal without installing a production directive or changing the approved contract.",
+  "attributeAlternative": {
+    "status": "bounded reduced comparison, not selected or production implementation",
+    "sources": [
+      "https://lit.dev/docs/templates/custom-directives/#parts",
+      "https://lit.dev/docs/api/templates/#nothing"
+    ],
+    "form": "style-inputs=${styleInputs(values)}",
+    "runtime": "Bun with happy-dom",
+    "directRetainedTargetRemoval": "Attribute removal provides a separate signal, even while disconnected.",
+    "temporaryDisconnectAndCache": "Retain the marker and inputs.",
+    "wholeTemplateDisposal": "Old target keeps its marker and inputs, indistinguishable from a cached subtree.",
+    "preUpgradeLimit": "A marker removed before definition has no later attributeChanged callback. A helper that waits for definition can also verify its marker before applying; the reduced fixture wrote early values and intentionally exposes that different path.",
+    "conclusion": "Changing authoring position supports a narrower retained-element cleanup contract, but does not fulfill automatic cleanup for discarded containing templates. It needs an explicit scope/authoring revision as well.",
+    "fixture": "import { GlobalRegistrator } from \"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/@happy-dom/global-registrator/lib/index.js\";\nGlobalRegistrator.register();\nconst { html, LitElement, noChange, nothing } = await import(\"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/index.js\");\nconst { Directive, directive } = await import(\"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/directive.js\");\nconst { cache } = await import(\"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/directives/cache.js\");\nconst events: unknown[] = [];\nlet nextId = 0;\nclass Target extends HTMLElement {\n  static observedAttributes = [\"style-inputs\"];\n  owned = \"\";\n  attributeChangedCallback(name: string, oldValue: string|null, newValue: string|null) {\n    events.push({event:\"attribute\", oldValue, newValue, targetConnected:this.isConnected, ownedBefore:this.owned});\n    if (oldValue !== null && oldValue !== newValue) this.owned = \"\";\n  }\n}\ncustomElements.define(\"attr-target\", Target);\nclass Marker extends Directive {\n  id = `owner-${++nextId}`;\n  render(_value: string) { return this.id; }\n  update(part: any, [value]: [string]) {\n    (part.element as Target).owned = value;\n    events.push({event:\"helper-update\", id:this.id, value, hostConnected:part.options?.host?.isConnected, targetConnected:part.element.isConnected});\n    return this.id;\n  }\n}\nconst marker = directive(Marker);\nclass Other extends Directive {\n  render() { return \"other\"; }\n}\nconst other = directive(Other);\nclass Host extends LitElement {\n  mode: \"marker\"|\"nothing\"|\"other\"|\"whole\"|\"cache\" = \"marker\";\n  cacheOn = true;\n  render() {\n    if (this.mode === \"whole\") return html`<span>replacement</span>`;\n    if (this.mode === \"cache\") return html`${cache(this.cacheOn ? html`<attr-target style-inputs=${marker(\"cached\")}></attr-target>` : html`<span>cached away</span>`)}`;\n    return html`<attr-target style-inputs=${this.mode === \"marker\" ? marker(\"active\") : this.mode === \"other\" ? other() : nothing}></attr-target>`;\n  }\n}\ncustomElements.define(\"attr-host\", Host);\nasync function fresh() { const h=document.createElement(\"attr-host\") as Host; document.body.append(h); await h.updateComplete; return h; }\nfunction snapshot(caseName:string, host:Host, target:Target) { events.push({case:caseName, attr:target.getAttribute(\"style-inputs\"), owned:target.owned, hostConnected:host.isConnected, targetConnected:target.isConnected}); }\nlet host = await fresh(); let target=host.shadowRoot!.querySelector(\"attr-target\") as Target;\nsnapshot(\"initial\",host,target);\nhost.mode=\"nothing\"; host.requestUpdate(); await host.updateComplete; snapshot(\"direct removal retained element\",host,target); host.remove();\n\nhost=await fresh(); target=host.shadowRoot!.querySelector(\"attr-target\") as Target; host.remove();\nhost.mode=\"nothing\"; host.requestUpdate(); await host.updateComplete; snapshot(\"direct removal while host disconnected\",host,target);\ndocument.body.append(host); await host.updateComplete; snapshot(\"after reconnect\",host,target); host.remove();\n\nhost=await fresh(); target=host.shadowRoot!.querySelector(\"attr-target\") as Target; host.remove();\nhost.mode=\"other\"; host.requestUpdate(); await host.updateComplete; snapshot(\"replacement directive while disconnected\",host,target); host.remove();\n\nhost=await fresh(); host.mode=\"cache\"; host.requestUpdate(); await host.updateComplete; target=host.shadowRoot!.querySelector(\"attr-target\") as Target;\nhost.cacheOn=false; host.requestUpdate(); await host.updateComplete; snapshot(\"cached away\",host,target);\nhost.cacheOn=true; host.requestUpdate(); await host.updateComplete; snapshot(\"cache restored\",host,target); host.remove();\n\nhost=await fresh(); target=host.shadowRoot!.querySelector(\"attr-target\") as Target;\nhost.mode=\"whole\"; host.requestUpdate(); await host.updateComplete; snapshot(\"whole template replacement, old target retained\",host,target); host.remove();\nconsole.log(JSON.stringify(events,null,2));\n",
+    "results": [
+      {
+        "event": "helper-update",
+        "id": "owner-1",
+        "value": "active",
+        "hostConnected": true,
+        "targetConnected": false
+      },
+      {
+        "event": "attribute",
+        "oldValue": null,
+        "newValue": "owner-1",
+        "targetConnected": false,
+        "ownedBefore": "active"
+      },
+      {
+        "case": "initial",
+        "attr": "owner-1",
+        "owned": "active",
+        "hostConnected": true,
+        "targetConnected": true
+      },
+      {
+        "event": "attribute",
+        "oldValue": "owner-1",
+        "newValue": null,
+        "targetConnected": true,
+        "ownedBefore": "active"
+      },
+      {
+        "case": "direct removal retained element",
+        "attr": null,
+        "owned": "",
+        "hostConnected": true,
+        "targetConnected": true
+      },
+      {
+        "event": "helper-update",
+        "id": "owner-2",
+        "value": "active",
+        "hostConnected": true,
+        "targetConnected": false
+      },
+      {
+        "event": "attribute",
+        "oldValue": null,
+        "newValue": "owner-2",
+        "targetConnected": false,
+        "ownedBefore": "active"
+      },
+      {
+        "event": "attribute",
+        "oldValue": "owner-2",
+        "newValue": null,
+        "targetConnected": false,
+        "ownedBefore": "active"
+      },
+      {
+        "case": "direct removal while host disconnected",
+        "attr": null,
+        "owned": "",
+        "hostConnected": false,
+        "targetConnected": false
+      },
+      {
+        "case": "after reconnect",
+        "attr": null,
+        "owned": "",
+        "hostConnected": true,
+        "targetConnected": true
+      },
+      {
+        "event": "helper-update",
+        "id": "owner-3",
+        "value": "active",
+        "hostConnected": true,
+        "targetConnected": false
+      },
+      {
+        "event": "attribute",
+        "oldValue": null,
+        "newValue": "owner-3",
+        "targetConnected": false,
+        "ownedBefore": "active"
+      },
+      {
+        "event": "attribute",
+        "oldValue": "owner-3",
+        "newValue": "other",
+        "targetConnected": false,
+        "ownedBefore": "active"
+      },
+      {
+        "case": "replacement directive while disconnected",
+        "attr": "other",
+        "owned": "",
+        "hostConnected": false,
+        "targetConnected": false
+      },
+      {
+        "event": "helper-update",
+        "id": "owner-4",
+        "value": "active",
+        "hostConnected": true,
+        "targetConnected": false
+      },
+      {
+        "event": "attribute",
+        "oldValue": null,
+        "newValue": "owner-4",
+        "targetConnected": false,
+        "ownedBefore": "active"
+      },
+      {
+        "event": "helper-update",
+        "id": "owner-5",
+        "value": "cached",
+        "hostConnected": true,
+        "targetConnected": false
+      },
+      {
+        "event": "attribute",
+        "oldValue": null,
+        "newValue": "owner-5",
+        "targetConnected": false,
+        "ownedBefore": "cached"
+      },
+      {
+        "case": "cached away",
+        "attr": "owner-5",
+        "owned": "cached",
+        "hostConnected": true,
+        "targetConnected": false
+      },
+      {
+        "event": "helper-update",
+        "id": "owner-5",
+        "value": "cached",
+        "hostConnected": true,
+        "targetConnected": true
+      },
+      {
+        "case": "cache restored",
+        "attr": "owner-5",
+        "owned": "cached",
+        "hostConnected": true,
+        "targetConnected": true
+      },
+      {
+        "event": "helper-update",
+        "id": "owner-6",
+        "value": "active",
+        "hostConnected": true,
+        "targetConnected": false
+      },
+      {
+        "event": "attribute",
+        "oldValue": null,
+        "newValue": "owner-6",
+        "targetConnected": false,
+        "ownedBefore": "active"
+      },
+      {
+        "case": "whole template replacement, old target retained",
+        "attr": "owner-6",
+        "owned": "active",
+        "hostConnected": true,
+        "targetConnected": false
+      }
+    ],
+    "preUpgradeFixture": "import { GlobalRegistrator } from \"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/@happy-dom/global-registrator/lib/index.js\";\nGlobalRegistrator.register();\nconst { html, render, nothing } = await import(\"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/index.js\");\nconst container=document.createElement(\"div\"); document.body.append(container);\nconst view=(value:unknown)=>html`<late-attr-target style-inputs=${value}></late-attr-target>`;\nrender(view(\"owner\"),container);\nconst target=container.querySelector(\"late-attr-target\") as HTMLElement & {owned?:string}; target.owned=\"applied\";\nrender(view(nothing),container);\nconst events: unknown[]=[];\nclass LateTarget extends HTMLElement {\n  static observedAttributes=[\"style-inputs\"];\n  attributeChangedCallback(name:string,oldValue:string|null,newValue:string|null){ events.push({name,oldValue,newValue}); if(newValue===null) this.owned=\"\"; }\n  declare owned?:string;\n}\ncustomElements.define(\"late-attr-target\",LateTarget);\nawait customElements.whenDefined(\"late-attr-target\");\nconsole.log(JSON.stringify({attribute:target.getAttribute(\"style-inputs\"),owned:target.owned,events,upgraded:target instanceof LateTarget},null,2));\n",
+    "preUpgradeResults": {
+      "attribute": null,
+      "owned": "applied",
+      "events": [],
+      "upgraded": true
+    }
+  },
+  "preparedQuestion": {
+    "subject": "Clearing settings owned by the Lit style helper",
+    "context": "The approved proposal asked removal of the helper to clear its styles while temporary disconnection preserves them. The installed and current upstream public Lit lifecycle cannot distinguish these cases. The failure reproduces in all three browser engines. Explicit empty-helper clearing passes representative checks.",
+    "recommendation": "Keep styleInputs in the template and pass an empty object to clear its settings, preserving temporary disconnected/cached state.",
+    "options": [
+      "Explicit clear: use styleInputs({}); this revises automatic expression-removal cleanup.",
+      "Keep exact automatic cleanup: retain the requirement and address the missing disposal signal through supported Lit extension/fork work before implementing the helper."
+    ],
+    "answer": null
+  }
+}

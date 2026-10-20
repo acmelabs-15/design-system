@@ -1,0 +1,11 @@
+<!doctype html><meta charset="utf-8"><title>Primitive semantics and styling probe</title>
+<style>body{font:16px sans-serif}.grid{display:grid;grid-template-columns:100px 100px;gap:10px;width:210px}probe-box{display:block;min-width:0}probe-box::part(root){box-sizing:border-box}#host-placement{grid-column:span 2}#inner-placement::part(root){grid-column:span 2}.label{margin-top:20px}</style>
+<p class="label">Outer placement</p><div class="grid"><probe-box id="host-placement"><template shadowrootmode="open"><section part="root" style="background:#ddd"><slot></slot></section></template>Spans two columns</probe-box><div>Other</div></div>
+<p class="label">Inner placement</p><div class="grid"><probe-box id="inner-placement"><template shadowrootmode="open"><section part="root" style="background:#ddd"><slot></slot></section></template>Inner span setting</probe-box><div>Other</div></div>
+<p id="external-name">External title</p>
+<probe-box id="plain-heading"><template shadowrootmode="open"><h2 part="root"><slot></slot></h2></template>Visible heading</probe-box>
+<probe-box id="label-host-only" aria-label="Host label"><template shadowrootmode="open"><h2 part="root"><slot></slot></h2></template>Visible heading</probe-box>
+<probe-box id="label-both" aria-label="Explicit label"><template shadowrootmode="open"><h2 part="root" aria-label="Explicit label"><slot></slot></h2></template>Visible heading</probe-box>
+<probe-box id="idref-string"><template shadowrootmode="open"><section part="root" aria-labelledby="external-name"><slot></slot></section></template>Named section string</probe-box>
+<probe-box id="idref-element"><template shadowrootmode="open"><section part="root"><slot></slot></section></template>Named section reference</probe-box>
+<script>document.querySelector("#idref-element").shadowRoot.querySelector("section").ariaLabelledByElements=[document.querySelector("#external-name")];</script>

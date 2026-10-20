@@ -1,0 +1,223 @@
+{
+  "verifiedOn": "2026-09-26",
+  "bun": "1.4.2",
+  "snapshot": {
+    "version": "0.3.0",
+    "archiveSha256": "c21217e01e9179cdfe8313aaead4c5e174637799ad36d4cf7d86509cb6d4c12c",
+    "probeSha256": "091724b11114b6a2615409cf3e6c3677214a1e7e04a452c14c131c6ef246438e",
+    "scope": "Pre-attribute-reset-fix snapshot; Heading unchanged"
+  },
+  "baseline": [
+    {
+      "engine": "chromium",
+      "splitting": false,
+      "passed": false
+    },
+    {
+      "engine": "firefox",
+      "splitting": false,
+      "passed": false
+    },
+    {
+      "engine": "webkit",
+      "splitting": false,
+      "passed": false
+    },
+    {
+      "engine": "chromium",
+      "splitting": true,
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "splitting": true,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "splitting": true,
+      "passed": true
+    }
+  ],
+  "candidate": {
+    "barrelSha256": "b0569051805db3f1f7c25534057f916840055cd0d3d9067bb94e4c68a2501042",
+    "results": [
+      {
+        "engine": "chromium",
+        "splitting": false,
+        "passed": true
+      },
+      {
+        "engine": "firefox",
+        "splitting": false,
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "splitting": false,
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "splitting": true,
+        "passed": true
+      },
+      {
+        "engine": "firefox",
+        "splitting": true,
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "splitting": true,
+        "passed": true
+      }
+    ]
+  },
+  "publicInterface": {
+    "symbols": 251,
+    "values": 199,
+    "typesOnly": 52,
+    "equal": true,
+    "separateRemovals": [
+      "assetsBase",
+      "setAssetsBase"
+    ]
+  },
+  "runtimeIdentity": [
+    {
+      "engine": "chromium",
+      "splitting": false,
+      "count": 201,
+      "allNamesMatch": true,
+      "allValueOriginsMatch": true,
+      "definitionClassIdentity": true
+    },
+    {
+      "engine": "firefox",
+      "splitting": false,
+      "count": 201,
+      "allNamesMatch": true,
+      "allValueOriginsMatch": true,
+      "definitionClassIdentity": true
+    },
+    {
+      "engine": "webkit",
+      "splitting": false,
+      "count": 201,
+      "allNamesMatch": true,
+      "allValueOriginsMatch": true,
+      "definitionClassIdentity": true
+    },
+    {
+      "engine": "chromium",
+      "splitting": true,
+      "count": 201,
+      "allNamesMatch": true,
+      "allValueOriginsMatch": true,
+      "definitionClassIdentity": true
+    },
+    {
+      "engine": "firefox",
+      "splitting": true,
+      "count": 201,
+      "allNamesMatch": true,
+      "allValueOriginsMatch": true,
+      "definitionClassIdentity": true
+    },
+    {
+      "engine": "webkit",
+      "splitting": true,
+      "count": 201,
+      "allNamesMatch": true,
+      "allValueOriginsMatch": true,
+      "definitionClassIdentity": true
+    }
+  ],
+  "nativeControl": [
+    {
+      "engine": "chromium",
+      "browser": "154.0.8037.57",
+      "mode": "native",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "engine": "chromium",
+      "browser": "154.0.8037.57",
+      "mode": "single",
+      "before": "undefined",
+      "after": "function",
+      "same": true,
+      "pass": false
+    },
+    {
+      "engine": "chromium",
+      "browser": "154.0.8037.57",
+      "mode": "split",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "mode": "native",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "mode": "single",
+      "before": "undefined",
+      "after": "function",
+      "same": true,
+      "pass": false
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "mode": "split",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "engine": "webkit",
+      "browser": "26.6",
+      "mode": "native",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    },
+    {
+      "engine": "webkit",
+      "browser": "26.6",
+      "mode": "single",
+      "before": "undefined",
+      "after": "function",
+      "same": true,
+      "pass": false
+    },
+    {
+      "engine": "webkit",
+      "browser": "26.6",
+      "mode": "split",
+      "before": "function",
+      "after": "function",
+      "same": true,
+      "pass": true
+    }
+  ],
+  "coreChange": "Explicit static value/type exports in src/index.ts; no registration aliases or runtime wrappers",
+  "remaining": "Root integrated final build/archive consumer gates",
+  "upstreamContact": "Not performed"
+}

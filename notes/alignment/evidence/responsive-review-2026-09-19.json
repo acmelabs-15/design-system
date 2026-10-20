@@ -73,7 +73,9 @@
       "phase-4-checkpoint-2026-09-19.json",
       "pace-review-2026-09-19.json",
       "layout-typography-review-2026-09-19.json",
-      "layout-contract-review-2026-09-19.json"
+      "layout-contract-review-2026-09-19.json",
+      "query-stack-grid-review-2026-09-19.json",
+      "responsive-spacing-review-2026-09-20.json"
     ],
     "settled": [
       "Plain values plus responsive named objects and positional arrays",
@@ -82,12 +84,16 @@
       "Native CSS font bases for viewport and container queries",
       "Application-wide configurable transition widths with fixed Material names/order",
       "One-band, below-threshold and between-threshold responsive ranges",
-      "Between-threshold ranges include the lower and exclude the upper named threshold, using native CSS comparisons"
+      "Between-threshold ranges include the lower and exclude the upper named threshold, using native CSS comparisons",
+      "Nearest eligible or explicitly named ancestor container targeting",
+      "Application-wide breakpoint widths configured at startup; no live replacement",
+      "JSON attributes with corresponding JavaScript property values",
+      "Chakra generated-query ordering model for overlaps, independent of object key order"
     ],
     "remaining": [
-      "Serialization and skipped entries",
-      "Complete condition-name mapping, overlap precedence and per-property support",
-      "Configuration interface/lifecycle and container declaration/selection",
+      "Input validation, skipped entries and array-valued scalar ambiguity",
+      "Complete condition-name mapping, native-range ordering/equivalence details and per-property support",
+      "Startup configuration API and container declaration/target syntax",
       "Implementation verification"
     ]
   }

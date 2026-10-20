@@ -1,0 +1,51 @@
+const fixture = window as typeof window & { chart: AcmeChart; requests: unknown[] };
+import { AcmeChart } from "../chart";
+
+customElements.define("acme-chart", AcmeChart);
+import { AcmeTable } from "../../table/table";
+
+customElements.define("acme-table", AcmeTable);
+import { AcmeCollapsible } from "../../collapsible/collapsible";
+
+customElements.define("acme-collapsible", AcmeCollapsible);
+import { AcmeCollapsibleTrigger } from "../../collapsible-trigger/collapsible-trigger";
+
+customElements.define("acme-collapsible-trigger", AcmeCollapsibleTrigger);
+import { AcmeCollapsibleContent } from "../../collapsible-content/collapsible-content";
+
+customElements.define("acme-collapsible-content", AcmeCollapsibleContent);
+import { AcmeButton } from "../../button/button";
+
+customElements.define("acme-button", AcmeButton);
+import { AcmeSpinner } from "../../spinner/spinner";
+
+customElements.define("acme-spinner", AcmeSpinner);
+import { AcmeTheme } from "../../theme/theme";
+
+customElements.define("acme-theme", AcmeTheme);
+import { AcmeSparkline } from "../../sparkline/sparkline";
+
+customElements.define("acme-sparkline", AcmeSparkline);
+import { AcmeLegend } from "../../legend/legend";
+
+customElements.define("acme-legend", AcmeLegend);
+import { AcmeLegendItem } from "../../legend-item/legend-item";
+
+customElements.define("acme-legend-item", AcmeLegendItem);
+import { AcmeChevronRightIcon } from "../../../generated/icons/classes/chevron-right-icon";
+
+customElements.define("acme-chevron-right-icon", AcmeChevronRightIcon);
+document.body.innerHTML = '<acme-chart id="chart" label="Weekly requests"></acme-chart>';
+const chart = document.querySelector<AcmeChart>("#chart")!;
+chart.series = [
+  { key: "requests", label: "Requests" },
+  { key: "errors", label: "Errors" },
+];
+chart.data = [
+  { id: "one", x: "Week 1", requests: 0, errors: 2 },
+  { id: "two", x: "Week 2", requests: 10, errors: 1 },
+  { id: "three", x: "Week 3", requests: 15, errors: null },
+];
+fixture.chart = chart;
+fixture.requests = [];
+chart.addEventListener("acme-request", (e) => fixture.requests.push((e as CustomEvent<unknown>).detail));

@@ -1,0 +1,752 @@
+{
+  "researchedOn": "2026-09-22",
+  "scope": "M13 F07 Slider reference preparation. Documentation/source/figure review only; no house Slider implementation or native acceptance completion.",
+  "method": {
+    "skills": [
+      "codebase-design",
+      "firecrawl",
+      "firecrawl-scrape",
+      "chrome-devtools"
+    ],
+    "componentTabs": "All four main contents read completely. Specs recovered in an isolated Chromium browser, all six token sets expanded, default light/dark common contexts read.",
+    "source": "Pinned public Material Web source, direct behavior mixins and visual controllers read in full. Relevant Slider SCSS and both currently imported and newly published token generations read in full.",
+    "figures": "Eight Specs figures, including both measurement diagrams and both-scheme state figure, plus all four Accessibility figures inspected at full source resolution.",
+    "foundation": "Seven related foundation pages reused from the existing 2026-09-19 evidence snapshot and read fully. Their captions were read; these generic foundation illustrations were not each independently raster-inspected again."
+  },
+  "materialDesign": {
+    "pages": [
+      {
+        "tab": "overview",
+        "file": "overview.md",
+        "sections": [
+          "Availability and resources",
+          "M3 Expressive update",
+          "Previous updates",
+          "Differences from M2"
+        ],
+        "findings": [
+          "Current guidance distinguishes standard, centered and range variants, five sizes and vertical/horizontal orientation.",
+          "Value changes should take effect immediately.",
+          "The availability table marks Web available and Web Expressive unavailable. Appearance and capability of current M3 guidance cannot be inferred from Material Web source."
+        ],
+        "url": "https://m3.material.io/components/sliders/overview",
+        "capturedOn": "2026-09-22",
+        "textRead": "complete",
+        "capture": "/tmp/acme-m13-slider-reference/overview.md",
+        "sha256": "793ca22ee07be10c8eb6fea9aefb08e98535a19d0aa4e9130d13655bd805ac2d"
+      },
+      {
+        "tab": "specs",
+        "file": "specs-expanded.txt",
+        "sections": [
+          "Variants and availability table",
+          "Configurations and availability table",
+          "Common tokens in Default Light and Default Dark",
+          "All five size token sets",
+          "Anatomy",
+          "Color",
+          "States",
+          "Both measurement diagrams and complete measurement table"
+        ],
+        "findings": [
+          "Expanded common token groups include Enabled, Disabled, Hovered, Focused and Pressed, including deprecated subgroups.",
+          "Inspected all six token-set menu entries. Numeric size sets were re-read after asynchronous content settled; stale preliminary captures are excluded.",
+          "Some common shape/elevation cells are graphical. Their symbolic mappings were read in pinned current token source; both measurement figures were visually inspected."
+        ],
+        "url": "https://m3.material.io/components/sliders/specs",
+        "capturedOn": "2026-09-22",
+        "textRead": "complete",
+        "capture": "/tmp/acme-m13-slider-reference/specs-expanded.txt",
+        "sha256": "989af77685066499c3f33929b9acaffe4822d8ffb5840de55aad1f343aea92d2"
+      },
+      {
+        "tab": "guidelines",
+        "file": "guidelines.md",
+        "sections": [
+          "Usage",
+          "Anatomy: track and handle",
+          "Configurations: value, stops, orientation, inset icon, size",
+          "Behaviors: select and drag, select jump, select and arrow"
+        ],
+        "findings": [
+          "Changes are immediate; LTR values grow left-to-right and RTL reverses this. Vertical standard sliders place the minimum below the maximum.",
+          "Range sliders are recommended horizontally; vertical range is discouraged for cognitive load, not described as a runtime prohibition.",
+          "External numeric fields must track the same value and should follow the slider in Tab order.",
+          "Value indicators are optional if the value appears elsewhere. Range indicators display one handle value at a time.",
+          "Inset icons and five visual sizes are optional M3 capabilities, not approved additions to the house interface."
+        ],
+        "url": "https://m3.material.io/components/sliders/guidelines",
+        "capturedOn": "2026-09-22",
+        "textRead": "complete",
+        "capture": "/tmp/acme-m13-slider-reference/guidelines.md",
+        "sha256": "13d2c843115ada11e0c3cad45ebb78ef7cc3952fca51a986ec57ba1d4da26931"
+      },
+      {
+        "tab": "accessibility",
+        "file": "accessibility.md",
+        "sections": [
+          "Use cases",
+          "Interaction and style",
+          "Focus and navigation",
+          "Color contrast",
+          "Complete keyboard table",
+          "Labeling elements"
+        ],
+        "findings": [
+          "Focus enters on the handle; name normally matches adjacent text; native slider role and appropriate feedback are required.",
+          "Inactive-track endpoints need a 3:1 visual anchor if the track itself lacks that contrast. Stop indicators or external icons can supply the anchor.",
+          "The keyboard table lists Tab, arrows, Space plus arrows, Home and End. Space-modifier guidance differs from the approved house Shift/Page large-step behavior and from the native Web implementation.",
+          "External stepper icons have button semantics; they must not be treated as decorative if actionable."
+        ],
+        "url": "https://m3.material.io/components/sliders/accessibility",
+        "capturedOn": "2026-09-22",
+        "textRead": "complete",
+        "capture": "/tmp/acme-m13-slider-reference/accessibility.md",
+        "sha256": "4f28fcb59ee6a09161ee17e040112a4a622596f991e31af5838d9590ad6db9e7"
+      }
+    ],
+    "tokenCaptures": [
+      {
+        "file": "/tmp/acme-m13-slider-reference/specs-expanded.txt",
+        "sha256": "989af77685066499c3f33929b9acaffe4822d8ffb5840de55aad1f343aea92d2",
+        "read": "complete expanded content"
+      },
+      {
+        "file": "/tmp/acme-m13-slider-reference/tokens-dark.txt",
+        "sha256": "675ea41aaf95893e3cc9ee18fa75d30e233d4fbb184bf8580c5dbe615e071f3d",
+        "read": "complete expanded content"
+      },
+      {
+        "file": "/tmp/acme-m13-slider-reference/tokens-xsmall.txt",
+        "sha256": "27fbdac1cce3000fb8f1a09fe2b2d7736207accfab594bafae0509cfbb485bcb",
+        "read": "complete expanded content"
+      },
+      {
+        "file": "/tmp/acme-m13-slider-reference/tokens-small.txt",
+        "sha256": "01be5ce160e68db8a86f09acb11de43486e0fb2ebbd210664e5fd59b0892dae3",
+        "read": "complete expanded content"
+      },
+      {
+        "file": "/tmp/acme-m13-slider-reference/tokens-medium.txt",
+        "sha256": "224ca85ca371563d0f49e0463cf8b07cf8f12366a353f558ad93bc4635981027",
+        "read": "complete expanded content"
+      },
+      {
+        "file": "/tmp/acme-m13-slider-reference/tokens-large.txt",
+        "sha256": "5521611ca8b94923fc58b9508aee3caa0ea024687ecef51e4813409eed2902ee",
+        "read": "complete expanded content"
+      },
+      {
+        "file": "/tmp/acme-m13-slider-reference/tokens-xlarge.txt",
+        "sha256": "7d762dce649ef1f1b25d7a77bfaf7740ffa44a20b21ce7c485cfad08632e7477",
+        "read": "complete expanded content"
+      }
+    ],
+    "figures": [
+      {
+        "alt": "3 variants of sliders.",
+        "url": "https://lh3.googleusercontent.com/-UgZpnEJ6uET5STSdzpCWEydsoa9cfqtNAbzpuKX9-4jQ3d8IdU0EjRtpfgizjIX8I7XM-ETfXPEnfKi7XNZSQWJTTyKrLHjS95bsb6ZQc7smQ=s0",
+        "path": "/tmp/acme-m13-slider-reference/full-spec-0.png",
+        "sha256": "d5284ae697ccd0e278688706ba9091c4490c814257abb1d1d3bab19671bb3439",
+        "visualInspection": "complete"
+      },
+      {
+        "alt": "Orientation and size configurations of sliders.",
+        "url": "https://lh3.googleusercontent.com/PUKZpvA88_wvpKTUHRmGx0XIOjDEUAFWbO14A9AMUDyX-mu0w9qTo7ywQTKCcm8ERhdQHoohHwHt3Z-Tqo29eVw4_KyVf3pn-Z-UIcsszrYc=s0",
+        "path": "/tmp/acme-m13-slider-reference/full-spec-1.png",
+        "sha256": "2e20daf8627d2d57bdd417c053186acf78d34a885f0f6e87091e905f42b3c5ce",
+        "visualInspection": "complete"
+      },
+      {
+        "alt": "Optional anatomy configurations of sliders.",
+        "url": "https://lh3.googleusercontent.com/QFc1hXc78XHCuqhH4no1fQLDRvSzLaW1K8El5jIW1v3K3sNXjMquxEGcaq22u48Mq5kCqGRoPSCD7m8H37sAwyP_XyI6xY4AJp2GGW3e7-hs=s0",
+        "path": "/tmp/acme-m13-slider-reference/full-spec-2.png",
+        "sha256": "8e0af023d2473fd7ccfe93f7445a18838a2487386816aa26f4642dcf6dd34b39",
+        "visualInspection": "complete"
+      },
+      {
+        "alt": "6 elements of a slider.",
+        "url": "https://lh3.googleusercontent.com/Tj-xqiQbRv2zhsiRQmk6ZkdhFwQgK6qEZx40m4TMy8W7B8ulEiPsHemm1KcY6ejMeYjYFnJF2GHGnWzVq-v8yDHTRon1k-oZGg9VuIa2C4Q=s0",
+        "path": "/tmp/acme-m13-slider-reference/full-spec-3.png",
+        "sha256": "f934fa62caa561b82d6e0231f7285b4146b913b4e9f1135120133eb9a5c78789",
+        "visualInspection": "complete"
+      },
+      {
+        "alt": "9 color roles of a slider.",
+        "url": "https://lh3.googleusercontent.com/CV3PfOlQdK3A_3O8RLyu_r-GjqW7NK-qgzQmKuo5M5tWBmI6eDGdNfq7p8bTvQbP1jYCpk8WaRktgSsCrKD9Lp1vbaeCtE2einRTw6e1J7dbGA=s0",
+        "path": "/tmp/acme-m13-slider-reference/full-spec-4.png",
+        "sha256": "a545850b8c51759483c9e0454ef0511df30cd1abe95f62dcc205ea282c0e935d",
+        "visualInspection": "complete"
+      },
+      {
+        "alt": "5 states of sliders in light and dark schemes.",
+        "url": "https://lh3.googleusercontent.com/PgYCQrkBSJUOlzQMXu0BmIe16Fho4X9NdvdYYSOtE1tIl0aucZejoImkNIfdTpbPity3lWJxxg2WSoilrjogEOWTcVhxyGN0aYZl0sRWQuMpJA=s0",
+        "path": "/tmp/acme-m13-slider-reference/full-spec-5.png",
+        "sha256": "c891bed4c50d6bd7cb81165a7ff161de1900d6456ea49c8adee0bd595948069d",
+        "visualInspection": "complete"
+      },
+      {
+        "alt": "Common slider padding and size measurements.",
+        "url": "https://lh3.googleusercontent.com/WLMws1Xen6XFUKvbCJS2NM4jwTMVmQxFlh8QhTslZGI-TR2eoFPXUp-ck8i0FhO_U2cy0cW5qnNP6Qkrsu1kJ-eztl1sJ_o5lHzXSUtr4FAMPw=s0",
+        "path": "/tmp/acme-m13-slider-reference/full-spec-6.png",
+        "sha256": "41785916ec8a927a3a4f19c57e3a4191772876959496419145d72cbd44333736",
+        "visualInspection": "complete"
+      },
+      {
+        "alt": "Slider padding and size measurements at each size configuration, XS to XL.",
+        "url": "https://lh3.googleusercontent.com/FH3TsHZ1NpVLh--XKKb2ygB9rd0bgZ6ig1vGxWhQu5HOFVbk_8CXIxMAVdJnPxKj3fojh8jFh6qDqm41tD0R3YRaK0luWcktoURO5RZfBsuO=s0",
+        "path": "/tmp/acme-m13-slider-reference/full-spec-7.png",
+        "sha256": "16bcf27d8af33c9c4b2b1df12b87c88293ecd731bf83787d7ffa3c98122f7fab",
+        "visualInspection": "complete"
+      },
+      {
+        "alt": "The inactive track has contrast below 3:1 with the background. The stop indicator is above 3:1. Slider is accessible.",
+        "url": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Flx1s6sg3-3.png?alt=media&token=fe50b51b-a15f-496e-b0ff-7b65ef7598f4",
+        "path": "/tmp/acme-m13-slider-reference/accessibility-full-0.png",
+        "sha256": "a8a209f1db03385aee10d08eee9053ed4f257170407be766d3fb1f45b3a80f5c",
+        "visualInspection": "complete"
+      },
+      {
+        "alt": "The inactive track has contrast ratio below 3:1 with the background. The icon is above 3:1. The slider is accessible.",
+        "url": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Flx1s73wl-4.png?alt=media&token=f00826a6-95c4-46d0-aa63-2da4e4b7759c",
+        "path": "/tmp/acme-m13-slider-reference/accessibility-full-1.png",
+        "sha256": "634f0a500a94751a2d05233424b9b62182c5068a4fe16097b802deb9dc308bb7",
+        "visualInspection": "complete"
+      },
+      {
+        "alt": "Annotated aria tags of a slider.",
+        "url": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm0o6wp1l-5.png?alt=media&token=99be26c8-7f4d-4336-8b83-f50fbf4f56b3",
+        "path": "/tmp/acme-m13-slider-reference/accessibility-full-2.png",
+        "sha256": "014534ba70348166c34954a085dc4a2da3c78cbbdc08ee34fc75505700454009",
+        "visualInspection": "complete"
+      },
+      {
+        "alt": "Annotated aria tags of a slider with stepper icons.",
+        "url": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm3601h6w-6.png?alt=media&token=9855912f-4437-40d5-aa5a-6662501a6d06",
+        "path": "/tmp/acme-m13-slider-reference/accessibility-full-3.png",
+        "sha256": "7f1c6d45063e575f30c68cd356896177639fc9c5485f071db628f42689da83e6",
+        "visualInspection": "complete"
+      }
+    ],
+    "relatedGuidance": [
+      {
+        "url": "https://m3.material.io/foundations/layout/grids-spacing/density",
+        "sourceRecord": "notes/alignment/evidence/foundation-followup-2026-09-19.json",
+        "snapshotDate": "2026-09-19",
+        "read": "complete main text, tables and figure captions",
+        "sha256": "e5fd27d84e40c3006a3fe954dcfb65134594f7d48a3952800237367fca3c5e1c"
+      },
+      {
+        "url": "https://m3.material.io/foundations/interaction/gestures",
+        "sourceRecord": "notes/alignment/evidence/foundation-followup-2026-09-19.json",
+        "snapshotDate": "2026-09-19",
+        "read": "complete main text, tables and figure captions",
+        "sha256": "9c95bdca7ef5408fa606e5de662ac9f288b70f307e8fb36fe063d0e1b8faffe0"
+      },
+      {
+        "url": "https://m3.material.io/foundations/interaction/inputs",
+        "sourceRecord": "notes/alignment/evidence/foundation-followup-2026-09-19.json",
+        "snapshotDate": "2026-09-19",
+        "read": "complete main text, tables and figure captions",
+        "sha256": "9022665d8e9a50f89c4d6c35502d00b48ea3e9ace49dd0387fd78156c00c2ccf"
+      },
+      {
+        "url": "https://m3.material.io/foundations/interaction/selection",
+        "sourceRecord": "notes/alignment/evidence/foundation-followup-2026-09-19.json",
+        "snapshotDate": "2026-09-19",
+        "read": "complete main text, tables and figure captions",
+        "sha256": "5f4641df8c33a67a127be3e3085d857bcc1510c631c396d13ac517ea047b2fe7"
+      },
+      {
+        "url": "https://m3.material.io/foundations/interaction/states/overview",
+        "sourceRecord": "notes/alignment/evidence/foundation-followup-2026-09-19.json",
+        "snapshotDate": "2026-09-19",
+        "read": "complete main text, tables and figure captions",
+        "sha256": "f14ca1e728feb3c9697cbb3a3bffe8119c0169608b46c5cd9a3f0ff8cefbe7b4"
+      },
+      {
+        "url": "https://m3.material.io/foundations/interaction/states/applying-states",
+        "sourceRecord": "notes/alignment/evidence/foundation-followup-2026-09-19.json",
+        "snapshotDate": "2026-09-19",
+        "read": "complete main text, tables and figure captions",
+        "sha256": "aba7aef0ad09d9ecf0869bcbbbc72b5e175cc6f1ae6e3b42da6d8eb74d974aa3"
+      },
+      {
+        "url": "https://m3.material.io/foundations/interaction/states/state-layers",
+        "sourceRecord": "notes/alignment/evidence/foundation-followup-2026-09-19.json",
+        "snapshotDate": "2026-09-19",
+        "read": "complete main text, tables and figure captions",
+        "sha256": "7a0d28370e81315006bd00e517dfcaa5262d328876da40d61934d5a5beec5cf1"
+      }
+    ],
+    "measurements": {
+      "units": "Reference dp from M3 Specs; these are not silently converted to house CSS pixels or rem.",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "trackHeights": [
+        16,
+        24,
+        40,
+        56,
+        96
+      ],
+      "handleHeightsFromTableAndDiagram": [
+        44,
+        44,
+        52,
+        68,
+        108
+      ],
+      "handleHeightsFromExpandedSizeTokens": [
+        44,
+        44,
+        44,
+        68,
+        108
+      ],
+      "handleWidth": 4,
+      "focusedAndPressedHandleWidth": 2,
+      "trackOuterCornerSizes": [
+        8,
+        8,
+        12,
+        16,
+        28
+      ],
+      "insetIconSizes": [
+        null,
+        null,
+        24,
+        24,
+        32
+      ],
+      "labelContainer": {
+        "height": 44,
+        "width": 48
+      },
+      "commonFigure": {
+        "trackHeight": 16,
+        "handleTrackGap": 6,
+        "stopDiameter": 4,
+        "stopCenterInset": 6,
+        "labelHorizontalPadding": 16,
+        "labelVerticalPadding": 12,
+        "labelHandleGap": 4
+      }
+    },
+    "conflicts": [
+      {
+        "subject": "Medium handle height",
+        "facts": [
+          "Measurement table and diagram show 52dp.",
+          "Expanded Medium token shows 44dp.",
+          "Pinned latest Web token generation 34.0.21 also declares 44px."
+        ],
+        "resolution": "Recorded as an unresolved reference inconsistency. No Medium Material size or parity claim is adopted."
+      },
+      {
+        "subject": "Value indicator spacing",
+        "facts": [
+          "Common measurement figure shows 4 between indicator and handle.",
+          "Common token value-indicator active bottom-space reads 12dp."
+        ],
+        "resolution": "Different measured relationships may be involved; no equivalence or replacement house constant is inferred."
+      },
+      {
+        "subject": "Large inactive track token display",
+        "facts": [
+          "Expanded UI labels the 56dp entry as inactive track trailing shape; a second trailing-shape entry is 16dp.",
+          "Pinned current token source separates inactive track height 56px from trailing shape 16px."
+        ],
+        "resolution": "Use source to distinguish the two values; preserve the UI label discrepancy."
+      }
+    ]
+  },
+  "materialWeb": {
+    "sha": "849b4dce877863752bbfd62f74f52829b2430868",
+    "date": "2026-09-22T17:32:52Z",
+    "url": "https://github.com/material-components/material-web/commit/849b4dce877863752bbfd62f74f52829b2430868",
+    "sourceFiles": [
+      {
+        "path": "slider/slider.ts",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/slider/slider.ts",
+        "sha256": "3cdbb522e0e0bd68d0fe70acd2145866f1f1602a2029ea505f8c1fbaecbb1e6f",
+        "lines": 41,
+        "read": "complete"
+      },
+      {
+        "path": "slider/internal/slider.ts",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/slider/internal/slider.ts",
+        "sha256": "c2b843187919a751d68ed138298b5c8cd8cb2a27f1da4b03a63c13ca0aa1684e",
+        "lines": 799,
+        "read": "complete"
+      },
+      {
+        "path": "slider/_slider.scss",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/slider/_slider.scss",
+        "sha256": "919f43f153e897633fd04d51e9fae12baf1341ed65deaee6278ccce3d3b80045",
+        "lines": 7,
+        "read": "complete"
+      },
+      {
+        "path": "slider/internal/_slider.scss",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/slider/internal/_slider.scss",
+        "sha256": "b5b7fb56a0fd0e5e791b373e0ed146d4191397ab888200b06153d99aaa176e75",
+        "lines": 521,
+        "read": "complete"
+      },
+      {
+        "path": "slider/internal/slider-styles.scss",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/slider/internal/slider-styles.scss",
+        "sha256": "d7d3f51d8edbaa60947152c781d3f7e54a6f3fd38e968491f7db6f15821a2e36",
+        "lines": 9,
+        "read": "complete"
+      },
+      {
+        "path": "slider/internal/forced-colors-styles.scss",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/slider/internal/forced-colors-styles.scss",
+        "sha256": "85d751d3d74440bcba52deff954b73a31e88c6093a3deb95cd0c281a62cd0585",
+        "lines": 89,
+        "read": "complete"
+      },
+      {
+        "path": "docs/components/slider.md",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/docs/components/slider.md",
+        "sha256": "1cb1a823bd1d4bd4377eb38b3ed8dd7f3650c0efdb7e70a11cd5be8d5446ad16",
+        "lines": 220,
+        "read": "complete"
+      },
+      {
+        "path": "labs/behaviors/form-associated.ts",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/labs/behaviors/form-associated.ts",
+        "sha256": "6ab04f94acbf168175c1b202a2c796e7a7b8848bf0623c9bd47200951d55f61d",
+        "lines": 302,
+        "read": "complete"
+      },
+      {
+        "path": "labs/behaviors/element-internals.ts",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/labs/behaviors/element-internals.ts",
+        "sha256": "9d0ef7d78da90ee3e26abaeae6bfeb30770cb53ea4302258b288bc9abae22867",
+        "lines": 80,
+        "read": "complete"
+      },
+      {
+        "path": "labs/behaviors/mixin.ts",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/labs/behaviors/mixin.ts",
+        "sha256": "9ca777b07e5143e6eeb213377644672dbc3d860a63c00ac766b47b18c0c24950",
+        "lines": 64,
+        "read": "complete"
+      },
+      {
+        "path": "internal/aria/aria.ts",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/internal/aria/aria.ts",
+        "sha256": "f70dc0bbce74c9bf19e0b389965a29ee64c0e528577e2f05adaadf015b79d8dc",
+        "lines": 293,
+        "read": "complete"
+      },
+      {
+        "path": "internal/aria/delegate.ts",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/internal/aria/delegate.ts",
+        "sha256": "016e6c2e8e9f54dd427f4669d8949b6cddf1f258055f98e5a0bc291355215fd5",
+        "lines": 207,
+        "read": "complete"
+      },
+      {
+        "path": "internal/events/form-label-activation.ts",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/internal/events/form-label-activation.ts",
+        "sha256": "c8dd5e81e9ee77f74cf0c6a2d507adaf4b762c6e0feb2dfcdc7d88954e3fdd6b",
+        "lines": 100,
+        "read": "complete"
+      },
+      {
+        "path": "internal/events/redispatch-event.ts",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/internal/events/redispatch-event.ts",
+        "sha256": "d3fd78a05a666070255c8560bd43df1069bbfcc3abc04533672f9f165f08f30b",
+        "lines": 43,
+        "read": "complete"
+      },
+      {
+        "path": "focus/md-focus-ring.ts",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/focus/md-focus-ring.ts",
+        "sha256": "4af7edc09eca4b6e006f649d09e36fa42a61c426c7f5af0d13706fbab3bf5141",
+        "lines": 29,
+        "read": "complete"
+      },
+      {
+        "path": "focus/internal/focus-ring.ts",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/focus/internal/focus-ring.ts",
+        "sha256": "472e40745c6da3bb1304f70154d8ce7d425b989b5e779dbd33074c1aad68eb00",
+        "lines": 118,
+        "read": "complete"
+      },
+      {
+        "path": "ripple/ripple.ts",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/ripple/ripple.ts",
+        "sha256": "a813754a662bee965f44b13f485f40499fefb5334b4898f437d5e4c297bbbf72",
+        "lines": 36,
+        "read": "complete"
+      },
+      {
+        "path": "ripple/internal/ripple.ts",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/ripple/internal/ripple.ts",
+        "sha256": "2cbd16b8f93b0f54b4a02f820277b2c28ee647ccddc92fda21de213130f9525e",
+        "lines": 482,
+        "read": "complete"
+      },
+      {
+        "path": "elevation/elevation.ts",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/elevation/elevation.ts",
+        "sha256": "ca18b8712674ab6bac0fd80cf8881adaa19cdfeec81eccc236edd76e0e00caf1",
+        "lines": 31,
+        "read": "complete"
+      },
+      {
+        "path": "elevation/internal/elevation.ts",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/elevation/internal/elevation.ts",
+        "sha256": "e82751384b926e9b6d0490511b6242ef6a4ae432e3fd4735cf999bf16f1c66a5",
+        "lines": 24,
+        "read": "complete"
+      },
+      {
+        "path": "internal/controller/attachable-controller.ts",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/internal/controller/attachable-controller.ts",
+        "sha256": "ea0bb3c0d030cd8cbf6fac6845901d8c2baa22752101b0b0ac6591ec59076fef",
+        "lines": 205,
+        "read": "complete"
+      },
+      {
+        "path": "internal/motion/animation.ts",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/internal/motion/animation.ts",
+        "sha256": "cfdcc9dba46853a59a1555703f0bdd30f394bda02899791990d5adebe2ee1dd2",
+        "lines": 127,
+        "read": "complete"
+      },
+      {
+        "path": "tokens/_md-comp-slider.scss",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/tokens/_md-comp-slider.scss",
+        "sha256": "21e325ebb0c36d816195f446e8ef501ade60f38b39f6bd848e71880883c26ad0",
+        "lines": 118,
+        "read": "complete"
+      },
+      {
+        "path": "tokens/versions/v0_192/_md-comp-slider.scss",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/tokens/versions/v0_192/_md-comp-slider.scss",
+        "sha256": "e04df7d3ec4ee117b3e14311b9a65ad480f3c6bbad131f73fa473e08101874db",
+        "lines": 119,
+        "read": "complete"
+      },
+      {
+        "path": "tokens/versions/latest/sass/_md-comp-slider.scss",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/tokens/versions/latest/sass/_md-comp-slider.scss",
+        "sha256": "acadd62a3e6726e72a6922533cf71d03ae18ee2460737608e804fb5098f76fd2",
+        "lines": 308,
+        "read": "complete"
+      },
+      {
+        "path": "tokens/versions/latest/sass/_md-comp-slider-xsmall.scss",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/tokens/versions/latest/sass/_md-comp-slider-xsmall.scss",
+        "sha256": "a85fc31748674eaf6c2b76646e2676046ba7b0b62c50d3ce70c291e0b0556653",
+        "lines": 28,
+        "read": "complete"
+      },
+      {
+        "path": "tokens/versions/latest/sass/_md-comp-slider-small.scss",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/tokens/versions/latest/sass/_md-comp-slider-small.scss",
+        "sha256": "d1640c3af6e84f3ddcb36ea6eb7a788a1292979696fa1d225621810852c24ae0",
+        "lines": 28,
+        "read": "complete"
+      },
+      {
+        "path": "tokens/versions/latest/sass/_md-comp-slider-medium.scss",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/tokens/versions/latest/sass/_md-comp-slider-medium.scss",
+        "sha256": "6e56270123eca6ccf0bb00c1842a0adefa4704406cf52c69fcc2847b0e017fc5",
+        "lines": 32,
+        "read": "complete"
+      },
+      {
+        "path": "tokens/versions/latest/sass/_md-comp-slider-large.scss",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/tokens/versions/latest/sass/_md-comp-slider-large.scss",
+        "sha256": "0b650c088a931d7d7d66d691344026f68c13a4a7f5bfca76ef15a10fc1d2617d",
+        "lines": 32,
+        "read": "complete"
+      },
+      {
+        "path": "tokens/versions/latest/sass/_md-comp-slider-xlarge.scss",
+        "url": "https://github.com/material-components/material-web/blob/849b4dce877863752bbfd62f74f52829b2430868/tokens/versions/latest/sass/_md-comp-slider-xlarge.scss",
+        "sha256": "5ed23497d3ecde8601fa6363052e14a566a76f2bc7b3decd76ea1c55a45bbd6c",
+        "lines": 32,
+        "read": "complete"
+      }
+    ],
+    "sourceFilesRead": 30,
+    "validatorCoverage": {
+      "sliderValidatorPresent": false,
+      "constraintValidationMixinUsed": false,
+      "proof": "Slider imports form-associated and element-internals mixins but no validator or constraint-validation module. The reviewed tree lists Checkbox, Radio, Select and Text Field validators; native range inputs provide Slider snapping/sanitization.",
+      "unrelatedValidatorsReviewed": false
+    },
+    "findings": [
+      {
+        "files": [
+          "slider/internal/slider.ts"
+        ],
+        "finding": "One scalar or two range values; no orientation property, arbitrary-length value array or minimum-gap setting. Native range inputs are the actual pointer/key interaction targets, separate from visual handles."
+      },
+      {
+        "files": [
+          "slider/internal/slider.ts"
+        ],
+        "finding": "Native min/max remain global for geometry, while aria-valuemin/max expose neighboring values. The implementation clamps crossing and switches coincident pointer targets when needed; keyboard interaction cannot flip targets."
+      },
+      {
+        "files": [
+          "slider/internal/slider.ts"
+        ],
+        "finding": "Reads valueAsNumber after rendering to align drawn handles to native snapping. Unset single value derives from the browser range value; unset pair defaults near one-third/two-thirds. These defaults differ from house [0]."
+      },
+      {
+        "files": [
+          "slider/internal/slider.ts",
+          "internal/events/redispatch-event.ts"
+        ],
+        "finding": "Passes live native input and redispatches noncomposed change. Suppresses unchanged/clamped keyboard changes. Firefox pointerup ordering waits one animation frame; Safari release explicitly focuses input."
+      },
+      {
+        "files": [
+          "labs/behaviors/form-associated.ts"
+        ],
+        "finding": "setFormValue runs synchronously from requestUpdate. name/disabled use synchronous attributes. Native associated labels are exposed as NodeList. formDisabledCallback writes disabled, which is not the house separation of authored and platform-disabled state."
+      },
+      {
+        "files": [
+          "slider/internal/slider.ts"
+        ],
+        "finding": "Serializes a range using FormData and reset values from attributes. Restores range entry arrays versus scalar state. This is a source comparison, not proof that all browsers restore the same state shape."
+      },
+      {
+        "files": [
+          "internal/aria/delegate.ts"
+        ],
+        "finding": "Explicitly does not support ID-reference attributes such as aria-labelledby or aria-controls. Preserve the house semantic element-reference bridge rather than copying this limitation."
+      },
+      {
+        "files": [
+          "slider/internal/slider.ts"
+        ],
+        "finding": "Slider action logic has no pointercancel/lostpointercapture handler of its own. Browser-native interaction and Ripple cancellation do not prove the full house canceled-gesture commit contract."
+      },
+      {
+        "files": [
+          "focus/internal/focus-ring.ts",
+          "internal/controller/attachable-controller.ts",
+          "ripple/internal/ripple.ts"
+        ],
+        "finding": "FocusRing follows native focus-visible and attaches by control/for. Ripple filters initiating primary pointer, distinguishes touch delay, handles cancellation, and uses Web Animations with timed easing. Controllers remove control listeners on detach; this is not house Lit spring behavior."
+      },
+      {
+        "files": [
+          "slider/internal/_slider.scss",
+          "slider/internal/forced-colors-styles.scss"
+        ],
+        "finding": "Overlaid transparent range inputs receive pointer events; midpoint clipping chooses the nearer range endpoint. Includes RTL clipping, native-engine thumb geometry, forced-colors-specific tracks/ticks, and reduced-motion label treatment."
+      },
+      {
+        "files": [
+          "tokens/_md-comp-slider.scss",
+          "tokens/versions/v0_192/_md-comp-slider.scss"
+        ],
+        "finding": "Actually imported component tokens are v0.192: 4px tracks, 20px circular handle, 40px state layer and 28px value label container. Source CSS gives focus ring 48px. New latest token files are not automatically used by this component."
+      },
+      {
+        "files": [
+          "tokens/versions/latest/sass/_md-comp-slider.scss"
+        ],
+        "finding": "Published token generation 34.0.21 contains current thin handles, thicker tracks, size sets and deprecation flags. It is token availability, not a shipped Expressive Slider implementation."
+      }
+    ]
+  },
+  "otherReferences": {
+    "radix": {
+      "sha": "f7ecd5ab16f5e1e820eb5786a1419a98a2d594ae",
+      "date": "2026-07-31T21:03:26Z",
+      "url": "https://github.com/radix-ui/primitives/blob/f7ecd5ab16f5e1e820eb5786a1419a98a2d594ae/packages/react/slider/src/slider.tsx",
+      "sha256": "ef0b3fe04c19ff7379e0f6ea41ee22e347e5888a0bc53c87d3497d23bb588046",
+      "read": "complete Slider source; public docs API/examples/keyboard/caveats",
+      "docs": "https://www.radix-ui.com/primitives/docs/components/slider",
+      "findings": [
+        "Supports both orientations, RTL, arrays, step and minimum gap. preserveThumbOrder clamps between neighbors; default otherwise sorts values.",
+        "Uses pointer capture, nearest-value selection, changed-gesture commit and immediate keyboard commit. No pointercancel handler exists in the reviewed implementation.",
+        "Shift/Page moves ten steps; Home moves first value and End last value in the root implementation. These details are comparison evidence, not automatic house behavior.",
+        "Semantic thumbs use slider roles; hidden form inputs are separate. Native house range semantics and one root submission owner remain the proposed approach."
+      ]
+    },
+    "chakra": {
+      "url": "https://www.chakra-ui.com/docs/components/slider",
+      "docsVersionDisplayed": "3.37.0",
+      "read": "complete main documentation content and prop table during preceding preparation turn",
+      "findings": [
+        "Array values produce range sliders. Default collision behavior none prevents passing; push and swap are opt-in.",
+        "Documents separate live and end callbacks, per-thumb accessible labels, orientation, minimum gaps and composed controlled state.",
+        "largeStep defaults to ten times step; retain approved F07 largeStep=10 unless the migration explicitly records a correction."
+      ]
+    },
+    "chakraPro": {
+      "collectionSnapshot": "2026-09-19",
+      "examples": [
+        {
+          "file": "property-panel-02/fields.tsx",
+          "finding": "NumberField composes Slider and NumberInput using one application-level controlled value. NumberInput owns the supplied name. The example is composition evidence, not a complete partial-number or native-form specification.",
+          "localPath": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/property-panel-02/fields.tsx",
+          "sha256": "45628473ff2eb7edcd1fc596b1234e57134660aa29fa0cc980e30c5e4856d69a",
+          "read": "complete source file",
+          "privateSourceCopiedIntoRepository": false
+        },
+        {
+          "file": "ai-studio-playground/model-parameters.tsx",
+          "finding": "Uses single-thumb arrays with numeric min/max/step, adjacent label/value display and ordinary Slider anatomy for independent parameters.",
+          "localPath": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/ai-studio-playground/model-parameters.tsx",
+          "sha256": "7fecb3d8cde4bd60343467ff1f8a73fe11c512d23ee844422b0363f0f879e291",
+          "read": "complete source file",
+          "privateSourceCopiedIntoRepository": false
+        }
+      ]
+    }
+  },
+  "implementationImplications": [
+    "Keep the approved single readonly numeric-array interface, native forms, TanStack ownership, Lit rendering, generated CSS and existing house motion roles.",
+    "Use thumbLabels for the configured per-thumb array so native labels remains NodeList; this is the delegated naming correction, to be persisted by the main implementation task.",
+    "Use NativeFormController for immediate submission, reset, restoration and disabled state; retain native range controls for platform semantics. Do not replicate Material renderValue shadow state as a second canonical value.",
+    "Preserve thumb identity and clamp between neighbors plus the gap. No new public push/swap/centered/inset-icon/stops/five-size interface is implied by reference coverage.",
+    "F07 standard and range behaviors remain distinct from Material Expressive appearance. Material discourages vertical ranges; recommend horizontal examples without silently deleting approved vertical capability.",
+    "Cancellation must be designed and tested explicitly. Proposed house rule is retain last live value, clear interaction, no commit; it is a delegated engineering choice, not claimed Material parity.",
+    "Preserve logical Tab order with optional numeric-input recipes, actual slider names/value text, endpoint contrast, visible focus, disabled behavior, forced colors and reduced motion."
+  ],
+  "acceptanceRequired": [
+    "Source and compiled Chromium/Firefox/WebKit: immediate repeated FormData on assignment and inside input/change handlers; reset/default/restore/form reassociation and disabled Fieldset.",
+    "One/two/three thumbs with stable identity, names, focus, dynamic bounds, minimum gap, fractional minima, decimal/scientific steps and nonaligned maximum.",
+    "Horizontal LTR/RTL and vertical real-pointer movement; track jump, coincident thumb selection, captured movement outside bounds, competing pointer ignored.",
+    "Cancellation, lost capture, disable, disconnect, blur and programmatic replacement end the gesture with no later edits or false commit.",
+    "Native and custom keyboard paths emit one live/commit sequence, no duplicate change, and preserve Tab; actual accessibility-tree naming/value/orientation; external label activation.",
+    "HTML/Lit/React author-slot identity, Number Input composition, exactly one submitted value owner, light/dark and forced-color visual checks, reduced-motion cleanup."
+  ],
+  "limits": [
+    "No house Slider source implementation, generator, build, native acceptance suite or assistive-technology certification was performed by this reference task.",
+    "Reference documentation videos were read by surrounding behavior text/captions, not measured frame by frame. No timing or motion-parity claim follows.",
+    "Specs and Accessibility figures were visually inspected; other illustrative examples were read with their descriptions. The related foundation snapshot is dated 2026-09-19 and was not freshly fetched.",
+    "Only Default Light and Default Dark common token contexts were expanded. Medium/high-contrast token-context permutations were not selected; forced-colors source was inspected separately.",
+    "General Lit runtime internals and the entire Sass system-token dependency graph were not audited. Slider behavior mixins, visual controllers, Slider styles and both relevant Slider token generations were fully read.",
+    "Material source behavior is not treated as browser proof. In particular native cancellation, focus, snapping, restoration and disabled semantics still need the listed acceptance cases.",
+    "Private Pro source stays outside the repository; the record contains paths, hashes and findings only."
+  ],
+  "retrievalNotes": [
+    "Initial Firecrawl Specs response contained only a navigation fragment and is excluded from coverage. Isolated Chromium supplied the complete page and expanded token sets.",
+    "Chrome DevTools MCP could not start because its profile was already in use. The existing browser was not stopped; a separate temporary Playwright Chromium profile was used.",
+    "Early asynchronous token captures were one selection behind and were excluded. Final tokens-xsmall/small/medium/large/xlarge captures wait for the selected token content.",
+    "Lazy figure placeholders prevented some element screenshots. Full-resolution public source images were inspected separately; their URLs and content hashes are recorded."
+  ]
+}

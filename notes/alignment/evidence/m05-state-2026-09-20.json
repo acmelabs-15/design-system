@@ -1,0 +1,1477 @@
+{
+  "date": "2026-09-20",
+  "phase": "M05-01",
+  "status": "implemented and independently reviewed",
+  "scope": "Extend existing atomState for canonical public values and named Lit notification; family property migrations remain with each family.",
+  "implementation": {
+    "canonical": "TanStackStoreAtom and its atom remain the writable value owner",
+    "bookkeeping": "Previous notified value is retained only to populate Lit changedProperties, not to supply current getters",
+    "lifecycle": "One official render subscription and one named observer per binding; both disposed on disconnect; shared host connection update remains deduplicated",
+    "metadata": "Ordinary Lit property metadata registers before atomState through decorator order and noAccessor:true",
+    "dependencyPatch": false
+  },
+  "checks": {
+    "focused": "25 tests;96 assertions;pass",
+    "fullSuite": "604 tests;7596 assertions;86 files;pass",
+    "strictTypecheck": "Helper/public fixture/adjacent tests pass",
+    "manifest": "Base/default and inherited renamed attribute types/defaults match;7 manifest tests pass",
+    "baselineBrowser": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "mode": "ordinary",
+          "results": [
+            {
+              "name": "initial reflected defaults absent",
+              "ok": true
+            },
+            {
+              "name": "same-default explicit assignment reflects",
+              "ok": true,
+              "detail": "0"
+            },
+            {
+              "name": "public getter and derived store agree synchronously",
+              "ok": true
+            },
+            {
+              "name": "named change and reflection",
+              "ok": true,
+              "detail": [
+                "count"
+              ]
+            },
+            {
+              "name": "attribute removal restores default",
+              "ok": true,
+              "detail": 0
+            },
+            {
+              "name": "number and boolean attribute conversion",
+              "ok": true
+            },
+            {
+              "name": "canonical state independent of rendering gate",
+              "ok": true
+            },
+            {
+              "name": "detached property write and reconnect",
+              "ok": true
+            },
+            {
+              "name": "shared atom through accessor reflects",
+              "ok": false
+            },
+            {
+              "name": "external shared atom write renders",
+              "ok": true
+            },
+            {
+              "name": "external shared atom write reflects",
+              "ok": false,
+              "detail": {
+                "attribute": null,
+                "changed": []
+              }
+            },
+            {
+              "name": "inherited metadata preserves atom accessor",
+              "ok": true
+            },
+            {
+              "name": "write before first connection preserves class default",
+              "ok": true
+            },
+            {
+              "name": "early write does not replace reset default",
+              "ok": true
+            },
+            {
+              "name": "external shared write while detached reconciles named reflection",
+              "ok": false
+            },
+            {
+              "name": "shared change before first connection",
+              "ok": false
+            },
+            {
+              "name": "pre-upgrade property wins over initial attribute",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade assignment preserves default",
+              "ok": true
+            },
+            {
+              "name": "same NaN does not report a named change",
+              "ok": true
+            },
+            {
+              "name": "signed zero keeps canonical value and named change",
+              "ok": true
+            },
+            {
+              "name": "batched external writes reflect final value",
+              "ok": false
+            },
+            {
+              "name": "subclass converter and renamed attribute",
+              "ok": true
+            },
+            {
+              "name": "subclass reflection uses subclass converter",
+              "ok": true
+            },
+            {
+              "name": "subclass converter removal restores default",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "mode": "compiled",
+          "results": [
+            {
+              "name": "initial reflected defaults absent",
+              "ok": true
+            },
+            {
+              "name": "same-default explicit assignment reflects",
+              "ok": true,
+              "detail": "0"
+            },
+            {
+              "name": "public getter and derived store agree synchronously",
+              "ok": true
+            },
+            {
+              "name": "named change and reflection",
+              "ok": true,
+              "detail": [
+                "count"
+              ]
+            },
+            {
+              "name": "attribute removal restores default",
+              "ok": true,
+              "detail": 0
+            },
+            {
+              "name": "number and boolean attribute conversion",
+              "ok": true
+            },
+            {
+              "name": "canonical state independent of rendering gate",
+              "ok": true
+            },
+            {
+              "name": "detached property write and reconnect",
+              "ok": true
+            },
+            {
+              "name": "shared atom through accessor reflects",
+              "ok": false
+            },
+            {
+              "name": "external shared atom write renders",
+              "ok": true
+            },
+            {
+              "name": "external shared atom write reflects",
+              "ok": false,
+              "detail": {
+                "attribute": null,
+                "changed": []
+              }
+            },
+            {
+              "name": "inherited metadata preserves atom accessor",
+              "ok": true
+            },
+            {
+              "name": "write before first connection preserves class default",
+              "ok": true
+            },
+            {
+              "name": "early write does not replace reset default",
+              "ok": true
+            },
+            {
+              "name": "external shared write while detached reconciles named reflection",
+              "ok": false
+            },
+            {
+              "name": "shared change before first connection",
+              "ok": false
+            },
+            {
+              "name": "pre-upgrade property wins over initial attribute",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade assignment preserves default",
+              "ok": true
+            },
+            {
+              "name": "same NaN does not report a named change",
+              "ok": true
+            },
+            {
+              "name": "signed zero keeps canonical value and named change",
+              "ok": true
+            },
+            {
+              "name": "batched external writes reflect final value",
+              "ok": false
+            },
+            {
+              "name": "subclass converter and renamed attribute",
+              "ok": true
+            },
+            {
+              "name": "subclass reflection uses subclass converter",
+              "ok": true
+            },
+            {
+              "name": "subclass converter removal restores default",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "mode": "ordinary",
+          "results": [
+            {
+              "name": "initial reflected defaults absent",
+              "ok": true
+            },
+            {
+              "name": "same-default explicit assignment reflects",
+              "ok": true,
+              "detail": "0"
+            },
+            {
+              "name": "public getter and derived store agree synchronously",
+              "ok": true
+            },
+            {
+              "name": "named change and reflection",
+              "ok": true,
+              "detail": [
+                "count"
+              ]
+            },
+            {
+              "name": "attribute removal restores default",
+              "ok": true,
+              "detail": 0
+            },
+            {
+              "name": "number and boolean attribute conversion",
+              "ok": true
+            },
+            {
+              "name": "canonical state independent of rendering gate",
+              "ok": true
+            },
+            {
+              "name": "detached property write and reconnect",
+              "ok": true
+            },
+            {
+              "name": "shared atom through accessor reflects",
+              "ok": false
+            },
+            {
+              "name": "external shared atom write renders",
+              "ok": true
+            },
+            {
+              "name": "external shared atom write reflects",
+              "ok": false,
+              "detail": {
+                "attribute": null,
+                "changed": []
+              }
+            },
+            {
+              "name": "inherited metadata preserves atom accessor",
+              "ok": true
+            },
+            {
+              "name": "write before first connection preserves class default",
+              "ok": true
+            },
+            {
+              "name": "early write does not replace reset default",
+              "ok": true
+            },
+            {
+              "name": "external shared write while detached reconciles named reflection",
+              "ok": false
+            },
+            {
+              "name": "shared change before first connection",
+              "ok": false
+            },
+            {
+              "name": "pre-upgrade property wins over initial attribute",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade assignment preserves default",
+              "ok": true
+            },
+            {
+              "name": "same NaN does not report a named change",
+              "ok": true
+            },
+            {
+              "name": "signed zero keeps canonical value and named change",
+              "ok": true
+            },
+            {
+              "name": "batched external writes reflect final value",
+              "ok": false
+            },
+            {
+              "name": "subclass converter and renamed attribute",
+              "ok": true
+            },
+            {
+              "name": "subclass reflection uses subclass converter",
+              "ok": true
+            },
+            {
+              "name": "subclass converter removal restores default",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "mode": "compiled",
+          "results": [
+            {
+              "name": "initial reflected defaults absent",
+              "ok": true
+            },
+            {
+              "name": "same-default explicit assignment reflects",
+              "ok": true,
+              "detail": "0"
+            },
+            {
+              "name": "public getter and derived store agree synchronously",
+              "ok": true
+            },
+            {
+              "name": "named change and reflection",
+              "ok": true,
+              "detail": [
+                "count"
+              ]
+            },
+            {
+              "name": "attribute removal restores default",
+              "ok": true,
+              "detail": 0
+            },
+            {
+              "name": "number and boolean attribute conversion",
+              "ok": true
+            },
+            {
+              "name": "canonical state independent of rendering gate",
+              "ok": true
+            },
+            {
+              "name": "detached property write and reconnect",
+              "ok": true
+            },
+            {
+              "name": "shared atom through accessor reflects",
+              "ok": false
+            },
+            {
+              "name": "external shared atom write renders",
+              "ok": true
+            },
+            {
+              "name": "external shared atom write reflects",
+              "ok": false,
+              "detail": {
+                "attribute": null,
+                "changed": []
+              }
+            },
+            {
+              "name": "inherited metadata preserves atom accessor",
+              "ok": true
+            },
+            {
+              "name": "write before first connection preserves class default",
+              "ok": true
+            },
+            {
+              "name": "early write does not replace reset default",
+              "ok": true
+            },
+            {
+              "name": "external shared write while detached reconciles named reflection",
+              "ok": false
+            },
+            {
+              "name": "shared change before first connection",
+              "ok": false
+            },
+            {
+              "name": "pre-upgrade property wins over initial attribute",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade assignment preserves default",
+              "ok": true
+            },
+            {
+              "name": "same NaN does not report a named change",
+              "ok": true
+            },
+            {
+              "name": "signed zero keeps canonical value and named change",
+              "ok": true
+            },
+            {
+              "name": "batched external writes reflect final value",
+              "ok": false
+            },
+            {
+              "name": "subclass converter and renamed attribute",
+              "ok": true
+            },
+            {
+              "name": "subclass reflection uses subclass converter",
+              "ok": true
+            },
+            {
+              "name": "subclass converter removal restores default",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "mode": "ordinary",
+          "results": [
+            {
+              "name": "initial reflected defaults absent",
+              "ok": true
+            },
+            {
+              "name": "same-default explicit assignment reflects",
+              "ok": true,
+              "detail": "0"
+            },
+            {
+              "name": "public getter and derived store agree synchronously",
+              "ok": true
+            },
+            {
+              "name": "named change and reflection",
+              "ok": true,
+              "detail": [
+                "count"
+              ]
+            },
+            {
+              "name": "attribute removal restores default",
+              "ok": true,
+              "detail": 0
+            },
+            {
+              "name": "number and boolean attribute conversion",
+              "ok": true
+            },
+            {
+              "name": "canonical state independent of rendering gate",
+              "ok": true
+            },
+            {
+              "name": "detached property write and reconnect",
+              "ok": true
+            },
+            {
+              "name": "shared atom through accessor reflects",
+              "ok": false
+            },
+            {
+              "name": "external shared atom write renders",
+              "ok": true
+            },
+            {
+              "name": "external shared atom write reflects",
+              "ok": false,
+              "detail": {
+                "attribute": null,
+                "changed": []
+              }
+            },
+            {
+              "name": "inherited metadata preserves atom accessor",
+              "ok": true
+            },
+            {
+              "name": "write before first connection preserves class default",
+              "ok": true
+            },
+            {
+              "name": "early write does not replace reset default",
+              "ok": true
+            },
+            {
+              "name": "external shared write while detached reconciles named reflection",
+              "ok": false
+            },
+            {
+              "name": "shared change before first connection",
+              "ok": false
+            },
+            {
+              "name": "pre-upgrade property wins over initial attribute",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade assignment preserves default",
+              "ok": true
+            },
+            {
+              "name": "same NaN does not report a named change",
+              "ok": true
+            },
+            {
+              "name": "signed zero keeps canonical value and named change",
+              "ok": true
+            },
+            {
+              "name": "batched external writes reflect final value",
+              "ok": false
+            },
+            {
+              "name": "subclass converter and renamed attribute",
+              "ok": true
+            },
+            {
+              "name": "subclass reflection uses subclass converter",
+              "ok": true
+            },
+            {
+              "name": "subclass converter removal restores default",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "mode": "compiled",
+          "results": [
+            {
+              "name": "initial reflected defaults absent",
+              "ok": true
+            },
+            {
+              "name": "same-default explicit assignment reflects",
+              "ok": true,
+              "detail": "0"
+            },
+            {
+              "name": "public getter and derived store agree synchronously",
+              "ok": true
+            },
+            {
+              "name": "named change and reflection",
+              "ok": true,
+              "detail": [
+                "count"
+              ]
+            },
+            {
+              "name": "attribute removal restores default",
+              "ok": true,
+              "detail": 0
+            },
+            {
+              "name": "number and boolean attribute conversion",
+              "ok": true
+            },
+            {
+              "name": "canonical state independent of rendering gate",
+              "ok": true
+            },
+            {
+              "name": "detached property write and reconnect",
+              "ok": true
+            },
+            {
+              "name": "shared atom through accessor reflects",
+              "ok": false
+            },
+            {
+              "name": "external shared atom write renders",
+              "ok": true
+            },
+            {
+              "name": "external shared atom write reflects",
+              "ok": false,
+              "detail": {
+                "attribute": null,
+                "changed": []
+              }
+            },
+            {
+              "name": "inherited metadata preserves atom accessor",
+              "ok": true
+            },
+            {
+              "name": "write before first connection preserves class default",
+              "ok": true
+            },
+            {
+              "name": "early write does not replace reset default",
+              "ok": true
+            },
+            {
+              "name": "external shared write while detached reconciles named reflection",
+              "ok": false
+            },
+            {
+              "name": "shared change before first connection",
+              "ok": false
+            },
+            {
+              "name": "pre-upgrade property wins over initial attribute",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade assignment preserves default",
+              "ok": true
+            },
+            {
+              "name": "same NaN does not report a named change",
+              "ok": true
+            },
+            {
+              "name": "signed zero keeps canonical value and named change",
+              "ok": true
+            },
+            {
+              "name": "batched external writes reflect final value",
+              "ok": false
+            },
+            {
+              "name": "subclass converter and renamed attribute",
+              "ok": true
+            },
+            {
+              "name": "subclass reflection uses subclass converter",
+              "ok": true
+            },
+            {
+              "name": "subclass converter removal restores default",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "candidateBrowser": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "mode": "ordinary",
+          "results": [
+            {
+              "name": "initial reflected defaults absent",
+              "ok": true
+            },
+            {
+              "name": "same-default explicit assignment reflects",
+              "ok": true,
+              "detail": "0"
+            },
+            {
+              "name": "public getter and derived store agree synchronously",
+              "ok": true
+            },
+            {
+              "name": "named change and reflection",
+              "ok": true,
+              "detail": [
+                "count"
+              ]
+            },
+            {
+              "name": "attribute removal restores default",
+              "ok": true,
+              "detail": 0
+            },
+            {
+              "name": "number and boolean attribute conversion",
+              "ok": true
+            },
+            {
+              "name": "canonical state independent of rendering gate",
+              "ok": true
+            },
+            {
+              "name": "detached property write and reconnect",
+              "ok": true
+            },
+            {
+              "name": "shared atom through accessor reflects",
+              "ok": true
+            },
+            {
+              "name": "external shared atom write renders",
+              "ok": true
+            },
+            {
+              "name": "external shared atom write reflects",
+              "ok": true,
+              "detail": {
+                "attribute": "3",
+                "changed": [
+                  "shared"
+                ]
+              }
+            },
+            {
+              "name": "inherited metadata preserves atom accessor",
+              "ok": true
+            },
+            {
+              "name": "write before first connection preserves class default",
+              "ok": true
+            },
+            {
+              "name": "early write does not replace reset default",
+              "ok": true
+            },
+            {
+              "name": "external shared write while detached reconciles named reflection",
+              "ok": true
+            },
+            {
+              "name": "shared change before first connection",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade property wins over initial attribute",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade assignment preserves default",
+              "ok": true
+            },
+            {
+              "name": "same NaN does not report a named change",
+              "ok": true
+            },
+            {
+              "name": "signed zero keeps canonical value and named change",
+              "ok": true
+            },
+            {
+              "name": "batched external writes reflect final value",
+              "ok": true
+            },
+            {
+              "name": "subclass converter and renamed attribute",
+              "ok": true
+            },
+            {
+              "name": "subclass reflection uses subclass converter",
+              "ok": true
+            },
+            {
+              "name": "subclass converter removal restores default",
+              "ok": true
+            },
+            {
+              "name": "mixed batch reflects final value",
+              "ok": true
+            },
+            {
+              "name": "mixed batch retains first old value",
+              "ok": true,
+              "detail": {
+                "old": 1
+              }
+            }
+          ]
+        },
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "mode": "compiled",
+          "results": [
+            {
+              "name": "initial reflected defaults absent",
+              "ok": true
+            },
+            {
+              "name": "same-default explicit assignment reflects",
+              "ok": true,
+              "detail": "0"
+            },
+            {
+              "name": "public getter and derived store agree synchronously",
+              "ok": true
+            },
+            {
+              "name": "named change and reflection",
+              "ok": true,
+              "detail": [
+                "count"
+              ]
+            },
+            {
+              "name": "attribute removal restores default",
+              "ok": true,
+              "detail": 0
+            },
+            {
+              "name": "number and boolean attribute conversion",
+              "ok": true
+            },
+            {
+              "name": "canonical state independent of rendering gate",
+              "ok": true
+            },
+            {
+              "name": "detached property write and reconnect",
+              "ok": true
+            },
+            {
+              "name": "shared atom through accessor reflects",
+              "ok": true
+            },
+            {
+              "name": "external shared atom write renders",
+              "ok": true
+            },
+            {
+              "name": "external shared atom write reflects",
+              "ok": true,
+              "detail": {
+                "attribute": "3",
+                "changed": [
+                  "shared"
+                ]
+              }
+            },
+            {
+              "name": "inherited metadata preserves atom accessor",
+              "ok": true
+            },
+            {
+              "name": "write before first connection preserves class default",
+              "ok": true
+            },
+            {
+              "name": "early write does not replace reset default",
+              "ok": true
+            },
+            {
+              "name": "external shared write while detached reconciles named reflection",
+              "ok": true
+            },
+            {
+              "name": "shared change before first connection",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade property wins over initial attribute",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade assignment preserves default",
+              "ok": true
+            },
+            {
+              "name": "same NaN does not report a named change",
+              "ok": true
+            },
+            {
+              "name": "signed zero keeps canonical value and named change",
+              "ok": true
+            },
+            {
+              "name": "batched external writes reflect final value",
+              "ok": true
+            },
+            {
+              "name": "subclass converter and renamed attribute",
+              "ok": true
+            },
+            {
+              "name": "subclass reflection uses subclass converter",
+              "ok": true
+            },
+            {
+              "name": "subclass converter removal restores default",
+              "ok": true
+            },
+            {
+              "name": "mixed batch reflects final value",
+              "ok": true
+            },
+            {
+              "name": "mixed batch retains first old value",
+              "ok": true,
+              "detail": {
+                "old": 1
+              }
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "mode": "ordinary",
+          "results": [
+            {
+              "name": "initial reflected defaults absent",
+              "ok": true
+            },
+            {
+              "name": "same-default explicit assignment reflects",
+              "ok": true,
+              "detail": "0"
+            },
+            {
+              "name": "public getter and derived store agree synchronously",
+              "ok": true
+            },
+            {
+              "name": "named change and reflection",
+              "ok": true,
+              "detail": [
+                "count"
+              ]
+            },
+            {
+              "name": "attribute removal restores default",
+              "ok": true,
+              "detail": 0
+            },
+            {
+              "name": "number and boolean attribute conversion",
+              "ok": true
+            },
+            {
+              "name": "canonical state independent of rendering gate",
+              "ok": true
+            },
+            {
+              "name": "detached property write and reconnect",
+              "ok": true
+            },
+            {
+              "name": "shared atom through accessor reflects",
+              "ok": true
+            },
+            {
+              "name": "external shared atom write renders",
+              "ok": true
+            },
+            {
+              "name": "external shared atom write reflects",
+              "ok": true,
+              "detail": {
+                "attribute": "3",
+                "changed": [
+                  "shared"
+                ]
+              }
+            },
+            {
+              "name": "inherited metadata preserves atom accessor",
+              "ok": true
+            },
+            {
+              "name": "write before first connection preserves class default",
+              "ok": true
+            },
+            {
+              "name": "early write does not replace reset default",
+              "ok": true
+            },
+            {
+              "name": "external shared write while detached reconciles named reflection",
+              "ok": true
+            },
+            {
+              "name": "shared change before first connection",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade property wins over initial attribute",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade assignment preserves default",
+              "ok": true
+            },
+            {
+              "name": "same NaN does not report a named change",
+              "ok": true
+            },
+            {
+              "name": "signed zero keeps canonical value and named change",
+              "ok": true
+            },
+            {
+              "name": "batched external writes reflect final value",
+              "ok": true
+            },
+            {
+              "name": "subclass converter and renamed attribute",
+              "ok": true
+            },
+            {
+              "name": "subclass reflection uses subclass converter",
+              "ok": true
+            },
+            {
+              "name": "subclass converter removal restores default",
+              "ok": true
+            },
+            {
+              "name": "mixed batch reflects final value",
+              "ok": true
+            },
+            {
+              "name": "mixed batch retains first old value",
+              "ok": true,
+              "detail": {
+                "old": 1
+              }
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "mode": "compiled",
+          "results": [
+            {
+              "name": "initial reflected defaults absent",
+              "ok": true
+            },
+            {
+              "name": "same-default explicit assignment reflects",
+              "ok": true,
+              "detail": "0"
+            },
+            {
+              "name": "public getter and derived store agree synchronously",
+              "ok": true
+            },
+            {
+              "name": "named change and reflection",
+              "ok": true,
+              "detail": [
+                "count"
+              ]
+            },
+            {
+              "name": "attribute removal restores default",
+              "ok": true,
+              "detail": 0
+            },
+            {
+              "name": "number and boolean attribute conversion",
+              "ok": true
+            },
+            {
+              "name": "canonical state independent of rendering gate",
+              "ok": true
+            },
+            {
+              "name": "detached property write and reconnect",
+              "ok": true
+            },
+            {
+              "name": "shared atom through accessor reflects",
+              "ok": true
+            },
+            {
+              "name": "external shared atom write renders",
+              "ok": true
+            },
+            {
+              "name": "external shared atom write reflects",
+              "ok": true,
+              "detail": {
+                "attribute": "3",
+                "changed": [
+                  "shared"
+                ]
+              }
+            },
+            {
+              "name": "inherited metadata preserves atom accessor",
+              "ok": true
+            },
+            {
+              "name": "write before first connection preserves class default",
+              "ok": true
+            },
+            {
+              "name": "early write does not replace reset default",
+              "ok": true
+            },
+            {
+              "name": "external shared write while detached reconciles named reflection",
+              "ok": true
+            },
+            {
+              "name": "shared change before first connection",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade property wins over initial attribute",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade assignment preserves default",
+              "ok": true
+            },
+            {
+              "name": "same NaN does not report a named change",
+              "ok": true
+            },
+            {
+              "name": "signed zero keeps canonical value and named change",
+              "ok": true
+            },
+            {
+              "name": "batched external writes reflect final value",
+              "ok": true
+            },
+            {
+              "name": "subclass converter and renamed attribute",
+              "ok": true
+            },
+            {
+              "name": "subclass reflection uses subclass converter",
+              "ok": true
+            },
+            {
+              "name": "subclass converter removal restores default",
+              "ok": true
+            },
+            {
+              "name": "mixed batch reflects final value",
+              "ok": true
+            },
+            {
+              "name": "mixed batch retains first old value",
+              "ok": true,
+              "detail": {
+                "old": 1
+              }
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "mode": "ordinary",
+          "results": [
+            {
+              "name": "initial reflected defaults absent",
+              "ok": true
+            },
+            {
+              "name": "same-default explicit assignment reflects",
+              "ok": true,
+              "detail": "0"
+            },
+            {
+              "name": "public getter and derived store agree synchronously",
+              "ok": true
+            },
+            {
+              "name": "named change and reflection",
+              "ok": true,
+              "detail": [
+                "count"
+              ]
+            },
+            {
+              "name": "attribute removal restores default",
+              "ok": true,
+              "detail": 0
+            },
+            {
+              "name": "number and boolean attribute conversion",
+              "ok": true
+            },
+            {
+              "name": "canonical state independent of rendering gate",
+              "ok": true
+            },
+            {
+              "name": "detached property write and reconnect",
+              "ok": true
+            },
+            {
+              "name": "shared atom through accessor reflects",
+              "ok": true
+            },
+            {
+              "name": "external shared atom write renders",
+              "ok": true
+            },
+            {
+              "name": "external shared atom write reflects",
+              "ok": true,
+              "detail": {
+                "attribute": "3",
+                "changed": [
+                  "shared"
+                ]
+              }
+            },
+            {
+              "name": "inherited metadata preserves atom accessor",
+              "ok": true
+            },
+            {
+              "name": "write before first connection preserves class default",
+              "ok": true
+            },
+            {
+              "name": "early write does not replace reset default",
+              "ok": true
+            },
+            {
+              "name": "external shared write while detached reconciles named reflection",
+              "ok": true
+            },
+            {
+              "name": "shared change before first connection",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade property wins over initial attribute",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade assignment preserves default",
+              "ok": true
+            },
+            {
+              "name": "same NaN does not report a named change",
+              "ok": true
+            },
+            {
+              "name": "signed zero keeps canonical value and named change",
+              "ok": true
+            },
+            {
+              "name": "batched external writes reflect final value",
+              "ok": true
+            },
+            {
+              "name": "subclass converter and renamed attribute",
+              "ok": true
+            },
+            {
+              "name": "subclass reflection uses subclass converter",
+              "ok": true
+            },
+            {
+              "name": "subclass converter removal restores default",
+              "ok": true
+            },
+            {
+              "name": "mixed batch reflects final value",
+              "ok": true
+            },
+            {
+              "name": "mixed batch retains first old value",
+              "ok": true,
+              "detail": {
+                "old": 1
+              }
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "mode": "compiled",
+          "results": [
+            {
+              "name": "initial reflected defaults absent",
+              "ok": true
+            },
+            {
+              "name": "same-default explicit assignment reflects",
+              "ok": true,
+              "detail": "0"
+            },
+            {
+              "name": "public getter and derived store agree synchronously",
+              "ok": true
+            },
+            {
+              "name": "named change and reflection",
+              "ok": true,
+              "detail": [
+                "count"
+              ]
+            },
+            {
+              "name": "attribute removal restores default",
+              "ok": true,
+              "detail": 0
+            },
+            {
+              "name": "number and boolean attribute conversion",
+              "ok": true
+            },
+            {
+              "name": "canonical state independent of rendering gate",
+              "ok": true
+            },
+            {
+              "name": "detached property write and reconnect",
+              "ok": true
+            },
+            {
+              "name": "shared atom through accessor reflects",
+              "ok": true
+            },
+            {
+              "name": "external shared atom write renders",
+              "ok": true
+            },
+            {
+              "name": "external shared atom write reflects",
+              "ok": true,
+              "detail": {
+                "attribute": "3",
+                "changed": [
+                  "shared"
+                ]
+              }
+            },
+            {
+              "name": "inherited metadata preserves atom accessor",
+              "ok": true
+            },
+            {
+              "name": "write before first connection preserves class default",
+              "ok": true
+            },
+            {
+              "name": "early write does not replace reset default",
+              "ok": true
+            },
+            {
+              "name": "external shared write while detached reconciles named reflection",
+              "ok": true
+            },
+            {
+              "name": "shared change before first connection",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade property wins over initial attribute",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade assignment preserves default",
+              "ok": true
+            },
+            {
+              "name": "same NaN does not report a named change",
+              "ok": true
+            },
+            {
+              "name": "signed zero keeps canonical value and named change",
+              "ok": true
+            },
+            {
+              "name": "batched external writes reflect final value",
+              "ok": true
+            },
+            {
+              "name": "subclass converter and renamed attribute",
+              "ok": true
+            },
+            {
+              "name": "subclass reflection uses subclass converter",
+              "ok": true
+            },
+            {
+              "name": "subclass converter removal restores default",
+              "ok": true
+            },
+            {
+              "name": "mixed batch reflects final value",
+              "ok": true
+            },
+            {
+              "name": "mixed batch retains first old value",
+              "ok": true,
+              "detail": {
+                "old": 1
+              }
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "compiler": "Ordinary and @lit-labs/compiler transformed templates;production helper emitted by scripts/build.ts",
+    "additionalRegression": "Mixed batch external6/accessor7 originally reported old6; corrected helper preserves old1 and final7"
+  },
+  "review": "Approve: no required defects",
+  "reproduce": [
+    "bun test src/shared/__tests__/atom-state.test.ts src/shared/__tests__/store-reconnect.test.ts scripts/__tests__/manifest.test.ts",
+    "bun run build",
+    "bun run docs",
+    "bun test",
+    "Run saved build/browser fixtures with the recorded browser runtime paths"
+  ],
+  "sources": {
+    "baselineHelper": "// `@atomState()` — an element's own reactive state, held in a TanStack Store atom.\n//\n// This is the shape Peter's rule asks for (any state management here uses TanStack Store) written so\n// that using it costs no more than the `@state()` it replaces. Declare a field, read and write it as\n// a field, and the atom, its subscription and its teardown are handled underneath:\n//\n//   class AcmeThing extends AcmeElement {\n//     @atomState() private open = false;\n//     toggle() { this.open = !this.open; }         // writes the atom, re-renders the element\n//   }\n//\n// One atom per instance, created on first access, the way TanStack Form creates a store per form and\n// per field. The shared connection hook schedules TanStack's subscription update when the host connects.\n//\n// Derived state stays explicit. A value computed from two fields is a derived store, because that is\n// the thing a plain field cannot express and the reason the rule is worth following:\n//\n//   private shown = createStore(() => this.open && !this.disabled);\n//\n// Two compiler settings this depends on, both load-bearing rather than incidental:\n//\n//   `experimentalDecorators: true` — this is written for that flavour only, where a decorator sees\n//   the prototype and the field name. Lit overloads its own decorators to accept both flavours; a\n//   move to standard decorators needs the accessor-decorator signature ADDED beside this one, using\n//   the `accessor` keyword, not this one rewritten.\n//\n//   `useDefineForClassFields: false` — under define semantics a class field installs an own data\n//   property on the instance, which shadows the prototype accessor this decorator defines, and the\n//   field silently stops being reactive. Verified, not assumed.\n//\n// Equality is the atom's own, which is identity: an object mutated in place does not re-render.\n// Pass `shallow` from the store package for a field holding an object the element rebuilds.\n\nimport { type Atom, createAtom, TanStackStoreAtom } from \"@tanstack/lit-store\";\nimport type { ReactiveControllerHost, ReactiveElement } from \"lit\";\nimport { connectStore } from \"./store-connection\";\n\ntype Host = ReactiveControllerHost & object;\n/** The atoms of one host, keyed by field name, so several fields on one element stay independent. */\nconst atoms = new WeakMap<Host, Map<PropertyKey, TanStackStoreAtom<unknown>>>();\n\n/**\n * A reactive field backed by an atom. Reads and writes look like a plain field; the element\n * re-renders when the value changes.\n *\n * With no argument the atom is created per instance, so each element has its own. Passing an atom\n * binds the field to that one instead, which is how several elements follow one value:\n *\n *   const name = createAtom(\"Ada\");\n *   class NameField extends AcmeElement {\n *     `@atomState`(name) private name!: string;   // every instance reads and writes the same atom\n *   }\n *\n * `compare` sets the equality the atom uses to decide whether anything changed. It defaults to\n * identity, so an object mutated in place does not re-render; pass `shallow` from the store package\n * for a field that holds an object it rebuilds.\n */\nexport function atomState<T>(shared?: Atom<T>, options?: { compare?: (a: T, b: T) => boolean }) {\n  return (proto: object, name: PropertyKey) => {\n    // Create the atom while the element is being constructed, before Lit's first update. An atom\n    // created later — on a read from render(), for a field with no initializer — registers its\n    // controller after `hostUpdate` has already run for that cycle, so the controller never\n    // subscribes and the element stops re-rendering for that field.\n    (proto.constructor as typeof ReactiveElement).addInitializer((host) => {\n      atomFor<T>(host as Host, name, undefined as T, shared, options);\n    });\n    Object.defineProperty(proto, name, {\n      configurable: true,\n      enumerable: true,\n      get(this: Host) {\n        return atomFor<T>(this, name, undefined as T, shared, options).value;\n      },\n      set(this: Host, value: T) {\n        const atom = atomFor<T>(this, name, value as T, shared, options);\n        const old = atom.value;\n        atom.set(() => value as T);\n        // Tell Lit the property changed, so `changedProperties.has(name)` still answers in\n        // `updated` and `willUpdate`. The atom already requested the update; this only records\n        // the change, and an element that asks which of its fields moved keeps working.\n        (this as unknown as ReactiveElement).requestUpdate(name, old);\n      },\n    });\n  };\n}\n\n/**\n * The atom for one field of one host, created on first touch.\n *\n * A field's initial value is assigned in the constructor, which reaches the setter before any read,\n * so the first write seeds the atom rather than overwriting a default. That is why the setter passes\n * its value in: creating the atom empty and setting it immediately would notify a subscriber that\n * does not exist yet, and leave the atom's own equality check with nothing to compare against.\n */\nfunction atomFor<T>(host: Host, name: PropertyKey, seed: T, shared?: Atom<T>, options?: { compare?: (a: T, b: T) => boolean }): TanStackStoreAtom<T> {\n  let byName = atoms.get(host);\n  if (!byName) {\n    byName = new Map();\n    atoms.set(host, byName);\n  }\n  let bound = byName.get(name) as TanStackStoreAtom<T> | undefined;\n  if (!bound) {\n    // A shared atom is bound as it is; otherwise this instance gets one of its own.\n    const store = shared ?? createAtom(seed, options as never);\n    bound = new TanStackStoreAtom(host, () => store);\n    connectStore(host);\n    byName.set(name, bound as TanStackStoreAtom<unknown>);\n  }\n  return bound;\n}\n",
+    "helper": "// `@atomState()` — an element's own reactive state, held in a TanStack Store atom.\n//\n// This is the shape Peter's rule asks for (any state management here uses TanStack Store) written so\n// that using it costs no more than the `@state()` it replaces. Declare a field, read and write it as\n// a field, and the atom, its subscription and its teardown are handled underneath:\n//\n//   class AcmeThing extends AcmeElement {\n//     @atomState() private open = false;\n//     toggle() { this.open = !this.open; }         // writes the atom, re-renders the element\n//   }\n//\n// Each instance creates its field atoms before the first update. The shared connection hook\n// schedules TanStack's subscription update when the host connects.\n//\n// Derived state stays explicit. A value computed from two fields is a derived store, because that is\n// the thing a plain field cannot express and the reason the rule is worth following:\n//\n//   private shown = createStore(() => this.open && !this.disabled);\n//\n// Two compiler settings this depends on, both load-bearing rather than incidental:\n//\n//   `experimentalDecorators: true` — this is written for that flavour only, where a decorator sees\n//   the prototype and the field name. Lit overloads its own decorators to accept both flavours; a\n//   move to standard decorators needs the accessor-decorator signature ADDED beside this one, using\n//   the `accessor` keyword, not this one rewritten.\n//\n//   `useDefineForClassFields: false` — under define semantics a class field installs an own data\n//   property on the instance, which shadows the prototype accessor this decorator defines, and the\n//   field silently stops being reactive. Verified, not assumed.\n//\n// Equality is the atom's own, which is identity: an object mutated in place does not re-render.\n// Pass `shallow` from the store package for a field holding an object the element rebuilds.\n\nimport { type Atom, createAtom, TanStackStoreAtom } from \"@tanstack/lit-store\";\nimport type { ReactiveElement } from \"lit\";\nimport { connectStore } from \"./store-connection\";\n\ntype Host = ReactiveElement;\n/** The atoms of one host, keyed by field name, so several fields on one element stay independent. */\nconst atoms = new WeakMap<Host, Map<PropertyKey, NamedAtom<unknown>>>();\n\n/** Records public property changes even when an application writes the atom directly. */\nclass NamedAtom<T> extends TanStackStoreAtom<T> {\n  private previous: T;\n\n  constructor(\n    private host: Host,\n    private name: PropertyKey,\n    private store: Atom<T>,\n  ) {\n    super(host, () => store);\n    this.previous = store.get();\n    const sync = (value: T) => {\n      const old = this.previous;\n      this.previous = value;\n      if (!Object.is(old, value)) this.notify(old);\n    };\n    let subscription: { unsubscribe(): void } | undefined;\n    host.addController({\n      hostConnected: () => {\n        sync(store.get());\n        subscription = store.subscribe(sync);\n      },\n      hostDisconnected: () => {\n        subscription?.unsubscribe();\n        subscription = undefined;\n      },\n    });\n    connectStore(host);\n  }\n\n  override set(value: T | ((previous: T) => T)): void {\n    // An external write inside a batch may not have notified Lit yet.\n    const old = this.previous;\n    if (typeof value === \"function\") super.set(value as (previous: T) => T);\n    else super.set(value);\n    this.previous = this.store.get();\n    this.notify(old);\n  }\n\n  private notify(old: T): void {\n    this.host.requestUpdate(this.name, old);\n  }\n}\n\n/**\n * A reactive field backed by an atom. Reads and writes look like a plain field; the element\n * re-renders when the value changes.\n *\n * With no argument the atom is created per instance, so each element has its own. Passing an atom\n * binds the field to that one instead, which is how several elements follow one value:\n *\n *   const name = createAtom(\"Ada\");\n *   class NameField extends AcmeElement {\n *     `@atomState`(name) private name!: string;   // every instance reads and writes the same atom\n *   }\n *\n * `compare` sets the equality the atom uses to decide whether anything changed. It defaults to\n * identity, so an object mutated in place does not re-render; pass `shallow` from the store package\n * for a field that holds an object it rebuilds.\n *\n * A public property keeps Lit's metadata: put `@property({noAccessor:true, ...})` below\n * `@atomState()` so Lit registers its metadata before this decorator installs the accessor.\n */\nexport function atomState<T>(shared?: Atom<T>, options?: { compare?: (a: T, b: T) => boolean }) {\n  return (proto: object, name: PropertyKey) => {\n    // Create the atom while the element is being constructed, before Lit's first update. An atom\n    // created later — on a read from render(), for a field with no initializer — registers its\n    // controller after `hostUpdate` has already run for that cycle, so the controller never\n    // subscribes and the element stops re-rendering for that field.\n    (proto.constructor as typeof ReactiveElement).addInitializer((host) => {\n      atomFor<T>(host, name, undefined as T, shared, options);\n      if (shared) host.requestUpdate(name, undefined);\n    });\n    Object.defineProperty(proto, name, {\n      configurable: true,\n      enumerable: true,\n      get(this: Host) {\n        return atomFor<T>(this, name, undefined as T, shared, options).value;\n      },\n      set(this: Host, value: T) {\n        const atom = atomFor<T>(this, name, value as T, shared, options);\n        atom.set(() => value as T);\n      },\n    });\n  };\n}\n\n/**\n * The atom for one field of one host, created on first touch.\n *\n * The Lit initializer creates the binding before field initialization. Constructor assignments then\n * write through that binding. A shared atom retains its current value until an explicit assignment.\n */\nfunction atomFor<T>(host: Host, name: PropertyKey, seed: T, shared?: Atom<T>, options?: { compare?: (a: T, b: T) => boolean }): NamedAtom<T> {\n  let byName = atoms.get(host);\n  if (!byName) {\n    byName = new Map();\n    atoms.set(host, byName);\n  }\n  let bound = byName.get(name) as NamedAtom<T> | undefined;\n  if (!bound) {\n    // A shared atom is bound as it is; otherwise this instance gets one of its own.\n    const store = shared ?? createAtom<T>(seed, options);\n    bound = new NamedAtom(host, name, store);\n    byName.set(name, bound as NamedAtom<unknown>);\n  }\n  return bound;\n}\n",
+    "publicFixture": "import { createAtom, createStore } from \"@tanstack/lit-store\";\nimport { html, LitElement, type PropertyValues } from \"lit\";\nimport { property } from \"lit/decorators.js\";\nimport { atomState } from \"../../atom-state\";\nimport { StoreSelector } from \"../../store-connection\";\n\nexport const publicShared = createAtom(1);\n\nexport class PublicAtomProbe extends LitElement {\n  @atomState() @property({ type: Boolean, reflect: true, useDefault: true, noAccessor: true }) open = false;\n  @atomState() @property({ type: Number, reflect: true, useDefault: true, noAccessor: true }) count = 0;\n  @atomState() @property({ type: String, reflect: true, useDefault: true, noAccessor: true }) value = \"initial\";\n  @atomState(publicShared) @property({ type: Number, reflect: true, useDefault: true, noAccessor: true }) declare shared: number;\n\n  derived = createStore(() => JSON.stringify({ open: this.open, count: this.count, value: this.value, shared: this.shared }));\n  selector = new StoreSelector(this, () => this.derived);\n  changed: PropertyKey[] = [];\n  previous = new Map<PropertyKey, unknown>();\n  allowUpdate = true;\n\n  shouldUpdate() {\n    return this.allowUpdate;\n  }\n  updated(changes: PropertyValues) {\n    this.changed = [...changes.keys()];\n    this.previous = new Map(changes);\n  }\n  render() {\n    return html`<span>${this.derived.get()}</span>`;\n  }\n}\n",
+    "buildFixture": "import fs from \"node:fs\";import path from \"node:path\";import ts from \"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/typescript/lib/typescript.js\";import {compileLitTemplates} from \"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/@lit-labs/compiler/index.js\";\nconst ROOT=\"/Users/peterkloss/Dev/ACMElabs/design-system\";const directory=process.argv[2];if(!directory)throw new Error(\"Output directory required\");fs.mkdirSync(directory,{recursive:true});\nif(!fs.existsSync(directory+\"/node_modules\"))fs.symlinkSync(ROOT+\"/node_modules\",directory+\"/node_modules\",\"dir\");\nconst evidence=JSON.parse(fs.readFileSync(ROOT+\"/notes/alignment/evidence/existing-state-integration-2026-09-19.json\",\"utf8\"));\nlet source=evidence.refinement.fixtureSource.replace('from\"./candidate\"','from'+JSON.stringify(ROOT+\"/dist/shared/atom-state.js\"));\nsource=source.replace(\"changed=[];\",\"changed=[];previous=new Map();\").replace(\"updated(ch){this.changed=[...ch.keys()];}\",\"updated(ch){this.changed=[...ch.keys()];this.previous=new Map(ch);}\");\nsource=source.replace('console.log(JSON.stringify({runtime:\"scratch refinement; Bun/happy-dom\",results},null,2));','window.__results={results};');\nsource=source.replace(\"window.__results={results};\",'shared.set(1);await el.updateComplete;batch(()=>{shared.set(6);el.shared=7;});await el.updateComplete;check(\"mixed batch reflects final value\",el.shared===7&&el.getAttribute(\"shared\")===\"7\");check(\"mixed batch retains first old value\",el.previous.get(\"shared\")===1,{old:el.previous.get(\"shared\")});window.__results={results};');\nfs.writeFileSync(directory+\"/probe.ts\",source);\nfor(const mode of [\"ordinary\",\"compiled\"]){\n const compiled=ts.transpileModule(source,{fileName:directory+\"/probe.ts\",compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext,experimentalDecorators:true,useDefineForClassFields:false},transformers:mode===\"compiled\"?{before:[compileLitTemplates()]}:undefined});\n fs.writeFileSync(directory+\"/\"+mode+\".js\",compiled.outputText);\n const result=await Bun.build({entrypoints:[directory+\"/\"+mode+\".js\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\",minify:false});\n if(!result.success)throw new AggregateError(result.logs);\n}\nconsole.log(directory);\n",
+    "browserRunner": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=process.argv[2];if(!directory)throw new Error(\"Fixture directory required\");\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/favicon.ico\")return new Response(null,{status:204});if(url.pathname.endsWith(\".js\"))return new Response(Bun.file(path.join(directory,\"bundle\",path.basename(url.pathname))),{headers:{\"Content-Type\":\"text/javascript\"}});const mode=url.searchParams.get(\"mode\");return new Response('<!doctype html><html><body><script type=\"module\" src=\"/'+mode+'.js\"></script></body></html>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{for(const mode of [\"ordinary\",\"compiled\"]){const page=await browser.newPage();page.on(\"pageerror\",e=>report.errors.push({engine,mode,message:e.message}));await page.goto(server.url.href+\"?mode=\"+mode);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);report.engines.push({engine,version:browser.version(),mode,...data});console.log({engine,mode,passed:data.results.filter(r=>r.ok).length,total:data.results.length,failures:data.results.filter(r=>!r.ok)});await page.close();}}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(run=>run.results.some(r=>!r.ok)))process.exitCode=1;",
+    "executedFixture": "import{LitElement,html}from\"lit\";import{batch,createStore,createAtom,TanStackStoreSelector}from\"@tanstack/lit-store\";import{atomState}from\"/Users/peterkloss/Dev/ACMElabs/design-system/dist/shared/atom-state.js\";\nimport{property}from\"lit/decorators.js\";\nconst shared=createAtom(1);\nclass ExistingProbe extends LitElement{\n @atomState() @property({type:Boolean,reflect:true,useDefault:true,noAccessor:true}) open=false;\n @atomState() @property({type:Number,reflect:true,useDefault:true,noAccessor:true}) count=0;\n @atomState() @property({type:String,reflect:true,useDefault:true,noAccessor:true}) value=\"initial\";\n @atomState(shared) @property({type:Number,reflect:true,useDefault:true,noAccessor:true}) declare shared:number;\n derived=createStore(()=>JSON.stringify({open:this.open,count:this.count,value:this.value,shared:this.shared}));\n selector=new TanStackStoreSelector(this,()=>this.derived);\n changed=[];previous=new Map();\n allowUpdate=true;\n shouldUpdate(){return this.allowUpdate;}\n updated(ch){this.changed=[...ch.keys()];this.previous=new Map(ch);}\n render(){return html`<span>${this.derived.get()}</span>`;}\n}\ncustomElements.define(\"existing-atom-probe\",ExistingProbe);\nconst results=[];const check=(name,ok,detail)=>results.push({name,ok,detail});\nconst el=document.createElement(\"existing-atom-probe\");document.body.append(el);await el.updateComplete;\ncheck(\"initial reflected defaults absent\",!el.hasAttribute(\"count\")&&!el.hasAttribute(\"value\"));\nel.count=0;await el.updateComplete;check(\"same-default explicit assignment reflects\",el.getAttribute(\"count\")===\"0\",el.getAttribute(\"count\"));\nel.count=7;check(\"public getter and derived store agree synchronously\",el.count===7&&JSON.parse(el.derived.get()).count===7);await el.updateComplete;\ncheck(\"named change and reflection\",el.changed.includes(\"count\")&&el.getAttribute(\"count\")===\"7\",el.changed);\nel.removeAttribute(\"count\");await el.updateComplete;check(\"attribute removal restores default\",el.count===0&&!el.hasAttribute(\"count\"),el.count);\nel.setAttribute(\"count\",\"12\");el.setAttribute(\"open\",\"\");await el.updateComplete;check(\"number and boolean attribute conversion\",el.count===12&&el.open===true);\nel.allowUpdate=false;el.count=15;await el.updateComplete;check(\"canonical state independent of rendering gate\",el.count===15&&JSON.parse(el.derived.get()).count===15);el.allowUpdate=true;el.requestUpdate();await el.updateComplete;\nel.remove();el.value=\"detached\";document.body.append(el);await el.updateComplete;check(\"detached property write and reconnect\",el.value===\"detached\"&&el.getAttribute(\"value\")===\"detached\"&&JSON.parse(el.shadowRoot.querySelector(\"span\").textContent).value===\"detached\");\nel.shared=2;await el.updateComplete;check(\"shared atom through accessor reflects\",shared.get()===2&&el.getAttribute(\"shared\")===\"2\");\nshared.set(3);await el.updateComplete;check(\"external shared atom write renders\",el.shared===3&&JSON.parse(el.shadowRoot.querySelector(\"span\").textContent).shared===3);check(\"external shared atom write reflects\",el.getAttribute(\"shared\")===\"3\",{attribute:el.getAttribute(\"shared\"),changed:el.changed});\nclass Inherited extends ExistingProbe {static properties={count:{type:Number,noAccessor:true,reflect:true,useDefault:true}};}\ncustomElements.define(\"inherited-atom-probe\",Inherited);const sub=document.createElement(\"inherited-atom-probe\");document.body.append(sub);await sub.updateComplete;sub.count=22;await sub.updateComplete;check(\"inherited metadata preserves atom accessor\",sub.count===22&&JSON.parse(sub.derived.get()).count===22&&sub.getAttribute(\"count\")===\"22\");\n\nconst early=document.createElement(\"existing-atom-probe\");early.count=8;document.body.append(early);await early.updateComplete;\ncheck(\"write before first connection preserves class default\",early.count===8&&early.getAttribute(\"count\")===\"8\");early.removeAttribute(\"count\");await early.updateComplete;check(\"early write does not replace reset default\",early.count===0);\nel.remove();shared.set(4);document.body.append(el);await el.updateComplete;check(\"external shared write while detached reconciles named reflection\",el.shared===4&&el.getAttribute(\"shared\")===\"4\"&&el.changed.includes(\"shared\"));\nconst waiting=document.createElement(\"existing-atom-probe\");shared.set(5);document.body.append(waiting);await waiting.updateComplete;check(\"shared change before first connection\",waiting.shared===5&&waiting.getAttribute(\"shared\")===\"5\");\nconst pending=document.createElement(\"upgrade-atom-probe\");pending.count=31;pending.setAttribute(\"count\",\"12\");document.body.append(pending);\nclass Upgraded extends ExistingProbe{};customElements.define(\"upgrade-atom-probe\",Upgraded);await pending.updateComplete;check(\"pre-upgrade property wins over initial attribute\",pending.count===31&&pending.getAttribute(\"count\")===\"31\");pending.removeAttribute(\"count\");await pending.updateComplete;check(\"pre-upgrade assignment preserves default\",pending.count===0);\nel.count=NaN;await el.updateComplete;el.changed=[];el.count=NaN;await el.updateComplete;check(\"same NaN does not report a named change\",el.changed.length===0);\nel.count=0;await el.updateComplete;el.count=-0;await el.updateComplete;check(\"signed zero keeps canonical value and named change\",Object.is(el.count,-0)&&el.changed.includes(\"count\"));\nbatch(()=>{shared.set(6);shared.set(7);});await el.updateComplete;check(\"batched external writes reflect final value\",el.shared===7&&el.getAttribute(\"shared\")===\"7\"&&el.changed.includes(\"shared\"));\nclass Converted extends ExistingProbe{static properties={count:{attribute:\"amount\",noAccessor:true,reflect:true,useDefault:true,converter:{fromAttribute:(s)=>s===null?null:Number(s.slice(1)),toAttribute:(n)=>\"#\"+n}}};}\ncustomElements.define(\"converted-atom-probe\",Converted);const conv=document.createElement(\"converted-atom-probe\");document.body.append(conv);await conv.updateComplete;conv.setAttribute(\"amount\",\"#42\");await conv.updateComplete;check(\"subclass converter and renamed attribute\",conv.count===42);conv.count=43;await conv.updateComplete;check(\"subclass reflection uses subclass converter\",conv.getAttribute(\"amount\")===\"#43\");conv.removeAttribute(\"amount\");await conv.updateComplete;check(\"subclass converter removal restores default\",conv.count===0);\n\nshared.set(1);await el.updateComplete;batch(()=>{shared.set(6);el.shared=7;});await el.updateComplete;check(\"mixed batch reflects final value\",el.shared===7&&el.getAttribute(\"shared\")===\"7\");check(\"mixed batch retains first old value\",el.previous.get(\"shared\")===1,{old:el.previous.get(\"shared\")});window.__results={results};"
+  },
+  "remaining": [
+    "Authored versus effective appearance inheritance",
+    "Ordered raw-style capture/helper ownership and intended-registry lifecycle",
+    "Complete responsive query renderer/property validation",
+    "Nested theme scope and semantic-role tokens",
+    "Actual native form integration M06",
+    "Component-by-component public property adoption"
+  ]
+}

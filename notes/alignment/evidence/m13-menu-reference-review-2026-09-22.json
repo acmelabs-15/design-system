@@ -1,0 +1,116 @@
+{
+  "date": "2026-09-22",
+  "scope": "Menu and Context Menu reference review; not implementation acceptance",
+  "material": {
+    "articles": [
+      {
+        "url": "https://m3.material.io/components/menus/overview",
+        "coverage": "Full article and all static figures"
+      },
+      {
+        "url": "https://m3.material.io/components/menus/specs",
+        "coverage": "Full article and all static figures"
+      },
+      {
+        "url": "https://m3.material.io/components/menus/guidelines",
+        "coverage": "Full article and all static figures"
+      },
+      {
+        "url": "https://m3.material.io/components/menus/accessibility",
+        "coverage": "Full article and all static figures"
+      }
+    ],
+    "figures": {
+      "overview": 4,
+      "specs": 15,
+      "guidelines": 17,
+      "accessibility": 7
+    },
+    "videoLimit": "Text descriptions read; videos not reviewed frame by frame",
+    "tokens": {
+      "url": "https://m3.material.io/_dsm/data/dsdb-m3/2026-09-16_06-10-03/TOKEN_TABLE.385a28e5d3bb3dd0.json",
+      "sha256": "3e8771f844d13f926d9dba6978e40344e34742db3ecf36df9d76c266598fef6e",
+      "reviewedTokenIdentities": 347,
+      "distinctResolvedValues": 113,
+      "rawContextPaths": 7015,
+      "coverage": "All token identities and distinct values read through compact extraction. Raw context paths not individually reviewed. Public UI token tables rendered empty.",
+      "adoption": "No Material density, dimension or color values adopted"
+    }
+  },
+  "materialWeb": {
+    "revision": "9200eb8a0eef99c6bd439ce3968952d76e9ec1b4",
+    "sources": [
+      {
+        "url": "https://github.com/material-components/material-web/blob/9200eb8a0eef99c6bd439ce3968952d76e9ec1b4/menu/internal/menu.ts",
+        "sha256": "c80352094c2ea843f632022a147c6c15973ecc151a2ee44212abfb0a999d1a74",
+        "lines": 1036,
+        "coverage": "Read completely"
+      },
+      {
+        "url": "https://github.com/material-components/material-web/blob/9200eb8a0eef99c6bd439ce3968952d76e9ec1b4/menu/internal/menuitem/menu-item.ts",
+        "sha256": "17f43e211eabd97fd80f090e39db7544e47d678ba149e13a3ab91ebd4a2b1879",
+        "lines": 231,
+        "coverage": "Read completely"
+      },
+      {
+        "url": "https://github.com/material-components/material-web/blob/9200eb8a0eef99c6bd439ce3968952d76e9ec1b4/menu/internal/submenu/sub-menu.ts",
+        "sha256": "40e371fd36d3a9bd0fb5664af88fd7e2b700b696990a246afef1ddaf8eba7e5b",
+        "lines": 416,
+        "coverage": "Read completely"
+      },
+      {
+        "url": "https://github.com/material-components/material-web/blob/9200eb8a0eef99c6bd439ce3968952d76e9ec1b4/menu/internal/controllers/menuItemController.ts",
+        "sha256": "16d3cd7def56ca3d12634e09cb9c657a51b54aef45b51838b043ccdb889229e9",
+        "lines": 252,
+        "coverage": "Read completely"
+      },
+      {
+        "url": "https://github.com/material-components/material-web/blob/9200eb8a0eef99c6bd439ce3968952d76e9ec1b4/list/internal/list-navigation-helpers.ts",
+        "sha256": "f286d8ce7a979a402f674c1061adf40bd7161710e6feaf03495b0d05d898b91b",
+        "lines": 326,
+        "coverage": "Read completely"
+      },
+      {
+        "url": "https://github.com/material-components/material-web/blob/9200eb8a0eef99c6bd439ce3968952d76e9ec1b4/docs/components/menu.md",
+        "sha256": "140e9b74538ad1868fc348d1ef08c192ebbb508d21bff548b82ccc3e20356ff0",
+        "lines": 644,
+        "coverage": "Read completely"
+      }
+    ]
+  },
+  "otherSources": [
+    {
+      "url": "https://www.radix-ui.com/primitives/docs/components/dropdown-menu",
+      "coverage": "Complete documentation; React source not reviewed in this checkpoint"
+    },
+    {
+      "url": "https://chakra-ui.com/docs/components/menu",
+      "coverage": "Complete documentation; current source recipe not reviewed in this checkpoint"
+    },
+    {
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/menubar/",
+      "coverage": "Complete pattern documentation"
+    }
+  ],
+  "chakraPro": {
+    "collection": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19",
+    "query": "--component Menu --all",
+    "matchingEntries": 24,
+    "files": 26,
+    "distinctSourceHashes": 22,
+    "coverage": "All matching prior full-review findings consulted. This checkpoint does not claim a fresh reread of all source files.",
+    "sourceLocation": "Licensed code remains outside this repository"
+  },
+  "findings": [
+    "Disabled items remain focusable and cannot activate, following current M3/APG guidance. Material Web navigation source skips them, so its behavior is not copied unchanged.",
+    "Native semantic item actions, serializable house events, shared overlay lifetime/placement and TanStack state remain the selected boundaries.",
+    "Nested menu scope must exclude descendant menu items. Tab leaves menus; Escape closes the topmost owner and returns focus.",
+    "Checkbox/radio menu items require actual checked semantics; checkmark-only Pro examples are insufficient.",
+    "Material Web own timers/state/animation engine and DOM-bearing event payloads are reference behavior, not adopted infrastructure."
+  ],
+  "implementationFollowup": [
+    "Disabled discovery follows APG/Material guidance, not the Lit implementation skip-disabled behavior.",
+    "CSS focus-within is not a reliable parent-ownership oracle for nested native popovers; composed slots/shadow ancestry is used.",
+    "Label and description use the existing semantic controller defaults so native element references are retained."
+  ]
+}

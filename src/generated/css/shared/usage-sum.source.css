@@ -1,0 +1,85 @@
+@media (prefers-color-scheme: dark) {
+
+}
+
+@media (width <= 560px) {
+
+}
+
+@media (width <= 900px) {
+
+}
+
+.usage-sum {
+  background: var(--surface-2);
+  border-radius: var(--r-sm);
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  display: flex;
+}
+
+.usage-sum .row2 {
+  color: var(--text-2);
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+}
+
+.usage-sum .row2 b {
+  color: var(--text);
+  font-weight: var(--acme-font-weight-500);
+  display: block;
+}
+
+.usage-sum .row2 .right {
+  text-align: right;
+}
+
+.usage-sum .bar {
+  background: var(--track);
+  border-radius: 6px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.usage-sum .bar i {
+  background: var(--ds-blue-700);
+  border-radius: 999px;
+  height: 100%;
+  display: block;
+}
+
+@media (width <= 900px) {
+
+}
+
+@media (width <= 760px) {
+
+}
+
+@media (width <= 560px) {
+
+}
+
+@media (pointer: coarse) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@supports (color: color-mix(in oklab,white,black)) {
+
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+  @media (color-gamut: p3) {
+    @supports (color: color-mix(in oklab,white,black)) {
+
+    }
+  }
+}

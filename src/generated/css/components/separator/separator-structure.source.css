@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  flex-shrink: 0;
+}
+:host([orientation="vertical"]) {
+  display: inline-flex;
+  vertical-align: top;
+  align-self: stretch;
+}
+.separator {
+  background-color: var(--acme-separator-color, var(--ds-gray-200));
+  height: max(0px, var(--acme-separator-width, 1px));
+  width: 100%;
+}
+.separator.vertical {
+  height: auto;
+  align-self: stretch;
+  width: max(0px, var(--acme-separator-width, 1px));
+}
+@media (forced-colors: active) {
+  .separator {
+    background-color: CanvasText;
+    forced-color-adjust: none;
+  }
+}

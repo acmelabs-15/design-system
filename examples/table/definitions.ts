@@ -1,0 +1,9 @@
+import "@acmelabs/design-system/define/table";
+import "@acmelabs/design-system/define/button";
+import "@acmelabs/design-system/define/checkbox";
+import "@acmelabs/design-system/define/input";
+import "@acmelabs/design-system/define/pagination";
+import "@acmelabs/design-system/define/pagination-position";
+import "@acmelabs/design-system/define/pagination-previous";
+import "@acmelabs/design-system/define/pagination-next";
+import "@acmelabs/design-system/define/pagination-page-size";

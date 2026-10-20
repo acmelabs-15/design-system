@@ -1,0 +1,468 @@
+{
+  "date": "2026-09-23",
+  "status": "accepted at native/Lit boundary",
+  "scope": "M-03 Feedback; completes M18",
+  "contract": "notes/alignment/inventory/messages-statistics.md#M-03",
+  "implementation": [
+    "Field, Radio Group/Radio Card, Group, Textarea, Input, Select/Option, Alert and Button composition",
+    "Canonical immutable FeedbackValue and topic snapshots",
+    "Application-owned submission, pending and failure; no network/endpoint/metadata collection",
+    "Native validation, whole-form edit events, optional email/topic, reset to first-render supplied value",
+    "Separate Toggle Tip/Dialog compositions retain draft and own overlay behavior"
+  ],
+  "engineering": [
+    "Accepted submission blocks duplicates until the app resolves status, supplies an error, replaces/edits value or resets. Canceled requests retain an available form.",
+    "requestSubmit waits for current shared controls before native validation; same-turn value changes cannot submit stale rendered values.",
+    "Empty optional selections pass undefined to the canonical selection controls.",
+    "Tall Toggle Tip content uses Floating UI size after flip and a scrollable inner region, keeping the close control visible.",
+    "Pointer-driven WebKit blur to document body inside Toggle Tip no longer counts as an outside focus move; actual outside focus and keyboard departure remain independently verified.",
+    "Ratings preserve the four existing text meanings and use descriptive string values."
+  ],
+  "reference": {
+    "url": "https://floating-ui.com/docs/size",
+    "review": "Complete size middleware docs: nonnegative available height, border-box overflow and bestFit flip before size."
+  },
+  "verification": {
+    "helpRegression": {
+      "source": "/tmp/acme-m18-feedback/help-regression-final.log",
+      "checksPerEngine": 23
+    },
+    "strictBuild": true,
+    "site": {
+      "pages": 105,
+      "elements": 4311,
+      "undocumented": 0
+    },
+    "suite": {
+      "pass": 867,
+      "fail": 0
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "required message validation prevents application submission and focuses the editor",
+            "pass": true
+          },
+          {
+            "name": "submission is application-owned and repeated activation cannot duplicate it",
+            "pass": true
+          },
+          {
+            "name": "canceling a submit request leaves the form available",
+            "pass": true
+          },
+          {
+            "name": "optional email uses native validity and preserves a failed draft",
+            "pass": true
+          },
+          {
+            "name": "rating and topic selection publish whole-form values with no scalar event leak",
+            "pass": true
+          },
+          {
+            "name": "reset restores the initial supplied value without emitting user edits",
+            "pass": true
+          },
+          {
+            "name": "busy state prevents edits and submission while retaining the draft",
+            "pass": true
+          },
+          {
+            "name": "custom actions submit and reset while authored nodes remain stable",
+            "pass": true
+          },
+          {
+            "name": "form fields retain accessible names and narrow RTL layout",
+            "pass": true
+          },
+          {
+            "name": "immediate programmatic submission validates the current value rather than the previous render",
+            "pass": true
+          },
+          {
+            "name": "Toggle Tip composition retains the draft and owns dismissal",
+            "pass": true
+          },
+          {
+            "name": "rating keyboard navigation updates one form value and both edit events",
+            "pass": true
+          },
+          {
+            "name": "Dialog composition exposes one form and retains draft across dismissal",
+            "pass": true
+          },
+          {
+            "name": "a tall Toggle Tip form remains reachable when neither side of its trigger fits",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "required message validation prevents application submission and focuses the editor",
+            "pass": true
+          },
+          {
+            "name": "submission is application-owned and repeated activation cannot duplicate it",
+            "pass": true
+          },
+          {
+            "name": "canceling a submit request leaves the form available",
+            "pass": true
+          },
+          {
+            "name": "optional email uses native validity and preserves a failed draft",
+            "pass": true
+          },
+          {
+            "name": "rating and topic selection publish whole-form values with no scalar event leak",
+            "pass": true
+          },
+          {
+            "name": "reset restores the initial supplied value without emitting user edits",
+            "pass": true
+          },
+          {
+            "name": "busy state prevents edits and submission while retaining the draft",
+            "pass": true
+          },
+          {
+            "name": "custom actions submit and reset while authored nodes remain stable",
+            "pass": true
+          },
+          {
+            "name": "form fields retain accessible names and narrow RTL layout",
+            "pass": true
+          },
+          {
+            "name": "immediate programmatic submission validates the current value rather than the previous render",
+            "pass": true
+          },
+          {
+            "name": "Toggle Tip composition retains the draft and owns dismissal",
+            "pass": true
+          },
+          {
+            "name": "rating keyboard navigation updates one form value and both edit events",
+            "pass": true
+          },
+          {
+            "name": "Dialog composition exposes one form and retains draft across dismissal",
+            "pass": true
+          },
+          {
+            "name": "a tall Toggle Tip form remains reachable when neither side of its trigger fits",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "required message validation prevents application submission and focuses the editor",
+            "pass": true
+          },
+          {
+            "name": "submission is application-owned and repeated activation cannot duplicate it",
+            "pass": true
+          },
+          {
+            "name": "canceling a submit request leaves the form available",
+            "pass": true
+          },
+          {
+            "name": "optional email uses native validity and preserves a failed draft",
+            "pass": true
+          },
+          {
+            "name": "rating and topic selection publish whole-form values with no scalar event leak",
+            "pass": true
+          },
+          {
+            "name": "reset restores the initial supplied value without emitting user edits",
+            "pass": true
+          },
+          {
+            "name": "busy state prevents edits and submission while retaining the draft",
+            "pass": true
+          },
+          {
+            "name": "custom actions submit and reset while authored nodes remain stable",
+            "pass": true
+          },
+          {
+            "name": "form fields retain accessible names and narrow RTL layout",
+            "pass": true
+          },
+          {
+            "name": "immediate programmatic submission validates the current value rather than the previous render",
+            "pass": true
+          },
+          {
+            "name": "Toggle Tip composition retains the draft and owns dismissal",
+            "pass": true
+          },
+          {
+            "name": "rating keyboard navigation updates one form value and both edit events",
+            "pass": true
+          },
+          {
+            "name": "Dialog composition exposes one form and retains draft across dismissal",
+            "pass": true
+          },
+          {
+            "name": "a tall Toggle Tip form remains reachable when neither side of its trigger fits",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "required message validation prevents application submission and focuses the editor",
+            "pass": true
+          },
+          {
+            "name": "submission is application-owned and repeated activation cannot duplicate it",
+            "pass": true
+          },
+          {
+            "name": "canceling a submit request leaves the form available",
+            "pass": true
+          },
+          {
+            "name": "optional email uses native validity and preserves a failed draft",
+            "pass": true
+          },
+          {
+            "name": "rating and topic selection publish whole-form values with no scalar event leak",
+            "pass": true
+          },
+          {
+            "name": "reset restores the initial supplied value without emitting user edits",
+            "pass": true
+          },
+          {
+            "name": "busy state prevents edits and submission while retaining the draft",
+            "pass": true
+          },
+          {
+            "name": "custom actions submit and reset while authored nodes remain stable",
+            "pass": true
+          },
+          {
+            "name": "form fields retain accessible names and narrow RTL layout",
+            "pass": true
+          },
+          {
+            "name": "immediate programmatic submission validates the current value rather than the previous render",
+            "pass": true
+          },
+          {
+            "name": "Toggle Tip composition retains the draft and owns dismissal",
+            "pass": true
+          },
+          {
+            "name": "rating keyboard navigation updates one form value and both edit events",
+            "pass": true
+          },
+          {
+            "name": "Dialog composition exposes one form and retains draft across dismissal",
+            "pass": true
+          },
+          {
+            "name": "a tall Toggle Tip form remains reachable when neither side of its trigger fits",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "required message validation prevents application submission and focuses the editor",
+            "pass": true
+          },
+          {
+            "name": "submission is application-owned and repeated activation cannot duplicate it",
+            "pass": true
+          },
+          {
+            "name": "canceling a submit request leaves the form available",
+            "pass": true
+          },
+          {
+            "name": "optional email uses native validity and preserves a failed draft",
+            "pass": true
+          },
+          {
+            "name": "rating and topic selection publish whole-form values with no scalar event leak",
+            "pass": true
+          },
+          {
+            "name": "reset restores the initial supplied value without emitting user edits",
+            "pass": true
+          },
+          {
+            "name": "busy state prevents edits and submission while retaining the draft",
+            "pass": true
+          },
+          {
+            "name": "custom actions submit and reset while authored nodes remain stable",
+            "pass": true
+          },
+          {
+            "name": "form fields retain accessible names and narrow RTL layout",
+            "pass": true
+          },
+          {
+            "name": "immediate programmatic submission validates the current value rather than the previous render",
+            "pass": true
+          },
+          {
+            "name": "Toggle Tip composition retains the draft and owns dismissal",
+            "pass": true
+          },
+          {
+            "name": "rating keyboard navigation updates one form value and both edit events",
+            "pass": true
+          },
+          {
+            "name": "Dialog composition exposes one form and retains draft across dismissal",
+            "pass": true
+          },
+          {
+            "name": "a tall Toggle Tip form remains reachable when neither side of its trigger fits",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "required message validation prevents application submission and focuses the editor",
+            "pass": true
+          },
+          {
+            "name": "submission is application-owned and repeated activation cannot duplicate it",
+            "pass": true
+          },
+          {
+            "name": "canceling a submit request leaves the form available",
+            "pass": true
+          },
+          {
+            "name": "optional email uses native validity and preserves a failed draft",
+            "pass": true
+          },
+          {
+            "name": "rating and topic selection publish whole-form values with no scalar event leak",
+            "pass": true
+          },
+          {
+            "name": "reset restores the initial supplied value without emitting user edits",
+            "pass": true
+          },
+          {
+            "name": "busy state prevents edits and submission while retaining the draft",
+            "pass": true
+          },
+          {
+            "name": "custom actions submit and reset while authored nodes remain stable",
+            "pass": true
+          },
+          {
+            "name": "form fields retain accessible names and narrow RTL layout",
+            "pass": true
+          },
+          {
+            "name": "immediate programmatic submission validates the current value rather than the previous render",
+            "pass": true
+          },
+          {
+            "name": "Toggle Tip composition retains the draft and owns dismissal",
+            "pass": true
+          },
+          {
+            "name": "rating keyboard navigation updates one form value and both edit events",
+            "pass": true
+          },
+          {
+            "name": "Dialog composition exposes one form and retains draft across dismissal",
+            "pass": true
+          },
+          {
+            "name": "a tall Toggle Tip form remains reachable when neither side of its trigger fits",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "documentation": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "inline local submission",
+          "failure and retry with retained draft",
+          "Toggle Tip composition",
+          "Dialog composition",
+          "narrow layout"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "inline local submission",
+          "failure and retry with retained draft",
+          "Toggle Tip composition",
+          "Dialog composition",
+          "narrow layout"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "inline local submission",
+          "failure and retry with retained draft",
+          "Toggle Tip composition",
+          "Dialog composition",
+          "narrow layout"
+        ],
+        "errors": []
+      }
+    ]
+  },
+  "reproduction": {
+    "fixture": "src/components/feedback/__tests__/feedback.browser.ts",
+    "browserCases": "await check('required message validation prevents application submission and focuses the editor',async()=>{await page.getByRole('button',{name:'Send feedback'}).click();assert.equal(await page.evaluate(()=>window.requests.length),0);const message=page.locator('acme-textarea textarea');await message.fill('Please improve search');await page.getByRole('button',{name:'Send feedback'}).click();assert.equal(await page.evaluate(()=>window.requests.length),1);assert.equal(await page.evaluate(()=>window.requests[0].value.message),'Please improve search');});\nawait check('submission is application-owned and repeated activation cannot duplicate it',async()=>{await page.locator('acme-textarea textarea').fill('Feedback');await page.evaluate(()=>{window.feedback.requestSubmit();window.feedback.requestSubmit()});assert.equal(await page.evaluate(()=>window.requests.length),1);await page.evaluate(()=>{window.feedback.submitting=true;window.feedback.submitting=false;window.feedback.error='Try again'});assert.equal(await page.locator('acme-textarea textarea').inputValue(),'Feedback');await page.getByRole('button',{name:'Send feedback'}).click();assert.equal(await page.evaluate(()=>window.requests.length),2);});\nawait check('canceling a submit request leaves the form available',async()=>{await page.evaluate(()=>window.feedback.addEventListener('acme-request',e=>e.preventDefault()));await page.locator('acme-textarea textarea').fill('Canceled');await page.getByRole('button',{name:'Send feedback'}).click();await page.getByRole('button',{name:'Send feedback'}).click();assert.equal(await page.evaluate(()=>window.requests.length),2);});\nawait check('optional email uses native validity and preserves a failed draft',async()=>{await page.evaluate(()=>window.feedback.collectEmail=true);await page.locator('acme-textarea textarea').fill('Draft');await page.locator('acme-input input').fill('invalid');await page.getByRole('button',{name:'Send feedback'}).click();assert.equal(await page.evaluate(()=>window.requests.length),0);await page.locator('acme-input input').fill('ada@example.com');await page.getByRole('button',{name:'Send feedback'}).click();assert.equal(await page.evaluate(()=>window.requests[0].value.email),'ada@example.com');});\nawait check('rating and topic selection publish whole-form values with no scalar event leak',async()=>{await page.evaluate(()=>window.feedback.topics=[{value:'docs',label:'Documentation'},{value:'product',label:'Product'}]);await page.locator('acme-radio-card').nth(2).locator('[part=content]').click();assert.equal(await page.evaluate(()=>window.feedback.value.rating),'satisfied');await page.getByRole('combobox').click();if(engine==='chromium'){const client=await page.context().newCDPSession(page),ax=await client.send('Accessibility.getFullAXTree');assert.ok(ax.nodes.some(n=>!n.ignored&&n.role?.value==='option'&&n.name?.value==='Documentation'));await client.detach();}await page.locator('acme-option').filter({hasText:'Documentation'}).click();assert.equal(await page.evaluate(()=>window.feedback.value.topic),'docs');assert.equal(await page.evaluate(()=>window.changes.every(e=>typeof e.value==='object'&&typeof e.value.message==='string')),true);});\nawait check('reset restores the initial supplied value without emitting user edits',async()=>{await page.evaluate(()=>{const initial=document.createElement('acme-feedback');initial.id='initial';initial.value={message:'Original',rating:'satisfied'};window.feedback.replaceWith(initial);window.feedback=initial});await page.locator('acme-textarea textarea').fill('Changed');await page.evaluate(()=>window.feedback.reset());assert.equal(await page.locator('acme-textarea textarea').inputValue(),'Original');assert.equal(await page.evaluate(()=>window.feedback.value.rating),'satisfied');});\nawait check('busy state prevents edits and submission while retaining the draft',async()=>{await page.locator('acme-textarea textarea').fill('Working');await page.evaluate(()=>window.feedback.submitting=true);assert.equal(await page.locator('acme-textarea textarea').isDisabled(),true);await page.evaluate(()=>window.feedback.requestSubmit());assert.equal(await page.evaluate(()=>window.requests.length),0);await page.evaluate(()=>window.feedback.submitting=false);assert.equal(await page.locator('acme-textarea textarea').inputValue(),'Working');});\nawait check('custom actions submit and reset while authored nodes remain stable',async()=>{await page.locator('#feedback').evaluate(el=>{el.innerHTML='<button slot=\"actions\" id=\"custom\">Custom send</button><span id=\"extra\">Additional context</span>';window.extra=el.querySelector('#extra');el.querySelector('#custom').addEventListener('click',()=>el.requestSubmit())});await page.locator('acme-textarea textarea').fill('Custom submission');await page.getByRole('button',{name:'Custom send'}).click();assert.equal(await page.evaluate(()=>window.requests[0].value.message),'Custom submission');await page.evaluate(()=>window.feedback.reset());assert.equal(await page.locator('acme-textarea textarea').inputValue(),'');assert.equal(await page.evaluate(()=>window.extra===document.querySelector('#extra')),true);});\nawait check('form fields retain accessible names and narrow RTL layout',async()=>{await page.setViewportSize({width:360,height:640});await page.evaluate(()=>{document.documentElement.dir='rtl';window.feedback.collectEmail=true;window.feedback.topics=[{value:'docs',label:'Documentation'}]});assert.equal(await page.locator('acme-textarea textarea').getAttribute('aria-label'),null);if(engine==='chromium'){const client=await page.context().newCDPSession(page),ax=await client.send('Accessibility.getFullAXTree');assert.ok(ax.nodes.some(n=>!n.ignored&&n.role?.value==='textbox'&&n.name?.value==='Message'));assert.ok(ax.nodes.some(n=>!n.ignored&&n.role?.value==='radiogroup'&&n.name?.value==='How was your experience?'));await client.detach();}assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await page.screenshot({path:dir+'/'+engine+'-feedback.png'});});\nawait check('immediate programmatic submission validates the current value rather than the previous render',async()=>{await page.locator('acme-textarea textarea').fill('Previously valid');await page.evaluate(()=>{window.feedback.value={message:''};window.feedback.requestSubmit()});assert.equal(await page.evaluate(()=>window.requests.length),0);});\nawait check('Toggle Tip composition retains the draft and owns dismissal',async()=>{await page.locator('#feedback').evaluate(el=>{const help=document.createElement('acme-toggle-tip');help.innerHTML='<span slot=\"trigger\">Feedback help</span>';el.before(help);help.append(el)});await page.getByRole('button',{name:'Feedback help',exact:true}).focus();await page.keyboard.press('Enter');await page.locator('acme-textarea textarea').fill('Keep draft');await page.keyboard.press('Escape');await page.waitForFunction(()=>!document.querySelector('acme-toggle-tip').open);await page.keyboard.press('Enter');await page.locator('acme-textarea textarea').waitFor();assert.equal(await page.locator('acme-textarea textarea').inputValue(),'Keep draft');});\nawait check('rating keyboard navigation updates one form value and both edit events',async()=>{await page.locator('acme-radio-card input').first().focus();await page.keyboard.press('ArrowRight');assert.equal(await page.evaluate(()=>window.feedback.value.rating),'dissatisfied');assert.equal(await page.evaluate(()=>window.inputs.at(-1).value.rating),'dissatisfied');assert.equal(await page.evaluate(()=>window.changes.at(-1).value.rating),'dissatisfied');});\nawait check('Dialog composition exposes one form and retains draft across dismissal',async()=>{await page.locator('#feedback').evaluate(el=>{const dialog=document.createElement('acme-dialog');dialog.ariaLabel='Feedback dialog';el.before(dialog);dialog.append(el);dialog.open=true});await page.locator('dialog').waitFor();await page.locator('acme-textarea textarea').fill('Dialog draft');await page.keyboard.press('Escape');await page.waitForFunction(()=>!document.querySelector('acme-dialog').open);await page.evaluate(()=>document.querySelector('acme-dialog').open=true);await page.locator('acme-textarea textarea').waitFor();assert.equal(await page.locator('acme-textarea textarea').inputValue(),'Dialog draft');});\nawait check('a tall Toggle Tip form remains reachable when neither side of its trigger fits',async()=>{await page.setViewportSize({width:700,height:500});await page.locator('#feedback').evaluate(el=>{const help=document.createElement('acme-toggle-tip');help.style.position='fixed';help.style.top='230px';help.style.left='80px';help.innerHTML='<span slot=\"trigger\">Middle feedback</span>';el.before(help);help.append(el);el.collectEmail=true});await page.getByRole('button',{name:'Middle feedback'}).click();await page.locator('acme-textarea textarea').fill('Visible action');await page.getByRole('button',{name:'Send feedback'}).click();await page.waitForFunction(()=>window.requests.length===1);const box=await page.locator('acme-toggle-tip').evaluate(el=>el.shadowRoot.querySelector('[part=content]').getBoundingClientRect().toJSON());assert.ok(box.y>=0&&box.y+box.height<=501);});\n",
+    "dataTests": "src/shared/__tests__/feedback-data.test.ts"
+  },
+  "limits": [
+    "Actual Safari/assistive technology and React package acceptance remain M22/M26.",
+    "Playwright option-name discovery misses ElementInternals names. Native Chromium accessibility confirms Documentation; a direct option text locator verifies interaction in all engines."
+  ],
+  "scratch": "/tmp/acme-m18-feedback"
+}

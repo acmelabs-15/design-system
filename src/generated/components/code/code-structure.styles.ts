@@ -1,0 +1,68 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const codeStructureCss = css`:host {
+  font-family: var(--acme-font-mono, monospace);
+  font-size: var(--t-sm, 13px);
+  line-height: 18px;
+  display: inline;
+}
+
+[part="root"] {
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  background: var(--comp);
+  white-space: break-spaces;
+  font-feature-settings: "liga" off;
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+.token.namespace {
+  opacity: .7;
+}
+
+.token.atrule {
+  font-weight: var(--acme-font-weight-600, 600);
+}
+
+.token.keyword {
+  color: var(--ds-pink-900);
+}
+
+.token.function, .token.tag, .token.class-name, .token.number {
+  color: var(--ds-blue-900);
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.deleted, .token.property, .token.entity {
+  color: var(--ds-red-900);
+}
+
+.token.inserted {
+  color: var(--ds-blue-900);
+}
+
+.token.selector, .token.string, .token.attr-value, .token.url, .token.symbol, .token.boolean, .token.variable, .token.constant {
+  color: var(--ds-green-900);
+}
+
+.token.punctuation, .token.operator {
+  color: var(--ds-gray-1000);
+}
+
+.token.important, .token.bold {
+  font-weight: var(--acme-font-weight-700, 700);
+}
+
+.token.attr-name, .token.regex {
+  color: var(--ds-amber-900);
+}
+
+.token.comment, .token.prolog, .token.doctype, .token.cdata {
+  color: var(--accents-5);
+}
+`;

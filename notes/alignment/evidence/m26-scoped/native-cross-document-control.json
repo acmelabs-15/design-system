@@ -1,0 +1,30 @@
+[
+  {
+    "name": "chromium",
+    "version": "154.0.8037.57",
+    "errors": [],
+    "direct": {
+      "instance": true,
+      "document": true
+    },
+    "imported": {
+      "instance": true,
+      "document": true
+    }
+  },
+  {
+    "name": "webkit",
+    "version": "26.6",
+    "errors": [
+      "NotSupportedError: A newly constructed custom element belongs to a wrong document"
+    ],
+    "direct": {
+      "instance": false,
+      "document": true
+    },
+    "imported": {
+      "instance": true,
+      "document": true
+    }
+  }
+]

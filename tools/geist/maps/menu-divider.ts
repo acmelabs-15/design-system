@@ -4,6 +4,7 @@ import { CLOSED } from "./menu";
 import type { GeistMap } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "menu",
   component: "MenuDivider",
   root: "data-geist-menu-divider",

@@ -10,6 +10,7 @@
 import type { GeistMap } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "context-menu",
   component: "ContextMenuContent",
   root: (n) => n.attrs.role === "menu" && "data-radix-menu-content" in n.attrs,

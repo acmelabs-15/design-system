@@ -1,0 +1,65 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const dataListLightCss = css`acme-data-list > dl {
+  --_data-gap: var(--acme-spacing-3);
+  grid-template-columns: minmax(0,var(--acme-data-list-column-width, 12rem)) minmax(0,1fr);
+  gap: var(--_data-gap) var(--acme-spacing-4);
+  font: inherit;
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  display: grid;
+}
+
+acme-data-list[size="small"] > dl {
+  --_data-gap: var(--acme-spacing-2);
+  font-size: 13px;
+}
+
+acme-data-list[size="large"] > dl {
+  --_data-gap: var(--acme-spacing-4);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+acme-data-list > dl > div {
+  grid-template-columns: subgrid;
+  gap: var(--_data-gap) var(--acme-spacing-4);
+  grid-column: 1 / -1;
+  min-inline-size: 0;
+  display: grid;
+}
+
+acme-data-list > dl > dt, acme-data-list > dl > div > dt {
+  color: var(--ds-gray-900);
+  font-weight: var(--acme-font-weight-500);
+  overflow-wrap: anywhere;
+  grid-column: 1;
+}
+
+acme-data-list > dl > dd, acme-data-list > dl > div > dd {
+  min-inline-size: 0;
+  color: var(--ds-gray-1000);
+  overflow-wrap: anywhere;
+  grid-column: 2;
+  margin: 0;
+}
+
+acme-data-list[orientation="vertical"] > dl {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+acme-data-list[orientation="vertical"] > dl > dd, acme-data-list[orientation="vertical"] > dl > div > dd {
+  grid-column: 1;
+}
+
+@container (width < 24rem) {
+  acme-data-list > dl {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  acme-data-list > dl > dd, acme-data-list > dl > div > dd {
+    grid-column: 1;
+  }
+}
+`;

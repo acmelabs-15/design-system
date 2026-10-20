@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Notification settings</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/styles/tokens.css">
+<style>
+body { font-family: var(--acme-font-sans, sans-serif); padding: 32px 20px; color: var(--ds-gray-1000); background: var(--ds-background-100); }
+main { max-width: 480px; margin: 0 auto; }
+h1 { font-size: 28px; margin: 0 0 12px; }
+p { line-height: 1.5; margin: 0 0 24px; }
+form { display: grid; gap: 24px; }
+.actions { display: flex; gap: 12px; }
+section { margin-top: 32px; border-top: 1px solid var(--ds-gray-400); padding-top: 24px; }
+h2 { font-size: 18px; margin: 0 0 12px; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.6; }
+</style>
+<script type="module">
+import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/field.js";
+import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/input.js";
+import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/select.js";
+import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/switch.js";
+import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/button.js";
+import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/option.js";
+const form = document.querySelector('form');
+const receipt = document.querySelector('#receipt');
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  receipt.textContent = JSON.stringify(Array.from(new FormData(form).entries()), null, 2);
+});
+form.addEventListener('reset', () => {
+  receipt.textContent = 'Settings restored to their initial values.';
+});
+</script>
+</head>
+<body>
+<main>
+<h1>Notification settings</h1>
+<p>Choose where we send updates. Save displays your settings here without sending them anywhere.</p>
+<form>
+  <acme-field required>
+    <span slot="label">Email</span>
+    <acme-input name="email" type="email" value="alex@example.com" autocomplete="email" required></acme-input>
+    <span slot="help">Required. Use an email address you check regularly.</span>
+  </acme-field>
+  <acme-field>
+    <span slot="label">Plan</span>
+    <acme-select name="plan" value="starter">
+      <acme-option value="starter">Starter</acme-option>
+      <acme-option value="pro">Pro</acme-option>
+      <acme-option value="team">Team</acme-option>
+    </acme-select>
+  </acme-field>
+  <acme-switch name="notifications" value="enabled" checked>Email notifications</acme-switch>
+  <div class="actions">
+    <acme-button type="submit">Save</acme-button>
+    <acme-button type="reset" variant="secondary">Reset</acme-button>
+  </div>
+</form>
+<section aria-labelledby="receipt-title">
+<h2 id="receipt-title">Save receipt</h2>
+<pre id="receipt" role="status" aria-live="polite">No settings saved yet.</pre>
+</section>
+</main>
+</body>
+</html>

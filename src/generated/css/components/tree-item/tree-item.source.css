@@ -1,0 +1,6 @@
+:host{display:block;min-inline-size:0;}
+[part=root]{display:flex;align-items:center;gap:var(--acme-spacing-2);min-inline-size:0;}
+.text{min-inline-size:0;flex:1;}
+[part=start],[part=end]{display:flex;align-items:center;flex:none;}
+[part=description]{display:block;font-size:.75rem;color:var(--ds-gray-900);}
+[hidden]{display:none;}

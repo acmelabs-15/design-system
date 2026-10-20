@@ -1,0 +1,31 @@
+import { AcmeSteps } from "../steps";
+
+customElements.define("acme-steps", AcmeSteps);
+import { AcmeStep } from "../../step/step";
+
+customElements.define("acme-step", AcmeStep);
+import { AcmeStepTrigger } from "../../step-trigger/step-trigger";
+
+customElements.define("acme-step-trigger", AcmeStepTrigger);
+import { AcmeStepContent } from "../../step-content/step-content";
+
+customElements.define("acme-step-content", AcmeStepContent);
+import { AcmeStepsPrevious } from "../../steps-previous/steps-previous";
+
+customElements.define("acme-steps-previous", AcmeStepsPrevious);
+import { AcmeStepsNext } from "../../steps-next/steps-next";
+
+customElements.define("acme-steps-next", AcmeStepsNext);
+import { AcmeTimeline } from "../../timeline/timeline";
+
+customElements.define("acme-timeline", AcmeTimeline);
+import { AcmeTimelineItem } from "../../timeline-item/timeline-item";
+
+customElements.define("acme-timeline-item", AcmeTimelineItem);
+import { AcmeSpinner } from "../../spinner/spinner";
+
+customElements.define("acme-spinner", AcmeSpinner);
+import { AcmeCheckIcon } from "../../../generated/icons/classes/check-icon";
+
+customElements.define("acme-check-icon", AcmeCheckIcon);
+document.body.innerHTML = `<acme-steps id="steps" aria-label="Setup"><acme-step value="account"><acme-step-trigger>Account</acme-step-trigger></acme-step><acme-step value="billing"><acme-step-trigger>Billing</acme-step-trigger></acme-step><acme-step value="confirm"><acme-step-trigger>Confirm</acme-step-trigger></acme-step><acme-step-content slot="panels" value="account"><input id="account" value="Initial"></acme-step-content><acme-step-content slot="panels" value="billing"><input id="billing" value="Billing"></acme-step-content><acme-step-content slot="panels" value="confirm">Ready</acme-step-content><span slot="completed">Setup complete</span><acme-steps-previous slot="actions"></acme-steps-previous><acme-steps-next slot="actions"></acme-steps-next></acme-steps><acme-timeline aria-label="Delivery"><acme-timeline-item><time slot="date" datetime="2026-09-21">Monday</time><h3 slot="heading">Ordered</h3>Placed order.</acme-timeline-item><acme-timeline-item><time slot="date" datetime="2026-09-22">Tuesday</time><h3 slot="heading">Shipped</h3>On the way.</acme-timeline-item></acme-timeline>`;

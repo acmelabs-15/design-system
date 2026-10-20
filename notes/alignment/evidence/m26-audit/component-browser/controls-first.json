@@ -1,0 +1,1301 @@
+[
+  {
+    "engine": "chromium",
+    "suite": "tooltip",
+    "results": [
+      {
+        "name": "Tooltip opens on native focus without adding a wrapper tab stop",
+        "pass": true
+      },
+      {
+        "name": "Tooltip preserves prior descriptions and adds readable help for native and component buttons",
+        "pass": true
+      },
+      {
+        "name": "Escape closes without stealing focus or reopening while focus stays on the trigger",
+        "pass": true
+      },
+      {
+        "name": "pointer moves between trigger and preview without flicker and leave closes",
+        "pass": true
+      },
+      {
+        "name": "Hover Card preserves native destination activation and never focuses its preview",
+        "pass": true
+      },
+      {
+        "name": "delayed opening is canceled by pointer departure and disconnection",
+        "pass": true
+      },
+      {
+        "name": "changing content updates the existing description and disabled closes the surface",
+        "pass": true
+      },
+      {
+        "name": "Toggle Tip opens only on explicit activation and exposes dialog relationships",
+        "pass": true
+      },
+      {
+        "name": "keyboard activation moves into content and Escape returns to its native button",
+        "pass": true
+      },
+      {
+        "name": "Toggle Tip preserves content state through close and reopen without modal isolation",
+        "pass": true
+      },
+      {
+        "name": "outside focus closes Toggle Tip without stealing the new focus",
+        "pass": true
+      },
+      {
+        "name": "cancelable dismissal and explicit flags preserve an open Toggle Tip",
+        "pass": true
+      },
+      {
+        "name": "nested help consumes Escape once without dismissing its parent Dialog",
+        "pass": true
+      },
+      {
+        "name": "removing an open anchor closes its surface and native top-layer lifetime",
+        "pass": true
+      },
+      {
+        "name": "noninteractive preview content cannot add unreachable focus stops",
+        "pass": true
+      },
+      {
+        "name": "Tooltip preserves complete punctuation and owns no shadow",
+        "pass": true
+      },
+      {
+        "name": "repeated reconnect cleans descriptions without duplicating them",
+        "pass": true
+      },
+      {
+        "name": "normal-motion close and reopen retain one native surface and finish cleanly",
+        "pass": true
+      },
+      {
+        "name": "normal-motion Toggle Tip exit restores focus only after its owned fade",
+        "pass": true
+      },
+      {
+        "name": "all preferred sides stay inside a narrow viewport and maintain the native top layer",
+        "pass": true
+      },
+      {
+        "name": "the visible tooltip has its own readable text in the native accessibility tree",
+        "pass": true
+      },
+      {
+        "name": "live trigger labels name the dialog through native element references",
+        "pass": true
+      },
+      {
+        "name": "open help follows its trigger theme, public token changes and direction",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "number-input",
+    "results": [
+      {
+        "name": "fixture completes",
+        "pass": false,
+        "error": "TimeoutError: hover: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#custom-inc').getByRole('button')\u001b[22m\n"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "pin-input",
+    "results": [
+      {
+        "name": "pinInputSlotRegression",
+        "pass": true
+      },
+      {
+        "name": "initial cells and joined native submission",
+        "pass": true
+      },
+      {
+        "name": "partial code fails native validity",
+        "pass": true
+      },
+      {
+        "name": "typing advances focus",
+        "pass": true
+      },
+      {
+        "name": "complete code satisfies native validation",
+        "pass": true
+      },
+      {
+        "name": "deletion shifts without holes",
+        "pass": true
+      },
+      {
+        "name": "native reset restores cells",
+        "pass": true
+      },
+      {
+        "name": "backspace from empty removes prior value",
+        "pass": true
+      },
+      {
+        "name": "completed-code focus navigation still works",
+        "pass": true
+      },
+      {
+        "name": "completion emits one commit and one completion",
+        "pass": true
+      },
+      {
+        "name": "blurOnComplete blurs only on the completion transition",
+        "pass": true
+      },
+      {
+        "name": "completion does not submit by default",
+        "pass": true
+      },
+      {
+        "name": "explicit autoSubmit uses the complete native value",
+        "pass": true
+      },
+      {
+        "name": "programmatic assignment and autocomplete restoration stay silent",
+        "pass": true
+      },
+      {
+        "name": "composition keeps the current field and defers committed characters",
+        "pass": true
+      },
+      {
+        "name": "composition completion advances once",
+        "pass": true
+      },
+      {
+        "name": "native reset cancels an unfinished composition",
+        "pass": true
+      },
+      {
+        "name": "readonly keeps navigation without editing",
+        "pass": true
+      },
+      {
+        "name": "masking and OTP configure native controls",
+        "pass": true
+      },
+      {
+        "name": "disabled fieldset excludes the one logical value",
+        "pass": true
+      },
+      {
+        "name": "count changes resize the value and native fields",
+        "pass": true
+      },
+      {
+        "name": "full-code paste replaces from the first field",
+        "pass": true
+      },
+      {
+        "name": "partial paste preserves the left prefix and clears the remaining suffix",
+        "pass": true
+      },
+      {
+        "name": "supplied fields replace the defaults and retain authored names",
+        "pass": true
+      },
+      {
+        "name": "provided fields support real Group attachment",
+        "pass": true
+      },
+      {
+        "name": "RTL navigation follows logical code order",
+        "pass": true
+      },
+      {
+        "name": "missing provided fields fail configuration validity and orphaned fields disable",
+        "pass": true
+      },
+      {
+        "name": "field ownership transfer edits only the new root",
+        "pass": true
+      },
+      {
+        "name": "autofocus waits for default field rendering",
+        "pass": true
+      },
+      {
+        "name": "shrinking a focused code retains one reachable field",
+        "pass": true
+      },
+      {
+        "name": "OTP hint preserves an alphanumeric keyboard policy",
+        "pass": true
+      },
+      {
+        "name": "Enter uses native form submission for a complete code",
+        "pass": true
+      },
+      {
+        "name": "late owner upgrade connects indexed fields",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "suite": "slider",
+    "results": [
+      {
+        "name": "native associated labels retain NodeList",
+        "pass": true
+      },
+      {
+        "name": "immediate repeated FormData",
+        "pass": true
+      },
+      {
+        "name": "immutable value snapshot",
+        "pass": true
+      },
+      {
+        "name": "form current inside acme-input",
+        "pass": true
+      },
+      {
+        "name": "form current inside acme-change",
+        "pass": true
+      },
+      {
+        "name": "key emits one live and one completion",
+        "pass": true
+      },
+      {
+        "name": "native form reset default",
+        "pass": true
+      },
+      {
+        "name": "restoration",
+        "pass": true
+      },
+      {
+        "name": "supplied invalid values retained and invalid",
+        "pass": true
+      },
+      {
+        "name": "native displayed and announced values project into bounds",
+        "pass": true
+      },
+      {
+        "name": "transient impossible config is invalid",
+        "pass": true
+      },
+      {
+        "name": "staged properties recover exact value and submission",
+        "pass": true
+      },
+      {
+        "name": "projected thumb recovers",
+        "pass": true
+      },
+      {
+        "name": "attribute order value=\"[300]\" min=\"200\" max=\"400\"",
+        "pass": true
+      },
+      {
+        "name": "attribute order max=\"400\" min=\"200\" value=\"[300]\"",
+        "pass": true
+      },
+      {
+        "name": "Lit value-first bindings recover",
+        "pass": true
+      },
+      {
+        "name": "custom validity reaches the native slider",
+        "pass": true
+      },
+      {
+        "name": "clearing custom validity updates the native slider",
+        "pass": true
+      },
+      {
+        "name": "form current inside acme-input",
+        "pass": true
+      },
+      {
+        "name": "form current inside acme-change",
+        "pass": true
+      },
+      {
+        "name": "native completion clears its edit baseline",
+        "pass": true
+      },
+      {
+        "name": "fieldset immediate omission",
+        "pass": true
+      },
+      {
+        "name": "fieldset native disabled",
+        "pass": true
+      },
+      {
+        "name": "fieldset reenables",
+        "pass": true
+      },
+      {
+        "name": "three distinct native thumbs",
+        "pass": true
+      },
+      {
+        "name": "gap native bounds",
+        "pass": true
+      },
+      {
+        "name": "distinct authored names",
+        "pass": true
+      },
+      {
+        "name": "formatted accessible value",
+        "pass": true
+      },
+      {
+        "name": "real track click and captured drag",
+        "pass": true
+      },
+      {
+        "name": "cancel keeps live value without commit or later movement",
+        "pass": true
+      },
+      {
+        "name": "competing pointer ignored",
+        "pass": true
+      },
+      {
+        "name": "disable cancels without commit",
+        "pass": true
+      },
+      {
+        "name": "RTL right decrements",
+        "pass": true
+      },
+      {
+        "name": "Home reaches minimum",
+        "pass": true
+      },
+      {
+        "name": "PageUp largeStep",
+        "pass": true
+      },
+      {
+        "name": "Tab exits slider",
+        "pass": true
+      },
+      {
+        "name": "vertical pointer increases upward",
+        "pass": true
+      },
+      {
+        "name": "RTL pointer reverses physical position",
+        "pass": true
+      },
+      {
+        "name": "tiny decimal keys and spoken value stay exact",
+        "pass": true
+      },
+      {
+        "name": "lost capture cancels completion",
+        "pass": true
+      },
+      {
+        "name": "programmatic replacement cancels old gesture",
+        "pass": true
+      },
+      {
+        "name": "disconnect clears gesture lifetime",
+        "pass": true
+      },
+      {
+        "name": "reconnected native control is usable",
+        "pass": true
+      },
+      {
+        "name": "accessible slider naming",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "suite": "tooltip",
+    "results": [
+      {
+        "name": "Tooltip opens on native focus without adding a wrapper tab stop",
+        "pass": true
+      },
+      {
+        "name": "Tooltip preserves prior descriptions and adds readable help for native and component buttons",
+        "pass": true
+      },
+      {
+        "name": "Escape closes without stealing focus or reopening while focus stays on the trigger",
+        "pass": true
+      },
+      {
+        "name": "pointer moves between trigger and preview without flicker and leave closes",
+        "pass": true
+      },
+      {
+        "name": "Hover Card preserves native destination activation and never focuses its preview",
+        "pass": true
+      },
+      {
+        "name": "delayed opening is canceled by pointer departure and disconnection",
+        "pass": true
+      },
+      {
+        "name": "changing content updates the existing description and disabled closes the surface",
+        "pass": true
+      },
+      {
+        "name": "Toggle Tip opens only on explicit activation and exposes dialog relationships",
+        "pass": true
+      },
+      {
+        "name": "keyboard activation moves into content and Escape returns to its native button",
+        "pass": true
+      },
+      {
+        "name": "Toggle Tip preserves content state through close and reopen without modal isolation",
+        "pass": true
+      },
+      {
+        "name": "outside focus closes Toggle Tip without stealing the new focus",
+        "pass": true
+      },
+      {
+        "name": "cancelable dismissal and explicit flags preserve an open Toggle Tip",
+        "pass": true
+      },
+      {
+        "name": "nested help consumes Escape once without dismissing its parent Dialog",
+        "pass": true
+      },
+      {
+        "name": "removing an open anchor closes its surface and native top-layer lifetime",
+        "pass": true
+      },
+      {
+        "name": "noninteractive preview content cannot add unreachable focus stops",
+        "pass": true
+      },
+      {
+        "name": "Tooltip preserves complete punctuation and owns no shadow",
+        "pass": true
+      },
+      {
+        "name": "repeated reconnect cleans descriptions without duplicating them",
+        "pass": true
+      },
+      {
+        "name": "normal-motion close and reopen retain one native surface and finish cleanly",
+        "pass": true
+      },
+      {
+        "name": "normal-motion Toggle Tip exit restores focus only after its owned fade",
+        "pass": true
+      },
+      {
+        "name": "all preferred sides stay inside a narrow viewport and maintain the native top layer",
+        "pass": true
+      },
+      {
+        "name": "the visible tooltip has its own readable text in the native accessibility tree",
+        "pass": true
+      },
+      {
+        "name": "live trigger labels name the dialog through native element references",
+        "pass": true
+      },
+      {
+        "name": "open help follows its trigger theme, public token changes and direction",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "suite": "number-input",
+    "results": [
+      {
+        "name": "fixture completes",
+        "pass": false,
+        "error": "TimeoutError: hover: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#custom-inc').getByRole('button')\u001b[22m\n"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "suite": "pin-input",
+    "results": [
+      {
+        "name": "pinInputSlotRegression",
+        "pass": true
+      },
+      {
+        "name": "initial cells and joined native submission",
+        "pass": true
+      },
+      {
+        "name": "partial code fails native validity",
+        "pass": true
+      },
+      {
+        "name": "typing advances focus",
+        "pass": true
+      },
+      {
+        "name": "complete code satisfies native validation",
+        "pass": true
+      },
+      {
+        "name": "deletion shifts without holes",
+        "pass": true
+      },
+      {
+        "name": "native reset restores cells",
+        "pass": true
+      },
+      {
+        "name": "backspace from empty removes prior value",
+        "pass": true
+      },
+      {
+        "name": "completed-code focus navigation still works",
+        "pass": true
+      },
+      {
+        "name": "completion emits one commit and one completion",
+        "pass": true
+      },
+      {
+        "name": "blurOnComplete blurs only on the completion transition",
+        "pass": true
+      },
+      {
+        "name": "completion does not submit by default",
+        "pass": true
+      },
+      {
+        "name": "explicit autoSubmit uses the complete native value",
+        "pass": true
+      },
+      {
+        "name": "programmatic assignment and autocomplete restoration stay silent",
+        "pass": true
+      },
+      {
+        "name": "composition keeps the current field and defers committed characters",
+        "pass": true
+      },
+      {
+        "name": "composition completion advances once",
+        "pass": true
+      },
+      {
+        "name": "native reset cancels an unfinished composition",
+        "pass": true
+      },
+      {
+        "name": "readonly keeps navigation without editing",
+        "pass": true
+      },
+      {
+        "name": "masking and OTP configure native controls",
+        "pass": true
+      },
+      {
+        "name": "disabled fieldset excludes the one logical value",
+        "pass": true
+      },
+      {
+        "name": "count changes resize the value and native fields",
+        "pass": true
+      },
+      {
+        "name": "full-code paste replaces from the first field",
+        "pass": true
+      },
+      {
+        "name": "partial paste preserves the left prefix and clears the remaining suffix",
+        "pass": true
+      },
+      {
+        "name": "supplied fields replace the defaults and retain authored names",
+        "pass": true
+      },
+      {
+        "name": "provided fields support real Group attachment",
+        "pass": true
+      },
+      {
+        "name": "RTL navigation follows logical code order",
+        "pass": true
+      },
+      {
+        "name": "missing provided fields fail configuration validity and orphaned fields disable",
+        "pass": true
+      },
+      {
+        "name": "field ownership transfer edits only the new root",
+        "pass": true
+      },
+      {
+        "name": "autofocus waits for default field rendering",
+        "pass": true
+      },
+      {
+        "name": "shrinking a focused code retains one reachable field",
+        "pass": true
+      },
+      {
+        "name": "OTP hint preserves an alphanumeric keyboard policy",
+        "pass": true
+      },
+      {
+        "name": "Enter uses native form submission for a complete code",
+        "pass": true
+      },
+      {
+        "name": "late owner upgrade connects indexed fields",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "suite": "slider",
+    "results": [
+      {
+        "name": "native associated labels retain NodeList",
+        "pass": true
+      },
+      {
+        "name": "immediate repeated FormData",
+        "pass": true
+      },
+      {
+        "name": "immutable value snapshot",
+        "pass": true
+      },
+      {
+        "name": "form current inside acme-input",
+        "pass": true
+      },
+      {
+        "name": "form current inside acme-change",
+        "pass": true
+      },
+      {
+        "name": "key emits one live and one completion",
+        "pass": true
+      },
+      {
+        "name": "native form reset default",
+        "pass": true
+      },
+      {
+        "name": "restoration",
+        "pass": true
+      },
+      {
+        "name": "supplied invalid values retained and invalid",
+        "pass": true
+      },
+      {
+        "name": "native displayed and announced values project into bounds",
+        "pass": true
+      },
+      {
+        "name": "transient impossible config is invalid",
+        "pass": true
+      },
+      {
+        "name": "staged properties recover exact value and submission",
+        "pass": true
+      },
+      {
+        "name": "projected thumb recovers",
+        "pass": true
+      },
+      {
+        "name": "attribute order value=\"[300]\" min=\"200\" max=\"400\"",
+        "pass": true
+      },
+      {
+        "name": "attribute order max=\"400\" min=\"200\" value=\"[300]\"",
+        "pass": true
+      },
+      {
+        "name": "Lit value-first bindings recover",
+        "pass": true
+      },
+      {
+        "name": "custom validity reaches the native slider",
+        "pass": true
+      },
+      {
+        "name": "clearing custom validity updates the native slider",
+        "pass": true
+      },
+      {
+        "name": "form current inside acme-input",
+        "pass": true
+      },
+      {
+        "name": "form current inside acme-change",
+        "pass": true
+      },
+      {
+        "name": "native completion clears its edit baseline",
+        "pass": true
+      },
+      {
+        "name": "fieldset immediate omission",
+        "pass": true
+      },
+      {
+        "name": "fieldset native disabled",
+        "pass": true
+      },
+      {
+        "name": "fieldset reenables",
+        "pass": true
+      },
+      {
+        "name": "three distinct native thumbs",
+        "pass": true
+      },
+      {
+        "name": "gap native bounds",
+        "pass": true
+      },
+      {
+        "name": "distinct authored names",
+        "pass": true
+      },
+      {
+        "name": "formatted accessible value",
+        "pass": true
+      },
+      {
+        "name": "real track click and captured drag",
+        "pass": true
+      },
+      {
+        "name": "cancel keeps live value without commit or later movement",
+        "pass": true
+      },
+      {
+        "name": "competing pointer ignored",
+        "pass": true
+      },
+      {
+        "name": "disable cancels without commit",
+        "pass": true
+      },
+      {
+        "name": "RTL right decrements",
+        "pass": true
+      },
+      {
+        "name": "Home reaches minimum",
+        "pass": true
+      },
+      {
+        "name": "PageUp largeStep",
+        "pass": true
+      },
+      {
+        "name": "Tab exits slider",
+        "pass": true
+      },
+      {
+        "name": "vertical pointer increases upward",
+        "pass": true
+      },
+      {
+        "name": "RTL pointer reverses physical position",
+        "pass": true
+      },
+      {
+        "name": "tiny decimal keys and spoken value stay exact",
+        "pass": true
+      },
+      {
+        "name": "lost capture cancels completion",
+        "pass": true
+      },
+      {
+        "name": "programmatic replacement cancels old gesture",
+        "pass": true
+      },
+      {
+        "name": "disconnect clears gesture lifetime",
+        "pass": true
+      },
+      {
+        "name": "reconnected native control is usable",
+        "pass": true
+      },
+      {
+        "name": "accessible slider naming",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "suite": "tooltip",
+    "results": [
+      {
+        "name": "Tooltip opens on native focus without adding a wrapper tab stop",
+        "pass": true
+      },
+      {
+        "name": "Tooltip preserves prior descriptions and adds readable help for native and component buttons",
+        "pass": true
+      },
+      {
+        "name": "Escape closes without stealing focus or reopening while focus stays on the trigger",
+        "pass": true
+      },
+      {
+        "name": "pointer moves between trigger and preview without flicker and leave closes",
+        "pass": true
+      },
+      {
+        "name": "Hover Card preserves native destination activation and never focuses its preview",
+        "pass": true
+      },
+      {
+        "name": "delayed opening is canceled by pointer departure and disconnection",
+        "pass": true
+      },
+      {
+        "name": "changing content updates the existing description and disabled closes the surface",
+        "pass": true
+      },
+      {
+        "name": "Toggle Tip opens only on explicit activation and exposes dialog relationships",
+        "pass": true
+      },
+      {
+        "name": "keyboard activation moves into content and Escape returns to its native button",
+        "pass": true
+      },
+      {
+        "name": "Toggle Tip preserves content state through close and reopen without modal isolation",
+        "pass": true
+      },
+      {
+        "name": "outside focus closes Toggle Tip without stealing the new focus",
+        "pass": true
+      },
+      {
+        "name": "cancelable dismissal and explicit flags preserve an open Toggle Tip",
+        "pass": true
+      },
+      {
+        "name": "nested help consumes Escape once without dismissing its parent Dialog",
+        "pass": true
+      },
+      {
+        "name": "removing an open anchor closes its surface and native top-layer lifetime",
+        "pass": true
+      },
+      {
+        "name": "noninteractive preview content cannot add unreachable focus stops",
+        "pass": true
+      },
+      {
+        "name": "Tooltip preserves complete punctuation and owns no shadow",
+        "pass": true
+      },
+      {
+        "name": "repeated reconnect cleans descriptions without duplicating them",
+        "pass": true
+      },
+      {
+        "name": "normal-motion close and reopen retain one native surface and finish cleanly",
+        "pass": true
+      },
+      {
+        "name": "normal-motion Toggle Tip exit restores focus only after its owned fade",
+        "pass": true
+      },
+      {
+        "name": "all preferred sides stay inside a narrow viewport and maintain the native top layer",
+        "pass": true
+      },
+      {
+        "name": "the visible tooltip has its own readable text in the native accessibility tree",
+        "pass": true
+      },
+      {
+        "name": "live trigger labels name the dialog through native element references",
+        "pass": true
+      },
+      {
+        "name": "open help follows its trigger theme, public token changes and direction",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "suite": "number-input",
+    "results": [
+      {
+        "name": "fixture completes",
+        "pass": false,
+        "error": "TimeoutError: hover: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#custom-inc').getByRole('button')\u001b[22m\n"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "suite": "pin-input",
+    "results": [
+      {
+        "name": "pinInputSlotRegression",
+        "pass": true
+      },
+      {
+        "name": "initial cells and joined native submission",
+        "pass": true
+      },
+      {
+        "name": "partial code fails native validity",
+        "pass": true
+      },
+      {
+        "name": "typing advances focus",
+        "pass": true
+      },
+      {
+        "name": "complete code satisfies native validation",
+        "pass": true
+      },
+      {
+        "name": "deletion shifts without holes",
+        "pass": true
+      },
+      {
+        "name": "native reset restores cells",
+        "pass": true
+      },
+      {
+        "name": "backspace from empty removes prior value",
+        "pass": true
+      },
+      {
+        "name": "completed-code focus navigation still works",
+        "pass": true
+      },
+      {
+        "name": "completion emits one commit and one completion",
+        "pass": true
+      },
+      {
+        "name": "blurOnComplete blurs only on the completion transition",
+        "pass": true
+      },
+      {
+        "name": "completion does not submit by default",
+        "pass": true
+      },
+      {
+        "name": "explicit autoSubmit uses the complete native value",
+        "pass": true
+      },
+      {
+        "name": "programmatic assignment and autocomplete restoration stay silent",
+        "pass": true
+      },
+      {
+        "name": "composition keeps the current field and defers committed characters",
+        "pass": true
+      },
+      {
+        "name": "composition completion advances once",
+        "pass": true
+      },
+      {
+        "name": "native reset cancels an unfinished composition",
+        "pass": true
+      },
+      {
+        "name": "readonly keeps navigation without editing",
+        "pass": true
+      },
+      {
+        "name": "masking and OTP configure native controls",
+        "pass": true
+      },
+      {
+        "name": "disabled fieldset excludes the one logical value",
+        "pass": true
+      },
+      {
+        "name": "count changes resize the value and native fields",
+        "pass": true
+      },
+      {
+        "name": "full-code paste replaces from the first field",
+        "pass": true
+      },
+      {
+        "name": "partial paste preserves the left prefix and clears the remaining suffix",
+        "pass": true
+      },
+      {
+        "name": "supplied fields replace the defaults and retain authored names",
+        "pass": true
+      },
+      {
+        "name": "provided fields support real Group attachment",
+        "pass": true
+      },
+      {
+        "name": "RTL navigation follows logical code order",
+        "pass": true
+      },
+      {
+        "name": "missing provided fields fail configuration validity and orphaned fields disable",
+        "pass": true
+      },
+      {
+        "name": "field ownership transfer edits only the new root",
+        "pass": true
+      },
+      {
+        "name": "autofocus waits for default field rendering",
+        "pass": true
+      },
+      {
+        "name": "shrinking a focused code retains one reachable field",
+        "pass": true
+      },
+      {
+        "name": "OTP hint preserves an alphanumeric keyboard policy",
+        "pass": true
+      },
+      {
+        "name": "Enter uses native form submission for a complete code",
+        "pass": true
+      },
+      {
+        "name": "late owner upgrade connects indexed fields",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "suite": "slider",
+    "results": [
+      {
+        "name": "native associated labels retain NodeList",
+        "pass": true
+      },
+      {
+        "name": "immediate repeated FormData",
+        "pass": true
+      },
+      {
+        "name": "immutable value snapshot",
+        "pass": true
+      },
+      {
+        "name": "form current inside acme-input",
+        "pass": true
+      },
+      {
+        "name": "form current inside acme-change",
+        "pass": true
+      },
+      {
+        "name": "key emits one live and one completion",
+        "pass": true
+      },
+      {
+        "name": "native form reset default",
+        "pass": true
+      },
+      {
+        "name": "restoration",
+        "pass": true
+      },
+      {
+        "name": "supplied invalid values retained and invalid",
+        "pass": true
+      },
+      {
+        "name": "native displayed and announced values project into bounds",
+        "pass": true
+      },
+      {
+        "name": "transient impossible config is invalid",
+        "pass": true
+      },
+      {
+        "name": "staged properties recover exact value and submission",
+        "pass": true
+      },
+      {
+        "name": "projected thumb recovers",
+        "pass": true
+      },
+      {
+        "name": "attribute order value=\"[300]\" min=\"200\" max=\"400\"",
+        "pass": true
+      },
+      {
+        "name": "attribute order max=\"400\" min=\"200\" value=\"[300]\"",
+        "pass": true
+      },
+      {
+        "name": "Lit value-first bindings recover",
+        "pass": true
+      },
+      {
+        "name": "custom validity reaches the native slider",
+        "pass": true
+      },
+      {
+        "name": "clearing custom validity updates the native slider",
+        "pass": true
+      },
+      {
+        "name": "form current inside acme-input",
+        "pass": true
+      },
+      {
+        "name": "form current inside acme-change",
+        "pass": true
+      },
+      {
+        "name": "native completion clears its edit baseline",
+        "pass": true
+      },
+      {
+        "name": "fieldset immediate omission",
+        "pass": true
+      },
+      {
+        "name": "fieldset native disabled",
+        "pass": true
+      },
+      {
+        "name": "fieldset reenables",
+        "pass": true
+      },
+      {
+        "name": "three distinct native thumbs",
+        "pass": true
+      },
+      {
+        "name": "gap native bounds",
+        "pass": true
+      },
+      {
+        "name": "distinct authored names",
+        "pass": true
+      },
+      {
+        "name": "formatted accessible value",
+        "pass": true
+      },
+      {
+        "name": "real track click and captured drag",
+        "pass": true
+      },
+      {
+        "name": "cancel keeps live value without commit or later movement",
+        "pass": true
+      },
+      {
+        "name": "competing pointer ignored",
+        "pass": true
+      },
+      {
+        "name": "disable cancels without commit",
+        "pass": true
+      },
+      {
+        "name": "RTL right decrements",
+        "pass": true
+      },
+      {
+        "name": "Home reaches minimum",
+        "pass": true
+      },
+      {
+        "name": "PageUp largeStep",
+        "pass": true
+      },
+      {
+        "name": "Tab exits slider",
+        "pass": true
+      },
+      {
+        "name": "vertical pointer increases upward",
+        "pass": true
+      },
+      {
+        "name": "RTL pointer reverses physical position",
+        "pass": true
+      },
+      {
+        "name": "tiny decimal keys and spoken value stay exact",
+        "pass": true
+      },
+      {
+        "name": "lost capture cancels completion",
+        "pass": true
+      },
+      {
+        "name": "programmatic replacement cancels old gesture",
+        "pass": true
+      },
+      {
+        "name": "disconnect clears gesture lifetime",
+        "pass": true
+      },
+      {
+        "name": "reconnected native control is usable",
+        "pass": true
+      },
+      {
+        "name": "accessible slider naming",
+        "pass": true
+      }
+    ],
+    "errors": []
+  }
+]

@@ -1,0 +1,64 @@
+:host {
+  min-inline-size: 0;
+  display: block;
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
+}
+
+:host([data-toast-hidden]) {
+  display: none;
+}
+
+[part="root"] {
+  box-sizing: border-box;
+  inline-size: 100%;
+  block-size: var(--_toast-height, auto);
+  background: var(--ds-background-100);
+  color: var(--ds-gray-1000);
+  box-shadow: var(--acme-shadow-5);
+  opacity: var(--_toast-opacity, 0);
+  transform: translate(var(--_toast-x, 0px),var(--_toast-y, 0px)) scale(var(--_toast-scale, 1));
+  transform-origin: bottom;
+  pointer-events: auto;
+  touch-action: pan-y;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+[part="root"][data-placement^="top"] {
+  transform-origin: top;
+}
+
+:host([data-toast-placement^="top"]) {
+  inset-block: 0 auto;
+}
+
+[part="root"]:focus-visible {
+  outline: 2px solid var(--ds-focus-color);
+  outline-offset: 2px;
+}
+
+[part="content"] {
+  inline-size: 100%;
+}
+
+[part="content"][aria-hidden="true"] {
+  visibility: hidden;
+}
+
+acme-alert::part(root) {
+  border-radius: inherit;
+  padding: var(--acme-spacing-4);
+  border: 0;
+}
+
+@media (forced-colors: active) {
+  [part="root"] {
+    outline: 1px solid canvastext;
+  }
+
+  [part="root"]:focus-visible {
+    outline: 2px solid highlight;
+  }
+}

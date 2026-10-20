@@ -1,0 +1,1536 @@
+{
+  "date": "2026-09-20",
+  "kind": "remaining-work-consolidation",
+  "scope": "Review routing and workflow correction only; no new component interface approval",
+  "groups": [
+    {
+      "id": "R01",
+      "name": "Shared rules and themes",
+      "sources": [],
+      "targets": [
+        "Responsive values and containers",
+        "Spacing, dimensions and density",
+        "Native semantics and accessible naming",
+        "Theme scopes and blue accent",
+        "Motion, shape and public customization",
+        "Controlled inputs, events and style helper"
+      ],
+      "record": "inventory.md#c-resp-shared-responsive-convention"
+    },
+    {
+      "id": "R02",
+      "name": "Layout and attached groups",
+      "sources": [
+        "button-group",
+        "grid",
+        "grid-cell",
+        "grid-cross",
+        "grid-page",
+        "grid-system",
+        "scroller",
+        "separator",
+        "panels"
+      ],
+      "targets": [
+        "Group",
+        "Box",
+        "Flex",
+        "Stack / HStack / VStack",
+        "Grid / Simple Grid",
+        "Inset",
+        "Separator",
+        "Scroll Area",
+        "Resizable panes"
+      ],
+      "record": "inventory.md#g-01-group"
+    },
+    {
+      "id": "R03",
+      "name": "Text and formatting",
+      "sources": [
+        "kbd",
+        "code",
+        "middle-truncate",
+        "relative-time"
+      ],
+      "targets": [
+        "Text",
+        "Heading",
+        "Link",
+        "inline Code",
+        "Quote",
+        "Kbd",
+        "Strong",
+        "Middle Truncate",
+        "Relative Time",
+        "FormatNumber / FormatByte"
+      ],
+      "record": "inventory.md#t-01-text"
+    },
+    {
+      "id": "R04",
+      "name": "Actions, icons and identity",
+      "sources": [
+        "button",
+        "split-button",
+        "split-button-item",
+        "copy-button",
+        "chip",
+        "theme-switcher",
+        "avatar",
+        "avatar-group",
+        "icon-tile",
+        "badge",
+        "pill",
+        "tag",
+        "tags",
+        "ricon",
+        "text-copy"
+      ],
+      "targets": [
+        "Button / Icon Button / Toggle Button",
+        "Split Button and parts",
+        "Copy Button",
+        "Per-icon Material Symbols",
+        "Theme Switcher",
+        "Avatar / Avatar Group",
+        "Icon Tile",
+        "Badge / Pill / Tag"
+      ],
+      "record": "../decisions/icon-element-shape.md"
+    },
+    {
+      "id": "R05",
+      "name": "Selection and tabs",
+      "sources": [
+        "checkbox",
+        "radio",
+        "radio-group",
+        "choicebox",
+        "choicebox-item",
+        "toggle",
+        "switch",
+        "switch-control",
+        "tabs",
+        "tab",
+        "tab-panel"
+      ],
+      "targets": [
+        "Checkbox / Checkbox Group / Checkbox Cards",
+        "Radio / Radio Group / Radio Cards",
+        "Switch",
+        "Segmented Control",
+        "Tabs and parts",
+        "Shared moving indicator"
+      ],
+      "record": "../decisions/segmented-control.md"
+    },
+    {
+      "id": "R06",
+      "name": "Inputs and forms",
+      "sources": [
+        "input",
+        "textarea",
+        "select",
+        "combobox",
+        "combobox-option",
+        "multi-select",
+        "multi-select-row",
+        "search",
+        "slider",
+        "calendar",
+        "fieldset",
+        "label",
+        "clearable-input",
+        "check",
+        "filter",
+        "filters"
+      ],
+      "targets": [
+        "Input / Search / Password Input",
+        "Number Input / Pin Input",
+        "Textarea",
+        "Select / ComboBox / Multi Select and parts",
+        "Slider",
+        "Calendar",
+        "Field / Fieldset / Label",
+        "Native forms, optional TanStack Form and Forms guide"
+      ],
+      "record": "../decisions/native-and-managed-forms.md"
+    },
+    {
+      "id": "R07",
+      "name": "Surfaces and content composition",
+      "sources": [
+        "card",
+        "panel",
+        "panel-head",
+        "panel-foot",
+        "link-card",
+        "entity",
+        "entity-content",
+        "entity-list",
+        "item",
+        "items",
+        "setting-row",
+        "setting-rows",
+        "kv",
+        "tile",
+        "tiles",
+        "task",
+        "tasks",
+        "bar-row",
+        "bar-rows",
+        "disabled-wall",
+        "description"
+      ],
+      "targets": [
+        "Card",
+        "Item and parts",
+        "List",
+        "Data List",
+        "Disabled Wall",
+        "Settings, selectable-card and removed-row replacement recipes"
+      ],
+      "record": "../decisions/item-content-family.md"
+    },
+    {
+      "id": "R08",
+      "name": "Navigation and disclosure",
+      "sources": [
+        "appbar",
+        "topbar",
+        "side-nav",
+        "subnav",
+        "shell",
+        "page-head",
+        "toolbar",
+        "breadcrumbs",
+        "breadcrumb",
+        "file-tree",
+        "folder",
+        "file",
+        "menu",
+        "menu-button",
+        "menu-divider",
+        "menu-section",
+        "menu-item",
+        "context-menu",
+        "command-menu",
+        "command-group",
+        "command-item",
+        "command-divider",
+        "dots-menu",
+        "collapse",
+        "collapse-group",
+        "fold",
+        "show-more",
+        "load-more"
+      ],
+      "targets": [
+        "App Bar / Toolbar",
+        "Sidebar / TOC",
+        "Breadcrumbs and parts",
+        "Tree View and file-tree presentation",
+        "Menu / Context Menu / Command Menu and parts",
+        "Accordion / Collapsible",
+        "Steps",
+        "Show / Show More / Load More",
+        "Navigation and action-menu recipes",
+        "Timeline"
+      ],
+      "record": "../decisions/navigation-compositions.md"
+    },
+    {
+      "id": "R09",
+      "name": "Messages, progress and statistics",
+      "sources": [
+        "note",
+        "banner",
+        "project-banner",
+        "empty-state",
+        "error",
+        "error-card",
+        "feedback",
+        "toast",
+        "toaster",
+        "progress",
+        "gauge",
+        "spinner",
+        "skeleton",
+        "loading-dots",
+        "stat",
+        "stat-delta",
+        "stat-desc",
+        "stat-foot",
+        "stat-strip",
+        "strip-item",
+        "trend",
+        "metric-list",
+        "metric",
+        "status-dot"
+      ],
+      "targets": [
+        "Alert / Banner",
+        "Toast and viewport",
+        "Feedback / Empty State",
+        "Spinner / Progress / Skeleton",
+        "Meter",
+        "Stat and parts",
+        "Status",
+        "Selectable-stat and removed-metric recipes"
+      ],
+      "record": "../decisions/stat-family.md"
+    },
+    {
+      "id": "R10",
+      "name": "Overlays and help",
+      "sources": [
+        "modal",
+        "modal-inset",
+        "destructive-modal",
+        "sheet",
+        "drawer",
+        "tooltip",
+        "context-card"
+      ],
+      "targets": [
+        "Dialog / Alert Dialog",
+        "Drawer",
+        "Tooltip / Hover Card / Toggle Tip",
+        "Overlay/inset composition and Popover boundary"
+      ],
+      "record": "../decisions/overlay-help-components.md"
+    },
+    {
+      "id": "R11",
+      "name": "Tables, charts and diagrams",
+      "sources": [
+        "table",
+        "pagination",
+        "chart",
+        "spark",
+        "legend",
+        "legend-item",
+        "logs"
+      ],
+      "targets": [
+        "Table and complete consumer TanStack compatibility",
+        "Results Pagination and optional parts",
+        "Chart / Sparkline",
+        "Legend and parts",
+        "Flow Diagram",
+        "Event-log recipes"
+      ],
+      "record": "../decisions/tanstack-table-compatibility.md"
+    },
+    {
+      "id": "R12",
+      "name": "Rich content and media",
+      "sources": [
+        "code-block",
+        "snippet",
+        "json-view",
+        "markdown",
+        "book",
+        "browser",
+        "video",
+        "phone"
+      ],
+      "targets": [
+        "Code Block / Snippet",
+        "JSON View",
+        "Markdown",
+        "Book",
+        "Browser",
+        "Video"
+      ],
+      "record": "README.md#25-disposition-register"
+    },
+    {
+      "id": "R13",
+      "name": "Documentation and public tooling",
+      "sources": [],
+      "targets": [
+        "Shared API conventions and exports",
+        "Component/foundation page layout and doc components",
+        "Persistent Previous/Next navigation and footer removal",
+        "React package contract",
+        "Versioned consumer skills / Intent",
+        "Documentation MCP",
+        "Optional Lit/React inspector"
+      ],
+      "record": "README.md#43-conventions"
+    }
+  ],
+  "registeredSourceCoverage": {
+    "currentRegisteredTags": 150,
+    "savedRegisteredTags": 150,
+    "unassigned": [],
+    "duplicateAssignments": [],
+    "unknownAssignments": [],
+    "addedSinceCensus": [],
+    "missingSinceCensus": [],
+    "groups": [
+      {
+        "id": "R01",
+        "name": "Shared rules and themes",
+        "sourceTags": 0
+      },
+      {
+        "id": "R02",
+        "name": "Layout and attached groups",
+        "sourceTags": 9
+      },
+      {
+        "id": "R03",
+        "name": "Text and formatting",
+        "sourceTags": 4
+      },
+      {
+        "id": "R04",
+        "name": "Actions, icons and identity",
+        "sourceTags": 15
+      },
+      {
+        "id": "R05",
+        "name": "Selection and tabs",
+        "sourceTags": 11
+      },
+      {
+        "id": "R06",
+        "name": "Inputs and forms",
+        "sourceTags": 16
+      },
+      {
+        "id": "R07",
+        "name": "Surfaces and content composition",
+        "sourceTags": 21
+      },
+      {
+        "id": "R08",
+        "name": "Navigation and disclosure",
+        "sourceTags": 28
+      },
+      {
+        "id": "R09",
+        "name": "Messages, progress and statistics",
+        "sourceTags": 24
+      },
+      {
+        "id": "R10",
+        "name": "Overlays and help",
+        "sourceTags": 7
+      },
+      {
+        "id": "R11",
+        "name": "Tables, charts and diagrams",
+        "sourceTags": 7
+      },
+      {
+        "id": "R12",
+        "name": "Rich content and media",
+        "sourceTags": 8
+      },
+      {
+        "id": "R13",
+        "name": "Documentation and public tooling",
+        "sourceTags": 0
+      }
+    ],
+    "entries": [
+      {
+        "name": "acme-appbar",
+        "path": "src/components/appbar/appbar.ts",
+        "line": 8,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-avatar",
+        "path": "src/components/avatar/avatar.ts",
+        "line": 37,
+        "reviewGroup": "R04"
+      },
+      {
+        "name": "acme-avatar-group",
+        "path": "src/components/avatar-group/avatar-group.ts",
+        "line": 16,
+        "reviewGroup": "R04"
+      },
+      {
+        "name": "acme-badge",
+        "path": "src/components/badge/badge.ts",
+        "line": 18,
+        "reviewGroup": "R04"
+      },
+      {
+        "name": "acme-banner",
+        "path": "src/components/banner/banner.ts",
+        "line": 25,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-bar-row",
+        "path": "src/components/bar-row/bar-row.ts",
+        "line": 8,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-bar-rows",
+        "path": "src/components/bar-rows/bar-rows.ts",
+        "line": 5,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-book",
+        "path": "src/components/book/book.ts",
+        "line": 63,
+        "reviewGroup": "R12"
+      },
+      {
+        "name": "acme-breadcrumb",
+        "path": "src/components/breadcrumb/breadcrumb.ts",
+        "line": 18,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-breadcrumbs",
+        "path": "src/components/breadcrumbs/breadcrumbs.ts",
+        "line": 13,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-browser",
+        "path": "src/components/browser/browser.ts",
+        "line": 38,
+        "reviewGroup": "R12"
+      },
+      {
+        "name": "acme-button",
+        "path": "src/components/button/button.ts",
+        "line": 36,
+        "reviewGroup": "R04"
+      },
+      {
+        "name": "acme-button-group",
+        "path": "src/components/button-group/button-group.ts",
+        "line": 7,
+        "reviewGroup": "R02"
+      },
+      {
+        "name": "acme-calendar",
+        "path": "src/components/calendar/calendar.ts",
+        "line": 49,
+        "reviewGroup": "R06"
+      },
+      {
+        "name": "acme-card",
+        "path": "src/components/card/card.ts",
+        "line": 7,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-chart",
+        "path": "src/components/chart/chart.ts",
+        "line": 22,
+        "reviewGroup": "R11"
+      },
+      {
+        "name": "acme-check",
+        "path": "src/components/check/check.ts",
+        "line": 7,
+        "reviewGroup": "R06"
+      },
+      {
+        "name": "acme-checkbox",
+        "path": "src/components/checkbox/checkbox.ts",
+        "line": 16,
+        "reviewGroup": "R05"
+      },
+      {
+        "name": "acme-chip",
+        "path": "src/components/chip/chip.ts",
+        "line": 7,
+        "reviewGroup": "R04"
+      },
+      {
+        "name": "acme-choicebox",
+        "path": "src/components/choicebox/choicebox.ts",
+        "line": 22,
+        "reviewGroup": "R05"
+      },
+      {
+        "name": "acme-choicebox-item",
+        "path": "src/components/choicebox-item/choicebox-item.ts",
+        "line": 23,
+        "reviewGroup": "R05"
+      },
+      {
+        "name": "acme-clearable-input",
+        "path": "src/components/clearable-input/clearable-input.ts",
+        "line": 15,
+        "reviewGroup": "R06"
+      },
+      {
+        "name": "acme-code",
+        "path": "src/components/code/code.ts",
+        "line": 31,
+        "reviewGroup": "R03"
+      },
+      {
+        "name": "acme-code-block",
+        "path": "src/components/code-block/code-block.ts",
+        "line": 43,
+        "reviewGroup": "R12"
+      },
+      {
+        "name": "acme-collapse",
+        "path": "src/components/collapse/collapse.ts",
+        "line": 19,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-collapse-group",
+        "path": "src/components/collapse-group/collapse-group.ts",
+        "line": 14,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-combobox",
+        "path": "src/components/combobox/combobox.ts",
+        "line": 79,
+        "reviewGroup": "R06"
+      },
+      {
+        "name": "acme-combobox-option",
+        "path": "src/components/combobox-option/combobox-option.ts",
+        "line": 28,
+        "reviewGroup": "R06"
+      },
+      {
+        "name": "acme-command-divider",
+        "path": "src/components/command-divider/command-divider.ts",
+        "line": 11,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-command-group",
+        "path": "src/components/command-group/command-group.ts",
+        "line": 11,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-command-item",
+        "path": "src/components/command-item/command-item.ts",
+        "line": 23,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-command-menu",
+        "path": "src/components/command-menu/command-menu.ts",
+        "line": 56,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-context-card",
+        "path": "src/components/context-card/context-card.ts",
+        "line": 98,
+        "reviewGroup": "R10"
+      },
+      {
+        "name": "acme-context-menu",
+        "path": "src/components/context-menu/context-menu.ts",
+        "line": 41,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-copy-button",
+        "path": "src/components/copy-button/copy-button.ts",
+        "line": 28,
+        "reviewGroup": "R04"
+      },
+      {
+        "name": "acme-description",
+        "path": "src/components/description/description.ts",
+        "line": 13,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-destructive-modal",
+        "path": "src/components/destructive-modal/destructive-modal.ts",
+        "line": 30,
+        "reviewGroup": "R10"
+      },
+      {
+        "name": "acme-disabled-wall",
+        "path": "src/components/disabled-wall/disabled-wall.ts",
+        "line": 11,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-dots-menu",
+        "path": "src/components/dots-menu/dots-menu.ts",
+        "line": 25,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-drawer",
+        "path": "src/components/drawer/drawer.ts",
+        "line": 55,
+        "reviewGroup": "R10"
+      },
+      {
+        "name": "acme-empty-state",
+        "path": "src/components/empty-state/empty-state.ts",
+        "line": 16,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-entity",
+        "path": "src/components/entity/entity.ts",
+        "line": 19,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-entity-content",
+        "path": "src/components/entity-content/entity-content.ts",
+        "line": 14,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-entity-list",
+        "path": "src/components/entity-list/entity-list.ts",
+        "line": 14,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-error",
+        "path": "src/components/error/error.ts",
+        "line": 13,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-error-card",
+        "path": "src/components/error-card/error-card.ts",
+        "line": 17,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-feedback",
+        "path": "src/components/feedback/feedback.ts",
+        "line": 90,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-fieldset",
+        "path": "src/components/fieldset/fieldset.ts",
+        "line": 21,
+        "reviewGroup": "R06"
+      },
+      {
+        "name": "acme-file",
+        "path": "src/components/file/file.ts",
+        "line": 29,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-file-tree",
+        "path": "src/components/file-tree/file-tree.ts",
+        "line": 12,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-filter",
+        "path": "src/components/filter/filter.ts",
+        "line": 7,
+        "reviewGroup": "R06"
+      },
+      {
+        "name": "acme-filters",
+        "path": "src/components/filters/filters.ts",
+        "line": 6,
+        "reviewGroup": "R06"
+      },
+      {
+        "name": "acme-fold",
+        "path": "src/components/fold/fold.ts",
+        "line": 7,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-folder",
+        "path": "src/components/folder/folder.ts",
+        "line": 22,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-gauge",
+        "path": "src/components/gauge/gauge.ts",
+        "line": 26,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-grid",
+        "path": "src/components/grid/grid.ts",
+        "line": 123,
+        "reviewGroup": "R02"
+      },
+      {
+        "name": "acme-grid-cell",
+        "path": "src/components/grid-cell/grid-cell.ts",
+        "line": 20,
+        "reviewGroup": "R02"
+      },
+      {
+        "name": "acme-grid-cross",
+        "path": "src/components/grid-cross/grid-cross.ts",
+        "line": 12,
+        "reviewGroup": "R02"
+      },
+      {
+        "name": "acme-grid-page",
+        "path": "src/components/grid-page/grid-page.ts",
+        "line": 13,
+        "reviewGroup": "R02"
+      },
+      {
+        "name": "acme-grid-system",
+        "path": "src/components/grid-system/grid-system.ts",
+        "line": 17,
+        "reviewGroup": "R02"
+      },
+      {
+        "name": "acme-icon-tile",
+        "path": "src/components/icon-tile/icon-tile.ts",
+        "line": 12,
+        "reviewGroup": "R04"
+      },
+      {
+        "name": "acme-input",
+        "path": "src/components/input/input.ts",
+        "line": 31,
+        "reviewGroup": "R06"
+      },
+      {
+        "name": "acme-item",
+        "path": "src/components/item/item.ts",
+        "line": 9,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-items",
+        "path": "src/components/items/items.ts",
+        "line": 6,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-json-view",
+        "path": "src/components/json-view/json-view.ts",
+        "line": 45,
+        "reviewGroup": "R12"
+      },
+      {
+        "name": "acme-kbd",
+        "path": "src/components/kbd/kbd.ts",
+        "line": 18,
+        "reviewGroup": "R03"
+      },
+      {
+        "name": "acme-kv",
+        "path": "src/components/kv/kv.ts",
+        "line": 7,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-label",
+        "path": "src/components/label/label.ts",
+        "line": 12,
+        "reviewGroup": "R06"
+      },
+      {
+        "name": "acme-legend",
+        "path": "src/components/legend/legend.ts",
+        "line": 7,
+        "reviewGroup": "R11"
+      },
+      {
+        "name": "acme-legend-item",
+        "path": "src/components/legend-item/legend-item.ts",
+        "line": 7,
+        "reviewGroup": "R11"
+      },
+      {
+        "name": "acme-link-card",
+        "path": "src/components/link-card/link-card.ts",
+        "line": 8,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-load-more",
+        "path": "src/components/load-more/load-more.ts",
+        "line": 15,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-loading-dots",
+        "path": "src/components/loading-dots/loading-dots.ts",
+        "line": 13,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-logs",
+        "path": "src/components/logs/logs.ts",
+        "line": 7,
+        "reviewGroup": "R11"
+      },
+      {
+        "name": "acme-markdown",
+        "path": "src/components/markdown/markdown.ts",
+        "line": 26,
+        "reviewGroup": "R12"
+      },
+      {
+        "name": "acme-menu",
+        "path": "src/components/menu/menu.ts",
+        "line": 36,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-menu-button",
+        "path": "src/components/menu-button/menu-button.ts",
+        "line": 25,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-menu-divider",
+        "path": "src/components/menu-divider/menu-divider.ts",
+        "line": 7,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-menu-item",
+        "path": "src/components/menu-item/menu-item.ts",
+        "line": 18,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-menu-section",
+        "path": "src/components/menu-section/menu-section.ts",
+        "line": 13,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-metric",
+        "path": "src/components/metric/metric.ts",
+        "line": 6,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-metric-list",
+        "path": "src/components/metric-list/metric-list.ts",
+        "line": 8,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-middle-truncate",
+        "path": "src/components/middle-truncate/middle-truncate.ts",
+        "line": 115,
+        "reviewGroup": "R03"
+      },
+      {
+        "name": "acme-modal",
+        "path": "src/components/modal/modal.ts",
+        "line": 73,
+        "reviewGroup": "R10"
+      },
+      {
+        "name": "acme-modal-inset",
+        "path": "src/components/modal-inset/modal-inset.ts",
+        "line": 12,
+        "reviewGroup": "R10"
+      },
+      {
+        "name": "acme-multi-select",
+        "path": "src/components/multi-select/multi-select.ts",
+        "line": 41,
+        "reviewGroup": "R06"
+      },
+      {
+        "name": "acme-multi-select-row",
+        "path": "src/components/multi-select-row/multi-select-row.ts",
+        "line": 33,
+        "reviewGroup": "R06"
+      },
+      {
+        "name": "acme-note",
+        "path": "src/components/note/note.ts",
+        "line": 18,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-page-head",
+        "path": "src/components/page-head/page-head.ts",
+        "line": 8,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-pagination",
+        "path": "src/components/pagination/pagination.ts",
+        "line": 15,
+        "reviewGroup": "R11"
+      },
+      {
+        "name": "acme-panel",
+        "path": "src/components/panel/panel.ts",
+        "line": 9,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-panel-foot",
+        "path": "src/components/panel-foot/panel-foot.ts",
+        "line": 7,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-panel-head",
+        "path": "src/components/panel-head/panel-head.ts",
+        "line": 7,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-panels",
+        "path": "src/components/panels/panels.ts",
+        "line": 6,
+        "reviewGroup": "R02"
+      },
+      {
+        "name": "acme-phone",
+        "path": "src/components/phone/phone.ts",
+        "line": 22,
+        "reviewGroup": "R12"
+      },
+      {
+        "name": "acme-pill",
+        "path": "src/components/pill/pill.ts",
+        "line": 7,
+        "reviewGroup": "R04"
+      },
+      {
+        "name": "acme-progress",
+        "path": "src/components/progress/progress.ts",
+        "line": 26,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-project-banner",
+        "path": "src/components/project-banner/project-banner.ts",
+        "line": 25,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-radio",
+        "path": "src/components/radio/radio.ts",
+        "line": 16,
+        "reviewGroup": "R05"
+      },
+      {
+        "name": "acme-radio-group",
+        "path": "src/components/radio-group/radio-group.ts",
+        "line": 13,
+        "reviewGroup": "R05"
+      },
+      {
+        "name": "acme-relative-time",
+        "path": "src/components/relative-time/relative-time.ts",
+        "line": 68,
+        "reviewGroup": "R03"
+      },
+      {
+        "name": "acme-ricon",
+        "path": "src/components/ricon/ricon.ts",
+        "line": 7,
+        "reviewGroup": "R04"
+      },
+      {
+        "name": "acme-scroller",
+        "path": "src/components/scroller/scroller.ts",
+        "line": 34,
+        "reviewGroup": "R02"
+      },
+      {
+        "name": "acme-search",
+        "path": "src/components/search/search.ts",
+        "line": 16,
+        "reviewGroup": "R06"
+      },
+      {
+        "name": "acme-select",
+        "path": "src/components/select/select.ts",
+        "line": 32,
+        "reviewGroup": "R06"
+      },
+      {
+        "name": "acme-separator",
+        "path": "src/components/separator/separator.ts",
+        "line": 11,
+        "reviewGroup": "R02"
+      },
+      {
+        "name": "acme-setting-row",
+        "path": "src/components/setting-row/setting-row.ts",
+        "line": 7,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-setting-rows",
+        "path": "src/components/setting-rows/setting-rows.ts",
+        "line": 6,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-sheet",
+        "path": "src/components/sheet/sheet.ts",
+        "line": 30,
+        "reviewGroup": "R10"
+      },
+      {
+        "name": "acme-shell",
+        "path": "src/components/shell/shell.ts",
+        "line": 7,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-show-more",
+        "path": "src/components/show-more/show-more.ts",
+        "line": 13,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-side-nav",
+        "path": "src/components/side-nav/side-nav.ts",
+        "line": 6,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-skeleton",
+        "path": "src/components/skeleton/skeleton.ts",
+        "line": 20,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-slider",
+        "path": "src/components/slider/slider.ts",
+        "line": 88,
+        "reviewGroup": "R06"
+      },
+      {
+        "name": "acme-snippet",
+        "path": "src/components/snippet/snippet.ts",
+        "line": 20,
+        "reviewGroup": "R12"
+      },
+      {
+        "name": "acme-spark",
+        "path": "src/components/spark/spark.ts",
+        "line": 7,
+        "reviewGroup": "R11"
+      },
+      {
+        "name": "acme-spinner",
+        "path": "src/components/spinner/spinner.ts",
+        "line": 26,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-split-button",
+        "path": "src/components/split-button/split-button.ts",
+        "line": 28,
+        "reviewGroup": "R04"
+      },
+      {
+        "name": "acme-split-button-item",
+        "path": "src/components/split-button-item/split-button-item.ts",
+        "line": 11,
+        "reviewGroup": "R04"
+      },
+      {
+        "name": "acme-stat",
+        "path": "src/components/stat/stat.ts",
+        "line": 10,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-stat-delta",
+        "path": "src/components/stat-delta/stat-delta.ts",
+        "line": 7,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-stat-desc",
+        "path": "src/components/stat-desc/stat-desc.ts",
+        "line": 6,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-stat-foot",
+        "path": "src/components/stat-foot/stat-foot.ts",
+        "line": 6,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-stat-strip",
+        "path": "src/components/stat-strip/stat-strip.ts",
+        "line": 9,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-status-dot",
+        "path": "src/components/status-dot/status-dot.ts",
+        "line": 24,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-strip-item",
+        "path": "src/components/strip-item/strip-item.ts",
+        "line": 7,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-subnav",
+        "path": "src/components/subnav/subnav.ts",
+        "line": 7,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-switch",
+        "path": "src/components/switch/switch.ts",
+        "line": 17,
+        "reviewGroup": "R05"
+      },
+      {
+        "name": "acme-switch-control",
+        "path": "src/components/switch-control/switch-control.ts",
+        "line": 15,
+        "reviewGroup": "R05"
+      },
+      {
+        "name": "acme-tab",
+        "path": "src/components/tab/tab.ts",
+        "line": 15,
+        "reviewGroup": "R05"
+      },
+      {
+        "name": "acme-tab-panel",
+        "path": "src/components/tab-panel/tab-panel.ts",
+        "line": 5,
+        "reviewGroup": "R05"
+      },
+      {
+        "name": "acme-table",
+        "path": "src/components/table/table.ts",
+        "line": 31,
+        "reviewGroup": "R11"
+      },
+      {
+        "name": "acme-tabs",
+        "path": "src/components/tabs/tabs.ts",
+        "line": 18,
+        "reviewGroup": "R05"
+      },
+      {
+        "name": "acme-tag",
+        "path": "src/components/tag/tag.ts",
+        "line": 7,
+        "reviewGroup": "R04"
+      },
+      {
+        "name": "acme-tags",
+        "path": "src/components/tags/tags.ts",
+        "line": 6,
+        "reviewGroup": "R04"
+      },
+      {
+        "name": "acme-task",
+        "path": "src/components/task/task.ts",
+        "line": 7,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-tasks",
+        "path": "src/components/tasks/tasks.ts",
+        "line": 6,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-text-copy",
+        "path": "src/components/text-copy/text-copy.ts",
+        "line": 22,
+        "reviewGroup": "R04"
+      },
+      {
+        "name": "acme-textarea",
+        "path": "src/components/textarea/textarea.ts",
+        "line": 17,
+        "reviewGroup": "R06"
+      },
+      {
+        "name": "acme-theme-switcher",
+        "path": "src/components/theme-switcher/theme-switcher.ts",
+        "line": 42,
+        "reviewGroup": "R04"
+      },
+      {
+        "name": "acme-tile",
+        "path": "src/components/tile/tile.ts",
+        "line": 6,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-tiles",
+        "path": "src/components/tiles/tiles.ts",
+        "line": 7,
+        "reviewGroup": "R07"
+      },
+      {
+        "name": "acme-toast",
+        "path": "src/components/toast/toast.ts",
+        "line": 39,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-toaster",
+        "path": "src/components/toaster/toaster.ts",
+        "line": 23,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-toggle",
+        "path": "src/components/toggle/toggle.ts",
+        "line": 27,
+        "reviewGroup": "R05"
+      },
+      {
+        "name": "acme-toolbar",
+        "path": "src/components/toolbar/toolbar.ts",
+        "line": 6,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-tooltip",
+        "path": "src/components/tooltip/tooltip.ts",
+        "line": 80,
+        "reviewGroup": "R10"
+      },
+      {
+        "name": "acme-topbar",
+        "path": "src/components/topbar/topbar.ts",
+        "line": 6,
+        "reviewGroup": "R08"
+      },
+      {
+        "name": "acme-trend",
+        "path": "src/components/trend/trend.ts",
+        "line": 7,
+        "reviewGroup": "R09"
+      },
+      {
+        "name": "acme-video",
+        "path": "src/components/video/video.ts",
+        "line": 44,
+        "reviewGroup": "R12"
+      }
+    ]
+  },
+  "acceptedExtensionCoverage": [
+    {
+      "number": 1,
+      "sourceText": "[Separate React integration package](../decisions/react-integration.md). Exact package names and renderer integration remain open.",
+      "workGroup": "R13"
+    },
+    {
+      "number": 2,
+      "sourceText": "[Consumer compatibility with the full TanStack Table capability set](../decisions/tanstack-table-compatibility.md). The design system does not integrate/run TanStack Table. Applications own processing, state and workers; the house Table provides structure, appearance and interaction/measurement access. Earlier house-adapter proposals misread the request.",
+      "workGroup": "R11"
+    },
+    {
+      "number": 3,
+      "sourceText": "[Native HTML forms plus optional TanStack Form](../decisions/native-and-managed-forms.md).",
+      "workGroup": "R06"
+    },
+    {
+      "number": 4,
+      "sourceText": "[No server-side rendering](../decisions/server-rendering.md). Excluded, not deferred. Server data processing remains possible.",
+      "workGroup": "Excluded: SSR"
+    },
+    {
+      "number": 5,
+      "sourceText": "[Material spring roles and both Standard/Expressive schemes](../decisions/material-motion-system.md), chosen by context; retain Lit Motion.",
+      "workGroup": "R01"
+    },
+    {
+      "number": 6,
+      "sourceText": "[Shape morphing follows demonstrated component needs](../decisions/shape-support.md). The later clarification supersedes the broad Material catalogue requirement. Use ordinary shape properties first and custom geometry only for a concrete need; no geometry package is selected. The earlier accidental option remains withdrawn.",
+      "workGroup": "R01"
+    },
+    {
+      "number": 7,
+      "sourceText": "[Wrap complete names in multi-line ComboBox options](../decisions/combobox-long-labels.md).",
+      "workGroup": "R06"
+    },
+    {
+      "number": 8,
+      "sourceText": "[Overlapping Toasts, newest messages visible, implemented with the house stack](../decisions/toast-behaviour.md). No Zag Toast dependency.",
+      "workGroup": "R09"
+    },
+    {
+      "number": 9,
+      "sourceText": "[Explicit activation for interactive rich help](../decisions/rich-help-activation.md).",
+      "workGroup": "R10"
+    },
+    {
+      "number": 10,
+      "sourceText": "[Full visual themes on pages and nested sections](../decisions/custom-themes.md).",
+      "workGroup": "R01"
+    },
+    {
+      "number": 11,
+      "sourceText": "[Darker blue with white text](../decisions/blue-accent.md), selected after the original blue example failed the measured normal-text contrast threshold. Exact per-control/state values and broader contrast verification remain open.",
+      "workGroup": "R01"
+    },
+    {
+      "number": 12,
+      "sourceText": "[Oxlint + Oxfmt with Ultracite, plus Stylelint](../decisions/lint-toolchain.md), for the later migration.",
+      "workGroup": "E05 / Phase 5"
+    },
+    {
+      "number": 13,
+      "sourceText": "Keep Toast under the existing community-naming rule; the [survey](../analysis/floating-surface-shadows.md#phase-1-extension-toast-and-rich-help) supports it. This was a research conclusion, not a new explicit naming vote.",
+      "workGroup": "R09"
+    },
+    {
+      "number": 14,
+      "sourceText": "Always evaluate the actual Material Web Lit implementation alongside Material guidance. The [reference decision](../decisions/reference-systems.md) retains this requirement.",
+      "workGroup": "All groups: standing reference policy"
+    },
+    {
+      "number": 15,
+      "sourceText": "[Responsive layout and appearance with Material bands and font-relative thresholds](../decisions/responsive-system.md). Three distinct choices; exact interface remains open.",
+      "workGroup": "R01"
+    },
+    {
+      "number": 16,
+      "sourceText": "[Box as a planned primitive](../decisions/box-primitive.md).",
+      "workGroup": "R02"
+    },
+    {
+      "number": 17,
+      "sourceText": "[Versioned consumer skills](../decisions/consumer-skills.md).",
+      "workGroup": "R13"
+    },
+    {
+      "number": 18,
+      "sourceText": "[A version-matched documentation/API MCP server](../decisions/design-system-mcp.md), explicitly requested in the same reply as the skills selection.",
+      "workGroup": "R13"
+    },
+    {
+      "number": 19,
+      "sourceText": "[TanStack Intent as development tooling](../decisions/intent-tooling.md).",
+      "workGroup": "R13"
+    },
+    {
+      "number": 20,
+      "sourceText": "[AI authoring support only in this pass](../decisions/ai-authoring-scope.md); no live AI component control.",
+      "workGroup": "R13; live AI control excluded"
+    },
+    {
+      "number": 21,
+      "sourceText": "[A shared Lit/React inspector using TanStack Devtools](../decisions/design-system-devtools.md), explicitly confirmed after the Solid dependency was explained.",
+      "workGroup": "R13"
+    },
+    {
+      "number": 22,
+      "sourceText": "[Ripples off by default, with opt-in support](../decisions/optional-ripples.md). Configuration scope and applicable controls remain for the inventory; selection-state animations remain part of the separate motion decision.",
+      "workGroup": "R01 / R04 / R05 / R06"
+    },
+    {
+      "number": 23,
+      "sourceText": "[TanStack Virtual for both Lit and React virtualization](../decisions/tanstack-table-compatibility.md#framework-rendering-and-virtualization), explicitly confirmed. For Table, the application connects it to our exposed layout/measurement targets.",
+      "workGroup": "R11; coordinate other virtualized collections"
+    },
+    {
+      "number": 24,
+      "sourceText": "[Reusable results pagination](../decisions/results-pagination.md): numbered/compact controls and unknown totals; application-owned page state/loading and no TanStack Table dependency. The earlier page-size recipe boundary is [under review](../decisions/results-pagination.md#review-pending-after-the-chakra-ui-pro-example): evaluate optional page-position, page-size and navigation parts together before the inventory is approved. Jump-to-page detail remains separate.",
+      "workGroup": "R11"
+    },
+    {
+      "number": 25,
+      "sourceText": "[Resizable panes](../decisions/resizable-panes.md): user resizing by drag/keyboard, optional collapse with previous-size restoration, and application-owned preference saving remain selected. The original @zag-js/splitter runtime choice is superseded by the native port strategy below. Correct the known behaviour inconsistencies in the house port; exact interfaces remain open.",
+      "workGroup": "R02"
+    },
+    {
+      "number": 26,
+      "sourceText": "[Shared density](../decisions/density.md): spacing-only page/section settings, normal by default; menus/dialogs/Toasts retain normal inherited spacing; compact buttons/similar controls have a 24 × 24 CSS-pixel clickable-area floor with larger touch-friendly sizing available. Three separate answers; no universal 48px normal-mode target was selected.",
+      "workGroup": "R01"
+    },
+    {
+      "number": 27,
+      "sourceText": "[Both reading directions](../decisions/bidirectional-support.md) for pages and sections in Lit/React, including keyboard behaviour, appropriate icons and mixed-direction content. Applications supply translations.",
+      "workGroup": "R01"
+    },
+    {
+      "number": 28,
+      "sourceText": "[Shared moving selection indicators](../decisions/shared-selection-indicator.md) using Lit Motion for suitable single-selection groups. Each control keeps its appearance/selection rules; no additional Zag dependency.",
+      "workGroup": "R05"
+    },
+    {
+      "number": 29,
+      "sourceText": "[Native Lit behaviour ports using the full house stack](../decisions/zag-behaviour-ports.md) supersede the earlier five-control Zag runtime/adapter selection. Peter rejects a Zag adapter and its createMachine/state mechanism, requires the established TanStack Store and Lit Motion approaches plus all other applicable house rules, and explicitly permits new components, rebuilds or replacements. React wraps the same implementation. Selected capabilities remain.",
+      "workGroup": "E01 / R02 / R06 / R08"
+    },
+    {
+      "number": 30,
+      "sourceText": "[Independent Adobe number utilities](../decisions/number-utilities.md) for Number Input parsing/formatting, retaining the full house implementation. Version 3.6.8 was researched, not pinned for future release; installation remains gated by migration approval.",
+      "workGroup": "R06"
+    }
+  ],
+  "additionalCapabilitySources": [
+    "notes/alignment/README.md#42-every-element",
+    "notes/decisions/additional-component-capabilities.md",
+    "notes/decisions/flow-diagram.md",
+    "notes/decisions/list-component.md",
+    "notes/decisions/field-component.md",
+    "notes/decisions/general-tree-view.md",
+    "notes/decisions/format-components.md",
+    "notes/decisions/responsive-sidebar.md",
+    "notes/decisions/table-of-contents.md",
+    "notes/decisions/overlay-help-components.md",
+    "notes/decisions/dialog-components.md"
+  ],
+  "coverageMethod": "\nimport ts from \"typescript\";\nconst saved=await Bun.file(\"notes/alignment/evidence/phase-2-terms-census-2026-09-19.json\").json();\nconst current=[];\nfor(const file of new Bun.Glob(\"src/components/**/*.ts\").scanSync(\".\")){if(/\\.styles\\.ts$|\\.geist\\.ts$|\\.d\\.ts$|\\/__tests__\\//.test(file))continue;const text=await Bun.file(file).text();const sf=ts.createSourceFile(file,text,ts.ScriptTarget.Latest,true);function visit(n){if(ts.isCallExpression(n)&&n.expression.getText(sf)===\"customElement\"&&n.arguments[0]&&ts.isStringLiteral(n.arguments[0]))current.push({name:n.arguments[0].text,path:file,line:sf.getLineAndCharacterOfPosition(n.getStart(sf)).line+1});ts.forEachChild(n,visit);}visit(sf);}\nconst groups=[{\"id\":\"R01\",\"name\":\"Shared rules and themes\",\"sources\":[],\"targets\":[\"Responsive values and containers\",\"Spacing, dimensions and density\",\"Native semantics and accessible naming\",\"Theme scopes and blue accent\",\"Motion, shape and public customization\",\"Controlled inputs, events and style helper\"],\"record\":\"inventory.md#c-resp-shared-responsive-convention\"},{\"id\":\"R02\",\"name\":\"Layout and attached groups\",\"sources\":[\"button-group\",\"grid\",\"grid-cell\",\"grid-cross\",\"grid-page\",\"grid-system\",\"scroller\",\"separator\",\"panels\"],\"targets\":[\"Group\",\"Box\",\"Flex\",\"Stack / HStack / VStack\",\"Grid / Simple Grid\",\"Inset\",\"Separator\",\"Scroll Area\",\"Resizable panes\"],\"record\":\"inventory.md#g-01-group\"},{\"id\":\"R03\",\"name\":\"Text and formatting\",\"sources\":[\"kbd\",\"code\",\"middle-truncate\",\"relative-time\"],\"targets\":[\"Text\",\"Heading\",\"Link\",\"inline Code\",\"Quote\",\"Kbd\",\"Strong\",\"Middle Truncate\",\"Relative Time\",\"FormatNumber / FormatByte\"],\"record\":\"inventory.md#t-01-text\"},{\"id\":\"R04\",\"name\":\"Actions, icons and identity\",\"sources\":[\"button\",\"split-button\",\"split-button-item\",\"copy-button\",\"chip\",\"theme-switcher\",\"avatar\",\"avatar-group\",\"icon-tile\",\"badge\",\"pill\",\"tag\",\"tags\",\"ricon\",\"text-copy\"],\"targets\":[\"Button / Icon Button / Toggle Button\",\"Split Button and parts\",\"Copy Button\",\"Per-icon Material Symbols\",\"Theme Switcher\",\"Avatar / Avatar Group\",\"Icon Tile\",\"Badge / Pill / Tag\"],\"record\":\"../decisions/icon-element-shape.md\"},{\"id\":\"R05\",\"name\":\"Selection and tabs\",\"sources\":[\"checkbox\",\"radio\",\"radio-group\",\"choicebox\",\"choicebox-item\",\"toggle\",\"switch\",\"switch-control\",\"tabs\",\"tab\",\"tab-panel\"],\"targets\":[\"Checkbox / Checkbox Group / Checkbox Cards\",\"Radio / Radio Group / Radio Cards\",\"Switch\",\"Segmented Control\",\"Tabs and parts\",\"Shared moving indicator\"],\"record\":\"../decisions/segmented-control.md\"},{\"id\":\"R06\",\"name\":\"Inputs and forms\",\"sources\":[\"input\",\"textarea\",\"select\",\"combobox\",\"combobox-option\",\"multi-select\",\"multi-select-row\",\"search\",\"slider\",\"calendar\",\"fieldset\",\"label\",\"clearable-input\",\"check\",\"filter\",\"filters\"],\"targets\":[\"Input / Search / Password Input\",\"Number Input / Pin Input\",\"Textarea\",\"Select / ComboBox / Multi Select and parts\",\"Slider\",\"Calendar\",\"Field / Fieldset / Label\",\"Native forms, optional TanStack Form and Forms guide\"],\"record\":\"../decisions/native-and-managed-forms.md\"},{\"id\":\"R07\",\"name\":\"Surfaces and content composition\",\"sources\":[\"card\",\"panel\",\"panel-head\",\"panel-foot\",\"link-card\",\"entity\",\"entity-content\",\"entity-list\",\"item\",\"items\",\"setting-row\",\"setting-rows\",\"kv\",\"tile\",\"tiles\",\"task\",\"tasks\",\"bar-row\",\"bar-rows\",\"disabled-wall\",\"description\"],\"targets\":[\"Card\",\"Item and parts\",\"List\",\"Data List\",\"Disabled Wall\",\"Settings, selectable-card and removed-row replacement recipes\"],\"record\":\"../decisions/item-content-family.md\"},{\"id\":\"R08\",\"name\":\"Navigation and disclosure\",\"sources\":[\"appbar\",\"topbar\",\"side-nav\",\"subnav\",\"shell\",\"page-head\",\"toolbar\",\"breadcrumbs\",\"breadcrumb\",\"file-tree\",\"folder\",\"file\",\"menu\",\"menu-button\",\"menu-divider\",\"menu-section\",\"menu-item\",\"context-menu\",\"command-menu\",\"command-group\",\"command-item\",\"command-divider\",\"dots-menu\",\"collapse\",\"collapse-group\",\"fold\",\"show-more\",\"load-more\"],\"targets\":[\"App Bar / Toolbar\",\"Sidebar / TOC\",\"Breadcrumbs and parts\",\"Tree View and file-tree presentation\",\"Menu / Context Menu / Command Menu and parts\",\"Accordion / Collapsible\",\"Steps\",\"Show / Show More / Load More\",\"Navigation and action-menu recipes\",\"Timeline\"],\"record\":\"../decisions/navigation-compositions.md\"},{\"id\":\"R09\",\"name\":\"Messages, progress and statistics\",\"sources\":[\"note\",\"banner\",\"project-banner\",\"empty-state\",\"error\",\"error-card\",\"feedback\",\"toast\",\"toaster\",\"progress\",\"gauge\",\"spinner\",\"skeleton\",\"loading-dots\",\"stat\",\"stat-delta\",\"stat-desc\",\"stat-foot\",\"stat-strip\",\"strip-item\",\"trend\",\"metric-list\",\"metric\",\"status-dot\"],\"targets\":[\"Alert / Banner\",\"Toast and viewport\",\"Feedback / Empty State\",\"Spinner / Progress / Skeleton\",\"Meter\",\"Stat and parts\",\"Status\",\"Selectable-stat and removed-metric recipes\"],\"record\":\"../decisions/stat-family.md\"},{\"id\":\"R10\",\"name\":\"Overlays and help\",\"sources\":[\"modal\",\"modal-inset\",\"destructive-modal\",\"sheet\",\"drawer\",\"tooltip\",\"context-card\"],\"targets\":[\"Dialog / Alert Dialog\",\"Drawer\",\"Tooltip / Hover Card / Toggle Tip\",\"Overlay/inset composition and Popover boundary\"],\"record\":\"../decisions/overlay-help-components.md\"},{\"id\":\"R11\",\"name\":\"Tables, charts and diagrams\",\"sources\":[\"table\",\"pagination\",\"chart\",\"spark\",\"legend\",\"legend-item\",\"logs\"],\"targets\":[\"Table and complete consumer TanStack compatibility\",\"Results Pagination and optional parts\",\"Chart / Sparkline\",\"Legend and parts\",\"Flow Diagram\",\"Event-log recipes\"],\"record\":\"../decisions/tanstack-table-compatibility.md\"},{\"id\":\"R12\",\"name\":\"Rich content and media\",\"sources\":[\"code-block\",\"snippet\",\"json-view\",\"markdown\",\"book\",\"browser\",\"video\",\"phone\"],\"targets\":[\"Code Block / Snippet\",\"JSON View\",\"Markdown\",\"Book\",\"Browser\",\"Video\"],\"record\":\"README.md#25-disposition-register\"},{\"id\":\"R13\",\"name\":\"Documentation and public tooling\",\"sources\":[],\"targets\":[\"Shared API conventions and exports\",\"Component/foundation page layout and doc components\",\"Persistent Previous/Next navigation and footer removal\",\"React package contract\",\"Versioned consumer skills / Intent\",\"Documentation MCP\",\"Optional Lit/React inspector\"],\"record\":\"README.md#43-conventions\"}];const assignment=new Map(),duplicates=[];\nfor(const g of groups)for(const suffix of g.sources){const name=\"acme-\"+suffix;if(assignment.has(name))duplicates.push(name);assignment.set(name,g.id);}\nconst tags=current.sort((a,b)=>a.name.localeCompare(b.name));const names=new Set(tags.map(x=>x.name));\nconst coverage={currentRegisteredTags:tags.length,savedRegisteredTags:saved.registeredTags.length,unassigned:tags.filter(t=>!assignment.has(t.name)),duplicateAssignments:duplicates,unknownAssignments:[...assignment.keys()].filter(n=>!names.has(n)),addedSinceCensus:tags.filter(t=>!saved.registeredTags.some(s=>s.name===t.name)),missingSinceCensus:saved.registeredTags.filter(t=>!names.has(t.name)),groups:groups.map(g=>({id:g.id,name:g.name,sourceTags:g.sources.length})),entries:tags.map(t=>({...t,reviewGroup:assignment.get(t.name)}))};\nconsole.log(JSON.stringify(coverage));\n",
+  "status": {
+    "reviewGroups": 13,
+    "existingComponentDraftEntries": 6,
+    "completeComponentEntriesApproved": 0,
+    "sourceRegisteredTags": 150,
+    "acceptedExtensionItemsRouted": 30,
+    "phase": 4,
+    "phase5PlanApproved": false,
+    "phase6ImplementationStarted": false
+  },
+  "limits": [
+    "Review groups are not component counts, question counts, estimates or additional phases.",
+    "The source ledger includes retired interfaces; final public tags and parts require the component contracts, including generated icon tags.",
+    "Existing Phase 2 dispositions remain authoritative; a routing assignment does not retain a removed component or add a new component.",
+    "Current six entries remain drafts. Reorganization does not count as their completion or approval.",
+    "Detailed component contracts remain in inventory.md; the new work list is a coverage and completion index, not a duplicate specification."
+  ],
+  "workflowApproval": {
+    "user": "Peter",
+    "evidence": "Peter said ok after the assistant proposed consolidating decisions into complete component proposals, handling ordinary engineering details, asking consequential choices in context and reporting completed components/remaining work.",
+    "existingApprovalGatesPreserved": true
+  },
+  "implementationChanged": false,
+  "projectDependenciesChanged": false,
+  "commitCreated": false,
+  "pushPerformed": false
+}

@@ -9,20 +9,32 @@ const cors = { "access-control-allow-origin": "*", "access-control-allow-headers
 Bun.serve({
   port: 4183,
   async fetch(req) {
-    if (req.method === "OPTIONS") return new Response(null, { headers: cors });
+    if (req.method === "OPTIONS") {
+      return new Response(null, { headers: cors });
+    }
     const url = new URL(req.url);
-    if (url.pathname === "/census.js") return new Response(Bun.file(path.join(import.meta.dir, "census.js")), { headers: { ...cors, "content-type": "text/javascript" } });
+    if (url.pathname === "/census.js") {
+      return new Response(Bun.file(path.join(import.meta.dir, "census.js")), { headers: { ...cors, "content-type": "text/javascript" } });
+    }
     // The motion reader, for a check that measures an animation rather than a resting style.
-    if (url.pathname === "/run.js") return new Response(Bun.file(path.join(import.meta.dir, "run.js")), { headers: { ...cors, "content-type": "text/javascript" } });
-    if (url.pathname === "/motion.js") return new Response(Bun.file(path.join(import.meta.dir, "motion.js")), { headers: { ...cors, "content-type": "text/javascript" } });
-    if (url.pathname === "/rings.js") return new Response(Bun.file(path.join(import.meta.dir, "rings.js")), { headers: { ...cors, "content-type": "text/javascript" } });
+    if (url.pathname === "/run.js") {
+      return new Response(Bun.file(path.join(import.meta.dir, "run.js")), { headers: { ...cors, "content-type": "text/javascript" } });
+    }
+    if (url.pathname === "/motion.js") {
+      return new Response(Bun.file(path.join(import.meta.dir, "motion.js")), { headers: { ...cors, "content-type": "text/javascript" } });
+    }
+    if (url.pathname === "/rings.js") {
+      return new Response(Bun.file(path.join(import.meta.dir, "rings.js")), { headers: { ...cors, "content-type": "text/javascript" } });
+    }
     // A saved census configuration, so a page can fetch the exact recorded run instead of having it
     // pasted in. The recorded config is what makes a run repeatable; reading it over HTTP keeps the
     // browser side of the loop a one-liner.
     if (url.pathname.startsWith("/config/")) {
       const name = url.pathname.slice("/config/".length).replace(/[^\w.-]/g, "");
       const file = path.join(OUT, `${name}.config.json`);
-      if (!fs.existsSync(file)) return new Response(`no config for ${name}`, { status: 404, headers: cors });
+      if (!fs.existsSync(file)) {
+        return new Response(`no config for ${name}`, { status: 404, headers: cors });
+      }
       return new Response(Bun.file(file), { headers: { ...cors, "content-type": "application/json" } });
     }
     // A DOM capture from a live page, saved under capture/<name>.json. The reference renders some
@@ -48,7 +60,10 @@ Bun.serve({
       if (!Array.isArray(body.roots) || body.roots.length === 0) {
         const had = fs.existsSync(file);
         console.warn(`REFUSED ${path.basename(file)}: the run found 0 roots${had ? "; the previous result is kept" : ""}`);
-        return new Response(`refused: 0 roots found for ${body.page}.${body.side}. Fix the selector in census/${body.page.replace(/\.dark$/, "")}.config.json; a zero-root run is not a pass.`, { status: 422, headers: cors });
+        return new Response(`refused: 0 roots found for ${body.page}.${body.side}. Fix the selector in census/${body.page.replace(/\.dark$/, "")}.config.json; a zero-root run is not a pass.`, {
+          status: 422,
+          headers: cors,
+        });
       }
       fs.writeFileSync(file, JSON.stringify(body, null, 1));
       console.log("saved", file, `(${body.roots.length} roots)`);

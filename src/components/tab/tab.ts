@@ -1,97 +1,132 @@
-import { css, html } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base";
-import { Interaction } from "../../shared/interaction";
-import { tabCss } from "./tab.styles";
-import "../tooltip/tooltip";
+import { createAtom } from "@tanstack/lit-store";
+import { html } from "lit";
+import { property } from "lit/decorators.js";
+import { sharedCss } from "../../base";
+import { AcmeSemanticElement } from "../../shared/semantic-element";
 import { atomState } from "../../shared/atom-state";
-
-/**
- * One tab of an `acme-tabs`: a 14px gray-900 button with a transparent 2px bottom border that
- * turns gray-1000 when selected (a 32px rounded pill with a gray-200 fill in a secondary row).
- * `value` names it; an `icon` slot goes before the title; `disabled` with a `tooltip` explains
- * the constraint (shown below). The selected tab is the tabbable one.
+import { StoreSelector } from "../../shared/store-connection";
+import { TabConnection, type TabPart } from "../../shared/tab-parts";
+import { GroupMemberController, groupMemberStyles } from "../../shared/group-member";
+import { tabStructureCss } from "../../generated/components/tab/tab-structure.styles";
+/** A native tab button owned by Tabs.
+ * @slot - The visible text or icon content.
+ * @slot start - Optional leading content.
+ * @slot end - Optional trailing content.
+ * @csspart root - The native button.
+ * @csspart tab - The native button.
+ * @csspart label - The indicator's content region.
  */
-@customElement("acme-tab")
-export class AcmeTab extends AcmeElement {
-  static styles = [
-    sharedCss,
-    tabCss,
-    css`
-      :host {
-        display: inline-flex;
+export class AcmeTab extends AcmeSemanticElement {
+  static styles = [sharedCss, groupMemberStyles, tabStructureCss];
+  static shadowRootOptions = { ...AcmeSemanticElement.shadowRootOptions, delegatesFocus: true };
+  @atomState() private key = "";
+  /** Required nonempty tab key. @default "" */
+  @property({ noAccessor: true }) get value() {
+    return this.key;
+  }
+  set value(value: string) {
+    if (typeof value !== "string") {
+      throw new TypeError("Tab value must be a string");
+    }
+    const old = this.key;
+    this.key = value;
+    this.connection?.notify();
+    this.connection?.owner?.synchronize();
+    this.requestUpdate("value", old);
+  }
+  @atomState() private unavailable = false;
+  /** @default false */
+  @property({ noAccessor: true, type: Boolean }) get disabled() {
+    return this.unavailable;
+  }
+  set disabled(value: boolean) {
+    const old = this.unavailable;
+    this.unavailable = Boolean(value);
+    this.connection?.owner?.synchronize();
+    this.requestUpdate("disabled", old);
+  }
+  private get button() {
+    return this.renderRoot?.querySelector<HTMLButtonElement>("button") ?? undefined;
+  }
+  private readonly member: TabPart = {
+    host: this,
+    kind: "tab",
+    value: () => this.value,
+    disabled: () => this.disabled,
+    target: () => this.button,
+    indicatorTarget: () => this.button?.querySelector("[part=label]") ?? undefined,
+    owner: () => this.connection.owner,
+    connect: (owner) => {
+      this.connection.setOwner(owner);
+      this.synchronize();
+    },
+    synchronize: () => this.synchronize(),
+  };
+  private readonly connection = new TabConnection(this, this.member);
+  private readonly display = createAtom(() => ({ owner: this.connection.owner, state: this.connection.owner?.state.get(), selected: this.connection.owner?.selected(this.member) ?? false }));
+  private readonly updates = new StoreSelector(this, () => this.display);
+  private readonly group = new GroupMemberController(this, { surface: () => this.button });
+  protected get semanticTarget() {
+    return this.button;
+  }
+  protected get semanticDefaults() {
+    const panel = this.connection.owner?.counterpart(this.member);
+    return { role: "tab", controlsElements: panel ? [panel.host] : [] };
+  }
+  private get inactive() {
+    return this.disabled || !this.value || !this.connection.owner || this.connection.owner.state.get().disabled;
+  }
+  private synchronize() {
+    const button = this.button;
+    if (!button) {
+      return;
+    }
+    const owner = this.connection.owner;
+    button.disabled = this.inactive;
+    button.tabIndex = owner?.tabindex(this.member) ?? -1;
+    button.setAttribute("aria-selected", String(owner?.selected(this.member) ?? false));
+    button.setAttribute("data-variant", owner?.state.get().variant ?? "primary");
+    button.toggleAttribute("data-selected", owner?.selected(this.member) ?? false);
+    button.setAttribute("data-orientation", owner?.state.get().orientation ?? "horizontal");
+    if (this.ariaControlsElements === null && this.getAttribute("aria-controls") === null) {
+      button.ariaControlsElements = owner?.counterpart(this.member) ? [owner.counterpart(this.member)!.host] : [];
+    }
+  }
+  private focused = () => this.connection.owner?.focus(this.member);
+  private clicked = (event: MouseEvent) => {
+    const owner = this.connection.owner;
+    queueMicrotask(() => {
+      if (!event.defaultPrevented && this.isConnected && owner === this.connection.owner && !this.inactive) {
+        owner?.select(this.member);
       }
-      /* The shadow reset's svg rule, for the slotted icon (the reference's page reset blocks every svg). */
-      .icon ::slotted(svg) {
-        display: block;
-        vertical-align: middle;
+    });
+  };
+  constructor() {
+    super();
+    this.addEventListener("click", (event) => {
+      if (event.composedPath()[0] === this) {
+        this.click();
       }
-    `,
-  ];
-  @property() value = "";
-  @property({ type: Boolean, reflect: true }) selected = false;
-  @property({ type: Boolean, reflect: true }) disabled = false;
-  /** Shown below on hover; pairs with a disabled tab to say why. */
-  @property() tooltip = "";
-  /** Set by the row: every tab is disabled. */
-  @property({ attribute: false }) groupDisabled = false;
-  /** Set by the row: the secondary (pill) look. */
-  @property({ attribute: false }) secondary = false;
-  /** Set by the row: whether keyboard focus shows the ring (hidden after an arrow-key move). */
-  @property({ attribute: false }) showFocusRing = true;
-  @atomState() private hasIcon = false;
-  @query(".tab") private button?: HTMLButtonElement;
-  private uid = `tab-${Math.random().toString(36).slice(2, 8)}`;
-  private interaction = new Interaction(this, { disabled: () => this.off });
-
-  get off() {
-    return this.disabled || this.groupDisabled;
+    });
   }
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.hasIcon = !!this.querySelector('[slot="icon"]');
+  click() {
+    if (!this.inactive) {
+      this.button?.click();
+    }
   }
-
-  firstUpdated() {
-    this.hasIcon ||= !!this.querySelector('[slot="icon"]');
-  }
-
-  updated() {
-    this.interaction.attach(this.button);
-  }
-
   focus(options?: FocusOptions) {
     this.button?.focus(options);
   }
-
-  private onIcon = (e: Event) => {
-    this.hasIcon = (e.target as HTMLSlotElement).assignedElements().length > 0;
-  };
-
-  private pick = () => {
-    if (!this.off) this.dispatchEvent(new CustomEvent("acme-tab-select", { detail: this, bubbles: true, composed: true }));
-  };
-
+  protected updated() {
+    this.synchronize();
+  }
   render() {
-    const iconSlot = html`<slot name="icon" @slotchange=${this.onIcon}></slot>`;
-    const btn = html`<button
-      class=${this.cls("tab", { secondary: this.secondary })}
-      role="tab"
-      type="button"
-      id=${this.uid}
-      aria-selected=${this.selected ? "true" : "false"}
-      tabindex=${this.selected ? 0 : -1}
-      ?disabled=${this.off}
-      data-show-focus-ring=${String(this.showFocusRing)}
-      @focus=${this.pick}
-      @click=${this.pick}
-      part="tab"
-    >${this.hasIcon ? html`<div class="icon">${iconSlot}</div>` : iconSlot}<slot></slot></button>`;
-    return this.tooltip ? html`<acme-tooltip text=${this.tooltip} position="bottom">${btn}</acme-tooltip>` : btn;
+    const owner = this.connection.owner,
+      state = owner?.state.get(),
+      selected = owner?.selected(this.member) ?? false;
+    return html`<button type="button" class="tab" part="root tab" ?disabled=${this.inactive} tabindex=${owner?.tabindex(this.member) ?? -1} aria-selected=${String(selected)} ?data-selected=${selected} data-variant=${state?.variant ?? "primary"} data-orientation=${state?.orientation ?? "horizontal"} @focus=${this.focused} @click=${this.clicked}><span part="label"><slot name="start"></slot><slot></slot><slot name="end"></slot></span></button>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-tab": AcmeTab;

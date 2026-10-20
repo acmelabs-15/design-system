@@ -1,0 +1,2604 @@
+{
+  "date": "2026-09-20",
+  "phase": "Phase 6",
+  "batch": "M05-04",
+  "status": "startup configuration, common style schema and responsive HTML conversion implemented; component integration remains",
+  "files": [
+    "src/shared/breakpoints.ts",
+    "src/shared/responsive.ts",
+    "src/shared/style-input-schema.ts",
+    "src/shared/responsive-input.ts"
+  ],
+  "contract": [
+    "Breakpoint configuration fills omitted defaults and permits only identical repeats after configuration or first use. Inspection alone does not lock.",
+    "The common schema lists exactly 77 property/attribute/CSS names, numeric categories and styling targets. Visual defaults remain CSS-owned.",
+    "Scalar CSS recognition precedes JSON parsing. Bare numbers use numeric semantics when the property's category allows numbers.",
+    "Malformed JSON or invalid structured HTML clears the affected current input with a bounded diagnostic; unrelated inputs remain unchanged.",
+    "Returned responsive inputs preserve authored condition names/order and skipped positions, with immutable copies."
+  ],
+  "verification": {
+    "focusedTests": 71,
+    "fullSuite": {
+      "passed": 700,
+      "failed": 0,
+      "assertions": 9645,
+      "files": 93
+    },
+    "strictTypes": "pass",
+    "strictAndNonStrictDeclarations": "pass; independent review found identical emitted declarations",
+    "independentReview": {
+      "agent": "/root/review_style_pipeline",
+      "verdict": "approved",
+      "requiredFindings": []
+    },
+    "split": "$ bun scripts/split-css.ts\nstyles: 75 house families and document tokens\n",
+    "build": "$ bun scripts/build.ts\nmodules: 469 files, 98 with compiled templates\nmanifest: 109 elements\nbundle 2223.4 KB min 1078.1 KB tokens.css 151.0 KB dashboard.css 13.8 KB\n",
+    "docs": "$ bun site/build.ts\ndocs: 80 pages, 109 elements (0 undocumented), app.js 1151 KB\n",
+    "browser": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "results": [
+            {
+              "name": "native grammar margin",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar marginInline",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar marginBlock",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar marginInlineStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar marginInlineEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar marginBlockStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar marginBlockEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar inset",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar insetInline",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar insetBlock",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar insetInlineStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar insetInlineEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar insetBlockStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar insetBlockEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar padding",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar paddingInline",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar paddingBlock",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar paddingInlineStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar paddingInlineEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar paddingBlockStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar paddingBlockEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar width",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar minWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar maxWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar height",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar minHeight",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar maxHeight",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar flexBasis",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar aspectRatio",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar zIndex",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridColumnStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridColumnEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridRowStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridRowEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar opacity",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar flexGrow",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar flexShrink",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineStartWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineEndWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockStartWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockEndWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderRadius",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderStartStartRadius",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderStartEndRadius",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderEndStartRadius",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderEndEndRadius",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar position",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar visibility",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar overflow",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar overflowX",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar overflowY",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar color",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar backgroundColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar boxShadow",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineStartStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineEndStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockStartStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockEndStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineStartColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineEndColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockStartColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockEndColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar alignSelf",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar justifySelf",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridArea",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridColumn",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridRow",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar display",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "padding accepts \"-1px\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "margin accepts \"-1px\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "padding accepts -2",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "margin accepts -2",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "padding accepts \"var(--custom-space)\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "padding accepts 0",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "padding accepts 0.5",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "padding accepts 13",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "width accepts 8",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "width accepts -8",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "width accepts \"fit-content\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "width accepts \"50%\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderWidth accepts \"1px 2px 3px 4px\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderWidth accepts \"1px 2px 3px 4px 5px\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "borderInlineWidth accepts \"1px 2px\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderInlineWidth accepts \"1px 2px 3px\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "borderInlineStartWidth accepts \"1px 2px\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "borderInlineStartWidth accepts \"1px\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderBlockStyle accepts \"solid dashed\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderBlockStartStyle accepts \"solid dashed\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "borderColor accepts \"red blue green black\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderInlineColor accepts \"red blue green\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "borderRadius accepts 0",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderRadius accepts 2",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "borderRadius accepts \"2px\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "gridColumnStart accepts 0",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "gridColumnStart accepts -1",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "zIndex accepts 0",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "opacity accepts 1.2",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "opacity accepts \"2\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "aspectRatio accepts 0",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "aspectRatio accepts \"16 / 9\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "flexGrow accepts 0.5",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "flexGrow accepts -1",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "display accepts \"contents\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "display accepts \"grid\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "numeric opacity attribute obeys numeric bounds",
+              "actual": "value",
+              "expected": "value",
+              "ok": true
+            },
+            {
+              "name": "numeric zero reads as a number",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "bracketed grid scalar precedes JSON",
+              "actual": "[main] 1fr [end]",
+              "expected": "[main] 1fr [end]",
+              "ok": true
+            },
+            {
+              "name": "invalid JSON has no override",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "unknown condition has no override",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "equivalent conflict has no override",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "null positions survive HTML conversion",
+              "actual": [
+                0,
+                null,
+                4
+              ],
+              "expected": [
+                0,
+                null,
+                4
+              ],
+              "ok": true
+            },
+            {
+              "name": "HTML callback stores a numeric token",
+              "actual": 2,
+              "expected": 2,
+              "ok": true
+            },
+            {
+              "name": "HTML callback stores bracketed CSS",
+              "actual": "[main] 1fr [end]",
+              "expected": "[main] 1fr [end]",
+              "ok": true
+            },
+            {
+              "name": "malformed update removes prior override",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "malformed update preserves unrelated value",
+              "actual": "red",
+              "expected": "red",
+              "ok": true
+            },
+            {
+              "name": "malformed update reports bounded diagnostic",
+              "actual": {
+                "code": "invalid-responsive-attribute",
+                "reason": "syntax"
+              },
+              "expected": {
+                "code": "invalid-responsive-attribute",
+                "reason": "syntax"
+              },
+              "ok": true
+            },
+            {
+              "name": "literal CSS remains a string",
+              "actual": "4px",
+              "expected": "4px",
+              "ok": true
+            },
+            {
+              "name": "authored keys survive conversion",
+              "actual": [
+                "medium",
+                "compact"
+              ],
+              "expected": [
+                "medium",
+                "compact"
+              ],
+              "ok": true
+            },
+            {
+              "name": "structured write does not mutate source attribute",
+              "actual": "{\"medium\":4,\"compact\":0}",
+              "expected": "{\"medium\":4,\"compact\":0}",
+              "ok": true
+            },
+            {
+              "name": "attribute removal clears current value",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "conflicting change after use fails",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "identical repeat is harmless",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "normalization uses configured rem value",
+              "actual": 40,
+              "expected": 40,
+              "ok": true
+            },
+            {
+              "name": "configured viewport width 639",
+              "actual": 639,
+              "expected": 639,
+              "ok": true
+            },
+            {
+              "name": "configured media boundary 639",
+              "actual": "0",
+              "expected": "0",
+              "ok": true
+            },
+            {
+              "name": "configured viewport width 640",
+              "actual": 640,
+              "expected": 640,
+              "ok": true
+            },
+            {
+              "name": "configured media boundary 640",
+              "actual": "1",
+              "expected": "1",
+              "ok": true
+            },
+            {
+              "name": "unresolved variable keeps native computed-value rules",
+              "actual": "0px",
+              "expected": "0px",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "native grammar margin",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar marginInline",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar marginBlock",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar marginInlineStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar marginInlineEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar marginBlockStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar marginBlockEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar inset",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar insetInline",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar insetBlock",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar insetInlineStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar insetInlineEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar insetBlockStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar insetBlockEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar padding",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar paddingInline",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar paddingBlock",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar paddingInlineStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar paddingInlineEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar paddingBlockStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar paddingBlockEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar width",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar minWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar maxWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar height",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar minHeight",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar maxHeight",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar flexBasis",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar aspectRatio",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar zIndex",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridColumnStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridColumnEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridRowStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridRowEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar opacity",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar flexGrow",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar flexShrink",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineStartWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineEndWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockStartWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockEndWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderRadius",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderStartStartRadius",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderStartEndRadius",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderEndStartRadius",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderEndEndRadius",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar position",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar visibility",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar overflow",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar overflowX",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar overflowY",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar color",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar backgroundColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar boxShadow",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineStartStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineEndStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockStartStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockEndStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineStartColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineEndColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockStartColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockEndColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar alignSelf",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar justifySelf",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridArea",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridColumn",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridRow",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar display",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "padding accepts \"-1px\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "margin accepts \"-1px\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "padding accepts -2",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "margin accepts -2",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "padding accepts \"var(--custom-space)\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "padding accepts 0",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "padding accepts 0.5",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "padding accepts 13",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "width accepts 8",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "width accepts -8",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "width accepts \"fit-content\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "width accepts \"50%\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderWidth accepts \"1px 2px 3px 4px\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderWidth accepts \"1px 2px 3px 4px 5px\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "borderInlineWidth accepts \"1px 2px\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderInlineWidth accepts \"1px 2px 3px\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "borderInlineStartWidth accepts \"1px 2px\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "borderInlineStartWidth accepts \"1px\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderBlockStyle accepts \"solid dashed\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderBlockStartStyle accepts \"solid dashed\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "borderColor accepts \"red blue green black\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderInlineColor accepts \"red blue green\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "borderRadius accepts 0",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderRadius accepts 2",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "borderRadius accepts \"2px\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "gridColumnStart accepts 0",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "gridColumnStart accepts -1",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "zIndex accepts 0",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "opacity accepts 1.2",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "opacity accepts \"2\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "aspectRatio accepts 0",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "aspectRatio accepts \"16 / 9\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "flexGrow accepts 0.5",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "flexGrow accepts -1",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "display accepts \"contents\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "display accepts \"grid\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "numeric opacity attribute obeys numeric bounds",
+              "actual": "value",
+              "expected": "value",
+              "ok": true
+            },
+            {
+              "name": "numeric zero reads as a number",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "bracketed grid scalar precedes JSON",
+              "actual": "[main] 1fr [end]",
+              "expected": "[main] 1fr [end]",
+              "ok": true
+            },
+            {
+              "name": "invalid JSON has no override",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "unknown condition has no override",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "equivalent conflict has no override",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "null positions survive HTML conversion",
+              "actual": [
+                0,
+                null,
+                4
+              ],
+              "expected": [
+                0,
+                null,
+                4
+              ],
+              "ok": true
+            },
+            {
+              "name": "HTML callback stores a numeric token",
+              "actual": 2,
+              "expected": 2,
+              "ok": true
+            },
+            {
+              "name": "HTML callback stores bracketed CSS",
+              "actual": "[main] 1fr [end]",
+              "expected": "[main] 1fr [end]",
+              "ok": true
+            },
+            {
+              "name": "malformed update removes prior override",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "malformed update preserves unrelated value",
+              "actual": "red",
+              "expected": "red",
+              "ok": true
+            },
+            {
+              "name": "malformed update reports bounded diagnostic",
+              "actual": {
+                "code": "invalid-responsive-attribute",
+                "reason": "syntax"
+              },
+              "expected": {
+                "code": "invalid-responsive-attribute",
+                "reason": "syntax"
+              },
+              "ok": true
+            },
+            {
+              "name": "literal CSS remains a string",
+              "actual": "4px",
+              "expected": "4px",
+              "ok": true
+            },
+            {
+              "name": "authored keys survive conversion",
+              "actual": [
+                "medium",
+                "compact"
+              ],
+              "expected": [
+                "medium",
+                "compact"
+              ],
+              "ok": true
+            },
+            {
+              "name": "structured write does not mutate source attribute",
+              "actual": "{\"medium\":4,\"compact\":0}",
+              "expected": "{\"medium\":4,\"compact\":0}",
+              "ok": true
+            },
+            {
+              "name": "attribute removal clears current value",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "conflicting change after use fails",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "identical repeat is harmless",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "normalization uses configured rem value",
+              "actual": 40,
+              "expected": 40,
+              "ok": true
+            },
+            {
+              "name": "configured viewport width 639",
+              "actual": 639,
+              "expected": 639,
+              "ok": true
+            },
+            {
+              "name": "configured media boundary 639",
+              "actual": "0",
+              "expected": "0",
+              "ok": true
+            },
+            {
+              "name": "configured viewport width 640",
+              "actual": 640,
+              "expected": 640,
+              "ok": true
+            },
+            {
+              "name": "configured media boundary 640",
+              "actual": "1",
+              "expected": "1",
+              "ok": true
+            },
+            {
+              "name": "unresolved variable keeps native computed-value rules",
+              "actual": "0px",
+              "expected": "0px",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "native grammar margin",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar marginInline",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar marginBlock",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar marginInlineStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar marginInlineEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar marginBlockStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar marginBlockEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar inset",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar insetInline",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar insetBlock",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar insetInlineStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar insetInlineEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar insetBlockStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar insetBlockEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar padding",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar paddingInline",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar paddingBlock",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar paddingInlineStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar paddingInlineEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar paddingBlockStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar paddingBlockEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar width",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar minWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar maxWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar height",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar minHeight",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar maxHeight",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar flexBasis",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar aspectRatio",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar zIndex",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridColumnStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridColumnEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridRowStart",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridRowEnd",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar opacity",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar flexGrow",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar flexShrink",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineStartWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineEndWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockStartWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockEndWidth",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderRadius",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderStartStartRadius",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderStartEndRadius",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderEndStartRadius",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderEndEndRadius",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar position",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar visibility",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar overflow",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar overflowX",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar overflowY",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar color",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar backgroundColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar boxShadow",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineStartStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineEndStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockStartStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockEndStyle",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineStartColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderInlineEndColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockStartColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar borderBlockEndColor",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar alignSelf",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar justifySelf",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridArea",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridColumn",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar gridRow",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "native grammar display",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "padding accepts \"-1px\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "margin accepts \"-1px\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "padding accepts -2",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "margin accepts -2",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "padding accepts \"var(--custom-space)\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "padding accepts 0",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "padding accepts 0.5",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "padding accepts 13",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "width accepts 8",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "width accepts -8",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "width accepts \"fit-content\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "width accepts \"50%\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderWidth accepts \"1px 2px 3px 4px\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderWidth accepts \"1px 2px 3px 4px 5px\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "borderInlineWidth accepts \"1px 2px\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderInlineWidth accepts \"1px 2px 3px\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "borderInlineStartWidth accepts \"1px 2px\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "borderInlineStartWidth accepts \"1px\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderBlockStyle accepts \"solid dashed\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderBlockStartStyle accepts \"solid dashed\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "borderColor accepts \"red blue green black\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderInlineColor accepts \"red blue green\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "borderRadius accepts 0",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "borderRadius accepts 2",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "borderRadius accepts \"2px\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "gridColumnStart accepts 0",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "gridColumnStart accepts -1",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "zIndex accepts 0",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "opacity accepts 1.2",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "opacity accepts \"2\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "aspectRatio accepts 0",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "aspectRatio accepts \"16 / 9\"",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "flexGrow accepts 0.5",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "flexGrow accepts -1",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "display accepts \"contents\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "display accepts \"grid\"",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "numeric opacity attribute obeys numeric bounds",
+              "actual": "value",
+              "expected": "value",
+              "ok": true
+            },
+            {
+              "name": "numeric zero reads as a number",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "bracketed grid scalar precedes JSON",
+              "actual": "[main] 1fr [end]",
+              "expected": "[main] 1fr [end]",
+              "ok": true
+            },
+            {
+              "name": "invalid JSON has no override",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "unknown condition has no override",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "equivalent conflict has no override",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "null positions survive HTML conversion",
+              "actual": [
+                0,
+                null,
+                4
+              ],
+              "expected": [
+                0,
+                null,
+                4
+              ],
+              "ok": true
+            },
+            {
+              "name": "HTML callback stores a numeric token",
+              "actual": 2,
+              "expected": 2,
+              "ok": true
+            },
+            {
+              "name": "HTML callback stores bracketed CSS",
+              "actual": "[main] 1fr [end]",
+              "expected": "[main] 1fr [end]",
+              "ok": true
+            },
+            {
+              "name": "malformed update removes prior override",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "malformed update preserves unrelated value",
+              "actual": "red",
+              "expected": "red",
+              "ok": true
+            },
+            {
+              "name": "malformed update reports bounded diagnostic",
+              "actual": {
+                "code": "invalid-responsive-attribute",
+                "reason": "syntax"
+              },
+              "expected": {
+                "code": "invalid-responsive-attribute",
+                "reason": "syntax"
+              },
+              "ok": true
+            },
+            {
+              "name": "literal CSS remains a string",
+              "actual": "4px",
+              "expected": "4px",
+              "ok": true
+            },
+            {
+              "name": "authored keys survive conversion",
+              "actual": [
+                "medium",
+                "compact"
+              ],
+              "expected": [
+                "medium",
+                "compact"
+              ],
+              "ok": true
+            },
+            {
+              "name": "structured write does not mutate source attribute",
+              "actual": "{\"medium\":4,\"compact\":0}",
+              "expected": "{\"medium\":4,\"compact\":0}",
+              "ok": true
+            },
+            {
+              "name": "attribute removal clears current value",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "conflicting change after use fails",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "identical repeat is harmless",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "normalization uses configured rem value",
+              "actual": 40,
+              "expected": 40,
+              "ok": true
+            },
+            {
+              "name": "configured viewport width 639",
+              "actual": 639,
+              "expected": 639,
+              "ok": true
+            },
+            {
+              "name": "configured media boundary 639",
+              "actual": "0",
+              "expected": "0",
+              "ok": true
+            },
+            {
+              "name": "configured viewport width 640",
+              "actual": 640,
+              "expected": 640,
+              "ok": true
+            },
+            {
+              "name": "configured media boundary 640",
+              "actual": "1",
+              "expected": "1",
+              "ok": true
+            },
+            {
+              "name": "unresolved variable keeps native computed-value rules",
+              "actual": "0px",
+              "expected": "0px",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    }
+  },
+  "reproduction": {
+    "source": "import {isStyleScalar,styleInputSchema} from \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/shared/style-input-schema.js\";\nimport {parseResponsiveAttribute,copyResponsiveInput} from \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/shared/responsive-input.js\";\nimport {createOrderedStyleInputs} from \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/shared/ordered-style-inputs.js\";\nimport {createBreakpointConfiguration} from \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/shared/breakpoints.js\";\nimport {normalizeResponsive} from \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/shared/responsive.js\";\nconst results=[];const check=(name,actual,expected)=>results.push({name,actual,expected,ok:JSON.stringify(actual)===JSON.stringify(expected)});\nconst supports=(property,value)=>CSS.supports(property,value);\nfor(const property of Object.keys(styleInputSchema))check(\"native grammar \"+property,isStyleScalar(property,property===\"display\"?\"block\":\"initial\",supports,[\"block\",\"none\"]),true);\nfor(const [property,value,expected] of [\n [\"padding\",\"-1px\",false],[\"margin\",\"-1px\",true],[\"padding\",-2,false],[\"margin\",-2,true],\n [\"padding\",\"var(--custom-space)\",true],[\"padding\",0,true],[\"padding\",.5,true],[\"padding\",13,false],\n [\"width\",8,true],[\"width\",-8,false],[\"width\",\"fit-content\",true],[\"width\",\"50%\",true],\n [\"borderWidth\",\"1px 2px 3px 4px\",true],[\"borderWidth\",\"1px 2px 3px 4px 5px\",false],\n [\"borderInlineWidth\",\"1px 2px\",true],[\"borderInlineWidth\",\"1px 2px 3px\",false],\n [\"borderInlineStartWidth\",\"1px 2px\",false],[\"borderInlineStartWidth\",\"1px\",true],\n [\"borderBlockStyle\",\"solid dashed\",true],[\"borderBlockStartStyle\",\"solid dashed\",false],\n [\"borderColor\",\"red blue green black\",true],[\"borderInlineColor\",\"red blue green\",false],\n [\"borderRadius\",0,true],[\"borderRadius\",2,false],[\"borderRadius\",\"2px\",true],\n [\"gridColumnStart\",0,false],[\"gridColumnStart\",-1,true],[\"zIndex\",0,true],\n [\"opacity\",1.2,false],[\"opacity\",\"2\",true],[\"aspectRatio\",0,false],[\"aspectRatio\",\"16 / 9\",true],\n [\"flexGrow\",.5,true],[\"flexGrow\",-1,false],[\"display\",\"contents\",false],[\"display\",\"grid\",false]\n])check(property+\" accepts \"+JSON.stringify(value),isStyleScalar(property,value,supports,[\"block\",\"none\"]),expected);\nconst scalar=property=>value=>isStyleScalar(property,value,supports,[\"block\",\"none\"]);\ncheck(\"numeric opacity attribute obeys numeric bounds\",parseResponsiveAttribute(\"2\",scalar(\"opacity\"),{numbers:true}).diagnostic?.reason,\"value\");\ncheck(\"numeric zero reads as a number\",parseResponsiveAttribute(\"0\",scalar(\"padding\"),{numbers:true}).value,0);\nconst grid=value=>typeof value===\"string\"&&CSS.supports(\"grid-template-columns\",value);\ncheck(\"bracketed grid scalar precedes JSON\",parseResponsiveAttribute(\"[main] 1fr [end]\",grid).value,\"[main] 1fr [end]\");\ncheck(\"invalid JSON has no override\",parseResponsiveAttribute('{\"compact\":',scalar(\"padding\"),{numbers:true}).value===undefined,true);\ncheck(\"unknown condition has no override\",parseResponsiveAttribute('{\"tiny\":2}',scalar(\"padding\"),{numbers:true}).value===undefined,true);\ncheck(\"equivalent conflict has no override\",parseResponsiveAttribute('{\"compactOnly\":2,\"mediumDown\":4}',scalar(\"padding\"),{numbers:true}).value===undefined,true);\ncheck(\"null positions survive HTML conversion\",parseResponsiveAttribute(\"[0,null,4]\",scalar(\"padding\"),{numbers:true}).value,[0,null,4]);\nconst validators={padding:value=>copyResponsiveInput(value,scalar(\"padding\")),backgroundColor:value=>copyResponsiveInput(value,scalar(\"backgroundColor\")),gridTemplateColumns:value=>copyResponsiveInput(value,grid)};\nclass InputTarget extends HTMLElement{\n static observedAttributes=[\"padding\",\"background-color\",\"grid-template-columns\"];\n inputs=createOrderedStyleInputs(validators);diagnostics=[];\n attributeChangedCallback(name,old,value){const property=name===\"background-color\"?\"backgroundColor\":name===\"grid-template-columns\"?\"gridTemplateColumns\":name;const guard=property===\"gridTemplateColumns\"?grid:scalar(property);const parsed=parseResponsiveAttribute(value,guard,{numbers:property===\"padding\"});this.inputs.set(property,parsed.value);if(parsed.diagnostic)this.diagnostics.push(parsed.diagnostic);}\n}\ncustomElements.define(\"responsive-input-target\",InputTarget);\nconst parent=document.createElement(\"div\");parent.innerHTML='<responsive-input-target padding=\"2\" background-color=\"red\" grid-template-columns=\"[main] 1fr [end]\"></responsive-input-target>';document.body.append(parent);const target=parent.firstElementChild;\ncheck(\"HTML callback stores a numeric token\",target.inputs.get(\"padding\"),2);\ncheck(\"HTML callback stores bracketed CSS\",target.inputs.get(\"gridTemplateColumns\"),\"[main] 1fr [end]\");\ntarget.setAttribute(\"padding\",'{\"compact\":');\ncheck(\"malformed update removes prior override\",target.inputs.get(\"padding\")===undefined,true);\ncheck(\"malformed update preserves unrelated value\",target.inputs.get(\"backgroundColor\"),\"red\");\ncheck(\"malformed update reports bounded diagnostic\",target.diagnostics.at(-1),{code:\"invalid-responsive-attribute\",reason:\"syntax\"});\ntarget.setAttribute(\"padding\",\"4px\");\ncheck(\"literal CSS remains a string\",target.inputs.get(\"padding\"),\"4px\");\ntarget.setAttribute(\"padding\",'{\"medium\":4,\"compact\":0}');\ncheck(\"authored keys survive conversion\",Object.keys(target.inputs.get(\"padding\")),[\"medium\",\"compact\"]);\ncheck(\"structured write does not mutate source attribute\",target.getAttribute(\"padding\"),'{\"medium\":4,\"compact\":0}');\ntarget.removeAttribute(\"padding\");check(\"attribute removal clears current value\",target.inputs.get(\"padding\")===undefined,true);\nparent.remove();\nconst config=createBreakpointConfiguration();config.read();config.configure({medium:40});const widths=config.use();let rejected=false;try{config.configure({medium:41});}catch{rejected=true;}check(\"conflicting change after use fails\",rejected,true);check(\"identical repeat is harmless\",config.configure({medium:40})===widths,true);\nconst range=normalizeResponsive({medium:1},value=>typeof value===\"number\",widths)[0];check(\"normalization uses configured rem value\",range.min,40);\nconst frame=document.createElement(\"iframe\");frame.style.border=\"0\";document.body.append(frame);const doc=frame.contentDocument;doc.open();doc.write('<!doctype html><style>#target{--active:0}@media(width >= '+range.min+'rem){#target{--active:1}}</style><div id=target></div>');doc.close();\nfor(const [width,expected] of [[639,\"0\"],[640,\"1\"]]){frame.style.width=width+\"px\";frame.getBoundingClientRect();await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));check(\"configured viewport width \"+width,frame.contentWindow.innerWidth,width);check(\"configured media boundary \"+width,frame.contentWindow.getComputedStyle(doc.querySelector(\"#target\")).getPropertyValue(\"--active\").trim(),expected);}\nframe.remove();\nconst computed=document.createElement(\"div\");computed.style.cssText=\"--negative:-4px;padding:8px;padding:var(--negative)\";document.body.append(computed);check(\"unresolved variable keeps native computed-value rules\",getComputedStyle(computed).paddingTop,\"0px\");computed.remove();\nwindow.__results={results};\n",
+    "runner": "import fs from \"node:fs\";import path from \"node:path\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\",directory=\"/tmp/acme-m05-inputs\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\"});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+  },
+  "corrections": [
+    {
+      "case": "Numeric opacity attribute 2 originally fell back to the CSS string after failing numeric validation.",
+      "result": "Explicit numeric-category parsing now rejects it as a numeric value. Explicit JSON string leaves retain the CSS string grammar. A regression went red before this correction."
+    }
+  ],
+  "limits": [
+    "The browser fixture imports built modules and exercises real HTML callbacks/CSS.supports/native queries, but is not the final layout component/controller.",
+    "CSS.supports validates grammar; unresolved variables retain native computed-value behavior, verified with a negative padding variable.",
+    "Layout-specific fields such as gap/columns/tracks remain with their component schemas.",
+    "The public style helper's removal contract is still pending. No choice, private Lit hook or directive implementation is implied.",
+    "Theme scope, token delivery, attribute/order capture and generated responsive rendering remain M05 work."
+  ]
+}

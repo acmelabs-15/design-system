@@ -9,6 +9,7 @@
 import { type GeistMap, has } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "book",
   component: "Book",
   root: has("BH179W_perspective"),
@@ -57,7 +58,7 @@ export const geist: GeistMap = {
                   ours: ".content",
                   pick: has("BH179W_content"),
                   children: [
-                    { ours: ".title", pick: has("BH179W_title") },
+                    { ours: ".heading", pick: has("BH179W_title") },
                     { ours: ".illustration", pick: has("BH179W_illustration"), leaf: true },
                     // The icon: an inline svg, or a light and a dark logo image; slotted in ours, no rules of its own.
                     { ours: "", pick: (c) => c.tag === "svg" || c.tag === "img", all: true, leaf: true },

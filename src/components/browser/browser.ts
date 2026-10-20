@@ -1,102 +1,31 @@
-import { css, html } from "lit";
-import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, glyphSized, paths, sharedCss } from "../../base";
-import { toasts } from "../../shared/state";
-import { browserCss } from "./browser.styles";
-import { browserCopyCss } from "./browser-copy.styles";
-import "../button/button";
+import { html, nothing } from "lit";
+import { property } from "lit/decorators.js";
+import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
+import { optionalString } from "../../shared/attributes";
+import { browserCss } from "../../generated/components/browser/browser.styles";
+import { browserStructureCss } from "../../generated/components/browser/browser-structure.styles";
 
-/** The address as the bar shows it: no scheme, no `www.`, no trailing slash. */
-export const formatAddress = (address: string) =>
+const displayAddress = (address: string) =>
   address
-    ? address
-        .replace(/^https?:\/\//, "")
-        .replace(/^www\./, "")
-        .replace(/\/$/, "")
-    : "";
-
-/** The check stays in the copy button for this long after a copy. */
-const COPIED_MS = 1000;
-/** The reload control, a 24-box stroke path like the house glyphs. */
-const RELOAD = "M21 12a9 9 0 1 1-2.64-6.36M21 3v6h-6";
-/** A navigation control: a 14px glyph in gray-900. */
-const control = (d: string) =>
-  html`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ds-gray-900)" aria-hidden="true"><path d=${d}></path></svg>`;
-
-/**
- * Browser frame. A small-material box, rounded in proportion to its own width from the md
- * breakpoint, with a header over the slotted content. The header holds three sections: the
- * traffic-light dots with the back, forward and reload controls (the controls hide below md); the
- * address bar, a pill that shows `address` without its scheme, `www.` and trailing slash, with a
- * copy button (a tertiary, tiny, square icon button) that writes the full address to the
- * clipboard, is named "Copied" and shows a check for one second after a copy, and raises an error
- * toast when the copy fails; and an empty spacer that appears from lg. The chrome takes the page
- * theme. The frame is decorative: set `aria-hidden="true"` on the element and describe the
- * screenshot inside it.
+    .replace(/^https?:\/\//, "")
+    .replace(/^www\./, "")
+    .replace(/\/$/, "");
+/** Decorative browser chrome around author-owned preview content.
+ * @slot - Preview content, including native interactive descendants when required.
+ * @csspart root - Complete frame.
+ * @csspart chrome - Decorative browser header.
+ * @csspart address - Escaped display address.
+ * @csspart content - Preview content container.
  */
-@customElement("acme-browser")
 export class AcmeBrowser extends AcmeElement {
-  static styles = [
-    sharedCss,
-    browserCss,
-    browserCopyCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
-  ];
-  /** The URL the address bar shows and the copy button copies. */
-  @property() address = "";
-  @atomState() private copied = false;
-  private timer?: ReturnType<typeof setTimeout>;
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    clearTimeout(this.timer);
-  }
-
-  private copy = async () => {
-    clearTimeout(this.timer);
-    try {
-      await navigator.clipboard.writeText(this.address);
-      this.copied = true;
-      this.timer = setTimeout(() => {
-        this.copied = false;
-      }, COPIED_MS);
-    } catch {
-      toasts.error("Failed to copy to clipboard");
-    }
-  };
-
+  static styles = [sharedCss, browserCss, browserStructureCss];
+  @atomState() @property({ noAccessor: true, useDefault: true }) address = "";
+  @atomState() @property({ noAccessor: true, converter: optionalString }) label?: string;
   render() {
-    return html`<div style="container-type:inline-size">
-      <div class="frame" part="frame">
-        <div class="header" part="header">
-          <div class="section">
-            <div class="dots"><div class="dot-close"></div><div class="dot-min"></div><div class="dot-zoom"></div></div>
-            <div class="controls">${control(paths.back)}${control(paths.arrow)}${control(RELOAD)}</div>
-          </div>
-          <div class="section">
-            <div class="address" part="address">
-              <div class="text">${formatAddress(this.address)}</div>
-              <acme-button variant="tertiary" size="tiny" shape="square" svg-only aria-label=${this.copied ? "Copied" : "Copy"} @click=${this.copy} part="button">
-                <div class=${this.cls("stack", { copied: this.copied })}>
-                  <div class="check">${glyphSized("check", 12)}</div>
-                  <div class="copy">${glyphSized("copy", 12)}</div>
-                </div>
-              </acme-button>
-            </div>
-          </div>
-          <div class="spacer"></div>
-        </div>
-        <slot></slot>
-      </div>
-    </div>`;
+    return html`<div class="container"><div class="frame" part="root" role=${this.label ? "group" : nothing} aria-label=${this.label || nothing}><div class="header" part="chrome"><div class="section" aria-hidden="true"><div class="dots"><div class="dot-close"></div><div class="dot-min"></div><div class="dot-zoom"></div></div><div class="controls"><acme-arrow-back-icon size="14px"></acme-arrow-back-icon><acme-arrow-forward-icon size="14px"></acme-arrow-forward-icon><acme-refresh-icon size="14px"></acme-refresh-icon></div></div><div class="section"><div class="address" part="address"><div class="text">${displayAddress(this.address)}</div></div></div><div class="spacer" aria-hidden="true"></div></div><div part="content"><slot></slot></div></div></div>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-browser": AcmeBrowser;

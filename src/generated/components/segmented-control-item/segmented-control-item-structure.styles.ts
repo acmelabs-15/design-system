@@ -1,0 +1,99 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const segmentedControlItemStructureCss = css`:host {
+  min-inline-size: 0;
+  display: inline-flex;
+  position: relative;
+}
+
+.segment {
+  block-size: 28px;
+  min-inline-size: 28px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-500);
+  color: var(--ds-gray-900);
+  cursor: pointer;
+  --acme-icon-size: 20px;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding-inline: 12px;
+  display: flex;
+  position: relative;
+}
+
+.segment[data-size="small"] {
+  --acme-icon-size: 16px;
+  block-size: 24px;
+  min-inline-size: 24px;
+  padding-inline: 8px;
+  font-size: 13px;
+}
+
+.segment[data-size="large"] {
+  --acme-icon-size: 24px;
+  block-size: 32px;
+  min-inline-size: 32px;
+  padding-inline: 16px;
+  font-size: 16px;
+}
+
+.segment[data-selected] {
+  color: var(--ds-gray-1000);
+}
+
+.segment[data-disabled] {
+  color: var(--ds-gray-700);
+  cursor: not-allowed;
+}
+
+.native {
+  opacity: 0;
+  block-size: 100%;
+  inline-size: 100%;
+  cursor: inherit;
+  margin: 0;
+  position: absolute;
+  inset: 0;
+}
+
+[part="label"] {
+  pointer-events: none;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  display: inline-flex;
+}
+
+.segment:has(.native:focus-visible) {
+  outline: 2px solid var(--ds-blue-700);
+  outline-offset: 1px;
+}
+
+@media (hover: hover) {
+  .segment:not([data-disabled]):not([data-selected]):hover {
+    color: var(--ds-gray-1000);
+  }
+}
+
+@media (forced-colors: active) {
+  .segment {
+    color: buttontext;
+  }
+
+  .segment[data-selected] {
+    color: highlighttext;
+    forced-color-adjust: none;
+  }
+
+  .segment[data-disabled] {
+    color: graytext;
+  }
+
+  .segment:has(.native:focus-visible) {
+    outline-color: highlight;
+  }
+}
+`;

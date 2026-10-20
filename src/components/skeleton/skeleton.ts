@@ -1,79 +1,87 @@
-import { css, html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { animate } from "@lit-labs/motion";
+import { html, type PropertyValues } from "lit";
+import { property } from "lit/decorators.js";
+import { keyed } from "lit/directives/keyed.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
+import { skeletonSurfaceCss } from "../../generated/components/skeleton/skeleton-surface.styles";
 import { atomState } from "../../shared/atom-state";
-import { skeletonCss } from "./skeleton.styles";
-
-const px = (v: string | number) => (typeof v === "number" ? `${v}px` : /^\d+(\.\d+)?$/.test(v) ? `${v}px` : v);
-/** Unset stays undefined (automatic); `show="false"` turns it off; any other value turns it on. */
-const tristate = { fromAttribute: (v: string | null) => (v === null ? undefined : v !== "false") };
-
-/**
- * Skeleton: a block with a gray sweep, shown while content loads. The root carries the shape
- * classes (pill, rounded, squared), `still` without animation, `button` for the wider sweep,
- * and one of four states: bare (a block of the given size), `wrap` (children present, hidden
- * under the sweep), `off` (`show="false"`: children visible, no sweep), `auto` (a fixed size
- * with children: the children show, the block keeps its size). Width, min-height (24 by
- * default) and the bottom margin from `box-height` are inline styles. The host renders as its
- * contents, so the block itself is the flex or block item of the layout around it.
+import { optionalString } from "../../shared/attributes";
+import { RepeatingMotion } from "../../shared/repeating-motion";
+/** Decorative loading placeholder that retains author-owned content.
+ * @slot - Content shown when loading becomes false.
+ * @csspart root - Sized placeholder wrapper.
+ * @csspart content - Retained author content.
  */
-@customElement("acme-skeleton")
 export class AcmeSkeleton extends AcmeElement {
-  static styles = [
-    sharedCss,
-    skeletonCss,
-    css`
-      :host {
-        display: block;
+  static styles = [sharedCss, skeletonSurfaceCss];
+  @atomState() @property({ noAccessor: true, converter: boolish, useDefault: true }) loading = true;
+  @atomState() private form: "rectangle" | "circle" = "rectangle";
+  /** @default "rectangle" */
+  @property({ noAccessor: true, useDefault: true }) get shape() {
+    return this.form;
+  }
+  set shape(value: "rectangle" | "circle") {
+    if (value !== "rectangle" && value !== "circle") {
+      throw new TypeError("Invalid Skeleton shape");
+    }
+    const previous = this.form;
+    this.form = value;
+    this.requestUpdate("shape", previous);
+  }
+  @atomState() private inlineSize?: string;
+  @atomState() private blockSize?: string;
+  @property({ noAccessor: true, converter: optionalString }) get width(): string | undefined {
+    return this.inlineSize;
+  }
+  set width(value: string | undefined) {
+    this.validateSize(value);
+    const previous = this.inlineSize;
+    this.inlineSize = value;
+    this.requestUpdate("width", previous);
+  }
+  @property({ noAccessor: true, converter: optionalString }) get height(): string | undefined {
+    return this.blockSize;
+  }
+  set height(value: string | undefined) {
+    this.validateSize(value);
+    const previous = this.blockSize;
+    this.blockSize = value;
+    this.requestUpdate("height", previous);
+  }
+  private validateSize(value: string | undefined) {
+    if (
+      value !== undefined &&
+      (typeof value !== "string" ||
+        !value.trim() ||
+        /^(initial|inherit|unset|revert)/i.test(value) ||
+        (this.ownerDocument.defaultView?.CSS && !this.ownerDocument.defaultView.CSS.supports("width", value)))
+    ) {
+      throw new TypeError("Skeleton dimensions require CSS sizes");
+    }
+  }
+  private readonly motion = new RepeatingMotion(this, () => this.loading);
+  protected willUpdate(changes: PropertyValues) {
+    if (changes.has("loading")) {
+      this.motion.reset();
+    }
+  }
+  protected updated() {
+    const root = this.renderRoot.querySelector<HTMLElement>("[part=root]")!;
+    for (const [name, value] of [
+      ["--_skeleton-width", this.width],
+      ["--_skeleton-height", this.height],
+    ] as const) {
+      if (value === undefined) {
+        root.style.removeProperty(name);
+      } else {
+        root.style.setProperty(name, value);
       }
-    `,
-  ];
-  /** Pixels or any CSS length ("100%"). */
-  @property() width: string | number = "";
-  /** Pixels or any CSS length; the block's min-height (24 when a size is given). */
-  @property() height: string | number = "";
-  /** Height reserved for the box; the difference to `height` becomes bottom margin. */
-  @property({ attribute: "box-height" }) boxHeight: string | number = "";
-  /** Force the skeleton on or off (`show="false"`); unset, a fixed-size skeleton hides once children are present. */
-  @property({ converter: tristate }) show?: boolean;
-  @property({ type: Boolean }) pill = false;
-  @property({ type: Boolean }) rounded = false;
-  @property({ type: Boolean }) squared = false;
-  /** Inside a Button: the sweep extends by 1px so the border is covered. */
-  @property({ type: Boolean }) button = false;
-  /** `animated="false"` stops the sweep. */
-  @property({ converter: boolish }) animated = true;
-  @atomState() private hasChildren = false;
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.scan();
+    }
   }
-  firstUpdated() {
-    this.scan();
-  }
-  private scan() {
-    this.hasChildren = Array.from(this.childNodes).some((n) => n.nodeType === 1 || (n.nodeType === 3 && !!n.textContent?.trim()));
-  }
-
   render() {
-    const fixed = this.width !== "" || this.height !== "" || this.boxHeight !== "";
-    const st = this.show === false ? "off" : fixed && this.hasChildren ? "auto" : this.hasChildren ? "wrap" : "on";
-    const h = this.height !== "" ? px(this.height) : "24px";
-    const bh = this.boxHeight !== "" ? px(this.boxHeight) : "";
-    const hn = Number.parseFloat(h);
-    const bn = Number.parseFloat(bh);
-    const margin = bh.endsWith("px") && h.endsWith("px") && bn > hn ? `${bn - hn}px` : "";
-    const style = fixed ? [this.width !== "" ? `width:${px(this.width)}` : "", `min-height:${h}`, margin ? `margin-bottom:${margin}` : ""].filter(Boolean).join(";") : "";
-    return html`<span
-      class=${this.cls("skeleton", { pill: this.pill, rounded: this.rounded, squared: this.squared, still: !this.animated, button: this.button, [st]: st !== "on" })}
-      style=${style || nothing}
-      part="skeleton"
-      ><slot @slotchange=${this.scan}></slot
-    ></span>`;
+    return html`<div part="root" data-shape=${this.shape} data-loading=${String(this.loading)}><div part="content" ?inert=${this.loading} aria-hidden=${this.loading ? "true" : "false"}><slot></slot></div>${this.loading ? keyed(this.motion.key, html`<div class="paint" aria-hidden="true"><span class="sweep" ${animate(this.motion.options([{ transform: "translateX(0)" }, { transform: "translateX(-50%)" }], { duration: 1500, easing: "ease-in-out", direction: "reverse" }, ["transform"]))}></span></div>`) : null}</div>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-skeleton": AcmeSkeleton;

@@ -1,0 +1,114 @@
+{
+  "date": "2026-09-21",
+  "subject": "M11 native Fieldset boundary prerequisite",
+  "status": "paired native controls inspected; production Fieldset replacement not yet started",
+  "results": [
+    {
+      "engine": "chromium",
+      "slotted": {
+        "data": [
+          [
+            "legend",
+            "keep"
+          ],
+          [
+            "native",
+            "value"
+          ],
+          [
+            "custom",
+            "value"
+          ]
+        ],
+        "nativeDisabled": false,
+        "customDisabled": false,
+        "legendDisabled": false
+      },
+      "nativeAncestor": {
+        "data": [
+          [
+            "legend",
+            "keep"
+          ]
+        ],
+        "nativeDisabled": true,
+        "customDisabled": true,
+        "legendDisabled": false
+      }
+    },
+    {
+      "engine": "firefox",
+      "slotted": {
+        "data": [
+          [
+            "legend",
+            "keep"
+          ],
+          [
+            "native",
+            "value"
+          ],
+          [
+            "custom",
+            "value"
+          ]
+        ],
+        "nativeDisabled": false,
+        "customDisabled": false,
+        "legendDisabled": false
+      },
+      "nativeAncestor": {
+        "data": [
+          [
+            "legend",
+            "keep"
+          ]
+        ],
+        "nativeDisabled": true,
+        "customDisabled": true,
+        "legendDisabled": false
+      }
+    },
+    {
+      "engine": "webkit",
+      "slotted": {
+        "data": [
+          [
+            "legend",
+            "keep"
+          ],
+          [
+            "native",
+            "value"
+          ],
+          [
+            "custom",
+            "value"
+          ]
+        ],
+        "nativeDisabled": false,
+        "customDisabled": false,
+        "legendDisabled": false
+      },
+      "nativeAncestor": {
+        "data": [
+          [
+            "legend",
+            "keep"
+          ]
+        ],
+        "nativeDisabled": true,
+        "customDisabled": true,
+        "legendDisabled": false
+      }
+    }
+  ],
+  "finding": "A disabled native fieldset inside a wrapper shadow root does not disable slotted ordinary inputs or form-associated custom elements in any required engine. A real native fieldset ancestor excludes both from FormData, preserves their own disabled properties, and retains the first-legend exception.",
+  "returnPoint": "M11 must implement the approved native or verified equivalent boundary without copying disabled state into each child or treating the old visual disabled wall as native behavior.",
+  "fixtures": [
+    {
+      "file": "fieldset-probe.ts",
+      "source": "process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');const results=[];\nfor(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});try{const page=await browser.newPage();await page.setContent('<form><x-fieldset><input slot=\"legend\" name=\"legend\" value=\"keep\"><input name=\"native\" value=\"value\" required><x-control name=\"custom\"></x-control></x-fieldset></form>');const result=await page.evaluate(()=>{customElements.define('x-control',class extends HTMLElement{static formAssociated=true;internals=this.attachInternals();platformDisabled=false;connectedCallback(){this.internals.setFormValue('value');}formDisabledCallback(value){this.platformDisabled=value;}});customElements.define('x-fieldset',class extends HTMLElement{constructor(){super();this.attachShadow({mode:'open'}).innerHTML='<fieldset disabled><legend><slot name=\"legend\"></slot></legend><slot></slot></fieldset>';}});const form=document.querySelector('form'),control=document.querySelector('x-control'),native=document.querySelector('input[name=native]'),legend=document.querySelector('input[slot=legend]');const slotted={data:[...new FormData(form)],nativeDisabled:native.matches(':disabled'),customDisabled:control.platformDisabled,legendDisabled:legend.matches(':disabled')};const fieldset=document.createElement('fieldset');fieldset.disabled=true;form.append(fieldset);const realLegend=document.createElement('legend');realLegend.append(legend);fieldset.append(realLegend,native,control);return {slotted,nativeAncestor:{data:[...new FormData(form)],nativeDisabled:native.matches(':disabled'),customDisabled:control.platformDisabled,legendDisabled:legend.matches(':disabled')}};});results.push({engine,...result});console.log(results.at(-1));}finally{await browser.close();}}\nawait Bun.write('/tmp/acme-m11-forms/fieldset-results.json',JSON.stringify(results,null,2)+'\\n');\n"
+    }
+  ]
+}

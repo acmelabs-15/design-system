@@ -1,47 +1,92 @@
-import { describe, expect, test } from "bun:test";
-import "../../../index";
-import type { AcmeMarkdown } from "../markdown";
+import * as markdownParser from "@tanstack/markdown/parser";
 
-const mount = async (html: string) => {
-  document.body.innerHTML = html;
-  const el = document.body.firstElementChild as AcmeMarkdown;
+import { expect, test, spyOn } from "bun:test";
+import "../../../all";
+import { discoverHeadingTargets } from "../../../shared/heading-targets";
+import { highlighter } from "../../../shared/highlight";
+
+async function mount(text: string, id = "article") {
+  const el = document.createElement("acme-markdown");
+  el.id = id;
+  el.text = text;
+  document.body.replaceChildren(el);
   await el.updateComplete;
   return el;
-};
-
-describe("acme-markdown", () => {
-  test("renders headings, emphasis and lists in the Geist scale", async () => {
-    const el = await mount(`<acme-markdown>
-      ## Title
-
-      Some **bold** copy.
-
-      - one
-      - two
-    </acme-markdown>`);
-    const root = el.shadowRoot!.querySelector(".markdown")!;
-    expect(root.querySelector("h2")?.textContent).toBe("Title");
-    expect(root.querySelector("strong")?.textContent).toBe("bold");
-    expect(root.querySelectorAll("li").length).toBe(2);
+}
+test("Markdown owns native prose and real stable fragment targets", async () => {
+  const el = await mount("## Install\n\nSome **strong** text and `inline()` code.\n\n[Jump](#install)");
+  const heading = el.querySelector("h2")!;
+  expect(heading).not.toBeNull();
+  expect(heading.id).toBe("article-install");
+  expect(el.querySelector("strong")!.textContent).toBe("strong");
+  expect(el.querySelector("a")!.getAttribute("href")).toBe("#article-install");
+  expect(discoverHeadingTargets(el).map((target) => target.id)).toEqual(["article-install"]);
+  el.requestUpdate();
+  await el.updateComplete;
+  expect(el.querySelector("h2")).toBe(heading);
+});
+test("default raw HTML and executable URLs remain inert; HTML is an explicit trusted opt-in", async () => {
+  const el = await mount("<img src=x onerror=bad()>\n\n[bad](javascript:alert(1))");
+  expect(el.querySelector("img")).toBeNull();
+  expect(el.querySelector("a[href^=javascript]")).toBeNull();
+  el.text = "<b>Trusted</b>";
+  el.allowHtml = true;
+  await el.updateComplete;
+  expect(el.querySelector("b")!.textContent).toBe("Trusted");
+});
+test("text is the only source and output IDs remain unique across instances", async () => {
+  const first = await mount("## Shared\n\nA footnote[^a].\n\n[^a]: A note.", "one");
+  const second = document.createElement("acme-markdown");
+  second.id = "two";
+  second.text = first.text;
+  second.append(document.createTextNode("# Ignored"));
+  document.body.append(second);
+  await second.updateComplete;
+  expect(second.querySelector("h1")).toBeNull();
+  const ids = [...document.querySelectorAll("[data-acme-markdown-prose] [id]")].map((node) => node.id);
+  expect(new Set(ids).size).toBe(ids.length);
+  expect(second.querySelector("h2")!.id).toBe("two-shared");
+});
+test("code fences highlight and failed highlighting preserves safe source", async () => {
+  const el = await mount("```ts\nconst value = 1;\n```");
+  expect(el.querySelector(".th-keyword")!.textContent).toBe("const");
+  const errors: any[] = [];
+  el.addEventListener("acme-error", (e) => errors.push((e as CustomEvent).detail));
+  const mock = spyOn(highlighter, "tokenize").mockImplementation(() => {
+    throw new Error("broken highlighter");
   });
-
-  test("highlights code fences and escapes raw HTML by default", async () => {
-    const el = await mount(`<acme-markdown>
-      \`\`\`ts
-      const a = 1;
-      \`\`\`
-    </acme-markdown>`);
-    const root = el.shadowRoot!.querySelector(".markdown")!;
-    expect(root.querySelector("pre code .th-keyword")?.textContent).toBe("const");
-    // Raw HTML in the source (set as text, so the DOM parser does not consume it) is escaped.
-    el.text = "Hello <b>raw</b>";
+  try {
+    el.text = "```html\n<img src=x>\n```";
     await el.updateComplete;
-    expect(root.querySelector("b")).toBeNull();
-    expect(root.textContent).toContain("<b>raw</b>");
-  });
+    expect(el.querySelector("img")).toBeNull();
+    expect(el.querySelector("pre")!.textContent).toContain("<img");
+    expect(errors[0]?.code).toBe("highlight");
+  } finally {
+    mock.mockRestore();
+  }
+});
+test("table alignment uses generated hooks and relative links retain page resolution", async () => {
+  const el = await mount("| Name | Count |\n| :--- | ---: |\n| Example | 2 |\n\n[Guide](./guide)");
+  expect(el.querySelector("th:last-child")!.getAttribute("data-acme-markdown-align")).toBe("right");
+  expect(el.querySelector("th:last-child")!.hasAttribute("style")).toBe(false);
+  expect(el.querySelector("a")!.getAttribute("href")).toBe("./guide");
+});
 
-  test("text property overrides the content", async () => {
-    const el = await mount(`<acme-markdown text="# From a property">ignored</acme-markdown>`);
-    expect(el.shadowRoot!.querySelector("h1")?.textContent).toBe("From a property");
+test("parser failure keeps safe source and reports its failure", async () => {
+  const mock = spyOn(markdownParser, "parseMarkdown").mockImplementation(() => {
+    throw new Error("parser unavailable");
   });
+  try {
+    const el = document.createElement("acme-markdown");
+    el.text = "<img src=x>";
+    const errors: any[] = [];
+    el.addEventListener("acme-error", (event) => errors.push((event as CustomEvent).detail));
+    document.body.replaceChildren(el);
+    await el.updateComplete;
+    expect(el.querySelector("img")).toBeNull();
+    expect(el.querySelector("pre")?.textContent).toBe("<img src=x>");
+    expect(errors[0]?.code).toBe("parse");
+  } finally {
+    mock.mockRestore();
+  }
 });

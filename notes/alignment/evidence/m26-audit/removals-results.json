@@ -1,0 +1,604 @@
+{
+  "date": "2026-09-26",
+  "version": "0.3.0",
+  "originalTags": 150,
+  "removedOrRenamedTags": [
+    "acme-appbar",
+    "acme-bar-row",
+    "acme-bar-rows",
+    "acme-button-group",
+    "acme-check",
+    "acme-chip",
+    "acme-choicebox",
+    "acme-choicebox-item",
+    "acme-clearable-input",
+    "acme-collapse",
+    "acme-collapse-group",
+    "acme-combobox-option",
+    "acme-command-divider",
+    "acme-context-card",
+    "acme-description",
+    "acme-destructive-modal",
+    "acme-dots-menu",
+    "acme-entity",
+    "acme-entity-content",
+    "acme-entity-list",
+    "acme-error",
+    "acme-error-card",
+    "acme-file",
+    "acme-file-tree",
+    "acme-filter",
+    "acme-filters",
+    "acme-fold",
+    "acme-folder",
+    "acme-gauge",
+    "acme-grid-cell",
+    "acme-grid-cross",
+    "acme-grid-page",
+    "acme-grid-system",
+    "acme-items",
+    "acme-kv",
+    "acme-link-card",
+    "acme-loading-dots",
+    "acme-logs",
+    "acme-menu-button",
+    "acme-menu-divider",
+    "acme-metric",
+    "acme-metric-list",
+    "acme-modal",
+    "acme-modal-inset",
+    "acme-multi-select-row",
+    "acme-note",
+    "acme-page-head",
+    "acme-panel",
+    "acme-panel-foot",
+    "acme-panel-head",
+    "acme-panels",
+    "acme-phone",
+    "acme-project-banner",
+    "acme-ricon",
+    "acme-scroller",
+    "acme-setting-row",
+    "acme-setting-rows",
+    "acme-sheet",
+    "acme-shell",
+    "acme-side-nav",
+    "acme-spark",
+    "acme-stat-delta",
+    "acme-stat-desc",
+    "acme-stat-foot",
+    "acme-stat-strip",
+    "acme-status-dot",
+    "acme-strip-item",
+    "acme-subnav",
+    "acme-switch-control",
+    "acme-tags",
+    "acme-task",
+    "acme-tasks",
+    "acme-text-copy",
+    "acme-tile",
+    "acme-tiles",
+    "acme-toaster",
+    "acme-toggle",
+    "acme-topbar",
+    "acme-trend"
+  ],
+  "removedStillRegistered": [],
+  "removedExports": [],
+  "findings": [],
+  "classifiedHits": {
+    "note": "acme-error occurrences are the current event name and CSS token, not the retired custom element; no tag markup or definition remains.",
+    "hits": [
+      {
+        "path": "src/components/flow-diagram/flow-diagram.ts",
+        "line": 32,
+        "tag": "acme-error",
+        "context": " * @fires {CustomEvent<{code:\"layout\",message:string}>} acme-error - Layout failure."
+      },
+      {
+        "path": "src/components/flow-diagram/flow-diagram.ts",
+        "line": 342,
+        "tag": "acme-error",
+        "context": "        this.dispatchEvent(new CustomEvent(\"acme-error\", { detail: Object.freeze({ code: \"layout\", message: this.failure }), bubbles: true, composed: true }));"
+      },
+      {
+        "path": "src/components/flow-diagram/__tests__/flow-diagram.browser.ts",
+        "line": 42,
+        "tag": "acme-error",
+        "context": "flow.addEventListener(\"acme-error\", (e) => fixture.failures.push((e as CustomEvent<unknown>).detail));"
+      },
+      {
+        "path": "src/components/avatar/avatar.ts",
+        "line": 22,
+        "tag": "acme-error",
+        "context": " * @fires {CustomEvent<{code:\"image\";message:string}>} acme-error - The current image failed to load."
+      },
+      {
+        "path": "src/components/avatar/avatar.ts",
+        "line": 68,
+        "tag": "acme-error",
+        "context": "        : new CustomEvent(\"acme-error\", {"
+      },
+      {
+        "path": "src/components/avatar/__tests__/avatar.test.ts",
+        "line": 27,
+        "tag": "acme-error",
+        "context": "  avatar.addEventListener(\"acme-error\", (e) => events.push((e as CustomEvent).detail));"
+      },
+      {
+        "path": "src/components/snippet/__tests__/snippet.browser.ts",
+        "line": 51,
+        "tag": "acme-error",
+        "context": "for (const name of [\"acme-copy\", \"acme-error\"]) {"
+      },
+      {
+        "path": "src/components/markdown/markdown.ts",
+        "line": 26,
+        "tag": "acme-error",
+        "context": " * @fires {CustomEvent<{code:\"parse\"|\"highlight\";message:string}>} acme-error - Rendering failed; safe source remains visible."
+      },
+      {
+        "path": "src/components/markdown/markdown.ts",
+        "line": 219,
+        "tag": "acme-error",
+        "context": "        this.dispatchEvent(new CustomEvent(\"acme-error\", { detail: Object.freeze(error), bubbles: true, composed: true }));"
+      },
+      {
+        "path": "src/components/markdown/__tests__/markdown.test.ts",
+        "line": 54,
+        "tag": "acme-error",
+        "context": "  el.addEventListener(\"acme-error\", (e) => errors.push((e as CustomEvent).detail));"
+      },
+      {
+        "path": "src/components/markdown/__tests__/markdown.test.ts",
+        "line": 83,
+        "tag": "acme-error",
+        "context": "    el.addEventListener(\"acme-error\", (event) => errors.push((event as CustomEvent).detail));"
+      },
+      {
+        "path": "src/components/markdown/__tests__/markdown.browser.ts",
+        "line": 28,
+        "tag": "acme-error",
+        "context": "fixture.markdown.addEventListener(\"acme-error\", (event) => fixture.errors.push((event as CustomEvent<unknown>).detail));"
+      },
+      {
+        "path": "src/components/copy-button/copy-button.ts",
+        "line": 16,
+        "tag": "acme-error",
+        "context": " * @fires {CustomEvent<{code:\"clipboard\";message:string}>} acme-error - Clipboard writing failed."
+      },
+      {
+        "path": "src/components/copy-button/copy-button.ts",
+        "line": 100,
+        "tag": "acme-error",
+        "context": "          new CustomEvent(\"acme-error\", {"
+      },
+      {
+        "path": "src/components/copy-button/__tests__/copy-button.test.ts",
+        "line": 49,
+        "tag": "acme-error",
+        "context": "  button.addEventListener(\"acme-error\", (event) => (detail = (event as CustomEvent).detail));"
+      },
+      {
+        "path": "src/components/code-block/code-block.ts",
+        "line": 36,
+        "tag": "acme-error",
+        "context": " * @fires {CustomEvent<{code:\"highlight\",message:string}>} acme-error - Highlighting failed; plain source remains visible."
+      },
+      {
+        "path": "src/components/code-block/code-block.ts",
+        "line": 188,
+        "tag": "acme-error",
+        "context": "        this.dispatchEvent(new CustomEvent(\"acme-error\", { detail: Object.freeze({ code: \"highlight\", message: model.error }), bubbles: true, composed: true }));"
+      },
+      {
+        "path": "src/components/code-block/__tests__/code-block.test.ts",
+        "line": 57,
+        "tag": "acme-error",
+        "context": "    element.addEventListener(\"acme-error\", (event) => errors.push((event as CustomEvent).detail));"
+      },
+      {
+        "path": "src/components/code-block/__tests__/code-block.browser.ts",
+        "line": 35,
+        "tag": "acme-error",
+        "context": "fixture.code.addEventListener(\"acme-error\", (event) => fixture.errors.push((event as CustomEvent<unknown>).detail));"
+      },
+      {
+        "path": "src/shared/theme-tokens.ts",
+        "line": 141,
+        "tag": "acme-error",
+        "context": "      \"acme-error\","
+      },
+      {
+        "path": "src/generated/theme.css",
+        "line": 173,
+        "tag": "acme-error",
+        "context": "  --acme-error:#e00;"
+      },
+      {
+        "path": "src/generated/theme.css",
+        "line": 234,
+        "tag": "acme-error",
+        "context": "  --acme-error:#e00;"
+      },
+      {
+        "path": "src/generated/theme.css",
+        "line": 311,
+        "tag": "acme-error",
+        "context": "  --acme-error:red;"
+      },
+      {
+        "path": "src/generated/theme.css",
+        "line": 374,
+        "tag": "acme-error",
+        "context": "  --acme-error:red;"
+      },
+      {
+        "path": "src/generated/theme.css",
+        "line": 437,
+        "tag": "acme-error",
+        "context": "  --acme-error:red;"
+      },
+      {
+        "path": "src/generated/theme.css",
+        "line": 500,
+        "tag": "acme-error",
+        "context": "  --acme-error:red;"
+      },
+      {
+        "path": "src/generated/theme.css",
+        "line": 2107,
+        "tag": "acme-error",
+        "context": "  --acme-error:#e00;"
+      },
+      {
+        "path": "src/generated/theme.css",
+        "line": 2206,
+        "tag": "acme-error",
+        "context": "  --acme-error:#e00;"
+      },
+      {
+        "path": "src/generated/theme.css",
+        "line": 3437,
+        "tag": "acme-error",
+        "context": "  --acme-error:#e00;"
+      },
+      {
+        "path": "src/generated/theme.css",
+        "line": 3498,
+        "tag": "acme-error",
+        "context": "  --acme-error:#e00;"
+      },
+      {
+        "path": "src/generated/theme.css",
+        "line": 3575,
+        "tag": "acme-error",
+        "context": "  --acme-error:red;"
+      },
+      {
+        "path": "src/generated/theme.css",
+        "line": 3638,
+        "tag": "acme-error",
+        "context": "  --acme-error:red;"
+      },
+      {
+        "path": "src/generated/theme.css",
+        "line": 3701,
+        "tag": "acme-error",
+        "context": "  --acme-error:red;"
+      },
+      {
+        "path": "src/generated/theme.css",
+        "line": 3764,
+        "tag": "acme-error",
+        "context": "  --acme-error:red;"
+      },
+      {
+        "path": "src/generated/theme-properties.ts",
+        "line": 2,
+        "tag": "acme-error",
+        "context": "export const themeAppearanceProperties = Object.freeze([\"--accent-border\",\"--accent-ink\",\"--accent-weak\",\"--accents-1\",\"--accents-2\",\"--accents-3\",\"--accents-4\",\"--accents-5\",\"--accents-6\",\"--accents-7\",\"--accents-8\",\"--"
+      },
+      {
+        "path": "src/generated/shared/theme.styles.ts",
+        "line": 376,
+        "tag": "acme-error",
+        "context": "  --acme-error: #e00;"
+      },
+      {
+        "path": "src/generated/shared/theme.styles.ts",
+        "line": 853,
+        "tag": "acme-error",
+        "context": "  --acme-error: #e00;"
+      },
+      {
+        "path": "src/generated/shared/theme.styles.ts",
+        "line": 931,
+        "tag": "acme-error",
+        "context": "  --acme-error: red;"
+      },
+      {
+        "path": "src/generated/shared/theme.styles.ts",
+        "line": 1863,
+        "tag": "acme-error",
+        "context": "  --acme-error: #e00;"
+      },
+      {
+        "path": "src/generated/shared/theme.styles.ts",
+        "line": 1961,
+        "tag": "acme-error",
+        "context": "  --acme-error: #e00;"
+      },
+      {
+        "path": "src/generated/shared/theme.styles.ts",
+        "line": 2371,
+        "tag": "acme-error",
+        "context": "  --acme-error: #e00;"
+      },
+      {
+        "path": "src/generated/shared/theme.styles.ts",
+        "line": 2431,
+        "tag": "acme-error",
+        "context": "  --acme-error: red;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.css",
+        "line": 761,
+        "tag": "acme-error",
+        "context": "    --acme-error: red;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.css",
+        "line": 826,
+        "tag": "acme-error",
+        "context": "    --acme-error: red;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.css",
+        "line": 1559,
+        "tag": "acme-error",
+        "context": "  --acme-error: #e00;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.css",
+        "line": 2424,
+        "tag": "acme-error",
+        "context": "  --acme-error: #e00;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.css",
+        "line": 2503,
+        "tag": "acme-error",
+        "context": "    --acme-error: red;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.css",
+        "line": 2567,
+        "tag": "acme-error",
+        "context": "  --acme-error: red;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.css",
+        "line": 2631,
+        "tag": "acme-error",
+        "context": "    --acme-error: red;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.source.css",
+        "line": 915,
+        "tag": "acme-error",
+        "context": "  --acme-error:#e00;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.source.css",
+        "line": 976,
+        "tag": "acme-error",
+        "context": "  --acme-error:#e00;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.source.css",
+        "line": 1053,
+        "tag": "acme-error",
+        "context": "  --acme-error:red;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.source.css",
+        "line": 1116,
+        "tag": "acme-error",
+        "context": "  --acme-error:red;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.source.css",
+        "line": 1179,
+        "tag": "acme-error",
+        "context": "  --acme-error:red;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.source.css",
+        "line": 1242,
+        "tag": "acme-error",
+        "context": "  --acme-error:red;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.source.css",
+        "line": 2849,
+        "tag": "acme-error",
+        "context": "  --acme-error:#e00;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.source.css",
+        "line": 2948,
+        "tag": "acme-error",
+        "context": "  --acme-error:#e00;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.source.css",
+        "line": 4179,
+        "tag": "acme-error",
+        "context": "  --acme-error:#e00;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.source.css",
+        "line": 4240,
+        "tag": "acme-error",
+        "context": "  --acme-error:#e00;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.source.css",
+        "line": 4317,
+        "tag": "acme-error",
+        "context": "  --acme-error:red;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.source.css",
+        "line": 4380,
+        "tag": "acme-error",
+        "context": "  --acme-error:red;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.source.css",
+        "line": 4443,
+        "tag": "acme-error",
+        "context": "  --acme-error:red;"
+      },
+      {
+        "path": "src/generated/css/document/tokens.source.css",
+        "line": 4506,
+        "tag": "acme-error",
+        "context": "  --acme-error:red;"
+      },
+      {
+        "path": "src/generated/css/shared/theme.css",
+        "line": 374,
+        "tag": "acme-error",
+        "context": "  --acme-error: #e00;"
+      },
+      {
+        "path": "src/generated/css/shared/theme.css",
+        "line": 851,
+        "tag": "acme-error",
+        "context": "  --acme-error: #e00;"
+      },
+      {
+        "path": "src/generated/css/shared/theme.css",
+        "line": 929,
+        "tag": "acme-error",
+        "context": "  --acme-error: red;"
+      },
+      {
+        "path": "src/generated/css/shared/theme.css",
+        "line": 1861,
+        "tag": "acme-error",
+        "context": "  --acme-error: #e00;"
+      },
+      {
+        "path": "src/generated/css/shared/theme.css",
+        "line": 1959,
+        "tag": "acme-error",
+        "context": "  --acme-error: #e00;"
+      },
+      {
+        "path": "src/generated/css/shared/theme.css",
+        "line": 2369,
+        "tag": "acme-error",
+        "context": "  --acme-error: #e00;"
+      },
+      {
+        "path": "src/generated/css/shared/theme.css",
+        "line": 2429,
+        "tag": "acme-error",
+        "context": "  --acme-error: red;"
+      },
+      {
+        "path": "src/generated/css/shared/theme.source.css",
+        "line": 403,
+        "tag": "acme-error",
+        "context": "  --acme-error: #e00;"
+      },
+      {
+        "path": "src/generated/css/shared/theme.source.css",
+        "line": 880,
+        "tag": "acme-error",
+        "context": "  --acme-error: #e00;"
+      },
+      {
+        "path": "src/generated/css/shared/theme.source.css",
+        "line": 958,
+        "tag": "acme-error",
+        "context": "  --acme-error: red;"
+      },
+      {
+        "path": "src/generated/css/shared/theme.source.css",
+        "line": 1924,
+        "tag": "acme-error",
+        "context": "  --acme-error: #e00;"
+      },
+      {
+        "path": "src/generated/css/shared/theme.source.css",
+        "line": 2022,
+        "tag": "acme-error",
+        "context": "  --acme-error: #e00;"
+      },
+      {
+        "path": "src/generated/css/shared/theme.source.css",
+        "line": 2432,
+        "tag": "acme-error",
+        "context": "  --acme-error: #e00;"
+      },
+      {
+        "path": "src/generated/css/shared/theme.source.css",
+        "line": 2492,
+        "tag": "acme-error",
+        "context": "  --acme-error: red;"
+      },
+      {
+        "path": "site/pages/components/markdown.ts",
+        "line": 37,
+        "tag": "acme-error",
+        "context": "      \"Unknown code languages use plain text. Parse or highlighting failures emit acme-error and keep safe source visible.\","
+      },
+      {
+        "path": "site/pages/components/snippet.ts",
+        "line": 23,
+        "tag": "acme-error",
+        "context": "        'root.querySelector(\"acme-snippet\").addEventListener(\"acme-copy\",()=>root.querySelector(\"output\").textContent=\"Command copied\");root.querySelector(\"acme-snippet\").addEventListener(\"acme-error\",()=>root.querySelec"
+      },
+      {
+        "path": "site/pages/components/snippet.ts",
+        "line": 39,
+        "tag": "acme-error",
+        "context": "      \"The copy action remains keyboard accessible. Listen for acme-error to show application feedback if clipboard access fails.\","
+      },
+      {
+        "path": "site/pages/components/code-block.ts",
+        "line": 43,
+        "tag": "acme-error",
+        "context": "      \"Highlighting failure leaves safe plain source visible and emits acme-error.\","
+      },
+      {
+        "path": "site/pages/components/copy-button.ts",
+        "line": 16,
+        "tag": "acme-error",
+        "context": "      \"copy() resolves after success and rejects on failure. acme-copy reports success; acme-error reports a clipboard failure without copied data.\","
+      },
+      {
+        "path": "site/pages/components/flow-diagram.ts",
+        "line": 70,
+        "tag": "acme-error",
+        "context": "      \"Cross-origin worker assets require CORS and a policy that permits blob workers. Same-origin delivery uses the worker URL directly. Failed worker loads emit acme-error and expose Retry.\","
+      },
+      {
+        "path": "site/app/example.ts",
+        "line": 27,
+        "tag": "acme-error",
+        "context": "    this.host.dispatchEvent(new CustomEvent(\"acme-error\", { bubbles: true, composed: true, detail: Object.freeze({ code: \"example\", message }) }));"
+      },
+      {
+        "path": "site/app/__tests__/example.test.ts",
+        "line": 27,
+        "tag": "acme-error",
+        "context": "  host.addEventListener(\"acme-error\", (event) => (detail = (event as CustomEvent).detail));"
+      }
+    ]
+  }
+}

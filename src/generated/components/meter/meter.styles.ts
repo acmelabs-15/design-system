@@ -1,0 +1,99 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const meterCss = css`:host {
+  vertical-align: middle;
+  display: inline-flex;
+}
+
+[part="root"] {
+  block-size: 32px;
+  inline-size: 32px;
+  color: var(--ds-gray-1000);
+  --_meter-color: var(--ds-gray-1000);
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  position: relative;
+}
+
+[data-size="tiny"] {
+  block-size: 20px;
+  inline-size: 20px;
+}
+
+[data-size="medium"] {
+  block-size: 64px;
+  inline-size: 64px;
+}
+
+[data-size="large"] {
+  block-size: 128px;
+  inline-size: 128px;
+}
+
+svg {
+  block-size: 100%;
+  inline-size: 100%;
+  overflow: visible;
+}
+
+[part="track"] {
+  stroke: var(--ds-gray-alpha-400);
+  stroke-dasharray: var(--_meter-secondary, 100) 100;
+  transform-origin: 50px 50px;
+  transform: rotate(var(--_meter-secondary-rotation, 270deg)) scaleY(-1);
+}
+
+[part="range"] {
+  stroke: var(--_meter-color);
+  stroke-dasharray: var(--_meter-primary, 0) 100;
+  transform-origin: 50px 50px;
+  transform: rotate(-90deg);
+}
+
+[data-tone="success"] {
+  --_meter-color: var(--ds-green-900);
+}
+
+[data-tone="warning"] {
+  --_meter-color: var(--ds-amber-900);
+}
+
+[data-tone="error"] {
+  --_meter-color: var(--ds-red-800);
+}
+
+[part="value"] {
+  max-inline-size: 75%;
+  font-size: 11px;
+  font-weight: var(--acme-font-weight-500);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1;
+  position: absolute;
+  overflow: hidden;
+}
+
+[data-size="tiny"] [part="value"] {
+  font-size: 8px;
+}
+
+[data-size="medium"] [part="value"] {
+  font-size: 18px;
+}
+
+[data-size="large"] [part="value"] {
+  font-size: 32px;
+  font-weight: var(--acme-font-weight-600);
+}
+
+@media (forced-colors: active) {
+  [part="range"] {
+    stroke: highlight;
+  }
+
+  [part="track"] {
+    stroke: canvastext;
+  }
+}
+`;

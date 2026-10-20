@@ -1,0 +1,2417 @@
+{
+  "date": "2026-09-20",
+  "phase": "Phase 6",
+  "batch": "M05-06",
+  "status": "headless theme state and per-document system appearance implemented; DOM theme delivery remains",
+  "files": [
+    "src/shared/theme-scope.ts",
+    "src/shared/system-appearance.ts"
+  ],
+  "contract": [
+    "Authored inputs remain separate from effective values. Omission inherits; explicit auto uses the local system source and explicit normal overrides compact.",
+    "An omitted appearance follows its parent's resolved appearance, supporting a live opener binding without forcing the destination document's preference.",
+    "Parent and system sources can be replaced. Immutable snapshots and complete patch validation keep TanStack the state owner.",
+    "The document preference resource shares one native media observation per document, releases the final listener, and reacquires from current native state.",
+    "No preference storage, root mutation, DOM context transport or named-theme lookup is added."
+  ],
+  "verification": {
+    "focused": {
+      "passed": 19,
+      "assertions": 97
+    },
+    "fullSuite": {
+      "passed": 732,
+      "failed": 0,
+      "assertions": 10115,
+      "files": 98
+    },
+    "strictTypes": "pass",
+    "strictAndNonStrictThemeTypes": "pass",
+    "review": {
+      "agent": "/root/review_style_pipeline",
+      "verdict": "approved",
+      "requiredFindings": []
+    },
+    "split": "$ bun scripts/split-css.ts\nstyles: 75 house families and document tokens\n",
+    "build": "$ bun scripts/build.ts\nmodules: 472 files, 98 with compiled templates\nmanifest: 109 elements\nbundle 2223.6 KB min 1078.1 KB tokens.css 152.1 KB dashboard.css 13.8 KB\n",
+    "docs": "$ bun site/build.ts\ndocs: 80 pages, 109 elements (0 undocumented), app.js 1151 KB\n",
+    "browser": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "results": [
+            {
+              "name": "document shares one query",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "document shares one listener",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "foreign document owns a separate query",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "nearest scope fields inherit",
+              "actual": {
+                "theme": "brand",
+                "appearance": "dark",
+                "resolvedAppearance": "dark",
+                "density": "compact",
+                "locale": "fr"
+              },
+              "expected": {
+                "theme": "brand",
+                "appearance": "dark",
+                "resolvedAppearance": "dark",
+                "density": "compact",
+                "locale": "fr"
+              },
+              "ok": true
+            },
+            {
+              "name": "explicit auto uses actual initial system preference",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "explicit normal masks inherited compact",
+              "actual": "normal",
+              "expected": "normal",
+              "ok": true
+            },
+            {
+              "name": "main scope follows native dark preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "foreign scope follows its document preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "main returns to light preference",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "clearing auto resumes explicit dark parent",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "first release retains shared listener",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "last release removes document listener",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "other document is unaffected",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "released source keeps its final snapshot",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "active foreign source keeps updating",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "reacquire uses current native preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "stale release cannot stop new binding",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "all document listeners release",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "connected receiver binds original document",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "adoption releases original document",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "adoption binds destination document",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "adopted receiver reads destination preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "disconnect releases destination listener",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "document shares one query",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "document shares one listener",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "foreign document owns a separate query",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "nearest scope fields inherit",
+              "actual": {
+                "theme": "brand",
+                "appearance": "dark",
+                "resolvedAppearance": "dark",
+                "density": "compact",
+                "locale": "fr"
+              },
+              "expected": {
+                "theme": "brand",
+                "appearance": "dark",
+                "resolvedAppearance": "dark",
+                "density": "compact",
+                "locale": "fr"
+              },
+              "ok": true
+            },
+            {
+              "name": "explicit auto uses actual initial system preference",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "explicit normal masks inherited compact",
+              "actual": "normal",
+              "expected": "normal",
+              "ok": true
+            },
+            {
+              "name": "main scope follows native dark preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "foreign scope follows its document preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "main returns to light preference",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "clearing auto resumes explicit dark parent",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "first release retains shared listener",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "last release removes document listener",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "other document is unaffected",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "released source keeps its final snapshot",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "active foreign source keeps updating",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "reacquire uses current native preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "stale release cannot stop new binding",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "all document listeners release",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "connected receiver binds original document",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "adoption releases original document",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "adoption binds destination document",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "adopted receiver reads destination preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "disconnect releases destination listener",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "document shares one query",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "document shares one listener",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "foreign document owns a separate query",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "nearest scope fields inherit",
+              "actual": {
+                "theme": "brand",
+                "appearance": "dark",
+                "resolvedAppearance": "dark",
+                "density": "compact",
+                "locale": "fr"
+              },
+              "expected": {
+                "theme": "brand",
+                "appearance": "dark",
+                "resolvedAppearance": "dark",
+                "density": "compact",
+                "locale": "fr"
+              },
+              "ok": true
+            },
+            {
+              "name": "explicit auto uses actual initial system preference",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "explicit normal masks inherited compact",
+              "actual": "normal",
+              "expected": "normal",
+              "ok": true
+            },
+            {
+              "name": "main scope follows native dark preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "foreign scope follows its document preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "main returns to light preference",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "clearing auto resumes explicit dark parent",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "first release retains shared listener",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "last release removes document listener",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "other document is unaffected",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "released source keeps its final snapshot",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "active foreign source keeps updating",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "reacquire uses current native preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "stale release cannot stop new binding",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "all document listeners release",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "connected receiver binds original document",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "adoption releases original document",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "adoption binds destination document",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "adopted receiver reads destination preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "disconnect releases destination listener",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    }
+  },
+  "reproduction": {
+    "source": "import {acquireSystemAppearance} from \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/shared/system-appearance.js\";\nimport {createThemeScope} from \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/shared/theme-scope.js\";\nconst results=[];const check=(name,actual,expected)=>results.push({name,actual,expected,ok:JSON.stringify(actual)===JSON.stringify(expected)});\nfunction track(doc){const view=doc.defaultView;const original=view.matchMedia.bind(view);const stats={queries:0,active:new Set()};view.matchMedia=query=>{stats.queries++;const media=original(query);const add=media.addEventListener.bind(media),remove=media.removeEventListener.bind(media);media.addEventListener=(name,listener,options)=>{if(name===\"change\")stats.active.add(listener);add(name,listener,options);};media.removeEventListener=(name,listener,options)=>{if(name===\"change\")stats.active.delete(listener);remove(name,listener,options);};return media;};return stats;}\nconst mainStats=track(document);\nconst frame=document.createElement(\"iframe\");document.body.append(frame);const otherDoc=frame.contentDocument;const frameStats=track(otherDoc);\nconst main=acquireSystemAppearance(document),second=acquireSystemAppearance(document),foreign=acquireSystemAppearance(otherDoc);\ncheck(\"document shares one query\",mainStats.queries,1);check(\"document shares one listener\",mainStats.active.size,1);check(\"foreign document owns a separate query\",frameStats.queries,1);\nconst parent=createThemeScope({systemAppearance:main.appearance});parent.setAuthored({theme:\"brand\",appearance:\"dark\",density:\"compact\",locale:\"fr\"});\nconst child=createThemeScope({systemAppearance:main.appearance,parent:parent.effective});\ncheck(\"nearest scope fields inherit\",child.effective.get(),parent.effective.get());\nchild.setAuthored({appearance:\"auto\",density:\"normal\"});\ncheck(\"explicit auto uses actual initial system preference\",child.effective.get().resolvedAppearance,\"light\");\ncheck(\"explicit normal masks inherited compact\",child.effective.get().density,\"normal\");\nconst foreignScope=createThemeScope({systemAppearance:foreign.appearance});\nwindow.__themeTest={\n child,foreignScope,\n afterDark(){check(\"main scope follows native dark preference\",child.effective.get().resolvedAppearance,\"dark\");check(\"foreign scope follows its document preference\",foreignScope.effective.get().resolvedAppearance,\"dark\");},\n afterLight(){check(\"main returns to light preference\",child.effective.get().resolvedAppearance,\"light\");child.setAuthored({appearance:undefined});check(\"clearing auto resumes explicit dark parent\",child.effective.get().resolvedAppearance,\"dark\");main.release();check(\"first release retains shared listener\",mainStats.active.size,1);second.release();check(\"last release removes document listener\",mainStats.active.size,0);check(\"other document is unaffected\",frameStats.active.size,1);},\n afterReleasedDark(){check(\"released source keeps its final snapshot\",main.appearance.get(),\"light\");check(\"active foreign source keeps updating\",foreign.appearance.get(),\"dark\");const fresh=acquireSystemAppearance(document);check(\"reacquire uses current native preference\",fresh.appearance.get(),\"dark\");main.release();check(\"stale release cannot stop new binding\",mainStats.active.size,1);fresh.release();foreign.release();check(\"all document listeners release\",mainStats.active.size+frameStats.active.size,0);\n class Receiver extends HTMLElement {binding;scope;connectedCallback(){this.binding=acquireSystemAppearance(this.ownerDocument);if(this.scope)this.scope.setSystemAppearance(this.binding.appearance);else this.scope=createThemeScope({systemAppearance:this.binding.appearance});}disconnectedCallback(){this.binding?.release();}}\n customElements.define(\"theme-system-receiver\",Receiver);const receiver=document.createElement(\"theme-system-receiver\");document.body.append(receiver);check(\"connected receiver binds original document\",mainStats.active.size,1);otherDoc.adoptNode(receiver);otherDoc.body.append(receiver);check(\"adoption releases original document\",mainStats.active.size,0);check(\"adoption binds destination document\",frameStats.active.size,1);check(\"adopted receiver reads destination preference\",receiver.scope.effective.get().resolvedAppearance,\"dark\");receiver.remove();check(\"disconnect releases destination listener\",frameStats.active.size,0);frame.remove();window.__results={results};}\n};window.__ready=true;",
+    "runner": "import fs from \"node:fs\";const directory=\"/tmp/acme-m05-theme\";\nconst built=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",format:\"esm\",target:\"browser\"});if(!built.success)throw new AggregateError(built.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){if(new URL(req.url).pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};try{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.emulateMedia({colorScheme:\"light\"});await page.goto(server.url.href);await page.waitForFunction(()=>window.__ready);await page.emulateMedia({colorScheme:\"dark\"});await page.waitForFunction(()=>window.__themeTest.child.effective.get().resolvedAppearance===\"dark\"&&window.__themeTest.foreignScope.effective.get().resolvedAppearance===\"dark\");await page.evaluate(()=>window.__themeTest.afterDark());await page.emulateMedia({colorScheme:\"light\"});await page.waitForFunction(()=>window.__themeTest.child.effective.get().resolvedAppearance===\"light\"&&window.__themeTest.foreignScope.effective.get().resolvedAppearance===\"light\");await page.evaluate(()=>window.__themeTest.afterLight());await page.emulateMedia({colorScheme:\"dark\"});await page.waitForFunction(()=>window.__themeTest.foreignScope.effective.get().resolvedAppearance===\"dark\");await page.evaluate(()=>window.__themeTest.afterReleasedDark());const data=await page.evaluate(()=>window.__results);report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}await Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");if(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;"
+  },
+  "fixtureCorrection": {
+    "cause": "The original light-phase wait observed only the main document. The following dark wait could accept the foreign document's old dark snapshot before its light transition completed.",
+    "initial": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "results": [
+            {
+              "name": "document shares one query",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "document shares one listener",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "foreign document owns a separate query",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "nearest scope fields inherit",
+              "actual": {
+                "theme": "brand",
+                "appearance": "dark",
+                "resolvedAppearance": "dark",
+                "density": "compact",
+                "locale": "fr"
+              },
+              "expected": {
+                "theme": "brand",
+                "appearance": "dark",
+                "resolvedAppearance": "dark",
+                "density": "compact",
+                "locale": "fr"
+              },
+              "ok": true
+            },
+            {
+              "name": "explicit auto uses actual initial system preference",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "explicit normal masks inherited compact",
+              "actual": "normal",
+              "expected": "normal",
+              "ok": true
+            },
+            {
+              "name": "main scope follows native dark preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "foreign scope follows its document preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "main returns to light preference",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "clearing auto resumes explicit dark parent",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "first release retains shared listener",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "last release removes document listener",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "other document is unaffected",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "released source keeps its final snapshot",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "active foreign source keeps updating",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "reacquire uses current native preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "stale release cannot stop new binding",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "all document listeners release",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "connected receiver binds original document",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "adoption releases original document",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "adoption binds destination document",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "adopted receiver reads destination preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "disconnect releases destination listener",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "document shares one query",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "document shares one listener",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "foreign document owns a separate query",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "nearest scope fields inherit",
+              "actual": {
+                "theme": "brand",
+                "appearance": "dark",
+                "resolvedAppearance": "dark",
+                "density": "compact",
+                "locale": "fr"
+              },
+              "expected": {
+                "theme": "brand",
+                "appearance": "dark",
+                "resolvedAppearance": "dark",
+                "density": "compact",
+                "locale": "fr"
+              },
+              "ok": true
+            },
+            {
+              "name": "explicit auto uses actual initial system preference",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "explicit normal masks inherited compact",
+              "actual": "normal",
+              "expected": "normal",
+              "ok": true
+            },
+            {
+              "name": "main scope follows native dark preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "foreign scope follows its document preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "main returns to light preference",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "clearing auto resumes explicit dark parent",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "first release retains shared listener",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "last release removes document listener",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "other document is unaffected",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "released source keeps its final snapshot",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "active foreign source keeps updating",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "reacquire uses current native preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "stale release cannot stop new binding",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "all document listeners release",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "connected receiver binds original document",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "adoption releases original document",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "adoption binds destination document",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "adopted receiver reads destination preference",
+              "actual": "light",
+              "expected": "dark",
+              "ok": false
+            },
+            {
+              "name": "disconnect releases destination listener",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "document shares one query",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "document shares one listener",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "foreign document owns a separate query",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "nearest scope fields inherit",
+              "actual": {
+                "theme": "brand",
+                "appearance": "dark",
+                "resolvedAppearance": "dark",
+                "density": "compact",
+                "locale": "fr"
+              },
+              "expected": {
+                "theme": "brand",
+                "appearance": "dark",
+                "resolvedAppearance": "dark",
+                "density": "compact",
+                "locale": "fr"
+              },
+              "ok": true
+            },
+            {
+              "name": "explicit auto uses actual initial system preference",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "explicit normal masks inherited compact",
+              "actual": "normal",
+              "expected": "normal",
+              "ok": true
+            },
+            {
+              "name": "main scope follows native dark preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "foreign scope follows its document preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "main returns to light preference",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "clearing auto resumes explicit dark parent",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "first release retains shared listener",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "last release removes document listener",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "other document is unaffected",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "released source keeps its final snapshot",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "active foreign source keeps updating",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "reacquire uses current native preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "stale release cannot stop new binding",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "all document listeners release",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "connected receiver binds original document",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "adoption releases original document",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            },
+            {
+              "name": "adoption binds destination document",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "adopted receiver reads destination preference",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "disconnect releases destination listener",
+              "actual": 0,
+              "expected": 0,
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "initialRunner": "import fs from \"node:fs\";const directory=\"/tmp/acme-m05-theme\";\nconst built=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",format:\"esm\",target:\"browser\"});if(!built.success)throw new AggregateError(built.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){if(new URL(req.url).pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};try{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.emulateMedia({colorScheme:\"light\"});await page.goto(server.url.href);await page.waitForFunction(()=>window.__ready);await page.emulateMedia({colorScheme:\"dark\"});await page.waitForFunction(()=>window.__themeTest.child.effective.get().resolvedAppearance===\"dark\"&&window.__themeTest.foreignScope.effective.get().resolvedAppearance===\"dark\");await page.evaluate(()=>window.__themeTest.afterDark());await page.emulateMedia({colorScheme:\"light\"});await page.waitForFunction(()=>window.__themeTest.child.effective.get().resolvedAppearance===\"light\");await page.evaluate(()=>window.__themeTest.afterLight());await page.emulateMedia({colorScheme:\"dark\"});await page.waitForFunction(()=>window.__themeTest.foreignScope.effective.get().resolvedAppearance===\"dark\");await page.evaluate(()=>window.__themeTest.afterReleasedDark());const data=await page.evaluate(()=>window.__results);report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}await Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");if(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;",
+    "repeated": [
+      {
+        "engine": "firefox",
+        "mode": "original",
+        "errors": [],
+        "passed": 23,
+        "total": 23,
+        "failed": []
+      },
+      {
+        "engine": "firefox",
+        "mode": "original",
+        "errors": [],
+        "passed": 22,
+        "total": 23,
+        "failed": [
+          {
+            "name": "adopted receiver reads destination preference",
+            "actual": "light",
+            "expected": "dark",
+            "ok": false
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "mode": "original",
+        "errors": [],
+        "passed": 22,
+        "total": 23,
+        "failed": [
+          {
+            "name": "adopted receiver reads destination preference",
+            "actual": "light",
+            "expected": "dark",
+            "ok": false
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "mode": "original",
+        "errors": [],
+        "passed": 22,
+        "total": 23,
+        "failed": [
+          {
+            "name": "adopted receiver reads destination preference",
+            "actual": "light",
+            "expected": "dark",
+            "ok": false
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "mode": "original",
+        "errors": [],
+        "passed": 22,
+        "total": 23,
+        "failed": [
+          {
+            "name": "adopted receiver reads destination preference",
+            "actual": "light",
+            "expected": "dark",
+            "ok": false
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "mode": "original",
+        "errors": [],
+        "passed": 22,
+        "total": 23,
+        "failed": [
+          {
+            "name": "adopted receiver reads destination preference",
+            "actual": "light",
+            "expected": "dark",
+            "ok": false
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "mode": "original",
+        "errors": [],
+        "passed": 22,
+        "total": 23,
+        "failed": [
+          {
+            "name": "adopted receiver reads destination preference",
+            "actual": "light",
+            "expected": "dark",
+            "ok": false
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "mode": "original",
+        "errors": [],
+        "passed": 22,
+        "total": 23,
+        "failed": [
+          {
+            "name": "adopted receiver reads destination preference",
+            "actual": "light",
+            "expected": "dark",
+            "ok": false
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "mode": "both-documents-light",
+        "errors": [],
+        "passed": 23,
+        "total": 23,
+        "failed": []
+      },
+      {
+        "engine": "firefox",
+        "mode": "both-documents-light",
+        "errors": [],
+        "passed": 23,
+        "total": 23,
+        "failed": []
+      },
+      {
+        "engine": "firefox",
+        "mode": "both-documents-light",
+        "errors": [],
+        "passed": 23,
+        "total": 23,
+        "failed": []
+      },
+      {
+        "engine": "firefox",
+        "mode": "both-documents-light",
+        "errors": [],
+        "passed": 23,
+        "total": 23,
+        "failed": []
+      },
+      {
+        "engine": "firefox",
+        "mode": "both-documents-light",
+        "errors": [],
+        "passed": 23,
+        "total": 23,
+        "failed": []
+      },
+      {
+        "engine": "firefox",
+        "mode": "both-documents-light",
+        "errors": [],
+        "passed": 23,
+        "total": 23,
+        "failed": []
+      },
+      {
+        "engine": "firefox",
+        "mode": "both-documents-light",
+        "errors": [],
+        "passed": 23,
+        "total": 23,
+        "failed": []
+      },
+      {
+        "engine": "firefox",
+        "mode": "both-documents-light",
+        "errors": [],
+        "passed": 23,
+        "total": 23,
+        "failed": []
+      }
+    ],
+    "trace": [
+      {
+        "engine": "firefox",
+        "mode": "original",
+        "errors": [],
+        "passed": 23,
+        "total": 23,
+        "failed": [],
+        "nativeTrace": [
+          {
+            "document": "main",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          },
+          {
+            "document": "foreign",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          },
+          {
+            "phase": "afterLight",
+            "foreignSnapshot": "dark",
+            "mainSnapshot": "light"
+          },
+          {
+            "phase": "afterReleasedDark",
+            "foreignSnapshot": "dark",
+            "mainSnapshot": "light",
+            "sameDocument": true,
+            "viewIsCurrent": true
+          },
+          {
+            "document": "main",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          },
+          {
+            "document": "main",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          },
+          {
+            "document": "foreign",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "mode": "original",
+        "errors": [],
+        "passed": 22,
+        "total": 23,
+        "failed": [
+          {
+            "name": "adopted receiver reads destination preference",
+            "actual": "light",
+            "expected": "dark",
+            "ok": false
+          }
+        ],
+        "nativeTrace": [
+          {
+            "document": "main",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          },
+          {
+            "document": "foreign",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          },
+          {
+            "phase": "afterLight",
+            "foreignSnapshot": "dark",
+            "mainSnapshot": "light"
+          },
+          {
+            "phase": "afterReleasedDark",
+            "foreignSnapshot": "dark",
+            "mainSnapshot": "light",
+            "sameDocument": true,
+            "viewIsCurrent": true
+          },
+          {
+            "document": "main",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          },
+          {
+            "document": "main",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          },
+          {
+            "document": "foreign",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "mode": "original",
+        "errors": [],
+        "passed": 22,
+        "total": 23,
+        "failed": [
+          {
+            "name": "adopted receiver reads destination preference",
+            "actual": "light",
+            "expected": "dark",
+            "ok": false
+          }
+        ],
+        "nativeTrace": [
+          {
+            "document": "main",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          },
+          {
+            "document": "foreign",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          },
+          {
+            "phase": "afterLight",
+            "foreignSnapshot": "dark",
+            "mainSnapshot": "light"
+          },
+          {
+            "phase": "afterReleasedDark",
+            "foreignSnapshot": "dark",
+            "mainSnapshot": "light",
+            "sameDocument": true,
+            "viewIsCurrent": true
+          },
+          {
+            "document": "main",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          },
+          {
+            "document": "main",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          },
+          {
+            "document": "foreign",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "mode": "original",
+        "errors": [],
+        "passed": 22,
+        "total": 23,
+        "failed": [
+          {
+            "name": "adopted receiver reads destination preference",
+            "actual": "light",
+            "expected": "dark",
+            "ok": false
+          }
+        ],
+        "nativeTrace": [
+          {
+            "document": "main",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          },
+          {
+            "document": "foreign",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          },
+          {
+            "phase": "afterLight",
+            "foreignSnapshot": "dark",
+            "mainSnapshot": "light"
+          },
+          {
+            "phase": "afterReleasedDark",
+            "foreignSnapshot": "dark",
+            "mainSnapshot": "light",
+            "sameDocument": true,
+            "viewIsCurrent": true
+          },
+          {
+            "document": "main",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          },
+          {
+            "document": "main",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          },
+          {
+            "document": "foreign",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "mode": "both-documents-light",
+        "errors": [],
+        "passed": 23,
+        "total": 23,
+        "failed": [],
+        "nativeTrace": [
+          {
+            "document": "main",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          },
+          {
+            "document": "foreign",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          },
+          {
+            "phase": "afterLight",
+            "foreignSnapshot": "light",
+            "mainSnapshot": "light"
+          },
+          {
+            "phase": "afterReleasedDark",
+            "foreignSnapshot": "dark",
+            "mainSnapshot": "light",
+            "sameDocument": true,
+            "viewIsCurrent": true
+          },
+          {
+            "document": "main",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          },
+          {
+            "document": "main",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          },
+          {
+            "document": "foreign",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "mode": "both-documents-light",
+        "errors": [],
+        "passed": 23,
+        "total": 23,
+        "failed": [],
+        "nativeTrace": [
+          {
+            "document": "main",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          },
+          {
+            "document": "foreign",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          },
+          {
+            "phase": "afterLight",
+            "foreignSnapshot": "light",
+            "mainSnapshot": "light"
+          },
+          {
+            "phase": "afterReleasedDark",
+            "foreignSnapshot": "dark",
+            "mainSnapshot": "light",
+            "sameDocument": true,
+            "viewIsCurrent": true
+          },
+          {
+            "document": "main",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          },
+          {
+            "document": "main",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          },
+          {
+            "document": "foreign",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "mode": "both-documents-light",
+        "errors": [],
+        "passed": 23,
+        "total": 23,
+        "failed": [],
+        "nativeTrace": [
+          {
+            "document": "main",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          },
+          {
+            "document": "foreign",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          },
+          {
+            "phase": "afterLight",
+            "foreignSnapshot": "light",
+            "mainSnapshot": "light"
+          },
+          {
+            "phase": "afterReleasedDark",
+            "foreignSnapshot": "dark",
+            "mainSnapshot": "light",
+            "sameDocument": true,
+            "viewIsCurrent": true
+          },
+          {
+            "document": "main",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          },
+          {
+            "document": "main",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          },
+          {
+            "document": "foreign",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "mode": "both-documents-light",
+        "errors": [],
+        "passed": 23,
+        "total": 23,
+        "failed": [],
+        "nativeTrace": [
+          {
+            "document": "main",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          },
+          {
+            "document": "foreign",
+            "before": false,
+            "currentDocument": true,
+            "afterAdd": false
+          },
+          {
+            "phase": "afterLight",
+            "foreignSnapshot": "light",
+            "mainSnapshot": "light"
+          },
+          {
+            "phase": "afterReleasedDark",
+            "foreignSnapshot": "dark",
+            "mainSnapshot": "light",
+            "sameDocument": true,
+            "viewIsCurrent": true
+          },
+          {
+            "document": "main",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          },
+          {
+            "document": "main",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          },
+          {
+            "document": "foreign",
+            "before": true,
+            "currentDocument": true,
+            "afterAdd": true
+          }
+        ]
+      }
+    ],
+    "nativeControl": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "snapshots": [
+          {
+            "label": "initial",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": false,
+            "frameExisting": false,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": false,
+              "beforeSecond": false,
+              "afterAdd": false,
+              "afterRemove": false
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": false,
+              "beforeSecond": false,
+              "afterAdd": false,
+              "afterRemove": false
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": false,
+              "beforeSecond": false,
+              "afterAdd": false,
+              "afterRemove": false
+            }
+          },
+          {
+            "label": "emulated-dark",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": true,
+            "frameExisting": true,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            }
+          },
+          {
+            "label": "emulated-light",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": false,
+            "frameExisting": false,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": false,
+              "beforeSecond": false,
+              "afterAdd": false,
+              "afterRemove": false
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": false,
+              "beforeSecond": false,
+              "afterAdd": false,
+              "afterRemove": false
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": false,
+              "beforeSecond": false,
+              "afterAdd": false,
+              "afterRemove": false
+            }
+          },
+          {
+            "label": "emulated-dark",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": true,
+            "frameExisting": true,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            }
+          },
+          {
+            "label": "before-release",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": true,
+            "frameExisting": true,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            }
+          },
+          {
+            "label": "after-release",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": true,
+            "frameExisting": true,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            }
+          },
+          {
+            "label": "after-adoption",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": true,
+            "frameExisting": true,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            }
+          },
+          {
+            "label": "receiver-identity",
+            "ownerIsOriginal": true,
+            "ownerIsCurrent": true
+          }
+        ],
+        "events": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "snapshots": [
+          {
+            "label": "initial",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": false,
+            "frameExisting": false,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": false,
+              "beforeSecond": false,
+              "afterAdd": false,
+              "afterRemove": false
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": false,
+              "beforeSecond": false,
+              "afterAdd": false,
+              "afterRemove": false
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": false,
+              "beforeSecond": false,
+              "afterAdd": false,
+              "afterRemove": false
+            }
+          },
+          {
+            "label": "emulated-dark",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": true,
+            "frameExisting": true,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            }
+          },
+          {
+            "label": "emulated-light",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": false,
+            "frameExisting": false,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": false,
+              "beforeSecond": false,
+              "afterAdd": false,
+              "afterRemove": false
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": false,
+              "beforeSecond": false,
+              "afterAdd": false,
+              "afterRemove": false
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": false,
+              "beforeSecond": false,
+              "afterAdd": false,
+              "afterRemove": false
+            }
+          },
+          {
+            "label": "emulated-dark",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": true,
+            "frameExisting": true,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            }
+          },
+          {
+            "label": "before-release",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": true,
+            "frameExisting": true,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            }
+          },
+          {
+            "label": "after-release",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": true,
+            "frameExisting": true,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            }
+          },
+          {
+            "label": "after-adoption",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": true,
+            "frameExisting": true,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            }
+          },
+          {
+            "label": "receiver-identity",
+            "ownerIsOriginal": true,
+            "ownerIsCurrent": true
+          }
+        ],
+        "events": [
+          {
+            "from": "root",
+            "matches": true
+          },
+          {
+            "from": "frame",
+            "matches": true
+          },
+          {
+            "from": "root",
+            "matches": false
+          },
+          {
+            "from": "root",
+            "matches": true
+          },
+          {
+            "from": "frame",
+            "matches": false
+          },
+          {
+            "from": "frame",
+            "matches": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "snapshots": [
+          {
+            "label": "initial",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": false,
+            "frameExisting": false,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": false,
+              "beforeSecond": false,
+              "afterAdd": false,
+              "afterRemove": false
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": false,
+              "beforeSecond": false,
+              "afterAdd": false,
+              "afterRemove": false
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": false,
+              "beforeSecond": false,
+              "afterAdd": false,
+              "afterRemove": false
+            }
+          },
+          {
+            "label": "emulated-dark",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": true,
+            "frameExisting": true,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            }
+          },
+          {
+            "label": "emulated-light",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": false,
+            "frameExisting": false,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": false,
+              "beforeSecond": false,
+              "afterAdd": false,
+              "afterRemove": false
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": false,
+              "beforeSecond": false,
+              "afterAdd": false,
+              "afterRemove": false
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": false,
+              "beforeSecond": false,
+              "afterAdd": false,
+              "afterRemove": false
+            }
+          },
+          {
+            "label": "emulated-dark",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": true,
+            "frameExisting": true,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            }
+          },
+          {
+            "label": "before-release",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": true,
+            "frameExisting": true,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            }
+          },
+          {
+            "label": "after-release",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": true,
+            "frameExisting": true,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            }
+          },
+          {
+            "label": "after-adoption",
+            "identity": {
+              "sameDocument": true,
+              "originalView": true,
+              "viewIsCurrent": true,
+              "windowDocumentMatches": true,
+              "readyState": "complete"
+            },
+            "rootExisting": true,
+            "frameExisting": true,
+            "rootFresh": {
+              "label": "rootFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "originalFresh": {
+              "label": "originalFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            },
+            "currentFresh": {
+              "label": "currentFresh",
+              "before": true,
+              "beforeSecond": true,
+              "afterAdd": true,
+              "afterRemove": true
+            }
+          },
+          {
+            "label": "receiver-identity",
+            "ownerIsOriginal": true,
+            "ownerIsCurrent": true
+          }
+        ],
+        "events": [
+          {
+            "from": "root",
+            "matches": true
+          },
+          {
+            "from": "frame",
+            "matches": true
+          },
+          {
+            "from": "root",
+            "matches": false
+          },
+          {
+            "from": "frame",
+            "matches": false
+          },
+          {
+            "from": "root",
+            "matches": true
+          },
+          {
+            "from": "frame",
+            "matches": true
+          }
+        ]
+      }
+    ],
+    "fix": "Wait for both documents to reach light before triggering the next dark transition. No delay or production workaround."
+  },
+  "research": {
+    "sources": [
+      "https://lit.dev/docs/data/context/",
+      "https://raw.githubusercontent.com/radix-ui/themes/main/packages/radix-ui-themes/src/components/theme.tsx",
+      "https://raw.githubusercontent.com/radix-ui/themes/main/packages/radix-ui-themes/src/components/dialog.tsx",
+      "https://raw.githubusercontent.com/chakra-ui/chakra-ui/main/packages/react/src/components/theme.tsx",
+      "https://raw.githubusercontent.com/material-components/material-web/main/docs/theming/README.md",
+      "https://raw.githubusercontent.com/material-components/material-web/main/internal/controller/is-rtl.ts"
+    ],
+    "findings": [
+      "Current base.ts uses a document-global appearance observer and does not invoke its saved cleanup. Current state.ts and Theme Switcher still own root/storage behavior until their atomic replacement.",
+      "Palette generation is root-only. Scope CSS must preserve conditional palette tiers and redeclare scope-sensitive semantic aliases.",
+      "A composed context request is a candidate for nearest-provider discovery across slots/shadow roots. No transport implementation is certified here.",
+      "@lit/context is not installed or selected; no dependency is silently added.",
+      "A full token mapping and the remaining font-weight/channel-color findings must be resolved before full registerTheme delivery."
+    ],
+    "nextAtomicSlice": "Theme scope CSS, acme-theme, AcmeElement integration and the controlled Theme Switcher must change together."
+  },
+  "limits": [
+    "Native lang/dir behavior remains with the DOM and consuming components; this model does not invent locale canonicalization or direction rules.",
+    "Named theme existence belongs to the registry; undefined effective name means house tokens without reserving a public name.",
+    "Browser adoption checks exercise resource binding, not complete DOM theme-provider discovery.",
+    "Nested live scopes, late providers, slot reassignment, native/scoped registries, portal themes and full custom token registration remain M05/integration gates."
+  ]
+}

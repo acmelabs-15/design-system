@@ -1,0 +1,48 @@
+.native {
+  text-align: start;
+  cursor: pointer;
+}
+
+.content {
+  inset: auto;
+  left: var(--option-x, 0px);
+  top: var(--option-y, 0px);
+  padding: var(--ds-popover-padding, 8px);
+  background: var(--ds-background-100);
+  color: var(--ds-gray-1000);
+  box-shadow: var(--acme-shadow-5);
+  min-inline-size: min(var(--option-trigger-width, 150px),var(--option-available-width, 100vw));
+  max-inline-size: var(--option-available-width, calc(100vw - 16px));
+  max-block-size: var(--option-available-height, calc(100vh - 16px));
+  overscroll-behavior: contain;
+  inline-size: max-content;
+  opacity: var(--option-opacity, 1);
+  border: 0;
+  border-radius: 12px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  position: fixed;
+  overflow: auto;
+}
+
+.content:not(:popover-open) {
+  display: none;
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: var(--acme-font-weight-600);
+  color: var(--ds-gray-900);
+  padding: 6px 8px;
+}
+
+.native:is(input) {
+  cursor: text;
+}
+
+.native:is(button) {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

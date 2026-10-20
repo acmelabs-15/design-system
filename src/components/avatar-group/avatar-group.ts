@@ -1,80 +1,120 @@
-import { css, html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, boolish, sharedCss } from "../../base";
-import "../avatar/avatar";
-import type { AvatarService } from "../avatar/avatar";
-import { avatarGroupCss } from "./avatar-group.styles";
+import { html, nothing } from "lit";
+import { property } from "lit/decorators.js";
+import { repeat } from "lit/directives/repeat.js";
+import { styleMap } from "lit/directives/style-map.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
+import { StoreSelector } from "../../shared/store-connection";
+import { message, messageCatalogs } from "../../shared/messages";
+import { isPlainRecord } from "../../shared/plain-record";
+import type { AvatarSize } from "../avatar/avatar";
+import { avatarGroupStructureCss } from "../../generated/components/avatar-group/avatar-group-structure.styles";
 
-export type AvatarMember = { username?: string; src?: string; letter?: string; title?: string; git?: AvatarService };
-
-/**
- * Avatar group: a stack of avatars, each in a wrapper with a 1px ring in the page background,
- * overlapping by `--avatar-overlap`. The first `limit - 1` members show plainly; the last slot
- * holds the next member and, when more than one is hidden (or `extra` says so), a small
- * "+N" counter on a dark disc. The first member sits on top unless `reverse`.
+export type AvatarMember = Readonly<{ id: string; src?: string; label: string; initials?: string }>;
+const sizes = { tiny: 16, small: 24, medium: 32, large: 48 } as const;
+/** A bounded collection of entity images and its exact remaining count.
+ * @slot overflow - Replacement content for the remaining count.
+ * @csspart root - The composed Group.
+ * @csspart member - A visible member.
+ * @csspart overflow - The remaining-count surface.
  */
-@customElement("acme-avatar-group")
 export class AcmeAvatarGroup extends AcmeElement {
-  static styles = [
-    sharedCss,
-    avatarGroupCss,
-    css`
-      :host {
-        display: inline-flex;
-      }
-    `,
-  ];
-  /** The members, in order: `[{ "username": "rauchg" }, { "src": "…", "title": "…" }, { "letter": "SL" }]`. */
-  @property({ type: Array }) members: AvatarMember[] = [];
-  /** Each avatar's size in px. */
-  @property({ type: Number }) size = 24;
-  /** Slots in the stack, the last one for the hidden count; 0 shows every member. */
-  @property({ type: Number }) limit = 3;
-  /** Members counted as hidden beyond the list. */
-  @property({ type: Number }) extra = 0;
-  /** Stacks the last member on top instead of the first. */
-  @property({ type: Boolean }) reverse = false;
-  /** `auto` scales the overlap with `size` (30%); a number sets it in px. */
-  @property() overlap: "auto" | number | string = "auto";
-  /** Shows a member's service dot. */
-  @property({ type: Boolean, attribute: "show-icon" }) showIcon = false;
-  /** `icon-background="false"` drops the white disc behind a service mark. */
-  @property({ converter: boolish, attribute: "icon-background" }) iconBackground = true;
-
-  private avatar(m: AvatarMember) {
-    return html`<acme-avatar
-      size=${this.size}
-      username=${m.username ?? ""}
-      src=${m.src ?? ""}
-      letter=${m.letter ?? ""}
-      title=${m.title ?? ""}
-      git=${(this.showIcon && m.git) || ""}
-      ?icon-background=${this.iconBackground}
-    ></acme-avatar>`;
+  static styles = [sharedCss, avatarGroupStructureCss];
+  @atomState() private entries: readonly AvatarMember[] = Object.freeze([]);
+  /** @default [] */
+  @property({ noAccessor: true, type: Array }) get members() {
+    return this.entries;
   }
-
-  render() {
-    const limit = (this.limit === 0 ? this.members.length : this.limit) - 1;
-    const shown = this.members.slice(0, limit);
-    const rest = this.members.slice(limit);
-    const more = rest.length + this.extra;
-    const count = more > 9 ? "9+" : `+${more}`;
-    const label = `${more} more avatars in this group`;
-    const overlap = this.overlap === "auto" || this.overlap === "" ? Math.round(0.3 * this.size) : Number(this.overlap) || 0;
-    const stack = !this.reverse;
-    return html`<div class="avatar-group" style=${`--avatar-overlap:${overlap}px`} part="group">
-      ${shown.map((m, i) => html`<span class="member" style=${stack ? `z-index:${shown.length - i}` : nothing}>${this.avatar(m)}</span>`)}
-      ${
-        rest.length || more > 0
-          ? html`<span class="more" aria-label=${label} title=${label} style=${stack ? "z-index:0" : nothing}
-              >${rest.length ? this.avatar(rest[0]) : nothing}${more > 1 ? html`<span class="count">${count}</span>` : nothing}</span
-            >`
-          : nothing
+  set members(value: readonly AvatarMember[]) {
+    if (value == null) {
+      value = [];
+    }
+    if (!Array.isArray(value)) {
+      throw new TypeError("Avatar members require an array");
+    }
+    const ids = new Set<string>();
+    const next = value.map((member) => {
+      if (
+        !isPlainRecord(member) ||
+        typeof member.id !== "string" ||
+        !member.id ||
+        typeof member.label !== "string" ||
+        (member.src !== undefined && typeof member.src !== "string") ||
+        (member.initials !== undefined && typeof member.initials !== "string")
+      ) {
+        throw new TypeError("Avatar members require an id, label and optional string source/initials");
       }
-    </div>`;
+      if (ids.has(member.id)) {
+        throw new TypeError("Avatar member IDs must be unique");
+      }
+      ids.add(member.id);
+      return Object.freeze({
+        id: member.id,
+        label: member.label,
+        src: typeof member.src === "string" ? member.src : undefined,
+        initials: typeof member.initials === "string" ? member.initials : undefined,
+      });
+    });
+    if (!Number.isSafeInteger(next.length + this.extra)) {
+      throw new RangeError("Avatar total must be a safe integer");
+    }
+    const previous = this.entries;
+    this.entries = Object.freeze(next);
+    this.requestUpdate("members", previous);
+  }
+  @atomState() @property({ noAccessor: true, useDefault: true }) size: AvatarSize = "small";
+  @atomState() private maximum = 3;
+  /** @default 3 */
+  @property({ noAccessor: true, type: Number, converter: { fromAttribute: (value: string | null) => (value === null ? 3 : Number(value)) } }) get limit() {
+    return this.maximum;
+  }
+  set limit(value: number) {
+    if (!Number.isSafeInteger(value) || value < 0) {
+      throw new RangeError("Avatar limit must be a nonnegative integer");
+    }
+    const previous = this.maximum;
+    this.maximum = value;
+    this.requestUpdate("limit", previous);
+  }
+  @atomState() private additional = 0;
+  /** @default 0 */
+  @property({ noAccessor: true, type: Number, converter: { fromAttribute: (value: string | null) => (value === null ? 0 : Number(value)) } }) get extra() {
+    return this.additional;
+  }
+  set extra(value: number) {
+    if (!Number.isSafeInteger(value) || value < 0 || !Number.isSafeInteger(value + this.members.length)) {
+      throw new RangeError("Extra avatar count and total must be nonnegative safe integers");
+    }
+    const previous = this.additional;
+    this.additional = value;
+    this.requestUpdate("extra", previous);
+  }
+  @atomState() @property({ noAccessor: true, type: Boolean }) reverse = false;
+  @atomState() @property({ noAccessor: true, useDefault: true }) overlap = "auto";
+  private readonly localeChanges = new StoreSelector(this, () => this.themeContext.scope.effective);
+  private readonly messages = new StoreSelector(this, () => messageCatalogs);
+  render() {
+    const total = this.members.length + this.extra;
+    const overflows = this.extra > 0 || (this.limit > 0 && total > this.limit);
+    const shown = overflows && this.limit > 0 ? this.members.slice(0, Math.max(0, this.limit - 1)) : this.members;
+    const hidden = total - shown.length;
+    const locale = this.themeContext.scope.effective.get().locale;
+    const numbers = new Intl.NumberFormat(locale);
+    const count = numbers.format(hidden);
+    const label = message(locale, `avatarGroup.more.${new Intl.PluralRules(locale).select(hidden)}`, hidden === 1 ? "{count} more person" : "{count} more people").replaceAll("{count}", count);
+    const size = sizes[this.size] ?? sizes.small;
+    const styles = { "--avatar-group-overlap": this.overlap === "auto" ? `${Math.round(size * 0.3)}px` : this.overlap, "--avatar-group-size": `${size}px` };
+    return html`<acme-group class="avatar-group" part="root" .gap=${0} .alignItems=${"center"} style=${styleMap(styles)}>
+      ${repeat(
+        shown,
+        (member) => member.id,
+        (member, index) =>
+          html`<span class="member" part="member" style=${styleMap({ zIndex: String(this.reverse ? index : shown.length - index) })}><acme-avatar .size=${this.size} .src=${member.src ?? ""} .label=${member.label} .initials=${member.initials ?? ""}></acme-avatar></span>`,
+      )}
+      ${hidden > 0 ? html`<span class="member overflow" part="overflow" style=${styleMap({ zIndex: this.reverse ? String(shown.length) : "0" })}><span class="sr">${label}</span><slot name="overflow"><bdi class="count" dir="ltr" aria-hidden="true">${hidden > 9 ? `${numbers.format(9)}+` : `+${count}`}</bdi></slot></span>` : nothing}
+    </acme-group>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-avatar-group": AcmeAvatarGroup;

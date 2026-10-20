@@ -45,17 +45,32 @@ export async function derive(name: string): Promise<Derived> {
   const children = childPairs(m.children);
 
   const geistSide: Record<string, unknown> = { side: "geist", page: m.page };
-  if (marker) geistSide.marker = marker;
-  else geistSide.marker = "TODO: the map picks the root with a predicate, so name the reference marker attribute here";
-  if (Object.keys(children).length) geistSide.children = children;
+  if (marker) {
+    geistSide.marker = marker;
+  } else {
+    geistSide.marker = "TODO: the map picks the root with a predicate, so name the reference marker attribute here";
+  }
+  if (Object.keys(children).length) {
+    geistSide.children = children;
+  }
 
   const oursSide: Record<string, unknown> = { side: "ours", page: m.page, host: `acme-${name}`, ours: m.ours };
-  if (m.part) oursSide.part = m.part;
-  if (Object.keys(children).length) oursSide.children = children;
+  if (m.part) {
+    oursSide.part = m.part;
+  }
+  if (Object.keys(children).length) {
+    oursSide.children = children;
+  }
 
   const todo: string[] = [];
-  if (!marker) todo.push("marker: the map uses a predicate for the root, so the reference marker attribute must be named by hand");
-  for (const [k, v] of Object.entries(children)) if (v.includes("TODO")) todo.push(`children.${k}: the reference-side selector (the map picks it with a predicate, not a selector)`);
+  if (!marker) {
+    todo.push("marker: the map uses a predicate for the root, so the reference marker attribute must be named by hand");
+  }
+  for (const [k, v] of Object.entries(children)) {
+    if (v.includes("TODO")) {
+      todo.push(`children.${k}: the reference-side selector (the map picks it with a predicate, not a selector)`);
+    }
+  }
   todo.push("prepare: the script that opens an overlay or sets a scroll position before reading, if this root needs one");
   todo.push("viewport: the size this root must be measured at, if not the default, and why");
   todo.push("width: one outer width for every preview, if a container decides any value here");
@@ -72,7 +87,9 @@ if (import.meta.main) {
     const cd = path.join(DIR, "census");
     const named = new Set<string>();
     for (const f of fs.readdirSync(cd).filter((x) => x.endsWith(".config.json"))) {
-      for (const m of fs.readFileSync(path.join(cd, f), "utf8").matchAll(/"page"\s*:\s*"([^"]+)"/g)) named.add(m[1]);
+      for (const m of fs.readFileSync(path.join(cd, f), "utf8").matchAll(/"page"\s*:\s*"([^"]+)"/g)) {
+        named.add(m[1]);
+      }
     }
     const measured = new Set(
       fs
@@ -89,7 +106,9 @@ if (import.meta.main) {
   const { config, todo } = await derive(name);
   console.log(JSON.stringify(config, null, 1));
   console.log("\n// A person still owes this config:");
-  for (const t of todo) console.log(`//   - ${t}`);
+  for (const t of todo) {
+    console.log(`//   - ${t}`);
+  }
   console.log("//");
   console.log("// Read the element's spec and its docs page before filling these in. A guessed value");
   console.log("// measures the wrong thing while looking finished.");

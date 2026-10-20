@@ -1,0 +1,2528 @@
+{
+  "date": "2026-09-21",
+  "status": "Checkbox Group and Checkbox Card implemented and verified; remaining M10 families pending",
+  "native": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "empty group has no implicit selected member",
+            "ok": true
+          },
+          {
+            "name": "one owner submits each selected member once before render",
+            "ok": true
+          },
+          {
+            "name": "group values project native and painted checked state",
+            "ok": true
+          },
+          {
+            "name": "contained user action becomes one root change",
+            "ok": true
+          },
+          {
+            "name": "member property writes update the same owner without user events",
+            "ok": true
+          },
+          {
+            "name": "native reset restores root defaults and current member projection",
+            "ok": true
+          },
+          {
+            "name": "aggregate required means one choice rather than every checkbox",
+            "ok": true
+          },
+          {
+            "name": "any enabled member satisfies the aggregate requirement",
+            "ok": true
+          },
+          {
+            "name": "group disability reaches native targets without changing child inputs",
+            "ok": true
+          },
+          {
+            "name": "re-enabling restores the canonical selection",
+            "ok": true
+          },
+          {
+            "name": "disabled member values are omitted and do not satisfy required",
+            "ok": true
+          },
+          {
+            "name": "group supplies default member size through the shared appearance model",
+            "ok": true
+          },
+          {
+            "name": "authored member size stays independent of group defaults",
+            "ok": true
+          },
+          {
+            "name": "clearing a member override resumes group size",
+            "ok": true
+          },
+          {
+            "name": "changing a member value updates native entries immediately",
+            "ok": true
+          },
+          {
+            "name": "duplicate member values invalidate the group without duplicate data",
+            "ok": true
+          },
+          {
+            "name": "form entries follow current member order",
+            "ok": true
+          },
+          {
+            "name": "removed members stop submitting while their explicit root value remains",
+            "ok": true
+          },
+          {
+            "name": "leaving a group transfers the visible state to standalone ownership",
+            "ok": true
+          },
+          {
+            "name": "external form owns only the group entries",
+            "ok": true
+          },
+          {
+            "name": "nested selection owners do not steal each other members or events",
+            "ok": true
+          },
+          {
+            "name": "canonical values and form entries are current for native input observers",
+            "ok": true
+          },
+          {
+            "name": "attached Checkbox Cards share Group appearance over collection defaults",
+            "ok": true
+          },
+          {
+            "name": "Group joins the actual card border surfaces",
+            "ok": true
+          },
+          {
+            "name": "card heading and description name the native control",
+            "ok": true
+          },
+          {
+            "name": "independent action does not select the card",
+            "ok": true
+          },
+          {
+            "name": "whole-card native label selects once through its collection",
+            "ok": true
+          },
+          {
+            "name": "selected card retains its emphasized border in the outer frame",
+            "ok": true
+          },
+          {
+            "name": "multiple selection has no travelling indicator",
+            "ok": true
+          },
+          {
+            "name": "small cards retain their label type size",
+            "ok": true
+          },
+          {
+            "name": "group focus skips hidden members",
+            "ok": true
+          },
+          {
+            "name": "late forwarded slot acquires its logical selection owner",
+            "ok": true
+          },
+          {
+            "name": "removing a projected owner releases the still-connected member",
+            "ok": true
+          },
+          {
+            "name": "independent action-region controls keep their own state",
+            "ok": true
+          },
+          {
+            "name": "independent action notifications do not masquerade as selection changes",
+            "ok": true
+          },
+          {
+            "name": "default card content names the control without repeating its description",
+            "ok": true
+          },
+          {
+            "name": "requested stretch joins cards with equal actual surface heights",
+            "ok": true
+          },
+          {
+            "name": "trusted independent action leaves selection unchanged",
+            "ok": true
+          },
+          {
+            "name": "trusted whole-card click selects its value",
+            "ok": true
+          },
+          {
+            "name": "trusted keyboard activation preserves one selection owner",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "empty group has no implicit selected member",
+            "ok": true
+          },
+          {
+            "name": "one owner submits each selected member once before render",
+            "ok": true
+          },
+          {
+            "name": "group values project native and painted checked state",
+            "ok": true
+          },
+          {
+            "name": "contained user action becomes one root change",
+            "ok": true
+          },
+          {
+            "name": "member property writes update the same owner without user events",
+            "ok": true
+          },
+          {
+            "name": "native reset restores root defaults and current member projection",
+            "ok": true
+          },
+          {
+            "name": "aggregate required means one choice rather than every checkbox",
+            "ok": true
+          },
+          {
+            "name": "any enabled member satisfies the aggregate requirement",
+            "ok": true
+          },
+          {
+            "name": "group disability reaches native targets without changing child inputs",
+            "ok": true
+          },
+          {
+            "name": "re-enabling restores the canonical selection",
+            "ok": true
+          },
+          {
+            "name": "disabled member values are omitted and do not satisfy required",
+            "ok": true
+          },
+          {
+            "name": "group supplies default member size through the shared appearance model",
+            "ok": true
+          },
+          {
+            "name": "authored member size stays independent of group defaults",
+            "ok": true
+          },
+          {
+            "name": "clearing a member override resumes group size",
+            "ok": true
+          },
+          {
+            "name": "changing a member value updates native entries immediately",
+            "ok": true
+          },
+          {
+            "name": "duplicate member values invalidate the group without duplicate data",
+            "ok": true
+          },
+          {
+            "name": "form entries follow current member order",
+            "ok": true
+          },
+          {
+            "name": "removed members stop submitting while their explicit root value remains",
+            "ok": true
+          },
+          {
+            "name": "leaving a group transfers the visible state to standalone ownership",
+            "ok": true
+          },
+          {
+            "name": "external form owns only the group entries",
+            "ok": true
+          },
+          {
+            "name": "nested selection owners do not steal each other members or events",
+            "ok": true
+          },
+          {
+            "name": "canonical values and form entries are current for native input observers",
+            "ok": true
+          },
+          {
+            "name": "attached Checkbox Cards share Group appearance over collection defaults",
+            "ok": true
+          },
+          {
+            "name": "Group joins the actual card border surfaces",
+            "ok": true
+          },
+          {
+            "name": "card heading and description name the native control",
+            "ok": true
+          },
+          {
+            "name": "independent action does not select the card",
+            "ok": true
+          },
+          {
+            "name": "whole-card native label selects once through its collection",
+            "ok": true
+          },
+          {
+            "name": "selected card retains its emphasized border in the outer frame",
+            "ok": true
+          },
+          {
+            "name": "multiple selection has no travelling indicator",
+            "ok": true
+          },
+          {
+            "name": "small cards retain their label type size",
+            "ok": true
+          },
+          {
+            "name": "group focus skips hidden members",
+            "ok": true
+          },
+          {
+            "name": "late forwarded slot acquires its logical selection owner",
+            "ok": true
+          },
+          {
+            "name": "removing a projected owner releases the still-connected member",
+            "ok": true
+          },
+          {
+            "name": "independent action-region controls keep their own state",
+            "ok": true
+          },
+          {
+            "name": "independent action notifications do not masquerade as selection changes",
+            "ok": true
+          },
+          {
+            "name": "default card content names the control without repeating its description",
+            "ok": true
+          },
+          {
+            "name": "requested stretch joins cards with equal actual surface heights",
+            "ok": true
+          },
+          {
+            "name": "trusted independent action leaves selection unchanged",
+            "ok": true
+          },
+          {
+            "name": "trusted whole-card click selects its value",
+            "ok": true
+          },
+          {
+            "name": "trusted keyboard activation preserves one selection owner",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "empty group has no implicit selected member",
+            "ok": true
+          },
+          {
+            "name": "one owner submits each selected member once before render",
+            "ok": true
+          },
+          {
+            "name": "group values project native and painted checked state",
+            "ok": true
+          },
+          {
+            "name": "contained user action becomes one root change",
+            "ok": true
+          },
+          {
+            "name": "member property writes update the same owner without user events",
+            "ok": true
+          },
+          {
+            "name": "native reset restores root defaults and current member projection",
+            "ok": true
+          },
+          {
+            "name": "aggregate required means one choice rather than every checkbox",
+            "ok": true
+          },
+          {
+            "name": "any enabled member satisfies the aggregate requirement",
+            "ok": true
+          },
+          {
+            "name": "group disability reaches native targets without changing child inputs",
+            "ok": true
+          },
+          {
+            "name": "re-enabling restores the canonical selection",
+            "ok": true
+          },
+          {
+            "name": "disabled member values are omitted and do not satisfy required",
+            "ok": true
+          },
+          {
+            "name": "group supplies default member size through the shared appearance model",
+            "ok": true
+          },
+          {
+            "name": "authored member size stays independent of group defaults",
+            "ok": true
+          },
+          {
+            "name": "clearing a member override resumes group size",
+            "ok": true
+          },
+          {
+            "name": "changing a member value updates native entries immediately",
+            "ok": true
+          },
+          {
+            "name": "duplicate member values invalidate the group without duplicate data",
+            "ok": true
+          },
+          {
+            "name": "form entries follow current member order",
+            "ok": true
+          },
+          {
+            "name": "removed members stop submitting while their explicit root value remains",
+            "ok": true
+          },
+          {
+            "name": "leaving a group transfers the visible state to standalone ownership",
+            "ok": true
+          },
+          {
+            "name": "external form owns only the group entries",
+            "ok": true
+          },
+          {
+            "name": "nested selection owners do not steal each other members or events",
+            "ok": true
+          },
+          {
+            "name": "canonical values and form entries are current for native input observers",
+            "ok": true
+          },
+          {
+            "name": "attached Checkbox Cards share Group appearance over collection defaults",
+            "ok": true
+          },
+          {
+            "name": "Group joins the actual card border surfaces",
+            "ok": true
+          },
+          {
+            "name": "card heading and description name the native control",
+            "ok": true
+          },
+          {
+            "name": "independent action does not select the card",
+            "ok": true
+          },
+          {
+            "name": "whole-card native label selects once through its collection",
+            "ok": true
+          },
+          {
+            "name": "selected card retains its emphasized border in the outer frame",
+            "ok": true
+          },
+          {
+            "name": "multiple selection has no travelling indicator",
+            "ok": true
+          },
+          {
+            "name": "small cards retain their label type size",
+            "ok": true
+          },
+          {
+            "name": "group focus skips hidden members",
+            "ok": true
+          },
+          {
+            "name": "late forwarded slot acquires its logical selection owner",
+            "ok": true
+          },
+          {
+            "name": "removing a projected owner releases the still-connected member",
+            "ok": true
+          },
+          {
+            "name": "independent action-region controls keep their own state",
+            "ok": true
+          },
+          {
+            "name": "independent action notifications do not masquerade as selection changes",
+            "ok": true
+          },
+          {
+            "name": "default card content names the control without repeating its description",
+            "ok": true
+          },
+          {
+            "name": "requested stretch joins cards with equal actual surface heights",
+            "ok": true
+          },
+          {
+            "name": "trusted independent action leaves selection unchanged",
+            "ok": true
+          },
+          {
+            "name": "trusted whole-card click selects its value",
+            "ok": true
+          },
+          {
+            "name": "trusted keyboard activation preserves one selection owner",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "sources": [
+    {
+      "file": "src/components/checkbox/checkbox.ts",
+      "sha256": "bca85e905ec89045b0f9960faf0f57bdf19d403bac13b952dd685fceefa6e3cf"
+    },
+    {
+      "file": "src/components/checkbox-group/checkbox-group.ts",
+      "sha256": "1c21fa6ca75e2f7e66efea956e908580cc1fa03ecf6fe7703f65dd7693fdbd98"
+    },
+    {
+      "file": "src/components/checkbox-card/checkbox-card.ts",
+      "sha256": "00ee241cf05217c8eea553ce7c341826c4aabf440589b257da4ff9f1d84f5855"
+    },
+    {
+      "file": "src/shared/selection-member.ts",
+      "sha256": "3b7703f58b8fc3fbd5a0c3c2a199805f6b01faa2b01888c546ba3daebbad63a1"
+    },
+    {
+      "file": "src/shared/inherited-appearance.ts",
+      "sha256": "87e1ce7b4852778f45bec56176dfa94f677b7984a20021b1fcd6717af37b83dc"
+    },
+    {
+      "file": "src/shared/native-form.ts",
+      "sha256": "e91ef7a81b6c55c0cb2a678343a404f0e80a4623de6145ccf48ca1c38d66b2f9"
+    },
+    {
+      "file": "styles/components/checkbox-card/checkbox-card-structure.css",
+      "sha256": "e3bf4396b2173b7d95c6ed2b0f6d8de8f5f39ec99a482f177f637b834a4a6964"
+    }
+  ],
+  "fixtures": [
+    {
+      "origin": "/tmp/acme-m10-group/probe.ts",
+      "source": "import {LitElement,html} from '/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/index.js';\nimport {AcmeCheckbox} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/checkbox/checkbox';\nimport {AcmeCheckboxGroup} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/checkbox-group/checkbox-group';\nimport {AcmeCheckIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/icons/classes/check-icon';\nimport {AcmeRemoveIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/icons/classes/remove-icon';\nimport {AcmeToggleButton} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/toggle-button/toggle-button';\nimport {AcmeCheckboxCard} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/checkbox-card/checkbox-card';\nimport {AcmeGroup} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/group/group';\nfor(const [name,constructor]of[['acme-checkbox',AcmeCheckbox],['acme-checkbox-group',AcmeCheckboxGroup],['acme-group',AcmeGroup],['acme-checkbox-card',AcmeCheckboxCard],['acme-toggle-button',AcmeToggleButton],['acme-check-icon',AcmeCheckIcon],['acme-remove-icon',AcmeRemoveIcon]]as const)customElements.define(name,constructor);\nclass ForwardedGroup extends LitElement{shown=false;render(){return this.shown?html`<form><acme-checkbox-group name=\"forwarded\"><slot></slot></acme-checkbox-group></form>`:html`<slot></slot>`;}}customElements.define('forwarded-group-probe',ForwardedGroup);const results:any[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});const wait=()=>new Promise(r=>setTimeout(r,40));const input=(host:AcmeCheckbox)=>host.shadowRoot!.querySelector('input')!;\ntry{\nconst form=document.createElement('form'),group=new AcmeCheckboxGroup(),layout=new AcmeGroup(),a=new AcmeCheckbox(),b=new AcmeCheckbox();group.name='choices';group.ariaLabel='Options';a.value='a';a.textContent='Alpha';b.value='b';b.textContent='Beta';layout.append(a,b);group.append(layout);form.append(group);document.body.append(form);await wait();check('empty group has no implicit selected member',group.value.length===0&&!a.checked&&!b.checked&&new FormData(form).getAll('choices').length===0);\ngroup.value=['b','a'];check('one owner submits each selected member once before render',JSON.stringify(new FormData(form).getAll('choices'))==='[\"a\",\"b\"]');await wait();check('group values project native and painted checked state',a.checked&&b.checked&&input(a).checked&&a.shadowRoot!.querySelector('[part=root]')!.hasAttribute('data-checked'));\nlet changes:any[]=[];group.addEventListener('acme-change',event=>changes.push({target:(event.target as Element).localName,detail:(event as CustomEvent).detail}));a.click();await wait();check('contained user action becomes one root change',changes.length===1&&changes[0].target==='acme-checkbox-group'&&JSON.stringify(changes[0].detail.value)==='[\"b\"]'&&!a.checked,changes);\na.checked=true;check('member property writes update the same owner without user events',group.value.includes('a')&&changes.length===1);group.defaultValue=['a'];form.reset();check('native reset restores root defaults and current member projection',JSON.stringify(group.value)==='[\"a\"]'&&a.checked&&!b.checked&&changes.length===1);\ngroup.value=[];group.required=true;check('aggregate required means one choice rather than every checkbox',!form.checkValidity());b.click();check('any enabled member satisfies the aggregate requirement',form.checkValidity()&&!a.checked&&b.checked);\ngroup.disabled=true;check('group disability reaches native targets without changing child inputs',input(a).disabled&&input(b).disabled&&!a.disabled&&!b.disabled&&new FormData(form).getAll('choices').length===0&&form.checkValidity());group.disabled=false;check('re-enabling restores the canonical selection',!input(a).disabled&&b.checked&&new FormData(form).getAll('choices')[0]==='b');\nb.disabled=true;check('disabled member values are omitted and do not satisfy required',new FormData(form).getAll('choices').length===0&&!form.checkValidity());b.disabled=false;\ngroup.size='large';await wait();check('group supplies default member size through the shared appearance model',a.size==='large'&&b.size==='large');a.size='small';group.size='medium';await wait();check('authored member size stays independent of group defaults',a.size==='small'&&b.size==='medium');a.size=undefined;await wait();check('clearing a member override resumes group size',a.size==='medium');\na.checked=true;a.value='changed';check('changing a member value updates native entries immediately',JSON.stringify(new FormData(form).getAll('choices'))==='[\"b\"]');a.value='b';check('duplicate member values invalidate the group without duplicate data',!form.checkValidity()&&new FormData(form).getAll('choices').length===1);a.value='a';\nlayout.prepend(b);await wait();group.value=['a','b'];check('form entries follow current member order',JSON.stringify(new FormData(form).getAll('choices'))==='[\"b\",\"a\"]');\nb.remove();check('removed members stop submitting while their explicit root value remains',new FormData(form).getAll('choices').length===1&&group.value.includes('b'));form.append(b);await wait();check('leaving a group transfers the visible state to standalone ownership',b.checked);\nconst external=document.createElement('form');external.id='external';document.body.append(external);group.setAttribute('form','external');check('external form owns only the group entries',new FormData(external).getAll('choices')[0]==='a'&&new FormData(form).getAll('choices').length===0);\nconst nested=new AcmeCheckboxGroup(),inner=new AcmeCheckbox();nested.name='nested';inner.value='inner';inner.textContent='Inner';nested.append(inner);group.append(nested);await wait();inner.click();check('nested selection owners do not steal each other members or events',nested.value[0]==='inner'&&!group.value.includes('inner'));\na.checked=false;let observed:any;group.addEventListener('input',()=>observed={checked:a.checked,values:[...group.value],entries:new FormData(external).getAll('choices')},{once:true});a.click();check('canonical values and form entries are current for native input observers',observed?.checked&&observed.values.includes('a')&&observed.entries.includes('a'),observed);\nconst cardGroup=new AcmeCheckboxGroup(),joined=new AcmeGroup(),first=new AcmeCheckboxCard(),last=new AcmeCheckboxCard();cardGroup.name='cards';cardGroup.ariaLabel='Plans';cardGroup.size='large';joined.attached=true;joined.outline=true;joined.variant='secondary';joined.size='small';first.value='first';first.id='first-card';last.value='last';last.id='second-card';first.innerHTML='<span slot=\"heading\">First plan</span><span slot=\"description\">Plan details</span><button slot=\"actions\" id=\"secondary-action\">Learn more</button>';last.innerHTML='<span slot=\"heading\">Second plan</span>';joined.append(first,last);cardGroup.append(joined);document.body.append(cardGroup);await wait();await wait();\ncheck('attached Checkbox Cards share Group appearance over collection defaults',first.size==='small'&&last.size==='small'&&first.variant==='secondary');\ncheck('Group joins the actual card border surfaces',first.shadowRoot!.querySelector('[part=root]')!.hasAttribute('data-acme-group-surface')&&last.shadowRoot!.querySelector('[part=root]')!.hasAttribute('data-acme-group-surface'));\ncheck('card heading and description name the native control',input(first).ariaLabelledByElements?.some(el=>el.getAttribute('part')==='label')&&input(first).ariaDescribedByElements?.some(el=>el.getAttribute('part')==='description'));\nlet actions=0;first.querySelector('button')!.addEventListener('click',()=>actions++);first.querySelector('button')!.click();check('independent action does not select the card',actions===1&&!first.checked&&cardGroup.value.length===0);\n(first.shadowRoot!.querySelector('.activation') as HTMLElement).click();await wait();check('whole-card native label selects once through its collection',first.checked&&cardGroup.value.length===1&&cardGroup.value[0]==='first');\ncheck('selected card retains its emphasized border in the outer frame',first.shadowRoot!.querySelector('[part=root]')!.hasAttribute('data-acme-group-emphasized')&&!last.shadowRoot!.querySelector('[part=root]')!.hasAttribute('data-acme-group-emphasized'));\ncheck('multiple selection has no travelling indicator',!joined.querySelector('acme-selection-indicator')&&!first.shadowRoot!.querySelector('acme-selection-indicator'));\ncheck('small cards retain their label type size',getComputedStyle(first.shadowRoot!.querySelector('.activation')!).fontSize==='14px');const focusGroup=new AcmeCheckboxGroup(),hiddenMember=new AcmeCheckbox(),visibleMember=new AcmeCheckbox();hiddenMember.value='hidden';hiddenMember.hidden=true;visibleMember.value='visible';visibleMember.textContent='Visible';focusGroup.append(hiddenMember,visibleMember);document.body.append(focusGroup);await wait();focusGroup.focus();check('group focus skips hidden members',visibleMember.shadowRoot!.activeElement===input(visibleMember));const wrapper=new ForwardedGroup(),forwarded=new AcmeCheckbox();forwarded.value='forwarded';forwarded.textContent='Forwarded';wrapper.append(forwarded);document.body.append(wrapper);await wait();wrapper.shown=true;wrapper.requestUpdate();await wait();await wait();const forwardedOwner=wrapper.shadowRoot!.querySelector('acme-checkbox-group')!;forwarded.click();check('late forwarded slot acquires its logical selection owner',forwardedOwner.value.includes('forwarded')&&new FormData(wrapper.shadowRoot!.querySelector('form')!).get('forwarded')==='forwarded');wrapper.shown=false;wrapper.requestUpdate();await wait();forwarded.checked=false;check('removing a projected owner releases the still-connected member',forwardedOwner.value.includes('forwarded')&&!forwarded.checked);const independent=new AcmeCheckbox();independent.slot='actions';independent.value='independent';independent.name='extra';independent.textContent='Independent preference';first.append(independent);await wait();independent.click();check('independent action-region controls keep their own state',independent.checked&&!cardGroup.value.includes('independent'));const toggleAction=new AcmeToggleButton();toggleAction.slot='actions';toggleAction.textContent='Pin';first.append(toggleAction);await wait();let actionChanges=0,cardChanges=0,collectionChanges=0;toggleAction.addEventListener('acme-change',()=>actionChanges++);first.addEventListener('acme-change',()=>cardChanges++);cardGroup.addEventListener('acme-change',()=>collectionChanges++);toggleAction.click();check('independent action notifications do not masquerade as selection changes',actionChanges===1&&cardChanges===0&&collectionChanges===0,{actionChanges,cardChanges,collectionChanges});const fallbackCard=new AcmeCheckboxCard();fallbackCard.innerHTML='Fallback label<span slot=\"description\">Separate description</span>';document.body.append(fallbackCard);await wait();const description=fallbackCard.shadowRoot!.querySelector('[part=description]')!;check('default card content names the control without repeating its description',!input(fallbackCard).ariaLabelledByElements?.some(element=>element.contains(description))&&input(fallbackCard).ariaDescribedByElements?.includes(description));joined.alignItems='stretch';await wait();await wait();check('requested stretch joins cards with equal actual surface heights',Math.abs(first.shadowRoot!.querySelector('[part=root]')!.getBoundingClientRect().height-last.shadowRoot!.querySelector('[part=root]')!.getBoundingClientRect().height)<1);(window as any).__cards={first,last,joined,cardGroup,actions:()=>actions};(window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n"
+    },
+    {
+      "origin": "/tmp/acme-m10-group/run.ts",
+      "source": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m10-group\",root=\"/Users/peterkloss/Dev/ACMElabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\",splitting:true});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/src/generated/css/document/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname.endsWith(\".js\")&&url.pathname!==\"/probe.js\")return new Response(Bun.file(directory+\"/bundle\"+url.pathname),{headers:{\"Content-Type\":\"text/javascript\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(!data.error){await page.evaluate(()=>{window.__cards.first.checked=false;window.__cards.last.checked=false;});await page.locator('#secondary-action').click();data.results.push({name:'trusted independent action leaves selection unchanged',ok:await page.evaluate(()=>window.__cards.cardGroup.value.length===0&&window.__cards.actions()===2)});await page.locator('#second-card').locator('[slot=heading]').click();data.results.push({name:'trusted whole-card click selects its value',ok:await page.evaluate(()=>window.__cards.last.checked&&JSON.stringify(window.__cards.cardGroup.value)==='[\"last\"]')});await page.locator('#second-card').press('Space');data.results.push({name:'trusted keyboard activation preserves one selection owner',ok:await page.evaluate(()=>!window.__cards.last.checked&&window.__cards.cardGroup.value.length===0)});}if(!data.error&&engine==='chromium')await page.screenshot({path:directory+'/cards.png',fullPage:true});if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.length!==40||r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+    },
+    {
+      "origin": "/tmp/acme-m10-group-compiled/probe.ts",
+      "source": "import {LitElement,html} from '/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/index.js';\nimport {AcmeCheckbox} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/checkbox/checkbox.js';\nimport {AcmeCheckboxGroup} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/checkbox-group/checkbox-group.js';\nimport {AcmeCheckIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/generated/icons/classes/check-icon.js';\nimport {AcmeRemoveIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/generated/icons/classes/remove-icon.js';\nimport {AcmeToggleButton} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/toggle-button/toggle-button.js';\nimport {AcmeCheckboxCard} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/checkbox-card/checkbox-card.js';\nimport {AcmeGroup} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/group/group.js';\nfor(const [name,constructor]of[['acme-checkbox',AcmeCheckbox],['acme-checkbox-group',AcmeCheckboxGroup],['acme-group',AcmeGroup],['acme-checkbox-card',AcmeCheckboxCard],['acme-toggle-button',AcmeToggleButton],['acme-check-icon',AcmeCheckIcon],['acme-remove-icon',AcmeRemoveIcon]]as const)customElements.define(name,constructor);\nclass ForwardedGroup extends LitElement{shown=false;render(){return this.shown?html`<form><acme-checkbox-group name=\"forwarded\"><slot></slot></acme-checkbox-group></form>`:html`<slot></slot>`;}}customElements.define('forwarded-group-probe',ForwardedGroup);const results:any[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});const wait=()=>new Promise(r=>setTimeout(r,40));const input=(host:AcmeCheckbox)=>host.shadowRoot!.querySelector('input')!;\ntry{\nconst form=document.createElement('form'),group=new AcmeCheckboxGroup(),layout=new AcmeGroup(),a=new AcmeCheckbox(),b=new AcmeCheckbox();group.name='choices';group.ariaLabel='Options';a.value='a';a.textContent='Alpha';b.value='b';b.textContent='Beta';layout.append(a,b);group.append(layout);form.append(group);document.body.append(form);await wait();check('empty group has no implicit selected member',group.value.length===0&&!a.checked&&!b.checked&&new FormData(form).getAll('choices').length===0);\ngroup.value=['b','a'];check('one owner submits each selected member once before render',JSON.stringify(new FormData(form).getAll('choices'))==='[\"a\",\"b\"]');await wait();check('group values project native and painted checked state',a.checked&&b.checked&&input(a).checked&&a.shadowRoot!.querySelector('[part=root]')!.hasAttribute('data-checked'));\nlet changes:any[]=[];group.addEventListener('acme-change',event=>changes.push({target:(event.target as Element).localName,detail:(event as CustomEvent).detail}));a.click();await wait();check('contained user action becomes one root change',changes.length===1&&changes[0].target==='acme-checkbox-group'&&JSON.stringify(changes[0].detail.value)==='[\"b\"]'&&!a.checked,changes);\na.checked=true;check('member property writes update the same owner without user events',group.value.includes('a')&&changes.length===1);group.defaultValue=['a'];form.reset();check('native reset restores root defaults and current member projection',JSON.stringify(group.value)==='[\"a\"]'&&a.checked&&!b.checked&&changes.length===1);\ngroup.value=[];group.required=true;check('aggregate required means one choice rather than every checkbox',!form.checkValidity());b.click();check('any enabled member satisfies the aggregate requirement',form.checkValidity()&&!a.checked&&b.checked);\ngroup.disabled=true;check('group disability reaches native targets without changing child inputs',input(a).disabled&&input(b).disabled&&!a.disabled&&!b.disabled&&new FormData(form).getAll('choices').length===0&&form.checkValidity());group.disabled=false;check('re-enabling restores the canonical selection',!input(a).disabled&&b.checked&&new FormData(form).getAll('choices')[0]==='b');\nb.disabled=true;check('disabled member values are omitted and do not satisfy required',new FormData(form).getAll('choices').length===0&&!form.checkValidity());b.disabled=false;\ngroup.size='large';await wait();check('group supplies default member size through the shared appearance model',a.size==='large'&&b.size==='large');a.size='small';group.size='medium';await wait();check('authored member size stays independent of group defaults',a.size==='small'&&b.size==='medium');a.size=undefined;await wait();check('clearing a member override resumes group size',a.size==='medium');\na.checked=true;a.value='changed';check('changing a member value updates native entries immediately',JSON.stringify(new FormData(form).getAll('choices'))==='[\"b\"]');a.value='b';check('duplicate member values invalidate the group without duplicate data',!form.checkValidity()&&new FormData(form).getAll('choices').length===1);a.value='a';\nlayout.prepend(b);await wait();group.value=['a','b'];check('form entries follow current member order',JSON.stringify(new FormData(form).getAll('choices'))==='[\"b\",\"a\"]');\nb.remove();check('removed members stop submitting while their explicit root value remains',new FormData(form).getAll('choices').length===1&&group.value.includes('b'));form.append(b);await wait();check('leaving a group transfers the visible state to standalone ownership',b.checked);\nconst external=document.createElement('form');external.id='external';document.body.append(external);group.setAttribute('form','external');check('external form owns only the group entries',new FormData(external).getAll('choices')[0]==='a'&&new FormData(form).getAll('choices').length===0);\nconst nested=new AcmeCheckboxGroup(),inner=new AcmeCheckbox();nested.name='nested';inner.value='inner';inner.textContent='Inner';nested.append(inner);group.append(nested);await wait();inner.click();check('nested selection owners do not steal each other members or events',nested.value[0]==='inner'&&!group.value.includes('inner'));\na.checked=false;let observed:any;group.addEventListener('input',()=>observed={checked:a.checked,values:[...group.value],entries:new FormData(external).getAll('choices')},{once:true});a.click();check('canonical values and form entries are current for native input observers',observed?.checked&&observed.values.includes('a')&&observed.entries.includes('a'),observed);\nconst cardGroup=new AcmeCheckboxGroup(),joined=new AcmeGroup(),first=new AcmeCheckboxCard(),last=new AcmeCheckboxCard();cardGroup.name='cards';cardGroup.ariaLabel='Plans';cardGroup.size='large';joined.attached=true;joined.outline=true;joined.variant='secondary';joined.size='small';first.value='first';first.id='first-card';last.value='last';last.id='second-card';first.innerHTML='<span slot=\"heading\">First plan</span><span slot=\"description\">Plan details</span><button slot=\"actions\" id=\"secondary-action\">Learn more</button>';last.innerHTML='<span slot=\"heading\">Second plan</span>';joined.append(first,last);cardGroup.append(joined);document.body.append(cardGroup);await wait();await wait();\ncheck('attached Checkbox Cards share Group appearance over collection defaults',first.size==='small'&&last.size==='small'&&first.variant==='secondary');\ncheck('Group joins the actual card border surfaces',first.shadowRoot!.querySelector('[part=root]')!.hasAttribute('data-acme-group-surface')&&last.shadowRoot!.querySelector('[part=root]')!.hasAttribute('data-acme-group-surface'));\ncheck('card heading and description name the native control',input(first).ariaLabelledByElements?.some(el=>el.getAttribute('part')==='label')&&input(first).ariaDescribedByElements?.some(el=>el.getAttribute('part')==='description'));\nlet actions=0;first.querySelector('button')!.addEventListener('click',()=>actions++);first.querySelector('button')!.click();check('independent action does not select the card',actions===1&&!first.checked&&cardGroup.value.length===0);\n(first.shadowRoot!.querySelector('.activation') as HTMLElement).click();await wait();check('whole-card native label selects once through its collection',first.checked&&cardGroup.value.length===1&&cardGroup.value[0]==='first');\ncheck('selected card retains its emphasized border in the outer frame',first.shadowRoot!.querySelector('[part=root]')!.hasAttribute('data-acme-group-emphasized')&&!last.shadowRoot!.querySelector('[part=root]')!.hasAttribute('data-acme-group-emphasized'));\ncheck('multiple selection has no travelling indicator',!joined.querySelector('acme-selection-indicator')&&!first.shadowRoot!.querySelector('acme-selection-indicator'));\ncheck('small cards retain their label type size',getComputedStyle(first.shadowRoot!.querySelector('.activation')!).fontSize==='14px');const focusGroup=new AcmeCheckboxGroup(),hiddenMember=new AcmeCheckbox(),visibleMember=new AcmeCheckbox();hiddenMember.value='hidden';hiddenMember.hidden=true;visibleMember.value='visible';visibleMember.textContent='Visible';focusGroup.append(hiddenMember,visibleMember);document.body.append(focusGroup);await wait();focusGroup.focus();check('group focus skips hidden members',visibleMember.shadowRoot!.activeElement===input(visibleMember));const wrapper=new ForwardedGroup(),forwarded=new AcmeCheckbox();forwarded.value='forwarded';forwarded.textContent='Forwarded';wrapper.append(forwarded);document.body.append(wrapper);await wait();wrapper.shown=true;wrapper.requestUpdate();await wait();await wait();const forwardedOwner=wrapper.shadowRoot!.querySelector('acme-checkbox-group')!;forwarded.click();check('late forwarded slot acquires its logical selection owner',forwardedOwner.value.includes('forwarded')&&new FormData(wrapper.shadowRoot!.querySelector('form')!).get('forwarded')==='forwarded');wrapper.shown=false;wrapper.requestUpdate();await wait();forwarded.checked=false;check('removing a projected owner releases the still-connected member',forwardedOwner.value.includes('forwarded')&&!forwarded.checked);const independent=new AcmeCheckbox();independent.slot='actions';independent.value='independent';independent.name='extra';independent.textContent='Independent preference';first.append(independent);await wait();independent.click();check('independent action-region controls keep their own state',independent.checked&&!cardGroup.value.includes('independent'));const toggleAction=new AcmeToggleButton();toggleAction.slot='actions';toggleAction.textContent='Pin';first.append(toggleAction);await wait();let actionChanges=0,cardChanges=0,collectionChanges=0;toggleAction.addEventListener('acme-change',()=>actionChanges++);first.addEventListener('acme-change',()=>cardChanges++);cardGroup.addEventListener('acme-change',()=>collectionChanges++);toggleAction.click();check('independent action notifications do not masquerade as selection changes',actionChanges===1&&cardChanges===0&&collectionChanges===0,{actionChanges,cardChanges,collectionChanges});const fallbackCard=new AcmeCheckboxCard();fallbackCard.innerHTML='Fallback label<span slot=\"description\">Separate description</span>';document.body.append(fallbackCard);await wait();const description=fallbackCard.shadowRoot!.querySelector('[part=description]')!;check('default card content names the control without repeating its description',!input(fallbackCard).ariaLabelledByElements?.some(element=>element.contains(description))&&input(fallbackCard).ariaDescribedByElements?.includes(description));joined.alignItems='stretch';await wait();await wait();check('requested stretch joins cards with equal actual surface heights',Math.abs(first.shadowRoot!.querySelector('[part=root]')!.getBoundingClientRect().height-last.shadowRoot!.querySelector('[part=root]')!.getBoundingClientRect().height)<1);(window as any).__cards={first,last,joined,cardGroup,actions:()=>actions};(window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n"
+    },
+    {
+      "origin": "/tmp/acme-m10-group-compiled/run.ts",
+      "source": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m10-group-compiled\",root=\"/Users/peterkloss/Dev/ACMElabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\",splitting:true});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/src/generated/css/document/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname.endsWith(\".js\")&&url.pathname!==\"/probe.js\")return new Response(Bun.file(directory+\"/bundle\"+url.pathname),{headers:{\"Content-Type\":\"text/javascript\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(!data.error){await page.evaluate(()=>{window.__cards.first.checked=false;window.__cards.last.checked=false;});await page.locator('#secondary-action').click();data.results.push({name:'trusted independent action leaves selection unchanged',ok:await page.evaluate(()=>window.__cards.cardGroup.value.length===0&&window.__cards.actions()===2)});await page.locator('#second-card').locator('[slot=heading]').click();data.results.push({name:'trusted whole-card click selects its value',ok:await page.evaluate(()=>window.__cards.last.checked&&JSON.stringify(window.__cards.cardGroup.value)==='[\"last\"]')});await page.locator('#second-card').press('Space');data.results.push({name:'trusted keyboard activation preserves one selection owner',ok:await page.evaluate(()=>!window.__cards.last.checked&&window.__cards.cardGroup.value.length===0)});}if(!data.error&&engine==='chromium')await page.screenshot({path:directory+'/cards.png',fullPage:true});if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.length!==40||r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+    },
+    {
+      "origin": "/tmp/acme-m10-group/docs-check.ts",
+      "source": "process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');const results=[];\nfor(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true}:{headless:true});try{const page=await browser.newPage();const errors=[];page.on('pageerror',error=>errors.push(error.message));await page.goto('http://127.0.0.1:4180/components/checkbox');const form=page.locator('#checkbox-group-form');await form.locator('acme-checkbox[value=exports]').click();await form.locator('acme-button[type=submit]').click();await page.waitForFunction(()=>document.querySelector('#checkbox-group-form output')?.textContent==='[\"alerts\",\"exports\"]');await form.locator('acme-button[type=reset]').click();const reset=await form.evaluate(el=>JSON.stringify(el.querySelector('acme-checkbox-group').value)==='[\"alerts\"]');await page.locator('#card-pin').click();await page.waitForFunction(()=>document.querySelector('#card-pinned')?.textContent==='Pinned');const independent=await page.locator('#card-selection').textContent()==='None';await page.locator('#card-about').click();const details=await page.locator('#card-details').textContent()==='The editor option enables code tools.';await page.locator('#checkbox-card-example acme-checkbox-card[value=browser] [slot=heading]').click();await page.waitForFunction(()=>document.querySelector('#card-selection')?.textContent==='browser');results.push({engine,submission:true,reset,independent,details,selection:true,errors});console.log(results.at(-1));if(engine==='chromium')await page.locator('#checkbox-card-example').screenshot({path:'/tmp/acme-m10-group/docs-cards.png'});}finally{await browser.close();}}\nawait Bun.write('/tmp/acme-m10-group/docs-results.json',JSON.stringify(results,null,2)+'\\n');if(results.some(r=>!r.reset||!r.independent||!r.details||r.errors.length))process.exitCode=1;\n"
+    }
+  ],
+  "decisions": [
+    "The collection owns values, defaults, aggregate validity and repeated form entries; member native participation is suppressed.",
+    "Only enabled registered members serialize; temporarily absent values remain canonical until their members return.",
+    "An actions slot outside the native label supplies independent controls, including controls with their own state.",
+    "Explicit member size overrides general Group, then a logical collection default, then the component default.",
+    "Each selection boundary exposes its own acme-change payload; independent actions use direct handlers."
+  ],
+  "limits": [
+    "Radio/groups/cards, Switch, Segmented Control/Tabs/indicator and Theme Switcher remain M10.",
+    "Native form ownership follows the collection element tree scope. Wrappers with their own shadow forms must associate the collection with the intended native form.",
+    "Native validity and lifecycle evidence remains distinct from assistive-technology speech output and real history/autofill acceptance."
+  ],
+  "compiled": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "empty group has no implicit selected member",
+            "ok": true
+          },
+          {
+            "name": "one owner submits each selected member once before render",
+            "ok": true
+          },
+          {
+            "name": "group values project native and painted checked state",
+            "ok": true
+          },
+          {
+            "name": "contained user action becomes one root change",
+            "ok": true
+          },
+          {
+            "name": "member property writes update the same owner without user events",
+            "ok": true
+          },
+          {
+            "name": "native reset restores root defaults and current member projection",
+            "ok": true
+          },
+          {
+            "name": "aggregate required means one choice rather than every checkbox",
+            "ok": true
+          },
+          {
+            "name": "any enabled member satisfies the aggregate requirement",
+            "ok": true
+          },
+          {
+            "name": "group disability reaches native targets without changing child inputs",
+            "ok": true
+          },
+          {
+            "name": "re-enabling restores the canonical selection",
+            "ok": true
+          },
+          {
+            "name": "disabled member values are omitted and do not satisfy required",
+            "ok": true
+          },
+          {
+            "name": "group supplies default member size through the shared appearance model",
+            "ok": true
+          },
+          {
+            "name": "authored member size stays independent of group defaults",
+            "ok": true
+          },
+          {
+            "name": "clearing a member override resumes group size",
+            "ok": true
+          },
+          {
+            "name": "changing a member value updates native entries immediately",
+            "ok": true
+          },
+          {
+            "name": "duplicate member values invalidate the group without duplicate data",
+            "ok": true
+          },
+          {
+            "name": "form entries follow current member order",
+            "ok": true
+          },
+          {
+            "name": "removed members stop submitting while their explicit root value remains",
+            "ok": true
+          },
+          {
+            "name": "leaving a group transfers the visible state to standalone ownership",
+            "ok": true
+          },
+          {
+            "name": "external form owns only the group entries",
+            "ok": true
+          },
+          {
+            "name": "nested selection owners do not steal each other members or events",
+            "ok": true
+          },
+          {
+            "name": "canonical values and form entries are current for native input observers",
+            "ok": true
+          },
+          {
+            "name": "attached Checkbox Cards share Group appearance over collection defaults",
+            "ok": true
+          },
+          {
+            "name": "Group joins the actual card border surfaces",
+            "ok": true
+          },
+          {
+            "name": "card heading and description name the native control",
+            "ok": true
+          },
+          {
+            "name": "independent action does not select the card",
+            "ok": true
+          },
+          {
+            "name": "whole-card native label selects once through its collection",
+            "ok": true
+          },
+          {
+            "name": "selected card retains its emphasized border in the outer frame",
+            "ok": true
+          },
+          {
+            "name": "multiple selection has no travelling indicator",
+            "ok": true
+          },
+          {
+            "name": "small cards retain their label type size",
+            "ok": true
+          },
+          {
+            "name": "group focus skips hidden members",
+            "ok": true
+          },
+          {
+            "name": "late forwarded slot acquires its logical selection owner",
+            "ok": true
+          },
+          {
+            "name": "removing a projected owner releases the still-connected member",
+            "ok": true
+          },
+          {
+            "name": "independent action-region controls keep their own state",
+            "ok": true
+          },
+          {
+            "name": "independent action notifications do not masquerade as selection changes",
+            "ok": true
+          },
+          {
+            "name": "default card content names the control without repeating its description",
+            "ok": true
+          },
+          {
+            "name": "requested stretch joins cards with equal actual surface heights",
+            "ok": true
+          },
+          {
+            "name": "trusted independent action leaves selection unchanged",
+            "ok": true
+          },
+          {
+            "name": "trusted whole-card click selects its value",
+            "ok": true
+          },
+          {
+            "name": "trusted keyboard activation preserves one selection owner",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "empty group has no implicit selected member",
+            "ok": true
+          },
+          {
+            "name": "one owner submits each selected member once before render",
+            "ok": true
+          },
+          {
+            "name": "group values project native and painted checked state",
+            "ok": true
+          },
+          {
+            "name": "contained user action becomes one root change",
+            "ok": true
+          },
+          {
+            "name": "member property writes update the same owner without user events",
+            "ok": true
+          },
+          {
+            "name": "native reset restores root defaults and current member projection",
+            "ok": true
+          },
+          {
+            "name": "aggregate required means one choice rather than every checkbox",
+            "ok": true
+          },
+          {
+            "name": "any enabled member satisfies the aggregate requirement",
+            "ok": true
+          },
+          {
+            "name": "group disability reaches native targets without changing child inputs",
+            "ok": true
+          },
+          {
+            "name": "re-enabling restores the canonical selection",
+            "ok": true
+          },
+          {
+            "name": "disabled member values are omitted and do not satisfy required",
+            "ok": true
+          },
+          {
+            "name": "group supplies default member size through the shared appearance model",
+            "ok": true
+          },
+          {
+            "name": "authored member size stays independent of group defaults",
+            "ok": true
+          },
+          {
+            "name": "clearing a member override resumes group size",
+            "ok": true
+          },
+          {
+            "name": "changing a member value updates native entries immediately",
+            "ok": true
+          },
+          {
+            "name": "duplicate member values invalidate the group without duplicate data",
+            "ok": true
+          },
+          {
+            "name": "form entries follow current member order",
+            "ok": true
+          },
+          {
+            "name": "removed members stop submitting while their explicit root value remains",
+            "ok": true
+          },
+          {
+            "name": "leaving a group transfers the visible state to standalone ownership",
+            "ok": true
+          },
+          {
+            "name": "external form owns only the group entries",
+            "ok": true
+          },
+          {
+            "name": "nested selection owners do not steal each other members or events",
+            "ok": true
+          },
+          {
+            "name": "canonical values and form entries are current for native input observers",
+            "ok": true
+          },
+          {
+            "name": "attached Checkbox Cards share Group appearance over collection defaults",
+            "ok": true
+          },
+          {
+            "name": "Group joins the actual card border surfaces",
+            "ok": true
+          },
+          {
+            "name": "card heading and description name the native control",
+            "ok": true
+          },
+          {
+            "name": "independent action does not select the card",
+            "ok": true
+          },
+          {
+            "name": "whole-card native label selects once through its collection",
+            "ok": true
+          },
+          {
+            "name": "selected card retains its emphasized border in the outer frame",
+            "ok": true
+          },
+          {
+            "name": "multiple selection has no travelling indicator",
+            "ok": true
+          },
+          {
+            "name": "small cards retain their label type size",
+            "ok": true
+          },
+          {
+            "name": "group focus skips hidden members",
+            "ok": true
+          },
+          {
+            "name": "late forwarded slot acquires its logical selection owner",
+            "ok": true
+          },
+          {
+            "name": "removing a projected owner releases the still-connected member",
+            "ok": true
+          },
+          {
+            "name": "independent action-region controls keep their own state",
+            "ok": true
+          },
+          {
+            "name": "independent action notifications do not masquerade as selection changes",
+            "ok": true
+          },
+          {
+            "name": "default card content names the control without repeating its description",
+            "ok": true
+          },
+          {
+            "name": "requested stretch joins cards with equal actual surface heights",
+            "ok": true
+          },
+          {
+            "name": "trusted independent action leaves selection unchanged",
+            "ok": true
+          },
+          {
+            "name": "trusted whole-card click selects its value",
+            "ok": true
+          },
+          {
+            "name": "trusted keyboard activation preserves one selection owner",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "empty group has no implicit selected member",
+            "ok": true
+          },
+          {
+            "name": "one owner submits each selected member once before render",
+            "ok": true
+          },
+          {
+            "name": "group values project native and painted checked state",
+            "ok": true
+          },
+          {
+            "name": "contained user action becomes one root change",
+            "ok": true
+          },
+          {
+            "name": "member property writes update the same owner without user events",
+            "ok": true
+          },
+          {
+            "name": "native reset restores root defaults and current member projection",
+            "ok": true
+          },
+          {
+            "name": "aggregate required means one choice rather than every checkbox",
+            "ok": true
+          },
+          {
+            "name": "any enabled member satisfies the aggregate requirement",
+            "ok": true
+          },
+          {
+            "name": "group disability reaches native targets without changing child inputs",
+            "ok": true
+          },
+          {
+            "name": "re-enabling restores the canonical selection",
+            "ok": true
+          },
+          {
+            "name": "disabled member values are omitted and do not satisfy required",
+            "ok": true
+          },
+          {
+            "name": "group supplies default member size through the shared appearance model",
+            "ok": true
+          },
+          {
+            "name": "authored member size stays independent of group defaults",
+            "ok": true
+          },
+          {
+            "name": "clearing a member override resumes group size",
+            "ok": true
+          },
+          {
+            "name": "changing a member value updates native entries immediately",
+            "ok": true
+          },
+          {
+            "name": "duplicate member values invalidate the group without duplicate data",
+            "ok": true
+          },
+          {
+            "name": "form entries follow current member order",
+            "ok": true
+          },
+          {
+            "name": "removed members stop submitting while their explicit root value remains",
+            "ok": true
+          },
+          {
+            "name": "leaving a group transfers the visible state to standalone ownership",
+            "ok": true
+          },
+          {
+            "name": "external form owns only the group entries",
+            "ok": true
+          },
+          {
+            "name": "nested selection owners do not steal each other members or events",
+            "ok": true
+          },
+          {
+            "name": "canonical values and form entries are current for native input observers",
+            "ok": true
+          },
+          {
+            "name": "attached Checkbox Cards share Group appearance over collection defaults",
+            "ok": true
+          },
+          {
+            "name": "Group joins the actual card border surfaces",
+            "ok": true
+          },
+          {
+            "name": "card heading and description name the native control",
+            "ok": true
+          },
+          {
+            "name": "independent action does not select the card",
+            "ok": true
+          },
+          {
+            "name": "whole-card native label selects once through its collection",
+            "ok": true
+          },
+          {
+            "name": "selected card retains its emphasized border in the outer frame",
+            "ok": true
+          },
+          {
+            "name": "multiple selection has no travelling indicator",
+            "ok": true
+          },
+          {
+            "name": "small cards retain their label type size",
+            "ok": true
+          },
+          {
+            "name": "group focus skips hidden members",
+            "ok": true
+          },
+          {
+            "name": "late forwarded slot acquires its logical selection owner",
+            "ok": true
+          },
+          {
+            "name": "removing a projected owner releases the still-connected member",
+            "ok": true
+          },
+          {
+            "name": "independent action-region controls keep their own state",
+            "ok": true
+          },
+          {
+            "name": "independent action notifications do not masquerade as selection changes",
+            "ok": true
+          },
+          {
+            "name": "default card content names the control without repeating its description",
+            "ok": true
+          },
+          {
+            "name": "requested stretch joins cards with equal actual surface heights",
+            "ok": true
+          },
+          {
+            "name": "trusted independent action leaves selection unchanged",
+            "ok": true
+          },
+          {
+            "name": "trusted whole-card click selects its value",
+            "ok": true
+          },
+          {
+            "name": "trusted keyboard activation preserves one selection owner",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "docs": [
+    {
+      "engine": "chromium",
+      "submission": true,
+      "reset": true,
+      "independent": true,
+      "details": true,
+      "selection": true,
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "submission": true,
+      "reset": true,
+      "independent": true,
+      "details": true,
+      "selection": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "submission": true,
+      "reset": true,
+      "independent": true,
+      "details": true,
+      "selection": true,
+      "errors": []
+    }
+  ],
+  "manifest": [
+    {
+      "kind": "class",
+      "description": "Rich checkbox content with a separate region for independent actions.",
+      "name": "AcmeCheckboxCard",
+      "cssParts": [
+        {
+          "description": "The selectable content column.",
+          "name": "content"
+        },
+        {
+          "description": "The label hit surface.",
+          "name": "root",
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        },
+        {
+          "description": "The visible label.",
+          "name": "label",
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        },
+        {
+          "description": "Supporting text.",
+          "name": "description",
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        },
+        {
+          "description": "The native checkbox.",
+          "name": "control",
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        },
+        {
+          "description": "The checked or mixed mark.",
+          "name": "indicator",
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        }
+      ],
+      "slots": [
+        {
+          "description": "Selectable card content.",
+          "name": "",
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        },
+        {
+          "description": "The primary label.",
+          "name": "heading"
+        },
+        {
+          "description": "Supporting text.",
+          "name": "description",
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        },
+        {
+          "description": "Leading content.",
+          "name": "start"
+        },
+        {
+          "description": "Trailing content.",
+          "name": "end"
+        },
+        {
+          "description": "Independent controls outside the selection label.",
+          "name": "actions"
+        }
+      ],
+      "members": [
+        {
+          "kind": "field",
+          "name": "variant",
+          "type": {
+            "text": "\"default\" | \"secondary\""
+          },
+          "default": "\"default\"",
+          "attribute": "variant"
+        },
+        {
+          "kind": "field",
+          "name": "shadowRootOptions",
+          "type": {
+            "text": "object"
+          },
+          "static": true,
+          "default": "{ ...AcmeFormElement.shadowRootOptions, delegatesFocus: true }",
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "size",
+          "type": {
+            "text": "\"small\" | \"medium\" | \"large\""
+          },
+          "default": "\"medium\"",
+          "attribute": "size",
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "invalid",
+          "type": {
+            "text": "boolean"
+          },
+          "default": "false",
+          "attribute": "invalid",
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "ripple",
+          "default": "false",
+          "attribute": "ripple",
+          "type": {
+            "text": "boolean"
+          },
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "checked",
+          "default": "false",
+          "attribute": "checked",
+          "type": {
+            "text": "boolean"
+          },
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "defaultChecked",
+          "default": "false",
+          "type": {
+            "text": "boolean"
+          },
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "value",
+          "default": "\"on\"",
+          "attribute": "value",
+          "type": {
+            "text": "string"
+          },
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "indeterminate",
+          "default": "false",
+          "attribute": "indeterminate",
+          "type": {
+            "text": "boolean"
+          },
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        },
+        {
+          "kind": "method",
+          "name": "click",
+          "return": {
+            "type": {
+              "text": "void"
+            }
+          },
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "className",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"native\"",
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "formAssociated",
+          "type": {
+            "text": "boolean"
+          },
+          "static": true,
+          "default": "true",
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "name",
+          "privacy": "public",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"\"",
+          "attribute": "name",
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "disabled",
+          "privacy": "public",
+          "type": {
+            "text": "boolean"
+          },
+          "default": "false",
+          "attribute": "disabled",
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "required",
+          "privacy": "public",
+          "type": {
+            "text": "boolean"
+          },
+          "default": "false",
+          "attribute": "required",
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "form",
+          "type": {
+            "text": "HTMLFormElement | null"
+          },
+          "readonly": true,
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          },
+          "attribute": "form"
+        },
+        {
+          "kind": "field",
+          "name": "labels",
+          "type": {
+            "text": "NodeList"
+          },
+          "readonly": true,
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "validity",
+          "type": {
+            "text": "ValidityState"
+          },
+          "readonly": true,
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "validationMessage",
+          "type": {
+            "text": "string"
+          },
+          "readonly": true,
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "willValidate",
+          "type": {
+            "text": "boolean"
+          },
+          "readonly": true,
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "method",
+          "name": "checkValidity",
+          "return": {
+            "type": {
+              "text": "boolean"
+            }
+          },
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "method",
+          "name": "reportValidity",
+          "return": {
+            "type": {
+              "text": "boolean"
+            }
+          },
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "method",
+          "name": "setCustomValidity",
+          "return": {
+            "type": {
+              "text": "void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "method",
+          "name": "focus",
+          "return": {
+            "type": {
+              "text": "void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": {
+                "text": "FocusOptions"
+              }
+            }
+          ],
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "role",
+          "privacy": "public",
+          "type": {
+            "text": "string | null"
+          },
+          "attribute": "role",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "ariaLabel",
+          "privacy": "public",
+          "type": {
+            "text": "string | null"
+          },
+          "attribute": "aria-label",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "ariaHasPopup",
+          "privacy": "public",
+          "type": {
+            "text": "string | null"
+          },
+          "attribute": "aria-haspopup",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "ariaExpanded",
+          "privacy": "public",
+          "type": {
+            "text": "string | null"
+          },
+          "attribute": "aria-expanded",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "ariaControlsElements",
+          "privacy": "public",
+          "type": {
+            "text": "Element[] | null"
+          },
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "ariaLabelledByElements",
+          "privacy": "public",
+          "type": {
+            "text": "Element[] | null"
+          },
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "ariaDescribedByElements",
+          "privacy": "public",
+          "type": {
+            "text": "Element[] | null"
+          },
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "method",
+          "name": "getAttribute",
+          "return": {
+            "type": {
+              "text": "string | null"
+            }
+          },
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "method",
+          "name": "hasAttribute",
+          "return": {
+            "type": {
+              "text": "boolean"
+            }
+          },
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "method",
+          "name": "removeAttribute",
+          "return": {
+            "type": {
+              "text": "void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "method",
+          "name": "toggleAttribute",
+          "return": {
+            "type": {
+              "text": "boolean"
+            }
+          },
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "force",
+              "optional": true,
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "variant",
+          "type": {
+            "text": "\"default\" | \"secondary\""
+          },
+          "default": "\"default\"",
+          "fieldName": "variant"
+        },
+        {
+          "name": "size",
+          "type": {
+            "text": "\"small\" | \"medium\" | \"large\""
+          },
+          "default": "\"medium\"",
+          "fieldName": "size",
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        },
+        {
+          "name": "invalid",
+          "type": {
+            "text": "boolean"
+          },
+          "default": "false",
+          "fieldName": "invalid",
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        },
+        {
+          "name": "ripple",
+          "default": "false",
+          "fieldName": "ripple",
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          },
+          "type": {
+            "text": "boolean"
+          }
+        },
+        {
+          "name": "checked",
+          "default": "false",
+          "fieldName": "checked",
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          },
+          "type": {
+            "text": "boolean"
+          }
+        },
+        {
+          "name": "value",
+          "default": "\"on\"",
+          "fieldName": "value",
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          },
+          "type": {
+            "text": "string"
+          }
+        },
+        {
+          "name": "indeterminate",
+          "default": "false",
+          "fieldName": "indeterminate",
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          },
+          "type": {
+            "text": "boolean"
+          }
+        },
+        {
+          "type": {
+            "text": "HTMLFormElement | null"
+          },
+          "description": "ID of the associated form in the author's tree.",
+          "name": "form",
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          },
+          "fieldName": "form"
+        },
+        {
+          "name": "name",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"\"",
+          "fieldName": "name",
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "name": "disabled",
+          "type": {
+            "text": "boolean"
+          },
+          "default": "false",
+          "fieldName": "disabled",
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "name": "required",
+          "type": {
+            "text": "boolean"
+          },
+          "default": "false",
+          "fieldName": "required",
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "type": {
+            "text": "string"
+          },
+          "description": "IDs in the author's tree scope that label the native root.",
+          "name": "aria-labelledby",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "type": {
+            "text": "string"
+          },
+          "description": "IDs in the author's tree scope that describe the native root.",
+          "name": "aria-describedby",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "type": {
+            "text": "string"
+          },
+          "description": "IDs in the author's tree scope controlled by the native root.",
+          "name": "aria-controls",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "name": "role",
+          "type": {
+            "text": "string | null"
+          },
+          "fieldName": "role",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "name": "aria-label",
+          "type": {
+            "text": "string | null"
+          },
+          "fieldName": "ariaLabel",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "name": "aria-haspopup",
+          "type": {
+            "text": "string | null"
+          },
+          "fieldName": "ariaHasPopup",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "name": "aria-expanded",
+          "type": {
+            "text": "string | null"
+          },
+          "fieldName": "ariaExpanded",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        }
+      ],
+      "superclass": {
+        "name": "AcmeCheckbox",
+        "module": "dist/components/checkbox/checkbox.js"
+      },
+      "tagName": "acme-checkbox-card",
+      "customElement": true,
+      "events": [
+        {
+          "name": "acme-change",
+          "type": {
+            "text": "CustomEvent<{ checked: boolean; indeterminate: false; }>"
+          },
+          "x-acme-options": {
+            "bubbles": true,
+            "composed": true,
+            "cancelable": false
+          },
+          "description": "A user changes the checked state.",
+          "inheritedFrom": {
+            "name": "AcmeCheckbox",
+            "module": "dist/components/checkbox/checkbox.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "class",
+      "description": "Owns multiple selected values, aggregate validity and one set of repeated form entries.",
+      "name": "AcmeCheckboxGroup",
+      "cssParts": [
+        {
+          "description": "The semantic group.",
+          "name": "root"
+        }
+      ],
+      "slots": [
+        {
+          "description": "Checkbox or Checkbox Card members, optionally arranged by layout components.",
+          "name": ""
+        }
+      ],
+      "members": [
+        {
+          "kind": "field",
+          "name": "invalid",
+          "type": {
+            "text": "boolean"
+          },
+          "default": "false",
+          "attribute": "invalid"
+        },
+        {
+          "kind": "field",
+          "name": "size",
+          "type": {
+            "text": "\"small\" | \"medium\" | \"large\" | undefined"
+          },
+          "attribute": "size"
+        },
+        {
+          "kind": "field",
+          "name": "value",
+          "default": "[]",
+          "attribute": "value",
+          "type": {
+            "text": "readonly string[]"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "defaultValue",
+          "default": "[]",
+          "type": {
+            "text": "readonly string[]"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "formAssociated",
+          "type": {
+            "text": "boolean"
+          },
+          "static": true,
+          "default": "true",
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "name",
+          "privacy": "public",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"\"",
+          "attribute": "name",
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "disabled",
+          "privacy": "public",
+          "type": {
+            "text": "boolean"
+          },
+          "default": "false",
+          "attribute": "disabled",
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "required",
+          "privacy": "public",
+          "type": {
+            "text": "boolean"
+          },
+          "default": "false",
+          "attribute": "required",
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "form",
+          "type": {
+            "text": "HTMLFormElement | null"
+          },
+          "readonly": true,
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          },
+          "attribute": "form"
+        },
+        {
+          "kind": "field",
+          "name": "labels",
+          "type": {
+            "text": "NodeList"
+          },
+          "readonly": true,
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "validity",
+          "type": {
+            "text": "ValidityState"
+          },
+          "readonly": true,
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "validationMessage",
+          "type": {
+            "text": "string"
+          },
+          "readonly": true,
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "willValidate",
+          "type": {
+            "text": "boolean"
+          },
+          "readonly": true,
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "method",
+          "name": "checkValidity",
+          "return": {
+            "type": {
+              "text": "boolean"
+            }
+          },
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "method",
+          "name": "reportValidity",
+          "return": {
+            "type": {
+              "text": "boolean"
+            }
+          },
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "method",
+          "name": "setCustomValidity",
+          "return": {
+            "type": {
+              "text": "void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "method",
+          "name": "focus",
+          "return": {
+            "type": {
+              "text": "void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": {
+                "text": "FocusOptions"
+              }
+            }
+          ],
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "role",
+          "privacy": "public",
+          "type": {
+            "text": "string | null"
+          },
+          "attribute": "role",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "ariaLabel",
+          "privacy": "public",
+          "type": {
+            "text": "string | null"
+          },
+          "attribute": "aria-label",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "ariaHasPopup",
+          "privacy": "public",
+          "type": {
+            "text": "string | null"
+          },
+          "attribute": "aria-haspopup",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "ariaExpanded",
+          "privacy": "public",
+          "type": {
+            "text": "string | null"
+          },
+          "attribute": "aria-expanded",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "ariaControlsElements",
+          "privacy": "public",
+          "type": {
+            "text": "Element[] | null"
+          },
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "ariaLabelledByElements",
+          "privacy": "public",
+          "type": {
+            "text": "Element[] | null"
+          },
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "field",
+          "name": "ariaDescribedByElements",
+          "privacy": "public",
+          "type": {
+            "text": "Element[] | null"
+          },
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "method",
+          "name": "getAttribute",
+          "return": {
+            "type": {
+              "text": "string | null"
+            }
+          },
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "method",
+          "name": "hasAttribute",
+          "return": {
+            "type": {
+              "text": "boolean"
+            }
+          },
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "method",
+          "name": "removeAttribute",
+          "return": {
+            "type": {
+              "text": "void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "kind": "method",
+          "name": "toggleAttribute",
+          "return": {
+            "type": {
+              "text": "boolean"
+            }
+          },
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "force",
+              "optional": true,
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "acme-change",
+          "type": {
+            "text": "CustomEvent<{ value: readonly string[]; }>"
+          },
+          "x-acme-options": {
+            "bubbles": true,
+            "composed": true,
+            "cancelable": false
+          },
+          "description": "A user changes the group selection."
+        }
+      ],
+      "attributes": [
+        {
+          "name": "invalid",
+          "type": {
+            "text": "boolean"
+          },
+          "default": "false",
+          "fieldName": "invalid"
+        },
+        {
+          "name": "size",
+          "type": {
+            "text": "\"small\" | \"medium\" | \"large\" | undefined"
+          },
+          "fieldName": "size"
+        },
+        {
+          "name": "value",
+          "default": "[]",
+          "fieldName": "value",
+          "type": {
+            "text": "readonly string[]"
+          }
+        },
+        {
+          "type": {
+            "text": "HTMLFormElement | null"
+          },
+          "description": "ID of the associated form in the author's tree.",
+          "name": "form",
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          },
+          "fieldName": "form"
+        },
+        {
+          "name": "name",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"\"",
+          "fieldName": "name",
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "name": "disabled",
+          "type": {
+            "text": "boolean"
+          },
+          "default": "false",
+          "fieldName": "disabled",
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "name": "required",
+          "type": {
+            "text": "boolean"
+          },
+          "default": "false",
+          "fieldName": "required",
+          "inheritedFrom": {
+            "name": "AcmeFormElement",
+            "module": "dist/shared/native-form-element.js"
+          }
+        },
+        {
+          "type": {
+            "text": "string"
+          },
+          "description": "IDs in the author's tree scope that label the native root.",
+          "name": "aria-labelledby",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "type": {
+            "text": "string"
+          },
+          "description": "IDs in the author's tree scope that describe the native root.",
+          "name": "aria-describedby",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "type": {
+            "text": "string"
+          },
+          "description": "IDs in the author's tree scope controlled by the native root.",
+          "name": "aria-controls",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "name": "role",
+          "type": {
+            "text": "string | null"
+          },
+          "fieldName": "role",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "name": "aria-label",
+          "type": {
+            "text": "string | null"
+          },
+          "fieldName": "ariaLabel",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "name": "aria-haspopup",
+          "type": {
+            "text": "string | null"
+          },
+          "fieldName": "ariaHasPopup",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        },
+        {
+          "name": "aria-expanded",
+          "type": {
+            "text": "string | null"
+          },
+          "fieldName": "ariaExpanded",
+          "inheritedFrom": {
+            "name": "AcmeSemanticElement",
+            "module": "dist/shared/semantic-element.js"
+          }
+        }
+      ],
+      "superclass": {
+        "name": "AcmeFormElement",
+        "module": "dist/shared/native-form-element.js"
+      },
+      "tagName": "acme-checkbox-group",
+      "customElement": true
+    }
+  ],
+  "validation": {
+    "build": "pass",
+    "docs": "93 pages; 4,257 elements; zero undocumented",
+    "suite": {
+      "passed": 907,
+      "failed": 0,
+      "assertions": 120206,
+      "files": 136
+    },
+    "publicTypes": {
+      "files": 871,
+      "errors": 0
+    },
+    "standaloneRegression": "27 Chromium checks; 26 Firefox and WebKit checks",
+    "diffCheck": "pass",
+    "review": "Local review covers one active value/form owner, immutable arrays and dirty/default behavior, exact native event order, slot membership/release, nested ownership and action boundaries, shared appearance precedence, real card surfaces and accessible labels/descriptions."
+  }
+}

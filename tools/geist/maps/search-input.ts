@@ -5,9 +5,10 @@
 // (`slot[name=start]`): the glass and the spinner are its fallback, anything slotted its assigned node. The
 // icon lives in THIS element's shadow root, not the input's, so the input's own rules cannot reach it and the
 // sizing belongs here.
-import { type GeistMap, type SpecNode } from "../gen";
+import type { GeistMap, SpecNode } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "search-input",
   element: "search",
   component: "SearchInput",

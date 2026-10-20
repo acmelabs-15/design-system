@@ -1,0 +1,18 @@
+{
+  "run": 36312017815,
+  "rows": 1446,
+  "failures": [
+    {
+      "engine": "webkit",
+      "suite": "dialog",
+      "results": [
+        {
+          "name": "native date editor segments keep their Tab steps before moving to the next control",
+          "pass": false,
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n"
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

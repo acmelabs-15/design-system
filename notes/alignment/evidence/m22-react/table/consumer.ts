@@ -1,0 +1,2 @@
+import {createElement} from '/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/react';import {createRoot} from '/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/react-dom/client';document.body.innerHTML='<div id="mount"></div>';const root=createRoot(document.querySelector('#mount'));
+import {DeliveryTableReact} from '/Users/peterkloss/Dev/ACMElabs/design-system/examples/table/react';root.render(createElement(DeliveryTableReact,{ready:table=>window.model=table}));window.dispose=()=>root.unmount();

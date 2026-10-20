@@ -1,0 +1,865 @@
+{
+  "date": "2026-09-23",
+  "status": "M15 disclosure and conditional-content slice complete at assigned native/Lit boundary",
+  "scope": [
+    "N09 Accordion/Collapsible",
+    "N12 Show/Show More/Load More",
+    "OwnedContent reuse by Tab Panel",
+    "M14 missing focus-color token correction"
+  ],
+  "verification": {
+    "build": "Strict package build passes",
+    "site": {
+      "pages": 101,
+      "elements": 4287,
+      "undocumented": 0
+    },
+    "tests": {
+      "passed": 926,
+      "failed": 0,
+      "assertions": 148981,
+      "files": 158
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "native headings and trigger/content relationships remain named",
+            "pass": true
+          },
+          {
+            "name": "single mode keeps one open and disallows closing the selected item",
+            "pass": true
+          },
+          {
+            "name": "multiple mode allows independent opening and closing",
+            "pass": true
+          },
+          {
+            "name": "arrows and endpoints move focus without changing expansion",
+            "pass": true
+          },
+          {
+            "name": "default content stays mounted while hidden and inert",
+            "pass": true
+          },
+          {
+            "name": "controlled mounting creates and removes actual template children",
+            "pass": true
+          },
+          {
+            "name": "collapse recovers focus before making descendants inert",
+            "pass": true
+          },
+          {
+            "name": "root disability wins and programmatic state remains silent",
+            "pass": true
+          },
+          {
+            "name": "disabled trigger collapse retains focus at its named section",
+            "pass": true
+          },
+          {
+            "name": "Show removes inactive content and resets a remounted input",
+            "pass": true
+          },
+          {
+            "name": "Show preservation retains nodes and blocks the inactive branch",
+            "pass": true
+          },
+          {
+            "name": "Show transfers departing focus to a fallback control",
+            "pass": true
+          },
+          {
+            "name": "Show focuses its named branch when the fallback is empty",
+            "pass": true
+          },
+          {
+            "name": "Show More toggles once and blocks loading activation",
+            "pass": true
+          },
+          {
+            "name": "Load More never submits and blocks repeat requests while loading",
+            "pass": true
+          },
+          {
+            "name": "Tab Panel controlled lifetime still follows its selected tab",
+            "pass": true
+          },
+          {
+            "name": "duplicate and missing item values are disabled, then recover",
+            "pass": true
+          },
+          {
+            "name": "dynamic hidden triggers are skipped by keyboard navigation",
+            "pass": true
+          },
+          {
+            "name": "renderer content disconnects and remounts after exit",
+            "pass": true
+          },
+          {
+            "name": "rapid motion reversal retains the open content",
+            "pass": true
+          },
+          {
+            "name": "nested sections retain independent owners and reconnect once",
+            "pass": true
+          },
+          {
+            "name": "open content grows naturally after its content changes",
+            "pass": true
+          },
+          {
+            "name": "keyboard focus has a visible outline",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "native headings and trigger/content relationships remain named",
+            "pass": true
+          },
+          {
+            "name": "single mode keeps one open and disallows closing the selected item",
+            "pass": true
+          },
+          {
+            "name": "multiple mode allows independent opening and closing",
+            "pass": true
+          },
+          {
+            "name": "arrows and endpoints move focus without changing expansion",
+            "pass": true
+          },
+          {
+            "name": "default content stays mounted while hidden and inert",
+            "pass": true
+          },
+          {
+            "name": "controlled mounting creates and removes actual template children",
+            "pass": true
+          },
+          {
+            "name": "collapse recovers focus before making descendants inert",
+            "pass": true
+          },
+          {
+            "name": "root disability wins and programmatic state remains silent",
+            "pass": true
+          },
+          {
+            "name": "disabled trigger collapse retains focus at its named section",
+            "pass": true
+          },
+          {
+            "name": "Show removes inactive content and resets a remounted input",
+            "pass": true
+          },
+          {
+            "name": "Show preservation retains nodes and blocks the inactive branch",
+            "pass": true
+          },
+          {
+            "name": "Show transfers departing focus to a fallback control",
+            "pass": true
+          },
+          {
+            "name": "Show focuses its named branch when the fallback is empty",
+            "pass": true
+          },
+          {
+            "name": "Show More toggles once and blocks loading activation",
+            "pass": true
+          },
+          {
+            "name": "Load More never submits and blocks repeat requests while loading",
+            "pass": true
+          },
+          {
+            "name": "Tab Panel controlled lifetime still follows its selected tab",
+            "pass": true
+          },
+          {
+            "name": "duplicate and missing item values are disabled, then recover",
+            "pass": true
+          },
+          {
+            "name": "dynamic hidden triggers are skipped by keyboard navigation",
+            "pass": true
+          },
+          {
+            "name": "renderer content disconnects and remounts after exit",
+            "pass": true
+          },
+          {
+            "name": "rapid motion reversal retains the open content",
+            "pass": true
+          },
+          {
+            "name": "nested sections retain independent owners and reconnect once",
+            "pass": true
+          },
+          {
+            "name": "open content grows naturally after its content changes",
+            "pass": true
+          },
+          {
+            "name": "keyboard focus has a visible outline",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "native headings and trigger/content relationships remain named",
+            "pass": true
+          },
+          {
+            "name": "single mode keeps one open and disallows closing the selected item",
+            "pass": true
+          },
+          {
+            "name": "multiple mode allows independent opening and closing",
+            "pass": true
+          },
+          {
+            "name": "arrows and endpoints move focus without changing expansion",
+            "pass": true
+          },
+          {
+            "name": "default content stays mounted while hidden and inert",
+            "pass": true
+          },
+          {
+            "name": "controlled mounting creates and removes actual template children",
+            "pass": true
+          },
+          {
+            "name": "collapse recovers focus before making descendants inert",
+            "pass": true
+          },
+          {
+            "name": "root disability wins and programmatic state remains silent",
+            "pass": true
+          },
+          {
+            "name": "disabled trigger collapse retains focus at its named section",
+            "pass": true
+          },
+          {
+            "name": "Show removes inactive content and resets a remounted input",
+            "pass": true
+          },
+          {
+            "name": "Show preservation retains nodes and blocks the inactive branch",
+            "pass": true
+          },
+          {
+            "name": "Show transfers departing focus to a fallback control",
+            "pass": true
+          },
+          {
+            "name": "Show focuses its named branch when the fallback is empty",
+            "pass": true
+          },
+          {
+            "name": "Show More toggles once and blocks loading activation",
+            "pass": true
+          },
+          {
+            "name": "Load More never submits and blocks repeat requests while loading",
+            "pass": true
+          },
+          {
+            "name": "Tab Panel controlled lifetime still follows its selected tab",
+            "pass": true
+          },
+          {
+            "name": "duplicate and missing item values are disabled, then recover",
+            "pass": true
+          },
+          {
+            "name": "dynamic hidden triggers are skipped by keyboard navigation",
+            "pass": true
+          },
+          {
+            "name": "renderer content disconnects and remounts after exit",
+            "pass": true
+          },
+          {
+            "name": "rapid motion reversal retains the open content",
+            "pass": true
+          },
+          {
+            "name": "nested sections retain independent owners and reconnect once",
+            "pass": true
+          },
+          {
+            "name": "open content grows naturally after its content changes",
+            "pass": true
+          },
+          {
+            "name": "keyboard focus has a visible outline",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "native headings and trigger/content relationships remain named",
+            "pass": true
+          },
+          {
+            "name": "single mode keeps one open and disallows closing the selected item",
+            "pass": true
+          },
+          {
+            "name": "multiple mode allows independent opening and closing",
+            "pass": true
+          },
+          {
+            "name": "arrows and endpoints move focus without changing expansion",
+            "pass": true
+          },
+          {
+            "name": "default content stays mounted while hidden and inert",
+            "pass": true
+          },
+          {
+            "name": "controlled mounting creates and removes actual template children",
+            "pass": true
+          },
+          {
+            "name": "collapse recovers focus before making descendants inert",
+            "pass": true
+          },
+          {
+            "name": "root disability wins and programmatic state remains silent",
+            "pass": true
+          },
+          {
+            "name": "disabled trigger collapse retains focus at its named section",
+            "pass": true
+          },
+          {
+            "name": "Show removes inactive content and resets a remounted input",
+            "pass": true
+          },
+          {
+            "name": "Show preservation retains nodes and blocks the inactive branch",
+            "pass": true
+          },
+          {
+            "name": "Show transfers departing focus to a fallback control",
+            "pass": true
+          },
+          {
+            "name": "Show focuses its named branch when the fallback is empty",
+            "pass": true
+          },
+          {
+            "name": "Show More toggles once and blocks loading activation",
+            "pass": true
+          },
+          {
+            "name": "Load More never submits and blocks repeat requests while loading",
+            "pass": true
+          },
+          {
+            "name": "Tab Panel controlled lifetime still follows its selected tab",
+            "pass": true
+          },
+          {
+            "name": "duplicate and missing item values are disabled, then recover",
+            "pass": true
+          },
+          {
+            "name": "dynamic hidden triggers are skipped by keyboard navigation",
+            "pass": true
+          },
+          {
+            "name": "renderer content disconnects and remounts after exit",
+            "pass": true
+          },
+          {
+            "name": "rapid motion reversal retains the open content",
+            "pass": true
+          },
+          {
+            "name": "nested sections retain independent owners and reconnect once",
+            "pass": true
+          },
+          {
+            "name": "open content grows naturally after its content changes",
+            "pass": true
+          },
+          {
+            "name": "keyboard focus has a visible outline",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "native headings and trigger/content relationships remain named",
+            "pass": true
+          },
+          {
+            "name": "single mode keeps one open and disallows closing the selected item",
+            "pass": true
+          },
+          {
+            "name": "multiple mode allows independent opening and closing",
+            "pass": true
+          },
+          {
+            "name": "arrows and endpoints move focus without changing expansion",
+            "pass": true
+          },
+          {
+            "name": "default content stays mounted while hidden and inert",
+            "pass": true
+          },
+          {
+            "name": "controlled mounting creates and removes actual template children",
+            "pass": true
+          },
+          {
+            "name": "collapse recovers focus before making descendants inert",
+            "pass": true
+          },
+          {
+            "name": "root disability wins and programmatic state remains silent",
+            "pass": true
+          },
+          {
+            "name": "disabled trigger collapse retains focus at its named section",
+            "pass": true
+          },
+          {
+            "name": "Show removes inactive content and resets a remounted input",
+            "pass": true
+          },
+          {
+            "name": "Show preservation retains nodes and blocks the inactive branch",
+            "pass": true
+          },
+          {
+            "name": "Show transfers departing focus to a fallback control",
+            "pass": true
+          },
+          {
+            "name": "Show focuses its named branch when the fallback is empty",
+            "pass": true
+          },
+          {
+            "name": "Show More toggles once and blocks loading activation",
+            "pass": true
+          },
+          {
+            "name": "Load More never submits and blocks repeat requests while loading",
+            "pass": true
+          },
+          {
+            "name": "Tab Panel controlled lifetime still follows its selected tab",
+            "pass": true
+          },
+          {
+            "name": "duplicate and missing item values are disabled, then recover",
+            "pass": true
+          },
+          {
+            "name": "dynamic hidden triggers are skipped by keyboard navigation",
+            "pass": true
+          },
+          {
+            "name": "renderer content disconnects and remounts after exit",
+            "pass": true
+          },
+          {
+            "name": "rapid motion reversal retains the open content",
+            "pass": true
+          },
+          {
+            "name": "nested sections retain independent owners and reconnect once",
+            "pass": true
+          },
+          {
+            "name": "open content grows naturally after its content changes",
+            "pass": true
+          },
+          {
+            "name": "keyboard focus has a visible outline",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "native headings and trigger/content relationships remain named",
+            "pass": true
+          },
+          {
+            "name": "single mode keeps one open and disallows closing the selected item",
+            "pass": true
+          },
+          {
+            "name": "multiple mode allows independent opening and closing",
+            "pass": true
+          },
+          {
+            "name": "arrows and endpoints move focus without changing expansion",
+            "pass": true
+          },
+          {
+            "name": "default content stays mounted while hidden and inert",
+            "pass": true
+          },
+          {
+            "name": "controlled mounting creates and removes actual template children",
+            "pass": true
+          },
+          {
+            "name": "collapse recovers focus before making descendants inert",
+            "pass": true
+          },
+          {
+            "name": "root disability wins and programmatic state remains silent",
+            "pass": true
+          },
+          {
+            "name": "disabled trigger collapse retains focus at its named section",
+            "pass": true
+          },
+          {
+            "name": "Show removes inactive content and resets a remounted input",
+            "pass": true
+          },
+          {
+            "name": "Show preservation retains nodes and blocks the inactive branch",
+            "pass": true
+          },
+          {
+            "name": "Show transfers departing focus to a fallback control",
+            "pass": true
+          },
+          {
+            "name": "Show focuses its named branch when the fallback is empty",
+            "pass": true
+          },
+          {
+            "name": "Show More toggles once and blocks loading activation",
+            "pass": true
+          },
+          {
+            "name": "Load More never submits and blocks repeat requests while loading",
+            "pass": true
+          },
+          {
+            "name": "Tab Panel controlled lifetime still follows its selected tab",
+            "pass": true
+          },
+          {
+            "name": "duplicate and missing item values are disabled, then recover",
+            "pass": true
+          },
+          {
+            "name": "dynamic hidden triggers are skipped by keyboard navigation",
+            "pass": true
+          },
+          {
+            "name": "renderer content disconnects and remounts after exit",
+            "pass": true
+          },
+          {
+            "name": "rapid motion reversal retains the open content",
+            "pass": true
+          },
+          {
+            "name": "nested sections retain independent owners and reconnect once",
+            "pass": true
+          },
+          {
+            "name": "open content grows naturally after its content changes",
+            "pass": true
+          },
+          {
+            "name": "keyboard focus has a visible outline",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "documentation": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "accordion",
+            "pass": true
+          },
+          {
+            "name": "collapsible",
+            "pass": true
+          },
+          {
+            "name": "show",
+            "pass": true
+          },
+          {
+            "name": "show-more",
+            "pass": true
+          },
+          {
+            "name": "load-more-button",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "accordion",
+            "pass": true
+          },
+          {
+            "name": "collapsible",
+            "pass": true
+          },
+          {
+            "name": "show",
+            "pass": true
+          },
+          {
+            "name": "show-more",
+            "pass": true
+          },
+          {
+            "name": "load-more-button",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "accordion",
+            "pass": true
+          },
+          {
+            "name": "collapsible",
+            "pass": true
+          },
+          {
+            "name": "show",
+            "pass": true
+          },
+          {
+            "name": "show-more",
+            "pass": true
+          },
+          {
+            "name": "load-more-button",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "focus": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "selector": "acme-resizable [part=root]",
+            "style": {
+              "style": "solid",
+              "width": "2px",
+              "color": "rgb(0, 114, 245)",
+              "expected": "hsla(212, 100%, 48%, 1)"
+            }
+          },
+          {
+            "selector": "acme-resize-handle [part~=handle]",
+            "style": {
+              "style": "solid",
+              "width": "2px",
+              "color": "rgb(0, 114, 245)",
+              "expected": "hsla(212, 100%, 48%, 1)"
+            }
+          },
+          {
+            "selector": "acme-disabled-wall [part=explanation]",
+            "style": {
+              "style": "solid",
+              "width": "2px",
+              "color": "rgb(0, 114, 245)",
+              "expected": "hsla(212, 100%, 48%, 1)"
+            }
+          },
+          {
+            "selector": "acme-scroll-viewport [part~=viewport]",
+            "style": {
+              "style": "solid",
+              "width": "2px",
+              "color": "rgb(0, 114, 245)",
+              "expected": "hsla(212, 100%, 48%, 1)"
+            }
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "selector": "acme-resizable [part=root]",
+            "style": {
+              "style": "solid",
+              "width": "2px",
+              "color": "rgb(0, 114, 245)",
+              "expected": "hsla(212, 100%, 48%, 1)"
+            }
+          },
+          {
+            "selector": "acme-resize-handle [part~=handle]",
+            "style": {
+              "style": "solid",
+              "width": "2px",
+              "color": "rgb(0, 114, 245)",
+              "expected": "hsla(212, 100%, 48%, 1)"
+            }
+          },
+          {
+            "selector": "acme-disabled-wall [part=explanation]",
+            "style": {
+              "style": "solid",
+              "width": "2px",
+              "color": "rgb(0, 114, 245)",
+              "expected": "hsla(212, 100%, 48%, 1)"
+            }
+          },
+          {
+            "selector": "acme-scroll-viewport [part~=viewport]",
+            "style": {
+              "style": "solid",
+              "width": "2px",
+              "color": "rgb(0, 114, 245)",
+              "expected": "hsla(212, 100%, 48%, 1)"
+            }
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "selector": "acme-resizable [part=root]",
+            "style": {
+              "style": "solid",
+              "width": "2px",
+              "color": "oklch(0.5761 0.2508 258.230011)",
+              "expected": "oklch(57.61% .2508 258.23)"
+            }
+          },
+          {
+            "selector": "acme-resize-handle [part~=handle]",
+            "style": {
+              "style": "solid",
+              "width": "2px",
+              "color": "oklch(0.5761 0.2508 258.230011)",
+              "expected": "oklch(57.61% .2508 258.23)"
+            }
+          },
+          {
+            "selector": "acme-disabled-wall [part=explanation]",
+            "style": {
+              "style": "solid",
+              "width": "2px",
+              "color": "oklch(0.5761 0.2508 258.230011)",
+              "expected": "oklch(57.61% .2508 258.23)"
+            }
+          },
+          {
+            "selector": "acme-scroll-viewport [part~=viewport]",
+            "style": {
+              "style": "solid",
+              "width": "2px",
+              "color": "oklch(0.5761 0.2508 258.230011)",
+              "expected": "oklch(57.61% .2508 258.23)"
+            }
+          }
+        ],
+        "errors": []
+      }
+    ]
+  },
+  "corrections": [
+    "Disabled trigger collapse now returns focus to its named section instead of losing focus to the document. Temporary focus attributes restore on blur/disconnection.",
+    "Duplicate and empty Accordion keys disable ambiguous interaction and report a diagnostic.",
+    "OwnedContent forwards explicit Lit RootPart disconnect/reconnect, and lazy content waits for its actual owner.",
+    "--acme-accent was undefined: authored focus styles now use --ds-focus-color. Three-engine computed-style tests fail before and pass after the correction.",
+    "The first expanded fixture omitted Tabs dependencies; complete explicit class registration fixes the fixture, not component code."
+  ],
+  "sources": [
+    "https://chakra-ui.com/docs/components/accordion",
+    "https://chakra-ui.com/docs/components/collapsible",
+    "https://www.radix-ui.com/primitives/docs/components/accordion",
+    "https://www.w3.org/WAI/ARIA/apg/patterns/accordion/",
+    "https://github.com/chakra-ui/zag/tree/53327acb58fedbd12b1a5702f7c51baf4aa3c6b0/packages/machines/accordion",
+    "https://github.com/chakra-ui/zag/tree/53327acb58fedbd12b1a5702f7c51baf4aa3c6b0/packages/machines/collapsible",
+    "node_modules/tabbable/README.md (6.5.0, read completely)",
+    "Private Pro webhooks-form-02/collapsible-section.tsx and webhooks-event-log-02/event-item.tsx"
+  ],
+  "fixtures": [
+    "src/components/accordion/__tests__/accordion.browser.ts",
+    "src/components/accordion/__tests__/accordion.test.ts",
+    "src/shared/__tests__/owned-content.test.ts",
+    "src/components/show/__tests__/show.test.ts",
+    "src/components/show-more/__tests__/show-more.test.ts",
+    "src/components/load-more/__tests__/load-more.test.ts",
+    "/tmp/acme-m15-disclosure/run.ts",
+    "/tmp/acme-m15-disclosure/run-compiled.ts",
+    "/tmp/acme-m15-disclosure/focus-check.ts",
+    "/tmp/acme-m15-disclosure/docs-check.ts"
+  ],
+  "limits": [
+    "React and scoped-registry controlled content remain M22; this slice does not claim their acceptance.",
+    "Actual Safari, OS input and assistive technology checks remain M22/M26.",
+    "M15 still requires Steps/Timeline, Toolbar/App Bar/Breadcrumbs and Command Menu; the public Dialog dependency comes forward from M17.",
+    "CI integration of native browser acceptance remains M25."
+  ]
+}

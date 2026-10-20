@@ -1,0 +1,255 @@
+{
+  "date": "2026-09-26",
+  "scope": "Actual final archives installed together in an independent consumer",
+  "runtime": "1.4.0",
+  "consumer": "/tmp/acme-m24-release-consumer",
+  "archives": [
+    {
+      "path": "/tmp/acme-m24-packed-current/acmelabs-design-system-0.2.0.tgz",
+      "bytes": 21121234,
+      "sha256": "a3f22be19b3e52d919f2133a14aff6f07d3d65da10748aa852e1b059414e8116"
+    },
+    {
+      "path": "/tmp/acme-m24-packed/acmelabs-design-system-react-0.2.0.tgz",
+      "bytes": 526354,
+      "sha256": "76849319234f9f88fa72fac45fd1194e13d049e5fe3e472aa4adc048d71610c9"
+    },
+    {
+      "path": "/tmp/acme-m24-packed-current/acmelabs-design-system-mcp-0.2.0.tgz",
+      "bytes": 745342,
+      "sha256": "a5d9381167c42a977e6cfd5399c270f632e8e7b91e59f6c41fa8d6cbfa774d06"
+    },
+    {
+      "path": "/tmp/acme-m24-packed-current/acmelabs-design-system-devtools-0.2.0.tgz",
+      "bytes": 433760,
+      "sha256": "8176fe71a002dbec45ec333c9c18b1292d2d38ea73fd4ba9c2bdb59d3e764ebd"
+    }
+  ],
+  "installed": [
+    {
+      "name": "@acmelabs/design-system",
+      "version": "0.2.0"
+    },
+    {
+      "name": "@acmelabs/design-system-react",
+      "version": "0.2.0"
+    },
+    {
+      "name": "@acmelabs/design-system-mcp",
+      "version": "0.2.0"
+    },
+    {
+      "name": "@acmelabs/design-system-devtools",
+      "version": "0.2.0"
+    },
+    {
+      "name": "react",
+      "version": "19.3.0"
+    },
+    {
+      "name": "react-dom",
+      "version": "19.3.0"
+    }
+  ],
+  "intent": {
+    "pass": true,
+    "version": "0.2.0",
+    "skills": 7,
+    "references": 4341,
+    "referenceCounts": {
+      "component": 4319,
+      "foundation": 7,
+      "recipe": 15
+    },
+    "commands": [
+      {
+        "args": [
+          "validate",
+          "/tmp/acme-m24-release-consumer/node_modules/@acmelabs/design-system/skills"
+        ],
+        "status": 0,
+        "stderr": "",
+        "stdout": "✅ Validated 7 skill files — all passed\n\nWarnings:\n  ⚠ @tanstack/intent is not in devDependencies\n  ⚠ \"!skills/_artifacts\" is not in the \"files\" array — artifacts will be published unnecessarily\n"
+      },
+      {
+        "args": [
+          "list",
+          "--json"
+        ],
+        "status": 0,
+        "stderr": ""
+      },
+      {
+        "args": [
+          "load",
+          "@acmelabs/design-system#forms-and-accessibility",
+          "--json"
+        ],
+        "status": 0,
+        "stderr": ""
+      },
+      {
+        "args": [
+          "load",
+          "@acmelabs/design-system#html-artifacts",
+          "--json"
+        ],
+        "status": 0,
+        "stderr": ""
+      },
+      {
+        "args": [
+          "load",
+          "@acmelabs/design-system#react-integration",
+          "--json"
+        ],
+        "status": 0,
+        "stderr": ""
+      },
+      {
+        "args": [
+          "load",
+          "@acmelabs/design-system#choose-and-compose",
+          "--json"
+        ],
+        "status": 0,
+        "stderr": ""
+      },
+      {
+        "args": [
+          "load",
+          "@acmelabs/design-system#migration-between-releases",
+          "--json"
+        ],
+        "status": 0,
+        "stderr": ""
+      },
+      {
+        "args": [
+          "load",
+          "@acmelabs/design-system#lit-integration",
+          "--json"
+        ],
+        "status": 0,
+        "stderr": ""
+      },
+      {
+        "args": [
+          "load",
+          "@acmelabs/design-system#data-layouts",
+          "--json"
+        ],
+        "status": 0,
+        "stderr": ""
+      },
+      {
+        "args": [
+          "load",
+          "@acmelabs/design-system#html-artifacts"
+        ],
+        "status": 1,
+        "stderr": "Cannot load skill use \"@acmelabs/design-system#html-artifacts\": package \"@acmelabs/design-system\" is not listed in intent.skills.\n"
+      }
+    ]
+  },
+  "mcp": {
+    "pass": true,
+    "version": "0.2.0",
+    "records": 4341,
+    "components": 4319,
+    "recipes": 15,
+    "recipeVariants": 16,
+    "checks": [
+      "exact four read-only tool contracts",
+      "exact version/framework resolution and explicit missing/unavailable errors",
+      "invalid schema, missing versions, bounds, framework and file arguments rejected",
+      "bounded release-qualified search",
+      "all 4319 component contracts equal the installed core manifest",
+      "all 4341 listed resources read at the same release",
+      "all 16 recipe/framework variants return their exact runnable records",
+      "no cross-version, missing-ID, framework or filesystem fallback",
+      "actual archive rejects package/documentation mismatch before opening stdio"
+    ]
+  },
+  "inspector": [
+    {
+      "engine": "chromium",
+      "pass": true,
+      "checks": [
+        "actual package UI collects three scoped Lit/React/password controls",
+        "outside-root data and password values are absent from UI",
+        "keyboard expansion and collapse",
+        "corrected null labels and embedded fonts survive downstream bundling",
+        "desktop and narrow surface",
+        "actual inspector UI observes property-only updates in both frameworks",
+        "UI retains exactly the last three public events with correlated identity and redaction",
+        "actual UI updates external ancestor theme appearance and computed accent",
+        "detach and reconnect update actual collected components",
+        "public unmount and remount",
+        "public dispose removes UI and rejects remount",
+        "no persistent settings",
+        "no browser errors, failed assets or outbound requests"
+      ],
+      "errors": [],
+      "requests": []
+    },
+    {
+      "engine": "firefox",
+      "pass": true,
+      "checks": [
+        "actual package UI collects three scoped Lit/React/password controls",
+        "outside-root data and password values are absent from UI",
+        "keyboard expansion and collapse",
+        "corrected null labels and embedded fonts survive downstream bundling",
+        "desktop and narrow surface",
+        "actual inspector UI observes property-only updates in both frameworks",
+        "UI retains exactly the last three public events with correlated identity and redaction",
+        "actual UI updates external ancestor theme appearance and computed accent",
+        "detach and reconnect update actual collected components",
+        "public unmount and remount",
+        "public dispose removes UI and rejects remount",
+        "no persistent settings",
+        "no browser errors, failed assets or outbound requests"
+      ],
+      "errors": [],
+      "requests": []
+    },
+    {
+      "engine": "webkit",
+      "pass": true,
+      "checks": [
+        "actual package UI collects three scoped Lit/React/password controls",
+        "outside-root data and password values are absent from UI",
+        "keyboard expansion and collapse",
+        "corrected null labels and embedded fonts survive downstream bundling",
+        "desktop and narrow surface",
+        "actual inspector UI observes property-only updates in both frameworks",
+        "UI retains exactly the last three public events with correlated identity and redaction",
+        "actual UI updates external ancestor theme appearance and computed accent",
+        "detach and reconnect update actual collected components",
+        "public unmount and remount",
+        "public dispose removes UI and rejects remount",
+        "no persistent settings",
+        "no browser errors, failed assets or outbound requests"
+      ],
+      "errors": [],
+      "requests": []
+    }
+  ],
+  "production": {
+    "pass": true,
+    "inputs": 102,
+    "forbidden": [],
+    "fonts": 0
+  },
+  "devtoolsExternalImports": {
+    "runtime": [],
+    "publicDeclarations": [],
+    "bundledDependenciesCanBeDevelopmentOnly": true
+  },
+  "limits": [
+    "This record applies to the listed exact archive bytes; a metadata-only Devtools repack needs a follow-up delivery check.",
+    "Independent consumer-skill baseline/with-skill artifact evaluations remain separate and incomplete.",
+    "Browser-engine results do not claim actual Safari or assistive-technology acceptance."
+  ]
+}

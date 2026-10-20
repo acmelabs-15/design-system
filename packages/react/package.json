@@ -1,0 +1,39 @@
+{
+  "name": "@acmelabs/design-system-react",
+  "version": "0.3.0",
+  "description": "Typed React wrappers around the shared Lit elements",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "@acmelabs/design-system": "0.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "dependencies": {
+    "@lit/react": "1.0.8"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./components/*": {
+      "types": "./dist/components/*.d.ts",
+      "import": "./dist/components/*.js"
+    }
+  },
+  "sideEffects": [
+    "./dist/components/*.js"
+  ],
+  "scripts": {
+    "build": "bun ../../scripts/react.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acmelabs-15/design-system.git"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "expectations": [
+    {
+      "text": "The React fixture typechecks against exact matching package versions and individual wrapper imports.",
+      "passed": true,
+      "evidence": "app.tsx imports Tabs, Tab, TabPanel, RadioGroup, RadioCard and Group from individual generated wrapper paths. Installed core and React manifests both say 0.2.0. Grader reran strict tsc against the supplied tsconfig with exit 0; skipLibCheck=true limits dependency checking."
+    },
+    {
+      "text": "Keyboard tab activation updates the associated panel and radio selection remains an independent single-choice form value.",
+      "passed": false,
+      "evidence": "Keyboard Output activation and independent exclusive radio selection pass in result.json. However app.tsx has no native form owner and verify.mjs never constructs FormData. The compound assertion requires a single-choice form value, which the original run does not establish. This is an evidence gap and prompt/assertion mismatch, not a proven RadioGroup defect."
+    },
+    {
+      "text": "State preservation uses the documented content API and a typed custom event callback receives actual event detail.",
+      "passed": true,
+      "evidence": "app.tsx uses ordinary React children in TabPanel. verify.mjs captures editor node identity and confirms Preserved draft plus Edits:1 after switching. Both callback types derive from ComponentProps; the logged native CustomEvents contain actual string detail.value."
+    },
+    {
+      "text": "Unmount removes active callbacks and remount restores correct behavior without duplicated state owners.",
+      "passed": true,
+      "evidence": "verify.mjs retains the detached Tabs reference, unmounts, dispatches acme-change, and confirms no callback increment plus null ref. After remount one keyboard activation adds exactly one callback. React state mirrors each owning component value; there is no second selection engine."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 1,
+    "total": 4,
+    "pass_rate": 0.75
+  },
+  "execution_metrics": null,
+  "timing": null,
+  "metrics_availability": "Host did not supply token counts, duration or full executor tool metrics. Unavailable, not zero.",
+  "claims": [
+    {
+      "claim": "The underline remains below Source after selecting Output.",
+      "type": "quality",
+      "verified": false,
+      "evidence": "Subsequent m24-tabs-indicator geometry and pixel evidence confirms target/geometry at Output; the real defect is focused-hover paint occlusion."
+    },
+    {
+      "claim": "Callback removal is tested on a detached instance.",
+      "type": "quality",
+      "verified": true,
+      "evidence": "verify.mjs dispatches acme-change on window.detachedTabs after unmount; result.json confirms unchanged callback count and null ref."
+    }
+  ],
+  "user_notes_summary": {
+    "uncertainties": [
+      "Ten functional harness checks pass. The appended visual selected-tab-underlining failure in original result.json is preserved but its claim that the target stayed under Source is disproven.",
+      "Corrected package finding: focused/hovered tab background occludes the correctly targeted primary indicator. See notes/alignment/evidence/m24-tabs-indicator/README.md. Source regression passes 12 cases across three browsers; rebuilt consumer validation was pending when this archive was graded.",
+      "Harness repairs fixed unreflected value-attribute locators, a broad Group locator and a React commit timing race. Artifact presentation repair stretched attached cards."
+    ],
+    "needs_review": [],
+    "workarounds": []
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "assertion": "Keyboard tab activation updates the associated panel and radio selection remains an independent single-choice form value.",
+        "reason": "Prompt asks for single-choice cards but not a native form. Require a named form and actual FormData in the prompt, or remove form-value wording from the assertion; do not silently count a checked radio as submitted form evidence."
+      },
+      {
+        "assertion": "Unmount removes active callbacks and remount restores correct behavior without duplicated state owners.",
+        "reason": "Use a retained detached instance and synthetic custom event to prove old callbacks are removed, then count one callback after remount."
+      },
+      {
+        "reason": "Assertions omit visible attachment and selected-indicator paint. Unequal card heights and a confirmed focus/hover paint defect demonstrate why settled geometry and pixel oracles matter."
+      }
+    ],
+    "overall": "Same four original assertions applied to both configurations. Final functional harness passes and proof of the compound assertions are recorded separately."
+  },
+  "evidence_scope": "Original final source, saved results/attempts, verification source, screenshots, current installed version manifests and independent typechecks. Full agent transcripts were not supplied; process claims based only on self-reports are not independently established.",
+  "notes": [
+    "Ten functional harness checks pass. The appended visual selected-tab-underlining failure in original result.json is preserved but its claim that the target stayed under Source is disproven.",
+    "Corrected package finding: focused/hovered tab background occludes the correctly targeted primary indicator. See notes/alignment/evidence/m24-tabs-indicator/README.md. Source regression passes 12 cases across three browsers; rebuilt consumer validation was pending when this archive was graded.",
+    "Harness repairs fixed unreflected value-attribute locators, a broad Group locator and a React commit timing race. Artifact presentation repair stretched attached cards."
+  ]
+}

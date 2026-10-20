@@ -1,0 +1,79 @@
+diff --git a/index.d.ts b/index.d.ts
+index 0b4a93ca07f389545cf0d1605462cd06cea3d02a..059b7b909dc756cf909e9c775f96224122e7cfe7 100644
+--- a/index.d.ts
++++ b/index.d.ts
+@@ -2,6 +2,9 @@ import { Module, Package } from 'custom-elements-manifest/schema';
+ import type * as ts from "typescript";
+ import { NapiResolveOptions } from 'oxc-resolver';
+ 
++export { default as ts } from 'typescript';
++export function create(options: { modules: ts.SourceFile[]; plugins?: Plugin[]; context?: Context }): Package;
++
+ /** Plugin execution context. Pass arbitrary data here. */
+ export type Context = Record<string, unknown>;
+ 
+diff --git a/src/features/analyse-phase/creators/createClass.js b/src/features/analyse-phase/creators/createClass.js
+index 75d444e584fe335cba09775b87258d7ed4ea34f6..98c70d87376c94d8a68269e9913c71f7c5ca77ef 100644
+--- a/src/features/analyse-phase/creators/createClass.js
++++ b/src/features/analyse-phase/creators/createClass.js
+@@ -148,7 +148,7 @@ export function createClass(node, moduleDoc, context) {
+      *
+      * In order to find `this.dispatchEvent` calls, we have to traverse a method's AST
+      */
+-    if (ts.isMethodDeclaration(member)) {
++    if (ts.isMethodDeclaration(member) || ts.isPropertyDeclaration(member) || ts.isConstructorDeclaration(member)) {
+       eventsVisitor(member, classTemplate);
+     }
+   });
+@@ -177,7 +177,9 @@ function eventsVisitor(source, classTemplate) {
+           node?.arguments?.forEach((arg) => {
+             if (arg.kind === ts.SyntaxKind.NewExpression) {
+               /** e.g. `selected-changed` */
+-              const eventName = arg?.arguments?.[0]?.text;
++              const nameArgument = arg.arguments?.[0];
++              if (!nameArgument || (!ts.isStringLiteral(nameArgument) && !ts.isNoSubstitutionTemplateLiteral(nameArgument))) return;
++              const eventName = nameArgument.text;
+               /**
+                * Check if event already exists
+                */
+diff --git a/src/features/framework-plugins/lit/property-decorator.js b/src/features/framework-plugins/lit/property-decorator.js
+index 5bd8b759dd73111c7310ab3a1212e42a7a0e948c..d310403cf8d400ccd68b71d2ab0af6e15ccf83c2 100644
+--- a/src/features/framework-plugins/lit/property-decorator.js
++++ b/src/features/framework-plugins/lit/property-decorator.js
+@@ -72,7 +72,8 @@ function handlePropertyDecorator(classNode, moduleDoc, mixinName = null) {
+           attribute.name = attributeName;
+           field.attribute = attributeName;
+         } else {
+-          field.attribute = field.name;
++          attribute.name = field.name.toLowerCase();
++          field.attribute = attribute.name;
+         }
+ 
+         
+diff --git a/src/features/framework-plugins/lit/static-properties.js b/src/features/framework-plugins/lit/static-properties.js
+index 5f6614e83a0fbf05945adeaba831c484667e1e88..bb95df5f2e89c9964ab9d51ca8910a734011bfba 100644
+--- a/src/features/framework-plugins/lit/static-properties.js
++++ b/src/features/framework-plugins/lit/static-properties.js
+@@ -85,7 +85,8 @@ function handleStaticProperties(classNode, moduleDoc, context, mixinName = null,
+             attribute.name = attributeName;
+             classMember.attribute = attributeName;
+           } else {
+-            classMember.attribute = classMember.name;
++            attribute.name = classMember.name.toLowerCase();
++            classMember.attribute = attribute.name;
+           }
+ 
+           if (reflects(property)) {
+diff --git a/src/utils/index.js b/src/utils/index.js
+index 168fc30879f981d4fc0576c10ac65d9bc9a2029e..eed34c2879929f2a4b0654f3cd5647658ee6ef1a 100644
+--- a/src/utils/index.js
++++ b/src/utils/index.js
+@@ -12,7 +12,7 @@ export const has = arr => Array.isArray(arr) && arr.length > 0;
+ export const decorator = type => decorator => ts.isDecorator(decorator) && decorator?.expression?.expression?.getText() === type || decorator?.expression?.getText() === type;
+ 
+ export function isBareModuleSpecifier(specifier) {
+-  return !!specifier?.replace(/'/g, '')[0].match(/[@a-zA-Z]/g);
++  return /^[@a-zA-Z]/.test(specifier?.replace(/^['"]|['"]$/g, '') ?? '');
+ }
+ 
+ export const url = path => new URL('', `file:///${path}`)?.pathname;

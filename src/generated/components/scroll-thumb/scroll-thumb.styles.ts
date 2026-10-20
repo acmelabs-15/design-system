@@ -1,0 +1,33 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const scrollThumbCss = css`:host {
+  left: 0;
+  top: var(--_scroll-thumb-offset, 0px);
+  height: var(--_scroll-thumb-size, 0px);
+  width: 100%;
+  display: block;
+  position: absolute;
+}
+
+:host([data-axis="horizontal"]) {
+  top: 0;
+  left: var(--_scroll-thumb-offset, 0px);
+  width: var(--_scroll-thumb-size, 0px);
+  height: 100%;
+}
+
+[part="thumb"] {
+  background: var(--acme-scroll-thumb-color, var(--ds-gray-600));
+  background-clip: padding-box;
+  border: 2px solid #0000;
+  border-radius: 999px;
+  width: 100%;
+  height: 100%;
+}
+
+@media (forced-colors: active) {
+  [part="thumb"] {
+    background: buttontext padding-box padding-box;
+  }
+}
+`;

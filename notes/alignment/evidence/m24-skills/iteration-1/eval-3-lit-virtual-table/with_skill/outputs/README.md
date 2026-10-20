@@ -1,0 +1,13 @@
+# Skilled Lit table evaluation
+
+Run `bun serve.ts` in this directory, then open http://127.0.0.1:4318. It builds the consumer using the unchanged dependencies in the parent directory. Run `bun verify.ts` for the browser checks. Typecheck command used: `bun /Users/peterkloss/Dev/ACMElabs/design-system/node_modules/typescript/bin/tsc -p tsconfig.json`.
+
+The application owns 10,000 records, TanStack Table state, TanStack Virtual, native table markup and keyboard interaction. Table supplies its native viewport and presentation. Pagination sends requests into the Table model. Lit controllers manage observer and subscription lifecycles. Default page size is 10,000; optional 25, 100 and 1,000 page sizes are offered.
+
+Read inputs: installed core 0.2.0 skills/data-layouts/SKILL.md, skills/lit-integration/SKILL.md, release facts, index lookup, component records for Table and all selected Pagination parts, and the full matching virtualized-table Lit recipe (copied as recipe-lit.txt). grid-interaction.ts and definitions.ts come from that recipe. No other evaluation directory or repository artifact was read. Installed package code was inspected only to diagnose page-size event behavior. Repository node_modules supplied the TypeScript executable; Playwright and Chrome use the supplied external runtime paths.
+
+Final result: nine browser checks pass; strict TypeScript check passes. Native Chrome AX verifies accessible names. 10 initial rows and 15 far-window rows are rendered; scrolling reaches record 9,500; ArrowDown moves from record 9,511 to 9,512. All 18 observed ResizeObserver targets are released on disconnect; the virtualizer scroll element becomes null; the same element reconnects and scrolls again while retaining independent row selection.
+
+All failed attempts remain in result.json, result-attempt-1.json, result-attempt-2.json and the attempt logs. First attempt used a Playwright role/name selector which misses element-reference-based option names. Native Chrome AX verifies those names; subsequent tests use the observed option elements. A consumer handler initially used an else branch, accepting a nested Select close request as page-size and producing NaN. The handler now explicitly checks the page-size action as the recipe does. The earlier source is main-attempt-1.ts. probe.log preserves the event sequence.
+
+No installed package defect was patched. Documentation noise: the Lit recipe includes unrelated React source/imports. Development warnings remain for Lit dev mode and updates scheduled in updated(); the favicon request returns 500 from this minimal evaluation server. These do not cause page exceptions. verified.png was visually checked.

@@ -1,0 +1,289 @@
+{
+  "date": "2026-09-21",
+  "batch": "M08 in progress",
+  "entries": [
+    "FormatNumber",
+    "FormatByte"
+  ],
+  "results": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "number locale inherits from Theme",
+            "ok": true
+          },
+          {
+            "name": "locale changes reformat existing content",
+            "ok": true
+          },
+          {
+            "name": "explicit locale and currency options",
+            "ok": true
+          },
+          {
+            "name": "supplied zero is not treated as absent",
+            "ok": true
+          },
+          {
+            "name": "missing value is empty",
+            "ok": true
+          },
+          {
+            "name": "empty numeric attribute does not invent zero",
+            "ok": true
+          },
+          {
+            "name": "malformed JSON options have a controlled empty fallback",
+            "ok": true
+          },
+          {
+            "name": "removing options restores defaults",
+            "ok": true
+          },
+          {
+            "name": "nonfinite values have a controlled empty fallback",
+            "ok": true
+          },
+          {
+            "name": "binary long en-US",
+            "ok": true
+          },
+          {
+            "name": "binary long fr-FR",
+            "ok": true
+          },
+          {
+            "name": "binary long de-DE",
+            "ok": true
+          },
+          {
+            "name": "binary long ru-RU",
+            "ok": true
+          },
+          {
+            "name": "localized zero retains the bit unit",
+            "ok": true
+          },
+          {
+            "name": "negative binary bits use an IEC symbol",
+            "ok": true
+          },
+          {
+            "name": "narrow binary output uses native spacing",
+            "ok": true
+          },
+          {
+            "name": "small finite byte values retain significant digits",
+            "ok": true
+          },
+          {
+            "name": "formatters remain inline real boxes",
+            "ok": true
+          },
+          {
+            "name": "reconnect keeps current formatting",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "number locale inherits from Theme",
+            "ok": true
+          },
+          {
+            "name": "locale changes reformat existing content",
+            "ok": true
+          },
+          {
+            "name": "explicit locale and currency options",
+            "ok": true
+          },
+          {
+            "name": "supplied zero is not treated as absent",
+            "ok": true
+          },
+          {
+            "name": "missing value is empty",
+            "ok": true
+          },
+          {
+            "name": "empty numeric attribute does not invent zero",
+            "ok": true
+          },
+          {
+            "name": "malformed JSON options have a controlled empty fallback",
+            "ok": true
+          },
+          {
+            "name": "removing options restores defaults",
+            "ok": true
+          },
+          {
+            "name": "nonfinite values have a controlled empty fallback",
+            "ok": true
+          },
+          {
+            "name": "binary long en-US",
+            "ok": true
+          },
+          {
+            "name": "binary long fr-FR",
+            "ok": true
+          },
+          {
+            "name": "binary long de-DE",
+            "ok": true
+          },
+          {
+            "name": "binary long ru-RU",
+            "ok": true
+          },
+          {
+            "name": "localized zero retains the bit unit",
+            "ok": true
+          },
+          {
+            "name": "negative binary bits use an IEC symbol",
+            "ok": true
+          },
+          {
+            "name": "narrow binary output uses native spacing",
+            "ok": true
+          },
+          {
+            "name": "small finite byte values retain significant digits",
+            "ok": true
+          },
+          {
+            "name": "formatters remain inline real boxes",
+            "ok": true
+          },
+          {
+            "name": "reconnect keeps current formatting",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "number locale inherits from Theme",
+            "ok": true
+          },
+          {
+            "name": "locale changes reformat existing content",
+            "ok": true
+          },
+          {
+            "name": "explicit locale and currency options",
+            "ok": true
+          },
+          {
+            "name": "supplied zero is not treated as absent",
+            "ok": true
+          },
+          {
+            "name": "missing value is empty",
+            "ok": true
+          },
+          {
+            "name": "empty numeric attribute does not invent zero",
+            "ok": true
+          },
+          {
+            "name": "malformed JSON options have a controlled empty fallback",
+            "ok": true
+          },
+          {
+            "name": "removing options restores defaults",
+            "ok": true
+          },
+          {
+            "name": "nonfinite values have a controlled empty fallback",
+            "ok": true
+          },
+          {
+            "name": "binary long en-US",
+            "ok": true
+          },
+          {
+            "name": "binary long fr-FR",
+            "ok": true
+          },
+          {
+            "name": "binary long de-DE",
+            "ok": true
+          },
+          {
+            "name": "binary long ru-RU",
+            "ok": true
+          },
+          {
+            "name": "localized zero retains the bit unit",
+            "ok": true
+          },
+          {
+            "name": "negative binary bits use an IEC symbol",
+            "ok": true
+          },
+          {
+            "name": "narrow binary output uses native spacing",
+            "ok": true
+          },
+          {
+            "name": "small finite byte values retain significant digits",
+            "ok": true
+          },
+          {
+            "name": "formatters remain inline real boxes",
+            "ok": true
+          },
+          {
+            "name": "reconnect keeps current formatting",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "validation": {
+    "focused": "bun test v1.4.0 (34cbb9a40)\n\nscripts/__tests__/manifest.test.ts:\n(pass) store-backed public properties retain manifest defaults and inherited attribute metadata [491.57ms]\n(pass) the manifest matches every registered Lit class and its runtime property attributes [1888.42ms]\n(pass) manifest facts cover conditional events, event variables, slots and forwarded parts [261.20ms]\n(pass) unresolved local paths fail manifest normalization [0.29ms]\n(pass) the analyzer distinguishes package exports from relative exports with either quote style [0.28ms]\n(pass) Lit default attributes use lowercase names while explicit names stay intact [0.94ms]\n(pass) events dispatched by field callbacks and constructors remain public events [5.65ms]\n\nscripts/__tests__/byte-prefixes.test.ts:\n(pass) generated binary prefix data covers every locale in the pinned source [651.51ms]\n\nsrc/shared/__tests__/number-format.test.ts:\n(pass) zero respects the declared unit and locale [1.92ms]\n(pass) binary symbols and localized long names use the selected scale [1.57ms]\n(pass) three significant digits do not discard small finite values [15.48ms]\n(pass) invalid values and combinations use an explicit error surface [0.18ms]\n\nsrc/components/format-number/__tests__/format-number.test.ts:\n(pass) missing and empty values stay absent while zero renders [9.73ms]\n(pass) number options are owned snapshots and JSON updates use the same state [1.49ms]\nacme-format-number {\n  code: \"invalid-number-format\",\n}\nacme-format-number {\n  code: \"invalid-number-format\",\n}\n(pass) invalid options and nonfinite values render an empty fallback [1.10ms]\n(pass) byte configuration uses canonical defaults and a real text root [1.20ms]\n\n 16 pass\n 0 fail\n 8410 expect() calls\nRan 16 tests across 4 files. [3.77s]\n",
+    "build": "$ bun scripts/build.ts\nmodules: 517 files, 109 with compiled templates\nmanifest: 114 elements\nbundle 2628.3 KB min 1290.2 KB tokens.css 153.1 KB dashboard.css 14.3 KB\n",
+    "docs": "$ bun site/build.ts\ndocs: 88 pages, 114 elements (0 undocumented), app.js 1364 KB\n"
+  },
+  "fixture": "import {AcmeFormatNumber} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/format-number/format-number.ts\";\nimport {AcmeFormatByte} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/format-byte/format-byte.ts\";\nimport {AcmeTheme} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/theme/theme.ts\";\ncustomElements.define(\"acme-format-number\",AcmeFormatNumber);customElements.define(\"acme-format-byte\",AcmeFormatByte);customElements.define(\"acme-theme\",AcmeTheme);\nconst results:{name:string;ok:boolean;actual?:unknown}[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});\nconst text=(element:Element)=>element.shadowRoot!.querySelector('[part=\"root\"]')!.textContent!;const spaces=(value:string)=>value.replace(/\\s+/gu,\" \");\ntry{\n const scope=document.createElement(\"acme-theme\") as AcmeTheme;scope.locale=\"de-DE\";scope.innerHTML='<acme-format-number value=\"1250.5\"></acme-format-number><acme-format-byte value=\"1024\" unit-system=\"binary\"></acme-format-byte>';document.body.append(scope);await scope.updateComplete;const number=scope.children[0] as AcmeFormatNumber,byte=scope.children[1] as AcmeFormatByte;await number.updateComplete;await byte.updateComplete;\n check(\"number locale inherits from Theme\",text(number)===new Intl.NumberFormat(\"de-DE\").format(1250.5),text(number));\n scope.locale=\"fr-FR\";await scope.updateComplete;await number.updateComplete;await byte.updateComplete;check(\"locale changes reformat existing content\",text(number)===new Intl.NumberFormat(\"fr-FR\").format(1250.5),text(number));\n number.locale=\"en-US\";number.options={style:\"currency\",currency:\"USD\"};await number.updateComplete;check(\"explicit locale and currency options\",text(number)===\"$1,250.50\",text(number));\n number.value=0;await number.updateComplete;check(\"supplied zero is not treated as absent\",text(number)===\"$0.00\");number.value=undefined;await number.updateComplete;check(\"missing value is empty\",text(number)===\"\");number.setAttribute(\"value\",\"\");await number.updateComplete;check(\"empty numeric attribute does not invent zero\",number.value===undefined&&text(number)===\"\");\n number.value=123;number.setAttribute(\"options\",\"{bad\");await number.updateComplete;check(\"malformed JSON options have a controlled empty fallback\",text(number)===\"\");number.removeAttribute(\"options\");await number.updateComplete;check(\"removing options restores defaults\",text(number)===\"123\");number.value=NaN;await number.updateComplete;check(\"nonfinite values have a controlled empty fallback\",text(number)===\"\");\n for(const[locale,expected]of [[\"en-US\",\"2 kibibytes\"],[\"fr-FR\",\"2 kibioctets\"],[\"de-DE\",\"2 Kibibyte\"],[\"ru-RU\",\"2 кибибайта\"]]){byte.value=2048;byte.locale=locale;byte.unitDisplay=\"long\";await byte.updateComplete;check(`binary long ${locale}`,spaces(text(byte))===expected,text(byte));}\n byte.locale=\"ar-EG\";byte.value=0;byte.unit=\"bit\";byte.unitDisplay=\"short\";await byte.updateComplete;check(\"localized zero retains the bit unit\",text(byte)===new Intl.NumberFormat(\"ar-EG\",{style:\"unit\",unit:\"bit\",unitDisplay:\"short\",maximumSignificantDigits:3}).format(0),text(byte));\n byte.locale=\"en-US\";byte.value=-2048;await byte.updateComplete;check(\"negative binary bits use an IEC symbol\",text(byte)===\"-2 Kibit\",text(byte));byte.unitDisplay=\"narrow\";await byte.updateComplete;check(\"narrow binary output uses native spacing\",text(byte)===\"-2Kibit\",text(byte));\n byte.unitSystem=\"decimal\";byte.unit=\"byte\";byte.value=.0001;await byte.updateComplete;check(\"small finite byte values retain significant digits\",text(byte)===\"0.0001B\"||text(byte)===\"0.0001byte\",text(byte));\n const paragraph=document.createElement(\"p\");paragraph.style.font=\"16px/20px monospace\";paragraph.innerHTML='Before <acme-format-number value=\"100\"></acme-format-number> after';document.body.append(paragraph);const inline=paragraph.querySelector(\"acme-format-number\") as AcmeFormatNumber;await inline.updateComplete;check(\"formatters remain inline real boxes\",getComputedStyle(inline).display===\"inline\"&&inline.getBoundingClientRect().width>0);\n scope.locale=\"en-US\";scope.remove();document.body.append(scope);await scope.updateComplete;await byte.updateComplete;check(\"reconnect keeps current formatting\",text(byte).includes(\"0.0001\"));\n (window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n",
+  "runner": "import fs from \"node:fs\";import path from \"node:path\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\",directory=\"/tmp/acme-m08-format\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\"});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(data.error){report.errors.push({engine,message:data.error,stack:data.stack});data.results.push({name:'fixture completes',ok:false,error:data.error});}report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;\n",
+  "dependency": {
+    "name": "cldr-units-full",
+    "version": "48.2.0",
+    "scope": "development only",
+    "peer": "cldr-core 48.2.0",
+    "generatedLocales": 766,
+    "uniquePrefixSets": 52,
+    "generatedCharacters": 13866,
+    "license": "Unicode-3.0; assets/licenses/unicode.txt"
+  },
+  "sources": [
+    "https://raw.githubusercontent.com/chakra-ui/zag/main/packages/utilities/i18n-utils/src/format-bytes.ts",
+    "https://unicode.org/reports/tr35/tr35-general.html#Compound_Units",
+    "https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-units-full/main/en/units.json"
+  ],
+  "decisions": [
+    "Native Intl owns number formatting, rounding, plural base units and locale spacing.",
+    "Binary short/narrow output uses IEC symbols; binary long output applies pinned localized CLDR prefixes and its combineLowercasing rule.",
+    "Zero is formatted through the declared native unit and locale; missing values remain absent.",
+    "Three significant digits are applied in Intl itself so small finite values do not round to zero through a second default fraction limit.",
+    "Invalid native option combinations/nonfinite values produce a controlled empty fallback and diagnostics without logging input values."
+  ],
+  "remaining": "Other M08 typography, Relative Time and Middle Truncate work remains."
+}

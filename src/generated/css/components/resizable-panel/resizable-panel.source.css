@@ -1,0 +1,4 @@
+:host{display:block;flex:var(--_resize-share,1) 1 0px;min-inline-size:0;min-block-size:0;overflow:hidden;}
+[part~=panel]{inline-size:100%;block-size:100%;min-inline-size:0;min-block-size:0;}
+:host([data-resizing]){pointer-events:none;user-select:none;}
+[hidden]{display:none!important;}

@@ -1,0 +1,332 @@
+{
+  "variant": "baseline",
+  "checks": [
+    {
+      "name": "10000 application records, native table and bounded initial window",
+      "pass": true,
+      "evidence": {
+        "source": 10000,
+        "rows": 1000,
+        "pagination": {
+          "pageIndex": 0,
+          "pageSize": 1000
+        },
+        "filtered": 10000,
+        "first": "record-0",
+        "last": "record-999",
+        "selected": [],
+        "rendered": 10,
+        "shown": [
+          "record-0",
+          "record-1",
+          "record-2",
+          "record-3",
+          "record-4",
+          "record-5",
+          "record-6",
+          "record-7",
+          "record-8",
+          "record-9"
+        ]
+      }
+    },
+    {
+      "name": "independent row selection",
+      "pass": true,
+      "evidence": {
+        "source": 10000,
+        "rows": 1000,
+        "pagination": {
+          "pageIndex": 0,
+          "pageSize": 1000
+        },
+        "filtered": 10000,
+        "first": "record-0",
+        "last": "record-999",
+        "selected": [
+          "record-3"
+        ],
+        "rendered": 10,
+        "shown": [
+          "record-0",
+          "record-1",
+          "record-2",
+          "record-3",
+          "record-4",
+          "record-5",
+          "record-6",
+          "record-7",
+          "record-8",
+          "record-9"
+        ]
+      }
+    },
+    {
+      "name": "sorting descending then ascending",
+      "pass": true,
+      "evidence": {
+        "desc": {
+          "source": 10000,
+          "rows": 1000,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 1000
+          },
+          "filtered": 10000,
+          "first": "record-9999",
+          "last": "record-9000",
+          "selected": [
+            "record-3"
+          ],
+          "rendered": 10,
+          "shown": [
+            "record-9999",
+            "record-9998",
+            "record-9997",
+            "record-9996",
+            "record-9995",
+            "record-9994",
+            "record-9993",
+            "record-9992",
+            "record-9991",
+            "record-9990"
+          ]
+        },
+        "asc": {
+          "source": 10000,
+          "rows": 1000,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 1000
+          },
+          "filtered": 10000,
+          "first": "record-0",
+          "last": "record-999",
+          "selected": [
+            "record-3"
+          ],
+          "rendered": 10,
+          "shown": [
+            "record-0",
+            "record-1",
+            "record-2",
+            "record-3",
+            "record-4",
+            "record-5",
+            "record-6",
+            "record-7",
+            "record-8",
+            "record-9"
+          ]
+        }
+      }
+    },
+    {
+      "name": "filter exact matching subset and selection persists",
+      "pass": true,
+      "evidence": {
+        "source": 10000,
+        "rows": 100,
+        "pagination": {
+          "pageIndex": 0,
+          "pageSize": 1000
+        },
+        "filtered": 100,
+        "first": "record-9900",
+        "last": "record-9999",
+        "selected": [
+          "record-3"
+        ],
+        "rendered": 10,
+        "shown": [
+          "record-9900",
+          "record-9901",
+          "record-9902",
+          "record-9903",
+          "record-9904",
+          "record-9905",
+          "record-9906",
+          "record-9907",
+          "record-9908",
+          "record-9909"
+        ]
+      }
+    },
+    {
+      "name": "page size 50 then next page request",
+      "pass": true,
+      "evidence": {
+        "source": 10000,
+        "rows": 50,
+        "pagination": {
+          "pageIndex": 1,
+          "pageSize": 50
+        },
+        "filtered": 10000,
+        "first": "record-50",
+        "last": "record-99",
+        "selected": [
+          "record-3"
+        ],
+        "rendered": 10,
+        "shown": [
+          "record-50",
+          "record-51",
+          "record-52",
+          "record-53",
+          "record-54",
+          "record-55",
+          "record-56",
+          "record-57",
+          "record-58",
+          "record-59"
+        ]
+      }
+    },
+    {
+      "name": "page size 10000 and scrolling reaches far records with bounded rows",
+      "pass": true,
+      "evidence": {
+        "source": 10000,
+        "rows": 10000,
+        "pagination": {
+          "pageIndex": 0,
+          "pageSize": 10000
+        },
+        "filtered": 10000,
+        "first": "record-0",
+        "last": "record-9999",
+        "selected": [
+          "record-3"
+        ],
+        "rendered": 12,
+        "shown": [
+          "record-9988",
+          "record-9989",
+          "record-9990",
+          "record-9991",
+          "record-9992",
+          "record-9993",
+          "record-9994",
+          "record-9995",
+          "record-9996",
+          "record-9997",
+          "record-9998",
+          "record-9999"
+        ]
+      }
+    },
+    {
+      "name": "keyboard crosses virtual window and preserves logical cell focus",
+      "pass": true,
+      "evidence": {
+        "index": "9999",
+        "col": "1"
+      }
+    },
+    {
+      "name": "Chrome AX names for table, pagination, controls",
+      "pass": true,
+      "evidence": [
+        {
+          "role": "navigation",
+          "name": "Record pages"
+        },
+        {
+          "role": "grid",
+          "name": "Application records"
+        },
+        {
+          "role": "combobox",
+          "name": "Show"
+        }
+      ]
+    },
+    {
+      "name": "disconnect releases virtual scroll and table subscription, same-instance remount works",
+      "pass": true,
+      "evidence": {
+        "detached": {
+          "scrollReleased": true,
+          "before": 20,
+          "after": 20
+        },
+        "remounted": {
+          "source": 10000,
+          "rows": 10000,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10000
+          },
+          "filtered": 10000,
+          "first": "record-9999",
+          "last": "record-0",
+          "selected": [
+            "record-3"
+          ],
+          "rendered": 12,
+          "shown": [
+            "record-11",
+            "record-10",
+            "record-9",
+            "record-8",
+            "record-7",
+            "record-6",
+            "record-5",
+            "record-4",
+            "record-3",
+            "record-2",
+            "record-1",
+            "record-0"
+          ]
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "attempts": [
+    {
+      "step": "initial directory read",
+      "result": "baseline directory did not exist; created own directory"
+    },
+    {
+      "step": "recipe read",
+      "result": "whole JSON output truncated; extracted only Lit source, read needed table data and keyboard sections plus public declarations"
+    },
+    {
+      "step": "build attempt 1",
+      "result": "own source syntax error; missing interpolation closing brace",
+      "evidence": "build-attempt1.log"
+    },
+    {
+      "step": "build attempt 2",
+      "result": "pass",
+      "evidence": "build-attempt2.log"
+    },
+    {
+      "step": "typecheck attempt 1",
+      "result": "own source possibly undefined getColumn result",
+      "evidence": "typecheck-attempt1.log"
+    },
+    {
+      "step": "typecheck attempt 2",
+      "result": "pass; strict, skipLibCheck false",
+      "evidence": "typecheck-attempt2.log"
+    },
+    {
+      "step": "runtime inspect attempt 1",
+      "result": "pass; no browser errors",
+      "evidence": "inspect-attempt1.json"
+    },
+    {
+      "step": "browser attempt 1",
+      "result": "6/9 pass; wrong native-select test locator timed out twice, causing dependent keyboard oracle mismatch; adapted to observed custom combobox and option controls",
+      "evidence": "result-attempt1.json"
+    },
+    {
+      "step": "browser attempt 2",
+      "result": "page size failure: own handler interpreted bubbled Select close request as page-size; NaN caused dependent scroll, keyboard and remount failures. Fixed exact action dispatch.",
+      "evidence": "result-attempt2.json; requests-attempt1.log"
+    }
+  ]
+}

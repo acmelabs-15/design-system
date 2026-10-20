@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  grid-template-columns: none;
+  grid-template-rows: none;
+  grid-template-areas: none;
+  grid-auto-columns: auto;
+  grid-auto-rows: auto;
+  grid-auto-flow: row;
+  align-items: normal;
+  justify-items: normal;
+  align-content: normal;
+  justify-content: normal;
+  gap: 0;
+}
+[part~="root"] {
+  display: grid;
+  grid-template-columns: inherit;
+  grid-template-rows: inherit;
+  grid-template-areas: inherit;
+  grid-auto-columns: inherit;
+  grid-auto-rows: inherit;
+  grid-auto-flow: inherit;
+  align-items: inherit;
+  justify-items: inherit;
+  align-content: inherit;
+  justify-content: inherit;
+  gap: inherit;
+  row-gap: inherit;
+  column-gap: inherit;
+}

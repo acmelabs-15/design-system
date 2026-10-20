@@ -54,3 +54,28 @@ describe("RovingTabindex", () => {
     expect(current).toBe(3);
   });
 });
+
+test("live direction and orientation apply without synthetic key events", () => {
+  const items = buttons(3);
+  let current = 1,
+    rtl = true,
+    orientation: "horizontal" | "vertical" = "horizontal";
+  const roving = new RovingTabindex(host(), {
+    items: () => items,
+    current: () => current,
+    onMove: (_, index) => {
+      current = index;
+    },
+    rtl: () => rtl,
+    orientation: () => orientation,
+  });
+  roving.handleKey(key("ArrowRight"));
+  expect(current).toBe(0);
+  rtl = false;
+  roving.handleKey(key("ArrowRight"));
+  expect(current).toBe(1);
+  orientation = "vertical";
+  expect(roving.handleKey(key("ArrowRight"))).toBe(false);
+  roving.handleKey(key("ArrowDown"), 0);
+  expect(current).toBe(1);
+});

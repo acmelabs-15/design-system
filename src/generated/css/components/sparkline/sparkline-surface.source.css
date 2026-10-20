@@ -1,0 +1,5 @@
+:host{display:block;min-inline-size:0;}
+[part=root]{display:block;inline-size:100%;block-size:40px;color:var(--ds-gray-900);}
+[part=root][data-sentiment=positive]{color:var(--success-ink);}
+[part=root][data-sentiment=negative]{color:var(--warn-ink);}
+svg{display:block;inline-size:100%;block-size:100%;overflow:visible;}

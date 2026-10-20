@@ -1,0 +1,4 @@
+:host{display:block;min-inline-size:0;}
+[part~=root]{padding:var(--_acme-card-padding,var(--acme-spacing-5));min-inline-size:0;--_acme-inset-inline-start:var(--_acme-card-padding,var(--acme-spacing-5));--_acme-inset-inline-end:var(--_acme-card-padding,var(--acme-spacing-5));--_acme-inset-block-start:var(--_acme-card-padding,var(--acme-spacing-5));--_acme-inset-block-end:var(--_acme-card-padding,var(--acme-spacing-5));}
+[part~=header]{display:flex;flex-direction:column;gap:var(--acme-spacing-2);}
+[part~=footer]{display:flex;flex-wrap:wrap;align-items:center;gap:var(--acme-spacing-2);}

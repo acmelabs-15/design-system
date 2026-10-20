@@ -1,0 +1,859 @@
+{
+  "date": "2026-09-23",
+  "status": "Command Menu complete at assigned native/Lit boundary; M15 complete",
+  "implementation": [
+    "Composes the public Dialog, Input and Scroll Area without another overlay or text-input engine",
+    "Stable identifiers, readable labels and immutable keyword arrays; existing command-score ranking with group boundaries",
+    "Manual projection at root and group levels retains author-owned DOM and keyed renderer identity",
+    "Single serializable selection/input/open events, cancelable selection and dismissal, application-owned pages",
+    "Opt-in document-scoped TanStack hotkeys with disconnect/adoption cleanup",
+    "Explicit coalesced load-more requests; application owns network state and stale responses",
+    "Active-descendant/autocomplete forwarding through the existing semantic bridge, live result status and supporting descriptions",
+    "Command Separator replaces Command Divider; old page/timer/callback/overlay interfaces and style producers are removed"
+  ],
+  "verification": {
+    "build": "Strict final package build passes",
+    "site": {
+      "pages": 103,
+      "elements": 4304,
+      "undocumented": 0
+    },
+    "tests": {
+      "passed": 915,
+      "failed": 0,
+      "assertions": 151085,
+      "files": 162
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "Command Menu composes one native Dialog and an active-descendant Input",
+            "pass": true
+          },
+          {
+            "name": "typing searches visible labels and aliases without moving author nodes",
+            "pass": true
+          },
+          {
+            "name": "arrow activation reports one serializable request and closes",
+            "pass": true
+          },
+          {
+            "name": "canceling a selection keeps the menu and its query",
+            "pass": true
+          },
+          {
+            "name": "disabled items cannot activate",
+            "pass": true
+          },
+          {
+            "name": "Escape cancellation and completion follow the shared Dialog path",
+            "pass": true
+          },
+          {
+            "name": "empty results and programmatic query updates stay usable",
+            "pass": true
+          },
+          {
+            "name": "custom scoring reorders projections while every author node stays in place",
+            "pass": true
+          },
+          {
+            "name": "composition Enter does not select and its completed edit reaches the query",
+            "pass": true
+          },
+          {
+            "name": "shortcut configuration and disconnection have one registration lifetime",
+            "pass": true
+          },
+          {
+            "name": "application-owned pages can intercept Escape and keep the same dialog",
+            "pass": true
+          },
+          {
+            "name": "load-more requests are explicit and coalesced until the data changes",
+            "pass": true
+          },
+          {
+            "name": "late result changes use the current query and clear stale active descendants",
+            "pass": true
+          },
+          {
+            "name": "Lit can delete and replace its ranked children after filtering",
+            "pass": true
+          },
+          {
+            "name": "long results stay inside a scroll area and keyboard movement reveals the active row",
+            "pass": true
+          },
+          {
+            "name": "supporting text describes options without replacing their action names",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "Command Menu composes one native Dialog and an active-descendant Input",
+            "pass": true
+          },
+          {
+            "name": "typing searches visible labels and aliases without moving author nodes",
+            "pass": true
+          },
+          {
+            "name": "arrow activation reports one serializable request and closes",
+            "pass": true
+          },
+          {
+            "name": "canceling a selection keeps the menu and its query",
+            "pass": true
+          },
+          {
+            "name": "disabled items cannot activate",
+            "pass": true
+          },
+          {
+            "name": "Escape cancellation and completion follow the shared Dialog path",
+            "pass": true
+          },
+          {
+            "name": "empty results and programmatic query updates stay usable",
+            "pass": true
+          },
+          {
+            "name": "custom scoring reorders projections while every author node stays in place",
+            "pass": true
+          },
+          {
+            "name": "composition Enter does not select and its completed edit reaches the query",
+            "pass": true
+          },
+          {
+            "name": "shortcut configuration and disconnection have one registration lifetime",
+            "pass": true
+          },
+          {
+            "name": "application-owned pages can intercept Escape and keep the same dialog",
+            "pass": true
+          },
+          {
+            "name": "load-more requests are explicit and coalesced until the data changes",
+            "pass": true
+          },
+          {
+            "name": "late result changes use the current query and clear stale active descendants",
+            "pass": true
+          },
+          {
+            "name": "Lit can delete and replace its ranked children after filtering",
+            "pass": true
+          },
+          {
+            "name": "long results stay inside a scroll area and keyboard movement reveals the active row",
+            "pass": true
+          },
+          {
+            "name": "supporting text describes options without replacing their action names",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "Command Menu composes one native Dialog and an active-descendant Input",
+            "pass": true
+          },
+          {
+            "name": "typing searches visible labels and aliases without moving author nodes",
+            "pass": true
+          },
+          {
+            "name": "arrow activation reports one serializable request and closes",
+            "pass": true
+          },
+          {
+            "name": "canceling a selection keeps the menu and its query",
+            "pass": true
+          },
+          {
+            "name": "disabled items cannot activate",
+            "pass": true
+          },
+          {
+            "name": "Escape cancellation and completion follow the shared Dialog path",
+            "pass": true
+          },
+          {
+            "name": "empty results and programmatic query updates stay usable",
+            "pass": true
+          },
+          {
+            "name": "custom scoring reorders projections while every author node stays in place",
+            "pass": true
+          },
+          {
+            "name": "composition Enter does not select and its completed edit reaches the query",
+            "pass": true
+          },
+          {
+            "name": "shortcut configuration and disconnection have one registration lifetime",
+            "pass": true
+          },
+          {
+            "name": "application-owned pages can intercept Escape and keep the same dialog",
+            "pass": true
+          },
+          {
+            "name": "load-more requests are explicit and coalesced until the data changes",
+            "pass": true
+          },
+          {
+            "name": "late result changes use the current query and clear stale active descendants",
+            "pass": true
+          },
+          {
+            "name": "Lit can delete and replace its ranked children after filtering",
+            "pass": true
+          },
+          {
+            "name": "long results stay inside a scroll area and keyboard movement reveals the active row",
+            "pass": true
+          },
+          {
+            "name": "supporting text describes options without replacing their action names",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "Command Menu composes one native Dialog and an active-descendant Input",
+            "pass": true
+          },
+          {
+            "name": "typing searches visible labels and aliases without moving author nodes",
+            "pass": true
+          },
+          {
+            "name": "arrow activation reports one serializable request and closes",
+            "pass": true
+          },
+          {
+            "name": "canceling a selection keeps the menu and its query",
+            "pass": true
+          },
+          {
+            "name": "disabled items cannot activate",
+            "pass": true
+          },
+          {
+            "name": "Escape cancellation and completion follow the shared Dialog path",
+            "pass": true
+          },
+          {
+            "name": "empty results and programmatic query updates stay usable",
+            "pass": true
+          },
+          {
+            "name": "custom scoring reorders projections while every author node stays in place",
+            "pass": true
+          },
+          {
+            "name": "composition Enter does not select and its completed edit reaches the query",
+            "pass": true
+          },
+          {
+            "name": "shortcut configuration and disconnection have one registration lifetime",
+            "pass": true
+          },
+          {
+            "name": "application-owned pages can intercept Escape and keep the same dialog",
+            "pass": true
+          },
+          {
+            "name": "load-more requests are explicit and coalesced until the data changes",
+            "pass": true
+          },
+          {
+            "name": "late result changes use the current query and clear stale active descendants",
+            "pass": true
+          },
+          {
+            "name": "Lit can delete and replace its ranked children after filtering",
+            "pass": true
+          },
+          {
+            "name": "long results stay inside a scroll area and keyboard movement reveals the active row",
+            "pass": true
+          },
+          {
+            "name": "supporting text describes options without replacing their action names",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "Command Menu composes one native Dialog and an active-descendant Input",
+            "pass": true
+          },
+          {
+            "name": "typing searches visible labels and aliases without moving author nodes",
+            "pass": true
+          },
+          {
+            "name": "arrow activation reports one serializable request and closes",
+            "pass": true
+          },
+          {
+            "name": "canceling a selection keeps the menu and its query",
+            "pass": true
+          },
+          {
+            "name": "disabled items cannot activate",
+            "pass": true
+          },
+          {
+            "name": "Escape cancellation and completion follow the shared Dialog path",
+            "pass": true
+          },
+          {
+            "name": "empty results and programmatic query updates stay usable",
+            "pass": true
+          },
+          {
+            "name": "custom scoring reorders projections while every author node stays in place",
+            "pass": true
+          },
+          {
+            "name": "composition Enter does not select and its completed edit reaches the query",
+            "pass": true
+          },
+          {
+            "name": "shortcut configuration and disconnection have one registration lifetime",
+            "pass": true
+          },
+          {
+            "name": "application-owned pages can intercept Escape and keep the same dialog",
+            "pass": true
+          },
+          {
+            "name": "load-more requests are explicit and coalesced until the data changes",
+            "pass": true
+          },
+          {
+            "name": "late result changes use the current query and clear stale active descendants",
+            "pass": true
+          },
+          {
+            "name": "Lit can delete and replace its ranked children after filtering",
+            "pass": true
+          },
+          {
+            "name": "long results stay inside a scroll area and keyboard movement reveals the active row",
+            "pass": true
+          },
+          {
+            "name": "supporting text describes options without replacing their action names",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "Command Menu composes one native Dialog and an active-descendant Input",
+            "pass": true
+          },
+          {
+            "name": "typing searches visible labels and aliases without moving author nodes",
+            "pass": true
+          },
+          {
+            "name": "arrow activation reports one serializable request and closes",
+            "pass": true
+          },
+          {
+            "name": "canceling a selection keeps the menu and its query",
+            "pass": true
+          },
+          {
+            "name": "disabled items cannot activate",
+            "pass": true
+          },
+          {
+            "name": "Escape cancellation and completion follow the shared Dialog path",
+            "pass": true
+          },
+          {
+            "name": "empty results and programmatic query updates stay usable",
+            "pass": true
+          },
+          {
+            "name": "custom scoring reorders projections while every author node stays in place",
+            "pass": true
+          },
+          {
+            "name": "composition Enter does not select and its completed edit reaches the query",
+            "pass": true
+          },
+          {
+            "name": "shortcut configuration and disconnection have one registration lifetime",
+            "pass": true
+          },
+          {
+            "name": "application-owned pages can intercept Escape and keep the same dialog",
+            "pass": true
+          },
+          {
+            "name": "load-more requests are explicit and coalesced until the data changes",
+            "pass": true
+          },
+          {
+            "name": "late result changes use the current query and clear stale active descendants",
+            "pass": true
+          },
+          {
+            "name": "Lit can delete and replace its ranked children after filtering",
+            "pass": true
+          },
+          {
+            "name": "long results stay inside a scroll area and keyboard movement reveals the active row",
+            "pass": true
+          },
+          {
+            "name": "supporting text describes options without replacing their action names",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "documentation": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "label/alias selection",
+          "application page and Escape hierarchy",
+          "load-more request",
+          "narrow viewport"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "label/alias selection",
+          "application page and Escape hierarchy",
+          "load-more request",
+          "narrow viewport"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "label/alias selection",
+          "application page and Escape hierarchy",
+          "load-more request",
+          "narrow viewport"
+        ],
+        "errors": []
+      }
+    ],
+    "accessibility": [
+      {
+        "role": "listbox",
+        "name": "Commands",
+        "properties": [
+          {
+            "name": "multiselectable",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "orientation",
+            "value": {
+              "type": "token",
+              "value": "vertical"
+            }
+          },
+          {
+            "name": "required",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "role": "combobox",
+        "name": "Search commands",
+        "properties": [
+          {
+            "name": "invalid",
+            "value": {
+              "type": "token",
+              "value": "false"
+            }
+          },
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "focused",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "editable",
+            "value": {
+              "type": "token",
+              "value": "plaintext"
+            }
+          },
+          {
+            "name": "settable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "autocomplete",
+            "value": {
+              "type": "token",
+              "value": "list"
+            }
+          },
+          {
+            "name": "hasPopup",
+            "value": {
+              "type": "token",
+              "value": "listbox"
+            }
+          },
+          {
+            "name": "required",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "expanded",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "activedescendant",
+            "value": {
+              "type": "idref",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 1007
+                }
+              ]
+            }
+          },
+          {
+            "name": "controls",
+            "value": {
+              "type": "idrefList",
+              "value": "",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 1008
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "role": "group",
+        "name": "Projects",
+        "properties": []
+      },
+      {
+        "role": "option",
+        "name": "Open settings",
+        "properties": [
+          {
+            "name": "selected",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "role": "option",
+        "name": "Open help",
+        "properties": [
+          {
+            "name": "selected",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "role": "option",
+        "name": "Create project",
+        "properties": [
+          {
+            "name": "selected",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          }
+        ]
+      },
+      {
+        "role": "option",
+        "name": "Open project",
+        "properties": [
+          {
+            "name": "selected",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "role": "option",
+        "name": "Archive project",
+        "properties": [
+          {
+            "name": "disabled",
+            "value": {
+              "type": "boolean",
+              "value": true
+            }
+          },
+          {
+            "name": "selected",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": false
+            }
+          }
+        ]
+      }
+    ],
+    "comboboxRegression": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "typing ranks projected options without changing authored order",
+            "pass": true
+          },
+          {
+            "name": "Enter commits ranked active value and restores label",
+            "pass": true
+          },
+          {
+            "name": "custom filter order and section runs remain authoritative",
+            "pass": true
+          },
+          {
+            "name": "Escape discards uncommitted query and keeps selected value",
+            "pass": true
+          },
+          {
+            "name": "unmatched text cannot become a form value",
+            "pass": true
+          },
+          {
+            "name": "async option arrival updates ranked projection",
+            "pass": true
+          },
+          {
+            "name": "composition input is not committed or intercepted",
+            "pass": true
+          },
+          {
+            "name": "Lit keyed updates retain identity and remove deleted ranked options",
+            "pass": true
+          },
+          {
+            "name": "native Enter submits after committing and closing the popup",
+            "pass": true
+          },
+          {
+            "name": "projected grouped accessibility order matches result order",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "typing ranks projected options without changing authored order",
+            "pass": true
+          },
+          {
+            "name": "Enter commits ranked active value and restores label",
+            "pass": true
+          },
+          {
+            "name": "custom filter order and section runs remain authoritative",
+            "pass": true
+          },
+          {
+            "name": "Escape discards uncommitted query and keeps selected value",
+            "pass": true
+          },
+          {
+            "name": "unmatched text cannot become a form value",
+            "pass": true
+          },
+          {
+            "name": "async option arrival updates ranked projection",
+            "pass": true
+          },
+          {
+            "name": "composition input is not committed or intercepted",
+            "pass": true
+          },
+          {
+            "name": "Lit keyed updates retain identity and remove deleted ranked options",
+            "pass": true
+          },
+          {
+            "name": "native Enter submits after committing and closing the popup",
+            "pass": true
+          },
+          {
+            "name": "projected grouped accessibility order matches result order",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "typing ranks projected options without changing authored order",
+            "pass": true
+          },
+          {
+            "name": "Enter commits ranked active value and restores label",
+            "pass": true
+          },
+          {
+            "name": "custom filter order and section runs remain authoritative",
+            "pass": true
+          },
+          {
+            "name": "Escape discards uncommitted query and keeps selected value",
+            "pass": true
+          },
+          {
+            "name": "unmatched text cannot become a form value",
+            "pass": true
+          },
+          {
+            "name": "async option arrival updates ranked projection",
+            "pass": true
+          },
+          {
+            "name": "composition input is not committed or intercepted",
+            "pass": true
+          },
+          {
+            "name": "Lit keyed updates retain identity and remove deleted ranked options",
+            "pass": true
+          },
+          {
+            "name": "native Enter submits after committing and closing the popup",
+            "pass": true
+          },
+          {
+            "name": "projected grouped accessibility order matches result order",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ]
+  },
+  "sources": [
+    "notes/alignment/inventory/navigation-disclosure.md#n-08-command-menu",
+    "src/shared/command-score.ts (existing MIT implementation)",
+    "node_modules/@tanstack/lit-hotkeys/src/controllers/hotkey.ts",
+    "node_modules/@tanstack/lit-hotkeys/src/constants.ts",
+    "notes/decisions/execution-delegation.md#ranked-option-projection--2026-09-22"
+  ],
+  "corrections": [
+    "Wait for composed Scroll Area/Viewport readiness before reading its public native viewport.",
+    "Guard equal measurement writes and empty active-state writes to avoid update loops.",
+    "Ignore key activation during text composition; preserve native editing keys and complete composed edits.",
+    "Scope documentation locators through the open Command Menu host because the browser test role query also returned slotted controls under closed shadow dialogs.",
+    "A short navigation timeout occurred during parallel test load; the healthy server returned HTTP 200, and the final documentation run passed with a bounded navigation timeout."
+  ],
+  "fixtures": [
+    "src/components/command-menu/__tests__/command-menu.browser.ts",
+    "src/components/command-menu/__tests__/command-menu.test.ts",
+    "src/shared/__tests__/command-ranking.test.ts",
+    "src/shared/__tests__/semantic-element.test.ts",
+    "/tmp/acme-m15-command/run.ts",
+    "/tmp/acme-m15-command/run-compiled.ts",
+    "/tmp/acme-m15-command/docs-check.ts"
+  ],
+  "limits": [
+    "Actual OS composition, Safari/assistive technology and final React/scoped-registry coverage remain M22/M26.",
+    "M16 Sidebar/TOC/Tree is next. O01/O02/O03 are already available from the brought-forward M17 slice.",
+    "The remaining M17 help families and M18–M26 remain open."
+  ]
+}

@@ -1,0 +1,5 @@
+:host { display: inline; }
+[part~="root"] { font: inherit; color: inherit; text-align: inherit; }
+:host([data-acme-text-inline]:is([truncate], [data-acme-text-clamp])) { display: inline-block; max-width: 100%; }
+:host([truncate]:not([data-acme-text-clamp])) [part~="root"] { display: block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+:host([data-acme-text-clamp]) [part~="root"] { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; white-space: normal; }

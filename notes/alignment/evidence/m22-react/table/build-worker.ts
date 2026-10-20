@@ -1,0 +1,1 @@
+const result=await Bun.build({entrypoints:['/Users/peterkloss/Dev/ACMElabs/design-system/examples/table/table-worker.ts'],target:'browser',format:'esm'});if(!result.success)throw new AggregateError(result.logs);if(result.outputs.length!==1)throw new Error('Unexpected worker artifacts');await Bun.write('/tmp/acme-m22/table/table-worker.js',result.outputs[0]);

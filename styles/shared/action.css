@@ -1,0 +1,42 @@
+:host { --action-height: var(--acme-button-medium-height, 2.25rem); block-size: var(--action-height); display: inline-flex; min-inline-size: 24px; min-block-size: 24px; max-inline-size: 100%; vertical-align: middle; }
+:host([full-width]) { inline-size: 100%; }
+.action-form { display: flex; inline-size: 100%; block-size: 100%; margin: 0; }
+.action { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: .25rem; box-sizing: border-box; min-inline-size: 24px; min-block-size: 24px; inline-size: 100%; block-size: 100%; margin: 0; border: 1px solid transparent; border-radius: var(--r-sm, 6px); padding: 0 var(--acme-button-padding-inline, .75rem); font-family: var(--acme-font-sans); font-size: var(--acme-form-font, .875rem); font-weight: var(--acme-font-weight-500); line-height: var(--acme-form-line-height, 1.25rem); text-decoration: none; white-space: nowrap; user-select: none; cursor: pointer; background: var(--accent); color: var(--on-accent, white); }
+.action[data-size="tiny"] { padding-inline: .375rem; border-radius: 4px; }
+.action[data-size="small"] { font-size: var(--acme-form-small-font, .8125rem); }
+.action[data-size="large"] { font-size: var(--acme-form-large-font, 1rem); border-radius: var(--r, 8px); }
+.action[data-hover] { background: var(--accent-hover); }
+.action[data-active] { background: var(--accent-active); }
+.action[data-variant="secondary"] { background: var(--ds-background-100); color: var(--ds-gray-1000); border-color: var(--ds-gray-alpha-400); }
+.action[data-variant="secondary"][data-hover] { background: var(--comp-hover); }
+.action[data-variant="secondary"][data-active] { background: var(--comp-active); }
+.action[data-variant="tertiary"] { background: transparent; color: var(--ds-gray-1000); }
+.action[data-variant="tertiary"][data-hover] { background: var(--comp-hover); }
+.action[data-variant="tertiary"][data-active] { background: var(--comp-active); }
+.action[data-variant="error"] { background: var(--warn-solid); color: var(--on-warn); }
+.action[data-variant="error"][data-hover] { background: var(--warn-solid-hover); }
+.action[data-variant="warning"] { background: var(--caution-solid); color: var(--ds-black); }
+.action[data-variant="warning"][data-hover] { background: var(--caution-bg); }
+.action:is(:disabled,[aria-disabled="true"]) { background: var(--comp); border-color: var(--border); color: var(--ds-gray-700); cursor: not-allowed; }
+.action:is(:focus-visible,[data-focus]) { outline: none; box-shadow: var(--ds-focus-ring); }
+.action[data-shape="pill"] { border-radius: 999px; }
+.action:is([data-shape="square"],[data-shape="circle"],[data-icon-only]) { inline-size: 100%; padding-inline: 0; aspect-ratio: 1; }
+.action[data-shape="circle"] { border-radius: 50%; }
+.action[data-variant="unstyled"] { background: transparent; border-color: transparent; color: inherit; padding: 0; font: inherit; }
+.label { display: inline-flex; align-items: center; justify-content: center; min-inline-size: 0; text-overflow: ellipsis; overflow: hidden; }
+.start,.end { display: inline-flex; align-items: center; justify-content: center; flex: none; }
+.start acme-spinner { color: inherit; }
+@media (forced-colors: active) { .action { border-color: ButtonText; } .action:is(:disabled,[aria-disabled="true"]) { border-color: GrayText; color: GrayText; } }
+:host([data-action-size="tiny"]) { --action-height: 24px; }
+:host([data-action-size="small"]) { --action-height: var(--acme-button-small-height, 2rem); }
+:host([data-action-size="large"]) { --action-height: var(--acme-button-large-height, 2.5rem); }
+:host([data-action-square]) { aspect-ratio: 1; }
+.action[aria-pressed="true"] { border-color: currentColor; box-shadow: inset 0 0 0 1px currentColor; }
+.action[aria-pressed="true"]:is(:focus-visible,[data-focus]) { box-shadow: var(--ds-focus-ring), inset 0 0 0 1px currentColor; }
+.action { transition-property: none; transition-duration: var(--dur); transition-timing-function: var(--ease); }
+.ripple-clip { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; pointer-events: none; }
+.ripple { position: absolute; border-radius: 50%; background: var(--ds-black); opacity: 0; pointer-events: none; }
+.action { isolation: isolate; }
+.label,.start,.end,.action > [part="icon"],.action > acme-spinner { position: relative; z-index: 1; }
+.ripple-clip { z-index: 0; }
+@media (forced-colors: active) { .ripple-clip { display: none; } .action:is(:focus-visible,[data-focus]) { outline: 2px solid Highlight; outline-offset: 2px; } }

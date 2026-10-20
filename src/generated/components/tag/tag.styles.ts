@@ -1,0 +1,29 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const tagCss = css`.tag {
+  background: var(--comp);
+  height: 20px;
+  color: var(--text-2);
+  font-family: var(--acme-font-mono);
+  font-size: var(--t-2xs);
+  white-space: nowrap;
+  border-radius: 999px;
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px;
+  line-height: 16px;
+  display: inline-flex;
+}
+
+.tag.small {
+  height: 16px;
+  padding-inline: 6px;
+  font-size: 10px;
+}
+
+.tag.large {
+  height: 24px;
+  padding-inline: 10px;
+  font-size: 12px;
+}
+`;

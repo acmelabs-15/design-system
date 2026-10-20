@@ -4,6 +4,7 @@
 import { type GeistMap, has, type SpecNode } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "radio",
   component: "RadioGroupItem",
   root: "data-geist-radio-item",

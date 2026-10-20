@@ -1,69 +1,107 @@
-// TanStack Form for the acme-* inputs. `TanStackFormController` is headless and renders nothing;
-// its `field()` directive hands the template a FieldApi. `bind(field)` turns that into the four
-// bindings an acme input needs, so a call site stays one line per control:
-//
-//   ${this.form.field({ name: "email" }, (f) => html`<acme-input label="Email" ${bind(f)}></acme-input>`)}
-//
-// The directive sets `value` and `error` on the element and listens for `acme-input` /
-// `acme-change` and `blur`. Booleans (acme-checkbox, acme-toggle) bind `checked`.
-import type { FieldApi } from "@tanstack/lit-form";
 import { noChange } from "lit";
 import { AsyncDirective, directive, type ElementPart, type PartInfo, PartType } from "lit/async-directive.js";
 
 export { TanStackFormController } from "@tanstack/lit-form";
 
-// biome-ignore lint/suspicious/noExplicitAny: the field's generics are the caller's business
-type AnyField = FieldApi<any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any, any>;
-type Bound = HTMLElement & { value?: unknown; checked?: boolean; error?: string };
-
+/** The typed field surface consumed from TanStack Form. */
+export interface FormFieldBinding<Value> {
+  readonly state: Readonly<{ value: Value; meta: Readonly<{ isTouched: boolean; isValid: boolean }> }>;
+  readonly store: { subscribe(listener: () => void): { unsubscribe(): void } };
+  handleChange(value: Value): void;
+  handleBlur(): void;
+}
+type Bound = HTMLElement & { value?: unknown; checked?: boolean; invalid?: boolean };
 class BindDirective extends AsyncDirective {
-  private el?: Bound;
-  private field?: AnyField;
+  private element?: Bound;
+  private field?: FormFieldBinding<unknown>;
+  private subscription?: { unsubscribe(): void };
   constructor(part: PartInfo) {
     super(part);
-    if (part.type !== PartType.ELEMENT) throw new Error("bind(field) goes on an element, e.g. <acme-input ${bind(f)}>");
-  }
-  update(part: ElementPart, [field]: [AnyField]) {
-    const el = part.element as Bound;
-    if (this.el !== el) {
-      this.el?.removeEventListener("acme-input", this.onInput);
-      this.el?.removeEventListener("acme-change", this.onInput);
-      this.el?.removeEventListener("blur", this.onBlur);
-      this.el = el;
-      el.addEventListener("acme-input", this.onInput);
-      el.addEventListener("acme-change", this.onInput);
-      el.addEventListener("blur", this.onBlur);
+    if (part.type !== PartType.ELEMENT) {
+      throw new Error("bindField belongs on a form control element");
     }
-    this.field = field;
-    return this.render(field);
   }
-  render(field: AnyField) {
-    const el = this.el;
-    if (!el) return noChange;
-    const v = field.state.value;
-    if (typeof v === "boolean") el.checked = v;
-    else if (el.value !== v) el.value = v ?? "";
-    const m = field.state.meta;
-    el.error = m.isTouched && !m.isValid ? m.errors.map((e: unknown) => (typeof e === "string" ? e : ((e as { message?: string })?.message ?? String(e)))).join(" ") : "";
+  update(part: ElementPart, [field]: [FormFieldBinding<unknown>]) {
+    if (this.element !== part.element || this.field !== field) {
+      this.detach();
+      this.element = part.element as Bound;
+      this.field = field;
+      if (this.isConnected) {
+        this.attach();
+      }
+    }
+    this.paint();
     return noChange;
   }
-  private onInput = (e: Event) => {
-    const d = (e as CustomEvent).detail ?? {};
-    const next = "checked" in d ? d.checked : "value" in d ? d.value : (this.el?.value ?? "");
-    this.field?.handleChange(next as never);
+  render(_field: FormFieldBinding<unknown>) {
+    return noChange;
+  }
+  private paint = () => {
+    const element = this.element,
+      field = this.field;
+    if (!element || !field) {
+      return;
+    }
+    const value = field.state.value;
+    if (typeof value === "boolean") {
+      if (element.checked !== value) {
+        element.checked = value;
+      }
+    } else if (!Object.is(element.value, value)) {
+      element.value = value;
+    }
+    const invalid = field.state.meta.isTouched && !field.state.meta.isValid;
+    if (element.invalid !== invalid) {
+      element.invalid = invalid;
+    }
   };
-  private onBlur = () => this.field?.handleBlur();
+  private edit = (event: Event) => {
+    if (event.target !== this.element || !this.field) {
+      return;
+    }
+    const detail = (event as CustomEvent).detail;
+    if (!detail || typeof detail !== "object") {
+      return;
+    }
+    const key = typeof this.field.state.value === "boolean" ? "checked" : "value";
+    if (!(key in detail)) {
+      return;
+    }
+    const value = detail[key];
+    if (!Object.is(value, this.field.state.value)) {
+      this.field.handleChange(value);
+    }
+  };
+  private blur = (event: FocusEvent) => {
+    const next = event.relatedTarget;
+    if (next && this.element?.contains(next as Node)) {
+      return;
+    }
+    this.field?.handleBlur();
+  };
+  private attach() {
+    this.element?.addEventListener("acme-input", this.edit);
+    this.element?.addEventListener("acme-change", this.edit);
+    this.element?.addEventListener("focusout", this.blur);
+    this.subscription = this.field?.store.subscribe(this.paint);
+    this.paint();
+  }
+  private detach() {
+    this.subscription?.unsubscribe();
+    this.subscription = undefined;
+    this.element?.removeEventListener("acme-input", this.edit);
+    this.element?.removeEventListener("acme-change", this.edit);
+    this.element?.removeEventListener("focusout", this.blur);
+  }
   disconnected() {
-    this.el?.removeEventListener("acme-input", this.onInput);
-    this.el?.removeEventListener("acme-change", this.onInput);
-    this.el?.removeEventListener("blur", this.onBlur);
+    this.detach();
   }
   reconnected() {
-    this.el?.addEventListener("acme-input", this.onInput);
-    this.el?.addEventListener("acme-change", this.onInput);
-    this.el?.addEventListener("blur", this.onBlur);
+    this.attach();
   }
 }
-
-/** Binds a TanStack Form field to an acme input element: value or checked, error, input and blur. */
-export const bind = directive(BindDirective);
+const binding = directive(BindDirective);
+/** Binds canonical value/checked and invalid presentation; the application renders Field errors. */
+export function bind<Value>(field: FormFieldBinding<Value>) {
+  return binding(field);
+}

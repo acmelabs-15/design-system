@@ -1,0 +1,21 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const scrollCornerCss = css`:host {
+  inline-size: var(--_scroll-corner-width);
+  block-size: var(--_scroll-corner-height);
+  display: block;
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-end: 0;
+}
+
+:host([data-inactive]) {
+  display: none;
+}
+
+[part="corner"] {
+  background: var(--acme-scroll-corner-color, transparent);
+  block-size: 100%;
+  inline-size: 100%;
+}
+`;

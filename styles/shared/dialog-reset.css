@@ -1,0 +1,14 @@
+dialog:not([open]) {
+    display: none;
+  }
+  dialog {
+    width: auto;
+    height: auto;
+    inset: auto;
+    overflow: visible;
+    background: transparent;
+    color: inherit;
+    max-width: none;
+    max-height: none;
+    user-select: auto;
+  }

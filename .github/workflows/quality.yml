@@ -1,0 +1,75 @@
+name: quality
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: 1.4.2
+      - name: Frozen installation without dependency scripts
+        run: bun install --frozen-lockfile --ignore-scripts
+      - name: Lint and formatting
+        run: bun scripts/check.ts static
+      - name: Build reviewed source and verify generated inputs
+        run: bun scripts/check.ts build
+      - name: Strict types
+        run: bun scripts/check.ts types
+      - name: Unit and workspace installation regressions
+        run: bun scripts/check.ts unit
+      - name: Dependency audit
+        run: bun scripts/check.ts audit
+      - name: Prepare and validate coordinated archives
+        run: bun scripts/check.ts packages
+      - name: Install pinned browser engines
+        run: bun scripts/check.ts install-browsers
+      - name: Three-engine and clean-consumer acceptance
+        run: bun scripts/check.ts browser
+      - name: Bun-hosted npm crypto and public trust verification
+        run: bun scripts/check.ts release
+      - name: Save diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: verification-${{ github.sha }}
+          include-hidden-files: true
+          path: |
+            .artifacts/lint/
+            .artifacts/checks/
+            .artifacts/m23-docs/
+            .artifacts/tabs-indicator/results.json
+            .artifacts/release/*smoke.json
+            .artifacts/release/published-trust.json
+          if-no-files-found: error
+      - name: Save reviewed release archives
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: release-${{ github.sha }}
+          include-hidden-files: true
+          path: |
+            .artifacts/release/archives/
+            .artifacts/release/release.json
+          if-no-files-found: error
+      - name: Save reviewed documentation output
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          name: pages-${{ github.sha }}
+          path: _site/

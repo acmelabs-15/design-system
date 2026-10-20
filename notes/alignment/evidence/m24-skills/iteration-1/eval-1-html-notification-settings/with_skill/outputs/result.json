@@ -1,0 +1,560 @@
+{
+  "evaluation": "html-skilled",
+  "version": "0.2.0",
+  "artifact": "index.html",
+  "firstAttemptArtifact": "first-attempt.html",
+  "firstAttemptPass": false,
+  "pass": true,
+  "checks": [
+    {
+      "name": "all markup registered",
+      "pass": true,
+      "evidence": [
+        {
+          "tag": "acme-fieldset",
+          "registered": true
+        },
+        {
+          "tag": "acme-field",
+          "registered": true
+        },
+        {
+          "tag": "acme-input",
+          "registered": true
+        },
+        {
+          "tag": "acme-radio-group",
+          "registered": true
+        },
+        {
+          "tag": "acme-radio",
+          "registered": true
+        },
+        {
+          "tag": "acme-switch",
+          "registered": true
+        },
+        {
+          "tag": "acme-button",
+          "registered": true
+        }
+      ]
+    },
+    {
+      "name": "native accessible names and required state",
+      "pass": true,
+      "evidence": [
+        {
+          "role": "group",
+          "name": "Your preferences",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "labelledby",
+              "value": {
+                "type": "nodeList",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 23,
+                    "text": "Your preferences"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "role": "radiogroup",
+          "name": "Plan",
+          "properties": [
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "orientation",
+              "value": {
+                "type": "token",
+                "value": "vertical"
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "labelledby",
+              "value": {
+                "type": "nodeList",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 67,
+                    "idref": "acme-field-content-2-label-0",
+                    "text": "Plan"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "role": "button",
+          "name": "Save",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            }
+          ]
+        },
+        {
+          "role": "button",
+          "name": "Reset",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            }
+          ]
+        },
+        {
+          "role": "textbox",
+          "name": "Email address",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "editable",
+              "value": {
+                "type": "token",
+                "value": "plaintext"
+              }
+            },
+            {
+              "name": "settable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "multiline",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "readonly",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "type": "boolean",
+                "value": true
+              }
+            },
+            {
+              "name": "describedby",
+              "value": {
+                "type": "idrefList",
+                "value": "",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 45,
+                    "idref": "acme-field-content-1-help-0"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "labelledby",
+              "value": {
+                "type": "nodeList",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 37,
+                    "idref": "acme-field-content-1-label-0",
+                    "text": "Email address"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "role": "radio",
+          "name": "Personal",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "checked",
+              "value": {
+                "type": "tristate",
+                "value": "true"
+              }
+            },
+            {
+              "name": "labelledby",
+              "value": {
+                "type": "nodeList",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 78,
+                    "text": "Personal"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "role": "radio",
+          "name": "Team",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "checked",
+              "value": {
+                "type": "tristate",
+                "value": "false"
+              }
+            },
+            {
+              "name": "labelledby",
+              "value": {
+                "type": "nodeList",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 88,
+                    "text": "Team"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "role": "switch",
+          "name": "Email notifications",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "checked",
+              "value": {
+                "type": "tristate",
+                "value": "true"
+              }
+            },
+            {
+              "name": "describedby",
+              "value": {
+                "type": "idrefList",
+                "value": "",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 111,
+                    "idref": "acme-field-content-3-help-0"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "labelledby",
+              "value": {
+                "type": "nodeList",
+                "relatedNodes": [
+                  {
+                    "backendDOMNodeId": 106,
+                    "idref": "acme-field-content-3-label-0",
+                    "text": "Email notifications"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "changed values submitted as actual browser FormData",
+      "pass": true,
+      "evidence": {
+        "actual": [
+          [
+            "email",
+            "changed@example.com"
+          ],
+          [
+            "plan",
+            "team"
+          ]
+        ],
+        "receipt": "Saved locally — browser FormData:\n[\n  [\n    \"email\",\n    \"changed@example.com\"\n  ],\n  [\n    \"plan\",\n    \"team\"\n  ]\n]"
+      }
+    },
+    {
+      "name": "native required validity blocks submission and focuses email",
+      "pass": true,
+      "evidence": {
+        "valid": false,
+        "missing": true,
+        "focused": "INPUT"
+      }
+    },
+    {
+      "name": "error recovery and reset to initial values",
+      "pass": true,
+      "evidence": {
+        "data": [
+          [
+            "email",
+            "reader@example.com"
+          ],
+          [
+            "plan",
+            "personal"
+          ],
+          [
+            "notifications",
+            "enabled"
+          ]
+        ],
+        "email": "reader@example.com",
+        "plan": "personal",
+        "notifications": true,
+        "valid": true
+      }
+    },
+    {
+      "name": "keyboard radio and switch interaction",
+      "pass": true,
+      "evidence": {
+        "arrowSelected": "team",
+        "spaceToggled": true,
+        "tabFocus": "acme-button"
+      }
+    },
+    {
+      "name": "disabled control excluded from FormData",
+      "pass": true,
+      "evidence": true
+    },
+    {
+      "name": "selective exact-version browser graph, no state engine or network submission",
+      "pass": true,
+      "evidence": {
+        "requestCount": 75,
+        "errors": [],
+        "requests": [
+          "http://localhost:43127/",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/field.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/fieldset.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/input.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/radio-group.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/radio.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/switch.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/define/button.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/styles/tokens.css",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-v55fhzj5.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-8c4qn8g4.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-63src65t.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-wp9cwqzx.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-bbk63fv7.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-0s10xqfx.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-x6xmn8ga.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-bjgcr7wg.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-6y796zxf.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-e8r1pe45.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-tejhtgt3.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-vvcnexq7.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-6d53rk0g.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-6x8txyzk.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-fvxqcwfj.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-1pzf82yd.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-p92ej0vq.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-aqe8hk8q.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-f5sv9p73.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-m3914k44.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-bafrz3ek.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-zk700g7q.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-eww87842.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-49pawjwp.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-8hmw89dh.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-amjpa5vc.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-cq14y1db.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-bbct6f6y.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-1vq25f9q.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-x5h1qh5k.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-3737hyks.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-kz8nag27.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-nbd4ef83.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-hkdytap7.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-q1917z6w.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-q6egjyp2.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-4c4mttpj.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-3jdcq5db.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-h41jgwwz.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-efy48d7c.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-r85az1h5.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-6nzc238h.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-2mv0trsk.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-99yrayq2.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-n8cx4421.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-b5kdgdxv.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-xgcnzt96.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-has2b76z.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-sp667tsy.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-g2xd3cy3.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-z7hn77sy.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-79dka7q4.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-0nd0qqbs.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-kxbgbvjc.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-j9tsfayn.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-015e473w.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-z56zed01.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-cfv3rnmc.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-wcexcjk4.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-e6sccgke.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-vaj5k8ph.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-rxkb1a97.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-g8b2qs92.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-qa5q09gj.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-4cxpzvqx.js",
+          "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/cdn/chunks/all-b9nsyy40.js"
+        ]
+      }
+    }
+  ],
+  "firstAttemptFailures": [
+    {
+      "name": "changed values submitted as actual browser FormData",
+      "pass": false,
+      "error": "Error: click: Error: strict mode violation: locator('acme-button[type=\"submit\"] button') resolved to 2 elements:\n    1) <button name=\"\" value=\"\" hidden=\"\" tabindex=\"-1\" type=\"submit\" aria-hidden=\"true\" slot=\"acme-form-submitter\"></button> aka locator('button').first()\n    2) <button part=\"root\" type=\"submit\" class=\"action\" aria-busy=\"false\" data-size=\"medium\" data-variant=\"default\">…</button> aka getByRole('button', { name: 'Save' })\n\nCall log:\n\u001b[2m  - waiting for locator('acme-button[type=\"submit\"] button')\u001b[22m\n"
+    },
+    {
+      "name": "native required validity blocks submission and focuses email",
+      "pass": false,
+      "error": "Error: click: Error: strict mode violation: locator('acme-button[type=\"submit\"] button') resolved to 2 elements:\n    1) <button name=\"\" value=\"\" hidden=\"\" tabindex=\"-1\" type=\"submit\" aria-hidden=\"true\" slot=\"acme-form-submitter\"></button> aka locator('button').first()\n    2) <button part=\"root\" type=\"submit\" class=\"action\" aria-busy=\"false\" data-size=\"medium\" data-variant=\"default\">…</button> aka getByRole('button', { name: 'Save' })\n\nCall log:\n\u001b[2m  - waiting for locator('acme-button[type=\"submit\"] button')\u001b[22m\n"
+    },
+    {
+      "name": "error recovery and reset to initial values",
+      "pass": false,
+      "error": "Error: click: Error: strict mode violation: locator('acme-button[type=\"submit\"] button') resolved to 2 elements:\n    1) <button name=\"\" value=\"\" hidden=\"\" tabindex=\"-1\" type=\"submit\" aria-hidden=\"true\" slot=\"acme-form-submitter\"></button> aka locator('button').first()\n    2) <button part=\"root\" type=\"submit\" class=\"action\" aria-busy=\"false\" data-size=\"medium\" data-variant=\"default\">…</button> aka getByRole('button', { name: 'Save' })\n\nCall log:\n\u001b[2m  - waiting for locator('acme-button[type=\"submit\"] button')\u001b[22m\n"
+    },
+    {
+      "name": "keyboard radio and switch interaction",
+      "pass": false,
+      "error": "Error: Space did not toggle switch"
+    }
+  ],
+  "repairs": [
+    {
+      "scope": "verification harness only",
+      "change": "Target the documented visible button root, excluding the private native form submitter.",
+      "reason": "The broad button locator matched both the visible button and hidden native submitter. Initial interrupted checks also left the switch off for the later keyboard check. The artifact was unchanged."
+    }
+  ],
+  "limitations": [
+    "CDN publication not tested; exact URLs mapped to installed dist by local Bun server.",
+    "Native Chrome accessibility tree checked; screen reader behavior not tested."
+  ],
+  "skills": [
+    "html-artifacts",
+    "forms-and-accessibility"
+  ],
+  "referenceGap": "The release index has no separate native-form recipe. Used the native form in settings-rows plus exact component contracts.",
+  "artifactRepairs": 0,
+  "harnessRepairs": 1,
+  "visualInspection": {
+    "pass": true,
+    "evidence": "screenshot.png: readable labels, controls and receipt without clipping at 1000x1000"
+  }
+}

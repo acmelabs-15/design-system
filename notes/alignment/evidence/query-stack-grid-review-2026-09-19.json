@@ -1,0 +1,162 @@
+{
+  "date": "2026-09-19",
+  "phase": 4,
+  "scope": "Container targets, startup breakpoint configuration, Stack alignment/separators and Simple Grid modes; partial inventory decisions",
+  "decisions": [
+    {
+      "id": "C-RESP-07",
+      "status": "CONFIRMED",
+      "answer": "Nearest or named (Recommended)",
+      "decision": "In container mode, use the nearest eligible query container when no name is supplied; allow an explicitly named eligible ancestor for nested layouts. Viewport remains the default mode.",
+      "persisted": true
+    },
+    {
+      "id": "C-RESP-08",
+      "status": "CONFIRMED",
+      "answer": "Configure at startup (Recommended)",
+      "decision": "Set one application-wide custom breakpoint configuration before components render. Live replacement of transition widths is outside this configuration contract. Normal query responses to resizing and native font-relative changes remain supported.",
+      "persisted": true
+    },
+    {
+      "id": "L-STACK-03",
+      "status": "CONFIRMED",
+      "answer": "Chakra defaults (Recommended)",
+      "decision": "Use Chakra alignment defaults: general Stack stretches children across its default column layout; HStack/VStack use centered cross-axis alignment. alignItems remains overridable. Exact entry approval remains pending.",
+      "persisted": true
+    },
+    {
+      "id": "L-STACK-04",
+      "status": "CONFIRMED",
+      "answer": "Include separators (Recommended)",
+      "decision": "Stack/HStack/VStack provide optional automatic house separators, off by default. Define orientation, hidden-child handling and accessible presentation. Explicit Separator composition remains available; arbitrary separator templates are not selected by this capability choice.",
+      "persisted": true
+    },
+    {
+      "id": "L-SIMPLE-GRID-01",
+      "status": "CONFIRMED",
+      "answer": "Both modes (Recommended)",
+      "decision": "Simple Grid supports a responsive explicit column count and automatic columns driven by a minimum child width. L-SIMPLE-GRID-02 settles valid-setting precedence; exact defaults and parsing remain to specify.",
+      "persisted": true
+    },
+    {
+      "id": "L-SIMPLE-GRID-02",
+      "status": "CONFIRMED",
+      "answer": "Whatever chakra does.",
+      "decision": "Match Chakra's mode precedence: when both valid columns and minChildWidth settings are supplied, minChildWidth selects automatic fitting and columns does not control the instance. Rejecting the combination is not selected. Absent/invalid parsing and exact defaults still require specification.",
+      "persisted": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/sort-at-params.ts",
+      "coverage": "Complete 94-line source read"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/conditions.ts",
+      "coverage": "Complete 49-line source read"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container_queries",
+      "coverage": "Size-query, named-container and associated main guide sections read; no browser test"
+    },
+    {
+      "url": "https://chakra-ui.com/docs/components/stack",
+      "coverage": "Full main content read; separator capability"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/stack/h-stack.tsx",
+      "coverage": "Complete source rechecked for center alignment"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/stack/v-stack.tsx",
+      "coverage": "Complete source rechecked for center alignment"
+    },
+    {
+      "url": "https://chakra-ui.com/docs/components/simple-grid",
+      "coverage": "Full main content read"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/simple-grid/simple-grid.tsx",
+      "coverage": "Complete source read via Bun; reference uses truthy minChildWidth branch and native auto-fit/minmax"
+    }
+  ],
+  "proContainerScan": {
+    "filesRead": 1253,
+    "hits": []
+  },
+  "proSeparatorScan": {
+    "files": 938,
+    "hits": [
+      {
+        "file": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/sidebar-with-collapsible/sidebar.tsx",
+        "tag": "Stack",
+        "line": 46,
+        "separator": "{<StackSeparator />}"
+      },
+      {
+        "file": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/charts-00/stat-card.tsx",
+        "tag": "HStack",
+        "line": 19,
+        "separator": "{<StackSeparator />}"
+      }
+    ]
+  },
+  "proSimpleGridScan": {
+    "scope": "Literal SimpleGrid attributes, not evaluated props/spreads",
+    "files": 938,
+    "tags": 83,
+    "columns": 82,
+    "minChildWidth": 1,
+    "both": 0,
+    "minimumWidthFiles": [
+      "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/charts-02/block.tsx"
+    ]
+  },
+  "proFilesReRead": [
+    "blocks/sidebar-with-collapsible/sidebar.tsx",
+    "blocks/charts-00/stat-card.tsx",
+    "blocks/charts-02/block.tsx"
+  ],
+  "orderingAudit": {
+    "sourcePin": "1ff9873754e9913fc3d849d23c0844a628f5f20d",
+    "files": [
+      "packages/react/src/styled-system/sort-at-params.ts",
+      "packages/react/src/styled-system/conditions.ts"
+    ],
+    "coverage": "Complete source read",
+    "finding": "Chakra sorts media/container rules, categorizing min/max forms and comparing lengths with lexical tie-breaks. Native CSS cascade determines the winner after generation; this is not a general narrowest-range-wins rule.",
+    "status": "Draft basis from prior user instruction to match Chakra; not an independently approved complete precedence contract",
+    "remaining": "Specify canonical condition ordering for native range syntax and explicit overlap examples; do not copy min/max regex implementation uncritically."
+  },
+  "limitations": [
+    "Source comparisons and lexical/AST corpus searches only; no source changes or runtime certification.",
+    "The condition-name mapping and Chakra-like generated-query ordering are draft consequences of the earlier alignment instruction, not a complete approved precedence algorithm.",
+    "Selector regex absence does not prove no possible runtime-generated container-query use in the Pro collection.",
+    "Stack separator capability does not select arbitrary React/template cloning; house orientation/hidden-child/accessibility contracts remain to specify.",
+    "Simple Grid source truthiness is recorded as evidence; valid-setting precedence is selected, not every invalid/zero-input quirk."
+  ],
+  "next": "Persist six decisions and linked evidence; then finish responsive serialization/condition ordering and concrete layout/typography properties and tokens.",
+  "persisted": true,
+  "implementationChanged": false,
+  "inventoryApproved": false,
+  "migrationApproved": false,
+  "commitCreated": false,
+  "pushPerformed": false,
+  "followupStatus": {
+    "scope": "Snapshot at capture time; later selections do not alter earlier answers or measurements.",
+    "laterRecord": "spacing-stack-review-2026-09-20.json",
+    "currentHandoff": "../README.md#where-we-are",
+    "settledSince": [
+      "JSON attributes with corresponding JavaScript property values",
+      "Chakra generated-query ordering model for overlaps, independent of object key order",
+      "Rem house spacing scale using a 16px reference; Stack token 2 becomes 0.5rem",
+      "Complete 34-step positive Chakra spacing scale plus zero",
+      "Automatic Stack separator spacing matches Chakra: gap on each side plus divider thickness",
+      "Automatic Stack separators follow visible flex lines; Group member-order corners unchanged"
+    ],
+    "laterRecords": [
+      "responsive-spacing-review-2026-09-20.json",
+      "spacing-stack-review-2026-09-20.json"
+    ]
+  }
+}
