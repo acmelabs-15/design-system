@@ -1,7 +1,9 @@
 import path from "node:path";
 import { createHash } from "node:crypto";
+import { browserDistribution } from "../browser-distribution";
 
 const root = path.resolve(import.meta.dir, "../../../..");
+const distribution = browserDistribution(root, process.env.ACME_BROWSER_PACKAGE, process.env.ACME_RELEASE_CONSUMER);
 const runtime = process.env.ACME_BROWSER_RUNTIME;
 if (!runtime) throw new Error("Set ACME_BROWSER_RUNTIME");
 process.env.PLAYWRIGHT_BROWSERS_PATH = path.join(runtime, "browsers");
@@ -10,7 +12,7 @@ type Snapshot = { instance: string; pageshow: boolean[]; navigation: string; nat
 type HistoryWindow = Window & { historyProbe: { instance: string; pageshow: boolean[]; ready?: boolean } };
 const html = `<!doctype html><html><head><meta charset="utf-8"><title>Form history restoration</title>
 <script>window.historyProbe={instance:crypto.randomUUID(),pageshow:[]};addEventListener('pageshow',e=>historyProbe.pageshow.push(e.persisted));</script>
-<script type="module">import '/cdn/define/input.js';await customElements.whenDefined('acme-input');await document.querySelector('acme-input').updateComplete;historyProbe.ready=true;</script></head>
+<script type="module">import '/dist/define/input.js';await customElements.whenDefined('acme-input');await document.querySelector('acme-input').updateComplete;historyProbe.ready=true;</script></head>
 <body><form id="form"><label>Native<input id="native" name="native" value="initial-native"></label><label for="custom">Custom</label><acme-input id="custom" name="custom" value="initial-custom"></acme-input></form><a id="away" href="/away">Leave this document</a></body></html>`;
 const server = Bun.serve({
   hostname: "127.0.0.1",
@@ -19,7 +21,9 @@ const server = Bun.serve({
     const pathname = new URL(request.url).pathname;
     if (pathname === "/") return new Response(html, { headers: { "Content-Type": "text/html" } });
     if (pathname === "/away") return new Response("<!doctype html><title>Away</title><h1>Other document</h1>", { headers: { "Content-Type": "text/html" } });
-    const file = Bun.file(path.join(root, "dist", pathname));
+    const filename = distribution.file(pathname);
+    if (!filename) return new Response("Not found", { status: 404 });
+    const file = Bun.file(filename);
     return (await file.exists()) ? new Response(file) : new Response("Not found", { status: 404 });
   },
 });
@@ -71,14 +75,15 @@ try {
 } finally {
   server.stop(true);
 }
-const entry = Bun.file(path.join(root, "dist/cdn/define/input.js"));
+const entry = Bun.file(distribution.file("/dist/define/input.js")!);
 await Bun.write(
   process.env.ACME_HISTORY_RESULTS ?? path.join(import.meta.dir, "history-results.json"),
   JSON.stringify(
     {
       date: new Date().toISOString(),
       bun: Bun.version,
-      version: (await Bun.file(path.join(root, "packages/core/package.json")).json()).version,
+      version: distribution.version,
+      browserModuleRoot: distribution.moduleRoot,
       entrySha256: createHash("sha256")
         .update(await entry.bytes())
         .digest("hex"),

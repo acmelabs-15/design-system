@@ -14,7 +14,12 @@ test("release validation verifies actual archive identity, tags and immutable by
     for (const name of releasePackageNames) {
       const dir = path.join(root, name.split("/")[1]);
       fs.mkdirSync(dir);
-      const pkg = { name, version: "0.3.0", files: ["index.js"], peerDependencies: name === releasePackageNames[0] ? {} : { [releasePackageNames[0]]: "0.3.0" } };
+      const pkg = {
+        name,
+        version: "0.3.0",
+        files: ["index.js"],
+        peerDependencies: name === releasePackageNames[0] || name === "@acmelabs/design-system-browser" ? {} : { [releasePackageNames[0]]: "0.3.0" },
+      };
       fs.writeFileSync(path.join(dir, "package.json"), JSON.stringify(pkg));
       fs.writeFileSync(path.join(dir, "index.js"), "export const fixture=true;");
       const packed = await packPackage(dir, path.join(root, "archives"));

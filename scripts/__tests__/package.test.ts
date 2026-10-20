@@ -4,6 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import { packPackage, productionManifest } from "../package";
 import { corePackageDirectory, ensureCorePackageLinks, readCorePackage } from "../core-package";
+import { browserPackageDirectory, browserPackageLinks, ensureBrowserPackageLinks, readBrowserPackage } from "../browser-package";
 
 test("consumer workspaces resolve one live core with coordinated release metadata", () => {
   const root = path.resolve(import.meta.dir, "../..");
@@ -12,6 +13,14 @@ test("consumer workspaces resolve one live core with coordinated release metadat
   expect(workspace.private).toBe(true);
   expect(workspace.name).not.toBe(core.name);
   expect(workspace.overrides?.[core.name]).toBeUndefined();
+  const browser = readBrowserPackage(root);
+  expect(browser.version).toBe(core.version);
+  expect(browser.repository).toEqual(core.repository);
+  expect(browser.dependencies).toBeUndefined();
+  expect(browser.peerDependencies).toBeUndefined();
+  expect(core.files).not.toContain("dist");
+  expect(core.files).not.toContain("dist/cdn");
+  expect(core.files).not.toContain("dist/bundle");
   for (const name of ["react", "devtools", "mcp"]) {
     const directory = path.join(root, "packages", name);
     const pkg = JSON.parse(fs.readFileSync(path.join(directory, "package.json"), "utf8"));
@@ -22,6 +31,37 @@ test("consumer workspaces resolve one live core with coordinated release metadat
     const probe = Bun.spawnSync([process.execPath, "-e", "console.log(Bun.resolveSync(process.argv[1],process.argv[2]))", core.name, directory], { stdout: "pipe", stderr: "pipe" });
     expect(probe.exitCode).toBe(0);
     expect(fs.realpathSync(probe.stdout.toString().trim())).toBe(path.join(root, "dist/index.js"));
+  }
+});
+
+test("browser staging dereferences only the fixed graph and nested notice links", async () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "acme-browser-pack-"));
+  try {
+    const directory = browserPackageDirectory(root);
+    fs.mkdirSync(directory, { recursive: true });
+    for (const target of Object.values(browserPackageLinks)) {
+      fs.mkdirSync(path.join(root, target), { recursive: true });
+      fs.writeFileSync(path.join(root, target, "record.txt"), target);
+    }
+    fs.writeFileSync(path.join(directory, "README.md"), "Browser distribution");
+    fs.writeFileSync(path.join(directory, "package.json"), JSON.stringify({ name: "browser-pack-fixture", version: "0.0.0", files: [...Object.keys(browserPackageLinks), "README.md"] }));
+    ensureBrowserPackageLinks(root);
+    const result = await packPackage(directory, path.join(root, "artifacts"));
+    const files = Bun.spawnSync(["tar", "-tf", result.file], { stdout: "pipe", stderr: "pipe" });
+    expect(files.exitCode).toBe(0);
+    for (const name of Object.keys(browserPackageLinks)) {
+      expect(files.stdout.toString()).toContain(`package/${name}/record.txt`);
+    }
+    fs.unlinkSync(path.join(directory, "licenses/assets"));
+    fs.symlinkSync(path.join(root, "dist"), path.join(directory, "licenses/assets"));
+    await expect(packPackage(directory, path.join(root, "artifacts"))).rejects.toThrow("Unapproved package symlink");
+    fs.unlinkSync(path.join(directory, "licenses/assets"));
+    ensureBrowserPackageLinks(root);
+    fs.renameSync(path.join(root, "dist"), path.join(root, "substituted"));
+    fs.symlinkSync(path.join(root, "substituted"), path.join(root, "dist"));
+    await expect(packPackage(directory, path.join(root, "artifacts"))).rejects.toThrow("Unapproved package symlink");
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
   }
 });
 

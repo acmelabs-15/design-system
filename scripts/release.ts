@@ -20,6 +20,7 @@ import {
 } from "./release-policy";
 import { npmCommand, verifyNpmCli } from "./release-npm";
 import { waitForPublishedArchive } from "./release-registry";
+import { assertArchiveFileBudget } from "./package-contents";
 
 export async function archiveManifest(file: string): Promise<ReleasePackage> {
   const child = Bun.spawn(["tar", "-xOf", file, "package/package.json"], { stdout: "pipe", stderr: "pipe" });
@@ -47,7 +48,7 @@ export function releaseSource(root: string): Pick<ReleaseRecord, "commit" | "sou
 }
 export async function prepareRelease(root = repositoryRoot): Promise<ReleaseRecord> {
   await verifyNpmCli(root);
-  const dirs = [corePackageDirectory(root), ...["react", "devtools", "mcp"].map((name) => path.join(root, "packages", name))];
+  const dirs = [corePackageDirectory(root), ...["react", "devtools", "mcp", "browser"].map((name) => path.join(root, "packages", name))];
   const packages = dirs.map((dir) => JSON.parse(fs.readFileSync(path.join(dir, "package.json"), "utf8")) as ReleasePackage);
   const version = validatePackageSet(packages),
     versions = new Map(packages.map((pkg) => [pkg.name, pkg.version]));
@@ -86,6 +87,7 @@ export async function validateRelease(directory: string, ref?: string): Promise<
     if ((await digest(file)) !== archive.sha512) {
       throw new Error("Release archive digest mismatch: " + archive.name);
     }
+    await assertArchiveFileBudget(file);
     const manifest = await archiveManifest(file);
     if (manifest.name !== archive.name || manifest.version !== archive.version) {
       throw new Error("Release archive identity mismatch");
@@ -130,9 +132,12 @@ export async function publishRelease(directory: string): Promise<void> {
     await waitForPublishedArchive(archive);
   }
   for (const archive of pending) {
-    const result = await npmCommand(["publish", path.join(directory, "archives", archive.filename), "--access=public", "--provenance", "--ignore-scripts", "--registry=https://registry.npmjs.org"], {
-      env: publicationEnvironment(process.env),
-    });
+    const result = await npmCommand(
+      ["publish", path.join(directory, "archives", archive.filename), "--access=public", "--provenance", "--ignore-scripts", "--loglevel=warn", "--registry=https://registry.npmjs.org"],
+      {
+        env: publicationEnvironment(process.env),
+      },
+    );
     if (result.status !== 0) {
       throw new Error("Publication failed: " + result.stderr);
     }

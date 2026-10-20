@@ -1,6 +1,8 @@
 import { realpathSync } from "node:fs";
 import path from "node:path";
 import ts from "typescript";
+import assert from "node:assert/strict";
+import { browserDistribution } from "../browser-distribution";
 
 const here = import.meta.dir;
 const work = process.env.ACME_SCOPED_WORK ?? "/tmp/acme-m26-scoped";
@@ -12,6 +14,9 @@ const { chromium, firefox, webkit } = await import(path.join(runtime, "node_modu
 const manifest = await Bun.file(path.join(packageRoot, "package.json")).json();
 const source = process.env.ACME_SCOPED_SOURCE === "1";
 const cdn = process.env.ACME_SCOPED_CDN === "1";
+if (cdn && !process.env.ACME_BROWSER_PACKAGE && !process.env.ACME_RELEASE_CONSUMER) throw new Error("Set ACME_BROWSER_PACKAGE or ACME_RELEASE_CONSUMER for the matching browser package");
+const distribution = cdn ? browserDistribution(path.resolve(here, "../../../.."), process.env.ACME_BROWSER_PACKAGE, process.env.ACME_RELEASE_CONSUMER) : undefined;
+if (distribution) assert.equal(distribution.version, manifest.version, "Core and browser release versions must match");
 const imperativeRed = process.env.ACME_SCOPED_RED_IMPERATIVE === "1";
 if (cdn && source) throw new Error("Choose source or CDN delivery, not both.");
 const fixtureFile = path.join(here, "fixture.ts");
@@ -19,7 +24,7 @@ const fixtureOutput = path.join(work, "bundle/fixture.js");
 if (cdn) {
   const input = (await Bun.file(fixtureFile).text()).replace(
     /@acmelabs\/design-system\/(components|register)\/([a-z0-9-]+)/g,
-    (_, kind, name) => kind === "register" ? `/cdn/register/${name}.js` : `/cdn/components/${name}/${name}.js`,
+    (_, kind, name) => kind === "register" ? `/dist/register/${name}.js` : `/dist/components/${name}/${name}.js`,
   );
   await Bun.write(fixtureOutput, ts.transpileModule(input, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext } }).outputText);
 } else {
@@ -52,10 +57,9 @@ const server = Bun.serve({ hostname: "127.0.0.1", port: 0, async fetch(req) {
   if (route === "/polyfill.js") return new Response(polyfill, { headers: { "content-type": "text/javascript" } });
   if (route === "/bootstrap.js") return new Response(bootstrap, { headers: { "content-type": "text/javascript" } });
   if (route === "/fixture.js") return new Response(Bun.file(fixtureOutput), { headers: { "content-type": "text/javascript" } });
-  if (route.startsWith("/cdn/")) {
-    const root = path.join(packageRoot, "dist/cdn");
-    const file = path.resolve(root, route.slice(5));
-    if (!file.startsWith(root + path.sep) || !(await Bun.file(file).exists())) return new Response("Missing browser module", { status: 404 });
+  if (route.startsWith("/dist/")) {
+    const file = distribution?.file(route);
+    if (!file || !(await Bun.file(file).exists())) return new Response("Missing browser module", { status: 404 });
     return new Response(Bun.file(file), { headers: { "content-type": "text/javascript" } });
   }
   return new Response('<!doctype html><body><script type="module" src="/bootstrap.js"></script>', { headers: { "content-type": "text/html" } });
@@ -63,6 +67,7 @@ const server = Bun.serve({ hostname: "127.0.0.1", port: 0, async fetch(req) {
 const report: any = {
   date: new Date().toISOString(), runtime: Bun.version,
   package: { name: manifest.name, version: manifest.version, path: packageRoot, source, cdn, imperativeRed },
+  browserModuleRoot: distribution?.moduleRoot,
   polyfill: { version: "0.0.10", source: "m05-explicit-style-helper-2026-09-21.json#/browser/reproduction/polyfill.js", sha256: new Bun.CryptoHasher("sha256").update(polyfill).digest("hex") },
   engines: [],
 };

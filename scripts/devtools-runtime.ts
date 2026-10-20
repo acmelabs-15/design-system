@@ -7,9 +7,20 @@ const treeHash = "a7a7a305ff7256bc71e423fc6cefdf14726bc1d57dc19e1ab0ea0a49beaa06
 const original = 'props.keyName && typeof props.value !== "object"';
 const corrected = 'props.keyName && (props.value === null || typeof props.value !== "object")';
 
+export class PackageLicenseMissingError extends Error {
+  readonly code = "PACKAGE_LICENSE_MISSING";
+  constructor(directory: string) {
+    super("Expected one package license file in " + directory);
+    this.name = "PackageLicenseMissingError";
+  }
+}
+
 export async function packageLicense(directory: string): Promise<{ file: string; text: string }> {
-  const files = (await readdir(directory, { withFileTypes: true })).filter((entry) => entry.isFile() && /^licen[cs]e(?:\.(?:txt|md))?$/i.test(entry.name));
-  if (files.length !== 1) {
+  const files = (await readdir(directory, { withFileTypes: true })).filter((entry) => /^licen[cs]e(?:\.(?:txt|md))?$/i.test(entry.name));
+  if (!files.length) {
+    throw new PackageLicenseMissingError(directory);
+  }
+  if (files.length !== 1 || !files[0].isFile()) {
     throw new Error("Expected one package license file in " + directory);
   }
   const file = files[0].name;

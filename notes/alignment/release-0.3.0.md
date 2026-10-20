@@ -5,13 +5,13 @@ Requested by Peter on 2026-09-27. This authorizes the release work that was prev
 ## Current state
 
 - Local acceptance is complete; see [final verification](evidence/m26-final/README.md).
-- Four packages target0.3.0. React, Devtools and MCP0.3.0 are published. Their actual public tarballs and cryptographic provenance match the signed release. Core publication is running.
+- The coordinated0.3.0 release is incomplete. React, Devtools and MCP0.3.0 are published and verified. Core0.3.0 is rejected with E415, “Too many files”; its archive has185,977 files.
 - PR #1 is merged at05aff0c130887055281824dc5d103cb942e794cd. Annotated tagv0.3.0 points to that commit.
-- GitHub access is administrative. ACME_RELEASE_ENABLED is true. ACME_PAGES_ENABLED remains unset; Pages currently serves main/docs.
+- GitHub access is administrative. ACME_RELEASE_ENABLED is reset to false after the rejection. ACME_PAGES_ENABLED remains unset; Pages currently serves main/docs.
 - A scan of all new Git history found no npm/GitHub token or private-key pattern; no credentials were printed by this check.
 - Linux run39417304552 and exact-tag preparation/signing run39420121228 pass completely. All four signed archives also pass local signature/statement verification.
 - Fresh CLI login succeeds as loriensleafs, with write access to core. Peter completes the separate npm security check; core's publisher matches publish-package.yml, acmelabs-15/design-system, environment publish-package, and permits direct and staged publication.
-- The GitHub release is public and triggers run39433342050 for core publication. Companion trusted-publisher setup belongs immediately before their next real version. Pages deployment remains pending. Manual platform limits remain documented.
+- The GitHub release is public, but run39433342050 fails at the registry after complete verification succeeds. Correct package composition before another release. Companion trusted-publisher setup belongs immediately before their next real version. Pages deployment remains pending. Manual platform limits remain documented.
 
 ## Intended sequence
 
@@ -140,3 +140,21 @@ ACME_RELEASE_ENABLED is set to true. The prepared GitHub release becomes public 
 The live npm202 response exposes a release-script defect: CLI success alone does not establish public availability. On codex/release-registry-verification, scripts/release-registry.ts waits for exact public package/version metadata, matching SHA-512 and the expected registry provenance link. Existing versions complete confirmation before any new upload. New uploads complete confirmation before the success log. Pending review, absent provenance, conflicting metadata and registry errors cannot pass.
 
 The helper verifies metadata; the release's separate acceptance script verifies actual tarballs and cryptographic provenance. This follow-up changes future automation, not the signed0.3.0 source or archives. Static checks and strict types pass. The full suite passes976 tests before review strengthening; the final focused suite passes15 tests with52 assertions. Independent review requests read/wait counts and a persistent-missing-provenance regression; both are added. Final review approves: private-copy mutations that accept absent or empty provenance fail the tests.
+
+The fix is committed as3b7e84e177dd4da23649ef9e40fcb91423d35580. [PR #2](https://github.com/acmelabs-15/design-system/pull/2) passes the complete [Linux run39433828669](https://github.com/acmelabs-15/design-system/actions/runs/39433828669) and merges with merge commitffe1a9824c1f2e2b7571ee52cee73dd1fc8b4541. The final records/cleanup branch is codex/release-finalization. The release tag remains unchanged.
+
+Run39433342050's complete verification job passes. Its actual core publication starts at2026-10-20T14:16:10Z and is still running at this checkpoint. A public-registry confirmation attempt correctly exhausts while core0.3.0 remains absent; do not infer availability from the active upload step. The three companion latest tags are verified as0.3.0. Pages remains unchanged.
+
+### Core registry rejection: too many files
+
+The publication job ends at2026-10-20T14:21:57Z. npm returns E415, HTTP415, “Too many files” for the core package PUT. The pinned CLI reports185,977 files,21.7MB compressed and152.6MB unpacked. The [sanitized failure record](evidence/release-0.3.0/publication-failure.json) preserves the exact registry result. The complete verification job passes, exposing a missing package-count gate rather than an authentication failure.
+
+Independent archive enumeration agrees:97,129 JavaScript files,42,235 declarations,42,235 declaration maps and4,351 JSON files. Generated icon modules and repeated declarations dominate. The browser graph alone contains approximately54,884 files. Removing maps alone cannot make the combined archive small enough.
+
+Primary publisher evidence records [59,869 accepted and69,045 rejected files](https://github.com/pulumi/pulumi/issues/11504#issuecomment-1333920882), plus [65,284 rejected files](https://github.com/pulumi/pulumi-azure-native/issues/2294). These are observations, not current official npm limit documentation. Use60,000 as a conservative project budget while retaining actual publication as the final registry check. No test package is published to probe npm's cutoff.
+
+Under delegated execution, investigate a separate browser distribution and a shared declaration for equivalent artwork imports. Retain precise class, definition and registration declarations. An independent review also notices that current definition-only declarations erase native tag types despite the recorded delivery contract; the correction must cover that consumer case. No icon/style/runtime behavior is to be removed to satisfy the file budget.
+
+ACME_RELEASE_ENABLED is reset to false. The failed0.3.0 tag and signed archives remain immutable; the published companions are not unpublished or rewritten. Record the corrected release identity before tagging. The working branch is codex/release-finalization. A delegated test-only task prepares the actual archive-count regression; implementation and final packaging selection remain pending.
+
+The [selected packaging correction](../decisions/browser-distribution-package.md) proceeds as coordinated0.3.1. Its [recovery plan](release-0.3.1.md) is the current execution record. GitHub's0.3.0 release is marked prerelease/not latest with an explicit incomplete-publication notice; its tag and signed assets remain unchanged.

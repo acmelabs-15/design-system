@@ -3,6 +3,7 @@ import path from "node:path";
 import ts from "typescript";
 import { compileLitTemplates } from "@lit-labs/compiler";
 import { writeManifest } from "./manifest";
+import { emitPackageDeclarations } from "./declarations";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 const SRC = path.join(ROOT, "src"),
@@ -37,22 +38,12 @@ for (const f of files) {
 }
 console.log(`modules: ${files.length} files, ${compiled} with compiled templates`);
 
-// 2. Declarations with maps.
-const program = ts.createProgram(files, {
+// 2. Public declarations retain precise classes without repeated generated interfaces.
+const diags = emitPackageDeclarations(files, SRC, DIST, {
   ...compilerOptions,
-  declaration: true,
-  declarationMap: true,
-  emitDeclarationOnly: true,
-  outDir: DIST,
-  rootDir: SRC,
   skipLibCheck: true,
   lib: ["lib.es2022.d.ts", "lib.dom.d.ts", "lib.dom.iterable.d.ts"],
 });
-const emit = program.emit();
-const diags = ts
-  .getPreEmitDiagnostics(program)
-  .concat(emit.diagnostics)
-  .filter((d) => d.category === ts.DiagnosticCategory.Error);
 for (const d of diags.slice(0, 30)) {
   console.error(ts.flattenDiagnosticMessageText(d.messageText, "\n"), d.file ? `${path.relative(ROOT, d.file.fileName)}:${d.file.getLineAndCharacterOfPosition(d.start ?? 0).line + 1}` : "");
 }

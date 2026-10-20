@@ -122,7 +122,17 @@ test("package exports track the source records and retain unrelated authored exp
   writePackageExports(collectComponents(root), root);
   const first = fs.readFileSync(file, "utf8"),
     pkg = JSON.parse(first);
-  expect(pkg.exports["./register/*"]).toEqual({ types: "./dist/register/*.d.ts", import: "./dist/register/*.js", default: "./dist/register/*.js" });
+  expect(pkg.exports["./register/*"]).toBeUndefined();
+  expect(pkg.exports["./define/*"]).toBeUndefined();
+  expect(pkg.exports["./cdn/*"]).toBeUndefined();
+  expect(pkg.exports["./register/one"]).toEqual({ types: "./dist/types/registration.d.ts", import: "./dist/register/one.js", default: "./dist/register/one.js" });
+  expect(pkg.exports["./define/one"]).toEqual({ types: "./dist/types/definition.d.ts", import: "./dist/define/one.js", default: "./dist/define/one.js" });
+  expect(pkg.exports["./icons/artwork/*"]).toBeUndefined();
+  expect(pkg.exports["./icons/artwork/outlined/filled/*"]).toEqual({
+    types: "./dist/generated/icons/records/*.d.ts",
+    import: "./dist/generated/icons/artwork/outlined/filled/*.js",
+    default: "./dist/generated/icons/artwork/outlined/filled/*.js",
+  });
   expect(pkg.sideEffects).not.toContain("./dist/register/*.js");
   expect(pkg.exports["./components/one"]).toEqual({ types: "./dist/one.d.ts", import: "./dist/one.js", default: "./dist/one.js" });
   expect(pkg.exports["./components/stale"]).toBeUndefined();

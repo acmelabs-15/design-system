@@ -1,9 +1,10 @@
 import { ensureCorePackageLinks } from "./core-package";
 import { browserModuleFiles, writeBrowserModules } from "./browser-modules";
 import { writeFlowAssets, browserAssetPlugin } from "./browser-assets";
+import { buildBrowserPackageNotices, ensureBrowserPackageLinks } from "./browser-package";
 /// <reference types="bun" />
 // Builds dist/ two ways, following lit.dev/docs/tools/publishing:
-//   dist/*.js (+ .d.ts, .d.ts.map)  unbundled ES2022 modules with Lit templates precompiled by @lit-labs/compiler;
+//   dist/*.js (+ .d.ts)             unbundled ES2022 modules with Lit templates precompiled by @lit-labs/compiler;
 //                                    the npm entry, for consumers with a bundler
 //   dist/bundle/design-system(.min).js  ES module entries with Lit, shared chunks and on-demand worker assets,
 //                                    for a static page that loads it from jsdelivr with no build step
@@ -208,3 +209,5 @@ console.log(
   size(path.join(DIST, "styles/dashboard.css")),
 );
 await runStage("react.ts");
+await buildBrowserPackageNotices(ROOT);
+ensureBrowserPackageLinks(ROOT);

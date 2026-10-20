@@ -41,9 +41,13 @@
         "urlpattern-polyfill": "^10.0.0",
       },
     },
+    "packages/browser": {
+      "name": "@acmelabs/design-system-browser",
+      "version": "0.3.1",
+    },
     "packages/core": {
       "name": "@acmelabs/design-system",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "dependencies": {
         "@floating-ui/dom": "^1",
         "@internationalized/date": "3.12.4",
@@ -68,7 +72,7 @@
     },
     "packages/devtools": {
       "name": "@acmelabs/design-system-devtools",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "devDependencies": {
         "@tanstack/devtools-ui": "0.7.1",
         "solid-js": "1.9.17",
@@ -79,7 +83,7 @@
     },
     "packages/mcp": {
       "name": "@acmelabs/design-system-mcp",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "bin": {
         "acme-design-system-mcp": "./dist/cli.js",
       },
@@ -93,7 +97,7 @@
     },
     "packages/react": {
       "name": "@acmelabs/design-system-react",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "dependencies": {
         "@lit/react": "1.0.8",
       },
@@ -112,6 +116,8 @@
   },
   "packages": {
     "@acmelabs/design-system": ["@acmelabs/design-system@workspace:packages/core"],
+
+    "@acmelabs/design-system-browser": ["@acmelabs/design-system-browser@workspace:packages/browser"],
 
     "@acmelabs/design-system-devtools": ["@acmelabs/design-system-devtools@workspace:packages/devtools"],
 

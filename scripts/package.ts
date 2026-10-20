@@ -2,6 +2,8 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { corePackageDirectory, corePackageLinks } from "./core-package";
+import { assertArchiveFileBudget } from "./package-contents";
+import { browserPackageDirectory, browserPackageLinks } from "./browser-package";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 const FIELDS = [
@@ -62,6 +64,7 @@ export function productionManifest(source: Record<string, unknown>, workspaceVer
 function packageInput(sourceRoot: string, relative: string): string {
   const repository = path.resolve(sourceRoot, "../..");
   const isCore = sourceRoot === corePackageDirectory(repository);
+  const links: Readonly<Record<string, string>> | undefined = isCore ? corePackageLinks : sourceRoot === browserPackageDirectory(repository) ? browserPackageLinks : undefined;
   let input = sourceRoot;
   for (const part of relative.split(/[\\/]/)) {
     if (!part || part === "." || part === "..") {
@@ -71,9 +74,9 @@ function packageInput(sourceRoot: string, relative: string): string {
     if (!fs.lstatSync(input).isSymbolicLink()) {
       continue;
     }
-    const approved = isCore && path.dirname(input) === sourceRoot ? corePackageLinks[part as keyof typeof corePackageLinks] : undefined;
+    const approved = links?.[path.relative(sourceRoot, input).split(path.sep).join("/")];
     const target = path.resolve(path.dirname(input), fs.readlinkSync(input));
-    if (!approved || target !== path.join(repository, approved) || fs.lstatSync(target).isSymbolicLink()) {
+    if (!approved || target !== path.join(repository, approved) || fs.lstatSync(target).isSymbolicLink() || fs.realpathSync(target) !== path.join(fs.realpathSync(repository), approved)) {
       throw new Error("Unapproved package symlink: " + input);
     }
     input = target;
@@ -96,6 +99,13 @@ function verifyPackageTree(input: string): void {
 export async function packPackage(sourceRoot = corePackageDirectory(ROOT), destination = path.join(ROOT, ".artifacts/packages"), workspaceVersions = new Map<string, string>()) {
   sourceRoot = path.resolve(sourceRoot);
   destination = path.resolve(destination);
+  const repository = path.resolve(sourceRoot, "../..");
+  if (
+    [corePackageDirectory(repository), browserPackageDirectory(repository)].includes(sourceRoot) &&
+    fs.realpathSync(sourceRoot) !== path.join(fs.realpathSync(repository), path.relative(repository, sourceRoot))
+  ) {
+    throw new Error("Unapproved package directory: " + sourceRoot);
+  }
   const source = JSON.parse(fs.readFileSync(path.join(sourceRoot, "package.json"), "utf8"));
   const manifest = productionManifest(source, workspaceVersions);
   if (!Array.isArray(source.files) || !source.files.length) {
@@ -135,6 +145,7 @@ export async function packPackage(sourceRoot = corePackageDirectory(ROOT), desti
     if (!fs.existsSync(file)) {
       throw new Error("Package output is missing: " + file);
     }
+    await assertArchiveFileBudget(file);
     return { file, manifest, log: stdout + stderr };
   } finally {
     fs.rmSync(stage, { recursive: true, force: true });
