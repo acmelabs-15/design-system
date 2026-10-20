@@ -4,7 +4,7 @@ description: Use the generated @acmelabs/design-system-react wrappers with React
 license: MIT
 metadata:
   library: "@acmelabs/design-system"
-  library_version: "0.3.1"
+  library_version: "0.3.2"
   type: "sub-skill"
   framework: "react"
 ---

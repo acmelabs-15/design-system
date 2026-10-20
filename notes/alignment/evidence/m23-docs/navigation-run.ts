@@ -18,10 +18,14 @@ for (const engine of ["chromium", "firefox", "webkit"]) {
   });
   try {
     const page = await browser.newPage({ viewport: { width: 1280, height: 800 } }),
-      errors = [];
+      errors = [],
+      warnings = [];
     page.setDefaultTimeout(10000);
     await page.route(/^https:\/\/(fonts\.googleapis\.com|fonts\.gstatic\.com)\//, route => route.abort());
     page.on("pageerror", (error) => errors.push(String(error)));
+    page.on("console", (message) => {
+      if (message.type() === "warning") warnings.push(message.text());
+    });
     await page.goto(base + "/");
     await page.locator(".docs-page-navigation").waitFor();
     assert.equal(
@@ -117,7 +121,8 @@ for (const engine of ["chromium", "firefox", "webkit"]) {
     assert.ok(zoom.padding >= zoom.height, JSON.stringify(zoom));
     assert.ok(zoom.width <= zoom.innerWidth, JSON.stringify(zoom));
     assert.equal(errors.length, 0, errors.join("\n"));
-    reports.push({ engine, passed: true, widths: [1280, 768, 320], textScale: 2, fonts: "fallback; Google font requests blocked", errors });
+    assert.deepEqual(warnings, [], "production navigation must not emit development or lifecycle warnings");
+    reports.push({ engine, passed: true, widths: [1280, 768, 320], textScale: 2, fonts: "fallback; Google font requests blocked", errors, warnings });
     console.log(engine, "navigation PASS");
   } finally {
     await browser.close();

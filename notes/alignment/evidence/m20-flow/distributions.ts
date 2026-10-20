@@ -24,7 +24,7 @@ const serve = async (request: Request) => {
 };
 const server = Bun.serve({ port: 0, fetch: serve });
 const remote = Bun.serve({ port: 0, fetch: serve });
-type Result = { entry: string; cross: boolean; pass: boolean; workerAsset?: string; error?: string; errors: string[] };
+type Result = { entry: string; cross: boolean; pass: boolean; workerAsset?: string; error?: string; errors: string[]; warnings: string[] };
 const reports: { engine: string; checks: Result[] }[] = [];
 try {
   for (const engine of ["chromium", "firefox", "webkit"]) {
@@ -43,8 +43,12 @@ try {
         for (const cross of [false, true]) {
           const page = await browser.newPage({ reducedMotion: "reduce" });
           const errors: string[] = [],
+            warnings: string[] = [],
             requests: string[] = [];
           page.on("pageerror", (error: Error) => errors.push(String(error)));
+          page.on("console", (message: { type(): string; text(): string }) => {
+            if (message.type() === "warning") warnings.push(message.text());
+          });
           page.on("request", (request: { url(): string }) => requests.push(request.url()));
           try {
             await page.goto(server.url.href);
@@ -69,10 +73,11 @@ try {
             await closed;
             assert.equal(page.workers().length, 0);
             assert.deepEqual(errors, []);
-            checks.push({ entry, cross, pass: true, workerAsset: requests.find((url) => /elk-worker/.test(url)), errors });
+            assert.deepEqual(warnings, [], "shipped browser distributions must not emit development or lifecycle warnings");
+            checks.push({ entry, cross, pass: true, workerAsset: requests.find((url) => /elk-worker/.test(url)), errors, warnings });
             console.log(engine, "PASS", entry, cross ? "cross-origin" : "same-origin");
           } catch (error) {
-            checks.push({ entry, cross, pass: false, error: String(error), errors });
+            checks.push({ entry, cross, pass: false, error: String(error), errors, warnings });
           } finally {
             await page.close();
           }
