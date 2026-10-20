@@ -19,6 +19,7 @@ import {
   type ReleaseRecord,
 } from "./release-policy";
 import { npmCommand, verifyNpmCli } from "./release-npm";
+import { waitForPublishedArchive } from "./release-registry";
 
 export async function archiveManifest(file: string): Promise<ReleasePackage> {
   const child = Bun.spawn(["tar", "-xOf", file, "package/package.json"], { stdout: "pipe", stderr: "pipe" });
@@ -114,13 +115,19 @@ export async function publishRelease(directory: string): Promise<void> {
     }
   }
   // Validate the whole set first. A retry may skip only byte-identical published archives.
-  const pending: ArchiveRecord[] = [];
+  const pending: ArchiveRecord[] = [],
+    existing: ArchiveRecord[] = [];
   for (const archive of record.packages) {
     const response = await fetch("https://registry.npmjs.org/" + encodeURIComponent(archive.name) + "/" + record.version, { redirect: "error" });
     const metadata = response.status === 200 ? await response.json() : undefined;
     if (registryVersionState(response.status, metadata?.dist?.integrity, archive.sha512) === "missing") {
       pending.push(archive);
+    } else {
+      existing.push(archive);
     }
+  }
+  for (const archive of existing) {
+    await waitForPublishedArchive(archive);
   }
   for (const archive of pending) {
     const result = await npmCommand(["publish", path.join(directory, "archives", archive.filename), "--access=public", "--provenance", "--ignore-scripts", "--registry=https://registry.npmjs.org"], {
@@ -129,7 +136,8 @@ export async function publishRelease(directory: string): Promise<void> {
     if (result.status !== 0) {
       throw new Error("Publication failed: " + result.stderr);
     }
-    console.log(archive.name + "@" + record.version + " published");
+    await waitForPublishedArchive(archive);
+    console.log(archive.name + "@" + record.version + " published; registry metadata verified");
   }
 }
 if (import.meta.main) {

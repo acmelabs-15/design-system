@@ -300,6 +300,22 @@ For [GHSA-ch52-4w7c-c8xp](https://github.com/advisories/GHSA-ch52-4w7c-c8xp), al
 
 The audit retains the native findings and gives only these last two exact advisories verified dispositions. Proofs pin source hashes, dependency versions/paths, the Braces patch, npm's build-only boundary and a2026-11-20 review deadline. Required/optional/peer consumer dependencies invalidate the npm disposition. New findings and changed proofs block release. Security review and the red/green regressions are recorded in [the release handoff](../alignment/release-0.3.0.md#dependency-audit-correction).
 
+### Direct first-publication response — 2026-10-20
+
+The real React0.3.0 publish command exits0 after successful browser authentication, but its package PUT returns202 and the registry exposes only0.0.0-stage. Version0.3.0 remains absent in full, abbreviated and version-specific public metadata. The account's CLI and website staging lists contain no staged version to approve. The package page calls the placeholder a temporary holding version. The pinned CLI's normal publish path sends PUT and treats any successful2xx response as completion; its stage path uses a different POST route and a stageId, neither observed here.
+
+This live result supersedes the expectation that direct first publication avoids npm's placeholder. It does not establish that the real version is available or that a user-approvable stage exists. The task retries the exact verified archive once after the name exists, with unchanged provenance, and waits for the required npm authentication. [Release checkpoint and next verification](../alignment/release-0.3.0.md#react-package-creation-did-not-confirm-version-publication).
+
+The authenticated retry returns409 for an existing staged version. The Versions tab later identifies React0.3.0 as Validating and states that npm's automated review has not completed. Its lack of a user-approvable staging record is therefore not proof of missing authentication. Preserve the reserved version and wait for the external review; do not repeatedly upload or unpublish it.
+
+Explicit npm stage publish returns usable stage IDs for Devtools and MCP. Both staged tarballs match their signed archive SHA-512 values. Owner approval succeeds, and both public0.3.0 registry records match the signed bytes and include provenance. This verifies the explicit staging route with the pinned Bun/npm stack, while React's direct first-publication path remains under npm review.
+
+The [current trusted-publisher expiry policy](https://github.blog/changelog/2026-10-02-unvalidated-npm-trusted-publishing-configurations-now-expire/) requires a successful publish within48 hours of creating a new configuration. An authenticated first version does not establish a subsequently created trust configuration. Set up companion configurations immediately before their next real version rather than leaving unused configurations to expire or inventing an extra release. Core's existing validated configuration remains the current release's automated publisher.
+
+React's automated review later completes without another mutation. Its public tarball and cryptographic provenance match the signed release. This confirms that the earlier202 was acceptance into asynchronous review, not proof of publication or a missing authentication step.
+
+The follow-up release helper requires public package/version identity, archive SHA-512 and the expected registry provenance link before reporting success. It confirms already-published archives before new writes and newly uploaded archives before logging completion. Pending review or absent provenance exhausts a bounded wait with an explicit incomplete-publication error; conflicts and registry errors fail immediately. Regression tests cover the actual404→metadata-without-provenance→complete sequence, including consumed responses and waits, plus persistent missing provenance. Actual tarball and cryptographic verification remain separate release acceptance checks.
+
 ### Credential-handling incident
 
 During a delegated registry investigation in this continuation, an unnecessary read of local npm configuration printed an npm authentication token into tool output. The value is not reproduced here, was not added to repository files and was not reused. Peter was informed in commentary. The token should be revoked and replaced by its owner; no credential rotation or account change was attempted. Keep this follow-up visible in the final handoff without reading or printing the token again.
