@@ -184,12 +184,13 @@ export async function checkStage(stage: CheckStage) {
       "--types",
       "bun,node",
       "scripts/check.ts",
+      "scripts/dependency-audit.ts",
       ...new Bun.Glob("scripts/release*.ts").scanSync(repositoryRoot),
     ]);
   } else if (stage === "unit") {
     await command(["test"]);
   } else if (stage === "audit") {
-    await command(["audit", "--audit-level=high"]);
+    await command(["scripts/dependency-audit.ts"]);
   } else if (stage === "packages") {
     await prepareRelease();
     await validateRelease(path.join(repositoryRoot, ".artifacts/release"));
