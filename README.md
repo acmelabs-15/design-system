@@ -10,10 +10,10 @@ No build step. Import the elements the page uses:
 
 ```html
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Google+Sans+Code:wght@400..700&display=swap">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.3.0/dist/styles/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@0.3.1/styles/tokens.css">
 <script type="module">
-  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.3.0/dist/cdn/define/button.js";
-  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.3.0/dist/cdn/define/badge.js";
+  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@0.3.1/dist/define/button.js";
+  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@0.3.1/dist/define/badge.js";
 </script>
 
 <acme-button>Deploy</acme-button>
@@ -24,16 +24,16 @@ A host that admits a script from a CDN but no stylesheet from one (the Claude ar
 can use the browser bootstrap, which installs `tokens.css` into the document on import:
 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.3.0/dist/cdn/standalone.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@0.3.1/dist/standalone.js"></script>
 ```
 
 `tokens.css` is the global layer: the color scales, the semantic tokens, the reset, the type
 classes and the layout utilities. Selective entries share runtime chunks and register their owned
-component dependencies. The `dist/cdn/all.js` entry registers the component library and includes the
+component dependencies. The browser package's `dist/all.js` entry registers the component library and includes the
 heavy component packages. The standalone bundle also installs tokens. `dashboard.css` carries the page-level recipes
-the Vercel dashboard composes in light DOM. Import configuration helpers from `dist/cdn/configure.js` when using browser modules. The bootstrap, configuration helpers, definitions and optional artwork share one runtime graph.
+the Vercel dashboard composes in light DOM. Import configuration helpers from the browser package's `dist/configure.js`. The bootstrap, configuration helpers, definitions and optional artwork share one runtime graph.
 
-`dist/bundle/design-system.standalone.min.js` loads the component library and tokens. Keep its generated chunks and assets beside it: Flow Diagram loads its layout engine and worker on demand; textured Book loads its packaged image when used. Use the shared CDN graph when adding optional icons or artwork.
+The browser package's `bundle/design-system.standalone.min.js` loads the component library and tokens. Keep its generated chunks and assets beside it: Flow Diagram loads its layout engine and worker on demand; textured Book loads its packaged image when used. Use the shared CDN graph when adding optional icons or artwork.
 
 ## Install from npm
 
@@ -73,7 +73,7 @@ const root = host.attachShadow({ mode: "open", customElementRegistry: registry }
 root.innerHTML = "<acme-button loading>Save</acme-button>";
 ```
 
-Register each component used in the application's markup. Its owned children are included automatically; sibling or slotted components supplied by the application need their own registration calls. Browser modules expose the same operation at `dist/cdn/register/<name>.js`. Use `components/<name>` when supplying an application subclass before calling `register`.
+Register each component used in the application's markup. Its owned children are included automatically; sibling or slotted components supplied by the application need their own registration calls. The browser package exposes the same operation at `dist/register/<name>.js`. Use `components/<name>` when supplying an application subclass before calling `register`.
 
 When rendering a Lit template into a native scoped root, pass a `creationScope` whose `importNode` uses that root's current `ownerDocument` and registry. The component handles its own internal rendering; the application configures its outer Lit render. In a Lit app, replace the root.innerHTML assignment above with this call:
 
@@ -123,9 +123,9 @@ inspector.dispose();
 
 It reports public component inputs, effective theme, declared states and bounded recent events within the supplied root. Sensitive values are redacted by default. Lit and React use the same inspector; it does not edit component state, persist settings or send telemetry.
 
-| Core release | React | MCP | Devtools |
-|---|---|---|---|
-| 0.3.0 | 0.3.0 | 0.3.0 | 0.3.0 |
+| Core release | Browser | React | MCP | Devtools |
+|---|---|---|---|---|
+| 0.3.1 | 0.3.1 | 0.3.1 | 0.3.1 | 0.3.1 |
 
 ## SVG icons
 
@@ -140,7 +140,7 @@ configureIcons({ family: "sharp", filled: true });
 
 Use `<acme-home-icon label="Home"></acme-home-icon>`. Omit `label` for decorative artwork inside a named control. Rounded, unfilled artwork is the default. Explicit `family` and `filled` properties override library defaults. Import another style before using it; missing artwork has an explicit marker and never starts a network request.
 
-Class-only imports use `@acmelabs/design-system/icons/home`. Browser definition entries use `dist/cdn/define/home-icon.js`; browser artwork entries use `dist/cdn/generated/icons/artwork/sharp/filled/home.js`. `icons/all` explicitly registers the entire catalog, and `icons/families/<family>/<filled|unfilled>` installs an entire style. These are larger, optional imports.
+Class-only imports use `@acmelabs/design-system/icons/home`. In the browser package, definition entries use `dist/define/home-icon.js` and artwork entries use `dist/generated/icons/artwork/sharp/filled/home.js`. `icons/all` explicitly registers the entire catalog, and `icons/families/<family>/<filled|unfilled>` installs an entire style. These are larger, optional imports.
 
 The complete pinned catalog has 4,135 symbols and all six baseline family/fill combinations. `@acmelabs/design-system/icons/catalog` exposes its source revision, asset hashes and licensing facts. SVG size scales the fixed 24px artwork; it is not a variable-font axis.
 

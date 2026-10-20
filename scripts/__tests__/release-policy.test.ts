@@ -18,7 +18,7 @@ const packages = releasePackageNames.map((name) => ({
   name,
   version: "0.3.0",
   repository: { url: "git+https://github.com/acmelabs-15/design-system.git" },
-  ...(name === releasePackageNames[0] ? {} : { peerDependencies: { [releasePackageNames[0]]: "0.3.0" } }),
+  ...(name === releasePackageNames[0] || name === "@acmelabs/design-system-browser" ? {} : { peerDependencies: { [releasePackageNames[0]]: "0.3.0" } }),
 }));
 test("dirty local candidates cannot be published as committed source", () => {
   const clean = { schemaVersion: 2 as const, version: "0.3.0", commit: "a".repeat(40), sourceTree: "clean" as const, packages: [] };
@@ -43,6 +43,12 @@ test("release identity requires coordinated packages, peers and exact tag", () =
   expect(() => validateReleaseTag("refs/tags/v0.3.0", "0.3.0")).not.toThrow();
   for (const ref of ["refs/heads/main", "refs/tags/v0.2.0", "refs/tags/v0.3.0;echo unsafe"]) {
     expect(() => validateReleaseTag(ref, "0.3.0")).toThrow();
+  }
+});
+test("the browser distribution is required and has no runtime dependency graph to install", () => {
+  expect(() => validatePackageSet(packages.filter((pkg) => pkg.name !== "@acmelabs/design-system-browser"))).toThrow();
+  for (const key of ["dependencies", "optionalDependencies", "peerDependencies"]) {
+    expect(() => validatePackageSet(packages.map((pkg) => (pkg.name === "@acmelabs/design-system-browser" ? { ...pkg, [key]: { lit: "3.3.3" } } : pkg)))).toThrow("self-contained");
   }
 });
 test("archive names and digest records cannot escape release artifacts", () => {

@@ -9,7 +9,7 @@ import type { Doc } from "../site";
 import { esc, ic, REPO, section, VERSION } from "../site";
 
 const code = (src: string) => `<div class="showcase"><div class="code" style="display:block;border-top:0">${highlightHtml(src)}</div></div>`;
-const cdn = `https://cdn.jsdelivr.net/npm/@acmelabs/design-system@${VERSION}`;
+const cdn = `https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@${VERSION}`;
 const tile = (href: string, title: string, desc: string, prev: string) =>
   `<a class="link-tile" href="${href}"><span class="prev">${prev}</span><span class="t text-heading-16">${title}</span><span class="d text-copy-16">${desc}</span></a>`;
 const hue = (name: string, step: number, inner: string) => `<span style="color:var(--ds-${name}-${step})">${inner}</span>`;
@@ -23,10 +23,10 @@ const iconRows = [
   ["shield", "lock", "code", "folder", "play-arrow", "image", "filter-list", "emoji-events"],
 ];
 const install = `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Google+Sans+Code:wght@400..700&display=swap">
-<link rel="stylesheet" href="${cdn}/dist/styles/tokens.css">
+<link rel="stylesheet" href="${cdn}/styles/tokens.css">
 <script type="module">
-  import "${cdn}/dist/cdn/define/button.js";
-  import "${cdn}/dist/cdn/define/badge.js";
+  import "${cdn}/dist/define/button.js";
+  import "${cdn}/dist/define/badge.js";
 </script>
 
 <acme-button>Deploy</acme-button>
@@ -81,7 +81,7 @@ export const intro: Doc = {
     "A host that admits a script from a CDN but no stylesheet from one takes the standalone bundle, which installs `tokens.css` on import:",
     "",
     "```html",
-    `<script type="module" src="${cdn}/dist/bundle/design-system.standalone.min.js"></script>`,
+    `<script type="module" src="${cdn}/bundle/design-system.standalone.min.js"></script>`,
     "```",
     "",
     "From npm, use `define/<name>` for selective registration or `all` for full registration. The package root and `components/<name>` export classes without registration.",

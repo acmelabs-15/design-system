@@ -4,7 +4,7 @@ description: Integrate @acmelabs/design-system with Lit templates and lifecycle.
 license: MIT
 metadata:
   library: "@acmelabs/design-system"
-  library_version: "0.3.0"
+  library_version: "0.3.1"
   type: "sub-skill"
   framework: "lit"
 ---

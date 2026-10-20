@@ -71,9 +71,12 @@ Several **generated files are committed**, in places that read as source. The sc
 | `src/define/`, `src/register/`, their `src/internal/` counterparts, `src/all.ts` and component package exports | `scripts/entries.ts` | `HTMLElementTagNameMap` records, explicit internal annotations, owned markup and literal scoped-factory calls |
 | `dist/shared/date.js` and `dist/licenses/` | `scripts/date-runtime.ts` during build | exact patched date dependency and `src/shared/date.ts` |
 | `dist/custom-elements.json` | `scripts/manifest.ts` | component declarations, templates and annotations |
+| `dist/**/*.d.ts` | `scripts/declarations.ts` | TypeScript declarations and closed generated entry interfaces |
 | `dist/styles/` | `bun run build` | compiled document/token/recipe CSS and maps |
 | `dist/cdn/` | `bun run build` | selective definitions and one shared browser module graph |
+| `dist/browser-licenses/` | `scripts/browser-package.ts` | bundled dependency notices and pinned license metadata |
 | `packages/core/{dist,assets,README.md,skills}` | `scripts/core-package.ts` | approved links to the single source/build tree |
+| `packages/browser/{dist,styles,bundle,licenses}` | `scripts/browser-package.ts` | approved links to browser output, styles, bundles and notices |
 | `packages/react/.build-src/` and `packages/react/dist/` | `scripts/react.ts` | CEM and the authored React bridge |
 | `dist/skills/` and MCP documentation records | `bun run docs` | authored `skills/`, CEM and `site/` records |
 | `packages/devtools/src/generated/metadata.ts` | `scripts/devtools-metadata.ts` | public CEM and token metadata |
@@ -91,5 +94,7 @@ Hand-written: `styles/`, `src/` except `src/generated/`, `src/define/`, `src/reg
 Build order: `bun run split && bun run build && bun run docs && bun run build:tooling && bun test`. `docs` needs `dist/` from `build`.
 
 The public core manifest is `packages/core/package.json`; the repository root is a private build workspace. Use `scripts/core-package.ts` to read consumer metadata. Normal workspaces resolve one generated runtime without root-package overrides.
+
+Browser delivery has its own manifest in `packages/browser/package.json`; use `scripts/browser-package.ts` for its metadata and exact delivery links. Core's production allowlist excludes browser output. Both distributions use the same build tree. Every packed archive must pass the 60,000-entry project budget before release validation.
 
 Mapped-source changes use `bun tools/geist/gen.ts <name>`; `split` regenerates base and component styles. Build rejects stale generated inputs and refreshes registration entries, exports and API metadata. `bun run pack` stages production metadata; development patch settings stay in the authoring package.

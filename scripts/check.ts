@@ -24,6 +24,7 @@ export const browserChecks = [
   "notes/alignment/evidence/m26-audit/table-patch-run.ts",
   "notes/alignment/evidence/m26-audit/defaults-run.ts",
   "notes/alignment/evidence/m26-scoped/run.ts",
+  "notes/alignment/evidence/m20-flow/distributions.ts",
   "notes/alignment/evidence/m26-bundle/run.ts",
   "notes/alignment/evidence/m26-audit/worker-consumer-run.ts",
   "scripts/component-browser-checks.ts",
@@ -82,6 +83,7 @@ export function browserCheckPlan(release: ReleaseRecord, consumer: string, runti
   const environment = {
     ACME_BROWSER_RUNTIME: runtime,
     ACME_RELEASE_CONSUMER: consumer,
+    ACME_BROWSER_PACKAGE: path.join(consumer, "node_modules/@acmelabs/design-system-browser"),
     ACME_REACT_CONSUMER: consumer,
     ACME_COMPONENT_SUITES: undefined,
     ACME_COMPONENT_ENGINES: undefined,
@@ -98,6 +100,7 @@ export function browserCheckPlan(release: ReleaseRecord, consumer: string, runti
     ACME_BUNDLE_RESULTS: path.join(results, "bundle.json"),
     ACME_WORKER_RESULTS: path.join(results, "worker.json"),
     ACME_HISTORY_RESULTS: path.join(results, "history.json"),
+    ACME_FLOW_DISTRIBUTIONS_RESULTS: path.join(results, "flow-distributions.json"),
     ACME_BUN: process.execPath,
   };
   return browserChecks.flatMap((file): BrowserCheck[] => {
@@ -184,6 +187,7 @@ export async function checkStage(stage: CheckStage) {
       "--types",
       "bun,node",
       "scripts/check.ts",
+      "scripts/declarations.ts",
       "scripts/dependency-audit.ts",
       ...new Bun.Glob("scripts/release*.ts").scanSync(repositoryRoot),
     ]);

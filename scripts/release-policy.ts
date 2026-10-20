@@ -1,6 +1,12 @@
 import path from "node:path";
 
-export const releasePackageNames = ["@acmelabs/design-system", "@acmelabs/design-system-react", "@acmelabs/design-system-devtools", "@acmelabs/design-system-mcp"] as const;
+export const releasePackageNames = [
+  "@acmelabs/design-system",
+  "@acmelabs/design-system-react",
+  "@acmelabs/design-system-devtools",
+  "@acmelabs/design-system-mcp",
+  "@acmelabs/design-system-browser",
+] as const;
 export const releaseRepository = "acmelabs-15/design-system";
 export const npmVersion = "12.0.2";
 export const releaseBunVersion = "1.4.2";
@@ -9,7 +15,15 @@ export function requireReleaseRuntime(version = Bun.version): void {
     throw new Error("Release verification requires Bun " + releaseBunVersion);
   }
 }
-export type ReleasePackage = { name: string; version: string; private?: boolean; repository?: { url?: string }; peerDependencies?: Record<string, string> };
+export type ReleasePackage = {
+  name: string;
+  version: string;
+  private?: boolean;
+  repository?: { url?: string };
+  dependencies?: Record<string, string>;
+  optionalDependencies?: Record<string, string>;
+  peerDependencies?: Record<string, string>;
+};
 export type ArchiveRecord = { name: string; version: string; filename: string; sha512: string; blockers: string[] };
 export type ReleaseRecord = { schemaVersion: 2; version: string; commit: string; sourceTree: "clean" | "dirty"; packages: ArchiveRecord[] };
 export function requireCommittedSource(record: ReleaseRecord): void {
@@ -45,7 +59,7 @@ export function validatePackageSet(packages: readonly ReleasePackage[]): string 
     new Set(packages.map((pkg) => pkg.name)).size !== packages.length ||
     releasePackageNames.some((name) => !packages.some((pkg) => pkg.name === name))
   ) {
-    throw new Error("Release requires exactly the four coordinated packages");
+    throw new Error("Release requires exactly the five coordinated packages");
   }
   const version = packages[0].version;
   validateVersion(version);
@@ -53,7 +67,11 @@ export function validatePackageSet(packages: readonly ReleasePackage[]): string 
     if (pkg.version !== version) {
       throw new Error("Package versions must match");
     }
-    if (pkg.name !== releasePackageNames[0] && pkg.peerDependencies?.[releasePackageNames[0]] !== version) {
+    if (pkg.name === "@acmelabs/design-system-browser") {
+      if ([pkg.dependencies, pkg.optionalDependencies, pkg.peerDependencies].some((dependencies) => Object.keys(dependencies ?? {}).length)) {
+        throw new Error("Browser distribution must remain self-contained");
+      }
+    } else if (pkg.name !== releasePackageNames[0] && pkg.peerDependencies?.[releasePackageNames[0]] !== version) {
       throw new Error("Core peer dependency must match the release version");
     }
   }

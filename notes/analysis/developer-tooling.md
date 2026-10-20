@@ -316,6 +316,20 @@ React's automated review later completes without another mutation. Its public ta
 
 The follow-up release helper requires public package/version identity, archive SHA-512 and the expected registry provenance link before reporting success. It confirms already-published archives before new writes and newly uploaded archives before logging completion. Pending review or absent provenance exhausts a bounded wait with an explicit incomplete-publication error; conflicts and registry errors fail immediately. Regression tests cover the actual404→metadata-without-provenance→complete sequence, including consumed responses and waits, plus persistent missing provenance. Actual tarball and cryptographic verification remain separate release acceptance checks.
 
+### Core archive file-count failure — 2026-10-20
+
+The real trusted-publisher attempt passes all Linux verification, then npm rejects the core PUT with E415, “Too many files.” The unchanged signed archive contains185,977 files, confirmed both by npm's tarball report and independent enumeration. JavaScript accounts for97,129; declarations and declaration maps account for42,235 each. The shared browser graph accounts for approximately54,884 files. This is a distribution-size defect; repeating authentication does not correct it.
+
+The registry's exact current file limit is not established by official documentation. Primary publisher evidence gives [59,869 accepted versus69,045 rejected](https://github.com/pulumi/pulumi/issues/11504#issuecomment-1333920882) and [65,284 rejected](https://github.com/pulumi/pulumi-azure-native/issues/2294). A60,000-file project budget can catch this class of failure before upload, while real registry acceptance remains required.
+
+The bounded correction under review separates browser-ready output from package modules and consolidates equivalent artwork declarations. Generated declaration maps refer to source files absent from the public archive. Preserve all4,135 icons, six artwork styles, selective imports, one browser graph, canonical state and native tag inference. An existing definition-only type gap must be covered when declarations change. [Release failure and recovery checkpoint](../alignment/release-0.3.0.md#core-registry-rejection-too-many-files).
+
+The selected [separate browser package](../decisions/browser-distribution-package.md) is implemented for 0.3.1. Its exact delivery links retain the existing generated graph. Six artwork patterns resolve types through per-symbol records; exact definition/registration exports use shared type declarations. This preserves real native tag types and rejects nonexistent entry names. Actual packed counts are 55,399 for core and 54,950 for browser.
+
+Review reproduces a source-ancestor substitution at the packing boundary. Canonical path checks now cover both approved targets and known package directories. The regression fails before the correction and passes afterward. Separate definition-only and registration-only TypeScript programs also reject a mutation that previously passed through combined-import tests.
+
+The browser notice collector preserves the supplied license files. The known `@tanstack/markdown` 0.0.13 omission has a version/hash-pinned package-metadata record, clearly distinguished from full notice text. Its published and source manifests declare MIT, the [documented npm SPDX form](https://docs.npmjs.com/cli/v12/configuring-npm/package-json/#license). No copyright notice is invented; no source-commit cryptographic binding is claimed. Unknown omissions and changed proofs fail. [Exact record and verification status](../alignment/release-0.3.1.md).
+
 ### Credential-handling incident
 
 During a delegated registry investigation in this continuation, an unnecessary read of local npm configuration printed an npm authentication token into tool output. The value is not reproduced here, was not added to repository files and was not reused. Peter was informed in commentary. The token should be revoked and replaced by its owner; no credential rotation or account change was attempted. Keep this follow-up visible in the final handoff without reading or printing the token again.

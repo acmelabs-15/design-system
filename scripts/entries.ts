@@ -365,15 +365,23 @@ export function writePackageExports(entries: ComponentEntry[], root = DEFAULT_RO
   const file = corePackageManifestPath(root);
   const before = fs.readFileSync(file, "utf8");
   const pkg = JSON.parse(before);
-  const exports = Object.fromEntries(Object.entries(pkg.exports ?? {}).filter(([name]) => !name.startsWith("./components/") && name !== "./dist/*"));
+  const exports = Object.fromEntries(
+    Object.entries(pkg.exports ?? {}).filter(
+      ([name]) =>
+        !["./components/", "./define/", "./register/", "./icons/", "./cdn/", "./bundle/"].some((prefix) => name.startsWith(prefix)) &&
+        !["./dist/*", "./all", "./configure", "./react-support", "./bundle"].includes(name),
+    ),
+  );
   exports["./all"] = { types: "./dist/all.d.ts", import: "./dist/all.js", default: "./dist/all.js" };
-  exports["./define/*"] = { types: "./dist/define/*.d.ts", import: "./dist/define/*.js", default: "./dist/define/*.js" };
-  exports["./register/*"] = { types: "./dist/register/*.d.ts", import: "./dist/register/*.js", default: "./dist/register/*.js" };
-  exports["./cdn/*"] = "./dist/cdn/*";
   exports["./configure"] = { types: "./dist/configure.d.ts", import: "./dist/configure.js", default: "./dist/configure.js" };
   exports["./react-support"] = { types: "./dist/react-support.d.ts", import: "./dist/react-support.js", default: "./dist/react-support.js" };
   exports["./icons/*"] = { types: "./dist/generated/icons/classes/*-icon.d.ts", import: "./dist/generated/icons/classes/*-icon.js", default: "./dist/generated/icons/classes/*-icon.js" };
-  exports["./icons/artwork/*"] = { types: "./dist/generated/icons/artwork/*.d.ts", import: "./dist/generated/icons/artwork/*.js", default: "./dist/generated/icons/artwork/*.js" };
+  for (const family of ["rounded", "outlined", "sharp"]) {
+    for (const fill of ["filled", "unfilled"]) {
+      const module = `./dist/generated/icons/artwork/${family}/${fill}/*.js`;
+      exports[`./icons/artwork/${family}/${fill}/*`] = { types: "./dist/generated/icons/records/*.d.ts", import: module, default: module };
+    }
+  }
   exports["./icons/families/*"] = { types: "./dist/generated/icons/families/*.d.ts", import: "./dist/generated/icons/families/*.js", default: "./dist/generated/icons/families/*.js" };
   exports["./icons/all"] = { types: "./dist/generated/icons/all.d.ts", import: "./dist/generated/icons/all.js", default: "./dist/generated/icons/all.js" };
   exports["./icons/catalog"] = "./dist/icons.json";
@@ -383,6 +391,13 @@ export function writePackageExports(entries: ComponentEntry[], root = DEFAULT_RO
     }
     const module = "./" + entry.file.replace(/^src\//, "dist/").replace(/\.ts$/, "");
     exports["./components/" + entry.name] = { types: module + ".d.ts", import: module + ".js", default: module + ".js" };
+    for (const [kind, type] of [
+      ["define", "definition"],
+      ["register", "registration"],
+    ] as const) {
+      const runtime = `./dist/${kind}/${entry.name}.js`;
+      exports[`./${kind}/${entry.name}`] = { types: `./dist/types/${type}.d.ts`, import: runtime, default: runtime };
+    }
   }
   pkg.exports = exports;
   pkg.sideEffects = [
@@ -392,8 +407,6 @@ export function writePackageExports(entries: ComponentEntry[], root = DEFAULT_RO
     "./dist/generated/icons/artwork/**",
     "./dist/generated/icons/families/**",
     "./dist/generated/icons/all.js",
-    "./dist/cdn/**",
-    "./dist/bundle/**",
     "**/*.css",
   ];
   const content = JSON.stringify(pkg, null, 2) + "\n";

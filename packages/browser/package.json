@@ -1,0 +1,24 @@
+{
+  "name": "@acmelabs/design-system-browser",
+  "version": "0.3.1",
+  "description": "Self-contained browser modules, bundles and styles for the ACME design system",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/standalone.js",
+  "files": [
+    "dist",
+    "styles",
+    "bundle",
+    "licenses/assets",
+    "licenses/runtime",
+    "licenses/packages",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acmelabs-15/design-system.git"
+  }
+}

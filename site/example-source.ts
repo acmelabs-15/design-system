@@ -70,13 +70,13 @@ export async function exampleSources(example: Example, id: string): Promise<read
       }
     }
   }
-  const cdn = `https://cdn.jsdelivr.net/npm/@acmelabs/design-system@${version}/dist`;
-  const imports = [...tags].sort().map((tag) => `import "${cdn}/cdn/define/${tag.slice(5)}.js";`);
+  const cdn = `https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@${version}`;
+  const imports = [...tags].sort().map((tag) => `import "${cdn}/dist/define/${tag.slice(5)}.js";`);
   if (/\bcreateToastStore\s*\(/.test(example.script ?? "")) {
-    imports.push(`import {createToastStore} from "${cdn}/cdn/components/toast/toast.js";`);
+    imports.push(`import {createToastStore} from "${cdn}/dist/components/toast/toast.js";`);
   }
   if (/\bregisterTheme\s*\(/.test(example.script ?? "")) {
-    imports.push(`import {registerTheme} from "${cdn}/cdn/configure.js";`);
+    imports.push(`import {registerTheme} from "${cdn}/dist/configure.js";`);
   }
   const script = await formatSource(
     imports.join("\n") +
