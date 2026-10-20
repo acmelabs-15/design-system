@@ -1,0 +1,15 @@
+{
+  "run": "https://github.com/acmelabs-15/design-system/actions/runs/39457416082",
+  "head": "76ca79c04",
+  "stage": "Unit and workspace installation regressions",
+  "passed": 1016,
+  "failed": 1,
+  "test": "archive budget rejects gzip data that is not a tar archive",
+  "finding": "System tar returned success for the malformed short gzip fixture on Linux; status alone was not a portable format check.",
+  "correction": "Use the pinned npm tar parser in strict mode, preserve the 60000-entry budget, and require gzip format.",
+  "focusedTestsPassed": 19,
+  "focusedAssertions": 77,
+  "actualCandidateArchivesRevalidated": 5,
+  "independentReview": "approved; disabling strict mode makes three malformed-archive tests fail",
+  "freshLinuxVerificationRequired": true
+}

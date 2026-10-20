@@ -18,7 +18,7 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 **Overlay density:** [Verified correction](evidence/overlay-density-2026-09-23.json) preserves normal density inside Dialog, Drawer, Menu and Toggle Tip while retaining explicit theme and child overrides. Toast acceptance is linked above.
 
-**Next boundary:** the five-package 0.3.1 correction is implemented and packed. Core has 55,399 entries; browser has 54,950. Static checks, strict types and all 1,017 unit tests pass. Review corrections pass. Complete browser/fresh-consumer acceptance is running, including the shipped bundles and workers. Then commit/push the recovery, require Linux acceptance, publish and verify the coordinated packages, deploy/check Pages, and retire the old snapshot.
+**Next boundary:** the five-package 0.3.1 correction is committed as 76ca79c04 and pushed in [PR #3](https://github.com/acmelabs-15/design-system/pull/3). Core has 55,399 entries; browser has 54,950. Local acceptance passes static checks, strict types, 1,017 unit tests, all 24 browser invocations and all 36 Flow distribution cases. The first Linux run finds one archive-format validation difference after its earlier gates pass. The validator now uses npm's pinned tar parser in strict mode; 19 focused tests, all five candidate archives and independent review pass. [Current evidence and correction](release-0.3.1.md). Push the correction and require a fresh complete Linux pass before integration. Then publish/verify all five packages, deploy/check Pages, and retire the old snapshot.
 
 **Working copies and workers:** implementation is saved in d9b2f100f (scoped/bundled delivery), 8114e3ae0 (default restoration), d200bf646 (Tabs paint) and 51564fda2 (consumer and verification toolchain). Earlier Slider/Calendar worktrees are historical. The final dev-server and Intent-oracle corrections are saved in 0dd8c96e1 and 1ccfd4400. All delegated implementation and review work is complete. Keep heavy build/test jobs sequential; parallel compiler jobs caused memory pressure and test timeouts.
 
@@ -28,7 +28,7 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 **Security follow-up:** a delegated check printed an npm token into tool output. Peter has been informed; token rotation remains owner-controlled. No secret was committed. See the incident entry in [developer tooling](../analysis/developer-tooling.md#credential-handling-incident).
 
-**Local preview:** restored at http://127.0.0.1:4180/ under pinned Bun 1.4.2 with normal watching of styles/, src/, site/ and examples/. The process uses --no-build because the accepted site is already built. The form deep link returns 200 with no-store caching. Stop this owned preview before a future shared browser run needs 4180.
+**Local preview:** the release browser-check driver finishes and releases port 4180. No development preview is retained by this release task.
 
 **Implementation history:** 2ec047be1 (Calendar/M13), 6e431cf16 (native lists/Disabled Wall), c84f73cee (Card/Inset/Item), 39bdc98c0 (Scroll Area), 335546ad0 (style whitespace). fbed13a4f closes Resizable/M14; ef0f83c08 closes disclosure; 125097fef/0a54e3b80 close Steps/Timeline and its corrected documentation evidence. e9d9b6b4d closes navigation. M16 closes in 26f026f8c, 273480e81, a6d2a445b and 14e5083f9. These commits are included in the merged release.
 

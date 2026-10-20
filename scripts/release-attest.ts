@@ -69,7 +69,7 @@ export async function signReleaseProvenance(directory: string): Promise<void> {
     await Bun.write(path.join(directory, "provenance", archive.filename + ".sigstore.json"), JSON.stringify(bundle, null, 2) + "\n");
   }
   await verifyReleaseProvenance(directory);
-  console.log("All four reviewed archives have verified GitHub provenance.");
+  console.log(`All ${record.packages.length} reviewed archives have verified GitHub provenance.`);
 }
 
 if (import.meta.main) {

@@ -79,9 +79,9 @@ test("archive budget counts files, repeated paths, directories and links while s
   expect(await assertArchiveFileBudget(file)).toBe(7);
 });
 
-test("archive budget accepts an empty valid archive", async () => {
+test("archive budget rejects an empty archive without package metadata", async () => {
   const file = await writeArchive([]);
-  expect(await assertArchiveFileBudget(file)).toBe(0);
+  await expect(assertArchiveFileBudget(file)).rejects.toThrow();
 });
 
 test.each([59_999, 60_000])("archive budget accepts %i archive entries", async (count) => {
@@ -101,6 +101,12 @@ test("archive budget rejects a missing archive", async () => {
 test("archive budget rejects a file that is not gzip", async () => {
   const file = fixturePath();
   await Bun.write(file, "not a compressed archive");
+  await expect(assertArchiveFileBudget(file)).rejects.toThrow();
+});
+
+test("archive budget rejects an uncompressed tar file", async () => {
+  const file = fixturePath();
+  await Bun.write(file, tarBytes([{ name: "package/package.json", content: "{}" }]));
   await expect(assertArchiveFileBudget(file)).rejects.toThrow();
 });
 
