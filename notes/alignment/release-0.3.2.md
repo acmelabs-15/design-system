@@ -4,6 +4,17 @@ Peter's release authorization and [execution delegation](../decisions/execution-
 
 ## Current state
 
+- Tag v0.3.2 points to reviewed merge 6ec538e70f3874d7543ce81816abc290dca60e6b. PR, tag and documentation verification all pass. The five archives reproduce across independent clean Linux builds.
+- Core, React, Devtools and MCP 0.3.2 are public. Their actual tarballs, signed provenance and latest tags verify. [Core](evidence/release-0.3.2/core-publication.json); [React](evidence/release-0.3.2/react-publication.json); [Devtools](evidence/release-0.3.2/devtools-publication.json); [MCP](evidence/release-0.3.2/mcp-publication.json).
+- Publish-only attempt 3 publishes Devtools and MCP, then accepts Browser and stops at public confirmation. npm reports Browser 0.3.2 as Validating. Read-only Browser monitor session 77276 verifies its public upload. After success, rerun only publish job 118915569199 to confirm the complete set. The original verification artifact remains unchanged. Details are in `.artifacts/release-session.json`. No authentication is pending.
+- All five trusted publishers are configured. The browser configuration’s first actual trusted publication remains to verify.
+- Pages deployment is held. Its reviewed 25,120-file artifact is downloaded and checksum-verified. After all packages verify, enable Pages and rerun deploy job 118905674804.
+- The GitHub release remains a draft. The cleanup branch is codex/release-032-closure; release records are backed up on that branch. Keep the tracked snapshot until corrected public Pages acceptance passes.
+
+## Release record
+
+The checkpoints below preserve the sequence and the evidence available at each point. The current state above owns the resumption point.
+
 - Current records/cleanup branch: codex/release-032-closure, based on release merge 6ec538e70f3874d7543ce81816abc290dca60e6b. [PR #5](https://github.com/acmelabs-15/design-system/pull/5) starts from reviewed commit 34af1027e6dbaaf2ebfd2c7483f8401fb4618191. Its first CI build succeeds but the generated-input gate detects the dashboard producer fingerprint changed with scripts/build.ts. The normal style writer refreshes only that fingerprint; all generated CSS bytes remain unchanged. Rerun full CI on the corrected head in the same PR. [Initial CI failure](evidence/release-0.3.2/ci-fingerprint-failure.txt).
 - The public Pages file check matches all 25,120 files. Browser acceptance then finds Lit development-mode warnings. [Exact failure](evidence/release-0.3.2/pages-development-failure.txt).
 - The deployed source map lists Lit development JavaScript. The actual published minified browser bundle also contains the development runtime.
@@ -28,10 +39,14 @@ Peter's release authorization and [execution delegation](../decisions/execution-
 
 - Complete Linux acceptance is preserved: 1,020 tests, 190,633 assertions, all 24 browser invocations, 36 shipped Flow checks, 1446 component checks, and navigation with zero warnings in all three engines. Static checks, strict types, audit, archive and crypto gates pass. The diagnostic ZIP matches GitHub’s SHA-256. [Acceptance record](evidence/release-0.3.2/linux-acceptance.json); [browser plan](evidence/release-0.3.2/linux-browser.json); [Flow](evidence/release-0.3.2/linux-flow-distributions.json); [components](evidence/release-0.3.2/linux-components.json); [navigation](evidence/release-0.3.2/linux-navigation.json); [audit](evidence/release-0.3.2/linux-dependency-audit.json).
 
-- The exact publication artifact 12301416721 is downloaded, its ZIP SHA-256 matches GitHub, and all five archives validate against the tag/commit. [Publication record](evidence/release-0.3.2/publication-release.json); [npm review observation](evidence/release-0.3.2/core-review.json); [initial publish log](evidence/release-0.3.2/first-publication-attempt.txt). Read-only local monitor `.artifacts/watch-publication-0.3.2.ts` runs for core in session 18372. It runs full cryptographic verification when public metadata is ready. After success, resume only publish job 118902454892. Do not upload core again while it is under review.
+- The exact publication artifact 12301416721 is downloaded, its ZIP SHA-256 matches GitHub, and all five archives validate against the tag/commit. [Publication record](evidence/release-0.3.2/publication-release.json); [npm review observation](evidence/release-0.3.2/core-review.json); [initial publish log](evidence/release-0.3.2/first-publication-attempt.txt). The core monitor completes successfully: actual public bytes, signed provenance and latest tag match the reviewed archive. [Core public verification](evidence/release-0.3.2/core-publication.json). Publish-only attempt 2 runs job 118911897500; original verification timestamps remain unchanged. Read-only React monitor session 87454 now runs the same verifier when that version becomes public. No authentication is pending.
 
 - All five 0.3.2 archives match byte for byte between the independent verified PR and exact-tag builds. Both artifact ZIP digests and every archive SHA-512 are checked. [Reproducibility evidence](evidence/release-0.3.2/reproducibility.json).
 - Documentation run 39499435937 passes. Its exact 25,120-file artifact 12303041169 is downloaded and SHA-256 verified, then extracted to `.artifacts/pages-release-0.3.2/site/`. Deploy job 118905674804 is skipped under the publication hold. After all packages verify, enable Pages and rerun only that deploy job. [Artifact evidence](evidence/release-0.3.2/pages-artifact.json).
+
+- Attempt 2 confirms the already-public core and accepts React. npm’s authenticated Versions page shows React 0.3.2 as Validating. The same public confirmation limit ends the job; no artifact or source changes. [React review](evidence/release-0.3.2/react-review.json); [publish log](evidence/release-0.3.2/second-publication-attempt.txt).
+
+- Attempt 3 completes Devtools and MCP publication within the workflow. Browser’s first trusted upload succeeds, then waits for npm automated review. Public verification remains required before declaring its publisher fully exercised. [Browser review](evidence/release-0.3.2/browser-review.json); [publish log](evidence/release-0.3.2/third-publication-attempt.txt).
 
 ## Remaining sequence
 

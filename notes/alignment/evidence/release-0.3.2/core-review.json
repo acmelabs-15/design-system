@@ -24,5 +24,14 @@
     "commit": "6ec538e70f3874d7543ce81816abc290dca60e6b",
     "allFiveArchivesValidated": true
   },
-  "nextAction": "Monitor public availability; verify actual tarball, provenance and latest tag; then rerun only the failed publish job without replacing the verified artifact"
+  "nextAction": "Monitor public availability; verify actual tarball, provenance and latest tag; then rerun only the failed publish job without replacing the verified artifact",
+  "followupObservations": [
+    {
+      "recordedAt": "2026-10-20T22:00:49.269Z",
+      "source": "authenticated npm Versions page",
+      "version": "0.3.2",
+      "status": "Validating",
+      "authenticationRequested": false
+    }
+  ]
 }
