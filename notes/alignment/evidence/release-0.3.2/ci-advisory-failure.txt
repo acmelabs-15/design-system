@@ -1,0 +1,40 @@
+verify	Dependency audit	﻿2026-10-20T20:40:54.9970487Z ##[group]Run bun scripts/check.ts audit
+verify	Dependency audit	2026-10-20T20:40:54.9970999Z ^[[36;1mbun scripts/check.ts audit^[[0m
+verify	Dependency audit	2026-10-20T20:40:55.0029325Z shell: /usr/bin/bash -e {0}
+verify	Dependency audit	2026-10-20T20:40:55.0029565Z ##[endgroup]
+verify	Dependency audit	2026-10-20T20:40:55.1075964Z braces: https://github.com/advisories/GHSA-vfj7-8cjw-p6xm — patched: Pinned Bun patch bounds parser and AST-walker nesting; regression covers strings and supplied ASTs.
+verify	Dependency audit	2026-10-20T20:40:55.1077345Z 105 |   await Bun.write(destination, JSON.stringify({ checkedAt: new Date().toISOString(), nativeExitCode: status, report, ...result }, null, 2) + "\n");
+verify	Dependency audit	2026-10-20T20:40:55.1077891Z 106 |   for (const item of [...result.reviewed, ...result.blocking]) {
+verify	Dependency audit	2026-10-20T20:40:55.1078315Z 107 |     console.log(`${item.package}: ${item.url} — ${item.reason}`);
+verify	Dependency audit	2026-10-20T20:40:55.1078590Z 108 |   }
+verify	Dependency audit	2026-10-20T20:40:55.1078765Z 109 |   if (result.blocking.length) {
+verify	Dependency audit	2026-10-20T20:40:55.1079129Z 110 |     throw new Error(`${result.blocking.length} unresolved high/critical dependency findings`);
+verify	Dependency audit	2026-10-20T20:40:55.1079579Z                     ^
+verify	Dependency audit	2026-10-20T20:40:55.1079802Z error: 1 unresolved high/critical dependency findings
+verify	Dependency audit	2026-10-20T20:40:55.1080246Z       at auditDependencies (/home/runner/work/design-system/design-system/scripts/dependency-audit.ts:110:15)
+verify	Dependency audit	2026-10-20T20:40:55.1080582Z 
+verify	Dependency audit	2026-10-20T20:40:55.1107718Z ##[error]
+verify	Dependency audit	      at auditDependencies (/home/runner/work/design-system/design-system/scripts/dependency-audit.ts:110:15)
+verify	Dependency audit	2026-10-20T20:40:55.1116810Z 
+verify	Dependency audit	2026-10-20T20:40:55.1116949Z Bun v1.4.2 (Linux x64)
+verify	Dependency audit	2026-10-20T20:40:55.1118174Z http-cache-semantics: https://github.com/advisories/GHSA-ch52-4w7c-c8xp — not-reachable-in-reviewed-npm-path: Pinned npm caller uses a private cache and omits Set-Cookie from persisted responses; release commands use isolated cache directories. This does not certify shared caches or other cache defects.
+verify	Dependency audit	2026-10-20T20:40:55.1119317Z @modelcontextprotocol/sdk: https://github.com/advisories/GHSA-22jm-h49p-29qw — Unreviewed advisory
+verify	Dependency audit	2026-10-20T20:40:55.1140629Z 138 |     stdout: "inherit",
+verify	Dependency audit	2026-10-20T20:40:55.1141080Z 139 |     stderr: "inherit",
+verify	Dependency audit	2026-10-20T20:40:55.1141343Z 140 |   });
+verify	Dependency audit	2026-10-20T20:40:55.1141579Z 141 |   const status = await child.exited;
+verify	Dependency audit	2026-10-20T20:40:55.1141939Z 142 |   if (status !== 0) {
+verify	Dependency audit	2026-10-20T20:40:55.1142257Z 143 |     throw new CheckCommandError(args, status);
+verify	Dependency audit	2026-10-20T20:40:55.1142740Z                 ^
+verify	Dependency audit	2026-10-20T20:40:55.1143108Z CheckCommandError: Check failed: bun scripts/dependency-audit.ts
+verify	Dependency audit	2026-10-20T20:40:55.1143530Z  exitCode: 1,
+verify	Dependency audit	2026-10-20T20:40:55.1143673Z 
+verify	Dependency audit	2026-10-20T20:40:55.1143959Z       at command (/home/runner/work/design-system/design-system/scripts/check.ts:143:11)
+verify	Dependency audit	2026-10-20T20:40:55.1144667Z       at async checkStage (/home/runner/work/design-system/design-system/scripts/check.ts:197:11)
+verify	Dependency audit	2026-10-20T20:40:55.1145085Z 
+verify	Dependency audit	2026-10-20T20:40:55.1146714Z ##[error]
+verify	Dependency audit	      at command (/home/runner/work/design-system/design-system/scripts/check.ts:143:11)
+verify	Dependency audit	      at async checkStage (/home/runner/work/design-system/design-system/scripts/check.ts:197:11)
+verify	Dependency audit	2026-10-20T20:40:55.1147680Z 
+verify	Dependency audit	2026-10-20T20:40:55.1147758Z Bun v1.4.2 (Linux x64)
+verify	Dependency audit	2026-10-20T20:40:55.1150178Z ##[error]Process completed with exit code 1.
