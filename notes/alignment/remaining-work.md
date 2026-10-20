@@ -13,7 +13,7 @@ The [central handoff](README.md#where-we-are) owns current status. The [inventor
 | User-owned decision queue | Original five recommendations approved in [the register](proposal-questions.md); [explicit helper clearing](../decisions/layout-spacing-properties.md#explicit-clearing-for-the-style-helper) selected 2026-09-21; @lit/context selected under [delegated execution](../decisions/execution-delegation.md); remaining choices are agent-owned |
 | Engineering gates | Six representative M00 technical areas verified; final implementation acceptance stays assigned |
 | Phase 5 | [Migration plan approved](../decisions/migration-approval.md); M00 closed after compiler selection |
-| Phase 6 | M01–M25 are implemented. M26 local automated acceptance is complete. Actual-platform and external release gates remain unperformed; see the final acceptance record. |
+| Phase 6 | M01–M25 and M26 automated acceptance are complete. All five 0.3.1 packages are public and verified. Public Pages acceptance finds development dependencies in the delivered bundle. The 0.3.2 production build correction is in progress; actual-platform limits remain explicit. See the [release handoff](release-0.3.2.md). |
 
 These are review groups, not thirteen questions, equal-sized tasks or duration estimates. The groups describe the approved design decomposition. The current implementation status is above; technical acceptance remains distinct from design approval.
 
@@ -69,9 +69,11 @@ Each investigation has an interface/gate it can invalidate and a completion cond
 - [x] Select Lightning CSS 1.33.0 and close M00. Final real CI/account/publication acceptance stays in M25.
 - [x] Implement approved batches with matching docs/tooling and no compatibility aliases.
 - [x] Finish local archive acceptance: all23 required browser invocations are accepted, with the corrected Intent oracle rerun explicitly recorded. [Final evidence](evidence/m26-final/README.md).
-- [ ] Complete actual-platform and separately authorized external release acceptance. These are not established by automated engine checks.
+- [x] Publish and verify all five 0.3.1 packages, their provenance and public CDN behavior under Peter's release authorization.
+- [ ] Finish public Pages acceptance and retire the old snapshot. Follow the [release handoff](release-0.3.2.md).
+- [ ] Perform actual Safari, assistive-technology, OS input/autofill and background-window checks. Automated engine checks do not establish these.
 
-Source changes now proceed under the approved migration; the old protected-file hashes describe the completed pre-implementation baseline. The migration is approved; technical prerequisites govern dependent source edits. Publishing requires its separate authorization. Existing research snapshots are historical evidence, not current runtime results.
+The old protected-file hashes describe the completed pre-implementation baseline. Peter's release request supplies the separate publication authorization. Existing research snapshots are historical evidence, not current runtime results.
 
 ## Progress reporting
 

@@ -1,6 +1,7 @@
 import path from "node:path";
 import { mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import type { BunPlugin } from "bun";
+import { buildProductionBrowser } from "./browser-build";
 
 const uiVersion = "0.7.1";
 const treeHash = "a7a7a305ff7256bc71e423fc6cefdf14726bc1d57dc19e1ab0ea0a49beaa06a3";
@@ -74,11 +75,9 @@ export async function buildDevtoolsRuntime(root = path.resolve(import.meta.dir, 
   await mkdir(outdir, { recursive: true });
   await rm(path.join(outdir, "assets"), { recursive: true, force: true });
   await rm(path.join(outdir, "chunks"), { recursive: true, force: true });
-  const result = await Bun.build({
+  const result = await buildProductionBrowser({
     entrypoints: [path.join(root, "packages/devtools/src/index.ts")],
     outdir,
-    target: "browser",
-    conditions: ["browser", "production"],
     format: "esm",
     splitting: true,
     sourcemap: "external",

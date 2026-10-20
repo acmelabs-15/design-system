@@ -1,4 +1,5 @@
 import { buildConsumerSkills } from "../scripts/consumer-skills";
+import { buildProductionBrowser } from "../scripts/browser-build";
 import { documentationRelease } from "./release";
 import { recipeDocs, recipes, docStates, docCensus } from "./recipes";
 import { compileStyle } from "../scripts/styles";
@@ -149,13 +150,12 @@ const appEntry = writeDocumentationIconEntry(
   OUT,
   [...components, ...recipePages, ...foundations.map(([doc]) => doc)].flatMap((doc) => doc.examples.map((example) => example.script ?? "")),
 );
-const r = await Bun.build({
+const r = await buildProductionBrowser({
   entrypoints: [appEntry],
   outdir: OUT,
   naming: { entry: "app.js", chunk: "chunks/[name]-[hash].[ext]", asset: "assets/[name]-[hash].[ext]" },
   splitting: true,
   plugins: [browserAssetPlugin(path.join(ROOT, "dist")), tableWorkerPlugin(await buildTableWorker(ROOT, OUT))],
-  target: "browser",
   format: "esm",
   minify: true,
   sourcemap: "linked",

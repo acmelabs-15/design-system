@@ -24,6 +24,24 @@
     "format": "pass",
     "independentReview": "approve"
   },
-  "fullBuildReproducibility": "not-yet-verified",
-  "releasePolicy": "Keep the tag and published versions unchanged; verify and package final release assets from the exact publication-run record"
+  "fullBuildReproducibility": {
+    "result": "pass",
+    "sourceTree": "b3c4fa83eeaa103c56814168035810775e13a51a",
+    "independentRuns": [
+      39485176186,
+      39489343602
+    ],
+    "identicalPackageArchives": 5,
+    "evidence": "clean-build-reproducibility.json"
+  },
+  "releasePolicy": "Keep the tag and published versions unchanged; verify and package final release assets from the exact publication-run record",
+  "fullLinuxAcceptance": {
+    "runId": 39485176186,
+    "head": "dbcafb31c1fda5219a541e369a641a4c579672d8",
+    "result": "success",
+    "unitTests": 1019,
+    "assertions": 190621,
+    "testFiles": 216,
+    "mergeCommit": "b052e5e913313209ffad12ec3a51c79480bf7050"
+  }
 }

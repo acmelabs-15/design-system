@@ -3,7 +3,15 @@ import path from "node:path";
 import type { BunPlugin } from "bun";
 
 export async function buildTableWorker(root: string, outdir: string): Promise<string> {
-  const result = await Bun.build({ entrypoints: [path.join(root, "examples/table/table-worker.ts")], outdir, target: "browser", format: "esm", naming: "table-worker.js" });
+  const result = await Bun.build({
+    entrypoints: [path.join(root, "examples/table/table-worker.ts")],
+    outdir,
+    target: "browser",
+    conditions: ["browser", "production"],
+    define: { "process.env.NODE_ENV": JSON.stringify("production") },
+    format: "esm",
+    naming: "table-worker.js",
+  });
   if (!result.success) {
     throw new AggregateError(result.logs, "Table example worker build failed");
   }
@@ -36,7 +44,16 @@ export async function buildWorkerExample(directory = process.cwd()): Promise<voi
   const root = path.resolve(directory);
   const outdir = path.join(root, "dist");
   const workerFile = await buildTableWorker(root, outdir);
-  const main = await Bun.build({ entrypoints: [path.join(root, "main.ts")], outdir, target: "browser", format: "esm", splitting: true, plugins: [tableWorkerPlugin(workerFile)] });
+  const main = await Bun.build({
+    entrypoints: [path.join(root, "main.ts")],
+    outdir,
+    target: "browser",
+    conditions: ["browser", "production"],
+    define: { "process.env.NODE_ENV": JSON.stringify("production") },
+    format: "esm",
+    splitting: true,
+    plugins: [tableWorkerPlugin(workerFile)],
+  });
   if (!main.success) {
     throw new AggregateError(main.logs, "Table example application build failed");
   }

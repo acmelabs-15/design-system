@@ -1,0 +1,60 @@
+Verified 1000 of 25120 deployed files.
+Verified 2000 of 25120 deployed files.
+Verified 3000 of 25120 deployed files.
+Verified 4000 of 25120 deployed files.
+Verified 5000 of 25120 deployed files.
+Verified 6000 of 25120 deployed files.
+Verified 7000 of 25120 deployed files.
+Verified 8000 of 25120 deployed files.
+Verified 9000 of 25120 deployed files.
+Verified 10000 of 25120 deployed files.
+Verified 11000 of 25120 deployed files.
+Verified 12000 of 25120 deployed files.
+Verified 13000 of 25120 deployed files.
+Verified 14000 of 25120 deployed files.
+Verified 15000 of 25120 deployed files.
+Verified 16000 of 25120 deployed files.
+Verified 17000 of 25120 deployed files.
+Verified 18000 of 25120 deployed files.
+Verified 19000 of 25120 deployed files.
+Verified 20000 of 25120 deployed files.
+Verified 21000 of 25120 deployed files.
+Verified 22000 of 25120 deployed files.
+Verified 23000 of 25120 deployed files.
+Verified 24000 of 25120 deployed files.
+Verified 25000 of 25120 deployed files.
+Verified 25120 deployed files against the reviewed artifact.
+70 |           .filter((element) => element.namespaceURI === "http://www.w3.org/1999/xhtml" && element.localName.includes("-"))
+71 |           .every((element) => element.matches(":defined")));
+72 |         assert.deepEqual(await page.locator("[data-example-error]:not([hidden])").allTextContents(), []);
+73 |         assert.deepEqual(errors, []);
+74 |         assert.deepEqual(badAssets, []);
+75 |         assert.deepEqual(warnings, []);
+                    ^
+AssertionError: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   'Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.',
++   'Element acme-segmented-control scheduled an update (generally because a property was set) after an update completed, causing a new update to be scheduled. This is inefficient and should be avoided unless the next update can only be scheduled as a side effect of the previous update. See https://lit.dev/msg/change-in-update for more information.',
++   'Element acme-selection-indicator scheduled an update (generally because a property was set) after an update completed, causing a new update to be scheduled. This is inefficient and should be avoided unless the next update can only be scheduled as a side effect of the previous update. See https://lit.dev/msg/change-in-update for more information.',
++   'Element acme-input scheduled an update (generally because a property was set) after an update completed, causing a new update to be scheduled. This is inefficient and should be avoided unless the next update can only be scheduled as a side effect of the previous update. See https://lit.dev/msg/change-in-update for more information.',
++   'Element acme-scroll-area scheduled an update (generally because a property was set) after an update completed, causing a new update to be scheduled. This is inefficient and should be avoided unless the next update can only be scheduled as a side effect of the previous update. See https://lit.dev/msg/change-in-update for more information.'
++ ]
+- []
+
+ generatedMessage: true,
+     actual: [ "Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.",
+  "Element acme-segmented-control scheduled an update (generally because a property was set) after an update completed, causing a new update to be scheduled. This is inefficient and should be avoided unless the next update can only be scheduled as a side effect of the previous update. See https://lit.dev/msg/change-in-update for more information.",
+  "Element acme-selection-indicator scheduled an update (generally because a property was set) after an update completed, causing a new update to be scheduled. This is inefficient and should be avoided unless the next update can only be scheduled as a side effect of the previous update. See https://lit.dev/msg/change-in-update for more information.",
+  "Element acme-input scheduled an update (generally because a property was set) after an update completed, causing a new update to be scheduled. This is inefficient and should be avoided unless the next update can only be scheduled as a side effect of the previous update. See https://lit.dev/msg/change-in-update for more information.",
+  "Element acme-scroll-area scheduled an update (generally because a property was set) after an update completed, causing a new update to be scheduled. This is inefficient and should be avoided unless the next update can only be scheduled as a side effect of the previous update. See https://lit.dev/msg/change-in-update for more information."
+],
+   expected: [],
+   operator: "deepStrictEqual",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/verify-pages-0.3.1.ts:75:16
+
+Bun v1.4.2 (macOS arm64)

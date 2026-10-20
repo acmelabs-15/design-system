@@ -12,6 +12,7 @@ import { buildBrowserPackageNotices, ensureBrowserPackageLinks } from "./browser
 // Pure Bun: no Node runtime, no Python.
 
 import fs from "node:fs";
+import { buildProductionBrowser } from "./browser-build";
 import { writeDateRuntime } from "./date-runtime";
 import path from "node:path";
 import { litStyleModule, verifyStyleManifest, writeStyle } from "./styles";
@@ -86,7 +87,7 @@ fs.writeFileSync(
 
 // Selective browser entries share one runtime graph, including the explicit all entry.
 {
-  const result = await Bun.build({
+  const result = await buildProductionBrowser({
     entrypoints: [
       path.join(DIST, "all.js"),
       path.join(DIST, "configure.js"),
@@ -99,7 +100,6 @@ fs.writeFileSync(
     ],
     root: DIST,
     outdir: path.join(DIST, "cdn"),
-    target: "browser",
     format: "esm",
     splitting: true,
     minify: true,
@@ -122,12 +122,11 @@ for (const [name, minify] of [
   ["design-system.js", false],
   ["design-system.min.js", true],
 ] as const) {
-  const r = await Bun.build({
+  const r = await buildProductionBrowser({
     entrypoints: [path.join(DIST, "all.js")],
     outdir: path.join(DIST, "bundle"),
     naming: { entry: name, chunk: "chunks/[name]-[hash].[ext]", asset: "assets/[name]-[hash].[ext]" },
     splitting: true,
-    target: "browser",
     format: "esm",
     minify,
     sourcemap: minify ? "none" : "linked",
@@ -178,13 +177,12 @@ for (const [name, minify] of [
 // 3b. The standalone bundle: the same, plus tokens.css installed into the document on import.
 // For hosts that allow a script from a CDN but no stylesheet from one (the artifact CSP), one tag.
 {
-  const r = await Bun.build({
+  const r = await buildProductionBrowser({
     entrypoints: [standaloneEntry],
     outdir: path.join(DIST, "bundle"),
     naming: { entry: "design-system.standalone.min.js", chunk: "chunks/[name]-[hash].[ext]", asset: "assets/[name]-[hash].[ext]" },
     splitting: true,
     plugins: [browserAssetPlugin(DIST)],
-    target: "browser",
     format: "esm",
     minify: true,
     sourcemap: "none",

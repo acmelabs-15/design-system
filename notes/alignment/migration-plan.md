@@ -434,3 +434,9 @@ Actual OS input/autofill, Safari/assistive technology and OS background-window b
 [Final acceptance](evidence/m26-final/README.md) closes the implementation and local automated boundary. The final unit suite passes 963 tests. The clean committed rebuild has no generated drift. All required browser invocations are accepted: the initial sequence passed 22 of 23, and the one corrected Intent-reference oracle passed its complete targeted rerun against the identical archives. All 1,446 component results, managed forms, history, scoped/package delivery, official Firefox and consumer-tool records pass. The recorded rerun is explicit; the initial command's failure is preserved.
 
 The developer preview now watches examples and rejects encoded traversal. Actual-platform and external release gates above remain unperformed. They are not implementation tasks silently deferred from this pass and are not waived. No push, publication or deployment occurred.
+
+### Authorized release delivery — 2026-10-20
+
+Peter's release request authorizes the external delivery work. All five 0.3.1 packages are public and cryptographically verified. Public CDN component and Flow worker checks pass in Chromium, Firefox and WebKit. The reviewed Pages workflow deploys successfully; complete public file and navigation checks are running before snapshot retirement. [Current release evidence and remaining sequence](release-0.3.1.md).
+
+PR #4 merges the declaration-order correction after full Linux acceptance. Two clean main-branch builds now provide archive records for a reproducibility comparison. The published version and tag remain immutable. The actual-platform limits above remain unperformed and explicit.
