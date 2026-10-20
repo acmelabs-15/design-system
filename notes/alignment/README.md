@@ -4,9 +4,9 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 ## Where we are
 
-**Execution, refreshed 2026-10-20:** all five 0.3.1 packages are public and cryptographically verified. Public documentation bytes match all 25,120 reviewed files, but browser acceptance exposes development dependency variants in the site and browser bundle. The production build correction and coordinated 0.3.2 patch are in progress. Preserve 0.3.1 and its signed evidence. Peter completes browser publisher setup; no authentication is pending. Full patch CI continues. [Active release handoff](release-0.3.2.md); [0.3.1 evidence](release-0.3.1.md).
+**Execution, refreshed 2026-10-20:** all five 0.3.2 packages are public and cryptographically verified. The publication workflow succeeds. Public CDN and Pages checks pass in Chromium, Firefox and WebKit with zero warnings. All 25,120 deployed documentation files match the reviewed artifact. The obsolete 244-file snapshot is removed and independently reviewed on the cleanup branch; CI and merge remain. No authentication is pending. [Active release handoff](release-0.3.2.md).
 
-**Live release checkpoint:** tag v0.3.1 remains at 53427b5dffabd7e6fa32ab1c7afed125ec0f4e4f. The GitHub release stays prerelease/not latest until delivery acceptance closes. Its published-release ZIP contains the exact public archives and provenance; the original preparation ZIP remains as evidence. Release publishing is enabled. Automatic Pages deployment is held until all 0.3.2 packages are public; the existing site stays available. Current branch: codex/release-delivery-closure, based on PR #4 merge b052e5e913313209ffad12ec3a51c79480bf7050. [The incomplete 0.3.0 release](release-0.3.0.md) retains its original tag and archives.
+**Live release checkpoint:** tag v0.3.2 remains at 6ec538e70f3874d7543ce81816abc290dca60e6b. Its GitHub release is a draft. Release and Pages deployment are enabled. Current branch: codex/release-032-closure. Full tag, PR and main verification pass. The original 0.3.0 and 0.3.1 tags and archives remain unchanged.
 
 **Language:** use component names directly. Every component belongs to this design system; there is no separate category or version. [Decision](../decisions/component-language.md).
 
@@ -18,13 +18,13 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 **Overlay density:** [Verified correction](evidence/overlay-density-2026-09-23.json) preserves normal density inside Dialog, Drawer, Menu and Toggle Tip while retaining explicit theme and child overrides. Toast acceptance is linked above.
 
-**Next boundary:** finish the production dependency correction, validate 0.3.2 in clean Linux CI, review and merge it, then publish the five coordinated packages and verify public delivery. Keep the old documentation snapshot until Pages browser acceptance passes. [Exact sequence and evidence](release-0.3.2.md).
+**Next boundary:** pass cleanup CI and merge the reviewed snapshot removal, confirm final deployment and close the GitHub release as stable/latest. Publication, CDN and public Pages acceptance pass. [Exact evidence and sequence](release-0.3.2.md).
 
 **Working copies and workers:** implementation is saved in d9b2f100f (scoped/bundled delivery), 8114e3ae0 (default restoration), d200bf646 (Tabs paint) and 51564fda2 (consumer and verification toolchain). Earlier Slider/Calendar worktrees are historical. The final dev-server and Intent-oracle corrections are saved in 0dd8c96e1 and 1ccfd4400. All delegated implementation and review work is complete. Keep heavy build/test jobs sequential; parallel compiler jobs caused memory pressure and test timeouts.
 
 **Tool runtime:** after the computer restart removes `/tmp`, use `.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun`. Its official ZIP checksum is verified. The global Bun remains 1.4.0. The shared check command preserves its pinned executable for child package scripts. For local generation, invoke the script directly with the pinned executable, or explicitly prefix PATH. An absolute executable followed by `bun run` can still launch a script's nested `bun` through the global PATH.
 
-**Browser verification:** Playwright 1.63.0 and complete Firefox/WebKit binaries now live in /Users/peterkloss/Library/Caches/acme-design-system/browser-checks. Use its node_modules/playwright/index.mjs and browsers/ path. The earlier acme-style-engines-fHTyxk package lost files; do not reuse it.
+**Browser verification:** Playwright 1.63.0 and its matching Chromium headless shell, Firefox and WebKit binaries live in /Users/peterkloss/Library/Caches/acme-design-system/browser-checks. Use its node_modules/playwright/index.mjs and browsers/ path. The earlier acme-style-engines-fHTyxk package lost files; do not reuse it. Public readiness checks use loaded documents and explicit functional assertions; the saved networkidle timeouts do not establish a site defect.
 
 **Security follow-up:** a delegated check printed an npm token into tool output. Peter has been informed; token rotation remains owner-controlled. No secret was committed. See the incident entry in [developer tooling](../analysis/developer-tooling.md#credential-handling-incident).
 
@@ -32,7 +32,7 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 **Implementation history:** 2ec047be1 (Calendar/M13), 6e431cf16 (native lists/Disabled Wall), c84f73cee (Card/Inset/Item), 39bdc98c0 (Scroll Area), 335546ad0 (style whitespace). fbed13a4f closes Resizable/M14; ef0f83c08 closes disclosure; 125097fef/0a54e3b80 close Steps/Timeline and its corrected documentation evidence. e9d9b6b4d closes navigation. M16 closes in 26f026f8c, 273480e81, a6d2a445b and 14e5083f9. These commits are included in the merged release.
 
-**Unperformed platform checks:** genuine OS IME/dictation/autofill; actual Safari and assistive technology; real background-window behavior. Automated engine checks do not establish these. Linux CI, signing, all five public packages and three-engine CDN delivery pass. Public Pages browser acceptance currently fails on development-runtime warnings; 0.3.2 corrects the build selection.
+**Unperformed platform checks:** genuine OS IME/dictation/autofill; actual Safari and assistive technology; real background-window behavior. Automated engine checks do not establish these. Public 0.3.2 CDN and Pages acceptance pass. The 0.3.1 Pages browser check finds development-runtime warnings; 0.3.2 corrects that build selection.
 
 The dated checkpoints below retain their recorded results. The current execution block above owns the resumption point.
 
@@ -485,7 +485,7 @@ Run the migration plan, then build the new elements in the Phase 4.2 order, each
 
 ## Generated files
 
-The [current path and writer map](../../AGENTS.md#where-things-are-and-what-is-generated) is maintained with the build. Generated styles, definitions, manifests, browser entries, website output and staged packages each have an explicit source. The tracked docs tree remains only as the current published snapshot until M25 switches Pages.
+The [current path and writer map](../../AGENTS.md#where-things-are-and-what-is-generated) is maintained with the build. Generated styles, definitions, manifests, browser entries, website output and staged packages each have an explicit source. Pages deploys the verified `_site/` artifact. The retired snapshot and its removal remain in Git history and the release record.
 
 ## Output
 
