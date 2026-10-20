@@ -330,6 +330,10 @@ Review reproduces a source-ancestor substitution at the packing boundary. Canoni
 
 The browser notice collector preserves the supplied license files. The known `@tanstack/markdown` 0.0.13 omission has a version/hash-pinned package-metadata record, clearly distinguished from full notice text. Its published and source manifests declare MIT, the [documented npm SPDX form](https://docs.npmjs.com/cli/v12/configuring-npm/package-json/#license). No copyright notice is invented; no source-commit cryptographic binding is claimed. Unknown omissions and changed proofs fail. [Exact record and verification status](../alignment/release-0.3.1.md).
 
+The first Linux 0.3.1 run exposes a format-check portability defect in `scripts/package-contents.ts`: GNU tar returns success for the short gzip payload `"not a tar archive"`, while macOS tar rejects it. The helper now requires a gzip header and uses the tar parser bundled with pinned npm 12.0.2, in strict mode. Its entry callback matches npm's own archive-entry counting. Empty, truncated, malformed and uncompressed inputs fail. The 60,000-entry budget and test timeouts stay unchanged.
+
+All 19 focused package/release tests pass, including 11 archive tests. The five actual candidate archives revalidate. Independent review confirms that disabling strict mode makes three malformed-archive tests fail. The fresh Linux run passes unit tests and archive validation; browser and cryptographic gates remain separate. [Exact failure, correction and evidence](../alignment/evidence/release-0.3.1/linux-archive-finding.json).
+
 ### Credential-handling incident
 
 During a delegated registry investigation in this continuation, an unnecessary read of local npm configuration printed an npm authentication token into tool output. The value is not reproduced here, was not added to repository files and was not reused. Peter was informed in commentary. The token should be revoked and replaced by its owner; no credential rotation or account change was attempted. Keep this follow-up visible in the final handoff without reading or printing the token again.
