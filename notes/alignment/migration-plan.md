@@ -23,7 +23,7 @@ Approved final paths for migration:
 | Documentation MCP | packages/mcp/src → packages/mcp/dist; @acmelabs/design-system-mcp; local stdio/versioned-doc retrieval |
 | Consumer skills | skills/ authored guidance plus generated release-qualified references; validated with Intent and packaged with the matching release |
 | Authored website | site/ replaces docs-src/; keep the existing Lit builder/router |
-| Generated website | _site/ disposable, built by Pages workflow; stop tracking docs/ only in the verified publishing migration |
+| Generated website | _site/ disposable, built and deployed by the verified Pages workflow |
 | Icons | Pinned public artwork/license and generated catalog under assets/material-symbols/ and src/generated/icons/; explicit per-icon/family delivery |
 
 Root CSS files move to dist/styles as final outputs; no duplicate compatibility files. Source maps point back to meaningful generator/authored input, not merely an empty mapping to generated TypeScript. Generated CSS/Lit modules remain committed while the upstream corpus is not in CI. A clean release build consumes reviewed committed generated inputs; the generation manifest checks their producer/source fingerprints. Do not pretend CI regenerated unavailable corpus inputs.
@@ -438,5 +438,7 @@ The developer preview now watches examples and rejects encoded traversal. Actual
 ### Authorized release delivery — 2026-10-20
 
 Peter's release request authorizes the external delivery work. All five 0.3.1 packages are public and cryptographically verified. Public CDN component and Flow worker checks pass in Chromium, Firefox and WebKit. The reviewed Pages workflow deploys successfully, and all 25,120 public files match. Browser acceptance then identifies development dependencies. The [0.3.2 correction](release-0.3.2.md) selects production dependencies and updates the MCP SDK and two HTTP dependencies for new audit advisories. Corrected public acceptance remains required before snapshot retirement.
+
+The corrected 0.3.2 release now passes all package, CDN and public Pages checks. All 25,120 site files match the reviewed artifact. The three-engine browser matrix includes exact headings, mobile navigation, diagram layout, Add step and actual worker closure. The 244-file snapshot is removed on codex/release-032-closure after this acceptance; review, merge and stable-release finalization remain.
 
 PR #4 merges the declaration-order correction after full Linux acceptance. Two independent verified Linux builds of the same source tree produce byte-identical archives for all five packages. The published version and tag remain immutable. The actual-platform limits above remain unperformed and explicit.

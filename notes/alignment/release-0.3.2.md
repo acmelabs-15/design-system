@@ -4,12 +4,12 @@ Peter's release authorization and [execution delegation](../decisions/execution-
 
 ## Current state
 
-- Tag v0.3.2 points to reviewed merge 6ec538e70f3874d7543ce81816abc290dca60e6b. PR, tag and documentation verification all pass. The five archives reproduce across independent clean Linux builds.
-- Core, React, Devtools and MCP 0.3.2 are public. Their actual tarballs, signed provenance and latest tags verify. [Core](evidence/release-0.3.2/core-publication.json); [React](evidence/release-0.3.2/react-publication.json); [Devtools](evidence/release-0.3.2/devtools-publication.json); [MCP](evidence/release-0.3.2/mcp-publication.json).
-- Publish-only attempt 3 publishes Devtools and MCP, then accepts Browser and stops at public confirmation. npm reports Browser 0.3.2 as Validating. Read-only Browser monitor session 77276 verifies its public upload. After success, rerun only publish job 118915569199 to confirm the complete set. The original verification artifact remains unchanged. Details are in `.artifacts/release-session.json`. No authentication is pending.
-- All five trusted publishers are configured. The browser configuration’s first actual trusted publication remains to verify.
-- Pages deployment is held. Its reviewed 25,120-file artifact is downloaded and checksum-verified. After all packages verify, enable Pages and rerun deploy job 118905674804.
-- The GitHub release remains a draft. The cleanup branch is codex/release-032-closure; release records are backed up on that branch. Keep the tracked snapshot until corrected public Pages acceptance passes.
+- All five npm 0.3.2 packages are public. Their actual archives, signed provenance and latest tags verify against the exact tag artifact. [Complete verification](evidence/release-0.3.2/public-verification.json).
+- Publication run 39499520613 succeeds on attempt 4, job 118924959513, confirming all existing uploads. The original verification artifact and tag remain unchanged. All five trusted publishers complete real publications; no authentication is pending.
+- Public CDN checks pass in Chromium, Firefox and WebKit: matching entry bytes, component loading, Flow layout and actual worker closure, with zero warnings or failed requests. [Results](evidence/release-0.3.2/cdn-public-verification.json); [exact probe](evidence/release-0.3.2/verify-cdn.ts).
+- Pages is enabled again. Reviewed deployment job 118925381095 succeeds in run 39499435937. All 25,120 public files match the artifact. Twelve route/engine cases pass, including desktop/mobile navigation, complete diagram layouts, Add step and actual worker closure. [Public Pages acceptance](evidence/release-0.3.2/pages-public-verification.json); [final browser probe](evidence/release-0.3.2/verify-pages-browser.ts).
+- The clean 244-file tracked snapshot is removed on codex/release-032-closure after public acceptance. Its former Git tree is 787ca6612684769a555c3fc322354f12e973f305. The writer map and workflow comment now describe artifact deployment. Independent review approves the exact retirement diff. Three workflow tests and all static checks pass. Cleanup CI and merge remain. [Review](evidence/release-0.3.2/snapshot-retirement-review.json).
+- The exact public archives and provenance verify as a complete release set. The uploaded published-release-0.3.2.zip has SHA-256 8c536a8ad4e5c05f8a02d3b2e779447beb8e6ac32a3916ab87fcd57d7fb3e958, matching GitHub’s asset digest. It contains the release record, five archives and five public provenance bundles, without the trust cache. [Asset evidence](evidence/release-0.3.2/published-assets.json). The GitHub release remains a draft while cleanup finishes. Public Pages acceptance passes. Cleanup branch: codex/release-032-closure.
 
 ## Release record
 
@@ -48,18 +48,26 @@ The checkpoints below preserve the sequence and the evidence available at each p
 
 - Attempt 3 completes Devtools and MCP publication within the workflow. Browser’s first trusted upload succeeds, then waits for npm automated review. Public verification remains required before declaring its publisher fully exercised. [Browser review](evidence/release-0.3.2/browser-review.json); [publish log](evidence/release-0.3.2/third-publication-attempt.txt).
 
+- The initial CDN probe passes Chromium/WebKit but Firefox warns that the probe document is in Quirks Mode. Its setContent input lacks a doctype. The probe now supplies a doctype and asserts CSS1Compat in every engine. The unchanged package, warning assertions and timeouts then pass in all three engines. [Initial probe evidence](evidence/release-0.3.2/cdn-initial-probe-failure.json). This is a test-document correction, not a package change.
+
 ## Remaining sequence
 
 1. [x] Finish focused static/type checks, regenerate the versioned metadata and obtain independent review.
 2. [x] Pass full clean Linux acceptance for the exact correction head, then merge with a merge commit.
-3. Tag 0.3.2, sign and verify its exact archives, and publish through the established workflows. Verify every public tarball, provenance statement and latest tag.
-4. Deploy the corrected reviewed Pages artifact. Verify public content and three-engine navigation with unchanged strict assertions. Keep the original failure evidence.
+3. [x] Tag 0.3.2, sign and verify its exact archives, and publish through the established workflows. Verify every public tarball, provenance statement and latest tag.
+4. [x] Deploy the corrected reviewed Pages artifact. Verify public bytes and three-engine functional navigation. Keep the original failures and the documented readiness correction.
 5. Retire the 244-file tracked snapshot only after that public acceptance. Update generated-file records, review and merge the cleanup.
 6. Close the GitHub release as stable/latest with exact published assets and evidence. Preserve 0.3.0 and 0.3.1 history.
 
 ## Evidence and limits
 
 The first public file-check attempt encounters HTTP 503; that URL later returns 200. The complete recheck uses four concurrent requests and bounded retries for transient responses. Every file must match its expected SHA-256. [Initial response evidence](evidence/release-0.3.2/pages-initial-transient-failure.txt).
+
+Public byte verification completes before browser navigation. Two installed-Chrome runs time out waiting for networkidle on Flow Diagram; a fresh Flow diagnostic and a later complete Chrome matrix pass. The matching bundled Chromium also times out, but its diagnostics capture the loaded Flow document and assets. The timeout's internal cause is unverified. This does not establish a Chrome-version defect or a library defect. [Initial timeout](evidence/release-0.3.2/pages-initial-navigation-timeout.txt), [second timeout](evidence/release-0.3.2/pages-second-navigation-timeout.json), [bundled-runtime diagnostic](evidence/release-0.3.2/pages-bundled-networkidle-timeout.json), [original Chrome matrix](evidence/release-0.3.2/pages-installed-chrome-recheck.json).
+
+[Playwright advises against networkidle as a test-readiness signal](https://playwright.dev/docs/api/class-page#page-goto). The final probe uses load, exact route headings, defined components and functional outcomes. It strengthens Flow coverage with all four diagrams, rendered edges, settled layout, Add step and actual closure of all three workers after navigation. Existing warning/error assertions and timeout limits remain. All twelve cases pass with Playwright's matching engines. The byte checkpoint is reused only after binding it to the same commit, run, artifact and URL and rechecking every local artifact hash. It is not presented as a second network crawl. [Initial full probe](evidence/release-0.3.2/verify-pages-initial.ts), [instrumented networkidle probe](evidence/release-0.3.2/verify-pages-networkidle.ts), [passing log](evidence/release-0.3.2/pages-final-browser.txt).
+
+Desktop Button, narrow Checkbox and the changed Flow diagram screenshots are inspected: content renders, controls remain visible and the new edge connects Start to Step 1. [Button](evidence/release-0.3.2/pages-button.png), [mobile](evidence/release-0.3.2/pages-mobile.png), [Flow](evidence/release-0.3.2/pages-flow.png). This is a targeted visual check, not a second full component audit.
 
 The production configuration corrects delivery of development dependency variants. It does not establish that every diagnostic emitted by development dependencies indicates incorrect component behavior, nor prove those lifecycle paths independently. Existing functional and lifecycle browser gates remain required.
 

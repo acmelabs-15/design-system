@@ -19,7 +19,7 @@ jobs:
       contents: read
   deploy:
     needs: verify
-    # The existing main/docs publication remains until Pages setup is explicitly enabled.
+    # Deploy only the artifact that passes this run's complete verification.
     if: vars.ACME_PAGES_ENABLED == 'true' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     timeout-minutes: 10

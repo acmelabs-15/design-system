@@ -7,7 +7,23 @@
   "zipSha256": "5b50e84979250fa172279dd4d72dfe668387358166dfd17c4c69c5dd036930f3",
   "files": 25120,
   "verification": "full CI passes",
-  "deployJob": 118905674804,
-  "deployment": "skipped while coordinated package publication is incomplete",
-  "publicAcceptance": "not-yet-performed"
+  "deployment": {
+    "job": 118925381095,
+    "run": 39499435937,
+    "result": "success"
+  },
+  "publicAcceptance": {
+    "status": "passed",
+    "checkedAt": "2026-10-20T23:05:04.153Z",
+    "filesCheckedAt": "2026-10-20T22:49:27.794Z",
+    "files": 25120,
+    "browserCases": 12,
+    "report": "pages-public-verification.json",
+    "readiness": "load, exact route heading, defined elements, example diagnostics; Flow additionally requires routed edges, settled layout, Add step and actual worker closure"
+  },
+  "initialDeployment": {
+    "job": 118905674804,
+    "result": "skipped until coordinated publication completes"
+  },
+  "updatedAt": "2026-10-20T23:07:53.326Z"
 }

@@ -30,7 +30,7 @@ For the approved migration, read and follow `notes/decisions/execution-delegatio
 ## Keeping the record
 
 - Analysis documents, decision notes and plan sections are updated in the turn the information changes.
-- Decision notes: `notes/decisions/<slug>.md`, opening with "Decided <date> by Peter". Nothing hand-written goes under `docs/`; it is build output.
+- Decision notes: `notes/decisions/<slug>.md`, opening with "Decided <date> by Peter". Author website content under `site/`; `_site/` is build output.
 - Pass documents: `notes/alignment/`.
 - **The handoff test closes every turn:** a fresh agent reading this file and `notes/alignment/README.md` can resume with no other context. `## Where we are` is current, every new document is linked from the pass README, and every decision made this turn has its note.
 
@@ -85,7 +85,7 @@ Several **generated files are committed**, in places that read as source. The sc
 | `_site/` | `bun run docs` → `site/build.ts` | `site/` and `dist/` |
 | `dist/` (gitignored) | `bun run build` | `src/` and verified generated inputs |
 
-The tracked `docs/` tree is the published snapshot while Pages still serves main/docs. Its removal and the workflow deployment switch remain assigned to the publishing migration; it is not the local build output.
+GitHub Pages deploys the verified `_site/` artifact through `.github/workflows/pages.yml`. Website output is not tracked.
 
 Hand-written: `styles/`, `src/` except `src/generated/`, `src/define/`, `src/register/`, their `src/internal/` counterparts and `src/all.ts`; `site/`, `scripts/`, `packages/` except the generated paths above, `tools/geist/` except `corpus/`, `notes/`, `.agents/`, `README.md`, `PLAN.md`, this file.
 
