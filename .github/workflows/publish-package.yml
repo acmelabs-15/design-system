@@ -6,6 +6,11 @@ on:
   release:
     types: [published]
   workflow_dispatch:
+    inputs:
+      prepare_only:
+        description: Sign verified archives without publishing package versions
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -45,6 +50,23 @@ jobs:
       - name: Validate exact tag, commit and archive bytes
         run: bun scripts/release.ts validate
       - name: Publish reviewed archives through npm OIDC and provenance
+        if: inputs.prepare_only != true
         env:
           ACME_RELEASE_ENABLED: ${{ vars.ACME_RELEASE_ENABLED }}
         run: bun scripts/release.ts publish
+      - name: Sign reviewed archives for authenticated first publication
+        if: inputs.prepare_only == true
+        env:
+          ACME_RELEASE_ENABLED: ${{ vars.ACME_RELEASE_ENABLED }}
+        run: bun scripts/release-attest.ts sign
+      - name: Save signed archives
+        if: inputs.prepare_only == true
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: signed-release-${{ github.sha }}
+          include-hidden-files: true
+          path: |
+            .artifacts/release/release.json
+            .artifacts/release/archives/
+            .artifacts/release/provenance/
+          if-no-files-found: error

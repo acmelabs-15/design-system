@@ -276,7 +276,17 @@ The [final integrated acceptance](../alignment/evidence/m26-final/README.md) run
 
 The committed build reproduces generated output without drift. Four coordinated0.3.0 archives pass local acceptance. All23 required browser invocations are accepted: the initial run passes22, and the corrected strict Intent-link oracle passes its full targeted rerun against the identical archives. Original results and the rerun remain separate. Source publication records distinguish clean/dirty trees, and dirty records cannot publish.
 
-The dev server watches authored examples, keeps the parent Bun runtime for child builds, binds to loopback and rejects encoded traversal before file access. Six actual server regressions pass; the traversal test uses a harmless temporary sentinel. Actual-platform and external Linux/OIDC/publication/Pages checks remain unperformed, with publishing disabled.
+The dev server watches authored examples, keeps the parent Bun runtime for child builds, binds to loopback and rejects encoded traversal before file access. Six actual server regressions pass; the traversal test uses a harmless temporary sentinel. Actual-platform and external Linux/OIDC/publication/Pages checks remain unperformed at this checkpoint, with publishing disabled.
+
+### First publication and provenance — 2026-10-20
+
+Linux quality now passes at2924f850e. The live npm registry still contains only core0.2.0; each companion name returns404. npm's trust CLI requires an existing package, so the normal trusted-publisher flow cannot create those names. Fresh CLI owner authentication and a separate browser security check succeed. Core's existing trust points to the exact publish-package workflow/environment and permits publication.
+
+The documented provenance-file option separates signing from authenticated registry submission. Inspected pinned npm12.0.2 sources, libnpmpublish/lib/publish.js and provenance.js, bind the statement to the npm package URL and archive SHA-512, verify Sigstore trust on import, and attach the unchanged bundle to the registry submission. This permits the first real companion version without a placeholder version or permanent repository credential.
+
+scripts/release-attest.ts uses that same pinned provenance producer on the exact-tag GitHub-hosted Linux runner after the full quality gate. It reuses archive validation, clean-source and release-environment checks. Downloaded bundles are independently verified against the expected certificate issuer/identity, source commit, tag, workflow, hosted runner, package and digest. The prepare_only publishing-workflow input signs and uploads instead of publishing. Normal OIDC publication remains unchanged. Live signing and first publication are still verification steps, not established by the local tests.
+
+Sources: [npm publish provenance-file](https://docs.npmjs.com/cli/v12/commands/npm-publish#provenance-file), [npm trust prerequisites](https://docs.npmjs.com/cli/v12/commands/npm-trust#prerequisites). Exact release status and operation sequence live in [release0.3.0](../alignment/release-0.3.0.md).
 
 ### Credential-handling incident
 

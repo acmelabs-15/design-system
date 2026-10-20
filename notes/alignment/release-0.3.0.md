@@ -6,11 +6,12 @@ Requested by Peter on 2026-09-27. This authorizes the release work that was prev
 
 - Local acceptance is complete; see [final verification](evidence/m26-final/README.md).
 - Four packages target 0.3.0. npm currently has core0.2.0; the three companion names do not yet exist.
-- The release branch is109 commits ahead of remote main, with no remote-only commits.
+- PR #1 is open and unmerged. The preceding verified head is 2924f850ea274c08ff69a0172e8e4fc6067a2886; the signing-only workflow change requires a new Linux run.
 - GitHub access is administrative. Package and Pages opt-in variables are unset. Pages currently serves main/docs.
 - A scan of all new Git history found no npm/GitHub token or private-key pattern; no credentials were printed by this check.
-- npm's signed-in package-settings session requires user-controlled one-time verification. The authentication page is open; no code was requested in chat.
-- Linux verification, npm publisher configuration and release/deployment remain pending. Manual platform limits from local acceptance remain documented; release authorization does not turn those checks into passing results.
+- Linux quality runs36315751267 and36354684865 both completed successfully. The latter verifies the preceding PR head.
+- Fresh CLI login succeeds as loriensleafs, with write access to core. Peter completes the separate npm security check; core's publisher matches publish-package.yml, acmelabs-15/design-system, environment publish-package, and permits direct and staged publication.
+- npm publisher configuration and release/deployment remain pending. Manual platform limits from local acceptance remain documented; release authorization does not turn those checks into passing results.
 
 ## Intended sequence
 
@@ -47,3 +48,25 @@ PR #1 remains open and unmerged. No v0.3.0 release tag or package publication wa
 On resumption: inspect the latest Linux result and diagnose any remaining failure without weakening gates. Complete npm authentication and the three companion packages' first-publication prerequisites. Verify package-specific trusted publishing before enabling the coordinated publishing workflow. Then merge through the normal verified flow, tag/release the verified commit and deploy/check Pages. Preserve the manual-platform limitations. Do not use the previously exposed npm credential, print credentials, or publish only a subset while claiming the coordinated release is complete.
 
 This status-only note is committed locally after the pushed head; it is intentionally not pushed during the active CI run to avoid cancelling verification again.
+
+## Authentication clarification — 2026-10-20
+
+The current registry confirms that the @acmelabs scope already exists: core remains at0.2.0. The React, Devtools and MCP package names each return404. These are new package names within an existing scope, not a new namespace.
+
+Package names can be created through an authenticated first publication with npm publish. Trusted publisher configuration also has a CLI command, npm trust github, but the package must already exist. The official CLI documentation requires account two-factor authentication for trust configuration. Website settings are therefore not the only configuration route; account authentication is still necessary.
+
+The user reports that the password prompt is absent. The supplied browser URL is /package/escalate, which is a package page rather than the former /escalate password confirmation page. A fresh npm CLI web login completes successfully in terminal session91760. Peter then completes the separate security check in session49420. Credentials use an isolated mode0700 directory at /private/tmp/acme-npm-login-jxv9dw with mode0600 configuration files. Do not print their contents or read the previous npm credential. No publication or publisher configuration occurred.
+
+Fresh GitHub checks confirm successful quality runs36315751267 and36354684865. PR #1 remains open, unmerged and mergeable, at2924f850ea274c08ff69a0172e8e4fc6067a2886 before the signing-only workflow change. This supersedes the earlier pending-run and local-only-head handoff. Account access and core's publishing permissions are verified. Continue through the authenticated first-publication sequence below.
+
+Sources: [npm publish](https://docs.npmjs.com/cli/v12/commands/npm-publish), [npm trust](https://docs.npmjs.com/cli/v12/commands/npm-trust), [npm login](https://docs.npmjs.com/cli/v12/commands/npm-login). The current documentation selector reports npm12.2.0; the repository CLI remains pinned to12.0.2.
+
+### Authenticated first-publication preparation
+
+Both authentication steps now succeed. The temporary CLI configuration remains isolated; no credential values were read or copied to the repository. Core's existing publisher is verified as the exact repository/workflow/environment with publish and stage-publish permissions.
+
+Under the authorized release, add a prepare_only dispatch input to the existing publishing workflow. It runs the same complete Linux gate and exact-tag/commit/source checks, then signs the four archives with the pinned npm provenance implementation. It uploads the original archives and signed bundles without publishing versions. Verification checks Sigstore trust, the exact GitHub certificate identity, package SHA-512, tag, commit, workflow and hosted runner. Normal automated publication retains its existing guards and token-free authentication.
+
+This supports first publication of the real companion0.3.0 archives using the authenticated owner and npm's documented provenance-file option. No placeholder versions or permanent CI token are introduced. The new command's regression starts red with the missing module and passes after implementation; it rejects altered bytes, subjects, commits, tags, repositories, workflows, runner claims and predicate types. Live signing and first publication remain pending until review and Linux verification pass. Keep the final tag/commit and downloaded artifact record identical; do not publish the older local archives.
+
+Local verification passes lint/format/style, strict types, thirteen focused release tests and the full966-test suite under checksum-verified Bun1.4.2. The initial sandboxed suite passes959 tests and blocks seven server/temporary-install tests; the complete unrestricted rerun passes966 with190406 assertions. Original logs remain in .artifacts/release-unit-2026-10-20.log and .artifacts/release-unit-2026-10-20-unrestricted.log. Independent review approves the focused change; deleting subject validation in a private-copy mutation makes the regression fail. Live signing and the new Linux run remain required.

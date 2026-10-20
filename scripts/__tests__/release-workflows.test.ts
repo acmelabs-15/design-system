@@ -12,7 +12,7 @@ type Workflow = {
       permissions?: Record<string, string>;
       needs?: string;
       uses?: string;
-      steps?: { uses?: string; run?: string; with?: Record<string, string> }[];
+      steps?: { uses?: string; run?: string; if?: string; with?: Record<string, string> }[];
     }
   >;
 };
@@ -50,4 +50,14 @@ test("publication and Pages deployment remain explicitly gated after verificatio
   expect(pages.jobs.deploy.permissions?.pages).toBe("write");
   expect(publishing.permissions).toEqual({ contents: "read" });
   expect(pages.permissions).toEqual({ contents: "read" });
+});
+test("first-publication preparation signs the checked archives without publishing", () => {
+  const steps = workflow("publish-package").jobs.publish.steps!;
+  expect(steps.find((step) => step.run === "bun scripts/release.ts publish")?.if).toBe("inputs.prepare_only != true");
+  expect(steps.find((step) => step.run === "bun scripts/release-attest.ts sign")?.if).toBe("inputs.prepare_only == true");
+  const upload = steps.find((step) => step.uses?.startsWith("actions/upload-artifact@"));
+  expect(upload?.if).toBe("inputs.prepare_only == true");
+  expect(upload?.with?.name).toMatch(/^signed-release-\$\{\{ github\.sha \}\}$/);
+  expect(upload?.with?.path).toContain(".artifacts/release/archives/");
+  expect(upload?.with?.path).toContain(".artifacts/release/provenance/");
 });

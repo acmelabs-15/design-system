@@ -4,7 +4,7 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 ## Where we are
 
-**Execution:** release0.3.0 is in progress, not published. PR#1 is open; Linux run36315751267 is checking the latest corrections. npm requires user-controlled password confirmation and first-publication setup for the three new companion names. [Exact release handoff](release-0.3.0.md). Local implementation/acceptance remains complete; manual platform limits remain documented.
+**Execution, refreshed 2026-10-20:** release0.3.0 is authorized but not yet published. PR#1 is open and unmerged. Linux quality runs36315751267 and36354684865 pass at the preceding head2924f850e. npm CLI login and the separate security check succeed; core's trusted publisher matches the repository, workflow and environment. The three companion package names still require first publication. The signing-only workflow change passes independent review, lint, types and all966 unit tests under Bun1.4.2; a new Linux run precedes merge. [Exact release handoff](release-0.3.0.md#authentication-clarification--2026-10-20). Manual platform limits remain documented.
 
 **Language:** use component names directly. Every component belongs to this design system; there is no separate category or version. [Decision](../decisions/component-language.md).
 
@@ -16,7 +16,7 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 **Overlay density:** [Verified correction](evidence/overlay-density-2026-09-23.json) preserves normal density inside Dialog, Drawer, Menu and Toggle Tip while retaining explicit theme and child overrides. Toast acceptance is linked above.
 
-**Next boundary:** actual-platform validation and separately authorized release setup/publication. There is no remaining autonomous implementation batch. Publishing and Pages remain disabled; the frozen published docs remain until that release boundary.
+**Next boundary:** verify the signing-only workflow, merge and tag the reviewed source, sign its Linux-verified archives, publish the new names with authenticated ownership and matching provenance, configure their trusted publishers, then complete coordinated publication and Pages deployment. Publishing and Pages remain disabled until their prerequisites pass; the frozen published docs remain until that release boundary.
 
 **Working copies and workers:** implementation is saved in d9b2f100f (scoped/bundled delivery), 8114e3ae0 (default restoration), d200bf646 (Tabs paint) and 51564fda2 (consumer and verification toolchain). Earlier Slider/Calendar worktrees are historical. The final dev-server and Intent-oracle corrections are saved in 0dd8c96e1 and 1ccfd4400. All delegated implementation and review work is complete. Keep heavy build/test jobs sequential; parallel compiler jobs caused memory pressure and test timeouts.
 
@@ -30,7 +30,7 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 **Local commits:** 2ec047be1 (Calendar/M13), 6e431cf16 (native lists/Disabled Wall), c84f73cee (Card/Inset/Item), 39bdc98c0 (Scroll Area), 335546ad0 (style whitespace). fbed13a4f closes Resizable/M14; ef0f83c08 closes disclosure; 125097fef/0a54e3b80 close Steps/Timeline and its corrected documentation evidence. e9d9b6b4d closes navigation. M16 closes in 26f026f8c, 273480e81, a6d2a445b and 14e5083f9. No push, publication or Pages change occurred.
 
-**Unperformed gates:** genuine OS IME/dictation/autofill; actual Safari and assistive technology; real background-window behavior; Linux CI and future OIDC/signing/publisher/Pages acceptance. Automated engine checks do not establish these. Input history/back restoration is verified in fresh documents in all three engines.
+**Unperformed gates:** genuine OS IME/dictation/autofill; actual Safari and assistive technology; real background-window behavior; OIDC/signing/publisher/Pages acceptance for this release. Automated engine checks do not establish these. Linux CI passes. Input history/back restoration is verified in fresh documents in all three engines.
 
 The dated checkpoints below retain their recorded results. The current execution block above owns the resumption point.
 
