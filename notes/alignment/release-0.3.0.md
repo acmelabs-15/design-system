@@ -5,13 +5,13 @@ Requested by Peter on 2026-09-27. This authorizes the release work that was prev
 ## Current state
 
 - Local acceptance is complete; see [final verification](evidence/m26-final/README.md).
-- Four packages target 0.3.0. npm currently has core0.2.0; the three companion names do not yet exist.
-- PR #1 is open and unmerged. The preceding verified head is 2924f850ea274c08ff69a0172e8e4fc6067a2886; the signing-only workflow change requires a new Linux run.
-- GitHub access is administrative. Package and Pages opt-in variables are unset. Pages currently serves main/docs.
+- Four packages target0.3.0. React, Devtools and MCP0.3.0 are published. Their actual public tarballs and cryptographic provenance match the signed release. Core publication is running.
+- PR #1 is merged at05aff0c130887055281824dc5d103cb942e794cd. Annotated tagv0.3.0 points to that commit.
+- GitHub access is administrative. ACME_RELEASE_ENABLED is true. ACME_PAGES_ENABLED remains unset; Pages currently serves main/docs.
 - A scan of all new Git history found no npm/GitHub token or private-key pattern; no credentials were printed by this check.
-- Linux quality runs36315751267 and36354684865 both completed successfully. The latter verifies the preceding PR head.
+- Linux run39417304552 and exact-tag preparation/signing run39420121228 pass completely. All four signed archives also pass local signature/statement verification.
 - Fresh CLI login succeeds as loriensleafs, with write access to core. Peter completes the separate npm security check; core's publisher matches publish-package.yml, acmelabs-15/design-system, environment publish-package, and permits direct and staged publication.
-- npm publisher configuration and release/deployment remain pending. Manual platform limits from local acceptance remain documented; release authorization does not turn those checks into passing results.
+- The GitHub release is public and triggers run39433342050 for core publication. Companion trusted-publisher setup belongs immediately before their next real version. Pages deployment remains pending. Manual platform limits remain documented.
 
 ## Intended sequence
 
@@ -63,7 +63,7 @@ Sources: [npm publish](https://docs.npmjs.com/cli/v12/commands/npm-publish), [np
 
 ### Authenticated first-publication preparation
 
-Both authentication steps now succeed. The temporary CLI configuration remains isolated; no credential values were read or copied to the repository. Core's existing publisher is verified as the exact repository/workflow/environment with publish and stage-publish permissions.
+Both authentication steps now succeed. The temporary CLI configuration remains isolated; no credential values were read or copied to the repository. Core's existing publisher is verified as the exact repository/workflow/environment with publish and stage-publish permissions. A later authenticated npm org ls confirms loriensleafs is an owner of acmelabs, so the account has organization authority for the new names.
 
 Under the authorized release, add a prepare_only dispatch input to the existing publishing workflow. It runs the same complete Linux gate and exact-tag/commit/source checks, then signs the four archives with the pinned npm provenance implementation. It uploads the original archives and signed bundles without publishing versions. Verification checks Sigstore trust, the exact GitHub certificate identity, package SHA-512, tag, commit, workflow and hosted runner. Normal automated publication retains its existing guards and token-free authentication.
 
@@ -82,3 +82,61 @@ scripts/dependency-audit.ts still runs the native Bun audit. It accepts only tho
 Fresh [npm staged-publishing documentation](https://docs.npmjs.com/staged-publishing/) now permits new names, but automatically creates public0.0.0-stage placeholders. It also reserves the staged version until approval or rejection. The selected direct first publication with GitHub-signed provenance avoids those extra public versions; it does not depend on the older staging restriction.
 
 The remediation passes frozen installation, lint/format/style, strict types, a complete drift-free build and971 unit tests with190451 assertions. The native audit retains two findings with verified dispositions and no unresolved high/critical findings. Logs remain under .artifacts/release-security. The final guard refinement separates requireReleaseEnvironment from requirePublishEnvironment: explicit prepare_only signs verified tag archives without turning on registry publication. Actual publication still requires ACME_RELEASE_ENABLED=true. Fourteen focused release tests and strict types pass after this refinement; independent review approves it. No second component build is needed for this workflow-only refinement. A fresh Linux run remains mandatory before merge.
+
+Latest pushed head:6e2a086da1452211cc8446768af78637a368cd1b. It includes f994ba15c (reviewed security remediation) and6e2a086da (signing/publication separation). PR #1's updated description discloses the audit dispositions. [Run39417304552](https://github.com/acmelabs-15/design-system/actions/runs/39417304552) is in progress. No merge, tag, release, package publication or Pages setting change has occurred. This checkpoint is intentionally not pushed during the running verification. Next: wait for the complete Linux result, then merge with a merge commit. Keep publishing disabled while the exact release tag's prepare_only workflow signs its verified archives. Authenticate the real companion versions' first publication using those archives/bundles, configure their exact trusted publishers, then enable and run normal coordinated publication. Deploy and verify Pages after package publication.
+
+### Verified merge and tag
+
+Run39417304552 completes successfully, including every browser/consumer check and public trust verification. PR #1 merges with merge commit05aff0c130887055281824dc5d103cb942e794cd. Annotated tagv0.3.0 has tag object88b31662c419cb328670ddb8ee376768aae7e55e pointing to that commit. Publication and Pages opt-in variables remain unset.
+
+The downloaded [Linux verification record](evidence/release-0.3.0/linux-verified.json) confirms all23 browser invocations complete with zero failures, and the two exact audit dispositions pass against the fresh Linux installation. Diagnostic artifacts are preserved under .artifacts/release-security/linux-verification.
+
+The automatic tag run39420011866 is cancelled in favor of [explicit preparation run39420121228](https://github.com/acmelabs-15/design-system/actions/runs/39420121228), dispatched onv0.3.0 with prepare_only=true. This replacement runs the entire quality workflow before signing, without enabling package publication. Main's ordinary quality/documentation runs39419958921 and39419959012 also started. The legacy Pages build39419948507 succeeds for the still-preserved main/docs snapshot; that is not the new generated-site deployment.
+
+Next: require successful preparation/signing, download signed-release-05aff0c130887055281824dc5d103cb942e794cd from that run, and independently verify it with scripts/release-attest.ts verify under Bun1.4.2. Confirm release.json names commit05aff0c130887055281824dc5d103cb942e794cd. Publish the three real companion0.3.0 archives with the authenticated owner and their matching provenance-file bundles. Configure and verify each trusted publisher, then enable normal publication and finish the coordinated release. npm configuration remains isolated under /private/tmp/acme-npm-login-jxv9dw; do not print it or use the old exposed credential. These live status edits remain local.
+
+### Signed archives verified; first publication awaiting npm check
+
+Preparation run39420121228 succeeds, including live GitHub/Sigstore signing and verification of all four bundles. Artifact12263738717 is downloaded to .artifacts/signed-release-0.3.0.zip. Its SHA-256 matches GitHub's digest d4942071ef09872c5f670e8e68a41f0fe036eaa5752df5f5066089c7a05e4f72. It contains only release.json, four archives and four provenance bundles. Extraction is under .artifacts/signed-release-0.3.0.
+
+scripts/release-attest.ts verify succeeds under pinned Bun1.4.2 for all four packages at05aff0c130887055281824dc5d103cb942e794cd. [Archive identities](evidence/release-0.3.0/release.json) and [signing verification](evidence/release-0.3.0/signing.json) preserve the result. A final public registry preflight returns404 for all four0.3.0 versions.
+
+The first publication command for @acmelabs/design-system-react0.3.0 is active in terminal session31089. It uses the exact downloaded React archive and its provenance-file, scripts disabled, public access and the isolated authenticated npm configuration. npm requests a publishing-specific browser security check; the link is shown to Peter and sent to the browser pane. No version publication is confirmed yet. Resume by checking this session, then verify registry integrity before proceeding to Devtools/MCP. Keep the whole release incomplete until all four packages and documentation are verified.
+
+### React package creation did not confirm version publication
+
+Peter completes the publishing check. Session31089 exits0 and prints + @acmelabs/design-system-react@0.3.0. A sanitized request-log inspection shows the package PUT receives401, the browser authentication completes, then the retried PUT receives202. The command is direct publish, not stage publish; the archive manifest has version0.3.0 and no publishConfig.
+
+Public metadata instead exposes only0.0.0-stage, created at2026-10-20T12:41:49.304Z. The version-specific endpoint still returns404 after delayed and cache-bypassing reads. Full and abbreviated registry metadata agree. The signed-in package page identifies a temporary holding version awaiting staged release, but both filtered/unfiltered npm stage list and the account's Staged Packages page show no version awaiting approval. Do not infer successful0.3.0 publication from the CLI exit code.
+
+An identical direct publication retry is running in session13904, using the already verified archive and provenance bundle. npm requests a fresh publishing check; its link has been sent to Peter. No archive/source/version change, unpublish or other package mutation is made during this investigation. Check the retry result and registry integrity before continuing to the other packages. The package placeholder is an observed registry side effect, superseding the earlier expectation that direct publication would avoid it.
+
+### Explicit staging succeeds; React waits on automated review
+
+After Peter authorizes the retry, session13904 returns409 because React0.3.0 is already staged. An explicit stage submission of the same React archive also refuses the reserved version. Fresh CLI lists, the account's Staged Packages page, page0/page1 reads through npm's own client, and authenticated write=true metadata do not expose a user-approvable React stage. No further React writes are attempted.
+
+The package's Versions tab supplies the missing explanation: React0.3.0 is Validating, and npm states that automated review has not finished and the version remains unavailable until that review completes. This is an external validation wait, not missing user authentication. npm's public status page reports no general publishing incident. The task does not unpublish the placeholder or bypass review with a new version.
+
+Explicit staging returns stage999cb5af-fc43-43de-a9ed-927309a441af for Devtools and54127b66-45fd-4de9-ba9b-d8d9addb9f28 for MCP. Both staged tarballs are downloaded and SHA-512 checked against the GitHub-signed archives before approval. Peter completes each approval's npm check. Sessions86375 and27138 report successful publication. Public registry reads confirm0.3.0, exact signed-archive integrity and provenance endpoints for both packages.
+
+The draft GitHub release forv0.3.0 is prepared at https://github.com/acmelabs-15/design-system/releases/tag/untagged-74871ff46f87344698f0. It has signed-release-0.3.0.zip and SHA256SUMS. GitHub's uploaded ZIP digest matches the original verified d4942071ef09872c5f670e8e68a41f0fe036eaa5752df5f5066089c7a05e4f72. Publishing the draft later triggers the normal release workflow; do not separately dispatch a duplicate normal publish run.
+
+### Companion publisher setup timing
+
+[npm's October2 policy](https://github.blog/changelog/2026-10-02-unvalidated-npm-trusted-publishing-configurations-now-expire/) expires new, unvalidated trust configurations after48 hours. Validation requires the configuration's first successful publish; a token exchange alone is not enough. The initial companion versions use authenticated owner publication with verified GitHub provenance, so an unused configuration created afterward would expire before an unspecified future release.
+
+Create each companion trust configuration immediately before its next actual version, then validate it through that release's real CI publication. Do not invent another version just to activate a configuration. Core's existing validated publisher completes the current0.3.0 release once React becomes available. A Devtools configuration attempt in session6308 was interrupted while waiting for its unshown JSON-mode authentication link; no successful configuration response was observed. Confirm actual state before creating future configurations. No npm operation remains waiting for Peter at this checkpoint.
+
+Main documentation verification run39419959012 succeeds. Its deployment job118628797360 is skipped because Pages is disabled. After all four npm packages are verified, configure workflow-based Pages and enable its opt-in. The official GitHub rerun-job endpoint may permit deploying the already-verified artifact by rerunning that job; this has not been tested. If unavailable, dispatch the normal Pages workflow. Keep all existing safety gates.
+
+### React review completes; coordinated publication starts
+
+React0.3.0 becomes public without another upload or user authentication. The downloaded registry tarball matches the signed SHA-512. Its public Sigstore bundle verifies against the exact GitHub workflow, tag and commit. Devtools and MCP pass the same actual-tarball and cryptographic checks. The [companion publication record](evidence/release-0.3.0/published-companions.json) preserves those three results; core remains unverified.
+
+ACME_RELEASE_ENABLED is set to true. The prepared GitHub release becomes public at https://github.com/acmelabs-15/design-system/releases/tag/v0.3.0. Its published event starts [run39433342050](https://github.com/acmelabs-15/design-system/actions/runs/39433342050) on the immutable05aff0c130887055281824dc5d103cb942e794cd tag target. Require that workflow's success and all four public-package checks before switching Pages.
+
+### Registry confirmation follow-up
+
+The live npm202 response exposes a release-script defect: CLI success alone does not establish public availability. On codex/release-registry-verification, scripts/release-registry.ts waits for exact public package/version metadata, matching SHA-512 and the expected registry provenance link. Existing versions complete confirmation before any new upload. New uploads complete confirmation before the success log. Pending review, absent provenance, conflicting metadata and registry errors cannot pass.
+
+The helper verifies metadata; the release's separate acceptance script verifies actual tarballs and cryptographic provenance. This follow-up changes future automation, not the signed0.3.0 source or archives. Static checks and strict types pass. The full suite passes976 tests before review strengthening; the final focused suite passes15 tests with52 assertions. Independent review requests read/wait counts and a persistent-missing-provenance regression; both are added. Final review approves: private-copy mutations that accept absent or empty provenance fail the tests.
