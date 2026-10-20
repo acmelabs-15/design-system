@@ -437,6 +437,6 @@ The developer preview now watches examples and rejects encoded traversal. Actual
 
 ### Authorized release delivery — 2026-10-20
 
-Peter's release request authorizes the external delivery work. All five 0.3.1 packages are public and cryptographically verified. Public CDN component and Flow worker checks pass in Chromium, Firefox and WebKit. The reviewed Pages workflow deploys successfully; complete public file and navigation checks are running before snapshot retirement. [Current release evidence and remaining sequence](release-0.3.1.md).
+Peter's release request authorizes the external delivery work. All five 0.3.1 packages are public and cryptographically verified. Public CDN component and Flow worker checks pass in Chromium, Firefox and WebKit. The reviewed Pages workflow deploys successfully, and all 25,120 public files match. Browser acceptance then identifies development dependencies. The [0.3.2 correction](release-0.3.2.md) selects production dependencies and updates the MCP SDK and two HTTP dependencies for new audit advisories. Corrected public acceptance remains required before snapshot retirement.
 
-PR #4 merges the declaration-order correction after full Linux acceptance. Two clean main-branch builds now provide archive records for a reproducibility comparison. The published version and tag remain immutable. The actual-platform limits above remain unperformed and explicit.
+PR #4 merges the declaration-order correction after full Linux acceptance. Two independent verified Linux builds of the same source tree produce byte-identical archives for all five packages. The published version and tag remain immutable. The actual-platform limits above remain unperformed and explicit.
