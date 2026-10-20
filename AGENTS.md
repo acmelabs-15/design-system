@@ -1,6 +1,6 @@
 # Working in this repository
 
-This is `@acmelabs/design-system`: Peter's design system, Lit web components with the `acme-` prefix, built so AI-generated artifacts have a real design language to render. The Geist port is closed. The current work is the **systematization pass**: fewer elements, one name per concept, one shape per kind of interface, a small set of primitives the rest compose.
+This is `@acmelabs/design-system`: Peter's design system, Lit web components with the `acme-` prefix, built so AI-generated artifacts have a real design language to render. The Geist port is closed. The **systematization pass** is implemented and released: fewer elements, one name per concept, one shape per kind of interface, a small set of primitives the rest compose. Its release evidence and verification limits live in `notes/alignment/README.md`.
 
 Your global `AGENTS.md` carries how Peter works everywhere. This file carries what is specific here.
 

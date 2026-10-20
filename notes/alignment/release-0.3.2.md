@@ -4,12 +4,12 @@ Peter's release authorization and [execution delegation](../decisions/execution-
 
 ## Current state
 
-- All five npm 0.3.2 packages are public. Their actual archives, signed provenance and latest tags verify against the exact tag artifact. [Complete verification](evidence/release-0.3.2/public-verification.json).
-- Publication run 39499520613 succeeds on attempt 4, job 118924959513, confirming all existing uploads. The original verification artifact and tag remain unchanged. All five trusted publishers complete real publications; no authentication is pending.
-- Public CDN checks pass in Chromium, Firefox and WebKit: matching entry bytes, component loading, Flow layout and actual worker closure, with zero warnings or failed requests. [Results](evidence/release-0.3.2/cdn-public-verification.json); [exact probe](evidence/release-0.3.2/verify-cdn.ts).
-- Pages is enabled again. Reviewed deployment job 118925381095 succeeds in run 39499435937. All 25,120 public files match the artifact. Twelve route/engine cases pass, including desktop/mobile navigation, complete diagram layouts, Add step and actual worker closure. [Public Pages acceptance](evidence/release-0.3.2/pages-public-verification.json); [final browser probe](evidence/release-0.3.2/verify-pages-browser.ts).
-- The clean 244-file tracked snapshot is removed on codex/release-032-closure after public acceptance. Its former Git tree is 787ca6612684769a555c3fc322354f12e973f305. The writer map and workflow comment now describe artifact deployment. Independent review approves the exact retirement diff. Three workflow tests and all static checks pass. Cleanup CI and merge remain. [Review](evidence/release-0.3.2/snapshot-retirement-review.json).
-- The exact public archives and provenance verify as a complete release set. The uploaded published-release-0.3.2.zip has SHA-256 8c536a8ad4e5c05f8a02d3b2e779447beb8e6ac32a3916ab87fcd57d7fb3e958, matching GitHub’s asset digest. It contains the release record, five archives and five public provenance bundles, without the trust cache. [Asset evidence](evidence/release-0.3.2/published-assets.json). The GitHub release remains a draft while cleanup finishes. Public Pages acceptance passes. Cleanup branch: codex/release-032-closure.
+- [Version 0.3.2 is the latest stable GitHub release](https://github.com/acmelabs-15/design-system/releases/tag/v0.3.2). All five npm packages are public. Their actual archives, signed provenance and latest tags verify. [Public verification](evidence/release-0.3.2/public-verification.json).
+- Exact-tag publication run 39499520613 succeeds. The release ZIP and checksum are public; anonymous downloads match the approved SHA-256 values. [Release metadata](evidence/release-0.3.2/github-release.json), [public downloads](evidence/release-0.3.2/github-public-downloads.json).
+- Public CDN checks pass in Chromium, Firefox and WebKit. Reviewed Pages deployment 118925381095 succeeds in run 39499435937. All 25,120 public site files match, and twelve route/engine cases pass. Flow checks include completed layout, Add step and actual worker closure. [CDN](evidence/release-0.3.2/cdn-public-verification.json), [Pages](evidence/release-0.3.2/pages-public-verification.json).
+- [PR #6](https://github.com/acmelabs-15/design-system/pull/6) removes the obsolete 244-file snapshot. Full CI 39513031868 passes; exact reviewed head 9eaa8dcafbfdfcd017fdcc13ae507071c579896c merges as 0579d12ebd5c633732d16eae6600a082f514f105. The merge tree equals the tested tree. Every file in the cleanup Pages artifact matches the accepted public site. [CI](evidence/release-0.3.2/cleanup-ci.json), [merge](evidence/release-0.3.2/cleanup-merge.json), [complete comparison](evidence/release-0.3.2/cleanup-pages-comparison.json).
+- No release action or authentication remains pending. Ordinary post-merge workflows have a separate [status observation](evidence/release-0.3.2/post-merge-workflow-observation.json); their pending runs are not claimed as passing. The accepted public site and the identical cleanup output support release closure. [Final record](evidence/release-0.3.2/closure.json).
+- Actual-platform checks and owner-controlled token rotation remain explicitly unverified. They are separate from the completed automated release scope.
 
 ## Release record
 
@@ -50,14 +50,24 @@ The checkpoints below preserve the sequence and the evidence available at each p
 
 - The initial CDN probe passes Chromium/WebKit but Firefox warns that the probe document is in Quirks Mode. Its setContent input lacks a doctype. The probe now supplies a doctype and asserts CSS1Compat in every engine. The unchanged package, warning assertions and timeouts then pass in all three engines. [Initial probe evidence](evidence/release-0.3.2/cdn-initial-probe-failure.json). This is a test-document correction, not a package change.
 
-## Remaining sequence
+## Final closure
+
+The stable release becomes public at 2026-10-20T23:12:45Z. The two earlier release notices point to it and remain prereleases; their tags and archives are unchanged. Publishing the GitHub release triggers a duplicate publication run for the already-published tag. That run is explicitly cancelled; the successful exact-tag publication remains the release evidence. [Version statuses](evidence/release-0.3.2/github-release-statuses.json), [duplicate-run record](evidence/release-0.3.2/redundant-release-event.json).
+
+Independent review approves snapshot retirement and the artifact-equality boundary. The cleanup changes no runtime or website inputs. CI passes every stage, its artifact ZIP matches GitHub's digest, and all 25,120 file paths/hashes match the previously verified public site. Five public entry/content files are fetched again. This reuses the prior full public crawl and browser acceptance for identical output; it does not claim a second full crawl or a completed post-merge redeployment. [Input equality](evidence/release-0.3.2/cleanup-build-inputs.json), [artifact identities](evidence/release-0.3.2/cleanup-artifacts.json), [comparison script](evidence/release-0.3.2/compare-cleanup-pages.ts).
+
+The task-owned temporary npm login directory is removed without reading its credentials. User npm configuration stays unchanged. This cleanup does not revoke the earlier exposed credential or prove that its owner rotated it. [Temporary-login cleanup](evidence/release-0.3.2/temporary-login-cleanup.json).
+
+The final status and evidence records pass independent review with no required findings. All 623 local file links in the eight updated guidance/record files resolve. [Record review](evidence/release-0.3.2/final-record-review.json), [link check](evidence/release-0.3.2/final-record-link-check.json).
+
+## Completed release sequence
 
 1. [x] Finish focused static/type checks, regenerate the versioned metadata and obtain independent review.
 2. [x] Pass full clean Linux acceptance for the exact correction head, then merge with a merge commit.
 3. [x] Tag 0.3.2, sign and verify its exact archives, and publish through the established workflows. Verify every public tarball, provenance statement and latest tag.
 4. [x] Deploy the corrected reviewed Pages artifact. Verify public bytes and three-engine functional navigation. Keep the original failures and the documented readiness correction.
-5. Retire the 244-file tracked snapshot only after that public acceptance. Update generated-file records, review and merge the cleanup.
-6. Close the GitHub release as stable/latest with exact published assets and evidence. Preserve 0.3.0 and 0.3.1 history.
+5. [x] Retire the 244-file tracked snapshot after public acceptance. Update generated-file records, pass independent review/full CI and merge the exact cleanup head.
+6. [x] Publish the GitHub release as stable/latest with exact published assets and evidence. Preserve 0.3.0 and 0.3.1 tags/archives and point their notices to 0.3.2.
 
 ## Evidence and limits
 

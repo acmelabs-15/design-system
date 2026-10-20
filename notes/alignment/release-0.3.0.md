@@ -4,6 +4,10 @@ Requested by Peter on 2026-09-27. This authorizes the release work that was prev
 
 ## Current state
 
+This version remains an incomplete historical release. Its tag and archives stay unchanged. [Stable 0.3.2](release-0.3.2.md) completes coordinated publication, public delivery and snapshot retirement. Its record owns current status.
+
+## Historical state when recovery began
+
 - Local acceptance is complete; see [final verification](evidence/m26-final/README.md).
 - The coordinated0.3.0 release is incomplete. React, Devtools and MCP0.3.0 are published and verified. Core0.3.0 is rejected with E415, “Too many files”; its archive has185,977 files.
 - PR #1 is merged at05aff0c130887055281824dc5d103cb942e794cd. Annotated tagv0.3.0 points to that commit.

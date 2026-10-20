@@ -4,9 +4,9 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 ## Where we are
 
-**Execution, refreshed 2026-10-20:** all five 0.3.2 packages are public and cryptographically verified. The publication workflow succeeds. Public CDN and Pages checks pass in Chromium, Firefox and WebKit with zero warnings. All 25,120 deployed documentation files match the reviewed artifact. The obsolete 244-file snapshot is removed and independently reviewed on the cleanup branch; CI and merge remain. No authentication is pending. [Active release handoff](release-0.3.2.md).
+**Release complete, 2026-10-20:** version 0.3.2 is the latest stable GitHub release. All five npm packages are public and cryptographically verified. Public CDN and Pages checks pass in Chromium, Firefox and WebKit with zero warnings. All 25,120 deployed documentation files match the reviewed artifact. The obsolete 244-file snapshot is removed through reviewed, fully verified PR #6. No release action or authentication remains pending. [Completed release record](release-0.3.2.md), [final evidence](evidence/release-0.3.2/closure.json).
 
-**Live release checkpoint:** tag v0.3.2 remains at 6ec538e70f3874d7543ce81816abc290dca60e6b. Its GitHub release is a draft. Release and Pages deployment are enabled. Current branch: codex/release-032-closure. Full tag, PR and main verification pass. The original 0.3.0 and 0.3.1 tags and archives remain unchanged.
+**Live release checkpoint:** tag v0.3.2 remains at 6ec538e70f3874d7543ce81816abc290dca60e6b. Its public release assets pass anonymous checksum verification. Cleanup PR #6 merges as 0579d12ebd5c633732d16eae6600a082f514f105 after full CI; its tree matches the tested tree. Its complete Pages output matches the accepted public site. Ordinary post-merge workflows are recorded separately and are not claimed as passing before observation. Release and Pages deployment remain enabled. The original 0.3.0 and 0.3.1 tags and archives remain unchanged.
 
 **Language:** use component names directly. Every component belongs to this design system; there is no separate category or version. [Decision](../decisions/component-language.md).
 
@@ -18,7 +18,7 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 **Overlay density:** [Verified correction](evidence/overlay-density-2026-09-23.json) preserves normal density inside Dialog, Drawer, Menu and Toggle Tip while retaining explicit theme and child overrides. Toast acceptance is linked above.
 
-**Next boundary:** pass cleanup CI and merge the reviewed snapshot removal, confirm final deployment and close the GitHub release as stable/latest. Publication, CDN and public Pages acceptance pass. [Exact evidence and sequence](release-0.3.2.md).
+**Next boundary:** no release work remains. Future work starts from a new request. The actual-platform checks and owner-controlled credential rotation below remain unverified; automated release completion does not certify them. [Exact scope and evidence](release-0.3.2.md).
 
 **Working copies and workers:** implementation is saved in d9b2f100f (scoped/bundled delivery), 8114e3ae0 (default restoration), d200bf646 (Tabs paint) and 51564fda2 (consumer and verification toolchain). Earlier Slider/Calendar worktrees are historical. The final dev-server and Intent-oracle corrections are saved in 0dd8c96e1 and 1ccfd4400. All delegated implementation and review work is complete. Keep heavy build/test jobs sequential; parallel compiler jobs caused memory pressure and test timeouts.
 

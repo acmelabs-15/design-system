@@ -4,6 +4,10 @@ Peter's release authorization and [execution delegation](../decisions/execution-
 
 ## Current state
 
+[Stable 0.3.2](release-0.3.2.md) supersedes this version and passes public package, CDN and Pages acceptance. Version 0.3.1 remains a prerelease; its tags, package versions and archives stay unchanged. The 0.3.2 record owns current status.
+
+## Historical delivery finding
+
 **Delivery finding:** all 25,120 public files match the reviewed artifact. The strict browser check then fails on Lit development-mode and update warnings. Source-map inspection and a reduced Bun build confirm development dependencies in the website; the published browser bundle has the same issue. The immutable 0.3.1 packages remain public. Keep the GitHub release as prerelease while the [0.3.2 correction](release-0.3.2.md) completes. This finding supersedes the previous delivery-completion sequence below.
 
 - All five npm 0.3.1 packages are public. Archive bytes, signed provenance and latest tags verify against the exact publication-run record. No authentication is pending.
@@ -16,7 +20,7 @@ Peter's release authorization and [execution delegation](../decisions/execution-
 
 ## Release record
 
-The following checkpoints preserve the release sequence. The current state above owns the resumption point.
+The following checkpoints preserve the historical release sequence. The linked 0.3.2 record owns current status.
 
 - Branch: `codex/release-delivery-closure`, based on PR #4 merge `b052e5e913313209ffad12ec3a51c79480bf7050`. The published tag remains at `53427b5dffabd7e6fa32ab1c7afed125ec0f4e4f`.
 - The distribution correction is committed as 76ca79c04 and its archive-parser correction as 7db6b47be01bf96d6cda73b815b2d22fe6c580b4. [PR #3](https://github.com/acmelabs-15/design-system/pull/3) merges them with a merge commit after complete Linux acceptance.

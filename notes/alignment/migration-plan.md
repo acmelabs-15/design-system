@@ -2,7 +2,7 @@
 
 **Approved by Peter on 2026-09-20 through “approved”.** [Migration approval](../decisions/migration-approval.md). The [Phase 4 approval](../decisions/inventory-approval.md) fixes the design and five recommended outcomes. The [inventory](inventory.md#complete-proposal-set), [conventions](../conventions.md) and [coverage map](proposal-coverage.md) are implementation requirements, not a new interview queue.
 
-This plan orders the work and fixes its output boundaries. M00 contains technical prerequisites to complete before the dependent production edits. Approval is recorded; do not ask for it again merely because a prerequisite still needs work. M00 is now closed and Phase 6 implementation has begun; publication settings still require their assigned verification and authorization.
+This plan records the approved work order and output boundaries. M00 prerequisites and M01–M25 implementation are complete. M26 automated acceptance passes, and version 0.3.2 is released. The actual-platform limits remain explicit in the [current release record](release-0.3.2.md). The dated checkpoints below preserve the implementation sequence.
 
 ## Current evidence and final structure
 
@@ -439,6 +439,6 @@ The developer preview now watches examples and rejects encoded traversal. Actual
 
 Peter's release request authorizes the external delivery work. All five 0.3.1 packages are public and cryptographically verified. Public CDN component and Flow worker checks pass in Chromium, Firefox and WebKit. The reviewed Pages workflow deploys successfully, and all 25,120 public files match. Browser acceptance then identifies development dependencies. The [0.3.2 correction](release-0.3.2.md) selects production dependencies and updates the MCP SDK and two HTTP dependencies for new audit advisories. Corrected public acceptance remains required before snapshot retirement.
 
-The corrected 0.3.2 release now passes all package, CDN and public Pages checks. All 25,120 site files match the reviewed artifact. The three-engine browser matrix includes exact headings, mobile navigation, diagram layout, Add step and actual worker closure. The 244-file snapshot is removed on codex/release-032-closure after this acceptance; review, merge and stable-release finalization remain.
+The corrected 0.3.2 release passes all package, CDN and public Pages checks. All 25,120 site files match the reviewed artifact. The three-engine browser matrix includes exact headings, mobile navigation, diagram layout, Add step and actual worker closure. PR #6 removes the 244-file snapshot after independent review and complete CI. Its merged tree equals the tested tree, and its entire site artifact equals the accepted public output. Version 0.3.2 is stable/latest on GitHub. The original tags and archives remain unchanged. [Final closure](evidence/release-0.3.2/closure.json).
 
 PR #4 merges the declaration-order correction after full Linux acceptance. Two independent verified Linux builds of the same source tree produce byte-identical archives for all five packages. The published version and tag remain immutable. The actual-platform limits above remain unperformed and explicit.

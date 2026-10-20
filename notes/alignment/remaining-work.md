@@ -13,7 +13,7 @@ The [central handoff](README.md#where-we-are) owns current status. The [inventor
 | User-owned decision queue | Original five recommendations approved in [the register](proposal-questions.md); [explicit helper clearing](../decisions/layout-spacing-properties.md#explicit-clearing-for-the-style-helper) selected 2026-09-21; @lit/context selected under [delegated execution](../decisions/execution-delegation.md); remaining choices are agent-owned |
 | Engineering gates | Six representative M00 technical areas verified; final implementation acceptance stays assigned |
 | Phase 5 | [Migration plan approved](../decisions/migration-approval.md); M00 closed after compiler selection |
-| Phase 6 | M01–M25 and M26 automated acceptance are complete. All five 0.3.2 packages, CDN delivery and public Pages pass verification. The obsolete website snapshot is removed on the cleanup branch. Cleanup merge and stable GitHub release remain; actual-platform limits stay explicit. See the [release handoff](release-0.3.2.md). |
+| Phase 6 | M01–M25 and M26 automated acceptance are complete. All five 0.3.2 packages, CDN delivery and public Pages pass verification. The obsolete snapshot removal is merged. GitHub 0.3.2 is stable/latest; actual-platform limits stay explicit. See the [completed release record](release-0.3.2.md). |
 
 These are review groups, not thirteen questions, equal-sized tasks or duration estimates. The groups describe the approved design decomposition. The current implementation status is above; technical acceptance remains distinct from design approval.
 
@@ -71,7 +71,7 @@ Each investigation has an interface/gate it can invalidate and a completion cond
 - [x] Finish local archive acceptance: all23 required browser invocations are accepted, with the corrected Intent oracle rerun explicitly recorded. [Final evidence](evidence/m26-final/README.md).
 - [x] Publish and verify all five 0.3.2 packages, their provenance and public CDN behavior under Peter's release authorization.
 - [x] Verify all 25,120 public Pages files and the three-engine navigation/Flow matrix.
-- [ ] Merge the reviewed snapshot retirement and finalize the stable GitHub release. Follow the [release handoff](release-0.3.2.md).
+- [x] Merge the reviewed snapshot retirement and publish the stable GitHub release. [Complete evidence](release-0.3.2.md).
 - [ ] Perform actual Safari, assistive-technology, OS input/autofill and background-window checks. Automated engine checks do not establish these.
 
 The old protected-file hashes describe the completed pre-implementation baseline. Peter's release request supplies the separate publication authorization. Existing research snapshots are historical evidence, not current runtime results.
