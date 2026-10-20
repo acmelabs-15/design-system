@@ -4,7 +4,7 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 ## Where we are
 
-**Execution, refreshed 2026-10-20:** all five 0.3.1 packages are public and cryptographically verified. Public documentation bytes match all 25,120 reviewed files, but browser acceptance exposes development dependency variants in the site and browser bundle. The production build correction and coordinated 0.3.2 patch are in progress. Preserve 0.3.1 and its signed evidence. No npm authentication is pending. [Active release handoff](release-0.3.2.md); [0.3.1 evidence](release-0.3.1.md).
+**Execution, refreshed 2026-10-20:** all five 0.3.1 packages are public and cryptographically verified. Public documentation bytes match all 25,120 reviewed files, but browser acceptance exposes development dependency variants in the site and browser bundle. The production build correction and coordinated 0.3.2 patch are in progress. Preserve 0.3.1 and its signed evidence. Browser publisher setup now waits for Peter’s official npm authorization; the full patch CI continues. [Active release handoff](release-0.3.2.md); [0.3.1 evidence](release-0.3.1.md).
 
 **Live release checkpoint:** tag v0.3.1 remains at 53427b5dffabd7e6fa32ab1c7afed125ec0f4e4f. The GitHub release stays prerelease/not latest until delivery acceptance closes. Its published-release ZIP contains the exact public archives and provenance; the original preparation ZIP remains as evidence. Both release and Pages settings are enabled. Current branch: codex/release-delivery-closure, based on PR #4 merge b052e5e913313209ffad12ec3a51c79480bf7050. [The incomplete 0.3.0 release](release-0.3.0.md) retains its original tag and archives.
 
