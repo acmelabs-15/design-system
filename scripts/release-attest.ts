@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import path from "node:path";
 import { npmDirectory, verifyNpmCli } from "./release-npm";
 import { validateRelease } from "./release";
-import { releaseRepository, requireCommittedSource, requirePublishEnvironment, requireReleaseRuntime, type ArchiveRecord, type ReleaseRecord } from "./release-policy";
+import { releaseRepository, requireCommittedSource, requireReleaseEnvironment, requireReleaseRuntime, type ArchiveRecord, type ReleaseRecord } from "./release-policy";
 
 const repository = `https://github.com/${releaseRepository}`;
 const workflowPath = ".github/workflows/publish-package.yml";
@@ -60,7 +60,7 @@ export async function signReleaseProvenance(directory: string): Promise<void> {
   await verifyNpmCli();
   const record = await validateRelease(directory, process.env.GITHUB_REF);
   requireCommittedSource(record);
-  requirePublishEnvironment(process.env, process.platform, record.version);
+  requireReleaseEnvironment(process.env, process.platform, record.version);
   assert.equal(process.env.GITHUB_SHA, record.commit);
   assert.equal(process.env.GITHUB_WORKFLOW_REF, `${releaseRepository}/${workflowPath}@${tag(record)}`);
   const { generateProvenance } = await import(path.join(npmDirectory(), "node_modules/libnpmpublish/lib/provenance.js"));

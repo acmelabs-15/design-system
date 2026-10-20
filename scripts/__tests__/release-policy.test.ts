@@ -6,6 +6,7 @@ import {
   registryVersionState,
   releasePackageNames,
   requirePublishEnvironment,
+  requireReleaseEnvironment,
   requireCommittedSource,
   requireReleaseRuntime,
   validateArchiveRecord,
@@ -58,6 +59,14 @@ test("publishing stays disabled outside explicit verified release context", () =
   expect(() => requirePublishEnvironment({ ...env, GITHUB_REPOSITORY: "other/repo" }, "linux", "0.3.0")).toThrow();
   expect(() => requireReleaseRuntime("1.4.0")).toThrow();
   expect(() => requireReleaseRuntime("1.4.2")).not.toThrow();
+});
+test("signing can verify a release context while package publication remains disabled", () => {
+  const env = { GITHUB_ACTIONS: "true", RUNNER_ENVIRONMENT: "github-hosted", GITHUB_REPOSITORY: "acmelabs-15/design-system", GITHUB_REF: "refs/tags/v0.3.0" };
+  expect(() => requireReleaseEnvironment(env, "linux", "0.3.0")).not.toThrow();
+  expect(() => requirePublishEnvironment(env, "linux", "0.3.0")).toThrow("disabled");
+  expect(() => requireReleaseEnvironment({ ...env, GITHUB_REF: "refs/heads/main" }, "linux", "0.3.0")).toThrow();
+  expect(() => requireReleaseEnvironment({ ...env, GITHUB_REPOSITORY: "other/repo" }, "linux", "0.3.0")).toThrow();
+  expect(() => requireReleaseEnvironment(env, "darwin", "0.3.0")).toThrow();
 });
 test("private packages and mismatched repository metadata block actual publication", () => {
   expect(publicationBlockers(packages[0])).toEqual([]);

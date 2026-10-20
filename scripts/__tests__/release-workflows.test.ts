@@ -52,7 +52,9 @@ test("publication and Pages deployment remain explicitly gated after verificatio
   expect(pages.permissions).toEqual({ contents: "read" });
 });
 test("first-publication preparation signs the checked archives without publishing", () => {
-  const steps = workflow("publish-package").jobs.publish.steps!;
+  const job = workflow("publish-package").jobs.publish;
+  expect(job.if).toBe("(vars.ACME_RELEASE_ENABLED == 'true' || inputs.prepare_only == true) && startsWith(github.ref, 'refs/tags/v')");
+  const steps = job.steps!;
   expect(steps.find((step) => step.run === "bun scripts/release.ts publish")?.if).toBe("inputs.prepare_only != true");
   expect(steps.find((step) => step.run === "bun scripts/release-attest.ts sign")?.if).toBe("inputs.prepare_only == true");
   const upload = steps.find((step) => step.uses?.startsWith("actions/upload-artifact@"));

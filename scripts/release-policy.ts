@@ -95,6 +95,10 @@ export function requirePublishEnvironment(environment: Record<string, string | u
   if (environment.ACME_RELEASE_ENABLED !== "true") {
     throw new Error("Publication remains disabled pending external verification");
   }
+  requireReleaseEnvironment(environment, platform, version);
+}
+
+export function requireReleaseEnvironment(environment: Record<string, string | undefined>, platform: string, version: string): void {
   if (environment.GITHUB_ACTIONS !== "true" || environment.RUNNER_ENVIRONMENT !== "github-hosted" || platform !== "linux") {
     throw new Error("Publication requires the verified GitHub-hosted Linux runner");
   }
