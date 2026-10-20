@@ -1,25 +1,42 @@
 {
-  "checkedAt": "2026-10-20T17:58:51.441Z",
   "id": "35864a21-e88a-4a66-8cc3-8713800ebcb9",
   "package": "@acmelabs/design-system-browser",
   "version": "0.3.1",
   "tag": "latest",
-  "status": "published",
-  "signedArchiveSha512": "7438c1d754c7bfc51886ab8bf14b01ad1db2c24e9f9c1c2687908331cffc092871b60ce05a269dc626582526c115c27c12caef6d99aef57948fdbdcdd8548e70",
-  "stagedArchiveSha512": "7438c1d754c7bfc51886ab8bf14b01ad1db2c24e9f9c1c2687908331cffc092871b60ce05a269dc626582526c115c27c12caef6d99aef57948fdbdcdd8548e70",
-  "bytesMatch": true,
-  "approved": true,
-  "website": {
-    "checkedAt": "2026-10-20T18:08:49.319Z",
+  "currentStatus": {
+    "value": "published",
+    "verifiedAt": "2026-10-20T18:24:06.626Z",
+    "proof": "browser-publication.json"
+  },
+  "archiveComparison": {
+    "checkedAt": "2026-10-20T17:58:51.441Z",
+    "signedArchiveSha512": "7438c1d754c7bfc51886ab8bf14b01ad1db2c24e9f9c1c2687908331cffc092871b60ce05a269dc626582526c115c27c12caef6d99aef57948fdbdcdd8548e70",
+    "stagedArchiveSha512": "7438c1d754c7bfc51886ab8bf14b01ad1db2c24e9f9c1c2687908331cffc092871b60ce05a269dc626582526c115c27c12caef6d99aef57948fdbdcdd8548e70",
+    "bytesMatch": true
+  },
+  "stagingObservation": {
+    "checkedAt": "2026-10-20T18:08:23.982Z",
+    "id": "35864a21-e88a-4a66-8cc3-8713800ebcb9",
+    "packageName": "@acmelabs/design-system-browser",
+    "version": "0.3.1",
+    "tag": "latest",
+    "createdAt": "2026-10-20T17:56:02.165Z",
+    "actor": "loriensleafs",
+    "actorType": "user",
+    "access": "public",
+    "shasum": "5f6afc34dfdc5f7e15a669ec7563127f5f6df477",
+    "status": "staged"
+  },
+  "websiteObservation": {
+    "recordedAt": "2026-10-20T18:08:49.319Z",
     "url": "https://www.npmjs.com/package/@acmelabs/design-system-browser?activeTab=versions",
     "version": "0.3.1",
     "status": "Validating",
     "message": "Automated review has not finished. The version will remain unavailable until review completes.",
-    "placeholderVersion": "0.0.0-stage"
+    "placeholderVersion": "0.0.0-stage",
+    "note": "The timestamp records when the UI observation was saved, not a registry transition. This website presentation differs from the CLI stage-readiness observation; exact transition and cache behavior are not established."
   },
-  "statusCheckedAt": "2026-10-20T18:08:23.982Z",
-  "approval": "succeeded-on-replacement-challenge",
-  "lastApprovalAttempt": {
+  "failedApprovalAttempt": {
     "checkedAt": "2026-10-20T18:21:30.776Z",
     "callbackStatus": 404,
     "cliError": "E404",
@@ -27,5 +44,9 @@
     "publicVersionStatusAfterError": 404,
     "archiveUploadedAgain": false
   },
-  "publicVerification": "browser-publication.json"
+  "approval": {
+    "outcome": "succeeded-on-replacement-challenge",
+    "publicationVerifiedAt": "2026-10-20T18:24:06.626Z",
+    "archiveUploadedAgain": false
+  }
 }
