@@ -22,7 +22,7 @@ function requireAggregation(text: string, file: string): void {
 
 /** Share equivalent generated interfaces while retaining real class and artwork-record types. */
 export function emitPackageDeclarations(files: string[], sourceRoot: string, dist: string, options: ts.CompilerOptions): readonly ts.Diagnostic[] {
-  const program = ts.createProgram(files, {
+  const program = ts.createProgram([...files].sort(), {
     ...options,
     declaration: true,
     declarationMap: false,

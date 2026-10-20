@@ -6,6 +6,43 @@ import ts from "typescript";
 import { emitPackageDeclarations } from "../declarations";
 import { writeEntries, writePackageExports } from "../entries";
 
+test("declaration output is independent of root file order", () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "acme-declaration-order-"));
+  const source = path.join(root, "src");
+  fs.mkdirSync(source);
+  try {
+    fs.writeFileSync(path.join(source, "a.ts"), 'export const a = "alpha";');
+    fs.writeFileSync(path.join(source, "b.ts"), 'export const b = "beta";');
+    fs.writeFileSync(path.join(source, "c.ts"), 'export function choose(x: boolean) { return x ? "alpha" : "beta"; }');
+    const files = ["b.ts", "a.ts", "c.ts"].map((name) => path.join(source, name));
+    const original = [...files];
+    const options: ts.CompilerOptions = {
+      strict: true,
+      target: ts.ScriptTarget.ES2022,
+      module: ts.ModuleKind.ESNext,
+      moduleResolution: ts.ModuleResolutionKind.Bundler,
+      skipLibCheck: true,
+      types: [],
+      lib: ["lib.es2022.d.ts"],
+    };
+    const output = (inputs: string[], directory: string) => {
+      const dist = path.join(root, directory);
+      const diagnostics = emitPackageDeclarations(inputs, source, dist, options);
+      expect(diagnostics.map((diagnostic) => ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n"))).toEqual([]);
+      return ["a.d.ts", "b.d.ts", "c.d.ts"].map((name) => fs.readFileSync(path.join(dist, name), "utf8"));
+    };
+    const forward = output(files, "forward");
+    const reversed = output([...files].reverse(), "reversed");
+    expect(forward[2]).toContain("choose(x: boolean)");
+    expect(forward[2]).toContain('"alpha"');
+    expect(forward[2]).toContain('"beta"');
+    expect(reversed).toEqual(forward);
+    expect(files).toEqual(original);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("packed declaration interfaces preserve native tags and valid artwork while rejecting unknown exports", () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "acme-declarations-"));
   const write = (file: string, text: string) => {
