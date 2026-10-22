@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-typography",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer full source/audit read and semantic reconciliation; coordinator guard/review pending",
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/inventory/typography.md",
+      "destination": "spec/SPEC-typography.md",
+      "sourceSha256": "65e4a382e83f20ffd00baac78100cc241bc37f854e1386a094537cc458f5ff4b",
+      "destinationSha256": "961c5088503e97dd416cf17536edfa7e762027654c07860538ad9de6b5f3506d",
+      "changes": [
+        "Converted approved proposal wording into current contract language; preserved inputs/defaults/content/methods/events/exclusions and acceptance requirements.",
+        "Retargeted citations through allocated ledger paths; retained original approval and dated evidence."
+      ],
+      "retainedQualifications": [
+        "No additional precision API is introduced.",
+        "Number Input parser restrictions do not narrow display-only Format Number options.",
+        "Semantic, actual accessibility and copy/selection checks remain required."
+      ],
+      "reconciliations": [
+        "0035 resolves Relative Time platform-name collisions, input normalization, threshold units and timeout ownership.",
+        "0042 resolves native Intl binary-unit limitations with generated CLDR prefix data and controlled empty fallback."
+      ],
+      "evidence": [
+        "docs/decisions/0035-execution-delegation.md",
+        "docs/decisions/0042-format-components.md",
+        "docs/verification/systematization/m08-formatters-2026-09-21.json"
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

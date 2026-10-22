@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-overlays-help",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer full source/audit read and semantic reconciliation; coordinator guard/review pending",
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/inventory/overlays-help.md",
+      "destination": "spec/SPEC-overlays-help.md",
+      "sourceSha256": "699d505b01d5efa5ddd47fceefb33a2f942c7c046eaf5f276d43b29f83fe6268",
+      "destinationSha256": "08e823388a86e799fa6a36d14c67b5e3b07c07c6e30d75d259d1970849e16898",
+      "changes": [
+        "Converted approved proposal wording into current contract language; preserved inputs/defaults/content/methods/events/exclusions and acceptance requirements.",
+        "Retargeted citations through allocated ledger paths; retained original approval and dated evidence."
+      ],
+      "retainedQualifications": [
+        "Historical all-engine helper checks do not certify actual Safari or assistive technology.",
+        "Known native destination activation failure remains open; no cause is inferred.",
+        "Action success, persistence and cancellation remain application-owned."
+      ],
+      "reconciliations": [
+        "0035 limits focus-trap to native modal Tab containment and preserves platform ownership.",
+        "2026-09-23 overlay resolution folds native backdrop hooks, Dialog widths, Drawer token and current trigger ownership into the corresponding entries.",
+        "The later known Chromium Hover Card failure remains explicit without weakening native activation requirements."
+      ],
+      "evidence": [
+        "docs/decisions/0035-execution-delegation.md",
+        "docs/verification/systematization/m17-native-dialogs-2026-09-23.json",
+        "docs/verification/systematization/m17-help-2026-09-23.json",
+        "spec/SPEC-maintainer-workflow.md#current-baseline-finding"
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

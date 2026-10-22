@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-foundations",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer full source/audit read and semantic reconciliation; coordinator guard/review pending",
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/inventory/foundations.md",
+      "destination": "spec/SPEC-foundations.md",
+      "sourceSha256": "539f9d7620e439c65d7d2d55ec206f3e3f5f0e73c923c483bd1520f1c69b2769",
+      "destinationSha256": "5e7cd415b871fee2bf0228bc0b47fc1a05f43fdbfdfa78ec6c5fc4bb6c9bc0c3",
+      "changes": [
+        "Converted approved proposal wording into current contract language; preserved inputs/defaults/content/methods/events/exclusions and acceptance requirements.",
+        "Retargeted citations through allocated ledger paths; retained original approval and dated evidence."
+      ],
+      "retainedQualifications": [
+        "Historical 150-class census remains dated, including all counts and before/after mappings.",
+        "Native forms, actual accessibility relationships, OS restoration and scoped/adopted behavior retain their required verification scope.",
+        "Named scope/API selection does not certify arbitrary themes or all computed CSS values."
+      ],
+      "reconciliations": [
+        "0035 default-true attributes and locale catalog resolve platform and message ownership.",
+        "0052 explicit clearing replaces automatic helper-expression cleanup; M05 current CSS-input behavior preserves authored strings without last-valid storage.",
+        "Final replacement outcomes remain, without a blanket future compatibility-policy override."
+      ],
+      "evidence": [
+        "docs/decisions/0035-execution-delegation.md",
+        "docs/decisions/0052-layout-spacing-properties.md",
+        "docs/verification/systematization/m05-theme-integration-2026-09-21.json",
+        "docs/verification/systematization/m05-current-css-inputs-2026-09-21.json"
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": [],
+  "coordinatorCorrections": {
+    "source": ".artifacts/task7-family-review.md",
+    "scope": "Restored default-theme referent; named the actual strict tar parser; expressed List acceptance directly while preserving E02 as history.",
+    "review": "Independent re-review pending"
+  },
+  "coordinatorAnchorRouting": {
+    "date": "2026-10-22T05:48:12.839Z",
+    "method": "Retargeted relative Markdown links using explicit source-anchor routes; fenced evidence and external URLs unchanged."
+  }
+}

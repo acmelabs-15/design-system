@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-selection",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer full source/audit read and semantic reconciliation; coordinator guard/review pending",
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/inventory/selection.md",
+      "destination": "spec/SPEC-selection.md",
+      "sourceSha256": "e2eb9e68b1dcca7507d90bf77d9a0569bdd7b5fd68bf3d255f491796661f42e4",
+      "destinationSha256": "ac339a884948f20927560e17665fcde7a4f1ffc6fe4c1b57973f7c4bd7fc6512",
+      "changes": [
+        "Converted approved proposal wording into current contract language; preserved inputs/defaults/content/methods/events/exclusions and acceptance requirements.",
+        "Retargeted citations through allocated ledger paths; retained original approval and dated evidence."
+      ],
+      "retainedQualifications": [
+        "Vertical primary Tabs remains a named adaptation, not a claim of Material vertical-tab guidance.",
+        "Native references and automated engines do not certify actual assistive technology.",
+        "Ordinary author children take precedence over renderer-owned mounting; no cloning or duplicate form owner."
+      ],
+      "reconciliations": [
+        "0035 action-region and notification boundaries remain explicit.",
+        "0035 segmented geometry, binary spring and native Tab references/mounting are incorporated.",
+        "0035 private indicator delivery and physical spring mapping preserve one selection owner."
+      ],
+      "evidence": [
+        "docs/decisions/0035-execution-delegation.md",
+        "docs/verification/systematization/m10-tabs-material-review-2026-09-21.json",
+        "docs/verification/systematization/m22-react-2026-09-23.json"
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}
