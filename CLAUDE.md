@@ -2,6 +2,8 @@
 
 ## Claude Code
 
+When starting below the repository root, read AGENTS.md beside this CLAUDE.md in full. Complete its startup instructions before assessing the request. Claude can omit that import outside the starting directory.
+
 The imported project rules are shared with other coding agents. Both workflow plugins are enabled in the project settings.
 
 | Phase | Claude command |

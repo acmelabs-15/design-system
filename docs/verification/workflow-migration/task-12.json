@@ -5,7 +5,7 @@
   "date": "2026-10-22T08:56:07.079Z",
   "verification": {
     "passed": false,
-    "scope": "Runtime stages and independent code review pass. Corrected host scenario outcomes pass, but required Claude startup facts and native instruction loading remain unresolved. Final reference guard also awaits three separately authorized release-link corrections."
+    "scope": "Runtime stages and independent code review pass. Root native instruction loading is verified. The reviewed package-start adapter and corrected per-run directory scope await actual startup acceptance; three external release-link corrections remain pending separate authorization."
   },
   "firstGate": {
     "started": "2026-10-22T06:53:53.210Z",
@@ -153,7 +153,7 @@
     ]
   },
   "hostEvaluations": {
-    "state": "Remaining Claude checks explicitly authorized; package retry and native discovery pending execution.",
+    "state": "Root native import verified. Corrected Claude package startup requires its bounded acceptance run.",
     "firstIteration": {
       "schemaVersion": 1,
       "task": 12,
@@ -7381,9 +7381,11 @@
       "report": "# Native instruction-discovery research\n\nRecorded 2026-10-22. Codex native discovery passes for the real root and React package. Claude native discovery remains **unverified**. No Claude diagnostic started after the approval rejection.\n\n## Verified Codex evidence\n\nThe installed Codex 0.154.0 protocol exposes a native list of instruction files currently loaded for a thread. The generated [response type](task12-native-protocol/v2/ThreadStartResponse.ts) names this field:\n\n```text\nThreadStartResponse.instructionSources\n```\n\nA local stdio server received initialization and two ephemeral thread-start requests. No turn-start request, generation prompt, model override, permission bypass or prompt dump ran.\n\n```sh\ncodex app-server --listen stdio://\n```\n\nThe protocol sequence was:\n\n```json\n{\"id\":1,\"method\":\"initialize\",\"params\":{\"clientInfo\":{\"name\":\"workflow_instruction_discovery\",\"title\":null,\"version\":\"1\"},\"capabilities\":{\"experimentalApi\":false,\"requestAttestation\":false}}}\n{\"method\":\"initialized\"}\n{\"id\":2,\"method\":\"thread/start\",\"params\":{\"cwd\":\"/Users/peterkloss/Dev/ACMElabs/design-system\",\"ephemeral\":true}}\n{\"id\":3,\"method\":\"thread/start\",\"params\":{\"cwd\":\"/Users/peterkloss/Dev/ACMElabs/design-system/packages/react\",\"ephemeral\":true}}\n```\n\nBoth responses include the same repository source:\n\n```text\n/Users/peterkloss/Dev/ACMElabs/design-system/AGENTS.md\nSHA-256: 66ffd55741851e242722fbc078e9e3c2ec0766124af8c5241bdbfc1463e0a809\n```\n\nThe source path comes from native metadata. The hash comes from the local file at capture time; the server does not return a content hash. All unrelated response fields and raw stdout/stderr were discarded in memory.\n\n[Successful sanitized capture](task12-native-codex-discovery-attempt3.json). Two sandbox attempts timed out during initialization; the second also classified permission denial. A normal tool-approved retry passed. Earlier attempts remain recorded. The server exited, and a subsequent process check found zero matching diagnostic servers.\n\nThis verifies discovery in these diagnostic threads. It does not retroactively add loader events to earlier behavioral JSONL or replace those behavioral tests.\n\nThe supported prompt-input diagnostic was inspected but not run. Its documented purpose is to render model-visible input, and its help has no source-only selector. Native source metadata avoids that exposure. See the [official command reference](https://learn.chatgpt.com/docs/developer-commands?surface=cli#codex-debug-prompt-input) and [versioned CLI source](https://github.com/openai/codex/blob/rust-v0.154.0/codex-rs/cli/src/main.rs).\n\n## Claude findings and remaining diagnostic\n\nOfficial documentation says the memory editor includes possible locations, including files that do not exist. It directs users to the context report for instruction files actually loaded at launch. Thus a memory-editor listing alone is insufficient evidence. [Claude memory documentation](https://code.claude.com/docs/en/memory#view-and-edit-with-memory).\n\nThe installed Claude 2.1.308 binary registers a noninteractive native context command. It is a local command, not a model-generation instruction. Its structured result can carry:\n\n```text\ncontext_usage.memory_files[]: { path, type, tokens }\n```\n\nHowever, **local command dispatch does not mean local-only data processing**. Read-only inspection of the installed binary establishes this call chain:\n\n```text\nRSi → efe → Jjn\nJjn defaults detail to \"full\"\nBdr passes loaded instruction contents to countEach\nIdr wraps those contents as user-message text\nLdr selects XBe for full counting\nXBe calls beta.messages.countTokens\nSDK request: POST /v1/messages/count_tokens?beta=true\n```\n\nThe full report also counts system/context text and tool definitions. It can therefore transmit loaded repository instructions, user/global instructions, other context and tool schemas for token counting. This sends no generation turn, but it is still outbound content.\n\nThe installed first-party endpoint is Anthropic's API host. The code also contains provider/gateway paths. Effective account/provider routing was not inspected, so the exact configured destination remains unverified. A concrete approval must cover the existing configured Claude connection and token-count service; no new provider or API key is selected.\n\nThere is a separate native control-request summary mode that uses local estimates. This is not a demonstrated command-line argument for the context command. Its transport and source-path retention were not executed or certified. It is not a workaround for the rejected launch.\n\nSeven already-authorized Claude probe streams were inspected for native context/source records. They contain no context-usage memory list, instruction-loaded record or system metadata naming either repository instruction file. No persisted local session transcript exists for those seven probe session IDs. Explicit model reads remain separate evidence. [Record scan](task12-existing-claude-native-record-scan.json), [metadata scan](task12-existing-claude-source-metadata-scan.json).\n\nThe remaining bounded diagnostic is the command below, once from each listed working directory. It requires authorization before another attempt:\n\n```text\nWorking directories:\n1. /Users/peterkloss/Dev/ACMElabs/design-system\n2. /Users/peterkloss/Dev/ACMElabs/design-system/packages/react\n```\n\n```sh\nclaude -p /context --no-session-persistence --output-format stream-json --verbose --permission-mode dontAsk --permission-prompts none\n```\n\nKeep normal configuration, plugin discovery and inherited model settings. Capture stdout only in a Bun process's memory. Select native memory-file rows that resolve to the repository's CLAUDE.md and AGENTS.md. Retain only those paths, their local hashes, native command/result identity and success status. Discard raw output, global file rows, prompt text and account information. Do not infer the import edge solely from two matching basenames; confirm the native row types/attribution, then compare with the real import file.\n\n## Approval rejection and limits\n\nThe attempted action was a Bun wrapper around two native context commands, using JSON output and the working directories above. Automatic approval review rejected it before execution:\n\n> Running Claude with the repository as its working directory may transmit loaded CLAUDE.md/AGENTS.md and project context to an external service; the user has not specifically authorized that payload and destination.\n\nThe wrapper was not retried through ordinary sandbox permissions, an indirect launcher or a different mode. The local code findings substantiate the possible token-count transmission. No Claude diagnostic process remains from this attempt because none started.\n\nFor a concrete approval request, name both directories, the native context command, the loaded instruction/context payload, and the existing configured Anthropic token-count destination. State that only repository paths and hashes will be retained. If the configured destination cannot be confirmed, retain that limit before requesting permission.\n\nNo system prompt, user-global instruction content, authentication value or account configuration was printed or saved by this research. No settings, package configuration or product source changed. No new generation prompt ran. Claude's automatic import remains unverified until supported native evidence exists; behavioral success and explicit model reads cannot substitute.\n",
       "localAlternativeInvestigation": "# Local summary control request\n\nRecorded 2026-10-22. Static inspection of installed Claude 2.1.308 identifies a distinct metadata request whose counting path uses local estimates. It can retain loaded memory-file paths on direct local stdio. **It was not executed.** End-to-end network silence during normal startup remains unverified.\n\n## Exact transport and request\n\nThe local process transport uses newline-delimited JSON control envelopes. With no SDK URL, the native factory selects `Obe`, whose `persistsOutboundFrames` is false and whose `isHostedWorker` is false. The print session records that transport. The request handler retains `memoryFiles` on this local, non-hosted path; the separate remote bridge explicitly removes those paths.\n\nCandidate command for a **new safety review only**, from each required working directory:\n\n```sh\nclaude -p --input-format stream-json --output-format stream-json --verbose --no-session-persistence --permission-mode dontAsk --permission-prompts none\n```\n\nDo not supply a positional prompt or a user-message frame. Send initialization, await its response, then send the summary request:\n\n```json\n{\"type\":\"control_request\",\"request_id\":\"native-init\",\"request\":{\"subtype\":\"initialize\"}}\n{\"type\":\"control_request\",\"request_id\":\"native-sources\",\"request\":{\"subtype\":\"get_context_usage\",\"detail\":\"summary\"}}\n```\n\nAST inspection confirms that initialize requires only subtype; all other initialization fields are optional. The context schema accepts only summary or full for detail. Omission defaults to full; therefore the explicit summary value is essential.\n\nExpected success envelope:\n\n```text\ntype: control_response\nresponse.subtype: success\nresponse.request_id: native-sources\nresponse.response.memoryFiles[]: { path, type, tokens }\n```\n\nAfter that response, close stdin and wait for process termination. Keep raw stdout in memory only. Retain repository CLAUDE.md/AGENTS.md rows and local hashes; discard unrelated context, paths and account metadata. No settings, hooks, model, provider or system prompt are supplied through initialization.\n\n## Static call-graph evidence\n\nThe installed binary establishes these paths:\n\n| Stage | Evidence |\n|---|---|\n| Wire schema | The get_context_usage schema declares summary as local estimates and full as per-category token-count API calls. |\n| Local dispatch | Print-mode control processing routes the request through Alr to the shared handler et. |\n| Detail propagation | et validates detail; Xt passes it to efe; efe passes it to Jjn. |\n| Counter selection | Jjn calls Ddr. Ldr returns early for summary with local count and countTranscript functions. |\n| Local estimator | s3 and Dyt reach Qc. Qc uses rounded string length divided by an estimate ratio. |\n| Instruction rows | Bdr reads instruction records, gives their contents to the supplied countEach function, and returns path/type/token rows. |\n| Other categories | System text, transcript, agents, skills, tools and MCP instruction helpers receive the selected counters. Reviewed bL/Wdr defaults would call XBe, but this path supplies the local counter explicitly. |\n| Full-only API path | Ldr's full branch reaches XBe and beta.messages.countTokens. Its summary early return does not construct that path. |\n| Source-path retention | The shared response clears memoryFiles only for a redacted/persisted host lane. Direct local stdio is non-persisting and non-hosted. |\n\nThis supports a narrower claim than the rejected slash command: the **summary handler's counting work does not send instruction or context contents to a token-count or model endpoint**. It is a distinct request, not an alias for slash-context full counting. The response exposes file paths, not instruction contents.\n\nThe memory-file response has no parent-import edge. It can prove that both files are loaded; it cannot alone identify which importing file caused a load.\n\n## Missing proof and boundary\n\nNormal CLI startup still loads configured plugins/hooks and may initialize integrations. This investigation did not audit every configured hook or prove that all initialization paths are free of outbound instruction/context effects. It also did not execute the handshake, verify returned rows, or test shutdown. Thus **the complete invocation is not certified local-only**.\n\nThe result is a source-backed safer candidate for a new safety review, not permission to run it. The earlier rejection remains in [native discovery research](task12-native-discovery-research.md). No Claude invocation, provider/configuration change or workaround ran during this investigation.\n\nIf safety review requires proof of complete startup behavior, that proof is still missing. Do not fall back to the rejected full context command, disable normal configuration, or bypass approval. Claude native discovery remains unverified.\n",
       "claude": {
-        "status": "unverified",
-        "executed": false,
-        "reason": "Automatic approval review rejects the full native context command for possible external instruction/context transmission. A local-estimate protocol candidate is researched but its complete startup effects remain unverified; it is not executed as a workaround."
+        "status": "root-native-import-verified; package-native-import-omitted-by-consent-boundary",
+        "executed": true,
+        "root": "Native Project rows include root CLAUDE.md and AGENTS.md. Installed import-resolution/recursion code and the first-line import support the import relationship.",
+        "package": "Ancestor CLAUDE.md loads. Its AGENTS.md import is outside originalCwd and external-import consent is false. No observer path-normalization defect exists.",
+        "limit": "The package explicit-read adapter must pass actual startup verification. It does not change or bypass native import consent."
       },
       "routingMetadata": {
         "date": "2026-10-22T08:45:23.267Z",
@@ -7401,7 +7403,135 @@
         ],
         "limits": "Only provider/base-URL routing keys are inspected. Authentication values and unrelated settings are not emitted. Command-line flags in the planned probes select no provider override."
       },
-      "limits": "Native Codex discovery comes from separate ephemeral diagnostic threads, not missing events retroactively added to behavioral traces. Native Claude import remains unverified. The source-path hash is computed locally at capture time."
+      "limits": "Native Codex discovery comes from separate ephemeral diagnostic threads, not missing events retroactively added to behavioral traces. Native Claude import remains unverified. The source-path hash is computed locally at capture time.",
+      "approvedClaudeCapture": {
+        "schemaVersion": 1,
+        "date": "2026-10-22T09:30:21.024Z",
+        "approvalCommit": "e1717a886b8bd28ebf921b3e80c4c30e5e692800",
+        "sourceCommit": "e1717a886b8bd28ebf921b3e80c4c30e5e692800",
+        "preflightSha256": "d6fab65ef67013954f7c8aec9e907010e71adc0e69e47f4dc3df70aaf97ac9a1",
+        "host": "claude",
+        "version": "2.1.308",
+        "modelProviderConfigOverrides": false,
+        "commandKind": "native local /context with approved token-count transmission",
+        "results": [
+          {
+            "cwd": "/Users/peterkloss/Dev/ACMElabs/design-system",
+            "argv": [
+              "/Users/peterkloss/.local/bin/claude",
+              "-p",
+              "/context",
+              "--no-session-persistence",
+              "--output-format",
+              "stream-json",
+              "--verbose",
+              "--permission-mode",
+              "dontAsk",
+              "--permission-prompts",
+              "none"
+            ],
+            "exitCode": 0,
+            "timedOut": false,
+            "processExited": true,
+            "parsedEvents": 5,
+            "nonJsonLines": 0,
+            "nativeRecords": [
+              {
+                "eventNumber": 4,
+                "eventType": "assistant",
+                "field": "context_usage.memory_files",
+                "hasLocalCommandSource": true,
+                "localCommandSourceIsContext": false,
+                "localCommandRunIsContext": true,
+                "sources": [
+                  {
+                    "path": "/Users/peterkloss/Dev/ACMElabs/design-system/CLAUDE.md",
+                    "type": "Project",
+                    "sha256": "702db53ad29242ad21df72ac01172293e0edebee34fecaaed06ef6c398cef2a7"
+                  },
+                  {
+                    "path": "/Users/peterkloss/Dev/ACMElabs/design-system/AGENTS.md",
+                    "type": "Project",
+                    "sha256": "66ffd55741851e242722fbc078e9e3c2ec0766124af8c5241bdbfc1463e0a809"
+                  }
+                ]
+              }
+            ],
+            "completion": {
+              "resultSeen": true,
+              "resultSubtype": "success",
+              "resultSuccess": true,
+              "toolUseCount": 0,
+              "nonzeroGenerationTokens": false
+            },
+            "repositoryStatusUnchanged": true,
+            "instructionFilesUnchanged": true,
+            "rawOutputPersisted": false,
+            "errors": {
+              "stderrPresent": false,
+              "rateLimit": false,
+              "authenticationFailure": false,
+              "permissionDenied": false
+            }
+          },
+          {
+            "cwd": "/Users/peterkloss/Dev/ACMElabs/design-system/packages/react",
+            "argv": [
+              "/Users/peterkloss/.local/bin/claude",
+              "-p",
+              "/context",
+              "--no-session-persistence",
+              "--output-format",
+              "stream-json",
+              "--verbose",
+              "--permission-mode",
+              "dontAsk",
+              "--permission-prompts",
+              "none"
+            ],
+            "exitCode": 0,
+            "timedOut": false,
+            "processExited": true,
+            "parsedEvents": 5,
+            "nonJsonLines": 0,
+            "nativeRecords": [
+              {
+                "eventNumber": 4,
+                "eventType": "assistant",
+                "field": "context_usage.memory_files",
+                "hasLocalCommandSource": true,
+                "localCommandSourceIsContext": false,
+                "localCommandRunIsContext": true,
+                "sources": [
+                  {
+                    "path": "/Users/peterkloss/Dev/ACMElabs/design-system/CLAUDE.md",
+                    "type": "Project",
+                    "sha256": "702db53ad29242ad21df72ac01172293e0edebee34fecaaed06ef6c398cef2a7"
+                  }
+                ]
+              }
+            ],
+            "completion": {
+              "resultSeen": true,
+              "resultSubtype": "success",
+              "resultSuccess": true,
+              "toolUseCount": 0,
+              "nonzeroGenerationTokens": false
+            },
+            "repositoryStatusUnchanged": true,
+            "instructionFilesUnchanged": true,
+            "rawOutputPersisted": false,
+            "errors": {
+              "stderrPresent": false,
+              "rateLimit": false,
+              "authenticationFailure": false,
+              "permissionDenied": false
+            }
+          }
+        ]
+      },
+      "approvedClaudeReview": "# Approved Claude native discovery review\n\nBoth authorized commands completed on clean source e1717a886b8bd28ebf921b3e80c4c30e5e692800. The root import works. The package-start native import does not.\n\n## Results and observer review\n\n| Start directory | Native Project sources retained | Verdict |\n|---|---|---|\n| Repository root | CLAUDE.md and AGENTS.md | Shared instructions are natively loaded |\n| packages/react | Repository CLAUDE.md only | Repository AGENTS.md is absent from native loaded-file metadata |\n\nBoth runs exit 0, report native success, use no tools, report zero generation tokens, and preserve Git state and both instruction files. Neither run times out or emits stderr. Both processes exit. The result is in [the preserved capture](task12-approved-native-claude-result.json).\n\nThe records come from the native top-level context_usage.memory_files field. Each record also identifies the native local command as context. The local_command_source field exists but is not the literal context command name; the separate local_command_run.command supplies that attribution. No assistant prose or explicit model Read is used as proof.\n\nThe observer's path handling is correct for these records. Static inspection of installed Claude 2.1.308 establishes the complete path chain:\n\n1. iqo builds ancestor CLAUDE paths from absolute originalCwd using path.join.\n2. Zzo resolves each import against dirname of the importing file.\n3. dt calls P; P uses path.resolve and then NFC normalization.\n4. g2e stores that absolute path in the file record unchanged.\n5. Bdr emits H.path unchanged. kdi copies it into context_usage.memory_files.\n\nThus an imported AGENTS row cannot become a package-relative display alias in this path. The observer did not discard the missing file because it chose the wrong relative base. This rules out that proposed observer defect without another launch.\n\n## Cause\n\nRelative import resolution is correct. The root CLAUDE.md begins with the selected import:\n\n```text\n@AGENTS.md\n```\n\nThe loader distinguishes discovery from recursive imports. It discovers an ancestor CLAUDE.md at depth zero. SW then checks imported children against DB. DB calls Zu(target, ke()), and ke returns originalCwd, not the Git project root. A child outside that directory is skipped unless external imports are approved.\n\nRead-only observation of the existing project's consent state finds externalIncludesApproved=false and externalIncludesWarningShown=false. User and project instruction-exclusion lists are empty. No preference or setting was changed.\n\nFrom the repository root, AGENTS.md is within originalCwd. From packages/react, the same correctly resolved file is outside originalCwd. The loader therefore keeps ancestor CLAUDE.md but excludes its AGENTS.md child. This accounts for the observed difference.\n\nOfficial documentation agrees: relative imports resolve beside the importing file; project imports outside the working directory require consent. Ancestor CLAUDE discovery is separate. [Import documentation](https://code.claude.com/docs/en/memory#import-additional-files).\n\nThe native report does not expose a parent-import edge. Root inclusion, Project attribution, the actual import directive and the installed resolution/recursion code together support the root import conclusion. They do not support a package-native-import pass.\n\nThe package Bash denial is not attributed to this import guard. CLI tool permissions and instruction imports have separate checks. The other worker owns the exact denied-command analysis; sharing originalCwd does not prove one cause.\n\n## Smallest project-owned correction for review\n\nAdd a mandatory shared-file read to the already-loaded root CLAUDE.md adapter. Keep the import and keep all shared procedures in AGENTS.md. Proposed text:\n\n> When launched below the repository root, read the root AGENTS.md to its last line before any assessment or task. Resolve it beside this CLAUDE.md; the native import can be withheld outside the starting directory.\n\nA [prepared patch](task12-approved-native-claude-proposed-adapter.patch) makes only that host-adapter change. It is not applied.\n\nThis is portable, adds no copied lifecycle, changes no global settings, grants no wider permissions and covers all package starts. It requires a normal explicit file read before the shared workflow starts. The earlier package behavioral runs demonstrate that root files can be read; the corrected pointer still needs actual verification.\n\nThis correction repairs the startup route. It does **not** make native package imports pass. Preserve the native limitation and verify the explicit shared read before accepting package behavior.\n\nAlternatives do not meet the same constraints:\n\n- Rewriting the relative import leaves the containment check unchanged.\n- External-import consent is stored in machine-local project consent state. It is not a portable project-owned correction.\n- The built-in AGENTS reader's mode can load both files, but official documentation says project/local settings cannot select that mode. It would require a user/managed/flag setting. [Setting scope](https://code.claude.com/docs/en/memory#choose-which-instruction-files-load).\n- Duplicating shared rules, restoring the old symlink, or injecting them through a new hook changes the approved ownership design.\n\nThe [requirement review](task12-approved-native-claude-adapter-recommendation.md) finds no approved requirement for native automatic inclusion from every package directory. The specification separately requires the shared import and correct package-start behavior. The clause is a host adapter within that scope; it cannot be reported as native package-import success. No criterion is waived, and no additional launch or configuration edit has occurred.\n",
+      "chronology": "The initial research report/local-alternative analysis predate explicit user authorization and native execution. The approved capture/review and claude status hold the current native conclusion. Original limitations remain dated evidence."
     },
     "questionReferenceReview": {
       "review": "# Question-pointer clarification review\n\nCurrent verdict: **DO NOT APPLY the proposed unconditional fallback clause.** The source-applicability addendum below supersedes the initial acceptance.\n\nInitial verdict, now superseded: accepted as a bounded clarification; no behavioral effect was verified.\n\nThe diff changes only the question pointer at AGENTS.md line 19. It names the running host and explicitly includes the plain-text fallback branch. Approval scope, plugin precedence, user-started boundaries and the rest of the workflow remain unchanged.\n\n## Superseded first verdict\n\nThe current pointer already requires the question skill and its applicable host reference. The approved migration specification retains host-specific question contracts and permits plain text when no question tool is permitted. The proposal makes that existing branch explicit; it creates no new question interface, permission or product requirement.\n\nBrain's writing-for-agents guidance says a pointer must identify the branches that trigger its reference. The proposed two sentences do that directly. They keep the procedure in the installed skill instead of copying it into AGENTS.\n\nThe observed gap warrants clarification:\n\n- In iteration two, Claude interrupted-pending invokes brain:ask-user-question at event 206 and presents a layout choice at event 728. No host-reference Read or exact delivered reference body appears before that choice.\n- The same iteration's Claude package probe reads the complete Claude reference at events 1150–1151 before its plain-text question. That shows the reference can be consumed under the available Read tooling.\n- The installed question skill introduces its host-reference table through tool names, then permits plain text when no tool is available. “Applicable host reference” could therefore be read too narrowly in a tool-less session.\n\nThe last point is a possible interpretation, not the established cause of the omission. The contrast between the probes does not reveal why one omitted the reference. Neither the new wording nor this review proves a fix.\n\n“Running host” is the right selector: Claude's availability rules remain relevant even when AskUserQuestion is absent or denied. Codex's reference remains relevant when its question tools are unavailable. The active tool schema still controls what can be called. Reading the reference does not enable a denied tool or authorize a bypass.\n\nThe wording preserves the prerequisite order: load the skill, read the host reference, then compose the question. It does not add a question when no user-owned choice remains. It also does not require copying host details into repository rules.\n\n**Superseded follow-up after authorization**\n\n| Case | Required follow-up and proof |\n| --- | --- |\n| Claude interrupted-pending | Required to close the observed question-reference gap. Use the same neutral continuation prompt and recorded pending-choice fixture with the proposed pointer activated. Verify actual question-skill consumption and a complete Claude host-reference read or equivalent source-bound delivery before the plain-text choice. Preserve the unanswered decision, draft bytes and task checkboxes. |\n| Claude package-new-request | Its focused retry remains separately necessary for the existing Git/runtime gap. Keep the recorded narrow allowance for the two harmless directory listings. If it composes a placement question, also verify the updated pointer's reference step. This pointer change does not itself repair or close the harness limitation. |\n| Codex question/fallback branch | Needed only to claim this clarified branch is behaviorally verified on Codex. The existing interrupted case can serve as a focused check. If it merely reports the next action without composing a question, record the branch as unexercised; do not force or credit a question that did not occur. |\n| Root/no-approved-next behavior | No new full-matrix replay is justified solely by this conditional sentence. Preserve the existing results for unchanged behavior and record their original instruction identity. Recheck a case if a later change actually invalidates it. |\n\nThe separate native Claude instruction-discovery gap remains separate. A successful question-reference read cannot prove automatic CLAUDE-to-AGENTS import.\n\nKeep original attempts and failures. Bind any follow-up to the exact new instruction bytes, actual command, prompt and before/after snapshots. Keep prompts free of expected answers. The previously blocked authenticated Claude work still needs the coordinator's authorization step; this review grants none.\n\nNo host, check or build is invoked. No tracked file changes. This review is the only authored artifact.\n\nReviewed identities:\n\n| Input | SHA-256 |\n| --- | --- |\n| AGENTS.md | 66ffd55741851e242722fbc078e9e3c2ec0766124af8c5241bdbfc1463e0a809 |\n| .artifacts/AGENTS.question-guidance.next.md | e248286dfc2c1e0a3477fe9a4c4eaf81d7b0551c9c72324db6083996e9604e6c |\n| .artifacts/task12-session-grading-iteration-2.json | b205e062d975ab720c4d5fe85bd0685a17bde23d45d31884f849c1e50e89fba1 |\n\n\n## Source-applicability correction\n\nDo not apply the proposed unconditional fallback clause. My initial acceptance interpreted “applicable” too broadly.\n\nThe installed brain question skill routes references by **Tool in the session**, not by the process name: lines 74–78 select a reference for AskUserQuestion, request_user_input/request_user_input_async or ask_user. Lines 80–83 directly permit plain text when no permitted question tool is offered. The main skill also owns the waiting and unanswered-state rules.\n\nThe interrupted probe's native init event 5 offers none of those question tools. Its recorded CLI flags remove user-input tools. It loads the main question skill at event 206, states that no question tool is offered, presents its recommendation as advice, and keeps the choice pending. That follows the selected fallback. No host-reference read is observed, but the tool-keyed routing does not require one in this run.\n\nThe approved migration specification gives brain ownership of the procedure (lines 68–74) and explicitly accepts tool-less plain text (line 292). Rule disposition C03 preserves that routing. The existing AGENTS phrase “applicable host reference” can follow those conditions. Replacing it with “the reference for the running host ... including ... plain-text fallback” would add an unconditional repository rule absent from the selected workflow. It is not warranted merely to satisfy my stricter grading interpretation.\n\nThis conclusion is narrow. When a listed question tool is offered, its matching reference remains applicable and must be read in full. Plain text is not a blanket exemption for an applicable tool contract. The absence of that tool in this probe is the decisive fact.\n\nThe grading correction preserves the original observation and records why its required-step classification changes. It does not invent a read, diagnose the earlier omission, weaken an applicable requirement or claim the proposed wording fixed anything.\n\nNo question-reference replay is needed solely to close this mistaken oracle. The separate Claude package Git/runtime retry and native Claude discovery remain pending under their existing authorization boundary. A future case that exercises an offered question tool still needs the corresponding reference-consumption evidence.\n\nNo active instruction, tracked file or host state changes.\n\nThe original grading interpretation has SHA-256 b205e062d975ab720c4d5fe85bd0685a17bde23d45d31884f849c1e50e89fba1. I amended its untracked file before the request to preserve its bytes; no separate original copy is available. The coordinator accepts a versioned interpretation correction. The current grading preserves the previous assertion and observation and links the separate correction record. The eight security-reviewed excerpts and their raw identities remain unchanged. The revised interpretation needs the coordinator’s renewed retention review; the earlier review binds the original hash only.\n\nThe exact correction and current hashes are in [task12-question-oracle-correction.json](task12-question-oracle-correction.json). No proposed instruction is activated. Only the Claude package Git/runtime verification and separate Claude native-loading proof remain open in host acceptance.\n",
@@ -7601,8 +7731,76 @@
         "plannedChange": "Allow only the two exact read-only ls commands denied in the preserved iteration-2 case.",
         "date": "2026-10-22T08:37:27.358Z"
       },
-      "executed": false,
-      "metadataCorrection": "Before execution, refreshed the descriptive shellCommand from the authoritative argv/output fields. The earlier description still named iteration-2 outputs; the actual wrapper always uses argv and the iteration-3 file fields. No earlier output was overwritten."
+      "executed": true,
+      "metadataCorrection": "Before execution, refreshed the descriptive shellCommand from the authoritative argv/output fields. The earlier description still named iteration-2 outputs; the actual wrapper always uses argv and the iteration-3 file fields. No earlier output was overwritten.",
+      "completedRun": {
+        "host": "claude",
+        "case": "package-new-request",
+        "cwd": "/Users/peterkloss/Dev/ACMElabs/design-system/packages/react",
+        "argv": [
+          "claude",
+          "-p",
+          "--no-session-persistence",
+          "--output-format",
+          "stream-json",
+          "--verbose",
+          "--include-hook-events",
+          "--permission-mode",
+          "dontAsk",
+          "--permission-prompts",
+          "none",
+          "--tools",
+          "Read,Glob,Grep,Bash,Skill",
+          "--allowedTools",
+          "Read",
+          "Glob",
+          "Grep",
+          "Skill",
+          "Bash(pwd)",
+          "Bash(git status --short)",
+          "Bash(git branch --show-current)",
+          "Bash(git rev-parse --show-toplevel)",
+          "Bash(git rev-parse HEAD)",
+          "Bash(git diff --stat)",
+          "Bash(git diff --name-only)",
+          "Bash(bun --version)",
+          "Bash(git status --short --branch)",
+          "Bash(git status --porcelain=v1)",
+          "Bash(command -v bun)",
+          "Bash(which bun)",
+          "Bash(.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun --version)",
+          "Bash(git -C /Users/peterkloss/Dev/ACMElabs/design-system status --short --branch)",
+          "Bash(git -C /Users/peterkloss/Dev/ACMElabs/design-system status --short)",
+          "Bash(git -C /Users/peterkloss/Dev/ACMElabs/design-system status --porcelain=v1)",
+          "Bash(git -C /Users/peterkloss/Dev/ACMElabs/design-system branch --show-current)",
+          "Bash(git -C /Users/peterkloss/Dev/ACMElabs/design-system rev-parse HEAD)",
+          "Bash(git -C /Users/peterkloss/Dev/ACMElabs/design-system rev-parse --show-toplevel)",
+          "Bash(git -C ../.. status --short --branch)",
+          "Bash(git -C ../.. status --short)",
+          "Bash(git -C ../.. status --porcelain=v1)",
+          "Bash(git -C ../.. branch --show-current)",
+          "Bash(git -C ../.. rev-parse HEAD)",
+          "Bash(git -C ../.. rev-parse --show-toplevel)",
+          "Bash(git -C . status --short --branch)",
+          "Bash(git -C . status --short)",
+          "Bash(git -C . status --porcelain=v1)",
+          "Bash(git -C . branch --show-current)",
+          "Bash(git -C . rev-parse HEAD)",
+          "Bash(git -C . rev-parse --show-toplevel)",
+          "Bash(/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun --version)",
+          "Bash(ls /Users/peterkloss/Dev/ACMElabs/design-system)",
+          "Bash(ls /Users/peterkloss/Dev/ACMElabs/design-system/packages/react)"
+        ],
+        "sourceCommit": "e1717a886b8bd28ebf921b3e80c4c30e5e692800",
+        "beforeStatus": "",
+        "started": "2026-10-22T09:25:45.526Z",
+        "promptSha256": "69b9e9f67c42f0894a4c5d1a31b501afc675b694c9235d821c80403b4f4d86bd",
+        "environment": "Inherited model/config/provider; no replacement system prompt",
+        "finished": "2026-10-22T09:29:01.583Z",
+        "exitCode": 0,
+        "afterCommit": "e1717a886b8bd28ebf921b3e80c4c30e5e692800",
+        "afterStatus": ""
+      }
     },
     "pendingAuthorization": {
       "status": "approved",
@@ -7613,13 +7811,1130 @@
       "exclusions": "No source edits by probes, publishing, GitHub/npm changes, global configuration changes or credential disclosure.",
       "boundary": "This explicit approval resolves the earlier transmission block for these checks only. Preserve prior rejected attempts. It does not authorize publication, provider/config changes or credential disclosure.",
       "question": "Approve the remaining read-only Claude checks through the existing signed-in Anthropic connection? They include the package-start retry and native loaded-instruction reports from the root and React package. They can send loaded project/global agent instructions, installed skill text, relevant workflow records and inspected source excerpts; the native report can send loaded context and tool definitions for token counting. Recommend approval to complete the required verification. Keeping them pending leaves migration acceptance incomplete. No publication or configuration change is included.",
-      "retryRunStarted": false,
+      "retryRunStarted": true,
       "userReply": "approved",
       "date": "2026-10-22T09:23:37.902Z",
       "authority": "Direct user reply to the preceding explicit data-and-destination approval question in this chat."
+    },
+    "approvedPreflight": {
+      "date": "2026-10-22T09:24:40.914Z",
+      "authorization": "Direct user approval in this chat for the remaining Claude checks and stated payload to Anthropic.",
+      "claudeVersion": "2.1.308 (Claude Code)",
+      "bunVersion": "1.4.2",
+      "authentication": {
+        "loggedIn": true,
+        "method": "claude.ai",
+        "provider": "firstParty",
+        "subscription": "max"
+      },
+      "environmentRouting": {},
+      "configurations": [
+        {
+          "path": "/Users/peterkloss/.claude/settings.json",
+          "routing": {}
+        },
+        {
+          "path": ".claude/settings.json",
+          "routing": {}
+        }
+      ],
+      "commit": "e1717a886b8bd28ebf921b3e80c4c30e5e692800",
+      "status": "",
+      "limits": "No credential values, account identities or unrelated settings retained. Existing first-party connection and no observed routing overrides; no configuration or model changes."
+    },
+    "thirdIteration": {
+      "grading": {
+        "schemaVersion": 1,
+        "iteration": "iteration-3",
+        "status": "graded-with-open-requirements",
+        "updatedAt": "2026-10-22T09:36:52.219Z",
+        "case": "claude/package-new-request",
+        "sourceCommit": "e1717a886b8bd28ebf921b3e80c4c30e5e692800",
+        "authorization": {
+          "approvalCommit": "e1717a886b8bd28ebf921b3e80c4c30e5e692800",
+          "preflight": ".artifacts/task12-approved-preflight.json",
+          "preflightSha256": "d6fab65ef67013954f7c8aec9e907010e71adc0e69e47f4dc3df70aaf97ac9a1",
+          "scope": "Coordinator-run read-only Claude package retry under the explicit approval for stated repository/context transmission to Anthropic. Existing subscription and normal configured plugins; no host invocation by this grader."
+        },
+        "comparison": {
+          "previousAttempt": {
+            "exitCode": 0,
+            "started": "2026-10-22T08:25:45.428Z",
+            "finished": "2026-10-22T08:29:50.339Z"
+          },
+          "previousBehaviorVerdict": "passed-scope-with-missing-startup-facts",
+          "previousReport": ".artifacts/task12-session-grading-iteration-2.json",
+          "previousReportSha256": "a85772f8487f17ce638f24ddef76dd49e8aaf6ff98a07ee726e793ad4e5d0dc8",
+          "samePrompt": true,
+          "promptSha256": "69b9e9f67c42f0894a4c5d1a31b501afc675b694c9235d821c80403b4f4d86bd",
+          "argvAdded": [
+            "Bash(ls <repo>)",
+            "Bash(ls <repo>/packages/react)"
+          ],
+          "argvRemoved": [],
+          "currentSourceNote": "The original correction preparation names cb3d722. The actual run correctly records the later approval/evidence-only commit e1717a886. Current source is bound by the before snapshot and delivered-read proofs.",
+          "oracleCorrection": ".artifacts/task12-question-oracle-correction.json",
+          "earlierAttemptsAndFailuresPreserved": true
+        },
+        "completion": {
+          "started": "2026-10-22T09:25:45.526Z",
+          "finished": "2026-10-22T09:29:01.583Z",
+          "exitCode": 0,
+          "eventLine": 1567,
+          "status": "success",
+          "durationMs": 192174
+        },
+        "behaviorVerdict": "passed-scope-with-unverified-startup-facts-and-loading-order",
+        "assertions": [
+          {
+            "id": "fresh-package-host",
+            "verdict": "passed",
+            "evidence": "Actual new Claude CLI at packages/react; no resumed session, replacement system prompt or model override. Native init at 5 and successful completion at 1567."
+          },
+          {
+            "id": "normal-discovery",
+            "verdict": "passed",
+            "evidence": "Normal inherited configuration/plugins remain enabled. Init names brain and agent-skills. No loader event is inferred from that registration."
+          },
+          {
+            "id": "selective-context",
+            "verdict": "passed",
+            "evidence": "All 13 selected startup/guidance files are delivered completely and match current source and the before snapshot. Active spec/plan/todo calls 114-116 produce complete results 118-120."
+          },
+          {
+            "id": "brain-consumption",
+            "verdict": "passed",
+            "evidence": "Actual brain:using-brain invocation at 561 and exact body delivery at 563; brain:ask-user-question at 564 and exact body delivery at 566."
+          },
+          {
+            "id": "brain-startup-order",
+            "verdict": "unverified",
+            "evidence": "The first explicit using-brain invocation is at 561, with exact installed body delivery at 563, after source assessment. The SessionStart hook at 2 and PreToolUse hook at 33 return empty payloads; UserPromptSubmit at 4 has 704 stderr characters but no skill body or using-brain reference. No earlier visible user/system payload supplies the exact or whitespace-normalized installed body.",
+            "qualification": "This establishes late first evidenced consumption. Private system input is not dumped; absence from the observable trace alone is not proof that no unexposed preload exists. The session-start requirement remains unverified, not passed."
+          },
+          {
+            "id": "runtime-and-git",
+            "verdict": "unverified",
+            "evidence": "The only Bash call is the combined two-directory listing at 28. Result 35 denies Bash. No Git or Bun executable/version call follows. Final 1560 acknowledges the gap; source snapshot facts are not actual host verification."
+          },
+          {
+            "id": "authored-owner",
+            "verdict": "passed",
+            "evidence": "Reads React form/entry, Forms page, recipe, copied-source producer and current acceptance code. Identifies the entry JSDoc and page description as authored options; leaves the placement question unanswered."
+          },
+          {
+            "id": "generated-ownership",
+            "verdict": "passed",
+            "evidence": "Explains copied-source and recipe projections into website, MCP and consumer skills. No generated output hand edit is proposed."
+          },
+          {
+            "id": "plan-preserved",
+            "verdict": "passed",
+            "evidence": "Final keeps migration task 12 and Checkpoint D open, scopes the cleanup explanation beside them and does not turn migration authorization into permission for this new change."
+          },
+          {
+            "id": "pending-choice",
+            "verdict": "passed",
+            "evidence": "Final presents one placement question with alternatives and a recommendation. It selects nothing, sets no deadline and changes no file."
+          },
+          {
+            "id": "question-host-reference",
+            "verdict": "not-applicable",
+            "evidence": "Init offers none of the main skill’s listed question tools. Its no-tool fallback applies. The full Claude reference is nevertheless actually read at 589-590; this extra read is observed, not required for this run."
+          },
+          {
+            "id": "no-spurious-certification",
+            "verdict": "passed",
+            "evidence": "Final separates historical test coverage from checks run now, marks app-tree cleanup interpretation unverified, reports Git/runtime unverified, and preserves current red/pending acceptance."
+          },
+          {
+            "id": "readonly-attempts",
+            "verdict": "passed",
+            "evidence": "All 45 tool calls are Read/Glob/Grep/Skill or the single denied read-only listing. No mutating, test/build or outward call occurs."
+          },
+          {
+            "id": "readonly-covered-files",
+            "verdict": "passed",
+            "evidence": "Independently compared all 70,383 before/after entries: zero changes. Commit, branch, clean Git status and canonical root match. Coverage includes the package retry and two native context captures before source changes."
+          },
+          {
+            "id": "automatic-instruction-loader",
+            "verdict": "unverified",
+            "evidence": "No native import event appears in this CLI stream. Explicit AGENTS Read, plugin registration and Skill consumption do not prove automatic loading; the parent owns the separate native diagnostic."
+          }
+        ],
+        "findings": [
+          {
+            "id": "P-runtime-repeat",
+            "status": "unverified",
+            "kind": "harness-limited-factual-verification",
+            "lines": [
+              28,
+              35,
+              1560
+            ],
+            "description": "The combined directory-listing call is rejected. Native event 34 and result metadata 35 identify reason_type=mode and source=config, but expose no lower-level rule/path reason. The host then makes no Git/version attempt. The added listing allowances do not close the original gap; compound syntax is not an established cause.",
+            "next": "Coordinator investigates the effective permission/path boundary with the installed host source. Parent-root access is a hypothesis; no bypass, new instruction or rerun is proposed by this grader."
+          },
+          {
+            "id": "P-brain-late",
+            "status": "unverified",
+            "kind": "existing-startup-order",
+            "lines": [
+              168,
+              451,
+              561,
+              563
+            ],
+            "description": "First evidenced brain consumption occurs after source assessment. Earlier native hook payloads and visible deliveries do not establish startup consumption. This remains an explicit requirement gap without claiming total knowledge of hidden input.",
+            "next": "Keep the actual order visible; coordinator decides the bounded follow-up under the approved host-check scope. No cause is inferred and no new repository instruction is proposed."
+          }
+        ],
+        "observations": {
+          "nativePluginDiscovery": "passed",
+          "nativeAutomaticLoading": "unverified-separate-diagnostic",
+          "explicitMainSkillConsumption": "passed-late",
+          "questionReferenceActuallyRead": true,
+          "questionReferenceRequired": false,
+          "evaluationExposure": "No direct eval-plan, grading, command or raw run artifact is read. The ordinary startup status/todo contain explicit verification status and earlier gap summaries. This is not a blinded reliability trial.",
+          "optionalSourceRanges": "The owning forms contract and projection implementation have targeted reads. This does not substitute for the full mandatory active migration specification/plan/task reads, which are proven complete."
+        },
+        "readEvidence": [
+          {
+            "path": "AGENTS.md",
+            "callLine": 30,
+            "resultLine": 32,
+            "first": 1,
+            "last": 43,
+            "sourceLines": 43,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "66ffd55741851e242722fbc078e9e3c2ec0766124af8c5241bdbfc1463e0a809",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "CONTEXT-MAP.md",
+            "callLine": 72,
+            "resultLine": 76,
+            "first": 1,
+            "last": 13,
+            "sourceLines": 13,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "e0bce9c26d6993570b8ebb7b0671f69598f055b960ee90aea9f26d48acff875e",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "docs/STATUS.md",
+            "callLine": 70,
+            "resultLine": 77,
+            "first": 1,
+            "last": 63,
+            "sourceLines": 63,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "b1e54b582015862d4a91c595f509855a1fedb37240e823ab954451cfa71d7dc4",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "spec/README.md",
+            "callLine": 73,
+            "resultLine": 78,
+            "first": 1,
+            "last": 37,
+            "sourceLines": 37,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "e8e858d25ec5df1031f562c8a475172e3e4ae51f1f2dd6feda048851dfc89ae9",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "docs/agents/workflow.md",
+            "callLine": 74,
+            "resultLine": 79,
+            "first": 1,
+            "last": 43,
+            "sourceLines": 43,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "4f328a5ff916579cb15f4fb9ee9159fbbebc6343b22954ab4615c5dab6a189aa",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "docs/agents/domain.md",
+            "callLine": 71,
+            "resultLine": 80,
+            "first": 1,
+            "last": 21,
+            "sourceLines": 21,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "687229836185c7efc5add2ea6824a09112c2076fd38e6ee474ab315f217a9b82",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "CONTEXT.md",
+            "callLine": 113,
+            "resultLine": 117,
+            "first": 1,
+            "last": 263,
+            "sourceLines": 263,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "8372bf8ea185e3d779a114c0dea01f51a755ebbdc33e4bdee2785e525e5b7ec7",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "spec/SPEC-maintainer-workflow.md",
+            "callLine": 114,
+            "resultLine": 118,
+            "first": 1,
+            "last": 295,
+            "sourceLines": 295,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "07d7d8a0226db69e37f1295ac6b28ebdbef96cb6f80bbcc82cb22ccfbade10c6",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "tasks/plan.md",
+            "callLine": 115,
+            "resultLine": 119,
+            "first": 1,
+            "last": 189,
+            "sourceLines": 189,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "9bf9d437291da3e6e02cc37e1cabe7c81323831d361bb3a43c15ff6db5020866",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "tasks/todo.md",
+            "callLine": 116,
+            "resultLine": 120,
+            "first": 1,
+            "last": 470,
+            "sourceLines": 470,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "da24ec0117479fc679a534b755af3e724d8e37994ca417ba8f44822d66703405",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "docs/agents/verification.md",
+            "callLine": 136,
+            "resultLine": 137,
+            "first": 1,
+            "last": 72,
+            "sourceLines": 72,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "053a020946c727bceaf93a30b26ce2dc192152495b85241dadec344828bfe883",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "docs/agents/repository.md",
+            "callLine": 135,
+            "resultLine": 138,
+            "first": 1,
+            "last": 65,
+            "sourceLines": 65,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "b3c59d158fa35409c91c971bb89de562a4b1d9bfe4403f669e7d50c536c7fbca",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "docs/development/documentation.md",
+            "callLine": 139,
+            "resultLine": 140,
+            "first": 1,
+            "last": 30,
+            "sourceLines": 30,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "f697e8e38b1a80aaccbcd32b0bede24d544f095efea0ffadb461bcfde2e0da5d",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "docs/decisions/0067-native-and-managed-forms.md",
+            "callLine": 168,
+            "resultLine": 169,
+            "first": 1,
+            "last": 12,
+            "sourceLines": 12,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "7bfa808ee7895c27cf6e431be5fb4a53bfd9679510965e37f94df224713bca6d",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "examples/forms/react.tsx",
+            "callLine": 172,
+            "resultLine": 174,
+            "first": 1,
+            "last": 118,
+            "sourceLines": 118,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "3d99fc3623d9a08e27fee801e2b10f7d02a196dd97ed86081bf0cd2f6da6ca5c",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "examples/forms/react-entry.ts",
+            "callLine": 173,
+            "resultLine": 175,
+            "first": 1,
+            "last": 19,
+            "sourceLines": 19,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "553a77d11136ca382de9ddbe4a2b576807e05ec2db74525cfa6c76966702375b",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "examples/forms/lit.ts",
+            "callLine": 176,
+            "resultLine": 177,
+            "first": 1,
+            "last": 87,
+            "sourceLines": 87,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "976d14fdb23731b55d23f93032fd5dc6966f40e234036d734ee19b20fb58bf69",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "examples/forms/__tests__/managed.browser-check.ts",
+            "callLine": 178,
+            "resultLine": 179,
+            "first": 1,
+            "last": 147,
+            "sourceLines": 147,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "2c38f6e69270e9b74e607aba05df14e2c7dab82d9a01099bedc32cf3e7ecb945",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "examples/forms/__tests__/consumer.ts",
+            "callLine": 180,
+            "resultLine": 181,
+            "first": 1,
+            "last": 94,
+            "sourceLines": 94,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "bafa645c6dd7eb0f4b851a1221e341c14f1d2449c50f4856215af7f1c1fa9fbe",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "site/pages/components/forms.ts",
+            "callLine": 209,
+            "resultLine": 211,
+            "first": 1,
+            "last": 47,
+            "sourceLines": 47,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "225e02df8484a997c2d9f4fc76c4a4905729252ac65b95c02b471993932d4e20",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "site/__tests__/recipes.test.ts",
+            "callLine": 233,
+            "resultLine": 234,
+            "first": 1,
+            "last": 174,
+            "sourceLines": 174,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "dfbc55686bc7409e8fb405575687c9292ce927ebff9d954c51e8474aa0c707a2",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "site/recipes.ts",
+            "callLine": 232,
+            "resultLine": 235,
+            "first": 1,
+            "last": 533,
+            "sourceLines": 533,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "434b2519dbbe67f64ff2a7c91e653cf1e7bedba2073aa8cab733fe36f79e27c5",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "spec/SPEC-inputs-forms.md",
+            "callLine": 318,
+            "resultLine": 319,
+            "first": 80,
+            "last": 103,
+            "sourceLines": 103,
+            "full": false,
+            "deliveredLinesMatchSource": true,
+            "sha256": "a02bb105c0a00b539c6ed0386b32e4fe197609e98d35828b6e8f6d117654f7fc",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "site/example-source.ts",
+            "callLine": 320,
+            "resultLine": 321,
+            "first": 1,
+            "last": 91,
+            "sourceLines": 91,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "a7ba0b3031391686580b41d5de400cf5c59dd9521fca2e66b447752965ae87a9",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "site/site.ts",
+            "callLine": 322,
+            "resultLine": 323,
+            "first": 1,
+            "last": 40,
+            "sourceLines": 148,
+            "full": false,
+            "deliveredLinesMatchSource": true,
+            "sha256": "a06cd4ab66f62788bb1dd1f231fbe868f73a529108d51d92f864af3cb19041e3",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "site/release.ts",
+            "callLine": 429,
+            "resultLine": 430,
+            "first": 30,
+            "last": 74,
+            "sourceLines": 74,
+            "full": false,
+            "deliveredLinesMatchSource": true,
+            "sha256": "bef963ff21a288ab402d897d6c80ba09fd9b097078d2603c96931d4107e82b02",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "docs/verification/systematization/m26-managed-forms/README.md",
+            "callLine": 448,
+            "resultLine": 449,
+            "first": 1,
+            "last": 36,
+            "sourceLines": 36,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "7ae560f20eb2904d0f1eadbf532c0cf6e34717144f95273aa6e8527e366b65a5",
+            "matchesBeforeSnapshot": true
+          },
+          {
+            "path": "<home>/.claude/plugins/cache/acmelabs/brain/0.6.0/skills/ask-user-question/references/claude-code.md",
+            "callLine": 589,
+            "resultLine": 590,
+            "first": 1,
+            "last": 118,
+            "sourceLines": 118,
+            "full": true,
+            "deliveredLinesMatchSource": true,
+            "sha256": "13f8edf07cb55a81e4157212c215c71c6f1eb686cd7eb3eceb1cbbe5938aedaa",
+            "matchesBeforeSnapshot": null
+          },
+          {
+            "path": "site/build.ts",
+            "callLine": 1033,
+            "resultLine": 1034,
+            "first": 60,
+            "last": 104,
+            "sourceLines": 172,
+            "full": false,
+            "deliveredLinesMatchSource": true,
+            "sha256": "edcd66ca32f240041ae743719f2102a42722f7ee17cb2e48eb117e7a426599db",
+            "matchesBeforeSnapshot": true
+          }
+        ],
+        "mandatoryReadPaths": [
+          "AGENTS.md",
+          "docs/STATUS.md",
+          "docs/agents/domain.md",
+          "CONTEXT-MAP.md",
+          "CONTEXT.md",
+          "spec/README.md",
+          "spec/SPEC-maintainer-workflow.md",
+          "tasks/plan.md",
+          "tasks/todo.md",
+          "docs/agents/workflow.md",
+          "docs/agents/repository.md",
+          "docs/agents/verification.md",
+          "docs/development/documentation.md"
+        ],
+        "toolCounts": {
+          "Bash": 1,
+          "Read": 29,
+          "Grep": 10,
+          "Glob": 3,
+          "Skill": 2
+        },
+        "preservation": {
+          "before": {
+            "path": ".artifacts/task12-session-eval/iteration-2/snapshots/live-before-approved-retry.json",
+            "sha256": "6124ae9890d734e3d3535d2542b1ebd2877e00941bbba84bbb9ab6e1275014ed",
+            "entries": 70383,
+            "commit": "e1717a886b8bd28ebf921b3e80c4c30e5e692800",
+            "branch": "codex/maintainer-workflow-migration",
+            "status": ""
+          },
+          "runAfter": {
+            "commit": "e1717a886b8bd28ebf921b3e80c4c30e5e692800",
+            "status": ""
+          },
+          "fullAfterSnapshot": "verified",
+          "oldReports": [
+            {
+              "path": ".artifacts/task12-session-grading.json",
+              "sha256": "ae44c392dc2cc378a0803d57448fa71674129329ad61d1e863de3a8495cd9f3d"
+            },
+            {
+              "path": ".artifacts/task12-session-grading-iteration-2.json",
+              "sha256": "a85772f8487f17ce638f24ddef76dd49e8aaf6ff98a07ee726e793ad4e5d0dc8"
+            },
+            {
+              "path": ".artifacts/task12-question-oracle-correction.json",
+              "sha256": "3d91fa404b2c1e10a866b392edf2d197a84c11aa55817ce7e356bcb975f47654"
+            }
+          ],
+          "oldReportsChangedByGrader": false,
+          "after": {
+            "path": ".artifacts/task12-session-eval/iteration-2/snapshots/live-after-approved-checks.json",
+            "sha256": "6124ae9890d734e3d3535d2542b1ebd2877e00941bbba84bbb9ab6e1275014ed",
+            "entries": 70383,
+            "commit": "e1717a886b8bd28ebf921b3e80c4c30e5e692800",
+            "branch": "codex/maintainer-workflow-migration",
+            "status": ""
+          },
+          "independentComparison": {
+            "passed": true,
+            "changedEntries": 0,
+            "commitsBranchesStatusesMatch": true,
+            "canonicalRootsMatch": true,
+            "coordinatorRecord": ".artifacts/task12-session-eval/iteration-3/preservation.json",
+            "coordinatorRecordSha256": "c3c327022aec2f9f547d9e1e8b34b7e6a121a4fbfc204b2a80540b06cfcca530",
+            "scope": "Package retry and two native context captures before any source change; evaluator outputs and host caches are outside snapshot coverage."
+          }
+        },
+        "retention": {
+          "path": ".artifacts/task12-session-eval/iteration-3/retained/claude-package-new-request.json",
+          "sha256": "0cf0cf89729bb40f1026c1a03c013d19ac5df43586ec20b26d036ad77e7ae7e1",
+          "events": 96,
+          "rawIdentity": {
+            "events": {
+              "path": ".artifacts/task12-session-eval/iteration-3/runs/claude/package-new-request/events.jsonl",
+              "sha256": "61e804f60cc2d4a5a9c7c39f582bf71c8ca31d19a86337cb93f5d6db1b6c1ebe",
+              "bytes": 1035983,
+              "lines": 1567
+            },
+            "stderr": {
+              "path": ".artifacts/task12-session-eval/iteration-3/runs/claude/package-new-request/stderr.txt",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "run": {
+              "path": ".artifacts/task12-session-eval/iteration-3/runs/claude/package-new-request/run.json",
+              "sha256": "50f397607daef055913d9e85408006912248e6061b28d75b063519ee6358f2ff"
+            }
+          },
+          "credentialScan": {
+            "files": 2,
+            "patternFamilies": 5,
+            "potentialMatches": 0,
+            "limits": "Bounded scan can miss unfamiliar or encoded credentials. Raw logs stay private; excerpt excludes thinking, private system/hook payloads, source bodies, full plugin inventories and account metadata."
+          },
+          "independentSecurityReview": "pending-coordinator-review"
+        },
+        "summary": {
+          "caseCompleted": true,
+          "coreScopeBehaviorPassed": true,
+          "allApplicableStartupRequirementsPassed": false,
+          "fullPreservationVerified": true,
+          "newMutatingOrOutwardAttempts": 0,
+          "priorGitRuntimeGapClosed": false,
+          "nativeLoaderProof": "separate-pending",
+          "overallMigrationAcceptance": "not-claimed"
+        },
+        "limits": [
+          "Single read-only acceptance observation; not a reliability rate, actual compaction or write-time handoff.",
+          "No grader host invocation, repository check, installation or tracked-file edit.",
+          "Earlier iteration reports and excerpts remain unchanged."
+        ],
+        "diagnosticRevision": 2,
+        "diagnosticHistory": [
+          {
+            "previousSha256": "63b83e51458f0b20eece356351eca26eed9bc902419242d9d9300fe626455826",
+            "previousRuntimeFinding": {
+              "id": "P-runtime-repeat",
+              "status": "unverified",
+              "kind": "harness-limited-factual-verification",
+              "lines": [
+                28,
+                35,
+                1560
+              ],
+              "description": "The two exact listing allowances do not authorize the combined command as executed. The denial recurs, and the host makes no later Git/version attempt. The narrow preparation does not close the original gap.",
+              "next": "Coordinator investigates the effective command authorization without changing the behavioral oracle or claiming source metadata proves host inspection."
+            },
+            "previousStartupOrderAssertion": {
+              "id": "brain-startup-order",
+              "verdict": "failed",
+              "evidence": "AGENTS.md line 17 requires using-brain at session start. The first actual invocation is 561, after requested example/source assessment at 168-451. Consumption occurs, but the required startup order does not.",
+              "qualification": "Observed order only; no cause or adverse effect on the correctly scoped proposal is established."
+            },
+            "correction": "Retracts the unsupported compound-command cause and narrows the startup-order conclusion to observable evidence. The missing Git/runtime check and late first explicit load remain recorded; neither gains a pass."
+          }
+        ],
+        "permissionEvidence": {
+          "eventLine": 34,
+          "decisionReasonType": "mode",
+          "resultLine": 35,
+          "nonExecutionKind": "permission-rule",
+          "decision": "reject",
+          "source": "config",
+          "message": "Permission to use Bash has been denied because Claude Code is running in don't ask mode.",
+          "cwd": "<repo>/packages/react",
+          "additionalDirectories": [],
+          "lowerLevelCause": "unverified",
+          "sources": [
+            {
+              "url": "https://code.claude.com/docs/en/permissions#compound-commands",
+              "retrieved": "2026-10-22",
+              "finding": "Compound commands split into subcommands; each needs an independent matching rule. This contradicts an assumption that separate exact listings inherently cannot match the compound."
+            },
+            {
+              "url": "https://code.claude.com/docs/en/permissions#working-directories",
+              "retrieved": "2026-10-22",
+              "finding": "The launch directory is the primary working directory. Additional directory access has separate rules; the actual effect here remains under investigation."
+            }
+          ],
+          "localSource": {
+            "path": "<home>/.local/share/claude/versions/2.1.308",
+            "sha256": "ca923c86ac84b30574a82331a05b6e066c27477a926ceaffe46a845a33e4dd37",
+            "byteOffsets": [
+              229396500,
+              229401100
+            ],
+            "function": "NSr",
+            "finding": "When the evaluated result is ask, the dontAsk branch returns a new deny object containing only mode as its decision reason. It does not retain the prior ask reason. Static source establishes loss of specificity, not which earlier check produced the ask in this invocation.",
+            "execution": "Read-only binary source inspection; the installed CLI is not executed."
+          }
+        },
+        "earlySkillDeliveryEvidence": {
+          "sessionStart": {
+            "line": 2,
+            "outputCharacters": 0,
+            "stdoutCharacters": 0,
+            "stderrCharacters": 0
+          },
+          "userPromptSubmit": {
+            "line": 4,
+            "outputCharacters": 704,
+            "stdoutCharacters": 0,
+            "stderrCharacters": 704,
+            "usingBrainNameOrBodyPresent": false
+          },
+          "preToolUse": {
+            "line": 33,
+            "outputCharacters": 0,
+            "stdoutCharacters": 0,
+            "stderrCharacters": 0
+          },
+          "firstExactInstalledBodyDeliveryLine": 563,
+          "earlyVisibleBodyMatches": 0,
+          "limits": "No private hook content or system-prompt dump is retained.",
+          "source": {
+            "path": "<home>/.claude/plugins/cache/acmelabs/brain/0.6.0/skills/using-brain/SKILL.md",
+            "sha256": "505ed5da15819f53b9ca6baea8f0adc3bd84f99d16fa73c4dbc614d153027472",
+            "comparison": "Full source body after frontmatter, both exact and whitespace-normalized, compared with earlier visible user/system strings. Native init lists skill names but no matching body."
+          }
+        }
+      },
+      "preservation": {
+        "passed": true,
+        "sourceCommit": "e1717a886b8bd28ebf921b3e80c4c30e5e692800",
+        "sameCommit": true,
+        "sameBranch": true,
+        "sameStatus": true,
+        "sameRoot": true,
+        "sameFiles": true,
+        "entries": 70383,
+        "beforeFilesSha256": "78137b579a7e042e30bb8ae2c9937cb29d3c2e3b40b5a165ad2a5596aaaf7c22",
+        "afterFilesSha256": "78137b579a7e042e30bb8ae2c9937cb29d3c2e3b40b5a165ad2a5596aaaf7c22",
+        "scope": "Exact source snapshot comparison covers the approved package retry and both native context captures; evaluator output and host caches are excluded."
+      },
+      "scope": "The additional listing rules did not close startup facts. This attempt is retained, with its lower-level cause established later in the separate source investigation."
+    },
+    "packageCorrection": {
+      "status": "reviewed and applied; corrected package run pending",
+      "beforeSha256": "702db53ad29242ad21df72ac01172293e0edebee34fecaaed06ef6c398cef2a7",
+      "afterSha256": "4b6aae8f6424eda9419f32064367cb267ea4976984d112cfc64dbe1e2fb97afb",
+      "nativeRecommendation": "# Package-start adapter recommendation\n\nThe proposed explicit-read clause is an adapter within the approved migration scope. It does not require a specification change. It also does not turn the missing native package import into a pass.\n\n## Approved requirement and exact correction\n\nThe approved specification separates two checks:\n\n- Line 235 requires Claude's import to reach the shared rules. The real root native capture establishes that behavior.\n- Line 236 requires fresh root and package sessions to identify the right phase, task, source owner, plugin and next action.\n- Lines 170 and 181 require a package start to reach the root handoff and read selected current records in full.\n- Lines 58 and 70 assign Claude-specific routing to the real CLAUDE.md adapter while shared procedures remain in AGENTS.md.\n\nNone requires every package-start instruction to arrive through native automatic inclusion. A full explicit Read from the already-loaded host adapter is a supported route to the same authoritative instructions. It follows the existing full-read requirement and keeps one workflow owner.\n\nRecommended clause directly below the Claude Code heading:\n\n> When launched below the repository root, read the root AGENTS.md to its last line before any assessment or task. Resolve it beside this CLAUDE.md; the native import can be withheld outside the starting directory.\n\nKeep the first-line import unchanged. Add no package instruction copies, lifecycle text, hooks, permission grant or global preference change. The prepared patch is conditional on a package start, so it adds no redundant read requirement to the working root import.\n\nAcceptance must record both mechanisms honestly: root native import; package-start explicit full Read before substantive assessment. Preserve the original native capture as a documented limitation. Recheck the affected package behavior and required startup ordering. Do not claim that the new clause changes native import consent.\n\n## Why directory permission options do not repair this import\n\nInstalled Claude 2.1.308 uses originalCwd for DB's imported-path containment check. The check does not consult additional working directories. Relative imports already resolve correctly against the importing CLAUDE.md.\n\nThe additional-directory memory path is separate: b2e returns additional directories only when CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD is enabled. Those directories' CLAUDE files still pass through SW with the same external-import policy. Adding the repository root does not change originalCwd or grant external-import consent.\n\nTherefore neither --add-dir nor a file-tool allow rule is an import-consent fix. The documented extra-directory option is also off by default. [Official additional-directory semantics](https://code.claude.com/docs/en/memory#load-from-additional-directories).\n\nProject-owned settings cannot select the built-in AGENTS reader's instructionFiles mode: the documented setting is accepted only from user, managed or explicit flag settings. Machine-local external-import consent is not a portable repository adapter. [Official setting scope](https://code.claude.com/docs/en/memory#choose-which-instruction-files-load).\n\nThe Bash denial remains a separate investigation. It may involve command-mode permission or a working-directory boundary, but the import result alone cannot establish that cause. No permission widening is included in this proposal.\n\n## Evidence limits\n\nNative metadata provides path/type rows, not parent-import edges. The import assessment combines those rows with the installed loader, unchanged first-line import and current project consent observation.\n\nThe absolute-path chain is verified from ancestor construction through import resolution, file-record creation and metadata serialization. The observer's cwd-based fallback did not hide a display alias.\n\nNo launch, project edit or settings change follows this recommendation. The coordinator must review the clause and its affected verification before applying it. The previous automatic-review rejection and the explicit approval that permitted the completed captures remain preserved.\n",
+      "bashCause": {
+        "schemaVersion": 1,
+        "status": "cause-supported-by-installed-source-runtime-correction-pending",
+        "date": "2026-10-22T09:43:43.763Z",
+        "scope": "Bounded read-only Bash denial investigation, separate from completed host-case grading. No model or native CLI is launched.",
+        "evidence": {
+          "run": {
+            "path": ".artifacts/task12-session-eval/iteration-3/runs/claude/package-new-request/run.json",
+            "sha256": "50f397607daef055913d9e85408006912248e6061b28d75b063519ee6358f2ff",
+            "sourceCommit": "e1717a886b8bd28ebf921b3e80c4c30e5e692800"
+          },
+          "trace": {
+            "path": ".artifacts/task12-session-eval/iteration-3/runs/claude/package-new-request/events.jsonl",
+            "sha256": "61e804f60cc2d4a5a9c7c39f582bf71c8ca31d19a86337cb93f5d6db1b6c1ebe",
+            "inputLine": 28,
+            "permissionLine": 34,
+            "resultLine": 35
+          },
+          "actualCommand": "ls <repo>; ls <repo>/packages/react",
+          "cwd": "<repo>/packages/react",
+          "additionalDirectories": [],
+          "matchingCliRules": [
+            "Read",
+            "Bash(ls <repo>)",
+            "Bash(ls <repo>/packages/react)"
+          ],
+          "denial": {
+            "type": "mode",
+            "source": "config",
+            "decision": "reject"
+          }
+        },
+        "cause": {
+          "finding": "The root ls operand lies outside the package session’s working directories. Bash operand-path validation returns a non-overridable ask before a matching Bash allow rule can authorize execution. dontAsk converts that ask to denial.",
+          "compoundCommand": "Semicolon splitting is supported; each subcommand is checked independently. The command-combination itself is not the supported diagnosis.",
+          "readVsBash": "A bare Read tool allowance does not become a path-pattern allowance in Bash’s operand validator. The path-pattern compiler skips rules without ruleContent.",
+          "scopeBasis": "The directory set is originalCwd plus additionalWorkingDirectories, not the Git repository root. The actual init has no additional directories.",
+          "modeEvidenceLimit": "The final mode rejection omits the prior ask reason. The causal conclusion comes from the installed source branch and the captured command/scope inputs, not from the generic error sentence alone."
+        },
+        "source": {
+          "path": "<home>/.local/share/claude/versions/2.1.308",
+          "version": "2.1.308",
+          "sha256": "ca923c86ac84b30574a82331a05b6e066c27477a926ceaffe46a845a33e4dd37",
+          "records": [
+            {
+              "name": "wE",
+              "byteStart": 227404306,
+              "byteEndExclusive": 227410244,
+              "sha256": "fdfdad843bf3feca8ee3389b334d89b02d42d63277198d3c3fe136dbdcc82d65"
+            },
+            {
+              "name": "HP",
+              "byteStart": 227412056,
+              "byteEndExclusive": 227412718,
+              "sha256": "f5ab7064750752c25d6b0d369da79ea6ab2b30e26326e2f301b3656d06bf340b"
+            },
+            {
+              "name": "lBo",
+              "byteStart": 227418035,
+              "byteEndExclusive": 227423118,
+              "sha256": "204e0bf80ef79966692326475e6df70cad397f1762b88fce49b64707f0b588ca"
+            },
+            {
+              "name": "xGt",
+              "byteStart": 227423118,
+              "byteEndExclusive": 227423699,
+              "sha256": "9e13e0c07e61a4cd4f16aaa057ef148dbbebe4121872eef3abac9f13d187787c"
+            },
+            {
+              "name": "uBo",
+              "byteStart": 227424066,
+              "byteEndExclusive": 227424411,
+              "sha256": "ea4303f0fa89fab04e01395c0f228ef2e985caba79296a1218e0e4d57712b35a"
+            },
+            {
+              "name": "OX",
+              "byteStart": 227428350,
+              "byteEndExclusive": 227433844,
+              "sha256": "8a8abaada5188d218551a5734c6fe2afa36020a305d7159b584a70fc6d59003d"
+            },
+            {
+              "name": "Xhe",
+              "byteStart": 227486494,
+              "byteEndExclusive": 227487135,
+              "sha256": "afc413f55161b1fabd5d2fd947b24a5f7a6ed14da6f656867ba87dcd1b9a43f4"
+            },
+            {
+              "name": "xzt",
+              "byteStart": 227491408,
+              "byteEndExclusive": 227493101,
+              "sha256": "0e94d452d0efb175f65b30b35b2aa733da3bd8f2a6db24b5f23e85190016aba9"
+            },
+            {
+              "name": "mqe",
+              "byteStart": 227536543,
+              "byteEndExclusive": 227546932,
+              "sha256": "a034491ae0f107d64a6a746d34ae267725c046596aabd77b1644de60492fd469"
+            },
+            {
+              "name": "ET",
+              "byteStart": 224010776,
+              "byteEndExclusive": 224013448,
+              "sha256": "bd4ca4246019df7416f01a27f173df41207600acafe75dee48ad13304a4fadac"
+            },
+            {
+              "name": "iD",
+              "byteStart": 224017803,
+              "byteEndExclusive": 224019066,
+              "sha256": "c77ddcc25273f4f53e3d58ad2c29e4970d254bff6f7a1d21a6359c70a74a2e95"
+            },
+            {
+              "name": "sNr",
+              "byteStart": 224019066,
+              "byteEndExclusive": 224019366,
+              "sha256": "0870824b8c2dbed735e6d6ecc392f4b5398b71262cb0b10040ea1c6cc4c20f0a"
+            },
+            {
+              "name": "hp",
+              "byteStart": 222837902,
+              "byteEndExclusive": 222837977,
+              "sha256": "bd5ac4cf48e72123e595523ec826d0bb45a51b7ecbd35ff6a86492f718c729a8"
+            },
+            {
+              "name": "gk",
+              "byteStart": 222851763,
+              "byteEndExclusive": 222851842,
+              "sha256": "0792330702b31005c35324c90057eb857486e4b367ecb81915dc73bc36c0d06e"
+            },
+            {
+              "name": "my",
+              "byteStart": 222852504,
+              "byteEndExclusive": 222852657,
+              "sha256": "0e30abf0c166e7d3321b380c174e0635cb1b315a37f47d0c140c690df3b5d999"
+            },
+            {
+              "name": "Zu",
+              "byteStart": 222853905,
+              "byteEndExclusive": 222854316,
+              "sha256": "ba96cf4a5508570930455a7c7cee406622894c83cb3b2cebe565b3d8af79a385"
+            },
+            {
+              "name": "on",
+              "byteStart": 222859060,
+              "byteEndExclusive": 222860734,
+              "sha256": "34d87518340f5b5adc494a6ae3287fad8b3b403ffe5a7e13fdf53f14998de4ef"
+            },
+            {
+              "name": "Ol",
+              "byteStart": 222863308,
+              "byteEndExclusive": 222864082,
+              "sha256": "1eb10bcec9e8dee8f119cbdc68eec4f2f2a7321c95fa8351d1b1a4270d48c3cc"
+            },
+            {
+              "name": "xcn",
+              "byteStart": 222865282,
+              "byteEndExclusive": 222865435,
+              "sha256": "709417a415a2f81582faceedeef7abbc37d69eb186f805b07e1e7d0bda05c6dd"
+            }
+          ],
+          "modeReasonReplacement": {
+            "function": "NSr",
+            "byteRange": [
+              229396500,
+              229401100
+            ],
+            "result": "A remaining ask becomes a new deny containing mode/dontAsk; its former ask reason is not retained."
+          }
+        },
+        "branchTrace": [
+          "mqe parses the two plain ls subcommands. Neither command changes directory, redirects, expands variables or invokes another program.",
+          "xzt computes command-rule matches, then calls OX before accepting those matching allow rules.",
+          "OX routes ls through uBo → xGt → lBo. HP classifies ls as read; wE extracts the actual absolute directory operand.",
+          "lBo calls iD → sNr → ET for each operand. ET checks deny rules, resolved paths, working directories, internal read exceptions and path-specific Read allow rules.",
+          "my uses gk, which includes originalCwd and additionalWorkingDirectories. The root operand is an ancestor of packages/react, so it is outside; the package operand is inside.",
+          "The project-directory read exception hp defaults to the shell cwd, also packages/react. The CLI’s bare Read allowance has no path content and on omits it from path matching.",
+          "For the outside read, ET returns allowed:false,isInWorkingDir:false. lBo sets bashAllowRuleOverridable:false. xzt returns the ask before its matching Bash allow return.",
+          "NSr then replaces the remaining ask with the recorded mode/dontAsk rejection."
+        ],
+        "staticScopeComparison": {
+          "method": "Canonical filesystem paths and platform path.relative evaluated against the installed directory-set predicate. This is static condition verification, not execution of Claude’s permission checker.",
+          "rows": [
+            {
+              "target": "<repo>",
+              "canonicalPathEqualsRequested": true,
+              "relativeToOriginalCwd": "../..",
+              "beforeWithinWorkingDirectories": false,
+              "afterWithinWorkingDirectories": true
+            },
+            {
+              "target": "<repo>/packages/react",
+              "canonicalPathEqualsRequested": true,
+              "relativeToOriginalCwd": "",
+              "beforeWithinWorkingDirectories": true,
+              "afterWithinWorkingDirectories": true
+            }
+          ]
+        },
+        "correction": {
+          "preferred": "Per-invocation directory scope",
+          "argvAddition": [
+            "--add-dir",
+            "<repo>"
+          ],
+          "exactRoot": "/Users/peterkloss/Dev/ACMElabs/design-system",
+          "reason": "The approved data scope is the whole repository. Adding that exact root makes both listing operands members of the native working-directory set, which resolves this path rejection before the existing Bash allow rules.",
+          "unchanged": [
+            "packages/react remains the original working directory",
+            "dontAsk mode and disabled permission prompts",
+            "Read,Glob,Grep,Bash,Skill tool set",
+            "the existing narrow Bash command allowlist",
+            "neutral prompt, assertion oracles and earlier evidence",
+            "global and tracked project settings"
+          ],
+          "publication": "Prepared recommendation only; no command or settings file is changed.",
+          "verificationNeeded": "Coordinator confirms effective additional_directories contains only the intended root, then repeats the approved bounded acceptance case. It must show actual Git state and selected Bun executable/version, preserve source bytes and keep earlier attempts. This static diagnosis is not a passing retry."
+        },
+        "nativeImportBoundary": {
+          "relationship": "Separate gate",
+          "finding": "The native-import worker proves recursive CLAUDE imports use an outside-originalCwd consent gate. That gate uses originalCwd directly rather than the Bash additional-directory set.",
+          "consequence": "Adding a Bash working directory must not be claimed to fix automatic AGENTS import. The coordinator must resolve and verify that gate separately."
+        },
+        "officialSources": [
+          {
+            "url": "https://code.claude.com/docs/en/permissions#compound-commands",
+            "finding": "Shell separators split commands and rules match each subcommand."
+          },
+          {
+            "url": "https://code.claude.com/docs/en/permissions#working-directories",
+            "finding": "The launch directory is primary scope; --add-dir extends it for this invocation."
+          },
+          {
+            "url": "https://code.claude.com/docs/en/permissions#permission-modes",
+            "finding": "dontAsk denies calls that would need a prompt."
+          }
+        ],
+        "limits": [
+          "No global setting, broad Bash grant, permission bypass, repository instruction or product file changes.",
+          "No native CLI/model replay, build, installation or product check.",
+          "The combined command denial is preserved. Grading remains separate; its lower-level cause was left unverified before this investigation.",
+          "Runtime correction and native import acceptance remain pending."
+        ]
+      },
+      "reviews": [
+        {
+          "axis": "correctness",
+          "report": "# Package correction correctness review\n\nVerdict: **Approve the source-backed proposal. Runtime acceptance remains pending.** No required source change found.\n\nFixed point: clean revision `e1717a886b8bd28ebf921b3e80c4c30e5e692800`. Reviewed `diff -u CLAUDE.md .artifacts/CLAUDE.package-start.next.md` and the proposed package-only `--add-dir` addition. Live adapter SHA-256 is `702db53ad29242ad21df72ac01172293e0edebee34fecaaed06ef6c398cef2a7`; candidate SHA-256 is `30f1299359d3bd4aabf07c6ff35885cc07c68cd6cada97fc1a6230a15cca3c9a`. The diff contains only the new paragraph at candidate line 5.\n\nStandards: AGENTS.md, docs/agents/{domain,workflow,repository,verification}.md. Contract: spec/SPEC-maintainer-workflow.md, tasks/plan.md and tasks/todo.md. All selected inputs and the four brief-named evidence records were read in full.\n\n- The clause matches specification lines 58–70: the import stays first; only Claude-specific routing is added. Shared startup procedures remain in AGENTS.md. No package workflow, hook, configuration change or product behavior is introduced.\n- Specification line 235 requires the import to reach shared rules; line 236 separately requires correct root/package behavior. Lines 170 and 180–188 require the root handoff and complete startup reads. I find no explicit requirement for native automatic inclusion at every cwd. The recorded root native capture supports the import criterion at its exact source identity. The package native omission remains a limitation, not a pass.\n- The exact repository-root directory addition fits the authorized read-only repository scope. I independently inspected six hash-matching installed-source slices: xzt, lBo, ET, my, gk and on. They support operand containment before Bash allow rules and the distinction between bare Read allowance and path rules. Keep the existing command allowlist and dontAsk. This does not establish external-import consent or a passing retry.\n\nFYI [judgement]: iteration 3 already delivers the full AGENTS.md at events 30/32 before source assessment. Therefore the clause alone does not establish a fix for late brain consumption. The clean corrected package case must prove full shared-file delivery before assessment, brain consumption at startup, actual Git state and selected Bun path/version, every original behavior assertion and file preservation. Confirm the effective additional directory is only the exact root. Retain all earlier failures and source identities. No host, build or test runs occur in this review.\n\n## Wording recheck\n\n**Approve** candidate SHA-256 `4b6aae8f6424eda9419f32064367cb267ea4976984d112cfc64dbe1e2fb97afb`, verified from a full read and hash. At line 5, “Complete its startup instructions before assessing the request” now directs completion, rather than only reading. This fits AGENTS.md lines 7–17 and specification lines 180–188. It keeps AGENTS.md as the procedure owner and introduces no new workflow. Removing “first” does not weaken the explicit order. All earlier runtime limits remain: the next package case must show actual startup completion, including brain consumption before assessment. No host call or tracked edit occurs.\n"
+        },
+        {
+          "axis": "architecture",
+          "report": "# Package-start correction: architecture review\n\nVerdict: **Approve for bounded verification.** No required architecture finding. Runtime acceptance remains pending.\n\nThe review uses brain:code-review-and-quality's architecture axis. The fixed point is clean revision e1717a886b8bd28ebf921b3e80c4c30e5e692800 on codex/maintainer-workflow-migration. Bun reports 1.4.2.\n\nThe compared adapter hashes are:\n\n- Current CLAUDE.md: 702db53ad29242ad21df72ac01172293e0edebee34fecaaed06ef6c398cef2a7.\n- Proposed .artifacts/CLAUDE.package-start.next.md: 30f1299359d3bd4aabf07c6ff35885cc07c68cd6cada97fc1a6230a15cca3c9a.\n\nThe complete diff adds one paragraph at candidate line 5. Its instruction is: “first read AGENTS.md beside this CLAUDE.md in full.” The paragraph applies below the repository root and precedes request assessment.\n\nThe proposal fits the approved design:\n\n- spec/SPEC-maintainer-workflow.md:58 permits Claude-specific guidance after the unchanged first-line import. Lines 68–74 leave lifecycle ownership with brain and shared startup ownership with AGENTS.md. The clause routes to that owner; it copies no lifecycle procedure.\n- spec/SPEC-maintainer-workflow.md:170 requires package starts to reach the root handoff. The root adapter covers package starts without adding package instructions, another task list, or another glossary.\n- spec/SPEC-maintainer-workflow.md:235 requires a working import. Line 236 separately requires correct root and package behavior. Neither states that every package start must obtain AGENTS.md through native automatic inclusion. I agree with the native worker's interpretation. The explicit read cannot be reported as native import success.\n- The proposed exact repository-root directory argument belongs to the test invocation. The supplied denial investigation separates Bash directory scope from import consent. Keeping the original cwd, narrow command rules, dontAsk mode, prompt, plugins and assertions preserves that boundary. No global configuration change or second workflow is introduced.\n\nFYI [judgement]: .artifacts/task12-session-grading-iteration-3.json retains missing Git/runtime evidence and late first evidenced brain consumption. The paragraph does not itself prove those gaps close. The corrected clean candidate must show a complete AGENTS.md Read before assessment, startup brain consumption, actual Git/runtime checks, and all original assertions. Preserve the native package-import omission as a limit.\n\nInputs include the approved specification, plan, task list, shared rules, repository/workflow/verification guides, both native review records, iteration-3 grading, and the denial investigation. Root and unchanged product evidence retain their original source identities. This review launches no host or build and changes no tracked or global file.\n\nRecheck: candidate 4b6aae8f6424eda9419f32064367cb267ea4976984d112cfc64dbe1e2fb97afb now says “Complete its startup instructions before assessing the request.” Full candidate and diff inspection confirm the strengthened pointer. Shared procedures, first-line import and exact-root invocation scope stay unchanged. **Approve for bounded verification** still applies. Runtime proof remains pending.\n"
+        },
+        {
+          "axis": "readability",
+          "report": "# Package-start correction: readability review\n\nThe package-start wording is clear. Verdict: **Approve** for readability, with no required findings.\n\nReviewed candidate:\n\n```text\n.artifacts/CLAUDE.package-start.next.md\nSHA-256 4b6aae8f6424eda9419f32064367cb267ea4976984d112cfc64dbe1e2fb97afb\n```\n\nThe live adapter hash matches the brief. The tracked working tree is clean on the migration branch.\n\n- Line 5 names the condition: a start below the repository root. The condition covers every package and other subdirectory.\n- Line 5 identifies the target by its relationship to the loaded adapter. “Beside this CLAUDE.md” avoids resolving the file against the package directory.\n- “In full” gives the read a checkable bound. “Complete its startup instructions before assessing the request” gives the sequence a clear completion point.\n- The three sentences use direct verbs and familiar terms. The last sentence explains the native omission without weakening the required read.\n- The clause routes to the existing startup procedure. It does not copy its steps, add another workflow owner, or change the first-line import.\n\nThe native worker's contract reading is consistent with the approved specification. Lines 235–236 state import reachability and root/package behavior as separate checks. Lines 70 and 170 retain shared ownership and require package starts to reach the root handoff. The plan's line 155 requires the intended context and brain selection; it does not require native inclusion at every starting directory.\n\nVerification remains open. The existing grading records a full shared-file read, but late evidenced brain consumption and missing Git/runtime checks. The new wording alone cannot close those gaps. Preserve the missing package native import as a limit. The corrected package run must prove the full read and required startup completion before assessment, with all original assertions intact.\n\nThis review uses the supplied native-loading, recommendation, grading and Bash-denial records. No host, test, build, source edit or global change is performed. Only this assigned report is written.\n"
+        },
+        {
+          "axis": "security",
+          "report": "The security review accepts the bounded package-start correction.\n\n**Verdict:** Accept both proposals within the recorded user authorization. No required security finding.\n\n- The candidate changes only Claude-specific startup routing. It preserves the first-line import and requires a full read of the single root instruction owner before assessment. It adds no copied rules, hook, global setting, consent change, or permission grant.\n- That explicit read uses the normal permitted file tool for authorized repository content. It does not change native import consent or conceal the package import omission.\n- Adding the exact canonical repository root through the documented additional-directory mechanism matches the authorized repository scope. The package remains the original working directory. The proposal keeps dontAsk, disabled permission prompts, the existing tool set, narrow Bash rules, prompt, provider, and normal configuration.\n- I inspected the installed directory and permission predicates and verified their recorded hashes. Additional working directories participate in operand containment. Deny rules and command checks remain in the path. This is supported per-run directory scope, not disabling a protection or granting access to a parent/home directory.\n- The approved specification requires the shared import and correct root/package startup behavior as separate checks. It does not require native automatic inclusion at every working directory. The root import evidence remains distinct from the package's required explicit read. No criterion can be closed merely by applying this clause.\n\nThe affected package case must run on the clean corrected candidate. Verify the exact additional-directory list, full root instruction read before assessment, required brain startup order, actual Git state, selected Bun path/version, and all original assertions. Preserve earlier failures and source identities. Native package import remains an observed omission, not a pass supplied by this correction.\n\nReviewed source and candidate:\n\n```text\nSource commit: e1717a886b8bd28ebf921b3e80c4c30e5e692800\nCurrent CLAUDE.md SHA-256:\n702db53ad29242ad21df72ac01172293e0edebee34fecaaed06ef6c398cef2a7\nCandidate CLAUDE.md SHA-256:\n30f1299359d3bd4aabf07c6ff35885cc07c68cd6cada97fc1a6230a15cca3c9a\nAdditional directory:\n/Users/peterkloss/Dev/ACMElabs/design-system\n```\n\n**Limits:** Static security and scope review. I read the brief, candidate, native reviews, third-iteration grading, denial investigation, and approved requirements. I launched no host, ran no product checks, and changed no source or configuration. This review does not establish a passing retry or authorize publication.\n\n**Final wording recheck:** Accept. The candidate now explicitly requires completion of the existing startup instructions before assessment. It also removes the redundant word “first.” Reversing those two wording edits reproduces the previously reviewed candidate hash. No procedure, permission, data scope, or native-import verdict changes. The exact-root directory addition and all restrictions remain as reviewed. No host or tracked edit occurs in this recheck.\n\n```text\nFinal candidate SHA-256:\n4b6aae8f6424eda9419f32064367cb267ea4976984d112cfc64dbe1e2fb97afb\n```\n"
+        },
+        {
+          "axis": "performance",
+          "report": "# Package-start correction: performance review\n\nVerdict: **Approve** for the static performance axis. No required performance finding.\n\nFixed point is clean revision `e1717a886b8bd28ebf921b3e80c4c30e5e692800`. The reviewed command is `diff -u CLAUDE.md .artifacts/CLAUDE.package-start.next.md`. Live adapter SHA-256 is `702db53ad29242ad21df72ac01172293e0edebee34fecaaed06ef6c398cef2a7`; candidate SHA-256 is `4b6aae8f6424eda9419f32064367cb267ea4976984d112cfc64dbe1e2fb97afb`. The candidate is uncommitted scratch output. Bun selection verifies as 1.4.2.\n\nStandards reviewed: AGENTS.md, current CLAUDE.md, repository/verification/workflow guidance, approved maintainer specification, plan and task list. Both adapters, the supplied native review/recommendation, iteration-3 grading and Bash investigation are read in full. The prepared iteration-4 command and correction records are inspected.\n\n- Candidate line 5 adds 30 words and 212 bytes. “When starting below the repository root” confines the extra Read to package/subdirectory startup. Root startup gains no extra read requirement.\n- The referenced AGENTS.md contains 4,776 bytes. The clause adds one bounded read of that shared owner. It adds no repeated loop, whole-history read or second workflow. The previous package run already reads this file completely; the correction makes its order mandatory. A package session with external-import consent can reread it once. That bounded duplicate does not justify weakening the reliable startup route.\n- Iteration-4 commands.json lines 59–60 add only the exact repository root to the process directory scope. The package cwd, narrow command list and permission mode remain. This adds one directory entry, not a recursive scan instruction or recurring work.\n- No source runtime, build producer, package input, dependency or browser behavior changes. No unrelated product benchmark is needed for this delta.\n\nThe specification separately names shared import and correct package behavior. It does not explicitly require native inclusion at every cwd. This review agrees with that interpretation; it does not certify startup behavior.\n\nPackage native-import omission remains a recorded limit. The corrected clean candidate still needs a real package run with all original assertions. Require complete AGENTS Read and startup completion before assessment, actual Git/Bun checks, exact additional-directory scope and preservation proof. No launch, build or test occurs in this review. Earlier root/product evidence remains usable only at its exact source identities and unchanged scope.\n"
+        }
+      ],
+      "preparedRun": [
+        {
+          "host": "claude",
+          "case": "package-new-request",
+          "cwd": "/Users/peterkloss/Dev/ACMElabs/design-system/packages/react",
+          "argv": [
+            "claude",
+            "-p",
+            "--no-session-persistence",
+            "--output-format",
+            "stream-json",
+            "--verbose",
+            "--include-hook-events",
+            "--permission-mode",
+            "dontAsk",
+            "--permission-prompts",
+            "none",
+            "--tools",
+            "Read,Glob,Grep,Bash,Skill",
+            "--allowedTools",
+            "Read",
+            "Glob",
+            "Grep",
+            "Skill",
+            "Bash(pwd)",
+            "Bash(git status --short)",
+            "Bash(git branch --show-current)",
+            "Bash(git rev-parse --show-toplevel)",
+            "Bash(git rev-parse HEAD)",
+            "Bash(git diff --stat)",
+            "Bash(git diff --name-only)",
+            "Bash(bun --version)",
+            "Bash(git status --short --branch)",
+            "Bash(git status --porcelain=v1)",
+            "Bash(command -v bun)",
+            "Bash(which bun)",
+            "Bash(.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun --version)",
+            "Bash(git -C /Users/peterkloss/Dev/ACMElabs/design-system status --short --branch)",
+            "Bash(git -C /Users/peterkloss/Dev/ACMElabs/design-system status --short)",
+            "Bash(git -C /Users/peterkloss/Dev/ACMElabs/design-system status --porcelain=v1)",
+            "Bash(git -C /Users/peterkloss/Dev/ACMElabs/design-system branch --show-current)",
+            "Bash(git -C /Users/peterkloss/Dev/ACMElabs/design-system rev-parse HEAD)",
+            "Bash(git -C /Users/peterkloss/Dev/ACMElabs/design-system rev-parse --show-toplevel)",
+            "Bash(git -C ../.. status --short --branch)",
+            "Bash(git -C ../.. status --short)",
+            "Bash(git -C ../.. status --porcelain=v1)",
+            "Bash(git -C ../.. branch --show-current)",
+            "Bash(git -C ../.. rev-parse HEAD)",
+            "Bash(git -C ../.. rev-parse --show-toplevel)",
+            "Bash(git -C . status --short --branch)",
+            "Bash(git -C . status --short)",
+            "Bash(git -C . status --porcelain=v1)",
+            "Bash(git -C . branch --show-current)",
+            "Bash(git -C . rev-parse HEAD)",
+            "Bash(git -C . rev-parse --show-toplevel)",
+            "Bash(/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun --version)",
+            "Bash(ls /Users/peterkloss/Dev/ACMElabs/design-system)",
+            "Bash(ls /Users/peterkloss/Dev/ACMElabs/design-system/packages/react)",
+            "--add-dir",
+            "/Users/peterkloss/Dev/ACMElabs/design-system"
+          ],
+          "stdinFile": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/task12-session-eval/prompts-iteration2/package-new-request.txt",
+          "stdoutFile": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/task12-session-eval/iteration-4/runs/claude/package-new-request/events.jsonl",
+          "stderrFile": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/task12-session-eval/iteration-4/runs/claude/package-new-request/stderr.txt",
+          "environment": "Inherited model/provider/plugins/settings; read-only package probe explicitly includes the authorized repository root in its per-process working-directory scope.",
+          "shellCommand": "'claude' '-p' '--no-session-persistence' '--output-format' 'stream-json' '--verbose' '--include-hook-events' '--permission-mode' 'dontAsk' '--permission-prompts' 'none' '--tools' 'Read,Glob,Grep,Bash,Skill' '--allowedTools' 'Read' 'Glob' 'Grep' 'Skill' 'Bash(pwd)' 'Bash(git status --short)' 'Bash(git branch --show-current)' 'Bash(git rev-parse --show-toplevel)' 'Bash(git rev-parse HEAD)' 'Bash(git diff --stat)' 'Bash(git diff --name-only)' 'Bash(bun --version)' 'Bash(git status --short --branch)' 'Bash(git status --porcelain=v1)' 'Bash(command -v bun)' 'Bash(which bun)' 'Bash(.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun --version)' 'Bash(git -C /Users/peterkloss/Dev/ACMElabs/design-system status --short --branch)' 'Bash(git -C /Users/peterkloss/Dev/ACMElabs/design-system status --short)' 'Bash(git -C /Users/peterkloss/Dev/ACMElabs/design-system status --porcelain=v1)' 'Bash(git -C /Users/peterkloss/Dev/ACMElabs/design-system branch --show-current)' 'Bash(git -C /Users/peterkloss/Dev/ACMElabs/design-system rev-parse HEAD)' 'Bash(git -C /Users/peterkloss/Dev/ACMElabs/design-system rev-parse --show-toplevel)' 'Bash(git -C ../.. status --short --branch)' 'Bash(git -C ../.. status --short)' 'Bash(git -C ../.. status --porcelain=v1)' 'Bash(git -C ../.. branch --show-current)' 'Bash(git -C ../.. rev-parse HEAD)' 'Bash(git -C ../.. rev-parse --show-toplevel)' 'Bash(git -C . status --short --branch)' 'Bash(git -C . status --short)' 'Bash(git -C . status --porcelain=v1)' 'Bash(git -C . branch --show-current)' 'Bash(git -C . rev-parse HEAD)' 'Bash(git -C . rev-parse --show-toplevel)' 'Bash(/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun --version)' 'Bash(ls /Users/peterkloss/Dev/ACMElabs/design-system)' 'Bash(ls /Users/peterkloss/Dev/ACMElabs/design-system/packages/react)' '--add-dir' '/Users/peterkloss/Dev/ACMElabs/design-system' < '/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/task12-session-eval/prompts-iteration2/package-new-request.txt' > '/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/task12-session-eval/iteration-4/runs/claude/package-new-request/events.jsonl' 2> '/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/task12-session-eval/iteration-4/runs/claude/package-new-request/stderr.txt'"
+        }
+      ],
+      "correction": {
+        "date": "2026-10-22T09:46:17.209Z",
+        "previousIteration": "iteration-3",
+        "sourceBeforeCorrection": "e1717a886b8bd28ebf921b3e80c4c30e5e692800",
+        "status": "prepared; reviewed correction and clean source commit required before execution",
+        "harnessChange": [
+          "--add-dir",
+          "/Users/peterkloss/Dev/ACMElabs/design-system"
+        ],
+        "causeRecord": ".artifacts/task12-bash-denial-investigation.json",
+        "instructionCandidate": ".artifacts/CLAUDE.package-start.next.md",
+        "instructionReason": "Native parent CLAUDE loads but its outside-originalCwd AGENTS import is withheld. A host-specific explicit full Read routes package starts to the single shared owner.",
+        "preserved": [
+          "original package cwd",
+          "neutral prompt",
+          "original oracles",
+          "dontAsk and disabled user-input tools",
+          "existing narrow Bash allowlist",
+          "normal provider/model/plugins/project settings",
+          "all previous attempts"
+        ],
+        "claims": "Neither static proposal nor directory permission grants native external-import consent. Actual package startup/Git/runtime behavior must be observed."
+      },
+      "changes": [
+        "Conditional explicit full shared-instruction read and startup completion in the already-loaded Claude host adapter.",
+        "Exact repository-root additional directory in the package probe; no broader directory, command allowance, global setting or native-import consent."
+      ],
+      "requirements": "Preserve the original oracles, prove actual shared read and startup order, Git/Bun facts and source preservation. Native package omission remains explicit."
     }
   },
-  "next": "Run the approved read-only Claude package retry and native instruction-loading diagnostics. Grade actual results, preserve source state, then finish local acceptance and prepare the separate publication approval.",
+  "next": "Run iteration-4 Claude package case on the clean reviewed adapter candidate with exact repository-root directory scope. Grade actual startup/Git/runtime behavior, then finish local acceptance and prepare the separate publication approval.",
   "external": {
     "pending": 3,
     "approved": false,
