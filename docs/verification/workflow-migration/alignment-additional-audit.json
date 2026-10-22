@@ -1,0 +1,685 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-21",
+  "scope": "Task2 remaining record classification, no conversion yet",
+  "records": [
+    {
+      "source": "notes/alignment/README.md",
+      "targets": [
+        "docs/STATUS.md",
+        "docs/history/systematization/pass-history.md"
+      ],
+      "sourceSha256": "e631c7ac7b80ff009c05bbbc025ffe09fa7097a1fd901768dd3af58bc31f9a81",
+      "readCoverage": "full baseline read plus all subsequent edits",
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# Systematization pass"
+        },
+        {
+          "line": 5,
+          "heading": "## Where we are"
+        },
+        {
+          "line": 72,
+          "heading": "## Proposal files"
+        },
+        {
+          "line": 94,
+          "heading": "## Decision and evidence index"
+        },
+        {
+          "line": 237,
+          "heading": "## Why this library exists, and what this pass is for"
+        },
+        {
+          "line": 245,
+          "heading": "## Skills"
+        },
+        {
+          "line": 258,
+          "heading": "## Rules specific to this pass"
+        },
+        {
+          "line": 275,
+          "heading": "## Phase 0: Record the decisions this pass rests on"
+        },
+        {
+          "line": 297,
+          "heading": "## Phase 1: Your own analysis"
+        },
+        {
+          "line": 315,
+          "heading": "## Phase 2: Domain model and dispositions (domain-modeling skill)"
+        },
+        {
+          "line": 317,
+          "heading": "### 2.1 Seed `CONTEXT.md`"
+        },
+        {
+          "line": 321,
+          "heading": "### 2.2 The message family"
+        },
+        {
+          "line": 335,
+          "heading": "### 2.3 The container family"
+        },
+        {
+          "line": 339,
+          "heading": "### 2.4 Name collisions between the new-element list and Geist"
+        },
+        {
+          "line": 358,
+          "heading": "### 2.5 Disposition register"
+        },
+        {
+          "line": 415,
+          "heading": "### 2.6 Harvest and resolve"
+        },
+        {
+          "line": 421,
+          "heading": "## Phase 3: Architecture review (improve-codebase-architecture skill, when I say)"
+        },
+        {
+          "line": 429,
+          "heading": "## Phase 4: The inventory. Nothing is built before this is approved."
+        },
+        {
+          "line": 433,
+          "heading": "### 4.1 Primitives first"
+        },
+        {
+          "line": 439,
+          "heading": "### 4.2 Every element"
+        },
+        {
+          "line": 465,
+          "heading": "### 4.3 Conventions"
+        },
+        {
+          "line": 469,
+          "heading": "### 4.4 Documentation layout and doc components"
+        },
+        {
+          "line": 475,
+          "heading": "## Phase 5: Migration plan for existing code"
+        },
+        {
+          "line": 488,
+          "heading": "## Phase 6: Build"
+        },
+        {
+          "line": 492,
+          "heading": "## Generated files"
+        },
+        {
+          "line": 496,
+          "heading": "## Output"
+        }
+      ],
+      "treatment": "Current prefix becomes sole STATUS handoff. Historical checkpoints retain dates/evidence. Retire old phase instructions and local skill routing. Full baseline read completed during specification research; subsequent prefix edits reviewed directly."
+    },
+    {
+      "source": "notes/alignment/phase-1-review.md",
+      "targets": [
+        "docs/history/systematization/research-review.md"
+      ],
+      "sourceSha256": "acff53d97686ea80b1637ee2da62bc188067d966df709f4b7acec98da1fd8807",
+      "readCoverage": "complete source read",
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# Phase 1: findings and recommendations"
+        },
+        {
+          "line": 10,
+          "heading": "## Main conclusion"
+        },
+        {
+          "line": 14,
+          "heading": "## 1. Codebase analysis"
+        },
+        {
+          "line": 22,
+          "heading": "## 2. Lit practice"
+        },
+        {
+          "line": 30,
+          "heading": "## 3. Mandated-package integration"
+        },
+        {
+          "line": 38,
+          "heading": "## 4. Library gaps"
+        },
+        {
+          "line": 50,
+          "heading": "## 5. Animation package"
+        },
+        {
+          "line": 58,
+          "heading": "## 6. Icon library"
+        },
+        {
+          "line": 66,
+          "heading": "## 7. Repository layout"
+        },
+        {
+          "line": 76,
+          "heading": "## 8. Build and performance"
+        },
+        {
+          "line": 84,
+          "heading": "## 9. Documentation site"
+        },
+        {
+          "line": 92,
+          "heading": "## Shadow mapping selected"
+        },
+        {
+          "line": 98,
+          "heading": "## What was verified"
+        },
+        {
+          "line": 106,
+          "heading": "## Limits that remain explicit"
+        },
+        {
+          "line": 110,
+          "heading": "## Decisions to take next"
+        },
+        {
+          "line": 114,
+          "heading": "## Guided walkthrough"
+        }
+      ],
+      "treatment": "Nine investigations and extended walkthrough are completed historical research. Keep observed failures, alternative recommendations and measured probe limits; remove current imperative walkthrough/resumption gates."
+    },
+    {
+      "source": "notes/alignment/phase-2-review.md",
+      "targets": [
+        "docs/history/systematization/scope-review.md"
+      ],
+      "sourceSha256": "e39436badeae14997d6bb0fc0f73a586c5d58dee70adda255ee68c2a03410922",
+      "readCoverage": "complete source read",
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# Phase 2 review"
+        },
+        {
+          "line": 5,
+          "heading": "## Glossary contexts"
+        },
+        {
+          "line": 11,
+          "heading": "## Message-family dispositions"
+        },
+        {
+          "line": 24,
+          "heading": "## Composition clarification"
+        },
+        {
+          "line": 30,
+          "heading": "## Container decisions"
+        },
+        {
+          "line": 51,
+          "heading": "### Toolbar responsibility selected"
+        },
+        {
+          "line": 57,
+          "heading": "## Decision compatibility and dependencies"
+        },
+        {
+          "line": 71,
+          "heading": "## Deferred decisions"
+        },
+        {
+          "line": 73,
+          "heading": "### Lit style authoring and declaration order"
+        },
+        {
+          "line": 83,
+          "heading": "### HTML styling conversion after the Chakra comparison"
+        },
+        {
+          "line": 92,
+          "heading": "### Toolbar and Group composition"
+        },
+        {
+          "line": 103,
+          "heading": "### Entity and Item"
+        },
+        {
+          "line": 114,
+          "heading": "### Sidebar, TOC and hierarchy"
+        },
+        {
+          "line": 124,
+          "heading": "### Shared presentation and indicator contracts"
+        },
+        {
+          "line": 135,
+          "heading": "### Results pagination"
+        },
+        {
+          "line": 139,
+          "heading": "## Evidence and limits"
+        },
+        {
+          "line": 151,
+          "heading": "## Resume here"
+        },
+        {
+          "line": 165,
+          "heading": "## Disclosure, layout and smaller-component checkpoint"
+        },
+        {
+          "line": 181,
+          "heading": "### Required follow-ups from this checkpoint"
+        },
+        {
+          "line": 194,
+          "heading": "## Flow Diagram addition"
+        },
+        {
+          "line": 202,
+          "heading": "## Phase 2 closure"
+        }
+      ],
+      "treatment": "Preserve all settled dispositions and dependency reasoning, with later full inventory/implementation resolutions linked. Old deferred-interface/phase commands are historical, not reopened tasks."
+    },
+    {
+      "source": "notes/alignment/phase-3-review.md",
+      "targets": [
+        "docs/history/systematization/architecture-review.md"
+      ],
+      "sourceSha256": "82a4a586d62e26c756de03278c05f42f2f5fbb5240a34c3d5160b63ff3bbdadd",
+      "readCoverage": "complete source read",
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# Phase 3 architecture review"
+        },
+        {
+          "line": 5,
+          "heading": "## Decision bar"
+        },
+        {
+          "line": 11,
+          "heading": "## Current selections"
+        },
+        {
+          "line": 24,
+          "heading": "## Candidate map"
+        },
+        {
+          "line": 35,
+          "heading": "## Evidence audit"
+        },
+        {
+          "line": 39,
+          "heading": "### Controller composition and native surfaces"
+        },
+        {
+          "line": 47,
+          "heading": "### Owned exit completion"
+        },
+        {
+          "line": 53,
+          "heading": "### Public state bridge"
+        },
+        {
+          "line": 63,
+          "heading": "### Native form module"
+        },
+        {
+          "line": 69,
+          "heading": "### Scoped themes"
+        },
+        {
+          "line": 75,
+          "heading": "### Style production"
+        },
+        {
+          "line": 85,
+          "heading": "### Earlier recommendations"
+        },
+        {
+          "line": 91,
+          "heading": "## Resume here"
+        },
+        {
+          "line": 93,
+          "heading": "### Work pacing and verification timing"
+        },
+        {
+          "line": 101,
+          "heading": "## Phase 3 closure"
+        }
+      ],
+      "treatment": "Preserve selected responsibility splits, evidence corrections and timing audit. Retirement of the phase process does not erase negative controls or limited comparative evidence."
+    },
+    {
+      "source": "notes/alignment/additional-functionality-review.md",
+      "targets": [
+        "docs/design/additional-capabilities.md"
+      ],
+      "sourceSha256": "c8902b8eede3ca8e8bd2e917c9c32d550bdca61ea6719719819b40ee4329579a",
+      "readCoverage": "complete source read",
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# Phase 1 extension: additional functionality"
+        },
+        {
+          "line": 8,
+          "heading": "## Source and authority"
+        },
+        {
+          "line": 14,
+          "heading": "## Accepted decisions and requirements"
+        },
+        {
+          "line": 55,
+          "heading": "## Research register"
+        },
+        {
+          "line": 96,
+          "heading": "## Resume here"
+        },
+        {
+          "line": 106,
+          "heading": "## Phase 1 closure audit"
+        },
+        {
+          "line": 126,
+          "heading": "## Evidence and capture limits"
+        }
+      ],
+      "treatment": "Keep original requested capabilities, later clarifications, research scope and source snapshot. Later approved inventory and release resolve adoption/implementation statuses. Remove the old sequence and repeated question/capture instructions."
+    },
+    {
+      "source": "notes/alignment/chakra-pro-review.md",
+      "targets": [
+        "docs/research/21-chakra-pro-collection.md"
+      ],
+      "sourceSha256": "f6a5b53f881a16a6ad004fcf4a15e24b3297d44afd995d770da1a8451a85f4b3",
+      "readCoverage": "complete source read",
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# Complete Chakra UI Pro reference review"
+        },
+        {
+          "line": 10,
+          "heading": "## Inventory and completion rule"
+        },
+        {
+          "line": 18,
+          "heading": "## Searchable reference collection"
+        },
+        {
+          "line": 30,
+          "heading": "## Browser and collection method"
+        },
+        {
+          "line": 36,
+          "heading": "## Findings from completed items"
+        },
+        {
+          "line": 38,
+          "heading": "### Navbar With Centered Search"
+        },
+        {
+          "line": 51,
+          "heading": "## How findings affect decisions"
+        },
+        {
+          "line": 65,
+          "heading": "## Resume here"
+        }
+      ],
+      "treatment": "Retain complete source-review counts, persistent private collection pointers and observed limitations. Collection stays outside repository; no licensed source copied. Pagination boundary is resolved by later whole-set approval."
+    },
+    {
+      "source": "notes/alignment/release-0.3.0.md",
+      "targets": [
+        "docs/releases/0.3.0.md"
+      ],
+      "sourceSha256": "8a8c0844fb60b5abf3e886f346ad91df38401503e7f4e1c15fb450375179b00a",
+      "readCoverage": "complete source read",
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# Release 0.3.0"
+        },
+        {
+          "line": 5,
+          "heading": "## Current state"
+        },
+        {
+          "line": 9,
+          "heading": "## Historical state when recovery began"
+        },
+        {
+          "line": 20,
+          "heading": "## Intended sequence"
+        },
+        {
+          "line": 24,
+          "heading": "## First Linux run"
+        },
+        {
+          "line": 28,
+          "heading": "## Publication prerequisites verified from npm documentation"
+        },
+        {
+          "line": 38,
+          "heading": "## Second Linux run"
+        },
+        {
+          "line": 42,
+          "heading": "## Third Linux run"
+        },
+        {
+          "line": 46,
+          "heading": "## Handoff awaiting npm authentication"
+        },
+        {
+          "line": 56,
+          "heading": "## Authentication clarification — 2026-10-20"
+        },
+        {
+          "line": 68,
+          "heading": "### Authenticated first-publication preparation"
+        },
+        {
+          "line": 78,
+          "heading": "### Dependency audit correction"
+        },
+        {
+          "line": 92,
+          "heading": "### Verified merge and tag"
+        },
+        {
+          "line": 102,
+          "heading": "### Signed archives verified; first publication awaiting npm check"
+        },
+        {
+          "line": 110,
+          "heading": "### React package creation did not confirm version publication"
+        },
+        {
+          "line": 118,
+          "heading": "### Explicit staging succeeds; React waits on automated review"
+        },
+        {
+          "line": 128,
+          "heading": "### Companion publisher setup timing"
+        },
+        {
+          "line": 136,
+          "heading": "### React review completes; coordinated publication starts"
+        },
+        {
+          "line": 142,
+          "heading": "### Registry confirmation follow-up"
+        },
+        {
+          "line": 152,
+          "heading": "### Core registry rejection: too many files"
+        }
+      ],
+      "treatment": "Incomplete core publication is historical; companions published. Preserve exact run/tag/archive identities, registry failures and later corrections. No authorization/authentication command is active."
+    },
+    {
+      "source": "notes/alignment/release-0.3.1.md",
+      "targets": [
+        "docs/releases/0.3.1.md"
+      ],
+      "sourceSha256": "4535e3b388ecd2699d832d54a432954362ec2bd8821711977c76154fb9c5d61a",
+      "readCoverage": "complete source read",
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# Release 0.3.1 recovery"
+        },
+        {
+          "line": 5,
+          "heading": "## Current state"
+        },
+        {
+          "line": 9,
+          "heading": "## Historical delivery finding"
+        },
+        {
+          "line": 21,
+          "heading": "## Release record"
+        },
+        {
+          "line": 61,
+          "heading": "## Work sequence"
+        },
+        {
+          "line": 82,
+          "heading": "## Publication handoff"
+        },
+        {
+          "line": 96,
+          "heading": "## Upstream license records"
+        }
+      ],
+      "treatment": "Published prerelease superseded by0.3.2. Preserve declaration-order reproducibility, staged-review history and development-runtime finding. Old live sessions and deploy commands are historical."
+    },
+    {
+      "source": "notes/alignment/release-0.3.2.md",
+      "targets": [
+        "docs/releases/0.3.2.md"
+      ],
+      "sourceSha256": "272afd0059930cd63804b392b2fa7207aa572e69484ffc60c512293f5e64880e",
+      "readCoverage": "complete source read",
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# Release 0.3.2 production build correction"
+        },
+        {
+          "line": 5,
+          "heading": "## Current state"
+        },
+        {
+          "line": 16,
+          "heading": "## Release record"
+        },
+        {
+          "line": 55,
+          "heading": "## Final closure"
+        },
+        {
+          "line": 65,
+          "heading": "## Completed release sequence"
+        },
+        {
+          "line": 74,
+          "heading": "## Evidence and limits"
+        }
+      ],
+      "treatment": "Automated release closure remains verified at named revisions. Later records commit has one red Hover Card check. Preserve manual platform and token-rotation limits. No release action/authentication remains pending."
+    },
+    {
+      "source": "notes/alignment/remaining-work.md",
+      "targets": [
+        "tasks/done/systematization/review-queue.md"
+      ],
+      "sourceSha256": "c534d15b468befa969ca72df491a817bff39d9d7403d52a202f58def4b7f0525",
+      "readCoverage": "complete source read",
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# Remaining work and component review queue"
+        },
+        {
+          "line": 5,
+          "heading": "## Where completion stands"
+        },
+        {
+          "line": 20,
+          "heading": "## Phase 4 proposal groups"
+        },
+        {
+          "line": 40,
+          "heading": "## Current review sequence"
+        },
+        {
+          "line": 48,
+          "heading": "## Engineering work owned by the agent"
+        },
+        {
+          "line": 61,
+          "heading": "## Remaining execution"
+        },
+        {
+          "line": 79,
+          "heading": "## Progress reporting"
+        },
+        {
+          "line": 83,
+          "heading": "## Added verification return points — 2026-09-23"
+        },
+        {
+          "line": 88,
+          "heading": "### M26 public attribute default audit — 2026-09-23"
+        },
+        {
+          "line": 92,
+          "heading": "### M25 documentation coverage gate — 2026-09-23"
+        },
+        {
+          "line": 96,
+          "heading": "### M22/M25/M26 durable browser and platform acceptance — 2026-09-23"
+        },
+        {
+          "line": 100,
+          "heading": "### M25 dependency and consumer gates — 2026-09-23"
+        }
+      ],
+      "treatment": "Completed review/implementation queue moves to completed tasks. Actual Safari, assistive technology, OS input/autofill/background checks remain open issues. Audit review deadline and type/browser regressions remain applicable verification constraints."
+    },
+    {
+      "source": "notes/conventions.md",
+      "targets": [
+        "docs/development/interfaces.md"
+      ],
+      "sourceSha256": "4e39e035ef6e48b24e8158e239d47d2c47e63cd73af908b45f7cec0adeac4409",
+      "readCoverage": "complete source read",
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# Approved interface conventions"
+        }
+      ],
+      "treatment": "Current normative navigation only; retarget to new specification owners. Do not duplicate their tables or reopen approved interface decisions."
+    }
+  ]
+}

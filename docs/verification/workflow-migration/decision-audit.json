@@ -1,0 +1,2895 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-21",
+  "scope": "Task2 decision classification; no decision documents converted yet",
+  "numbering": "Stable identifiers allocated by source-path order; numbers do not assert decision chronology",
+  "sourceCount": 115,
+  "records": [
+    {
+      "source": "notes/decisions/additional-component-capabilities.md",
+      "target": "docs/decisions/0001-additional-component-capabilities.md",
+      "sourceSha256": "30b8da5075c88b18bb432aa03851593ca5236d58cb75a05a58783031afeb065e",
+      "title": "Include Accordion, Show, Hover Card and suitable as support",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter.",
+        "Decided 2026-09-20 by Peter: Text supports p, span and div, with p remaining the default. This adds a generic text block alongside paragraphs and inline phrases. Heading and Field retain their heading and form-label responsibilities. Radix's Text API supplies a comparison, not its complete tag set or default: the house does not add label through this choice.",
+        "Decided 2026-09-20 by Peter: Flex, Stack/HStack/VStack, Grid, Simple Grid and Group share Box's native tag set: div, span, section, article, main, nav, aside, header and footer. The default is div. Peter selected “Share Box’s set (Recommended)” over limiting these layouts to div/span and adding a separate structural container."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Include Accordion, Show, Hover Card and suitable as support"
+        },
+        {
+          "line": 12,
+          "heading": "## Primitive tag sets and typography defaults"
+        },
+        {
+          "line": 20,
+          "heading": "## Text tag set and standard accessible naming"
+        },
+        {
+          "line": 32,
+          "heading": "## Shared structural tags for layout components"
+        },
+        {
+          "line": 40,
+          "heading": "## Structural semantic forwarding implementation — 2026-09-21"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/agent-skills-workflow.md",
+      "target": "docs/decisions/0002-agent-skills-workflow.md",
+      "sourceSha256": "c8397bc6b41ed4b09a70e273521d9834476c93ce9d32f078b6cbd917f6caf84e",
+      "title": "Use Agent Skills throughout the remaining systematization pass",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter.",
+        "Decided 2026-09-20 by Peter: consolidate existing decisions and evidence into complete component proposals, let the agent resolve routine engineering details, and reserve questions for consequential choices in the context of those proposals. Peter approved this correction after objecting that the prolonged foundation/helper discussion was not producing visible phase-level progress.",
+        "Decided 2026-09-20 by Peter: put every remaining proposal together first, apply the established references, and then review only actual unresolved questions. This supersedes the prior sequence of preparing one family and repeatedly stopping for its smaller decisions. Peter explicitly described that sequence as painful."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Use Agent Skills throughout the remaining systematization pass"
+        },
+        {
+          "line": 13,
+          "heading": "## Complete replacements and current documentation"
+        },
+        {
+          "line": 19,
+          "heading": "## Complete component proposals and visible progress"
+        },
+        {
+          "line": 29,
+          "heading": "## Assemble the whole proposal set before the next decision walk"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "superseded workflow; compatible product decisions retained",
+      "note": "Retire notes-path ownership, old phase approval cadence, blanket project-over-plugin clauses and obsolete installed-version claims. Preserve the dated adoption decision and compatible complete-replacement/evidence principles only in their assigned current owners."
+    },
+    {
+      "source": "notes/decisions/ai-authoring-scope.md",
+      "target": "docs/decisions/0003-ai-authoring-scope.md",
+      "sourceSha256": "ef66062958aa22486f6e39ac9fec48ab29fefdfb2aee578af7a7e66e8c52d797",
+      "title": "Keep AI support focused on artifact authoring in this pass",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Keep AI support focused on artifact authoring in this pass"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/animation-package.md",
+      "target": "docs/decisions/0004-animation-package.md",
+      "sourceSha256": "aed28929ff9b2f4f4e46c9589e77da19ce854e2b18ba888d60227d0fc1b7ac5f",
+      "title": "Retain Lit Motion for the systematization pass",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Retain Lit Motion for the systematization pass"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/app-bar.md",
+      "target": "docs/decisions/0005-app-bar.md",
+      "sourceSha256": "9231a943bcad322140cb2cba4f87e7e64c39daaf2f5b0c4cc49cd2ce07c19a4c",
+      "title": "Consolidate Appbar and Topbar into App Bar",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Consolidate Appbar and Topbar into App Bar"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/avatar-group.md",
+      "target": "docs/decisions/0006-avatar-group.md",
+      "sourceSha256": "400545723fe74d2cd1aaf8418f9f7190baeebef62fb050e16ec43ae3dd77a020",
+      "title": "Keep Avatar Group for member limits and remaining counts",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Keep Avatar Group for member limits and remaining counts"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/bidirectional-support.md",
+      "target": "docs/decisions/0007-bidirectional-support.md",
+      "sourceSha256": "5eb275d47eabf643bd45fcd59fa9f2b827b9ec6c2f9c3cc0bb3f5fa26625c61c",
+      "title": "Support both reading directions",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Support both reading directions"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/blue-accent.md",
+      "target": "docs/decisions/0008-blue-accent.md",
+      "sourceSha256": "5ade83f28e24ac6352f975e4cef80097cf9dedbbcccf7cd01b43f07e8ff04def",
+      "title": "Make blue the default accent for relevant controls",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Make blue the default accent for relevant controls"
+        },
+        {
+          "line": 13,
+          "heading": "## Contrast direction selected after visual comparison"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/box-primitive.md",
+      "target": "docs/decisions/0009-box-primitive.md",
+      "sourceSha256": "e1e276f6046048ef977ed8388dd7ecad64e18cc5e154d31bd901fa485e01efdc",
+      "title": "Add Box to the planned primitives",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter.",
+        "Decided 2026-09-20 by Peter: Box supports as=\"span\" for styling inline content alongside its block structural-container uses. Text retains typography responsibility. Radix Box supports div/span; the complete Pro source comparison also shows structural containers, but its arbitrary React substitutions are not the house contract.",
+        "Decided 2026-09-20 by Peter: Box supports div, span, section, article, main, nav, aside, header and footer, with div as its default. Forms, lists and tables retain their native HTML or dedicated components. This completes Box's native tag set; it does not allow arbitrary React substitutions or asChild."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Add Box to the planned primitives"
+        },
+        {
+          "line": 13,
+          "heading": "## Focused styling interface"
+        },
+        {
+          "line": 21,
+          "heading": "## Inline content"
+        },
+        {
+          "line": 27,
+          "heading": "## Native tags and default display"
+        },
+        {
+          "line": 33,
+          "heading": "## Parent placement and visual values"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/browser-distribution-package.md",
+      "target": "docs/decisions/0010-browser-distribution-package.md",
+      "sourceSha256": "3e9a3bfde9239405bd08cd7c5b0d39e19aacf7bf39061a1f01b9c9789501c4ea",
+      "title": "Separate package modules from browser delivery",
+      "decisionAttribution": [
+        "Decided 2026-10-20 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Separate package modules from browser delivery"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted with dated release recovery",
+      "note": "Keep shared source/runtime, five-package ownership and 60000-entry archive budget. Projected file counts and 0.3.1 recovery are dated; current released version0.3.2 does not rewrite their provenance."
+    },
+    {
+      "source": "notes/decisions/browser-verification.md",
+      "target": "docs/decisions/0011-browser-verification.md",
+      "sourceSha256": "ede370f708cca348044eb2a6b5cc776ff6e058492fa48dc7dcff0f101e250a9f",
+      "title": "Require verification across three browser engines",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Require verification across three browser engines"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/canonical-card.md",
+      "target": "docs/decisions/0012-canonical-card.md",
+      "sourceSha256": "5a812b27fa25bde782530de61133f0e2f7c7a8b5e236d872913d8b02c0ebbd56",
+      "title": "Use one flexible Card for related-content surfaces",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Use one flexible Card for related-content surfaces"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/combobox-long-labels.md",
+      "target": "docs/decisions/0013-combobox-long-labels.md",
+      "sourceSha256": "45294d625837380b94955ad340923fcfd03a7dfb4b00c9ed5b0f536f608caffa",
+      "title": "Wrap complete names in multi-line ComboBox options",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Wrap complete names in multi-line ComboBox options"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/component-language.md",
+      "target": "docs/decisions/0014-component-language.md",
+      "sourceSha256": "e8708120501d05d14f7c676649855bcbc698ab1f2882a8a4ab76a56bf6e4e052",
+      "title": "Use component names directly",
+      "decisionAttribution": [
+        "Decided 2026-09-22 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Use component names directly"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/component-removals.md",
+      "target": "docs/decisions/0015-component-removals.md",
+      "sourceSha256": "5021603ed28a5495c560990826ce83ee6d8e67636b4f4ff12be1050b07af06d4",
+      "title": "Remove the listed specialised components",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Remove the listed specialised components"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/compose-the-copy-button.md",
+      "target": "docs/decisions/0016-compose-the-copy-button.md",
+      "sourceSha256": "fb2f22f8ddb8e99b3fce6c58d643fb348420e5cd2e2dbc2f7eee084029c6286e",
+      "title": "One copy button, composed, not four",
+      "decisionAttribution": [
+        "Decided 2026-09-10 by Peter, who noticed that code-block builds its own button instead of using"
+      ],
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# One copy button, composed, not four"
+        },
+        {
+          "line": 6,
+          "heading": "## The decision"
+        },
+        {
+          "line": 11,
+          "heading": "## What was there"
+        },
+        {
+          "line": 24,
+          "heading": "## The evidence that composing is also parity"
+        },
+        {
+          "line": 38,
+          "heading": "## What raised it"
+        },
+        {
+          "line": 53,
+          "heading": "## The narrower fix that was not taken"
+        },
+        {
+          "line": 65,
+          "heading": "## What would change this"
+        },
+        {
+          "line": 72,
+          "heading": "## Where this landed (2026-09-10)"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/compose-the-language-switcher.md",
+      "target": "docs/decisions/0017-compose-the-language-switcher.md",
+      "sourceSha256": "ede1e6d2c09e4dcfe12d29043b7d7203134301a9393a908650410187d6031fd5",
+      "title": "The code block's language switcher composes our own elements",
+      "decisionAttribution": [
+        "Decided 2026-09-10 by Peter, who asked why the switcher is not our select and the language tabs",
+        "Decided 2026-09-10 by Peter, who asked for a size below small on the select and for space in the"
+      ],
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# The code block's language switcher composes our own elements"
+        },
+        {
+          "line": 6,
+          "heading": "## The decision"
+        },
+        {
+          "line": 11,
+          "heading": "## What was there"
+        },
+        {
+          "line": 21,
+          "heading": "## Why this is not the same question as parity"
+        },
+        {
+          "line": 37,
+          "heading": "## What it costs"
+        },
+        {
+          "line": 43,
+          "heading": "## The defect this introduced, and its fix"
+        },
+        {
+          "line": 53,
+          "heading": "## What was removed, not deprecated"
+        },
+        {
+          "line": 60,
+          "heading": "## Three rendering defects the first version shipped, all found by Peter in the browser"
+        },
+        {
+          "line": 75,
+          "heading": "## The tiny size tier"
+        },
+        {
+          "line": 99,
+          "heading": "## The two spacing gaps"
+        },
+        {
+          "line": 106,
+          "heading": "## A third unmapping, for the same reason as the switch"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/composition-over-count.md",
+      "target": "docs/decisions/0018-composition-over-count.md",
+      "sourceSha256": "ae6025bec0cf68ef9e25aed84b1f3d2267914cbfc33f4599d68284b9a19b73a0",
+      "title": "Elements earn their place through capability",
+      "decisionAttribution": [
+        "Decided 2026-09-10 by Peter; recorded 2026-09-19 from the systematization plan."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Elements earn their place through capability"
+        },
+        {
+          "line": 11,
+          "heading": "## Qualification accepted on 2026-09-19"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/consumer-skills.md",
+      "target": "docs/decisions/0019-consumer-skills.md",
+      "sourceSha256": "5f0d840f5fc9645f8d4fc660309312aa4cd961242419017ffd2fef2f29a23f14",
+      "title": "Ship versioned consumer skills",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Ship versioned consumer skills"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/core-workspace.md",
+      "target": "docs/decisions/0020-core-workspace.md",
+      "sourceSha256": "1229412fff1b434e76ac21b07feadaedd89adfe4011f8230c00fabc040ad0889",
+      "title": "Give the published core package its own workspace",
+      "decisionAttribution": [
+        "Decided 2026-09-26 under Peter's delegated execution authority."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Give the published core package its own workspace"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/custom-elements-manifest.md",
+      "target": "docs/decisions/0021-custom-elements-manifest.md",
+      "sourceSha256": "9a185067e04d3cba7a33cc944dabe538ce8d7edbf0bf560b9a682186e7645bb1",
+      "title": "Generate the component manifest with the standard analyzer",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Generate the component manifest with the standard analyzer"
+        },
+        {
+          "line": 13,
+          "heading": "## Bounded source and package verification"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/custom-themes.md",
+      "target": "docs/decisions/0022-custom-themes.md",
+      "sourceSha256": "0f7686a89241fa155c90eba80e97fd9bd1e0e412c8f1957234b181691aee0ad6",
+      "title": "Support full visual themes on pages and sections",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Support full visual themes on pages and sections"
+        },
+        {
+          "line": 15,
+          "heading": "## Canonical fonts and full-color consumers, 2026-09-21"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/data-list.md",
+      "target": "docs/decisions/0023-data-list.md",
+      "sourceSha256": "6874d6f41d4df9fb2b8985a5ed66cdde19b676a6c44cd51ef6f2e21c131a0dc3",
+      "title": "Replace Description with Data List",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Replace Description with Data List"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/demo-margin-ownership.md",
+      "target": "docs/decisions/0024-demo-margin-ownership.md",
+      "sourceSha256": "ea782b093cbea19a423c49fe9716690bb02c31c1d4631863718dea20f960b6a1",
+      "title": "The docs harness owns the space around a demo, not the element",
+      "decisionAttribution": [
+        "Decided 2026-09-10 by Peter, who saw more vertical space around our code block than the reference's"
+      ],
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# The docs harness owns the space around a demo, not the element"
+        },
+        {
+          "line": 6,
+          "heading": "## What is actually true, measured on the live reference"
+        },
+        {
+          "line": 27,
+          "heading": "## The decision"
+        },
+        {
+          "line": 37,
+          "heading": "## Why a custom property, and not a rule on the preview"
+        },
+        {
+          "line": 47,
+          "heading": "## The general rule this establishes"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/density.md",
+      "target": "docs/decisions/0025-density.md",
+      "sourceSha256": "bc4a13136e3772132d9e3d67351c6a98dbbd5775d90f8b6632018c4bdd89dbca",
+      "title": "Share density settings across pages and sections",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter.",
+        "Decided 2026-09-20 by Peter through “I approve all proposals.”"
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Share density settings across pages and sections"
+        },
+        {
+          "line": 15,
+          "heading": "## Approved compact treatment"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/design-system-devtools.md",
+      "target": "docs/decisions/0026-design-system-devtools.md",
+      "sourceSha256": "b1e2a15645c77d384ecd33e2b5c313c8abb832e885db387b4d601859db0ec7b0",
+      "title": "Build a shared inspector using TanStack Devtools",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter.",
+        "Decided 2026-09-20 by Peter through “I approve all proposals.”"
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Build a shared inspector using TanStack Devtools"
+        },
+        {
+          "line": 15,
+          "heading": "## Controlled styling input dependency"
+        },
+        {
+          "line": 19,
+          "heading": "## Approved read-only scope"
+        },
+        {
+          "line": 27,
+          "heading": "## Scoped TanStack Devtools UI — 2026-09-26"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/design-system-mcp.md",
+      "target": "docs/decisions/0027-design-system-mcp.md",
+      "sourceSha256": "da2c2510e38b95a79945e3d329d47333c3dc1c62f884c8ea092d431591721341",
+      "title": "Provide a design-system documentation MCP server",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Provide a design-system documentation MCP server"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/dialog-components.md",
+      "target": "docs/decisions/0028-dialog-components.md",
+      "sourceSha256": "b6d4924b7b309750ec192e36467fa4d8780face0747d6d3bbd57f126e74a9324",
+      "title": "Provide Dialog and Alert Dialog with shared behaviour",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Provide Dialog and Alert Dialog with shared behaviour"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/disclosure-components.md",
+      "target": "docs/decisions/0029-disclosure-components.md",
+      "sourceSha256": "cd64366126bcf9362a7d98d91ebc6bf85774c9a4504664261736a32423714372",
+      "title": "Provide Accordion and Collapsible",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Provide Accordion and Collapsible"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/documentation-publishing.md",
+      "target": "docs/decisions/0030-documentation-publishing.md",
+      "sourceSha256": "e6a0eda4e45c100c046516d4c3adc061619ecd5e16a164ae42b47e87db6e20e5",
+      "title": "Build the documentation website in its publishing workflow",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Build the documentation website in its publishing workflow"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted and implemented; legacy Pages settings historical",
+      "note": "Legacy main/docs settings are the dated research baseline. Current authored site/ and output _site/ plus workflow publication are verified separately."
+    },
+    {
+      "source": "notes/decisions/dots-menu-composition.md",
+      "target": "docs/decisions/0031-dots-menu-composition.md",
+      "sourceSha256": "1f65c0658aa6c5241ce6db1fea55520c3acdc7d8b6ce5a99fcc39b820b914d80",
+      "title": "Replace Dots Menu with Menu and Icon Button",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Replace Dots Menu with Menu and Icon Button"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/empty-state-component.md",
+      "target": "docs/decisions/0032-empty-state-component.md",
+      "sourceSha256": "e625160d3abdf541184acc0d12cd46266ef4a2093e84e9854732c58b9254486d",
+      "title": "Keep Empty State for a consistent absent-content structure",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Keep Empty State for a consistent absent-content structure"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/event-vocabulary.md",
+      "target": "docs/decisions/0033-event-vocabulary.md",
+      "sourceSha256": "75c22e6cbeb2626bde2111b2c4839db35ccba0345754ea3f5ed2595fb3e36144",
+      "title": "Use shared meaning-based event names",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Use shared meaning-based event names"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/evidence-and-implementation-quality.md",
+      "target": "docs/decisions/0034-evidence-and-implementation-quality.md",
+      "sourceSha256": "750a908638f4a75e67bee3b0b3bace752c02e928a3c064e718698e32d9407a80",
+      "title": "Base recommendations on evidence and implementation quality",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Base recommendations on evidence and implementation quality"
+        },
+        {
+          "line": 9,
+          "heading": "## Required method"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/execution-delegation.md",
+      "target": "docs/decisions/0035-execution-delegation.md",
+      "sourceSha256": "047be0d1be11f2a17a53ac86e24f461b538c139d8ec43dff32c19914d733ef4a",
+      "title": "Finish the approved migration without further decision questions",
+      "decisionAttribution": [
+        "Decided 2026-09-21 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Finish the approved migration without further decision questions"
+        },
+        {
+          "line": 11,
+          "heading": "## Default-true property attributes — 2026-09-21"
+        },
+        {
+          "line": 17,
+          "heading": "## Typography implementation resolutions — 2026-09-21"
+        },
+        {
+          "line": 27,
+          "heading": "## Activity presentation — 2026-09-21"
+        },
+        {
+          "line": 33,
+          "heading": "## Native action implementation — 2026-09-21"
+        },
+        {
+          "line": 39,
+          "heading": "## Identity implementation resolutions — 2026-09-21"
+        },
+        {
+          "line": 47,
+          "heading": "## Selection card action region — 2026-09-21"
+        },
+        {
+          "line": 51,
+          "heading": "## Selection notification boundaries — 2026-09-21"
+        },
+        {
+          "line": 55,
+          "heading": "## Logical collection appearance defaults — 2026-09-21"
+        },
+        {
+          "line": 59,
+          "heading": "## Private indicator delivery and spring mapping — 2026-09-21"
+        },
+        {
+          "line": 65,
+          "heading": "## Segmented and binary selection details — 2026-09-21"
+        },
+        {
+          "line": 71,
+          "heading": "## Tabs relationship and mounting details — 2026-09-21"
+        },
+        {
+          "line": 77,
+          "heading": "## Native container boundary for Fieldset — 2026-09-22"
+        },
+        {
+          "line": 83,
+          "heading": "## Field association details — 2026-09-22"
+        },
+        {
+          "line": 89,
+          "heading": "## Text control implementation details — 2026-09-22"
+        },
+        {
+          "line": 95,
+          "heading": "## Number Input format and action boundaries — 2026-09-22"
+        },
+        {
+          "line": 101,
+          "heading": "## Menu navigation policy — 2026-09-22"
+        },
+        {
+          "line": 105,
+          "heading": "## Menu composition and completion — 2026-09-22"
+        },
+        {
+          "line": 114,
+          "heading": "## Selection trigger ownership — 2026-09-22"
+        },
+        {
+          "line": 119,
+          "heading": "## Ranked option projection — 2026-09-22"
+        },
+        {
+          "line": 126,
+          "heading": "## Slider native label contract — 2026-09-22"
+        },
+        {
+          "line": 131,
+          "heading": "## Calendar date runtime correction — 2026-09-22"
+        },
+        {
+          "line": 136,
+          "heading": "## Slider value and completion behavior — 2026-09-22"
+        },
+        {
+          "line": 141,
+          "heading": "## Native modal focus containment — 2026-09-22"
+        },
+        {
+          "line": 145,
+          "heading": "## Explicit logical Inset edges — 2026-09-23"
+        },
+        {
+          "line": 149,
+          "heading": "## Resizable handle boundaries — 2026-09-23"
+        }
+      ],
+      "reviewedBy": "workflow_rules: full source read and rule matrix",
+      "status": "mixed: completed authorization and product implementation resolutions",
+      "note": "Delegated full read and rule audit in rule-audit-input.md. Retire the standing-looking permission grant; preserve later product resolutions and their evidence. It cannot authorize unrelated future work."
+    },
+    {
+      "source": "notes/decisions/feedback-component.md",
+      "target": "docs/decisions/0036-feedback-component.md",
+      "sourceSha256": "57117433a96c845658bc7a18d69a96d8923f5ddaef72aaf6c38ea58b042df942",
+      "title": "Keep Feedback as a component with composed examples",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Keep Feedback as a component with composed examples"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/field-component.md",
+      "target": "docs/decisions/0037-field-component.md",
+      "sourceSha256": "e432bbed16ee2429e3631b3995132224be6531b5fb39ed8b8e97c971b27679c8",
+      "title": "Add a shared Field component",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Add a shared Field component"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/fieldset-form-group.md",
+      "target": "docs/decisions/0038-fieldset-form-group.md",
+      "sourceSha256": "9915fb6ed6e69bc99f818ba3aff48e0a38f6f1716802714f82cce572b21a3e6c",
+      "title": "Rebuild Fieldset for form grouping",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Rebuild Fieldset for form grouping"
+        },
+        {
+          "line": 9,
+          "heading": "## Compatibility and remaining work"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/floating-surface-shadows.md",
+      "target": "docs/decisions/0039-floating-surface-shadows.md",
+      "sourceSha256": "c5077d91d0af906952a5813c67f4d9302637303e267b679b6f70b17bbb3f02df",
+      "title": "Floating surfaces use the Radix Themes shadow scale",
+      "decisionAttribution": [
+        "Decided 2026-09-10 by Peter; recorded 2026-09-19 from the systematization plan."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Floating surfaces use the Radix Themes shadow scale"
+        },
+        {
+          "line": 7,
+          "heading": "## Assignments selected in Phase 1 review"
+        },
+        {
+          "line": 13,
+          "heading": "## Selected role mapping applied to current surfaces"
+        },
+        {
+          "line": 30,
+          "heading": "## Evidence behind the two exceptions"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/flow-diagram.md",
+      "target": "docs/decisions/0040-flow-diagram.md",
+      "sourceSha256": "85ce27871ec09eec716f69a8ab9402202bbdcb581c4aaa3297b7676335125ef3",
+      "title": "Provide an interactive Flow Diagram using ELK",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Provide an interactive Flow Diagram using ELK"
+        },
+        {
+          "line": 13,
+          "heading": "## Evidence and limits"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/focus-ring-ownership.md",
+      "target": "docs/decisions/0041-focus-ring-ownership.md",
+      "sourceSha256": "d095574bed7beab266280ae09fa935c736cf3d8ecbeeecac306952d911652c08",
+      "title": "Every element draws its own focus ring",
+      "decisionAttribution": [
+        "Decided 2026-09-10 by Peter, on the evidence below."
+      ],
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# Every element draws its own focus ring"
+        },
+        {
+          "line": 5,
+          "heading": "## The decision"
+        },
+        {
+          "line": 20,
+          "heading": "## Why"
+        },
+        {
+          "line": 37,
+          "heading": "## What it also fixed"
+        },
+        {
+          "line": 47,
+          "heading": "## The cost, and how it was paid"
+        },
+        {
+          "line": 52,
+          "heading": "## What would change this"
+        },
+        {
+          "line": 58,
+          "heading": "## The sweep"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/format-components.md",
+      "target": "docs/decisions/0042-format-components.md",
+      "sourceSha256": "aa7fc86dc69467e912a67717c67d4a2b99ac3d200f90e1209aee57dc37e3130d",
+      "title": "Add FormatNumber and FormatByte with numeric values",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Add FormatNumber and FormatByte with numeric values"
+        },
+        {
+          "line": 13,
+          "heading": "## Implementation and binary-unit data — 2026-09-21"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/general-tree-view.md",
+      "target": "docs/decisions/0043-general-tree-view.md",
+      "sourceSha256": "644c9b8bc1b7644eeb232e81c08a7c86eb8e4765cc8f3b808ce56b55e08c979a",
+      "title": "Generalise File Tree into Tree View",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter.",
+        "Decided 2026-09-20 by Peter through “I approve all proposals.”"
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Generalise File Tree into Tree View"
+        },
+        {
+          "line": 19,
+          "heading": "## Approved core scope"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/generated-style-location.md",
+      "target": "docs/decisions/0044-generated-style-location.md",
+      "sourceSha256": "572e18d5abddca251d57b7fe42679b3d9e28b008f0947dba9da1dd4e5c22916d",
+      "title": "Separate generated styles from authored component code",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Separate generated styles from authored component code"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/group-presentation.md",
+      "target": "docs/decisions/0045-group-presentation.md",
+      "sourceSha256": "4eada632aec2c745e50d88b53f28dade966f9ccabc3c54bf8524e6895c95d35a",
+      "title": "Use Group for shared arrangement and appearance defaults",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Use Group for shared arrangement and appearance defaults"
+        },
+        {
+          "line": 11,
+          "heading": "## Visual directions to evaluate in the inventory"
+        },
+        {
+          "line": 17,
+          "heading": "## Remaining contract"
+        },
+        {
+          "line": 25,
+          "heading": "## Ordinary layout and Tags"
+        },
+        {
+          "line": 33,
+          "heading": "## Phase 4 wrapping and nested defaults"
+        },
+        {
+          "line": 43,
+          "heading": "## Foundation implementation — 2026-09-21"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/icon-element-shape.md",
+      "target": "docs/decisions/0046-icon-element-shape.md",
+      "sourceSha256": "fc28bdfa0f4b4dc01c3fae68351d8cc21160e2564496df57e6b6677f42a7d527",
+      "title": "Give each icon its own element",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Give each icon its own element"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/input-affix-api.md",
+      "target": "docs/decisions/0047-input-affix-api.md",
+      "sourceSha256": "ebd176f62107ac3d6b9f789dc5a26de813f663f478b5aa3b746da3e2203bf7ff",
+      "title": "Prefix and suffix are two named treatments, not one concept with booleans",
+      "decisionAttribution": [
+        "Decided 2026-09-10 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# Prefix and suffix are two named treatments, not one concept with booleans"
+        },
+        {
+          "line": 5,
+          "heading": "## The decision"
+        },
+        {
+          "line": 35,
+          "heading": "## The names"
+        },
+        {
+          "line": 57,
+          "heading": "## What it replaces"
+        },
+        {
+          "line": 71,
+          "heading": "## Why the old shape existed, and why that is not a defence"
+        },
+        {
+          "line": 82,
+          "heading": "## The evidence"
+        },
+        {
+          "line": 112,
+          "heading": "## It also dissolved a styling problem"
+        },
+        {
+          "line": 127,
+          "heading": "## Select takes the same convention"
+        },
+        {
+          "line": 138,
+          "heading": "### The chevron is the `end` place's default content"
+        },
+        {
+          "line": 155,
+          "heading": "### What it replaces"
+        },
+        {
+          "line": 162,
+          "heading": "## What was built"
+        },
+        {
+          "line": 181,
+          "heading": "### Both pages reach parity"
+        },
+        {
+          "line": 199,
+          "heading": "### One regression, found and fixed"
+        },
+        {
+          "line": 206,
+          "heading": "## Deferred, deliberately"
+        },
+        {
+          "line": 213,
+          "heading": "## What would change this"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted distinctions with dated implementation evidence",
+      "note": "Keep inside versus add-on distinction. Date the ecosystem survey and its universal claims; later Group/icon decisions resolve originally deferred topics. Historical Select shapes and API spellings require links to final contracts, not promotion to current examples."
+    },
+    {
+      "source": "notes/decisions/intent-tooling.md",
+      "target": "docs/decisions/0048-intent-tooling.md",
+      "sourceSha256": "22b5d249c2f87af794acc6dd182be032fbfa7595be58717e5dc98ec873da934e",
+      "title": "Use TanStack Intent for consumer-skill tooling",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Use TanStack Intent for consumer-skill tooling"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/inventory-approval.md",
+      "target": "docs/decisions/0049-inventory-approval.md",
+      "sourceSha256": "250b78ee1cb9247f775babb170275eab1f16286e0d9304d448299d0b89c3e7c9",
+      "title": "Approve the complete Phase 4 proposal set",
+      "decisionAttribution": [
+        "Decided 2026-09-20 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Approve the complete Phase 4 proposal set"
+        },
+        {
+          "line": 19,
+          "heading": "## Subsequent migration approval"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "completed design authorization",
+      "note": "Preserve whole-set scope and five selected options. Retire instructions to begin Phase5; actual approval provenance remains relevant to current contracts."
+    },
+    {
+      "source": "notes/decisions/item-content-family.md",
+      "target": "docs/decisions/0050-item-content-family.md",
+      "sourceSha256": "4c19305b9013709f17c9bcbbf77539157a8c10453d04b530f63dc1bc201bbf27",
+      "title": "Keep a focused Item family for content structure",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Keep a focused Item family for content structure"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/layout-grid.md",
+      "target": "docs/decisions/0051-layout-grid.md",
+      "sourceSha256": "4a66f292ea9f6bd0288a37558ca501bd49e7f9e8624ad3d8494c10a65a061001",
+      "title": "Keep layout Grid and Simple Grid only",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Keep layout Grid and Simple Grid only"
+        },
+        {
+          "line": 13,
+          "heading": "## Simple Grid sizing modes"
+        },
+        {
+          "line": 21,
+          "heading": "## Source-defined sizing details"
+        },
+        {
+          "line": 31,
+          "heading": "## Implementation completed — 2026-09-21"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/layout-spacing-properties.md",
+      "target": "docs/decisions/0052-layout-spacing-properties.md",
+      "sourceSha256": "2f30a651bdc6d1f76aeb4a71563802a17f4a4ed0c511dbff72ddd22d809dd43a",
+      "title": "Use numbered spacing tokens and full layout property names",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter.",
+        "Decided 2026-09-20 by Peter: express the default house spacing scale in rem, converting existing values using a 16px reference. Token 2 becomes 0.5rem: 8px at a 16px root font and 10px at a 20px root font. This deliberately makes spacing follow the document root font size without changing font sizes. The separate scale choice below supplies the additional keys.",
+        "Decided 2026-09-20 by Peter: adopt Chakra's 34 documented positive spacing steps, plus zero. The keys are 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80 and 96.",
+        "Decided 2026-09-20 by Peter: accept negative forms of the selected spacing steps for margins and positioning offsets where CSS permits negatives. Derive each negative from the corresponding positive theme value; for example, margin-inline-end=\"-2\" is the negative of spacing token 2. Padding and gap remain nonnegative. Chakra's inspected token middleware uses this derivation, and the Pro invite-link example uses a negative end margin for its copy button. The house's old hardcoded negative variables are not the new implementation contract.",
+        "Decided 2026-09-20 by Peter: an omitted CSS styling property reads undefined. CSS supplies its visual default. An omitted Stack gap therefore reads undefined while displaying spacing step 2 (0.5rem in the default theme); explicitly supplying step 4 makes the property read 4. This applies to CSS styling inputs such as gap and padding. Semantic properties such as open and checked keep their own default contracts.",
+        "Decided 2026-09-20 by Peter: add a Lit authoring helper that receives overlapping styles together in one ordered object. Keep the selected declaration-order behaviour, individual component properties and static HTML attributes. The helper passes values into the existing canonical TanStack-backed properties; it does not introduce a second state owner.",
+        "Decided 2026-09-20 by Peter: the helper manages only the styling settings supplied through it. Clear a previously managed setting when it is removed from the helper input. Leave unrelated independently supplied attributes and properties intact. Keep overlapping settings together in the helper so their relative order is explicit.",
+        "Decided 2026-09-20 by Peter: each parent/template render of the helper reapplies its currently supplied values, even if those inputs have not changed. A direct property write still updates canonical state immediately and works until a later helper render. Persistent changes belong in the helper's input.",
+        "Decided 2026-09-21 by Peter: keep styleInputs present and pass an empty object to clear its remaining owned settings. Peter chose option A, “Explicit clearing”, after the three-engine lifecycle comparison. Removing a key from a later helper input still clears that key. Unrelated settings remain intact, and direct writes remain effective until the next helper render.",
+        "Decided 2026-09-20 by Peter: Box, Flex, Stack/HStack/VStack, Grid, Simple Grid and Group share the focused styling set: spacing, dimensions, positioning, visibility, colors, borders, corners, shadows and placement within a parent layout. Peter chose “Share the set (Recommended)” over reserving surface styling for Box or ordinary CSS.",
+        "Decided 2026-09-20 by Peter: when asked how invalid styling inputs should behave, Peter answered “whatever chakra does”. Follow the inspected Chakra behavior for comparable styling inputs. Do not treat that answer as selection of the proposed “keep valid settings” or “return to defaults” policy."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Use numbered spacing tokens and full layout property names"
+        },
+        {
+          "line": 13,
+          "heading": "## Font-relative house spacing"
+        },
+        {
+          "line": 21,
+          "heading": "## Complete spacing scale"
+        },
+        {
+          "line": 29,
+          "heading": "## Signed spacing and separate size values"
+        },
+        {
+          "line": 37,
+          "heading": "## Declaration order for overlapping properties"
+        },
+        {
+          "line": 47,
+          "heading": "## Omitted styling inputs and visual defaults"
+        },
+        {
+          "line": 61,
+          "heading": "## Lit helper for ordered styling inputs"
+        },
+        {
+          "line": 71,
+          "heading": "## Settings managed by the Lit helper"
+        },
+        {
+          "line": 79,
+          "heading": "## External writes to helper-managed settings"
+        },
+        {
+          "line": 89,
+          "heading": "## Explicit clearing for the style helper"
+        },
+        {
+          "line": 97,
+          "heading": "## Shared styling across layout components"
+        },
+        {
+          "line": 103,
+          "heading": "## Follow Chakra for comparable style inputs"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/lint-toolchain.md",
+      "target": "docs/decisions/0053-lint-toolchain.md",
+      "sourceSha256": "aa03348828e5239b63bd911562ffffd22cd38784200b57ab753413e5e53ba517",
+      "title": "Replace Biome with Oxlint and Oxfmt using Ultracite",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Replace Biome with Oxlint and Oxfmt using Ultracite"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted and implemented; old implementation state historical",
+      "note": "Biome-active/future-migration sentences describe the original decision date. Current repository uses Oxlint/Oxfmt/Ultracite and Stylelint. Preserve warnings about controller removal and CSS coverage as compatible implementation constraints."
+    },
+    {
+      "source": "notes/decisions/list-component.md",
+      "target": "docs/decisions/0054-list-component.md",
+      "sourceSha256": "44582a62cad4b63caafd45160da0e8690cbc7f34972dfc25f277eff9a8cc71c9",
+      "title": "Add a semantic List component",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Add a semantic List component"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/loading-indicators.md",
+      "target": "docs/decisions/0055-loading-indicators.md",
+      "sourceSha256": "9c377a68703b72a7caeca8b54fab807daa1c3e5a800f9b01bfe5b7762795acad",
+      "title": "Remove Loading Dots",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Remove Loading Dots"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/logs-composition.md",
+      "target": "docs/decisions/0056-logs-composition.md",
+      "sourceSha256": "878c008300dac8208c1c118959d854ff337c6ebb5de247d3297716f6f8f92896",
+      "title": "Replace Logs with event-log examples",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Replace Logs with event-log examples"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/maintainer-workflow-migration.md",
+      "target": "docs/decisions/0057-maintainer-workflow-migration.md",
+      "sourceSha256": "8400b2714d62bacd492506e2494f1e49f3573d8269533427742a6ea47c58ba53",
+      "title": "Replace the maintainer workflow with agent-skills and brain",
+      "decisionAttribution": [
+        "Decided 2026-10-21 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Replace the maintainer workflow with agent-skills and brain"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted current migration",
+      "note": "Spec and all three plan-review points approved; local implementation/verified local commits authorized; external actions not authorized."
+    },
+    {
+      "source": "notes/decisions/match-sorter.md",
+      "target": "docs/decisions/0058-match-sorter.md",
+      "sourceSha256": "0a7d94ec715312570ea5532ec700713f809b25fbbbbf7e2f29c9bcd1a9bdf4b1",
+      "title": "Use the published match-sorter package for ComboBox ranking",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Use the published match-sorter package for ComboBox ranking"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/material-motion-system.md",
+      "target": "docs/decisions/0059-material-motion-system.md",
+      "sourceSha256": "93f479519a70baabfeb5f76182b7a56c45abe446fcdd0d00b5fee199542af53e",
+      "title": "Use Material motion roles with both motion schemes",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Use Material motion roles with both motion schemes"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/material-symbols-icons.md",
+      "target": "docs/decisions/0060-material-symbols-icons.md",
+      "sourceSha256": "d5179d3891c087c1613a8eac61e93d39d6d9a387f5b65e7742c3e87a73c8100e",
+      "title": "Use Material Symbols SVG artwork",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Use Material Symbols SVG artwork"
+        },
+        {
+          "line": 17,
+          "heading": "## Pinned baseline catalog — 2026-09-21"
+        },
+        {
+          "line": 25,
+          "heading": "## Entry and configuration delivery — 2026-09-21"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/material-tab-indicator.md",
+      "target": "docs/decisions/0061-material-tab-indicator.md",
+      "sourceSha256": "146e471f100ed84fc008c288f9a6b20f1ffbecb76dc4b15a0036c2cef9723762",
+      "title": "Material primary-tab treatment and the additional Tabs variant",
+      "decisionAttribution": [
+        "Decided 2026-09-10 by Peter; recorded 2026-09-19 from the systematization plan."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Material primary-tab treatment and the additional Tabs variant"
+        },
+        {
+          "line": 13,
+          "heading": "## Additional visual request, 2026-09-19"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/message-context-and-errors.md",
+      "target": "docs/decisions/0062-message-context-and-errors.md",
+      "sourceSha256": "8f796c9b519c2b9e1936c686d6b45d9b6a0de50a41d66bb585e6933c7327ea5d",
+      "title": "Remove standalone Error and place messages by context",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Remove standalone Error and place messages by context"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/meter-component.md",
+      "target": "docs/decisions/0063-meter-component.md",
+      "sourceSha256": "a4d5eb9a8efb430e112efbe1c8221f7ebf1428f9d1870cd937c2ed76cabfc128",
+      "title": "Rename Gauge to Meter",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Rename Gauge to Meter"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/migration-approval.md",
+      "target": "docs/decisions/0064-migration-approval.md",
+      "sourceSha256": "f0def39e1178e7adccfd43833d5d65c11242dc8bec7d3e152ab5234b98aafdc4",
+      "title": "Approve the migration plan and proceed through its gates",
+      "decisionAttribution": [
+        "Decided 2026-09-20 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Approve the migration plan and proceed through its gates"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "completed systematization authorization",
+      "note": "Preserve date/scope of that migration approval, not permission for arbitrary future work."
+    },
+    {
+      "source": "notes/decisions/motion-on-the-book.md",
+      "target": "docs/decisions/0065-motion-on-the-book.md",
+      "sourceSha256": "7d559bde7f12d9e0ab2c5a9895a3b78459f43d6e5d33af4ed08213a54d138cf3",
+      "title": "The book's hover runs on `@lit-labs/motion`",
+      "decisionAttribution": [
+        "Decided 2026-09-10 by Peter, who asked for the package to drive the animation and, when I argued it"
+      ],
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# The book's hover runs on `@lit-labs/motion`"
+        },
+        {
+          "line": 6,
+          "heading": "## What I got wrong, and what the demos settled"
+        },
+        {
+          "line": 19,
+          "heading": "## The shape"
+        },
+        {
+          "line": 39,
+          "heading": "## The snap Peter found, and its cause"
+        },
+        {
+          "line": 62,
+          "heading": "## Verified"
+        },
+        {
+          "line": 69,
+          "heading": "## What this does not settle"
+        },
+        {
+          "line": 80,
+          "heading": "## The gesture is one store, and the frames derive from it (2026-09-10)"
+        },
+        {
+          "line": 121,
+          "heading": "## The final shape, from Peter (2026-09-10)"
+        },
+        {
+          "line": 152,
+          "heading": "### One correction to his version"
+        },
+        {
+          "line": 163,
+          "heading": "## The hitch on hover-in, and where the pointer bindings belong (2026-09-10)"
+        },
+        {
+          "line": 179,
+          "heading": "### The fix, from Peter"
+        },
+        {
+          "line": 205,
+          "heading": "## What the Chrome traces showed (2026-09-10)"
+        },
+        {
+          "line": 210,
+          "heading": "### The first trace measured page load, not the hover"
+        },
+        {
+          "line": 226,
+          "heading": "### The second trace: a 350ms layer commit on hover"
+        },
+        {
+          "line": 241,
+          "heading": "### One reading of mine that was wrong, and how"
+        },
+        {
+          "line": 254,
+          "heading": "### `will-change` is NOT proven to fix it (2026-09-10)"
+        },
+        {
+          "line": 276,
+          "heading": "### Measured in Peter's own Chrome (2026-09-10)"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted package rationale with dated experiments",
+      "note": "Keep all negative findings, later corrections and limits. will-change did useful work but did not prove the reported hitch fixed. Historic selector/controller examples are not current authoritative API guidance."
+    },
+    {
+      "source": "notes/decisions/named-size-vocabulary.md",
+      "target": "docs/decisions/0066-named-size-vocabulary.md",
+      "sourceSha256": "e447812282d1b80368bb2346256146962f6239e262bbdce92547f09facf4dbbe",
+      "title": "Use full words for named sizes",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Use full words for named sizes"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/native-and-managed-forms.md",
+      "target": "docs/decisions/0067-native-and-managed-forms.md",
+      "sourceSha256": "b950dff46dfb1b308c040859c980b9d79868b55f36a23439ffca82bdedf84119",
+      "title": "Keep native forms and make TanStack Form optional",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Keep native forms and make TanStack Form optional"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/native-form-architecture.md",
+      "target": "docs/decisions/0068-native-form-architecture.md",
+      "sourceSha256": "7c1206f41cbbd04ce91bff707d70623260f16a4b292b68a5ab866d45271e0715",
+      "title": "Share native form-control mechanics",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Share native form-control mechanics"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/navigation-compositions.md",
+      "target": "docs/decisions/0069-navigation-compositions.md",
+      "sourceSha256": "a28143e569ae7c5ac198e916de6809e9e2d555f3ead15b2ab9c8b345b9af879b",
+      "title": "Replace Side Nav and Subnav with navigation compositions",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Replace Side Nav and Subnav with navigation compositions"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/non-canonical-elements.md",
+      "target": "docs/decisions/0070-non-canonical-elements.md",
+      "sourceSha256": "1617763d43830671b115ecbd293e06edf32331eabcd8da7a1352a53fb27d8ff7",
+      "title": "Reassess elements added beyond Geist",
+      "decisionAttribution": [
+        "Decided 2026-09-10 by Peter; recorded 2026-09-19 from the systematization plan."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Reassess elements added beyond Geist"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "completed pass disposition method with retained decisions",
+      "note": "Later explicit removals and approved inventory resolve the pending per-element disposition walk. Retire that walk as current procedure."
+    },
+    {
+      "source": "notes/decisions/number-input-behaviour.md",
+      "target": "docs/decisions/0071-number-input-behaviour.md",
+      "sourceSha256": "3bfbd9c6b156844c69100515a44c7f2f580b4df3c5d9101ea5729b81e17b6e92",
+      "title": "Provide formatted Number Input",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Provide formatted Number Input"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/number-utilities.md",
+      "target": "docs/decisions/0072-number-utilities.md",
+      "sourceSha256": "a2da0140e287e9b1b38ef3e551ba72964fe0fce68bfa35dddf048f0caa21e6d9",
+      "title": "Use independent Adobe number utilities",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Use independent Adobe number utilities"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/open-expanded-vocabulary.md",
+      "target": "docs/decisions/0073-open-expanded-vocabulary.md",
+      "sourceSha256": "0cc532412ed08e4a277b8bd356852f6acee6295162fd84eadc2fd5cd2fb7c23a",
+      "title": "Distinguish Open, Expanded and Visible",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Distinguish Open, Expanded and Visible"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/optional-ripples.md",
+      "target": "docs/decisions/0074-optional-ripples.md",
+      "sourceSha256": "3490da618016bc2f3aa45783f4bfd1c1a4aa3fac46797ae89057a91401d98f43",
+      "title": "Keep ripples off by default and allow opt-in",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Keep ripples off by default and allow opt-in"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/overlay-architecture.md",
+      "target": "docs/decisions/0075-overlay-architecture.md",
+      "sourceSha256": "4715d50120a513fa821ce85da52b7d17c99eedf255b2575a1d5aef1ebad448fc",
+      "title": "Compose overlay controllers around native surfaces",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Compose overlay controllers around native surfaces"
+        },
+        {
+          "line": 13,
+          "heading": "## Evidence audit qualification"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/overlay-help-components.md",
+      "target": "docs/decisions/0076-overlay-help-components.md",
+      "sourceSha256": "b9b17c6a571b2be2b1a33476376d2f3ee1d43bc41ebf74c0b86f74fa9ec5067d",
+      "title": "Keep Tooltip, Hover Card and Toggle Tip; remove Context Card",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Keep Tooltip, Hover Card and Toggle Tip; remove Context Card"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/parity-scope.md",
+      "target": "docs/decisions/0077-parity-scope.md",
+      "sourceSha256": "b2798ad5c9507c443a3f5894c8430c68c04f0adfecf3677366ac7822d5d1ed95",
+      "title": "Decided: what parity means, and what it does not",
+      "decisionAttribution": [
+        "Decided by Peter on 2026-09-10. This governs every element. Linked from `PLAN.md`.",
+        "Decided 2026-09-10, on a case the original rule did not anticipate.",
+        "Decided 2026-09-10, on evidence rather than preference. Peter's position was that it is not a priority"
+      ],
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# Decided: what parity means, and what it does not"
+        },
+        {
+          "line": 7,
+          "heading": "## The rule"
+        },
+        {
+          "line": 20,
+          "heading": "## What this means for the public API"
+        },
+        {
+          "line": 37,
+          "heading": "## What stays strictly matched"
+        },
+        {
+          "line": 48,
+          "heading": "## The first case this settled"
+        },
+        {
+          "line": 58,
+          "heading": "## The tie-breaker: consistency wins when it conflicts with familiarity"
+        },
+        {
+          "line": 96,
+          "heading": "## Decided: no right-to-left support, because the reference has none"
+        },
+        {
+          "line": 128,
+          "heading": "## Applying it from here"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "partly superseded",
+      "note": "Exact parity and no-RTL sections are superseded by systematization-goal, bidirectional-support and custom-themes. Preserve the current interface priority order and dated evidence without active port instructions."
+    },
+    {
+      "source": "notes/decisions/pin-input-behaviour.md",
+      "target": "docs/decisions/0078-pin-input-behaviour.md",
+      "sourceSha256": "30f64ff8bc809a33890273503a98ce230f425b44dd85feb319c02f2e9995155a",
+      "title": "Provide a separate-field Pin Input",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Provide a separate-field Pin Input"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/prop-naming-vs-reference.md",
+      "target": "docs/decisions/0079-prop-naming-vs-reference.md",
+      "sourceSha256": "64d9d9dd518df6043674adbc5b98a1d432fe165616aaf3da1c6d911ff306f8bc",
+      "title": "Settled: how literally does \"API identical\" apply to prop names?",
+      "decisionAttribution": [
+        "Raised and settled 2026-09-10. **Decided by [parity-scope.md](parity-scope.md):** parity covers"
+      ],
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# Settled: how literally does \"API identical\" apply to prop names?"
+        },
+        {
+          "line": 11,
+          "heading": "## What was found"
+        },
+        {
+          "line": 33,
+          "heading": "## The reference is not self-consistent"
+        },
+        {
+          "line": 46,
+          "heading": "## Our code today is also mixed"
+        },
+        {
+          "line": 52,
+          "heading": "## The options"
+        },
+        {
+          "line": 62,
+          "heading": "## How it was settled"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "historical evidence for accepted naming",
+      "note": "The final paragraph calls the result option 1, but its explicit final behavior retains variant/type while the enumerated option 1 matches the reference. Correct that editorial cross-reference during conversion without reopening the explicit naming decision."
+    },
+    {
+      "source": "notes/decisions/public-state-bridge.md",
+      "target": "docs/decisions/0080-public-state-bridge.md",
+      "sourceSha256": "4921a4318cf28e0470e175c72e52e1d701bcedc4da68a8d18d71e8abb0c136ce",
+      "title": "Back public state properties with the canonical store",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Back public state properties with the canonical store"
+        },
+        {
+          "line": 9,
+          "heading": "## Evidence audit qualification"
+        },
+        {
+          "line": 17,
+          "heading": "## Canonical ownership clarification"
+        },
+        {
+          "line": 25,
+          "heading": "## Existing house helpers are the baseline"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/react-integration.md",
+      "target": "docs/decisions/0081-react-integration.md",
+      "sourceSha256": "1e879b6cdc8aba7d7a58fe71dbdbf7d614b764c2ab1aef7ff094d4816abcf836",
+      "title": "Publish React support as a separate package",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Publish React support as a separate package"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/reference-systems.md",
+      "target": "docs/decisions/0082-reference-systems.md",
+      "sourceSha256": "43c3553fc4bdcf419999780e9ebee97724e9442ef61bbb7ff31c0a7980fb6779",
+      "title": "Assign each reference system a specific role",
+      "decisionAttribution": [
+        "Decided 2026-09-10 by Peter; recorded 2026-09-19 from the systematization plan.",
+        "Decided 2026-09-19 by Peter as a standing research method: **always read a Material Design 3 component's Overview, Specs and Guidelines tabs in full**. Read every subsection, table and example; include Accessibility when available. Expand relevant specification token sets and inspect measurement diagrams rather than treating the initial collapsed widget or a text-only scrape as the whole specification. Track incomplete extraction, visual-only information and uninspected states explicitly. Continue truncated reads; a navigation shell is not a completed read.",
+        "Decided 2026-09-20 by Peter: when a component or behavior is definitively based on Chakra, Radix or another established reference, inspect that reference and carry the supported behavior into the house contract. Do not ask Peter to choose an answer that the assigned reference already supplies; his instruction is to look there."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Assign each reference system a specific role"
+        },
+        {
+          "line": 17,
+          "heading": "## Chakra UI Pro examples"
+        },
+        {
+          "line": 23,
+          "heading": "## Standing comparison rule"
+        },
+        {
+          "line": 33,
+          "heading": "## Complete Material documentation review"
+        },
+        {
+          "line": 39,
+          "heading": "## Reference evidence and house changes"
+        },
+        {
+          "line": 47,
+          "heading": "## Follow the established reference without another preference question"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/relative-time-component.md",
+      "target": "docs/decisions/0083-relative-time-component.md",
+      "sourceSha256": "b474f4904237dbe8a8cbc52563483b48a4d461c6369da58401e351ba0d039d4f",
+      "title": "Make Relative Time a standalone text component",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Make Relative Time a standalone text component"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/resizable-panes.md",
+      "target": "docs/decisions/0084-resizable-panes.md",
+      "sourceSha256": "eb80e94141bdd37a0a0bb40a24085c401eccd225dadb87ba9195d4662ae96e67",
+      "title": "Provide resizable panes",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Provide resizable panes"
+        },
+        {
+          "line": 9,
+          "heading": "## Collapse and reopening"
+        },
+        {
+          "line": 13,
+          "heading": "## Saving preferences"
+        },
+        {
+          "line": 17,
+          "heading": "## Required corrections and verification"
+        },
+        {
+          "line": 25,
+          "heading": "## Shadcn composition reference"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/responsive-sidebar.md",
+      "target": "docs/decisions/0085-responsive-sidebar.md",
+      "sourceSha256": "dccbb1d7f24031116239dfc17c5d0c28356937875712e629a49ff2381dc1f01c",
+      "title": "Sidebar coordinates responsive panel modes",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Sidebar coordinates responsive panel modes"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/responsive-system.md",
+      "target": "docs/decisions/0086-responsive-system.md",
+      "sourceSha256": "b2d8b8bbc57210db5a20df4f654de774c69c18f88206e4e19534a2e44d7f69a2",
+      "title": "Share responsive values across layout and appearance",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter.",
+        "Decided 2026-09-20 by Peter: each responsive property has one HTML attribute accepting a plain value, a JSON object or a JSON array. For example, columns='{\"compact\":1,\"medium\":2}' or columns='[1,2]'. Lit and React pass the corresponding JavaScript values. Separate attributes for each band/range are not selected. JSON follows Lit's documented object/array conversion and keeps the forms related; correct quoting and brackets are the authoring cost."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Share responsive values across layout and appearance"
+        },
+        {
+          "line": 11,
+          "heading": "## Phase 4 authoring selections"
+        },
+        {
+          "line": 23,
+          "heading": "## HTML format and overlap ordering"
+        },
+        {
+          "line": 35,
+          "heading": "## Native font basis for each query mode"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/results-pagination.md",
+      "target": "docs/decisions/0087-results-pagination.md",
+      "sourceSha256": "ca3c1a52d350eee5ba5b749d86106124efa69e91a7c11d561202598b7034b1ec",
+      "title": "Provide reusable results pagination",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter.",
+        "Decided 2026-09-20 by Peter through “I approve all proposals.”"
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Provide reusable results pagination"
+        },
+        {
+          "line": 13,
+          "heading": "## Review pending after the Chakra UI Pro example"
+        },
+        {
+          "line": 19,
+          "heading": "## Approved coordinated parts"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/rich-help-activation.md",
+      "target": "docs/decisions/0088-rich-help-activation.md",
+      "sourceSha256": "d0faefc3284314ac3b57eda1cce05b1621f1655bdbdb85e4c68db5cdc1a70ef7",
+      "title": "Open interactive rich help by explicit activation",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Open interactive rich help by explicit activation"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/scroll-area-behaviour.md",
+      "target": "docs/decisions/0089-scroll-area-behaviour.md",
+      "sourceSha256": "f30de2825afd3c84a3c1746978c10bf487974a06c012c9aef4da03fb528a33a2",
+      "title": "Use custom scrollbar controls over native scrolling",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter.",
+        "Decided 2026-09-19 by Peter in the later Phase 2 review: one Scroll Area replaces Scroller. Keep useful edge fades and button-driven scrolling available through optional parts or composition, rather than maintaining a separate item-strip scrolling interface. Content layout and TanStack Virtual remain separate responsibilities."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Use custom scrollbar controls over native scrolling"
+        },
+        {
+          "line": 13,
+          "heading": "## Replace Scroller"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/segmented-control.md",
+      "target": "docs/decisions/0090-segmented-control.md",
+      "sourceSha256": "ffcdea0359f5111daab480aaef5d57780823034cf39213d4f4b25d8bbe70c328",
+      "title": "Use radio behaviour for Segmented Control",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Use radio behaviour for Segmented Control"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/selective-component-loading.md",
+      "target": "docs/decisions/0091-selective-component-loading.md",
+      "sourceSha256": "c8bc537a64a54ac17db4ee08777b47ee6298db086752b8f4df6d1a142210e0f1",
+      "title": "Make selective imports the normal artifact-loading path",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Make selective imports the normal artifact-loading path"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/server-rendering.md",
+      "target": "docs/decisions/0092-server-rendering.md",
+      "sourceSha256": "4272838ce5687776594f139c18308f82ea950de23933786d23f7c2a5d2a04726",
+      "title": "Exclude server-side rendering",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Exclude server-side rendering"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/settings-row-composition.md",
+      "target": "docs/decisions/0093-settings-row-composition.md",
+      "sourceSha256": "5f85ab74f18f6e094191fc5441e2de7562585d4ebfe8328602a00208218d2326",
+      "title": "Replace settings rows with Field and Item recipes",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Replace settings rows with Field and Item recipes"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/shape-support.md",
+      "target": "docs/decisions/0094-shape-support.md",
+      "sourceSha256": "8700572955892ba54c8482ee499f5d381c4224d602bc3c4b647a61b47dd2fa56",
+      "title": "Shape morphing follows demonstrated component needs",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Shape morphing follows demonstrated component needs"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/shape-vocabulary.md",
+      "target": "docs/decisions/0095-shape-vocabulary.md",
+      "sourceSha256": "eaa0e37c6d177e592ea91ed48de57de78aceee5827a66019a4687065a0419636",
+      "title": "Separate overall shape from corner treatment",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Separate overall shape from corner treatment"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/shared-icon-library.md",
+      "target": "docs/decisions/0096-shared-icon-library.md",
+      "sourceSha256": "bde8b64a6d4d9cab56f8baa0abd40b7d30e49eadf31883d5f91612278eee4bd6",
+      "title": "Icons belong to a shared library",
+      "decisionAttribution": [
+        "Decided 2026-09-10 by Peter; recorded 2026-09-19 from the systematization plan."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Icons belong to a shared library"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/shared-selection-indicator.md",
+      "target": "docs/decisions/0097-shared-selection-indicator.md",
+      "sourceSha256": "4b92f829803af37f21f006c58e6b56578b07b5ee8ddc4ab210d8515b293a7d3a",
+      "title": "One shared component owns selection-indicator motion",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# One shared component owns selection-indicator motion"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/stack-layout.md",
+      "target": "docs/decisions/0098-stack-layout.md",
+      "sourceSha256": "24dd9c9e7ebb48c80508b002b912a70518161a03b3124e910136e80a2c4d11ea",
+      "title": "Give stacks shared spacing and clear directions",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter.",
+        "Decided 2026-09-20 by Peter: match Chakra's separator spacing. Apply the configured gap on each side of a visible automatic separator. The distance between adjacent items is therefore two gaps plus divider thickness. At zero gap, the divider still occupies its thickness. The alternative of drawing the divider inside one unchanged total gap was not selected."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Give stacks shared spacing and clear directions"
+        },
+        {
+          "line": 13,
+          "heading": "## Alignment and separators"
+        },
+        {
+          "line": 21,
+          "heading": "## Separator spacing and wrapped lines"
+        },
+        {
+          "line": 29,
+          "heading": "## Implementation under delegated execution — 2026-09-21"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/start-and-end-places.md",
+      "target": "docs/decisions/0099-start-and-end-places.md",
+      "sourceSha256": "005fa5101b65f440b6c9096f7ef4d61c748fc37db62bfe0b873f7acee97bcfc3",
+      "title": "One vocabulary for the places beside content: `start` and `end`",
+      "decisionAttribution": [
+        "Decided 2026-09-10 by Peter, who noticed the button used `prefix`/`suffix` while the input uses"
+      ],
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# One vocabulary for the places beside content: `start` and `end`"
+        },
+        {
+          "line": 6,
+          "heading": "## The decision"
+        },
+        {
+          "line": 13,
+          "heading": "## What was there"
+        },
+        {
+          "line": 26,
+          "heading": "## Why the attributes went"
+        },
+        {
+          "line": 32,
+          "heading": "## Three things the sweep found that were not the rename"
+        },
+        {
+          "line": 49,
+          "heading": "## Verified"
+        },
+        {
+          "line": 62,
+          "heading": "## One word that stays"
+        },
+        {
+          "line": 68,
+          "heading": "## No element keeps `hasStart`/`hasEnd` (2026-09-10)"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/stat-family.md",
+      "target": "docs/decisions/0100-stat-family.md",
+      "sourceSha256": "47ad523baef63d07e3c170ed45aa0b28f98f8a1a14ff792c65791fc420bbfb8a",
+      "title": "Keep one flexible Stat family",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Keep one flexible Stat family"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/state-on-tanstack-store.md",
+      "target": "docs/decisions/0101-state-on-tanstack-store.md",
+      "sourceSha256": "4e4fc0a2446b042a314218e701781e1117f59e26015aed7b65d450d9752b6984",
+      "title": "Element state lives in a per-instance TanStack Store",
+      "decisionAttribution": [
+        "Decided 2026-09-10 by Peter. This supersedes a narrowing I wrote without asking."
+      ],
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# Element state lives in a per-instance TanStack Store"
+        },
+        {
+          "line": 5,
+          "heading": "## The decision"
+        },
+        {
+          "line": 10,
+          "heading": "## What this replaces, and why the record matters"
+        },
+        {
+          "line": 23,
+          "heading": "## The evidence, gathered before deciding"
+        },
+        {
+          "line": 39,
+          "heading": "## The pattern"
+        },
+        {
+          "line": 67,
+          "heading": "## The order"
+        },
+        {
+          "line": 81,
+          "heading": "## The adapter needs a patch to be safe"
+        },
+        {
+          "line": 89,
+          "heading": "## What would change this"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/state-vocabulary.md",
+      "target": "docs/decisions/0102-state-vocabulary.md",
+      "sourceSha256": "c64957cfec1634cdc9802885872d8ceed188fef19f9b71369bcf98a5669177ec",
+      "title": "Name states by their meaning",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Name states by their meaning"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/steps-behaviour.md",
+      "target": "docs/decisions/0103-steps-behaviour.md",
+      "sourceSha256": "a3d948486b4196c6e2846e1cf710fc234d0c21d883031f53ac3cf419b9f8baa8",
+      "title": "Provide interactive Steps",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Provide interactive Steps"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/style-production.md",
+      "target": "docs/decisions/0104-style-production.md",
+      "sourceSha256": "33cc4e9e3252e6a609cdc64fb12d08b0bb94266598aab0bc6ff5a79c1031a8c4",
+      "title": "Convert compiled CSS into generated Lit style modules",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Convert compiled CSS into generated Lit style modules"
+        },
+        {
+          "line": 17,
+          "heading": "## Migration approval with technical prerequisites"
+        },
+        {
+          "line": 21,
+          "heading": "## Compiler selected, 2026-09-20"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/systematization-goal.md",
+      "target": "docs/decisions/0105-systematization-goal.md",
+      "sourceSha256": "62b1d515657a429e189e1deb88854d887362832588e0aaffe252a13ceb4c6a32",
+      "title": "Interface consistency is the main test of success",
+      "decisionAttribution": [
+        "Decided 2026-09-10 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Interface consistency is the main test of success"
+        },
+        {
+          "line": 9,
+          "heading": "## What replaces exact parity"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/table-of-contents.md",
+      "target": "docs/decisions/0106-table-of-contents.md",
+      "sourceSha256": "325040d8c04b5a41b1ce7fb78ec445fe25d398371fb1d129eb4204e0d78e6d1d",
+      "title": "Support discovered and explicit TOC entries",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter.",
+        "Decided 2026-09-20 by Peter through “I approve all proposals.”"
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Support discovered and explicit TOC entries"
+        },
+        {
+          "line": 15,
+          "heading": "## Approved target ownership"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/tanstack-table-compatibility.md",
+      "target": "docs/decisions/0107-tanstack-table-compatibility.md",
+      "sourceSha256": "19c361baaacebc246236841e531680da8ded580142071b4497af5a6260b83dc0",
+      "title": "Support consumer use of TanStack Table",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Support consumer use of TanStack Table"
+        },
+        {
+          "line": 11,
+          "heading": "## Framework rendering and virtualization"
+        },
+        {
+          "line": 17,
+          "heading": "## Experimental workers and compatibility limits"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/text-role-vocabulary.md",
+      "target": "docs/decisions/0108-text-role-vocabulary.md",
+      "sourceSha256": "63290d1072ef5dd1825ad1074a5a7323d41cb8b31cf9df3af0555dd7067a3000",
+      "title": "Use Heading and distinct text roles",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Use Heading and distinct text roles"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/theme-resolution-architecture.md",
+      "target": "docs/decisions/0109-theme-resolution-architecture.md",
+      "sourceSha256": "091d43bf09ad10f60d2e6654d111426fda7c66a304e01410bc79f04db7f12aad",
+      "title": "Separate effective-theme resolution from preference storage",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Separate effective-theme resolution from preference storage"
+        },
+        {
+          "line": 15,
+          "heading": "## Context transport selected, 2026-09-21"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/toast-behaviour.md",
+      "target": "docs/decisions/0110-toast-behaviour.md",
+      "sourceSha256": "aaf908fead293ec2ed453c83b6a6be8d7eea013f5d02dc01c4a77eb6e48ef356",
+      "title": "Use the house stack for overlapping Toasts",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Use the house stack for overlapping Toasts"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/toggle-button.md",
+      "target": "docs/decisions/0111-toggle-button.md",
+      "sourceSha256": "92a42f0ba576e916200d50ecc0de22d633c629f4e039f9ca5307a2fd223b9802",
+      "title": "Replace Chip with a Toggle Button capability",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Replace Chip with a Toggle Button capability"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/toolbar-group-responsibilities.md",
+      "target": "docs/decisions/0112-toolbar-group-responsibilities.md",
+      "sourceSha256": "2207c6b48344920b9b513ad74e005f29549928cccd26baaf2dcdf5738b6bd473",
+      "title": "Separate Group, Toolbar and selection responsibilities",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Separate Group, Toolbar and selection responsibilities"
+        },
+        {
+          "line": 17,
+          "heading": "## Phase 2 responsibility closure"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/track-census-results.md",
+      "target": "docs/decisions/0113-track-census-results.md",
+      "sourceSha256": "6e2216a0deb44e5d1492ca604a9ba734289b6bd95a95612ecde1eeea2e7ff87c",
+      "title": "Decided: measurement results go into version control",
+      "decisionAttribution": [
+        "Decided by Peter on 2026-09-10, after two unrecoverable overwrites. Linked from `PLAN.md`."
+      ],
+      "sections": [
+        {
+          "line": 1,
+          "heading": "# Decided: measurement results go into version control"
+        },
+        {
+          "line": 5,
+          "heading": "## What went wrong"
+        },
+        {
+          "line": 18,
+          "heading": "## The accident it allowed"
+        },
+        {
+          "line": 31,
+          "heading": "## The decision"
+        },
+        {
+          "line": 42,
+          "heading": "## The two guards, which are the real fix"
+        },
+        {
+          "line": 56,
+          "heading": "## The rule this leaves"
+        },
+        {
+          "line": 61,
+          "heading": "## It worked, within the hour"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/zag-behaviour-ports.md",
+      "target": "docs/decisions/0114-zag-behaviour-ports.md",
+      "sourceSha256": "dc2289378bb992aec9cb4677cb853edaec7f38d492686fb157d5fb87ba81425d",
+      "title": "Port behaviour into Lit with TanStack Store",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Port behaviour into Lit with TanStack Store"
+        },
+        {
+          "line": 15,
+          "heading": "## Evidence and trade-off"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "accepted decision history; later contracts and implementation evidence govern current details",
+      "note": "Preserve choices, reasons, qualifications, source citations and dated observations. Convert completed phase gates and then-current unimplemented claims into historical facts; do not restore them as current workflow instructions."
+    },
+    {
+      "source": "notes/decisions/zag-lit-integration.md",
+      "target": "docs/decisions/0115-zag-lit-integration.md",
+      "sourceSha256": "228de82b5c80a1e79431be4871ebcde83cfdf5a03ee43f0b32921269f107ef2e",
+      "title": "Superseded: Zag behaviour packages through a Lit adapter",
+      "decisionAttribution": [
+        "Decided 2026-09-19 by Peter."
+      ],
+      "sections": [
+        {
+          "line": 3,
+          "heading": "# Superseded: Zag behaviour packages through a Lit adapter"
+        }
+      ],
+      "reviewedBy": "root: full source read",
+      "status": "superseded",
+      "note": "Native Lit/TanStack behavior ports supersede the runtime/adapter choice. Preserve the previous decision as history with no active runtime instruction."
+    }
+  ],
+  "globalConversionRules": [
+    "Retain all product decisions and qualifications; no new approvals inferred.",
+    "Retire conflicting old process instructions; Git retains their text.",
+    "Use direct component names in current prose; quoted/historical evidence remains attributable.",
+    "Do not turn historical future work into an open task without checking final inventory, execution resolutions and release evidence.",
+    "Keep bounded probes separate from complete runtime or actual-platform acceptance."
+  ]
+}

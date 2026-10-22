@@ -273,3 +273,9 @@ Peter approves the task sizes and dependency order on 2026-10-21 through separat
 ### Runner identity prefactor completed
 
 The runner now stores each check's stable identity beside its file path. Scoped modes, audit output routing and worker archive arguments use that identity. All 23 entries and 24 ordered invocations match the pre-change plan, including explicit undefined diagnostic filters. The rename regression fails on the original implementation and passes after the change. Nine focused tests, strict script types, Oxlint and Oxfmt pass. Coordinator review finds no issue; full migration verification and independent review remain later work. [Complete evidence](../../docs/verification/workflow-migration/task-01.json).
+
+### Complete migration source audit
+
+Task 2 allocates every one of the 932 tracked old-tree files. The team reads all 115 decisions, 20 analyses, 28 alignment records, conventions, the full port plan, local skills/references and 22 authored verification summaries. Nineteen captured Markdown records and other raw artifacts receive explicit byte-preservation classifications; this is not a claim of semantic review of every generated or binary payload. The ledger has 920 distinct destination owners, 115 closed rule dispositions, 39 live old-tree files and two exact extracted text fixtures. [Audit results](../../docs/verification/workflow-migration/task-02.json), [all reports](../../docs/verification/workflow-migration/README.md).
+
+The external audit verifies self-contained package retrieval and historical source targets. Three release-note links need the prepared immutable-source corrections before publication of old-path removal. No external write is made. An existing research link to the removed Empty State map resolves at the recorded pre-migration source commit; its conversion will use that historical target. Four corpus links are explicitly local research resources, not portable build inputs.

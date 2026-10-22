@@ -1,13 +1,13 @@
 # Tasks: maintainer workflow migration
 
-Status: approved for local implementation, 2026-10-21. Task 1 passes its focused checks and coordinator review. Task 2 is in progress. Full migration acceptance and independent review remain task 12.
+Status: approved for local implementation, 2026-10-21. Tasks 1 and 2 are complete. Task 3 is in progress. Full migration acceptance and independent review remain task 12.
 
 The current handoff is still [the existing pass entry point](../notes/alignment/README.md#where-we-are). Task 11 changes that owner.
 
 ## Checklist
 
 - [x] 1. Make browser-check behavior independent of filenames — [evidence](../docs/verification/workflow-migration/task-01.json).
-- [ ] 2. Complete the migration ledger and rule audit
+- [x] 2. Complete the migration ledger and rule audit — [evidence](../docs/verification/workflow-migration/task-02.json).
 - [ ] 3. Prove the migration guards
 - [ ] Checkpoint A: safe preparation
 - [ ] 4. Migrate raw evidence batches
@@ -47,9 +47,9 @@ Tasks 4–8 are batch groups. Before starting one, add each exact child batch be
 **Description:** Refresh the tracked inventory, classify every file/section, allocate new names, and find its live consumers. Audit old rules against the new workflow before carrying anything forward.
 
 **Acceptance criteria:**
-- [ ] Every current source in scope, including migration-era additions, has an owner, destination or justified retirement, source revision/hash and validation method.
-- [ ] Every old instruction has retain/rewrite/retire/resolve status, supporting evidence and one new owner; no unresolved conflict is silently retained.
-- [ ] Live drivers, helper imports, data fixtures and public references are distinguished from immutable historical evidence. Known failures and manual follow-ups have explicit destinations.
+- [x] Every current source in scope, including migration-era additions, has an owner, destination or justified retirement, source revision/hash and validation method.
+- [x] Every old instruction has retain/rewrite/retire/resolve status, supporting evidence and one new owner; no unresolved conflict is silently retained.
+- [x] Live drivers, helper imports, data fixtures and public references are distinguished from immutable historical evidence. Known failures and manual follow-ups have explicit destinations.
 
 **Verification:** Compare the ledger's source set to Git; inspect all rule sources and dynamic reference cases; save the full reference graph and conflict matrix. Read each assigned record in full.
 
