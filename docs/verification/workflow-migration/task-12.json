@@ -12017,7 +12017,7 @@
       "retentionReview": "The final retention review approves the fourth-iteration excerpt and grading record.\n\n**Verdict:** Approve local retention at the verified hashes below. No actionable security finding.\n\nI read both files in full.\n\n- The excerpt contains visible replies, scoped tool inputs, result sizes/ranges, relevant plugin names, completion metadata, and hashed identities. It excludes hidden reasoning, private system/hook payloads, global instruction contents, full plugin inventories, credentials, and account metadata.\n- The grader records source-bound observations without copying private payloads. All three reporting observations remain explicit. It distinguishes explicit package instruction consumption from the separate root native capture and retains the package native-import omission.\n- The excerpt hash and raw identities match the grader. Both instruction hashes match Git blobs at the recorded corrected source. The earlier native capture matches its previously approved hash and keeps its earlier source identity.\n- Credential-pattern scans find no matches in either file. The three referenced raw event, stderr, and run files remain ignored and untracked. This approval covers their identity metadata only; raw logs must remain private.\n\nVerified identities:\n\n```text\nSource commit:\n051f1ad9eca7e7ece8288112a946888e4101736a\niteration-4/retained/claude-package-new-request.json SHA-256:\na37390efc456677708076c0a5513ac2517214034ebf18e20bfec9c4a338368e0\ntask12-session-grading-iteration-4.json SHA-256:\ncc9569b33c05e9c051ff3e01575035b3ec6b04522b5f62e035d54eb6b335dab9\n```\n\n**Limits:** Static retention review. I opened no raw private logs, launched no host, and repeated no product tests. Pattern scanning cannot prove absence of unfamiliar or encoded secrets. The grading remains a bounded acceptance observation, not universal instruction adherence or overall migration acceptance. Embedding must preserve its source identities, earlier attempts, reporting observations, and native-loading limits.\n"
     }
   },
-  "next": "Commit and push the accepted migration, open its PR, then merge with a merge commit only after required GitHub checks pass. Verify the documentation deployment and save the final publication receipt.",
+  "next": "Finish the records-only receipt PR if it remains open. Once merged, await Peter's next request; the migration and its deployment are complete.",
   "external": {
     "pending": 0,
     "approved": true,
@@ -13035,5 +13035,1439 @@
       "Static reference checks do not execute drivers, resolve computed paths, verify prose meaning, test agent startup, or fetch external links.",
       "Named audit JSON and schema-labelled task reports are provenance data. Their Markdown links remain checked."
     ]
+  },
+  "publicationExecution": {
+    "state": "implementation-published-and-deployment-verified",
+    "branch": "codex/maintainer-workflow-migration",
+    "head": "9fa57f8287bf151f7de53bb64e8f5597110220ff",
+    "pullRequest": {
+      "number": 7,
+      "url": "https://github.com/acmelabs-15/design-system/pull/7",
+      "state": "MERGED",
+      "attachedToChat": true,
+      "headRefOid": "9fa57f8287bf151f7de53bb64e8f5597110220ff",
+      "mergeCommit": {
+        "oid": "5488580a6aec0abac16470656aecb38f6f9c4840"
+      },
+      "mergedAt": "2026-10-22T11:29:50Z"
+    },
+    "quality": {
+      "runId": 39765513004,
+      "conclusion": "success",
+      "headSha": "9fa57f8287bf151f7de53bb64e8f5597110220ff",
+      "jobs": [
+        {
+          "completedAt": "2026-10-22T11:28:36Z",
+          "conclusion": "success",
+          "databaseId": 119779846429,
+          "name": "verify",
+          "startedAt": "2026-10-22T10:45:45Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-22T10:45:48Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-22T10:45:47Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T10:45:59Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "number": 2,
+              "startedAt": "2026-10-22T10:45:48Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T10:46:02Z",
+              "conclusion": "success",
+              "name": "Run oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6",
+              "number": 3,
+              "startedAt": "2026-10-22T10:45:59Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T10:46:03Z",
+              "conclusion": "success",
+              "name": "Frozen installation without dependency scripts",
+              "number": 4,
+              "startedAt": "2026-10-22T10:46:02Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T10:46:07Z",
+              "conclusion": "success",
+              "name": "Lint and formatting",
+              "number": 5,
+              "startedAt": "2026-10-22T10:46:03Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T10:49:47Z",
+              "conclusion": "success",
+              "name": "Build reviewed source and verify generated inputs",
+              "number": 6,
+              "startedAt": "2026-10-22T10:46:07Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T10:50:41Z",
+              "conclusion": "success",
+              "name": "Strict types",
+              "number": 7,
+              "startedAt": "2026-10-22T10:49:47Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T10:52:38Z",
+              "conclusion": "success",
+              "name": "Unit and workspace installation regressions",
+              "number": 8,
+              "startedAt": "2026-10-22T10:50:41Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T10:52:38Z",
+              "conclusion": "success",
+              "name": "Dependency audit",
+              "number": 9,
+              "startedAt": "2026-10-22T10:52:38Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T10:52:59Z",
+              "conclusion": "success",
+              "name": "Prepare and validate coordinated archives",
+              "number": 10,
+              "startedAt": "2026-10-22T10:52:38Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T11:08:19Z",
+              "conclusion": "success",
+              "name": "Install pinned browser engines",
+              "number": 11,
+              "startedAt": "2026-10-22T10:52:59Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T11:28:21Z",
+              "conclusion": "success",
+              "name": "Three-engine and clean-consumer acceptance",
+              "number": 12,
+              "startedAt": "2026-10-22T11:08:19Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T11:28:23Z",
+              "conclusion": "success",
+              "name": "Bun-hosted npm crypto and public trust verification",
+              "number": 13,
+              "startedAt": "2026-10-22T11:28:21Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T11:28:26Z",
+              "conclusion": "success",
+              "name": "Save diagnostic evidence",
+              "number": 14,
+              "startedAt": "2026-10-22T11:28:23Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T11:28:29Z",
+              "conclusion": "success",
+              "name": "Save reviewed release archives",
+              "number": 15,
+              "startedAt": "2026-10-22T11:28:26Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T11:28:33Z",
+              "conclusion": "success",
+              "name": "Save reviewed documentation output",
+              "number": 16,
+              "startedAt": "2026-10-22T11:28:29Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T11:28:33Z",
+              "conclusion": "success",
+              "name": "Post Run oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6",
+              "number": 31,
+              "startedAt": "2026-10-22T11:28:33Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T11:28:33Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "number": 32,
+              "startedAt": "2026-10-22T11:28:33Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T11:28:33Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 33,
+              "startedAt": "2026-10-22T11:28:33Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/acmelabs-15/design-system/actions/runs/39765513004/job/119779846429"
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/acmelabs-15/design-system/actions/runs/39765513004"
+    },
+    "externalReleaseCorrections": "verified",
+    "mergeAuthorization": "Merge commit only after required checks pass",
+    "updatedAt": "2026-10-22T12:28:11.581Z",
+    "baselineSite": {
+      "phase": "baseline",
+      "startedAt": "2026-10-22T11:06:23.503Z",
+      "url": "https://acmelabs-15.github.io/design-system/",
+      "method": "Pinned Playwright Chromium with a fresh temporary browser profile and context",
+      "limitation": "Bounded deployment smoke; does not replace repository gates or actual-platform verification",
+      "passed": true,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responses": [
+        {
+          "url": "https://acmelabs-15.github.io/design-system/",
+          "status": 200,
+          "type": "document"
+        },
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Google+Sans+Code:wght@400..700&display=swap",
+          "status": 200,
+          "type": "stylesheet"
+        },
+        {
+          "url": "https://acmelabs-15.github.io/design-system/styles/tokens.css",
+          "status": 200,
+          "type": "stylesheet"
+        },
+        {
+          "url": "https://acmelabs-15.github.io/design-system/styles/docs.css",
+          "status": 200,
+          "type": "stylesheet"
+        },
+        {
+          "url": "https://acmelabs-15.github.io/design-system/styles/dashboard.css",
+          "status": 200,
+          "type": "stylesheet"
+        },
+        {
+          "url": "https://acmelabs-15.github.io/design-system/app.js",
+          "status": 200,
+          "type": "script"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/googlesansflex/v26/t5svIQcYNIWbFgDgAAzZ34auoVyXkJCOvoOmPWNbN5hF8Ju1x5Vwd0N3l9sIcwowNJwGpVd4AZzz0v6lJ4qFXNZhGjLvDSkV4W6GGn9Q3I8i.woff2",
+          "status": 200,
+          "type": "font"
+        },
+        {
+          "url": "https://acmelabs-15.github.io/design-system/pages/index.html",
+          "status": 200,
+          "type": "fetch"
+        },
+        {
+          "url": "https://acmelabs-15.github.io/design-system/pages/components/button.html",
+          "status": 200,
+          "type": "fetch"
+        }
+      ],
+      "home": {
+        "heading": "ACME Design System",
+        "status": 200
+      },
+      "nativeButtonLinks": [
+        {
+          "role": "link",
+          "name": "Button"
+        }
+      ],
+      "buttonLinks": [
+        {
+          "href": "/design-system/components/button",
+          "text": "Button",
+          "visible": true
+        },
+        {
+          "href": "/design-system/components/button",
+          "text": "Button",
+          "visible": false
+        }
+      ],
+      "button": {
+        "heading": "Button",
+        "url": "https://acmelabs-15.github.io/design-system/components/button",
+        "components": [
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 56.375,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 71.109375,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 70.578125,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 68.53125,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 71.875,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 24,
+            "height": 24
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 60.828125,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 79.34375,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 68.375,
+            "height": 40
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 111.5,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 88.921875,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 107.75,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 56.375,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 160,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 96.28125,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          }
+        ]
+      },
+      "finishedAt": "2026-10-22T11:06:25.969Z",
+      "screenshot": {
+        "path": ".artifacts/workflow-publication/execution/baseline-button.png",
+        "visuallyReviewed": true,
+        "result": "Button heading, examples and selected sidebar entry render without visible clipping at 1440 by 1000."
+      }
+    },
+    "browserMethod": {
+      "firstTool": "Chrome DevTools MCP new_page",
+      "result": "Existing dedicated browser profile is already in use; no page was created.",
+      "selectedMethod": "Existing pinned Playwright runtime launches its own temporary profile and fresh context. No shared browser or global configuration is changed.",
+      "firstBaselineAttempt": {
+        "result": "Playwright's broad role/name locator throws while computing a descendant's labels property. Home HTTP/rendering and all observed network/console checks pass before that locator error.",
+        "evidence": ".artifacts/workflow-publication/execution/baseline-site-first-attempt.json",
+        "sha256": "84f14083e25c444a74686c89a0f968697271ef35eaa7e7b87adccadfbcf0a4c1",
+        "cause": "The installed locator expands element.labels as an iterable without checking its type. Copy Button has a private StoreSelector named labels; its role in this exact failure remains unverified.",
+        "correction": "The bounded navigation check uses Chromium's native accessibility tree for the Button link name, then the observed known anchor for the UI click. No DOM or product behavior is changed; this does not claim the broad locator defect is fixed."
+      }
+    },
+    "prCheckLog": {
+      "path": ".artifacts/workflow-publication/execution/pr-quality.log",
+      "sha256": "5c9cd06a3386763ab626faabe00ca03f3dd3a2e27a529d4d80d7d036edcaaf26",
+      "browserInstallation": "Ubuntu dependency downloads take 14 minutes 40 seconds for 119 MB. The pinned Playwright downloads and the full installation then pass.",
+      "scope": "One complete GitHub quality invocation passes on the exact reviewed PR head. Earlier local failed invocations remain preserved and unexplained causes remain open."
+    },
+    "postMerge": {
+      "head": "5488580a6aec0abac16470656aecb38f6f9c4840",
+      "quality": {
+        "runId": 39771017002,
+        "conclusion": "success",
+        "headSha": "5488580a6aec0abac16470656aecb38f6f9c4840",
+        "jobs": [
+          {
+            "completedAt": "2026-10-22T11:50:16Z",
+            "conclusion": "success",
+            "databaseId": 119798278873,
+            "name": "verify",
+            "startedAt": "2026-10-22T11:29:56Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-22T11:29:59Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-22T11:29:57Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:30:06Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                "number": 2,
+                "startedAt": "2026-10-22T11:29:59Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:30:07Z",
+                "conclusion": "success",
+                "name": "Run oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6",
+                "number": 3,
+                "startedAt": "2026-10-22T11:30:06Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:30:09Z",
+                "conclusion": "success",
+                "name": "Frozen installation without dependency scripts",
+                "number": 4,
+                "startedAt": "2026-10-22T11:30:07Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:30:12Z",
+                "conclusion": "success",
+                "name": "Lint and formatting",
+                "number": 5,
+                "startedAt": "2026-10-22T11:30:09Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:32:36Z",
+                "conclusion": "success",
+                "name": "Build reviewed source and verify generated inputs",
+                "number": 6,
+                "startedAt": "2026-10-22T11:30:12Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:33:13Z",
+                "conclusion": "success",
+                "name": "Strict types",
+                "number": 7,
+                "startedAt": "2026-10-22T11:32:36Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:34:34Z",
+                "conclusion": "success",
+                "name": "Unit and workspace installation regressions",
+                "number": 8,
+                "startedAt": "2026-10-22T11:33:13Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:34:34Z",
+                "conclusion": "success",
+                "name": "Dependency audit",
+                "number": 9,
+                "startedAt": "2026-10-22T11:34:34Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:34:50Z",
+                "conclusion": "success",
+                "name": "Prepare and validate coordinated archives",
+                "number": 10,
+                "startedAt": "2026-10-22T11:34:34Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:35:34Z",
+                "conclusion": "success",
+                "name": "Install pinned browser engines",
+                "number": 11,
+                "startedAt": "2026-10-22T11:34:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:50:04Z",
+                "conclusion": "success",
+                "name": "Three-engine and clean-consumer acceptance",
+                "number": 12,
+                "startedAt": "2026-10-22T11:35:34Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:50:07Z",
+                "conclusion": "success",
+                "name": "Bun-hosted npm crypto and public trust verification",
+                "number": 13,
+                "startedAt": "2026-10-22T11:50:04Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:50:09Z",
+                "conclusion": "success",
+                "name": "Save diagnostic evidence",
+                "number": 14,
+                "startedAt": "2026-10-22T11:50:07Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:50:11Z",
+                "conclusion": "success",
+                "name": "Save reviewed release archives",
+                "number": 15,
+                "startedAt": "2026-10-22T11:50:09Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:50:13Z",
+                "conclusion": "success",
+                "name": "Save reviewed documentation output",
+                "number": 16,
+                "startedAt": "2026-10-22T11:50:11Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:50:14Z",
+                "conclusion": "success",
+                "name": "Post Run oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6",
+                "number": 31,
+                "startedAt": "2026-10-22T11:50:13Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:50:14Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                "number": 32,
+                "startedAt": "2026-10-22T11:50:14Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:50:14Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 33,
+                "startedAt": "2026-10-22T11:50:14Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/acmelabs-15/design-system/actions/runs/39771017002/job/119798278873"
+          }
+        ],
+        "status": "completed",
+        "url": "https://github.com/acmelabs-15/design-system/actions/runs/39771017002"
+      },
+      "documentation": {
+        "runId": 39771017203,
+        "conclusion": "success",
+        "headSha": "5488580a6aec0abac16470656aecb38f6f9c4840",
+        "jobs": [
+          {
+            "completedAt": "2026-10-22T12:24:50Z",
+            "conclusion": "success",
+            "databaseId": 119798280366,
+            "name": "verify / verify",
+            "startedAt": "2026-10-22T11:29:57Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-22T11:30:00Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-22T11:29:58Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:30:07Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                "number": 2,
+                "startedAt": "2026-10-22T11:30:00Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:30:09Z",
+                "conclusion": "success",
+                "name": "Run oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6",
+                "number": 3,
+                "startedAt": "2026-10-22T11:30:07Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:30:11Z",
+                "conclusion": "success",
+                "name": "Frozen installation without dependency scripts",
+                "number": 4,
+                "startedAt": "2026-10-22T11:30:09Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:30:15Z",
+                "conclusion": "success",
+                "name": "Lint and formatting",
+                "number": 5,
+                "startedAt": "2026-10-22T11:30:11Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:33:54Z",
+                "conclusion": "success",
+                "name": "Build reviewed source and verify generated inputs",
+                "number": 6,
+                "startedAt": "2026-10-22T11:30:15Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:34:48Z",
+                "conclusion": "success",
+                "name": "Strict types",
+                "number": 7,
+                "startedAt": "2026-10-22T11:33:54Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:36:43Z",
+                "conclusion": "success",
+                "name": "Unit and workspace installation regressions",
+                "number": 8,
+                "startedAt": "2026-10-22T11:34:48Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:36:43Z",
+                "conclusion": "success",
+                "name": "Dependency audit",
+                "number": 9,
+                "startedAt": "2026-10-22T11:36:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:37:03Z",
+                "conclusion": "success",
+                "name": "Prepare and validate coordinated archives",
+                "number": 10,
+                "startedAt": "2026-10-22T11:36:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T12:04:21Z",
+                "conclusion": "success",
+                "name": "Install pinned browser engines",
+                "number": 11,
+                "startedAt": "2026-10-22T11:37:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T12:24:33Z",
+                "conclusion": "success",
+                "name": "Three-engine and clean-consumer acceptance",
+                "number": 12,
+                "startedAt": "2026-10-22T12:04:21Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T12:24:36Z",
+                "conclusion": "success",
+                "name": "Bun-hosted npm crypto and public trust verification",
+                "number": 13,
+                "startedAt": "2026-10-22T12:24:33Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T12:24:39Z",
+                "conclusion": "success",
+                "name": "Save diagnostic evidence",
+                "number": 14,
+                "startedAt": "2026-10-22T12:24:36Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T12:24:42Z",
+                "conclusion": "success",
+                "name": "Save reviewed release archives",
+                "number": 15,
+                "startedAt": "2026-10-22T12:24:39Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T12:24:47Z",
+                "conclusion": "success",
+                "name": "Save reviewed documentation output",
+                "number": 16,
+                "startedAt": "2026-10-22T12:24:42Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T12:24:47Z",
+                "conclusion": "success",
+                "name": "Post Run oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6",
+                "number": 31,
+                "startedAt": "2026-10-22T12:24:47Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T12:24:47Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                "number": 32,
+                "startedAt": "2026-10-22T12:24:47Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T12:24:47Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 33,
+                "startedAt": "2026-10-22T12:24:47Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/acmelabs-15/design-system/actions/runs/39771017203/job/119798280366"
+          },
+          {
+            "completedAt": "2026-10-22T12:25:13Z",
+            "conclusion": "success",
+            "databaseId": 119822195775,
+            "name": "deploy",
+            "startedAt": "2026-10-22T12:24:54Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-22T12:24:56Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-22T12:24:55Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T12:25:11Z",
+                "conclusion": "success",
+                "name": "Deploy the reviewed site artifact",
+                "number": 2,
+                "startedAt": "2026-10-22T12:24:56Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T12:25:11Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 3,
+                "startedAt": "2026-10-22T12:25:11Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/acmelabs-15/design-system/actions/runs/39771017203/job/119822195775"
+          }
+        ],
+        "status": "completed",
+        "url": "https://github.com/acmelabs-15/design-system/actions/runs/39771017203"
+      }
+    },
+    "mergeVerification": {
+      "parents": [
+        "1b5d08a420f7f916b0c87b166527c60985937f4d",
+        "9fa57f8287bf151f7de53bb64e8f5597110220ff"
+      ],
+      "tree": "8b7044da5c9d8b16d4ae7637da843ab646efef15",
+      "treeMatchesReviewedHead": true,
+      "method": "Fetched merge commit; git show verifies two parents and git diff from reviewed head is empty."
+    },
+    "receiptBranch": "codex/workflow-publication-receipt",
+    "deployedSite": {
+      "phase": "deployed",
+      "startedAt": "2026-10-22T12:26:37.203Z",
+      "url": "https://acmelabs-15.github.io/design-system/",
+      "method": "Pinned Playwright Chromium with a fresh temporary browser profile and context",
+      "limitation": "Bounded deployment smoke; does not replace repository gates or actual-platform verification",
+      "passed": true,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responses": [
+        {
+          "url": "https://acmelabs-15.github.io/design-system/",
+          "status": 200,
+          "type": "document"
+        },
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Google+Sans+Code:wght@400..700&display=swap",
+          "status": 200,
+          "type": "stylesheet"
+        },
+        {
+          "url": "https://acmelabs-15.github.io/design-system/styles/dashboard.css",
+          "status": 200,
+          "type": "stylesheet"
+        },
+        {
+          "url": "https://acmelabs-15.github.io/design-system/styles/docs.css",
+          "status": 200,
+          "type": "stylesheet"
+        },
+        {
+          "url": "https://acmelabs-15.github.io/design-system/styles/tokens.css",
+          "status": 200,
+          "type": "stylesheet"
+        },
+        {
+          "url": "https://acmelabs-15.github.io/design-system/app.js",
+          "status": 200,
+          "type": "script"
+        },
+        {
+          "url": "https://acmelabs-15.github.io/design-system/pages/index.html",
+          "status": 200,
+          "type": "fetch"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/googlesansflex/v26/t5svIQcYNIWbFgDgAAzZ34auoVyXkJCOvoOmPWNbN5hF8Ju1x5Vwd0N3l9sIcwowNJwGpVd4AZzz0v6lJ4qFXNZhGjLvDSkV4W6GGn9Q3I8i.woff2",
+          "status": 200,
+          "type": "font"
+        },
+        {
+          "url": "https://acmelabs-15.github.io/design-system/pages/components/button.html",
+          "status": 200,
+          "type": "fetch"
+        }
+      ],
+      "home": {
+        "heading": "ACME Design System",
+        "status": 200
+      },
+      "nativeButtonLinks": [
+        {
+          "role": "link",
+          "name": "Button"
+        }
+      ],
+      "buttonLinks": [
+        {
+          "href": "/design-system/components/button",
+          "text": "Button",
+          "visible": true
+        },
+        {
+          "href": "/design-system/components/button",
+          "text": "Button",
+          "visible": false
+        }
+      ],
+      "button": {
+        "heading": "Button",
+        "url": "https://acmelabs-15.github.io/design-system/components/button",
+        "components": [
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 56.375,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 71.109375,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 70.578125,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 68.53125,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 71.875,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 24,
+            "height": 24
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 60.828125,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 79.34375,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 68.375,
+            "height": 40
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 111.5,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 88.921875,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 107.75,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 56.375,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 160,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 96.28125,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          }
+        ]
+      },
+      "finishedAt": "2026-10-22T12:26:39.812Z",
+      "screenshot": {
+        "path": ".artifacts/workflow-publication/execution/deployed-button.png",
+        "sha256": "c4d0f019d3a4501754c7b23e802966f20195826365457e718e52f98e1eeb9fe9",
+        "visuallyReviewed": true,
+        "observation": "Button heading, selected sidebar link, variant examples and size examples render at 1440 by 1000 without visible clipping. The baseline and deployed views agree on this bounded view."
+      }
+    },
+    "deployedArtifact": {
+      "at": "2026-10-22T12:26:50.818Z",
+      "mergeCommit": "5488580a6aec0abac16470656aecb38f6f9c4840",
+      "deploymentRun": "https://github.com/acmelabs-15/design-system/actions/runs/39771017203",
+      "passed": true,
+      "results": [
+        {
+          "file": "index.html",
+          "url": "https://acmelabs-15.github.io/design-system/",
+          "status": 200,
+          "artifactBytes": 10292,
+          "liveBytes": 10292,
+          "expectedSha256": "2711a802cbf5d4ad65ea26fbff47ceb9fdc1a5a50aeceb3367d8f95c4089da3f",
+          "actualSha256": "2711a802cbf5d4ad65ea26fbff47ceb9fdc1a5a50aeceb3367d8f95c4089da3f",
+          "matches": true
+        },
+        {
+          "file": "app.js",
+          "url": "https://acmelabs-15.github.io/design-system/app.js",
+          "status": 200,
+          "artifactBytes": 2052439,
+          "liveBytes": 2052439,
+          "expectedSha256": "9cba23742d4feeed549b42a5a5f4525673e353de0e10cbacccdefa948eeff152",
+          "actualSha256": "9cba23742d4feeed549b42a5a5f4525673e353de0e10cbacccdefa948eeff152",
+          "matches": true
+        },
+        {
+          "file": "styles/docs.css",
+          "url": "https://acmelabs-15.github.io/design-system/styles/docs.css",
+          "status": 200,
+          "artifactBytes": 16636,
+          "liveBytes": 16636,
+          "expectedSha256": "52feeb01fce266964044f3669688d8826c2581e141bfba9042ff01c349f17536",
+          "actualSha256": "52feeb01fce266964044f3669688d8826c2581e141bfba9042ff01c349f17536",
+          "matches": true
+        },
+        {
+          "file": "pages/components/button.html",
+          "url": "https://acmelabs-15.github.io/design-system/pages/components/button.html",
+          "status": 200,
+          "artifactBytes": 51114,
+          "liveBytes": 51114,
+          "expectedSha256": "397ed934bd58e9cea0991968bafc4da85563ea403f276033c9eb78994f26b9e3",
+          "actualSha256": "397ed934bd58e9cea0991968bafc4da85563ea403f276033c9eb78994f26b9e3",
+          "matches": true
+        }
+      ]
+    },
+    "receiptPublication": {
+      "branch": "codex/workflow-publication-receipt",
+      "scope": "Documentation and evidence only; no product, dependency, version, build-input or workflow changes.",
+      "authority": "Peter's explicit full-publication approval on 2026-10-22, already recorded in publicationPreparation.approval.",
+      "completion": "The receipt branch's GitHub PR is the live record of its checks and merge. Finish that PR if it is open; once merged, no migration work remains.",
+      "selfReference": "This receipt certifies implementation merge 5488580a6aec0abac16470656aecb38f6f9c4840 and its verified deployment. Its own later documentation-only merge is tracked by GitHub, without another recursive receipt commit."
+    },
+    "review": {
+      "date": "2026-10-22T12:32:35.046Z",
+      "skill": "brain:code-review-and-quality",
+      "verdict": "approve",
+      "requiredFindings": [],
+      "rounds": [
+        {
+          "name": "progress receipt",
+          "base": "5488580a6aec0abac16470656aecb38f6f9c4840",
+          "candidate": "74e48707f58bb75003bdd770fa93b928b925916b",
+          "reports": [
+            {
+              "axis": "correctness",
+              "verdict": "approve",
+              "source": ".artifacts/workflow-publication/review/correctness.md",
+              "sha256": "53b1f6216904e7c9ebf4bba9bc9d11165442a296cc70602ac70c0f489d611c7e",
+              "report": "The receipt accurately records the merge and passing quality checks while deployment remains in progress.\n\n**Verdict: Approve the fixed documentation receipt. No correctness findings.**\n\nReviewed the complete supplied diff from 5488580a6aec0abac16470656aecb38f6f9c4840 to 74e48707f58bb75003bdd770fa93b928b925916b. I read the specification and applicable standards before assessing the records.\n\n- The saved PR result confirms the reviewed head and passing quality run. The recorded merge occurs after that check completes.\n- Local Git objects confirm both merge parents and the exact tree equality with the reviewed PR head. The saved main quality result matches the embedded receipt.\n- Both complete job results, the baseline browser result, and the retained failed-attempt and public-log hashes match their source evidence. The public log confirms 1,126 passing unit tests and the stated browser-download measurement.\n- The baseline smoke remains identified as a baseline. It does not certify the new deployment. The failed locator attempt and its unverified component-specific cause remain visible.\n- Status, tasks and the publication record consistently leave deployment verification open. The issue comments retain the earlier Hover Card and registration-timeout causes as unverified.\n- The seven-record change introduces no runtime behavior or unrelated scope. No required receipt information is missing within this in-progress checkpoint.\n\nThis review uses saved local evidence and read-only Git inspection. It includes no network request, runtime test or source change. Approval does not certify the still-running deployment or its later final receipt delta.\n"
+            },
+            {
+              "axis": "readability",
+              "verdict": "approve",
+              "source": ".artifacts/workflow-publication/review/readability.md",
+              "sha256": "f1338d6253a189760b9024f699e8c3554c2aa6255f05a819fbc135ba712421bf",
+              "report": "The publication receipt is clear enough to continue deployment verification.\n\n**Verdict: Approve.** No actionable readability or simplicity finding in the fixed diff.\n\nThe records distinguish the reviewed PR head, merge commit, passing quality runs and pending documentation deployment. They preserve the earlier failures and their unverified causes. The evidence index and task record provide clear routes to the detailed results.\n\nThe added JSON retains workflow steps and bounded browser observations as durable evidence. Its size serves the specification's evidence requirements. It adds no abstraction or execution flow.\n\nScope: all seven changed records between the supplied fixed point and candidate. I read the complete review brief, applicable specification, workflow guidance, verification guidance, domain routing, context map and component glossary. This static review does not verify deployment or repeat runtime checks. The final deployment delta still needs review.\n"
+            },
+            {
+              "axis": "architecture",
+              "verdict": "approve",
+              "source": ".artifacts/workflow-publication/review/architecture.md",
+              "sha256": "8a93184e50c361dfeb53778efb754e5fbc8d09db83f7cdd935ec95f714a52736",
+              "report": "The publication receipt fits the approved record structure. Deployment remains in progress in the reviewed candidate.\n\n**Verdict: Approve.** No required architecture finding.\n\nReviewed fixed point and candidate:\n\n```text\n5488580a6aec0abac16470656aecb38f6f9c4840\n74e48707f58bb75003bdd770fa93b928b925916b\n```\n\nThe complete seven-file diff follows the ownership rules in the maintainer-workflow specification and workflow guide:\n\n- STATUS owns the current phase, publication state and next action. Its links lead to detailed evidence.\n- The task list records task acceptance. The migration README indexes the evidence and retains verification limits.\n- Task 12 adds a publication execution record with separate PR, merge, baseline-site and deployment scopes. This is provenance data. Its size and repeated CI fields do not introduce runtime abstractions or duplicate executable behavior.\n- The batch record updates the explicitly living handoff identity. It preserves the original source identity and prepared-handoff purpose.\n- Both issue comments append later passing evidence. They retain the unresolved causes and original failures.\n\nThe new record does not alter package boundaries, generated-output ownership, dependencies, product behavior, plugin routing or workflow authority. No structural smell in the assigned baseline warrants a finding. The baseline browser observation remains separate from pending post-merge deployment evidence.\n\nI read the complete brief and diff, approved specification, shared rules, workflow/verification/domain guides and selected glossary. I also inspected the saved pre-merge, merged-PR and receipt-guard evidence. Those records support the reviewed ownership and provenance structure; they do not certify the pending deployment.\n\nLimits: static architecture review only. I run no runtime test or network check and make no Git or shared-record change. The later deployment delta needs its own review.\n"
+            },
+            {
+              "axis": "security",
+              "verdict": "approve",
+              "source": ".artifacts/workflow-publication/review/security.md",
+              "sha256": "05730cbd90e4b8ce2761d830b8e5c9ce8458283a1ad96a11dd59e17e2164eae4",
+              "report": "The publication receipt passes the security review.\n\n**Verdict:** Accept. No actionable security finding in the fixed seven-record diff.\n\n```text\nBase: 5488580a6aec0abac16470656aecb38f6f9c4840\nCandidate: 74e48707f58bb75003bdd770fa93b928b925916b\nDiff SHA-256:\na3c4d7e0ed868873095d71ee76e1e7c33bf1c4ab851fd106befb14a4b40d0a5c\n```\n\n- The new receipt contains public pull-request/run identifiers, commit hashes, step outcomes, timestamps, public site observations, and evidence references. It adds no credential, account payload, private host transcript, request header, cookie, or response body.\n- Recorded URLs use HTTPS and have no embedded credentials. Their hosts are GitHub, the public project site, and public Google font services. The font query contains font selections.\n- GitHub and browser observations remain stored data. No executable handler, rendering path, authentication rule, permission, dependency, or workflow configuration changes.\n- Merge and PR/main quality metadata match the supplied local public captures. The site capture matches apart from the receipt's added screenshot-review annotation. Deployment remains explicitly in progress.\n- Publication authorization stays scoped to the approved work. Historical failure causes, platform limits, and owner-controlled token rotation remain separate from successful checks.\n- A bounded credential-pattern scan of added lines finds no matches or private-payload fields.\n\n**Limits:** Static review of the new publication receipts only. I read the complete brief, specification, applicable standards, and fixed diff. I made no network call, ran no runtime test, changed no Git state, and opened no unrelated private transcript. Pattern scanning cannot prove absence of unfamiliar or encoded secrets. The later deployment result requires its own delta review.\n"
+            },
+            {
+              "axis": "performance",
+              "verdict": "approve",
+              "source": ".artifacts/workflow-publication/review/performance.md",
+              "sha256": "b6af72e36d416a71ee77baa00e096b8bea4b611852739ef6485fe025f8e08135",
+              "report": "The publication receipt has no actionable performance finding.\n\n**Verdict: approve on performance.**\n\nThe fixed diff changes seven documentation and evidence records. It adds bounded publication results and updates handoff text. It changes no runtime code, data fetching, component rendering, build producer or workflow execution.\n\nThe added JSON stores completed workflow steps and a bounded browser observation. These records introduce no query, loop, synchronous runtime operation or object allocation in a hot path. The recorded browser installation delay describes an existing run; this receipt introduces no installation change.\n\nThis review covers the supplied fixed diff from the published merge to the receipt candidate. It does not establish deployment completion or measured runtime performance. The receipt states that deployment remains in progress. No runtime tests or network calls are made.\n"
+            }
+          ]
+        },
+        {
+          "name": "deployment delta",
+          "base": "74e48707f58bb75003bdd770fa93b928b925916b",
+          "candidate": "7f69174834731cfb5a004e2e26052612eace177c",
+          "reports": [
+            {
+              "axis": "correctness",
+              "verdict": "approve",
+              "source": ".artifacts/workflow-publication/review/final/correctness.md",
+              "sha256": "6ffdb256ddef2eb29c4445f1c4fd2a062aecf4a0bb4d9e61ae612363ab3ca3f2",
+              "report": "The final receipt accurately records the completed implementation deployment and keeps its own delivery status separate.\n\n**Verdict: Approve the fixed final delta. No correctness findings.**\n\nReviewed the complete supplied delta from 74e48707f58bb75003bdd770fa93b928b925916b to 7f69174834731cfb5a004e2e26052612eace177c against the specification and applicable standards. Their unchanged requirements remain the review baseline.\n\n- The saved Pages result identifies implementation merge 5488580a6aec0abac16470656aecb38f6f9c4840. Both its verification job and deployment job succeed. The embedded result matches that evidence.\n- The live smoke occurs after deployment. Its assertions check navigation, the native Button link name, upgraded rendered components, and clean console/network results. The saved screenshot supports the stated bounded visual observation; its hash matches.\n- All four served-file comparisons report HTTP 200, equal byte counts and equal SHA-256 values. The receipt matches the saved comparison and limits its byte-equality claim to those four files.\n- Status, task acceptance and the publication record distinguish the verified implementation deployment from delivery of the records-only PR. The conditional next action does not claim that future PR checks or its merge already occurred.\n- Earlier failed attempts, unresolved causes, actual-platform limits and owner-controlled token rotation remain explicit or linked to their owning evidence. Later passing checks do not silently close those follow-ups.\n\nNo required information is missing within this final receipt delta. It adds no runtime behavior, dependency, package release or unrelated authorization.\n\nThis is a saved-evidence review. I made no Git or network call and ran no runtime test. The receipt PR must still satisfy its recorded delivery conditions.\n"
+            },
+            {
+              "axis": "readability",
+              "verdict": "approve",
+              "source": ".artifacts/workflow-publication/review/final/readability.md",
+              "sha256": "f6ed760930350839df4cf2061b9b599481133d40ae1d71c3cbf298be945583e6",
+              "report": "The final publication receipt gives a clear handoff after deployment verification.\n\n**Verdict: Approve.** No actionable readability or simplicity finding in the fixed delta.\n\nThe handoff now separates completed implementation and deployment from delivery of the receipt PR. Its next step explains when to finish that PR and when to await Peter. Open maintenance issues remain distinct from migration completion.\n\nThe task record groups deployment workflow results, browser observations and artifact comparisons under descriptive names. The detailed evidence supports the specification's preservation requirements. It adds no unnecessary abstraction or execution flow.\n\nScope: the complete supplied delta from 74e48707 to 7f691748. The applicable specification, workflow guidance, verification guidance, domain routing, context map and component glossary remain read from this review session. This static review makes no independent claim about live deployment and repeats no runtime checks.\n"
+            },
+            {
+              "axis": "architecture",
+              "verdict": "approve",
+              "source": ".artifacts/workflow-publication/review/final/architecture.md",
+              "sha256": "885d226993221d40591361a78c01cf85fd5cc8880f378bc8e23f7cf9f793b0e5",
+              "report": "The final receipt preserves one handoff and a bounded completion rule.\n\n**Verdict: Approve.** No required architecture finding.\n\nReviewed fixed point and candidate:\n\n```text\n74e48707f58bb75003bdd770fa93b928b925916b\n7f69174834731cfb5a004e2e26052612eace177c\n```\n\nThe delta fits the approved maintainer-workflow specification and record ownership rules:\n\n- STATUS remains the current handoff. It names the receipt branch and requires checking the corresponding PR's actual state. Completion depends on that PR being merged. An open PR remains actionable under the recorded approval and required checks.\n- GitHub owns the receipt PR's live checks and merge record. This avoids an endless sequence of commits that certify prior receipt commits. The text does not claim that this future merge or its deployment already passes.\n- Task 12 explicitly certifies implementation merge 5488580a6aec0abac16470656aecb38f6f9c4840 and its deployment. The separate receipt-publication object states its limited scope. The task list points back to that evidence.\n- The deployment record separates workflow success, observed browser behavior and four-file byte comparison. Earlier baseline observations and verification limits remain distinct.\n- The batch record updates only the living handoff identity and explanation. Original source identity remains intact. Existing maintenance issues remain open with their causes and platform limits preserved.\n\nThis is evidence and handoff maintenance. It introduces no runtime abstraction, package dependency, alternate workflow or competing task queue. Repeated job fields are captured provenance, so runtime code smells do not justify restructuring them.\n\nI read the complete final brief and fixed delta against the specification and standards already read in this review. Saved Pages-run, deployed-site and artifact-comparison evidence agree on the implementation merge and recorded deployment scope.\n\nLimits: static architecture review only. I make no Git, network, runtime-test or shared-record change. I do not independently rerun the deployment checks or certify the receipt PR's future outcome.\n"
+            },
+            {
+              "axis": "security",
+              "verdict": "approve",
+              "source": ".artifacts/workflow-publication/review/final/security.md",
+              "sha256": "e2c49bfb5602120fc29bcd099fdf0036b3df76d549d1cfd56b74bda5018ff58e",
+              "report": "The final deployment receipt passes the security and retention review.\n\n**Verdict:** Accept. No actionable security finding in the fixed four-record delta.\n\n```text\nBase: 74e48707f58bb75003bdd770fa93b928b925916b\nCandidate: 7f69174834731cfb5a004e2e26052612eace177c\nComplete review brief SHA-256:\na741a0b73d6678b3097a8751701b7b7d3ef5d91e24f41b0211e55a7f558a23f5\n```\n\n- New records contain public Pages job results, site observations, artifact filenames, byte counts, and SHA-256 digests. They include no credentials, account payloads, private transcripts, request headers, cookies, or response bodies.\n- URLs use public GitHub, project-site, and Google font hosts without embedded credentials. Font parameters contain font selections. External observations remain stored evidence; no executable or rendering path changes.\n- Deployment, site, and artifact fields match the supplied local captures. Supplemental fields add the run identifier and screenshot assessment. The screenshot hash matches the receipt; visual inspection shows the public Button page without account or private content.\n- The handoff preserves scoped authorization, historical failure causes, platform limits, token-rotation follow-up, and the native package-import limitation. It distinguishes the completed implementation deployment from the receipt PR's remaining delivery.\n- A bounded scan of added lines finds no credential patterns or private-payload fields. Runtime code, authentication, permissions, dependencies, build inputs, and workflows remain outside this delta.\n\n**Limits:** Static review of the complete supplied fixed diff and public evidence, under the approved specification and standards. I ran no Git command, network call, host invocation, or runtime test, and opened no unrelated private transcript. Pattern scanning cannot prove absence of unfamiliar or encoded secrets. The receipt's live-site and four-file checks remain bounded deployment evidence, not universal platform or product-security certification.\n"
+            },
+            {
+              "axis": "performance",
+              "verdict": "approve",
+              "source": ".artifacts/workflow-publication/review/final/performance.md",
+              "sha256": "a6d38f515ddbd312693bde33cb4855b73d9206c575459a68f9efe64608ca5dd2",
+              "report": "The final publication receipt delta has no actionable performance finding.\n\n**Verdict: approve on performance.**\n\nThe four changed records save completed deployment evidence and update the handoff, its fingerprint and task acceptance. They change no runtime code, build input, dependency or workflow execution.\n\nThe added JSON contains bounded workflow steps, browser observations and four artifact comparisons. It introduces no queries, loops, data fetching, rendering work or allocations in a runtime hot path. The recorded script size and installation duration describe existing output and execution; this delta does not increase them.\n\nThis static review covers the complete supplied fixed delta. The specification and applicable standards remain as read for the previous receipt review. The deployment smoke and byte comparisons do not measure runtime performance. No Git command, network call or runtime test is run for this review.\n"
+            }
+          ]
+        }
+      ],
+      "coordinator": "Read all ten complete reports, checked the fixed scope and evidence, and found no required or critical finding. The current metadata change preserves those reviewed results verbatim. It adds no runtime behavior or new verification claim."
+    },
+    "receiptReferenceGuard": {
+      "candidate": "7f69174834731cfb5a004e2e26052612eace177c",
+      "path": ".artifacts/workflow-publication/execution/final-receipt-guard.json",
+      "sha256": "1ef1ce2f14d0580263b492df92f33c6e79f605a880225bc02b7e307adea1eb9d",
+      "result": {
+        "mode": "final",
+        "passed": true,
+        "errors": [],
+        "pending": [],
+        "limits": [
+          "Batch result identity and completion assertions are accountability checks; semantic review and execution evidence need separate review.",
+          "Local-only reference; portable availability unverified: docs/decisions/0062-message-context-and-errors.md -> /Users/peterkloss/Documents/toast-vs-alert-vs-banner.png",
+          "Local-only reference; portable availability unverified: docs/decisions/0082-reference-systems.md -> /Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/README.md",
+          "Local-only reference; portable availability unverified: docs/history/systematization/pass-history.md -> /Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/reviews/capability-synthesis.md",
+          "Local-only reference; portable availability unverified: docs/history/systematization/pass-history.md -> /Users/peterkloss/Dev/ACMElabs/ask-user-question/skills/ask-user-question/SKILL.md",
+          "Local-only reference; portable availability unverified: docs/history/systematization/pass-history.md -> /Users/peterkloss/Dev/ACMElabs/ask-user-question/skills/ask-user-question/references/codex.md",
+          "Local-only reference; portable availability unverified: docs/history/systematization/research-review.md -> /Users/peterkloss/Dev/ACMElabs/ask-user-question/skills/ask-user-question/SKILL.md",
+          "Local-only reference; portable availability unverified: docs/history/systematization/scope-review.md -> /Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/reviews/capability-synthesis.md",
+          "Local-only reference; portable availability unverified: docs/research/06-codebase-systematization.md -> /Users/peterkloss/Documents/toast-vs-alert-vs-banner.png",
+          "Local-only reference; portable availability unverified: docs/research/06-codebase-systematization.md -> ../../tools/geist/corpus/md/feedback.md",
+          "Local-only reference; portable availability unverified: docs/research/06-codebase-systematization.md -> ../../tools/geist/corpus/md/empty-state.md",
+          "Local-only reference; portable availability unverified: docs/research/06-codebase-systematization.md -> ../../tools/geist/corpus/md/entity.md",
+          "Local-only reference; portable availability unverified: docs/research/06-codebase-systematization.md -> ../../tools/geist/corpus/md/fieldset.md",
+          "Local-only reference; portable availability unverified: docs/research/06-codebase-systematization.md -> /Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/reviews/capability-synthesis.md",
+          "Local-only reference; portable availability unverified: docs/research/07-design-foundations.md -> /Users/peterkloss/.codex/visualizations/2026/09/11/01a08f33-2059-7b23-9412-209b913e74ab/blue-button-options.html",
+          "Local-only reference; portable availability unverified: docs/research/09-documentation-site.md -> /Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/reviews/capability-synthesis.md",
+          "Local-only reference; portable availability unverified: docs/research/21-chakra-pro-collection.md -> /Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/README.md",
+          "Local-only reference; portable availability unverified: docs/research/21-chakra-pro-collection.md -> /Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/COMPONENTS.md",
+          "Local-only reference; portable availability unverified: docs/research/21-chakra-pro-collection.md -> /Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/index.json",
+          "Local-only reference; portable availability unverified: docs/research/21-chakra-pro-collection.md -> /Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/reviews/capability-synthesis.md",
+          "Local-only reference; portable availability unverified: docs/research/21-chakra-pro-collection.md -> /Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/reviews/capability-synthesis.json",
+          "Computed or runtime-dependent source paths require execution: examples/forms/__tests__/consumer.ts",
+          "Computed or runtime-dependent source paths require execution: examples/forms/__tests__/managed.browser-check.ts",
+          "Computed or runtime-dependent source paths require execution: examples/table/__tests__/review-feature.test.ts",
+          "Computed or runtime-dependent source paths require execution: examples/table/__tests__/setup.test.ts",
+          "Computed or runtime-dependent source paths require execution: examples/table/build-worker.ts",
+          "Computed or runtime-dependent source paths require execution: examples/table/setup.ts",
+          "Computed or runtime-dependent source paths require execution: packages/mcp/src/__tests__/server.test.ts",
+          "Computed or runtime-dependent source paths require execution: packages/mcp/src/cli.ts",
+          "Generated runtime URL requires the package gate: packages/mcp/src/cli.ts -> ./documentation.json",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/browser-package.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/byte-prefixes.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/check.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/consumer-skills.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/date-runtime.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/declarations.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/dependency-audit.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/dev.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/devtools-runtime.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/entries.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/lint-policy.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/lint.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/local-inputs.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/manifest.test.ts",
+          "External or runtime source path requires execution: scripts/__tests__/manifest.test.ts -> ../../node_modules/@custom-elements-manifest/analyzer/src/features/framework-plugins/lit/lit.js",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/numeric-tokens.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/package.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/release-workflows.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/release.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/responsive-styles.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/styles.test.ts",
+          "External or runtime source path requires execution: scripts/__tests__/styles.test.ts -> ../../node_modules/lit/index.js",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/theme-tokens.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/workflow-migration.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/__tests__/workspace-install.test.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/browser-assets.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/browser-modules.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/browser-package.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/build-modules.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/build.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/byte-prefixes.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/component-browser-checks.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/consumer-skills.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/core-package.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/date-runtime.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/dependency-audit.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/dev.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/devtools-metadata.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/devtools-runtime.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/docs-icons.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/entries.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/icon-entries.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/lint-command.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/lint.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/local-inputs.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/manifest.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/material-symbols.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/numeric-tokens.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/official-firefox-checks.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/package-contents.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/package.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/react.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/release-attest.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/release-crypto.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/release-npm.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/release-smoke.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/release-trust.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/release.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/responsive-styles.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/split-css.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/styles.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/theme-tokens.ts",
+          "External or runtime source path requires execution: scripts/verification/__tests__/browser-distribution.test.ts -> /dist/define/input.js",
+          "External or runtime source path requires execution: scripts/verification/__tests__/browser-distribution.test.ts -> /bundle/design-system.min.js",
+          "External or runtime source path requires execution: scripts/verification/__tests__/browser-distribution.test.ts -> /styles/tokens.css",
+          "External or runtime source path requires execution: scripts/verification/__tests__/browser-distribution.test.ts -> /dist/generated/icons/artwork/sharp/filled/home.js",
+          "External or runtime source path requires execution: scripts/verification/__tests__/browser-distribution.test.ts -> /unrelated.js",
+          "External or runtime source path requires execution: scripts/verification/__tests__/browser-distribution.test.ts -> /dist/../../package.json",
+          "External or runtime source path requires execution: scripts/verification/__tests__/browser-distribution.test.ts -> /dist/%2e%2e/package.json",
+          "External or runtime source path requires execution: scripts/verification/__tests__/browser-distribution.test.ts -> /dist/%invalid",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/browser-distribution.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/bundling/browser-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/consumer-tools/package-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/consumer-tools/packed-browser-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/devtools/browser-check.ts",
+          "External or runtime source path requires execution: scripts/verification/devtools/fixtures/browser.ts -> ../../../../dist/define/input.js",
+          "External or runtime source path requires execution: scripts/verification/devtools/fixtures/browser.ts -> ../../../../dist/define/theme.js",
+          "External or runtime source path requires execution: scripts/verification/devtools/fixtures/browser.ts -> ../../../../dist/configure.js",
+          "External or runtime source path requires execution: scripts/verification/devtools/fixtures/production.ts -> ../../../../dist/define/input.js",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/documentation/action-labels.browser-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/documentation/appearance.browser-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/documentation/copied.browser-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/documentation/icons.browser-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/documentation/navigation.browser-check.ts",
+          "External or runtime source path requires execution: scripts/verification/documentation/navigation.browser-check.ts -> ../../../.artifacts/m23-docs/navigation.json",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/documentation/pages.browser-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/documentation/recipe-accessibility.browser-check.ts",
+          "External or runtime source path requires execution: scripts/verification/documentation/recipe-accessibility.browser-check.ts -> ../../../.artifacts/m23-docs/recipe-accessibility.json",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/documentation/recipes.browser-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/documentation/table-source-isolation.browser-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/documentation/video.browser-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/flow/distributions.browser-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/native-forms/history.browser-check.ts",
+          "External or runtime source path requires execution: scripts/verification/native-forms/history.browser-check.ts -> /dist/define/input.js",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/public-defaults/browser-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/react/browser-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/react/defaults-check.ts",
+          "External or runtime source path requires execution: scripts/verification/react/defaults-check.ts -> ../../../.artifacts/checks/react/defaults-results.json",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/removals/check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/scoped-registration/browser-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/table/declaration-patch-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/table/worker-consumer.browser-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/workspace/install-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/verification/workspace/packed-consumer-check.ts",
+          "Computed or runtime-dependent source paths require execution: scripts/workflow-migration.ts",
+          "Computed or runtime-dependent source paths require execution: site/__tests__/build.test.ts",
+          "External or runtime source path requires execution: site/__tests__/example-source.test.ts -> ../../dist/custom-elements.json",
+          "Computed or runtime-dependent source paths require execution: site/__tests__/recipes.test.ts",
+          "Computed or runtime-dependent source paths require execution: site/__tests__/table-sources.test.ts",
+          "Computed or runtime-dependent source paths require execution: site/api.ts",
+          "External or runtime source path requires execution: site/app/docs-app.ts -> ../../dist/index",
+          "External or runtime source path requires execution: site/app/docs-app.ts -> ../../dist/shared/atom-state",
+          "External or runtime source path requires execution: site/app/docs-app.ts -> ../../dist/shared/store-connection",
+          "External or runtime source path requires execution: site/app/docs-app.ts -> ../../dist/shared/theme-context",
+          "External or runtime source path requires execution: site/app/docs-app.ts -> ../../dist/shared/theme-scope",
+          "External or runtime source path requires execution: site/app/main.ts -> ../../dist/all",
+          "External or runtime source path requires execution: site/app/notifications.ts -> ../../dist/index",
+          "Computed or runtime-dependent source paths require execution: site/build.ts",
+          "Computed or runtime-dependent source paths require execution: site/example-files.ts",
+          "Computed or runtime-dependent source paths require execution: site/example-source.ts",
+          "Computed or runtime-dependent source paths require execution: site/pages/components/forms.ts",
+          "Computed or runtime-dependent source paths require execution: site/pages/components/index.ts",
+          "Computed or runtime-dependent source paths require execution: site/pages/components/table.ts",
+          "Computed or runtime-dependent source paths require execution: site/pages/components/video.ts",
+          "Computed or runtime-dependent source paths require execution: site/pages/icon-catalog.ts",
+          "Historical census source paths retain their exact baseline fixture/revision binding: site/recipes.ts",
+          "Computed or runtime-dependent source paths require execution: site/recipes.ts",
+          "Computed or runtime-dependent source paths require execution: site/site.ts",
+          "Consumer skill release reference is generated by scripts/consumer-skills.ts; packed-package availability requires the package gate: skills/choose-and-compose/SKILL.md",
+          "Consumer skill release reference is generated by scripts/consumer-skills.ts; packed-package availability requires the package gate: skills/data-layouts/SKILL.md",
+          "Consumer skill release reference is generated by scripts/consumer-skills.ts; packed-package availability requires the package gate: skills/forms-and-accessibility/SKILL.md",
+          "Consumer skill release reference is generated by scripts/consumer-skills.ts; packed-package availability requires the package gate: skills/html-artifacts/SKILL.md",
+          "Consumer skill release reference is generated by scripts/consumer-skills.ts; packed-package availability requires the package gate: skills/lit-integration/SKILL.md",
+          "Consumer skill release reference is generated by scripts/consumer-skills.ts; packed-package availability requires the package gate: skills/migration-between-releases/SKILL.md",
+          "Consumer skill release reference is generated by scripts/consumer-skills.ts; packed-package availability requires the package gate: skills/react-integration/SKILL.md",
+          "Computed or runtime-dependent source paths require execution: src/components/tabs/__tests__/tabs.browser-check.ts",
+          "Computed or runtime-dependent source paths require execution: src/shared/__tests__/breakpoints.test.ts",
+          "Generated runtime URL requires the package gate: src/shared/flow-engine.ts -> ./elk-worker.js",
+          "Computed or runtime-dependent source paths require execution: tools/geist/__tests__/diff.test.ts",
+          "Computed or runtime-dependent source paths require execution: tools/geist/__tests__/gen.test.ts",
+          "Computed or runtime-dependent source paths require execution: tools/geist/__tests__/simplify.test.ts",
+          "Computed or runtime-dependent source paths require execution: tools/geist/__tests__/token-declarations.test.ts",
+          "Computed or runtime-dependent source paths require execution: tools/geist/collector.ts",
+          "Computed or runtime-dependent source paths require execution: tools/geist/config.ts",
+          "Computed or runtime-dependent source paths require execution: tools/geist/contract.ts",
+          "Computed or runtime-dependent source paths require execution: tools/geist/diff.ts",
+          "Computed or runtime-dependent source paths require execution: tools/geist/extract.ts",
+          "Computed or runtime-dependent source paths require execution: tools/geist/gen.ts",
+          "Computed or runtime-dependent source paths require execution: tools/geist/reconstruct.ts",
+          "Computed or runtime-dependent source paths require execution: tools/geist/serve.ts",
+          "Computed or runtime-dependent source paths require execution: tools/geist/simplify.ts",
+          "Computed or runtime-dependent source paths require execution: tools/geist/tw.ts",
+          "Computed or runtime-dependent source paths require execution: tools/geist/vars.ts",
+          "Static reference checks do not execute drivers, resolve computed paths, verify prose meaning, test agent startup, or fetch external links.",
+          "Named audit JSON and schema-labelled task reports are provenance data. Their Markdown links remain checked."
+        ],
+        "fingerprints": {
+          "docs/verification/workflow-migration/ledger.json": "5a2766d1abb786a21173c8dba868d732043807779a95482aaab83d537b4d987d",
+          "baselineSources": "3f53595e40f0b45b99d0e96fe01a93bd18fd99699872f95c08793b4bdae5319e",
+          "docs/verification/workflow-migration/batches.json": "14d543813a889a7e353ec12419070035c4edba135a8a7e92f6710b7048c85a49",
+          "docs/verification/workflow-migration/references.json": "65995d7949d83ebc5bd2939f01d884b39cf65e2ca064c6acf7cdeab814a67368",
+          "docs/verification/workflow-migration/live-file-audit.json": "0feb6f37403d243a27c32395bfb72ab26cf0199957a619fb9a01634dff7a8673"
+        },
+        "counts": {
+          "sources": 970,
+          "destinations": 980,
+          "extractedFixtures": 2,
+          "batches": 197
+        }
+      }
+    }
   }
 }
