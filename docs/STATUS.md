@@ -4,7 +4,7 @@ Updated 2026-10-22. This file is the sole current handoff for the repository.
 
 ## Current work
 
-Phase: publishing the approved maintainer workflow migration. Use the [specification](../spec/SPEC-maintainer-workflow.md), [plan](../tasks/plan.md) and [task list](../tasks/todo.md).
+Phase: verifying deployment of the published maintainer workflow migration. Use the [specification](../spec/SPEC-maintainer-workflow.md), [plan](../tasks/plan.md) and [task list](../tasks/todo.md).
 
 Tasks 1–12 are complete. The new workflow is active. All 970 original files are migrated or explicitly retired. The old notes tree, root port plan and five local skills are removed. [Evidence](verification/workflow-migration/README.md).
 
@@ -12,7 +12,7 @@ All twelve implementation/verification tasks and Checkpoint D are complete. The 
 
 ## Next step
 
-Peter explicitly approves full publication on 2026-10-22. Publish this accepted branch and its pull request. Merge with a merge commit after required GitHub checks pass. Verify the existing documentation deployment and save the final receipt. [Exact scope and evidence](verification/workflow-migration/task-12.json).
+Peter explicitly approves full publication on 2026-10-22. [PR #7](https://github.com/acmelabs-15/design-system/pull/7) merges as 5488580a6aec0abac16470656aecb38f6f9c4840 after its complete [quality run](https://github.com/acmelabs-15/design-system/actions/runs/39765513004) passes on the exact reviewed head. Verify the merge commit's [quality run](https://github.com/acmelabs-15/design-system/actions/runs/39771017002) and [documentation deployment](https://github.com/acmelabs-15/design-system/actions/runs/39771017203), then publish the final records-only receipt through the normal PR checks. [Exact scope and evidence](verification/workflow-migration/task-12.json).
 
 Each release correction changes exactly one main-branch evidence URL to the immutable pre-migration commit. Fresh API reads confirm all three bodies match their exact proposals and all tag objects and eight assets are unchanged. The final guard confirms zero reference errors or pending items. Preserve published archives, signatures and tags. The existing documentation deployment follows the merge; verify its result for the actual merge commit.
 
@@ -23,7 +23,7 @@ One coordinator owns shared records, commits and build/browser runs. Workers own
 ## Verification and open issues
 
 - All 970 sources and 197 batches are accounted for. The final reference guard passes with zero errors or pending items after all three external corrections. Raw evidence hashes remain intact.
-- All required runtime stages pass on clean revision 5f74c3a0ceb57e2c5a54afe7e23bac91b9bbebb2 through the preserved invocation and resumed stages. Coverage includes all 24 browser invocations and 1,446 component cases. No stage or assertion is waived. No single uninterrupted full-gate invocation passes.
+- All required runtime stages pass on clean revision 5f74c3a0ceb57e2c5a54afe7e23bac91b9bbebb2 through the preserved invocation and resumed stages. Coverage includes all 24 browser invocations and 1,446 component cases. No stage or assertion is waived. No single uninterrupted local full-gate invocation passes. The later complete GitHub quality invocation passes on PR head 9fa57f8287bf151f7de53bb64e8f5597110220ff.
 - The later audit diagnostic correction at 4782c25980e4f77e2b1f4cfa83788748d090bfbc passes all 1,126 unit tests, strict types, focused static checks and the normal audit. All five review axes accept the migration and this correction. Product and build inputs are unchanged.
 - The corrected host iteration runs all eight cases on the real Claude and Codex CLIs. Read-only snapshots preserve all 70,383 live entries and 1,510 entries in each fixture. Codex native metadata confirms the shared instruction file from root and package starts. Claude root native import and the corrected explicit package startup also pass at their recorded source identities. The last package case preserves all 70,383 covered entries. Three nonblocking report wording/order observations remain in task 12; perfect or universal model behavior is not claimed.
 - The first clean gate records one registration-test timeout. Focused and later complete tests pass unchanged; the cause remains unverified. [Timeout issue](../.scratch/maintenance/issues/005-registration-test-timeout.md).
@@ -49,7 +49,7 @@ These are local paths, not portable dependencies. Verify they exist before use. 
 
 ## Git and permissions
 
-Branch: codex/maintainer-workflow-migration. Runtime acceptance uses clean revision 5f74c3a0ceb57e2c5a54afe7e23bac91b9bbebb2; final checker/unit acceptance uses 4782c25980e4f77e2b1f4cfa83788748d090bfbc. The initial corrected host matrix uses cb3d72281ea14684cbec132fabd3d3cdd27e7126 and separately recorded synthetic fixtures. Final Claude package acceptance uses clean 051f1ad9eca7e7ece8288112a946888e4101736a. Later commits save workflow instructions and evidence. Product and build inputs remain unchanged. Three approved release-body edits are verified. Push, pull request, merge and deployment verification are next.
+Branch: codex/workflow-publication-receipt, based on the published merge. It holds only the final publication records. Runtime acceptance uses clean revision 5f74c3a0ceb57e2c5a54afe7e23bac91b9bbebb2; final checker/unit acceptance uses 4782c25980e4f77e2b1f4cfa83788748d090bfbc. The initial corrected host matrix uses cb3d72281ea14684cbec132fabd3d3cdd27e7126 and separately recorded synthetic fixtures. Final Claude package acceptance uses clean 051f1ad9eca7e7ece8288112a946888e4101736a. Later commits save workflow instructions and evidence. Product and build inputs remain unchanged. Three approved release-body edits are verified. The branch is pushed and PR #7 is merged after all checks pass. The complete main quality workflow passes for merge commit 5488580a6aec0abac16470656aecb38f6f9c4840. Its documentation workflow remains in progress. Local publication-receipt updates remain owned by this task and await the final deployment result.
 
 Peter approves this migration's specification, plan, local implementation and verified local commits. On 2026-10-22 he also explicitly approves the two remaining Claude checks and their stated data transmission to Anthropic. On 2026-10-22 he explicitly approves full GitHub publication and the normal documentation deployment, with merge conditional on passing required checks.
 

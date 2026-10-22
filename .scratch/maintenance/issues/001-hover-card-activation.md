@@ -21,3 +21,5 @@ Completion needs a supported cause, a verification case that detects it, and pas
 ## Comments
 
 2026-10-21: carried into the new tracker. No product behavior changes are made by this migration.
+
+2026-10-22: the complete [PR quality run](https://github.com/acmelabs-15/design-system/actions/runs/39765513004) passes on 9fa57f8287bf151f7de53bb64e8f5597110220ff. The complete [main quality run](https://github.com/acmelabs-15/design-system/actions/runs/39771017002) also passes on merge commit 5488580a6aec0abac16470656aecb38f6f9c4840. Browser acceptance includes this case. These passes do not establish the earlier failure's cause; triage remains open.

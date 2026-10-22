@@ -12017,7 +12017,7 @@
       "retentionReview": "The final retention review approves the fourth-iteration excerpt and grading record.\n\n**Verdict:** Approve local retention at the verified hashes below. No actionable security finding.\n\nI read both files in full.\n\n- The excerpt contains visible replies, scoped tool inputs, result sizes/ranges, relevant plugin names, completion metadata, and hashed identities. It excludes hidden reasoning, private system/hook payloads, global instruction contents, full plugin inventories, credentials, and account metadata.\n- The grader records source-bound observations without copying private payloads. All three reporting observations remain explicit. It distinguishes explicit package instruction consumption from the separate root native capture and retains the package native-import omission.\n- The excerpt hash and raw identities match the grader. Both instruction hashes match Git blobs at the recorded corrected source. The earlier native capture matches its previously approved hash and keeps its earlier source identity.\n- Credential-pattern scans find no matches in either file. The three referenced raw event, stderr, and run files remain ignored and untracked. This approval covers their identity metadata only; raw logs must remain private.\n\nVerified identities:\n\n```text\nSource commit:\n051f1ad9eca7e7ece8288112a946888e4101736a\niteration-4/retained/claude-package-new-request.json SHA-256:\na37390efc456677708076c0a5513ac2517214034ebf18e20bfec9c4a338368e0\ntask12-session-grading-iteration-4.json SHA-256:\ncc9569b33c05e9c051ff3e01575035b3ec6b04522b5f62e035d54eb6b335dab9\n```\n\n**Limits:** Static retention review. I opened no raw private logs, launched no host, and repeated no product tests. Pattern scanning cannot prove absence of unfamiliar or encoded secrets. The grading remains a bounded acceptance observation, not universal instruction adherence or overall migration acceptance. Embedding must preserve its source identities, earlier attempts, reporting observations, and native-loading limits.\n"
     }
   },
-  "next": "Commit and push the accepted migration, open its PR, then merge with a merge commit only after required GitHub checks pass. Verify the documentation deployment and save the final publication receipt.",
+  "next": "Verify both merge-commit workflows and the deployed artifact; publish the final receipt through a reviewed records-only PR.",
   "external": {
     "pending": 0,
     "approved": true,
@@ -13035,5 +13035,640 @@
       "Static reference checks do not execute drivers, resolve computed paths, verify prose meaning, test agent startup, or fetch external links.",
       "Named audit JSON and schema-labelled task reports are provenance data. Their Markdown links remain checked."
     ]
+  },
+  "publicationExecution": {
+    "state": "merge-commit-deployment-checks",
+    "branch": "codex/maintainer-workflow-migration",
+    "head": "9fa57f8287bf151f7de53bb64e8f5597110220ff",
+    "pullRequest": {
+      "number": 7,
+      "url": "https://github.com/acmelabs-15/design-system/pull/7",
+      "state": "MERGED",
+      "attachedToChat": true,
+      "headRefOid": "9fa57f8287bf151f7de53bb64e8f5597110220ff",
+      "mergeCommit": {
+        "oid": "5488580a6aec0abac16470656aecb38f6f9c4840"
+      },
+      "mergedAt": "2026-10-22T11:29:50Z"
+    },
+    "quality": {
+      "runId": 39765513004,
+      "conclusion": "success",
+      "headSha": "9fa57f8287bf151f7de53bb64e8f5597110220ff",
+      "jobs": [
+        {
+          "completedAt": "2026-10-22T11:28:36Z",
+          "conclusion": "success",
+          "databaseId": 119779846429,
+          "name": "verify",
+          "startedAt": "2026-10-22T10:45:45Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-22T10:45:48Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-22T10:45:47Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T10:45:59Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "number": 2,
+              "startedAt": "2026-10-22T10:45:48Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T10:46:02Z",
+              "conclusion": "success",
+              "name": "Run oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6",
+              "number": 3,
+              "startedAt": "2026-10-22T10:45:59Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T10:46:03Z",
+              "conclusion": "success",
+              "name": "Frozen installation without dependency scripts",
+              "number": 4,
+              "startedAt": "2026-10-22T10:46:02Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T10:46:07Z",
+              "conclusion": "success",
+              "name": "Lint and formatting",
+              "number": 5,
+              "startedAt": "2026-10-22T10:46:03Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T10:49:47Z",
+              "conclusion": "success",
+              "name": "Build reviewed source and verify generated inputs",
+              "number": 6,
+              "startedAt": "2026-10-22T10:46:07Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T10:50:41Z",
+              "conclusion": "success",
+              "name": "Strict types",
+              "number": 7,
+              "startedAt": "2026-10-22T10:49:47Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T10:52:38Z",
+              "conclusion": "success",
+              "name": "Unit and workspace installation regressions",
+              "number": 8,
+              "startedAt": "2026-10-22T10:50:41Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T10:52:38Z",
+              "conclusion": "success",
+              "name": "Dependency audit",
+              "number": 9,
+              "startedAt": "2026-10-22T10:52:38Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T10:52:59Z",
+              "conclusion": "success",
+              "name": "Prepare and validate coordinated archives",
+              "number": 10,
+              "startedAt": "2026-10-22T10:52:38Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T11:08:19Z",
+              "conclusion": "success",
+              "name": "Install pinned browser engines",
+              "number": 11,
+              "startedAt": "2026-10-22T10:52:59Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T11:28:21Z",
+              "conclusion": "success",
+              "name": "Three-engine and clean-consumer acceptance",
+              "number": 12,
+              "startedAt": "2026-10-22T11:08:19Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T11:28:23Z",
+              "conclusion": "success",
+              "name": "Bun-hosted npm crypto and public trust verification",
+              "number": 13,
+              "startedAt": "2026-10-22T11:28:21Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T11:28:26Z",
+              "conclusion": "success",
+              "name": "Save diagnostic evidence",
+              "number": 14,
+              "startedAt": "2026-10-22T11:28:23Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T11:28:29Z",
+              "conclusion": "success",
+              "name": "Save reviewed release archives",
+              "number": 15,
+              "startedAt": "2026-10-22T11:28:26Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T11:28:33Z",
+              "conclusion": "success",
+              "name": "Save reviewed documentation output",
+              "number": 16,
+              "startedAt": "2026-10-22T11:28:29Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T11:28:33Z",
+              "conclusion": "success",
+              "name": "Post Run oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6",
+              "number": 31,
+              "startedAt": "2026-10-22T11:28:33Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T11:28:33Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "number": 32,
+              "startedAt": "2026-10-22T11:28:33Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-22T11:28:33Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 33,
+              "startedAt": "2026-10-22T11:28:33Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/acmelabs-15/design-system/actions/runs/39765513004/job/119779846429"
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/acmelabs-15/design-system/actions/runs/39765513004"
+    },
+    "externalReleaseCorrections": "verified",
+    "mergeAuthorization": "Merge commit only after required checks pass",
+    "updatedAt": "2026-10-22T11:31:10.060Z",
+    "baselineSite": {
+      "phase": "baseline",
+      "startedAt": "2026-10-22T11:06:23.503Z",
+      "url": "https://acmelabs-15.github.io/design-system/",
+      "method": "Pinned Playwright Chromium with a fresh temporary browser profile and context",
+      "limitation": "Bounded deployment smoke; does not replace repository gates or actual-platform verification",
+      "passed": true,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "responses": [
+        {
+          "url": "https://acmelabs-15.github.io/design-system/",
+          "status": 200,
+          "type": "document"
+        },
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Google+Sans+Code:wght@400..700&display=swap",
+          "status": 200,
+          "type": "stylesheet"
+        },
+        {
+          "url": "https://acmelabs-15.github.io/design-system/styles/tokens.css",
+          "status": 200,
+          "type": "stylesheet"
+        },
+        {
+          "url": "https://acmelabs-15.github.io/design-system/styles/docs.css",
+          "status": 200,
+          "type": "stylesheet"
+        },
+        {
+          "url": "https://acmelabs-15.github.io/design-system/styles/dashboard.css",
+          "status": 200,
+          "type": "stylesheet"
+        },
+        {
+          "url": "https://acmelabs-15.github.io/design-system/app.js",
+          "status": 200,
+          "type": "script"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/googlesansflex/v26/t5svIQcYNIWbFgDgAAzZ34auoVyXkJCOvoOmPWNbN5hF8Ju1x5Vwd0N3l9sIcwowNJwGpVd4AZzz0v6lJ4qFXNZhGjLvDSkV4W6GGn9Q3I8i.woff2",
+          "status": 200,
+          "type": "font"
+        },
+        {
+          "url": "https://acmelabs-15.github.io/design-system/pages/index.html",
+          "status": 200,
+          "type": "fetch"
+        },
+        {
+          "url": "https://acmelabs-15.github.io/design-system/pages/components/button.html",
+          "status": 200,
+          "type": "fetch"
+        }
+      ],
+      "home": {
+        "heading": "ACME Design System",
+        "status": 200
+      },
+      "nativeButtonLinks": [
+        {
+          "role": "link",
+          "name": "Button"
+        }
+      ],
+      "buttonLinks": [
+        {
+          "href": "/design-system/components/button",
+          "text": "Button",
+          "visible": true
+        },
+        {
+          "href": "/design-system/components/button",
+          "text": "Button",
+          "visible": false
+        }
+      ],
+      "button": {
+        "heading": "Button",
+        "url": "https://acmelabs-15.github.io/design-system/components/button",
+        "components": [
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 56.375,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 71.109375,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 70.578125,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 68.53125,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 71.875,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 24,
+            "height": 24
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 60.828125,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 79.34375,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 68.375,
+            "height": 40
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 111.5,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 88.921875,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 107.75,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 56.375,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 160,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 96.28125,
+            "height": 36
+          },
+          {
+            "upgraded": true,
+            "shadow": true,
+            "width": 122.140625,
+            "height": 32
+          }
+        ]
+      },
+      "finishedAt": "2026-10-22T11:06:25.969Z",
+      "screenshot": {
+        "path": ".artifacts/workflow-publication/execution/baseline-button.png",
+        "visuallyReviewed": true,
+        "result": "Button heading, examples and selected sidebar entry render without visible clipping at 1440 by 1000."
+      }
+    },
+    "browserMethod": {
+      "firstTool": "Chrome DevTools MCP new_page",
+      "result": "Existing dedicated browser profile is already in use; no page was created.",
+      "selectedMethod": "Existing pinned Playwright runtime launches its own temporary profile and fresh context. No shared browser or global configuration is changed.",
+      "firstBaselineAttempt": {
+        "result": "Playwright's broad role/name locator throws while computing a descendant's labels property. Home HTTP/rendering and all observed network/console checks pass before that locator error.",
+        "evidence": ".artifacts/workflow-publication/execution/baseline-site-first-attempt.json",
+        "sha256": "84f14083e25c444a74686c89a0f968697271ef35eaa7e7b87adccadfbcf0a4c1",
+        "cause": "The installed locator expands element.labels as an iterable without checking its type. Copy Button has a private StoreSelector named labels; its role in this exact failure remains unverified.",
+        "correction": "The bounded navigation check uses Chromium's native accessibility tree for the Button link name, then the observed known anchor for the UI click. No DOM or product behavior is changed; this does not claim the broad locator defect is fixed."
+      }
+    },
+    "prCheckLog": {
+      "path": ".artifacts/workflow-publication/execution/pr-quality.log",
+      "sha256": "5c9cd06a3386763ab626faabe00ca03f3dd3a2e27a529d4d80d7d036edcaaf26",
+      "browserInstallation": "Ubuntu dependency downloads take 14 minutes 40 seconds for 119 MB. The pinned Playwright downloads and the full installation then pass.",
+      "scope": "One complete GitHub quality invocation passes on the exact reviewed PR head. Earlier local failed invocations remain preserved and unexplained causes remain open."
+    },
+    "postMerge": {
+      "head": "5488580a6aec0abac16470656aecb38f6f9c4840",
+      "quality": {
+        "runId": 39771017002,
+        "conclusion": "success",
+        "headSha": "5488580a6aec0abac16470656aecb38f6f9c4840",
+        "jobs": [
+          {
+            "completedAt": "2026-10-22T11:50:16Z",
+            "conclusion": "success",
+            "databaseId": 119798278873,
+            "name": "verify",
+            "startedAt": "2026-10-22T11:29:56Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-22T11:29:59Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-22T11:29:57Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:30:06Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                "number": 2,
+                "startedAt": "2026-10-22T11:29:59Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:30:07Z",
+                "conclusion": "success",
+                "name": "Run oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6",
+                "number": 3,
+                "startedAt": "2026-10-22T11:30:06Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:30:09Z",
+                "conclusion": "success",
+                "name": "Frozen installation without dependency scripts",
+                "number": 4,
+                "startedAt": "2026-10-22T11:30:07Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:30:12Z",
+                "conclusion": "success",
+                "name": "Lint and formatting",
+                "number": 5,
+                "startedAt": "2026-10-22T11:30:09Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:32:36Z",
+                "conclusion": "success",
+                "name": "Build reviewed source and verify generated inputs",
+                "number": 6,
+                "startedAt": "2026-10-22T11:30:12Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:33:13Z",
+                "conclusion": "success",
+                "name": "Strict types",
+                "number": 7,
+                "startedAt": "2026-10-22T11:32:36Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:34:34Z",
+                "conclusion": "success",
+                "name": "Unit and workspace installation regressions",
+                "number": 8,
+                "startedAt": "2026-10-22T11:33:13Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:34:34Z",
+                "conclusion": "success",
+                "name": "Dependency audit",
+                "number": 9,
+                "startedAt": "2026-10-22T11:34:34Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:34:50Z",
+                "conclusion": "success",
+                "name": "Prepare and validate coordinated archives",
+                "number": 10,
+                "startedAt": "2026-10-22T11:34:34Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:35:34Z",
+                "conclusion": "success",
+                "name": "Install pinned browser engines",
+                "number": 11,
+                "startedAt": "2026-10-22T11:34:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:50:04Z",
+                "conclusion": "success",
+                "name": "Three-engine and clean-consumer acceptance",
+                "number": 12,
+                "startedAt": "2026-10-22T11:35:34Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:50:07Z",
+                "conclusion": "success",
+                "name": "Bun-hosted npm crypto and public trust verification",
+                "number": 13,
+                "startedAt": "2026-10-22T11:50:04Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:50:09Z",
+                "conclusion": "success",
+                "name": "Save diagnostic evidence",
+                "number": 14,
+                "startedAt": "2026-10-22T11:50:07Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:50:11Z",
+                "conclusion": "success",
+                "name": "Save reviewed release archives",
+                "number": 15,
+                "startedAt": "2026-10-22T11:50:09Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:50:13Z",
+                "conclusion": "success",
+                "name": "Save reviewed documentation output",
+                "number": 16,
+                "startedAt": "2026-10-22T11:50:11Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:50:14Z",
+                "conclusion": "success",
+                "name": "Post Run oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6",
+                "number": 31,
+                "startedAt": "2026-10-22T11:50:13Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:50:14Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+                "number": 32,
+                "startedAt": "2026-10-22T11:50:14Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T11:50:14Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 33,
+                "startedAt": "2026-10-22T11:50:14Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/acmelabs-15/design-system/actions/runs/39771017002/job/119798278873"
+          }
+        ],
+        "status": "completed",
+        "url": "https://github.com/acmelabs-15/design-system/actions/runs/39771017002"
+      },
+      "documentation": {
+        "runId": 39771017203,
+        "url": "https://github.com/acmelabs-15/design-system/actions/runs/39771017203",
+        "state": "in_progress"
+      }
+    },
+    "mergeVerification": {
+      "parents": [
+        "1b5d08a420f7f916b0c87b166527c60985937f4d",
+        "9fa57f8287bf151f7de53bb64e8f5597110220ff"
+      ],
+      "tree": "8b7044da5c9d8b16d4ae7637da843ab646efef15",
+      "treeMatchesReviewedHead": true,
+      "method": "Fetched merge commit; git show verifies two parents and git diff from reviewed head is empty."
+    },
+    "receiptBranch": "codex/workflow-publication-receipt"
   }
 }

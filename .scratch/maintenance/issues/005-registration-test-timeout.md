@@ -21,3 +21,5 @@ Reproduce the timing failure and identify its cause. Distinguish test state, reg
 ## Comments
 
 2026-10-22: recorded after the first full gate. Local retests pass; the original failure remains visible.
+
+2026-10-22: the complete [PR quality run](https://github.com/acmelabs-15/design-system/actions/runs/39765513004) passes all 1,126 unit tests on 9fa57f8287bf151f7de53bb64e8f5597110220ff. The complete [main quality run](https://github.com/acmelabs-15/design-system/actions/runs/39771017002) also passes on merge commit 5488580a6aec0abac16470656aecb38f6f9c4840. No registration implementation, assertion or timeout changes. The original timeout's cause remains unverified.

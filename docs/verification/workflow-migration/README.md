@@ -17,7 +17,7 @@ Follow the root agent instructions and [task list](../../../tasks/todo.md) for c
 - [Task 9: reviewed shared startup and technical guidance](task-09.json).
 - [Task 10: migrated live consumers and generated projections](task-10.json).
 - [Task 11: atomic cutover and exact removal set](task-11.json).
-- [Task 12: final gate, host checks and preserved attempts](task-12.json).
+- [Task 12: final gate, host checks, preserved attempts and publication receipts](task-12.json).
 - [Supplemental guard coverage](task-03-supplemental.json) and [38 captured logs](task-04-supplemental.json).
 - [Complete source-to-destination ledger](ledger.json).
 - [Bounded child tasks and exact file scopes](batches.json).
@@ -33,10 +33,10 @@ Follow the root agent instructions and [task list](../../../tasks/todo.md) for c
 - [Live verification files](live-file-audit.json): required and manual checks, fixtures, dependency edges and output ownership.
 - [Verification summaries and captured Markdown](verification-summary-audit.json): 22 authored summaries and 19 immutable records.
 - [Rule audit input](rule-audit-input.md): the original comparison behind the finalized dispositions.
-- [External references](external-reference-audit.json): package/archive retrieval checks and three prepared release-body corrections.
+- [External references](external-reference-audit.json): package/archive retrieval checks and three applied, verified release-body corrections.
 
 ## Verification limits
 
 Task 1 verifies the runner plan and its focused tests. Task 2 verifies inventory, source fingerprints, reference relationships and rule ownership. Neither is full migration acceptance.
 
-The recorded Chromium Hover Card failure remains open. Actual Safari, assistive technology, operating-system input/autofill and background-window checks remain unperformed. Token rotation remains owner-controlled. External release-body corrections and their actual verification are recorded in task 12. STATUS owns the approved publication work and its current state.
+The earlier Chromium Hover Card failure's cause remains open. Later passing checks do not establish its cause. Actual Safari, assistive technology, operating-system input/autofill and background-window checks remain unperformed. Token rotation remains owner-controlled. External release-body corrections and their actual verification are recorded in task 12. STATUS owns the approved publication work and its current state.
