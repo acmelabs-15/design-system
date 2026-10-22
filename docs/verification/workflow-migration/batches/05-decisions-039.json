@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-039",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/zag-lit-integration.md",
+      "destination": "docs/decisions/0115-zag-lit-integration.md",
+      "sourceSha256": "228de82b5c80a1e79431be4871ebcde83cfdf5a03ee43f0b32921269f107ef2e",
+      "destinationSha256": "9abe8f2642c26523145d20be85e55f4e643bd3529c0b2f8184263e00d1ce2c78",
+      "changes": [
+        "Rewrote superseded runtime instructions as historical choices throughout.",
+        "Preserved exact capability scope, responsibility requirements, adapter research and verification limits.",
+        "Kept original attribution and same-day supersession without reactivating runtime adoption or phase gates."
+      ],
+      "retainedQualifications": [
+        "Actual dependency use was originally selected, then superseded; capabilities remain.",
+        "No blanket Zag adoption; controlled value alone did not prove canonical state.",
+        "No official documented Lit adapter or working integration was found at the recorded date.",
+        "Per-control all-engine acceptance was required and not claimed."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}
