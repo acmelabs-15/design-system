@@ -4,6 +4,8 @@ Peter's release authorization and [execution delegation](../decisions/execution-
 
 ## Current state
 
+- Subsequent observation, 2026-10-21: quality run 39516728235 passes on the final records commit. Documentation run 39516728504 fails one Chromium Hover Card activation check and skips deployment. The cause is unverified. This updates the earlier pending-workflow observation; it does not replace the saved release acceptance with a claimed pass. [Exact baseline observation](evidence/workflow-migration-2026-10-21.json).
+
 - [Version 0.3.2 is the latest stable GitHub release](https://github.com/acmelabs-15/design-system/releases/tag/v0.3.2). All five npm packages are public. Their actual archives, signed provenance and latest tags verify. [Public verification](evidence/release-0.3.2/public-verification.json).
 - Exact-tag publication run 39499520613 succeeds. The release ZIP and checksum are public; anonymous downloads match the approved SHA-256 values. [Release metadata](evidence/release-0.3.2/github-release.json), [public downloads](evidence/release-0.3.2/github-public-downloads.json).
 - Public CDN checks pass in Chromium, Firefox and WebKit. Reviewed Pages deployment 118925381095 succeeds in run 39499435937. All 25,120 public site files match, and twelve route/engine cases pass. Flow checks include completed layout, Add step and actual worker closure. [CDN](evidence/release-0.3.2/cdn-public-verification.json), [Pages](evidence/release-0.3.2/pages-public-verification.json).

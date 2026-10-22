@@ -383,3 +383,11 @@ All 25,120 corrected public files match the reviewed 0.3.2 artifact. The navigat
 This acceptance permits retirement of the unchanged 244-file tracked snapshot. Pages already deploys the verified workflow artifact. The generated-file map points to site/ as authored input and _site/ as disposable output. [Complete evidence and closure status](../alignment/release-0.3.2.md).
 
 PR #6 subsequently passes complete CI and merges the exact reviewed snapshot retirement. Its Git tree equals the CI tree. All 25,120 generated site paths and hashes equal the accepted public output; five public entry/content files also pass a fresh fetch. Independent review accepts reuse of the completed public browser checks for this identical output. Automatic post-merge workflow status remains a separate observation, not a claimed pass. GitHub 0.3.2 is now stable/latest, and anonymous release-asset downloads match their approved checksums. [Final closure](../alignment/evidence/release-0.3.2/closure.json).
+
+### Later documentation-workflow failure observed 2026-10-21
+
+The final records commit 1b5d08a420f7f916b0c87b166527c60985937f4d has a successful quality run, 39516728235, and a failed documentation run, 39516728504. Documentation verification passes installation, static checks, build, types, units, audit and archive preparation, then fails component-browser acceptance. Deployment is skipped.
+
+The diagnostic artifact 12310897916 verifies against SHA-256 33566bf38ca3c8825513f652652d1014075a46405ea63684f8c0c294594275c8. Its component report has one failure among 1,446 cases: Chromium, Tooltip suite, “Hover Card preserves native destination activation and never focuses its preview.” The observed fragment is empty instead of #profile. The associated fixture is src/components/tooltip/__tests__/tooltip.browser.ts.
+
+The failure has not been reproduced locally in this investigation. Its cause is unverified; neither a runtime defect nor a test timing defect is established. Keep it open in the new workflow's handoff and issue records. The earlier successful release/public-delivery evidence remains a dated observation, not proof that this later failed run passes. [Captured result](../alignment/evidence/workflow-migration-2026-10-21.json).

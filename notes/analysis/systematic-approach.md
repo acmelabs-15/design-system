@@ -204,3 +204,56 @@ That assembly now covers all thirteen groups through the [complete proposal inde
 ### Whole-set approval and Phase 5 handoff
 
 On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/migration-approval.md) through “approved”. M00 technical prerequisites remain active before dependent implementation. Production implementation has not started; approval is not a runtime result.
+
+## Maintainer workflow migration 2026-10-21
+
+Peter now requests the agent-skills/brain workflow used in the CLI and D&D projects. He clarifies three requirements: complete migration to the new layout and formats, deletion of all five local skills, and removal or rewriting of rules that conflict with the new workflow. [Decision](../decisions/maintainer-workflow-migration.md), [proposed specification](../../spec/SPEC-maintainer-workflow.md), [observations and inventory](../alignment/evidence/workflow-migration-2026-10-21.json).
+
+### What creates the continuity in the reference projects
+
+Read the supplied D&D kickoff prompt in full. Read both projects' AGENTS.md, CLAUDE.md, README.md, CONTEXT.md, docs/STATUS.md, all three docs/agents files and project plugin settings in full. The CLI capability index and completed github-ops plan/task list were also read in full.
+
+The repository instructions supply the session contract: read status first, read the active specification/tasks, inspect Git and verification, report briefly, then update status/tasks at the end. CLAUDE.md imports the shared AGENTS.md and adds Claude-specific commands. Both plugins are enabled, with brain taking precedence on shared skill names. Both projects use local Markdown issues.
+
+The installed plugin skills provide the lifecycle, specifications, tasks, verification and handoff disciplines. Searches of both plugins' skill and command trees, including the Claude command directories, find no STATUS.md reference. Neither inspected Claude plugin manifest declares a status-writing hook. This supports the repository instructions as the source of the named status-file routine. It is not a guarantee about future plugin versions or every host configuration.
+
+Claude has brain 0.6.0 and agent-skills 0.6.13 installed. Five relevant brain router/setup/planning/build files match their Codex cache copies byte for byte. Project settings express enablement; actual fresh-session discovery remains an implementation acceptance check.
+
+### Differences that the migration must handle
+
+| Finding | Consequence |
+|---|---|
+| The CLI already contains multiple packages and an agent guide | Use its shared handoff/task model; do not create a parallel project process for each npm package |
+| This repo already has a selected two-context map | Keep the component/tooling meanings and their relationship; do not invent one glossary per package |
+| The old startup corpus has 114 decisions and 20 analyses, 8,715 lines before other required reading | Route from short current state into relevant records, then read each selected record in full |
+| The current handoff mixes current release closure with many old instructions to continue past phases | Separate current state, current specifications and completed history |
+| CLAUDE.md is currently a symlink | Replace it with the reference projects' import file without accidentally editing AGENTS.md through the symlink |
+| Local domain-modeling and grill-me still say docs/ is generated | Retire those local procedures; the real website output is _site/ |
+| scripts/check.ts executes files inside the old evidence tree | Move active drivers and update their callers; do not treat every old evidence file as inert history |
+| site/recipes.ts embeds decision and evidence paths | Update source references and their generated projections with the migration |
+| Core and browser share one build; React and tools consume its metadata | Preserve source ownership and cross-package verification when changing guidance |
+| The reference projects have different standing commit/push grants | Do not import a grant from either project as authorization here |
+
+The complete tracked source inventory for this migration contains 930 files at the baseline, including 215 Markdown files and 124 TypeScript files. Many are raw evidence or fixtures. The ledger must classify them; file extensions alone do not establish whether a file is live code, evidence or a current contract.
+
+### Final-state recommendation
+
+Use the new docs/, spec/ and tasks/ structure, not a permanent index over notes/. Convert decisions to numbered records and research to numbered notes with an index. Move current contracts to specifications, completed plans to tasks/done, releases to docs/releases, raw evidence to docs/verification, and completed prose history to docs/history.
+
+Retain raw evidence bytes. Rewrite prose into the new format without inventing decisions or removing qualifications. Retired process rules survive in Git, not as alternative instructions in the active docs. Keep immutable historical payloads distinct from live references.
+
+Remove all five .agents skills. Brain's domain-modeling, codebase-design, interview-me/specification and wait-what skills cover their corresponding roles. The old improve-codebase-architecture procedure has no same-named brain skill in the inspected catalog; its useful architecture/review responsibilities route through brain's codebase-design and review skills. Its bespoke HTML-report/grilling procedure is not automatically carried forward as a requirement.
+
+The new workflow controls the rule audit. Existing product constraints survive only when compatible and still applicable. Explicitly classify the completed pass's blanket delegation, old approval cadence, reading order, output paths and local skill priority. Do not add a catch-all “existing rules override the plugins” paragraph that defeats the requested replacement.
+
+This is a workflow/documentation migration, not adoption of the CLI project's runtime version, Changesets setup, shared presets or publication pipeline. Published package versions and signed evidence remain immutable. Inventory mutable external links, including GitHub release-note links, before their source paths disappear. Updating those external surfaces still follows the outward-action approval rule.
+
+### Verification and current red check
+
+Main still points at 1b5d08a420f7f916b0c87b166527c60985937f4d. Quality run 39516728235 passes. Documentation run 39516728504 fails before deployment. Its downloaded diagnostic ZIP matches GitHub's SHA-256. Of 1,446 component cases, one Chromium Tooltip-suite case fails: Hover Card destination activation expects #profile and observes an empty fragment. No root cause is established by this observation.
+
+Carry that result into the migrated status/issues. Do not infer that the assertion is wrong or discard the failing run because a separate run of the same commit passes. The runtime investigation is separate from this specification work; the migration's final gate must still report or resolve all applicable failures.
+
+The migration needs two kinds of proof: complete record/reference/ownership checks, and fresh-session behavior in the intended hosts. Test root and package starts, interrupted work, a new request beside an incomplete task, no approved next task, and an existing failed check. A file's presence does not prove the agent follows it.
+
+No startup rule, local skill, product source, package version or plugin setting changes in this investigation. The proposed specification awaits review. This paragraph supersedes earlier provisional suggestions to keep the old record paths permanently.
