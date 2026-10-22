@@ -12,7 +12,7 @@ The task-8 preparation passes all 24 required runtime checks, seven manual comma
 
 ## Next step
 
-Complete task 12 on the corrected clean candidate. Preserve the first full run's timeout and recheck the complete gate. Repeat the affected fresh-host probes after the reviewed startup-pointer corrections. No further routine implementation approval is pending.
+Finish the diagnostic correction's full unit check, then run the eight corrected fresh-host probes. All required runtime stages pass on clean revision 5f74c3a0ceb57e2c5a54afe7e23bac91b9bbebb2 through the preserved invocation and resumed stages. The later correction affects only private audit error reporting. No further routine implementation approval is pending.
 
 Finish all authorized local verification and corrections before requesting the outward-action approval. The three external link corrections keep the final migration guard pending; they do not block local checks. Overall migration acceptance remains pending until those approved corrections are applied. Local verification completion and the final migration verdict have separate evidence.
 
@@ -22,6 +22,9 @@ One coordinator owns shared records, commits and build/browser runs. Workers own
 
 - The migration guard passes 94 focused tests. The runner retains all 24 ordered invocations. The moved helper, npm-cache proof, Table declaration control, React type fixture and removal audit pass their focused checks.
 - The first clean gate passes static checks, build and strict types, then records 1,117 unit passes and one 55-second timeout. The isolated case passes in 0.5 seconds; its 27-test file and the 121-test guard-plus-registration sequence pass unchanged. The cause remains unverified. [Timeout record](../.scratch/maintenance/issues/005-registration-test-timeout.md).
+- The corrected candidate passes all 1,118 unit tests, all 24 browser invocations and 1,446 component cases. Package, browser-installation and release checks pass. Two native audit requests return HTTP 503; later original-configuration requests pass the unchanged audit gate with two verified dispositions. No credential cause is established. [Preserved runs and scope](verification/workflow-migration/task-12.json).
+- The audit wrapper now preserves native diagnostics when JSON output is empty or malformed. All five review axes accept the narrow fix. Its 13 focused tests, strict types and focused static checks pass. Full unit closure remains next.
+- The first host iteration has seven graded probes. It finds two Claude failures: skipped mandatory startup reads and an unsupported guard-waiver proposal. Reviewed pointers and status wording address both. The corrected eight-probe iteration remains required; earlier outcomes are retained.
 - Baseline main 1b5d08a420f7f916b0c87b166527c60985937f4d has a passing quality run 39516728235 and a failing documentation run 39516728504. One Chromium Hover Card activation case fails; deployment is skipped. [Issue](../.scratch/maintenance/issues/001-hover-card-activation.md).
 - Actual Safari, assistive technology, operating-system input/autofill and background-window behavior remain unperformed. [Platform follow-up](../.scratch/maintenance/issues/002-actual-platform-verification.md).
 - The earlier npm-token rotation is owner-controlled and unconfirmed. Release authentication is complete. [Security follow-up](../.scratch/maintenance/issues/003-npm-token-rotation.md).
@@ -43,7 +46,7 @@ These are local paths, not portable dependencies. Verify they exist before use. 
 
 ## Git and permissions
 
-Branch: codex/maintainer-workflow-migration. The first task-12 candidate is 632a392291a6761ea7f8f2460a7cac05ff2bc4ec. Its full run is preserved. The current correction strengthens startup pointers and removes the stale index claim. Inspect Git for the next clean candidate identity. No push or external write has occurred.
+Branch: codex/maintainer-workflow-migration. Runtime acceptance uses clean revision 5f74c3a0ceb57e2c5a54afe7e23bac91b9bbebb2. The narrow audit diagnostic correction and its evidence are saved with this handoff. Inspect Git for its exact identity before full unit closure. Product sources, dependencies and versions remain unchanged. No push or external write has occurred.
 
 Peter approves this migration's specification, plan, local implementation and verified local commits. Push, pull request, merge, release and external release-body edits remain unapproved. Prepare their concrete result before asking once. Three [release-body corrections](verification/workflow-migration/external-reference-audit.json) are prepared; published archives, tags and signatures stay immutable.
 

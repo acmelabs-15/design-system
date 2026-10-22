@@ -1,0 +1,66 @@
+{
+  "input": {
+    "started": "2026-10-22T07:44:14.768Z",
+    "commit": "5f74c3a0ceb57e2c5a54afe7e23bac91b9bbebb2",
+    "sourceTree": "clean",
+    "runtime": "1.4.2",
+    "stages": [
+      "packages",
+      "install-browsers",
+      "browser",
+      "release"
+    ],
+    "priorStages": "Static/build/types/unit pass on this same clean revision. Native audit is unresolved and remains a separate required gate."
+  },
+  "results": [
+    {
+      "stage": "packages",
+      "command": [
+        "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun",
+        "scripts/check.ts",
+        "packages"
+      ],
+      "started": "2026-10-22T07:44:14.785Z",
+      "finished": "2026-10-22T07:44:45.116Z",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "stage": "install-browsers",
+      "command": [
+        "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun",
+        "scripts/check.ts",
+        "install-browsers"
+      ],
+      "started": "2026-10-22T07:44:45.118Z",
+      "finished": "2026-10-22T07:44:55.629Z",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "stage": "browser",
+      "command": [
+        "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun",
+        "scripts/check.ts",
+        "browser"
+      ],
+      "started": "2026-10-22T07:44:55.630Z",
+      "finished": "2026-10-22T08:00:24.740Z",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "stage": "release",
+      "command": [
+        "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun",
+        "scripts/check.ts",
+        "release"
+      ],
+      "started": "2026-10-22T08:00:24.741Z",
+      "finished": "2026-10-22T08:00:30.300Z",
+      "exitCode": 0,
+      "passed": true
+    }
+  ],
+  "complete": true
+}
