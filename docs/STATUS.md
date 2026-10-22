@@ -8,24 +8,27 @@ Phase: verify the approved maintainer workflow migration. Use the [specification
 
 Tasks 1–11 are complete. The new workflow is active. All 970 original files are migrated or explicitly retired. The old notes tree, root port plan and five local skills are removed. [Evidence](verification/workflow-migration/README.md).
 
-The task-8 preparation passes all 24 required runtime checks, seven manual commands and 1,446 component cases. All contracts, history and 22 verification summaries pass semantic review. The clean cutover candidate still needs task 12. Original paths remain in Git history and immutable provenance only.
+All required runtime stages pass. Task 12 remains open for the remaining Claude verification and three external release-link corrections. No product behavior, dependency or package version changes belong to this migration.
 
 ## Next step
 
-Run and grade the eight corrected fresh-host probes, then close the local reference guard and acceptance record. All required runtime stages pass on clean revision 5f74c3a0ceb57e2c5a54afe7e23bac91b9bbebb2 through the preserved invocation and resumed stages. The later diagnostic correction at 4782c25980e4f77e2b1f4cfa83788748d090bfbc passes all 1,126 unit tests, strict types, static checks and the normal audit. Product and build inputs are unchanged. No further routine implementation approval is pending.
+Obtain explicit authorization for the remaining read-only Claude verification. Automatic approval review rejects both the native loaded-context listing and a focused package-session retry because the authenticated CLI can send repository context to an external service. Do not retry either through another execution route. The exact actions, prepared commands, data scope and retained results are in [task 12](verification/workflow-migration/task-12.json).
 
-Finish all authorized local verification and corrections before requesting the outward-action approval. The three external link corrections keep the final migration guard pending; they do not block local checks. Overall migration acceptance remains pending until those approved corrections are applied. Local verification completion and the final migration verdict have separate evidence.
+After authorization, finish the remaining Claude checks with the existing subscription and installed plugins. Preserve earlier attempts. Re-run only a case invalidated by a reviewed instruction or harness correction. Record actual source revisions and file preservation. The package retry adds only the two exact read-only directory listings that the prior harness denied.
 
-One coordinator owns shared records, commits and build/browser runs. Workers own disjoint destinations and batch reports. Read those reports before accepting their results. Keep heavy build and browser jobs serial.
+Finish local verification and records before requesting outward-action approval. Push, pull request, merge and release-body edits remain unapproved. Three prepared release-link corrections keep the final migration guard pending; they do not block the remaining local work. Overall acceptance requires those corrections and a passing final guard. No waiver is approved.
+
+One coordinator owns shared records, commits and build/browser runs. Workers own disjoint destinations and result records. Read those records before accepting their results. Keep heavy build and browser jobs serial.
 
 ## Verification and open issues
 
-- The migration guard passes 94 focused tests. The runner retains all 24 ordered invocations. The moved helper, npm-cache proof, Table declaration control, React type fixture and removal audit pass their focused checks.
-- The first clean gate passes static checks, build and strict types, then records 1,117 unit passes and one 55-second timeout. The isolated case passes in 0.5 seconds; its 27-test file and the 121-test guard-plus-registration sequence pass unchanged. The cause remains unverified. [Timeout record](../.scratch/maintenance/issues/005-registration-test-timeout.md).
-- The corrected candidate passes all 1,118 unit tests, all 24 browser invocations and 1,446 component cases. Package, browser-installation and release checks pass. Two native audit requests return HTTP 503; later original-configuration requests pass the unchanged audit gate with two verified dispositions. No credential cause is established. [Preserved runs and scope](verification/workflow-migration/task-12.json).
-- The audit wrapper now preserves native diagnostics when JSON output is empty or malformed. All five review axes accept the narrow fix. Its 13 focused tests, strict types, focused static checks, complete 1,126-test suite and normal live audit pass.
-- The first host iteration has seven graded probes. It finds two Claude failures: skipped mandatory startup reads and an unsupported guard-waiver proposal. Reviewed pointers and status wording address both. The corrected eight-probe iteration remains required; earlier outcomes are retained.
-- Baseline main 1b5d08a420f7f916b0c87b166527c60985937f4d has a passing quality run 39516728235 and a failing documentation run 39516728504. One Chromium Hover Card activation case fails; deployment is skipped. [Issue](../.scratch/maintenance/issues/001-hover-card-activation.md).
+- All 970 sources and 197 batches are accounted for. The reference guard finds no local migration errors. Its only three errors are the pending external release-link corrections. Raw evidence hashes remain intact.
+- All required runtime stages pass on clean revision 5f74c3a0ceb57e2c5a54afe7e23bac91b9bbebb2 through the preserved invocation and resumed stages. Coverage includes all 24 browser invocations and 1,446 component cases. No stage or assertion is waived. No single uninterrupted full-gate invocation passes.
+- The later audit diagnostic correction at 4782c25980e4f77e2b1f4cfa83788748d090bfbc passes all 1,126 unit tests, strict types, focused static checks and the normal audit. All five review axes accept the migration and this correction. Product and build inputs are unchanged.
+- The corrected host iteration runs all eight cases on the real Claude and Codex CLIs. Read-only snapshots preserve all 70,383 live entries and 1,510 entries in each fixture. Codex native metadata confirms the shared instruction file from root and package starts. Claude still has explicit verification gaps; the detailed grading owns those limits.
+- The first clean gate records one registration-test timeout. Focused and later complete tests pass unchanged; the cause remains unverified. [Timeout issue](../.scratch/maintenance/issues/005-registration-test-timeout.md).
+- Two native audit requests return HTTP 503; later original-configuration requests pass the unchanged classification gate with two verified dispositions. No credential cause is established. The wrapper now preserves native diagnostics for empty or malformed output.
+- Baseline main 1b5d08a420f7f916b0c87b166527c60985937f4d has a passing quality run 39516728235 and a failing documentation run 39516728504. One Chromium Hover Card activation case fails; deployment is skipped. A later local pass does not explain that cause. [Issue](../.scratch/maintenance/issues/001-hover-card-activation.md).
 - Actual Safari, assistive technology, operating-system input/autofill and background-window behavior remain unperformed. [Platform follow-up](../.scratch/maintenance/issues/002-actual-platform-verification.md).
 - The earlier npm-token rotation is owner-controlled and unconfirmed. Release authentication is complete. [Security follow-up](../.scratch/maintenance/issues/003-npm-token-rotation.md).
 - Reviewed dependency dispositions expire 2026-11-20. [Review deadline](../.scratch/maintenance/issues/004-advisory-review-deadline.md).
@@ -46,12 +49,14 @@ These are local paths, not portable dependencies. Verify they exist before use. 
 
 ## Git and permissions
 
-Branch: codex/maintainer-workflow-migration. Runtime acceptance uses clean revision 5f74c3a0ceb57e2c5a54afe7e23bac91b9bbebb2; final checker/unit acceptance uses 4782c25980e4f77e2b1f4cfa83788748d090bfbc. Later records carry evidence only. Product sources, dependencies and versions remain unchanged. No push or external write has occurred.
+Branch: codex/maintainer-workflow-migration. Runtime acceptance uses clean revision 5f74c3a0ceb57e2c5a54afe7e23bac91b9bbebb2; final checker/unit acceptance uses 4782c25980e4f77e2b1f4cfa83788748d090bfbc. Corrected behavioral probes use cb3d72281ea14684cbec132fabd3d3cdd27e7126 and separately recorded synthetic fixture revisions. Later commits save evidence and handoff records only. No push, pull request, merge or release-body edit has occurred.
 
-Peter approves this migration's specification, plan, local implementation and verified local commits. Push, pull request, merge, release and external release-body edits remain unapproved. Prepare their concrete result before asking once. Three [release-body corrections](verification/workflow-migration/external-reference-audit.json) are prepared; published archives, tags and signatures stay immutable.
+Peter approves this migration's specification, plan, local implementation and verified local commits. Automatic approval review now requires explicit data-transmission authorization for the remaining Claude checks. That authorization would cover those checks only. It would not authorize publication.
+
+Three [release-body corrections](verification/workflow-migration/external-reference-audit.json) are prepared. Published archives, tags and signatures remain immutable. After local acceptance, prepare the final pull-request text and ask once for the concrete outward actions.
 
 ## Product checkpoint
 
-The systematization pass is implemented and released as 0.3.2 across five packages. Its [release record](releases/0.3.2.md) preserves the exact automated acceptance and its limits. The newer failing baseline above remains visible; release history does not certify the current checkout.
+The systematization pass is implemented and released as 0.3.2 across five packages. Its [release record](releases/0.3.2.md) preserves exact automated acceptance and its limits. The newer failing baseline above remains visible; release history does not certify the current checkout.
 
 The [specification index](../spec/README.md) routes current contracts. [Decisions](decisions/README.md), [research](research/README.md) and [completed pass history](history/systematization/pass-history.md) provide supporting context.

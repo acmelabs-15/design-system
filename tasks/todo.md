@@ -237,11 +237,13 @@ Each child batch of task 8 moves one driver and its dependency closure. Shared h
 **Description:** Run the complete repository gate, inspect the built website and package boundaries, and test the new workflow in fresh Claude and Codex sessions. Obtain independent review before declaring acceptance.
 
 **Acceptance criteria:**
-- [ ] The full gate passes with all required browser/consumer checks; no skipped assertion or hidden failure supplies a green result.
+- [x] The full gate passes with all required browser/consumer checks; no skipped assertion or hidden failure supplies a green result.
 - [ ] Fresh root and package sessions handle continuation, interruption, new scope, a pending approval and a red baseline correctly. Host startup is tested, not inferred from Markdown.
 - [ ] The ledger has complete coverage, raw evidence integrity holds, no old active path survives, and review findings are resolved or explicitly returned to Peter.
 
 **Verification:** Run bun run check on the exact clean candidate; save its revision and results. Record separate host transcripts/results. Re-run only checks invalidated by a later correction.
+
+**Recorded result:** Every required runtime stage passes through preserved invocation and resumed-stage evidence; no single uninterrupted invocation passes. The later diagnostic fix passes the complete 1,126-test suite. All eight corrected host cases preserve the task state, but Claude Git/runtime and native-loading proof still need completion. Automatic approval review blocks further Claude transmissions pending explicit authorization. Task 12 and Checkpoint D stay open. [Evidence](../docs/verification/workflow-migration/task-12.json).
 
 **Dependencies:** 11.
 
