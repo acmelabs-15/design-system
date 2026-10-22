@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-033",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/selective-component-loading.md",
+      "destination": "docs/decisions/0091-selective-component-loading.md",
+      "sourceSha256": "c8bc537a64a54ac17db4ee08777b47ee6298db086752b8f4df6d1a142210e0f1",
+      "destinationSha256": "d45091b8ad887cc09ab67994b12b292387f298fbbe865967dc486007bd295753",
+      "changes": [
+        "Retained selective loading preference and standalone alternative.",
+        "Dated bundle probes and extensionless-output limitation; linked later delivery contract/release."
+      ],
+      "retainedQualifications": [
+        "19,755 and 298,278 gzip bytes are local probes, not CDN transfer/startup measurements.",
+        "Dependencies, shared runtime/styles and missing-import guidance require verification.",
+        "No global discovery loader, token deletion or SSR selected."
+      ]
+    },
+    {
+      "source": "notes/decisions/server-rendering.md",
+      "destination": "docs/decisions/0092-server-rendering.md",
+      "sourceSha256": "4272838ce5687776594f139c18308f82ea950de23933786d23f7c2a5d2a04726",
+      "destinationSha256": "e7dcfcbdda0c5f738f1e18defbd5156d2a7906fba42f9667a1eca5de3efa0144",
+      "changes": [
+        "Reordered into title-first concise decision format and relocated evidence link."
+      ],
+      "retainedQualifications": [
+        "SSR is excluded rather than deferred.",
+        "Historical SSR probes do not create work.",
+        "Server data processing and form submission remain possible."
+      ]
+    },
+    {
+      "source": "notes/decisions/settings-row-composition.md",
+      "destination": "docs/decisions/0093-settings-row-composition.md",
+      "sourceSha256": "5f85ab74f18f6e094191fc5441e2de7562585d4ebfe8328602a00208218d2326",
+      "destinationSha256": "1de6115d70ef600a843d2ee5dcbf1b2c7a18b2504e1aa6f99c766f0756957f4f",
+      "changes": [
+        "Retained final removals and Field/Item composition rationale.",
+        "Dated source assessment and linked final recipe contracts."
+      ],
+      "retainedQualifications": [
+        "Not every settings collection is a Fieldset or action a form field.",
+        "Descriptions, alignment, actions and accessible names remain required."
+      ]
+    },
+    {
+      "source": "notes/decisions/shape-support.md",
+      "destination": "docs/decisions/0094-shape-support.md",
+      "sourceSha256": "8700572955892ba54c8482ee499f5d381c4224d602bc3c4b647a61b47dd2fa56",
+      "destinationSha256": "c6287f5dd0088fef44db8142c4bf73626f45c9ab1d40440e96795f921e942f5f",
+      "changes": [
+        "Preserved needs-driven shape scope and withdrawn accidental selection.",
+        "Linked component contracts without retaining a phase queue."
+      ],
+      "retainedQualifications": [
+        "No full Material shape catalog/geometry package selected.",
+        "material-shapes-ts and shape-morph remain background candidates.",
+        "Ordinary properties come first; interruption, reduced-motion, interpolation, clipping, focus/targets and licensing remain relevant."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}
