@@ -1111,17 +1111,17 @@
     "response": "approved",
     "scope": "spec/SPEC-maintainer-workflow.md",
     "source": "Direct user reply to the specification-approval request",
-    "implementationPlanApproved": false
+    "implementationPlanApproved": true
   },
   "implementationPlanning": {
     "date": "2026-10-21",
     "plan": "tasks/plan.md",
     "tasks": "tasks/todo.md",
-    "status": "ready for review; implementation not started",
+    "status": "approved; local implementation in progress",
     "review": {
       "taskSize": "approved by Peter on 2026-10-21",
       "dependencyOrder": "approved by Peter on 2026-10-21",
-      "taskBoundaries": "pending"
+      "taskBoundaries": "approved by Peter on 2026-10-21"
     },
     "findings": [
       {
@@ -1205,6 +1205,14 @@
           "task boundaries"
         ],
         "implementationStarted": false
+      },
+      {
+        "date": "2026-10-21",
+        "question": "Keep these boundaries, or merge or split any tasks?",
+        "response": "approved",
+        "settles": "task boundaries and full plan approval",
+        "remaining": [],
+        "implementationAuthorized": true
       }
     ]
   }

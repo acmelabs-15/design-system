@@ -1,6 +1,6 @@
 # Implementation plan: maintainer workflow migration
 
-Status: proposed for review, 2026-10-21. Peter approved the [specification](../spec/SPEC-maintainer-workflow.md) on this date. No implementation task has started.
+Status: approved by Peter on 2026-10-21. The specification and all three plan-review points are approved. Local implementation starts with tasks 1 and 2.
 
 Task state belongs in [todo.md](todo.md). The existing [handoff](../notes/alignment/README.md#where-we-are) remains authoritative until the cutover task.
 
@@ -183,6 +183,6 @@ Implementation plan:
 
 - Task size: approved by Peter on 2026-10-21 through “approved,” answering the task-size review question.
 - Dependency order: approved by Peter on 2026-10-21 through “approved,” answering the dependency-order review question.
-- Task boundaries: pending.
+- Task boundaries: approved by Peter on 2026-10-21 through “approved,” completing the plan review.
 
 Brain's plan-review questions cover these three points, one question at a time. Clear written approval of the presented plan must be preserved; settled specification choices are not reopened.

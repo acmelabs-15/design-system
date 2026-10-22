@@ -1,6 +1,6 @@
 # Spec: Maintainer workflow migration
 
-Status: approved by Peter on 2026-10-21 through “approved,” in reply to the specification-approval request. The [implementation plan](../tasks/plan.md) and [task list](../tasks/todo.md) are prepared and await their own review. The new startup rules and file moves are not applied.
+Status: approved by Peter on 2026-10-21 through “approved,” in reply to the specification-approval request. The [implementation plan](../tasks/plan.md) and [task list](../tasks/todo.md) are approved by Peter after all three plan-review questions. The new startup rules and file moves are not applied.
 
 This is one maintenance capability: a fresh agent finds the right context, follows the selected workflow, and leaves an accurate handoff. The sections below describe its parts, not separate product projects.
 
@@ -287,7 +287,7 @@ The reference projects' startup/status/task files are the behavioral model for t
 
 ## Approval boundary
 
-Peter approves the direction and success checks on 2026-10-21. The implementation plan and task list are now prepared. Their review precedes the build.
+Peter approves the direction and success checks on 2026-10-21. The implementation plan and task list are subsequently approved after the three plan-review questions. Local implementation is authorized.
 
 The host is currently in Default mode. The previous desktop evidence records a countdown on asynchronous question cards. The blocking question tool is restricted to Plan mode. While that tool is unavailable, brain's question skill permits a plain-text question. Keep the decision pending and accept a clear written answer. This is a current host constraint, not a new universal project mode rule. The permanent rule is to use a permitted question surface, wait for Peter and add no agent deadline.
 

@@ -256,7 +256,7 @@ Carry that result into the migrated status/issues. Do not infer that the asserti
 
 The migration needs two kinds of proof: complete record/reference/ownership checks, and fresh-session behavior in the intended hosts. Test root and package starts, interrupted work, a new request beside an incomplete task, no approved next task, and an existing failed check. A file's presence does not prove the agent follows it.
 
-No startup rule, local skill, product source, package version or plugin setting changes in this investigation. Peter approves the specification on 2026-10-21. The detailed plan awaits its separate review. This paragraph supersedes earlier provisional suggestions to keep the old record paths permanently.
+No startup rule, local skill, product source, package version or plugin setting changes in this investigation. Peter approves the specification on 2026-10-21. The detailed plan is subsequently approved through all three review questions. This paragraph supersedes earlier provisional suggestions to keep the old record paths permanently.
 
 ### Implementation planning after specification approval
 
@@ -268,4 +268,4 @@ The migration also owns live JSON inputs consumed by the component runner, the s
 
 Task sizing follows the inspected planning skill: bounded authored changes, explicit dependencies and completion proof, with large unchanged evidence moves treated as mechanical batches. Shared indexes, state, generators and heavy verification remain coordinated. The known Chromium failure stays visible and gets a separate prerequisite investigation if it blocks final acceptance.
 
-Peter approves the task sizes and dependency order on 2026-10-21 through separate “approved” replies to those review questions. Task boundaries remain the final pending plan review. The specification approval is settled. No runtime or fresh-session test is claimed for this planning checkpoint.
+Peter approves the task sizes and dependency order on 2026-10-21 through separate “approved” replies to those review questions. Peter then approves the task boundaries, completing plan review. The specification and plan approvals are settled. Tasks 1 and 2 start local implementation; no runtime or fresh-session acceptance is claimed yet.

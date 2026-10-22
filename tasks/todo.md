@@ -1,6 +1,6 @@
 # Tasks: maintainer workflow migration
 
-Status: proposed for plan review, 2026-10-21. The [specification](../spec/SPEC-maintainer-workflow.md) is approved. The [implementation plan](plan.md) is not yet approved. No implementation checkbox is complete.
+Status: approved for local implementation, 2026-10-21. The specification and all three plan-review points are approved. Tasks 1 and 2 are in progress.
 
 The current handoff is still [the existing pass entry point](../notes/alignment/README.md#where-we-are). Task 11 changes that owner.
 
@@ -38,9 +38,9 @@ Tasks 4–8 are batch groups. Before starting one, add each exact child batch be
 
 **Dependencies:** None.
 
-**Files likely touched:** scripts/check.ts; scripts/__tests__/check.test.ts.
+**Files likely touched:** scripts/check.ts; scripts/__tests__/check.test.ts; scripts/__tests__/release-workflows.test.ts. The latter consumes the same browser-entry list and must follow its explicit identity/file shape.
 
-**Scope:** Small; two authored files.
+**Scope:** Small; three authored files. The third is a discovered direct consumer, not additional behavior.
 
 ## Task 2: Complete the migration ledger and rule audit
 
@@ -260,6 +260,6 @@ Each child batch of task 8 moves one driver and its dependency closure. Shared h
 
 - [x] Task size accepted by Peter on 2026-10-21 through “approved.”
 - [x] Dependency order accepted by Peter on 2026-10-21 through “approved.”
-- [ ] Task boundaries accepted.
+- [x] Task boundaries accepted by Peter on 2026-10-21 through “approved.” The implementation plan is fully approved.
 
 These are the plan-review decisions. Specification approval is already settled.
