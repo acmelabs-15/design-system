@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "batch": "06-research-13-hand-rolled-audit",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "All20 originals were fully read during audit and conversion. Specific findings distinguish observations, proposals, approved choices, unverified claims, supersession and dated history. Rule dispositions retire completed process instructions.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/analysis/hand-rolled-audit.md",
+      "destination": "docs/research/13-hand-rolled-audit.md",
+      "sourceSha256": "bb6ba05cb14ceeee0571d1056351ebdf34a60ffa11cf47d1d703d2476a47cabd",
+      "destinationSha256": "09d68adce3f251178bd381d3a19ae7c77b17e1d8be131f2d95ef4b7f1f58f3ca",
+      "changes": [
+        "Converted to numbered research with explicit dated scope, findings, provenance and limitations.",
+        "Relocated live Markdown links through the final ledger; retained source paths as historical provenance.",
+        {
+          "old": "These are migration decisions; source code is unchanged.",
+          "new": "These were migration decisions at that checkpoint; the investigation itself changed no source."
+        },
+        {
+          "old": "Started 2026-09-10. Linked from `PLAN.md`. Living document: add a row when you notice one.",
+          "new": "Started 2026-09-10 and linked from the historical port plan. The original audit accumulated rows as findings appeared."
+        },
+        {
+          "old": "## Found so far",
+          "new": "## Found so far"
+        },
+        {
+          "old": "| What | Where | Lines | Assessment |",
+          "new": "The following assessment wording records the original recommendations. Later selections and implementations take precedence; these rows are not current commands.\n\n| What | Where | Lines | Assessment |"
+        },
+        {
+          "old": "Both are large enough that they need Peter, and both are being researched rather than guessed:",
+          "new": "At the original checkpoint, two architecture questions remained for research and Peter's decision. The Zag adapter claim below was subsequently corrected by the 2026-09-19 recheck:"
+        },
+        {
+          "old": "## How to use this file\n\nWhen you touch an element and notice it hand-rolling something substantial, add a row. State what it\ndoes, how many lines, and your assessment with a reason. Then research before converting: the point\nis the best implementation, not the fewest dependencies or the most.",
+          "new": "## How to use this file\n\nThe original audit recorded each substantial hand-written responsibility, its line count and a reasoned assessment.\nIt required research before conversion; dependency count alone did not decide the implementation.\nThat procedure belongs to the historical audit, not a separate current workflow."
+        },
+        {
+          "old": "Each integration must enter the Phase 4 inventory and Phase 5 batch plan with browser acceptance cases where layout, form association, focus or motion is involved. This investigation does not authorize swapping packages or fixing the source before those approvals.",
+          "new": "The completed pass routed each proposed integration through its inventory and migration plan, with browser acceptance for layout, form association, focus and motion. This investigation was not implementation authorization. Its old Phase 4/5 gates do not apply to new tasks."
+        },
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance.",
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance."
+      ],
+      "retainedQualifications": [
+        "A hand-written row is not automatically a defect.",
+        "Native ports supersede Zag runtime/adapter adoption.",
+        "Installed dependency does not prove all applicable integrations.",
+        "Widget arrows and one-shot timers are not automatically Hotkeys/Pacer cases.",
+        "Source proposals are not runtime acceptance; Temporal status needs fresh evidence when revisited."
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/analysis/hand-rolled-audit.md",
+      "oldAnchor": "audit-what-we-hand-rolled-that-a-package-could-own",
+      "destination": "docs/research/13-hand-rolled-audit.md",
+      "newAnchor": "research-13-audit-what-we-hand-rolled-that-a-package-could-own"
+    }
+  ],
+  "findings": []
+}
