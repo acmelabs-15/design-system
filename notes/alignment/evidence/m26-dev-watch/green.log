@@ -1,0 +1,12 @@
+bun test v1.4.2 (744846f84)
+
+scripts/__tests__/dev.test.ts:
+(pass) an example-only edit reaches the served page without regenerating styles [924.58ms]
+(pass) an authored stylesheet change reaches the served page without a regeneration loop [1775.51ms]
+(pass) a failed style generation leaves the last successful page intact [733.01ms]
+(pass) a numeric catalog edit regenerates styles before serving the page without a loop [1872.02ms]
+
+ 4 pass
+ 0 fail
+ 17 expect() calls
+Ran 4 tests across 1 file. [5.71s]

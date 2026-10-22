@@ -1,0 +1,28 @@
+ERROR RangeError: Pagination requires a positive page and page size, and a nonnegative count
+[
+  {
+    detail: {
+      action: "page-size",
+      pageSize: 50,
+    },
+    target: "ACME-PAGINATION",
+    path: [ "ACME-PAGINATION", undefined, "CONSUMER-TABLE", "BODY", "HTML", undefined, undefined ],
+  }, {
+    detail: {
+      action: "close",
+      reason: "selection",
+    },
+    target: "ACME-PAGINATION-PAGE-SIZE",
+    path: [
+      "ACME-SELECT", "SLOT", "DIV", "DIV", undefined, "ACME-FIELD", undefined, "ACME-PAGINATION-PAGE-SIZE",
+      "SLOT", "NAV", "DIV", undefined, "ACME-PAGINATION", undefined, "CONSUMER-TABLE", "BODY",
+      "HTML", undefined, undefined
+    ],
+  }
+]
+{
+  pagination: {
+    pageIndex: 0,
+    pageSize: NaN,
+  },
+}
