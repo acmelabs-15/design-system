@@ -259,7 +259,7 @@ Each child batch of task 8 moves one driver and its dependency closure. Shared h
 ## Plan review
 
 - [x] Task size accepted by Peter on 2026-10-21 through “approved.”
-- [ ] Dependency order accepted.
+- [x] Dependency order accepted by Peter on 2026-10-21 through “approved.”
 - [ ] Task boundaries accepted.
 
 These are the plan-review decisions. Specification approval is already settled.

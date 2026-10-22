@@ -1120,7 +1120,7 @@
     "status": "ready for review; implementation not started",
     "review": {
       "taskSize": "approved by Peter on 2026-10-21",
-      "dependencyOrder": "pending",
+      "dependencyOrder": "approved by Peter on 2026-10-21",
       "taskBoundaries": "pending"
     },
     "findings": [
@@ -1192,6 +1192,16 @@
         "settles": "task size",
         "remaining": [
           "dependency order",
+          "task boundaries"
+        ],
+        "implementationStarted": false
+      },
+      {
+        "date": "2026-10-21",
+        "question": "Do you approve this dependency order?",
+        "response": "approved",
+        "settles": "dependency order",
+        "remaining": [
           "task boundaries"
         ],
         "implementationStarted": false

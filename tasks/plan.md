@@ -182,7 +182,7 @@ Specification: approved 2026-10-21.
 Implementation plan:
 
 - Task size: approved by Peter on 2026-10-21 through “approved,” answering the task-size review question.
-- Dependency order: pending.
+- Dependency order: approved by Peter on 2026-10-21 through “approved,” answering the dependency-order review question.
 - Task boundaries: pending.
 
 Brain's plan-review questions cover these three points, one question at a time. Clear written approval of the presented plan must be preserved; settled specification choices are not reopened.

@@ -268,4 +268,4 @@ The migration also owns live JSON inputs consumed by the component runner, the s
 
 Task sizing follows the inspected planning skill: bounded authored changes, explicit dependencies and completion proof, with large unchanged evidence moves treated as mechanical batches. Shared indexes, state, generators and heavy verification remain coordinated. The known Chromium failure stays visible and gets a separate prerequisite investigation if it blocks final acceptance.
 
-Peter approves the task sizes on 2026-10-21 through “approved,” answering the first review question. Dependency order and task boundaries remain pending. The specification approval is settled. No runtime or fresh-session test is claimed for this planning checkpoint.
+Peter approves the task sizes and dependency order on 2026-10-21 through separate “approved” replies to those review questions. Task boundaries remain the final pending plan review. The specification approval is settled. No runtime or fresh-session test is claimed for this planning checkpoint.
