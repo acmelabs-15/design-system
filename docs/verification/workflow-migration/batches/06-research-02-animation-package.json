@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "batch": "06-research-02-animation-package",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "All20 originals were fully read during audit and conversion. Specific findings distinguish observations, proposals, approved choices, unverified claims, supersession and dated history. Rule dispositions retire completed process instructions.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/analysis/animation-package.md",
+      "destination": "docs/research/02-animation-package.md",
+      "sourceSha256": "7ea901fd36b1b9edcc0da64298d0328701e571ebdfd35384f30133eca0d2f799",
+      "destinationSha256": "6e5edbc8646102c07128d354dbed1edc45109bb084de8e4e2fa063fa39dc2b2d",
+      "changes": [
+        "Converted to numbered research with explicit dated scope, findings, provenance and limitations.",
+        "Relocated live Markdown links through the final ledger; retained source paths as historical provenance.",
+        {
+          "old": "Shared lifecycle design remains for Phases 3–5. No dependency or implementation changed.",
+          "new": "At this research checkpoint, shared lifecycle design remained for the later architecture, inventory and migration stages. This investigation changed no dependency or implementation."
+        },
+        {
+          "old": "Use one documented lifecycle policy for cancellation, completion, disconnection and reduced motion. Let each element provide its geometry and frames. Move collapse's measured-height transitions and overlay entry/exit onto that policy, with browser tests for rapid reversals and content resizing. Keep CSS state rules as the resting source of truth for the census. Do not start an architecture rewrite before Phases 3–5 approve the shape.",
+          "new": "The proposal used one documented lifecycle policy for cancellation, completion, disconnection and reduced motion, with geometry and frames supplied by each element. It moved Collapse measured-height transitions and overlay entry/exit onto that policy, with browser tests for rapid reversals and content resizing. CSS state rules remained the resting source of truth for the census. Architecture changes awaited the later design stages of the now-completed pass."
+        },
+        {
+          "old": "Before implementation acceptance, test collapse resize, overlay exit retention, quick hover reversal and reduced motion in Chromium, Firefox and WebKit.",
+          "new": "The proposed acceptance covered Collapse resize, overlay exit retention, quick hover reversal and reduced motion in Chromium, Firefox and WebKit."
+        },
+        {
+          "old": "New contrary evidence can reopen the choice with Peter.",
+          "new": "The retention decision remained subject to new contrary evidence."
+        },
+        {
+          "old": "Read the supplied [motion physics]",
+          "new": "The investigation read the supplied [motion physics]"
+        },
+        {
+          "old": "Interactive specification controls did not expose every value; do not invent missing parameter values.",
+          "new": "Interactive specification controls did not expose every value; the record leaves those parameters unverified."
+        },
+        {
+          "old": "## Current house controls",
+          "new": "## Controls at the 2026-09-19 checkpoint"
+        },
+        {
+          "old": "### Recommendation and open work",
+          "new": "### Recommendation and open work at the research checkpoint"
+        },
+        {
+          "old": "Keep selection-state animation and optional press feedback distinct in the shared design. Preserve interruption, reversal, disabled-state changes, reduced motion and cleanup. Validate keyboard focus, forced colours, hit targets and combined-state contrast. Exact durations, spring parameters, configuration scope and applicable controls belong to the later architecture/inventory review.",
+          "new": "The recommendation separated selection-state animation from optional press feedback. It required interruption, reversal, disabled-state changes, reduced motion and cleanup, plus verification of keyboard focus, forced colours, hit targets and combined-state contrast. Exact durations, spring parameters, configuration scope and applicable controls were then deferred to architecture/inventory review."
+        },
+        {
+          "old": "#### Dependencies before implementation",
+          "new": "#### Dependencies recorded before implementation"
+        },
+        {
+          "old": "These dependencies return during the Field/Group/Radio/Tabs decisions and the architecture/inventory review.",
+          "new": "These dependencies informed the later Field/Group/Radio/Tabs decisions and architecture/inventory review."
+        },
+        {
+          "old": "This removes the generic geometry-package decision from the Phase 1 gate; it does not prohibit a later targeted port when the inventory demonstrates a need.",
+          "new": "This removed the generic geometry-package decision from the original Phase 1 gate; it did not prohibit a later targeted port for a demonstrated need."
+        },
+        {
+          "old": "Phase 1 closes with the needs-driven scope; specific shapes, transitions, algorithms and their acceptance fixtures belong to the inventory and implementation plan.",
+          "new": "The needs-driven scope closed the original Phase 1 question. Specific shapes, transitions, algorithms and acceptance fixtures were left to the inventory and implementation plan."
+        },
+        {
+          "old": "Ignore unchanged ResizeObserver measurements; capture the painted rectangle before cancellation.",
+          "new": "The candidate ignored unchanged ResizeObserver measurements and captured the painted rectangle before cancellation."
+        },
+        {
+          "old": "Its public configuration uses physical damping, not a damping ratio: use unit mass and c = 2 × ratio × sqrt(stiffness).",
+          "new": "Its public configuration uses physical damping, not a damping ratio: the implementation used unit mass and c = 2 × ratio × sqrt(stiffness)."
+        },
+        {
+          "old": "Preserve public currentVelocity when replacing a controller; do not access its private/minified spring member.",
+          "new": "The implementation preserved public currentVelocity when replacing a controller and did not access its private/minified spring member."
+        },
+        {
+          "old": "Retain that fill and add a one-pixel inner outline using gray-800;",
+          "new": "The implementation retained that fill and added a one-pixel inner outline using gray-800;"
+        },
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance.",
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance."
+      ],
+      "retainedQualifications": [
+        "Gzip increments are contextual; download samples do not prove displacement, speed or reliability.",
+        "Timed Material implementations do not prove the newer spring roles; preserve the physical damping mapping.",
+        "Geometry probes do not establish AndroidX fidelity; raw chain gaps do not alone prove broken SVGs.",
+        "Screenshots do not select dimensions. Deterministic 400ms M00 timing is an instrument, not a product duration.",
+        "Android frame identity, mobile FPS and arbitrary-theme contrast remain unclaimed."
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/analysis/animation-package.md",
+      "oldAnchor": "animation-package-investigation",
+      "destination": "docs/research/02-animation-package.md",
+      "newAnchor": "research-02-animation-package-investigation"
+    },
+    {
+      "source": "notes/analysis/animation-package.md",
+      "oldAnchor": "current-house-controls",
+      "destination": "docs/research/02-animation-package.md",
+      "newAnchor": "controls-at-the-2026-09-19-checkpoint"
+    },
+    {
+      "source": "notes/analysis/animation-package.md",
+      "oldAnchor": "recommendation-and-open-work",
+      "destination": "docs/research/02-animation-package.md",
+      "newAnchor": "recommendation-and-open-work-at-the-research-checkpoint"
+    },
+    {
+      "source": "notes/analysis/animation-package.md",
+      "oldAnchor": "dependencies-before-implementation",
+      "destination": "docs/research/02-animation-package.md",
+      "newAnchor": "dependencies-recorded-before-implementation"
+    }
+  ],
+  "findings": []
+}
