@@ -1,0 +1,65 @@
+[
+  {
+    "engine": "chromium",
+    "checks": [
+      "root-scoped Lit and React components with no persisted settings",
+      "JSON inspection can expand and collapse with the keyboard",
+      "visible desktop and narrow inspector surface",
+      "secret redaction before snapshots and visible UI",
+      "packaged runtime preserves null field labels and fonts through rebundling",
+      "property-only updates in both frameworks",
+      "bounded public events retain component identity and redact nested secrets",
+      "external ancestor theme updates effective appearance and token values",
+      "detach and reconnect reattach scoped observation",
+      "UI unmount and remount",
+      "dispose removes surface and retained observations",
+      "disposed inspector rejects remount",
+      "no outbound requests or browser errors"
+    ],
+    "errors": [],
+    "failedRequests": [],
+    "outbound": []
+  },
+  {
+    "engine": "firefox",
+    "checks": [
+      "root-scoped Lit and React components with no persisted settings",
+      "JSON inspection can expand and collapse with the keyboard",
+      "visible desktop and narrow inspector surface",
+      "secret redaction before snapshots and visible UI",
+      "packaged runtime preserves null field labels and fonts through rebundling",
+      "property-only updates in both frameworks",
+      "bounded public events retain component identity and redact nested secrets",
+      "external ancestor theme updates effective appearance and token values",
+      "detach and reconnect reattach scoped observation",
+      "UI unmount and remount",
+      "dispose removes surface and retained observations",
+      "disposed inspector rejects remount",
+      "no outbound requests or browser errors"
+    ],
+    "errors": [],
+    "failedRequests": [],
+    "outbound": []
+  },
+  {
+    "engine": "webkit",
+    "checks": [
+      "root-scoped Lit and React components with no persisted settings",
+      "JSON inspection can expand and collapse with the keyboard",
+      "visible desktop and narrow inspector surface",
+      "secret redaction before snapshots and visible UI",
+      "packaged runtime preserves null field labels and fonts through rebundling",
+      "property-only updates in both frameworks",
+      "bounded public events retain component identity and redact nested secrets",
+      "external ancestor theme updates effective appearance and token values",
+      "detach and reconnect reattach scoped observation",
+      "UI unmount and remount",
+      "dispose removes surface and retained observations",
+      "disposed inspector rejects remount",
+      "no outbound requests or browser errors"
+    ],
+    "errors": [],
+    "failedRequests": [],
+    "outbound": []
+  }
+]

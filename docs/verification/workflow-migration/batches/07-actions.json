@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-actions",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer full source/audit read and semantic reconciliation; coordinator guard/review pending",
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/inventory/actions.md",
+      "destination": "spec/SPEC-actions.md",
+      "sourceSha256": "135faa6f5c0c057c915bf4cce6a5b900d8f67193f578dcde4e8898d3a2a74cfe",
+      "destinationSha256": "7064a61c31f71862cf01993aa41b0f444e06536d868ab5d6664fc674e6f961ec",
+      "changes": [
+        "Converted approved proposal wording into current contract language; preserved inputs/defaults/content/methods/events/exclusions and acceptance requirements.",
+        "Retargeted citations through allocated ledger paths; retained original approval and dated evidence."
+      ],
+      "retainedQualifications": [
+        "Full icon catalog/delivery acceptance remains distinct from contract conversion.",
+        "Overflow-slot replacement and internal Group composition remain accepted requirements; they are not removed based on observed implementation.",
+        "Native submission and actual platform behavior retain exact evidence limits."
+      ],
+      "reconciliations": [
+        "0035 native action bridge/loading rules, Copy feedback and identity geometry/counting are incorporated.",
+        "The 2026-09-22 full Menu Item contract and unnamed-secondary-trigger behavior are folded into A-04."
+      ],
+      "evidence": [
+        "docs/decisions/0035-execution-delegation.md",
+        "docs/verification/systematization/m09-actions-2026-09-21.json",
+        "docs/verification/systematization/m09-identity-2026-09-21.json"
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-documentation-navigation.browser-check",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Writer full-source/semantic review, current focused lint/format, explicit strict TypeScript and type-erased oracle preservation; coordinator browser/guard/review pending",
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m23-docs/navigation-run.ts",
+      "destination": "scripts/verification/documentation/navigation.browser-check.ts",
+      "sourceSha256": "8c03490451f4e8973e40219e8138c0a1fb40bf63c0dccf6adfc348e47897fc26",
+      "destinationSha256": "7e2b9d8f76951a87ca893146bb07cca07049ec394a2c3c59817be893fd6a6f7e",
+      "classification": "live-required-driver",
+      "changes": [
+        "Relocated the allocated driver or fixture and adjusted repository-root/import/fixture paths for its final location.",
+        "Applied current authored-source formatting and lint style without configuration edits or suppressions.",
+        "Preserved assertions, numeric constants, executable templates, environment accesses, browser matrices, filters, failure reporting and cleanup.",
+        "Preserved .artifacts/m23-docs output ownership used by CI.",
+        "Added accurate Playwright dynamic-import types, fixture/window/element contracts and result types. Type-only syntax erases without changing runtime operations. Existing broad any annotations outside the diagnosed boundary are not expanded."
+      ],
+      "retainedQualifications": [
+        "Original manual/required classification is unchanged.",
+        "Browser and packed-consumer execution remain pending coordinator verification.",
+        "The explicit strict TypeScript program passes for all 13 allocated drivers/fixtures and their imported graph. Browser/runtime acceptance remains pending."
+      ],
+      "oracleComparison": {
+        "source": "notes/alignment/evidence/m23-docs/navigation-run.ts",
+        "destination": "scripts/verification/documentation/navigation.browser-check.ts",
+        "checks": {
+          "assertions": true,
+          "numericConstants": true,
+          "executableTemplates": true,
+          "environmentAccesses": true
+        },
+        "assertionCount": 15,
+        "numericCount": 22,
+        "templateCount": 2
+      },
+      "strictTypeDiagnostics": [],
+      "historicalStrictTypeDiagnostics": [
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 7034,
+          "message": "Variable 'errors' implicitly has type 'any[]' in some locations where its type cannot be determined.",
+          "line": 22
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 7034,
+          "message": "Variable 'warnings' implicitly has type 'any[]' in some locations where its type cannot be determined.",
+          "line": 23
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 7006,
+          "message": "Parameter 'route' implicitly has an 'any' type.",
+          "line": 25
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 7006,
+          "message": "Parameter 'error' implicitly has an 'any' type.",
+          "line": 26
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 7006,
+          "message": "Parameter 'message' implicitly has an 'any' type.",
+          "line": 27
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 2339,
+          "message": "Property '__docsNav' does not exist on type 'Window & typeof globalThis'.",
+          "line": 36
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 7006,
+          "message": "Parameter 'g' implicitly has an 'any' type.",
+          "line": 36
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 2339,
+          "message": "Property '__docsNav' does not exist on type 'Window & typeof globalThis'.",
+          "line": 40
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 7006,
+          "message": "Parameter 'group' implicitly has an 'any' type.",
+          "line": 40
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 7006,
+          "message": "Parameter 'item' implicitly has an 'any' type.",
+          "line": 40
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 2531,
+          "message": "Object is possibly 'null'.",
+          "line": 53
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 2531,
+          "message": "Object is possibly 'null'.",
+          "line": 54
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 2345,
+          "message": "Argument of type 'HTMLElement | null' is not assignable to parameter of type 'Element'.\n  Type 'null' is not assignable to type 'Element'.",
+          "line": 61
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 7006,
+          "message": "Parameter 'element' implicitly has an 'any' type.",
+          "line": 73
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 7006,
+          "message": "Parameter 'node' implicitly has an 'any' type.",
+          "line": 78
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 2339,
+          "message": "Property 'open' does not exist on type 'Element'.",
+          "line": 88
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 2531,
+          "message": "Object is possibly 'null'.",
+          "line": 94
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 2345,
+          "message": "Argument of type 'HTMLElement | null' is not assignable to parameter of type 'Element'.\n  Type 'null' is not assignable to type 'Element'.",
+          "line": 95
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 7005,
+          "message": "Variable 'errors' implicitly has an 'any[]' type.",
+          "line": 101
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 7005,
+          "message": "Variable 'warnings' implicitly has an 'any[]' type.",
+          "line": 102
+        },
+        {
+          "file": "scripts/verification/documentation/navigation.browser-check.ts",
+          "code": 7005,
+          "message": "Variable 'errors' implicitly has an 'any[]' type.",
+          "line": 103
+        }
+      ]
+    }
+  ],
+  "commands": [
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxlint/bin/oxlint --config oxlint.config.ts --format json scripts/verification/documentation/navigation.browser-check.ts",
+      "outcome": "Passed as part of the exact 13-file owned set; zero diagnostics."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxfmt/bin/oxfmt --check --config oxfmt.config.ts scripts/verification/documentation/navigation.browser-check.ts",
+      "outcome": "Passed as part of the exact 13-file owned set."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun /private/tmp/typecheck-doc-drivers.ts",
+      "outcome": "Explicit TypeScript 5.9 original/prepared programs with current tsconfig options: 75 original and 75 prepared diagnostics, all owned; zero additions. This is comparative preservation, not a passing strict typecheck.",
+      "stage": "Historical initial migration check"
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun /private/tmp/compare-doc-oracles.ts",
+      "outcome": "All 13 files preserve ordered assertion ASTs, numeric constants, executable template text and environment-property access."
+    },
+    {
+      "command": "git diff --no-index --check /dev/null <each allocated destination>",
+      "outcome": "No whitespace errors."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun /private/tmp/typecheck-doc-drivers.ts",
+      "outcome": "Final explicit strict TypeScript programs: original 75 diagnostics; prepared zero; no transitive diagnostics."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun /private/tmp/compare-doc-oracles-typed.ts",
+      "outcome": "13 files pass original assertion AST/order, numeric-constant, executable-template and environment-access comparisons after type-only nodes are erased."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxlint/bin/oxlint --config oxlint.config.ts --format json <all 13 allocated drivers/fixtures>",
+      "outcome": "Zero diagnostics."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxfmt/bin/oxfmt --check --config oxfmt.config.ts <all 13 allocated drivers/fixtures>",
+      "outcome": "Pass."
+    }
+  ],
+  "typeVerification": {
+    "baseline": {
+      "all": 75,
+      "owned": 75
+    },
+    "prepared": {
+      "all": 0,
+      "owned": 0
+    },
+    "addedDiagnostics": [],
+    "strictPass": true,
+    "scope": "Explicit strict TypeScript programs for original and moved drivers using current tsconfig compiler options; root tsconfig does not include these drivers."
+  },
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [
+      {
+        "file": "scripts/verification/documentation/navigation.browser-check.ts",
+        "args": [],
+        "passed": true,
+        "exitCode": 0
+      }
+    ],
+    "manual": [],
+    "supportingScope": "",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  },
+  "anchorChanges": [],
+  "findings": [],
+  "typeVerificationHistory": [
+    {
+      "stage": "Initial path migration, before strict-type refinement",
+      "baseline": {
+        "all": 75,
+        "owned": 75
+      },
+      "prepared": {
+        "all": 75,
+        "owned": 75
+      },
+      "addedDiagnostics": [],
+      "strictPass": false,
+      "scope": "Explicit strict TypeScript programs for original and moved drivers using current tsconfig compiler options; root tsconfig does not include these drivers."
+    }
+  ],
+  "resolvedFindings": [
+    {
+      "finding": "Legacy driver TypeScript diagnostics remain. Comparative checks establish no added diagnostics, not full type coverage.",
+      "resolution": "Explicit strict-type refinement now passes with zero diagnostics; original 75-diagnostic result remains in history."
+    }
+  ]
+}

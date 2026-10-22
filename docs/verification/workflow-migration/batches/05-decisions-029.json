@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-029",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/pin-input-behaviour.md",
+      "destination": "docs/decisions/0078-pin-input-behaviour.md",
+      "sourceSha256": "30f64ff8bc809a33890273503a98ce230f425b44dd85feb319c02f2e9995155a",
+      "destinationSha256": "521162c8956c511cf5a5a7812be15c8794f207d86fde528fbe6f8780bb07f4d8",
+      "changes": [
+        "Retained separate-field capability choice and runtime supersession.",
+        "Dated initial proof/approval limits and linked later records."
+      ],
+      "retainedQualifications": [
+        "Automatic focus, full paste, masking and code autofill remain selected.",
+        "Zag is a behavior reference; a new Lit component is allowed."
+      ]
+    },
+    {
+      "source": "notes/decisions/prop-naming-vs-reference.md",
+      "destination": "docs/decisions/0079-prop-naming-vs-reference.md",
+      "sourceSha256": "64d9d9dd518df6043674adbc5b98a1d432fe165616aaf3da1c6d911ff306f8bc",
+      "destinationSha256": "8d5957a5018710fff92f1f35d7ee3017900460b63db2b89f5a140d95977d6979",
+      "changes": [
+        "Added concise accepted naming outcome.",
+        "Corrected the audited editorial option-number error: retained naming is option 2, not literal-reference option 1.",
+        "Dated source observations and linked later scope qualification; preserved subsection anchors."
+      ],
+      "retainedQualifications": [
+        "All three original options and trade-offs remain.",
+        "77-page counts, eight-component list and original quoted reference prose stay as evidence.",
+        "No product naming change is inferred from the editorial correction."
+      ]
+    },
+    {
+      "source": "notes/decisions/public-state-bridge.md",
+      "destination": "docs/decisions/0080-public-state-bridge.md",
+      "sourceSha256": "4921a4318cf28e0470e175c72e52e1d701bcedc4da68a8d18d71e8abb0c136ce",
+      "destinationSha256": "90919e54e61caa1958cbd1bf79daf6fe154faad60715a33557d2b62ad79aa6e8",
+      "changes": [
+        "Retained all comparative probes and existing-helper rationale.",
+        "Converted completed investigation/phase instructions into dated evidence with later contract/release links.",
+        "Removed separate component-origin category from section heading."
+      ],
+      "retainedQualifications": [
+        "Six-case feasibility and nine after-update checks do not certify every decorator, browser, compiler, CEM, inheritance or React path.",
+        "Raw-store reflection failure concerns the fixture write path, not proof that atomState setters lack notifications.",
+        "Eleven passing regression tests coexist with two Chromium public-integration gaps.",
+        "Style-order 15-check and three-field batching probes remain bounded and separate from semantic-control acceptance.",
+        "TanStack remains the only state owner, including external writes and later helper reassertion."
+      ]
+    },
+    {
+      "source": "notes/decisions/react-integration.md",
+      "destination": "docs/decisions/0081-react-integration.md",
+      "sourceSha256": "1e879b6cdc8aba7d7a58fe71dbdbf7d614b764c2ab1aef7ff094d4816abcf836",
+      "destinationSha256": "354d47be2ea9ea7bec348bda2be9d57702b5fc99d567b51ed0c96a7777972b2f",
+      "changes": [
+        "Preserved separate package rationale, shared runtime and consumer-owned Table scope.",
+        "Dated 15/21 versus 21/21 wrapper results and remaining acceptance claims.",
+        "Linked later package contract/release without upgrading probe coverage."
+      ],
+      "retainedQualifications": [
+        "React 19 native support exists; wrappers supply typed JSX, mapping and consistency.",
+        "The standard manifest analyzer stays selected; no SSR.",
+        "Two style-property probe covers named cases in three engines and Strict Mode, not final package certification.",
+        "Global registry results do not certify scoped/adopted documents.",
+        "Direct property edits persist until helper/wrapper rerender; unrelated inputs are not automatically cleared."
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/decisions/public-state-bridge.md",
+      "destination": "docs/decisions/0080-public-state-bridge.md",
+      "from": "existing-house-helpers-are-the-baseline",
+      "to": "existing-helpers-are-the-baseline",
+      "reason": "Use the component/helper name directly; no separate house category."
+    }
+  ],
+  "findings": []
+}

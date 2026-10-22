@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-phase-1-review",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "checks": {
+      "sourceHash": "matches full-read source",
+      "destinationHash": "matches final prepared file",
+      "externalSourceUrls": "all source URLs retained",
+      "numericAndSourceIdentifiers": "retained; heading punctuation can change",
+      "links": "all targets exist or are allocated in ledger.records/newDocumentOwners",
+      "whitespace": "pass",
+      "runtime": "not rerun; historical proof limits retained"
+    },
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/phase-1-review.md",
+      "destination": "docs/history/systematization/research-review.md",
+      "sourceSha256": "acff53d97686ea80b1637ee2da62bc188067d966df709f4b7acec98da1fd8807",
+      "destinationSha256": "60031e2131e65928dbb8045726add29a817f8e91c418abfa68c1f893a9098d2f",
+      "changes": [
+        "Converted the allocated record with explicit status, dated evidence scope and current-owner links.",
+        "Retired old operational commands throughout while preserving decisions, measurements, qualifications and chronology.",
+        "Relocated Markdown links through the final ledger; historical path/session/branch literals remain provenance.",
+        {
+          "old": "**Current handoff:** [the pass status and next step](README.md#where-we-are). This completed review preserves its research evidence and dated checkpoints. Later decision notes supersede earlier recommendations; implementation remains gated by the approved inventory and migration plan.",
+          "new": "The completed review preserves its research evidence and dated checkpoints. Later decisions and implementation records resolve its earlier recommendations and pending states."
+        },
+        {
+          "old": "Follow the central handoff for current work.",
+          "new": "The old central handoff owned continuation during the completed pass."
+        },
+        {
+          "old": "Design the shared lifecycle policy in Phases 3–5.",
+          "new": "The shared lifecycle policy was assigned to the original Phases 3–5."
+        },
+        {
+          "old": "## Decisions to take next",
+          "new": "## Historical decision closure"
+        },
+        {
+          "old": "The original walkthrough, Phase 1 extension and Phase 2 disposition/terminology review are closed. Continue from the [current handoff](README.md#where-we-are) and [inventory](inventory.md). Detailed interfaces, export contracts, documentation components and path migrations require their recorded approvals. No research conclusion here approves implementation or a complete inventory entry.",
+          "new": "The walkthrough, extension and Phase 2 dispositions closed before the [inventory](inventory.md) supplied detailed interfaces, exports, documentation components and path migrations. This research did not itself approve implementation or a complete entry; later approvals are separate evidence."
+        },
+        {
+          "old": "Peter requested one item at a time. Start with interface accuracy and split larger subjects into individual decisions rather than placing the whole report in a question card.",
+          "new": "Peter requested one item at a time. The walkthrough began with interface accuracy and split large subjects into individual decisions rather than one report-sized question."
+        },
+        {
+          "old": "18. **Current continuation:** family dispositions and terminology are closed. Use the [inventory](inventory.md) and [central handoff](README.md#where-we-are) for remaining interfaces and approval steps. Timeline composition, detailed documentation interfaces and final migration paths remain their explicit later-phase obligations, not missing package approvals.",
+          "new": "18. **Historical continuation:** family dispositions and terminology had closed. The [inventory](inventory.md) then owned remaining interfaces and approvals, including Timeline composition, documentation interfaces and migration paths. These were later design obligations, not missing package approvals."
+        },
+        {
+          "old": "No source code changed. The original decision capture is complete; the newer extension has its own current checkpoint and research register. Use his [local question skill](/Users/peterkloss/Dev/ACMElabs/ask-user-question/skills/ask-user-question/SKILL.md) when the walkthrough resumes. Keep the question premise compact and comparison details in separate option rows because Peter reports flattened paragraph breaks. The [host investigation](../analysis/question-dialog-countdown.md) preserves the blocking route and verification limits. A request for reference evidence is a clarification, not a choice: answer it, then return to the unresolved decision through the tool.",
+          "new": "No source code changed in this capture. The original decisions were recorded, and the extension kept a separate research register. The walkthrough then used Peter's [local question skill](/Users/peterkloss/Dev/ACMElabs/ask-user-question/skills/ask-user-question/SKILL.md), with separate option details because the host flattened paragraphs. The [host investigation](../analysis/question-dialog-countdown.md) records that route and its limits. Reference requests were clarifications, not selections; the old workflow returned to the unresolved choice afterward. Current skill/host routing is owned by the approved maintainer workflow."
+        },
+        "Final review preserves external source URLs and substantive numeric/source identifiers, checks allocated links including future issue owners, and passes whitespace verification.",
+        {
+          "old": "**Still proposed:** compose Timeline without a separate behaviour package; its exact inventory and the other control interfaces remain open.",
+          "new": "**Proposed at this checkpoint:** Timeline composition without a separate behavior package; exact interfaces were still open. The later [Timeline contract](../../../spec/SPEC-navigation-disclosure.md#n-11-timeline) and [M15 acceptance](../../verification/systematization/m15-steps-timeline-2026-09-23.json) record the selected scope and tested outcome."
+        },
+        {
+          "old": "complete coverage and final delivery costs remain to test.",
+          "new": "complete coverage and final delivery costs remained untested by those Home samples. The later [M09 delivery record](../../verification/systematization/m09-icon-delivery-2026-09-21.json) supplies its own bounded catalogue/delivery evidence."
+        },
+        {
+          "old": "The real writers differ from the current generated-file tables. The splitter reads src/geist.css, appends the generated theme and skips mapped styles; the map generator is a separate operation.",
+          "new": "At the research checkpoint, the real writers differed from the generated-file tables. The splitter read src/geist.css, appended the generated theme and skipped mapped styles; the map generator was separate."
+        },
+        {
+          "old": "**Still proposed:** site/_site naming, the house-sheet location and final CSS/package paths. The complete path map and publishing changes remain for the migration plan.",
+          "new": "**Proposed at this checkpoint:** site/_site naming, the authored stylesheet location and final CSS/package paths. The later [M01/M02 record](../../verification/systematization/m02-css-pipeline-2026-09-20.json) documents the path/compiler implementation, [M03 delivery](../../verification/systematization/m03-delivery-2026-09-20.json) records package delivery, and [release 0.3.2](../../releases/0.3.2.md) records the publishing/snapshot outcome. These later records retain their own proof limits."
+        },
+        {
+          "old": "Browser-ready selective CDN entries remain to build and verify. Exact entry points, optional heavy membership and registration separation remain for later design.",
+          "new": "At this research checkpoint, browser-ready selective CDN entries were unbuilt and unverified; exact entries, optional heavyweight membership and registration separation remained design work. Later [M03 delivery](../../verification/systematization/m03-delivery-2026-09-20.json) and [0.3.2 public delivery](../../releases/0.3.2.md) record implementation and verification at their stated scope."
+        },
+        {
+          "old": "Exact names and imports remain to design.",
+          "new": "Exact names and imports remained design work at that checkpoint; the later M09 delivery record above records their implementation scope."
+        },
+        {
+          "old": "Exact paths, workflow triggers and migration details remain to specify.",
+          "new": "Exact paths, workflow triggers and migration details remained unspecified at that checkpoint; the later path and release records above resolve them."
+        },
+        {
+          "old": "Direct-browser selective delivery still requires implementation and verification.",
+          "new": "Direct-browser selective delivery required later implementation and verification, recorded separately in the M03 and release evidence above."
+        }
+      ],
+      "retainedQualifications": [
+        "A source survey, proposal or user approval is not runtime acceptance.",
+        "Historical checkpoints do not establish current host, package or platform status.",
+        "Saved evidence identities and their original verification limits remain intact.",
+        ".scratch/maintenance/issues/002-actual-platform-verification.md"
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/alignment/phase-1-review.md",
+      "oldAnchor": "phase-1-findings-and-recommendations",
+      "destination": "docs/history/systematization/research-review.md",
+      "newAnchor": "systematization-research-review",
+      "note": "Heading renamed; subsection evidence retained."
+    },
+    {
+      "source": "notes/alignment/phase-1-review.md",
+      "oldAnchor": "decisions-to-take-next",
+      "destination": "docs/history/systematization/research-review.md",
+      "newAnchor": "historical-decision-closure",
+      "note": "Heading renamed; subsection evidence retained."
+    }
+  ],
+  "findings": [],
+  "reviewCorrections": [
+    {
+      "review": ".artifacts/task7-history-record-review.md",
+      "date": "2026-10-21",
+      "findings": [
+        2
+      ],
+      "previousDestinationSha256": "046686db5f99966447e1b454bfa2535f98cc236ca532d4cc0758630655494843",
+      "destinationSha256": "60031e2131e65928dbb8045726add29a817f8e91c418abfa68c1f893a9098d2f",
+      "scope": "Dated remaining approval/installation/path/CDN uncertainty; linked existing later approvals and bounded implementation/delivery evidence.",
+      "runtime": "No build, browser or runtime check run; original proof limits retained.",
+      "verification": "Source/destination hashes match; whitespace and allocated-target checks pass. No original external citation or substantive numeric identifier is removed. Reviewer recheck pending."
+    }
+  ]
+}

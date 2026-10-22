@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-release-0.3.2",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "checks": {
+      "sourceHash": "matches full-read source",
+      "destinationHash": "matches final prepared file",
+      "externalSourceUrls": "all source URLs retained",
+      "numericAndSourceIdentifiers": "retained; heading punctuation can change",
+      "links": "all targets exist or are allocated in ledger.records/newDocumentOwners",
+      "whitespace": "pass",
+      "runtime": "not rerun; historical proof limits retained"
+    },
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/release-0.3.2.md",
+      "destination": "docs/releases/0.3.2.md",
+      "sourceSha256": "272afd0059930cd63804b392b2fa7207aa572e69484ffc60c512293f5e64880e",
+      "destinationSha256": "41fafd15cf91fe0d972de67836dc90e085146bda6437b2db13bb6ffa6a64433b",
+      "changes": [
+        "Converted the allocated record with explicit status, dated evidence scope and current-owner links.",
+        "Retired old operational commands throughout while preserving decisions, measurements, qualifications and chronology.",
+        "Relocated Markdown links through the final ledger; historical path/session/branch literals remain provenance.",
+        {
+          "old": "Peter's release authorization and [execution delegation](../decisions/execution-delegation.md) remain active.",
+          "new": "Peter's release authorization and [execution delegation](../decisions/execution-delegation.md) covered this completed correction. They are historical grants, not authority for new release work."
+        },
+        {
+          "old": "## Current state",
+          "new": "## Recorded closure and subsequent observation"
+        },
+        {
+          "old": "The current state above owns the resumption point.",
+          "new": "The closure and subsequent observation above distinguish completed release work from later unresolved verification. Current work belongs to docs/STATUS.md."
+        },
+        {
+          "old": "- Current records/cleanup branch:",
+          "new": "- Historical records/cleanup branch:"
+        },
+        {
+          "old": "Rerun full CI on the corrected head in the same PR.",
+          "new": "The correction required a full CI rerun on that head in the same PR."
+        },
+        {
+          "old": "After package verification, enable Pages and rerun only the reviewed artifact’s deploy job.",
+          "new": "The original deployment sequence enabled Pages after package verification and reran only the reviewed artifact’s deploy job."
+        },
+        {
+          "old": "- Current reviewed head:",
+          "new": "- Reviewed head at that checkpoint:"
+        },
+        {
+          "old": "Read-only React monitor session 87454 now runs the same verifier when that version becomes public.",
+          "new": "At that checkpoint, read-only React monitor session 87454 ran the same verifier when the version became public."
+        },
+        {
+          "old": "After all packages verify, enable Pages and rerun only that deploy job.",
+          "new": "The original sequence enabled Pages only after all packages verified and reran that deploy job."
+        },
+        {
+          "old": "1. [x] Finish focused static/type checks, regenerate the versioned metadata and obtain independent review.",
+          "new": "1. [x] Completed focused static/type checks, regenerated versioned metadata and passed independent review."
+        },
+        {
+          "old": "2. [x] Pass full clean Linux acceptance for the exact correction head, then merge with a merge commit.",
+          "new": "2. [x] Passed full clean Linux acceptance for the exact head and merged with a merge commit."
+        },
+        {
+          "old": "3. [x] Tag 0.3.2, sign and verify its exact archives, and publish through the established workflows. Verify every public tarball, provenance statement and latest tag.",
+          "new": "3. [x] Tagged 0.3.2, signed/verified exact archives and published through the workflows. Every public tarball, provenance statement and latest tag verified."
+        },
+        {
+          "old": "4. [x] Deploy the corrected reviewed Pages artifact. Verify public bytes and three-engine functional navigation. Keep the original failures and the documented readiness correction.",
+          "new": "4. [x] Deployed the corrected reviewed Pages artifact and verified public bytes and three-engine navigation. Original failures and the readiness correction remain recorded."
+        },
+        {
+          "old": "5. [x] Retire the 244-file tracked snapshot after public acceptance. Update generated-file records, pass independent review/full CI and merge the exact cleanup head.",
+          "new": "5. [x] Retired the 244-file snapshot after public acceptance, updated generated-file records, passed review/full CI and merged the exact cleanup head."
+        },
+        {
+          "old": "6. [x] Publish the GitHub release as stable/latest with exact published assets and evidence. Preserve 0.3.0 and 0.3.1 tags/archives and point their notices to 0.3.2.",
+          "new": "6. [x] Published the stable/latest GitHub release with exact assets/evidence, preserving 0.3.0/0.3.1 tags and archives and linking their notices to 0.3.2."
+        },
+        {
+          "old": "The [credential incident](../analysis/developer-tooling.md#credential-handling-incident) remains owner-controlled; do not read or reuse the exposed credential.",
+          "new": "The [credential incident](../analysis/developer-tooling.md#credential-handling-incident) remains an owner-controlled rotation follow-up. This record contains no credential value and supplies no credential for reuse."
+        },
+        "Final review preserves external source URLs and substantive numeric/source identifiers, checks allocated links including future issue owners, and passes whitespace verification."
+      ],
+      "retainedQualifications": [
+        "A source survey, proposal or user approval is not runtime acceptance.",
+        "Historical checkpoints do not establish current host, package or platform status.",
+        "Saved evidence identities and their original verification limits remain intact.",
+        ".scratch/maintenance/issues/001-hover-card-activation.md",
+        ".scratch/maintenance/issues/002-actual-platform-verification.md",
+        ".scratch/maintenance/issues/003-npm-token-rotation.md",
+        ".scratch/maintenance/issues/004-advisory-review-deadline.md"
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/alignment/release-0.3.2.md",
+      "oldAnchor": "release-032-production-build-correction",
+      "destination": "docs/releases/0.3.2.md",
+      "newAnchor": "release-032-production-delivery-and-automated-closure",
+      "note": "Heading renamed; subsection evidence retained."
+    },
+    {
+      "source": "notes/alignment/release-0.3.2.md",
+      "oldAnchor": "current-state",
+      "destination": "docs/releases/0.3.2.md",
+      "newAnchor": "recorded-closure-and-subsequent-observation",
+      "note": "Heading renamed; subsection evidence retained."
+    }
+  ],
+  "findings": []
+}

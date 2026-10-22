@@ -6,30 +6,31 @@ import { prepareRelease, validateRelease } from "./release";
 import { requireReleaseRuntime, type ReleaseRecord } from "./release-policy";
 
 export const browserChecks = [
-  "notes/alignment/evidence/m22-react/run.ts",
-  "notes/alignment/evidence/m22-react/defaults-run.ts",
-  "notes/alignment/evidence/m23-docs/pages-run.ts",
-  "notes/alignment/evidence/m23-docs/navigation-run.ts",
-  "notes/alignment/evidence/m23-docs/recipes-run.ts",
-  "notes/alignment/evidence/m23-docs/recipe-accessibility-run.ts",
-  "notes/alignment/evidence/m23-docs/video-run.ts",
-  "notes/alignment/evidence/m23-docs/copied-run.ts",
-  "notes/alignment/evidence/m23-docs/icons-run.ts",
-  "src/components/tabs/__tests__/tabs.browser-check.ts",
-  "notes/alignment/evidence/m24-consumers/packed-run.ts",
-  "notes/alignment/evidence/m24-consumers/package-tools-run.ts",
-  "examples/forms/__tests__/managed.browser-check.ts",
-  "notes/alignment/evidence/m26-native-forms/history-run.ts",
-  "notes/alignment/evidence/m26-audit/removals-run.ts",
-  "notes/alignment/evidence/m26-audit/table-patch-run.ts",
-  "notes/alignment/evidence/m26-audit/defaults-run.ts",
-  "notes/alignment/evidence/m26-scoped/run.ts",
-  "notes/alignment/evidence/m20-flow/distributions.ts",
-  "notes/alignment/evidence/m26-bundle/run.ts",
-  "notes/alignment/evidence/m26-audit/worker-consumer-run.ts",
-  "scripts/component-browser-checks.ts",
-  "scripts/official-firefox-checks.ts",
+  { id: "react", file: "scripts/verification/react/browser-check.ts" },
+  { id: "react-defaults", file: "scripts/verification/react/defaults-check.ts" },
+  { id: "docs-pages", file: "scripts/verification/documentation/pages.browser-check.ts" },
+  { id: "docs-navigation", file: "scripts/verification/documentation/navigation.browser-check.ts" },
+  { id: "docs-recipes", file: "scripts/verification/documentation/recipes.browser-check.ts" },
+  { id: "docs-recipe-accessibility", file: "scripts/verification/documentation/recipe-accessibility.browser-check.ts" },
+  { id: "docs-video", file: "scripts/verification/documentation/video.browser-check.ts" },
+  { id: "docs-copied", file: "scripts/verification/documentation/copied.browser-check.ts" },
+  { id: "docs-icons", file: "scripts/verification/documentation/icons.browser-check.ts" },
+  { id: "tabs", file: "src/components/tabs/__tests__/tabs.browser-check.ts" },
+  { id: "packed-consumer", file: "scripts/verification/consumer-tools/packed-browser-check.ts" },
+  { id: "package-tools", file: "scripts/verification/consumer-tools/package-check.ts" },
+  { id: "managed-forms", file: "examples/forms/__tests__/managed.browser-check.ts" },
+  { id: "native-history", file: "scripts/verification/native-forms/history.browser-check.ts" },
+  { id: "removals", file: "scripts/verification/removals/check.ts" },
+  { id: "table-patch", file: "scripts/verification/table/declaration-patch-check.ts" },
+  { id: "defaults", file: "scripts/verification/public-defaults/browser-check.ts" },
+  { id: "scoped", file: "scripts/verification/scoped-registration/browser-check.ts" },
+  { id: "flow-distributions", file: "scripts/verification/flow/distributions.browser-check.ts" },
+  { id: "bundle", file: "scripts/verification/bundling/browser-check.ts" },
+  { id: "worker-consumer", file: "scripts/verification/table/worker-consumer.browser-check.ts" },
+  { id: "component-browsers", file: "scripts/component-browser-checks.ts" },
+  { id: "official-firefox", file: "scripts/official-firefox-checks.ts" },
 ] as const;
+export type BrowserCheckEntry = { id: (typeof browserChecks)[number]["id"]; file: string };
 export type BrowserCheck = { file: string; args: string[]; environment: Record<string, string | undefined> };
 export type BrowserCheckResult = { file: string; args: string[]; passed: boolean; exitCode: number | null; error?: string };
 export class CheckCommandError extends Error {
@@ -68,7 +69,7 @@ export async function executeBrowserChecks(
     );
   }
 }
-export function browserCheckPlan(release: ReleaseRecord, consumer: string, runtime: string, root = repositoryRoot): BrowserCheck[] {
+export function browserCheckPlan(release: ReleaseRecord, consumer: string, runtime: string, root = repositoryRoot, entries: readonly BrowserCheckEntry[] = browserChecks): BrowserCheck[] {
   const archives = path.join(root, ".artifacts/release/archives");
   const archive = (name: string) => {
     const entry = release.packages.find((item) => item.name === name);
@@ -103,18 +104,16 @@ export function browserCheckPlan(release: ReleaseRecord, consumer: string, runti
     ACME_FLOW_DISTRIBUTIONS_RESULTS: path.join(results, "flow-distributions.json"),
     ACME_BUN: process.execPath,
   };
-  return browserChecks.flatMap((file): BrowserCheck[] => {
-    if (file === "notes/alignment/evidence/m26-scoped/run.ts") {
+  return entries.flatMap(({ id, file }): BrowserCheck[] => {
+    if (id === "scoped") {
       return ["module", "cdn"].map((mode) => ({
         file,
         args: [],
         environment: { ...environment, ACME_SCOPED_CDN: mode === "cdn" ? "1" : "0", ACME_SCOPED_RESULTS: path.join(results, "scoped-" + mode + ".json") },
       }));
     }
-    const audit = /m26-audit\/(defaults|removals|table-patch)-run\.ts$/.exec(file)?.[1];
-    return [
-      { file, args: file.endsWith("worker-consumer-run.ts") ? [core, react] : [], environment: { ...environment, ...(audit ? { ACME_AUDIT_RESULTS: path.join(results, audit + ".json") } : {}) } },
-    ];
+    const audit = id === "defaults" || id === "removals" || id === "table-patch" ? id : undefined;
+    return [{ file, args: id === "worker-consumer" ? [core, react] : [], environment: { ...environment, ...(audit ? { ACME_AUDIT_RESULTS: path.join(results, audit + ".json") } : {}) } }];
   });
 }
 export const checkStages = ["static", "build", "types", "unit", "audit", "packages", "install-browsers", "browser", "release"] as const;
@@ -186,10 +185,14 @@ export async function checkStage(stage: CheckStage) {
       "--skipLibCheck",
       "--types",
       "bun,node",
+      "--jsx",
+      "react-jsx",
       "scripts/check.ts",
+      "scripts/component-browser-checks.ts",
       "scripts/declarations.ts",
       "scripts/dependency-audit.ts",
       ...new Bun.Glob("scripts/release*.ts").scanSync(repositoryRoot),
+      ...new Bun.Glob("scripts/verification/**/*.{ts,tsx}").scanSync(repositoryRoot),
     ]);
   } else if (stage === "unit") {
     await command(["test"]);

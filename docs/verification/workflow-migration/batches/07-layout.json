@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-layout",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer full source/audit read and semantic reconciliation; coordinator guard/review pending",
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/inventory/layout.md",
+      "destination": "spec/SPEC-layout.md",
+      "sourceSha256": "59f16834d83967e82419dba4ced2a56443a4a170bdab65f15493f571dff787e2",
+      "destinationSha256": "e292db24e371a0bb64c65e7645501b27321a0ccb224b4f8483bc4f3f1d6c4a86",
+      "changes": [
+        "Converted approved proposal wording into current contract language; preserved inputs/defaults/content/methods/events/exclusions and acceptance requirements.",
+        "Retargeted citations through allocated ledger paths; retained original approval and dated evidence."
+      ],
+      "retainedQualifications": [
+        "Core layout remains separately owned by SPEC-design-system.md.",
+        "The retained markup illustration does not claim fresh execution.",
+        "Native pointer/keyboard/RTL/adoption and actual assistive checks retain their scope."
+      ],
+      "reconciliations": [
+        "0035 logical Inset sides and perpendicular-axis bleed remain explicit.",
+        "0035 default-true boolean attribute resolution is folded into Separator.",
+        "0035 adjacent-pane-only resizing and shared previous-size restoration refine the Resizable contract."
+      ],
+      "evidence": [
+        "docs/decisions/0035-execution-delegation.md",
+        "docs/verification/systematization/m07-separator-2026-09-21.json"
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

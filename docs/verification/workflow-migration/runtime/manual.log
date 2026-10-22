@@ -1,0 +1,176 @@
+BEGIN 08-documentation-action-labels.browser-check
+[
+  {
+    "engine": "chromium",
+    "appearance": "light",
+    "labels": [
+      {
+        "owner": "react",
+        "text": "Remove",
+        "clientWidth": 52,
+        "scrollWidth": 52,
+        "buttonWidth": 78.046875,
+        "labelWidth": 52.046875
+      },
+      {
+        "owner": "lit",
+        "text": "Remove",
+        "clientWidth": 52,
+        "scrollWidth": 52,
+        "buttonWidth": 78.046875,
+        "labelWidth": 52.046875
+      }
+    ],
+    "pass": true
+  },
+  {
+    "engine": "chromium",
+    "appearance": "dark",
+    "labels": [
+      {
+        "owner": "react",
+        "text": "Remove",
+        "clientWidth": 52,
+        "scrollWidth": 52,
+        "buttonWidth": 78.046875,
+        "labelWidth": 52.046875
+      },
+      {
+        "owner": "lit",
+        "text": "Remove",
+        "clientWidth": 52,
+        "scrollWidth": 52,
+        "buttonWidth": 78.046875,
+        "labelWidth": 52.046875
+      }
+    ],
+    "pass": true
+  },
+  {
+    "engine": "firefox",
+    "appearance": "light",
+    "labels": [
+      {
+        "owner": "react",
+        "text": "Remove",
+        "clientWidth": 52,
+        "scrollWidth": 52,
+        "buttonWidth": 78.03334045410156,
+        "labelWidth": 52.03334045410156
+      },
+      {
+        "owner": "lit",
+        "text": "Remove",
+        "clientWidth": 52,
+        "scrollWidth": 52,
+        "buttonWidth": 78.03334045410156,
+        "labelWidth": 52.03334045410156
+      }
+    ],
+    "pass": true
+  },
+  {
+    "engine": "firefox",
+    "appearance": "dark",
+    "labels": [
+      {
+        "owner": "react",
+        "text": "Remove",
+        "clientWidth": 52,
+        "scrollWidth": 52,
+        "buttonWidth": 78.03334045410156,
+        "labelWidth": 52.03334045410156
+      },
+      {
+        "owner": "lit",
+        "text": "Remove",
+        "clientWidth": 52,
+        "scrollWidth": 52,
+        "buttonWidth": 78.03334045410156,
+        "labelWidth": 52.03334045410156
+      }
+    ],
+    "pass": true
+  },
+  {
+    "engine": "webkit",
+    "appearance": "light",
+    "labels": [
+      {
+        "owner": "react",
+        "text": "Remove",
+        "clientWidth": 52,
+        "scrollWidth": 52,
+        "buttonWidth": 78.046875,
+        "labelWidth": 52.046875
+      },
+      {
+        "owner": "lit",
+        "text": "Remove",
+        "clientWidth": 52,
+        "scrollWidth": 52,
+        "buttonWidth": 78.046875,
+        "labelWidth": 52.046875
+      }
+    ],
+    "pass": true
+  },
+  {
+    "engine": "webkit",
+    "appearance": "dark",
+    "labels": [
+      {
+        "owner": "react",
+        "text": "Remove",
+        "clientWidth": 52,
+        "scrollWidth": 52,
+        "buttonWidth": 78.046875,
+        "labelWidth": 52.046875
+      },
+      {
+        "owner": "lit",
+        "text": "Remove",
+        "clientWidth": 52,
+        "scrollWidth": 52,
+        "buttonWidth": 78.046875,
+        "labelWidth": 52.046875
+      }
+    ],
+    "pass": true
+  }
+]
+BEGIN 08-documentation-appearance.browser-check
+chromium {"pass":24,"total":24,"errors":[],"failed":[]}
+firefox {"pass":24,"total":24,"errors":[],"failed":[]}
+webkit {"pass":24,"total":24,"errors":[],"failed":[]}
+BEGIN 08-documentation-table-source-isolation.browser-check
+chromium four isolated table examples passed
+firefox four isolated table examples passed
+webkit four isolated table examples passed
+BEGIN 08-devtools-manual
+chromium dom ready
+chromium 13 passed
+firefox dom ready
+firefox 13 passed
+webkit dom ready
+webkit 13 passed
+production exclusion passed
+BEGIN 08-workspace-consumer
+{"runtime":"1.4.2","archiveSha256":"fde73f637e4577a0a14549d7afc42b2a430ca1815d3c00765b8141e8f072f00f","name":"@acmelabs/design-system","version":"0.3.2","componentExports":4319,"runtimeDependencies":19,"excluded":[],"outputs":1,"bundleBytes":325010,"passed":true}
+BEGIN 08-workspace-install
+1.4.2 file:. FAIL changed-mcp-zod-3.25.76: packages/mcp does not resolve the live core
+1.4.2 link:. FAIL changed-mcp-zod-3.25.76: packages/mcp does not resolve the live core
+1.4.2 workspace PASS 
+bun install v1.4.2 (744846f84)
+Resolving dependencies
+Resolved, downloaded and extracted [2]
+Saved lockfile
+
++ @acmelabs/design-system@/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz
++ @acmelabs/design-system-react@/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-react-0.3.2.tgz
++ @types/react@19.3.0
++ @types/react-dom@19.3.0
++ react@19.3.0
++ react-dom@19.3.0
+
+89 packages installed [5.84s]

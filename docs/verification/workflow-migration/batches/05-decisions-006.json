@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-006",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/component-removals.md",
+      "destination": "docs/decisions/0015-component-removals.md",
+      "sourceSha256": "5021603ed28a5495c560990826ce83ee6d8e67636b4f4ff12be1050b07af06d4",
+      "destinationSha256": "3973c9336e1adbd1df3d771b26f7bc01ffb225ac55ca7b98c3c3c16c555d8db8",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original decision date, selected scope, alternatives, reasons and evidence retained.",
+        "Original observations and incomplete verification remain distinguished from later implementation."
+      ]
+    },
+    {
+      "source": "notes/decisions/compose-the-copy-button.md",
+      "destination": "docs/decisions/0016-compose-the-copy-button.md",
+      "sourceSha256": "fb2f22f8ddb8e99b3fce6c58d643fb348420e5cd2e2dbc2f7eee084029c6286e",
+      "destinationSha256": "f1e01013232e03cc4b6750ec23cbc18416c8222773ffc6287a2c36d9815cbed3",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original composition reasons, duplicate implementations, reference counts and narrower fix preserved.",
+        "Brands deletion and 20 trademark assets remain historical; Book texture retention and positioning/press-time text findings preserved.",
+        "Original property names and cascade observations explicitly dated rather than exposed as current APIs."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

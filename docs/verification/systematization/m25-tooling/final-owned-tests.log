@@ -1,0 +1,23 @@
+bun test v1.4.0 (34cbb9a40)
+
+scripts/__tests__/lint-policy.test.ts:
+(pass) scoped framework exceptions preserve ordinary correctness and messaging checks [74.32ms]
+
+scripts/__tests__/consumer-skills.test.ts:
+(pass) packaged skills share exact generated facts and deterministic release metadata [18.66ms]
+(pass) stale skill versions fail before output changes [3.92ms]
+
+site/__tests__/table-sources.test.ts:
+(pass) TanStack Table in Lit copies only its framework source graph with exact executed source [39.64ms]
+(pass) TanStack Table in React copies only its framework source graph with exact executed source [4.78ms]
+(pass) TanStack Virtual copies only its framework source graph with exact executed source [6.29ms]
+(pass) React virtualized Table copies only its framework source graph with exact executed source [7.62ms]
+(pass) virtualized recipe imports stay framework-specific [0.13ms]
+
+tools/geist/__tests__/diff.test.ts:
+(pass) accepted icon differences cannot hide a non-icon layout defect [110.04ms]
+
+ 9 pass
+ 0 fail
+ 52 expect() calls
+Ran 9 tests across 4 files. [723.00ms]

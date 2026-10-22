@@ -1,0 +1,100 @@
+bun test v1.4.0 (34cbb9a40)
+
+scripts/__tests__/material-symbols.test.ts:
+(pass) official path-only SVGs become inert geometry [0.23ms]
+(pass) unrecognized SVG markup fails before generation [0.07ms]
+(pass) symbol identifiers produce deterministic class and tag names [0.08ms]
+(pass) pinned source verification detects modified checkout content [0.19ms]
+
+scripts/__tests__/lint-policy.test.ts:
+(pass) scoped framework exceptions preserve ordinary correctness and messaging checks [71.65ms]
+
+scripts/__tests__/styles.test.ts:
+(pass) channel consumers use full colors and fixed alpha without making palette definitions circular [9.48ms]
+(pass) font consumers use canonical families and numeric weight tokens without family-as-weight declarations [0.47ms]
+(pass) generated Lit styles attach defaults without registering them during import [81.30ms]
+(pass) compiled CSS survives Lit template escaping exactly and maps to its CSS input [0.93ms]
+(pass) invalid CSS stops generation instead of producing a partial artifact [0.50ms]
+(pass) property definitions are parsed, deduplicated and rejected on conflict [1.19ms]
+(pass) document styles keep their explicit scope [0.10ms]
+(pass) partitioning retains quoted braces, variables and conditional ownership [0.60ms]
+(pass) the manifest rejects changed inputs and tampered outputs, without requiring the external corpus [9.34ms]
+(pass) invalid CSS and registration conflicts leave previous generated artifacts intact [4.21ms]
+(pass) family ownership is assigned before the compiler merges equal rules [0.14ms]
+(pass) nested selectors inherit their outer component family [0.20ms]
+(pass) constant line-height ratios retain browser precision and original source maps [0.57ms]
+(pass) line-height preservation respects nested rules and custom-property values [0.25ms]
+(pass) an active output lock cannot overwrite the manifest [3.75ms]
+(pass) retiring a style removes only its recorded files and protects unrecorded changes [6.69ms]
+
+scripts/__tests__/package.test.ts:
+(pass) consumer workspaces resolve one live core with coordinated release metadata [32.39ms]
+(pass) core staging dereferences only its explicit delivery links [55.29ms]
+(pass) production metadata contains runtime contracts and resolves coordinated workspaces [0.23ms]
+(pass) packing preserves the authoring manifest and ships only staged production files [46.73ms]
+(pass) packing skills publishes generated references once and excludes authoring evals [48.05ms]
+
+scripts/__tests__/numeric-tokens.test.ts:
+(pass) numeric CSS declares independent spacing and size defaults with no negative aliases [0.21ms]
+(pass) the generated manifest links every public key to its one property, default and source [8.56ms]
+
+src/shared/__tests__/owned-content.test.ts:
+(pass) framework rendering reads the component mount state without creating a Lit part [3.96ms]
+(pass) ordinary author content takes precedence over a framework renderer [0.28ms]
+(pass) controlled templates mount and unmount actual nodes without moving the template [1.08ms]
+(pass) owned Lit parts receive disconnect and reconnect notifications [1.05ms]
+
+src/shared/__tests__/native-form.test.ts:
+(pass) native submission is current before canonical observers and inside an outer batch [0.59ms]
+(pass) same-value writes become dirty; defaults and reset follow native ownership [0.14ms]
+(pass) custom validation overrides family validation and clearing restores it [0.11ms]
+(pass) fieldset state remains separate from authored disabled state [0.07ms]
+(pass) extra canonical state synchronizes while connected and catches up after reconnect [0.06ms]
+(pass) restoration uses the family decoder and preserves an explicit null restoration state [0.07ms]
+(pass) a constraint callback cannot leave native submission behind the canonical value [0.07ms]
+(pass) an owned part suppresses native participation without discarding its standalone state [0.07ms]
+(pass) owner synchronization runs after the local native projection inside the same write [0.05ms]
+(pass) Field context masks participation without overwriting authored disability or value [0.06ms]
+(pass) native text normalization retains the raw reset default [0.08ms]
+
+src/shared/__tests__/chart-data.test.ts:
+(pass) chart records preserve zero and missing values without numeric coercion [0.30ms]
+(pass) series records validate identity and retain formatter functions [0.04ms]
+(pass) numeric and date x values retain their semantic kind and source indices [0.07ms]
+(pass) the selected engine preserves line gaps and groups bar series beside each other [8.05ms]
+(pass) exact date values remain distinct within the same UTC day [0.01ms]
+(pass) default exact-value formatting preserves small finite values [0.05ms]
+
+tools/geist/__tests__/census.test.ts:
+(pass) state rewrite > a pseudo-class on a compound carries the state down to the parts inside [0.07ms]
+(pass) state rewrite > a bare pseudo-class keeps the element clause only [0.01ms]
+(pass) state rewrite > a bare pseudo-class is recognised after every combinator [0.03ms]
+(pass) state rewrite > focus-visible maps to the focus attribute, and focus does too [0.01ms]
+(pass) state rewrite > an escaped colon in a utility class name is left alone
+(pass) state rewrite > a pseudo-class that only starts the same way is left alone
+
+tools/geist/__tests__/gen.test.ts:
+(pass) composed descendant rules reach the terminal part through its ancestor host [13.88ms]
+
+tools/geist/__tests__/simplify.test.ts:
+(pass) simplify: shorthand reset > a shorthand replaces the longhands it does reset [0.27ms]
+(pass) simplify: shorthand reset > outline keeps outline-offset: the shorthand does not reset it [0.03ms]
+(pass) simplify: shorthand reset > outline still replaces its own longhands [0.03ms]
+(pass) simplify: shorthand reset > transform keeps transform-style: they are separate properties [0.04ms]
+(pass) simplify: shorthand reset > a same-prefixed property outside its shorthand survives [0.08ms]
+(pass) reference defaults use linked CSS sheets rather than sidecar files [2.14ms]
+
+tools/geist/__tests__/token-declarations.test.ts:
+(pass) removes only imported numeric spacing declarations [0.37ms]
+(pass) rewrites positive and signed references into the canonical spacing category [0.40ms]
+(pass) preserves positive fallbacks and does not rewrite quoted text [0.10ms]
+(pass) rejects unsupported numeric references instead of emitting missing variables [0.11ms]
+(pass) the actual token generator retires aliases and emits stable bytes across clock dates [114.10ms]
+
+src/components/data-list/__tests__/data-list.test.ts:
+(pass) Data List keeps native pairs and rich values owned by the author [5.35ms]
+
+ 68 pass
+ 0 fail
+ 300 expect() calls
+Ran 68 tests across 13 files. [860.00ms]

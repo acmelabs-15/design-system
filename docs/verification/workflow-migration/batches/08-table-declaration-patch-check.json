@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-table-declaration-patch-check",
+  "status": "complete",
+  "recordedAt": "2026-10-22T05:24:05.064Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "verification": {
+    "passed": true,
+    "scope": "Focused relocated scenario and checks",
+    "runtime": "Bun 1.4.2",
+    "scenario": "Patched declarations: zero diagnostics. Published declarations: four diagnostics, including reviewFeature rejection. Exit0.",
+    "output": ".artifacts/checks/table-patch.json",
+    "types": "Focused strict TypeScript passed",
+    "static": "Oxlint/Oxfmt passed",
+    "review": "Root depth and default output path changed. Braces, whitespace and callback formatting satisfy the existing linter. Both positive and negative oracles are unchanged.",
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m26-audit/table-patch-run.ts",
+      "destination": "scripts/verification/table/declaration-patch-check.ts",
+      "sourceSha256": "a064428745d4988035cba249f2e4dc3404e272511a29e1c08552722f9e781c8f",
+      "destinationSha256": "5be931a60523c28f2c006e52450c0be57abdeecd4a0cad2c816db9e019ee58b1"
+    }
+  ],
+  "limits": [
+    "Aggregate migration, fresh consumer, and browser acceptance are recorded separately. Originals remain until cutover."
+  ],
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [
+      {
+        "file": "scripts/verification/table/declaration-patch-check.ts",
+        "args": [],
+        "passed": true,
+        "exitCode": 0
+      }
+    ],
+    "manual": [],
+    "supportingScope": "",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  }
+}

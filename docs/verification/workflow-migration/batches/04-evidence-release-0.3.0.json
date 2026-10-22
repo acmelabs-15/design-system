@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-release-0.3.0",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.850Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/release-0.3.0/dependency-audit.json",
+      "destination": "docs/verification/releases/0.3.0/dependency-audit.json",
+      "bytes": 1762,
+      "sha256": "eaeca80c1ed166a193fde2aa927b7bbebea4e6898e6f6b022dfe3310e48eec68"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.0/dialog-native-local.log",
+      "destination": "docs/verification/releases/0.3.0/dialog-native-local.log",
+      "bytes": 396,
+      "sha256": "c22da44368a793db8ed5beab66f59504b36e308da9a9de90c8da206be94e3185"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.0/filter-green.log",
+      "destination": "docs/verification/releases/0.3.0/filter-green.log",
+      "bytes": 830,
+      "sha256": "11aee57e83489f277e24a388d194cfd10bceb1bb4ced8a1ee3e3f15a0162adf3"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.0/filter-red.log",
+      "destination": "docs/verification/releases/0.3.0/filter-red.log",
+      "bytes": 957,
+      "sha256": "49ea8907e3facc6ffba8f9e66da73571530259e46ff15912fb6ec3d69c514e06"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.0/flow-close-local.log",
+      "destination": "docs/verification/releases/0.3.0/flow-close-local.log",
+      "bytes": 84,
+      "sha256": "3f1b9db903c32b64b5de0e7ead5fe2deb0ff358a1f06d3eb3fb535cdd67059fc"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.0/linux-browser-finding.json",
+      "destination": "docs/verification/releases/0.3.0/linux-browser-finding.json",
+      "bytes": 432,
+      "sha256": "ebfd040b086fce1217ff6f7cb3601856a73535a854c99a70be4de85e280b4d8c"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.0/linux-verified.json",
+      "destination": "docs/verification/releases/0.3.0/linux-verified.json",
+      "bytes": 1310,
+      "sha256": "10c76e5b4ba54a75063647b498d7b269f23ad4806321d11d969bef95a054d85a"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.0/linux-worker-finding.json",
+      "destination": "docs/verification/releases/0.3.0/linux-worker-finding.json",
+      "bytes": 406,
+      "sha256": "68961823366803815788016aea0e0cdf1e6770e63a21467922d71f5472092c2b"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.0/publication-failure.json",
+      "destination": "docs/verification/releases/0.3.0/publication-failure.json",
+      "bytes": 1822,
+      "sha256": "2bf9f50f3b786544946f8747c24ef5fc8bbdb73b659a11ce825c98ae2b3c8176"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.0/published-companions.json",
+      "destination": "docs/verification/releases/0.3.0/published-companions.json",
+      "bytes": 1053,
+      "sha256": "401b1f425b4c4ea5c689527b3857008fb472c243ef0dec868ba4a862ea6b1b3c"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.0/release.json",
+      "destination": "docs/verification/releases/0.3.0/release.json",
+      "bytes": 1398,
+      "sha256": "22e24ca84f9d86bd9d6bcddf2fbc0c16772e3a7ed868517c7ded313318178e6a"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.0/signing.json",
+      "destination": "docs/verification/releases/0.3.0/signing.json",
+      "bytes": 787,
+      "sha256": "183ab61af1666bb52b640d5652a82700602c1e8a482b38037161b71f08b82d46"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

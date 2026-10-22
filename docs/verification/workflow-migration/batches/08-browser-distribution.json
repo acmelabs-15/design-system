@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-browser-distribution",
+  "status": "complete",
+  "recordedAt": "2026-10-22T05:20:50.366Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [],
+    "manual": [],
+    "supportingScope": "Two passing unit tests/13 assertions plus all runtime consumers use the relocated shared helper.",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  },
+  "verification": {
+    "passed": true,
+    "tests": {
+      "command": "bun test scripts/verification/__tests__/browser-distribution.test.ts",
+      "passed": 2,
+      "assertions": 13,
+      "exitCode": 0
+    },
+    "types": {
+      "command": "bun node_modules/typescript/bin/tsc --noEmit --strict --target ES2022 --module ESNext --moduleResolution bundler --skipLibCheck --types bun,node scripts/verification/browser-distribution.ts scripts/verification/__tests__/browser-distribution.test.ts",
+      "exitCode": 0
+    },
+    "lint": {
+      "command": "bun node_modules/oxlint/bin/oxlint --config oxlint.config.ts scripts/verification/browser-distribution.ts scripts/verification/__tests__/browser-distribution.test.ts",
+      "exitCode": 0
+    },
+    "format": {
+      "command": "bun node_modules/oxfmt/bin/oxfmt --check --config oxfmt.config.ts scripts/verification/browser-distribution.ts scripts/verification/__tests__/browser-distribution.test.ts",
+      "exitCode": 0
+    },
+    "review": "Coordinator read both complete destinations. The test remains byte-identical. The helper only adds braces to the existing continue branch to meet authored-script lint. Routing, traversal protection, package identity, arguments and cleanup are unchanged.",
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/__tests__/browser-distribution.test.ts",
+      "destination": "scripts/verification/__tests__/browser-distribution.test.ts",
+      "sourceSha256": "e0c9266e4b55378383983cf37bf3766b89ae2d8dfb834d45a29a2c3629cdf5ec",
+      "destinationSha256": "e0c9266e4b55378383983cf37bf3766b89ae2d8dfb834d45a29a2c3629cdf5ec"
+    },
+    {
+      "source": "notes/alignment/evidence/browser-distribution.ts",
+      "destination": "scripts/verification/browser-distribution.ts",
+      "sourceSha256": "5f879e2b54c7406db42feb31fd7f36c539ac8bbcc5d53f5d578156896657fc2d",
+      "destinationSha256": "1342276bcfd88c06e5f3060b756961d787a5a47e25612b3d448673f68993b208"
+    }
+  ],
+  "limits": [
+    "Original callers switch in their allocated migration batches. Full browser/package acceptance follows relocation. Aggregate preparation is recorded separately."
+  ]
+}

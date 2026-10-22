@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m24-consumers",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.617Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m24-consumers/acceptance-2026-09-26.json",
+      "destination": "docs/verification/systematization/m24-consumers/acceptance-2026-09-26.json",
+      "bytes": 8099,
+      "sha256": "377a03edc58f7efa0f6d275ca19f2646a0f9a04b213f2eb7b97dd0a29913d622"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-consumers/chromium-packed-narrow-2026-09-26.png",
+      "destination": "docs/verification/systematization/m24-consumers/chromium-packed-narrow-2026-09-26.png",
+      "bytes": 263778,
+      "sha256": "f2b01f8084c3d3b7a1ffebfd41daea189949a4e7407366384817eccf1df1f7a0"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-consumers/inspector-results.json",
+      "destination": "docs/verification/systematization/m24-consumers/inspector-results.json",
+      "bytes": 2753,
+      "sha256": "c948de2984da200d521d6233789f1d080616a4d063e5c4375256ed06fee424e9"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-consumers/intent-results.json",
+      "destination": "docs/verification/systematization/m24-consumers/intent-results.json",
+      "bytes": 2125,
+      "sha256": "d80b101bc7dde8fa32784aaeb65c3e7e6e4b248647f3106b5618cd0acdaa2123"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-consumers/mcp-results.json",
+      "destination": "docs/verification/systematization/m24-consumers/mcp-results.json",
+      "bytes": 748,
+      "sha256": "4ded0e52bd5d075fd26007f291469089683486e4209833e7c1a65454cf3cfde4"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-consumers/production-result.json",
+      "destination": "docs/verification/systematization/m24-consumers/production-result.json",
+      "bytes": 68,
+      "sha256": "54b028308c0fbecec68c98b7127f9e3204415d74467f5d434b23e9fca0c8ecf5"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-consumers/table-source-isolation-2026-09-26.json",
+      "destination": "docs/verification/systematization/m24-consumers/table-source-isolation-2026-09-26.json",
+      "bytes": 4825,
+      "sha256": "9ba257e8d41ccee6734c6ecf1928479e3bcf86171de59096c27466f7862c2ea8"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

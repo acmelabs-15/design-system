@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "batch": "06-research-15-lit-practice-review",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer full sequential source read and semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "All20 originals were fully read during audit and conversion. Specific findings distinguish observations, proposals, approved choices, unverified claims, supersession and dated history. Rule dispositions retire completed process instructions.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/analysis/lit-practice-review.md",
+      "destination": "docs/research/15-lit-practice-review.md",
+      "sourceSha256": "15c10368cb1e6457c700aa845e3909cea0a591aca2ba89af05fb62ad13aa133e",
+      "destinationSha256": "4191b1bf6a58c7ba95cc815e0f859d7b2dc142c71eb4a715d2fb9f09e6da4b22",
+      "changes": [
+        "Recast initial recommendations and old implementation queues as dated history with later contract/acceptance pointers.",
+        "Preserved all measurement matrices, compiler/package versions, failed experiments, source citations and implementation qualification chains.",
+        "Explicitly retained lifecycle supersession, Firefox old-runtime uncertainty, platform limits and the twelve-versus-thirteen-case React evidence distinction.",
+        "Moved live evidence references to allocated paths and converted the bare overlay evidence path to a link."
+      ],
+      "retainedQualifications": [
+        "Declaration presence is not native form behavior; native AX, automation queries and speech remain different oracles.",
+        "Unequal fixture counts are not benchmarks; state ownership, Lit notifications, defaults and native synchronization remain distinct.",
+        "Explicit styleInputs({}) clearing supersedes the old automatic-removal requirement.",
+        "Firefox polyfill adoption and WebKit nested-slot container failures retain native controls and limits.",
+        "Synthetic restoration/IME/clipboard/visibility do not prove OS behavior; Firefox release acceptance does not diagnose the older crash.",
+        "JSON Proxy traps, trusted Markdown HTML, WebKit fullscreen Video keyboard scope and late managed-form/default findings remain explicit."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

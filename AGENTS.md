@@ -1,100 +1,42 @@
-# Working in this repository
+# ACMElabs design system
 
-This is `@acmelabs/design-system`: Peter's design system, Lit web components with the `acme-` prefix, built so AI-generated artifacts have a real design language to render. The Geist port is closed. The **systematization pass** is implemented and released: fewer elements, one name per concept, one shape per kind of interface, a small set of primitives the rest compose. Its release evidence and verification limits live in `notes/alignment/README.md`.
+This repository owns the Lit components with the acme- prefix and their shared delivery, React bridge and consumer tools. One workflow serves all five packages. Current work belongs to [docs/STATUS.md](docs/STATUS.md).
 
-Your global `AGENTS.md` carries how Peter works everywhere. This file carries what is specific here.
+## Session start
 
-## Start of every session
+From a package directory, find the Git repository root and use it for this workflow. Complete these steps before starting the requested work.
 
-Read these in order, in full.
+1. Read [status](docs/STATUS.md), [domain routing](docs/agents/domain.md), [the context map](CONTEXT-MAP.md) and the glossary for the task. Read each selected file to its last line.
+2. Read [the specification index](spec/README.md), then the active specification, plan and task list named by status. Read all three to their last line, including for read-only assessments and new requests. Read [the record layout](docs/agents/workflow.md). Preserve an incomplete plan when Peter changes the request.
+3. Inspect Git status and the active branch. Verify the selected Bun executable and its version. Preserve work owned by other sessions. Read [repository ownership](docs/agents/repository.md) and [verification](docs/agents/verification.md) before editing; identify authored inputs, generated outputs, affected packages and applicable check evidence.
+4. Establish the baseline from its revision, inputs and check scope. Run missing or invalidated checks using the verification guide. A historical green result does not close a newer failure.
+5. Report the phase, last completed step, next step, red checks and pending decisions in five lines or fewer. Follow Peter's current request. A request to continue resumes the next approved task; a completed plan does not authorize another feature.
 
-1. `notes/alignment/README.md` — the current pass. Its `## Where we are` block says what is decided, what is in progress, and the next step.
-2. `PLAN.md` §1 — the standing build rules and the mandated package stack. The rest of `PLAN.md` is the parity port's record; read a section when the pass touches what it covers.
-3. `notes/decisions/*.md` — every decision Peter has made, with its evidence. A decision is reopened only with new evidence.
-4. `notes/analysis/*.md` — living analysis. Extend the file on a subject; a second file on the same subject is a mistake.
-5. `README.md` — the consumer's view, and the list of generated files.
+## Work through brain
 
-For the approved migration, read and follow `notes/decisions/execution-delegation.md`: continue the remaining work without another decision or approval pause. For other requests, report where we are and the next step, then follow Peter’s current instruction.
+Load brain:using-brain at session start, then select the applicable skill. Agent-skills remains available. When both plugins provide the same skill, use brain's version. The plugins own the lifecycle and engineering procedures; this repository supplies its facts and record locations.
 
-## Rules this repo adds
+Before composing a user-owned decision or permission question, load brain:ask-user-question and read its applicable host reference in full. Keep approval scoped to the actual task and action. The status file records current authorization; a completed pass or another repository grants no standing permission here.
 
-- **Use component names directly.** Every component belongs to this design system. Describe a component, its behavior and its reference sources without a separate “house” version or category.
+Setup, wait-what, handoff, triage and wayfinder start from Peter's prompt. When one is needed, give him the applicable command or skill invocation. [CLAUDE.md](CLAUDE.md) carries Claude command spellings; Codex uses the installed skill names.
 
-- **Best, not fastest.** Every decision is the best decision for what we are building. Where the best path and the quick path differ, name both and take the best one.
-- **Investigate first.** Every item Peter lists, and everything you find, gets analysis before a recommendation: what the code does (file and line), what the community does (a source you read), what a reference system does (its docs or rendered output). Unsure means ask.
-- **Research keeps going.** A discovery in the code or in conversation that changes what we know sends you back to research, and the findings land in `notes/analysis/` in the same turn.
-- **Peter's decisions go through `ask-user-question`**, one at a time, with the research and your recommendation inside the question text.
-- **A change replaces the old thing outright.** Nobody consumes the package yet. The new name, shape or element is the only one in the code: no alias, no fallback, no comment about what was there before. What replaced what, and why, is written in a decision note, an analysis document, or the plan.
-- **This is Peter's first Lit project.** Explain the platform's trade-offs when they matter; take nothing as known.
+Before changing an area, read the applicable decisions and research through their [decision](docs/decisions/README.md) and [research](docs/research/README.md) indexes. Use the glossary's names. Source facts, proposals, selected contracts and verification results remain distinct.
 
-## Keeping the record
+| Change | Required guidance |
+| --- | --- |
+| Component behavior or interface | [Component rules](docs/development/components.md), [interface conventions](docs/development/interfaces.md), and its owning specification |
+| CSS or style production | [Style ownership](docs/development/styles.md); [generation and comparison](docs/development/generation.md) when mapped sources or census evidence change |
+| Package or dependency responsibility | [Selected stack](docs/development/stack.md) and the package ownership map |
+| Website, examples or consumer guidance | [Documentation rules](docs/development/documentation.md) |
+| A reference comparison | [Reference sources](docs/development/reference-sources.md) |
+| A domain term or decision record | brain:domain-modeling and [domain routing](docs/agents/domain.md) |
+| A skill or agent instruction file | The official skill-creator workflow and brain:writing-for-agents |
 
-- Analysis documents, decision notes and plan sections are updated in the turn the information changes.
-- Decision notes: `notes/decisions/<slug>.md`, opening with "Decided <date> by Peter". Author website content under `site/`; `_site/` is build output.
-- Pass documents: `notes/alignment/`.
-- **The handoff test closes every turn:** a fresh agent reading this file and `notes/alignment/README.md` can resume with no other context. `## Where we are` is current, every new document is linked from the pass README, and every decision made this turn has its note.
+## Task end and handoff
 
-## Skills
+1. Update the task's acceptance checks and any specification whose facts change. Record research or a decision in its one owning record.
+2. Save exact verification commands, results, revision and limits. Use focused checks for each slice, then the full gate and review at the task's closure.
+3. Rewrite [status](docs/STATUS.md) with the next action, anything red and what awaits Peter. Include the exact invocation when the next step is user-started. A fresh session must resume without the conversation.
+4. Record what is committed, uncommitted, pushed or awaiting approval. Stage owned files by name. Use only the local-commit and outward-action authorization actually granted for this work. Merge approved pull requests with merge commits.
 
-Repo skills live in `.agents/skills/`; Codex lists them in the skill selector, and any agent can read them as files. Paths inside them are already adapted to this repo.
-
-| Skill | Use it |
-|---|---|
-| `domain-modeling` | Whenever a term is challenged, a glossary entry is written to `CONTEXT.md`, or a decision note is recorded (its `ADR-FORMAT.md` gives the bar and shape) |
-| `codebase-design` | The architecture vocabulary (module, interface, depth, seam, adapter, leverage, locality). Read before any architecture discussion |
-| `improve-codebase-architecture` | Phase 3 of the pass, when Peter says |
-| `grill-me` | The one-question-at-a-time decision walk: inside Phase 3, and per inventory entry in Phase 4 |
-| `wait-what` | Peter's signal that a message did not land; re-pitch it as the skill says |
-
-`ask-user-question` is installed on Peter's machine, not in this repo.
-
-## Standing build rules an agent trips on
-
-The full set, with evidence, is `PLAN.md` §1.
-
-- Every CSS declaration ships through the generator. A defect is fixed in `tools/geist/`; a `*.styles.ts` is never edited by hand.
-- Nothing under `src/` names the reference (vercel.com/geist), in code, comments or JSDoc.
-- The package stack in `PLAN.md` §1 is mandated. Where it lacks something and the work is complex, research and propose a package; Peter decides.
-- Wrappers keep a real box; `display: contents` stays off wrappers.
-- Pure Bun. Tests in `__tests__/` beside the file, `<file>.test.ts`, `bun:test`.
-
-## Where things are, and what is generated
-
-Several **generated files are committed**, in places that read as source. The scripts overwrite them.
-
-| Path | Written by | Source of truth |
-|---|---|---|
-| `src/generated/css/` | style producers | `styles/`, mappings and committed specs |
-| `src/generated/components/` and `src/generated/shared/` | `scripts/styles.ts` | compiled CSS under `src/generated/css/` |
-| `src/generated/style-manifest.json` | style producers | input/output fingerprints and registration definitions |
-| `src/generated/tokens.json` and `dist/tokens.json` | `split`, then `build` | `src/shared/numeric-tokens.ts` through `scripts/numeric-tokens.ts` |
-| `src/define/`, `src/register/`, their `src/internal/` counterparts, `src/all.ts` and component package exports | `scripts/entries.ts` | `HTMLElementTagNameMap` records, explicit internal annotations, owned markup and literal scoped-factory calls |
-| `dist/shared/date.js` and `dist/licenses/` | `scripts/date-runtime.ts` during build | exact patched date dependency and `src/shared/date.ts` |
-| `dist/custom-elements.json` | `scripts/manifest.ts` | component declarations, templates and annotations |
-| `dist/**/*.d.ts` | `scripts/declarations.ts` | TypeScript declarations and closed generated entry interfaces |
-| `dist/styles/` | `bun run build` | compiled document/token/recipe CSS and maps |
-| `dist/cdn/` | `bun run build` | selective definitions and one shared browser module graph |
-| `dist/browser-licenses/` | `scripts/browser-package.ts` | bundled dependency notices and pinned license metadata |
-| `packages/core/{dist,assets,README.md,skills}` | `scripts/core-package.ts` | approved links to the single source/build tree |
-| `packages/browser/{dist,styles,bundle,licenses}` | `scripts/browser-package.ts` | approved links to browser output, styles, bundles and notices |
-| `packages/react/.build-src/` and `packages/react/dist/` | `scripts/react.ts` | CEM and the authored React bridge |
-| `dist/skills/` and MCP documentation records | `bun run docs` | authored `skills/`, CEM and `site/` records |
-| `packages/devtools/src/generated/metadata.ts` | `scripts/devtools-metadata.ts` | public CEM and token metadata |
-| `packages/{mcp,devtools}/dist/` | `bun run build:tooling` | their authored sources and generated metadata |
-| `.artifacts/packages/` | `bun run pack` | built outputs and production-only package metadata |
-| `_site/` | `bun run docs` → `site/build.ts` | `site/` and `dist/` |
-| `dist/` (gitignored) | `bun run build` | `src/` and verified generated inputs |
-
-GitHub Pages deploys the verified `_site/` artifact through `.github/workflows/pages.yml`. Website output is not tracked.
-
-Hand-written: `styles/`, `src/` except `src/generated/`, `src/define/`, `src/register/`, their `src/internal/` counterparts and `src/all.ts`; `site/`, `scripts/`, `packages/` except the generated paths above, `tools/geist/` except `corpus/`, `notes/`, `.agents/`, `README.md`, `PLAN.md`, this file.
-
-`CLAUDE.md` is a symlink to this file. Edit `AGENTS.md`; the link follows.
-
-Build order: `bun run split && bun run build && bun run docs && bun run build:tooling && bun test`. `docs` needs `dist/` from `build`.
-
-The public core manifest is `packages/core/package.json`; the repository root is a private build workspace. Use `scripts/core-package.ts` to read consumer metadata. Normal workspaces resolve one generated runtime without root-package overrides.
-
-Browser delivery has its own manifest in `packages/browser/package.json`; use `scripts/browser-package.ts` for its metadata and exact delivery links. Core's production allowlist excludes browser output. Both distributions use the same build tree. Every packed archive must pass the 60,000-entry project budget before release validation.
-
-Mapped-source changes use `bun tools/geist/gen.ts <name>`; `split` regenerates base and component styles. Build rejects stale generated inputs and refreshes registration entries, exports and API metadata. `bun run pack` stages production metadata; development patch settings stay in the authoring package.
+Historical plans and releases provide evidence. They do not restart their completed phases. The [local issue tracker](docs/agents/issue-tracker.md) owns unresolved follow-ups; its [labels](docs/agents/triage-labels.md) define their status.

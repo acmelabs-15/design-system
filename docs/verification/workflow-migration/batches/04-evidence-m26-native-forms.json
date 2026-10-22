@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m26-native-forms",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.834Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m26-native-forms/history-results.json",
+      "destination": "docs/verification/systematization/m26-native-forms/history-results.json",
+      "bytes": 3909,
+      "sha256": "9dca74212ba7de270044170e22c70d480cf6fd9b04a8c0807d32a1ff22bf44f0"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

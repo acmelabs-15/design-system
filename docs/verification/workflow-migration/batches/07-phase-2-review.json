@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-phase-2-review",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "checks": {
+      "sourceHash": "matches full-read source",
+      "destinationHash": "matches final prepared file",
+      "externalSourceUrls": "all source URLs retained",
+      "numericAndSourceIdentifiers": "retained; heading punctuation can change",
+      "links": "all targets exist or are allocated in ledger.records/newDocumentOwners",
+      "whitespace": "pass",
+      "runtime": "not rerun; historical proof limits retained"
+    },
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/phase-2-review.md",
+      "destination": "docs/history/systematization/scope-review.md",
+      "sourceSha256": "e39436badeae14997d6bb0fc0f73a586c5d58dee70adda255ee68c2a03410922",
+      "destinationSha256": "970a675a4c27e8942adf887098bf6e26ad5f11142d23fc12b1d9354c3d3ea8ea",
+      "changes": [
+        "Converted the allocated record with explicit status, dated evidence scope and current-owner links.",
+        "Retired old operational commands throughout while preserving decisions, measurements, qualifications and chronology.",
+        "Relocated Markdown links through the final ledger; historical path/session/branch literals remain provenance.",
+        {
+          "old": "Exact interfaces and runtime verification remain later; source implementation is gated by Phase 5 approval.",
+          "new": "At closure, exact interfaces and runtime verification remained later work and implementation awaited Phase 5 approval. Those completed-pass gates are historical."
+        },
+        {
+          "old": "Before a consequential question:\n\n1. Identify the relevant accepted decisions and compare the proposed behaviour, interface and implementation requirements against them.\n2. Inspect upcoming work for choices the proposal depends on or affects. Separate a stable direction from detailed design that remains open.\n3. If there is a conflict, identify whether the existing decision, new proposal or both need revision, and explain the evidence and effects. Take material changes to Peter; do not silently override either side.\n4. If a missing prerequisite could change the choice, defer it with the exact question, reason, dependency, return point and phase closure requirement. Link it from both this register and the review section that must revisit it.\n5. Bring needed research forward when it would avoid a circular phase dependency. Do not mark a required decision complete merely because it was deferred.\n\n",
+          "new": "The historical compatibility procedure had five parts:\n\n1. Comparing accepted decisions with the proposed behavior, interface and implementation requirements.\n2. Inspecting upcoming dependencies and separating stable direction from open design.\n3. Identifying whether a conflict required revising an existing decision, the proposal or both, with evidence and effects supplied to Peter.\n4. Deferring a choice affected by a missing prerequisite with its exact question, reason, dependency, return point and closure requirement, linked in both owners.\n5. Bringing research forward to avoid circular phase dependencies without treating a deferred decision as complete.\n\n"
+        },
+        {
+          "old": "### Lit style authoring and declaration order",
+          "new": "The entries below describe deferred states at original checkpoints. The [whole-set approval](../decisions/inventory-approval.md) resolves final proposal choices. The later [explicit helper-clearing decision](../decisions/layout-spacing-properties.md#explicit-clearing-for-the-style-helper) resolves the helper-expression removal boundary. Their historical evidence and prerequisites remain below.\n\n### Lit style authoring and declaration order"
+        },
+        {
+          "old": "- **Owner and return:** the agent drafts and verifies the remaining C-SPACE contract; Peter decides material author-facing trade-offs and approves the inventory. Do not repeat helper inclusion, overlap order, supplied-setting scope or reassertion questions.",
+          "new": "- **Historical owner and return:** the agent drafted/verified C-SPACE, while Peter owned material author-facing choices and inventory approval. Helper inclusion, overlap order, supplied-setting scope and reassertion were already selected."
+        },
+        {
+          "old": "- **Registry dependency:** bring the native import/upgrade finding into shared element-definition and rendering work. Verify intended scoped registries and adoption into another document; the passing global-registry workaround is not proof of those paths. Preserve and evaluate the [standing mixin/polyfill direction](../../PLAN.md#7-decided-and-deferred); no native-only replacement is selected. Do not put a global-registry assumption inside the final styling helper or silently narrow the existing registry requirements.",
+          "new": "- **Registry dependency:** the native import/upgrade finding informed shared definition/rendering work. Scoped registries and cross-document adoption needed separate verification; the passing global-registry workaround did not prove them. The [selected mixin/polyfill direction](../../PLAN.md#7-decided-and-deferred) remained applicable, with no native-only replacement or global-registry-only helper selected."
+        },
+        {
+          "old": "The agent brings this evidence forward and Peter decides editing scope before the inspector entry is approved; no editing bridge is selected here.",
+          "new": "The agent carried that evidence into the inspector decision. This checkpoint selected no editing bridge; later whole-set approval selects read-only inspection."
+        },
+        {
+          "old": "- **Owner and return:** R01/E02–E03 prepares the bounded converter contract and verifies it before dependent shared-convention/entry approval. Bring any remaining material author choice with the component proposal; do not reopen the general helper interview.",
+          "new": "- **Historical owner and return:** R01/E02–E03 owned the bounded converter contract and verification before dependent approval. Remaining author choices belonged with the component proposal; the general helper choice was settled."
+        },
+        {
+          "old": "- **Return:** the Phase 2 responsibility review is complete. Phase 4 must define contextual slots, properties, events, keyboard rules and overflow together before Phase 5 approval.",
+          "new": "- **Historical return:** Phase 2 closed responsibility ownership. Phase 4 then defined contextual slots, properties, events, keyboard rules and overflow together before original Phase 5 approval."
+        },
+        {
+          "old": "Resolve the exact shared keys/values with the R04–R06 Button, selection-card and input contracts before approving Group.",
+          "new": "The original Group review deferred exact shared keys/values to the R04–R06 Button, selection-card and input contracts."
+        },
+        {
+          "old": "do not ask a disconnected provider-key question before reviewing these together.",
+          "new": "those proposals were reviewed together instead of as an isolated provider-key question."
+        },
+        {
+          "old": "- **Return:** the final companion selections close this Phase 2 return point. Specify exact Item/List/Stack/Group/Card parts, safe combined markup and migration paths in Phases 4–5.",
+          "new": "- **Historical return:** final companion selections closed Phase 2; exact Item/List/Stack/Group/Card parts, safe markup and migration paths were assigned to Phases 4–5."
+        },
+        {
+          "old": "If earlier research is insufficient to decide the disposition, bring the necessary investigation forward rather than silently bypass the phase gate.",
+          "new": "Insufficient disposition evidence required investigation before that original phase gate."
+        },
+        {
+          "old": "Do not repeat their inclusion or data-source choices.",
+          "new": "Their inclusion and data-source choices were settled."
+        },
+        {
+          "old": "- **Return:** purposes and required dispositions are selected. Define the combined interfaces and acceptance cases in Phase 4 before Phase 5.",
+          "new": "- **Historical return:** selected purposes/dispositions fed combined interfaces and acceptance cases in Phase 4 before Phase 5."
+        },
+        {
+          "old": "- **Return points:** settle remaining specialised-group and row dispositions during Phase 2.4; specify public interfaces and these combined cases in Phase 4 before Phase 5 approval.",
+          "new": "- **Historical return points:** Phase 2.4 settled specialized-group/row dispositions; Phase 4 specified interfaces and combined cases before Phase 5 approval."
+        },
+        {
+          "old": "Revisit after the complete Pro review, before accepting the Pagination inventory entry. No final replacement interface is selected.",
+          "new": "At that checkpoint the boundary awaited the complete Pro review and inventory approval. Later whole-set approval selects coordinated Pagination parts; this earlier checkpoint did not itself select the interface."
+        },
+        {
+          "old": "## Resume here\n\n**Phase 2 is complete.** Read [the closure](#phase-2-closure) and [terms](terms.md); Peter subsequently started [Phase 3](phase-3-review.md). No question card is open. The earlier deferred review entries retain evidence and inventory obligations; their companion-purpose votes are now resolved.\n\nAt Phase 2.4 Group, return to [Toolbar composition](#toolbar-and-group-composition), [Entity and Item](#entity-and-item), related list/content companions and Setting Row. These return points are required before the relevant responsibilities and Phase 2 close. Existing decisions remain the baseline; new evidence can support an explicit revision with Peter. Source implementation remains unapproved.\n\nContinue research between questions without waiting for routine “continue” messages. Use the local question skill and an untimed supported question path. Phase 3 starts only when Peter says. Inventory approval and Phase 5 migration approval still precede source implementation.\n\n",
+          "new": "## Historical continuation\n\nPhase 2 closed with no question pending; Peter subsequently started [Phase 3](phase-3-review.md). Earlier deferred entries retained evidence and inventory obligations after companion-purpose choices resolved.\n\nThe original Phase 2.4 return points were [Toolbar composition](#toolbar-and-group-composition), [Entity and Item](#entity-and-item), related companions and Setting Row. Their reviewed responsibility split became the baseline for later contracts.\n\nResearch continued between questions under the then-selected local question skill and untimed route. Implementation awaited original inventory/migration approvals. Those routing, initiation and approval commands are historical.\n\n"
+        },
+        {
+          "old": "Use this later selection record with the earlier research; its acceptance does not certify implementation.",
+          "new": "This later selection record supplements earlier research; its acceptance did not certify implementation."
+        },
+        {
+          "old": "These are return points, not reasons to repeat the settled disposition votes.",
+          "new": "These were original return points after disposition votes settled. Later contracts and implementation resolve the assigned work."
+        },
+        {
+          "old": "Use a house Lit viewer with the shared stack and React wrapper, and load geometry separately when needed.",
+          "new": "The selected implementation was a Lit viewer with the shared stack/React wrapper and separately loaded geometry."
+        },
+        {
+          "old": "If fixed positions during rerouting become necessary, revisit the engine before approval.",
+          "new": "A future fixed-position rerouting requirement would change the engine evaluation; it was not selected here."
+        },
+        {
+          "old": "Include this component in the dependency-ordered inventory and the shared state/motion/viewport work.",
+          "new": "The component entered the dependency-ordered inventory and shared state/motion/viewport work."
+        },
+        {
+          "old": "**Subsequent handoff:** Peter started [Phase 3](phase-3-review.md); use its current evidence audit and architecture record. Phase 4 inventory/conventions/docs and Phase 5 migration approval still precede source implementation. No files under the source/build/generator freeze changed; capture validation records the fingerprints and links.",
+          "new": "**Subsequent historical handoff:** Peter started [Phase 3](phase-3-review.md). Original Phase 4 and Phase 5 approvals still preceded implementation then. The capture changed no files under the source/build/generator freeze; validation records fingerprints and links."
+        },
+        {
+          "old": "Bring forward enough Checkbox Card/Radio Card responsibility research to resolve the remaining composition and companion dispositions; exact interfaces remain for Phase 4.",
+          "new": "Checkbox Card/Radio Card responsibility research informed composition and companion dispositions; exact interfaces were then assigned to Phase 4."
+        },
+        {
+          "old": "Check full-row selection, separate secondary actions, input labels, focus, disabled state and form ownership without assuming that interactive controls can be nested inside a row-wide button.",
+          "new": "The required cases covered full-row selection, separate secondary actions, input labels, focus, disabled state and forms without assuming controls could nest inside a row-wide button."
+        },
+        {
+          "old": "- **Indicator dependency:** investigate current-location highlighting separately from form selection.",
+          "new": "- **Indicator dependency:** the review treated current-location highlighting separately from form selection."
+        },
+        {
+          "old": "- **Field dependency:** choose label/error ownership and migration of current embedded properties explicitly; define native and composite control participation, disabled inheritance, error timing and cross-shadow accessibility.",
+          "new": "- **Field dependency:** the inventory explicitly covered label/error ownership, migration of embedded properties, native/composite participation, disabled inheritance, error timing and cross-shadow accessibility."
+        },
+        {
+          "old": "- **Stat dependency:** resolve helper parts, built-in meter/Spark responsibilities, formatting/loading and announcements in the inventory.",
+          "new": "- **Stat dependency:** the inventory owned helper parts, built-in meter/Spark responsibilities, formatting/loading and announcements."
+        },
+        {
+          "old": "Do not silently add an extra consumer wrapper requirement.",
+          "new": "The selected scope did not add an extra consumer wrapper requirement."
+        },
+        "Final review preserves external source URLs and substantive numeric/source identifiers, checks allocated links including future issue owners, and passes whitespace verification."
+      ],
+      "retainedQualifications": [
+        "A source survey, proposal or user approval is not runtime acceptance.",
+        "Historical checkpoints do not establish current host, package or platform status.",
+        "Saved evidence identities and their original verification limits remain intact.",
+        ".scratch/maintenance/issues/002-actual-platform-verification.md"
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/alignment/phase-2-review.md",
+      "oldAnchor": "phase-2-review",
+      "destination": "docs/history/systematization/scope-review.md",
+      "newAnchor": "systematization-scope-and-semantic-naming-review",
+      "note": "Heading renamed; subsection evidence retained."
+    },
+    {
+      "source": "notes/alignment/phase-2-review.md",
+      "oldAnchor": "resume-here",
+      "destination": "docs/history/systematization/scope-review.md",
+      "newAnchor": "historical-continuation",
+      "note": "Heading renamed; subsection evidence retained."
+    }
+  ],
+  "findings": []
+}

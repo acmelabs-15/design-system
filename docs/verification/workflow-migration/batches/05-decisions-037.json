@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-037",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/tanstack-table-compatibility.md",
+      "destination": "docs/decisions/0107-tanstack-table-compatibility.md",
+      "sourceSha256": "19c361baaacebc246236841e531680da8ded580142071b4497af5a6260b83dc0",
+      "destinationSha256": "cb69f3d98a443dfcddfd5c5ab67b07910f67a4483b5b0abe04d868ae9ebd6146",
+      "changes": [
+        "Preserved consumer-owned Table/worker/framework responsibilities.",
+        "Dated original limited Table assessment and linked later contract/acceptance."
+      ],
+      "retainedQualifications": [
+        "TanStack Table is not a component runtime dependency.",
+        "React cells remain React; Lit cells remain Lit; TanStack Virtual serves both.",
+        "9.2.4 is a research baseline, not a future pin.",
+        "Workers remain experimental and application-owned; server data processing is distinct from excluded SSR."
+      ]
+    },
+    {
+      "source": "notes/decisions/text-role-vocabulary.md",
+      "destination": "docs/decisions/0108-text-role-vocabulary.md",
+      "sourceSha256": "63290d1072ef5dd1825ad1074a5a7323d41cb8b31cf9df3af0555dd7067a3000",
+      "destinationSha256": "9360e0a705d421d94a993469bd47a9f99e0b73c1f45740ffa2f64d4c8d5bf95f",
+      "changes": [
+        "Retained distinct text roles and Heading selection.",
+        "Linked detailed contracts instead of pending inventory work."
+      ],
+      "retainedQualifications": [
+        "Header/footer are regions; heading name does not force an HTML level.",
+        "Native title keeps platform meaning; similar old positions do not make description/metadata/content/subtitle synonyms."
+      ]
+    },
+    {
+      "source": "notes/decisions/theme-resolution-architecture.md",
+      "destination": "docs/decisions/0109-theme-resolution-architecture.md",
+      "sourceSha256": "091d43bf09ad10f60d2e6654d111426fda7c66a304e01410bc79f04db7f12aad",
+      "destinationSha256": "51cf320376128f780ed086212e4e73bb4ab3bdc015ebe9c3baf27f9897b47d4f",
+      "changes": [
+        "Retained theme/persistence separation and rationale.",
+        "Dated source gaps and investigation; linked later contract.",
+        "Recorded context package selection as a dated implementation resolution, not active permission."
+      ],
+      "retainedQualifications": [
+        "No preference helper/storage format/new runtime selected by initial decision.",
+        "No performance advantage established.",
+        "Context transports read-only TanStack sources; slot/move reset/resources/opener lifetime remain explicit.",
+        "Three-engine probe covers package mechanisms and two required stock-gap resets."
+      ]
+    },
+    {
+      "source": "notes/decisions/toast-behaviour.md",
+      "destination": "docs/decisions/0110-toast-behaviour.md",
+      "sourceSha256": "aaf908fead293ec2ed453c83b6a6be8d7eea013f5d02dc01c4a77eb6e48ef356",
+      "destinationSha256": "05d2b667ea8106e40556578f34c21a6aa42d0863913246e6f0c40e9d4159c52d",
+      "changes": [
+        "Retained overlapping presentation, immediate-new-message policy and selected stack.",
+        "Removed competing component-origin category and linked final contract.",
+        "Final source-to-target review corrected the exact contract/history target or an updated heading anchor."
+      ],
+      "retainedQualifications": [
+        "No Zag Toast/React implementation; selected shadow and motion policy persist.",
+        "Reference animation timings are not automatically adopted.",
+        "Toast naming survey is bounded evidence, not community-wide measurement or an extra user vote."
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/decisions/toast-behaviour.md",
+      "destination": "docs/decisions/0110-toast-behaviour.md",
+      "from": "use-the-house-stack-for-overlapping-toasts",
+      "to": "use-the-selected-stack-for-overlapping-toasts",
+      "reason": "Use the selected stack without a separate house category."
+    }
+  ],
+  "findings": []
+}

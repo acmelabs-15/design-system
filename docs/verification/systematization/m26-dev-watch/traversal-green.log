@@ -1,0 +1,14 @@
+bun test v1.4.2 (744846f84)
+
+scripts/__tests__/dev.test.ts:
+(pass) the server rejects encoded traversal outside its documentation root [59.97ms]
+(pass) the server rejects malformed encoding and preserves deep links and asset responses [59.22ms]
+(pass) an example-only edit reaches the served page without regenerating styles [904.85ms]
+(pass) an authored stylesheet change reaches the served page without a regeneration loop [1753.82ms]
+(pass) a failed style generation leaves the last successful page intact [698.88ms]
+(pass) a numeric catalog edit regenerates styles before serving the page without a loop [1809.05ms]
+
+ 6 pass
+ 0 fail
+ 30 expect() calls
+Ran 6 tests across 1 file. [5.58s]

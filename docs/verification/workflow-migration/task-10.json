@@ -1,0 +1,1470 @@
+{
+  "schemaVersion": 1,
+  "task": 10,
+  "status": "complete",
+  "date": "2026-10-22T06:52:17.666Z",
+  "verification": {
+    "passed": true,
+    "scope": "Live source consumers, producer projections, static/strict/focused checks and independent reviews. Full clean gate remains task12.",
+    "preparation": {
+      "counts": {
+        "sources": 970,
+        "destinations": 979,
+        "extractedFixtures": 2,
+        "batches": 197
+      },
+      "errors": [],
+      "fingerprints": {
+        "docs/verification/workflow-migration/ledger.json": "e773672af3f22ea80185b683b36d71b7a4c880ed3ae7cb74fae3109c0fa55f16",
+        "baselineSources": "3f53595e40f0b45b99d0e96fe01a93bd18fd99699872f95c08793b4bdae5319e",
+        "docs/verification/workflow-migration/batches.json": "14d543813a889a7e353ec12419070035c4edba135a8a7e92f6710b7048c85a49",
+        "docs/verification/workflow-migration/references.json": "323fed6aa8ad0a4fc4df32336200e5ab1ad93713dd82e8956f4c3d8ad56c933a",
+        "docs/verification/workflow-migration/live-file-audit.json": "0feb6f37403d243a27c32395bfb72ab26cf0199957a619fb9a01634dff7a8673"
+      }
+    }
+  },
+  "code": {
+    "schemaVersion": 1,
+    "task": "10-code-consumers",
+    "status": "prepared",
+    "baselineRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+    "coordinatorOwns": "Generated projections, runtime gates, full migration guard and task completion",
+    "scope": {
+      "edited": [
+        "scripts/check.ts",
+        "scripts/component-browser-checks.ts",
+        "scripts/__tests__/check.test.ts",
+        "scripts/__tests__/component-browser-checks.test.ts",
+        "site/recipes.ts",
+        "site/__tests__/recipes.test.ts"
+      ],
+      "reviewedUnchanged": [
+        "site/release.ts",
+        "site/site.ts"
+      ],
+      "excluded": "No generators, builds, browser runs, installs, source deletion, shared metadata edits or commits performed"
+    },
+    "changes": [
+      {
+        "path": "scripts/check.ts",
+        "changes": [
+          "Retarget 19 browser driver entries to their allocated scripts/verification owners; preserve all 23 IDs and 24 invocations.",
+          "Extend the existing strict script program with scripts/component-browser-checks.ts and all 37 scripts/verification/**/*.{ts,tsx} sources.",
+          "Add react-jsx for the verified React fixture context. Retain the original root project check, all prior strict flags and prior script coverage."
+        ]
+      },
+      {
+        "path": "scripts/component-browser-checks.ts",
+        "changes": [
+          "Read cases.json and controls.json from scripts/verification/component-browser; preserve fixture execution, options, minima, isolation, outputs and cleanup."
+        ]
+      },
+      {
+        "path": "site/recipes.ts",
+        "changes": [
+          "Move 21 current recipe-reference occurrences to allocated specs, decisions and immutable evidence, preserving anchors.",
+          "Move 13 historical state-evidence references to the byte-preserved 2026-09-26 results under docs/verification/systematization.",
+          "Keep the Book accepted-difference source at notes/analysis/book-census-config.md paired with 5ae1f7a27d90d87e7e77dad20964541146444564.",
+          "No recipe examples, source ownership, lifecycle cleanup, expected outcomes or verification claims change."
+        ]
+      },
+      {
+        "path": "site/release.ts",
+        "changes": [
+          "No legacy path literal exists. The existing projection correctly preserves references and lifecycle metadata; added regression coverage calls this actual function without writing generated outputs."
+        ]
+      },
+      {
+        "path": "scripts/__tests__/check.test.ts",
+        "changes": [
+          "Require each browser entry to resolve to a live file outside notes; keep stable IDs, all invocation/output/isolation assertions and updated path-based selections."
+        ]
+      },
+      {
+        "path": "scripts/__tests__/component-browser-checks.test.ts",
+        "changes": [
+          "Add isolated-root validation with migrated case/control inputs and colocated fixtures, and no historical evidence tree."
+        ]
+      },
+      {
+        "path": "site/__tests__/recipes.test.ts",
+        "changes": [
+          "Require current metadata paths and historical evidence paths under their new owners.",
+          "Exercise all 17 recipes through the release projection, retaining references, inputs, ownership, cleanup, accessibility and deviations.",
+          "Pin the historical Book revision/path pair and test rendered immutable links for the config, four measurements and accepted-difference source."
+        ]
+      }
+    ],
+    "files": [
+      {
+        "path": "scripts/check.ts",
+        "sourceSha256": "387f3404db59a7a628168654e065051cb53ff29370df339434c2f1add6257583",
+        "destinationSha256": "6f9f951a1b80628faf4785831ceeaaa4f8be0d387a555eb4b273680ad2434266",
+        "changed": true
+      },
+      {
+        "path": "scripts/component-browser-checks.ts",
+        "sourceSha256": "1794c371756ae75933ffdce364e87ad81a87a4032ccca66d3454d0a9b5121d80",
+        "destinationSha256": "abe7c46d2bc60e55e6bb80091d13b0d407d6e577f90582650d5cc4d4ed0d33f8",
+        "changed": true
+      },
+      {
+        "path": "scripts/__tests__/check.test.ts",
+        "sourceSha256": "013d46e0e4dc5e8099b141ecd24298968a4bb04c985675b9c995c0b3f7ca8a05",
+        "destinationSha256": "bff254a5781b4ae0f9d96ead037031ade5757092900432278322e69d71793362",
+        "changed": true
+      },
+      {
+        "path": "scripts/__tests__/component-browser-checks.test.ts",
+        "sourceSha256": "b21b458e993b3e93540105f65a262ccfc57e0ab969fbba5fa218f8f1c2c3f41c",
+        "destinationSha256": "013aa87cff86797db04ba8d67262294d3b71bd8f47e0cc833898949ce625f854",
+        "changed": true
+      },
+      {
+        "path": "site/recipes.ts",
+        "sourceSha256": "5b81cc7e9cb5f40f7c89885319e87adb182dc39032dfbb901dc867638b631a28",
+        "destinationSha256": "434b2519dbbe67f64ff2a7c91e653cf1e7bedba2073aa8cab733fe36f79e27c5",
+        "changed": true
+      },
+      {
+        "path": "site/release.ts",
+        "sourceSha256": "bef963ff21a288ab402d897d6c80ba09fd9b097078d2603c96931d4107e82b02",
+        "destinationSha256": "bef963ff21a288ab402d897d6c80ba09fd9b097078d2603c96931d4107e82b02",
+        "changed": false
+      },
+      {
+        "path": "site/__tests__/recipes.test.ts",
+        "sourceSha256": "6818866261effd52a9cf59013f9140e18b5eed62d7543c54ec371ef0db47bb75",
+        "destinationSha256": "dfbc55686bc7409e8fb405575687c9292ce927ebff9d954c51e8474aa0c707a2",
+        "changed": true
+      }
+    ],
+    "redGreen": [
+      {
+        "group": "runner and case inputs",
+        "red": {
+          "passed": 7,
+          "failed": 2,
+          "reason": "Old notes driver paths and old component case input lookup fail the new ownership assertions."
+        },
+        "green": {
+          "passed": 9,
+          "failed": 0,
+          "assertions": 164
+        }
+      },
+      {
+        "group": "recipe references and evidence",
+        "red": {
+          "passed": 6,
+          "failed": 2,
+          "reason": "Current recipe references and state evidence still use notes paths."
+        },
+        "green": "Included in combined 17-test / 808-assertion pass."
+      }
+    ],
+    "verification": [
+      {
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun test scripts/__tests__/check.test.ts scripts/__tests__/component-browser-checks.test.ts site/__tests__/recipes.test.ts",
+        "exitCode": 0,
+        "passed": 17,
+        "failed": 0,
+        "assertions": 808
+      },
+      {
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun scripts/check.ts types",
+        "exitCode": 0,
+        "scope": "Actual two-command type stage passed with the first 36 .ts verification sources. Existing project coverage and all strict flags retained."
+      },
+      {
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun -e 'const files=[...new Bun.Glob(\"scripts/verification/**/*.{ts,tsx}\").scanSync(\".\")]; console.log(\"Checking \"+files.length+\" verification TypeScript sources\"); const p=Bun.spawn([process.execPath,\"node_modules/typescript/bin/tsc\",\"--noEmit\",\"--strict\",\"--experimentalDecorators\",\"--useDefineForClassFields\",\"false\",\"--target\",\"ES2022\",\"--module\",\"ESNext\",\"--moduleResolution\",\"bundler\",\"--skipLibCheck\",\"--types\",\"bun,node\",\"--jsx\",\"react-jsx\",\"scripts/check.ts\",\"scripts/component-browser-checks.ts\",\"scripts/declarations.ts\",\"scripts/dependency-audit.ts\",...new Bun.Glob(\"scripts/release*.ts\").scanSync(\".\"),...files],{stdout:\"inherit\",stderr:\"inherit\"}); process.exitCode=await p.exited;'",
+        "exitCode": 0,
+        "scope": "Exact final strict program: 37 verification TypeScript sources, including public-types.tsx with all five existing negative type assertions. This is local post-build typing; fresh packed-consumer typing is a separate runtime scope."
+      },
+      {
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/typescript/bin/tsc --noEmit --strict --experimentalDecorators --useDefineForClassFields false --target ES2022 --module ESNext --moduleResolution bundler --skipLibCheck --types bun,node --jsx react-jsx scripts/check.ts scripts/component-browser-checks.ts scripts/__tests__/check.test.ts scripts/__tests__/component-browser-checks.test.ts site/recipes.ts site/release.ts site/__tests__/recipes.test.ts",
+        "exitCode": 0,
+        "scope": "Seven owned/reviewed code and test files."
+      },
+      {
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun test scripts/__tests__/check.test.ts",
+        "exitCode": 0,
+        "passed": 6,
+        "failed": 0,
+        "assertions": 158,
+        "scope": "Affected tests repeated after the final .tsx glob expansion."
+      },
+      {
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxlint/bin/oxlint --config oxlint.config.ts scripts/check.ts scripts/component-browser-checks.ts scripts/__tests__/check.test.ts scripts/__tests__/component-browser-checks.test.ts site/recipes.ts site/release.ts site/__tests__/recipes.test.ts",
+        "exitCode": 0,
+        "diagnostics": 0
+      },
+      {
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxfmt/bin/oxfmt --check --config oxfmt.config.ts scripts/check.ts scripts/component-browser-checks.ts scripts/__tests__/check.test.ts scripts/__tests__/component-browser-checks.test.ts site/recipes.ts site/release.ts site/__tests__/recipes.test.ts",
+        "exitCode": 0,
+        "scope": "All seven files pass after formatting site/recipes.ts."
+      },
+      {
+        "command": "git diff --check -- scripts/check.ts scripts/component-browser-checks.ts scripts/__tests__/check.test.ts scripts/__tests__/component-browser-checks.test.ts site/recipes.ts site/release.ts site/__tests__/recipes.test.ts",
+        "exitCode": 0
+      }
+    ],
+    "browserPlanProof": {
+      "passed": true,
+      "entryCount": 23,
+      "entries": [
+        {
+          "id": "react",
+          "source": "notes/alignment/evidence/m22-react/run.ts",
+          "destination": "scripts/verification/react/browser-check.ts"
+        },
+        {
+          "id": "react-defaults",
+          "source": "notes/alignment/evidence/m22-react/defaults-run.ts",
+          "destination": "scripts/verification/react/defaults-check.ts"
+        },
+        {
+          "id": "docs-pages",
+          "source": "notes/alignment/evidence/m23-docs/pages-run.ts",
+          "destination": "scripts/verification/documentation/pages.browser-check.ts"
+        },
+        {
+          "id": "docs-navigation",
+          "source": "notes/alignment/evidence/m23-docs/navigation-run.ts",
+          "destination": "scripts/verification/documentation/navigation.browser-check.ts"
+        },
+        {
+          "id": "docs-recipes",
+          "source": "notes/alignment/evidence/m23-docs/recipes-run.ts",
+          "destination": "scripts/verification/documentation/recipes.browser-check.ts"
+        },
+        {
+          "id": "docs-recipe-accessibility",
+          "source": "notes/alignment/evidence/m23-docs/recipe-accessibility-run.ts",
+          "destination": "scripts/verification/documentation/recipe-accessibility.browser-check.ts"
+        },
+        {
+          "id": "docs-video",
+          "source": "notes/alignment/evidence/m23-docs/video-run.ts",
+          "destination": "scripts/verification/documentation/video.browser-check.ts"
+        },
+        {
+          "id": "docs-copied",
+          "source": "notes/alignment/evidence/m23-docs/copied-run.ts",
+          "destination": "scripts/verification/documentation/copied.browser-check.ts"
+        },
+        {
+          "id": "docs-icons",
+          "source": "notes/alignment/evidence/m23-docs/icons-run.ts",
+          "destination": "scripts/verification/documentation/icons.browser-check.ts"
+        },
+        {
+          "id": "tabs",
+          "source": "src/components/tabs/__tests__/tabs.browser-check.ts",
+          "destination": "src/components/tabs/__tests__/tabs.browser-check.ts"
+        },
+        {
+          "id": "packed-consumer",
+          "source": "notes/alignment/evidence/m24-consumers/packed-run.ts",
+          "destination": "scripts/verification/consumer-tools/packed-browser-check.ts"
+        },
+        {
+          "id": "package-tools",
+          "source": "notes/alignment/evidence/m24-consumers/package-tools-run.ts",
+          "destination": "scripts/verification/consumer-tools/package-check.ts"
+        },
+        {
+          "id": "managed-forms",
+          "source": "examples/forms/__tests__/managed.browser-check.ts",
+          "destination": "examples/forms/__tests__/managed.browser-check.ts"
+        },
+        {
+          "id": "native-history",
+          "source": "notes/alignment/evidence/m26-native-forms/history-run.ts",
+          "destination": "scripts/verification/native-forms/history.browser-check.ts"
+        },
+        {
+          "id": "removals",
+          "source": "notes/alignment/evidence/m26-audit/removals-run.ts",
+          "destination": "scripts/verification/removals/check.ts"
+        },
+        {
+          "id": "table-patch",
+          "source": "notes/alignment/evidence/m26-audit/table-patch-run.ts",
+          "destination": "scripts/verification/table/declaration-patch-check.ts"
+        },
+        {
+          "id": "defaults",
+          "source": "notes/alignment/evidence/m26-audit/defaults-run.ts",
+          "destination": "scripts/verification/public-defaults/browser-check.ts"
+        },
+        {
+          "id": "scoped",
+          "source": "notes/alignment/evidence/m26-scoped/run.ts",
+          "destination": "scripts/verification/scoped-registration/browser-check.ts"
+        },
+        {
+          "id": "flow-distributions",
+          "source": "notes/alignment/evidence/m20-flow/distributions.ts",
+          "destination": "scripts/verification/flow/distributions.browser-check.ts"
+        },
+        {
+          "id": "bundle",
+          "source": "notes/alignment/evidence/m26-bundle/run.ts",
+          "destination": "scripts/verification/bundling/browser-check.ts"
+        },
+        {
+          "id": "worker-consumer",
+          "source": "notes/alignment/evidence/m26-audit/worker-consumer-run.ts",
+          "destination": "scripts/verification/table/worker-consumer.browser-check.ts"
+        },
+        {
+          "id": "component-browsers",
+          "source": "scripts/component-browser-checks.ts",
+          "destination": "scripts/component-browser-checks.ts"
+        },
+        {
+          "id": "official-firefox",
+          "source": "scripts/official-firefox-checks.ts",
+          "destination": "scripts/official-firefox-checks.ts"
+        }
+      ],
+      "invocations": 24,
+      "movedEntries": 19,
+      "preserved": "IDs, order, arguments, environments including undefined resets, scoped module/CDN modes, output paths and runtime executable",
+      "method": "Capture public browserCheckPlan before edits and after edits with the same synthetic release/paths and pinned Bun. Preserve undefined environment resets using an explicit sentinel. Substitute only exact ledger driver mappings in the baseline and compare the complete JSON structures for equality.",
+      "sha256": {
+        "baseline": "f63709dfb05856cca2c3c32d24e47de57e61cc1976a2fa6d272329b39483f81c",
+        "current": "087e53aa26f109b5dc6fe544a216711a298f605a6326f60e014640ee6283f6de"
+      },
+      "fixture": {
+        "version": "0.3.2",
+        "consumer": "/fixture/consumer",
+        "runtime": "/fixture/runtime",
+        "root": "/fixture/root"
+      },
+      "normalizedBaselineEqualsCurrent": true
+    },
+    "sourceProof": {
+      "anchorChecks": [
+        {
+          "reference": "spec/SPEC-inputs-forms.md#f-10-optional-managed-forms",
+          "exists": true,
+          "anchorVerified": true
+        },
+        {
+          "reference": "spec/SPEC-surfaces.md#required-recipes-and-migration-mapping",
+          "exists": true,
+          "anchorVerified": true
+        },
+        {
+          "reference": "docs/decisions/0012-canonical-card.md",
+          "exists": true,
+          "anchorVerified": false
+        },
+        {
+          "reference": "spec/SPEC-surfaces.md#c-01-card",
+          "exists": true,
+          "anchorVerified": true
+        },
+        {
+          "reference": "spec/SPEC-messages-statistics.md#m-07-stat",
+          "exists": true,
+          "anchorVerified": true
+        },
+        {
+          "reference": "docs/decisions/0043-general-tree-view.md",
+          "exists": true,
+          "anchorVerified": false
+        },
+        {
+          "reference": "spec/SPEC-navigation-disclosure.md#n-06-tree-view",
+          "exists": true,
+          "anchorVerified": true
+        },
+        {
+          "reference": "spec/SPEC-layout.md",
+          "exists": true,
+          "anchorVerified": false
+        },
+        {
+          "reference": "spec/SPEC-inputs-forms.md#f-01-input-and-search",
+          "exists": true,
+          "anchorVerified": true
+        },
+        {
+          "reference": "spec/SPEC-overlays-help.md#o-02-alert-dialog",
+          "exists": true,
+          "anchorVerified": true
+        },
+        {
+          "reference": "spec/SPEC-data-displays.md#d-02-results-pagination",
+          "exists": true,
+          "anchorVerified": true
+        },
+        {
+          "reference": "spec/SPEC-data-displays.md#d-01-table",
+          "exists": true,
+          "anchorVerified": true
+        },
+        {
+          "reference": "docs/verification/systematization/m22-react-2026-09-23.json",
+          "exists": true,
+          "anchorVerified": false
+        },
+        {
+          "reference": "docs/decisions/0083-relative-time-component.md",
+          "exists": true,
+          "anchorVerified": false
+        },
+        {
+          "reference": "spec/SPEC-overlays-help.md#o-05-hover-card",
+          "exists": true,
+          "anchorVerified": true
+        },
+        {
+          "reference": "spec/SPEC-documentation-tooling.md#documentation-units",
+          "exists": true,
+          "anchorVerified": true
+        }
+      ],
+      "raw": [
+        {
+          "source": "notes/alignment/evidence/m26-audit/component-browser/cases.json",
+          "destination": "scripts/verification/component-browser/cases.json",
+          "sha256": "cb4c141d05e09924aa099fd7c43576fa04db3ed6d21bc65ec5f7431a35311198"
+        },
+        {
+          "source": "notes/alignment/evidence/m26-audit/component-browser/controls.json",
+          "destination": "scripts/verification/component-browser/controls.json",
+          "sha256": "146fb90f569ddd98fde8bbfa128a60fa8355c166cc7a16c76cc17a5759de0e87"
+        },
+        {
+          "source": "notes/alignment/evidence/m23-docs/recipes-results-2026-09-26.json",
+          "destination": "docs/verification/systematization/m23-docs/recipes-results-2026-09-26.json",
+          "sha256": "f5bb0ea494508efffd2fb8cdcc47a0b53fdb636da813c0776b432703d0dc5eb9"
+        },
+        {
+          "source": "notes/alignment/evidence/m22-react-2026-09-23.json",
+          "destination": "docs/verification/systematization/m22-react-2026-09-23.json",
+          "sha256": "22be68901779e426b7df4422c7a76b79d0dcf8750c2d6e8f384068189eb45e40"
+        }
+      ],
+      "historical": [
+        {
+          "revision": "5ae1f7a27d90d87e7e77dad20964541146444564",
+          "paths": [
+            {
+              "path": "tools/geist/census/book.config.json",
+              "sha256": "df3ac9b7e85a5365660e70708c48d35e6e09b15669ca5a4b201e4ce97cd7787e"
+            },
+            {
+              "path": "tools/geist/census/book.geist.json",
+              "sha256": "a702c37eb3e6f738de4bc96e71a03a1d7d6ee4e069a866f1d6293098d5fe787a"
+            },
+            {
+              "path": "tools/geist/census/book.ours.json",
+              "sha256": "63f9ad43e92e4e5ae953740642f2921fe1e00239c99c177989e0fddcbd362d85"
+            },
+            {
+              "path": "tools/geist/census/book.dark.geist.json",
+              "sha256": "57f015b02444b158cd81535f62e57d3ba0fae890d3475da3f5be1f0e2b361ff6"
+            },
+            {
+              "path": "tools/geist/census/book.dark.ours.json",
+              "sha256": "415c9aa99e5d4d5d0e295bf03cac2f197fa1cdbfa8c87cc436219d12486a1f5c"
+            },
+            {
+              "path": "notes/analysis/book-census-config.md",
+              "sha256": "e22cf334673014a9a47957277990a91f6c28adfdb6f4d5c11bdb4f16c3e4df90"
+            }
+          ]
+        }
+      ],
+      "preservation": [
+        {
+          "path": "site/recipes.ts",
+          "passed": true,
+          "method": "TypeScript AST equality after exact allocated path substitution (ignores whitespace/comments and optional trailing commas; comments unchanged in reviewed diff)"
+        },
+        {
+          "path": "scripts/component-browser-checks.ts",
+          "passed": true,
+          "method": "TypeScript AST equality after exact allocated path substitution (ignores whitespace/comments and optional trailing commas; comments unchanged in reviewed diff)"
+        }
+      ],
+      "verificationFiles": [
+        "scripts/verification/__tests__/browser-distribution.test.ts",
+        "scripts/verification/browser-distribution.ts",
+        "scripts/verification/bundling/browser-check.ts",
+        "scripts/verification/bundling/fixtures/consumer.ts",
+        "scripts/verification/consumer-tools/fixtures/inspector.ts",
+        "scripts/verification/consumer-tools/package-check.ts",
+        "scripts/verification/consumer-tools/packed-browser-check.ts",
+        "scripts/verification/dependency-audit/npm-cache-private.ts",
+        "scripts/verification/devtools/browser-check.ts",
+        "scripts/verification/devtools/fixtures/browser.ts",
+        "scripts/verification/devtools/fixtures/production.ts",
+        "scripts/verification/documentation/action-labels.browser-check.ts",
+        "scripts/verification/documentation/appearance.browser-check.ts",
+        "scripts/verification/documentation/copied.browser-check.ts",
+        "scripts/verification/documentation/icons.browser-check.ts",
+        "scripts/verification/documentation/navigation.browser-check.ts",
+        "scripts/verification/documentation/pages.browser-check.ts",
+        "scripts/verification/documentation/recipe-accessibility.browser-check.ts",
+        "scripts/verification/documentation/recipes.browser-check.ts",
+        "scripts/verification/documentation/table-source-isolation.browser-check.ts",
+        "scripts/verification/documentation/video.browser-check.ts",
+        "scripts/verification/flow/distributions.browser-check.ts",
+        "scripts/verification/native-forms/history.browser-check.ts",
+        "scripts/verification/public-defaults/browser-check.ts",
+        "scripts/verification/react/browser-check.ts",
+        "scripts/verification/react/defaults-check.ts",
+        "scripts/verification/react/fixtures/defaults.ts",
+        "scripts/verification/react/fixtures/public-types.tsx",
+        "scripts/verification/react/fixtures/runtime.ts",
+        "scripts/verification/removals/check.ts",
+        "scripts/verification/scoped-registration/browser-check.ts",
+        "scripts/verification/scoped-registration/fixtures/registry.ts",
+        "scripts/verification/table/declaration-patch-check.ts",
+        "scripts/verification/table/worker-consumer.browser-check.ts",
+        "scripts/verification/workspace/fixtures/consumer.ts",
+        "scripts/verification/workspace/install-check.ts",
+        "scripts/verification/workspace/packed-consumer-check.ts"
+      ]
+    },
+    "projectionNeeds": [
+      {
+        "producer": "bun run docs -> site/build.ts",
+        "outputs": [
+          "_site/recipes.json",
+          "_site/ (rendered pages and Markdown)"
+        ],
+        "reason": "Refresh current recipe reference and evidence owners while retaining immutable Book census links."
+      },
+      {
+        "producer": "site/build.ts -> documentationRelease",
+        "outputs": [
+          ".artifacts/documentation.json",
+          "packages/mcp/dist/documentation.json"
+        ],
+        "reason": "Refresh projected recipe references from site/recipes.ts."
+      },
+      {
+        "producer": "site/build.ts -> buildConsumerSkills",
+        "outputs": [
+          "dist/skills/",
+          "packages/core/skills (generated linkage)"
+        ],
+        "reason": "Coordinator runs the normal producer chain and verifies projections; no generated files were edited here."
+      }
+    ],
+    "findings": [
+      {
+        "severity": "info",
+        "topic": "Immutable Book provenance",
+        "detail": "The old Book path is intentionally retained in site/recipes.ts and its new regression assertion. All six source paths exist at the paired 5ae1f7a revision. Its accepted-difference blob SHA differs from the later baseline record, confirming that retargeting it to the converted current document would change provenance. The renderer uses each path with that exact revision. Keep this classified as immutable history in active-reference review."
+      },
+      {
+        "severity": "info",
+        "topic": "Type scope",
+        "detail": "The final glob covers 36 .ts files and one .tsx fixture. Five pre-existing negative public-type assertions remain active; no suppressions or configuration weakening added."
+      }
+    ],
+    "limits": [
+      "Browser behavior and generated-output freshness are pending coordinator gates.",
+      "Dated state outcomes remain historical proof, not a new browser result.",
+      "No product component, dependency or version change."
+    ]
+  },
+  "prose": {
+    "schemaVersion": 1,
+    "status": "prepared",
+    "scope": [
+      "README.md",
+      "skills/README.md",
+      "tools/geist/README.md",
+      "tools/geist/CONTEXT.md"
+    ],
+    "files": [
+      {
+        "path": "README.md",
+        "sourceRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+        "sourceSha256": "ab08a913601a12e5500a6fdce2208cf6608f485bc2d09e48ee2e724d40f53118",
+        "destinationSha256": "21d1323bf999cdde8f5269ed507f36f9784736fc2b9a4d313550b0e67fb5c1d8",
+        "sourceLines": 293,
+        "destinationLines": 247
+      },
+      {
+        "path": "skills/README.md",
+        "sourceRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+        "sourceSha256": "a3fa4a769875fa485b0a272ee8c30abec6900fb1c556d9060531a5b746e972d0",
+        "destinationSha256": "570a446d853a6eb60ecd018687e97439ead1abcf3b43a7eee962dc4810413b11",
+        "sourceLines": 24,
+        "destinationLines": 26
+      },
+      {
+        "path": "tools/geist/README.md",
+        "sourceRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+        "sourceSha256": "a480f56e77386dc2f31887589cd6c57eb120ca7bf61d6daf23d671a404da2965",
+        "destinationSha256": "3bf61406ea826c8de52d673daea86d52d5fbebdca8391f7a0a9b1266b19509ef",
+        "sourceLines": 96,
+        "destinationLines": 107
+      },
+      {
+        "path": "tools/geist/CONTEXT.md",
+        "sourceRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+        "sourceSha256": "b04792c3b842322c181e647d9511d87d17863262af9f3cc966c2f18458a0ac4f",
+        "destinationSha256": "858d8d8083ce795a7de90dfb1cf7efd0a649ed86542d245c53654eb28c5a4e6a",
+        "sourceLines": 45,
+        "destinationLines": 45
+      }
+    ],
+    "staticValidation": {
+      "links": [
+        {
+          "file": "README.md",
+          "href": "https://lit.dev"
+        },
+        {
+          "file": "README.md",
+          "href": "https://acmelabs-15.github.io/design-system/"
+        },
+        {
+          "file": "README.md",
+          "href": "https://github.com/acmelabs-15/design-system/blob/main/AGENTS.md"
+        },
+        {
+          "file": "README.md",
+          "href": "https://github.com/acmelabs-15/design-system/blob/main/docs/STATUS.md"
+        },
+        {
+          "file": "README.md",
+          "href": "https://github.com/acmelabs-15/design-system/blob/main/docs/agents/repository.md"
+        },
+        {
+          "file": "README.md",
+          "href": "https://github.com/acmelabs-15/design-system/blob/main/docs/agents/verification.md"
+        },
+        {
+          "file": "README.md",
+          "href": "http://localhost:4180"
+        },
+        {
+          "file": "README.md",
+          "href": "https://github.com/acmelabs-15/design-system/blob/main/docs/agents/verification.md"
+        },
+        {
+          "file": "skills/README.md",
+          "href": "https://github.com/acmelabs-15/design-system/blob/main/AGENTS.md"
+        },
+        {
+          "file": "tools/geist/README.md",
+          "href": "../../docs/development/generation.md"
+        },
+        {
+          "file": "tools/geist/README.md",
+          "href": "../../docs/agents/repository.md#generator-and-delivery-map"
+        },
+        {
+          "file": "tools/geist/README.md",
+          "href": "../../spec/README.md"
+        },
+        {
+          "file": "tools/geist/README.md",
+          "href": "../../docs/decisions/0022-custom-themes.md"
+        },
+        {
+          "file": "tools/geist/README.md",
+          "href": "../../docs/decisions/0105-systematization-goal.md"
+        },
+        {
+          "file": "tools/geist/README.md",
+          "href": "../../spec/SPEC-documentation-tooling.md#standard-page-layout"
+        },
+        {
+          "file": "tools/geist/README.md",
+          "href": "../../docs/development/components.md"
+        },
+        {
+          "file": "tools/geist/README.md",
+          "href": "../../docs/development/stack.md"
+        },
+        {
+          "file": "tools/geist/README.md",
+          "href": "../../docs/agents/verification.md"
+        },
+        {
+          "file": "tools/geist/README.md",
+          "href": "../../README.md#scoped-registration"
+        },
+        {
+          "file": "tools/geist/README.md",
+          "href": "../../docs/verification/systematization/m26-scoped/README.md"
+        },
+        {
+          "file": "tools/geist/CONTEXT.md",
+          "href": "../../CONTEXT.md"
+        }
+      ],
+      "linkErrors": [],
+      "consumerExamples": {
+        "count": 11,
+        "unchanged": true
+      },
+      "consumerSkills": [
+        {
+          "path": "skills/choose-and-compose/SKILL.md",
+          "sha256": "0fc5c536636a00032202aea6a53994837a417ee82720f5ab49ef6f7035a31938",
+          "unchanged": true
+        },
+        {
+          "path": "skills/data-layouts/SKILL.md",
+          "sha256": "3ffae8c128da973a91bd9cadc1ec366a17993aec976900b6815b89c8978225b6",
+          "unchanged": true
+        },
+        {
+          "path": "skills/forms-and-accessibility/SKILL.md",
+          "sha256": "0f64eeb60451ee5bd3f9cb1154603d6c7c7d8eed639707aaa142eb3dfb71c125",
+          "unchanged": true
+        },
+        {
+          "path": "skills/html-artifacts/SKILL.md",
+          "sha256": "542ca2607b215c55871bb0a8278de1180b51619107fbe98a395abbdf943ebb52",
+          "unchanged": true
+        },
+        {
+          "path": "skills/lit-integration/SKILL.md",
+          "sha256": "bba6b4bf9851240b0b34e03d10db54d8bdee6bfd29cd8d66ede98373bbcfd410",
+          "unchanged": true
+        },
+        {
+          "path": "skills/migration-between-releases/SKILL.md",
+          "sha256": "9fb14159a78f29254c6e4f6217045ecd766ab4632e8a4d682314a8f5b1202c19",
+          "unchanged": true
+        },
+        {
+          "path": "skills/react-integration/SKILL.md",
+          "sha256": "b9a8c3840b435404935ff2d4c51c16165314543f4da67982b172ef2b330134e9",
+          "unchanged": true
+        }
+      ],
+      "sourceHashes": [
+        {
+          "path": "README.md",
+          "sourceMatches": true
+        },
+        {
+          "path": "skills/README.md",
+          "sourceMatches": true
+        },
+        {
+          "path": "tools/geist/README.md",
+          "sourceMatches": true
+        },
+        {
+          "path": "tools/geist/CONTEXT.md",
+          "sourceMatches": true
+        }
+      ],
+      "staleMatches": []
+    },
+    "verification": {
+      "passed": true,
+      "scope": "Writer complete source/semantic/path review; coordinator guard and independent review pending.",
+      "commands": [
+        {
+          "command": "git diff --check -- README.md skills/README.md tools/geist/README.md tools/geist/CONTEXT.md",
+          "outcome": "Pass; no whitespace errors."
+        },
+        {
+          "command": "Pinned Bun static Markdown link/anchor and immutable consumer-example comparison",
+          "outcome": "All local and repository-URL targets/anchors resolve locally; all 11 consumer code examples are unchanged."
+        },
+        {
+          "command": "Pinned Bun source SHA-256 and seven consumer SKILL comparisons against 335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+          "outcome": "All four original source hashes match; all seven SKILL bodies are unchanged."
+        },
+        {
+          "command": "rg for removed README anchors in active nonhistorical repository consumers",
+          "outcome": "No hits for removed layout/generated-files/working-on-this-repo or old tool section anchors in the inspected active scope."
+        },
+        {
+          "command": "readlink packages/core/README.md",
+          "outcome": "../../README.md; one consumer README remains."
+        }
+      ],
+      "notRun": [
+        "Builds",
+        "Browsers",
+        "Installers",
+        "Type programs or test suites for these prose-only edits",
+        "Full migration guard",
+        "Remote publication or HTTP checks"
+      ],
+      "publication": "Maintainer URLs are absolute repository links and do not rely on installed-package files. Their local targets are validated; publishing this checkpoint remains coordinator-owned.",
+      "productChanges": false,
+      "finalStaticRecheck": {
+        "passed": true,
+        "errors": [],
+        "hashes": "All four current destination hashes match.",
+        "links": "Previously validated link targets still exist.",
+        "whitespaceExitCode": 0
+      }
+    },
+    "fullReads": [
+      "README.md",
+      "skills/README.md",
+      "tools/geist/README.md",
+      "tools/geist/CONTEXT.md",
+      "docs/verification/workflow-migration/rules.md",
+      "docs/development/components.md",
+      "docs/development/styles.md",
+      "docs/development/generation.md",
+      "docs/development/documentation.md",
+      "docs/development/reference-sources.md",
+      "docs/development/stack.md",
+      "docs/agents/repository.md",
+      "docs/agents/verification.md",
+      "spec/SPEC-documentation-tooling.md",
+      "docs/decisions/0077-parity-scope.md",
+      "docs/decisions/0022-custom-themes.md",
+      "docs/decisions/0105-systematization-goal.md",
+      "CONTEXT-MAP.md",
+      "CONTEXT.md",
+      "/Users/peterkloss/.codex/plugins/cache/acmelabs/brain/0.6.0/skills/domain-modeling/SKILL.md",
+      "/Users/peterkloss/.codex/plugins/cache/acmelabs/brain/0.6.0/skills/domain-modeling/CONTEXT-FORMAT.md"
+    ],
+    "sourceTrace": [
+      {
+        "file": "README.md",
+        "source": "1–189",
+        "disposition": "Consumer delivery, native/polyfill registration, React, MCP/inspector, icons, tokens and theme examples retained. Partial-theme referent clarified from approved SPEC-foundations:71; no interface change."
+      },
+      {
+        "file": "README.md",
+        "source": "191–245",
+        "disposition": "Old notes-based layout and duplicate producer map replaced with the one docs/agents/repository.md owner. Its current map contains all old producer groups, including theme properties, responsive delivery, imported SVGs and generated icon entries. Package boundary details are maintained there."
+      },
+      {
+        "file": "README.md",
+        "source": "247–269",
+        "disposition": "CSS intermediate/debugger-map qualifications and every listed command retained. New repository URLs route to startup, current handoff, producer ownership and verification. Build description includes current metadata/declaration/browser delivery."
+      },
+      {
+        "file": "README.md",
+        "source": "271–293",
+        "disposition": "Release distinction and consumer conventions retained. Outdated incomplete staging list replaced with the coordinated five-package release preparation path; verification owns release checks."
+      },
+      {
+        "file": "skills/README.md",
+        "source": "1–24",
+        "disposition": "Only opening maintainer route changes. Seven consumer areas, version enforcement, generated references, Intent ownership and artifact-evaluation requirements remain. All SKILL bodies are untouched."
+      },
+      {
+        "file": "tools/geist/README.md",
+        "source": "1–20",
+        "disposition": "Tool roles retained; mapped-style scope, font override contract, producer inputs and hard/soft interpretation corrected. Paths in operative instructions are explicit from repository root."
+      },
+      {
+        "file": "tools/geist/README.md",
+        "source": "22–40",
+        "disposition": "Extraction/sketch merging, maps, generators, census configuration and diff mechanics retained. Exact sections/template copying, stale package list, unconditional per-element full gate, host-specific timer rule and universal parity criterion replaced with approved contracts."
+      },
+      {
+        "file": "tools/geist/README.md",
+        "source": "42–66",
+        "disposition": "All generator mechanics and static-media measurements retained. Asset category changes from house copy to packaged copy; no algorithm or output change."
+      },
+      {
+        "file": "tools/geist/README.md",
+        "source": "68–78",
+        "disposition": "Five context-difference observations kept as recorded fixture conditions. Obsolete scoped-registry deferral replaced by implemented native/public-polyfill behavior, explicit registration and recorded compatibility limits."
+      },
+      {
+        "file": "tools/geist/README.md",
+        "source": "80–96",
+        "disposition": "All launch profiles, ports, attach/start roles and repeatability concern retained. Universal fixed-port claim qualified with the actual mirror PORT override; no automatic process termination or invented override."
+      },
+      {
+        "file": "tools/geist/CONTEXT.md",
+        "source": "1–45",
+        "disposition": "Same tooling context, all terms and Avoid qualifiers retained. Map definition removes only the competing house category. The existing component glossary link remains valid."
+      }
+    ],
+    "removedOrRetiredRules": [
+      {
+        "id": "R01",
+        "source": "README.md:191–245",
+        "old": "notes/ is the current authored pass and README owns another producer table",
+        "replacement": "New docs/spec/tasks ownership and one producer map reached by a repository URL",
+        "authority": [
+          "rules.md R22/R24; generator map:206–237",
+          "docs/agents/repository.md"
+        ]
+      },
+      {
+        "id": "R02",
+        "source": "README.md:249–251",
+        "old": "AGENTS supplies the mutable current work",
+        "replacement": "AGENTS supplies startup; docs/STATUS.md supplies the current handoff; installed brain owns lifecycle",
+        "authority": [
+          "rules.md R01/R15/R16"
+        ]
+      },
+      {
+        "id": "R03",
+        "source": "README.md:186",
+        "old": "Partial theme inherits unspecified default values",
+        "replacement": "Explicit default design-system theme",
+        "authority": [
+          "spec/SPEC-foundations.md:71",
+          "docs/decisions/0022-custom-themes.md"
+        ]
+      },
+      {
+        "id": "R04",
+        "source": "README.md:257",
+        "old": "Build described only transpilation and two bundle filenames",
+        "replacement": "Current shared runtime, declarations, metadata and browser delivery description",
+        "authority": [
+          "scripts/build.ts",
+          "docs/agents/repository.md"
+        ]
+      },
+      {
+        "id": "R05",
+        "source": "README.md:273",
+        "old": "Core plus React/MCP/Devtools staging list omits browser distribution",
+        "replacement": "Five coordinated archives through release:prepare; pack remains core-only",
+        "authority": [
+          "spec/SPEC-documentation-tooling.md:7–11",
+          "package.json scripts",
+          "scripts/release.ts",
+          "docs/agents/verification.md"
+        ]
+      },
+      {
+        "id": "S01",
+        "source": "skills/README.md:3–4",
+        "old": "Maintainer skills live under .agents/skills",
+        "replacement": "Installed brain plugin plus repository startup; packaged consumer guidance remains separate",
+        "authority": [
+          "rules.md R16/L01–L13",
+          "spec/SPEC-documentation-tooling.md Consumer skills and Intent"
+        ]
+      },
+      {
+        "id": "T01",
+        "source": "tools/geist/README.md:3–5",
+        "old": "Tools derive every element and prove unconditional parity",
+        "replacement": "Mapped-style generation and bounded comparison; current component contracts own adaptations",
+        "authority": [
+          "rules.md P03/P30/P40",
+          "docs/decisions/0105-systematization-goal.md"
+        ]
+      },
+      {
+        "id": "T02",
+        "source": "tools/geist/README.md:5",
+        "old": "Fonts never change",
+        "replacement": "Google Sans Flex/Code defaults; approved custom-theme overrides",
+        "authority": [
+          "rules.md P05",
+          "docs/decisions/0022-custom-themes.md"
+        ]
+      },
+      {
+        "id": "T03",
+        "source": "tools/geist/README.md:16",
+        "old": "vars.ts reruns only when corpus changes",
+        "replacement": "Regenerate for actual corpus/token/producer input changes",
+        "authority": [
+          "tools/geist/vars.ts:1–91",
+          "scripts/split-css.ts:61–82"
+        ]
+      },
+      {
+        "id": "T04",
+        "source": "tools/geist/README.md:20,40",
+        "old": "Hard difference is automatically a defect; hard=0 universally closes work",
+        "replacement": "Investigate harness/context/stale-data causes; preserve approved ACCEPTED or explicit sweep removal; equal nonzero roots required",
+        "authority": [
+          "tools/geist/diff.ts:192–260",
+          "tools/geist/CONTEXT.md Hard difference",
+          "docs/decisions/0105-systematization-goal.md"
+        ]
+      },
+      {
+        "id": "T05",
+        "source": "tools/geist/README.md:24",
+        "old": "Consumer pages exactly copy reference sections; measurement states define docs layout",
+        "replacement": "Approved page/example contract; census-only mechanism retained for comparison fixtures",
+        "authority": [
+          "rules.md P22/P27",
+          "spec/SPEC-documentation-tooling.md Standard page layout",
+          "site/site.ts:12–25,107–113"
+        ]
+      },
+      {
+        "id": "T06",
+        "source": "tools/geist/README.md:29",
+        "old": "Generator report is complete when only known reference inconsistencies remain",
+        "replacement": "Investigate each finding and resolve or record evidence plus approved disposition",
+        "authority": [
+          "docs/development/generation.md",
+          "tools/geist/gen.ts writeStyles"
+        ]
+      },
+      {
+        "id": "T07",
+        "source": "tools/geist/README.md:30",
+        "old": "Re-template each element to reference DOM",
+        "replacement": "Match layout-role boxes and preserve approved Lit composition, slots and contract",
+        "authority": [
+          "rules.md P03/P33/P40",
+          "docs/decisions/0077-parity-scope.md",
+          "docs/development/components.md"
+        ]
+      },
+      {
+        "id": "T08",
+        "source": "tools/geist/README.md:30",
+        "old": "Old brief package list including lit-hotkeys governs behavior",
+        "replacement": "Current selected package-role guide, including TanStack Hotkeys and authored Interaction",
+        "authority": [
+          "rules.md P06/P07",
+          "docs/development/stack.md",
+          "src/shared/interaction.ts"
+        ]
+      },
+      {
+        "id": "T09",
+        "source": "tools/geist/README.md:31",
+        "old": "Run the complete build/docs/unit chain at every element loop",
+        "replacement": "Installed incremental workflow schedules focused checks and full task closure; repository verification owns dependent checks",
+        "authority": [
+          "rules.md C05/P21",
+          "docs/agents/verification.md"
+        ]
+      },
+      {
+        "id": "T10",
+        "source": "tools/geist/README.md:32,38",
+        "old": "Browser pane is the only route; hidden timers never fire universally",
+        "replacement": "Current browser tooling; historical timer limitation; verify preparation readiness for the actual host",
+        "authority": [
+          "rules.md P04/C03",
+          "tools/geist/census.js:67–81"
+        ]
+      },
+      {
+        "id": "T11",
+        "source": "tools/geist/README.md:50",
+        "old": "house copy is a separate asset category",
+        "replacement": "Packaged asset copy",
+        "authority": [
+          "rules.md R04"
+        ]
+      },
+      {
+        "id": "T12",
+        "source": "tools/geist/README.md:68–74",
+        "old": "Recorded context differences appear as timeless component structure",
+        "replacement": "Keep every observation and measurement, explicitly tied to saved fixture conditions",
+        "authority": [
+          "rules.md P33/P39",
+          "tools/geist/serve.ts",
+          "tools/geist/census.js"
+        ]
+      },
+      {
+        "id": "T13",
+        "source": "tools/geist/README.md:76–78",
+        "old": "Scoped registries are deferred until after the port/before 1.0; Lit mixin and automatic polyfill behavior implied",
+        "replacement": "Implemented explicit registration and shared creationScope with native/public-polyfill interfaces; no library polyfill installation; exact late-adoption limit retained",
+        "authority": [
+          "src/shared/scoped-render-root.ts",
+          "src/shared/registration.ts",
+          "README.md:59–91",
+          "docs/verification/systematization/m26-scoped/README.md"
+        ],
+        "historicalDecisionDate": "2026-09-09"
+      },
+      {
+        "id": "T14",
+        "source": "tools/geist/README.md:91–96",
+        "old": "Every port is inherently fixed; free an occupied port without context",
+        "replacement": "Saved profiles remain fixed; reuse or identify ownership; mirror PORT override is an explicit separate run",
+        "authority": [
+          ".claude/launch.json",
+          "tools/geist/serve.ts:54–56"
+        ]
+      },
+      {
+        "id": "T15",
+        "source": "tools/geist/README.md:13–16,27–28,39,66",
+        "old": "Tool-local spec/maps/corpus/census paths are ambiguous when commands run from root",
+        "replacement": "Explicit tools/geist paths in commands and output references; Pieces file column remains directory-relative",
+        "authority": [
+          "tools/geist/extract.ts:174–190",
+          "tools/geist/collector.ts:5,54–70",
+          "tools/geist/gen.ts:2304–2358"
+        ]
+      },
+      {
+        "id": "C01",
+        "source": "tools/geist/CONTEXT.md:24",
+        "old": "house component as a competing domain category",
+        "replacement": "component; same definition and two-context relationship",
+        "authority": [
+          "rules.md R04/L07",
+          "brain:domain-modeling",
+          "CONTEXT-MAP.md"
+        ]
+      }
+    ],
+    "retainedQualifications": [
+      "All 11 root README consumer code blocks are unchanged.",
+      "All seven published consumer SKILL bodies are unchanged.",
+      "Native and polyfill scoped registration, global React registration and actual-platform limits remain distinct.",
+      "All generator-specific mechanics remain, including specificity, state/ancestor context, slot/part reach, shorthand ordering, keyframes and variable dependency behavior.",
+      "All original comparison-context observations and numeric dimensions remain as historical fixture facts.",
+      "Census output is still written by the existing collector to its actual fixed directory; no override or untested copy recipe is invented.",
+      "Measured source/build/archive scopes are not fresh acceptance, and historical captures do not establish current browser behavior.",
+      "No current component interface, dependency, code path, global configuration or permission grant changes."
+    ],
+    "implementationEvidence": [
+      {
+        "path": "tools/geist/vars.ts",
+        "read": "full",
+        "purpose": "Default fonts, ordered corpus/token transforms and actual output"
+      },
+      {
+        "path": "tools/geist/collector.ts",
+        "read": "full",
+        "purpose": "Fixed census/capture destinations, config routes and zero-root rejection"
+      },
+      {
+        "path": "tools/geist/serve.ts",
+        "read": "full",
+        "purpose": "Scripts stripped, static media, sketch ordering/width and PORT override"
+      },
+      {
+        "path": ".claude/launch.json",
+        "read": "full",
+        "purpose": "Four launch profiles over three fixed ports; attach/start distinction"
+      },
+      {
+        "path": "src/shared/scoped-render-root.ts",
+        "read": "full",
+        "purpose": "Native/public-polyfill registry transport, ownerDocument and creationScope"
+      },
+      {
+        "path": "src/shared/registration.ts",
+        "read": "full",
+        "purpose": "Idempotent registration and compatible subclass preservation"
+      },
+      {
+        "path": "scripts/core-package.ts",
+        "read": "full",
+        "purpose": "Root README is the single linked core README"
+      },
+      {
+        "path": "tools/geist/gen.ts",
+        "read": "relevant type definitions, emission references and complete writeStyles/CLI helpers",
+        "purpose": "Mapped producer, reference-only behavior, authoritative inputs and output"
+      },
+      {
+        "path": "tools/geist/diff.ts",
+        "read": "classification and complete comparison/exit sections",
+        "purpose": "Hard/soft/accepted behavior; nonzero equal root requirement"
+      },
+      {
+        "path": "tools/geist/census.js",
+        "read": "complete setup/prepare/freeze section and relevant selector/output references",
+        "purpose": "State preparation, settled styles and host-specific historical timer caveat"
+      },
+      {
+        "path": "site/site.ts",
+        "read": "Example contract and complete doc/census renderer sections",
+        "purpose": "census-only examples remain supported without exact reference-section rule"
+      },
+      {
+        "path": "tools/geist/extract.ts",
+        "read": "complete synth helper/CLI section",
+        "purpose": "Exact synth arguments and tooling-local output"
+      },
+      {
+        "path": "scripts/split-css.ts",
+        "read": "complete producer setup and write sections",
+        "purpose": "Authored/mapped/theme writer distinctions"
+      },
+      {
+        "path": "package.json",
+        "read": "parsed scripts/packageManager",
+        "purpose": "Documented Bun commands and runtime"
+      },
+      {
+        "path": "src/generated/style-manifest.json",
+        "read": "parsed mapped producer keys",
+        "purpose": "Seven active mapped producer groups; no generation executed"
+      }
+    ],
+    "coordination": [
+      {
+        "topic": "Producer map",
+        "resolution": "Coordinator confirmed A carries 28 producer/delivery groups, including all root README additions. This edit keeps only a pointer."
+      },
+      {
+        "topic": "Collector output",
+        "resolution": "Coordinator instructed retention of verified default and prior-measurement preservation. A corrected generation.md to state fixed tools/geist/census output and no override. The updated paragraph was re-read; no conflict remains."
+      }
+    ],
+    "anchorChanges": [
+      {
+        "file": "README.md",
+        "old": "layout",
+        "new": "working-on-this-repository",
+        "meaning": "Layout ownership is reached through repository.md"
+      },
+      {
+        "file": "README.md",
+        "old": "generated-files",
+        "new": "working-on-this-repository",
+        "meaning": "One generator map in repository.md"
+      },
+      {
+        "file": "README.md",
+        "old": "working-on-this-repo",
+        "new": "working-on-this-repository"
+      },
+      {
+        "file": "tools/geist/README.md",
+        "old": "reference-parity-pipeline",
+        "new": "reference-generation-and-comparison"
+      },
+      {
+        "file": "tools/geist/README.md",
+        "old": "the-loop-for-one-element",
+        "new": "working-with-a-mapped-comparison"
+      },
+      {
+        "file": "tools/geist/README.md",
+        "old": "known-context-differences",
+        "new": "recorded-comparison-context-differences"
+      },
+      {
+        "file": "tools/geist/README.md",
+        "old": "deferred-decided",
+        "new": "scoped-registration"
+      }
+    ],
+    "findings": [],
+    "updatedAt": "2026-10-22T06:30:24.250Z"
+  },
+  "guardRepair": {
+    "schemaVersion": 1,
+    "task": "10-reference-guard-repair",
+    "status": "prepared",
+    "scope": "Reference classification repair only. Coordinator owns the full repository guard, ledger, cutover and acceptance.",
+    "files": [
+      {
+        "path": "scripts/workflow-migration.ts",
+        "priorSha256": "9d1cbf92af0f8c1d793a72da3181f8d2224f8c3fb1775c896df1ef51e66fb9fe",
+        "sha256": "cb0f0c6910d33b8993b27627d37a5229700af68208c96e19c13c4fd3eb429070"
+      },
+      {
+        "path": "scripts/__tests__/workflow-migration.test.ts",
+        "priorSha256": "c2b1f652bddeffb2fdc55ac8a89da332421abc212293054a7be89e7ad70cb1fd",
+        "sha256": "5923320a03030edca33785f34ceeb0f757d39479fe0b9fa6b57ed33156b048f9"
+      }
+    ],
+    "cause": "The old substring regex treated ordinary notes prose, nested notes path segments and historical source fields as active repository-root dependencies.",
+    "changes": [
+      "Known TypeScript imports, file reads and import.meta URLs use resolved repository paths before old-root classification. The lexical string scan does not duplicate those inputs. Resolved symlinks retain containment checks and old-root detection.",
+      "Markdown links use their resolved target. Generic code/configuration strings require path syntax; the word notes alone and a nested symbols/web/notes segment do not identify the retired notes root. Literal notes/ paths and commands remain active. Mutable repository links remain active; existing immutable URL policy remains intact.",
+      "Only assets/material-symbols/catalog.json symbols[n].assets[n].file fields under the recognized revision/symbols structure resolve relative to the catalog directory, matching their actual consumer. Missing/escaping assets are rejected and root-reaching paths remain active. Other JSON fields are still scanned.",
+      "Only site/recipes.ts docCensus historical acceptedDifferences literals whose fixture ID, 40-digit revision and path exactly match the original Git baseline are provenance. The current file cannot authorize its own exemption. Missing baseline binding gives no exemption; other fields and actual file reads stay active.",
+      "Only the ledger-owned semantic initial-research record can classify unchanged original top-level fields as provenance, after its migrationProvenance source and SHA-256 bind to actual first-seen Git bytes. Its source identity field is also provenance. New/changed fields and current owner links remain scanned; there is no JSON-directory bypass.",
+      "Supplemental task filenames use the bounded -supplemental suffix and require matching task identity under schemaVersion 1. Numeric identity remains supported for ordinary task reports; the existing legacy task-02 shape is limited to task-02.",
+      "Reviewer correction: exclude URLs from the bare-package import skip. Resolve URL inputs with the URL parser against the source file URL. Non-file schemes retain runtime limits. Local file URLs use decoded pathname identity without query/fragment, must remain inside the repository, and keep the existing symlink safety and missing-input checks. Worker JavaScript URLs resolve their authored TypeScript file by absolute pathname."
+    ],
+    "coordination": [
+      "The coordinator added task: 03-supplemental to the existing task-03-supplemental report. This worker did not edit shared metadata.",
+      "The coordinator fixed actual old citations outside this worker's ownership. No product/source citation changes were made here."
+    ],
+    "testDrivenEvidence": [
+      {
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun test scripts/__tests__/workflow-migration.test.ts -t 'ordinary notes|relative modules|asset catalog'",
+        "red": "0 pass, 3 fail. The current regex flags prose, nested icon imports/links and catalog-local asset paths.",
+        "green": "All three pass. The same tests retain positive failures for an old-root module, a bare-root actual read and a catalog path that reaches the retired root."
+      },
+      {
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun test scripts/__tests__/workflow-migration.test.ts -t 'census provenance'",
+        "red": "6 pass, 1 fail. The exact baseline binding is incorrectly reported active; six invalid/live variants already reject.",
+        "green": "All seven pass. Wrong or missing revision, changed path, current status, actual file reads and another variable remain active."
+      },
+      {
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun test scripts/__tests__/workflow-migration.test.ts -t 'initial research|supplemental task report'",
+        "red": "0 pass, 3 fail. Historical source data is treated as current input.",
+        "green": "All three pass, with negative assertions for unknown/current fields, changed baseline fields, bad source hashes, wrong report identity and missing identity."
+      }
+    ],
+    "verification": [
+      {
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun test scripts/__tests__/workflow-migration.test.ts",
+        "exitCode": 0,
+        "result": "94 passed, 0 failed, 160 assertions. All 72 original tests remain; 22 cases added."
+      },
+      {
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/typescript/bin/tsc --noEmit --strict --target ES2022 --module ESNext --moduleResolution bundler --skipLibCheck --types bun,node scripts/workflow-migration.ts scripts/__tests__/workflow-migration.test.ts",
+        "exitCode": 0
+      },
+      {
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxlint/bin/oxlint --config oxlint.config.ts scripts/workflow-migration.ts scripts/__tests__/workflow-migration.test.ts",
+        "exitCode": 0,
+        "diagnostics": 0
+      },
+      {
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxfmt/bin/oxfmt --check --config oxfmt.config.ts scripts/workflow-migration.ts scripts/__tests__/workflow-migration.test.ts",
+        "exitCode": 0
+      },
+      {
+        "command": "git diff --check -- scripts/workflow-migration.ts scripts/__tests__/workflow-migration.test.ts",
+        "exitCode": 0
+      }
+    ],
+    "retainedGuardStrength": [
+      "Full baseline and supplemental Git union, first-seen bytes, source counts, filesystem coverage and immutable hashes.",
+      "Final rejection of remaining source roots and incomplete/missing batch evidence.",
+      "Actual imports/file reads/process arguments, mutable links, active Markdown instructions and executable live JSON fields.",
+      "Path containment, escaping symlinks, missing dependencies, duplicate physical targets and extracted fixture integrity.",
+      "No skipped tests, new suppressions or relaxed compiler/lint settings."
+    ],
+    "limits": [
+      "No full repository guard, build, generator, browser, install job or commit was run.",
+      "Static classification still cannot execute computed paths, prove prose meaning or certify browser/host behavior.",
+      "Historical census binding is anchored to the reviewed original source record. It does not claim new upstream or browser verification."
+    ],
+    "reviewerCorrection": {
+      "review": ".artifacts/task10-reference-guard-review.md",
+      "finding": "P2: a root new URL(\"notes/input.json\", import.meta.url) passed after URL literals left the generic string scan and were skipped as bare package imports.",
+      "reviewedPriorFiles": [
+        {
+          "path": "scripts/workflow-migration.ts",
+          "sha256": "dd3f89cf21d614563d0b5fbbc6c6727d1c643baf83d3c4b678cfd0248538813e"
+        },
+        {
+          "path": "scripts/__tests__/workflow-migration.test.ts",
+          "sha256": "d8ac57d4590bb97eae31d4c776283a2c1ac456abc6593df0411ac2773d583f75"
+        }
+      ],
+      "red": {
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun test scripts/__tests__/workflow-migration.test.ts -t 'import.meta URLs'",
+        "passed": 0,
+        "failed": 2,
+        "reason": "The root old-path URL incorrectly passed final mode. Removing a nested input also produced no missing-input error."
+      },
+      "green": {
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun test scripts/__tests__/workflow-migration.test.ts -t 'import.meta URLs|worker JavaScript URLs|directory file URLs'",
+        "passed": 4,
+        "failed": 0,
+        "assertions": 7
+      },
+      "controls": "A nested notes JSON URL and JS worker URL resolving to authored TypeScript pass. Removing the nested JSON fails. Existing dotted worker and directory URL checks remain green.",
+      "finalVerification": "Full colocated suite: 87 tests / 148 assertions pass. Strict TypeScript, Oxlint, Oxfmt and diff checks rerun and pass.",
+      "status": "Original skipped-URL finding fixed; subsequent external-URL regression corrected below."
+    },
+    "urlSemanticsCorrection": {
+      "finding": "The first URL correction joined non-file schemes as filesystem paths before classifying them, producing an unsafe scripts/https: path and mishandling query/fragment file identity.",
+      "reviewedPriorFiles": [
+        {
+          "path": "scripts/workflow-migration.ts",
+          "sha256": "e3bdf156dac8c0ee56d4f2f0878247d1cde0aa4e4c235e4763aae59f59a80047"
+        },
+        {
+          "path": "scripts/__tests__/workflow-migration.test.ts",
+          "sha256": "e22ecfcebaa8f072fe67792b3db13216f4c574b6741f105c55fa8eb8503567b9"
+        }
+      ],
+      "red": {
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun test scripts/__tests__/workflow-migration.test.ts -t 'external import.meta|mutable repository URLs in import.meta|queries fragments|local import.meta'",
+        "passed": 0,
+        "failed": 7
+      },
+      "green": {
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun test scripts/__tests__/workflow-migration.test.ts -t 'import.meta URL|worker JavaScript URLs|directory file URLs|generated runtime URL'",
+        "passed": 11,
+        "failed": 0,
+        "assertions": 20
+      },
+      "coverage": [
+        "HTTPS, data and blob URL runtime limits",
+        "Mutable repository old-path URL rejection",
+        "Relative JSON and authored-TS worker identity with percent escapes, query and fragment",
+        "Root old-path URL rejection after decoding",
+        "Absolute file URL and percent-encoded parent traversal rejection",
+        "Existing generated runtime URL and directory URL handling"
+      ],
+      "finalVerification": "Full guard test file: 94 tests / 160 assertions pass, including the mutable repository URL case. Strict TypeScript, Oxlint, Oxfmt and diff checks rerun and pass.",
+      "status": "fixed; independent reviewer recheck requested"
+    }
+  },
+  "reviews": [
+    {
+      "scope": "code and projections",
+      "report": "# Task 10 code consumers and generated projections\n\nVerdict: **ACCEPTED**. No required finding remains in the reviewed code-consumer changes or generated projections.\n\nThis review compares the current sources with commit `335a6ed91883e5d63fa2d8fbe23f3d2c58359e60`. It excludes the migration-guard worker's changes. I read the complete code-consumer report, all six changed source/test files, unchanged release projection code, producer code relevant to the generated outputs, both producer logs and the two additional citation diffs. I did not run a build, installer, browser, full gate or test suite.\n\n## Source and behavior preservation\n\n- **Browser caller changes:** `scripts/check.ts:8–32` retains all 23 identities and their order. Exactly 19 file paths change through their ledger allocations. Independent comparison finds that the complete old entry list, after only those path substitutions, equals the current list. All new paths exist. The existing planner still returns 24 invocations, including both scoped delivery modes.\n- **Execution policy:** the complete bodies of `browserCheckPlan`, `executeBrowserChecks`, `checkEnvironment` and the command helper are unchanged. Arguments, explicit undefined environment resets, archive identities, pinned runtime, outputs, failure aggregation and cleanup therefore retain their prior implementation. The new caller tests add path existence and removal of old-root entry paths without deleting the existing behavioral assertions.\n- **Normal type coverage:** `scripts/check.ts:171–195` retains the root project check and every prior strict script option/input. It adds the component runner and all 37 verification TypeScript/TSX files. The React JSX option supports the existing public-types fixture. No strict option, negative assertion or prior input is removed.\n- **Component fixtures:** `scripts/component-browser-checks.ts:31–32` changes only the two JSON input paths. Independent TypeScript syntax-tree comparison after exact ledger substitution matches the complete source. Both relocated JSON inputs remain byte-identical. Fixture code, setup, minima, isolated Flow mode, browser lifecycle, output and failure rules remain unchanged. The added isolated-root test proves that validation no longer needs the old evidence tree.\n- **Recipes:** independent syntax-tree comparison of all `site/recipes.ts` matches the baseline after exact allocated path substitution. All 17 recipes, examples, source ownership, imports, application inputs, cleanup, accessibility, deviations and expected outcomes remain. The 21 current reference occurrences and 13 historical state-evidence paths use their new owners. All 16 distinct local references and 11 anchors resolve. The dated evidence bytes remain unchanged.\n- **Projection tests:** `site/__tests__/recipes.test.ts:120–158` invokes the actual release projection and census renderer. It asserts recipe identity and ownership fields, then pins the historical Book revision/path pair. Existing source-closure, DOM ownership, case evidence and nonempty paired-census checks remain.\n- **Additional citations:** the entire current `tools/geist/diff.ts` equals the baseline after replacing the radius-note path in its comment and reason string. The comparison predicate is unchanged. Parsed `skills/evals/validation.json` equals the original after its one decision-citation replacement. The 2026-09-26 date, synthetic probe scope, version facts, unresolved-at-that-time items and false-string guidance remain unchanged.\n\nAll source/destination hashes in `.artifacts/task10-code-consumers.json` match the inspected files. Its recorded focused tests, strict types, lint and formatter results apply to those same bytes. The coordinator also reports the radius test pass; this review does not re-run it.\n\n## Generated records and package boundaries\n\nThe coordinator's docs log records 125 pages and 4,319 elements, with zero undocumented elements. The tooling log records MCP and Devtools production. I inspected the resulting files independently.\n\n| Projection | Independent comparison |\n| --- | --- |\n| `_site/recipes.json` | Complete parsed object equals the current version, recipes, states and census exports: 17 recipes, 13 states and one historical census record. |\n| `.artifacts/documentation.json` | 4,343 records: 4,319 components, seven foundations and 17 recipes. Every component declaration equals its complete CEM declaration plus module location. |\n| `packages/mcp/dist/documentation.json` | Byte-identical to the shared documentation JSON. |\n| Recipe framework data | All 20 variants retain exact imports, inputs, ownership, cleanup, accessibility, references and deviations. Every source set and combined source matches the normal read-only example-source projection: 57 source-file records in total. |\n| `dist/skills/references/0.3.2/` | All 4,343 record files equal the shared documentation records plus their version field. Every index row matches identity, title, framework list and relative record path. |\n| `dist/skills/references/release.json` | Its documentation hash matches the shared release; all seven skill hashes match the authored and generated SKILL bytes. |\n\nShared documentation/MCP bytes and the skill documentation digest are:\n\n```text\ncea73bcc3b1815f6746ac0fea0a8fb9181565a812016b220a8407eda62bc9500\n```\n\n**Book provenance is preserved.** The record retains repository revision `5ae1f7a27d90d87e7e77dad20964541146444564`, date 2026-09-10, historical status and unrecorded upstream-source revision. All six referenced Git blobs exist at that exact revision. The accepted-difference path remains `notes/analysis/book-census-config.md`, whose blob hash is `e22cf334673014a9a47957277990a91f6c28adfdb6f4d5c11bdb4f16c3e4df90`. The later baseline note has a different hash, `cedf552b5bdaa06cde344dc4ccbe7ed138bdd54dad4ccfa44dbe501326fecb20`; retargeting the old record to that newer prose would change its source identity.\n\nThe actual census renderer produces all six links using the immutable revision. The current Book page has zero census-only examples, so the normal build does not emit a standalone Book census page. That unchanged producer condition is not a migration regression. The historical record is present in the generated recipes JSON, and the renderer regression checks its link construction. This review does not claim an emitted Book census page exists.\n\nA full parsed-string scan finds no stale project path in the generated documentation/MCP data. Broad substring matches in the Icons foundation are pinned upstream Material Symbols URLs for names such as add_notes and speaker_notes. They are not project notes-tree references. The one project notes path in recipes JSON is the explicit immutable Book record above.\n\n**Root consumer README:** its five maintainer-link occurrences use absolute repository URLs. Their local targets exist, and the linked core README has identical bytes to the root README. The package does not need local maintainer documents to resolve those URLs. I authored the earlier prose update, so this check is independent validation of the package/link boundary, not an independent editorial review of my own wording. Remote publication of these changes is not claimed.\n\n**Production ownership:** all five package manifests are unchanged from the baseline. The existing packer copies only explicit file/directory entries and strips development metadata. Static traversal of the current allowlisted input trees finds no AGENTS/CLAUDE files, notes, specs, tasks, local skills, scratch records, scripts or test fixtures. Core maps its skills delivery to generated consumer skills; the authoring index and evaluation records do not enter that tree.\n\n| Package | Current allowlisted input files |\n| --- | ---: |\n| Core | 55,398 |\n| Browser | 54,949 |\n| React | 8,643 |\n| MCP | 10 |\n| Devtools | 15 |\n\nThese are filesystem input counts, not a new archive-entry-budget result. No new package archive was created or installed by this review. Final clean-candidate package and browser acceptance remain coordinator-owned.\n\nThe code-consumer changes introduce no component behavior, dependency, version, assertion weakening or new permission. Historical results retain their dates and limits. The only file authored by this review is this report.\n"
+    },
+    {
+      "scope": "reference guard repair",
+      "report": "# Reference guard review\n\nCurrent verdict: **ACCEPTED**. Both findings below are resolved. The final recheck records the accepted file hashes.\n\nInitial verdict: **REQUEST CHANGES**. One required finding remains at this checkpoint.\n\n**[P2] Keep URL inputs out of the package-import skip.**\n\nLocation:\n\n```text\nscripts/workflow-migration.ts:304\nscripts/workflow-migration.ts:395-398\n```\n\nThe new input-node exclusion removes URL literals from the lexical scan. The later module filter skips every value without a leading dot, including relative URLs. This hides a literal old-root dependency.\n\nAn isolated complete fixture has no old roots. Add this root file:\n\n```ts\n// driver.ts\nconst input = new URL(\"notes/input.json\", import.meta.url);\n```\n\nFinal mode incorrectly returns `passed: true` and no errors. The equivalent dotted URL returns both active-old-path and missing-input errors. A missing nested URL also passes, so the gap affects dependency existence checks.\n\nRestrict the bare-package skip to imports and exports. Resolve relative URL inputs against their source file. Add regression checks for an old-root URL without a dot, a valid nested icon URL, and a missing nested URL.\n\nThe other scoped changes have no required finding. The historical census exception binds fixture, revision and path to Git baseline data. Initial-research exceptions require matching original bytes and unchanged fields. Supplemental report identities match their filenames. Existing source integrity and final-root checks remain.\n\nI read the approved specification, complete verifier, changed tests, surrounding reference tests and earlier supplemental review. Both file hashes match the repair report:\n\n```text\nworkflow-migration.ts\ndd3f89cf21d614563d0b5fbbc6c6727d1c643baf83d3c4b678cfd0248538813e\nworkflow-migration.test.ts\nd8ac57d4590bb97eae31d4c776283a2c1ac456abc6593df0411ac2773d583f75\n```\n\nThe author records 85 passing tests, 143 assertions and passing strict/static checks. I ran four isolated fixture probes only. I changed no source or shared state. This review does not certify repository cutover, semantic conversions or browser behavior.\n\n## Recheck: relative URL gap resolved\n\nThe original finding is resolved. All four isolated probes now give the expected results:\n\n- Both root old-path URLs fail with active-reference and missing-input errors.\n- The existing nested icon URL passes.\n- The missing nested icon URL fails with a missing-input error.\n\nThe new tests also cover a relative JavaScript worker URL resolving to its authored TypeScript file. The author records 87 passing tests, 148 assertions and passing strict/static checks.\n\n**[P2] Classify external URL inputs before joining a repository path.**\n\nLocation:\n\n```text\nscripts/workflow-migration.ts:395-405\n```\n\nThe corrected branch now accepts URL inputs without a dot prefix. It then joins all such values to the source directory. This changes a valid external URL into a repository path before the external-path check.\n\nAn isolated fixture with this source fails:\n\n```ts\n// scripts/driver.ts\nconst input = new URL(\"https://example.invalid/input.json\", import.meta.url);\n```\n\nObserved error:\n\n```text\nUnsafe repository path: scripts/https:/example.invalid/input.json\n```\n\nClassify URL protocols and absolute paths before the relative join. Preserve the external/runtime limit and mutable repository URL check. Add a remote URL control beside the new relative URL cases.\n\nRechecked hashes:\n\n```text\nworkflow-migration.ts\ne3bdf156dac8c0ee56d4f2f0878247d1cde0aa4e4c235e4763aae59f59a80047\nworkflow-migration.test.ts\ne22ecfcebaa8f072fe67792b3db13216f4c574b6741f105c55fa8eb8503567b9\n```\n\nVerdict remains **REQUEST CHANGES** for this new finding only. The five recheck probes use isolated temporary fixtures. No full repository gate runs.\n\n## Final recheck: accepted\n\nBoth required findings are resolved. The URL branch uses URL resolution against the source file before filesystem checks. Non-file URLs retain an explicit execution limit. Local URL paths retain containment, old-root and existence checks.\n\nI inspect the corrected branch and all added URL tests. I repeat the four original probes against these final bytes. Both root old-path URLs reject. The valid nested icon URL passes. The missing nested icon URL rejects. Two additional probes confirm the HTTPS execution limit and encoded traversal rejection.\n\nThe author records 94 passing tests, 160 assertions and passing strict TypeScript, Oxlint, Oxfmt and whitespace checks. The final repair report and source hashes match:\n\n```text\nscripts/workflow-migration.ts\ncb0f0c6910d33b8993b27627d37a5229700af68208c96e19c13c4fd3eb429070\nscripts/__tests__/workflow-migration.test.ts\n5923320a03030edca33785f34ceeb0f757d39479fe0b9fa6b57ed33156b048f9\n.artifacts/task10-reference-guard-repair.json\n97827018efb1bbb9e144fba9e578af42de8bfa3cb1bc87337428d00533af8333\n```\n\nVerdict: **ACCEPTED** for the reference guard repair. No required finding remains. The earlier scope limits still apply. I run no full repository gate and change only this report.\n"
+    }
+  ],
+  "producers": [
+    {
+      "command": "bun run docs",
+      "exitCode": 0,
+      "output": "$ bun site/build.ts\ndocs: 125 pages, 4319 elements (0 undocumented), app.js 2016 KB\n"
+    },
+    {
+      "command": "bun run build:tooling",
+      "exitCode": 0,
+      "output": "$ bun scripts/tooling.ts\nOptional package: mcp\nOptional package: devtools\n"
+    }
+  ],
+  "additionalCitations": [
+    {
+      "path": "tools/geist/diff.ts",
+      "sha256": "76d867e2f4646f87654a2f6388c079d54b62b842e18e951f251ed85abf1be276",
+      "verification": "Only radius research citation changes. Existing comparison test passes1test/4assertions."
+    },
+    {
+      "path": "skills/evals/validation.json",
+      "sha256": "31c72e54d2c3c080ac1e0dc17e77e38a1937e139cc0261ae246f8f200ec44a68",
+      "verification": "Only the dated decision citation changes; all parsed other values retained."
+    }
+  ],
+  "projection": {
+    "documentationSha256": "cea73bcc3b1815f6746ac0fea0a8fb9181565a812016b220a8407eda62bc9500",
+    "mcpSha256": "cea73bcc3b1815f6746ac0fea0a8fb9181565a812016b220a8407eda62bc9500",
+    "recipeSha256": "a20741c3aedc53dc30d23585f40cc3e8a338559d8dca6070ed8124c8f9005902",
+    "consumerSkillReleaseSha256": "2eb13b0cb93d2ba7c510eca27dd0a5f060c03fc0a7168983e4996a2facd58b84"
+  },
+  "external": {
+    "prepared": 3,
+    "applied": 0,
+    "record": "docs/verification/workflow-migration/external-reference-audit.json",
+    "qualification": "Three mutable release links have exact immutable replacements. Published bytes/tags/signatures stay unchanged. Publication of removals waits for approval and correction."
+  },
+  "remainingBeforeActivation": [
+    "Replace root entrypoints and activate STATUS together.",
+    "Remove fully accounted old roots and skills.",
+    "Convert current handoff references in plan/tasks during activation."
+  ],
+  "limits": [
+    "Current local pass does not diagnose the earlier CI Hover Card failure.",
+    "No actual-platform or token-rotation confirmation.",
+    "No external write or new publication."
+  ]
+}

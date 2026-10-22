@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-22T06:00:44.602Z",
+  "runtime": "1.4.2",
+  "release": {
+    "schemaVersion": 2,
+    "version": "0.3.2",
+    "commit": "dff4a7fa4eb5c16ecf22de3148ea80b754d6698d",
+    "sourceTree": "dirty",
+    "packages": [
+      {
+        "name": "@acmelabs/design-system",
+        "version": "0.3.2",
+        "filename": "acmelabs-design-system-0.3.2.tgz",
+        "sha512": "a5d11594e8c32f87bc11c550d791af952e0d0db64197e2821cf236c5c6d4efa8c77c62af61319ddeadafe7741b3351880cc8bea8a9a3da358b53631fe01270ce",
+        "blockers": []
+      },
+      {
+        "name": "@acmelabs/design-system-react",
+        "version": "0.3.2",
+        "filename": "acmelabs-design-system-react-0.3.2.tgz",
+        "sha512": "423f14f868b30dd7c81648eefd4c54384c4d3fcbc71c9fefa28172ec4c6e139ddf519f136a34b7f0915096e2dfa53a4d97c3a2d435ffa36d6ceb3c7ca22a302a",
+        "blockers": []
+      },
+      {
+        "name": "@acmelabs/design-system-devtools",
+        "version": "0.3.2",
+        "filename": "acmelabs-design-system-devtools-0.3.2.tgz",
+        "sha512": "1f54cf7c4f80de3461a77fd869a1597836efbbcfb38a129b3258ffe760a7f33923db34337aa7dc6654ae528b84afc1ad170bdadc6b8e5d7bf54308971ac6f939",
+        "blockers": []
+      },
+      {
+        "name": "@acmelabs/design-system-mcp",
+        "version": "0.3.2",
+        "filename": "acmelabs-design-system-mcp-0.3.2.tgz",
+        "sha512": "2e9853e4d6336135815eadb89c3ab5a063f3235359e454f4b97402ce157c2dfb5c82c3af66a7e9b0cc4aa5cf42818ba883188f2da1d524bcdf2bfa68e9802151",
+        "blockers": []
+      },
+      {
+        "name": "@acmelabs/design-system-browser",
+        "version": "0.3.2",
+        "filename": "acmelabs-design-system-browser-0.3.2.tgz",
+        "sha512": "4e5d9c8b342638ceb34c1aa7670a28fdad973d6b7bd01900cd54fa594cdfd0fa9f7a92a7f0798cc76cb146e25d3ad2670b18d06a20d194534842f8f891767467",
+        "blockers": []
+      }
+    ]
+  },
+  "complete": true,
+  "results": [
+    {
+      "id": "08-documentation-action-labels.browser-check",
+      "file": "scripts/verification/documentation/action-labels.browser-check.ts",
+      "passed": true,
+      "exitCode": 0,
+      "sha256": "0f33c9c7e98656c4a7b09f798801248ee2eae2b9839bcb7352c381e239401d46"
+    },
+    {
+      "id": "08-documentation-appearance.browser-check",
+      "file": "scripts/verification/documentation/appearance.browser-check.ts",
+      "passed": true,
+      "exitCode": 0,
+      "sha256": "f511852bddd431abe3c9a559648f785b17897116fa06b071e2064449a3fab2b8"
+    },
+    {
+      "id": "08-documentation-table-source-isolation.browser-check",
+      "file": "scripts/verification/documentation/table-source-isolation.browser-check.ts",
+      "passed": true,
+      "exitCode": 0,
+      "sha256": "d1df2d5988edbf298934248a85242ced5e459a02088759d75eef6a4eb10eb79e"
+    },
+    {
+      "id": "08-devtools-manual",
+      "file": "scripts/verification/devtools/browser-check.ts",
+      "passed": true,
+      "exitCode": 0,
+      "sha256": "91594d635b71ab631395441be69c7001771514746fff30d377c0a50391d81c75"
+    },
+    {
+      "id": "08-workspace-consumer",
+      "file": "scripts/verification/workspace/packed-consumer-check.ts",
+      "passed": true,
+      "exitCode": 0,
+      "sha256": "6e8c5980f42f7e2d2a6ec396426612eb48ec8bfdb8c411bc48c16919b571b7b6"
+    },
+    {
+      "id": "08-workspace-install",
+      "file": "scripts/verification/workspace/install-check.ts",
+      "passed": true,
+      "exitCode": 0,
+      "sha256": "9376d6f4b98f0e3b5ed55d3113eb3beda9f09f28bc4bae5df367f4a6c1ceb313"
+    },
+    {
+      "id": "08-react-types",
+      "file": "scripts/verification/react/fixtures/public-types.tsx",
+      "passed": true,
+      "exitCode": 0
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-workflow-research",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Complete parsed-value equality preserves every original field. Added explicit historical provenance and current record owners. Aggregate guard remains pending.",
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/workflow-migration-2026-10-21.json",
+      "destination": "docs/verification/workflow-migration/initial-research.json",
+      "sourceSha256": "c9c829649183d3b0f42932cc6a2437729a15aa348b94fb11c60606c0f74f8e01",
+      "destinationSha256": "730d5fc2296a50953df9509aa008c06bacefd657422513380fe83a3638bfd0cd"
+    }
+  ],
+  "anchorChanges": []
+}

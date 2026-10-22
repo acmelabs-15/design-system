@@ -1,0 +1,18 @@
+const mode=new URL(location.href).searchParams.get('mode');
+const before={Registry:window.CustomElementRegistry,registry:window.customElements,attachShadow:Element.prototype.attachShadow};
+const capability={};
+try {
+  const registry=new CustomElementRegistry();
+  class NativeProbe extends HTMLElement {connectedCallback(){this.textContent='native-ok';}}
+  registry.define('native-probe',NativeProbe);
+  const host=document.createElement('div');document.body.append(host);
+  const shadow=host.attachShadow({mode:'open',customElementRegistry:registry});
+  shadow.innerHTML='<native-probe></native-probe>';
+  const child=shadow.firstElementChild;
+  Object.assign(capability,{supported:child instanceof NativeProbe&&child.textContent==='native-ok',constructorMatch:child instanceof NativeProbe,text:child.textContent,registryMatch:shadow.customElementRegistry===registry,shadowImportNode:typeof shadow.importNode});
+  host.remove();
+}catch(error){Object.assign(capability,{supported:false,error:String(error)});}
+const loadPolyfill=mode==='always'||!capability.supported;
+if(loadPolyfill)await import('/polyfill.js');
+window.bootstrap={mode,capability,loadPolyfill,patches:{Registry:before.Registry!==window.CustomElementRegistry,globalRegistry:before.registry!==window.customElements,attachShadow:before.attachShadow!==Element.prototype.attachShadow}};
+await import('/suite-style.js');

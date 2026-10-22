@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "batch": "06-research-01-agent-tooling",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "All20 originals were fully read during audit and conversion. Specific findings distinguish observations, proposals, approved choices, unverified claims, supersession and dated history. Rule dispositions retire completed process instructions.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/analysis/agent-tooling.md",
+      "destination": "docs/research/01-agent-tooling.md",
+      "sourceSha256": "82630702c19d85d21a9765f611b63442367e127f88f417b903b4ed1d3f3af466",
+      "destinationSha256": "d16d9d908d156933b82d510d7d66b918ab7f7c2c5514d477829232fdd84aba25",
+      "changes": [
+        "Converted to numbered research with explicit dated scope, findings, provenance and limitations.",
+        "Relocated live Markdown links through the final ledger; retained source paths as historical provenance.",
+        {
+          "old": "# Agent tooling: Phase 1 extension",
+          "new": "# Agent tooling"
+        },
+        {
+          "old": "## Existing house capability",
+          "new": "## Existing capability at the 2026-09-19 checkpoint"
+        },
+        {
+          "old": "Use the selected CEM and documentation sources for shared facts.",
+          "new": "The proposed shared-fact sources were the selected CEM and documentation."
+        },
+        {
+          "old": "Keep this project's consumer guidance separate from maintainers' workflow skills and the separate ask-user-question project.",
+          "new": "The proposal kept consumer guidance separate from maintainers' workflow skills and the separate ask-user-question project."
+        },
+        {
+          "old": "Read the functional sections of the [documentation]",
+          "new": "The investigation read the functional sections of the [documentation]"
+        },
+        {
+          "old": "Do not copy a second generic UI representation from this example.",
+          "new": "The investigation did not recommend copying a second generic UI representation from this example."
+        },
+        {
+          "old": "Read [ag-dev]",
+          "new": "The investigation read [ag-dev]"
+        },
+        {
+          "old": "The house seven-phase process and replacement policy still govern.",
+          "new": "The seven-phase process and replacement policy governed that completed pass. They are historical workflow context, not new-work instructions."
+        },
+        {
+          "old": "Read the [overview]",
+          "new": "The investigation read the [overview]"
+        },
+        {
+          "old": "Policy behaviour differs by configuration/version; do not promise that omitted permissions universally deny all skills.",
+          "new": "Policy behaviour differs by configuration/version; omitted permissions do not establish a universal deny-all policy."
+        },
+        {
+          "old": "Pin/review alpha upgrades, validate the packaged guidance, and test resulting artifacts independently.",
+          "new": "The recommendation included pinned/reviewed alpha upgrades, packaged-guidance validation and independent artifact tests."
+        },
+        {
+          "old": "Remaining work belongs to the future inventory and migration reviews: skill taxonomy/evaluations, versioned sources, MCP transport/interfaces/hosting and release integration. Do not reopen the selected skills/MCP/Intent direction merely because those implementation details remain to specify.",
+          "new": "At this checkpoint, skill taxonomy/evaluations, versioned sources, MCP transport/interfaces/hosting and release integration remained for the inventory and migration reviews. Those open implementation details did not reverse the selected skills/MCP/Intent direction."
+        },
+        {
+          "old": "M00 technical prerequisites remain active before dependent implementation. Production implementation has not started; approval is not a runtime result.",
+          "new": "At the approval checkpoint, M00 technical prerequisites preceded dependent implementation and production implementation had not started. Later implementation and acceptance are recorded in the final evidence linked above. Approval alone was not a runtime result."
+        },
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance.",
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance."
+      ],
+      "retainedQualifications": [
+        "AG source naming discrepancies and bounded reads remain explicit.",
+        "Intent fixture validation/loading does not prove behavior, statistical quality or effective hook delivery.",
+        "Authoring support excludes live AI control, model endpoints and global hook/configuration changes."
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/analysis/agent-tooling.md",
+      "oldAnchor": "agent-tooling-phase-1-extension",
+      "destination": "docs/research/01-agent-tooling.md",
+      "newAnchor": "research-01-agent-tooling"
+    },
+    {
+      "source": "notes/analysis/agent-tooling.md",
+      "oldAnchor": "existing-house-capability",
+      "destination": "docs/research/01-agent-tooling.md",
+      "newAnchor": "existing-capability-at-the-2026-09-19-checkpoint"
+    }
+  ],
+  "findings": []
+}

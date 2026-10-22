@@ -21,7 +21,7 @@ A constructed description of a reference state that the captured page does not c
 _Avoid_: Treating a sketch as proof that the state was measured in a browser.
 
 **Map**:
-The correspondence between the reference description and the house component's boxes, treatments and content places.
+The correspondence between the reference description and the component's boxes, treatments and content places.
 _Avoid_: Matching boxes by name alone when their roles differ.
 
 **Generator**:

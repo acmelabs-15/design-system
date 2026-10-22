@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "status": "complete",
+  "scope": "Supplemental immutable source capture and filesystem coverage repair. Focused checks pass; coordinator owns the repository guard and independent review.",
+  "sourceCoverage": {
+    "originalBaselineRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+    "supplementalCaptureRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+    "captureCountsReportedByCoordinator": {
+      "files": 38,
+      "bytes": 266083,
+      "unionSources": 970
+    },
+    "liveRepositoryGuardRun": false,
+    "metadataException": "Only regular files named .DS_Store are excluded from current filesystem coverage. Git baseline union integrity is unchanged; final mode still rejects remaining source roots."
+  },
+  "changes": [
+    "Added optional additionalSourceRevisions. When present it must be a nonempty array of distinct lowercase 40-digit hexadecimal revision strings, excluding the original baseline.",
+    "Built an ordered union of Git inventories from the original revision followed by each supplemental revision. Only newly seen paths contribute bytes; later changes and deletions cannot replace or shrink original evidence.",
+    "Applied existing sourceCount, record completeness, immutable source/destination and extracted-fixture checks to the full union.",
+    "Preparation now walks the actual original roots, including ignored files. Existing path checks run before recursion; symlinks remain entries and are never recursively followed.",
+    "Kept current Git-index coverage and all final old-root rejection checks."
+  ],
+  "testDrivenEvidence": [
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun test scripts/__tests__/workflow-migration.test.ts -t 'supplemental capture adds ignored logs'",
+      "red": "Expected Unlisted source: notes/capture.log; previous guard reported only Unlisted current source and counted the original baseline.",
+      "green": "1 passed; 3 assertions."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun test scripts/__tests__/workflow-migration.test.ts -t 'preparation notices ignored source files'",
+      "red": "Previous guard returned no errors for an ignored, uncaptured log under a nested original source directory.",
+      "green": "1 passed; 2 assertions."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun test scripts/__tests__/workflow-migration.test.ts -t 'malformed supplemental|baseline cannot also'",
+      "red": "All 10 malformed/duplicate revision cases failed the expected schema rejection before validation was added.",
+      "green": "10 passed; 10 assertions."
+    }
+  ],
+  "verification": [
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun test scripts/__tests__/workflow-migration.test.ts",
+      "exitCode": 0,
+      "result": "72 passed, 0 failed, 119 assertions. Nineteen new cases cover supplemental inventory, original/first-seen bytes, corrupt raw copies, ignored sources, metadata names, symlink escape/cycles, revision validation and final source-root removal."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/typescript/bin/tsc --noEmit --strict --experimentalDecorators --useDefineForClassFields false --target ES2022 --module ESNext --moduleResolution bundler --skipLibCheck --types bun,node --jsx react-jsx scripts/workflow-migration.ts scripts/__tests__/workflow-migration.test.ts",
+      "exitCode": 0,
+      "result": "Focused strict types pass."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxlint/bin/oxlint --config oxlint.config.ts scripts/workflow-migration.ts scripts/__tests__/workflow-migration.test.ts",
+      "exitCode": 0,
+      "result": "No diagnostics."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxfmt/bin/oxfmt --check --config oxfmt.config.ts scripts/workflow-migration.ts scripts/__tests__/workflow-migration.test.ts",
+      "exitCode": 0,
+      "result": "Both files match current formatting."
+    },
+    {
+      "command": "git diff --check -- scripts/workflow-migration.ts scripts/__tests__/workflow-migration.test.ts",
+      "exitCode": 0,
+      "result": "No whitespace errors."
+    }
+  ],
+  "review": [
+    "Existing self-coverage test first flagged new fixture path literals as live old-root references. Test setup now derives paths from its fixture ledger; production reference checks were not weakened.",
+    "No test removal, skipped test, timeout increase, lint/type suppression, dependency/configuration change, source deletion or new workflow manager.",
+    "No shared ledger/batch/status edits, commit, full repository guard, build or browser job was performed."
+  ],
+  "files": [
+    {
+      "path": "scripts/workflow-migration.ts",
+      "sha256": "9d1cbf92af0f8c1d793a72da3181f8d2224f8c3fb1775c896df1ef51e66fb9fe"
+    },
+    {
+      "path": "scripts/__tests__/workflow-migration.test.ts",
+      "sha256": "c2b1f652bddeffb2fdc55ac8a89da332421abc212293054a7be89e7ad70cb1fd"
+    }
+  ],
+  "independentReview": "# Supplemental migration guard review\n\nVerdict: **ACCEPTED**. No required finding remains in the scoped diff.\n\nThe review compares the two worktree files with their committed versions at `335a6ed91883e5d63fa2d8fbe23f3d2c58359e60`. It covers every changed line, the complete new tests, fixture construction, path validation, immutable-byte checks, extracted fixtures, batch coverage and final root rejection. I also read `.artifacts/supplemental-guard-review.json` in full.\n\n## Integrity and coverage\n\n| Requirement | Review evidence | Verdict |\n| --- | --- | --- |\n| Preserve first-seen bytes | `scripts/workflow-migration.ts:581–597` reads the original baseline first, then supplemental revisions in their declared order. Only paths absent from the map are read and inserted. A later revision cannot overwrite a value or delete an earlier key. | Pass |\n| Preserve the complete source inventory | Lines 598–610 derive counts and fingerprints from the union. Every union path must have a ledger record. Both sourceCount and record count must equal the union size. Fixed approved roots remain enforced at lines 514–516. | Pass |\n| Apply existing immutable checks to new captures | Lines 639–674 use the same union map for source hashes, current immutable source bytes, destination policy and destination bytes. Lines 676–694 derive extracted fixture strings from that map. Supplemental records have no weaker integrity path. | Pass |\n| Reject malformed capture identifiers | Lines 500–509 reject a non-array, empty array, non-string value, non-lowercase-40-digit hash, duplicate revision and reuse of the original baseline. Validation runs before Git calls. Argument arrays contain only validated hashes; no shell or revision option interpolation is added. | Pass |\n| Fail closed for missing or unsuitable Git objects | The existing Git helper throws on a failed `ls-tree`; the blob reader rejects a non-blob response. A missing revision therefore cannot produce a successful empty supplemental capture. The original baseline must still be nonempty at lines 587–590. | Pass |\n| Find ignored and untracked files | Lines 111–133 walk each approved source root using the filesystem, independent of Git ignore rules. Lines 612–624 combine those entries with the retained Git index/untracked inventory. A discovered entry must appear in both the ledger and captured union. | Pass |\n| Avoid following symlink trees | The walk calls existing `safePath` before inspection. Escaping and unresolved symlinks fail there at lines 60–90. `lstatSync` then distinguishes the link itself from its target. Only actual directories recurse; a safe internal directory symlink is recorded once as a source entry. | Pass |\n| Exclude only regular `.DS_Store` files | Lines 618–620 require the exact basename and `lstatSync(...).isFile()`. Similar names remain covered. Directories named `.DS_Store` recurse. Symlinks with that name are not excluded. A `.DS_Store` already present in the Git union still needs its ledger record and integrity checks; this current-files exception does not remove baseline coverage. | Pass |\n| Keep final old-root rejection strong | Final mode still validates paths and all union records. Lines 699–703 reject every remaining old root through final-mode errors. The filesystem walk is unnecessary after that requirement: an ignored file or metadata file leaves its parent root present. A dangling or escaping root symlink fails earlier path validation. | Pass |\n| Preserve other guard protections | The diff does not loosen retirement scope, path containment, duplicate destination checks, batch ownership, completion checks or active-reference checks. Supplemental captures extend the inventory rather than create a new exemption. | Pass |\n\nThe added test fixture creates an actual Git capture after the original baseline. It adds the immutable destination and matching batch scope. It does not replace the original baseline or mock Git object reads (`scripts/__tests__/workflow-migration.test.ts:111–138`).\n\nThe new regression cases exercise the intended failure boundaries:\n\n- Lines 153–177 require the captured log in union coverage and detect an ignored nested file absent from both Git and the ledger.\n- Lines 179–201 reject nine malformed supplemental values and reuse of the original baseline.\n- Lines 203–232 detect changed source/destination bytes and prove that later changes or deletions cannot replace first-seen bytes or remove original paths.\n- Lines 234–268 distinguish regular metadata from similarly named files/directories, reject escaping links and stop internal symlink cycles.\n- Lines 270–291 reject an unresolved revision and require final removal of a source root that contains only metadata.\n\nThe existing surrounding tests still cover immutable policy weakening, original-byte hashes, unsafe paths, escaping destination links, incomplete final state and extracted string bytes. No test or assertion is removed by this diff.\n\n## Verification identity and limits\n\nBoth reviewed files match the author report's SHA-256 values:\n\n| File | SHA-256 |\n| --- | --- |\n| `scripts/workflow-migration.ts` | `9d1cbf92af0f8c1d793a72da3181f8d2224f8c3fb1775c896df1ef51e66fb9fe` |\n| `scripts/__tests__/workflow-migration.test.ts` | `c2b1f652bddeffb2fdc55ac8a89da332421abc212293054a7be89e7ad70cb1fd` |\n\nThe author records 72 passing tests with 119 assertions, focused strict types, Oxlint, Oxfmt and whitespace checks. This independent review inspects that evidence and the exact matching source. It does not repeat those passing checks. No concrete concern requires another reproduction.\n\nThis verdict covers the guard repair only. It does not certify current repository migration state, semantic conversions, final cutover or browser behavior. I ran no repository guard, build, browser, installer or test job. I changed no source, test, shared metadata or live state file; this review report is the only new artifact.\n",
+  "liveRepositoryGuard": {
+    "passed": true,
+    "errors": [],
+    "counts": {
+      "sources": 970,
+      "destinations": 979,
+      "extractedFixtures": 2,
+      "batches": 197
+    },
+    "fingerprints": {
+      "docs/verification/workflow-migration/ledger.json": "33c2c4e06f5807c95ad443629909f080cc84fe89c8da48031b143aee7761974f",
+      "baselineSources": "3f53595e40f0b45b99d0e96fe01a93bd18fd99699872f95c08793b4bdae5319e",
+      "docs/verification/workflow-migration/batches.json": "7814d18d8a8738d1201b3609bdc0dffeb113ae22e8089a848673818b018d18d5",
+      "docs/verification/workflow-migration/references.json": "323fed6aa8ad0a4fc4df32336200e5ab1ad93713dd82e8956f4c3d8ad56c933a",
+      "docs/verification/workflow-migration/live-file-audit.json": "0feb6f37403d243a27c32395bfb72ab26cf0199957a619fb9a01634dff7a8673"
+    }
+  },
+  "task": "03-supplemental"
+}

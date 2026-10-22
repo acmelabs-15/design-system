@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-data-displays",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer full source/audit read and semantic reconciliation; coordinator guard/review pending",
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/inventory/data-displays.md",
+      "destination": "spec/SPEC-data-displays.md",
+      "sourceSha256": "af949ae7e3edf0692ad7855010f8bd0a15e8cb59eb9fee296f11ec36e2976fd7",
+      "destinationSha256": "d09e108f6787437c510e00f585c02f547b2b6f5a17095817c7e02ded35a5cc55",
+      "changes": [
+        "Converted approved proposal wording into current contract language; preserved inputs/defaults/content/methods/events/exclusions and acceptance requirements.",
+        "Retargeted citations through allocated ledger paths; retained original approval and dated evidence."
+      ],
+      "retainedQualifications": [
+        "No universal future Table-version compatibility guarantee.",
+        "Flow is viewer-only and worker-backed; fixed-position routing and unlimited graph budgets remain excluded.",
+        "Signed current-release success does not diagnose the older patched Firefox crash.",
+        "Native/grid Table styling still needs browser and actual assistive checks."
+      ],
+      "reconciliations": [
+        "All 17 Table capability rows and seven combined matrices remain explicit.",
+        "Approved optional Pagination Position/Page Size remain application-controlled.",
+        "M26 Table application setup keeps exact declaration correction outside the component runtime.",
+        "Named Chart contrast correction and bounded Flow release comparison are linked without broadening compatibility or scale claims."
+      ],
+      "evidence": [
+        "docs/research/06-codebase-systematization.md#m26-table-worker-application-setup--2026-09-26",
+        "docs/research/07-design-foundations.md#m20-chart-palette-contrast-deviation--2026-09-23",
+        "docs/research/15-lit-practice-review.md#flow-current-release-comparison"
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

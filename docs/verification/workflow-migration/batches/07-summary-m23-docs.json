@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-summary-m23-docs",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Full source/audit preparation and writer semantic/path review; coordinator guard/review pending",
+    "runtimeDependency": "docs/verification/workflow-migration/task-08.json",
+    "coordinator": {
+      "semanticReview": "Independent full review accepted all22 source/target pairs with no required findings.",
+      "runtime": "Task08 records24required+7manual passes and two verified metadata/default follow-ups; final clean activation remains separate.",
+      "supplementalLogs": "All38 ignored logs, including the five referenced files, are captured at335a6ed91883e5d63fa2d8fbe23f3d2c58359e60 and copied byte-for-byte.",
+      "guard": "Real preparation passes with970 sources,979 destinations and197 batches; later allocated work remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m23-docs/README.md",
+      "destination": "docs/verification/systematization/m23-docs/README.md",
+      "sourceSha256": "575c0cea1a93842a499fdf2f39f773d0b002d52dc25525dd36b3a2c3777c341d",
+      "destinationSha256": "6803a1bf787d1ecd745784a753390a5fbeba68d4f1a400af9db9f9cdf2c61861",
+      "changes": [
+        "Date the M23 route count and blocked-font conditions. Retarget seven distinct documentation drivers without merging smoke checks with interaction or accessibility evidence."
+      ],
+      "retainedQualifications": [
+        "The 123-route smoke count is historical; later records report 125 routes.",
+        "Blocked Google Fonts and fallback-font navigation measurements do not certify actual-font appearance.",
+        "Native Chromium accessibility-tree checks do not certify screen readers."
+      ],
+      "actualRunScope": {
+        "record": "docs/verification/workflow-migration/task-08.json",
+        "sourceTree": "dirty",
+        "baseCommit": "dff4a7fa4eb5c16ecf22de3148ea80b754d6698d",
+        "version": "0.3.2",
+        "classification": "seven required documentation drivers",
+        "evidence": [
+          "docs/verification/workflow-migration/runtime/documentation/fullsite-results.json"
+        ]
+      }
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

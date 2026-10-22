@@ -1,0 +1,157 @@
+{
+  "date": "2026-10-22T07:52:42.562Z",
+  "bun": "1.4.2",
+  "version": "0.3.2",
+  "browserModuleRoot": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-ci-consumer-wwCY7k/node_modules/@acmelabs/design-system-browser/dist",
+  "entrySha256": "3e0fea6ecde76b0efb7c23e9cf28ae59dd6ce6ad293d7d56737cc502d76e5356",
+  "method": "Real typed edits, link navigation to another document, then browser history back. No restore callback is invoked by the test.",
+  "results": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "fresh-document-history-restoration",
+      "before": {
+        "instance": "f88e7e15-c678-4950-9ca7-0dd7c5b44bf4",
+        "pageshow": [
+          false
+        ],
+        "navigation": "navigate",
+        "native": "native-typed-history",
+        "custom": "custom-typed-history",
+        "inner": "custom-typed-history",
+        "form": [
+          [
+            "native",
+            "native-typed-history"
+          ],
+          [
+            "custom",
+            "custom-typed-history"
+          ]
+        ]
+      },
+      "after": {
+        "instance": "775099e0-c23e-4de7-92b3-1a93b55f7c0a",
+        "pageshow": [
+          false
+        ],
+        "navigation": "back_forward",
+        "native": "native-typed-history",
+        "custom": "custom-typed-history",
+        "inner": "custom-typed-history",
+        "form": [
+          [
+            "native",
+            "native-typed-history"
+          ],
+          [
+            "custom",
+            "custom-typed-history"
+          ]
+        ]
+      },
+      "nativeRestored": true,
+      "customRestored": true,
+      "errors": [],
+      "pass": true
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "mode": "fresh-document-history-restoration",
+      "before": {
+        "instance": "3c86dc79-7435-447f-8b59-ef7765a2e17e",
+        "pageshow": [
+          false
+        ],
+        "navigation": "navigate",
+        "native": "native-typed-history",
+        "custom": "custom-typed-history",
+        "inner": "custom-typed-history",
+        "form": [
+          [
+            "native",
+            "native-typed-history"
+          ],
+          [
+            "custom",
+            "custom-typed-history"
+          ]
+        ]
+      },
+      "after": {
+        "instance": "038032a8-b229-4e28-bca9-5749fbf4dea8",
+        "pageshow": [
+          false
+        ],
+        "navigation": "back_forward",
+        "native": "native-typed-history",
+        "custom": "custom-typed-history",
+        "inner": "custom-typed-history",
+        "form": [
+          [
+            "native",
+            "native-typed-history"
+          ],
+          [
+            "custom",
+            "custom-typed-history"
+          ]
+        ]
+      },
+      "nativeRestored": true,
+      "customRestored": true,
+      "errors": [],
+      "pass": true
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "mode": "fresh-document-history-restoration",
+      "before": {
+        "instance": "a3e1f0e6-55c9-47d0-855e-9b90e4fc215c",
+        "pageshow": [
+          false
+        ],
+        "navigation": "navigate",
+        "native": "native-typed-history",
+        "custom": "custom-typed-history",
+        "inner": "custom-typed-history",
+        "form": [
+          [
+            "native",
+            "native-typed-history"
+          ],
+          [
+            "custom",
+            "custom-typed-history"
+          ]
+        ]
+      },
+      "after": {
+        "instance": "43fb4eb3-bed4-49c2-a845-71098fe486e5",
+        "pageshow": [
+          false
+        ],
+        "navigation": "back_forward",
+        "native": "native-typed-history",
+        "custom": "custom-typed-history",
+        "inner": "custom-typed-history",
+        "form": [
+          [
+            "native",
+            "native-typed-history"
+          ],
+          [
+            "custom",
+            "custom-typed-history"
+          ]
+        ]
+      },
+      "nativeRestored": true,
+      "customRestored": true,
+      "errors": [],
+      "pass": true
+    }
+  ]
+}

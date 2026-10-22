@@ -1,0 +1,3657 @@
+{
+  "schema": 1,
+  "auditDate": "2026-10-21",
+  "scope": "Task2 classification: 18 complete alignment reads (13 family files, inventory, migration-plan, proposal-coverage, proposal-questions, terms), plus complete PLAN.md sections2-7 at lines400-1054. No conversions or source edits.",
+  "coverage": {
+    "fullyRead": 18,
+    "totalRequested": 28,
+    "fullyReadBytes": 331407,
+    "remaining": [
+      "notes/alignment/README.md",
+      "notes/alignment/additional-functionality-review.md",
+      "notes/alignment/chakra-pro-review.md",
+      "notes/alignment/phase-1-review.md",
+      "notes/alignment/phase-2-review.md",
+      "notes/alignment/phase-3-review.md",
+      "notes/alignment/release-0.3.0.md",
+      "notes/alignment/release-0.3.1.md",
+      "notes/alignment/release-0.3.2.md",
+      "notes/alignment/remaining-work.md"
+    ],
+    "additionalPartialOwnerRead": {
+      "source": "PLAN.md",
+      "completeSelectedRange": "400-1054",
+      "standingRulesOwner": "rules agent"
+    }
+  },
+  "records": [
+    {
+      "source": "notes/alignment/inventory.md",
+      "classification": "current-approved-system-contract-and-core-layout-with-historical-draft-status",
+      "sourceSha256": "f7d266c6b5f654177ea55b9d0f6219422a82d393daf4f58a0f46877a1d4416d9",
+      "bytes": 60571,
+      "lines": 555,
+      "readCoverage": "read in full; contiguous ranges 1-155, 156-310, 311-455, 456-555",
+      "approval": {
+        "date": "2026-09-20",
+        "by": "Peter",
+        "words": "I approve all proposals",
+        "source": "notes/decisions/inventory-approval.md",
+        "qualification": "Approval preserves complete selected recommendations; runtime/implementation claims require linked acceptance."
+      },
+      "recommendedCurrentOwner": "spec/SPEC-design-system.md",
+      "recommendedHistoricalOwner": "docs/history/systematization/inventory-history.md",
+      "sections": [
+        {
+          "heading": "Design-system inventory",
+          "level": 1,
+          "start": 1,
+          "end": 6,
+          "sha256": "face4e1ae28e65ca9dbd462f4c0c30c65e3d340fbbc023a38da8ff55372e02fb",
+          "classification": "mixed-current-index-and-historical-status",
+          "targets": [
+            "spec/SPEC-design-system.md",
+            "docs/history/systematization/inventory-history.md"
+          ],
+          "treatment": "Preserve 2026-09-20 approval. Replace implementation-gated startup wording with capability status. Current handoff remains docs/STATUS.md; old remaining-work queue is historical."
+        },
+        {
+          "heading": "Complete proposal set",
+          "level": 2,
+          "start": 7,
+          "end": 28,
+          "sha256": "263aa43fd3f439cf3296a4105a976ccca46326a911a86ba288536cba0b38a575",
+          "classification": "current-approved-contract-index",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Keep thirteen family owners, 91 entries and seven doc units as approval scope, not current element count. Route each family to spec/SPEC-<existing-slug>.md; coverage to spec/component-coverage.md; decisions to docs/design/systematization-decisions.md."
+        },
+        {
+          "heading": "Shared architecture carried forward",
+          "level": 2,
+          "start": 29,
+          "end": 30,
+          "sha256": "6046a4ff4484a58c4636fae320345850fbe8a71a5c0a68f6940a622e15c3ade5",
+          "classification": "mixed-current-architecture-contract-and-dated-research",
+          "targets": [
+            "spec/SPEC-design-system.md",
+            "docs/history/systematization/inventory-history.md"
+          ],
+          "treatment": "Keep confirmed responsibilities and acceptance requirements. Move scratch counts, feasibility-only statements and Still to specify or Before Phase5/Phase6 sequencing into dated history. M02/M05/M06 later completion resolves implementation staging; source-specific verification remains bounded."
+        },
+        {
+          "heading": "Overlay lifetime, placement and coordination",
+          "level": 3,
+          "start": 31,
+          "end": 40,
+          "sha256": "2c2a12423c1749029674f25366fb97a09c86c608fd900732039482d2d2b3eba3",
+          "classification": "mixed-current-architecture-contract-and-dated-research",
+          "targets": [
+            "spec/SPEC-design-system.md",
+            "docs/history/systematization/inventory-history.md"
+          ],
+          "treatment": "Keep confirmed responsibilities and acceptance requirements. Move scratch counts, feasibility-only statements and Still to specify or Before Phase5/Phase6 sequencing into dated history. M02/M05/M06 later completion resolves implementation staging; source-specific verification remains bounded."
+        },
+        {
+          "heading": "Canonical state and public properties",
+          "level": 3,
+          "start": 41,
+          "end": 50,
+          "sha256": "8e4c6f9265669333e1c1638739d7a3b4f2e279c25a68bd96063c12531cc73fca",
+          "classification": "mixed-current-architecture-contract-and-dated-research",
+          "targets": [
+            "spec/SPEC-design-system.md",
+            "docs/history/systematization/inventory-history.md"
+          ],
+          "treatment": "Keep confirmed responsibilities and acceptance requirements. Move scratch counts, feasibility-only statements and Still to specify or Before Phase5/Phase6 sequencing into dated history. M02/M05/M06 later completion resolves implementation staging; source-specific verification remains bounded."
+        },
+        {
+          "heading": "Native form mechanics",
+          "level": 3,
+          "start": 51,
+          "end": 60,
+          "sha256": "2d9089c9ef055b3a5980048ef21111c3ca00f7d0175d47396249120ca1319339",
+          "classification": "mixed-current-architecture-contract-and-dated-research",
+          "targets": [
+            "spec/SPEC-design-system.md",
+            "docs/history/systematization/inventory-history.md"
+          ],
+          "treatment": "Keep confirmed responsibilities and acceptance requirements. Move scratch counts, feasibility-only statements and Still to specify or Before Phase5/Phase6 sequencing into dated history. M02/M05/M06 later completion resolves implementation staging; source-specific verification remains bounded."
+        },
+        {
+          "heading": "Effective theme and preference storage",
+          "level": 3,
+          "start": 61,
+          "end": 68,
+          "sha256": "467a294b6bcb21ef3ba5f0a7b47271433879370edccc72e4a939ec05921d67b1",
+          "classification": "mixed-current-architecture-contract-and-dated-research",
+          "targets": [
+            "spec/SPEC-design-system.md",
+            "docs/history/systematization/inventory-history.md"
+          ],
+          "treatment": "Keep confirmed responsibilities and acceptance requirements. Move scratch counts, feasibility-only statements and Still to specify or Before Phase5/Phase6 sequencing into dated history. M02/M05/M06 later completion resolves implementation staging; source-specific verification remains bounded."
+        },
+        {
+          "heading": "Style production",
+          "level": 3,
+          "start": 69,
+          "end": 78,
+          "sha256": "134708173f77223c3da8599926186e853ff623ebeaa6a64aed868917088a5892",
+          "classification": "mixed-current-architecture-contract-and-dated-research",
+          "targets": [
+            "spec/SPEC-design-system.md",
+            "docs/history/systematization/inventory-history.md"
+          ],
+          "treatment": "Keep confirmed responsibilities and acceptance requirements. Move scratch counts, feasibility-only statements and Still to specify or Before Phase5/Phase6 sequencing into dated history. M02/M05/M06 later completion resolves implementation staging; source-specific verification remains bounded."
+        },
+        {
+          "heading": "Content and interaction architecture recommendations",
+          "level": 2,
+          "start": 79,
+          "end": 85,
+          "sha256": "64d86c7e0fe1af2b421e68237da9eca52a6849033ed4dab9140f6466b19bd1ae",
+          "classification": "mixed-current-owner-boundary-and-preimplementation-recommendation",
+          "targets": [
+            "spec/SPEC-design-system.md",
+            "docs/history/systematization/inventory-history.md"
+          ],
+          "treatment": "Preserve assigned-slot content tracking and temporary-interaction cleanup intent. Record original recommendation status and later M06 completion; do not reactivate a global gesture-engine proposal."
+        },
+        {
+          "heading": "Component review order",
+          "level": 2,
+          "start": 86,
+          "end": 93,
+          "sha256": "8f86c2a6d3b8e0187f91e08faa7b34b4cbc3f072c04a613fe8f7aa46724caa10",
+          "classification": "completed-workflow-history",
+          "targets": [
+            "docs/history/systematization/inventory-history.md"
+          ],
+          "treatment": "Retain original family review order/approval sequence as history; current plugin workflow and active tasks replace its imperative instructions."
+        },
+        {
+          "heading": "C-RESP: Shared responsive convention",
+          "level": 2,
+          "start": 94,
+          "end": 103,
+          "sha256": "554ef4fd8bee98a5540520f359eac84a79134e90f671c115c4dabedbf35fce05",
+          "classification": "current-approved-contract",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Retain full approved interface, defaults, ownership, acceptance and linked provenance. Replace dated proposal status without deleting unverified requirements."
+        },
+        {
+          "heading": "C-SPACE: Shared layout and spacing properties",
+          "level": 2,
+          "start": 104,
+          "end": 115,
+          "sha256": "764ca3f4933337cc6ad23eb4bb1dffe4a658c5c4baeecbc7c8d8b79f8dc3d993",
+          "classification": "current-approved-contract",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Retain full approved interface, defaults, ownership, acceptance and linked provenance. Replace dated proposal status without deleting unverified requirements."
+        },
+        {
+          "heading": "C-SIZE: Numeric dimensions and independent theme values",
+          "level": 2,
+          "start": 116,
+          "end": 121,
+          "sha256": "51a7e296fbfcf240b645c348a76485f83366f96444517d08dc82bdc1b04fb4d7",
+          "classification": "current-approved-contract",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Retain full approved interface, defaults, ownership, acceptance and linked provenance. Replace dated proposal status without deleting unverified requirements."
+        },
+        {
+          "heading": "C-AS: Native element semantics",
+          "level": 2,
+          "start": 122,
+          "end": 129,
+          "sha256": "a768ce54d1b00941a263e92e82de0b8fc7fcf0541a397750254edf659c44b28d",
+          "classification": "current-approved-contract",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Retain full approved interface, defaults, ownership, acceptance and linked provenance. Replace dated proposal status without deleting unverified requirements."
+        },
+        {
+          "heading": "Core layout proposal for review",
+          "level": 2,
+          "start": 130,
+          "end": 135,
+          "sha256": "3d7b7f6759bef9b12a4f2b24cde4fe693a92d0151ee9448232235588468d5b6b",
+          "classification": "mixed-current-approved-contract-and-draft-provenance",
+          "targets": [
+            "spec/SPEC-design-system.md",
+            "docs/history/systematization/inventory-history.md"
+          ],
+          "treatment": "Keep the final selected interface and qualifications. Preserve rejected last-valid rollback, resolved explicit helper clearing, reference-derived overflow and original gates in historical rationale. Current acceptance stays required; completed phase permissions do not survive as instructions."
+        },
+        {
+          "heading": "Which layout element to use",
+          "level": 3,
+          "start": 136,
+          "end": 148,
+          "sha256": "67450281b3aa7ca71c5890c5d2e199ad2e45f5556a09dfbe15f6b1f241159cc2",
+          "classification": "current-approved-contract",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Retain full approved interface, defaults, ownership, acceptance and linked provenance. Replace dated proposal status without deleting unverified requirements."
+        },
+        {
+          "heading": "Shared value and input contract",
+          "level": 3,
+          "start": 149,
+          "end": 168,
+          "sha256": "f6157b14841d6985ac2889928749095b0a79bcc5d28671af3bbd82946af667b7",
+          "classification": "mixed-current-approved-contract-and-draft-provenance",
+          "targets": [
+            "spec/SPEC-design-system.md",
+            "docs/history/systematization/inventory-history.md"
+          ],
+          "treatment": "Keep the final selected interface and qualifications. Preserve rejected last-valid rollback, resolved explicit helper clearing, reference-derived overflow and original gates in historical rationale. Current acceptance stays required; completed phase permissions do not survive as instructions."
+        },
+        {
+          "heading": "Responsive authoring proposal",
+          "level": 3,
+          "start": 169,
+          "end": 189,
+          "sha256": "9719d848463835bd975cb90e49c43f4614e61d233be139eec2df5dbe28558a18",
+          "classification": "mixed-current-approved-contract-and-draft-provenance",
+          "targets": [
+            "spec/SPEC-design-system.md",
+            "docs/history/systematization/inventory-history.md"
+          ],
+          "treatment": "Keep the final selected interface and qualifications. Preserve rejected last-valid rollback, resolved explicit helper clearing, reference-derived overflow and original gates in historical rationale. Current acceptance stays required; completed phase permissions do not survive as instructions."
+        },
+        {
+          "heading": "Common box properties",
+          "level": 3,
+          "start": 190,
+          "end": 193,
+          "sha256": "ffea132b30a2428ac94b6a34950853b957a60558e2380c5918dfe2acf7e90e3d",
+          "classification": "current-approved-contract",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Retain full approved interface, defaults, ownership, acceptance and linked provenance. Replace dated proposal status without deleting unverified requirements."
+        },
+        {
+          "heading": "Candidate property table",
+          "level": 4,
+          "start": 194,
+          "end": 226,
+          "sha256": "6590023ad44b0b4dbe0468fb132aac768beaddcf7a97c12275e30a037fa16486",
+          "classification": "current-approved-contract",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Retain full approved interface, defaults, ownership, acceptance and linked provenance. Replace dated proposal status without deleting unverified requirements."
+        },
+        {
+          "heading": "Semantics, state, events and lifecycle",
+          "level": 3,
+          "start": 227,
+          "end": 238,
+          "sha256": "0e30a7760ceeddb2d5a1d996edb5321eac5b4d433a4e25d352c95faaa5fecdbe",
+          "classification": "current-approved-contract",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Retain full approved interface, defaults, ownership, acceptance and linked provenance. Replace dated proposal status without deleting unverified requirements."
+        },
+        {
+          "heading": "HTML, Lit and React authoring",
+          "level": 3,
+          "start": 239,
+          "end": 290,
+          "sha256": "be3a375bdbb4f889b34129242384611ebe66c0279fab3ad733d6fa5f0ed9fe74",
+          "classification": "mixed-current-approved-contract-and-draft-provenance",
+          "targets": [
+            "spec/SPEC-design-system.md",
+            "docs/history/systematization/inventory-history.md"
+          ],
+          "treatment": "Keep the final selected interface and qualifications. Preserve rejected last-valid rollback, resolved explicit helper clearing, reference-derived overflow and original gates in historical rationale. Current acceptance stays required; completed phase permissions do not survive as instructions."
+        },
+        {
+          "heading": "Review choices and approval gates",
+          "level": 3,
+          "start": 291,
+          "end": 307,
+          "sha256": "98bf967b010852e4b15794759883142df044eda83b301d0f9c07884160be6abc",
+          "classification": "mixed-current-approved-contract-and-draft-provenance",
+          "targets": [
+            "spec/SPEC-design-system.md",
+            "docs/history/systematization/inventory-history.md"
+          ],
+          "treatment": "Keep the final selected interface and qualifications. Preserve rejected last-valid rollback, resolved explicit helper clearing, reference-derived overflow and original gates in historical rationale. Current acceptance stays required; completed phase permissions do not survive as instructions."
+        },
+        {
+          "heading": "L-01: Box",
+          "level": 2,
+          "start": 308,
+          "end": 323,
+          "sha256": "5548a08974cf9addc5de0effa6a8f1f04ae0a8fdf61753393adfd26004ebd152",
+          "classification": "current-approved-contract",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Retain full approved interface, defaults, ownership, acceptance and linked provenance. Replace dated proposal status without deleting unverified requirements."
+        },
+        {
+          "heading": "L-02: Stack family",
+          "level": 2,
+          "start": 324,
+          "end": 355,
+          "sha256": "a483415b19a8dc109a006c4763ed7941b166cd42c2275a8fdabbf97285775188",
+          "classification": "current-approved-contract",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Retain full approved interface, defaults, ownership, acceptance and linked provenance. Replace dated proposal status without deleting unverified requirements."
+        },
+        {
+          "heading": "L-03: Simple Grid",
+          "level": 2,
+          "start": 356,
+          "end": 389,
+          "sha256": "1a93d67cf00b39d0d459f0288422a161f32d1178150baa49482d36c704497f4c",
+          "classification": "current-approved-contract",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Retain full approved interface, defaults, ownership, acceptance and linked provenance. Replace dated proposal status without deleting unverified requirements."
+        },
+        {
+          "heading": "L-04: Flex",
+          "level": 2,
+          "start": 390,
+          "end": 413,
+          "sha256": "339370d62bb1ee25d41607c9acedf2636c73c77cb871a4a6794e53e43cf6d864",
+          "classification": "current-approved-contract",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Retain full approved interface, defaults, ownership, acceptance and linked provenance. Replace dated proposal status without deleting unverified requirements."
+        },
+        {
+          "heading": "L-05: Grid",
+          "level": 2,
+          "start": 414,
+          "end": 434,
+          "sha256": "dde43fa0fb5769c8df86b38ac12867133eec1115ddf6b7a092ac03a79066650c",
+          "classification": "current-approved-contract",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Retain full approved interface, defaults, ownership, acceptance and linked provenance. Replace dated proposal status without deleting unverified requirements."
+        },
+        {
+          "heading": "T-01: Text",
+          "level": 2,
+          "start": 435,
+          "end": 438,
+          "sha256": "a3741d4d95c96a919faf5f2e306546f5968084da52f6850e37939206de69ee3d",
+          "classification": "old-anchor-routing-only",
+          "targets": [
+            "spec/SPEC-typography.md#shared-typography-interface"
+          ],
+          "treatment": "Rewrite every incoming old anchor to its canonical typography owner. These two redirect stubs do not become duplicate partial specifications."
+        },
+        {
+          "heading": "T-02: Heading",
+          "level": 2,
+          "start": 439,
+          "end": 442,
+          "sha256": "a52e6fa61e644dc82db8bd24e5db588d99685758e4c42aed2a14a7398f156894",
+          "classification": "old-anchor-routing-only",
+          "targets": [
+            "spec/SPEC-typography.md#shared-typography-interface"
+          ],
+          "treatment": "Rewrite every incoming old anchor to its canonical typography owner. These two redirect stubs do not become duplicate partial specifications."
+        },
+        {
+          "heading": "G-01: Group",
+          "level": 2,
+          "start": 443,
+          "end": 446,
+          "sha256": "95758c45e0b6a78c8828bb75834e3e3872dbd11c4ae3237e7aafbc56972eea6d",
+          "classification": "current-approved-contract-with-stale-gate",
+          "targets": [
+            "spec/SPEC-design-system.md",
+            "docs/history/systematization/inventory-history.md"
+          ],
+          "treatment": "Keep complete Group contract. Replace implementation-remains-gated text with dated approval/implementation references; M07 completed protocol while later control families completed participation."
+        },
+        {
+          "heading": "Properties and defaults",
+          "level": 3,
+          "start": 447,
+          "end": 466,
+          "sha256": "8f4eea435ea55dfe05d3296f2429b3e9b7b580fa801eda1ee68b2a09bdce9b4e",
+          "classification": "current-approved-contract",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Retain full approved interface, defaults, ownership, acceptance and linked provenance. Replace dated proposal status without deleting unverified requirements."
+        },
+        {
+          "heading": "Compatible defaults and membership",
+          "level": 3,
+          "start": 467,
+          "end": 484,
+          "sha256": "829a7fafcc51d8888389c2995a0af91a913f1c02d4a1446647d604b2fb25e70a",
+          "classification": "current-approved-contract",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Retain full approved interface, defaults, ownership, acceptance and linked provenance. Replace dated proposal status without deleting unverified requirements."
+        },
+        {
+          "heading": "Border, corners, focus and slots",
+          "level": 3,
+          "start": 485,
+          "end": 505,
+          "sha256": "960e98c4f84af6aaceb890e2c9953f273259fdf33ea6462274871c868cacab6a",
+          "classification": "current-approved-contract",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Retain full approved interface, defaults, ownership, acceptance and linked provenance. Replace dated proposal status without deleting unverified requirements."
+        },
+        {
+          "heading": "Composition examples and boundaries",
+          "level": 3,
+          "start": 506,
+          "end": 548,
+          "sha256": "75cbac4d00e8ff7a8f8e6c6aca35ca91045c63b5030000d26846049b973deb35",
+          "classification": "current-approved-contract",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Retain full approved interface, defaults, ownership, acceptance and linked provenance. Replace dated proposal status without deleting unverified requirements."
+        },
+        {
+          "heading": "Acceptance and dependencies",
+          "level": 3,
+          "start": 549,
+          "end": 555,
+          "sha256": "8ac8240b47ba82d5c4cb8c3a5d4f51b34ff358c8717c2b1020b1fdf4a9b07ad2",
+          "classification": "current-approved-contract",
+          "targets": [
+            "spec/SPEC-design-system.md"
+          ],
+          "treatment": "Retain full approved interface, defaults, ownership, acceptance and linked provenance. Replace dated proposal status without deleting unverified requirements."
+        }
+      ],
+      "mustPreserve": [
+        "C-RESP five names, exact rem boundaries, native font bases, half-open ranges and startup-only configuration.",
+        "C-SPACE complete 34 positive spacing keys plus zero, signed-domain constraints, independent size category and declared property order.",
+        "All 77 common style properties, field-specific grammar/arity, host/root target and absence/default rules.",
+        "Real host/native root geometry, valid nine-tag structural choices and nonduplicated accessibility ownership.",
+        "Explicit styleInputs({}) clearing, supplied-key ownership, later render reassertion and authored current CSS semantics.",
+        "SimpleGrid component-wide minChildWidth mode precedence, zero normalization and no automatic clamp; skipped responsive branches do not fall back to columns.",
+        "Stack visual-order separators and per-side main gap, no cross-line dividers and raw-text diagnostic.",
+        "Group compatible participant matrix, explicit child precedence, nested reset, nonmember boundaries, no CSS-order attachment support and retained author-owned children.",
+        "All examples, acceptance combinations, source limits and named deviations with correct dated labels."
+      ],
+      "laterResolutions": [
+        "M02 resolves CSS compiler/layout production; M05 resolves state/theme/style helpers; M06 resolves content/form/interaction/overlay mechanism implementation.",
+        "The explicit helper clearing resolution dated 2026-09-21 supersedes earlier expression-removal cleanup.",
+        "R01 foundations resolves malformed structured HTML behavior; R04-R06 contracts resolve Group child appearance subsets.",
+        "M07 completes core layout protocol, with action/card/input integrations completed by later families."
+      ],
+      "unresolvedOrConditionalFollowups": [
+        "Subgrid through retained host/root is explicitly not promised; feasibility evidence is needed before advertising support.",
+        "Any current implementation disagreement with approved style/geometry/participation requirements needs a visible issue, not silent spec weakening.",
+        "Do not infer complete actual-platform accessibility from source-tag or local mechanism checks."
+      ],
+      "crossReferenceRequirements": [
+        "Update all incoming C-RESP/C-SPACE/C-SIZE/C-AS/core-layout/Group anchors.",
+        "Redirect old T-01/T-02 anchors to spec/SPEC-typography.md rather than retaining forwarding stubs.",
+        "Keep historical scratch evidence bytes under docs/verification and current contracts under spec."
+      ]
+    },
+    {
+      "source": "notes/alignment/inventory/actions.md",
+      "classification": "current-approved-contract-with-dated-progress-and-rationale",
+      "sourceSha256": "135faa6f5c0c057c915bf4cce6a5b900d8f67193f578dcde4e8898d3a2a74cfe",
+      "bytes": 12228,
+      "lines": 83,
+      "readCoverage": "read in full",
+      "approval": {
+        "date": "2026-09-20",
+        "by": "Peter",
+        "scope": "Whole proposal set; stated recommendations selected",
+        "source": "notes/decisions/inventory-approval.md",
+        "qualification": "Design approval is distinct from runtime verification; later plan approval is recorded separately."
+      },
+      "recommendedCurrentOwner": "spec/SPEC-actions.md",
+      "contractScope": "Buttons, copy/split/toggle actions, generated icons, Avatar, passive labels and Theme Switcher.",
+      "sections": [
+        {
+          "heading": "A-01 Button",
+          "start": 7,
+          "end": 16,
+          "sha256": "ff6e844d6a15794c7526023fad306c6c5062d2209677a3afc00b93d4c238a9a1"
+        },
+        {
+          "heading": "A-02 Icon Button",
+          "start": 17,
+          "end": 20,
+          "sha256": "b20dc5fc8652430dc72e5fa2a9996047ee0640759d9f0464b834747b07c99695"
+        },
+        {
+          "heading": "A-03 Toggle Button",
+          "start": 21,
+          "end": 24,
+          "sha256": "65b929713e6efece86aea094f3a1a849d5bb26a77c0d3f0a2e42f5004e282f27"
+        },
+        {
+          "heading": "A-04 Split Button",
+          "start": 25,
+          "end": 30,
+          "sha256": "c00b9d4c4a99d3cca018550e2596d3ca19257589ccc45b4e7de1269c9b736f00"
+        },
+        {
+          "heading": "A-05 Copy Button",
+          "start": 31,
+          "end": 36,
+          "sha256": "8dfa88f0441cf81c73a1630592699550f7ee009ac26667b2695cbf3be46282cb"
+        },
+        {
+          "heading": "A-06 Per-icon elements and Icon Tile",
+          "start": 37,
+          "end": 46,
+          "sha256": "fe05c0739013cd8363de658f50ec1040f556811fb0177860092888a830e1676f"
+        },
+        {
+          "heading": "A-07 Avatar",
+          "start": 47,
+          "end": 52,
+          "sha256": "83416b36fe2df187c619bf6f9e9ab437f34dac9360973445a99de99981db44df"
+        },
+        {
+          "heading": "A-08 Avatar Group",
+          "start": 53,
+          "end": 60,
+          "sha256": "c37e3e712313d6bb9bcac7de3e8632f5f5fa614e2ef8e4ac3b8b5fff39136840"
+        },
+        {
+          "heading": "A-09 Badge, Pill and Tag",
+          "start": 61,
+          "end": 70,
+          "sha256": "556e7352351838960f3129100ba4dedae478ce7037b521bb954dc60372690847"
+        },
+        {
+          "heading": "A-10 Theme Switcher",
+          "start": 71,
+          "end": 74,
+          "sha256": "2d2f549612190af6e5aeeaf75ee45cfc01466ba0f7f9a3ee07022b632d210f3e"
+        },
+        {
+          "heading": "Group compatibility resolved with these entries",
+          "start": 75,
+          "end": 80,
+          "sha256": "76abdddb7f028fb53589be059087c9efcb9a483ee096523da522fac26f6ce015"
+        },
+        {
+          "heading": "M13 Split Button engineering resolution — 2026-09-22",
+          "start": 81,
+          "end": 84,
+          "sha256": "2786af36ca5d90f209767704c68524f19fc502214ce80d6702a36d963e3481f9"
+        }
+      ],
+      "sectionsRequiringSplit": [
+        {
+          "section": "M13 Split Button engineering resolution — 2026-09-22",
+          "treatment": "Fold resolved interface into current Split Button contract with dated provenance; preserve original checkpoint as history.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        },
+        {
+          "section": "Group compatibility resolved with these entries",
+          "treatment": "Retain family-specific inherited size/variant intersections and explicit child ownership; remove complete-proposal-for-review status.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        }
+      ],
+      "laterResolutions": [
+        "M13 Split Button Item inherits complete Menu Item choices/description/native links; absent required menuLabel disables its secondary trigger.",
+        "Button default/primary are one retained default treatment; old flags/aliases disappear.",
+        "Icon fallback is explicit and offline; configured family/filled state and pinned catalog remain selected."
+      ],
+      "unresolvedOrConditionalFollowups": [
+        "Full catalog and package delivery/identity requirements remain; no fresh catalog acceptance claim from this source.",
+        "Actual form submitter identity and override behavior require exact browser evidence."
+      ],
+      "conversionRules": [
+        "Keep every input/default/slot/part/method/event and stated exclusion, plus acceptance combinations and provenance.",
+        "Retain approved intent when implementation diverges; record the disagreement instead of deleting the requirement.",
+        "Rephrase proposed/currently-not-implemented/Phase-5-pending wording using original approval and dated checkpoints. Do not present this audit as new runtime verification."
+      ],
+      "evidenceLinks": [
+        "../../decisions/inventory-approval.md",
+        "foundations.md",
+        "../evidence/current-public-interfaces-2026-09-20.json",
+        "../../decisions/material-symbols-icons.md",
+        "../../decisions/toggle-button.md",
+        "../../decisions/avatar-group.md",
+        "../../decisions/compose-the-copy-button.md",
+        "../../decisions/execution-delegation.md#menu-composition-and-completion--2026-09-22"
+      ]
+    },
+    {
+      "source": "notes/alignment/inventory/data-displays.md",
+      "classification": "current-approved-contract-with-dated-progress-and-rationale",
+      "sourceSha256": "af949ae7e3edf0692ad7855010f8bd0a15e8cb59eb9fee296f11ec36e2976fd7",
+      "bytes": 14054,
+      "lines": 109,
+      "readCoverage": "read in full",
+      "approval": {
+        "date": "2026-09-20",
+        "by": "Peter",
+        "scope": "Whole proposal set; stated recommendations selected",
+        "source": "notes/decisions/inventory-approval.md",
+        "qualification": "Design approval is distinct from runtime verification; later plan approval is recorded separately."
+      },
+      "recommendedCurrentOwner": "spec/SPEC-data-displays.md",
+      "contractScope": "Table complete consumer capabilities, controlled Pagination, Chart/Sparkline/Legend and worker-backed Flow viewer.",
+      "sections": [
+        {
+          "heading": "D-01 Table",
+          "start": 7,
+          "end": 16,
+          "sha256": "1d15ab5b15f9638397146e64ab0472b3a1ef655a5854323da7b8199f71dc3f07"
+        },
+        {
+          "heading": "Complete consumer capability contract",
+          "start": 17,
+          "end": 40,
+          "sha256": "673dc84a2c12e4a112371b3bcc4beba5bb1b1352f83678dbbb9997d542b580e2"
+        },
+        {
+          "heading": "Virtualization and framework ownership",
+          "start": 41,
+          "end": 48,
+          "sha256": "e9989aa12135b5e4fa23028c0fb72b373f7c8448304931ee22590074efc7a463"
+        },
+        {
+          "heading": "D-02 Results Pagination",
+          "start": 49,
+          "end": 60,
+          "sha256": "a69fe737c6039250dcba432d368f8cc057ad1629c7fc252a31afcf360077ff51"
+        },
+        {
+          "heading": "D-03 Chart",
+          "start": 61,
+          "end": 68,
+          "sha256": "98654e140daa1b1e0ca91b434917d1788583da9b5273badd32db7e8d2761e5fc"
+        },
+        {
+          "heading": "D-04 Sparkline and Legend",
+          "start": 69,
+          "end": 76,
+          "sha256": "3a6660f90b7296134e82385a4aeff27ec7bbe2d62cfa67fd70ca42ae194a746f"
+        },
+        {
+          "heading": "D-05 Flow Diagram",
+          "start": 77,
+          "end": 90,
+          "sha256": "02b4ed30aaad05bcb4ae29f8d764148048761bdb374375eaa0400c6f0e7a2fd2"
+        },
+        {
+          "heading": "Complete consumer example shape",
+          "start": 91,
+          "end": 110,
+          "sha256": "8cbfa855fea6d0d8798ad3988581144d7da17e4d4388fdc770bb86bbd10777f3"
+        }
+      ],
+      "sectionsRequiringSplit": [
+        {
+          "section": "Complete consumer example shape",
+          "treatment": "Retain intended markup and native ownership; stale current-package-does-not-implement statement becomes dated historical status.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        },
+        {
+          "section": "D-01 Table",
+          "treatment": "Preserve all 17 capabilities and seven combination matrices; concise conversion must not collapse them into a generic compatible-with-TanStack claim.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        }
+      ],
+      "laterResolutions": [
+        "Table owns native-content appearance/scrolling, not rows, column models, virtualizers or worker recovery.",
+        "Optional Pagination Position and Page Size parts are approved Q15; application owns reset/loading/data.",
+        "Flow is viewer-only with actual separate ELK worker, keyed author controls, bounded relayout and cancellation. No editing/execution or fixed-position routing guarantee."
+      ],
+      "unresolvedOrConditionalFollowups": [
+        "No universal future-version Table compatibility promise.",
+        "Flow initial 100-node evidence is not a general limit/budget; larger stress evidence must state tested sizes.",
+        "Native/grid table styling still requires browser and assistive checks."
+      ],
+      "conversionRules": [
+        "Keep every input/default/slot/part/method/event and stated exclusion, plus acceptance combinations and provenance.",
+        "Retain approved intent when implementation diverges; record the disagreement instead of deleting the requirement.",
+        "Rephrase proposed/currently-not-implemented/Phase-5-pending wording using original approval and dated checkpoints. Do not present this audit as new runtime verification."
+      ],
+      "evidenceLinks": [
+        "../../decisions/inventory-approval.md",
+        "../../decisions/tanstack-table-compatibility.md",
+        "../../decisions/flow-diagram.md",
+        "../../analysis/codebase-systematization.md#capability-checklist-for-later-acceptance",
+        "../../decisions/results-pagination.md",
+        "../../analysis/documentation-site.md#chakra-pro-pagination-review",
+        "../../decisions/stat-family.md",
+        "../../decisions/flow-diagram.md"
+      ]
+    },
+    {
+      "source": "notes/alignment/inventory/documentation-tooling.md",
+      "classification": "current-approved-contract-with-dated-progress-and-rationale",
+      "sourceSha256": "d76a62accd8d3d464e8316068b6cc28782e79fb72f138f51d3e824f7485be4ec",
+      "bytes": 10470,
+      "lines": 75,
+      "readCoverage": "read in full",
+      "approval": {
+        "date": "2026-09-20",
+        "by": "Peter",
+        "scope": "Whole proposal set; stated recommendations selected",
+        "source": "notes/decisions/inventory-approval.md",
+        "qualification": "Design approval is distinct from runtime verification; later plan approval is recorded separately."
+      },
+      "recommendedCurrentOwner": "spec/SPEC-documentation-tooling.md",
+      "contractScope": "Coordinated delivery, complete API metadata, seven internal documentation units, executable recipes, consumer skills, MCP and read-only inspector.",
+      "sections": [
+        {
+          "heading": "Package and API publication",
+          "start": 7,
+          "end": 16,
+          "sha256": "9c5aef27dfe6f55a2e4066a7be4a33a9b8644c411ca48b945f474df9fc0a41de"
+        },
+        {
+          "heading": "Standard page layout",
+          "start": 17,
+          "end": 22,
+          "sha256": "b61e980a4179610ee032c1d627f9f4f5895480d8701d42dd3be710467104ea93"
+        },
+        {
+          "heading": "Documentation units",
+          "start": 23,
+          "end": 38,
+          "sha256": "5feff6c04844606e6090c2daf1cf05e8974623f78eaf3a40371fe76a4e72b784"
+        },
+        {
+          "heading": "Recipes and examples as tested artifacts",
+          "start": 39,
+          "end": 44,
+          "sha256": "2637e4b32622f84009bb734e324a48292b0325e7131bd33394584c67557b9713"
+        },
+        {
+          "heading": "Consumer skills and Intent",
+          "start": 45,
+          "end": 50,
+          "sha256": "c4c5274744238664fcc36db5baebf9e2108993c8bb64220d765a717b3d6f9ef4"
+        },
+        {
+          "heading": "Documentation MCP",
+          "start": 51,
+          "end": 60,
+          "sha256": "1c86084bc5bcf105f54017f1bb08f12bbbed435fbacfd656a1448b58b0f814fb"
+        },
+        {
+          "heading": "Inspector",
+          "start": 61,
+          "end": 70,
+          "sha256": "c9d287716c3dac2659641bfbcc44775681ed1e2fe38c7f62dbf547968c12e2f8"
+        },
+        {
+          "heading": "Migration and verification ownership",
+          "start": 71,
+          "end": 76,
+          "sha256": "3f95e42b996b04fb2f1f3209a0252c81ca3a86ca15d7db49d2a4c4b1a896f77a"
+        }
+      ],
+      "sectionsRequiringSplit": [
+        {
+          "section": "Package and API publication",
+          "treatment": "Reconcile later browser package decision without losing original four-package rationale. Current package facts go in current spec; publication status belongs releases/STATUS.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        },
+        {
+          "section": "Migration and verification ownership",
+          "treatment": "Completed Phase 5 ordering/history goes to completed plan/history. Compatible stack and generated-source ownership goes to docs/development and shared verification guidance once. No-publication-authorization remains dated grant scope, not a new global refusal.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        },
+        {
+          "section": "Consumer skills and Intent",
+          "treatment": "Current consumer skill scope remains separate from removed maintainer .agents/skills. Do not delete published skills during workflow migration.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        }
+      ],
+      "laterResolutions": [
+        "2026-10-20 browser-distribution-package decision adds coordinated fifth browser delivery package to originally proposed four packages. Core and browser share one source/build; core excludes browser-only output.",
+        "All archives have 60000-entry budget, immutable old release bytes and exact definition/registration declaration behavior from later decision.",
+        "Inspector remains read-only, scoped, bounded and opt-in; MCP stays local packaged read-only documentation service."
+      ],
+      "unresolvedOrConditionalFollowups": [
+        "Consumer skill efficacy requires artifact evaluations; structural package/Intent loading is insufficient.",
+        "Approval does not grant new release/publication permission."
+      ],
+      "conversionRules": [
+        "Keep every input/default/slot/part/method/event and stated exclusion, plus acceptance combinations and provenance.",
+        "Retain approved intent when implementation diverges; record the disagreement instead of deleting the requirement.",
+        "Rephrase proposed/currently-not-implemented/Phase-5-pending wording using original approval and dated checkpoints. Do not present this audit as new runtime verification."
+      ],
+      "evidenceLinks": [
+        "../../decisions/inventory-approval.md",
+        "../../analysis/documentation-site.md",
+        "../../analysis/agent-tooling.md",
+        "../../analysis/developer-tooling.md",
+        "../../decisions/react-integration.md",
+        "../proposal-coverage.md"
+      ]
+    },
+    {
+      "source": "notes/alignment/inventory/foundations.md",
+      "classification": "current-approved-contract-with-dated-progress-and-rationale",
+      "sourceSha256": "539f9d7620e439c65d7d2d55ec206f3e3f5f0e73c923c483bd1520f1c69b2769",
+      "bytes": 21260,
+      "lines": 121,
+      "readCoverage": "read in full",
+      "approval": {
+        "date": "2026-09-20",
+        "by": "Peter",
+        "scope": "Whole proposal set; stated recommendations selected",
+        "source": "notes/decisions/inventory-approval.md",
+        "qualification": "Design approval is distinct from runtime verification; later plan approval is recorded separately."
+      },
+      "recommendedCurrentOwner": "spec/SPEC-foundations.md",
+      "contractScope": "Cross-family naming, state, native content, events, forms, theme, responsive styles, motion and public tokens.",
+      "sections": [
+        {
+          "heading": "Contract used by every entry",
+          "start": 7,
+          "end": 35,
+          "sha256": "2245b26ecee21ae62cf0facde656729c46748ed6073032f0e9da76924c0be4c4"
+        },
+        {
+          "heading": "Public events",
+          "start": 36,
+          "end": 56,
+          "sha256": "733a32f945d2c8330de32101f70ffb0c616e8d12e620bc73b807edddb9ffcc62"
+        },
+        {
+          "heading": "Forms and focus",
+          "start": 57,
+          "end": 66,
+          "sha256": "169982e384aeccbe83ed9e22ffb23f6569857c7480ac537343069785b90cb9e8"
+        },
+        {
+          "heading": "Theme scope and customization",
+          "start": 67,
+          "end": 81,
+          "sha256": "b0addfac530be2c0965e201f4b92371fafda21483e5dbd1fd4383551653fdfb0"
+        },
+        {
+          "heading": "Responsive layout and styles",
+          "start": 82,
+          "end": 91,
+          "sha256": "af7479d0ef0e8c4e4934cfb12e162a943182942c041b3a064ede5e1bb287f410"
+        },
+        {
+          "heading": "Motion, shapes and indicators",
+          "start": 92,
+          "end": 99,
+          "sha256": "a4de5a44b348e4701edc3fff28785b13040853213708d48dcfc966d2b1621864"
+        },
+        {
+          "heading": "Verification and implementation boundaries",
+          "start": 100,
+          "end": 105,
+          "sha256": "13f486c5b071aaa8f92c6b4c7aaf9e1aec2813ff5abc242a9cf93cc85e560929"
+        },
+        {
+          "heading": "Convention audit and before/after examples",
+          "start": 106,
+          "end": 122,
+          "sha256": "cb3c06f7c7ed61d8ad63af84617a1a2990bcbc22789b3717ed4dca111e6174c5"
+        }
+      ],
+      "sectionsRequiringSplit": [
+        {
+          "section": "Verification and implementation boundaries",
+          "treatment": "Current verification requirements stay in spec/verification guidance. No-source-change/proposal-assembly wording and old Phase 5/6 gates become historical context.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        },
+        {
+          "section": "Convention audit and before/after examples",
+          "treatment": "2026-09-20 measurements and before/after mappings belong to historical design rationale. Final token-manifest obligation remains a current contract.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        }
+      ],
+      "laterResolutions": [
+        "Default-true boolean attributes use explicit false strings; current interface meaning survives, execution-delegation permission does not become standing authority.",
+        "M05 dated resolution selects explicit styleInputs({}) clearing; expression removal/disconnect preserve canonical values. JavaScript CSS strings keep current authored input and native grammar/cascade behavior.",
+        "Named registration with CSS custom-property overrides, role-specific compact density, per-control ripple false and existing StoreSelector/StoreEffect direction are selected."
+      ],
+      "unresolvedOrConditionalFollowups": [
+        "No automatic promotion of 150-class source census to current runtime coverage.",
+        "OS autofill, genuine screen-reader relations, late definition/adoption and scoped form semantics retain their exact verification limits."
+      ],
+      "conversionRules": [
+        "Keep every input/default/slot/part/method/event and stated exclusion, plus acceptance combinations and provenance.",
+        "Retain approved intent when implementation diverges; record the disagreement instead of deleting the requirement.",
+        "Rephrase proposed/currently-not-implemented/Phase-5-pending wording using original approval and dated checkpoints. Do not present this audit as new runtime verification."
+      ],
+      "evidenceLinks": [
+        "../../decisions/inventory-approval.md",
+        "../inventory.md#c-resp-shared-responsive-convention",
+        "../proposal-questions.md",
+        "../terms.md",
+        "../../decisions/prop-naming-vs-reference.md",
+        "../../decisions/public-state-bridge.md",
+        "../../decisions/reference-systems.md",
+        "../evidence/current-public-interfaces-2026-09-20.json",
+        "../../decisions/native-form-architecture.md",
+        "../evidence/native-form-mechanism-2026-09-19.json",
+        "../../analysis/lit-practice-review.md",
+        "../../decisions/custom-themes.md",
+        "../../decisions/theme-resolution-architecture.md",
+        "../../analysis/design-foundations.md#blue-accent-contrast-and-visual-choice",
+        "../../decisions/density.md",
+        "../inventory.md#responsive-authoring-proposal",
+        "../../decisions/layout-spacing-properties.md#explicit-clearing-for-the-style-helper",
+        "../evidence/m05-style-helper-lifecycle-2026-09-20.json",
+        "../evidence/m05-current-css-inputs-2026-09-21.json",
+        "../README.md#where-we-are"
+      ]
+    },
+    {
+      "source": "notes/alignment/inventory/inputs-forms.md",
+      "classification": "current-approved-contract-with-dated-progress-and-rationale",
+      "sourceSha256": "601cc93e1442f09827a1a1e4c3cae74fefb28640a86ce42fb8371861f9927c28",
+      "bytes": 15851,
+      "lines": 102,
+      "readCoverage": "read in full",
+      "approval": {
+        "date": "2026-09-20",
+        "by": "Peter",
+        "scope": "Whole proposal set; stated recommendations selected",
+        "source": "notes/decisions/inventory-approval.md",
+        "qualification": "Design approval is distinct from runtime verification; later plan approval is recorded separately."
+      },
+      "recommendedCurrentOwner": "spec/SPEC-inputs-forms.md",
+      "contractScope": "Native controls, Number/Pin/Select/ComboBox/Slider/Calendar, Field/Fieldset/Label and optional managed forms.",
+      "sections": [
+        {
+          "heading": "Shared field-control contract",
+          "start": 7,
+          "end": 12,
+          "sha256": "eaea805f9eab27a31af4e3fa2c8592f58ffa6610aedf2145d963a9108288b56e"
+        },
+        {
+          "heading": "F-01 Input and Search",
+          "start": 13,
+          "end": 20,
+          "sha256": "bede9883eabf120b039a16f5350e5d0620d95e864fe9eb69b6647379c38d2657"
+        },
+        {
+          "heading": "F-02 Password Input",
+          "start": 21,
+          "end": 24,
+          "sha256": "24816d2aa59c1310d8c9c592bc7b50850f2fdf8f7a22f5babf7fa3065a040a19"
+        },
+        {
+          "heading": "F-03 Textarea",
+          "start": 25,
+          "end": 28,
+          "sha256": "01aad258ae1bd4c1b90ded13e793aec79eb153f1df8ae0a520a2ff764c645c4c"
+        },
+        {
+          "heading": "F-04 Number Input",
+          "start": 29,
+          "end": 36,
+          "sha256": "b3eee027686a9c94069baf0892fb2bb9e2ef46b4b8f2019cf779966a176ee9ec"
+        },
+        {
+          "heading": "F-05 Pin Input",
+          "start": 37,
+          "end": 44,
+          "sha256": "99878b6c83e54da5a3feda5bd44505ee37f903103668c411deae048374cbcdf9"
+        },
+        {
+          "heading": "F-06 Select, ComboBox and Multi Select",
+          "start": 45,
+          "end": 62,
+          "sha256": "6a2af73063aa76ffcc19d9744681020fa48d54f9e67dd651d9f72a4813516308"
+        },
+        {
+          "heading": "F-07 Slider",
+          "start": 63,
+          "end": 68,
+          "sha256": "332d22df26b6f2beec8703b1bc67149d53cc5bcedf47ed0be32661e36f83db41"
+        },
+        {
+          "heading": "F-08 Calendar",
+          "start": 69,
+          "end": 76,
+          "sha256": "237aa8ee6bdca33050daccd85ec4795c8ba8a2c082aa7839fb9269a2f31b7b5e"
+        },
+        {
+          "heading": "F-09 Field, Fieldset and Label",
+          "start": 77,
+          "end": 86,
+          "sha256": "e9afa9c9da7ea75b230b11210fc59d9ca19364181277e4bd3ffe895d5c8f0ef4"
+        },
+        {
+          "heading": "F-10 Optional managed forms",
+          "start": 87,
+          "end": 103,
+          "sha256": "a63a8e400673b70ff4c096390d6f4a9ab939755316292815b1f435507bcbb429"
+        }
+      ],
+      "sectionsRequiringSplit": [
+        {
+          "section": "F-06 Select, ComboBox and Multi Select",
+          "treatment": "Fold native-trigger/direct-option corrections into current contract; preserve rejected supplied-button/free-form alternatives as rationale.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        },
+        {
+          "section": "F-09 Field, Fieldset and Label",
+          "treatment": "Keep x-acme-native-root and synchronous established disabled behavior; separate renderer-settling qualification from obsolete implementation-phase language.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        }
+      ],
+      "laterResolutions": [
+        "Number Input restricts notation to standard before changing state because selected parser does not support compact/scientific/engineering.",
+        "Ranked ComboBox uses direct Option children; nested wrappers are diagnosed; unmatched supplied values can display but user commits remain option-only.",
+        "Select/Multi Select own native trigger button; trigger slot supplies noninteractive content after native accessibility-tree finding.",
+        "Fieldset uses stable native light-DOM root and real native legend; render adapters preserve author ranges and final form associations."
+      ],
+      "unresolvedOrConditionalFollowups": [
+        "Genuine OS IME/dictation/autofill, password-manager and OTP autocomplete cannot be inferred from callback tests.",
+        "Calendar timezone/DST/range serialization remains exact approved intent; any source disagreement becomes issue rather than contract weakening.",
+        "Pin allowed alphabet/grapheme behavior is explicitly limited by source UTF-16 operations."
+      ],
+      "conversionRules": [
+        "Keep every input/default/slot/part/method/event and stated exclusion, plus acceptance combinations and provenance.",
+        "Retain approved intent when implementation diverges; record the disagreement instead of deleting the requirement.",
+        "Rephrase proposed/currently-not-implemented/Phase-5-pending wording using original approval and dated checkpoints. Do not present this audit as new runtime verification."
+      ],
+      "evidenceLinks": [
+        "../../decisions/inventory-approval.md",
+        "foundations.md#forms-and-focus",
+        "../../decisions/native-and-managed-forms.md",
+        "../../decisions/zag-behaviour-ports.md",
+        "../../analysis/lit-practice-review.md",
+        "../../decisions/input-affix-api.md"
+      ]
+    },
+    {
+      "source": "notes/alignment/inventory/layout.md",
+      "classification": "current-approved-contract-with-dated-progress-and-rationale",
+      "sourceSha256": "59f16834d83967e82419dba4ced2a56443a4a170bdab65f15493f571dff787e2",
+      "bytes": 9113,
+      "lines": 71,
+      "readCoverage": "read in full",
+      "approval": {
+        "date": "2026-09-20",
+        "by": "Peter",
+        "scope": "Whole proposal set; stated recommendations selected",
+        "source": "notes/decisions/inventory-approval.md",
+        "qualification": "Design approval is distinct from runtime verification; later plan approval is recorded separately."
+      },
+      "recommendedCurrentOwner": "spec/SPEC-layout.md",
+      "contractScope": "Inset, Separator, Scroll Area and Resizable; core layout file is a separate owner.",
+      "sections": [
+        {
+          "heading": "L-06 Inset",
+          "start": 7,
+          "end": 16,
+          "sha256": "81bc6888f8894bf6f76583114d62b5a7af85e8e309a5b46ebf5edc2c7b1272aa"
+        },
+        {
+          "heading": "L-07 Separator",
+          "start": 17,
+          "end": 24,
+          "sha256": "82c7a0a4de4d0c50d30ac848ce7486e741cd4488a673ae4d49ddf773452a550d"
+        },
+        {
+          "heading": "L-08 Scroll Area",
+          "start": 25,
+          "end": 38,
+          "sha256": "8dceccaf37dca0d89aa358e20aac0137434b79522ffa87c54dc1a88458c321fe"
+        },
+        {
+          "heading": "L-09 Resizable panes",
+          "start": 39,
+          "end": 52,
+          "sha256": "81f184bbc104164301f7c961eeb623bbe9b29a7c3123e5fae2f9c6b85ab4fdc8"
+        },
+        {
+          "heading": "Composition examples",
+          "start": 53,
+          "end": 68,
+          "sha256": "1e75f558396dbe8b35985e7bcd9a91affa229e0cb1f96fae671d3e07d3af8121"
+        },
+        {
+          "heading": "Implementation checkpoint — 2026-09-21",
+          "start": 69,
+          "end": 72,
+          "sha256": "7b73209b0bb95b23ce27aa34dfe0275e560178320017b727d935f2f64c3c593b"
+        }
+      ],
+      "sectionsRequiringSplit": [
+        {
+          "section": "Implementation checkpoint — 2026-09-21",
+          "treatment": "Move dated nine-check-per-engine result and other-work-in-progress status to history/verification record; retain actual resolved contract in spec.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        },
+        {
+          "section": "Composition examples",
+          "treatment": "Keep intended composition and framework ownership. Relabel unexecuted proposal example as historical illustration unless current runnable example evidence is linked.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        }
+      ],
+      "laterResolutions": [
+        "Inset logical sides expand the ambiguous five-value draft to all/inline/block and four logical edges.",
+        "Separator decorative=true uses decorative=\"false\" for semantic opt-in; implementation checkpoint records intrinsic-height correction and generated hooks.",
+        "Scroll Area hover/always comes from assigned Chakra API; no invented scrollHideDelay. Resizable restoration uses stable panel keys and previous sizes."
+      ],
+      "unresolvedOrConditionalFollowups": [
+        "Pointer/keyboard/RTL/adoption/assistive checks remain required; this file alone establishes no completion.",
+        "Current core Box/Flex/Stack/Grid/Simple Grid/Group contract must be migrated with inventory.md by its owner."
+      ],
+      "conversionRules": [
+        "Keep every input/default/slot/part/method/event and stated exclusion, plus acceptance combinations and provenance.",
+        "Retain approved intent when implementation diverges; record the disagreement instead of deleting the requirement.",
+        "Rephrase proposed/currently-not-implemented/Phase-5-pending wording using original approval and dated checkpoints. Do not present this audit as new runtime verification."
+      ],
+      "evidenceLinks": [
+        "../../decisions/inventory-approval.md",
+        "../inventory.md",
+        "foundations.md",
+        "../../decisions/scroll-area-behaviour.md",
+        "https://chakra-ui.com/docs/components/scroll-area",
+        "../../decisions/resizable-panes.md",
+        "../../decisions/execution-delegation.md#default-true-property-attributes--2026-09-21",
+        "../evidence/m07-separator-2026-09-21.json"
+      ]
+    },
+    {
+      "source": "notes/alignment/inventory/messages-statistics.md",
+      "classification": "current-approved-contract-with-dated-progress-and-rationale",
+      "sourceSha256": "c5dfeca3c68a271f147920b7ba5f4ceef3f47823cd5e56f3310f8de0f9a2a714",
+      "bytes": 10581,
+      "lines": 73,
+      "readCoverage": "read in full",
+      "approval": {
+        "date": "2026-09-20",
+        "by": "Peter",
+        "scope": "Whole proposal set; stated recommendations selected",
+        "source": "notes/decisions/inventory-approval.md",
+        "qualification": "Design approval is distinct from runtime verification; later plan approval is recorded separately."
+      },
+      "recommendedCurrentOwner": "spec/SPEC-messages-statistics.md",
+      "contractScope": "Alert/Banner, Toast, Feedback, Empty State, loading displays, Meter, Stat and Status.",
+      "sections": [
+        {
+          "heading": "M-01 Alert and Banner",
+          "start": 7,
+          "end": 14,
+          "sha256": "5ebebfe3c6f048a182f5100b4b27bef3fc3156f2f58b392122c7375bbee92496"
+        },
+        {
+          "heading": "M-02 Toast and viewport",
+          "start": 15,
+          "end": 24,
+          "sha256": "72449e97963af0978dec50f78e118702b2f543f6dd7d80c475fbc173a9911de3"
+        },
+        {
+          "heading": "M-03 Feedback",
+          "start": 25,
+          "end": 32,
+          "sha256": "62febe8923f0aa45d7ed42d405c6d358194cb070c1b2f05fa3cbdac0ac654cf0"
+        },
+        {
+          "heading": "M-04 Empty State",
+          "start": 33,
+          "end": 38,
+          "sha256": "1475fb3498aab1c1a3cde7c9d7ccfde281de5c6a74bad3270a476815bf9e0a54"
+        },
+        {
+          "heading": "M-05 Spinner, Progress and Skeleton",
+          "start": 39,
+          "end": 50,
+          "sha256": "037c10f90934bcb4c69f2208b4ef95e61d91e80998edd3ba1854636388069f20"
+        },
+        {
+          "heading": "M-06 Meter",
+          "start": 51,
+          "end": 58,
+          "sha256": "fb3f34777681f236aa8f9d4246457063b279449441ed397672191a1ebbf69118"
+        },
+        {
+          "heading": "M-07 Stat",
+          "start": 59,
+          "end": 66,
+          "sha256": "620a4dac911277835d107484c977d98a1104d058451261a7de1753a29e9aa6fe"
+        },
+        {
+          "heading": "M-08 Status",
+          "start": 67,
+          "end": 70,
+          "sha256": "4422cc5875136d58f499cbb16c5004c1c8ddd97f9df2c66f264b0c097a9f6f48"
+        },
+        {
+          "heading": "Family acceptance",
+          "start": 71,
+          "end": 74,
+          "sha256": "069b7c40ee6c38635383c93438b13dafa7b1ff66c7705a39e5189a280a973c49"
+        }
+      ],
+      "sectionsRequiringSplit": [
+        {
+          "section": "M-05 Spinner, Progress and Skeleton",
+          "treatment": "Keep approved visuals and genuine absent/zero distinctions; Material Progress research limit belongs to conditional future-research issue/history as well as provenance.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        }
+      ],
+      "laterResolutions": [
+        "Toast default 5000ms and persistent zero, visible limit three and explicit scoped store remain selected.",
+        "Feedback requests application submission and has no automatic endpoint/network mode.",
+        "Direction/sentiment are distinct; Meter numerical semantics remain separate from task Progress."
+      ],
+      "unresolvedOrConditionalFollowups": [
+        "Material Progress dynamic tokens/diagrams are not fully reviewed; no unsupported Material visual recommendation.",
+        "Actual OS background-window and assistive-technology behavior are not established by synthetic or headless checks."
+      ],
+      "conversionRules": [
+        "Keep every input/default/slot/part/method/event and stated exclusion, plus acceptance combinations and provenance.",
+        "Retain approved intent when implementation diverges; record the disagreement instead of deleting the requirement.",
+        "Rephrase proposed/currently-not-implemented/Phase-5-pending wording using original approval and dated checkpoints. Do not present this audit as new runtime verification."
+      ],
+      "evidenceLinks": [
+        "../../decisions/inventory-approval.md",
+        "../../decisions/message-context-and-errors.md",
+        "../evidence/current-public-interfaces-2026-09-20.json",
+        "https://base-ui.com/react/components/toast",
+        "../../decisions/toast-behaviour.md",
+        "../../decisions/feedback-component.md",
+        "../../decisions/meter-component.md",
+        "../../decisions/stat-family.md"
+      ]
+    },
+    {
+      "source": "notes/alignment/inventory/navigation-disclosure.md",
+      "classification": "current-approved-contract-with-dated-progress-and-rationale",
+      "sourceSha256": "b2c2673b816d0757508c212685139aed41f30f37778d3f38df10d73f053ab8b4",
+      "bytes": 19203,
+      "lines": 116,
+      "readCoverage": "read in full",
+      "approval": {
+        "date": "2026-09-20",
+        "by": "Peter",
+        "scope": "Whole proposal set; stated recommendations selected",
+        "source": "notes/decisions/inventory-approval.md",
+        "qualification": "Design approval is distinct from runtime verification; later plan approval is recorded separately."
+      },
+      "recommendedCurrentOwner": "spec/SPEC-navigation-disclosure.md",
+      "contractScope": "Twelve navigation/disclosure families and their native ownership, focus and application action boundaries.",
+      "sections": [
+        {
+          "heading": "N-01 App Bar",
+          "start": 7,
+          "end": 12,
+          "sha256": "7560daa717fb10e3df2655a3906c2e4a8b41bb31a51a3b2c9466604b682ec1db"
+        },
+        {
+          "heading": "N-02 Toolbar",
+          "start": 13,
+          "end": 20,
+          "sha256": "856b98f438566e7f7686a57f24cb5d2c2bec6d76a2e608bbc9fef842a9919f01"
+        },
+        {
+          "heading": "N-03 Sidebar",
+          "start": 21,
+          "end": 28,
+          "sha256": "6bde9559bbdcb6b620950a177c1f733cbaf3a8981f64d30113dfd40d9df095f2"
+        },
+        {
+          "heading": "N-04 Table of Contents",
+          "start": 29,
+          "end": 36,
+          "sha256": "2d9fde4eed64af62cf18ab5080a09ae6ae4ee0047908806b7afea017cd99a356"
+        },
+        {
+          "heading": "N-05 Breadcrumbs",
+          "start": 37,
+          "end": 40,
+          "sha256": "07815b6a3b01e3f9ec43942855f083206e3b7c12d3217c3ad5920376c77cad49"
+        },
+        {
+          "heading": "N-06 Tree View",
+          "start": 41,
+          "end": 50,
+          "sha256": "cc8c0324e03d77de57a971d3f5f39247a636bee2b4884117cb663a693a511f66"
+        },
+        {
+          "heading": "N-07 Menu and Context Menu",
+          "start": 51,
+          "end": 60,
+          "sha256": "ae894c1786358979a2b736525cc8727a52cac691870e9890757d5f83ba490480"
+        },
+        {
+          "heading": "N-08 Command Menu",
+          "start": 61,
+          "end": 68,
+          "sha256": "bb7bc34a33729d29b7b2455df39e3edc7c41b2bcc6fd56dd5c42369641279271"
+        },
+        {
+          "heading": "N-09 Accordion and Collapsible",
+          "start": 69,
+          "end": 76,
+          "sha256": "d7730ad4022cbd7fc91e986e44f1b114b7fde96e5eab29cb943dd78567b34a21"
+        },
+        {
+          "heading": "N-10 Steps",
+          "start": 77,
+          "end": 84,
+          "sha256": "74c75aa7b771cecd3e488ab9037f4015f52f5843a555f9cbb96968dbad41517c"
+        },
+        {
+          "heading": "N-11 Timeline",
+          "start": 85,
+          "end": 88,
+          "sha256": "dff2f3ff67d8139b56b01005b00f4000c0c50f1367ee963184b13db9d7f8f3d6"
+        },
+        {
+          "heading": "N-12 Show, Show More and Load More",
+          "start": 89,
+          "end": 96,
+          "sha256": "efa3d8f3aad40208e9022f0b41a47905b6c93e43ce41771743a4a8a52002ba62"
+        },
+        {
+          "heading": "M13 Menu engineering resolution — 2026-09-22",
+          "start": 97,
+          "end": 100,
+          "sha256": "65653637921e6ce035f4619eca1ac8425fc2b3d23807cbc0e124d88055a475b1"
+        },
+        {
+          "heading": "M15 Steps engineering resolution — 2026-09-23",
+          "start": 101,
+          "end": 104,
+          "sha256": "ff97becbd4716a8a9d5dea7538a90068e7a96611aeabef4ae7b71d7ec709d501"
+        },
+        {
+          "heading": "M15 navigation engineering resolution — 2026-09-23",
+          "start": 105,
+          "end": 108,
+          "sha256": "b2fc62fcd3345f17a2c8249e30e3ef752e22f3ea42964f5c331bf40ca12daef9"
+        },
+        {
+          "heading": "N08 implementation resolution — 2026-09-23",
+          "start": 109,
+          "end": 113,
+          "sha256": "a7cf8576c030e122f04fa9f20d88f65af61b2a943dddd136fbc2a54c5629abd1"
+        },
+        {
+          "heading": "N03/N04/N06 implementation resolution — 2026-09-23",
+          "start": 114,
+          "end": 117,
+          "sha256": "c1dd4aa8ee2af57b80f6553a5c17adda3bf0af48f4f694c1ca28f78e633caff9"
+        }
+      ],
+      "sectionsRequiringSplit": [
+        {
+          "section": "M13 Menu engineering resolution — 2026-09-22",
+          "treatment": "Integrate current resolved Menu contract; retain dated source proof separately.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        },
+        {
+          "section": "M15 Steps engineering resolution — 2026-09-23",
+          "treatment": "Integrate completed-state/linear behavior with provenance.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        },
+        {
+          "section": "M15 navigation engineering resolution — 2026-09-23",
+          "treatment": "Integrate supported default/focus rules with provenance.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        },
+        {
+          "section": "N08 implementation resolution — 2026-09-23",
+          "treatment": "Integrate final ranking/load-more/event contract with provenance.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        },
+        {
+          "section": "N03/N04/N06 implementation resolution — 2026-09-23",
+          "treatment": "Integrate final content and ownership precedence; native/Lit checkpoint does not become complete all-framework certification.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        }
+      ],
+      "laterResolutions": [
+        "M13 Menu Content uses manual popover; Menu Item adds href/target/rel, textValue and submenu. Disabled items remain discoverable but cannot activate.",
+        "M15 Steps value=count is completed for nonempty sequence; count/completed readonly and completed slot expose it; linear progression uses Previous/Next.",
+        "M15 Toolbar skips native disabled controls and restarts external entry at first available; editing controls keep keys; App Bar uses existing 52px baseline.",
+        "N08 Command Menu uses explicit IDs, finite nonnegative filter score, contiguous ranked groups, direct child ownership, native Home/End editing and modifier result jumps.",
+        "N03/N04/N06 resolution adds Sidebar collapsed slot; TOC explicit empty items wins; Tree data owns hierarchy while keyed direct children supply visible content."
+      ],
+      "unresolvedOrConditionalFollowups": [
+        "Tree advanced features remain deliberately excluded.",
+        "Conditional mounting across frameworks and native form preservation must keep the original acceptance obligations."
+      ],
+      "conversionRules": [
+        "Keep every input/default/slot/part/method/event and stated exclusion, plus acceptance combinations and provenance.",
+        "Retain approved intent when implementation diverges; record the disagreement instead of deleting the requirement.",
+        "Rephrase proposed/currently-not-implemented/Phase-5-pending wording using original approval and dated checkpoints. Do not present this audit as new runtime verification."
+      ],
+      "evidenceLinks": [
+        "../../decisions/inventory-approval.md",
+        "foundations.md",
+        "../../analysis/codebase-systematization.md#joint-content-selection-and-navigation-review",
+        "../../decisions/app-bar.md",
+        "../../decisions/toolbar-group-responsibilities.md",
+        "../../decisions/responsive-sidebar.md",
+        "../../decisions/general-tree-view.md",
+        "https://chakra-ui.com/docs/components/accordion",
+        "https://chakra-ui.com/docs/components/collapsible",
+        "../../decisions/execution-delegation.md#menu-composition-and-completion--2026-09-22",
+        "../evidence/m15-steps-timeline-2026-09-23.json",
+        "../evidence/m15-navigation-2026-09-23.json",
+        "../evidence/m15-command-menu-2026-09-23.json",
+        "../evidence/m16-toc-2026-09-23.json",
+        "../evidence/m16-sidebar-2026-09-23.json",
+        "../evidence/m16-tree-view-2026-09-23.json"
+      ]
+    },
+    {
+      "source": "notes/alignment/inventory/overlays-help.md",
+      "classification": "current-approved-contract-with-dated-progress-and-rationale",
+      "sourceSha256": "699d505b01d5efa5ddd47fceefb33a2f942c7c046eaf5f276d43b29f83fe6268",
+      "bytes": 10834,
+      "lines": 80,
+      "readCoverage": "read in full",
+      "approval": {
+        "date": "2026-09-20",
+        "by": "Peter",
+        "scope": "Whole proposal set; stated recommendations selected",
+        "source": "notes/decisions/inventory-approval.md",
+        "qualification": "Design approval is separate from implementation and runtime verification."
+      },
+      "recommendedCurrentOwner": "spec/SPEC-overlays-help.md",
+      "contractScope": "Shared native overlay lifetime plus Dialog, Alert Dialog, Drawer, Tooltip, Hover Card and Toggle Tip.",
+      "sections": [
+        {
+          "heading": "Shared overlay contract",
+          "start": 7,
+          "end": 14,
+          "sha256": "18447c72193b0e16e5f9d706da13abd26c222c0ea1e174313b0a98974f78e554"
+        },
+        {
+          "heading": "O-01 Dialog",
+          "start": 15,
+          "end": 24,
+          "sha256": "3171e514df2f2902db2422f6f94560edb5d380b8557788b3b2583e6e0e44dc51"
+        },
+        {
+          "heading": "O-02 Alert Dialog",
+          "start": 25,
+          "end": 32,
+          "sha256": "84dd7d168e22773a49b8ac5185c16fbd5cd614b1a2ca74007d76efb698184d4a"
+        },
+        {
+          "heading": "O-03 Drawer",
+          "start": 33,
+          "end": 38,
+          "sha256": "24c8c8a5c0129df872cefee0d3e8b294684bb57bca68f3d1c0dffe4217885acb"
+        },
+        {
+          "heading": "O-04 Tooltip",
+          "start": 39,
+          "end": 46,
+          "sha256": "03265ad142fb7aca67c77a16cbf2320c774882dee44ffa70cf16b6f606c805bf"
+        },
+        {
+          "heading": "O-05 Hover Card",
+          "start": 47,
+          "end": 54,
+          "sha256": "c56cdcad65c1910182b52c70ec092ab72e4373501ed8cfcd1fd369cad1d3f2b9"
+        },
+        {
+          "heading": "O-06 Toggle Tip",
+          "start": 55,
+          "end": 62,
+          "sha256": "ad7b91de8d4740072e3dd6501c9a5950919b540f5813ee8f7a88e041ba0ac28a"
+        },
+        {
+          "heading": "Reference-derived defaults and engineering work",
+          "start": 63,
+          "end": 68,
+          "sha256": "38d59c0d94985a1a3b5f7aae3732853ffb60a45df611e10058e70f985aa44691"
+        },
+        {
+          "heading": "Typed confirmation recipe",
+          "start": 69,
+          "end": 72,
+          "sha256": "42d9935c36d607b98c579e70ffd27ff80426e0894a00c5a38bad7fabd5607fd3"
+        },
+        {
+          "heading": "O01/O02/O03 engineering resolution — 2026-09-23",
+          "start": 73,
+          "end": 77,
+          "sha256": "fbfe80ee241963e9777579f6f6fffef541cf02f5f94ab1e94a20c522619e9af8"
+        },
+        {
+          "heading": "O04/O05/O06 implementation resolution — 2026-09-23",
+          "start": 78,
+          "end": 81,
+          "sha256": "06d951d663d8da7ef9d98820e7609e2ac99b8d8286453beee82d73b11d02f6e3"
+        }
+      ],
+      "sectionsRequiringSplit": [
+        {
+          "section": "Reference-derived defaults and engineering work",
+          "treatment": "Keep assigned Tooltip 0/100ms versus Hover Card 600/300ms defaults and actual verification requirement. Completed E01/E02 phase procedure becomes history."
+        },
+        {
+          "section": "O01/O02/O03 engineering resolution — 2026-09-23",
+          "treatment": "Fold final native backdrop, Dialog widths, Drawer token and opener-theme fallback rules into current contract with dated provenance."
+        },
+        {
+          "section": "O04/O05/O06 implementation resolution — 2026-09-23",
+          "treatment": "Fold owned Toggle Tip Button and inert supplementary-preview behavior into current contract. Acceptance is the dated linked scope, not a new all-platform claim."
+        }
+      ],
+      "laterResolutions": [
+        "Native surface::backdrop exposes backdrop; close controls expose their action parts. Dialog sizes resolve to 400/540/800px within viewport. Drawer uses 24rem sizes.acme-drawer-size token with axis override.",
+        "Connected opener supplies full theme; fallback before opening is connected focus/dialog scope; removing opener after opening preserves captured scope.",
+        "Toggle Tip owns its native Button and trigger slot supplies label. Tooltip/Hover Card previews are inert descriptions; native destination activation and focus remain intact."
+      ],
+      "unresolvedOrConditionalFollowups": [
+        "Known Chromium Hover Card native destination activation failure from current workflow specification remains open; linked historical help acceptance cannot erase it.",
+        "Actual assistive technology, Safari, nested/outside focus and transition behavior retain exact verification limits."
+      ],
+      "conversionRules": [
+        "Preserve modality until owned exit, cancellation/reopening order and stale placement rejection.",
+        "Keep all event reasons and cancelability; action success remains application-owned.",
+        "Retire superseded phase commands but retain approved contracts and provenance."
+      ],
+      "evidenceLinks": [
+        "../../decisions/inventory-approval.md",
+        "../../decisions/overlay-architecture.md",
+        "../../decisions/dialog-components.md",
+        "../../decisions/overlay-help-components.md",
+        "../../decisions/floating-surface-shadows.md",
+        "https://chakra-ui.com/docs/components/hover-card",
+        "../evidence/m17-native-dialogs-2026-09-23.json",
+        "../evidence/m17-help-2026-09-23.json"
+      ]
+    },
+    {
+      "source": "notes/alignment/inventory/rich-content.md",
+      "classification": "current-approved-contract-with-dated-progress-and-rationale",
+      "sourceSha256": "f0983eea1c639ac6964be7379e31236eae57d732f44ddef93cc517ff3df43552",
+      "bytes": 9242,
+      "lines": 65,
+      "readCoverage": "read in full",
+      "approval": {
+        "date": "2026-09-20",
+        "by": "Peter",
+        "scope": "Whole proposal set; stated recommendations selected",
+        "source": "notes/decisions/inventory-approval.md",
+        "qualification": "Design approval is distinct from runtime verification; later plan approval is recorded separately."
+      },
+      "recommendedCurrentOwner": "spec/SPEC-rich-content.md",
+      "contractScope": "Code Block, Snippet, JSON View, Markdown, Book, Browser and Video.",
+      "sections": [
+        {
+          "heading": "RC-01 Code Block",
+          "start": 7,
+          "end": 16,
+          "sha256": "4f8ec8ebdc9f220a302da2b193d1ce0095ef6f9d0ea262f4dc3c42097e89a817"
+        },
+        {
+          "heading": "RC-02 Snippet",
+          "start": 17,
+          "end": 24,
+          "sha256": "b0ed0d24221c215a8d5c9ba87a16e9bc51219c5caa527d488cc40b7b656e017c"
+        },
+        {
+          "heading": "RC-03 JSON View",
+          "start": 25,
+          "end": 32,
+          "sha256": "22dd1fa8cd6c6ea111dbda43772f957d80bbad69f88f336a14ec826d062d4658"
+        },
+        {
+          "heading": "RC-04 Markdown",
+          "start": 33,
+          "end": 42,
+          "sha256": "409d184fe0f9571f1aa118a2280a3197b17e57c54e46c8c4eb69041f53a2e659"
+        },
+        {
+          "heading": "RC-05 Book",
+          "start": 43,
+          "end": 50,
+          "sha256": "cb65206ad068bdd2a90982d4365d9399a4a6a92c356b9fd95fb9ae8bd3ec384c"
+        },
+        {
+          "heading": "RC-06 Browser",
+          "start": 51,
+          "end": 56,
+          "sha256": "008b64d01f548f31dca548a1185d21cc55a60e2bcbde25053d16bad1d4e57157"
+        },
+        {
+          "heading": "RC-07 Video",
+          "start": 57,
+          "end": 66,
+          "sha256": "2347a24fe628b50f978a464341f0bebaa49eae6e3a23e6da0036b2c3fa1065df"
+        }
+      ],
+      "sectionsRequiringSplit": [
+        {
+          "section": "RC-07 Video",
+          "treatment": "Keep actual native target ownership and user pause/preference lifecycle; no-media-download-during-proposal phrase is historical scope, not permanent runtime rule.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        }
+      ],
+      "laterResolutions": [
+        "Markdown default escaped output and trusted-only allowHtml opt-in remain; raw HTML is not promised sanitized.",
+        "Native light-DOM prose supports heading targets/TOC and has one text source.",
+        "Video sources/tracks are authored directly in stable native target by DOM/Lit/React portal; framework children are not cloned/moved.",
+        "Book detailed motion decision owns spring/transform constraints; generic CSS transitions cannot replace it."
+      ],
+      "unresolvedOrConditionalFollowups": [
+        "Video autoplay rejection and real browser policy remain separate from source defaults.",
+        "JSON traversal must not execute getters; raw HTML trust boundary cannot silently gain sanitizer promises."
+      ],
+      "conversionRules": [
+        "Keep every input/default/slot/part/method/event and stated exclusion, plus acceptance combinations and provenance.",
+        "Retain approved intent when implementation diverges; record the disagreement instead of deleting the requirement.",
+        "Rephrase proposed/currently-not-implemented/Phase-5-pending wording using original approval and dated checkpoints. Do not present this audit as new runtime verification."
+      ],
+      "evidenceLinks": [
+        "../../decisions/inventory-approval.md",
+        "../evidence/current-public-interfaces-2026-09-20.json",
+        "../../analysis/documentation-site.md#complete-pro-documentation-and-kit-evidence",
+        "../../decisions/motion-on-the-book.md"
+      ]
+    },
+    {
+      "source": "notes/alignment/inventory/selection.md",
+      "classification": "current-approved-contract-with-dated-progress-and-rationale",
+      "sourceSha256": "e2eb9e68b1dcca7507d90bf77d9a0569bdd7b5fd68bf3d255f491796661f42e4",
+      "bytes": 10140,
+      "lines": 64,
+      "readCoverage": "read in full",
+      "approval": {
+        "date": "2026-09-20",
+        "by": "Peter",
+        "scope": "Whole proposal set; stated recommendations selected",
+        "source": "notes/decisions/inventory-approval.md",
+        "qualification": "Design approval is distinct from runtime verification; later plan approval is recorded separately."
+      },
+      "recommendedCurrentOwner": "spec/SPEC-selection.md",
+      "contractScope": "Checkbox/Radio groups and cards, Switch, Segmented Control, Tabs and internal indicator.",
+      "sections": [
+        {
+          "heading": "S-01 Checkbox and Checkbox Group",
+          "start": 7,
+          "end": 12,
+          "sha256": "9c0099496efd52f124779f78ac016f14e844dfbffc92484315617a09e4453ca6"
+        },
+        {
+          "heading": "S-02 Radio and Radio Group",
+          "start": 13,
+          "end": 18,
+          "sha256": "dc25d8819e80fa21194e16bc04ba16ea5be548986b969ecc7a03379390f1bc4c"
+        },
+        {
+          "heading": "S-03 Checkbox Card and Radio Card",
+          "start": 19,
+          "end": 26,
+          "sha256": "ed68ac436120f4025323a702425c30ace05440b15ecd356f6a29aee7fb65fa69"
+        },
+        {
+          "heading": "S-04 Switch",
+          "start": 27,
+          "end": 30,
+          "sha256": "3710c04cf23cd54df0cb9ea579eeed81c2189f089ac5687d12a6b8de078c3b0d"
+        },
+        {
+          "heading": "S-05 Segmented Control",
+          "start": 31,
+          "end": 36,
+          "sha256": "bf027dcae07e6922aa3379cdc060a93634125da4e41b14676bf1630e3f8847ba"
+        },
+        {
+          "heading": "S-06 Tabs",
+          "start": 37,
+          "end": 46,
+          "sha256": "80ba3d2b51acc69c5d9db00031a5bca0f428c651952b28bd7899315a0e85c9ad"
+        },
+        {
+          "heading": "S-07 Shared indicator",
+          "start": 47,
+          "end": 50,
+          "sha256": "bd28e47457dd704c58bea4188f01b85fa1e7fcc95b5d88baeb9d175dad76c5b6"
+        },
+        {
+          "heading": "Compositions and acceptance",
+          "start": 51,
+          "end": 65,
+          "sha256": "50b7a6db5b2c696e01fa0b1b585e36cf539320688cd60980b3cf9c6ec15d9935"
+        }
+      ],
+      "sectionsRequiringSplit": [
+        {
+          "section": "S-06 Tabs",
+          "treatment": "Current defaults and mounting ownership stay in spec; M10/M22 and Q05 process labels become provenance/history.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        }
+      ],
+      "laterResolutions": [
+        "Card independent actions use actions slot outside native label hit target; descendant acme-change containment preserves one collection event.",
+        "Tabs use verified native element references across supported scopes rather than cross-shadow ID strings.",
+        "Tabs defaults remain mounted; optional renderer-owned lazy/unmount content has separate HTML/Lit/React ownership; ordinary author children take precedence.",
+        "Indicator is private animation geometry, never a second state/control API."
+      ],
+      "unresolvedOrConditionalFollowups": [
+        "Vertical Material-style treatment is a named adaptation, not a Material vertical-tab claim.",
+        "External accessibility/platform limits must remain distinct from local all-engine mechanism checks."
+      ],
+      "conversionRules": [
+        "Keep every input/default/slot/part/method/event and stated exclusion, plus acceptance combinations and provenance.",
+        "Retain approved intent when implementation diverges; record the disagreement instead of deleting the requirement.",
+        "Rephrase proposed/currently-not-implemented/Phase-5-pending wording using original approval and dated checkpoints. Do not present this audit as new runtime verification."
+      ],
+      "evidenceLinks": [
+        "../../decisions/inventory-approval.md",
+        "foundations.md",
+        "../../decisions/shared-selection-indicator.md",
+        "../../analysis/codebase-systematization.md#phase-2-closure-review",
+        "../../analysis/codebase-systematization.md#comprehensive-chakra-group-review",
+        "https://chakra-ui.com/docs/components/tabs"
+      ]
+    },
+    {
+      "source": "notes/alignment/inventory/surfaces.md",
+      "classification": "current-approved-contract-with-dated-progress-and-rationale",
+      "sourceSha256": "f6b2c6adea01454a024cbda7b892e073c25755ee829dbbba24cad0e12eb1b41d",
+      "bytes": 8100,
+      "lines": 65,
+      "readCoverage": "read in full",
+      "approval": {
+        "date": "2026-09-20",
+        "by": "Peter",
+        "scope": "Whole proposal set; stated recommendations selected",
+        "source": "notes/decisions/inventory-approval.md",
+        "qualification": "Design approval is distinct from runtime verification; later plan approval is recorded separately."
+      },
+      "recommendedCurrentOwner": "spec/SPEC-surfaces.md",
+      "contractScope": "Card, Item, native List/Data List, Disabled Wall and replacement recipes.",
+      "sections": [
+        {
+          "heading": "C-01 Card",
+          "start": 7,
+          "end": 16,
+          "sha256": "885e8365e9ceadb5dc05eeac8448e1ea069ca0964363e702283f4e5680e8d65d"
+        },
+        {
+          "heading": "C-02 Item",
+          "start": 17,
+          "end": 26,
+          "sha256": "ea896dc4f1dfdb4248b39e729e752aee531273ee93fa586577c9fa568109ecb3"
+        },
+        {
+          "heading": "C-03 List",
+          "start": 27,
+          "end": 36,
+          "sha256": "61320a0c9e798c171489817f67658bfcea8a0f71a0b1bf014841e458cb915e9d"
+        },
+        {
+          "heading": "C-04 Data List",
+          "start": 37,
+          "end": 46,
+          "sha256": "c86063db10d2419b0e88ebd9bd81fc8e612284dd45cf3e14cf031bfb679b45bc"
+        },
+        {
+          "heading": "C-05 Disabled Wall",
+          "start": 47,
+          "end": 52,
+          "sha256": "8c14b30de4c790b540f037ea4ed071fa59f6cef231d124e5a955531461983584"
+        },
+        {
+          "heading": "Required recipes and migration mapping",
+          "start": 53,
+          "end": 66,
+          "sha256": "86d75932f986f52a1f233a34d8b6fdb612ffba9aa876b09f4733202f1c4c60e1"
+        }
+      ],
+      "sectionsRequiringSplit": [
+        {
+          "section": "Required recipes and migration mapping",
+          "treatment": "Current recipe requirements and replacement owners stay in spec. Original removed names remain dated migration rationale linked by coverage map.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        }
+      ],
+      "laterResolutions": [
+        "Native ul/ol/li and dl/dt/dd remain author-owned content; custom row/item wrappers are not introduced.",
+        "Linked Card keeps real links separate from independent actions.",
+        "Removed arrangements map to compositions and application-owned actions; no universal interactive row or task runner."
+      ],
+      "unresolvedOrConditionalFollowups": [
+        "Disabled Wall focus-recovery requirement is retained even if implementation evidence needs follow-up.",
+        "Native tags alone do not certify list/table accessibility."
+      ],
+      "conversionRules": [
+        "Keep every input/default/slot/part/method/event and stated exclusion, plus acceptance combinations and provenance.",
+        "Retain approved intent when implementation diverges; record the disagreement instead of deleting the requirement.",
+        "Rephrase proposed/currently-not-implemented/Phase-5-pending wording using original approval and dated checkpoints. Do not present this audit as new runtime verification."
+      ],
+      "evidenceLinks": [
+        "../../decisions/inventory-approval.md",
+        "foundations.md",
+        "../../decisions/canonical-card.md",
+        "../../analysis/codebase-systematization.md#phase-2-container-family",
+        "../../decisions/item-content-family.md",
+        "../../decisions/list-component.md",
+        "../evidence/material-list-specs-2026-09-19.json",
+        "../../decisions/data-list.md"
+      ]
+    },
+    {
+      "source": "notes/alignment/inventory/typography.md",
+      "classification": "current-approved-contract-with-dated-progress-and-rationale",
+      "sourceSha256": "65e4a382e83f20ffd00baac78100cc241bc37f854e1386a094537cc458f5ff4b",
+      "bytes": 7989,
+      "lines": 48,
+      "readCoverage": "read in full",
+      "approval": {
+        "date": "2026-09-20",
+        "by": "Peter",
+        "scope": "Whole proposal set; stated recommendations selected",
+        "source": "notes/decisions/inventory-approval.md",
+        "qualification": "Design approval is distinct from runtime verification; later plan approval is recorded separately."
+      },
+      "recommendedCurrentOwner": "spec/SPEC-typography.md",
+      "contractScope": "Eleven typography, truncation and formatting entries, native semantics and date/number formatting boundaries.",
+      "sections": [
+        {
+          "heading": "Shared typography interface",
+          "start": 7,
+          "end": 28,
+          "sha256": "a140b2fb1301126f272d84a4120412ed1b744a28a39853450969f34fe1152d26"
+        },
+        {
+          "heading": "Formatting and content rules",
+          "start": 29,
+          "end": 36,
+          "sha256": "ef89ea9e3342c6900d5e78fda92c363e7c29e5c43ad03f81f96d846d48722334"
+        },
+        {
+          "heading": "Examples and acceptance",
+          "start": 37,
+          "end": 49,
+          "sha256": "d31b3cf58c39ea49735ba6490fca498313e642b1d16223c33107bab4e1d08541"
+        }
+      ],
+      "sectionsRequiringSplit": [
+        {
+          "section": "Shared typography interface",
+          "treatment": "Current API/native meaning and supported values remain spec. Baseline/source/proposed phrasing becomes dated approval rationale.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        },
+        {
+          "section": "Formatting and content rules",
+          "treatment": "Keep formatter trust/error/time rules and source limitations. Do not replace expected behavior with current observed code during migration.",
+          "historicalOwner": "docs/history/systematization/inventory-history.md (section allocation by coordinator)"
+        }
+      ],
+      "laterResolutions": [
+        "Date-only input is UTC midnight; ISO timestamps require an offset; owned epoch values preserve epoch zero.",
+        "Copied Chakra byte formatter does not supply localized bit-zero or IEC labels; selected component corrections must remain requirements.",
+        "LineClamp takes visual precedence over truncate without changing accessible/copied text."
+      ],
+      "unresolvedOrConditionalFollowups": [
+        "Exact later formatter error fallback and date normalization must reconcile with delegated resolutions and released evidence.",
+        "Three significant digits and decimal/binary semantics do not imply additional precision API."
+      ],
+      "conversionRules": [
+        "Keep every input/default/slot/part/method/event and stated exclusion, plus acceptance combinations and provenance.",
+        "Retain approved intent when implementation diverges; record the disagreement instead of deleting the requirement.",
+        "Rephrase proposed/currently-not-implemented/Phase-5-pending wording using original approval and dated checkpoints. Do not present this audit as new runtime verification."
+      ],
+      "evidenceLinks": [
+        "../../decisions/inventory-approval.md",
+        "foundations.md",
+        "../evidence/current-public-interfaces-2026-09-20.json",
+        "../../analysis/design-foundations.md#primitive-semantics-and-typography-defaults",
+        "../../decisions/format-components.md",
+        "../../decisions/execution-delegation.md#typography-implementation-resolutions--2026-09-21",
+        "https://github.com/chakra-ui/ark/blob/main/packages/react/src/components/format/format-byte.tsx",
+        "https://github.com/chakra-ui/zag/blob/main/packages/utilities/i18n-utils/src/format-bytes.ts"
+      ]
+    },
+    {
+      "source": "notes/alignment/migration-plan.md",
+      "classification": "completed-plan-and-dated-progress-with-release-closure",
+      "sourceSha256": "3993f95efcf519aee461189850b6795a4b04b8dc824f57545bfb1ba4435f65d3",
+      "bytes": 64524,
+      "lines": 444,
+      "readCoverage": "read in full; contiguous ranges 1-122, 123-239, 240-345, 346-444",
+      "approval": {
+        "date": "2026-09-20",
+        "by": "Peter",
+        "words": "approved",
+        "source": "notes/decisions/migration-approval.md",
+        "scope": "Original systematization migration, not current maintainer workflow or future publication."
+      },
+      "recommendedCurrentOwner": null,
+      "recommendedCompletedOwners": [
+        "tasks/done/systematization/plan.md",
+        "tasks/done/systematization/todo.md"
+      ],
+      "sections": [
+        {
+          "heading": "Phase 5 migration plan",
+          "level": 1,
+          "start": 1,
+          "end": 6,
+          "sha256": "f47c91919088f4f0b87144eedc1ecbe53d1056af93e68687b0979ecc0b3975c9",
+          "classification": "completed-plan-approval-and-closure",
+          "targets": [
+            "tasks/done/systematization/plan.md",
+            "tasks/done/systematization/todo.md"
+          ],
+          "treatment": "Preserve Peter approval on 2026-09-20 and top-level M00-M26/0.3.2 closure. Completed task list must distinguish local automation from explicit actual-platform limits."
+        },
+        {
+          "heading": "Current evidence and final structure",
+          "level": 2,
+          "start": 7,
+          "end": 32,
+          "sha256": "f5b9989a9c91fde77a9b9e8575eeeceeda74bf4dac0ad542a710b44974ddf6a5",
+          "classification": "dated-baseline-and-superseded-path-plan",
+          "targets": [
+            "tasks/done/systematization/plan.md",
+            "docs/history/systematization/inventory-history.md"
+          ],
+          "treatment": "Record 2026-09-20 baseline and intended layout as history. Root-owned public package proposal is superseded by core workspace then browser delivery decisions; no current guidance points to docs-src or the frozen docs snapshot."
+        },
+        {
+          "heading": "M00 — Close pre-implementation evidence",
+          "level": 2,
+          "start": 33,
+          "end": 48,
+          "sha256": "07f25a19f6e373ceefb055ef12baaeb074be952b5a785ec33fb2c52cee0eeafa",
+          "classification": "completed-prerequisite-checklist",
+          "targets": [
+            "tasks/done/systematization/plan.md",
+            "tasks/done/systematization/todo.md"
+          ],
+          "treatment": "Record M00 closure and LightningCSS 1.33.0 selection; keep each proof boundary. Old research-only restriction applies to that stage, not current implementation."
+        },
+        {
+          "heading": "Implementation progress",
+          "level": 2,
+          "start": 49,
+          "end": 75,
+          "sha256": "b1b076bee5e454cd2f0e5b12bdb3068baa0a6fa9a0b0819892dd354953bb1356",
+          "classification": "completed-sequence-with-preserved-failures",
+          "targets": [
+            "tasks/done/systematization/plan.md",
+            "tasks/done/systematization/todo.md"
+          ],
+          "treatment": "Preserve M01-M05 slices and evidence with original tests/counts; resolve pending helper choice through dated later explicit-clear resolution and registry limitation through M26 disposition."
+        },
+        {
+          "heading": "Ordered implementation work packages",
+          "level": 2,
+          "start": 76,
+          "end": 116,
+          "sha256": "882a73c81cce73b56c8884094bcbe7fa20bb177208d7ee8ad546bd66b923752a",
+          "classification": "completed-dependency-plan",
+          "targets": [
+            "tasks/done/systematization/plan.md",
+            "tasks/done/systematization/todo.md"
+          ],
+          "treatment": "Keep complete M01-M26 dependency table and replacement boundaries. Generate completed task checklist with linked closure, not active queue. Retain native-dialog reorder as later chronology."
+        },
+        {
+          "heading": "Per-slice acceptance and removal checks",
+          "level": 2,
+          "start": 117,
+          "end": 127,
+          "sha256": "5a0551c74f8e4e734992eea90554952fbda1695dd3d79333af4a169e5f8c44e8",
+          "classification": "historical-procedure-with-compatible-quality-obligations",
+          "targets": [
+            "tasks/done/systematization/plan.md",
+            "docs/agents/verification.md"
+          ],
+          "treatment": "Preserve original procedure as completed plan. Current verification guide retains approved required quality outcomes once and follows brain per-slice workflow instead of duplicating this old procedure."
+        },
+        {
+          "heading": "Publishing and completion",
+          "level": 2,
+          "start": 128,
+          "end": 135,
+          "sha256": "aef2a56167eff920daa8fd2da4e38762a374d66940020e22064294ce832bcf80",
+          "classification": "dated-release-plan-and-permission-boundary",
+          "targets": [
+            "tasks/done/systematization/plan.md",
+            "docs/releases/"
+          ],
+          "treatment": "Preserve original delivery/permission conditions and later authorized release closure. Do not convert task-specific grants into standing outward-facing permission."
+        },
+        {
+          "heading": "M07 foundation completion — 2026-09-21",
+          "level": 2,
+          "start": 136,
+          "end": 141,
+          "sha256": "bfd3cbaa265eb328693097eb8caf934e3e341dfa3f38f91c13e94470e72c1ee2",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M08 completion — 2026-09-21",
+          "level": 3,
+          "start": 142,
+          "end": 147,
+          "sha256": "ca0e1dacb1457152e72852d4092bdf5326f84b4640295fc44c88aaa699c59151",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M09 icon-delivery checkpoint — 2026-09-21",
+          "level": 3,
+          "start": 148,
+          "end": 151,
+          "sha256": "d7d36b2e7773658d155202e489b3b633b62723c5aef5c49a4462150f4e6b6ac7",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M09 action acceptance — 2026-09-21",
+          "level": 3,
+          "start": 152,
+          "end": 155,
+          "sha256": "0b52ddeab022e062e35e9ab7caef51e4693d665bc80ad76b28699e26a3fe5569",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M09 completion — 2026-09-21",
+          "level": 3,
+          "start": 156,
+          "end": 159,
+          "sha256": "b14703972c33084d6876d6fd09d4c59ef697f5cccb36840136929ae86c750971",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M10/M11 integration return points — 2026-09-21",
+          "level": 3,
+          "start": 160,
+          "end": 167,
+          "sha256": "9b94fd980bcb5829c6c1db36d770da8819348fb8a5e5128a70ddeb85f21e6653",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M10 standalone Checkbox slice — 2026-09-21",
+          "level": 3,
+          "start": 168,
+          "end": 171,
+          "sha256": "f592231905bd07700f8b93f0a9d48fdf411c6f947a9312d8ea70731c26070344",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M10 Checkbox Group/Card slice — 2026-09-21",
+          "level": 3,
+          "start": 172,
+          "end": 175,
+          "sha256": "a9d4d51f1d74f98e3c7c245b98e689f0dbfae722d68d00a949e2ce6c3a8c804c",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "Radio / Toolbar integration return point — 2026-09-21",
+          "level": 3,
+          "start": 176,
+          "end": 181,
+          "sha256": "856a9701fd43d7438a8325a169f33a43b26cebed3f3c831e694029938e74b3c2",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "Exact-parity census scope for rebuilt controls — 2026-09-21",
+          "level": 3,
+          "start": 182,
+          "end": 196,
+          "sha256": "91bbe8dcaff7b64e0784daff54ad56abe973cb1ab8085f6448db9e3171fd6a54",
+          "classification": "current-verification-disposition-with-dated-acceptance",
+          "targets": [
+            "docs/agents/verification.md",
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Keep per-family visual oracle/deviation mapping: rebuilt interfaces leave old page-shape sweep, yet keep behavior/accessibility/geometry/final visual acceptance. Historical counts and retired shapes remain historical."
+        },
+        {
+          "heading": "M10 Radio family slice — 2026-09-21",
+          "level": 3,
+          "start": 197,
+          "end": 200,
+          "sha256": "88aa0361747cbb4d9c978d65b530566dfb5d2135431adbf60785bb9509621a22",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M10 shared indicator checkpoint — 2026-09-21",
+          "level": 3,
+          "start": 201,
+          "end": 204,
+          "sha256": "b75eac50a9d28dd46fa2086394b77b65d0deaa948e1ba72d060e97766df1b11c",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M10 Segmented Control and Switch — 2026-09-21",
+          "level": 3,
+          "start": 205,
+          "end": 208,
+          "sha256": "fa5f60a9e4b1518a7f8a7fba31f7c1c47d65414da52b2a46b859e24b5b7458ea",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M10 Theme Switcher — 2026-09-21",
+          "level": 3,
+          "start": 209,
+          "end": 212,
+          "sha256": "baee261c292ae8baa4c8ea4fca73412023b66d4802ac96d9cf79fa863999488e",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M10 Tabs implementation and M22 return point — 2026-09-21",
+          "level": 3,
+          "start": 213,
+          "end": 216,
+          "sha256": "acc6bfcb5d15cf529390d5ec22ff8d4a0e1a6048945a9d8482833908c17cd642",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M10 completion — 2026-09-22",
+          "level": 3,
+          "start": 217,
+          "end": 220,
+          "sha256": "7fa67fd15a4b4ebb705f687579c86ffe4ec2afb1923a9bf220f95cb12bf5ded9",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M11 Fieldset native container and M22 return point — 2026-09-22",
+          "level": 3,
+          "start": 221,
+          "end": 224,
+          "sha256": "42a5057520f469779e70c8099315607e66286928270ddfb093ad15b13f359287",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M11 Fieldset acceptance — 2026-09-22",
+          "level": 3,
+          "start": 225,
+          "end": 228,
+          "sha256": "a2bc49d6e6a4bd2f24374b37e137fbf3c2a3131f67dc25662dd6daf32cdbb475",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M11 Label acceptance — 2026-09-22",
+          "level": 3,
+          "start": 229,
+          "end": 232,
+          "sha256": "726aaecdab53eade03c70a47560acffddb98dad4b7adc1c73e085e9ae6d04f04",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M11 Field acceptance — 2026-09-22",
+          "level": 3,
+          "start": 233,
+          "end": 236,
+          "sha256": "c4440ff39c1ecb6486595962d16f01c2101fe0e1c9a02f24be62d4ef98c5275b",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M11 text and managed-form acceptance — 2026-09-22",
+          "level": 3,
+          "start": 237,
+          "end": 243,
+          "sha256": "d66461c660f5dad28b73c959db12980af60f9c935532653455da37e669d71872",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M12 Number Input acceptance — 2026-09-22",
+          "level": 3,
+          "start": 244,
+          "end": 248,
+          "sha256": "aad7788e61eb6f2e01657a129251b40e15ce2ccefda60ff50997cd541ec8aebd",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M12 complete — 2026-09-22",
+          "level": 3,
+          "start": 249,
+          "end": 252,
+          "sha256": "9cd6b2666810967172e3e362c95964da29fd05b8af433bd3db7530ba67ecc2b6",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M13 Menu family and Split Button complete — 2026-09-22",
+          "level": 2,
+          "start": 253,
+          "end": 259,
+          "sha256": "ee7354d22ea66af57c3377b9f6252e573a35963d12a1e2b1abd7848b220357d3",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M13 selection replacement in verification — 2026-09-22",
+          "level": 2,
+          "start": 260,
+          "end": 264,
+          "sha256": "84bd6523b0deea08128f43231e332dafede86c23fd734a07cd179c5991152829",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M13 selection family complete — 2026-09-22",
+          "level": 2,
+          "start": 265,
+          "end": 269,
+          "sha256": "afc8d83d4b3ec4d495899d0223be87fcc5b5fdb449acdd5dd6331a850cf21472",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M13 Slider complete — 2026-09-22",
+          "level": 2,
+          "start": 270,
+          "end": 273,
+          "sha256": "cb3a7c271ae70a527a99b2be200bf1a675314710a6d14cd46291d57f149a6039",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M13 complete — 2026-09-23",
+          "level": 2,
+          "start": 274,
+          "end": 277,
+          "sha256": "1a34643de7fc33d526d8858fa4a0db88422ba4ef23ede49385eec15d779b5d1f",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M14 native-content and Disabled Wall slice — 2026-09-23",
+          "level": 2,
+          "start": 278,
+          "end": 281,
+          "sha256": "f0df550b6dd3fc197b52295f3a5ce871b0413b3f6390aafdea50e17cd6101429",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M14 Card/Inset/Item slice — 2026-09-23",
+          "level": 2,
+          "start": 282,
+          "end": 285,
+          "sha256": "136f854020f1047481107c1066e555d12f4892213697e075d90a5dc96ea774f8",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M14 Scroll Area slice — 2026-09-23",
+          "level": 2,
+          "start": 286,
+          "end": 289,
+          "sha256": "80fd4deaadc62acd47c219ccbb907d4e56ada8d011c7507a1dfea95ae3e60d0e",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M14 complete — 2026-09-23",
+          "level": 2,
+          "start": 290,
+          "end": 293,
+          "sha256": "3ae4d3a98b92f7deb197494f1653181d0d0702a707d175fe643356f2e17d24b3",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M15 disclosure slice complete — 2026-09-23",
+          "level": 3,
+          "start": 294,
+          "end": 297,
+          "sha256": "1cf148f1cfa40fb4b9935dd3b34d6cb125942c1270dca5ba85b0b078245f74f3",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M15 Steps and Timeline complete — 2026-09-23",
+          "level": 3,
+          "start": 298,
+          "end": 301,
+          "sha256": "6dbca0e0ce84732786026a1294d94e0bbda7133f28042bd81d7dd7591a875d8d",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M15 navigation slice complete — 2026-09-23",
+          "level": 3,
+          "start": 302,
+          "end": 305,
+          "sha256": "819ae9e5dee6de28f1376864c325c737d5a67d5e014a1e06749ac6118aa2bfb7",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "Native-dialog dependency order — 2026-09-23",
+          "level": 3,
+          "start": 306,
+          "end": 309,
+          "sha256": "476ae84718b68fffc5723c74ec99c6155eb8c3b68f100f34bcc52ba77ff38da4",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "O01/O02/O03 brought-forward slice complete — 2026-09-23",
+          "level": 3,
+          "start": 310,
+          "end": 313,
+          "sha256": "b1d78225e32e064ce56a2ab9f890448acbc31db7db4c210ddeff341ad401a3ef",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M15 complete — 2026-09-23",
+          "level": 3,
+          "start": 314,
+          "end": 318,
+          "sha256": "0d45f66932cb260fb7a4c1cdd040435aef87ee0ac14a15091a0827cbbaa54f73",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M16 TOC acceptance — 2026-09-23",
+          "level": 3,
+          "start": 319,
+          "end": 323,
+          "sha256": "afe673cbf13e9b89660b8f013a3533cf84133bdd03ff0e37b29836001eb6ff2a",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M16 Sidebar acceptance — 2026-09-23",
+          "level": 3,
+          "start": 324,
+          "end": 328,
+          "sha256": "645baad989f904ab536ffc17c323425d675c3ef480c52136b0696ec316ea2372",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M16 complete — 2026-09-23",
+          "level": 3,
+          "start": 329,
+          "end": 333,
+          "sha256": "4221fec0f039df4bcf2af75b10dbc3d7b01ef36707c732750611a5abfea4fcd0",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M17 complete — 2026-09-23",
+          "level": 3,
+          "start": 334,
+          "end": 338,
+          "sha256": "af9c3eec1d78fa116d81b5b2ce1386a454a905c3d7f2f2078210a4810198a012",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M18 message surfaces — 2026-09-23",
+          "level": 3,
+          "start": 339,
+          "end": 343,
+          "sha256": "2ed8acbfb1db3ab15524542c3a24a06a89e1479e18e3cba9edfa5e2d3d8d669a",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M18 passive display surfaces — 2026-09-23",
+          "level": 3,
+          "start": 344,
+          "end": 348,
+          "sha256": "5a583c48edc8b5596f9c58c0cff495b96cf081517db6405820eb569d146ec8c5",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M18 measurements — 2026-09-23",
+          "level": 3,
+          "start": 349,
+          "end": 353,
+          "sha256": "535c6da08f1460650e16971eb175f1b9229e2f118aca3d7f298169df2b012287",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M18 Stat family — 2026-09-23",
+          "level": 3,
+          "start": 354,
+          "end": 357,
+          "sha256": "603d7aef47f4e854c8780c5f845e9ceea8b1681145b233f430290aeae897ad62",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M18 scoped Toast — 2026-09-23",
+          "level": 3,
+          "start": 358,
+          "end": 361,
+          "sha256": "4da5d2647a5d33c7ebfe061df6cb38e1823fb8b51192aedbe6a5f9bd5d565047",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M18 completion — 2026-09-23",
+          "level": 3,
+          "start": 362,
+          "end": 365,
+          "sha256": "bba22ddded10a190c4cdc50f5dbf926912f98c9afcab60e2028fb0fa4ccdb712",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M19 completion — 2026-09-23",
+          "level": 3,
+          "start": 366,
+          "end": 369,
+          "sha256": "9025319af8a9d773f05e715fb438123e637d8cd52ec80798a53a9a9cf46a149b",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M20 chart families — 2026-09-23",
+          "level": 3,
+          "start": 370,
+          "end": 373,
+          "sha256": "75572299727d0f0a342cb2a2c88ffc5bcc7e217745f7a477423419784d1dc0e2",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M20 Flow implementation checkpoint — 2026-09-23",
+          "level": 3,
+          "start": 374,
+          "end": 377,
+          "sha256": "d13f2380b9342a23441d7e380e860cac536f37d595e33b60dc7e3dc832d45d7c",
+          "classification": "dated-failure-and-supported-runtime-disposition",
+          "targets": [
+            "tasks/done/systematization/plan.md",
+            "docs/agents/verification.md"
+          ],
+          "treatment": "Keep older Playwright Firefox155 crash and current official156 success scopes together. Preserve official sequential/Flow gate; cause of older crash stays unverified."
+        },
+        {
+          "heading": "M21 Browser and Snippet — 2026-09-23",
+          "level": 3,
+          "start": 378,
+          "end": 381,
+          "sha256": "74ac8d7ee7074e91497b4aa01cdefbed9981b52d555eb2127f1f3e3bc31e31c7",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M21 Code Block — 2026-09-23",
+          "level": 3,
+          "start": 382,
+          "end": 385,
+          "sha256": "b100c4ace785377c0d6ac6b09c90e871bf134cfab88c87e71292317f2807ba01",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M21 JSON View — 2026-09-23",
+          "level": 3,
+          "start": 386,
+          "end": 389,
+          "sha256": "1ef6872e3117f16a86f013a106cc5dc42cda1ed3e7bfcfecc4d3d22421029dd6",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M20 current Firefox acceptance — 2026-09-23",
+          "level": 3,
+          "start": 390,
+          "end": 393,
+          "sha256": "1b1e09d9e44fcf2c511b29c772e6908e199c0a7efb008407b31f970a2120f02c",
+          "classification": "dated-failure-and-supported-runtime-disposition",
+          "targets": [
+            "tasks/done/systematization/plan.md",
+            "docs/agents/verification.md"
+          ],
+          "treatment": "Keep older Playwright Firefox155 crash and current official156 success scopes together. Preserve official sequential/Flow gate; cause of older crash stays unverified."
+        },
+        {
+          "heading": "M21 Markdown — 2026-09-23",
+          "level": 3,
+          "start": 394,
+          "end": 397,
+          "sha256": "15d9c936b06ad4b0ce6f2e5c7a1bff993d07256b03b683a5bed6d89cb605fbe4",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M21 Book — 2026-09-23",
+          "level": 3,
+          "start": 398,
+          "end": 401,
+          "sha256": "f1b07dafd130d46a34d0005211869a7a801db3795da190be49a3ce3454dd72ca",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M21 Video and content batch closure — 2026-09-23",
+          "level": 3,
+          "start": 402,
+          "end": 405,
+          "sha256": "6af743430c0a380c350dfb2959a50b86cad7e69b9a8181fa23a456efdb8a8672",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M22 React package complete — 2026-09-23",
+          "level": 3,
+          "start": 406,
+          "end": 409,
+          "sha256": "d54d82d01eec7976d0e86eab88c423eebc1c678f10806e100a460adb6c21bc9a",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M23 documentation complete — 2026-09-26",
+          "level": 2,
+          "start": 410,
+          "end": 413,
+          "sha256": "c48bde75110de495d2cc4b3a4aa04e134be2e24b0f137f6d38d6265907ebdd5b",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M24 consumer tooling implemented — 2026-09-26",
+          "level": 2,
+          "start": 414,
+          "end": 417,
+          "sha256": "8a85dd980ca5d5bfab489358b24e77a9954f0e3cac716c2c80bc8c881c15f23c",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M25 local toolchain and release gates implemented — 2026-09-26",
+          "level": 2,
+          "start": 418,
+          "end": 423,
+          "sha256": "9b561524328a8ba66d0692e3ffb423abcdc0131dda2fd4602d95ed5749f68784",
+          "classification": "completed-implementation-checkpoint",
+          "targets": [
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Retain dated checkpoint, exact scope, counts, initial failure and linked evidence. Rewrite imperative continue instructions as past sequence; do not reactivate completed work."
+        },
+        {
+          "heading": "M26 final combined acceptance in progress — 2026-09-26",
+          "level": 2,
+          "start": 424,
+          "end": 431,
+          "sha256": "7de3784bf1b9bb63d81df5406daf1ab8a001fde22aef11b57fb6c2e7420267a0",
+          "classification": "completed-local-acceptance-with-original-red-run",
+          "targets": [
+            "tasks/done/systematization/plan.md",
+            "tasks/done/systematization/todo.md",
+            "docs/verification/"
+          ],
+          "treatment": "Keep 22/23 original shared run and exact targeted Intent rerun against same archive hashes. A combined acceptance result is not an original green exit. Preserve 960-to963 test progression and outstanding actual-platform limits."
+        },
+        {
+          "heading": "M26 local acceptance complete — 2026-09-26",
+          "level": 3,
+          "start": 432,
+          "end": 437,
+          "sha256": "069f93be8eafc49f6b2c2fe3b9ce372cffc181ba665ea81b90d5f2a248cb2cdf",
+          "classification": "completed-local-acceptance-with-original-red-run",
+          "targets": [
+            "tasks/done/systematization/plan.md",
+            "tasks/done/systematization/todo.md",
+            "docs/verification/"
+          ],
+          "treatment": "Keep 22/23 original shared run and exact targeted Intent rerun against same archive hashes. A combined acceptance result is not an original green exit. Preserve 960-to963 test progression and outstanding actual-platform limits."
+        },
+        {
+          "heading": "Authorized release delivery — 2026-10-20",
+          "level": 3,
+          "start": 438,
+          "end": 444,
+          "sha256": "a0bb79f6a6fbe199da08b9ba9c206c0446a80460c6ac68aece1ada328a690565",
+          "classification": "completed-release-summary",
+          "targets": [
+            "docs/releases/",
+            "tasks/done/systematization/plan.md"
+          ],
+          "treatment": "Route public package/CDN/Pages and PR4/PR6 closure to exact release records, with one short completed-plan link. Preserve published bytes/tags and actual-platform limits."
+        }
+      ],
+      "laterResolutions": [
+        "M00 compiler selected; M01-M25 implementation complete.",
+        "Core public package moves into packages/core after repeated installation defect; later browser package separates delivery due npm archive limits. Original root-package planning row is historical.",
+        "Native Dialog/AlertDialog/Drawer brought forward before Command Menu and Sidebar so old Modal/Sheet dependencies disappear atomically.",
+        "Official Firefox156 passes retained sequential Flow regression; patched155 failure remains explicit.",
+        "M26 local automation is accepted through original run plus documented targeted correction; version0.3.2 later completes external release and Pages/snapshot closure."
+      ],
+      "mustPreserve": [
+        "All milestone/slice identifiers as historical provenance and exact dated evidence links.",
+        "All failed/interrupted cases and correction rationale; do not flatten to one uninterrupted green run.",
+        "Original vs superseding package paths/versions and authorizations; do not backdate later approvals.",
+        "All 91-entry, seven-doc-unit, 150-original-tag and thirty-extension coverage meanings, distinct from runtime element counts."
+      ],
+      "unresolvedOrConditionalFollowups": [
+        "Actual OS input/IME/dictation/autofill, actual Safari/assistive technology and OS background-window behavior remain explicitly unperformed.",
+        "Known current Chromium Hover Card failure remains active in maintainer workflow specification; historical release success does not close it.",
+        "No execution-delegation or old stage restriction becomes standing permission or a new current blocker."
+      ]
+    },
+    {
+      "source": "notes/alignment/proposal-coverage.md",
+      "classification": "current-approved-migration-map-and-live-code-input-with-historical-census",
+      "recommendedCurrentOwner": "spec/component-coverage.md",
+      "purpose": "Original 150 source tags and their approved destinations, all review-group coverage, selected additions/exclusions and reference ownership.",
+      "approval": "Approved by Peter with full proposal set on 2026-09-20.",
+      "splits": [
+        {
+          "section": "Review groups",
+          "treatment": "Current spec index points to final family contract owners; pending-design/implementation labels become dated original statuses."
+        },
+        {
+          "section": "Current source-to-proposal map",
+          "treatment": "Retain all 150 original rows and tag identity. Rename heading to Original component migration map so retired names do not look current. Live removals check consumes these rows."
+        },
+        {
+          "section": "Selected additions and exclusions",
+          "treatment": "Current exclusions/approved additions belong to contract; raw original extension ledger stays immutable evidence."
+        },
+        {
+          "section": "Reference ownership and census treatment",
+          "treatment": "Keep reference ownership and visual-difference qualification as current verification contract; old house naming may be rewritten consistently without changing assigned sources."
+        },
+        {
+          "section": "Coverage verification scope",
+          "treatment": "150-class/870-hash snapshot is dated pre-migration evidence, not current census."
+        }
+      ],
+      "liveInput": {
+        "consumer": "notes/alignment/evidence/m26-audit/removals-run.ts",
+        "parser": "Lines matching /^\\| acme-/; pipe fields tag,destination,action; startsWith Remove used by removedStillRegistered.",
+        "rows": 150,
+        "disposition": "Keep current spec read or exact structured fixture extraction, as recorded in live-file-audit.json; coordinator must select final owner before removal."
+      },
+      "followups": [
+        "Do not let new summary formatting change parsed rows or remove old names that are required regression input.",
+        "Retain all thirty extension requirements and named excluded capabilities; source absence is not retirement authority."
+      ],
+      "sourceSha256": "52778fbe46dc1ed76e44b713aad4c73af1be96b74b9de1f120f7a71ffd1f3ae2",
+      "bytes": 27248,
+      "lines": 210,
+      "readCoverage": "read in full",
+      "sections": [
+        {
+          "heading": "Review groups",
+          "start": 5,
+          "end": 24,
+          "sha256": "42f0f3917f9541c3c0d0f0357797d4f17530fd5414422bb5061081078b43e475"
+        },
+        {
+          "heading": "Current source-to-proposal map",
+          "start": 25,
+          "end": 181,
+          "sha256": "d443c812e8a1ec0542ef39d0c133b4295d18783faa0853b520315dbbb05a9940"
+        },
+        {
+          "heading": "Selected additions and exclusions",
+          "start": 182,
+          "end": 187,
+          "sha256": "22e9fc196de691823dfaec29e400995593789a20f13321294f455ebcbd763167"
+        },
+        {
+          "heading": "Reference ownership and census treatment",
+          "start": 188,
+          "end": 207,
+          "sha256": "609042e882d76b325d9703c498f9142e0621f673b3dde7ecb091ed71d1c3fbea"
+        },
+        {
+          "heading": "Coverage verification scope",
+          "start": 208,
+          "end": 211,
+          "sha256": "2c677d2e873d88ed95ac41f27687b2f2dfdc88e0809c911f957d8ce84bf7f645"
+        }
+      ],
+      "evidenceLinks": [
+        "inventory.md#complete-proposal-set",
+        "proposal-questions.md",
+        "inventory/foundations.md",
+        "inventory/layout.md",
+        "inventory/typography.md",
+        "inventory/actions.md",
+        "inventory/selection.md",
+        "inventory/inputs-forms.md",
+        "inventory/surfaces.md",
+        "inventory/navigation-disclosure.md",
+        "inventory/messages-statistics.md",
+        "inventory/overlays-help.md",
+        "inventory/data-displays.md",
+        "inventory/rich-content.md",
+        "inventory/documentation-tooling.md",
+        "inventory.md#core-layout-proposal-for-review",
+        "inventory/navigation-disclosure.md#n-01-app-bar",
+        "inventory/actions.md#a-07-avatar",
+        "inventory/actions.md#a-08-avatar-group",
+        "inventory/actions.md#a-09-badge-pill-and-tag",
+        "inventory/messages-statistics.md#m-01-alert-and-banner",
+        "inventory/surfaces.md#required-recipes-and-migration-mapping",
+        "inventory/surfaces.md#required-recipes-and-migration-mapping",
+        "inventory/rich-content.md#rc-05-book",
+        "inventory/navigation-disclosure.md#n-05-breadcrumbs",
+        "inventory/navigation-disclosure.md#n-05-breadcrumbs",
+        "inventory/rich-content.md#rc-06-browser",
+        "inventory/actions.md#a-01-button",
+        "inventory.md#g-01-group",
+        "inventory/inputs-forms.md#f-08-calendar",
+        "inventory/surfaces.md#c-01-card",
+        "inventory/data-displays.md#d-03-chart",
+        "inventory/inputs-forms.md#f-09-field-fieldset-and-label",
+        "inventory/selection.md#s-01-checkbox-and-checkbox-group",
+        "inventory/actions.md#a-03-toggle-button",
+        "inventory/selection.md#s-03-checkbox-card-and-radio-card",
+        "inventory/selection.md#s-03-checkbox-card-and-radio-card",
+        "inventory/inputs-forms.md#f-01-input-and-search",
+        "inventory/typography.md#shared-typography-interface",
+        "inventory/rich-content.md#rc-01-code-block",
+        "inventory/navigation-disclosure.md#n-09-accordion-and-collapsible",
+        "inventory/navigation-disclosure.md#n-09-accordion-and-collapsible",
+        "inventory/inputs-forms.md#f-06-select-combobox-and-multi-select",
+        "inventory/inputs-forms.md#f-06-select-combobox-and-multi-select",
+        "inventory/navigation-disclosure.md#n-08-command-menu",
+        "inventory/navigation-disclosure.md#n-08-command-menu",
+        "inventory/navigation-disclosure.md#n-08-command-menu",
+        "inventory/navigation-disclosure.md#n-08-command-menu",
+        "inventory/overlays-help.md#o-05-hover-card",
+        "inventory/navigation-disclosure.md#n-07-menu-and-context-menu",
+        "inventory/actions.md#a-05-copy-button",
+        "inventory/surfaces.md#c-04-data-list",
+        "inventory/overlays-help.md#o-02-alert-dialog",
+        "inventory/surfaces.md#c-05-disabled-wall",
+        "inventory/navigation-disclosure.md#n-07-menu-and-context-menu",
+        "inventory/overlays-help.md#o-03-drawer",
+        "inventory/messages-statistics.md#m-04-empty-state",
+        "inventory/surfaces.md#c-02-item",
+        "inventory/surfaces.md#c-02-item",
+        "inventory/surfaces.md#c-02-item",
+        "inventory/messages-statistics.md#m-01-alert-and-banner",
+        "inventory/messages-statistics.md#m-01-alert-and-banner",
+        "inventory/messages-statistics.md#m-03-feedback",
+        "inventory/inputs-forms.md#f-09-field-fieldset-and-label",
+        "inventory/navigation-disclosure.md#n-06-tree-view",
+        "inventory/navigation-disclosure.md#n-06-tree-view",
+        "inventory/inputs-forms.md#f-06-select-combobox-and-multi-select",
+        "inventory/inputs-forms.md#f-06-select-combobox-and-multi-select",
+        "inventory/navigation-disclosure.md#n-09-accordion-and-collapsible",
+        "inventory/navigation-disclosure.md#n-06-tree-view",
+        "inventory/messages-statistics.md#m-06-meter",
+        "inventory.md#l-05-grid",
+        "inventory.md#l-05-grid",
+        "inventory.md#l-05-grid",
+        "inventory.md#l-05-grid",
+        "inventory.md#l-05-grid",
+        "inventory/actions.md#a-06-per-icon-elements-and-icon-tile",
+        "inventory/inputs-forms.md#f-01-input-and-search",
+        "inventory/surfaces.md#c-02-item",
+        "inventory/surfaces.md#c-02-item",
+        "inventory/rich-content.md#rc-03-json-view",
+        "inventory/typography.md#shared-typography-interface",
+        "inventory/surfaces.md#c-04-data-list",
+        "inventory/inputs-forms.md#f-09-field-fieldset-and-label",
+        "inventory/data-displays.md#d-04-sparkline-and-legend",
+        "inventory/data-displays.md#d-04-sparkline-and-legend",
+        "inventory/surfaces.md#c-01-card",
+        "inventory/navigation-disclosure.md#n-12-show-show-more-and-load-more",
+        "inventory/messages-statistics.md#m-05-spinner-progress-and-skeleton",
+        "inventory/data-displays.md#d-01-table",
+        "inventory/rich-content.md#rc-04-markdown",
+        "inventory/navigation-disclosure.md#n-07-menu-and-context-menu",
+        "inventory/navigation-disclosure.md#n-07-menu-and-context-menu",
+        "inventory/navigation-disclosure.md#n-07-menu-and-context-menu",
+        "inventory/navigation-disclosure.md#n-07-menu-and-context-menu",
+        "inventory/navigation-disclosure.md#n-07-menu-and-context-menu",
+        "inventory/messages-statistics.md#m-07-stat",
+        "inventory/messages-statistics.md#m-07-stat",
+        "inventory/typography.md#shared-typography-interface",
+        "inventory/overlays-help.md#o-01-dialog",
+        "inventory/overlays-help.md#o-01-dialog",
+        "inventory/inputs-forms.md#f-06-select-combobox-and-multi-select",
+        "inventory/inputs-forms.md#f-06-select-combobox-and-multi-select",
+        "inventory/messages-statistics.md#m-01-alert-and-banner",
+        "inventory/navigation-disclosure.md#n-01-app-bar",
+        "inventory/documentation-tooling.md#documentation-units",
+        "inventory/surfaces.md#c-01-card",
+        "inventory/surfaces.md#c-01-card",
+        "inventory/surfaces.md#c-01-card",
+        "inventory.md#l-05-grid",
+        "inventory/rich-content.md#rc-06-browser",
+        "inventory/actions.md#a-09-badge-pill-and-tag",
+        "inventory/messages-statistics.md#m-05-spinner-progress-and-skeleton",
+        "inventory/messages-statistics.md#m-01-alert-and-banner",
+        "inventory/selection.md#s-02-radio-and-radio-group",
+        "inventory/selection.md#s-02-radio-and-radio-group",
+        "inventory/typography.md#shared-typography-interface",
+        "inventory/actions.md#a-06-per-icon-elements-and-icon-tile",
+        "inventory/layout.md#l-08-scroll-area",
+        "inventory/inputs-forms.md#f-01-input-and-search",
+        "inventory/inputs-forms.md#f-06-select-combobox-and-multi-select",
+        "inventory/layout.md#l-07-separator",
+        "inventory/surfaces.md#c-02-item",
+        "inventory/surfaces.md#c-02-item",
+        "inventory/overlays-help.md#o-03-drawer",
+        "inventory/navigation-disclosure.md#n-01-app-bar",
+        "inventory/navigation-disclosure.md#n-12-show-show-more-and-load-more",
+        "inventory/navigation-disclosure.md#n-03-sidebar",
+        "inventory/messages-statistics.md#m-05-spinner-progress-and-skeleton",
+        "inventory/inputs-forms.md#f-07-slider",
+        "inventory/rich-content.md#rc-02-snippet",
+        "inventory/data-displays.md#d-04-sparkline-and-legend",
+        "inventory/messages-statistics.md#m-05-spinner-progress-and-skeleton",
+        "inventory/actions.md#a-04-split-button",
+        "inventory/actions.md#a-04-split-button",
+        "inventory/messages-statistics.md#m-07-stat",
+        "inventory/messages-statistics.md#m-07-stat",
+        "inventory/messages-statistics.md#m-07-stat",
+        "inventory/messages-statistics.md#m-07-stat",
+        "inventory/messages-statistics.md#m-07-stat",
+        "inventory/messages-statistics.md#m-08-status",
+        "inventory/messages-statistics.md#m-07-stat",
+        "inventory/navigation-disclosure.md#n-03-sidebar",
+        "inventory/selection.md#s-05-segmented-control",
+        "inventory/selection.md#s-05-segmented-control",
+        "inventory/selection.md#s-06-tabs",
+        "inventory/selection.md#s-06-tabs",
+        "inventory/data-displays.md#d-01-table",
+        "inventory/selection.md#s-06-tabs",
+        "inventory/actions.md#a-09-badge-pill-and-tag",
+        "inventory/actions.md#a-09-badge-pill-and-tag",
+        "inventory/surfaces.md#required-recipes-and-migration-mapping",
+        "inventory/surfaces.md#required-recipes-and-migration-mapping",
+        "inventory/actions.md#a-05-copy-button",
+        "inventory/inputs-forms.md#f-03-textarea",
+        "inventory/actions.md#a-10-theme-switcher",
+        "inventory/surfaces.md#required-recipes-and-migration-mapping",
+        "inventory/surfaces.md#required-recipes-and-migration-mapping",
+        "inventory/messages-statistics.md#m-02-toast-and-viewport",
+        "inventory/messages-statistics.md#m-02-toast-and-viewport",
+        "inventory/selection.md#s-04-switch",
+        "inventory/navigation-disclosure.md#n-02-toolbar",
+        "inventory/overlays-help.md#o-04-tooltip",
+        "inventory/navigation-disclosure.md#n-01-app-bar",
+        "inventory/messages-statistics.md#m-07-stat",
+        "inventory/rich-content.md#rc-07-video",
+        "evidence/full-proposal-coverage-2026-09-20.json"
+      ]
+    },
+    {
+      "source": "notes/alignment/proposal-questions.md",
+      "classification": "completed-design-decision-register-with-current-selected-outcomes",
+      "recommendedCurrentOwner": "docs/design/systematization-decisions.md",
+      "purpose": "Complete alternatives, evidence and consequences for five approved choices plus engineering recommendations removed from question queue.",
+      "approval": "Closed 2026-09-20 by Peter: I approve all proposals. No question remains pending.",
+      "splits": [
+        {
+          "section": "Q02 — Compact density treatment",
+          "treatment": "Preserve selected role-specific choice and explicit comparison values; final density requirement routes to foundations spec and decision note. The old prepare-before-asking directions are historical."
+        },
+        {
+          "section": "Q08 — Inspector scope",
+          "treatment": "Preserve read-only selected scope and excluded edits; current contract routes to tooling spec."
+        },
+        {
+          "section": "Q13 — TOC ownership of missing heading IDs",
+          "treatment": "Preserve stable authored IDs and report/omit behavior; no automatic ID mutation."
+        },
+        {
+          "section": "Q14 — Advanced Tree View scope",
+          "treatment": "Preserve approved exclusion of advanced data/editing features. Do not turn old if-Peter-needs phrasing into pending choice."
+        },
+        {
+          "section": "Q15 — Coordinated Pagination parts",
+          "treatment": "Preserve approved optional Position/Page Size parts and application ownership; earlier recipe-only option is not selected."
+        },
+        {
+          "section": "Removed from the user-question queue",
+          "treatment": "Preserve all Q01/Q03-Q07/Q09-Q12/Q16 and layout recommendations with evidence qualifications; route current requirements to relevant spec."
+        },
+        {
+          "section": "Engineering gates are not questions",
+          "treatment": "Record original phase boundary as history. Current quality requirements move to verification guidance, without perpetuating completed phase commands."
+        }
+      ],
+      "followups": [
+        "Do not reopen settled choices during workflow migration.",
+        "Q03 text says before approval, but top-level whole-set approval resolves preference status; technical evidence remains separate."
+      ],
+      "sourceSha256": "768343010dca13960ea37f6d64e99bfd1b7e60c819e1d0b0c24c921881388665",
+      "bytes": 9839,
+      "lines": 94,
+      "readCoverage": "read in full",
+      "sections": [
+        {
+          "heading": "Q02 — Compact density treatment",
+          "start": 7,
+          "end": 29,
+          "sha256": "ec1cc86dc07fd350122531e1b921b2dec3604d5d023501ddfb012d6fe486b1cf"
+        },
+        {
+          "heading": "Q08 — Inspector scope",
+          "start": 30,
+          "end": 39,
+          "sha256": "3a6f55315d2b54a4c69f2f6b5dea3c94e48f01a54046f5c01eed46701f14c738"
+        },
+        {
+          "heading": "Q13 — TOC ownership of missing heading IDs",
+          "start": 40,
+          "end": 49,
+          "sha256": "702dd329979ecf63500b1fc13c15ac95cd35197ddb1ead273f01c0f69429fcf3"
+        },
+        {
+          "heading": "Q14 — Advanced Tree View scope",
+          "start": 50,
+          "end": 59,
+          "sha256": "05a130611739545344d770db5175909248d3211feb1ce49ca1049d2122ea22ae"
+        },
+        {
+          "heading": "Q15 — Coordinated Pagination parts",
+          "start": 60,
+          "end": 69,
+          "sha256": "8792ffa3402e7b3e14069f2c3414ebe79e0e88c9c10d43c4f1e8833c509d6962"
+        },
+        {
+          "heading": "Removed from the user-question queue",
+          "start": 70,
+          "end": 89,
+          "sha256": "af4a2b08be7afddab31c546011e340c6af3a4f3f39cbff196363ba0e10fa8483"
+        },
+        {
+          "heading": "Engineering gates are not questions",
+          "start": 90,
+          "end": 95,
+          "sha256": "1844f4c8dba44ddc6871d1ff93ef3e6e99fba14dd9b46132febe7faf4a08d51c"
+        }
+      ],
+      "evidenceLinks": [
+        "../decisions/inventory-approval.md",
+        "inventory.md#complete-proposal-set",
+        "inventory/foundations.md",
+        "inventory/documentation-tooling.md#inspector",
+        "../decisions/design-system-devtools.md",
+        "inventory/navigation-disclosure.md#n-04-table-of-contents",
+        "inventory/navigation-disclosure.md#n-06-tree-view",
+        "../decisions/general-tree-view.md",
+        "inventory/data-displays.md#d-02-results-pagination",
+        "../analysis/documentation-site.md#chakra-pro-pagination-review"
+      ]
+    },
+    {
+      "source": "notes/alignment/terms.md",
+      "classification": "completed-terminology-decision-rationale-and-source-census",
+      "recommendedCurrentOwner": "docs/design/component-vocabulary.md",
+      "purpose": "Phase2 naming/disposition rationale and exact dated source counts, linked to actual canonical glossary and decision notes.",
+      "approval": "Resolved 2026-09-19 by Peter through final decision walk.",
+      "splits": [
+        {
+          "section": "Coverage",
+          "treatment": "Preserve 649-file/150-class/property/slot/event/token counts as dated source evidence and all measurement caveats."
+        },
+        {
+          "section": "Named size, dimensions and density; Shape and corner treatment; Interaction and value states; Text and content regions; Open, expanded and visible; Events; Families, suffixes and abbreviations; Other classified clusters",
+          "treatment": "Current terms live in CONTEXT.md and applicable decisions/specs; retain this complete record as provenance, not a competing glossary. Later family contracts resolve implementation questions."
+        },
+        {
+          "section": "Closure and return points",
+          "treatment": "Retire commands to start Phase3/4/5. Preserve conditional Material Progress/Chip research limits without treating them as a blocker to every future task."
+        }
+      ],
+      "followups": [
+        "Material Progress dynamic token/diagram and implementation review remains required only before new Material-based visual recommendations unless later research closes it.",
+        "Material Chips dynamic tokens and sixteen figures were not fully reviewed; no broad Chip family was adopted.",
+        "Original docs-src paths and removed names are historical census data, not active implementation paths."
+      ],
+      "sourceSha256": "5f1e20d8a2fe5bd6fd9e3d2932005058617b924d25c01f4a914de3bc8ecad687",
+      "bytes": 10160,
+      "lines": 85,
+      "readCoverage": "read in full",
+      "sections": [
+        {
+          "heading": "Coverage",
+          "start": 5,
+          "end": 12,
+          "sha256": "d66dc26b10873745f331dce099bbe58c2a9e9bc0db3f152cb0645fe399adbc62"
+        },
+        {
+          "heading": "Named size, dimensions and density",
+          "start": 13,
+          "end": 20,
+          "sha256": "7465101e2d1eb63823d8fd93aed7ec2127ed58be5128dfd34dbd8df258e24380"
+        },
+        {
+          "heading": "Shape and corner treatment",
+          "start": 21,
+          "end": 26,
+          "sha256": "5fcd3ce26fedde07dbf3c85dd03670f7f7705042e26bf8149f452266a903b674"
+        },
+        {
+          "heading": "Interaction and value states",
+          "start": 27,
+          "end": 34,
+          "sha256": "d0b9202025025bdd75c5271c739fe88e51fb6c4db837c1b4c224420d2b213627"
+        },
+        {
+          "heading": "Text and content regions",
+          "start": 35,
+          "end": 40,
+          "sha256": "b1e6af2254ce8b66957e527b5a63beafc2776499e33940c61e3c09f1efe5bb16"
+        },
+        {
+          "heading": "Open, expanded and visible",
+          "start": 41,
+          "end": 46,
+          "sha256": "3e62455af1891286430079b90e0b3f0343df6d031d57238bb5304f39d80be5bb"
+        },
+        {
+          "heading": "Events",
+          "start": 47,
+          "end": 54,
+          "sha256": "998c65644d440bb67f4a6d1f75c65db9c93a619ed8e7307d03b4662592138193"
+        },
+        {
+          "heading": "Families, suffixes and abbreviations",
+          "start": 55,
+          "end": 68,
+          "sha256": "65e96a21721e2e8700ab771965cf76f69aea7fbf672916bcb29c286301a9df97"
+        },
+        {
+          "heading": "Other classified clusters",
+          "start": 69,
+          "end": 78,
+          "sha256": "949972f52b80d397f2740c11a7abbea0fdec0875acc7361746cb782b50477220"
+        },
+        {
+          "heading": "Closure and return points",
+          "start": 79,
+          "end": 86,
+          "sha256": "43e711cc82f3c4bbc34ee4b008911e8547471a0b3604391b3a8a5ba8d97a56ae"
+        }
+      ],
+      "evidenceLinks": [
+        "evidence/phase-2-closure-2026-09-19.json",
+        "evidence/phase-2-terms-census-2026-09-19.json",
+        "../../CONTEXT.md",
+        "../decisions/named-size-vocabulary.md",
+        "../decisions/shape-vocabulary.md",
+        "../decisions/state-vocabulary.md",
+        "../decisions/text-role-vocabulary.md",
+        "../decisions/open-expanded-vocabulary.md",
+        "../decisions/event-vocabulary.md"
+      ]
+    }
+  ],
+  "additionalReadSources": [
+    "notes/decisions/inventory-approval.md",
+    "notes/decisions/browser-distribution-package.md"
+  ],
+  "crossFileFindings": [
+    {
+      "finding": "Approved current contracts are mixed with stale pre-implementation wording.",
+      "action": "Keep required behavior and approval provenance. Move dated progress to history/verification; current handoff is docs/STATUS.md."
+    },
+    {
+      "finding": "The tooling inventory lists four proposed packages; later approved browser distribution adds a fifth.",
+      "action": "Apply browser-distribution-package decision when composing final tooling/publication spec; preserve original package proposal as history."
+    },
+    {
+      "finding": "The coverage map is executable input, not only prose.",
+      "action": "Coordinate parsed row preservation and removals runner rewrite with live-file-audit.json."
+    },
+    {
+      "finding": "No current inventory file is permission for new publication or restarted completed phases.",
+      "action": "Historical scope/approval statements stay dated. Current workflow owns task boundaries."
+    },
+    {
+      "finding": "Actual-platform limits and conditional reference gaps survive released local checks.",
+      "action": "Carry explicit OS/assistive/Safari/background-window limits and conditional Material research into open issues/guidance without declaring unrelated product scope."
+    }
+  ],
+  "verification": "All18 alignment records read in full; PLAN.md selected sections2-7 read in full at lines400-1054. Source hashes and exact heading ranges are recorded. No browser, source-conformance or release checks run. Other10 alignment files are coordinator-owned and are not claimed read by this worker.",
+  "destinationNote": "Current suggested targets reflect coordinator allocation: core inventory spec/SPEC-design-system.md, family spec/SPEC-<existing slug>.md, coverage spec/component-coverage.md, questions docs/design/systematization-decisions.md, terms docs/design/component-vocabulary.md, completed migration tasks/done/systematization/{plan,todo}.md. Final ledger remains coordinator-owned.",
+  "auditRuntime": {
+    "initialReports": "1.4.0 for parsing/hashing only",
+    "current": "1.4.2",
+    "path": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun",
+    "scope": "Read-only parsing/hashing and audit report writing. No build/test/browser proof."
+  },
+  "reportValidation": {
+    "json": true,
+    "uniqueSourcePaths": true,
+    "sourceHashesMatch": true,
+    "runtime": "Bun1.4.2",
+    "sectionCoverage": {
+      "inventory": 36,
+      "migrationPlan": 72,
+      "portPlan": 23
+    }
+  },
+  "portPlanSectionAudit": {
+    "source": "PLAN.md",
+    "classification": "historical-parity-port-sections-after-standing-rules",
+    "sourceSha256": "30f919c84df8870a8ea328577e5a1836f60cb1e3c829d4310aed338837e904ac",
+    "sourceBytes": 90205,
+    "readCoverage": "Full contiguous selected range400-1054, no sampling; section1 belongs to rules agent.",
+    "readRange": {
+      "start": 400,
+      "end": 1054,
+      "bytes": 48129,
+      "sha256": "9f2c9d19f5cf13746a64a70017cad3aa6b5cec9479c81a15a4e75c1de79d14e6"
+    },
+    "recommendedHistoricalOwner": "docs/history/parity-port/plan.md",
+    "sections": [
+      {
+        "heading": "2. How we prove parity",
+        "level": 2,
+        "start": 400,
+        "end": 404,
+        "sha256": "3e940b9bffd8cf840997482e0bf2732caf2592b3399529d44e7536644a147013",
+        "classification": "historical-parity-method-with-reusable-measurement-guidance",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Retain complete old parity method as history. Current generation/comparison runbook remains tools/geist/README.md; any reusable constraint is reconciled there or docs/agents/verification.md once."
+      },
+      {
+        "heading": "Three servers",
+        "level": 3,
+        "start": 405,
+        "end": 412,
+        "sha256": "184a6e55326b0ab745941ac230eea69f0a50375361e49fd19e675b50abd90158",
+        "classification": "historical-command-snapshot",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Commands/ports are a dated runbook snapshot, not workflow startup instructions. Verify current runbook before reuse."
+      },
+      {
+        "heading": "The loop for one element",
+        "level": 3,
+        "start": 413,
+        "end": 429,
+        "sha256": "d847c48626e1688f03605653f500191fadaddc26d6ca1099b72fa0216efa78cb",
+        "classification": "historical-port-procedure",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Keep old Spec/Map/Generate/Template/Census loop for original port provenance. Do not reimpose DOM mirroring or universal zero-difference goal on rebuilt selected contracts."
+      },
+      {
+        "heading": "Reading the measurements correctly",
+        "level": 3,
+        "start": 430,
+        "end": 466,
+        "sha256": "1f0cb97a59c790c3b235ac43c9a68363bfac3bd6f2c40fe6dcb698392f037049",
+        "classification": "reusable-measurement-validity-with-dated-counts",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Keep stale result, preview-width, page-furniture and recursive CSS rule-walk lessons; reconcile compatible current oracle guidance once. Historical125-root/69-page/Tailwind counts remain dated."
+      },
+      {
+        "heading": "Accepted leftovers",
+        "level": 3,
+        "start": 467,
+        "end": 480,
+        "sha256": "ac373ce614058561906fdde177ae7d88446a84775ce911d576755dd3a7468a0e",
+        "classification": "historical-oracle-dispositions",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Retain original accepted differences and reasons with revision scope. Video remote source, wrapper geometry and reproduced quirks are not automatically current component contracts."
+      },
+      {
+        "heading": "3. Where things stand",
+        "level": 2,
+        "start": 481,
+        "end": 496,
+        "sha256": "d9d83c52590e6463813fb05c3e67c9c1d56b07b208b68bb2f6c5f16135077f56",
+        "classification": "superseded-port-status",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Preserve0.2.0 metrics/status as original dated evidence. It does not compete with docs/STATUS.md or current release records."
+      },
+      {
+        "heading": "Wave 3: overlays",
+        "level": 3,
+        "start": 497,
+        "end": 529,
+        "sha256": "d4ba122599ce895eebb7f95171273c939bb2c5ae853d74eb357d9c14672f81ba",
+        "classification": "completed-or-replaced-port-checklist",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Keep checked/unchecked original overlay list and dependency tree historically; ContextCard/Sheet/etc are retired or rebuilt under later contract."
+      },
+      {
+        "heading": "4. The measurement problem, and what actually caused it",
+        "level": 2,
+        "start": 530,
+        "end": 533,
+        "sha256": "ed4529701c03a6ee15116935180af5c0f669af696adac3c6f17b218fcff20848",
+        "classification": "historical-defect-investigation",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Preserve chronology, generator mismatch proof, CSS shorthand cause and tests."
+      },
+      {
+        "heading": "What was found",
+        "level": 3,
+        "start": 534,
+        "end": 542,
+        "sha256": "9ffb93233bcef920efb7546c290595d6be50438893bbb0d0b139ad95450d71ae",
+        "classification": "historical-stale-measurement-finding",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Keep exact dates/census values as evidence of stale corpus/source relation."
+      },
+      {
+        "heading": "The real cause: two generator bugs",
+        "level": 3,
+        "start": 543,
+        "end": 572,
+        "sha256": "377ffcb37400e66e269185efe7e1079debc80fdf005c3ec57f878f9f5a4487eb",
+        "classification": "historical-root-cause-and-regression-proof",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Retain outline-offset/transform-style reset exceptions and full NOT_RESET explanation. Current tests/source own the implementation."
+      },
+      {
+        "heading": "Where that leaves parity",
+        "level": 3,
+        "start": 573,
+        "end": 581,
+        "sha256": "75d13e7eac517cff9b3e0aa155aca3096863a14a02bb32a4d02fa8173fb34627",
+        "classification": "superseded-verification-status",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "The old nothing-known-broken/unproven-parity conclusion applies only to its snapshot; it cannot erase later failures or claim current proof."
+      },
+      {
+        "heading": "5. What has to happen next, in order",
+        "level": 2,
+        "start": 582,
+        "end": 588,
+        "sha256": "1bd0575e5720179ae9251328dd46579de579a4011aa686ba83fd3e0d409940cd",
+        "classification": "retired-active-task-queue",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Preserve paused2026-09-10 queue as history. Resolve each surviving obligation against later systematization evidence; do not resume wholesale."
+      },
+      {
+        "heading": "5.1 Re-measure the 21 pages that report differences `[ ]`",
+        "level": 3,
+        "start": 589,
+        "end": 608,
+        "sha256": "486c3ff9bc90f470887f490e5033ef7abc7d40fca93fe484aeaefedcc614a56d",
+        "classification": "historical-pending-parity-scope",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Keep21-page list and67-missing-config figure with original revision. Later per-family census dispositions determine remaining applicable coverage."
+      },
+      {
+        "heading": "5.1b Audit every measured root for page-furniture contamination `[ ]`",
+        "level": 3,
+        "start": 609,
+        "end": 655,
+        "sha256": "1c6897149676057fac450979646017ef44703714140eab92780d6eada23d19d7",
+        "classification": "historical-open-oracle-improvement-proposal",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Keep symmetric false-positive/false-negative risk, concrete code-block selector and proposed provenance.js. Do not assert implemented or reopen as approved work without checking later research; track any surviving gap explicitly."
+      },
+      {
+        "heading": "5.2 Fix what survives `[~]`",
+        "level": 3,
+        "start": 656,
+        "end": 804,
+        "sha256": "e259959969580180dac42178e59473814169b8de88e43c0a0765b0bcf2963fc0",
+        "classification": "historical-corrections-and-measurement-lessons",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Preserve each original defect/control and config recovery. Old display:contents fixes are superseded by retained-real-box contracts; record their original scope, not current guidance."
+      },
+      {
+        "heading": "5.3 Finish the last three elements, cheapest first `[ ]`",
+        "level": 3,
+        "start": 805,
+        "end": 868,
+        "sha256": "216603cf6d50f9b3ac766f3f04a334be118a96934a47bfd2421c752d9ef6c8ba",
+        "classification": "historical-port-checklist-with-superseding-contracts",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Retain ContextCard/RelativeTimeCard and Calendar capture details historically. Later Calendar and removed preview families supersede old task queue."
+      },
+      {
+        "heading": "5.4 Prove behaviour, not just styles `[ ]`",
+        "level": 3,
+        "start": 869,
+        "end": 894,
+        "sha256": "6a5609839e4001fec665d5452fda25e4064239f29d1b229a0ab5d50d65de2155",
+        "classification": "historical-browser-test-plan-with-live-quality-outcomes",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Preserve original APG/events/native-accessibility/emulation aims and source limits. Current full browser gate exists; do not portray it as absent. Any coverage gap must compare actual gate and later disposition."
+      },
+      {
+        "heading": "5.5 Compare against the live reference `[ ]`",
+        "level": 3,
+        "start": 895,
+        "end": 928,
+        "sha256": "6b550f91887039a131a6af2e16099586ad3ab285167e9ad6e45a831af10b10b6",
+        "classification": "historical-browser-operating-observations",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Keep observed frame/visibility and real-input lessons with exact scope. Old preview-pane/tool preferences do not override current host skills or tool permissions."
+      },
+      {
+        "heading": "5.6 Package and practice audits `[ ]`",
+        "level": 3,
+        "start": 929,
+        "end": 942,
+        "sha256": "171d91f501651702a27b163bc95633fda25a202972595f367a395d42e6efe7e9",
+        "classification": "historical-research-routing",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Rewrite links to allocated research records. Later selected behavior ports and manifest implementation resolve old package/adapter questions."
+      },
+      {
+        "heading": "5.7 Cleanup `[ ]`",
+        "level": 3,
+        "start": 943,
+        "end": 985,
+        "sha256": "de2eb6aa494ce86ca0c573648d6b6852c12e68f693b471448927a1c701938ba6",
+        "classification": "historical-mixed-completed-replaced-and-unresolved-checklist",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Map stylesheet rename, selective delivery, Motion, names, README fixes and rebuilt overlays to later completion. Old Select options and heading-level questions require existing decision/spec reconciliation, not silent new choices."
+      },
+      {
+        "heading": "5.8 Release",
+        "level": 3,
+        "start": 986,
+        "end": 1002,
+        "sha256": "ec7e1d52da01daafa0b760204d3bf5dc455ef02666045e3120036176d7f8d007",
+        "classification": "completed0.2-release-and-superseded-next-release-plan",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Preserve first failed tag/never-published retry chronology and0.2.0 release facts. Old next-parity release and compound commit/push/deploy instruction is historical permission context only."
+      },
+      {
+        "heading": "6. Defects found and fixed, for the record",
+        "level": 2,
+        "start": 1003,
+        "end": 1022,
+        "sha256": "c64f741ef2dd9e9891ffb746293c2f4145ffc4decc36387165394f349f16fc6b",
+        "classification": "historical-defect-ledger",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Preserve full defects/fixes table, exact old paths and verified outcomes. Mark retired components and superseded display:contents implementation as historical, not active paths or current requirements."
+      },
+      {
+        "heading": "7. Decided, and deferred",
+        "level": 2,
+        "start": 1023,
+        "end": 1054,
+        "sha256": "d792ccf8e6e2e4a9eeb065640f077e4c640299758f1c3338291612e7c749e0e8",
+        "classification": "superseded-and-conditional-decisions-history",
+        "targets": [
+          "docs/history/parity-port/plan.md"
+        ],
+        "treatment": "Preserve dated choices and later resolution links. NoRTL is superseded by selected RTL requirements; scoped registries, Group and icons are implemented. Slotted!important narrowing and later data package are not silently approved by migration."
+      }
+    ],
+    "retiredInstructions": [
+      "Root status and next-task queue from0.2.0 port.",
+      "Universal DOM/style parity procedure for components later rebuilt or retired.",
+      "Old permission sequence commit,push,docs deploy,npm release.",
+      "NoRTL and deferred Group/icons/scoped registry claims after later approved contracts and implemented acceptance.",
+      "display:contents fixes as active technique, because later real-host requirement is authoritative."
+    ],
+    "survivingEvidenceOrPotentialFollowups": [
+      "Source measurement validity needs exact revision, equal root counts, recorded configuration and controlled preview conditions.",
+      "Recursive stylesheet walk and page-furniture contamination risk remain relevant to actual future reference measurement; proposed provenance.js status is not established here.",
+      "Synthetic UI events and style-only census are insufficient behavior oracles.",
+      "Old slotted!important narrowing and separate Query/DB package are dated deferred ideas; parent reconciles later decisions before treating anything as current task."
+    ],
+    "verification": "Classification only. No live parity measurement or implementation verification is performed."
+  }
+}

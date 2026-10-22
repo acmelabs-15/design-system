@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m26-bundle",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.816Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m26-bundle/2026-09-26.json",
+      "destination": "docs/verification/systematization/m26-bundle/2026-09-26.json",
+      "bytes": 4858,
+      "sha256": "944dedd78af39a4634df8cd57a8805ac43d23a0a979850d545d3ea5109fca9a1"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/archived-index-named.js",
+      "destination": "docs/verification/systematization/m26-bundle/archived-index-named.js",
+      "bytes": 13268,
+      "sha256": "b0569051805db3f1f7c25534057f916840055cd0d3d9067bb94e4c68a2501042"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/archived-index-original.js",
+      "destination": "docs/verification/systematization/m26-bundle/archived-index-original.js",
+      "bytes": 10164,
+      "sha256": "8f726b341321a3411db2efe6e017e84f3d75892d83e66b7ce111c7b4b85c8fdd"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/archived-star-results.json",
+      "destination": "docs/verification/systematization/m26-bundle/archived-star-results.json",
+      "bytes": 4148,
+      "sha256": "a513ed5f4444e5da011309189336246cad70118d19f0148eb27022cb885fccc7"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/candidate-index.ts",
+      "destination": "docs/verification/systematization/m26-bundle/candidate-index.ts",
+      "bytes": 15571,
+      "sha256": "f9d54f9c2a5187d236d21cffd3c76b42ccb748208192e00feaade42045e4ab8e"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/minimal-single-output.js",
+      "destination": "docs/verification/systematization/m26-bundle/minimal-single-output.js",
+      "bytes": 757,
+      "sha256": "2e3956b0450c8fc98ec2d15922f9a1f16765768f76b9218d02efe0722e9985c8"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/minimal/define/example.js",
+      "destination": "docs/verification/systematization/m26-bundle/minimal/define/example.js",
+      "bytes": 111,
+      "sha256": "10e1c213a23dc171c7c7ee039a221090f4602d7696de9d5e147584e86c91b833"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/minimal/example.js",
+      "destination": "docs/verification/systematization/m26-bundle/minimal/example.js",
+      "bytes": 44,
+      "sha256": "9eb834eca70a639210e608ca461fc67fcae0249b67274956f76c6abb80d77192"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/minimal/index.js",
+      "destination": "docs/verification/systematization/m26-bundle/minimal/index.js",
+      "bytes": 30,
+      "sha256": "3ef30941ab033720ceb5a4e87912baf8fc60bec0648f2d09874f92a1870cff8b"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/minimal/package.json",
+      "destination": "docs/verification/systematization/m26-bundle/minimal/package.json",
+      "bytes": 105,
+      "sha256": "515fa03e5ae802648fd07c553dc650157ab60de0b09d56aa98800707ac17ec21"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/minimal/probe.js",
+      "destination": "docs/verification/systematization/m26-bundle/minimal/probe.js",
+      "bytes": 243,
+      "sha256": "14c8d750b693bc039b1bccee1bb0ba3e4af8f99ed2a86a372eb73edf4716c763"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/named-barrel-results.json",
+      "destination": "docs/verification/systematization/m26-bundle/named-barrel-results.json",
+      "bytes": 4259,
+      "sha256": "f5128c397cacfdd4285bb768cf918f02c28d40db0f338018d3e48b481ee18adb"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/named-runtime.ts",
+      "destination": "docs/verification/systematization/m26-bundle/named-runtime.ts",
+      "bytes": 2030,
+      "sha256": "367bbd9b7758b8eb3fd21b3accd3f42554aeef1f6a14020399941f07f254e26b"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/named-source.ts",
+      "destination": "docs/verification/systematization/m26-bundle/named-source.ts",
+      "bytes": 4297,
+      "sha256": "bd0deba9c4effd2dfc90cbe4c244a6af7695c0372b3d4ae1294eb525eb849f29"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/native-control-results.json",
+      "destination": "docs/verification/systematization/m26-bundle/native-control-results.json",
+      "bytes": 1720,
+      "sha256": "7bdad71dd7fe503a15a2666cc981f7ddac046541dedeba2e4c685aefec7ea2a5"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/native-control.ts",
+      "destination": "docs/verification/systematization/m26-bundle/native-control.ts",
+      "bytes": 2206,
+      "sha256": "0063af0ba63a17f11b21e9f1f7325a892e8083a795c4a3808d0f882372e5ff2f"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/reduce.ts",
+      "destination": "docs/verification/systematization/m26-bundle/reduce.ts",
+      "bytes": 3397,
+      "sha256": "8dc7b81ff8a37e4370a37ee2672e4d46dba0a3b683fe627e4a2f8205614a41c4"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/reduction-results.json",
+      "destination": "docs/verification/systematization/m26-bundle/reduction-results.json",
+      "bytes": 6210,
+      "sha256": "c28734013e35da154dbb85fd27e7e4d275aa41dc96319132a07691cd31961674"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/runtime-identity-results.json",
+      "destination": "docs/verification/systematization/m26-bundle/runtime-identity-results.json",
+      "bytes": 1171,
+      "sha256": "9a50710b31efc8bfd21c196cbbf68d7e8a5ed740cbeb1432064103ca9d087033"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/runtime-identity.ts",
+      "destination": "docs/verification/systematization/m26-bundle/runtime-identity.ts",
+      "bytes": 4388,
+      "sha256": "10ba02451c3a6890d74fa09d04b38563559d2422cf47e8e92102cf6401470b78"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/symbol-preservation.json",
+      "destination": "docs/verification/systematization/m26-bundle/symbol-preservation.json",
+      "bytes": 43783,
+      "sha256": "d3a7dbfcd99b97c122137f6e4d1f9d103e24006c7150c3aff2889ed592ee889c"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

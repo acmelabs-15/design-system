@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-scoped-registration",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Focused static/type and source-preservation checks pass; coordinator runtime, guard and review remain pending.",
+    "commands": [
+      {
+        "name": "lint",
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxlint/bin/oxlint --config oxlint.config.ts scripts/verification/react/defaults-check.ts scripts/verification/react/fixtures/defaults.ts scripts/verification/react/browser-check.ts scripts/verification/react/fixtures/runtime.ts scripts/verification/scoped-registration/browser-check.ts scripts/verification/scoped-registration/fixtures/registry.ts scripts/verification/flow/distributions.browser-check.ts scripts/verification/native-forms/history.browser-check.ts scripts/verification/consumer-tools/packed-browser-check.ts scripts/verification/consumer-tools/fixtures/inspector.ts scripts/verification/consumer-tools/package-check.ts scripts/verification/table/worker-consumer.browser-check.ts",
+        "exitCode": 0,
+        "outcome": "No diagnostics."
+      },
+      {
+        "name": "format",
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxfmt/bin/oxfmt --check --config oxfmt.config.ts scripts/verification/react/defaults-check.ts scripts/verification/react/fixtures/defaults.ts scripts/verification/react/browser-check.ts scripts/verification/react/fixtures/runtime.ts scripts/verification/scoped-registration/browser-check.ts scripts/verification/scoped-registration/fixtures/registry.ts scripts/verification/flow/distributions.browser-check.ts scripts/verification/native-forms/history.browser-check.ts scripts/verification/consumer-tools/packed-browser-check.ts scripts/verification/consumer-tools/fixtures/inspector.ts scripts/verification/consumer-tools/package-check.ts scripts/verification/table/worker-consumer.browser-check.ts",
+        "exitCode": 0,
+        "outcome": "All 12 owned files use the current format."
+      },
+      {
+        "name": "types",
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/typescript/bin/tsc --noEmit --strict --experimentalDecorators --useDefineForClassFields false --target ES2022 --module ESNext --moduleResolution bundler --skipLibCheck --types bun,node --jsx react-jsx scripts/verification/react/defaults-check.ts scripts/verification/react/fixtures/defaults.ts scripts/verification/react/browser-check.ts scripts/verification/react/fixtures/runtime.ts scripts/verification/scoped-registration/browser-check.ts scripts/verification/scoped-registration/fixtures/registry.ts scripts/verification/flow/distributions.browser-check.ts scripts/verification/native-forms/history.browser-check.ts scripts/verification/consumer-tools/packed-browser-check.ts scripts/verification/consumer-tools/fixtures/inspector.ts scripts/verification/consumer-tools/package-check.ts scripts/verification/table/worker-consumer.browser-check.ts",
+        "exitCode": 0,
+        "outcome": "Strict focused TypeScript check passes for all 12 owned files."
+      }
+    ],
+    "sourceReview": {
+      "passed": true,
+      "method": "Full source reads plus canonical TypeScript-AST comparison of assertions, named scenarios, wait predicates, pass/exit gates and environment overrides; types and assertion aliases normalized.",
+      "oracleCalls": 20,
+      "limits": "Does not execute browser, build, install or package behavior."
+    },
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
+  },
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [
+      {
+        "file": "scripts/verification/scoped-registration/browser-check.ts",
+        "args": [],
+        "passed": true,
+        "exitCode": 0
+      },
+      {
+        "file": "scripts/verification/scoped-registration/browser-check.ts",
+        "args": [],
+        "passed": true,
+        "exitCode": 0
+      }
+    ],
+    "manual": [],
+    "supportingScope": "",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m26-scoped/fixture.ts",
+      "destination": "scripts/verification/scoped-registration/fixtures/registry.ts",
+      "sourceSha256": "6f057accbf933d6f12acbffdf7e9312adf8d61dbda3eec801c555e9f8836caac",
+      "destinationSha256": "df0298196e648545d987792676a2731e05d6098fb7189e79f8497101bbae6220",
+      "sourceAuditBaseline": "0a379170f",
+      "changes": [
+        "Adjusted repository-root depth and moved the fixture to fixtures/registry.ts.",
+        "Added explicit fixture.js build naming so the renamed source still serves the same expected browser entry.",
+        "Reads byte-identical extracted polyfill/bootstrap text directly instead of opening the historical result JSON; bootstrap replacement is unchanged.",
+        "Default work and report paths now use .artifacts/checks/scoped-registration/; explicit environment overrides remain.",
+        "Preserved raw source identity and calculated polyfill hash in the runtime report; added missing callback/constructor types.",
+        "Fresh iframe/script load waits use equivalent one-shot event listeners and void Promise executors."
+      ],
+      "retainedQualifications": [
+        "Module/CDN/source and imperative-red modes, package identity/version comparison, timeout and three engines remain.",
+        "All registration, local-class identity, private dependency, form, style, adoption, late-definition and isolation checks remain.",
+        "Exact polyfill text, bootstrap text and replacement result match the original JSON runtime values.",
+        "Existing browser/server cleanup and aggregate failed-engine/result exit remain."
+      ]
+    },
+    {
+      "source": "notes/alignment/evidence/m26-scoped/run.ts",
+      "destination": "scripts/verification/scoped-registration/browser-check.ts",
+      "sourceSha256": "e0c08ed8f6a57ae8ab0cf97a80ad74bc3fb7d7ee57659baaffb7eee6ee40eca8",
+      "destinationSha256": "2f8a89b542fe0787b6e5ac1fb1e328645a3b04a0c90b5c2d7578bce09f77abf3",
+      "sourceAuditBaseline": "0a379170f",
+      "changes": [
+        "Adjusted repository-root depth and moved the fixture to fixtures/registry.ts.",
+        "Added explicit fixture.js build naming so the renamed source still serves the same expected browser entry.",
+        "Reads byte-identical extracted polyfill/bootstrap text directly instead of opening the historical result JSON; bootstrap replacement is unchanged.",
+        "Default work and report paths now use .artifacts/checks/scoped-registration/; explicit environment overrides remain.",
+        "Preserved raw source identity and calculated polyfill hash in the runtime report; added missing callback/constructor types.",
+        "Fresh iframe/script load waits use equivalent one-shot event listeners and void Promise executors."
+      ],
+      "retainedQualifications": [
+        "Module/CDN/source and imperative-red modes, package identity/version comparison, timeout and three engines remain.",
+        "All registration, local-class identity, private dependency, form, style, adoption, late-definition and isolation checks remain.",
+        "Exact polyfill text, bootstrap text and replacement result match the original JSON runtime values.",
+        "Existing browser/server cleanup and aggregate failed-engine/result exit remain."
+      ]
+    }
+  ],
+  "findings": [],
+  "fixtureProvenance": {
+    "source": "notes/alignment/evidence/m05-explicit-style-helper-2026-09-21.json",
+    "sourceSha256": "cf6289c90a921ab40a2847ce39149664034f2d8914ac36e18cc621613ee61d69",
+    "extracted": [
+      {
+        "field": "browser.reproduction.polyfill.js",
+        "destination": "scripts/verification/scoped-registration/fixtures/polyfill.js.txt",
+        "sha256": "e45ecb655d02737250e9088757874389c36055f7e0251093c9afea7baf887ab7",
+        "byteIdentical": true
+      },
+      {
+        "field": "browser.reproduction.bootstrap-source.js",
+        "destination": "scripts/verification/scoped-registration/fixtures/bootstrap.js.txt",
+        "sha256": "b0f46290dc295944adf2ffd25f12d5789433a7ecc1d85af9ef4206130cec6c75",
+        "byteIdentical": true
+      }
+    ],
+    "bootstrapReplacement": "await import('/suite-style.js'); -> await import('/fixture.js');",
+    "replacementResultMatchesOriginal": true
+  }
+}

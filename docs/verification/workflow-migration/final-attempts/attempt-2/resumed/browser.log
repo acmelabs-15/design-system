@@ -1,0 +1,2125 @@
+bun install v1.4.2 (744846f84)
+Resolving dependencies
+Resolved, downloaded and extracted [145]
+Saved lockfile
+
++ @acmelabs/design-system@/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz
++ @acmelabs/design-system-browser@/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-browser-0.3.2.tgz
++ @acmelabs/design-system-devtools@/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-devtools-0.3.2.tgz
++ @acmelabs/design-system-mcp@/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-mcp-0.3.2.tgz
++ @acmelabs/design-system-react@/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-react-0.3.2.tgz
++ lit@3.3.3
++ react@19.3.0
++ react-dom@19.3.0
+
+183 packages installed [10.41s]
+chromium PASS ordered style inputs reorder, remove, reassert and preserve unrelated writes
+chromium PASS Strict Mode retains actual element refs and stateful child identity
+chromium PASS native fieldset ancestor retains React-owned controls, form values and events
+chromium PASS Show mounts React branches and preserves state only when selected
+chromium PASS Tabs uses canonical mount decisions for React state retention and exit removal
+chromium PASS Collapsible removes React content after the owned exit lifetime
+chromium PASS Video renders real React track nodes into the native target
+chromium PASS removing an ordinary input restores its declared default
+chromium PASS callback refs receive React cleanup in Strict Mode and on unmount
+chromium PASS React retains host and child identity through document adoption and updates
+chromium PASS removing a React style prop preserves a newer helper owner
+chromium PASS removing an authored size restores Group inheritance
+chromium PASS unmount releases custom event callbacks on a retained element
+firefox PASS ordered style inputs reorder, remove, reassert and preserve unrelated writes
+firefox PASS Strict Mode retains actual element refs and stateful child identity
+firefox PASS native fieldset ancestor retains React-owned controls, form values and events
+firefox PASS Show mounts React branches and preserves state only when selected
+firefox PASS Tabs uses canonical mount decisions for React state retention and exit removal
+firefox PASS Collapsible removes React content after the owned exit lifetime
+firefox PASS Video renders real React track nodes into the native target
+firefox PASS removing an ordinary input restores its declared default
+firefox PASS callback refs receive React cleanup in Strict Mode and on unmount
+firefox PASS React retains host and child identity through document adoption and updates
+firefox PASS removing a React style prop preserves a newer helper owner
+firefox PASS removing an authored size restores Group inheritance
+firefox PASS unmount releases custom event callbacks on a retained element
+webkit PASS ordered style inputs reorder, remove, reassert and preserve unrelated writes
+webkit PASS Strict Mode retains actual element refs and stateful child identity
+webkit PASS native fieldset ancestor retains React-owned controls, form values and events
+webkit PASS Show mounts React branches and preserves state only when selected
+webkit PASS Tabs uses canonical mount decisions for React state retention and exit removal
+webkit PASS Collapsible removes React content after the owned exit lifetime
+webkit PASS Video renders real React track nodes into the native target
+webkit PASS removing an ordinary input restores its declared default
+webkit PASS callback refs receive React cleanup in Strict Mode and on unmount
+webkit PASS React retains host and child identity through document adoption and updates
+webkit PASS removing a React style prop preserves a newer helper owner
+webkit PASS removing an authored size restores Group inheritance
+webkit PASS unmount releases custom event callbacks on a retained element
+chromium 4319 743 0 0 0
+firefox 4319 743 0 0 0
+webkit 4319 743 0 0 0
+chromium sequential navigation checked 125 pages
+firefox isolated render checked 125 pages
+webkit sequential navigation checked 125 pages
+chromium navigation PASS
+firefox navigation PASS
+webkit navigation PASS
+chromium PASS settings-submitted
+chromium PASS integration-action
+chromium PASS metric-selected
+chromium PASS file-branch-collapsed
+chromium PASS confirmation-enabled
+chromium PASS confirmation-retry
+chromium PASS page-size-changed
+chromium PASS time-details
+chromium PASS responsive-list-detail
+chromium PASS responsive-support
+chromium PASS task-recorded
+chromium PASS virtual-cells
+chromium PASS react-virtual-cells
+firefox PASS settings-submitted
+firefox PASS integration-action
+firefox PASS metric-selected
+firefox PASS file-branch-collapsed
+firefox PASS confirmation-enabled
+firefox PASS confirmation-retry
+firefox PASS page-size-changed
+firefox PASS time-details
+firefox PASS responsive-list-detail
+firefox PASS responsive-support
+firefox PASS task-recorded
+firefox PASS virtual-cells
+firefox PASS react-virtual-cells
+webkit PASS settings-submitted
+webkit PASS integration-action
+webkit PASS metric-selected
+webkit PASS file-branch-collapsed
+webkit PASS confirmation-enabled
+webkit PASS confirmation-retry
+webkit PASS page-size-changed
+webkit PASS time-details
+webkit PASS responsive-list-detail
+webkit PASS responsive-support
+webkit PASS task-recorded
+webkit PASS virtual-cells
+webkit PASS react-virtual-cells
+Recipe native accessibility and control outcomes PASS
+chromium copied 5
+firefox copied 5
+webkit copied 5
+chromium copied 15
+firefox copied 15
+webkit copied 15
+chromium 6 PASS
+firefox 6 PASS
+webkit 6 PASS
+chromium primary horizontal PASS
+chromium primary vertical PASS
+chromium inset horizontal PASS
+chromium inset vertical PASS
+firefox primary horizontal PASS
+firefox primary vertical PASS
+firefox inset horizontal PASS
+firefox inset vertical PASS
+webkit primary horizontal PASS
+webkit primary vertical PASS
+webkit inset horizontal PASS
+webkit inset vertical PASS
+chromium 13 packed checks passed
+firefox 13 packed checks passed
+webkit 13 packed checks passed
+Intent 7 skills 4343 release records passed
+MCP full release 8 checks passed
+chromium lit 8 PASS
+chromium react 8 PASS
+firefox lit 8 PASS
+firefox react 8 PASS
+webkit lit 8 PASS
+webkit react 8 PASS
+chromium {"engine":"chromium","version":"153.0.8010.12","mode":"fresh-document-history-restoration","before":{"instance":"f88e7e15-c678-4950-9ca7-0dd7c5b44bf4","pageshow":[false],"navigation":"navigate","native":"native-typed-history","custom":"custom-typed-history","inner":"custom-typed-history","form":[["native","native-typed-history"],["custom","custom-typed-history"]]},"after":{"instance":"775099e0-c23e-4de7-92b3-1a93b55f7c0a","pageshow":[false],"navigation":"back_forward","native":"native-typed-history","custom":"custom-typed-history","inner":"custom-typed-history","form":[["native","native-typed-history"],["custom","custom-typed-history"]]},"nativeRestored":true,"customRestored":true,"errors":[],"pass":true}
+firefox {"engine":"firefox","version":"155.0","mode":"fresh-document-history-restoration","before":{"instance":"3c86dc79-7435-447f-8b59-ef7765a2e17e","pageshow":[false],"navigation":"navigate","native":"native-typed-history","custom":"custom-typed-history","inner":"custom-typed-history","form":[["native","native-typed-history"],["custom","custom-typed-history"]]},"after":{"instance":"038032a8-b229-4e28-bca9-5749fbf4dea8","pageshow":[false],"navigation":"back_forward","native":"native-typed-history","custom":"custom-typed-history","inner":"custom-typed-history","form":[["native","native-typed-history"],["custom","custom-typed-history"]]},"nativeRestored":true,"customRestored":true,"errors":[],"pass":true}
+webkit {"engine":"webkit","version":"26.6","mode":"fresh-document-history-restoration","before":{"instance":"a3e1f0e6-55c9-47d0-855e-9b90e4fc215c","pageshow":[false],"navigation":"navigate","native":"native-typed-history","custom":"custom-typed-history","inner":"custom-typed-history","form":[["native","native-typed-history"],["custom","custom-typed-history"]]},"after":{"instance":"43fb4eb3-bed4-49c2-a845-71098fe486e5","pageshow":[false],"navigation":"back_forward","native":"native-typed-history","custom":"custom-typed-history","inner":"custom-typed-history","form":[["native","native-typed-history"],["custom","custom-typed-history"]]},"nativeRestored":true,"customRestored":true,"errors":[],"pass":true}
+{
+  originalTags: 150,
+  removedOrRenamed: 79,
+  findings: 0,
+  removedExports: [],
+}
+patched []
+published [
+  {
+    file: "examples/table/data.ts",
+    line: 25,
+    code: 2353,
+    message: "Object literal may only specify known properties, and 'reviewFeature' does not exist in type 'TableFeatures & { aggregationFns?: Record<string, AggregationFnDef<any, any, any, any>> | undefined; expandedRowModel?: ((table: any) => () => RowModel<...>) | undefined; ... 11 more ...; globalFilteringFeature?: TableFeature | undefined; }'.",
+  },
+  {
+    file: "examples/table/data.ts",
+    line: 63,
+    code: 2322,
+    message: "Type '\"sum\"' is not assignable to type 'AggregationFnOption<TableFeatures, Delivery, unknown> | undefined'.",
+  },
+  {
+    file: "examples/table/review-feature.ts",
+    line: 24,
+    code: 2322,
+    message: "Type '<TFeatures extends TableFeatures, TData extends RowData>(table: Table<TFeatures, TData>) => { onReviewedIdsChange: (updater: (old: never) => never) => void; }' is not assignable to type '<TFeatures extends TableFeatures, TData extends RowData>(table: Table<TFeatures, TData>) => Partial<TableOptions_All<TFeatures, TData>>'.\n  Call signature return types '{ onReviewedIdsChange: (updater: (old: never) => never) => void; }' and 'Partial<TableOptions_All<TFeatures, TData>>' are incompatible.\n    The types of 'onReviewedIdsChange' are incompatible between these types.\n      Type '(updater: (old: never) => never) => void' is not assignable to type 'OnChangeFn<string[]>'.\n        Types of parameters 'updater' and 'updaterOrValue' are incompatible.\n          Type 'Updater<string[]>' is not assignable to type '(old: never) => never'.\n            Type 'string[]' is not assignable to type '(old: never) => never'.\n              Type 'string[]' provides no match for the signature '(old: never): never'.",
+  },
+  {
+    file: "examples/table/review-feature.ts",
+    line: 27,
+    code: 2345,
+    message: "Argument of type 'string' is not assignable to parameter of type 'keyof TFeatures & string'.\n  Type 'string' is not assignable to type 'keyof TFeatures'.\n    Type '\"reviewFeature\"' is not assignable to type '\"cellSelectionFeature\" | \"cellSpanningFeature\" | \"columnFilteringFeature\" | \"columnGroupingFeature\" | \"columnOrderingFeature\" | \"columnPinningFeature\" | \"columnResizingFeature\" | ... 32 more ... | \"coreTablesFeature\"'.",
+  }
+]
+chromium {
+  defaults: 704,
+  defaultFailures: [],
+  aria: 736,
+  ariaFailures: [],
+}
+firefox {
+  defaults: 704,
+  defaultFailures: [],
+  aria: 736,
+  ariaFailures: [],
+}
+webkit {
+  defaults: 704,
+  defaultFailures: [],
+  aria: 736,
+  ariaFailures: [],
+}
+{
+  "date": "2026-10-22T07:52:57.692Z",
+  "runtime": "1.4.2",
+  "package": {
+    "name": "@acmelabs/design-system",
+    "version": "0.3.2",
+    "path": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-ci-consumer-wwCY7k/node_modules/@acmelabs/design-system",
+    "source": false,
+    "cdn": false,
+    "imperativeRed": false
+  },
+  "polyfill": {
+    "version": "0.0.10",
+    "source": "docs/verification/systematization/m05-explicit-style-helper-2026-09-21.json#/browser/reproduction/polyfill.js",
+    "sha256": "e45ecb655d02737250e9088757874389c36055f7e0251093c9afea7baf887ab7"
+  },
+  "engines": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "errors": [],
+      "mode": "native",
+      "results": [
+        {
+          "name": "class-only imports do not register global definitions",
+          "pass": true,
+          "observed": {}
+        },
+        {
+          "name": "two registries resolve identical public names to independent classes",
+          "pass": true,
+          "observed": {
+            "global": null,
+            "markers": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "owned loading indicator uses its enclosing registration scope",
+          "pass": true,
+          "observed": [
+            {
+              "tag": "ACME-SPINNER",
+              "constructor": "Spinner",
+              "rendered": true,
+              "registryNative": true
+            },
+            {
+              "tag": "ACME-SPINNER",
+              "constructor": "Spinner",
+              "rendered": true,
+              "registryNative": true
+            }
+          ]
+        },
+        {
+          "name": "private owned dependency registers and renders in each local scope",
+          "pass": true,
+          "observed": [
+            {
+              "constructor": "AcmeSelectionIndicator",
+              "rendered": true
+            },
+            {
+              "constructor": "AcmeSelectionIndicator",
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "name": "scoped Tabs updates selection through its owned family",
+          "pass": true,
+          "observed": {
+            "value": "second",
+            "selected": "true"
+          }
+        },
+        {
+          "name": "Markdown creates its Scroll Area and Viewport in the local registry",
+          "pass": true,
+          "observed": {
+            "area": "AcmeScrollArea",
+            "viewport": "AcmeScrollViewport",
+            "rendered": true
+          }
+        },
+        {
+          "name": "JSONView creates its disclosure icon in the local registry",
+          "pass": true,
+          "observed": {
+            "constructor": "AcmeChevronRightIcon",
+            "rendered": true
+          }
+        },
+        {
+          "name": "explicit registration rejects an unrelated constructor",
+          "pass": true,
+          "observed": {
+            "rejected": true
+          }
+        },
+        {
+          "name": "scoped control submits its current value synchronously",
+          "pass": true,
+          "observed": {
+            "entries": [
+              [
+                "value",
+                "before"
+              ]
+            ]
+          }
+        },
+        {
+          "name": "scoped Box applies its public style input",
+          "pass": true,
+          "observed": {
+            "padding": "12px",
+            "sheetCount": 3
+          }
+        },
+        {
+          "name": "reconnect preserves identity and state",
+          "pass": true,
+          "observed": {
+            "value": "reconnected"
+          }
+        },
+        {
+          "name": "adoption preserves form, state and destination-owned styles",
+          "pass": true,
+          "observed": {
+            "value": "adopted",
+            "padding": "17px",
+            "sheets": 3,
+            "newSheets": true
+          }
+        },
+        {
+          "name": "imperative owned elements created after adoption use local classes and destination document",
+          "pass": true,
+          "observed": {
+            "newArea": true,
+            "area": "AcmeScrollArea",
+            "viewport": "AcmeScrollViewport",
+            "icons": [
+              "AcmeChevronRightIcon",
+              "AcmeChevronRightIcon",
+              "AcmeChevronRightIcon"
+            ]
+          }
+        },
+        {
+          "name": "new owned child after adoption retains local registry and destination document",
+          "pass": true,
+          "observed": {
+            "constructor": "Spinner",
+            "rendered": true
+          }
+        },
+        {
+          "name": "return adoption restores styles and updates",
+          "pass": true,
+          "observed": {
+            "padding": "19px",
+            "sameSheets": false
+          }
+        },
+        {
+          "name": "late definition before adoption upgrades core class",
+          "pass": true,
+          "observed": {
+            "constructor": "LateBox"
+          }
+        },
+        {
+          "name": "registration remains globally isolated",
+          "pass": true,
+          "observed": {}
+        }
+      ],
+      "lateAfterAdoption": {
+        "core": {
+          "automatic": true,
+          "afterExplicitUpgrade": true,
+          "marker": true,
+          "ownerDocument": true
+        },
+        "plain": {
+          "automatic": true,
+          "afterExplicitUpgrade": true,
+          "marker": true,
+          "ownerDocument": true
+        }
+      }
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "errors": [],
+      "mode": "polyfill",
+      "results": [
+        {
+          "name": "class-only imports do not register global definitions",
+          "pass": true,
+          "observed": {}
+        },
+        {
+          "name": "two registries resolve identical public names to independent classes",
+          "pass": true,
+          "observed": {
+            "global": null,
+            "markers": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "owned loading indicator uses its enclosing registration scope",
+          "pass": true,
+          "observed": [
+            {
+              "tag": "ACME-SPINNER",
+              "constructor": "Spinner",
+              "rendered": true,
+              "registryNative": false
+            },
+            {
+              "tag": "ACME-SPINNER",
+              "constructor": "Spinner",
+              "rendered": true,
+              "registryNative": false
+            }
+          ]
+        },
+        {
+          "name": "private owned dependency registers and renders in each local scope",
+          "pass": true,
+          "observed": [
+            {
+              "constructor": "AcmeSelectionIndicator",
+              "rendered": true
+            },
+            {
+              "constructor": "AcmeSelectionIndicator",
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "name": "scoped Tabs updates selection through its owned family",
+          "pass": true,
+          "observed": {
+            "value": "second",
+            "selected": "true"
+          }
+        },
+        {
+          "name": "Markdown creates its Scroll Area and Viewport in the local registry",
+          "pass": true,
+          "observed": {
+            "area": "AcmeScrollArea",
+            "viewport": "AcmeScrollViewport",
+            "rendered": true
+          }
+        },
+        {
+          "name": "JSONView creates its disclosure icon in the local registry",
+          "pass": true,
+          "observed": {
+            "constructor": "AcmeChevronRightIcon",
+            "rendered": true
+          }
+        },
+        {
+          "name": "explicit registration rejects an unrelated constructor",
+          "pass": true,
+          "observed": {
+            "rejected": true
+          }
+        },
+        {
+          "name": "scoped control submits its current value synchronously",
+          "pass": true,
+          "observed": {
+            "entries": [
+              [
+                "value",
+                "before"
+              ]
+            ]
+          }
+        },
+        {
+          "name": "scoped Box applies its public style input",
+          "pass": true,
+          "observed": {
+            "padding": "12px",
+            "sheetCount": 3
+          }
+        },
+        {
+          "name": "reconnect preserves identity and state",
+          "pass": true,
+          "observed": {
+            "value": "reconnected"
+          }
+        },
+        {
+          "name": "adoption preserves form, state and destination-owned styles",
+          "pass": true,
+          "observed": {
+            "value": "adopted",
+            "padding": "17px",
+            "sheets": 3,
+            "newSheets": true
+          }
+        },
+        {
+          "name": "imperative owned elements created after adoption use local classes and destination document",
+          "pass": true,
+          "observed": {
+            "newArea": true,
+            "area": "AcmeScrollArea",
+            "viewport": "AcmeScrollViewport",
+            "icons": [
+              "AcmeChevronRightIcon",
+              "AcmeChevronRightIcon",
+              "AcmeChevronRightIcon"
+            ]
+          }
+        },
+        {
+          "name": "new owned child after adoption retains local registry and destination document",
+          "pass": true,
+          "observed": {
+            "constructor": "Spinner",
+            "rendered": true
+          }
+        },
+        {
+          "name": "return adoption restores styles and updates",
+          "pass": true,
+          "observed": {
+            "padding": "19px",
+            "sameSheets": false
+          }
+        },
+        {
+          "name": "late definition before adoption upgrades core class",
+          "pass": true,
+          "observed": {
+            "constructor": "LateBox"
+          }
+        },
+        {
+          "name": "registration remains globally isolated",
+          "pass": true,
+          "observed": {}
+        }
+      ],
+      "lateAfterAdoption": {
+        "core": {
+          "automatic": false,
+          "afterExplicitUpgrade": false,
+          "marker": null,
+          "ownerDocument": true
+        },
+        "plain": {
+          "automatic": false,
+          "afterExplicitUpgrade": false,
+          "marker": null,
+          "ownerDocument": true
+        },
+        "bothDocumentsPolyfilled": {
+          "automatic": false,
+          "afterExplicitUpgrade": false,
+          "marker": null,
+          "ownerDocument": true
+        }
+      }
+    },
+    {
+      "name": "webkit",
+      "version": "26.6",
+      "errors": [],
+      "mode": "native",
+      "results": [
+        {
+          "name": "class-only imports do not register global definitions",
+          "pass": true,
+          "observed": {}
+        },
+        {
+          "name": "two registries resolve identical public names to independent classes",
+          "pass": true,
+          "observed": {
+            "global": null,
+            "markers": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "owned loading indicator uses its enclosing registration scope",
+          "pass": true,
+          "observed": [
+            {
+              "tag": "ACME-SPINNER",
+              "constructor": "Spinner",
+              "rendered": true,
+              "registryNative": true
+            },
+            {
+              "tag": "ACME-SPINNER",
+              "constructor": "Spinner",
+              "rendered": true,
+              "registryNative": true
+            }
+          ]
+        },
+        {
+          "name": "private owned dependency registers and renders in each local scope",
+          "pass": true,
+          "observed": [
+            {
+              "constructor": "AcmeSelectionIndicator",
+              "rendered": true
+            },
+            {
+              "constructor": "AcmeSelectionIndicator",
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "name": "scoped Tabs updates selection through its owned family",
+          "pass": true,
+          "observed": {
+            "value": "second",
+            "selected": "true"
+          }
+        },
+        {
+          "name": "Markdown creates its Scroll Area and Viewport in the local registry",
+          "pass": true,
+          "observed": {
+            "area": "AcmeScrollArea",
+            "viewport": "AcmeScrollViewport",
+            "rendered": true
+          }
+        },
+        {
+          "name": "JSONView creates its disclosure icon in the local registry",
+          "pass": true,
+          "observed": {
+            "constructor": "AcmeChevronRightIcon",
+            "rendered": true
+          }
+        },
+        {
+          "name": "explicit registration rejects an unrelated constructor",
+          "pass": true,
+          "observed": {
+            "rejected": true
+          }
+        },
+        {
+          "name": "scoped control submits its current value synchronously",
+          "pass": true,
+          "observed": {
+            "entries": [
+              [
+                "value",
+                "before"
+              ]
+            ]
+          }
+        },
+        {
+          "name": "scoped Box applies its public style input",
+          "pass": true,
+          "observed": {
+            "padding": "12px",
+            "sheetCount": 3
+          }
+        },
+        {
+          "name": "reconnect preserves identity and state",
+          "pass": true,
+          "observed": {
+            "value": "reconnected"
+          }
+        },
+        {
+          "name": "adoption preserves form, state and destination-owned styles",
+          "pass": true,
+          "observed": {
+            "value": "adopted",
+            "padding": "17px",
+            "sheets": 3,
+            "newSheets": true
+          }
+        },
+        {
+          "name": "imperative owned elements created after adoption use local classes and destination document",
+          "pass": true,
+          "observed": {
+            "newArea": true,
+            "area": "AcmeScrollArea",
+            "viewport": "AcmeScrollViewport",
+            "icons": [
+              "AcmeChevronRightIcon",
+              "AcmeChevronRightIcon",
+              "AcmeChevronRightIcon"
+            ]
+          }
+        },
+        {
+          "name": "new owned child after adoption retains local registry and destination document",
+          "pass": true,
+          "observed": {
+            "constructor": "Spinner",
+            "rendered": true
+          }
+        },
+        {
+          "name": "return adoption restores styles and updates",
+          "pass": true,
+          "observed": {
+            "padding": "19px",
+            "sameSheets": false
+          }
+        },
+        {
+          "name": "late definition before adoption upgrades core class",
+          "pass": true,
+          "observed": {
+            "constructor": "LateBox"
+          }
+        },
+        {
+          "name": "registration remains globally isolated",
+          "pass": true,
+          "observed": {}
+        }
+      ],
+      "lateAfterAdoption": {
+        "core": {
+          "automatic": true,
+          "afterExplicitUpgrade": true,
+          "marker": true,
+          "ownerDocument": true
+        },
+        "plain": {
+          "automatic": true,
+          "afterExplicitUpgrade": true,
+          "marker": true,
+          "ownerDocument": true
+        }
+      }
+    }
+  ]
+}
+{
+  "date": "2026-10-22T07:53:01.646Z",
+  "runtime": "1.4.2",
+  "package": {
+    "name": "@acmelabs/design-system",
+    "version": "0.3.2",
+    "path": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-ci-consumer-wwCY7k/node_modules/@acmelabs/design-system",
+    "source": false,
+    "cdn": true,
+    "imperativeRed": false
+  },
+  "browserModuleRoot": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-ci-consumer-wwCY7k/node_modules/@acmelabs/design-system-browser/dist",
+  "polyfill": {
+    "version": "0.0.10",
+    "source": "docs/verification/systematization/m05-explicit-style-helper-2026-09-21.json#/browser/reproduction/polyfill.js",
+    "sha256": "e45ecb655d02737250e9088757874389c36055f7e0251093c9afea7baf887ab7"
+  },
+  "engines": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "errors": [],
+      "mode": "native",
+      "results": [
+        {
+          "name": "class-only imports do not register global definitions",
+          "pass": true,
+          "observed": {}
+        },
+        {
+          "name": "two registries resolve identical public names to independent classes",
+          "pass": true,
+          "observed": {
+            "global": null,
+            "markers": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "owned loading indicator uses its enclosing registration scope",
+          "pass": true,
+          "observed": [
+            {
+              "tag": "ACME-SPINNER",
+              "constructor": "Spinner",
+              "rendered": true,
+              "registryNative": true
+            },
+            {
+              "tag": "ACME-SPINNER",
+              "constructor": "Spinner",
+              "rendered": true,
+              "registryNative": true
+            }
+          ]
+        },
+        {
+          "name": "private owned dependency registers and renders in each local scope",
+          "pass": true,
+          "observed": [
+            {
+              "constructor": "Fe",
+              "rendered": true
+            },
+            {
+              "constructor": "Fe",
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "name": "scoped Tabs updates selection through its owned family",
+          "pass": true,
+          "observed": {
+            "value": "second",
+            "selected": "true"
+          }
+        },
+        {
+          "name": "Markdown creates its Scroll Area and Viewport in the local registry",
+          "pass": true,
+          "observed": {
+            "area": "Me",
+            "viewport": "pd0",
+            "rendered": true
+          }
+        },
+        {
+          "name": "JSONView creates its disclosure icon in the local registry",
+          "pass": true,
+          "observed": {
+            "constructor": "_d0",
+            "rendered": true
+          }
+        },
+        {
+          "name": "explicit registration rejects an unrelated constructor",
+          "pass": true,
+          "observed": {
+            "rejected": true
+          }
+        },
+        {
+          "name": "scoped control submits its current value synchronously",
+          "pass": true,
+          "observed": {
+            "entries": [
+              [
+                "value",
+                "before"
+              ]
+            ]
+          }
+        },
+        {
+          "name": "scoped Box applies its public style input",
+          "pass": true,
+          "observed": {
+            "padding": "12px",
+            "sheetCount": 3
+          }
+        },
+        {
+          "name": "reconnect preserves identity and state",
+          "pass": true,
+          "observed": {
+            "value": "reconnected"
+          }
+        },
+        {
+          "name": "adoption preserves form, state and destination-owned styles",
+          "pass": true,
+          "observed": {
+            "value": "adopted",
+            "padding": "17px",
+            "sheets": 3,
+            "newSheets": true
+          }
+        },
+        {
+          "name": "imperative owned elements created after adoption use local classes and destination document",
+          "pass": true,
+          "observed": {
+            "newArea": true,
+            "area": "Me",
+            "viewport": "pd0",
+            "icons": [
+              "_d0",
+              "_d0",
+              "_d0"
+            ]
+          }
+        },
+        {
+          "name": "new owned child after adoption retains local registry and destination document",
+          "pass": true,
+          "observed": {
+            "constructor": "Spinner",
+            "rendered": true
+          }
+        },
+        {
+          "name": "return adoption restores styles and updates",
+          "pass": true,
+          "observed": {
+            "padding": "19px",
+            "sameSheets": false
+          }
+        },
+        {
+          "name": "late definition before adoption upgrades core class",
+          "pass": true,
+          "observed": {
+            "constructor": "LateBox"
+          }
+        },
+        {
+          "name": "registration remains globally isolated",
+          "pass": true,
+          "observed": {}
+        }
+      ],
+      "lateAfterAdoption": {
+        "core": {
+          "automatic": true,
+          "afterExplicitUpgrade": true,
+          "marker": true,
+          "ownerDocument": true
+        },
+        "plain": {
+          "automatic": true,
+          "afterExplicitUpgrade": true,
+          "marker": true,
+          "ownerDocument": true
+        }
+      }
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "errors": [],
+      "mode": "polyfill",
+      "results": [
+        {
+          "name": "class-only imports do not register global definitions",
+          "pass": true,
+          "observed": {}
+        },
+        {
+          "name": "two registries resolve identical public names to independent classes",
+          "pass": true,
+          "observed": {
+            "global": null,
+            "markers": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "owned loading indicator uses its enclosing registration scope",
+          "pass": true,
+          "observed": [
+            {
+              "tag": "ACME-SPINNER",
+              "constructor": "Spinner",
+              "rendered": true,
+              "registryNative": false
+            },
+            {
+              "tag": "ACME-SPINNER",
+              "constructor": "Spinner",
+              "rendered": true,
+              "registryNative": false
+            }
+          ]
+        },
+        {
+          "name": "private owned dependency registers and renders in each local scope",
+          "pass": true,
+          "observed": [
+            {
+              "constructor": "Fe",
+              "rendered": true
+            },
+            {
+              "constructor": "Fe",
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "name": "scoped Tabs updates selection through its owned family",
+          "pass": true,
+          "observed": {
+            "value": "second",
+            "selected": "true"
+          }
+        },
+        {
+          "name": "Markdown creates its Scroll Area and Viewport in the local registry",
+          "pass": true,
+          "observed": {
+            "area": "Me",
+            "viewport": "pd0",
+            "rendered": true
+          }
+        },
+        {
+          "name": "JSONView creates its disclosure icon in the local registry",
+          "pass": true,
+          "observed": {
+            "constructor": "_d0",
+            "rendered": true
+          }
+        },
+        {
+          "name": "explicit registration rejects an unrelated constructor",
+          "pass": true,
+          "observed": {
+            "rejected": true
+          }
+        },
+        {
+          "name": "scoped control submits its current value synchronously",
+          "pass": true,
+          "observed": {
+            "entries": [
+              [
+                "value",
+                "before"
+              ]
+            ]
+          }
+        },
+        {
+          "name": "scoped Box applies its public style input",
+          "pass": true,
+          "observed": {
+            "padding": "12px",
+            "sheetCount": 3
+          }
+        },
+        {
+          "name": "reconnect preserves identity and state",
+          "pass": true,
+          "observed": {
+            "value": "reconnected"
+          }
+        },
+        {
+          "name": "adoption preserves form, state and destination-owned styles",
+          "pass": true,
+          "observed": {
+            "value": "adopted",
+            "padding": "17px",
+            "sheets": 3,
+            "newSheets": true
+          }
+        },
+        {
+          "name": "imperative owned elements created after adoption use local classes and destination document",
+          "pass": true,
+          "observed": {
+            "newArea": true,
+            "area": "Me",
+            "viewport": "pd0",
+            "icons": [
+              "_d0",
+              "_d0",
+              "_d0"
+            ]
+          }
+        },
+        {
+          "name": "new owned child after adoption retains local registry and destination document",
+          "pass": true,
+          "observed": {
+            "constructor": "Spinner",
+            "rendered": true
+          }
+        },
+        {
+          "name": "return adoption restores styles and updates",
+          "pass": true,
+          "observed": {
+            "padding": "19px",
+            "sameSheets": false
+          }
+        },
+        {
+          "name": "late definition before adoption upgrades core class",
+          "pass": true,
+          "observed": {
+            "constructor": "LateBox"
+          }
+        },
+        {
+          "name": "registration remains globally isolated",
+          "pass": true,
+          "observed": {}
+        }
+      ],
+      "lateAfterAdoption": {
+        "core": {
+          "automatic": false,
+          "afterExplicitUpgrade": false,
+          "marker": null,
+          "ownerDocument": true
+        },
+        "plain": {
+          "automatic": false,
+          "afterExplicitUpgrade": false,
+          "marker": null,
+          "ownerDocument": true
+        },
+        "bothDocumentsPolyfilled": {
+          "automatic": false,
+          "afterExplicitUpgrade": false,
+          "marker": null,
+          "ownerDocument": true
+        }
+      }
+    },
+    {
+      "name": "webkit",
+      "version": "26.6",
+      "errors": [],
+      "mode": "native",
+      "results": [
+        {
+          "name": "class-only imports do not register global definitions",
+          "pass": true,
+          "observed": {}
+        },
+        {
+          "name": "two registries resolve identical public names to independent classes",
+          "pass": true,
+          "observed": {
+            "global": null,
+            "markers": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "owned loading indicator uses its enclosing registration scope",
+          "pass": true,
+          "observed": [
+            {
+              "tag": "ACME-SPINNER",
+              "constructor": "Spinner",
+              "rendered": true,
+              "registryNative": true
+            },
+            {
+              "tag": "ACME-SPINNER",
+              "constructor": "Spinner",
+              "rendered": true,
+              "registryNative": true
+            }
+          ]
+        },
+        {
+          "name": "private owned dependency registers and renders in each local scope",
+          "pass": true,
+          "observed": [
+            {
+              "constructor": "Fe",
+              "rendered": true
+            },
+            {
+              "constructor": "Fe",
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "name": "scoped Tabs updates selection through its owned family",
+          "pass": true,
+          "observed": {
+            "value": "second",
+            "selected": "true"
+          }
+        },
+        {
+          "name": "Markdown creates its Scroll Area and Viewport in the local registry",
+          "pass": true,
+          "observed": {
+            "area": "Me",
+            "viewport": "pd0",
+            "rendered": true
+          }
+        },
+        {
+          "name": "JSONView creates its disclosure icon in the local registry",
+          "pass": true,
+          "observed": {
+            "constructor": "_d0",
+            "rendered": true
+          }
+        },
+        {
+          "name": "explicit registration rejects an unrelated constructor",
+          "pass": true,
+          "observed": {
+            "rejected": true
+          }
+        },
+        {
+          "name": "scoped control submits its current value synchronously",
+          "pass": true,
+          "observed": {
+            "entries": [
+              [
+                "value",
+                "before"
+              ]
+            ]
+          }
+        },
+        {
+          "name": "scoped Box applies its public style input",
+          "pass": true,
+          "observed": {
+            "padding": "12px",
+            "sheetCount": 3
+          }
+        },
+        {
+          "name": "reconnect preserves identity and state",
+          "pass": true,
+          "observed": {
+            "value": "reconnected"
+          }
+        },
+        {
+          "name": "adoption preserves form, state and destination-owned styles",
+          "pass": true,
+          "observed": {
+            "value": "adopted",
+            "padding": "17px",
+            "sheets": 3,
+            "newSheets": true
+          }
+        },
+        {
+          "name": "imperative owned elements created after adoption use local classes and destination document",
+          "pass": true,
+          "observed": {
+            "newArea": true,
+            "area": "Me",
+            "viewport": "pd0",
+            "icons": [
+              "_d0",
+              "_d0",
+              "_d0"
+            ]
+          }
+        },
+        {
+          "name": "new owned child after adoption retains local registry and destination document",
+          "pass": true,
+          "observed": {
+            "constructor": "Spinner",
+            "rendered": true
+          }
+        },
+        {
+          "name": "return adoption restores styles and updates",
+          "pass": true,
+          "observed": {
+            "padding": "19px",
+            "sameSheets": false
+          }
+        },
+        {
+          "name": "late definition before adoption upgrades core class",
+          "pass": true,
+          "observed": {
+            "constructor": "LateBox"
+          }
+        },
+        {
+          "name": "registration remains globally isolated",
+          "pass": true,
+          "observed": {}
+        }
+      ],
+      "lateAfterAdoption": {
+        "core": {
+          "automatic": true,
+          "afterExplicitUpgrade": true,
+          "marker": true,
+          "ownerDocument": true
+        },
+        "plain": {
+          "automatic": true,
+          "afterExplicitUpgrade": true,
+          "marker": true,
+          "ownerDocument": true
+        }
+      }
+    }
+  ]
+}
+chromium PASS /dist/define/flow-diagram.js same-origin
+chromium PASS /dist/define/flow-diagram.js cross-origin
+chromium PASS /dist/all.js same-origin
+chromium PASS /dist/all.js cross-origin
+chromium PASS /dist/standalone.js same-origin
+chromium PASS /dist/standalone.js cross-origin
+chromium PASS /bundle/design-system.js same-origin
+chromium PASS /bundle/design-system.js cross-origin
+chromium PASS /bundle/design-system.min.js same-origin
+chromium PASS /bundle/design-system.min.js cross-origin
+chromium PASS /bundle/design-system.standalone.min.js same-origin
+chromium PASS /bundle/design-system.standalone.min.js cross-origin
+firefox PASS /dist/define/flow-diagram.js same-origin
+firefox PASS /dist/define/flow-diagram.js cross-origin
+firefox PASS /dist/all.js same-origin
+firefox PASS /dist/all.js cross-origin
+firefox PASS /dist/standalone.js same-origin
+firefox PASS /dist/standalone.js cross-origin
+firefox PASS /bundle/design-system.js same-origin
+firefox PASS /bundle/design-system.js cross-origin
+firefox PASS /bundle/design-system.min.js same-origin
+firefox PASS /bundle/design-system.min.js cross-origin
+firefox PASS /bundle/design-system.standalone.min.js same-origin
+firefox PASS /bundle/design-system.standalone.min.js cross-origin
+webkit PASS /dist/define/flow-diagram.js same-origin
+webkit PASS /dist/define/flow-diagram.js cross-origin
+webkit PASS /dist/all.js same-origin
+webkit PASS /dist/all.js cross-origin
+webkit PASS /dist/standalone.js same-origin
+webkit PASS /dist/standalone.js cross-origin
+webkit PASS /bundle/design-system.js same-origin
+webkit PASS /bundle/design-system.js cross-origin
+webkit PASS /bundle/design-system.min.js same-origin
+webkit PASS /bundle/design-system.min.js cross-origin
+webkit PASS /bundle/design-system.standalone.min.js same-origin
+webkit PASS /bundle/design-system.standalone.min.js cross-origin
+chromium single PASS 
+firefox single PASS 
+webkit single PASS 
+chromium split PASS 
+firefox split PASS 
+webkit split PASS 
+lit chromium pass
+lit firefox pass
+lit webkit pass
+react chromium pass
+react firefox pass
+react webkit pass
+chromium accordion 23/23 
+chromium alert 5/5 
+chromium book 9/9 
+chromium calendar 28/28 
+chromium chart 9/9 
+chromium code-block 7/7 
+chromium command-menu 16/16 
+native-date-tab chromium {"native":["editor","editor","editor","next"],"dialog":["editor","editor","editor","next"]}
+chromium dialog 27/27 
+chromium empty-state 6/6 
+chromium feedback 14/14 
+chromium flow-diagram 13/13 
+chromium json-view 7/7 
+chromium markdown 7/7 
+chromium meter 14/14 
+chromium pagination 12/12 
+chromium resizable 23/23 
+chromium sidebar 12/12 
+chromium snippet 7/7 
+chromium stat 7/7 
+chromium steps 16/16 
+chromium table 10/10 
+chromium toast 21/21 
+chromium toc 15/15 
+chromium toolbar 13/13 
+chromium tooltip 23/23 
+chromium tree-view 15/15 
+chromium combobox 1/1 
+OWNERS chromium [
+  {
+    owner: true,
+    context: true,
+    state: {
+      disabled: false,
+      canIncrement: true,
+      canDecrement: false,
+      size: "medium",
+      incrementLabel: "Increase value",
+      decrementLabel: "Decrease value",
+    },
+    unavailable: true,
+    disabled: true,
+    native: true,
+  }, {
+    owner: true,
+    context: true,
+    state: {
+      disabled: false,
+      canIncrement: true,
+      canDecrement: false,
+      size: "medium",
+      incrementLabel: "Increase value",
+      decrementLabel: "Decrease value",
+    },
+    unavailable: false,
+    disabled: false,
+    native: false,
+  }
+]
+DEBUG chromium spinOnPress false keeps one pointer step {
+  value: "1",
+  step: 1,
+  changes: [
+    {
+      value: "4",
+      valueAsNumber: 4,
+    }, {
+      value: "1",
+      valueAsNumber: 1,
+    }
+  ],
+  press: [
+    {
+      type: "pointerdown",
+      target: "<path d=\"M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-",
+      x: 1263,
+      y: 18,
+      prevented: true,
+      current: [Object ...],
+    }, {
+      type: "pointerup",
+      target: "<path d=\"M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-",
+      x: 1263,
+      y: 18,
+      prevented: false,
+      current: [Object ...],
+    }, {
+      type: "pointerdown",
+      target: "<path d=\"M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-",
+      x: 1263,
+      y: 18,
+      prevented: true,
+      current: [Object ...],
+    }, {
+      type: "pointerup",
+      target: "<path d=\"M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-",
+      x: 1263,
+      y: 18,
+      prevented: false,
+      current: [Object ...],
+    }
+  ],
+  current: undefined,
+}
+DEBUG chromium disabled during hold prevents later steps {
+  value: "1",
+  step: 1,
+  changes: [
+    {
+      value: "4",
+      valueAsNumber: 4,
+    }, {
+      value: "1",
+      valueAsNumber: 1,
+    }, {
+      value: "1",
+      valueAsNumber: 1,
+    }
+  ],
+}
+DEBUG chromium disconnect cancels repeat lifetime {
+  value: "1",
+  step: 1,
+  changes: [
+    {
+      value: "4",
+      valueAsNumber: 4,
+    }, {
+      value: "1",
+      valueAsNumber: 1,
+    }, {
+      value: "1",
+      valueAsNumber: 1,
+    }, {
+      value: "1",
+      valueAsNumber: 1,
+    }
+  ],
+}
+chromium number-input 45/45 
+COMPLETION chromium {
+  value: [ "1", "2", "3", "4" ],
+  events: [
+    {
+      type: "acme-input",
+      value: "1",
+    }, {
+      type: "acme-input",
+      value: "12",
+    }, {
+      type: "acme-input",
+      value: "123",
+    }, {
+      type: "acme-input",
+      value: "1234",
+    }, {
+      type: "acme-change",
+      value: "1234",
+    }, {
+      type: "acme-complete",
+      value: "1234",
+    }
+  ],
+  disabled: false,
+  readonly: false,
+  params: 4,
+}
+COMPOSESTATE chromium {
+  value: [ "1", "", "", "" ],
+  composition: {},
+  active: "<input class=\"native\" part=\"input\" type=\"tel\" required=\"\" inputmode=\"numeric\" autocomplete=\"off\" placeholder=\"\" tabindex=\"0\" aria-invalid=\"false\" enterkeyhint=\"next\" aria-label=\"Character 2 of 4\">",
+  inputs: [ "1", "", "", "" ],
+}
+MASKSTATE chromium {
+  mask: true,
+  otp: true,
+  fields: [
+    [ "password", "one-time-code" ], [ "password", "one-time-code" ], [ "password", "one-time-code" ], [ "password", "one-time-code" ]
+  ],
+}
+PASTESTATE chromium {
+  value: [ "9", "8", "7", "6" ],
+  readonly: false,
+  disabled: false,
+  controls: [
+    {
+      value: "9",
+      disabled: false,
+    }, {
+      value: "8",
+      disabled: false,
+    }, {
+      value: "7",
+      disabled: false,
+    }, {
+      value: "6",
+      disabled: false,
+    }
+  ],
+}
+chromium pin-input 33/33 
+chromium slider 44/44 
+firefox accordion 23/23 
+firefox alert 5/5 
+firefox book 9/9 
+firefox calendar 28/28 
+firefox chart 9/9 
+firefox code-block 7/7 
+firefox command-menu 16/16 
+native-date-tab firefox {"native":["editor","editor","editor","next"],"dialog":["editor","editor","editor","next"]}
+firefox dialog 27/27 
+firefox empty-state 6/6 
+firefox feedback 14/14 
+firefox flow-diagram 13/13 
+firefox json-view 7/7 
+firefox markdown 7/7 
+firefox meter 14/14 
+firefox pagination 12/12 
+firefox resizable 23/23 
+firefox sidebar 12/12 
+firefox snippet 7/7 
+firefox stat 7/7 
+firefox steps 16/16 
+firefox table 10/10 
+firefox toast 21/21 
+firefox toc 15/15 
+firefox toolbar 13/13 
+firefox tooltip 23/23 
+firefox tree-view 15/15 
+firefox combobox 1/1 
+OWNERS firefox [
+  {
+    owner: true,
+    context: true,
+    state: {
+      disabled: false,
+      canIncrement: true,
+      canDecrement: false,
+      size: "medium",
+      incrementLabel: "Increase value",
+      decrementLabel: "Decrease value",
+    },
+    unavailable: true,
+    disabled: true,
+    native: true,
+  }, {
+    owner: true,
+    context: true,
+    state: {
+      disabled: false,
+      canIncrement: true,
+      canDecrement: false,
+      size: "medium",
+      incrementLabel: "Increase value",
+      decrementLabel: "Decrease value",
+    },
+    unavailable: false,
+    disabled: false,
+    native: false,
+  }
+]
+DEBUG firefox spinOnPress false keeps one pointer step {
+  value: "1",
+  step: 1,
+  changes: [
+    {
+      value: "4",
+      valueAsNumber: 4,
+    }, {
+      value: "1",
+      valueAsNumber: 1,
+    }
+  ],
+  press: [
+    {
+      type: "pointerdown",
+      target: "<path d=\"M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-",
+      x: 1263,
+      y: 18,
+      prevented: true,
+      current: [Object ...],
+    }, {
+      type: "pointerup",
+      target: "<path d=\"M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-",
+      x: 1263,
+      y: 18,
+      prevented: false,
+      current: [Object ...],
+    }, {
+      type: "pointerdown",
+      target: "<path d=\"M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-",
+      x: 1263,
+      y: 18,
+      prevented: true,
+      current: [Object ...],
+    }, {
+      type: "pointerup",
+      target: "<path d=\"M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-",
+      x: 1263,
+      y: 18,
+      prevented: false,
+      current: [Object ...],
+    }
+  ],
+  current: undefined,
+}
+DEBUG firefox disabled during hold prevents later steps {
+  value: "1",
+  step: 1,
+  changes: [
+    {
+      value: "4",
+      valueAsNumber: 4,
+    }, {
+      value: "1",
+      valueAsNumber: 1,
+    }, {
+      value: "1",
+      valueAsNumber: 1,
+    }
+  ],
+}
+DEBUG firefox disconnect cancels repeat lifetime {
+  value: "1",
+  step: 1,
+  changes: [
+    {
+      value: "4",
+      valueAsNumber: 4,
+    }, {
+      value: "1",
+      valueAsNumber: 1,
+    }, {
+      value: "1",
+      valueAsNumber: 1,
+    }, {
+      value: "1",
+      valueAsNumber: 1,
+    }
+  ],
+}
+firefox number-input 45/45 
+COMPLETION firefox {
+  value: [ "1", "2", "3", "4" ],
+  events: [
+    {
+      type: "acme-input",
+      value: "1",
+    }, {
+      type: "acme-input",
+      value: "12",
+    }, {
+      type: "acme-input",
+      value: "123",
+    }, {
+      type: "acme-input",
+      value: "1234",
+    }, {
+      type: "acme-change",
+      value: "1234",
+    }, {
+      type: "acme-complete",
+      value: "1234",
+    }
+  ],
+  disabled: false,
+  readonly: false,
+  params: 4,
+}
+COMPOSESTATE firefox {
+  value: [ "1", "", "", "" ],
+  composition: {},
+  active: "<input class=\"native\" part=\"input\" type=\"tel\" required=\"\" inputmode=\"numeric\" autocomplete=\"off\" placeholder=\"\" tabindex=\"0\" aria-invalid=\"false\" enterkeyhint=\"next\" aria-label=\"Character 2 of 4\">",
+  inputs: [ "1", "", "", "" ],
+}
+MASKSTATE firefox {
+  mask: true,
+  otp: true,
+  fields: [
+    [ "password", "" ], [ "password", "" ], [ "password", "" ], [ "password", "" ]
+  ],
+}
+PASTESTATE firefox {
+  value: [ "9", "8", "7", "6" ],
+  readonly: false,
+  disabled: false,
+  controls: [
+    {
+      value: "9",
+      disabled: false,
+    }, {
+      value: "8",
+      disabled: false,
+    }, {
+      value: "7",
+      disabled: false,
+    }, {
+      value: "6",
+      disabled: false,
+    }
+  ],
+}
+firefox pin-input 33/33 
+firefox slider 44/44 
+webkit accordion 23/23 
+webkit alert 5/5 
+webkit book 9/9 
+webkit calendar 28/28 
+webkit chart 9/9 
+webkit code-block 7/7 
+webkit command-menu 16/16 
+native-date-tab webkit {"native":["editor","editor","next"],"dialog":["editor","editor","next"]}
+webkit dialog 27/27 
+webkit empty-state 6/6 
+webkit feedback 14/14 
+webkit flow-diagram 13/13 
+webkit json-view 7/7 
+webkit markdown 7/7 
+webkit meter 14/14 
+webkit pagination 12/12 
+webkit resizable 23/23 
+webkit sidebar 12/12 
+webkit snippet 7/7 
+webkit stat 7/7 
+webkit steps 16/16 
+webkit table 10/10 
+webkit toast 21/21 
+webkit toc 15/15 
+webkit toolbar 13/13 
+webkit tooltip 23/23 
+webkit tree-view 15/15 
+webkit combobox 1/1 
+OWNERS webkit [
+  {
+    owner: true,
+    context: true,
+    state: {
+      disabled: false,
+      canIncrement: true,
+      canDecrement: false,
+      size: "medium",
+      incrementLabel: "Increase value",
+      decrementLabel: "Decrease value",
+    },
+    unavailable: true,
+    disabled: true,
+    native: true,
+  }, {
+    owner: true,
+    context: true,
+    state: {
+      disabled: false,
+      canIncrement: true,
+      canDecrement: false,
+      size: "medium",
+      incrementLabel: "Increase value",
+      decrementLabel: "Decrease value",
+    },
+    unavailable: false,
+    disabled: false,
+    native: false,
+  }
+]
+DEBUG webkit spinOnPress false keeps one pointer step {
+  value: "1",
+  step: 1,
+  changes: [
+    {
+      value: "4",
+      valueAsNumber: 4,
+    }, {
+      value: "1",
+      valueAsNumber: 1,
+    }
+  ],
+  press: [
+    {
+      type: "pointerdown",
+      target: "<path d=\"M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-",
+      x: 1263,
+      y: 18,
+      prevented: true,
+      current: [Object ...],
+    }, {
+      type: "pointerup",
+      target: "<path d=\"M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-",
+      x: 1263,
+      y: 18,
+      prevented: false,
+      current: [Object ...],
+    }, {
+      type: "pointerdown",
+      target: "<path d=\"M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-",
+      x: 1263,
+      y: 18,
+      prevented: true,
+      current: [Object ...],
+    }, {
+      type: "pointerup",
+      target: "<path d=\"M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-",
+      x: 1263,
+      y: 18,
+      prevented: false,
+      current: [Object ...],
+    }
+  ],
+  current: undefined,
+}
+DEBUG webkit disabled during hold prevents later steps {
+  value: "1",
+  step: 1,
+  changes: [
+    {
+      value: "4",
+      valueAsNumber: 4,
+    }, {
+      value: "1",
+      valueAsNumber: 1,
+    }, {
+      value: "1",
+      valueAsNumber: 1,
+    }
+  ],
+}
+DEBUG webkit disconnect cancels repeat lifetime {
+  value: "1",
+  step: 1,
+  changes: [
+    {
+      value: "4",
+      valueAsNumber: 4,
+    }, {
+      value: "1",
+      valueAsNumber: 1,
+    }, {
+      value: "1",
+      valueAsNumber: 1,
+    }, {
+      value: "1",
+      valueAsNumber: 1,
+    }
+  ],
+}
+webkit number-input 45/45 
+COMPLETION webkit {
+  value: [ "1", "2", "3", "4" ],
+  events: [
+    {
+      type: "acme-input",
+      value: "1",
+    }, {
+      type: "acme-input",
+      value: "12",
+    }, {
+      type: "acme-input",
+      value: "123",
+    }, {
+      type: "acme-input",
+      value: "1234",
+    }, {
+      type: "acme-change",
+      value: "1234",
+    }, {
+      type: "acme-complete",
+      value: "1234",
+    }
+  ],
+  disabled: false,
+  readonly: false,
+  params: 4,
+}
+COMPOSESTATE webkit {
+  value: [ "1", "", "", "" ],
+  composition: {},
+  active: "<input class=\"native\" part=\"input\" type=\"tel\" required=\"\" inputmode=\"numeric\" autocomplete=\"off\" placeholder=\"\" tabindex=\"0\" aria-invalid=\"false\" enterkeyhint=\"next\" aria-label=\"Character 2 of 4\">",
+  inputs: [ "1", "", "", "" ],
+}
+MASKSTATE webkit {
+  mask: true,
+  otp: true,
+  fields: [
+    [ "password", "one-time-code" ], [ "password", "one-time-code" ], [ "password", "one-time-code" ], [ "password", "one-time-code" ]
+  ],
+}
+PASTESTATE webkit {
+  value: [ "9", "8", "7", "6" ],
+  readonly: false,
+  disabled: false,
+  controls: [
+    {
+      value: "9",
+      disabled: false,
+    }, {
+      value: "8",
+      disabled: false,
+    }, {
+      value: "7",
+      disabled: false,
+    }, {
+      value: "6",
+      disabled: false,
+    }
+  ],
+}
+webkit pin-input 33/33 
+webkit slider 44/44 
+official Firefox page index PASS
+official Firefox page colors PASS
+official Firefox page typography PASS
+official Firefox page materials PASS
+official Firefox page tokens PASS
+official Firefox page icons PASS
+official Firefox page typeface PASS
+official Firefox page components/accordion PASS
+official Firefox page components/alert PASS
+official Firefox page components/alert-dialog PASS
+official Firefox page components/app-bar PASS
+official Firefox page components/avatar PASS
+official Firefox page components/badge PASS
+official Firefox page components/banner PASS
+official Firefox page components/book PASS
+official Firefox page components/box PASS
+official Firefox page components/breadcrumbs PASS
+official Firefox page components/browser PASS
+official Firefox page components/button PASS
+official Firefox page components/calendar PASS
+official Firefox page components/card PASS
+official Firefox page components/chart PASS
+official Firefox page components/checkbox PASS
+official Firefox page components/code PASS
+official Firefox page components/code-block PASS
+official Firefox page components/collapsible PASS
+official Firefox page components/combobox PASS
+official Firefox page components/command-menu PASS
+official Firefox page components/context-menu PASS
+official Firefox page components/copy-button PASS
+official Firefox page components/data-list PASS
+official Firefox page components/dialog PASS
+official Firefox page components/disabled-wall PASS
+official Firefox page components/drawer PASS
+official Firefox page components/empty-state PASS
+official Firefox page components/feedback PASS
+official Firefox page components/field PASS
+official Firefox page components/fieldset PASS
+official Firefox page components/flex PASS
+official Firefox page components/flow-diagram PASS
+official Firefox page components/format-byte PASS
+official Firefox page components/format-number PASS
+official Firefox page components/forms PASS
+official Firefox page components/grid PASS
+official Firefox page components/group PASS
+official Firefox page components/heading PASS
+official Firefox page components/hover-card PASS
+official Firefox page components/icon-tile PASS
+official Firefox page components/input PASS
+official Firefox page components/inset PASS
+official Firefox page components/item PASS
+official Firefox page components/json-view PASS
+official Firefox page components/keyboard-input PASS
+official Firefox page components/label PASS
+official Firefox page components/legend PASS
+official Firefox page components/link PASS
+official Firefox page components/list PASS
+official Firefox page components/load-more-button PASS
+official Firefox page components/markdown PASS
+official Firefox page components/menu PASS
+official Firefox page components/meter PASS
+official Firefox page components/middle-truncate PASS
+official Firefox page components/multi-select PASS
+official Firefox page components/number-input PASS
+official Firefox page components/pagination PASS
+official Firefox page components/password-input PASS
+official Firefox page components/pin-input PASS
+official Firefox page components/progress PASS
+official Firefox page components/quote PASS
+official Firefox page components/radio PASS
+official Firefox page components/relative-time PASS
+official Firefox page components/resizable PASS
+official Firefox page components/scroll-area PASS
+official Firefox page components/search-input PASS
+official Firefox page components/segmented-control PASS
+official Firefox page components/select PASS
+official Firefox page components/separator PASS
+official Firefox page components/show PASS
+official Firefox page components/show-more PASS
+official Firefox page components/sidebar PASS
+official Firefox page components/simple-grid PASS
+official Firefox page components/skeleton PASS
+official Firefox page components/slider PASS
+official Firefox page components/snippet PASS
+official Firefox page components/sparkline PASS
+official Firefox page components/spinner PASS
+official Firefox page components/split-button PASS
+official Firefox page components/stack PASS
+official Firefox page components/stat PASS
+official Firefox page components/status PASS
+official Firefox page components/steps PASS
+official Firefox page components/strong PASS
+official Firefox page components/switch PASS
+official Firefox page components/table PASS
+official Firefox page components/toc PASS
+official Firefox page components/tabs PASS
+official Firefox page components/tag PASS
+official Firefox page components/text PASS
+official Firefox page components/textarea PASS
+official Firefox page components/theme PASS
+official Firefox page components/theme-switcher PASS
+official Firefox page components/timeline PASS
+official Firefox page components/toast PASS
+official Firefox page components/toggle-tip PASS
+official Firefox page components/toolbar PASS
+official Firefox page components/tooltip PASS
+official Firefox page components/tree-view PASS
+official Firefox page components/video PASS
+official Firefox page recipes/managed-forms PASS
+official Firefox page recipes/settings-rows PASS
+official Firefox page recipes/integration-cards PASS
+official Firefox page recipes/selectable-stats PASS
+official Firefox page recipes/file-tree PASS
+official Firefox page recipes/responsive-panes PASS
+official Firefox page recipes/input-addons PASS
+official Firefox page recipes/typed-confirmation PASS
+official Firefox page recipes/results-pagination PASS
+official Firefox page recipes/virtualized-table PASS
+official Firefox page recipes/experimental-worker-table PASS
+official Firefox page recipes/relative-time-details PASS
+official Firefox page recipes/document-navigation PASS
+official Firefox page recipes/measurement-cards PASS
+official Firefox page recipes/measurement-rows PASS
+official Firefox page recipes/task-rows PASS
+official Firefox page recipes/checkbox-rows PASS
+official Firefox flow 0 PASS
+official Firefox flow 1 PASS
+official Firefox flow 2 PASS
+official Firefox flow 3 PASS
+official Firefox flow 4 PASS
+official Firefox flow 5 PASS
+official Firefox flow 6 PASS
+official Firefox flow 7 PASS
+official Firefox flow 8 PASS
+official Firefox flow 9 PASS
+official Firefox flow 10 PASS
+official Firefox flow 11 PASS
+official Firefox flow 12 PASS
+official Firefox flow 13 PASS
+official Firefox flow 14 PASS
+official Firefox flow 15 PASS
+official Firefox flow 16 PASS
+official Firefox flow 17 PASS
+official Firefox flow 18 PASS
+official Firefox flow 19 PASS

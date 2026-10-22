@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-036",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/steps-behaviour.md",
+      "destination": "docs/decisions/0103-steps-behaviour.md",
+      "sourceSha256": "a3d948486b4196c6e2846e1cf710fc234d0c21d883031f53ac3cf419b9f8baa8",
+      "destinationSha256": "664e502bb215cb3d0f36b02d95e699384f4871b69566be9de94b7a4031a437ef",
+      "changes": [
+        "Retained interactive Steps, state ownership and superseded runtime choice.",
+        "Dated original test gap and retired phase gate."
+      ],
+      "retainedQualifications": [
+        "No new form engine, schema, asynchronous validation contract or cross-page persistence selected.",
+        "Zag logic remains a source reference."
+      ]
+    },
+    {
+      "source": "notes/decisions/style-production.md",
+      "destination": "docs/decisions/0104-style-production.md",
+      "sourceSha256": "33cc4e9e3252e6a609cdc64fb12d08b0bb94266598aab0bc6ff5a79c1031a8c4",
+      "destinationSha256": "087e41795ce720cd56d8989ab25b3c0a28f29e4d55abbbac55ac4b8f70bf795d",
+      "changes": [
+        "Retained CSS-to-Lit production architecture and no reverse-parsing rule.",
+        "Dated initial probe/gates and compiler pin; preserved exact M00 milestones and comparison.",
+        "Linked later release scope while keeping representative prerequisites separate."
+      ],
+      "retainedQualifications": [
+        "Initial architecture did not itself select Lightning CSS; later dated compiler choice did.",
+        "Bun 1.4.0/1.4.2 map failures, 167 outputs and esbuild parser trade-off retained.",
+        "No runtime styling engine or consumer Lightning CSS dependency.",
+        "Initial converter/source evidence did not prove full browser acceptance or universal performance superiority."
+      ]
+    },
+    {
+      "source": "notes/decisions/systematization-goal.md",
+      "destination": "docs/decisions/0105-systematization-goal.md",
+      "sourceSha256": "62b1d515657a429e189e1deb88854d887362832588e0aaffe252a13ceb4c6a32",
+      "destinationSha256": "be79495f66adac04d9ee4fdcdbd376d92ba217b30048234763b86956e0d25ae6",
+      "changes": [
+        "Expressed retained consistency goal directly.",
+        "Preserved parity qualifications and distinguished original scope answer from later inventory/migration approvals.",
+        "Retired closed source gate and linked approval/release history.",
+        "Final source-to-target review corrected the exact contract/history target or an updated heading anchor."
+      ],
+      "retainedQualifications": [
+        "Composition, appearance and behavior remain in scope.",
+        "Named differences need source/value evidence and explicit census disposition.",
+        "Interface priority remains consistency, Lit convention, then reference familiarity."
+      ]
+    },
+    {
+      "source": "notes/decisions/table-of-contents.md",
+      "destination": "docs/decisions/0106-table-of-contents.md",
+      "sourceSha256": "325040d8c04b5a41b1ce7fb78ec445fe25d398371fb1d129eb4204e0d78e6d1d",
+      "destinationSha256": "2d57e92ceb65af4dbf71be6a240b6f09bc38c242c407f5caeea597363bfda32e",
+      "changes": [
+        "Preserved both TOC input modes, final precedence and authored-ID ownership.",
+        "Retired preapproval phase gates while retaining the bounded shadow-heading probe and required runtime checks."
+      ],
+      "retainedQualifications": [
+        "Current navigation location differs from form selection.",
+        "TOC omits/reports missing authored targets; only owning Markdown renderer may generate its own IDs.",
+        "Chromium heading semantics do not choose traversal or prove fragment/focus behavior.",
+        "Original capability answer alone did not approve detailed contracts."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-documentation-video.browser-check",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Writer full-source/semantic review, current focused lint/format, explicit strict TypeScript and type-erased oracle preservation; coordinator browser/guard/review pending",
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m23-docs/video-run.ts",
+      "destination": "scripts/verification/documentation/video.browser-check.ts",
+      "sourceSha256": "e739270552dce922e3a30ee3d74181d8b2559af3aaa28e0f477df85cae5d8a7b",
+      "destinationSha256": "dc6a138a18feecec750ab5e3a4b2d7cb1bde0552a47224f59bb61b4bce9492a5",
+      "classification": "live-required-driver",
+      "changes": [
+        "Relocated the allocated driver or fixture and adjusted repository-root/import/fixture paths for its final location.",
+        "Applied current authored-source formatting and lint style without configuration edits or suppressions.",
+        "Preserved assertions, numeric constants, executable templates, environment accesses, browser matrices, filters, failure reporting and cleanup.",
+        "Preserved .artifacts/m23-docs output ownership used by CI.",
+        "Added accurate Playwright dynamic-import types, fixture/window/element contracts and result types. Type-only syntax erases without changing runtime operations. Existing broad any annotations outside the diagnosed boundary are not expanded.",
+        "Made the captions wait predicate explicitly reject undefined with the coordinator-approved equivalent guard. Preserved one property-chain read and all success/failure cases."
+      ],
+      "retainedQualifications": [
+        "Original manual/required classification is unchanged.",
+        "Browser and packed-consumer execution remain pending coordinator verification.",
+        "The explicit strict TypeScript program passes for all 13 allocated drivers/fixtures and their imported graph. Browser/runtime acceptance remains pending."
+      ],
+      "oracleComparison": {
+        "source": "notes/alignment/evidence/m23-docs/video-run.ts",
+        "destination": "scripts/verification/documentation/video.browser-check.ts",
+        "checks": {
+          "assertions": true,
+          "numericConstants": true,
+          "executableTemplates": true,
+          "environmentAccesses": true
+        },
+        "assertionCount": 4,
+        "numericCount": 9,
+        "templateCount": 0
+      },
+      "strictTypeDiagnostics": [],
+      "historicalStrictTypeDiagnostics": [
+        {
+          "file": "scripts/verification/documentation/video.browser-check.ts",
+          "code": 7022,
+          "message": "'server' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.",
+          "line": 29
+        },
+        {
+          "file": "scripts/verification/documentation/video.browser-check.ts",
+          "code": 7023,
+          "message": "'fetch' implicitly has return type 'any' because it does not have a return type annotation and is referenced directly or indirectly in one of its return expressions.",
+          "line": 31
+        },
+        {
+          "file": "scripts/verification/documentation/video.browser-check.ts",
+          "code": 7006,
+          "message": "Parameter 'route' implicitly has an 'any' type.",
+          "line": 54
+        },
+        {
+          "file": "scripts/verification/documentation/video.browser-check.ts",
+          "code": 7006,
+          "message": "Parameter 'route' implicitly has an 'any' type.",
+          "line": 55
+        },
+        {
+          "file": "scripts/verification/documentation/video.browser-check.ts",
+          "code": 7034,
+          "message": "Variable 'errors' implicitly has type 'any[]' in some locations where its type cannot be determined.",
+          "line": 56
+        },
+        {
+          "file": "scripts/verification/documentation/video.browser-check.ts",
+          "code": 7006,
+          "message": "Parameter 'e' implicitly has an 'any' type.",
+          "line": 57
+        },
+        {
+          "file": "scripts/verification/documentation/video.browser-check.ts",
+          "code": 2339,
+          "message": "Property 'updateComplete' does not exist on type 'Element'.",
+          "line": 63
+        },
+        {
+          "file": "scripts/verification/documentation/video.browser-check.ts",
+          "code": 2531,
+          "message": "Object is possibly 'null'.",
+          "line": 64
+        },
+        {
+          "file": "scripts/verification/documentation/video.browser-check.ts",
+          "code": 2531,
+          "message": "Object is possibly 'null'.",
+          "line": 66
+        },
+        {
+          "file": "scripts/verification/documentation/video.browser-check.ts",
+          "code": 2532,
+          "message": "Object is possibly 'undefined'.",
+          "line": 66
+        },
+        {
+          "file": "scripts/verification/documentation/video.browser-check.ts",
+          "code": 7005,
+          "message": "Variable 'errors' implicitly has an 'any[]' type.",
+          "line": 68
+        }
+      ]
+    }
+  ],
+  "commands": [
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxlint/bin/oxlint --config oxlint.config.ts --format json scripts/verification/documentation/video.browser-check.ts",
+      "outcome": "Passed as part of the exact 13-file owned set; zero diagnostics."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxfmt/bin/oxfmt --check --config oxfmt.config.ts scripts/verification/documentation/video.browser-check.ts",
+      "outcome": "Passed as part of the exact 13-file owned set."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun /private/tmp/typecheck-doc-drivers.ts",
+      "outcome": "Explicit TypeScript 5.9 original/prepared programs with current tsconfig options: 75 original and 75 prepared diagnostics, all owned; zero additions. This is comparative preservation, not a passing strict typecheck.",
+      "stage": "Historical initial migration check"
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun /private/tmp/compare-doc-oracles.ts",
+      "outcome": "All 13 files preserve ordered assertion ASTs, numeric constants, executable template text and environment-property access."
+    },
+    {
+      "command": "git diff --no-index --check /dev/null <each allocated destination>",
+      "outcome": "No whitespace errors."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun /private/tmp/typecheck-doc-drivers.ts",
+      "outcome": "Final explicit strict TypeScript programs: original 75 diagnostics; prepared zero; no transitive diagnostics."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun /private/tmp/compare-doc-oracles-typed.ts",
+      "outcome": "13 files pass original assertion AST/order, numeric-constant, executable-template and environment-access comparisons after type-only nodes are erased."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxlint/bin/oxlint --config oxlint.config.ts --format json <all 13 allocated drivers/fixtures>",
+      "outcome": "Zero diagnostics."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxfmt/bin/oxfmt --check --config oxfmt.config.ts <all 13 allocated drivers/fixtures>",
+      "outcome": "Pass."
+    }
+  ],
+  "typeVerification": {
+    "baseline": {
+      "all": 75,
+      "owned": 75
+    },
+    "prepared": {
+      "all": 0,
+      "owned": 0
+    },
+    "addedDiagnostics": [],
+    "strictPass": true,
+    "scope": "Explicit strict TypeScript programs for original and moved drivers using current tsconfig compiler options; root tsconfig does not include these drivers."
+  },
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [
+      {
+        "file": "scripts/verification/documentation/video.browser-check.ts",
+        "args": [],
+        "passed": true,
+        "exitCode": 0
+      }
+    ],
+    "manual": [],
+    "supportingScope": "",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  },
+  "anchorChanges": [],
+  "findings": [],
+  "typeVerificationHistory": [
+    {
+      "stage": "Initial path migration, before strict-type refinement",
+      "baseline": {
+        "all": 75,
+        "owned": 75
+      },
+      "prepared": {
+        "all": 75,
+        "owned": 75
+      },
+      "addedDiagnostics": [],
+      "strictPass": false,
+      "scope": "Explicit strict TypeScript programs for original and moved drivers using current tsconfig compiler options; root tsconfig does not include these drivers."
+    }
+  ],
+  "resolvedFindings": [
+    {
+      "finding": "Legacy driver TypeScript diagnostics remain. Comparative checks establish no added diagnostics, not full type coverage.",
+      "resolution": "Explicit strict-type refinement now passes with zero diagnostics; original 75-diagnostic result remains in history."
+    }
+  ],
+  "predicateRefinement": {
+    "old": "textTracks[0]?.cues?.length > 0",
+    "new": "const length = textTracks[0]?.cues?.length; return length !== undefined && length > 0;",
+    "authorization": "Coordinator explicitly approved this equivalent guard for accurate strict types.",
+    "proof": "For undefined, both predicates return false. For every number, the guard is true and both evaluate the same > 0 comparison. The property chain is still read once.",
+    "examples": {
+      "count": 11,
+      "values": [
+        "undefined",
+        "0",
+        "-0",
+        "-1",
+        "1",
+        "0.5",
+        "NaN",
+        "Infinity",
+        "-Infinity",
+        "Number.MIN_VALUE",
+        "Number.MAX_VALUE"
+      ],
+      "passed": true
+    },
+    "limit": "This is predicate equivalence, not a browser captions result."
+  }
+}

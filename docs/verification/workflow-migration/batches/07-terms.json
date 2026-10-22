@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-terms",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "checks": {
+      "sourceHash": "matches full-read source",
+      "destinationHash": "matches final prepared file",
+      "externalSourceUrls": "all source URLs retained",
+      "numericAndSourceIdentifiers": "retained; heading punctuation can change",
+      "links": "all targets exist or are allocated in ledger.records/newDocumentOwners",
+      "whitespace": "pass",
+      "runtime": "not rerun; historical proof limits retained"
+    },
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/terms.md",
+      "destination": "docs/design/component-vocabulary.md",
+      "sourceSha256": "5f1e20d8a2fe5bd6fd9e3d2932005058617b924d25c01f4a914de3bc8ecad687",
+      "destinationSha256": "6bbbf894332734b16b08bbed9d65561c9d615189d9a0e7212ee54f8b1dcde147",
+      "changes": [
+        "Converted the allocated record with explicit status, dated evidence scope and current-owner links.",
+        "Retired old operational commands throughout while preserving decisions, measurements, qualifications and chronology.",
+        "Relocated Markdown links through the final ledger; historical path/session/branch literals remain provenance.",
+        {
+          "old": "The census is source evidence; removed components remain present because implementation is gated.",
+          "new": "The census is pre-implementation source evidence; components selected for removal were still present at that checkpoint."
+        },
+        {
+          "old": "Map them by meaning in Phase 4 rather than mechanically converting all to size.",
+          "new": "The original Phase 4 review mapped them by meaning rather than mechanically converting all to size."
+        },
+        {
+          "old": "Normalize genuine desc/description, head/header and foot/footer synonyms, and expand unexplained abbreviations such as chev, crumbs and conv where their concepts survive.",
+          "new": "The selected direction normalized genuine desc/description, head/header and foot/footer synonyms and expanded unexplained chev, crumbs and conv abbreviations where their concepts survived."
+        },
+        {
+          "old": "Inventory each slot's meaning, optionality, cardinality and markup; use the selected vocabulary where the meaning matches.",
+          "new": "The inventory recorded each slot's meaning, optionality, cardinality and markup, applying the selected vocabulary only where meanings matched."
+        },
+        {
+          "old": "Phase 4 defines public versus internal events, detail shapes, cancelability, composed/bubbling flags, user/programmatic changes, transitions and event counts.",
+          "new": "The original Phase 4 contract work defined public/internal events, detail shapes, cancelability, composed/bubbling flags, user/programmatic changes, transitions and event counts."
+        },
+        {
+          "old": "Classify public/private CSS properties and coordinate the acme/ds namespaces with the approved generated-style/theme contracts in Phase 4.",
+          "new": "The original Phase 4 work classified public/private CSS properties and coordinated acme/ds namespaces with generated-style/theme contracts."
+        },
+        {
+          "old": "Phase 2's component-purpose and semantic naming choices are resolved. Record validation closes this phase; Peter starts Phase 3 separately. The shared architecture review uses these meanings and selected state/motion/package rules. Phase 4 supplies complete interfaces, supported values, markup, event payloads and combined verification; Phase 5 approves the exact migration before source work.",
+          "new": "Phase 2 resolved component purposes and semantic naming. Record validation closed that phase, after which Peter separately started Phase 3. Architecture used these meanings and the selected state/motion/package rules. Original Phase 4 supplied interfaces, values, markup, event payloads and combined checks; Phase 5 approved migration before source work. These phase commands are historical."
+        },
+        {
+          "old": "Material Progress's interactive token/diagram and actual Lit implementation review remains required before visual recommendations. Material Chips article text was read but dynamic tokens and sixteen specification figures were not visually reviewed; no broad Chip family was adopted. These are explicit future visual-review limits, not complete research or implementation claims.",
+          "new": "At this capture, Material Progress token/diagram and actual Lit implementation review remained prerequisites for visual recommendations. Material Chips article text was read, but dynamic tokens and sixteen figures were not visually reviewed; no broad Chip family was adopted. Later records resolve assigned implementation work without converting this limited capture into a complete review."
+        },
+        "Final review preserves external source URLs and substantive numeric/source identifiers, checks allocated links including future issue owners, and passes whitespace verification."
+      ],
+      "retainedQualifications": [
+        "A source survey, proposal or user approval is not runtime acceptance.",
+        "Historical checkpoints do not establish current host, package or platform status.",
+        "Saved evidence identities and their original verification limits remain intact."
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/alignment/terms.md",
+      "oldAnchor": "phase-2-terminology-record",
+      "destination": "docs/design/component-vocabulary.md",
+      "newAnchor": "component-vocabulary-decision-record",
+      "note": "Heading renamed; subsection evidence retained."
+    }
+  ],
+  "findings": []
+}

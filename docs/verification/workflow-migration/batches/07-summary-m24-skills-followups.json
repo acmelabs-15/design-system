@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-summary-m24-skills-followups",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Full source/audit preparation and writer semantic/path review; coordinator guard/review pending",
+    "runtimeDependency": "docs/verification/workflow-migration/task-08.json",
+    "coordinator": {
+      "semanticReview": "Independent full review accepted all22 source/target pairs with no required findings.",
+      "runtime": "Task08 records24required+7manual passes and two verified metadata/default follow-ups; final clean activation remains separate.",
+      "supplementalLogs": "All38 ignored logs, including the five referenced files, are captured at335a6ed91883e5d63fa2d8fbe23f3d2c58359e60 and copied byte-for-byte.",
+      "guard": "Real preparation passes with970 sources,979 destinations and197 batches; later allocated work remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m24-skills/followups/README.md",
+      "destination": "docs/verification/systematization/m24-skills/followups/README.md",
+      "sourceSha256": "13360107a601a93b583c6f3658d5c6e179adb2b892baf6657ce1a8e2995bfd92",
+      "destinationSha256": "792b561d398cbfbdab53d923d84f393ca5f8e17f69aeb55748eff46eff54f315",
+      "changes": [
+        "Retain five Chromium supplemental checks and original grades. Treat scratch replay as historical with explicit rebind prerequisites; do not create a live gate from the archived harness."
+      ],
+      "retainedQualifications": [
+        "The original prompt does not request a native form; surrounding-form proof is supplemental.",
+        "Original React/Table grades and artifacts remain unchanged.",
+        "Scratch directories and built outputs are historical prerequisites; Chromium-only probes are not the final three-engine gate.",
+        "The text names three retained failed attempts and four harness facts; preserve that wording rather than infer a new attempt count."
+      ],
+      "actualRunScope": {
+        "record": "docs/verification/workflow-migration/task-08.json",
+        "sourceTree": "dirty",
+        "baseCommit": "dff4a7fa4eb5c16ecf22de3148ea80b754d6698d",
+        "version": "0.3.2",
+        "classification": "historical supplemental evaluation evidence; not a current live gate",
+        "evidence": []
+      }
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

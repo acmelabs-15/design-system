@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m24-tabs-indicator",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.708Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m24-tabs-indicator/browser-results.json",
+      "destination": "docs/verification/systematization/m24-tabs-indicator/browser-results.json",
+      "bytes": 10652,
+      "sha256": "6af16955f1c4044e6739748ecd4eda8d4534a8c7cb01e5bb922c5523afe91878"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-tabs-indicator/installed-hover-red.json",
+      "destination": "docs/verification/systematization/m24-tabs-indicator/installed-hover-red.json",
+      "bytes": 1545,
+      "sha256": "5fc51ebc5b5e06449ebe933da8d51fd646bb6843d4170d5ef53ff15d943fe0ca"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

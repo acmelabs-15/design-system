@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-removals-check",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Full source read, preserved150-row parser boundary, strict TypeScript/Oxlint/Oxfmt and actual removal scan pass;79 removed/renamed tags, zero findings and removed exports.",
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m26-audit/removals-run.ts",
+      "destination": "scripts/verification/removals/check.ts",
+      "sourceSha256": "3c649b8f35e027f3f3d35ee77fb4c2cb5319d38ba002d7cdb0fbbf4eddf7f982",
+      "destinationSha256": "9b78f3cb19c0b83807750243a22c52b4faefa0f64cd0cc313a2f0706e4624ee4"
+    }
+  ],
+  "changes": [
+    "Repository root depth, coverage input and default scratch output move to their allocated locations. Assertions and scan scope remain unchanged."
+  ],
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [
+      {
+        "file": "scripts/verification/removals/check.ts",
+        "args": [],
+        "passed": true,
+        "exitCode": 0
+      }
+    ],
+    "manual": [],
+    "supportingScope": "",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  }
+}

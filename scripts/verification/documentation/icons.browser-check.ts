@@ -1,0 +1,69 @@
+import type * as Playwright from "playwright";
+
+type IconFixtureWindow = typeof window & { result: string[] };
+import path from "node:path";
+import assert from "node:assert/strict";
+import { browserDistribution } from "../browser-distribution";
+
+const root = path.resolve(import.meta.dir, "../../..");
+const distribution = browserDistribution(root, process.env.ACME_BROWSER_PACKAGE, process.env.ACME_RELEASE_CONSUMER);
+const source = `import {AcmeHomeIcon} from '/dist/generated/icons/classes/home-icon.js';
+import {configureIcons} from '/dist/configure.js';
+const results=[];const check=(name,ok)=>{if(!ok)throw Error(name);results.push(name)};
+check('class-only does not register', !customElements.get('acme-home-icon'));
+await import('/dist/define/home-icon.js');
+check('definition uses same class',customElements.get('acme-home-icon')===AcmeHomeIcon);
+const home=new AcmeHomeIcon();home.label='Home';document.body.append(home);await home.updateComplete;
+check('default artwork rendered',!!home.shadowRoot.querySelector('svg'));
+const record=await import('/dist/generated/icons/records/home.js');
+const filled=await import('/dist/generated/icons/artwork/outlined/filled/home.js');
+check('copied artwork shares record',record.artwork===filled.artwork);
+configureIcons({family:'outlined',filled:true});await home.updateComplete;
+check('shared configuration selects imported artwork',home.shadowRoot.querySelector('path').getAttribute('d')===record.artwork.get('outlined',true).paths[0].d);
+await import('/dist/generated/icons/families/sharp/unfilled.js');configureIcons({family:'sharp',filled:false});await home.updateComplete;
+check('complete family module loads',home.shadowRoot.querySelector('path').getAttribute('d')===record.artwork.get('sharp',false).paths[0].d);
+window.result=results;`;
+const server = Bun.serve({
+  port: 0,
+  fetch(req) {
+    const p = new URL(req.url).pathname;
+    const file = distribution.file(p);
+    return p === "/"
+      ? new Response('<script type="module" src="/probe.js"></script>', { headers: { "Content-Type": "text/html" } })
+      : p === "/probe.js"
+        ? new Response(source, { headers: { "Content-Type": "application/javascript" } })
+        : p === "/favicon.ico"
+          ? new Response(null, { status: 204 })
+          : file
+            ? new Response(Bun.file(file))
+            : new Response("Not found", { status: 404 });
+  },
+});
+const runtime = process.env.ACME_BROWSER_RUNTIME;
+if (!runtime) {
+  throw new Error("Set ACME_BROWSER_RUNTIME");
+}
+process.env.PLAYWRIGHT_BROWSERS_PATH = runtime + "/browsers";
+const pw: typeof Playwright = await import(runtime + "/node_modules/playwright/index.mjs");
+const results = [];
+try {
+  for (const engine of ["chromium", "firefox", "webkit"] as const) {
+    const browser = await pw[engine].launch({ headless: true, ...(engine === "chromium" ? { executablePath: process.env.ACME_CHROMIUM_PATH } : {}) });
+    try {
+      const page = await browser.newPage();
+      const errors: string[] = [];
+      page.on("pageerror", (e) => errors.push(String(e)));
+      await page.goto(server.url.href, { waitUntil: "domcontentloaded" });
+      await page.waitForFunction(() => (window as IconFixtureWindow).result, null, { timeout: 120000 });
+      const checks = await page.evaluate(() => (window as IconFixtureWindow).result);
+      assert.deepEqual(errors, []);
+      results.push({ engine, checks });
+      console.log(engine, checks.length, "PASS");
+    } finally {
+      await browser.close();
+    }
+  }
+} finally {
+  server.stop(true);
+}
+await Bun.write(".artifacts/m23-docs/icon-cdn-results.json", JSON.stringify(results, null, 2));

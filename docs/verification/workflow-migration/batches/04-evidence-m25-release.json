@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m25-release",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.713Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m25-release/2026-09-26.json",
+      "destination": "docs/verification/systematization/m25-release/2026-09-26.json",
+      "bytes": 1996,
+      "sha256": "e7f2c3182024de12836ae7ee967ede601e1e6dff0fabb528bc43be7a3a6c10c5"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-release/bun-1.4.0-trust-failure.txt",
+      "destination": "docs/verification/systematization/m25-release/bun-1.4.0-trust-failure.txt",
+      "bytes": 1700,
+      "sha256": "f730bdd2a0185c6aa67fb8cd42219cf31f230123fe752567b8bc33728a758bd3"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-release/firefox-155-sequential-failure.json",
+      "destination": "docs/verification/systematization/m25-release/firefox-155-sequential-failure.json",
+      "bytes": 44677,
+      "sha256": "70bdcc4f97ed268b4f615d2d41b3fdba7e7bb8c321a62e5a4f3adf059280a252"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-release/firefox-155-sequential-run.ts",
+      "destination": "docs/verification/systematization/m25-release/firefox-155-sequential-run.ts",
+      "bytes": 2085,
+      "sha256": "dc22802d971ee112540e1711436d78a446349f021d6c3b512adf9c19fa39719a"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-release/loopback-crypto.json",
+      "destination": "docs/verification/systematization/m25-release/loopback-crypto.json",
+      "bytes": 1282,
+      "sha256": "c0cca45fc01380dd493e3f50fae1016310724ae910c1fb1092644605b5769ea4"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-release/orchestration-2026-09-26.json",
+      "destination": "docs/verification/systematization/m25-release/orchestration-2026-09-26.json",
+      "bytes": 1068,
+      "sha256": "a1da81bfb638696cfbff8fc59887ad74a8440046c7cc5909ef792a776079318c"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-release/orchestration-tests.txt",
+      "destination": "docs/verification/systematization/m25-release/orchestration-tests.txt",
+      "bytes": 1217,
+      "sha256": "9f76b292ac18cd3ef8bdf0a8485dde6823fc8a3aebaee6643a6d7161332b2819"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-release/published-0.2.0-provenance.json",
+      "destination": "docs/verification/systematization/m25-release/published-0.2.0-provenance.json",
+      "bytes": 12321,
+      "sha256": "6c9a32e256444715b8eab342bb01bd36cc368acec14634fa55c49247c6654324"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-release/published-0.2.0-trust.json",
+      "destination": "docs/verification/systematization/m25-release/published-0.2.0-trust.json",
+      "bytes": 879,
+      "sha256": "0ffecc1638219f4ef228af1928d749a19454fa76c63aea0fc0be50dea848da6d"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-release/source-record-tests.txt",
+      "destination": "docs/verification/systematization/m25-release/source-record-tests.txt",
+      "bytes": 310,
+      "sha256": "0f481afaebcdbe3c3fd567764b6a788c985174bde5d6d23a7dcb8391f2f4ce02"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-release/unit-tests.txt",
+      "destination": "docs/verification/systematization/m25-release/unit-tests.txt",
+      "bytes": 1097,
+      "sha256": "77e7719cf1aaf1643d8299c1e81c974da2951d8116375fc3b414d83a457ff9cb"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

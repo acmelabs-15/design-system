@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-summary-m26-scoped",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Full source/audit preparation and writer semantic/path review; coordinator guard/review pending",
+    "runtimeDependency": "docs/verification/workflow-migration/task-08.json",
+    "coordinator": {
+      "semanticReview": "Independent full review accepted all22 source/target pairs with no required findings.",
+      "runtime": "Task08 records24required+7manual passes and two verified metadata/default follow-ups; final clean activation remains separate.",
+      "supplementalLogs": "All38 ignored logs, including the five referenced files, are captured at335a6ed91883e5d63fa2d8fbe23f3d2c58359e60 and copied byte-for-byte.",
+      "guard": "Real preparation passes with970 sources,979 destinations and197 batches; later allocated work remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m26-scoped/README.md",
+      "destination": "docs/verification/systematization/m26-scoped/README.md",
+      "sourceSha256": "95f6b3c8bc13777dbac548bd9712fe66e9f3cb429bd90d9570c0995017b39ce2",
+      "destinationSha256": "29d417c35c2333721ae6e8331d06c20a2fe8e669f484502c84257f1ef639e3f6",
+      "changes": [
+        "Retarget scoped runner/fixture and preserve both module/CDN modes. Link extracted live polyfill/bootstrap inputs separately from immutable original source JSON and native-control evidence. Retire evidence-directory output guidance in favor of .artifacts/checks/scoped-registration."
+      ],
+      "retainedQualifications": [
+        "Firefox polyfill 0.0.10 cannot late-define an adopted unknown element; define before adoption.",
+        "Same-origin active-document checks do not certify inert/cross-origin documents or every component lifecycle.",
+        "Source/build/fresh-archive modes and original failed decorator, duplicate-constructor and missing-CDN attempts remain distinct.",
+        "Native WebKit factory failure is backed by an independent platform control."
+      ],
+      "actualRunScope": {
+        "record": "docs/verification/workflow-migration/task-08.json",
+        "sourceTree": "dirty",
+        "baseCommit": "dff4a7fa4eb5c16ecf22de3148ea80b754d6698d",
+        "version": "0.3.2",
+        "classification": "required package module/CDN modes; source diagnostic separately scoped",
+        "evidence": [
+          "docs/verification/workflow-migration/runtime/checks/scoped-module.json"
+        ]
+      }
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

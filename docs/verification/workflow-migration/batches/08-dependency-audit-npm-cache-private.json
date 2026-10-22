@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-dependency-audit-npm-cache-private",
+  "status": "complete",
+  "recordedAt": "2026-10-22T05:24:05.063Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "verification": {
+    "passed": true,
+    "scope": "Focused relocated scenario and checks",
+    "tests": "5 tests / 45 assertions passed, including the actual private-cache server proof",
+    "runtime": "Bun 1.4.2",
+    "types": "Focused strict TypeScript passed",
+    "static": "Oxlint/Oxfmt passed",
+    "failureAndResolution": "The sandbox rejected the local test listener as EADDRINUSE on port0. The same scoped test passed with approved local-server access; no assertion changed.",
+    "relatedConsumer": "scripts/__tests__/dependency-audit.test.ts",
+    "review": "Complete helper is byte-identical. Caller only changes its path; synthetic credentials and cleanup remain unchanged.",
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/release-0.3.0/npm-cache-private.ts",
+      "destination": "scripts/verification/dependency-audit/npm-cache-private.ts",
+      "sourceSha256": "39ea4c248055f3f65843ca9bf9d39568a09a61a5c34089929f7cbd4a8904d3b3",
+      "destinationSha256": "39ea4c248055f3f65843ca9bf9d39568a09a61a5c34089929f7cbd4a8904d3b3"
+    }
+  ],
+  "limits": [
+    "Aggregate migration, fresh consumer, and browser acceptance are recorded separately. Originals remain until cutover."
+  ],
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [],
+    "manual": [],
+    "supportingScope": "Five passing dependency-audit tests/45 assertions include the relocated private-cache proof.",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-proposal-coverage",
+  "status": "complete",
+  "recordedAt": "2026-10-22T05:30:00.556Z",
+  "verification": {
+    "passed": true,
+    "scope": "Full source read and source-to-target semantic review. All150 row tags and Remove classifications match the original parser surface exactly. Link/runtime guard follows.",
+    "retained": "Thirty extension requirements, exclusions, reference ownership, original150-tag census and protected-hash qualifications remain. Design approval, release acceptance and later red baseline are distinct.",
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/proposal-coverage.md",
+      "destination": "spec/component-coverage.md",
+      "sourceSha256": "52778fbe46dc1ed76e44b713aad4c73af1be96b74b9de1f120f7a71ffd1f3ae2",
+      "destinationSha256": "1863c1d46936579ba862132b8dd40383221bf422dc91fbb5cf6bbc7c955a34ee"
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/alignment/proposal-coverage.md",
+      "oldAnchor": "complete-proposal-coverage",
+      "destination": "spec/component-coverage.md",
+      "newAnchor": "component-replacement-coverage"
+    },
+    {
+      "source": "notes/alignment/proposal-coverage.md",
+      "oldAnchor": "current-source-to-proposal-map",
+      "destination": "spec/component-coverage.md",
+      "newAnchor": "original-source-to-contract-map"
+    }
+  ],
+  "coordinatorAnchorRouting": {
+    "date": "2026-10-22T05:48:12.834Z",
+    "method": "Retargeted relative Markdown links using explicit source-anchor routes; fenced evidence and external URLs unchanged."
+  }
+}

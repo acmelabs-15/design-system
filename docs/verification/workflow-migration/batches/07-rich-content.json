@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-rich-content",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer full source/audit read and semantic reconciliation; coordinator guard/review pending",
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/inventory/rich-content.md",
+      "destination": "spec/SPEC-rich-content.md",
+      "sourceSha256": "f0983eea1c639ac6964be7379e31236eae57d732f44ddef93cc517ff3df43552",
+      "destinationSha256": "31e2f6365ff25851680d6a19678308d20356a33d4ef454c6b14d082057e31fc5",
+      "changes": [
+        "Converted approved proposal wording into current contract language; preserved inputs/defaults/content/methods/events/exclusions and acceptance requirements.",
+        "Retargeted citations through allocated ledger paths; retained original approval and dated evidence."
+      ],
+      "retainedQualifications": [
+        "Book's detailed motion contract remains authoritative; no generic CSS-transition replacement.",
+        "Video autoplay defaults do not override browser policy or user pause.",
+        "JSON descriptor traversal does not sandbox arbitrary Proxy traps; raw Markdown HTML is not sanitizer output."
+      ],
+      "reconciliations": [
+        "RC-01 already supersedes internal language-switcher state with application-owned Select/Tabs composition.",
+        "Recorded JSON View Proxy caveat qualifies the no-ordinary-getter guarantee without promising sandboxed execution.",
+        "Markdown's trusted-only raw HTML remains explicit; no sanitizer is inferred.",
+        "Video's native Source/Track ownership and later engine-specific keyboard evidence remain distinct from actual-platform certification."
+      ],
+      "evidence": [
+        "docs/research/15-lit-practice-review.md#m21-json-view-in-progress",
+        "docs/verification/systematization/m21-video-2026-09-23.json"
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

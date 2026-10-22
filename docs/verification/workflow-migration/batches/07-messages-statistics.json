@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-messages-statistics",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer full source/audit read and semantic reconciliation; coordinator guard/review pending",
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/inventory/messages-statistics.md",
+      "destination": "spec/SPEC-messages-statistics.md",
+      "sourceSha256": "c5dfeca3c68a271f147920b7ba5f4ceef3f47823cd5e56f3310f8de0f9a2a714",
+      "destinationSha256": "3a42d262df01ad8008ada588e77c535a59ea099a493f93515746b747542261cf",
+      "changes": [
+        "Converted approved proposal wording into current contract language; preserved inputs/defaults/content/methods/events/exclusions and acceptance requirements.",
+        "Retargeted citations through allocated ledger paths; retained original approval and dated evidence."
+      ],
+      "retainedQualifications": [
+        "Actual OS background-window and assistive behavior are not established by injected visibility or headless checks.",
+        "Incomplete Material Progress token/diagram coverage is still a conditional research requirement.",
+        "Empty State default|outline|subtle remains unchanged and agrees with current source; M18 plain wording is a resolved historical documentation discrepancy."
+      ],
+      "reconciliations": [
+        "0035 label-driven Spinner semantics replace ancestor-dependent wording and preserve owner-controlled busy state.",
+        "Named M18 Meter/Progress contrast deviations are incorporated with source measurements linked.",
+        "Toast, Feedback, Empty State and Stat scope remains as approved; no API is inferred from current code."
+      ],
+      "evidence": [
+        "docs/decisions/0035-execution-delegation.md",
+        "docs/research/07-design-foundations.md#m18-measurement-foreground-contrast-deviation--2026-09-23"
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": [
+    {
+      "source": "notes/alignment/inventory/messages-statistics.md",
+      "kind": "resolved-historical-wording",
+      "detail": "M-04 and src/components/empty-state/empty-state.ts:38-53 agree on default|outline|subtle with default=default. The later M18 research word plain is a historical documentation discrepancy, not an implementation/API gap. The approved contract is unchanged."
+    }
+  ]
+}

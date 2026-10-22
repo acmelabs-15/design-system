@@ -183,78 +183,32 @@ registerTheme("brand", {
 await import("@acmelabs/design-system/define/theme");
 ```
 
-A partial definition inherits default values. Repeating the same registration is harmless;
+A partial definition inherits the default design-system theme. Repeating the same registration is harmless;
 changing an existing definition fails. Ordinary CSS custom properties supply local overrides.
 The Theme Switcher emits `acme-request` with `{ action: "appearance", value }`; handle it in
 the application and update the switcher's `value` and the relevant theme scope's `appearance`.
 
-## Layout
+## Working on this repository
 
-```
-packages/core/package.json      public core metadata, runtime dependencies and exports
-packages/react/                 generated React wrappers
-packages/mcp/                   read-only documentation server
-packages/devtools/              optional read-only inspector
-skills/                         authored consumer guidance
-styles/                         authored base, component and shared CSS inputs
-src/
-  base.ts                       AcmeElement and shared helpers
-  index.ts                      exports classes and authoring helpers
-  all.ts, define/               generated global registration entries
-  register/, internal/register/ generated explicit registration functions
-  shared/                       shared behavior
-  components/<name>/
-    <name>.ts                   the element
-    __tests__/<name>.test.ts    bun:test with happy-dom
-  generated/
-    css/                        canonical CSS inputs, compiled CSS and maps
-    components/, shared/        generated Lit style modules
-    icons/                      per-icon classes and explicit artwork entries
-    style-manifest.json         producer/input/output fingerprints
-site/                           authored documentation app and pages
-_site/                          generated local site (not committed)
-dist/                           package modules, bundles and document styles
-scripts/                        split-css, build, dev server
-tools/geist/                    the parity pipeline: specs, maps, sketches, generator, census
-notes/                          hand-written analysis, decisions, and the current pass
-```
+Use Bun 1.4.2, as selected by the repository's `.bun-version` and package manager field.
+Start with the [maintainer instructions](https://github.com/acmelabs-15/design-system/blob/main/AGENTS.md)
+and [current handoff](https://github.com/acmelabs-15/design-system/blob/main/docs/STATUS.md).
+Installed brain skills own the maintainer workflow; the seven packaged skills above remain consumer guidance.
 
-## Generated files
+Before changing source or generated files, read the
+[repository and producer map](https://github.com/acmelabs-15/design-system/blob/main/docs/agents/repository.md).
+It owns package boundaries, authored inputs, generated outputs and delivery links.
+Use the [verification guide](https://github.com/acmelabs-15/design-system/blob/main/docs/agents/verification.md)
+to select checks and decide whether earlier evidence still applies.
 
-Generated inputs under src/generated are committed. Package and site outputs are disposable. Edit the named sources; the build checks generated fingerprints.
-
-| Path | Written by | Edit instead |
-|---|---|---|
-| `src/generated/css/` and Lit style modules | `split` or the mapped generator | `styles/` or `tools/geist/maps/` |
-| `src/generated/style-manifest.json` | style producers | its recorded source inputs |
-| `src/generated/tokens.json` and `dist/tokens.json` | `split`, then `build` | Numeric and theme catalogs through `scripts/numeric-tokens.ts` |
-| `src/generated/theme-properties.ts` | `split` | `scripts/theme-tokens.ts`, token sources and local palette styles |
-| `src/generated/responsive-styles.ts` | `split` | `scripts/responsive-styles.ts` and the common style schema |
-| `assets/material-symbols/` | `scripts/material-symbols.ts import` | the pinned upstream SVG checkout |
-| `src/generated/icons/`, `dist/icons.json` | `scripts/icon-entries.ts`, then `build` | the verified SVG catalog and shared icon renderer |
-| `src/define/`, `src/register/`, their `src/internal/` counterparts, `src/all.ts` and component exports in packages/core/package.json | `scripts/entries.ts` | tag-map declarations, owned component markup and literal scoped-factory calls |
-| `dist/styles/tokens.css` | `split`, then `build` | `styles/house.css`, the generated theme and the numeric token catalog |
-| `dist/styles/dashboard.css` | `build` | compiled recipe inputs selected in `scripts/build.ts` |
-| `dist/shared/date.js` and `dist/licenses/` | `scripts/date-runtime.ts` during build | exact patched date dependency and `src/shared/date.ts` |
-| `dist/custom-elements.json` | `build` or `bun run manifest` | element declarations, templates and documented dynamic slots |
-| `dist/skills/` and MCP release facts | `bun run docs` | `skills/`, the manifest and `site/` |
-| `packages/core/{dist,assets,README.md,skills}` | `scripts/core-package.ts` | explicit delivery links to the single source/build tree |
-| `packages/devtools/src/generated/metadata.ts` | `scripts/devtools-metadata.ts` | the manifest and token catalog |
-| `packages/devtools/dist/` and `packages/mcp/dist/` | `bun run build:tooling` | their authored sources and shared release facts |
-| `_site/` | `bun run docs` | `site/` |
-| `dist/` | `bun run build` | `src/` and generated inputs |
-
-Component CSS intermediates stay in the repository. The package's style directory contains document styles and maps. The unminified browser bundle includes CSS debugger maps; production JavaScript bundles omit them.
-
-## Working on this repo
-
-Use the pinned Bun1.4.2 runtime (`.bun-version` and root packageManager). Start with `AGENTS.md`. It gives the reading order, the rules, and the current work.
+Component CSS intermediates stay in the repository. The package's style directory contains document styles and maps.
+The unminified browser bundle includes CSS debugger maps; production JavaScript bundles omit them.
 
 ## Scripts
 
 | Command | What it does |
 |---|---|
-| `bun run build` | Transpiles `src/` with the Lit template compiler into `dist/`, then bundles `dist/bundle/design-system(.min).js` |
+| `bun run build` | Compiles the shared runtime, declarations, metadata and browser delivery from verified source inputs |
 | `bun run docs` | Builds the docs site into `_site/` |
 | `bun run dev` | Rebuilds on change and serves the docs at <http://localhost:4180> |
 | `bun test` | Unit tests plus a render test of every docs page |
@@ -270,7 +224,7 @@ Use the pinned Bun1.4.2 runtime (`.bun-version` and root packageManager). Start 
 
 ## Release
 
-Build and verify all coordinated packages before creating release artifacts. `bun run pack` stages the public core package; `bun scripts/package.ts packages/react` and the corresponding MCP/Devtools paths stage optional packages. Archives contain ordinary self-contained files, with development overrides, patches and scripts excluded.
+The five packages use coordinated versions. `bun run release:prepare` creates their archive set and source/digest record. `bun run pack` stages the public core package alone. Archives contain self-contained files, with development overrides, patches and scripts excluded. Follow the [verification guide](https://github.com/acmelabs-15/design-system/blob/main/docs/agents/verification.md) for the required build, archive and consumer checks.
 
 Publication uses the reviewed GitHub workflow and npm trusted publishing with provenance. Local package creation does not publish or change GitHub Pages. Release workflow verification is part of the repository's release checks.
 

@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m10",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.491Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m10-checkbox-baseline-2026-09-21.json",
+      "destination": "docs/verification/systematization/m10-checkbox-baseline-2026-09-21.json",
+      "bytes": 9139,
+      "sha256": "92d68bdb9fedff8d4111ce89bb7703204bd581abd09f2fe5b872a616c7f6ff2a"
+    },
+    {
+      "source": "notes/alignment/evidence/m10-checkbox-group-card-2026-09-21.json",
+      "destination": "docs/verification/systematization/m10-checkbox-group-card-2026-09-21.json",
+      "bytes": 105292,
+      "sha256": "5252b1e152b6ecc3645fabbb1ad6b1974445cc44e49885ff42ae2a397064f409"
+    },
+    {
+      "source": "notes/alignment/evidence/m10-checkbox-progress-2026-09-21.json",
+      "destination": "docs/verification/systematization/m10-checkbox-progress-2026-09-21.json",
+      "bytes": 87506,
+      "sha256": "03e3047f9d9c04df6098373caff59a3440cf3c72f4f6970e110f345a49eeb64a"
+    },
+    {
+      "source": "notes/alignment/evidence/m10-motion-sources-2026-09-21.json",
+      "destination": "docs/verification/systematization/m10-motion-sources-2026-09-21.json",
+      "bytes": 15724,
+      "sha256": "b0006ce83f37082b58b12da5c8fcf7b94a6226d6073dc1b46ebf3540d10bd2d2"
+    },
+    {
+      "source": "notes/alignment/evidence/m10-radio-2026-09-21.json",
+      "destination": "docs/verification/systematization/m10-radio-2026-09-21.json",
+      "bytes": 163062,
+      "sha256": "abe289a6805c8ac1f2117dd18c8f5fd201cfe12ce24149342010337477ae6c12"
+    },
+    {
+      "source": "notes/alignment/evidence/m10-segmented-switch-2026-09-21.json",
+      "destination": "docs/verification/systematization/m10-segmented-switch-2026-09-21.json",
+      "bytes": 132313,
+      "sha256": "6942d336482cc23f923d24bd2dc7e9d75089d6c93ef0cdb21e59b6ba361f8942"
+    },
+    {
+      "source": "notes/alignment/evidence/m10-selection-indicator-2026-09-21.json",
+      "destination": "docs/verification/systematization/m10-selection-indicator-2026-09-21.json",
+      "bytes": 39774,
+      "sha256": "7b2e52c4ac13e739bc93d6df5be073c26bba770552f6661937a8dfecbfc6deef"
+    },
+    {
+      "source": "notes/alignment/evidence/m10-tabs-2026-09-21.json",
+      "destination": "docs/verification/systematization/m10-tabs-2026-09-21.json",
+      "bytes": 52748,
+      "sha256": "23d8144a1be3472012cead21259c2363594a0710c5384f938f207ee5b81ec358"
+    },
+    {
+      "source": "notes/alignment/evidence/m10-tabs-material-review-2026-09-21.json",
+      "destination": "docs/verification/systematization/m10-tabs-material-review-2026-09-21.json",
+      "bytes": 16745,
+      "sha256": "81e0b1235665bf299e7b3ef1d57239101a2587bab86e084e58a7b7a4aa8adda4"
+    },
+    {
+      "source": "notes/alignment/evidence/m10-theme-switcher-2026-09-21.json",
+      "destination": "docs/verification/systematization/m10-theme-switcher-2026-09-21.json",
+      "bytes": 25009,
+      "sha256": "5c5a2afc5fe4b353b55d69bd15e08e2e11e935ac100e60e2b723421cfad43c6f"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

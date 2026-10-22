@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-018",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/intent-tooling.md",
+      "destination": "docs/decisions/0048-intent-tooling.md",
+      "sourceSha256": "22b5d249c2f87af794acc6dd182be032fbfa7595be58717e5dc98ec873da934e",
+      "destinationSha256": "fabc9b16ba1b7c12dab402b943d602ec29398dd9ef08aa89a8be2ba148e08099",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original decision date, selected scope, alternatives, reasons and evidence retained.",
+        "Original observations and incomplete verification remain distinguished from later implementation."
+      ]
+    },
+    {
+      "source": "notes/decisions/inventory-approval.md",
+      "destination": "docs/decisions/0049-inventory-approval.md",
+      "sourceSha256": "250b78ee1cb9247f775babb170275eab1f16286e0d9304d448299d0b89c3e7c9",
+      "destinationSha256": "d01250b86d9c8e4b4cee7d0af2de891133f01ccfbdca91b83def1eb376a79ab3",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original decision date, selected scope, alternatives, reasons and evidence retained.",
+        "Original observations and incomplete verification remain distinguished from later implementation."
+      ]
+    },
+    {
+      "source": "notes/decisions/item-content-family.md",
+      "destination": "docs/decisions/0050-item-content-family.md",
+      "sourceSha256": "4c19305b9013709f17c9bcbbf77539157a8c10453d04b530f63dc1bc201bbf27",
+      "destinationSha256": "a0c86bebdc8eef97e11caa1109ca753e8ef77fbcdf77252184b780ad3c41c368",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original decision date, selected scope, alternatives, reasons and evidence retained.",
+        "Original observations and incomplete verification remain distinguished from later implementation."
+      ]
+    },
+    {
+      "source": "notes/decisions/layout-grid.md",
+      "destination": "docs/decisions/0051-layout-grid.md",
+      "sourceSha256": "4a66f292ea9f6bd0288a37558ca501bd49e7f9e8624ad3d8494c10a65a061001",
+      "destinationSha256": "23120c7127db648aa62723c495e18e3b4dba962581f3d31075f7ee67812f2d9b",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original decision date, selected scope, alternatives, reasons and evidence retained.",
+        "Original observations and incomplete verification remain distinguished from later implementation."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

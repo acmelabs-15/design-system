@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "batch": "06-research-18-repository-layout",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "All20 originals were fully read during audit and conversion. Specific findings distinguish observations, proposals, approved choices, unverified claims, supersession and dated history. Rule dispositions retire completed process instructions.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/analysis/repository-layout.md",
+      "destination": "docs/research/18-repository-layout.md",
+      "sourceSha256": "53a329bebe574beeb5a24bcdb0c831c6782e54a5abff050f4d2483ba78001fa1",
+      "destinationSha256": "a0844e6a7e22a7f028e5197cae867d3cd5e537d32ffeca13ca05d6b270549826",
+      "changes": [
+        "Converted to numbered research with explicit dated scope, findings, provenance and limitations.",
+        "Relocated live Markdown links through the final ledger; retained source paths as historical provenance.",
+        {
+          "old": "no files have moved.",
+          "new": "no files had moved at that checkpoint."
+        },
+        {
+          "old": "Do not plan to remove files that are already gone.",
+          "new": "Their absence removed them from the proposed deletion scope."
+        },
+        {
+          "old": "Read current repository listings and package manifests, not just homepages.",
+          "new": "The investigation read repository listings and package manifests, not only homepages."
+        },
+        {
+          "old": "This is the **current** producer map and a README-ready replacement for the inaccurate table. The approved layout migration must update the paths together with the writers.",
+          "new": "This was the producer map at the 2026-09-19 checkpoint and a proposed replacement for the inaccurate table. The later layout migration updated paths and writers together."
+        },
+        {
+          "old": "This section belongs in both the consumer README and the pass entry point when that layout is approved; the current factual map is also included in the pass README now. The source-code freeze remains in force.",
+          "new": "The original pass proposed copying that map into its README and entry point while a source-code freeze remained active. That duplicate ownership and freeze are retired; the current repository guidance owns the maintained generator map."
+        },
+        {
+          "old": "The remaining path details and actual changes are Phase 5 work, not implementation authorized by these decisions.",
+          "new": "At that checkpoint, remaining path details and changes belonged to Phase 5; the research decisions alone did not authorize implementation."
+        },
+        {
+          "old": "Finish the missing source and published-output traces, compare global/recipe outputs, registration, maps, escaping, determinism and selective delivery, then return a recommendation to Peter.",
+          "new": "The investigation then identified missing source/published-output traces and comparisons of global/recipe outputs, registration, maps, escaping, determinism and selective delivery before a recommendation. The completed comparison follows below."
+        },
+        {
+          "old": "Before implementation approval, test representative house styles, exact escaping, CSS scope, registrations/conflicts, deterministic generation, invalid-input failures, selective imports and source maps. Verify rendered outcomes in all three engines.",
+          "new": "The proposed acceptance covered representative styles, exact escaping, CSS scope, registrations/conflicts, deterministic generation, invalid-input failures, selective imports, source maps and rendered outcomes in all three engines."
+        },
+        {
+          "old": "Include these representative cases in the existing pre-Phase-5 CSS scope/registration/selective-loading/source-map gate.",
+          "new": "Those representative cases were assigned to the original pre-Phase-5 CSS scope/registration/selective-loading/source-map gate."
+        },
+        {
+          "old": "M00 technical prerequisites remain active before dependent implementation. Production implementation has not started; approval is not a runtime result.",
+          "new": "At that approval checkpoint, M00 prerequisites preceded dependent implementation and production implementation had not started. Later implementation evidence below supersedes that status; approval alone was not a runtime result."
+        },
+        {
+          "old": "During coordinated migration, port 4180 serves verified output with --no-build --no-watch; restore normal watching after coordinated generation ends.",
+          "new": "During that coordinated migration, port 4180 served verified output with --no-build --no-watch to avoid concurrent regeneration. This is historical process configuration, not a current server command."
+        },
+        {
+          "old": "Remove the self-override.",
+          "new": "The correction removed the self-override."
+        },
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance.",
+        {
+          "old": "Keep generated style inputs under version control while CI lacks the reference corpus. Give every generated file a producer header and mark generated paths in `.gitattributes` for review tooling. Keep `dist/` and `_site/` disposable. A source-of-truth manifest must name each writer and input, and generation checks must run where those inputs are available.",
+          "new": "The proposal kept generated style inputs in version control while CI lacked the reference corpus. Producer headers and `.gitattributes` identified generated files; `dist/` and `_site/` remained disposable. A manifest named each writer/input, with generation checks where inputs were available."
+        },
+        {
+          "old": "Keep generator-owned sources authoritative. Compile their CSS, then produce generated Lit style modules as one delivery form. Produce document tokens, approved global/recipe styles, registrations and metadata from the appropriate source records, with explicit scope conversion. Shared sources do not mean identical shadow and document CSS.",
+          "new": "The recommendation kept generator-owned sources authoritative, compiled their CSS and produced generated Lit style modules as one delivery form. Document tokens, approved global/recipe styles, registrations and metadata came from their source records with explicit scope conversion. Shared sources did not imply identical shadow and document CSS."
+        },
+        {
+          "old": "Exact names, paths, exports and release coordination remain unapproved.",
+          "new": "At that checkpoint, exact names, paths, exports and release coordination remained unapproved."
+        },
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance."
+      ],
+      "retainedQualifications": [
+        "Reference layouts vary; Nord unpublished layout and restricted license remain caveats.",
+        "Source/release revisions and Spectrum generations differ.",
+        "Map flags do not prove useful debugging; Firefox/WebKit map UI was not automated.",
+        "Bun map findings cover exact tested modes/versions.",
+        "M00 supplied its own consumer patch and did not prove transitive delivery.",
+        "Present corpus must match hashes; absent corpus works with committed inputs.",
+        "114 comparisons are not all future states.",
+        "Fresh installs missed self-override failure; repeated mutation matrix proves ordinary workspace correction."
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/analysis/repository-layout.md",
+      "oldAnchor": "repository-layout-investigation",
+      "destination": "docs/research/18-repository-layout.md",
+      "newAnchor": "research-18-repository-layout-investigation"
+    }
+  ],
+  "findings": []
+}

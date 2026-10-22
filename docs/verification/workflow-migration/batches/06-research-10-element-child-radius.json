@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "batch": "06-research-10-element-child-radius",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "All20 originals were fully read during audit and conversion. Specific findings distinguish observations, proposals, approved choices, unverified claims, supersession and dated history. Rule dispositions retire completed process instructions.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/analysis/element-child-radius.md",
+      "destination": "docs/research/10-element-child-radius.md",
+      "sourceSha256": "ff19f3e70eb515b0e91d724109b5f722df5dabb09d20ffca53441a5296b32714",
+      "destinationSha256": "9339593d8d7978d502355898f90e9d8ef1d7d0b92eba8158340b9f68ca4f87aa",
+      "changes": [
+        "Converted to numbered research with explicit dated scope, findings, provenance and limitations.",
+        "Relocated live Markdown links through the final ledger; retained source paths as historical provenance.",
+        {
+          "old": "## The decision this needs",
+          "new": "## The decision this needs"
+        },
+        {
+          "old": "The fact is real and the spec cannot express it, so it has to be written down somewhere a person\nchooses:",
+          "new": "The investigation found a real measurement gap that the spec could not express. It left three placement options for Peter:"
+        },
+        {
+          "old": "Left for Peter. Until then split-button stands at 4 hard, all four this, and the cause is known.",
+          "new": "At this checkpoint the choice remained with Peter. Split Button had four hard differences, all from the measured cause above. This source records no later resolution."
+        },
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance.",
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance."
+      ],
+      "retainedQualifications": [
+        "The old spec lacks large elementChild evidence.",
+        "Both attempted fixes are rejected for recorded reasons.",
+        "Generator remains unchanged at that checkpoint; the choice was left to Peter.",
+        "Do not create a current task or invent resolution from the four old differences."
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/analysis/element-child-radius.md",
+      "oldAnchor": "el-gives-a-large-button-the-wrong-radius-and-the-spec-cannot-say-otherwise",
+      "destination": "docs/research/10-element-child-radius.md",
+      "newAnchor": "research-10-el-gives-a-large-button-the-wrong-radius-and-the-spec-cannot-say-otherwise"
+    }
+  ],
+  "findings": [
+    "The source leaves the generator correction unselected. Four historical differences are preserved without inventing a current task or resolution."
+  ],
+  "coordinatorReconciliation": {
+    "date": "2026-10-21",
+    "source": "PLAN.md:766-770; docs/history/parity-port-plan.md:713-717",
+    "finding": "Later port completion records Peter accepting the four radius differences rather than changing the generator. Research now distinguishes the initial unresolved checkpoint from that explicit acceptance; no current component or generator correction is inferred."
+  }
+}

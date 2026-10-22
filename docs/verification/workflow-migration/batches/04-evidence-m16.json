@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m16",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.542Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m16-sidebar-2026-09-23.json",
+      "destination": "docs/verification/systematization/m16-sidebar-2026-09-23.json",
+      "bytes": 14450,
+      "sha256": "7b0d9ee21332c4ef503d409f97fb282a68b8b4753c6ba942dd8603b6dd6eaf50"
+    },
+    {
+      "source": "notes/alignment/evidence/m16-toc-2026-09-23.json",
+      "destination": "docs/verification/systematization/m16-toc-2026-09-23.json",
+      "bytes": 16875,
+      "sha256": "8b69125893d09bbb7f4b958bc625014e0bb76d774349dc6e421de8e4e55bba54"
+    },
+    {
+      "source": "notes/alignment/evidence/m16-tree-view-2026-09-23.json",
+      "destination": "docs/verification/systematization/m16-tree-view-2026-09-23.json",
+      "bytes": 20047,
+      "sha256": "ff1b84fb35bf1d2d2e9e364616f82b3cea2427ef1a88e5241ffc5a8466350ec2"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "batch": "06-research-16-package-choices",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "All20 originals were fully read during audit and conversion. Specific findings distinguish observations, proposals, approved choices, unverified claims, supersession and dated history. Rule dispositions retire completed process instructions.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/analysis/package-choices.md",
+      "destination": "docs/research/16-package-choices.md",
+      "sourceSha256": "a75d512a4dbebdaa278422f3cca1ab6c6905f21db93ac7d62fdac96b4c48aa8b",
+      "destinationSha256": "26b2577d1164f87e2a305201508fe5e46e6f907b7611cf11af9e9963e50d183e",
+      "changes": [
+        "Converted to numbered research with explicit dated scope, findings, provenance and limitations.",
+        "Relocated live Markdown links through the final ledger; retained source paths as historical provenance.",
+        {
+          "old": "# Package choices: what we use, what we should, what to avoid",
+          "new": "# Package choices and integration evidence"
+        },
+        {
+          "old": "Installation and implementation remain gated by the migration plan.",
+          "new": "Installation and implementation were then gated by the completed pass's migration plan."
+        },
+        {
+          "old": "This file is the standing record of those judgements.",
+          "new": "This file records those dated judgements and their later corrections."
+        },
+        {
+          "old": "## Confirmed correct, keep",
+          "new": "## Confirmed correct, keep"
+        },
+        {
+          "old": "| Choice | Evidence |",
+          "new": "The following table preserves recommendations and platform observations from 2026-09-10; version and support claims are not freshly verified.\n\n| Choice | Evidence |"
+        },
+        {
+          "old": "**The recommendation is per-machine, not all-or-nothing.**",
+          "new": "**Historical recommendation, superseded by native ports: per-machine adoption rather than all-or-nothing.**"
+        },
+        {
+          "old": "So adopt a machine only\nwhere the reference's behaviour is conventional, and keep ours where the reference diverges. That\ndecision belongs to each element's port, on evidence, not to a blanket policy.",
+          "new": "The proposal favored machine adoption only where reference behavior was conventional, retaining\ncustom behavior where it diverged. Peter later rejected this runtime/adapter strategy in favor of native ports."
+        },
+        {
+          "old": "## Delete on sight\n\nPolyfills the platform has absorbed: element internals, inert, focus-visible, CSS anchor positioning,\nand duration formatting. None is needed at our support floor.",
+          "new": "## Delete on sight\n\nThis original recommendation called for deleting element-internals, inert, focus-visible, CSS-anchor-positioning and duration-formatting polyfills on a claimed support-floor basis. It is retired as a blanket instruction. Later selected scoped compatibility requirements and their tested browser floors govern; the historical statement does not establish that every listed polyfill is unnecessary."
+        },
+        {
+          "old": "Keep the selected capabilities and source evidence; do not implement the earlier adapter plan.",
+          "new": "The selected capabilities and source evidence remain; the earlier adapter plan is superseded."
+        },
+        {
+          "old": "Port an official adapter and map reactive state, controlled values, refs, computed values, effects and mount/unmount handling. Preserve Zag's transition helpers and effect ordering. Also normalize properties/events and apply/remove DOM bindings.",
+          "new": "The rejected adapter route would have mapped reactive state, controlled values, refs, computed values, effects and mount/unmount handling. It also required Zag transition helpers and effect ordering, normalized properties/events and applied/removed DOM bindings."
+        },
+        {
+          "old": "All project installation and implementation waits for Phase 5 approval.",
+          "new": "At that checkpoint, installation and implementation awaited Phase 5 approval; that completed-pass gate is historical."
+        },
+        {
+          "old": "Follow the current pass handoff for the next subject. Preserve the no-implementation gate and do not reopen selected user-facing features merely because their implementation source changes.",
+          "new": "At that checkpoint, the old pass handoff selected the next research subject and implementation had not been approved. The implementation-source change did not reverse selected user-facing capabilities. Those old routing and approval gates are retired."
+        },
+        {
+          "old": "Future analysis must map state, effects, motion, styling, forms, focus and cleanup together, not replace the store alone.",
+          "new": "The selected port scope covered state, effects, motion, styling, forms, focus and cleanup together, rather than only replacing the store."
+        },
+        {
+          "old": "The root package.json and bun.lock do not yet list it; source installation waits for migration approval.",
+          "new": "At that research checkpoint the root package.json and bun.lock did not yet list it; installation awaited migration approval."
+        },
+        {
+          "old": "Do not repeat that question or reopen the rejected Zag runtime to obtain the parser transitively.",
+          "new": "The independent parser selection did not reopen the rejected Zag runtime."
+        },
+        {
+          "old": "Before approving Flow Diagram's inventory: define measured content/labels, stable identifiers, layout ordering and acceptable movement, async stale-result handling, worker delivery, viewport controls and accessible node/relationship reading. Include real buttons/inputs/switches, text selection, popups and inner scrolling so diagram gestures never consume control interaction. Check custom themes, density, RTL, reduced motion, focus retention and reconnect in Chromium/Firefox/WebKit. Specify graph scale from intended use; the100-node probe is not a supported limit. Nested groups, export and fixed-position overrides remain unselected; editing/execution are outside the selected viewer scope. Package references do not authorize source changes before Phase 5.",
+          "new": "The original Flow inventory review required measured content/labels, stable identifiers, layout ordering and acceptable movement, async stale-result handling, worker delivery, viewport controls and accessible node/relationship reading. Its proposed browser cases covered real buttons/inputs/switches, text selection, popups and inner scrolling, plus custom themes, density, RTL, reduced motion, focus retention and reconnect in Chromium/Firefox/WebKit. Intended use had to determine graph scale; the100-node probe did not establish a supported limit. Nested groups, export and fixed-position overrides were unselected; editing/execution remained outside the viewer scope. The old Phase 5 authorization gate is historical."
+        },
+        {
+          "old": "Under delegated execution, narrow Number Input formatOptions to standard notation and reject other notations before changing state.",
+          "new": "The completed pass narrowed Number Input formatOptions to standard notation and rejected other notations before changing state."
+        },
+        {
+          "old": "Repair the upstream parser with an exact-version patch and regression fixtures.",
+          "new": "The selected correction was an exact-version upstream-parser patch with regression fixtures."
+        },
+        {
+          "old": "Resizable is next; its published machine and core resize/validation utilities have been re-read in full.",
+          "new": "Resizable was next at this checkpoint; its published machine and core resize/validation utilities had been re-read in full."
+        },
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance.",
+        {
+          "old": "## Confirmed correct, keep",
+          "new": "## Historical package recommendations"
+        },
+        {
+          "old": "## Worth adopting",
+          "new": "## Historical candidate recommendations"
+        },
+        {
+          "old": "## Delete on sight",
+          "new": "## Retired blanket polyfill recommendation"
+        },
+        {
+          "old": "Read pin-input.machine.ts, pin-input.utils.ts and pin-input.connect.ts. Map the character sequence, focused index, field count and derived completion into TanStack state and ordinary functions. Port paste distribution, replacement, deletion, focus movement and validation; bind native beforeinput/input/composition/paste/keyboard events directly in Lit. Preserve the full code for native form submission and the selected masking/autofill capabilities. Label each field and test mixed input methods and RTL.",
+          "new": "The investigation read pin-input.machine.ts, pin-input.utils.ts and pin-input.connect.ts. The proposed mapping put the character sequence, focused index, field count and derived completion in TanStack state and ordinary functions. It ported paste distribution, replacement, deletion, focus movement and validation, with native beforeinput/input/composition/paste/keyboard bindings in Lit. It retained the full code for native form submission and masking/autofill, with labeled fields and mixed-input/RTL tests."
+        },
+        {
+          "old": "Read number-input.machine.ts and number-input.utils.ts. Keep editable text distinct from parsed numeric value so empty and partial input survive typing. Derive formatted value and limit/step availability. Port stepping, clamping/commit behaviour, caret restoration and press-and-hold cleanup into native Lit/TanStack code.",
+          "new": "The investigation read number-input.machine.ts and number-input.utils.ts. The proposed mapping separated editable text from parsed numeric value so empty and partial input survived typing. It derived formatted value and limit/step availability and ported stepping, clamping/commit behavior, caret restoration and press-and-hold cleanup into native Lit/TanStack code."
+        },
+        {
+          "old": "Read scroll-area.machine.ts in full and the existing Scroller. The browser remains the source of scroll position. TanStack state represents geometry, overflow sides, track/thumb visibility and interaction state. Port thumb sizing, track-click/drag translation, RTL offsets, corner layout and visibility logic as ordinary functions/controllers. Observe viewport/content changes and clean up listeners, timers and observers.",
+          "new": "The investigation read scroll-area.machine.ts in full and the existing Scroller. The proposed mapping kept the browser as the source of scroll position and TanStack state for geometry, overflow sides, track/thumb visibility and interaction state. It ported thumb sizing, track-click/drag translation, RTL offsets, corner layout and visibility as ordinary functions/controllers, with viewport/content observation and listener/timer/observer cleanup."
+        },
+        {
+          "old": "Use the already inspected Splitter constraint and size-distribution algorithms as source material. Represent pane sizes, collapse state, previous-open sizes and interaction state with TanStack Store. Implement native pointer/keyboard geometry and resize observation through lifecycle code. Keep application-owned saving and the selected previous-size restoration.",
+          "new": "The proposed mapping used the inspected Splitter constraint and size-distribution algorithms as source material. It represented pane sizes, collapse state, previous-open sizes and interaction state with TanStack Store. Native pointer/keyboard geometry and resize observation used component lifecycle code, retaining application-owned saving and the selected previous-size restoration."
+        },
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance."
+      ],
+      "retainedQualifications": [
+        "Registry/main/support/adoption facts are dated; no comparative popularity winner is proven.",
+        "No Zag interpreter or second state owner is selected; remove-scroll scope is separate.",
+        "Fuzzy probes are small/default-config; synthetic connectors and skipped upstream tests are not runtime passes.",
+        "Adobe parser alone is not full control; wrong nonstandard notation is explicitly rejected.",
+        "ELK is layout, not a fixed-position router; local sizes/timings are not browser/CDN claims.",
+        "Alternative diagram libraries retain precise license/lifecycle/accessibility limits.",
+        "Local date patch does not reach consumers without private-runtime delivery.",
+        "Reduced-motion cause is document CSS, not a diagnosed standalone WebKit defect.",
+        "Blanket polyfill deletion conflicts with later selected scoped compatibility; old avoid-match-sorter/no-vanilla advice is superseded."
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/analysis/package-choices.md",
+      "oldAnchor": "package-choices-what-we-use-what-we-should-what-to-avoid",
+      "destination": "docs/research/16-package-choices.md",
+      "newAnchor": "research-16-package-choices-and-integration-evidence"
+    },
+    {
+      "source": "notes/analysis/package-choices.md",
+      "oldAnchor": "confirmed-correct-keep",
+      "destination": "docs/research/16-package-choices.md",
+      "newAnchor": "historical-package-recommendations"
+    },
+    {
+      "source": "notes/analysis/package-choices.md",
+      "oldAnchor": "worth-adopting",
+      "destination": "docs/research/16-package-choices.md",
+      "newAnchor": "historical-candidate-recommendations"
+    },
+    {
+      "source": "notes/analysis/package-choices.md",
+      "oldAnchor": "delete-on-sight",
+      "destination": "docs/research/16-package-choices.md",
+      "newAnchor": "retired-blanket-polyfill-recommendation"
+    },
+    {
+      "source": "notes/analysis/package-choices.md",
+      "oldAnchor": "shared-house-responsibilities",
+      "destination": "docs/research/16-package-choices.md",
+      "newAnchor": "shared-responsibilities"
+    }
+  ],
+  "findings": [
+    "The original blanket polyfill-deletion recommendation conflicts with later selected scoped compatibility. It is explicitly retired without changing the later technical selections."
+  ]
+}

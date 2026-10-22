@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "task": "04",
+  "status": "complete",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "batches": 50,
+  "filesCopiedThisRun": 690,
+  "bytesCopiedThisRun": 37930925,
+  "verification": {
+    "passed": true,
+    "kind": "per-file source and destination hash plus direct byte equality",
+    "aggregateGuard": {
+      "passed": true,
+      "errors": 0,
+      "pending": 1901,
+      "counts": {
+        "sources": 932,
+        "destinations": 941,
+        "extractedFixtures": 2,
+        "batches": 192
+      },
+      "fingerprints": {
+        "docs/verification/workflow-migration/ledger.json": "9a1f734100d4bfe59cb1e68d27dc31c4d87e92c3048fe2a378ffe432147b8f84",
+        "baselineSources": "1d2fc6e0777cb302515bff42f49d15af14cbf2d3633c4d0614d0ea3ee6f221cf",
+        "docs/verification/workflow-migration/batches.json": "c1a035e9b923230e1092b11c86d9a2bec32cfac0d9ae539d431f909bdc9fb715",
+        "docs/verification/workflow-migration/references.json": "323fed6aa8ad0a4fc4df32336200e5ab1ad93713dd82e8956f4c3d8ad56c933a",
+        "docs/verification/workflow-migration/live-file-audit.json": "0feb6f37403d243a27c32395bfb72ab26cf0199957a619fb9a01634dff7a8673"
+      },
+      "scope": "All copied evidence and current migration preparation; final acceptance remains pending"
+    }
+  },
+  "oldSources": "retained until task11",
+  "durableLogTracking": {
+    "finding": "The existing *.log rule ignores four newly allocated release evidence paths.",
+    "resolution": "A scoped !docs/verification/**/*.log exception tracks durable verification logs while temporary .artifacts logs remain ignored.",
+    "files": [
+      "docs/verification/releases/0.3.0/dialog-native-local.log",
+      "docs/verification/releases/0.3.0/filter-green.log",
+      "docs/verification/releases/0.3.0/filter-red.log",
+      "docs/verification/releases/0.3.0/flow-close-local.log"
+    ]
+  },
+  "supplemental": {
+    "record": "docs/verification/workflow-migration/task-04-supplemental.json",
+    "additionalFiles": 38,
+    "totalRawCopies": 728,
+    "sourceCapture": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60"
+  }
+}

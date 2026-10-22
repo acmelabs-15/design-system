@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m20-flow",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.572Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m20-flow/docs-check.ts",
+      "destination": "docs/verification/systematization/m20-flow/docs-check.ts",
+      "bytes": 2012,
+      "sha256": "8917645007d4e80c335ef6333c72905399d97797179973b623bc203bb7301b32"
+    },
+    {
+      "source": "notes/alignment/evidence/m20-flow/engine-native-entry.ts",
+      "destination": "docs/verification/systematization/m20-flow/engine-native-entry.ts",
+      "bytes": 1047,
+      "sha256": "110e23a00d27d5919c38635c3a4d87b3c1976bd8ed4849ea408b1328ab7b2657"
+    },
+    {
+      "source": "notes/alignment/evidence/m20-flow/engine-probe-entry.ts",
+      "destination": "docs/verification/systematization/m20-flow/engine-probe-entry.ts",
+      "bytes": 1387,
+      "sha256": "47e730fc03af933fd99099b9349d3ec28d7a4a861943fb6507fd14dd5cc85249"
+    },
+    {
+      "source": "notes/alignment/evidence/m20-flow/engine-probe.ts",
+      "destination": "docs/verification/systematization/m20-flow/engine-probe.ts",
+      "bytes": 2536,
+      "sha256": "c43082e480e96cfea9e6894db6203fff9dd4f708b4bacaddae2243de234e894a"
+    },
+    {
+      "source": "notes/alignment/evidence/m20-flow/firefox-delayed.ts",
+      "destination": "docs/verification/systematization/m20-flow/firefox-delayed.ts",
+      "bytes": 2685,
+      "sha256": "925474197424343f8696e7e7306e44ce2f94fcb427171f4e7fc1eb3125cfbb13"
+    },
+    {
+      "source": "notes/alignment/evidence/m20-flow/firefox-release.ts",
+      "destination": "docs/verification/systematization/m20-flow/firefox-release.ts",
+      "bytes": 2663,
+      "sha256": "dd05bc447bbca7bec7f834506fb5975677675ae4555845d239d366fe0565e96f"
+    },
+    {
+      "source": "notes/alignment/evidence/m20-flow/firefox-standalone.ts",
+      "destination": "docs/verification/systematization/m20-flow/firefox-standalone.ts",
+      "bytes": 2625,
+      "sha256": "4df823db26b59df73f632f5f438bf58ea2895730c18bd711a38663780ca9edba"
+    },
+    {
+      "source": "notes/alignment/evidence/m20-flow/fresh-consumer.ts",
+      "destination": "docs/verification/systematization/m20-flow/fresh-consumer.ts",
+      "bytes": 1877,
+      "sha256": "6c1d9d71194317b4591f1273725302964a2d7ca6e1a2c24336691c1dd5d90ab3"
+    },
+    {
+      "source": "notes/alignment/evidence/m20-flow/run-compiled-isolated.ts",
+      "destination": "docs/verification/systematization/m20-flow/run-compiled-isolated.ts",
+      "bytes": 11021,
+      "sha256": "4157f8fe2b17147c5fb6a4100bfab480e7427f9c54b71b409e467bca6480c9c8"
+    },
+    {
+      "source": "notes/alignment/evidence/m20-flow/run-components.ts",
+      "destination": "docs/verification/systematization/m20-flow/run-components.ts",
+      "bytes": 10985,
+      "sha256": "65286d1c092ccb40c51c65c1740a59a8ccba26d453b4569112f3a25e5d61a258"
+    },
+    {
+      "source": "notes/alignment/evidence/m20-flow/run-extra.ts",
+      "destination": "docs/verification/systematization/m20-flow/run-extra.ts",
+      "bytes": 5051,
+      "sha256": "eb363d8b625a0634465925b40bdbb62cd874acba7d598e108d0e465adbd47493"
+    },
+    {
+      "source": "notes/alignment/evidence/m20-flow/run-firefox-sequence.ts",
+      "destination": "docs/verification/systematization/m20-flow/run-firefox-sequence.ts",
+      "bytes": 6610,
+      "sha256": "f6cd50d0349432cda768e934fe12caf26b11541ea04438d1226fc7d968642321"
+    },
+    {
+      "source": "notes/alignment/evidence/m20-flow/run-native-cancel.ts",
+      "destination": "docs/verification/systematization/m20-flow/run-native-cancel.ts",
+      "bytes": 2084,
+      "sha256": "d2620000edcd11e1c0d39394211ee198e2beb98e1a4cbb2a7a639aae955c5108"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

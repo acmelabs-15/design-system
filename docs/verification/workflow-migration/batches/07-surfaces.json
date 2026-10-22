@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-surfaces",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer full source/audit read and semantic reconciliation; coordinator guard/review pending",
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/inventory/surfaces.md",
+      "destination": "spec/SPEC-surfaces.md",
+      "sourceSha256": "f6b2c6adea01454a024cbda7b892e073c25755ee829dbbba24cad0e12eb1b41d",
+      "destinationSha256": "a309df16d30674fb78d6df491d13679805e7dfd59c0ad6fc1f72176aadb031dd",
+      "changes": [
+        "Converted approved proposal wording into current contract language; preserved inputs/defaults/content/methods/events/exclusions and acceptance requirements.",
+        "Retargeted citations through allocated ledger paths; retained original approval and dated evidence."
+      ],
+      "retainedQualifications": [
+        "Disabled Wall's accepted named explanation/owner or nearest-safe-control focus recovery remains intact, independent of current implementation evidence.",
+        "Preserved native tags do not by themselves certify screen-reader collection semantics.",
+        "Recipe examples do not imply network backends or duplicate application action owners."
+      ],
+      "reconciliations": [
+        "Native author-owned List/Data List content and linked Card ownership remain unchanged.",
+        "Completed component replacements become current composition mappings; no old wrapper/API is restored."
+      ],
+      "evidence": []
+    }
+  ],
+  "anchorChanges": [],
+  "findings": [],
+  "coordinatorCorrections": {
+    "source": ".artifacts/task7-family-review.md",
+    "scope": "Restored default-theme referent; named the actual strict tar parser; expressed List acceptance directly while preserving E02 as history.",
+    "review": "Independent re-review pending"
+  }
+}

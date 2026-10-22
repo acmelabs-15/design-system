@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-034",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/shape-vocabulary.md",
+      "destination": "docs/decisions/0095-shape-vocabulary.md",
+      "sourceSha256": "eaa0e37c6d177e592ea91ed48de57de78aceee5827a66019a4687065a0419636",
+      "destinationSha256": "c55b3def841f6ac93cd4fdd6cc33836673af5cea7b56afac85cffe08462e7e95",
+      "changes": [
+        "Retained shape-versus-corner distinction and final replacement scope.",
+        "Dated observed alias ambiguity."
+      ],
+      "retainedQualifications": [
+        "Square does not imply sharp corners.",
+        "No selection of all component shapes/radii/property design or broader morphing scope."
+      ]
+    },
+    {
+      "source": "notes/decisions/shared-icon-library.md",
+      "destination": "docs/decisions/0096-shared-icon-library.md",
+      "sourceSha256": "bde8b64a6d4d9cab56f8baa0abd40b7d30e49eadf31883d5f91612278eee4bd6",
+      "destinationSha256": "50f72eb6fd34dca8109139a7c40e1fd499c54f4cfdecacd5246aabb13ab1e290",
+      "changes": [
+        "Retained shared library ownership and later chosen artwork.",
+        "Dated remaining design questions and linked later resolution."
+      ],
+      "retainedQualifications": [
+        "One element per icon, Material Symbols SVGs and Rounded/unfilled default stay selected.",
+        "Original investigation retains alternatives and evidence."
+      ]
+    },
+    {
+      "source": "notes/decisions/shared-selection-indicator.md",
+      "destination": "docs/decisions/0097-shared-selection-indicator.md",
+      "sourceSha256": "4b92f829803af37f21f006c58e6b56578b07b5ee8ddc4ab210d8515b293a7d3a",
+      "destinationSha256": "040d14fe83936917b166b6abf7687c6cf6a7c7df41cfa1f4aac0af4f326a6b98",
+      "changes": [
+        "Preserved shared indicator boundary and each consumer's semantic ownership.",
+        "Dated initial design/implementation gap and linked private-delivery resolution/evidence."
+      ],
+      "retainedQualifications": [
+        "No Checkbox/multiselect travelling indicator or replacement of individual Radio marks.",
+        "Horizontal and vertical support is required; each consumer controls its supported orientations.",
+        "No Zag runtime; no duplicated focus or selection ownership."
+      ]
+    },
+    {
+      "source": "notes/decisions/stack-layout.md",
+      "destination": "docs/decisions/0098-stack-layout.md",
+      "sourceSha256": "24dd9c9e7ebb48c80508b002b912a70518161a03b3124e910136e80a2c4d11ea",
+      "destinationSha256": "2176374570bc5dc500575e491e04613fa39b68b9a7fe6c69e399a05c1fb1c710",
+      "changes": [
+        "Retained Stack gap/direction/undefined getter semantics and all separator choices.",
+        "Dated initial 8px source and wrap-defect probe; linked final contract and preserved later implementation evidence.",
+        "Removed separate component-origin category without changing approved token roles.",
+        "Final source-to-target review corrected the exact contract/history target or an updated heading anchor."
+      ],
+      "retainedQualifications": [
+        "Named directions are property contracts, not an assertion that CSS cannot override layout.",
+        "Two gaps plus divider thickness; zero gap still includes thickness.",
+        "Line-aware separators deliberately differ from reference source order and do not change Group rules.",
+        "938-file source census and Chromium widths reproduce a motivating defect, not final cross-engine correctness.",
+        "Delegated resolutions are not new preference votes; explicit spacing stays authored."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "batch": "06-research-20-systematic-approach",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "All20 originals were fully read during audit and conversion. Specific findings distinguish observations, proposals, approved choices, unverified claims, supersession and dated history. Rule dispositions retire completed process instructions.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/analysis/systematic-approach.md",
+      "destination": "docs/research/20-systematic-approach.md",
+      "sourceSha256": "d67af951f704b56d50f8541c9e7b1b0358941b40f0c5db35df167d6c94120315",
+      "destinationSha256": "5a00717ad80e02995d31fb8545a1a2150b1cc2697ba0dd676e748d44e9af7218",
+      "changes": [
+        "Converted to numbered research with explicit dated scope, findings, provenance and limitations.",
+        "Relocated live Markdown links through the final ledger; retained source paths as historical provenance.",
+        {
+          "old": "# The systematic approach to finishing this port",
+          "new": "# Systematic verification and maintainer-workflow research"
+        },
+        {
+          "old": "Written 2026-09-10. Linked from `PLAN.md`, which carries the task list. This file explains the *method*:\nwhat a script decides, what a person decides, and why the line falls where it does.",
+          "new": "Written 2026-09-10 and linked from the historical port plan. This record explains the investigated boundary\nbetween mechanical checks and semantic judgment, then records later workflow decisions and migration evidence."
+        },
+        {
+          "old": "It needs the\nsketch path, hand-drawn from the class strings in the compiled chunks. Budget it as the most expensive of\nthe three.",
+          "new": "The investigation proposed the\nsketch path, drawn from compiled-chunk class strings, and estimated it as the most expensive of the three."
+        },
+        {
+          "old": "## The order, and why\n\n1. **Re-measure the 21 pages that report differences.** Not all 124: 103 already read clean, and\n   re-measuring those spends the most expensive resource we have on confirming what we know. Save a\n   config for each, since 67 roots still lack one.\n2. **Fix what survives.** In the generator, never in an element.\n3. **Finish the three elements**, cheapest first: relative-time-card, then context-card, then calendar.\n4. **Behaviour parity**, per [behaviour-verification-method.md](behaviour-verification-method.md). The\n   contract checklists exist; the browser tier does not yet.\n5. **The package audit**, per [package-choices.md](package-choices.md) and\n   [hand-rolled-audit.md](hand-rolled-audit.md).\n6. **Lit practice**, per [lit-practice-review.md](lit-practice-review.md). The manifest is the highest\n   single-item value.\n7. **Cleanup, then the release that can claim parity.**\n\n",
+          "new": "## The order, and why\n\nThe original proposed order was historical port work:\n\n1. Re-measuring the 21 pages with differences, retaining the 103 clean readings rather than rerunning all 124. Each new run needed a config; 67 roots lacked one.\n2. Fixing surviving defects in their generator owner.\n3. Completing Relative Time Card, then Context Card, then Calendar.\n4. Behavior parity using the [method investigation](behaviour-verification-method.md); checklists existed but the browser tier did not yet.\n5. The [package audit](package-choices.md) and [hand-written responsibility audit](hand-rolled-audit.md).\n6. [Lit practice](lit-practice-review.md), with manifest work then judged the highest-value item.\n7. Cleanup and a release supported by parity evidence.\n\nThis sequence is closed history, not a restart queue.\n\n"
+        },
+        {
+          "old": "## Rules that keep quality from slipping\n\n- **Evidence, never inference.** Every claim about reference behaviour traces to something observed. An\n  upstream library says where to look, never what the answer is.\n- **A tool that cannot decide says so.** No plausible defaults for a judgement field.\n- **Every accepted difference carries its reason,** in the tool, not in someone's memory.\n- **Fix causes in the generator.** A workaround in an element hides the defect from every other element.\n- **Write the decision down the same turn it is made.** A decision that lives only in conversation is\n  lost at the next context reset.\n- **Report what was not checked.** An unverified item named is shared risk; unnamed, it is a surprise.\n\n",
+          "new": "## Rules that keep quality from slipping\n\nThe port method required observed reference evidence, explicit uncertainty in judgment fields and reasons for accepted differences. It assigned CSS defects to their generator owner, recorded decisions in the same turn and reported unperformed checks. These explain the old method; the current plugin workflow and repository guidance own operational instructions. The later producer map includes more owners than tools/geist alone.\n\n"
+        },
+        {
+          "old": "Use the installed count.",
+          "new": "The installed count was the observed count."
+        },
+        {
+          "old": "### Applying the pack to our existing documents\n\nThe following skill bodies were read in full from the installed version: `spec-driven-development`, `source-driven-development`, `api-and-interface-design`, `planning-and-task-breakdown`, and `incremental-implementation`.\n\n- **Goals and element specifications:** use the clarification and acceptance-criteria checks from `spec-driven-development`. Keep the pass README and the planned inventory as our documents. That skill explicitly supports existing specification formats at lines 150–154; a second root specification would duplicate our record.\n- **Research and interface design:** use `source-driven-development` to check installed versions and official documentation, and `api-and-interface-design` to describe contracts before implementing them. Apply the web-component conventions selected by this pass; its REST naming examples are not Lit rules.\n- **Migration planning:** use `planning-and-task-breakdown` for dependencies, small tasks, and explicit verification. Record them in `notes/alignment/migration-plan.md`, as Phase 5 requires, rather than creating a competing `tasks/plan.md` and `tasks/todo.md`.\n- **Implementation:** use `incremental-implementation` after migration approval. One logical change includes the necessary source, map, generated output, documentation, and tests. The rough file-count guidance must not split a replacement into an incomplete interface change.\n- **Testing and review:** the installed pack includes `test-driven-development`, `browser-testing-with-devtools`, `performance-optimization`, and `code-review-and-quality`. Read their full instructions when that stage begins; those workflows have not been executed in this installation turn.\n\n### Defaults that project instructions override\n\n- `api-and-interface-design/SKILL.md:125` prefers additive, backward-compatible changes. This package has no other consumers and replaces old interfaces outright. Peter reaffirmed that code, JSDoc, README and consumer docs describe the current design only; replacement history belongs in notes and Git. No aliases, fallback implementations, deprecated exports or legacy modes. Migration skills must not introduce compatibility stages into the final package.\n- `api-and-interface-design/SKILL.md:146` gives REST-oriented naming examples, including boolean prefixes and uppercase enum values. Naming here follows Lit practice, the domain model, and Peter's approved conventions.\n- `incremental-implementation/SKILL.md:41` commits after every slice. `PLAN.md:159` requires Peter to ask before a commit. Verification can finish while the changes remain uncommitted.\n- `spec-driven-development/SKILL.md:182` defaults to `tasks/` output. The pass already assigns its specification and migration records to `notes/alignment/`; retain those paths.\n- Generic examples do not change the mandated package stack, the generator's ownership of CSS, test locations, or the required build sequence. Evidence about the reference stays in notes and tooling, not in `src/` comments.\n\n",
+          "new": "### Applying the pack to our existing documents\n\nThe installed versions of spec-driven-development, source-driven-development, api-and-interface-design, planning-and-task-breakdown and incremental-implementation were read in full.\n\nThe original adaptation kept goals and element specifications in the pass README/inventory, citing the specification skill's existing-format allowance at lines150–154. Research used installed versions and official documentation; interface work used the selected web-component conventions rather than generic REST examples. Migration planning used the old notes/alignment/migration-plan.md path and avoided a parallel tasks/plan.md and tasks/todo.md. Implementation grouped source, maps, generated output, docs and tests into one logical slice. The pack supplied testing, browser, performance and review skills, but none of those workflows ran in that installation turn.\n\n### Defaults that project instructions override\n\nThis heading records the original override policy. The approved maintainer workflow retires that policy and its obsolete path/permission exceptions:\n\n- API skill line125 preferred additive changes. The original pass asserted no other consumers and selected outright replacement, with current-only consumer documentation and no aliases, fallbacks, deprecated exports or legacy modes. The completed replacements remain final. Actual usage was not measured; that premise and blanket future permission are retired.\n- API skill line146 used REST boolean-prefix/uppercase-enum examples. Approved Lit naming and glossary conventions remained the component contract.\n- Incremental skill line41 committed each slice, while old PLAN line159 required Peter to request a commit. That old procedural override does not supersede this migration's approved local-commit scope.\n- Specification skill line182 defaulted to tasks/. The original pass retained notes/alignment/. The approved migration now selects spec/ and tasks/ explicitly.\n- Generic examples did not change selected package roles, generated CSS ownership, colocated tests or build dependencies. Reference evidence stayed outside src. Their current owners are assigned by the rule audit, rather than this old override list.\n\n"
+        },
+        {
+          "old": "At this historical capture, Peter had expanded the pass and Phase 2 was still underway. That phase has since closed; use the [central handoff](../alignment/README.md#where-we-are) for current work. The [extension register](../alignment/additional-functionality-review.md) preserves completed research and acceptance obligations. The seven-phase lifecycle and source freeze remain intact.",
+          "new": "At this historical capture, Peter had expanded the pass and Phase 2 was underway. That phase later closed. The [extension register](../alignment/additional-functionality-review.md) preserves the research and acceptance obligations. The seven-phase lifecycle and source freeze applied then; they are retired workflow history."
+        },
+        {
+          "old": "Future capture turns must propagate changed decisions into the handoff and existing subject analyses, rather than create a second file on the same subject.",
+          "new": "The original capture convention propagated changed decisions into the handoff and existing subject analysis, avoiding a duplicate subject file."
+        },
+        {
+          "old": "## Keeping the record synchronized\n\nPeter explicitly reaffirmed that every affected note must stay current. A capture updates the owning decision, living analysis, inventory, active handoff and any other note that presents the changed choice as current or still open. Search the full notes set for older names, contrary scope and stale phase/next-step wording; updating only the newest paragraph is insufficient.\n\nKeep current phase and next-step information in the central pass handoff. Completed reviews link there instead of repeating a phase number that will drift. Preserve dated measurements and superseded decision history, but label them and link their replacements so they cannot be read as active instructions. Check local file/heading links, evidence JSON and source fingerprints after the capture. This process does not turn draft interfaces into approvals or unverified evidence into passing tests.\n\n",
+          "new": "## Keeping the record synchronized\n\nPeter reaffirmed that affected notes had to remain accurate. The old capture updated the decision, analysis, inventory and active pass handoff wherever they presented a changed choice as current or open. It searched for obsolete names, contrary scope and stale next actions, rather than relying on one appended paragraph.\n\nThe old central handoff owned phase and next-step state. Completed reviews linked to it. Measurements and superseded decisions retained dates and replacement links, and capture checks covered local anchors, evidence JSON and source fingerprints. Capture did not turn drafts into approvals or unverified evidence into passing tests. The new workflow preserves one current owner per fact and uses docs/STATUS.md for handoff.\n\n"
+        },
+        {
+          "old": "Use the [remaining-work queue](../alignment/remaining-work.md) to assemble complete family proposals from existing selections, record their dependencies and assign engineering checks to their actual gates. The agent resolves ordinary implementation details and investigates facts. User questions concern consequential unresolved authoring/behavior choices within the full proposal. A new technical finding can block the affected interface, but does not automatically suspend preparation of unrelated proposals.",
+          "new": "The correction used the [remaining-work queue](../alignment/remaining-work.md) to assemble complete family proposals, dependencies and engineering checks. The agent owned discoverable facts and ordinary implementation details; Peter owned consequential unresolved authoring/behavior choices. A finding could block its affected interface without suspending unrelated preparation."
+        },
+        {
+          "old": "The first delivery is the shared-rule/layout proposal, grounded in the existing Group, Box, Stack and Simple Grid drafts and the related control compatibility evidence. Do not resume with another isolated helper-detail question. Report proposals ready for review, entries approved, groups remaining and material blockers; retain test/link/fingerprint results as supporting evidence. All source freezes, reference-review requirements and Phase 4/5 approval gates remain.",
+          "new": "The first proposed delivery was shared rules/layout, based on Group, Box, Stack, Simple Grid and control-compatibility evidence. This replaced isolated helper-detail questioning. Reporting emphasized complete proposals, approvals, remaining groups and blockers, with test/link/fingerprint results as evidence. The original source freeze and Phase 4/5 gates still applied then; they are historical."
+        },
+        {
+          "old": "The first layout delivery is completed preparation, not the stopping pattern to repeat. Assemble all remaining groups, reconcile their dependencies and collect genuine choices for one subsequent decision walkthrough.",
+          "new": "The first layout delivery completed preparation for one group. Peter's correction required assembling all remaining groups, dependencies and genuine choices before the next decision walk."
+        },
+        {
+          "old": "Continue from that register and the named evidence gates rather than resume the earlier one-family-at-a-time draft loop. No complete entry or migration is marked approved by this assembly.",
+          "new": "The five-question register replaced the earlier one-family draft loop. Assembly itself approved neither complete entries nor implementation."
+        },
+        {
+          "old": "M00 technical prerequisites remain active before dependent implementation. Production implementation has not started; approval is not a runtime result.",
+          "new": "At that approval checkpoint, M00 prerequisites preceded dependent implementation and production implementation had not started. The completed systematization evidence supersedes that status; approval alone was not a runtime result."
+        },
+        {
+          "old": "Read the supplied D&D kickoff prompt in full. Read both projects' AGENTS.md, CLAUDE.md, README.md, CONTEXT.md, docs/STATUS.md, all three docs/agents files and project plugin settings in full.",
+          "new": "The investigation read the supplied D&D kickoff prompt and both projects' AGENTS.md, CLAUDE.md, README.md, CONTEXT.md, docs/STATUS.md, all three docs/agents files and project plugin settings in full."
+        },
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance.",
+        {
+          "old": "lines150–154",
+          "new": "lines 150–154"
+        },
+        {
+          "old": "line125",
+          "new": "line 125"
+        },
+        {
+          "old": "line146",
+          "new": "line 146"
+        },
+        {
+          "old": "line41",
+          "new": "line 41"
+        },
+        {
+          "old": "line159",
+          "new": "line 159"
+        },
+        {
+          "old": "line182",
+          "new": "line 182"
+        },
+        {
+          "old": "Every consequential recommendation needs current code evidence, relevant official/reference practice and tests appropriate to the claim. State observed facts, limited feasibility results, comparative reasoning and unknowns separately. Investigate missing facts; do not invent assumptions to make a proposal appear complete. Community preference requires a stated survey and its limits, not a handful of names presented as consensus.",
+          "new": "The reaffirmed quality bar required current code evidence, relevant official/reference practice and tests appropriate to consequential recommendations. It separated observations, bounded feasibility, comparisons and unknowns. Missing facts required investigation; community-preference claims required a stated survey and limits rather than a few names presented as consensus."
+        },
+        {
+          "old": "Choose the best implementation for the agreed requirements: correctness, accessibility, maintainability, testability, performance and integration fit. Fastest, easiest, familiar, convenient, fewer lines and fewer files do not decide the outcome. Reuse research and parallelize independent work to improve pace without lowering this bar.",
+          "new": "The reaffirmed criteria were correctness, accessibility, maintainability, testability, performance and integration fit. Speed, ease, familiarity, convenience and file/line count alone did not decide the outcome. Research reuse and independent parallel work were proposed ways to improve pace without reducing that bar; this historical statement grants no new delegation."
+        },
+        {
+          "old": "Use the new docs/, spec/ and tasks/ structure, not a permanent index over notes/. Convert decisions to numbered records and research to numbered notes with an index. Move current contracts to specifications, completed plans to tasks/done, releases to docs/releases, raw evidence to docs/verification, and completed prose history to docs/history.",
+          "new": "The final-state recommendation selected docs/, spec/ and tasks/, rather than an index over the old notes tree. It allocated numbered decision/research records with indexes, current contracts to specifications, completed plans to tasks/done, releases to docs/releases, raw evidence to docs/verification and completed prose to docs/history."
+        },
+        {
+          "old": "Retain raw evidence bytes. Rewrite prose into the new format without inventing decisions or removing qualifications. Retired process rules survive in Git, not as alternative instructions in the active docs. Keep immutable historical payloads distinct from live references.",
+          "new": "The recommendation preserved raw evidence bytes and all prose qualifications while converting formats without inventing decisions. Retired process rules remained in Git. Immutable historical payloads were distinct from live references."
+        },
+        {
+          "old": "Remove all five .agents skills.",
+          "new": "The approved recommendation removed all five local skills."
+        },
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance."
+      ],
+      "retainedQualifications": [
+        "Mechanical classification does not decide semantic meaning.",
+        "Installed/disk discovery is not actual host invocation.",
+        "Old no-consumers/output-path/project-over-plugin exceptions are retired.",
+        "930-file and 23/24-check counts describe a baseline; account for migration-created records.",
+        "Current Hover Card cause is unverified; a passing separate run does not erase failure.",
+        "Files do not prove cold startup/interruption behavior.",
+        "Task1 focused results do not close full acceptance or independent review; audit includes the new completion paragraph."
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/analysis/systematic-approach.md",
+      "oldAnchor": "the-systematic-approach-to-finishing-this-port",
+      "destination": "docs/research/20-systematic-approach.md",
+      "newAnchor": "research-20-systematic-verification-and-maintainer-workflow-research"
+    }
+  ],
+  "findings": []
+}

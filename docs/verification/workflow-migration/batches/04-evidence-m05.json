@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m05",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.448Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m05-appearance-2026-09-20.json",
+      "destination": "docs/verification/systematization/m05-appearance-2026-09-20.json",
+      "bytes": 14820,
+      "sha256": "4a583304d72e18bbe613194e58a37714badf46cfd9db932fee46c09d40bf70b3"
+    },
+    {
+      "source": "notes/alignment/evidence/m05-current-css-inputs-2026-09-21.json",
+      "destination": "docs/verification/systematization/m05-current-css-inputs-2026-09-21.json",
+      "bytes": 25645,
+      "sha256": "269e1b67b1f9c62b03f34537d4258035f1b7d978fa1468f2facf0382f56aab9c"
+    },
+    {
+      "source": "notes/alignment/evidence/m05-explicit-style-helper-2026-09-21.json",
+      "destination": "docs/verification/systematization/m05-explicit-style-helper-2026-09-21.json",
+      "bytes": 193469,
+      "sha256": "cf6289c90a921ab40a2847ce39149664034f2d8914ac36e18cc621613ee61d69"
+    },
+    {
+      "source": "notes/alignment/evidence/m05-numeric-tokens-2026-09-20.json",
+      "destination": "docs/verification/systematization/m05-numeric-tokens-2026-09-20.json",
+      "bytes": 124473,
+      "sha256": "9a85b2e45dbcea159462198ed2fb4fdf612edb3d333f0bd05d959494f240ba5c"
+    },
+    {
+      "source": "notes/alignment/evidence/m05-responsive-inputs-2026-09-20.json",
+      "destination": "docs/verification/systematization/m05-responsive-inputs-2026-09-20.json",
+      "bytes": 85095,
+      "sha256": "fa62340c3b54989cde4c379b0978c7b975a652896583956c18c62ea9ee6c734e"
+    },
+    {
+      "source": "notes/alignment/evidence/m05-responsive-renderer-2026-09-21.json",
+      "destination": "docs/verification/systematization/m05-responsive-renderer-2026-09-21.json",
+      "bytes": 22134,
+      "sha256": "8c643f15954d4bc273697177d2273683be128f976c85a27400c70d9c03234c56"
+    },
+    {
+      "source": "notes/alignment/evidence/m05-responsive-style-plan-2026-09-20.json",
+      "destination": "docs/verification/systematization/m05-responsive-style-plan-2026-09-20.json",
+      "bytes": 55687,
+      "sha256": "a1d7b64116564e1e4eb2436dce21dd28422be42b622a8d70fe993540e19694b7"
+    },
+    {
+      "source": "notes/alignment/evidence/m05-state-2026-09-20.json",
+      "destination": "docs/verification/systematization/m05-state-2026-09-20.json",
+      "bytes": 68918,
+      "sha256": "8f555bda0409a5a2ac00a4ebe0058c99a52ee2770e4ba3508a49c9c624efe902"
+    },
+    {
+      "source": "notes/alignment/evidence/m05-style-helper-lifecycle-2026-09-20.json",
+      "destination": "docs/verification/systematization/m05-style-helper-lifecycle-2026-09-20.json",
+      "bytes": 43601,
+      "sha256": "5ef87a0fba07f35dde1fbf8bf0be8033da9882f2e7ea933e729171dafc0710fa"
+    },
+    {
+      "source": "notes/alignment/evidence/m05-style-input-capture-2026-09-20.json",
+      "destination": "docs/verification/systematization/m05-style-input-capture-2026-09-20.json",
+      "bytes": 53286,
+      "sha256": "0613991aad0c98eb34d20a0707a67215b524cb494f24dd4291364b8bd310cd11"
+    },
+    {
+      "source": "notes/alignment/evidence/m05-styles-2026-09-20.json",
+      "destination": "docs/verification/systematization/m05-styles-2026-09-20.json",
+      "bytes": 69434,
+      "sha256": "09f87b1f56b1f42173cf94a57346262c59860551627f684d1c23d652b9c7eebe"
+    },
+    {
+      "source": "notes/alignment/evidence/m05-stylesheet-adoption-2026-09-20.json",
+      "destination": "docs/verification/systematization/m05-stylesheet-adoption-2026-09-20.json",
+      "bytes": 104616,
+      "sha256": "9826f0c7356dbc940ac55eb4210a9eb63ea822a98c8feb58d1bdc2b05e8601b4"
+    },
+    {
+      "source": "notes/alignment/evidence/m05-theme-comparisons-2026-09-21.json",
+      "destination": "docs/verification/systematization/m05-theme-comparisons-2026-09-21.json",
+      "bytes": 15228,
+      "sha256": "6c88106bcc49b1bc41e1bcc14e2e97d001339be3721cd1e33729d48bae58217c"
+    },
+    {
+      "source": "notes/alignment/evidence/m05-theme-context-2026-09-20.json",
+      "destination": "docs/verification/systematization/m05-theme-context-2026-09-20.json",
+      "bytes": 38071,
+      "sha256": "cd300dc5753634ecee3a96bc5d1aeeee6c39a350eabb887e11476e5dee8c4d4d"
+    },
+    {
+      "source": "notes/alignment/evidence/m05-theme-integration-2026-09-21.json",
+      "destination": "docs/verification/systematization/m05-theme-integration-2026-09-21.json",
+      "bytes": 59585,
+      "sha256": "5dab471076d623a16f3fd542fbffb5c864edb3467123e1030c5f241acecd6dc5"
+    },
+    {
+      "source": "notes/alignment/evidence/m05-theme-scope-css-2026-09-20.json",
+      "destination": "docs/verification/systematization/m05-theme-scope-css-2026-09-20.json",
+      "bytes": 193638,
+      "sha256": "b8487c52f3f57a791db2b7a0966bf668377324642332250febee0e48874633e8"
+    },
+    {
+      "source": "notes/alignment/evidence/m05-theme-state-2026-09-20.json",
+      "destination": "docs/verification/systematization/m05-theme-state-2026-09-20.json",
+      "bytes": 80093,
+      "sha256": "a310f208eeb9d2923f0fe1f23271e0e251d78d98e13f3d0b12c95401c5a77afe"
+    },
+    {
+      "source": "notes/alignment/evidence/m05-theme-token-mapping-2026-09-20.json",
+      "destination": "docs/verification/systematization/m05-theme-token-mapping-2026-09-20.json",
+      "bytes": 3480976,
+      "sha256": "890ef5872c873981ff2e501f8c9031908ad75369bb424ef1791172614daa88da"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

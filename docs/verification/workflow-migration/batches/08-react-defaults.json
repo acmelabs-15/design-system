@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-react-defaults",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Focused static/type and source-preservation checks pass; coordinator runtime, guard and review remain pending.",
+    "commands": [
+      {
+        "name": "lint",
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxlint/bin/oxlint --config oxlint.config.ts scripts/verification/react/defaults-check.ts scripts/verification/react/fixtures/defaults.ts scripts/verification/react/browser-check.ts scripts/verification/react/fixtures/runtime.ts scripts/verification/scoped-registration/browser-check.ts scripts/verification/scoped-registration/fixtures/registry.ts scripts/verification/flow/distributions.browser-check.ts scripts/verification/native-forms/history.browser-check.ts scripts/verification/consumer-tools/packed-browser-check.ts scripts/verification/consumer-tools/fixtures/inspector.ts scripts/verification/consumer-tools/package-check.ts scripts/verification/table/worker-consumer.browser-check.ts",
+        "exitCode": 0,
+        "outcome": "No diagnostics."
+      },
+      {
+        "name": "format",
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxfmt/bin/oxfmt --check --config oxfmt.config.ts scripts/verification/react/defaults-check.ts scripts/verification/react/fixtures/defaults.ts scripts/verification/react/browser-check.ts scripts/verification/react/fixtures/runtime.ts scripts/verification/scoped-registration/browser-check.ts scripts/verification/scoped-registration/fixtures/registry.ts scripts/verification/flow/distributions.browser-check.ts scripts/verification/native-forms/history.browser-check.ts scripts/verification/consumer-tools/packed-browser-check.ts scripts/verification/consumer-tools/fixtures/inspector.ts scripts/verification/consumer-tools/package-check.ts scripts/verification/table/worker-consumer.browser-check.ts",
+        "exitCode": 0,
+        "outcome": "All 12 owned files use the current format."
+      },
+      {
+        "name": "types",
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/typescript/bin/tsc --noEmit --strict --experimentalDecorators --useDefineForClassFields false --target ES2022 --module ESNext --moduleResolution bundler --skipLibCheck --types bun,node --jsx react-jsx scripts/verification/react/defaults-check.ts scripts/verification/react/fixtures/defaults.ts scripts/verification/react/browser-check.ts scripts/verification/react/fixtures/runtime.ts scripts/verification/scoped-registration/browser-check.ts scripts/verification/scoped-registration/fixtures/registry.ts scripts/verification/flow/distributions.browser-check.ts scripts/verification/native-forms/history.browser-check.ts scripts/verification/consumer-tools/packed-browser-check.ts scripts/verification/consumer-tools/fixtures/inspector.ts scripts/verification/consumer-tools/package-check.ts scripts/verification/table/worker-consumer.browser-check.ts",
+        "exitCode": 0,
+        "outcome": "Strict focused TypeScript check passes for all 12 owned files."
+      }
+    ],
+    "sourceReview": {
+      "passed": true,
+      "method": "Full source reads plus canonical TypeScript-AST comparison of assertions, named scenarios, wait predicates, pass/exit gates and environment overrides; types and assertion aliases normalized.",
+      "oracleCalls": 2,
+      "limits": "Does not execute browser, build, install or package behavior."
+    },
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
+  },
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [
+      {
+        "file": "scripts/verification/react/defaults-check.ts",
+        "args": [],
+        "passed": true,
+        "exitCode": 0
+      }
+    ],
+    "manual": [],
+    "supportingScope": "",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m22-react/defaults-run.ts",
+      "destination": "scripts/verification/react/defaults-check.ts",
+      "sourceSha256": "57739c9cb1b5cfad5fd35e42c0d37aab07bd68f1487c53a24644a488fdda181c",
+      "destinationSha256": "aa2d3da122841766a114432d23c2740e06eab3fc96614e2f8d4d0a77ff0deade",
+      "sourceAuditBaseline": "0a379170f",
+      "changes": [
+        "Moved the driver and relocated its copied fixture under fixtures/.",
+        "Default report now writes under .artifacts/checks/react/.",
+        "Added fixture/result type declarations and typed error capture; Reflect.get preserves dynamic manifest property reads.",
+        "Applied current formatting and brace rules; added a descriptive fixture-build error without changing its failure condition."
+      ],
+      "retainedQualifications": [
+        "All three browser engines, ACME_REACT_CONSUMER, ACME_BROWSER_RUNTIME and ACME_CHROMIUM_PATH remain.",
+        "Manifest-driven field/default comparison, constructor/getter error reporting and aggregate nonzero exit remain.",
+        "Fresh-consumer bundling and server/browser cleanup retain their original scope."
+      ]
+    },
+    {
+      "source": "notes/alignment/evidence/m22-react/defaults.ts",
+      "destination": "scripts/verification/react/fixtures/defaults.ts",
+      "sourceSha256": "b6260c156b80372b186abb90ba3c6ae1e297e60cab9e135be7d320638743b2bc",
+      "destinationSha256": "6525cd06f2097c5951722db1dd9cf1759dbefa79de791596964ae9b446778b94",
+      "sourceAuditBaseline": "0a379170f",
+      "changes": [
+        "Moved the driver and relocated its copied fixture under fixtures/.",
+        "Default report now writes under .artifacts/checks/react/.",
+        "Added fixture/result type declarations and typed error capture; Reflect.get preserves dynamic manifest property reads.",
+        "Applied current formatting and brace rules; added a descriptive fixture-build error without changing its failure condition."
+      ],
+      "retainedQualifications": [
+        "All three browser engines, ACME_REACT_CONSUMER, ACME_BROWSER_RUNTIME and ACME_CHROMIUM_PATH remain.",
+        "Manifest-driven field/default comparison, constructor/getter error reporting and aggregate nonzero exit remain.",
+        "Fresh-consumer bundling and server/browser cleanup retain their original scope."
+      ]
+    }
+  ],
+  "findings": []
+}

@@ -95,7 +95,12 @@ export async function auditDependencies(): Promise<void> {
   if (status !== 0 && status !== 1) {
     throw new Error("Native dependency audit failed: " + stderr);
   }
-  const report = JSON.parse(stdout);
+  let report;
+  try {
+    report = JSON.parse(stdout);
+  } catch (cause) {
+    throw new Error(`Native dependency audit returned invalid JSON (exit ${status}): ${stderr.trim() || "No native stderr"}`, { cause });
+  }
   const result = await classifyAudit(report);
   if (status === 1 && Object.values(report).every((entries) => (entries as unknown[]).length === 0)) {
     throw new Error("Native dependency audit failed without findings: " + stderr);

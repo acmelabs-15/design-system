@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-supplemental-m25-tooling",
+  "status": "complete",
+  "date": "2026-10-22T06:13:00.345Z",
+  "sourceRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+  "verification": {
+    "passed": true,
+    "method": "All original, staged Git, immutable capture and destination bytes/hash values agree. No semantic edits."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m25-tooling/final-owned-tests.log",
+      "destination": "docs/verification/systematization/m25-tooling/final-owned-tests.log",
+      "bytes": 1083,
+      "sha256": "61732c7297b085f2ec4baf5056074f51730c998e5cdd3ee421e8fc415af6eacf"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-tooling/cleanup-generators-tests.log",
+      "destination": "docs/verification/systematization/m25-tooling/cleanup-generators-tests.log",
+      "bytes": 6729,
+      "sha256": "7ed6f6904551838e2f07aea9390923ee2bddfeb60b9b750d6cf0e7148bec4bb2"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-tooling/cleanup-focused-tests.log",
+      "destination": "docs/verification/systematization/m25-tooling/cleanup-focused-tests.log",
+      "bytes": 7526,
+      "sha256": "f1cc4177bae8398b6c0274f84777333ac10ef667f00765f28a11b97ff6707919"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-tooling/final-audit-pinned.log",
+      "destination": "docs/verification/systematization/m25-tooling/final-audit-pinned.log",
+      "bytes": 295,
+      "sha256": "98185f35c07d777a225f4665f1990c2fcd273df7d8dde0efc6d812acd9959694"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-tooling/final-tests-pinned.log",
+      "destination": "docs/verification/systematization/m25-tooling/final-tests-pinned.log",
+      "bytes": 2986,
+      "sha256": "d4ba590a51b4cf8583e23585d334a07699231c005ad71162d920fb66228a0739"
+    }
+  ],
+  "limits": [
+    "Supplemental capture preserves pre-existing ignored output. It does not rerun those historical checks."
+  ]
+}

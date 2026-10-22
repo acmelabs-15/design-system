@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-remaining-work",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "checks": {
+      "sourceHash": "matches full-read source",
+      "destinationHash": "matches final prepared file",
+      "externalSourceUrls": "all source URLs retained",
+      "numericAndSourceIdentifiers": "retained; heading punctuation can change",
+      "links": "all targets exist or are allocated in ledger.records/newDocumentOwners",
+      "whitespace": "pass",
+      "runtime": "not rerun; historical proof limits retained"
+    },
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/remaining-work.md",
+      "destination": "tasks/done/systematization/review-queue.md",
+      "sourceSha256": "c534d15b468befa969ca72df491a817bff39d9d7403d52a202f58def4b7f0525",
+      "destinationSha256": "9613253fbdc01a9be8abbd0c38c9d5411e2f366fa042f2e6601b461e7cd4176b",
+      "changes": [
+        "Converted the allocated record with explicit status, dated evidence scope and current-owner links.",
+        "Retired old operational commands throughout while preserving decisions, measurements, qualifications and chronology.",
+        "Relocated Markdown links through the final ledger; historical path/session/branch literals remain provenance.",
+        {
+          "old": "## Where completion stands",
+          "new": "## Completion at the recorded release checkpoint"
+        },
+        {
+          "old": "| Measure | Current state |",
+          "new": "| Measure | Recorded state |"
+        },
+        {
+          "old": "The current implementation status is above; technical acceptance remains distinct from design approval.",
+          "new": "The recorded implementation status is above; technical acceptance remains distinct from design approval."
+        },
+        {
+          "old": "## Current review sequence",
+          "new": "## Historical review sequence"
+        },
+        {
+          "old": "Apply [definitive reference behavior](../decisions/reference-systems.md#follow-the-established-reference-without-another-preference-question) without another preference vote. Preserve approved deviations and resolve ordinary engineering choices in the proposal.",
+          "new": "The completed review applied [definitive reference behavior](../decisions/reference-systems.md#follow-the-established-reference-without-another-preference-question), preserved approved deviations and assigned ordinary engineering choices to the proposal."
+        },
+        {
+          "old": "Proceed through [M00 and the approved migration plan](migration-plan.md). M00 is closed; execute the dependent implementation slices. Do not repeat inventory or migration approval.",
+          "new": "The original continuation followed [M00 and the approved migration plan](migration-plan.md). M00 closed before dependent slices proceeded; inventory and migration approvals were already settled."
+        },
+        {
+          "old": "Each investigation has an interface/gate it can invalidate and a completion condition. Reuse prior evidence. New findings revise their owning proposal/analysis in the same turn; unrelated proposal work does not stop. Unknown runtime outcomes remain unverified, not assumed from the written specification.",
+          "new": "Each investigation had an affected interface/gate and completion condition. The completed review reused applicable evidence and revised owning proposals/analyses for new findings without stopping unrelated work. Unknown runtime outcomes remained unverified rather than inferred from specifications."
+        },
+        {
+          "old": "## Remaining execution",
+          "new": "## Recorded execution checklist"
+        },
+        {
+          "old": "- [ ] Perform actual Safari, assistive-technology, OS input/autofill and background-window checks. Automated engine checks do not establish these.",
+          "new": "- [ ] Actual Safari, assistive-technology, OS input/autofill and background-window checks remained unperformed at closure. Their current owner is the [actual-platform issue](../../.scratch/maintenance/issues/002-actual-platform-verification.md); automated engines do not establish them."
+        },
+        {
+          "old": "Report proposal coverage, actual approvals, the bounded question register and engineering gates. Static source/link checks support the record but are not phase completion. The full set is now reviewable; do not revert to delivering one tiny proposal followed by another permission round trip.",
+          "new": "The original reporting correction emphasized complete proposal coverage, actual approvals, the bounded question register and engineering gates. Static source/link checks supported the record but did not prove phase completion. Whole-set review replaced repeated isolated proposals and permission round trips."
+        },
+        {
+          "old": "Retain the combined custom-feature/experimental-worker type regression when changing Table dependencies.",
+          "new": "The acceptance contract retained the combined custom-feature/experimental-worker type regression for Table dependency changes."
+        },
+        {
+          "old": "- [x] Resolve the five user-owned choices through whole-set approval.",
+          "new": "- [x] Resolved the five user-owned choices through whole-set approval."
+        },
+        {
+          "old": "- [x] Complete the representative state, metadata, registry, semantics and interaction investigations under M00.",
+          "new": "- [x] Completed representative state, metadata, registry, semantics and interaction investigations under M00."
+        },
+        {
+          "old": "- [x] Obtain approval of the inventory, conventions and documentation layout.",
+          "new": "- [x] Obtained approval of the inventory, conventions and documentation layout."
+        },
+        {
+          "old": "- [x] Draft notes/alignment/migration-plan.md with paths, dependency order, atomic replacement slices and acceptance.",
+          "new": "- [x] Drafted the original migration plan with paths, dependency order, atomic replacement slices and acceptance."
+        },
+        {
+          "old": "- [x] Obtain migration approval through Peter's “approved”.",
+          "new": "- [x] Obtained migration approval through Peter's “approved”."
+        },
+        {
+          "old": "- [x] Verify useful CSS map delivery, complete existing CSS syntax coverage with the demonstrated generator correction, packaged consumers and the local Bun publication mechanism.",
+          "new": "- [x] Verified useful CSS map delivery, complete existing CSS syntax coverage with the generator correction, packaged consumers and the local Bun publication mechanism."
+        },
+        {
+          "old": "- [x] Select Lightning CSS 1.33.0 and close M00. Final real CI/account/publication acceptance stays in M25.",
+          "new": "- [x] Selected Lightning CSS 1.33.0 and closed M00. Final real CI/account/publication acceptance was then assigned to M25."
+        },
+        {
+          "old": "- [x] Implement approved batches with matching docs/tooling and no compatibility aliases.",
+          "new": "- [x] Implemented approved batches with matching docs/tooling and no compatibility aliases."
+        },
+        {
+          "old": "- [x] Finish local archive acceptance: all23 required browser invocations are accepted,",
+          "new": "- [x] Finished local archive acceptance: all23 required browser invocations were accepted,"
+        },
+        {
+          "old": "- [x] Publish and verify all five 0.3.2 packages, their provenance and public CDN behavior under Peter's release authorization.",
+          "new": "- [x] Published and verified all five 0.3.2 packages, provenance and public CDN behavior under the recorded release authorization."
+        },
+        {
+          "old": "- [x] Verify all 25,120 public Pages files and the three-engine navigation/Flow matrix.",
+          "new": "- [x] Verified all 25,120 public Pages files and the three-engine navigation/Flow matrix."
+        },
+        {
+          "old": "- [x] Merge the reviewed snapshot retirement and publish the stable GitHub release.",
+          "new": "- [x] Merged the reviewed snapshot retirement and published the stable GitHub release."
+        },
+        {
+          "old": "Peter's release request supplies the separate publication authorization.",
+          "new": "Peter's release request supplied the separate authorization for that completed publication."
+        },
+        "Final review preserves external source URLs and substantive numeric/source identifiers, checks allocated links including future issue owners, and passes whitespace verification."
+      ],
+      "retainedQualifications": [
+        "A source survey, proposal or user approval is not runtime acceptance.",
+        "Historical checkpoints do not establish current host, package or platform status.",
+        "Saved evidence identities and their original verification limits remain intact.",
+        ".scratch/maintenance/issues/001-hover-card-activation.md",
+        ".scratch/maintenance/issues/002-actual-platform-verification.md",
+        ".scratch/maintenance/issues/003-npm-token-rotation.md",
+        ".scratch/maintenance/issues/004-advisory-review-deadline.md"
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/alignment/remaining-work.md",
+      "oldAnchor": "remaining-work-and-component-review-queue",
+      "destination": "tasks/done/systematization/review-queue.md",
+      "newAnchor": "completed-systematization-review-and-execution-queue",
+      "note": "Heading renamed; subsection evidence retained."
+    },
+    {
+      "source": "notes/alignment/remaining-work.md",
+      "oldAnchor": "where-completion-stands",
+      "destination": "tasks/done/systematization/review-queue.md",
+      "newAnchor": "completion-at-the-recorded-release-checkpoint",
+      "note": "Heading renamed; subsection evidence retained."
+    },
+    {
+      "source": "notes/alignment/remaining-work.md",
+      "oldAnchor": "current-review-sequence",
+      "destination": "tasks/done/systematization/review-queue.md",
+      "newAnchor": "historical-review-sequence",
+      "note": "Heading renamed; subsection evidence retained."
+    },
+    {
+      "source": "notes/alignment/remaining-work.md",
+      "oldAnchor": "remaining-execution",
+      "destination": "tasks/done/systematization/review-queue.md",
+      "newAnchor": "recorded-execution-checklist",
+      "note": "Heading renamed; subsection evidence retained."
+    }
+  ],
+  "findings": [],
+  "coordinatorAnchorRouting": {
+    "date": "2026-10-22T05:48:12.838Z",
+    "method": "Retargeted relative Markdown links using explicit source-anchor routes; fenced evidence and external URLs unchanged."
+  }
+}

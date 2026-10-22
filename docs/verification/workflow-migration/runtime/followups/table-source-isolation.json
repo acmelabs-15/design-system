@@ -1,0 +1,173 @@
+{
+  "date": "2026-10-22T06:03:42.276Z",
+  "builds": [
+    {
+      "name": "lit",
+      "framework": "lit",
+      "tag": "docs-table-lit",
+      "sourceFiles": [
+        "examples/table/lit.ts",
+        "examples/table/data.ts",
+        "examples/table/review-feature.ts",
+        "examples/table/grid-interaction.ts",
+        "examples/table/lit-entry.ts",
+        "examples/table/definitions.ts"
+      ],
+      "inputs": 289,
+      "reactInputs": 0,
+      "litAdapterInputs": 7,
+      "sourceIdentity": true
+    },
+    {
+      "name": "react",
+      "framework": "react",
+      "tag": "docs-table-react",
+      "sourceFiles": [
+        "examples/table/react.ts",
+        "examples/table/data.ts",
+        "examples/table/review-feature.ts",
+        "examples/table/grid-interaction.ts",
+        "examples/table/react-entry.ts"
+      ],
+      "inputs": 314,
+      "reactInputs": 31,
+      "litAdapterInputs": 0,
+      "sourceIdentity": true
+    },
+    {
+      "name": "virtual-lit",
+      "framework": "lit",
+      "tag": "docs-table-virtual",
+      "sourceFiles": [
+        "examples/table/virtual-lit.ts",
+        "examples/table/data.ts",
+        "examples/table/review-feature.ts",
+        "examples/table/grid-interaction.ts",
+        "examples/table/virtual-layout.ts",
+        "examples/table/virtual-lit-entry.ts"
+      ],
+      "inputs": 219,
+      "reactInputs": 0,
+      "litAdapterInputs": 11,
+      "sourceIdentity": true
+    },
+    {
+      "name": "virtual-react",
+      "framework": "react",
+      "tag": "docs-table-virtual-react",
+      "sourceFiles": [
+        "examples/table/virtual-react.ts",
+        "examples/table/data.ts",
+        "examples/table/review-feature.ts",
+        "examples/table/grid-interaction.ts",
+        "examples/table/virtual-layout.ts",
+        "examples/recipes/virtual-react-entry.ts"
+      ],
+      "inputs": 179,
+      "reactInputs": 23,
+      "litAdapterInputs": 0,
+      "sourceIdentity": true
+    }
+  ],
+  "browsers": [
+    {
+      "engine": "chromium",
+      "checks": [
+        {
+          "name": "lit",
+          "pass": true,
+          "rows": 10,
+          "caption": "Consumer-owned TanStack Table",
+          "unknown": []
+        },
+        {
+          "name": "react",
+          "pass": true,
+          "rows": 10,
+          "caption": "Consumer-owned TanStack Table",
+          "unknown": []
+        },
+        {
+          "name": "virtual-lit",
+          "pass": true,
+          "rows": 10,
+          "caption": "Virtualized consumer data",
+          "unknown": []
+        },
+        {
+          "name": "virtual-react",
+          "pass": true,
+          "rows": 10,
+          "caption": "Virtualized consumer data",
+          "unknown": []
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "checks": [
+        {
+          "name": "lit",
+          "pass": true,
+          "rows": 10,
+          "caption": "Consumer-owned TanStack Table",
+          "unknown": []
+        },
+        {
+          "name": "react",
+          "pass": true,
+          "rows": 10,
+          "caption": "Consumer-owned TanStack Table",
+          "unknown": []
+        },
+        {
+          "name": "virtual-lit",
+          "pass": true,
+          "rows": 10,
+          "caption": "Virtualized consumer data",
+          "unknown": []
+        },
+        {
+          "name": "virtual-react",
+          "pass": true,
+          "rows": 10,
+          "caption": "Virtualized consumer data",
+          "unknown": []
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "checks": [
+        {
+          "name": "lit",
+          "pass": true,
+          "rows": 10,
+          "caption": "Consumer-owned TanStack Table",
+          "unknown": []
+        },
+        {
+          "name": "react",
+          "pass": true,
+          "rows": 10,
+          "caption": "Consumer-owned TanStack Table",
+          "unknown": []
+        },
+        {
+          "name": "virtual-lit",
+          "pass": true,
+          "rows": 11,
+          "caption": "Virtualized consumer data",
+          "unknown": []
+        },
+        {
+          "name": "virtual-react",
+          "pass": true,
+          "rows": 10,
+          "caption": "Virtualized consumer data",
+          "unknown": []
+        }
+      ]
+    }
+  ]
+}

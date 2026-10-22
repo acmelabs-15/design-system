@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m26-scoped",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.841Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m26-scoped/build-cdn-results.json",
+      "destination": "docs/verification/systematization/m26-scoped/build-cdn-results.json",
+      "bytes": 14967,
+      "sha256": "a449dbb81d37f5621503cae1cf0ac9c57528b529a4cdb6f8811dbae69cb53216"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-scoped/build-results.json",
+      "destination": "docs/verification/systematization/m26-scoped/build-results.json",
+      "bytes": 15454,
+      "sha256": "dd20a13d6c771228dbc1391cf7bd2d21713af99c23e96c309238767b8e24bb61"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-scoped/imperative-adoption-red.json",
+      "destination": "docs/verification/systematization/m26-scoped/imperative-adoption-red.json",
+      "bytes": 15693,
+      "sha256": "6c07d661cb442c17779b466ad38ab98aa7c1115391214d417fbcd4466c5afcbc"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-scoped/imperative-red.json",
+      "destination": "docs/verification/systematization/m26-scoped/imperative-red.json",
+      "bytes": 13990,
+      "sha256": "830138bb31ad73f6242aa3f8ed0ce49dc778bf9f1e241f6ca41122ca9cb2b471"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-scoped/native-cross-document-control.json",
+      "destination": "docs/verification/systematization/m26-scoped/native-cross-document-control.json",
+      "bytes": 535,
+      "sha256": "3402ddf0a98140cd25005fd0817bbf450eb0f3e793aad9add926d6fe4b7301ef"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-scoped/native-cross-document-control.ts",
+      "destination": "docs/verification/systematization/m26-scoped/native-cross-document-control.ts",
+      "bytes": 1695,
+      "sha256": "ee8b383e5dd7c3ffa1cf3ccbbf9ab322d283286d657493c477f468d92eeee593"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-scoped/source-red.json",
+      "destination": "docs/verification/systematization/m26-scoped/source-red.json",
+      "bytes": 9318,
+      "sha256": "dea935e5a43d330c9c0c6a09998543d33f8a458ae7e1ff85b060e04b507d48cd"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-scoped/source-results.json",
+      "destination": "docs/verification/systematization/m26-scoped/source-results.json",
+      "bytes": 15407,
+      "sha256": "2937d3b8e2443744ed2ba50083fe2e2a50e2c5ccd5f7dbea68b4d6ad5dd0c73f"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

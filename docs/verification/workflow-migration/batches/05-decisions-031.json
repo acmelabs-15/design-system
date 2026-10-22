@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-031",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/relative-time-component.md",
+      "destination": "docs/decisions/0083-relative-time-component.md",
+      "sourceSha256": "b474f4904237dbe8a8cbc52563483b48a4d461c6369da58401e351ba0d039d4f",
+      "destinationSha256": "c79327fb81cebd4df238bf281368cb648b17ffef6b9fcd5c6f312fc919ec7305",
+      "changes": [
+        "Preserved standalone time text and optional Hover Card composition.",
+        "Dated original defects and linked the detailed contract."
+      ],
+      "retainedQualifications": [
+        "Context Card removal does not remove relative time.",
+        "No third-party formatting runtime is selected."
+      ]
+    },
+    {
+      "source": "notes/decisions/resizable-panes.md",
+      "destination": "docs/decisions/0084-resizable-panes.md",
+      "sourceSha256": "eb80e94141bdd37a0a0bb40a24085c401eccd225dadb87ba9195d4662ae96e67",
+      "destinationSha256": "c6a94fa179122c9db85deea6d1902c3436cf7c95c62154e2b1d0035dd99cb367",
+      "changes": [
+        "Retained resize/collapse/persistence choices and source corrections.",
+        "Dated unverified port claim and retired phase gate; linked later contract/release.",
+        "Preserved Shadcn comparison without adopting another engine.",
+        "Final source-to-target review corrected the exact contract/history target or an updated heading anchor."
+      ],
+      "retainedQualifications": [
+        "Zag 1.44.0 is a source baseline, not a runtime pin.",
+        "Application owns persistence; one canonical store owns component state.",
+        "Prior open size restoration applies to pointer and keyboard.",
+        "Resizing is not automatic for all compared surfaces; no new Window Splitter or Web Awesome package selected."
+      ]
+    },
+    {
+      "source": "notes/decisions/responsive-sidebar.md",
+      "destination": "docs/decisions/0085-responsive-sidebar.md",
+      "sourceSha256": "dccbb1d7f24031116239dfc17c5d0c28356937875712e629a49ff2381dc1f01c",
+      "destinationSha256": "e6bfeed38b1ab7876b9495e9db32c8d33d6f061738ba0ee86864679bd6234c50",
+      "changes": [
+        "Preserved Sidebar modes, shared Drawer and application-owned routing.",
+        "Converted initial implementation gate to history with later contract links.",
+        "Final source-to-target review corrected the exact contract/history target or an updated heading anchor."
+      ],
+      "retainedQualifications": [
+        "Child state/focus must survive presentation changes.",
+        "No particular cookie, shortcut, resize behavior or Material measurement adopted."
+      ]
+    },
+    {
+      "source": "notes/decisions/responsive-system.md",
+      "destination": "docs/decisions/0086-responsive-system.md",
+      "sourceSha256": "b2d8b8bbc57210db5a20df4f654de774c69c18f88206e4e19534a2e44d7f69a2",
+      "destinationSha256": "befafac9c0b19f0df28fe81bcee1c841e439c38e938507207590859f91d636bf",
+      "changes": [
+        "Preserved every band, native boundary, ordering, configuration and font-basis decision.",
+        "Dated converter defect and bounded probes; retired implementation gate.",
+        "Linked final contract and release without turning source evidence into runtime proof."
+      ],
+      "retainedQualifications": [
+        "Material widths are defaults; app configuration is startup-only and retains names/order.",
+        "Nearest/named container behavior does not automatically size-contain every element.",
+        "Window rem uses initial font basis; container rem uses root computed font; authored 20px/initial16px example retained.",
+        "JSON has authoring costs; scalar bracket CSS must remain valid.",
+        "Condition order differs from overlapping-property declaration order; bounded two-property probes do not certify full protocol."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

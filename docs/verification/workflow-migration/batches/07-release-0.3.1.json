@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-release-0.3.1",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "checks": {
+      "sourceHash": "matches full-read source",
+      "destinationHash": "matches final prepared file",
+      "externalSourceUrls": "all source URLs retained",
+      "numericAndSourceIdentifiers": "retained; heading punctuation can change",
+      "links": "all targets exist or are allocated in ledger.records/newDocumentOwners",
+      "whitespace": "pass",
+      "runtime": "not rerun; historical proof limits retained"
+    },
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/release-0.3.1.md",
+      "destination": "docs/releases/0.3.1.md",
+      "sourceSha256": "4535e3b388ecd2699d832d54a432954362ec2bd8821711977c76154fb9c5d61a",
+      "destinationSha256": "9388e67fa84f439a897de982e0613895e42d7337701f4641f5fc6195993d8f01",
+      "changes": [
+        "Converted the allocated record with explicit status, dated evidence scope and current-owner links.",
+        "Retired old operational commands throughout while preserving decisions, measurements, qualifications and chronology.",
+        "Relocated Markdown links through the final ledger; historical path/session/branch literals remain provenance.",
+        {
+          "old": "Peter's release authorization and [execution delegation](../decisions/execution-delegation.md) remain active.",
+          "new": "Peter's release authorization and [execution delegation](../decisions/execution-delegation.md) covered this historical recovery. They do not grant new release authority."
+        },
+        {
+          "old": "Preserve those immutable versions and tag.",
+          "new": "Those versions and tag remain immutable."
+        },
+        {
+          "old": "The 0.3.2 record owns current status.",
+          "new": "The 0.3.2 record preserves automated release closure; docs/STATUS.md owns current work."
+        },
+        {
+          "old": "Keep the GitHub release as prerelease while the [0.3.2 correction](release-0.3.2.md) completes.",
+          "new": "The GitHub release remained a prerelease while the [0.3.2 correction](release-0.3.2.md) completed."
+        },
+        {
+          "old": "Keep the tracked snapshot until the corrected deployment passes.",
+          "new": "Snapshot retirement awaited corrected deployment acceptance."
+        },
+        {
+          "old": "- Current branch: `codex/release-delivery-closure`. Follow the 0.3.2 production build correction. Keep this version and its tag unchanged.",
+          "new": "- Historical branch: `codex/release-delivery-closure`. The task continued through the 0.3.2 production correction without changing this version or tag."
+        },
+        {
+          "old": "The linked 0.3.2 record owns current status.",
+          "new": "The linked 0.3.2 record preserves the later release outcome."
+        },
+        {
+          "old": "Preserve the earlier preparation ZIP; final release assets must also include the actual published set and its public provenance.",
+          "new": "The earlier preparation ZIP remained unchanged; final release assets also required the actual published set and public provenance."
+        },
+        {
+          "old": "## Work sequence",
+          "new": "## Historical work sequence"
+        },
+        {
+          "old": "1. [x] Implement the browser package from the existing generated graph and explicit source links. Include styles, bundles and license records. Keep one build tree.",
+          "new": "1. [x] Implemented the browser package from the existing graph and explicit links, including styles, bundles and licenses in one build tree."
+        },
+        {
+          "old": "2. [x] Generate precise exports and compact declarations. Prove valid imports, invalid names and native tag inference. Packed-consumer acceptance is recorded in step 4.",
+          "new": "2. [x] Generated precise exports/compact declarations and verified valid imports, invalid names and native tag inference. Step 4 records packed-consumer acceptance."
+        },
+        {
+          "old": "3. [x] Advance all five packages and generated consumer records to 0.3.1. Update CDN references and release validation.",
+          "new": "3. [x] Advanced all five packages, generated consumer records, CDN references and release validation to 0.3.1."
+        },
+        {
+          "old": "4. [x] Pack and count every archive. Run static checks, types, unit tests, complete local browser/consumer acceptance and independent review.",
+          "new": "4. [x] Packed/counted every archive and ran static checks, types, unit tests, complete local browser/consumer acceptance and independent review."
+        },
+        {
+          "old": "5. [x] Push the reviewed recovery PR, pass Linux verification and merge with a merge commit.",
+          "new": "5. [x] Pushed the reviewed recovery PR, passed Linux verification and merged with a merge commit."
+        },
+        {
+          "old": "6. [x] Prepare immutable signed 0.3.1 archives. Establish the new browser name through the verified first-publication route. Configure existing companions' trusted publishers immediately before their real publication; then publish and cryptographically verify all five packages.",
+          "new": "6. [x] Prepared immutable signed archives, established the browser name through the verified first-publication route and configured companion publishers before real publication. All five packages published and verified cryptographically."
+        },
+        {
+          "old": "7. Deploy the verified documentation (deployment succeeds), compare public assets with its artifact, and test navigation and the README's CDN example.",
+          "new": "7. Documentation deployed and public bytes matched, but navigation revealed development-runtime warnings. The 0.3.2 correction owns final public acceptance, including the CDN example."
+        },
+        {
+          "old": "8. Retire the 244-file docs snapshot only after public verification. Update AGENTS.md and current generated-file records. Commit and merge final evidence.",
+          "new": "8. Retirement of the 244-file snapshot and guidance/generated-file updates awaited corrected public acceptance. Release 0.3.2 records their later reviewed commit/merge."
+        },
+        {
+          "old": "Use these configurations only through npm's CLI; never print credentials or reuse the previously exposed token.",
+          "new": "The release used the configurations through npm's CLI without printing credentials or reusing the exposed token. These temporary paths are historical provenance, not current authentication inputs."
+        },
+        {
+          "old": "Configure its trusted publisher immediately before its next real version so that successful publication validates the configuration within npm's 48-hour window.",
+          "new": "Its trusted publisher was planned immediately before the next real version so publication could validate it within npm's 48-hour window. The 0.3.2 record supplies that later result."
+        },
+        {
+          "old": "Continue only through the [0.3.2 correction and active handoff](release-0.3.2.md). Keep this release immutable and the tracked snapshot intact until corrected public acceptance passes.",
+          "new": "The task continued through the [0.3.2 correction](release-0.3.2.md), retaining this immutable release and the snapshot until corrected acceptance."
+        },
+        {
+          "old": "Prepared local verification scripts:",
+          "new": "Historical local verification scripts and their recorded input contracts (availability is not reverified by this conversion):"
+        },
+        {
+          "old": "Extract the exact reviewed Pages artifact to `.artifacts/pages-release-0.3.1/site/` first.",
+          "new": "Its prerequisite was the exact reviewed artifact extracted to `.artifacts/pages-release-0.3.1/site/`."
+        },
+        {
+          "old": "The new GitHub release stays clearly marked as publication in progress until public verification completes. Preserve the immutable 0.3.0 evidence. Pages is enabled after coordinated package publication. Retain tracked `docs/` until the new deployment passes public checks.",
+          "new": "The original handoff kept publication status explicit, preserved immutable 0.3.0 evidence and placed Pages enablement after coordinated publication. Tracked `docs/` remained until corrected public acceptance in 0.3.2. These were historical sequencing constraints."
+        },
+        "Final review preserves external source URLs and substantive numeric/source identifiers, checks allocated links including future issue owners, and passes whitespace verification."
+      ],
+      "retainedQualifications": [
+        "A source survey, proposal or user approval is not runtime acceptance.",
+        "Historical checkpoints do not establish current host, package or platform status.",
+        "Saved evidence identities and their original verification limits remain intact.",
+        ".scratch/maintenance/issues/002-actual-platform-verification.md",
+        ".scratch/maintenance/issues/003-npm-token-rotation.md",
+        ".scratch/maintenance/issues/004-advisory-review-deadline.md"
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/alignment/release-0.3.1.md",
+      "oldAnchor": "release-031-recovery",
+      "destination": "docs/releases/0.3.1.md",
+      "newAnchor": "release-031-distribution-recovery",
+      "note": "Heading renamed; subsection evidence retained."
+    },
+    {
+      "source": "notes/alignment/release-0.3.1.md",
+      "oldAnchor": "work-sequence",
+      "destination": "docs/releases/0.3.1.md",
+      "newAnchor": "historical-work-sequence",
+      "note": "Heading renamed; subsection evidence retained."
+    }
+  ],
+  "findings": []
+}

@@ -18,6 +18,15 @@ export default defineConfig({
   ],
   overrides: [
     ...(core.overrides ?? []),
+    // These calls use Playwright Locator.innerText() to check rendered text. DOM textContent changes the visible-text oracle.
+    {
+      files: [
+        "scripts/verification/documentation/navigation.browser-check.ts",
+        "scripts/verification/documentation/recipe-accessibility.browser-check.ts",
+        "scripts/verification/react/browser-check.ts",
+      ],
+      rules: { "unicorn/prefer-dom-node-text-content": "off" },
+    },
     // Constructor identity and prototype ancestry are the behavior under test; empty fixture classes provide those distinct identities.
     { files: ["src/shared/__tests__/registration.test.ts"], rules: { "typescript/no-extraneous-class": "off" } },
     // The fixtures bind these handles after construction; their callbacks must see undefined during initial synchronization.

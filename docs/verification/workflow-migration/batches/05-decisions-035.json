@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-035",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/start-and-end-places.md",
+      "destination": "docs/decisions/0099-start-and-end-places.md",
+      "sourceSha256": "005fa5101b65f440b6c9096f7ef4d61c748fc37db62bfe0b873f7acee97bcfc3",
+      "destinationSha256": "4d8c449dbb590390b55744c4943417aec67934a1ca68d2c4609d911c6070e473",
+      "changes": [
+        "Added concise vocabulary and shared-owner outcome.",
+        "Dated sweep implementations, old element names, API example and verification counts; linked later contracts.",
+        "Preserved all subsection anchors and original rename/findings detail."
+      ],
+      "retainedQualifications": [
+        "prefix/suffix can remain text concepts; removed place attributes were inert CSS-wise.",
+        "Reference-heading map keys are distinct from component names.",
+        "599/604 tests and census results belong to 2026-09-10.",
+        "Browser slotchange/late-content checks remain distinct from happy-dom tests."
+      ]
+    },
+    {
+      "source": "notes/decisions/stat-family.md",
+      "destination": "docs/decisions/0100-stat-family.md",
+      "sourceSha256": "47ad523baef63d07e3c170ed45aa0b28f98f8a1a14ff792c65791fc420bbfb8a",
+      "destinationSha256": "0606a79a5e3c8d00b5bcb6dbd1c1c449eaf9570534a8a2bf793f9000eaa2e982",
+      "changes": [
+        "Preserved Stat family, final removals and Card distinction.",
+        "Dated candidate composition investigation and retired phase gate; linked final contract/release."
+      ],
+      "retainedQualifications": [
+        "Direction and favorable/unfavorable meaning remain separate.",
+        "Radio/Checkbox Cards were suggestions, not an individual contract vote.",
+        "No automatic retention of every helper, built-in meter or Spark.",
+        "Selectable composition preserves labels/focus/independent actions; passive clickable Stat is insufficient."
+      ]
+    },
+    {
+      "source": "notes/decisions/state-on-tanstack-store.md",
+      "destination": "docs/decisions/0101-state-on-tanstack-store.md",
+      "sourceSha256": "4e4fc0a2446b042a314218e701781e1117f59e26015aed7b65d450d9752b6984",
+      "destinationSha256": "a241bc187f21963f197bdc8d476a4b0a5e537de5a44b098b6ae1a9906b4d7861",
+      "changes": [
+        "Added concise canonical-state decision and rationale.",
+        "Marked historical implementation examples, migration order, package statistics and measurements as dated.",
+        "Linked later derived-state correction and preserved original intent without presenting the failed plain-property path as current guidance."
+      ],
+      "retainedQualifications": [
+        "Prior-art choices differ; consistency was Peter's explicit selection.",
+        "Microbenchmark differences were noise, not universal performance superiority.",
+        "The reconnect patch has a failure-proven regression at the recorded revision.",
+        "A real whole-page cost or uncovered adapter failure could warrant reconsideration."
+      ]
+    },
+    {
+      "source": "notes/decisions/state-vocabulary.md",
+      "destination": "docs/decisions/0102-state-vocabulary.md",
+      "sourceSha256": "c64957cfec1634cdc9802885872d8ceed188fef19f9b71369bcf98a5669177ec",
+      "destinationSha256": "ac1f717fa3aa0b02d9cfbb50ea743d56ae4c2e789244eed983cd73f7a2bbe0b2",
+      "changes": [
+        "Retained state names and contextual meaning.",
+        "Dated source confusion and linked later contract."
+      ],
+      "retainedQualifications": [
+        "States can coexist; focus/highlight need not change values.",
+        "Native ARIA/CSS retain platform meaning; transient pressing differs from persistent pressed."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

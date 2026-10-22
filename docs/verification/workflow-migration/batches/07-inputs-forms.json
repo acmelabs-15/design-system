@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-inputs-forms",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer full source/audit read and semantic reconciliation; coordinator guard/review pending",
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/inventory/inputs-forms.md",
+      "destination": "spec/SPEC-inputs-forms.md",
+      "sourceSha256": "601cc93e1442f09827a1a1e4c3cae74fefb28640a86ce42fb8371861f9927c28",
+      "destinationSha256": "a02bb105c0a00b539c6ed0386b32e4fe197609e98d35828b6e8f6d117654f7fc",
+      "changes": [
+        "Converted approved proposal wording into current contract language; preserved inputs/defaults/content/methods/events/exclusions and acceptance requirements.",
+        "Retargeted citations through allocated ledger paths; retained original approval and dated evidence."
+      ],
+      "retainedQualifications": [
+        "Calendar's approved IANA-zone/offset-bearing date-time and date-only-day requirements remain intact; no change is inferred from current code.",
+        "Actual OS IME/dictation/autofill, password managers, OTP and Safari are not certified by synthetic callbacks.",
+        "Pin UTF-16 source operations do not prove arbitrary grapheme support."
+      ],
+      "reconciliations": [
+        "0035 text sanitation/raw reset, all-four-affix support and implicit native submit behavior refine F-01/F-03.",
+        "0035 standard-only notation and custom action-content ownership refine F-04.",
+        "0035 direct ranked Option projection, native trigger ownership and thumbLabels/value validity refine F-06/F-07.",
+        "0035 native Fieldset/Field association and private date runtime preserve native ownership without broadening Calendar's approved serialization.",
+        "M26 managed-form evidence distinguishes real examples and field lifetime from early adapter probes."
+      ],
+      "evidence": [
+        "docs/decisions/0035-execution-delegation.md",
+        "docs/verification/systematization/m26-managed-forms/README.md"
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

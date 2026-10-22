@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-22T06:06:48.051Z",
+  "passed": true,
+  "findings": [
+    {
+      "id": "08-workspace-consumer",
+      "finding": "The fixed default archive exists but contains0.2.0, while the current prepared archive contains0.3.2. An unset override could silently test the old release.",
+      "change": "The default now uses readCorePackage and archiveFilename under the prepared release archive directory; ACME_CORE_ARCHIVE still overrides it.",
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun scripts/verification/workspace/packed-consumer-check.ts",
+      "verification": "No archive override is present. Actual installation/build passes for0.3.2 with4319 component exports and the current archive SHA-256.",
+      "script": "scripts/verification/workspace/packed-consumer-check.ts"
+    },
+    {
+      "id": "08-documentation-table-source-isolation.browser-check",
+      "finding": "The live report writer used a fixed2026-09-26 date for every invocation.",
+      "change": "Capture the actual current ISO timestamp. All assertions and scenario inputs stay unchanged.",
+      "command": "ACME_BROWSER_RUNTIME=/Users/peterkloss/Library/Caches/acme-design-system/browser-checks .artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun scripts/verification/documentation/table-source-isolation.browser-check.ts",
+      "verification": "All four isolated examples pass in each of the three engines. The report records2026-10-22T06:03:42.276Z.",
+      "script": "scripts/verification/documentation/table-source-isolation.browser-check.ts"
+    }
+  ],
+  "static": "Focused strict TypeScript, Oxlint and Oxfmt pass for both changed scripts.",
+  "evidence": [
+    {
+      "source": ".artifacts/checks/workspace/consumer.json",
+      "destination": "docs/verification/workflow-migration/runtime/followups/workspace-default.json",
+      "sha256": "688865c199ad74d7d7a79d1711171674f96d99d25f8a69864d7055b77a3e1aac"
+    },
+    {
+      "source": ".artifacts/checks/documentation-table-source-isolation/results.json",
+      "destination": "docs/verification/workflow-migration/runtime/followups/table-source-isolation.json",
+      "sha256": "84c36f03d46db3e8d365af876b7f98733ccfa40d8dbd4c351114c56f7aa71f99"
+    },
+    {
+      "source": ".artifacts/workflow-workspace-followup.log",
+      "destination": "docs/verification/workflow-migration/runtime/followups/workspace-default.log",
+      "sha256": "1ab876546d65b040f1af35ee275c55d12ed18907e874565b74b95b2a679a1024"
+    },
+    {
+      "source": ".artifacts/workflow-table-followup.log",
+      "destination": "docs/verification/workflow-migration/runtime/followups/table-source-isolation.log",
+      "sha256": "a570da223438b2c50df4858a7722b1ae95d2a0dc18b2292f35a43c2455a73b92"
+    }
+  ],
+  "limits": "Original passing reports remain unchanged as earlier snapshots. These two follow-ups supersede only their default-selection/report-metadata scope; the other passing runs stay valid."
+}

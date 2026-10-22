@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m21-video",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.591Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m21-video/browser-final.ts",
+      "destination": "docs/verification/systematization/m21-video/browser-final.ts",
+      "bytes": 10913,
+      "sha256": "3a7148631e5a6f6bed602041bba7cd1d616829aa32e0b909179a8524573dc214"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-video/candidate-compiled.ts",
+      "destination": "docs/verification/systematization/m21-video/candidate-compiled.ts",
+      "bytes": 587,
+      "sha256": "e0abbc473ebc18a5825c624f046937e7c0b2939ba05a5cb6f796884f70a3e880"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-video/candidate.ts",
+      "destination": "docs/verification/systematization/m21-video/candidate.ts",
+      "bytes": 583,
+      "sha256": "cd7cb6a4405b6f6ebfeebefe4dd2620dfe75be880b74e29fd4d23695e0e47c24"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-video/consumer-check.ts",
+      "destination": "docs/verification/systematization/m21-video/consumer-check.ts",
+      "bytes": 10950,
+      "sha256": "782a1f7528e3bf207b54427d1bc91befc410fdcd85b7928076b2f4b540288835"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-video/create-clip.ts",
+      "destination": "docs/verification/systematization/m21-video/create-clip.ts",
+      "bytes": 1519,
+      "sha256": "9cb8990b1cab636abe377cf17fd60bd50c34514d3e41c8fdb9b52765dfaaf792"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-video/docs-check.ts",
+      "destination": "docs/verification/systematization/m21-video/docs-check.ts",
+      "bytes": 1896,
+      "sha256": "353c5c651a66b293d95dcdcb1b1da678994de88fa579fa1de51ee68d697dc45b"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-video/framework-compiled.ts",
+      "destination": "docs/verification/systematization/m21-video/framework-compiled.ts",
+      "bytes": 3317,
+      "sha256": "9a6acfbcc3d5c5eaae553be341802ed74e8521ac3b6fed76d590300c34da0a5b"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-video/framework-entry-compiled.ts",
+      "destination": "docs/verification/systematization/m21-video/framework-entry-compiled.ts",
+      "bytes": 1969,
+      "sha256": "1ee78d4f210154035ae54de5aa33326e3cc3351e4519b79d62e6f637526125a7"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-video/framework-entry.ts",
+      "destination": "docs/verification/systematization/m21-video/framework-entry.ts",
+      "bytes": 1965,
+      "sha256": "b2274e037c8488e7cf2ea63710af4ac716991977900fd4e61d4cce255a9ac43e"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-video/framework.ts",
+      "destination": "docs/verification/systematization/m21-video/framework.ts",
+      "bytes": 3290,
+      "sha256": "e231ac43bdec6d79ea2870692913bdcb60f698e4b4989f9dbe54197a01453864"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-video/native-probe.ts",
+      "destination": "docs/verification/systematization/m21-video/native-probe.ts",
+      "bytes": 3354,
+      "sha256": "82b7f782a8d3905f9a169e51a609bc1680c0173b4858e810ce5f2d01e02c8681"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-video/policy-entry.ts",
+      "destination": "docs/verification/systematization/m21-video/policy-entry.ts",
+      "bytes": 787,
+      "sha256": "8faa3ca2d615a1cf1d9ea8292648cf83fa278f88fc21478c06158814cac7547d"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-video/policy.ts",
+      "destination": "docs/verification/systematization/m21-video/policy.ts",
+      "bytes": 2045,
+      "sha256": "3d4ccf898ff35a07a1fcfafb4bc86ce5ab5595077073968b063d984376472042"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-video/prepare-consumer.ts",
+      "destination": "docs/verification/systematization/m21-video/prepare-consumer.ts",
+      "bytes": 792,
+      "sha256": "4fa4a902011618b156dbce5ab5448f53d7596303042548c312eda285d8a0f392"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-video/run-compiled.ts",
+      "destination": "docs/verification/systematization/m21-video/run-compiled.ts",
+      "bytes": 10927,
+      "sha256": "a0928f3e53b34e5078d61e2a95a7068aaae6789ff374c2431b7375475eeb3b72"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-video/run-create-audio.ts",
+      "destination": "docs/verification/systematization/m21-video/run-create-audio.ts",
+      "bytes": 1936,
+      "sha256": "99808f18e2ad697ef701b0e125e282588ce4299a61cd2513eaefe14be6b34bfc"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

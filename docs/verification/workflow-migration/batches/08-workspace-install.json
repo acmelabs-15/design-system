@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-workspace-install",
+  "status": "complete",
+  "recordedAt": "2026-10-22T05:24:05.065Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "verification": {
+    "passed": true,
+    "scope": "Complete source read; focused strict TypeScript, Oxlint and Oxfmt pass. Runtime scenario awaits the shared built candidate.",
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m25-workspace/install-run.ts",
+      "destination": "scripts/verification/workspace/install-check.ts",
+      "sourceSha256": "7bced0d4e58532c8db5655f8b43404e57403f575469d7fba7ffa7c2effe84b7e",
+      "destinationSha256": "9376d6f4b98f0e3b5ed55d3113eb3beda9f09f28bc4bae5df367f4a6c1ceb313"
+    }
+  ],
+  "limits": [
+    "Aggregate migration, fresh consumer, and browser acceptance are recorded separately. Originals remain until cutover."
+  ],
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [],
+    "manual": [
+      {
+        "id": "08-workspace-install",
+        "file": "scripts/verification/workspace/install-check.ts",
+        "passed": true,
+        "exitCode": 0,
+        "sha256": "9376d6f4b98f0e3b5ed55d3113eb3beda9f09f28bc4bae5df367f4a6c1ceb313"
+      }
+    ],
+    "supportingScope": "",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  }
+}

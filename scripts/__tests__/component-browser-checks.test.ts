@@ -1,4 +1,6 @@
 import { expect, test } from "bun:test";
+import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { componentFixtureSource, validateComponentSuites } from "../component-browser-checks";
 
@@ -14,4 +16,19 @@ test("component browser fixture imports use one compiled runtime and repeatable 
 test("every colocated browser fixture has one registered suite or the dedicated Tabs gate", () => {
   const root = path.resolve(import.meta.dir, "../..");
   expect(() => validateComponentSuites(root)).not.toThrow();
+});
+
+test("component suite validation uses migrated case inputs without the old evidence tree", () => {
+  const repository = path.resolve(import.meta.dir, "../..");
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "acme-component-suite-paths-"));
+  try {
+    const fixtures = [...new Bun.Glob("src/components/*/__tests__/*.browser.ts").scanSync(repository)];
+    for (const file of ["scripts/verification/component-browser/cases.json", "scripts/verification/component-browser/controls.json", ...fixtures]) {
+      fs.mkdirSync(path.dirname(path.join(root, file)), { recursive: true });
+      fs.copyFileSync(path.join(repository, file), path.join(root, file));
+    }
+    expect(() => validateComponentSuites(root)).not.toThrow();
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
 });

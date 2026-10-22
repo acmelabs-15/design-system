@@ -1,0 +1,176 @@
+[
+  {
+    "engine": "chromium",
+    "checks": [
+      {
+        "name": "ordered style inputs reorder, remove, reassert and preserve unrelated writes",
+        "pass": true
+      },
+      {
+        "name": "Strict Mode retains actual element refs and stateful child identity",
+        "pass": true
+      },
+      {
+        "name": "native fieldset ancestor retains React-owned controls, form values and events",
+        "pass": true
+      },
+      {
+        "name": "Show mounts React branches and preserves state only when selected",
+        "pass": true
+      },
+      {
+        "name": "Tabs uses canonical mount decisions for React state retention and exit removal",
+        "pass": true
+      },
+      {
+        "name": "Collapsible removes React content after the owned exit lifetime",
+        "pass": true
+      },
+      {
+        "name": "Video renders real React track nodes into the native target",
+        "pass": true
+      },
+      {
+        "name": "removing an ordinary input restores its declared default",
+        "pass": true
+      },
+      {
+        "name": "callback refs receive React cleanup in Strict Mode and on unmount",
+        "pass": true
+      },
+      {
+        "name": "React retains host and child identity through document adoption and updates",
+        "pass": true
+      },
+      {
+        "name": "removing a React style prop preserves a newer helper owner",
+        "pass": true
+      },
+      {
+        "name": "removing an authored size restores Group inheritance",
+        "pass": true
+      },
+      {
+        "name": "unmount releases custom event callbacks on a retained element",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "checks": [
+      {
+        "name": "ordered style inputs reorder, remove, reassert and preserve unrelated writes",
+        "pass": true
+      },
+      {
+        "name": "Strict Mode retains actual element refs and stateful child identity",
+        "pass": true
+      },
+      {
+        "name": "native fieldset ancestor retains React-owned controls, form values and events",
+        "pass": true
+      },
+      {
+        "name": "Show mounts React branches and preserves state only when selected",
+        "pass": true
+      },
+      {
+        "name": "Tabs uses canonical mount decisions for React state retention and exit removal",
+        "pass": true
+      },
+      {
+        "name": "Collapsible removes React content after the owned exit lifetime",
+        "pass": true
+      },
+      {
+        "name": "Video renders real React track nodes into the native target",
+        "pass": true
+      },
+      {
+        "name": "removing an ordinary input restores its declared default",
+        "pass": true
+      },
+      {
+        "name": "callback refs receive React cleanup in Strict Mode and on unmount",
+        "pass": true
+      },
+      {
+        "name": "React retains host and child identity through document adoption and updates",
+        "pass": true
+      },
+      {
+        "name": "removing a React style prop preserves a newer helper owner",
+        "pass": true
+      },
+      {
+        "name": "removing an authored size restores Group inheritance",
+        "pass": true
+      },
+      {
+        "name": "unmount releases custom event callbacks on a retained element",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "checks": [
+      {
+        "name": "ordered style inputs reorder, remove, reassert and preserve unrelated writes",
+        "pass": true
+      },
+      {
+        "name": "Strict Mode retains actual element refs and stateful child identity",
+        "pass": true
+      },
+      {
+        "name": "native fieldset ancestor retains React-owned controls, form values and events",
+        "pass": true
+      },
+      {
+        "name": "Show mounts React branches and preserves state only when selected",
+        "pass": true
+      },
+      {
+        "name": "Tabs uses canonical mount decisions for React state retention and exit removal",
+        "pass": true
+      },
+      {
+        "name": "Collapsible removes React content after the owned exit lifetime",
+        "pass": true
+      },
+      {
+        "name": "Video renders real React track nodes into the native target",
+        "pass": true
+      },
+      {
+        "name": "removing an ordinary input restores its declared default",
+        "pass": true
+      },
+      {
+        "name": "callback refs receive React cleanup in Strict Mode and on unmount",
+        "pass": true
+      },
+      {
+        "name": "React retains host and child identity through document adoption and updates",
+        "pass": true
+      },
+      {
+        "name": "removing a React style prop preserves a newer helper owner",
+        "pass": true
+      },
+      {
+        "name": "removing an authored size restores Group inheritance",
+        "pass": true
+      },
+      {
+        "name": "unmount releases custom event callbacks on a retained element",
+        "pass": true
+      }
+    ],
+    "errors": []
+  }
+]

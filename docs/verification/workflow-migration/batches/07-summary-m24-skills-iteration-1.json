@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-summary-m24-skills-iteration-1",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Full source/audit preparation and writer semantic/path review; coordinator guard/review pending",
+    "runtimeDependency": "docs/verification/workflow-migration/task-08.json",
+    "coordinator": {
+      "semanticReview": "Independent full review accepted all22 source/target pairs with no required findings.",
+      "runtime": "Task08 records24required+7manual passes and two verified metadata/default follow-ups; final clean activation remains separate.",
+      "supplementalLogs": "All38 ignored logs, including the five referenced files, are captured at335a6ed91883e5d63fa2d8fbe23f3d2c58359e60 and copied byte-for-byte.",
+      "guard": "Real preparation passes with970 sources,979 destinations and197 batches; later allocated work remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/README.md",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/README.md",
+      "sourceSha256": "d12f0f444596492e20ab4b7f65c46df5600e3cc7a413c417a10591b88b4d45e2",
+      "destinationSha256": "27435e15b1e1fd98fd23424b9b91b81b06d8c3320cef5c4e181a99ceea1076b4",
+      "changes": [
+        "Keep six original run grades and archive integrity unchanged. Separate current reproduction guidance from captured support paths; replace obsolete delegated permission with historical scope and link later installed-archive closure."
+      ],
+      "retainedQualifications": [
+        "One run per prompt/configuration does not show statistical superiority.",
+        "React form-value assertion exceeds its prompt; correct the next evaluation, not the old grade.",
+        "Full transcripts and timing/token metrics are unavailable.",
+        "The original Source-indicator diagnosis is disproven; the original report remains immutable.",
+        "Supplemental probes do not change the original React/Table failing compound assertions."
+      ],
+      "actualRunScope": {
+        "record": "docs/verification/workflow-migration/task-08.json",
+        "sourceTree": "dirty",
+        "baseCommit": "dff4a7fa4eb5c16ecf22de3148ea80b754d6698d",
+        "version": "0.3.2",
+        "classification": "immutable evaluation index with historical replay guidance",
+        "evidence": []
+      }
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}
