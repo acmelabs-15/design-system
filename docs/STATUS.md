@@ -1,6 +1,6 @@
 # Project status
 
-Updated 2026-10-21. This file is the sole current handoff for the repository.
+Updated 2026-10-22. This file is the sole current handoff for the repository.
 
 ## Current work
 
@@ -12,13 +12,16 @@ The task-8 preparation passes all 24 required runtime checks, seven manual comma
 
 ## Next step
 
-Run task 12 on the clean cutover candidate: the complete repository gate, actual fresh Claude/Codex sessions and final independent review. No further routine implementation approval is pending.
+Complete task 12 on the corrected clean candidate. Preserve the first full run's timeout and recheck the complete gate. Repeat the affected fresh-host probes after the reviewed startup-pointer corrections. No further routine implementation approval is pending.
+
+Finish all authorized local verification and corrections before requesting the outward-action approval. The three external link corrections keep the final migration guard pending; they do not block local checks. Overall migration acceptance remains pending until those approved corrections are applied. Local verification completion and the final migration verdict have separate evidence.
 
 One coordinator owns shared records, commits and build/browser runs. Workers own disjoint destinations and batch reports. Read those reports before accepting their results. Keep heavy build and browser jobs serial.
 
 ## Verification and open issues
 
 - The migration guard passes 94 focused tests. The runner retains all 24 ordered invocations. The moved helper, npm-cache proof, Table declaration control, React type fixture and removal audit pass their focused checks.
+- The first clean gate passes static checks, build and strict types, then records 1,117 unit passes and one 55-second timeout. The isolated case passes in 0.5 seconds; its 27-test file and the 121-test guard-plus-registration sequence pass unchanged. The cause remains unverified. [Timeout record](../.scratch/maintenance/issues/005-registration-test-timeout.md).
 - Baseline main 1b5d08a420f7f916b0c87b166527c60985937f4d has a passing quality run 39516728235 and a failing documentation run 39516728504. One Chromium Hover Card activation case fails; deployment is skipped. [Issue](../.scratch/maintenance/issues/001-hover-card-activation.md).
 - Actual Safari, assistive technology, operating-system input/autofill and background-window behavior remain unperformed. [Platform follow-up](../.scratch/maintenance/issues/002-actual-platform-verification.md).
 - The earlier npm-token rotation is owner-controlled and unconfirmed. Release authentication is complete. [Security follow-up](../.scratch/maintenance/issues/003-npm-token-rotation.md).
@@ -40,7 +43,7 @@ These are local paths, not portable dependencies. Verify they exist before use. 
 
 ## Git and permissions
 
-Branch: codex/maintainer-workflow-migration. The reviewed cutover is saved with this handoff. Inspect Git for the exact clean candidate identity before task 12. No push or external write has occurred.
+Branch: codex/maintainer-workflow-migration. The first task-12 candidate is 632a392291a6761ea7f8f2460a7cac05ff2bc4ec. Its full run is preserved. The current correction strengthens startup pointers and removes the stale index claim. Inspect Git for the next clean candidate identity. No push or external write has occurred.
 
 Peter approves this migration's specification, plan, local implementation and verified local commits. Push, pull request, merge, release and external release-body edits remain unapproved. Prepare their concrete result before asking once. Three [release-body corrections](verification/workflow-migration/external-reference-audit.json) are prepared; published archives, tags and signatures stay immutable.
 

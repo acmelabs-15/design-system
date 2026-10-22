@@ -7,16 +7,16 @@ This repository owns the Lit components with the acme- prefix and their shared d
 From a package directory, find the Git repository root and use it for this workflow. Complete these steps before starting the requested work.
 
 1. Read [status](docs/STATUS.md), [domain routing](docs/agents/domain.md), [the context map](CONTEXT-MAP.md) and the glossary for the task. Read each selected file to its last line.
-2. Read [the specification index](spec/README.md), then the active specification, plan and task list named by status. Read [the record layout](docs/agents/workflow.md). Preserve an incomplete plan when Peter changes the request.
+2. Read [the specification index](spec/README.md), then the active specification, plan and task list named by status. Read all three to their last line, including for read-only assessments and new requests. Read [the record layout](docs/agents/workflow.md). Preserve an incomplete plan when Peter changes the request.
 3. Inspect Git status and the active branch. Verify the selected Bun executable and its version. Preserve work owned by other sessions. Read [repository ownership](docs/agents/repository.md) and [verification](docs/agents/verification.md) before editing; identify authored inputs, generated outputs, affected packages and applicable check evidence.
 4. Establish the baseline from its revision, inputs and check scope. Run missing or invalidated checks using the verification guide. A historical green result does not close a newer failure.
 5. Report the phase, last completed step, next step, red checks and pending decisions in five lines or fewer. Follow Peter's current request. A request to continue resumes the next approved task; a completed plan does not authorize another feature.
 
 ## Work through brain
 
-Use brain:using-brain to select the applicable skill. Agent-skills remains available. When both plugins provide the same skill, use brain's version. The plugins own the lifecycle and engineering procedures; this repository supplies its facts and record locations.
+Load brain:using-brain at session start, then select the applicable skill. Agent-skills remains available. When both plugins provide the same skill, use brain's version. The plugins own the lifecycle and engineering procedures; this repository supplies its facts and record locations.
 
-A user-owned decision or permission uses brain:ask-user-question and its host reference. Keep approval scoped to the actual task and action. The status file records current authorization; a completed pass or another repository grants no standing permission here.
+Before composing a user-owned decision or permission question, load brain:ask-user-question and read its applicable host reference in full. Keep approval scoped to the actual task and action. The status file records current authorization; a completed pass or another repository grants no standing permission here.
 
 Setup, wait-what, handoff, triage and wayfinder start from Peter's prompt. When one is needed, give him the applicable command or skill invocation. [CLAUDE.md](CLAUDE.md) carries Claude command spellings; Codex uses the installed skill names.
 

@@ -4,10 +4,10 @@ This index routes the shared design-system contracts and the approved maintainer
 
 | Work | Status | Specification |
 |---|---|---|
-| Maintainer workflow | Specification and plan approved by Peter, 2026-10-21; implementation in progress | [Maintainer workflow](SPEC-maintainer-workflow.md), [plan](../tasks/plan.md), [tasks](../tasks/todo.md) |
-| Released design system | Version0.3.2 is released; converted contracts retain whole-set approval and explicit later resolutions | [Design-system contract](SPEC-design-system.md), [release record](../docs/releases/0.3.2.md) |
+| Maintainer workflow | Specification and plan approved by Peter, 2026-10-21 | [Maintainer workflow](SPEC-maintainer-workflow.md), [plan](../tasks/plan.md), [tasks](../tasks/todo.md) |
+| Released design system | Version 0.3.2 is released; converted contracts retain whole-set approval and explicit later resolutions | [Design-system contract](SPEC-design-system.md), [release record](../docs/releases/0.3.2.md) |
 
-The [current status](../docs/STATUS.md) identifies the active task. The migration is in progress; the original startup owner remains active until the cutover. Design approval, released implementation and present verification results are distinct.
+The [current status](../docs/STATUS.md) owns activation, progress and the active task. Design approval, released implementation and present verification results are distinct.
 
 ## Product contracts
 
@@ -27,7 +27,7 @@ The [current status](../docs/STATUS.md) identifies the active task. The migratio
 | Code, Markdown, JSON, Book and media | [Rich content](SPEC-rich-content.md) |
 | Five-package delivery, React, documentation and consumer tooling | [Documentation and tooling](SPEC-documentation-tooling.md) |
 
-The [replacement map](component-coverage.md) accounts for the original150 tags and selected additions. Completed replacements remain final. Their history and former phase gates are supporting records, not an implementation queue.
+The [replacement map](component-coverage.md) accounts for the original 150 tags and selected additions. Completed replacements remain final. Their history and former phase gates are supporting records, not an implementation queue.
 
 ## Scope and new work
 

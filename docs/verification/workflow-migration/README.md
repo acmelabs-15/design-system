@@ -17,6 +17,7 @@ Follow the root agent instructions and [task list](../../../tasks/todo.md) for c
 - [Task 9: reviewed shared startup and technical guidance](task-09.json).
 - [Task 10: migrated live consumers and generated projections](task-10.json).
 - [Task 11: atomic cutover and exact removal set](task-11.json).
+- [Task 12: final gate, host checks and preserved attempts](task-12.json).
 - [Supplemental guard coverage](task-03-supplemental.json) and [38 captured logs](task-04-supplemental.json).
 - [Complete source-to-destination ledger](ledger.json).
 - [Bounded child tasks and exact file scopes](batches.json).

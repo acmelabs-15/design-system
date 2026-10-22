@@ -1,0 +1,35 @@
+bun test v1.4.2 (744846f84)
+
+scripts/__tests__/entries.test.ts:
+(pass) the entries command updates definitions and exports together [624.75ms]
+(pass) records use tag declarations and owned markup, not component imports or text [540.50ms]
+(pass) inherits owned rendering and resolves aliased templates, helpers and literal creation [295.63ms]
+(pass) tag maps resolve imported class aliases without retaining a second tag catalog [493.16ms]
+(pass) rejects duplicate before writing [306.76ms]
+(pass) rejects missing class before writing [298.64ms]
+(pass) rejects unknown child before writing [295.34ms]
+(pass) rejects cycle before writing [303.54ms]
+(pass) rejects self cycle before writing [267.18ms]
+(pass) writes deterministic definitions, preserves authored files and removes only stale generated files [527.19ms]
+(pass) package exports track the source records and retain unrelated authored exports [568.15ms]
+(pass) refuses to overwrite authored entries [315.65ms]
+(pass) an authored all entry blocks every output write [274.70ms]
+(pass) rejects unresolved Lit tag expressions: render(){return html`<${this.tag}></${this.tag}>`;} [287.60ms]
+(pass) rejects unresolved Lit tag expressions: render(){return html`<acme-${this.tag}/>`;} [276.20ms]
+(pass) rejects unresolved Lit tag expressions: render(){return html`<div></${this.tag}>`;} [345.20ms]
+(pass) dynamic attributes, content and comment expressions do not become tag names [288.49ms]
+(pass) enumerates finite createElement tags and ignores known native names [280.14ms]
+(pass) rejects an unbounded createElement name with its source location [255.68ms]
+(pass) rejects an unknown acme tag in a finite createElement union [266.52ms]
+(pass) a known non-acme prefix does not need a component definition [282.40ms]
+(pass) an unbounded acme prefix still requires explicit dependencies [253.26ms]
+(pass) optional icon definitions stay selective while owned icon dependencies load [276.88ms]
+(pass) internal components register through their owner without public entries or exports [290.31ms]
+(pass) private delivery requires both an internal location and annotation [514.70ms]
+(pass) scoped factory aliases retain exact owned dependencies [274.56ms]
+(pass) unbounded scoped factory names fail dependency discovery [282.34ms]
+
+ 27 pass
+ 0 fail
+ 81 expect() calls
+Ran 27 tests across 1 file. [9.84s]

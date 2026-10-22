@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "task": 12,
+  "status": "in-progress",
+  "date": "2026-10-22T07:12:52.247Z",
+  "verification": {
+    "passed": false,
+    "scope": "First clean gate fails one unit timeout; final acceptance not claimed."
+  },
+  "firstGate": {
+    "started": "2026-10-22T06:53:53.210Z",
+    "commit": "632a392291a6761ea7f8f2460a7cac05ff2bc4ec",
+    "branch": "codex/maintainer-workflow-migration",
+    "sourceTree": "clean",
+    "bun": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun",
+    "version": "1.4.2",
+    "command": [
+      "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun",
+      "run",
+      "check"
+    ],
+    "environment": {
+      "PATH": "Pinned executable directory prepended; other settings inherited"
+    },
+    "browserPlan": 24,
+    "finished": "2026-10-22T07:07:23.346Z",
+    "exitCode": 1,
+    "passed": false,
+    "afterCommit": "632a392291a6761ea7f8f2460a7cac05ff2bc4ec",
+    "afterStatus": "",
+    "stages": {
+      "static": "passed",
+      "build": "passed",
+      "types": "passed",
+      "unit": {
+        "passed": 1117,
+        "failed": 1,
+        "total": 1118,
+        "files": 218
+      },
+      "audit": "not reached",
+      "packages": "not reached",
+      "browser": "not reached",
+      "release": "not reached"
+    }
+  },
+  "files": [
+    {
+      "source": ".artifacts/task12-full-gate/input.json",
+      "destination": "docs/verification/workflow-migration/final-attempts/attempt-1/input.json",
+      "sha256": "9e9670acedb917197b4d5d991256ba1f72d1846983be097e00e08382214c84db",
+      "bytes": 577
+    },
+    {
+      "source": ".artifacts/task12-full-gate/result.json",
+      "destination": "docs/verification/workflow-migration/final-attempts/attempt-1/result.json",
+      "sha256": "4b9e8d79bc803f754dc5e532b4da44b4d594801c9b72b0b61203dc3fe35842df",
+      "bytes": 737
+    },
+    {
+      "source": ".artifacts/task12-full-gate/full.log",
+      "destination": "docs/verification/workflow-migration/final-attempts/attempt-1/full.log",
+      "sha256": "8f532546ccfde4d4befefab42e622656944505aaeee74a7844fa62bae87af892",
+      "bytes": 114413
+    },
+    {
+      "source": ".artifacts/task12-icon-timeout-isolated.log",
+      "destination": "docs/verification/workflow-migration/final-attempts/attempt-1/task12-icon-timeout-isolated.log",
+      "sha256": "daa7b30553603febe4aa082c4b3f8951046c933db5f0464203b85014891475ab",
+      "bytes": 248
+    },
+    {
+      "source": ".artifacts/task12-entries-file.log",
+      "destination": "docs/verification/workflow-migration/final-attempts/attempt-1/task12-entries-file.log",
+      "sha256": "4b94d6009114231dce95e1a7fc1d908279ab75d594f0bdc2d353d73d99cba121",
+      "bytes": 2349
+    },
+    {
+      "source": ".artifacts/task12-guard-entries-order.log",
+      "destination": "docs/verification/workflow-migration/final-attempts/attempt-1/task12-guard-entries-order.log",
+      "sha256": "14c5832a5ddf529fa6363a3477dd59be3094f90e9884b3496a6afd7c3748bd57",
+      "bytes": 10949
+    }
+  ],
+  "timeoutInvestigation": {
+    "unchangedFromMain": [
+      "scripts/entries.ts",
+      "scripts/__tests__/entries.test.ts",
+      "scripts/test-setup.ts",
+      "bunfig.toml",
+      "package.json",
+      "bun.lock"
+    ],
+    "isolated": {
+      "passed": 1,
+      "failed": 0,
+      "assertions": 5,
+      "milliseconds": 499.12,
+      "timeoutChanged": false
+    },
+    "file": {
+      "passed": 27,
+      "failed": 0,
+      "assertions": 81,
+      "seconds": 9.84
+    },
+    "guardThenEntries": {
+      "passed": 121,
+      "failed": 0,
+      "assertions": 241,
+      "seconds": 25.79
+    },
+    "powerTransitions": {
+      "window": "2026-10-22 00:03–00:07 America/Los_Angeles",
+      "actualSleepWakeTransitions": 0,
+      "privateApplicationAssertions": "Not retained"
+    },
+    "cause": "Unverified; retests do not prove a fix.",
+    "issue": ".scratch/maintenance/issues/005-registration-test-timeout.md"
+  },
+  "reviews": {
+    "fixedCandidate": "632a392291a6761ea7f8f2460a7cac05ff2bc4ec",
+    "axes": [
+      "correctness",
+      "readability",
+      "architecture",
+      "security",
+      "performance"
+    ],
+    "requiredFinding": "One duplicated stale activation assertion in spec/README.md, reported by three axes.",
+    "runtimeClaims": "Reviews are static; no full-gate or host success inferred.",
+    "reports": [
+      {
+        "axis": "correctness",
+        "report": "The correctness review finds one stale instruction in the active specification index.\n\n**Verdict: Request changes.** Correct the instruction before migration acceptance. No additional correctness or scope-creep finding appears in the reviewed live-code changes.\n\n- **[P2] Required — [hard: spec/SPEC-maintainer-workflow.md:11, retirement of competing instructions]**\n  File: `spec/README.md:10`.\n\n  Quoted hunk: “The migration is in progress; the original startup owner remains active until the cutover.”\n\n  The specification requires: “Retire the old workflow and its competing instructions.” It also requires “Keep one current owner for each fact” at line 56.\n\n  Task 11 removes that original owner. The current handoff states that the new workflow is active. Every fresh session must read this index, so the stale sentence supplies a conflicting startup instruction at the acceptance boundary.\n\n  **Fix:** Remove the old-owner activation claim. Link to the sole current handoff for activation and task state. Recheck the fresh-session probes after that correction.\n\nReview scope: the fixed diff from `1b5d08a420f7f916b0c87b166527c60985937f4d` to `632a392291a6761ea7f8f2460a7cac05ff2bc4ec`. I read the approved specification and commit list before code, then the new migration tests and changed tests. I reviewed the migration guard, runner, moved driver/fixture comparisons, active entry points and live reference consumers. Standards include AGENTS.md, the four agent guides, and documentation/package guidance.\n\nThe runner retains 24 invocations, archive arguments, audit output selection and both scoped modes. The guard tests cover corrupt evidence, incomplete records, unsafe destinations and old active references. Driver comparisons retain assertion and coverage behavior.\n\nLimits: this pass does not repeat the existing semantic-record reviews or raw-evidence integrity proof. It starts no tests, builds, installs or browsers. The parent owns the clean-candidate gate and actual host probes; their completion is not assumed. The three external release-link corrections remain an explicit approval gate.\n"
+      },
+      {
+        "axis": "readability",
+        "report": "The final readability review finds one stale instruction in the frozen candidate.\n\n**Verdict: request changes for the known index correction.** No additional required readability or simplicity finding remains.\n\nFixed comparison:\n\n```text\ngit diff 1b5d08a420f7f916b0c87b166527c60985937f4d 632a392291a6761ea7f8f2460a7cac05ff2bc4ec\n```\n\n**Required — [hard: spec/SPEC-maintainer-workflow.md:56, one current owner for each fact]**\n\nLocation:\n\n```text\nspec/README.md:10\n```\n\nQuoted hunk:\n\n```text\nThe migration is in progress; the original startup owner remains active until the cutover.\n```\n\nThe cutover is complete. The shared instructions and status identify the new workflow as active. This mandatory startup document contradicts them. A fresh reader must decide which instruction owns startup.\n\nFix: remove the stale startup-owner claim. Keep the link to the sole current status. This duplicates the correction already identified by the coordinator.\n\nThe remaining reviewed changes improve navigation and naming. Stable check identities replace filename-dependent behavior. The verifier keeps migration policy in one module, with explicit exceptions and descriptive regression cases. Its length reflects the named integrity and reference boundaries; no speculative framework or compatibility layer appears. Workflow guidance now defines the migration terms.\n\nThe review covers the shared entry points, ownership and verification guidance, approved specification/plan/tasks, verifier and tests, runner changes, recipe references, and representative moved drivers. Standards are AGENTS.md, both mapped glossaries, docs/agents/{domain,repository,verification,workflow}.md, and docs/development/documentation.md. The approved specification is spec/SPEC-maintainer-workflow.md. The supplied commit list and recorded migration proofs bound mechanical and historical review.\n\nLimits: this axis does not repeat every semantic batch review or run builds, tests, installs, or browsers. The coordinator's full gate and actual host probes remain separate acceptance evidence. The three external release-link corrections remain an explicit approval gate, not forgotten work.\n"
+      },
+      {
+        "axis": "architecture",
+        "report": "The architecture review finds one required startup-routing correction in the fixed cutover candidate.\n\n**Verdict: Request changes.** The architecture otherwise improves ownership and removes competing workflow layers.\n\n**[P2] Keep activation state in its current owner.** [hard: docs/agents/workflow.md:3–8, one owner per fact; current phase belongs to STATUS]\n\nLocation:\n\n```text\nspec/README.md:10\n```\n\nQuoted added hunk:\n\n```text\nThe migration is in progress; the original startup owner remains active until the cutover.\n```\n\nEvery fresh session must read this index. Its assertion conflicts with the activated root instructions and STATUS. The former startup owner is removed. This leaves two competing statements about which workflow controls the session.\n\nFix: remove the duplicated activation assertion. Keep the existing link to STATUS as the sole current-state owner. Recheck the cold-start scenarios after this correction.\n\nThe inspected structure otherwise follows the approved specification:\n\n- Five local skills and their routing layer disappear. Selective context routing replaces mandatory reading of every decision and research record.\n- Live acceptance drivers have one scripts owner. Saved evidence has a separate documentation owner. Six drivers still share the existing browser-distribution helper.\n- Three filename-based runner policies become explicit check identities. The renamed-path regression preserves all 24 invocations.\n- The migration verifier stays outside product modules. Its fixed-scope exceptions and integrity checks do not create another workflow manager.\n- Product source, package manifests, versions and dependencies remain unchanged. Consumer documentation retains its shared release projection.\n\nI checked all twelve smell heuristics. No additional actionable architecture smell appears in the inspected live changes.\n\nReview bounds: baseline 1b5d08a420f7f916b0c87b166527c60985937f4d to candidate 632a392291a6761ea7f8f2460a7cac05ff2bc4ec; specification: spec/SPEC-maintainer-workflow.md. Standards include AGENTS.md, docs/agents/{domain,workflow,repository,verification}.md and development documentation/stack guidance. I inspected entrypoints, runner changes, the complete verifier, moved dependency edges and producer consumers. Mechanical integrity and historical conversions use the supplied task proofs. I ran no builds or browsers. The final gate and host sessions remain pending. Three external release-link corrections remain an explicit approval gate.\n"
+      },
+      {
+        "axis": "security",
+        "report": "Security review of the maintainer workflow migration is complete.\n\n**Verdict:** No actionable security finding in the fixed diff.\n\n```text\nBaseline:  1b5d08a420f7f916b0c87b166527c60985937f4d\nCandidate: 632a392291a6761ea7f8f2460a7cac05ff2bc4ec\n```\n\n- Reviewed the approved specification, commit list, repository standards, shared instructions, Claude settings, and changed live entry points.\n- Read the new migration verifier. Repository paths reject traversal and escaping symlinks before content reads. Git calls use argument arrays. Parsed Markdown and source remain data; the verifier does not execute their content or fetch their links.\n- Compared relocated drivers against their original files. Process launches, cleanup calls, file-serving calls, and listener bindings retain their security behavior. Reviewed changed fixture paths, output paths, archive selection, and extracted fixture inputs.\n- Component source, package manifests, the lockfile, and CI workflows have no changes. The npm-cache proof retains its synthetic credentials, local server, isolated temporary cache, and cleanup.\n- Scanned all 1,160 added or changed text files at the candidate for seven credential-pattern classes. No matches occurred. The scan skipped 107 binary files.\n- Shared instructions retain task-scoped authorization. External publication still requires approval. Retrieved documentation remains reference data.\n\n**Limits:** This is a static review of the fixed diff. Pattern scanning does not prove that every possible secret is absent. Historical record semantics and raw integrity use the separate migration proofs. I did not run builds, installs, browsers, a new dependency-advisory lookup, or host sessions. The parent owns the running full gate and fresh-host checks; this review does not claim they pass.\n\nThe existing npm-token rotation remains owner-controlled and unconfirmed. Its issue preserves that limit. The three external release-link corrections remain a documented approval gate, not forgotten work.\n"
+      },
+      {
+        "axis": "performance",
+        "report": "The performance review finds no required changes in the fixed migration diff.\n\nVerdict: pass for the performance axis, limited to static review.\n\nReviewed range:\n\n```text\n1b5d08a420f7f916b0c87b166527c60985937f4d\n632a392291a6761ea7f8f2460a7cac05ff2bc4ec\n```\n\nFindings: none. No severity or hard-versus-judgement tag applies.\n\n- Component source, package source and styles have no changes. Recipe metadata and comparison-tool changes update references only.\n- The check runner retains its fixed browser plan. Stable check identities replace filename matching without adding browser invocations.\n- The added strict typecheck covers relocated verification code. This is the approved verification scope, not repeated runtime work.\n- The migration guard reads baseline blobs through Git batch operations. It caches parsed Markdown documents and limits traversal to repository inputs. Synchronous reads occur in this command-line check, outside application requests and rendering.\n- Inspection of all 37 mapped TypeScript modules compares their call and loop structure. Relevant deltas add bounded setup, type support or extracted-fixture reads. They introduce no additional browser-engine loops, repeated builds, fetch loops or polling.\n\nThe approved specification, repository standards, commit list and task-8 evidence inform this review. Earlier integrity and semantic reviews support the mechanical and historical scope. Their results do not certify the final candidate.\n\nLimits: no profiling, timing comparison, build, browser session, installation or test run occurs in this review. Static inspection finds no concrete introduced performance defect; it does not establish measured latency or memory bounds. The coordinator owns the running full gate and fresh-host checks. The three external release-link corrections remain an explicit approval gate, outside this performance verdict.\n"
+      }
+    ]
+  },
+  "hostEvaluations": {
+    "state": "in progress",
+    "scope": "Actual fresh CLI sessions; first attempts and harness limitations retained. Native loader traces are separate from tool consumption/behavior."
+  },
+  "next": "Finish reviewed startup corrections, commit a clean candidate, run complete gate and affected actual-host probes.",
+  "external": {
+    "pending": 3,
+    "approved": false,
+    "waiver": false,
+    "policy": "Complete local verification before asking for outward approval. Final migration guard stays pending until approved link corrections are applied."
+  },
+  "startupCorrections": {
+    "review": "# Task 12 startup-pointer correction review\n\nVerdict: **ACCEPTED for the inspected wording**. These changes sharpen existing requirements; they add no workflow, permission or product scope.\n\nI reviewed the diff from candidate `632a392291a6761ea7f8f2460a7cac05ff2bc4ec` for AGENTS.md, the relevant STATUS correction and the specification index. I read the installed brain question skill and both host references in full. Earlier complete reads cover the approved migration specification, plan, using-brain and writing-for-agents guidance.\n\n## Evidence and fit\n\n| Correction | First-run evidence | Existing authority and review |\n| --- | --- | --- |\n| Step 2 explicitly includes read-only assessments and new requests, and requires the active spec, plan and tasks to be read to their final line | Claude package trace has no Read for the active migration spec, tasks/plan.md or tasks/todo.md, despite reading STATUS and the index. Its final scope preserves the plan, but its startup consumption is incomplete. | Approved specification session-start steps 1–3 and its selective-routing/full-reading rule already require these reads. The clarification closes an observed pointer gap without restoring the retired all-notes corpus. It names only the three current records. |\n| Load brain:using-brain at session start | Codex has explicit complete brain reads. Claude interrupted has native plugin registration but no Skill/file-read consumption evidence. Its SessionStart hook output is empty, and no native payload matches the installed using-brain body. | The installed using-brain description and discovery rules already apply at session start. “Load” makes the action observable and removes the ambiguity of “use.” It does not copy the skill procedure into AGENTS. |\n| Load brain:ask-user-question and read the applicable host reference before composing a user-owned question | Claude interrupted recommends a layout without an observed question-skill load. Claude root/package invoke the question skill, but no host-reference read is visible. | The installed question skill's Send and wait section requires the relevant host contract. Its failure-mode table identifies assuming host fields as a defect. The pointer strengthens that existing condition. The actual tool schema and availability still govern; plain-text fallback remains valid when no permitted question tool exists. |\n| Finish authorized local verification before seeking the outward approval; keep the external guard pending without waiver | Claude root requests external approval early and offers an unsupported “allowed failure” option for the red final guard. It performs no external write and infers no answer. | The approved plan permits local work and verified commits, but requires the concrete local result before the outward-action approval. The correction preserves the guard and distinguishes local verification from overall migration acceptance. It grants no external permission and introduces no exception. |\n| Remove activation/progress duplication from the specification index | Codex and Claude root correctly diagnose the index's stale “original startup owner remains active” sentence after cutover. | STATUS already owns current activation and progress. The index keeps approval provenance and contract routing while deferring current state to STATUS. The product contracts and historical evidence are unchanged. |\n\nThe five user-started boundaries remain intact. Brain still wins shared skill names. Questions remain scoped, one at a time, with no inferred approval or agent deadline. The changes do not ask for new approval of the already approved migration.\n\nThe new STATUS paragraph keeps overall acceptance pending until the required external corrections are authorized and applied. It does not say that the final guard passes. The surrounding permission block still states that outward actions are unapproved. The new unit-timeout note preserves a failed first full run and leaves its cause unverified; this pointer review does not independently re-run or certify that test investigation.\n\n## Verification limits\n\nThis review accepts the instructions, not host behavior. Preserve the first-run failures and the original read-only harness denial. Re-probes must retain neutral prompts, normal configuration, exact source snapshots and narrow read-only permissions. Compare actual Skill/read/native events with the revised pointers. Do not infer loading from a model claim or from a newly written instruction.\n\nNative automatic AGENTS/CLAUDE import remains a separate unverified observation where the CLI emits no loader event. The stronger pointer does not manufacture that evidence. The read-only probes also remain distinct from actual process cancellation, compaction internals and successful write-time handoff.\n\nI changed no implementation or shared state. The only authored file is this review.\n\nReviewed current file hashes:\n\n| File | SHA-256 |\n| --- | --- |\n| AGENTS.md | 66ffd55741851e242722fbc078e9e3c2ec0766124af8c5241bdbfc1463e0a809 |\n| docs/STATUS.md | 4e6b34b7c06dc17f85b376ff77fb61a3f5ca5f41c30410e9da99cf21b4e2d66e |\n| spec/README.md | e8e858d25ec5df1031f562c8a475172e3e4ae51f1f2dd6feda048851dfc89ae9 |\n",
+    "reason": "Actual first-run probes skip required startup reads or question-skill loading and offer an unsupported final-guard waiver. Existing pointers and approval sequencing are clarified; no product or permission scope changes."
+  }
+}
