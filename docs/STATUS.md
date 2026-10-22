@@ -12,9 +12,9 @@ All required runtime stages pass. Task 12 remains open for the remaining Claude 
 
 ## Next step
 
-Obtain explicit authorization for the remaining read-only Claude verification. Automatic approval review rejects both the native loaded-context listing and a focused package-session retry because the authenticated CLI can send repository context to an external service. Do not retry either through another execution route. The exact actions, prepared commands, data scope and retained results are in [task 12](verification/workflow-migration/task-12.json).
+Run the two remaining read-only Claude checks: package startup and native instruction loading. Peter explicitly approves the stated repository/context transmission to Anthropic on 2026-10-22. That reply resolves the earlier automatic-review block for these checks. The exact actions, prepared commands, data scope and retained results are in [task 12](verification/workflow-migration/task-12.json).
 
-After authorization, finish the remaining Claude checks with the existing subscription and installed plugins. Preserve earlier attempts. Re-run only a case invalidated by a reviewed instruction or harness correction. Record actual source revisions and file preservation. The package retry adds only the two exact read-only directory listings that the prior harness denied.
+Use the existing Claude subscription and installed plugins. Preserve earlier attempts. Re-run only a case invalidated by a reviewed instruction or harness correction. Record actual source revisions and file preservation. The package retry adds only the two exact read-only directory listings that the prior harness denied.
 
 Finish local verification and records before requesting outward-action approval. Push, pull request, merge and release-body edits remain unapproved. Three prepared release-link corrections keep the final migration guard pending; they do not block the remaining local work. Overall acceptance requires those corrections and a passing final guard. No waiver is approved.
 
@@ -51,7 +51,7 @@ These are local paths, not portable dependencies. Verify they exist before use. 
 
 Branch: codex/maintainer-workflow-migration. Runtime acceptance uses clean revision 5f74c3a0ceb57e2c5a54afe7e23bac91b9bbebb2; final checker/unit acceptance uses 4782c25980e4f77e2b1f4cfa83788748d090bfbc. Corrected behavioral probes use cb3d72281ea14684cbec132fabd3d3cdd27e7126 and separately recorded synthetic fixture revisions. Later commits save evidence and handoff records only. No push, pull request, merge or release-body edit has occurred.
 
-Peter approves this migration's specification, plan, local implementation and verified local commits. Automatic approval review now requires explicit data-transmission authorization for the remaining Claude checks. That authorization would cover those checks only. It would not authorize publication.
+Peter approves this migration's specification, plan, local implementation and verified local commits. On 2026-10-22 he also explicitly approves the two remaining Claude checks and their stated data transmission to Anthropic. Publication remains a separate decision.
 
 Three [release-body corrections](verification/workflow-migration/external-reference-audit.json) are prepared. Published archives, tags and signatures remain immutable. After local acceptance, prepare the final pull-request text and ask once for the concrete outward actions.
 

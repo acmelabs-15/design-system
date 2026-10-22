@@ -243,7 +243,7 @@ Each child batch of task 8 moves one driver and its dependency closure. Shared h
 
 **Verification:** Run bun run check on the exact clean candidate; save its revision and results. Record separate host transcripts/results. Re-run only checks invalidated by a later correction.
 
-**Recorded result:** Every required runtime stage passes through preserved invocation and resumed-stage evidence; no single uninterrupted invocation passes. The later diagnostic fix passes the complete 1,126-test suite. All eight corrected host cases preserve the task state, but Claude Git/runtime and native-loading proof still need completion. Automatic approval review blocks further Claude transmissions pending explicit authorization. Task 12 and Checkpoint D stay open. [Evidence](../docs/verification/workflow-migration/task-12.json).
+**Recorded result:** Every required runtime stage passes through preserved invocation and resumed-stage evidence; no single uninterrupted invocation passes. The later diagnostic fix passes the complete 1,126-test suite. All eight corrected host cases preserve the task state, but Claude Git/runtime and native-loading proof still need completion. Peter explicitly authorizes the remaining Claude verification transmissions on 2026-10-22; the prior automatic-review rejections remain recorded. Task 12 and Checkpoint D stay open. [Evidence](../docs/verification/workflow-migration/task-12.json).
 
 **Dependencies:** 11.
 
