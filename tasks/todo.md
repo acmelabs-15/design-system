@@ -1,12 +1,12 @@
 # Tasks: maintainer workflow migration
 
-Status: approved for local implementation, 2026-10-21. The specification and all three plan-review points are approved. Tasks 1 and 2 are in progress.
+Status: approved for local implementation, 2026-10-21. Task 1 passes its focused checks and coordinator review. Task 2 is in progress. Full migration acceptance and independent review remain task 12.
 
 The current handoff is still [the existing pass entry point](../notes/alignment/README.md#where-we-are). Task 11 changes that owner.
 
 ## Checklist
 
-- [ ] 1. Make browser-check behavior independent of filenames
+- [x] 1. Make browser-check behavior independent of filenames — [evidence](../docs/verification/workflow-migration/task-01.json).
 - [ ] 2. Complete the migration ledger and rule audit
 - [ ] 3. Prove the migration guards
 - [ ] Checkpoint A: safe preparation
@@ -30,9 +30,9 @@ Tasks 4–8 are batch groups. Before starting one, add each exact child batch be
 **Description:** Replace filename-based special behavior in the existing runner with explicit stable check identities. Keep the current paths until their owning move. This is the code prefactor that makes subsequent renaming safe.
 
 **Acceptance criteria:**
-- [ ] All 23 entries still produce the same 24 ordered invocations, archive arguments, environment values and output destinations.
-- [ ] A regression proves that changing an entry's file path does not lose scoped module/CDN coverage, audit result routing or worker-consumer arguments.
-- [ ] Failure aggregation, complete-result recording and clearing of diagnostic filters remain unchanged.
+- [x] All 23 entries still produce the same 24 ordered invocations, archive arguments, environment values and output destinations.
+- [x] A regression proves that changing an entry's file path does not lose scoped module/CDN coverage, audit result routing or worker-consumer arguments.
+- [x] Failure aggregation, complete-result recording and clearing of diagnostic filters remain unchanged.
 
 **Verification:** Run the focused check-runner tests, strict script types and static checks. Preserve the before/after invocation comparison.
 

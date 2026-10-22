@@ -33,7 +33,7 @@ test("quality workflow runs every defined gate under the pinned Bun runtime", ()
     }
   }
   expect(steps.some((step) => /\b(?:node|npx|npm)\s/.test(step.run ?? ""))).toBe(false);
-  for (const file of browserChecks) {
+  for (const { file } of browserChecks) {
     expect(fs.existsSync(path.join(root, file))).toBe(true);
   }
 });

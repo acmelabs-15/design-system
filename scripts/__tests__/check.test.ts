@@ -2,7 +2,7 @@ import { expect, test } from "bun:test";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { browserCheckPlan, CheckCommandError, checkEnvironment, executeBrowserChecks, generatedChanges } from "../check";
+import { browserCheckPlan, browserChecks, CheckCommandError, checkEnvironment, executeBrowserChecks, generatedChanges } from "../check";
 import { archiveFilename, releasePackageNames, type ReleaseRecord } from "../release-policy";
 import { releaseSource } from "../release";
 
@@ -104,6 +104,8 @@ test("browser gates consume the reviewed package set and both scoped delivery pa
     consumer = path.join(root, "consumer"),
     runtime = path.join(root, "runtime");
   const plan = browserCheckPlan(release, consumer, runtime, root);
+  expect(browserChecks).toHaveLength(23);
+  expect(new Set(browserChecks.map((entry) => entry.id)).size).toBe(23);
   const scoped = plan.filter((check) => check.file.endsWith("m26-scoped/run.ts"));
   expect(scoped.map((check) => check.environment.ACME_SCOPED_CDN)).toEqual(["0", "1"]);
   expect(scoped.every((check) => check.environment.ACME_SCOPED_PACKAGE === path.join(consumer, "node_modules/@acmelabs/design-system"))).toBe(true);
@@ -123,6 +125,25 @@ test("browser gates consume the reviewed package set and both scoped delivery pa
     expect(inherited.ACME_COMPONENT_ENGINES).toBeUndefined();
   }
   expect(() => browserCheckPlan({ ...release, packages: [] }, consumer, runtime, root)).toThrow("Missing reviewed archive");
+});
+
+test("renamed browser checks preserve every invocation and output destination", () => {
+  const release: ReleaseRecord = {
+    schemaVersion: 2,
+    version: "0.3.0",
+    commit: "a".repeat(40),
+    sourceTree: "clean",
+    packages: releasePackageNames.map((name) => ({ name, version: "0.3.0", filename: archiveFilename({ name, version: "0.3.0" }), sha512: "a".repeat(128), blockers: [] })),
+  };
+  const root = path.join(os.tmpdir(), "check-plan-renamed"),
+    consumer = path.join(root, "consumer"),
+    runtime = path.join(root, "runtime");
+  const before = browserCheckPlan(release, consumer, runtime, root);
+  const renamed = browserChecks.map((entry, index) => ({ ...entry, file: "scripts/verification/moved-" + index + ".ts" }));
+  const files = new Map<string, string>(browserChecks.map((entry, index) => [entry.file, renamed[index].file]));
+  const after = browserCheckPlan(release, consumer, runtime, root, renamed);
+  expect(after).toEqual(before.map((check) => ({ ...check, file: files.get(check.file)! })));
+  expect(after).toHaveLength(24);
 });
 
 test("browser overrides cannot replace the pinned Bun executable search path", () => {

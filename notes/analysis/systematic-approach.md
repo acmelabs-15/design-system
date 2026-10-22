@@ -269,3 +269,7 @@ The migration also owns live JSON inputs consumed by the component runner, the s
 Task sizing follows the inspected planning skill: bounded authored changes, explicit dependencies and completion proof, with large unchanged evidence moves treated as mechanical batches. Shared indexes, state, generators and heavy verification remain coordinated. The known Chromium failure stays visible and gets a separate prerequisite investigation if it blocks final acceptance.
 
 Peter approves the task sizes and dependency order on 2026-10-21 through separate “approved” replies to those review questions. Peter then approves the task boundaries, completing plan review. The specification and plan approvals are settled. Tasks 1 and 2 start local implementation; no runtime or fresh-session acceptance is claimed yet.
+
+### Runner identity prefactor completed
+
+The runner now stores each check's stable identity beside its file path. Scoped modes, audit output routing and worker archive arguments use that identity. All 23 entries and 24 ordered invocations match the pre-change plan, including explicit undefined diagnostic filters. The rename regression fails on the original implementation and passes after the change. Nine focused tests, strict script types, Oxlint and Oxfmt pass. Coordinator review finds no issue; full migration verification and independent review remain later work. [Complete evidence](../../docs/verification/workflow-migration/task-01.json).
