@@ -1,6 +1,6 @@
 # Tasks: maintainer workflow migration
 
-Status: approved by Peter for local implementation on 2026-10-21. Tasks 1–11 are complete. The new workflow is active; task 12 verifies the clean candidate and actual host sessions.
+Status: approved by Peter for local implementation on 2026-10-21. Current execution state belongs in [STATUS](../docs/STATUS.md).
 
 The current handoff is [STATUS](../docs/STATUS.md).
 
@@ -238,12 +238,12 @@ Each child batch of task 8 moves one driver and its dependency closure. Shared h
 
 **Acceptance criteria:**
 - [x] The full gate passes with all required browser/consumer checks; no skipped assertion or hidden failure supplies a green result.
-- [ ] Fresh root and package sessions handle continuation, interruption, new scope, a pending approval and a red baseline correctly. Host startup is tested, not inferred from Markdown.
+- [x] Fresh root and package sessions handle continuation, interruption, new scope, a pending approval and a red baseline correctly. Host startup is tested, not inferred from Markdown.
 - [ ] The ledger has complete coverage, raw evidence integrity holds, no old active path survives, and review findings are resolved or explicitly returned to Peter.
 
 **Verification:** Run bun run check on the exact clean candidate; save its revision and results. Record separate host transcripts/results. Re-run only checks invalidated by a later correction.
 
-**Recorded result:** Every required runtime stage passes through preserved invocation and resumed-stage evidence; no single uninterrupted invocation passes. The later diagnostic fix passes the complete 1,126-test suite. All eight corrected host cases preserve the task state, but corrected Claude package startup still needs completion. Root native import passes; package import consent and Bash directory scope are distinct verified causes. The reviewed host adapter uses an explicit shared-file read, and the test adds only the repository root to its directory scope. Peter explicitly authorizes the remaining Claude verification transmissions on 2026-10-22; the prior automatic-review rejections remain recorded. Task 12 and Checkpoint D stay open. [Evidence](../docs/verification/workflow-migration/task-12.json).
+**Recorded result:** All required local runtime stages, migration reviews and actual-host behavioral checks pass within their recorded scope. The corrected Claude package case verifies shared context, early brain consumption, Git/Bun and complete file preservation. Earlier failed attempts, native package-import omission and three nonblocking reporting observations remain visible. No single uninterrupted full-gate invocation passes. Task 12 and Checkpoint D remain open only for the three external release-link corrections and final acceptance. [Evidence](../docs/verification/workflow-migration/task-12.json).
 
 **Dependencies:** 11.
 
@@ -254,9 +254,9 @@ Each child batch of task 8 moves one driver and its dependency closure. Shared h
 ## Checkpoint D: local migration acceptance
 
 - [ ] All approved specification success criteria have evidence.
-- [ ] Working-tree/commit state and the exact next action are recorded.
-- [ ] Shipping and external-reference updates are concrete and ready for the required outward-action approval.
-- [ ] Actual-platform limits and credential-rotation status remain honest.
+- [x] Working-tree/commit state and the exact next action are recorded.
+- [x] Shipping and external-reference updates are concrete and ready for the required outward-action approval.
+- [x] Actual-platform limits and credential-rotation status remain honest.
 
 ## Plan review
 

@@ -1,6 +1,6 @@
 # Implementation plan: maintainer workflow migration
 
-Status: approved by Peter for local implementation on 2026-10-21. Tasks 1–11 are complete. The new workflow is active; task 12 verifies the clean candidate and actual host sessions.
+Status: approved by Peter for local implementation on 2026-10-21. Current execution state belongs in [STATUS](../docs/STATUS.md).
 
 Task state belongs in [todo.md](todo.md). [STATUS](../docs/STATUS.md) is the current handoff.
 

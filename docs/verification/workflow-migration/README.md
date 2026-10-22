@@ -1,6 +1,6 @@
 # Maintainer workflow migration evidence
 
-The approved workflow is active. Tasks 1–11 are complete. Task 12 verifies the clean candidate, actual host sessions and final review. External release-body corrections remain pending authorization.
+These records account for the approved workflow migration. They preserve verification, corrections and limits. [STATUS](../../STATUS.md) owns the current handoff and publication boundary.
 
 Follow the root agent instructions and [task list](../../../tasks/todo.md) for current work. These audit records describe source history, allocations and verification. Quoted old instructions and source paths are evidence, not a second workflow.
 
