@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "batch": "06-research-03-behaviour-verification-method",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "All20 originals were fully read during audit and conversion. Specific findings distinguish observations, proposals, approved choices, unverified claims, supersession and dated history. Rule dispositions retire completed process instructions.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/analysis/behaviour-verification-method.md",
+      "destination": "docs/research/03-behaviour-verification-method.md",
+      "sourceSha256": "7ea3dab52b33b6b62efee17b4150a05e99e1ffb46f482f2685266fe60cf8795b",
+      "destinationSha256": "336957d695b77cc5cc68686e7d581bd457ead86911696a9ff1bfb1c6520c6f65",
+      "changes": [
+        "Converted to numbered research with explicit dated scope, findings, provenance and limitations.",
+        "Relocated live Markdown links through the final ledger; retained source paths as historical provenance.",
+        {
+          "old": "# How we will verify behaviour parity",
+          "new": "# Behaviour parity verification investigation"
+        },
+        {
+          "old": "Researched 2026-09-10. Linked from `PLAN.md` section 5.4. Read\n[functional-parity-sources.md](functional-parity-sources.md) first: it records what evidence about the\nreference exists at all.",
+          "new": "Researched 2026-09-10. The historical port plan linked this investigation from section 5.4.\n[Functional parity sources](functional-parity-sources.md) records the reference evidence available at that date."
+        },
+        {
+          "old": "and the\nstanding rule forbids it. Check per component before relying on it.",
+          "new": "and the\ninvestigation did not establish it. Evidence was required for each component."
+        },
+        {
+          "old": "**What APG is not:** it is the standard pattern's contract, not the reference's. Where the reference\ndeviates from APG, the reference wins, because the reference is what we are porting. Use APG to know\nwhat to test, then confirm the expected answer against the reference.",
+          "new": "**Historical parity policy:** APG describes the standard pattern, not the reference implementation.\nThe port then used reference behavior to resolve deviations, with APG supplying candidate checks.\nLater approved component adaptations supersede any blanket rule that the reference always wins."
+        },
+        {
+          "old": "A `CustomEvent` defaults to `composed: false`,",
+          "new": "**Disputed historical claim:** the following explanation was recorded on 2026-09-10. Its claim that a non-composed event dispatched inside a shadow root reaches the host requires revalidation.\n\nA `CustomEvent` defaults to `composed: false`,"
+        },
+        {
+          "old": "**Recommended: Vitest browser mode with Playwright as the driver.**",
+          "new": "**Historical recommendation, superseded by the later browser-verification decision: Vitest browser mode with Playwright as the driver.**"
+        },
+        {
+          "old": "## Two scope questions, not research gaps",
+          "new": "## Two scope questions, not research gaps"
+        },
+        {
+          "old": "- **Right-to-left: decided, none**, on the evidence that the reference has none. See",
+          "new": "- **Historical right-to-left scope: none**, on the then-recorded evidence that the reference had none. Later bidirectional support supersedes this scope. See"
+        },
+        {
+          "old": "## Suggested order",
+          "new": "## Suggested order"
+        },
+        {
+          "old": "1. Port the applicable APG suites",
+          "new": "The original proposed sequence was:\n\n1. Porting the applicable APG suites"
+        },
+        {
+          "old": "2. Build the event manifest and assert it from a light-DOM parent.",
+          "new": "2. Building the event manifest and asserting it from a light-DOM parent."
+        },
+        {
+          "old": "3. Add the computed role and name comparison against the live reference.",
+          "new": "3. Adding the computed role and name comparison against the live reference."
+        },
+        {
+          "old": "4. Add the four emulation flags to the harness.",
+          "new": "4. Adding the four emulation flags to the harness."
+        },
+        {
+          "old": "5. Add screenshot comparison on the ten highest-risk elements.",
+          "new": "5. Adding screenshot comparison on the ten highest-risk elements."
+        },
+        {
+          "old": "6. Mine React Aria's public test suite",
+          "new": "6. Mining React Aria's public test suite"
+        },
+        {
+          "old": "**Default to the preview pane.** It does not touch Peter's browser, and with the frame probe it handles\nmotion too. Reach for the DevTools protocol when the probe says frames are not firing and the check needs\nthem, or when element identifiers make an interaction easier.",
+          "new": "The 2026-09-10 recommendation preferred the preview pane because it did not touch Peter's browser\nand the frame probe supported motion checks. It used DevTools when frames or element identifiers\nwere required. This records the tested host choice, not current tool-routing instructions."
+        },
+        {
+          "old": "So the practical instruction is simple: **leave the preview pane open, and it may sit behind your editor.**\nNo flag needed for that case.",
+          "new": "The tested configuration left the preview pane open behind the editor.\nNo flag was needed for that observed case."
+        },
+        {
+          "old": "### When the window is minimized: no setting exists, and none can",
+          "new": "### When the window is minimized: no setting exists, and none can"
+        },
+        {
+          "old": "Two independent investigations reached the same conclusion from Chromium's own source, and every\ncandidate flag was tested rather than assumed.",
+          "new": "This heading retains the original conclusion. Its universal wording exceeds the verified host/date scope.\nTwo investigations reached that conclusion from the then-inspected Chromium source and tested candidate flags.\nThe measurements below establish those tested cases, not all present or future browser configurations."
+        },
+        {
+          "old": "No `chrome://settings` item, no enterprise policy and no macOS setting changes it.",
+          "new": "The investigation found no `chrome://settings` item, enterprise policy or macOS setting that changed the tested behavior."
+        },
+        {
+          "old": "These results should become acceptance fixtures for the approved form-control work.",
+          "new": "These results became candidate acceptance fixtures for the approved form-control work."
+        },
+        {
+          "old": "Preserve the earlier reference-driven method, use real input for user gestures, and assert the consumer-visible outcome rather than an internal field alone.",
+          "new": "The research recommended real input for user gestures and consumer-visible outcomes, with the earlier reference-driven method scoped to parity comparisons."
+        },
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance.",
+        {
+          "old": "Use Playwright's built-in screenshot comparison, one pinned browser, on roughly ten elements with\nstacking contexts or clipping. No new vendor.",
+          "new": "The historical proposal used Playwright's built-in screenshot comparison with one pinned browser on roughly ten elements with stacking contexts or clipping. It selected no new vendor."
+        },
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance."
+      ],
+      "retainedQualifications": [
+        "React Aria button markers do not establish every widget's internals; APG is not proof of reference behavior.",
+        "Happy DOM, Playwright name queries, native accessibility trees and actual assistive technology have different coverage.",
+        "Frame capability, seeking and screenshots remain distinct. Minimized-window/flag claims belong to the tested host/date.",
+        "Later Bun browser orchestration supersedes the Vitest recommendation; RTL and SSR later decisions supersede old open/none scope.",
+        "The claim that a non-composed shadow-dispatched event reaches the host requires revalidation before reuse."
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/analysis/behaviour-verification-method.md",
+      "oldAnchor": "how-we-will-verify-behaviour-parity",
+      "destination": "docs/research/03-behaviour-verification-method.md",
+      "newAnchor": "research-03-behaviour-parity-verification-investigation"
+    }
+  ],
+  "findings": [
+    "The original event explanation says a non-composed event dispatched inside shadow DOM reaches the host. This is retained as disputed historical evidence and requires revalidation before technical reuse.",
+    "Minimized-window impossibility wording is retained as an original conclusion, explicitly bounded to the tested 2026-09-10 host/source evidence."
+  ]
+}

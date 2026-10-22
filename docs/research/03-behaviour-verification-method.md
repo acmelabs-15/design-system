@@ -1,0 +1,459 @@
+# Research 03: Behaviour parity verification investigation
+
+Status: historical research with dated implementation follow-ups. Converted 2026-10-21.
+
+## Scope and current interpretation
+
+This is the 2026-09-10 parity-method investigation, followed by 2026-09-19 browser probes. The later [browser verification decision](../decisions/0011-browser-verification.md) selects Bun orchestration and supersedes the Vitest recommendation. [Bidirectional support](../decisions/0007-bidirectional-support.md) supersedes the original no-RTL scope; [server rendering](../decisions/0092-server-rendering.md) is excluded. The event-boundary claim below is retained as a disputed historical claim: a non-composed event dispatched inside a shadow root reaching the host is not established and requires revalidation before reuse.
+
+The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../STATUS.md) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
+
+## Findings and dated evidence
+
+
+Researched 2026-09-10. The historical port plan linked this investigation from section 5.4.
+[Functional parity sources](12-functional-parity-sources.md) records the reference evidence available at that date.
+
+Every claim here was checked against our own saved corpus before being written down, per the standing
+rule that evidence beats inference.
+
+## What we verified about the reference, and what we did not
+
+| Claim | Status |
+|---|---|
+| The reference's **buttons** use Adobe's React Aria press handling | **Verified.** `data-react-aria-pressable` appears 525 times across all 76 saved pages, and only ever as `pressable`. Every occurrence is on a button: `data-geist-button` (470), `data-geist-menu-button` (32), a fieldset footer action button (12), and an anchor styled as a button (11). |
+| The reference's **menus, comboboxes and dialogs** use React Aria | **Not verified, and do not assume it.** The only React Aria marker present is press handling on buttons. Our own corpus separately shows Radix markers on menu and context-menu, and cmdk on the command menu, which the port already recorded per element. |
+| The reference's **Select** is a native `<select>` | **Verified.** `select.html` contains a real `<select>` element with the reference's utility classes. This matches what the port recorded independently. |
+
+The middle row is the one that matters. React Aria is Apache-2.0 with a public, executable test suite,
+which makes it tempting to treat as the reference's behaviour specification. For **button press
+behaviour** that is now a reasonable hypothesis to test. For anything else it is a guess, and the
+investigation did not establish it. Evidence was required for each component.
+
+## The instruments, and what each is actually for
+
+Four instruments, each answering a different question. Using one to answer another's question is how a
+parity claim goes wrong.
+
+### 1. Computed role and accessible name — the specification-backed oracle
+
+W3C WebDriver defines endpoints that ask the **browser** for an element's computed ARIA role and
+accessible name. Reachable from Selenium 4 and WebdriverIO. Detail and the driver support matrix are in
+[functional-parity-sources.md](12-functional-parity-sources.md).
+
+Point the same assertion at the reference and at us. This is the strongest machine-checkable evidence of
+semantic parity we can get.
+
+**The trap:** Playwright reimplements these algorithms in injected JavaScript rather than asking the
+browser, with documented deliberate deviations. Its real-tree API was **removed** in Playwright 1.57,
+not merely deprecated. So Playwright is right for our own regression snapshots and wrong for a parity
+claim.
+
+### 2. The ARIA Authoring Practices Guide test suites — the best value available
+
+The W3C's APG repository is active and ships **59 executable regression test files** covering exactly
+the interaction contracts we need: menu button, combobox in six variants, modal dialog, disclosure,
+tabs, listbox, radio, slider, switch, table, tree view, toolbar. Each keyboard-table row in an example
+carries a test id, and the matching assertion references that same id, so the prose and the test are
+bound together.
+
+Roughly **35 of our elements** map to an APG pattern that has tests. The tests are plain selector plus
+key-press plus focus assertions, so they port without dragging APG's harness along.
+
+**One required adaptation:** their focus helpers read `document.activeElement` once, which does not
+pierce a shadow root. Every one needs a `deepActiveElement` that walks `shadowRoot.activeElement` down.
+That is a contained fix per helper, and we already have the pattern in our own tests.
+
+**A gap to fill ourselves:** APG documents the tooltip pattern but ships no test suite for it.
+
+**Historical parity policy:** APG describes the standard pattern, not the reference implementation.
+The port then used reference behavior to resolve deviations, with APG supplying candidate checks.
+Later approved component adaptations supersede any blanket rule that the reference always wins.
+
+### 3. Trusted input only — a live finding that invalidates a whole class of tests
+
+Driving the reference's real combobox with synthetic events produced an incoherent half-open state:
+`aria-expanded` flipped to true while the list stayed hidden and focus never moved. A synthetic click on
+its trigger did **nothing at all**, because React Aria's press handling ignores untrusted events.
+
+So any harness must use real driver input, never `dispatchEvent`. This also applies to our own tests:
+a suite built on synthetic events can pass while the component is broken for a user. It is the same
+class of error as the context-card defect we already fixed, where a test dispatched events onto a node
+no browser would target.
+
+### 4. Event API parity — the sleeper risk
+
+**Disputed historical claim:** the following explanation was recorded on 2026-09-10. Its claim that a non-composed event dispatched inside a shadow root reaches the host requires revalidation.
+
+A `CustomEvent` defaults to `composed: false`, so an event dispatched inside a shadow root never leaves
+it and a consumer's handler silently never fires. A listener placed on the host itself will not catch
+this, because the event does reach the host — it just cannot get past it.
+
+So: build an event manifest for every element naming the event, whether it bubbles, whether it is
+composed, whether it is cancelable, and the shape of its detail. Then assert each one **from a
+light-DOM parent**, which is where a consumer listens.
+
+### 5. Cross-root ARIA — a real risk with a moving platform
+
+The reference's combobox uses `aria-owns` and `aria-controls`. **An id reference does not cross a shadow
+boundary**, so the same attribute in our shadow DOM may point at nothing. The platform is changing here,
+with a reference-target mechanism shipping across engines during 2026.
+
+Verify this against the **computed accessibility tree**, never by reading the attribute back. The
+attribute can look perfect while the relationship does not exist.
+
+## Where our current test setup falls short
+
+Our unit tests run on `bun test` with `happy-dom`. That is fast and right for controllers and pure
+logic, and it should keep that job.
+
+It cannot test rendered component behaviour honestly, for reasons that no change of test library fixes:
+
+| Missing in happy-dom | Why it matters here |
+|---|---|
+| `ElementInternals` | Every one of our form controls is form-associated. The whole mechanism is absent. |
+| `CustomStateSet` | Custom state selectors cannot be exercised. |
+| Real layout — `getBoundingClientRect` returns zeros | Overlay placement, collapse's measured height, and the scroller's overflow detection are all layout-driven. |
+
+That is why interactive behaviour needs a real browser. It is also why the existing census runs in a
+browser rather than in the test runner.
+
+**Historical recommendation, superseded by the later browser-verification decision: Vitest browser mode with Playwright as the driver.** Browser mode left experimental
+status in Vitest 4 and the 5.x line is current. The strongest evidence is practice rather than
+marketing: Adobe rebuilt Spectrum Web Components, a large Lit design system, on exactly this stack in
+2026. Playwright's own component testing is formally deprecated, so use Playwright as the browser
+driver underneath Vitest, not as the component test framework.
+
+On Jest: it is not the current choice for this kind of work, and it is not what the Lit ecosystem uses.
+Vitest is the successor in the same lineage, keeps a Jest-compatible assertion API, and is the one with
+a real browser mode. Bun has no equivalent browser test runner today, so `bun test` keeps the unit tier
+and the browser tier lives in Vitest.
+
+## Visual regression: a narrow yes
+
+**Do not pixel-diff against the reference.** Our fonts differ by design, so every text pixel and every
+text-driven position differs. A threshold loose enough to absorb that is loose enough to hide a defect.
+The computed-style census is the better cross-implementation instrument and stays the primary one.
+
+**Do add pixel diffing against our own history**, on a small set. It closes one hole the census cannot
+close by construction: the census iterates a *mapping*, so an element that is missing, extra, occluded
+or wrongly clipped is invisible to it — you cannot map what you did not notice was absent. It is also
+blind to paint order, gradient banding and backdrop filters.
+
+The historical proposal used Playwright's built-in screenshot comparison with one pinned browser on roughly ten elements with stacking contexts or clipping. It selected no new vendor.
+
+**Maintenance warnings, verified:** Lost Pixel's repository is archived. BackstopJS has not published
+since 2024 and its README asks for a maintainer. `ssim.js` is archived. Prefer the engine Playwright
+already bundles.
+
+## Cheap high-value checks we were not doing
+
+Each is one flag on a harness we already need:
+
+| Check | Why it matters |
+|---|---|
+| Forced colors | A focus ring drawn with `box-shadow` **disappears** in forced-colors mode. The fix is a transparent outline plus the shadow ring, never `outline: none`. Safari does not implement `forced-color-adjust`, so opting out cannot be load-bearing. |
+| Reduced motion | Assert with `document.getAnimations()` swept across shadow roots, which catches a script-driven animation that ignores the preference. |
+| Touch | Hover-opened overlays behave differently under touch emulation. |
+| Print | One flag, and it catches overlays that print as blank boxes. |
+
+## Two scope questions, not research gaps
+
+- **Historical right-to-left scope: none**, on the then-recorded evidence that the reference had none. Later bidirectional support supersedes this scope. See
+  [../decisions/parity-scope.md](../decisions/0077-parity-scope.md).
+- **Server rendering and hydration:** the reference is React with server components. A Lit port cannot
+  follow that architecture, so there is nothing to match. Whether our elements should be
+  server-renderable at all is a separate product decision.
+
+## Suggested order
+
+The original proposed sequence was:
+
+1. Porting the applicable APG suites with a shadow-piercing active-element helper. The work is largely
+   done by the W3C and covers about 35 elements.
+2. Building the event manifest and asserting it from a light-DOM parent.
+3. Adding the computed role and name comparison against the live reference.
+4. Adding the four emulation flags to the harness.
+5. Adding screenshot comparison on the ten highest-risk elements.
+6. Mining React Aria's public test suite for button press behaviour specifically, having verified that is
+   where the reference uses it.
+
+## Method note
+
+Because the reference is only observable as a running site, compare **live against live in the same
+run** rather than against a committed baseline. A change on their side then surfaces as a reviewable
+event rather than a mystery failure weeks later.
+
+## Unverified
+
+- Whether the reference uses React Aria beyond button press handling. Sweep per component.
+- Whether `delegatesFocus` changes `:focus-visible` behaviour. The documentation is silent; test it.
+
+---
+
+## Browser access: solved, and how to measure motion
+
+Tested repeatedly on 2026-09-10, including with the preview pane open, minimized to the dock, and
+restored. Both usable paths were driven against the live reference and produced **identical
+measurements** — the same tooltip text, the same 247 by 29 box, the same `aria-describedby` wiring, the
+same animation name. That agreement between two independent instruments is itself a useful cross-check.
+
+### Do not trust `document.visibilityState` as the gate
+
+The obvious rule — "frames fire when the page is visible" — is wrong, and acting on it would have made us
+skip motion checks that work.
+
+Observed, in the same pane, minutes apart:
+
+| Pane state | `visibilityState` | Frames fire | `getAnimations()` on the document |
+|---|---|---|---|
+| Hidden behind the terminal | `hidden` | no | 0 |
+| Open and on screen | `visible` | yes | 8 |
+| Minimized to the dock | `hidden` | no | 0 |
+| Restored | **`hidden`** | **yes** | 0 |
+
+The last row is the important one: frames fired while the page still reported itself hidden, and the
+document-level animation count stayed at zero even though a real animation was running on an element.
+
+**So test the capability, never the flag.** Before a motion assertion, run one frame probe and branch on
+the result. `visibilityState` and a document-wide animation count are both unreliable proxies.
+
+### The probe, and how to read a live animation
+
+Ask for a frame with a timeout, then read the animation from the **element**, not the document:
+
+```js
+const framesFire = await new Promise((r) => {
+  let done = false;
+  requestAnimationFrame(() => { done = true; r(true); });
+  setTimeout(() => { if (!done) r(false); }, 1200);
+});
+```
+
+Then sample the same element twice, with a gap, and compare. A single reading cannot tell a running
+animation from a finished one:
+
+```js
+const a1 = bubble.getAnimations({ subtree: true }).map((a) => ({ name: a.animationName, state: a.playState, t: a.currentTime }));
+await new Promise((r) => setTimeout(r, 150));
+const a2 = bubble.getAnimations({ subtree: true }).map((a) => ({ name: a.animationName, state: a.playState, t: a.currentTime }));
+```
+
+This works. On our own tooltip it caught the fade **mid-flight** at 55% opacity, running, then finished at
+100% — with the pane minimized and `visibilityState` reading `hidden` throughout.
+
+### What each path is for
+
+| | Built-in preview pane | Chrome DevTools protocol |
+|---|---|---|
+| Reaches the reference site | Yes | Yes |
+| Reads the page, runs script | Yes | Yes |
+| Real hover and key input | Yes | Yes |
+| Accessibility tree | Yes | Yes, with identifiers for interaction |
+| Timers | Always | Always |
+| Frames | **Probe first** | Yes when its page is visible |
+| Runs in | Its own pane | **Peter's real Chrome, with his tabs** |
+
+The 2026-09-10 recommendation preferred the preview pane because it did not touch Peter's browser
+and the frame probe supported motion checks. It used DevTools when frames or element identifiers
+were required. This records the tested host choice, not current tool-routing instructions.
+
+Courtesy for the DevTools path: it attaches to Peter's real Chrome and lists his tabs, so open what you
+need and close only what you opened.
+
+### What was verified end to end
+
+On the live reference: the full accessibility tree with roles and names; **real hover opened a tooltip**,
+which matters because the reference ignores synthetic events; and with it open, `position: absolute`, a
+247 by 29 box, its transform matrix, the `fadeInTooltip` animation, and that `aria-describedby` is wired
+**only while open** — behaviour our element must match and the census cannot see.
+
+On our own docs server: every tooltip element found, **none open at rest**, shadow roots reachable, and a
+live fade sampled mid-flight.
+
+### The rule this settles
+
+Both sides can be driven in one session with real input. So compare **live against live in the same run**
+rather than against a stored baseline: a change on the reference's side then shows up as a reviewable
+difference instead of a mystery failure weeks later.
+
+---
+
+## Measuring motion when the window is not being drawn
+
+Researched and tested 2026-09-10, after Peter asked whether a Chrome setting could keep animations
+observable with the window minimized.
+
+### First, the state that does work: behind another window
+
+**A preview pane left open but covered by another window keeps its frames.** Measured: the page reports
+`visible`, and **121 animation frames in one second**.
+
+This is the `OCCLUDED` state, which Chromium treats differently from `HIDDEN`. Minimizing, or the pane
+being closed, gives `HIDDEN` and kills frames. Merely being behind something does not.
+
+The tested configuration left the preview pane open behind the editor.
+No flag was needed for that observed case.
+
+Watched live at roughly 120 frames a second, with the pane behind the terminal, the tooltip's fade
+resolves exactly:
+
+| Animation time | Opacity |
+|---|---|
+| 0 to 400ms | 0, held through the delay (48 frames, all zero) |
+| 408ms | 0.012 |
+| 425ms | 0.093 |
+| 450ms | 0.311 |
+| 475ms | 0.622 |
+| 500ms | 1 |
+
+**A trap that cost me several wrong readings.** The fade is `0.1s ease-in 0.4s forwards`, so
+`currentTime` counts through the 400ms delay while opacity legitimately stays at 0. A trail that stops
+before 400ms shows nothing but zeros and looks like a broken animation. Always sample past
+`delay + duration`, and read the delay from the timing rather than assuming there is none.
+
+A second trap: hovering a new trigger closes the previous tooltip, so a trail can end up following an
+element that never started. Poll until an animation actually reports `running`, then follow that one.
+
+### When the window is minimized: no setting exists, and none can
+
+This heading retains the original conclusion. Its universal wording exceeds the verified host/date scope.
+Two investigations reached that conclusion from the then-inspected Chromium source and tested candidate flags.
+The measurements below establish those tested cases, not all present or future browser configurations.
+
+The gate is in the compositor's scheduler. When a widget is not visible it **unsubscribes from the frame
+source entirely** — a hard disconnect, not a throttle. The specification agrees: the event loop's
+rendering steps filter out any document whose visibility state is hidden, and animation-frame callbacks
+only run inside those steps. So a hidden page gets no frames by construction.
+
+Minimizing is **not** occlusion. Chromium treats a minimized or backgrounded window as `HIDDEN` and a
+covered one as `OCCLUDED`, on different code paths. That distinction matters, because the one switch that
+looks relevant only upgrades `OCCLUDED` to `VISIBLE` and never touches `HIDDEN`.
+
+Tested with the window minimized, all giving zero frames:
+
+`--disable-backgrounding-occluded-windows`, `--disable-renderer-backgrounding`,
+`--disable-background-timer-throttling`, `--disable-features=CalculateNativeWinOcclusion`,
+`--disable-features=IntensiveWakeUpThrottling`, `--run-all-compositor-stages-before-draw`,
+`--disable-gpu-vsync`, `--disable-frame-rate-limit`.
+
+The frame-rate switches drove a *visible* window to roughly 12,000 frames a second and still produced
+zero when minimized, which proves the gate is visibility rather than rate. The timer switches do not
+touch animation frames at all. Playwright and Puppeteer already pass the first three by default, so
+adding them changes nothing.
+
+The investigation found no `chrome://settings` item, enterprise policy or macOS setting that changed the tested behavior. Memory and energy
+savers act on background tabs. One macOS detail worth knowing: display sleep also stops frames, even for
+a window that is not minimized.
+
+### What works instead: seek the animation and read the style
+
+The escape hatch is that `getComputedStyle` and `getAnimations` both force Blink to update animation
+timing **on demand**, off the frame path. So an animation can be moved to any point and sampled with no
+frames at all.
+
+Verified by hand, with frames confirmed dead first:
+
+| Seek point | Opacity | Transform |
+|---|---|---|
+| 0% | 0 | translateX(0px) |
+| 25% | 0.25 | translateX(50px) |
+| 50% | 0.5 | translateX(100px) |
+| 75% | 0.75 | translateX(150px) |
+| 100% | 1 | translateX(200px) |
+
+And on our own live tooltip: 0 at the start, **0.315 at halfway**, 1 at the end.
+
+`tools/geist/motion.js` implements this. Paste it into a page and call `window.__motion(element)`.
+
+### Three traps, each found by hand
+
+**Pause before seeking, always.** Chromium's animation clock advances against wall time between tasks, so
+an unpaused animation moves between the seek and the read. Every sample then lands past the end and
+reports the fill value, which reads as a completely broken animation. Measured on the same element:
+unpaused gave 0 at all five points; paused gave 0, 0.315, 1.
+
+**The easing is usually not where you look first.** Our tooltip's effect timing reports `linear` while
+the keyframes and the CSS rule both say `ease-in`, and the interpolated value at halfway (0.315, not 0.5)
+proves the keyframes win. Read the effect timing, the keyframes and the computed style, and compare all
+three.
+
+**A finished animation reads its fill value everywhere.** Catch a bubble mid-exit and every sample looks
+wrong. Confirm the animation's state before trusting a sample, and prefer a freshly opened element.
+
+### The three popular workarounds, each tested in the preview pane and each failing
+
+These circulate widely and sound plausible. All three were tested directly in the built-in preview pane
+with the page hidden, rather than reasoned about.
+
+**The silent audio trick — no effect.** Chrome does exempt audible tabs from some throttling, so a muted
+oscillator is a known trick. It does not restore frames, and it does not help timers either.
+
+Frames, with the audio context confirmed `running`: dead before, dead with audio on, dead after closing
+it, dead on reopening. Four probes, one answer.
+
+Timers, measuring a 50ms interval's real period, run in both orders so ordering could not explain it:
+
+| Condition | Median gap |
+|---|---|
+| No audio, measured first | 557ms |
+| Silent audio running | 1000ms |
+| Silent audio, measured first | 812ms |
+| No audio, measured second | 857ms |
+
+Both clamp toward 1000ms and the audio makes no reliable difference. Worth noting one honest trap here:
+the very first probe *appeared* to show frames returning when audio started. Re-testing with the audio
+removed and re-added showed the pane had simply flipped state for an unrelated reason. A single
+before-and-after reading is not evidence.
+
+**Spoofing the visibility property — no effect, and this one is conclusive.** Overriding
+`document.visibilityState` to `"visible"` and `document.hidden` to `false` succeeded: the page now
+reports itself visible. Frames stayed dead.
+
+That is the cleanest confirmation of the source reading. The gate is in the browser's compositor, which
+never consults the JavaScript property, so a page — or an extension injecting into it — cannot lie its way
+back into the frame loop.
+
+**Moving the tab to its own window, or leaving it merely covered.** This is the one with real substance,
+because a *covered* window is `OCCLUDED` rather than `HIDDEN`, and the occlusion switch does upgrade that
+to visible. It does not help a minimized window, and it does not help our pane, whose state we do not
+control.
+
+**Web workers** are the remaining item, and they are genuinely correct for their actual purpose: a worker's
+timers are not render-throttled, so a worker can drive a steady tick. But a worker has no DOM, so it cannot
+read a computed style or an animation. It solves timing, not measurement, and measurement is our problem.
+
+### Two rejected alternatives, for the record
+
+- Forcing the page active through the debugging protocol's lifecycle command does not restore frames. It
+  only un-freezes, and the browser code never marks the widget shown.
+- The virtual-time policy only fast-forwards delayed tasks, not frames, and one test run deadlocked on it.
+
+### What this means for us
+
+Motion checks do not need a visible window. They need the seek technique, which works in the preview pane
+whatever its state. Keep the frame probe anyway, because a check that genuinely needs a drawn frame — a
+screenshot — still requires visibility.
+
+One consequence worth noting: a common actionability check in test tools compares an element's box across
+animation frames, so it **hangs forever** with no frames. Avoid waiting on that in a hidden pane.
+
+## Phase 1 browser evidence, 2026-09-19
+
+An isolated Chrome 153 context ran against a fresh temporary build. The main checkout was not rebuilt or modified. A real click in the fixture changed Copy Button's public `copied` value to true; its rendered copied class remained false. This confirms the earlier unit-environment finding with a browser oracle.
+
+Native form probes distinguish working behaviour from gaps: Input's reset restores both its value and FormData. An empty required Input, however, has an invalid inner native input while its outer form reports valid. A disabled fieldset disables the custom-element host for submission while the inner native input's disabled property remains false. These results became candidate acceptance fixtures for the approved form-control work.
+
+All 608 existing tests pass. The active happy-dom environment reports no attachInternals or CustomStateSet and a zero layout rectangle. The new findings therefore do not contradict the test run; they expose mechanisms that run outside its coverage.
+
+These probes are not a full behaviour-parity sweep or a cross-browser accessibility certification. The research recommended real input for user gestures and consumer-visible outcomes, with the earlier reference-driven method scoped to parity comparisons.
+
+## Sources and limitations
+
+Source provenance: notes/analysis/behaviour-verification-method.md (the source path identifies the pre-migration record). The inline sources and saved evidence above retain their original scope. This conversion does not rerun their experiments.
+
+- React Aria button markers do not establish every widget's internals; APG is not proof of reference behavior.
+- Happy DOM, Playwright name queries, native accessibility trees and actual assistive technology have different coverage.
+- Frame capability, seeking and screenshots remain distinct. Minimized-window/flag claims belong to the tested host/date.
+- Later Bun browser orchestration supersedes the Vitest recommendation; RTL and SSR later decisions supersede old open/none scope.
+- The claim that a non-composed shadow-dispatched event reaches the host requires revalidation before reuse.
