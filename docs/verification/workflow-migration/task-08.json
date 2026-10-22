@@ -1,0 +1,923 @@
+{
+  "schemaVersion": 1,
+  "task": "08",
+  "status": "complete",
+  "date": "2026-10-22T06:02:09.962Z",
+  "batches": 30,
+  "verification": {
+    "passed": true,
+    "build": "Pinned check build stage passes; generated source has zero drift.",
+    "packages": "Five fresh0.3.2 archives pass local package validation and the60000-entry budget.",
+    "required": {
+      "planned": 24,
+      "completed": 24,
+      "failed": 0
+    },
+    "manual": {
+      "completed": 7,
+      "failed": 0
+    },
+    "componentCases": 1446,
+    "strictTypes": "All moved script/fixture groups pass focused strict programs;75 original documentation-driver errors are resolved without weakened oracles.",
+    "originalOracles": "Preserved assertions, scenario names, waits, output ownership and environment options; Video's typed length guard has an explicit equivalent-predicate proof.",
+    "aggregateGuard": "Final preparation/consumer-switch guard follows task10."
+  },
+  "input": {
+    "release": {
+      "schemaVersion": 2,
+      "version": "0.3.2",
+      "commit": "dff4a7fa4eb5c16ecf22de3148ea80b754d6698d",
+      "sourceTree": "dirty",
+      "packages": [
+        {
+          "name": "@acmelabs/design-system",
+          "version": "0.3.2",
+          "filename": "acmelabs-design-system-0.3.2.tgz",
+          "sha512": "a5d11594e8c32f87bc11c550d791af952e0d0db64197e2821cf236c5c6d4efa8c77c62af61319ddeadafe7741b3351880cc8bea8a9a3da358b53631fe01270ce",
+          "blockers": []
+        },
+        {
+          "name": "@acmelabs/design-system-react",
+          "version": "0.3.2",
+          "filename": "acmelabs-design-system-react-0.3.2.tgz",
+          "sha512": "423f14f868b30dd7c81648eefd4c54384c4d3fcbc71c9fefa28172ec4c6e139ddf519f136a34b7f0915096e2dfa53a4d97c3a2d435ffa36d6ceb3c7ca22a302a",
+          "blockers": []
+        },
+        {
+          "name": "@acmelabs/design-system-devtools",
+          "version": "0.3.2",
+          "filename": "acmelabs-design-system-devtools-0.3.2.tgz",
+          "sha512": "1f54cf7c4f80de3461a77fd869a1597836efbbcfb38a129b3258ffe760a7f33923db34337aa7dc6654ae528b84afc1ad170bdadc6b8e5d7bf54308971ac6f939",
+          "blockers": []
+        },
+        {
+          "name": "@acmelabs/design-system-mcp",
+          "version": "0.3.2",
+          "filename": "acmelabs-design-system-mcp-0.3.2.tgz",
+          "sha512": "2e9853e4d6336135815eadb89c3ab5a063f3235359e454f4b97402ce157c2dfb5c82c3af66a7e9b0cc4aa5cf42818ba883188f2da1d524bcdf2bfa68e9802151",
+          "blockers": []
+        },
+        {
+          "name": "@acmelabs/design-system-browser",
+          "version": "0.3.2",
+          "filename": "acmelabs-design-system-browser-0.3.2.tgz",
+          "sha512": "4e5d9c8b342638ceb34c1aa7670a28fdad973d6b7bd01900cd54fa594cdfd0fa9f7a92a7f0798cc76cb146e25d3ad2670b18d06a20d194534842f8f891767467",
+          "blockers": []
+        }
+      ]
+    },
+    "fingerprints": {
+      "scripts/verification/react/browser-check.ts": "449162f4df94040f8d93355ae8bc3008051d1094d67bf336fdc1014881d0b047",
+      "scripts/verification/react/defaults-check.ts": "aa2d3da122841766a114432d23c2740e06eab3fc96614e2f8d4d0a77ff0deade",
+      "scripts/verification/documentation/pages.browser-check.ts": "ed775be644f68190587726368a16ff45a42e1e95efe19513075b3ae3e85a3d23",
+      "scripts/verification/documentation/navigation.browser-check.ts": "7e2b9d8f76951a87ca893146bb07cca07049ec394a2c3c59817be893fd6a6f7e",
+      "scripts/verification/documentation/recipes.browser-check.ts": "77bcb314d78f229116653024d882344f2b2d71a0ef692aae7016a529ad6ff331",
+      "scripts/verification/documentation/recipe-accessibility.browser-check.ts": "357dedde785094a81866b4d14ee319f83bc9f2975ae9f08dd87da1de188465a3",
+      "scripts/verification/documentation/video.browser-check.ts": "dc6a138a18feecec750ab5e3a4b2d7cb1bde0552a47224f59bb61b4bce9492a5",
+      "scripts/verification/documentation/copied.browser-check.ts": "b5372f156d73e2feca372a9459367f37f7af78f31b59aba865f1b6ad8aecf18f",
+      "scripts/verification/documentation/icons.browser-check.ts": "4f272fddca2cc738e2c8bd736f2022ead1b427a46d9ed02971ccccabceeff162",
+      "src/components/tabs/__tests__/tabs.browser-check.ts": "693a264946ec2e8bcd93b21885ad9ecd56cc8fb59de81b74df433234dff76d84",
+      "scripts/verification/consumer-tools/packed-browser-check.ts": "d37ef9bc12dbca35555fc7ca891112749ce9245e78b16cfcfae12c6a1fff6cfb",
+      "scripts/verification/consumer-tools/package-check.ts": "f3224f279e892ffe802389b751475247e8e5fa3c7ef813672526b9499b4a9707",
+      "examples/forms/__tests__/managed.browser-check.ts": "2c38f6e69270e9b74e607aba05df14e2c7dab82d9a01099bedc32cf3e7ecb945",
+      "scripts/verification/native-forms/history.browser-check.ts": "c4ef905c2dfa037009482afd40d9bbed8bc30533e77dea779fb6c73f03de158b",
+      "scripts/verification/removals/check.ts": "9b78f3cb19c0b83807750243a22c52b4faefa0f64cd0cc313a2f0706e4624ee4",
+      "scripts/verification/table/declaration-patch-check.ts": "5be931a60523c28f2c006e52450c0be57abdeecd4a0cad2c816db9e019ee58b1",
+      "scripts/verification/public-defaults/browser-check.ts": "170530cfa3428730e7c14e954f46047070edf587ceff4870b06559f774b8d71a",
+      "scripts/verification/scoped-registration/browser-check.ts": "2f8a89b542fe0787b6e5ac1fb1e328645a3b04a0c90b5c2d7578bce09f77abf3",
+      "scripts/verification/flow/distributions.browser-check.ts": "dd5cbd5b47d868ea6fa5683eea49770e8ccb896f6e2aa07d07de91215bb65fa3",
+      "scripts/verification/bundling/browser-check.ts": "deb51e363bf56aae336c3790b5fabe6aa09c65cab96b2567081aeaa8a9003f79",
+      "scripts/verification/table/worker-consumer.browser-check.ts": "f3b5122089d5f4b7cd0a797a345a8cd284fa443a2acf4687b69d8fc37bc04a5a",
+      "scripts/component-browser-checks.ts": "1794c371756ae75933ffdce364e87ad81a87a4032ccca66d3454d0a9b5121d80",
+      "scripts/official-firefox-checks.ts": "6b7cabd1a2215479541cedfabf1a09b7f7879b11bc271447175e5bd4575e2d79"
+    },
+    "plan": [
+      {
+        "file": "scripts/verification/react/browser-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      },
+      {
+        "file": "scripts/verification/react/defaults-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      },
+      {
+        "file": "scripts/verification/documentation/pages.browser-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      },
+      {
+        "file": "scripts/verification/documentation/navigation.browser-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      },
+      {
+        "file": "scripts/verification/documentation/recipes.browser-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      },
+      {
+        "file": "scripts/verification/documentation/recipe-accessibility.browser-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      },
+      {
+        "file": "scripts/verification/documentation/video.browser-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      },
+      {
+        "file": "scripts/verification/documentation/copied.browser-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      },
+      {
+        "file": "scripts/verification/documentation/icons.browser-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      },
+      {
+        "file": "src/components/tabs/__tests__/tabs.browser-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      },
+      {
+        "file": "scripts/verification/consumer-tools/packed-browser-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      },
+      {
+        "file": "scripts/verification/consumer-tools/package-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      },
+      {
+        "file": "examples/forms/__tests__/managed.browser-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      },
+      {
+        "file": "scripts/verification/native-forms/history.browser-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      },
+      {
+        "file": "scripts/verification/removals/check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun",
+          "ACME_AUDIT_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/removals.json"
+        }
+      },
+      {
+        "file": "scripts/verification/table/declaration-patch-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun",
+          "ACME_AUDIT_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/table-patch.json"
+        }
+      },
+      {
+        "file": "scripts/verification/public-defaults/browser-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun",
+          "ACME_AUDIT_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/defaults.json"
+        }
+      },
+      {
+        "file": "scripts/verification/scoped-registration/browser-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun",
+          "ACME_SCOPED_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped-module.json"
+        }
+      },
+      {
+        "file": "scripts/verification/scoped-registration/browser-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "1",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun",
+          "ACME_SCOPED_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped-cdn.json"
+        }
+      },
+      {
+        "file": "scripts/verification/flow/distributions.browser-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      },
+      {
+        "file": "scripts/verification/bundling/browser-check.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      },
+      {
+        "file": "scripts/verification/table/worker-consumer.browser-check.ts",
+        "args": [
+          "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-react-0.3.2.tgz"
+        ],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      },
+      {
+        "file": "scripts/component-browser-checks.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      },
+      {
+        "file": "scripts/official-firefox-checks.ts",
+        "args": [],
+        "environment": {
+          "ACME_BROWSER_RUNTIME": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+          "ACME_RELEASE_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_BROWSER_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system-browser",
+          "ACME_REACT_CONSUMER": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac",
+          "ACME_AUDIT_SOURCE": "0",
+          "ACME_SCOPED_SOURCE": "0",
+          "ACME_SCOPED_RED_IMPERATIVE": "0",
+          "ACME_SCOPED_PACKAGE": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-workflow-relocation-2F87Ac/node_modules/@acmelabs/design-system",
+          "ACME_SCOPED_WORK": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/scoped",
+          "ACME_SCOPED_CDN": "0",
+          "ACME_CORE_ARCHIVE": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.2.tgz",
+          "ACME_KEEP_BUNDLE_CONSUMER": "0",
+          "ACME_BUNDLE_VARIANT": "reviewed-release",
+          "ACME_BUNDLE_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/bundle.json",
+          "ACME_WORKER_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/worker.json",
+          "ACME_HISTORY_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/history.json",
+          "ACME_FLOW_DISTRIBUTIONS_RESULTS": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/checks/flow-distributions.json",
+          "ACME_BUN": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun"
+        }
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "source": ".artifacts/workflow-runtime/input.json",
+      "destination": "docs/verification/workflow-migration/runtime/input.json",
+      "sha256": "26201e099224bd2efcca4ea6a9354169ef763fcaf9bb7b7c2fb13ca87515c670"
+    },
+    {
+      "source": ".artifacts/workflow-runtime/browser.json",
+      "destination": "docs/verification/workflow-migration/runtime/browser.json",
+      "sha256": "16932d9ed98d76fac9d7eb7d139092ca4af34d8bf299db38ee10038182f7c9a2"
+    },
+    {
+      "source": ".artifacts/workflow-runtime/manual.json",
+      "destination": "docs/verification/workflow-migration/runtime/manual.json",
+      "sha256": "637ccd9b15163d71cbf18fbe56ce173f1337f9a5dd3b145d2d0e963f600d5866"
+    },
+    {
+      "source": ".artifacts/workflow-relocation-build.log",
+      "destination": "docs/verification/workflow-migration/runtime/build.log",
+      "sha256": "f0ad3cb5cffe07e9d45df823cee8e9ae011d3d9da74860c40aa0c4e0f77ea784"
+    },
+    {
+      "source": ".artifacts/workflow-relocation-packages.log",
+      "destination": "docs/verification/workflow-migration/runtime/packages.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": ".artifacts/workflow-relocation-browser.log",
+      "destination": "docs/verification/workflow-migration/runtime/browser.log",
+      "sha256": "62b58198894419ff5ed87ac7c210a4dc2fa171cb6e6b8961adc98d34dcf9cf0c"
+    },
+    {
+      "source": ".artifacts/workflow-relocation-manual.log",
+      "destination": "docs/verification/workflow-migration/runtime/manual.log",
+      "sha256": "4383949ff75ec4f31723f84872d538ebd706387a70efb4cbe87e8793db03d20c"
+    },
+    {
+      "source": ".artifacts/checks/table-patch.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/table-patch.json",
+      "sha256": "7051252e544386c3291e48150b3306894af7a3d39c123c2632e99201c313d38f"
+    },
+    {
+      "source": ".artifacts/checks/defaults.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/defaults.json",
+      "sha256": "34e4173d4acdee222378c008f3b51a2ce2797f0ef777ea5e159697adc6b38604"
+    },
+    {
+      "source": ".artifacts/checks/removals.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/removals.json",
+      "sha256": "a936742b7183225ac73ad9e3b97733046ce28f380e37f6209877b001ab03349e"
+    },
+    {
+      "source": ".artifacts/checks/history.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/history.json",
+      "sha256": "5db64262b63353cb49ce89b5325da6a1c98e1c4b136d40c4dd61b3e0595492f2"
+    },
+    {
+      "source": ".artifacts/checks/flow-distributions.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/flow-distributions.json",
+      "sha256": "1f06ed1615e6696cea1b0c6702d731499debaf61b1d9f88b22ddfd18c4d111f3"
+    },
+    {
+      "source": ".artifacts/checks/bundle.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/bundle.json",
+      "sha256": "548ce0ce5c382aafec84bc5015434410c26c973ae373935dfd511d4a4d362039"
+    },
+    {
+      "source": ".artifacts/checks/worker.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/worker.json",
+      "sha256": "29706814d9177d1f3e6e5b6f73717001564e1ec634c8b412268c4d0007fbb787"
+    },
+    {
+      "source": ".artifacts/checks/managed-forms.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/managed-forms.json",
+      "sha256": "37457dc38199312a58faf61832345f9343b2d81415e5a8ab01f6ee5f1bc74ef4"
+    },
+    {
+      "source": ".artifacts/checks/scoped-module.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/scoped-module.json",
+      "sha256": "d987f1b69cbc80c2f79dd7164dba78909135700f772d7518b856ada0fd23bf99"
+    },
+    {
+      "source": ".artifacts/checks/scoped-cdn.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/scoped-cdn.json",
+      "sha256": "8820eeab33533485f07c183a21ece7b6a444c60c27978be3a0568e8404736bf8"
+    },
+    {
+      "source": ".artifacts/checks/react/defaults-results.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/react/defaults-results.json",
+      "sha256": "5d9b30923e62999ad5b676802d962f7349b228bf543c519264aeca3deb3fe83a"
+    },
+    {
+      "source": ".artifacts/checks/react/runtime/results.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/react/runtime/results.json",
+      "sha256": "f0104cf9bce71e96043b86410c3231ae975b6ba9f8950194ce66621cf5c2bc64"
+    },
+    {
+      "source": ".artifacts/checks/devtools/results.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/devtools/results.json",
+      "sha256": "3733e777bd2877a3142ed4ccf6eb0a568d5bc4711e7737af934b11adc4e7661e"
+    },
+    {
+      "source": ".artifacts/checks/devtools/production-result.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/devtools/production-result.json",
+      "sha256": "929f7d11ccd5c5ccbf574dece8aff58049b7e24a856c7423c5c9258683a07e1b"
+    },
+    {
+      "source": ".artifacts/checks/components/results.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/components/results.json",
+      "sha256": "962517f62c5da40796c8691dfce44d0def52f0ceb94695a4e09e86b4d7ac0390"
+    },
+    {
+      "source": ".artifacts/checks/documentation-table-source-isolation/results.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/documentation-table-source-isolation/results.json",
+      "sha256": "2872c4c1c387dd31442a2767514d72053bca1533d6129ab7d337021d57f2bc40"
+    },
+    {
+      "source": ".artifacts/checks/workspace/consumer.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/workspace/consumer.json",
+      "sha256": "688865c199ad74d7d7a79d1711171674f96d99d25f8a69864d7055b77a3e1aac"
+    },
+    {
+      "source": ".artifacts/checks/workspace/install.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/workspace/install.json",
+      "sha256": "c226416d42482d8152119a3581c22c2e6440fc2edc722f159785d4986eac0aac"
+    },
+    {
+      "source": ".artifacts/checks/documentation-action-labels/action-labels.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/documentation-action-labels/action-labels.json",
+      "sha256": "9e02938573c0663211c27111b599028a27a2a0ff5092a7e2c7a0d1c6b0a72ef0"
+    },
+    {
+      "source": ".artifacts/checks/documentation-appearance/results.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/documentation-appearance/results.json",
+      "sha256": "875bb430a2be55a1235cfca049e335a73788a99e77cd5d5ac8a65cf6360fc587"
+    },
+    {
+      "source": ".artifacts/checks/official-firefox/results.json",
+      "destination": "docs/verification/workflow-migration/runtime/checks/official-firefox/results.json",
+      "sha256": "4b7241329f240bbcd47a2c9441fa1fcb4a2b0bd48b2c01a79505d284122c7df2"
+    },
+    {
+      "source": ".artifacts/m23-docs/navigation.json",
+      "destination": "docs/verification/workflow-migration/runtime/documentation/navigation.json",
+      "sha256": "192fc3254646bded97dcbd2cd2b7010837758242d3d897925ff220b6d1481717"
+    },
+    {
+      "source": ".artifacts/m23-docs/copied-results.json",
+      "destination": "docs/verification/workflow-migration/runtime/documentation/copied-results.json",
+      "sha256": "70b0b01fae5c6e3cd03f52173ac0f5ffa0b2856ffbebe1204d440af3cc24d436"
+    },
+    {
+      "source": ".artifacts/m23-docs/icon-cdn-results.json",
+      "destination": "docs/verification/workflow-migration/runtime/documentation/icon-cdn-results.json",
+      "sha256": "4a8eb0199d47cb2a737be4dcb02ce7fbebfd7c88d92175e5cb821db27fe59e93"
+    },
+    {
+      "source": ".artifacts/m23-docs/fullsite-results.json",
+      "destination": "docs/verification/workflow-migration/runtime/documentation/fullsite-results.json",
+      "sha256": "ce4585f523ce678e278405ee99c476f995da48482df190abb9140fa8b6dd9a4b"
+    },
+    {
+      "source": ".artifacts/m23-docs/video-copy-results.json",
+      "destination": "docs/verification/workflow-migration/runtime/documentation/video-copy-results.json",
+      "sha256": "de84861fe5b64a93a6caa57d593b846aca9b0c83249b581be801030b6b4dcd76"
+    },
+    {
+      "source": ".artifacts/m23-docs/recipe-accessibility.json",
+      "destination": "docs/verification/workflow-migration/runtime/documentation/recipe-accessibility.json",
+      "sha256": "9f037573171b614ecbe3f957bd43e9e83508bfc8c1c9c76d3c720cff552ee4c3"
+    },
+    {
+      "source": ".artifacts/m23-docs/recipes-results.json",
+      "destination": "docs/verification/workflow-migration/runtime/documentation/recipes-results.json",
+      "sha256": "ca45b62bdb358dafc1704ea686dd96be1bfbc30ea2d3ddb81fd2ff0c83eebc9f"
+    }
+  ],
+  "harnesses": [
+    {
+      "path": ".artifacts/run-relocated-checks.ts",
+      "sha256": "cb2ab98dc2f11bb09206dbb628c96b0cafa1cbaeb3be3cae9190c6c757e182f2",
+      "source": "import fs from \"node:fs\";\nimport os from \"node:os\";\nimport path from \"node:path\";\nimport { browserCheckPlan, browserChecks, executeBrowserChecks, CheckCommandError, checkEnvironment } from \"../scripts/check\";\nimport { validateRelease } from \"../scripts/release\";\nconst root=path.resolve(import.meta.dir,\"..\");\nconst ledger=await Bun.file(path.join(root,\"docs/verification/workflow-migration/ledger.json\")).json();\nconst release=await validateRelease(path.join(root,\".artifacts/release\"));\nconst runtime=process.env.ACME_BROWSER_RUNTIME;\nif(!runtime)throw new Error(\"Set ACME_BROWSER_RUNTIME\");\nconst consumer=fs.mkdtempSync(path.join(os.tmpdir(),\"acme-workflow-relocation-\"));\nconst output=path.join(root,\".artifacts/workflow-runtime\");\nfs.mkdirSync(output,{recursive:true});\nconst dependencies=Object.fromEntries(release.packages.map(pkg=>[pkg.name,\"file:\"+path.join(root,\".artifacts/release/archives\",pkg.filename)]));\nawait Bun.write(path.join(consumer,\"package.json\"),JSON.stringify({name:\"workflow-relocation-consumer\",private:true,type:\"module\",dependencies:{...dependencies,react:\"19.3.0\",\"react-dom\":\"19.3.0\",lit:\"3.3.3\"}}));\nconst entries=browserChecks.map(entry=>({id:entry.id,file:ledger.records.find((record:any)=>record.source===entry.file)?.destinations[0].path??entry.file}));\nconst plan=browserCheckPlan(release,consumer,runtime,root,entries);\nconst fingerprints=Object.fromEntries(plan.map(entry=>[entry.file,new Bun.CryptoHasher(\"sha256\").update(fs.readFileSync(entry.file)).digest(\"hex\")]));\nlet server:Bun.Server<undefined>|undefined;\ntry{\n  const install=Bun.spawn([process.execPath,\"install\",\"--ignore-scripts\"],{cwd:consumer,env:checkEnvironment(),stdout:\"inherit\",stderr:\"inherit\"});\n  if(await install.exited!==0)throw new Error(\"Fresh consumer install failed\");\n  const site=path.join(root,\"_site\");\n  server=Bun.serve({hostname:\"127.0.0.1\",port:4180,async fetch(request){\n    const relative=decodeURIComponent(new URL(request.url).pathname).replace(/^\\//,\"\");\n    const file=path.resolve(site,relative||\"index.html\");\n    if(file!==site&&!file.startsWith(site+path.sep))return new Response(\"Invalid path\",{status:400});\n    const asset=Bun.file(file);if(await asset.exists())return new Response(asset);\n    if(path.extname(relative))return new Response(\"Not found\",{status:404});\n    return new Response(Bun.file(path.join(site,\"index.html\")),{headers:{\"Content-Type\":\"text/html\"}});\n  }});\n  await Bun.write(path.join(output,\"input.json\"),JSON.stringify({date:new Date().toISOString(),runtime:Bun.version,release,consumer,entries,plan,fingerprints,scope:\"Temporary relocation harness uses the unchanged shared invocation planner and executor. Only allocated file paths differ. Final activation still uses scripts/check.ts. Component JSON callers retain original equal bytes until task10.\"},null,2)+\"\\n\");\n  await executeBrowserChecks(plan,async check=>{\n    const child=Bun.spawn([process.execPath,check.file,...check.args],{cwd:root,env:checkEnvironment(check.environment),stdout:\"inherit\",stderr:\"inherit\"});\n    const status=await child.exited;if(status!==0)throw new CheckCommandError([check.file,...check.args],status);\n  },async(results,complete)=>{\n    await Bun.write(path.join(output,\"browser.json.tmp\"),JSON.stringify({date:new Date().toISOString(),version:release.version,planned:plan.length,completed:results.length,complete,results},null,2)+\"\\n\");\n    fs.renameSync(path.join(output,\"browser.json.tmp\"),path.join(output,\"browser.json\"));\n  });\n}finally{\n  server?.stop(true);\n  for(const file of new Bun.Glob(\"*{results,result}.json\").scanSync(consumer))fs.copyFileSync(path.join(consumer,file),path.join(output,file));\n  fs.rmSync(consumer,{recursive:true,force:true});\n}\n"
+    },
+    {
+      "path": ".artifacts/run-manual-relocated-checks.ts",
+      "sha256": "10edc12927e9dcdb1d8ba282c994551b855f2cec7070d2fa98e8ddfcc4118a6a",
+      "source": "import fs from \"node:fs\";\nimport os from \"node:os\";\nimport path from \"node:path\";\nimport { checkEnvironment } from \"../scripts/check\";\nimport { validateRelease } from \"../scripts/release\";\nconst root=path.resolve(import.meta.dir,\"..\"),output=path.join(root,\".artifacts/workflow-runtime\");\nconst release=await validateRelease(path.join(root,\".artifacts/release\"));\nconst core=release.packages.find(pkg=>pkg.name===\"@acmelabs/design-system\")!;\nconst runtime=process.env.ACME_BROWSER_RUNTIME;if(!runtime)throw new Error(\"Set ACME_BROWSER_RUNTIME\");\nconst environment=checkEnvironment({ACME_BROWSER_RUNTIME:runtime,ACME_DOCS_URL:\"http://127.0.0.1:4180\",ACME_CORE_ARCHIVE:path.join(root,\".artifacts/release/archives\",core.filename),ACME_BUN_PATH:process.execPath});\nconst jobs=[\n  [\"08-documentation-action-labels.browser-check\",\"scripts/verification/documentation/action-labels.browser-check.ts\"],\n  [\"08-documentation-appearance.browser-check\",\"scripts/verification/documentation/appearance.browser-check.ts\"],\n  [\"08-documentation-table-source-isolation.browser-check\",\"scripts/verification/documentation/table-source-isolation.browser-check.ts\"],\n  [\"08-devtools-manual\",\"scripts/verification/devtools/browser-check.ts\"],\n  [\"08-workspace-consumer\",\"scripts/verification/workspace/packed-consumer-check.ts\"],\n  [\"08-workspace-install\",\"scripts/verification/workspace/install-check.ts\"],\n];\nconst results:{id:string;file:string;passed:boolean;exitCode:number;sha256?:string;error?:string}[]=[];\nconst save=async(complete:boolean)=>Bun.write(path.join(output,\"manual.json\"),JSON.stringify({date:new Date().toISOString(),runtime:Bun.version,release,complete,results},null,2)+\"\\n\");\nconst site=path.join(root,\"_site\");\nconst server=Bun.serve({hostname:\"127.0.0.1\",port:4180,async fetch(request){\n  const relative=decodeURIComponent(new URL(request.url).pathname).replace(/^\\//,\"\");\n  const file=path.resolve(site,relative||\"index.html\");\n  if(file!==site&&!file.startsWith(site+path.sep))return new Response(\"Invalid path\",{status:400});\n  if(await Bun.file(file).exists())return new Response(Bun.file(file));\n  if(path.extname(relative))return new Response(\"Not found\",{status:404});\n  return new Response(Bun.file(path.join(site,\"index.html\")),{headers:{\"Content-Type\":\"text/html\"}});\n}});\ntry{\n  for(const [id,file] of jobs){\n    console.log(\"BEGIN\",id);\n    const sha256=new Bun.CryptoHasher(\"sha256\").update(fs.readFileSync(file)).digest(\"hex\");\n    const child=Bun.spawn([process.execPath,file],{cwd:root,env:environment,stdout:\"inherit\",stderr:\"inherit\"});\n    const exitCode=await child.exited;\n    results.push({id,file,passed:exitCode===0,exitCode,sha256});await save(false);\n  }\n  const consumer=fs.mkdtempSync(path.join(os.tmpdir(),\"acme-workflow-public-types-\"));\n  try{\n    const reactTypes=await Bun.file(path.join(root,\"node_modules/@types/react/package.json\")).json();\n    const reactDOMTypes=await Bun.file(path.join(root,\"node_modules/@types/react-dom/package.json\")).json();\n    const dependencies=Object.fromEntries(release.packages.filter(pkg=>[\"@acmelabs/design-system\",\"@acmelabs/design-system-react\"].includes(pkg.name)).map(pkg=>[pkg.name,\"file:\"+path.join(root,\".artifacts/release/archives\",pkg.filename)]));\n    Object.assign(dependencies,{react:\"19.3.0\",\"react-dom\":\"19.3.0\",\"@types/react\":reactTypes.version,\"@types/react-dom\":reactDOMTypes.version});\n    await Bun.write(path.join(consumer,\"package.json\"),JSON.stringify({name:\"workflow-public-type-consumer\",private:true,type:\"module\",dependencies}));\n    fs.copyFileSync(path.join(root,\"scripts/verification/react/fixtures/public-types.tsx\"),path.join(consumer,\"public-types.tsx\"));\n    const install=Bun.spawn([process.execPath,\"install\",\"--ignore-scripts\"],{cwd:consumer,env:environment,stdout:\"inherit\",stderr:\"inherit\"});\n    if(await install.exited!==0)throw new Error(\"Public type consumer install failed\");\n    const child=Bun.spawn([process.execPath,path.join(root,\"node_modules/typescript/bin/tsc\"),\"--noEmit\",\"--strict\",\"--target\",\"ES2022\",\"--module\",\"ESNext\",\"--moduleResolution\",\"bundler\",\"--jsx\",\"react-jsx\",\"--skipLibCheck\",\"--types\",\"react\",\"public-types.tsx\"],{cwd:consumer,env:environment,stdout:\"inherit\",stderr:\"inherit\"});\n    const exitCode=await child.exited;results.push({id:\"08-react-types\",file:\"scripts/verification/react/fixtures/public-types.tsx\",passed:exitCode===0,exitCode});\n  }catch(error){results.push({id:\"08-react-types\",file:\"scripts/verification/react/fixtures/public-types.tsx\",passed:false,exitCode:1,error:String(error)});}\n  finally{fs.rmSync(consumer,{recursive:true,force:true});}\n}finally{server.stop(true);await save(true);}\nif(results.length!==jobs.length+1||results.some(result=>!result.passed))process.exitCode=1;\n"
+    }
+  ],
+  "limits": [
+    "Live check.ts/case JSON consumers still switch in task10; the temporary harness uses the existing invocation planner/executor with allocated path substitution.",
+    "The archives are prepared from a dirty worktree and cannot authorize publication. Final clean-candidate acceptance remains task12.",
+    "Local Hover Card activation passes. This does not diagnose or erase the earlier Linux CI failure.",
+    "Actual Safari, assistive technology, OS input/autofill, background-window behavior and owner-controlled token rotation remain unverified.",
+    "Manual screenshots remain scratch outputs. No human visual inspection is claimed."
+  ],
+  "followup": {
+    "date": "2026-10-22T06:06:48.051Z",
+    "passed": true,
+    "findings": [
+      {
+        "id": "08-workspace-consumer",
+        "finding": "The fixed default archive exists but contains0.2.0, while the current prepared archive contains0.3.2. An unset override could silently test the old release.",
+        "change": "The default now uses readCorePackage and archiveFilename under the prepared release archive directory; ACME_CORE_ARCHIVE still overrides it.",
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun scripts/verification/workspace/packed-consumer-check.ts",
+        "verification": "No archive override is present. Actual installation/build passes for0.3.2 with4319 component exports and the current archive SHA-256.",
+        "script": "scripts/verification/workspace/packed-consumer-check.ts"
+      },
+      {
+        "id": "08-documentation-table-source-isolation.browser-check",
+        "finding": "The live report writer used a fixed2026-09-26 date for every invocation.",
+        "change": "Capture the actual current ISO timestamp. All assertions and scenario inputs stay unchanged.",
+        "command": "ACME_BROWSER_RUNTIME=/Users/peterkloss/Library/Caches/acme-design-system/browser-checks .artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun scripts/verification/documentation/table-source-isolation.browser-check.ts",
+        "verification": "All four isolated examples pass in each of the three engines. The report records2026-10-22T06:03:42.276Z.",
+        "script": "scripts/verification/documentation/table-source-isolation.browser-check.ts"
+      }
+    ],
+    "static": "Focused strict TypeScript, Oxlint and Oxfmt pass for both changed scripts.",
+    "evidence": [
+      {
+        "source": ".artifacts/checks/workspace/consumer.json",
+        "destination": "docs/verification/workflow-migration/runtime/followups/workspace-default.json",
+        "sha256": "688865c199ad74d7d7a79d1711171674f96d99d25f8a69864d7055b77a3e1aac"
+      },
+      {
+        "source": ".artifacts/checks/documentation-table-source-isolation/results.json",
+        "destination": "docs/verification/workflow-migration/runtime/followups/table-source-isolation.json",
+        "sha256": "84c36f03d46db3e8d365af876b7f98733ccfa40d8dbd4c351114c56f7aa71f99"
+      },
+      {
+        "source": ".artifacts/workflow-workspace-followup.log",
+        "destination": "docs/verification/workflow-migration/runtime/followups/workspace-default.log",
+        "sha256": "1ab876546d65b040f1af35ee275c55d12ed18907e874565b74b95b2a679a1024"
+      },
+      {
+        "source": ".artifacts/workflow-table-followup.log",
+        "destination": "docs/verification/workflow-migration/runtime/followups/table-source-isolation.log",
+        "sha256": "a570da223438b2c50df4858a7722b1ae95d2a0dc18b2292f35a43c2455a73b92"
+      }
+    ],
+    "limits": "Original passing reports remain unchanged as earlier snapshots. These two follow-ups supersede only their default-selection/report-metadata scope; the other passing runs stay valid."
+  }
+}

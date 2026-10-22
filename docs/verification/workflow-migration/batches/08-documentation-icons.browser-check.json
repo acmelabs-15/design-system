@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-documentation-icons.browser-check",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Writer full-source/semantic review, current focused lint/format, explicit strict TypeScript and type-erased oracle preservation; coordinator browser/guard/review pending",
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m23-docs/icons-run.ts",
+      "destination": "scripts/verification/documentation/icons.browser-check.ts",
+      "sourceSha256": "51e09bbe542f251a0a3c250941cb9199d58f126f58cb02c9785c33466e428882",
+      "destinationSha256": "4f272fddca2cc738e2c8bd736f2022ead1b427a46d9ed02971ccccabceeff162",
+      "classification": "live-required-driver",
+      "changes": [
+        "Relocated the allocated driver or fixture and adjusted repository-root/import/fixture paths for its final location.",
+        "Applied current authored-source formatting and lint style without configuration edits or suppressions.",
+        "Preserved assertions, numeric constants, executable templates, environment accesses, browser matrices, filters, failure reporting and cleanup.",
+        "Preserved .artifacts/m23-docs output ownership used by CI.",
+        "Added accurate Playwright dynamic-import types, fixture/window/element contracts and result types. Type-only syntax erases without changing runtime operations. Existing broad any annotations outside the diagnosed boundary are not expanded."
+      ],
+      "retainedQualifications": [
+        "Original manual/required classification is unchanged.",
+        "Browser and packed-consumer execution remain pending coordinator verification.",
+        "The explicit strict TypeScript program passes for all 13 allocated drivers/fixtures and their imported graph. Browser/runtime acceptance remains pending."
+      ],
+      "oracleComparison": {
+        "source": "notes/alignment/evidence/m23-docs/icons-run.ts",
+        "destination": "scripts/verification/documentation/icons.browser-check.ts",
+        "checks": {
+          "assertions": true,
+          "numericConstants": true,
+          "executableTemplates": true,
+          "environmentAccesses": true
+        },
+        "assertionCount": 1,
+        "numericCount": 5,
+        "templateCount": 1
+      },
+      "strictTypeDiagnostics": [],
+      "historicalStrictTypeDiagnostics": [
+        {
+          "file": "scripts/verification/documentation/icons.browser-check.ts",
+          "code": 7034,
+          "message": "Variable 'errors' implicitly has type 'any[]' in some locations where its type cannot be determined.",
+          "line": 51
+        },
+        {
+          "file": "scripts/verification/documentation/icons.browser-check.ts",
+          "code": 7006,
+          "message": "Parameter 'e' implicitly has an 'any' type.",
+          "line": 52
+        },
+        {
+          "file": "scripts/verification/documentation/icons.browser-check.ts",
+          "code": 2339,
+          "message": "Property 'result' does not exist on type 'Window & typeof globalThis'.",
+          "line": 54
+        },
+        {
+          "file": "scripts/verification/documentation/icons.browser-check.ts",
+          "code": 2339,
+          "message": "Property 'result' does not exist on type 'Window & typeof globalThis'.",
+          "line": 55
+        },
+        {
+          "file": "scripts/verification/documentation/icons.browser-check.ts",
+          "code": 7005,
+          "message": "Variable 'errors' implicitly has an 'any[]' type.",
+          "line": 56
+        }
+      ]
+    }
+  ],
+  "commands": [
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxlint/bin/oxlint --config oxlint.config.ts --format json scripts/verification/documentation/icons.browser-check.ts",
+      "outcome": "Passed as part of the exact 13-file owned set; zero diagnostics."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxfmt/bin/oxfmt --check --config oxfmt.config.ts scripts/verification/documentation/icons.browser-check.ts",
+      "outcome": "Passed as part of the exact 13-file owned set."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun /private/tmp/typecheck-doc-drivers.ts",
+      "outcome": "Explicit TypeScript 5.9 original/prepared programs with current tsconfig options: 75 original and 75 prepared diagnostics, all owned; zero additions. This is comparative preservation, not a passing strict typecheck.",
+      "stage": "Historical initial migration check"
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun /private/tmp/compare-doc-oracles.ts",
+      "outcome": "All 13 files preserve ordered assertion ASTs, numeric constants, executable template text and environment-property access."
+    },
+    {
+      "command": "git diff --no-index --check /dev/null <each allocated destination>",
+      "outcome": "No whitespace errors."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun /private/tmp/typecheck-doc-drivers.ts",
+      "outcome": "Final explicit strict TypeScript programs: original 75 diagnostics; prepared zero; no transitive diagnostics."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun /private/tmp/compare-doc-oracles-typed.ts",
+      "outcome": "13 files pass original assertion AST/order, numeric-constant, executable-template and environment-access comparisons after type-only nodes are erased."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxlint/bin/oxlint --config oxlint.config.ts --format json <all 13 allocated drivers/fixtures>",
+      "outcome": "Zero diagnostics."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxfmt/bin/oxfmt --check --config oxfmt.config.ts <all 13 allocated drivers/fixtures>",
+      "outcome": "Pass."
+    }
+  ],
+  "typeVerification": {
+    "baseline": {
+      "all": 75,
+      "owned": 75
+    },
+    "prepared": {
+      "all": 0,
+      "owned": 0
+    },
+    "addedDiagnostics": [],
+    "strictPass": true,
+    "scope": "Explicit strict TypeScript programs for original and moved drivers using current tsconfig compiler options; root tsconfig does not include these drivers."
+  },
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [
+      {
+        "file": "scripts/verification/documentation/icons.browser-check.ts",
+        "args": [],
+        "passed": true,
+        "exitCode": 0
+      }
+    ],
+    "manual": [],
+    "supportingScope": "",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  },
+  "anchorChanges": [],
+  "findings": [],
+  "typeVerificationHistory": [
+    {
+      "stage": "Initial path migration, before strict-type refinement",
+      "baseline": {
+        "all": 75,
+        "owned": 75
+      },
+      "prepared": {
+        "all": 75,
+        "owned": 75
+      },
+      "addedDiagnostics": [],
+      "strictPass": false,
+      "scope": "Explicit strict TypeScript programs for original and moved drivers using current tsconfig compiler options; root tsconfig does not include these drivers."
+    }
+  ],
+  "resolvedFindings": [
+    {
+      "finding": "Legacy driver TypeScript diagnostics remain. Comparative checks establish no added diagnostics, not full type coverage.",
+      "resolution": "Explicit strict-type refinement now passes with zero diagnostics; original 75-diagnostic result remains in history."
+    }
+  ]
+}

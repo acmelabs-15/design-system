@@ -2,9 +2,11 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { readCorePackage } from "../../core-package";
+import { archiveFilename } from "../../release-policy";
 
 const repository = new URL("../../../", import.meta.url).pathname;
-const archive = process.env.ACME_CORE_ARCHIVE ?? path.join(repository, ".artifacts/packages/acmelabs-design-system-0.2.0.tgz");
+const archive = process.env.ACME_CORE_ARCHIVE ?? path.join(repository, ".artifacts/release/archives", archiveFilename(readCorePackage(repository)));
 const output = process.env.ACME_CONSUMER_RESULTS ?? path.join(repository, ".artifacts/checks/workspace/consumer.json");
 const root = fs.mkdtempSync(path.join(os.tmpdir(), "acme-core-packed-consumer-"));
 try {

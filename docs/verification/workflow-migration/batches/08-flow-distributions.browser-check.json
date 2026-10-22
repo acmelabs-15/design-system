@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-flow-distributions.browser-check",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Focused static/type and source-preservation checks pass; coordinator runtime, guard and review remain pending.",
+    "commands": [
+      {
+        "name": "lint",
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxlint/bin/oxlint --config oxlint.config.ts scripts/verification/react/defaults-check.ts scripts/verification/react/fixtures/defaults.ts scripts/verification/react/browser-check.ts scripts/verification/react/fixtures/runtime.ts scripts/verification/scoped-registration/browser-check.ts scripts/verification/scoped-registration/fixtures/registry.ts scripts/verification/flow/distributions.browser-check.ts scripts/verification/native-forms/history.browser-check.ts scripts/verification/consumer-tools/packed-browser-check.ts scripts/verification/consumer-tools/fixtures/inspector.ts scripts/verification/consumer-tools/package-check.ts scripts/verification/table/worker-consumer.browser-check.ts",
+        "exitCode": 0,
+        "outcome": "No diagnostics."
+      },
+      {
+        "name": "format",
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxfmt/bin/oxfmt --check --config oxfmt.config.ts scripts/verification/react/defaults-check.ts scripts/verification/react/fixtures/defaults.ts scripts/verification/react/browser-check.ts scripts/verification/react/fixtures/runtime.ts scripts/verification/scoped-registration/browser-check.ts scripts/verification/scoped-registration/fixtures/registry.ts scripts/verification/flow/distributions.browser-check.ts scripts/verification/native-forms/history.browser-check.ts scripts/verification/consumer-tools/packed-browser-check.ts scripts/verification/consumer-tools/fixtures/inspector.ts scripts/verification/consumer-tools/package-check.ts scripts/verification/table/worker-consumer.browser-check.ts",
+        "exitCode": 0,
+        "outcome": "All 12 owned files use the current format."
+      },
+      {
+        "name": "types",
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/typescript/bin/tsc --noEmit --strict --experimentalDecorators --useDefineForClassFields false --target ES2022 --module ESNext --moduleResolution bundler --skipLibCheck --types bun,node --jsx react-jsx scripts/verification/react/defaults-check.ts scripts/verification/react/fixtures/defaults.ts scripts/verification/react/browser-check.ts scripts/verification/react/fixtures/runtime.ts scripts/verification/scoped-registration/browser-check.ts scripts/verification/scoped-registration/fixtures/registry.ts scripts/verification/flow/distributions.browser-check.ts scripts/verification/native-forms/history.browser-check.ts scripts/verification/consumer-tools/packed-browser-check.ts scripts/verification/consumer-tools/fixtures/inspector.ts scripts/verification/consumer-tools/package-check.ts scripts/verification/table/worker-consumer.browser-check.ts",
+        "exitCode": 0,
+        "outcome": "Strict focused TypeScript check passes for all 12 owned files."
+      }
+    ],
+    "sourceReview": {
+      "passed": true,
+      "method": "Full source reads plus canonical TypeScript-AST comparison of assertions, named scenarios, wait predicates, pass/exit gates and environment overrides; types and assertion aliases normalized.",
+      "oracleCalls": 8,
+      "limits": "Does not execute browser, build, install or package behavior."
+    },
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
+  },
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [
+      {
+        "file": "scripts/verification/flow/distributions.browser-check.ts",
+        "args": [],
+        "passed": true,
+        "exitCode": 0
+      }
+    ],
+    "manual": [],
+    "supportingScope": "",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m20-flow/distributions.ts",
+      "destination": "scripts/verification/flow/distributions.browser-check.ts",
+      "sourceSha256": "1cd034803dee626044e6bfbbc44f47dd9beeb21b2fad6c1869afcac665930705",
+      "destinationSha256": "dd5cbd5b47d868ea6fa5683eea49770e8ccb896f6e2aa07d07de91215bb65fa3",
+      "sourceAuditBaseline": "0a379170f",
+      "changes": [
+        "Adjusted repository-root depth and default report path to .artifacts/checks/flow/.",
+        "Added an erased Flow type import for fixture properties; retained shared browserDistribution use.",
+        "Applied current brace/format rules without changing assertions."
+      ],
+      "retainedQualifications": [
+        "All six entry paths, same-origin and cross-origin cases, and all three engines remain.",
+        "Worker must be absent before use, then created once, and emit its real close event within the original timeout.",
+        "No page warnings/errors; page/browser/server cleanup and aggregate assertion remain.",
+        "ACME_FLOW_DISTRIBUTIONS_RESULTS and all browser distribution/runtime overrides remain."
+      ]
+    }
+  ],
+  "findings": []
+}

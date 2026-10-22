@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-package-tools",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Focused static/type and source-preservation checks pass; coordinator runtime, guard and review remain pending.",
+    "commands": [
+      {
+        "name": "lint",
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxlint/bin/oxlint --config oxlint.config.ts scripts/verification/react/defaults-check.ts scripts/verification/react/fixtures/defaults.ts scripts/verification/react/browser-check.ts scripts/verification/react/fixtures/runtime.ts scripts/verification/scoped-registration/browser-check.ts scripts/verification/scoped-registration/fixtures/registry.ts scripts/verification/flow/distributions.browser-check.ts scripts/verification/native-forms/history.browser-check.ts scripts/verification/consumer-tools/packed-browser-check.ts scripts/verification/consumer-tools/fixtures/inspector.ts scripts/verification/consumer-tools/package-check.ts scripts/verification/table/worker-consumer.browser-check.ts",
+        "exitCode": 0,
+        "outcome": "No diagnostics."
+      },
+      {
+        "name": "format",
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxfmt/bin/oxfmt --check --config oxfmt.config.ts scripts/verification/react/defaults-check.ts scripts/verification/react/fixtures/defaults.ts scripts/verification/react/browser-check.ts scripts/verification/react/fixtures/runtime.ts scripts/verification/scoped-registration/browser-check.ts scripts/verification/scoped-registration/fixtures/registry.ts scripts/verification/flow/distributions.browser-check.ts scripts/verification/native-forms/history.browser-check.ts scripts/verification/consumer-tools/packed-browser-check.ts scripts/verification/consumer-tools/fixtures/inspector.ts scripts/verification/consumer-tools/package-check.ts scripts/verification/table/worker-consumer.browser-check.ts",
+        "exitCode": 0,
+        "outcome": "All 12 owned files use the current format."
+      },
+      {
+        "name": "types",
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/typescript/bin/tsc --noEmit --strict --experimentalDecorators --useDefineForClassFields false --target ES2022 --module ESNext --moduleResolution bundler --skipLibCheck --types bun,node --jsx react-jsx scripts/verification/react/defaults-check.ts scripts/verification/react/fixtures/defaults.ts scripts/verification/react/browser-check.ts scripts/verification/react/fixtures/runtime.ts scripts/verification/scoped-registration/browser-check.ts scripts/verification/scoped-registration/fixtures/registry.ts scripts/verification/flow/distributions.browser-check.ts scripts/verification/native-forms/history.browser-check.ts scripts/verification/consumer-tools/packed-browser-check.ts scripts/verification/consumer-tools/fixtures/inspector.ts scripts/verification/consumer-tools/package-check.ts scripts/verification/table/worker-consumer.browser-check.ts",
+        "exitCode": 0,
+        "outcome": "Strict focused TypeScript check passes for all 12 owned files."
+      }
+    ],
+    "sourceReview": {
+      "passed": true,
+      "method": "Full source reads plus canonical TypeScript-AST comparison of assertions, named scenarios, wait predicates, pass/exit gates and environment overrides; types and assertion aliases normalized.",
+      "oracleCalls": 38,
+      "limits": "Does not execute browser, build, install or package behavior."
+    },
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
+  },
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [
+      {
+        "file": "scripts/verification/consumer-tools/package-check.ts",
+        "args": [],
+        "passed": true,
+        "exitCode": 0
+      }
+    ],
+    "manual": [],
+    "supportingScope": "",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m24-consumers/package-tools-run.ts",
+      "destination": "scripts/verification/consumer-tools/package-check.ts",
+      "sourceSha256": "c910ee3265bdf5aa9d5a3aed91345afc06f7ed9e6011bf5e72d5beb44123029a",
+      "destinationSha256": "f3224f279e892ffe802389b751475247e8e5fa3c7ef813672526b9499b4a9707",
+      "sourceAuditBaseline": "0a379170f",
+      "changes": [
+        "Adjusted repository-root depth so the installed Intent CLI is located correctly.",
+        "Applied current assertion spelling, braces and formatting."
+      ],
+      "retainedQualifications": [
+        "All seven installed skills, every release reference, trust rejection, four MCP tools and schema/version bounds remain checked.",
+        "Every component/resource/recipe framework result remains compared against the installed package records.",
+        "Package/documentation mismatch still fails before stdio, and filesystem/version fallbacks remain rejected.",
+        "Outputs stay inside the explicitly supplied consumer; package.json restoration, MCP client close and mismatch-directory removal remain."
+      ]
+    }
+  ],
+  "findings": []
+}

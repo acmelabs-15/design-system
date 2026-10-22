@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-inspector-consumer",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Focused static/type and source-preservation checks pass; coordinator runtime, guard and review remain pending.",
+    "commands": [
+      {
+        "name": "lint",
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxlint/bin/oxlint --config oxlint.config.ts scripts/verification/react/defaults-check.ts scripts/verification/react/fixtures/defaults.ts scripts/verification/react/browser-check.ts scripts/verification/react/fixtures/runtime.ts scripts/verification/scoped-registration/browser-check.ts scripts/verification/scoped-registration/fixtures/registry.ts scripts/verification/flow/distributions.browser-check.ts scripts/verification/native-forms/history.browser-check.ts scripts/verification/consumer-tools/packed-browser-check.ts scripts/verification/consumer-tools/fixtures/inspector.ts scripts/verification/consumer-tools/package-check.ts scripts/verification/table/worker-consumer.browser-check.ts",
+        "exitCode": 0,
+        "outcome": "No diagnostics."
+      },
+      {
+        "name": "format",
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxfmt/bin/oxfmt --check --config oxfmt.config.ts scripts/verification/react/defaults-check.ts scripts/verification/react/fixtures/defaults.ts scripts/verification/react/browser-check.ts scripts/verification/react/fixtures/runtime.ts scripts/verification/scoped-registration/browser-check.ts scripts/verification/scoped-registration/fixtures/registry.ts scripts/verification/flow/distributions.browser-check.ts scripts/verification/native-forms/history.browser-check.ts scripts/verification/consumer-tools/packed-browser-check.ts scripts/verification/consumer-tools/fixtures/inspector.ts scripts/verification/consumer-tools/package-check.ts scripts/verification/table/worker-consumer.browser-check.ts",
+        "exitCode": 0,
+        "outcome": "All 12 owned files use the current format."
+      },
+      {
+        "name": "types",
+        "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/typescript/bin/tsc --noEmit --strict --experimentalDecorators --useDefineForClassFields false --target ES2022 --module ESNext --moduleResolution bundler --skipLibCheck --types bun,node --jsx react-jsx scripts/verification/react/defaults-check.ts scripts/verification/react/fixtures/defaults.ts scripts/verification/react/browser-check.ts scripts/verification/react/fixtures/runtime.ts scripts/verification/scoped-registration/browser-check.ts scripts/verification/scoped-registration/fixtures/registry.ts scripts/verification/flow/distributions.browser-check.ts scripts/verification/native-forms/history.browser-check.ts scripts/verification/consumer-tools/packed-browser-check.ts scripts/verification/consumer-tools/fixtures/inspector.ts scripts/verification/consumer-tools/package-check.ts scripts/verification/table/worker-consumer.browser-check.ts",
+        "exitCode": 0,
+        "outcome": "Strict focused TypeScript check passes for all 12 owned files."
+      }
+    ],
+    "sourceReview": {
+      "passed": true,
+      "method": "Full source reads plus canonical TypeScript-AST comparison of assertions, named scenarios, wait predicates, pass/exit gates and environment overrides; types and assertion aliases normalized.",
+      "oracleCalls": 26,
+      "limits": "Does not execute browser, build, install or package behavior."
+    },
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
+  },
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [
+      {
+        "file": "scripts/verification/consumer-tools/packed-browser-check.ts",
+        "args": [],
+        "passed": true,
+        "exitCode": 0
+      }
+    ],
+    "manual": [],
+    "supportingScope": "",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m24-consumers/packed-entry.ts",
+      "destination": "scripts/verification/consumer-tools/fixtures/inspector.ts",
+      "sourceSha256": "b1b601c299753e9ff0fafe5b9539c357955d808e93d32cc94abdea1d3983790b",
+      "destinationSha256": "537745474821669a0d297a8ab993c1716982aca5a6493c9b40dace1dd98b043e",
+      "sourceAuditBaseline": "0a379170f",
+      "changes": [
+        "Moved the driver and updated the copied fixture path to fixtures/inspector.ts.",
+        "Applied current assertion spelling, braces and formatting.",
+        "Added descriptive errors to the two existing failed-build conditions."
+      ],
+      "retainedQualifications": [
+        "Explicit installed-consumer output ownership remains: browser assets/screenshots and inspector/production reports are written under ACME_RELEASE_CONSUMER.",
+        "All scoped Lit/React/password collection, redaction, keyboard, font, theme, reconnect, disposal and outbound-request oracles remain.",
+        "Production build still excludes inspector/runtime/font assets.",
+        "All engines, runtime overrides, metafile source-isolation assertion and cleanup remain."
+      ]
+    },
+    {
+      "source": "notes/alignment/evidence/m24-consumers/packed-run.ts",
+      "destination": "scripts/verification/consumer-tools/packed-browser-check.ts",
+      "sourceSha256": "b72a338ad8a167b17d39e28f61b045759a85d8daf5e1362c07d1ce9f40d64ed3",
+      "destinationSha256": "d37ef9bc12dbca35555fc7ca891112749ce9245e78b16cfcfae12c6a1fff6cfb",
+      "sourceAuditBaseline": "0a379170f",
+      "changes": [
+        "Moved the driver and updated the copied fixture path to fixtures/inspector.ts.",
+        "Applied current assertion spelling, braces and formatting.",
+        "Added descriptive errors to the two existing failed-build conditions."
+      ],
+      "retainedQualifications": [
+        "Explicit installed-consumer output ownership remains: browser assets/screenshots and inspector/production reports are written under ACME_RELEASE_CONSUMER.",
+        "All scoped Lit/React/password collection, redaction, keyboard, font, theme, reconnect, disposal and outbound-request oracles remain.",
+        "Production build still excludes inspector/runtime/font assets.",
+        "All engines, runtime overrides, metafile source-isolation assertion and cleanup remain."
+      ]
+    }
+  ],
+  "findings": []
+}

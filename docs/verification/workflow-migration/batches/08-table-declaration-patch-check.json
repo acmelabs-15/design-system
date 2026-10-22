@@ -12,7 +12,8 @@
     "output": ".artifacts/checks/table-patch.json",
     "types": "Focused strict TypeScript passed",
     "static": "Oxlint/Oxfmt passed",
-    "review": "Root depth and default output path changed. Braces, whitespace and callback formatting satisfy the existing linter. Both positive and negative oracles are unchanged."
+    "review": "Root depth and default output path changed. Braces, whitespace and callback formatting satisfy the existing linter. Both positive and negative oracles are unchanged.",
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
   },
   "files": [
     {
@@ -24,5 +25,20 @@
   ],
   "limits": [
     "Aggregate migration, fresh consumer, and browser acceptance are recorded separately. Originals remain until cutover."
-  ]
+  ],
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [
+      {
+        "file": "scripts/verification/table/declaration-patch-check.ts",
+        "args": [],
+        "passed": true,
+        "exitCode": 0
+      }
+    ],
+    "manual": [],
+    "supportingScope": "",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  }
 }

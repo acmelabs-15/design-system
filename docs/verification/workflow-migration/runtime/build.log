@@ -1,0 +1,14 @@
+$ bun scripts/split-css.ts
+styles: 23 base style families and document tokens
+$ bun scripts/build.ts
+build runtime: Bun 1.4.2
+modules: 42235 files, 164 with compiled templates
+manifest: 4319 elements
+browser generated modules: 29137
+bundle 2840.0 KB min 1498.1 KB tokens.css 159.1 KB dashboard.css 13.3 KB
+React: 4319 typed wrappers emitted
+$ bun site/build.ts
+docs: 125 pages, 4319 elements (0 undocumented), app.js 2016 KB
+$ bun scripts/tooling.ts
+Optional package: mcp
+Optional package: devtools

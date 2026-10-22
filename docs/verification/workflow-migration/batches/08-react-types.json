@@ -11,7 +11,8 @@
     "types": "Strict TypeScript with bundler resolution and react-jsx passes against the linked built packages, including all five expected-error assertions.",
     "static": "Oxlint/Oxfmt passed",
     "review": "Formatting only. Public props, event payloads and negative assertions are unchanged.",
-    "limit": "Packed-consumer validation remains part of final package acceptance."
+    "limit": "Packed-consumer validation remains part of final package acceptance.",
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
   },
   "files": [
     {
@@ -23,5 +24,20 @@
   ],
   "limits": [
     "Aggregate migration, fresh consumer, and browser acceptance are recorded separately. Originals remain until cutover."
-  ]
+  ],
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [],
+    "manual": [
+      {
+        "id": "08-react-types",
+        "file": "scripts/verification/react/fixtures/public-types.tsx",
+        "passed": true,
+        "exitCode": 0
+      }
+    ],
+    "supportingScope": "",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  }
 }

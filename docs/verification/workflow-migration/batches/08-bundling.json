@@ -1,12 +1,13 @@
 {
   "schemaVersion": 1,
   "batch": "08-bundling",
-  "status": "prepared",
+  "status": "complete",
   "recordedAt": "2026-10-22T05:24:05.057Z",
   "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
   "verification": {
     "passed": true,
-    "scope": "Complete source read; focused strict TypeScript, Oxlint and Oxfmt pass. Runtime scenario awaits the shared built candidate."
+    "scope": "Complete source read; focused strict TypeScript, Oxlint and Oxfmt pass. Runtime scenario awaits the shared built candidate.",
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
   },
   "files": [
     {
@@ -24,5 +25,20 @@
   ],
   "limits": [
     "Aggregate migration, fresh consumer, and browser acceptance are recorded separately. Originals remain until cutover."
-  ]
+  ],
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [
+      {
+        "file": "scripts/verification/bundling/browser-check.ts",
+        "args": [],
+        "passed": true,
+        "exitCode": 0
+      }
+    ],
+    "manual": [],
+    "supportingScope": "",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  }
 }

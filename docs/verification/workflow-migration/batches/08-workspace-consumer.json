@@ -1,12 +1,13 @@
 {
   "schemaVersion": 1,
   "batch": "08-workspace-consumer",
-  "status": "prepared",
+  "status": "complete",
   "recordedAt": "2026-10-22T05:24:05.064Z",
   "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
   "verification": {
     "passed": true,
-    "scope": "Complete source read; focused strict TypeScript, Oxlint and Oxfmt pass. Runtime scenario awaits the shared built candidate."
+    "scope": "Complete source read; focused strict TypeScript, Oxlint and Oxfmt pass. Runtime scenario awaits the shared built candidate.",
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
   },
   "files": [
     {
@@ -19,10 +20,58 @@
       "source": "notes/alignment/evidence/m25-workspace/consumer-run.ts",
       "destination": "scripts/verification/workspace/packed-consumer-check.ts",
       "sourceSha256": "b537764f92dfeb157477525c3a8c1542d58c0c5bab89de41dbf68b225bf96677",
-      "destinationSha256": "6e8c5980f42f7e2d2a6ec396426612eb48ec8bfdb8c411bc48c16919b571b7b6"
+      "destinationSha256": "349dfb68d7bf637e1c80c619e66ade4bb8f121c184740d01fd1f184a497a9744"
     }
   ],
   "limits": [
     "Aggregate migration, fresh consumer, and browser acceptance are recorded separately. Originals remain until cutover."
-  ]
+  ],
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [],
+    "manual": [
+      {
+        "id": "08-workspace-consumer",
+        "file": "scripts/verification/workspace/packed-consumer-check.ts",
+        "passed": true,
+        "exitCode": 0,
+        "sha256": "6e8c5980f42f7e2d2a6ec396426612eb48ec8bfdb8c411bc48c16919b571b7b6"
+      }
+    ],
+    "supportingScope": "",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance.",
+    "followup": {
+      "id": "08-workspace-consumer",
+      "finding": "The fixed default archive exists but contains0.2.0, while the current prepared archive contains0.3.2. An unset override could silently test the old release.",
+      "change": "The default now uses readCorePackage and archiveFilename under the prepared release archive directory; ACME_CORE_ARCHIVE still overrides it.",
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun scripts/verification/workspace/packed-consumer-check.ts",
+      "verification": "No archive override is present. Actual installation/build passes for0.3.2 with4319 component exports and the current archive SHA-256.",
+      "script": "scripts/verification/workspace/packed-consumer-check.ts",
+      "sha256": "349dfb68d7bf637e1c80c619e66ade4bb8f121c184740d01fd1f184a497a9744",
+      "passed": true,
+      "evidence": [
+        {
+          "source": ".artifacts/checks/workspace/consumer.json",
+          "destination": "docs/verification/workflow-migration/runtime/followups/workspace-default.json",
+          "sha256": "688865c199ad74d7d7a79d1711171674f96d99d25f8a69864d7055b77a3e1aac"
+        },
+        {
+          "source": ".artifacts/checks/documentation-table-source-isolation/results.json",
+          "destination": "docs/verification/workflow-migration/runtime/followups/table-source-isolation.json",
+          "sha256": "84c36f03d46db3e8d365af876b7f98733ccfa40d8dbd4c351114c56f7aa71f99"
+        },
+        {
+          "source": ".artifacts/workflow-workspace-followup.log",
+          "destination": "docs/verification/workflow-migration/runtime/followups/workspace-default.log",
+          "sha256": "1ab876546d65b040f1af35ee275c55d12ed18907e874565b74b95b2a679a1024"
+        },
+        {
+          "source": ".artifacts/workflow-table-followup.log",
+          "destination": "docs/verification/workflow-migration/runtime/followups/table-source-isolation.log",
+          "sha256": "a570da223438b2c50df4858a7722b1ae95d2a0dc18b2292f35a43c2455a73b92"
+        }
+      ]
+    }
+  }
 }

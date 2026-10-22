@@ -1,12 +1,13 @@
 {
   "schemaVersion": 1,
   "batch": "08-component-data",
-  "status": "prepared",
+  "status": "complete",
   "recordedAt": "2026-10-22T05:21:21.461Z",
   "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
   "verification": {
     "passed": true,
-    "scope": "Exact source or JSON string bytes, exclusive creation and destination hash. Runtime verification remains pending."
+    "scope": "Exact source or JSON string bytes, exclusive creation and destination hash. Runtime verification remains pending.",
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
   },
   "files": [
     {
@@ -21,5 +22,13 @@
       "sha256": "146fb90f569ddd98fde8bbfa128a60fa8355c166cc7a16c76cc17a5759de0e87",
       "bytes": 36477
     }
-  ]
+  ],
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [],
+    "manual": [],
+    "supportingScope": "Both allocated JSON files are byte-identical to their baseline inputs. The existing driver passes all1446 cases using those identical inputs; task10 switches its literal paths and final acceptance executes that switch.",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  }
 }

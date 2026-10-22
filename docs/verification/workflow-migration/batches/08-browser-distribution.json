@@ -4,7 +4,14 @@
   "status": "complete",
   "recordedAt": "2026-10-22T05:20:50.366Z",
   "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
-  "runtime": "Bun 1.4.2",
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [],
+    "manual": [],
+    "supportingScope": "Two passing unit tests/13 assertions plus all runtime consumers use the relocated shared helper.",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  },
   "verification": {
     "passed": true,
     "tests": {
@@ -25,7 +32,8 @@
       "command": "bun node_modules/oxfmt/bin/oxfmt --check --config oxfmt.config.ts scripts/verification/browser-distribution.ts scripts/verification/__tests__/browser-distribution.test.ts",
       "exitCode": 0
     },
-    "review": "Coordinator read both complete destinations. The test remains byte-identical. The helper only adds braces to the existing continue branch to meet authored-script lint. Routing, traversal protection, package identity, arguments and cleanup are unchanged."
+    "review": "Coordinator read both complete destinations. The test remains byte-identical. The helper only adds braces to the existing continue branch to meet authored-script lint. Routing, traversal protection, package identity, arguments and cleanup are unchanged.",
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
   },
   "files": [
     {

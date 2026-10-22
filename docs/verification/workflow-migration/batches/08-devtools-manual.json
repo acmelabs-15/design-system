@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-devtools-manual",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Writer full-source/semantic review, current focused lint/format, explicit strict TypeScript and type-erased oracle preservation; coordinator browser/guard/review pending",
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m24-devtools/browser-entry.ts",
+      "destination": "scripts/verification/devtools/fixtures/browser.ts",
+      "sourceSha256": "fe7ab8f0c86541efba7501de0e41ccf5a57ac3ca1f8c27b29ceda703c07477bd",
+      "destinationSha256": "7c7f920615bc9d74abada934fe96c9c9f823299812ee6d11bdc68c8e60b35bf9",
+      "classification": "live-manual-fixture",
+      "changes": [
+        "Relocated the allocated driver or fixture and adjusted repository-root/import/fixture paths for its final location.",
+        "Applied current authored-source formatting and lint style without configuration edits or suppressions.",
+        "Preserved assertions, numeric constants, executable templates, environment accesses, browser matrices, filters, failure reporting and cleanup.",
+        "Moved default temporary results/screenshots/build output to .artifacts/checks; preserved existing result/output environment overrides.",
+        "Added accurate Playwright dynamic-import types, fixture/window/element contracts and result types. Type-only syntax erases without changing runtime operations. Existing broad any annotations outside the diagnosed boundary are not expanded."
+      ],
+      "retainedQualifications": [
+        "Original manual/required classification is unchanged.",
+        "Browser and packed-consumer execution remain pending coordinator verification.",
+        "The explicit strict TypeScript program passes for all 13 allocated drivers/fixtures and their imported graph. Browser/runtime acceptance remains pending."
+      ],
+      "oracleComparison": {
+        "source": "notes/alignment/evidence/m24-devtools/browser-entry.ts",
+        "destination": "scripts/verification/devtools/fixtures/browser.ts",
+        "checks": {
+          "assertions": true,
+          "numericConstants": true,
+          "executableTemplates": true,
+          "environmentAccesses": true
+        },
+        "assertionCount": 0,
+        "numericCount": 2,
+        "templateCount": 1
+      },
+      "strictTypeDiagnostics": [],
+      "historicalStrictTypeDiagnostics": []
+    },
+    {
+      "source": "notes/alignment/evidence/m24-devtools/browser-run.ts",
+      "destination": "scripts/verification/devtools/browser-check.ts",
+      "sourceSha256": "5b4f8c5c716d66ad9659badcc5a61f36b83b8569e66a9243c1efaa6704301568",
+      "destinationSha256": "91594d635b71ab631395441be69c7001771514746fff30d377c0a50391d81c75",
+      "classification": "live-manual-driver",
+      "changes": [
+        "Relocated the allocated driver or fixture and adjusted repository-root/import/fixture paths for its final location.",
+        "Applied current authored-source formatting and lint style without configuration edits or suppressions.",
+        "Preserved assertions, numeric constants, executable templates, environment accesses, browser matrices, filters, failure reporting and cleanup.",
+        "Moved default temporary results/screenshots/build output to .artifacts/checks; preserved existing result/output environment overrides.",
+        "Added accurate Playwright dynamic-import types, fixture/window/element contracts and result types. Type-only syntax erases without changing runtime operations. Existing broad any annotations outside the diagnosed boundary are not expanded."
+      ],
+      "retainedQualifications": [
+        "Original manual/required classification is unchanged.",
+        "Browser and packed-consumer execution remain pending coordinator verification.",
+        "The explicit strict TypeScript program passes for all 13 allocated drivers/fixtures and their imported graph. Browser/runtime acceptance remains pending."
+      ],
+      "oracleComparison": {
+        "source": "notes/alignment/evidence/m24-devtools/browser-run.ts",
+        "destination": "scripts/verification/devtools/browser-check.ts",
+        "checks": {
+          "assertions": true,
+          "numericConstants": true,
+          "executableTemplates": true,
+          "environmentAccesses": true
+        },
+        "assertionCount": 20,
+        "numericCount": 25,
+        "templateCount": 0
+      },
+      "strictTypeDiagnostics": [],
+      "historicalStrictTypeDiagnostics": []
+    },
+    {
+      "source": "notes/alignment/evidence/m24-devtools/production-entry.ts",
+      "destination": "scripts/verification/devtools/fixtures/production.ts",
+      "sourceSha256": "198d5da871781f9890885a8ef112ff4777ad34b2d34dec698a6bbc6c0256a85d",
+      "destinationSha256": "9b5b0e86d727faaaec92ad7c868fb202c34c0d7ced299c159536b07bd161bb79",
+      "classification": "live-manual-fixture",
+      "changes": [
+        "Relocated the allocated driver or fixture and adjusted repository-root/import/fixture paths for its final location.",
+        "Applied current authored-source formatting and lint style without configuration edits or suppressions.",
+        "Preserved assertions, numeric constants, executable templates, environment accesses, browser matrices, filters, failure reporting and cleanup.",
+        "Moved default temporary results/screenshots/build output to .artifacts/checks; preserved existing result/output environment overrides.",
+        "Added accurate Playwright dynamic-import types, fixture/window/element contracts and result types. Type-only syntax erases without changing runtime operations. Existing broad any annotations outside the diagnosed boundary are not expanded."
+      ],
+      "retainedQualifications": [
+        "Original manual/required classification is unchanged.",
+        "Browser and packed-consumer execution remain pending coordinator verification.",
+        "The explicit strict TypeScript program passes for all 13 allocated drivers/fixtures and their imported graph. Browser/runtime acceptance remains pending."
+      ],
+      "oracleComparison": {
+        "source": "notes/alignment/evidence/m24-devtools/production-entry.ts",
+        "destination": "scripts/verification/devtools/fixtures/production.ts",
+        "checks": {
+          "assertions": true,
+          "numericConstants": true,
+          "executableTemplates": true,
+          "environmentAccesses": true
+        },
+        "assertionCount": 0,
+        "numericCount": 0,
+        "templateCount": 0
+      },
+      "strictTypeDiagnostics": [],
+      "historicalStrictTypeDiagnostics": []
+    }
+  ],
+  "commands": [
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxlint/bin/oxlint --config oxlint.config.ts --format json scripts/verification/devtools/fixtures/browser.ts scripts/verification/devtools/browser-check.ts scripts/verification/devtools/fixtures/production.ts",
+      "outcome": "Passed as part of the exact 13-file owned set; zero diagnostics."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxfmt/bin/oxfmt --check --config oxfmt.config.ts scripts/verification/devtools/fixtures/browser.ts scripts/verification/devtools/browser-check.ts scripts/verification/devtools/fixtures/production.ts",
+      "outcome": "Passed as part of the exact 13-file owned set."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun /private/tmp/typecheck-doc-drivers.ts",
+      "outcome": "Explicit TypeScript 5.9 original/prepared programs with current tsconfig options: 75 original and 75 prepared diagnostics, all owned; zero additions. This is comparative preservation, not a passing strict typecheck.",
+      "stage": "Historical initial migration check"
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun /private/tmp/compare-doc-oracles.ts",
+      "outcome": "All 13 files preserve ordered assertion ASTs, numeric constants, executable template text and environment-property access."
+    },
+    {
+      "command": "git diff --no-index --check /dev/null <each allocated destination>",
+      "outcome": "No whitespace errors."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun /private/tmp/typecheck-doc-drivers.ts",
+      "outcome": "Final explicit strict TypeScript programs: original 75 diagnostics; prepared zero; no transitive diagnostics."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun /private/tmp/compare-doc-oracles-typed.ts",
+      "outcome": "13 files pass original assertion AST/order, numeric-constant, executable-template and environment-access comparisons after type-only nodes are erased."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxlint/bin/oxlint --config oxlint.config.ts --format json <all 13 allocated drivers/fixtures>",
+      "outcome": "Zero diagnostics."
+    },
+    {
+      "command": ".artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun node_modules/oxfmt/bin/oxfmt --check --config oxfmt.config.ts <all 13 allocated drivers/fixtures>",
+      "outcome": "Pass."
+    }
+  ],
+  "typeVerification": {
+    "baseline": {
+      "all": 75,
+      "owned": 75
+    },
+    "prepared": {
+      "all": 0,
+      "owned": 0
+    },
+    "addedDiagnostics": [],
+    "strictPass": true,
+    "scope": "Explicit strict TypeScript programs for original and moved drivers using current tsconfig compiler options; root tsconfig does not include these drivers."
+  },
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [],
+    "manual": [
+      {
+        "id": "08-devtools-manual",
+        "file": "scripts/verification/devtools/browser-check.ts",
+        "passed": true,
+        "exitCode": 0,
+        "sha256": "91594d635b71ab631395441be69c7001771514746fff30d377c0a50391d81c75"
+      }
+    ],
+    "supportingScope": "",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  },
+  "anchorChanges": [],
+  "findings": [],
+  "typeVerificationHistory": [
+    {
+      "stage": "Initial path migration, before strict-type refinement",
+      "baseline": {
+        "all": 75,
+        "owned": 75
+      },
+      "prepared": {
+        "all": 75,
+        "owned": 75
+      },
+      "addedDiagnostics": [],
+      "strictPass": false,
+      "scope": "Explicit strict TypeScript programs for original and moved drivers using current tsconfig compiler options; root tsconfig does not include these drivers."
+    }
+  ],
+  "resolvedFindings": []
+}

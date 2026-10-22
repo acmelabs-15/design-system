@@ -13,7 +13,8 @@
     "static": "Oxlint/Oxfmt passed",
     "failureAndResolution": "The sandbox rejected the local test listener as EADDRINUSE on port0. The same scoped test passed with approved local-server access; no assertion changed.",
     "relatedConsumer": "scripts/__tests__/dependency-audit.test.ts",
-    "review": "Complete helper is byte-identical. Caller only changes its path; synthetic credentials and cleanup remain unchanged."
+    "review": "Complete helper is byte-identical. Caller only changes its path; synthetic credentials and cleanup remain unchanged.",
+    "coordinator": "Actual serial runtime checks plus original source/oracle preservation, focused types/lint and byte checks are recorded in task08. All24 required invocations and all7 manual commands pass."
   },
   "files": [
     {
@@ -25,5 +26,13 @@
   ],
   "limits": [
     "Aggregate migration, fresh consumer, and browser acceptance are recorded separately. Originals remain until cutover."
-  ]
+  ],
+  "runtime": {
+    "status": "complete",
+    "record": "docs/verification/workflow-migration/task-08.json",
+    "required": [],
+    "manual": [],
+    "supportingScope": "Five passing dependency-audit tests/45 assertions include the relocated private-cache proof.",
+    "limits": "Prepared package source tree is dirty, as recorded; this is local relocation acceptance, not publication or final migration acceptance."
+  }
 }
