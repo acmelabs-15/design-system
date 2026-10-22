@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-014",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/feedback-component.md",
+      "destination": "docs/decisions/0036-feedback-component.md",
+      "sourceSha256": "57117433a96c845658bc7a18d69a96d8923f5ddaef72aaf6c38ea58b042df942",
+      "destinationSha256": "85f3c1d74be381f66d75282e3e6f8282fb3a9b7f6fc96b4b755011d43db06437",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original decision date, selected scope, alternatives, reasons and evidence retained.",
+        "Original observations and incomplete verification remain distinguished from later implementation."
+      ]
+    },
+    {
+      "source": "notes/decisions/field-component.md",
+      "destination": "docs/decisions/0037-field-component.md",
+      "sourceSha256": "e432bbed16ee2429e3631b3995132224be6531b5fb39ed8b8e97c971b27679c8",
+      "destinationSha256": "10f0acd54e3ab8e0883e99c03b38f094c3a2806bc9fca75fbb1a784061ab7ced",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original decision date, selected scope, alternatives, reasons and evidence retained.",
+        "Original observations and incomplete verification remain distinguished from later implementation."
+      ]
+    },
+    {
+      "source": "notes/decisions/fieldset-form-group.md",
+      "destination": "docs/decisions/0038-fieldset-form-group.md",
+      "sourceSha256": "9915fb6ed6e69bc99f818ba3aff48e0a38f6f1716802714f82cce572b21a3e6c",
+      "destinationSha256": "971a80952956a027c359aab8320202192da38b87ec29cd9e489ba00d3aadf5e0",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original decision date, selected scope, alternatives, reasons and evidence retained.",
+        "Original observations and incomplete verification remain distinguished from later implementation."
+      ]
+    },
+    {
+      "source": "notes/decisions/floating-surface-shadows.md",
+      "destination": "docs/decisions/0039-floating-surface-shadows.md",
+      "sourceSha256": "c5077d91d0af906952a5813c67f4d9302637303e267b679b6f70b17bbb3f02df",
+      "destinationSha256": "b6ae16aead27cdfbd4699e8e7b20b5049ff1dde675c108ae30c271142bf33ee9",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original decision date, selected scope, alternatives, reasons and evidence retained.",
+        "Original observations and incomplete verification remain distinguished from later implementation."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

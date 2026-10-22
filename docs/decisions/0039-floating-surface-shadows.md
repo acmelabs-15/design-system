@@ -1,0 +1,42 @@
+# Floating surfaces use the Radix Themes shadow scale
+
+Use Radix Themes' shadow scale for floating surfaces so this library has a consistent source for elevation. Record this as an intentional difference wherever the Geist baseline uses another value.
+
+Decided 2026-09-10 by Peter; recorded 2026-09-19 from the systematization plan.
+
+## Assignments selected in Phase 1 review
+
+The source scale was decided on 2026-09-10. On 2026-09-19 Peter selected **no shadow for plain Tooltip**, **Radix shadow 5 for Toast**, and **tiers by role for the remaining floating surfaces**: hover cards 4, menus/popovers 5, dialogs/modal drawers 6. These replace the initial proposals of shadow 4 for both Tooltip and Toast.
+
+The later inventory fixed the surviving set. The selection-time recommendation was to keep the census and accept only specific shadow differences per surface, preserving other property checks. A composite wrapper must not add a second copy of its child's shadow.
+
+## Selected role mapping applied to current surfaces
+
+| Surface at the 2026-09-19 review | Selected role/token | Evidence or inference |
+|---|---|---|
+| context-card; relative-time card | `--shadow-4` | Radix Hover Card uses this token |
+| plain tooltip | No shadow | Peter chose the treatment shared by Radix Tooltip and Material 3 plain tooltip; contrasting surface remains important |
+| toast | `--shadow-5` | Peter chose the menu tier; the inspected Toast already used the menu shadow, and Chakra/Material also elevate floating result messages |
+| menu; context-menu | `--shadow-5` | Radix base-menu uses this token |
+| dots-menu; split-button list | `--shadow-5` | Menu role; apply to the actual list surface, not its composing wrapper |
+| combobox; multi-select; future non-native select | `--shadow-5` | Radix Select content/Popover use this token; the inspected native select had no component-rendered floating list |
+| calendar popover; feedback popover | `--shadow-5` | Popover role; inference from Radix Popover |
+| modal/dialog; destructive-modal's composed dialog | `--shadow-6` | Radix base-dialog uses this token; no duplicate shadow on destructive-modal |
+| command-menu dialog; modal drawer | `--shadow-6` | Dialog role; extending this tier to modal drawers was explicit in Peter's selected option and still needed inventory verification at selection time |
+| sheet, while present as a modal surface | `--shadow-6` | Dialog role; the selected replacement was Drawer, without a lasting separate Sheet treatment |
+
+These are role assignments, not approval of every reviewed element's survival or interface. The inventory resolves renamed/composed surfaces and any non-modal drawer treatment. Plain Tooltip is distinct from an interactive rich information panel; Hover Card and Toggle Tip now have selected purposes under the [overlay-help decision](0076-overlay-help-components.md), while exact focus and composition contracts were still inventory work. Material's elevation numbers do not map directly to Radix's shadow numbers.
+
+## Evidence behind the two exceptions
+
+Radix Tooltip's CSS supplies an inverse surface without a shadow. Material 3 distinguishes brief plain labels from rich tooltips that may contain titles and actions. Its plain-tooltip tokens use inverse surface colours; Google's Compose implementation explicitly defaults plain-tooltip shadow elevation to zero. Its rich-tooltip tokens specify Material elevation level 2. Peter chose no shadow for our plain Tooltip after this comparison.
+
+Chakra Toast uses its `xl` shadow, and Material Snackbar uses Material elevation level 3. These are not numerical equivalents of Radix tokens. The inspected Toast used `--ds-shadow-menu`; Peter selected Radix shadow 5 to preserve that relative prominence rather than the initially proposed lighter tier 4. Check the result against varied backgrounds, themes and stacked messages.
+
+The [shadow investigation](../research/11-floating-surface-shadows.md) records primary sources and verification limits, including the unavailable Material Web tooltip implementation. Final token names and generator changes were not settled by this role selection.
+
+Sources read: [shadow scale and tier guidance](https://www.radix-ui.com/themes/docs/theme/shadows), [Hover Card](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/hover-card.css), [Popover](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/popover.css), [Select](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/select.css), [base menu](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/_internal/base-menu.css), [base dialog](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/_internal/base-dialog.css), and [Tooltip](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/tooltip.css).
+
+The [token source](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/shadow.css) has light, dark and color-mix branches and depends on Radix gray/black alpha values. Port the complete documented values through the generator with explicit color dependencies. Replacing a Radix gray token with a same-numbered design-system token is not proven equivalent. Record any such adaptation as a separate deviation. Final token names were left to the subsequent conventions review.
+
+The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.
