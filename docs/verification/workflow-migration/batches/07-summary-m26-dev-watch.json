@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-summary-m26-dev-watch",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Full source/audit preparation and writer semantic/path review; coordinator guard/review pending",
+    "runtimeDependency": "docs/verification/workflow-migration/task-08.json",
+    "coordinator": {
+      "semanticReview": "Independent full review accepted all22 source/target pairs with no required findings.",
+      "runtime": "Task08 records24required+7manual passes and two verified metadata/default follow-ups; final clean activation remains separate.",
+      "supplementalLogs": "All38 ignored logs, including the five referenced files, are captured at335a6ed91883e5d63fa2d8fbe23f3d2c58359e60 and copied byte-for-byte.",
+      "guard": "Real preparation passes with970 sources,979 destinations and197 batches; later allocated work remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m26-dev-watch/README.md",
+      "destination": "docs/verification/systematization/m26-dev-watch/README.md",
+      "sourceSha256": "784b4eedaa68c137ea435768aaccbec7b21c11399b742c2de9c2d3bbced80762",
+      "destinationSha256": "90e72683028dee60a0332b79ffea5ceb07a7cc4e6f10e08ac585e38ab2def5b7",
+      "changes": [
+        "Retarget saved red/green logs; retain exact watcher and harmless-sentinel traversal scope without promoting historical scratch paths into dependencies."
+      ],
+      "retainedQualifications": [
+        "The watcher fixture does not run a real core/docs build or alter the active preview.",
+        "Traversal reproduction uses only a harmless sentinel, not user or credential files.",
+        "Containment is lexical; deliberately authored escaping symlinks are outside the verified guarantee."
+      ],
+      "actualRunScope": {
+        "record": "docs/verification/workflow-migration/task-08.json",
+        "sourceTree": "dirty",
+        "baseCommit": "dff4a7fa4eb5c16ecf22de3148ea80b754d6698d",
+        "version": "0.3.2",
+        "classification": "historical watcher/security regression evidence",
+        "evidence": []
+      }
+    }
+  ],
+  "anchorChanges": [],
+  "findings": [
+    {
+      "kind": "pending-coordinator-evidence-allocation",
+      "source": "notes/alignment/evidence/m26-dev-watch/red.log",
+      "destination": "docs/verification/systematization/m26-dev-watch/red.log",
+      "detail": "Original ignored log exists but was absent from the tracked-source ledger/copies at writer review. Coordinator is notified; preserve raw bytes before cutover."
+    },
+    {
+      "kind": "pending-coordinator-evidence-allocation",
+      "source": "notes/alignment/evidence/m26-dev-watch/green.log",
+      "destination": "docs/verification/systematization/m26-dev-watch/green.log",
+      "detail": "Original ignored log exists but was absent from the tracked-source ledger/copies at writer review. Coordinator is notified; preserve raw bytes before cutover."
+    },
+    {
+      "kind": "pending-coordinator-evidence-allocation",
+      "source": "notes/alignment/evidence/m26-dev-watch/traversal-red.log",
+      "destination": "docs/verification/systematization/m26-dev-watch/traversal-red.log",
+      "detail": "Original ignored log exists but was absent from the tracked-source ledger/copies at writer review. Coordinator is notified; preserve raw bytes before cutover."
+    },
+    {
+      "kind": "pending-coordinator-evidence-allocation",
+      "source": "notes/alignment/evidence/m26-dev-watch/traversal-green.log",
+      "destination": "docs/verification/systematization/m26-dev-watch/traversal-green.log",
+      "detail": "Original ignored log exists but was absent from the tracked-source ledger/copies at writer review. Coordinator is notified; preserve raw bytes before cutover."
+    }
+  ]
+}

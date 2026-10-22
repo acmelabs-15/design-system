@@ -1,0 +1,51 @@
+bun test v1.4.2 (744846f84)
+
+scripts/__tests__/lint-source-guard.test.ts:
+(pass) braces and import spacing retain syntax meaning [4.30ms]
+(pass) guard rejects order, dependency-read, literal, annotation and sparse-array changes [3.46ms]
+(pass) logical regrouping preserves operand order while mixed operators remain distinct [0.80ms]
+(pass) guard rejects changes to declaration lifetime and optional-chain boundaries [0.75ms]
+(pass) guard preserves the raw text observed by tagged templates [0.63ms]
+
+scripts/__tests__/release.test.ts:
+(pass) release validation verifies actual archive identity, tags and immutable bytes [431.20ms]
+(pass) the pinned npm CLI executes under the verified Bun runtime [120.21ms]
+
+scripts/__tests__/lint-lit-syntax.test.ts:
+(pass) raw CSS and Lit CSS retain unknown-property and accidental duplicate checks [55.80ms]
+(pass) a JavaScript source-map string does not become the TypeScript file source map [2.23ms]
+[postcss-lit] Skipping template (fixture.ts:1) as it included either invalid syntax or complex expressions the plugin could not interpret. Consider using a "// postcss-lit-disable-next-line" comment to disable this message
+(pass) invalid templates fail rather than silently losing CSS coverage [1.93ms]
+(pass) consecutive different-value fallbacks pass while custom-property duplication fails [2.28ms]
+
+scripts/__tests__/release-workflows.test.ts:
+(pass) quality workflow runs every defined gate under the pinned Bun runtime [0.38ms]
+(pass) publication and Pages deployment remain explicitly gated after verification [0.15ms]
+
+scripts/__tests__/lint-policy.test.ts:
+(pass) scoped framework exceptions preserve ordinary correctness and messaging checks [91.97ms]
+
+scripts/__tests__/lint.test.ts:
+(pass) Bun runs the actual Oxlint preset and returns complete parseable diagnostics [34.94ms]
+(pass) the selected formatter preserves Lit text and project conventions [4.28ms]
+
+scripts/__tests__/consumer-skills.test.ts:
+(pass) packaged skills share exact generated facts and deterministic release metadata [32.87ms]
+(pass) stale skill versions fail before output changes [4.82ms]
+
+scripts/__tests__/release-policy.test.ts:
+(pass) publication retry skips only byte-identical existing versions [0.09ms]
+(pass) release identity requires coordinated packages, peers and exact tag [0.15ms]
+(pass) archive names and digest records cannot escape release artifacts [0.05ms]
+(pass) publishing stays disabled outside explicit verified release context [0.06ms]
+(pass) private packages and mismatched repository metadata block actual publication [0.06ms]
+(pass) npm receives only CI identity context, never inherited local token configuration [0.04ms]
+
+scripts/__tests__/lint-files.test.ts:
+(pass) source selection excludes generated output but includes its producers and tests [21.91ms]
+(pass) CSS template discovery ignores source strings and finds actual tagged templates [0.51ms]
+
+ 26 pass
+ 0 fail
+ 151 expect() calls
+Ran 26 tests across 9 files. [1465.00ms]

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-summary-m26-audit-component-browser",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Full source/audit preparation and writer semantic/path review; coordinator guard/review pending",
+    "runtimeDependency": "docs/verification/workflow-migration/task-08.json",
+    "coordinator": {
+      "semanticReview": "Independent full review accepted all22 source/target pairs with no required findings.",
+      "runtime": "Task08 records24required+7manual passes and two verified metadata/default follow-ups; final clean activation remains separate.",
+      "supplementalLogs": "All38 ignored logs, including the five referenced files, are captured at335a6ed91883e5d63fa2d8fbe23f3d2c58359e60 and copied byte-for-byte.",
+      "guard": "Real preparation passes with970 sources,979 destinations and197 batches; later allocated work remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m26-audit/component-browser/README.md",
+      "destination": "docs/verification/systematization/m26-audit/component-browser/README.md",
+      "sourceSha256": "e2864e5dac2453e12a3eba6f152761519f76ee2613740592d7a57adee236401b",
+      "destinationSha256": "52195db982385b5bb2d11aa4acb76de196649c2f0304b56de9ed206ac6608d5f",
+      "changes": [
+        "Retarget cases/controls live JSON while retaining immutable raw results. Keep accepted-combined explicitly composed from prior/focused runs. Date pending Linux statements and link release closure; retain the newer Hover Card failure separately."
+      ],
+      "retainedQualifications": [
+        "accepted-combined.json combines initial/focused runs; it is not a new single-shot run.",
+        "Original failed attempts and partial completed assertions remain evidence.",
+        "Firefox 155 independent-browser coverage does not establish repeated navigation.",
+        "Linux date/worker follow-ups have later release closure; current Chromium Hover Card failure remains a separate open baseline.",
+        "OS input/autofill, actual Safari and assistive technology remain unverified."
+      ],
+      "actualRunScope": {
+        "record": "docs/verification/workflow-migration/task-08.json",
+        "sourceTree": "dirty",
+        "baseCommit": "dff4a7fa4eb5c16ecf22de3148ea80b754d6698d",
+        "version": "0.3.2",
+        "classification": "required component runner and live cases/controls data",
+        "evidence": []
+      }
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

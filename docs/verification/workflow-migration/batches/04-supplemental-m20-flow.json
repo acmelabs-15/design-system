@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-supplemental-m20-flow",
+  "status": "complete",
+  "date": "2026-10-22T06:13:00.344Z",
+  "sourceRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+  "verification": {
+    "passed": true,
+    "method": "All original, staged Git, immutable capture and destination bytes/hash values agree. No semantic edits."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m20-flow/compiled.log",
+      "destination": "docs/verification/systematization/m20-flow/compiled.log",
+      "bytes": 4575,
+      "sha256": "d570fbac3e59e2071a971a0d65df4701901f3fc7f3ba0d37104f32eae6c2a1ee"
+    },
+    {
+      "source": "notes/alignment/evidence/m20-flow/route-browser-exact.log",
+      "destination": "docs/verification/systematization/m20-flow/route-browser-exact.log",
+      "bytes": 6549,
+      "sha256": "1f6cc1a67703829125b5663e51f74bd77d19512e126a10fa2824659fa09b6f38"
+    },
+    {
+      "source": "notes/alignment/evidence/m20-flow/firefox-sequence.log",
+      "destination": "docs/verification/systematization/m20-flow/firefox-sequence.log",
+      "bytes": 5943,
+      "sha256": "f386add1bca990c65bcd6a20ffad892eed15cb78082ca82db65f2ae577f0938b"
+    }
+  ],
+  "limits": [
+    "Supplemental capture preserves pre-existing ignored output. It does not rerun those historical checks."
+  ]
+}

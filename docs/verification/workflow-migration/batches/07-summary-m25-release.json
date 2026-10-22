@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-summary-m25-release",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Full source/audit preparation and writer semantic/path review; coordinator guard/review pending",
+    "runtimeDependency": "docs/verification/workflow-migration/task-08.json",
+    "coordinator": {
+      "semanticReview": "Independent full review accepted all22 source/target pairs with no required findings.",
+      "runtime": "Task08 records24required+7manual passes and two verified metadata/default follow-ups; final clean activation remains separate.",
+      "supplementalLogs": "All38 ignored logs, including the five referenced files, are captured at335a6ed91883e5d63fa2d8fbe23f3d2c58359e60 and copied byte-for-byte.",
+      "guard": "Real preparation passes with970 sources,979 destinations and197 batches; later allocated work remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m25-release/README.md",
+      "destination": "docs/verification/systematization/m25-release/README.md",
+      "sourceSha256": "cd17a9085672c8bbb7389b2000b7dd1237ce7bb7d5140e58ef834dbd428b914d",
+      "destinationSha256": "614ef932e6f43efe6e0e2e6dc7a0388e0026bd32be7bcbce38c1e3f6bd4bb9b5",
+      "changes": [
+        "Keep dated local mock/public-trust results and later orchestration results separate. Root scripts commands remain; rewrite old opt-in-disabled/frozen-docs/no-publication statements as history linked to 0.3.2 closure. Preserve archived Firefox155 runner as evidence, not current driver."
+      ],
+      "retainedQualifications": [
+        "Mock issuer/witness results are not public trust; public 0.2.0 verification has its own exact identity.",
+        "Bun 1.4.0 trust bootstrap fails; pinned 1.4.2 succeeds with no bypass.",
+        "Old Firefox 155 crash cause remains unverified; isolated rendering and official sequential coverage differ.",
+        "Later 0.3.2 closure supersedes unrun Linux/OIDC/publication/Pages statements, not their original evidence."
+      ],
+      "actualRunScope": {
+        "record": "docs/verification/workflow-migration/task-08.json",
+        "sourceTree": "dirty",
+        "baseCommit": "dff4a7fa4eb5c16ecf22de3148ea80b754d6698d",
+        "version": "0.3.2",
+        "classification": "historical release mechanism record; current unmoved release-check commands",
+        "evidence": []
+      }
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

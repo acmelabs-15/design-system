@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "task": "04-supplemental",
+  "date": "2026-10-22T06:13:00.348Z",
+  "status": "complete",
+  "reason": "The original inventory used tracked Git files. Summary review exposed ignored logs; a full recursive filesystem census found all38 additional logs and one OS metadata file.",
+  "originalBaseline": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "additionalSourceRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+  "counts": {
+    "originalSources": 932,
+    "additionalLogs": 38,
+    "currentSources": 970,
+    "additionalBytes": 266083,
+    "originalRawCopies": 690,
+    "currentRawCopies": 728,
+    "addedBatches": 5
+  },
+  "verification": {
+    "passed": true,
+    "method": "All38 original/staged/capture/destination byte identities verified; token/private-key shape screen found no matches without printing contents.",
+    "guardRepair": "Complete:72 tests/119 assertions, strict/static checks, independent review and real970-source preparation pass."
+  },
+  "files": [
+    {
+      "path": "notes/alignment/evidence/m26-dev-watch/red.log",
+      "bytes": 759,
+      "symlink": false,
+      "sha256": "21119eeb2f225a347e32b3a0663457cafff25441850ad04c4d36086d7f571112",
+      "destination": "docs/verification/systematization/m26-dev-watch/red.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m26-dev-watch/green.log",
+      "bytes": 506,
+      "symlink": false,
+      "sha256": "59c67fc0dd1a5998998766f740bc505dc3339a556d1f32b7703b0e73daeaa67b",
+      "destination": "docs/verification/systematization/m26-dev-watch/green.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m26-dev-watch/traversal-red.log",
+      "bytes": 1570,
+      "symlink": false,
+      "sha256": "4296cec8738b2b3c27abc311fdf66c7515a79aa17fc053fb8d07f49f1f3fc293",
+      "destination": "docs/verification/systematization/m26-dev-watch/traversal-red.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m26-dev-watch/traversal-green.log",
+      "bytes": 691,
+      "symlink": false,
+      "sha256": "a39a5f18536db55d645b7e51d3381b19a11dcf78da1ef19aa71d61097e9e1c9d",
+      "destination": "docs/verification/systematization/m26-dev-watch/traversal-green.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m20-flow/compiled.log",
+      "bytes": 4575,
+      "symlink": false,
+      "sha256": "d570fbac3e59e2071a971a0d65df4701901f3fc7f3ba0d37104f32eae6c2a1ee",
+      "destination": "docs/verification/systematization/m20-flow/compiled.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m20-flow/route-browser-exact.log",
+      "bytes": 6549,
+      "symlink": false,
+      "sha256": "1f6cc1a67703829125b5663e51f74bd77d19512e126a10fa2824659fa09b6f38",
+      "destination": "docs/verification/systematization/m20-flow/route-browser-exact.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m20-flow/firefox-sequence.log",
+      "bytes": 5943,
+      "symlink": false,
+      "sha256": "f386add1bca990c65bcd6a20ffad892eed15cb78082ca82db65f2ae577f0938b",
+      "destination": "docs/verification/systematization/m20-flow/firefox-sequence.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m26-final/browser-initial.log",
+      "bytes": 72367,
+      "symlink": false,
+      "sha256": "9370a5ea7eb035489e3e9193750f6b4033e4ba4d008fa0a094b49b7433fd54c4",
+      "destination": "docs/verification/systematization/m26-final/browser-initial.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m26-final/audit.log",
+      "bytes": 89,
+      "symlink": false,
+      "sha256": "66f9aa57742d465b25635f085da188f41a8ec1d192c8fb1227d1fe220a484d28",
+      "destination": "docs/verification/systematization/m26-final/audit.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m26-final/unit.log",
+      "bytes": 98532,
+      "symlink": false,
+      "sha256": "da56761b876536c30969ff53b434db85abce982e195baf40762a817eb60f89e3",
+      "destination": "docs/verification/systematization/m26-final/unit.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m26-final/static.log",
+      "bytes": 295,
+      "symlink": false,
+      "sha256": "a2b33ed621b9b4aded9a98410cf83d52e50252bb2250e49d996c0ae2590e1ca6",
+      "destination": "docs/verification/systematization/m26-final/static.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m26-final/tooling-recheck.log",
+      "bytes": 77,
+      "symlink": false,
+      "sha256": "7d5f78bf05edd198a8201aa29467e16d4f4feb6b916775b1fb34bae2395dc7e0",
+      "destination": "docs/verification/systematization/m26-final/tooling-recheck.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m26-final/build.log",
+      "bytes": 499,
+      "symlink": false,
+      "sha256": "dc5f0b69e70df0bb339e540c2c4e9c9d996dfd85760c4ed5b6b660c4e5caad19",
+      "destination": "docs/verification/systematization/m26-final/build.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/verification-attempt3.log",
+      "bytes": 8086,
+      "symlink": false,
+      "sha256": "3b85444c979305afefb7628634094f4b5fbc4a2f6325a989fed4b7571ddcbb9c",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/verification-attempt3.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/verification-attempt2.log",
+      "bytes": 6420,
+      "symlink": false,
+      "sha256": "1bd8e9526208e76311cb2b3d32fdafa30a6d9a8b6483417555e04af183891a4a",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/verification-attempt2.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/controls-attempt2.log",
+      "bytes": 3039,
+      "symlink": false,
+      "sha256": "b6908a3759bb35b454e242e25bfc1ecbfed2111bdedba933b3f70a40474e0d1f",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/controls-attempt2.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/controls-attempt1.log",
+      "bytes": 712,
+      "symlink": false,
+      "sha256": "51ed9acb85ba6801179479914d915a2e1a935320e1d36845d3a99781003010ed",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/controls-attempt1.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/build-attempt4.log",
+      "bytes": 94,
+      "symlink": false,
+      "sha256": "bf52f734d0d97b522bcfcfd7f9354cc74d5c53ab4d6998f0e94568a1960f365a",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/build-attempt4.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/typecheck-attempt2.log",
+      "bytes": 0,
+      "symlink": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/typecheck-attempt2.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/build-attempt1.log",
+      "bytes": 2233,
+      "symlink": false,
+      "sha256": "e205df941d25166dcf8d77d0c35e442a3fb0350f5ac56d432ef36a5f5c714ddc",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/build-attempt1.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/typecheck-attempt3.log",
+      "bytes": 0,
+      "symlink": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/typecheck-attempt3.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/typecheck-attempt1.log",
+      "bytes": 62,
+      "symlink": false,
+      "sha256": "aca1cdd5d66698115d0df9bbed3f85591b89b0e8e2d629dbffcb9a49fea259fe",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/typecheck-attempt1.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/build-attempt2.log",
+      "bytes": 95,
+      "symlink": false,
+      "sha256": "d4798ed8d01e9c0658c38450974e47d13fed3c7d6385fde2c19354d68138ac6c",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/build-attempt2.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/build-attempt3.log",
+      "bytes": 94,
+      "symlink": false,
+      "sha256": "7b8516e30d98a56bf9783481f8517c64658dad9560360e46bee863750fb74053",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/build-attempt3.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/requests-attempt1.log",
+      "bytes": 742,
+      "symlink": false,
+      "sha256": "ecd2c2d7127f2eb76cf6a216b3e4a3f9f984a728b2799db86db34796ae29c7b0",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/requests-attempt1.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/probe.log",
+      "bytes": 889,
+      "symlink": false,
+      "sha256": "020595a2a5c022713329050f205f3680c3dd0b057f4db971a04440fde3ef4c40",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/probe.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/inspect-options.log",
+      "bytes": 4339,
+      "symlink": false,
+      "sha256": "2be91e65e4d78d4e0e0ac564af49e484882a48b07ce01281882d33d5a723b4b4",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/inspect-options.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/verify-attempt-1.log",
+      "bytes": 2212,
+      "symlink": false,
+      "sha256": "3d80aa8af849144ab1cac6cf0b214c7a98e2a5f3d5b47ae14f00a77ded355650",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/verify-attempt-1.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/verify-attempt-2.log",
+      "bytes": 1997,
+      "symlink": false,
+      "sha256": "93d71441024272921fdbd2c92e57631d4122c82394bd161835d76bead2adf4dc",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/verify-attempt-2.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/verify-attempt-3.log",
+      "bytes": 2812,
+      "symlink": false,
+      "sha256": "430429f47ddeb778865f2986078cbd69568a95099f4b968b463fa5eb4c276d97",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/verify-attempt-3.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-2-react-preferences/with_skill/archive/typecheck.log",
+      "bytes": 0,
+      "symlink": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-2-react-preferences/with_skill/archive/typecheck.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-2-react-preferences/with_skill/archive/final-run.log",
+      "bytes": 10483,
+      "symlink": false,
+      "sha256": "bae7228d54e66171e62e546774fb8db043eb407ede412fa27693eb2a0fb4ac7e",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-2-react-preferences/with_skill/archive/final-run.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m24-skills/iteration-1/eval-1-html-notification-settings/without_skill/archive/run.log",
+      "bytes": 10703,
+      "symlink": false,
+      "sha256": "a266fce32a5f37fced88866d29acdacc1e0c0ebf36135586f628bffde57b99c0",
+      "destination": "docs/verification/systematization/m24-skills/iteration-1/eval-1-html-notification-settings/without_skill/archive/run.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m25-tooling/final-owned-tests.log",
+      "bytes": 1083,
+      "symlink": false,
+      "sha256": "61732c7297b085f2ec4baf5056074f51730c998e5cdd3ee421e8fc415af6eacf",
+      "destination": "docs/verification/systematization/m25-tooling/final-owned-tests.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m25-tooling/cleanup-generators-tests.log",
+      "bytes": 6729,
+      "symlink": false,
+      "sha256": "7ed6f6904551838e2f07aea9390923ee2bddfeb60b9b750d6cf0e7148bec4bb2",
+      "destination": "docs/verification/systematization/m25-tooling/cleanup-generators-tests.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m25-tooling/cleanup-focused-tests.log",
+      "bytes": 7526,
+      "symlink": false,
+      "sha256": "f1cc4177bae8398b6c0274f84777333ac10ef667f00765f28a11b97ff6707919",
+      "destination": "docs/verification/systematization/m25-tooling/cleanup-focused-tests.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m25-tooling/final-audit-pinned.log",
+      "bytes": 295,
+      "symlink": false,
+      "sha256": "98185f35c07d777a225f4665f1990c2fcd273df7d8dde0efc6d812acd9959694",
+      "destination": "docs/verification/systematization/m25-tooling/final-audit-pinned.log"
+    },
+    {
+      "path": "notes/alignment/evidence/m25-tooling/final-tests-pinned.log",
+      "bytes": 2986,
+      "symlink": false,
+      "sha256": "d4ba590a51b4cf8583e23585d334a07699231c005ad71162d920fb66228a0739",
+      "destination": "docs/verification/systematization/m25-tooling/final-tests-pinned.log"
+    }
+  ],
+  "excludedFilesystemMetadata": [
+    {
+      "path": "notes/.DS_Store",
+      "bytes": 6148,
+      "symlink": false,
+      "sha256": "221d8bcaf925f2e9b2d392b2f35cc72313f854037422db4bfe8c19bf58fa5f1b",
+      "reason": "Finder folder metadata, not project research or verification evidence",
+      "localBackup": ".artifacts/workflow-migration-excluded/notes.DS_Store",
+      "backupSha256": "221d8bcaf925f2e9b2d392b2f35cc72313f854037422db4bfe8c19bf58fa5f1b"
+    }
+  ]
+}

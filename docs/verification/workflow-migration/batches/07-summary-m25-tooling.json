@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-summary-m25-tooling",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Full source/audit preparation and writer semantic/path review; coordinator guard/review pending",
+    "runtimeDependency": "docs/verification/workflow-migration/task-08.json",
+    "coordinator": {
+      "semanticReview": "Independent full review accepted all22 source/target pairs with no required findings.",
+      "runtime": "Task08 records24required+7manual passes and two verified metadata/default follow-ups; final clean activation remains separate.",
+      "supplementalLogs": "All38 ignored logs, including the five referenced files, are captured at335a6ed91883e5d63fa2d8fbe23f3d2c58359e60 and copied byte-for-byte.",
+      "guard": "Real preparation passes with970 sources,979 destinations and197 batches; later allocated work remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m25-tooling/README.md",
+      "destination": "docs/verification/systematization/m25-tooling/README.md",
+      "sourceSha256": "c5bb8d1334e213b8951625fdcb1608535a30f1486c0d4774cd000f872e21a33e",
+      "destinationSha256": "076cd6a13479672ce3b3b0963593c7309f732334c727e65de27931e4a12f3175",
+      "changes": [
+        "Preserve dated versions, exact lint-policy rationale and mechanical source guard. Current reproduction stays in scripts/lint.ts; retire old blanket notes exclusions and cutover-pending wording, since moved live drivers now enter authored checks."
+      ],
+      "retainedQualifications": [
+        "Syntax preservation, sparse arrays, lifecycle ownership and report truncation are explicit verification scope.",
+        "TypeScript 5.9 remains the checker; no TypeScript-Go or native-browser equivalence is claimed.",
+        "Old formatter exclusions describe the old location-based scope; migrated live scripts enter normal authored-code checks."
+      ],
+      "actualRunScope": {
+        "record": "docs/verification/workflow-migration/task-08.json",
+        "sourceTree": "dirty",
+        "baseCommit": "dff4a7fa4eb5c16ecf22de3148ea80b754d6698d",
+        "version": "0.3.2",
+        "classification": "historical lint policy/checkpoint; existing unmoved quality commands",
+        "evidence": []
+      }
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-supplemental-m26-dev-watch",
+  "status": "complete",
+  "date": "2026-10-22T06:13:00.341Z",
+  "sourceRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+  "verification": {
+    "passed": true,
+    "method": "All original, staged Git, immutable capture and destination bytes/hash values agree. No semantic edits."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m26-dev-watch/red.log",
+      "destination": "docs/verification/systematization/m26-dev-watch/red.log",
+      "bytes": 759,
+      "sha256": "21119eeb2f225a347e32b3a0663457cafff25441850ad04c4d36086d7f571112"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-dev-watch/green.log",
+      "destination": "docs/verification/systematization/m26-dev-watch/green.log",
+      "bytes": 506,
+      "sha256": "59c67fc0dd1a5998998766f740bc505dc3339a556d1f32b7703b0e73daeaa67b"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-dev-watch/traversal-red.log",
+      "destination": "docs/verification/systematization/m26-dev-watch/traversal-red.log",
+      "bytes": 1570,
+      "sha256": "4296cec8738b2b3c27abc311fdf66c7515a79aa17fc053fb8d07f49f1f3fc293"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-dev-watch/traversal-green.log",
+      "destination": "docs/verification/systematization/m26-dev-watch/traversal-green.log",
+      "bytes": 691,
+      "sha256": "a39a5f18536db55d645b7e51d3381b19a11dcf78da1ef19aa71d61097e9e1c9d"
+    }
+  ],
+  "limits": [
+    "Supplemental capture preserves pre-existing ignored output. It does not rerun those historical checks."
+  ]
+}

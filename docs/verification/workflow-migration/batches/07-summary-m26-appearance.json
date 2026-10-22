@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-summary-m26-appearance",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Full source/audit preparation and writer semantic/path review; coordinator guard/review pending",
+    "runtimeDependency": "docs/verification/workflow-migration/task-08.json",
+    "coordinator": {
+      "semanticReview": "Independent full review accepted all22 source/target pairs with no required findings.",
+      "runtime": "Task08 records24required+7manual passes and two verified metadata/default follow-ups; final clean activation remains separate.",
+      "supplementalLogs": "All38 ignored logs, including the five referenced files, are captured at335a6ed91883e5d63fa2d8fbe23f3d2c58359e60 and copied byte-for-byte.",
+      "guard": "Real preparation passes with970 sources,979 destinations and197 batches; later allocated work remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m26-appearance/README.md",
+      "destination": "docs/verification/systematization/m26-appearance/README.md",
+      "sourceSha256": "d7aaab73188692e876b7262e0abe1a53bd2abc31fb2d293c03e10548327a48ee",
+      "destinationSha256": "68e484c721ddc2058843c56a01e5b933c8c27d95e9715286dc5e9d243826c62a",
+      "changes": [
+        "Retarget appearance and action-label drivers plus parity decision. Separate old committed results/screenshots from new .artifacts/checks output. Keep all font oracle corrections and clipped-label defect histories."
+      ],
+      "retainedQualifications": [
+        "Chromium native glyph evidence differs from Firefox/WebKit FontFace/computed declarations.",
+        "Interrupted Firefox run during a docs rebuild is incomplete acceptance.",
+        "Passing geometry did not detect clipped Remove text; the separate label-range regression closes it.",
+        "Not whole-site pixel, actual Safari or screen-reader certification."
+      ],
+      "actualRunScope": {
+        "record": "docs/verification/workflow-migration/task-08.json",
+        "sourceTree": "dirty",
+        "baseCommit": "dff4a7fa4eb5c16ecf22de3148ea80b754d6698d",
+        "version": "0.3.2",
+        "classification": "manual appearance and action-label checks",
+        "evidence": [
+          "docs/verification/workflow-migration/runtime/checks/documentation-appearance/results.json"
+        ]
+      }
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

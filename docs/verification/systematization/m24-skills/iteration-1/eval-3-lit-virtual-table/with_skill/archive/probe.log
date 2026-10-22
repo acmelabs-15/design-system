@@ -1,0 +1,32 @@
+{
+  html: "<!----><div class=\"option\" part=\"root\"><span aria-hidden=\"true\"><slot name=\"start\"></slot></span><span class=\"content\" part=\"content\"><slot></slot><span class=\"description\"><slot name=\"description\"></slot></span></span><span aria-hidden=\"true\"><slot name=\"end\"></slot></span><acme-check-icon class=\"indicator\" part=\"indicator\" size=\"16px\" data-acme-element=\"\"></acme-check-icon></div><!--acme-static-styles-->",
+  value: "100",
+}
+{
+  "events": [
+    {
+      "type": "acme-change",
+      "detail": {
+        "value": "100"
+      }
+    },
+    {
+      "type": "acme-request",
+      "detail": {
+        "action": "page-size",
+        "pageSize": 100
+      }
+    },
+    {
+      "type": "acme-request",
+      "detail": {
+        "action": "close",
+        "reason": "selection"
+      }
+    }
+  ],
+  "page": {
+    "pageIndex": 0,
+    "pageSize": null
+  }
+}

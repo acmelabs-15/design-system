@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-supplemental-m26-final",
+  "status": "complete",
+  "date": "2026-10-22T06:13:00.344Z",
+  "sourceRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+  "verification": {
+    "passed": true,
+    "method": "All original, staged Git, immutable capture and destination bytes/hash values agree. No semantic edits."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m26-final/browser-initial.log",
+      "destination": "docs/verification/systematization/m26-final/browser-initial.log",
+      "bytes": 72367,
+      "sha256": "9370a5ea7eb035489e3e9193750f6b4033e4ba4d008fa0a094b49b7433fd54c4"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/audit.log",
+      "destination": "docs/verification/systematization/m26-final/audit.log",
+      "bytes": 89,
+      "sha256": "66f9aa57742d465b25635f085da188f41a8ec1d192c8fb1227d1fe220a484d28"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/unit.log",
+      "destination": "docs/verification/systematization/m26-final/unit.log",
+      "bytes": 98532,
+      "sha256": "da56761b876536c30969ff53b434db85abce982e195baf40762a817eb60f89e3"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/static.log",
+      "destination": "docs/verification/systematization/m26-final/static.log",
+      "bytes": 295,
+      "sha256": "a2b33ed621b9b4aded9a98410cf83d52e50252bb2250e49d996c0ae2590e1ca6"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/tooling-recheck.log",
+      "destination": "docs/verification/systematization/m26-final/tooling-recheck.log",
+      "bytes": 77,
+      "sha256": "7d5f78bf05edd198a8201aa29467e16d4f4feb6b916775b1fb34bae2395dc7e0"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/build.log",
+      "destination": "docs/verification/systematization/m26-final/build.log",
+      "bytes": 499,
+      "sha256": "dc5f0b69e70df0bb339e540c2c4e9c9d996dfd85760c4ed5b6b660c4e5caad19"
+    }
+  ],
+  "limits": [
+    "Supplemental capture preserves pre-existing ignored output. It does not rerun those historical checks."
+  ]
+}

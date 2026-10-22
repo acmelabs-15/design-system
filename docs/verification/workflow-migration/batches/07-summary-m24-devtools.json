@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-summary-m24-devtools",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Full source/audit preparation and writer semantic/path review; coordinator guard/review pending",
+    "runtimeDependency": "docs/verification/workflow-migration/task-08.json",
+    "coordinator": {
+      "semanticReview": "Independent full review accepted all22 source/target pairs with no required findings.",
+      "runtime": "Task08 records24required+7manual passes and two verified metadata/default follow-ups; final clean activation remains separate.",
+      "supplementalLogs": "All38 ignored logs, including the five referenced files, are captured at335a6ed91883e5d63fa2d8fbe23f3d2c58359e60 and copied byte-for-byte.",
+      "guard": "Real preparation passes with970 sources,979 destinations and197 batches; later allocated work remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m24-devtools/README.md",
+      "destination": "docs/verification/systematization/m24-devtools/README.md",
+      "sourceSha256": "d85a4630146d5fe9d3de23e5224d64c7ce124fdf496abbb33a845f5ff329b9f9",
+      "destinationSha256": "3a0502a0193d06028439489ef96c56cc29cdfd1a9caaa050917a38807013f40b",
+      "changes": [
+        "Retarget manual inspector browser driver and both fixtures; keep checkout/local compiled-consumer scope separate from archive acceptance and skills efficacy."
+      ],
+      "retainedQualifications": [
+        "Checkout diagnostics are not the same as installed-archive acceptance.",
+        "No new verification of source/catalog hashes, fonts or screenshots occurs here."
+      ],
+      "actualRunScope": {
+        "record": "docs/verification/workflow-migration/task-08.json",
+        "sourceTree": "dirty",
+        "baseCommit": "dff4a7fa4eb5c16ecf22de3148ea80b754d6698d",
+        "version": "0.3.2",
+        "classification": "manual local compiled-inspector check",
+        "evidence": [
+          "docs/verification/workflow-migration/runtime/checks/devtools/results.json"
+        ]
+      }
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

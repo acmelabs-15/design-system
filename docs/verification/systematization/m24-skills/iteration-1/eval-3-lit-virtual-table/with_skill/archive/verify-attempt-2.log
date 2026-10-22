@@ -1,0 +1,13 @@
+PASS initial native content and bounded window {"first":{"id":"delivery-0","name":"Delivery 00000","region":"West","amount":0},"filtered":10000,"page":{"pageIndex":0,"pageSize":10000},"selected":{},"rendered":["delivery-0","delivery-1","delivery-2","delivery-3","delivery-4","delivery-5","delivery-6","delivery-7","delivery-8","delivery-9"],"virtualCount":10000,"scrollTop":0,"scrollHeight":480003,"clientHeight":360}
+PASS native Chrome accessible names [{"role":"region","name":"Delivery results"},{"role":"navigation","name":"Delivery pages"},{"role":"grid","name":"10,000 application-owned delivery records"},{"role":"combobox","name":"Show"}]
+PASS selection independently toggles two stable rows {"delivery-1":true}
+PASS sorting changes actual model and rendered row {"id":"delivery-0","name":"Delivery 00000","region":"West","amount":0}
+PASS filtering and empty results {"filteredCount":120,"emptyCount":0}
+select <!----><acme-field part="page-size" orientation="horizontal" data-acme-element=""><span slot="label" id="acme-field-content-1-label-0"><!--?-->Show</span><acme-select data-acme-element="" open=""><!--?--><!----><acme-option data-acme-element=""><!--?-->25</acme-option><!----><!----><acme-option data-acme-element=""><!--?-->100</acme-option><!----><!----><acme-option data-acme-element=""><!--?-->1,000</acme-option><!----><!----><acme-option data-acme-element=""><!--?-->10,000</acme-option><!----></acme-select></acme-field><!--acme-static-styles-->
+FAIL page-size request and next page Error: size did not update
+FAIL restore all rows and reach far records Error: far row not reached
+FAIL keyboard logical focus crosses virtual window Error: evaluate: TypeError: Cannot read properties of undefined (reading 'querySelector')
+    at eval (eval at evaluate (:311:30), <anonymous>:3:27)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+FAIL disconnect observers and remount same element Error: remount not observing scroll
