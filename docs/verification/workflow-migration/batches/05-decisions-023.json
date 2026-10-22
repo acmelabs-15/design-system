@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-023",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/message-context-and-errors.md",
+      "destination": "docs/decisions/0062-message-context-and-errors.md",
+      "sourceSha256": "8f796c9b519c2b9e1936c686d6b45d9b6a0de50a41d66bb585e6933c7327ea5d",
+      "destinationSha256": "62b3d8f471920e21bca928049af7f58bd584606eadc168fbd624d9f56684c05c",
+      "changes": [
+        "Retained contextual message roles and complete Error removal.",
+        "Dated source-only association finding and linked later contracts."
+      ],
+      "retainedQualifications": [
+        "The supplied diagram does not specify field validation.",
+        "Input association requires verification; original source review is not assistive-technology proof.",
+        "Small plain validation text and prior Note/Alert, Error Card and Project Banner decisions remain."
+      ]
+    },
+    {
+      "source": "notes/decisions/meter-component.md",
+      "destination": "docs/decisions/0063-meter-component.md",
+      "sourceSha256": "a4d5eb9a8efb430e112efbe1c8221f7ebf1428f9d1870cd937c2ed76cabfc128",
+      "destinationSha256": "3ae819776b26d8c74527ab93c6d4f09e040e917712d0b0faddb10082da65da6d",
+      "changes": [
+        "Retained Meter name, measurement semantics and reason.",
+        "Dated Gauge source mismatch and routed later detailed contract."
+      ],
+      "retainedQualifications": [
+        "Loading must not invent a measured value; animated loading remains required.",
+        "The decision does not choose all Progress shapes or preserve every Stat helper."
+      ]
+    },
+    {
+      "source": "notes/decisions/migration-approval.md",
+      "destination": "docs/decisions/0064-migration-approval.md",
+      "sourceSha256": "f0def39e1178e7adccfd43833d5d65c11242dc8bec7d3e152ab5234b98aafdc4",
+      "destinationSha256": "edf87f0fcd0974e0018b68d4f71e154928770311adee2aa486bf5926d5c7f9d6",
+      "changes": [
+        "Rewrote the completed approval as dated provenance instead of perpetual execution permission.",
+        "Preserved M00 dependency, evidence requirements, engineering scope and external-action limit.",
+        "Linked completed release and current migration scope."
+      ],
+      "retainedQualifications": [
+        "Approval is not proof of untested mechanisms.",
+        "The original grant was scoped to the presented plan and excluded unapproved external actions."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}
