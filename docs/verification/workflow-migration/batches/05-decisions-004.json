@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-004",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/bidirectional-support.md",
+      "destination": "docs/decisions/0007-bidirectional-support.md",
+      "sourceSha256": "5eb275d47eabf643bd45fcd59fa9f2b827b9ec6c2f9c3cc0bb3f5fa26625c61c",
+      "destinationSha256": "ee7a6bd874cc5c5379aae8a8c95c7120d954afbf04476e61d4aa6ac588b196b4",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original decision date, selected scope, alternatives, reasons and evidence retained.",
+        "Original observations and incomplete verification remain distinguished from later implementation."
+      ]
+    },
+    {
+      "source": "notes/decisions/blue-accent.md",
+      "destination": "docs/decisions/0008-blue-accent.md",
+      "sourceSha256": "5ade83f28e24ac6352f975e4cef80097cf9dedbbcccf7cd01b43f07e8ff04def",
+      "destinationSha256": "a08370587eebc16fc13c784f2b1b5c3a6bb4a7d5d30580feeccf2f360e9191d4",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original decision date, selected scope, alternatives, reasons and evidence retained.",
+        "Original observations and incomplete verification remain distinguished from later implementation."
+      ]
+    },
+    {
+      "source": "notes/decisions/box-primitive.md",
+      "destination": "docs/decisions/0009-box-primitive.md",
+      "sourceSha256": "e1e276f6046048ef977ed8388dd7ecad64e18cc5e154d31bd901fa485e01efdc",
+      "destinationSha256": "f469748a29fef970c765b480ee9c549f441cfc5add554935dac083125198036c",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original decision date, selected scope, alternatives, reasons and evidence retained.",
+        "Original observations and incomplete verification remain distinguished from later implementation."
+      ]
+    },
+    {
+      "source": "notes/decisions/browser-distribution-package.md",
+      "destination": "docs/decisions/0010-browser-distribution-package.md",
+      "sourceSha256": "3e9a3bfde9239405bd08cd7c5b0d39e19aacf7bf39061a1f01b9c9789501c4ea",
+      "destinationSha256": "6b385d26a38383cc772935af1804d5e3f9b3ce7e5732f5ab4302ce7c7bf9167b",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original E415 count, declaration-loading trade-off, projected counts and 60,000 project budget preserved.",
+        "0.3.0 bytes remain immutable; 0.3.1 recovery is dated and linked to later 0.3.2 record."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}
