@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-021",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/maintainer-workflow-migration.md",
+      "destination": "docs/decisions/0057-maintainer-workflow-migration.md",
+      "sourceSha256": "8400b2714d62bacd492506e2494f1e49f3573d8269533427742a6ea47c58ba53",
+      "destinationSha256": "acb687c9b0da7baf2ecb11a0e50983f973ba4540b9e1edb9b8050e7b57bf45f2",
+      "changes": [
+        "Reordered into title-first decision format and retained the current migration approval scope.",
+        "Relocated local references to allocated destinations."
+      ],
+      "retainedQualifications": [
+        "All five local skills retire; useful product decisions and evidence remain.",
+        "The complete target layout is required; preserving old paths is transitional only.",
+        "Only this approved migration's local implementation and verified local commits are authorized. Outward-facing actions need separate authorization."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}
