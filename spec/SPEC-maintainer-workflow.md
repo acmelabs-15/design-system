@@ -1,6 +1,6 @@
 # Spec: Maintainer workflow migration
 
-Status: proposed, 2026-10-21. The reference comparison and baseline checks are recorded. The new startup rules and file moves are not applied.
+Status: approved by Peter on 2026-10-21 through “approved,” in reply to the specification-approval request. The [implementation plan](../tasks/plan.md) and [task list](../tasks/todo.md) are prepared and await their own review. The new startup rules and file moves are not applied.
 
 This is one maintenance capability: a fresh agent finds the right context, follows the selected workflow, and leaves an accurate handoff. The sections below describe its parts, not separate product projects.
 
@@ -215,7 +215,7 @@ Carry this into the new issue/status records. Do not call the baseline wholly gr
 
 ## Recommended execution sequence
 
-This is the proposed sequence for review, not an approved task plan.
+This approved sequence bounds the detailed implementation plan. Approval of that task breakdown remains separate.
 
 1. Inventory and classify every rule, record, executable check and reference. Produce the migration ledger and rule-conflict matrix.
 2. Convert records by type into the new formats. Separate live checks from saved evidence. Keep the old entry point authoritative during preparation.
@@ -226,7 +226,7 @@ The detailed approved plan belongs in tasks/plan.md and tasks/todo.md after spec
 
 ## Testing strategy and success criteria
 
-Proposed tests exercise repository structure and fresh-session behavior.
+The approved acceptance checks exercise repository structure and fresh-session behavior.
 
 - Every original record has a ledger entry. Every retained decision, qualification and source is accounted for.
 - Raw evidence hashes match. Historical signatures and release archives are not rewritten.
@@ -287,8 +287,8 @@ The reference projects' startup/status/task files are the behavioral model for t
 
 ## Approval boundary
 
-The direction and success checks are ready for Peter's review. The installed brain specification workflow requires validation before the implementation plan and build.
+Peter approves the direction and success checks on 2026-10-21. The implementation plan and task list are now prepared. Their review precedes the build.
 
-The host is currently in Default mode. The previous desktop evidence records a countdown on asynchronous question cards. Use the permitted blocking Plan-mode route for this review. This is a current host constraint, not a new universal project mode rule. The permanent rule is to use the host's permitted question surface, wait for Peter and add no agent deadline.
+The host is currently in Default mode. The previous desktop evidence records a countdown on asynchronous question cards. The blocking question tool is restricted to Plan mode. While that tool is unavailable, brain's question skill permits a plain-text question. Keep the decision pending and accept a clear written answer. This is a current host constraint, not a new universal project mode rule. The permanent rule is to use a permitted question surface, wait for Peter and add no agent deadline.
 
-No implementation approval is inferred from preparing these documents.
+The specification approval does not imply approval of an unwritten implementation plan.

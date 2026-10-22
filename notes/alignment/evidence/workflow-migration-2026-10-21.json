@@ -1105,5 +1105,84 @@
     "scope": "local file links; cold-start and full migration checks not run",
     "newDocumentWhitespace": [],
     "sourceEntryPointsAndSkillsUnchanged": true
+  },
+  "specificationApproval": {
+    "date": "2026-10-21",
+    "response": "approved",
+    "scope": "spec/SPEC-maintainer-workflow.md",
+    "source": "Direct user reply to the specification-approval request",
+    "implementationPlanApproved": false
+  },
+  "implementationPlanning": {
+    "date": "2026-10-21",
+    "plan": "tasks/plan.md",
+    "tasks": "tasks/todo.md",
+    "status": "ready for review; implementation not started",
+    "review": {
+      "taskSize": "pending",
+      "dependencyOrder": "pending",
+      "taskBoundaries": "pending"
+    },
+    "findings": [
+      {
+        "source": "scripts/check.ts:8-31",
+        "fact": "23 browser entry points, 19 under the old notes tree"
+      },
+      {
+        "source": "scripts/check.ts:106-118",
+        "fact": "Path-specific behavior selects the second scoped invocation, audit outputs and worker archive arguments"
+      },
+      {
+        "source": "scripts/component-browser-checks.ts:31-32",
+        "fact": "Two JSON inputs are live dependencies under the old evidence tree"
+      },
+      {
+        "source": "scripts/__tests__/dependency-audit.test.ts:44",
+        "fact": "Audit regression invokes an old-tree npm-cache helper"
+      }
+    ],
+    "hostQuestionRoute": "Blocking tool is Plan-only; async card previously showed a countdown. Plain-text fallback keeps the decision open in Default mode.",
+    "validation": {
+      "date": "2026-10-21",
+      "runtime": "1.4.2",
+      "files": 7,
+      "localFileLinks": 395,
+      "missing": [],
+      "taskIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "planRows": 12,
+      "badEdges": [],
+      "completedBoxes": 0,
+      "trackedMigrationSources": 932,
+      "browserEntries": 23,
+      "oldTreeBrowserEntries": 19,
+      "newDocumentWhitespace": [],
+      "scope": "Planning consistency and local file links only; no runtime, browser, cold-start or migration acceptance checks run",
+      "conditionalEdges": [
+        {
+          "task": 8,
+          "dependencies": [
+            1,
+            2,
+            3
+          ],
+          "conditional": "only consumed evidence batches from 4"
+        }
+      ],
+      "sourceEntryPointsAndSkillsUnchanged": true,
+      "diffCheck": "pass"
+    }
   }
 }

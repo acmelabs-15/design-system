@@ -6,4 +6,4 @@ Use the workflow established in Peter's CLI and D&D projects, adapted to this mo
 
 Remove all five skills under .agents/skills as part of the migration. The plugin skills supply the workflow. Preserve useful product decisions and evidence, while retiring or rewriting project-specific rules that contradict, collide with or confuse the new workflow. Calling a rule project-specific is not a reason to keep a conflict.
 
-These are Peter's direct clarifications. The concrete [migration specification](../../spec/SPEC-maintainer-workflow.md) is a proposal for review. Its target path details, verification plan and implementation completion are not implied by this decision.
+These are Peter's direct clarifications. Peter subsequently approves the concrete [migration specification](../../spec/SPEC-maintainer-workflow.md) on 2026-10-21 through “approved,” in reply to the specification-approval request. The [implementation plan](../../tasks/plan.md) and [task list](../../tasks/todo.md) are prepared for review. Their approval and implementation completion are not implied by the specification approval.

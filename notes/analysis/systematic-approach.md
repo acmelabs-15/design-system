@@ -207,7 +207,7 @@ On 2026-09-20 Peter said “I approve all proposals.” The [approval record](..
 
 ## Maintainer workflow migration 2026-10-21
 
-Peter now requests the agent-skills/brain workflow used in the CLI and D&D projects. He clarifies three requirements: complete migration to the new layout and formats, deletion of all five local skills, and removal or rewriting of rules that conflict with the new workflow. [Decision](../decisions/maintainer-workflow-migration.md), [proposed specification](../../spec/SPEC-maintainer-workflow.md), [observations and inventory](../alignment/evidence/workflow-migration-2026-10-21.json).
+Peter now requests the agent-skills/brain workflow used in the CLI and D&D projects. He clarifies three requirements: complete migration to the new layout and formats, deletion of all five local skills, and removal or rewriting of rules that conflict with the new workflow. [Decision](../decisions/maintainer-workflow-migration.md), [approved specification](../../spec/SPEC-maintainer-workflow.md), [observations and inventory](../alignment/evidence/workflow-migration-2026-10-21.json).
 
 ### What creates the continuity in the reference projects
 
@@ -256,4 +256,16 @@ Carry that result into the migrated status/issues. Do not infer that the asserti
 
 The migration needs two kinds of proof: complete record/reference/ownership checks, and fresh-session behavior in the intended hosts. Test root and package starts, interrupted work, a new request beside an incomplete task, no approved next task, and an existing failed check. A file's presence does not prove the agent follows it.
 
-No startup rule, local skill, product source, package version or plugin setting changes in this investigation. The proposed specification awaits review. This paragraph supersedes earlier provisional suggestions to keep the old record paths permanently.
+No startup rule, local skill, product source, package version or plugin setting changes in this investigation. Peter approves the specification on 2026-10-21. The detailed plan awaits its separate review. This paragraph supersedes earlier provisional suggestions to keep the old record paths permanently.
+
+### Implementation planning after specification approval
+
+The [implementation plan](../../tasks/plan.md) and [task list](../../tasks/todo.md) contain twelve ordered tasks or batch groups. They keep one active workflow during preparation, migrate consumers, then remove the old structure in one coordinated cutover. Semantic rewrites are separate from byte-preserving evidence moves. Exact child batches are recorded before editing; no parent group counts as one unbounded implementation task.
+
+The current check runner contains 23 browser entry points and produces 24 invocations. Nineteen entry points live under the old evidence tree. Its behavior is partly coupled to filenames: an exact scoped-check path selects module/CDN runs, a regular expression routes audit outputs, and a worker filename selects archive arguments. The first proposed task replaces that coupling with stable identities before any driver rename. Existing runner tests already cover failure aggregation, runtime identity, environment isolation and special arguments; those behaviors stay intact.
+
+The migration also owns live JSON inputs consumed by the component runner, the shared browser-distribution helper and its test, and the npm-cache security helper invoked by an audit test. The file/reference ledger must discover further dynamic and transitive dependencies. The normal lint walk covers scripts but not notes, so moved executable code must meet the checks for authored scripts. A broad ignore is not a migration fix.
+
+Task sizing follows the inspected planning skill: bounded authored changes, explicit dependencies and completion proof, with large unchanged evidence moves treated as mechanical batches. Shared indexes, state, generators and heavy verification remain coordinated. The known Chromium failure stays visible and gets a separate prerequisite investigation if it blocks final acceptance.
+
+Plan approval is pending. The first review question concerns task size; dependency order and task boundaries follow. The specification approval is settled. No runtime or fresh-session test is claimed for this planning checkpoint.
