@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-additional-functionality-review",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "checks": {
+      "sourceHash": "matches full-read source",
+      "destinationHash": "matches final prepared file",
+      "externalSourceUrls": "all source URLs retained",
+      "numericAndSourceIdentifiers": "retained; heading punctuation can change",
+      "links": "all targets exist or are allocated in ledger.records/newDocumentOwners",
+      "whitespace": "pass",
+      "runtime": "not rerun; historical proof limits retained"
+    },
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/additional-functionality-review.md",
+      "destination": "docs/design/additional-capabilities.md",
+      "sourceSha256": "c8902b8eede3ca8e8bd2e917c9c32d550bdca61ea6719719819b40ee4329579a",
+      "destinationSha256": "65d099d2fd685d2f6f830b501568869f3647a9ce1fa800cbf3e35e03a4177c58",
+      "changes": [
+        "Converted the allocated record with explicit status, dated evidence scope and current-owner links.",
+        "Retired old operational commands throughout while preserving decisions, measurements, qualifications and chronology.",
+        "Relocated Markdown links through the final ledger; historical path/session/branch literals remain provenance.",
+        {
+          "old": "**Current handoff:** [the pass status and next step](README.md#where-we-are). This completed review preserves its research evidence and dated checkpoints. Later decision notes supersede earlier recommendations; implementation remains gated by the approved inventory and migration plan.",
+          "new": "This completed review preserves the research evidence and dated checkpoints. Later decisions, approved contracts and implementation evidence resolve the earlier pending states."
+        },
+        {
+          "old": "Follow the central handoff for the current phase. Implementation, interface design and acceptance checks remain in their scheduled later phases.",
+          "new": "At that checkpoint, interface design, implementation and acceptance remained in scheduled later phases. Those phases are now complete at their recorded scope."
+        },
+        {
+          "old": "The source freeze and approval sequence remain: Phase 2 terminology/dispositions; Phase 3 architecture when Peter starts it; Phase 4 inventory/conventions/docs approval; Phase 5 migration approval; Phase 6 implementation. No source implementation is approved by this checkpoint.",
+          "new": "The original sequence placed terminology/dispositions in Phase 2, user-started architecture in Phase 3, inventory/conventions/docs approval in Phase 4, migration approval in Phase 5 and implementation in Phase 6. A source freeze applied then. This checkpoint itself did not approve implementation; the sequence and freeze are historical."
+        },
+        {
+          "old": "## Resume here\n\n**This capability walkthrough is closed.** Follow the central handoff for active questions. The five-control Zag adapter/runtime strategy is superseded by native Lit ports using the full house stack. Do not repeat settled capability questions, revive a Zag runtime or add a house TanStack Table engine.\n\nThe [Phase 2 disposition/terminology review](phase-2-review.md#phase-2-closure) is complete. Follow the [current handoff](README.md#where-we-are) and [inventory](inventory.md) for exact interfaces and composition rules. Card, Fieldset, Group/Toolbar ownership, focused Item, Tree View, Sidebar, TOC, formatters, settings recipes and Data List are selected. Check prior and upcoming dependencies without reopening settled capability choices.\n\nThe [five native-port mappings](../analysis/package-choices.md#five-native-behaviour-port-mappings) are recorded. @internationalized/number is selected. Shape morphing is needs-driven; the full Material catalogue is not a research gate. Do not repeat those choices or resume a generic shape-library selection without a concrete component need.\n\nExact component interfaces, inspector panels, MCP transport/hosting and release coordination continue in the inventory and migration reviews. Responsive selections now live in the [responsive decision](../decisions/responsive-system.md) and inventory; only their explicitly listed details remain open. Preserve separate pre-approval evidence gates and implementation acceptance checks.\n\n",
+          "new": "## Historical continuation\n\nThe capability walkthrough closed with the five-control Zag adapter/runtime strategy superseded by native Lit ports using the full selected stack. Selected capabilities remained; no TanStack Table engine was added.\n\nThe [Phase 2 review](phase-2-review.md#phase-2-closure) closed Card, Fieldset, Group/Toolbar ownership, focused Item, Tree View, Sidebar, TOC, formatters, settings recipes and Data List purposes. The inventory subsequently defined their interfaces and composition.\n\nThe [five native-port mappings](../analysis/package-choices.md#five-native-behaviour-port-mappings) and independent number utility were selected. Shape morphing remained needs-driven; a full Material catalogue was not a research gate.\n\nInspector panels, MCP transport/hosting, release coordination and the explicitly listed [responsive details](../decisions/responsive-system.md) then remained for inventory and migration review. The later [whole-set approval](../decisions/inventory-approval.md) and implementation supersede those pending states. Pre-approval feasibility and implementation acceptance remain distinct evidence.\n\n"
+        },
+        {
+          "old": "- Phase 2 owns glossary/context decisions, names and dispositions. Phase 3 starts when Peter says and owns shared architecture. Phase 4 owns full interfaces, conventions and docs layout, requiring approval.",
+          "new": "- The original Phase 2 owned glossary/context, names and dispositions; user-started Phase 3 owned architecture; Phase 4 owned approved interfaces, conventions and documentation layout."
+        },
+        {
+          "old": "- Phase 5 must resolve final package paths/versions, generated-file migration, publication compatibility and the ordered migration plan before implementation. Preserve existing publishing/provenance guarantees while the pure-Bun publication path remains unresolved.",
+          "new": "- The original Phase 5 owned final package paths/versions, generated-file migration, publication compatibility and the ordered plan. The pure-Bun publication mechanism remained unresolved then; later release evidence resolves it without removing trusted publishing/provenance."
+        },
+        {
+          "old": "- Phase 6 must prove behaviour, accessibility and visual requirements in the selected browsers and Bun tests. Existing synthetic probes and historical 608 tests are evidence with stated limits, not proof of the finished system.",
+          "new": "- Phase 6 owned behavior, accessibility and visual verification in the selected browsers and Bun tests. The synthetic probes and historical 608 tests did not prove the finished system."
+        },
+        {
+          "old": "Preserve trusted publishing/provenance while the pure-Bun publication path is unresolved.",
+          "new": "The research required preserving trusted publishing/provenance while the pure-Bun path remained unresolved. Later release records contain its resolution."
+        },
+        {
+          "old": "Use Peter's local ask-user-question skill and Codex reference. Questions need a short self-contained premise, comparison details in separate option rows, one question at a time and no agent deadline. Wait for actual answers. Return to Plan mode for the guided questions if that is the available untimed route; do not use the async countdown card.",
+          "new": "The walkthrough then used Peter's selected local question skill and Codex reference, with self-contained context, separate option details, one question at a time and no agent deadline. Actual answers remained required. The Plan-mode route reflected that host's countdown investigation. These local-skill/mode instructions are retired; the current workflow owns question routing."
+        },
+        {
+          "old": "Peter explicitly requested continuous progress between research subjects. Continue useful work without asking for routine “continue” messages. Pause for substantive decisions or necessary records checkpoints; keep Plan-mode writes and implementation approval boundaries intact.",
+          "new": "Peter requested continuous progress between research subjects, without routine continue prompts. Substantive choices and necessary capture checkpoints still paused the old walkthrough; its Plan-mode write and implementation boundaries applied then."
+        },
+        "Final review preserves external source URLs and substantive numeric/source identifiers, checks allocated links including future issue owners, and passes whitespace verification.",
+        {
+          "old": "Each link records scope, evidence and conditions.",
+          "new": "Each link records scope, evidence and conditions. The open details in this list describe the 2026-09-19 research checkpoint; later resolutions are identified beside the affected entries."
+        },
+        {
+          "old": "Exact package names and renderer integration remain open.",
+          "new": "Exact package names and renderer integration were open at this checkpoint. The [tooling contract](../../spec/SPEC-documentation-tooling.md#package-and-api-publication) and [M22 acceptance](../verification/systematization/m22-react-2026-09-23.json) record their later scope."
+        },
+        {
+          "old": "Exact per-control/state values and broader contrast verification remain open.",
+          "new": "Exact per-control/state values and broader contrast verification remained open in this research; the later [foundation record](../research/07-design-foundations.md) preserves implementation checks and named contrast corrections."
+        },
+        {
+          "old": "Three distinct choices; exact interface remains open.",
+          "new": "Three distinct choices; their exact interface remained open here and is later defined by the [responsive contract](../../spec/SPEC-design-system.md#c-resp-shared-responsive-convention)."
+        },
+        {
+          "old": "Configuration scope and applicable controls remain for the inventory; selection-state animations remain part of the separate motion decision.",
+          "new": "Configuration scope and applicable controls were then inventory work. The [foundations contract](../../spec/SPEC-foundations.md#motion-shapes-and-indicators) records the selected per-control opt-in; selection-state animation remains a separate motion decision."
+        },
+        {
+          "old": "The earlier page-size recipe boundary is [under review](../decisions/0087-results-pagination.md#review-pending-after-the-chakra-ui-pro-example): evaluate optional page-position, page-size and navigation parts together before the inventory is approved. Jump-to-page detail remains separate.",
+          "new": "At this checkpoint the earlier recipe boundary was [under review](../decisions/0087-results-pagination.md#review-pending-after-the-chakra-ui-pro-example), with coordinated page-position, page-size and navigation parts requiring evaluation before inventory approval. The [later coordinated-parts approval](../decisions/0087-results-pagination.md#approved-coordinated-parts) resolves that boundary. Jump-to-page remains a separate composition."
+        },
+        {
+          "old": "Correct the known behaviour inconsistencies in the port; exact interfaces remain open.",
+          "new": "The native-port requirement included correcting the known behavior inconsistencies; exact interfaces were open at this checkpoint. The later [Resizable contract](../../spec/SPEC-layout.md#l-09-resizable-panes) and [acceptance record](../verification/systematization/m14-resizable-2026-09-23.json) own the resolution and tested scope."
+        },
+        {
+          "old": "Version 3.6.8 was researched, not pinned for future release; installation remains gated by migration approval.",
+          "new": "Version 3.6.8 was the research version, not a future-release pin. Installation awaited migration approval at that checkpoint. The later [M12 preparation and acceptance](../research/16-package-choices.md#m12-port-preparation--2026-09-22) records the exact installed utility and Number Input checks."
+        },
+        {
+          "old": "Peter also requests removal of the named docs footer and continuously available Previous/Next navigation. These are requested outcomes; the docs layout is still subject to its scheduled review.",
+          "new": "Peter requested removal of the named docs footer and continuously available Previous/Next navigation. Layout review remained pending at that checkpoint; the later [documentation contract](../../spec/SPEC-documentation-tooling.md#standard-page-layout) and [M23 acceptance](../verification/systematization/m23-documentation-2026-09-26.json) record the outcome and verification scope."
+        },
+        {
+          "old": "“Reviewed” means the stated research/scope discussion has been covered, not that an implementation passes. “In progress” means additional research or a decision remains. “Pending” identifies checks that have not been done.",
+          "new": "This register preserves statuses at the research checkpoint. “Reviewed” meant the research/scope discussion was covered, not that implementation passed. “In progress” and “Pending” identified remaining work at that date. Later contracts and evidence own their resolutions."
+        },
+        {
+          "old": "Located in docs-app.ts:121. Apply during docs migration.",
+          "new": "Located in docs-app.ts:121; removal was assigned to the documentation migration."
+        },
+        {
+          "old": "Evaluate page-position/page-size/navigation as coordinated optional parts after the full Pro review; no replacement interface selected.",
+          "new": "At that checkpoint, coordinated page-position/page-size/navigation parts awaited the full Pro review and no replacement interface was selected. The later coordinated-parts approval linked above resolves this."
+        },
+        {
+          "old": "Build a version-aware documentation/API/example MCP; detailed transport and interface design remain.",
+          "new": "Version-aware documentation/API/example assistance was selected; detailed transport and interfaces remained open at that checkpoint."
+        },
+        {
+          "old": "Ship versioned consumer skills; taxonomy and artifact evaluations remain to design.",
+          "new": "Versioned consumer skills were selected; taxonomy and artifact evaluations remained to design at that checkpoint."
+        },
+        {
+          "old": "Only the explicitly linked decisions are selected; Config recommendations and detailed interfaces remain open.",
+          "new": "Only the explicitly linked decisions were selected at the research checkpoint. Config practices remained recommendations, while later [tooling approval and contracts](../../spec/SPEC-documentation-tooling.md) resolved the detailed interfaces."
+        },
+        {
+          "old": "Peter subsequently selected the independent parser; it is not yet installed in the project.",
+          "new": "Peter subsequently selected the independent parser; it was not installed at that capture. The later M12 record linked above documents installation and control acceptance separately from this six-case parser probe."
+        },
+        {
+          "old": "## Research register\n\nThis register preserves statuses at the research checkpoint. “Reviewed” meant the research/scope discussion was covered, not that implementation passed. “In progress” and “Pending” identified remaining work at that date. Later contracts and evidence own their resolutions.\n\n| Request | Research status | Record and remaining work |\n|---|---|---|\n| Remove docs footer | Reviewed | Located in docs-app.ts:121; removal was assigned to the documentation migration. [Docs analysis](../research/09-documentation-site.md#phase-1-extension-documentation-navigation). |\n| Keep docs Previous/Next visible | Reviewed; requested outcome | Current placement identified. Final layout and zoom/narrow-view/focus checks belong to the docs inventory and implementation. |\n| ComboBox trailing overflow | Reviewed; behaviour selected | Chrome reproduced cause; transient wrap probe removed overflow. Other engines and final fix remain to test. |\n| Shared moving selection indicator | Reviewed; shared scope selected | Material Web Tabs, Chakra/Ark and Radix indicators inspected. Use Lit Motion across suitable single-selection groups; exact form and participating controls remain for later design. |\n| Shared enter/exit/page/state motion | Reviewed; direction selected | Parameter mapping and browser acceptance remain unverified. |\n| Checkbox/Radio/Switch state animations | Source comparison reviewed; acceptance pending | Actual Material Web control/ripple sources and current transitions compared. Ripples are optional, off by default. House parameter mapping and complete state/browser checks remain. [Motion analysis](../research/02-animation-package.md#control-state-and-ripple-source-review). |\n| Shape changes and morphing | Reviewed; needs-driven scope clarified | No complete Material catalogue required. Ordinary geometry first; specific transitions and any custom geometry chosen from demonstrated inventory needs. Candidate probes retained as background, not adoption. |\n| Material layout/scaffold/panes/grids/spacing/density/RTL/canonical examples | Research coverage reviewed | Pane/density/RTL choices selected. Feed/list-detail/supporting layouts mapped as recipe candidates; final dimensions/semantics and composition remain for the scheduled inventory. [Foundation analysis](../research/07-design-foundations.md). |\n| Material customization/tokens/gestures/inputs/selection/states | Follow-up reviewed; acceptance/design pending | Web applicability, semantic state versus visual layers, native input behaviour and token/section inheritance mapped. Concrete cancellation/cleanup checks recorded. No blanket Material state palette or generic gesture engine adopted. |\n| React support | Reviewed; package shape selected | Consumer React Table content retains React rendering; no React-to-Lit Table renderer bridge is selected. Content/events/references and package exports remain to design/test. |\n| TanStack multi-framework repository survey | Reviewed | Bounded survey of 25 active non-fork repositories; adapters and release status distinguished. [Layout analysis](../research/18-repository-layout.md#phase-1-extension-framework-packages). |\n| Complete TanStack Table compatibility | Queued research walkthrough complete; acceptance pending | Selection, grouping/totals and custom extensions now reviewed alongside rendering/layout/pagination. The 17-feature requirement checklist is saved; exact interfaces and combined browser tests remain later. No Table engine/worker implementation. |\n| Native and managed form support | Reviewed; direction selected | Detailed ownership and browser contract remain for design/verification. |\n| Numbered/data pagination | Capability selected; optional-parts boundary reopened | Reusable numbered/compact results navigation and unknown totals. Application owns state/loading. At that checkpoint, coordinated page-position/page-size/navigation parts awaited the full Pro review and no replacement interface was selected. The later coordinated-parts approval linked above resolves this. Jump-to-page detail remains separate; document navigation is a distinct concept. |\n| Toast stacking | Reviewed; direction selected | Reference behaviours and local gaps identified; final limit, timing, actions and API remain in the inventory. |\n| Plain/rich tooltip distinction | Reviewed; activation selected | Later Phase 2 keeps Tooltip/Hover Card/Toggle Tip and removes Context Card; exact accessibility and Popover interfaces remain inventory work. |\n| Blue default accent | Direction selected; broader verification pending | Original Custom button measured below 4.5:1 in both themes; Peter chose darker blue with white text. Exact state tokens, other controls, non-text contrast and gamut/browser checks remain. [Foundation analysis](../research/07-design-foundations.md#blue-accent-contrast-and-visual-choice). |\n| Full custom themes | Reviewed; scope selected | Authoring format, token contract, inheritance and overlay propagation need design and tests. |\n| Toast versus Snackbar naming | Reviewed | Keep Toast; bounded official-library survey, not market-share statistics. |\n| Biome replacement | Reviewed; direction selected | Isolated native/type-aware/format/CSS probes completed; full rule mapping and migration verification pending. |\n| AG Grid AI Toolkit analogue | Reviewed; excluded from this pass | Schema builder/module source inspected. Peter chose authoring support only, with no live AI component control. |\n| AG Grid MCP analogue | Reviewed; selected | Published handlers/resources/fetch/project-state code inspected. Version-aware documentation/API/example assistance was selected; detailed transport and interfaces remained open at that checkpoint. |\n| AG Grid skills analogue | Reviewed; selected | Both skill entrypoints and key Grid/upgrade references read. Versioned consumer skills were selected; taxonomy and artifact evaluations remained to design at that checkpoint. |\n| TanStack Intent for those tools | Reviewed; selected | Guides/source and published 0.4.0 Bun probes covered validation, installed-version loading and allowlist rejection. Full release integration and semantic evaluations remain. |\n| Lit/React TanStack Devtools | Reviewed; selected | Lit and React probe panels mounted, updated and cleaned up in Chrome; Bun production exclusion and font-asset adaptation tested. Actual inspector and all-engine verification remain. |\n| TanStack Config conventions | Reviewed; recommendations only | Docs, root/PR workflow and publishing helper read. Package checks, explicit tasks, release intent and dependency checks proposed; no additional tooling adoption. |\n| Chakra responsive system | Reviewed; scope/defaults selected | Layout and appearance; Material bands; font-relative thresholds. Existing Grid path and published Chakra boundary discrepancy inspected. Exact interface and browser coverage remain. |\n| Box | Reviewed; selected | Add a general theme/responsive container primitive. Chakra/Radix source read; exact interface and host semantics remain for the inventory. |\n| Resizable panes | Capability selected; native-port implementation review | Port behaviour using the stack instead of running Zag. Optional collapse restores previous size; application owns saving. Correct orientation/keyboard/collapse inconsistencies and verify the native implementation in all three engines. |\n| Density | Reviewed; three choices selected | Shared spacing-only density, normal inherited menu/dialog/Toast spacing, 24px compact clickable-area floor. Exact values/eligibility and browser target checks remain later. |\n| Bidirectional support | Reviewed; selected | Whole-page and nested-section LTR/RTL support in Lit/React. Shared navigation gaps and partial Slider handling identified; complete keyboard/icon/content checks remain later. |\n| Independent number parsing utility | Reviewed; selected | @internationalized/number; six isolated Bun cases passed. Native Number Input, form/IME and browser acceptance remain later. |\n",
+          "new": "## Research register\n\nThis register preserves statuses at the research checkpoint. “Reviewed” meant the research/scope discussion was covered, not that implementation passed. “In progress” and “Pending” identified remaining work at that date. Later contracts and evidence own their resolutions.\n\n| Request | Research status | Record and remaining work |\n|---|---|---|\n| Remove docs footer | Reviewed | Located in docs-app.ts:121; removal was assigned to the documentation migration. [Docs analysis](../research/09-documentation-site.md#phase-1-extension-documentation-navigation). |\n| Keep docs Previous/Next visible | Reviewed; requested outcome | Current placement identified. Final layout and zoom/narrow-view/focus checks belong to the docs inventory and implementation. |\n| ComboBox trailing overflow | Reviewed; behaviour selected | Chrome reproduced cause; transient wrap probe removed overflow. Other engines and final fix remained to test at that checkpoint. |\n| Shared moving selection indicator | Reviewed; shared scope selected | Material Web Tabs, Chakra/Ark and Radix indicators inspected. Lit Motion was selected across suitable single-selection groups; exact form and participating controls remained for later design. |\n| Shared enter/exit/page/state motion | Reviewed; direction selected | Parameter mapping and browser acceptance remained unverified by this research. |\n| Checkbox/Radio/Switch state animations | Source comparison reviewed; acceptance pending | Actual Material Web control/ripple sources and current transitions compared. Ripples are optional, off by default. Parameter mapping and complete state/browser checks remained. [Motion analysis](../research/02-animation-package.md#control-state-and-ripple-source-review). |\n| Shape changes and morphing | Reviewed; needs-driven scope clarified | No complete Material catalogue required. Ordinary geometry first; specific transitions and any custom geometry chosen from demonstrated inventory needs. Candidate probes retained as background, not adoption. |\n| Material layout/scaffold/panes/grids/spacing/density/RTL/canonical examples | Research coverage reviewed | Pane/density/RTL choices selected. Feed/list-detail/supporting layouts mapped as recipe candidates; final dimensions/semantics and composition remained for the scheduled inventory. [Foundation analysis](../research/07-design-foundations.md). |\n| Material customization/tokens/gestures/inputs/selection/states | Follow-up reviewed; acceptance/design pending | Web applicability, semantic state versus visual layers, native input behaviour and token/section inheritance mapped. Concrete cancellation/cleanup checks recorded. No blanket Material state palette or generic gesture engine adopted. |\n| React support | Reviewed; package shape selected | Consumer React Table content retains React rendering; no React-to-Lit Table renderer bridge is selected. Content/events/references and package exports remained to design/test. |\n| TanStack multi-framework repository survey | Reviewed | Bounded survey of 25 active non-fork repositories; adapters and release status distinguished. [Layout analysis](../research/18-repository-layout.md#phase-1-extension-framework-packages). |\n| Complete TanStack Table compatibility | Queued research walkthrough complete; acceptance pending | Selection, grouping/totals and custom extensions now reviewed alongside rendering/layout/pagination. The 17-feature requirement checklist is saved; exact interfaces and combined browser tests remained later work. No Table engine/worker implementation. |\n| Native and managed form support | Reviewed; direction selected | Detailed ownership and browser contract remained for design/verification. |\n| Numbered/data pagination | Capability selected; optional-parts boundary reopened | Reusable numbered/compact results navigation and unknown totals. Application owns state/loading. At that checkpoint, coordinated page-position/page-size/navigation parts awaited the full Pro review and no replacement interface was selected. The later coordinated-parts approval linked above resolves this. Jump-to-page detail remains separate; document navigation is a distinct concept. |\n| Toast stacking | Reviewed; direction selected | Reference behaviours and local gaps identified; final limit, timing, actions and API remained in the inventory. |\n| Plain/rich tooltip distinction | Reviewed; activation selected | Later Phase 2 keeps Tooltip/Hover Card/Toggle Tip and removes Context Card; exact accessibility and Popover interfaces remained inventory work. |\n| Blue default accent | Direction selected; broader verification pending | Original Custom button measured below 4.5:1 in both themes; Peter chose darker blue with white text. Exact state tokens, other controls, non-text contrast and gamut/browser checks remained. [Foundation analysis](../research/07-design-foundations.md#blue-accent-contrast-and-visual-choice). |\n| Full custom themes | Reviewed; scope selected | Authoring format, token contract, inheritance and overlay propagation need design and tests. |\n| Toast versus Snackbar naming | Reviewed | Keep Toast; bounded official-library survey, not market-share statistics. |\n| Biome replacement | Reviewed; direction selected | Isolated native/type-aware/format/CSS probes completed; full rule mapping and migration verification pending. |\n| AG Grid AI Toolkit analogue | Reviewed; excluded from this pass | Schema builder/module source inspected. Peter chose authoring support only, with no live AI component control. |\n| AG Grid MCP analogue | Reviewed; selected | Published handlers/resources/fetch/project-state code inspected. Version-aware documentation/API/example assistance was selected; detailed transport and interfaces remained open at that checkpoint. |\n| AG Grid skills analogue | Reviewed; selected | Both skill entrypoints and key Grid/upgrade references read. Versioned consumer skills were selected; taxonomy and artifact evaluations remained to design at that checkpoint. |\n| TanStack Intent for those tools | Reviewed; selected | Guides/source and published 0.4.0 Bun probes covered validation, installed-version loading and allowlist rejection. Full release integration and semantic evaluations remained. |\n| Lit/React TanStack Devtools | Reviewed; selected | Lit and React probe panels mounted, updated and cleaned up in Chrome; Bun production exclusion and font-asset adaptation tested. Actual inspector and all-engine verification remained. |\n| TanStack Config conventions | Reviewed; recommendations only | Docs, root/PR workflow and publishing helper read. Package checks, explicit tasks, release intent and dependency checks proposed; no additional tooling adoption. |\n| Chakra responsive system | Reviewed; scope/defaults selected | Layout and appearance; Material bands; font-relative thresholds. Existing Grid path and published Chakra boundary discrepancy inspected. Exact interface and browser coverage remained. |\n| Box | Reviewed; selected | The selected capability was a general theme/responsive container primitive. Chakra/Radix source read; exact interface and host semantics remained for the inventory. |\n| Resizable panes | Capability selected; native-port implementation review | The selected port used the stack instead of running Zag. Optional collapse restores previous size; application owns saving. The port required correction of orientation/keyboard/collapse inconsistencies and native implementation checks in all three engines. |\n| Density | Reviewed; three choices selected | Shared spacing-only density, normal inherited menu/dialog/Toast spacing, 24px compact clickable-area floor. Exact values/eligibility and browser target checks remained later. |\n| Bidirectional support | Reviewed; selected | Whole-page and nested-section LTR/RTL support in Lit/React. Shared navigation gaps and partial Slider handling identified; complete keyboard/icon/content checks remained later. |\n| Independent number parsing utility | Reviewed; selected | @internationalized/number; six isolated Bun cases passed. Native Number Input, form/IME and browser acceptance remained later. |\n"
+        }
+      ],
+      "retainedQualifications": [
+        "A source survey, proposal or user approval is not runtime acceptance.",
+        "Historical checkpoints do not establish current host, package or platform status.",
+        "Saved evidence identities and their original verification limits remain intact.",
+        ".scratch/maintenance/issues/002-actual-platform-verification.md"
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/alignment/additional-functionality-review.md",
+      "oldAnchor": "phase-1-extension-additional-functionality",
+      "destination": "docs/design/additional-capabilities.md",
+      "newAnchor": "additional-capability-requirements-and-research",
+      "note": "Heading renamed; subsection evidence retained."
+    },
+    {
+      "source": "notes/alignment/additional-functionality-review.md",
+      "oldAnchor": "resume-here",
+      "destination": "docs/design/additional-capabilities.md",
+      "newAnchor": "historical-continuation",
+      "note": "Heading renamed; subsection evidence retained."
+    }
+  ],
+  "findings": [],
+  "reviewCorrections": [
+    {
+      "review": ".artifacts/task7-history-record-review.md",
+      "date": "2026-10-21",
+      "findings": [
+        2
+      ],
+      "previousDestinationSha256": "ead0e0b1dc5a099dd57176205d09a3224f2e856dccfc72078b6d2fe5e516ace0",
+      "destinationSha256": "65d099d2fd685d2f6f830b501568869f3647a9ce1fa800cbf3e35e03a4177c58",
+      "scope": "Dated remaining approval/installation/path/CDN uncertainty; linked existing later approvals and bounded implementation/delivery evidence.",
+      "runtime": "No build, browser or runtime check run; original proof limits retained.",
+      "verification": "Source/destination hashes match; whitespace and allocated-target checks pass. No original external citation or substantive numeric identifier is removed. Reviewer recheck pending."
+    }
+  ]
+}

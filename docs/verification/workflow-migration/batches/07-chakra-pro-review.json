@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-chakra-pro-review",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "checks": {
+      "sourceHash": "matches full-read source",
+      "destinationHash": "matches final prepared file",
+      "externalSourceUrls": "all source URLs retained",
+      "numericAndSourceIdentifiers": "retained; heading punctuation can change",
+      "links": "all targets exist or are allocated in ledger.records/newDocumentOwners",
+      "whitespace": "pass",
+      "runtime": "not rerun; historical proof limits retained"
+    },
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/chakra-pro-review.md",
+      "destination": "docs/research/21-chakra-pro-collection.md",
+      "sourceSha256": "f6a5b53f881a16a6ad004fcf4a15e24b3297d44afd995d770da1a8451a85f4b3",
+      "destinationSha256": "2c0d13b97932312238f6b3c5ed52f5f7bc2a28bd5334d544c69482119b6e7561",
+      "changes": [
+        "Converted the allocated record with explicit status, dated evidence scope and current-owner links.",
+        "Retired old operational commands throughout while preserving decisions, measurements, qualifications and chronology.",
+        "Relocated Markdown links through the final ledger; historical path/session/branch literals remain provenance.",
+        {
+          "old": "**Current handoff:** [the pass status and next step](README.md#where-we-are). This completed review preserves its research evidence and dated checkpoints. Later decision notes supersede earlier recommendations; implementation remains gated by the approved inventory and migration plan.",
+          "new": "This completed review preserves source evidence and dated checkpoints. Later decisions and approved contracts resolve the earlier pending questions."
+        },
+        {
+          "old": "A block is read only after every source file has been read completely or its entire contents are verified byte-for-byte against a fully read original, with that relationship recorded. A kit is read only after every file in its recorded scope has been covered. Preserve partial offsets when tool output truncates. Never mark an inaccessible file read.",
+          "new": "The review counted a block as read only after complete reads of every source file or complete byte equality with a fully read original, with that relationship recorded. Kit completion required every scoped file. Truncated reads retained exact offsets; inaccessible files could not count as read."
+        },
+        {
+          "old": "Use the [component-to-example index]",
+          "new": "The collection supplies the [component-to-example index]"
+        },
+        {
+          "old": "Topic/import scans are navigation aids; do not treat them as semantic review or proof of a completed capability.",
+          "new": "Topic/import scans are navigation aids, not semantic review or proof of a completed capability."
+        },
+        {
+          "old": "Peter signed into Chakra UI Pro and explicitly requested the built-in browser. Reuse the existing browser connection and the live tab if it survives; locate a fresh tab through that browser if needed. Read the visible Code tab and each filename tab through its rendered code panel. The code view is confirmed accessible.",
+          "new": "Peter signed into Chakra UI Pro and requested the built-in browser. The review used its connection and rendered Code/filename panels. That code view was accessible at the checkpoint; this is not a current browser-session instruction."
+        },
+        {
+          "old": "Do not infer that ZIP download is impossible or that a successful button state proves source acquisition.",
+          "new": "Those observations established neither ZIP-download impossibility nor source acquisition from a successful button state."
+        },
+        {
+          "old": "For each completed family, record composition, public settings/slots, state and data ownership, keyboard/focus/form behaviour, responsive/theme rules, incomplete placeholders and verification limits. Compare with accepted decisions and upcoming dependencies using the [decision-review procedure](phase-2-review.md#decision-compatibility-and-dependencies).",
+          "new": "The review recorded composition, public settings/slots, state/data ownership, keyboard/focus/forms, responsive/theme rules, placeholders and verification limits per family. It compared accepted decisions and dependencies through the historical [decision-review procedure](phase-2-review.md#decision-compatibility-and-dependencies)."
+        },
+        {
+          "old": "Evaluate every family through that lens: identify useful extension points, simple-to-complex composition, responsibilities that should stay in shared primitives, and application-specific logic. Capture required capabilities and gaps with source evidence; do not reduce the review to deciding whether each named example deserves a new element, or automatically adopt the most complex reference interface.",
+          "new": "The review therefore examined extension points, simple-to-complex composition, shared primitive responsibilities and application-specific logic. Source evidence established capability inputs and gaps without making each example a new component or automatically adopting the most complex interface."
+        },
+        {
+          "old": "Review exact compositions in the inventory; this is not an open vote on retaining a universal Entity component.",
+          "new": "Exact compositions subsequently entered the inventory; this was not an open vote on retaining a universal Entity component."
+        },
+        {
+          "old": "Evaluate whether these should be coordinated optional parts of Pagination rather than an application-defined wrapper. Bring this back with the relevant complete review findings, before approving the Pagination inventory entry. The prior recipe boundary is under review; no final new interface is selected.",
+          "new": "That request reopened the recipe boundary to consider coordinated Pagination parts. It was unresolved at this checkpoint. The later [whole-set approval](../decisions/inventory-approval.md) selects the coordinated optional parts; this earlier review alone did not select the final interface."
+        },
+        {
+          "old": "## Resume here",
+          "new": "## Historical completion and use"
+        },
+        {
+          "old": "Use the completed ledger and searchable collection during the [current inventory review](inventory.md). The family/disposition choices are settled; do not restart Phase 2. Carry detailed Toolbar/selection/Item combinations into their inventory entries, and revisit Pagination's optional-parts question before that entry is approved. New evidence can challenge a decision; Peter selects any changed direction.",
+          "new": "The completed ledger and collection informed the [inventory](inventory.md), including Toolbar/selection/Item combinations and the then-open Pagination parts question. Family dispositions were settled. Later whole-set approval resolves the parts question; new evidence remains distinct from a changed user decision."
+        },
+        {
+          "old": "Source implementation remains frozen until Phase 5 approval. Peter subsequently authorized committing and pushing the research records; the licensed source collection remains private and outside the repository.",
+          "new": "Source implementation was frozen until the original Phase 5 approval. Peter later authorized committing and pushing those research records. That historical permission does not authorize new publication; the licensed collection remains private and outside the repository."
+        },
+        "Final review preserves external source URLs and substantive numeric/source identifiers, checks allocated links including future issue owners, and passes whitespace verification."
+      ],
+      "retainedQualifications": [
+        "A source survey, proposal or user approval is not runtime acceptance.",
+        "Historical checkpoints do not establish current host, package or platform status.",
+        "Saved evidence identities and their original verification limits remain intact."
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/alignment/chakra-pro-review.md",
+      "oldAnchor": "complete-chakra-ui-pro-reference-review",
+      "destination": "docs/research/21-chakra-pro-collection.md",
+      "newAnchor": "research-21-chakra-ui-pro-collection-review",
+      "note": "Heading renamed; subsection evidence retained."
+    },
+    {
+      "source": "notes/alignment/chakra-pro-review.md",
+      "oldAnchor": "resume-here",
+      "destination": "docs/research/21-chakra-pro-collection.md",
+      "newAnchor": "historical-completion-and-use",
+      "note": "Heading renamed; subsection evidence retained."
+    }
+  ],
+  "findings": []
+}

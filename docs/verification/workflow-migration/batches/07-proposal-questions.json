@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-proposal-questions",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "checks": {
+      "sourceHash": "matches full-read source",
+      "destinationHash": "matches final prepared file",
+      "externalSourceUrls": "all source URLs retained",
+      "numericAndSourceIdentifiers": "retained; heading punctuation can change",
+      "links": "all targets exist or are allocated in ledger.records/newDocumentOwners",
+      "whitespace": "pass",
+      "runtime": "not rerun; historical proof limits retained"
+    },
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/proposal-questions.md",
+      "destination": "docs/design/systematization-decisions.md",
+      "sourceSha256": "768343010dca13960ea37f6d64e99bfd1b7e60c819e1d0b0c24c921881388665",
+      "destinationSha256": "88efd848d5dd4d73f24675b2dbde86ca1f1f497eed8991dc40eb744e3ed3c575",
+      "changes": [
+        "Converted the allocated record with explicit status, dated evidence scope and current-owner links.",
+        "Retired old operational commands throughout while preserving decisions, measurements, qualifications and chronology.",
+        "Relocated Markdown links through the final ledger; historical path/session/branch literals remain provenance.",
+        {
+          "old": "The [proposal set](inventory.md#complete-proposal-set) contains the working recommendation for each family. Source facts, ordinary implementation details and verification work are not added to this question queue.",
+          "new": "The [proposal set](inventory.md#complete-proposal-set) contained each family recommendation. Source facts, ordinary implementation details and verification remained engineering work rather than additional user questions."
+        },
+        {
+          "old": "Prepare the small visual comparison before asking; do not invent approved final compact numbers.",
+          "new": "The original walkthrough prepared the small comparison before asking; it did not establish approved final compact measurements."
+        },
+        {
+          "old": "Render this small comparison if a visual is needed to answer; do not start another broad density investigation before showing the actual choice.",
+          "new": "The comparison was the bounded decision aid, rather than a new broad density investigation."
+        },
+        {
+          "old": "If Peter needs an advanced capability now, identify the required capabilities together and extend this one proposal before approval. Do not silently add every optional source feature or ask one speculative question per feature.",
+          "new": "At the original review, any needed advanced capability would have required an explicit extension of this proposal before approval. Unrequested source features and speculative per-feature votes were outside that scope."
+        },
+        {
+          "old": "Verify actual browser behavior before approval.",
+          "new": "The original engineering gate required actual browser verification before approval."
+        },
+        {
+          "old": "Read assigned Chakra defaults: lazyMount=false/unmountOnExit=false. Keep explicit opt-in choices; Show retains conditional mounting by purpose.",
+          "new": "The assigned Chakra defaults were lazyMount=false/unmountOnExit=false, with explicit opt-in choices retained; Show kept conditional mounting by purpose."
+        },
+        {
+          "old": "The existing representative style-pipeline/browser gate remains before Phase 5 approval. Full source implementation and acceptance follow the approved migration. All five choices are closed by the whole-set approval; do not restart their walkthrough.",
+          "new": "The original representative style-pipeline/browser gate preceded Phase 5 approval; full implementation and acceptance followed the approved migration. All five choices closed through whole-set approval. The old walkthrough is complete."
+        },
+        "Final review preserves external source URLs and substantive numeric/source identifiers, checks allocated links including future issue owners, and passes whitespace verification."
+      ],
+      "retainedQualifications": [
+        "A source survey, proposal or user approval is not runtime acceptance.",
+        "Historical checkpoints do not establish current host, package or platform status.",
+        "Saved evidence identities and their original verification limits remain intact."
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/alignment/proposal-questions.md",
+      "oldAnchor": "phase-4-decision-register--approved",
+      "destination": "docs/design/systematization-decisions.md",
+      "newAnchor": "systematization-design-decisions",
+      "note": "Heading renamed; subsection evidence retained."
+    }
+  ],
+  "findings": []
+}

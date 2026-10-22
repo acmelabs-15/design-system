@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-release-0.3.0",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "checks": {
+      "sourceHash": "matches full-read source",
+      "destinationHash": "matches final prepared file",
+      "externalSourceUrls": "all source URLs retained",
+      "numericAndSourceIdentifiers": "retained; heading punctuation can change",
+      "links": "all targets exist or are allocated in ledger.records/newDocumentOwners",
+      "whitespace": "pass",
+      "runtime": "not rerun; historical proof limits retained"
+    },
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/release-0.3.0.md",
+      "destination": "docs/releases/0.3.0.md",
+      "sourceSha256": "8a8c0844fb60b5abf3e886f346ad91df38401503e7f4e1c15fb450375179b00a",
+      "destinationSha256": "789edf9148d069a0ad1b615252b0873f6562139c0ffdcbdbba179ed82322c716",
+      "changes": [
+        "Converted the allocated record with explicit status, dated evidence scope and current-owner links.",
+        "Retired old operational commands throughout while preserving decisions, measurements, qualifications and chronology.",
+        "Relocated Markdown links through the final ledger; historical path/session/branch literals remain provenance.",
+        {
+          "old": "Requested by Peter on 2026-09-27. This authorizes the release work that was previously held: push the reviewed branch, run Linux CI, merge through the normal repository flow, publish the coordinated packages and deploy the generated documentation once its checks and account prerequisites succeed.",
+          "new": "Peter requested this release on 2026-09-27. That request authorized the then-held branch push, Linux CI, normal merge, coordinated publication and documentation deployment after checks and account prerequisites. This is the historical grant for that release, not standing authority for new work."
+        },
+        {
+          "old": "Its record owns current status.",
+          "new": "Its record preserves the completed release scope; docs/STATUS.md owns current work."
+        },
+        {
+          "old": "Correct package composition before another release. Companion trusted-publisher setup belongs immediately before their next real version. Pages deployment remains pending.",
+          "new": "At this checkpoint, package composition required correction before another release, companion publishers awaited their next real version, and Pages deployment remained pending."
+        },
+        {
+          "old": "Push the reviewed branch and open a release PR. Run the complete Linux gate before merging or publishing. Verify npm publisher permissions and the first-publication path for each companion package. Merge with a merge commit, release the coordinated version through the verified workflow, verify registry artifacts/provenance, then deploy the reviewed site through Pages and verify public routes. Keep the existing site and package version available until their replacements succeed.",
+          "new": "The intended sequence was a reviewed branch push and release PR, complete Linux verification, publisher/first-publication checks, a merge commit, verified coordinated publication, registry/provenance checks, then Pages deployment and public-route checks. Existing site/package versions stayed available until their replacements succeeded."
+        },
+        {
+          "old": "The signed-in npm browser has moved to password confirmation and remains under user control. The release cannot complete until that authentication and the legitimate first-publication path are resolved. Core's existing OIDC setup also needs verification before publication is enabled.",
+          "new": "At that checkpoint the npm browser had reached user-controlled password confirmation. Authentication, a legitimate first-publication path and core OIDC verification remained prerequisites. Later checkpoints below resolve authentication; this is not a current request."
+        },
+        {
+          "old": "The next Linux run must pass before integration/publication.",
+          "new": "The recorded integration/publication gate required a passing next Linux run."
+        },
+        {
+          "old": "The next Linux rerun must complete before release.",
+          "new": "The release then awaited the next complete Linux rerun."
+        },
+        {
+          "old": "the user must complete that authentication directly.",
+          "new": "that checkpoint awaited authentication completed directly by Peter."
+        },
+        {
+          "old": "On resumption: inspect the latest Linux result and diagnose any remaining failure without weakening gates. Complete npm authentication and the three companion packages' first-publication prerequisites. Verify package-specific trusted publishing before enabling the coordinated publishing workflow. Then merge through the normal verified flow, tag/release the verified commit and deploy/check Pages. Preserve the manual-platform limitations. Do not use the previously exposed npm credential, print credentials, or publish only a subset while claiming the coordinated release is complete.",
+          "new": "The historical handoff awaited Linux results, any required diagnosis, Peter's authentication and the three companion first-publication prerequisites. It required package-specific publisher verification before enablement, then verified merge/tag/release and Pages acceptance. Manual-platform limits remained, the exposed credential was excluded, and partial publication could not count as coordinated completion. These resumption instructions are retired."
+        },
+        {
+          "old": "Do not print their contents or read the previous npm credential.",
+          "new": "The investigation did not print those contents or read the previous exposed credential."
+        },
+        {
+          "old": "Continue through the authenticated first-publication sequence below.",
+          "new": "The task then followed the authenticated first-publication sequence below."
+        },
+        {
+          "old": "Under the authorized release, add a prepare_only dispatch input to the existing publishing workflow. It runs the same complete Linux gate and exact-tag/commit/source checks, then signs the four archives with the pinned npm provenance implementation.",
+          "new": "Under that release authorization, the workflow gained a prepare_only dispatch input. It ran the same complete Linux and exact-tag/commit/source checks, then signed four archives with the pinned npm provenance implementation."
+        },
+        {
+          "old": "Keep the final tag/commit and downloaded artifact record identical; do not publish the older local archives.",
+          "new": "The publication requirement bound the final tag/commit to the downloaded artifact record; older local archives were not publication inputs."
+        },
+        {
+          "old": "Next: wait for the complete Linux result, then merge with a merge commit. Keep publishing disabled while the exact release tag's prepare_only workflow signs its verified archives. Authenticate the real companion versions' first publication using those archives/bundles, configure their exact trusted publishers, then enable and run normal coordinated publication. Deploy and verify Pages after package publication.",
+          "new": "The then-planned continuation awaited complete Linux acceptance, a merge commit and exact-tag prepare_only signing while publication stayed disabled. It then called for real companion first publication from those archives/bundles, publisher setup and coordinated publication before Pages. Later checkpoints revise publisher timing and record actual outcomes. This is historical sequence, not active authorization."
+        },
+        {
+          "old": "Next: require successful preparation/signing, download signed-release-05aff0c130887055281824dc5d103cb942e794cd from that run, and independently verify it with scripts/release-attest.ts verify under Bun1.4.2. Confirm release.json names commit05aff0c130887055281824dc5d103cb942e794cd. Publish the three real companion0.3.0 archives with the authenticated owner and their matching provenance-file bundles. Configure and verify each trusted publisher, then enable normal publication and finish the coordinated release. npm configuration remains isolated under /private/tmp/acme-npm-login-jxv9dw; do not print it or use the old exposed credential. These live status edits remain local.",
+          "new": "The next recorded steps were successful preparation/signing and independent verification of signed-release-05aff0c130887055281824dc5d103cb942e794cd with scripts/release-attest.ts verify under Bun1.4.2. The required release.json commit was05aff0c130887055281824dc5d103cb942e794cd. Companion publication would use those exact archives and matching provenance-file bundles; publisher configuration and normal coordinated publication were planned afterward. The historical npm directory was /private/tmp/acme-npm-login-jxv9dw; its contents were not publication evidence to print or reuse. Those status edits were local at the checkpoint."
+        },
+        {
+          "old": "The first publication command for @acmelabs/design-system-react0.3.0 is active in terminal session31089.",
+          "new": "At this checkpoint the first @acmelabs/design-system-react0.3.0 publication command was active in session31089."
+        },
+        {
+          "old": "Resume by checking this session, then verify registry integrity before proceeding to Devtools/MCP. Keep the whole release incomplete until all four packages and documentation are verified.",
+          "new": "The historical continuation required session completion and registry integrity before Devtools/MCP. All four packages and documentation had to verify before coordinated completion."
+        },
+        {
+          "old": "Do not infer successful0.3.0 publication from the CLI exit code.",
+          "new": "The CLI exit code did not establish successful0.3.0 publication."
+        },
+        {
+          "old": "Check the retry result and registry integrity before continuing to the other packages.",
+          "new": "The retry result and registry integrity remained prerequisites before the other packages."
+        },
+        {
+          "old": "Publishing the draft later triggers the normal release workflow; do not separately dispatch a duplicate normal publish run.",
+          "new": "Publishing the draft would trigger the normal workflow, so a separate duplicate dispatch was not part of the plan."
+        },
+        {
+          "old": "Create each companion trust configuration immediately before its next actual version, then validate it through that release's real CI publication. Do not invent another version just to activate a configuration.",
+          "new": "The revised plan created companion trust configurations immediately before their next real version and validated them through real CI publication, without an invented activation release."
+        },
+        {
+          "old": "Confirm actual state before creating future configurations.",
+          "new": "The absence of a successful response left that configuration state unverified at the checkpoint."
+        },
+        {
+          "old": "After all four npm packages are verified, configure workflow-based Pages and enable its opt-in.",
+          "new": "The original plan placed workflow-based Pages configuration/opt-in after all four package verifications."
+        },
+        {
+          "old": "If unavailable, dispatch the normal Pages workflow. Keep all existing safety gates.",
+          "new": "The planned fallback was the normal Pages workflow with all gates retained."
+        },
+        {
+          "old": "Require that workflow's success and all four public-package checks before switching Pages.",
+          "new": "Pages switching still required workflow success and all four public-package checks."
+        },
+        {
+          "old": "do not infer availability from the active upload step.",
+          "new": "the active upload did not establish availability."
+        },
+        {
+          "old": "Use60,000 as a conservative project budget while retaining actual publication as the final registry check.",
+          "new": "The resulting project budget was60,000 entries, with actual publication still the final registry check."
+        },
+        {
+          "old": "Under delegated execution, investigate a separate browser distribution and a shared declaration for equivalent artwork imports. Retain precise class, definition and registration declarations.",
+          "new": "The delegated recovery investigation considered a separate browser distribution and shared declarations for equivalent artwork imports while retaining precise class, definition and registration declarations."
+        },
+        {
+          "old": "Record the corrected release identity before tagging.",
+          "new": "A corrected release identity was required before another tag."
+        },
+        {
+          "old": "Its [recovery plan](release-0.3.1.md) is the current execution record.",
+          "new": "Its [recovery record](release-0.3.1.md) preserves the subsequent execution."
+        },
+        {
+          "old": "The selected direct first publication with GitHub-signed provenance avoids those extra public versions; it does not depend on the older staging restriction.",
+          "new": "At this checkpoint, direct first publication with GitHub-signed provenance was expected to avoid extra public versions and did not depend on the older staging restriction. The later actual 202 response and placeholder disproved that expectation."
+        },
+        {
+          "old": "Core's existing validated publisher completes the current0.3.0 release once React becomes available.",
+          "new": "The plan then expected core's validated publisher to complete0.3.0 after React became available. The later E415 rejection prevented that completion."
+        },
+        {
+          "old": "the correction must cover that consumer case.",
+          "new": "The correction requirement covered that consumer case."
+        },
+        "Final review preserves external source URLs and substantive numeric/source identifiers, checks allocated links including future issue owners, and passes whitespace verification."
+      ],
+      "retainedQualifications": [
+        "A source survey, proposal or user approval is not runtime acceptance.",
+        "Historical checkpoints do not establish current host, package or platform status.",
+        "Saved evidence identities and their original verification limits remain intact.",
+        ".scratch/maintenance/issues/002-actual-platform-verification.md",
+        ".scratch/maintenance/issues/003-npm-token-rotation.md",
+        ".scratch/maintenance/issues/004-advisory-review-deadline.md"
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/alignment/release-0.3.0.md",
+      "oldAnchor": "release-030",
+      "destination": "docs/releases/0.3.0.md",
+      "newAnchor": "release-030-incomplete-coordinated-publication",
+      "note": "Heading renamed; subsection evidence retained."
+    }
+  ],
+  "findings": []
+}

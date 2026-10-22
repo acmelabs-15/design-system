@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-phase-3-review",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "checks": {
+      "sourceHash": "matches full-read source",
+      "destinationHash": "matches final prepared file",
+      "externalSourceUrls": "all source URLs retained",
+      "numericAndSourceIdentifiers": "retained; heading punctuation can change",
+      "links": "all targets exist or are allocated in ledger.records/newDocumentOwners",
+      "whitespace": "pass",
+      "runtime": "not rerun; historical proof limits retained"
+    },
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/phase-3-review.md",
+      "destination": "docs/history/systematization/architecture-review.md",
+      "sourceSha256": "82a4a586d62e26c756de03278c05f42f2f5fbb5240a34c3d5160b63ff3bbdadd",
+      "destinationSha256": "262928f9190da8b75546e7bc00f191fe4e1c6da2f48d1797ab6c2055497908d1",
+      "changes": [
+        "Converted the allocated record with explicit status, dated evidence scope and current-owner links.",
+        "Retired old operational commands throughout while preserving decisions, measurements, qualifications and chronology.",
+        "Relocated Markdown links through the final ledger; historical path/session/branch literals remain provenance.",
+        {
+          "old": "Started 2026-09-19 at Peter's request. **Architecture responsibility review complete; Phase 4 inventory review is active.** This closes the phase at the responsibility level described in the pass plan. It does not approve draft interfaces, certify implementations or authorize source changes. The closure and explicit return points below govern the earlier investigation notes.",
+          "new": "Started 2026-09-19 at Peter's request. The architecture review closed at the responsibility level, after which Phase 4 was active. That closure approved neither draft interfaces nor runtime behavior and did not authorize source changes. The dated return points below describe the original investigation."
+        },
+        {
+          "old": "## Current selections",
+          "new": "## Selections at architecture closure"
+        },
+        {
+          "old": "**CONFIRMED — overlays first.** Start with the shared overlay responsibilities.",
+          "new": "**CONFIRMED — overlays first.** Shared overlay responsibilities were the first review subject."
+        },
+        {
+          "old": "Before finalizing interfaces, compare viable implementations at the same lifecycle, focus, modality, theme and accessibility requirements. Include real DOM/shadow-root interactions and all three engines. Do not treat native top-layer support as proof that focus, outside dismissal or nested scroll locks are already correct.",
+          "new": "The proposed interface gate compared equivalent lifecycle, focus, modality, theme and accessibility requirements through real DOM/shadow-root interactions in all three engines. Native top-layer support alone did not establish focus, outside dismissal or nested scroll-lock correctness."
+        },
+        {
+          "old": "Verify reopen/cancel during exit, zero/reduced motion, infinite child Spinner, removal, nested locks, opener removal and exactly-once completion. Exact family dismissal and focus policies remain inventory obligations.",
+          "new": "The required cases were reopen/cancel during exit, zero/reduced motion, infinite child Spinner, removal, nested locks, opener removal and exactly-once completion. Family dismissal and focus policies remained inventory obligations at this checkpoint."
+        },
+        {
+          "old": "Run an equivalent-case comparison before closing the shared mechanism. Preserve the selected direction while investigating; propose any warranted change to Peter.",
+          "new": "The research left an equivalent-case comparison before shared-mechanism closure; it preserved the selected direction while allowing an evidence-backed revision for Peter."
+        },
+        {
+          "old": "Compare actual Lit implementations and test native FormData/submission, external form ownership, disabled fieldsets, reset/restoration, validity/reporting focus, submitters and managed-form synchronization for text, checkbox, radio-group and compound controls.",
+          "new": "The proposed comparison covered actual Lit implementations, native FormData/submission, external forms, disabled fieldsets, reset/restoration, validity/reporting focus, submitters and managed-form synchronization for text, checkbox, radio-group and compound controls."
+        },
+        {
+          "old": "Compare inherited CSS with minimal scope metadata and imperative propagation through the same nested/moved/custom-theme/overlay fixtures. Include system preference and changes while an overlay is open.",
+          "new": "The planned comparison used identical nested/moved/custom-theme/overlay fixtures for inherited CSS with minimal metadata and imperative propagation. It included system preference and changes while an overlay was open."
+        },
+        {
+          "old": "Check authored/generated inputs, intermediate CSS, Lit CSSResult or stylesheet outputs, global/recipe assets, property registration, source maps, escaping, minification, CEM ordering and selective delivery. Distinguish authored Lit CSS from generated Lit wrappers. Do not claim community consensus from a few systems or adopt a source-authoring model that violates the existing generator rule.",
+          "new": "The proposed checks covered authored/generated inputs, intermediate CSS, Lit CSSResult or stylesheet outputs, global/recipe assets, registration, maps, escaping, minification, CEM ordering and selective delivery. The comparison distinguished authored Lit CSS from generated wrappers and did not establish community consensus or replace generator ownership."
+        },
+        {
+          "old": "If new evidence changes one, record the discrepancy and bring a concrete revision to Peter.",
+          "new": "A changed recommendation required new evidence and a concrete revision for Peter."
+        },
+        {
+          "old": "## Resume here",
+          "new": "## Historical continuation and timing correction"
+        },
+        {
+          "old": "Keep pre-approval evidence checks separate from full implementation verification. In particular, the [style-production decision](../decisions/style-production.md) requires representative house-pipeline and three-engine rendered checks **before Phase 5 implementation approval**. The earlier pacing paragraph incorrectly allowed this evidence gate to move into Phase 6; that timing change is withdrawn. Architecture-changing uncertainty still needs resolution before selecting the affected interface. Full compiler/CEM/React integration and component regression checks also remain mandatory when implementations land. A pending source-backed evidence gate is not permission to implement the replacement early.",
+          "new": "The correction separated pre-approval evidence from full implementation verification. The [style-production decision](../decisions/style-production.md) required representative pipeline and three-engine rendered checks before the original Phase 5 approval. An earlier pacing paragraph had incorrectly moved that gate into Phase 6; that change was withdrawn. Interface-invalidating uncertainty still preceded selection, while full compiler/CEM/React integration and component regressions remained implementation checks. The pending evidence gate did not authorize early implementation."
+        },
+        {
+          "old": "Keep accepted directions confirmed; mark unselected interfaces as draft. Complete the remaining architecture recommendations and the component inventory, asking only about unresolved user-owned trade-offs. The inventory and migration approval gates remain intact.",
+          "new": "Accepted directions remained confirmed and unselected interfaces remained draft. The remaining architecture/inventory work asked only unresolved user-owned trade-offs under the original approval gates."
+        },
+        {
+          "old": "The remaining work has explicit owners and return points:",
+          "new": "The original remaining work had explicit owners and return points; these describe the completed pass:"
+        },
+        {
+          "old": "Next: continue layout and typography with the shared responsive convention. Group wrapping, nested defaults and independent framing are now selected, as are responsive objects/arrays, Material names, both query modes and their native font bases. The full inventory entries remain unapproved. The bounded audit supports keeping responsibility-level Phase 3 closure while restoring the altered approval gate; it does not certify the implementations.",
+          "new": "Layout and typography with the shared responsive convention were next at that checkpoint. Group wrapping, nested defaults, independent framing, responsive objects/arrays, Material names, both query modes and native font bases were selected; full entries were then unapproved. The bounded audit retained responsibility-level closure while restoring the altered approval gate. It did not certify implementation."
+        },
+        {
+          "old": "The evidence/quality requirement is pinned in the mandatory startup handoff. It is not stored only in conversation.",
+          "new": "The original pass recorded the evidence/quality requirement in its then-mandatory startup handoff, rather than only in conversation. Current startup ownership is separate."
+        },
+        {
+          "old": "1. **Phase 4, agent drafts and Peter approves:**",
+          "new": "1. **Historical Phase 4 ownership, agent drafting and Peter approval:**"
+        },
+        {
+          "old": "An unresolved capability choice blocks the affected inventory entry, not unrelated drafting.",
+          "new": "An unresolved capability choice blocked its affected entry, not unrelated drafting."
+        },
+        {
+          "old": "2. **Phase 5, agent proposes and Peter approves:** exact shared helper packaging, native callback bridge, compiler/output layout and changed-file batches. Before implementation approval, complete the style decision's representative house-style, escaping, scope, registration, determinism, invalid-input, selective-import and source-map checks, including rendered outcomes in all three engines. Resolve any other mechanism uncertainty that could invalidate an approved interface before accepting the affected migration batch. Bring any required interface revision back to Peter.",
+          "new": "2. **Historical Phase 5 ownership, agent proposal and Peter approval:** exact helper packaging, native callback bridge, compiler/output layout and changed-file batches. The original pre-approval checks covered representative component styles, escaping, scope, registration, determinism, invalid inputs, selective imports, maps and rendered outcomes in all three engines. Other interface-invalidating uncertainty preceded its affected batch; required interface revisions returned to Peter."
+        },
+        {
+          "old": "3. **Phase 6, implementing agent verifies:** full compiler/CEM/React output, complete control-family cases, all three browser engines, lifecycle cleanup, theme propagation, focus and accessibility. These implementation checks supplement rather than replace pre-approval evidence. Carry both kinds of check into the migration plan; none is waived by this phase closure.",
+          "new": "3. **Historical Phase 6 verification:** full compiler/CEM/React output, complete control-family cases, all three engines, cleanup, theme propagation, focus and accessibility. These supplemented pre-approval evidence. Both kinds of checks entered the migration plan; phase closure waived neither."
+        },
+        {
+          "old": "4. **Cross-phase dependency:** assigned content, attached appearance, selection indicators, native forms and Toolbar focus are reviewed together",
+          "new": "4. **Historical cross-phase dependency:** assigned content, attached appearance, selection indicators, native forms and Toolbar focus were reviewed together"
+        },
+        "Final review preserves external source URLs and substantive numeric/source identifiers, checks allocated links including future issue owners, and passes whitespace verification.",
+        {
+          "old": "The proposed interface gate compared equivalent lifecycle, focus, modality, theme and accessibility requirements through real DOM/shadow-root interactions in all three engines. Native top-layer support alone did not establish focus, outside dismissal or nested scroll-lock correctness.",
+          "new": "The proposed interface gate required comparison of viable implementations against the same lifecycle, focus, modality, theme and accessibility requirements, using real DOM/shadow-root interactions in all three engines. This was a requirement before interface finalization, not a report that the comparison had run. Native top-layer support alone did not establish focus, outside dismissal or nested scroll-lock correctness."
+        },
+        {
+          "old": "build-tool choice and implementation verification remain open.",
+          "new": "build-tool choice and implementation verification remained open at this architecture checkpoint. The linked decision records the later compiler selection and its evidence."
+        },
+        {
+          "old": "Final authoring composition, subscription cost, other browsers and toolchain integration remain unchecked.",
+          "new": "Final authoring composition, subscription cost, other browsers and toolchain integration remained unchecked by that scratch refinement."
+        },
+        {
+          "old": "They do not yet select its internal controller/mixin/base mechanism. The proposed comparison covered actual Lit implementations, native FormData/submission, external forms, disabled fieldsets, reset/restoration, validity/reporting focus, submitters and managed-form synchronization for text, checkbox, radio-group and compound controls.",
+          "new": "They did not select its internal controller/mixin/base mechanism at that checkpoint. The required comparison was to cover actual Lit implementations, native FormData/submission, external forms, disabled fieldsets, reset/restoration, validity/reporting focus, submitters and managed-form synchronization for text, checkbox, radio-group and compound controls."
+        },
+        {
+          "old": "restoration was explicitly invoked, and remaining Field/focus/managed-form and cross-engine checks stay open.",
+          "new": "restoration was explicitly invoked, and Field/focus/managed-form and cross-engine checks remained outside that probe."
+        },
+        {
+          "old": "the runtime/CSS split remains open.",
+          "new": "the runtime/CSS split remained open at the architecture checkpoint. The [later theme resolution](../../decisions/0109-theme-resolution-architecture.md#context-transport-selected-2026-09-21) records its selected transport."
+        },
+        {
+          "old": "The planned comparison used identical nested/moved/custom-theme/overlay fixtures for inherited CSS with minimal metadata and imperative propagation. It included system preference and changes while an overlay was open.",
+          "new": "The planned comparison required identical nested/moved/custom-theme/overlay fixtures for inherited CSS with minimal metadata and imperative propagation. Its required cases included system preference and changes while an overlay was open; this sentence does not report a completed comparison."
+        },
+        {
+          "old": "Full builds and browser/source-map/registration acceptance remain open.",
+          "new": "Full builds and browser/source-map/registration acceptance remained open at that bounded comparison. The [later M02 evidence](../../verification/systematization/m02-css-pipeline-2026-09-20.json) records its completed pipeline scope; it does not turn this earlier requirement into a passing result."
+        },
+        {
+          "old": "The proposed checks covered authored/generated inputs, intermediate CSS, Lit CSSResult or stylesheet outputs, global/recipe assets, registration, maps, escaping, minification, CEM ordering and selective delivery. The comparison distinguished authored Lit CSS from generated wrappers and did not establish community consensus or replace generator ownership.",
+          "new": "The required checks were to cover authored/generated inputs, intermediate CSS, Lit CSSResult or stylesheet outputs, global/recipe assets, registration, maps, escaping, minification, CEM ordering and selective delivery. Their comparison had to distinguish authored Lit CSS from generated wrappers. These requirements did not establish community consensus or replace generator ownership."
+        }
+      ],
+      "retainedQualifications": [
+        "A source survey, proposal or user approval is not runtime acceptance.",
+        "Historical checkpoints do not establish current host, package or platform status.",
+        "Saved evidence identities and their original verification limits remain intact.",
+        ".scratch/maintenance/issues/002-actual-platform-verification.md"
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/alignment/phase-3-review.md",
+      "oldAnchor": "phase-3-architecture-review",
+      "destination": "docs/history/systematization/architecture-review.md",
+      "newAnchor": "systematization-architecture-responsibility-review",
+      "note": "Heading renamed; subsection evidence retained."
+    },
+    {
+      "source": "notes/alignment/phase-3-review.md",
+      "oldAnchor": "current-selections",
+      "destination": "docs/history/systematization/architecture-review.md",
+      "newAnchor": "selections-at-architecture-closure",
+      "note": "Heading renamed; subsection evidence retained."
+    },
+    {
+      "source": "notes/alignment/phase-3-review.md",
+      "oldAnchor": "resume-here",
+      "destination": "docs/history/systematization/architecture-review.md",
+      "newAnchor": "historical-continuation-and-timing-correction",
+      "note": "Heading renamed; subsection evidence retained."
+    }
+  ],
+  "findings": [],
+  "reviewCorrections": [
+    {
+      "review": ".artifacts/task7-history-record-review.md",
+      "date": "2026-10-21",
+      "findings": [
+        1
+      ],
+      "previousDestinationSha256": "317bc101dc1ad7595ca360679b5be58610b1df89bdceb775b317ccea569b7045",
+      "destinationSha256": "262928f9190da8b75546e7bc00f191fe4e1c6da2f48d1797ab6c2055497908d1",
+      "scope": "Restored required-comparison wording; proposed comparisons are not completed evidence. Dated unresolved states and linked later resolutions without broadening proof.",
+      "runtime": "No build, browser or runtime check run; original proof limits retained.",
+      "verification": "Source/destination hashes match; whitespace and allocated-target checks pass. No original external citation or substantive numeric identifier is removed. Reviewer recheck pending."
+    }
+  ]
+}
