@@ -1,1 +1,0 @@
-const server=Bun.serve({port:4311,fetch(req){const path=new URL(req.url).pathname;return new Response(Bun.file(new URL(path==='/'?'./index.html':'.'+path,import.meta.url)))}});console.log(server.url.toString());

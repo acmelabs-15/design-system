@@ -1,8 +1,8 @@
 # Implementation plan: maintainer workflow migration
 
-Status: approved by Peter for local implementation on 2026-10-21. Tasks 1–10 are complete. Shared guidance and live consumers pass review. The preparation guard covers all 970 sources with zero errors. Task 11 activates the new workflow and removes the fully accounted old structure.
+Status: approved by Peter for local implementation on 2026-10-21. Tasks 1–11 are complete. The new workflow is active; task 12 verifies the clean candidate and actual host sessions.
 
-Task state belongs in [todo.md](todo.md). The existing [handoff](../notes/alignment/README.md#where-we-are) remains authoritative until the cutover task.
+Task state belongs in [todo.md](todo.md). [STATUS](../docs/STATUS.md) is the current handoff.
 
 ## Outcome
 
@@ -18,7 +18,7 @@ The migration preserves information and verification strength. It retires confli
 - The runner currently lists 23 browser entry points and creates 24 invocations, because scoped registration runs in two modes. Nineteen entry points live under the old evidence tree.
 - Source components, dependencies and published versions are outside this migration. Active verification code and documentation-reference consumers must change where paths require it.
 
-[Baseline evidence](../notes/alignment/evidence/workflow-migration-2026-10-21.json).
+[Baseline evidence](../docs/verification/workflow-migration/initial-research.json).
 
 ## Implementation choices
 

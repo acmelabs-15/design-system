@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "task": 11,
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Reviewed entry-point activation, exact removal inventory and launch preservation; post-cutover guard and actual host acceptance remain task12."
+  },
+  "date": "2026-10-22T06:52:43.901Z",
+  "sourceCount": 970,
+  "retiredSkillFiles": 15,
+  "changedSemanticSources": [
+    {
+      "source": "notes/alignment/README.md",
+      "baseline": "e631c7ac7b80ff009c05bbbc025ffe09fa7097a1fd901768dd3af58bc31f9a81",
+      "current": "09b00d8960a93f0f7b2ce7755fda77a46db7c1eca132820b711da704c44260ac"
+    },
+    {
+      "source": "notes/analysis/systematic-approach.md",
+      "baseline": "faff3e11298e4d71ce2aa7d5b5611b9fa28766cfa1f15ace4b7ce5321160250d",
+      "current": "d67af951f704b56d50f8541c9e7b1b0358941b40f0c5db35df167d6c94120315"
+    }
+  ],
+  "removedRoots": [
+    "notes",
+    "PLAN.md",
+    ".agents/skills"
+  ],
+  "excludedMetadata": {
+    "source": "notes/.DS_Store",
+    "backup": ".artifacts/workflow-migration-excluded/notes.DS_Store",
+    "sha256": "221d8bcaf925f2e9b2d392b2f35cc72313f854037422db4bfe8c19bf58fa5f1b"
+  },
+  "activated": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "049ca25a2f57ab4de484d2b0e91b8160244715d2b79962a5e8caa96e876148b6"
+    },
+    {
+      "path": "CLAUDE.md",
+      "sha256": "702db53ad29242ad21df72ac01172293e0edebee34fecaaed06ef6c398cef2a7"
+    },
+    {
+      "path": ".claude/settings.json",
+      "sha256": "ea9527a76f14dfa52879f8206d90b7be4da111caf1b4d775a9e131139566091f"
+    }
+  ],
+  "launch": {
+    "path": ".claude/launch.json",
+    "sha256": "55ded3ea727d5d2cc4f8944894a597d00264a4ddd1f2ccc62a4b755aa9a0f6b7",
+    "unchanged": true
+  },
+  "provenance": "Original bytes remain bound to baseline/supplemental Git revisions. Latest semantic migration progress remains in converted research, STATUS and task proofs.",
+  "externalCorrections": "Prepared and pending approval; no external mutation performed.",
+  "postCutoverGuard": {
+    "command": "bun scripts/workflow-migration.ts final",
+    "exitCode": 1,
+    "passed": false,
+    "localStructureAccepted": true,
+    "errors": [
+      "External link correction pending: https://github.com/acmelabs-15/design-system/blob/main/notes/alignment/release-0.3.2.md",
+      "External link correction pending: https://github.com/acmelabs-15/design-system/blob/main/notes/alignment/release-0.3.1.md",
+      "External link correction pending: https://github.com/acmelabs-15/design-system/blob/main/notes/alignment/release-0.3.0.md"
+    ],
+    "counts": {
+      "sources": 970,
+      "destinations": 979,
+      "extractedFixtures": 2,
+      "batches": 197
+    },
+    "fingerprints": {
+      "docs/verification/workflow-migration/ledger.json": "be2f45023b06838dda5f665e73ddbc34ff178cec142597cbfcd4f8705e37e7e4",
+      "baselineSources": "3f53595e40f0b45b99d0e96fe01a93bd18fd99699872f95c08793b4bdae5319e",
+      "docs/verification/workflow-migration/batches.json": "14d543813a889a7e353ec12419070035c4edba135a8a7e92f6710b7048c85a49",
+      "docs/verification/workflow-migration/references.json": "323fed6aa8ad0a4fc4df32336200e5ab1ad93713dd82e8956f4c3d8ad56c933a",
+      "docs/verification/workflow-migration/live-file-audit.json": "0feb6f37403d243a27c32395bfb72ab26cf0199957a619fb9a01634dff7a8673"
+    },
+    "qualification": "All local coverage/integrity/reference checks pass. Final mode remains red solely for three external corrections pending approval; this is not full migration acceptance."
+  }
+}

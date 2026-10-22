@@ -1,18 +1,18 @@
 # Project status
 
-Updated 2026-10-21. Prepared handoff for the workflow migration; the [existing entry point](../notes/alignment/README.md#where-we-are) remains authoritative until task 11 activates this file.
+Updated 2026-10-21. This file is the sole current handoff for the repository.
 
 ## Current work
 
-Phase: build the approved maintainer workflow migration. Use the [specification](../spec/SPEC-maintainer-workflow.md), [plan](../tasks/plan.md) and [task list](../tasks/todo.md).
+Phase: verify the approved maintainer workflow migration. Use the [specification](../spec/SPEC-maintainer-workflow.md), [plan](../tasks/plan.md) and [task list](../tasks/todo.md).
 
-Tasks 1–10 are complete. Shared guidance and live consumers pass review. The preparation guard covers all 970 sources with zero errors. Task 11 activates the new workflow and removes the fully accounted old structure.
+Tasks 1–11 are complete. The new workflow is active. All 970 original files are migrated or explicitly retired. The old notes tree, root port plan and five local skills are removed. [Evidence](verification/workflow-migration/README.md).
 
-All 24 required runtime checks and seven manual commands pass. The full local component matrix passes 1,446 cases. All contracts, history and 22 verification summaries pass semantic review. Original files remain until cutover.
+The task-8 preparation passes all 24 required runtime checks, seven manual commands and 1,446 component cases. All contracts, history and 22 verification summaries pass semantic review. The clean cutover candidate still needs task 12. Original paths remain in Git history and immutable provenance only.
 
 ## Next step
 
-Perform the reviewed task-11 cutover, then run task12 on its clean commit. No further routine implementation approval is pending.
+Run task 12 on the clean cutover candidate: the complete repository gate, actual fresh Claude/Codex sessions and final independent review. No further routine implementation approval is pending.
 
 One coordinator owns shared records, commits and build/browser runs. Workers own disjoint destinations and batch reports. Read those reports before accepting their results. Keep heavy build and browser jobs serial.
 
@@ -40,7 +40,7 @@ These are local paths, not portable dependencies. Verify they exist before use. 
 
 ## Git and permissions
 
-Branch: codex/maintainer-workflow-migration. Supplemental evidence capture: 335a6ed91883e5d63fa2d8fbe23f3d2c58359e60. Decision/research conversions and reviewed contract/history records are committed. Verification relocation, summary conversions, shared guidance, live consumers and guard repairs still have uncommitted work. Inspect Git for exact ownership.
+Branch: codex/maintainer-workflow-migration. The reviewed cutover is saved with this handoff. Inspect Git for the exact clean candidate identity before task 12. No push or external write has occurred.
 
 Peter approves this migration's specification, plan, local implementation and verified local commits. Push, pull request, merge, release and external release-body edits remain unapproved. Prepare their concrete result before asking once. Three [release-body corrections](verification/workflow-migration/external-reference-audit.json) are prepared; published archives, tags and signatures stay immutable.
 

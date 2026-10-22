@@ -1,6 +1,6 @@
 # Maintainer workflow migration evidence
 
-The specification and plan are approved. Tasks 1–8 are complete: 970 accounted sources, 728 exact raw copies, 115 decisions, 20 research records, 53 reviewed record batches and 30 verified live-check batches. Shared guidance and live consumers are in final review.
+The approved workflow is active. Tasks 1–11 are complete. Task 12 verifies the clean candidate, actual host sessions and final review. External release-body corrections remain pending authorization.
 
 Follow the root agent instructions and [task list](../../../tasks/todo.md) for current work. These audit records describe source history, allocations and verification. Quoted old instructions and source paths are evidence, not a second workflow.
 
@@ -15,6 +15,8 @@ Follow the root agent instructions and [task list](../../../tasks/todo.md) for c
 - [Task 7: reviewed contracts, history and verification summaries](task-07.json).
 - [Task 8: relocated checks and actual runtime acceptance](task-08.json).
 - [Task 9: reviewed shared startup and technical guidance](task-09.json).
+- [Task 10: migrated live consumers and generated projections](task-10.json).
+- [Task 11: atomic cutover and exact removal set](task-11.json).
 - [Supplemental guard coverage](task-03-supplemental.json) and [38 captured logs](task-04-supplemental.json).
 - [Complete source-to-destination ledger](ledger.json).
 - [Bounded child tasks and exact file scopes](batches.json).

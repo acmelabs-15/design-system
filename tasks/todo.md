@@ -1,8 +1,8 @@
 # Tasks: maintainer workflow migration
 
-Status: approved by Peter for local implementation on 2026-10-21. Tasks 1–10 are complete. Shared guidance and live consumers pass review. The preparation guard covers all 970 sources with zero errors. Task 11 activates the new workflow and removes the fully accounted old structure.
+Status: approved by Peter for local implementation on 2026-10-21. Tasks 1–11 are complete. The new workflow is active; task 12 verifies the clean candidate and actual host sessions.
 
-The current handoff is still [the existing pass entry point](../notes/alignment/README.md#where-we-are). Task 11 changes that owner.
+The current handoff is [STATUS](../docs/STATUS.md).
 
 ## Checklist
 
@@ -19,7 +19,7 @@ The current handoff is still [the existing pass entry point](../notes/alignment/
 - [x] 9. Prepare shared guidance and tracker adapters — [reviewed preparation](../docs/verification/workflow-migration/task-09.json).
 - [x] 10. Update live consumers and generated projections — [evidence](../docs/verification/workflow-migration/task-10.json).
 - [x] Checkpoint C: ready for cutover
-- [ ] 11. Activate the new workflow and remove the old structure
+- [x] 11. Activate the shared workflow and remove the old structure — [cutover evidence](../docs/verification/workflow-migration/task-11.json).
 - [ ] 12. Verify fresh sessions and the full migration
 - [ ] Checkpoint D: local migration acceptance
 
@@ -220,9 +220,9 @@ Each child batch of task 8 moves one driver and its dependency closure. Shared h
 **Description:** Perform one coordinated cutover. Replace AGENTS.md, replace the CLAUDE symlink with the import file, enable the two project plugins and make docs/STATUS.md authoritative. Remove the old tree, root PLAN.md and all five local skills.
 
 **Acceptance criteria:**
-- [ ] Claude and Codex reach the same current state and shared rules; no stale local skill wins name resolution.
-- [ ] The old structure is absent, with no forwarding copies or compatibility symlinks.
-- [ ] Existing launch settings, global configuration, product source and published consumer skills are preserved.
+- [x] Claude and Codex reach the same current state and shared rules; no stale local skill wins name resolution.
+- [x] The old structure is absent, with no forwarding copies or compatibility symlinks.
+- [x] Existing launch settings, global configuration, product source and published consumer skills are preserved.
 
 **Verification:** Review the prepared root files before writing. Check actual file types/imports, plugin configuration, current-state ownership, the complete ledger and removal/reference guards. Commit the coupled cutover as one reviewed unit.
 

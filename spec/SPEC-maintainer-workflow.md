@@ -1,6 +1,6 @@
 # Spec: Maintainer workflow migration
 
-Status: approved by Peter on 2026-10-21 through “approved,” in reply to the specification-approval request. The [implementation plan](../tasks/plan.md) and [task list](../tasks/todo.md) are approved by Peter after all three plan-review questions. Tasks 1–10 are complete. Shared guidance and live consumers pass review. The preparation guard covers all 970 sources with zero errors. Task 11 activates the new workflow and removes the fully accounted old structure.
+Status: approved by Peter on 2026-10-21 through “approved,” in reply to the specification-approval request. The [implementation plan](../tasks/plan.md) and [task list](../tasks/todo.md) are approved by Peter after all three plan-review questions. Tasks 1–11 are complete. The new workflow is active; task 12 verifies the clean candidate and actual host sessions.
 
 This is one maintenance capability: a fresh agent finds the right context, follows the selected workflow, and leaves an accurate handoff. The sections below describe its parts, not separate product projects.
 
