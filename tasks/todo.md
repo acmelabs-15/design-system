@@ -1,6 +1,6 @@
 # Tasks: maintainer workflow migration
 
-Status: approved for local implementation, 2026-10-21. Tasks 1 and 2 are complete. Task 3 is in progress. Full migration acceptance and independent review remain task 12.
+Status: approved for local implementation, 2026-10-21. Tasks 1–3 and Checkpoint A are complete. Task 4 is in progress. Full migration acceptance and independent review remain task 12.
 
 The current handoff is still [the existing pass entry point](../notes/alignment/README.md#where-we-are). Task 11 changes that owner.
 
@@ -8,8 +8,8 @@ The current handoff is still [the existing pass entry point](../notes/alignment/
 
 - [x] 1. Make browser-check behavior independent of filenames — [evidence](../docs/verification/workflow-migration/task-01.json).
 - [x] 2. Complete the migration ledger and rule audit — [evidence](../docs/verification/workflow-migration/task-02.json).
-- [ ] 3. Prove the migration guards
-- [ ] Checkpoint A: safe preparation
+- [x] 3. Prove the migration guards — [evidence and review](../docs/verification/workflow-migration/task-03.json).
+- [x] Checkpoint A: safe preparation
 - [ ] 4. Migrate raw evidence batches
 - [ ] 5. Convert decision-record batches
 - [ ] 6. Convert research batches
@@ -64,9 +64,9 @@ Tasks 4–8 are batch groups. Before starting one, add each exact child batch be
 **Description:** Add a narrow Bun verifier for the ledger, evidence integrity and active references. It reports facts; it does not infer prose meaning or own task state.
 
 **Acceptance criteria:**
-- [ ] Failing fixtures cover an omitted source, duplicate/escaping destination, changed immutable evidence, missing target and an active old-path reference.
-- [ ] Historical path strings in explicitly classified immutable payloads remain intact without masking active imports or links.
-- [ ] Preparation and final checks are distinct: an unfinished target can never pass final acceptance.
+- [x] Failing fixtures cover an omitted source, duplicate/escaping destination, changed immutable evidence, missing target and an active old-path reference.
+- [x] Historical path strings in explicitly classified immutable payloads remain intact without masking active imports or links.
+- [x] Preparation and final checks are distinct: an unfinished target can never pass final acceptance.
 
 **Verification:** Write the failing cases first. Run the colocated tests and applicable type/static checks. Verify the complete current ledger without moving project files.
 
@@ -78,10 +78,10 @@ Tasks 4–8 are batch groups. Before starting one, add each exact child batch be
 
 ## Checkpoint A: safe preparation
 
-- [ ] Tasks 1–3 pass their own checks.
-- [ ] The complete source set and rule dispositions are reviewable.
-- [ ] Every batch has a defined completion condition; unresolved product meaning remains explicit.
-- [ ] The known Chromium Hover Card failure is captured without a guessed cause or weakened assertion.
+- [x] Tasks 1–3 pass their own checks.
+- [x] The complete source set and rule dispositions are reviewable.
+- [x] Every batch has a defined completion condition; unresolved product meaning remains explicit.
+- [x] The known Chromium Hover Card failure is captured without a guessed cause or weakened assertion.
 
 ## Shared record-batch contract
 
@@ -263,3 +263,200 @@ Each child batch of task 8 moves one driver and its dependency closure. Shared h
 - [x] Task boundaries accepted by Peter on 2026-10-21 through “approved.” The implementation plan is fully approved.
 
 These are the plan-review decisions. Specification approval is already settled.
+
+## Exact child batches for tasks 4–8
+
+The [batch index](../docs/verification/workflow-migration/batches.json) owns exact source/destination lists, dependencies, acceptance checks, verification and result paths. The ledger maps each source to one batch. The checkboxes below own completion state. A completed batch does not close its parent group until every child is verified.
+
+- [ ] 04-evidence-m00 — 2 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m01 — 1 source file; depends on task-02, task-03.
+- [ ] 04-evidence-m02 — 1 source file; depends on task-02, task-03.
+- [ ] 04-evidence-m03 — 2 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m04 — 1 source file; depends on task-02, task-03.
+- [ ] 04-evidence-m05 — 18 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m06 — 1 source file; depends on task-02, task-03.
+- [ ] 04-evidence-m07 — 6 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m08 — 2 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m09 — 7 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m10 — 10 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m11 — 5 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m12 — 3 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m13 — 14 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m14 — 8 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m15 — 10 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m16 — 3 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m17 — 3 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m18 — 6 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m19 — 1 source file; depends on task-02, task-03.
+- [ ] 04-evidence-m20 — 2 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m20-flow — 13 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m21 — 11 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m21-video — 16 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m22 — 1 source file; depends on task-02, task-03.
+- [ ] 04-evidence-m22-react — 8 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m23 — 1 source file; depends on task-02, task-03.
+- [ ] 04-evidence-m23-docs — 7 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m24-consumers — 7 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m24-devtools — 3 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m24-skills — 160 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m24-tabs-indicator — 2 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m25-release — 11 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m25-tooling — 6 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m25-workspace — 4 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m26-appearance — 79 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m26-audit — 14 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m26-bundle — 21 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m26-final — 21 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m26-managed-forms — 2 source files; depends on task-02, task-03.
+- [ ] 04-evidence-m26-native-forms — 1 source file; depends on task-02, task-03.
+- [ ] 04-evidence-m26-scoped — 8 source files; depends on task-02, task-03.
+- [ ] 04-evidence-release-0.3.0 — 12 source files; depends on task-02, task-03.
+- [ ] 04-evidence-release-0.3.1 — 28 source files; depends on task-02, task-03.
+- [ ] 04-evidence-release-0.3.2 — 69 source files; depends on task-02, task-03.
+- [ ] 04-evidence-research-2026-09-19 — 45 source files; depends on task-02, task-03.
+- [ ] 04-evidence-research-2026-09-20 — 21 source files; depends on task-02, task-03.
+- [ ] 04-evidence-research-2026-09-23 — 1 source file; depends on task-02, task-03.
+- [ ] 04-evidence-research-baseline — 11 source files; depends on task-02, task-03.
+- [ ] 04-original-request — 1 source file; depends on task-02, task-03.
+- [ ] 05-decisions-001 — 1 source file; depends on task-02, task-03.
+- [ ] 05-decisions-002 — 1 source file; depends on task-02, task-03.
+- [ ] 05-decisions-003 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-004 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-005 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-006 — 2 source files; depends on task-02, task-03.
+- [ ] 05-decisions-007 — 1 source file; depends on task-02, task-03.
+- [ ] 05-decisions-008 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-009 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-010 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-011 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-012 — 1 source file; depends on task-02, task-03.
+- [ ] 05-decisions-013 — 1 source file; depends on task-02, task-03.
+- [ ] 05-decisions-014 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-015 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-016 — 3 source files; depends on task-02, task-03.
+- [ ] 05-decisions-017 — 1 source file; depends on task-02, task-03.
+- [ ] 05-decisions-018 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-019 — 1 source file; depends on task-02, task-03.
+- [ ] 05-decisions-020 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-021 — 1 source file; depends on task-02, task-03.
+- [ ] 05-decisions-022 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-023 — 3 source files; depends on task-02, task-03.
+- [ ] 05-decisions-024 — 1 source file; depends on task-02, task-03.
+- [ ] 05-decisions-025 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-026 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-027 — 3 source files; depends on task-02, task-03.
+- [ ] 05-decisions-028 — 1 source file; depends on task-02, task-03.
+- [ ] 05-decisions-029 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-030 — 1 source file; depends on task-02, task-03.
+- [ ] 05-decisions-031 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-032 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-033 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-034 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-035 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-036 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-037 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-038 — 4 source files; depends on task-02, task-03.
+- [ ] 05-decisions-039 — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-01-agent-tooling — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-02-animation-package — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-03-behaviour-verification-method — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-04-book-census-config — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-05-build-performance — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-06-codebase-systematization — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-07-design-foundations — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-08-developer-tooling — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-09-documentation-site — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-10-element-child-radius — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-11-floating-surface-shadows — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-12-functional-parity-sources — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-13-hand-rolled-audit — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-14-icon-library — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-15-lit-practice-review — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-16-package-choices — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-17-question-dialog-countdown — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-18-repository-layout — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-19-slotted-cascade — 1 source file; depends on task-02, task-03.
+- [ ] 06-research-20-systematic-approach — 1 source file; depends on task-02, task-03.
+- [ ] 07-actions — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-additional-functionality-review — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-chakra-pro-review — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-completed-plan — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-conventions — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-data-displays — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-documentation-tooling — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-foundations — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-inputs-forms — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-inventory — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-layout — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-messages-statistics — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-navigation-disclosure — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-overlays-help — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-phase-1-review — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-phase-2-review — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-phase-3-review — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-port-plan — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-proposal-coverage — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-proposal-questions — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-readme — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-release-0.3.0 — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-release-0.3.1 — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-release-0.3.2 — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-remaining-work — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-rich-content — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-selection — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-summary-m22-react — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m23-docs — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m24-consumers — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m24-devtools — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m24-skills-followups — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m24-skills-iteration-1 — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m24-skills-iteration-1-viewer-tooling — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m24-tabs-indicator — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m25-release — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m25-tooling — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m25-workspace — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m26-appearance — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m26-audit — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m26-audit-component-browser — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m26-audit-final-runtime-review — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m26-audit-official-firefox — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m26-bundle — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m26-dev-watch — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m26-final — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m26-managed-forms — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m26-native-forms — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-summary-m26-scoped — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [ ] 07-surfaces — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-terms — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-typography — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 07-workflow-research — 1 source file; depends on task-04, task-05, task-06.
+- [ ] 08-browser-distribution — 2 source files; depends on task-01, task-02, task-03.
+- [ ] 08-bundling — 2 source files; depends on task-01, task-02, task-03.
+- [ ] 08-component-data — 2 source files; depends on task-01, task-02, task-03.
+- [ ] 08-dependency-audit-npm-cache-private — 1 source file; depends on task-01, task-02, task-03.
+- [ ] 08-devtools-manual — 3 source files; depends on task-01, task-02, task-03.
+- [ ] 08-documentation-action-labels.browser-check — 1 source file; depends on task-01, task-02, task-03.
+- [ ] 08-documentation-appearance.browser-check — 1 source file; depends on task-01, task-02, task-03.
+- [ ] 08-documentation-copied.browser-check — 1 source file; depends on task-01, task-02, task-03, 08-browser-distribution.
+- [ ] 08-documentation-icons.browser-check — 1 source file; depends on task-01, task-02, task-03, 08-browser-distribution.
+- [ ] 08-documentation-navigation.browser-check — 1 source file; depends on task-01, task-02, task-03.
+- [ ] 08-documentation-pages.browser-check — 1 source file; depends on task-01, task-02, task-03.
+- [ ] 08-documentation-recipe-accessibility.browser-check — 1 source file; depends on task-01, task-02, task-03.
+- [ ] 08-documentation-recipes.browser-check — 1 source file; depends on task-01, task-02, task-03.
+- [ ] 08-documentation-table-source-isolation.browser-check — 1 source file; depends on task-01, task-02, task-03.
+- [ ] 08-documentation-video.browser-check — 1 source file; depends on task-01, task-02, task-03, 08-browser-distribution.
+- [ ] 08-flow-distributions.browser-check — 1 source file; depends on task-01, task-02, task-03, 08-browser-distribution.
+- [ ] 08-inspector-consumer — 2 source files; depends on task-01, task-02, task-03.
+- [ ] 08-native-forms-history.browser-check — 1 source file; depends on task-01, task-02, task-03, 08-browser-distribution.
+- [ ] 08-package-tools — 1 source file; depends on task-01, task-02, task-03.
+- [ ] 08-public-defaults-browser-check — 1 source file; depends on task-01, task-02, task-03.
+- [ ] 08-react-defaults — 2 source files; depends on task-01, task-02, task-03.
+- [ ] 08-react-runtime — 2 source files; depends on task-01, task-02, task-03.
+- [ ] 08-react-types — 1 source file; depends on task-01, task-02, task-03.
+- [ ] 08-removals-check — 1 source file; depends on task-01, task-02, task-03, 07-proposal-coverage.
+- [ ] 08-scoped-fixture-text — 1 source file; depends on task-01, task-02, task-03.
+- [ ] 08-scoped-registration — 2 source files; depends on task-01, task-02, task-03, 08-scoped-fixture-text, 08-browser-distribution.
+- [ ] 08-table-declaration-patch-check — 1 source file; depends on task-01, task-02, task-03.
+- [ ] 08-table-worker-consumer.browser-check — 1 source file; depends on task-01, task-02, task-03.
+- [ ] 08-workspace-consumer — 2 source files; depends on task-01, task-02, task-03.
+- [ ] 08-workspace-install — 1 source file; depends on task-01, task-02, task-03.
