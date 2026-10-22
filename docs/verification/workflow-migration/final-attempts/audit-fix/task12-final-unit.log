@@ -1,0 +1,1715 @@
+bun test v1.4.2 (744846f84)
+
+scripts/__tests__/lint-source-guard.test.ts:
+(pass) braces and import spacing retain syntax meaning [6.67ms]
+(pass) guard rejects order, dependency-read, literal, annotation and sparse-array changes [5.65ms]
+(pass) logical regrouping preserves operand order while mixed operators remain distinct [1.16ms]
+(pass) guard rejects changes to declaration lifetime and optional-chain boundaries [0.87ms]
+(pass) guard preserves the raw text observed by tagged templates [0.46ms]
+
+scripts/__tests__/release.test.ts:
+(pass) release validation verifies actual archive identity, tags and immutable bytes [189.58ms]
+(pass) the pinned npm CLI executes under the verified Bun runtime [105.28ms]
+
+scripts/__tests__/check.test.ts:
+(pass) every browser gate runs and records failure before the aggregate verdict [1.16ms]
+(pass) package scripts use the verified parent Bun executable [39.12ms]
+(pass) generated verification rejects tracked, staged and untracked output changes [288.01ms]
+(pass) browser gates consume the reviewed package set and both scoped delivery paths [0.73ms]
+(pass) renamed browser checks preserve every invocation and output destination [0.16ms]
+(pass) browser overrides cannot replace the pinned Bun executable search path [7.60ms]
+
+scripts/__tests__/react.test.ts:
+(pass) wrapper metadata limits props to writable instance inputs and maps typed events [0.36ms]
+(pass) native root metadata reaches the renderer [0.03ms]
+(pass) numeric icon names remain valid TypeScript identifiers [0.02ms]
+
+scripts/__tests__/local-inputs.test.ts:
+(pass) map fingerprints include imported helpers, re-exports and literal dynamic imports once [14.58ms]
+(pass) missing local imports fail instead of producing an incomplete fingerprint [0.66ms]
+(pass) a generated map becomes stale when only its imported helper changes [14.26ms]
+
+scripts/__tests__/manifest.test.ts:
+(pass) store-backed public properties retain manifest defaults and inherited attribute metadata [878.71ms]
+(pass) the manifest matches every registered Lit class and its runtime property attributes [37920.88ms]
+(pass) manifest facts cover conditional events, event variables, slots and forwarded parts [1162.69ms]
+(pass) unresolved local paths fail manifest normalization [0.51ms]
+(pass) the analyzer distinguishes package exports from relative exports with either quote style [0.87ms]
+(pass) Lit default attributes use lowercase names while explicit names stay intact [1.63ms]
+(pass) events dispatched by field callbacks and constructors remain public events [0.79ms]
+(pass) partitioned icon analysis preserves real ancestry and authored descendants [1031.93ms]
+(pass) internal definitions stay out of consumer metadata and API pages [1158.30ms]
+(pass) assignments to owned native elements do not become host properties [683.12ms]
+(pass) native renderer-container metadata survives standard analysis [822.67ms]
+(pass) manifest normalization rewrites shared reference objects once [0.21ms]
+(pass) delegated registration retains standard element definitions and class contracts [1093.08ms]
+
+scripts/__tests__/lint-lit-syntax.test.ts:
+(pass) raw CSS and Lit CSS retain unknown-property and accidental duplicate checks [83.70ms]
+(pass) a JavaScript source-map string does not become the TypeScript file source map [1.87ms]
+[postcss-lit] Skipping template (fixture.ts:1) as it included either invalid syntax or complex expressions the plugin could not interpret. Consider using a "// postcss-lit-disable-next-line" comment to disable this message
+(pass) invalid templates fail rather than silently losing CSS coverage [2.54ms]
+(pass) consecutive different-value fallbacks pass while custom-property duplication fails [2.38ms]
+
+scripts/__tests__/component-browser-checks.test.ts:
+(pass) component browser fixture imports use one compiled runtime and repeatable definitions [0.16ms]
+(pass) every colocated browser fixture has one registered suite or the dedicated Tabs gate [8.41ms]
+(pass) component suite validation uses migrated case inputs without the old evidence tree [27.55ms]
+
+scripts/__tests__/material-symbols.test.ts:
+(pass) official path-only SVGs become inert geometry [0.32ms]
+(pass) unrecognized SVG markup fails before generation [0.05ms]
+(pass) symbol identifiers produce deterministic class and tag names [0.08ms]
+(pass) pinned source verification detects modified checkout content [0.24ms]
+
+scripts/__tests__/release-workflows.test.ts:
+(pass) quality workflow runs every defined gate under the pinned Bun runtime [1.51ms]
+(pass) publication and Pages deployment remain explicitly gated after verification [0.43ms]
+(pass) first-publication preparation signs the checked archives without publishing [0.14ms]
+
+scripts/__tests__/workflow-migration.test.ts:
+(pass) preparation rejects an omitted baseline source [170.54ms]
+(pass) supplemental capture adds ignored logs to the required source inventory [301.87ms]
+(pass) preparation notices ignored source files absent from Git and the ledger [181.65ms]
+(pass) rejects malformed supplemental source revisions: empty list [98.47ms]
+(pass) rejects malformed supplemental source revisions: empty revision [97.83ms]
+(pass) rejects malformed supplemental source revisions: escaping revision [102.07ms]
+(pass) rejects malformed supplemental source revisions: option-shaped revision [94.31ms]
+(pass) rejects malformed supplemental source revisions: symbolic revision [91.22ms]
+(pass) rejects malformed supplemental source revisions: non-string revision [92.08ms]
+(pass) rejects malformed supplemental source revisions: non-array value [133.17ms]
+(pass) rejects malformed supplemental source revisions: null value [137.37ms]
+(pass) rejects malformed supplemental source revisions: duplicate revision [93.59ms]
+(pass) the original baseline cannot also be a supplemental revision [94.78ms]
+(pass) supplemental raw evidence keeps its captured source and destination bytes [443.39ms]
+(pass) later revisions cannot replace first-seen bytes or remove original sources [421.35ms]
+(pass) preparation excludes only regular DS_Store metadata from filesystem coverage [238.63ms]
+(pass) filesystem discovery rejects ignored escaping symlinks including metadata names [164.96ms]
+(pass) filesystem discovery does not follow internal symlink cycles [153.63ms]
+(pass) supplemental revision hashes must resolve to a Git source tree [141.97ms]
+(pass) supplemental completion still requires removal of original roots and OS metadata [366.87ms]
+(pass) dropping a whole approved root and all its records cannot shrink coverage [161.80ms]
+(pass) the approved root set cannot accept an empty Git baseline [165.64ms]
+(pass) retirement is limited to the approved local-skill tree [85.93ms]
+(pass) audited raw-evidence records require bytes even when action and integrity change together [116.50ms]
+(pass) audited immutable-evaluation-benchmark records require bytes even when action and integrity change together [90.81ms]
+(pass) audited original-request-snapshot records require bytes even when action and integrity change together [98.90ms]
+(pass) audited live-code-data records require bytes even when action and integrity change together [93.07ms]
+(pass) preparation rejects duplicate sources and destinations [88.72ms]
+(pass) preparation rejects the unsafe destination ../escape.json [95.20ms]
+(pass) preparation rejects the unsafe destination /tmp/escape.json [86.85ms]
+(pass) preparation rejects the unsafe destination docs/../escape.json [93.43ms]
+(pass) preparation rejects the unsafe destination docs//escape.json [87.87ms]
+(pass) preparation rejects the unsafe destination docs\escape.json [90.88ms]
+(pass) preparation rejects an absent target beneath an escaping symlink [93.00ms]
+(pass) preparation checks immutable sources and targets against baseline bytes [158.36ms]
+(pass) source fingerprints bind Git objects while current semantic records may change [226.23ms]
+(pass) preparation reports absent planned targets and final rejects unfinished work [224.61ms]
+(pass) prepared records require targets and current sources cannot disappear without a replacement [148.02ms]
+(pass) final passes only after complete records, required files and old-root removal [225.03ms]
+(pass) extracted fixtures preserve the exact baseline JSON string including its final newline [217.41ms]
+(pass) final checks new Markdown links, reference links and anchors while ignoring fenced examples [166.60ms]
+(pass) final detects active old imports, file reads and Markdown instructions without treating negative test strings as imports [158.29ms]
+(pass) raw evidence and named audit provenance stay inert without hiding new scripts or report Markdown links [153.47ms]
+(pass) live JSON executable fields stay active while their original source metadata stays inert [157.08ms]
+(pass) explicit local-only research links report portability limits [163.00ms]
+(pass) configuration comments do not hide active JSON path values [156.95ms]
+(pass) JSON arrays remain valid reference inputs [158.36ms]
+(pass) repository heading anchors retain spaces around punctuation [151.91ms]
+(pass) consumer skill release links resolve in the generated package projection [172.63ms]
+(pass) final requires each batch result to name its batch and report verified completion [356.71ms]
+(pass) active instructions in docs/STATUS.md cannot retain old commands [156.16ms]
+(pass) active instructions in tasks/plan.md cannot retain old commands [154.20ms]
+(pass) active instructions in tasks/todo.md cannot retain old commands [156.42ms]
+(pass) active instructions in spec/SPEC-current.md cannot retain old commands [159.05ms]
+(pass) literal repository inputs, runners and static local imports must exist [161.86ms]
+(pass) literal module resolution supports dotted extensionless names and directory file URLs [161.76ms]
+(pass) literal worker JavaScript URLs resolve their authored TypeScript entrypoint [163.19ms]
+(pass) root import.meta URLs without a dot prefix still reject retired source inputs [184.77ms]
+(pass) nested import.meta URLs resolve notes assets and modules against the containing file [233.75ms]
+(pass) external import.meta URL https://example.invalid/input.json retains its runtime limit [153.08ms]
+(pass) external import.meta URL data:application/json,%7B%7D retains its runtime limit [154.28ms]
+(pass) external import.meta URL blob:https://example.invalid/1234 retains its runtime limit [156.52ms]
+(pass) mutable repository URLs in import.meta inputs remain active old-path references [154.33ms]
+(pass) import.meta URL queries fragments and escapes keep the resolved file identity [234.12ms]
+(pass) local import.meta URL file:///tmp/acme-outside.json cannot escape the repository [160.79ms]
+(pass) local import.meta URL %2e%2e/acme-outside.json cannot escape the repository [158.79ms]
+(pass) the two generated runtime URL projections report their package verification limit [157.65ms]
+(pass) a resolved import extension cannot escape through an ignored symlink [147.66ms]
+(pass) computed reads and explicit runtime working directories report execution limits [155.94ms]
+(pass) test process argument arrays stay active while unrelated arrays stay inert [156.84ms]
+(pass) batch accountability cannot be removed with its index or a whole batch [223.43ms]
+(pass) batch scope must match its records and extracted fixtures [161.37ms]
+(pass) fixed metadata ledger.json is checked before reading an escaping symlink [86.88ms]
+(pass) fixed metadata references.json is checked before reading an escaping symlink [86.36ms]
+(pass) fixed metadata live-file-audit.json is checked before reading an escaping symlink [85.01ms]
+(pass) a completed fixture accepts the actual verifier and its real test source [196.27ms]
+(pass) destinations cannot alias one physical target through an internal symlink [90.45ms]
+(pass) mutable repository URLs remain active while immutable commit URLs preserve provenance [232.65ms]
+(pass) preserved records cannot weaken their byte-integrity policy [101.10ms]
+(pass) new document owners cannot duplicate an allocated destination [100.15ms]
+(pass) the verifier scope declaration is metadata while its imports stay active [171.37ms]
+(pass) ordinary notes prose and icon names are not source-root paths [176.46ms]
+(pass) relative modules and Markdown links classify their resolved root, not a notes segment [255.15ms]
+(pass) asset catalog file fields resolve within their declared catalog directory [249.23ms]
+(pass) census provenance requires its exact baseline binding: original [250.22ms]
+(pass) census provenance requires its exact baseline binding: wrong revision [246.90ms]
+(pass) census provenance requires its exact baseline binding: missing revision [255.05ms]
+(pass) census provenance requires its exact baseline binding: changed path [251.48ms]
+(pass) census provenance requires its exact baseline binding: current status [275.23ms]
+(pass) census provenance requires its exact baseline binding: actual read [232.12ms]
+(pass) census provenance requires its exact baseline binding: other variable [232.69ms]
+(pass) initial research exempts only unchanged baseline fields and its bound source identity [518.38ms]
+(pass) supplemental task report 03-supplemental requires matching schema identity [297.43ms]
+(pass) supplemental task report 04-supplemental requires matching schema identity [289.63ms]
+
+scripts/__tests__/responsive-styles.test.ts:
+(pass) the generated delivery owns every common CSS declaration and target [12.70ms]
+(pass) the producer writes stable source and verification rejects stale delivery [25.32ms]
+
+scripts/__tests__/release-registry.test.ts:
+(pass) accepted uploads wait for matching public metadata and provenance [0.77ms]
+(pass) an upload held in npm review cannot be reported as published [0.09ms]
+(pass) matching package metadata without provenance cannot be reported as published [0.11ms]
+(pass) publication confirmation rejects conflicting bytes, package identity and provenance links [2.23ms]
+(pass) registry errors and invalid retry bounds cannot pass publication confirmation [0.12ms]
+
+scripts/__tests__/date-runtime.test.ts:
+(pass) the distributed date runtime works without the author's installed dependency [31.21ms]
+
+scripts/__tests__/lint-policy.test.ts:
+(pass) scoped framework exceptions preserve ordinary correctness and messaging checks [96.00ms]
+
+scripts/__tests__/release-attest.test.ts:
+(pass) release provenance binds the archive bytes, commit, tag, workflow and hosted runner [2.06ms]
+
+scripts/__tests__/dev.test.ts:
+(pass) the server rejects encoded traversal outside its documentation root [35.82ms]
+(pass) the server rejects malformed encoding and preserves deep links and asset responses [40.49ms]
+(pass) an example-only edit reaches the served page without regenerating styles [796.77ms]
+(pass) an authored stylesheet change reaches the served page without a regeneration loop [1604.30ms]
+(pass) a failed style generation leaves the last successful page intact [578.84ms]
+(pass) a numeric catalog edit regenerates styles before serving the page without a loop [1624.74ms]
+
+scripts/__tests__/styles.test.ts:
+(pass) channel consumers use full colors and fixed alpha without making palette definitions circular [9.04ms]
+(pass) font consumers use canonical families and numeric weight tokens without family-as-weight declarations [0.98ms]
+(pass) generated Lit styles attach defaults without registering them during import [4.99ms]
+(pass) compiled CSS survives Lit template escaping exactly and maps to its CSS input [2.44ms]
+(pass) invalid CSS stops generation instead of producing a partial artifact [0.83ms]
+(pass) property definitions are parsed, deduplicated and rejected on conflict [1.98ms]
+(pass) document styles keep their explicit scope [0.51ms]
+(pass) partitioning retains quoted braces, variables and conditional ownership [1.75ms]
+(pass) the manifest rejects changed inputs and tampered outputs, without requiring the external corpus [15.93ms]
+(pass) invalid CSS and registration conflicts leave previous generated artifacts intact [6.30ms]
+(pass) family ownership is assigned before the compiler merges equal rules [0.24ms]
+(pass) nested selectors inherit their outer component family [0.67ms]
+(pass) constant line-height ratios retain browser precision and original source maps [0.92ms]
+(pass) line-height preservation respects nested rules and custom-property values [0.60ms]
+(pass) an active output lock cannot overwrite the manifest [5.16ms]
+(pass) retiring a style removes only its recorded files and protects unrecorded changes [9.07ms]
+
+scripts/__tests__/dependency-audit.test.ts:
+(pass) patched Braces bounds each parser and AST walker without changing ordinary patterns [5.48ms]
+(pass) npm cache applicability proof passes against its actual caller and stored response [159.68ms]
+(pass) only exact reviewed advisories can receive a verified disposition [0.75ms]
+(pass) audit proof rejects expired review, changed code and additional dependency paths [34.95ms]
+(pass) private-cache disposition rejects required, optional and peer consumer dependencies [26.26ms]
+(pass) audit process boundary preserves native diagnostics and verdict: empty failure [496.44ms]
+(pass) audit process boundary preserves native diagnostics and verdict: malformed failure [210.13ms]
+(pass) audit process boundary preserves native diagnostics and verdict: empty success [193.12ms]
+(pass) audit process boundary preserves native diagnostics and verdict: malformed success [202.63ms]
+(pass) audit process boundary preserves native diagnostics and verdict: process failure [223.94ms]
+(pass) audit process boundary preserves native diagnostics and verdict: failure without findings [188.42ms]
+(pass) audit process boundary preserves native diagnostics and verdict: clean report [180.87ms]
+(pass) audit process boundary preserves native diagnostics and verdict: unreviewed high finding [197.74ms]
+
+scripts/__tests__/devtools-metadata.test.ts:
+(pass) inspector metadata keeps public facts and deduplicates equivalent contracts [0.64ms]
+
+scripts/__tests__/lint.test.ts:
+(pass) Bun runs the actual Oxlint preset and returns complete parseable diagnostics [39.67ms]
+(pass) the selected formatter preserves Lit text and project conventions [14.52ms]
+
+scripts/__tests__/core-package.test.ts:
+(pass) core metadata and generated delivery links have one explicit owner [1.91ms]
+
+scripts/__tests__/package.test.ts:
+(pass) consumer workspaces resolve one live core with coordinated release metadata [77.34ms]
+(pass) browser staging dereferences only the fixed graph and nested notice links [43.62ms]
+(pass) core staging dereferences only its explicit delivery links [31.78ms]
+(pass) production metadata contains runtime contracts and resolves coordinated workspaces [0.29ms]
+(pass) packing preserves the authoring manifest and ships only staged production files [22.77ms]
+(pass) packing skills publishes generated references once and excludes authoring evals [31.35ms]
+
+scripts/__tests__/numeric-tokens.test.ts:
+(pass) numeric CSS declares independent spacing and size defaults with no negative aliases [0.29ms]
+(pass) the generated manifest links every public key to its one property, default and source [9.47ms]
+
+scripts/__tests__/package-contents.test.ts:
+(pass) archive budget counts files, repeated paths, directories and links while skipping payload blocks [2.22ms]
+(pass) archive budget rejects an empty archive without package metadata [1.02ms]
+(pass) archive budget accepts 59999 archive entries [746.69ms]
+(pass) archive budget accepts 60000 archive entries [524.21ms]
+(pass) archive budget rejects 60,001 archive entries [471.71ms]
+(pass) archive budget rejects a missing archive [0.77ms]
+(pass) archive budget rejects a file that is not gzip [0.68ms]
+(pass) archive budget rejects an uncompressed tar file [0.50ms]
+(pass) archive budget rejects gzip data that is not a tar archive [1.01ms]
+(pass) archive budget rejects a truncated file payload [1.19ms]
+(pass) archive budget rejects a corrupt header checksum [0.98ms]
+
+scripts/__tests__/byte-prefixes.test.ts:
+(pass) generated binary prefix data covers every locale in the pinned source [967.93ms]
+
+scripts/__tests__/consumer-skills.test.ts:
+(pass) packaged skills share exact generated facts and deterministic release metadata [45.57ms]
+(pass) stale skill versions fail before output changes [5.01ms]
+
+scripts/__tests__/browser-package.test.ts:
+(pass) browser metadata comes from its public package [2.10ms]
+(pass) browser delivery links expose only the fixed shared outputs and notices [3.91ms]
+(pass) browser delivery rejects an existing directory at a link path [2.38ms]
+(pass) browser delivery rejects an existing wrong-link at a link path [2.05ms]
+(pass) browser delivery rejects a substituted directory at dist/cdn [2.20ms]
+(pass) browser delivery rejects a substituted directory at dist [1.84ms]
+(pass) browser delivery rejects a substituted directory at packages/browser [1.74ms]
+(pass) browser delivery rejects a substituted directory at packages/browser/licenses [1.73ms]
+(pass) browser delivery rejects missing source outputs [1.53ms]
+(pass) browser notices follow exact bundled package locations and preserve upstream text [7.77ms]
+(pass) browser notices reject a missing package license before replacing output [13.48ms]
+(pass) browser notices reject a ambiguous package license before replacing output [3.04ms]
+(pass) browser notices reject a symlink package license before replacing output [3.03ms]
+(pass) browser notices reject package identity substitution [3.93ms]
+(pass) browser notices reject a substituted output directory [3.35ms]
+(pass) the pinned Markdown omission preserves exact package metadata without inventing notice text [3.31ms]
+(pass) the pinned Markdown metadata record rejects changed version [3.92ms]
+(pass) the pinned Markdown metadata record rejects changed license [3.75ms]
+(pass) the pinned Markdown metadata record rejects changed name [2.91ms]
+(pass) the pinned Markdown metadata record rejects changed bytes [3.18ms]
+(pass) the pinned Markdown metadata record rejects a ambiguous license path [3.30ms]
+(pass) the pinned Markdown metadata record rejects a symlink license path [3.00ms]
+(pass) the pinned Markdown metadata record rejects a directory license path [3.14ms]
+
+scripts/__tests__/browser-modules.test.ts:
+(pass) browser copy discovers public and private registrations alongside artwork [2.29ms]
+(pass) generated artwork and family imports use browser URLs without changing geometry [0.07ms]
+
+scripts/__tests__/theme-tokens.test.ts:
+(pass) document selector normalization preserves automatic appearance guards and unrelated attributes [1.45ms]
+(pass) scope output accepts the normalized internal document appearance selectors [8.20ms]
+(pass) appearance output includes changed values and dependent aliases, not invariant inheritance [3.60ms]
+(pass) full reset includes invariant and canonical defaults while ambient document rules stay outside [2.95ms]
+(pass) conditional source order is preserved rather than flattened [4.16ms]
+(pass) compact density emits layout, table and action roles with a normal reset path [3.11ms]
+(pass) root output contains the observed weight and density defaults once [3.19ms]
+(pass) generation is deterministic and has no file-writing side effects [4.78ms]
+(pass) grouped root appearances preserve each scope and its changed token values [2.83ms]
+
+scripts/__tests__/devtools-runtime.test.ts:
+(pass) package licenses preserve their actual filename case and reject missing or ambiguous notices [1.26ms]
+(pass) the JsonTree correction is restricted to the inspected version and exact source [1.14ms]
+
+scripts/__tests__/browser-build.test.ts:
+(pass) browser delivery selects production Lit and React with either minification setting [36.63ms]
+
+scripts/__tests__/entries.test.ts:
+(pass) the entries command updates definitions and exports together [616.80ms]
+(pass) records use tag declarations and owned markup, not component imports or text [593.13ms]
+(pass) inherits owned rendering and resolves aliased templates, helpers and literal creation [467.92ms]
+(pass) tag maps resolve imported class aliases without retaining a second tag catalog [590.30ms]
+(pass) rejects duplicate before writing [466.86ms]
+(pass) rejects missing class before writing [463.83ms]
+(pass) rejects unknown child before writing [438.35ms]
+(pass) rejects cycle before writing [453.04ms]
+(pass) rejects self cycle before writing [431.21ms]
+(pass) writes deterministic definitions, preserves authored files and removes only stale generated files [978.02ms]
+(pass) package exports track the source records and retain unrelated authored exports [931.37ms]
+(pass) refuses to overwrite authored entries [384.31ms]
+(pass) an authored all entry blocks every output write [535.02ms]
+(pass) rejects unresolved Lit tag expressions: render(){return html`<${this.tag}></${this.tag}>`;} [631.51ms]
+(pass) rejects unresolved Lit tag expressions: render(){return html`<acme-${this.tag}/>`;} [471.21ms]
+(pass) rejects unresolved Lit tag expressions: render(){return html`<div></${this.tag}>`;} [453.26ms]
+(pass) dynamic attributes, content and comment expressions do not become tag names [423.47ms]
+(pass) enumerates finite createElement tags and ignores known native names [413.16ms]
+(pass) rejects an unbounded createElement name with its source location [442.83ms]
+(pass) rejects an unknown acme tag in a finite createElement union [442.83ms]
+(pass) a known non-acme prefix does not need a component definition [471.49ms]
+(pass) an unbounded acme prefix still requires explicit dependencies [466.12ms]
+(pass) optional icon definitions stay selective while owned icon dependencies load [424.92ms]
+(pass) internal components register through their owner without public entries or exports [466.02ms]
+(pass) private delivery requires both an internal location and annotation [869.86ms]
+(pass) scoped factory aliases retain exact owned dependencies [415.37ms]
+(pass) unbounded scoped factory names fail dependency discovery [715.25ms]
+
+scripts/__tests__/docs-icons.test.ts:
+(pass) documentation icons use parsed attributes and retain explicit artwork imports [11.50ms]
+(pass) escaped examples and comments do not register icons; invalid rendered names fail [15.62ms]
+
+scripts/__tests__/release-policy.test.ts:
+(pass) dirty local candidates cannot be published as committed source [0.14ms]
+(pass) publication retry skips only byte-identical existing versions [0.13ms]
+(pass) release identity requires coordinated packages, peers and exact tag [0.34ms]
+(pass) the browser distribution is required and has no runtime dependency graph to install [0.23ms]
+(pass) archive names and digest records cannot escape release artifacts [0.23ms]
+(pass) publishing stays disabled outside explicit verified release context [0.17ms]
+(pass) signing can verify a release context while package publication remains disabled [0.07ms]
+(pass) private packages and mismatched repository metadata block actual publication [0.13ms]
+(pass) npm receives only CI identity context, never inherited local token configuration [0.30ms]
+
+scripts/__tests__/official-firefox-checks.test.ts:
+(pass) official Firefox archives are exact platform/version paths [0.20ms]
+(pass) checksum selection retains space-containing paths and rejects missing entries [0.28ms]
+
+scripts/__tests__/workspace-install.test.ts:
+(pass) workspace installs preserve one live core after dependency changes [6065.85ms]
+
+scripts/__tests__/declarations.test.ts:
+(pass) declaration output is independent of root file order [193.43ms]
+(pass) packed declaration interfaces preserve native tags and valid artwork while rejecting unknown exports [1575.83ms]
+
+scripts/__tests__/lint-files.test.ts:
+(pass) source selection excludes generated output but includes its producers and tests [31.46ms]
+(pass) CSS template discovery ignores source strings and finds actual tagged templates [0.38ms]
+
+site/__tests__/example-files.test.ts:
+(pass) copy includes transitive files, cycles once and rejects missing dependencies [2.89ms]
+
+site/__tests__/example-source.test.ts:
+(pass) copied lazy content imports every nested template element [72.03ms]
+(pass) copied setup helpers use the same browser graph as their definitions [5.63ms]
+(pass) foundation and icon instructions point to the versioned browser distribution [15.03ms]
+
+site/__tests__/format.test.ts:
+(pass) copied React source preserves executable TSX and highlights its actual language [6.55ms]
+(pass) example formatting preserves executable comparisons and string contents [1.65ms]
+(pass) example formatting preserves quoted attributes and significant inline text [3.21ms]
+(pass) nested lazy templates retain significant author text [4.82ms]
+
+site/__tests__/markdown-body.test.ts:
+(pass) foundation Markdown preserves links, code, nested sections, tables and decoded text [2.13ms]
+
+site/__tests__/build.test.ts:
+(pass) docs site > the shell, its 404 twin, the app and every authored page are built [37.64ms]
+(pass) docs site > pages/colors.html renders [79.44ms]
+acme-group Attached members use DOM order; CSS order is not supported.
+(pass) docs site > pages/index.html renders [151.07ms]
+(pass) docs site > pages/tokens.html renders [45.84ms]
+(pass) docs site > pages/materials.html renders [43.31ms]
+(pass) docs site > pages/typography.html renders [52.70ms]
+(pass) docs site > pages/icons.html renders [836.87ms]
+(pass) docs site > pages/typeface.html renders [50.93ms]
+(pass) docs site > pages/components/legend.html renders [55.76ms]
+(pass) docs site > pages/components/select.html renders [141.62ms]
+(pass) docs site > pages/components/browser.html renders [50.62ms]
+(pass) docs site > pages/components/separator.html renders [55.13ms]
+(pass) docs site > pages/components/show.html renders [48.51ms]
+(pass) docs site > pages/components/search-input.html renders [92.02ms]
+acme-group Attached members use DOM order; CSS order is not supported.
+acme-group Attached members use DOM order; CSS order is not supported.
+acme-group Attached members use DOM order; CSS order is not supported.
+acme-group Attached members use DOM order; CSS order is not supported.
+acme-group Attached members use DOM order; CSS order is not supported.
+(pass) docs site > pages/components/split-button.html renders [135.28ms]
+(pass) docs site > pages/components/badge.html renders [72.10ms]
+(pass) docs site > pages/components/text.html renders [52.10ms]
+(pass) docs site > pages/components/hover-card.html renders [50.09ms]
+(pass) docs site > pages/components/status.html renders [69.13ms]
+(pass) docs site > pages/components/flow-diagram.html renders [88.65ms]
+(pass) docs site > pages/components/link.html renders [48.78ms]
+(pass) docs site > pages/components/label.html renders [51.99ms]
+(pass) docs site > pages/components/feedback.html renders [276.80ms]
+(pass) docs site > pages/components/strong.html renders [56.68ms]
+(pass) docs site > pages/components/calendar.html renders [185.28ms]
+acme-group Attached members use DOM order; CSS order is not supported.
+(pass) docs site > pages/components/pagination.html renders [141.15ms]
+acme-group Attached members use DOM order; CSS order is not supported.
+(pass) docs site > pages/components/pin-input.html renders [154.87ms]
+(pass) docs site > pages/components/heading.html renders [50.38ms]
+acme-tree-view {
+  code: "tree-content-unknown-or-duplicate",
+  values: [ "source", "index", "package" ],
+}
+(pass) docs site > pages/components/tree-view.html renders [53.19ms]
+(pass) docs site > pages/components/resizable.html renders [110.03ms]
+(pass) docs site > pages/components/group.html renders [55.25ms]
+(pass) docs site > pages/components/command-menu.html renders [134.83ms]
+(pass) docs site > pages/components/toc.html renders [53.46ms]
+(pass) docs site > pages/components/combobox.html renders [105.13ms]
+acme-group Attached members use DOM order; CSS order is not supported.
+acme-group Attached members use DOM order; CSS order is not supported.
+acme-group Attached members use DOM order; CSS order is not supported.
+acme-group Attached members use DOM order; CSS order is not supported.
+(pass) docs site > pages/components/theme-switcher.html renders [207.28ms]
+(pass) docs site > pages/components/avatar.html renders [159.54ms]
+(pass) docs site > pages/components/video.html renders [854.04ms]
+(pass) docs site > pages/components/flex.html renders [1737.67ms]
+(pass) docs site > pages/components/progress.html renders [265.28ms]
+(pass) docs site > pages/components/tag.html renders [151.61ms]
+(pass) docs site > pages/components/list.html renders [292.75ms]
+(pass) docs site > pages/components/disabled-wall.html renders [175.20ms]
+(pass) docs site > pages/components/textarea.html renders [332.43ms]
+acme-group Attached members use DOM order; CSS order is not supported.
+(pass) docs site > pages/components/radio.html renders [927.84ms]
+(pass) docs site > pages/components/accordion.html renders [90.32ms]
+(pass) docs site > pages/components/skeleton.html renders [50.12ms]
+acme-group Attached members use DOM order; CSS order is not supported.
+(pass) docs site > pages/components/tabs.html renders [201.99ms]
+(pass) docs site > pages/components/alert-dialog.html renders [83.31ms]
+(pass) docs site > pages/components/copy-button.html renders [53.15ms]
+(pass) docs site > pages/components/show-more.html renders [58.88ms]
+(pass) docs site > pages/components/forms.html renders [48.82ms]
+(pass) docs site > pages/components/table.html renders [118.53ms]
+(pass) docs site > pages/components/grid.html renders [59.39ms]
+(pass) docs site > pages/components/timeline.html renders [61.05ms]
+(pass) docs site > pages/components/number-input.html renders [231.88ms]
+(pass) docs site > pages/components/breadcrumbs.html renders [53.41ms]
+(pass) docs site > pages/components/card.html renders [88.43ms]
+acme-group Attached members use DOM order; CSS order is not supported.
+(pass) docs site > pages/components/button.html renders [115.89ms]
+(pass) docs site > pages/components/menu.html renders [107.18ms]
+acme-group Attached members use DOM order; CSS order is not supported.
+(pass) docs site > pages/components/stat.html renders [110.37ms]
+(pass) docs site > pages/components/keyboard-input.html renders [48.56ms]
+(pass) docs site > pages/components/quote.html renders [57.44ms]
+(pass) docs site > pages/components/steps.html renders [162.33ms]
+(pass) docs site > pages/components/middle-truncate.html renders [53.87ms]
+(pass) docs site > pages/components/context-menu.html renders [53.94ms]
+(pass) docs site > pages/components/dialog.html renders [92.48ms]
+(pass) docs site > pages/components/collapsible.html renders [68.62ms]
+acme-group Attached members use DOM order; CSS order is not supported.
+(pass) docs site > pages/components/checkbox.html renders [144.88ms]
+(pass) docs site > pages/components/toggle-tip.html renders [48.60ms]
+(pass) docs site > pages/components/chart.html renders [114.45ms]
+(pass) docs site > pages/components/load-more-button.html renders [50.32ms]
+(pass) docs site > pages/components/code-block.html renders [120.43ms]
+acme-group Attached members use DOM order; CSS order is not supported.
+(pass) docs site > pages/components/toolbar.html renders [86.47ms]
+(pass) docs site > pages/components/inset.html renders [72.27ms]
+(pass) docs site > pages/components/alert.html renders [55.73ms]
+(pass) docs site > pages/components/data-list.html renders [51.01ms]
+(pass) docs site > pages/components/meter.html renders [60.29ms]
+(pass) docs site > pages/components/fieldset.html renders [71.21ms]
+(pass) docs site > pages/components/book.html renders [81.30ms]
+(pass) docs site > pages/components/banner.html renders [63.37ms]
+(pass) docs site > pages/components/multi-select.html renders [67.09ms]
+(pass) docs site > pages/components/markdown.html renders [68.09ms]
+acme-group Attached members use DOM order; CSS order is not supported.
+(pass) docs site > pages/components/input.html renders [91.94ms]
+(pass) docs site > pages/components/slider.html renders [125.56ms]
+(pass) docs site > pages/components/format-byte.html renders [48.03ms]
+(pass) docs site > pages/components/spinner.html renders [73.48ms]
+(pass) docs site > pages/components/tooltip.html renders [68.74ms]
+acme-group Attached members use DOM order; CSS order is not supported.
+acme-group Attached members use DOM order; CSS order is not supported.
+acme-group Attached members use DOM order; CSS order is not supported.
+acme-group Attached members use DOM order; CSS order is not supported.
+acme-group Attached members use DOM order; CSS order is not supported.
+acme-group Attached members use DOM order; CSS order is not supported.
+acme-group Attached members use DOM order; CSS order is not supported.
+acme-group Attached members use DOM order; CSS order is not supported.
+(pass) docs site > pages/components/segmented-control.html renders [190.84ms]
+(pass) docs site > pages/components/scroll-area.html renders [110.43ms]
+acme-group Attached members use DOM order; CSS order is not supported.
+(pass) docs site > pages/components/app-bar.html renders [70.48ms]
+(pass) docs site > pages/components/code.html renders [57.61ms]
+(pass) docs site > pages/components/relative-time.html renders [48.41ms]
+(pass) docs site > pages/components/field.html renders [69.31ms]
+(pass) docs site > pages/components/toast.html renders [77.77ms]
+(pass) docs site > pages/components/password-input.html renders [61.03ms]
+(pass) docs site > pages/components/box.html renders [57.02ms]
+(pass) docs site > pages/components/theme.html renders [51.99ms]
+(pass) docs site > pages/components/sidebar.html renders [53.94ms]
+(pass) docs site > pages/components/drawer.html renders [91.74ms]
+(pass) docs site > pages/components/simple-grid.html renders [57.16ms]
+(pass) docs site > pages/components/sparkline.html renders [59.27ms]
+(pass) docs site > pages/components/empty-state.html renders [53.40ms]
+(pass) docs site > pages/components/icon-tile.html renders [56.64ms]
+(pass) docs site > pages/components/switch.html renders [77.98ms]
+(pass) docs site > pages/components/format-number.html renders [46.58ms]
+(pass) docs site > pages/components/json-view.html renders [89.02ms]
+(pass) docs site > pages/components/snippet.html renders [179.04ms]
+(pass) docs site > pages/components/stack.html renders [85.43ms]
+(pass) docs site > pages/components/item.html renders [93.09ms]
+
+site/__tests__/recipes.test.ts:
+(pass) published recipe records > covers the required families and removed arrangement destinations [0.23ms]
+(pass) published recipe records > all components have real definition entries and copied modules include their local import closure [5.92ms]
+(pass) published recipe records > recipe pages reuse the exact source and expose ownership and cleanup [0.21ms]
+(pass) published recipe records > state outcomes reference executable examples and dated browser evidence [3.71ms]
+(pass) published recipe records > historical census records point to nonempty paired measurements with explicit limits [6.81ms]
+(pass) published recipe records > documentation releases project the current recipe references and ownership [99.56ms]
+(pass) published recipe records > historical census links retain the source paths at the recorded revision [0.64ms]
+(pass) published recipe records > authored recipes preserve independent navigation, field and list ownership [3.20ms]
+
+site/__tests__/markdown-source.test.ts:
+(pass) Markdown example fences contain nested code fences [2.11ms]
+
+site/__tests__/table-sources.test.ts:
+(pass) TanStack Table in Lit copies only its framework source graph with exact executed source [4.82ms]
+(pass) TanStack Table in React copies only its framework source graph with exact executed source [3.65ms]
+(pass) TanStack Virtual copies only its framework source graph with exact executed source [4.33ms]
+(pass) React virtualized Table copies only its framework source graph with exact executed source [3.50ms]
+(pass) Lit worker Table copies only its framework source graph with exact executed source [2.57ms]
+(pass) React worker Table copies only its framework source graph with exact executed source [2.56ms]
+(pass) virtualized recipe imports stay framework-specific [0.15ms]
+(pass) experimental worker setup ships only with its complete recipe and stays outside browser imports [1.38ms]
+
+site/__tests__/api.test.ts:
+(pass) one API model preserves complete manifest categories and source ownership [1.01ms]
+(pass) HTML and Markdown consume the same complete API sections [0.97ms]
+(pass) rendered references retain methods, event payloads and styling hooks in both formats [3.17ms]
+
+src/__tests__/base.test.ts:
+(pass) allows light DOM render roots with a host property without applying shadow styles [1.14ms]
+(pass) restores styles through the render root when the shadow root is closed [0.48ms]
+(pass) keeps Lit's rendering boundary when inert-document style nodes are removed [2.50ms]
+
+examples/table/__tests__/review-feature.test.ts:
+(pass) custom Table features and experimental worker declarations compile together [1963.85ms]
+
+examples/table/__tests__/setup.test.ts:
+(pass) Table worker setup changes only the two verified declaration module targets [0.18ms]
+(pass) Table worker setup rejects another version or changed source before patching [0.14ms]
+
+scripts/verification/__tests__/browser-distribution.test.ts:
+(pass) public browser routes resolve to local output or the installed browser package [1.85ms]
+(pass) an explicit browser package cannot silently use the installed core [1.05ms]
+
+site/app/__tests__/example.test.ts:
+(pass) reset cleans the old mount before recreating its real author nodes [2.58ms]
+(pass) setup errors are visible and emit the documented error event [0.79ms]
+(pass) disposed reset listeners cannot remount an example [1.52ms]
+
+src/shared/__tests__/responsive.test.ts:
+(pass) scalars preserve zero, false and bracketed CSS; absence removes the override [0.10ms]
+(pass) five array positions map to the selected bands and skip only null or undefined [0.18ms]
+(pass) equivalent intervals collapse when their values agree [0.12ms]
+(pass) conflicting equivalent intervals reject the whole input without mutation [0.15ms]
+(pass) Chakra categories order baseline, ascending minima and descending maximum-only queries [0.13ms]
+(pass) equal minima use source query-text ties, not a numeric maximum or narrowest-first rule [0.19ms]
+(pass) the shared comparator groups equal ranges without imposing a property declaration order [0.04ms]
+(pass) all selected conditions normalize to fifteen unique intervals [0.14ms]
+(pass) normalization returns frozen records and does not retain mutable container state [0.05ms]
+(pass) a pure transition table changes numeric rem bounds without mutating defaults [0.07ms]
+(pass) plain responsive records and breakpoint tables work across realms [0.74ms]
+(pass) nonplain objects from another realm remain invalid [0.58ms]
+(pass) rejects unsupported input shape or condition 0 [0.02ms]
+(pass) rejects unsupported input shape or condition 1
+(pass) rejects unsupported input shape or condition 2
+(pass) rejects unsupported input shape or condition 3
+(pass) rejects unsupported input shape or condition 4
+(pass) rejects unsupported input shape or condition 5
+(pass) rejects unsupported input shape or condition 6
+(pass) rejects unsupported input shape or condition 7
+(pass) rejects unsupported input shape or condition 8
+(pass) rejects unsupported input shape or condition 9 [0.02ms]
+(pass) rejects unsupported input shape or condition 10
+(pass) rejects unsupported input shape or condition 11
+(pass) rejects unsupported input shape or condition 12
+(pass) rejects unsupported input shape or condition 13
+(pass) rejects unsupported input shape or condition 14
+(pass) rejects unsupported input shape or condition 15
+(pass) rejects unsupported input shape or condition 16
+(pass) rejects unsupported input shape or condition 17
+(pass) rejects invalid or unordered transition tables 0 [0.03ms]
+(pass) rejects invalid or unordered transition tables 1
+(pass) rejects invalid or unordered transition tables 2
+(pass) rejects invalid or unordered transition tables 3
+(pass) rejects invalid or unordered transition tables 4
+(pass) rejects invalid or unordered transition tables 5
+(pass) rejects invalid or unordered transition tables 6
+(pass) rejects invalid or unordered transition tables 7
+
+src/shared/__tests__/flow-geometry.test.ts:
+(pass) rounded paths preserve endpoints and keep tight obstacle corners sharp [0.47ms]
+(pass) fit respects bounds and point-anchored zoom keeps the same world coordinate [0.09ms]
+(pass) fit rejects unusable limits and arrows stay within their terminal segment [0.09ms]
+
+src/shared/__tests__/pin-value.test.ts:
+(pass) normalization fills, truncates and owns values [0.13ms]
+(pass) full codes replace all fields while partial paste preserves only the left prefix [0.09ms]
+(pass) deletion leaves no holes and focus stops at the insertion point [0.07ms]
+(pass) a new character replaces either side of the old character [0.02ms]
+(pass) character policies match the selected ASCII alphabets [0.07ms]
+
+src/shared/__tests__/places.test.ts:
+(pass) Places > a nested child's slot does not occupy the host's place [1.82ms]
+(pass) Places > changing a direct child's slot updates occupancy without an explicit read [1.89ms]
+(pass) Places > an empty element fills no place and renders no place span [0.54ms]
+(pass) Places > content in a slot fills that place and only that place [0.29ms]
+(pass) Places > both places fill independently [0.25ms]
+(pass) Places > content added later fills the place, and removing it empties it [0.62ms]
+(pass) Places > a read that changes nothing requests no update [0.23ms]
+(pass) default content tracks text edits and excludes private named children [5.69ms]
+(pass) a component fallback does not count as author-assigned content [0.66ms]
+
+src/shared/__tests__/toast-store.test.ts:
+(pass) Toast stores own immutable serializable records and never share a default queue [0.79ms]
+(pass) updates preserve identity, ending records ignore updates, and re-add starts a new lifetime [0.23ms]
+(pass) one presentation owner changes on detach and each dismissal has one reason [0.07ms]
+(pass) announcement ownership follows the store through viewport handoff [0.05ms]
+(pass) generated identities never replace an explicitly supplied identity [0.08ms]
+
+src/shared/__tests__/registration.test.ts:
+(pass) registration is repeatable and preserves a compatible application subclass [0.20ms]
+(pass) registration rejects unrelated constructors without replacing them [0.05ms]
+
+src/shared/__tests__/relative-time.test.ts:
+(pass) dates are explicit instants with UTC date-only parsing [0.36ms]
+(pass) scheduled boundaries change the rounded value or selected unit [0.16ms]
+(pass) numeric always handles signed zero while auto waits for a meaningful rounded change [0.02ms]
+
+src/shared/__tests__/native-content-root.test.ts:
+(pass) native content keeps every node and marker in original order [0.96ms]
+(pass) author child replacement does not resurrect removed content [0.40ms]
+(pass) a renderer-provided native container keeps its child ownership [0.26ms]
+
+src/shared/__tests__/messages.test.ts:
+(pass) message catalogs own string data and fall back through locale ancestry [44.93ms]
+(pass) invalid message records never invoke getters or change the catalog [18.14ms]
+
+src/shared/__tests__/feedback-data.test.ts:
+(pass) feedback snapshots own only serializable application fields [0.20ms]
+(pass) topics have immutable distinct values and readable labels [0.08ms]
+
+src/shared/__tests__/keyboard-delegation.test.ts:
+(pass) a popup inside a Toolbar keeps its own keyboard collection boundary [0.20ms]
+
+src/shared/__tests__/icon-artwork.test.ts:
+(pass) artwork owns immutable geometry and identifies unavailable styles [1.06ms]
+(pass) library defaults validate before changing the canonical state [0.45ms]
+
+src/shared/__tests__/simple-grid-sizing.test.ts:
+(pass) minimum mode is selected before responsive mapping and preserves skipped bands [0.13ms]
+(pass) clearing the minimum restores counts while absent counts stay absent [0.02ms]
+
+src/shared/__tests__/owned-content.test.ts:
+(pass) framework rendering reads the component mount state without creating a Lit part [0.87ms]
+(pass) ordinary author content takes precedence over a framework renderer [0.16ms]
+(pass) controlled templates mount and unmount actual nodes without moving the template [0.43ms]
+(pass) owned Lit parts receive disconnect and reconnect notifications [0.61ms]
+
+src/shared/__tests__/target-description.test.ts:
+(pass) owned descriptions preserve existing description text and restore the original attribute [0.40ms]
+
+src/shared/__tests__/interaction.test.ts:
+(pass) secondary contacts and non-primary buttons do not start a visual press [0.62ms]
+(pass) disconnect removes temporary window release listeners and clears visual state [1.25ms]
+(pass) an unrelated pointer cannot end the active pointer's visual press [0.29ms]
+(pass) reconnect restores the retained target without requiring another attach call [0.23ms]
+(pass) touch does not hover, and disabling cancels current visual interaction [0.24ms]
+(pass) keyboard release must match the held activation key and window blur cancels it [0.77ms]
+(pass) focus transfer during a pointer press retains the pointer gesture until release [0.17ms]
+
+src/shared/__tests__/measurement.test.ts:
+(pass) progress distinguishes real zero, missing data and invalid limits [0.11ms]
+(pass) meter validates ordered bounds and separates loading from a known measurement [0.07ms]
+(pass) meter quality follows explicit low high and optimum regions rather than fixed percentages [0.04ms]
+(pass) large finite ranges and small circular arcs never produce invalid geometry [0.12ms]
+
+src/shared/__tests__/plain-record.test.ts:
+(pass) accepts data records from this or another realm [0.61ms]
+(pass) rejects primitives, collections, class instances and custom prototype chains [0.23ms]
+(pass) does not run an object's or prototype's constructor getter [0.06ms]
+
+src/shared/__tests__/typeahead.test.ts:
+(pass) repeated characters cycle while a multi-letter prefix retains its match [1.76ms]
+(pass) a buffered space extends a label instead of activating an item [0.13ms]
+(pass) locale search handles accents and ignores canceled/composing keys [0.06ms]
+(pass) unmatched buffered spaces remain typeahead rather than activating an item [0.06ms]
+
+src/shared/__tests__/roving-tabindex.test.ts:
+(pass) RovingTabindex > moves to the neighbour, stops at a disabled one and at the ends by default [11.13ms]
+(pass) RovingTabindex > wrap, skipDisabled and homeEnd widen the moves [0.43ms]
+(pass) live direction and orientation apply without synthetic key events [0.25ms]
+
+src/shared/__tests__/resizable-layout.test.ts:
+(pass) default shares and constrained normalization total exactly one hundred [0.37ms]
+(pass) duplicate identities and impossible bounds fail before allocation [0.12ms]
+(pass) collapse and reopen use the same saved size, clamped to changed bounds [0.20ms]
+(pass) each handle changes its adjacent pair and reports the matching range [0.34ms]
+(pass) a collapsed pane outside the pair keeps its state and allocation [0.09ms]
+(pass) growing a collapsed adjacent pane restores its saved size [0.04ms]
+(pass) collapse during a gesture remembers the last committed open size [0.05ms]
+(pass) keyed snapshots survive reordering and cannot be changed by callers [0.03ms]
+(pass) bounded allocation and pair resizing remain finite across deterministic inputs [15.27ms]
+(pass) an accessible handle range includes reopening a collapsed primary pane [0.15ms]
+(pass) an initially collapsed pane retains its configured open share for restoration [0.07ms]
+
+src/shared/__tests__/decimal-step.test.ts:
+(pass) decimal steps do not accumulate binary addition drift [0.07ms]
+(pass) exponent-form steps terminate across finite numeric magnitudes [0.14ms]
+(pass) nonfinite inputs are rejected and overflow is explicit [0.05ms]
+(pass) decimal grid snapping keeps fractional origins and negative rounding exact [0.13ms]
+
+src/shared/__tests__/form.test.ts:
+(pass) bindField > pushes input events into the field and invalid presentation back into the control [11.66ms]
+(pass) bindField > binds booleans to checked [4.00ms]
+(pass) binding observes field updates, releases on disconnect and resubscribes [6.26ms]
+
+src/shared/__tests__/responsive-input.test.ts:
+(pass) responsive attribute conversion > absence and empty attributes clear while numeric tokens retain their type [0.12ms]
+(pass) responsive attribute conversion > a numeric attribute cannot bypass its numeric bounds as a CSS string [0.10ms]
+(pass) responsive attribute conversion > recognizes scalar CSS before attempting structured JSON [0.02ms]
+(pass) responsive attribute conversion > preserves authored responsive objects and skipped array positions [0.06ms]
+(pass) responsive attribute conversion > preserves false only when the property's scalar contract permits it [0.04ms]
+(pass) responsive attribute conversion > malformed JSON produces an absent current value with a bounded diagnostic [0.03ms]
+(pass) responsive attribute conversion > invalid structure or leaf clears this attribute: {"compact":-2} [0.03ms]
+(pass) responsive attribute conversion > invalid structure or leaf clears this attribute: {"other":2}
+(pass) responsive attribute conversion > invalid structure or leaf clears this attribute: {"compactOnly":2,"mediumDown":4} [0.03ms]
+(pass) responsive attribute conversion > invalid structure or leaf clears this attribute: [2,2,2,2,2,2]
+(pass) responsive attribute conversion > invalid structure or leaf clears this attribute: null
+(pass) responsive attribute conversion > invalid structure or leaf clears this attribute: "4px"
+(pass) responsive attribute conversion > invalid structure or leaf clears this attribute: {"medium":null} [0.02ms]
+(pass) responsive authored snapshots > validates before returning an immutable copy without normalizing away author syntax [0.08ms]
+(pass) responsive authored snapshots > copies foreign records and sparse arrays without invoking inherited positions [0.25ms]
+(pass) responsive authored snapshots > returns frozen successful and invalid converter results [0.03ms]
+
+src/shared/__tests__/semantic-element.test.ts:
+(pass) cloned static templates preserve names and popup semantics on every instance [1.46ms]
+(pass) role and label name only the native root while canonical inputs remain readable [0.36ms]
+(pass) property writes and ordinary DOM updates share the same accessible inputs [0.33ms]
+(pass) ID references resolve in the author's scope and late IDs update without another render [2.90ms]
+(pass) explicit references replace strings and string writes replace explicit references [0.59ms]
+(pass) reconnection resolves references in the new author scope [0.56ms]
+(pass) active descendants and autocomplete reach the native semantic root [1.53ms]
+
+src/shared/__tests__/number-format.test.ts:
+(pass) zero respects the declared unit and locale [0.99ms]
+(pass) binary symbols and localized long names use the selected scale [1.68ms]
+(pass) three significant digits do not discard small finite values [0.15ms]
+(pass) invalid values and combinations use an explicit error surface [0.06ms]
+
+src/shared/__tests__/flow-graph.test.ts:
+(pass) graph identities are isolated from engine and port namespaces [0.45ms]
+(pass) scene rejects missing nodes and nonorthogonal output instead of drawing corrupt geometry [0.33ms]
+
+src/shared/__tests__/style-input-binding.test.ts:
+(pass) React synchronization filters actual controller keys and preserves complete prop order [0.64ms]
+(pass) same-owner clearing during first publication sees its newly supplied keys [0.16ms]
+(pass) writes triggered while attaching a controller are applied instead of lost [0.09ms]
+(pass) grouped updates keep supplied order, remove missing owned keys and preserve unrelated inputs [0.14ms]
+(pass) an older or unrelated owner cannot clear a newer owner's inputs [0.07ms]
+(pass) failed grouped validation rolls back ownership without committing earlier values or removals [0.26ms]
+(pass) pending clearing remains explicit and survives attachment validation failure [0.12ms]
+(pass) pending owners keep their latest order and an empty unrelated owner has no inherited claim [0.44ms]
+(pass) pending responsive values are snapshots, not retained caller objects [0.06ms]
+(pass) malformed helper data never invokes accessors or changes existing ownership [0.07ms]
+(pass) newer reentrant ownership survives an older invocation and its later clearing [0.07ms]
+
+src/shared/__tests__/reflect.test.ts:
+(pass) reflected properties do not spawn attributes the consumer never set > a default value reflects nothing [0.94ms]
+(pass) reflected properties do not spawn attributes the consumer never set > a value the consumer sets still reflects [0.43ms]
+(pass) reflected properties do not spawn attributes the consumer never set > a value set through the property reflects too [0.38ms]
+
+src/shared/__tests__/inherited-appearance.test.ts:
+(pass) inherited appearance > distinguishes component defaults from an authored value equal to the default [0.47ms]
+(pass) inherited appearance > follows current provider changes, replacement and clearing [0.07ms]
+(pass) inherited appearance > uses a fresh nested provider without merging outer defaults [0.02ms]
+(pass) inherited appearance > reports unsupported inherited values and uses the component default [0.09ms]
+(pass) inherited appearance > ignores provider values for a property the child does not support [0.04ms]
+(pass) inherited appearance > does not publish effective changes when authored inputs mask provider changes [0.05ms]
+(pass) inherited appearance > freezes snapshots and owns copies of definitions and authored inputs [0.06ms]
+(pass) inherited appearance > keeps size and variant supported-value types separate [0.27ms]
+(pass) inherited appearance > leaves subscription lifetime with the consumer and still reads current state after disposal [0.04ms]
+(pass) emitted appearance declarations retain absence and readonly contracts with strict=false [1782.08ms]
+(pass) emitted appearance declarations retain absence and readonly contracts with strict=true [1966.46ms]
+
+src/shared/__tests__/calendar-value.test.ts:
+(pass) calendar separates civil dates from timestamp instants [1.83ms]
+(pass) a range may be provisional but may not run backwards [0.21ms]
+(pass) time edits reject gaps and retain the selected overlap offset [1.79ms]
+(pass) grid is locale aware and month arithmetic clamps [1.32ms]
+
+src/shared/__tests__/press-repeat.test.ts:
+(pass) releasing a press permits the next press and commits each changed action once [4.29ms]
+(pass) a synchronous disconnect in the edit callback leaves no active press [0.61ms]
+
+src/shared/__tests__/toc-model.test.ts:
+(pass) TOC owns immutable explicit entries and rejects ambiguous identities [1.47ms]
+(pass) TOC current section follows the last crossed heading and the final visible section [0.09ms]
+
+src/shared/__tests__/json-view-model.test.ts:
+(pass) inspection labels accessors, cycles and unsupported values without invoking them [1.42ms]
+(pass) encoded paths distinguish special keys and visible depth does not erase data [1.61ms]
+(pass) deep and shared graphs use iterative inspection and preserve copied display values [108.50ms]
+(pass) literal highlights are escaped and regex state remains caller-owned [0.27ms]
+
+src/shared/__tests__/breakpoints.test.ts:
+(pass) inspection leaves startup configuration available and returns immutable defaults [5.90ms]
+(pass) configuration copies inputs and identical complete tables are harmless repeats [0.12ms]
+(pass) a successful first configuration prevents conflicting later startup calls [0.12ms]
+(pass) first actual use locks defaults even before any configuration call [0.06ms]
+(pass) use preserves configured widths and only equivalent later calls are accepted [0.04ms]
+(pass) invalid calls leave the startup opportunity and selected widths unchanged [0.13ms]
+(pass) cross-realm plain records configure normally while accessors are not invoked [1.42ms]
+(pass) test owners do not share mutable configuration [0.06ms]
+(pass) the singleton imports without locking and the standalone normalizer stays pure [18.95ms]
+
+src/shared/__tests__/static-styles.test.ts:
+(pass) shares each generated source within a document and creates destination-owned sheets [5.44ms]
+(pass) replaces only owned sheets while preserving unrelated sheets and author nodes [1.04ms]
+(pass) retains same-document raw sheets so later native changes remain live [1.46ms]
+(pass) refreshes a cached foreign raw stylesheet snapshot on application [1.15ms]
+(pass) updates foreign raw sheet media and disabled state even when its rules stay unchanged [1.53ms]
+(pass) uses literal styles when the owner view reports non-native ShadyCSS [1.19ms]
+(pass) preserves raw sheet metadata in literal nodes and clears it when a generated source replaces them [1.32ms]
+(pass) refreshes only owned fallback nonces when the root moves to another fallback view [1.19ms]
+(pass) uses owned literal styles without a window and keeps their cleanup boundary stable [1.37ms]
+
+src/shared/__tests__/date.test.ts:
+(pass) corrected date runtime > preserves the instant with offset -03:30 [0.08ms]
+(pass) corrected date runtime > preserves the instant with offset -00:30 [0.05ms]
+(pass) corrected date runtime > preserves the instant with offset +05:30
+(pass) corrected date runtime > preserves the instant with offset +00:30
+(pass) corrected date runtime > preserves the instant with offset -07:00 [0.01ms]
+(pass) corrected date runtime > preserves the instant with offset Z
+(pass) corrected date runtime > rejects day zero in every date representation [0.21ms]
+(pass) corrected date runtime > keeps leap day and month validation [0.05ms]
+
+src/shared/__tests__/motion-spring.test.ts:
+(pass) all documented spring roles preserve their physical damping ratio [0.12ms]
+(pass) invalid spring parameters fail before creating an animation [0.06ms]
+
+src/shared/__tests__/public-defaults.test.ts:
+(pass) removing scalar input attributes restores their declared component defaults [112.37ms]
+
+src/shared/__tests__/tree-model.test.ts:
+(pass) Tree owns immutable data with unique IDs and detects cycles [0.26ms]
+(pass) visible traversal requires every ancestor expanded and retains disabled discovery metadata [0.16ms]
+
+src/shared/__tests__/theme-registry.test.ts:
+(pass) registers immutable independent spacing and size overrides and inherits omitted categories [0.59ms]
+(pass) equivalent repeated definitions are harmless and conflicting replacements fail [0.26ms]
+(pass) validates a complete definition before registration without invoking input accessors [0.33ms]
+(pass) uses token-specific native grammars including scale expressions [0.88ms]
+(pass) names are exact Map keys and unknown names cannot silently select the house theme [0.17ms]
+(pass) motion spring tokens accept positive numeric CSS and reject nonpositive literals [0.22ms]
+
+src/shared/__tests__/style-properties.test.ts:
+(pass) style metadata causes no registration until a component uses its styles [0.14ms]
+(pass) the same stylesheet registers independently in each document registry [0.07ms]
+(pass) conflicting definitions fail before registering any property in that style group [0.08ms]
+(pass) only duplicate-name platform errors are accepted; invalid registrations remain errors [0.07ms]
+
+src/shared/__tests__/numeric-tokens.test.ts:
+(pass) numeric tokens > defines exactly the approved 35 immutable keys [0.04ms]
+(pass) numeric tokens > keeps spacing and size names independent and encodes decimal keys [0.05ms]
+(pass) numeric tokens > derives negative spacing from positive properties without declaring negative tokens [0.07ms]
+(pass) numeric tokens > rejects unknown numeric keys and categories instead of emitting fallback pixels [0.30ms]
+(pass) numeric tokens > provides 70 unique immutable definitions with rem defaults for both categories [0.40ms]
+
+src/shared/__tests__/ordered-style-inputs.test.ts:
+(pass) ordered style inputs > direct updates retain position, clearing removes it, and re-adding appends [0.25ms]
+(pass) ordered style inputs > a complete helper patch preserves unrelated inputs and supplied object order [0.13ms]
+(pass) ordered style inputs > same values can reorder and every helper invocation reasserts its values [0.08ms]
+(pass) ordered style inputs > publishes one complete canonical snapshot for multiple changes [0.07ms]
+(pass) ordered style inputs > a late invalid value cannot commit earlier values or removals [0.07ms]
+(pass) ordered style inputs > rejects unknown supplied, removed and direct keys before writing [0.09ms]
+(pass) ordered style inputs > undefined is a clear while zero and structured values remain authored inputs [0.06ms]
+(pass) ordered style inputs > owns normalized copies and freezes snapshot tuples, nested values and returned keys [0.09ms]
+(pass) ordered style inputs > preserves each property's validator output type [0.01ms]
+(pass) ordered style inputs > exposes inferred mutable validator results as deeply readonly values [0.09ms]
+(pass) ordered style inputs > accepts ordinary ordered input objects from another realm [0.34ms]
+
+src/shared/__tests__/toast-timers.test.ts:
+(pass) Toast timers preserve remaining time across repeated and overlapping pauses [0.28ms]
+(pass) new paused timers get their full duration and persistent records never schedule [0.04ms]
+(pass) replacement and cancellation invalidate old callbacks and large delays remain safe [0.06ms]
+
+src/shared/__tests__/responsive-style-plan.test.ts:
+(pass) merges equivalent conditions across properties before applying authored declaration order [0.27ms]
+(pass) query order wins across conditions even when the broad shorthand is authored last [0.09ms]
+(pass) preserves raw CSS and uses independent numeric categories with signed spacing [0.27ms]
+(pass) display reaches both boxes while ordinary geometry reaches only the host [0.36ms]
+(pass) a fresh empty input plan removes all prior declarations, without a saved last-valid result [0.06ms]
+(pass) invalid CSS leaves do not retain previous values or discard valid sibling conditions [0.08ms]
+(pass) validates whole inputs and duplicate fields before returning a plan [0.25ms]
+(pass) snapshots supplied transitions and authored values into deeply immutable plans [0.09ms]
+
+src/shared/__tests__/flow-data.test.ts:
+(pass) flow snapshots own nested ports and reject ambiguous identities [0.14ms]
+(pass) edge references and declared ports are checked together at layout [0.19ms]
+
+src/shared/__tests__/system-appearance.test.ts:
+(pass) one document shares its media observation and exposes only readonly state [0.17ms]
+(pass) changes publish through the canonical source and disposal is idempotent [0.17ms]
+(pass) reacquiring after the final release reads the current document preference [0.02ms]
+(pass) documents do not share preferences or listener lifetime [0.03ms]
+(pass) a document without a browsing context uses the light baseline without global access [0.02ms]
+
+src/shared/__tests__/style-input-controller.test.ts:
+(pass) style input capture > captures actual attribute order and composes ordinary observed attributes [0.81ms]
+(pass) style input capture > captures non-enumerable own data properties in their creation order before connection [0.14ms]
+(pass) style input capture > rejects own accessors without invoking them or deleting other inputs [0.06ms]
+(pass) style input capture > rejects non-configurable own inputs and conflicting Lit property metadata [0.29ms]
+(pass) style input capture > initial attribute replay does not replace early property values [0.14ms]
+(pass) style input capture > same-text writes and removal/re-addition before connection remain real changes [0.21ms]
+(pass) style input capture > reentrant attribute changes cannot discard other pending initial callbacks [0.09ms]
+(pass) style input capture > direct updates retain position; undefined removes it and re-addition appends [0.11ms]
+(pass) style input capture > invalid HTML clears its override and reports a diagnostic while unrelated values survive [0.29ms]
+(pass) style input capture > keeps responsive authored shape and owns copies rather than viewport results [0.16ms]
+(pass) style input capture > disconnected attributes and properties update canonical state and render on reconnect [0.54ms]
+
+src/shared/__tests__/theme-context.test.ts:
+(pass) nearest providers carry live TanStack state without replacing the provided source [1.16ms]
+(pass) moving outside a provider clears the previous source [0.68ms]
+(pass) an existing host can start providing after consumers connect [0.54ms]
+(pass) the same controller can provide and consume without selecting itself [0.26ms]
+(pass) native opener binding follows moves and stops discovery after release [0.72ms]
+(pass) consumer resource connection and release can repeat [0.78ms]
+(pass) opener detachment ends its binding and retains the final appearance for exit [0.88ms]
+(pass) a supplied complete scope resets inherited names and can resume DOM inheritance [0.83ms]
+
+src/shared/__tests__/scroll-geometry.test.ts:
+(pass) thumb geometry is bounded by its track, including a track below the minimum [0.13ms]
+(pass) empty and nonoverflowing geometry never produces NaN [0.07ms]
+(pass) elastic positions clamp and pointer travel maps to the actual scroll range [0.03ms]
+(pass) modern RTL native offsets round trip through physical track coordinates [0.05ms]
+
+src/shared/__tests__/theme-scope.test.ts:
+(pass) theme scope > uses house tokens, auto appearance and normal density without authoring those defaults [0.18ms]
+(pass) theme scope > inherits the nearest parent's effective inputs and clears own overrides back to it [0.16ms]
+(pass) theme scope > explicit auto overrides inherited dark and follows the supplied system source [0.09ms]
+(pass) theme scope > omitted appearance inherits its parent's resolution while explicit auto uses its own source [0.02ms]
+(pass) theme scope > follows parent updates and replacement without merging a removed provider [0.08ms]
+(pass) theme scope > replaces the document system source and reads current state without a subscription [0.02ms]
+(pass) theme scope > an explicit normal value remains authored when a parent later becomes compact [0.04ms]
+(pass) theme scope > validates the complete authored transaction before notifying subscribers [0.53ms]
+(pass) theme scope > copies authored records, freezes snapshots and accepts data from another realm [0.30ms]
+(pass) theme scope > rejects the appearance accessor without invoking it or committing an earlier field [0.11ms]
+(pass) theme scope > rejects the unknown accessor without invoking it or committing an earlier field
+(pass) theme scope > rejects non-enumerable fields without committing an earlier field [0.04ms]
+(pass) theme scope > consumer disposal stops notifications without disabling later reads or subscriptions [0.06ms]
+(pass) theme scope > keeps authored and effective contracts distinct without requiring a named house theme [0.03ms]
+
+src/shared/__tests__/icon-element.test.ts:
+(pass) icons are decorative until named and use real SVG paths [3.45ms]
+test-house-icon {
+  code: "missing-icon-artwork",
+  symbol: "home",
+  family: "sharp",
+  filled: true,
+}
+acme-desktop-windows-icon {
+  code: "missing-icon-artwork",
+  symbol: "desktop_windows",
+  family: "outlined",
+  filled: false,
+}
+acme-light-mode-icon {
+  code: "missing-icon-artwork",
+  symbol: "light_mode",
+  family: "outlined",
+  filled: false,
+}
+acme-dark-mode-icon {
+  code: "missing-icon-artwork",
+  symbol: "dark_mode",
+  family: "outlined",
+  filled: false,
+}
+acme-desktop-windows-icon {
+  code: "missing-icon-artwork",
+  symbol: "desktop_windows",
+  family: "outlined",
+  filled: false,
+}
+acme-light-mode-icon {
+  code: "missing-icon-artwork",
+  symbol: "light_mode",
+  family: "outlined",
+  filled: false,
+}
+acme-dark-mode-icon {
+  code: "missing-icon-artwork",
+  symbol: "dark_mode",
+  family: "outlined",
+  filled: false,
+}
+acme-content-copy-icon {
+  code: "missing-icon-artwork",
+  symbol: "content_copy",
+  family: "outlined",
+  filled: false,
+}
+test-house-icon {
+  code: "missing-icon-artwork",
+  symbol: "home",
+  family: "outlined",
+  filled: false,
+}
+(pass) explicit style overrides defaults and late artwork imports resolve missing markers [3.18ms]
+acme-desktop-windows-icon {
+  code: "missing-icon-artwork",
+  symbol: "desktop_windows",
+  family: "rounded",
+  filled: true,
+}
+acme-light-mode-icon {
+  code: "missing-icon-artwork",
+  symbol: "light_mode",
+  family: "rounded",
+  filled: true,
+}
+acme-dark-mode-icon {
+  code: "missing-icon-artwork",
+  symbol: "dark_mode",
+  family: "rounded",
+  filled: true,
+}
+acme-desktop-windows-icon {
+  code: "missing-icon-artwork",
+  symbol: "desktop_windows",
+  family: "rounded",
+  filled: true,
+}
+acme-light-mode-icon {
+  code: "missing-icon-artwork",
+  symbol: "light_mode",
+  family: "rounded",
+  filled: true,
+}
+acme-dark-mode-icon {
+  code: "missing-icon-artwork",
+  symbol: "dark_mode",
+  family: "rounded",
+  filled: true,
+}
+acme-content-copy-icon {
+  code: "missing-icon-artwork",
+  symbol: "content_copy",
+  family: "rounded",
+  filled: true,
+}
+test-house-icon {
+  code: "missing-icon-artwork",
+  symbol: "home",
+  family: "rounded",
+  filled: true,
+}
+(pass) an explicit false fill attribute overrides the library default [1.73ms]
+
+src/shared/__tests__/overlay-coordination.test.ts:
+(pass) Escape dismisses only the top surface and cancels native default dismissal [0.94ms]
+(pass) outside dismissal requires the same pointer to start and end outside [0.33ms]
+(pass) the anchor is inside and a cancelled pointer cannot dismiss [0.18ms]
+(pass) a gesture cannot fall through to the surface below a released session [0.11ms]
+(pass) releasing a parent also releases a child anchored through its slot [0.18ms]
+(pass) a separately mounted dialog can outlive the menu that opened it [0.13ms]
+(pass) an independent dialog does not close when its opener is removed [1.33ms]
+
+src/shared/__tests__/style-inputs.test.ts:
+(pass) accepts only element expressions [0.68ms]
+(pass) reasserts the same object on every helper render and keeps unrelated settings [1.02ms]
+(pass) key removal and explicit empty input clear only the same helper's supplied keys [0.36ms]
+(pass) temporary detach and complete element removal do not clear authored inputs [0.33ms]
+(pass) a replacement helper on a retained element does not inherit a removed helper's claims [0.30ms]
+(pass) keeps grammar-invalid authored CSS for the native declaration planner [0.17ms]
+
+src/shared/__tests__/theme-tokens.test.ts:
+(pass) all ten theme categories expose exact, unique keys and properties [0.56ms]
+(pass) existing names map directly while private channels and composition fields stay private [0.38ms]
+(pass) numeric spacing and dimensions remain independent [0.21ms]
+(pass) weight defaults are the six numeric values present in authored and generated CSS [0.03ms]
+(pass) compact density changes only the approved role values [0.07ms]
+(pass) the public definition type accepts CSS strings under exact category keys [0.03ms]
+
+src/shared/__tests__/field-association.test.ts:
+(pass) a Field associates one logical control and disables ambiguous associations [0.34ms]
+(pass) association supplies semantic defaults without competing DOM attribute writes [0.52ms]
+(pass) moving a target rehomes stable owned references [0.25ms]
+(pass) moving one control to another Field releases the old owner safely [0.07ms]
+
+src/shared/__tests__/atom-state.test.ts:
+(pass) atomState > reads its initial value and re-renders on write [0.86ms]
+(pass) atomState > two fields on one element are independent [0.18ms]
+(pass) atomState > two instances do not share state [0.17ms]
+(pass) atomState > writing the same value again does not re-render [0.13ms]
+(pass) atomState > a field with no initializer still re-renders once written [0.30ms]
+(pass) atomState > survives the host being moved in the DOM [0.33ms]
+(pass) atomState with a shared atom > every instance reads and writes the same value [0.40ms]
+(pass) atomState with a shared atom > follows detached changes and reconnects without accumulating subscriptions [0.69ms]
+(pass) atomState with a compare > a rebuilt object with the same shape does not re-render [0.36ms]
+(pass) atomState and changedProperties > a write is recorded, so an element can ask which of its fields moved [0.18ms]
+(pass) atomState with public Lit metadata > keeps initial defaults absent and reflects an explicit same-default write [0.43ms]
+(pass) atomState with public Lit metadata > updates canonical and derived values synchronously, independent of rendering [0.20ms]
+(pass) atomState with public Lit metadata > converts attributes and restores the captured default on removal [0.18ms]
+(pass) atomState with public Lit metadata > reflects shared accessor writes and external writes with the property name [0.14ms]
+(pass) atomState with public Lit metadata > reconciles detached local and external writes when connected [0.14ms]
+(pass) atomState with public Lit metadata > preserves defaults after writes before first connection [0.18ms]
+(pass) atomState with public Lit metadata > replays pre-definition properties over attributes without replacing defaults [0.43ms]
+(pass) atomState with public Lit metadata > retains named equality behavior for NaN and signed zero [0.20ms]
+(pass) atomState with public Lit metadata > reflects the final batched external value with its original old value [0.14ms]
+(pass) atomState with public Lit metadata > retains the first old value when a batch mixes external and accessor writes [0.12ms]
+(pass) atomState with public Lit metadata > uses subclass metadata and converters without replacing the atom accessor [0.34ms]
+
+src/shared/__tests__/command-ranking.test.ts:
+(pass) command ranking preserves group boundaries and scores visible labels with keywords [0.35ms]
+(pass) custom scores determine order within groups and group order without mutating input [0.14ms]
+
+src/shared/__tests__/root-styles.test.ts:
+(pass) root styles share one owned sheet and preserve unrelated styles on release [0.62ms]
+(pass) moving a host into a different root releases the old scope [0.24ms]
+(pass) a preexisting matching stylesheet keeps its original owner [0.19ms]
+
+src/shared/__tests__/stack-geometry.test.ts:
+(pass) wrapped lines have no orphan or cross-line dividers [0.20ms]
+(pass) unequal cross-axis alignment remains on the same flex line [0.03ms]
+(pass) reverse RTL and CSS order use native visual adjacency [0.04ms]
+(pass) zero-size rendered elements remain members and no-wrap lines stretch across their container [0.04ms]
+(pass) vertical wrapped columns use the same geometry [0.03ms]
+
+src/shared/__tests__/style-renderer.test.ts:
+(pass) serializes generated declarations in exact native window and container query order [0.80ms]
+(pass) owns one runtime stylesheet, preserves unrelated styles and locks breakpoints on responsive use [1.36ms]
+(pass) missing nearest or named containers retain baseline output and emit one bounded diagnostic [1.79ms]
+(pass) defers missing-container diagnostics while disconnected and checks again on reconnect [0.51ms]
+(pass) recreates owned delivery in the adopted document and preserves unrelated sheets [1.33ms]
+(pass) uses one nonce-bearing fallback node and removes only that owned node [1.00ms]
+
+src/shared/__tests__/store-reconnect.test.ts:
+(pass) a store selector across a move > keeps following the store after its host is re-parented [1.65ms]
+(pass) a store selector across a move > still re-renders on every later change, not just the first [13.69ms]
+(pass) a store selector across a move > schedules one connection update for a host with selectors and atom fields [0.78ms]
+(pass) a store selector across a move > preserves selector and comparison options after reconnect [0.42ms]
+
+src/shared/__tests__/pagination-model.test.ts:
+(pass) unknown totals require explicit next availability and never invent a last page [0.05ms]
+(pass) zero totals and out-of-range supplied pages have bounded actions without rewriting page [0.05ms]
+(pass) numbered ranges remain bounded and replace single hidden pages with their number [0.07ms]
+
+src/shared/__tests__/native-form.test.ts:
+(pass) native submission is current before canonical observers and inside an outer batch [0.52ms]
+(pass) same-value writes become dirty; defaults and reset follow native ownership [0.20ms]
+(pass) custom validation overrides family validation and clearing restores it [0.13ms]
+(pass) fieldset state remains separate from authored disabled state [0.03ms]
+(pass) extra canonical state synchronizes while connected and catches up after reconnect [0.08ms]
+(pass) restoration uses the family decoder and preserves an explicit null restoration state [0.16ms]
+(pass) a constraint callback cannot leave native submission behind the canonical value [0.14ms]
+(pass) an owned part suppresses native participation without discarding its standalone state [0.07ms]
+(pass) owner synchronization runs after the local native projection inside the same write [0.08ms]
+(pass) Field context masks participation without overwriting authored disability or value [0.07ms]
+(pass) native text normalization retains the raw reset default [0.09ms]
+
+src/shared/__tests__/spring-value.test.ts:
+(pass) direct manipulation settles at the canonical endpoint without a release jump [0.50ms]
+
+src/shared/__tests__/chart-data.test.ts:
+(pass) chart records preserve zero and missing values without numeric coercion [0.94ms]
+(pass) series records validate identity and retain formatter functions [0.07ms]
+(pass) numeric and date x values retain their semantic kind and source indices [0.21ms]
+(pass) the selected engine preserves line gaps and groups bar series beside each other [4.62ms]
+(pass) exact date values remain distinct within the same UTC day [0.04ms]
+(pass) default exact-value formatting preserves small finite values [0.06ms]
+
+src/shared/__tests__/style-input-schema.test.ts:
+(pass) common style input schema > keeps authored CSS strings current while retaining numeric and display domain checks [0.07ms]
+(pass) common style input schema > contains exactly the approved 77 property and attribute names with their targets [0.27ms]
+(pass) common style input schema > keeps the complete spacing and size token keys independent and immutable [0.04ms]
+(pass) common style input schema > accepts only selected numeric spacing/size keys, with signs restricted to margins and insets [0.74ms]
+(pass) common style input schema > uses the approved unitless and zero-only numeric boundaries [0.11ms]
+(pass) common style input schema > passes integer grid lines through the supplied native-property grammar check [0.06ms]
+(pass) common style input schema > delegates string and shorthand grammar using each exact CSS property [0.07ms]
+(pass) common style input schema > requires an explicit layout display subset and always excludes contents [0.03ms]
+(pass) common style input schema > rejects non-scalars without consulting browser grammar and narrows unknown values [0.12ms]
+
+tools/geist/__tests__/census.test.ts:
+(pass) state rewrite > a pseudo-class on a compound carries the state down to the parts inside [0.12ms]
+(pass) state rewrite > a bare pseudo-class keeps the element clause only [0.02ms]
+(pass) state rewrite > a bare pseudo-class is recognised after every combinator [0.06ms]
+(pass) state rewrite > focus-visible maps to the focus attribute, and focus does too [0.02ms]
+(pass) state rewrite > an escaped colon in a utility class name is left alone
+(pass) state rewrite > a pseudo-class that only starts the same way is left alone
+
+tools/geist/__tests__/diff.test.ts:
+(pass) accepted icon differences cannot hide a non-icon layout defect [57.21ms]
+
+tools/geist/__tests__/gen.test.ts:
+(pass) composed descendant rules reach the terminal part through its ancestor host [28.59ms]
+
+tools/geist/__tests__/simplify.test.ts:
+(pass) simplify: shorthand reset > a shorthand replaces the longhands it does reset [0.58ms]
+(pass) simplify: shorthand reset > outline keeps outline-offset: the shorthand does not reset it [0.06ms]
+(pass) simplify: shorthand reset > outline still replaces its own longhands [0.04ms]
+(pass) simplify: shorthand reset > transform keeps transform-style: they are separate properties [0.04ms]
+(pass) simplify: shorthand reset > a same-prefixed property outside its shorthand survives [0.08ms]
+(pass) reference defaults use linked CSS sheets rather than sidecar files [3.89ms]
+
+tools/geist/__tests__/token-declarations.test.ts:
+(pass) removes only imported numeric spacing declarations [0.76ms]
+(pass) rewrites positive and signed references into the canonical spacing category [0.58ms]
+(pass) preserves positive fallbacks and does not rewrite quoted text [0.25ms]
+(pass) rejects unsupported numeric references instead of emitting missing variables [0.15ms]
+(pass) the actual token generator retires aliases and emits stable bytes across clock dates [63.06ms]
+
+packages/mcp/src/__tests__/catalog.test.ts:
+(pass) versioned documentation catalog > requires an explicit exact version and never substitutes a framework [0.55ms]
+(pass) versioned documentation catalog > preserves complete component facts and isolates release and caller mutations [0.18ms]
+(pass) versioned documentation catalog > bounds search and filters unavailable framework content [0.87ms]
+(pass) versioned documentation catalog > uses matching stable resources and never interprets resource IDs as filesystem paths [0.30ms]
+(pass) versioned documentation catalog > rejects incomplete and duplicate release records [0.32ms]
+(pass) malformed non-string release record IDs cannot pass string-pattern coercion [0.03ms]
+
+packages/mcp/src/__tests__/server.test.ts:
+(pass) MCP schemas, read-only tools and resources work through the protocol [23.28ms]
+(pass) the Bun stdio entry reads only its adjacent packaged release [131.98ms]
+
+packages/devtools/src/__tests__/diagnostics.test.ts:
+(pass) public property snapshots update without changing component state or reading undeclared fields [2.86ms]
+(pass) root scoping, stable event identity, bounded events and detach/reconnect cleanup [7.86ms]
+(pass) sensitive property-only values and event payloads are redacted before retention [1.59ms]
+(pass) safe snapshots bound data and omit getters, nodes, nested secrets and cycles [0.23ms]
+(pass) public theme updates on an ancestor invalidate only scoped component snapshots [1.56ms]
+(pass) public getter synchronization does not create an internal-attribute observation loop [2.62ms]
+
+src/components/tabs/__tests__/tabs.test.ts:
+(pass) one initial enabled value owns panel state and later writes stay silent [20.75ms]
+(pass) Tabs expose primary/inset and automatic/manual without child selected state [4.97ms]
+
+src/components/sidebar/__tests__/sidebar.test.ts:
+(pass) Sidebar keeps independent desktop and mobile state with configured presentation defaults [0.50ms]
+
+src/components/split-button/__tests__/split-button.test.ts:
+(pass) Split Button composes Group and Menu with a required trigger name [7.26ms]
+(pass) loading closes Split Button menu [6.09ms]
+
+src/components/kbd/__tests__/kbd.test.ts:
+(pass) named keys are owned values and describe rather than register a shortcut [1.53ms]
+(pass) the default slot is used only when keys is absent [0.66ms]
+(pass) key labels are replaceable and plus remains a key [31.29ms]
+(pass) key input rejects accessors without invoking them [0.24ms]
+
+src/components/theme-switcher/__tests__/theme-switcher.test.ts:
+(pass) renders one named native radio group with auto selected and small default size [33.23ms]
+(pass) requests a preference without owning it, writing root attributes or saving storage [16.54ms]
+(pass) application updates drive the control and programmatic updates emit no request [26.69ms]
+(pass) disabled blocks requests and named sizes reach the rendered root [5.26ms]
+(pass) removing authored value and size attributes restores the declared defaults [17.40ms]
+
+src/components/drawer/__tests__/drawer.test.ts:
+(pass) Drawer uses logical placement and an optional authored CSS size [8.21ms]
+(pass) Drawer preserves author content and uses one cancelable dismissal path [16.75ms]
+
+src/components/radio-card/__tests__/radio-card.test.ts:
+(pass) radio cards retain one radio owner and separate independent actions [8.24ms]
+
+src/components/show-more/__tests__/show-more.test.ts:
+(pass) Show More has one expansion event and silent programmatic writes [4.41ms]
+
+src/components/video/__tests__/video.test.ts:
+(pass) Video keeps one native media owner and real source/track children [1.24ms]
+(pass) native playback rejection remains a rejection without a success event [0.60ms]
+(pass) native events forward once through the host, including capture listeners [0.61ms]
+(pass) pause prevents preference or unrelated updates from restarting autoplay [0.63ms]
+(pass) native mute changes remain canonical and are not overwritten by unrelated renders [0.45ms]
+(pass) pause before the render flush cancels a pending wrapper play request [0.40ms]
+
+src/components/toc/__tests__/toc.test.ts:
+(pass) TOC defaults and explicit empty entries remain distinct from discovery [0.20ms]
+
+src/components/tooltip/__tests__/tooltip.test.ts:
+(pass) Tooltip defaults keep short noninteractive help and explicit delays [0.23ms]
+(pass) removing content restores the documented empty string [0.07ms]
+
+src/components/box/__tests__/box.test.ts:
+(pass) all structural tags keep one semantic root and the same author-owned content [1.79ms]
+(pass) all common inputs have accessors and observed attributes outside Lit metadata [1.26ms]
+(pass) HTML scalars and structured properties share canonical inputs; removal clears one property [0.65ms]
+(pass) Box rejects an arrangement display and keeps native semantic naming on its root [0.35ms]
+
+src/components/calendar/__tests__/calendar.test.ts:
+(pass) Calendar canonical date control > range owns one form value and incomplete required ranges are invalid [9.85ms]
+(pass) Calendar canonical date control > single day click commits and programmatic values remain silent [10.53ms]
+(pass) Calendar canonical date control > day navigation clamps across month ends without changing value [11.35ms]
+(pass) Calendar canonical date control > time values preserve the instant and reject invalid dates [9.04ms]
+(pass) Calendar HTML values work independently of configuration attribute order [12.86ms]
+(pass) value-first configuration preserves the supplied Calendar selection [6.68ms]
+(pass) civil-date formatting preserves a day skipped by a time zone [8.70ms]
+(pass) removing presentation, size and presets restores their defaults [11.95ms]
+(pass) initial configuration does not dirty an unchanged default value [8.63ms]
+
+src/components/radio/__tests__/radio.test.ts:
+(pass) standalone radios coordinate one checked value and one user event [15.46ms]
+(pass) radio form scopes do not affect a separate form [11.62ms]
+(pass) current and reset state remain separate and disabled native input rejects activation [11.55ms]
+
+src/components/checkbox-card/__tests__/checkbox-card.test.ts:
+(pass) card structure keeps independent actions outside its native label [2.60ms]
+(pass) independent action controls keep their own change notification [2.25ms]
+
+src/components/card/__tests__/card.test.ts:
+(pass) Card switches its native meaning without replacing author content [1.03ms]
+(pass) Inset defaults restore after attribute removal [0.55ms]
+(pass) Item leaves independent actions and selection ownership to content [0.67ms]
+
+src/components/code-block/__tests__/code-block.test.ts:
+(pass) Code Block preserves all source whitespace and exposes one code source [5.97ms]
+(pass) line activation requests application state without changing the URL [5.65ms]
+(pass) line decorations are snapshotted and never create phantom lines [5.99ms]
+(pass) a failed highlighter keeps escaped source and reports failure once [5.52ms]
+
+src/components/load-more/__tests__/load-more.test.ts:
+(pass) Load More requests results without submitting or changing loading [7.25ms]
+
+src/components/copy-button/__tests__/copy-button.test.ts:
+(pass) copy waits for success, reports no copied data and owns readonly feedback [5.12ms]
+(pass) clipboard failures reject and emit a safe message [2.34ms]
+(pass) changing the value invalidates stale completion and feedback [2.51ms]
+(pass) feedback duration and disconnect release the timer [18.61ms]
+(pass) empty forwarded start content preserves the built-in copy icon [1.52ms]
+
+src/components/segmented-control/__tests__/segmented-control.test.ts:
+(pass) Segmented Control owns one value while items expose only their own inputs [10.59ms]
+
+src/components/progress/__tests__/progress.test.ts:
+(pass) Progress preserves absent values and restores default maximum on attribute removal [0.56ms]
+
+src/components/alert-dialog/__tests__/alert-dialog.test.ts:
+(pass) removing an explicit default or override preserves Alert Dialog outside-dismissal policy [6.26ms]
+
+src/components/input/__tests__/input.test.ts:
+(pass) Input carries canonical value, constraints and Field presentation to one native target [3.93ms]
+(pass) all four affix positions retain independent author content [1.29ms]
+(pass) user input and commit have distinct events, programmatic writes stay silent [2.86ms]
+(pass) disabled and readonly block clear without overwriting current state [1.19ms]
+(pass) type and string constraints reject unsupported API values [1.00ms]
+(pass) removing type restores native text behavior [0.83ms]
+
+src/components/format-number/__tests__/format-number.test.ts:
+(pass) missing and empty values stay absent while zero renders [1.12ms]
+(pass) number options are owned snapshots and JSON updates use the same state [0.41ms]
+acme-format-number {
+  code: "invalid-number-format",
+}
+acme-format-number {
+  code: "invalid-number-format",
+}
+(pass) invalid options and nonfinite values render an empty fallback [0.40ms]
+(pass) byte configuration uses canonical defaults and a real text root [0.38ms]
+
+src/components/group/__tests__/group.test.ts:
+(pass) Group has semantic defaults without owning selection form or disabled state [0.76ms]
+(pass) orientation uses owned responsive data and clears to horizontal [0.43ms]
+(pass) optional appearance and container attributes clear to absence [0.45ms]
+
+src/components/alert/__tests__/alert.test.ts:
+(pass) Alert and Banner share status inputs without an automatic live role [0.29ms]
+(pass) removing heading restores the documented empty string [0.08ms]
+
+src/components/accordion/__tests__/accordion.test.ts:
+(pass) Accordion owns expansion and noncollapsible single-mode interaction [10.95ms]
+(pass) multiple permits independent closing and copies external arrays [5.51ms]
+(pass) Collapsible has one boolean owner and a silent programmatic path [3.29ms]
+
+src/components/markdown/__tests__/markdown.test.ts:
+(pass) Markdown owns native prose and real stable fragment targets [2.06ms]
+(pass) default raw HTML and executable URLs remain inert; HTML is an explicit trusted opt-in [0.82ms]
+(pass) text is the only source and output IDs remain unique across instances [1.70ms]
+(pass) code fences highlight and failed highlighting preserves safe source [7.83ms]
+(pass) table alignment uses generated hooks and relative links retain page resolution [1.49ms]
+(pass) parser failure keeps safe source and reports its failure [3.40ms]
+
+src/components/skeleton/__tests__/skeleton.test.ts:
+(pass) Skeleton owns loading and shape while author content stays in place [0.34ms]
+
+src/components/separator/__tests__/separator.test.ts:
+(pass) acme-separator > horizontal and decorative by default [1.03ms]
+(pass) acme-separator > vertical maps to the class and the orientation [0.19ms]
+(pass) acme-separator > property changes and attribute removal restore the canonical defaults [0.44ms]
+
+src/components/show/__tests__/show.test.ts:
+(pass) Show mounts only its selected template and resets state on a later mount [1.03ms]
+(pass) Show preserves both branches only when requested [0.63ms]
+
+src/components/toolbar/__tests__/toolbar.test.ts:
+(pass) Toolbar exposes canonical orientation, looping and disability [0.95ms]
+
+src/components/hover-card/__tests__/hover-card.test.ts:
+(pass) Hover Card uses the approved preview placement and delays [0.33ms]
+(pass) Hover Card restores its own defaults after authored attributes are removed [21.00ms]
+
+src/components/multi-select/__tests__/multi-select.test.ts:
+(pass) Multi Select owns an immutable array independent from caller mutation [5.48ms]
+(pass) Multi Select preserves reset defaults and clears malformed restoration [6.06ms]
+(pass) Multi Select has one logical owner and no independently named checkbox controls [4.89ms]
+
+src/components/relative-time/__tests__/relative-time.test.ts:
+(pass) zero is a valid instant and no card or invented trigger is rendered [1.46ms]
+acme-relative-time {
+  code: "missing-relative-date",
+}
+(pass) date inputs normalize to owned instants and future values remain future [0.40ms]
+acme-relative-time {
+  code: "invalid-relative-date",
+}
+(pass) invalid dates render no fabricated time and recover on valid input [0.33ms]
+
+src/components/checkbox/__tests__/checkbox.test.ts:
+(pass) acme-checkbox > renders one native checkbox with named indicator, label and description parts [1.38ms]
+(pass) acme-checkbox > checked, indeterminate and disabled reach the native input and the root's data attributes [1.27ms]
+(pass) acme-checkbox > a change on the input updates checked, clears indeterminate and emits acme-change [1.77ms]
+(pass) acme-checkbox > interaction states land on the label root, except while disabled [0.98ms]
+(pass) current checked state and explicit reset defaults remain separate [1.19ms]
+(pass) programmatic changes stay silent and user changes report the cleared mixed state [1.04ms]
+
+src/components/code/__tests__/code.test.ts:
+(pass) Code is native inline code and preserves source whitespace [0.83ms]
+(pass) highlighting uses escaped token text and reacts to language/text changes [2.21ms]
+(pass) block consumers retain the shared token rendering helper [0.07ms]
+(pass) Code refreshes text changed while disconnected [0.60ms]
+
+src/components/snippet/__tests__/snippet.test.ts:
+(pass) Snippet owns immutable plain text and copies exactly the source without its prompt [6.75ms]
+(pass) Snippet escapes text and exposes the selected copy and size contract [6.59ms]
+(pass) copy result bubbles once from Copy Button and invalid arrays are rejected [5.51ms]
+
+src/components/label/__tests__/label.test.ts:
+(pass) Label retains real label content and follows its for input [1.21ms]
+(pass) removing for restores implicit labeling rather than an empty for attribute [0.46ms]
+
+src/components/slider/__tests__/slider-values.test.ts:
+(pass) ordered thumbs stay on the step grid and keep gaps without pushing neighbors [0.20ms]
+(pass) fractional origins, tiny steps and nonaligned maxima remain decimal values [0.13ms]
+(pass) impossible configurations cannot start interaction [0.03ms]
+(pass) overflowing gap constraints remain invalid instead of throwing during synchronization [0.05ms]
+
+src/components/slider/__tests__/slider.test.ts:
+(pass) Slider owns an immutable numeric array and separates reset defaults [7.12ms]
+(pass) Slider publishes live and committed keyboard edits once, keeping thumb order and gaps [5.61ms]
+(pass) Slider rejects malformed values and supports restoration without user events [3.80ms]
+(pass) bounds and value assignment preserve authored values in either attribute order [14.36ms]
+(pass) staged properties recover after transient invalid bounds without replacing the supplied value [4.76ms]
+(pass) large steps and finite overflow stop at legal endpoints [5.18ms]
+(pass) removing thumb labels restores default names [0.36ms]
+
+src/components/app-bar/__tests__/app-bar.test.ts:
+(pass) App Bar has explicit parts and no implicit application controls [2.31ms]
+(pass) a dialog App Bar does not become a page banner [0.34ms]
+
+src/components/empty-state/__tests__/empty-state.test.ts:
+(pass) Empty State owns only size and surface treatment, with authored content [0.28ms]
+
+src/components/number-input/__tests__/number-input.test.ts:
+(pass) Number Input preserves editable partials and uses decimal arithmetic [10.87ms]
+(pass) format configuration preserves current amount and owns its options [5.81ms]
+(pass) optional constraints restore defaults and reject invalid numeric configuration [3.91ms]
+(pass) derived modifier steps retain decimal precision [3.12ms]
+(pass) Number Input actions transfer ownership on DOM moves and reconnect [27.89ms]
+
+src/components/spinner/__tests__/spinner.test.ts:
+(pass) an unnamed Spinner is decorative and uses the medium role [5.79ms]
+(pass) one label supplies the status name and message [3.07ms]
+(pass) full size names select the retained blade geometry [16.52ms]
+
+src/components/status/__tests__/status.test.ts:
+(pass) Status preserves application values and does not infer a deployment treatment [0.23ms]
+(pass) removing a required status value attribute restores its empty string default [0.08ms]
+
+src/components/field/__tests__/field.test.ts:
+(pass) Field validates presentation flags and does not own a form value [2.56ms]
+
+src/components/disabled-wall/__tests__/disabled-wall.test.ts:
+(pass) Disabled Wall preserves content and its independent disabled states [0.83ms]
+(pass) Removing the disabled attribute restores interaction without replacing children [0.37ms]
+
+src/components/combobox/__tests__/combobox.test.ts:
+(pass) ComboBox keeps committed value, query and reset value distinct [0.77ms]
+(pass) ComboBox programmatic state writes remain silent [0.16ms]
+(pass) ComboBox restores scalar values and rejects malformed values [0.25ms]
+
+src/components/context-menu/__tests__/context-menu.test.ts:
+(pass) disabled context menu preserves the browser context event [1.36ms]
+
+src/components/password-input/__tests__/password-input.test.ts:
+(pass) Password visibility changes native presentation without replacing its value [2.65ms]
+
+src/components/search/__tests__/search.test.ts:
+(pass) Search uses a native search target with a clear action and loading icon [6.11ms]
+
+src/components/dialog/__tests__/dialog.test.ts:
+(pass) Dialog has one user-state event and cancelable close requests [15.13ms]
+(pass) Alert Dialog action is application-owned and cancel closes through the shared path [13.88ms]
+
+src/components/browser/__tests__/browser.test.ts:
+(pass) Browser keeps native authored content and exposes a named presentation frame [1.77ms]
+(pass) Browser address is safe text and an omitted label does not fabricate a landmark [1.04ms]
+
+src/components/json-view/__tests__/json-view.test.ts:
+(pass) JSON View renders safe typed values, accessors and cycles without calling getters [3.04ms]
+(pass) hierarchy owns real groups and programmatic expansion remains silent [3.00ms]
+(pass) user expansion reports encoded paths and replacing one branch preserves another branch choice [4.23ms]
+(pass) plain highlights are literal and a caller regex keeps its state [1.67ms]
+
+src/components/textarea/__tests__/textarea.test.ts:
+(pass) Textarea carries multiline constraints and separate reset state [2.07ms]
+(pass) Textarea editing and disabled state use the canonical native contract [0.93ms]
+(pass) removing configuration attributes restores defaults [0.95ms]
+
+src/components/button/__tests__/button.test.ts:
+(pass) Button exposes the current action contract and native label [1.47ms]
+(pass) loading suppresses activation while retaining a focusable native control [5.84ms]
+(pass) disabled links keep link semantics and suppress navigation [1.41ms]
+(pass) author nodes stay owned by the author and affixes have explicit parts [6.56ms]
+
+src/components/steps/__tests__/steps.test.ts:
+(pass) Steps validates a user transition before changing the canonical value [12.77ms]
+(pass) Steps exposes completion explicitly at the count and supports returning [13.32ms]
+(pass) linear Steps blocks direct trigger jumps while previous and next remain available [8.98ms]
+
+src/components/stat/__tests__/stat.test.ts:
+(pass) Stat is a passive composed measurement and change does not infer direction from meaning [0.43ms]
+
+src/components/link/__tests__/link.test.ts:
+(pass) Link forwards native navigation fields and keeps optional parts empty until supplied [2.53ms]
+(pass) disabled navigation loses href, keeps link semantics and suppresses activation [0.80ms]
+
+src/components/scroll-area/__tests__/scroll-area.test.ts:
+(pass) Scroll Area exposes its native viewport and preserves author content [3.33ms]
+(pass) Scroll Area reports a missing viewport instead of keeping an obsolete owner [2.47ms]
+(pass) Scroll Button restores an omitted step and rejects unsupported CSS values [0.21ms]
+(pass) clearing named settings restores defaults and rejects unknown values [0.10ms]
+
+src/components/theme/__tests__/theme.test.ts:
+(pass) nested settings inherit, explicit defaults override, and removal resumes inheritance [1.60ms]
+(pass) registered overrides use owned sheets without replacing author inline custom properties [8.72ms]
+(pass) moving a scope changes its inherited source without preserving the former parent [3.04ms]
+(pass) an unknown theme fails before changing the current selected name [0.24ms]
+
+src/components/list/__tests__/list.test.ts:
+(pass) List retains native numbering, nested content and node identity [1.09ms]
+(pass) List snapshots responsive spacing and respects an authored list role [0.65ms]
+
+src/components/menu/__tests__/menu.test.ts:
+(pass) Menu authoring contracts > public defaults and canonical store [1.67ms]
+(pass) Menu authoring contracts > native disabled links cannot navigate [1.10ms]
+(pass) Menu authoring contracts > checked types and descriptions retain native semantics [0.97ms]
+(pass) Menu authoring contracts > programmatic visibility does not fabricate a user notification [0.54ms]
+(pass) Menu authoring contracts > typeahead text excludes descriptions, affixes and submenus [1.33ms]
+
+src/components/data-list/__tests__/data-list.test.ts:
+(pass) Data List keeps native pairs and rich values owned by the author [0.94ms]
+
+src/components/book/__tests__/book.test.ts:
+(pass) Book exposes heading and start content while keeping its cover structure [2.86ms]
+(pass) Book width uses the canonical responsive size contract and owns its input [1.33ms]
+(pass) Book gesture keeps the capture-before-hover and cancel-on-reversal behavior [2.24ms]
+(pass) touch does not start hover motion and texture orientation is generated state [1.27ms]
+
+src/components/avatar/__tests__/avatar.test.ts:
+(pass) Avatar has no invented image and derives grapheme-aware initials from its label [1.08ms]
+(pass) Avatar image success and error have separate state and secret-free events [1.17ms]
+(pass) replaced and disconnected image completions cannot publish [1.19ms]
+(pass) decorative avatar preserves fallback and badge author content without a second image name [0.90ms]
+(pass) removing scalar attributes restores authored defaults [1.23ms]
+
+src/components/command-menu/__tests__/command-menu.test.ts:
+(pass) query and keywords filter retained author nodes without reordering them [13.96ms]
+(pass) selection requests carry identifiers and can keep the menu open [15.14ms]
+(pass) disabled actions do not request selection and hotkeys are opt-in [18.86ms]
+
+src/components/fieldset/__tests__/fieldset.test.ts:
+(pass) Fieldset preserves native legend/control nodes and synchronizes its own flags [1.81ms]
+
+src/components/switch/__tests__/switch.test.ts:
+(pass) Switch has canonical checked/reset state and an independent submission value [2.06ms]
+
+src/components/avatar-group/__tests__/avatar-group.test.ts:
+(pass) empty groups invent no member; limit includes the count and zero means all [4.20ms]
+(pass) one remaining real member displays normally while extra-only counts stay exact [1.86ms]
+(pass) member snapshots are immutable and reordering preserves keyed avatar identity [2.56ms]
+(pass) Group owns arrangement and custom overflow preserves the full count text [1.80ms]
+(pass) attribute removal restores counting defaults and unsafe totals preserve prior state [1.71ms]
+
+src/components/resizable/__tests__/resizable.test.ts:
+(pass) Resizable owns frozen keyed shares while preserving author content [23.12ms]
+(pass) programmatic collapse and restore stay silent and retain content [3.56ms]
+(pass) restoration copies complete preferences instead of retaining caller records [2.65ms]
+(pass) sizes can be supplied before composition connects [1.78ms]
+
+src/components/tree-view/__tests__/tree-view.test.ts:
+(pass) Tree View keeps expansion independent from its single selected value [0.44ms]
+
+src/components/radio-group/__tests__/radio-group.test.ts:
+(pass) an explicit radio owner begins empty and emits one scalar change [12.12ms]
+(pass) default values, native reset and attribute removal follow the scalar contract [12.68ms]
+(pass) orientation and false-string loop options preserve their defaults [8.33ms]
+
+src/components/checkbox-group/__tests__/checkbox-group.test.ts:
+(pass) the group owns immutable values and one user event [3.16ms]
+(pass) defaults reset the array while member state stays derived [2.41ms]
+(pass) member and group appearance have separate authored ownership [1.70ms]
+(pass) membership removal transfers current state and clears ownership [1.70ms]
+(pass) invalid property arrays do not replace the previous value [2.52ms]
+(pass) a same-value member write marks the collection current value as authored [2.36ms]
+
+src/components/text/__tests__/text.test.ts:
+(pass) Text keeps native semantics and author nodes [0.79ms]
+(pass) typography inputs preserve absence and owned responsive values [0.32ms]
+(pass) line clamp is a positive count and outranks the single-line flag [0.40ms]
+(pass) Heading registers its real native level and authored fragment target [1.28ms]
+(pass) Heading discovery refreshes after detached content changes [0.38ms]
+
+src/components/select/__tests__/select.test.ts:
+(pass) Select separates current and reset values [4.33ms]
+(pass) Select exposes the new scalar interface without the native-select aliases [3.42ms]
+(pass) programmatic selection remains silent [3.57ms]
+(pass) Option selection is derived from the owning value [4.79ms]
+(pass) Option labels ignore renderer marker comments [4.45ms]
+
+src/components/stack/__tests__/stack.test.ts:
+(pass) Stack supports direction while named variants do not expose it [1.69ms]
+(pass) named forms retain author nodes and have no decoration while disabled [0.69ms]
+
+src/components/icon-button/__tests__/icon-button.test.ts:
+(pass) Icon Button uses one named native control and its icon part [1.80ms]
+
+src/components/meter/__tests__/meter.test.ts:
+(pass) Meter keeps missing data distinct from zero and retains explicit native bounds [0.27ms]
+
+src/components/timeline/__tests__/timeline.test.ts:
+(pass) Timeline preserves ordered native content and updates its final connector [1.80ms]
+
+src/components/flex/__tests__/flex.test.ts:
+(pass) Flex arrangement inputs are absent until supplied [1.52ms]
+(pass) Flex has its own display modes and retains semantics and children [0.58ms]
+
+src/components/breadcrumbs/__tests__/breadcrumbs.test.ts:
+(pass) Breadcrumbs supplies native ordered navigation and page meaning [2.56ms]
+(pass) a disabled breadcrumb never retains a navigable href [1.62ms]
+(pass) the last separator follows dynamic membership [1.54ms]
+
+src/components/middle-truncate/__tests__/middle-truncate.test.ts:
+(pass) acme-middle-truncate > whole: the root is an inline grid of sizer, text and measure; no title, no hidden copy [1.12ms]
+(pass) acme-middle-truncate > cut: the visible text is head, one ellipsis glyph and tail in three spans; the full value stays as title and hidden copy [1.40ms]
+(pass) acme-middle-truncate > cut splits the kept graphemes: below six an even split with the head longer, from six up at least three in the tail [0.03ms]
+(pass) acme-middle-truncate > fitCut keeps the whole value when it fits and returns the widest cut otherwise; nothing fits below one glyph [0.07ms]
+(pass) acme-middle-truncate > a selection across the ellipsis expands to the matching part of the value [0.07ms]
+(pass) acme-middle-truncate > a copy of the cut text yields the full value (a selection wider than the text span takes the text route) [1.30ms]
+
+src/components/toggle-tip/__tests__/toggle-tip.test.ts:
+(pass) Toggle Tip keeps explicit visibility and independent dismissal flags [0.12ms]
+
+src/components/toggle-button/__tests__/toggle-button.test.ts:
+(pass) user activation changes pressed once and programmatic assignment stays silent [1.64ms]
+
+src/components/pin-input/__tests__/pin-input.test.ts:
+(pass) Pin Input owns one immutable string array and separates reset defaults [5.35ms]
+(pass) restoration and programmatic writes remain silent [3.40ms]
+(pass) configuration validates counts, policies and individual character assignments [3.61ms]
+(pass) Pin Input fields transfer ownership on DOM moves and reconnect [14.31ms]
+
+src/components/grid/__tests__/grid.test.ts:
+(pass) Grid exposes tracks and preserves author nodes through semantic changes [0.97ms]
+(pass) Simple Grid counts and minima remain canonical authored values [0.58ms]
+
+src/components/badge/__tests__/badge.test.ts:
+(pass) Badge keeps every source variant with canonical sizes and affixes [0.93ms]
+(pass) Pill switches between passive content and a real named link [0.58ms]
+(pass) Tag remains passive at every named size and preserves start/end composition [0.30ms]
+
+ 1126 pass
+ 0 fail
+ 191007 expect() calls
+Ran 1126 tests across 218 files. [122.28s]

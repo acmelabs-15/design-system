@@ -1,0 +1,3 @@
+braces: https://github.com/advisories/GHSA-vfj7-8cjw-p6xm — patched: Pinned Bun patch bounds parser and AST-walker nesting; regression covers strings and supplied ASTs.
+http-cache-semantics: https://github.com/advisories/GHSA-ch52-4w7c-c8xp — not-reachable-in-reviewed-npm-path: Pinned npm caller uses a private cache and omits Set-Cookie from persisted responses; release commands use isolated cache directories. This does not certify shared caches or other cache defects.
+Dependency audit: no unresolved high/critical findings; 2 verified dispositions; 0 lower-severity findings.

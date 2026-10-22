@@ -1,0 +1,21 @@
+bun test v1.4.2 (744846f84)
+
+scripts/__tests__/dependency-audit.test.ts:
+(pass) patched Braces bounds each parser and AST walker without changing ordinary patterns [4.48ms]
+(pass) npm cache applicability proof passes against its actual caller and stored response [159.23ms]
+(pass) only exact reviewed advisories can receive a verified disposition [3.99ms]
+(pass) audit proof rejects expired review, changed code and additional dependency paths [14.11ms]
+(pass) private-cache disposition rejects required, optional and peer consumer dependencies [11.29ms]
+(pass) audit process boundary preserves native diagnostics and verdict: empty failure [439.79ms]
+(pass) audit process boundary preserves native diagnostics and verdict: malformed failure [181.97ms]
+(pass) audit process boundary preserves native diagnostics and verdict: empty success [172.99ms]
+(pass) audit process boundary preserves native diagnostics and verdict: malformed success [173.43ms]
+(pass) audit process boundary preserves native diagnostics and verdict: process failure [175.64ms]
+(pass) audit process boundary preserves native diagnostics and verdict: failure without findings [180.54ms]
+(pass) audit process boundary preserves native diagnostics and verdict: clean report [185.06ms]
+(pass) audit process boundary preserves native diagnostics and verdict: unreviewed high finding [185.63ms]
+
+ 13 pass
+ 0 fail
+ 89 expect() calls
+Ran 13 tests across 1 file. [2.52s]
