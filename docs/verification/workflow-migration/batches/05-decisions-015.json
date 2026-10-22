@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-015",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/flow-diagram.md",
+      "destination": "docs/decisions/0040-flow-diagram.md",
+      "sourceSha256": "85ce27871ec09eec716f69a8ab9402202bbdcb581c4aaa3297b7676335125ef3",
+      "destinationSha256": "5a32d48b4b45a22646d02d6e9354b2f2a01eb50e01917023da94a0c19c659248",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original decision date, selected scope, alternatives, reasons and evidence retained.",
+        "Original observations and incomplete verification remain distinguished from later implementation."
+      ]
+    },
+    {
+      "source": "notes/decisions/focus-ring-ownership.md",
+      "destination": "docs/decisions/0041-focus-ring-ownership.md",
+      "sourceSha256": "d095574bed7beab266280ae09fa935c736cf3d8ecbeeecac306952d911652c08",
+      "destinationSha256": "592c99f3afd81a111543f1ec5c5c3dae5ef197730a2ec67033bd3261e0447512",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Page-wide rule removal and component-local ownership preserved.",
+        "955 boxes/98 pages, 35 existing local rings, all silent-control patterns and 11 no-reference elements retained.",
+        "Historical sweep limitations retained; reference changes do not automatically reopen the product contract."
+      ]
+    },
+    {
+      "source": "notes/decisions/format-components.md",
+      "destination": "docs/decisions/0042-format-components.md",
+      "sourceSha256": "aa7fc86dc69467e912a67717c67d4a2b99ac3d200f90e1209aee57dc37e3130d",
+      "destinationSha256": "ce21191875abb60e555c8db74e96c168b5d907c161774b5611686415301523d2",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original decision date, selected scope, alternatives, reasons and evidence retained.",
+        "Original observations and incomplete verification remain distinguished from later implementation."
+      ]
+    },
+    {
+      "source": "notes/decisions/general-tree-view.md",
+      "destination": "docs/decisions/0043-general-tree-view.md",
+      "sourceSha256": "644c9b8bc1b7644eeb232e81c08a7c86eb8e4765cc8f3b808ce56b55e08c979a",
+      "destinationSha256": "7977954607d89a4d7dd8c7c7f09ca33876962ee14d59cb70940373224200ede1",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original decision date, selected scope, alternatives, reasons and evidence retained.",
+        "Original observations and incomplete verification remain distinguished from later implementation."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}
