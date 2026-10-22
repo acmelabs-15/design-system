@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-038",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/toggle-button.md",
+      "destination": "docs/decisions/0111-toggle-button.md",
+      "sourceSha256": "92a42f0ba576e916200d50ecc0de22d633c629f4e039f9ca5307a2fd223b9802",
+      "destinationSha256": "a951f1167c173b0480cf9d1d9c05fcc9bf1c3c169027442f3a76da7ae8d3314a",
+      "changes": [
+        "Retained final Chip replacement and Toggle Button semantic boundary.",
+        "Dated source comparison and linked final contract."
+      ],
+      "retainedQualifications": [
+        "No broader Material Chip removal/trailing-action/collection contract selected.",
+        "Sixteen Material figures and dynamic tokens were not visually inspected; no complete visual/browser acceptance claimed.",
+        "Shape is presentation; persistent pressed differs from transient pressing; Toggle-to-Switch rename stays final."
+      ]
+    },
+    {
+      "source": "notes/decisions/toolbar-group-responsibilities.md",
+      "destination": "docs/decisions/0112-toolbar-group-responsibilities.md",
+      "sourceSha256": "2207c6b48344920b9b513ad74e005f29549928cccd26baaf2dcdf5738b6bd473",
+      "destinationSha256": "c84d8fcd4b63a1a7bdc9f58b927dac03063082b379878c02b8301cf5b108401d",
+      "changes": [
+        "Retained three-way responsibility split and nested focus semantics.",
+        "Converted completed reviews/phase gates to history and linked final combined contracts."
+      ],
+      "retainedQualifications": [
+        "Toolbar does not own all child keys/values/forms or every horizontal row.",
+        "No Material spacing/density/target/shape/token values adopted.",
+        "Choice does not settle every Group-suffixed component.",
+        "Nested controls retain functional keys; one owner handles a movement or gesture."
+      ]
+    },
+    {
+      "source": "notes/decisions/track-census-results.md",
+      "destination": "docs/decisions/0113-track-census-results.md",
+      "sourceSha256": "6e2216a0deb44e5d1492ca604a9ba734289b6bd95a95612ecde1eeea2e7ff87c",
+      "destinationSha256": "c55e990ad986412a91d02001bfa507aff81214d81bf42c78be7c9827c59a5573",
+      "changes": [
+        "Added concise measurement-retention outcome and root invariant.",
+        "Dated incident counts/measurements and retained all failure/recovery details and anchors."
+      ],
+      "retainedQualifications": [
+        "106MB/1.5MB compression and 30MB repository are historical figures.",
+        "Exactly two collapse-group reference results were lost; original side and other results survived.",
+        "Zero roots cannot pass; root-count mismatch invalidates pairing.",
+        "Scroller recovery retains commits 5c1dcbe/9ee502e and 14-preview/9-root distinction."
+      ]
+    },
+    {
+      "source": "notes/decisions/zag-behaviour-ports.md",
+      "destination": "docs/decisions/0114-zag-behaviour-ports.md",
+      "sourceSha256": "dc2289378bb992aec9cb4677cb853edaec7f38d492686fb157d5fb87ba81425d",
+      "destinationSha256": "8f30f65091ad00c5266f8d8345f8520dfb70421512fbe23afc9175af79685b3a",
+      "changes": [
+        "Retained rejection of Zag runtime/adapter/interpreter and all selected capabilities.",
+        "Dated package/PR research and retired completed pre-migration gate.",
+        "Linked current package responsibility owner; removed competing origin terminology."
+      ],
+      "retainedQualifications": [
+        "@zag-js/vanilla 1.44.0 existed; old no-vanilla premise was corrected.",
+        "Porting includes lifecycle/accessibility/testing/provenance/license and known upstream fixes.",
+        "New/rebuilt/replacement components are allowed; existing state integration does not freeze classes/APIs.",
+        "Prior Zag bundle measurements are not port size estimates.",
+        "Separate remove-scroll utility remains selected."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}
