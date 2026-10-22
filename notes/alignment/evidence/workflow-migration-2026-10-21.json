@@ -1119,7 +1119,7 @@
     "tasks": "tasks/todo.md",
     "status": "ready for review; implementation not started",
     "review": {
-      "taskSize": "pending",
+      "taskSize": "approved by Peter on 2026-10-21",
       "dependencyOrder": "pending",
       "taskBoundaries": "pending"
     },
@@ -1183,6 +1183,19 @@
       ],
       "sourceEntryPointsAndSkillsUnchanged": true,
       "diffCheck": "pass"
-    }
+    },
+    "reviewEvents": [
+      {
+        "date": "2026-10-21",
+        "question": "Are these work units the right size?",
+        "response": "approved",
+        "settles": "task size",
+        "remaining": [
+          "dependency order",
+          "task boundaries"
+        ],
+        "implementationStarted": false
+      }
+    ]
   }
 }

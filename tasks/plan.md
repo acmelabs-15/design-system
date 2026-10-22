@@ -181,7 +181,7 @@ Specification: approved 2026-10-21.
 
 Implementation plan:
 
-- Task size: pending.
+- Task size: approved by Peter on 2026-10-21 through “approved,” answering the task-size review question.
 - Dependency order: pending.
 - Task boundaries: pending.
 
