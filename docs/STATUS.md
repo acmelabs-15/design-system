@@ -4,17 +4,17 @@ Updated 2026-10-22. This file is the sole current handoff for the repository.
 
 ## Current work
 
-Phase: ready for GitHub publication of the approved maintainer workflow migration. Use the [specification](../spec/SPEC-maintainer-workflow.md), [plan](../tasks/plan.md) and [task list](../tasks/todo.md).
+Phase: publishing the approved maintainer workflow migration. Use the [specification](../spec/SPEC-maintainer-workflow.md), [plan](../tasks/plan.md) and [task list](../tasks/todo.md).
 
-Tasks 1–11 are complete. The new workflow is active. All 970 original files are migrated or explicitly retired. The old notes tree, root port plan and five local skills are removed. [Evidence](verification/workflow-migration/README.md).
+Tasks 1–12 are complete. The new workflow is active. All 970 original files are migrated or explicitly retired. The old notes tree, root port plan and five local skills are removed. [Evidence](verification/workflow-migration/README.md).
 
-All authorized local implementation and checks are complete. Task 12 and Checkpoint D remain open only for the external link corrections and final acceptance. Component behavior, dependencies and package versions are unchanged.
+All twelve implementation/verification tasks and Checkpoint D are complete. The final guard passes after the three verified release-link corrections; approved GitHub publication remains in progress. Component behavior, dependencies and package versions are unchanged.
 
 ## Next step
 
-Local implementation and verification are complete. Ask once for the prepared GitHub publication: push this branch, open a pull request, apply the three existing release-body link corrections, and merge with a merge commit after required GitHub checks pass. [Exact proposal and evidence](verification/workflow-migration/task-12.json). No GitHub write is authorized yet.
+Peter explicitly approves full publication on 2026-10-22. Publish this accepted branch and its pull request. Merge with a merge commit after required GitHub checks pass. Verify the existing documentation deployment and save the final receipt. [Exact scope and evidence](verification/workflow-migration/task-12.json).
 
-Each release correction changes one main-branch evidence URL to the immutable pre-migration commit. Re-read the remote bodies before writing. After the actual corrections, update their evidence and run the final migration guard. Its three remaining external errors must clear before overall acceptance. Preserve published archives, signatures and tags. The existing documentation deployment follows the merge; verify its result for the actual merge commit.
+Each release correction changes exactly one main-branch evidence URL to the immutable pre-migration commit. Fresh API reads confirm all three bodies match their exact proposals and all tag objects and eight assets are unchanged. The final guard confirms zero reference errors or pending items. Preserve published archives, signatures and tags. The existing documentation deployment follows the merge; verify its result for the actual merge commit.
 
 The Claude root import works. Package starts use the reviewed explicit full read of the same shared instructions. The corrected package session verifies early brain consumption, all selected startup files, actual Git state, pinned Bun 1.4.2 and unchanged covered files. Native package auto-import remains a recorded consent-boundary limitation. The read-only test grants directory scope only to this repository.
 
@@ -22,7 +22,7 @@ One coordinator owns shared records, commits and build/browser runs. Workers own
 
 ## Verification and open issues
 
-- All 970 sources and 197 batches are accounted for. The reference guard finds no local migration errors. Its only three errors are the pending external release-link corrections. Raw evidence hashes remain intact.
+- All 970 sources and 197 batches are accounted for. The final reference guard passes with zero errors or pending items after all three external corrections. Raw evidence hashes remain intact.
 - All required runtime stages pass on clean revision 5f74c3a0ceb57e2c5a54afe7e23bac91b9bbebb2 through the preserved invocation and resumed stages. Coverage includes all 24 browser invocations and 1,446 component cases. No stage or assertion is waived. No single uninterrupted full-gate invocation passes.
 - The later audit diagnostic correction at 4782c25980e4f77e2b1f4cfa83788748d090bfbc passes all 1,126 unit tests, strict types, focused static checks and the normal audit. All five review axes accept the migration and this correction. Product and build inputs are unchanged.
 - The corrected host iteration runs all eight cases on the real Claude and Codex CLIs. Read-only snapshots preserve all 70,383 live entries and 1,510 entries in each fixture. Codex native metadata confirms the shared instruction file from root and package starts. Claude root native import and the corrected explicit package startup also pass at their recorded source identities. The last package case preserves all 70,383 covered entries. Three nonblocking report wording/order observations remain in task 12; perfect or universal model behavior is not claimed.
@@ -49,11 +49,11 @@ These are local paths, not portable dependencies. Verify they exist before use. 
 
 ## Git and permissions
 
-Branch: codex/maintainer-workflow-migration. Runtime acceptance uses clean revision 5f74c3a0ceb57e2c5a54afe7e23bac91b9bbebb2; final checker/unit acceptance uses 4782c25980e4f77e2b1f4cfa83788748d090bfbc. The initial corrected host matrix uses cb3d72281ea14684cbec132fabd3d3cdd27e7126 and separately recorded synthetic fixtures. Final Claude package acceptance uses clean 051f1ad9eca7e7ece8288112a946888e4101736a. Later commits save workflow instructions and evidence. Product and build inputs remain unchanged. No push, pull request, merge or release-body edit has occurred.
+Branch: codex/maintainer-workflow-migration. Runtime acceptance uses clean revision 5f74c3a0ceb57e2c5a54afe7e23bac91b9bbebb2; final checker/unit acceptance uses 4782c25980e4f77e2b1f4cfa83788748d090bfbc. The initial corrected host matrix uses cb3d72281ea14684cbec132fabd3d3cdd27e7126 and separately recorded synthetic fixtures. Final Claude package acceptance uses clean 051f1ad9eca7e7ece8288112a946888e4101736a. Later commits save workflow instructions and evidence. Product and build inputs remain unchanged. Three approved release-body edits are verified. Push, pull request, merge and deployment verification are next.
 
-Peter approves this migration's specification, plan, local implementation and verified local commits. On 2026-10-22 he also explicitly approves the two remaining Claude checks and their stated data transmission to Anthropic. Publication remains a separate decision.
+Peter approves this migration's specification, plan, local implementation and verified local commits. On 2026-10-22 he also explicitly approves the two remaining Claude checks and their stated data transmission to Anthropic. On 2026-10-22 he explicitly approves full GitHub publication and the normal documentation deployment, with merge conditional on passing required checks.
 
-Three [release-body corrections](verification/workflow-migration/external-reference-audit.json) are prepared. Published archives, tags and signatures remain immutable. The pull-request text and exact release-body proposals are ready for the one scoped publication approval.
+Three [release-body corrections](verification/workflow-migration/external-reference-audit.json) are applied and verified. Published archives, tags and signatures remain immutable. The pull-request text and exact release-body proposals are approved for publication.
 
 ## Product checkpoint
 

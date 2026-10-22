@@ -20,8 +20,8 @@ The current handoff is [STATUS](../docs/STATUS.md).
 - [x] 10. Update live consumers and generated projections — [evidence](../docs/verification/workflow-migration/task-10.json).
 - [x] Checkpoint C: ready for cutover
 - [x] 11. Activate the shared workflow and remove the old structure — [cutover evidence](../docs/verification/workflow-migration/task-11.json).
-- [ ] 12. Verify fresh sessions and the full migration
-- [ ] Checkpoint D: local migration acceptance
+- [x] 12. Verify fresh sessions and the full migration
+- [x] Checkpoint D: local migration acceptance
 
 Tasks 4–8 are batch groups. Before starting one, add each exact child batch below its task. Every child has a source-file list, dependencies, acceptance checks and result-file path. Its completion is separate from the group checkbox.
 
@@ -88,9 +88,9 @@ Tasks 4–8 are batch groups. Before starting one, add each exact child batch be
 Each child batch of tasks 4–7 inherits the following contract, with its exact files and result path recorded before edits.
 
 **Acceptance criteria:**
-- [ ] Every retained fact, decision, qualification and source has a trace to its original record.
-- [ ] The new format distinguishes current requirements, proposals, supersession, limits and historical observations.
-- [ ] Links resolve to prepared/new targets or remain explicitly pending inside the ledger; no pending reference passes final verification.
+- [x] Every retained fact, decision, qualification and source has a trace to its original record.
+- [x] The new format distinguishes current requirements, proposals, supersession, limits and historical observations.
+- [x] Links resolve to prepared/new targets or remain explicitly pending inside the ledger; no pending reference passes final verification.
 
 **Verification:** Full source-to-target review, the migration guard, and a batch report. Raw evidence additionally requires byte-identical hashes. The coordinator updates shared indexes and task state.
 
@@ -149,9 +149,9 @@ Semantic batches contain no more than four authored records; long research notes
 Each child batch of task 8 moves one driver and its dependency closure. Shared helpers get an owner first. Combine at most three short drivers only when they form one fixture unit.
 
 **Acceptance criteria:**
-- [ ] The driver, helpers and all active fixtures work from the new paths; shared dependencies are not copied into competing implementations.
-- [ ] Assertions, browser coverage, time limits, failure reporting and lifecycle checks retain their strength.
-- [ ] The runner selects the same check identity and arguments; moved code passes the authored-source checks that now apply.
+- [x] The driver, helpers and all active fixtures work from the new paths; shared dependencies are not copied into competing implementations.
+- [x] Assertions, browser coverage, time limits, failure reporting and lifecycle checks retain their strength.
+- [x] The runner selects the same check identity and arguments; moved code passes the authored-source checks that now apply.
 
 **Verification:** Run the moved scenario against the same prepared package set, the check-runner tests, relevant static/types checks, and the migration guard. Record old/new entry and result identities. No broad lint/type exclusions.
 
@@ -239,11 +239,11 @@ Each child batch of task 8 moves one driver and its dependency closure. Shared h
 **Acceptance criteria:**
 - [x] The full gate passes with all required browser/consumer checks; no skipped assertion or hidden failure supplies a green result.
 - [x] Fresh root and package sessions handle continuation, interruption, new scope, a pending approval and a red baseline correctly. Host startup is tested, not inferred from Markdown.
-- [ ] The ledger has complete coverage, raw evidence integrity holds, no old active path survives, and review findings are resolved or explicitly returned to Peter.
+- [x] The ledger has complete coverage, raw evidence integrity holds, no old active path survives, and review findings are resolved or explicitly returned to Peter.
 
 **Verification:** Run bun run check on the exact clean candidate; save its revision and results. Record separate host transcripts/results. Re-run only checks invalidated by a later correction.
 
-**Recorded result:** All required local runtime stages, migration reviews and actual-host behavioral checks pass within their recorded scope. The corrected Claude package case verifies shared context, early brain consumption, Git/Bun and complete file preservation. Earlier failed attempts, native package-import omission and three nonblocking reporting observations remain visible. No single uninterrupted full-gate invocation passes. Task 12 and Checkpoint D remain open only for the three external release-link corrections and final acceptance. [Evidence](../docs/verification/workflow-migration/task-12.json).
+**Recorded result:** All required local runtime stages, migration reviews and actual-host behavioral checks pass within their recorded scope. The corrected Claude package case verifies shared context, early brain consumption, Git/Bun and complete file preservation. Earlier failed attempts, native package-import omission and three nonblocking reporting observations remain visible. No single uninterrupted full-gate invocation passes. All three external links are applied and verified. The final migration guard passes with zero errors or pending items. Task 12 and Checkpoint D are complete; approved GitHub publication is in progress. [Evidence](../docs/verification/workflow-migration/task-12.json).
 
 **Dependencies:** 11.
 
@@ -253,7 +253,7 @@ Each child batch of task 8 moves one driver and its dependency closure. Shared h
 
 ## Checkpoint D: local migration acceptance
 
-- [ ] All approved specification success criteria have evidence.
+- [x] All approved specification success criteria have evidence.
 - [x] Working-tree/commit state and the exact next action are recorded.
 - [x] Shipping and external-reference updates are concrete and ready for the required outward-action approval.
 - [x] Actual-platform limits and credential-rotation status remain honest.

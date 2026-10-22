@@ -39,4 +39,4 @@ Follow the root agent instructions and [task list](../../../tasks/todo.md) for c
 
 Task 1 verifies the runner plan and its focused tests. Task 2 verifies inventory, source fingerprints, reference relationships and rule ownership. Neither is full migration acceptance.
 
-The recorded Chromium Hover Card failure remains open. Actual Safari, assistive technology, operating-system input/autofill and background-window checks remain unperformed. Token rotation remains owner-controlled. External release-body corrections are prepared and still need outward-action authorization before publication of the removal.
+The recorded Chromium Hover Card failure remains open. Actual Safari, assistive technology, operating-system input/autofill and background-window checks remain unperformed. Token rotation remains owner-controlled. External release-body corrections and their actual verification are recorded in task 12. STATUS owns the approved publication work and its current state.

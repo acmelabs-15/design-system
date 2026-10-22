@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "task": "02-external-reference-audit",
   "recordedAt": "2026-10-22T04:30:31.203Z",
-  "status": "read-only-audit-complete; corrections prepared but not applied",
+  "status": "read-only audit complete; approved release-link corrections applied and verified",
   "repository": "acmelabs-15/design-system",
   "remoteMainAtAudit": "1b5d08a420f7f916b0c87b166527c60985937f4d",
   "latestReleaseAtAudit": "0.3.2",
   "scope": "Current root and package READMEs, all five package allowlists, five GitHub release bodies, eight locally available release assets, fourteen available release archives, targeted consumer-skill/MCP reference records, and selected current public website endpoints.",
   "summary": {
     "githubReleasesRead": 5,
-    "mutableReleaseBodyLinksNeedingCorrection": 3,
+    "mutableReleaseBodyLinksNeedingCorrection": 0,
     "archivesInspected": 14,
     "archivesMatchingLiveNpmIntegrity": 13,
     "signedRejectedCandidateArchives": 1,
@@ -22,9 +22,10 @@
     "skillIndexesChecked": 3,
     "recordsPerSkillIndex": 4343,
     "scopedMaintainerFilesInArchives": 0,
-    "unavoidableFunctionalConflictsFound": 0
+    "unavoidableFunctionalConflictsFound": 0,
+    "initialMutableReleaseBodyLinksNeedingCorrection": 3
   },
-  "conclusion": "Complete removal of the old working-tree structure has no unavoidable functional conflict in this audited scope. Three mutable release-body links must be corrected before the removal is published. Immutable README labels and recipe source references remain historical data; package retrieval is self-contained and original sources remain reachable through verified commits.",
+  "conclusion": "The three approved mutable release-body links now point to verified immutable pre-migration evidence. Only one URL changes in each body; all tag objects and eight release-asset identities are unchanged. Original read-only audit observations below retain their capture scope.",
   "requiredFollowUps": [
     {
       "owner": "Task 10/coordinator",
@@ -33,18 +34,25 @@
         "v0.3.0",
         "v0.3.1",
         "v0.3.2"
-      ]
+      ],
+      "status": "complete",
+      "completionEvidence": "docs/verification/workflow-migration/task-12.json",
+      "evidenceField": "externalPublication"
     },
     {
       "owner": "Task 10/coordinator",
       "action": "Replace root README's notes/ layout entry with the approved docs/, spec/ and tasks/ layout. Keep maintainer navigation repository-qualified because this same README ships in core.",
       "source": "README.md:219",
-      "coreProjection": "packages/core/README.md -> ../../README.md"
+      "coreProjection": "packages/core/README.md -> ../../README.md",
+      "status": "complete",
+      "completionEvidence": "docs/verification/workflow-migration/task-10.json"
     },
     {
       "owner": "Task 9 or 10/coordinator",
       "action": "Replace the old maintainer-skill location in skills/README.md with the selected plugin workflow and shared AGENTS.md guidance. This file is not copied by the consumer-skill generator.",
-      "source": "skills/README.md:4"
+      "source": "skills/README.md:4",
+      "status": "complete",
+      "completionEvidence": "docs/verification/workflow-migration/task-10.json"
     },
     {
       "owner": "Task 10/coordinator",
@@ -54,7 +62,9 @@
         "site/release.ts:59",
         "scripts/consumer-skills.ts:59-80",
         "site/site.ts:113"
-      ]
+      ],
+      "status": "complete",
+      "completionEvidence": "docs/verification/workflow-migration/task-10.json"
     }
   ],
   "unavoidableConflicts": [],
@@ -614,7 +624,9 @@
           "proposedBody": "Version 0.3.2 completes the coordinated release of the Lit design system, React wrappers, browser distribution, Devtools and documentation MCP.\n\nBrowser delivery selects production dependency variants. The website, selective modules, complete bundles and copied table builds use explicit production settings. The unminified bundle retains readable output and CSS debugging maps. Declaration generation sorts source roots for reproducible output. The documentation MCP uses upstream security fixes in SDK 1.32.0, Hono 4.13.13 and its node adapter 2.1.5.\n\n- [Core](https://www.npmjs.com/package/@acmelabs/design-system/v/0.3.2)\n- [React](https://www.npmjs.com/package/@acmelabs/design-system-react/v/0.3.2)\n- [Browser](https://www.npmjs.com/package/@acmelabs/design-system-browser/v/0.3.2)\n- [Devtools](https://www.npmjs.com/package/@acmelabs/design-system-devtools/v/0.3.2)\n- [MCP](https://www.npmjs.com/package/@acmelabs/design-system-mcp/v/0.3.2)\n\nDownload `published-release-0.3.2.zip` with `release-v0.3.2-SHA256SUMS.txt`. It contains the exact public npm archives, release record and verified public provenance.\n\nRelease checks cover Linux builds, strict types, unit tests, dependency audit, archive integrity, package consumers and Chromium/Firefox/WebKit behavior. Production navigation and all six browser delivery entries reject console warnings. Public CDN and documentation checks verify delivered content and browser behavior.\n\nActual Safari, assistive technology, operating-system input/autofill and background-window checks remain outside the automated results.\n\n[Documentation](https://acmelabs-15.github.io/design-system/) · [Release evidence](https://github.com/acmelabs-15/design-system/blob/1b5d08a420f7f916b0c87b166527c60985937f4d/notes/alignment/release-0.3.2.md)\n",
           "mustChangeBeforePublishingOldTreeRemoval": true,
           "requiresOutwardActionApproval": true,
-          "applied": false
+          "applied": true,
+          "verifiedAt": "2026-10-22T10:30:20.561Z",
+          "afterBodySha256": "7ff1d3d7a4353c5d405439c1d91b4f02957f0a6fbfff6a9bb0807160526f45a3"
         }
       ]
     },
@@ -645,7 +657,9 @@
           "proposedBody": "**Use [stable 0.3.2](https://github.com/acmelabs-15/design-system/releases/tag/v0.3.2) for the completed release.**\n\nAll five 0.3.1 packages are published. Their actual tarballs and signed provenance verify against the publication record.\n\nThis version remains a prerelease because public delivery checks found development dependency variants in its browser bundle and documentation site. Version 0.3.2 corrects production dependency selection and passes public package, CDN and documentation acceptance. Existing 0.3.1 versions, this tag and its archives remain unchanged.\n\nFor the exact public archives, use `published-release-0.3.1.zip` with `release-v0.3.1-published-SHA256SUMS.txt`. It includes verified public provenance. The earlier `signed-release-0.3.1.zip` is retained preparation evidence; its core declaration ordering differs, with identical runtime files and no declared API difference.\n\n[Historical release evidence](https://github.com/acmelabs-15/design-system/blob/1b5d08a420f7f916b0c87b166527c60985937f4d/notes/alignment/release-0.3.1.md) · [Core package](https://www.npmjs.com/package/@acmelabs/design-system/v/0.3.1)\n",
           "mustChangeBeforePublishingOldTreeRemoval": true,
           "requiresOutwardActionApproval": true,
-          "applied": false
+          "applied": true,
+          "verifiedAt": "2026-10-22T10:30:20.606Z",
+          "afterBodySha256": "99f6beab69d76e9f157b991dca2a61ce1d3f81f61ebd335ec22144f209efb56c"
         }
       ]
     },
@@ -676,7 +690,9 @@
           "proposedBody": "**This coordinated release is incomplete. Use [stable 0.3.2](https://github.com/acmelabs-15/design-system/releases/tag/v0.3.2).**\n\nReact, MCP and Devtools 0.3.0 were published. npm rejected the 0.3.0 core archive with E415 because it contained too many files. The tag and signed archives remain unchanged as evidence. Version 0.3.2 completes all five package publications and verified public documentation delivery.\n\nThe changes below describe the verified 0.3.0 candidate.\n\n### Added\n\n- Generated React wrappers for the Lit component library.\n- A documentation MCP package and versioned consumer skills.\n- Optional design-system Devtools.\n- Selective component registration, scoped registration and CDN module delivery.\n\n### Changed\n\n- Components use consistent names, slots, properties and events.\n- Shared primitives own state, themes, form behavior, selection indicators and interaction lifetimes.\n- CSS compiles into generated Lit style modules.\n- Documentation and examples derive from the same release metadata as the packages.\n\n### Verification\n\nThe release requires the complete Linux quality workflow, archive-integrity checks and signed provenance. Browser acceptance covers Chromium, Firefox and WebKit, installed package consumers, React wrappers, scoped registration and documentation.\n\nActual Safari, assistive technology, operating-system input/autofill and background-window checks remain outside the automated results. The release record preserves these limits.\n\n[Historical release evidence](https://github.com/acmelabs-15/design-system/blob/1b5d08a420f7f916b0c87b166527c60985937f4d/notes/alignment/release-0.3.0.md)\n",
           "mustChangeBeforePublishingOldTreeRemoval": true,
           "requiresOutwardActionApproval": true,
-          "applied": false
+          "applied": true,
+          "verifiedAt": "2026-10-22T10:30:20.784Z",
+          "afterBodySha256": "d3fde1b06a9d63ecc09368ba72650f520d91dcbe213fcb5a6ba4d27a5985f413"
         }
       ]
     },
@@ -6121,5 +6137,181 @@
     "Public website checks cover the root, recipes.json and the Book documentation fragment. The census renderer's historical URL is checked at its GitHub target; no deployed census-page presence is claimed.",
     "Broad notes/ text scans also match upstream Material Symbols names such as add_notes. Those unrelated upstream URLs are not old repository-tree references.",
     "A sandboxed repeat of the GitHub release read returned a connection error. The identical read-only request succeeds with network access; later recorded API reads succeed."
-  ]
+  ],
+  "auditStatusAtCapture": "read-only-audit-complete; corrections prepared but not applied",
+  "publicationCorrection": {
+    "date": "2026-10-22T10:30:20.784Z",
+    "repository": "acmelabs-15/design-system",
+    "passed": true,
+    "records": [
+      {
+        "tag": "v0.3.0",
+        "url": "https://github.com/acmelabs-15/design-system/releases/tag/v0.3.0",
+        "currentUrl": "https://github.com/acmelabs-15/design-system/blob/main/notes/alignment/release-0.3.0.md",
+        "targetUrl": "https://github.com/acmelabs-15/design-system/blob/1b5d08a420f7f916b0c87b166527c60985937f4d/notes/alignment/release-0.3.0.md",
+        "beforeBodySha256": "1ea13a0403271aa0a351268be791aac10a57e2111a1546bd7a04503db4ceaf7e",
+        "proposedBodySha256": "d3fde1b06a9d63ecc09368ba72650f520d91dcbe213fcb5a6ba4d27a5985f413",
+        "immutableFields": {
+          "id": 418425124,
+          "tag_name": "v0.3.0",
+          "target_commitish": "main",
+          "name": "Design system 0.3.0",
+          "draft": false,
+          "prerelease": true,
+          "created_at": "2026-10-20T12:08:16Z",
+          "published_at": "2026-10-20T13:46:36Z",
+          "assets": [
+            {
+              "id": 659390863,
+              "name": "SHA256SUMS",
+              "size": 91,
+              "digest": "sha256:2f734364c7341869fe4d4b35dbb0db4a5617db1da34806d46e03db9e2f928026",
+              "created_at": "2026-10-20T13:20:51Z",
+              "updated_at": "2026-10-20T13:20:51Z",
+              "browser_download_url": "https://github.com/acmelabs-15/design-system/releases/download/v0.3.0/SHA256SUMS"
+            },
+            {
+              "id": 659390864,
+              "name": "signed-release-0.3.0.zip",
+              "size": 22827999,
+              "digest": "sha256:d4942071ef09872c5f670e8e68a41f0fe036eaa5752df5f5066089c7a05e4f72",
+              "created_at": "2026-10-20T13:20:51Z",
+              "updated_at": "2026-10-20T13:20:53Z",
+              "browser_download_url": "https://github.com/acmelabs-15/design-system/releases/download/v0.3.0/signed-release-0.3.0.zip"
+            }
+          ]
+        },
+        "tagObject": {
+          "sha": "88b31662c419cb328670ddb8ee376768aae7e55e",
+          "type": "tag",
+          "url": "https://api.github.com/repos/acmelabs-15/design-system/git/tags/88b31662c419cb328670ddb8ee376768aae7e55e"
+        },
+        "onlyIntendedChange": "one evidence URL",
+        "applied": true,
+        "verifiedAt": "2026-10-22T10:30:20.784Z",
+        "afterBodySha256": "d3fde1b06a9d63ecc09368ba72650f520d91dcbe213fcb5a6ba4d27a5985f413",
+        "bodyMatchesExactProposal": true,
+        "immutableFieldsUnchanged": true,
+        "tagObjectUnchanged": true
+      },
+      {
+        "tag": "v0.3.1",
+        "url": "https://github.com/acmelabs-15/design-system/releases/tag/v0.3.1",
+        "currentUrl": "https://github.com/acmelabs-15/design-system/blob/main/notes/alignment/release-0.3.1.md",
+        "targetUrl": "https://github.com/acmelabs-15/design-system/blob/1b5d08a420f7f916b0c87b166527c60985937f4d/notes/alignment/release-0.3.1.md",
+        "beforeBodySha256": "7a528946bd868e85322962af35a14e09518ea1e8f7b0dcbf840fac4209e4b290",
+        "proposedBodySha256": "99f6beab69d76e9f157b991dca2a61ce1d3f81f61ebd335ec22144f209efb56c",
+        "immutableFields": {
+          "id": 418700112,
+          "tag_name": "v0.3.1",
+          "target_commitish": "main",
+          "name": "v0.3.1",
+          "draft": false,
+          "prerelease": true,
+          "created_at": "2026-10-20T17:23:46Z",
+          "published_at": "2026-10-20T18:24:43Z",
+          "assets": [
+            {
+              "id": 660053709,
+              "name": "signed-release-0.3.1.zip",
+              "size": 20521986,
+              "digest": "sha256:ace7f3bab4790aa0d4ac1a66a8c77a1999ee962d0b93159966a4dce37c552e28",
+              "created_at": "2026-10-20T17:55:46Z",
+              "updated_at": "2026-10-20T17:55:48Z",
+              "browser_download_url": "https://github.com/acmelabs-15/design-system/releases/download/v0.3.1/signed-release-0.3.1.zip"
+            },
+            {
+              "id": 660053711,
+              "name": "release-v0.3.1-SHA256SUMS.txt",
+              "size": 91,
+              "digest": "sha256:e61f00fe0be3755de131df2e7dcfc60effb1d813482c6226d5dd121454adff95",
+              "created_at": "2026-10-20T17:55:46Z",
+              "updated_at": "2026-10-20T17:55:46Z",
+              "browser_download_url": "https://github.com/acmelabs-15/design-system/releases/download/v0.3.1/release-v0.3.1-SHA256SUMS.txt"
+            },
+            {
+              "id": 660328253,
+              "name": "published-release-0.3.1.zip",
+              "size": 20500014,
+              "digest": "sha256:82456efe30c0037b99525840221d73d0c7b71763e17d321f9dfd7f608eaf5a3d",
+              "created_at": "2026-10-20T19:56:17Z",
+              "updated_at": "2026-10-20T19:56:28Z",
+              "browser_download_url": "https://github.com/acmelabs-15/design-system/releases/download/v0.3.1/published-release-0.3.1.zip"
+            },
+            {
+              "id": 660328255,
+              "name": "release-v0.3.1-published-SHA256SUMS.txt",
+              "size": 94,
+              "digest": "sha256:370aa5a18b95b49f385d461de89ad6b6da17c14d704cdd1a72642f5c1d9a70be",
+              "created_at": "2026-10-20T19:56:17Z",
+              "updated_at": "2026-10-20T19:56:17Z",
+              "browser_download_url": "https://github.com/acmelabs-15/design-system/releases/download/v0.3.1/release-v0.3.1-published-SHA256SUMS.txt"
+            }
+          ]
+        },
+        "tagObject": {
+          "sha": "4a3d763396588e5e156880ac8f5dbb744f03adcb",
+          "type": "tag",
+          "url": "https://api.github.com/repos/acmelabs-15/design-system/git/tags/4a3d763396588e5e156880ac8f5dbb744f03adcb"
+        },
+        "onlyIntendedChange": "one evidence URL",
+        "applied": true,
+        "verifiedAt": "2026-10-22T10:30:20.606Z",
+        "afterBodySha256": "99f6beab69d76e9f157b991dca2a61ce1d3f81f61ebd335ec22144f209efb56c",
+        "bodyMatchesExactProposal": true,
+        "immutableFieldsUnchanged": true,
+        "tagObjectUnchanged": true
+      },
+      {
+        "tag": "v0.3.2",
+        "url": "https://github.com/acmelabs-15/design-system/releases/tag/v0.3.2",
+        "currentUrl": "https://github.com/acmelabs-15/design-system/blob/main/notes/alignment/release-0.3.2.md",
+        "targetUrl": "https://github.com/acmelabs-15/design-system/blob/1b5d08a420f7f916b0c87b166527c60985937f4d/notes/alignment/release-0.3.2.md",
+        "beforeBodySha256": "116fd25e13cd6ef6ba2fcf924360c9ec3f373865f4faa3f876247df3c0047523",
+        "proposedBodySha256": "7ff1d3d7a4353c5d405439c1d91b4f02957f0a6fbfff6a9bb0807160526f45a3",
+        "immutableFields": {
+          "id": 418891867,
+          "tag_name": "v0.3.2",
+          "target_commitish": "main",
+          "name": "Design System 0.3.2",
+          "draft": false,
+          "prerelease": false,
+          "created_at": "2026-10-20T21:20:05Z",
+          "published_at": "2026-10-20T23:12:45Z",
+          "assets": [
+            {
+              "id": 660684468,
+              "name": "published-release-0.3.2.zip",
+              "size": 20408150,
+              "digest": "sha256:8c536a8ad4e5c05f8a02d3b2e779447beb8e6ac32a3916ab87fcd57d7fb3e958",
+              "created_at": "2026-10-20T22:38:44Z",
+              "updated_at": "2026-10-20T22:38:46Z",
+              "browser_download_url": "https://github.com/acmelabs-15/design-system/releases/download/v0.3.2/published-release-0.3.2.zip"
+            },
+            {
+              "id": 660684470,
+              "name": "release-v0.3.2-SHA256SUMS.txt",
+              "size": 94,
+              "digest": "sha256:6ebf4d81554fbe5ed555a9a32acfdebdd0109bfe4a45132e037e224874990a06",
+              "created_at": "2026-10-20T22:38:44Z",
+              "updated_at": "2026-10-20T22:38:44Z",
+              "browser_download_url": "https://github.com/acmelabs-15/design-system/releases/download/v0.3.2/release-v0.3.2-SHA256SUMS.txt"
+            }
+          ]
+        },
+        "tagObject": {
+          "sha": "6f8b43ad0ecfb26cb55c816d574e6feefc9c9bef",
+          "type": "tag",
+          "url": "https://api.github.com/repos/acmelabs-15/design-system/git/tags/6f8b43ad0ecfb26cb55c816d574e6feefc9c9bef"
+        },
+        "onlyIntendedChange": "one evidence URL",
+        "applied": true,
+        "verifiedAt": "2026-10-22T10:30:20.561Z",
+        "afterBodySha256": "7ff1d3d7a4353c5d405439c1d91b4f02957f0a6fbfff6a9bb0807160526f45a3",
+        "bodyMatchesExactProposal": true,
+        "immutableFieldsUnchanged": true,
+        "tagObjectUnchanged": true
+      }
+    ]
+  }
 }
