@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-007",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/compose-the-language-switcher.md",
+      "destination": "docs/decisions/0017-compose-the-language-switcher.md",
+      "sourceSha256": "ede1e6d2c09e4dcfe12d29043b7d7203134301a9393a908650410187d6031fd5",
+      "destinationSha256": "43c28a9953aed6ce47e0e12b91bf2dfc6e256387a2e5a9ec724dcbb907985896",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Historical names and token locations explicitly dated; original selection reason remains.",
+        "Duplicate-event regression, one-event browser checks, exact measured geometry, failed display:contents experiment and all removed files retained.",
+        "Tiny tier scope and original hard-coded-value correction retained without reviving a permanent token exception.",
+        "Explicitly links the approved 2026-09-20 RC-01 replacement: application-owned Select/Tabs composition supersedes internal switcher/tabs state."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}
