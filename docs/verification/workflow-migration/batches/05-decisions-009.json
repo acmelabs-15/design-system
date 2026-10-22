@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-009",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/custom-themes.md",
+      "destination": "docs/decisions/0022-custom-themes.md",
+      "sourceSha256": "0f7686a89241fa155c90eba80e97fd9bd1e0e412c8f1957234b181691aee0ad6",
+      "destinationSha256": "2f2fd7dc9b1d2d3f525dd567e8f342a9424ac5bdbdc133b2ff12a0f60138ea9e",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original decision date, selected scope, alternatives, reasons and evidence retained.",
+        "Original observations and incomplete verification remain distinguished from later implementation."
+      ]
+    },
+    {
+      "source": "notes/decisions/data-list.md",
+      "destination": "docs/decisions/0023-data-list.md",
+      "sourceSha256": "6874d6f41d4df9fb2b8985a5ed66cdde19b676a6c44cd51ef6f2e21c131a0dc3",
+      "destinationSha256": "eaeb5e37c760399cdacea719f987de8d3cf476ad35f2549072cd31f683c830ea",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original decision date, selected scope, alternatives, reasons and evidence retained.",
+        "Original observations and incomplete verification remain distinguished from later implementation."
+      ]
+    },
+    {
+      "source": "notes/decisions/demo-margin-ownership.md",
+      "destination": "docs/decisions/0024-demo-margin-ownership.md",
+      "sourceSha256": "ea782b093cbea19a423c49fe9716690bb02c31c1d4631863718dea20f960b6a1",
+      "destinationSha256": "c664e48af08895892565fce1c893028b05f913b0df38484961a3f891c777093b",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "All four live-reference measurements retained, including label-dependent cancellation.",
+        "Failed shadow-boundary selector, rejected removal and inside/outside 0px/16px checks remain dated evidence."
+      ]
+    },
+    {
+      "source": "notes/decisions/density.md",
+      "destination": "docs/decisions/0025-density.md",
+      "sourceSha256": "bc4a13136e3772132d9e3d67351c6a98dbbd5775d90f8b6632018c4bdd89dbca",
+      "destinationSha256": "d02cf563b443d6278d0fcaffe76c00b7090266ee1e40f9f1b4f52479c69ea4bf",
+      "changes": [
+        "Converted to title-first concise ADR; kept original attribution, decision detail and sources; dated pending work and retired obsolete process; relocated links."
+      ],
+      "retainedQualifications": [
+        "Original decision date, selected scope, alternatives, reasons and evidence retained.",
+        "Original observations and incomplete verification remain distinguished from later implementation."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}
