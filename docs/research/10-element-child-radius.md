@@ -4,7 +4,7 @@ Status: historical research with dated implementation follow-ups. Converted 2026
 
 ## Scope and current interpretation
 
-This is an unresolved historical generator investigation from 2026-09-10. It records four measured differences, a known cause and two rejected fixes. It records no decision or applied generator change. The migration neither invents a resolution nor creates a current cleanup task from this old checkpoint.
+This is a historical generator investigation from 2026-09-10. Its initial checkpoint records four measured differences, a known cause and two rejected fixes. The [later port completion record](../history/parity-port-plan.md) says Peter accepted the four differences rather than fixing the generator, and Split Button's census reached zero hard differences in both themes. That is acceptance of a measured deviation, not evidence of a generator correction or current component behavior. The migration creates no cleanup task from this closed port question.
 
 The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../STATUS.md) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
 
@@ -89,7 +89,7 @@ The investigation found a real measurement gap that the spec could not express. 
   spec varies independently. The broadest fix and the one most likely to move other elements, so it
   needs its own regeneration pass across all 95.
 
-At this checkpoint the choice remained with Peter. Split Button had four hard differences, all from the measured cause above. This source records no later resolution.
+At this initial checkpoint the choice remained with Peter. Split Button had four hard differences, all from the measured cause above. The port completion entry subsequently records his acceptance of the deviation; the original investigation ended before that entry.
 
 ## Sources and limitations
 
@@ -97,5 +97,5 @@ Source provenance: notes/analysis/element-child-radius.md (the source path ident
 
 - The old spec lacks large elementChild evidence.
 - Both attempted fixes are rejected for recorded reasons.
-- Generator remains unchanged at that checkpoint; the choice was left to Peter.
-- Do not create a current task or invent resolution from the four old differences.
+- The generator remains unchanged at the investigation checkpoint; the later recorded outcome accepts the deviation.
+- The accepted old differences do not establish current generator behavior or create a current task.

@@ -108,6 +108,35 @@ function completeBatches(root: string) {
   write(root, file, JSON.stringify(index));
 }
 
+function supplementalFixture() {
+  const result = fixture();
+  const captured = "original captured output\n";
+  write(result.root, ".gitignore", "*.log\n");
+  write(result.root, "notes/capture.log", captured);
+  git(result.root, "add", ".gitignore");
+  git(result.root, "add", "--force", "notes/capture.log");
+  git(result.root, "commit", "-m", "Capture ignored evidence");
+  result.ledger.additionalSourceRevisions = [git(result.root, "rev-parse", "HEAD")];
+  result.ledger.sourceCount++;
+  result.ledger.records.push({
+    source: "notes/capture.log",
+    sourceSha256: hash(captured),
+    kind: "raw-evidence",
+    action: "preserve",
+    destinations: [{ path: "docs/verification/capture.log", integrity: "bytes", sha256: hash(captured) }],
+    batch: "raw",
+    status: "prepared",
+  });
+  write(result.root, "docs/verification/capture.log", captured);
+  const index = JSON.parse(fs.readFileSync(path.join(result.root, result.ledger.batchIndex), "utf8"));
+  const batch = index.batches.find((entry: { id: string }) => entry.id === "raw");
+  batch.sources.push("notes/capture.log");
+  batch.destinations.push("docs/verification/capture.log");
+  write(result.root, result.ledger.batchIndex, JSON.stringify(index));
+  result.save();
+  return { ...result, captured };
+}
+
 afterEach(() => {
   for (const root of roots.splice(0)) {
     fs.rmSync(root, { recursive: true, force: true });
@@ -119,6 +148,147 @@ test("preparation rejects an omitted baseline source", () => {
   ledger.records.pop();
   save();
   expect(verifyWorkflowMigration(root, "preparation").errors).toContain("Unlisted source: notes/guide.md");
+});
+
+test("supplemental capture adds ignored logs to the required source inventory", () => {
+  const { root, ledger, save } = fixture();
+  write(root, ".gitignore", "*.log\n");
+  write(root, "notes/capture.log", "original captured output\n");
+  git(root, "add", ".gitignore");
+  git(root, "add", "--force", "notes/capture.log");
+  git(root, "commit", "-m", "Capture ignored evidence");
+  Object.assign(ledger, { additionalSourceRevisions: [git(root, "rev-parse", "HEAD")] });
+  save();
+
+  const report = verifyWorkflowMigration(root, "preparation");
+  expect(report.errors).toContain("Unlisted source: notes/capture.log");
+  expect(report.errors).toContain("Source count differs from the Git baseline");
+  expect(report.counts.sources).toBe(3);
+});
+
+test("preparation notices ignored source files absent from Git and the ledger", () => {
+  const { root } = fixture();
+  write(root, ".gitignore", "*.log\n");
+  write(root, "notes/nested/uncaptured.log", "uncaptured evidence\n");
+
+  const report = verifyWorkflowMigration(root, "preparation");
+  expect(report.errors).toContain("Unlisted current source: notes/nested/uncaptured.log");
+  expect(report.passed).toBe(false);
+});
+
+test.each([
+  { name: "empty list", value: [] },
+  { name: "empty revision", value: [""] },
+  { name: "escaping revision", value: ["../outside"] },
+  { name: "option-shaped revision", value: ["--output=/tmp/outside"] },
+  { name: "symbolic revision", value: ["HEAD"] },
+  { name: "non-string revision", value: [40] },
+  { name: "non-array value", value: "a".repeat(40) },
+  { name: "null value", value: null },
+  { name: "duplicate revision", value: ["a".repeat(40), "a".repeat(40)] },
+])("rejects malformed supplemental source revisions: $name", ({ value }) => {
+  const { root, ledger, save } = fixture();
+  Object.assign(ledger, { additionalSourceRevisions: value });
+  save();
+  expect(() => verifyWorkflowMigration(root, "preparation")).toThrow("Unsupported supplemental source revisions");
+});
+
+test("the original baseline cannot also be a supplemental revision", () => {
+  const { root, ledger, save } = fixture();
+  ledger.additionalSourceRevisions = [ledger.baselineRevision];
+  save();
+  expect(() => verifyWorkflowMigration(root, "preparation")).toThrow("Unsupported supplemental source revisions");
+});
+
+test("supplemental raw evidence keeps its captured source and destination bytes", () => {
+  const { root } = supplementalFixture();
+  expect(verifyWorkflowMigration(root, "preparation").passed).toBe(true);
+  write(root, "notes/capture.log", "changed source\n");
+  write(root, "docs/verification/capture.log", "changed destination\n");
+
+  const { errors } = verifyWorkflowMigration(root, "preparation");
+  expect(errors).toContain("Changed immutable source: notes/capture.log");
+  expect(errors).toContain("Changed immutable destination: docs/verification/capture.log");
+});
+
+test("later revisions cannot replace first-seen bytes or remove original sources", () => {
+  const { root, ledger, save } = supplementalFixture();
+  write(root, "docs/research/guide.md", "# Guide\n");
+  write(root, "notes/result.json", "changed original evidence\n");
+  write(root, "notes/capture.log", "changed supplemental evidence\n");
+  git(root, "add", "notes/result.json", "notes/capture.log");
+  git(root, "rm", "notes/guide.md");
+  git(root, "commit", "-m", "Later source changes");
+  ledger.additionalSourceRevisions!.push(git(root, "rev-parse", "HEAD"));
+  ledger.records[0].sourceSha256 = hash("changed original evidence\n");
+  ledger.records[2].sourceSha256 = hash("changed supplemental evidence\n");
+  save();
+
+  const report = verifyWorkflowMigration(root, "preparation");
+  expect(report.counts.sources).toBe(3);
+  expect(report.errors).toContain("Source hash differs from baseline: notes/result.json");
+  expect(report.errors).toContain("Source hash differs from baseline: notes/capture.log");
+  expect(report.errors).not.toContain("Source absent from baseline: notes/guide.md");
+});
+
+test("preparation excludes only regular DS_Store metadata from filesystem coverage", () => {
+  const { root, ledger } = fixture();
+  write(root, ".gitignore", ".DS_Store*\n*.log\n");
+  write(root, "notes/.DS_Store", "OS metadata");
+  write(root, "notes/nested/.DS_Store", "OS metadata");
+  expect(verifyWorkflowMigration(root, "preparation").passed).toBe(true);
+
+  write(root, "notes/.DS_Store.log", "evidence with a similar name\n");
+  fs.mkdirSync(path.join(root, ledger.sourceRoots[0], "deeper/.DS_Store"), { recursive: true });
+  write(root, "notes/deeper/.DS_Store/hidden.log", "evidence inside a directory\n");
+  const { errors } = verifyWorkflowMigration(root, "preparation");
+  expect(errors).toContain("Unlisted current source: notes/.DS_Store.log");
+  expect(errors).toContain("Unlisted current source: notes/deeper/.DS_Store/hidden.log");
+});
+
+test("filesystem discovery rejects ignored escaping symlinks including metadata names", () => {
+  const { root, ledger } = fixture();
+  const outside = fs.mkdtempSync(path.join(os.tmpdir(), "acme-workflow-source-"));
+  roots.push(outside);
+  write(root, ".gitignore", "notes/escape\n.DS_Store\n");
+  fs.writeFileSync(path.join(outside, "evidence.log"), "outside evidence\n");
+  fs.symlinkSync(outside, path.join(root, ledger.sourceRoots[0], "escape"), "dir");
+  fs.symlinkSync(path.join(outside, "evidence.log"), path.join(root, ledger.sourceRoots[0], ".DS_Store"));
+
+  const { errors } = verifyWorkflowMigration(root, "preparation");
+  expect(errors).toContain("Symlink escapes repository: notes/escape");
+  expect(errors).toContain("Symlink escapes repository: notes/.DS_Store");
+});
+
+test("filesystem discovery does not follow internal symlink cycles", () => {
+  const { root, ledger } = fixture();
+  write(root, ".gitignore", "notes/cycle\n");
+  fs.symlinkSync(".", path.join(root, ledger.sourceRoots[0], "cycle"), "dir");
+  expect(verifyWorkflowMigration(root, "preparation").errors).toContain("Unlisted current source: notes/cycle");
+});
+
+test("supplemental revision hashes must resolve to a Git source tree", () => {
+  const { root, ledger, save } = fixture();
+  ledger.additionalSourceRevisions = ["0".repeat(40)];
+  save();
+  expect(() => verifyWorkflowMigration(root, "preparation")).toThrow();
+});
+
+test("supplemental completion still requires removal of original roots and OS metadata", () => {
+  const { root, ledger, raw, save } = supplementalFixture();
+  write(root, "docs/verification/result.json", raw);
+  write(root, "docs/research/guide.md", "# Guide\n");
+  for (const record of ledger.records) {
+    record.status = "complete";
+    fs.rmSync(path.join(root, record.source));
+  }
+  write(root, "notes/.DS_Store", "OS metadata");
+  save();
+  completeBatches(root);
+  expect(verifyWorkflowMigration(root, "final").errors).toContain("Old root remains: notes");
+
+  fs.rmSync(path.join(root, ledger.sourceRoots[0]), { recursive: true });
+  expect(verifyWorkflowMigration(root, "final").passed).toBe(true);
 });
 
 test("dropping a whole approved root and all its records cannot shrink coverage", () => {
@@ -424,6 +594,58 @@ test("literal worker JavaScript URLs resolve their authored TypeScript entrypoin
   expect(verifyWorkflowMigration(root, "final").errors).toEqual([]);
 });
 
+test("root import.meta URLs without a dot prefix still reject retired source inputs", () => {
+  const { root } = completeFixture();
+  write(root, "driver.ts", 'const input = new URL("notes/input.json", import.meta.url);\n');
+  const report = verifyWorkflowMigration(root, "final");
+  expect(report.passed).toBe(false);
+  expect(report.errors).toContain("Active old-path reference: driver.ts -> notes/input.json");
+  expect(report.errors).toContain("Missing source reference: driver.ts -> notes/input.json");
+});
+
+test("nested import.meta URLs resolve notes assets and modules against the containing file", () => {
+  const { root } = completeFixture();
+  write(root, "src/generated/icons/notes/input.json", "{}\n");
+  write(root, "src/generated/icons/notes/worker.ts", "export {};\n");
+  write(root, "src/generated/icons/driver.ts", 'const input = new URL("notes/input.json", import.meta.url);\nconst worker = new URL("notes/worker.js", import.meta.url);\n');
+  expect(verifyWorkflowMigration(root, "final").errors).toEqual([]);
+  fs.rmSync(path.join(root, "src/generated/icons/notes/input.json"));
+  expect(verifyWorkflowMigration(root, "final").errors).toContain("Missing source reference: src/generated/icons/driver.ts -> notes/input.json");
+});
+
+test.each(["https://example.invalid/input.json", "data:application/json,%7B%7D", "blob:https://example.invalid/1234"])("external import.meta URL %s retains its runtime limit", (url) => {
+  const { root } = completeFixture();
+  write(root, "scripts/driver.ts", "const input = new URL(" + JSON.stringify(url) + ", import.meta.url);\n");
+  const report = verifyWorkflowMigration(root, "final");
+  expect(report.errors).toEqual([]);
+  expect(report.limits).toContain("External or runtime source path requires execution: scripts/driver.ts -> " + url);
+});
+
+test("mutable repository URLs in import.meta inputs remain active old-path references", () => {
+  const { root } = completeFixture();
+  const url = "https://github.com/acmelabs-15/design-system/blob/main/notes/input.json";
+  write(root, "scripts/driver.ts", "const input = new URL(" + JSON.stringify(url) + ", import.meta.url);\n");
+  const report = verifyWorkflowMigration(root, "final");
+  expect(report.errors).toEqual(["Active old-path reference: scripts/driver.ts -> " + url]);
+  expect(report.limits).toContain("External or runtime source path requires execution: scripts/driver.ts -> " + url);
+});
+
+test("import.meta URL queries fragments and escapes keep the resolved file identity", () => {
+  const { root } = completeFixture();
+  write(root, "src/generated/icons/notes/input.json", "{}\n");
+  write(root, "src/generated/icons/notes/worker.ts", "export {};\n");
+  write(root, "src/generated/icons/driver.ts", 'const input = new URL("notes/%69nput.json?rev=1#entry", import.meta.url);\nconst worker = new URL("notes/worker.js?rev=1#entry", import.meta.url);\n');
+  expect(verifyWorkflowMigration(root, "final").errors).toEqual([]);
+  write(root, "driver.ts", 'const input = new URL("notes/%69nput.json?rev=1#entry", import.meta.url);\n');
+  expect(verifyWorkflowMigration(root, "final").errors).toContain("Active old-path reference: driver.ts -> notes/%69nput.json?rev=1#entry");
+});
+
+test.each(["file:///tmp/acme-outside.json", "%2e%2e/acme-outside.json"])("local import.meta URL %s cannot escape the repository", (url) => {
+  const { root } = completeFixture();
+  write(root, "driver.ts", "const input = new URL(" + JSON.stringify(url) + ", import.meta.url);\n");
+  expect(verifyWorkflowMigration(root, "final").errors).toContain("Source reference escapes repository: driver.ts -> " + url);
+});
+
 test("the two generated runtime URL projections report their package verification limit", () => {
   const { root } = completeFixture();
   write(root, "packages/mcp/src/cli.ts", 'const data = Bun.file(new URL("./documentation.json", import.meta.url));\n');
@@ -544,4 +766,138 @@ test("the verifier scope declaration is metadata while its imports stay active",
     "Active old-path reference: scripts/workflow-migration.ts -> ../notes/active.ts",
     "Missing source reference: scripts/workflow-migration.ts -> ../notes/active.ts",
   ]);
+});
+
+test("ordinary notes prose and icon names are not source-root paths", () => {
+  const { root } = completeFixture();
+  write(root, "docs/agents/workflow.md", "Keep research notes. The icon is `notes`.\n");
+  write(root, "site/example.ts", 'export const label = "These notes remain available";\nexport const icon = "notes";\n');
+  write(root, "settings.json", JSON.stringify({ label: "notes", description: "Keep review notes", nested: "symbols/web/notes/icon.svg" }));
+  expect(verifyWorkflowMigration(root, "final").errors).toEqual([]);
+});
+
+test("relative modules and Markdown links classify their resolved root, not a notes segment", () => {
+  const { root } = completeFixture();
+  write(root, "src/generated/icons/records/notes.ts", 'export const name = "notes";\n');
+  write(root, "src/generated/icons/classes/notes-icon.ts", 'export {name} from "../records/notes";\n');
+  write(root, "docs/notes/guide.md", "# Nested notes\n");
+  write(root, "docs/agents/workflow.md", "[nested](../notes/guide.md)\n");
+  expect(verifyWorkflowMigration(root, "final").errors).toEqual([]);
+  write(root, "scripts/driver.ts", 'import "../notes/driver.ts";\nBun.file("notes");\n');
+  const { errors } = verifyWorkflowMigration(root, "final");
+  expect(errors).toContain("Active old-path reference: scripts/driver.ts -> ../notes/driver.ts");
+  expect(errors).toContain("Active old-path reference: scripts/driver.ts -> notes");
+});
+
+test("asset catalog file fields resolve within their declared catalog directory", () => {
+  const { root } = completeFixture();
+  write(root, "assets/material-symbols/notes/rounded-unfilled.svg", "<svg/>\n");
+  const file = "assets/material-symbols/catalog.json";
+  const catalog = {
+    revision: "a".repeat(40),
+    license: "Apache-2.0",
+    baseline: { weight: 400, grade: 0, opticalSize: 24 },
+    symbols: [{ name: "notes", assets: [{ file: "notes/rounded-unfilled.svg", source: "symbols/web/notes/materialsymbolsrounded/notes_24px.svg" }] }],
+  };
+  write(root, file, JSON.stringify(catalog));
+  expect(verifyWorkflowMigration(root, "final").errors).toEqual([]);
+  catalog.symbols[0].assets[0].file = "../../notes/active.svg";
+  write(root, file, JSON.stringify(catalog));
+  expect(verifyWorkflowMigration(root, "final").errors).toContain("Active old-path reference: " + file + " -> ../../notes/active.svg");
+});
+
+test.each(["original", "wrong revision", "missing revision", "changed path", "current status", "actual read", "other variable"])(
+  "census provenance requires its exact baseline binding: %s",
+  (change) => {
+    const { root, ledger, save } = completeFixture();
+    const file = "site/recipes.ts";
+    const record: Record<string, unknown> = {
+      fixtureId: "book",
+      status: "historical",
+      referenceRevision: "5ae1f7a27d90d87e7e77dad20964541146444564",
+      acceptedDifferences: ["notes/analysis/book-census-config.md"],
+    };
+    write(root, file, "export const docCensus = " + JSON.stringify([record]) + ";\n");
+    git(root, "add", file);
+    git(root, "commit", "-m", "Historical census binding");
+    ledger.baselineRevision = git(root, "rev-parse", "HEAD");
+    const references = JSON.parse(fs.readFileSync(path.join(root, auditDirectory, "references.json"), "utf8"));
+    references.baselineRevision = ledger.baselineRevision;
+    write(root, auditDirectory + "/references.json", JSON.stringify(references));
+    save();
+    if (change === "wrong revision") {
+      record.referenceRevision = "a".repeat(40);
+    } else if (change === "missing revision") {
+      delete record.referenceRevision;
+    } else if (change === "changed path") {
+      record.acceptedDifferences = ["notes/analysis/other.md"];
+    } else if (change === "current status") {
+      record.status = "current";
+    }
+    write(
+      root,
+      file,
+      "export const " +
+        (change === "other variable" ? "other" : "docCensus") +
+        " = " +
+        JSON.stringify([record]) +
+        ";\n" +
+        (change === "actual read" ? 'Bun.file("notes/analysis/book-census-config.md");\n' : ""),
+    );
+    const report = verifyWorkflowMigration(root, "final");
+    if (change === "original") {
+      expect(report.errors).toEqual([]);
+    } else {
+      expect(report.errors).toContain("Active old-path reference: " + file + " -> " + (record.acceptedDifferences as string[])[0]);
+    }
+  },
+);
+
+test("initial research exempts only unchanged baseline fields and its bound source identity", () => {
+  const { root, ledger, save } = completeFixture();
+  const file = auditDirectory + "/initial-research.json";
+  const original = { repositoryBase: "a".repeat(40), migrationInventoryAtBase: { paths: ["notes/guide.md"] }, observations: ["bun notes/old.ts"] };
+  const record = ledger.records[1];
+  write(root, record.source, JSON.stringify(original));
+  git(root, "add", record.source);
+  git(root, "commit", "-m", "Research source");
+  ledger.baselineRevision = git(root, "rev-parse", "HEAD");
+  record.sourceSha256 = hash(JSON.stringify(original));
+  record.kind = "migration-research-record";
+  record.destinations[0].path = file;
+  fs.rmSync(path.join(root, "notes"), { recursive: true });
+  const references = JSON.parse(fs.readFileSync(path.join(root, auditDirectory, "references.json"), "utf8"));
+  references.baselineRevision = ledger.baselineRevision;
+  write(root, auditDirectory + "/references.json", JSON.stringify(references));
+  const batches = JSON.parse(fs.readFileSync(path.join(root, ledger.batchIndex), "utf8"));
+  batches.batches.find((batch: { id: string }) => batch.id === record.batch).destinations = [file];
+  write(root, ledger.batchIndex, JSON.stringify(batches));
+  save();
+  const current = { ...original, migrationProvenance: { source: record.source, sourceSha256: record.sourceSha256, currentStatus: "docs/STATUS.md" } };
+  write(root, file, JSON.stringify(current));
+  expect(verifyWorkflowMigration(root, "final").errors).toEqual([]);
+  write(root, file, JSON.stringify({ ...current, runner: "notes/active.ts" }));
+  expect(verifyWorkflowMigration(root, "final").errors).toContain("Active old-path reference: " + file + " -> notes/active.ts");
+  current.migrationProvenance.currentStatus = "notes/active.md";
+  write(root, file, JSON.stringify(current));
+  expect(verifyWorkflowMigration(root, "final").errors).toContain("Active old-path reference: " + file + " -> notes/active.md");
+  current.migrationProvenance.currentStatus = "docs/STATUS.md";
+  current.migrationProvenance.sourceSha256 = "b".repeat(64);
+  write(root, file, JSON.stringify(current));
+  expect(verifyWorkflowMigration(root, "final").errors).toContain("Active old-path reference: " + file + " -> notes/guide.md");
+  current.migrationProvenance.sourceSha256 = record.sourceSha256;
+  current.migrationInventoryAtBase = { paths: ["notes/new.ts"] };
+  write(root, file, JSON.stringify(current));
+  expect(verifyWorkflowMigration(root, "final").errors).toContain("Active old-path reference: " + file + " -> notes/new.ts");
+});
+
+test.each(["03-supplemental", "04-supplemental"])("supplemental task report %s requires matching schema identity", (task) => {
+  const { root } = completeFixture();
+  const file = auditDirectory + "/task-" + task + ".json";
+  write(root, file, JSON.stringify({ schemaVersion: 1, task, source: "notes/guide.md" }));
+  expect(verifyWorkflowMigration(root, "final").errors).toEqual([]);
+  write(root, file, JSON.stringify({ schemaVersion: 1, task: "other", source: "notes/guide.md" }));
+  expect(verifyWorkflowMigration(root, "final").errors).toContain("Active old-path reference: " + file + " -> notes/guide.md");
+  write(root, file, JSON.stringify({ schemaVersion: 1, source: "notes/guide.md" }));
+  expect(verifyWorkflowMigration(root, "final").errors).toContain("Active old-path reference: " + file + " -> notes/guide.md");
 });

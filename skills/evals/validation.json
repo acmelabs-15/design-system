@@ -35,7 +35,7 @@
     "finding": "Only html-artifacts contained the blanket native-boolean rule",
     "correction": "Distinguish native presence/absence from documented false-string conversions; preserve Separator decorative=false, Video controls=false and preference-based autoplay=false",
     "evidence": [
-      "notes/decisions/execution-delegation.md#default-true-property-attributes--2026-09-21",
+      "docs/decisions/0035-execution-delegation.md#default-true-property-attributes--2026-09-21",
       "src/components/video/video.ts",
       "site/pages/components/video.ts",
       "dist/custom-elements.json"

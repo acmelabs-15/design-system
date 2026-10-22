@@ -1,6 +1,6 @@
 # Tasks: maintainer workflow migration
 
-Status: approved by Peter for local implementation on 2026-10-21. Tasks 1–6 and Checkpoint A are complete. Current work reconciles specifications/history and relocates live verification checks (tasks7–8). The old startup owner remains active until task11. Full migration acceptance and independent review remain task12.
+Status: approved by Peter for local implementation on 2026-10-21. Tasks 1–10 are complete. Shared guidance and live consumers pass review. The preparation guard covers all 970 sources with zero errors. Task 11 activates the new workflow and removes the fully accounted old structure.
 
 The current handoff is still [the existing pass entry point](../notes/alignment/README.md#where-we-are). Task 11 changes that owner.
 
@@ -10,15 +10,15 @@ The current handoff is still [the existing pass entry point](../notes/alignment/
 - [x] 2. Complete the migration ledger and rule audit — [evidence](../docs/verification/workflow-migration/task-02.json).
 - [x] 3. Prove the migration guards — [evidence and review](../docs/verification/workflow-migration/task-03.json).
 - [x] Checkpoint A: safe preparation
-- [x] 4. Migrate raw evidence batches — [690 byte-identical copies](../docs/verification/workflow-migration/task-04.json).
+- [x] 4. Migrate raw evidence batches — [728 byte-identical copies, including supplemental logs](../docs/verification/workflow-migration/task-04.json).
 - [x] 5. Convert decision-record batches — [115 records and review](../docs/verification/workflow-migration/task-05.json).
 - [x] 6. Convert research batches — [20 records and review](../docs/verification/workflow-migration/task-06.json).
-- [ ] 7. Reconcile specifications, design records and completed history
-- [ ] 8. Migrate live verification batches
-- [ ] Checkpoint B: records and live checks
-- [ ] 9. Prepare the shared workflow guidance
-- [ ] 10. Update live reference consumers
-- [ ] Checkpoint C: ready for cutover
+- [x] 7. Reconcile specifications, design records and completed history — [reviews and evidence](../docs/verification/workflow-migration/task-07.json).
+- [x] 8. Migrate live verification batches — [runtime and static evidence](../docs/verification/workflow-migration/task-08.json).
+- [x] Checkpoint B: records and live checks
+- [x] 9. Prepare shared guidance and tracker adapters — [reviewed preparation](../docs/verification/workflow-migration/task-09.json).
+- [x] 10. Update live consumers and generated projections — [evidence](../docs/verification/workflow-migration/task-10.json).
+- [x] Checkpoint C: ready for cutover
 - [ ] 11. Activate the new workflow and remove the old structure
 - [ ] 12. Verify fresh sessions and the full migration
 - [ ] Checkpoint D: local migration acceptance
@@ -169,19 +169,19 @@ Each child batch of task 8 moves one driver and its dependency closure. Shared h
 
 ## Checkpoint B: records and live checks
 
-- [ ] Every batch under tasks 4–8 has its result record.
-- [ ] Immutable evidence hashes match; semantic conversion is reviewed separately.
-- [ ] All 24 browser invocations remain represented, including both scoped modes.
-- [ ] No old process instruction has been promoted into the new rules by copying.
+- [x] Every batch under tasks 4–8 has its result record.
+- [x] Immutable evidence hashes match; semantic conversion is reviewed separately.
+- [x] All 24 browser invocations remain represented, including both scoped modes.
+- [x] No old process instruction has been promoted into the new rules by copying.
 
 ## Task 9: Prepare the shared workflow guidance
 
 **Description:** Prepare the compatible domain, repository, verification and tracker guidance. Make responsibility clear for root source, generated files, the five packages and consumer skills. Prepare the actual current handoff and issue records.
 
 **Acceptance criteria:**
-- [ ] The guidance uses brain for shared skill names, the two existing contexts and local Markdown issues.
-- [ ] Each fact and rule has one owner. No legacy blanket override, global-settings change or copied permission grant is introduced.
-- [ ] Startup and task-end behavior covers root/package starts, incomplete work, a new request, a red baseline and no approved next task.
+- [x] The guidance uses brain for shared skill names, the two existing contexts and local Markdown issues.
+- [x] Each fact and rule has one owner. No legacy blanket override, global-settings change or copied permission grant is introduced.
+- [x] Startup and task-end behavior covers root/package starts, incomplete work, a new request, a red baseline and no approved next task.
 
 **Verification:** Review against both reference projects and the rule matrix. Apply the approved target formats using the documented setup conventions; keep the setup-brain command user-started. Approved choices are not asked again. Use official skill-creator guidance for the upcoming AGENTS/skill-file changes.
 
@@ -196,9 +196,9 @@ Each child batch of task 8 moves one driver and its dependency closure. Shared h
 **Description:** Update all live links, source references, runner paths and generated projections after targets exist. Prepare any externally published reference corrections for review.
 
 **Acceptance criteria:**
-- [ ] The site, recipe metadata, README navigation, glossaries and active tooling resolve the new paths and anchors.
-- [ ] Generated output comes from its producer. The consumer README remains coherent when packaged; maintainer-only files do not enter package allowlists.
-- [ ] Mutable external references have concrete proposed updates; immutable artifacts remain unchanged and unresolved external conflicts block target deletion.
+- [x] The site, recipe metadata, README navigation, glossaries and active tooling resolve the new paths and anchors.
+- [x] Generated output comes from its producer. The consumer README remains coherent when packaged; maintainer-only files do not enter package allowlists.
+- [x] Mutable external references have concrete proposed updates; immutable artifacts remain unchanged and unresolved external conflicts block target deletion.
 
 **Verification:** Run link/anchor and active-reference checks, affected site/package tests, normal producers and the relevant static/types checks. Inspect generated reference changes.
 
@@ -210,10 +210,10 @@ Each child batch of task 8 moves one driver and its dependency closure. Shared h
 
 ## Checkpoint C: ready for cutover
 
-- [ ] New targets and their current status are complete.
-- [ ] Active consumers use them; old raw paths appear only as classified historical data.
-- [ ] Every rule conflict is retired, rewritten or explicitly unresolved. Unresolved conflicts cannot enter the new active instructions.
-- [ ] Deleting notes/, PLAN.md and .agents/skills will not break an active reference or lose unassigned information.
+- [x] New targets and their current status are complete.
+- [x] Active consumers use them; old raw paths appear only as classified historical data.
+- [x] Every rule conflict is retired, rewritten or explicitly unresolved. Unresolved conflicts cannot enter the new active instructions.
+- [x] Deleting notes/, PLAN.md and .agents/skills will not break an active reference or lose unassigned information.
 
 ## Task 11: Activate the new workflow and remove the old structure
 
@@ -318,6 +318,11 @@ The [batch index](../docs/verification/workflow-migration/batches.json) owns exa
 - [x] 04-evidence-research-2026-09-23 — 1 source file; depends on task-02, task-03.
 - [x] 04-evidence-research-baseline — 11 source files; depends on task-02, task-03.
 - [x] 04-original-request — 1 source file; depends on task-02, task-03.
+- [x] 04-supplemental-m26-dev-watch — 4 previously ignored logs; immutable capture 335a6ed91.
+- [x] 04-supplemental-m20-flow — 3 previously ignored logs; immutable capture 335a6ed91.
+- [x] 04-supplemental-m26-final — 6 previously ignored logs; immutable capture 335a6ed91.
+- [x] 04-supplemental-m24-skills — 20 previously ignored logs; immutable capture 335a6ed91.
+- [x] 04-supplemental-m25-tooling — 5 previously ignored logs; immutable capture 335a6ed91.
 - [x] 05-decisions-001 — 1 source file; depends on task-02, task-03.
 - [x] 05-decisions-002 — 1 source file; depends on task-02, task-03.
 - [x] 05-decisions-003 — 4 source files; depends on task-02, task-03.
@@ -377,86 +382,86 @@ The [batch index](../docs/verification/workflow-migration/batches.json) owns exa
 - [x] 06-research-18-repository-layout — 1 source file; depends on task-02, task-03.
 - [x] 06-research-19-slotted-cascade — 1 source file; depends on task-02, task-03.
 - [x] 06-research-20-systematic-approach — 1 source file; depends on task-02, task-03.
-- [ ] 07-actions — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-additional-functionality-review — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-chakra-pro-review — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-completed-plan — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-conventions — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-data-displays — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-documentation-tooling — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-foundations — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-inputs-forms — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-inventory — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-layout — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-messages-statistics — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-navigation-disclosure — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-overlays-help — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-phase-1-review — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-phase-2-review — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-phase-3-review — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-port-plan — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-proposal-coverage — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-proposal-questions — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-readme — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-release-0.3.0 — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-release-0.3.1 — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-release-0.3.2 — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-remaining-work — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-rich-content — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-selection — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-summary-m22-react — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m23-docs — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m24-consumers — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m24-devtools — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m24-skills-followups — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m24-skills-iteration-1 — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m24-skills-iteration-1-viewer-tooling — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m24-tabs-indicator — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m25-release — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m25-tooling — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m25-workspace — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m26-appearance — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m26-audit — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m26-audit-component-browser — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m26-audit-final-runtime-review — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m26-audit-official-firefox — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m26-bundle — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m26-dev-watch — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m26-final — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m26-managed-forms — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m26-native-forms — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-summary-m26-scoped — 1 source file; depends on task-04, task-05, task-06, task-08.
-- [ ] 07-surfaces — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-terms — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-typography — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 07-workflow-research — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-actions — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-additional-functionality-review — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-chakra-pro-review — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-completed-plan — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-conventions — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-data-displays — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-documentation-tooling — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-foundations — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-inputs-forms — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-inventory — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-layout — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-messages-statistics — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-navigation-disclosure — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-overlays-help — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-phase-1-review — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-phase-2-review — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-phase-3-review — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-port-plan — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-proposal-coverage — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-proposal-questions — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-readme — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-release-0.3.0 — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-release-0.3.1 — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-release-0.3.2 — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-remaining-work — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-rich-content — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-selection — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-summary-m22-react — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m23-docs — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m24-consumers — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m24-devtools — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m24-skills-followups — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m24-skills-iteration-1 — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m24-skills-iteration-1-viewer-tooling — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m24-tabs-indicator — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m25-release — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m25-tooling — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m25-workspace — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m26-appearance — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m26-audit — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m26-audit-component-browser — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m26-audit-final-runtime-review — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m26-audit-official-firefox — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m26-bundle — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m26-dev-watch — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m26-final — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m26-managed-forms — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m26-native-forms — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-summary-m26-scoped — 1 source file; depends on task-04, task-05, task-06, task-08.
+- [x] 07-surfaces — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-terms — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-typography — 1 source file; depends on task-04, task-05, task-06.
+- [x] 07-workflow-research — 1 source file; depends on task-04, task-05, task-06.
 - [x] 08-browser-distribution — 2 source files; depends on task-01, task-02, task-03.
-- [ ] 08-bundling — 2 source files; depends on task-01, task-02, task-03.
-- [ ] 08-component-data — 2 source files; depends on task-01, task-02, task-03.
+- [x] 08-bundling — 2 source files; depends on task-01, task-02, task-03.
+- [x] 08-component-data — 2 source files; depends on task-01, task-02, task-03.
 - [x] 08-dependency-audit-npm-cache-private — 1 source file; depends on task-01, task-02, task-03.
-- [ ] 08-devtools-manual — 3 source files; depends on task-01, task-02, task-03.
-- [ ] 08-documentation-action-labels.browser-check — 1 source file; depends on task-01, task-02, task-03.
-- [ ] 08-documentation-appearance.browser-check — 1 source file; depends on task-01, task-02, task-03.
-- [ ] 08-documentation-copied.browser-check — 1 source file; depends on task-01, task-02, task-03, 08-browser-distribution.
-- [ ] 08-documentation-icons.browser-check — 1 source file; depends on task-01, task-02, task-03, 08-browser-distribution.
-- [ ] 08-documentation-navigation.browser-check — 1 source file; depends on task-01, task-02, task-03.
-- [ ] 08-documentation-pages.browser-check — 1 source file; depends on task-01, task-02, task-03.
-- [ ] 08-documentation-recipe-accessibility.browser-check — 1 source file; depends on task-01, task-02, task-03.
-- [ ] 08-documentation-recipes.browser-check — 1 source file; depends on task-01, task-02, task-03.
-- [ ] 08-documentation-table-source-isolation.browser-check — 1 source file; depends on task-01, task-02, task-03.
-- [ ] 08-documentation-video.browser-check — 1 source file; depends on task-01, task-02, task-03, 08-browser-distribution.
-- [ ] 08-flow-distributions.browser-check — 1 source file; depends on task-01, task-02, task-03, 08-browser-distribution.
-- [ ] 08-inspector-consumer — 2 source files; depends on task-01, task-02, task-03.
-- [ ] 08-native-forms-history.browser-check — 1 source file; depends on task-01, task-02, task-03, 08-browser-distribution.
-- [ ] 08-package-tools — 1 source file; depends on task-01, task-02, task-03.
-- [ ] 08-public-defaults-browser-check — 1 source file; depends on task-01, task-02, task-03.
-- [ ] 08-react-defaults — 2 source files; depends on task-01, task-02, task-03.
-- [ ] 08-react-runtime — 2 source files; depends on task-01, task-02, task-03.
+- [x] 08-devtools-manual — 3 source files; depends on task-01, task-02, task-03.
+- [x] 08-documentation-action-labels.browser-check — 1 source file; depends on task-01, task-02, task-03.
+- [x] 08-documentation-appearance.browser-check — 1 source file; depends on task-01, task-02, task-03.
+- [x] 08-documentation-copied.browser-check — 1 source file; depends on task-01, task-02, task-03, 08-browser-distribution.
+- [x] 08-documentation-icons.browser-check — 1 source file; depends on task-01, task-02, task-03, 08-browser-distribution.
+- [x] 08-documentation-navigation.browser-check — 1 source file; depends on task-01, task-02, task-03.
+- [x] 08-documentation-pages.browser-check — 1 source file; depends on task-01, task-02, task-03.
+- [x] 08-documentation-recipe-accessibility.browser-check — 1 source file; depends on task-01, task-02, task-03.
+- [x] 08-documentation-recipes.browser-check — 1 source file; depends on task-01, task-02, task-03.
+- [x] 08-documentation-table-source-isolation.browser-check — 1 source file; depends on task-01, task-02, task-03.
+- [x] 08-documentation-video.browser-check — 1 source file; depends on task-01, task-02, task-03, 08-browser-distribution.
+- [x] 08-flow-distributions.browser-check — 1 source file; depends on task-01, task-02, task-03, 08-browser-distribution.
+- [x] 08-inspector-consumer — 2 source files; depends on task-01, task-02, task-03.
+- [x] 08-native-forms-history.browser-check — 1 source file; depends on task-01, task-02, task-03, 08-browser-distribution.
+- [x] 08-package-tools — 1 source file; depends on task-01, task-02, task-03.
+- [x] 08-public-defaults-browser-check — 1 source file; depends on task-01, task-02, task-03.
+- [x] 08-react-defaults — 2 source files; depends on task-01, task-02, task-03.
+- [x] 08-react-runtime — 2 source files; depends on task-01, task-02, task-03.
 - [x] 08-react-types — 1 source file; depends on task-01, task-02, task-03.
-- [ ] 08-removals-check — 1 source file; depends on task-01, task-02, task-03, 07-proposal-coverage.
-- [ ] 08-scoped-fixture-text — 1 source file; depends on task-01, task-02, task-03.
-- [ ] 08-scoped-registration — 2 source files; depends on task-01, task-02, task-03, 08-scoped-fixture-text, 08-browser-distribution.
+- [x] 08-removals-check — 1 source file; depends on task-01, task-02, task-03, 07-proposal-coverage.
+- [x] 08-scoped-fixture-text — 1 source file; depends on task-01, task-02, task-03.
+- [x] 08-scoped-registration — 2 source files; depends on task-01, task-02, task-03, 08-scoped-fixture-text, 08-browser-distribution.
 - [x] 08-table-declaration-patch-check — 1 source file; depends on task-01, task-02, task-03.
-- [ ] 08-table-worker-consumer.browser-check — 1 source file; depends on task-01, task-02, task-03.
-- [ ] 08-workspace-consumer — 2 source files; depends on task-01, task-02, task-03.
-- [ ] 08-workspace-install — 1 source file; depends on task-01, task-02, task-03.
+- [x] 08-table-worker-consumer.browser-check — 1 source file; depends on task-01, task-02, task-03.
+- [x] 08-workspace-consumer — 2 source files; depends on task-01, task-02, task-03.
+- [x] 08-workspace-install — 1 source file; depends on task-01, task-02, task-03.

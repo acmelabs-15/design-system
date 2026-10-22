@@ -148,8 +148,8 @@ const ACCEPTED: { why: string; test: (part: string, prop: string, geist: string,
     // button's radius follows its size, and emits `.el { border-radius: .375rem }` with no `:not(.lg)`
     // guard — which then beats `.lg`'s 8px on a large split button's trigger. Reading the wider spec
     // by height shows 3 large element-child buttons at 8px and none at 6px, so the fact is real and
-    // the spec cannot express it. Full write-up: notes/analysis/element-child-radius.md.
-    why: "element-child radius at large: the reference's one elementChild example is small, so the generator's .el group carries no size guard (notes/analysis/element-child-radius.md)",
+    // the spec cannot express it. Full write-up: docs/research/10-element-child-radius.md.
+    why: "element-child radius at large: the reference's one elementChild example is small, so the generator's .el group carries no size guard (docs/research/10-element-child-radius.md)",
     test: (part, prop, gv, ov) => part === "trigger" && prop === "border-radius" && gv === "0px 8px 8px 0px" && ov === "0px 6px 6px 0px",
   },
   {

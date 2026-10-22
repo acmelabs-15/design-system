@@ -1,6 +1,6 @@
 # Spec: Maintainer workflow migration
 
-Status: approved by Peter on 2026-10-21 through “approved,” in reply to the specification-approval request. The [implementation plan](../tasks/plan.md) and [task list](../tasks/todo.md) are approved by Peter after all three plan-review questions. Tasks1–6 are complete. New records and verification files are prepared at their allocated paths; the old startup rules remain active until the coordinated cutover.
+Status: approved by Peter on 2026-10-21 through “approved,” in reply to the specification-approval request. The [implementation plan](../tasks/plan.md) and [task list](../tasks/todo.md) are approved by Peter after all three plan-review questions. Tasks 1–10 are complete. Shared guidance and live consumers pass review. The preparation guard covers all 970 sources with zero errors. Task 11 activates the new workflow and removes the fully accounted old structure.
 
 This is one maintenance capability: a fresh agent finds the right context, follows the selected workflow, and leaves an accurate handoff. The sections below describe its parts, not separate product projects.
 
@@ -29,7 +29,7 @@ Complete the migration to the new directory layout, names and document formats. 
 - The old evidence tree contains executable acceptance drivers. The site also references existing decision and evidence paths. A complete migration must update these consumers.
 - Authored website content is in site/ and generated output is in _site/. The former tracked docs/ snapshot is removed, so docs/ can hold maintainer documentation.
 
-Sources and exact observations: [workflow research](../notes/analysis/systematic-approach.md#maintainer-workflow-migration-2026-10-21), [migration evidence](../notes/alignment/evidence/workflow-migration-2026-10-21.json).
+Sources and exact observations: [workflow research](../docs/research/20-systematic-approach.md#maintainer-workflow-migration-2026-10-21), [migration evidence](../docs/verification/workflow-migration/initial-research.json).
 
 ## Tools and commands
 

@@ -2,7 +2,10 @@ import { describe, expect, test } from "bun:test";
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { Window } from "happy-dom";
+import { apiFromManifest } from "../api";
 import { docCensus, docStates, recipeDocs, recipes } from "../recipes";
+import { documentationRelease } from "../release";
+import { censusPage, REPO } from "../site";
 
 const root = path.resolve(import.meta.dir, "../..");
 const scanner = new Bun.Transpiler({ loader: "tsx" });
@@ -36,6 +39,7 @@ describe("published recipe records", () => {
       expect(recipe.cleanup.length).toBeGreaterThan(0);
       for (const reference of recipe.references) {
         if (!reference.startsWith("https://")) {
+          expect(reference).toMatch(/^(?:docs|spec)\//);
           expect(existsSync(path.join(root, reference.split("#")[0]))).toBe(true);
         }
       }
@@ -87,6 +91,7 @@ describe("published recipe records", () => {
       expect(ids.has(state.exampleId)).toBe(true);
       expect(state.expectedOutcome.length).toBeGreaterThan(30);
       expect(state.verification).toBe("browser-verified");
+      expect(state.evidence).toStartWith("docs/verification/systematization/");
       const evidence = JSON.parse(readFileSync(path.join(root, state.evidence), "utf8"));
       expect(evidence.results.map((result: { engine: string }) => result.engine).sort()).toEqual(["chromium", "firefox", "webkit"]);
       for (const result of evidence.results) {
@@ -109,6 +114,46 @@ describe("published recipe records", () => {
         expect(pair[0].roots.length).toBe(pair[1].roots.length);
       }
       expect(record.limitations).toContain("not a measurement of the current implementation");
+    }
+  });
+
+  test("documentation releases project the current recipe references and ownership", async () => {
+    const manifest = {
+      schemaVersion: "1.0.0",
+      "x-acme-version": "1.2.3",
+      modules: [
+        {
+          kind: "javascript-module" as const,
+          path: "dist/probe.js",
+          "x-acme-source": "src/probe.ts",
+          declarations: [{ kind: "class" as const, name: "AcmeProbe", tagName: "acme-probe", customElement: true }],
+        },
+      ],
+    };
+    const release = await documentationRelease(manifest, apiFromManifest(manifest), [{ id: "probe", title: "Probe", lede: "Probe", tags: ["acme-probe"], examples: [] }], [], recipes);
+    const records = release.documents.filter((record) => record.kind === "recipe");
+    expect(records.map((record) => record.id)).toEqual(recipes.map((recipe) => recipe.id));
+    for (const recipe of recipes) {
+      const record = records.find((item) => item.id === recipe.id)!;
+      for (const framework of record.frameworks) {
+        const example = record.examples![framework]!;
+        expect(example.references).toEqual(recipe.references);
+        expect(example.applicationInputs).toEqual(recipe.applicationInputs);
+        expect(example.ownership).toEqual(recipe.ownership);
+        expect(example.cleanup).toBe(recipe.cleanup);
+        expect(example.accessibility).toEqual(recipe.accessibility);
+        expect(example.deviations).toEqual(recipe.deviations);
+      }
+    }
+  });
+
+  test("historical census links retain the source paths at the recorded revision", async () => {
+    const record = docCensus.find((entry) => entry.fixtureId === "book")!;
+    expect(record.referenceRevision).toBe("5ae1f7a27d90d87e7e77dad20964541146444564");
+    expect(record.acceptedDifferences).toEqual(["notes/analysis/book-census-config.md"]);
+    const html = await censusPage({ id: "book", title: "Book", lede: "Book", examples: [] }, [record]);
+    for (const source of [record.configId, ...record.resultFiles, ...record.acceptedDifferences]) {
+      expect(html).toContain(`href="${REPO}/blob/${record.referenceRevision}/${source}"`);
     }
   });
 

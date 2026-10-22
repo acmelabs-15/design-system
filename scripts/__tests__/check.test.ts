@@ -106,13 +106,15 @@ test("browser gates consume the reviewed package set and both scoped delivery pa
   const plan = browserCheckPlan(release, consumer, runtime, root);
   expect(browserChecks).toHaveLength(23);
   expect(new Set(browserChecks.map((entry) => entry.id)).size).toBe(23);
-  const scoped = plan.filter((check) => check.file.endsWith("m26-scoped/run.ts"));
+  expect(browserChecks.every((entry) => !entry.file.startsWith("notes/"))).toBe(true);
+  expect(browserChecks.every((entry) => fs.existsSync(path.resolve(import.meta.dir, "../..", entry.file)))).toBe(true);
+  const scoped = plan.filter((check) => check.file.endsWith("scoped-registration/browser-check.ts"));
   expect(scoped.map((check) => check.environment.ACME_SCOPED_CDN)).toEqual(["0", "1"]);
   expect(scoped.every((check) => check.environment.ACME_SCOPED_PACKAGE === path.join(consumer, "node_modules/@acmelabs/design-system"))).toBe(true);
   expect(new Set(scoped.map((check) => check.environment.ACME_SCOPED_RESULTS)).size).toBe(2);
-  const worker = plan.find((check) => check.file.endsWith("worker-consumer-run.ts"))!;
+  const worker = plan.find((check) => check.file.endsWith("table/worker-consumer.browser-check.ts"))!;
   expect(worker.args).toEqual(release.packages.slice(0, 2).map((pkg) => path.join(root, ".artifacts/release/archives", pkg.filename)));
-  const bundle = plan.find((check) => check.file.endsWith("m26-bundle/run.ts"))!;
+  const bundle = plan.find((check) => check.file.endsWith("bundling/browser-check.ts"))!;
   expect(bundle.args).toEqual([]);
   expect(bundle.environment.ACME_CORE_ARCHIVE).toBe(worker.args[0]);
   expect(bundle.environment.ACME_BUNDLE_CONSUMER).toBeUndefined();

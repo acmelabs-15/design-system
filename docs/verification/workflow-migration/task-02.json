@@ -22,5 +22,11 @@
   "rawSourceReview": "Static classification and complete hash preservation; no claim of semantic reading of every captured binary/generated artifact",
   "runtimeAcceptance": "Not run by this audit; task1 focused checks are separately recorded",
   "externalReferences": "Three concrete mutable release-body corrections prepared; immutable package retrieval checks pass; no outward writes",
-  "scope": "Task2 inventory/reference/rule audit, not final migration acceptance"
+  "scope": "Task2 inventory/reference/rule audit, not final migration acceptance",
+  "supplementalCoverageRepair": {
+    "record": "docs/verification/workflow-migration/task-03-supplemental.json",
+    "capture": "docs/verification/workflow-migration/task-04-supplemental.json",
+    "currentSources": 970,
+    "currentTests": 72
+  }
 }

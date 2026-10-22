@@ -1,7 +1,9 @@
 # Consumer guidance
 
-These seven skills describe the current release's consumer workflows. They are
-separate from the repository's maintainer skills under `.agents/skills`.
+These seven skills describe the current release's consumer workflows. They remain
+part of package delivery. Maintainer work follows the installed brain plugin and
+[repository instructions](https://github.com/acmelabs-15/design-system/blob/main/AGENTS.md);
+these consumer skills do not supply the maintainer lifecycle.
 
 Author task guidance in each `SKILL.md`. Keep API facts in the generated shared
 references: `scripts/consumer-skills.ts` consumes the same release record as the

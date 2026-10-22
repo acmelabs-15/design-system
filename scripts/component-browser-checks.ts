@@ -28,8 +28,8 @@ interface ControlDriver {
   body: string;
   minimumResults: number;
 }
-const dataPath = "notes/alignment/evidence/m26-audit/component-browser/cases.json";
-const controlPath = "notes/alignment/evidence/m26-audit/component-browser/controls.json";
+const dataPath = "scripts/verification/component-browser/cases.json";
+const controlPath = "scripts/verification/component-browser/controls.json";
 const specialNames = ["combobox", "number-input", "pin-input", "slider"] as const;
 const readSuites = (root: string): ComponentSuite[] => JSON.parse(fs.readFileSync(path.join(root, dataPath), "utf8"));
 const readControls = (root: string): ControlDriver[] => JSON.parse(fs.readFileSync(path.join(root, controlPath), "utf8"));

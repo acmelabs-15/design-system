@@ -107,7 +107,7 @@ Peter selected responsive parent-placement properties on Box, applying to the ou
 
 For colors, corners and shadows, Peter selected matching Chakra's token-and-CSS value acceptance. The complete main content of its effects, border and color-opacity-modifier pages was read. Effects shows token and hardcoded box-shadow values; the color page covers raw/token inputs. Effects identifies 3.36.1, while the other two identify 3.37.0. Their incidental aliases, shorthand syntax and erroneous CSS mapping prose are not interface definitions. A lexical scan across indexed Pro JSX/TSX files found thirteen numeric/hex-leading visual attributes; some are tokens such as 2xl. The pricing-with-compare/plan-compare.tsx matches at lines 19/56 are explicit CSS shadow values using a color variable. This is not an evaluated census of every custom style.
 
-The [inventory candidate table](../../spec/SPEC-design-system.md#candidate-property-table) groups 77 possible CSS styling inputs using the already-selected full names and logical directions. It is a proposal, not 77 user-approved properties. The later review selects signed spacing, numeric dimensions, independent size/spacing categories and declaration-order direction. Precise types/defaults, declaration-order representation, CSS-part/host/inner targeting, validation and density mappings remain to close. The four selected choices are preserved separately in the [Box decision](../decisions/0009-box-primitive.md#native-tags-and-default-display) and [evidence record](../verification/systematization/box-contract-review-2026-09-20.json).
+The [inventory candidate table](../../spec/SPEC-design-system.md#property-table) groups 77 possible CSS styling inputs using the already-selected full names and logical directions. It is a proposal, not 77 user-approved properties. The later review selects signed spacing, numeric dimensions, independent size/spacing categories and declaration-order direction. Precise types/defaults, declaration-order representation, CSS-part/host/inner targeting, validation and density mappings remain to close. The four selected choices are preserved separately in the [Box decision](../decisions/0009-box-primitive.md#native-tags-and-default-display) and [evidence record](../verification/systematization/box-contract-review-2026-09-20.json).
 
 ### Shared spacing and Stack contracts
 
@@ -336,7 +336,7 @@ Use this concrete composition reference when reviewing Sidebar, main/supporting 
 
 ## Core layout contract proposal
 
-Prepared 2026-09-20 after Peter approved replacing isolated helper questions with complete component proposals. The [inventory](../../spec/SPEC-design-system.md#core-layout-proposal-for-review) now contains six assembled proposals: Box, Flex, Stack/HStack/VStack, Grid, Simple Grid and Group. It is the sole detailed-contract owner. The proposals carry forward selections, label new recommendations and keep explicit feasibility/child-contract gates. No new user decision or runtime result is asserted by assembling them.
+Prepared 2026-09-20 after Peter approved replacing isolated helper questions with complete component proposals. The [inventory](../../spec/SPEC-design-system.md#core-layout-contract) now contains six assembled proposals: Box, Flex, Stack/HStack/VStack, Grid, Simple Grid and Group. It is the sole detailed-contract owner. The proposals carry forward selections, label new recommendations and keep explicit feasibility/child-contract gates. No new user decision or runtime result is asserted by assembling them.
 
 ### Sources and comparison
 

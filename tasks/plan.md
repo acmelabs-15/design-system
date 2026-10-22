@@ -1,6 +1,6 @@
 # Implementation plan: maintainer workflow migration
 
-Status: approved by Peter for local implementation on 2026-10-21. Tasks 1–6 and Checkpoint A are complete. Current work reconciles specifications/history and relocates live verification checks (tasks7–8). The old startup owner remains active until task11. Full migration acceptance and independent review remain task12.
+Status: approved by Peter for local implementation on 2026-10-21. Tasks 1–10 are complete. Shared guidance and live consumers pass review. The preparation guard covers all 970 sources with zero errors. Task 11 activates the new workflow and removes the fully accounted old structure.
 
 Task state belongs in [todo.md](todo.md). The existing [handoff](../notes/alignment/README.md#where-we-are) remains authoritative until the cutover task.
 
@@ -13,7 +13,7 @@ The migration preserves information and verification strength. It retires confli
 ## Baseline and scope
 
 - Branch: codex/maintainer-workflow-migration, starting from the locally committed proposal d009bdc35.
-- The initial inventory contains 930 files. The proposal adds two records under the old tree, so the current tracked migration set has 932 files. Refresh this set before moving anything.
+- The initial inventory contains 930 tracked files. Two proposal records make the original baseline 932. A later full filesystem census captures 38 ignored verification logs, bringing source coverage to 970. The original baseline remains fixed; the supplemental Git capture adds only the omitted evidence. Finder metadata has a local backup and stays outside project evidence.
 - Main remains at the recorded 0.3.2 closure revision. Its quality run passes; a separate documentation run fails one Chromium Hover Card case. The cause remains unverified.
 - The runner currently lists 23 browser entry points and creates 24 invocations, because scoped registration runs in two modes. Nineteen entry points live under the old evidence tree.
 - Source components, dependencies and published versions are outside this migration. Active verification code and documentation-reference consumers must change where paths require it.

@@ -1,0 +1,3474 @@
+{
+  "schemaVersion": 1,
+  "task": 9,
+  "status": "complete",
+  "activation": "Prepared only; task11 activates the reviewed root drafts and handoff.",
+  "verification": {
+    "passed": true,
+    "scope": "Semantic and static review; actual host sessions remain task12."
+  },
+  "files": [
+    {
+      "path": "docs/agents/workflow.md",
+      "sha256": "4f328a5ff916579cb15f4fb9ee9159fbbebc6343b22954ab4615c5dab6a189aa"
+    },
+    {
+      "path": "docs/agents/repository.md",
+      "sha256": "b3c59d158fa35409c91c971bb89de562a4b1d9bfe4403f669e7d50c536c7fbca"
+    },
+    {
+      "path": "docs/agents/verification.md",
+      "sha256": "053a020946c727bceaf93a30b26ce2dc192152495b85241dadec344828bfe883"
+    },
+    {
+      "path": "docs/agents/domain.md",
+      "sha256": "687229836185c7efc5add2ea6824a09112c2076fd38e6ee474ab315f217a9b82"
+    },
+    {
+      "path": "docs/agents/triage-labels.md",
+      "sha256": "8162abf7dc894a4469f2e8f9e6f7fa481bde3d6c137777b9c12a88926c436554"
+    },
+    {
+      "path": "docs/agents/issue-tracker.md",
+      "sha256": "9006b3e077d7d91b898a9a368ad3d84e331f76f84b9f890aef67be2d6f85fe08"
+    },
+    {
+      "path": "docs/development/components.md",
+      "sha256": "6683eb77059398e3d55d27c087d51620608945004a4126a1154afcd43fbd4e18"
+    },
+    {
+      "path": "docs/development/styles.md",
+      "sha256": "751eb69c132ba75cfa145c1a2c80f99d227d3b9cf31513db0ddb7c2a31e02e54"
+    },
+    {
+      "path": "docs/development/stack.md",
+      "sha256": "31cfb79d9b30f8009d5dbb567e46f73ad474c37027d4620ccfc744fb14343391"
+    },
+    {
+      "path": "docs/development/documentation.md",
+      "sha256": "f697e8e38b1a80aaccbcd32b0bede24d544f095efea0ffadb461bcfde2e0da5d"
+    },
+    {
+      "path": "docs/development/generation.md",
+      "sha256": "eb9b83ff9299c1df22ffe3506afb2073fc21e1b719cb040ba0cfd6aabfd528c6"
+    },
+    {
+      "path": "docs/development/reference-sources.md",
+      "sha256": "5b306e0954994345a9fc1a3fad29f01c924770b7beb6355dfc8d52243aea6ceb"
+    },
+    {
+      "path": ".scratch/maintenance/issues/004-advisory-review-deadline.md",
+      "sha256": "a0be5cbe99f756508702c972a15470e705182071d20b5558ad0313f9d3bb1047"
+    },
+    {
+      "path": ".scratch/maintenance/issues/003-npm-token-rotation.md",
+      "sha256": "2e9f268106447b35585a68fd019efb37eb6d5324cdf4ff5a8e52ac9881af3863"
+    },
+    {
+      "path": ".scratch/maintenance/issues/README.md",
+      "sha256": "c2c9679e56285b325017597261ac82f4397cf69437be9ca0d9a5b9c8a868f435"
+    },
+    {
+      "path": ".scratch/maintenance/issues/002-actual-platform-verification.md",
+      "sha256": "374653c07783db70e52c12feffdbaea3b8e5a62f550cec9d4fea049e37ad26a9"
+    },
+    {
+      "path": ".scratch/maintenance/issues/001-hover-card-activation.md",
+      "sha256": "262e2925d43669a513a18b36f4d7e9e97c97cc173114e5f333c4b62060c7b0ea"
+    },
+    {
+      "path": "CONTEXT-MAP.md",
+      "sha256": "e0bce9c26d6993570b8ebb7b0671f69598f055b960ee90aea9f26d48acff875e"
+    }
+  ],
+  "draftFiles": [
+    {
+      "source": ".artifacts/AGENTS.next.md",
+      "sha256": "049ca25a2f57ab4de484d2b0e91b8160244715d2b79962a5e8caa96e876148b6",
+      "content": "# ACMElabs design system\n\nThis repository owns the Lit components with the acme- prefix and their shared delivery, React bridge and consumer tools. One workflow serves all five packages. Current work belongs to [docs/STATUS.md](docs/STATUS.md).\n\n## Session start\n\nFrom a package directory, find the Git repository root and use it for this workflow. Complete these steps before starting the requested work.\n\n1. Read [status](docs/STATUS.md), [domain routing](docs/agents/domain.md), [the context map](CONTEXT-MAP.md) and the glossary for the task. Read each selected file to its last line.\n2. Read [the specification index](spec/README.md), then the active specification, plan and task list named by status. Read [the record layout](docs/agents/workflow.md). Preserve an incomplete plan when Peter changes the request.\n3. Inspect Git status and the active branch. Verify the selected Bun executable and its version. Preserve work owned by other sessions. Read [repository ownership](docs/agents/repository.md) and [verification](docs/agents/verification.md) before editing; identify authored inputs, generated outputs, affected packages and applicable check evidence.\n4. Establish the baseline from its revision, inputs and check scope. Run missing or invalidated checks using the verification guide. A historical green result does not close a newer failure.\n5. Report the phase, last completed step, next step, red checks and pending decisions in five lines or fewer. Follow Peter's current request. A request to continue resumes the next approved task; a completed plan does not authorize another feature.\n\n## Work through brain\n\nUse brain:using-brain to select the applicable skill. Agent-skills remains available. When both plugins provide the same skill, use brain's version. The plugins own the lifecycle and engineering procedures; this repository supplies its facts and record locations.\n\nA user-owned decision or permission uses brain:ask-user-question and its host reference. Keep approval scoped to the actual task and action. The status file records current authorization; a completed pass or another repository grants no standing permission here.\n\nSetup, wait-what, handoff, triage and wayfinder start from Peter's prompt. When one is needed, give him the applicable command or skill invocation. [CLAUDE.md](CLAUDE.md) carries Claude command spellings; Codex uses the installed skill names.\n\nBefore changing an area, read the applicable decisions and research through their [decision](docs/decisions/README.md) and [research](docs/research/README.md) indexes. Use the glossary's names. Source facts, proposals, selected contracts and verification results remain distinct.\n\n| Change | Required guidance |\n| --- | --- |\n| Component behavior or interface | [Component rules](docs/development/components.md), [interface conventions](docs/development/interfaces.md), and its owning specification |\n| CSS or style production | [Style ownership](docs/development/styles.md); [generation and comparison](docs/development/generation.md) when mapped sources or census evidence change |\n| Package or dependency responsibility | [Selected stack](docs/development/stack.md) and the package ownership map |\n| Website, examples or consumer guidance | [Documentation rules](docs/development/documentation.md) |\n| A reference comparison | [Reference sources](docs/development/reference-sources.md) |\n| A domain term or decision record | brain:domain-modeling and [domain routing](docs/agents/domain.md) |\n| A skill or agent instruction file | The official skill-creator workflow and brain:writing-for-agents |\n\n## Task end and handoff\n\n1. Update the task's acceptance checks and any specification whose facts change. Record research or a decision in its one owning record.\n2. Save exact verification commands, results, revision and limits. Use focused checks for each slice, then the full gate and review at the task's closure.\n3. Rewrite [status](docs/STATUS.md) with the next action, anything red and what awaits Peter. Include the exact invocation when the next step is user-started. A fresh session must resume without the conversation.\n4. Record what is committed, uncommitted, pushed or awaiting approval. Stage owned files by name. Use only the local-commit and outward-action authorization actually granted for this work. Merge approved pull requests with merge commits.\n\nHistorical plans and releases provide evidence. They do not restart their completed phases. The [local issue tracker](docs/agents/issue-tracker.md) owns unresolved follow-ups; its [labels](docs/agents/triage-labels.md) define their status.\n"
+    },
+    {
+      "source": ".artifacts/CLAUDE.next.md",
+      "sha256": "702db53ad29242ad21df72ac01172293e0edebee34fecaaed06ef6c398cef2a7",
+      "content": "@AGENTS.md\n\n## Claude Code\n\nThe imported project rules are shared with other coding agents. Both workflow plugins are enabled in the project settings.\n\n| Phase | Claude command |\n| --- | --- |\n| Specification | /brain:spec |\n| Planning | /brain:plan |\n| Implementation | /brain:build, or /brain:build auto within an approved plan |\n| Diagnosis and verification | /brain:test |\n| Review | /brain:review |\n| Shipping | /brain:ship |\n\nThe shared instructions define the user-started boundary. Its Claude commands are /brain:setup-brain, /brain:wait-what, /brain:handoff, /brain:triage and /brain:wayfinder.\n\nProject settings name the addy-agent-skills and acmelabs marketplaces. Installed plugin versions come from the host, not a cached version in this file.\n"
+    },
+    {
+      "source": ".artifacts/claude-settings.next.json",
+      "sha256": "ea9527a76f14dfa52879f8206d90b7be4da111caf1b4d775a9e131139566091f",
+      "content": "{\n  \"extraKnownMarketplaces\": {\n    \"addy-agent-skills\": {\n      \"source\": {\n        \"source\": \"github\",\n        \"repo\": \"addyosmani/agent-skills\"\n      }\n    },\n    \"acmelabs\": {\n      \"source\": {\n        \"source\": \"github\",\n        \"repo\": \"acmelabs-15/marketplace\"\n      }\n    }\n  },\n  \"enabledPlugins\": {\n    \"agent-skills@addy-agent-skills\": true,\n    \"brain@acmelabs\": true\n  }\n}\n"
+    }
+  ],
+  "writer": {
+    "schemaVersion": 1,
+    "task": 9,
+    "status": "prepared",
+    "activation": "Task 11; coordinator owns shared entry points and live state.",
+    "preparation": ".artifacts/task9-technical-guidance-preparation.json",
+    "preparationSha256": "d4970be04124d8ccd65c3798080cbc2a18f846464bdb9c70fe06108e4dfed740",
+    "batches": [
+      {
+        "id": "09-technical-guidance-1",
+        "status": "prepared",
+        "verification": {
+          "passed": true,
+          "scope": "Writer full-document semantic/source review and local link/anchor validation; coordinator review pending."
+        },
+        "files": [
+          {
+            "destination": "docs/agents/repository.md",
+            "destinationSha256": "b3c59d158fa35409c91c971bb89de562a4b1d9bfe4403f669e7d50c536c7fbca",
+            "rules": [
+              "R13",
+              "R22",
+              "R23",
+              "R24",
+              "R27",
+              "R28",
+              "R29",
+              "P02",
+              "P15"
+            ],
+            "sourceTrace": [
+              {
+                "source": "AGENTS.md",
+                "sourceSha256": "2e676f2a2704db35b33e8a99b9a2c98829c4c7a62621fc51875c7137762f4f62",
+                "read": "full"
+              },
+              {
+                "source": "README.md",
+                "sourceSha256": "21d1323bf999cdde8f5269ed507f36f9784736fc2b9a4d313550b0e67fb5c1d8",
+                "read": "full"
+              },
+              {
+                "source": "PLAN.md",
+                "sourceSha256": "30f919c84df8870a8ea328577e5a1836f60cb1e3c829d4310aed338837e904ac",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    1,
+                    396
+                  ]
+                ]
+              },
+              {
+                "source": "scripts/core-package.ts",
+                "sourceSha256": "a449e5f9f985388b043c472a50fd6e95296a0b4a553db7ddd02519c4529e6886",
+                "read": "full"
+              },
+              {
+                "source": "scripts/browser-package.ts",
+                "sourceSha256": "a088ab57dabe3df372539e77e32e64da7312a54d84107ce2175237778c5bcc76",
+                "read": "full"
+              },
+              {
+                "source": "scripts/split-css.ts",
+                "sourceSha256": "380464550414b1604e451b1b5947adba2b532a2b2e42f7f21bba1a652c085e5c",
+                "read": "full"
+              },
+              {
+                "source": "scripts/styles.ts",
+                "sourceSha256": "1ca48592f70caa57fcaf3adf78d7e69a1064e2c162fa6af92f0d9fff1cf52d44",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    221,
+                    449
+                  ]
+                ]
+              },
+              {
+                "source": "tools/geist/vars.ts",
+                "sourceSha256": "99ff2f0986d5ed22ff105eb34cba0e009fc033c29cdd70ec1143208c1b513716",
+                "read": "full"
+              },
+              {
+                "source": "scripts/numeric-tokens.ts",
+                "sourceSha256": "b6191034bc388149b3c30a9398bae6a926317cddd78a6fc9aa1deb2b20569229",
+                "read": "full"
+              },
+              {
+                "source": "scripts/theme-tokens.ts",
+                "sourceSha256": "d2df64e35abb401bdd54f8bf6320bae561ead0b1fffbd767bcce4dcfcaadeca1",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    277,
+                    330
+                  ]
+                ]
+              },
+              {
+                "source": "scripts/responsive-styles.ts",
+                "sourceSha256": "200c0cd65a4c1b9a9ee2b573052744b9f911d8db669897c1d3182be2f4d43ca6",
+                "read": "full"
+              },
+              {
+                "source": "scripts/material-symbols.ts",
+                "sourceSha256": "367945b8230ad7f6c68269f4d092bfce31dcf84c822ca74e4be09b42e2dc2395",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    135,
+                    221
+                  ]
+                ]
+              },
+              {
+                "source": "scripts/icon-entries.ts",
+                "sourceSha256": "13cb17acdcaf7b9488d1f8e07c427c0201043926aa5e034c0bd1eb539dbe92eb",
+                "read": "full"
+              },
+              {
+                "source": "scripts/byte-prefixes.ts",
+                "sourceSha256": "2341f5f7b6c287d6995505fd0464fb440ba2a70ebe8a8801b865c687499efae0",
+                "read": "full"
+              },
+              {
+                "source": "scripts/entries.ts",
+                "sourceSha256": "de09c71932e4ea5c08ba57ff6ae5c1f5845a48d2fc19fe98ad7fb6ff79b2d980",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    85,
+                    124
+                  ],
+                  [
+                    180,
+                    228
+                  ],
+                  [
+                    302,
+                    421
+                  ]
+                ]
+              },
+              {
+                "source": "scripts/build-modules.ts",
+                "sourceSha256": "14af51391bd630704a52a55cd0ae303cce2e72485cd1c2bc3b13ef909b9aa921",
+                "read": "full"
+              },
+              {
+                "source": "scripts/declarations.ts",
+                "sourceSha256": "6c7acf956d07b73fd901092087562d5d8cca3b39f8fab2e0c52b552d42b6dfb7",
+                "read": "full"
+              },
+              {
+                "source": "scripts/manifest.ts",
+                "sourceSha256": "a09d794086aed2ffca43c61f7a49d7ba88004fd702d8acbb4244ec8a813ffed0",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    257,
+                    338
+                  ],
+                  [
+                    540,
+                    573
+                  ]
+                ]
+              },
+              {
+                "source": "scripts/date-runtime.ts",
+                "sourceSha256": "ca0308fa365883e2f0bbfa61ddf1c6af900032149bbfd08969d1ef728a59b4da",
+                "read": "full"
+              },
+              {
+                "source": "scripts/browser-assets.ts",
+                "sourceSha256": "ae65eaca2fba63c7e204e221407daeacbc433bb6d385af0cec140ae4db86f277",
+                "read": "full"
+              },
+              {
+                "source": "scripts/build.ts",
+                "sourceSha256": "a90ca22ee7fdef8d13543982d571fac8053a05365614ca64680dbf4d7aacf53f",
+                "read": "full"
+              },
+              {
+                "source": "scripts/browser-build.ts",
+                "sourceSha256": "6424130ee648f6a4967d5621738ba4ffdbbeee6f0162d1d570bcd79222f9f93c",
+                "read": "full"
+              },
+              {
+                "source": "scripts/browser-modules.ts",
+                "sourceSha256": "8dd9f201e544cdc11e892f0e153430a684bb9073033369df51b2d6ce912ab0de",
+                "read": "full"
+              },
+              {
+                "source": "scripts/react.ts",
+                "sourceSha256": "eabbe4c20e8cbfe4c7c01588c0b0444737594af23aaf4300297b5224249332a2",
+                "read": "full"
+              },
+              {
+                "source": "scripts/consumer-skills.ts",
+                "sourceSha256": "b927b7ae26e1d71bd7b92e0bbe8550e5a45fda2ba403f69247ef3cec1c6c5ab8",
+                "read": "full"
+              },
+              {
+                "source": "site/release.ts",
+                "sourceSha256": "bef963ff21a288ab402d897d6c80ba09fd9b097078d2603c96931d4107e82b02",
+                "read": "full"
+              },
+              {
+                "source": "site/build.ts",
+                "sourceSha256": "edcd66ca32f240041ae743719f2102a42722f7ee17cb2e48eb117e7a426599db",
+                "read": "full"
+              },
+              {
+                "source": "scripts/devtools-metadata.ts",
+                "sourceSha256": "e4f316eec7704bbcd815f36d78e77d190dfc5fbd68df7cfeaf24cfb2b8b50ca2",
+                "read": "full"
+              },
+              {
+                "source": "scripts/tooling.ts",
+                "sourceSha256": "79ab7cbc7a0605211830f64c63bf2d118def3b13501f1f84346f2e2ea4e14cf1",
+                "read": "full"
+              },
+              {
+                "source": "scripts/package.ts",
+                "sourceSha256": "828301ebd7aa4c617e5f80e5d0353bd700f72bfc972b501de2b14472acbdbbb8",
+                "read": "full"
+              },
+              {
+                "source": "scripts/package-contents.ts",
+                "sourceSha256": "d9f468595c1f3523cdd813be2f202d0baf8581ccc87fc6148da0cbeafb870857",
+                "read": "full"
+              },
+              {
+                "source": "scripts/release.ts",
+                "sourceSha256": "8d7e6372e39bab9c3d3c275cd83c00aa5ff0ee3a53b0ccb4dee25ad6d3f99b25",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    1,
+                    75
+                  ]
+                ]
+              },
+              {
+                "source": "scripts/release-policy.ts",
+                "sourceSha256": "04cf0395ad9124f89159818e296d7773e51e444c683154fb9685c369ae90ad22",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    1,
+                    65
+                  ]
+                ]
+              },
+              {
+                "source": ".github/workflows/pages.yml",
+                "sourceSha256": "d705abf91a1a2ad034a698832f0911393c2b016a243845cf428ba61e1575a6d1",
+                "read": "full"
+              },
+              {
+                "source": "packages/core/package.json",
+                "sourceSha256": "163f6900356cece8ada026554d404877aac85e0fe223543af6edbc69a4cde4c9",
+                "read": "parsed-public-metadata"
+              },
+              {
+                "source": "packages/browser/package.json",
+                "sourceSha256": "3bc1b53fec450a39c64487b039e642a96d06b79b8880c300776001a6258d98cc",
+                "read": "parsed-public-metadata"
+              }
+            ],
+            "changes": [
+              "Repository and package boundaries",
+              "Authoritative inputs and generated outputs",
+              "Package delivery and archive boundaries"
+            ],
+            "retainedQualifications": [
+              "Package versions remain manifest-owned.",
+              "Core excludes browser delivery.",
+              "Archive budget is a project rule.",
+              "Upstream notice/source-binding qualifications remain.",
+              "Local preparation does not establish a clean published candidate."
+            ],
+            "anchors": [
+              "repository-ownership",
+              "source-and-package-boundaries",
+              "generator-and-delivery-map",
+              "delivery-constraints"
+            ]
+          },
+          {
+            "destination": "docs/agents/verification.md",
+            "destinationSha256": "7fa54ddef08451d8c9ce2cd2eec200caf5eddfbbfd46f80c2f78222f5bdabb06",
+            "rules": [
+              "R21",
+              "R26",
+              "P04",
+              "P20",
+              "P21",
+              "P28 (test-placement meaning only)",
+              "P31",
+              "C05"
+            ],
+            "sourceTrace": [
+              {
+                "source": "AGENTS.md",
+                "sourceSha256": "2e676f2a2704db35b33e8a99b9a2c98829c4c7a62621fc51875c7137762f4f62",
+                "read": "full"
+              },
+              {
+                "source": "PLAN.md",
+                "sourceSha256": "30f919c84df8870a8ea328577e5a1836f60cb1e3c829d4310aed338837e904ac",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    1,
+                    396
+                  ]
+                ]
+              },
+              {
+                "source": "package.json",
+                "sourceSha256": "1855f4d586422dd0bf266b19a4b1015caeaea7bce1760c7041a4cf9489fd5df4",
+                "read": "full"
+              },
+              {
+                "source": ".bun-version",
+                "sourceSha256": "b99b4c7cdf236f59bc9f65d963deaecae3b16a7dad87939cacb9057f7664daee",
+                "read": "full"
+              },
+              {
+                "source": "scripts/check.ts",
+                "sourceSha256": "48e81cfbefb0e398b19c3feb5a1c9d9d8229d34351a0491225bd348250c2ca1b",
+                "read": "full"
+              },
+              {
+                "source": "scripts/release-policy.ts",
+                "sourceSha256": "04cf0395ad9124f89159818e296d7773e51e444c683154fb9685c369ae90ad22",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    1,
+                    65
+                  ]
+                ]
+              },
+              {
+                "source": "tsconfig.json",
+                "sourceSha256": "684d066dc370822be1c15419ec368ca23dd49173635edd7c24ccd99aaee558dc",
+                "read": "full"
+              },
+              {
+                "source": "scripts/test-setup.ts",
+                "sourceSha256": "1bc9b36108df2d0d47afd61dbbd8ede49e569134e3b67bcc0064f7ed1ac83369",
+                "read": "full"
+              },
+              {
+                "source": "scripts/lint.ts",
+                "sourceSha256": "39bdeb2d71f02904f21dcdbd4457c7e3c072d2182d635ef67b2d06daee9b7df6",
+                "read": "full"
+              },
+              {
+                "source": "scripts/lint-files.ts",
+                "sourceSha256": "5639573b484233f755f817dda875e0864ab79fc08a65fac5db3bd676a41df78f",
+                "read": "full"
+              },
+              {
+                "source": "docs/verification/workflow-migration/rules.md",
+                "sourceSha256": "3c1af6187554bcd57f6dc86ce0166725d0f59b5793b068bbba6952c122f4dfbd",
+                "read": "full"
+              }
+            ],
+            "changes": [
+              "Runtime and command dependencies",
+              "Choose applicable checks and evidence",
+              "Browser and consumer oracles"
+            ],
+            "retainedQualifications": [
+              "Original Linux CI Hover Card cause remains unverified by later local success.",
+              "Automated WebKit does not certify actual Safari/AT or OS input behavior.",
+              "Manual and required checks remain separate.",
+              "Dirty preparation and clean final acceptance remain separate.",
+              "Root typecheck alone does not cover every script; expanded explicit gate now includes all relocated verification TS."
+            ],
+            "anchors": [
+              "verification",
+              "runtime-and-commands",
+              "evidence-and-browser-requirements",
+              "limits-and-closure-evidence"
+            ]
+          },
+          {
+            "destination": "docs/development/components.md",
+            "destinationSha256": "6683eb77059398e3d55d27c087d51620608945004a4126a1154afcd43fbd4e18",
+            "rules": [
+              "R09",
+              "R18",
+              "R20",
+              "P03",
+              "P05",
+              "P17",
+              "P19",
+              "P25",
+              "P32",
+              "P34",
+              "P38",
+              "P39",
+              "P41",
+              "P51",
+              "C01",
+              "C08"
+            ],
+            "sourceTrace": [
+              {
+                "source": "AGENTS.md",
+                "sourceSha256": "2e676f2a2704db35b33e8a99b9a2c98829c4c7a62621fc51875c7137762f4f62",
+                "read": "full"
+              },
+              {
+                "source": "PLAN.md",
+                "sourceSha256": "30f919c84df8870a8ea328577e5a1836f60cb1e3c829d4310aed338837e904ac",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    1,
+                    396
+                  ]
+                ]
+              },
+              {
+                "source": "CONTEXT.md",
+                "sourceSha256": "8372bf8ea185e3d779a114c0dea01f51a755ebbdc33e4bdee2785e525e5b7ec7",
+                "read": "full"
+              },
+              {
+                "source": "docs/decisions/0077-parity-scope.md",
+                "sourceSha256": "052efde28e2d3349bb0b705141944b9f0a70171f1f9e0b57a517d567f1d510bc",
+                "read": "full"
+              },
+              {
+                "source": "docs/decisions/0041-focus-ring-ownership.md",
+                "sourceSha256": "592c99f3afd81a111543f1ec5c5c3dae5ef197730a2ec67033bd3261e0447512",
+                "read": "full"
+              },
+              {
+                "source": "docs/decisions/0099-start-and-end-places.md",
+                "sourceSha256": "4d8c449dbb590390b55744c4943417aec67934a1ca68d2c4609d911c6070e473",
+                "read": "full"
+              },
+              {
+                "source": "src/shared/state.ts",
+                "sourceSha256": "17b3d062a9e9b7ede31a6d7896725675d43f4c035e76e1d2873a07ee4b480448",
+                "read": "full"
+              },
+              {
+                "source": "src/shared/store-connection.ts",
+                "sourceSha256": "bf0a76e184aedc5ec5405a5def1414a07b8aaa2e5d028d61a34b1781e2834120",
+                "read": "full"
+              },
+              {
+                "source": "src/shared/places.ts",
+                "sourceSha256": "a2343643ccd35f36b7c529b73ee8b1ce93e7f39337299161c64b5a99162a19ee",
+                "read": "full"
+              },
+              {
+                "source": "src/shared/atom-state.ts",
+                "sourceSha256": "c69d2f07b24a8214210697214df25d270db0e8478e481a2a46f86b2d9ef3ea85",
+                "read": "full"
+              }
+            ],
+            "changes": [
+              "Interface and state ownership",
+              "Composition and platform behavior",
+              "Source and removal boundaries"
+            ],
+            "retainedQualifications": [
+              "Completed no-alias replacements remain final; no future blanket permission.",
+              "Custom themes qualify the default fonts.",
+              "Book evidence does not impose a universal animation census.",
+              "Events follow each composition contract."
+            ],
+            "anchors": [
+              "component-implementation",
+              "interfaces-and-state",
+              "composition-and-browser-behavior",
+              "styling-and-source-boundaries"
+            ]
+          },
+          {
+            "destination": "docs/development/styles.md",
+            "destinationSha256": "751eb69c132ba75cfa145c1a2c80f99d227d3b9cf31513db0ddb7c2a31e02e54",
+            "rules": [
+              "R17",
+              "P18"
+            ],
+            "sourceTrace": [
+              {
+                "source": "AGENTS.md",
+                "sourceSha256": "2e676f2a2704db35b33e8a99b9a2c98829c4c7a62621fc51875c7137762f4f62",
+                "read": "full"
+              },
+              {
+                "source": "PLAN.md",
+                "sourceSha256": "30f919c84df8870a8ea328577e5a1836f60cb1e3c829d4310aed338837e904ac",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    1,
+                    396
+                  ]
+                ]
+              },
+              {
+                "source": "scripts/styles.ts",
+                "sourceSha256": "1ca48592f70caa57fcaf3adf78d7e69a1064e2c162fa6af92f0d9fff1cf52d44",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    221,
+                    449
+                  ]
+                ]
+              },
+              {
+                "source": "scripts/split-css.ts",
+                "sourceSha256": "380464550414b1604e451b1b5947adba2b532a2b2e42f7f21bba1a652c085e5c",
+                "read": "full"
+              },
+              {
+                "source": "scripts/local-inputs.ts",
+                "sourceSha256": "cdc9afb02346fa7e1929010c21d9a26c514eeb8c11cbecccbea6f11be67a6b31",
+                "read": "full"
+              },
+              {
+                "source": "scripts/theme-tokens.ts",
+                "sourceSha256": "d2df64e35abb401bdd54f8bf6320bae561ead0b1fffbd767bcce4dcfcaadeca1",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    277,
+                    330
+                  ]
+                ]
+              },
+              {
+                "source": "scripts/responsive-styles.ts",
+                "sourceSha256": "200c0cd65a4c1b9a9ee2b573052744b9f911d8db669897c1d3182be2f4d43ca6",
+                "read": "full"
+              },
+              {
+                "source": "tools/geist/gen.ts",
+                "sourceSha256": "1d3b8228f5eb2c183930c9f9fbbacfd59cd9af75dee03e530168035b6b0ecd68",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    2304,
+                    2385
+                  ]
+                ]
+              },
+              {
+                "source": "scripts/build.ts",
+                "sourceSha256": "a90ca22ee7fdef8d13543982d571fac8053a05365614ca64680dbf4d7aacf53f",
+                "read": "full"
+              }
+            ],
+            "changes": [
+              "Choose the producer input",
+              "Compile and verify owned output"
+            ],
+            "retainedQualifications": [
+              "All generated CSS changes use the actual owning producer.",
+              "Available corpus verification does not establish a fresh capture when absent.",
+              "Real wrapper boxes remain the component rule."
+            ],
+            "anchors": [
+              "style-ownership",
+              "change-the-owning-input",
+              "compile-and-verify-output"
+            ]
+          }
+        ],
+        "anchorChanges": [],
+        "findings": []
+      },
+      {
+        "id": "09-technical-guidance-2",
+        "status": "prepared",
+        "verification": {
+          "passed": true,
+          "scope": "Writer full-document semantic/source review and local link/anchor validation; coordinator review pending."
+        },
+        "files": [
+          {
+            "destination": "docs/development/stack.md",
+            "destinationSha256": "31cfb79d9b30f8009d5dbb567e46f73ad474c37027d4620ccfc744fb14343391",
+            "rules": [
+              "R19",
+              "P06",
+              "P07",
+              "P08",
+              "P10",
+              "P11",
+              "P12",
+              "P13"
+            ],
+            "sourceTrace": [
+              {
+                "source": "PLAN.md",
+                "sourceSha256": "30f919c84df8870a8ea328577e5a1836f60cb1e3c829d4310aed338837e904ac",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    1,
+                    396
+                  ]
+                ]
+              },
+              {
+                "source": "package.json",
+                "sourceSha256": "1855f4d586422dd0bf266b19a4b1015caeaea7bce1760c7041a4cf9489fd5df4",
+                "read": "full"
+              },
+              {
+                "source": "packages/core/package.json",
+                "sourceSha256": "163f6900356cece8ada026554d404877aac85e0fe223543af6edbc69a4cde4c9",
+                "read": "parsed-public-metadata"
+              },
+              {
+                "source": "packages/browser/package.json",
+                "sourceSha256": "3bc1b53fec450a39c64487b039e642a96d06b79b8880c300776001a6258d98cc",
+                "read": "parsed-public-metadata"
+              },
+              {
+                "source": "packages/react/package.json",
+                "sourceSha256": "4c8772031f1d78c5ffc18052e62d0a8254a7c1afcf18b5064a07a1daeaee2986",
+                "read": "full"
+              },
+              {
+                "source": "packages/mcp/package.json",
+                "sourceSha256": "d620aca235c35eaa754e8e5d07e0b71056a8a1e11818dad0bbf6e9bc75bd56a4",
+                "read": "full"
+              },
+              {
+                "source": "packages/devtools/package.json",
+                "sourceSha256": "0983b8e9266736435caf1963f98a2f2243033920bf9943299e71729851fdf0ea",
+                "read": "full"
+              },
+              {
+                "source": "src/shared/chart-definition.ts",
+                "sourceSha256": "193beb8205a54564ba059d08cf4f8d835014bd85193fddf88f922d682bff4827",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    1,
+                    55
+                  ]
+                ]
+              },
+              {
+                "source": "src/shared/state.ts",
+                "sourceSha256": "17b3d062a9e9b7ede31a6d7896725675d43f4c035e76e1d2873a07ee4b480448",
+                "read": "full"
+              },
+              {
+                "source": "docs/decisions/0048-intent-tooling.md",
+                "sourceSha256": "fabc9b16ba1b7c12dab402b943d602ec29398dd9ef08aa89a8be2ba148e08099",
+                "read": "full"
+              }
+            ],
+            "changes": [
+              "Selected runtime responsibilities",
+              "Application and delivery boundaries",
+              "Package source of truth"
+            ],
+            "retainedQualifications": [
+              "Zag source reference does not adopt its component runtime.",
+              "Table/data state and Virtual/Form application ownership remain explicit.",
+              "Query/DB remains deferred.",
+              "Intent probe does not establish artifact quality or authoring permission.",
+              "Empty import results alone do not justify removing a selected package."
+            ],
+            "anchors": [
+              "selected-package-roles",
+              "runtime-and-application-responsibilities",
+              "authoring-and-delivery-tools",
+              "changes-to-the-stack"
+            ]
+          },
+          {
+            "destination": "docs/development/documentation.md",
+            "destinationSha256": "f697e8e38b1a80aaccbcd32b0bede24d544f095efea0ffadb461bcfde2e0da5d",
+            "rules": [
+              "P22"
+            ],
+            "sourceTrace": [
+              {
+                "source": "PLAN.md",
+                "sourceSha256": "30f919c84df8870a8ea328577e5a1836f60cb1e3c829d4310aed338837e904ac",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    1,
+                    396
+                  ]
+                ]
+              },
+              {
+                "source": "README.md",
+                "sourceSha256": "21d1323bf999cdde8f5269ed507f36f9784736fc2b9a4d313550b0e67fb5c1d8",
+                "read": "full"
+              },
+              {
+                "source": "site/build.ts",
+                "sourceSha256": "edcd66ca32f240041ae743719f2102a42722f7ee17cb2e48eb117e7a426599db",
+                "read": "full"
+              },
+              {
+                "source": "site/release.ts",
+                "sourceSha256": "bef963ff21a288ab402d897d6c80ba09fd9b097078d2603c96931d4107e82b02",
+                "read": "full"
+              },
+              {
+                "source": "site/example-source.ts",
+                "sourceSha256": "a7ba0b3031391686580b41d5de400cf5c59dd9521fca2e66b447752965ae87a9",
+                "read": "full"
+              },
+              {
+                "source": "site/recipes.ts",
+                "sourceSha256": "5b81cc7e9cb5f40f7c89885319e87adb182dc39032dfbb901dc867638b631a28",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    1,
+                    85
+                  ]
+                ]
+              },
+              {
+                "source": "scripts/manifest.ts",
+                "sourceSha256": "a09d794086aed2ffca43c61f7a49d7ba88004fd702d8acbb4244ec8a813ffed0",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    257,
+                    338
+                  ],
+                  [
+                    540,
+                    573
+                  ]
+                ]
+              },
+              {
+                "source": "scripts/consumer-skills.ts",
+                "sourceSha256": "b927b7ae26e1d71bd7b92e0bbe8550e5a45fda2ba403f69247ef3cec1c6c5ab8",
+                "read": "full"
+              },
+              {
+                "source": "scripts/devtools-metadata.ts",
+                "sourceSha256": "e4f316eec7704bbcd815f36d78e77d190dfc5fbd68df7cfeaf24cfb2b8b50ca2",
+                "read": "full"
+              },
+              {
+                "source": "scripts/core-package.ts",
+                "sourceSha256": "a449e5f9f985388b043c472a50fd6e95296a0b4a553db7ddd02519c4529e6886",
+                "read": "full"
+              }
+            ],
+            "changes": [
+              "Author and execute the same source",
+              "Generate shared consumer records"
+            ],
+            "retainedQualifications": [
+              "Historical census data remains historical.",
+              "Metadata equality does not prove interactive behavior.",
+              "Consumer references are data, not agent instructions.",
+              "Core README policy has one owner in repository guidance."
+            ],
+            "anchors": [
+              "consumer-documentation",
+              "execute-the-displayed-source",
+              "share-api-and-release-facts",
+              "check-published-delivery"
+            ]
+          },
+          {
+            "destination": "docs/development/generation.md",
+            "destinationSha256": "eb9b83ff9299c1df22ffe3506afb2073fc21e1b719cb040ba0cfd6aabfd528c6",
+            "rules": [
+              "P23",
+              "P29",
+              "P33",
+              "P37",
+              "P40",
+              "P43"
+            ],
+            "sourceTrace": [
+              {
+                "source": "PLAN.md",
+                "sourceSha256": "30f919c84df8870a8ea328577e5a1836f60cb1e3c829d4310aed338837e904ac",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    1,
+                    396
+                  ]
+                ]
+              },
+              {
+                "source": "tools/geist/CONTEXT.md",
+                "sourceSha256": "858d8d8083ce795a7de90dfb1cf7efd0a649ed86542d245c53654eb28c5a4e6a",
+                "read": "full"
+              },
+              {
+                "source": "tools/geist/gen.ts",
+                "sourceSha256": "1d3b8228f5eb2c183930c9f9fbbacfd59cd9af75dee03e530168035b6b0ecd68",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    2304,
+                    2385
+                  ]
+                ]
+              },
+              {
+                "source": "tools/geist/collector.ts",
+                "sourceSha256": "e42f21bd5a2942a1f2d182ba4d9e5f6f39dbe522117d82240c547beeb36d5599",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    1,
+                    20
+                  ],
+                  [
+                    45,
+                    78
+                  ]
+                ]
+              },
+              {
+                "source": "tools/geist/diff.ts",
+                "sourceSha256": "16c335bdac433cb7484c8da6e2013bbad6cf8b2d8752b8981a0a08538288b9d4",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    190,
+                    260
+                  ]
+                ]
+              }
+            ],
+            "changes": [
+              "Map actual box roles",
+              "Collect valid comparison evidence",
+              "Preserve producer provenance"
+            ],
+            "retainedQualifications": [
+              "Collector writes tools/geist/census with no output override.",
+              "Existing measurements must be preserved before reruns.",
+              "Equal nonzero roots required.",
+              "State configuration belongs inside each side.",
+              "Accepted differences retain source/revision and limits."
+            ],
+            "anchors": [
+              "reference-generation-and-measurement",
+              "match-the-actual-boxes",
+              "collect-valid-evidence",
+              "preserve-source-ownership-and-limits"
+            ]
+          },
+          {
+            "destination": "docs/development/reference-sources.md",
+            "destinationSha256": "5b306e0954994345a9fc1a3fad29f01c924770b7beb6355dfc8d52243aea6ceb",
+            "rules": [
+              "R06",
+              "P30",
+              "P50",
+              "C09"
+            ],
+            "sourceTrace": [
+              {
+                "source": "AGENTS.md",
+                "sourceSha256": "2e676f2a2704db35b33e8a99b9a2c98829c4c7a62621fc51875c7137762f4f62",
+                "read": "full"
+              },
+              {
+                "source": "PLAN.md",
+                "sourceSha256": "30f919c84df8870a8ea328577e5a1836f60cb1e3c829d4310aed338837e904ac",
+                "read": "selected-sections",
+                "ranges": [
+                  [
+                    1,
+                    396
+                  ]
+                ]
+              },
+              {
+                "source": "docs/decisions/0082-reference-systems.md",
+                "sourceSha256": "b4bae3204b261932c9cf9bac05afd79d8bb280212555e508cc7f07be77efbb46",
+                "read": "full"
+              },
+              {
+                "source": "docs/decisions/0077-parity-scope.md",
+                "sourceSha256": "052efde28e2d3349bb0b705141944b9f0a70171f1f9e0b57a517d567f1d510bc",
+                "read": "full"
+              },
+              {
+                "source": "docs/verification/workflow-migration/rules.md",
+                "sourceSha256": "3c1af6187554bcd57f6dc86ce0166725d0f59b5793b068bbba6952c122f4dfbd",
+                "read": "full"
+              }
+            ],
+            "changes": [
+              "Use the selected references",
+              "Separate source claims and verification",
+              "Store provenance outside runtime source"
+            ],
+            "retainedQualifications": [
+              "Pro examples do not select implementation scope.",
+              "Material stable/Labs/token-only evidence stays distinct.",
+              "dp, pixels and rem remain distinct.",
+              "Existing decisions remain current until a concrete revision is selected.",
+              "Source-derived resolutions do not invent individual user votes."
+            ],
+            "anchors": [
+              "reference-sources",
+              "select-the-relevant-evidence",
+              "read-complete-material-guidance",
+              "apply-and-record-findings"
+            ]
+          }
+        ],
+        "anchorChanges": [],
+        "findings": []
+      }
+    ],
+    "sourceCoverage": [
+      {
+        "path": "docs/verification/workflow-migration/rules.md",
+        "read": "full",
+        "lines": 263,
+        "sha256": "3c1af6187554bcd57f6dc86ce0166725d0f59b5793b068bbba6952c122f4dfbd",
+        "preparationSha256": "3c1af6187554bcd57f6dc86ce0166725d0f59b5793b068bbba6952c122f4dfbd",
+        "currentSha256": "3c1af6187554bcd57f6dc86ce0166725d0f59b5793b068bbba6952c122f4dfbd",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "spec/SPEC-maintainer-workflow.md",
+        "read": "full",
+        "lines": 294,
+        "sha256": "9480507299b9c8564a2041b225b7e0818aefc4c102e9b379f6a4cc68593892d6",
+        "preparationSha256": "9480507299b9c8564a2041b225b7e0818aefc4c102e9b379f6a4cc68593892d6",
+        "currentSha256": "9480507299b9c8564a2041b225b7e0818aefc4c102e9b379f6a4cc68593892d6",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "tasks/plan.md",
+        "read": "full",
+        "lines": 188,
+        "sha256": "ad17b04f98c0d3d4c6f98ea8ae21771ed81b3bde6bc3b2154d5a4e5c3a19a2e2",
+        "preparationSha256": "ad17b04f98c0d3d4c6f98ea8ae21771ed81b3bde6bc3b2154d5a4e5c3a19a2e2",
+        "currentSha256": "ad17b04f98c0d3d4c6f98ea8ae21771ed81b3bde6bc3b2154d5a4e5c3a19a2e2",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "AGENTS.md",
+        "read": "full",
+        "lines": 100,
+        "sha256": "2e676f2a2704db35b33e8a99b9a2c98829c4c7a62621fc51875c7137762f4f62",
+        "preparationSha256": "2e676f2a2704db35b33e8a99b9a2c98829c4c7a62621fc51875c7137762f4f62",
+        "currentSha256": "2e676f2a2704db35b33e8a99b9a2c98829c4c7a62621fc51875c7137762f4f62",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "README.md",
+        "read": "full",
+        "lines": 293,
+        "sha256": "ab08a913601a12e5500a6fdce2208cf6608f485bc2d09e48ee2e724d40f53118",
+        "preparationSha256": "ab08a913601a12e5500a6fdce2208cf6608f485bc2d09e48ee2e724d40f53118",
+        "currentSha256": "21d1323bf999cdde8f5269ed507f36f9784736fc2b9a4d313550b0e67fb5c1d8",
+        "changedSincePreparation": true
+      },
+      {
+        "path": "CONTEXT-MAP.md",
+        "read": "full",
+        "lines": 12,
+        "sha256": "eb11c0a4da52f3714f9b51ebf87960ff660db1a75d28e6d5fb825c50c4bcdb87",
+        "preparationSha256": "eb11c0a4da52f3714f9b51ebf87960ff660db1a75d28e6d5fb825c50c4bcdb87",
+        "currentSha256": "e0bce9c26d6993570b8ebb7b0671f69598f055b960ee90aea9f26d48acff875e",
+        "changedSincePreparation": true
+      },
+      {
+        "path": "CONTEXT.md",
+        "read": "full",
+        "lines": 262,
+        "sha256": "8372bf8ea185e3d779a114c0dea01f51a755ebbdc33e4bdee2785e525e5b7ec7",
+        "preparationSha256": "8372bf8ea185e3d779a114c0dea01f51a755ebbdc33e4bdee2785e525e5b7ec7",
+        "currentSha256": "8372bf8ea185e3d779a114c0dea01f51a755ebbdc33e4bdee2785e525e5b7ec7",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "tools/geist/CONTEXT.md",
+        "read": "full",
+        "lines": 45,
+        "sha256": "b04792c3b842322c181e647d9511d87d17863262af9f3cc966c2f18458a0ac4f",
+        "preparationSha256": "b04792c3b842322c181e647d9511d87d17863262af9f3cc966c2f18458a0ac4f",
+        "currentSha256": "858d8d8083ce795a7de90dfb1cf7efd0a649ed86542d245c53654eb28c5a4e6a",
+        "changedSincePreparation": true
+      },
+      {
+        "path": "tools/geist/README.md",
+        "read": "full",
+        "lines": 96,
+        "sha256": "a480f56e77386dc2f31887589cd6c57eb120ca7bf61d6daf23d671a404da2965",
+        "preparationSha256": "a480f56e77386dc2f31887589cd6c57eb120ca7bf61d6daf23d671a404da2965",
+        "currentSha256": "3bf61406ea826c8de52d673daea86d52d5fbebdca8391f7a0a9b1266b19509ef",
+        "changedSincePreparation": true
+      },
+      {
+        "path": "docs/decisions/0082-reference-systems.md",
+        "read": "full",
+        "lines": 55,
+        "sha256": "b4bae3204b261932c9cf9bac05afd79d8bb280212555e508cc7f07be77efbb46",
+        "preparationSha256": "b4bae3204b261932c9cf9bac05afd79d8bb280212555e508cc7f07be77efbb46",
+        "currentSha256": "b4bae3204b261932c9cf9bac05afd79d8bb280212555e508cc7f07be77efbb46",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "docs/decisions/0077-parity-scope.md",
+        "read": "full",
+        "lines": 126,
+        "sha256": "052efde28e2d3349bb0b705141944b9f0a70171f1f9e0b57a517d567f1d510bc",
+        "preparationSha256": "052efde28e2d3349bb0b705141944b9f0a70171f1f9e0b57a517d567f1d510bc",
+        "currentSha256": "052efde28e2d3349bb0b705141944b9f0a70171f1f9e0b57a517d567f1d510bc",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "docs/decisions/0099-start-and-end-places.md",
+        "read": "full",
+        "lines": 107,
+        "sha256": "4d8c449dbb590390b55744c4943417aec67934a1ca68d2c4609d911c6070e473",
+        "preparationSha256": "4d8c449dbb590390b55744c4943417aec67934a1ca68d2c4609d911c6070e473",
+        "currentSha256": "4d8c449dbb590390b55744c4943417aec67934a1ca68d2c4609d911c6070e473",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "docs/decisions/0041-focus-ring-ownership.md",
+        "read": "full",
+        "lines": 82,
+        "sha256": "592c99f3afd81a111543f1ec5c5c3dae5ef197730a2ec67033bd3261e0447512",
+        "preparationSha256": "592c99f3afd81a111543f1ec5c5c3dae5ef197730a2ec67033bd3261e0447512",
+        "currentSha256": "592c99f3afd81a111543f1ec5c5c3dae5ef197730a2ec67033bd3261e0447512",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/core-package.ts",
+        "read": "full",
+        "lines": 45,
+        "sha256": "a449e5f9f985388b043c472a50fd6e95296a0b4a553db7ddd02519c4529e6886",
+        "preparationSha256": "a449e5f9f985388b043c472a50fd6e95296a0b4a553db7ddd02519c4529e6886",
+        "currentSha256": "a449e5f9f985388b043c472a50fd6e95296a0b4a553db7ddd02519c4529e6886",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/browser-package.ts",
+        "read": "full",
+        "lines": 216,
+        "sha256": "a088ab57dabe3df372539e77e32e64da7312a54d84107ce2175237778c5bcc76",
+        "preparationSha256": "a088ab57dabe3df372539e77e32e64da7312a54d84107ce2175237778c5bcc76",
+        "currentSha256": "a088ab57dabe3df372539e77e32e64da7312a54d84107ce2175237778c5bcc76",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "package.json",
+        "read": "full",
+        "lines": 72,
+        "sha256": "1855f4d586422dd0bf266b19a4b1015caeaea7bce1760c7041a4cf9489fd5df4",
+        "preparationSha256": "1855f4d586422dd0bf266b19a4b1015caeaea7bce1760c7041a4cf9489fd5df4",
+        "currentSha256": "1855f4d586422dd0bf266b19a4b1015caeaea7bce1760c7041a4cf9489fd5df4",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "packages/react/package.json",
+        "read": "full",
+        "lines": 39,
+        "sha256": "4c8772031f1d78c5ffc18052e62d0a8254a7c1afcf18b5064a07a1daeaee2986",
+        "preparationSha256": "4c8772031f1d78c5ffc18052e62d0a8254a7c1afcf18b5064a07a1daeaee2986",
+        "currentSha256": "4c8772031f1d78c5ffc18052e62d0a8254a7c1afcf18b5064a07a1daeaee2986",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "packages/mcp/package.json",
+        "read": "full",
+        "lines": 31,
+        "sha256": "d620aca235c35eaa754e8e5d07e0b71056a8a1e11818dad0bbf6e9bc75bd56a4",
+        "preparationSha256": "d620aca235c35eaa754e8e5d07e0b71056a8a1e11818dad0bbf6e9bc75bd56a4",
+        "currentSha256": "d620aca235c35eaa754e8e5d07e0b71056a8a1e11818dad0bbf6e9bc75bd56a4",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "packages/devtools/package.json",
+        "read": "full",
+        "lines": 29,
+        "sha256": "0983b8e9266736435caf1963f98a2f2243033920bf9943299e71729851fdf0ea",
+        "preparationSha256": "0983b8e9266736435caf1963f98a2f2243033920bf9943299e71729851fdf0ea",
+        "currentSha256": "0983b8e9266736435caf1963f98a2f2243033920bf9943299e71729851fdf0ea",
+        "changedSincePreparation": false
+      },
+      {
+        "path": ".bun-version",
+        "read": "full",
+        "lines": 1,
+        "sha256": "b99b4c7cdf236f59bc9f65d963deaecae3b16a7dad87939cacb9057f7664daee",
+        "preparationSha256": "b99b4c7cdf236f59bc9f65d963deaecae3b16a7dad87939cacb9057f7664daee",
+        "currentSha256": "b99b4c7cdf236f59bc9f65d963deaecae3b16a7dad87939cacb9057f7664daee",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/split-css.ts",
+        "read": "full",
+        "lines": 103,
+        "sha256": "380464550414b1604e451b1b5947adba2b532a2b2e42f7f21bba1a652c085e5c",
+        "preparationSha256": "380464550414b1604e451b1b5947adba2b532a2b2e42f7f21bba1a652c085e5c",
+        "currentSha256": "380464550414b1604e451b1b5947adba2b532a2b2e42f7f21bba1a652c085e5c",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/numeric-tokens.ts",
+        "read": "full",
+        "lines": 43,
+        "sha256": "b6191034bc388149b3c30a9398bae6a926317cddd78a6fc9aa1deb2b20569229",
+        "preparationSha256": "b6191034bc388149b3c30a9398bae6a926317cddd78a6fc9aa1deb2b20569229",
+        "currentSha256": "b6191034bc388149b3c30a9398bae6a926317cddd78a6fc9aa1deb2b20569229",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/responsive-styles.ts",
+        "read": "full",
+        "lines": 93,
+        "sha256": "200c0cd65a4c1b9a9ee2b573052744b9f911d8db669897c1d3182be2f4d43ca6",
+        "preparationSha256": "200c0cd65a4c1b9a9ee2b573052744b9f911d8db669897c1d3182be2f4d43ca6",
+        "currentSha256": "200c0cd65a4c1b9a9ee2b573052744b9f911d8db669897c1d3182be2f4d43ca6",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/icon-entries.ts",
+        "read": "full",
+        "lines": 70,
+        "sha256": "13cb17acdcaf7b9488d1f8e07c427c0201043926aa5e034c0bd1eb539dbe92eb",
+        "preparationSha256": "13cb17acdcaf7b9488d1f8e07c427c0201043926aa5e034c0bd1eb539dbe92eb",
+        "currentSha256": "13cb17acdcaf7b9488d1f8e07c427c0201043926aa5e034c0bd1eb539dbe92eb",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/date-runtime.ts",
+        "read": "full",
+        "lines": 66,
+        "sha256": "ca0308fa365883e2f0bbfa61ddf1c6af900032149bbfd08969d1ef728a59b4da",
+        "preparationSha256": "ca0308fa365883e2f0bbfa61ddf1c6af900032149bbfd08969d1ef728a59b4da",
+        "currentSha256": "ca0308fa365883e2f0bbfa61ddf1c6af900032149bbfd08969d1ef728a59b4da",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/declarations.ts",
+        "read": "full",
+        "lines": 73,
+        "sha256": "6c7acf956d07b73fd901092087562d5d8cca3b39f8fab2e0c52b552d42b6dfb7",
+        "preparationSha256": "6c7acf956d07b73fd901092087562d5d8cca3b39f8fab2e0c52b552d42b6dfb7",
+        "currentSha256": "6c7acf956d07b73fd901092087562d5d8cca3b39f8fab2e0c52b552d42b6dfb7",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/build.ts",
+        "read": "full",
+        "lines": 211,
+        "sha256": "a90ca22ee7fdef8d13543982d571fac8053a05365614ca64680dbf4d7aacf53f",
+        "preparationSha256": "a90ca22ee7fdef8d13543982d571fac8053a05365614ca64680dbf4d7aacf53f",
+        "currentSha256": "a90ca22ee7fdef8d13543982d571fac8053a05365614ca64680dbf4d7aacf53f",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/build-modules.ts",
+        "read": "full",
+        "lines": 55,
+        "sha256": "14af51391bd630704a52a55cd0ae303cce2e72485cd1c2bc3b13ef909b9aa921",
+        "preparationSha256": "14af51391bd630704a52a55cd0ae303cce2e72485cd1c2bc3b13ef909b9aa921",
+        "currentSha256": "14af51391bd630704a52a55cd0ae303cce2e72485cd1c2bc3b13ef909b9aa921",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/react.ts",
+        "read": "full",
+        "lines": 105,
+        "sha256": "eabbe4c20e8cbfe4c7c01588c0b0444737594af23aaf4300297b5224249332a2",
+        "preparationSha256": "eabbe4c20e8cbfe4c7c01588c0b0444737594af23aaf4300297b5224249332a2",
+        "currentSha256": "eabbe4c20e8cbfe4c7c01588c0b0444737594af23aaf4300297b5224249332a2",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/devtools-metadata.ts",
+        "read": "full",
+        "lines": 66,
+        "sha256": "e4f316eec7704bbcd815f36d78e77d190dfc5fbd68df7cfeaf24cfb2b8b50ca2",
+        "preparationSha256": "e4f316eec7704bbcd815f36d78e77d190dfc5fbd68df7cfeaf24cfb2b8b50ca2",
+        "currentSha256": "e4f316eec7704bbcd815f36d78e77d190dfc5fbd68df7cfeaf24cfb2b8b50ca2",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/tooling.ts",
+        "read": "full",
+        "lines": 52,
+        "sha256": "79ab7cbc7a0605211830f64c63bf2d118def3b13501f1f84346f2e2ea4e14cf1",
+        "preparationSha256": "79ab7cbc7a0605211830f64c63bf2d118def3b13501f1f84346f2e2ea4e14cf1",
+        "currentSha256": "79ab7cbc7a0605211830f64c63bf2d118def3b13501f1f84346f2e2ea4e14cf1",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/package.ts",
+        "read": "full",
+        "lines": 163,
+        "sha256": "828301ebd7aa4c617e5f80e5d0353bd700f72bfc972b501de2b14472acbdbbb8",
+        "preparationSha256": "828301ebd7aa4c617e5f80e5d0353bd700f72bfc972b501de2b14472acbdbbb8",
+        "currentSha256": "828301ebd7aa4c617e5f80e5d0353bd700f72bfc972b501de2b14472acbdbbb8",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "site/build.ts",
+        "read": "full",
+        "lines": 171,
+        "sha256": "edcd66ca32f240041ae743719f2102a42722f7ee17cb2e48eb117e7a426599db",
+        "preparationSha256": "edcd66ca32f240041ae743719f2102a42722f7ee17cb2e48eb117e7a426599db",
+        "currentSha256": "edcd66ca32f240041ae743719f2102a42722f7ee17cb2e48eb117e7a426599db",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/check.ts",
+        "read": "full",
+        "lines": 290,
+        "sha256": "387f3404db59a7a628168654e065051cb53ff29370df339434c2f1add6257583",
+        "preparationSha256": "387f3404db59a7a628168654e065051cb53ff29370df339434c2f1add6257583",
+        "currentSha256": "48e81cfbefb0e398b19c3feb5a1c9d9d8229d34351a0491225bd348250c2ca1b",
+        "changedSincePreparation": true
+      },
+      {
+        "path": "scripts/byte-prefixes.ts",
+        "read": "full",
+        "lines": 49,
+        "sha256": "2341f5f7b6c287d6995505fd0464fb440ba2a70ebe8a8801b865c687499efae0",
+        "preparationSha256": "2341f5f7b6c287d6995505fd0464fb440ba2a70ebe8a8801b865c687499efae0",
+        "currentSha256": "2341f5f7b6c287d6995505fd0464fb440ba2a70ebe8a8801b865c687499efae0",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/browser-assets.ts",
+        "read": "full",
+        "lines": 48,
+        "sha256": "ae65eaca2fba63c7e204e221407daeacbc433bb6d385af0cec140ae4db86f277",
+        "preparationSha256": "ae65eaca2fba63c7e204e221407daeacbc433bb6d385af0cec140ae4db86f277",
+        "currentSha256": "ae65eaca2fba63c7e204e221407daeacbc433bb6d385af0cec140ae4db86f277",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "tools/geist/vars.ts",
+        "read": "full",
+        "lines": 91,
+        "sha256": "99ff2f0986d5ed22ff105eb34cba0e009fc033c29cdd70ec1143208c1b513716",
+        "preparationSha256": "99ff2f0986d5ed22ff105eb34cba0e009fc033c29cdd70ec1143208c1b513716",
+        "currentSha256": "99ff2f0986d5ed22ff105eb34cba0e009fc033c29cdd70ec1143208c1b513716",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/consumer-skills.ts",
+        "read": "full",
+        "lines": 107,
+        "sha256": "b927b7ae26e1d71bd7b92e0bbe8550e5a45fda2ba403f69247ef3cec1c6c5ab8",
+        "preparationSha256": "b927b7ae26e1d71bd7b92e0bbe8550e5a45fda2ba403f69247ef3cec1c6c5ab8",
+        "currentSha256": "b927b7ae26e1d71bd7b92e0bbe8550e5a45fda2ba403f69247ef3cec1c6c5ab8",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "site/release.ts",
+        "read": "full",
+        "lines": 73,
+        "sha256": "bef963ff21a288ab402d897d6c80ba09fd9b097078d2603c96931d4107e82b02",
+        "preparationSha256": "bef963ff21a288ab402d897d6c80ba09fd9b097078d2603c96931d4107e82b02",
+        "currentSha256": "bef963ff21a288ab402d897d6c80ba09fd9b097078d2603c96931d4107e82b02",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "tsconfig.json",
+        "read": "full",
+        "lines": 26,
+        "sha256": "684d066dc370822be1c15419ec368ca23dd49173635edd7c24ccd99aaee558dc",
+        "preparationSha256": "684d066dc370822be1c15419ec368ca23dd49173635edd7c24ccd99aaee558dc",
+        "currentSha256": "684d066dc370822be1c15419ec368ca23dd49173635edd7c24ccd99aaee558dc",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/test-setup.ts",
+        "read": "full",
+        "lines": 8,
+        "sha256": "1bc9b36108df2d0d47afd61dbbd8ede49e569134e3b67bcc0064f7ed1ac83369",
+        "preparationSha256": "1bc9b36108df2d0d47afd61dbbd8ede49e569134e3b67bcc0064f7ed1ac83369",
+        "currentSha256": "1bc9b36108df2d0d47afd61dbbd8ede49e569134e3b67bcc0064f7ed1ac83369",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "src/shared/state.ts",
+        "read": "full",
+        "lines": 43,
+        "sha256": "17b3d062a9e9b7ede31a6d7896725675d43f4c035e76e1d2873a07ee4b480448",
+        "preparationSha256": "17b3d062a9e9b7ede31a6d7896725675d43f4c035e76e1d2873a07ee4b480448",
+        "currentSha256": "17b3d062a9e9b7ede31a6d7896725675d43f4c035e76e1d2873a07ee4b480448",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "src/shared/store-connection.ts",
+        "read": "full",
+        "lines": 21,
+        "sha256": "bf0a76e184aedc5ec5405a5def1414a07b8aaa2e5d028d61a34b1781e2834120",
+        "preparationSha256": "bf0a76e184aedc5ec5405a5def1414a07b8aaa2e5d028d61a34b1781e2834120",
+        "currentSha256": "bf0a76e184aedc5ec5405a5def1414a07b8aaa2e5d028d61a34b1781e2834120",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "src/shared/places.ts",
+        "read": "full",
+        "lines": 88,
+        "sha256": "a2343643ccd35f36b7c529b73ee8b1ce93e7f39337299161c64b5a99162a19ee",
+        "preparationSha256": "a2343643ccd35f36b7c529b73ee8b1ce93e7f39337299161c64b5a99162a19ee",
+        "currentSha256": "a2343643ccd35f36b7c529b73ee8b1ce93e7f39337299161c64b5a99162a19ee",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "src/shared/atom-state.ts",
+        "read": "full",
+        "lines": 156,
+        "sha256": "c69d2f07b24a8214210697214df25d270db0e8478e481a2a46f86b2d9ef3ea85",
+        "preparationSha256": "c69d2f07b24a8214210697214df25d270db0e8478e481a2a46f86b2d9ef3ea85",
+        "currentSha256": "c69d2f07b24a8214210697214df25d270db0e8478e481a2a46f86b2d9ef3ea85",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/package-contents.ts",
+        "read": "full",
+        "lines": 24,
+        "sha256": "d9f468595c1f3523cdd813be2f202d0baf8581ccc87fc6148da0cbeafb870857",
+        "preparationSha256": "d9f468595c1f3523cdd813be2f202d0baf8581ccc87fc6148da0cbeafb870857",
+        "currentSha256": "d9f468595c1f3523cdd813be2f202d0baf8581ccc87fc6148da0cbeafb870857",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "site/example-source.ts",
+        "read": "full",
+        "lines": 90,
+        "sha256": "a7ba0b3031391686580b41d5de400cf5c59dd9521fca2e66b447752965ae87a9",
+        "preparationSha256": "a7ba0b3031391686580b41d5de400cf5c59dd9521fca2e66b447752965ae87a9",
+        "currentSha256": "a7ba0b3031391686580b41d5de400cf5c59dd9521fca2e66b447752965ae87a9",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/lint-files.ts",
+        "read": "full",
+        "lines": 49,
+        "sha256": "5639573b484233f755f817dda875e0864ab79fc08a65fac5db3bd676a41df78f",
+        "preparationSha256": "5639573b484233f755f817dda875e0864ab79fc08a65fac5db3bd676a41df78f",
+        "currentSha256": "5639573b484233f755f817dda875e0864ab79fc08a65fac5db3bd676a41df78f",
+        "changedSincePreparation": false
+      },
+      {
+        "path": ".github/workflows/pages.yml",
+        "read": "full",
+        "lines": 38,
+        "sha256": "d705abf91a1a2ad034a698832f0911393c2b016a243845cf428ba61e1575a6d1",
+        "preparationSha256": "d705abf91a1a2ad034a698832f0911393c2b016a243845cf428ba61e1575a6d1",
+        "currentSha256": "d705abf91a1a2ad034a698832f0911393c2b016a243845cf428ba61e1575a6d1",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/lint.ts",
+        "read": "full",
+        "lines": 83,
+        "sha256": "39bdeb2d71f02904f21dcdbd4457c7e3c072d2182d635ef67b2d06daee9b7df6",
+        "preparationSha256": "39bdeb2d71f02904f21dcdbd4457c7e3c072d2182d635ef67b2d06daee9b7df6",
+        "currentSha256": "39bdeb2d71f02904f21dcdbd4457c7e3c072d2182d635ef67b2d06daee9b7df6",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/local-inputs.ts",
+        "read": "full",
+        "lines": 35,
+        "sha256": "cdc9afb02346fa7e1929010c21d9a26c514eeb8c11cbecccbea6f11be67a6b31",
+        "preparationSha256": "cdc9afb02346fa7e1929010c21d9a26c514eeb8c11cbecccbea6f11be67a6b31",
+        "currentSha256": "cdc9afb02346fa7e1929010c21d9a26c514eeb8c11cbecccbea6f11be67a6b31",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/browser-build.ts",
+        "read": "full",
+        "lines": 11,
+        "sha256": "6424130ee648f6a4967d5621738ba4ffdbbeee6f0162d1d570bcd79222f9f93c",
+        "preparationSha256": "6424130ee648f6a4967d5621738ba4ffdbbeee6f0162d1d570bcd79222f9f93c",
+        "currentSha256": "6424130ee648f6a4967d5621738ba4ffdbbeee6f0162d1d570bcd79222f9f93c",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/browser-modules.ts",
+        "read": "full",
+        "lines": 34,
+        "sha256": "8dd9f201e544cdc11e892f0e153430a684bb9073033369df51b2d6ce912ab0de",
+        "preparationSha256": "8dd9f201e544cdc11e892f0e153430a684bb9073033369df51b2d6ce912ab0de",
+        "currentSha256": "8dd9f201e544cdc11e892f0e153430a684bb9073033369df51b2d6ce912ab0de",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "PLAN.md",
+        "ranges": [
+          [
+            1,
+            396
+          ]
+        ],
+        "reason": "Full standing build-rule section; later sections are closed port history.",
+        "read": "selected-sections",
+        "sha256": "30f919c84df8870a8ea328577e5a1836f60cb1e3c829d4310aed338837e904ac",
+        "preparationSha256": "30f919c84df8870a8ea328577e5a1836f60cb1e3c829d4310aed338837e904ac",
+        "currentSha256": "30f919c84df8870a8ea328577e5a1836f60cb1e3c829d4310aed338837e904ac",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "tasks/todo.md",
+        "ranges": [
+          [
+            177,
+            209
+          ]
+        ],
+        "reason": "Task 9 acceptance, ownership and task 10 consumer boundary.",
+        "read": "selected-sections",
+        "sha256": "64cff5234d255b48c84b73e0bc6bda5070da07a1f5cbc5a3e8f0de0fe2abf4ca",
+        "preparationSha256": "64cff5234d255b48c84b73e0bc6bda5070da07a1f5cbc5a3e8f0de0fe2abf4ca",
+        "currentSha256": "1f17eae3e398ad0e51c78f8735937d6b6dd5fae448c77b470d558b4ff5ad28af",
+        "changedSincePreparation": true
+      },
+      {
+        "path": "scripts/theme-tokens.ts",
+        "ranges": [
+          [
+            277,
+            330
+          ]
+        ],
+        "reason": "Theme producer and generated metadata writer/verification.",
+        "read": "selected-sections",
+        "sha256": "d2df64e35abb401bdd54f8bf6320bae561ead0b1fffbd767bcce4dcfcaadeca1",
+        "preparationSha256": "d2df64e35abb401bdd54f8bf6320bae561ead0b1fffbd767bcce4dcfcaadeca1",
+        "currentSha256": "d2df64e35abb401bdd54f8bf6320bae561ead0b1fffbd767bcce4dcfcaadeca1",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/styles.ts",
+        "ranges": [
+          [
+            221,
+            449
+          ]
+        ],
+        "reason": "CSS compiler, registration validation, Lit module writer, output and manifest handling.",
+        "read": "selected-sections",
+        "sha256": "1ca48592f70caa57fcaf3adf78d7e69a1064e2c162fa6af92f0d9fff1cf52d44",
+        "preparationSha256": "1ca48592f70caa57fcaf3adf78d7e69a1064e2c162fa6af92f0d9fff1cf52d44",
+        "currentSha256": "1ca48592f70caa57fcaf3adf78d7e69a1064e2c162fa6af92f0d9fff1cf52d44",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/material-symbols.ts",
+        "ranges": [
+          [
+            135,
+            221
+          ]
+        ],
+        "reason": "Pinned SVG import and verification entry points; version/catalog declarations inspected separately.",
+        "read": "selected-sections",
+        "sha256": "367945b8230ad7f6c68269f4d092bfce31dcf84c822ca74e4be09b42e2dc2395",
+        "preparationSha256": "367945b8230ad7f6c68269f4d092bfce31dcf84c822ca74e4be09b42e2dc2395",
+        "currentSha256": "367945b8230ad7f6c68269f4d092bfce31dcf84c822ca74e4be09b42e2dc2395",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/entries.ts",
+        "ranges": [
+          [
+            85,
+            124
+          ],
+          [
+            180,
+            228
+          ],
+          [
+            302,
+            421
+          ]
+        ],
+        "reason": "Tag-map discovery, finite scoped factories and generated entry/export writers.",
+        "read": "selected-sections",
+        "sha256": "de09c71932e4ea5c08ba57ff6ae5c1f5845a48d2fc19fe98ad7fb6ff79b2d980",
+        "preparationSha256": "de09c71932e4ea5c08ba57ff6ae5c1f5845a48d2fc19fe98ad7fb6ff79b2d980",
+        "currentSha256": "de09c71932e4ea5c08ba57ff6ae5c1f5845a48d2fc19fe98ad7fb6ff79b2d980",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/manifest.ts",
+        "ranges": [
+          [
+            257,
+            338
+          ],
+          [
+            540,
+            573
+          ]
+        ],
+        "reason": "Analyzer normalization, setup and final version/default/write path.",
+        "read": "selected-sections",
+        "sha256": "a09d794086aed2ffca43c61f7a49d7ba88004fd702d8acbb4244ec8a813ffed0",
+        "preparationSha256": "a09d794086aed2ffca43c61f7a49d7ba88004fd702d8acbb4244ec8a813ffed0",
+        "currentSha256": "a09d794086aed2ffca43c61f7a49d7ba88004fd702d8acbb4244ec8a813ffed0",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "tools/geist/gen.ts",
+        "ranges": [
+          [
+            2304,
+            2385
+          ]
+        ],
+        "reason": "Current mapped output writer and reference-only behavior.",
+        "read": "selected-sections",
+        "sha256": "1d3b8228f5eb2c183930c9f9fbbacfd59cd9af75dee03e530168035b6b0ecd68",
+        "preparationSha256": "1d3b8228f5eb2c183930c9f9fbbacfd59cd9af75dee03e530168035b6b0ecd68",
+        "currentSha256": "1d3b8228f5eb2c183930c9f9fbbacfd59cd9af75dee03e530168035b6b0ecd68",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/release-policy.ts",
+        "ranges": [
+          [
+            1,
+            65
+          ]
+        ],
+        "reason": "Pinned runtime, source identity and coordinated package set.",
+        "read": "selected-sections",
+        "sha256": "04cf0395ad9124f89159818e296d7773e51e444c683154fb9685c369ae90ad22",
+        "preparationSha256": "04cf0395ad9124f89159818e296d7773e51e444c683154fb9685c369ae90ad22",
+        "currentSha256": "04cf0395ad9124f89159818e296d7773e51e444c683154fb9685c369ae90ad22",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "src/shared/chart-definition.ts",
+        "ranges": [
+          [
+            1,
+            55
+          ]
+        ],
+        "reason": "Current direct d3-scale use and chart boundary.",
+        "read": "selected-sections",
+        "sha256": "193beb8205a54564ba059d08cf4f8d835014bd85193fddf88f922d682bff4827",
+        "preparationSha256": "193beb8205a54564ba059d08cf4f8d835014bd85193fddf88f922d682bff4827",
+        "currentSha256": "193beb8205a54564ba059d08cf4f8d835014bd85193fddf88f922d682bff4827",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "site/recipes.ts",
+        "ranges": [
+          [
+            1,
+            85
+          ]
+        ],
+        "reason": "Recipe/state/census schemas and executed-source closure construction.",
+        "read": "selected-sections",
+        "sha256": "5b81cc7e9cb5f40f7c89885319e87adb182dc39032dfbb901dc867638b631a28",
+        "preparationSha256": "5b81cc7e9cb5f40f7c89885319e87adb182dc39032dfbb901dc867638b631a28",
+        "currentSha256": "5b81cc7e9cb5f40f7c89885319e87adb182dc39032dfbb901dc867638b631a28",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "scripts/release.ts",
+        "ranges": [
+          [
+            1,
+            75
+          ]
+        ],
+        "reason": "Coordinated archive preparation, source identity, version validation and release record writer.",
+        "read": "selected-sections",
+        "sha256": "8d7e6372e39bab9c3d3c275cd83c00aa5ff0ee3a53b0ccb4dee25ad6d3f99b25",
+        "preparationSha256": "8d7e6372e39bab9c3d3c275cd83c00aa5ff0ee3a53b0ccb4dee25ad6d3f99b25",
+        "currentSha256": "8d7e6372e39bab9c3d3c275cd83c00aa5ff0ee3a53b0ccb4dee25ad6d3f99b25",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "packages/core/package.json",
+        "read": "parsed-public-metadata",
+        "sha256": "163f6900356cece8ada026554d404877aac85e0fe223543af6edbc69a4cde4c9",
+        "qualification": "Export count recorded; generated exports not individually semantically reviewed.",
+        "preparationSha256": "163f6900356cece8ada026554d404877aac85e0fe223543af6edbc69a4cde4c9",
+        "currentSha256": "163f6900356cece8ada026554d404877aac85e0fe223543af6edbc69a4cde4c9",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "packages/browser/package.json",
+        "read": "parsed-public-metadata",
+        "sha256": "3bc1b53fec450a39c64487b039e642a96d06b79b8880c300776001a6258d98cc",
+        "qualification": "Export count recorded; generated exports not individually semantically reviewed.",
+        "preparationSha256": "3bc1b53fec450a39c64487b039e642a96d06b79b8880c300776001a6258d98cc",
+        "currentSha256": "3bc1b53fec450a39c64487b039e642a96d06b79b8880c300776001a6258d98cc",
+        "changedSincePreparation": false
+      },
+      {
+        "path": "docs/decisions/0048-intent-tooling.md",
+        "read": "full",
+        "sha256": "fabc9b16ba1b7c12dab402b943d602ec29398dd9ef08aa89a8be2ba148e08099"
+      },
+      {
+        "path": "tools/geist/collector.ts",
+        "read": "selected-sections",
+        "ranges": [
+          [
+            1,
+            20
+          ],
+          [
+            45,
+            78
+          ]
+        ],
+        "reason": "Actual immutable output destination and rejection of zero-root measurements.",
+        "sha256": "e42f21bd5a2942a1f2d182ba4d9e5f6f39dbe522117d82240c547beeb36d5599"
+      },
+      {
+        "path": "tools/geist/diff.ts",
+        "read": "selected-sections",
+        "ranges": [
+          [
+            190,
+            260
+          ]
+        ],
+        "reason": "Equal nonzero-root validity, accepted differences and failure exit behavior.",
+        "sha256": "16c335bdac433cb7484c8da6e2013bbad6cf8b2d8752b8981a0a08538288b9d4"
+      }
+    ],
+    "reconciliations": [
+      {
+        "source": "scripts/check.ts",
+        "sourceSha256": "48e81cfbefb0e398b19c3feb5a1c9d9d8229d34351a0491225bd348250c2ca1b",
+        "review": "Read the complete baseline and full current diff; inspected current types stage. Required callers now use allocated paths. Strict gate includes component-browser driver and all scripts/verification/**/*.ts with JSX/decorator settings.",
+        "runtimeClaim": "Coordinator/worker reports joint typecheck success; this writer did not rerun it."
+      },
+      {
+        "source": "tools/geist/collector.ts",
+        "sourceSha256": "e42f21bd5a2942a1f2d182ba4d9e5f6f39dbe522117d82240c547beeb36d5599",
+        "review": "Corrected generic scratch wording after checking actual fixed destination. Runbook remains another worker's ownership."
+      },
+      {
+        "source": "tasks/todo.md",
+        "sourceSha256": "1f17eae3e398ad0e51c78f8735937d6b6dd5fae448c77b470d558b4ff5ad28af",
+        "review": "Reread task 9/10 scope after status changes; approved ownership remains unchanged."
+      }
+    ],
+    "review": {
+      "passed": true,
+      "readiness": "All eight guidance documents prepared for coordinator review.",
+      "localLinksAndAnchors": {
+        "passed": true,
+        "missing": []
+      },
+      "generatorGroups": 28,
+      "allFourAdditionalReadmeOwners": true,
+      "ruleDispositionCoverage": "All allocated R/P/C meanings are retained or referenced to their sole owner; no old process exceptions activated.",
+      "genericProcedures": "Lifecycle, global preferences, question composition and permissions remain with parent entry points and brain.",
+      "versionPolicy": "Only verified Bun/Playwright runtime policy is repeated. Package versions stay in manifests and lockfile.",
+      "sourceIdentityQualification": "Source coverage retains full/selected/metadata reading bounds. Changed current hashes are observations; only explicit reconciliations claim rereview.",
+      "productCodeChanged": false,
+      "sharedFilesChanged": [],
+      "buildsRun": [],
+      "guardsRun": [],
+      "commitsCreated": [],
+      "finalFilesWritten": [
+        "docs/agents/repository.md",
+        "docs/agents/verification.md",
+        "docs/development/components.md",
+        "docs/development/styles.md",
+        "docs/development/stack.md",
+        "docs/development/documentation.md",
+        "docs/development/generation.md",
+        "docs/development/reference-sources.md"
+      ]
+    },
+    "findings": []
+  },
+  "writerPreparation": {
+    "schemaVersion": 1,
+    "task": 9,
+    "status": "read-only-preparation-complete",
+    "preparedOn": "2026-10-21",
+    "scope": "Eight future technical guidance files; no destination instructions activated or written.",
+    "activation": "Task 11, owned by coordinator",
+    "ownedDestinations": [
+      "docs/agents/repository.md",
+      "docs/agents/verification.md",
+      "docs/development/components.md",
+      "docs/development/styles.md",
+      "docs/development/stack.md",
+      "docs/development/documentation.md",
+      "docs/development/generation.md",
+      "docs/development/reference-sources.md"
+    ],
+    "basis": [
+      "Approved spec/SPEC-maintainer-workflow.md and tasks/plan.md",
+      "docs/verification/workflow-migration/rules.md complete disposition matrix",
+      "brain:writing-for-agents; preserve strong conditional pointers and one owner per fact",
+      "Actual source producers and parsed package metadata"
+    ],
+    "readPolicy": "Full means every source line was read. Section means only the listed relevant range was semantically read. Metadata means parsed public fields; generated export entries are not individually reviewed.",
+    "sourceCoverage": [
+      {
+        "path": "docs/verification/workflow-migration/rules.md",
+        "read": "full",
+        "lines": 263,
+        "sha256": "3c1af6187554bcd57f6dc86ce0166725d0f59b5793b068bbba6952c122f4dfbd"
+      },
+      {
+        "path": "spec/SPEC-maintainer-workflow.md",
+        "read": "full",
+        "lines": 294,
+        "sha256": "9480507299b9c8564a2041b225b7e0818aefc4c102e9b379f6a4cc68593892d6"
+      },
+      {
+        "path": "tasks/plan.md",
+        "read": "full",
+        "lines": 188,
+        "sha256": "ad17b04f98c0d3d4c6f98ea8ae21771ed81b3bde6bc3b2154d5a4e5c3a19a2e2"
+      },
+      {
+        "path": "AGENTS.md",
+        "read": "full",
+        "lines": 100,
+        "sha256": "2e676f2a2704db35b33e8a99b9a2c98829c4c7a62621fc51875c7137762f4f62"
+      },
+      {
+        "path": "README.md",
+        "read": "full",
+        "lines": 293,
+        "sha256": "ab08a913601a12e5500a6fdce2208cf6608f485bc2d09e48ee2e724d40f53118"
+      },
+      {
+        "path": "CONTEXT-MAP.md",
+        "read": "full",
+        "lines": 12,
+        "sha256": "eb11c0a4da52f3714f9b51ebf87960ff660db1a75d28e6d5fb825c50c4bcdb87"
+      },
+      {
+        "path": "CONTEXT.md",
+        "read": "full",
+        "lines": 262,
+        "sha256": "8372bf8ea185e3d779a114c0dea01f51a755ebbdc33e4bdee2785e525e5b7ec7"
+      },
+      {
+        "path": "tools/geist/CONTEXT.md",
+        "read": "full",
+        "lines": 45,
+        "sha256": "b04792c3b842322c181e647d9511d87d17863262af9f3cc966c2f18458a0ac4f"
+      },
+      {
+        "path": "tools/geist/README.md",
+        "read": "full",
+        "lines": 96,
+        "sha256": "a480f56e77386dc2f31887589cd6c57eb120ca7bf61d6daf23d671a404da2965"
+      },
+      {
+        "path": "docs/decisions/0082-reference-systems.md",
+        "read": "full",
+        "lines": 55,
+        "sha256": "b4bae3204b261932c9cf9bac05afd79d8bb280212555e508cc7f07be77efbb46"
+      },
+      {
+        "path": "docs/decisions/0077-parity-scope.md",
+        "read": "full",
+        "lines": 126,
+        "sha256": "052efde28e2d3349bb0b705141944b9f0a70171f1f9e0b57a517d567f1d510bc"
+      },
+      {
+        "path": "docs/decisions/0099-start-and-end-places.md",
+        "read": "full",
+        "lines": 107,
+        "sha256": "4d8c449dbb590390b55744c4943417aec67934a1ca68d2c4609d911c6070e473"
+      },
+      {
+        "path": "docs/decisions/0041-focus-ring-ownership.md",
+        "read": "full",
+        "lines": 82,
+        "sha256": "592c99f3afd81a111543f1ec5c5c3dae5ef197730a2ec67033bd3261e0447512"
+      },
+      {
+        "path": "scripts/core-package.ts",
+        "read": "full",
+        "lines": 45,
+        "sha256": "a449e5f9f985388b043c472a50fd6e95296a0b4a553db7ddd02519c4529e6886"
+      },
+      {
+        "path": "scripts/browser-package.ts",
+        "read": "full",
+        "lines": 216,
+        "sha256": "a088ab57dabe3df372539e77e32e64da7312a54d84107ce2175237778c5bcc76"
+      },
+      {
+        "path": "package.json",
+        "read": "full",
+        "lines": 72,
+        "sha256": "1855f4d586422dd0bf266b19a4b1015caeaea7bce1760c7041a4cf9489fd5df4"
+      },
+      {
+        "path": "packages/react/package.json",
+        "read": "full",
+        "lines": 39,
+        "sha256": "4c8772031f1d78c5ffc18052e62d0a8254a7c1afcf18b5064a07a1daeaee2986"
+      },
+      {
+        "path": "packages/mcp/package.json",
+        "read": "full",
+        "lines": 31,
+        "sha256": "d620aca235c35eaa754e8e5d07e0b71056a8a1e11818dad0bbf6e9bc75bd56a4"
+      },
+      {
+        "path": "packages/devtools/package.json",
+        "read": "full",
+        "lines": 29,
+        "sha256": "0983b8e9266736435caf1963f98a2f2243033920bf9943299e71729851fdf0ea"
+      },
+      {
+        "path": ".bun-version",
+        "read": "full",
+        "lines": 1,
+        "sha256": "b99b4c7cdf236f59bc9f65d963deaecae3b16a7dad87939cacb9057f7664daee"
+      },
+      {
+        "path": "scripts/split-css.ts",
+        "read": "full",
+        "lines": 103,
+        "sha256": "380464550414b1604e451b1b5947adba2b532a2b2e42f7f21bba1a652c085e5c"
+      },
+      {
+        "path": "scripts/numeric-tokens.ts",
+        "read": "full",
+        "lines": 43,
+        "sha256": "b6191034bc388149b3c30a9398bae6a926317cddd78a6fc9aa1deb2b20569229"
+      },
+      {
+        "path": "scripts/responsive-styles.ts",
+        "read": "full",
+        "lines": 93,
+        "sha256": "200c0cd65a4c1b9a9ee2b573052744b9f911d8db669897c1d3182be2f4d43ca6"
+      },
+      {
+        "path": "scripts/icon-entries.ts",
+        "read": "full",
+        "lines": 70,
+        "sha256": "13cb17acdcaf7b9488d1f8e07c427c0201043926aa5e034c0bd1eb539dbe92eb"
+      },
+      {
+        "path": "scripts/date-runtime.ts",
+        "read": "full",
+        "lines": 66,
+        "sha256": "ca0308fa365883e2f0bbfa61ddf1c6af900032149bbfd08969d1ef728a59b4da"
+      },
+      {
+        "path": "scripts/declarations.ts",
+        "read": "full",
+        "lines": 73,
+        "sha256": "6c7acf956d07b73fd901092087562d5d8cca3b39f8fab2e0c52b552d42b6dfb7"
+      },
+      {
+        "path": "scripts/build.ts",
+        "read": "full",
+        "lines": 211,
+        "sha256": "a90ca22ee7fdef8d13543982d571fac8053a05365614ca64680dbf4d7aacf53f"
+      },
+      {
+        "path": "scripts/build-modules.ts",
+        "read": "full",
+        "lines": 55,
+        "sha256": "14af51391bd630704a52a55cd0ae303cce2e72485cd1c2bc3b13ef909b9aa921"
+      },
+      {
+        "path": "scripts/react.ts",
+        "read": "full",
+        "lines": 105,
+        "sha256": "eabbe4c20e8cbfe4c7c01588c0b0444737594af23aaf4300297b5224249332a2"
+      },
+      {
+        "path": "scripts/devtools-metadata.ts",
+        "read": "full",
+        "lines": 66,
+        "sha256": "e4f316eec7704bbcd815f36d78e77d190dfc5fbd68df7cfeaf24cfb2b8b50ca2"
+      },
+      {
+        "path": "scripts/tooling.ts",
+        "read": "full",
+        "lines": 52,
+        "sha256": "79ab7cbc7a0605211830f64c63bf2d118def3b13501f1f84346f2e2ea4e14cf1"
+      },
+      {
+        "path": "scripts/package.ts",
+        "read": "full",
+        "lines": 163,
+        "sha256": "828301ebd7aa4c617e5f80e5d0353bd700f72bfc972b501de2b14472acbdbbb8"
+      },
+      {
+        "path": "site/build.ts",
+        "read": "full",
+        "lines": 171,
+        "sha256": "edcd66ca32f240041ae743719f2102a42722f7ee17cb2e48eb117e7a426599db"
+      },
+      {
+        "path": "scripts/check.ts",
+        "read": "full",
+        "lines": 290,
+        "sha256": "387f3404db59a7a628168654e065051cb53ff29370df339434c2f1add6257583"
+      },
+      {
+        "path": "scripts/byte-prefixes.ts",
+        "read": "full",
+        "lines": 49,
+        "sha256": "2341f5f7b6c287d6995505fd0464fb440ba2a70ebe8a8801b865c687499efae0"
+      },
+      {
+        "path": "scripts/browser-assets.ts",
+        "read": "full",
+        "lines": 48,
+        "sha256": "ae65eaca2fba63c7e204e221407daeacbc433bb6d385af0cec140ae4db86f277"
+      },
+      {
+        "path": "tools/geist/vars.ts",
+        "read": "full",
+        "lines": 91,
+        "sha256": "99ff2f0986d5ed22ff105eb34cba0e009fc033c29cdd70ec1143208c1b513716"
+      },
+      {
+        "path": "scripts/consumer-skills.ts",
+        "read": "full",
+        "lines": 107,
+        "sha256": "b927b7ae26e1d71bd7b92e0bbe8550e5a45fda2ba403f69247ef3cec1c6c5ab8"
+      },
+      {
+        "path": "site/release.ts",
+        "read": "full",
+        "lines": 73,
+        "sha256": "bef963ff21a288ab402d897d6c80ba09fd9b097078d2603c96931d4107e82b02"
+      },
+      {
+        "path": "tsconfig.json",
+        "read": "full",
+        "lines": 26,
+        "sha256": "684d066dc370822be1c15419ec368ca23dd49173635edd7c24ccd99aaee558dc"
+      },
+      {
+        "path": "scripts/test-setup.ts",
+        "read": "full",
+        "lines": 8,
+        "sha256": "1bc9b36108df2d0d47afd61dbbd8ede49e569134e3b67bcc0064f7ed1ac83369"
+      },
+      {
+        "path": "src/shared/state.ts",
+        "read": "full",
+        "lines": 43,
+        "sha256": "17b3d062a9e9b7ede31a6d7896725675d43f4c035e76e1d2873a07ee4b480448"
+      },
+      {
+        "path": "src/shared/store-connection.ts",
+        "read": "full",
+        "lines": 21,
+        "sha256": "bf0a76e184aedc5ec5405a5def1414a07b8aaa2e5d028d61a34b1781e2834120"
+      },
+      {
+        "path": "src/shared/places.ts",
+        "read": "full",
+        "lines": 88,
+        "sha256": "a2343643ccd35f36b7c529b73ee8b1ce93e7f39337299161c64b5a99162a19ee"
+      },
+      {
+        "path": "src/shared/atom-state.ts",
+        "read": "full",
+        "lines": 156,
+        "sha256": "c69d2f07b24a8214210697214df25d270db0e8478e481a2a46f86b2d9ef3ea85"
+      },
+      {
+        "path": "scripts/package-contents.ts",
+        "read": "full",
+        "lines": 24,
+        "sha256": "d9f468595c1f3523cdd813be2f202d0baf8581ccc87fc6148da0cbeafb870857"
+      },
+      {
+        "path": "site/example-source.ts",
+        "read": "full",
+        "lines": 90,
+        "sha256": "a7ba0b3031391686580b41d5de400cf5c59dd9521fca2e66b447752965ae87a9"
+      },
+      {
+        "path": "scripts/lint-files.ts",
+        "read": "full",
+        "lines": 49,
+        "sha256": "5639573b484233f755f817dda875e0864ab79fc08a65fac5db3bd676a41df78f"
+      },
+      {
+        "path": ".github/workflows/pages.yml",
+        "read": "full",
+        "lines": 38,
+        "sha256": "d705abf91a1a2ad034a698832f0911393c2b016a243845cf428ba61e1575a6d1"
+      },
+      {
+        "path": "scripts/lint.ts",
+        "read": "full",
+        "lines": 83,
+        "sha256": "39bdeb2d71f02904f21dcdbd4457c7e3c072d2182d635ef67b2d06daee9b7df6"
+      },
+      {
+        "path": "scripts/local-inputs.ts",
+        "read": "full",
+        "lines": 35,
+        "sha256": "cdc9afb02346fa7e1929010c21d9a26c514eeb8c11cbecccbea6f11be67a6b31"
+      },
+      {
+        "path": "scripts/browser-build.ts",
+        "read": "full",
+        "lines": 11,
+        "sha256": "6424130ee648f6a4967d5621738ba4ffdbbeee6f0162d1d570bcd79222f9f93c"
+      },
+      {
+        "path": "scripts/browser-modules.ts",
+        "read": "full",
+        "lines": 34,
+        "sha256": "8dd9f201e544cdc11e892f0e153430a684bb9073033369df51b2d6ce912ab0de"
+      },
+      {
+        "path": "PLAN.md",
+        "ranges": [
+          [
+            1,
+            396
+          ]
+        ],
+        "reason": "Full standing build-rule section; later sections are closed port history.",
+        "read": "selected-sections",
+        "sha256": "30f919c84df8870a8ea328577e5a1836f60cb1e3c829d4310aed338837e904ac"
+      },
+      {
+        "path": "tasks/todo.md",
+        "ranges": [
+          [
+            177,
+            209
+          ]
+        ],
+        "reason": "Task 9 acceptance, ownership and task 10 consumer boundary.",
+        "read": "selected-sections",
+        "sha256": "64cff5234d255b48c84b73e0bc6bda5070da07a1f5cbc5a3e8f0de0fe2abf4ca"
+      },
+      {
+        "path": "scripts/theme-tokens.ts",
+        "ranges": [
+          [
+            277,
+            330
+          ]
+        ],
+        "reason": "Theme producer and generated metadata writer/verification.",
+        "read": "selected-sections",
+        "sha256": "d2df64e35abb401bdd54f8bf6320bae561ead0b1fffbd767bcce4dcfcaadeca1"
+      },
+      {
+        "path": "scripts/styles.ts",
+        "ranges": [
+          [
+            221,
+            449
+          ]
+        ],
+        "reason": "CSS compiler, registration validation, Lit module writer, output and manifest handling.",
+        "read": "selected-sections",
+        "sha256": "1ca48592f70caa57fcaf3adf78d7e69a1064e2c162fa6af92f0d9fff1cf52d44"
+      },
+      {
+        "path": "scripts/material-symbols.ts",
+        "ranges": [
+          [
+            135,
+            221
+          ]
+        ],
+        "reason": "Pinned SVG import and verification entry points; version/catalog declarations inspected separately.",
+        "read": "selected-sections",
+        "sha256": "367945b8230ad7f6c68269f4d092bfce31dcf84c822ca74e4be09b42e2dc2395"
+      },
+      {
+        "path": "scripts/entries.ts",
+        "ranges": [
+          [
+            85,
+            124
+          ],
+          [
+            180,
+            228
+          ],
+          [
+            302,
+            421
+          ]
+        ],
+        "reason": "Tag-map discovery, finite scoped factories and generated entry/export writers.",
+        "read": "selected-sections",
+        "sha256": "de09c71932e4ea5c08ba57ff6ae5c1f5845a48d2fc19fe98ad7fb6ff79b2d980"
+      },
+      {
+        "path": "scripts/manifest.ts",
+        "ranges": [
+          [
+            257,
+            338
+          ],
+          [
+            540,
+            573
+          ]
+        ],
+        "reason": "Analyzer normalization, setup and final version/default/write path.",
+        "read": "selected-sections",
+        "sha256": "a09d794086aed2ffca43c61f7a49d7ba88004fd702d8acbb4244ec8a813ffed0"
+      },
+      {
+        "path": "tools/geist/gen.ts",
+        "ranges": [
+          [
+            2304,
+            2385
+          ]
+        ],
+        "reason": "Current mapped output writer and reference-only behavior.",
+        "read": "selected-sections",
+        "sha256": "1d3b8228f5eb2c183930c9f9fbbacfd59cd9af75dee03e530168035b6b0ecd68"
+      },
+      {
+        "path": "scripts/release-policy.ts",
+        "ranges": [
+          [
+            1,
+            65
+          ]
+        ],
+        "reason": "Pinned runtime, source identity and coordinated package set.",
+        "read": "selected-sections",
+        "sha256": "04cf0395ad9124f89159818e296d7773e51e444c683154fb9685c369ae90ad22"
+      },
+      {
+        "path": "src/shared/chart-definition.ts",
+        "ranges": [
+          [
+            1,
+            55
+          ]
+        ],
+        "reason": "Current direct d3-scale use and chart boundary.",
+        "read": "selected-sections",
+        "sha256": "193beb8205a54564ba059d08cf4f8d835014bd85193fddf88f922d682bff4827"
+      },
+      {
+        "path": "site/recipes.ts",
+        "ranges": [
+          [
+            1,
+            85
+          ]
+        ],
+        "reason": "Recipe/state/census schemas and executed-source closure construction.",
+        "read": "selected-sections",
+        "sha256": "5b81cc7e9cb5f40f7c89885319e87adb182dc39032dfbb901dc867638b631a28"
+      },
+      {
+        "path": "scripts/release.ts",
+        "ranges": [
+          [
+            1,
+            75
+          ]
+        ],
+        "reason": "Coordinated archive preparation, source identity, version validation and release record writer.",
+        "read": "selected-sections",
+        "sha256": "8d7e6372e39bab9c3d3c275cd83c00aa5ff0ee3a53b0ccb4dee25ad6d3f99b25"
+      },
+      {
+        "path": "packages/core/package.json",
+        "read": "parsed-public-metadata",
+        "sha256": "163f6900356cece8ada026554d404877aac85e0fe223543af6edbc69a4cde4c9",
+        "qualification": "Export count recorded; generated exports not individually semantically reviewed."
+      },
+      {
+        "path": "packages/browser/package.json",
+        "read": "parsed-public-metadata",
+        "sha256": "3bc1b53fec450a39c64487b039e642a96d06b79b8880c300776001a6258d98cc",
+        "qualification": "Export count recorded; generated exports not individually semantically reviewed."
+      }
+    ],
+    "externalSkill": {
+      "path": "/Users/peterkloss/.codex/plugins/cache/acmelabs/brain/0.6.0/skills/writing-for-agents/SKILL.md",
+      "read": "full",
+      "applied": [
+        "one owner per meaning",
+        "strong conditional pointers",
+        "checkable scope",
+        "references instead of duplicated procedures",
+        "avoid caching easily inspected environment facts"
+      ],
+      "sha256": "551adca942227b44192edba88acd4e8db911f0121ce58ad16944ccf6a896a74a"
+    },
+    "documentPlans": [
+      {
+        "path": "docs/agents/repository.md",
+        "trigger": "Read before editing source, generated areas, package delivery, or build producers.",
+        "rules": [
+          "R13",
+          "R22",
+          "R23",
+          "R24",
+          "R27",
+          "R28",
+          "R29",
+          "P02",
+          "P15"
+        ],
+        "owns": "One maintained authored/generated/package map.",
+        "sections": [
+          "Repository and package boundaries",
+          "Authoritative inputs and generated outputs",
+          "Package delivery and archive boundaries"
+        ],
+        "content": [
+          "Root is a private Bun build workspace. The core manifest owns public core metadata. Use core/browser metadata helpers where consumers need public facts.",
+          "Maintain the complete generatorMap below, including all four additional README owners and the extra verified theme/CLDR/worker outputs.",
+          "Generated source is committed where specified. dist and _site are outputs. Author site content under site; Pages deploys the verified artifact.",
+          "Core, browser, React, MCP and devtools use one built source tree. Record exact link ownership, runtime versus optional tooling, production allowlists and the 60,000-entry archive budget.",
+          "Point to manifests and lockfile for live versions. Do not duplicate the large generated export map or mutable release status."
+        ],
+        "pointers": [
+          "docs/agents/verification.md for commands and evidence",
+          "docs/development/styles.md for CSS changes",
+          "docs/development/documentation.md for documentation producers"
+        ],
+        "excludes": [
+          "Startup, handoff, permission and skill-routing procedure",
+          "Mutable release completion and current status"
+        ]
+      },
+      {
+        "path": "docs/agents/verification.md",
+        "trigger": "Read before choosing checks or relying on earlier verification.",
+        "rules": [
+          "R21",
+          "R26",
+          "P04",
+          "P20",
+          "P21",
+          "P28 (test-placement meaning only)",
+          "P31",
+          "C05"
+        ],
+        "owns": "Pinned-runtime command map, evidence validity and repository-specific test requirements.",
+        "sections": [
+          "Runtime and command dependencies",
+          "Choose applicable checks and evidence",
+          "Browser and consumer oracles"
+        ],
+        "content": [
+          "Use pinned Bun from .bun-version/packageManager; nested commands need the same executable on PATH. Keep tests beside their source in __tests__/<file>.test.ts with bun:test.",
+          "Explain split → build → docs → build:tooling dependencies; docs needs dist. The check runner additionally owns static, types, unit, audit, packages, browser and release stages.",
+          "Describe focused versus full gates by pointer to brain:incremental-implementation; do not copy its lifecycle. Missing, changed-input or different-revision evidence cannot certify current work.",
+          "Root tsconfig does not typecheck every scripts/verification file. Changed scripts outside its include set need a strict focused TypeScript program and applicable lint checks.",
+          "Browser checks assert outcomes in the required Chromium/Firefox/WebKit modes, both scoped modes, native forms, behavior, examples, package consumers and framework identity as applicable. Happy DOM and metadata equality do not replace those checks.",
+          "Record revision, dirty/clean source, inputs, command, output path, coverage, outcomes and named limits. Distinguish manual checks and required runner entries.",
+          "Task 8 evidence is local dirty preparation; a local Hover Card pass does not explain the earlier Linux CI failure. Actual Safari, assistive technology, OS IME/dictation/autofill and background-window behavior remain named unperformed work unless separately evidenced."
+        ],
+        "pointers": [
+          "docs/agents/repository.md for affected outputs and packages",
+          "docs/STATUS.md for current red baseline and pending work",
+          "docs/verification/workflow-migration/task-08.json for current migration run scope"
+        ],
+        "excludes": [
+          "Copied full-gate-before-every-commit rule",
+          "Publication permission or credential procedure",
+          "Claim that WebKit equals actual Safari/assistive technology"
+        ]
+      },
+      {
+        "path": "docs/development/components.md",
+        "trigger": "Read before changing a component interface, behavior, composition or authored implementation.",
+        "rules": [
+          "R09",
+          "R18",
+          "R20",
+          "P03",
+          "P05",
+          "P17",
+          "P19",
+          "P25",
+          "P32",
+          "P34",
+          "P38",
+          "P39",
+          "P41",
+          "P51",
+          "C01",
+          "C08"
+        ],
+        "owns": "Stable component implementation constraints and interface boundaries.",
+        "sections": [
+          "Interface and state ownership",
+          "Composition and platform behavior",
+          "Source and removal boundaries"
+        ],
+        "content": [
+          "Use the current component contract and glossary. Self-consistent idiomatic Lit interfaces and approved adaptations take precedence over exact historical port parity.",
+          "Completed replacements stay final. Do not reintroduce retired interfaces, aliases, legacy modes or fallback implementations. Future changes use separately approved scope; actual usage is not inferred from publication.",
+          "TanStack owns canonical state. StoreSelector observes render state; StoreEffect handles non-render consequences. React wraps the same Lit behavior. Applications own Table/data processing and selected Form/Virtual composition.",
+          "Wrappers keep real boxes. Components own their position context. Shadow styles use supported properties and distinguish documentation harness differences.",
+          "Read a composed component's variant and event contract. Preserve reactive-controller registration and snapshot live collections before mutation. Test slot behavior in browsers; notification propagation follows each current contract.",
+          "Link-capable actions use href. Preserve native semantic content, forms and submitter behavior. Link component-local focus-ring ownership and start/end place decisions rather than reproducing their full evidence.",
+          "Keep Geist identity out of src code/comments/JSDoc; source provenance stays in research and decision records. Default fonts and custom theme overrides follow the approved foundations contract.",
+          "Another organization's brand identity is not a capability. Removal audits include actual source, styles, registration, exports, metadata, examples and callers, including platform name collisions."
+        ],
+        "pointers": [
+          "spec/README.md and applicable component specification",
+          "docs/decisions/0041-focus-ring-ownership.md",
+          "docs/decisions/0099-start-and-end-places.md",
+          "docs/development/reference-sources.md",
+          "docs/development/stack.md"
+        ],
+        "excludes": [
+          "Generic public API naming examples that rename approved Lit properties",
+          "Old no-consumers premise",
+          "Permanent compatibility policy"
+        ]
+      },
+      {
+        "path": "docs/development/styles.md",
+        "trigger": "Read before changing CSS, style inputs, maps, token producers or generated style output.",
+        "rules": [
+          "R17",
+          "P18"
+        ],
+        "owns": "Producer-owned CSS and shared compilation contract.",
+        "sections": [
+          "Choose the producer input",
+          "Compile and verify owned output"
+        ],
+        "content": [
+          "Author declarations in the actual recorded producer inputs: styles, maps, committed specifications and their owning scripts. Fix the owner of the defect.",
+          "Mapped generation and authored split producers use scripts/styles.ts for CSS, maps, Lit delivery and manifest records. Generated *.styles.ts and compiled CSS are outputs.",
+          "Manifest records include input/output fingerprints and registration definitions. Build rejects stale or unrecorded output. Respect producer lock/registration and output retirement checks.",
+          "Token, theme-property, responsive and icon producers retain their distinct source ownership; link the maintained repository map instead of copying it.",
+          "Reference the real-wrapper-box rule in components; do not create a competing style exception."
+        ],
+        "pointers": [
+          "docs/agents/repository.md for the only generator map",
+          "docs/development/generation.md for reference-map work",
+          "docs/agents/verification.md for regeneration and affected checks"
+        ],
+        "excludes": [
+          "All CSS defects belong in tools/geist",
+          "Immunity from approved token changes",
+          "Hand editing generated declarations"
+        ]
+      },
+      {
+        "path": "docs/development/stack.md",
+        "trigger": "Read before selecting, changing, replacing or removing a dependency.",
+        "rules": [
+          "R19",
+          "P06",
+          "P07",
+          "P08",
+          "P10",
+          "P11",
+          "P12",
+          "P13"
+        ],
+        "owns": "Approved package responsibilities and implementation boundaries.",
+        "sections": [
+          "Selected runtime responsibilities",
+          "Application and delivery boundaries",
+          "Package source of truth"
+        ],
+        "content": [
+          "Use packageRoleMap below, with current manifests/lockfile as version owners. Do not create a second dependency inventory of exact versions.",
+          "Keep native Lit behavior and selected utilities; no Zag component machine/store/runtime is adopted. @zag-js/remove-scroll has the selected isolated scroll-lock role.",
+          "Use canonical TanStack state, published match-sorter, Adobe date/number utilities, Floating UI, Motion, hotkeys, Pacer, charts/markdown/highlight and ELK for their approved capabilities.",
+          "Native dialog owns modality; focus-trap supplies Tab containment only. Lit context/store observers connect state to rendering; React uses the shared Lit implementation through @lit/react.",
+          "Applications own Table/data processing. Virtual serves Lit and React application examples. Query/DB remains deferred scope.",
+          "A selected dependency is not removed merely because an import search is empty. Verify its approved role and actual consumers. A real complex stack gap routes to brain:source-driven-development and the current question workflow."
+        ],
+        "pointers": [
+          "packages/core/package.json",
+          "package.json",
+          "packages/react/package.json",
+          "packages/mcp/package.json",
+          "packages/devtools/package.json",
+          "docs/development/components.md"
+        ],
+        "excludes": [
+          "A new package interview or permission procedure",
+          "Exact-version duplication",
+          "Deferred data-layer implementation"
+        ]
+      },
+      {
+        "path": "docs/development/documentation.md",
+        "trigger": "Read before editing consumer docs, examples, API records, recipes or their projections.",
+        "rules": [
+          "P22"
+        ],
+        "owns": "One-source executable documentation and metadata projection contract.",
+        "sections": [
+          "Author and execute the same source",
+          "Generate shared consumer records"
+        ],
+        "content": [
+          "Author the website under site. _site is generated. Keep previews and copied examples derived from the same source; exampleSources checks sourcePath content against executed code.",
+          "Include each example's entry and transitive source files. Preserve cleanup on reset/removal and assert the intended interactive result.",
+          "Use CEM from component declarations, templates and annotations for inherited fields, attributes, events, slots and parts; unresolved metadata must not become fabricated documentation.",
+          "Site records and recipes supply shared release records, consumer skills, MCP and inspector metadata. Preserve provenance and limits for historical census captures separately from current verification.",
+          "Keep core's linked README coherent in published packages. Maintainer links should use resolvable repository URLs. Do not create a second core README or require exact old reference-page sections."
+        ],
+        "pointers": [
+          "docs/agents/repository.md for writers and projections",
+          "docs/agents/verification.md for working-example outcome checks",
+          "site/example-source.ts",
+          "site/release.ts"
+        ],
+        "excludes": [
+          "Old exact-reference section matching",
+          "A second authoring lifecycle",
+          "Claims that generated metadata proves interactive behavior"
+        ]
+      },
+      {
+        "path": "docs/development/generation.md",
+        "trigger": "Read before changing reference extraction, mappings, census configuration or comparison evidence.",
+        "rules": [
+          "P23",
+          "P29",
+          "P33",
+          "P37",
+          "P40",
+          "P43"
+        ],
+        "owns": "Reference-tool implementation invariants and measurement validity.",
+        "sections": [
+          "Map actual box roles",
+          "Collect valid comparison evidence",
+          "Preserve producer provenance"
+        ],
+        "content": [
+          "Distinguish reference extraction/corpus, map inputs, generated CSS and census evidence. Use actual producer functions; historic extraction counts are not current coverage guarantees.",
+          "Match boxes by layout role and composed host flow. Do not map a deliberately different control onto an incompatible reference node.",
+          "Ignore entries require evidence that the class has no visible rendered effect in the applicable cascade. Preserve inherited/default behavior and composed component ownership.",
+          "Map skip headings name the reference heading. Save raw evidence before reruns. Reject empty or unequal roots; equal nonzero roots are required for valid comparison.",
+          "Put state setup inside each side's configuration. Preserve composed-target hops, parts and matched context. Use measured differences and approved adaptations rather than a blanket reference-wins rule.",
+          "Change generated values through their producer inputs. Keep raw captures immutable; separately identify configuration, source/revision, run scope, accepted differences and limits.",
+          "Do not promote obsolete tool runbook claims such as fonts never change, reference-DOM copying, universal hidden-pane timers or deferred scoped registries."
+        ],
+        "pointers": [
+          "tools/geist/CONTEXT.md",
+          "docs/development/styles.md",
+          "docs/development/reference-sources.md",
+          "docs/agents/repository.md",
+          "tools/geist/gen.ts",
+          "tools/geist/collector.ts",
+          "tools/geist/diff.ts"
+        ],
+        "excludes": [
+          "A compulsory census on every future animation",
+          "Historical display:contents exceptions",
+          "Universal exact-parity acceptance"
+        ]
+      },
+      {
+        "path": "docs/development/reference-sources.md",
+        "trigger": "Read when an applicable component change needs a reference comparison, source-backed recommendation or deviation.",
+        "rules": [
+          "R06",
+          "P30",
+          "P50",
+          "C09"
+        ],
+        "owns": "Assigned reference roles, applicable comparison obligations and evidence location.",
+        "sections": [
+          "Use the selected references",
+          "Separate source claims and verification",
+          "Store provenance outside runtime source"
+        ],
+        "content": [
+          "Use Geist as the recorded visual baseline, Radix/Chakra for missing capabilities and interface comparisons, and selected Material roles. Material Web is an actual Lit implementation comparison, not a runtime adoption.",
+          "For the applicable capability, inspect the assigned references and relevant Pro examples. Read complete Material pages including tabs, tokens and diagrams; preserve accessibility, interaction and implementation evidence separately.",
+          "Distinguish inspected documentation, rendered behavior, source revision, stable package versus Labs and a selected local decision. Explicitly name deviations and unresolved limits.",
+          "Do not require code/community/reference research for every trivial edit. Generic source discovery and package research stay with brain:source-driven-development.",
+          "Record Geist provenance in research and decisions outside src. Exact-version library and standards citations remain allowed; this is a source-location rule, not a general citation ban.",
+          "Approved adaptations remain current. A reference does not silently overturn a selected product decision or prove an untested browser/platform behavior.",
+          "Keep Material dp, CSS pixels and rem distinct. Scope includes selected Symbols, springs, shape, theme and responsive extensions only where their decisions apply; the full shape catalogue remains unselected.",
+          "When an assigned reference settles the behavior, inspect and apply that evidence within existing decisions. Record it as a source-derived resolution. An unresolved reference conflict or proposed deviation uses the current user-choice workflow; no extra preference vote is needed for a discoverable fact.",
+          "Chakra Pro comparison uses capability and component searches in the recorded complete block/kit collection. Record the actual inspected examples or the absence of relevant evidence; examples and placeholders do not approve implementation scope."
+        ],
+        "pointers": [
+          "docs/decisions/0082-reference-systems.md",
+          "docs/decisions/0077-parity-scope.md",
+          "docs/development/components.md",
+          "docs/research/README.md"
+        ],
+        "excludes": [
+          "Generic research and question procedures",
+          "Reference always wins",
+          "Runtime adoption merely because a reference uses a package"
+        ]
+      }
+    ],
+    "generatorMap": [
+      {
+        "name": "Compiled CSS and Lit style delivery",
+        "inputs": [
+          "styles/",
+          "tools/geist/maps/",
+          "tools/geist/spec/",
+          "producer scripts and imported local inputs"
+        ],
+        "writers": [
+          "scripts/split-css.ts",
+          "tools/geist/gen.ts",
+          "scripts/styles.ts"
+        ],
+        "outputs": [
+          "src/generated/css/",
+          "src/generated/components/",
+          "src/generated/shared/",
+          "src/generated/style-manifest.json"
+        ],
+        "notes": "Compiled CSS, source CSS/maps, registration definitions and input/output fingerprints share the compiler. Generated source is committed. Respect lock and retirement checks."
+      },
+      {
+        "name": "Reference token CSS",
+        "inputs": [
+          "tools/geist/corpus/css/",
+          "tools/geist/tw.ts",
+          "tools/geist/token-declarations.ts"
+        ],
+        "writers": [
+          "tools/geist/vars.ts"
+        ],
+        "outputs": [
+          "src/generated/theme.css"
+        ],
+        "notes": "Separate writer; regenerate when the applicable corpus/token source changes. Do not claim all CSS is authored in tools/geist."
+      },
+      {
+        "name": "Numeric tokens",
+        "inputs": [
+          "src/shared/numeric-tokens.ts",
+          "theme and motion catalogs"
+        ],
+        "writers": [
+          "scripts/numeric-tokens.ts",
+          "scripts/build.ts"
+        ],
+        "outputs": [
+          "src/generated/tokens.json",
+          "dist/tokens.json"
+        ],
+        "notes": "Split writes the source JSON; build verifies and copies it."
+      },
+      {
+        "name": "Theme-property metadata",
+        "inputs": [
+          "styles/house.css",
+          "src/generated/theme.css",
+          "theme/numeric/motion catalogs"
+        ],
+        "writers": [
+          "scripts/theme-tokens.ts"
+        ],
+        "outputs": [
+          "src/generated/theme-properties.ts"
+        ],
+        "notes": "One of the four required README additions."
+      },
+      {
+        "name": "Responsive delivery",
+        "inputs": [
+          "src/shared/style-input-schema.ts",
+          "responsive producer"
+        ],
+        "writers": [
+          "scripts/responsive-styles.ts"
+        ],
+        "outputs": [
+          "src/generated/responsive-styles.ts"
+        ],
+        "notes": "One of the four required README additions; validates generated declaration templates through the compiler."
+      },
+      {
+        "name": "Material artwork import",
+        "inputs": [
+          "pinned Material Symbols SVG checkout",
+          "pinned catalog and license data"
+        ],
+        "writers": [
+          "scripts/material-symbols.ts"
+        ],
+        "outputs": [
+          "assets/material-symbols/"
+        ],
+        "notes": "One of the four required README additions; verify source revision, catalog and SVG bytes. Six style/fill families."
+      },
+      {
+        "name": "Artwork entry modules",
+        "inputs": [
+          "verified Material Symbols catalog",
+          "shared icon renderer"
+        ],
+        "writers": [
+          "scripts/icon-entries.ts",
+          "scripts/build.ts"
+        ],
+        "outputs": [
+          "src/generated/icons/",
+          "dist/icons.json"
+        ],
+        "notes": "One of the four required README additions; generated exports are not separately authored."
+      },
+      {
+        "name": "CLDR byte prefixes",
+        "inputs": [
+          "pinned cldr-units-full and cldr-core data",
+          "parentLocales"
+        ],
+        "writers": [
+          "scripts/byte-prefixes.ts"
+        ],
+        "outputs": [
+          "src/generated/byte-prefixes.ts",
+          "assets/licenses/unicode.txt"
+        ],
+        "notes": "Separate generated owner. Build checks the committed result; it does not silently rewrite it."
+      },
+      {
+        "name": "Registration and exports",
+        "inputs": [
+          "HTMLElementTagNameMap records",
+          "explicit internal annotations",
+          "owned markup",
+          "literal scoped-factory calls"
+        ],
+        "writers": [
+          "scripts/entries.ts"
+        ],
+        "outputs": [
+          "src/define/",
+          "src/register/",
+          "src/internal/define/",
+          "src/internal/register/",
+          "src/all.ts",
+          "packages/core/package.json generated exports/sideEffects"
+        ],
+        "notes": "The script edits the generated manifest portions; the remaining public package metadata is authored. Owned internal parts remain private."
+      },
+      {
+        "name": "Runtime JavaScript",
+        "inputs": [
+          "src/**/*.ts"
+        ],
+        "writers": [
+          "scripts/build-modules.ts",
+          "scripts/build.ts"
+        ],
+        "outputs": [
+          "dist/**/*.js"
+        ],
+        "notes": "Shared runtime build; Lit compiler and selected TypeScript/decorator options matter."
+      },
+      {
+        "name": "Public declarations",
+        "inputs": [
+          "src/**/*.ts",
+          "closed generated entry interfaces"
+        ],
+        "writers": [
+          "scripts/declarations.ts"
+        ],
+        "outputs": [
+          "dist/**/*.d.ts"
+        ],
+        "notes": "Generated class/registration/artwork declaration shapes; no declaration maps pointing at absent source."
+      },
+      {
+        "name": "Custom Elements Manifest",
+        "inputs": [
+          "component declarations",
+          "templates",
+          "annotations"
+        ],
+        "writers": [
+          "scripts/manifest.ts"
+        ],
+        "outputs": [
+          "dist/custom-elements.json"
+        ],
+        "notes": "CEM includes inherited metadata and resolved defaults; analyzer failures cannot be papered over with hand-edited output."
+      },
+      {
+        "name": "Private date runtime",
+        "inputs": [
+          "src/shared/date.ts",
+          "exact patched @internationalized/date"
+        ],
+        "writers": [
+          "scripts/date-runtime.ts"
+        ],
+        "outputs": [
+          "dist/shared/date.js",
+          "dist/licenses/ date notices"
+        ],
+        "notes": "Consumers receive one exact implementation and notices; they do not install the authoring patch configuration."
+      },
+      {
+        "name": "ELK worker assets",
+        "inputs": [
+          "pinned elkjs worker and license"
+        ],
+        "writers": [
+          "scripts/browser-assets.ts"
+        ],
+        "outputs": [
+          "dist/shared/elk-worker.js",
+          "dist/licenses/elkjs.*"
+        ],
+        "notes": "Unmodified worker plus notice; browser bundling rebases asset URLs. Preserve Book texture delivery too."
+      },
+      {
+        "name": "Document styles",
+        "inputs": [
+          "compiled token/document/recipe CSS and maps"
+        ],
+        "writers": [
+          "scripts/build.ts"
+        ],
+        "outputs": [
+          "dist/styles/"
+        ],
+        "notes": "CSS file delivery is distinct from component Lit module delivery."
+      },
+      {
+        "name": "Browser module and bundle delivery",
+        "inputs": [
+          "shared built module graph",
+          "selective definitions",
+          "optional artwork and worker assets"
+        ],
+        "writers": [
+          "scripts/build.ts",
+          "scripts/browser-build.ts",
+          "scripts/browser-modules.ts"
+        ],
+        "outputs": [
+          "dist/cdn/",
+          "dist/bundle/"
+        ],
+        "notes": "One shared browser runtime graph. Production delivery and unminified debug-map delivery remain distinct."
+      },
+      {
+        "name": "Bundled package notices",
+        "inputs": [
+          "actual CDN metafile inputs",
+          "installed pinned package license metadata"
+        ],
+        "writers": [
+          "scripts/browser-package.ts"
+        ],
+        "outputs": [
+          "dist/browser-licenses/"
+        ],
+        "notes": "The recorded @tanstack/markdown source-commit/license-text qualification remains explicit; do not claim every upstream license text has been verified."
+      },
+      {
+        "name": "Core workspace delivery links",
+        "inputs": [
+          "root dist",
+          "root assets",
+          "root README",
+          "dist/skills"
+        ],
+        "writers": [
+          "scripts/core-package.ts"
+        ],
+        "outputs": [
+          "packages/core/dist",
+          "packages/core/assets",
+          "packages/core/README.md",
+          "packages/core/skills"
+        ],
+        "notes": "Explicit approved links to one build tree, not duplicate sources. Core production allowlist excludes browser output."
+      },
+      {
+        "name": "Browser workspace delivery links",
+        "inputs": [
+          "dist/cdn",
+          "dist/styles",
+          "dist/bundle",
+          "assets/licenses",
+          "dist/licenses",
+          "dist/browser-licenses"
+        ],
+        "writers": [
+          "scripts/browser-package.ts"
+        ],
+        "outputs": [
+          "packages/browser/dist",
+          "packages/browser/styles",
+          "packages/browser/bundle",
+          "packages/browser/licenses"
+        ],
+        "notes": "Browser has its own manifest and three notice sources."
+      },
+      {
+        "name": "React wrappers",
+        "inputs": [
+          "public CEM",
+          "packages/react/src/create-component.ts"
+        ],
+        "writers": [
+          "scripts/react.ts"
+        ],
+        "outputs": [
+          "packages/react/.build-src/",
+          "packages/react/dist/"
+        ],
+        "notes": "Generated wrappers retain shared Lit behavior, native roots/content targets, event mapping and declaration types."
+      },
+      {
+        "name": "Consumer skills",
+        "inputs": [
+          "authored skills/",
+          "public CEM",
+          "site release projection"
+        ],
+        "writers": [
+          "scripts/consumer-skills.ts",
+          "site/build.ts"
+        ],
+        "outputs": [
+          "dist/skills/"
+        ],
+        "notes": "Published consumer skills are separate from maintainer workflow skills."
+      },
+      {
+        "name": "Documentation/release records",
+        "inputs": [
+          "CEM",
+          "site docs",
+          "recipes and complete example source closure"
+        ],
+        "writers": [
+          "site/release.ts",
+          "site/build.ts"
+        ],
+        "outputs": [
+          ".artifacts/documentation.json",
+          "packages/mcp/dist/documentation.json"
+        ],
+        "notes": "The MCP tooling build preserves the generated documentation record while rebuilding its code."
+      },
+      {
+        "name": "Inspector metadata",
+        "inputs": [
+          "public CEM",
+          "token metadata"
+        ],
+        "writers": [
+          "scripts/devtools-metadata.ts"
+        ],
+        "outputs": [
+          "packages/devtools/src/generated/metadata.ts"
+        ],
+        "notes": "Generated metadata is committed; the inspector remains optional tooling."
+      },
+      {
+        "name": "Tool packages",
+        "inputs": [
+          "packages/mcp/src/",
+          "packages/devtools/src/",
+          "generated metadata"
+        ],
+        "writers": [
+          "scripts/tooling.ts"
+        ],
+        "outputs": [
+          "packages/mcp/dist/",
+          "packages/devtools/dist/"
+        ],
+        "notes": "Build tooling after docs. Devtools UI dependencies are bundled into the optional tool."
+      },
+      {
+        "name": "Production package staging",
+        "inputs": [
+          "built outputs",
+          "explicit production allowlists",
+          "production metadata projection"
+        ],
+        "writers": [
+          "scripts/package.ts"
+        ],
+        "outputs": [
+          ".artifacts/packages/"
+        ],
+        "notes": "Materializes approved links into self-contained archives. Drops development patch settings; 60,000-entry project budget applies."
+      },
+      {
+        "name": "Local release evidence",
+        "inputs": [
+          "coordinated five-package outputs",
+          "source identity",
+          "archive digests"
+        ],
+        "writers": [
+          "scripts/release.ts",
+          "scripts/release-policy.ts"
+        ],
+        "outputs": [
+          ".artifacts/release/"
+        ],
+        "notes": "Local dirty preparation is distinct from clean publication eligibility. This row grants no publication permission."
+      },
+      {
+        "name": "Website",
+        "inputs": [
+          "site/",
+          "dist/",
+          "examples and assets"
+        ],
+        "writers": [
+          "site/build.ts"
+        ],
+        "outputs": [
+          "_site/"
+        ],
+        "notes": "Authored site produces untracked website output. Pages deploys the artifact from its dependent quality job."
+      },
+      {
+        "name": "Disposable build tree",
+        "inputs": [
+          "authored source and verified generated inputs"
+        ],
+        "writers": [
+          "scripts/build.ts"
+        ],
+        "outputs": [
+          "dist/"
+        ],
+        "notes": "Gitignored build output; do not treat it as an authoring area."
+      }
+    ],
+    "packageRoleMap": [
+      {
+        "packages": "Bun",
+        "role": "Repository runtime and tests; version owned by .bun-version and packageManager."
+      },
+      {
+        "packages": "lit; @lit/context",
+        "role": "Web components and context."
+      },
+      {
+        "packages": "@tanstack/lit-store; vanilla stores",
+        "role": "Canonical state and subscriptions; shared Lit behavior remains the implementation."
+      },
+      {
+        "packages": "@tanstack/lit-form; application React Form examples",
+        "role": "Application form ownership with native form contracts."
+      },
+      {
+        "packages": "@tanstack/lit-hotkeys; @tanstack/pacer",
+        "role": "Keyboard shortcut capability and debouncing/throttling/scheduling."
+      },
+      {
+        "packages": "@tanstack/charts; d3-scale",
+        "role": "Selected chart model/rendering and direct UTC scale capability."
+      },
+      {
+        "packages": "@tanstack/markdown; @tanstack/highlight",
+        "role": "Selected parsing and code highlighting capability; preserve package-specific evidence limits."
+      },
+      {
+        "packages": "@floating-ui/dom",
+        "role": "Positioning for floating surfaces."
+      },
+      {
+        "packages": "@lit-labs/motion",
+        "role": "Selected Lit motion support; shared product motion contracts remain authoritative."
+      },
+      {
+        "packages": "@internationalized/date; @internationalized/number",
+        "role": "Private exact patched date runtime and published number parsing/formatting utility."
+      },
+      {
+        "packages": "match-sorter",
+        "role": "Published ranking/fuzzy filtering; preserve selected option projection contracts."
+      },
+      {
+        "packages": "@zag-js/remove-scroll",
+        "role": "Isolated scroll lock only; no Zag component state machine/store/runtime adoption."
+      },
+      {
+        "packages": "focus-trap; tabbable",
+        "role": "Tab containment and tab-stop support. Native dialog owns modality."
+      },
+      {
+        "packages": "elkjs",
+        "role": "Flow layout and shipped worker."
+      },
+      {
+        "packages": "@tanstack/table-core; @tanstack/lit-virtual; @tanstack/react-virtual",
+        "role": "Applications/examples own data processing and virtualization; not a generic core Table runtime."
+      },
+      {
+        "packages": "@lit/react; React; ReactDOM",
+        "role": "Wrapper bridge and supported peers; no second behavior implementation."
+      },
+      {
+        "packages": "@modelcontextprotocol/sdk; zod",
+        "role": "Optional Bun MCP tool protocol and validation."
+      },
+      {
+        "packages": "@tanstack/devtools-ui; solid-js",
+        "role": "Optional devtools implementation, bundled in its tool package."
+      },
+      {
+        "packages": "TypeScript; Custom Elements Manifest analyzer; Lit compiler",
+        "role": "Declarations, semantic metadata and compiled delivery."
+      },
+      {
+        "packages": "Lightning CSS; PostCSS Lit; Stylelint; Oxlint; Oxfmt; Ultracite",
+        "role": "CSS compilation and selected lint/format/style checks."
+      },
+      {
+        "packages": "Playwright; Happy DOM",
+        "role": "Real-browser checks and isolated unit fixtures have different evidence scope."
+      },
+      {
+        "packages": "Pinned CLDR and Material Symbols sources",
+        "role": "Generated locale/artwork data and licenses."
+      },
+      {
+        "packages": "Query/DB",
+        "role": "Deferred data-layer scope; not an installation task."
+      }
+    ],
+    "packageMetadata": {
+      "package.json": {
+        "name": "@acmelabs/design-system-workspace",
+        "private": true,
+        "workspaces": [
+          "packages/*"
+        ],
+        "packageManager": "bun@1.4.2",
+        "devDependencies": {
+          "@acmelabs/design-system": "workspace:*",
+          "@custom-elements-manifest/analyzer": "0.11.0",
+          "@happy-dom/global-registrator": "20.14.0",
+          "@lit-labs/compiler": "^1.1.2",
+          "@lit-labs/router": "^0.1.4",
+          "@tanstack/intent": "0.4.0",
+          "@tanstack/lit-table": "9.2.4",
+          "@tanstack/lit-virtual": "^3.14.0",
+          "@tanstack/react-form": "1.33.5",
+          "@tanstack/react-store": "0.11.1",
+          "@tanstack/react-table": "9.2.4",
+          "@tanstack/react-virtual": "3.14.0",
+          "@tanstack/table-core": "9.2.4",
+          "@types/bun": "^1.4.2",
+          "@types/d3-scale": "4",
+          "@types/node": "^26.5.0",
+          "@types/react": "19",
+          "@types/react-dom": "19",
+          "cldr-units-full": "48.2.0",
+          "happy-dom": "20.14.0",
+          "lightningcss": "1.33.0",
+          "npm": "12.0.2",
+          "oxfmt": "0.70.0",
+          "oxlint": "1.85.0",
+          "playwright": "1.63.0",
+          "postcss-lit": "1.4.1",
+          "react": "19.2.4",
+          "react-dom": "19.2.4",
+          "stylelint": "17.15.0",
+          "ts-lit-plugin": "^2.0.2",
+          "typescript": "~5.9.0",
+          "typescript-lit-html-plugin": "^0.9.1",
+          "ultracite": "7.12.0",
+          "urlpattern-polyfill": "^10.0.0"
+        }
+      },
+      "packages/core/package.json": {
+        "name": "@acmelabs/design-system",
+        "version": "0.3.2",
+        "main": "./dist/index.js",
+        "module": "./dist/index.js",
+        "types": "./dist/index.d.ts",
+        "files": [
+          "dist/all.js",
+          "dist/all.d.ts",
+          "dist/base.js",
+          "dist/base.d.ts",
+          "dist/configure.js",
+          "dist/configure.d.ts",
+          "dist/index.js",
+          "dist/index.d.ts",
+          "dist/react-support.js",
+          "dist/react-support.d.ts",
+          "dist/components",
+          "dist/define",
+          "dist/register",
+          "dist/internal",
+          "dist/shared",
+          "dist/generated",
+          "dist/styles",
+          "dist/types",
+          "dist/licenses",
+          "dist/tokens.json",
+          "dist/icons.json",
+          "dist/custom-elements.json",
+          "assets/book-texture.avif",
+          "assets/licenses",
+          "README.md",
+          "skills"
+        ],
+        "dependencies": {
+          "@floating-ui/dom": "^1",
+          "@internationalized/date": "3.12.4",
+          "@internationalized/number": "3.6.8",
+          "@lit-labs/motion": "^1.1.0",
+          "@lit/context": "1.1.6",
+          "@tanstack/charts": "0.16.2",
+          "@tanstack/highlight": "^0.0.10",
+          "@tanstack/lit-form": "^1.25.5",
+          "@tanstack/lit-hotkeys": "^0.11.0",
+          "@tanstack/lit-store": "^0.13.2",
+          "@tanstack/markdown": "^0.0.13",
+          "@tanstack/pacer": "^0.22.0",
+          "@zag-js/remove-scroll": "^1.43.3",
+          "d3-scale": "4.0.2",
+          "elkjs": "0.12.0",
+          "focus-trap": "8.2.2",
+          "lit": "^3.3.3",
+          "match-sorter": "8.3.0",
+          "tabbable": "6.5.0"
+        },
+        "generatedExportKeyCount": 12977
+      },
+      "packages/browser/package.json": {
+        "name": "@acmelabs/design-system-browser",
+        "version": "0.3.2",
+        "main": "./dist/standalone.js",
+        "files": [
+          "dist",
+          "styles",
+          "bundle",
+          "licenses/assets",
+          "licenses/runtime",
+          "licenses/packages",
+          "README.md"
+        ]
+      },
+      "packages/react/package.json": {
+        "name": "@acmelabs/design-system-react",
+        "version": "0.3.2",
+        "files": [
+          "dist",
+          "README.md"
+        ],
+        "dependencies": {
+          "@lit/react": "1.0.8"
+        },
+        "peerDependencies": {
+          "@acmelabs/design-system": "0.3.2",
+          "react": "^19.0.0",
+          "react-dom": "^19.0.0"
+        },
+        "generatedExportKeyCount": 2
+      },
+      "packages/mcp/package.json": {
+        "name": "@acmelabs/design-system-mcp",
+        "version": "0.3.2",
+        "files": [
+          "dist",
+          "README.md"
+        ],
+        "dependencies": {
+          "@modelcontextprotocol/sdk": "1.32.0",
+          "zod": "4.6.5"
+        },
+        "peerDependencies": {
+          "@acmelabs/design-system": "0.3.2"
+        },
+        "generatedExportKeyCount": 1
+      },
+      "packages/devtools/package.json": {
+        "name": "@acmelabs/design-system-devtools",
+        "version": "0.3.2",
+        "files": [
+          "dist",
+          "README.md"
+        ],
+        "peerDependencies": {
+          "@acmelabs/design-system": "0.3.2"
+        },
+        "devDependencies": {
+          "@tanstack/devtools-ui": "0.7.1",
+          "solid-js": "1.9.17"
+        },
+        "generatedExportKeyCount": 1
+      }
+    },
+    "verificationPlan": {
+      "permittedNow": "Read-only source review and preparation artifact. No tests, guards, builds or browser checks executed by this worker.",
+      "runtime": "Read .bun-version and packageManager. Use that Bun executable for nested commands via PATH; do not assume the global executable is the pin.",
+      "commandOwnership": "package.json and scripts/check.ts own available commands/stages; reference the allocated scripts/verification paths after task 10 caller migration.",
+      "generationDependencyOrder": [
+        "split",
+        "build",
+        "docs",
+        "build:tooling"
+      ],
+      "focusedTypeGap": "tsconfig.json includes src, tools and site plus its selected script setup. Not all moved verification scripts are included; use an applicable strict focused program for those changes.",
+      "evidenceValidity": [
+        "Applicable revision and input fingerprints",
+        "Explicit dirty or clean source state",
+        "Exact command and output location",
+        "Required versus manual classification",
+        "Coverage and failing cases",
+        "Actual platform and other unperformed limits"
+      ],
+      "currentMigrationScope": "Coordinator reports task 8 required and manual runs passing for local dirty preparation. Final clean candidate, consumer switch and actual host sessions remain tasks 10–12.",
+      "runtimeEvidence": "docs/verification/workflow-migration/task-08.json",
+      "knownLimit": "Local Hover Card success does not diagnose the earlier Linux CI failure. Automated engines do not certify actual Safari, assistive technology, OS IME/dictation/autofill or background-window behavior. Screenshots not human-inspected remain uninspected.",
+      "noNewProductVerification": true
+    },
+    "coordination": {
+      "parentOwned": [
+        "AGENTS.md",
+        "CLAUDE.md",
+        "docs/agents/domain.md",
+        "docs/agents/workflow.md",
+        "tracker guidance",
+        "docs/STATUS.md",
+        "shared migration metadata",
+        "commits/builds/guards",
+        "task 10 consumer changes",
+        "task 11 activation"
+      ],
+      "excludedProcedures": [
+        "Copied brain lifecycle",
+        "Global user preferences",
+        "Question composition or permissions",
+        "Outward action authorization",
+        "Completed Phase 0–6 gates",
+        "Blanket old-project-over-plugin override",
+        "Old no-further-questions delegation",
+        "Automatic source-freeze or full-corpus startup",
+        "Unmeasured no-consumers premise"
+      ],
+      "writerBatchLimit": 5,
+      "suggestedWriteBatches": [
+        [
+          "docs/agents/repository.md",
+          "docs/agents/verification.md",
+          "docs/development/components.md",
+          "docs/development/styles.md"
+        ],
+        [
+          "docs/development/stack.md",
+          "docs/development/documentation.md",
+          "docs/development/generation.md",
+          "docs/development/reference-sources.md"
+        ]
+      ],
+      "nextAction": "Await coordinator greenlight to author the eight scoped documents. Keep final activation at task 11."
+    },
+    "findings": [
+      {
+        "id": "extra-generator-owners",
+        "status": "resolved-in-preparation",
+        "detail": "The map includes the four README additions plus generated theme CSS, CLDR byte-prefix data/license, and ELK worker/notices."
+      },
+      {
+        "id": "stale-reference-runbook",
+        "status": "coordinator-notified",
+        "path": "tools/geist/README.md",
+        "detail": "Active prose still says fonts never change, requires reference-page sections/reference-DOM retemplating, treats hidden-pane timer behavior as universal, and defers scoped registries. These claims conflict with current decisions. Do not promote them; task 10 must handle the surviving runbook or allocate its rewrite."
+      },
+      {
+        "id": "remaining-old-path-consumers",
+        "status": "task-10-owner",
+        "paths": [
+          "src/shared/state.ts",
+          "CONTEXT-MAP.md",
+          "tools/geist/CONTEXT.md",
+          "scripts/check.ts"
+        ],
+        "detail": "Selected sources still contain old record paths or old wording/callers. Parent owns live-reference migration and glossary routing. Technical guidance will point at allocated current owners."
+      },
+      {
+        "id": "root-types-scope",
+        "status": "retained-requirement",
+        "detail": "Root typecheck coverage is narrower than all verification scripts. A script change cannot claim strict type validation from root types alone."
+      },
+      {
+        "id": "browser-notice-limit",
+        "status": "retained-qualification",
+        "detail": "Browser notice generation records the narrow @tanstack/markdown missing-license-text/source-commit-binding qualification. Do not upgrade that evidence into an unconditional notice provenance claim."
+      }
+    ],
+    "review": {
+      "readiness": "ready-for-scoped-authoring",
+      "unresolvedUserChoices": [],
+      "finalFilesWritten": [],
+      "sharedFilesChanged": [],
+      "buildsRun": [],
+      "guardsRun": [],
+      "productCodeChanged": false
+    }
+  },
+  "reviews": [
+    {
+      "source": "root review",
+      "report": "# Task 9 root and shared workflow review\n\nVerdict: **ACCEPTED after two narrow corrections**. No required finding remains.\n\nThis is an independent document review of inactive root drafts and shared workflow records. It does not establish actual Claude or Codex startup behavior. Task 11 still owns activation; task 12 owns clean-candidate and host-session acceptance.\n\n## Findings and correction review\n\n| ID | Initial finding and evidence | Verified correction |\n| --- | --- | --- |\n| R1 | The original AGENTS draft step 3 inspected Git state but did not require inspecting the selected runtime. The approved specification explicitly requires both Git state and the pinned runtime at `spec/SPEC-maintainer-workflow.md:183`. Reading the verification guide establishes the requirement; it does not establish which executable the host selects. | `.artifacts/AGENTS.next.md:11` now requires verification of the selected Bun executable and its version before work. The runtime policy stays in the verification guide; no second version inventory is added. Resolved. |\n| R2 | Original `.artifacts/CLAUDE.next.md:7` and `:20` repeated the shared brain-precedence, question, glossary and instruction-authoring rules already owned by AGENTS. The specification requires a host-specific remainder after the import (`SPEC-maintainer-workflow.md:58–62,68–72`). Task 9 also requires one owner per rule (`tasks/todo.md:182–184`). Brain's writing-for-agents guidance makes the same distinction. | Both shared-rule paragraphs are removed. The 18-line CLAUDE draft starts with `@AGENTS.md`, lists Claude command spellings and records Claude project-plugin setup. Its user-started command list points to the shared boundary instead of redefining it. Resolved. |\n\nThe coordinator made these changes. I re-read the changed startup section and the complete corrected CLAUDE draft. No implementation file changed during this review.\n\n## Contract coverage and limits\n\n**Complete reads.** I read all three root draft files, the four assigned agent guides, all five maintenance issue files, CONTEXT-MAP.md and the full approved workflow specification and plan. I also read the task 9/11/12 acceptance sections in todo.md, including checkpoint C/D requirements. The full current AGENTS, CLAUDE and project settings from both reference projects were read. Installed source reads covered using-brain, using-agent-skills, writing-for-agents, brain's phase-boundary reference, and its local tracker, triage-label and domain templates.\n\n**Startup and resumption.** AGENTS lines 7–13 route package starts to the root, require complete selected reads, preserve other sessions' work, inspect actual Git/runtime state, validate the baseline and limit continuation to an approved task. Lines 37–40 require task acceptance, exact verification evidence and a current status that supports a fresh session without conversation history. The workflow guide preserves an incomplete plan when the request changes and keeps one active status/plan pair. These rules provide the durable state needed after interruption or compaction. Brain owns the choice of phase boundary and compact/handoff procedure; the root does not create a second process. Actual interruption/compaction behavior remains a host-evaluation question, not a document-review pass.\n\n**Approval and authority.** AGENTS lines 17–21 select brain when skill names overlap and delegate user-owned choices to brain's question skill and host reference. Approval remains scoped to the actual task/action. Lines 13 and 40 prevent a completed plan or another repository from granting new work or outward-action permission. The two reference projects' different standing commit/push grants are not copied. The five user-started boundaries remain explicit. Setup guidance is used as a template; no setup command or global hook is invoked.\n\n**Shared packages and domains.** AGENTS line 3 and workflow lines 26–32 establish one workflow for all five packages. Tasks identify inputs, generated outputs, affected packages and checks before editing. Domain lines 3–9 and CONTEXT-MAP lines 5–10 keep the existing component and tooling contexts. Shared component terms have one glossary owner. No package-per-glossary expansion, new product vocabulary or duplicated decision store is introduced. Current requirements, source observations, selected decisions and historical verification remain distinct.\n\n**Record adapters.** The workflow guide maps intent/interview outputs to docs/design while retaining the installed procedure. Status, current plans, completed plans, decisions, research, evidence, live verification and scratch output have separate owners. Delegated workers receive explicit file ownership and result paths; the coordinator owns shared state and accepts results after reading them. Shared generators, builds and browsers stay serialized. These match specification lines 124,168–172 and the finalized rule dispositions.\n\n**Local issues.** The tracker and labels match the installed local Markdown templates. Three-digit maintenance identifiers retain their allocated identity. Wayfinder claim/resolve state is distinguished from the five triage roles. The index expressly says that migration does not approve every follow-up. Each issue preserves an owner, evidence boundary and completion condition:\n\n- Hover Card keeps the exact main revision, passing quality run, failing documentation run, empty-versus-#profile result and unverified cause. The later local 1,446-case pass does not erase that failure.\n- Actual-platform verification remains human-owned and distinguishes Safari, assistive technology, OS input/autofill and background-window behavior from automated proxies.\n- Token rotation remains Peter-owned. Release completion is separate from credential confirmation; no credential data is requested or reproduced.\n- The dependency review retains 2026-11-20. Static source inspection confirms the exact proof dates and the guard's rejection of expired, changed or unknown evidence. The issue creates no standing exemption or package-change approval.\n\n**Claude configuration.** The settings draft parses and is structurally identical to both reference-project settings files. It enables agent-skills and brain with the same two marketplace sources. It introduces no permission grants, hooks or global configuration. The corrected command table matches installed brain routing, including the distinction between Claude commands and Codex skill invocation.\n\n**Static checks.** All 53 Markdown links and their local anchors resolve when the two drafts are projected to their intended root paths. The active CLAUDE file is still the original relative symlink to AGENTS.md, and no active project settings file exists. The prepared drafts have therefore not activated the new workflow.\n\n**Limits.** The full migration guard, actual import/skill loading, cold root/package starts, pending-approval behavior, interrupted work, a changed request and red-baseline handling remain task 11/12 checks. This review neither runs them nor marks them complete. Current source acceptance, unresolved platform work and token rotation retain their separate evidence owners.\n\nReviewed final file identities:\n\n| File | SHA-256 |\n| --- | --- |\n| .artifacts/AGENTS.next.md | 049ca25a2f57ab4de484d2b0e91b8160244715d2b79962a5e8caa96e876148b6 |\n| .artifacts/CLAUDE.next.md | 702db53ad29242ad21df72ac01172293e0edebee34fecaaed06ef6c398cef2a7 |\n| .artifacts/claude-settings.next.json | ea9527a76f14dfa52879f8206d90b7be4da111caf1b4d775a9e131139566091f |\n| .scratch/maintenance/issues/001-hover-card-activation.md | 262e2925d43669a513a18b36f4d7e9e97c97cc173114e5f333c4b62060c7b0ea |\n| .scratch/maintenance/issues/002-actual-platform-verification.md | 374653c07783db70e52c12feffdbaea3b8e5a62f550cec9d4fea049e37ad26a9 |\n| .scratch/maintenance/issues/003-npm-token-rotation.md | 2e9f268106447b35585a68fd019efb37eb6d5324cdf4ff5a8e52ac9881af3863 |\n| .scratch/maintenance/issues/004-advisory-review-deadline.md | a0be5cbe99f756508702c972a15470e705182071d20b5558ad0313f9d3bb1047 |\n| .scratch/maintenance/issues/README.md | c2c9679e56285b325017597261ac82f4397cf69437be9ca0d9a5b9c8a868f435 |\n| docs/agents/domain.md | 687229836185c7efc5add2ea6824a09112c2076fd38e6ee474ab315f217a9b82 |\n| docs/agents/issue-tracker.md | 9006b3e077d7d91b898a9a368ad3d84e331f76f84b9f890aef67be2d6f85fe08 |\n| docs/agents/triage-labels.md | 8162abf7dc894a4469f2e8f9e6f7fa481bde3d6c137777b9c12a88926c436554 |\n| docs/agents/workflow.md | 4f328a5ff916579cb15f4fb9ee9159fbbebc6343b22954ab4615c5dab6a189aa |\n| CONTEXT-MAP.md | e0bce9c26d6993570b8ebb7b0671f69598f055b960ee90aea9f26d48acff875e |\n"
+    },
+    {
+      "source": "technical review",
+      "report": "# Task 9 technical-guide review\n\nVerdict: **accepted after one correction**. No required findings remain.\n\nReview date: 2026-10-21. Scope: the eight technical guides below, read in full. This is a document and source-code review. It does not certify a new build, browser run, publication, or cold-host workflow.\n\n## Finding and resolution\n\n**P2, resolved — preserve the distinction between inspection and human inspection.**\n\nThe first version of `docs/agents/verification.md:69` said: “Mark screenshots uninspected when no human inspection occurred.” An actual agent image review would then be labelled uninspected. The sentence promoted task 8's dated “No human visual inspection is claimed” limit into a general human-only rule.\n\nEvidence: rule inventory P04 and P30 retain outcome-based verification and exact limits. The approved specification requires exact commands, outcomes, revision and limits, without adding a human-only screenshot gate. The task-08 report records a limit of that particular run.\n\nThe coordinator corrected the paragraph. I reread the changed paragraph and its adjacent qualifications. It now records whether inspection occurred and who performed it, and distinguishes agent image review from human inspection. The genuine OS, Safari, assistive-technology and background-window limits remain intact. No other passage requires a correction.\n\n## Review evidence\n\n| Area | Result and evidence |\n|---|---|\n| Rule disposition | Read `docs/verification/workflow-migration/rules.md` in full. The retained technical rules reach their allocated owners. R09/C01 keep completed replacements final without introducing aliases or a blanket future compatibility policy. R17/P18 route CSS defects to their actual producer. P23/P29/P33/P37/P40/P43 retain measured-box, nonzero-root, state-side and provenance constraints. |\n| Workflow replacement | The guides refer lifecycle, research and user-choice procedure to brain and the current workflow. No completed phase interview, old execution grant, source freeze, blanket no-consumers premise, all-CSS-in-reference-tools instruction, or full-gate-before-every-commit rule remains active in these eight guides. |\n| Commands and runtime | The commands match `package.json`, the Bun 1.4.2 policy in `scripts/release-policy.ts`, and the stage order in `scripts/check.ts`. The quality workflow uses the same stage sequence. The Pages deployment depends on that verified artifact. No command was executed for this review. |\n| Strict type coverage | `tsconfig.json` covers source, reference tools and site. The second program in `scripts/check.ts:171–198` preserves the existing strict flags and adds the verification glob with TS and TSX extensions. The read-only file census finds **37 sources: 36 TS plus public-types.tsx**. The JSX fixture retains five negative public-type assertions. The guide does not imply that this local program replaces fresh packed-consumer typing. The passing commands are recorded separately in `.artifacts/task10-code-consumers.json`. |\n| Browser coverage and evidence | The 23 stable browser entries expand to 24 invocations, including scoped module/CDN variants. The guide preserves three Playwright engines, official Firefox, fresh coordinated archives, complete-plan requirements and per-run evidence limits. Manual profiles match the live-file audit. Historical state and platform results do not become fresh acceptance through relocation. |\n| Generated ownership | Compared the map with the approved inventory and current split/build, module/declaration/CEM, numeric/theme/responsive, byte-prefix, core/browser linkage, browser-assets, browser-license, tooling, consumer-skill and site producers. Source and generated output remain distinct. Theme properties, responsive styles, SVG artwork and icon entries are included. The three browser notice sources, exact date runtime, ELK worker and source-binding limits remain explicit. |\n| Style safeguards | `scripts/styles.ts:328–446` binds inputs/outputs, records registrations, locks writes, protects changed retired output, verifies recorded fingerprints and rejects unrecorded style modules. The guide preserves the external-corpus availability qualification and the real-wrapper-box constraint. |\n| Collector limits | `tools/geist/collector.ts` writes measurements under its fixed census directory and rejects empty roots. The guide correctly states that no output-directory override exists and requires preservation before reruns. It distinguishes reconstructed, saved and live observations. |\n| Package roles | Parsed all five public manifests and the root authoring manifest. The selected runtime/application/tool roles agree with their current dependency and peer boundaries. Version ownership remains in manifests/lockfile. The guides do not import reference-system runtimes or turn deferred Query/DB scope into a task. |\n| Component constraints | Compared canonical state and interface-priority guidance with decisions 0101 and 0077 and the rule inventory. The guides retain StoreSelector/StoreEffect roles, native semantics, controller registration, live-collection safety, real boxes, source-name boundaries and current no-alias outcomes. Book/focus/place qualifications stay linked to their decision owners. |\n| Consumer projections | `site/release.ts`, `site/build.ts`, `scripts/consumer-skills.ts` and `scripts/tooling.ts` confirm the shared records, complete source ownership, version checks, approved task areas and separate generated outputs. The guide preserves original dates/revisions and does not treat retrieved source as instructions. |\n| Reference obligations | Read decision 0082 in full and compared it with the source guide. Complete Material guidance, implementation-versus-token distinctions, Chakra Pro capability searches, source-assigned resolutions, explicit departures and unchanged selected package boundaries remain present. |\n| Links | A read-only scan checked all **98 local Markdown links**, including each linked Markdown heading. No missing target or anchor was found. |\n\nNo build, generator, installation, browser session or runtime test ran. No implementation, guide or shared-state file was edited by this reviewer. The coordinator owns task completion, regenerated projections and actual-host acceptance.\n\n## Reviewed identities\n\nThese hashes identify the final reviewed documents, including the coordinator's corrected screenshot paragraph.\n\n| File | SHA-256 |\n|---|---|\n| `docs/agents/repository.md` | `b3c59d158fa35409c91c971bb89de562a4b1d9bfe4403f669e7d50c536c7fbca` |\n| `docs/agents/verification.md` | `053a020946c727bceaf93a30b26ce2dc192152495b85241dadec344828bfe883` |\n| `docs/development/components.md` | `6683eb77059398e3d55d27c087d51620608945004a4126a1154afcd43fbd4e18` |\n| `docs/development/styles.md` | `751eb69c132ba75cfa145c1a2c80f99d227d3b9cf31513db0ddb7c2a31e02e54` |\n| `docs/development/stack.md` | `31cfb79d9b30f8009d5dbb567e46f73ad474c37027d4620ccfc744fb14343391` |\n| `docs/development/documentation.md` | `f697e8e38b1a80aaccbcd32b0bede24d544f095efea0ffadb461bcfde2e0da5d` |\n| `docs/development/generation.md` | `eb9b83ff9299c1df22ffe3506afb2073fc21e1b719cb040ba0cfd6aabfd528c6` |\n| `docs/development/reference-sources.md` | `5b306e0954994345a9fc1a3fad29f01c924770b7beb6355dfc8d52243aea6ceb` |\n\nCurrent unresolved requirements remain with the allocated STATUS, plan and verification owners. This accepted review does not close those requirements.\n"
+    }
+  ],
+  "corrections": [
+    "Inspect selected Bun executable/version at startup.",
+    "Keep generic workflow ownership in AGENTS; CLAUDE holds only host-specific commands/configuration.",
+    "Screenshot inspection records whether it occurred and the reviewer; human and agent inspections remain distinct."
+  ],
+  "limits": [
+    "Old startup files remain active until task11.",
+    "No actual Claude/Codex session is claimed.",
+    "No component/runtime/dependency/version changes or global settings changes."
+  ]
+}

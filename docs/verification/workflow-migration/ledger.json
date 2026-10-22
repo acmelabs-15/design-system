@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "status": "task2 complete; destinations allocated; conversion not started",
+  "status": "Tasks 1–8 complete; guidance and live consumers in review; original roots retained until task 11",
   "baselineRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
   "sourceRoots": [
     "notes",
     "PLAN.md",
     ".agents/skills"
   ],
-  "sourceCount": 932,
+  "sourceCount": 970,
   "policy": {
     "numbering": "Stable identities, not chronology",
     "rawBytes": "Preserve SHA-256 at the mapped destination",
@@ -178,7 +178,7 @@
         }
       ],
       "batch": "07-port-plan",
-      "status": "planned",
+      "status": "complete",
       "review": "rules.md and alignment-audit.json; current constraints contribute to their one development/guidance owner"
     },
     {
@@ -199,7 +199,7 @@
         }
       ],
       "batch": "07-readme",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-additional-audit.json"
     },
     {
@@ -215,7 +215,7 @@
         }
       ],
       "batch": "07-additional-functionality-review",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-additional-audit.json"
     },
     {
@@ -231,7 +231,7 @@
         }
       ],
       "batch": "07-chakra-pro-review",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-additional-audit.json"
     },
     {
@@ -2659,7 +2659,7 @@
         }
       ],
       "batch": "08-flow-distributions.browser-check",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -3372,7 +3372,7 @@
         }
       ],
       "batch": "07-summary-m22-react",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -3388,7 +3388,7 @@
         }
       ],
       "batch": "08-react-defaults",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -3404,7 +3404,7 @@
         }
       ],
       "batch": "08-react-defaults",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -3420,7 +3420,7 @@
         }
       ],
       "batch": "08-react-runtime",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -3436,7 +3436,7 @@
         }
       ],
       "batch": "08-react-runtime",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -3604,7 +3604,7 @@
         }
       ],
       "batch": "07-summary-m23-docs",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -3637,7 +3637,7 @@
         }
       ],
       "batch": "08-documentation-copied.browser-check",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -3670,7 +3670,7 @@
         }
       ],
       "batch": "08-documentation-icons.browser-check",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -3703,7 +3703,7 @@
         }
       ],
       "batch": "08-documentation-navigation.browser-check",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -3736,7 +3736,7 @@
         }
       ],
       "batch": "08-documentation-pages.browser-check",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -3769,7 +3769,7 @@
         }
       ],
       "batch": "08-documentation-recipe-accessibility.browser-check",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -3802,7 +3802,7 @@
         }
       ],
       "batch": "08-documentation-recipes.browser-check",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -3835,7 +3835,7 @@
         }
       ],
       "batch": "08-documentation-video.browser-check",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -3868,7 +3868,7 @@
         }
       ],
       "batch": "07-summary-m24-consumers",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -3969,7 +3969,7 @@
         }
       ],
       "batch": "08-package-tools",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -3985,7 +3985,7 @@
         }
       ],
       "batch": "08-inspector-consumer",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -4001,7 +4001,7 @@
         }
       ],
       "batch": "08-inspector-consumer",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -4051,7 +4051,7 @@
         }
       ],
       "batch": "08-documentation-table-source-isolation.browser-check",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -4067,7 +4067,7 @@
         }
       ],
       "batch": "07-summary-m24-devtools",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -4100,7 +4100,7 @@
         }
       ],
       "batch": "08-devtools-manual",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -4116,7 +4116,7 @@
         }
       ],
       "batch": "08-devtools-manual",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -4166,7 +4166,7 @@
         }
       ],
       "batch": "08-devtools-manual",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -4182,7 +4182,7 @@
         }
       ],
       "batch": "07-summary-m24-skills-followups",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -4283,7 +4283,7 @@
         }
       ],
       "batch": "07-summary-m24-skills-iteration-1",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -6917,7 +6917,7 @@
         }
       ],
       "batch": "07-summary-m24-skills-iteration-1-viewer-tooling",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -6950,7 +6950,7 @@
         }
       ],
       "batch": "07-summary-m24-tabs-indicator",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -7017,7 +7017,7 @@
         }
       ],
       "batch": "07-summary-m25-release",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -7220,7 +7220,7 @@
         }
       ],
       "batch": "07-summary-m25-tooling",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -7338,7 +7338,7 @@
         }
       ],
       "batch": "07-summary-m25-workspace",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -7388,7 +7388,7 @@
         }
       ],
       "batch": "08-workspace-consumer",
-      "status": "prepared",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -7404,7 +7404,7 @@
         }
       ],
       "batch": "08-workspace-consumer",
-      "status": "prepared",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -7420,7 +7420,7 @@
         }
       ],
       "batch": "08-workspace-install",
-      "status": "prepared",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -7453,7 +7453,7 @@
         }
       ],
       "batch": "07-summary-m26-appearance",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -7503,7 +7503,7 @@
         }
       ],
       "batch": "08-documentation-action-labels.browser-check",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -8420,7 +8420,7 @@
         }
       ],
       "batch": "08-documentation-appearance.browser-check",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -8844,7 +8844,7 @@
         }
       ],
       "batch": "07-summary-m26-audit",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -8860,7 +8860,7 @@
         }
       ],
       "batch": "07-summary-m26-audit-component-browser",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -8894,7 +8894,7 @@
         }
       ],
       "batch": "08-component-data",
-      "status": "prepared",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -8945,7 +8945,7 @@
         }
       ],
       "batch": "08-component-data",
-      "status": "prepared",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -9063,7 +9063,7 @@
         }
       ],
       "batch": "08-public-defaults-browser-check",
-      "status": "prepared",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -9096,7 +9096,7 @@
         }
       ],
       "batch": "07-summary-m26-audit-final-runtime-review",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -9129,7 +9129,7 @@
         }
       ],
       "batch": "07-summary-m26-audit-official-firefox",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -9162,7 +9162,7 @@
         }
       ],
       "batch": "08-removals-check",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -9228,7 +9228,7 @@
         }
       ],
       "batch": "08-table-worker-consumer.browser-check",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -9261,7 +9261,7 @@
         }
       ],
       "batch": "07-summary-m26-bundle",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -9345,7 +9345,7 @@
         }
       ],
       "batch": "08-bundling",
-      "status": "prepared",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -9582,7 +9582,7 @@
         }
       ],
       "batch": "08-bundling",
-      "status": "prepared",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -9649,7 +9649,7 @@
         }
       ],
       "batch": "07-summary-m26-dev-watch",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -9665,7 +9665,7 @@
         }
       ],
       "batch": "07-summary-m26-final",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -10038,7 +10038,7 @@
         }
       ],
       "batch": "07-summary-m26-managed-forms",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -10088,7 +10088,7 @@
         }
       ],
       "batch": "07-summary-m26-native-forms",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -10121,7 +10121,7 @@
         }
       ],
       "batch": "08-native-forms-history.browser-check",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -10137,7 +10137,7 @@
         }
       ],
       "batch": "07-summary-m26-scoped",
-      "status": "planned",
+      "status": "complete",
       "review": "verification-summary-audit.json"
     },
     {
@@ -10187,7 +10187,7 @@
         }
       ],
       "batch": "08-scoped-registration",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -10271,7 +10271,7 @@
         }
       ],
       "batch": "08-scoped-registration",
-      "status": "planned",
+      "status": "complete",
       "review": "live-file-audit.json"
     },
     {
@@ -12938,7 +12938,7 @@
         }
       ],
       "batch": "07-workflow-research",
-      "status": "planned",
+      "status": "complete",
       "review": "Current migration observations and approvals; preserve original baseline fields and append later events"
     },
     {
@@ -12976,7 +12976,7 @@
         }
       ],
       "batch": "07-inventory",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-audit.json"
     },
     {
@@ -12992,7 +12992,7 @@
         }
       ],
       "batch": "07-actions",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-audit.json"
     },
     {
@@ -13008,7 +13008,7 @@
         }
       ],
       "batch": "07-data-displays",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-audit.json"
     },
     {
@@ -13024,7 +13024,7 @@
         }
       ],
       "batch": "07-documentation-tooling",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-audit.json"
     },
     {
@@ -13040,7 +13040,7 @@
         }
       ],
       "batch": "07-foundations",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-audit.json"
     },
     {
@@ -13056,7 +13056,7 @@
         }
       ],
       "batch": "07-inputs-forms",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-audit.json"
     },
     {
@@ -13072,7 +13072,7 @@
         }
       ],
       "batch": "07-layout",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-audit.json"
     },
     {
@@ -13088,7 +13088,7 @@
         }
       ],
       "batch": "07-messages-statistics",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-audit.json"
     },
     {
@@ -13104,7 +13104,7 @@
         }
       ],
       "batch": "07-navigation-disclosure",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-audit.json"
     },
     {
@@ -13120,7 +13120,7 @@
         }
       ],
       "batch": "07-overlays-help",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-audit.json"
     },
     {
@@ -13136,7 +13136,7 @@
         }
       ],
       "batch": "07-rich-content",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-audit.json"
     },
     {
@@ -13152,7 +13152,7 @@
         }
       ],
       "batch": "07-selection",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-audit.json"
     },
     {
@@ -13168,7 +13168,7 @@
         }
       ],
       "batch": "07-surfaces",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-audit.json"
     },
     {
@@ -13184,7 +13184,7 @@
         }
       ],
       "batch": "07-typography",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-audit.json"
     },
     {
@@ -13205,7 +13205,7 @@
         }
       ],
       "batch": "07-completed-plan",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-audit.json"
     },
     {
@@ -13221,7 +13221,7 @@
         }
       ],
       "batch": "07-phase-1-review",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-additional-audit.json"
     },
     {
@@ -13237,7 +13237,7 @@
         }
       ],
       "batch": "07-phase-2-review",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-additional-audit.json"
     },
     {
@@ -13253,7 +13253,7 @@
         }
       ],
       "batch": "07-phase-3-review",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-additional-audit.json"
     },
     {
@@ -13269,7 +13269,7 @@
         }
       ],
       "batch": "07-proposal-coverage",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-audit.json"
     },
     {
@@ -13285,7 +13285,7 @@
         }
       ],
       "batch": "07-proposal-questions",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-audit.json"
     },
     {
@@ -13301,7 +13301,7 @@
         }
       ],
       "batch": "07-release-0.3.0",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-additional-audit.json"
     },
     {
@@ -13317,7 +13317,7 @@
         }
       ],
       "batch": "07-release-0.3.1",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-additional-audit.json"
     },
     {
@@ -13333,7 +13333,7 @@
         }
       ],
       "batch": "07-release-0.3.2",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-additional-audit.json"
     },
     {
@@ -13349,7 +13349,7 @@
         }
       ],
       "batch": "07-remaining-work",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-additional-audit.json"
     },
     {
@@ -13365,7 +13365,7 @@
         }
       ],
       "batch": "07-terms",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-audit.json"
     },
     {
@@ -13701,7 +13701,7 @@
         }
       ],
       "batch": "07-conventions",
-      "status": "planned",
+      "status": "complete",
       "review": "alignment-additional-audit.json"
     },
     {
@@ -15543,6 +15543,690 @@
       "batch": "05-decisions-039",
       "status": "complete",
       "review": "decision-audit.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-dev-watch/red.log",
+      "sourceSha256": "21119eeb2f225a347e32b3a0663457cafff25441850ad04c4d36086d7f571112",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m26-dev-watch/red.log",
+          "integrity": "bytes",
+          "sha256": "21119eeb2f225a347e32b3a0663457cafff25441850ad04c4d36086d7f571112",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m26-dev-watch",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-dev-watch/green.log",
+      "sourceSha256": "59c67fc0dd1a5998998766f740bc505dc3339a556d1f32b7703b0e73daeaa67b",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m26-dev-watch/green.log",
+          "integrity": "bytes",
+          "sha256": "59c67fc0dd1a5998998766f740bc505dc3339a556d1f32b7703b0e73daeaa67b",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m26-dev-watch",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-dev-watch/traversal-red.log",
+      "sourceSha256": "4296cec8738b2b3c27abc311fdf66c7515a79aa17fc053fb8d07f49f1f3fc293",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m26-dev-watch/traversal-red.log",
+          "integrity": "bytes",
+          "sha256": "4296cec8738b2b3c27abc311fdf66c7515a79aa17fc053fb8d07f49f1f3fc293",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m26-dev-watch",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-dev-watch/traversal-green.log",
+      "sourceSha256": "a39a5f18536db55d645b7e51d3381b19a11dcf78da1ef19aa71d61097e9e1c9d",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m26-dev-watch/traversal-green.log",
+          "integrity": "bytes",
+          "sha256": "a39a5f18536db55d645b7e51d3381b19a11dcf78da1ef19aa71d61097e9e1c9d",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m26-dev-watch",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m20-flow/compiled.log",
+      "sourceSha256": "d570fbac3e59e2071a971a0d65df4701901f3fc7f3ba0d37104f32eae6c2a1ee",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m20-flow/compiled.log",
+          "integrity": "bytes",
+          "sha256": "d570fbac3e59e2071a971a0d65df4701901f3fc7f3ba0d37104f32eae6c2a1ee",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m20-flow",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m20-flow/route-browser-exact.log",
+      "sourceSha256": "1f6cc1a67703829125b5663e51f74bd77d19512e126a10fa2824659fa09b6f38",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m20-flow/route-browser-exact.log",
+          "integrity": "bytes",
+          "sha256": "1f6cc1a67703829125b5663e51f74bd77d19512e126a10fa2824659fa09b6f38",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m20-flow",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m20-flow/firefox-sequence.log",
+      "sourceSha256": "f386add1bca990c65bcd6a20ffad892eed15cb78082ca82db65f2ae577f0938b",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m20-flow/firefox-sequence.log",
+          "integrity": "bytes",
+          "sha256": "f386add1bca990c65bcd6a20ffad892eed15cb78082ca82db65f2ae577f0938b",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m20-flow",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/browser-initial.log",
+      "sourceSha256": "9370a5ea7eb035489e3e9193750f6b4033e4ba4d008fa0a094b49b7433fd54c4",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m26-final/browser-initial.log",
+          "integrity": "bytes",
+          "sha256": "9370a5ea7eb035489e3e9193750f6b4033e4ba4d008fa0a094b49b7433fd54c4",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m26-final",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/audit.log",
+      "sourceSha256": "66f9aa57742d465b25635f085da188f41a8ec1d192c8fb1227d1fe220a484d28",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m26-final/audit.log",
+          "integrity": "bytes",
+          "sha256": "66f9aa57742d465b25635f085da188f41a8ec1d192c8fb1227d1fe220a484d28",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m26-final",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/unit.log",
+      "sourceSha256": "da56761b876536c30969ff53b434db85abce982e195baf40762a817eb60f89e3",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m26-final/unit.log",
+          "integrity": "bytes",
+          "sha256": "da56761b876536c30969ff53b434db85abce982e195baf40762a817eb60f89e3",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m26-final",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/static.log",
+      "sourceSha256": "a2b33ed621b9b4aded9a98410cf83d52e50252bb2250e49d996c0ae2590e1ca6",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m26-final/static.log",
+          "integrity": "bytes",
+          "sha256": "a2b33ed621b9b4aded9a98410cf83d52e50252bb2250e49d996c0ae2590e1ca6",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m26-final",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/tooling-recheck.log",
+      "sourceSha256": "7d5f78bf05edd198a8201aa29467e16d4f4feb6b916775b1fb34bae2395dc7e0",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m26-final/tooling-recheck.log",
+          "integrity": "bytes",
+          "sha256": "7d5f78bf05edd198a8201aa29467e16d4f4feb6b916775b1fb34bae2395dc7e0",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m26-final",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/build.log",
+      "sourceSha256": "dc5f0b69e70df0bb339e540c2c4e9c9d996dfd85760c4ed5b6b660c4e5caad19",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m26-final/build.log",
+          "integrity": "bytes",
+          "sha256": "dc5f0b69e70df0bb339e540c2c4e9c9d996dfd85760c4ed5b6b660c4e5caad19",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m26-final",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/verification-attempt3.log",
+      "sourceSha256": "3b85444c979305afefb7628634094f4b5fbc4a2f6325a989fed4b7571ddcbb9c",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/verification-attempt3.log",
+          "integrity": "bytes",
+          "sha256": "3b85444c979305afefb7628634094f4b5fbc4a2f6325a989fed4b7571ddcbb9c",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/verification-attempt2.log",
+      "sourceSha256": "1bd8e9526208e76311cb2b3d32fdafa30a6d9a8b6483417555e04af183891a4a",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/verification-attempt2.log",
+          "integrity": "bytes",
+          "sha256": "1bd8e9526208e76311cb2b3d32fdafa30a6d9a8b6483417555e04af183891a4a",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/controls-attempt2.log",
+      "sourceSha256": "b6908a3759bb35b454e242e25bfc1ecbfed2111bdedba933b3f70a40474e0d1f",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/controls-attempt2.log",
+          "integrity": "bytes",
+          "sha256": "b6908a3759bb35b454e242e25bfc1ecbfed2111bdedba933b3f70a40474e0d1f",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/controls-attempt1.log",
+      "sourceSha256": "51ed9acb85ba6801179479914d915a2e1a935320e1d36845d3a99781003010ed",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/controls-attempt1.log",
+          "integrity": "bytes",
+          "sha256": "51ed9acb85ba6801179479914d915a2e1a935320e1d36845d3a99781003010ed",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/build-attempt4.log",
+      "sourceSha256": "bf52f734d0d97b522bcfcfd7f9354cc74d5c53ab4d6998f0e94568a1960f365a",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/build-attempt4.log",
+          "integrity": "bytes",
+          "sha256": "bf52f734d0d97b522bcfcfd7f9354cc74d5c53ab4d6998f0e94568a1960f365a",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/typecheck-attempt2.log",
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/typecheck-attempt2.log",
+          "integrity": "bytes",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/build-attempt1.log",
+      "sourceSha256": "e205df941d25166dcf8d77d0c35e442a3fb0350f5ac56d432ef36a5f5c714ddc",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/build-attempt1.log",
+          "integrity": "bytes",
+          "sha256": "e205df941d25166dcf8d77d0c35e442a3fb0350f5ac56d432ef36a5f5c714ddc",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/typecheck-attempt3.log",
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/typecheck-attempt3.log",
+          "integrity": "bytes",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/typecheck-attempt1.log",
+      "sourceSha256": "aca1cdd5d66698115d0df9bbed3f85591b89b0e8e2d629dbffcb9a49fea259fe",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/typecheck-attempt1.log",
+          "integrity": "bytes",
+          "sha256": "aca1cdd5d66698115d0df9bbed3f85591b89b0e8e2d629dbffcb9a49fea259fe",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/build-attempt2.log",
+      "sourceSha256": "d4798ed8d01e9c0658c38450974e47d13fed3c7d6385fde2c19354d68138ac6c",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/build-attempt2.log",
+          "integrity": "bytes",
+          "sha256": "d4798ed8d01e9c0658c38450974e47d13fed3c7d6385fde2c19354d68138ac6c",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/build-attempt3.log",
+      "sourceSha256": "7b8516e30d98a56bf9783481f8517c64658dad9560360e46bee863750fb74053",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/build-attempt3.log",
+          "integrity": "bytes",
+          "sha256": "7b8516e30d98a56bf9783481f8517c64658dad9560360e46bee863750fb74053",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/requests-attempt1.log",
+      "sourceSha256": "ecd2c2d7127f2eb76cf6a216b3e4a3f9f984a728b2799db86db34796ae29c7b0",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/without_skill/archive/requests-attempt1.log",
+          "integrity": "bytes",
+          "sha256": "ecd2c2d7127f2eb76cf6a216b3e4a3f9f984a728b2799db86db34796ae29c7b0",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/probe.log",
+      "sourceSha256": "020595a2a5c022713329050f205f3680c3dd0b057f4db971a04440fde3ef4c40",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/probe.log",
+          "integrity": "bytes",
+          "sha256": "020595a2a5c022713329050f205f3680c3dd0b057f4db971a04440fde3ef4c40",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/inspect-options.log",
+      "sourceSha256": "2be91e65e4d78d4e0e0ac564af49e484882a48b07ce01281882d33d5a723b4b4",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/inspect-options.log",
+          "integrity": "bytes",
+          "sha256": "2be91e65e4d78d4e0e0ac564af49e484882a48b07ce01281882d33d5a723b4b4",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/verify-attempt-1.log",
+      "sourceSha256": "3d80aa8af849144ab1cac6cf0b214c7a98e2a5f3d5b47ae14f00a77ded355650",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/verify-attempt-1.log",
+          "integrity": "bytes",
+          "sha256": "3d80aa8af849144ab1cac6cf0b214c7a98e2a5f3d5b47ae14f00a77ded355650",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/verify-attempt-2.log",
+      "sourceSha256": "93d71441024272921fdbd2c92e57631d4122c82394bd161835d76bead2adf4dc",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/verify-attempt-2.log",
+          "integrity": "bytes",
+          "sha256": "93d71441024272921fdbd2c92e57631d4122c82394bd161835d76bead2adf4dc",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/verify-attempt-3.log",
+      "sourceSha256": "430429f47ddeb778865f2986078cbd69568a95099f4b968b463fa5eb4c276d97",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-3-lit-virtual-table/with_skill/archive/verify-attempt-3.log",
+          "integrity": "bytes",
+          "sha256": "430429f47ddeb778865f2986078cbd69568a95099f4b968b463fa5eb4c276d97",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-2-react-preferences/with_skill/archive/typecheck.log",
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-2-react-preferences/with_skill/archive/typecheck.log",
+          "integrity": "bytes",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-2-react-preferences/with_skill/archive/final-run.log",
+      "sourceSha256": "bae7228d54e66171e62e546774fb8db043eb407ede412fa27693eb2a0fb4ac7e",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-2-react-preferences/with_skill/archive/final-run.log",
+          "integrity": "bytes",
+          "sha256": "bae7228d54e66171e62e546774fb8db043eb407ede412fa27693eb2a0fb4ac7e",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m24-skills/iteration-1/eval-1-html-notification-settings/without_skill/archive/run.log",
+      "sourceSha256": "a266fce32a5f37fced88866d29acdacc1e0c0ebf36135586f628bffde57b99c0",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m24-skills/iteration-1/eval-1-html-notification-settings/without_skill/archive/run.log",
+          "integrity": "bytes",
+          "sha256": "a266fce32a5f37fced88866d29acdacc1e0c0ebf36135586f628bffde57b99c0",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m24-skills",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-tooling/final-owned-tests.log",
+      "sourceSha256": "61732c7297b085f2ec4baf5056074f51730c998e5cdd3ee421e8fc415af6eacf",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m25-tooling/final-owned-tests.log",
+          "integrity": "bytes",
+          "sha256": "61732c7297b085f2ec4baf5056074f51730c998e5cdd3ee421e8fc415af6eacf",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m25-tooling",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-tooling/cleanup-generators-tests.log",
+      "sourceSha256": "7ed6f6904551838e2f07aea9390923ee2bddfeb60b9b750d6cf0e7148bec4bb2",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m25-tooling/cleanup-generators-tests.log",
+          "integrity": "bytes",
+          "sha256": "7ed6f6904551838e2f07aea9390923ee2bddfeb60b9b750d6cf0e7148bec4bb2",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m25-tooling",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-tooling/cleanup-focused-tests.log",
+      "sourceSha256": "f1cc4177bae8398b6c0274f84777333ac10ef667f00765f28a11b97ff6707919",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m25-tooling/cleanup-focused-tests.log",
+          "integrity": "bytes",
+          "sha256": "f1cc4177bae8398b6c0274f84777333ac10ef667f00765f28a11b97ff6707919",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m25-tooling",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-tooling/final-audit-pinned.log",
+      "sourceSha256": "98185f35c07d777a225f4665f1990c2fcd273df7d8dde0efc6d812acd9959694",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m25-tooling/final-audit-pinned.log",
+          "integrity": "bytes",
+          "sha256": "98185f35c07d777a225f4665f1990c2fcd273df7d8dde0efc6d812acd9959694",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m25-tooling",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
+    },
+    {
+      "source": "notes/alignment/evidence/m25-tooling/final-tests-pinned.log",
+      "sourceSha256": "d4ba590a51b4cf8583e23585d334a07699231c005ad71162d920fb66228a0739",
+      "capturedRevision": "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60",
+      "kind": "raw-evidence",
+      "action": "preserve",
+      "destinations": [
+        {
+          "path": "docs/verification/systematization/m25-tooling/final-tests-pinned.log",
+          "integrity": "bytes",
+          "sha256": "d4ba590a51b4cf8583e23585d334a07699231c005ad71162d920fb66228a0739",
+          "purpose": "Preserved ignored verification log discovered by full filesystem census"
+        }
+      ],
+      "batch": "04-supplemental-m25-tooling",
+      "status": "complete",
+      "review": "task-04-supplemental.json"
     }
   ],
   "extractedFixtures": [
@@ -15553,7 +16237,7 @@
       "sha256": "e45ecb655d02737250e9088757874389c36055f7e0251093c9afea7baf887ab7",
       "utf8Bytes": 17309,
       "batch": "08-scoped-fixture-text",
-      "status": "prepared",
+      "status": "complete",
       "treatment": "Exact captured JavaScript text, loaded as data by the existing driver and written into its temporary fixture. Preserve bytes; authored-source formatting does not apply."
     },
     {
@@ -15563,7 +16247,7 @@
       "sha256": "b0f46290dc295944adf2ffd25f12d5789433a7ecc1d85af9ef4206130cec6c75",
       "utf8Bytes": 1384,
       "batch": "08-scoped-fixture-text",
-      "status": "prepared",
+      "status": "complete",
       "treatment": "Exact captured JavaScript text, loaded as data by the existing driver and written into its temporary fixture. Preserve bytes; authored-source formatting does not apply."
     }
   ],
@@ -15584,7 +16268,12 @@
     "skills/README.md",
     "site/release.ts",
     "site/site.ts",
-    ".gitignore"
+    ".gitignore",
+    "tools/geist/diff.ts",
+    "tools/geist/README.md",
+    "skills/evals/validation.json",
+    "scripts/__tests__/component-browser-checks.test.ts",
+    "site/__tests__/recipes.test.ts"
   ],
   "anchorRoutes": [
     {
@@ -15598,245 +16287,490 @@
       "anchor": "existing-house-implementation",
       "destination": "docs/research/07-design-foundations.md",
       "targetAnchor": "implementation-at-the-research-baseline",
-      "reason": "Recorded heading change in 06-research-07-design-foundations"
+      "reason": "Recorded heading/ownership change in 06-research-07-design-foundations"
     },
     {
       "source": "notes/analysis/hand-rolled-audit.md",
       "anchor": "audit-what-we-hand-rolled-that-a-package-could-own",
       "destination": "docs/research/13-hand-rolled-audit.md",
       "targetAnchor": "research-13-audit-what-we-hand-rolled-that-a-package-could-own",
-      "reason": "Recorded heading change in 06-research-13-hand-rolled-audit"
+      "reason": "Recorded heading/ownership change in 06-research-13-hand-rolled-audit"
     },
     {
       "source": "notes/analysis/functional-parity-sources.md",
       "anchor": "how-we-verify-functional-parity",
       "destination": "docs/research/12-functional-parity-sources.md",
       "targetAnchor": "research-12-functional-parity-source-investigation",
-      "reason": "Recorded heading change in 06-research-12-functional-parity-sources"
+      "reason": "Recorded heading/ownership change in 06-research-12-functional-parity-sources"
     },
     {
       "source": "notes/decisions/reference-systems.md",
       "anchor": "reference-evidence-and-house-changes",
       "destination": "docs/decisions/0082-reference-systems.md",
       "targetAnchor": "reference-evidence-and-component-changes",
-      "reason": "Recorded heading change in 05-decisions-030"
+      "reason": "Recorded heading/ownership change in 05-decisions-030"
     },
     {
       "source": "notes/analysis/repository-layout.md",
       "anchor": "repository-layout-investigation",
       "destination": "docs/research/18-repository-layout.md",
       "targetAnchor": "research-18-repository-layout-investigation",
-      "reason": "Recorded heading change in 06-research-18-repository-layout"
+      "reason": "Recorded heading/ownership change in 06-research-18-repository-layout"
     },
     {
       "source": "notes/analysis/floating-surface-shadows.md",
       "anchor": "floating-surface-shadow-review",
       "destination": "docs/research/11-floating-surface-shadows.md",
       "targetAnchor": "research-11-floating-surface-shadow-review",
-      "reason": "Recorded heading change in 06-research-11-floating-surface-shadows"
+      "reason": "Recorded heading/ownership change in 06-research-11-floating-surface-shadows"
     },
     {
       "source": "notes/decisions/toast-behaviour.md",
       "anchor": "use-the-house-stack-for-overlapping-toasts",
       "destination": "docs/decisions/0110-toast-behaviour.md",
       "targetAnchor": "use-the-selected-stack-for-overlapping-toasts",
-      "reason": "Recorded heading change in 05-decisions-037"
+      "reason": "Recorded heading/ownership change in 05-decisions-037"
     },
     {
       "source": "notes/analysis/animation-package.md",
       "anchor": "animation-package-investigation",
       "destination": "docs/research/02-animation-package.md",
       "targetAnchor": "research-02-animation-package-investigation",
-      "reason": "Recorded heading change in 06-research-02-animation-package"
+      "reason": "Recorded heading/ownership change in 06-research-02-animation-package"
     },
     {
       "source": "notes/analysis/animation-package.md",
       "anchor": "current-house-controls",
       "destination": "docs/research/02-animation-package.md",
       "targetAnchor": "controls-at-the-2026-09-19-checkpoint",
-      "reason": "Recorded heading change in 06-research-02-animation-package"
+      "reason": "Recorded heading/ownership change in 06-research-02-animation-package"
     },
     {
       "source": "notes/analysis/animation-package.md",
       "anchor": "recommendation-and-open-work",
       "destination": "docs/research/02-animation-package.md",
       "targetAnchor": "recommendation-and-open-work-at-the-research-checkpoint",
-      "reason": "Recorded heading change in 06-research-02-animation-package"
+      "reason": "Recorded heading/ownership change in 06-research-02-animation-package"
     },
     {
       "source": "notes/analysis/animation-package.md",
       "anchor": "dependencies-before-implementation",
       "destination": "docs/research/02-animation-package.md",
       "targetAnchor": "dependencies-recorded-before-implementation",
-      "reason": "Recorded heading change in 06-research-02-animation-package"
+      "reason": "Recorded heading/ownership change in 06-research-02-animation-package"
     },
     {
       "source": "notes/analysis/element-child-radius.md",
       "anchor": "el-gives-a-large-button-the-wrong-radius-and-the-spec-cannot-say-otherwise",
       "destination": "docs/research/10-element-child-radius.md",
       "targetAnchor": "research-10-el-gives-a-large-button-the-wrong-radius-and-the-spec-cannot-say-otherwise",
-      "reason": "Recorded heading change in 06-research-10-element-child-radius"
+      "reason": "Recorded heading/ownership change in 06-research-10-element-child-radius"
     },
     {
       "source": "notes/analysis/build-performance.md",
       "anchor": "build-and-delivery-investigation",
       "destination": "docs/research/05-build-performance.md",
       "targetAnchor": "research-05-build-and-delivery-investigation",
-      "reason": "Recorded heading change in 06-research-05-build-performance"
+      "reason": "Recorded heading/ownership change in 06-research-05-build-performance"
     },
     {
       "source": "notes/analysis/codebase-systematization.md",
       "anchor": "house-decisions-and-remaining-groups",
       "destination": "docs/research/06-codebase-systematization.md",
       "targetAnchor": "component-decisions-and-remaining-groups",
-      "reason": "Recorded heading change in 06-research-06-codebase-systematization"
+      "reason": "Recorded heading/ownership change in 06-research-06-codebase-systematization"
     },
     {
       "source": "notes/analysis/book-census-config.md",
       "anchor": "book-142-hard-differences-to-0-and-every-one-was-the-measurement",
       "destination": "docs/research/04-book-census-config.md",
       "targetAnchor": "research-04-book-142-hard-differences-to-0-and-every-one-was-the-measurement",
-      "reason": "Recorded heading change in 06-research-04-book-census-config"
+      "reason": "Recorded heading/ownership change in 06-research-04-book-census-config"
     },
     {
       "source": "notes/decisions/layout-spacing-properties.md",
       "anchor": "font-relative-house-spacing",
       "destination": "docs/decisions/0052-layout-spacing-properties.md",
       "targetAnchor": "font-relative-spacing",
-      "reason": "Recorded heading change in 05-decisions-019"
+      "reason": "Recorded heading/ownership change in 05-decisions-019"
     },
     {
       "source": "notes/analysis/question-dialog-countdown.md",
       "anchor": "question-dialog-countdown-cause-and-supported-route",
       "destination": "docs/research/17-question-dialog-countdown.md",
       "targetAnchor": "research-17-question-dialog-countdown-cause-and-supported-route",
-      "reason": "Recorded heading change in 06-research-17-question-dialog-countdown"
+      "reason": "Recorded heading/ownership change in 06-research-17-question-dialog-countdown"
     },
     {
       "source": "notes/analysis/developer-tooling.md",
       "anchor": "developer-tooling-phase-1-extension",
       "destination": "docs/research/08-developer-tooling.md",
       "targetAnchor": "research-08-developer-tooling-and-release-verification",
-      "reason": "Recorded heading change in 06-research-08-developer-tooling"
+      "reason": "Recorded heading/ownership change in 06-research-08-developer-tooling"
     },
     {
       "source": "notes/analysis/developer-tooling.md",
       "anchor": "remaining-design-and-verification",
       "destination": "docs/research/08-developer-tooling.md",
       "targetAnchor": "design-and-verification-remaining-at-the-2026-09-19-checkpoint",
-      "reason": "Recorded heading change in 06-research-08-developer-tooling"
+      "reason": "Recorded heading/ownership change in 06-research-08-developer-tooling"
     },
     {
       "source": "notes/analysis/behaviour-verification-method.md",
       "anchor": "how-we-will-verify-behaviour-parity",
       "destination": "docs/research/03-behaviour-verification-method.md",
       "targetAnchor": "research-03-behaviour-parity-verification-investigation",
-      "reason": "Recorded heading change in 06-research-03-behaviour-verification-method"
+      "reason": "Recorded heading/ownership change in 06-research-03-behaviour-verification-method"
     },
     {
       "source": "notes/analysis/icon-library.md",
       "anchor": "icon-library-investigation",
       "destination": "docs/research/14-icon-library.md",
       "targetAnchor": "research-14-icon-library-investigation",
-      "reason": "Recorded heading change in 06-research-14-icon-library"
+      "reason": "Recorded heading/ownership change in 06-research-14-icon-library"
     },
     {
       "source": "notes/analysis/icon-library.md",
       "anchor": "current-implementation",
       "destination": "docs/research/14-icon-library.md",
       "targetAnchor": "current-implementation-at-the-research-checkpoint",
-      "reason": "Recorded heading change in 06-research-14-icon-library"
+      "reason": "Recorded heading/ownership change in 06-research-14-icon-library"
     },
     {
       "source": "notes/analysis/documentation-site.md",
       "anchor": "documentation-site-investigation",
       "destination": "docs/research/09-documentation-site.md",
       "targetAnchor": "research-09-documentation-site-investigation",
-      "reason": "Recorded heading change in 06-research-09-documentation-site"
+      "reason": "Recorded heading/ownership change in 06-research-09-documentation-site"
     },
     {
       "source": "notes/analysis/documentation-site.md",
       "anchor": "existing-implementation",
       "destination": "docs/research/09-documentation-site.md",
       "targetAnchor": "existing-implementation-at-the-2026-09-19-checkpoint",
-      "reason": "Recorded heading change in 06-research-09-documentation-site"
+      "reason": "Recorded heading/ownership change in 06-research-09-documentation-site"
     },
     {
       "source": "notes/analysis/package-choices.md",
       "anchor": "package-choices-what-we-use-what-we-should-what-to-avoid",
       "destination": "docs/research/16-package-choices.md",
       "targetAnchor": "research-16-package-choices-and-integration-evidence",
-      "reason": "Recorded heading change in 06-research-16-package-choices"
+      "reason": "Recorded heading/ownership change in 06-research-16-package-choices"
     },
     {
       "source": "notes/analysis/package-choices.md",
       "anchor": "confirmed-correct-keep",
       "destination": "docs/research/16-package-choices.md",
       "targetAnchor": "historical-package-recommendations",
-      "reason": "Recorded heading change in 06-research-16-package-choices"
+      "reason": "Recorded heading/ownership change in 06-research-16-package-choices"
     },
     {
       "source": "notes/analysis/package-choices.md",
       "anchor": "worth-adopting",
       "destination": "docs/research/16-package-choices.md",
       "targetAnchor": "historical-candidate-recommendations",
-      "reason": "Recorded heading change in 06-research-16-package-choices"
+      "reason": "Recorded heading/ownership change in 06-research-16-package-choices"
     },
     {
       "source": "notes/analysis/package-choices.md",
       "anchor": "delete-on-sight",
       "destination": "docs/research/16-package-choices.md",
       "targetAnchor": "retired-blanket-polyfill-recommendation",
-      "reason": "Recorded heading change in 06-research-16-package-choices"
+      "reason": "Recorded heading/ownership change in 06-research-16-package-choices"
     },
     {
       "source": "notes/analysis/package-choices.md",
       "anchor": "shared-house-responsibilities",
       "destination": "docs/research/16-package-choices.md",
       "targetAnchor": "shared-responsibilities",
-      "reason": "Recorded heading change in 06-research-16-package-choices"
+      "reason": "Recorded heading/ownership change in 06-research-16-package-choices"
     },
     {
       "source": "notes/analysis/agent-tooling.md",
       "anchor": "agent-tooling-phase-1-extension",
       "destination": "docs/research/01-agent-tooling.md",
       "targetAnchor": "research-01-agent-tooling",
-      "reason": "Recorded heading change in 06-research-01-agent-tooling"
+      "reason": "Recorded heading/ownership change in 06-research-01-agent-tooling"
     },
     {
       "source": "notes/analysis/agent-tooling.md",
       "anchor": "existing-house-capability",
       "destination": "docs/research/01-agent-tooling.md",
       "targetAnchor": "existing-capability-at-the-2026-09-19-checkpoint",
-      "reason": "Recorded heading change in 06-research-01-agent-tooling"
+      "reason": "Recorded heading/ownership change in 06-research-01-agent-tooling"
     },
     {
       "source": "notes/decisions/execution-delegation.md",
       "anchor": "finish-the-approved-migration-without-further-decision-questions",
       "destination": "docs/decisions/0035-execution-delegation.md",
       "targetAnchor": "systematization-delegation-and-implementation-resolutions",
-      "reason": "Recorded heading change in 05-decisions-013"
+      "reason": "Recorded heading/ownership change in 05-decisions-013"
     },
     {
       "source": "notes/analysis/slotted-cascade.md",
       "anchor": "styling-slotted-content-what-the-cascade-actually-allows",
       "destination": "docs/research/19-slotted-cascade.md",
       "targetAnchor": "research-19-styling-slotted-content-what-the-cascade-actually-allows",
-      "reason": "Recorded heading change in 06-research-19-slotted-cascade"
+      "reason": "Recorded heading/ownership change in 06-research-19-slotted-cascade"
     },
     {
       "source": "notes/decisions/public-state-bridge.md",
       "anchor": "existing-house-helpers-are-the-baseline",
       "destination": "docs/decisions/0080-public-state-bridge.md",
       "targetAnchor": "existing-helpers-are-the-baseline",
-      "reason": "Recorded heading change in 05-decisions-029"
+      "reason": "Recorded heading/ownership change in 05-decisions-029"
     },
     {
       "source": "notes/analysis/systematic-approach.md",
       "anchor": "the-systematic-approach-to-finishing-this-port",
       "destination": "docs/research/20-systematic-approach.md",
       "targetAnchor": "research-20-systematic-verification-and-maintainer-workflow-research",
-      "reason": "Recorded heading change in 06-research-20-systematic-approach"
+      "reason": "Recorded heading/ownership change in 06-research-20-systematic-approach"
+    },
+    {
+      "source": "notes/alignment/proposal-coverage.md",
+      "anchor": "complete-proposal-coverage",
+      "destination": "spec/component-coverage.md",
+      "targetAnchor": "component-replacement-coverage",
+      "reason": "Recorded heading/ownership change in 07-proposal-coverage"
+    },
+    {
+      "source": "notes/alignment/proposal-coverage.md",
+      "anchor": "current-source-to-proposal-map",
+      "destination": "spec/component-coverage.md",
+      "targetAnchor": "original-source-to-contract-map",
+      "reason": "Recorded heading/ownership change in 07-proposal-coverage"
+    },
+    {
+      "source": "notes/alignment/phase-3-review.md",
+      "anchor": "phase-3-architecture-review",
+      "destination": "docs/history/systematization/architecture-review.md",
+      "targetAnchor": "systematization-architecture-responsibility-review",
+      "reason": "Recorded heading/ownership change in 07-phase-3-review"
+    },
+    {
+      "source": "notes/alignment/phase-3-review.md",
+      "anchor": "current-selections",
+      "destination": "docs/history/systematization/architecture-review.md",
+      "targetAnchor": "selections-at-architecture-closure",
+      "reason": "Recorded heading/ownership change in 07-phase-3-review"
+    },
+    {
+      "source": "notes/alignment/phase-3-review.md",
+      "anchor": "resume-here",
+      "destination": "docs/history/systematization/architecture-review.md",
+      "targetAnchor": "historical-continuation-and-timing-correction",
+      "reason": "Recorded heading/ownership change in 07-phase-3-review"
+    },
+    {
+      "source": "notes/alignment/inventory.md",
+      "anchor": "design-system-inventory",
+      "destination": "spec/SPEC-design-system.md",
+      "targetAnchor": "design-system-contract",
+      "reason": "Recorded heading/ownership change in 07-inventory"
+    },
+    {
+      "source": "notes/alignment/inventory.md",
+      "anchor": "content-and-interaction-architecture-recommendations",
+      "destination": "spec/SPEC-design-system.md",
+      "targetAnchor": "content-and-interaction-ownership",
+      "reason": "Recorded heading/ownership change in 07-inventory"
+    },
+    {
+      "source": "notes/alignment/inventory.md",
+      "anchor": "component-review-order",
+      "destination": "docs/history/systematization/inventory-history.md",
+      "targetAnchor": "approval-and-review-sequence",
+      "reason": "Recorded heading/ownership change in 07-inventory"
+    },
+    {
+      "source": "notes/alignment/inventory.md",
+      "anchor": "core-layout-proposal-for-review",
+      "destination": "spec/SPEC-design-system.md",
+      "targetAnchor": "core-layout-contract",
+      "reason": "Recorded heading/ownership change in 07-inventory"
+    },
+    {
+      "source": "notes/alignment/inventory.md",
+      "anchor": "responsive-authoring-proposal",
+      "destination": "spec/SPEC-design-system.md",
+      "targetAnchor": "responsive-authoring",
+      "reason": "Recorded heading/ownership change in 07-inventory"
+    },
+    {
+      "source": "notes/alignment/inventory.md",
+      "anchor": "candidate-property-table",
+      "destination": "spec/SPEC-design-system.md",
+      "targetAnchor": "property-table",
+      "reason": "Recorded heading/ownership change in 07-inventory"
+    },
+    {
+      "source": "notes/alignment/inventory.md",
+      "anchor": "review-choices-and-approval-gates",
+      "destination": "docs/history/systematization/inventory-history.md",
+      "targetAnchor": "review-choices-and-approval-gates",
+      "reason": "Recorded heading/ownership change in 07-inventory"
+    },
+    {
+      "source": "notes/alignment/inventory.md",
+      "anchor": "t-01-text",
+      "destination": "spec/SPEC-typography.md",
+      "targetAnchor": "shared-typography-interface",
+      "reason": "Recorded heading/ownership change in 07-inventory"
+    },
+    {
+      "source": "notes/alignment/inventory.md",
+      "anchor": "t-02-heading",
+      "destination": "spec/SPEC-typography.md",
+      "targetAnchor": "shared-typography-interface",
+      "reason": "Recorded heading/ownership change in 07-inventory"
+    },
+    {
+      "source": "notes/alignment/proposal-questions.md",
+      "anchor": "phase-4-decision-register--approved",
+      "destination": "docs/design/systematization-decisions.md",
+      "targetAnchor": "systematization-design-decisions",
+      "reason": "Recorded heading/ownership change in 07-proposal-questions"
+    },
+    {
+      "source": "notes/alignment/release-0.3.2.md",
+      "anchor": "release-032-production-build-correction",
+      "destination": "docs/releases/0.3.2.md",
+      "targetAnchor": "release-032-production-delivery-and-automated-closure",
+      "reason": "Recorded heading/ownership change in 07-release-0.3.2"
+    },
+    {
+      "source": "notes/alignment/release-0.3.2.md",
+      "anchor": "current-state",
+      "destination": "docs/releases/0.3.2.md",
+      "targetAnchor": "recorded-closure-and-subsequent-observation",
+      "reason": "Recorded heading/ownership change in 07-release-0.3.2"
+    },
+    {
+      "source": "notes/alignment/remaining-work.md",
+      "anchor": "remaining-work-and-component-review-queue",
+      "destination": "tasks/done/systematization/review-queue.md",
+      "targetAnchor": "completed-systematization-review-and-execution-queue",
+      "reason": "Recorded heading/ownership change in 07-remaining-work"
+    },
+    {
+      "source": "notes/alignment/remaining-work.md",
+      "anchor": "where-completion-stands",
+      "destination": "tasks/done/systematization/review-queue.md",
+      "targetAnchor": "completion-at-the-recorded-release-checkpoint",
+      "reason": "Recorded heading/ownership change in 07-remaining-work"
+    },
+    {
+      "source": "notes/alignment/remaining-work.md",
+      "anchor": "current-review-sequence",
+      "destination": "tasks/done/systematization/review-queue.md",
+      "targetAnchor": "historical-review-sequence",
+      "reason": "Recorded heading/ownership change in 07-remaining-work"
+    },
+    {
+      "source": "notes/alignment/remaining-work.md",
+      "anchor": "remaining-execution",
+      "destination": "tasks/done/systematization/review-queue.md",
+      "targetAnchor": "recorded-execution-checklist",
+      "reason": "Recorded heading/ownership change in 07-remaining-work"
+    },
+    {
+      "source": "notes/alignment/terms.md",
+      "anchor": "phase-2-terminology-record",
+      "destination": "docs/design/component-vocabulary.md",
+      "targetAnchor": "component-vocabulary-decision-record",
+      "reason": "Recorded heading/ownership change in 07-terms"
+    },
+    {
+      "source": "notes/alignment/chakra-pro-review.md",
+      "anchor": "complete-chakra-ui-pro-reference-review",
+      "destination": "docs/research/21-chakra-pro-collection.md",
+      "targetAnchor": "research-21-chakra-ui-pro-collection-review",
+      "reason": "Recorded heading/ownership change in 07-chakra-pro-review"
+    },
+    {
+      "source": "notes/alignment/chakra-pro-review.md",
+      "anchor": "resume-here",
+      "destination": "docs/research/21-chakra-pro-collection.md",
+      "targetAnchor": "historical-completion-and-use",
+      "reason": "Recorded heading/ownership change in 07-chakra-pro-review"
+    },
+    {
+      "source": "notes/alignment/additional-functionality-review.md",
+      "anchor": "phase-1-extension-additional-functionality",
+      "destination": "docs/design/additional-capabilities.md",
+      "targetAnchor": "additional-capability-requirements-and-research",
+      "reason": "Recorded heading/ownership change in 07-additional-functionality-review"
+    },
+    {
+      "source": "notes/alignment/additional-functionality-review.md",
+      "anchor": "resume-here",
+      "destination": "docs/design/additional-capabilities.md",
+      "targetAnchor": "historical-continuation",
+      "reason": "Recorded heading/ownership change in 07-additional-functionality-review"
+    },
+    {
+      "source": "notes/alignment/phase-2-review.md",
+      "anchor": "phase-2-review",
+      "destination": "docs/history/systematization/scope-review.md",
+      "targetAnchor": "systematization-scope-and-semantic-naming-review",
+      "reason": "Recorded heading/ownership change in 07-phase-2-review"
+    },
+    {
+      "source": "notes/alignment/phase-2-review.md",
+      "anchor": "resume-here",
+      "destination": "docs/history/systematization/scope-review.md",
+      "targetAnchor": "historical-continuation",
+      "reason": "Recorded heading/ownership change in 07-phase-2-review"
+    },
+    {
+      "source": "notes/alignment/phase-1-review.md",
+      "anchor": "phase-1-findings-and-recommendations",
+      "destination": "docs/history/systematization/research-review.md",
+      "targetAnchor": "systematization-research-review",
+      "reason": "Recorded heading/ownership change in 07-phase-1-review"
+    },
+    {
+      "source": "notes/alignment/phase-1-review.md",
+      "anchor": "decisions-to-take-next",
+      "destination": "docs/history/systematization/research-review.md",
+      "targetAnchor": "historical-decision-closure",
+      "reason": "Recorded heading/ownership change in 07-phase-1-review"
+    },
+    {
+      "source": "notes/alignment/release-0.3.1.md",
+      "anchor": "release-031-recovery",
+      "destination": "docs/releases/0.3.1.md",
+      "targetAnchor": "release-031-distribution-recovery",
+      "reason": "Recorded heading/ownership change in 07-release-0.3.1"
+    },
+    {
+      "source": "notes/alignment/release-0.3.1.md",
+      "anchor": "work-sequence",
+      "destination": "docs/releases/0.3.1.md",
+      "targetAnchor": "historical-work-sequence",
+      "reason": "Recorded heading/ownership change in 07-release-0.3.1"
+    },
+    {
+      "source": "notes/alignment/migration-plan.md",
+      "anchor": "phase-5-migration-plan",
+      "destination": "tasks/done/systematization/plan.md",
+      "targetAnchor": "completed-systematization-migration-plan",
+      "reason": "Recorded heading/ownership change in 07-completed-plan"
+    },
+    {
+      "source": "notes/alignment/migration-plan.md",
+      "anchor": "current-evidence-and-final-structure",
+      "destination": "tasks/done/systematization/plan.md",
+      "targetAnchor": "baseline-and-originally-intended-structure",
+      "reason": "Recorded heading/ownership change in 07-completed-plan"
+    },
+    {
+      "source": "notes/alignment/release-0.3.0.md",
+      "anchor": "release-030",
+      "destination": "docs/releases/0.3.0.md",
+      "targetAnchor": "release-030-incomplete-coordinated-publication",
+      "reason": "Recorded heading/ownership change in 07-release-0.3.0"
     }
   ],
   "newDocumentOwners": [
@@ -15897,5 +16831,8 @@
     "externalReferences": "Three concrete mutable release-body corrections prepared; immutable package retrieval checks pass; no outward writes",
     "scope": "Task2 inventory/reference/rule audit, not final migration acceptance"
   },
-  "batchIndex": "docs/verification/workflow-migration/batches.json"
+  "batchIndex": "docs/verification/workflow-migration/batches.json",
+  "additionalSourceRevisions": [
+    "335a6ed91883e5d63fa2d8fbe23f3d2c58359e60"
+  ]
 }

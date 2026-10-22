@@ -1,6 +1,6 @@
 # Maintainer workflow migration evidence
 
-The specification and plan are approved. Tasks1–6 are complete: the runner, audits, guard,690 exact evidence copies,115 decisions and20 research records. Tasks7–8 prepare current contracts/history and relocate live verification checks.
+The specification and plan are approved. Tasks 1–8 are complete: 970 accounted sources, 728 exact raw copies, 115 decisions, 20 research records, 53 reviewed record batches and 30 verified live-check batches. Shared guidance and live consumers are in final review.
 
 Follow the root agent instructions and [task list](../../../tasks/todo.md) for current work. These audit records describe source history, allocations and verification. Quoted old instructions and source paths are evidence, not a second workflow.
 
@@ -10,8 +10,12 @@ Follow the root agent instructions and [task list](../../../tasks/todo.md) for c
 - [Task 2: complete file, reference and rule audit](task-02.json).
 - [Task 3: migration guard, tests and independent review](task-03.json).
 - [Task 4: byte-identical evidence copies](task-04.json).
-- [Task 5:115 converted decision records](task-05.json).
-- [Task 6:20 converted research records](task-06.json).
+- [Task 5: 115 converted decision records](task-05.json).
+- [Task 6: 20 converted research records](task-06.json).
+- [Task 7: reviewed contracts, history and verification summaries](task-07.json).
+- [Task 8: relocated checks and actual runtime acceptance](task-08.json).
+- [Task 9: reviewed shared startup and technical guidance](task-09.json).
+- [Supplemental guard coverage](task-03-supplemental.json) and [38 captured logs](task-04-supplemental.json).
 - [Complete source-to-destination ledger](ledger.json).
 - [Bounded child tasks and exact file scopes](batches.json).
 - [Reference graph and historical-link resolution](references.json).

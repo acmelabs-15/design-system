@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import ts from "typescript";
 
 type MigrationStatus = "planned" | "prepared" | "complete";
@@ -20,6 +21,7 @@ interface MigrationRecord {
 export interface MigrationLedger {
   schemaVersion: number;
   baselineRevision: string;
+  additionalSourceRevisions?: string[];
   sourceRoots: string[];
   sourceCount: number;
   records: MigrationRecord[];
@@ -107,6 +109,30 @@ function baselineBytes(root: string, revision: string, files: string[]) {
   return result;
 }
 
+function filesystemSources(root: string, sourceRoots: string[], errors: string[]) {
+  const files: string[] = [];
+  const visit = (file: string) => {
+    if (!safePath(root, file, errors)) {
+      return;
+    }
+    const absolute = path.join(root, file);
+    const stat = fs.lstatSync(absolute, { throwIfNoEntry: false });
+    if (!stat) {
+      return;
+    }
+    if (stat.isDirectory()) {
+      for (const name of fs.readdirSync(absolute).sort()) {
+        visit(path.posix.join(file, name));
+      }
+    } else {
+      // A symlink is a source entry, not another tree to traverse.
+      files.push(file);
+    }
+  };
+  sourceRoots.forEach(visit);
+  return files;
+}
+
 function physicalPath(root: string, file: string): string {
   const absolute = path.join(root, file);
   if (fs.existsSync(absolute)) {
@@ -175,10 +201,51 @@ function markdownReferences(text: string) {
   return { links, code, anchors };
 }
 
-function sourceReferences(file: string, text: string) {
+function censusProvenance(source: ts.SourceFile) {
+  const bindings = new Map<ts.StringLiteralLike, string>();
+  const visit = (node: ts.Node) => {
+    if (ts.isVariableDeclaration(node) && ts.isIdentifier(node.name) && node.name.text === "docCensus" && node.initializer && ts.isArrayLiteralExpression(node.initializer)) {
+      for (const record of node.initializer.elements) {
+        if (!ts.isObjectLiteralExpression(record)) {
+          continue;
+        }
+        const properties = new Map(
+          record.properties.flatMap((property) =>
+            ts.isPropertyAssignment(property) && (ts.isIdentifier(property.name) || ts.isStringLiteral(property.name)) ? [[property.name.text, property.initializer] as const] : [],
+          ),
+        );
+        if (properties.size !== record.properties.length) {
+          continue;
+        }
+        const text = (name: string) => {
+          const value = properties.get(name);
+          return value && ts.isStringLiteralLike(value) ? value.text : undefined;
+        };
+        const fixture = text("fixtureId"),
+          revision = text("referenceRevision"),
+          paths = properties.get("acceptedDifferences");
+        if (text("status") !== "historical" || !fixture || !revision || !/^[a-f\d]{40}$/.test(revision) || !paths || !ts.isArrayLiteralExpression(paths)) {
+          continue;
+        }
+        for (const value of paths.elements) {
+          if (ts.isStringLiteralLike(value)) {
+            bindings.set(value, JSON.stringify([fixture, revision, value.text]));
+          }
+        }
+      }
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(source);
+  return bindings;
+}
+
+function sourceReferences(file: string, text: string, historicalBindings = new Set<string>()) {
   const source = ts.createSourceFile(file, text, ts.ScriptTarget.Latest, true);
+  const historical = new Set<ts.Node>(historicalBindings.size ? [...censusProvenance(source)].filter(([, binding]) => historicalBindings.has(binding)).map(([node]) => node) : []);
   const values: string[] = [];
   const inputs: { value: string; module: boolean; url?: boolean }[] = [];
+  const inputNodes = new Set<ts.Node>();
   let computed = false;
   const launch = (node: ts.Node) => ts.isCallExpression(node) && /(?:^|\.)(?:spawn|spawnSync)$/.test(node.expression.getText(source));
   const literal = (node: ts.Node | undefined) => (node && ts.isStringLiteralLike(node) ? node.text : undefined);
@@ -187,6 +254,7 @@ function sourceReferences(file: string, text: string) {
     if (value === undefined) {
       computed = true;
     } else {
+      inputNodes.add(node!);
       inputs.push({ value, module, url });
     }
   };
@@ -234,17 +302,17 @@ function sourceReferences(file: string, text: string) {
           parent.expression.getText(source),
         );
       const launchOperand = ts.isArrayLiteralExpression(parent) && launch(parent.parent);
-      if (!file.includes("/__tests__/") || ts.isImportDeclaration(parent) || ts.isExportDeclaration(parent) || directOperation || launchOperand) {
+      if (!inputNodes.has(node) && !historical.has(node) && (!file.includes("/__tests__/") || ts.isImportDeclaration(parent) || ts.isExportDeclaration(parent) || directOperation || launchOperand)) {
         values.push(node.text);
       }
     }
     ts.forEachChild(node, visit);
   };
   visit(source);
-  return { values, inputs, computed };
+  return { values, inputs, computed, historical: historical.size };
 }
 
-function checkReferences(root: string, ledger: MigrationLedger, report: MigrationReport) {
+function checkReferences(root: string, ledger: MigrationLedger, report: MigrationReport, baseline: ReadonlyMap<string, Buffer>) {
   const read = (file: string) => fs.readFileSync(path.join(root, file), "utf8");
   const audit = (file: string) => {
     const text = read(file);
@@ -257,12 +325,27 @@ function checkReferences(root: string, ledger: MigrationLedger, report: Migratio
     report.errors.push("Reference audit baseline differs from ledger");
   }
   const pending = (message: string) => (report.mode === "final" ? report.errors : report.pending).push(message);
-  const oldPaths = ledger.sourceRoots.map((oldRoot) => new RegExp("(^|[\\s\"'`(/=:])" + oldRoot.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "(?=$|[/\\s\"'`),#?])"));
-  const old = (value: string) => oldPaths.some((pattern) => pattern.test(value));
-  const active = (file: string, value: string) => {
-    const repositoryUrl = /^https:\/\/github\.com\/acmelabs-15\/design-system\/(?:blob|tree)\/([^/]+)\//.exec(value);
-    const mutableRepositoryUrl = repositoryUrl && !/^(?:[a-f\d]{40}|v\d+\.\d+\.\d+(?:[-+][\w.-]+)?)$/.test(repositoryUrl[1]);
-    if (old(value) && (!/^[a-z][a-z\d+.-]*:/i.test(value) || mutableRepositoryUrl)) {
+  const oldRootPath = (value: string) => {
+    const normalized = path.posix.normalize(value.split(/[?#]/, 1)[0]).replace(/\/$/, "");
+    return ledger.sourceRoots.some((oldRoot) => normalized === oldRoot || normalized.startsWith(oldRoot + "/"));
+  };
+  const oldPaths = ledger.sourceRoots.map((oldRoot) => {
+    const escaped = oldRoot.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    // An ordinary word is not a path. A slash, filename or resolved input supplies path context.
+    const tail = /[./]/.test(oldRoot) ? "(?:/[^\\s\"'`(),;<>]*)?(?=$|[\\s\"'`),#?])" : "/[^\\s\"'`(),;<>]*";
+    return new RegExp("(^|[\\s\"'`(=:])((?:\\.\\.?/)*" + escaped + tail + ")", "g");
+  });
+  const active = (file: string, value: string, resolved?: string) => {
+    const repositoryUrl = /^https:\/\/github\.com\/acmelabs-15\/design-system\/(?:blob|tree)\/([^/]+)\/(.*)$/.exec(value);
+    let retained = false;
+    if (repositoryUrl) {
+      retained = !/^(?:[a-f\d]{40}|v\d+\.\d+\.\d+(?:[-+][\w.-]+)?)$/.test(repositoryUrl[1]) && oldRootPath(repositoryUrl[2]);
+    } else if (resolved !== undefined) {
+      retained = oldRootPath(resolved);
+    } else if (!/^[a-z][a-z\d+.-]*:/i.test(value)) {
+      retained = oldPaths.some((pattern) => [...value.matchAll(pattern)].some((match) => oldRootPath(match[2].replace(/^(?:\.\.?\/)+/, ""))));
+    }
+    if (retained) {
       pending("Active old-path reference: " + file + " -> " + value);
     }
   };
@@ -290,18 +373,55 @@ function checkReferences(root: string, ledger: MigrationLedger, report: Migratio
     auditDirectory + "/live-file-audit.json",
   ]);
   const documents = new Map<string, ReturnType<typeof markdownReferences>>();
+  const historicalBindings = new Set<string>();
+  if (fs.existsSync(path.join(root, "site/recipes.ts"))) {
+    try {
+      const original = git(root, ["show", ledger.baselineRevision + ":site/recipes.ts"]).toString();
+      for (const binding of censusProvenance(ts.createSourceFile("site/recipes.ts", original, ts.ScriptTarget.Latest, true)).values()) {
+        historicalBindings.add(binding);
+      }
+    } catch {
+      // No baseline binding means no provenance exemption for current source literals.
+    }
+  }
   const source = (file: string, text: string) => {
-    const parsed = sourceReferences(file, text);
+    const parsed = sourceReferences(file, text, file === "site/recipes.ts" ? historicalBindings : undefined);
     parsed.values.forEach((value) => active(file, value));
+    if (parsed.historical) {
+      report.limits.push("Historical census source paths retain their exact baseline fixture/revision binding: " + file);
+    }
     if (parsed.computed) {
       report.limits.push("Computed or runtime-dependent source paths require execution: " + file);
     }
     for (const reference of parsed.inputs) {
       const { value } = reference;
-      if (reference.module && !value.startsWith(".")) {
+      if (reference.module && !reference.url && !value.startsWith(".")) {
         continue;
       }
-      const resolved = path.posix.normalize(reference.module ? path.posix.join(path.posix.dirname(file), value) : value).replace(/\/$/, "");
+      let resolved: string;
+      if (reference.url) {
+        let absolute: string;
+        try {
+          const url = new URL(value, pathToFileURL(path.join(root, file)));
+          if (url.protocol !== "file:") {
+            active(file, value);
+            report.limits.push("External or runtime source path requires execution: " + file + " -> " + value);
+            continue;
+          }
+          absolute = fileURLToPath(url);
+        } catch {
+          report.errors.push("Invalid source URL: " + file + " -> " + value);
+          continue;
+        }
+        if (!contained(root, absolute)) {
+          report.errors.push("Source reference escapes repository: " + file + " -> " + value);
+          continue;
+        }
+        resolved = path.relative(root, absolute) || ".";
+      } else {
+        resolved = path.posix.normalize(reference.module ? path.posix.join(path.posix.dirname(file), value) : value).replace(/\/$/, "");
+      }
+      active(file, value, resolved);
       // site/build.ts writes the MCP data; scripts/browser-assets.ts writes the worker beside built entrypoints.
       if (reference.url && ((file === "packages/mcp/src/cli.ts" && value === "./documentation.json") || (file === "src/shared/flow-engine.ts" && value === "./elk-worker.js"))) {
         report.limits.push("Generated runtime URL requires the package gate: " + file + " -> " + value);
@@ -315,9 +435,9 @@ function checkReferences(root: string, ledger: MigrationLedger, report: Migratio
         continue;
       }
       let absolute = path.join(root, resolved);
-      if (reference.module && (!reference.url || /\.[cm]?[jt]sx?$/.test(value))) {
+      if (reference.module && (!reference.url || /\.[cm]?[jt]sx?$/.test(resolved))) {
         try {
-          absolute = Bun.resolveSync(value, path.dirname(path.join(root, file)));
+          absolute = Bun.resolveSync(reference.url ? path.join(root, resolved) : value, path.dirname(path.join(root, file)));
         } catch {
           absolute = "";
         }
@@ -325,6 +445,9 @@ function checkReferences(root: string, ledger: MigrationLedger, report: Migratio
       if (absolute && fs.existsSync(absolute) && !contained(root, fs.realpathSync(absolute))) {
         report.errors.push("Source reference escapes repository: " + file + " -> " + value);
         continue;
+      }
+      if (absolute && fs.existsSync(absolute)) {
+        active(file, value, path.relative(root, fs.realpathSync(absolute)));
       }
       if (!absolute || !fs.existsSync(absolute) || (!reference.url && !fs.statSync(absolute).isFile())) {
         const allocated = targets.has(resolved) || (reference.module && [...targets].some((target) => target.replace(/\.[cm]?[jt]sx?$/, "") === resolved.replace(/\.[cm]?js$/, "")));
@@ -362,7 +485,7 @@ function checkReferences(root: string, ledger: MigrationLedger, report: Migratio
       pending("Historical link correction pending: " + file + " -> " + href);
       return;
     }
-    active(file, href);
+    active(file, href, resolved);
     if (path.isAbsolute(decoded) || !contained(root, path.resolve(root, resolved))) {
       report.errors.push("Link escapes repository: " + file + " -> " + href);
       return;
@@ -424,20 +547,68 @@ function checkReferences(root: string, ledger: MigrationLedger, report: Migratio
         }
         value = parsed.config;
       }
+      const taskName = /^task-(\d+(?:-supplemental)?)\.json$/.exec(path.basename(file))?.[1];
       const taskReport =
         file.startsWith(auditDirectory + "/") &&
-        /^task-\d+\.json$/.test(path.basename(file)) &&
+        taskName &&
         value &&
         typeof value === "object" &&
-        (("schemaVersion" in value && value.schemaVersion === 1 && "task" in value) || ("baselineRevision" in value && "sourceCoverage" in value && "scope" in value));
+        (("schemaVersion" in value && value.schemaVersion === 1 && "task" in value && (value.task === taskName || (typeof value.task === "number" && value.task === Number(taskName)))) ||
+          (taskName === "02" && "baselineRevision" in value && "sourceCoverage" in value && "scope" in value));
       const batchReport =
         file.startsWith(auditDirectory + "/batches/") && value && typeof value === "object" && "schemaVersion" in value && value.schemaVersion === 1 && "batch" in value && "verification" in value;
       if (!auditData.has(file) && file !== ledger.batchIndex && !taskReport && !batchReport) {
-        const strings = (item: unknown) => {
+        const researchRecord =
+          file === auditDirectory + "/initial-research.json"
+            ? ledger.records.find(
+                (record) =>
+                  record.kind === "migration-research-record" &&
+                  record.action === "convert" &&
+                  record.destinations.some((destination) => destination.path === file && destination.integrity === "semantic"),
+              )
+            : undefined;
+        const provenance = value && typeof value === "object" && "migrationProvenance" in value ? value.migrationProvenance : undefined;
+        const original = researchRecord && baseline.get(researchRecord.source);
+        const originalFields: Record<string, unknown> | undefined =
+          researchRecord &&
+          original &&
+          provenance &&
+          typeof provenance === "object" &&
+          "source" in provenance &&
+          provenance.source === researchRecord.source &&
+          "sourceSha256" in provenance &&
+          provenance.sourceSha256 === sha256(original)
+            ? JSON.parse(original.toString())
+            : undefined;
+        const assetCatalog =
+          file === "assets/material-symbols/catalog.json" &&
+          value &&
+          typeof value === "object" &&
+          "revision" in value &&
+          typeof value.revision === "string" &&
+          /^[a-f\d]{40}$/.test(value.revision) &&
+          "symbols" in value &&
+          Array.isArray(value.symbols);
+        const strings = (item: unknown, keys: string[] = []) => {
+          if (
+            originalFields &&
+            ((keys.length === 1 && Object.hasOwn(originalFields, keys[0]) && JSON.stringify(originalFields[keys[0]]) === JSON.stringify(item)) ||
+              (keys.join(".") === "migrationProvenance.source" && item === researchRecord?.source))
+          ) {
+            return;
+          }
           if (typeof item === "string") {
-            active(file, item);
+            if (assetCatalog && /^symbols\.\d+\.assets\.\d+\.file$/.test(keys.join("."))) {
+              const resolved = path.posix.normalize(path.posix.join(path.posix.dirname(file), item));
+              active(file, item, resolved);
+              if (safePath(root, resolved, report.errors) && !fs.existsSync(path.join(root, resolved))) {
+                report.errors.push("Missing asset catalog file: " + file + " -> " + item);
+              }
+            } else {
+              active(file, item);
+            }
           } else if (item && typeof item === "object") {
-            Object.values(item).forEach(strings);
+            Object.entries(item).forEach(([key, child]) => strings(child, [...keys, key]));
           }
         };
         strings(value);
@@ -469,8 +640,18 @@ export function verifyWorkflowMigration(root: string, mode: "preparation" | "fin
   }
   const ledgerBytes = fs.readFileSync(path.join(root, ledgerFile));
   const ledger: MigrationLedger = JSON.parse(ledgerBytes.toString());
-  if (ledger.schemaVersion !== 1 || !/^[a-f0-9]{40}$/.test(ledger.baselineRevision) || !ledger.sourceRoots.length) {
+  if (ledger.schemaVersion !== 1 || typeof ledger.baselineRevision !== "string" || !/^[a-f0-9]{40}$/.test(ledger.baselineRevision) || !ledger.sourceRoots.length) {
     throw new Error("Unsupported ledger schema or baseline revision");
+  }
+  const additions = ledger.additionalSourceRevisions;
+  if (
+    additions !== undefined &&
+    (!Array.isArray(additions) ||
+      additions.length === 0 ||
+      additions.some((revision) => typeof revision !== "string" || !/^[a-f0-9]{40}$/.test(revision)) ||
+      new Set([ledger.baselineRevision, ...additions]).size !== additions.length + 1)
+  ) {
+    throw new Error("Unsupported supplemental source revisions");
   }
   report.fingerprints[ledgerFile] = sha256(ledgerBytes);
   if (ledger.batchIndex !== auditDirectory + "/batches.json") {
@@ -543,15 +724,24 @@ export function verifyWorkflowMigration(root: string, mode: "preparation" | "fin
   if (report.errors.length) {
     return report;
   }
-  const files = git(root, ["ls-tree", "-r", "--name-only", "-z", ledger.baselineRevision, "--", ...ledger.sourceRoots])
-    .toString()
-    .split("\0")
-    .filter(Boolean);
-  if (files.length === 0) {
-    report.errors.push("Migration baseline is empty");
-    return report;
+  const baseline = new Map<string, Buffer>();
+  for (const revision of [ledger.baselineRevision, ...(ledger.additionalSourceRevisions ?? [])]) {
+    const revisionFiles = git(root, ["ls-tree", "-r", "--name-only", "-z", revision, "--", ...ledger.sourceRoots])
+      .toString()
+      .split("\0")
+      .filter(Boolean);
+    if (revision === ledger.baselineRevision && revisionFiles.length === 0) {
+      report.errors.push("Migration baseline is empty");
+      return report;
+    }
+    const added = revisionFiles.filter((file) => !baseline.has(file));
+    if (added.length) {
+      for (const [file, bytes] of baselineBytes(root, revision, added)) {
+        baseline.set(file, bytes);
+      }
+    }
   }
-  const baseline = baselineBytes(root, ledger.baselineRevision, files);
+  const files = [...baseline.keys()];
   report.counts.sources = files.length;
   report.counts.destinations = seenTargets.size;
   report.counts.extractedFixtures = ledger.extractedFixtures.length;
@@ -569,8 +759,12 @@ export function verifyWorkflowMigration(root: string, mode: "preparation" | "fin
     .toString()
     .split("\0")
     .filter(Boolean);
-  for (const file of currentFiles) {
-    if (!sources.has(file)) {
+  const actualFiles = mode === "preparation" ? filesystemSources(root, ledger.sourceRoots, report.errors) : [];
+  for (const file of new Set([...currentFiles, ...actualFiles])) {
+    if (path.posix.basename(file) === ".DS_Store" && fs.lstatSync(path.join(root, file), { throwIfNoEntry: false })?.isFile()) {
+      continue;
+    }
+    if (!sources.has(file) || !baseline.has(file)) {
       report.errors.push("Unlisted current source: " + file);
     }
   }
@@ -722,7 +916,7 @@ export function verifyWorkflowMigration(root: string, mode: "preparation" | "fin
     }
     report.limits.push("Batch result identity and completion assertions are accountability checks; semantic review and execution evidence need separate review.");
   }
-  checkReferences(root, ledger, report);
+  checkReferences(root, ledger, report, baseline);
   report.errors = [...new Set(report.errors)];
   report.pending = [...new Set(report.pending)];
   report.limits = [...new Set(report.limits)];

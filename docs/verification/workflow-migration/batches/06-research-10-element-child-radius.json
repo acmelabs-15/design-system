@@ -16,7 +16,7 @@
       "source": "notes/analysis/element-child-radius.md",
       "destination": "docs/research/10-element-child-radius.md",
       "sourceSha256": "ff19f3e70eb515b0e91d724109b5f722df5dabb09d20ffca53441a5296b32714",
-      "destinationSha256": "65e630fcd7f722f3cb8c0447f4bb81b662d289b4d43fea6c6c7e3d4bd23e6f02",
+      "destinationSha256": "9339593d8d7978d502355898f90e9d8ef1d7d0b92eba8158340b9f68ca4f87aa",
       "changes": [
         "Converted to numbered research with explicit dated scope, findings, provenance and limitations.",
         "Relocated live Markdown links through the final ledger; retained source paths as historical provenance.",
@@ -53,5 +53,10 @@
   ],
   "findings": [
     "The source leaves the generator correction unselected. Four historical differences are preserved without inventing a current task or resolution."
-  ]
+  ],
+  "coordinatorReconciliation": {
+    "date": "2026-10-21",
+    "source": "PLAN.md:766-770; docs/history/parity-port-plan.md:713-717",
+    "finding": "Later port completion records Peter accepting the four radius differences rather than changing the generator. Research now distinguishes the initial unresolved checkpoint from that explicit acceptance; no current component or generator correction is inferred."
+  }
 }
