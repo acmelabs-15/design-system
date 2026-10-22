@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-025",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/named-size-vocabulary.md",
+      "destination": "docs/decisions/0066-named-size-vocabulary.md",
+      "sourceSha256": "e447812282d1b80368bb2346256146962f6239e262bbdce92547f09facf4dbbe",
+      "destinationSha256": "3ebe94d1151fbb11cadaa966384774a106d4ab54766ed4e1d3140fbcbb8d1073",
+      "changes": [
+        "Preserved full-word convention and no-alias outcome.",
+        "Dated census and routed component-specific details to final contracts."
+      ],
+      "retainedQualifications": [
+        "Size tiers are component-relative and may be subsets.",
+        "Numeric dimensions and density are separate; density preserves text size.",
+        "Amount-display and layout booleans are not mechanical size-renaming targets."
+      ]
+    },
+    {
+      "source": "notes/decisions/native-and-managed-forms.md",
+      "destination": "docs/decisions/0067-native-and-managed-forms.md",
+      "sourceSha256": "b950dff46dfb1b308c040859c980b9d79868b55f36a23439ffca82bdedf84119",
+      "destinationSha256": "7bfa808ee7895c27cf6e431be5fb4a53bfd9679510965e37f94df224713bca6d",
+      "changes": [
+        "Retained native-first scope and optional managed forms.",
+        "Dated initial directive assessment and linked later integration contract."
+      ],
+      "retainedQualifications": [
+        "TanStack Store remains canonical component state.",
+        "Native value, validity, reset, fieldset and restoration require real browsers.",
+        "Managed integration must not create independently writable value copies."
+      ]
+    },
+    {
+      "source": "notes/decisions/native-form-architecture.md",
+      "destination": "docs/decisions/0068-native-form-architecture.md",
+      "sourceSha256": "7c1206f41cbbd04ce91bff707d70623260f16a4b292b68a5ab866d45271e0715",
+      "destinationSha256": "00018024c62741a4fdb1a534d17666601a9c23372531c3d5a7b44a32af83a7e1",
+      "changes": [
+        "Kept shared lifecycle responsibility and value ownership.",
+        "Converted the closed interface investigation and initial implementation limit to dated history.",
+        "Linked later shared-lifecycle evidence and contract."
+      ],
+      "retainedQualifications": [
+        "Composite controls submit one value; Field owns associations, not values/validity.",
+        "Initial architecture choice did not select callback bridge or a new runtime.",
+        "Later evidence retains its original browser and actual-platform limits."
+      ]
+    },
+    {
+      "source": "notes/decisions/navigation-compositions.md",
+      "destination": "docs/decisions/0069-navigation-compositions.md",
+      "sourceSha256": "a28143e569ae7c5ac198e916de6809e9e2d555f3ead15b2ab9c8b345b9af879b",
+      "destinationSha256": "a0ca872dd076b1aa7664c21ff9a786603c31884f375c846ca1adb510bb5c4a04",
+      "changes": [
+        "Retained component removals and full navigation examples.",
+        "Distinguished removed-component source behavior from current application ownership."
+      ],
+      "retainedQualifications": [
+        "Applications retain routes; Sidebar retains responsive modes.",
+        "Navigation does not become Tabs or Toolbar.",
+        "Group is only used when its specific presentation features are needed."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}
