@@ -41,7 +41,7 @@ test("npm cache applicability proof passes against its actual caller and stored 
   const root = path.resolve(import.meta.dir, "../..");
   const work = fs.mkdtempSync(path.join(os.tmpdir(), "acme-npm-cache-test-"));
   try {
-    const result = Bun.spawnSync([process.execPath, path.join(root, "notes/alignment/evidence/release-0.3.0/npm-cache-private.ts"), root], {
+    const result = Bun.spawnSync([process.execPath, path.join(root, "scripts/verification/dependency-audit/npm-cache-private.ts"), root], {
       cwd: work,
       stdout: "pipe",
       stderr: "pipe",

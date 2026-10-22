@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-workspace-install",
+  "status": "prepared",
+  "recordedAt": "2026-10-22T05:24:05.065Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "verification": {
+    "passed": true,
+    "scope": "Complete source read; focused strict TypeScript, Oxlint and Oxfmt pass. Runtime scenario awaits the shared built candidate."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m25-workspace/install-run.ts",
+      "destination": "scripts/verification/workspace/install-check.ts",
+      "sourceSha256": "7bced0d4e58532c8db5655f8b43404e57403f575469d7fba7ffa7c2effe84b7e",
+      "destinationSha256": "9376d6f4b98f0e3b5ed55d3113eb3beda9f09f28bc4bae5df367f4a6c1ceb313"
+    }
+  ],
+  "limits": [
+    "Aggregate migration, fresh consumer, and browser acceptance are recorded separately. Originals remain until cutover."
+  ]
+}

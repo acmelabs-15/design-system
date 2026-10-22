@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-public-defaults-browser-check",
+  "status": "prepared",
+  "recordedAt": "2026-10-22T05:24:05.063Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "verification": {
+    "passed": true,
+    "scope": "Complete source read; focused strict TypeScript, Oxlint and Oxfmt pass. Runtime scenario awaits the shared built candidate."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m26-audit/defaults-run.ts",
+      "destination": "scripts/verification/public-defaults/browser-check.ts",
+      "sourceSha256": "2e5e3ac9f4b5f97b85670589b7307882b980c4d5e5ebfc0636159a48618002c2",
+      "destinationSha256": "170530cfa3428730e7c14e954f46047070edf587ceff4870b06559f774b8d71a"
+    }
+  ],
+  "limits": [
+    "Aggregate migration, fresh consumer, and browser acceptance are recorded separately. Originals remain until cutover."
+  ]
+}

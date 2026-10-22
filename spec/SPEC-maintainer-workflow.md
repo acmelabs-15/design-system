@@ -1,6 +1,6 @@
 # Spec: Maintainer workflow migration
 
-Status: approved by Peter on 2026-10-21 through “approved,” in reply to the specification-approval request. The [implementation plan](../tasks/plan.md) and [task list](../tasks/todo.md) are approved by Peter after all three plan-review questions. The new startup rules and file moves are not applied.
+Status: approved by Peter on 2026-10-21 through “approved,” in reply to the specification-approval request. The [implementation plan](../tasks/plan.md) and [task list](../tasks/todo.md) are approved by Peter after all three plan-review questions. Tasks1–6 are complete. New records and verification files are prepared at their allocated paths; the old startup rules remain active until the coordinated cutover.
 
 This is one maintenance capability: a fresh agent finds the right context, follows the selected workflow, and leaves an accurate handoff. The sections below describe its parts, not separate product projects.
 

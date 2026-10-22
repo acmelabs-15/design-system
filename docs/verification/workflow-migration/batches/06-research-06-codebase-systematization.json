@@ -16,7 +16,7 @@
       "source": "notes/analysis/codebase-systematization.md",
       "destination": "docs/research/06-codebase-systematization.md",
       "sourceSha256": "2f5bf8007d3d76dc5174d81815ebb3bf7822058ff18aeb88b24fd71a37b4b18c",
-      "destinationSha256": "7d9ac70a6ee10d01b34bebb8413aabfdc9fef4a5e0179652cdd2b275dc906480",
+      "destinationSha256": "9bcea54e1eaee727c838e48840cf7b337b7a6476bb94b1b44884162b22240bdc",
       "changes": [
         "Reframed the research as dated findings and later implementation, retaining all source sections, figures, counts, failed probes and source citations.",
         "Retired old phase queues, source-freeze/approval commands and stale handoff wording; linked resulting contracts/releases.",
@@ -38,5 +38,11 @@
       "newAnchor": "component-decisions-and-remaining-groups"
     }
   ],
-  "findings": []
+  "findings": [
+    {
+      "type": "resolved-documentation-discrepancy",
+      "date": "2026-10-21",
+      "evidence": "src/components/empty-state/empty-state.ts:38–53 implements default|outline|subtle, matching the approved requirement. The original M18 plain wording is preserved as a historical error, with correction."
+    }
+  ]
 }

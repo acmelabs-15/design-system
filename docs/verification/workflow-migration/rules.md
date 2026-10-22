@@ -127,13 +127,13 @@ Global user preferences remain untouched. Retiring a duplicate repository proced
 | P43 | PLAN.md:336–345 | Rewrite | Tool roles remain useful for generation work; freeze numeric extraction counts as historical evidence. | docs/development/generation.md |
 | P44 | PLAN.md:347–396 | Retire | Old global pointer list and “docs is build output” conflict with the approved layout. Convert useful documents and keep provenance in the ledger. | Git history |
 | P45 | notes/alignment/README.md:3–41 | Rewrite | Split current handoff from release history, verification evidence and machine-specific setup facts. Keep exact red baseline and unperformed-platform caveats visible. | docs/STATUS.md |
-| P46 | notes/alignment/README.md:45–70,98–165 | Rewrite | Dated implementation checkpoints retain dates and limits. Remove their present-tense next actions from active guidance; preserve source decisions in their allocated records. | docs/history/systematization-pass.md |
+| P46 | notes/alignment/README.md:45–70,98–165 | Rewrite | Dated implementation checkpoints retain dates and limits. Remove their present-tense next actions from active guidance; preserve source decisions in their allocated records. | docs/history/systematization/pass-history.md |
 | P47 | notes/alignment/README.md:245–256 | Retire | Local skill routing, preferred local question-copy rule and old project-over-plugin override conflict with selected brain routing. | Git history |
 | P48 | notes/alignment/README.md:262 | Rewrite | Keep no agent deadline and unanswered-state semantics. Retire unconditional multiple-choice/chat prohibition; B-question uses the current permitted host surface. | Installed brain:ask-user-question |
-| P49 | notes/alignment/README.md:263,275–490 | Retire | Completed phase gates, per-inventory interviews, old queues and M00 prerequisites do not restart after migration. | docs/history/systematization-pass.md |
+| P49 | notes/alignment/README.md:263,275–490 | Retire | Completed phase gates, per-inventory interviews, old queues and M00 prerequisites do not restart after migration. | docs/history/systematization/pass-history.md |
 | P50 | notes/alignment/README.md:264–269 | Rewrite | Product source selection and evidence obligations stay scoped to component decisions. Generic interview/proposal procedure belongs to brain. | docs/development/reference-sources.md |
 | P51 | notes/alignment/README.md:270–273 | Rewrite | Removal/rename audits reach actual owned source, styles, entries, metadata and callers. Record platform naming constraints. Ask only unresolved user choices. | docs/development/components.md |
-| P52 | notes/alignment/README.md:492–522 | Rewrite | Keep producer pointer and exact dated evidence; retire stale active worktree, next-step and permission language. | docs/history/systematization-pass.md |
+| P52 | notes/alignment/README.md:492–522 | Rewrite | Keep producer pointer and exact dated evidence; retire stale active worktree, next-step and permission language. | docs/history/systematization/pass-history.md |
 
 ### Local skills and completed delegation
 

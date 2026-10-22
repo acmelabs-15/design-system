@@ -1,6 +1,6 @@
 # Implementation plan: maintainer workflow migration
 
-Status: approved by Peter on 2026-10-21. The specification and all three plan-review points are approved. Tasks 1–4 and Checkpoint A are complete; decision and research conversion is next. Full migration review remains task 12.
+Status: approved by Peter for local implementation on 2026-10-21. Tasks 1–6 and Checkpoint A are complete. Current work reconciles specifications/history and relocates live verification checks (tasks7–8). The old startup owner remains active until task11. Full migration acceptance and independent review remain task12.
 
 Task state belongs in [todo.md](todo.md). The existing [handoff](../notes/alignment/README.md#where-we-are) remains authoritative until the cutover task.
 

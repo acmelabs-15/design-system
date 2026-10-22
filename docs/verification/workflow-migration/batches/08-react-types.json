@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-react-types",
+  "status": "complete",
+  "recordedAt": "2026-10-22T05:24:05.063Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "verification": {
+    "passed": true,
+    "scope": "Focused relocated scenario and checks",
+    "runtime": "Bun 1.4.2",
+    "types": "Strict TypeScript with bundler resolution and react-jsx passes against the linked built packages, including all five expected-error assertions.",
+    "static": "Oxlint/Oxfmt passed",
+    "review": "Formatting only. Public props, event payloads and negative assertions are unchanged.",
+    "limit": "Packed-consumer validation remains part of final package acceptance."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m22-react/types.tsx",
+      "destination": "scripts/verification/react/fixtures/public-types.tsx",
+      "sourceSha256": "7707c8f821704fef0135805400b2bd12be6591c9ff16e7f685dc88c0796cde3e",
+      "destinationSha256": "8bf7f1c1386aae4c651fa639f0a8069c5a0e3ba119c92695ab666b32f75a6b52"
+    }
+  ],
+  "limits": [
+    "Aggregate migration, fresh consumer, and browser acceptance are recorded separately. Originals remain until cutover."
+  ]
+}

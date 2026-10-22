@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-bundling",
+  "status": "prepared",
+  "recordedAt": "2026-10-22T05:24:05.057Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "verification": {
+    "passed": true,
+    "scope": "Complete source read; focused strict TypeScript, Oxlint and Oxfmt pass. Runtime scenario awaits the shared built candidate."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m26-bundle/consumer-probe.ts",
+      "destination": "scripts/verification/bundling/fixtures/consumer.ts",
+      "sourceSha256": "091724b11114b6a2615409cf3e6c3677214a1e7e04a452c14c131c6ef246438e",
+      "destinationSha256": "fa04f6b73c7611d96394f952bc84e6c76f77cd2be9547f959bccd3333966851d"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-bundle/run.ts",
+      "destination": "scripts/verification/bundling/browser-check.ts",
+      "sourceSha256": "04db535f51336dafb6507919502298bfd28a6e835d2d06712060089c7f13638e",
+      "destinationSha256": "deb51e363bf56aae336c3790b5fabe6aa09c65cab96b2567081aeaa8a9003f79"
+    }
+  ],
+  "limits": [
+    "Aggregate migration, fresh consumer, and browser acceptance are recorded separately. Originals remain until cutover."
+  ]
+}

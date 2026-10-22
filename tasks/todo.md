@@ -1,6 +1,6 @@
 # Tasks: maintainer workflow migration
 
-Status: approved for local implementation, 2026-10-21. Tasks 1–4 and Checkpoint A are complete. Decision and research conversion is next. Full migration acceptance and independent review remain task 12.
+Status: approved by Peter for local implementation on 2026-10-21. Tasks 1–6 and Checkpoint A are complete. Current work reconciles specifications/history and relocates live verification checks (tasks7–8). The old startup owner remains active until task11. Full migration acceptance and independent review remain task12.
 
 The current handoff is still [the existing pass entry point](../notes/alignment/README.md#where-we-are). Task 11 changes that owner.
 
@@ -11,8 +11,8 @@ The current handoff is still [the existing pass entry point](../notes/alignment/
 - [x] 3. Prove the migration guards — [evidence and review](../docs/verification/workflow-migration/task-03.json).
 - [x] Checkpoint A: safe preparation
 - [x] 4. Migrate raw evidence batches — [690 byte-identical copies](../docs/verification/workflow-migration/task-04.json).
-- [ ] 5. Convert decision-record batches
-- [ ] 6. Convert research batches
+- [x] 5. Convert decision-record batches — [115 records and review](../docs/verification/workflow-migration/task-05.json).
+- [x] 6. Convert research batches — [20 records and review](../docs/verification/workflow-migration/task-06.json).
 - [ ] 7. Reconcile specifications, design records and completed history
 - [ ] 8. Migrate live verification batches
 - [ ] Checkpoint B: records and live checks
@@ -318,65 +318,65 @@ The [batch index](../docs/verification/workflow-migration/batches.json) owns exa
 - [x] 04-evidence-research-2026-09-23 — 1 source file; depends on task-02, task-03.
 - [x] 04-evidence-research-baseline — 11 source files; depends on task-02, task-03.
 - [x] 04-original-request — 1 source file; depends on task-02, task-03.
-- [ ] 05-decisions-001 — 1 source file; depends on task-02, task-03.
-- [ ] 05-decisions-002 — 1 source file; depends on task-02, task-03.
-- [ ] 05-decisions-003 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-004 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-005 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-006 — 2 source files; depends on task-02, task-03.
-- [ ] 05-decisions-007 — 1 source file; depends on task-02, task-03.
-- [ ] 05-decisions-008 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-009 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-010 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-011 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-012 — 1 source file; depends on task-02, task-03.
-- [ ] 05-decisions-013 — 1 source file; depends on task-02, task-03.
-- [ ] 05-decisions-014 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-015 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-016 — 3 source files; depends on task-02, task-03.
-- [ ] 05-decisions-017 — 1 source file; depends on task-02, task-03.
-- [ ] 05-decisions-018 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-019 — 1 source file; depends on task-02, task-03.
-- [ ] 05-decisions-020 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-021 — 1 source file; depends on task-02, task-03.
-- [ ] 05-decisions-022 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-023 — 3 source files; depends on task-02, task-03.
-- [ ] 05-decisions-024 — 1 source file; depends on task-02, task-03.
-- [ ] 05-decisions-025 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-026 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-027 — 3 source files; depends on task-02, task-03.
-- [ ] 05-decisions-028 — 1 source file; depends on task-02, task-03.
-- [ ] 05-decisions-029 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-030 — 1 source file; depends on task-02, task-03.
-- [ ] 05-decisions-031 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-032 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-033 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-034 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-035 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-036 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-037 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-038 — 4 source files; depends on task-02, task-03.
-- [ ] 05-decisions-039 — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-01-agent-tooling — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-02-animation-package — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-03-behaviour-verification-method — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-04-book-census-config — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-05-build-performance — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-06-codebase-systematization — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-07-design-foundations — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-08-developer-tooling — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-09-documentation-site — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-10-element-child-radius — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-11-floating-surface-shadows — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-12-functional-parity-sources — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-13-hand-rolled-audit — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-14-icon-library — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-15-lit-practice-review — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-16-package-choices — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-17-question-dialog-countdown — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-18-repository-layout — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-19-slotted-cascade — 1 source file; depends on task-02, task-03.
-- [ ] 06-research-20-systematic-approach — 1 source file; depends on task-02, task-03.
+- [x] 05-decisions-001 — 1 source file; depends on task-02, task-03.
+- [x] 05-decisions-002 — 1 source file; depends on task-02, task-03.
+- [x] 05-decisions-003 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-004 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-005 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-006 — 2 source files; depends on task-02, task-03.
+- [x] 05-decisions-007 — 1 source file; depends on task-02, task-03.
+- [x] 05-decisions-008 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-009 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-010 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-011 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-012 — 1 source file; depends on task-02, task-03.
+- [x] 05-decisions-013 — 1 source file; depends on task-02, task-03.
+- [x] 05-decisions-014 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-015 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-016 — 3 source files; depends on task-02, task-03.
+- [x] 05-decisions-017 — 1 source file; depends on task-02, task-03.
+- [x] 05-decisions-018 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-019 — 1 source file; depends on task-02, task-03.
+- [x] 05-decisions-020 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-021 — 1 source file; depends on task-02, task-03.
+- [x] 05-decisions-022 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-023 — 3 source files; depends on task-02, task-03.
+- [x] 05-decisions-024 — 1 source file; depends on task-02, task-03.
+- [x] 05-decisions-025 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-026 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-027 — 3 source files; depends on task-02, task-03.
+- [x] 05-decisions-028 — 1 source file; depends on task-02, task-03.
+- [x] 05-decisions-029 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-030 — 1 source file; depends on task-02, task-03.
+- [x] 05-decisions-031 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-032 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-033 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-034 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-035 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-036 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-037 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-038 — 4 source files; depends on task-02, task-03.
+- [x] 05-decisions-039 — 1 source file; depends on task-02, task-03.
+- [x] 06-research-01-agent-tooling — 1 source file; depends on task-02, task-03.
+- [x] 06-research-02-animation-package — 1 source file; depends on task-02, task-03.
+- [x] 06-research-03-behaviour-verification-method — 1 source file; depends on task-02, task-03.
+- [x] 06-research-04-book-census-config — 1 source file; depends on task-02, task-03.
+- [x] 06-research-05-build-performance — 1 source file; depends on task-02, task-03.
+- [x] 06-research-06-codebase-systematization — 1 source file; depends on task-02, task-03.
+- [x] 06-research-07-design-foundations — 1 source file; depends on task-02, task-03.
+- [x] 06-research-08-developer-tooling — 1 source file; depends on task-02, task-03.
+- [x] 06-research-09-documentation-site — 1 source file; depends on task-02, task-03.
+- [x] 06-research-10-element-child-radius — 1 source file; depends on task-02, task-03.
+- [x] 06-research-11-floating-surface-shadows — 1 source file; depends on task-02, task-03.
+- [x] 06-research-12-functional-parity-sources — 1 source file; depends on task-02, task-03.
+- [x] 06-research-13-hand-rolled-audit — 1 source file; depends on task-02, task-03.
+- [x] 06-research-14-icon-library — 1 source file; depends on task-02, task-03.
+- [x] 06-research-15-lit-practice-review — 1 source file; depends on task-02, task-03.
+- [x] 06-research-16-package-choices — 1 source file; depends on task-02, task-03.
+- [x] 06-research-17-question-dialog-countdown — 1 source file; depends on task-02, task-03.
+- [x] 06-research-18-repository-layout — 1 source file; depends on task-02, task-03.
+- [x] 06-research-19-slotted-cascade — 1 source file; depends on task-02, task-03.
+- [x] 06-research-20-systematic-approach — 1 source file; depends on task-02, task-03.
 - [ ] 07-actions — 1 source file; depends on task-04, task-05, task-06.
 - [ ] 07-additional-functionality-review — 1 source file; depends on task-04, task-05, task-06.
 - [ ] 07-chakra-pro-review — 1 source file; depends on task-04, task-05, task-06.
@@ -430,10 +430,10 @@ The [batch index](../docs/verification/workflow-migration/batches.json) owns exa
 - [ ] 07-terms — 1 source file; depends on task-04, task-05, task-06.
 - [ ] 07-typography — 1 source file; depends on task-04, task-05, task-06.
 - [ ] 07-workflow-research — 1 source file; depends on task-04, task-05, task-06.
-- [ ] 08-browser-distribution — 2 source files; depends on task-01, task-02, task-03.
+- [x] 08-browser-distribution — 2 source files; depends on task-01, task-02, task-03.
 - [ ] 08-bundling — 2 source files; depends on task-01, task-02, task-03.
 - [ ] 08-component-data — 2 source files; depends on task-01, task-02, task-03.
-- [ ] 08-dependency-audit-npm-cache-private — 1 source file; depends on task-01, task-02, task-03.
+- [x] 08-dependency-audit-npm-cache-private — 1 source file; depends on task-01, task-02, task-03.
 - [ ] 08-devtools-manual — 3 source files; depends on task-01, task-02, task-03.
 - [ ] 08-documentation-action-labels.browser-check — 1 source file; depends on task-01, task-02, task-03.
 - [ ] 08-documentation-appearance.browser-check — 1 source file; depends on task-01, task-02, task-03.
@@ -452,11 +452,11 @@ The [batch index](../docs/verification/workflow-migration/batches.json) owns exa
 - [ ] 08-public-defaults-browser-check — 1 source file; depends on task-01, task-02, task-03.
 - [ ] 08-react-defaults — 2 source files; depends on task-01, task-02, task-03.
 - [ ] 08-react-runtime — 2 source files; depends on task-01, task-02, task-03.
-- [ ] 08-react-types — 1 source file; depends on task-01, task-02, task-03.
+- [x] 08-react-types — 1 source file; depends on task-01, task-02, task-03.
 - [ ] 08-removals-check — 1 source file; depends on task-01, task-02, task-03, 07-proposal-coverage.
 - [ ] 08-scoped-fixture-text — 1 source file; depends on task-01, task-02, task-03.
 - [ ] 08-scoped-registration — 2 source files; depends on task-01, task-02, task-03, 08-scoped-fixture-text, 08-browser-distribution.
-- [ ] 08-table-declaration-patch-check — 1 source file; depends on task-01, task-02, task-03.
+- [x] 08-table-declaration-patch-check — 1 source file; depends on task-01, task-02, task-03.
 - [ ] 08-table-worker-consumer.browser-check — 1 source file; depends on task-01, task-02, task-03.
 - [ ] 08-workspace-consumer — 2 source files; depends on task-01, task-02, task-03.
 - [ ] 08-workspace-install — 1 source file; depends on task-01, task-02, task-03.

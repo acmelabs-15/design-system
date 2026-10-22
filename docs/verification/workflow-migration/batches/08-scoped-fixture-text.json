@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "batch": "08-scoped-fixture-text",
+  "status": "prepared",
+  "recordedAt": "2026-10-22T05:21:21.458Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "verification": {
+    "passed": true,
+    "scope": "Exact source or JSON string bytes, exclusive creation and destination hash. Runtime verification remains pending."
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m05-explicit-style-helper-2026-09-21.json",
+      "jsonPointer": "/browser/reproduction/polyfill.js",
+      "destination": "scripts/verification/scoped-registration/fixtures/polyfill.js.txt",
+      "sha256": "e45ecb655d02737250e9088757874389c36055f7e0251093c9afea7baf887ab7",
+      "bytes": 17309
+    },
+    {
+      "source": "notes/alignment/evidence/m05-explicit-style-helper-2026-09-21.json",
+      "jsonPointer": "/browser/reproduction/bootstrap-source.js",
+      "destination": "scripts/verification/scoped-registration/fixtures/bootstrap.js.txt",
+      "sha256": "b0f46290dc295944adf2ffd25f12d5789433a7ecc1d85af9ef4206130cec6c75",
+      "bytes": 1384
+    }
+  ]
+}
