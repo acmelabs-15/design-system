@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-032",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/results-pagination.md",
+      "destination": "docs/decisions/0087-results-pagination.md",
+      "sourceSha256": "ca3c1a52d350eee5ba5b749d86106124efa69e91a7c11d561202598b7034b1ec",
+      "destinationSha256": "c5a076e471181caa6164287329b46035713f1fcd069778894f37af4fd859d90f",
+      "changes": [
+        "Led with final approved coordinated parts and retained earlier recipe-only proposal as history.",
+        "Preserved resolved-review heading/anchor, original request and exact approval attribution.",
+        "Linked final detailed contract."
+      ],
+      "retainedQualifications": [
+        "Application owns page/page size/reset/data; unknown totals never fabricate a last page.",
+        "No TanStack Table engine; jump-to-page remains a Number Input composition.",
+        "The 2026-09-19 request was not itself interface approval; 2026-09-20 whole-set approval resolved it."
+      ]
+    },
+    {
+      "source": "notes/decisions/rich-help-activation.md",
+      "destination": "docs/decisions/0088-rich-help-activation.md",
+      "sourceSha256": "d0faefc3284314ac3b57eda1cce05b1621f1655bdbdb85e4c68db5cdc1a70ef7",
+      "destinationSha256": "f17ba4cc36b93f844521a42d106ea353585de3bdc13425ed53dad2103c6ace0a",
+      "changes": [
+        "Preserved explicit activation and distinct preview/help roles.",
+        "Linked later interface contract."
+      ],
+      "retainedQualifications": [
+        "Material Web supplied tooltip tokens but no inspected Tooltip Lit component.",
+        "Published design guidance is not shipped-implementation evidence."
+      ]
+    },
+    {
+      "source": "notes/decisions/scroll-area-behaviour.md",
+      "destination": "docs/decisions/0089-scroll-area-behaviour.md",
+      "sourceSha256": "f30de2825afd3c84a3c1746978c10bf487974a06c012c9aef4da03fb528a33a2",
+      "destinationSha256": "3f5859abc70d541afad78b62716239bea1826e17b97f09254b77cdd224aa303f",
+      "changes": [
+        "Retained custom-control/native-scroll trade-off and final Scroller replacement.",
+        "Dated initial open defaults and retired phase gate; linked contract.",
+        "Final source-to-target review corrected the exact contract/history target or an updated heading anchor."
+      ],
+      "retainedQualifications": [
+        "OverlayScrollbars is not newly selected.",
+        "Layout and TanStack Virtual remain separate.",
+        "Edge fades/button scrolling remain available through optional parts/composition.",
+        "Cross-family RTL, focus, reduced motion and lifecycle verification remains required."
+      ]
+    },
+    {
+      "source": "notes/decisions/segmented-control.md",
+      "destination": "docs/decisions/0090-segmented-control.md",
+      "sourceSha256": "ffcdea0359f5111daab480aaef5d57780823034cf39213d4f4b25d8bbe70c328",
+      "destinationSha256": "f69950454326644d2116b3eaef96fe1dacae33a0f2cb6127b179a89aa973b4ce",
+      "changes": [
+        "Retained radio-based composition and final replacements.",
+        "Linked contract for originally pending details."
+      ],
+      "retainedQualifications": [
+        "Group does not own selection/forms; one owner handles each gesture/key.",
+        "Tabs owns content panels; Toggle Button owns independent pressed state.",
+        "Shared indicator owns motion in both axes."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}
