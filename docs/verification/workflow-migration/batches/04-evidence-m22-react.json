@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m22-react",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.598Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m22-react/table/build-worker.ts",
+      "destination": "docs/verification/systematization/m22-react/table/build-worker.ts",
+      "bytes": 361,
+      "sha256": "1e893c5e17dfb2108a4ec67b90cfd8b8cb942fe8be3a3cf3286b8c01710bc5c6"
+    },
+    {
+      "source": "notes/alignment/evidence/m22-react/table/build.ts",
+      "destination": "docs/verification/systematization/m22-react/table/build.ts",
+      "bytes": 577,
+      "sha256": "1d0c78cd291824209ffdc13caa30cb4fa02cdcd212768b2994aa40b6a5db0839"
+    },
+    {
+      "source": "notes/alignment/evidence/m22-react/table/consumer-run.ts",
+      "destination": "docs/verification/systematization/m22-react/table/consumer-run.ts",
+      "bytes": 8645,
+      "sha256": "aea904428872441520e2e3d74046088533d0d4b3cb37ae12d4e4b0e3b2a7dcca"
+    },
+    {
+      "source": "notes/alignment/evidence/m22-react/table/consumer.ts",
+      "destination": "docs/verification/systematization/m22-react/table/consumer.ts",
+      "bytes": 518,
+      "sha256": "f51a647f82b5a13d08a3ec8edc799215dbc6807175971c64ed50d4dc7f53c67f"
+    },
+    {
+      "source": "notes/alignment/evidence/m22-react/table/virtual-consumer.ts",
+      "destination": "docs/verification/systematization/m22-react/table/virtual-consumer.ts",
+      "bytes": 637,
+      "sha256": "74291c2bf60f7a30e76f9a5debb436248bc84dff34ad72dcc76a3139217bf5f5"
+    },
+    {
+      "source": "notes/alignment/evidence/m22-react/table/virtual-run.ts",
+      "destination": "docs/verification/systematization/m22-react/table/virtual-run.ts",
+      "bytes": 6513,
+      "sha256": "8217d90232c1a3d43a5bd461d7b63ae2b84bd6aa13baa70f3e30dbb45e1c048b"
+    },
+    {
+      "source": "notes/alignment/evidence/m22-react/table/worker-consumer.ts",
+      "destination": "docs/verification/systematization/m22-react/table/worker-consumer.ts",
+      "bytes": 725,
+      "sha256": "554fa6888c15d94caa492a1a9937903b4d094a4c235f201f9fd05913a66ddd39"
+    },
+    {
+      "source": "notes/alignment/evidence/m22-react/table/worker-run.ts",
+      "destination": "docs/verification/systematization/m22-react/table/worker-run.ts",
+      "bytes": 4364,
+      "sha256": "b437ef98fb75a536c07ef344a4617b86e7cccd3a4955fda18176f231ae9b4a0a"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

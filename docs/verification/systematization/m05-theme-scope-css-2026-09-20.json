@@ -1,0 +1,6189 @@
+{
+  "date": "2026-09-20",
+  "phase": "Phase 6 M05",
+  "report": {
+    "status": "bounded read-only CSS prototype, not production integration",
+    "sources": {
+      "tokens": {
+        "file": "src/generated/css/document/tokens.css",
+        "sha256": "f14c29d040e419c022feb35a61ac804b57c63cf271622430032a42f8df64e365"
+      },
+      "avatar": {
+        "file": "src/generated/css/components/avatar-group/avatar-group.css",
+        "sha256": "93bbf23639ba59aad67eb1ccb7a8cb8015f4fcb658e7ab7144ddff0b40501cf9"
+      },
+      "tooltip": {
+        "file": "src/generated/css/components/tooltip/tooltip.css",
+        "sha256": "7992340617db6db8d4f096d49bfed4be76bc1499488accb309b2da0f57962ec3"
+      },
+      "select": {
+        "file": "src/generated/css/components/select/select.css",
+        "sha256": "09c46b3ded7e59eaa8d45c9d6c6b06eb5df52014425af200805ac99d8dc4dcaa"
+      },
+      "toggle": {
+        "file": "src/generated/css/components/toggle/toggle.css",
+        "sha256": "47b41a492075049e2971d97b6e0618cd7c5ed69bbfbe87e1d7d00177f90366cc"
+      }
+    },
+    "sourceReferences": [
+      {
+        "file": "tools/geist/vars.ts",
+        "line": 32,
+        "finding": "Root/light/dark selectors and automatic document fallback are created here."
+      },
+      {
+        "file": "styles/house.css",
+        "line": 21,
+        "finding": "House aliases are root declarations; copying only palette colors does not recompute inherited aliases."
+      },
+      {
+        "file": "styles/house.css",
+        "line": 3996,
+        "finding": "Document layout :root:has(.subbar) is not a theme-scope selector."
+      },
+      {
+        "file": "tools/geist/gen.ts",
+        "line": 815,
+        "finding": "Local source theme classes intentionally bring their token block into a component mapping."
+      },
+      {
+        "file": "tools/geist/maps/avatar-group.ts",
+        "line": 19,
+        "finding": "Count target; source spec marks it dark-theme."
+      },
+      {
+        "file": "tools/geist/maps/tooltip.ts",
+        "line": 17,
+        "finding": "Default invertTheme=true; its context mapping at line34 retains the inverted token block."
+      },
+      {
+        "file": "src/generated/css/components/select/select.css",
+        "line": 169,
+        "finding": "Fixed 16% alpha on raw red900 channels."
+      },
+      {
+        "file": "src/generated/css/components/toggle/toggle.css",
+        "line": 215,
+        "finding": "Fixed 84% alpha on raw gray1000 channels; second occurrence line227."
+      },
+      {
+        "file": "src/base.ts",
+        "line": 30,
+        "finding": "Current data-dark bridge reads the document root, not nested effective theme scope."
+      }
+    ],
+    "testedTransforms": {
+      "appearanceRules": "Clone the applicable root token declarations to an explicit resolved-appearance boundary, preserving declaration order and original supports/gamut nesting. Keep automatic prefers-color-scheme fallback and :root:has document layout root-only.",
+      "appearanceFieldFilter": "Prototype restricts copied fields to colors, shadows, private channels, gradient and focus-outline roles; this preserves inherited font/spacing values. Minimal appearance-dependent field plus alias-dependency closure remains refinement.",
+      "localPaletteDelivery": "Proof of reachability only: preserve source-defined dark count and inverse tooltip defaults. Writing selected full-color variables directly on .count/.tip reaches those local scopes, and removing those writes restores the captured defaults. This is not the final renderer or a verified author-precedence policy.",
+      "select": "hsla(var(--ds-red-900-value), .16) -> rgb(from var(--ds-red-900) r g b / .16)",
+      "toggle": "hsla(var(--ds-gray-1000-value),.84) -> rgb(from var(--ds-gray-1000) r g b / .84)",
+      "guard": "Apply relative-color rewrite only to actual non-custom declarations. Rewriting palette self-definitions would introduce circular variables."
+    },
+    "rejectedNaiveTransforms": [
+      "Copying every root token into each appearance scope resets inherited spacing/font overrides. Browser counterexamples and corrected category-limited cases are in results.json.",
+      "Deleting the local Avatar Group/Tooltip palette blocks loses the selected dark/inverted treatment; source markers and retained-style behavior establish their purpose.",
+      "Changing a parent full-color variable alone does not replace a child local palette declaration."
+    ],
+    "sourceThemeMarkers": [
+      {
+        "file": "tools/geist/spec/avatar.json",
+        "pointer": "/examples/0/dom/0/children/0/children/1/children/3/children/1",
+        "heading": "Group",
+        "tag": "span",
+        "themeClasses": [
+          "dark-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/7/dom/0/children/0/children/1/children/0",
+        "heading": "Open",
+        "tag": "div",
+        "themeClasses": [
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/7/dom/1/children/0/children/1/children/0",
+        "heading": "Open",
+        "tag": "div",
+        "themeClasses": [
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/7/dom/2/children/0/children/1/children/0",
+        "heading": "Open",
+        "tag": "div",
+        "themeClasses": [
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/7/dom/3/children/0/children/1/children/0",
+        "heading": "Open",
+        "tag": "div",
+        "themeClasses": [
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/8/dom/0/children/0/children/1/children/0",
+        "heading": "Open aligned",
+        "tag": "div",
+        "themeClasses": [
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/8/dom/1/children/0/children/1/children/0",
+        "heading": "Open aligned",
+        "tag": "div",
+        "themeClasses": [
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/8/dom/2/children/0/children/1/children/0",
+        "heading": "Open aligned",
+        "tag": "div",
+        "themeClasses": [
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/8/dom/3/children/0/children/1/children/0",
+        "heading": "Open aligned",
+        "tag": "div",
+        "themeClasses": [
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/9/dom/0/children/0/children/1/children/0",
+        "heading": "Open no delay",
+        "tag": "div",
+        "themeClasses": [
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/9/dom/1/children/0/children/1/children/0",
+        "heading": "Open no delay",
+        "tag": "div",
+        "themeClasses": [
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/9/dom/2/children/0/children/1/children/0",
+        "heading": "Open no delay",
+        "tag": "div",
+        "themeClasses": [
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/9/dom/3/children/0/children/1/children/0",
+        "heading": "Open no delay",
+        "tag": "div",
+        "themeClasses": [
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/10/dom/0/children/0/children/1/children/0",
+        "heading": "Open lower delay",
+        "tag": "div",
+        "themeClasses": [
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/10/dom/1/children/0/children/1/children/1",
+        "heading": "Open lower delay",
+        "tag": "div",
+        "themeClasses": [
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/11/dom/0/children/0/children/1/children/0",
+        "heading": "Open custom type",
+        "tag": "div",
+        "themeClasses": [
+          "geist-new-themed",
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/11/dom/1/children/0/children/1/children/0",
+        "heading": "Open custom type",
+        "tag": "div",
+        "themeClasses": [
+          "geist-new-themed",
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/11/dom/2/children/0/children/1/children/0",
+        "heading": "Open custom type",
+        "tag": "div",
+        "themeClasses": [
+          "geist-new-themed",
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/11/dom/3/children/0/children/1/children/0",
+        "heading": "Open custom type",
+        "tag": "div",
+        "themeClasses": [
+          "geist-new-themed",
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/12/dom/0/children/0/children/1/children/0",
+        "heading": "Open custom type unfilled",
+        "tag": "div",
+        "themeClasses": [
+          "geist-new-themed",
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/12/dom/1/children/0/children/1/children/0",
+        "heading": "Open custom type unfilled",
+        "tag": "div",
+        "themeClasses": [
+          "geist-new-themed",
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/12/dom/2/children/0/children/1/children/0",
+        "heading": "Open custom type unfilled",
+        "tag": "div",
+        "themeClasses": [
+          "geist-new-themed",
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/12/dom/3/children/0/children/1/children/0",
+        "heading": "Open custom type unfilled",
+        "tag": "div",
+        "themeClasses": [
+          "geist-new-themed",
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/13/dom/0/children/0/children/1/children/0",
+        "heading": "Open shortcut",
+        "tag": "div",
+        "themeClasses": [
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/14/dom/0/children/0/children/1/children/0",
+        "heading": "Open other",
+        "tag": "div",
+        "themeClasses": [
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/14/dom/1/children/0/children/1/children/0",
+        "heading": "Open other",
+        "tag": "div",
+        "themeClasses": [
+          "invert-theme"
+        ]
+      },
+      {
+        "file": "tools/geist/spec/tooltip.json",
+        "pointer": "/examples/14/dom/2/children/0/children/1/children/0",
+        "heading": "Open other",
+        "tag": "div",
+        "themeClasses": [
+          "invert-theme"
+        ]
+      }
+    ],
+    "browser": {
+      "chromium": {
+        "version": "153.0.8010.48",
+        "passed": 25,
+        "total": 25,
+        "errors": [],
+        "media": {
+          "p3": false,
+          "lab": true
+        }
+      },
+      "firefox": {
+        "version": "155.0",
+        "passed": 25,
+        "total": 25,
+        "errors": [],
+        "media": {
+          "p3": false,
+          "lab": true
+        }
+      },
+      "webkit": {
+        "version": "26.6",
+        "passed": 25,
+        "total": 25,
+        "errors": [],
+        "media": {
+          "p3": true,
+          "lab": true
+        }
+      }
+    },
+    "limitations": [
+      "Fixture markers are illustrative, not new public API spellings.",
+      "No actual acme-theme, registerTheme registry, nested provider lifecycle, portal ownership or cross-document adoption is implemented/tested here.",
+      "Full-color application on local targets still needs ownership/update/removal integration through the approved generator-driven style path.",
+      "The prototype category filter is not final minimal alias closure; static color overrides across appearance boundaries and explicit versus omitted named-theme boundaries remain to verify.",
+      "Source colors may differ between raw HSL fallback and the currently selected lab/P3 palette. Default visual comparison must record those changes before replacing the three expressions.",
+      "Display-p3 origin colors were accepted and alpha checked. WebKit matched the P3 media branch; Chromium and Firefox did not. Physical wide-gamut visual parity remains unverified.",
+      "Literal typography/invalid upstream font-weight issues remain separate.",
+      "Inline custom-property writes in the prototype may change consumer ::part or custom-CSS precedence. The final generator-owned delivery must independently verify author override precedence, including replacement and cleanup."
+    ],
+    "primarySource": "https://www.w3.org/TR/css-color-5/#relative-RGB",
+    "reproduction": [
+      "bun prepare-full-copy.ts",
+      "bun prepare.ts",
+      "bun run.ts"
+    ]
+  },
+  "results": {
+    "chromium": {
+      "version": "153.0.8010.48",
+      "errors": [],
+      "assertions": [
+        {
+          "name": "before: plain appearance marker does not change tokens",
+          "pass": true,
+          "details": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "before: inherited alias ignores nested palette override",
+          "pass": true,
+          "details": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "before: copying invariant tokens into appearance scopes loses inherited spacing",
+          "pass": true,
+          "details": {
+            "actual": "8px"
+          }
+        },
+        {
+          "name": "before: copying invariant tokens into appearance scopes loses inherited font",
+          "pass": true,
+          "details": {
+            "actual": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+          }
+        },
+        {
+          "name": "appearance-only scope preserves inherited spacing",
+          "pass": true,
+          "details": {
+            "actual": "48px"
+          }
+        },
+        {
+          "name": "appearance-only scope preserves inherited font",
+          "pass": true,
+          "details": {
+            "actual": "monospace"
+          }
+        },
+        {
+          "name": "dark scope matches document dark appearance",
+          "pass": true,
+          "details": {
+            "actual": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "dark"
+            },
+            "expected": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "dark"
+            }
+          }
+        },
+        {
+          "name": "nested light scope matches document light appearance",
+          "pass": true,
+          "details": {
+            "actual": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            },
+            "expected": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          }
+        },
+        {
+          "name": "derived background alias recomputes at scope",
+          "pass": true,
+          "details": {
+            "background": "rgb(20, 110, 45)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              20,
+              110,
+              45,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "derived accent alias recomputes at scope",
+          "pass": true,
+          "details": {
+            "background": "rgb(12, 150, 60)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              12,
+              150,
+              60,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "native color scheme is explicit in scopes",
+          "pass": true
+        },
+        {
+          "name": "before: local avatar palette blocks ancestor custom color",
+          "pass": true,
+          "details": {
+            "background": "rgb(26, 26, 26)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              26,
+              26,
+              26,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "actual avatar target accepts full-color override",
+          "pass": true,
+          "details": {
+            "background": "rgb(7, 21, 35)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              7,
+              21,
+              35,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "avatar override cleanup restores captured default",
+          "pass": true
+        },
+        {
+          "name": "before: local tooltip palette blocks ancestor custom color",
+          "pass": true,
+          "details": {
+            "background": "rgb(10, 10, 10)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              10,
+              10,
+              10,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "actual tooltip target accepts full-color override",
+          "pass": true,
+          "details": {
+            "background": "rgb(20, 110, 45)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              20,
+              110,
+              45,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "tooltip override cleanup restores default inversion",
+          "pass": true
+        },
+        {
+          "name": "retained tooltip inversion still changes with appearance",
+          "pass": true,
+          "details": {
+            "lightParent": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            },
+            "darkParent": {
+              "background": "lab(100 0 0)",
+              "color": "lab(7.78201 -0.0000149012 0)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          }
+        },
+        {
+          "name": "before: select channel ring ignores custom whole color",
+          "pass": true,
+          "details": {
+            "value": "rgb(238, 0, 0) 0px 0px 0px 1px, rgba(203, 42, 47, 0.16) 0px 0px 0px 4px",
+            "pixels": [
+              205,
+              44,
+              50,
+              41
+            ]
+          }
+        },
+        {
+          "name": "select relative color follows theme and sets source alpha",
+          "pass": true,
+          "details": {
+            "value": "rgb(238, 0, 0) 0px 0px 0px 1px, color(srgb 0.0392157 0.784314 0.0784314 / 0.16) 0px 0px 0px 4px",
+            "pixels": [
+              12,
+              199,
+              19,
+              41
+            ]
+          }
+        },
+        {
+          "name": "before: toggle channel color ignores custom whole color",
+          "pass": true,
+          "details": {
+            "background": "rgba(23, 23, 23, 0.84)",
+            "color": "rgb(102, 102, 102)",
+            "pixels": [
+              23,
+              23,
+              23,
+              214
+            ],
+            "textPixels": [
+              102,
+              102,
+              102,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "toggle relative color follows theme and sets source alpha",
+          "pass": true,
+          "details": {
+            "background": "color(srgb 0.27451 0.352941 0.431373 / 0.84)",
+            "color": "rgb(102, 102, 102)",
+            "pixels": [
+              70,
+              91,
+              110,
+              214
+            ],
+            "textPixels": [
+              102,
+              102,
+              102,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "relative RGB color syntax supported",
+          "pass": true
+        },
+        {
+          "name": "relative color accepts a full display-p3 source",
+          "pass": true,
+          "details": {
+            "background": "color(srgb -0.193655 0.610199 -0.126763 / 0.16)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              0,
+              155,
+              0,
+              41
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "system dark does not override an explicit light scope",
+          "pass": true,
+          "details": {
+            "inner": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            },
+            "light": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          }
+        }
+      ],
+      "media": {
+        "p3": false,
+        "lab": true
+      },
+      "light": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(23, 23, 23)",
+        "pixels": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "textPixels": [
+          23,
+          23,
+          23,
+          255
+        ],
+        "scheme": "light"
+      },
+      "dark": {
+        "background": "rgb(10, 10, 10)",
+        "color": "rgb(237, 237, 237)",
+        "pixels": [
+          10,
+          10,
+          10,
+          255
+        ],
+        "textPixels": [
+          237,
+          237,
+          237,
+          255
+        ],
+        "scheme": "dark"
+      }
+    },
+    "firefox": {
+      "version": "155.0",
+      "errors": [],
+      "assertions": [
+        {
+          "name": "before: plain appearance marker does not change tokens",
+          "pass": true,
+          "details": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "before: inherited alias ignores nested palette override",
+          "pass": true,
+          "details": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "before: copying invariant tokens into appearance scopes loses inherited spacing",
+          "pass": true,
+          "details": {
+            "actual": "8px"
+          }
+        },
+        {
+          "name": "before: copying invariant tokens into appearance scopes loses inherited font",
+          "pass": true,
+          "details": {
+            "actual": "\"Google Sans Flex\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+          }
+        },
+        {
+          "name": "appearance-only scope preserves inherited spacing",
+          "pass": true,
+          "details": {
+            "actual": "48px"
+          }
+        },
+        {
+          "name": "appearance-only scope preserves inherited font",
+          "pass": true,
+          "details": {
+            "actual": "monospace"
+          }
+        },
+        {
+          "name": "dark scope matches document dark appearance",
+          "pass": true,
+          "details": {
+            "actual": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "dark"
+            },
+            "expected": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "dark"
+            }
+          }
+        },
+        {
+          "name": "nested light scope matches document light appearance",
+          "pass": true,
+          "details": {
+            "actual": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            },
+            "expected": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          }
+        },
+        {
+          "name": "derived background alias recomputes at scope",
+          "pass": true,
+          "details": {
+            "background": "rgb(20, 110, 45)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              20,
+              110,
+              45,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "derived accent alias recomputes at scope",
+          "pass": true,
+          "details": {
+            "background": "rgb(12, 150, 60)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              12,
+              150,
+              60,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "native color scheme is explicit in scopes",
+          "pass": true
+        },
+        {
+          "name": "before: local avatar palette blocks ancestor custom color",
+          "pass": true,
+          "details": {
+            "background": "rgb(26, 26, 26)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              26,
+              26,
+              26,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "actual avatar target accepts full-color override",
+          "pass": true,
+          "details": {
+            "background": "rgb(7, 21, 35)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              7,
+              21,
+              35,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "avatar override cleanup restores captured default",
+          "pass": true
+        },
+        {
+          "name": "before: local tooltip palette blocks ancestor custom color",
+          "pass": true,
+          "details": {
+            "background": "rgb(10, 10, 10)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              10,
+              10,
+              10,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "actual tooltip target accepts full-color override",
+          "pass": true,
+          "details": {
+            "background": "rgb(20, 110, 45)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              20,
+              110,
+              45,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "tooltip override cleanup restores default inversion",
+          "pass": true
+        },
+        {
+          "name": "retained tooltip inversion still changes with appearance",
+          "pass": true,
+          "details": {
+            "lightParent": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            },
+            "darkParent": {
+              "background": "lab(100 0 0)",
+              "color": "lab(7.78201 -0.0000149012 0)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          }
+        },
+        {
+          "name": "before: select channel ring ignores custom whole color",
+          "pass": true,
+          "details": {
+            "value": "rgb(238, 0, 0) 0px 0px 0px 1px, rgba(203, 42, 47, 0.16) 0px 0px 0px 4px",
+            "pixels": [
+              205,
+              43,
+              49,
+              41
+            ]
+          }
+        },
+        {
+          "name": "select relative color follows theme and sets source alpha",
+          "pass": true,
+          "details": {
+            "value": "rgb(238, 0, 0) 0px 0px 0px 1px, color(srgb 0.0392157 0.784314 0.0784314 / 0.16) 0px 0px 0px 4px",
+            "pixels": [
+              12,
+              199,
+              18,
+              41
+            ]
+          }
+        },
+        {
+          "name": "before: toggle channel color ignores custom whole color",
+          "pass": true,
+          "details": {
+            "background": "rgba(23, 23, 23, 0.84)",
+            "color": "rgb(102, 102, 102)",
+            "pixels": [
+              22,
+              22,
+              22,
+              214
+            ],
+            "textPixels": [
+              102,
+              102,
+              102,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "toggle relative color follows theme and sets source alpha",
+          "pass": true,
+          "details": {
+            "background": "color(srgb 0.27451 0.352941 0.431373 / 0.84)",
+            "color": "rgb(102, 102, 102)",
+            "pixels": [
+              70,
+              90,
+              109,
+              214
+            ],
+            "textPixels": [
+              102,
+              102,
+              102,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "relative RGB color syntax supported",
+          "pass": true
+        },
+        {
+          "name": "relative color accepts a full display-p3 source",
+          "pass": true,
+          "details": {
+            "background": "color(srgb -0.193457 0.610174 -0.126774 / 0.16)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              0,
+              155,
+              0,
+              41
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "system dark does not override an explicit light scope",
+          "pass": true,
+          "details": {
+            "inner": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            },
+            "light": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          }
+        }
+      ],
+      "media": {
+        "p3": false,
+        "lab": true
+      },
+      "light": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(23, 23, 23)",
+        "pixels": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "textPixels": [
+          23,
+          23,
+          23,
+          255
+        ],
+        "scheme": "light"
+      },
+      "dark": {
+        "background": "rgb(10, 10, 10)",
+        "color": "rgb(237, 237, 237)",
+        "pixels": [
+          10,
+          10,
+          10,
+          255
+        ],
+        "textPixels": [
+          237,
+          237,
+          237,
+          255
+        ],
+        "scheme": "dark"
+      }
+    },
+    "webkit": {
+      "version": "26.6",
+      "errors": [],
+      "assertions": [
+        {
+          "name": "before: plain appearance marker does not change tokens",
+          "pass": true,
+          "details": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "before: inherited alias ignores nested palette override",
+          "pass": true,
+          "details": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "before: copying invariant tokens into appearance scopes loses inherited spacing",
+          "pass": true,
+          "details": {
+            "actual": "8px"
+          }
+        },
+        {
+          "name": "before: copying invariant tokens into appearance scopes loses inherited font",
+          "pass": true,
+          "details": {
+            "actual": "Google Sans Flex, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+          }
+        },
+        {
+          "name": "appearance-only scope preserves inherited spacing",
+          "pass": true,
+          "details": {
+            "actual": "48px"
+          }
+        },
+        {
+          "name": "appearance-only scope preserves inherited font",
+          "pass": true,
+          "details": {
+            "actual": "monospace"
+          }
+        },
+        {
+          "name": "dark scope matches document dark appearance",
+          "pass": true,
+          "details": {
+            "actual": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "dark"
+            },
+            "expected": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "dark"
+            }
+          }
+        },
+        {
+          "name": "nested light scope matches document light appearance",
+          "pass": true,
+          "details": {
+            "actual": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            },
+            "expected": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          }
+        },
+        {
+          "name": "derived background alias recomputes at scope",
+          "pass": true,
+          "details": {
+            "background": "rgb(20, 110, 45)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              20,
+              110,
+              45,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "derived accent alias recomputes at scope",
+          "pass": true,
+          "details": {
+            "background": "rgb(12, 150, 60)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              12,
+              150,
+              60,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "native color scheme is explicit in scopes",
+          "pass": true
+        },
+        {
+          "name": "before: local avatar palette blocks ancestor custom color",
+          "pass": true,
+          "details": {
+            "background": "rgb(25, 25, 25)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              25,
+              25,
+              25,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "actual avatar target accepts full-color override",
+          "pass": true,
+          "details": {
+            "background": "rgb(7, 21, 35)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              7,
+              21,
+              35,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "avatar override cleanup restores captured default",
+          "pass": true
+        },
+        {
+          "name": "before: local tooltip palette blocks ancestor custom color",
+          "pass": true,
+          "details": {
+            "background": "rgb(10, 10, 10)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              10,
+              10,
+              10,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "actual tooltip target accepts full-color override",
+          "pass": true,
+          "details": {
+            "background": "rgb(20, 110, 45)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              20,
+              110,
+              45,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "tooltip override cleanup restores default inversion",
+          "pass": true
+        },
+        {
+          "name": "retained tooltip inversion still changes with appearance",
+          "pass": true,
+          "details": {
+            "lightParent": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            },
+            "darkParent": {
+              "background": "lab(100 0 0)",
+              "color": "lab(7.78201 -0.000015 0)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          }
+        },
+        {
+          "name": "before: select channel ring ignores custom whole color",
+          "pass": true,
+          "details": {
+            "value": "rgb(238, 0, 0) 0px 0px 0px 1px, rgba(203, 42, 47, 0.16) 0px 0px 0px 4px",
+            "pixels": [
+              205,
+              44,
+              50,
+              41
+            ]
+          }
+        },
+        {
+          "name": "select relative color follows theme and sets source alpha",
+          "pass": true,
+          "details": {
+            "value": "rgb(238, 0, 0) 0px 0px 0px 1px, color(srgb 0.039216 0.784314 0.078431 / 0.16) 0px 0px 0px 4px",
+            "pixels": [
+              12,
+              199,
+              19,
+              41
+            ]
+          }
+        },
+        {
+          "name": "before: toggle channel color ignores custom whole color",
+          "pass": true,
+          "details": {
+            "background": "rgba(23, 23, 23, 0.84)",
+            "color": "rgb(102, 102, 102)",
+            "pixels": [
+              23,
+              23,
+              23,
+              214
+            ],
+            "textPixels": [
+              102,
+              102,
+              102,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "toggle relative color follows theme and sets source alpha",
+          "pass": true,
+          "details": {
+            "background": "color(srgb 0.27451 0.352941 0.431373 / 0.84)",
+            "color": "rgb(102, 102, 102)",
+            "pixels": [
+              70,
+              91,
+              110,
+              214
+            ],
+            "textPixels": [
+              102,
+              102,
+              102,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "relative RGB color syntax supported",
+          "pass": true
+        },
+        {
+          "name": "relative color accepts a full display-p3 source",
+          "pass": true,
+          "details": {
+            "background": "color(srgb -0.193457 0.610174 -0.126774 / 0.16)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              0,
+              155,
+              0,
+              41
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "system dark does not override an explicit light scope",
+          "pass": true,
+          "details": {
+            "inner": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            },
+            "light": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          }
+        }
+      ],
+      "media": {
+        "p3": true,
+        "lab": true
+      },
+      "light": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(23, 23, 23)",
+        "pixels": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "textPixels": [
+          23,
+          23,
+          23,
+          255
+        ],
+        "scheme": "light"
+      },
+      "dark": {
+        "background": "rgb(10, 10, 10)",
+        "color": "rgb(237, 237, 237)",
+        "pixels": [
+          10,
+          10,
+          10,
+          255
+        ],
+        "textPixels": [
+          237,
+          237,
+          237,
+          255
+        ],
+        "scheme": "dark"
+      }
+    }
+  },
+  "initialScope": {
+    "chromium": {
+      "version": "153.0.8010.48",
+      "errors": [],
+      "assertions": [
+        {
+          "name": "before: plain appearance marker does not change tokens",
+          "pass": true,
+          "details": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "before: inherited alias ignores nested palette override",
+          "pass": true,
+          "details": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "dark scope matches document dark appearance",
+          "pass": true,
+          "details": {
+            "actual": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "dark"
+            },
+            "expected": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "dark"
+            }
+          }
+        },
+        {
+          "name": "nested light scope matches document light appearance",
+          "pass": true,
+          "details": {
+            "actual": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            },
+            "expected": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          }
+        },
+        {
+          "name": "derived background alias recomputes at scope",
+          "pass": true,
+          "details": {
+            "background": "rgb(20, 110, 45)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              20,
+              110,
+              45,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "derived accent alias recomputes at scope",
+          "pass": true,
+          "details": {
+            "background": "rgb(12, 150, 60)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              12,
+              150,
+              60,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "native color scheme is explicit in scopes",
+          "pass": true
+        },
+        {
+          "name": "before: local avatar palette blocks ancestor custom color",
+          "pass": true,
+          "details": {
+            "background": "rgb(26, 26, 26)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              26,
+              26,
+              26,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "actual avatar target accepts full-color override",
+          "pass": true,
+          "details": {
+            "background": "rgb(7, 21, 35)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              7,
+              21,
+              35,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "avatar override cleanup restores captured default",
+          "pass": true
+        },
+        {
+          "name": "before: local tooltip palette blocks ancestor custom color",
+          "pass": true,
+          "details": {
+            "background": "rgb(10, 10, 10)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              10,
+              10,
+              10,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "actual tooltip target accepts full-color override",
+          "pass": true,
+          "details": {
+            "background": "rgb(20, 110, 45)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              20,
+              110,
+              45,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "tooltip override cleanup restores default inversion",
+          "pass": true
+        },
+        {
+          "name": "retained tooltip inversion still changes with appearance",
+          "pass": true,
+          "details": {
+            "lightParent": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            },
+            "darkParent": {
+              "background": "lab(100 0 0)",
+              "color": "lab(7.78201 -0.0000149012 0)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          }
+        },
+        {
+          "name": "before: select channel ring ignores custom whole color",
+          "pass": true,
+          "details": {
+            "value": "rgb(238, 0, 0) 0px 0px 0px 1px, rgba(203, 42, 47, 0.16) 0px 0px 0px 4px",
+            "pixels": [
+              205,
+              44,
+              50,
+              41
+            ]
+          }
+        },
+        {
+          "name": "select relative color follows theme and sets source alpha",
+          "pass": true,
+          "details": {
+            "value": "rgb(238, 0, 0) 0px 0px 0px 1px, color(srgb 0.0392157 0.784314 0.0784314 / 0.16) 0px 0px 0px 4px",
+            "pixels": [
+              12,
+              199,
+              19,
+              41
+            ]
+          }
+        },
+        {
+          "name": "before: toggle channel color ignores custom whole color",
+          "pass": true,
+          "details": {
+            "background": "rgba(23, 23, 23, 0.84)",
+            "color": "rgb(102, 102, 102)",
+            "pixels": [
+              23,
+              23,
+              23,
+              214
+            ],
+            "textPixels": [
+              102,
+              102,
+              102,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "toggle relative color follows theme and sets source alpha",
+          "pass": true,
+          "details": {
+            "background": "color(srgb 0.27451 0.352941 0.431373 / 0.84)",
+            "color": "rgb(102, 102, 102)",
+            "pixels": [
+              70,
+              91,
+              110,
+              214
+            ],
+            "textPixels": [
+              102,
+              102,
+              102,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "relative RGB color syntax supported",
+          "pass": true
+        },
+        {
+          "name": "relative color accepts a full display-p3 source",
+          "pass": true,
+          "details": {
+            "background": "color(srgb -0.193655 0.610199 -0.126763 / 0.16)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              0,
+              155,
+              0,
+              41
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "system dark does not override an explicit light scope",
+          "pass": true,
+          "details": {
+            "inner": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            },
+            "light": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          }
+        }
+      ],
+      "media": {
+        "p3": false,
+        "lab": true
+      },
+      "light": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(23, 23, 23)",
+        "pixels": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "textPixels": [
+          23,
+          23,
+          23,
+          255
+        ],
+        "scheme": "light"
+      },
+      "dark": {
+        "background": "rgb(10, 10, 10)",
+        "color": "rgb(237, 237, 237)",
+        "pixels": [
+          10,
+          10,
+          10,
+          255
+        ],
+        "textPixels": [
+          237,
+          237,
+          237,
+          255
+        ],
+        "scheme": "dark"
+      }
+    },
+    "firefox": {
+      "version": "155.0",
+      "errors": [],
+      "assertions": [
+        {
+          "name": "before: plain appearance marker does not change tokens",
+          "pass": true,
+          "details": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "before: inherited alias ignores nested palette override",
+          "pass": true,
+          "details": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "dark scope matches document dark appearance",
+          "pass": true,
+          "details": {
+            "actual": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "dark"
+            },
+            "expected": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "dark"
+            }
+          }
+        },
+        {
+          "name": "nested light scope matches document light appearance",
+          "pass": true,
+          "details": {
+            "actual": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            },
+            "expected": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          }
+        },
+        {
+          "name": "derived background alias recomputes at scope",
+          "pass": true,
+          "details": {
+            "background": "rgb(20, 110, 45)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              20,
+              110,
+              45,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "derived accent alias recomputes at scope",
+          "pass": true,
+          "details": {
+            "background": "rgb(12, 150, 60)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              12,
+              150,
+              60,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "native color scheme is explicit in scopes",
+          "pass": true
+        },
+        {
+          "name": "before: local avatar palette blocks ancestor custom color",
+          "pass": true,
+          "details": {
+            "background": "rgb(26, 26, 26)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              26,
+              26,
+              26,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "actual avatar target accepts full-color override",
+          "pass": true,
+          "details": {
+            "background": "rgb(7, 21, 35)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              7,
+              21,
+              35,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "avatar override cleanup restores captured default",
+          "pass": true
+        },
+        {
+          "name": "before: local tooltip palette blocks ancestor custom color",
+          "pass": true,
+          "details": {
+            "background": "rgb(10, 10, 10)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              10,
+              10,
+              10,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "actual tooltip target accepts full-color override",
+          "pass": true,
+          "details": {
+            "background": "rgb(20, 110, 45)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              20,
+              110,
+              45,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "tooltip override cleanup restores default inversion",
+          "pass": true
+        },
+        {
+          "name": "retained tooltip inversion still changes with appearance",
+          "pass": true,
+          "details": {
+            "lightParent": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            },
+            "darkParent": {
+              "background": "lab(100 0 0)",
+              "color": "lab(7.78201 -0.0000149012 0)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          }
+        },
+        {
+          "name": "before: select channel ring ignores custom whole color",
+          "pass": true,
+          "details": {
+            "value": "rgb(238, 0, 0) 0px 0px 0px 1px, rgba(203, 42, 47, 0.16) 0px 0px 0px 4px",
+            "pixels": [
+              205,
+              43,
+              49,
+              41
+            ]
+          }
+        },
+        {
+          "name": "select relative color follows theme and sets source alpha",
+          "pass": true,
+          "details": {
+            "value": "rgb(238, 0, 0) 0px 0px 0px 1px, color(srgb 0.0392157 0.784314 0.0784314 / 0.16) 0px 0px 0px 4px",
+            "pixels": [
+              12,
+              199,
+              18,
+              41
+            ]
+          }
+        },
+        {
+          "name": "before: toggle channel color ignores custom whole color",
+          "pass": true,
+          "details": {
+            "background": "rgba(23, 23, 23, 0.84)",
+            "color": "rgb(102, 102, 102)",
+            "pixels": [
+              22,
+              22,
+              22,
+              214
+            ],
+            "textPixels": [
+              102,
+              102,
+              102,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "toggle relative color follows theme and sets source alpha",
+          "pass": true,
+          "details": {
+            "background": "color(srgb 0.27451 0.352941 0.431373 / 0.84)",
+            "color": "rgb(102, 102, 102)",
+            "pixels": [
+              70,
+              90,
+              109,
+              214
+            ],
+            "textPixels": [
+              102,
+              102,
+              102,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "relative RGB color syntax supported",
+          "pass": true
+        },
+        {
+          "name": "relative color accepts a full display-p3 source",
+          "pass": true,
+          "details": {
+            "background": "color(srgb -0.193457 0.610174 -0.126774 / 0.16)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              0,
+              155,
+              0,
+              41
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "system dark does not override an explicit light scope",
+          "pass": true,
+          "details": {
+            "inner": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            },
+            "light": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          }
+        }
+      ],
+      "media": {
+        "p3": false,
+        "lab": true
+      },
+      "light": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(23, 23, 23)",
+        "pixels": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "textPixels": [
+          23,
+          23,
+          23,
+          255
+        ],
+        "scheme": "light"
+      },
+      "dark": {
+        "background": "rgb(10, 10, 10)",
+        "color": "rgb(237, 237, 237)",
+        "pixels": [
+          10,
+          10,
+          10,
+          255
+        ],
+        "textPixels": [
+          237,
+          237,
+          237,
+          255
+        ],
+        "scheme": "dark"
+      }
+    },
+    "webkit": {
+      "version": "26.6",
+      "errors": [],
+      "assertions": [
+        {
+          "name": "before: plain appearance marker does not change tokens",
+          "pass": true,
+          "details": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "before: inherited alias ignores nested palette override",
+          "pass": true,
+          "details": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "dark scope matches document dark appearance",
+          "pass": true,
+          "details": {
+            "actual": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "dark"
+            },
+            "expected": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "dark"
+            }
+          }
+        },
+        {
+          "name": "nested light scope matches document light appearance",
+          "pass": true,
+          "details": {
+            "actual": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            },
+            "expected": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          }
+        },
+        {
+          "name": "derived background alias recomputes at scope",
+          "pass": true,
+          "details": {
+            "background": "rgb(20, 110, 45)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              20,
+              110,
+              45,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "derived accent alias recomputes at scope",
+          "pass": true,
+          "details": {
+            "background": "rgb(12, 150, 60)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              12,
+              150,
+              60,
+              255
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "native color scheme is explicit in scopes",
+          "pass": true
+        },
+        {
+          "name": "before: local avatar palette blocks ancestor custom color",
+          "pass": true,
+          "details": {
+            "background": "rgb(25, 25, 25)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              25,
+              25,
+              25,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "actual avatar target accepts full-color override",
+          "pass": true,
+          "details": {
+            "background": "rgb(7, 21, 35)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              7,
+              21,
+              35,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "avatar override cleanup restores captured default",
+          "pass": true
+        },
+        {
+          "name": "before: local tooltip palette blocks ancestor custom color",
+          "pass": true,
+          "details": {
+            "background": "rgb(10, 10, 10)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              10,
+              10,
+              10,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "actual tooltip target accepts full-color override",
+          "pass": true,
+          "details": {
+            "background": "rgb(20, 110, 45)",
+            "color": "rgb(237, 237, 237)",
+            "pixels": [
+              20,
+              110,
+              45,
+              255
+            ],
+            "textPixels": [
+              237,
+              237,
+              237,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "tooltip override cleanup restores default inversion",
+          "pass": true
+        },
+        {
+          "name": "retained tooltip inversion still changes with appearance",
+          "pass": true,
+          "details": {
+            "lightParent": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            },
+            "darkParent": {
+              "background": "lab(100 0 0)",
+              "color": "lab(7.78201 -0.000015 0)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          }
+        },
+        {
+          "name": "before: select channel ring ignores custom whole color",
+          "pass": true,
+          "details": {
+            "value": "rgb(238, 0, 0) 0px 0px 0px 1px, rgba(203, 42, 47, 0.16) 0px 0px 0px 4px",
+            "pixels": [
+              205,
+              44,
+              50,
+              41
+            ]
+          }
+        },
+        {
+          "name": "select relative color follows theme and sets source alpha",
+          "pass": true,
+          "details": {
+            "value": "rgb(238, 0, 0) 0px 0px 0px 1px, color(srgb 0.039216 0.784314 0.078431 / 0.16) 0px 0px 0px 4px",
+            "pixels": [
+              12,
+              199,
+              19,
+              41
+            ]
+          }
+        },
+        {
+          "name": "before: toggle channel color ignores custom whole color",
+          "pass": true,
+          "details": {
+            "background": "rgba(23, 23, 23, 0.84)",
+            "color": "rgb(102, 102, 102)",
+            "pixels": [
+              23,
+              23,
+              23,
+              214
+            ],
+            "textPixels": [
+              102,
+              102,
+              102,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "toggle relative color follows theme and sets source alpha",
+          "pass": true,
+          "details": {
+            "background": "color(srgb 0.27451 0.352941 0.431373 / 0.84)",
+            "color": "rgb(102, 102, 102)",
+            "pixels": [
+              70,
+              91,
+              110,
+              214
+            ],
+            "textPixels": [
+              102,
+              102,
+              102,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "relative RGB color syntax supported",
+          "pass": true
+        },
+        {
+          "name": "relative color accepts a full display-p3 source",
+          "pass": true,
+          "details": {
+            "background": "color(srgb -0.193457 0.610174 -0.126774 / 0.16)",
+            "color": "rgb(23, 23, 23)",
+            "pixels": [
+              0,
+              155,
+              0,
+              41
+            ],
+            "textPixels": [
+              23,
+              23,
+              23,
+              255
+            ],
+            "scheme": "light"
+          }
+        },
+        {
+          "name": "system dark does not override an explicit light scope",
+          "pass": true,
+          "details": {
+            "inner": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            },
+            "light": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          }
+        }
+      ],
+      "media": {
+        "p3": true,
+        "lab": true
+      },
+      "light": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(23, 23, 23)",
+        "pixels": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "textPixels": [
+          23,
+          23,
+          23,
+          255
+        ],
+        "scheme": "light"
+      },
+      "dark": {
+        "background": "rgb(10, 10, 10)",
+        "color": "rgb(237, 237, 237)",
+        "pixels": [
+          10,
+          10,
+          10,
+          255
+        ],
+        "textPixels": [
+          237,
+          237,
+          237,
+          255
+        ],
+        "scheme": "dark"
+      }
+    }
+  },
+  "fixtureDevelopment": {
+    "initial": {
+      "chromium": {
+        "version": "153.0.8010.48",
+        "errors": [],
+        "assertions": [
+          {
+            "name": "before: plain appearance marker does not change tokens",
+            "pass": true,
+            "details": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "before: inherited alias ignores nested palette override",
+            "pass": true,
+            "details": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "dark scope matches document dark appearance",
+            "pass": true,
+            "details": {
+              "actual": {
+                "background": "rgb(10, 10, 10)",
+                "color": "rgb(237, 237, 237)",
+                "pixels": [
+                  10,
+                  10,
+                  10,
+                  255
+                ],
+                "textPixels": [
+                  237,
+                  237,
+                  237,
+                  255
+                ],
+                "scheme": "dark"
+              },
+              "expected": {
+                "background": "rgb(10, 10, 10)",
+                "color": "rgb(237, 237, 237)",
+                "pixels": [
+                  10,
+                  10,
+                  10,
+                  255
+                ],
+                "textPixels": [
+                  237,
+                  237,
+                  237,
+                  255
+                ],
+                "scheme": "dark"
+              }
+            }
+          },
+          {
+            "name": "nested light scope matches document light appearance",
+            "pass": true,
+            "details": {
+              "actual": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              },
+              "expected": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              }
+            }
+          },
+          {
+            "name": "derived background alias recomputes at scope",
+            "pass": true,
+            "details": {
+              "background": "rgb(20, 110, 45)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                20,
+                110,
+                45,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "derived accent alias recomputes at scope",
+            "pass": true,
+            "details": {
+              "background": "rgb(12, 150, 60)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                12,
+                150,
+                60,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "native color scheme is explicit in scopes",
+            "pass": true
+          },
+          {
+            "name": "before: local avatar palette blocks ancestor custom color",
+            "pass": true,
+            "details": {
+              "background": "rgb(26, 26, 26)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                26,
+                26,
+                26,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "actual avatar target accepts full-color override",
+            "pass": true,
+            "details": {
+              "background": "rgb(7, 21, 35)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                7,
+                21,
+                35,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "avatar override cleanup restores captured default",
+            "pass": true
+          },
+          {
+            "name": "before: local tooltip palette blocks ancestor custom color",
+            "pass": true,
+            "details": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "actual tooltip target accepts full-color override",
+            "pass": true,
+            "details": {
+              "background": "rgb(20, 110, 45)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                20,
+                110,
+                45,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "tooltip override cleanup restores default inversion",
+            "pass": true
+          },
+          {
+            "name": "retained tooltip inversion still changes with appearance",
+            "pass": true,
+            "details": {
+              "lightParent": {
+                "background": "rgb(10, 10, 10)",
+                "color": "rgb(237, 237, 237)",
+                "pixels": [
+                  10,
+                  10,
+                  10,
+                  255
+                ],
+                "textPixels": [
+                  237,
+                  237,
+                  237,
+                  255
+                ],
+                "scheme": "light"
+              },
+              "darkParent": {
+                "background": "lab(100 0 0)",
+                "color": "lab(7.78201 -0.0000149012 0)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              }
+            }
+          },
+          {
+            "name": "before: select channel ring ignores custom whole color",
+            "pass": true,
+            "details": {
+              "value": "none",
+              "pixels": []
+            }
+          },
+          {
+            "name": "select relative color follows theme and sets source alpha",
+            "pass": false,
+            "details": {
+              "value": "none",
+              "pixels": []
+            }
+          },
+          {
+            "name": "before: toggle channel color ignores custom whole color",
+            "pass": true,
+            "details": {
+              "background": "rgba(23, 23, 23, 0.84)",
+              "color": "rgb(102, 102, 102)",
+              "pixels": [
+                23,
+                23,
+                23,
+                214
+              ],
+              "textPixels": [
+                102,
+                102,
+                102,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "toggle relative color follows theme and sets source alpha",
+            "pass": true,
+            "details": {
+              "background": "color(srgb 0.27451 0.352941 0.431373 / 0.84)",
+              "color": "rgb(102, 102, 102)",
+              "pixels": [
+                70,
+                91,
+                110,
+                214
+              ],
+              "textPixels": [
+                102,
+                102,
+                102,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "relative RGB color syntax supported",
+            "pass": true
+          },
+          {
+            "name": "relative color accepts a full display-p3 source",
+            "pass": true,
+            "details": {
+              "background": "color(srgb -0.193655 0.610199 -0.126763 / 0.16)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                0,
+                155,
+                0,
+                41
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "system dark does not override an explicit light scope",
+            "pass": true,
+            "details": {
+              "inner": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              },
+              "light": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              }
+            }
+          }
+        ],
+        "media": {
+          "p3": false,
+          "lab": true
+        },
+        "light": {
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(23, 23, 23)",
+          "pixels": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "textPixels": [
+            23,
+            23,
+            23,
+            255
+          ],
+          "scheme": "light"
+        },
+        "dark": {
+          "background": "rgb(10, 10, 10)",
+          "color": "rgb(237, 237, 237)",
+          "pixels": [
+            10,
+            10,
+            10,
+            255
+          ],
+          "textPixels": [
+            237,
+            237,
+            237,
+            255
+          ],
+          "scheme": "dark"
+        }
+      },
+      "firefox": {
+        "version": "155.0",
+        "errors": [],
+        "assertions": [
+          {
+            "name": "before: plain appearance marker does not change tokens",
+            "pass": true,
+            "details": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "before: inherited alias ignores nested palette override",
+            "pass": true,
+            "details": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "dark scope matches document dark appearance",
+            "pass": true,
+            "details": {
+              "actual": {
+                "background": "rgb(10, 10, 10)",
+                "color": "rgb(237, 237, 237)",
+                "pixels": [
+                  10,
+                  10,
+                  10,
+                  255
+                ],
+                "textPixels": [
+                  237,
+                  237,
+                  237,
+                  255
+                ],
+                "scheme": "dark"
+              },
+              "expected": {
+                "background": "rgb(10, 10, 10)",
+                "color": "rgb(237, 237, 237)",
+                "pixels": [
+                  10,
+                  10,
+                  10,
+                  255
+                ],
+                "textPixels": [
+                  237,
+                  237,
+                  237,
+                  255
+                ],
+                "scheme": "dark"
+              }
+            }
+          },
+          {
+            "name": "nested light scope matches document light appearance",
+            "pass": true,
+            "details": {
+              "actual": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              },
+              "expected": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              }
+            }
+          },
+          {
+            "name": "derived background alias recomputes at scope",
+            "pass": true,
+            "details": {
+              "background": "rgb(20, 110, 45)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                20,
+                110,
+                45,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "derived accent alias recomputes at scope",
+            "pass": true,
+            "details": {
+              "background": "rgb(12, 150, 60)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                12,
+                150,
+                60,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "native color scheme is explicit in scopes",
+            "pass": true
+          },
+          {
+            "name": "before: local avatar palette blocks ancestor custom color",
+            "pass": true,
+            "details": {
+              "background": "rgb(26, 26, 26)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                26,
+                26,
+                26,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "actual avatar target accepts full-color override",
+            "pass": true,
+            "details": {
+              "background": "rgb(7, 21, 35)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                7,
+                21,
+                35,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "avatar override cleanup restores captured default",
+            "pass": true
+          },
+          {
+            "name": "before: local tooltip palette blocks ancestor custom color",
+            "pass": true,
+            "details": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "actual tooltip target accepts full-color override",
+            "pass": true,
+            "details": {
+              "background": "rgb(20, 110, 45)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                20,
+                110,
+                45,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "tooltip override cleanup restores default inversion",
+            "pass": true
+          },
+          {
+            "name": "retained tooltip inversion still changes with appearance",
+            "pass": true,
+            "details": {
+              "lightParent": {
+                "background": "rgb(10, 10, 10)",
+                "color": "rgb(237, 237, 237)",
+                "pixels": [
+                  10,
+                  10,
+                  10,
+                  255
+                ],
+                "textPixels": [
+                  237,
+                  237,
+                  237,
+                  255
+                ],
+                "scheme": "light"
+              },
+              "darkParent": {
+                "background": "lab(100 0 0)",
+                "color": "lab(7.78201 -0.0000149012 0)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              }
+            }
+          },
+          {
+            "name": "before: select channel ring ignores custom whole color",
+            "pass": true,
+            "details": {
+              "value": "none",
+              "pixels": []
+            }
+          },
+          {
+            "name": "select relative color follows theme and sets source alpha",
+            "pass": false,
+            "details": {
+              "value": "none",
+              "pixels": []
+            }
+          },
+          {
+            "name": "before: toggle channel color ignores custom whole color",
+            "pass": true,
+            "details": {
+              "background": "rgba(23, 23, 23, 0.84)",
+              "color": "rgb(102, 102, 102)",
+              "pixels": [
+                22,
+                22,
+                22,
+                214
+              ],
+              "textPixels": [
+                102,
+                102,
+                102,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "toggle relative color follows theme and sets source alpha",
+            "pass": true,
+            "details": {
+              "background": "color(srgb 0.27451 0.352941 0.431373 / 0.84)",
+              "color": "rgb(102, 102, 102)",
+              "pixels": [
+                70,
+                90,
+                109,
+                214
+              ],
+              "textPixels": [
+                102,
+                102,
+                102,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "relative RGB color syntax supported",
+            "pass": true
+          },
+          {
+            "name": "relative color accepts a full display-p3 source",
+            "pass": true,
+            "details": {
+              "background": "color(srgb -0.193457 0.610174 -0.126774 / 0.16)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                0,
+                155,
+                0,
+                41
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "system dark does not override an explicit light scope",
+            "pass": true,
+            "details": {
+              "inner": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              },
+              "light": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              }
+            }
+          }
+        ],
+        "media": {
+          "p3": false,
+          "lab": true
+        },
+        "light": {
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(23, 23, 23)",
+          "pixels": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "textPixels": [
+            23,
+            23,
+            23,
+            255
+          ],
+          "scheme": "light"
+        },
+        "dark": {
+          "background": "rgb(10, 10, 10)",
+          "color": "rgb(237, 237, 237)",
+          "pixels": [
+            10,
+            10,
+            10,
+            255
+          ],
+          "textPixels": [
+            237,
+            237,
+            237,
+            255
+          ],
+          "scheme": "dark"
+        }
+      },
+      "webkit": {
+        "version": "26.6",
+        "errors": [],
+        "assertions": [
+          {
+            "name": "before: plain appearance marker does not change tokens",
+            "pass": true,
+            "details": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "before: inherited alias ignores nested palette override",
+            "pass": true,
+            "details": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "dark scope matches document dark appearance",
+            "pass": true,
+            "details": {
+              "actual": {
+                "background": "rgb(10, 10, 10)",
+                "color": "rgb(237, 237, 237)",
+                "pixels": [
+                  10,
+                  10,
+                  10,
+                  255
+                ],
+                "textPixels": [
+                  237,
+                  237,
+                  237,
+                  255
+                ],
+                "scheme": "dark"
+              },
+              "expected": {
+                "background": "rgb(10, 10, 10)",
+                "color": "rgb(237, 237, 237)",
+                "pixels": [
+                  10,
+                  10,
+                  10,
+                  255
+                ],
+                "textPixels": [
+                  237,
+                  237,
+                  237,
+                  255
+                ],
+                "scheme": "dark"
+              }
+            }
+          },
+          {
+            "name": "nested light scope matches document light appearance",
+            "pass": true,
+            "details": {
+              "actual": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              },
+              "expected": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              }
+            }
+          },
+          {
+            "name": "derived background alias recomputes at scope",
+            "pass": true,
+            "details": {
+              "background": "rgb(20, 110, 45)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                20,
+                110,
+                45,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "derived accent alias recomputes at scope",
+            "pass": true,
+            "details": {
+              "background": "rgb(12, 150, 60)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                12,
+                150,
+                60,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "native color scheme is explicit in scopes",
+            "pass": true
+          },
+          {
+            "name": "before: local avatar palette blocks ancestor custom color",
+            "pass": true,
+            "details": {
+              "background": "rgb(25, 25, 25)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                25,
+                25,
+                25,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "actual avatar target accepts full-color override",
+            "pass": true,
+            "details": {
+              "background": "rgb(7, 21, 35)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                7,
+                21,
+                35,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "avatar override cleanup restores captured default",
+            "pass": true
+          },
+          {
+            "name": "before: local tooltip palette blocks ancestor custom color",
+            "pass": true,
+            "details": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "actual tooltip target accepts full-color override",
+            "pass": true,
+            "details": {
+              "background": "rgb(20, 110, 45)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                20,
+                110,
+                45,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "tooltip override cleanup restores default inversion",
+            "pass": true
+          },
+          {
+            "name": "retained tooltip inversion still changes with appearance",
+            "pass": true,
+            "details": {
+              "lightParent": {
+                "background": "rgb(10, 10, 10)",
+                "color": "rgb(237, 237, 237)",
+                "pixels": [
+                  10,
+                  10,
+                  10,
+                  255
+                ],
+                "textPixels": [
+                  237,
+                  237,
+                  237,
+                  255
+                ],
+                "scheme": "light"
+              },
+              "darkParent": {
+                "background": "lab(100 0 0)",
+                "color": "lab(7.78201 -0.000015 0)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              }
+            }
+          },
+          {
+            "name": "before: select channel ring ignores custom whole color",
+            "pass": true,
+            "details": {
+              "value": "none",
+              "pixels": []
+            }
+          },
+          {
+            "name": "select relative color follows theme and sets source alpha",
+            "pass": false,
+            "details": {
+              "value": "none",
+              "pixels": []
+            }
+          },
+          {
+            "name": "before: toggle channel color ignores custom whole color",
+            "pass": true,
+            "details": {
+              "background": "rgba(23, 23, 23, 0.84)",
+              "color": "rgb(102, 102, 102)",
+              "pixels": [
+                23,
+                23,
+                23,
+                214
+              ],
+              "textPixels": [
+                102,
+                102,
+                102,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "toggle relative color follows theme and sets source alpha",
+            "pass": true,
+            "details": {
+              "background": "color(srgb 0.27451 0.352941 0.431373 / 0.84)",
+              "color": "rgb(102, 102, 102)",
+              "pixels": [
+                70,
+                91,
+                110,
+                214
+              ],
+              "textPixels": [
+                102,
+                102,
+                102,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "relative RGB color syntax supported",
+            "pass": true
+          },
+          {
+            "name": "relative color accepts a full display-p3 source",
+            "pass": true,
+            "details": {
+              "background": "color(srgb -0.193457 0.610174 -0.126774 / 0.16)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                0,
+                155,
+                0,
+                41
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "system dark does not override an explicit light scope",
+            "pass": true,
+            "details": {
+              "inner": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              },
+              "light": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              }
+            }
+          }
+        ],
+        "media": {
+          "p3": true,
+          "lab": true
+        },
+        "light": {
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(23, 23, 23)",
+          "pixels": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "textPixels": [
+            23,
+            23,
+            23,
+            255
+          ],
+          "scheme": "light"
+        },
+        "dark": {
+          "background": "rgb(10, 10, 10)",
+          "color": "rgb(237, 237, 237)",
+          "pixels": [
+            10,
+            10,
+            10,
+            255
+          ],
+          "textPixels": [
+            237,
+            237,
+            237,
+            255
+          ],
+          "scheme": "dark"
+        }
+      }
+    },
+    "beforeTransitionsSettled": {
+      "chromium": {
+        "version": "153.0.8010.48",
+        "errors": [],
+        "assertions": [
+          {
+            "name": "before: plain appearance marker does not change tokens",
+            "pass": true,
+            "details": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "before: inherited alias ignores nested palette override",
+            "pass": true,
+            "details": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "dark scope matches document dark appearance",
+            "pass": true,
+            "details": {
+              "actual": {
+                "background": "rgb(10, 10, 10)",
+                "color": "rgb(237, 237, 237)",
+                "pixels": [
+                  10,
+                  10,
+                  10,
+                  255
+                ],
+                "textPixels": [
+                  237,
+                  237,
+                  237,
+                  255
+                ],
+                "scheme": "dark"
+              },
+              "expected": {
+                "background": "rgb(10, 10, 10)",
+                "color": "rgb(237, 237, 237)",
+                "pixels": [
+                  10,
+                  10,
+                  10,
+                  255
+                ],
+                "textPixels": [
+                  237,
+                  237,
+                  237,
+                  255
+                ],
+                "scheme": "dark"
+              }
+            }
+          },
+          {
+            "name": "nested light scope matches document light appearance",
+            "pass": true,
+            "details": {
+              "actual": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              },
+              "expected": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              }
+            }
+          },
+          {
+            "name": "derived background alias recomputes at scope",
+            "pass": true,
+            "details": {
+              "background": "rgb(20, 110, 45)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                20,
+                110,
+                45,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "derived accent alias recomputes at scope",
+            "pass": true,
+            "details": {
+              "background": "rgb(12, 150, 60)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                12,
+                150,
+                60,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "native color scheme is explicit in scopes",
+            "pass": true
+          },
+          {
+            "name": "before: local avatar palette blocks ancestor custom color",
+            "pass": true,
+            "details": {
+              "background": "rgb(26, 26, 26)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                26,
+                26,
+                26,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "actual avatar target accepts full-color override",
+            "pass": true,
+            "details": {
+              "background": "rgb(7, 21, 35)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                7,
+                21,
+                35,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "avatar override cleanup restores captured default",
+            "pass": true
+          },
+          {
+            "name": "before: local tooltip palette blocks ancestor custom color",
+            "pass": true,
+            "details": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "actual tooltip target accepts full-color override",
+            "pass": true,
+            "details": {
+              "background": "rgb(20, 110, 45)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                20,
+                110,
+                45,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "tooltip override cleanup restores default inversion",
+            "pass": true
+          },
+          {
+            "name": "retained tooltip inversion still changes with appearance",
+            "pass": true,
+            "details": {
+              "lightParent": {
+                "background": "rgb(10, 10, 10)",
+                "color": "rgb(237, 237, 237)",
+                "pixels": [
+                  10,
+                  10,
+                  10,
+                  255
+                ],
+                "textPixels": [
+                  237,
+                  237,
+                  237,
+                  255
+                ],
+                "scheme": "light"
+              },
+              "darkParent": {
+                "background": "lab(100 0 0)",
+                "color": "lab(7.78201 -0.0000149012 0)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              }
+            }
+          },
+          {
+            "name": "before: select channel ring ignores custom whole color",
+            "pass": true,
+            "details": {
+              "value": "rgb(238, 0, 0) 0px 0px 0px 1px, rgba(203, 42, 47, 0.16) 0px 0px 0px 4px",
+              "pixels": [
+                205,
+                44,
+                50,
+                41
+              ]
+            }
+          },
+          {
+            "name": "select relative color follows theme and sets source alpha",
+            "pass": false,
+            "details": {
+              "value": "rgb(238, 0, 0) 0px 0px 0px 1px, oklab(0.549939 0.177944 0.0838471 / 0.16) 0px 0px 0px 4px",
+              "pixels": [
+                205,
+                44,
+                50,
+                41
+              ]
+            }
+          },
+          {
+            "name": "before: toggle channel color ignores custom whole color",
+            "pass": true,
+            "details": {
+              "background": "rgba(23, 23, 23, 0.84)",
+              "color": "rgb(102, 102, 102)",
+              "pixels": [
+                23,
+                23,
+                23,
+                214
+              ],
+              "textPixels": [
+                102,
+                102,
+                102,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "toggle relative color follows theme and sets source alpha",
+            "pass": true,
+            "details": {
+              "background": "color(srgb 0.27451 0.352941 0.431373 / 0.84)",
+              "color": "rgb(102, 102, 102)",
+              "pixels": [
+                70,
+                91,
+                110,
+                214
+              ],
+              "textPixels": [
+                102,
+                102,
+                102,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "relative RGB color syntax supported",
+            "pass": true
+          },
+          {
+            "name": "relative color accepts a full display-p3 source",
+            "pass": true,
+            "details": {
+              "background": "color(srgb -0.193655 0.610199 -0.126763 / 0.16)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                0,
+                155,
+                0,
+                41
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "system dark does not override an explicit light scope",
+            "pass": true,
+            "details": {
+              "inner": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              },
+              "light": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              }
+            }
+          }
+        ],
+        "media": {
+          "p3": false,
+          "lab": true
+        },
+        "light": {
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(23, 23, 23)",
+          "pixels": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "textPixels": [
+            23,
+            23,
+            23,
+            255
+          ],
+          "scheme": "light"
+        },
+        "dark": {
+          "background": "rgb(10, 10, 10)",
+          "color": "rgb(237, 237, 237)",
+          "pixels": [
+            10,
+            10,
+            10,
+            255
+          ],
+          "textPixels": [
+            237,
+            237,
+            237,
+            255
+          ],
+          "scheme": "dark"
+        }
+      },
+      "firefox": {
+        "version": "155.0",
+        "errors": [],
+        "assertions": [
+          {
+            "name": "before: plain appearance marker does not change tokens",
+            "pass": true,
+            "details": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "before: inherited alias ignores nested palette override",
+            "pass": true,
+            "details": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "dark scope matches document dark appearance",
+            "pass": true,
+            "details": {
+              "actual": {
+                "background": "rgb(10, 10, 10)",
+                "color": "rgb(237, 237, 237)",
+                "pixels": [
+                  10,
+                  10,
+                  10,
+                  255
+                ],
+                "textPixels": [
+                  237,
+                  237,
+                  237,
+                  255
+                ],
+                "scheme": "dark"
+              },
+              "expected": {
+                "background": "rgb(10, 10, 10)",
+                "color": "rgb(237, 237, 237)",
+                "pixels": [
+                  10,
+                  10,
+                  10,
+                  255
+                ],
+                "textPixels": [
+                  237,
+                  237,
+                  237,
+                  255
+                ],
+                "scheme": "dark"
+              }
+            }
+          },
+          {
+            "name": "nested light scope matches document light appearance",
+            "pass": true,
+            "details": {
+              "actual": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              },
+              "expected": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              }
+            }
+          },
+          {
+            "name": "derived background alias recomputes at scope",
+            "pass": true,
+            "details": {
+              "background": "rgb(20, 110, 45)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                20,
+                110,
+                45,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "derived accent alias recomputes at scope",
+            "pass": true,
+            "details": {
+              "background": "rgb(12, 150, 60)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                12,
+                150,
+                60,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "native color scheme is explicit in scopes",
+            "pass": true
+          },
+          {
+            "name": "before: local avatar palette blocks ancestor custom color",
+            "pass": true,
+            "details": {
+              "background": "rgb(26, 26, 26)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                26,
+                26,
+                26,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "actual avatar target accepts full-color override",
+            "pass": true,
+            "details": {
+              "background": "rgb(7, 21, 35)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                7,
+                21,
+                35,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "avatar override cleanup restores captured default",
+            "pass": true
+          },
+          {
+            "name": "before: local tooltip palette blocks ancestor custom color",
+            "pass": true,
+            "details": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "actual tooltip target accepts full-color override",
+            "pass": true,
+            "details": {
+              "background": "rgb(20, 110, 45)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                20,
+                110,
+                45,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "tooltip override cleanup restores default inversion",
+            "pass": true
+          },
+          {
+            "name": "retained tooltip inversion still changes with appearance",
+            "pass": true,
+            "details": {
+              "lightParent": {
+                "background": "rgb(10, 10, 10)",
+                "color": "rgb(237, 237, 237)",
+                "pixels": [
+                  10,
+                  10,
+                  10,
+                  255
+                ],
+                "textPixels": [
+                  237,
+                  237,
+                  237,
+                  255
+                ],
+                "scheme": "light"
+              },
+              "darkParent": {
+                "background": "lab(100 0 0)",
+                "color": "lab(7.78201 -0.0000149012 0)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              }
+            }
+          },
+          {
+            "name": "before: select channel ring ignores custom whole color",
+            "pass": true,
+            "details": {
+              "value": "rgb(238, 0, 0) 0px 0px 0px 1px, rgba(203, 42, 47, 0.16) 0px 0px 0px 4px",
+              "pixels": [
+                205,
+                43,
+                49,
+                41
+              ]
+            }
+          },
+          {
+            "name": "select relative color follows theme and sets source alpha",
+            "pass": false,
+            "details": {
+              "value": "rgb(238, 0, 0) 0px 0px 0px 1px, color(srgb 0.7968 0.1632 0.18432 / 0.16) 0px 0px 0px 4px",
+              "pixels": [
+                205,
+                43,
+                49,
+                41
+              ]
+            }
+          },
+          {
+            "name": "before: toggle channel color ignores custom whole color",
+            "pass": true,
+            "details": {
+              "background": "rgba(23, 23, 23, 0.84)",
+              "color": "rgb(102, 102, 102)",
+              "pixels": [
+                22,
+                22,
+                22,
+                214
+              ],
+              "textPixels": [
+                102,
+                102,
+                102,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "toggle relative color follows theme and sets source alpha",
+            "pass": true,
+            "details": {
+              "background": "color(srgb 0.27451 0.352941 0.431373 / 0.84)",
+              "color": "rgb(102, 102, 102)",
+              "pixels": [
+                70,
+                90,
+                109,
+                214
+              ],
+              "textPixels": [
+                102,
+                102,
+                102,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "relative RGB color syntax supported",
+            "pass": true
+          },
+          {
+            "name": "relative color accepts a full display-p3 source",
+            "pass": true,
+            "details": {
+              "background": "color(srgb -0.193457 0.610174 -0.126774 / 0.16)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                0,
+                155,
+                0,
+                41
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "system dark does not override an explicit light scope",
+            "pass": true,
+            "details": {
+              "inner": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              },
+              "light": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              }
+            }
+          }
+        ],
+        "media": {
+          "p3": false,
+          "lab": true
+        },
+        "light": {
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(23, 23, 23)",
+          "pixels": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "textPixels": [
+            23,
+            23,
+            23,
+            255
+          ],
+          "scheme": "light"
+        },
+        "dark": {
+          "background": "rgb(10, 10, 10)",
+          "color": "rgb(237, 237, 237)",
+          "pixels": [
+            10,
+            10,
+            10,
+            255
+          ],
+          "textPixels": [
+            237,
+            237,
+            237,
+            255
+          ],
+          "scheme": "dark"
+        }
+      },
+      "webkit": {
+        "version": "26.6",
+        "errors": [],
+        "assertions": [
+          {
+            "name": "before: plain appearance marker does not change tokens",
+            "pass": true,
+            "details": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "before: inherited alias ignores nested palette override",
+            "pass": true,
+            "details": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                255,
+                255,
+                255,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "dark scope matches document dark appearance",
+            "pass": true,
+            "details": {
+              "actual": {
+                "background": "rgb(10, 10, 10)",
+                "color": "rgb(237, 237, 237)",
+                "pixels": [
+                  10,
+                  10,
+                  10,
+                  255
+                ],
+                "textPixels": [
+                  237,
+                  237,
+                  237,
+                  255
+                ],
+                "scheme": "dark"
+              },
+              "expected": {
+                "background": "rgb(10, 10, 10)",
+                "color": "rgb(237, 237, 237)",
+                "pixels": [
+                  10,
+                  10,
+                  10,
+                  255
+                ],
+                "textPixels": [
+                  237,
+                  237,
+                  237,
+                  255
+                ],
+                "scheme": "dark"
+              }
+            }
+          },
+          {
+            "name": "nested light scope matches document light appearance",
+            "pass": true,
+            "details": {
+              "actual": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              },
+              "expected": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              }
+            }
+          },
+          {
+            "name": "derived background alias recomputes at scope",
+            "pass": true,
+            "details": {
+              "background": "rgb(20, 110, 45)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                20,
+                110,
+                45,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "derived accent alias recomputes at scope",
+            "pass": true,
+            "details": {
+              "background": "rgb(12, 150, 60)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                12,
+                150,
+                60,
+                255
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "native color scheme is explicit in scopes",
+            "pass": true
+          },
+          {
+            "name": "before: local avatar palette blocks ancestor custom color",
+            "pass": true,
+            "details": {
+              "background": "rgb(25, 25, 25)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                25,
+                25,
+                25,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "actual avatar target accepts full-color override",
+            "pass": true,
+            "details": {
+              "background": "rgb(7, 21, 35)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                7,
+                21,
+                35,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "avatar override cleanup restores captured default",
+            "pass": true
+          },
+          {
+            "name": "before: local tooltip palette blocks ancestor custom color",
+            "pass": true,
+            "details": {
+              "background": "rgb(10, 10, 10)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                10,
+                10,
+                10,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "actual tooltip target accepts full-color override",
+            "pass": true,
+            "details": {
+              "background": "rgb(20, 110, 45)",
+              "color": "rgb(237, 237, 237)",
+              "pixels": [
+                20,
+                110,
+                45,
+                255
+              ],
+              "textPixels": [
+                237,
+                237,
+                237,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "tooltip override cleanup restores default inversion",
+            "pass": true
+          },
+          {
+            "name": "retained tooltip inversion still changes with appearance",
+            "pass": true,
+            "details": {
+              "lightParent": {
+                "background": "rgb(10, 10, 10)",
+                "color": "rgb(237, 237, 237)",
+                "pixels": [
+                  10,
+                  10,
+                  10,
+                  255
+                ],
+                "textPixels": [
+                  237,
+                  237,
+                  237,
+                  255
+                ],
+                "scheme": "light"
+              },
+              "darkParent": {
+                "background": "lab(100 0 0)",
+                "color": "lab(7.78201 -0.000015 0)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              }
+            }
+          },
+          {
+            "name": "before: select channel ring ignores custom whole color",
+            "pass": true,
+            "details": {
+              "value": "rgb(238, 0, 0) 0px 0px 0px 1px, rgba(203, 42, 47, 0.16) 0px 0px 0px 4px",
+              "pixels": [
+                205,
+                44,
+                50,
+                41
+              ]
+            }
+          },
+          {
+            "name": "select relative color follows theme and sets source alpha",
+            "pass": false,
+            "details": {
+              "value": "rgb(238, 0, 0) 0px 0px 0px 1px, oklab(0.54988 0.177444 0.083831 / 0.160784) 0px 0px 0px 4px",
+              "pixels": [
+                205,
+                44,
+                50,
+                41
+              ]
+            }
+          },
+          {
+            "name": "before: toggle channel color ignores custom whole color",
+            "pass": true,
+            "details": {
+              "background": "rgba(23, 23, 23, 0.84)",
+              "color": "rgb(102, 102, 102)",
+              "pixels": [
+                23,
+                23,
+                23,
+                214
+              ],
+              "textPixels": [
+                102,
+                102,
+                102,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "toggle relative color follows theme and sets source alpha",
+            "pass": true,
+            "details": {
+              "background": "color(srgb 0.27451 0.352941 0.431373 / 0.84)",
+              "color": "rgb(102, 102, 102)",
+              "pixels": [
+                70,
+                91,
+                110,
+                214
+              ],
+              "textPixels": [
+                102,
+                102,
+                102,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "relative RGB color syntax supported",
+            "pass": true
+          },
+          {
+            "name": "relative color accepts a full display-p3 source",
+            "pass": true,
+            "details": {
+              "background": "color(srgb -0.193457 0.610174 -0.126774 / 0.16)",
+              "color": "rgb(23, 23, 23)",
+              "pixels": [
+                0,
+                155,
+                0,
+                41
+              ],
+              "textPixels": [
+                23,
+                23,
+                23,
+                255
+              ],
+              "scheme": "light"
+            }
+          },
+          {
+            "name": "system dark does not override an explicit light scope",
+            "pass": true,
+            "details": {
+              "inner": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              },
+              "light": {
+                "background": "rgb(255, 255, 255)",
+                "color": "rgb(23, 23, 23)",
+                "pixels": [
+                  255,
+                  255,
+                  255,
+                  255
+                ],
+                "textPixels": [
+                  23,
+                  23,
+                  23,
+                  255
+                ],
+                "scheme": "light"
+              }
+            }
+          }
+        ],
+        "media": {
+          "p3": true,
+          "lab": true
+        },
+        "light": {
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(23, 23, 23)",
+          "pixels": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "textPixels": [
+            23,
+            23,
+            23,
+            255
+          ],
+          "scheme": "light"
+        },
+        "dark": {
+          "background": "rgb(10, 10, 10)",
+          "color": "rgb(237, 237, 237)",
+          "pixels": [
+            10,
+            10,
+            10,
+            255
+          ],
+          "textPixels": [
+            237,
+            237,
+            237,
+            255
+          ],
+          "scheme": "dark"
+        }
+      }
+    }
+  },
+  "reproduction": {
+    "README.md": "# Nested appearance and full-color integration probe\n\nRead-only source investigation. No repository files changed; no build, generator or install ran in the repository.\n\n`report.json` gives the exact source references, proposed transforms, all limitations and browser summary. `results.json` contains all assertions and computed results. `data.json` captures the complete source CSS and both prototype scope sheets. `transform.json` records source fingerprints. `scope.css` is the category-limited prototype.\n\n## Result\n\nChromium 153.0.8010.48, Firefox 155.0 and WebKit 26.6 each pass 25 assertions with zero page errors. These include reproduction of the original CSS limitations, nested explicit appearances, derived palette aliases, inherited spacing/font overrides, fixed-alpha full colors, local-target overrides/cleanup and preserved Tooltip inversion. Select checks await its actual CSS transition completion; they do not read an in-flight color.\n\n## Smallest safe implementation direction\n\n1. Add an explicit resolved-appearance target to applicable token rules in the generator while retaining the exact conditional nesting and cascade order. Automatic system preference remains document-root fallback. Do not mechanically replace every :root selector: :root:has(.subbar) owns document layout.\n2. Appearance boundaries should receive appearance-dependent fields and their dependent aliases, not every invariant font/spacing/size default. The naive full-token clone failed that inheritance test. The prototype's category-limited clone proves the correction for fonts/spacing; reducing that to the exact dependency closure and handling named-theme boundaries is still implementation work.\n3. Keep Avatar Group's forced-dark count and Tooltip's inverse/default palette behavior. Named-theme overrides must be delivered to their actual inner target, after the local default palette owns its declarations. Browser CSSStyleDeclaration writes prove target reachability only; they are not the final renderer. Inline writes can change consumer ::part/custom-CSS precedence. The approved generator-driven delivery must verify author precedence, ownership and cleanup independently. No new color aliases or channel-valued theme keys are needed.\n4. Replace the three non-custom Select/Toggle channel expressions with native relative RGB expressions using the same full-color variable and explicit alpha. This sets the source alpha rather than multiplying a theme color's existing alpha. Never perform the same replacement in the palette variable's own definition: that would be circular.\n5. Feed each component's existing data-dark selector from its effective scope. Root-only base.ts observation cannot implement nested appearance by itself.\n\n## Reproduction and scope\n\nRun `bun prepare-full-copy.ts`, then `bun prepare.ts`, then `bun run.ts`. These scripts write only this scratch directory. The runner closes all browsers and its loopback server in finally blocks.\n\n`prepare-full-copy.ts` and `probe-initial-scope.js` preserve the initial all-token approach. `results-initial.json` had an incomplete Select fixture missing its actual error class; `results-before-transition-settled.json` read a running transition. Neither is a product-defect result. The final fixture matches Select's actual error class/aria-invalid combination and waits on animation.finished. `results-initial-scope.json` predates the explicit inheritance counterexamples. Use only final results.json for the 25-assertion claim.\n\nThis prototype does not certify the actual theme element, registration schema, inherited theme identity, portaled overlays, reconnection or document adoption. It does not select font weights. WebKit matched the P3 media branch; Chromium and Firefox did not. Conditional source groups are preserved, but physical wide-gamut visual parity is not claimed.\n",
+    "prepare-full-copy.ts": "import fs from 'node:fs';\nconst root='/Users/peterkloss/Dev/ACMElabs/design-system',dir=import.meta.dir;\nconst candidate=await Bun.file('/tmp/acme-theme-mapping-YtN5oR/theme-definition-candidate.json').json();\nconst order={'styles/house.css':0,'src/generated/theme.css':1,'src/shared/numeric-tokens.ts':2};\nconst definitions=candidate.rows.flatMap(row=>row.defaults.map(value=>({...value,property:row.cssProperty}))).sort((a,b)=>order[a.file]-order[b.file]||a.line-b.line);\nconst groups=[];const skipped=[];\nfor(const entry of definitions){let selector;\n if(entry.selector===':root')selector=':where([data-probe-scope])';\n else if([':root:where([data-theme=\"dark\"])',':root[data-theme=\"dark\"]'].includes(entry.selector))selector=':where([data-probe-scope][data-probe-appearance=\"dark\"])';\n else if(entry.selector===':root:where([data-theme=\"light\"])')selector=':where([data-probe-scope][data-probe-appearance=\"light\"])';\n else{skipped.push({file:entry.file,line:entry.line,selector:entry.selector});continue;}\n const signature=JSON.stringify([selector,entry.conditions]);let group=groups.at(-1);if(!group||group.signature!==signature){group={signature,selector,conditions:entry.conditions,declarations:[]};groups.push(group);}group.declarations.push(entry.property+':'+entry.value+';');\n}\nconst scopeCss=groups.map(group=>group.conditions.reduceRight((inside,condition)=>condition+'{'+inside+'}',group.selector+'{'+group.declarations.join('\\n')+'}')).join('\\n')+'\\n[data-probe-scope][data-probe-appearance=\"light\"]{color-scheme:light}[data-probe-scope][data-probe-appearance=\"dark\"]{color-scheme:dark}';\nconst files={tokens:'src/generated/css/document/tokens.css',avatar:'src/generated/css/components/avatar-group/avatar-group.css',tooltip:'src/generated/css/components/tooltip/tooltip.css',select:'src/generated/css/components/select/select.css',toggle:'src/generated/css/components/toggle/toggle.css'};\nconst data={scopeCss,sources:{},css:{},transform:{copiedGroups:groups.length,skippedSelectors:[...new Set(skipped.map(row=>row.selector))],skippedCount:skipped.length}};\nfor(const [name,file]of Object.entries(files)){const text=fs.readFileSync(root+'/'+file,'utf8');data.css[name]=text;data.sources[name]={file,sha256:new Bun.CryptoHasher('sha256').update(text).digest('hex')};}\ndata.css.selectAfter=data.css.select.replace('hsla(var(--ds-red-900-value), .16)','rgb(from var(--ds-red-900) r g b / .16)');\ndata.css.toggleAfter=data.css.toggle.replaceAll('hsla(var(--ds-gray-1000-value),.84)','rgb(from var(--ds-gray-1000) r g b / .84)');\nif(data.css.select===data.css.selectAfter||data.css.toggle===data.css.toggleAfter)throw new Error('Expected current source expressions missing');\nawait Bun.write(dir+'/data.json',JSON.stringify(data));await Bun.write(dir+'/scope.css',scopeCss);await Bun.write(dir+'/transform.json',JSON.stringify({sources:data.sources,...data.transform},null,2));await Bun.write(dir+'/index.html','<!doctype html><meta charset=\"utf-8\"><script type=\"module\" src=\"./probe.js\"></script>');\n",
+    "prepare.ts": "import fs from 'node:fs';\nconst root='/Users/peterkloss/Dev/ACMElabs/design-system',dir=import.meta.dir;\nconst candidate=await Bun.file('/tmp/acme-theme-mapping-YtN5oR/theme-definition-candidate.json').json();\nconst order={'styles/house.css':0,'src/generated/theme.css':1,'src/shared/numeric-tokens.ts':2};\nconst definitions=candidate.rows.flatMap(row=>row.defaults.map(value=>({...value,property:row.cssProperty}))).sort((a,b)=>order[a.file]-order[b.file]||a.line-b.line);\nconst appearanceFields=new Set(candidate.rows.filter(row=>['colors','shadows'].includes(row.category)||row.status==='private-channel'||['--acme-text-gradient','--ds-focus-ring-outline'].includes(row.cssProperty)).map(row=>row.cssProperty));\nconst fullScopeCss=await Bun.file(import.meta.dir+'/scope.css').text();\nconst groups=[];const skipped=[];\nfor(const entry of definitions){if(!appearanceFields.has(entry.property))continue;let selector;\n if(entry.selector===':root')selector=':where([data-probe-scope])';\n else if([':root:where([data-theme=\"dark\"])',':root[data-theme=\"dark\"]'].includes(entry.selector))selector=':where([data-probe-scope][data-probe-appearance=\"dark\"])';\n else if(entry.selector===':root:where([data-theme=\"light\"])')selector=':where([data-probe-scope][data-probe-appearance=\"light\"])';\n else{skipped.push({file:entry.file,line:entry.line,selector:entry.selector});continue;}\n const signature=JSON.stringify([selector,entry.conditions]);let group=groups.at(-1);if(!group||group.signature!==signature){group={signature,selector,conditions:entry.conditions,declarations:[]};groups.push(group);}group.declarations.push(entry.property+':'+entry.value+';');\n}\nconst scopeCss=groups.map(group=>group.conditions.reduceRight((inside,condition)=>condition+'{'+inside+'}',group.selector+'{'+group.declarations.join('\\n')+'}')).join('\\n')+'\\n[data-probe-scope][data-probe-appearance=\"light\"]{color-scheme:light}[data-probe-scope][data-probe-appearance=\"dark\"]{color-scheme:dark}';\nconst files={tokens:'src/generated/css/document/tokens.css',avatar:'src/generated/css/components/avatar-group/avatar-group.css',tooltip:'src/generated/css/components/tooltip/tooltip.css',select:'src/generated/css/components/select/select.css',toggle:'src/generated/css/components/toggle/toggle.css'};\nconst data={scopeCss,fullScopeCss,sources:{},css:{},transform:{copiedGroups:groups.length,skippedSelectors:[...new Set(skipped.map(row=>row.selector))],skippedCount:skipped.length}};\nfor(const [name,file]of Object.entries(files)){const text=fs.readFileSync(root+'/'+file,'utf8');data.css[name]=text;data.sources[name]={file,sha256:new Bun.CryptoHasher('sha256').update(text).digest('hex')};}\ndata.css.selectAfter=data.css.select.replace('hsla(var(--ds-red-900-value), .16)','rgb(from var(--ds-red-900) r g b / .16)');\ndata.css.toggleAfter=data.css.toggle.replaceAll('hsla(var(--ds-gray-1000-value),.84)','rgb(from var(--ds-gray-1000) r g b / .84)');\nif(data.css.select===data.css.selectAfter||data.css.toggle===data.css.toggleAfter)throw new Error('Expected current source expressions missing');\nawait Bun.write(dir+'/data.json',JSON.stringify(data));await Bun.write(dir+'/scope.css',scopeCss);await Bun.write(dir+'/transform.json',JSON.stringify({sources:data.sources,...data.transform},null,2));await Bun.write(dir+'/index.html','<!doctype html><meta charset=\"utf-8\"><script type=\"module\" src=\"./probe.js\"></script>');\n",
+    "probe.js": "const data=await(await fetch('./data.json')).json();\nconst sheet=document.head.appendChild(document.createElement('style'));sheet.textContent=data.css.tokens;\ndocument.documentElement.dataset.theme='light';\nconst styles=document.head.appendChild(document.createElement('style'));styles.textContent='.probe{background-color:var(--bg);color:var(--text);width:20px;height:20px}.alias{background-color:var(--accent)}';\nconst reference=document.body.appendChild(document.createElement('div'));reference.className='probe';\nconst rgba=value=>{const canvas=document.createElement('canvas');canvas.width=canvas.height=1;const context=canvas.getContext('2d');context.clearRect(0,0,1,1);context.fillStyle=value;context.fillRect(0,0,1,1);return [...context.getImageData(0,0,1,1).data];};\nconst read=element=>{const style=getComputedStyle(element);return{background:style.backgroundColor,color:style.color,pixels:rgba(style.backgroundColor),textPixels:rgba(style.color),scheme:style.colorScheme}};\nconst scope=(appearance,parent=document.body)=>{const element=parent.appendChild(document.createElement('section'));element.dataset.probeScope='';element.dataset.probeAppearance=appearance;const probe=element.appendChild(document.createElement('div'));probe.className='probe';return{element,probe};};\nconst outer=scope('dark'),inner=scope('light',outer.element),custom=scope('light');custom.element.style.setProperty('--ds-background-100','rgb(20 110 45)');custom.element.style.setProperty('--ds-blue-700','rgb(12 150 60)');const alias=custom.element.appendChild(document.createElement('div'));alias.className='probe alias';\nconst assertions=[];const check=(name,pass,details)=>assertions.push({name,pass,details});\nconst light=read(reference);document.documentElement.dataset.theme='dark';const dark=read(reference);document.documentElement.dataset.theme='light';\ncheck('before: plain appearance marker does not change tokens',JSON.stringify(read(outer.probe).pixels)===JSON.stringify(light.pixels),read(outer.probe));\ncheck('before: inherited alias ignores nested palette override',JSON.stringify(read(custom.probe).pixels)!==JSON.stringify([20,110,45,255]),read(custom.probe));\nconst scoped=document.head.appendChild(document.createElement('style'));scoped.textContent=data.fullScopeCss;\nouter.element.style.setProperty('--acme-spacing-2','3rem');outer.element.style.setProperty('--sans','monospace');inner.probe.style.marginLeft='var(--acme-spacing-2)';inner.probe.style.fontFamily='var(--sans)';\ncheck('before: copying invariant tokens into appearance scopes loses inherited spacing',getComputedStyle(inner.probe).marginLeft!=='48px',{actual:getComputedStyle(inner.probe).marginLeft});\ncheck('before: copying invariant tokens into appearance scopes loses inherited font',getComputedStyle(inner.probe).fontFamily!=='monospace',{actual:getComputedStyle(inner.probe).fontFamily});\nscoped.textContent=data.scopeCss;\ncheck('appearance-only scope preserves inherited spacing',getComputedStyle(inner.probe).marginLeft==='48px',{actual:getComputedStyle(inner.probe).marginLeft});\ncheck('appearance-only scope preserves inherited font',getComputedStyle(inner.probe).fontFamily==='monospace',{actual:getComputedStyle(inner.probe).fontFamily});\ncheck('dark scope matches document dark appearance',JSON.stringify(read(outer.probe).pixels)===JSON.stringify(dark.pixels),{actual:read(outer.probe),expected:dark});\ncheck('nested light scope matches document light appearance',JSON.stringify(read(inner.probe).pixels)===JSON.stringify(light.pixels),{actual:read(inner.probe),expected:light});\ncheck('derived background alias recomputes at scope',JSON.stringify(read(custom.probe).pixels)===JSON.stringify([20,110,45,255]),read(custom.probe));\ncheck('derived accent alias recomputes at scope',JSON.stringify(read(alias).pixels)===JSON.stringify([12,150,60,255]),read(alias));\ncheck('native color scheme is explicit in scopes',read(outer.probe).scheme==='dark'&&read(inner.probe).scheme==='light');\nconst makeShadow=(css,markup,parent=custom.element,dark=false)=>{const host=parent.appendChild(document.createElement('div'));if(dark)host.dataset.dark='';const shadow=host.attachShadow({mode:'open'});const style=document.createElement('style');style.textContent=css;shadow.append(style);const content=document.createElement('div');content.innerHTML=markup;shadow.append(content);return{host,shadow,style};};\nconst avatar=makeShadow(data.css.avatar,'<div class=\"avatar-group\"><span class=\"more\"><span class=\"count\">+2</span></span></div>');\nconst count=avatar.shadow.querySelector('.count');custom.element.style.setProperty('--ds-gray-100','rgb(7 21 35)');const avatarBefore=read(count);\ncheck('before: local avatar palette blocks ancestor custom color',JSON.stringify(avatarBefore.pixels)!==JSON.stringify([7,21,35,255]),avatarBefore);\ncount.style.setProperty('--ds-gray-100','rgb(7 21 35)');check('actual avatar target accepts full-color override',JSON.stringify(read(count).pixels)===JSON.stringify([7,21,35,255]),read(count));\ncount.style.removeProperty('--ds-gray-100');check('avatar override cleanup restores captured default',JSON.stringify(read(count).pixels)===JSON.stringify(avatarBefore.pixels));\nconst tooltip=makeShadow(data.css.tooltip,'<div class=\"tip nodelay\" role=\"tooltip\">Tip</div>');const tip=tooltip.shadow.querySelector('.tip'),tipBefore=read(tip);\ncheck('before: local tooltip palette blocks ancestor custom color',JSON.stringify(tipBefore.pixels)!==JSON.stringify([20,110,45,255]),tipBefore);\ntip.style.setProperty('--ds-background-100','rgb(20 110 45)');check('actual tooltip target accepts full-color override',JSON.stringify(read(tip).pixels)===JSON.stringify([20,110,45,255]),read(tip));\ntip.style.removeProperty('--ds-background-100');check('tooltip override cleanup restores default inversion',JSON.stringify(read(tip).pixels)===JSON.stringify(tipBefore.pixels));\ntooltip.host.dataset.dark='';const darkTip=read(tip);check('retained tooltip inversion still changes with appearance',JSON.stringify(darkTip.pixels)!==JSON.stringify(tipBefore.pixels),{lightParent:tipBefore,darkParent:darkTip});\nconst select=makeShadow(data.css.select,'<div class=\"wrap error\"><select aria-invalid=\"true\"><option>Example</option></select></div>');const field=select.shadow.querySelector('select');custom.element.style.setProperty('--ds-red-900','rgba(10,200,20,.4)');const shadowColor=()=>{const value=getComputedStyle(field).boxShadow;const colors=value.match(/(?:rgba?|color|lab|oklab|lch|oklch)\\([^)]*\\)/g)||[];return{value,pixels:colors.length?rgba(colors.at(-1)):[]};};\ncheck('before: select channel ring ignores custom whole color',JSON.stringify(shadowColor().pixels)!==JSON.stringify([10,200,20,41]),shadowColor());select.style.textContent=data.css.selectAfter; getComputedStyle(field).boxShadow; await Promise.all(field.getAnimations().map(animation=>animation.finished));\nconst selectAfter=shadowColor();check('select relative color follows theme and sets source alpha',selectAfter.pixels.length===4&&selectAfter.pixels.every((value,index)=>Math.abs(value-[10,200,20,41][index])<=2),selectAfter);\nconst toggle=makeShadow(data.css.toggle,'<label class=\"toggle\" data-checked><span class=\"track\"><span class=\"thumb\"></span></span></label>',custom.element,true),thumb=toggle.shadow.querySelector('.thumb');custom.element.style.setProperty('--ds-gray-1000','rgba(70,90,110,.3)');const beforeThumb=read(thumb);check('before: toggle channel color ignores custom whole color',JSON.stringify(beforeThumb.pixels)!==JSON.stringify([70,90,110,214]),beforeThumb);toggle.style.textContent=data.css.toggleAfter;const afterThumb=read(thumb);check('toggle relative color follows theme and sets source alpha',afterThumb.pixels.every((value,index)=>Math.abs(value-[70,90,110,214][index])<=2),afterThumb);\ncheck('relative RGB color syntax supported',CSS.supports('color','rgb(from red r g b / .16)'));\nconst p3=custom.element.appendChild(document.createElement('div'));p3.style.cssText='--probe-full:color(display-p3 .2 .6 .1 / .4);background:rgb(from var(--probe-full) r g b / .16)';const p3Read=read(p3);check('relative color accepts a full display-p3 source',Math.abs(p3Read.pixels[3]-41)<=1,p3Read);\nwindow.checkSystemDark=()=>{document.documentElement.removeAttribute('data-theme');const result={inner:read(inner.probe),light};check('system dark does not override an explicit light scope',JSON.stringify(result.inner.pixels)===JSON.stringify(light.pixels),result);return assertions;};\nwindow.result={assertions,media:{p3:matchMedia('(color-gamut:p3)').matches,lab:CSS.supports('color','lab(50% 0 0)')},light,dark};window.ready=true;\n",
+    "probe-initial-scope.js": "const data=await(await fetch('./data.json')).json();\nconst sheet=document.head.appendChild(document.createElement('style'));sheet.textContent=data.css.tokens;\ndocument.documentElement.dataset.theme='light';\nconst styles=document.head.appendChild(document.createElement('style'));styles.textContent='.probe{background-color:var(--bg);color:var(--text);width:20px;height:20px}.alias{background-color:var(--accent)}';\nconst reference=document.body.appendChild(document.createElement('div'));reference.className='probe';\nconst rgba=value=>{const canvas=document.createElement('canvas');canvas.width=canvas.height=1;const context=canvas.getContext('2d');context.clearRect(0,0,1,1);context.fillStyle=value;context.fillRect(0,0,1,1);return [...context.getImageData(0,0,1,1).data];};\nconst read=element=>{const style=getComputedStyle(element);return{background:style.backgroundColor,color:style.color,pixels:rgba(style.backgroundColor),textPixels:rgba(style.color),scheme:style.colorScheme}};\nconst scope=(appearance,parent=document.body)=>{const element=parent.appendChild(document.createElement('section'));element.dataset.probeScope='';element.dataset.probeAppearance=appearance;const probe=element.appendChild(document.createElement('div'));probe.className='probe';return{element,probe};};\nconst outer=scope('dark'),inner=scope('light',outer.element),custom=scope('light');custom.element.style.setProperty('--ds-background-100','rgb(20 110 45)');custom.element.style.setProperty('--ds-blue-700','rgb(12 150 60)');const alias=custom.element.appendChild(document.createElement('div'));alias.className='probe alias';\nconst assertions=[];const check=(name,pass,details)=>assertions.push({name,pass,details});\nconst light=read(reference);document.documentElement.dataset.theme='dark';const dark=read(reference);document.documentElement.dataset.theme='light';\ncheck('before: plain appearance marker does not change tokens',JSON.stringify(read(outer.probe).pixels)===JSON.stringify(light.pixels),read(outer.probe));\ncheck('before: inherited alias ignores nested palette override',JSON.stringify(read(custom.probe).pixels)!==JSON.stringify([20,110,45,255]),read(custom.probe));\nconst scoped=document.head.appendChild(document.createElement('style'));scoped.textContent=data.scopeCss;\ncheck('dark scope matches document dark appearance',JSON.stringify(read(outer.probe).pixels)===JSON.stringify(dark.pixels),{actual:read(outer.probe),expected:dark});\ncheck('nested light scope matches document light appearance',JSON.stringify(read(inner.probe).pixels)===JSON.stringify(light.pixels),{actual:read(inner.probe),expected:light});\ncheck('derived background alias recomputes at scope',JSON.stringify(read(custom.probe).pixels)===JSON.stringify([20,110,45,255]),read(custom.probe));\ncheck('derived accent alias recomputes at scope',JSON.stringify(read(alias).pixels)===JSON.stringify([12,150,60,255]),read(alias));\ncheck('native color scheme is explicit in scopes',read(outer.probe).scheme==='dark'&&read(inner.probe).scheme==='light');\nconst makeShadow=(css,markup,parent=custom.element,dark=false)=>{const host=parent.appendChild(document.createElement('div'));if(dark)host.dataset.dark='';const shadow=host.attachShadow({mode:'open'});const style=document.createElement('style');style.textContent=css;shadow.append(style);const content=document.createElement('div');content.innerHTML=markup;shadow.append(content);return{host,shadow,style};};\nconst avatar=makeShadow(data.css.avatar,'<div class=\"avatar-group\"><span class=\"more\"><span class=\"count\">+2</span></span></div>');\nconst count=avatar.shadow.querySelector('.count');custom.element.style.setProperty('--ds-gray-100','rgb(7 21 35)');const avatarBefore=read(count);\ncheck('before: local avatar palette blocks ancestor custom color',JSON.stringify(avatarBefore.pixels)!==JSON.stringify([7,21,35,255]),avatarBefore);\ncount.style.setProperty('--ds-gray-100','rgb(7 21 35)');check('actual avatar target accepts full-color override',JSON.stringify(read(count).pixels)===JSON.stringify([7,21,35,255]),read(count));\ncount.style.removeProperty('--ds-gray-100');check('avatar override cleanup restores captured default',JSON.stringify(read(count).pixels)===JSON.stringify(avatarBefore.pixels));\nconst tooltip=makeShadow(data.css.tooltip,'<div class=\"tip nodelay\" role=\"tooltip\">Tip</div>');const tip=tooltip.shadow.querySelector('.tip'),tipBefore=read(tip);\ncheck('before: local tooltip palette blocks ancestor custom color',JSON.stringify(tipBefore.pixels)!==JSON.stringify([20,110,45,255]),tipBefore);\ntip.style.setProperty('--ds-background-100','rgb(20 110 45)');check('actual tooltip target accepts full-color override',JSON.stringify(read(tip).pixels)===JSON.stringify([20,110,45,255]),read(tip));\ntip.style.removeProperty('--ds-background-100');check('tooltip override cleanup restores default inversion',JSON.stringify(read(tip).pixels)===JSON.stringify(tipBefore.pixels));\ntooltip.host.dataset.dark='';const darkTip=read(tip);check('retained tooltip inversion still changes with appearance',JSON.stringify(darkTip.pixels)!==JSON.stringify(tipBefore.pixels),{lightParent:tipBefore,darkParent:darkTip});\nconst select=makeShadow(data.css.select,'<div class=\"wrap error\"><select aria-invalid=\"true\"><option>Example</option></select></div>');const field=select.shadow.querySelector('select');custom.element.style.setProperty('--ds-red-900','rgba(10,200,20,.4)');const shadowColor=()=>{const value=getComputedStyle(field).boxShadow;const colors=value.match(/(?:rgba?|color|lab|oklab|lch|oklch)\\([^)]*\\)/g)||[];return{value,pixels:colors.length?rgba(colors.at(-1)):[]};};\ncheck('before: select channel ring ignores custom whole color',JSON.stringify(shadowColor().pixels)!==JSON.stringify([10,200,20,41]),shadowColor());select.style.textContent=data.css.selectAfter; getComputedStyle(field).boxShadow; await Promise.all(field.getAnimations().map(animation=>animation.finished));\nconst selectAfter=shadowColor();check('select relative color follows theme and sets source alpha',selectAfter.pixels.length===4&&selectAfter.pixels.every((value,index)=>Math.abs(value-[10,200,20,41][index])<=2),selectAfter);\nconst toggle=makeShadow(data.css.toggle,'<label class=\"toggle\" data-checked><span class=\"track\"><span class=\"thumb\"></span></span></label>',custom.element,true),thumb=toggle.shadow.querySelector('.thumb');custom.element.style.setProperty('--ds-gray-1000','rgba(70,90,110,.3)');const beforeThumb=read(thumb);check('before: toggle channel color ignores custom whole color',JSON.stringify(beforeThumb.pixels)!==JSON.stringify([70,90,110,214]),beforeThumb);toggle.style.textContent=data.css.toggleAfter;const afterThumb=read(thumb);check('toggle relative color follows theme and sets source alpha',afterThumb.pixels.every((value,index)=>Math.abs(value-[70,90,110,214][index])<=2),afterThumb);\ncheck('relative RGB color syntax supported',CSS.supports('color','rgb(from red r g b / .16)'));\nconst p3=custom.element.appendChild(document.createElement('div'));p3.style.cssText='--probe-full:color(display-p3 .2 .6 .1 / .4);background:rgb(from var(--probe-full) r g b / .16)';const p3Read=read(p3);check('relative color accepts a full display-p3 source',Math.abs(p3Read.pixels[3]-41)<=1,p3Read);\nwindow.checkSystemDark=()=>{document.documentElement.removeAttribute('data-theme');const result={inner:read(inner.probe),light};check('system dark does not override an explicit light scope',JSON.stringify(result.inner.pixels)===JSON.stringify(light.pixels),result);return assertions;};\nwindow.result={assertions,media:{p3:matchMedia('(color-gamut:p3)').matches,lab:CSS.supports('color','lab(50% 0 0)')},light,dark};window.ready=true;\n",
+    "run.ts": "import path from 'node:path';process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const {chromium,firefox,webkit}=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');const dir=import.meta.dir;const server=Bun.serve({hostname:'127.0.0.1',port:0,fetch(req){const pathname=new URL(req.url).pathname;if(pathname==='/favicon.ico')return new Response(null,{status:204});return new Response(Bun.file(dir+(pathname==='/'?'/index.html':pathname)));}});const results={};try{for(const [name,driver]of Object.entries({chromium,firefox,webkit})){const browser=await driver.launch(name==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});try{const page=await browser.newPage({colorScheme:'light'});const errors=[];page.on('pageerror',e=>errors.push(String(e)));await page.goto(server.url.toString());await page.waitForFunction(()=>window.ready,undefined,{timeout:15000});await page.emulateMedia({colorScheme:'dark'});await page.evaluate(()=>window.checkSystemDark());results[name]={version:browser.version(),errors,...await page.evaluate(()=>window.result)};await page.close();}finally{await browser.close();}}}finally{server.stop();}await Bun.write(dir+'/results.json',JSON.stringify(results,null,2));console.log(Object.fromEntries(Object.entries(results).map(([name,result])=>[name,{version:result.version,total:result.assertions.length,passed:result.assertions.filter(a=>a.pass).length,failures:result.assertions.filter(a=>!a.pass),errors:result.errors}])));if(Object.values(results).some(r=>r.errors.length||r.assertions.some(a=>!a.pass)))process.exitCode=1;\n",
+    "finalize.ts": "import fs from 'node:fs';\nconst root='/Users/peterkloss/Dev/ACMElabs/design-system',dir=import.meta.dir;\nconst results=await Bun.file(dir+'/results.json').json();\nconst transform=await Bun.file(dir+'/transform.json').json();\nconst markers=[];\nfor(const page of ['avatar','tooltip']){\n const file='tools/geist/spec/'+page+'.json';const data=JSON.parse(fs.readFileSync(root+'/'+file,'utf8'));\n function visit(node,pointer,heading){const classes=[...new Set((node.styles||[]).map(s=>s.cls))];if(classes.includes('dark-theme')||classes.includes('invert-theme'))markers.push({file,pointer,heading,tag:node.tag,themeClasses:classes.filter(c=>c.includes('theme'))});for(const [i,child]of(node.children||[]).entries())visit(child,pointer+'/children/'+i,heading);}\n for(const[i,e]of data.examples.entries())for(const[j,node]of e.dom.entries())visit(node,'/examples/'+i+'/dom/'+j,e.heading);\n}\nconst report={status:'bounded read-only CSS prototype, not production integration',sources:transform.sources,sourceReferences:[\n {file:'tools/geist/vars.ts',line:32,finding:'Root/light/dark selectors and automatic document fallback are created here.'},\n {file:'styles/house.css',line:21,finding:'House aliases are root declarations; copying only palette colors does not recompute inherited aliases.'},\n {file:'styles/house.css',line:3996,finding:'Document layout :root:has(.subbar) is not a theme-scope selector.'},\n {file:'tools/geist/gen.ts',line:815,finding:'Local source theme classes intentionally bring their token block into a component mapping.'},\n {file:'tools/geist/maps/avatar-group.ts',line:19,finding:'Count target; source spec marks it dark-theme.'},\n {file:'tools/geist/maps/tooltip.ts',line:17,finding:'Default invertTheme=true; its context mapping at line34 retains the inverted token block.'},\n {file:'src/generated/css/components/select/select.css',line:169,finding:'Fixed16% alpha on raw red900 channels.'},\n {file:'src/generated/css/components/toggle/toggle.css',line:215,finding:'Fixed84% alpha on raw gray1000 channels; second occurrence line227.'},\n {file:'src/base.ts',line:30,finding:'Current data-dark bridge reads the document root, not nested effective theme scope.'}\n],testedTransforms:{appearanceRules:'Clone the applicable root token declarations to an explicit resolved-appearance boundary, preserving declaration order and original supports/gamut nesting. Keep automatic prefers-color-scheme fallback and :root:has document layout root-only.',appearanceFieldFilter:'Prototype restricts copied fields to colors, shadows, private channels, gradient and focus-outline roles; this preserves inherited font/spacing values. Minimal appearance-dependent field plus alias-dependency closure remains refinement.',localPaletteDelivery:'Preserve source-defined dark count and inverse tooltip defaults. Apply selected named-theme override properties on the actual .count/.tip target and remove owned overrides on cleanup. Ancestor-only declarations are blocked by local palette declarations.',select:'hsla(var(--ds-red-900-value), .16) -> rgb(from var(--ds-red-900) r g b / .16)',toggle:'hsla(var(--ds-gray-1000-value),.84) -> rgb(from var(--ds-gray-1000) r g b / .84)',guard:'Apply relative-color rewrite only to actual non-custom declarations. Rewriting palette self-definitions would introduce circular variables.'},rejectedNaiveTransforms:['Copying every root token into each appearance scope resets inherited spacing/font overrides. Browser counterexamples and corrected category-limited cases are in results.json.','Deleting the local Avatar Group/Tooltip palette blocks loses the selected dark/inverted treatment; source markers and retained-style behavior establish their purpose.','Changing a parent full-color variable alone does not replace a child local palette declaration.'],sourceThemeMarkers:markers,browser:Object.fromEntries(Object.entries(results).map(([name,r])=>[name,{version:r.version,passed:r.assertions.filter(a=>a.pass).length,total:r.assertions.length,errors:r.errors,media:r.media}])),limitations:['Fixture markers are illustrative, not new public API spellings.','No actual acme-theme, registerTheme registry, nested provider lifecycle, portal ownership or cross-document adoption is implemented/tested here.','Full-color application on local targets still needs ownership/update/removal integration through the approved generator-driven style path.','The prototype category filter is not final minimal alias closure; static color overrides across appearance boundaries and explicit versus omitted named-theme boundaries remain to verify.','Source colors may differ between raw HSL fallback and the currently selected lab/P3 palette. Default visual comparison must record those changes before replacing the three expressions.','Display-p3 origin colors were accepted and alpha checked; headless color-gamut match remained sRGB, so wide-gamut branch visual parity is unverified.','Literal typography/invalid upstream font-weight issues remain separate.'],primarySource:'https://www.w3.org/TR/css-color-5/#relative-RGB',reproduction:['bun prepare-full-copy.ts','bun prepare.ts','bun run.ts']};\nif(Object.values(report.browser).some(r=>r.passed!==r.total||r.errors.length))throw new Error('Browser proof incomplete');await Bun.write(dir+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report.browser));\n"
+  },
+  "reproductionPrerequisite": "prepare scripts use the candidate property from notes/alignment/evidence/m05-theme-token-mapping-2026-09-20.json; restore it to the scratch path referenced by the scripts or update that path.",
+  "integrationLimit": "Direct target writes prove color reachability only. Final generator-owned delivery must verify author CSS/part override precedence and lifetime ownership."
+}

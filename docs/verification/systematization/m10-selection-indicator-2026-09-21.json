@@ -1,0 +1,1021 @@
+{
+  "date": "2026-09-21",
+  "batch": "M10 shared selection indicator",
+  "status": "source and compiled acceptance pass; actual family integrations follow in M10",
+  "sourceRoles": "m10-motion-sources-2026-09-21.json",
+  "native": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "initial target paints at its exact geometry without movement",
+            "ok": true
+          },
+          {
+            "name": "visual-only indicator is hidden from accessibility and does not intercept pointers",
+            "ok": true
+          },
+          {
+            "name": "horizontal move uses a running spring",
+            "ok": true
+          },
+          {
+            "name": "horizontal endpoint includes target width and height",
+            "ok": true
+          },
+          {
+            "name": "reversal starts from the painted rectangle",
+            "ok": true
+          },
+          {
+            "name": "reversed motion settles on the new target",
+            "ok": true
+          },
+          {
+            "name": "vertical layout and orientation map the same target correctly",
+            "ok": true
+          },
+          {
+            "name": "vertical selection animates",
+            "ok": true
+          },
+          {
+            "name": "vertical endpoint is exact",
+            "ok": true
+          },
+          {
+            "name": "target resize automatically updates indicator width",
+            "ok": true
+          },
+          {
+            "name": "scaled ancestors preserve local coordinates",
+            "ok": true
+          },
+          {
+            "name": "owner geometry can place a vertical line",
+            "ok": true
+          },
+          {
+            "name": "owner geometry can place a horizontal line",
+            "ok": true
+          },
+          {
+            "name": "hidden target removes the painted indicator",
+            "ok": true
+          },
+          {
+            "name": "target appearance restores exact geometry",
+            "ok": true
+          },
+          {
+            "name": "registered numeric theme tokens resolve CSS calculations",
+            "ok": true
+          },
+          {
+            "name": "expressive fast role animates selection",
+            "ok": true
+          },
+          {
+            "name": "expressive role settles at the exact target",
+            "ok": true
+          },
+          {
+            "name": "target removal stops animation and hides paint",
+            "ok": true
+          },
+          {
+            "name": "explicit owner refresh restores a reinserted target",
+            "ok": true
+          },
+          {
+            "name": "reinserted target remains observed for resize",
+            "ok": true
+          },
+          {
+            "name": "reordering options automatically follows layout",
+            "ok": true
+          },
+          {
+            "name": "RTL reflow preserves target alignment",
+            "ok": true
+          },
+          {
+            "name": "scrolling the owner preserves target geometry",
+            "ok": true
+          },
+          {
+            "name": "owner removal stops owned springs immediately",
+            "ok": true
+          },
+          {
+            "name": "reconnection restores the selected target",
+            "ok": true
+          },
+          {
+            "name": "reduced motion snaps directly to the target",
+            "ok": true
+          },
+          {
+            "name": "changing reduced motion stops an active animation at its endpoint",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "initial target paints at its exact geometry without movement",
+            "ok": true
+          },
+          {
+            "name": "visual-only indicator is hidden from accessibility and does not intercept pointers",
+            "ok": true
+          },
+          {
+            "name": "horizontal move uses a running spring",
+            "ok": true
+          },
+          {
+            "name": "horizontal endpoint includes target width and height",
+            "ok": true
+          },
+          {
+            "name": "reversal starts from the painted rectangle",
+            "ok": true
+          },
+          {
+            "name": "reversed motion settles on the new target",
+            "ok": true
+          },
+          {
+            "name": "vertical layout and orientation map the same target correctly",
+            "ok": true
+          },
+          {
+            "name": "vertical selection animates",
+            "ok": true
+          },
+          {
+            "name": "vertical endpoint is exact",
+            "ok": true
+          },
+          {
+            "name": "target resize automatically updates indicator width",
+            "ok": true
+          },
+          {
+            "name": "scaled ancestors preserve local coordinates",
+            "ok": true
+          },
+          {
+            "name": "owner geometry can place a vertical line",
+            "ok": true
+          },
+          {
+            "name": "owner geometry can place a horizontal line",
+            "ok": true
+          },
+          {
+            "name": "hidden target removes the painted indicator",
+            "ok": true
+          },
+          {
+            "name": "target appearance restores exact geometry",
+            "ok": true
+          },
+          {
+            "name": "registered numeric theme tokens resolve CSS calculations",
+            "ok": true
+          },
+          {
+            "name": "expressive fast role animates selection",
+            "ok": true
+          },
+          {
+            "name": "expressive role settles at the exact target",
+            "ok": true
+          },
+          {
+            "name": "target removal stops animation and hides paint",
+            "ok": true
+          },
+          {
+            "name": "explicit owner refresh restores a reinserted target",
+            "ok": true
+          },
+          {
+            "name": "reinserted target remains observed for resize",
+            "ok": true
+          },
+          {
+            "name": "reordering options automatically follows layout",
+            "ok": true
+          },
+          {
+            "name": "RTL reflow preserves target alignment",
+            "ok": true
+          },
+          {
+            "name": "scrolling the owner preserves target geometry",
+            "ok": true
+          },
+          {
+            "name": "owner removal stops owned springs immediately",
+            "ok": true
+          },
+          {
+            "name": "reconnection restores the selected target",
+            "ok": true
+          },
+          {
+            "name": "reduced motion snaps directly to the target",
+            "ok": true
+          },
+          {
+            "name": "changing reduced motion stops an active animation at its endpoint",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "initial target paints at its exact geometry without movement",
+            "ok": true
+          },
+          {
+            "name": "visual-only indicator is hidden from accessibility and does not intercept pointers",
+            "ok": true
+          },
+          {
+            "name": "horizontal move uses a running spring",
+            "ok": true
+          },
+          {
+            "name": "horizontal endpoint includes target width and height",
+            "ok": true
+          },
+          {
+            "name": "reversal starts from the painted rectangle",
+            "ok": true
+          },
+          {
+            "name": "reversed motion settles on the new target",
+            "ok": true
+          },
+          {
+            "name": "vertical layout and orientation map the same target correctly",
+            "ok": true
+          },
+          {
+            "name": "vertical selection animates",
+            "ok": true
+          },
+          {
+            "name": "vertical endpoint is exact",
+            "ok": true
+          },
+          {
+            "name": "target resize automatically updates indicator width",
+            "ok": true
+          },
+          {
+            "name": "scaled ancestors preserve local coordinates",
+            "ok": true
+          },
+          {
+            "name": "owner geometry can place a vertical line",
+            "ok": true
+          },
+          {
+            "name": "owner geometry can place a horizontal line",
+            "ok": true
+          },
+          {
+            "name": "hidden target removes the painted indicator",
+            "ok": true
+          },
+          {
+            "name": "target appearance restores exact geometry",
+            "ok": true
+          },
+          {
+            "name": "registered numeric theme tokens resolve CSS calculations",
+            "ok": true
+          },
+          {
+            "name": "expressive fast role animates selection",
+            "ok": true
+          },
+          {
+            "name": "expressive role settles at the exact target",
+            "ok": true
+          },
+          {
+            "name": "target removal stops animation and hides paint",
+            "ok": true
+          },
+          {
+            "name": "explicit owner refresh restores a reinserted target",
+            "ok": true
+          },
+          {
+            "name": "reinserted target remains observed for resize",
+            "ok": true
+          },
+          {
+            "name": "reordering options automatically follows layout",
+            "ok": true
+          },
+          {
+            "name": "RTL reflow preserves target alignment",
+            "ok": true
+          },
+          {
+            "name": "scrolling the owner preserves target geometry",
+            "ok": true
+          },
+          {
+            "name": "owner removal stops owned springs immediately",
+            "ok": true
+          },
+          {
+            "name": "reconnection restores the selected target",
+            "ok": true
+          },
+          {
+            "name": "reduced motion snaps directly to the target",
+            "ok": true
+          },
+          {
+            "name": "changing reduced motion stops an active animation at its endpoint",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "regression": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "Button defaults to a real non-submitting native control",
+            "ok": true
+          },
+          {
+            "name": "default geometry retains the 36px baseline",
+            "ok": true
+          },
+          {
+            "name": "Icon Button is a named square",
+            "ok": true
+          },
+          {
+            "name": "loading retains focus while suppressing native action",
+            "ok": true
+          },
+          {
+            "name": "Group supplies named appearance without authoring a child override",
+            "ok": true
+          },
+          {
+            "name": "explicit child size overrides Group and clearing resumes inheritance",
+            "ok": true
+          },
+          {
+            "name": "cleared child size reads the provider again",
+            "ok": true
+          },
+          {
+            "name": "Group owns the actual button surfaces",
+            "ok": true
+          },
+          {
+            "name": "same-task form values use a native persistent submitter",
+            "ok": true
+          },
+          {
+            "name": "click cancellation prevents submission",
+            "ok": true
+          },
+          {
+            "name": "Fieldset blocks action before repaint",
+            "ok": true
+          },
+          {
+            "name": "Fieldset disabled state reaches the visible control",
+            "ok": true
+          },
+          {
+            "name": "first legend restores native activation",
+            "ok": true
+          },
+          {
+            "name": "Group frame masks the real resting button border",
+            "ok": true
+          },
+          {
+            "name": "opt-in pointer press starts one owned ripple",
+            "ok": true,
+            "actual": 1
+          },
+          {
+            "name": "completed ripple releases its element",
+            "ok": true,
+            "actual": null
+          },
+          {
+            "name": "reduced motion suppresses ripple",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "Button defaults to a real non-submitting native control",
+            "ok": true
+          },
+          {
+            "name": "default geometry retains the 36px baseline",
+            "ok": true
+          },
+          {
+            "name": "Icon Button is a named square",
+            "ok": true
+          },
+          {
+            "name": "loading retains focus while suppressing native action",
+            "ok": true
+          },
+          {
+            "name": "Group supplies named appearance without authoring a child override",
+            "ok": true
+          },
+          {
+            "name": "explicit child size overrides Group and clearing resumes inheritance",
+            "ok": true
+          },
+          {
+            "name": "cleared child size reads the provider again",
+            "ok": true
+          },
+          {
+            "name": "Group owns the actual button surfaces",
+            "ok": true
+          },
+          {
+            "name": "same-task form values use a native persistent submitter",
+            "ok": true
+          },
+          {
+            "name": "click cancellation prevents submission",
+            "ok": true
+          },
+          {
+            "name": "Fieldset blocks action before repaint",
+            "ok": true
+          },
+          {
+            "name": "Fieldset disabled state reaches the visible control",
+            "ok": true
+          },
+          {
+            "name": "first legend restores native activation",
+            "ok": true
+          },
+          {
+            "name": "Group frame masks the real resting button border",
+            "ok": true
+          },
+          {
+            "name": "opt-in pointer press starts one owned ripple",
+            "ok": true,
+            "actual": 1
+          },
+          {
+            "name": "completed ripple releases its element",
+            "ok": true,
+            "actual": null
+          },
+          {
+            "name": "reduced motion suppresses ripple",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "Button defaults to a real non-submitting native control",
+            "ok": true
+          },
+          {
+            "name": "default geometry retains the 36px baseline",
+            "ok": true
+          },
+          {
+            "name": "Icon Button is a named square",
+            "ok": true
+          },
+          {
+            "name": "loading retains focus while suppressing native action",
+            "ok": true
+          },
+          {
+            "name": "Group supplies named appearance without authoring a child override",
+            "ok": true
+          },
+          {
+            "name": "explicit child size overrides Group and clearing resumes inheritance",
+            "ok": true
+          },
+          {
+            "name": "cleared child size reads the provider again",
+            "ok": true
+          },
+          {
+            "name": "Group owns the actual button surfaces",
+            "ok": true
+          },
+          {
+            "name": "same-task form values use a native persistent submitter",
+            "ok": true
+          },
+          {
+            "name": "click cancellation prevents submission",
+            "ok": true
+          },
+          {
+            "name": "Fieldset blocks action before repaint",
+            "ok": true
+          },
+          {
+            "name": "Fieldset disabled state reaches the visible control",
+            "ok": true
+          },
+          {
+            "name": "first legend restores native activation",
+            "ok": true
+          },
+          {
+            "name": "Group frame masks the real resting button border",
+            "ok": true
+          },
+          {
+            "name": "opt-in pointer press starts one owned ripple",
+            "ok": true,
+            "actual": 1
+          },
+          {
+            "name": "completed ripple releases its element",
+            "ok": true,
+            "actual": null
+          },
+          {
+            "name": "reduced motion suppresses ripple",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "verification": {
+    "focusedTests": "60 pass across 6 files",
+    "typecheck": "876 files, zero errors",
+    "fullSuite": "906 pass, zero fail across 137 files",
+    "build": "37,774 module files, 119 compiled templates, 4,256 public elements",
+    "docs": "92 pages, zero undocumented public elements"
+  },
+  "resolutions": [
+    "Use private definition entries for the internal indicator; owning public families import the definition transitively. Omit internal modules from the consumer manifest, API pages and standalone CDN entries.",
+    "Use the verified AndroidX v0_14_0 roles for Standard and Expressive spatial/effects spring parameters. Unit mass maps damping ratio to c=2*zeta*sqrt(stiffness).",
+    "The utilitarian selection indicator uses Standard/default spatial motion; this is not a universal scheme setting. Both schemes and all three speeds remain available to internal owners.",
+    "Canonical endpoint geometry stays in TanStack Store. Lit Motion SpringControllers own interpolation. Retarget from the painted rectangle and carry velocity through public controller APIs.",
+    "Only the owned ripple directive is cancelled; unrelated host motion is independent."
+  ],
+  "limits": [
+    "Each actual selection family still needs integrated form/keyboard/appearance verification.",
+    "This verifies the selected numerical mapping and observable browser behavior, not pixel/timeline equivalence to an Android runtime.",
+    "Final package/React and actual speech-output acceptance remains assigned to M22/M26."
+  ],
+  "fixtures": [
+    {
+      "file": "probe.ts",
+      "source": "import {AcmeSelectionIndicator} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/internal/selection-indicator/selection-indicator';\nimport {readMotionSpring} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/motion-spring';\ncustomElements.define('acme-selection-indicator',AcmeSelectionIndicator);\nconst results:any[]=[];const check=(name:string,ok:boolean)=>results.push({name,ok});\nconst frame=()=>new Promise<void>(r=>requestAnimationFrame(()=>r()));const wait=async(n=2)=>{while(n--)await frame();};\nconst settle=async()=>{for(let n=0;n<240;n++){await frame();if(!indicator.isAnimating){await wait();return;}}throw Error('Animation did not settle');};\nconst close=(a:number,b:number)=>Math.abs(a-b)<.6;\nconst rect=()=>indicator.shadowRoot!.querySelector<HTMLElement>('[part=paint]')!.getBoundingClientRect();\nconst at=(target:Element)=>{const a=rect(),b=target.getBoundingClientRect();return close(a.x,b.x)&&close(a.y,b.y)&&close(a.width,b.width)&&close(a.height,b.height);};\nconst container=document.createElement('div');container.style.cssText='position:relative;display:flex;gap:16px;width:500px;height:180px;margin:30px;';\nconst first=document.createElement('button'),second=document.createElement('button');first.textContent='First';second.textContent='Second';first.style.cssText='width:90px;height:40px;flex-shrink:0';second.style.cssText='width:150px;height:60px;flex-shrink:0';\nconst indicator=new AcmeSelectionIndicator();indicator.style.setProperty('--acme-indicator-color','rgba(0,100,255,.3)');container.append(first,second,indicator);document.body.append(container);\ntry{\nindicator.target=first;await wait(4);check('initial target paints at its exact geometry without movement',at(first)&&!indicator.isAnimating);\ncheck('visual-only indicator is hidden from accessibility and does not intercept pointers',indicator.ariaHidden==='true'&&getComputedStyle(indicator).pointerEvents==='none');\nindicator.target=second;await wait(3);check('horizontal move uses a running spring',indicator.isAnimating&&rect().x>first.getBoundingClientRect().x&&rect().x<second.getBoundingClientRect().x);await settle();check('horizontal endpoint includes target width and height',at(second));\nindicator.target=first;await wait(4);const before=rect();indicator.target=second;await indicator.updateComplete;const after=rect();check('reversal starts from the painted rectangle',Math.abs(after.x-before.x)<2&&Math.abs(after.width-before.width)<2);await settle();check('reversed motion settles on the new target',at(second));\ncontainer.style.flexDirection='column';container.style.height='240px';indicator.orientation='vertical';await wait(4);await settle();check('vertical layout and orientation map the same target correctly',at(second));indicator.target=first;await wait(3);check('vertical selection animates',indicator.isAnimating&&rect().y>first.getBoundingClientRect().y);await settle();check('vertical endpoint is exact',at(first));\nfirst.style.width='220px';await wait(4);await settle();check('target resize automatically updates indicator width',at(first));\ncontainer.style.transform='scale(1.3)';await wait(4);indicator.refresh();await settle();check('scaled ancestors preserve local coordinates',at(first));\nindicator.geometry=(target,frame,orientation)=>orientation==='vertical'?{x:frame.width-3,y:target.y,width:3,height:target.height}:{x:target.x,y:frame.height-3,width:target.width,height:3};await wait(4);await settle();check('owner geometry can place a vertical line',close(rect().width,3*1.3)&&close(rect().right,container.getBoundingClientRect().right));\nindicator.orientation='horizontal';await wait(4);await settle();check('owner geometry can place a horizontal line',close(rect().height,3*1.3)&&close(rect().bottom,container.getBoundingClientRect().bottom));indicator.geometry=undefined;await wait(4);await settle();\nfirst.hidden=true;await wait(6);check('hidden target removes the painted indicator',indicator.shadowRoot!.querySelector<HTMLElement>('[part=paint]')!.hidden&&!indicator.isAnimating);first.hidden=false;await wait(6);check('target appearance restores exact geometry',at(first));\nindicator.style.setProperty('--acme-motion-standard-spatial-default-stiffness','calc(350 * 2)');const custom=readMotionSpring(indicator,'standard','spatial','default');check('registered numeric theme tokens resolve CSS calculations',custom.stiffness===700);indicator.style.removeProperty('--acme-motion-standard-spatial-default-stiffness');\nindicator.scheme='expressive';indicator.speed='fast';indicator.target=second;await wait(4);check('expressive fast role animates selection',indicator.isAnimating);await settle();check('expressive role settles at the exact target',at(second));\nsecond.remove();await wait(8);check('target removal stops animation and hides paint',!indicator.isAnimating&&indicator.shadowRoot!.querySelector<HTMLElement>('[part=paint]')!.hidden);\ncontainer.prepend(second);indicator.refresh();await wait(4);check('explicit owner refresh restores a reinserted target',at(second));second.style.width='180px';await wait(4);await settle();check('reinserted target remains observed for resize',at(second));\ncontainer.append(first);await wait(4);await settle();check('reordering options automatically follows layout',at(second));\ncontainer.style.direction='rtl';await wait(4);await settle();check('RTL reflow preserves target alignment',at(second));\ncontainer.style.overflow='auto';container.style.height='80px';await wait(4);container.scrollTop=20;await wait(4);await settle();check('scrolling the owner preserves target geometry',at(second));container.style.overflow='visible';container.style.height='240px';container.scrollTop=0;await wait(4);await settle();\nindicator.target=first;await wait(3);indicator.remove();check('owner removal stops owned springs immediately',!indicator.isAnimating);container.append(indicator);await wait(4);check('reconnection restores the selected target',at(first));\n(window as any).__test={indicator,first,second,wait,settle,at};\n}catch(e){(window as any).__error=String(e);}\n(window as any).__results={results,error:(window as any).__error};\n"
+    },
+    {
+      "file": "run.ts",
+      "source": "import fs from 'node:fs';\nconst directory='/tmp/acme-m10-motion',root='/Users/peterkloss/Dev/ACMElabs/design-system';\nconst built=await Bun.build({entrypoints:[directory+'/probe.ts'],outdir:directory+'/bundle',target:'browser',format:'esm',splitting:true});if(!built.success)throw new AggregateError(built.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';\nconst pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');\nconst server=Bun.serve({port:0,hostname:'127.0.0.1',fetch(req){const url=new URL(req.url);if(url.pathname==='/tokens.css')return new Response(Bun.file(root+'/src/generated/css/document/tokens.css'),{headers:{'Content-Type':'text/css'}});if(url.pathname.endsWith('.js'))return new Response(Bun.file(directory+'/bundle'+url.pathname),{headers:{'Content-Type':'text/javascript'}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{'Content-Type':'text/html'}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});try{const page=await browser.newPage();page.on('pageerror',e=>{console.log('PAGEERROR',e.stack);report.errors.push({engine,message:e.message});});await page.goto(server.url.href);await page.waitForFunction(()=>window.__results,{},{timeout:60000});const data=await page.evaluate(()=>window.__results);if(!data.error){await page.emulateMedia({reducedMotion:'reduce'});await page.evaluate(async()=>{const t=window.__test;t.indicator.target=t.second;await t.wait(4);});data.results.push({name:'reduced motion snaps directly to the target',ok:await page.evaluate(()=>{const t=window.__test;return !t.indicator.isAnimating&&t.at(t.second);})});await page.emulateMedia({reducedMotion:'no-preference'});await page.evaluate(async()=>{const t=window.__test;t.indicator.target=t.first;await t.wait(3);});await page.emulateMedia({reducedMotion:'reduce'});await page.evaluate(()=>window.__test.wait(4));data.results.push({name:'changing reduced motion stops an active animation at its endpoint',ok:await page.evaluate(()=>{const t=window.__test;return !t.indicator.isAnimating&&t.at(t.first);})});if(engine==='chromium')await page.screenshot({path:directory+'/indicator.png'});}if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(r=>r.ok).length,total:data.results.length,failed:data.results.filter(r=>!r.ok),error:data.error});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+'/results.json',JSON.stringify(report,null,2)+'\\n');if(report.errors.length||report.engines.some(e=>e.results.length!==28||e.results.some(r=>!r.ok)))process.exitCode=1;\n"
+    }
+  ],
+  "sources": [
+    {
+      "file": "src/internal/selection-indicator/selection-indicator.ts",
+      "sha256": "1850a2d2ca8fcc225cdc079a8ef8df5a46f20f79f1abc8398adce5eb0f7c2ead"
+    },
+    {
+      "file": "src/shared/motion-tokens.ts",
+      "sha256": "2fbb00c0e7407366d57342e50a659008da389d75f4eb673ebcc52e24afffd5c8"
+    },
+    {
+      "file": "src/shared/motion-spring.ts",
+      "sha256": "ad5efef6c706595f80483a98ef3b2a8f77dc0e5b1dd359a330098fbdcf038cbe"
+    },
+    {
+      "file": "src/shared/ripple.ts",
+      "sha256": "c3a83a332a3f51cf7c6f6a165a2dabdb56437c500dcc91ea350a1593c61648c2"
+    },
+    {
+      "file": "scripts/entries.ts",
+      "sha256": "5ecf895fed2aab57d9b35b47c8f2e04a920ed0a19ebcd9ce176e5ad5606322ef"
+    },
+    {
+      "file": "scripts/manifest.ts",
+      "sha256": "e6d82ff11d1f91d72149a75242f5ae4b44ffa03d7e62242ea73d0661bb0546e7"
+    },
+    {
+      "file": "styles/shared/selection-indicator.css",
+      "sha256": "75c5fcf2f8da41fbbfebf6ed6f883047d40f32ccf988f8d9cf3615dc2c565219"
+    }
+  ],
+  "compiled": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "initial target paints at its exact geometry without movement",
+            "ok": true
+          },
+          {
+            "name": "visual-only indicator is hidden from accessibility and does not intercept pointers",
+            "ok": true
+          },
+          {
+            "name": "horizontal move uses a running spring",
+            "ok": true
+          },
+          {
+            "name": "horizontal endpoint includes target width and height",
+            "ok": true
+          },
+          {
+            "name": "reversal starts from the painted rectangle",
+            "ok": true
+          },
+          {
+            "name": "reversed motion settles on the new target",
+            "ok": true
+          },
+          {
+            "name": "vertical layout and orientation map the same target correctly",
+            "ok": true
+          },
+          {
+            "name": "vertical selection animates",
+            "ok": true
+          },
+          {
+            "name": "vertical endpoint is exact",
+            "ok": true
+          },
+          {
+            "name": "target resize automatically updates indicator width",
+            "ok": true
+          },
+          {
+            "name": "scaled ancestors preserve local coordinates",
+            "ok": true
+          },
+          {
+            "name": "owner geometry can place a vertical line",
+            "ok": true
+          },
+          {
+            "name": "owner geometry can place a horizontal line",
+            "ok": true
+          },
+          {
+            "name": "hidden target removes the painted indicator",
+            "ok": true
+          },
+          {
+            "name": "target appearance restores exact geometry",
+            "ok": true
+          },
+          {
+            "name": "registered numeric theme tokens resolve CSS calculations",
+            "ok": true
+          },
+          {
+            "name": "expressive fast role animates selection",
+            "ok": true
+          },
+          {
+            "name": "expressive role settles at the exact target",
+            "ok": true
+          },
+          {
+            "name": "target removal stops animation and hides paint",
+            "ok": true
+          },
+          {
+            "name": "explicit owner refresh restores a reinserted target",
+            "ok": true
+          },
+          {
+            "name": "reinserted target remains observed for resize",
+            "ok": true
+          },
+          {
+            "name": "reordering options automatically follows layout",
+            "ok": true
+          },
+          {
+            "name": "RTL reflow preserves target alignment",
+            "ok": true
+          },
+          {
+            "name": "scrolling the owner preserves target geometry",
+            "ok": true
+          },
+          {
+            "name": "owner removal stops owned springs immediately",
+            "ok": true
+          },
+          {
+            "name": "reconnection restores the selected target",
+            "ok": true
+          },
+          {
+            "name": "reduced motion snaps directly to the target",
+            "ok": true
+          },
+          {
+            "name": "changing reduced motion stops an active animation at its endpoint",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "initial target paints at its exact geometry without movement",
+            "ok": true
+          },
+          {
+            "name": "visual-only indicator is hidden from accessibility and does not intercept pointers",
+            "ok": true
+          },
+          {
+            "name": "horizontal move uses a running spring",
+            "ok": true
+          },
+          {
+            "name": "horizontal endpoint includes target width and height",
+            "ok": true
+          },
+          {
+            "name": "reversal starts from the painted rectangle",
+            "ok": true
+          },
+          {
+            "name": "reversed motion settles on the new target",
+            "ok": true
+          },
+          {
+            "name": "vertical layout and orientation map the same target correctly",
+            "ok": true
+          },
+          {
+            "name": "vertical selection animates",
+            "ok": true
+          },
+          {
+            "name": "vertical endpoint is exact",
+            "ok": true
+          },
+          {
+            "name": "target resize automatically updates indicator width",
+            "ok": true
+          },
+          {
+            "name": "scaled ancestors preserve local coordinates",
+            "ok": true
+          },
+          {
+            "name": "owner geometry can place a vertical line",
+            "ok": true
+          },
+          {
+            "name": "owner geometry can place a horizontal line",
+            "ok": true
+          },
+          {
+            "name": "hidden target removes the painted indicator",
+            "ok": true
+          },
+          {
+            "name": "target appearance restores exact geometry",
+            "ok": true
+          },
+          {
+            "name": "registered numeric theme tokens resolve CSS calculations",
+            "ok": true
+          },
+          {
+            "name": "expressive fast role animates selection",
+            "ok": true
+          },
+          {
+            "name": "expressive role settles at the exact target",
+            "ok": true
+          },
+          {
+            "name": "target removal stops animation and hides paint",
+            "ok": true
+          },
+          {
+            "name": "explicit owner refresh restores a reinserted target",
+            "ok": true
+          },
+          {
+            "name": "reinserted target remains observed for resize",
+            "ok": true
+          },
+          {
+            "name": "reordering options automatically follows layout",
+            "ok": true
+          },
+          {
+            "name": "RTL reflow preserves target alignment",
+            "ok": true
+          },
+          {
+            "name": "scrolling the owner preserves target geometry",
+            "ok": true
+          },
+          {
+            "name": "owner removal stops owned springs immediately",
+            "ok": true
+          },
+          {
+            "name": "reconnection restores the selected target",
+            "ok": true
+          },
+          {
+            "name": "reduced motion snaps directly to the target",
+            "ok": true
+          },
+          {
+            "name": "changing reduced motion stops an active animation at its endpoint",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "initial target paints at its exact geometry without movement",
+            "ok": true
+          },
+          {
+            "name": "visual-only indicator is hidden from accessibility and does not intercept pointers",
+            "ok": true
+          },
+          {
+            "name": "horizontal move uses a running spring",
+            "ok": true
+          },
+          {
+            "name": "horizontal endpoint includes target width and height",
+            "ok": true
+          },
+          {
+            "name": "reversal starts from the painted rectangle",
+            "ok": true
+          },
+          {
+            "name": "reversed motion settles on the new target",
+            "ok": true
+          },
+          {
+            "name": "vertical layout and orientation map the same target correctly",
+            "ok": true
+          },
+          {
+            "name": "vertical selection animates",
+            "ok": true
+          },
+          {
+            "name": "vertical endpoint is exact",
+            "ok": true
+          },
+          {
+            "name": "target resize automatically updates indicator width",
+            "ok": true
+          },
+          {
+            "name": "scaled ancestors preserve local coordinates",
+            "ok": true
+          },
+          {
+            "name": "owner geometry can place a vertical line",
+            "ok": true
+          },
+          {
+            "name": "owner geometry can place a horizontal line",
+            "ok": true
+          },
+          {
+            "name": "hidden target removes the painted indicator",
+            "ok": true
+          },
+          {
+            "name": "target appearance restores exact geometry",
+            "ok": true
+          },
+          {
+            "name": "registered numeric theme tokens resolve CSS calculations",
+            "ok": true
+          },
+          {
+            "name": "expressive fast role animates selection",
+            "ok": true
+          },
+          {
+            "name": "expressive role settles at the exact target",
+            "ok": true
+          },
+          {
+            "name": "target removal stops animation and hides paint",
+            "ok": true
+          },
+          {
+            "name": "explicit owner refresh restores a reinserted target",
+            "ok": true
+          },
+          {
+            "name": "reinserted target remains observed for resize",
+            "ok": true
+          },
+          {
+            "name": "reordering options automatically follows layout",
+            "ok": true
+          },
+          {
+            "name": "RTL reflow preserves target alignment",
+            "ok": true
+          },
+          {
+            "name": "scrolling the owner preserves target geometry",
+            "ok": true
+          },
+          {
+            "name": "owner removal stops owned springs immediately",
+            "ok": true
+          },
+          {
+            "name": "reconnection restores the selected target",
+            "ok": true
+          },
+          {
+            "name": "reduced motion snaps directly to the target",
+            "ok": true
+          },
+          {
+            "name": "changing reduced motion stops an active animation at its endpoint",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "failuresFixed": [
+    "A private method originally collided with HTMLElement.style; source typecheck and native execution caught it and paintStyle replaces that name.",
+    "A removed/reinserted target needed refresh to re-establish its observer, not only repaint its endpoint. The expanded resize check covers the repair.",
+    "The generator regression fixture copied theme-tokens without its new motion-tokens dependency; the fixture now copies the dependency and full suite passes."
+  ]
+}

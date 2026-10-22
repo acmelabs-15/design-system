@@ -1,0 +1,86 @@
+{
+  "checkedAt": "2026-09-27T00:13:39.590Z",
+  "archiveFilesVerified": 130,
+  "htmlInventory": [
+    {
+      "config": "with_skill",
+      "used": [
+        "acme-fieldset",
+        "acme-field",
+        "acme-input",
+        "acme-radio-group",
+        "acme-radio",
+        "acme-switch",
+        "acme-button"
+      ],
+      "definitions": [
+        "acme-field",
+        "acme-fieldset",
+        "acme-input",
+        "acme-radio-group",
+        "acme-radio",
+        "acme-switch",
+        "acme-button"
+      ],
+      "versions": [
+        "0.2.0"
+      ],
+      "forms": 1,
+      "pass": true
+    },
+    {
+      "config": "without_skill",
+      "used": [
+        "acme-field",
+        "acme-input",
+        "acme-select",
+        "acme-option",
+        "acme-switch",
+        "acme-button"
+      ],
+      "definitions": [
+        "acme-field",
+        "acme-input",
+        "acme-select",
+        "acme-switch",
+        "acme-button",
+        "acme-option"
+      ],
+      "versions": [
+        "0.2.0"
+      ],
+      "forms": 1,
+      "pass": true
+    }
+  ],
+  "originalHtmlSkilledUnchanged": true,
+  "benchmark": {
+    "runs": 6,
+    "assertions": 24
+  },
+  "independentTypechecks": {
+    "reactBaseline": {
+      "exitCode": 0,
+      "skipLibCheck": true
+    },
+    "reactSkilled": {
+      "exitCode": 0,
+      "skipLibCheck": true
+    },
+    "tableBaseline": {
+      "exitCode": 0,
+      "skipLibCheck": false
+    },
+    "tableSkilled": {
+      "exitCode": 0,
+      "skipLibCheck": true
+    },
+    "method": "Bun invoked the repository TypeScript executable with each original tsconfig; all four commands returned exit 0 during grading."
+  },
+  "viewer": {
+    "benchmarkRendered": true,
+    "pageErrors": []
+  },
+  "failures": [],
+  "pass": true
+}

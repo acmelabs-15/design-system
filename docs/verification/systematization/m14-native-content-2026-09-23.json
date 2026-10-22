@@ -1,0 +1,282 @@
+{
+  "date": "2026-09-23",
+  "status": "Disabled Wall, List and Data List complete at assigned native/Lit boundaries; M14 remains active",
+  "implementation": [
+    "Disabled Wall retains child state, applies native inert and recovers focus to its separate named explanation",
+    "List retains native ul/ol/li ownership, numbering and optional accessible marker treatment; shared responsive spacing",
+    "Data List retains native dl/dt/dd pairs and rich values with responsive columns",
+    "Description and its old source/tests/page/mapping/styles removed; stale Disabled Wall and Fieldset mappings retired"
+  ],
+  "verification": {
+    "build": "Strict package build passes",
+    "site": {
+      "pages": 97,
+      "elements": 4263,
+      "undocumented": 0
+    },
+    "unit": {
+      "passed": 902,
+      "failed": 0,
+      "assertions": 121490,
+      "files": 151
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "disabling recovers focus to the named explanation",
+            "pass": true
+          },
+          {
+            "name": "inert suppresses pointer and focus while keeping form values",
+            "pass": true
+          },
+          {
+            "name": "enabling preserves values and authored disability without stealing focus",
+            "pass": true
+          },
+          {
+            "name": "List uses responsive token spacing and native marker layout",
+            "pass": true
+          },
+          {
+            "name": "custom List markers retain native list identity and author numbering",
+            "pass": true
+          },
+          {
+            "name": "Data List maintains columns and responsive native pairs",
+            "pass": true
+          },
+          {
+            "name": "Data List forwards custom column width and retains native definition nodes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "disabling recovers focus to the named explanation",
+            "pass": true
+          },
+          {
+            "name": "inert suppresses pointer and focus while keeping form values",
+            "pass": true
+          },
+          {
+            "name": "enabling preserves values and authored disability without stealing focus",
+            "pass": true
+          },
+          {
+            "name": "List uses responsive token spacing and native marker layout",
+            "pass": true
+          },
+          {
+            "name": "custom List markers retain native list identity and author numbering",
+            "pass": true
+          },
+          {
+            "name": "Data List maintains columns and responsive native pairs",
+            "pass": true
+          },
+          {
+            "name": "Data List forwards custom column width and retains native definition nodes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "disabling recovers focus to the named explanation",
+            "pass": true
+          },
+          {
+            "name": "inert suppresses pointer and focus while keeping form values",
+            "pass": true
+          },
+          {
+            "name": "enabling preserves values and authored disability without stealing focus",
+            "pass": true
+          },
+          {
+            "name": "List uses responsive token spacing and native marker layout",
+            "pass": true
+          },
+          {
+            "name": "custom List markers retain native list identity and author numbering",
+            "pass": true
+          },
+          {
+            "name": "Data List maintains columns and responsive native pairs",
+            "pass": true
+          },
+          {
+            "name": "Data List forwards custom column width and retains native definition nodes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "disabling recovers focus to the named explanation",
+            "pass": true
+          },
+          {
+            "name": "inert suppresses pointer and focus while keeping form values",
+            "pass": true
+          },
+          {
+            "name": "enabling preserves values and authored disability without stealing focus",
+            "pass": true
+          },
+          {
+            "name": "List uses responsive token spacing and native marker layout",
+            "pass": true
+          },
+          {
+            "name": "custom List markers retain native list identity and author numbering",
+            "pass": true
+          },
+          {
+            "name": "Data List maintains columns and responsive native pairs",
+            "pass": true
+          },
+          {
+            "name": "Data List forwards custom column width and retains native definition nodes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "disabling recovers focus to the named explanation",
+            "pass": true
+          },
+          {
+            "name": "inert suppresses pointer and focus while keeping form values",
+            "pass": true
+          },
+          {
+            "name": "enabling preserves values and authored disability without stealing focus",
+            "pass": true
+          },
+          {
+            "name": "List uses responsive token spacing and native marker layout",
+            "pass": true
+          },
+          {
+            "name": "custom List markers retain native list identity and author numbering",
+            "pass": true
+          },
+          {
+            "name": "Data List maintains columns and responsive native pairs",
+            "pass": true
+          },
+          {
+            "name": "Data List forwards custom column width and retains native definition nodes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "disabling recovers focus to the named explanation",
+            "pass": true
+          },
+          {
+            "name": "inert suppresses pointer and focus while keeping form values",
+            "pass": true
+          },
+          {
+            "name": "enabling preserves values and authored disability without stealing focus",
+            "pass": true
+          },
+          {
+            "name": "List uses responsive token spacing and native marker layout",
+            "pass": true
+          },
+          {
+            "name": "custom List markers retain native list identity and author numbering",
+            "pass": true
+          },
+          {
+            "name": "Data List maintains columns and responsive native pairs",
+            "pass": true
+          },
+          {
+            "name": "Data List forwards custom column width and retains native definition nodes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "docs": [
+      {
+        "engine": "chromium",
+        "pass": true,
+        "checks": 3,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "pass": true,
+        "checks": 3,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "pass": true,
+        "checks": 3,
+        "errors": []
+      }
+    ]
+  },
+  "resolved": [
+    "List spacing must inherit from the existing renderer host target, not stop at a wrapper default",
+    "WebKit document-style container query requires the Data List host boundary in this composition",
+    "Root barrel export migrated alongside generated definitions",
+    "Tests use the canonical registrations rather than registering already-defined constructors again",
+    "Documentation automation targets visible action buttons rather than hidden native submitter bridges"
+  ],
+  "limits": [
+    "Actual screen-reader list counts and generated React-wrapper gates remain E02/M22/M26",
+    "One initial full-suite development watcher timed out before observing its first change. Focused watcher checks and the corrected complete suite pass; no threshold or production workaround was changed.",
+    "Inert does not omit successful form values and native modal dialogs can escape ancestor inertness; documented platform responsibilities remain application-owned"
+  ],
+  "references": [
+    "https://chakra-ui.com/docs/components/list",
+    "https://chakra-ui.com/docs/components/data-list",
+    "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/inert"
+  ],
+  "reproduction": {
+    "directory": "/tmp/acme-m14-content",
+    "browserFixture": "import { AcmeDisabledWall } from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/disabled-wall/disabled-wall';\nimport { AcmeList } from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/list/list';\nimport { AcmeDataList } from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/data-list/data-list';\ncustomElements.define('acme-disabled-wall',AcmeDisabledWall);customElements.define('acme-list',AcmeList);customElements.define('acme-data-list',AcmeDataList);\ndocument.body.innerHTML=`<form><acme-disabled-wall id=\"wall\" reason=\"Editing is locked\"><input name=\"draft\" value=\"Saved\"><button type=\"button\">Action</button><button disabled>Unavailable</button></acme-disabled-wall></form><button id=\"outside\">Outside</button><acme-list id=\"list\" spacing='{\"compact\":2,\"medium\":4}'><ol start=\"5\" reversed><li>Five</li><li value=\"2\">Two<ul><li>Nested</li></ul></li></ol></acme-list><acme-data-list id=\"data\"><dl><div><dt>Owner</dt><dd><button>Details</button></dd><dd>Another owner</dd></div><dt>Status</dt><dd>Ready</dd></dl></acme-data-list>`;\n",
+    "browserRunner": "import assert from 'node:assert/strict';\nconst dir='/tmp/acme-m14-content';const build=await Bun.build({entrypoints:[dir+'/candidate.ts'],outdir:dir+'/bundle',target:'browser',format:'esm'});if(!build.success)throw new AggregateError(build.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');\nconst server=Bun.serve({port:0,fetch(req){const p=new URL(req.url).pathname;return p==='/candidate.js'?new Response(Bun.file(dir+'/bundle/candidate.js'),{headers:{'Content-Type':'text/javascript'}}):p==='/tokens.css'?new Response(Bun.file('/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/css/document/tokens.css'),{headers:{'Content-Type':'text/css'}}):new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/candidate.js\"></script>',{headers:{'Content-Type':'text/html'}})}});const reports=[];\ntry{for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true}:{headless:true});const page=await browser.newPage();const errors=[],checks=[];page.on('pageerror',e=>errors.push(String(e)));const check=async(name,run)=>{try{await page.goto(server.url.href);await page.waitForFunction(()=>customElements.get('acme-data-list'));await run();checks.push({name,pass:true});console.log(engine,'PASS',name);}catch(e){checks.push({name,pass:false,error:String(e)});console.log(engine,'FAIL',name,String(e))}};\nawait check('disabling recovers focus to the named explanation',async()=>{await page.locator('#wall input').focus();await page.locator('#wall').evaluate(async el=>{el.disabled=true;await el.updateComplete});assert.equal(await page.locator('#wall').evaluate(el=>el.shadowRoot.activeElement?.getAttribute('part')),'explanation');assert.equal(await page.locator('#wall').getByRole('group',{name:'Editing is locked'}).count(),1);});\nawait check('inert suppresses pointer and focus while keeping form values',async()=>{await page.locator('#wall').evaluate(async el=>{el.disabled=true;await el.updateComplete;window.clicks=0;el.querySelector('button').addEventListener('click',()=>window.clicks++)});const b=await page.locator('#wall button').first().boundingBox();await page.mouse.click(b.x+b.width/2,b.y+b.height/2);assert.equal(await page.evaluate(()=>window.clicks),0);assert.equal(await page.locator('form').evaluate(el=>new FormData(el).get('draft')),'Saved');await page.locator('#wall input').evaluate(el=>el.focus());assert.equal(await page.locator('#wall input').evaluate(el=>el===document.activeElement),false);});\nawait check('enabling preserves values and authored disability without stealing focus',async()=>{await page.locator('#wall').evaluate(async el=>{el.disabled=true;await el.updateComplete});await page.locator('#outside').focus();await page.locator('#wall').evaluate(async el=>{el.disabled=false;await el.updateComplete});assert.equal(await page.evaluate(()=>document.activeElement.id),'outside');assert.equal(await page.locator('#wall input').inputValue(),'Saved');assert.equal(await page.locator('#wall button').last().isDisabled(),true);await page.locator('#wall input').focus();assert.equal(await page.locator('#wall input').evaluate(el=>el===document.activeElement),true);});\nawait check('List uses responsive token spacing and native marker layout',async()=>{const wide=await page.locator('#list>ol').evaluate(el=>getComputedStyle(el).rowGap);assert.equal(wide,'16px');assert.equal(await page.locator('#list>ol>li').first().evaluate(el=>getComputedStyle(el).display),'list-item');await page.setViewportSize({width:500,height:720});assert.equal(await page.locator('#list>ol').evaluate(el=>getComputedStyle(el).rowGap),'8px');await page.setViewportSize({width:1280,height:720});});\nawait check('custom List markers retain native list identity and author numbering',async()=>{await page.locator('#list').evaluate(async el=>{el.marker='custom';await el.updateComplete});assert.equal(await page.locator('#list>ol').getAttribute('role'),'list');assert.equal(await page.locator('#list>ol').getAttribute('start'),'5');assert.equal(await page.locator('#list>ol').evaluate(el=>getComputedStyle(el).listStyleType),'none');assert.equal(await page.locator('#list>ol>li').last().getAttribute('value'),'2');});\nawait check('Data List maintains columns and responsive native pairs',async()=>{const widths=await page.locator('#data>dl').evaluate(el=>getComputedStyle(el).gridTemplateColumns.split(' '));assert.equal(widths.length,2);await page.locator('#data').evaluate(el=>el.style.width='300px');assert.equal((await page.locator('#data>dl').evaluate(el=>getComputedStyle(el).gridTemplateColumns.split(' '))).length,1);});\nawait check('Data List forwards custom column width and retains native definition nodes',async()=>{await page.locator('#data').evaluate(async el=>{window.saved=el.querySelector('button');el.columnWidth='10rem';await el.updateComplete});assert.ok((await page.locator('#data>dl').evaluate(el=>getComputedStyle(el).gridTemplateColumns)).startsWith('160px'));await page.locator('#data').evaluate(async el=>{el.orientation='vertical';await el.updateComplete});assert.equal(await page.locator('#data').evaluate(el=>el.querySelector('button')===window.saved),true);assert.equal(await page.locator('#data dd').count(),3);});\nreports.push({engine,checks,errors});await browser.close();}}finally{server.stop(true)}await Bun.write(dir+'/results.json',JSON.stringify(reports,null,2)+'\\n');if(reports.some(r=>r.errors.length||r.checks.some(c=>!c.pass)))process.exitCode=1;\n",
+    "logs": [
+      "build-final.log",
+      "docs.log",
+      "suite-final.log",
+      "native-final.log",
+      "compiled.log",
+      "docs-native-final.log"
+    ]
+  }
+}

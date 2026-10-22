@@ -1,0 +1,20 @@
+ 97 |             catch (error) {
+ 98 |                 // continue
+ 99 |             }
+100 |         });
+101 |         if (signingKeys.size < role.threshold) {
+102 |             throw new error_1.UnsignedMetadataError(`${delegatedRole} was signed by ${signingKeys.size}/${role.threshold} keys`);
+                        ^
+error: root was signed by 0/3 keys
+      at verifyDelegate (/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/npm/node_modules/@tufjs/models/dist/metadata.js:102:19)
+      at loadTrustedRoot (/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/npm/node_modules/tuf-js/dist/store.js:187:14)
+      at new TrustedMetadataStore (/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/npm/node_modules/tuf-js/dist/store.js:13:14)
+      at new Updater (/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/npm/node_modules/tuf-js/dist/updater.js:68:27)
+      at initClient (/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/npm/node_modules/@sigstore/tuf/dist/client.js:108:12)
+      at new TUFClient (/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/npm/node_modules/@sigstore/tuf/dist/client.js:42:24)
+      at createClient (/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/npm/node_modules/@sigstore/tuf/dist/index.js:45:12)
+      at getTrustedRoot (/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/npm/node_modules/@sigstore/tuf/dist/index.js:32:20)
+      at createVerifier (/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/npm/node_modules/sigstore/dist/sigstore.js:87:35)
+      at verifyPublishedProvenance (/Users/peterkloss/Dev/ACMElabs/design-system/scripts/release-trust.ts:27:31)
+
+Bun v1.4.0 (macOS arm64)

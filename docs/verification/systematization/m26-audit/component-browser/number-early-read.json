@@ -1,0 +1,158 @@
+[
+  {
+    "engine": "chromium",
+    "suite": "number-input",
+    "results": [
+      {
+        "name": "native target has spinbutton role",
+        "pass": true
+      },
+      {
+        "name": "decimal increment and native form agree",
+        "pass": true
+      },
+      {
+        "name": "partial input stays editable and invalid without fabricated number",
+        "pass": true
+      },
+      {
+        "name": "empty value stays empty",
+        "pass": true
+      },
+      {
+        "name": "stepping from empty clamps to minimum",
+        "pass": true
+      },
+      {
+        "name": "range validation is immediate",
+        "pass": true
+      },
+      {
+        "name": "native reset preserves initial string default",
+        "pass": true
+      },
+      {
+        "name": "German parsing and native canonical submission",
+        "pass": true
+      },
+      {
+        "name": "German stepping preserves numeric value",
+        "pass": true
+      },
+      {
+        "name": "percent has adaptive default step",
+        "pass": true
+      },
+      {
+        "name": "fixture completes",
+        "pass": false,
+        "error": "Error: press: Error: strict mode violation: locator('acme-number-input input') resolved to 3 elements:\n    1) <input value=\"0.1\" part=\"input\" name=\"amount\" class=\"native\" placeholder=\"\" autocomplete=\"\" role=\"spinbutton\" aria-busy=\"false\" aria-valuemin=\"0\" aria-valuenow=\"5\" aria-valuetext=\"5\" inputmode=\"decimal\" aria-label=\"Amount\" aria-valuemax=\"100\" aria-invalid=\"false\"/> aka getByRole('spinbutton', { name: 'Amount' })\n    2) <input name=\"\" value=\"1\" part=\"input\" class=\"native\" placeholder=\"\" autocomplete=\"\" role=\"spinbutton\" aria-busy=\"false\" aria-valuenow=\"1\" aria-valuetext=\"1\" inputmode=\"decimal\" aria-invalid=\"false\" aria-valuemax=\"9007199254740991\" aria-valuemin=\"-9007199254740991\"/> aka locator('#left').getByRole('spinbutton')\n    3) <input name=\"\" value=\"10\" part=\"input\" class=\"native\" placeholder=\"\" autocomplete=\"\" role=\"spinbutton\" aria-busy=\"false\" aria-valuenow=\"11\" inputmode=\"decimal\" aria-valuetext=\"11\" aria-invalid=\"false\" aria-valuemax=\"9007199254740991\" aria-valuemin=\"-9007199254740991\"/> aka locator('#right').getByRole('spinbutton')\n\nCall log:\n\u001b[2m  - waiting for locator('acme-number-input input')\u001b[22m\n"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "suite": "number-input",
+    "results": [
+      {
+        "name": "native target has spinbutton role",
+        "pass": true
+      },
+      {
+        "name": "decimal increment and native form agree",
+        "pass": true
+      },
+      {
+        "name": "partial input stays editable and invalid without fabricated number",
+        "pass": true
+      },
+      {
+        "name": "empty value stays empty",
+        "pass": true
+      },
+      {
+        "name": "stepping from empty clamps to minimum",
+        "pass": true
+      },
+      {
+        "name": "range validation is immediate",
+        "pass": true
+      },
+      {
+        "name": "native reset preserves initial string default",
+        "pass": true
+      },
+      {
+        "name": "German parsing and native canonical submission",
+        "pass": true
+      },
+      {
+        "name": "German stepping preserves numeric value",
+        "pass": true
+      },
+      {
+        "name": "percent has adaptive default step",
+        "pass": true
+      },
+      {
+        "name": "fixture completes",
+        "pass": false,
+        "error": "Error: press: Error: strict mode violation: locator('acme-number-input input') resolved to 3 elements:\n    1) <input value=\"0.1\" part=\"input\" name=\"amount\" class=\"native\" placeholder=\"\" autocomplete=\"\" role=\"spinbutton\" aria-busy=\"false\" aria-valuemin=\"0\" aria-valuenow=\"5\" aria-valuetext=\"5\" inputmode=\"decimal\" aria-label=\"Amount\" aria-valuemax=\"100\" aria-invalid=\"false\"/> aka getByRole('spinbutton', { name: 'Amount' })\n    2) <input name=\"\" value=\"1\" part=\"input\" class=\"native\" placeholder=\"\" autocomplete=\"\" role=\"spinbutton\" aria-busy=\"false\" aria-valuenow=\"1\" aria-valuetext=\"1\" inputmode=\"decimal\" aria-invalid=\"false\" aria-valuemax=\"9007199254740991\" aria-valuemin=\"-9007199254740991\"/> aka locator('#left').getByRole('spinbutton')\n    ...\n\nCall log:\n\u001b[2m  - waiting for locator('acme-number-input input')\u001b[22m\n"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "suite": "number-input",
+    "results": [
+      {
+        "name": "native target has spinbutton role",
+        "pass": true
+      },
+      {
+        "name": "decimal increment and native form agree",
+        "pass": true
+      },
+      {
+        "name": "partial input stays editable and invalid without fabricated number",
+        "pass": true
+      },
+      {
+        "name": "empty value stays empty",
+        "pass": true
+      },
+      {
+        "name": "stepping from empty clamps to minimum",
+        "pass": true
+      },
+      {
+        "name": "range validation is immediate",
+        "pass": true
+      },
+      {
+        "name": "native reset preserves initial string default",
+        "pass": true
+      },
+      {
+        "name": "German parsing and native canonical submission",
+        "pass": true
+      },
+      {
+        "name": "German stepping preserves numeric value",
+        "pass": true
+      },
+      {
+        "name": "percent has adaptive default step",
+        "pass": true
+      },
+      {
+        "name": "fixture completes",
+        "pass": false,
+        "error": "Error: press: Error: strict mode violation: locator('acme-number-input input') resolved to 3 elements:\n    1) <input value=\"0.1\" part=\"input\" name=\"amount\" class=\"native\" placeholder=\"\" autocomplete=\"\" role=\"spinbutton\" aria-busy=\"false\" aria-valuemin=\"0\" aria-valuenow=\"5\" aria-valuetext=\"5\" inputmode=\"decimal\" aria-label=\"Amount\" aria-valuemax=\"100\" aria-invalid=\"false\"/> aka getByRole('spinbutton', { name: 'Amount' })\n    2) <input name=\"\" value=\"1\" part=\"input\" class=\"native\" placeholder=\"\" autocomplete=\"\" role=\"spinbutton\" aria-busy=\"false\" aria-valuenow=\"1\" aria-valuetext=\"1\" inputmode=\"decimal\" aria-invalid=\"false\" aria-valuemax=\"9007199254740991\" aria-valuemin=\"-9007199254740991\"/> aka locator('#left').getByRole('spinbutton')\n    3) <input name=\"\" value=\"10\" part=\"input\" class=\"native\" placeholder=\"\" autocomplete=\"\" role=\"spinbutton\" aria-busy=\"false\" aria-valuenow=\"11\" inputmode=\"decimal\" aria-valuetext=\"11\" aria-invalid=\"false\" aria-valuemax=\"9007199254740991\" aria-valuemin=\"-9007199254740991\"/> aka locator('#right').getByRole('spinbutton')\n\nCall log:\n\u001b[2m  - waiting for locator('acme-number-input input')\u001b[22m\n"
+      }
+    ],
+    "errors": []
+  }
+]

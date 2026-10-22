@@ -1,0 +1,306 @@
+{
+  "date": "2026-09-23",
+  "status": "Stat family complete at assigned native/Lit boundary; M18 Toast/Feedback remain",
+  "implementation": [
+    "One Stat family with Label/Value/Unit/Description/Change/Footer parts and native description-list semantics",
+    "Canonical size/loading state; Skeleton masks values and change content without replacing author nodes",
+    "Loading context follows DOM moves, reconnection and forwarded slot changes",
+    "Change direction is explicitly authored and never inferred from numeric sign or sentiment; omission draws no arrow",
+    "Direction and sentiment have readable text as well as decorative icons/color; formatting delegates to FormatNumber",
+    "Radio Card/Group own selection in the selectable-stat example; Stat emits no selection event",
+    "Trend and Stat Delta/Desc/Foot are removed with their complete style producers",
+    "Existing Spark retains only its own small stylesheet while its M20 replacement remains pending"
+  ],
+  "verification": {
+    "build": "Strict package build passes",
+    "site": {
+      "pages": 106,
+      "elements": 4312,
+      "undocumented": 0
+    },
+    "tests": {
+      "passed": 885,
+      "failed": 0,
+      "assertions": 151593,
+      "files": 169
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "native terms and definitions retain zero and authored units",
+            "pass": true
+          },
+          {
+            "name": "direction and favorable meaning are separate and both have readable text",
+            "pass": true
+          },
+          {
+            "name": "loading masks data and change text without replacing author nodes",
+            "pass": true
+          },
+          {
+            "name": "parts follow their new Stat owner after moving and reconnecting",
+            "pass": true
+          },
+          {
+            "name": "all sizes and long labels wrap in narrow RTL layouts",
+            "pass": true
+          },
+          {
+            "name": "optional numeric formatting preserves application options and never invents direction",
+            "pass": true
+          },
+          {
+            "name": "forwarded slot changes refresh the loading owner without moving the value node",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "native terms and definitions retain zero and authored units",
+            "pass": true
+          },
+          {
+            "name": "direction and favorable meaning are separate and both have readable text",
+            "pass": true
+          },
+          {
+            "name": "loading masks data and change text without replacing author nodes",
+            "pass": true
+          },
+          {
+            "name": "parts follow their new Stat owner after moving and reconnecting",
+            "pass": true
+          },
+          {
+            "name": "all sizes and long labels wrap in narrow RTL layouts",
+            "pass": true
+          },
+          {
+            "name": "optional numeric formatting preserves application options and never invents direction",
+            "pass": true
+          },
+          {
+            "name": "forwarded slot changes refresh the loading owner without moving the value node",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "native terms and definitions retain zero and authored units",
+            "pass": true
+          },
+          {
+            "name": "direction and favorable meaning are separate and both have readable text",
+            "pass": true
+          },
+          {
+            "name": "loading masks data and change text without replacing author nodes",
+            "pass": true
+          },
+          {
+            "name": "parts follow their new Stat owner after moving and reconnecting",
+            "pass": true
+          },
+          {
+            "name": "all sizes and long labels wrap in narrow RTL layouts",
+            "pass": true
+          },
+          {
+            "name": "optional numeric formatting preserves application options and never invents direction",
+            "pass": true
+          },
+          {
+            "name": "forwarded slot changes refresh the loading owner without moving the value node",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "native terms and definitions retain zero and authored units",
+            "pass": true
+          },
+          {
+            "name": "direction and favorable meaning are separate and both have readable text",
+            "pass": true
+          },
+          {
+            "name": "loading masks data and change text without replacing author nodes",
+            "pass": true
+          },
+          {
+            "name": "parts follow their new Stat owner after moving and reconnecting",
+            "pass": true
+          },
+          {
+            "name": "all sizes and long labels wrap in narrow RTL layouts",
+            "pass": true
+          },
+          {
+            "name": "optional numeric formatting preserves application options and never invents direction",
+            "pass": true
+          },
+          {
+            "name": "forwarded slot changes refresh the loading owner without moving the value node",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "native terms and definitions retain zero and authored units",
+            "pass": true
+          },
+          {
+            "name": "direction and favorable meaning are separate and both have readable text",
+            "pass": true
+          },
+          {
+            "name": "loading masks data and change text without replacing author nodes",
+            "pass": true
+          },
+          {
+            "name": "parts follow their new Stat owner after moving and reconnecting",
+            "pass": true
+          },
+          {
+            "name": "all sizes and long labels wrap in narrow RTL layouts",
+            "pass": true
+          },
+          {
+            "name": "optional numeric formatting preserves application options and never invents direction",
+            "pass": true
+          },
+          {
+            "name": "forwarded slot changes refresh the loading owner without moving the value node",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "native terms and definitions retain zero and authored units",
+            "pass": true
+          },
+          {
+            "name": "direction and favorable meaning are separate and both have readable text",
+            "pass": true
+          },
+          {
+            "name": "loading masks data and change text without replacing author nodes",
+            "pass": true
+          },
+          {
+            "name": "parts follow their new Stat owner after moving and reconnecting",
+            "pass": true
+          },
+          {
+            "name": "all sizes and long labels wrap in narrow RTL layouts",
+            "pass": true
+          },
+          {
+            "name": "optional numeric formatting preserves application options and never invents direction",
+            "pass": true
+          },
+          {
+            "name": "forwarded slot changes refresh the loading owner without moving the value node",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "documentation": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "loading reveal",
+          "number formatting",
+          "Radio Card and Group selection composition",
+          "narrow layout"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "loading reveal",
+          "number formatting",
+          "Radio Card and Group selection composition",
+          "narrow layout"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "loading reveal",
+          "number formatting",
+          "Radio Card and Group selection composition",
+          "narrow layout"
+        ],
+        "errors": []
+      }
+    ],
+    "visual": "Chromium narrow documentation screenshot inspected",
+    "retirement": "Complete style fingerprints verify; retired Stat/Trend source selectors and producers are absent"
+  },
+  "references": [
+    {
+      "url": "https://chakra-ui.com/docs/components/stat",
+      "use": "Composable measurement parts and separate formatting"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/main/packages/react/src/components/stat/stat.tsx",
+      "use": "Full source: native dl/dt/dd and supporting parts"
+    },
+    "notes/decisions/stat-family.md",
+    "notes/alignment/evidence/stat-review-2026-09-19.json",
+    "Saved Pro Webhooks Detail 04 analysis in the existing Stat review",
+    "/tmp/acme-m18-displays/stat-semantics.json"
+  ],
+  "engineering": [
+    "Direct Stat Label/Value/Description/Change/Footer parts preserve native term/definition structure; Unit belongs inside Value",
+    "Omitted direction remains absent rather than manufacturing a default upward/downward/flat claim",
+    "Native AX text reflects the retained uppercase label styling; the test compares its intended wording",
+    "The Radio Card composition is exercised by clicking visible Stat content rather than attempting to click its visually covered native radio input"
+  ],
+  "reproduce": {
+    "fixture": "src/components/stat/__tests__/stat.browser.ts",
+    "runner": "/tmp/acme-m18-stat/run.ts",
+    "compiled": "/tmp/acme-m18-stat/run-compiled.ts",
+    "documentation": "/tmp/acme-m18-stat/docs-check.ts"
+  },
+  "limits": [
+    "Actual assistive technology and generated React/final package gates remain M22/M26",
+    "Spark is retained unchanged at its own boundary; its semantic/data replacement remains M20"
+  ]
+}

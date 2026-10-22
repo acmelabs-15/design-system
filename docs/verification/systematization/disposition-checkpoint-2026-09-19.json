@@ -1,0 +1,171 @@
+{
+  "date": "2026-09-19",
+  "scope": "Phase 2 disclosure, overlay, layout and smaller-component dispositions; records only",
+  "decisions": {
+    "disclosure_overlay_checkpoint_pending": {
+      "disclosure": {
+        "question": "accordion_collapsible_split",
+        "answer": "Accordion and Collapsible (Recommended)",
+        "scope": "Accordion coordinates related sections; Collapsible handles independent disclosure; share expansion/motion work and remove old Collapse/CollapseGroup interfaces. Show remains conditional rendering.",
+        "open": "Exact parts/defaults/mounting policies, Fold mapping and migration acceptance remain later."
+      },
+      "savedToProject": true
+    },
+    "overlay_component_selection_pending": {
+      "toggleTip": "Selected: provide a named Toggle Tip component for explicitly activated help.",
+      "contextCard": "Selected: remove Context Card outright. User: No need for the context card anymore.",
+      "hoverCard": "Included by prior request; user proposes replacing rich Tooltip variation with Hover Card. Supplementary previews use Hover Card; actionable rich help keeps explicit activation per saved decision.",
+      "tooltip": "Current examples use bold/italic text and Kbd, not a distinct rich-tooltip API. Formatting alone does not make a Hover Card.",
+      "open": "Exact props, accessibility, touch/focus behavior, shared implementation and migration mapping per use remain Phase 4/5.",
+      "savedToProject": true
+    },
+    "explicit_component_removals_pending": {
+      "source": "Peter: Should delete, fold, filter, Round icon, shell task, tile, trend, Bar row, key value, link card, Metric list, Page head, panel, stat strip, Check row.",
+      "selected": [
+        "fold",
+        "filter",
+        "ricon",
+        "shell",
+        "task",
+        "tile",
+        "trend",
+        "bar-row",
+        "kv",
+        "link-card",
+        "metric-list",
+        "page-head",
+        "panel",
+        "stat-strip",
+        "check"
+      ],
+      "verifiedNames": {
+        "Round Icon": "ricon",
+        "Key Value": "kv",
+        "Check Row": "check"
+      },
+      "companionCleanup": [
+        "filters",
+        "tasks",
+        "tiles",
+        "bar-rows",
+        "metric",
+        "panel-head",
+        "panel-foot",
+        "panels",
+        "strip-item"
+      ],
+      "companionBasis": "Associated family parts and collection wrappers verified in component source/docs; include in migration cleanup, not unrelated components sharing a documentation page.",
+      "boundary": "Shell removal does not independently settle side-nav, topbar or subnav. Existing responsive Sidebar, Stat, Card, Data List and Collapsible capabilities remain selected. Exact migration recipes remain to verify in inventory.",
+      "priorSelectionsReaffirmed": [
+        "tile",
+        "tiles",
+        "trend",
+        "link-card",
+        "panel",
+        "stat-strip",
+        "strip-item"
+      ],
+      "newMappingClosure": "KV removal selected; whether all KV uses map to Data List requires inventory verification.",
+      "savedToProject": true,
+      "mode": "Plan; removal decisions only, no source deletion."
+    },
+    "scroll_area_disposition_pending": {
+      "selectedBefore": "Custom scrollbar controls over native browser scrolling; house Lit/TanStack Store behavior port, no Zag runtime.",
+      "verifiedNow": "Complete local Scroller source/docs read. Native viewport, hidden bars, edge fades, optional direct-child previous/next buttons, embedded mobile-grid breakpoint. Chakra and Radix full fetched Scroll Area docs read; Chakra has edge shadows, programmatic scroll and TanStack Virtual examples. Pro indexed ScrollArea query: zero direct matches, not proof of absent scrolling patterns.",
+      "proposal": "Replace Scroller with one Scroll Area family; preserve optional edge hints and button-driven scrolling via shared parts/composition. Responsive grid arrangement moves to layout responsibility.",
+      "dependencies": "Sidebar, TOC, Tree View, Table/TanStack Virtual, RTL, focus, reduced motion. No default visibility/style or virtualization-state ownership selected.",
+      "savedToProject": true,
+      "selected": "One Scroll Area (Recommended)",
+      "questionId": "scroll_area_replaces_scroller",
+      "decision": "Remove Scroller; preserve useful edge hints and scrolling controls through Scroll Area family and composition."
+    },
+    "grid_disposition_pending": {
+      "questionId": "decorative_grid_disposition",
+      "answer": "Keep layout grids only",
+      "decision": "Remove the current decorative grid family: acme-grid's decorative implementation and grid-cell/grid-cross/grid-system/grid-page companion interfaces. Provide ordinary layout Grid and Simple Grid; do not retain dedicated guide-line/cross capability.",
+      "scope": "New ordinary Grid replaces current same-named implementation outright; exact layout child interfaces and responsive properties remain Phase 4, with approved house breakpoints and spacing.",
+      "evidence": "Complete existing Grid root, Cross, Cell, Page, System source and Grid docs read. Full fetched official Chakra Grid/SimpleGrid, Radix Themes Grid, Geist Grid pages read. Existing Pro synthesis considered; prior complete Material layout review remains reference evidence, not automatic house values.",
+      "savedToProject": true
+    },
+    "loading_dots_disposition_pending": {
+      "questionId": "loading_dots_disposition",
+      "answer": "Don't think we need loading dots at all. Spinner and progress should cover it.",
+      "decision": "Remove Loading Dots entirely; do not introduce a dots variant of Spinner. Retain Spinner and Progress. Gauge/circular-progress disposition still open.",
+      "savedToProject": true
+    },
+    "destructive_dialog_disposition_pending": {
+      "questionId": "destructive_dialog_disposition",
+      "answer": "Dialog examples (Recommended)",
+      "decision": "Provide Dialog plus a distinct Alert Dialog component built on shared dialog behavior, informed by shadcn Base UI version. Remove Destructive Modal; retain typed-phrase confirmation as a composed example.",
+      "open": "Exact focus/dismissal, nested dialogs/menu invocation, async errors and busy-state defaults remain inventory; no separate React runtime selected.",
+      "savedToProject": true,
+      "previousChoice": {
+        "questionId": "destructive_dialog_disposition",
+        "answer": "Dialog examples (Recommended)",
+        "decision": "Remove Destructive Modal; use one Dialog family supporting ordinary and alert-dialog semantics, with complete tested ordinary/typed-phrase confirmation compositions. Application performs actions; shared controls provide input/validation/loading/errors.",
+        "open": "Exact roles per use, initial focus, cancel/dismissal during requests, reset/reopen, error and async success close contracts remain inventory; not all Material rules adopted.",
+        "savedToProject": false
+      },
+      "superseded": "Previous Dialog-only public component choice superseded by user's explicit shadcn Base Alert Dialog addition.",
+      "source": "Probably makes sense to have this for the alert dialogue in addition to the dialogue. https://ui.shadcn.com/docs/components/base/alert-dialog",
+      "evidence": "Full fetched shadcn and Base UI Alert Dialog docs plus complete shadcn base alert-dialog.tsx source read. Action wraps Button; Cancel wraps primitive Close. Do not infer confirm automatically closes or succeeds."
+    },
+    "gauge_disposition_pending": {
+      "questionId": "gauge_meter_name",
+      "answer": "Meter (Recommended)",
+      "decision": "Rename Gauge to Meter. Preserve circular measured-value display; correct accessibility to meter for known bounded measurements. Distinguish task Progress; animated loading feedback remains required and must not invent meter values.",
+      "open": "Exact loading interface, missing/error/zero, range/formatting/threshold colors, Stat composition, shared ring renderer and circular Progress interface remain inventory decisions.",
+      "evidence": "Full local Gauge and Progress sources/Gauge docs. Official W3C meter pattern, MDN progressbar, Base UI Meter, React Aria Meter, Geist Gauge and Chakra Progress Circle docs read. M3 Progress four tabs text fetched; interactive specs/figures still need completion before visual implementation recommendation.",
+      "savedToProject": true
+    },
+    "relative_time_disposition_pending": {
+      "questionId": "relative_time_component_scope",
+      "answer": "Text plus composition (Recommended)",
+      "decision": "Rebuild Relative Time as standalone localized updating timestamp text; provide UTC/local detail through separate Hover Card composition. Remove old mandatory time-card interface and Context Card dependency.",
+      "open": "Input date contract, locale inheritance, update schedule, past/future formatting, epoch zero, invalid/missing dates, semantic time, absolute detail accessibility and time zones remain inventory; no new package selected.",
+      "evidence": "Local relative-time.ts and full docs page read; full official Web Awesome Relative Time and GitHub relative-time-element README fetched and read. Source defects include hardcoded English, future timestamps as past/Just now, zero treated missing.",
+      "savedToProject": true
+    },
+    "dots_menu_disposition_pending": {
+      "questionId": "dots_menu_disposition",
+      "answer": "Menu composition (Recommended)",
+      "decision": "Remove Dots Menu. Provide complete Menu plus Icon Button compositions preserving horizontal/vertical dots, meaningful labels, disabled behavior and keyboard operation.",
+      "evidence": "Complete local source/docs and complete fetched Chakra Menu and Radix Themes Dropdown Menu docs read; existing complete Pro overlay/menu synthesis consulted. Full Menu implementation/accessibility review remains inventory, not claimed complete by wrapper disposition.",
+      "savedToProject": true
+    },
+    "resizable_reference_pending": {
+      "request": "Include https://ui.shadcn.com/docs/components/base/resizable and reuse where appropriate in other components and layouts.",
+      "existingDecision": "Resizable panes already selected: pointer/keyboard, optional collapse and previous-open size restore, application-owned persistence, native Lit/TanStack Store house implementation with React wrapper.",
+      "verified": "Official shadcn page and complete base/ui/resizable.tsx wrapper read. Wrapper uses react-resizable-panels, not Base UI resizing primitives. Group/Panel/Handle, horizontal/vertical and optional visible handle.",
+      "scope": "Add shadcn as concrete composition/behavior reference and evaluate Sidebar, split content/detail, editors and Scroll Area integration. Does not adopt a separate React engine or auto-enable resizing everywhere.",
+      "open": "Exact house name, interfaces, resizing/collapse/focus/breakpoint combinations remain inventory.",
+      "savedToProject": true
+    },
+    "dialog_research_pending": {
+      "localRead": [
+        "src/components/destructive-modal/destructive-modal.ts",
+        "src/components/modal/modal.ts",
+        "docs-src/pages/components/destructive-action-modal.ts"
+      ],
+      "referencesRead": [
+        "Radix Alert Dialog complete docs",
+        "Chakra Dialog complete docs",
+        "Material Dialog Overview/Specs/Guidelines/Accessibility complete text",
+        "Material Web dialog/internal/dialog.ts complete raw source",
+        "Pro saved overlay/confirmation synthesis"
+      ],
+      "specs": "Browser read both Basic and Full-screen token sets expanded in Default Light; six specification figures viewed. Some elevation/shape values non-textual. Fullscreen diagram header64 vs table56 discrepancy must not become house size.",
+      "caveats": "No actual house keyboard/screen-reader runtime verification. Material guidance says dismiss actions never disabled; current destructive-modal disables both buttons during loading but permits backdrop/Escape cancellation. Exact policy open. Material full-screen form guidance not imported automatically.",
+      "savedToProject": true
+    }
+  },
+  "limitations": [
+    "Source implementation not authorized; Phase 5 approval remains required.",
+    "No project dependency change, code generation, commit or push.",
+    "Material Progress documentation text fetched/read; interactive tokens and diagrams not yet fully reviewed. Do not claim complete visual coverage.",
+    "Material Dialog four tab texts, two token sets expanded at Default Light and six spec diagrams reviewed; animations and runtime accessibility not tested.",
+    "Sources sampled by subject in this checkpoint reuse the earlier complete Chakra Pro corpus; zero direct-import search matches are not proof that no related composition exists."
+  ],
+  "persisted": true,
+  "recordKind": "Decision checkpoint; prior choices retained only where explicitly marked superseded"
+}

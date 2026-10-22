@@ -1,0 +1,163 @@
+{
+  "date": "2026-09-20",
+  "branch": "codex/systematization-migration",
+  "scope": "M01 first slice: compiler dependency and house source path/development consumers",
+  "compiler": {
+    "package": "lightningcss",
+    "version": "1.33.0",
+    "developmentOnly": true
+  },
+  "move": {
+    "from": "src/geist.css",
+    "to": "styles/house.css",
+    "sha256": "377c2b7e8ef0b83272a2579bc7a6e5218a47e7749f16b28467d0ed63563ef8ab",
+    "bytes": 201629,
+    "contentsUnchanged": true
+  },
+  "verification": {
+    "split": "pass",
+    "build": "pass: 330 modules, 128 compiled templates",
+    "docs": "pass: 104 pages, 150 documented elements",
+    "watcher": {
+      "originalSource": "2 expected failures; served page stayed initial",
+      "candidate": "2 pass, 8 assertions; authored styles propagate, no repeated split, independent generated styles propagate, failed split preserves page"
+    },
+    "focusedStrictTypecheck": "pass",
+    "focusedBiome": "pass",
+    "repositoryStrictTypecheck": {
+      "status": "13 pre-existing diagnostics, exactly matched normalized built HEAD baseline",
+      "baseline": "src/components/choicebox/choicebox.ts(54,51): error TS2345: Argument of type 'AcmeChoiceboxItem | undefined' is not assignable to parameter of type 'AcmeChoiceboxItem'.\n  Type 'undefined' is not assignable to type 'AcmeChoiceboxItem'.\nsrc/components/destructive-modal/__tests__/destructive-modal.test.ts(66,12): error TS2531: Object is possibly 'null'.\nsrc/components/destructive-modal/__tests__/destructive-modal.test.ts(146,12): error TS2531: Object is possibly 'null'.\nsrc/components/destructive-modal/__tests__/destructive-modal.test.ts(158,12): error TS2531: Object is possibly 'null'.\nsrc/components/destructive-modal/__tests__/destructive-modal.test.ts(174,12): error TS2531: Object is possibly 'null'.\nsrc/components/relative-time/__tests__/relative-time.test.ts(12,40): error TS2352: Conversion of type 'AcmeContextCard | null' to type 'HTMLElement & Record<string, unknown>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.\n  Type 'AcmeContextCard' is not comparable to type 'HTMLElement & Record<string, unknown>'.\n    Type 'AcmeContextCard' is not comparable to type 'Record<string, unknown>'.\n      Index signature for type 'string' is missing in type 'AcmeContextCard'.\nsrc/shared/__tests__/form.test.ts(4,51): error TS5097: An import path can only end with a '.ts' extension when 'allowImportingTsExtensions' is enabled.\ntools/geist/__tests__/census.test.ts(9,32): error TS7016: Could not find a declaration file for module '../census.js'. '/private/tmp/acme-m01-baseline-GF0rlp/tools/geist/census.js' implicitly has an 'any' type.\ntools/geist/extract.ts(81,16): error TS2352: Conversion of type 'import(\"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/happy-dom/lib/nodes/element/Element\").default[]' to type 'Element[]' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.\n  Type 'Element' is missing the following properties from type 'Element': clientHeight, clientLeft, clientTop, clientWidth, and 72 more.\ntools/geist/gen.ts(1667,31): error TS18048: 'type' is possibly 'undefined'.\ntools/geist/gen.ts(1798,47): error TS2353: Object literal may only specify known properties, and 'properties' does not exist in type '{ css: string; report: string[]; }'.\ntools/geist/gen.ts(1848,24): error TS2339: Property 'properties' does not exist on type '{ css: string; report: string[]; }'.\ntools/geist/gen.ts(1853,145): error TS7006: Parameter 'p' implicitly has an 'any' type.\n",
+      "current": "src/components/choicebox/choicebox.ts(54,51): error TS2345: Argument of type 'AcmeChoiceboxItem | undefined' is not assignable to parameter of type 'AcmeChoiceboxItem'.\n  Type 'undefined' is not assignable to type 'AcmeChoiceboxItem'.\nsrc/components/destructive-modal/__tests__/destructive-modal.test.ts(66,12): error TS2531: Object is possibly 'null'.\nsrc/components/destructive-modal/__tests__/destructive-modal.test.ts(146,12): error TS2531: Object is possibly 'null'.\nsrc/components/destructive-modal/__tests__/destructive-modal.test.ts(158,12): error TS2531: Object is possibly 'null'.\nsrc/components/destructive-modal/__tests__/destructive-modal.test.ts(174,12): error TS2531: Object is possibly 'null'.\nsrc/components/relative-time/__tests__/relative-time.test.ts(12,40): error TS2352: Conversion of type 'AcmeContextCard | null' to type 'HTMLElement & Record<string, unknown>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.\n  Type 'AcmeContextCard' is not comparable to type 'HTMLElement & Record<string, unknown>'.\n    Type 'AcmeContextCard' is not comparable to type 'Record<string, unknown>'.\n      Index signature for type 'string' is missing in type 'AcmeContextCard'.\nsrc/shared/__tests__/form.test.ts(4,51): error TS5097: An import path can only end with a '.ts' extension when 'allowImportingTsExtensions' is enabled.\ntools/geist/__tests__/census.test.ts(9,32): error TS7016: Could not find a declaration file for module '../census.js'. '/Users/peterkloss/Dev/ACMElabs/design-system/tools/geist/census.js' implicitly has an 'any' type.\ntools/geist/extract.ts(81,16): error TS2352: Conversion of type 'import(\"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/happy-dom/lib/nodes/element/Element\").default[]' to type 'Element[]' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.\n  Type 'Element' is missing the following properties from type 'Element': clientHeight, clientLeft, clientTop, clientWidth, and 72 more.\ntools/geist/gen.ts(1667,31): error TS18048: 'type' is possibly 'undefined'.\ntools/geist/gen.ts(1798,47): error TS2353: Object literal may only specify known properties, and 'properties' does not exist in type '{ css: string; report: string[]; }'.\ntools/geist/gen.ts(1848,24): error TS2339: Property 'properties' does not exist on type '{ css: string; report: string[]; }'.\ntools/geist/gen.ts(1853,145): error TS7006: Parameter 'p' implicitly has an 'any' type.\n"
+    },
+    "unitSuite": {
+      "initialRun": "610 pass, 0 fail, 3325 assertions; final watcher refinement rechecked separately",
+      "finalRun": "610 pass, 0 fail, 3325 assertions across 89 files (34.26s)"
+    },
+    "generatedOutputsChanged": false
+  },
+  "historicalProtectedBaseline": {
+    "files": 870,
+    "authorizedDifferences": [
+      {
+        "path": "src/geist.css",
+        "kind": "removed"
+      },
+      {
+        "path": "scripts/dev.ts",
+        "kind": "changed"
+      },
+      {
+        "path": "scripts/split-css.ts",
+        "kind": "changed"
+      },
+      {
+        "path": "package.json",
+        "kind": "changed"
+      },
+      {
+        "path": "bun.lock",
+        "kind": "changed"
+      }
+    ]
+  },
+  "remaining": [
+    "M01 generated-style paths and manifest",
+    "M01 site source/output routing",
+    "M02 compiler, registration, map and document emitters"
+  ],
+  "releasePerformed": false,
+  "validation": {
+    "recordsChecked": 161,
+    "localLinksChecked": 1784,
+    "headingLinksChecked": 504,
+    "brokenLinks": [],
+    "protectedFilesChecked": 870,
+    "protectedFileDifferences": [
+      "src/geist.css",
+      "scripts/dev.ts",
+      "scripts/split-css.ts",
+      "package.json",
+      "bun.lock"
+    ],
+    "evidenceJsonFilesValidated": [
+      "spacing-stack-review-2026-09-20.json",
+      "shape-geometry-review-2026-09-19.json",
+      "build-bundles.json",
+      "material-dialog-review-2026-09-19.json",
+      "style-package-verification-2026-09-20.json",
+      "package-survey.json",
+      "phase-2-closure-2026-09-19.json",
+      "phase-2-terms-census-2026-09-19.json",
+      "layout-typography-review-2026-09-19.json",
+      "phase-3-checkpoint-2026-09-19.json",
+      "layout-contract-selections-2026-09-20.json",
+      "flow-diagram-review-2026-09-19.json",
+      "toolbar-reference-review-2026-09-19.json",
+      "tooling-evaluation-2026-09-19.json",
+      "responsive-spacing-review-2026-09-20.json",
+      "chakra-pro-collection-audit.json",
+      "phase-4-checkpoint-2026-09-19.json",
+      "m01-house-style-path-2026-09-20.json",
+      "native-port-mapping-2026-09-19.json",
+      "box-contract-review-2026-09-20.json",
+      "table-review-2026-09-19.json",
+      "layout-contract-review-2026-09-19.json",
+      "m00-prerequisites-2026-09-20.json",
+      "additional-probes-2026-09-19.json",
+      "stat-review-2026-09-19.json",
+      "field-list-review-2026-09-19.json",
+      "lit-style-helper-review-2026-09-20.json",
+      "zag-strategy-review-2026-09-19.json",
+      "group-review-2026-09-19.json",
+      "core-layout-proposal-2026-09-20.json",
+      "material-full-review-2026-09-19.json",
+      "full-proposal-coverage-2026-09-20.json",
+      "devtools-probe-2026-09-19.json",
+      "message-family-review-2026-09-19.json",
+      "current-public-interfaces-2026-09-20.json",
+      "intent-probe-2026-09-19.json",
+      "state-bridge-comparison-2026-09-19.json",
+      "container-family-review-2026-09-19.json",
+      "inventory-approval-2026-09-20.json",
+      "material-list-specs-2026-09-19.json",
+      "package-bundles.json",
+      "filter-comparison.json",
+      "m00-completion-2026-09-20.json",
+      "shared-style-values-review-2026-09-20.json",
+      "query-stack-grid-review-2026-09-19.json",
+      "blue-control-review-2026-09-19.json",
+      "lit-style-ownership-review-2026-09-20.json",
+      "pace-review-2026-09-19.json",
+      "disposition-checkpoint-2026-09-19.json",
+      "resizable-panes-2026-09-19.json",
+      "style-input-integration-review-2026-09-20.json",
+      "remaining-work-consolidation-2026-09-20.json",
+      "style-pipeline-comparison-2026-09-19.json",
+      "joint-composition-review-2026-09-19.json",
+      "responsive-review-2026-09-19.json",
+      "composition-candidates.json",
+      "extension-capture-verification.json",
+      "capability-checkpoint-2026-09-19.json",
+      "native-form-mechanism-2026-09-19.json",
+      "notes-consistency-review-2026-09-19.json",
+      "chakra-pro-review-ledger.json",
+      "material-field-specs-2026-09-19.json",
+      "verification.json",
+      "material-navigation-specs-2026-09-19.json",
+      "full-proposal-review-2026-09-20.json",
+      "primitive-interfaces-review-2026-09-20.json",
+      "token-reachability.json",
+      "foundation-followup-2026-09-19.json",
+      "row-pattern-survey-2026-09-19.json",
+      "existing-state-integration-2026-09-19.json",
+      "protected-files.json",
+      "declaration-order-probe-2026-09-20.json"
+    ]
+  },
+  "commits": {
+    "approvedRecords": "4a10cd9",
+    "compilerDependency": "383d244",
+    "housePathAndWatcher": "3b9589c"
+  },
+  "pushPerformed": false
+}

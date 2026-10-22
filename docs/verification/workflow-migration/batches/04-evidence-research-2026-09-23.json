@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-research-2026-09-23",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.982Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/overlay-density-2026-09-23.json",
+      "destination": "docs/verification/systematization/overlay-density-2026-09-23.json",
+      "bytes": 11272,
+      "sha256": "abbcf3e6a54310baff9cccc2c39e7740f6d0f022d63d24e4233ad71f746b9642"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

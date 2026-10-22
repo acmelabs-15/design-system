@@ -1,0 +1,789 @@
+{
+  "date": "2026-09-23",
+  "status": "M15 Toolbar/App Bar/Breadcrumbs complete at assigned native/Lit boundary",
+  "implementation": [
+    "Toolbar coordinates one tab entry, actions and cooperative Radio/Segmented movement without taking selection ownership",
+    "Text editing and Menu keys remain owned by their controls; popup boundaries prevent outer-toolbar delegation",
+    "Native disabled actions are skipped; disabled Toolbar retains individual state in an inert region",
+    "App Bar replaces Appbar with explicit start/content/end regions and optional theme control",
+    "Native header semantics retain one page banner, section headers and no dialog banner",
+    "Breadcrumbs uses ordered native navigation, current-page meaning, disabled links and per-item decorative separators",
+    "Documentation API tables have named scroll regions instead of expanding narrow pages"
+  ],
+  "verification": {
+    "build": "Strict build passes",
+    "site": {
+      "pages": 103,
+      "elements": 4298,
+      "undocumented": 0
+    },
+    "suite": {
+      "passed": 934,
+      "failed": 0,
+      "assertions": 149527,
+      "files": 163
+    },
+    "siteAfterOverflowCorrection": {
+      "passed": 104,
+      "failed": 0,
+      "assertions": 621
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "nativeTabFocus": "native-next",
+        "tabKey": "Tab",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "Toolbar has one named tab entry across actions and radio controls",
+            "pass": true
+          },
+          {
+            "name": "arrows skip disabled actions and focus radio choices without selecting",
+            "pass": true
+          },
+          {
+            "name": "editing keys remain inside the trailing input and reentry reaches actions",
+            "pass": true
+          },
+          {
+            "name": "Menu keeps its own keys and restores focus to its toolbar trigger",
+            "pass": true
+          },
+          {
+            "name": "orientation, RTL and loop=false have one focus owner",
+            "pass": true
+          },
+          {
+            "name": "disabling the toolbar preserves children and moves focus outside inert content",
+            "pass": true
+          },
+          {
+            "name": "leaving a toolbar restores authored tabindex",
+            "pass": true
+          },
+          {
+            "name": "App Bar preserves the header baseline and explicit content regions",
+            "pass": true
+          },
+          {
+            "name": "App Bar remains a real header without a dialog banner",
+            "pass": true
+          },
+          {
+            "name": "App Bar keeps author nodes through orientation and placement changes",
+            "pass": true
+          },
+          {
+            "name": "Breadcrumbs exposes navigation, native list items and current-page meaning",
+            "pass": true
+          },
+          {
+            "name": "disabled Breadcrumb links cannot navigate and the final separator follows removal",
+            "pass": true
+          },
+          {
+            "name": "Segmented Control delegates arrows without changing its value",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "nativeTabFocus": "native-next",
+        "tabKey": "Tab",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "Toolbar has one named tab entry across actions and radio controls",
+            "pass": true
+          },
+          {
+            "name": "arrows skip disabled actions and focus radio choices without selecting",
+            "pass": true
+          },
+          {
+            "name": "editing keys remain inside the trailing input and reentry reaches actions",
+            "pass": true
+          },
+          {
+            "name": "Menu keeps its own keys and restores focus to its toolbar trigger",
+            "pass": true
+          },
+          {
+            "name": "orientation, RTL and loop=false have one focus owner",
+            "pass": true
+          },
+          {
+            "name": "disabling the toolbar preserves children and moves focus outside inert content",
+            "pass": true
+          },
+          {
+            "name": "leaving a toolbar restores authored tabindex",
+            "pass": true
+          },
+          {
+            "name": "App Bar preserves the header baseline and explicit content regions",
+            "pass": true
+          },
+          {
+            "name": "App Bar remains a real header without a dialog banner",
+            "pass": true
+          },
+          {
+            "name": "App Bar keeps author nodes through orientation and placement changes",
+            "pass": true
+          },
+          {
+            "name": "Breadcrumbs exposes navigation, native list items and current-page meaning",
+            "pass": true
+          },
+          {
+            "name": "disabled Breadcrumb links cannot navigate and the final separator follows removal",
+            "pass": true
+          },
+          {
+            "name": "Segmented Control delegates arrows without changing its value",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "nativeTabFocus": "native-editor",
+        "tabKey": "Alt+Tab",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "Toolbar has one named tab entry across actions and radio controls",
+            "pass": true
+          },
+          {
+            "name": "arrows skip disabled actions and focus radio choices without selecting",
+            "pass": true
+          },
+          {
+            "name": "editing keys remain inside the trailing input and reentry reaches actions",
+            "pass": true
+          },
+          {
+            "name": "Menu keeps its own keys and restores focus to its toolbar trigger",
+            "pass": true
+          },
+          {
+            "name": "orientation, RTL and loop=false have one focus owner",
+            "pass": true
+          },
+          {
+            "name": "disabling the toolbar preserves children and moves focus outside inert content",
+            "pass": true
+          },
+          {
+            "name": "leaving a toolbar restores authored tabindex",
+            "pass": true
+          },
+          {
+            "name": "App Bar preserves the header baseline and explicit content regions",
+            "pass": true
+          },
+          {
+            "name": "App Bar remains a real header without a dialog banner",
+            "pass": true
+          },
+          {
+            "name": "App Bar keeps author nodes through orientation and placement changes",
+            "pass": true
+          },
+          {
+            "name": "Breadcrumbs exposes navigation, native list items and current-page meaning",
+            "pass": true
+          },
+          {
+            "name": "disabled Breadcrumb links cannot navigate and the final separator follows removal",
+            "pass": true
+          },
+          {
+            "name": "Segmented Control delegates arrows without changing its value",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "nativeTabFocus": "native-next",
+        "tabKey": "Tab",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "Toolbar has one named tab entry across actions and radio controls",
+            "pass": true
+          },
+          {
+            "name": "arrows skip disabled actions and focus radio choices without selecting",
+            "pass": true
+          },
+          {
+            "name": "editing keys remain inside the trailing input and reentry reaches actions",
+            "pass": true
+          },
+          {
+            "name": "Menu keeps its own keys and restores focus to its toolbar trigger",
+            "pass": true
+          },
+          {
+            "name": "orientation, RTL and loop=false have one focus owner",
+            "pass": true
+          },
+          {
+            "name": "disabling the toolbar preserves children and moves focus outside inert content",
+            "pass": true
+          },
+          {
+            "name": "leaving a toolbar restores authored tabindex",
+            "pass": true
+          },
+          {
+            "name": "App Bar preserves the header baseline and explicit content regions",
+            "pass": true
+          },
+          {
+            "name": "App Bar remains a real header without a dialog banner",
+            "pass": true
+          },
+          {
+            "name": "App Bar keeps author nodes through orientation and placement changes",
+            "pass": true
+          },
+          {
+            "name": "Breadcrumbs exposes navigation, native list items and current-page meaning",
+            "pass": true
+          },
+          {
+            "name": "disabled Breadcrumb links cannot navigate and the final separator follows removal",
+            "pass": true
+          },
+          {
+            "name": "Segmented Control delegates arrows without changing its value",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "nativeTabFocus": "native-next",
+        "tabKey": "Tab",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "Toolbar has one named tab entry across actions and radio controls",
+            "pass": true
+          },
+          {
+            "name": "arrows skip disabled actions and focus radio choices without selecting",
+            "pass": true
+          },
+          {
+            "name": "editing keys remain inside the trailing input and reentry reaches actions",
+            "pass": true
+          },
+          {
+            "name": "Menu keeps its own keys and restores focus to its toolbar trigger",
+            "pass": true
+          },
+          {
+            "name": "orientation, RTL and loop=false have one focus owner",
+            "pass": true
+          },
+          {
+            "name": "disabling the toolbar preserves children and moves focus outside inert content",
+            "pass": true
+          },
+          {
+            "name": "leaving a toolbar restores authored tabindex",
+            "pass": true
+          },
+          {
+            "name": "App Bar preserves the header baseline and explicit content regions",
+            "pass": true
+          },
+          {
+            "name": "App Bar remains a real header without a dialog banner",
+            "pass": true
+          },
+          {
+            "name": "App Bar keeps author nodes through orientation and placement changes",
+            "pass": true
+          },
+          {
+            "name": "Breadcrumbs exposes navigation, native list items and current-page meaning",
+            "pass": true
+          },
+          {
+            "name": "disabled Breadcrumb links cannot navigate and the final separator follows removal",
+            "pass": true
+          },
+          {
+            "name": "Segmented Control delegates arrows without changing its value",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "nativeTabFocus": "native-editor",
+        "tabKey": "Alt+Tab",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "Toolbar has one named tab entry across actions and radio controls",
+            "pass": true
+          },
+          {
+            "name": "arrows skip disabled actions and focus radio choices without selecting",
+            "pass": true
+          },
+          {
+            "name": "editing keys remain inside the trailing input and reentry reaches actions",
+            "pass": true
+          },
+          {
+            "name": "Menu keeps its own keys and restores focus to its toolbar trigger",
+            "pass": true
+          },
+          {
+            "name": "orientation, RTL and loop=false have one focus owner",
+            "pass": true
+          },
+          {
+            "name": "disabling the toolbar preserves children and moves focus outside inert content",
+            "pass": true
+          },
+          {
+            "name": "leaving a toolbar restores authored tabindex",
+            "pass": true
+          },
+          {
+            "name": "App Bar preserves the header baseline and explicit content regions",
+            "pass": true
+          },
+          {
+            "name": "App Bar remains a real header without a dialog banner",
+            "pass": true
+          },
+          {
+            "name": "App Bar keeps author nodes through orientation and placement changes",
+            "pass": true
+          },
+          {
+            "name": "Breadcrumbs exposes navigation, native list items and current-page meaning",
+            "pass": true
+          },
+          {
+            "name": "disabled Breadcrumb links cannot navigate and the final separator follows removal",
+            "pass": true
+          },
+          {
+            "name": "Segmented Control delegates arrows without changing its value",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "documentation": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "new documentation header",
+          "explicit theme control",
+          "header route navigation",
+          "Toolbar action/Radio keys",
+          "Breadcrumb navigation",
+          "App Bar examples",
+          "360px document overflow"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "new documentation header",
+          "explicit theme control",
+          "header route navigation",
+          "Toolbar action/Radio keys",
+          "Breadcrumb navigation",
+          "App Bar examples",
+          "360px document overflow"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "new documentation header",
+          "explicit theme control",
+          "header route navigation",
+          "Toolbar action/Radio keys",
+          "Breadcrumb navigation",
+          "App Bar examples",
+          "360px document overflow"
+        ],
+        "errors": []
+      }
+    ],
+    "headerNativeBaseline": [
+      {
+        "id": "1",
+        "role": "RootWebArea",
+        "name": "",
+        "children": [
+          "2"
+        ]
+      },
+      {
+        "id": "6",
+        "role": "banner",
+        "name": "",
+        "children": [
+          "16"
+        ]
+      },
+      {
+        "id": "7",
+        "role": "generic",
+        "name": "",
+        "children": [
+          "8",
+          "10"
+        ]
+      },
+      {
+        "id": "12",
+        "role": "dialog",
+        "name": "",
+        "children": [
+          "14"
+        ]
+      },
+      {
+        "id": "16",
+        "role": "StaticText",
+        "name": "Page",
+        "children": [
+          "-1000000002"
+        ]
+      },
+      {
+        "id": "8",
+        "role": "sectionheader",
+        "name": "",
+        "children": [
+          "17"
+        ]
+      },
+      {
+        "id": "10",
+        "role": "sectionheader",
+        "name": "",
+        "children": [
+          "18"
+        ]
+      },
+      {
+        "id": "14",
+        "role": "banner",
+        "name": "",
+        "children": [
+          "19"
+        ]
+      },
+      {
+        "id": "-1000000002",
+        "role": "InlineTextBox",
+        "name": "Page",
+        "children": []
+      },
+      {
+        "id": "17",
+        "role": "StaticText",
+        "name": "Native section header",
+        "children": [
+          "-1000000003"
+        ]
+      },
+      {
+        "id": "18",
+        "role": "StaticText",
+        "name": "Shadow section header",
+        "children": [
+          "-1000000004"
+        ]
+      },
+      {
+        "id": "19",
+        "role": "StaticText",
+        "name": "Shadow dialog header",
+        "children": [
+          "-1000000005"
+        ]
+      },
+      {
+        "id": "-1000000003",
+        "role": "InlineTextBox",
+        "name": "Native section header",
+        "children": []
+      },
+      {
+        "id": "-1000000004",
+        "role": "InlineTextBox",
+        "name": "Shadow section header",
+        "children": []
+      },
+      {
+        "id": "-1000000005",
+        "role": "InlineTextBox",
+        "name": "Shadow dialog header",
+        "children": []
+      }
+    ],
+    "documentationAccessibility": [
+      {
+        "role": "navigation",
+        "name": "Pages"
+      },
+      {
+        "role": "banner",
+        "name": ""
+      },
+      {
+        "role": "navigation",
+        "name": "pagination"
+      },
+      {
+        "role": "navigation",
+        "name": "Sections"
+      },
+      {
+        "role": "sectionheader",
+        "name": ""
+      },
+      {
+        "role": "sectionheader",
+        "name": ""
+      },
+      {
+        "role": "sectionheader",
+        "name": ""
+      },
+      {
+        "role": "sectionheader",
+        "name": ""
+      },
+      {
+        "role": "sectionheader",
+        "name": ""
+      },
+      {
+        "role": "sectionheader",
+        "name": ""
+      },
+      {
+        "role": "navigation",
+        "name": "Breadcrumb"
+      }
+    ],
+    "overflowIsolation": {
+      "before": 580,
+      "after": 360,
+      "viewport": 360,
+      "bars": [
+        {
+          "width": 360,
+          "right": 360,
+          "regions": [
+            {
+              "part": "start",
+              "width": 171.953125,
+              "right": 183.953125
+            },
+            {
+              "part": "content",
+              "width": 42.046875,
+              "right": 234
+            },
+            {
+              "part": "end",
+              "width": 106,
+              "right": 348
+            }
+          ]
+        },
+        {
+          "width": 278,
+          "right": 319,
+          "regions": [
+            {
+              "part": "start",
+              "width": 46.890625,
+              "right": 99.890625
+            },
+            {
+              "part": "content",
+              "width": 120.859375,
+              "right": 228.75
+            },
+            {
+              "part": "end",
+              "width": 70.25,
+              "right": 307
+            }
+          ]
+        },
+        {
+          "width": 278,
+          "right": 319,
+          "regions": [
+            {
+              "part": "start",
+              "width": 0,
+              "right": 0
+            },
+            {
+              "part": "content",
+              "width": 41.5625,
+              "right": 94.5625
+            },
+            {
+              "part": "end",
+              "width": 204.4375,
+              "right": 307
+            }
+          ]
+        },
+        {
+          "width": 118.46875,
+          "right": 239.234375,
+          "regions": [
+            {
+              "part": "start",
+              "width": 0,
+              "right": 0
+            },
+            {
+              "part": "content",
+              "width": 94.46875,
+              "right": 227.234375
+            },
+            {
+              "part": "end",
+              "width": 0,
+              "right": 0
+            }
+          ]
+        },
+        {
+          "width": 139.4375,
+          "right": 249.71875,
+          "regions": [
+            {
+              "part": "start",
+              "width": 0,
+              "right": 0
+            },
+            {
+              "part": "content",
+              "width": 115.4375,
+              "right": 237.71875
+            },
+            {
+              "part": "end",
+              "width": 0,
+              "right": 0
+            }
+          ]
+        },
+        {
+          "width": 121.359375,
+          "right": 240.671875,
+          "regions": [
+            {
+              "part": "start",
+              "width": 0,
+              "right": 0
+            },
+            {
+              "part": "content",
+              "width": 97.359375,
+              "right": 228.671875
+            },
+            {
+              "part": "end",
+              "width": 0,
+              "right": 0
+            }
+          ]
+        },
+        {
+          "width": 278,
+          "right": 319,
+          "regions": [
+            {
+              "part": "start",
+              "width": 88.46875,
+              "right": 141.46875
+            },
+            {
+              "part": "content",
+              "width": 43.53125,
+              "right": 193
+            },
+            {
+              "part": "end",
+              "width": 106,
+              "right": 307
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "corrections": [
+    "Native WebKit Tab skips ordinary buttons under this test environment; a paired native test chooses Option-Tab for full-control traversal. Component arrow behavior remains unchanged.",
+    "The removed Breadcrumb maps were borrowed by Command Menu input styling. Its page-stack actions now compose Group/Button; the input mapping no longer depends on the retired chip interface. Existing Command Menu tests pass; its complete N08 rebuild remains pending.",
+    "A Playwright locator starting at the shadow toolbar root did not traverse its assigned light-DOM controls. The documentation fixture now scopes through the component host and verifies the named owner.",
+    "The 360px documentation page expanded to 580px because API tables lacked overflow containers. Removing only those tables restored 360px; named, focusable scroll regions fix the source generator without hiding page content."
+  ],
+  "sources": [
+    "https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/",
+    "https://www.radix-ui.com/primitives/docs/components/toolbar",
+    "https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/",
+    "https://chakra-ui.com/docs/components/breadcrumb",
+    "notes/alignment/evidence/material-full-review-2026-09-19.json",
+    "Private Pro webhooks-event-log-03/block.tsx"
+  ],
+  "fixtures": [
+    "src/components/toolbar/__tests__/toolbar.browser.ts",
+    "src/components/toolbar/__tests__/toolbar.test.ts",
+    "src/components/app-bar/__tests__/app-bar.test.ts",
+    "src/components/breadcrumbs/__tests__/breadcrumbs.test.ts",
+    "src/shared/__tests__/keyboard-delegation.test.ts",
+    "/tmp/acme-m15-navigation/run.ts",
+    "/tmp/acme-m15-navigation/run-compiled.ts",
+    "/tmp/acme-m15-navigation/docs-check.ts"
+  ],
+  "limits": [
+    "Actual Safari/OS keyboard preferences and assistive-technology interaction remain M22/M26.",
+    "Dialog-specific App Bar composition must be rechecked with the new public Dialog during its M17 slice.",
+    "Final React/scoped-registry acceptance remains M22.",
+    "Remaining M15 work is Command Menu; bring the public Dialog/Alert Dialog dependency forward first.",
+    "The final M26 orphan-token audit includes the unused topbar-h token; no old component alias remains."
+  ]
+}

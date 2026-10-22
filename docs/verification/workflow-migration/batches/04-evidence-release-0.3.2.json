@@ -1,0 +1,433 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-release-0.3.2",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.914Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/browser-publication.json",
+      "destination": "docs/verification/releases/0.3.2/browser-publication.json",
+      "bytes": 467,
+      "sha256": "cd47bf24b939473beb71c85297765a9807dd28b602f830d38786c9b5e95052f7"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/browser-review.json",
+      "destination": "docs/verification/releases/0.3.2/browser-review.json",
+      "bytes": 1006,
+      "sha256": "c08702ffa4e2bce81414799bbe6870cdee9c18358a7fbeaedc8177999e7c2f2d"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/browser-trusted-publisher.json",
+      "destination": "docs/verification/releases/0.3.2/browser-trusted-publisher.json",
+      "bytes": 654,
+      "sha256": "aec09e1a3c8cf8351dbc868ccbc2e71008c2be2545e62910fdef9901cd3691bb"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/cdn-initial-probe-failure.json",
+      "destination": "docs/verification/releases/0.3.2/cdn-initial-probe-failure.json",
+      "bytes": 56088,
+      "sha256": "ac924d3194b999122bbdd60e0b303173493a34e678e8ba43a638e1f08af1e9d9"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/cdn-public-verification.json",
+      "destination": "docs/verification/releases/0.3.2/cdn-public-verification.json",
+      "bytes": 55602,
+      "sha256": "0856271d767b769751c9a0dfdeb229439907a2f216d27f0693135d597645927d"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/ci-advisory-failure.txt",
+      "destination": "docs/verification/releases/0.3.2/ci-advisory-failure.txt",
+      "bytes": 4261,
+      "sha256": "656340635ade035f046bcf0bcb62e63f38e4c722875ad13b2e43f2b6f597abb7"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/ci-fingerprint-failure.txt",
+      "destination": "docs/verification/releases/0.3.2/ci-fingerprint-failure.txt",
+      "bytes": 4283,
+      "sha256": "f0479dace76ce57b959cd75afb6a08f9e8ce79baa4d8c5dec346c19eea7e1744"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/cleanup-artifacts.json",
+      "destination": "docs/verification/releases/0.3.2/cleanup-artifacts.json",
+      "bytes": 2282,
+      "sha256": "0d36990bea93233140b6e6a4770f1f75732135a0e0d47f0ac922145e5c88a585"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/cleanup-build-inputs.json",
+      "destination": "docs/verification/releases/0.3.2/cleanup-build-inputs.json",
+      "bytes": 1397,
+      "sha256": "2150934ba55a76f7fc29e016604b67c1d72a2844dbcfa0d47f77130e2cbb4fd4"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/cleanup-ci.json",
+      "destination": "docs/verification/releases/0.3.2/cleanup-ci.json",
+      "bytes": 3865,
+      "sha256": "d8f97aaa1d2839e8fe548d6efca1c4a393528db911cfc99158b9a9e2d0db16a4"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/cleanup-merge.json",
+      "destination": "docs/verification/releases/0.3.2/cleanup-merge.json",
+      "bytes": 380,
+      "sha256": "893f5192f7d6cb6d06d59fc32d235900e955f8cb7deb20d55373e9f2aa2fd7cf"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/cleanup-pages-comparison.json",
+      "destination": "docs/verification/releases/0.3.2/cleanup-pages-comparison.json",
+      "bytes": 1649,
+      "sha256": "2b1e8dfd575e9ce59b5da177db1d0b3d32d6ef4a28269e0f765ac3284bd79745"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/closure.json",
+      "destination": "docs/verification/releases/0.3.2/closure.json",
+      "bytes": 2059,
+      "sha256": "01518144b98e1e83ba7317fd62016d370ee3d2bd66c66cc552eaaee91b2461a0"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/compare-cleanup-pages.ts",
+      "destination": "docs/verification/releases/0.3.2/compare-cleanup-pages.ts",
+      "bytes": 2497,
+      "sha256": "e61943b4ddda9f53a4837e690b26d7822ac613541ac38a769033f7f1f452a519"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/core-publication.json",
+      "destination": "docs/verification/releases/0.3.2/core-publication.json",
+      "bytes": 459,
+      "sha256": "f8071502660819b3e2c62687100e5c568a31b43973b8ca78a1485f7519f6708e"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/core-review.json",
+      "destination": "docs/verification/releases/0.3.2/core-review.json",
+      "bytes": 1428,
+      "sha256": "563b8e1069ab046cfbc48a99ddf01f752a6953ce727b4a88263ebbc0186f56a9"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/dependency-audit.json",
+      "destination": "docs/verification/releases/0.3.2/dependency-audit.json",
+      "bytes": 1762,
+      "sha256": "e4361265dac1a90b3313e35e0abf4a4e7f8ea2a2bc32eff297b7f75f920631c3"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/devtools-publication.json",
+      "destination": "docs/verification/releases/0.3.2/devtools-publication.json",
+      "bytes": 468,
+      "sha256": "9c780c8d73bfc01c4dc5ad3fe15b9c62fab49028b75a68eb8fdfc50712086c47"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/final-record-link-check.json",
+      "destination": "docs/verification/releases/0.3.2/final-record-link-check.json",
+      "bytes": 93,
+      "sha256": "b23805a855ac640983f519d6bc42ff11ebf460d91622afbac8c0e865e8176127"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/final-record-review.json",
+      "destination": "docs/verification/releases/0.3.2/final-record-review.json",
+      "bytes": 642,
+      "sha256": "80b2bbbbf8ec9022e8d4f7bb3743c86e9f8e515b0146aa75cefd78c8b9d42674"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/first-publication-attempt.txt",
+      "destination": "docs/verification/releases/0.3.2/first-publication-attempt.txt",
+      "bytes": 3132,
+      "sha256": "9dd675d4bbeebe5bf3ef9ab7e7fcc626bf48d5c014dc341235a3744d10b00b2d"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/flow-navigation-diagnostic.json",
+      "destination": "docs/verification/releases/0.3.2/flow-navigation-diagnostic.json",
+      "bytes": 2152,
+      "sha256": "d88c3c9af563c4595ff72da555749e7be21b13f56d3211a7f8170cea003feed3"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/github-public-downloads.json",
+      "destination": "docs/verification/releases/0.3.2/github-public-downloads.json",
+      "bytes": 560,
+      "sha256": "86393a7374bb94aa2e5dfc34a577aa2529bb17728d6bffa63715c7decf9ba622"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/github-release-statuses.json",
+      "destination": "docs/verification/releases/0.3.2/github-release-statuses.json",
+      "bytes": 335,
+      "sha256": "5bcbcda96a6f61a2712198b4be8e14fe8322d0d391c642dabee7ba5a7541baa4"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/github-release.json",
+      "destination": "docs/verification/releases/0.3.2/github-release.json",
+      "bytes": 747,
+      "sha256": "cc5eb2c3b459ad664589f2d18cf17dcf07b6691db5632cef4853c6077cef9e18"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/linux-acceptance.json",
+      "destination": "docs/verification/releases/0.3.2/linux-acceptance.json",
+      "bytes": 1285,
+      "sha256": "c0975dafc2b0ed1c1952a2ad46911bf74b973542d9bbd5c32647143ea9efc434"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/linux-browser.json",
+      "destination": "docs/verification/releases/0.3.2/linux-browser.json",
+      "bytes": 3728,
+      "sha256": "442468756fc5acb678fc6a7da96b9b8471aefd9c035bc9532233e9a86d45ca87"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/linux-components.json",
+      "destination": "docs/verification/releases/0.3.2/linux-components.json",
+      "bytes": 180068,
+      "sha256": "e4ef7e5fc7eccad4ad738fb2dedc74b607f25d9a8736de6c768f945a6aa504ff"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/linux-dependency-audit.json",
+      "destination": "docs/verification/releases/0.3.2/linux-dependency-audit.json",
+      "bytes": 1762,
+      "sha256": "f81a9fa63c9f01b78969e43d17e1a011549f7d0dfcd8bc7d8a3e4527f5b094b8"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/linux-flow-distributions.json",
+      "destination": "docs/verification/releases/0.3.2/linux-flow-distributions.json",
+      "bytes": 8754,
+      "sha256": "ac7ba5f9fc57a07fc550339f21f5e17ea455401c5bb52070a6b4e6090e5c7f8a"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/linux-navigation.json",
+      "destination": "docs/verification/releases/0.3.2/linux-navigation.json",
+      "bytes": 668,
+      "sha256": "192fc3254646bded97dcbd2cd2b7010837758242d3d897925ff220b6d1481717"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/local-docs-build.txt",
+      "destination": "docs/verification/releases/0.3.2/local-docs-build.txt",
+      "bytes": 64,
+      "sha256": "9a747211b4ac893a02795ac412cb265f04b6176b6e7e2a2c5d8e195b0f3fc199"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/local-navigation.json",
+      "destination": "docs/verification/releases/0.3.2/local-navigation.json",
+      "bytes": 668,
+      "sha256": "192fc3254646bded97dcbd2cd2b7010837758242d3d897925ff220b6d1481717"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/local-static.txt",
+      "destination": "docs/verification/releases/0.3.2/local-static.txt",
+      "bytes": 295,
+      "sha256": "950ff96075646971f1c8fcfcde4757a2338380eeb16c5d648b39f80ea4fb733c"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/mcp-publication.json",
+      "destination": "docs/verification/releases/0.3.2/mcp-publication.json",
+      "bytes": 463,
+      "sha256": "ef74663524b13bc14f6f3a33333a884f07d5d7bb7998dbfb4fb7045ae000b58c"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/mcp-security-tests.txt",
+      "destination": "docs/verification/releases/0.3.2/mcp-security-tests.txt",
+      "bytes": 1035,
+      "sha256": "7c29b0ac4c6034b8dddae0255bb1a31de59748797530832a83eb48f81a0668d2"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/mcp-security-upgrade.json",
+      "destination": "docs/verification/releases/0.3.2/mcp-security-upgrade.json",
+      "bytes": 1566,
+      "sha256": "a852a103fc7563ef83bd8468b9416174f6c9e52b323263cb7a8c8e42da428cb3"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/pages-artifact.json",
+      "destination": "docs/verification/releases/0.3.2/pages-artifact.json",
+      "bytes": 1034,
+      "sha256": "8195df183e85ca87d1fbfb88395424cdce1fecc89d8071efbea903c2bc3187e2"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/pages-bundled-networkidle-timeout.json",
+      "destination": "docs/verification/releases/0.3.2/pages-bundled-networkidle-timeout.json",
+      "bytes": 6400,
+      "sha256": "61602b6b31b71ec97bb976c74e97e8c0f4aad424fd739845f07f8bcc4cdc6959"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/pages-bundled-networkidle-timeout.png",
+      "destination": "docs/verification/releases/0.3.2/pages-bundled-networkidle-timeout.png",
+      "bytes": 110743,
+      "sha256": "abb6444b8de5cd03a06fa5d59a4280df19b5f4d2379a1cfbf011acdd29920a35"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/pages-button.png",
+      "destination": "docs/verification/releases/0.3.2/pages-button.png",
+      "bytes": 81961,
+      "sha256": "c4d0f019d3a4501754c7b23e802966f20195826365457e718e52f98e1eeb9fe9"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/pages-development-failure.txt",
+      "destination": "docs/verification/releases/0.3.2/pages-development-failure.txt",
+      "bytes": 4877,
+      "sha256": "22ac465f0dd18e7776e021bc1ce336d097033e4bbbb4ae3a5f55e749f1042297"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/pages-final-browser.txt",
+      "destination": "docs/verification/releases/0.3.2/pages-final-browser.txt",
+      "bytes": 743,
+      "sha256": "d6359703e88250b48b0f906b856428e6a5085041d6d460d4ae50ae8778d7281a"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/pages-flow.png",
+      "destination": "docs/verification/releases/0.3.2/pages-flow.png",
+      "bytes": 80445,
+      "sha256": "45ce35f44848b1d08355e53202e69e21c701880787174addd5a884bd60cb8439"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/pages-initial-navigation-timeout.txt",
+      "destination": "docs/verification/releases/0.3.2/pages-initial-navigation-timeout.txt",
+      "bytes": 1837,
+      "sha256": "437c5a71a221c18c6bffa46b0c9827a4e08001d0f80a0aab425270d3a1a2f3fc"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/pages-initial-transient-failure.txt",
+      "destination": "docs/verification/releases/0.3.2/pages-initial-transient-failure.txt",
+      "bytes": 812,
+      "sha256": "e2f25b1ebc8118eb4113e9dd047e71bfb5990cb4650d7188864f4fb1e7993526"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/pages-installed-chrome-recheck.json",
+      "destination": "docs/verification/releases/0.3.2/pages-installed-chrome-recheck.json",
+      "bytes": 3399,
+      "sha256": "35f8fefa23ce92a645f62c7d4c9b27d25e1023eab1d1216d2de35e4e45459c91"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/pages-mobile.png",
+      "destination": "docs/verification/releases/0.3.2/pages-mobile.png",
+      "bytes": 31660,
+      "sha256": "1c0da66e2d17daefa1ec08d40ac7089d125daae923ffade5472eb90739fea85a"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/pages-public-verification.json",
+      "destination": "docs/verification/releases/0.3.2/pages-public-verification.json",
+      "bytes": 4266618,
+      "sha256": "a28633fd76b0557639be86a00a90e6a1f1f851898fa11368f5be348cea415fb0"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/pages-second-navigation-timeout.json",
+      "destination": "docs/verification/releases/0.3.2/pages-second-navigation-timeout.json",
+      "bytes": 416,
+      "sha256": "eb9ff906c71393dca1e61c3ad318e5b39af3cac6796189d054f9f9f02b92ebb6"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/pages-second-navigation-timeout.txt",
+      "destination": "docs/verification/releases/0.3.2/pages-second-navigation-timeout.txt",
+      "bytes": 916,
+      "sha256": "4f1b98b2946769e183c5459842438f2dc947446be5ad1ec636f60145e9082647"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/post-merge-workflow-observation.json",
+      "destination": "docs/verification/releases/0.3.2/post-merge-workflow-observation.json",
+      "bytes": 472,
+      "sha256": "9295a4a0df25d49d6a98f643c28598a9dfbd2afa4545bf1dc13585c04874514d"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/production-browser-green.txt",
+      "destination": "docs/verification/releases/0.3.2/production-browser-green.txt",
+      "bytes": 495,
+      "sha256": "e1c655b4fef10a6340a71fc7cbc5c69fafbe952fcb89500fde0ed3700e880eac"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/production-browser-red.txt",
+      "destination": "docs/verification/releases/0.3.2/production-browser-red.txt",
+      "bytes": 1381,
+      "sha256": "0e5a7736bb0c3be7237ca62ba9bf0fe3aabb48d99b91755d36eb51d7a98a62a9"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/public-verification.json",
+      "destination": "docs/verification/releases/0.3.2/public-verification.json",
+      "bytes": 1834,
+      "sha256": "43467b244c273c76667bd7567fc8042a8b04ec46c56d66cfd1381f6d735d7408"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/publication-release.json",
+      "destination": "docs/verification/releases/0.3.2/publication-release.json",
+      "bytes": 1717,
+      "sha256": "e196bb2fed0ba11429033373c07aab41edea53a2c56eb20a5a0d656b3f595f39"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/published-assets.json",
+      "destination": "docs/verification/releases/0.3.2/published-assets.json",
+      "bytes": 1099,
+      "sha256": "c7f5b54a97a0cb087aa3b93ec46d450547159357a9373442ff7dba492be39462"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/react-publication.json",
+      "destination": "docs/verification/releases/0.3.2/react-publication.json",
+      "bytes": 465,
+      "sha256": "a6cbf14ad61aa280a071044666a879df411d7948f6fe2ba44737f33e1b8b4594"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/react-review.json",
+      "destination": "docs/verification/releases/0.3.2/react-review.json",
+      "bytes": 662,
+      "sha256": "2fc0736008b5581be9db321bb76077adbf12b5a999e617a54d0cfbc4e00ea5fb"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/redundant-release-event.json",
+      "destination": "docs/verification/releases/0.3.2/redundant-release-event.json",
+      "bytes": 222,
+      "sha256": "65723fb284b4de2c689163d21f94e3d12954ed85551bba0e807394fb0b899ad5"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/reproducibility.json",
+      "destination": "docs/verification/releases/0.3.2/reproducibility.json",
+      "bytes": 2295,
+      "sha256": "a0dd36a9fa2ad352e0ae9e959e41569cef4be4000f693866ef814e43209f8bbc"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/second-publication-attempt.txt",
+      "destination": "docs/verification/releases/0.3.2/second-publication-attempt.txt",
+      "bytes": 3138,
+      "sha256": "5d2774ac2313aa3f5b4c963b440c321a4d31a15420d3190674e4d80e7c682bdf"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/snapshot-retirement-review.json",
+      "destination": "docs/verification/releases/0.3.2/snapshot-retirement-review.json",
+      "bytes": 1315,
+      "sha256": "2328f2e85dbc044330eae36be9f1bd7603f0218620ab910607bb75cf84a37f57"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/temporary-login-cleanup.json",
+      "destination": "docs/verification/releases/0.3.2/temporary-login-cleanup.json",
+      "bytes": 197,
+      "sha256": "e40e5f35a0561691d3c59eceabe71cd7e0e0aafe36da90d74757782411b552ed"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/third-publication-attempt.txt",
+      "destination": "docs/verification/releases/0.3.2/third-publication-attempt.txt",
+      "bytes": 3479,
+      "sha256": "291b7ce9a18d28e067e72fd2533f8e3df688b89eb57c5ecc6be6d109603dc22c"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/verify-cdn.ts",
+      "destination": "docs/verification/releases/0.3.2/verify-cdn.ts",
+      "bytes": 5663,
+      "sha256": "d0ad95b5c67c2ddedb221010e2060428b92276144d69d6fdd02739982e75366c"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/verify-pages-browser.ts",
+      "destination": "docs/verification/releases/0.3.2/verify-pages-browser.ts",
+      "bytes": 9840,
+      "sha256": "645ce8961794bcb912dce631e19be5fc390c997d609606b3d012a1d44b90658e"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/verify-pages-initial.ts",
+      "destination": "docs/verification/releases/0.3.2/verify-pages-initial.ts",
+      "bytes": 7195,
+      "sha256": "dab2da6c36f992673a48129335815f5885e472beddc72d1f413b6c4435a2c706"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.2/verify-pages-networkidle.ts",
+      "destination": "docs/verification/releases/0.3.2/verify-pages-networkidle.ts",
+      "bytes": 7470,
+      "sha256": "d5893227e900f61fcfa1bf3cf61439a0aa3009efde9216392d0352db50bd207c"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

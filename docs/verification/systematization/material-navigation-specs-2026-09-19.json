@@ -1,0 +1,147 @@
+{
+  "date": "2026-09-19",
+  "sources": [
+    "https://m3.material.io/components/navigation-drawer/specs",
+    "https://m3.material.io/components/navigation-rail/specs"
+  ],
+  "coverage": "Drawer 1 token set/7 static figures; Rail 6 expressive token sets plus baseline/16 static figures. Full Specs text read; all eight article tabs covered in joint review.",
+  "limits": [
+    "Displayed default modes only; no exhaustive theme/animation permutations.",
+    "Graphical-only shape/elevation values not invented.",
+    "Reference values are not adopted house defaults.",
+    "Source inspection is not browser acceptance of house components."
+  ],
+  "drawer": {
+    "tokens": "Navigation drawers (baseline)\narrow_drop_down\nsearch\nvisibility\ngrid_view\ncollapse_all\nToken\nDefault, Light\narrow_drop_down\nfolder_open\nEnabled\nkeyboard_arrow_down\nfolder_open\nEnabled / Container\nkeyboard_arrow_down\nNavigation drawers container color\nwarning\n#FEF7FF\nNavigation drawers modal container color\n#F7F2FA\nNavigation drawers standard container color\n#FEF7FF\nNavigation drawers container surface tint layer color\nwarning\n#6750A4\nNavigation drawers modal container elevation\nNavigation drawers standard container elevation\nNavigation drawers container height\n100%\nNavigation drawers container shape\nNavigation drawers bottom container shape\nNavigation drawers container width\n360dp\nfolder_open\nEnabled / Label text\nkeyboard_arrow_down\nNavigation drawers active label text color\n#4A4458\nNavigation drawers inactive label text color\n#49454F\nNavigation drawers label text font\nRoboto\nNavigation drawers label text line height\n20pt\nNavigation drawers label text size\n14pt\nNavigation drawers label text tracking\n0.1pt\nNavigation drawers label text weight\n500\nNavigation drawers active label text weight\n700\nNavigation drawers label text type\n\nAa\n\nfolder_open\nEnabled / Icon\nkeyboard_arrow_down\nNavigation drawers active icon color\n#4A4458\nNavigation drawers inactive icon color\n#49454F\nNavigation drawers icon size\n24dp\nfolder_open\nEnabled / Headline\nkeyboard_arrow_down\nNavigation drawers headline color\n#49454F\nNavigation drawers headline font\nRoboto\nNavigation drawers headline line height\n20pt\nNavigation drawers headline size\n14pt\nNavigation drawers headline tracking\n0.1pt\nNavigation drawers headline weight\n500\nType style\n\nAa\n\nfolder_open\nEnabled / Divider\nkeyboard_arrow_down\nNavigation drawers divider color\nwarning\n#79747E\nfolder_open\nEnabled / Active indicator\nkeyboard_arrow_down\nNavigation drawers active indicator color\n#E8DEF8\nNavigation drawers active indicator height\n56dp\nNavigation drawers active indicator shape\nNavigation drawers active indicator width\n336dp\nfolder_open\nEnabled / Large badge label\nkeyboard_arrow_down\nNavigation drawers large badge label color\n#49454F\nNavigation drawers large badge label font\nRoboto\nNavigation drawers large badge label line height\n20pt\nNavigation drawers large badge label size\n14pt\nNavigation drawers large badge label tracking\n0.1pt\nNavigation drawers large badge label weight\n500\nNavigation drawers large badge label type\n\nAa\n\nfolder_open\nEnabled / [Deprecated] Scrim\nkeyboard_arrow_down\nNavigation drawers scrim color\nwarning\n#322F37\nNavigation drawers scrim opacity\nwarning\n0.4\nfolder_open\nHovered\nkeyboard_arrow_down\nfolder_open\nHovered / Label text\nkeyboard_arrow_down\nNavigation drawers active hover label text color\n#4A4458\nNavigation drawers inactive hover label text color\n#1D1B20\nfolder_open\nHovered / State layer\nkeyboard_arrow_down\nNavigation drawers active hover state layer color\n#4A4458\nNavigation drawers inactive hover state layer color\n#1D1B20\nNavigation drawers hover state layer opacity\n0.08\nfolder_open\nHovered / Icon\nkeyboard_arrow_down\nNavigation drawers active hover icon color\n#4A4458\nNavigation drawers inactive hover icon color\n#1D1B20\nfolder_open\nFocused\nkeyboard_arrow_down\nfolder_open\nFocused / Focus indicator\nkeyboard_arrow_down\nNavigation drawers focus indicator color\n#625B71\nNavigation drawers focus indicator thickness\n3dp\nNavigation drawers focus indicator offset\n-3dp\nfolder_open\nFocused / Label text\nkeyboard_arrow_down\nNavigation drawers active focus label text color\n#4A4458\nNavigation drawers inactive focus label text color\n#1D1B20\nfolder_open\nFocused / State layer\nkeyboard_arrow_down\nNavigation drawers active focus state layer color\n#4A4458\nNavigation drawers inactive focus state layer color\n#1D1B20\nNavigation drawers focus state layer opacity\n0.1\nfolder_open\nFocused / Icon\nkeyboard_arrow_down\nNavigation drawers active focus icon color\n#4A4458\nNavigation drawers inactive focus icon color\n#1D1B20\nfolder_open\nPressed (ripple)\nkeyboard_arrow_down\nfolder_open\nPressed (ripple) / Label text\nkeyboard_arrow_down\nNavigation drawers active pressed label text color\n#4A4458\nNavigation drawers inactive pressed label text color\n#1D1B20\nfolder_open\nPressed (ripple) / State layer\nkeyboard_arrow_down\nNavigation drawers active pressed state layer color\n#4A4458\nNavigation drawers inactive pressed state layer color\n#4A4458\nNavigation drawers pressed state layer opacity\n0.1\nfolder_open\nPressed (ripple) / Icon\nkeyboard_arrow_down\nNavigation drawers active pressed icon color\n#4A4458\nNavigation drawers inactive pressed icon color\n#1D1B20",
+    "images": [
+      {
+        "index": 0,
+        "alt": "Navigation drawer diagram numbering 7 elements",
+        "url": "https://lh3.googleusercontent.com/wzWoGqZcYHmlxmZaJ6h1mIIrnKAN6-ORvn-bAgZGnzVfSFw35XvFKnVMZ6aKAqVtw5sMblQfd0dN7cb5sOnknAbXZ47WMZnh8unDUHPqQQ6DfQ=s0"
+      },
+      {
+        "index": 1,
+        "alt": "Navigation drawer diagram numbering 9 color roles.",
+        "url": "https://lh3.googleusercontent.com/EFOoVjwBffIgl-Gs07m2W5WiNu8brQ2paefKx_U_eQexLGySjgLV_C9FYD7wkTs0o7j3_RvrcTcqh6oUAKyyrkRsYKsU3A6n-KFtlCBp1sKv=s0"
+      },
+      {
+        "index": 2,
+        "alt": "4 navigation drawers illustrating enabled, hovered, focused, and pressed states.",
+        "url": "https://lh3.googleusercontent.com/xCUslUMH4a9wLA0cXIbv622e8KMYHe0R5TPMmzjG0lFKP2hX6vjQcnKVFwxI9HIdk1z3y6BR65wFxvpsx4LcCDTCkHk0J52aaChbC8h3YEZy=s0"
+      },
+      {
+        "index": 3,
+        "alt": "Standard navigation drawer with measurements shown for various elements.",
+        "url": "https://lh3.googleusercontent.com/bHQAcDd4Vluh3tirhRwnej1hWyUij6O-bjAclp-H5fmSqLHDanyQZsk-RQCLJtCnVYQhYeN1DM4GQG4I2F_Lbk401GH877nVSeKUr3wvgiAv_w=s0"
+      },
+      {
+        "index": 4,
+        "alt": "Standard navigation drawer with measurements shown for padding and margins.",
+        "url": "https://lh3.googleusercontent.com/0b273CFdNyDt3yEDRLSSICnKHb8rktNAiXmruD2EO82_S9iBxGsq08CPpYTupKoj0SRnuaNR0fo8dICOcrrev88RLidMbVhYvVgiudX80RJ4=s0"
+      },
+      {
+        "index": 5,
+        "alt": "Modal navigation drawer with measurements shown for various elements.",
+        "url": "https://lh3.googleusercontent.com/invVA4iDTyiHnbFHAMhycwQRAZds3tEMmOOPGaiv1HnriGnDeAV4MSXpQ9gOcnALm0eQcxgml_hzP-tTo1gWH4DQMu-ZM0iPuy1OgHvjULc_=s0"
+      },
+      {
+        "index": 6,
+        "alt": "Modal navigation drawer with measurements shown for padding and margins.",
+        "url": "https://lh3.googleusercontent.com/2T9NqmBF4mES5SgaRMeuXBm0CXnjDhysHSNKT1lr_iIEUZKCbKtRtIXvzyFbVR8RnSZ17O4sK483ySXplBOwNiw0N_DoqjM0npsQ6uA6c9nnYA=s0"
+      }
+    ]
+  },
+  "rail": {
+    "tokens": {
+      "common": "Nav rail - Common\narrow_drop_down\nsearch\nvisibility\ngrid_view\ncollapse_all\nToken\nDefault, Light\narrow_drop_down\nfolder_open\nEnabled\nkeyboard_arrow_down\nNav rail item active indicator color\n#E8DEF8\nNav rail item active label text color\n#625B71\nNav rail item inactive label text color\n#49454F\nNav rail item active icon color\n#4A4458\nNav rail item inactive icon color\n#49454F\nfolder_open\nHovered\nkeyboard_arrow_down\nNav rail item active hovered state layer color\n#4A4458\nNav rail item active hovered state layer opacity\n0.08\nNav rail item inactive hovered state layer color\n#4A4458\nfolder_open\nFocused\nkeyboard_arrow_down\nNav rail item active focused state layer color\n#4A4458\nNav rail item active focused state layer opacity\n0.1\nNav rail item inactive focused state layer color\n#4A4458\nfolder_open\nPressed\nkeyboard_arrow_down\nNav rail item active pressed state layer color\n#4A4458\nNav rail item active pressed state layer opacity\n0.1\nNav rail item inactive pressed state layer color\n#4A4458",
+      "Nav rail - Collapsed": "Nav rail - Collapsed\narrow_drop_down\nsearch\nvisibility\ngrid_view\nToken\nDefault, Light\narrow_drop_down\nNav rail collapsed container width\n96dp\nNav rail collapsed narrow container width\n80dp\nNav rail collapsed container elevation\nNav rail collapsed container shape\nNav rail collapsed container color\n#FEF7FF\nNav rail collapsed item vertical space\n4dp\nNav rail collapsed item top space\n44dp",
+      "Nav rail - Expanded": "Nav rail - Expanded\narrow_drop_down\nsearch\nvisibility\ngrid_view\nToken\nDefault, Light\narrow_drop_down\nNav rail expanded container width minimum\n220dp\nNav rail expanded container width maximum\n360dp\nNav rail expanded top space\n44dp\nNav rail expanded container elevation\nNav rail expanded modal container elevation\nNav rail expanded container color\n#FEF7FF\nNav rail expanded modal container color\n#F3EDF7\nNav rail expanded container shape\nNav rail expanded modal container shape\nNav rail expanded between item space\nwarning\n0\nNav rail expanded vertical trailing space\nwarning\n20dp",
+      "Nav rail item - Common": "Nav rail item - Common\narrow_drop_down\nsearch\nvisibility\ngrid_view\nToken\nValue\nNav rail item icon size\n24dp\nNav rail item active indicator shape\nNav rail item active indicator leading space\n16dp\nNav rail item active indicator icon label space\n8dp\nNav rail item active indicator trailing space\n16dp\nNav rail item container height\n64dp\nNav rail item short container height\n56dp\nNav rail item container shape\nNav rail item container vertical space\n6dp\nNav rail item header space minimum\n40dp",
+      "Nav rail item - Vertical": "Nav rail item - Vertical\narrow_drop_down\nsearch\nvisibility\ngrid_view\nToken\nValue\nNav rail item vertical active indicator height\n32dp\nNav rail item vertical active indicator width\n56dp\nNav rail item vertical label text\n\nAa\n\nNav rail item vertical icon label space\n4dp\nNav rail item vertical icon leading-space\n16dp\nNav rail item vertical icon trailing space\n16dp",
+      "Nav rail item - Horizontal": "Nav rail item - Horizontal\narrow_drop_down\nsearch\nvisibility\ngrid_view\nToken\nValue\nNav rail item horizontal label text\n\nAa\n\nNav rail item horizontal active indicator height\n56dp\nNav rail item horizontal full width leading space\n16dp\nNav rail item horizontal full width trailing space\n16dp\nNav rail item horizontal icon-label-space\n8dp",
+      "baseline": "Navigation rail (baseline)\narrow_drop_down\nsearch\nvisibility\ngrid_view\ncollapse_all\nToken\nValue\nfolder_open\nEnabled\nkeyboard_arrow_down\nfolder_open\nEnabled / Container\nkeyboard_arrow_down\nNavigation rail container color\n#FFFFFF\nNavigation rail container shape\nNavigation rail container width\n80dp\nNavigation rail container elevation\nfolder_open\nEnabled / Label text\nkeyboard_arrow_down\nNavigation rail label font\nGoogle Sans Text\nNavigation rail label line height\n16pt\nNavigation rail label size\n12pt\nNavigation rail label weight\n500\nNavigation rail active label weight\n700\nNavigation rail label tracking\n0.1pt\nLabel text type style\n\nAa\n\nNavigation rail label active text color\n#1F1F1F\nNavigation rail label inactive text color\n#444746\nNavigation rail label font family\nwarning\nGoogle Sans Text\nNavigation rail label font size\nwarning\n12pt\nNavigation rail label letter spacing\nwarning\n0.1pt\nfolder_open\nEnabled / Icon\nkeyboard_arrow_down\nNavigation rail icon size\n24dp\nNavigation rail active icon color\n#004A77\nNavigation rail inactive icon color\n#444746\nNavigation rail menu icon color\nwarning\n#444746\nNavigation rail menu icon size\nwarning\n24dp\nfolder_open\nEnabled / [Deprecated] Badge\nkeyboard_arrow_down\nNavigation rail badge color\nwarning\n#B3261E\nNavigation rail badge size\nwarning\n6dp\nNavigation rail badge shape\nwarning\nfolder_open\nEnabled / Active indicator\nkeyboard_arrow_down\nNavigation rail active indicator color\n#C2E7FF\nNavigation rail active indicator height\n32dp\nNavigation rail no label active indicator height\n56dp\nNavigation rail active indicator shape\nNavigation rail no label active indicator shape\nNavigation rail active indicator width\n56dp\nfolder_open\nEnabled / [Deprecated] Large badge\nkeyboard_arrow_down\nNavigation rail large badge size\nwarning\n16dp\nNavigation rail large badge shape\nwarning\nNavigation rail large badge color\nwarning\n#B3261E\nfolder_open\nEnabled / [Deprecated] Large badge label\nkeyboard_arrow_down\nNavigation rail large badge label font family\nwarning\nGoogle Sans Text\nNavigation rail large badge label font\nwarning\nGoogle Sans Text\nNavigation rail large badge label line height\nwarning\n16pt\nNavigation rail large badge label size\nwarning\n11pt\nNavigation rail large badge label weight\nwarning\n500\nNavigation rail large badge label tracking\nwarning\n0.1pt\nNavigation rail large badge label type style\nwarning\n\nAa\n\nNavigation rail large badge label color\nwarning\n#FFFFFF\nfolder_open\nHovered\nkeyboard_arrow_down\nfolder_open\nHovered / Label text\nkeyboard_arrow_down\nNavigation rail active hover label text color\n#1F1F1F\nNavigation rail inactive hover label text color\n#1F1F1F\nfolder_open\nHovered / State layer\nkeyboard_arrow_down\nNavigation rail active hover state layer color\n#1F1F1F\nNavigation rail inactive hover state layer color\n#1F1F1F\nNavigation rail hover state layer opacity\n0.08\nNavigation rail menu hover state layer color\nwarning\n#1F1F1F\nNavigation rail menu hover state layer opacity\nwarning\n0.08\nfolder_open\nHovered / Icon\nkeyboard_arrow_down\nNavigation rail active hover icon color\n#004A77\nNavigation rail inactive hover icon color\n#1F1F1F\nNavigation rail menu hover icon color\nwarning\n#1F1F1F\nfolder_open\nFocused\nkeyboard_arrow_down\nfolder_open\nFocused / Label text\nkeyboard_arrow_down\nNavigation rail focus label text color\n#1F1F1F\nNavigation rail inactive focus label text color\n#1F1F1F\nfolder_open\nFocused / State layer\nkeyboard_arrow_down\nNavigation rail active focus state layer color\n#1F1F1F\nNavigation rail inactive focus state layer color\n#1F1F1F\nNavigation rail active focus state layer color\n0.1\nNavigation rail menu focus state layer color\nwarning\n#1F1F1F\nNavigation rail menu focus state layer opacity\nwarning\n0.1\nfolder_open\nFocused / Icon\nkeyboard_arrow_down\nNavigation rail active focus icon color\n#004A77\nNavigation rail inactive focus icon color\n#1F1F1F\nNavigation rail menu focus icon color\nwarning\n#1F1F1F\nfolder_open\nPressed (ripple)\nkeyboard_arrow_down\nfolder_open\nPressed (ripple) / Label text\nkeyboard_arrow_down\nNavigation rail active pressed label text color\n#1F1F1F\nNavigation rail inactive pressed label text color\n#1F1F1F\nfolder_open\nPressed (ripple) / State layer\nkeyboard_arrow_down\nNavigation rail active pressed state layer color\n#1F1F1F\nNavigation rail inactive pressed state layer color\n#1F1F1F\nNavigation rail pressed state layer opacity\n0.1\nNavigation rail menu pressed state layer color\nwarning\n#1F1F1F\nNavigation rail menu pressed state layer opacity\nwarning\n0.1\nfolder_open\nPressed (ripple) / Icon\nkeyboard_arrow_down\nNavigation rail active pressed icon color\n#004A77\nNavigation rail inactive pressed icon color\n#1F1F1F\nNavigation rail menu pressed icon color\nwarning\n#1F1F1F"
+    },
+    "images": [
+      {
+        "index": 0,
+        "alt": "2 variants of navigation rails.",
+        "url": "https://lh3.googleusercontent.com/iQ9mPuq7sZfsnSF_EfYMxQdypYp9K_fDEGHm0-4zuKdHXU48Kf7zItSC0hxmu3QW_ugdX67kQeQlrkgs7GzF6Kpo1FFERw1SFlVd6DCQC5gm=s0"
+      },
+      {
+        "index": 1,
+        "alt": "Baseline navigation rail.",
+        "url": "https://lh3.googleusercontent.com/_GDghBF084KxFoboNpBiBukL7eC9btnn0Mb6Jk_768f3C75CzUZ_lS1sJyKteHLGeR2sa__sSE-baRgcdfAxgBR3jxoUV13DucOJj2FXrDM=s0"
+      },
+      {
+        "index": 2,
+        "alt": "Standard and modal layouts of navigation rail.",
+        "url": "https://lh3.googleusercontent.com/Q6opw4o2Z-4QOi0ydyk2R1MLywKayfVfAMWjKN6nvzz6OZzoJOGsl_BvoY_XaQp0dSV2iH4gwgEJ0tYqAXEKQKJy1Gko4-M5s1umRBx2MaHD=s0"
+      },
+      {
+        "index": 3,
+        "alt": "9 elements of collapsed and expanded navigation rails.",
+        "url": "https://lh3.googleusercontent.com/zju3SaKNZtIg8oswdNqjqbU2pgzAazbfcyzRL_wo1UneMQSp9D6yIVFbPDeEtmh09MwYuYYHofz5j6DGbwBVO9cBdpqUxwJehXqI242Tz80bUg=s0"
+      },
+      {
+        "index": 4,
+        "alt": "Color roles of 9 elements of collapsed and expanded navigation rails in light and dark color schemes.",
+        "url": "https://lh3.googleusercontent.com/d3PlE8MkpZrvAvwFNjnOiUQXi8R7ep0qmhurwSRvAq_yf3Eb44NIbzr78sGxD1gNgCLxhWdlVv_Mti8eRMPEi3Nn0WQRUnjZNO_XRFQt6Yan=s0"
+      },
+      {
+        "index": 5,
+        "alt": "4 states of collapsed navigation rails.",
+        "url": "https://lh3.googleusercontent.com/1IxCo2XIMga54ROSNhrWET0gIRcndin6fwUN_DdJMu2VZ4PFpdW1-c-vio2nIOXxmj3p_tGkbBc1N0KGdzg6iuqMCS1_ZsgFG1FfzS6Fppk=s0"
+      },
+      {
+        "index": 6,
+        "alt": "4 states of expanded navigation rails.",
+        "url": "https://lh3.googleusercontent.com/uvOYTNSaWtfWdqdoR0tVR9eCjmd4f-AEfdMVEacZJc0VwURGK8_8FeAvzOY4Kr3sV9YzZfIF-gguMC8haBwaeJB7tgykjwBvSFhlQtuC4AzahA=s0"
+      },
+      {
+        "index": 7,
+        "alt": "Padding and measurements for expanded and collapsed navigation rails.",
+        "url": "https://lh3.googleusercontent.com/RTqY8bTqiMpwcsU_pJkWy9rMeFIjRoSs3m15t8w64kdPnvtTTTE6_Dklo68o5dm4vNj_CA14xM6FrVZkyBtYlf4hcPjBAMOTQ3rvBDY60BrmGw=s0"
+      },
+      {
+        "index": 8,
+        "alt": "4 common layouts of collapsed navigation rail.",
+        "url": "https://lh3.googleusercontent.com/Q7TK1on1e6Srj9rXvfTaKHDKgYKSh07xaPRGq0zatThZiQkiwf-UMR1-H60g1esYikZSHRedr3h-lkPoU4ICPljobiH8pOBRjSINWIs7ANcD=s0"
+      },
+      {
+        "index": 9,
+        "alt": "4 common layouts of expanded navigation rail.",
+        "url": "https://lh3.googleusercontent.com/z_uzDW3EjZiO_WRnWUJem6qKFygJFreR0EX_C_F4b4gyUdaq1KV9KFpJqgJpBWstqQ1O-CdNp0N6b7mAK8Xp6CkIKHupoRyeHFQkqfLEpnI=s0"
+      },
+      {
+        "index": 10,
+        "alt": "8 elements of baseline navigation rail.",
+        "url": "https://lh3.googleusercontent.com/ADBFvMHXuRRv0_6Z-N3tRHlMrh88FQQszAdMrNhAM-p2IdU_v8QQRA0cezT6n2vPpVmhQ7R8saOYcTsI1okUonFMqT8GzmCfjymxB9hHPv8=s0"
+      },
+      {
+        "index": 11,
+        "alt": "8 color roles of baseline navigation rail.",
+        "url": "https://lh3.googleusercontent.com/bYdm_ngSm_bDBlh7cCiignDkbte5hHytBrpjYGp_9BfBLH1hF2zPxV-Oqdm6nn8fSHRROojsHBUwN5etdowcM8IHoq2XH1Qy7rRFtshsl5ca=s0"
+      },
+      {
+        "index": 12,
+        "alt": "8 states of baseline navigation rail.",
+        "url": "https://lh3.googleusercontent.com/q4Ce0kmHkUU63AUNns9xbrnQx2UlJBT9dfmW-RzlP1iM5biz8sOwR4G7BU8pEmGTbMSy2nnmyYzPFBNwQdyM6b8tJ20dhgkmDEF86WcUpVE=s0"
+      },
+      {
+        "index": 13,
+        "alt": "Baseline nav rail size measurements.",
+        "url": "https://lh3.googleusercontent.com/PsBusqTr-OE5bCxYRV_i7_t-UpABd6wh-bbKu-mzMDv5-O3eoKvh-B144jLbqI5sf4B63G0hAv5k0m_hf7qTNA6ktxvfRVdk0cILpP3kghqk=s0"
+      },
+      {
+        "index": 14,
+        "alt": "Baseline nav rail padding and margin measurements.",
+        "url": "https://lh3.googleusercontent.com/HCDSa0-MhFtUTT-jj2x4OG8rghWPku3boxc3_KKZzParDgXb2n-nNyXxh-eq8DyOgLXlqmxFHoc2sShKRMWf8m2DKVLHdtpCfsY9_7GGTFA=s0"
+      },
+      {
+        "index": 15,
+        "alt": "5 configurations of the baseline navigation rail.",
+        "url": "https://lh3.googleusercontent.com/0ArxFOIUj1oF4bmcdt98kcylfvstmfHlWXRI2sVpFC5UG246qn6yr4185ERKim5I5IYDjTqDnWX_fMqGE_nrXr_7dJj5H7sCznQWP5SfkX4h=s0"
+      }
+    ]
+  }
+}

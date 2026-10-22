@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m07",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.464Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m07-box-2026-09-21.json",
+      "destination": "docs/verification/systematization/m07-box-2026-09-21.json",
+      "bytes": 43088,
+      "sha256": "25f98e60927b44ee079f21fcecd3acf6cc673df3db119c143e572075fc205074"
+    },
+    {
+      "source": "notes/alignment/evidence/m07-flex-2026-09-21.json",
+      "destination": "docs/verification/systematization/m07-flex-2026-09-21.json",
+      "bytes": 133344,
+      "sha256": "8644b43467660cab7ff44ff4e962464acd2be92c8eb78a088b371733b0d9885e"
+    },
+    {
+      "source": "notes/alignment/evidence/m07-grid-2026-09-21.json",
+      "destination": "docs/verification/systematization/m07-grid-2026-09-21.json",
+      "bytes": 141059,
+      "sha256": "05b6082fd89ea43ecc7d08bebb1c1d1bf33a27019770006d0671be7c802e0723"
+    },
+    {
+      "source": "notes/alignment/evidence/m07-group-2026-09-21.json",
+      "destination": "docs/verification/systematization/m07-group-2026-09-21.json",
+      "bytes": 127712,
+      "sha256": "df8b0d183fd09c59c6a2dceab577be8a91add14d1b7595102aa900669ddfa7c4"
+    },
+    {
+      "source": "notes/alignment/evidence/m07-separator-2026-09-21.json",
+      "destination": "docs/verification/systematization/m07-separator-2026-09-21.json",
+      "bytes": 13720,
+      "sha256": "8da89f45f145f0b57775560adc0b4e61665f545b2a039c26bf133f0049238fd2"
+    },
+    {
+      "source": "notes/alignment/evidence/m07-stack-2026-09-21.json",
+      "destination": "docs/verification/systematization/m07-stack-2026-09-21.json",
+      "bytes": 140195,
+      "sha256": "b0ccd89e0572592d5964a4b890614e6ef9d8134d6aea4cd7faa0ba94b974f2a8"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

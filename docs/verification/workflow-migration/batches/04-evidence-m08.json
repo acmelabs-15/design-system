@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m08",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.468Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m08-formatters-2026-09-21.json",
+      "destination": "docs/verification/systematization/m08-formatters-2026-09-21.json",
+      "bytes": 16800,
+      "sha256": "fbe29c4cd8604ff24b08cbc502c9804591da7b60595f030948182b700c04537a"
+    },
+    {
+      "source": "notes/alignment/evidence/m08-typography-2026-09-21.json",
+      "destination": "docs/verification/systematization/m08-typography-2026-09-21.json",
+      "bytes": 47855,
+      "sha256": "76590f91fd971beab81e62359521f5ed232d706afc064a5435776d088f4d8579"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

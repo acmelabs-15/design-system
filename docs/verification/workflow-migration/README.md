@@ -1,6 +1,6 @@
 # Maintainer workflow migration evidence
 
-The specification and plan are approved. The runner change, complete source audit and migration guard are verified. Evidence copies are in progress.
+The specification and plan are approved. The runner change, complete source audit and migration guard are verified. All 690 evidence copies are byte-verified. Decision and research conversion is next.
 
 Follow the root agent instructions and [task list](../../../tasks/todo.md) for current work. These audit records describe source history, allocations and verification. Quoted old instructions and source paths are evidence, not a second workflow.
 
@@ -9,6 +9,7 @@ Follow the root agent instructions and [task list](../../../tasks/todo.md) for c
 - [Task 1: path-independent browser checks](task-01.json).
 - [Task 2: complete file, reference and rule audit](task-02.json).
 - [Task 3: migration guard, tests and independent review](task-03.json).
+- [Task 4: byte-identical evidence copies](task-04.json).
 - [Complete source-to-destination ledger](ledger.json).
 - [Bounded child tasks and exact file scopes](batches.json).
 - [Reference graph and historical-link resolution](references.json).

@@ -1,0 +1,107 @@
+{
+  "source": "Peter requests faster progress and final additions",
+  "requests": [
+    "Accordion like Chakra",
+    "Show like Chakra",
+    "FormatByte",
+    "FormatNumber",
+    "as support on appropriate Box/Text/Heading/etc",
+    "Chakra-like Hover Card"
+  ],
+  "scope": "Add requested capabilities to the planned inventory; exact API and migrations remain Phase 4/5. Don't re-ask whether to add explicitly requested components.",
+  "open": [
+    "as semantic rendering contract in Lit and React",
+    "Show conditional-mounting vs hidden-content lifecycle",
+    "Accordion mapping from Collapse/CollapseGroup and disclosure behavior",
+    "HoverCard preview role vs explicitly activated interactive help"
+  ],
+  "research": {
+    "chakraDocsRead": [
+      "Accordion",
+      "Show",
+      "FormatNumber",
+      "FormatByte",
+      "HoverCard"
+    ],
+    "sourceRead": [
+      "Show full",
+      "format exports",
+      "Ark5.39.2 format-number/format-byte",
+      "Accordion core full"
+    ],
+    "proIndex": {
+      "Accordion": 8,
+      "Show": 10,
+      "FormatByte": 0,
+      "FormatNumber": 20,
+      "DataList": 5
+    },
+    "cautions": [
+      "Show source uses truthiness; empty array itself is truthy. Docs table as/asChild not present in ShowProps implementation.",
+      "FormatNumber actual Intl percent option is percent, despite documentation prose saying percentage.",
+      "Ark formats use numeric value and return text; they are reference wrappers, not adopted Zag dependencies.",
+      "Lit custom element host cannot be renamed by changing as; define actual semantic rendering and real-box behavior before API approval."
+    ]
+  },
+  "pacing": "Use completed reference work, batch related research and keep only material author-facing choices in the decision walk.",
+  "formatterDecision": {
+    "source": "formatter_numeric_input: Value property (Recommended)",
+    "selected": "Numeric value property for both FormatNumber and FormatByte",
+    "scope": "Static HTML attributes convert to numeric property; dynamic Lit/React binding supplies raw number; child content is not an alternate data source.",
+    "open": "Exact formatting options/default locale, invalid/absent values, byte unit system and boundary behavior in inventory."
+  },
+  "sidebarDecision": {
+    "question": "sidebar_responsive_scope",
+    "answer": "Responsive Sidebar (Recommended)",
+    "scope": "Expanded, compact collapsed and small-screen Drawer presentations; preserve child state/focus; application owns routing/current page; exact breakpoints/widths later."
+  },
+  "tocDecision": {
+    "question": "toc_heading_source",
+    "answer": "I think it should support both.",
+    "scope": "Support discovery from a specified content section and explicit curated entries. Real heading links and current-section tracking. Exact default/precedence/ID/heading-level/observer/history policies remain inventory work."
+  },
+  "settingRowDecision": {
+    "question": "setting_row_disposition",
+    "answer": "Use Field and Item (Recommended)",
+    "scope": "Remove Setting Row and Setting Rows; horizontal Field for input settings, Item+Button for actions, shared layout with semantic List/Fieldset where appropriate. Complete recipes preserve capabilities."
+  },
+  "dataListDecision": {
+    "question": "data_list_replaces_description",
+    "answer": "Use Data List (Recommended)",
+    "scope": "Data List replaces Description for metadata label/value pairs, horizontal/vertical and rich values. Distinct from semantic List, Field and Stat.",
+    "open": "Exact parts/options; separate KV mapping still needs evaluation."
+  },
+  "hoverCardBoundary": "Requested Hover Card is included for supplementary previews; preserve existing explicit-activation decision for interactive rich help. Full surviving overlay interface mapping remains to resolve.",
+  "status": "Captured in repository records; implementation remains unapproved",
+  "sources": {
+    "chakra": [
+      "https://chakra-ui.com/docs/components/accordion",
+      "https://chakra-ui.com/docs/components/show",
+      "https://chakra-ui.com/docs/components/format-number",
+      "https://chakra-ui.com/docs/components/format-byte",
+      "https://chakra-ui.com/docs/components/hover-card",
+      "https://chakra-ui.com/docs/components/data-list"
+    ],
+    "chakraCommit": "1ff9873754e9913fc3d849d23c0844a628f5f20d",
+    "arkVersion": "5.39.2",
+    "sourceFiles": [
+      "packages/react/src/components/show/show.tsx",
+      "packages/react/src/components/format/index.ts",
+      "packages/react/src/components/accordion/accordion.tsx"
+    ],
+    "arkSourceFiles": [
+      "https://unpkg.com/@ark-ui/react@5.39.2/dist/components/format/format-number.js",
+      "https://unpkg.com/@ark-ui/react@5.39.2/dist/components/format/format-byte.js"
+    ],
+    "localFiles": [
+      "src/components/description/description.ts",
+      "src/components/kv/kv.ts",
+      "docs-src/pages/components/description.ts",
+      "docs-src/pages/components/kv.ts",
+      "src/components/setting-row/setting-row.ts",
+      "src/components/setting-rows/setting-rows.ts",
+      "docs-src/pages/components/setting-row.ts"
+    ]
+  },
+  "coverageLimits": "Targeted official docs/source and complete existing Pro index reused; not a new exhaustive implementation or browser audit. Earlier full Chakra/Radix/Material/Pro comparisons remain the reference base."
+}

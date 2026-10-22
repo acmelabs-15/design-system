@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m04",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.417Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m04-removals-2026-09-20.json",
+      "destination": "docs/verification/systematization/m04-removals-2026-09-20.json",
+      "bytes": 146261,
+      "sha256": "df9c324091c9c96548c5f00424957a2fbac4e6211a97315e11c9a356717299fb"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

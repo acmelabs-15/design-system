@@ -1,0 +1,819 @@
+{
+  "date": "2026-09-22",
+  "batch": "M11 Fieldset",
+  "status": "complete at the assigned Fieldset boundary; remaining M11 form entries follow",
+  "priorControl": "m11-fieldset-boundary-2026-09-21.json",
+  "sourcesReviewed": [
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/fieldset/fieldset.ts",
+      "finding": "The pinned Chakra root and legend are native fieldset/legend elements."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/ark/main/packages/react/src/components/fieldset/fieldset-root.tsx",
+      "finding": "The Ark root renders ark.fieldset."
+    },
+    {
+      "url": "https://chakra-ui.com/docs/components/fieldset",
+      "finding": "Group disabled applies to contained inputs; group invalid does not automatically make each Field invalid."
+    },
+    {
+      "url": "https://lion-web.netlify.app/components/fieldset/overview/",
+      "finding": "Lion explicitly distinguishes its registered non-native fieldset model and label from native fieldset/legend semantics."
+    },
+    {
+      "url": "https://webawesome.com/docs/form-controls",
+      "finding": "Web Awesome uses form-associated custom elements and platform constraint validation."
+    }
+  ],
+  "proMatches": [
+    {
+      "id": "setting-profile",
+      "url": "https://pro.chakra-ui.com/explore/application/application-all/setting-profile",
+      "files": [
+        "form-section.tsx"
+      ]
+    },
+    {
+      "id": "onboarding-simple-02",
+      "url": "https://pro.chakra-ui.com/explore/application/application-all/onboarding-simple-02",
+      "files": [
+        "block.tsx"
+      ]
+    },
+    {
+      "id": "onboarding-with-image-04",
+      "url": "https://pro.chakra-ui.com/explore/application/application-all/onboarding-with-image-04",
+      "files": [
+        "block.tsx"
+      ]
+    },
+    {
+      "id": "property-panel-02",
+      "url": "https://pro.chakra-ui.com/explore/application/application-all/property-panel-02",
+      "files": [
+        "block.tsx",
+        "fields.tsx"
+      ]
+    },
+    {
+      "id": "store-signup-offer-01",
+      "url": "https://pro.chakra-ui.com/explore/e-commerce/e-commerce-all/store-signup-offer-01",
+      "files": [
+        "block.tsx"
+      ]
+    },
+    {
+      "id": "docs-kit",
+      "files": [
+        "components/openapi/authentication-field.tsx",
+        "components/openapi/schema-form.tsx",
+        "components/openapi/parameter-group.tsx"
+      ]
+    }
+  ],
+  "native": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "real native ancestor owns unchanged controls and legend",
+            "ok": true
+          },
+          {
+            "name": "ordinary and custom fields participate in the same native form",
+            "ok": true
+          },
+          {
+            "name": "disabled setter bars native and custom fields before render",
+            "ok": true
+          },
+          {
+            "name": "the first real legend retains its native exception",
+            "ok": true
+          },
+          {
+            "name": "individual disabled state survives group enablement",
+            "ok": true
+          },
+          {
+            "name": "authored hidden descriptions stay visually hidden",
+            "ok": true
+          },
+          {
+            "name": "native group has its live help reference",
+            "ok": true
+          },
+          {
+            "name": "group error adds an owned description without invalidating controls",
+            "ok": true
+          },
+          {
+            "name": "clearing group error removes only its description and hides its content",
+            "ok": true
+          },
+          {
+            "name": "authored descriptions coexist with group help",
+            "ok": true
+          },
+          {
+            "name": "nested group keeps its own disabled setting",
+            "ok": true
+          },
+          {
+            "name": "new structural content joins the native disabled group after reconciliation",
+            "ok": true
+          },
+          {
+            "name": "projection preserves a focused native control and its selection",
+            "ok": true
+          },
+          {
+            "name": "reconnection preserves node identity and submission",
+            "ok": true
+          },
+          {
+            "name": "real Fieldset preserves Lit updates in a shadow-root consumer",
+            "ok": true
+          },
+          {
+            "name": "scoped light styles reach a native root inside a consumer shadow root",
+            "ok": true
+          },
+          {
+            "name": "Lit can remove its whole dynamic range through the native container",
+            "ok": true
+          },
+          {
+            "name": "accessibility exposes one native named form group",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "real native ancestor owns unchanged controls and legend",
+            "ok": true
+          },
+          {
+            "name": "ordinary and custom fields participate in the same native form",
+            "ok": true
+          },
+          {
+            "name": "disabled setter bars native and custom fields before render",
+            "ok": true
+          },
+          {
+            "name": "the first real legend retains its native exception",
+            "ok": true
+          },
+          {
+            "name": "individual disabled state survives group enablement",
+            "ok": true
+          },
+          {
+            "name": "authored hidden descriptions stay visually hidden",
+            "ok": true
+          },
+          {
+            "name": "native group has its live help reference",
+            "ok": true
+          },
+          {
+            "name": "group error adds an owned description without invalidating controls",
+            "ok": true
+          },
+          {
+            "name": "clearing group error removes only its description and hides its content",
+            "ok": true
+          },
+          {
+            "name": "authored descriptions coexist with group help",
+            "ok": true
+          },
+          {
+            "name": "nested group keeps its own disabled setting",
+            "ok": true
+          },
+          {
+            "name": "new structural content joins the native disabled group after reconciliation",
+            "ok": true
+          },
+          {
+            "name": "projection preserves a focused native control and its selection",
+            "ok": true
+          },
+          {
+            "name": "reconnection preserves node identity and submission",
+            "ok": true
+          },
+          {
+            "name": "real Fieldset preserves Lit updates in a shadow-root consumer",
+            "ok": true
+          },
+          {
+            "name": "scoped light styles reach a native root inside a consumer shadow root",
+            "ok": true
+          },
+          {
+            "name": "Lit can remove its whole dynamic range through the native container",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "real native ancestor owns unchanged controls and legend",
+            "ok": true
+          },
+          {
+            "name": "ordinary and custom fields participate in the same native form",
+            "ok": true
+          },
+          {
+            "name": "disabled setter bars native and custom fields before render",
+            "ok": true
+          },
+          {
+            "name": "the first real legend retains its native exception",
+            "ok": true
+          },
+          {
+            "name": "individual disabled state survives group enablement",
+            "ok": true
+          },
+          {
+            "name": "authored hidden descriptions stay visually hidden",
+            "ok": true
+          },
+          {
+            "name": "native group has its live help reference",
+            "ok": true
+          },
+          {
+            "name": "group error adds an owned description without invalidating controls",
+            "ok": true
+          },
+          {
+            "name": "clearing group error removes only its description and hides its content",
+            "ok": true
+          },
+          {
+            "name": "authored descriptions coexist with group help",
+            "ok": true
+          },
+          {
+            "name": "nested group keeps its own disabled setting",
+            "ok": true
+          },
+          {
+            "name": "new structural content joins the native disabled group after reconciliation",
+            "ok": true
+          },
+          {
+            "name": "projection preserves a focused native control and its selection",
+            "ok": true
+          },
+          {
+            "name": "reconnection preserves node identity and submission",
+            "ok": true
+          },
+          {
+            "name": "real Fieldset preserves Lit updates in a shadow-root consumer",
+            "ok": true
+          },
+          {
+            "name": "scoped light styles reach a native root inside a consumer shadow root",
+            "ok": true
+          },
+          {
+            "name": "Lit can remove its whole dynamic range through the native container",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "litProjection": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "native ancestor includes both real controls",
+            "ok": true
+          },
+          {
+            "name": "Lit updates the same author-owned input after projection",
+            "ok": true
+          },
+          {
+            "name": "Lit removes the entire dynamic legend/control range",
+            "ok": true
+          },
+          {
+            "name": "new controls get native disability with the real legend exception",
+            "ok": true
+          },
+          {
+            "name": "individual disabled state remains after the group enables",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "native ancestor includes both real controls",
+            "ok": true
+          },
+          {
+            "name": "Lit updates the same author-owned input after projection",
+            "ok": true
+          },
+          {
+            "name": "Lit removes the entire dynamic legend/control range",
+            "ok": true
+          },
+          {
+            "name": "new controls get native disability with the real legend exception",
+            "ok": true
+          },
+          {
+            "name": "individual disabled state remains after the group enables",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "native ancestor includes both real controls",
+            "ok": true
+          },
+          {
+            "name": "Lit updates the same author-owned input after projection",
+            "ok": true
+          },
+          {
+            "name": "Lit removes the entire dynamic legend/control range",
+            "ok": true
+          },
+          {
+            "name": "new controls get native disability with the real legend exception",
+            "ok": true
+          },
+          {
+            "name": "individual disabled state remains after the group enables",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "react": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "React uses the single renderer-provided native fieldset",
+            "ok": true
+          },
+          {
+            "name": "React updates the same control under its own native parent",
+            "ok": true
+          },
+          {
+            "name": "React can remove the entire content range without reparenting errors",
+            "ok": true
+          },
+          {
+            "name": "React insertion preserves native disabled and first-legend behavior",
+            "ok": true
+          },
+          {
+            "name": "React unmount removes the complete owned group",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "React uses the single renderer-provided native fieldset",
+            "ok": true
+          },
+          {
+            "name": "React updates the same control under its own native parent",
+            "ok": true
+          },
+          {
+            "name": "React can remove the entire content range without reparenting errors",
+            "ok": true
+          },
+          {
+            "name": "React insertion preserves native disabled and first-legend behavior",
+            "ok": true
+          },
+          {
+            "name": "React unmount removes the complete owned group",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "React uses the single renderer-provided native fieldset",
+            "ok": true
+          },
+          {
+            "name": "React updates the same control under its own native parent",
+            "ok": true
+          },
+          {
+            "name": "React can remove the entire content range without reparenting errors",
+            "ok": true
+          },
+          {
+            "name": "React insertion preserves native disabled and first-legend behavior",
+            "ok": true
+          },
+          {
+            "name": "React unmount removes the complete owned group",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "moveSupport": [
+    {
+      "engine": "chromium",
+      "available": true,
+      "focus": true,
+      "selection": [
+        1,
+        3
+      ]
+    },
+    {
+      "engine": "firefox",
+      "available": true,
+      "focus": true,
+      "selection": [
+        1,
+        3
+      ]
+    },
+    {
+      "engine": "webkit",
+      "available": false,
+      "focus": true,
+      "selection": [
+        1,
+        3
+      ]
+    }
+  ],
+  "implementation": [
+    "Retain acme-fieldset with an actual owned native fieldset in its light DOM. Preserve complete author node ranges and node identity.",
+    "The legend slot uses a real native legend, retaining the first-legend disabled exception, rich content and native naming.",
+    "Native disabled updates synchronously. Children retain their own disabled properties; native/custom controls use the browser's actual form association.",
+    "Generated light-DOM rules are scoped to owned native markers and installed in the actual Document/ShadowRoot with reference-counted ownership. Existing unrelated styles are preserved.",
+    "Renderer adapters provide the stable native container before connection. Lit ranges and React 19.3 controlled children pass the prototype and actual Fieldset checks. x-acme-native-root metadata records this M22 requirement.",
+    "Use moveBefore when available; WebKit lacks it in this environment, so ordinary moves restore the displaced focus/selection."
+  ],
+  "limits": [
+    "Structural child changes settle through reconciliation; this does not claim synchronous native association before a structural update settles.",
+    "Final generated React package/wrapper acceptance remains M22. The actual React prototype proves the required container ownership mechanism.",
+    "This is not actual speech-output or full-library acceptance."
+  ],
+  "verification": {
+    "typecheck": "872 files, zero errors",
+    "unit": "898 pass, zero fail across 139 files",
+    "build": "37,772 modules; 119 compiled templates; 4,256 public elements",
+    "docs": "93 pages, zero undocumented elements; native submission and first-legend toggle flows pass in each engine",
+    "native": "18 Chromium and 17 Firefox/WebKit source and compiled checks",
+    "react": "Five actual-Fieldset renderer ownership checks pass per engine using React 19.3.0"
+  },
+  "code": [
+    {
+      "file": "src/shared/native-content-root.ts",
+      "sha256": "b10dc0615c6c0cdf44a4b14875564b44587b84400584843c45def04ec035b3a6"
+    },
+    {
+      "file": "src/shared/root-styles.ts",
+      "sha256": "c38f9c88b24b27f920a28e7302add5484b7c0c0e4b1003e7e99bfc923c7ba4be"
+    },
+    {
+      "file": "src/shared/static-styles.ts",
+      "sha256": "3449640bc62b39439acfe8579532a5594ea2bb0053c726d488dba4d1913337ae"
+    },
+    {
+      "file": "src/components/fieldset/fieldset.ts",
+      "sha256": "dc18c117ae692983dcd865cc72c7d3743706b34d107046e7bbd40c95190e42c9"
+    },
+    {
+      "file": "styles/components/fieldset/fieldset-light.css",
+      "sha256": "748e9f766fa5567afe8c53a101b5687078df7345091908c3226605f264371b1b"
+    }
+  ],
+  "fixtures": [
+    {
+      "file": "fieldset-probe-production.ts",
+      "source": "import {AcmeFieldset} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/fieldset/fieldset';\nimport {AcmeCheckbox} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/checkbox/checkbox';\nimport {AcmeCheckIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/icons/classes/check-icon';\nimport {AcmeRemoveIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/icons/classes/remove-icon';\nimport {LitElement,html} from '/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/index.js';\ncustomElements.define('acme-fieldset',AcmeFieldset);customElements.define('acme-checkbox',AcmeCheckbox);customElements.define('acme-check-icon',AcmeCheckIcon);customElements.define('acme-remove-icon',AcmeRemoveIcon);\nconst results:any[]=[];const check=(name:string,ok:boolean)=>results.push({name,ok});const wait=async(n=3)=>{while(n--)await new Promise(r=>requestAnimationFrame(r));};\nconst form=document.createElement('form');form.innerHTML='<acme-fieldset id=\"group\"><legend slot=\"legend\">Delivery <input name=\"legend\" value=\"keep\"></legend><span slot=\"help\">Choose delivery options.</span><input id=\"native\" name=\"native\" value=\"ready\" required><acme-checkbox id=\"house\" name=\"house\" checked>House option</acme-checkbox><span slot=\"error\">Review this group.</span></acme-fieldset>';document.body.append(form);const group=form.querySelector('acme-fieldset')!,input=form.querySelector<HTMLInputElement>('#native')!,checkbox=form.querySelector('acme-checkbox')!;\ntry{\nawait wait();const native=group.querySelector('fieldset')!;check('real native ancestor owns unchanged controls and legend',input.parentNode===native&&checkbox.parentNode===native&&native.querySelector('legend')!.textContent==='Delivery ');check('ordinary and custom fields participate in the same native form',JSON.stringify([...new FormData(form)])===JSON.stringify([['legend','keep'],['native','ready'],['house','on']]));\ngroup.disabled=true;check('disabled setter bars native and custom fields before render',input.matches(':disabled')&&checkbox.matches(':disabled')&&!input.disabled&&!checkbox.disabled&&JSON.stringify([...new FormData(form)])===JSON.stringify([['legend','keep']]));check('the first real legend retains its native exception',!form.querySelector<HTMLInputElement>('[name=legend]')!.matches(':disabled'));\ninput.disabled=true;group.disabled=false;check('individual disabled state survives group enablement',input.disabled&&!checkbox.matches(':disabled'));input.disabled=false;\nconst help=group.querySelector('[slot=help]')!,error=group.querySelector('[slot=error]')!;help.setAttribute('hidden','');check('authored hidden descriptions stay visually hidden',getComputedStyle(help).display==='none');help.removeAttribute('hidden');check('native group has its live help reference',native.ariaDescribedByElements?.includes(help)===true&&!native.ariaDescribedByElements?.includes(error));group.invalid=true;await wait();check('group error adds an owned description without invalidating controls',native.ariaDescribedByElements?.includes(error)===true&&native.getAttribute('aria-invalid')==='true'&&input.validity.valid);group.invalid=false;await wait();check('clearing group error removes only its description and hides its content',native.ariaDescribedByElements?.includes(help)===true&&!native.ariaDescribedByElements?.includes(error)&&getComputedStyle(error).display==='none');\nconst external=document.createElement('p');external.id='external-help';external.textContent='External description';document.body.append(external);group.setAttribute('aria-describedby','external-help');await wait();check('authored descriptions coexist with group help',native.ariaDescribedByElements?.includes(help)===true&&native.ariaDescribedByElements?.includes(external)===true);\nconst nested=new AcmeFieldset();nested.innerHTML='<legend slot=\"legend\">Nested</legend><input name=\"nested\" value=\"value\">';native.append(nested);await wait();nested.disabled=true;group.disabled=true;group.disabled=false;check('nested group keeps its own disabled setting',nested.disabled&&nested.querySelector('input')!.matches(':disabled')&&!input.matches(':disabled'));\ngroup.disabled=true;const added=document.createElement('input');added.name='added';added.value='value';group.append(added);await wait();check('new structural content joins the native disabled group after reconciliation',added.parentNode===native&&added.matches(':disabled')&&!new FormData(form).has('added'));group.disabled=false;\nconst focused=document.createElement('input');focused.value='Caret position';group.append(focused);focused.focus();focused.setSelectionRange(1,5);await wait();check('projection preserves a focused native control and its selection',document.activeElement===focused&&focused.selectionStart===1&&focused.selectionEnd===5);\nconst before=input;group.remove();form.append(group);await wait();check('reconnection preserves node identity and submission',group.querySelector('#native')===before&&new FormData(form).get('native')==='ready');\nclass Consumer extends LitElement{static properties={show:{type:Boolean},text:{type:String}};declare show:boolean;declare text:string;constructor(){super();this.show=true;this.text='One';}render(){return html`<form><acme-fieldset>${this.show?html`<legend slot=\"legend\">Framework</legend><input name=\"dynamic\" .value=${this.text}>`:null}</acme-fieldset></form>`;}}customElements.define('fieldset-consumer',Consumer);const consumer=new Consumer();document.body.append(consumer);await wait();const host=consumer.shadowRoot!.querySelector('acme-fieldset')!,original=host.querySelector('input')!;consumer.text='Two';await consumer.updateComplete;await wait();check('real Fieldset preserves Lit updates in a shadow-root consumer',host.querySelector('input')===original&&new FormData(consumer.shadowRoot!.querySelector('form')!).get('dynamic')==='Two');check('scoped light styles reach a native root inside a consumer shadow root',getComputedStyle(host.querySelector('fieldset')!).borderTopWidth==='0px'&&getComputedStyle(host.querySelector('legend')!).fontSize==='14px');consumer.show=false;await consumer.updateComplete;await wait();check('Lit can remove its whole dynamic range through the native container',!host.querySelector('input')&&!host.querySelector('legend'));\n(window as any).__test={form,group,input,checkbox,wait};\n}catch(error){(window as any).__error=String(error);}\n(window as any).__results={results,error:(window as any).__error};\n"
+    },
+    {
+      "file": "fieldset-run-generated.ts",
+      "source": "import fs from 'node:fs';\nconst directory='/tmp/acme-m11-forms',root='/Users/peterkloss/Dev/ACMElabs/design-system';\nconst built=await Bun.build({entrypoints:[directory+'/fieldset-probe-production.ts'],outdir:directory+'/bundle',target:'browser',format:'esm',splitting:true});if(!built.success)throw new AggregateError(built.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';\nconst pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');\nconst server=Bun.serve({port:0,hostname:'127.0.0.1',fetch(req){const url=new URL(req.url);if(url.pathname==='/tokens.css')return new Response(Bun.file(root+'/src/generated/css/document/tokens.css'),{headers:{'Content-Type':'text/css'}});if(url.pathname.endsWith('.js'))return new Response(Bun.file(directory+'/bundle'+url.pathname),{headers:{'Content-Type':'text/javascript'}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/fieldset-probe-production.js\"></script>',{headers:{'Content-Type':'text/html'}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});try{const page=await browser.newPage();page.on('pageerror',e=>{console.log('PAGEERROR',e.stack);report.errors.push({engine,message:e.message});});await page.goto(server.url.href);await page.waitForFunction(()=>window.__results,{},{timeout:60000});const data=await page.evaluate(()=>window.__results);if(!data.error){if(engine==='chromium'){const session=await page.context().newCDPSession(page);const tree=await session.send('Accessibility.getFullAXTree');data.results.push({name:'accessibility exposes one native named form group',ok:tree.nodes.some(n=>n.role?.value==='group'&&n.name?.value.includes('Delivery'))});await page.screenshot({path:directory+'/fieldset.png'});}}if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(r=>r.ok).length,total:data.results.length,failed:data.results.filter(r=>!r.ok),error:data.error});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+'/fieldset-production-results.json',JSON.stringify(report,null,2)+'\\n');if(report.errors.length||report.engines.some(e=>e.results.length!==(e.engine==='chromium'?18:17)||e.results.some(r=>!r.ok)))process.exitCode=1;\n"
+    },
+    {
+      "file": "fieldset-docs-check.ts",
+      "source": "process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');const results=[];for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});try{const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:4180/components/fieldset');const form=page.locator('#fieldset-form');await form.locator('acme-button[type=submit]').click();const submission=await form.locator('output').textContent();const legend=page.locator('#fieldset-legend-example');await legend.locator('#fieldset-enable').click();const enabled=await legend.evaluate(el=>!el.disabled&&!el.querySelector('acme-switch').matches(':disabled'));await legend.locator('#fieldset-enable').click();const disabled=await legend.evaluate(el=>el.disabled&&el.querySelector('acme-switch').matches(':disabled')&&!el.querySelector('acme-checkbox').matches(':disabled'));results.push({engine,submission,enabled,disabled,errors});console.log(results.at(-1));if(engine==='chromium')await legend.screenshot({path:'/tmp/acme-m11-forms/docs-first-legend.png'});}finally{await browser.close();}}await Bun.write('/tmp/acme-m11-forms/fieldset-docs-results.json',JSON.stringify(results,null,2)+'\\n');if(results.some(r=>r.submission!=='[[\"alerts\",\"yes\"]]'||!r.enabled||!r.disabled||r.errors.length))process.exitCode=1;\n"
+    },
+    {
+      "file": "projection-probe.ts",
+      "source": "import {NativeContentRoot,nativeContentMarker} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/native-content-root\";\nimport {LitElement,html} from '/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/index.js';\nclass Candidate extends LitElement {\n private readonly content=new NativeContentRoot(this,()=>this.ownerDocument.createElement('fieldset'),root=>{root.disabled=this.disabled;});\n static properties={disabled:{type:Boolean}};declare disabled:boolean;\n constructor(){super();this.disabled=false;}\n updated(){this.content.root.disabled=this.disabled;}\n render(){return html`<slot></slot>`;}\n}\ncustomElements.define('x-native-fieldset',Candidate);\nclass Consumer extends LitElement {\n static properties={show:{type:Boolean},text:{type:String},disabled:{type:Boolean}};\n declare show:boolean;declare text:string;declare disabled:boolean;constructor(){super();this.show=true;this.text='First';this.disabled=false;}\n render(){return html`<form><x-native-fieldset .disabled=${this.disabled}>${this.show?html`<legend slot=\"legend\">Group <input name=\"legend\" value=\"keep\"></legend><input name=\"field\" .value=${this.text}>`:null}</x-native-fieldset></form>`;}\n}\ncustomElements.define('x-consumer',Consumer);\nconst wait=()=>new Promise(r=>requestAnimationFrame(r));\nconst consumer=new Consumer();document.body.append(consumer);const results:any[]=[];const check=(name:string,ok:boolean)=>results.push({name,ok});\ntry{await consumer.updateComplete;await wait();const form=consumer.shadowRoot!.querySelector('form')!,fieldset=consumer.shadowRoot!.querySelector('x-native-fieldset')!,original=fieldset.querySelector('input[name=field]')!;check('native ancestor includes both real controls',new FormData(form).get('field')==='First'&&original.parentElement?.localName==='fieldset');consumer.text='Second';await consumer.updateComplete;await wait();check('Lit updates the same author-owned input after projection',fieldset.querySelector('input[name=field]')===original&&new FormData(form).get('field')==='Second');consumer.show=false;await consumer.updateComplete;await wait();check('Lit removes the entire dynamic legend/control range',!fieldset.querySelector('input')&&!fieldset.querySelector('legend'));consumer.show=true;consumer.disabled=true;await consumer.updateComplete;await wait();const control=fieldset.querySelector<HTMLInputElement>('input[name=field]')!;check('new controls get native disability with the real legend exception',control.matches(':disabled')&&!control.disabled&&new FormData(form).has('legend')&&!new FormData(form).has('field'));control.disabled=true;consumer.disabled=false;await consumer.updateComplete;await wait();check('individual disabled state remains after the group enables',control.disabled&&control.matches(':disabled'));(window as any).__results={results};}catch(error){(window as any).__results={results,error:String(error)};}\n"
+    },
+    {
+      "file": "react-projection-probe.ts",
+      "source": "import {AcmeFieldset} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/fieldset/fieldset\";\nimport {NativeContentRoot,nativeContentMarker} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/native-content-root\";\nimport {LitElement,html} from '/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/index.js';\nimport * as React from '/tmp/acme-m00-delivery-yOhg5q/consumer/node_modules/react/index.js';\nimport {createRoot} from '/tmp/acme-m00-delivery-yOhg5q/consumer/node_modules/react-dom/client.js';\nimport {flushSync} from '/tmp/acme-m00-delivery-yOhg5q/consumer/node_modules/react-dom/index.js';\ncustomElements.define('x-react-fieldset',AcmeFieldset);\nconst container=document.createElement('div');document.body.append(container);const root=createRoot(container);const wait=()=>new Promise(r=>requestAnimationFrame(r));const results:any[]=[];const check=(name:string,ok:boolean)=>results.push({name,ok});\nconst view=(value:string,show=true,disabled=false)=>React.createElement('form',null,React.createElement('x-react-fieldset',{disabled},React.createElement('fieldset',{[nativeContentMarker]:'fieldset'},show?React.createElement(React.Fragment,null,React.createElement('legend',null,'Group',React.createElement('input',{name:'legend',defaultValue:'keep'})),React.createElement('input',{name:'field',value,onChange:()=>{}})):null)));\ntry{flushSync(()=>root.render(view('First')));await wait();const form=container.querySelector('form')!,original=container.querySelector('input[name=field]')!;check('React uses the single renderer-provided native fieldset',container.querySelectorAll('fieldset').length===1&&new FormData(form).get('field')==='First');flushSync(()=>root.render(view('Second')));await wait();check('React updates the same control under its own native parent',container.querySelector('input[name=field]')===original&&new FormData(form).get('field')==='Second');flushSync(()=>root.render(view('',false)));await wait();check('React can remove the entire content range without reparenting errors',!container.querySelector('input')&&!container.querySelector('legend'));flushSync(()=>root.render(view('Restored',true,true)));await wait();check('React insertion preserves native disabled and first-legend behavior',!new FormData(form).has('field')&&new FormData(form).get('legend')==='keep');flushSync(()=>root.unmount());await wait();check('React unmount removes the complete owned group',container.childNodes.length===0);(window as any).__results={results};}catch(error){(window as any).__results={results,error:String(error)};}\n"
+    }
+  ],
+  "compiled": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "real native ancestor owns unchanged controls and legend",
+            "ok": true
+          },
+          {
+            "name": "ordinary and custom fields participate in the same native form",
+            "ok": true
+          },
+          {
+            "name": "disabled setter bars native and custom fields before render",
+            "ok": true
+          },
+          {
+            "name": "the first real legend retains its native exception",
+            "ok": true
+          },
+          {
+            "name": "individual disabled state survives group enablement",
+            "ok": true
+          },
+          {
+            "name": "authored hidden descriptions stay visually hidden",
+            "ok": true
+          },
+          {
+            "name": "native group has its live help reference",
+            "ok": true
+          },
+          {
+            "name": "group error adds an owned description without invalidating controls",
+            "ok": true
+          },
+          {
+            "name": "clearing group error removes only its description and hides its content",
+            "ok": true
+          },
+          {
+            "name": "authored descriptions coexist with group help",
+            "ok": true
+          },
+          {
+            "name": "nested group keeps its own disabled setting",
+            "ok": true
+          },
+          {
+            "name": "new structural content joins the native disabled group after reconciliation",
+            "ok": true
+          },
+          {
+            "name": "projection preserves a focused native control and its selection",
+            "ok": true
+          },
+          {
+            "name": "reconnection preserves node identity and submission",
+            "ok": true
+          },
+          {
+            "name": "real Fieldset preserves Lit updates in a shadow-root consumer",
+            "ok": true
+          },
+          {
+            "name": "scoped light styles reach a native root inside a consumer shadow root",
+            "ok": true
+          },
+          {
+            "name": "Lit can remove its whole dynamic range through the native container",
+            "ok": true
+          },
+          {
+            "name": "accessibility exposes one native named form group",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "real native ancestor owns unchanged controls and legend",
+            "ok": true
+          },
+          {
+            "name": "ordinary and custom fields participate in the same native form",
+            "ok": true
+          },
+          {
+            "name": "disabled setter bars native and custom fields before render",
+            "ok": true
+          },
+          {
+            "name": "the first real legend retains its native exception",
+            "ok": true
+          },
+          {
+            "name": "individual disabled state survives group enablement",
+            "ok": true
+          },
+          {
+            "name": "authored hidden descriptions stay visually hidden",
+            "ok": true
+          },
+          {
+            "name": "native group has its live help reference",
+            "ok": true
+          },
+          {
+            "name": "group error adds an owned description without invalidating controls",
+            "ok": true
+          },
+          {
+            "name": "clearing group error removes only its description and hides its content",
+            "ok": true
+          },
+          {
+            "name": "authored descriptions coexist with group help",
+            "ok": true
+          },
+          {
+            "name": "nested group keeps its own disabled setting",
+            "ok": true
+          },
+          {
+            "name": "new structural content joins the native disabled group after reconciliation",
+            "ok": true
+          },
+          {
+            "name": "projection preserves a focused native control and its selection",
+            "ok": true
+          },
+          {
+            "name": "reconnection preserves node identity and submission",
+            "ok": true
+          },
+          {
+            "name": "real Fieldset preserves Lit updates in a shadow-root consumer",
+            "ok": true
+          },
+          {
+            "name": "scoped light styles reach a native root inside a consumer shadow root",
+            "ok": true
+          },
+          {
+            "name": "Lit can remove its whole dynamic range through the native container",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "real native ancestor owns unchanged controls and legend",
+            "ok": true
+          },
+          {
+            "name": "ordinary and custom fields participate in the same native form",
+            "ok": true
+          },
+          {
+            "name": "disabled setter bars native and custom fields before render",
+            "ok": true
+          },
+          {
+            "name": "the first real legend retains its native exception",
+            "ok": true
+          },
+          {
+            "name": "individual disabled state survives group enablement",
+            "ok": true
+          },
+          {
+            "name": "authored hidden descriptions stay visually hidden",
+            "ok": true
+          },
+          {
+            "name": "native group has its live help reference",
+            "ok": true
+          },
+          {
+            "name": "group error adds an owned description without invalidating controls",
+            "ok": true
+          },
+          {
+            "name": "clearing group error removes only its description and hides its content",
+            "ok": true
+          },
+          {
+            "name": "authored descriptions coexist with group help",
+            "ok": true
+          },
+          {
+            "name": "nested group keeps its own disabled setting",
+            "ok": true
+          },
+          {
+            "name": "new structural content joins the native disabled group after reconciliation",
+            "ok": true
+          },
+          {
+            "name": "projection preserves a focused native control and its selection",
+            "ok": true
+          },
+          {
+            "name": "reconnection preserves node identity and submission",
+            "ok": true
+          },
+          {
+            "name": "real Fieldset preserves Lit updates in a shadow-root consumer",
+            "ok": true
+          },
+          {
+            "name": "scoped light styles reach a native root inside a consumer shadow root",
+            "ok": true
+          },
+          {
+            "name": "Lit can remove its whole dynamic range through the native container",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "docs": [
+    {
+      "engine": "chromium",
+      "submission": "[[\"alerts\",\"yes\"]]",
+      "enabled": true,
+      "disabled": true,
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "submission": "[[\"alerts\",\"yes\"]]",
+      "enabled": true,
+      "disabled": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "submission": "[[\"alerts\",\"yes\"]]",
+      "enabled": true,
+      "disabled": true,
+      "errors": []
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "date": "2026-09-22",
+  "sources": [
+    {
+      "url": "https://github.com/radix-ui/themes/blob/1faff10ac26ae17f09944d418c6949b93fc6b566/packages/radix-ui-themes/src/styles/tokens/shadow.css",
+      "sha256": "8116b0467b2c755a0cdb30f9603f71e28dc14cd6e9642cbab4d7648eb2f8aacb"
+    },
+    {
+      "url": "https://github.com/radix-ui/themes/blob/1faff10ac26ae17f09944d418c6949b93fc6b566/LICENSE",
+      "sha256": "89e4ae7d91c640c6e8a3ca90ba578d799eb2491b766ed65e0725ba36499d56ba"
+    },
+    {
+      "url": "https://github.com/radix-ui/colors/blob/dbdb85470547c7d34b9001f48fddb08ded335979/src/light.ts",
+      "sha256": "1a9725486609d36b469caa3b84b8de4348b7f2f05d45905127637b988329acbd"
+    },
+    {
+      "url": "https://github.com/radix-ui/colors/blob/dbdb85470547c7d34b9001f48fddb08ded335979/src/dark.ts",
+      "sha256": "d8599fe69a4454340b2bc82e003a210caa6b79082be9a1b7f13429ff03826c68"
+    },
+    {
+      "url": "https://github.com/radix-ui/colors/blob/dbdb85470547c7d34b9001f48fddb08ded335979/src/blackA.ts",
+      "sha256": "930205059fbb077241db60753dc338d2354c85fe7ce86ccbccc734836e3371fb"
+    },
+    {
+      "url": "https://github.com/radix-ui/colors/blob/dbdb85470547c7d34b9001f48fddb08ded335979/LICENSE",
+      "sha256": "d981bc30e0d78b9ffc8f279fcaa274ea0444ff51d983548a609397d5c8a42dc2"
+    }
+  ],
+  "implementation": "acme-shadow-4/5/6 preserve light/dark, sRGB/P3 and color-mix branches, with explicit neutral gray/black colors. No same-numbered house palette substitutions. Authored declarations are in styles/house.css and public theme keys in theme-tokens.ts.",
+  "verification": {
+    "native": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "mode": "light",
+            "tier": 4,
+            "computed": "oklab(0.811869 -8.94070e-8 5.96046e-8 / 0.294118) 0px 0px 0px 1px, rgba(0, 0, 0, 0.05) 0px 8px 40px 0px, rgba(0, 0, 0, 0.06) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "light",
+            "tier": 5,
+            "computed": "oklab(0.811869 -8.94070e-8 5.96046e-8 / 0.294118) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 12px 60px 0px, rgba(0, 0, 0, 0.12) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "light",
+            "tier": 6,
+            "computed": "oklab(0.811869 -8.94070e-8 5.96046e-8 / 0.294118) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 12px 60px 0px, rgba(0, 0, 0, 0.024) 0px 16px 64px 0px, rgba(0, 0, 0, 0.192) 0px 16px 36px -20px"
+          },
+          {
+            "mode": "dark",
+            "tier": 4,
+            "computed": "oklab(0.570691 9.81860e-9 2.03303e-8 / 0.379412) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 8px 40px 0px, rgba(0, 0, 0, 0.3) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "dark",
+            "tier": 5,
+            "computed": "oklab(0.570691 9.81860e-9 2.03303e-8 / 0.379412) 0px 0px 0px 1px, rgba(0, 0, 0, 0.3) 0px 12px 60px 0px, rgba(0, 0, 0, 0.5) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "dark",
+            "tier": 6,
+            "computed": "oklab(0.570691 9.81860e-9 2.03303e-8 / 0.379412) 0px 0px 0px 1px, rgba(0, 0, 0, 0.2) 0px 12px 60px 0px, rgba(0, 0, 0, 0.4) 0px 16px 64px 0px, rgba(0, 0, 0, 0.9) 0px 16px 36px -20px"
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "mode": "light",
+            "tier": 4,
+            "computed": "oklab(0.811869 -8.9407e-8 5.96046e-8 / 0.294) 0px 0px 0px 1px, rgba(0, 0, 0, 0.05) 0px 8px 40px 0px, rgba(0, 0, 0, 0.06) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "light",
+            "tier": 5,
+            "computed": "oklab(0.811869 -8.9407e-8 5.96046e-8 / 0.294) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 12px 60px 0px, rgba(0, 0, 0, 0.12) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "light",
+            "tier": 6,
+            "computed": "oklab(0.811869 -8.9407e-8 5.96046e-8 / 0.294) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 12px 60px 0px, rgba(0, 0, 0, 0.024) 0px 16px 64px 0px, rgba(0, 0, 0, 0.192) 0px 16px 36px -20px"
+          },
+          {
+            "mode": "dark",
+            "tier": 4,
+            "computed": "oklab(0.570691 9.8186e-9 2.03303e-8 / 0.38) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 8px 40px 0px, rgba(0, 0, 0, 0.3) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "dark",
+            "tier": 5,
+            "computed": "oklab(0.570691 9.8186e-9 2.03303e-8 / 0.38) 0px 0px 0px 1px, rgba(0, 0, 0, 0.3) 0px 12px 60px 0px, rgba(0, 0, 0, 0.5) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "dark",
+            "tier": 6,
+            "computed": "oklab(0.570691 9.8186e-9 2.03303e-8 / 0.38) 0px 0px 0px 1px, rgba(0, 0, 0, 0.2) 0px 12px 60px 0px, rgba(0, 0, 0, 0.4) 0px 16px 64px 0px, rgba(0, 0, 0, 0.9) 0px 16px 36px -20px"
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "mode": "light",
+            "tier": 4,
+            "computed": "oklab(0.801909 0 0 / 0.29725) 0px 0px 0px 1px, color(display-p3 0 0 0 / 0.05) 0px 8px 40px 0px, color(display-p3 0 0 0 / 0.063) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "light",
+            "tier": 5,
+            "computed": "oklab(0.801909 0 0 / 0.29725) 0px 0px 0px 1px, color(display-p3 0 0 0 / 0.15) 0px 12px 60px 0px, color(display-p3 0 0 0 / 0.122) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "light",
+            "tier": 6,
+            "computed": "oklab(0.801909 0 0 / 0.29725) 0px 0px 0px 1px, color(display-p3 0 0 0 / 0.15) 0px 12px 60px 0px, color(display-p3 0 0 0 / 0.024) 0px 16px 64px 0px, color(display-p3 0 0 0 / 0.192) 0px 16px 36px -20px"
+          },
+          {
+            "mode": "dark",
+            "tier": 4,
+            "computed": "oklab(0.570581 0 0 / 0.379) 0px 0px 0px 1px, color(display-p3 0 0 0 / 0.15) 0px 8px 40px 0px, color(display-p3 0 0 0 / 0.3) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "dark",
+            "tier": 5,
+            "computed": "oklab(0.570581 0 0 / 0.379) 0px 0px 0px 1px, color(display-p3 0 0 0 / 0.3) 0px 12px 60px 0px, color(display-p3 0 0 0 / 0.5) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "dark",
+            "tier": 6,
+            "computed": "oklab(0.570581 0 0 / 0.379) 0px 0px 0px 1px, color(display-p3 0 0 0 / 0.2) 0px 12px 60px 0px, color(display-p3 0 0 0 / 0.4) 0px 16px 64px 0px, color(display-p3 0 0 0 / 0.9) 0px 16px 36px -20px"
+          }
+        ]
+      }
+    ],
+    "oracle": "Exact shadow geometry and native canvas sRGB 8-bit rendered-color equality against independently assembled upstream source; CSS string equality is not asserted because the compiler precomputes color-mix constants.",
+    "limits": [
+      "WebKit exercises P3 in this environment; no exhaustive wide-gamut pixel equivalence claim.",
+      "Older-engine fallback branches are source-reviewed, not runtime-certified."
+    ]
+  }
+}

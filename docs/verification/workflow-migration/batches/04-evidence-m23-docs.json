@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m23-docs",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.612Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m23-docs/copied-results-2026-09-26.json",
+      "destination": "docs/verification/systematization/m23-docs/copied-results-2026-09-26.json",
+      "bytes": 4498,
+      "sha256": "70b0b01fae5c6e3cd03f52173ac0f5ffa0b2856ffbebe1204d440af3cc24d436"
+    },
+    {
+      "source": "notes/alignment/evidence/m23-docs/icons-results-2026-09-26.json",
+      "destination": "docs/verification/systematization/m23-docs/icons-results-2026-09-26.json",
+      "bytes": 884,
+      "sha256": "4a8eb0199d47cb2a737be4dcb02ce7fbebfd7c88d92175e5cb821db27fe59e93"
+    },
+    {
+      "source": "notes/alignment/evidence/m23-docs/navigation-results-2026-09-26.json",
+      "destination": "docs/verification/systematization/m23-docs/navigation-results-2026-09-26.json",
+      "bytes": 608,
+      "sha256": "66d304d3cb4f24b82b9bb601bafcfbef10b809bca863f34e64d32129dbc00f36"
+    },
+    {
+      "source": "notes/alignment/evidence/m23-docs/pages-results-2026-09-26.json",
+      "destination": "docs/verification/systematization/m23-docs/pages-results-2026-09-26.json",
+      "bytes": 31982,
+      "sha256": "ba10a9513b4156c7f26c6992b817c78934bc4361de3f794efa69b2126dd46ed9"
+    },
+    {
+      "source": "notes/alignment/evidence/m23-docs/recipe-accessibility-results-2026-09-26.json",
+      "destination": "docs/verification/systematization/m23-docs/recipe-accessibility-results-2026-09-26.json",
+      "bytes": 418,
+      "sha256": "9f037573171b614ecbe3f957bd43e9e83508bfc8c1c9c76d3c720cff552ee4c3"
+    },
+    {
+      "source": "notes/alignment/evidence/m23-docs/recipes-results-2026-09-26.json",
+      "destination": "docs/verification/systematization/m23-docs/recipes-results-2026-09-26.json",
+      "bytes": 5964,
+      "sha256": "f5bb0ea494508efffd2fb8cdcc47a0b53fdb636da813c0776b432703d0dc5eb9"
+    },
+    {
+      "source": "notes/alignment/evidence/m23-docs/video-results-2026-09-26.json",
+      "destination": "docs/verification/systematization/m23-docs/video-results-2026-09-26.json",
+      "bytes": 1495,
+      "sha256": "de84861fe5b64a93a6caa57d593b846aca9b0c83249b581be801030b6b4dcd76"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "engine": "chromium",
+    "pass": true,
+    "checks": [
+      "actual package UI collects three scoped Lit/React/password controls",
+      "outside-root data and password values are absent from UI",
+      "keyboard expansion and collapse",
+      "corrected null labels and embedded fonts survive downstream bundling",
+      "desktop and narrow surface",
+      "actual inspector UI observes property-only updates in both frameworks",
+      "UI retains exactly the last three public events with correlated identity and redaction",
+      "actual UI updates external ancestor theme appearance and computed accent",
+      "detach and reconnect update actual collected components",
+      "public unmount and remount",
+      "public dispose removes UI and rejects remount",
+      "no persistent settings",
+      "no browser errors, failed assets or outbound requests"
+    ],
+    "errors": [],
+    "requests": []
+  },
+  {
+    "engine": "firefox",
+    "pass": true,
+    "checks": [
+      "actual package UI collects three scoped Lit/React/password controls",
+      "outside-root data and password values are absent from UI",
+      "keyboard expansion and collapse",
+      "corrected null labels and embedded fonts survive downstream bundling",
+      "desktop and narrow surface",
+      "actual inspector UI observes property-only updates in both frameworks",
+      "UI retains exactly the last three public events with correlated identity and redaction",
+      "actual UI updates external ancestor theme appearance and computed accent",
+      "detach and reconnect update actual collected components",
+      "public unmount and remount",
+      "public dispose removes UI and rejects remount",
+      "no persistent settings",
+      "no browser errors, failed assets or outbound requests"
+    ],
+    "errors": [],
+    "requests": []
+  },
+  {
+    "engine": "webkit",
+    "pass": true,
+    "checks": [
+      "actual package UI collects three scoped Lit/React/password controls",
+      "outside-root data and password values are absent from UI",
+      "keyboard expansion and collapse",
+      "corrected null labels and embedded fonts survive downstream bundling",
+      "desktop and narrow surface",
+      "actual inspector UI observes property-only updates in both frameworks",
+      "UI retains exactly the last three public events with correlated identity and redaction",
+      "actual UI updates external ancestor theme appearance and computed accent",
+      "detach and reconnect update actual collected components",
+      "public unmount and remount",
+      "public dispose removes UI and rejects remount",
+      "no persistent settings",
+      "no browser errors, failed assets or outbound requests"
+    ],
+    "errors": [],
+    "requests": []
+  }
+]

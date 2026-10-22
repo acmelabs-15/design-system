@@ -1,0 +1,742 @@
+{
+  "date": "2026-09-21",
+  "batch": "M08",
+  "status": "complete at the typography and heading-protocol boundary",
+  "entries": [
+    "Text",
+    "Heading",
+    "Link",
+    "Code",
+    "Quote",
+    "Kbd",
+    "Strong",
+    "Middle Truncate",
+    "Relative Time"
+  ],
+  "formatters": "m08-formatters-2026-09-21.json",
+  "nativeTypography": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "Text defaults to a margin-free paragraph role",
+            "ok": true
+          },
+          {
+            "name": "native tag changes preserve author content and apply typography",
+            "ok": true
+          },
+          {
+            "name": "responsive typography reaches native text",
+            "ok": true
+          },
+          {
+            "name": "removal restores the CSS role",
+            "ok": true
+          },
+          {
+            "name": "container typography uses the selected ancestor",
+            "ok": true
+          },
+          {
+            "name": "inline text matches native wrapping",
+            "ok": true
+          },
+          {
+            "name": "single-line truncation is visual",
+            "ok": true
+          },
+          {
+            "name": "line clamp takes precedence and limits rendered height",
+            "ok": true
+          },
+          {
+            "name": "clamping preserves full selectable text",
+            "ok": true
+          },
+          {
+            "name": "clearing clamp restores requested single-line mode",
+            "ok": true
+          },
+          {
+            "name": "heading has native level two and a stable host fragment",
+            "ok": true
+          },
+          {
+            "name": "heading visual size does not change semantic level",
+            "ok": true
+          },
+          {
+            "name": "discovery combines registered and native headings",
+            "ok": true
+          },
+          {
+            "name": "quote retains native citation semantics",
+            "ok": true
+          },
+          {
+            "name": "block quotation changes native meaning",
+            "ok": true
+          },
+          {
+            "name": "importance uses a native strong element",
+            "ok": true
+          },
+          {
+            "name": "heading discovery follows document adoption",
+            "ok": true
+          },
+          {
+            "name": "Link keeps native navigation attributes",
+            "ok": true
+          },
+          {
+            "name": "native heading role and level survive adoption",
+            "ok": true
+          },
+          {
+            "name": "trusted Link click navigates natively",
+            "ok": true
+          },
+          {
+            "name": "disabled trusted click has no navigation or activation",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "Text defaults to a margin-free paragraph role",
+            "ok": true
+          },
+          {
+            "name": "native tag changes preserve author content and apply typography",
+            "ok": true
+          },
+          {
+            "name": "responsive typography reaches native text",
+            "ok": true
+          },
+          {
+            "name": "removal restores the CSS role",
+            "ok": true
+          },
+          {
+            "name": "container typography uses the selected ancestor",
+            "ok": true
+          },
+          {
+            "name": "inline text matches native wrapping",
+            "ok": true
+          },
+          {
+            "name": "single-line truncation is visual",
+            "ok": true
+          },
+          {
+            "name": "line clamp takes precedence and limits rendered height",
+            "ok": true
+          },
+          {
+            "name": "clamping preserves full selectable text",
+            "ok": true
+          },
+          {
+            "name": "clearing clamp restores requested single-line mode",
+            "ok": true
+          },
+          {
+            "name": "heading has native level two and a stable host fragment",
+            "ok": true
+          },
+          {
+            "name": "heading visual size does not change semantic level",
+            "ok": true
+          },
+          {
+            "name": "discovery combines registered and native headings",
+            "ok": true
+          },
+          {
+            "name": "quote retains native citation semantics",
+            "ok": true
+          },
+          {
+            "name": "block quotation changes native meaning",
+            "ok": true
+          },
+          {
+            "name": "importance uses a native strong element",
+            "ok": true
+          },
+          {
+            "name": "heading discovery follows document adoption",
+            "ok": true
+          },
+          {
+            "name": "Link keeps native navigation attributes",
+            "ok": true
+          },
+          {
+            "name": "native heading role and level survive adoption",
+            "ok": true
+          },
+          {
+            "name": "trusted Link click navigates natively",
+            "ok": true
+          },
+          {
+            "name": "disabled trusted click has no navigation or activation",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "Text defaults to a margin-free paragraph role",
+            "ok": true
+          },
+          {
+            "name": "native tag changes preserve author content and apply typography",
+            "ok": true
+          },
+          {
+            "name": "responsive typography reaches native text",
+            "ok": true
+          },
+          {
+            "name": "removal restores the CSS role",
+            "ok": true
+          },
+          {
+            "name": "container typography uses the selected ancestor",
+            "ok": true
+          },
+          {
+            "name": "inline text matches native wrapping",
+            "ok": true
+          },
+          {
+            "name": "single-line truncation is visual",
+            "ok": true
+          },
+          {
+            "name": "line clamp takes precedence and limits rendered height",
+            "ok": true
+          },
+          {
+            "name": "clamping preserves full selectable text",
+            "ok": true
+          },
+          {
+            "name": "clearing clamp restores requested single-line mode",
+            "ok": true
+          },
+          {
+            "name": "heading has native level two and a stable host fragment",
+            "ok": true
+          },
+          {
+            "name": "heading visual size does not change semantic level",
+            "ok": true
+          },
+          {
+            "name": "discovery combines registered and native headings",
+            "ok": true
+          },
+          {
+            "name": "quote retains native citation semantics",
+            "ok": true
+          },
+          {
+            "name": "block quotation changes native meaning",
+            "ok": true
+          },
+          {
+            "name": "importance uses a native strong element",
+            "ok": true
+          },
+          {
+            "name": "heading discovery follows document adoption",
+            "ok": true
+          },
+          {
+            "name": "Link keeps native navigation attributes",
+            "ok": true
+          },
+          {
+            "name": "native heading role and level survive adoption",
+            "ok": true
+          },
+          {
+            "name": "trusted Link click navigates natively",
+            "ok": true
+          },
+          {
+            "name": "disabled trusted click has no navigation or activation",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "nativeDetails": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "absent keys preserve native kbd and default slot",
+            "ok": true
+          },
+          {
+            "name": "key display does not register focus or shortcut behavior",
+            "ok": true
+          },
+          {
+            "name": "base language catalog updates connected keyboard labels",
+            "ok": true
+          },
+          {
+            "name": "locale changes restore default keyboard labels",
+            "ok": true
+          },
+          {
+            "name": "empty keys suppress fallback content",
+            "ok": true
+          },
+          {
+            "name": "small keyboard size has native keycap geometry",
+            "ok": true
+          },
+          {
+            "name": "inline code preserves exact source and escapes markup",
+            "ok": true
+          },
+          {
+            "name": "code uses inline native layout",
+            "ok": true
+          },
+          {
+            "name": "inline code observes author text changes",
+            "ok": true
+          },
+          {
+            "name": "relative time refreshes at a rounded-value boundary",
+            "ok": true
+          },
+          {
+            "name": "autoUpdate false cancels refreshing",
+            "ok": true
+          },
+          {
+            "name": "detached relative time releases its refresh timer",
+            "ok": true
+          },
+          {
+            "name": "relative time reconnects using the current instant",
+            "ok": true
+          },
+          {
+            "name": "epoch zero retains a native absolute datetime",
+            "ok": true
+          },
+          {
+            "name": "invalid dates render no fabricated date",
+            "ok": true
+          },
+          {
+            "name": "date-only input recovers with UTC semantics",
+            "ok": true
+          },
+          {
+            "name": "narrow text has an ellipsis and a full accessible copy",
+            "ok": true
+          },
+          {
+            "name": "resize restores the complete value",
+            "ok": true
+          },
+          {
+            "name": "reconnection reattaches width observation",
+            "ok": true
+          },
+          {
+            "name": "document adoption schedules measurement in the new view",
+            "ok": true
+          },
+          {
+            "name": "adopted text continues observing new document widths",
+            "ok": true
+          },
+          {
+            "name": "truncation preserves complete grapheme clusters",
+            "ok": true
+          },
+          {
+            "name": "RTL preserves both logical text ends",
+            "ok": true
+          },
+          {
+            "name": "font completion invalidates cached widths",
+            "ok": true
+          },
+          {
+            "name": "scaled text remains within its measured root",
+            "ok": true
+          },
+          {
+            "name": "trusted selection copies the complete truncated value",
+            "ok": true,
+            "selected": "start-v…dle-end",
+            "copied": "start-very-long-middle-end"
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "absent keys preserve native kbd and default slot",
+            "ok": true
+          },
+          {
+            "name": "key display does not register focus or shortcut behavior",
+            "ok": true
+          },
+          {
+            "name": "base language catalog updates connected keyboard labels",
+            "ok": true
+          },
+          {
+            "name": "locale changes restore default keyboard labels",
+            "ok": true
+          },
+          {
+            "name": "empty keys suppress fallback content",
+            "ok": true
+          },
+          {
+            "name": "small keyboard size has native keycap geometry",
+            "ok": true
+          },
+          {
+            "name": "inline code preserves exact source and escapes markup",
+            "ok": true
+          },
+          {
+            "name": "code uses inline native layout",
+            "ok": true
+          },
+          {
+            "name": "inline code observes author text changes",
+            "ok": true
+          },
+          {
+            "name": "relative time refreshes at a rounded-value boundary",
+            "ok": true
+          },
+          {
+            "name": "autoUpdate false cancels refreshing",
+            "ok": true
+          },
+          {
+            "name": "detached relative time releases its refresh timer",
+            "ok": true
+          },
+          {
+            "name": "relative time reconnects using the current instant",
+            "ok": true
+          },
+          {
+            "name": "epoch zero retains a native absolute datetime",
+            "ok": true
+          },
+          {
+            "name": "invalid dates render no fabricated date",
+            "ok": true
+          },
+          {
+            "name": "date-only input recovers with UTC semantics",
+            "ok": true
+          },
+          {
+            "name": "narrow text has an ellipsis and a full accessible copy",
+            "ok": true
+          },
+          {
+            "name": "resize restores the complete value",
+            "ok": true
+          },
+          {
+            "name": "reconnection reattaches width observation",
+            "ok": true
+          },
+          {
+            "name": "document adoption schedules measurement in the new view",
+            "ok": true
+          },
+          {
+            "name": "adopted text continues observing new document widths",
+            "ok": true
+          },
+          {
+            "name": "truncation preserves complete grapheme clusters",
+            "ok": true
+          },
+          {
+            "name": "RTL preserves both logical text ends",
+            "ok": true
+          },
+          {
+            "name": "font completion invalidates cached widths",
+            "ok": true
+          },
+          {
+            "name": "scaled text remains within its measured root",
+            "ok": true
+          },
+          {
+            "name": "trusted selection copies the complete truncated value",
+            "ok": true,
+            "selected": "start-v…dle-end",
+            "copied": "start-very-long-middle-end"
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "absent keys preserve native kbd and default slot",
+            "ok": true
+          },
+          {
+            "name": "key display does not register focus or shortcut behavior",
+            "ok": true
+          },
+          {
+            "name": "base language catalog updates connected keyboard labels",
+            "ok": true
+          },
+          {
+            "name": "locale changes restore default keyboard labels",
+            "ok": true
+          },
+          {
+            "name": "empty keys suppress fallback content",
+            "ok": true
+          },
+          {
+            "name": "small keyboard size has native keycap geometry",
+            "ok": true
+          },
+          {
+            "name": "inline code preserves exact source and escapes markup",
+            "ok": true
+          },
+          {
+            "name": "code uses inline native layout",
+            "ok": true
+          },
+          {
+            "name": "inline code observes author text changes",
+            "ok": true
+          },
+          {
+            "name": "relative time refreshes at a rounded-value boundary",
+            "ok": true
+          },
+          {
+            "name": "autoUpdate false cancels refreshing",
+            "ok": true
+          },
+          {
+            "name": "detached relative time releases its refresh timer",
+            "ok": true
+          },
+          {
+            "name": "relative time reconnects using the current instant",
+            "ok": true
+          },
+          {
+            "name": "epoch zero retains a native absolute datetime",
+            "ok": true
+          },
+          {
+            "name": "invalid dates render no fabricated date",
+            "ok": true
+          },
+          {
+            "name": "date-only input recovers with UTC semantics",
+            "ok": true
+          },
+          {
+            "name": "narrow text has an ellipsis and a full accessible copy",
+            "ok": true
+          },
+          {
+            "name": "resize restores the complete value",
+            "ok": true
+          },
+          {
+            "name": "reconnection reattaches width observation",
+            "ok": true
+          },
+          {
+            "name": "document adoption schedules measurement in the new view",
+            "ok": true
+          },
+          {
+            "name": "adopted text continues observing new document widths",
+            "ok": true
+          },
+          {
+            "name": "truncation preserves complete grapheme clusters",
+            "ok": true
+          },
+          {
+            "name": "RTL preserves both logical text ends",
+            "ok": true
+          },
+          {
+            "name": "font completion invalidates cached widths",
+            "ok": true
+          },
+          {
+            "name": "scaled text remains within its measured root",
+            "ok": true
+          },
+          {
+            "name": "trusted selection copies the complete truncated value",
+            "ok": true,
+            "selected": "start-v…dle-end",
+            "copied": "start-very-long-middle-end"
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "packedConsumer": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "class-only package import stays inert",
+            "ok": true
+          },
+          {
+            "name": "packed text styles and heading semantics are present",
+            "ok": true
+          },
+          {
+            "name": "packed inline code and keyboard labels render",
+            "ok": true
+          },
+          {
+            "name": "packed relative time retains epoch zero",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "class-only package import stays inert",
+            "ok": true
+          },
+          {
+            "name": "packed text styles and heading semantics are present",
+            "ok": true
+          },
+          {
+            "name": "packed inline code and keyboard labels render",
+            "ok": true
+          },
+          {
+            "name": "packed relative time retains epoch zero",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "class-only package import stays inert",
+            "ok": true
+          },
+          {
+            "name": "packed text styles and heading semantics are present",
+            "ok": true
+          },
+          {
+            "name": "packed inline code and keyboard labels render",
+            "ok": true
+          },
+          {
+            "name": "packed relative time retains epoch zero",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "typecheck": {
+    "command": "bun node_modules/typescript/bin/tsc --noEmit --strict --target ES2022 --module ESNext --moduleResolution Bundler --skipLibCheck /tmp/acme-m08-consumer/types.ts",
+    "output": ""
+  },
+  "review": {
+    "method": "Local five-axis review; independent agents unavailable at their account limit",
+    "corrections": [
+      "Refresh Code and Heading after disconnected content changes",
+      "Use native formatter precision and owned date inputs",
+      "Remove retired Kbd/Relative Time production styles and consumers",
+      "Constrain Middle Truncate grid track to the visible root for RTL/scaled layout"
+    ],
+    "limits": [
+      "Copy verification uses trusted pointer selection plus a clipboard event, not OS clipboard permission coverage",
+      "Accessibility role assertions cover native Heading; these checks do not claim a manual screen-reader certification",
+      "Single-bundle Bun static class plus dynamic definition import initialization remains a packed reproduction for M22/M26; split ESM passes",
+      "M16 TOC and M21 Markdown still own final discovery integration"
+    ]
+  },
+  "sources": {
+    "typographyProbe": "import {AcmeText} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/text/text.ts\";\nimport {AcmeHeading} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/heading/heading.ts\";\nimport {AcmeStrong} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/strong/strong.ts\";\nimport {AcmeQuote} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/quote/quote.ts\";\nimport {discoverHeadingTargets} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/heading-targets.ts\";\nimport {AcmeLink} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/link/link.ts\";\ncustomElements.define(\"acme-text\",AcmeText);customElements.define(\"acme-heading\",AcmeHeading);customElements.define(\"acme-strong\",AcmeStrong);customElements.define(\"acme-quote\",AcmeQuote);\ncustomElements.define(\"acme-link\",AcmeLink);\nconst results:{name:string;ok:boolean;actual?:unknown}[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});\nconst root=(element:Element)=>element.shadowRoot!.querySelector('[part=\"root\"]') as HTMLElement;\ntry{\n document.documentElement.style.setProperty(\"--t-md\",\"14px\");document.documentElement.style.setProperty(\"--t-2xl\",\"24px\");\n const text=document.createElement(\"acme-text\") as AcmeText;text.innerHTML=\"Text <em>content</em>\";document.body.append(text);await text.updateComplete;check(\"Text defaults to a margin-free paragraph role\",root(text).localName===\"p\"&&getComputedStyle(root(text)).marginTop===\"0px\"&&getComputedStyle(root(text)).fontSize===\"14px\");\n const child=text.firstChild;text.as=\"span\";text.size=\"18px\";text.weight=700;await text.updateComplete;check(\"native tag changes preserve author content and apply typography\",root(text).localName===\"span\"&&text.firstChild===child&&getComputedStyle(root(text)).fontSize===\"18px\"&&getComputedStyle(root(text)).fontWeight===\"700\");\n text.size={compact:\"14px\",expanded:\"20px\"};await text.updateComplete;check(\"responsive typography reaches native text\",getComputedStyle(root(text)).fontSize===\"20px\");text.size=undefined;await text.updateComplete;check(\"removal restores the CSS role\",getComputedStyle(root(text)).fontSize===\"14px\");\n const container=document.createElement(\"div\");container.style.cssText=\"width:620px;container-type:inline-size\";container.innerHTML='<acme-text responsive-target=\"container\" size=\\'{\"compact\":\"10px\",\"medium\":\"22px\"}\\'>Container text</acme-text>';document.body.append(container);const contained=container.firstElementChild as AcmeText;await contained.updateComplete;check(\"container typography uses the selected ancestor\",getComputedStyle(root(contained)).fontSize===\"22px\");\n const paragraph=document.createElement(\"p\");paragraph.style.cssText=\"width:130px;font:16px/20px monospace\";paragraph.innerHTML='Before <acme-text as=\"span\" style=\"font:inherit\">several words wrap on these lines</acme-text> after';const control=document.createElement(\"p\");control.style.cssText=paragraph.style.cssText;control.innerHTML='Before <span>several words wrap on these lines</span> after';document.body.append(paragraph,control);const inline=paragraph.querySelector(\"acme-text\") as AcmeText;await inline.updateComplete;const a=[...inline.getClientRects()].map(r=>[r.width,r.height]),b=[...control.querySelector(\"span\")!.getClientRects()].map(r=>[r.width,r.height]);check(\"inline text matches native wrapping\",JSON.stringify(a)===JSON.stringify(b),{house:a,native:b});\n text.as=\"p\";text.style.width=\"120px\";text.textContent=\"A long sentence with enough words to occupy several lines while keeping all its original text.\";text.truncate=true;await text.updateComplete;check(\"single-line truncation is visual\",getComputedStyle(root(text)).textOverflow===\"ellipsis\"&&getComputedStyle(root(text)).whiteSpace===\"nowrap\"&&text.textContent!.includes(\"original text\"));\n text.lineClamp=2;await text.updateComplete;check(\"line clamp takes precedence and limits rendered height\",getComputedStyle(root(text)).webkitLineClamp===\"2\"&&getComputedStyle(root(text)).whiteSpace===\"normal\"&&root(text).getBoundingClientRect().height<=40.1,{height:root(text).getBoundingClientRect().height,clamp:getComputedStyle(root(text)).webkitLineClamp});\n const range=document.createRange();range.selectNodeContents(text);const selection=window.getSelection()!;selection.removeAllRanges();selection.addRange(range);check(\"clamping preserves full selectable text\",selection.toString()===text.textContent);selection.removeAllRanges();text.lineClamp=undefined;await text.updateComplete;check(\"clearing clamp restores requested single-line mode\",getComputedStyle(root(text)).whiteSpace===\"nowrap\");\n const heading=document.createElement(\"acme-heading\") as AcmeHeading;heading.id=\"heading-target\";heading.textContent=\"Stable heading\";document.body.append(heading);await heading.updateComplete;check(\"heading has native level two and a stable host fragment\",heading.getHeadingElement().localName===\"h2\"&&document.getElementById(\"heading-target\")===heading&&getComputedStyle(root(heading)).fontSize===\"24px\");heading.as=\"h1\";heading.size=\"16px\";await heading.updateComplete;check(\"heading visual size does not change semantic level\",heading.getHeadingElement().localName===\"h1\"&&getComputedStyle(root(heading)).fontSize===\"16px\");\n const native=document.createElement(\"h3\");native.id=\"native-target\";native.textContent=\"Native heading\";document.body.append(native);const targets=discoverHeadingTargets(document.body);check(\"discovery combines registered and native headings\",targets.some(t=>t.target===heading&&t.level===1)&&targets.some(t=>t.target===native&&t.level===3));\n const quote=document.createElement(\"acme-quote\") as AcmeQuote;quote.cite=\"https://example.com/source\";quote.textContent=\"Quoted\";document.body.append(quote);await quote.updateComplete;check(\"quote retains native citation semantics\",root(quote).localName===\"q\"&&(root(quote) as HTMLQuoteElement).cite===\"https://example.com/source\");quote.as=\"blockquote\";await quote.updateComplete;check(\"block quotation changes native meaning\",root(quote).localName===\"blockquote\"&&getComputedStyle(quote).display===\"block\");\n const strong=document.createElement(\"acme-strong\") as AcmeStrong;strong.textContent=\"Important\";document.body.append(strong);await strong.updateComplete;check(\"importance uses a native strong element\",root(strong).localName===\"strong\"&&getComputedStyle(strong).display===\"inline\");\n const iframe=document.createElement(\"iframe\");document.body.append(iframe);iframe.contentDocument!.body.append(heading);await heading.updateComplete;check(\"heading discovery follows document adoption\",!discoverHeadingTargets(document.body).some(t=>t.target===heading)&&discoverHeadingTargets(iframe.contentDocument!.body).some(t=>t.target===heading&&t.level===1));\n const link=document.createElement(\"acme-link\") as AcmeLink;link.href=\"#target\";link.textContent=\"Enabled link\";link.id=\"enabled\";const disabled=document.createElement(\"acme-link\") as AcmeLink;disabled.href=\"#disabled-target\";disabled.disabled=true;disabled.textContent=\"Disabled link\";disabled.id=\"disabled\";let activated=0;disabled.addEventListener(\"click\",()=>activated++);document.body.append(link,disabled);await link.updateComplete;await disabled.updateComplete;\n check(\"Link keeps native navigation attributes\",root(link).localName===\"a\"&&root(link).getAttribute(\"href\")===\"#target\"&&!root(disabled).hasAttribute(\"href\")&&root(disabled).getAttribute(\"role\")===\"link\");\n (window as any).__activations=()=>activated;\n (window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n",
+    "typographyRunner": "import fs from \"node:fs\";import path from \"node:path\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\",directory=\"/tmp/acme-m08-type\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\"});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const heading=await page.frameLocator(\"iframe\").getByRole(\"heading\",{name:\"Stable heading\",level:1,exact:true}).count();await page.getByRole(\"link\",{name:\"Enabled link\",exact:true}).click();const hash=await page.evaluate(()=>location.hash);const disabled=await page.locator(\"#disabled\").boundingBox();await page.mouse.click(disabled.x+disabled.width/2,disabled.y+disabled.height/2);const blocked=await page.evaluate(()=>location.hash===\"#target\"&&window.__activations()===0);const data=await page.evaluate(()=>window.__results);data.results.push({name:\"native heading role and level survive adoption\",ok:heading===1},{name:\"trusted Link click navigates natively\",ok:hash===\"#target\"},{name:\"disabled trusted click has no navigation or activation\",ok:blocked});if(data.error){report.errors.push({engine,message:data.error,stack:data.stack});data.results.push({name:'fixture completes',ok:false,error:data.error});}report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;\n",
+    "detailProbe": "import {AcmeKbd} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/kbd/kbd';\nimport {AcmeCode} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/code/code';\nimport {AcmeRelativeTime} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/relative-time/relative-time';\nimport {AcmeMiddleTruncate} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/middle-truncate/middle-truncate';\nimport {AcmeTheme} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/theme/theme';\nimport {configureMessages} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/messages';\nfor (const [name,Type] of [['kbd',AcmeKbd],['code',AcmeCode],['relative-time',AcmeRelativeTime],['middle-truncate',AcmeMiddleTruncate],['theme',AcmeTheme]] as const) customElements.define('acme-'+name,Type);\nconst results:any[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});\nconst pause=(ms=50)=>new Promise(r=>setTimeout(r,ms));const root=(el:Element)=>el.shadowRoot!.querySelector('[part=\"root\"]') as HTMLElement;\ntry {\n const theme=new AcmeTheme();theme.locale='fr-FR';document.body.append(theme);await theme.updateComplete;\n const kbd=new AcmeKbd();kbd.textContent='Fallback';theme.append(kbd);await kbd.updateComplete;\n check('absent keys preserve native kbd and default slot',root(kbd).localName==='kbd'&&!!root(kbd).querySelector('slot'));\n kbd.keys=['Control','+'];await kbd.updateComplete;check('key display does not register focus or shortcut behavior',kbd.tabIndex===-1&&!kbd.hasAttribute('role')&&!root(kbd).querySelector('slot')&&root(kbd).querySelector('.sr')!.textContent!.includes('+'));\n configureMessages('fr',{'kbd.Control':'Ctrl FR','kbd.Control.label':'Contrôle'});await pause();await kbd.updateComplete;\n check('base language catalog updates connected keyboard labels',root(kbd).textContent!.includes('Ctrl FR')&&root(kbd).querySelector('.sr')!.textContent!.includes('Contrôle'),root(kbd).textContent);\n theme.locale='en-US';await pause();check('locale changes restore default keyboard labels',!root(kbd).textContent!.includes('Ctrl FR'));\n kbd.keys=[];await kbd.updateComplete;check('empty keys suppress fallback content',!root(kbd).querySelector('slot')&&root(kbd).textContent==='');\n kbd.keys=undefined;await kbd.updateComplete;kbd.size='small';await kbd.updateComplete;check('small keyboard size has native keycap geometry',getComputedStyle(root(kbd)).minHeight==='20px');\n const code=new AcmeCode();code.textContent='  const value = \"<script>\";  ';code.syntax='javascript';document.body.append(code);await code.updateComplete;\n check('inline code preserves exact source and escapes markup',root(code).localName==='code'&&root(code).textContent===code.textContent&&!root(code).querySelector('script')&&!!root(code).querySelector('span'));\n check('code uses inline native layout',getComputedStyle(code).display==='inline'&&getComputedStyle(root(code)).display==='inline');\n code.textContent='changed\\n source';await pause();check('inline code observes author text changes',root(code).textContent==='changed\\n source');\n const time=new AcmeRelativeTime();time.locale='en-US';time.numeric='always';time.date=Date.now()-10000;document.body.append(time);await time.updateComplete;\n const before=root(time).textContent;await pause(1100);check('relative time refreshes at a rounded-value boundary',root(time).textContent!==before,{before,after:root(time).textContent});\n time.autoUpdate=false;await time.updateComplete;const stopped=root(time).textContent;await pause(1100);check('autoUpdate false cancels refreshing',root(time).textContent===stopped);\n time.autoUpdate=true;await time.updateComplete;time.remove();const detached=root(time).textContent;await pause(1100);check('detached relative time releases its refresh timer',root(time).textContent===detached);document.body.append(time);await time.updateComplete;check('relative time reconnects using the current instant',root(time).textContent!==detached);\n time.autoUpdate=false;time.date=0;await time.updateComplete;check('epoch zero retains a native absolute datetime',root(time).getAttribute('datetime')==='1970-01-01T00:00:00.000Z');\n time.date='invalid';await time.updateComplete;check('invalid dates render no fabricated date',!time.shadowRoot!.querySelector('time'));time.date='2026-09-21';await time.updateComplete;check('date-only input recovers with UTC semantics',root(time).getAttribute('datetime')==='2026-09-21T00:00:00.000Z');\n const box=document.createElement('div');box.style.cssText='width:130px;font:16px/24px monospace';const truncate=new AcmeMiddleTruncate();truncate.value='start-👨‍👩‍👧‍👦-é-very-long-middle-end';box.append(truncate);document.body.append(box);await truncate.updateComplete;await pause();\n const visible=()=>truncate.shadowRoot!.querySelector('[part=\"text\"]') as HTMLElement;\n check('narrow text has an ellipsis and a full accessible copy',visible().textContent!.includes('…')&&truncate.shadowRoot!.querySelector('.full')!.textContent===truncate.value&&visible().getAttribute('aria-hidden')==='true',visible().textContent);\n const range=document.createRange();const walker=document.createTreeWalker(visible(),NodeFilter.SHOW_TEXT);const nodes:Text[]=[];while(walker.nextNode())nodes.push(walker.currentNode as Text);range.setStart(nodes[0],0);range.setEnd(nodes.at(-1)!,nodes.at(-1)!.length);const selection=window.getSelection()!;selection.removeAllRanges();selection.addRange(range);\n const clipboard=new DataTransfer();const copy=new ClipboardEvent('copy',{bubbles:true,cancelable:true,clipboardData:clipboard});visible().dispatchEvent(copy);\n selection.removeAllRanges();\n box.style.width='1000px';await pause();check('resize restores the complete value',visible().textContent===truncate.value&&!truncate.shadowRoot!.querySelector('.full'));\n truncate.remove();box.style.width='100px';box.append(truncate);await pause();check('reconnection reattaches width observation',visible().textContent!==truncate.value&&visible().textContent!.includes('…'));\n const iframe=document.createElement('iframe');document.body.append(iframe);iframe.contentDocument!.body.style.cssText='width:1000px';iframe.contentDocument!.body.append(truncate);await pause();check('document adoption schedules measurement in the new view',visible().textContent===truncate.value,{shown:visible().textContent,width:root(truncate).clientWidth,scroll:truncate.shadowRoot!.querySelector(\".measure\")!.scrollWidth,styles:truncate.shadowRoot!.adoptedStyleSheets.length});\n iframe.contentDocument!.body.style.width='90px';await pause();check('adopted text continues observing new document widths',visible().textContent!.includes('…'));\n truncate.value='👨‍👩‍👧‍👦'.repeat(20);await truncate.updateComplete;await pause();const shown=visible().textContent!.replace('…','');check('truncation preserves complete grapheme clusters',shown.replaceAll('👨‍👩‍👧‍👦','')==='');\n truncate.value=\"beginning-middle-text-ending\";iframe.contentDocument!.body.style.cssText=\"width:130px;font:12px monospace;direction:rtl\";await truncate.updateComplete;await pause();check(\"RTL preserves both logical text ends\",visible().textContent!.startsWith(\"b\")&&visible().textContent!.endsWith(\"g\")&&visible().textContent!.includes(\"…\"));\n const oldCut=visible().textContent;iframe.contentDocument!.body.style.fontSize=\"24px\";iframe.contentDocument!.fonts.dispatchEvent(new Event(\"loadingdone\"));await pause();check(\"font completion invalidates cached widths\",visible().textContent!==oldCut&&visible().textContent!.length<oldCut!.length);\n iframe.contentDocument!.body.style.zoom=\"2\";await pause();check(\"scaled text remains within its measured root\",visible().getBoundingClientRect().width<=root(truncate).getBoundingClientRect().width+.5,{visible:visible().getBoundingClientRect().width,root:root(truncate).getBoundingClientRect().width,text:visible().textContent});\n const copyBox=document.createElement(\"div\");copyBox.style.cssText=\"width:150px;font:16px/24px monospace\";const copyTarget=new AcmeMiddleTruncate();copyTarget.id=\"copy-target\";copyTarget.value=\"start-very-long-middle-end\";copyBox.append(copyTarget);document.body.append(copyBox);await copyTarget.updateComplete;await pause();\n (window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack};}\n",
+    "detailRunner": "const directory='/tmp/acme-m08-details';\nconst build=await Bun.build({entrypoints:[directory+'/probe.ts'],outdir:directory+'/bundle',target:'browser',format:'esm'});if(!build.success)throw new AggregateError(build.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';\nconst pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');\nconst server=Bun.serve({port:0,hostname:'127.0.0.1',fetch(req){return new URL(req.url).pathname==='/probe.js'?new Response(Bun.file(directory+'/bundle/probe.js')):new Response('<!doctype html><script type=\"module\" src=\"/probe.js\"></script>',{headers:{'Content-Type':'text/html'}})}});\nconst report:any={engines:[],errors:[]};\ntry{for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});try{const page=await browser.newPage();page.on('pageerror',e=>report.errors.push({engine,message:e.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);await page.locator(\"#copy-target\").locator(\"[part=text]\").click({clickCount:3});const copy=await page.evaluate(()=>{const el=document.querySelector(\"#copy-target\");const event=new ClipboardEvent(\"copy\",{bubbles:true,cancelable:true,clipboardData:new DataTransfer()});el.shadowRoot.querySelector(\"[part=text]\").dispatchEvent(event);return {ok:event.defaultPrevented&&event.clipboardData.getData(\"text/plain\")===el.value,selected:window.getSelection()?.toString(),copied:event.clipboardData.getData(\"text/plain\")};});const data=await page.evaluate(()=>window.__results);data.results.push({name:\"trusted selection copies the complete truncated value\",...copy});if(data.error)report.errors.push({engine,message:data.error,stack:data.stack});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok),error:data.error});}finally{await browser.close()}}}finally{server.stop(true)}\nawait Bun.write(directory+'/results.json',JSON.stringify(report,null,2)+'\\n');if(report.errors.length||report.engines.some(r=>r.results.length!==26||r.results.some(v=>!v.ok)))process.exitCode=1;\n",
+    "consumerProbe": "import * as library from '@acmelabs/design-system';\nconst results:any[]=[];const check=(name:string,ok:boolean)=>results.push({name,ok});\ntry{\ncheck('class-only package import stays inert',customElements.get('acme-text')===undefined&&typeof library.AcmeHeading==='function');\nawait import('@acmelabs/design-system/define/text');await import('@acmelabs/design-system/define/heading');await import('@acmelabs/design-system/define/kbd');await import('@acmelabs/design-system/define/code');await import('@acmelabs/design-system/define/relative-time');\ndocument.body.innerHTML='<acme-text size=\"18px\">Text</acme-text><acme-heading as=\"h3\" id=\"target\">Heading</acme-heading><acme-kbd keys=\\'[\"Control\",\"K\"]\\'></acme-kbd><acme-code>const value = 1;</acme-code><acme-relative-time date=\"0\" auto-update=\"false\"></acme-relative-time>';\nfor(const el of document.body.children)if('updateComplete' in el)await el.updateComplete;\ncheck('packed text styles and heading semantics are present',getComputedStyle(document.querySelector('acme-text')!).fontSize==='18px'&&(document.querySelector('acme-heading') as library.AcmeHeading).getHeadingElement().localName==='h3');\ncheck('packed inline code and keyboard labels render',!!document.querySelector('acme-code')!.shadowRoot!.querySelector('code')&&document.querySelector('acme-kbd')!.shadowRoot!.textContent!.includes('K'));\ncheck('packed relative time retains epoch zero',document.querySelector('acme-relative-time')!.shadowRoot!.querySelector('time')!.dateTime==='1970-01-01T00:00:00.000Z');\n(window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error)}}\n",
+    "consumerTypes": "import {type AcmeText,type AcmeHeading,type AcmeKbd,type AcmeRelativeTime,type AcmeLink,configureMessages} from '@acmelabs/design-system';\ndeclare const text:AcmeText,heading:AcmeHeading,kbd:AcmeKbd,time:AcmeRelativeTime,link:AcmeLink;\ntext.size={compact:'14px',expanded:'18px'};text.lineClamp=2;heading.as='h1';const native:HTMLHeadingElement=heading.getHeadingElement();kbd.keys=['Control','K'];kbd.size='small';time.date=new Date();time.format='short';time.autoUpdate=false;link.href='/example';configureMessages('fr',{'kbd.Control.label':'Contrôle'});\n// @ts-expect-error Kbd size is a tier.\nkbd.size='14px';\nconst css:CSSStyleDeclaration=time.style;\n// @ts-expect-error Lit update remains a lifecycle method.\ntime.update=false;\n",
+    "consumerRunner": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m08-consumer\",root=directory+\"/node_modules/@acmelabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\",splitting:true});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/dist/styles/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname.endsWith(\".js\")&&url.pathname!==\"/probe.js\")return new Response(Bun.file(directory+\"/bundle\"+url.pathname),{headers:{\"Content-Type\":\"text/javascript\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.length!==4||r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+  },
+  "finalValidation": {
+    "tests": 883,
+    "failed": 0,
+    "assertions": 15743,
+    "files": 128,
+    "build": "534 modules; 119 elements; compiled templates present",
+    "docs": "93 pages; 119 elements; zero undocumented",
+    "diffCheck": "pass"
+  },
+  "package": "/tmp/acme-m08-package-final/acmelabs-design-system-0.2.0.tgz"
+}

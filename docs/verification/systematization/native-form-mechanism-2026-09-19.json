@@ -1,0 +1,128 @@
+{
+  "date": "2026-09-19",
+  "scope": "Scratch native-form timing comparison; no production implementation",
+  "runtime": "Actual in-app Chromium; rendered complete results observed through browser accessibility tree",
+  "variants": [
+    "TanStack canonical state with immediate ElementInternals synchronization",
+    "Same callback bridge, control markup and state; synchronization waits for hostUpdate/hostUpdated"
+  ],
+  "results": [
+    {
+      "name": "immediate submission after property write",
+      "synchronous": true,
+      "renderCycle": false
+    },
+    {
+      "name": "immediate required validity",
+      "synchronous": true,
+      "renderCycle": false
+    },
+    {
+      "name": "immediate valid state",
+      "synchronous": true,
+      "renderCycle": false
+    },
+    {
+      "name": "submission remains current when render is rejected",
+      "synchronous": true,
+      "renderCycle": false
+    },
+    {
+      "name": "reset submission is immediate",
+      "synchronous": true,
+      "renderCycle": false
+    },
+    {
+      "name": "fieldset disables inner control and submission",
+      "synchronous": true,
+      "renderCycle": true
+    },
+    {
+      "name": "fieldset does not set own disabled attribute",
+      "synchronous": true,
+      "renderCycle": true
+    },
+    {
+      "name": "fieldset re-enable restores control",
+      "synchronous": true,
+      "renderCycle": true
+    },
+    {
+      "name": "own disabled survives parent changes",
+      "synchronous": true,
+      "renderCycle": true
+    },
+    {
+      "name": "first legend exception",
+      "synchronous": true,
+      "renderCycle": true
+    },
+    {
+      "name": "external form owner",
+      "synchronous": true,
+      "renderCycle": true
+    },
+    {
+      "name": "name assignment updates submission immediately",
+      "synchronous": true,
+      "renderCycle": true
+    },
+    {
+      "name": "explicit restoration callback updates store and submission",
+      "synchronous": true,
+      "renderCycle": false
+    },
+    {
+      "name": "detach write and reconnect",
+      "synchronous": true,
+      "renderCycle": true
+    },
+    {
+      "name": "one submission despite inner native input",
+      "synchronous": true,
+      "renderCycle": true
+    }
+  ],
+  "counts": {
+    "synchronous": {
+      "pass": 15,
+      "fail": 0
+    },
+    "renderCycle": {
+      "pass": 9,
+      "fail": 6
+    }
+  },
+  "finding": "Native submission and validity must synchronize independently of Lit rendering. The same controller and thin native callback bridge can satisfy the targeted text-control cases. The experiment compares synchronization timing, not proof that a mixin is superior to every possible form base.",
+  "sourceObservations": [
+    {
+      "file": "src/components/input/input.ts",
+      "detail": "updated(ch) calls setFormValue for value changes; reset assigns value; no native disabled/restoration callback or validity mirroring in the inspected file."
+    },
+    {
+      "source": "https://github.com/material-components/material-web/blob/56a486b147b8b7e95e6e8035fa02aed7e0009a85/labs/behaviors/form-associated.ts",
+      "detail": "Prior complete source comparison: form-associated mixin and synchronous form values."
+    },
+    {
+      "source": "https://github.com/shoelace-style/webawesome/blob/6d29eb0a71ca6d4fb9a127940126a62a7668d59c/packages/webawesome/src/internal/webawesome-form-associated-element.ts",
+      "detail": "Prior complete source comparison: specialized base plus validators; general synchronization in willUpdate. This scratch render variant is not Web Awesome itself."
+    },
+    {
+      "source": "https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/setFormValue",
+      "detail": "Submission value and restoration state are distinct native inputs."
+    },
+    {
+      "source": "https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/setValidity",
+      "detail": "Validity flags/message and optional shadow descendant focus anchor belong to ElementInternals."
+    }
+  ],
+  "limitations": [
+    "Text-control prototype only; no checkbox/radio/number/file/composite or managed-form certification.",
+    "Explicit invocation tests restoration callback plumbing only, not browser-driven history restoration or autofill.",
+    "No submitter, reportValidity focus, external Field labelling, nested radio/RTL, Firefox/WebKit, assistive technology or React checks.",
+    "The prototype uses direct property accessors and a simple required-value rule; it is not the finished shared module.",
+    "No final choice of controller/base/mixin interface and no new package is approved."
+  ],
+  "fixtureSource": "\nimport {LitElement,html} from \"lit\";\nimport {createAtom} from \"@tanstack/lit-store\";\nconst results=[];\nconst check=(mode,name,ok,detail)=>results.push({mode,name,ok,detail});\n\nclass NativeFormController{\n internals; sub;\n constructor(host,store,mode){\n  this.host=host;this.store=store;this.mode=mode;\n  this.internals=host.attachInternals();host.addController(this);\n }\n sync(){\n  const s=this.store.get();this.internals.setFormValue(s.value,s.value);\n  const invalid=s.required&&!s.value;\n  const anchor=this.host.shadowRoot?.querySelector(\"input\")??undefined;\n  this.internals.setValidity(invalid?{valueMissing:true}:{},invalid?\"Enter a value.\":\"\",anchor);\n }\n hostConnected(){this.sync();if(this.mode===\"sync\")this.sub=this.store.subscribe(()=>this.sync());}\n hostDisconnected(){this.sub?.unsubscribe();this.sub=undefined;}\n hostUpdate(){if(this.mode===\"render\")this.sync();}\n hostUpdated(){this.sync();}\n associated(){this.sync();}\n disabled(value){this.host.setState({effectiveDisabled:value});}\n reset(){this.host.value=this.host.getAttribute(\"value\")??\"\";}\n restore(value){if(typeof value===\"string\")this.host.value=value;}\n}\nfunction formHost(Base){\n return class extends Base{\n  static formAssociated=true;\n  formAssociatedCallback(){this.formControl.associated();}\n  formDisabledCallback(value){this.formControl.disabled(value);}\n  formResetCallback(){this.formControl.reset();}\n  formStateRestoreCallback(value,mode){this.formControl.restore(value,mode);}\n };\n}\nfor(const mode of [\"sync\",\"render\"]){\n class Probe extends formHost(LitElement){\n  state=createAtom({value:\"\",required:false,effectiveDisabled:false});\n  formControl=new NativeFormController(this,this.state,mode);\n  allowUpdate=true;\n  get value(){return this.state.get().value;}\n  set value(v){this.setState({value:v});}\n  get required(){return this.state.get().required;}\n  set required(v){this.setState({required:v});}\n  get name(){return this.getAttribute(\"name\")??\"\";}\n  set name(v){this.setAttribute(\"name\",v);}\n  get disabled(){return this.hasAttribute(\"disabled\");}\n  set disabled(v){this.toggleAttribute(\"disabled\",v);}\n  setState(patch){this.state.set(s=>({...s,...patch}));if(mode===\"sync\")this.formControl.sync();this.requestUpdate();}\n  shouldUpdate(){return this.allowUpdate;}\n  render(){const s=this.state.get();return html`<input aria-label=\"Probe\" .value=${s.value} ?required=${s.required} ?disabled=${s.effectiveDisabled}>`;}\n }\n customElements.define(\"native-form-\"+mode,Probe);\n const form=document.createElement(\"form\");form.id=\"form-\"+mode;document.body.append(form);\n const el=document.createElement(\"native-form-\"+mode);el.name=\"entry\";form.append(el);await el.updateComplete;\n el.value=\"new\";check(mode,\"immediate submission after property write\",new FormData(form).get(\"entry\")===\"new\");\n await el.updateComplete;el.value=\"\";el.required=true;check(mode,\"immediate required validity\",!form.checkValidity());\n await el.updateComplete;el.value=\"valid\";check(mode,\"immediate valid state\",form.checkValidity());\n await el.updateComplete;el.allowUpdate=false;el.value=\"gated\";await el.updateComplete;check(mode,\"submission remains current when render is rejected\",new FormData(form).get(\"entry\")===\"gated\");\n el.allowUpdate=true;el.requestUpdate();await el.updateComplete;\n el.setAttribute(\"value\",\"reset\");form.reset();check(mode,\"reset submission is immediate\",el.value===\"reset\"&&new FormData(form).get(\"entry\")===\"reset\");await el.updateComplete;\n const fieldset=document.createElement(\"fieldset\");form.append(fieldset);fieldset.append(el);await el.updateComplete;fieldset.disabled=true;await el.updateComplete;check(mode,\"fieldset disables inner control and submission\",el.shadowRoot.querySelector(\"input\").disabled&&!new FormData(form).has(\"entry\"));\n check(mode,\"fieldset does not set own disabled attribute\",!el.disabled);\n fieldset.disabled=false;await el.updateComplete;check(mode,\"fieldset re-enable restores control\",!el.shadowRoot.querySelector(\"input\").disabled&&new FormData(form).has(\"entry\"));\n el.disabled=true;fieldset.disabled=true;fieldset.disabled=false;await el.updateComplete;check(mode,\"own disabled survives parent changes\",el.disabled&&el.shadowRoot.querySelector(\"input\").disabled);el.disabled=false;\n const legend=document.createElement(\"legend\");fieldset.prepend(legend);legend.append(el);fieldset.disabled=true;await el.updateComplete;check(mode,\"first legend exception\",!el.shadowRoot.querySelector(\"input\").disabled&&new FormData(form).has(\"entry\"));fieldset.disabled=false;\n document.body.append(el);el.setAttribute(\"form\",form.id);await el.updateComplete;check(mode,\"external form owner\",el.formControl.internals.form===form&&new FormData(form).get(\"entry\")===el.value);\n el.name=\"renamed\";check(mode,\"name assignment updates submission immediately\",new FormData(form).has(\"renamed\")&&!new FormData(form).has(\"entry\"));\n el.formStateRestoreCallback(\"restored\",\"restore\");check(mode,\"explicit restoration callback updates store and submission\",el.state.get().value===\"restored\"&&new FormData(form).get(\"renamed\")===\"restored\");\n await el.updateComplete;el.remove();el.value=\"detached\";document.body.append(el);await el.updateComplete;check(mode,\"detach write and reconnect\",new FormData(form).get(\"renamed\")===\"detached\");\n const count=new FormData(form).getAll(\"renamed\").length;check(mode,\"one submission despite inner native input\",count===1,count);\n form.remove();el.remove();\n}\ndocument.querySelector(\"#results\").textContent=JSON.stringify({runtime:\"Chromium; scratch native form mechanisms\",results},null,2);\n",
+  "next": "Keep immediate form synchronization in the module contract. Resolve the reusable native callback bridge and control-specific mappings with remaining browser/Field/managed-form cases before Phase 5 approval."
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m02",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.406Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m02-css-pipeline-2026-09-20.json",
+      "destination": "docs/verification/systematization/m02-css-pipeline-2026-09-20.json",
+      "bytes": 616046,
+      "sha256": "71448c44d6b1c1366d329f2092a71f562cb8468e6ecfb11079bf76d61003a857"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

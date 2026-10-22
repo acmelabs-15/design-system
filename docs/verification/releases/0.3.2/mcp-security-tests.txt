@@ -1,0 +1,18 @@
+bun test v1.4.2 (744846f84)
+
+packages/mcp/src/__tests__/catalog.test.ts:
+(pass) versioned documentation catalog > requires an explicit exact version and never substitutes a framework [3.10ms]
+(pass) versioned documentation catalog > preserves complete component facts and isolates release and caller mutations [0.17ms]
+(pass) versioned documentation catalog > bounds search and filters unavailable framework content [2.17ms]
+(pass) versioned documentation catalog > uses matching stable resources and never interprets resource IDs as filesystem paths [0.67ms]
+(pass) versioned documentation catalog > rejects incomplete and duplicate release records [1.33ms]
+(pass) malformed non-string release record IDs cannot pass string-pattern coercion [0.03ms]
+
+packages/mcp/src/__tests__/server.test.ts:
+(pass) MCP schemas, read-only tools and resources work through the protocol [24.65ms]
+(pass) the Bun stdio entry reads only its adjacent packaged release [129.25ms]
+
+ 8 pass
+ 0 fail
+ 65 expect() calls
+Ran 8 tests across 2 files. [946.00ms]

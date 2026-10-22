@@ -1,0 +1,78 @@
+{
+  "expectations": [
+    {
+      "text": "The React fixture typechecks against exact matching package versions and individual wrapper imports.",
+      "passed": true,
+      "evidence": "app.tsx uses six individual generated wrapper imports. Installed core and React manifests both say 0.2.0. Grader reran strict tsc with the supplied tsconfig: exit 0; skipLibCheck=true limits dependency checking."
+    },
+    {
+      "text": "Keyboard tab activation updates the associated panel and radio selection remains an independent single-choice form value.",
+      "passed": false,
+      "evidence": "verify.ts ArrowRight changes the selected value and rendered summary; independent plan selection and exactly one checked RadioCard pass. But app.tsx has no native form, verify.ts has no FormData check, and Output panel visibility is not directly asserted on activation. The full compound assertion is unproven; the prompt did not explicitly ask for form submission."
+    },
+    {
+      "text": "State preservation uses the documented content API and a typed custom event callback receives actual event detail.",
+      "passed": true,
+      "evidence": "Tabs lazyMount with unmountOnExit=false and TabPanel renderContent preserve the editor. result.json records the edited text and one mount/zero cleanups across tab changes. Inferred wrapper callbacks statically type event.detail.value as string; actual event log values are output, source and pro."
+    },
+    {
+      "text": "Unmount removes active callbacks and remount restores correct behavior without duplicated state owners.",
+      "passed": false,
+      "evidence": "result.json proves editor effect cleanup (mounts=2, cleanups=1) and no duplicate callbacks on the new mounted instance. It never retains a detached wrapper or dispatches to it, so removal of active callbacks from the old instance is unproven. No second selection engine appears in source."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 2,
+    "total": 4,
+    "pass_rate": 0.5
+  },
+  "execution_metrics": null,
+  "timing": null,
+  "metrics_availability": "Host did not supply token counts, duration or full executor tool metrics. Unavailable, not zero.",
+  "claims": [
+    {
+      "claim": "Final harness reports 14 passing checks.",
+      "type": "quality",
+      "verified": true,
+      "evidence": "result.json has 14 checks with pass=true; this is distinct from the four independent grades."
+    },
+    {
+      "claim": "Unmount removes callbacks from the detached wrapper.",
+      "type": "quality",
+      "verified": false,
+      "evidence": "Only editor effect cleanup and fresh-instance callback counts are measured. No detached event probe exists."
+    }
+  ],
+  "user_notes_summary": {
+    "uncertainties": [
+      "Fourteen final harness checks pass, but two original compound assertions are not fully evidenced.",
+      "The screenshot shows unequal attached-card heights. It also captures native Pro checked before the summary commit (still starter); it is not a settled end-to-end rendering oracle.",
+      "Repairs were in discovery/setup/harness: missing card-group declaration, invalid TS option, early React summary observation, check-count bookkeeping and favicon serving."
+    ],
+    "needs_review": [],
+    "workarounds": []
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "assertion": "Keyboard tab activation updates the associated panel and radio selection remains an independent single-choice form value.",
+        "reason": "Prompt asks for single-choice cards but not a native form. Require a named form and actual FormData in the prompt, or remove form-value wording from the assertion; do not silently count a checked radio as submitted form evidence."
+      },
+      {
+        "assertion": "Unmount removes active callbacks and remount restores correct behavior without duplicated state owners.",
+        "reason": "Use a retained detached instance and synthetic custom event to prove old callbacks are removed, then count one callback after remount."
+      },
+      {
+        "reason": "Assertions omit visible attachment and selected-indicator paint. Unequal card heights and a confirmed focus/hover paint defect demonstrate why settled geometry and pixel oracles matter."
+      }
+    ],
+    "overall": "Same four original assertions applied to both configurations. Final functional harness passes and proof of the compound assertions are recorded separately."
+  },
+  "evidence_scope": "Original final source, saved results/attempts, verification source, screenshots, current installed version manifests and independent typechecks. Full agent transcripts were not supplied; process claims based only on self-reports are not independently established.",
+  "notes": [
+    "Fourteen final harness checks pass, but two original compound assertions are not fully evidenced.",
+    "The screenshot shows unequal attached-card heights. It also captures native Pro checked before the summary commit (still starter); it is not a settled end-to-end rendering oracle.",
+    "Repairs were in discovery/setup/harness: missing card-group declaration, invalid TS option, early React summary observation, check-count bookkeeping and favicon serving."
+  ]
+}

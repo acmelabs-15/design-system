@@ -1,0 +1,69 @@
+{
+  "capturedDate": "2026-09-19",
+  "phase": "2.3",
+  "references": {
+    "date": "2026-09-19",
+    "chakra": {
+      "commit": "1ff9873754e9913fc3d849d23c0844a628f5f20d",
+      "scope": "Complete Stat docs/MDX, all 10 referenced examples, implementation, recipe, formatting export and indicator icons.",
+      "finding": "Minimal label/value plus optional unit, help and indicators. StatGroup shares recipe defaults and layout, without selection. Formatting, loading and charts are separate responsibilities."
+    },
+    "radix": {
+      "commit": "1faff10ac26ae17f09944d418c6949b93fc6b566",
+      "scope": "Complete Themes component catalogue and exports; Data List docs, implementation, properties and CSS.",
+      "finding": "No named Stat/Statistic in the inspected scope. Data List provides metadata terms/values with real boxes and grid/subgrid alignment."
+    },
+    "antd": {
+      "commit": "fea0690eecac2d6b80b2c074e991db2a7a63e0a7",
+      "scope": "Complete Statistic docs/source, all eight examples and semantic preview, Number and formatting utilities.",
+      "finding": "Card is separate. Loading skeleton has no automatic announcements. Omitted-value zero and decimal truncation are not adopted house defaults."
+    },
+    "material": {
+      "commit": "56a486b147b8b7e95e6e8035fa02aed7e0009a85",
+      "scope": "Complete component catalogue and non-truncated 1,732-entry Web tree; all four Card tabs; all three token sets expanded at Default/Light; four measurement/state diagrams viewed; Labs Card base, three variants, four styles, demo and three tests read in full.",
+      "finding": "No named Stat/Statistic/Metric/Tile in the inspected catalogue/tree. Card owns a surface, not metric or selection state. Directly actionable Card and child actions have distinct constraints. Desktop internal Card scrolling is permitted, unlike mobile guidance."
+    },
+    "pro": [
+      "Seven actual Stat-import blocks in the complete 338-block collection, plus eight plain-text metric examples.",
+      "Webhooks Detail 04 composes a rich Stat; Charts 02 uses click handlers on passive Stat content without keyboard control semantics.",
+      "Card, Stat and Chart compose independently. Labels, help, units and formatting are useful optional capabilities."
+    ],
+    "sourceFreeze": true
+  },
+  "localSourceFindings": [
+    "Stat and Tile both label/value presentations; Tile includes own surface and compact sizing.",
+    "Stat owns hard-coded meter; stat helper parts render dd in separate shadow roots; semantic/style composition needs browser verification.",
+    "Stat docs claim unit/meter slots absent fromrender; actual meterLabel lowercasesattribute whileexamplesusemeter-label (knownmetadatafinding).",
+    "StatStrip owns clickselection but no value/slot synchronization, arrow navigation or panel associations; display:contents conflicts standingreal-boxrule.",
+    "Trend ties up tosuccess/down towarn; docsChurn lowerbettercounterexample. StatDelta owngood/bad tone doesnot necessarilyoverride nestedTrendcolors.",
+    "SparkhanddrawnSVG withpoints, arialhidden andtone; compare selectedTanStackCharts separately; do notaddengineintoStat.",
+    "FoldusesTile summary; preserveclosedsummary capability whenreviewingTile, FoldandGroup later."
+  ],
+  "decisions": {
+    "selected": "One flexible Stat family",
+    "trend": "Peter explicitly selected no separate Trend component; change display belongs to Stat. Direction and favourable/unfavourable treatment are independent.",
+    "tile": {
+      "selected": "Use Card and Stat",
+      "source": "Question tile_disposition: Use Card and Stat (Recommended)",
+      "migration": "Remove Tile and Tiles as separate interfaces. Card covers related-content surfaces; Stat covers measurements; shared layout arranges them.",
+      "preserve": "Small labelled measurements, qualifiers, plain and larger presentations as warranted in the inventory, and collapsed-section summaries.",
+      "notSelected": "No exact Card/Stat appearance, interface, spacing or Group/selection control contract selected."
+    },
+    "source": "Peter: Great, So no more separate trend component, let's continue.",
+    "phase": "2.3",
+    "selectableStats": {
+      "selected": "Composed example",
+      "source": "Question selectable_stat_group_shape: Composed example (Recommended)",
+      "effect": "Replace Stat Strip and its dedicated item interface during migration with documented composition of Stat and shared selection controls. Application owns chart data.",
+      "dependency": "Return during Phase 2.4 Group; exact control semantics, accessible Stat content, keyboard interaction and interfaces remain for inventory.",
+      "candidateControls": "Peter suggested Stats within Radio Cards or Checkbox Cards arranged by Group. Treat as candidates, not selected controls. Compare one choice, multiple comparisons and switching panels during Phase 2.4 Group."
+    }
+  },
+  "open": [
+    "Stat helper/public interface design",
+    "Formatting, loading and accessible descriptions",
+    "Meter/Spark and Chart/Progress responsibilities",
+    "Selection-card and Tabs composition"
+  ],
+  "implementationApproved": false
+}

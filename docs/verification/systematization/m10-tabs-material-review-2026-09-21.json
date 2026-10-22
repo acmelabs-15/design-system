@@ -1,0 +1,321 @@
+{
+  "date": "2026-09-21",
+  "subject": "Material Tabs reference completion for M10",
+  "coverage": {
+    "pages": 4,
+    "expandedTokenSets": [
+      "Primary navigation, Default Light",
+      "Secondary navigation, Default Light"
+    ],
+    "staticFigures": 28,
+    "figureCounts": {
+      "overview": 2,
+      "specs": 8,
+      "guidelines": 17,
+      "accessibility": 1
+    },
+    "method": "Rendered browser article text read in full; both token sets expanded; all static figure captures inspected. Decorative/navigation content is distinguished from the article.",
+    "limits": [
+      "Embedded videos were identified through their article descriptions; no frame-by-frame equivalence claim.",
+      "Material source values remain reference values. House typography, color and density are separate decisions."
+    ]
+  },
+  "sources": [
+    {
+      "url": "https://m3.material.io/components/tabs/overview",
+      "characters": 1813,
+      "sha256": "df4c2aa302b8f7d3fb91b25ba7aba0351290ea31c5ae82ad93e8a7563a68dbf0"
+    },
+    {
+      "url": "https://m3.material.io/components/tabs/specs",
+      "characters": 7448,
+      "sha256": "b28b8a5c4a946c59f34401952d1c69dffdf72dae71c0652bba754a41bcec30cb"
+    },
+    {
+      "url": "https://m3.material.io/components/tabs/guidelines",
+      "characters": 7972,
+      "sha256": "ff5fc84cf2ecb0d71c2b422a6485006c44cb87add4f5bd33c3bca885e2eba44a"
+    },
+    {
+      "url": "https://m3.material.io/components/tabs/accessibility",
+      "characters": 4687,
+      "sha256": "31af79788cded51a0e22a8f1fe228afec3e3fe0589e4b40a3d95e527f9a75bc9"
+    }
+  ],
+  "figures": [
+    {
+      "section": "overview",
+      "index": 0,
+      "alt": "A bar of primary tabs with destinations labeled Flights, Trips, and Explore. And a bar of secondary tabs with destinations labeled Overview and Specifications",
+      "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm2kfqg9k-1.png?alt=media&token=0b9bbd9d-bec7-468e-8e83-1a7b6d08763a",
+      "sha256": "b91ebc2ef67e5161767f32d7d2afddb874e44db5904e42251d9fb1c23b4d6b67"
+    },
+    {
+      "section": "overview",
+      "index": 1,
+      "alt": "Bar of primary tabs with destinations labeled Flights, Trips, and Explore",
+      "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm2k3okei-2.png?alt=media&token=cbbae98e-4d7c-4c85-8e63-1056f6e38129",
+      "sha256": "e4a74f374c12f5895c49aa652f4513f455e0131b15b9a0778380db33079e1b67"
+    },
+    {
+      "section": "specs",
+      "index": 0,
+      "alt": "6 elements of primary tabs.",
+      "src": "https://lh3.googleusercontent.com/0bS99kVjUnrfIUIKGAMWl8zeoYciELsgT5jPWeC4JJ9gcDC2cfnKH-p9qOYsX0OJ000ePPYMARw_YXMtax_UeITNCH-W5hn03wKl-nl0Al9scw=s0",
+      "sha256": "5017d34c140b9752f63470ca2e8f2f75aebc570116de77ad652cbec3560cb0d2"
+    },
+    {
+      "section": "specs",
+      "index": 1,
+      "alt": "7 color roles applied to primary tabs in light and dark themes.",
+      "src": "https://lh3.googleusercontent.com/dmXLWuK2u_6U_iIQaK_nWtayfYfcfZU6mZyf5IAPmgu9y14-Puo51QN7a74fZJ34z0ESD88OfHOvUOFcnTpSARGU9yDXHPUQrcBqledF6BA=s0",
+      "sha256": "9528ab090f8a2b8cf8363746ef50ef1068202b8cc178c3bcac60d565e8a15c33"
+    },
+    {
+      "section": "specs",
+      "index": 2,
+      "alt": "Diagram of all primary tab states in both light and dark mode",
+      "src": "https://lh3.googleusercontent.com/SVFdAJr5_8cGN6FTMVabD3nie8TwI7380y6PuVzSxatYH1YBsdf49aWd1upXNO7uDcsKDd8Uge2WtDUPtTtnuFCKKgIk-q6iraC6rfP8bcY=s0",
+      "sha256": "e26e9ca2431d44655cef5abe068078953bcea54f5f532751e4c925c94c98ad73"
+    },
+    {
+      "section": "specs",
+      "index": 3,
+      "alt": "5 elements of secondary tabs.",
+      "src": "https://lh3.googleusercontent.com/kyON5nMIlowboe0XsmPdlYKlFdIzCFTab9gzT4uEJtS2WMvRd1uBJHEMDDOKujs1u1iJYlb66cSc7LBfMuN9F3HRwocQhsYw0wvUW2lQxuBM=s0",
+      "sha256": "3d1ff387e330636ae50ea5a1a083b632adc7ae63005871629bace0c998b16b3f"
+    },
+    {
+      "section": "specs",
+      "index": 4,
+      "alt": "5 color roles applied to secondary tabs in light and dark themes.",
+      "src": "https://lh3.googleusercontent.com/mrLdFHBC7H_M0bhZxPDT-VaJeoB01vnZMaY_9Pyj_EenTQbIT6OO75CWFdZLyvMxD0ycppRCoWXustGmsKh3K3M8CALUwNj7knXGU6JyrGb5=s0",
+      "sha256": "33ac1d382257eba52ae3838be46ed354ab50841ff367704e69ae9b37e2e63d60"
+    },
+    {
+      "section": "specs",
+      "index": 5,
+      "alt": "Diagram of all secondary tab states in both light and dark mode",
+      "src": "https://lh3.googleusercontent.com/oEbOwsXXP2m1EE9Sh7tJFcTP1GIHVkX6lbOkKN-gdwnF4WbJnoyezqHEr1rtaeAPTY2cHj6txNpy91YgYRVCBqht87aUU6VlIwJg1rnvvniy=s0",
+      "sha256": "1f64b10cb2c03c456353464bdda385a41e551930d2256516b9d886bc396e3813"
+    },
+    {
+      "section": "specs",
+      "index": 6,
+      "alt": "Diagram of measurements for four and two tabs per container, including icon and label placement.",
+      "src": "https://lh3.googleusercontent.com/KNDnEXfu6HZxqBLD84eQfamUeoe8b_N3wygSYqpk5Hq1MxT7_9RNL34wYce0tPDml6rb6lP7cQO8lYhxEcPOOXIGAmb3ArqY-ay-lDUzbqoW=s0",
+      "sha256": "6854c31b64eb6b94e6e7457fe74f3fa50767115e3303e29b9e3e08e33fdbd650"
+    },
+    {
+      "section": "specs",
+      "index": 7,
+      "alt": "Diagram of Primary tab active indicator measurements.",
+      "src": "https://lh3.googleusercontent.com/lEVgg_QRIKA7HpYLAWEddeY7ZCHa5FmlPc1K3C0yx1c5cmW_wxci7cAmdW_55RvUextO4vEHupXxMrWXSna4BHfO7UcWU9Q_QKrk2LESoMbVoA=s0",
+      "sha256": "36c30f8e3132441d23ace3bf268599fe5460d6e26b4fbf153ac84134221b8c5e"
+    },
+    {
+      "section": "guidelines",
+      "index": 0,
+      "alt": "Mobile screen with 3 tabs: video, photos and audio. Each tab has an an icon and text.",
+      "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm2k0hhto-1.png?alt=media&token=faff99ee-2899-443c-af57-12c65d59fbff",
+      "sha256": "cc27406cc6034b15f231f96c3322563f66610b45ac0986618397bf7d61a5db9b"
+    },
+    {
+      "section": "guidelines",
+      "index": 1,
+      "alt": "3 primary tabs above 3 secondary tabs.",
+      "src": "https://lh3.googleusercontent.com/idzlIeuy-TH2VM7D0-YvIt28GrEONuzYVwq1Ov4RBs_p3MNmu4Ji52Zx-_b5-AtLHAGyXOiXeTMrQtrkiTwGcyThOwwaKtQc8NbP-UNUpDG_=s0",
+      "sha256": "8069020d7a1a33cb065befb21bb93229320087c1e243bdb572981bcb815656aa"
+    },
+    {
+      "section": "guidelines",
+      "index": 2,
+      "alt": "Scrolling up and down through content, then swiping left through tabs.",
+      "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm2k0jkg6-3.png?alt=media&token=45142db9-88cd-4311-b2b7-fcd6f1bf4666",
+      "sha256": "484d0e0196f86192a841819b0a1a28898b1df6d12cc6a58eec150266123b401a"
+    },
+    {
+      "section": "guidelines",
+      "index": 3,
+      "alt": "Mobile screen with scrollable tabs of sequential content: Chapter 1, Chapter 2, Chapter 3 and Chapter 4.",
+      "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm2k0jyu3-4.png?alt=media&token=47a63c09-2bf0-41e1-80fc-92f8783b19a8",
+      "sha256": "23673f6f91f0228e0337c6051b18e55549c14fc2d178acf5c1b635f6bc3c4925"
+    },
+    {
+      "section": "guidelines",
+      "index": 4,
+      "alt": "Six components of tabs.",
+      "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm2k0lum1-5.png?alt=media&token=07a5972d-391d-41a3-9a79-eafe77cd8f25",
+      "sha256": "06e3f9def0008207f397403c34996d3f74eca7779b2e471a2a3fb3ec52bb834e"
+    },
+    {
+      "section": "guidelines",
+      "index": 5,
+      "alt": "Mobile screen with fixed tabs with a dotted border to illustrate the container area.",
+      "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm2k0mdfv-6.png?alt=media&token=6eab5596-fd3e-4c96-b8dc-3bdd18a576ae",
+      "sha256": "6c1db17be5f59b18643a4f48cb65844764e7ffafabc6a2b4f7923f58dd8e8ed6"
+    },
+    {
+      "section": "guidelines",
+      "index": 6,
+      "alt": "Mobile screen with tabs that use both icons and labels.",
+      "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm2k0o3dw-7.png?alt=media&token=4453d8d6-48b9-4c46-bdef-c67469c6874e",
+      "sha256": "b8fb56ae5ad50a2a36a157abefeb2c27abc06fa36d50ca68405a1a2fe454bf7e"
+    },
+    {
+      "section": "guidelines",
+      "index": 7,
+      "alt": "Mobile screen with tabs represented by icons  for “wishlist” and “location”.",
+      "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm2k0sbsy-8.png?alt=media&token=feb6c69b-48e7-47c7-a3ef-c8101a1d086a",
+      "sha256": "14883a8fdcb471fe72b9f60c4d856aba575a5d7b29518dd8675cb3805fa21e8e"
+    },
+    {
+      "section": "guidelines",
+      "index": 8,
+      "alt": "Mobile screen where \"purchases” tab has text only and “wishlist” tab has text and icon.",
+      "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm2k0t3i6-9.png?alt=media&token=8943b2f8-f6e6-4806-8b42-19cbdd777e22",
+      "sha256": "d1a2020ac5e1bd43f3ceaec60df2325a800989058d93c7bae184d23c2e3ab284"
+    },
+    {
+      "section": "guidelines",
+      "index": 9,
+      "alt": "Mobile screen with scrollable tabs in a single row.",
+      "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm2k1942z-10.png?alt=media&token=c814722a-2e66-42b2-a087-253f3dffcadc",
+      "sha256": "188323b8d87601fd4de4b1c14b738574d2bc9d43f9d5773095cf09eb67f19ee7"
+    },
+    {
+      "section": "guidelines",
+      "index": 10,
+      "alt": "Screen with scrollable tabs offset from the leading edge by 52dp.",
+      "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm2k19jjz-11.png?alt=media&token=ba85424e-ac68-4880-8ce6-9772253d3871",
+      "sha256": "316d18ceb4e6b143ce1be23e8fb0ad310e4716a06c3015c0bc3ea2b1c9868396"
+    },
+    {
+      "section": "guidelines",
+      "index": 11,
+      "alt": "Screen with scrollable tabs, 2 of which are truncated to “Australian” showing how truncation can confuse users.",
+      "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm2k1a0sc-12.png?alt=media&token=d0344e50-67db-4791-99d8-05f7c782bf67",
+      "sha256": "dd9cda4ecbb69b749f40a7f90bccf9fe703ad0576927806868ba2c3f46c4ce40"
+    },
+    {
+      "section": "guidelines",
+      "index": 12,
+      "alt": "Mobile screen with tabs that use both icons and labels.",
+      "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm2k1yl6w-13.png?alt=media&token=b128a5c0-f67d-4194-bc94-d69b547ddc8c",
+      "sha256": "623daa10f8ee38486fa0a0e2a8460c42a49e9b6014dd388339e703053e00e20a"
+    },
+    {
+      "section": "guidelines",
+      "index": 13,
+      "alt": "Mobile screen with primary tabs near the top of the screen.",
+      "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm2k20o4c-15.png?alt=media&token=1c7dd05f-a6bd-4c00-a290-5ebdd692a1fb",
+      "sha256": "019c2a93da641a6ac31f85eb4eac207e1b4db9a815a3c8f863bb934a469ea3ad"
+    },
+    {
+      "section": "guidelines",
+      "index": 14,
+      "alt": "Mobile screen with secondary tabs below the primary tabs.",
+      "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm2k217y6-16.png?alt=media&token=3a2e7337-2872-4ea8-a56e-9292b857d1cf",
+      "sha256": "5cdccd92850aa08d78b5447be0e5009236ed186a7e6b5211ec0b4bb19fb8c638"
+    },
+    {
+      "section": "guidelines",
+      "index": 15,
+      "alt": "Four fixed tabs spaced to match one another.",
+      "src": "https://lh3.googleusercontent.com/FyF1DB36V4-1BUcdhWode9xWyMAv8dxbQI41nyqeelttSpQive9jjYbxjC6qmmZCq7-7OKSAtlkWeFG0ufcBT-KVUFHAniHePE3F4ZcTy382=s0",
+      "sha256": "a93e7e03150d6aa8fa514a15bf9b1d86e3f38915d9273c1166e06f9370e8bd35"
+    },
+    {
+      "section": "guidelines",
+      "index": 16,
+      "alt": "Four states of a tab.",
+      "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm2k2312r-18.png?alt=media&token=097ee5d4-3881-444a-8729-143cad991109",
+      "sha256": "d0dd7ae9fde17c3f10e415b7dabcaedea2481592ed100bf2cc3241c90da53a66"
+    },
+    {
+      "section": "accessibility",
+      "index": 0,
+      "alt": "Small device screen  with the tab highlighted and the label and role illustrated.",
+      "src": "https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fm2k3h2mn-7.png?alt=media&token=47b7122f-9754-488f-8436-39a6b015175a",
+      "sha256": "50bf18c1d5b6236d0b98b467ffcb5629546c6911e57273af686771ba9f446f13"
+    }
+  ],
+  "findings": [
+    "Primary indicator height is 3dp, minimum length 24dp, label-relative inset 2dp on each side; the diagram/table identifies top rounded corners with a flat bottom.",
+    "Primary indicator and active text/icon use the primary color role. The label/indicator move together semantically, while focus and selection remain distinct behavior concerns.",
+    "Secondary tabs use a full-width 2dp line. House inset tabs are Peter's separate treatment, not Material secondary tabs.",
+    "Material containers are 48dp text-only and 64dp stacked icon plus label; these do not silently replace house spacing/density.",
+    "The accessibility guidance distinguishes focus navigation and activation and warns against continuously looping a scroll surface. House automatic/manual activation follows the approved APG-style contract.",
+    "Badge content, panels, app-bar placement and swipe interactions remain separate composition responsibilities. No automatic swipe gesture is added by this review."
+  ],
+  "implementationSources": [
+    {
+      "url": "https://raw.githubusercontent.com/material-components/material-web/main/tabs/internal/tab.ts",
+      "sha256": "16fd0970f3a3e6e62e4270de65fae5c9a9b15adb3ceeae496ae6108c7371332e",
+      "lines": 214
+    },
+    {
+      "url": "https://raw.githubusercontent.com/material-components/material-web/main/tabs/internal/tabs.ts",
+      "sha256": "f117bd66694b20ace41086fc02e852fdcb8dbedba933f2d7abe6f1b5bf614c96",
+      "lines": 319
+    },
+    {
+      "url": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/tabs.md",
+      "sha256": "a467a4d710246d894509fb1df01e4ab735e61cc254df8729085622958d3e1c1b",
+      "lines": 443
+    }
+  ],
+  "behaviorReference": "https://www.w3.org/WAI/ARIA/apg/patterns/tabs/",
+  "implementationFindings": [
+    "Material Web uses ElementInternals roles on the tab/list hosts and presentation divs; it is not a native-button implementation.",
+    "Its autoActivate defaults false and its slot-change handler chooses a replacement when active is missing. House automatic default and one-time initial selection remain the approved contract.",
+    "Its per-tab indicator uses a timed 250ms animation. House motion stays in the shared spring indicator.",
+    "Material Web documents external panels with aria-controls and aria-labelledby; house registration must establish these relationships across its chosen shadow boundaries."
+  ],
+  "relationshipProbe": {
+    "directPrivateTarget": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "controls": true,
+        "labelledBy": true,
+        "accessibility": true
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "controls": true,
+        "labelledBy": true
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "controls": true,
+        "labelledBy": false
+      }
+    ],
+    "publicHostTarget": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "controls": true,
+        "labelledBy": true,
+        "accessibility": true
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "controls": true,
+        "labelledBy": true
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "controls": true,
+        "labelledBy": true
+      }
+    ],
+    "finding": "A panel default label reference directly into its sibling Tab shadow root is retained by Chromium/Firefox but filtered by WebKit. Referencing the public Tab host passes all three engines; Chromium also computes the icon-only native button name through that host and exposes controls/label relationships.",
+    "limits": "These bare-element checks are a mechanism prerequisite. Actual family integration and actual speech output remain to verify."
+  }
+}

@@ -1,0 +1,34 @@
+verify	Build reviewed source and verify generated inputs	﻿2026-10-20T20:29:04.2293472Z ##[group]Run bun scripts/check.ts build
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:29:04.2293852Z ^[[36;1mbun scripts/check.ts build^[[0m
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:29:04.2357400Z shell: /usr/bin/bash -e {0}
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:29:04.2357972Z ##[endgroup]
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:29:04.2583537Z $ bun scripts/split-css.ts
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:29:05.3793654Z styles: 23 base style families and document tokens
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:29:05.7353163Z $ bun scripts/build.ts
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:29:05.9052286Z build runtime: Bun 1.4.2
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:30:07.1801352Z modules: 42235 files, 164 with compiled templates
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:31:38.5396307Z manifest: 4319 elements
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:31:52.5169620Z browser generated modules: 29137
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:31:52.8634558Z bundle 2829.5 KB min 1494.1 KB tokens.css 159.1 KB dashboard.css 13.3 KB
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:25.7906145Z React: 4319 typed wrappers emitted
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:26.5966668Z $ bun site/build.ts
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:40.1867298Z docs: 125 pages, 4319 elements (0 undocumented), app.js 2004 KB
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:40.3383238Z $ bun scripts/tooling.ts
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:42.3642860Z Optional package: mcp
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:43.4699027Z Optional package: devtools
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:44.4321703Z 164 |     for (const script of ["split", "build", "docs", "build:tooling"]) {
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:44.4322281Z 165 |       await command(["run", script]);
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:44.4322614Z 166 |     }
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:44.4322988Z 167 |     const changes = generatedChanges();
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:44.4323476Z 168 |     if (changes.length) {
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:44.4324795Z 169 |       throw new Error("Generated source is stale; review and commit regenerated output:\n" + changes.join("\n"));
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:44.4325870Z                       ^
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:44.4326526Z error: Generated source is stale; review and commit regenerated output:
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:44.4327357Z  M src/generated/style-manifest.json
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:44.4328507Z       at checkStage (/home/runner/work/design-system/design-system/scripts/check.ts:169:17)
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:44.4329258Z 
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:44.4355763Z ##[error] M src/generated/style-manifest.json
+verify	Build reviewed source and verify generated inputs	      at checkStage (/home/runner/work/design-system/design-system/scripts/check.ts:169:17)
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:44.4364407Z 
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:44.4364557Z Bun v1.4.2 (Linux x64)
+verify	Build reviewed source and verify generated inputs	2026-10-20T20:32:44.4366596Z ##[error]Process completed with exit code 1.

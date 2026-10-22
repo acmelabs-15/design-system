@@ -1,0 +1,147 @@
+{
+  "date": "2026-09-19",
+  "status": "Survey captured; subsequent joint review selected a focused Item family",
+  "question": "Is a generic neutral rich-row component a recurring public design-system pattern, distinct from ListItem, selection controls, form fields and application-specific composition?",
+  "systems": [
+    "Chakra UI",
+    "Radix Themes",
+    "Material Design / Material Web",
+    "Geist",
+    "shadcn/ui",
+    "MUI",
+    "Ant Design",
+    "Fluent UI v9",
+    "Carbon",
+    "Adobe Spectrum"
+  ],
+  "method": "Purposeful comparison of official catalogues, docs and relevant source contracts. No adoption-weighted or population prevalence claim.",
+  "localFindings": "Current Entity and Item implementations overlap in content placement. Bounded non-test src search found exports but no internal component consumers rendering them; docs/tests remain consumers.",
+  "rootFindings": {
+    "chakra": "Full pinned component export list has no general content-row Item/Entity/Row component. Core List provides list semantics/markers, with arbitrary content. Pro IntegrationListItem is application-local composition, not a Chakra core component.",
+    "radixThemes": "Full pinned exports contain no equivalent generic rich-row component. Card docs compose Flex/Avatar/Text; DataList is key/value metadata rather than general content row.",
+    "material": "Reuse completed full M3 Lists and actual MaterialWeb source review. ListItem is collection-specific; md-item is layout-only helper under Labs, not equivalent evidence to a stable general-purpose catalogue component.",
+    "proQualification": "Chakra Pro IntegrationListItem/WebhookItem are application-specific compositions. Their existence supports repeated row patterns, not a public core Row component."
+  },
+  "classificationCaution": "Similarity of appearance does not establish a shared public component purpose. Multiple shadcn backends or downstream copies count once.",
+  "emergingFinding": "Genuine standalone examples exist in shadcn Item and Geist Entity. MUI ListItem is technically usable standalone, despite its List-family documentation. Do not claim generic rows are absent or rare from this purposeful sample.",
+  "houseCompositionMapping": [
+    {
+      "case": "Standalone descriptive row",
+      "parts": "Group/layout + Avatar or Icon + Text + independent actions",
+      "preserve": "Title, optional description/metadata, flexible start/end content and footer"
+    },
+    {
+      "case": "Semantic collection of rich rows",
+      "parts": "List/List.Item with composed row content; optional Card/header",
+      "preserve": "List meaning, dividers, headings and consistent presentation"
+    },
+    {
+      "case": "Selectable row or statistic",
+      "parts": "Radio Cards or Checkbox Cards + Group + optional Stat content",
+      "preserve": "Control-owned selection/forms and individual names; secondary actions need separate valid targets"
+    },
+    {
+      "case": "Label and input setting",
+      "parts": "Horizontal Field + input; optional Fieldset for related controls",
+      "preserve": "Visible label, description/error association and control state"
+    },
+    {
+      "case": "Action-only setting",
+      "parts": "Composed descriptive content + Button",
+      "preserve": "Action semantics without pretending it is a form field"
+    },
+    {
+      "case": "EntityContent/amount/tags helpers",
+      "parts": "Text/layout, formatting/Stat where appropriate, Badge/Tag and Group",
+      "preserve": "Wrapping/truncation, numeric presentation, arbitrary action content; exact interfaces later"
+    }
+  ],
+  "mappingLimits": "Conceptual mapping of inspected current docs/source, not implemented recipes or browser verification. Inventory must prove valid labels/interaction and all target layouts before migration.",
+  "findings": [
+    {
+      "system": "shadcn/ui",
+      "kind": "Standalone presentation component",
+      "component": "Item",
+      "source": "https://ui.shadcn.com/docs/components/item",
+      "pin": "a87a63b2ca25143d26c8bd0903e4e9bc77b3f824",
+      "detail": "Default div, optional ItemGroup, media/content/title/description/actions/header/footer; no collection controller. Both implementation bases count once. Docs distinguish Field."
+    },
+    {
+      "system": "Geist",
+      "kind": "Standalone documented content row",
+      "component": "Entity",
+      "source": "https://vercel.com/geist/entity",
+      "detail": "Default and skeleton examples standalone; optional EntityList. Six complete official examples read. Underlying implementation unavailable at checked package/repository addresses; only docs and usage source verified."
+    },
+    {
+      "system": "MUI",
+      "kind": "Rich list-item family also usable standalone",
+      "component": "ListItem",
+      "source": "https://mui.com/material-ui/react-list/",
+      "pin": "69960c12d9e3c378c00a55fc0943974cd894cfea",
+      "version": "9.4.0",
+      "detail": "Arbitrary children, text/avatar/icon helpers, secondaryAction; optional context, component=div. Do not exclude from neutral row evidence merely because named ListItem."
+    },
+    {
+      "system": "Chakra UI",
+      "kind": "Semantic List plus composition",
+      "component": "List / layout primitives",
+      "source": "https://chakra-ui.com/docs/components/list",
+      "pin": "1ff9873754e9913fc3d849d23c0844a628f5f20d",
+      "detail": "No equivalent rich-row component in inspected public exports/catalogue. Pro custom IntegrationListItem is application-local composition, not core library API."
+    },
+    {
+      "system": "Radix Themes",
+      "kind": "Composition and purpose-specific containers",
+      "component": "Card / Flex / Text / DataList",
+      "source": "https://www.radix-ui.com/themes/docs/components/card",
+      "pin": "1faff10ac26ae17f09944d418c6949b93fc6b566",
+      "detail": "No neutral rich-row equivalent in complete public component exports. DataList is metadata pairs. shadcn Radix-base Item is not a Radix Item component."
+    },
+    {
+      "system": "Material Design / Material Web",
+      "kind": "Rich List family with reusable Labs layout helper",
+      "component": "ListItem / md-item",
+      "source": "https://material-web.dev/components/list/",
+      "pin": "56a486b147b8b7e95e6e8035fa02aed7e0009a85",
+      "detail": "Reuse completed full four-tab M3 review and source. md-item separates content presentation; List owns navigation. Labs helper differs from stable general-purpose catalogue offering."
+    },
+    {
+      "system": "Carbon",
+      "kind": "Rich semantic list item; separately tablelike structured list",
+      "component": "ContainedListItem / StructuredList",
+      "source": "https://carbondesignsystem.com/components/contained-list/usage/",
+      "pin": "8472ccac7c2150ef317617063da6b82058812319",
+      "detail": "ContainedListItem li with optional button mainregion and separate action sibling. StructuredList has table/row/cell semantics and optional single selection; not exact neutral-row equivalent."
+    },
+    {
+      "system": "Adobe Spectrum 2",
+      "kind": "Interactive collection item",
+      "component": "ListViewItem",
+      "source": "https://react-spectrum.adobe.com/ListView",
+      "pin": "8ae29fa17598c840955c6ed0e91b3524d8f13e5a",
+      "detail": "GridList state, selection, actions, navigation, virtualization and drag-drop. Not independent neutral content row."
+    },
+    {
+      "system": "Fluent UI v9",
+      "kind": "Collection behavior with consumer-defined layout",
+      "component": "ListItem",
+      "source": "https://github.com/microsoft/fluentui/blob/babf26015958505fc6fc0216724f2f61244f829c/packages/react-components/react-list/library/docs/MIGRATION.md",
+      "pin": "babf26015958505fc6fc0216724f2f61244f829c",
+      "version": "9.6.18",
+      "detail": "Current v9 removes old layout-specific props; uses Persona/custom content. Optional contexts allow standalone with deliberate role, but collection behavior comes from List. Package README readiness warning conflicts with current exports/Storybook; no production certification claimed."
+    },
+    {
+      "system": "Ant Design",
+      "kind": "Deprecated rich-row family; successor favors composition",
+      "component": "List.Item / Listy",
+      "source": "https://ant.design/components/list/#faq",
+      "pin": "db0488c167154941ce4686074ef69e757e1f3492",
+      "version": "6.6.4",
+      "detail": "Released List deprecated; Listy since6.6.0 uses itemRender, migration composes Meta/actions/extra in JSX and header/loading/pagination outside. Five release/source docs files matched main byte-for-byte."
+    }
+  ],
+  "conclusion": "Reusable rich rows have genuine precedent; their packaging is not uniform. This ten-system purposeful sample supports neither universal avoidance nor a standard mandatory generic Row. Pro app-level wrappers are not proof a public core component is needed.",
+  "interimRecommendation": "Use composed examples for this house library, given selected Group/List/Field/Card and control responsibilities, with explicit inventory validation of current rich-row capabilities. Recommendation is fit-based, not a claim that row components are uncommon.",
+  "currentDecision": "Focused Item selected; see item-content-family.md. Earlier composed-examples answer and interim recommendation are superseded."
+}

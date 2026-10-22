@@ -1,0 +1,1127 @@
+{
+  "date": "2026-09-23",
+  "status": "Resizable complete at assigned native/Lit boundary; M14 complete",
+  "implementation": [
+    "Keyed percentage layout, bounded normalization, immutable complete snapshots and independent collapsed state",
+    "Adjacent-pair pointer/keyboard resizing with previous-size restoration and application-owned persistence",
+    "Native separator orientation, accessible naming and element-reference controls; focus recovery before hiding content",
+    "Shared state/ownership helpers and public Lit Motion interpolation; direct manipulation jumps to the canonical endpoint",
+    "Retained author nodes, nested layouts and Scroll Area composition; cancellation/adoption/resize cleanup",
+    "Reduced-motion document producer now disables transition/animation durations and delays instead of introducing micro transitions"
+  ],
+  "verification": {
+    "build": "Strict package build passes",
+    "site": {
+      "pages": 99,
+      "elements": 4281,
+      "undocumented": 0
+    },
+    "tests": {
+      "passed": 926,
+      "failed": 0,
+      "assertions": 148703,
+      "files": 156
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "shares occupy pane space and the separator describes its primary pane",
+            "pass": true
+          },
+          {
+            "name": "keyboard changes one percentage point and commits once",
+            "pass": true
+          },
+          {
+            "name": "pointer movement excludes handle width from its percentage denominator",
+            "pass": true
+          },
+          {
+            "name": "Enter collapses and restores the saved open size",
+            "pass": true
+          },
+          {
+            "name": "programmatic collapse recovers stranded focus and emits no user commit",
+            "pass": true
+          },
+          {
+            "name": "vertical and RTL keys track the physical handle direction",
+            "pass": true
+          },
+          {
+            "name": "reordering retains keyed shares and updates the primary accessible name",
+            "pass": true
+          },
+          {
+            "name": "complete snapshots restore independently of caller mutation",
+            "pass": true
+          },
+          {
+            "name": "disconnect and reconnect retain the complete keyed state",
+            "pass": true
+          },
+          {
+            "name": "controlled rejection cancels the user commit",
+            "pass": true
+          },
+          {
+            "name": "pointer cancellation retains live edits without a commit",
+            "pass": true
+          },
+          {
+            "name": "disabling the handle cancels an active drag",
+            "pass": true
+          },
+          {
+            "name": "restoration respects changed size limits",
+            "pass": true
+          },
+          {
+            "name": "a third pane stays unchanged when a different adjacent pair resizes",
+            "pass": true
+          },
+          {
+            "name": "Home End and Shift arrows retain their percentage meanings",
+            "pass": true
+          },
+          {
+            "name": "primary pane label changes reach the separator",
+            "pass": true
+          },
+          {
+            "name": "impossible constraints disable resizing and recover after correction",
+            "pass": true
+          },
+          {
+            "name": "a resized container cancels drag without changing keyed shares",
+            "pass": true
+          },
+          {
+            "name": "nested resizable layouts keep independent keyed state",
+            "pass": true
+          },
+          {
+            "name": "Scroll Area remains the native scroll owner inside a resized pane",
+            "pass": true
+          },
+          {
+            "name": "collapse animation stays bounded and leaves an unrelated pane fixed",
+            "pass": true
+          },
+          {
+            "name": "adoption releases the old document drag listener",
+            "pass": true
+          },
+          {
+            "name": "reduced motion disables CSS transitions rather than creating micro transitions",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "shares occupy pane space and the separator describes its primary pane",
+            "pass": true
+          },
+          {
+            "name": "keyboard changes one percentage point and commits once",
+            "pass": true
+          },
+          {
+            "name": "pointer movement excludes handle width from its percentage denominator",
+            "pass": true
+          },
+          {
+            "name": "Enter collapses and restores the saved open size",
+            "pass": true
+          },
+          {
+            "name": "programmatic collapse recovers stranded focus and emits no user commit",
+            "pass": true
+          },
+          {
+            "name": "vertical and RTL keys track the physical handle direction",
+            "pass": true
+          },
+          {
+            "name": "reordering retains keyed shares and updates the primary accessible name",
+            "pass": true
+          },
+          {
+            "name": "complete snapshots restore independently of caller mutation",
+            "pass": true
+          },
+          {
+            "name": "disconnect and reconnect retain the complete keyed state",
+            "pass": true
+          },
+          {
+            "name": "controlled rejection cancels the user commit",
+            "pass": true
+          },
+          {
+            "name": "pointer cancellation retains live edits without a commit",
+            "pass": true
+          },
+          {
+            "name": "disabling the handle cancels an active drag",
+            "pass": true
+          },
+          {
+            "name": "restoration respects changed size limits",
+            "pass": true
+          },
+          {
+            "name": "a third pane stays unchanged when a different adjacent pair resizes",
+            "pass": true
+          },
+          {
+            "name": "Home End and Shift arrows retain their percentage meanings",
+            "pass": true
+          },
+          {
+            "name": "primary pane label changes reach the separator",
+            "pass": true
+          },
+          {
+            "name": "impossible constraints disable resizing and recover after correction",
+            "pass": true
+          },
+          {
+            "name": "a resized container cancels drag without changing keyed shares",
+            "pass": true
+          },
+          {
+            "name": "nested resizable layouts keep independent keyed state",
+            "pass": true
+          },
+          {
+            "name": "Scroll Area remains the native scroll owner inside a resized pane",
+            "pass": true
+          },
+          {
+            "name": "collapse animation stays bounded and leaves an unrelated pane fixed",
+            "pass": true
+          },
+          {
+            "name": "adoption releases the old document drag listener",
+            "pass": true
+          },
+          {
+            "name": "reduced motion disables CSS transitions rather than creating micro transitions",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "shares occupy pane space and the separator describes its primary pane",
+            "pass": true
+          },
+          {
+            "name": "keyboard changes one percentage point and commits once",
+            "pass": true
+          },
+          {
+            "name": "pointer movement excludes handle width from its percentage denominator",
+            "pass": true
+          },
+          {
+            "name": "Enter collapses and restores the saved open size",
+            "pass": true
+          },
+          {
+            "name": "programmatic collapse recovers stranded focus and emits no user commit",
+            "pass": true
+          },
+          {
+            "name": "vertical and RTL keys track the physical handle direction",
+            "pass": true
+          },
+          {
+            "name": "reordering retains keyed shares and updates the primary accessible name",
+            "pass": true
+          },
+          {
+            "name": "complete snapshots restore independently of caller mutation",
+            "pass": true
+          },
+          {
+            "name": "disconnect and reconnect retain the complete keyed state",
+            "pass": true
+          },
+          {
+            "name": "controlled rejection cancels the user commit",
+            "pass": true
+          },
+          {
+            "name": "pointer cancellation retains live edits without a commit",
+            "pass": true
+          },
+          {
+            "name": "disabling the handle cancels an active drag",
+            "pass": true
+          },
+          {
+            "name": "restoration respects changed size limits",
+            "pass": true
+          },
+          {
+            "name": "a third pane stays unchanged when a different adjacent pair resizes",
+            "pass": true
+          },
+          {
+            "name": "Home End and Shift arrows retain their percentage meanings",
+            "pass": true
+          },
+          {
+            "name": "primary pane label changes reach the separator",
+            "pass": true
+          },
+          {
+            "name": "impossible constraints disable resizing and recover after correction",
+            "pass": true
+          },
+          {
+            "name": "a resized container cancels drag without changing keyed shares",
+            "pass": true
+          },
+          {
+            "name": "nested resizable layouts keep independent keyed state",
+            "pass": true
+          },
+          {
+            "name": "Scroll Area remains the native scroll owner inside a resized pane",
+            "pass": true
+          },
+          {
+            "name": "collapse animation stays bounded and leaves an unrelated pane fixed",
+            "pass": true
+          },
+          {
+            "name": "adoption releases the old document drag listener",
+            "pass": true
+          },
+          {
+            "name": "reduced motion disables CSS transitions rather than creating micro transitions",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "shares occupy pane space and the separator describes its primary pane",
+            "pass": true
+          },
+          {
+            "name": "keyboard changes one percentage point and commits once",
+            "pass": true
+          },
+          {
+            "name": "pointer movement excludes handle width from its percentage denominator",
+            "pass": true
+          },
+          {
+            "name": "Enter collapses and restores the saved open size",
+            "pass": true
+          },
+          {
+            "name": "programmatic collapse recovers stranded focus and emits no user commit",
+            "pass": true
+          },
+          {
+            "name": "vertical and RTL keys track the physical handle direction",
+            "pass": true
+          },
+          {
+            "name": "reordering retains keyed shares and updates the primary accessible name",
+            "pass": true
+          },
+          {
+            "name": "complete snapshots restore independently of caller mutation",
+            "pass": true
+          },
+          {
+            "name": "disconnect and reconnect retain the complete keyed state",
+            "pass": true
+          },
+          {
+            "name": "controlled rejection cancels the user commit",
+            "pass": true
+          },
+          {
+            "name": "pointer cancellation retains live edits without a commit",
+            "pass": true
+          },
+          {
+            "name": "disabling the handle cancels an active drag",
+            "pass": true
+          },
+          {
+            "name": "restoration respects changed size limits",
+            "pass": true
+          },
+          {
+            "name": "a third pane stays unchanged when a different adjacent pair resizes",
+            "pass": true
+          },
+          {
+            "name": "Home End and Shift arrows retain their percentage meanings",
+            "pass": true
+          },
+          {
+            "name": "primary pane label changes reach the separator",
+            "pass": true
+          },
+          {
+            "name": "impossible constraints disable resizing and recover after correction",
+            "pass": true
+          },
+          {
+            "name": "a resized container cancels drag without changing keyed shares",
+            "pass": true
+          },
+          {
+            "name": "nested resizable layouts keep independent keyed state",
+            "pass": true
+          },
+          {
+            "name": "Scroll Area remains the native scroll owner inside a resized pane",
+            "pass": true
+          },
+          {
+            "name": "collapse animation stays bounded and leaves an unrelated pane fixed",
+            "pass": true
+          },
+          {
+            "name": "adoption releases the old document drag listener",
+            "pass": true
+          },
+          {
+            "name": "reduced motion disables CSS transitions rather than creating micro transitions",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "shares occupy pane space and the separator describes its primary pane",
+            "pass": true
+          },
+          {
+            "name": "keyboard changes one percentage point and commits once",
+            "pass": true
+          },
+          {
+            "name": "pointer movement excludes handle width from its percentage denominator",
+            "pass": true
+          },
+          {
+            "name": "Enter collapses and restores the saved open size",
+            "pass": true
+          },
+          {
+            "name": "programmatic collapse recovers stranded focus and emits no user commit",
+            "pass": true
+          },
+          {
+            "name": "vertical and RTL keys track the physical handle direction",
+            "pass": true
+          },
+          {
+            "name": "reordering retains keyed shares and updates the primary accessible name",
+            "pass": true
+          },
+          {
+            "name": "complete snapshots restore independently of caller mutation",
+            "pass": true
+          },
+          {
+            "name": "disconnect and reconnect retain the complete keyed state",
+            "pass": true
+          },
+          {
+            "name": "controlled rejection cancels the user commit",
+            "pass": true
+          },
+          {
+            "name": "pointer cancellation retains live edits without a commit",
+            "pass": true
+          },
+          {
+            "name": "disabling the handle cancels an active drag",
+            "pass": true
+          },
+          {
+            "name": "restoration respects changed size limits",
+            "pass": true
+          },
+          {
+            "name": "a third pane stays unchanged when a different adjacent pair resizes",
+            "pass": true
+          },
+          {
+            "name": "Home End and Shift arrows retain their percentage meanings",
+            "pass": true
+          },
+          {
+            "name": "primary pane label changes reach the separator",
+            "pass": true
+          },
+          {
+            "name": "impossible constraints disable resizing and recover after correction",
+            "pass": true
+          },
+          {
+            "name": "a resized container cancels drag without changing keyed shares",
+            "pass": true
+          },
+          {
+            "name": "nested resizable layouts keep independent keyed state",
+            "pass": true
+          },
+          {
+            "name": "Scroll Area remains the native scroll owner inside a resized pane",
+            "pass": true
+          },
+          {
+            "name": "collapse animation stays bounded and leaves an unrelated pane fixed",
+            "pass": true
+          },
+          {
+            "name": "adoption releases the old document drag listener",
+            "pass": true
+          },
+          {
+            "name": "reduced motion disables CSS transitions rather than creating micro transitions",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "shares occupy pane space and the separator describes its primary pane",
+            "pass": true
+          },
+          {
+            "name": "keyboard changes one percentage point and commits once",
+            "pass": true
+          },
+          {
+            "name": "pointer movement excludes handle width from its percentage denominator",
+            "pass": true
+          },
+          {
+            "name": "Enter collapses and restores the saved open size",
+            "pass": true
+          },
+          {
+            "name": "programmatic collapse recovers stranded focus and emits no user commit",
+            "pass": true
+          },
+          {
+            "name": "vertical and RTL keys track the physical handle direction",
+            "pass": true
+          },
+          {
+            "name": "reordering retains keyed shares and updates the primary accessible name",
+            "pass": true
+          },
+          {
+            "name": "complete snapshots restore independently of caller mutation",
+            "pass": true
+          },
+          {
+            "name": "disconnect and reconnect retain the complete keyed state",
+            "pass": true
+          },
+          {
+            "name": "controlled rejection cancels the user commit",
+            "pass": true
+          },
+          {
+            "name": "pointer cancellation retains live edits without a commit",
+            "pass": true
+          },
+          {
+            "name": "disabling the handle cancels an active drag",
+            "pass": true
+          },
+          {
+            "name": "restoration respects changed size limits",
+            "pass": true
+          },
+          {
+            "name": "a third pane stays unchanged when a different adjacent pair resizes",
+            "pass": true
+          },
+          {
+            "name": "Home End and Shift arrows retain their percentage meanings",
+            "pass": true
+          },
+          {
+            "name": "primary pane label changes reach the separator",
+            "pass": true
+          },
+          {
+            "name": "impossible constraints disable resizing and recover after correction",
+            "pass": true
+          },
+          {
+            "name": "a resized container cancels drag without changing keyed shares",
+            "pass": true
+          },
+          {
+            "name": "nested resizable layouts keep independent keyed state",
+            "pass": true
+          },
+          {
+            "name": "Scroll Area remains the native scroll owner inside a resized pane",
+            "pass": true
+          },
+          {
+            "name": "collapse animation stays bounded and leaves an unrelated pane fixed",
+            "pass": true
+          },
+          {
+            "name": "adoption releases the old document drag listener",
+            "pass": true
+          },
+          {
+            "name": "reduced motion disables CSS transitions rather than creating micro transitions",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "docs": [
+      {
+        "engine": "chromium",
+        "pass": true,
+        "checks": 4,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "pass": true,
+        "checks": 4,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "pass": true,
+        "checks": 4,
+        "errors": []
+      }
+    ],
+    "chromiumAccessibility": {
+      "nodeId": "19",
+      "ignored": false,
+      "role": {
+        "type": "role",
+        "value": "separator"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 157
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Navigation",
+        "sources": [
+          {
+            "type": "relatedElement",
+            "attribute": "aria-labelledby"
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "type": "computedString",
+              "value": "Navigation"
+            },
+            "attribute": "aria-label",
+            "attributeValue": {
+              "type": "string",
+              "value": "Navigation"
+            }
+          },
+          {
+            "type": "attribute",
+            "attribute": "title",
+            "superseded": true
+          }
+        ]
+      },
+      "value": {
+        "type": "number",
+        "value": 30
+      },
+      "properties": [
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "settable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "orientation",
+          "value": {
+            "type": "token",
+            "value": "vertical"
+          }
+        },
+        {
+          "name": "valuemin",
+          "value": {
+            "type": "number",
+            "value": 0
+          }
+        },
+        {
+          "name": "valuemax",
+          "value": {
+            "type": "number",
+            "value": 90
+          }
+        },
+        {
+          "name": "valuetext",
+          "value": {
+            "type": "string",
+            "value": ""
+          }
+        },
+        {
+          "name": "controls",
+          "value": {
+            "type": "idrefList",
+            "value": "",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 13,
+                "idref": "navigation"
+              }
+            ]
+          }
+        }
+      ],
+      "parentId": "18",
+      "childIds": [],
+      "backendDOMNodeId": 19
+    },
+    "freshMounts": [
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "fresh mount 0",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 1",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 2",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 3",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 4",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 5",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 6",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 7",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 8",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 9",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 10",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 11",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 12",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 13",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 14",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 15",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 16",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 17",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 18",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 19",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 20",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 21",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 22",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 23",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 24",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 25",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 26",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 27",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 28",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 29",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 30",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 31",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 32",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 33",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 34",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 35",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 36",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 37",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 38",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 39",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "screenshot": "m14-resizable-2026-09-23.png",
+    "visualInspection": "Chromium two-pane/Scroll Area/editor composition inspected"
+  },
+  "review": {
+    "correctness": "Model boundary/identity/collapse tests plus 23 native cases per engine cover interactions, controlled rejection, dynamic limits, nested layouts and resource cleanup",
+    "architecture": "Existing canonical state, context, generated CSS and Lit Motion helpers retained; no Zag runtime or independent React engine",
+    "security": "Preference records are validated copied data; no implicit storage or network actions",
+    "performance": "Bounded layout projection; pointer movement follows native geometry without an animation backlog"
+  },
+  "failure": {
+    "observed": "WebKit retained starting flex factors despite correct 30/70 state and declarations in three of forty fresh mounts",
+    "isolated": "The universal .001ms reduced-motion transition duration was causal; removing only it yielded forty passing mounts",
+    "fix": "Zero duration and delay in the stylesheet producer; failed CSS transport experiments removed",
+    "original": [
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "fresh mount 0",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 1",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 2",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 3",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 4",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 5",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 6",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 7",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 8",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 9",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 10",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 11",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 12",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 13",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 14",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 15",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 16",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 17",
+            "pass": false,
+            "error": "TimeoutError: waitForFunction: Timeout 5000ms exceeded."
+          },
+          {
+            "name": "fresh mount 18",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 19",
+            "pass": false,
+            "error": "TimeoutError: waitForFunction: Timeout 5000ms exceeded."
+          },
+          {
+            "name": "fresh mount 20",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 21",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 22",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 23",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 24",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 25",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 26",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 27",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 28",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 29",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 30",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 31",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 32",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 33",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 34",
+            "pass": false,
+            "error": "TimeoutError: waitForFunction: Timeout 5000ms exceeded."
+          },
+          {
+            "name": "fresh mount 35",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 36",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 37",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 38",
+            "pass": true
+          },
+          {
+            "name": "fresh mount 39",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ]
+  },
+  "runtime": {
+    "package": "Playwright 1.63.0",
+    "firefox": "155.0 / revision 1543",
+    "webkit": "26.6 / revision 2359",
+    "chromium": "Installed Google Chrome",
+    "cache": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks",
+    "note": "The old temporary runtime lost files and was replaced with a complete persistent installation."
+  },
+  "references": [
+    "https://www.w3.org/WAI/ARIA/apg/patterns/windowsplitter/",
+    "https://chakra-ui.com/docs/components/splitter",
+    "https://ui.shadcn.com/docs/components/base/resizable",
+    "Published @zag-js/splitter 1.44.0 machine/connector/size utilities",
+    "Upstream splitter.e2e.ts and splitter.utils.test.ts at 53327acb58fedbd12b1a5702f7c51baf4aa3c6b0"
+  ],
+  "limits": [
+    "Actual OS touch/assistive-technology/Safari and final generated React-wrapper gates remain M22/M26",
+    "Whole-library package/removal/appearance acceptance remains M26",
+    "APG marks its window-splitter example/review incomplete; its guidance is not certification"
+  ],
+  "reproduction": {
+    "directory": "/private/tmp/acme-m14-resizable",
+    "fixture": "import {AcmeScrollCorner} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/scroll-corner/scroll-corner';customElements.define('acme-scroll-corner',AcmeScrollCorner);\nimport {AcmeScrollThumb} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/scroll-thumb/scroll-thumb';customElements.define('acme-scroll-thumb',AcmeScrollThumb);\nimport {AcmeScrollbar} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/scrollbar/scrollbar';customElements.define('acme-scrollbar',AcmeScrollbar);\nimport {AcmeScrollViewport} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/scroll-viewport/scroll-viewport';customElements.define('acme-scroll-viewport',AcmeScrollViewport);\nimport {AcmeScrollArea} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/scroll-area/scroll-area';customElements.define('acme-scroll-area',AcmeScrollArea);\nimport {AcmeResizable} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/resizable/resizable';\nimport {AcmeResizablePanel} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/resizable-panel/resizable-panel';\nimport {AcmeResizeHandle} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/resize-handle/resize-handle';\ncustomElements.define('acme-resizable',AcmeResizable);customElements.define('acme-resizable-panel',AcmeResizablePanel);customElements.define('acme-resize-handle',AcmeResizeHandle);\ndocument.body.innerHTML='<acme-resizable id=\"root\" sizes=\"[30,70]\" style=\"width:600px;height:240px\"><acme-resizable-panel id=\"navigation\" value=\"navigation\" min-size=\"10\" max-size=\"90\" collapsible aria-label=\"Navigation\"><input id=\"input\" value=\"Retained\"><div>Navigation content</div></acme-resizable-panel><acme-resize-handle id=\"handle\"></acme-resize-handle><acme-resizable-panel id=\"content\" value=\"content\" min-size=\"10\" aria-label=\"Editor\"><button id=\"edit\">Edit</button></acme-resizable-panel></acme-resizable><button id=\"outside\">Outside</button>';\n",
+    "runner": "import assert from 'node:assert/strict';const dir='/tmp/acme-m14-resizable';const build=await Bun.build({entrypoints:[dir+'/candidate.ts'],outdir:dir+'/bundle',target:'browser',format:'esm'});if(!build.success)throw new AggregateError(build.logs);process.env.PLAYWRIGHT_BROWSERS_PATH='/Users/peterkloss/Library/Caches/acme-design-system/browser-checks/browsers';const pw=await import('/Users/peterkloss/Library/Caches/acme-design-system/browser-checks/node_modules/playwright/index.mjs');const server=Bun.serve({port:0,fetch(req){const p=new URL(req.url).pathname;return p==='/candidate.js'?new Response(Bun.file(dir+'/bundle/candidate.js'),{headers:{'Content-Type':'text/javascript'}}):p==='/tokens.css'?new Response(Bun.file('/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/css/document/tokens.css'),{headers:{'Content-Type':'text/css'}}):new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/candidate.js\"></script>',{headers:{'Content-Type':'text/html'}})}});const reports=[];\ntry{for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true}:{headless:true});const page=await browser.newPage({reducedMotion:'reduce'});page.setDefaultTimeout(5000);const errors=[],checks=[];page.on('pageerror',e=>{errors.push(String(e));console.log(engine,'ERROR',String(e))});const check=async(name,run)=>{try{await page.goto(server.url.href);await page.waitForFunction(()=>document.querySelector('#root')?.sizes?.[0]===30&&document.querySelector('#handle')?.shadowRoot?.querySelector('[role=separator]')?.getAttribute('aria-disabled')==='false',null,{timeout:5000});await page.waitForFunction(()=>{const panes=document.querySelectorAll('#root>acme-resizable-panel');const a=panes[0].getBoundingClientRect().width,b=panes[1].getBoundingClientRect().width;return Math.abs(a/(a+b)*100-30)<.1},null,{timeout:5000});await run();checks.push({name,pass:true});console.log(engine,'PASS',name)}catch(e){checks.push({name,pass:false,error:String(e)});console.log(engine,'FAIL',name,String(e))}};\nawait check('shares occupy pane space and the separator describes its primary pane',async()=>{const state=await page.locator('#root').evaluate(el=>{const panes=el.querySelectorAll('acme-resizable-panel'),a=panes[0].getBoundingClientRect().width,b=panes[1].getBoundingClientRect().width;const handle=el.querySelector('acme-resize-handle').shadowRoot.querySelector('[role=separator]');return {share:a/(a+b)*100,orientation:handle.getAttribute('aria-orientation'),now:handle.getAttribute('aria-valuenow'),controlled:handle.ariaControlsElements?.[0]===panes[0]}});assert.ok(Math.abs(state.share-30)<.1);assert.equal(state.orientation,'vertical');assert.equal(state.now,'30');assert.equal(state.controlled,true);assert.equal(await page.getByRole('separator',{name:'Navigation',exact:true}).count(),1);});\nawait check('keyboard changes one percentage point and commits once',async()=>{await page.locator('#root').evaluate(el=>{window.live=[];window.complete=[];el.addEventListener('acme-input',e=>window.live.push(e.detail));el.addEventListener('acme-change',e=>window.complete.push(e.detail))});await page.getByRole('separator').focus();await page.keyboard.press('ArrowRight');assert.deepEqual(await page.locator('#root').evaluate(el=>el.sizes),[31,69]);assert.equal(await page.evaluate(()=>window.live.length),1);assert.equal(await page.evaluate(()=>window.complete.length),1);});\nawait check('pointer movement excludes handle width from its percentage denominator',async()=>{const box=await page.getByRole('separator').boundingBox();await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();await page.mouse.move(box.x+box.width/2+59.2,box.y+box.height/2,{steps:4});await page.mouse.up();assert.ok(Math.abs(await page.locator('#root').evaluate(el=>el.sizes[0])-40)<.2);});\nawait check('Enter collapses and restores the saved open size',async()=>{await page.getByRole('separator').focus();await page.keyboard.press('Enter');assert.deepEqual(await page.locator('#root').evaluate(el=>el.getLayout().collapsed),['navigation']);assert.equal(await page.locator('#navigation').evaluate(el=>el.shadowRoot.querySelector('[part~=panel]').inert),true);await page.keyboard.press('Enter');assert.deepEqual(await page.locator('#root').evaluate(el=>el.sizes),[30,70]);assert.equal(await page.locator('#input').inputValue(),'Retained');});\nawait check('programmatic collapse recovers stranded focus and emits no user commit',async()=>{await page.locator('#input').focus();await page.locator('#root').evaluate(el=>{window.commits=0;el.addEventListener('acme-change',()=>window.commits++);el.collapse('navigation')});await page.waitForFunction(()=>document.querySelector('#handle').shadowRoot.activeElement?.getAttribute('role')==='separator');assert.equal(await page.evaluate(()=>window.commits),0);});\nawait check('vertical and RTL keys track the physical handle direction',async()=>{await page.locator('#root').evaluate(async el=>{el.dir='rtl';await el.updateComplete});await page.getByRole('separator').focus();await page.keyboard.press('ArrowLeft');assert.deepEqual(await page.locator('#root').evaluate(el=>el.sizes),[31,69]);await page.locator('#root').evaluate(async el=>{el.orientation='vertical';await el.updateComplete});await page.waitForFunction(()=>document.querySelector('#handle').shadowRoot.querySelector('[role=separator]').getAttribute('aria-orientation')==='horizontal');await page.keyboard.press('ArrowDown');assert.deepEqual(await page.locator('#root').evaluate(el=>el.sizes),[32,68]);});\nawait check('reordering retains keyed shares and updates the primary accessible name',async()=>{await page.locator('#root').evaluate(el=>el.replaceChildren(el.querySelector('#content'),el.querySelector('#handle'),el.querySelector('#navigation')));await page.waitForFunction(()=>document.querySelector('#root').sizes?.[0]===70);assert.deepEqual(await page.locator('#root').evaluate(el=>el.sizes),[70,30]);await page.waitForFunction(()=>document.querySelector('#handle').shadowRoot.querySelector('[role=separator]').getAttribute('aria-label')==='Editor');});\nawait check('complete snapshots restore independently of caller mutation',async()=>{await page.locator('#root').evaluate(el=>{const saved={sizes:{navigation:40,content:60},collapsed:[],previousSizes:{navigation:25}};el.setLayout(saved);saved.sizes.navigation=80;saved.previousSizes.navigation=90});assert.deepEqual(await page.locator('#root').evaluate(el=>el.sizes),[40,60]);assert.equal(await page.locator('#root').evaluate(el=>el.getLayout().previousSizes.navigation),25);});\nawait check('disconnect and reconnect retain the complete keyed state',async()=>{await page.locator('#root').evaluate(async el=>{el.collapse('navigation');await el.updateComplete;window.savedRoot=el;window.savedLayout=el.getLayout();el.remove()});await page.evaluate(()=>document.body.prepend(window.savedRoot));await page.waitForFunction(()=>document.querySelector('#handle').shadowRoot.querySelector('[role=separator]').getAttribute('aria-disabled')==='false');assert.deepEqual(await page.locator('#root').evaluate(el=>el.getLayout()),await page.evaluate(()=>window.savedLayout));});\n\nawait check('controlled rejection cancels the user commit',async()=>{await page.locator('#root').evaluate(el=>{window.commits=0;el.addEventListener('acme-change',()=>window.commits++);el.addEventListener('acme-input',()=>el.sizes=[30,70])});await page.getByRole('separator').focus();await page.keyboard.press('ArrowRight');assert.deepEqual(await page.locator('#root').evaluate(el=>el.sizes),[30,70]);assert.equal(await page.evaluate(()=>window.commits),0);});\nawait check('pointer cancellation retains live edits without a commit',async()=>{await page.evaluate(()=>{window.commits=0;document.querySelector('#root').addEventListener('acme-change',()=>window.commits++);document.addEventListener('pointerdown',e=>window.pointer=e.pointerId,{capture:true,once:true})});const b=await page.getByRole('separator').boundingBox();await page.mouse.move(b.x+b.width/2,b.y+30);await page.mouse.down();await page.mouse.move(b.x+b.width/2+30,b.y+30);const live=await page.locator('#root').evaluate(el=>el.sizes);await page.getByRole('separator').evaluate(el=>el.dispatchEvent(new PointerEvent('pointercancel',{pointerId:window.pointer})));await page.mouse.move(b.x+b.width/2+80,b.y+30);await page.mouse.up();assert.deepEqual(await page.locator('#root').evaluate(el=>el.sizes),live);assert.equal(await page.evaluate(()=>window.commits),0);});\nawait check('disabling the handle cancels an active drag',async()=>{const b=await page.getByRole('separator').boundingBox();await page.mouse.move(b.x+b.width/2,b.y+30);await page.mouse.down();await page.mouse.move(b.x+b.width/2+30,b.y+30);const live=await page.locator('#root').evaluate(el=>el.sizes);await page.locator('#handle').evaluate(async el=>{el.disabled=true;await el.updateComplete});await page.waitForFunction(()=>document.querySelector('#root').shadowRoot.querySelector('[part=root]').hasAttribute('data-resizing')===false);await page.mouse.move(b.x+b.width/2+80,b.y+30);await page.mouse.up();assert.deepEqual(await page.locator('#root').evaluate(el=>el.sizes),live);});\nawait check('restoration respects changed size limits',async()=>{await page.locator('#root').evaluate(async el=>{el.collapse('navigation');const p=el.querySelector('#navigation');p.minSize=40;p.maxSize=50;await el.updateComplete;el.expand('navigation')});assert.deepEqual(await page.locator('#root').evaluate(el=>el.sizes),[40,60]);});\nawait check('a third pane stays unchanged when a different adjacent pair resizes',async()=>{await page.locator('#root').evaluate(async el=>{const handle=document.createElement('acme-resize-handle'),pane=document.createElement('acme-resizable-panel');handle.id='second-handle';pane.value='third';pane.id='third';pane.textContent='Third';el.append(handle,pane);await el.updateComplete;el.setLayout({sizes:{navigation:30,content:40,third:30},collapsed:[],previousSizes:{}});await el.updateComplete});await page.locator('#handle').getByRole('separator').focus();await page.keyboard.press('ArrowRight');assert.deepEqual(await page.locator('#root').evaluate(el=>el.sizes),[31,39,30]);});\nawait check('Home End and Shift arrows retain their percentage meanings',async()=>{await page.getByRole('separator').focus();await page.keyboard.press('Home');assert.equal(await page.locator('#navigation').evaluate(el=>el.collapsed),true);await page.keyboard.press('End');assert.deepEqual(await page.locator('#root').evaluate(el=>el.sizes),[90,10]);await page.keyboard.press('Shift+ArrowLeft');assert.deepEqual(await page.locator('#root').evaluate(el=>el.sizes),[80,20]);});\nawait check('primary pane label changes reach the separator',async()=>{await page.locator('#navigation').evaluate(el=>el.ariaLabel='Updated navigation');await page.waitForFunction(()=>document.querySelector('#handle').shadowRoot.querySelector('[role=separator]').getAttribute('aria-label')==='Updated navigation');});\nawait check('impossible constraints disable resizing and recover after correction',async()=>{await page.locator('#root').evaluate(async el=>{el.querySelector('#navigation').minSize=80;el.querySelector('#content').minSize=80;await el.updateComplete});assert.equal(await page.getByRole('separator').getAttribute('aria-disabled'),'true');assert.deepEqual(await page.locator('#root').evaluate(el=>el.sizes),[30,70]);const range=await page.getByRole('separator').evaluate(el=>[Number(el.getAttribute('aria-valuemin')),Number(el.getAttribute('aria-valuenow')),Number(el.getAttribute('aria-valuemax'))]);assert.ok(range[0]<=range[1]&&range[1]<=range[2]);await page.locator('#root').evaluate(async el=>{el.querySelector('#navigation').minSize=10;el.querySelector('#content').minSize=10;await el.updateComplete});await page.waitForFunction(()=>document.querySelector('#handle').shadowRoot.querySelector('[role=separator]').getAttribute('aria-disabled')==='false');});\nawait check('a resized container cancels drag without changing keyed shares',async()=>{const box=await page.getByRole('separator').boundingBox();await page.mouse.move(box.x+4,box.y+30);await page.mouse.down();await page.locator('#root').evaluate(el=>el.style.width='400px');await page.waitForFunction(()=>!document.querySelector('#root').shadowRoot.querySelector('[part=root]').hasAttribute('data-resizing'));await page.mouse.up();assert.deepEqual(await page.locator('#root').evaluate(el=>el.sizes),[30,70]);});\n\nawait check('nested resizable layouts keep independent keyed state',async()=>{await page.locator('#content').evaluate(el=>el.innerHTML='<acme-resizable id=\"nested\" orientation=\"vertical\" sizes=\"[40,60]\" style=\"height:100%\"><acme-resizable-panel value=\"navigation\" aria-label=\"Nested top\">Top</acme-resizable-panel><acme-resize-handle id=\"nested-handle\"></acme-resize-handle><acme-resizable-panel value=\"content\">Bottom</acme-resizable-panel></acme-resizable>');await page.waitForFunction(()=>document.querySelector('#nested-handle').shadowRoot?.querySelector('[role=separator]')?.getAttribute('aria-disabled')==='false');await page.locator('#nested-handle').getByRole('separator').focus();await page.keyboard.press('ArrowDown');assert.deepEqual(await page.locator('#nested').evaluate(el=>el.sizes),[41,59]);assert.deepEqual(await page.locator('#root').evaluate(el=>el.sizes),[30,70]);});\nawait check('Scroll Area remains the native scroll owner inside a resized pane',async()=>{await page.locator('#content').evaluate(el=>el.innerHTML='<acme-scroll-area id=\"scroll\" orientation=\"vertical\" style=\"height:100%\"><acme-scroll-viewport aria-label=\"Scrollable editor\"><div style=\"height:1000px\">Long content</div></acme-scroll-viewport></acme-scroll-area>');await page.waitForFunction(()=>document.querySelector('#scroll').getViewport?.()?.clientHeight===240);await page.locator('#root').evaluate(el=>el.sizes=[50,50]);await page.locator('#scroll').evaluate(el=>el.scrollTo({top:300}));assert.equal(await page.locator('#scroll').evaluate(el=>el.getViewport().scrollTop),300);});\nawait check('collapse animation stays bounded and leaves an unrelated pane fixed',async()=>{await page.emulateMedia({reducedMotion:'no-preference'});await page.locator('#root').evaluate(async el=>{const handle=document.createElement('acme-resize-handle'),pane=document.createElement('acme-resizable-panel');pane.value='third';pane.id='third';el.append(handle,pane);await el.updateComplete;el.sizes=[30,40,30];await el.updateComplete;await Promise.all([...el.querySelectorAll('acme-resizable-panel')].map(p=>p.updateComplete));});const frames=await page.locator('#root').evaluate(async el=>{const third=el.querySelector('#third'),start=third.getBoundingClientRect().width;el.collapse('navigation');const frames=[];for(let frame=0;frame<40;frame++){await new Promise(requestAnimationFrame);frames.push({third:third.getBoundingClientRect().width-start,first:el.querySelector('#navigation').getBoundingClientRect().width});}return frames;});assert.ok(frames.every(f=>f.first>=0&&f.first<=176.3));assert.ok(frames.every(f=>Math.abs(f.third)<1));await page.emulateMedia({reducedMotion:'reduce'});});\n\nawait check('adoption releases the old document drag listener',async()=>{await page.evaluate(()=>{const add=document.addEventListener,remove=document.removeEventListener;window.visibilityListeners=new Set();document.addEventListener=function(type,listener,...args){if(type==='visibilitychange')window.visibilityListeners.add(listener);return add.call(this,type,listener,...args)};document.removeEventListener=function(type,listener,...args){if(type==='visibilitychange')window.visibilityListeners.delete(listener);return remove.call(this,type,listener,...args)}});const box=await page.getByRole('separator').boundingBox();await page.mouse.move(box.x+4,box.y+30);await page.mouse.down();assert.equal(await page.evaluate(()=>window.visibilityListeners.size),1);await page.locator('#root').evaluate(el=>{const frame=document.createElement('iframe');frame.id='adoption';document.body.append(frame);frame.contentDocument.body.append(el)});await page.mouse.up();assert.equal(await page.evaluate(()=>window.visibilityListeners.size),0);assert.deepEqual(await page.frameLocator('#adoption').locator('#root').evaluate(el=>el.sizes),[30,70]);});\n\nawait check('reduced motion disables CSS transitions rather than creating micro transitions',async()=>{const values=await page.locator('#navigation').evaluate(el=>{const style=getComputedStyle(el);return {transition:style.transitionDuration,transitionDelay:style.transitionDelay,animation:style.animationDuration,animationDelay:style.animationDelay}});assert.deepEqual(values,{transition:'0s',transitionDelay:'0s',animation:'0s',animationDelay:'0s'});});\nreports.push({engine,checks,errors});await browser.close();}}finally{server.stop(true)}await Bun.write(dir+'/native-results.json',JSON.stringify(reports,null,2)+'\\n');if(reports.some(r=>r.errors.length||r.checks.some(c=>!c.pass)))process.exitCode=1;\n",
+    "logs": [
+      "final-build.log",
+      "final-docs.log",
+      "final-suite.log",
+      "native-zero-motion.log",
+      "compiled-final.log",
+      "docs-native-final.log",
+      "mount-stress-zero-motion.log"
+    ]
+  }
+}

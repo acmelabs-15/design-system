@@ -1,0 +1,524 @@
+{
+  "date": "2026-09-27T01:07:06.572Z",
+  "runtime": "1.4.0",
+  "package": {
+    "name": "@acmelabs/design-system-workspace",
+    "path": "/Users/peterkloss/Dev/ACMElabs/design-system",
+    "source": true,
+    "imperativeRed": true
+  },
+  "polyfill": {
+    "version": "0.0.10",
+    "source": "m05-explicit-style-helper-2026-09-21.json#/browser/reproduction/polyfill.js",
+    "sha256": "e45ecb655d02737250e9088757874389c36055f7e0251093c9afea7baf887ab7"
+  },
+  "engines": [
+    {
+      "name": "chromium",
+      "version": "154.0.8037.57",
+      "errors": [],
+      "mode": "native",
+      "results": [
+        {
+          "name": "class-only imports do not register global definitions",
+          "pass": true,
+          "observed": {}
+        },
+        {
+          "name": "two registries resolve identical public names to independent classes",
+          "pass": true,
+          "observed": {
+            "global": null,
+            "markers": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "owned loading indicator uses its enclosing registration scope",
+          "pass": true,
+          "observed": [
+            {
+              "tag": "ACME-SPINNER",
+              "constructor": "Spinner",
+              "rendered": true,
+              "registryNative": true
+            },
+            {
+              "tag": "ACME-SPINNER",
+              "constructor": "Spinner",
+              "rendered": true,
+              "registryNative": false
+            }
+          ]
+        },
+        {
+          "name": "private owned dependency registers and renders in each local scope",
+          "pass": true,
+          "observed": [
+            {
+              "constructor": "AcmeSelectionIndicator",
+              "rendered": true
+            },
+            {
+              "constructor": "AcmeSelectionIndicator",
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "name": "scoped Tabs updates selection through its owned family",
+          "pass": true,
+          "observed": {
+            "value": "second",
+            "selected": "true"
+          }
+        },
+        {
+          "name": "Markdown creates its Scroll Area and Viewport in the local registry",
+          "pass": false,
+          "observed": {
+            "area": "HTMLElement",
+            "viewport": "HTMLElement",
+            "rendered": false
+          }
+        },
+        {
+          "name": "JSONView creates its disclosure icon in the local registry",
+          "pass": false,
+          "observed": {
+            "constructor": "HTMLElement",
+            "rendered": false
+          }
+        },
+        {
+          "name": "explicit registration rejects an unrelated constructor",
+          "pass": true,
+          "observed": {
+            "rejected": true
+          }
+        },
+        {
+          "name": "scoped control submits its current value synchronously",
+          "pass": true,
+          "observed": {
+            "entries": [
+              [
+                "value",
+                "before"
+              ]
+            ]
+          }
+        },
+        {
+          "name": "scoped Box applies its public style input",
+          "pass": true,
+          "observed": {
+            "padding": "12px",
+            "sheetCount": 3
+          }
+        },
+        {
+          "name": "reconnect preserves identity and state",
+          "pass": true,
+          "observed": {
+            "value": "reconnected"
+          }
+        },
+        {
+          "name": "adoption preserves form, state and destination-owned styles",
+          "pass": true,
+          "observed": {
+            "value": "adopted",
+            "padding": "17px",
+            "sheets": 3,
+            "newSheets": true
+          }
+        },
+        {
+          "name": "new owned child after adoption retains local registry and destination document",
+          "pass": true,
+          "observed": {
+            "constructor": "Spinner",
+            "rendered": true
+          }
+        },
+        {
+          "name": "return adoption restores styles and updates",
+          "pass": true,
+          "observed": {
+            "padding": "19px",
+            "sameSheets": false
+          }
+        },
+        {
+          "name": "late definition before adoption upgrades core class",
+          "pass": true,
+          "observed": {
+            "constructor": "LateBox"
+          }
+        },
+        {
+          "name": "registration remains globally isolated",
+          "pass": true,
+          "observed": {}
+        }
+      ],
+      "lateAfterAdoption": {
+        "core": {
+          "automatic": true,
+          "afterExplicitUpgrade": true,
+          "marker": true,
+          "ownerDocument": true
+        },
+        "plain": {
+          "automatic": true,
+          "afterExplicitUpgrade": true,
+          "marker": true,
+          "ownerDocument": true
+        }
+      }
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "errors": [],
+      "mode": "polyfill",
+      "results": [
+        {
+          "name": "class-only imports do not register global definitions",
+          "pass": true,
+          "observed": {}
+        },
+        {
+          "name": "two registries resolve identical public names to independent classes",
+          "pass": true,
+          "observed": {
+            "global": null,
+            "markers": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "owned loading indicator uses its enclosing registration scope",
+          "pass": true,
+          "observed": [
+            {
+              "tag": "ACME-SPINNER",
+              "constructor": "Spinner",
+              "rendered": true,
+              "registryNative": false
+            },
+            {
+              "tag": "ACME-SPINNER",
+              "constructor": "Spinner",
+              "rendered": true,
+              "registryNative": false
+            }
+          ]
+        },
+        {
+          "name": "private owned dependency registers and renders in each local scope",
+          "pass": true,
+          "observed": [
+            {
+              "constructor": "AcmeSelectionIndicator",
+              "rendered": true
+            },
+            {
+              "constructor": "AcmeSelectionIndicator",
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "name": "scoped Tabs updates selection through its owned family",
+          "pass": true,
+          "observed": {
+            "value": "second",
+            "selected": "true"
+          }
+        },
+        {
+          "name": "Markdown creates its Scroll Area and Viewport in the local registry",
+          "pass": false,
+          "observed": {
+            "area": "HTMLElement",
+            "viewport": "HTMLElement",
+            "rendered": false
+          }
+        },
+        {
+          "name": "JSONView creates its disclosure icon in the local registry",
+          "pass": false,
+          "observed": {
+            "constructor": "HTMLElement",
+            "rendered": false
+          }
+        },
+        {
+          "name": "explicit registration rejects an unrelated constructor",
+          "pass": true,
+          "observed": {
+            "rejected": true
+          }
+        },
+        {
+          "name": "scoped control submits its current value synchronously",
+          "pass": true,
+          "observed": {
+            "entries": [
+              [
+                "value",
+                "before"
+              ]
+            ]
+          }
+        },
+        {
+          "name": "scoped Box applies its public style input",
+          "pass": true,
+          "observed": {
+            "padding": "12px",
+            "sheetCount": 3
+          }
+        },
+        {
+          "name": "reconnect preserves identity and state",
+          "pass": true,
+          "observed": {
+            "value": "reconnected"
+          }
+        },
+        {
+          "name": "adoption preserves form, state and destination-owned styles",
+          "pass": true,
+          "observed": {
+            "value": "adopted",
+            "padding": "17px",
+            "sheets": 3,
+            "newSheets": true
+          }
+        },
+        {
+          "name": "new owned child after adoption retains local registry and destination document",
+          "pass": true,
+          "observed": {
+            "constructor": "Spinner",
+            "rendered": true
+          }
+        },
+        {
+          "name": "return adoption restores styles and updates",
+          "pass": true,
+          "observed": {
+            "padding": "19px",
+            "sameSheets": false
+          }
+        },
+        {
+          "name": "late definition before adoption upgrades core class",
+          "pass": true,
+          "observed": {
+            "constructor": "LateBox"
+          }
+        },
+        {
+          "name": "registration remains globally isolated",
+          "pass": true,
+          "observed": {}
+        }
+      ],
+      "lateAfterAdoption": {
+        "core": {
+          "automatic": false,
+          "afterExplicitUpgrade": false,
+          "marker": null,
+          "ownerDocument": true
+        },
+        "plain": {
+          "automatic": false,
+          "afterExplicitUpgrade": false,
+          "marker": null,
+          "ownerDocument": true
+        },
+        "bothDocumentsPolyfilled": {
+          "automatic": false,
+          "afterExplicitUpgrade": false,
+          "marker": null,
+          "ownerDocument": true
+        }
+      }
+    },
+    {
+      "name": "webkit",
+      "version": "26.6",
+      "errors": [],
+      "mode": "native",
+      "results": [
+        {
+          "name": "class-only imports do not register global definitions",
+          "pass": true,
+          "observed": {}
+        },
+        {
+          "name": "two registries resolve identical public names to independent classes",
+          "pass": true,
+          "observed": {
+            "global": null,
+            "markers": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "owned loading indicator uses its enclosing registration scope",
+          "pass": true,
+          "observed": [
+            {
+              "tag": "ACME-SPINNER",
+              "constructor": "Spinner",
+              "rendered": true,
+              "registryNative": true
+            },
+            {
+              "tag": "ACME-SPINNER",
+              "constructor": "Spinner",
+              "rendered": true,
+              "registryNative": false
+            }
+          ]
+        },
+        {
+          "name": "private owned dependency registers and renders in each local scope",
+          "pass": true,
+          "observed": [
+            {
+              "constructor": "AcmeSelectionIndicator",
+              "rendered": true
+            },
+            {
+              "constructor": "AcmeSelectionIndicator",
+              "rendered": true
+            }
+          ]
+        },
+        {
+          "name": "scoped Tabs updates selection through its owned family",
+          "pass": true,
+          "observed": {
+            "value": "second",
+            "selected": "true"
+          }
+        },
+        {
+          "name": "Markdown creates its Scroll Area and Viewport in the local registry",
+          "pass": false,
+          "observed": {
+            "area": "HTMLElement",
+            "viewport": "HTMLElement",
+            "rendered": false
+          }
+        },
+        {
+          "name": "JSONView creates its disclosure icon in the local registry",
+          "pass": false,
+          "observed": {
+            "constructor": "HTMLElement",
+            "rendered": false
+          }
+        },
+        {
+          "name": "explicit registration rejects an unrelated constructor",
+          "pass": true,
+          "observed": {
+            "rejected": true
+          }
+        },
+        {
+          "name": "scoped control submits its current value synchronously",
+          "pass": true,
+          "observed": {
+            "entries": [
+              [
+                "value",
+                "before"
+              ]
+            ]
+          }
+        },
+        {
+          "name": "scoped Box applies its public style input",
+          "pass": true,
+          "observed": {
+            "padding": "12px",
+            "sheetCount": 3
+          }
+        },
+        {
+          "name": "reconnect preserves identity and state",
+          "pass": true,
+          "observed": {
+            "value": "reconnected"
+          }
+        },
+        {
+          "name": "adoption preserves form, state and destination-owned styles",
+          "pass": true,
+          "observed": {
+            "value": "adopted",
+            "padding": "17px",
+            "sheets": 3,
+            "newSheets": true
+          }
+        },
+        {
+          "name": "new owned child after adoption retains local registry and destination document",
+          "pass": true,
+          "observed": {
+            "constructor": "Spinner",
+            "rendered": true
+          }
+        },
+        {
+          "name": "return adoption restores styles and updates",
+          "pass": true,
+          "observed": {
+            "padding": "19px",
+            "sameSheets": false
+          }
+        },
+        {
+          "name": "late definition before adoption upgrades core class",
+          "pass": true,
+          "observed": {
+            "constructor": "LateBox"
+          }
+        },
+        {
+          "name": "registration remains globally isolated",
+          "pass": true,
+          "observed": {}
+        }
+      ],
+      "lateAfterAdoption": {
+        "core": {
+          "automatic": true,
+          "afterExplicitUpgrade": true,
+          "marker": true,
+          "ownerDocument": true
+        },
+        "plain": {
+          "automatic": true,
+          "afterExplicitUpgrade": true,
+          "marker": true,
+          "ownerDocument": true
+        }
+      }
+    }
+  ]
+}

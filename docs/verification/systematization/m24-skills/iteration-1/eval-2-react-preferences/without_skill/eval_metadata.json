@@ -1,0 +1,11 @@
+{
+  "eval_id": 2,
+  "eval_name": "react-preferences",
+  "prompt": "Build a React preferences panel with Source/Output tabs and a single-choice plan selection displayed as attached radio cards. Use the installed matching core and React packages. Keep a stateful editor in the Source panel through tab changes, and include an unmount/remount control in the test app. Supply the runnable component and a browser verification report.",
+  "assertions": [
+    "The React fixture typechecks against exact matching package versions and individual wrapper imports.",
+    "Keyboard tab activation updates the associated panel and radio selection remains an independent single-choice form value.",
+    "State preservation uses the documented content API and a typed custom event callback receives actual event detail.",
+    "Unmount removes active callbacks and remount restores correct behavior without duplicated state owners."
+  ]
+}

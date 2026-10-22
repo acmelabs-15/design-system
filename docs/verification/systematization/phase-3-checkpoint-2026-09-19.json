@@ -1,0 +1,207 @@
+{
+  "date": "2026-09-19",
+  "scope": "Phase 3 initial selections and evidence/implementation-quality reassessment; records only",
+  "qualityRequest": {
+    "source": [
+      "Everything should be based on evidence, no assumptions.",
+      "Decisions should be best for implementation code, not fastest/easiest/most convenient.",
+      "Reevaluate earlier suggestions if these requirements change them; persist the rules for compaction."
+    ],
+    "standingRuleAlreadyPresent": true,
+    "policyNote": "notes/decisions/evidence-and-implementation-quality.md"
+  },
+  "answers": [
+    {
+      "questionId": "phase3_first_candidate",
+      "answer": "Overlays first (Recommended)"
+    },
+    {
+      "questionId": "overlay_composition_architecture",
+      "answer": "Composable controllers (Recommended)"
+    },
+    {
+      "questionId": "overlay_native_surface_strategy",
+      "answer": "Native surfaces (Recommended)"
+    },
+    {
+      "questionId": "public_property_store_bridge",
+      "answer": "Store-backed properties (Recommended)"
+    },
+    {
+      "questionId": "modal_exit_resource_lifetime",
+      "answer": "Release after exit (Recommended)"
+    },
+    {
+      "questionId": "overlay_architecture_acceptance",
+      "answer": "Accept architecture (Recommended)"
+    },
+    {
+      "questionId": "native_form_architecture",
+      "answer": "Shared form-control module (Recommended)"
+    },
+    {
+      "questionId": "theme_resolution_architecture",
+      "answer": "Separate responsibilities (Recommended)"
+    },
+    {
+      "questionId": "style_production_architecture",
+      "answer": "This feels like something we should do research on and establish best practices, community preferences, et cetera.",
+      "selection": null,
+      "status": "Research request; neither option selected"
+    }
+  ],
+  "audit": [
+    {
+      "id": "composable-controllers",
+      "status": "Accepted direction; comparison incomplete",
+      "evidence": [
+        "Existing Interaction, Places, StoreEffect and Store selectors have concrete consumers.",
+        "Lit documents controller composition and lifecycle hooks."
+      ],
+      "gap": "No equivalent-contract comparison proves every responsibility should be a controller.",
+      "next": "Compare two real consumers and lifecycle interactions with a focused helper or specialised base where appropriate."
+    },
+    {
+      "id": "native-overlay-surfaces",
+      "status": "Accepted platform direction; combined behaviour unverified",
+      "evidence": [
+        "Current dialogs/drawers use showModal; anchored surfaces use Popover.",
+        "Official platform documentation describes modal inertness and top-layer behaviour."
+      ],
+      "gap": "Local precedent and platform features do not certify nested focus, dismissal or all-engine behaviour.",
+      "next": "Probe nested modal/non-modal surfaces, shadow focus, Escape/outside handling, opener removal, scrolling, origin theme and resize in Chromium/Firefox/WebKit."
+    },
+    {
+      "id": "modal-owned-exit",
+      "status": "Accepted ownership requirement; mechanism unverified",
+      "evidence": [
+        "Existing exits use inconsistent timers/animation collection.",
+        "Sheet collects descendant animations, including potentially unrelated infinite animations."
+      ],
+      "gap": "The requirement is justified; no completed ownership implementation was tested.",
+      "next": "Verify interruption/reopen, reduced motion, infinite child animation, removal, nested locks and exactly-once focus/resource release."
+    },
+    {
+      "id": "store-backed-public-properties",
+      "status": "Accepted direction; feasibility only",
+      "evidence": [
+        "Copy Button stale derived state previously reproduced in Chrome.",
+        "Six inline Bun/happy-dom checks pass for one Boolean accessor."
+      ],
+      "gap": "No comparative generalisation proof, compiler/CEM/React integration or all-engine verification.",
+      "next": "Compare explicit store-backed accessors and controlled update bridging with initialization, converters, defaults/reflection, inheritance, upgrade timing, equality/batching, compiler, CEM, React and browsers."
+    },
+    {
+      "id": "shared-native-form-module",
+      "status": "Accepted responsibility; internal reuse shape open",
+      "evidence": [
+        "Repeated form plumbing and inconsistent callbacks in current controls.",
+        "Previous browser checks found required validity and disabled-fieldset gaps."
+      ],
+      "gap": "One family is not enough to prove controller/mixin/base choice or a universal serializer.",
+      "next": "Compare real Lit implementations and test text, checkbox, radio group and compound controls; submit/reset/restore, form owner, validity focus and optional TanStack Form."
+    },
+    {
+      "id": "theme-resolution-separate-persistence",
+      "status": "Accepted responsibility; propagation mechanism open",
+      "evidence": [
+        "Current root storage and global data-dark mirroring do not satisfy nested-theme requirements.",
+        "Peter selected separation of preference saving and effective resolution."
+      ],
+      "gap": "No measured superiority or complete scope propagation model.",
+      "next": "Compare CSS inheritance with minimal runtime metadata against imperative propagation using nested/moved/custom scopes and opened overlays."
+    },
+    {
+      "id": "style-production",
+      "status": "UNSELECTED; research required before renewed recommendation",
+      "evidence": [
+        "Producer/build ownership is scattered; build reverse-parses generated Lit modules.",
+        "External pipeline comparison is in progress."
+      ],
+      "gap": "The initial CSS-first recommendation preceded adequate comparison; no community preference established.",
+      "next": "Compare actual supported pipelines and versioned outputs in Material, Spectrum and Web Awesome, including different generations; preserve mandatory generator ownership."
+    },
+    {
+      "id": "content-and-interaction-tracking",
+      "status": "Candidate only, not approved architecture",
+      "evidence": [
+        "Input duplicates Places tracking; slot and reconnect cases remain.",
+        "Interaction has temporary listener and focus-within cleanup gaps."
+      ],
+      "gap": "Observed defects do not approve one universal composition tracker.",
+      "next": "Verify real consumer cases; compare extending current small modules with alternatives before fixing their scope."
+    }
+  ],
+  "stateBridgeProbe": {
+    "runtime": "Bun+happy-dom, not browser acceptance",
+    "results": [
+      {
+        "name": "initial derived value",
+        "ok": true
+      },
+      {
+        "name": "default attribute absent",
+        "ok": true
+      },
+      {
+        "name": "synchronous derived read",
+        "ok": true
+      },
+      {
+        "name": "property updates DOM and reflection",
+        "ok": true
+      },
+      {
+        "name": "attribute removal updates store and render",
+        "ok": true
+      },
+      {
+        "name": "reconnect retains bridge",
+        "ok": true
+      }
+    ]
+  },
+  "sourceCounts": {
+    "positionCalls": 6,
+    "autoUpdateCalls": 6,
+    "scrollLockCalls": 5,
+    "interactionConstructions": 42,
+    "interactionFiles": 34,
+    "unusedOverlayBase": true,
+    "sourceRisks": [
+      "Asynchronous positioning methods have no post-await session check",
+      "Exit techniques vary across components and can include descendant animations",
+      "Peer focus-helper imports and nested expandedInside heuristics",
+      "Disconnect/reconnect lifetime differs",
+      "Interaction temporarywindowlisteners not owned by detach"
+    ]
+  },
+  "priorReviewScope": {
+    "phase3": "All six accepted directions reassessed against source/probe evidence.",
+    "earlierPass": "Targeted check of composition/Item/Group, Lit Motion, Flow Diagram and related ownership records. Not a new full revalidation of every Phase 1/2 decision.",
+    "finding": "No current evidence requires reversal of the selected directions. Stronger comparative/behaviour evidence is needed before finalizing implementation mechanisms; smaller/faster is not proof of better."
+  },
+  "reportStatus": "Architecture candidates were presented inline during Plan mode. No standalone temporary HTML report has been written.",
+  "phase3Complete": true,
+  "sourceImplementationChanged": false,
+  "commitCreated": false,
+  "pushPerformed": false,
+  "styleFollowup": {
+    "record": "notes/alignment/evidence/style-pipeline-comparison-2026-09-19.json",
+    "status": "Architecture selected after comparison",
+    "note": "notes/decisions/style-production.md",
+    "source": "Great, then let's go with that direction."
+  },
+  "closure": {
+    "scope": "Architecture responsibility review only; no interface or implementation approval",
+    "record": "notes/alignment/phase-3-review.md#phase-3-closure",
+    "next": "Phase 4: inventory G-01 Group",
+    "deferredOwners": {
+      "interfaces": "Agent drafts, Peter approves in Phase 4",
+      "mechanisms": "Agent proposes, Peter approves migration in Phase 5",
+      "runtimeVerification": "Implementing agent verifies each affected Phase 6 batch"
+    },
+    "newUserArchitectureDecision": false,
+    "sourceImplementationChanged": false
+  }
+}

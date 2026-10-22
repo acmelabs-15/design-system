@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m23",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.604Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m23-documentation-2026-09-26.json",
+      "destination": "docs/verification/systematization/m23-documentation-2026-09-26.json",
+      "bytes": 2992,
+      "sha256": "92e269aa0917d1ed3410e21e821d345daf3e17564b79fa1141dd1da080ce67fe"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

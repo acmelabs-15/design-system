@@ -1,0 +1,604 @@
+{
+  "variant": "with-consumer-skills",
+  "skills": [
+    "data-layouts",
+    "lit-integration"
+  ],
+  "versions": {
+    "core": "0.2.0",
+    "table": "9.2.4",
+    "virtual": "3.14.0",
+    "lit": "3.3.3"
+  },
+  "attempts": [
+    {
+      "phase": "setup",
+      "outcome": "missing skilled directory; created authorized workspace"
+    },
+    {
+      "phase": "reference reads",
+      "outcome": "combined raw JSON output truncated; recovered by extracting Lit source and component text, reading all source ranges"
+    },
+    {
+      "phase": "build",
+      "outcome": "passed first attempt"
+    },
+    {
+      "phase": "typecheck",
+      "outcome": "passed first attempt; strict tsc"
+    },
+    {
+      "phase": "initial-browser",
+      "outcome": "10 mounted rows; no page errors; dev-mode/update warnings and favicon 500 recorded"
+    },
+    {
+      "phase": "browser attempt 2",
+      "result": {
+        "variant": "with-consumer-skills",
+        "skills": [
+          "data-layouts",
+          "lit-integration"
+        ],
+        "versions": {
+          "core": "0.2.0",
+          "table": "9.2.4",
+          "virtual": "3.14.0",
+          "lit": "3.3.3"
+        },
+        "attempts": [
+          {
+            "phase": "setup",
+            "outcome": "missing skilled directory; created authorized workspace"
+          },
+          {
+            "phase": "reference reads",
+            "outcome": "combined raw JSON output truncated; recovered by extracting Lit source and component text, reading all source ranges"
+          },
+          {
+            "phase": "build",
+            "outcome": "passed first attempt"
+          },
+          {
+            "phase": "typecheck",
+            "outcome": "passed first attempt; strict tsc"
+          },
+          {
+            "phase": "initial-browser",
+            "outcome": "10 mounted rows; no page errors; dev-mode/update warnings and favicon 500 recorded"
+          },
+          {
+            "phase": "browser attempt 1",
+            "result": {
+              "variant": "with-consumer-skills",
+              "skills": [
+                "data-layouts",
+                "lit-integration"
+              ],
+              "versions": {
+                "core": "0.2.0",
+                "table": "9.2.4",
+                "virtual": "3.14.0",
+                "lit": "3.3.3"
+              },
+              "attempts": [
+                {
+                  "phase": "setup",
+                  "outcome": "missing skilled directory; created authorized workspace"
+                },
+                {
+                  "phase": "reference reads",
+                  "outcome": "combined raw JSON output truncated; recovered by extracting Lit source and component text, reading all source ranges"
+                },
+                {
+                  "phase": "build",
+                  "outcome": "passed first attempt"
+                },
+                {
+                  "phase": "typecheck",
+                  "outcome": "passed first attempt; strict tsc"
+                },
+                {
+                  "phase": "initial-browser",
+                  "outcome": "10 mounted rows; no page errors; dev-mode/update warnings and favicon 500 recorded"
+                }
+              ],
+              "checks": [
+                {
+                  "name": "initial native content and bounded window",
+                  "pass": true,
+                  "details": {
+                    "first": {
+                      "id": "delivery-0",
+                      "name": "Delivery 00000",
+                      "region": "West",
+                      "amount": 0
+                    },
+                    "filtered": 10000,
+                    "page": {
+                      "pageIndex": 0,
+                      "pageSize": 10000
+                    },
+                    "selected": {},
+                    "rendered": [
+                      "delivery-0",
+                      "delivery-1",
+                      "delivery-2",
+                      "delivery-3",
+                      "delivery-4",
+                      "delivery-5",
+                      "delivery-6",
+                      "delivery-7",
+                      "delivery-8",
+                      "delivery-9"
+                    ],
+                    "virtualCount": 10000,
+                    "scrollTop": 0,
+                    "scrollHeight": 480003,
+                    "clientHeight": 360
+                  }
+                },
+                {
+                  "name": "native Chrome accessible names",
+                  "pass": true,
+                  "details": [
+                    {
+                      "role": "region",
+                      "name": "Delivery results"
+                    },
+                    {
+                      "role": "navigation",
+                      "name": "Delivery pages"
+                    },
+                    {
+                      "role": "grid",
+                      "name": "10,000 application-owned delivery records"
+                    },
+                    {
+                      "role": "combobox",
+                      "name": "Show"
+                    }
+                  ]
+                },
+                {
+                  "name": "selection independently toggles two stable rows",
+                  "pass": true,
+                  "details": {
+                    "delivery-1": true
+                  }
+                },
+                {
+                  "name": "sorting changes actual model and rendered row",
+                  "pass": true,
+                  "details": {
+                    "id": "delivery-0",
+                    "name": "Delivery 00000",
+                    "region": "West",
+                    "amount": 0
+                  }
+                },
+                {
+                  "name": "filtering and empty results",
+                  "pass": true,
+                  "details": {
+                    "filteredCount": 120,
+                    "emptyCount": 0
+                  }
+                },
+                {
+                  "name": "page-size request and next page",
+                  "pass": false,
+                  "error": "TimeoutError: click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('option', { name: '100', exact: true })\u001b[22m\n"
+                },
+                {
+                  "name": "restore all rows and reach far records",
+                  "pass": false,
+                  "error": "TimeoutError: click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('option', { name: '10,000', exact: true })\u001b[22m\n"
+                },
+                {
+                  "name": "keyboard logical focus crosses virtual window",
+                  "pass": false,
+                  "error": "Error: evaluate: TypeError: Cannot read properties of undefined (reading 'querySelector')\n    at eval (eval at evaluate (:311:30), <anonymous>:3:27)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+                },
+                {
+                  "name": "disconnect observers and remount same element",
+                  "pass": false,
+                  "error": "Error: remount not observing scroll"
+                }
+              ],
+              "errors": [
+                "RangeError: Pagination requires a positive page and page size, and a nonnegative count\n    at paginationState (http://127.0.0.1:4318/main.js:9514:11)\n    at set pageSize (http://127.0.0.1:4318/main.js:9614:5)\n    at PropertyPart._commitValue (http://127.0.0.1:4318/main.js:1265:29)\n    at PropertyPart._$setValue (http://127.0.0.1:4318/main.js:1221:12)\n    at TemplateInstance._update (http://127.0.0.1:4318/main.js:934:16)\n    at ChildPart._commitTemplateResult (http://127.0.0.1:4318/main.js:1094:29)\n    at ChildPart._$setValue (http://127.0.0.1:4318/main.js:995:12)\n    at render (http://127.0.0.1:4318/main.js:1393:8)\n    at DeliveryApp.update (http://127.0.0.1:4318/main.js:1445:24)\n    at DeliveryApp.performUpdate (http://127.0.0.1:4318/main.js:466:14)",
+                "RangeError: Pagination requires a positive page and page size, and a nonnegative count\n    at paginationState (http://127.0.0.1:4318/main.js:9514:11)\n    at set pageSize (http://127.0.0.1:4318/main.js:9614:5)\n    at PropertyPart._commitValue (http://127.0.0.1:4318/main.js:1265:29)\n    at PropertyPart._$setValue (http://127.0.0.1:4318/main.js:1221:12)\n    at TemplateInstance._update (http://127.0.0.1:4318/main.js:934:16)\n    at ChildPart._commitTemplateResult (http://127.0.0.1:4318/main.js:1094:29)\n    at ChildPart._$setValue (http://127.0.0.1:4318/main.js:995:12)\n    at render (http://127.0.0.1:4318/main.js:1393:8)\n    at DeliveryApp.update (http://127.0.0.1:4318/main.js:1445:24)\n    at DeliveryApp.performUpdate (http://127.0.0.1:4318/main.js:466:14)",
+                "RangeError: Pagination requires a positive page and page size, and a nonnegative count\n    at paginationState (http://127.0.0.1:4318/main.js:9514:11)\n    at set pageSize (http://127.0.0.1:4318/main.js:9614:5)\n    at PropertyPart._commitValue (http://127.0.0.1:4318/main.js:1265:29)\n    at PropertyPart._$setValue (http://127.0.0.1:4318/main.js:1221:12)\n    at TemplateInstance._update (http://127.0.0.1:4318/main.js:934:16)\n    at ChildPart._commitTemplateResult (http://127.0.0.1:4318/main.js:1094:29)\n    at ChildPart._$setValue (http://127.0.0.1:4318/main.js:995:12)\n    at render (http://127.0.0.1:4318/main.js:1393:8)\n    at DeliveryApp.update (http://127.0.0.1:4318/main.js:1445:24)\n    at DeliveryApp.performUpdate (http://127.0.0.1:4318/main.js:466:14)"
+              ],
+              "warnings": [
+                "Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.",
+                "Element acme-select scheduled an update (generally because a property was set) after an update completed, causing a new update to be scheduled. This is inefficient and should be avoided unless the next update can only be scheduled as a side effect of the previous update. See https://lit.dev/msg/change-in-update for more information.",
+                "Element delivery-app scheduled an update (generally because a property was set) after an update completed, causing a new update to be scheduled. This is inefficient and should be avoided unless the next update can only be scheduled as a side effect of the previous update. See https://lit.dev/msg/change-in-update for more information.",
+                "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+              ],
+              "packageFindings": [
+                {
+                  "severity": "documentation",
+                  "finding": "Lit recipe imports and source include React examples, although Lit consumer can select only matching Lit source files."
+                }
+              ],
+              "complete": true,
+              "pass": false
+            }
+          }
+        ],
+        "checks": [
+          {
+            "name": "initial native content and bounded window",
+            "pass": true,
+            "details": {
+              "first": {
+                "id": "delivery-0",
+                "name": "Delivery 00000",
+                "region": "West",
+                "amount": 0
+              },
+              "filtered": 10000,
+              "page": {
+                "pageIndex": 0,
+                "pageSize": 10000
+              },
+              "selected": {},
+              "rendered": [
+                "delivery-0",
+                "delivery-1",
+                "delivery-2",
+                "delivery-3",
+                "delivery-4",
+                "delivery-5",
+                "delivery-6",
+                "delivery-7",
+                "delivery-8",
+                "delivery-9"
+              ],
+              "virtualCount": 10000,
+              "scrollTop": 0,
+              "scrollHeight": 480003,
+              "clientHeight": 360
+            }
+          },
+          {
+            "name": "native Chrome accessible names",
+            "pass": true,
+            "details": [
+              {
+                "role": "region",
+                "name": "Delivery results"
+              },
+              {
+                "role": "navigation",
+                "name": "Delivery pages"
+              },
+              {
+                "role": "grid",
+                "name": "10,000 application-owned delivery records"
+              },
+              {
+                "role": "combobox",
+                "name": "Show"
+              }
+            ]
+          },
+          {
+            "name": "selection independently toggles two stable rows",
+            "pass": true,
+            "details": {
+              "delivery-1": true
+            }
+          },
+          {
+            "name": "sorting changes actual model and rendered row",
+            "pass": true,
+            "details": {
+              "id": "delivery-0",
+              "name": "Delivery 00000",
+              "region": "West",
+              "amount": 0
+            }
+          },
+          {
+            "name": "filtering and empty results",
+            "pass": true,
+            "details": {
+              "filteredCount": 120,
+              "emptyCount": 0
+            }
+          },
+          {
+            "name": "page-size request and next page",
+            "pass": false,
+            "error": "Error: size did not update"
+          },
+          {
+            "name": "restore all rows and reach far records",
+            "pass": false,
+            "error": "Error: far row not reached"
+          },
+          {
+            "name": "keyboard logical focus crosses virtual window",
+            "pass": false,
+            "error": "Error: evaluate: TypeError: Cannot read properties of undefined (reading 'querySelector')\n    at eval (eval at evaluate (:311:30), <anonymous>:3:27)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+          },
+          {
+            "name": "disconnect observers and remount same element",
+            "pass": false,
+            "error": "Error: remount not observing scroll"
+          }
+        ],
+        "errors": [
+          "RangeError: Pagination requires a positive page and page size, and a nonnegative count\n    at paginationState (http://127.0.0.1:4318/main.js:9514:11)\n    at set pageSize (http://127.0.0.1:4318/main.js:9614:5)\n    at PropertyPart._commitValue (http://127.0.0.1:4318/main.js:1265:29)\n    at PropertyPart._$setValue (http://127.0.0.1:4318/main.js:1221:12)\n    at TemplateInstance._update (http://127.0.0.1:4318/main.js:934:16)\n    at ChildPart._commitTemplateResult (http://127.0.0.1:4318/main.js:1094:29)\n    at ChildPart._$setValue (http://127.0.0.1:4318/main.js:995:12)\n    at render (http://127.0.0.1:4318/main.js:1393:8)\n    at DeliveryApp.update (http://127.0.0.1:4318/main.js:1445:24)\n    at DeliveryApp.performUpdate (http://127.0.0.1:4318/main.js:466:14)",
+          "RangeError: Pagination requires a positive page and page size, and a nonnegative count\n    at paginationState (http://127.0.0.1:4318/main.js:9514:11)\n    at set pageSize (http://127.0.0.1:4318/main.js:9614:5)\n    at PropertyPart._commitValue (http://127.0.0.1:4318/main.js:1265:29)\n    at PropertyPart._$setValue (http://127.0.0.1:4318/main.js:1221:12)\n    at TemplateInstance._update (http://127.0.0.1:4318/main.js:934:16)\n    at ChildPart._commitTemplateResult (http://127.0.0.1:4318/main.js:1094:29)\n    at ChildPart._$setValue (http://127.0.0.1:4318/main.js:995:12)\n    at render (http://127.0.0.1:4318/main.js:1393:8)\n    at DeliveryApp.update (http://127.0.0.1:4318/main.js:1445:24)\n    at DeliveryApp.performUpdate (http://127.0.0.1:4318/main.js:466:14)",
+          "RangeError: Pagination requires a positive page and page size, and a nonnegative count\n    at paginationState (http://127.0.0.1:4318/main.js:9514:11)\n    at set pageSize (http://127.0.0.1:4318/main.js:9614:5)\n    at PropertyPart._commitValue (http://127.0.0.1:4318/main.js:1265:29)\n    at PropertyPart._$setValue (http://127.0.0.1:4318/main.js:1221:12)\n    at TemplateInstance._update (http://127.0.0.1:4318/main.js:934:16)\n    at ChildPart._commitTemplateResult (http://127.0.0.1:4318/main.js:1094:29)\n    at ChildPart._$setValue (http://127.0.0.1:4318/main.js:995:12)\n    at render (http://127.0.0.1:4318/main.js:1393:8)\n    at DeliveryApp.update (http://127.0.0.1:4318/main.js:1445:24)\n    at DeliveryApp.performUpdate (http://127.0.0.1:4318/main.js:466:14)",
+          "RangeError: Pagination requires a positive page and page size, and a nonnegative count\n    at paginationState (http://127.0.0.1:4318/main.js:9514:11)\n    at set pageSize (http://127.0.0.1:4318/main.js:9614:5)\n    at PropertyPart._commitValue (http://127.0.0.1:4318/main.js:1265:29)\n    at PropertyPart._$setValue (http://127.0.0.1:4318/main.js:1221:12)\n    at TemplateInstance._update (http://127.0.0.1:4318/main.js:934:16)\n    at ChildPart._commitTemplateResult (http://127.0.0.1:4318/main.js:1094:29)\n    at ChildPart._$setValue (http://127.0.0.1:4318/main.js:995:12)\n    at render (http://127.0.0.1:4318/main.js:1393:8)\n    at DeliveryApp.update (http://127.0.0.1:4318/main.js:1445:24)\n    at DeliveryApp.performUpdate (http://127.0.0.1:4318/main.js:466:14)",
+          "RangeError: Pagination requires a positive page and page size, and a nonnegative count\n    at paginationState (http://127.0.0.1:4318/main.js:9514:11)\n    at set pageSize (http://127.0.0.1:4318/main.js:9614:5)\n    at PropertyPart._commitValue (http://127.0.0.1:4318/main.js:1265:29)\n    at PropertyPart._$setValue (http://127.0.0.1:4318/main.js:1221:12)\n    at TemplateInstance._update (http://127.0.0.1:4318/main.js:934:16)\n    at ChildPart._commitTemplateResult (http://127.0.0.1:4318/main.js:1094:29)\n    at ChildPart._$setValue (http://127.0.0.1:4318/main.js:995:12)\n    at render (http://127.0.0.1:4318/main.js:1393:8)\n    at DeliveryApp.update (http://127.0.0.1:4318/main.js:1445:24)\n    at DeliveryApp.performUpdate (http://127.0.0.1:4318/main.js:466:14)"
+        ],
+        "warnings": [
+          "Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.",
+          "Element acme-select scheduled an update (generally because a property was set) after an update completed, causing a new update to be scheduled. This is inefficient and should be avoided unless the next update can only be scheduled as a side effect of the previous update. See https://lit.dev/msg/change-in-update for more information.",
+          "Element delivery-app scheduled an update (generally because a property was set) after an update completed, causing a new update to be scheduled. This is inefficient and should be avoided unless the next update can only be scheduled as a side effect of the previous update. See https://lit.dev/msg/change-in-update for more information.",
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+        ],
+        "packageFindings": [
+          {
+            "severity": "documentation",
+            "finding": "Lit recipe imports and source include React examples, although Lit consumer can select only matching Lit source files."
+          }
+        ],
+        "complete": true,
+        "pass": false
+      }
+    },
+    {
+      "phase": "consumer fix",
+      "outcome": "Page request handler originally used else, accepting nested select close requests as page-size; changed to explicit page-size action per recipe. Source main-attempt-1.ts and probe.log preserved."
+    },
+    {
+      "phase": "final strict typecheck",
+      "outcome": "pass",
+      "evidence": "typecheck-final.txt"
+    },
+    {
+      "phase": "visual check",
+      "outcome": "verified.png inspected; native table rows and Pagination visible without clipping"
+    },
+    {
+      "phase": "options native AX",
+      "outcome": "Chrome confirms names 25, 100, 1,000, 10,000; Playwright role calculation failure was a harness issue",
+      "evidence": "options-ax.json"
+    }
+  ],
+  "checks": [
+    {
+      "name": "initial native content and bounded window",
+      "pass": true,
+      "details": {
+        "first": {
+          "id": "delivery-0",
+          "name": "Delivery 00000",
+          "region": "West",
+          "amount": 0
+        },
+        "filtered": 10000,
+        "page": {
+          "pageIndex": 0,
+          "pageSize": 10000
+        },
+        "selected": {},
+        "rendered": [
+          "delivery-0",
+          "delivery-1",
+          "delivery-2",
+          "delivery-3",
+          "delivery-4",
+          "delivery-5",
+          "delivery-6",
+          "delivery-7",
+          "delivery-8",
+          "delivery-9"
+        ],
+        "virtualCount": 10000,
+        "scrollTop": 0,
+        "scrollHeight": 480003,
+        "clientHeight": 360
+      }
+    },
+    {
+      "name": "native Chrome accessible names",
+      "pass": true,
+      "details": [
+        {
+          "role": "region",
+          "name": "Delivery results"
+        },
+        {
+          "role": "navigation",
+          "name": "Delivery pages"
+        },
+        {
+          "role": "grid",
+          "name": "10,000 application-owned delivery records"
+        },
+        {
+          "role": "combobox",
+          "name": "Show"
+        }
+      ]
+    },
+    {
+      "name": "selection independently toggles two stable rows",
+      "pass": true,
+      "details": {
+        "delivery-1": true
+      }
+    },
+    {
+      "name": "sorting changes actual model and rendered row",
+      "pass": true,
+      "details": {
+        "id": "delivery-0",
+        "name": "Delivery 00000",
+        "region": "West",
+        "amount": 0
+      }
+    },
+    {
+      "name": "filtering and empty results",
+      "pass": true,
+      "details": {
+        "filteredCount": 120,
+        "emptyCount": 0
+      }
+    },
+    {
+      "name": "page-size request and next page",
+      "pass": true,
+      "details": {
+        "pageIndex": 1,
+        "pageSize": 100
+      }
+    },
+    {
+      "name": "restore all rows and reach far records",
+      "pass": true,
+      "details": {
+        "first": {
+          "id": "delivery-0",
+          "name": "Delivery 00000",
+          "region": "West",
+          "amount": 0
+        },
+        "filtered": 10000,
+        "page": {
+          "pageIndex": 0,
+          "pageSize": 10000
+        },
+        "selected": {
+          "delivery-1": true
+        },
+        "rendered": [
+          "delivery-9497",
+          "delivery-9498",
+          "delivery-9499",
+          "delivery-9500",
+          "delivery-9501",
+          "delivery-9502",
+          "delivery-9503",
+          "delivery-9504",
+          "delivery-9505",
+          "delivery-9506",
+          "delivery-9507",
+          "delivery-9508",
+          "delivery-9509",
+          "delivery-9510",
+          "delivery-9511"
+        ],
+        "virtualCount": 10000,
+        "scrollTop": 455912,
+        "scrollHeight": 479828,
+        "clientHeight": 360
+      }
+    },
+    {
+      "name": "keyboard logical focus crosses virtual window",
+      "pass": true,
+      "details": {
+        "before": "delivery-9511",
+        "after": {
+          "row": "delivery-9512",
+          "column": "name"
+        }
+      }
+    },
+    {
+      "name": "disconnect observers and remount same element",
+      "pass": true,
+      "details": {
+        "before": 18,
+        "removed": {
+          "observed": 0,
+          "scroll": null
+        },
+        "remounted": {
+          "first": {
+            "id": "delivery-0",
+            "name": "Delivery 00000",
+            "region": "West",
+            "amount": 0
+          },
+          "filtered": 10000,
+          "page": {
+            "pageIndex": 0,
+            "pageSize": 10000
+          },
+          "selected": {
+            "delivery-1": true
+          },
+          "rendered": [
+            "delivery-97",
+            "delivery-98",
+            "delivery-99",
+            "delivery-100",
+            "delivery-101",
+            "delivery-102",
+            "delivery-103",
+            "delivery-104",
+            "delivery-105",
+            "delivery-106",
+            "delivery-107",
+            "delivery-108",
+            "delivery-109",
+            "delivery-110",
+            "delivery-111"
+          ],
+          "virtualCount": 10000,
+          "scrollTop": 4782,
+          "scrollHeight": 479681,
+          "clientHeight": 360
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    "Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.",
+    "Element acme-select scheduled an update (generally because a property was set) after an update completed, causing a new update to be scheduled. This is inefficient and should be avoided unless the next update can only be scheduled as a side effect of the previous update. See https://lit.dev/msg/change-in-update for more information.",
+    "Element delivery-app scheduled an update (generally because a property was set) after an update completed, causing a new update to be scheduled. This is inefficient and should be avoided unless the next update can only be scheduled as a side effect of the previous update. See https://lit.dev/msg/change-in-update for more information.",
+    "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+  ],
+  "packageFindings": [
+    {
+      "severity": "documentation",
+      "finding": "Lit recipe imports and source include React examples, although Lit consumer can select only matching Lit source files."
+    }
+  ],
+  "complete": true,
+  "pass": true,
+  "sourceFiles": [
+    "main.ts",
+    "data.ts",
+    "grid-interaction.ts",
+    "definitions.ts",
+    "index.html",
+    "serve.ts",
+    "tsconfig.json"
+  ],
+  "packagePatched": false,
+  "repositoryChanged": false,
+  "evidence": [
+    "verify-attempt-1.log",
+    "verify-attempt-2.log",
+    "verify-attempt-3.log",
+    "result-attempt-1.json",
+    "result-attempt-2.json",
+    "native-ax.json",
+    "options-ax.json",
+    "probe.log",
+    "initial.png",
+    "verified.png"
+  ]
+}

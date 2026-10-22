@@ -1,0 +1,598 @@
+{
+  "date": "2026-09-19",
+  "status": "Research recorded; Toolbar/Group/selection responsibility split selected. Detailed interfaces and acceptance remain open.",
+  "userDecision": {
+    "questionId": "toolbar_group_responsibilities",
+    "answer": "Use this split (Recommended)",
+    "text": "Separate responsibilities: generic Group arranges children; Toolbar identifies related controls and owns coordinated keyboard movement; selection controls retain selected-value and form responsibility. Compose these roles, rather than have two focus/selection owners."
+  },
+  "standingMethod": [
+    "Always read Overview, Specs and Guidelines in full for every Material Design3 component reviewed; include available Accessibility.",
+    "Include relevant other Material components and supporting foundation documentation for the actual question.",
+    "Record incomplete extraction and visual or interactive limits; distinguish design guidance, token sets, experimental source and stable exports."
+  ],
+  "houseComparison": {
+    "date": "2026-09-19",
+    "intent": "Material density, spacing or other guidance may inform proposed changes to house rules during a component review. Label source values and units separately. Existing decisions are the baseline; changes need evidence, consequences, backward/forward dependency checks and Peter's explicit choice.",
+    "specificChangeSelected": false,
+    "groupDependency": "Group is a direct Toolbar dependency; exact composition returns during Phase2.4 Group."
+  },
+  "coverage": {
+    "pages": 46,
+    "layout": 20,
+    "interaction": 6,
+    "components": 5,
+    "componentTabs": 4,
+    "pagesRead": [
+      {
+        "url": "https://m3.material.io/foundations/layout/layout-overview/overview",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Adaptive layout overview and May2026 update; bars/rails/panes; web applicability; no Lit scaffold implied."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/layout-overview/parts-of-layout",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Windows/grids/bars/rails/panes/drag handles/rulers; implicit versus explicit containment; logical direction."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/layout-overview/adaptive-design",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "People/device/usage adaptation; touch/pointer/keyboard together; show-hide, floating/docked and reflow; retain context."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/scaffold/overview",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Bars frame navigation, rails surround panes, panes hold content. These layout regions do not require separate public elements."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/scaffold/bars",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Bars can span a pane or window; distinguish layout region from App Bar component; system safety regions are platform-specific."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/scaffold/rails",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Top/bottom/leading/trailing space can hold navigation, toolbar, chat input or other controls; rail region is not Navigation Rail component."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/scaffold/panes",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "One to three visible panes; flexible/fixed sizing; user resize/collapse persistence across app closure and breakpoint changes, with temporary-pane exceptions; modal/nonmodal focus distinctions."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/grids-spacing/overview",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Adaptive grids, grouping/attention through spacing and information density; May2026 revised guidance."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/grids-spacing/grids",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Columns followed by bars/rails/panes; rulers align safety/title/content. Diagram verified4/8/12 columns across bands; no numeric gutter inferred from unlabeled geometry."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/grids-spacing/spacing",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Explicit boundaries and implicit proximity, repeated rhythm, aligned media boxes and controls near affected content; visual grouping does not establish ARIA roles."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/grids-spacing/density",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "User preference remains across breakpoints; spacing changes without text shrink; menus/dialogs/snackbars remain roomy;48CSSpx/dp source target guidance differs from house compact floor.240dp table cell verifiedrowspan3."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/breakpoints/overview",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Width bands below600,600–839,840–1199,1200–1599,1600+dp; reveal/divide/resize/reposition/swap; functional equivalence; Android height bands not blanket web rules."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/breakpoints/compact",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "One pane and16dp margins; navigation/reach guidance is contextual; available window size can change independently of device."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/breakpoints/medium",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "One pane preferred, two for lower density; default50/50 and24dp margins/spacer. Navigation differs between one/two-pane examples; handheld landscape reachability diagram inspected."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/breakpoints/expanded",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "One/two panes; fixed360dp example, or visually centered split including navigation region;24dp margins/spacer; pane-local sorting/filtering."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/breakpoints/large-extra-large",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Two panes often preferred; fixed412dp; optional third pane at extra-large; side-sheet400dp maximum is explicit exception; no more than3 visible panes in this guidance."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/canonical-examples/overview",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Feed/list-detail/supporting-pane are adaptable examples, including custom layering. Android implementation resources do not establish a shipped Lit layout."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/canonical-examples/feed",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Responsive card/list browsing grid, content relationships through size/position; data loading/selection/virtualization remain separate."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/canonical-examples/list-detail",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Preserve current item/navigation/context across pane changes; selection highlight differs for detail navigation versus multi-selection; empty detail when none selected."
+      },
+      {
+        "url": "https://m3.material.io/foundations/layout/canonical-examples/supporting-pane",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Supporting content is meaningful only with the primary content. Place it below at compact and medium sizes; compact may use a bottom sheet. Place it beside the primary content at expanded sizes. Width guidance is context-specific."
+      },
+      {
+        "url": "https://m3.material.io/foundations/interaction/gestures",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Tap/doubletap/longpress/scroll/swipe/drag/pinch/compound gestures; predictive back explicitlyAndroid; no blanket approval of new gesture engines."
+      },
+      {
+        "url": "https://m3.material.io/foundations/interaction/inputs",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Input method independent of viewport/device; native text selection/scroll, pointer/hover, logical Tab order and visiblefocus. Generic Escape focus-clearing language requires web-widget-specific interpretation."
+      },
+      {
+        "url": "https://m3.material.io/foundations/interaction/selection",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Selection indicators distinct from navigation-active indicators; primary versus secondary selection affordances; avoid longpress-drag conflict with reorder; preserve accessible alternatives."
+      },
+      {
+        "url": "https://m3.material.io/foundations/interaction/states/overview",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Enabled/disabled/hover/focus/pressed/dragged; semantic states may combine."
+      },
+      {
+        "url": "https://m3.material.io/foundations/interaction/states/state-layers",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "One visual state layer at a time under content, derived from content color; published hover.08/focus.10/press.10/drag.16/disabled.38; no explicit transient priority order."
+      },
+      {
+        "url": "https://m3.material.io/foundations/interaction/states/applying-states",
+        "read": "all extracted prose, sections, tables, alt text and captions",
+        "finding": "Focus/selection/hover/press can coexist; keyboard focus ring separate; disabled unfocusable perMaterial differs from possible composite discoverability policy; containers vsinteractiveCard ambiguity."
+      },
+      {
+        "url": "https://m3.material.io/components/toolbars/overview",
+        "component": "toolbars",
+        "tab": "overview",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Expressive docked/floating variants; baseline bottomappbar remains supported but not recommended; Web resource unavailable."
+      },
+      {
+        "url": "https://m3.material.io/components/toolbars/specs",
+        "component": "toolbars",
+        "tab": "specs",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Configurable content slots; standard/vibrant color sets, docked/floating/FAB andbaseline tokens; platform implementation differences; fullmeasurement sections inspected."
+      },
+      {
+        "url": "https://m3.material.io/components/toolbars/guidelines",
+        "component": "toolbars",
+        "tab": "guidelines",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Related actions; textfields andcustomcontrols explicitly allowed. Docked bottom guidance has web/large-screen exception forotherpagepositions/rounding. Floating overflow, orientation, RTL, margin andscroll guidance."
+      },
+      {
+        "url": "https://m3.material.io/components/toolbars/accessibility",
+        "component": "toolbars",
+        "tab": "accessibility",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Container has no interactions bydefault; childcontrols do. Web toolbarrole required; initialfocus firstinteractive; proseTabthroughactions andtableTaborArrows. No precise mixed-input focus algorithm supplied."
+      },
+      {
+        "url": "https://m3.material.io/components/app-bars/overview",
+        "component": "app-bars",
+        "tab": "overview",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Page identity/navigation and1–2essentialactions. Search/small/mediumflexible/largeflexible; oldmedium/large no longerrecommended; Web availability unavailable."
+      },
+      {
+        "url": "https://m3.material.io/components/app-bars/specs",
+        "component": "app-bars",
+        "tab": "specs",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Common+size sets, search sharedtokens, anatomy/image/subtitle/filledaction/color/scroll/measurements andbaseline sections read."
+      },
+      {
+        "url": "https://m3.material.io/components/app-bars/guidelines",
+        "component": "app-bars",
+        "tab": "guidelines",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Page-wide actions andnavigation; larger actionsets goToolbar; full-width topcontainer, leading/centerheading, flexible two-lineheadline; search entryopensview. Contextual overflow and scrolldirection ambiguities retained."
+      },
+      {
+        "url": "https://m3.material.io/components/app-bars/accessibility",
+        "component": "app-bars",
+        "tab": "accessibility",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Tab through controls, Space/Enteractivation, meaningfulactionlabels/pagecontext, initialleadingcontrol. Not proof ofToolbarrovingfocus."
+      },
+      {
+        "url": "https://m3.material.io/components/search/overview",
+        "component": "search",
+        "tab": "overview",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Searchbar andsearchview; expressivecontained recommended versusbaseline divided; Web unavailable."
+      },
+      {
+        "url": "https://m3.material.io/components/search/specs",
+        "component": "search",
+        "tab": "specs",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Bar/view sets, full-screen/docked andcontained/divided styles; optionaltrailingicons/avatar, independentchildstates, measurements andstateillustrations."
+      },
+      {
+        "url": "https://m3.material.io/components/search/guidelines",
+        "component": "search",
+        "tab": "guidelines",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Localpane search versusglobalSearchAppBar andsecondaryicon; history/suggestions/results policies are alternatives. Keep query/results accessible. Androidpredictiveback notwebcontract."
+      },
+      {
+        "url": "https://m3.material.io/components/search/accessibility",
+        "component": "search",
+        "tab": "accessibility",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Nameinput, submit/clear, announceavailable results; Tab/ShiftTab controls and arrowsresults. Android/iOS roles do not supply exactwebARIAimplementation."
+      },
+      {
+        "url": "https://m3.material.io/components/button-groups/overview",
+        "component": "button-groups",
+        "tab": "overview",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Standard/connected Expressive groups XS–XL; connected replacesbaseline segmented; single/multi/required configurations; Web unavailable."
+      },
+      {
+        "url": "https://m3.material.io/components/button-groups/specs",
+        "component": "button-groups",
+        "tab": "specs",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Invisiblecontainer with no suppliedbuttons; spacing/shape coordination, standardneighbor-width interaction versusconnectedlocalshape; all10size sets expanded,measurements/density checked."
+      },
+      {
+        "url": "https://m3.material.io/components/button-groups/guidelines",
+        "component": "button-groups",
+        "tab": "guidelines",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Standard permitsmixedbutton/icon styles andwidths; connected relatedtogglechoices. Consistentdefaultshape/size, one row, overflow andstablehierarchy; noautomatic house morph adoption."
+      },
+      {
+        "url": "https://m3.material.io/components/button-groups/accessibility",
+        "component": "button-groups",
+        "tab": "accessibility",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Container notfocusable and needsnolabel inthisguidance; Tab through eachbutton, Space/Enter; namedcontrols andidentifiable selection,48dp source targets."
+      },
+      {
+        "url": "https://m3.material.io/components/segmented-buttons/overview",
+        "component": "segmented-buttons",
+        "tab": "overview",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Baseline2–5simplechoices single/multi; Expressivereplacement connectedbuttongroup; Web unavailable."
+      },
+      {
+        "url": "https://m3.material.io/components/segmented-buttons/specs",
+        "component": "segmented-buttons",
+        "tab": "specs",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Container/icon/label; outlinedtokens enabled/disabled/hover/focus/press all expanded; selected/unselectedstates;40dpvisualheight/48dptarget anddensity diagrams checked."
+      },
+      {
+        "url": "https://m3.material.io/components/segmented-buttons/guidelines",
+        "component": "segmented-buttons",
+        "tab": "guidelines",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Consistentlabels, no wrapping, multi all/some/none; supportinside sheets/full-screen dialogs; selectioncheck replacesicon wherebothtext/icon; noextra groupingengine chosen."
+      },
+      {
+        "url": "https://m3.material.io/components/segmented-buttons/accessibility",
+        "component": "segmented-buttons",
+        "tab": "accessibility",
+        "read": "all prose, subsections, tables, alt text and captions",
+        "finding": "Tab eachenabledsegment, firstcontrolinitialfocus, mirroredRTL, labels andselectionindicators. Radio/checkbox terminology differs from actual Labs togglebuttonroles."
+      }
+    ]
+  },
+  "specificationInspection": {
+    "scope": "Every exposed token set expanded/read at the displayed default mode; measurement diagrams separately viewed in the in-app browser. Not every theme/platform permutation or animation was inspected.",
+    "toolbar": {
+      "sets": [
+        "Toolbar - Color - Standard",
+        "Toolbar - Color - Vibrant",
+        "Toolbar - Docked",
+        "Toolbar - Floating",
+        "Toolbar - Floating - FAB",
+        "Bottom app bar (baseline)"
+      ],
+      "measurementDiagrams": 6,
+      "referenceValues": "64dp current height; docked16dp ends/4–32dp gaps; floating8dp internal/4dp gaps; horizontal16dp andvertical24dp screen margins; FAB56 expanded/80collapsed. Baseline80dp separate."
+    },
+    "appBars": {
+      "sets": [
+        "App bar - Common",
+        "App bar - Size - Small",
+        "App bar - Size - Medium Flexible",
+        "App bar - Size - Large Flexible",
+        "App bar - Size - Medium (baseline)",
+        "App bar - Size - Large (baseline)",
+        "[Deprecated] Top app bar - Small",
+        "[Deprecated] Top app bar - Medium",
+        "[Deprecated] Top app bar - Large",
+        "[Deprecated] Top app bar - Small, Center-aligned"
+      ],
+      "sharedSets": "Search - View and Search - Bar read on Search page",
+      "measurementDiagrams": 6,
+      "referenceValues": "Small64dp; mediumflexible112/136withsubtitle; largeflexible120/152withsubtitle. Baseline112/152distinct. Main currentavatar32dp vs standaloneSearch30dp."
+    },
+    "search": {
+      "sets": [
+        "Search - View",
+        "Search - Bar"
+      ],
+      "measurementDiagrams": 8,
+      "referenceValues": "Bar56dp, width360–720dp; viewdockedmin240dp max2/3screen; containedmargins24unfocused/12focused, bar-resultsgap2dp; baselinefull-screenheader72dp. dp/pt are sourceunits."
+    },
+    "buttonGroups": {
+      "sets": [
+        "Button group standard - Size - Xsmall",
+        "Button group standard - Size - Small",
+        "Button group standard - Size - Medium",
+        "Button group standard - Size - Large",
+        "Button group standard - Size - Xlarge",
+        "Button group connected - Size - Xsmall",
+        "Button group connected - Size - Small",
+        "Button group connected - Size - Medium",
+        "Button group connected - Size - Large",
+        "Button group connected - Size - Xlarge"
+      ],
+      "measurementDiagrams": 4,
+      "densityDiagram": true,
+      "referenceValues": "Heights32/40/56/96/136dp; standardgaps18/12/8/8/8dp,connected2dp. Standardpressedwidthmultiplier15%,springdampening0.9/stiffness1400: reference only."
+    },
+    "segmentedButtons": {
+      "sets": [
+        "Segmented button - Outlined"
+      ],
+      "expandedGroups": [
+        "Enabled",
+        "Disabled",
+        "Hovered",
+        "Focused",
+        "Pressed (ripple)"
+      ],
+      "measurementDiagram": true,
+      "densityDiagram": true,
+      "referenceValues": "40dpvisualheight,48dpinteractiontarget,1dpoutline,12dpsideminpadding,8dpgap,4dpdensitysteps."
+    },
+    "layoutFollowups": [
+      "Griddiagram4/8/12columns observed; no unlabelledguttervalue inferred",
+      "Ruler diagrams for safety/title/content observed",
+      "Medium ergonomicregions observed",
+      "Density36dpvisualbutton/48dptarget and24dpicon/48dptarget observed",
+      "Densitypixel-equation table240dpcell rowspan3 verified inrenderedDOM"
+    ]
+  },
+  "sourceConflicts": [
+    "Connected Button Group XS prose and diagram say4dp innercorner; expanded token says8dp default and4dp pressed. Do not silently resolve by choosing one.",
+    "Toolbar accessibility prose uses Tab betweenactions, table saysTaborArrows; APG/Radix rovingfocus is more specific and requiresnestedwidgetrules.",
+    "Segmented accessibility terminology radio/checkbox differs from actual Labs role group/nativebutton aria-pressed/Tab-each.",
+    "AppBar guidance discourages overflow but permits it duringresizing; interpretcontext notuniversalban.",
+    "SearchBar trailingallowance differs fromSearchAppBar; differentcontexts, notone interchangeable limit.",
+    "AppBar/Searchscrolling prose/captions differ onup/down; do notadoptunverifiedmotiondirection.",
+    "GenericMaterialdisabled/unfocusable andEscape focusclearing guidance needswidget-specificwebreconciliation.",
+    "Some shape/elevation/type/motion tokens render graphics, nottextualnumbers; missingnumericvalues notinvented."
+  ],
+  "implementation": {
+    "materialWeb": {
+      "commit": "56a486b147b8b7e95e6e8035fa02aed7e0009a85",
+      "treeTruncated": false,
+      "treeRechecked": true,
+      "publishedPackageRechecked": false,
+      "rootAllTsRead": true,
+      "availability": "Labs AppBar and Labs outlined segmented button/set are actual Lit source. Toolbar/Search/newButtonGroup named implementations not found in complete tree; their tokens exist. Labs availability is not stable-export approval.",
+      "filesRead": [
+        "labs/segmentedbutton/internal/segmented-button.ts",
+        "labs/segmentedbutton/internal/outlined-segmented-button.ts",
+        "labs/segmentedbutton/outlined-segmented-button.ts",
+        "labs/segmentedbuttonset/internal/segmented-button-set.ts",
+        "labs/segmentedbuttonset/internal/outlined-segmented-button-set.ts",
+        "labs/segmentedbuttonset/outlined-segmented-button-set.ts",
+        "labs/segmentedbutton/internal/_outlined-segmented-button.scss",
+        "labs/segmentedbutton/internal/_shared.scss",
+        "labs/segmentedbutton/internal/outlined-styles.scss",
+        "labs/segmentedbutton/internal/shared-styles.scss",
+        "labs/segmentedbuttonset/internal/_outlined-segmented-button-set.scss",
+        "labs/segmentedbuttonset/internal/_shared.scss",
+        "labs/segmentedbuttonset/internal/outlined-styles.scss",
+        "labs/segmentedbuttonset/internal/shared-styles.scss",
+        "labs/segmentedbuttonset/demo/demo.ts",
+        "labs/segmentedbuttonset/demo/stories.ts",
+        "internal/aria/delegate.ts",
+        "labs/README.md",
+        "all.ts"
+      ],
+      "otherCoverage": "Second ARIA helper also read by reviewer; its filename was not included in the returned coverage list.",
+      "findings": [
+        "Nativebutton aria-pressed/tabindex0or-1/disabled; setrole group withoptionalaria-label; noarrow/Home/End/roving/orientationlogic.",
+        "Singleinteractionselection prevents deselection but doesnot normalizeinitial/externalmultiplevalues ormodechanges; multiall/noneallowed; no required/form contract.",
+        "setButtonSelected emits aggregateevent BEFORE clearing otherselectedchildren; synchronouslisteners canobserveinconsistentstate. Static source finding, notbrowser reproduction.",
+        "No form-associatedname/value/reset/validity/fieldsetintegration or hostfocusdelegation. State/style/animation differ fromhouse stack."
+      ],
+      "primaryReferences": [
+        {
+          "url": "https://github.com/material-components/material-web/blob/56a486b147b8b7e95e6e8035fa02aed7e0009a85/labs/segmentedbutton/internal/segmented-button.ts#L74",
+          "claim": "Nativebutton roles/tabindex"
+        },
+        {
+          "url": "https://github.com/material-components/material-web/blob/56a486b147b8b7e95e6e8035fa02aed7e0009a85/labs/segmentedbuttonset/internal/segmented-button-set.ts#L47",
+          "claim": "Selection/eventorder"
+        },
+        {
+          "url": "https://github.com/material-components/material-web/blob/56a486b147b8b7e95e6e8035fa02aed7e0009a85/labs/segmentedbuttonset/internal/segmented-button-set.ts#L99",
+          "claim": "Group rendering"
+        },
+        {
+          "url": "https://github.com/material-components/material-web/blob/56a486b147b8b7e95e6e8035fa02aed7e0009a85/labs/README.md",
+          "claim": "Experimentalstatus"
+        }
+      ]
+    },
+    "chakra": {
+      "commit": "1ff9873754e9913fc3d849d23c0844a628f5f20d",
+      "docs": "https://chakra-ui.com/docs/components/group",
+      "coverage": "FullGroupdocs+MDX+fourexamples+Group/ButtonGroupimplementations",
+      "findings": [
+        "Groupownsarrangement/wrapping/equalgrowth/attachededges/focusstacking/childmarkers; noautomaticrole/selection/forms/keynavigation.",
+        "ButtonGroupprovidessharedbuttonrecipeprops onGroup, notselection/focusmanager.",
+        "ReactchildcloningandpropforwardingneedexplicitLitShadowDOMcompositioncontract."
+      ]
+    },
+    "radix": {
+      "commit": "f7ecd5ab16f5e1e820eb5786a1419a98a2d594ae",
+      "source": "https://github.com/radix-ui/primitives/blob/f7ecd5ab16f5e1e820eb5786a1419a98a2d594ae/packages/react/toolbar/src/toolbar.tsx",
+      "coverage": "FullToolbarimplementation",
+      "findings": [
+        "OuterToolbarownsrovingfocus; ToggleGroupsetsrovingFocus=false; ToggleItemsjointoolbarfocus.",
+        "RadixskipsdisabledToolbarButtons; APGallowsdiscoverable-disabledpolicy, sohousechoice remainsopen."
+      ]
+    },
+    "apg": {
+      "pages": [
+        "https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/",
+        "https://www.w3.org/WAI/ARIA/apg/patterns/radio/",
+        "https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/examples/toolbar/"
+      ],
+      "coverage": "Fullpatterns/example/keytablesincludingRadioGroupinsideToolbar",
+      "findings": [
+        "ToolbaroneTabstop/arrownavigation; optionalHomeEnd/wrap/focusrestore;3+controlsrecommended.",
+        "ArrowsinsideToolbarRadioGroupmovefocus withoutchangingselection; Spaceactivates; avoidtwofocusowners.",
+        "Editablecontrolconsumingtoolbaraxisrequiresdeliberateexception; APGrecommendsonlyonesuchcontrol,last."
+      ]
+    }
+  },
+  "localCode": [
+    {
+      "path": "src/components/toolbar/toolbar.ts",
+      "lines": [
+        20,
+        21
+      ],
+      "finding": "Layoutonly, nofocus/toolbarrole."
+    },
+    {
+      "path": "src/shared/roving-tabindex.ts",
+      "finding": "NoRTL/embeddedinputguard; cannotblindlybindouterhandler."
+    },
+    {
+      "path": "src/components/button-group/button-group.ts",
+      "lines": [
+        10,
+        12
+      ],
+      "finding": "Joinedpresentation+split; noselection/keyowner."
+    },
+    {
+      "path": "src/components/avatar-group/avatar-group.ts",
+      "lines": [
+        32,
+        56,
+        65
+      ],
+      "finding": "Ownsmemberlimits/count/overlap/presentation."
+    },
+    {
+      "path": "src/components/radio-group/radio-group.ts",
+      "lines": [
+        61,
+        94
+      ],
+      "finding": "Ownsselection/arrows/radiogroup/formassociation; keyboardcontract differsinsideToolbar."
+    },
+    {
+      "path": "src/components/collapse-group/collapse-group.ts",
+      "lines": [
+        28,
+        57,
+        69
+      ],
+      "finding": "Ownsdisclosure state viaTanStackStore."
+    },
+    {
+      "path": "src/components/items/items.ts",
+      "lines": [
+        19
+      ],
+      "finding": "Boxed/stripedlayout."
+    },
+    {
+      "path": "src/components/setting-rows/setting-rows.ts",
+      "lines": [
+        17
+      ],
+      "finding": "Settings-rowlayout."
+    }
+  ],
+  "proExamples": [
+    "sharing-01/view-access.tsx:6",
+    "divider-with-button-group/block.tsx:8",
+    "page-header-with-actions-02/block.tsx:22",
+    "webhooks-event-log-03/event-detail-dialog.tsx:44",
+    "ai-studio-playground",
+    "shopping-cart-01",
+    "property-panel-02/fields.tsx"
+  ],
+  "dependencies": {
+    "priorDecisions": [
+      "Geist baseline and house typography/tokens, explicit deviations require decision",
+      "TanStack Store per instance, Lit Motion, generated CSS, React wraps same Lit",
+      "spacing-only density, normal default, overlays normal inherited spacing, explicit compact24CSSpx floor as priordecision notuniversaldefault",
+      "font-relativeMaterialbands37.5/52.5/75/100rem; M3dp thresholds onlyreference",
+      "needs-driven shape morphing, optionalripples, selectedshadowroles/MaterialSVG",
+      "Card/Fieldset decisions, noZagRuntime, nativeforms optionalTanStackForm, consumerTanStackTable/Virtual"
+    ],
+    "upcoming": [
+      "generalGroup versus button/avatar/radio/accordion/groupedrows specialized responsibilities",
+      "Entity/Item/SettingRow, selectablecards, semanticlists",
+      "Toolbar focus ownership with nestedinputs and selectiongroups, disabledaction discovery, RTL",
+      "Appbar/Topbar/PageHead purposes; simpleSearch versus expandedresults",
+      "Dialog/Popover focus return/Escape/nestedwidgetkeys/portaltheme/normaldensity",
+      "responsive window/container sizing; pane resize/persistence acrossbreakpoints; focus continuity",
+      "future spacing/density proposal if demonstratedneed; exactlevels/eligibility/targetgeometry stillopen"
+    ],
+    "newFacts": [
+      "M3Toolbar explicitconfigurablecontent slots incltextfields/customcontrols; webtoolbarrole; proseTab actions/tableTab orArrows",
+      "M3ButtonGroups standard/connected addsvisualcoordination butdocsTabeach; no groupfocus; Labssegmented role group/aria-pressed regularTab proves actualcase",
+      "M3groupXSmall prose/diagram4dp innercorner versus token8dp discrepancy; do notsilentlypick",
+      "Materialpanesize persistence acrossbreakpoints sourceevidence mayinform pendinghousecontract, notcomponentownsstorage",
+      "sharedresponsivepresentations mustpreserveinstancevalue/focus; Produplicateduncontrolledcontrols exposecounterexamples"
+    ],
+    "decisionsNotMade": [
+      "Exact Toolbar/Group nested keyboard and public interface contracts",
+      "Disposition of every specialised component ending in Group",
+      "Material spacing, density, shape or target-value adoption",
+      "Appbar/Topbar/PageHead or expanded Search disposition",
+      "New implementation dependency adoption"
+    ],
+    "remainingWork": [
+      "Stat with Tile and helpers in Phase2.3",
+      "Required Toolbar composition and Entity/Item return in Phase2.4 Group",
+      "Exact interfaces and cross-cutting convention choices in Phase4",
+      "Approved Phase5 migration before source changes"
+    ]
+  },
+  "limitations": [
+    "No exhaustive animationplayback, assistivetechnology orall-engine verification.",
+    "No houseimplementation,packageinstall,commit orpublication.",
+    "Housevaluesremain unchanged; evidence-led revisions requirePeter'sselection.",
+    "Fulltextcoverageincludescaptions, notclaiming everyillustration/motiondemo visuallyaudited."
+  ],
+  "recordReview": {
+    "status": "reviewed",
+    "correction": "Restricted the supporting-pane bottom-sheet example to Compact; Medium specifies below-primary placement.",
+    "coverageCheck": "46 unique pages: 20 layout, six interaction, 20 component tabs",
+    "implementationChanged": false
+  }
+}

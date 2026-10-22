@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m26-audit",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.802Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m26-audit/component-browser/accepted-combined.json",
+      "destination": "docs/verification/systematization/m26-audit/component-browser/accepted-combined.json",
+      "bytes": 193309,
+      "sha256": "28319b1ddf5e0066a1ce78cd9a6e9b0c2d29e3cd25e33233c5680240c3291acb"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-audit/component-browser/chromium-first.json",
+      "destination": "docs/verification/systematization/m26-audit/component-browser/chromium-first.json",
+      "bytes": 56276,
+      "sha256": "25259ac86a4528bbbde06de794b58ad78c0acd0d2c8de18e45002d6a0a1f5d0f"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-audit/component-browser/controls-first.json",
+      "destination": "docs/verification/systematization/m26-audit/component-browser/controls-first.json",
+      "bytes": 33180,
+      "sha256": "07a506c32cc47c8826b59bf467edc177c9b50895da980596986679b41916c074"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-audit/component-browser/help-visibility.json",
+      "destination": "docs/verification/systematization/m26-audit/component-browser/help-visibility.json",
+      "bytes": 1790,
+      "sha256": "f7da405441a90a4a65179d28591043267b342600a466f68e6a50175060181c1c"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-audit/component-browser/number-early-read.json",
+      "destination": "docs/verification/systematization/m26-audit/component-browser/number-early-read.json",
+      "bytes": 6890,
+      "sha256": "9cd866c15a46050e87845ff589a31ffb59ea6ebcf1c6dfe6541ce1f7d8f5e81c"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-audit/component-browser/number-final.json",
+      "destination": "docs/verification/systematization/m26-audit/component-browser/number-final.json",
+      "bytes": 13617,
+      "sha256": "c303609744bfd841027d9328db196502597c87b16c5e9e7096c1919773698876"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-audit/component-browser/three-engines-first.json",
+      "destination": "docs/verification/systematization/m26-audit/component-browser/three-engines-first.json",
+      "bytes": 154000,
+      "sha256": "6d3fad7bdfb40b8168bf739d2646a5abe7f5d36e1229d93da26ad3a22d286a3a"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-audit/defaults-baseline.json",
+      "destination": "docs/verification/systematization/m26-audit/defaults-baseline.json",
+      "bytes": 740908,
+      "sha256": "4f3bfe6105e8bc633d1b44b2a2a67f5a53aad1f8a0e061fb1b9178f3ae52e703"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-audit/defaults-results.json",
+      "destination": "docs/verification/systematization/m26-audit/defaults-results.json",
+      "bytes": 740779,
+      "sha256": "cbca41baa049f3389a589c7e6cf1a9589e5fa682a3225dca3832485072f4c8fa"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-audit/defaults-source-results.json",
+      "destination": "docs/verification/systematization/m26-audit/defaults-source-results.json",
+      "bytes": 93552,
+      "sha256": "5e0cacfa3ca12349963c2a039eb436bad73abaa76c0dc67cb1e4b74b1b3afcef"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-audit/official-firefox/2026-09-26.json",
+      "destination": "docs/verification/systematization/m26-audit/official-firefox/2026-09-26.json",
+      "bytes": 28439,
+      "sha256": "068c3eeef9aafab7d63ffddf9d3998b331ad57d619aac1d3344bbb4930e6d312"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-audit/removals-results.json",
+      "destination": "docs/verification/systematization/m26-audit/removals-results.json",
+      "bytes": 18992,
+      "sha256": "11591cb34e325775562956c7d780c26ae7f865741f1c5647933e914a2d46d202"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-audit/table-patch-results.json",
+      "destination": "docs/verification/systematization/m26-audit/table-patch-results.json",
+      "bytes": 2807,
+      "sha256": "8cc11b93dd4b571070997d53162c4d8ec1308de1baf06f8a3ccf2ccc4ee58878"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-audit/worker-consumer-results.json",
+      "destination": "docs/verification/systematization/m26-audit/worker-consumer-results.json",
+      "bytes": 11027,
+      "sha256": "1938345cefc01114ba41511f731cd31c9ba84ebddab530c3dd35abf97671f7e5"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

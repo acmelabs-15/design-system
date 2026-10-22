@@ -1,0 +1,47 @@
+{
+  "recordedAt": "2026-10-20T19:33:59.638Z",
+  "commit": "53427b5dffabd7e6fa32ab1c7afed125ec0f4e4f",
+  "publicationRun": 39474488185,
+  "publicationArtifactId": 12290461107,
+  "publicationArtifactZipSha256": "c742e14e653fe4d78d4ed82c4dd87d4a1dfaf7599d705a3679160c7b8f8a70c6",
+  "archivesMatchingPreparation": 4,
+  "core": {
+    "entries": 55399,
+    "changedDeclarations": 11,
+    "unchangedEntries": 55388,
+    "runtimeFilesChanged": 0,
+    "declaredApiDifferencesFound": 0,
+    "changes": "Union-member order and uniquely named property-signature order",
+    "independentReview": "All 11 extracted pairs match recorded SHA256; TypeScript AST comparison is equal after sorting those orders"
+  },
+  "cause": "Unsorted filesystem root paths are passed to TypeScript createProgram",
+  "correction": "Sort a copied root-file list inside emitPackageDeclarations",
+  "focusedVerification": {
+    "regressionFailsBeforeFix": true,
+    "declarationTestsPassed": 2,
+    "assertions": 16,
+    "strictTypes": "pass",
+    "format": "pass",
+    "independentReview": "approve"
+  },
+  "fullBuildReproducibility": {
+    "result": "pass",
+    "sourceTree": "b3c4fa83eeaa103c56814168035810775e13a51a",
+    "independentRuns": [
+      39485176186,
+      39489343602
+    ],
+    "identicalPackageArchives": 5,
+    "evidence": "clean-build-reproducibility.json"
+  },
+  "releasePolicy": "Keep the tag and published versions unchanged; verify and package final release assets from the exact publication-run record",
+  "fullLinuxAcceptance": {
+    "runId": 39485176186,
+    "head": "dbcafb31c1fda5219a541e369a641a4c579672d8",
+    "result": "success",
+    "unitTests": 1019,
+    "assertions": 190621,
+    "testFiles": 216,
+    "mergeCommit": "b052e5e913313209ffad12ec3a51c79480bf7050"
+  }
+}

@@ -1,0 +1,492 @@
+{
+  "date": "2026-09-21",
+  "phase": "Phase 6 M05",
+  "scope": "Current authored CSS strings through canonical controller, declaration planner and a native CSSOM fixture",
+  "sourceDecision": "notes/decisions/layout-spacing-properties.md#follow-chakra-for-comparable-style-inputs",
+  "primarySources": [
+    "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/css.ts",
+    "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/factory.tsx"
+  ],
+  "unitRed": "bun test v1.4.0 (34cbb9a40)\n\nsrc/shared/__tests__/responsive-style-plan.test.ts:\n(pass) merges equivalent conditions across properties before applying authored declaration order [0.47ms]\n(pass) query order wins across conditions even when the broad shorthand is authored last [0.07ms]\n(pass) preserves raw CSS and uses independent numeric categories with signed spacing [0.08ms]\n(pass) display reaches both boxes while ordinary geometry reaches only the host [0.23ms]\n86 |   const known = breakpoints === undefined ? defaultConditions : conditions(breakpoints);\n87 |   const normalized = new Map<string, ResponsiveEntry<T>>();\n88 |   const append = (condition: string, value: unknown) => {\n89 |     const interval = known.get(condition);\n90 |     if (!interval) throw new TypeError(`Unknown responsive condition: ${condition}`);\n91 |     if (![\"string\", \"number\", \"boolean\"].includes(typeof value) || !leafValidator(value)) throw new TypeError(`Invalid responsive value for ${condition}`);\n                                                                                                                                                              ^\nTypeError: Invalid responsive value for compact\n      at append (/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/responsive.ts:91:154)\n      at normalizeResponsive (/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/responsive.ts:114:5)\n      at createResponsiveStylePlan (/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/responsive-style-plan.ts:29:21)\n      at <anonymous> (/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/__tests__/responsive-style-plan.test.ts:100:10)\n(fail) a fresh empty input plan removes all prior declarations, without a saved last-valid result [0.57ms]\n86 |   const known = breakpoints === undefined ? defaultConditions : conditions(breakpoints);\n87 |   const normalized = new Map<string, ResponsiveEntry<T>>();\n88 |   const append = (condition: string, value: unknown) => {\n89 |     const interval = known.get(condition);\n90 |     if (!interval) throw new TypeError(`Unknown responsive condition: ${condition}`);\n91 |     if (![\"string\", \"number\", \"boolean\"].includes(typeof value) || !leafValidator(value)) throw new TypeError(`Invalid responsive value for ${condition}`);\n                                                                                                                                                              ^\nTypeError: Invalid responsive value for medium\n      at append (/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/responsive.ts:91:154)\n      at normalizeResponsive (/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/responsive.ts:112:56)\n      at createResponsiveStylePlan (/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/responsive-style-plan.ts:29:21)\n      at <anonymous> (/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/__tests__/responsive-style-plan.test.ts:105:16)\n(fail) invalid CSS leaves do not retain previous values or discard valid sibling conditions [0.15ms]\n(pass) validates whole inputs and duplicate fields before returning a plan [0.10ms]\n(pass) snapshots supplied transitions and authored values into deeply immutable plans [0.07ms]\n\n 6 pass\n 2 fail\n 22 expect() calls\nRan 8 tests across 1 file. [137.00ms]\n",
+  "unitGreen": "bun test v1.4.0 (34cbb9a40)\n\nsrc/shared/__tests__/responsive-style-plan.test.ts:\n(pass) merges equivalent conditions across properties before applying authored declaration order [0.46ms]\n(pass) query order wins across conditions even when the broad shorthand is authored last [0.07ms]\n(pass) preserves raw CSS and uses independent numeric categories with signed spacing [0.08ms]\n(pass) display reaches both boxes while ordinary geometry reaches only the host [0.21ms]\n(pass) a fresh empty input plan removes all prior declarations, without a saved last-valid result [0.04ms]\n(pass) invalid CSS leaves do not retain previous values or discard valid sibling conditions [0.06ms]\n(pass) validates whole inputs and duplicate fields before returning a plan [0.15ms]\n(pass) snapshots supplied transitions and authored values into deeply immutable plans [0.06ms]\n\nsrc/shared/__tests__/style-input-schema.test.ts:\n(pass) common style input schema > keeps authored CSS strings current while retaining numeric and display domain checks [0.05ms]\n(pass) common style input schema > contains exactly the approved 77 property and attribute names with their targets [0.17ms]\n(pass) common style input schema > keeps the complete spacing and size token keys independent and immutable [0.03ms]\n(pass) common style input schema > accepts only selected numeric spacing/size keys, with signs restricted to margins and insets [0.67ms]\n(pass) common style input schema > uses the approved unitless and zero-only numeric boundaries [0.13ms]\n(pass) common style input schema > passes integer grid lines through the supplied native-property grammar check [0.07ms]\n(pass) common style input schema > delegates string and shorthand grammar using each exact CSS property [0.05ms]\n(pass) common style input schema > requires an explicit layout display subset and always excludes contents [0.03ms]\n(pass) common style input schema > rejects non-scalars without consulting browser grammar and narrows unknown values [0.03ms]\n\n 17 pass\n 0 fail\n 1797 expect() calls\nRan 17 tests across 2 files. [117.00ms]\n",
+  "browser": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "800px valid numeric input",
+            "actual": "16px",
+            "expected": "16px",
+            "ok": true
+          },
+          {
+            "name": "800px invalid CSS does not throw",
+            "actual": false,
+            "expected": false,
+            "ok": true
+          },
+          {
+            "name": "800px current invalid CSS value stays authored",
+            "actual": "not-a-length",
+            "expected": "not-a-length",
+            "ok": true
+          },
+          {
+            "name": "800px invalid CSS never retains old numeric output",
+            "actual": "24px",
+            "expected": "24px",
+            "ok": true
+          },
+          {
+            "name": "800px valid sibling current input still renders",
+            "actual": "rgb(0, 0, 255)",
+            "expected": "rgb(0, 0, 255)",
+            "ok": true
+          },
+          {
+            "name": "800px invalid responsive leaf falls through native cascade",
+            "actual": "16px",
+            "expected": "16px",
+            "ok": true
+          },
+          {
+            "name": "800px computed-invalid var stays native",
+            "actual": "0px",
+            "expected": "0px",
+            "ok": true
+          },
+          {
+            "name": "800px invalid longhand leaves current shorthand",
+            "actual": "16px",
+            "expected": "16px",
+            "ok": true
+          },
+          {
+            "name": "800px invalid shorthand leaves valid axis",
+            "actual": [
+              "8px",
+              "24px"
+            ],
+            "expected": [
+              "8px",
+              "24px"
+            ],
+            "ok": true
+          },
+          {
+            "name": "800px empty JS CSS string remains authored",
+            "actual": "",
+            "expected": "",
+            "ok": true
+          },
+          {
+            "name": "800px empty CSS emits no override",
+            "actual": "24px",
+            "expected": "24px",
+            "ok": true
+          },
+          {
+            "name": "1280px valid numeric input",
+            "actual": "16px",
+            "expected": "16px",
+            "ok": true
+          },
+          {
+            "name": "1280px invalid CSS does not throw",
+            "actual": false,
+            "expected": false,
+            "ok": true
+          },
+          {
+            "name": "1280px current invalid CSS value stays authored",
+            "actual": "not-a-length",
+            "expected": "not-a-length",
+            "ok": true
+          },
+          {
+            "name": "1280px invalid CSS never retains old numeric output",
+            "actual": "24px",
+            "expected": "24px",
+            "ok": true
+          },
+          {
+            "name": "1280px valid sibling current input still renders",
+            "actual": "rgb(0, 0, 255)",
+            "expected": "rgb(0, 0, 255)",
+            "ok": true
+          },
+          {
+            "name": "1280px invalid responsive leaf falls through native cascade",
+            "actual": "8px",
+            "expected": "8px",
+            "ok": true
+          },
+          {
+            "name": "1280px computed-invalid var stays native",
+            "actual": "0px",
+            "expected": "0px",
+            "ok": true
+          },
+          {
+            "name": "1280px invalid longhand leaves current shorthand",
+            "actual": "16px",
+            "expected": "16px",
+            "ok": true
+          },
+          {
+            "name": "1280px invalid shorthand leaves valid axis",
+            "actual": [
+              "8px",
+              "24px"
+            ],
+            "expected": [
+              "8px",
+              "24px"
+            ],
+            "ok": true
+          },
+          {
+            "name": "1280px empty JS CSS string remains authored",
+            "actual": "",
+            "expected": "",
+            "ok": true
+          },
+          {
+            "name": "1280px empty CSS emits no override",
+            "actual": "24px",
+            "expected": "24px",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "800px valid numeric input",
+            "actual": "16px",
+            "expected": "16px",
+            "ok": true
+          },
+          {
+            "name": "800px invalid CSS does not throw",
+            "actual": false,
+            "expected": false,
+            "ok": true
+          },
+          {
+            "name": "800px current invalid CSS value stays authored",
+            "actual": "not-a-length",
+            "expected": "not-a-length",
+            "ok": true
+          },
+          {
+            "name": "800px invalid CSS never retains old numeric output",
+            "actual": "24px",
+            "expected": "24px",
+            "ok": true
+          },
+          {
+            "name": "800px valid sibling current input still renders",
+            "actual": "rgb(0, 0, 255)",
+            "expected": "rgb(0, 0, 255)",
+            "ok": true
+          },
+          {
+            "name": "800px invalid responsive leaf falls through native cascade",
+            "actual": "16px",
+            "expected": "16px",
+            "ok": true
+          },
+          {
+            "name": "800px computed-invalid var stays native",
+            "actual": "0px",
+            "expected": "0px",
+            "ok": true
+          },
+          {
+            "name": "800px invalid longhand leaves current shorthand",
+            "actual": "16px",
+            "expected": "16px",
+            "ok": true
+          },
+          {
+            "name": "800px invalid shorthand leaves valid axis",
+            "actual": [
+              "8px",
+              "24px"
+            ],
+            "expected": [
+              "8px",
+              "24px"
+            ],
+            "ok": true
+          },
+          {
+            "name": "800px empty JS CSS string remains authored",
+            "actual": "",
+            "expected": "",
+            "ok": true
+          },
+          {
+            "name": "800px empty CSS emits no override",
+            "actual": "24px",
+            "expected": "24px",
+            "ok": true
+          },
+          {
+            "name": "1280px valid numeric input",
+            "actual": "16px",
+            "expected": "16px",
+            "ok": true
+          },
+          {
+            "name": "1280px invalid CSS does not throw",
+            "actual": false,
+            "expected": false,
+            "ok": true
+          },
+          {
+            "name": "1280px current invalid CSS value stays authored",
+            "actual": "not-a-length",
+            "expected": "not-a-length",
+            "ok": true
+          },
+          {
+            "name": "1280px invalid CSS never retains old numeric output",
+            "actual": "24px",
+            "expected": "24px",
+            "ok": true
+          },
+          {
+            "name": "1280px valid sibling current input still renders",
+            "actual": "rgb(0, 0, 255)",
+            "expected": "rgb(0, 0, 255)",
+            "ok": true
+          },
+          {
+            "name": "1280px invalid responsive leaf falls through native cascade",
+            "actual": "8px",
+            "expected": "8px",
+            "ok": true
+          },
+          {
+            "name": "1280px computed-invalid var stays native",
+            "actual": "0px",
+            "expected": "0px",
+            "ok": true
+          },
+          {
+            "name": "1280px invalid longhand leaves current shorthand",
+            "actual": "16px",
+            "expected": "16px",
+            "ok": true
+          },
+          {
+            "name": "1280px invalid shorthand leaves valid axis",
+            "actual": [
+              "8px",
+              "24px"
+            ],
+            "expected": [
+              "8px",
+              "24px"
+            ],
+            "ok": true
+          },
+          {
+            "name": "1280px empty JS CSS string remains authored",
+            "actual": "",
+            "expected": "",
+            "ok": true
+          },
+          {
+            "name": "1280px empty CSS emits no override",
+            "actual": "24px",
+            "expected": "24px",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "800px valid numeric input",
+            "actual": "16px",
+            "expected": "16px",
+            "ok": true
+          },
+          {
+            "name": "800px invalid CSS does not throw",
+            "actual": false,
+            "expected": false,
+            "ok": true
+          },
+          {
+            "name": "800px current invalid CSS value stays authored",
+            "actual": "not-a-length",
+            "expected": "not-a-length",
+            "ok": true
+          },
+          {
+            "name": "800px invalid CSS never retains old numeric output",
+            "actual": "24px",
+            "expected": "24px",
+            "ok": true
+          },
+          {
+            "name": "800px valid sibling current input still renders",
+            "actual": "rgb(0, 0, 255)",
+            "expected": "rgb(0, 0, 255)",
+            "ok": true
+          },
+          {
+            "name": "800px invalid responsive leaf falls through native cascade",
+            "actual": "16px",
+            "expected": "16px",
+            "ok": true
+          },
+          {
+            "name": "800px computed-invalid var stays native",
+            "actual": "0px",
+            "expected": "0px",
+            "ok": true
+          },
+          {
+            "name": "800px invalid longhand leaves current shorthand",
+            "actual": "16px",
+            "expected": "16px",
+            "ok": true
+          },
+          {
+            "name": "800px invalid shorthand leaves valid axis",
+            "actual": [
+              "8px",
+              "24px"
+            ],
+            "expected": [
+              "8px",
+              "24px"
+            ],
+            "ok": true
+          },
+          {
+            "name": "800px empty JS CSS string remains authored",
+            "actual": "",
+            "expected": "",
+            "ok": true
+          },
+          {
+            "name": "800px empty CSS emits no override",
+            "actual": "24px",
+            "expected": "24px",
+            "ok": true
+          },
+          {
+            "name": "1280px valid numeric input",
+            "actual": "16px",
+            "expected": "16px",
+            "ok": true
+          },
+          {
+            "name": "1280px invalid CSS does not throw",
+            "actual": false,
+            "expected": false,
+            "ok": true
+          },
+          {
+            "name": "1280px current invalid CSS value stays authored",
+            "actual": "not-a-length",
+            "expected": "not-a-length",
+            "ok": true
+          },
+          {
+            "name": "1280px invalid CSS never retains old numeric output",
+            "actual": "24px",
+            "expected": "24px",
+            "ok": true
+          },
+          {
+            "name": "1280px valid sibling current input still renders",
+            "actual": "rgb(0, 0, 255)",
+            "expected": "rgb(0, 0, 255)",
+            "ok": true
+          },
+          {
+            "name": "1280px invalid responsive leaf falls through native cascade",
+            "actual": "8px",
+            "expected": "8px",
+            "ok": true
+          },
+          {
+            "name": "1280px computed-invalid var stays native",
+            "actual": "0px",
+            "expected": "0px",
+            "ok": true
+          },
+          {
+            "name": "1280px invalid longhand leaves current shorthand",
+            "actual": "16px",
+            "expected": "16px",
+            "ok": true
+          },
+          {
+            "name": "1280px invalid shorthand leaves valid axis",
+            "actual": [
+              "8px",
+              "24px"
+            ],
+            "expected": [
+              "8px",
+              "24px"
+            ],
+            "ok": true
+          },
+          {
+            "name": "1280px empty JS CSS string remains authored",
+            "actual": "",
+            "expected": "",
+            "ok": true
+          },
+          {
+            "name": "1280px empty CSS emits no override",
+            "actual": "24px",
+            "expected": "24px",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "reproduction": {
+    "probe": "\nimport {LitElement,html,css} from \"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/index.js\";\nimport {StyleInputController} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/style-input-controller.ts\";\nimport {createResponsiveStylePlan} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/responsive-style-plan.ts\";\ntry {\nconst keys=[\"padding\",\"paddingInline\",\"paddingInlineStart\",\"backgroundColor\"];\ndocument.documentElement.style.setProperty(\"--acme-spacing-2\",\".5rem\");\ndocument.documentElement.style.setProperty(\"--acme-spacing-4\",\"1rem\");\nclass Current extends LitElement {\n static styles=css`:host{display:block;padding:24px;background-color:red}`;\n values=new StyleInputController(this,keys,{supports:CSS.supports});\n output=new CSSStyleSheet();\n render(){return html`<span>CSS input</span>`;}\n updated(){\n  this.output.replaceSync(\"\");\n  for(const {range,declarations} of createResponsiveStylePlan(this.values.entries.get(),{supports:CSS.supports})){\n   const query=[range.min?\"(width >= \"+range.min+\"rem)\":\"\",range.max!==undefined?\"(width < \"+range.max+\"rem)\":\"\"] .filter(Boolean).join(\" and \");\n   const rule=\":host{\"+declarations.map(d=>d.property+\":\"+d.value+\";\").join(\"\")+\"}\";\n   this.output.insertRule(query?\"@media \"+query+\"{\"+rule+\"}\":rule,this.output.cssRules.length);\n  }\n  if(!this.shadowRoot.adoptedStyleSheets.includes(this.output))this.shadowRoot.adoptedStyleSheets=[...this.shadowRoot.adoptedStyleSheets,this.output];\n }\n}\ncustomElements.define(\"current-css-probe\",Current);\nconst out=[];const check=(name,actual,expected)=>out.push({name,actual,expected,ok:JSON.stringify(actual)===JSON.stringify(expected)});\nconst host=document.createElement(\"current-css-probe\");document.body.append(host);await host.updateComplete;\nconst visual=()=>{const s=getComputedStyle(host);return {start:s.paddingInlineStart,top:s.paddingTop,background:s.backgroundColor};};\nhost.values.set(\"padding\",4);await host.updateComplete;check(\"valid numeric input\",visual().top,\"16px\");\nlet rejected=false;try{host.values.set(\"padding\",\"not-a-length\");}catch{rejected=true;}check(\"invalid CSS does not throw\",rejected,false);host.values.set(\"backgroundColor\",\"blue\");await host.updateComplete;\ncheck(\"current invalid CSS value stays authored\",host.values.get(\"padding\"),\"not-a-length\");\ncheck(\"invalid CSS never retains old numeric output\",visual().top,\"24px\");\ncheck(\"valid sibling current input still renders\",visual().background,\"rgb(0, 0, 255)\");\nhost.values.set(\"padding\",{compact:4,medium:\"not-a-length\",large:2});await host.updateComplete;\ncheck(\"invalid responsive leaf falls through native cascade\",visual().top,innerWidth>=1200?\"8px\":\"16px\");\nhost.values.set(\"padding\",\"var(--missing-value)\");await host.updateComplete;check(\"computed-invalid var stays native\",visual().top,\"0px\");\nhost.values.set(\"padding\",4);host.values.set(\"paddingInlineStart\",\"not-a-length\");await host.updateComplete;check(\"invalid longhand leaves current shorthand\",visual().start,\"16px\");\nhost.values.set(\"padding\",\"not-a-length\");host.values.set(\"paddingInline\",2);await host.updateComplete;check(\"invalid shorthand leaves valid axis\",[visual().start,visual().top],[\"8px\",\"24px\"]);\nhost.values.set(\"padding\",\"\");host.values.set(\"paddingInline\",undefined);await host.updateComplete;check(\"empty JS CSS string remains authored\",host.values.get(\"padding\"),\"\");check(\"empty CSS emits no override\",visual().top,\"24px\");\nwindow.__results={results:out};\n\n} catch(error){window.__results={results:[{name:\"fixture completes\",ok:false,error:String(error)}]};}\n",
+    "runner": "import fs from \"node:fs\";import path from \"node:path\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\",directory=\"/tmp/acme-m05-current-css\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\"});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));const results=[];for(const width of [800,1280]){await page.setViewportSize({width,height:900});await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);results.push(...data.results.map(r=>({...r,name:width+'px '+r.name})));}const data={results};report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+  },
+  "limits": [
+    "This is a house current-input/native-cascade fixture supported by the pinned Chakra source review, not a runtime Chakra component comparison.",
+    "Only raw JavaScript CSS string rejection changes. Numeric token/domain restrictions, display subsets and structural validation still apply.",
+    "HTML uses its separately selected strict scalar/JSON conversion.",
+    "The fixture constructs styles through native CSSOM; production generated responsive rendering and family integration remain separate."
+  ],
+  "integrated": {
+    "split": "pass",
+    "build": "pass",
+    "docs": "pass",
+    "tests": 780,
+    "failed": 0,
+    "assertions": 10304,
+    "testFiles": 104,
+    "review": "approved",
+    "formattedHelperTests": {
+      "tests": 16,
+      "assertions": 46,
+      "failed": 0
+    }
+  }
+}

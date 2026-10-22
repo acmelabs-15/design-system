@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-original-request",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.994Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/additional-functionality-2026-09-19.md",
+      "destination": "docs/design/additional-functionality-original-2026-09-19.md",
+      "bytes": 9154,
+      "sha256": "c58e039172cf4423183651cab76e7cc661225d578cbf14da134838d5f4d9336d"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

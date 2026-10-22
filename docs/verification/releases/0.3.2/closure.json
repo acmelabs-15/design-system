@@ -1,0 +1,43 @@
+{
+  "recordedAt": "2026-10-20T23:39:51.522Z",
+  "version": "0.3.2",
+  "status": "released; repository cleanup merged",
+  "releaseCommit": "6ec538e70f3874d7543ce81816abc290dca60e6b",
+  "publicationRun": 39499520613,
+  "publicPackages": 5,
+  "publicPagesFiles": 25120,
+  "publicBrowserCases": 12,
+  "githubRelease": {
+    "id": 418891867,
+    "url": "https://github.com/acmelabs-15/design-system/releases/tag/v0.3.2",
+    "publishedAt": "2026-10-20T23:12:45Z",
+    "latest": true,
+    "prerelease": false
+  },
+  "cleanup": {
+    "pr": 6,
+    "ci": 39513031868,
+    "head": "9eaa8dcafbfdfcd017fdcc13ae507071c579896c",
+    "merge": "0579d12ebd5c633732d16eae6600a082f514f105",
+    "testedCommit": "a5f0d75bdb799a3e5243b590f9c4b6d3b7390cf8",
+    "tree": "943dc7500b666ac4e8e852b476fc432768f7bf1b"
+  },
+  "siteArtifact": {
+    "run": 39513031868,
+    "artifact": 12307564130,
+    "zipSha256": "511e8a2994e0f88d26f353e0321560309aea57d09ea8b46de2d522fc8ae9daa0",
+    "changedFiles": 0
+  },
+  "acceptanceReuse": "Independent review approves reuse of public browser acceptance after complete output equality. All cleanup artifact paths and hashes match the accepted deployed site. The merge tree equals the successful PR test tree.",
+  "postMergeWorkflows": "The separate saved observation records ordinary automatic post-merge reruns as pending. They are not claimed as passing or used as release evidence. The accepted deployment remains run 39499435937, job 118925381095, with byte-identical output.",
+  "duplicatePublication": "Release-event run 39513496887 is cancelled because exact tag publication run 39499520613 already succeeds. No package or provenance is replaced.",
+  "temporaryAuthentication": "The task-owned temporary npm login directory is removed without reading credential contents or changing user configuration.",
+  "remainingReleaseActions": [],
+  "unverified": [
+    "actual Safari",
+    "assistive technology",
+    "OS IME/dictation/autofill",
+    "real background-window behavior",
+    "owner rotation of the previously exposed npm token"
+  ]
+}

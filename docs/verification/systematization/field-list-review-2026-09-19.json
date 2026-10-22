@@ -1,0 +1,133 @@
+{
+  "capturedDate": "2026-09-19",
+  "field": {
+    "status": "Selected: Add Field",
+    "source": "Peter proposes Chakra-like Field and requests Radix comparison.",
+    "chakra": {
+      "pin": "1ff9873754e9913fc3d849d23c0844a628f5f20d",
+      "ark": "5.39.2",
+      "completeReads": [
+        "full docs/MDX",
+        "Field implementation/namespace/index/recipe",
+        "all13 referenced examples incl explorer",
+        "Input wrapper",
+        "Ark use-field/root/input/error-text/item"
+      ],
+      "findings": [
+        "Standalone Field connects control,label,helper,error via context/idrefs; vertical/horizontal layouts,requiredindicator/optional fallback,disabled/readonly/invalid.",
+        "Input consumes Ark Field.Input context. Plain arbitrary native/custom child is not automatically wired.",
+        "Field.Item provides scoped control IDs; target chooses parent label target in amount+currency example.",
+        "Field does not own values, validation engine or submission; error display controlled by invalid.",
+        "Helper uses aria-describedby; error uses aria-errormessage + polite live region; this is source behavior not house policy.",
+        "Fieldset disabled can supply default Field disabled; explicit props may override."
+      ]
+    },
+    "radix": {
+      "primitives": "f7ecd5ab16f5e1e820eb5786a1419a98a2d594ae",
+      "themes": "1faff10ac26ae17f09944d418c6949b93fc6b566",
+      "completeReads": "Form/Label/TextField docs, full implementation/CSS/prop/context helpers/Form and Label tests",
+      "findings": [
+        "Form.Field requires Form.Root and stores name/id/serverInvalid; nativeControl owns required/disabled.",
+        "Form.Message registers description IDs, supports native/custom/server matches; no separate HelpText part.",
+        "Form docs warn Checkbox/Select primitives not currently composable; direct control API assumptions require Lit-specific bridge.",
+        "TextField is input/shell/slots, not shared labels/errors.",
+        "Async validation lacks cancellation/submit-wait gate; repeated-name state and external-form focus paths need verification; don't copy whole Form engine."
+      ]
+    },
+    "material": {
+      "pin": "56a486b147b8b7e95e6e8035fa02aed7e0009a85",
+      "completeReads": "all4 TextField tabs; both Default/Light token sets expanded; all16 static Specs figures;17TS and2SCSS implementation files",
+      "findings": [
+        "Public filled/outlined Field shells own visuals; TextField owns input/form/validity and feeds state.",
+        "Mirrored description stays in input shadow root; visual error is separate from native validity.",
+        "Help-vs-error guidance conflicts; exact house error timing/message policy remains open.",
+        "Required/labels/icons/counters need semantic connection; field helper patches form methods with documented limitation; no automatic adoption."
+      ],
+      "limits": "No runtime integration/assistive-tech tests; animation variants not exhaustively played; reference values remain separate from house."
+    },
+    "pro": {
+      "indexMatches": {
+        "blocks": 42,
+        "kitFiles": 4,
+        "files": 49
+      },
+      "currentFullReads": 22,
+      "findings": [
+        "Horizontal Field in settings supports revisiting SettingRow.",
+        "Property panels compoundcontrols require explicit individual names; visible group title not enough.",
+        "No indexed ErrorText/RequiredIndicator examples, so use core docs for those.",
+        "No TanStack Form integration evidence in matched files."
+      ]
+    },
+    "local": {
+      "read": [
+        "label.ts",
+        "input.ts",
+        "setting-row.ts and docs",
+        "Fieldset and native-and-managed-forms decisions"
+      ],
+      "findings": [
+        "No current acme-field.",
+        "Input owns internal label,error display and form value; publicField introduction needs deliberate migration, not duplicate owners.",
+        "External Label click-to-focus does not prove accessible naming across shadow roots.",
+        "Input addons currently labelled aria-hidden wrappers; interactive addon support requires inventory review."
+      ]
+    },
+    "recommendation": "Add standalone semantic Field for label/control/help/error association and state presentation; preserve native-control value/validity and optional TanStack Form; Fieldset collection grouping remains distinct.",
+    "dependencies": [
+      "SettingRow disposition",
+      "Label/error ownership across input family",
+      "Radio/Checkbox/Segmented names and validity",
+      "Group attached addons",
+      "Lit shadow-root/browser verification",
+      "Fieldset disabled inheritance",
+      "Optional TanStack Form metadata and validation policy"
+    ],
+    "decision": {
+      "source": "shared_field_component: Add Field (Recommended)",
+      "scope": "Shared Field connects a control with its label, helper/error text, required/optional indication and horizontal/vertical layout. Control retains value/native validity; TanStack Form optional; Fieldset groups related controls.",
+      "open": "Exact properties/slots, supported composite controls, labeling across shadow roots, validation display timing, disabled-state inheritance and migration from existing embedded label/error properties remain for inventory."
+    }
+  },
+  "list": {
+    "source": "Peter explicitly requests a component that works like Chakra List.",
+    "scope": "Include a semantic List family in the planned inventory: ordered/unordered, marker/plain presentation, custom icon indicators, nested lists, configurable marker style/alignment and rich child content.",
+    "evidence": {
+      "chakraCommit": "1ff9873754e9913fc3d849d23c0844a628f5f20d",
+      "completeReads": [
+        "List docs and MDX",
+        "List root/item/indicator source",
+        "List slot recipe",
+        "all5 examples"
+      ],
+      "pro": {
+        "filesRead": 16,
+        "blocks": 15,
+        "courseKitFiles": 1,
+        "docsKitMatches": 0
+      }
+    },
+    "boundaries": "No selection engine or automatic arrow navigation is supplied by Chakra List. Rich row presentation remains a separate current decision. Do not confuse List with Data List or listbox.",
+    "dependencies": [
+      "Entity/Item row disposition",
+      "Group presentation",
+      "selection-card composition",
+      "Markdown native ul/ol/li mapping",
+      "TanStack Virtual where required",
+      "native semantics through Lit shadow roots"
+    ]
+  },
+  "materialList": {
+    "commit": "56a486b147b8b7e95e6e8035fa02aed7e0009a85",
+    "textPages": [
+      "https://m3.material.io/components/lists/overview",
+      "https://m3.material.io/components/lists/specs",
+      "https://m3.material.io/components/lists/guidelines",
+      "https://m3.material.io/components/lists/accessibility"
+    ],
+    "sourceCoverage": "Six List/List Item/controller/navigation TS files; two substantive SCSS files; two md-item TS files and SCSS; full reads",
+    "finding": "Material separates md-item layout from md-list-item action and md-list collection navigation. Expressive guidance does not match every shipped baseline Lit behaviour.",
+    "limits": "No house browser acceptance or adoption of Material measurements; animation/permutation coverage not claimed."
+  },
+  "implementationApproved": false
+}

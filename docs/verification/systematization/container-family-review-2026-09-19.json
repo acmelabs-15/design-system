@@ -1,0 +1,153 @@
+{
+  "reviewedOn": "2026-09-19",
+  "scope": "Card and Fieldset directions; compatibility and forward-dependency checks; unanswered Entity/Item deferral",
+  "selections": [
+    {
+      "questionId": "canonical_card_scope",
+      "answer": "One flexible Card (Recommended)",
+      "decision": "Rebuild Card covering plain, sectioned and linked content; remove Panel and Link Card public interfaces; examples for each use. Exact interfaces/semantics later."
+    },
+    {
+      "questionId": "fieldset_disposition",
+      "answer": "I think probably option 1 here",
+      "decision": "Carry forward Rebuild Fieldset for semantic form grouping with shared label/help/error and group-disabled integration; detailed design remains later.",
+      "qualification": "Selected direction with explicit compatibility review; detailed interface and verification remain open."
+    }
+  ],
+  "processRequirements": {
+    "existingDecisions": "Peter requires every research recommendation and decision to be checked against existing decisions. Identify conflicts and determine whether existing choice, new proposal or both need revision; no silent override. Material decisions return to Peter.",
+    "upcomingDecisions": "Before each consequential decision, inspect relevant accepted decisions AND upcoming choices that could alter its scope or rationale. Surface conflicts; revise existing/new/both only with appropriate explicit decisions. Defer when prerequisites are unresolved, with question, reason, dependencies, revisit trigger/location and closure gate. Link deferred item from both register and owning review section. Pull needed research forward rather than silently violate phase closure."
+  },
+  "deferred": {
+    "questionId": "shared_content_row",
+    "answer": null,
+    "status": "deferred; interrupted question produced no answer",
+    "question": "One shared content-row component replacing Entity and Item, or composed examples?",
+    "reason": "Review Group/list responsibilities, row-versus-form-control purpose and selection interaction before deciding whether a shared row component adds value beyond the primitives.",
+    "dependsOn": [
+      "Phase 2.4 Group review (including items and setting-rows)",
+      "Distinction between descriptive rows, labelled form controls and selection controls"
+    ],
+    "revisit": "During Phase 2.4 Group review, before completing Phase 2.5 disposition register and closing Phase 2; settle naming with Phase 2.6 terms. Exact public interfaces remain Phase 4.",
+    "record": "notes/alignment/phase-2-review.md#entity-and-item"
+  },
+  "compatibility": {
+    "fieldset": "Checked native-and-managed-forms, state-on-tanstack-store, zag-behaviour-ports, reference-systems, composition-over-count, react-integration, box-primitive and PLAN stack. Compatible at capability level; existing Fieldset div/disabled-wall implementation must change. No upstream runtime adoption. Browser group semantics, effective vs own disabled state, reset/submission, per-control errors and shared-state ownership remain verification/design obligations.",
+    "rows": "Retain TanStack Virtual over MUI reference alternatives, house TanStack state/Lit motion/generated styles, optional default-off ripples, start/end, RTL and density decisions. Generic Group, selection groups and Data List terminology are unresolved dependencies; do not adopt another list container or arrow-navigation behaviour silently.",
+    "card": "Fits Box versus Card role split and house composition/interface goals. Exact native-link/action/nested-control semantics remain inventory work; no reference runtime or styles imported."
+  },
+  "sources": [
+    {
+      "url": "https://chakra-ui.com/docs/components/card",
+      "finding": "Card root/header/body/footer/title/description; forms and horizontal examples."
+    },
+    {
+      "url": "https://www.radix-ui.com/themes/docs/components/card",
+      "finding": "Content surface with native-link/button composition and Inset."
+    },
+    {
+      "url": "https://ant.design/components/card",
+      "finding": "General related-content surface, sections, actions and broader tab/metadata settings."
+    },
+    {
+      "url": "https://webawesome.com/docs/components/card",
+      "finding": "Lit/web-component slot reference; horizontal and SSR details not selected."
+    },
+    {
+      "url": "https://github.com/material-components/material-web/blob/main/labs/card/internal/card.ts",
+      "finding": "Full experimental base source read: elevation/background/default slot/outline."
+    },
+    {
+      "url": "https://github.com/material-components/material-web/blob/main/labs/README.md",
+      "finding": "Labs marked experimental and not recommended for production."
+    },
+    {
+      "url": "https://chakra-ui.com/docs/components/fieldset",
+      "finding": "Form grouping, legend, help/error, disabled and distinct group/field invalid states."
+    },
+    {
+      "url": "https://github.com/chakra-ui/chakra-ui/blob/main/packages/react/src/components/fieldset/fieldset.ts",
+      "finding": "Full source read: wrappers around Ark Fieldset/Legend and related parts."
+    },
+    {
+      "url": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+      "finding": "Meaningful related-control grouping and separate individual labels."
+    },
+    {
+      "url": "https://material-web.dev/components/radio/",
+      "finding": "Radio-specific group/label examples; not a general Fieldset implementation."
+    },
+    {
+      "url": "https://github.com/material-components/material-web/blob/main/radio/internal/radio.ts",
+      "finding": "Full actual Radio source read; uses form-associated mixin."
+    },
+    {
+      "url": "https://github.com/material-components/material-web/blob/main/labs/behaviors/form-associated.ts",
+      "finding": "Full source read; disabled callback assigns disabled property. House independently configured disabled-state restoration still requires verification."
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/item",
+      "finding": "Content/media/text/action row and Item-versus-Field distinction; many code blocks absent from scraper output."
+    },
+    {
+      "url": "https://mui.com/material-ui/react-list/",
+      "finding": "List, list item, internal action and secondary controls; virtualization references react-window/virtuoso, not selected for the house stack."
+    },
+    {
+      "url": "https://chakra-ui.com/docs/components/list",
+      "finding": "Ordered/unordered text-list items and indicators."
+    },
+    {
+      "url": "https://material-web.dev/components/list/",
+      "finding": "List and text/button/link item documentation."
+    },
+    {
+      "url": "https://github.com/material-components/material-web/blob/main/list/internal/list.ts",
+      "finding": "Full Lit source read; navigation controller activation and RTL integration."
+    },
+    {
+      "url": "https://github.com/material-components/material-web/blob/main/list/internal/listitem/list-item.ts",
+      "finding": "Full Lit source read; actual roots, start/end/text slots, ripple, role and disabled-link differences inspected."
+    }
+  ],
+  "localEvidence": [
+    "src/components/card/card.ts",
+    "src/components/panel/panel.ts",
+    "src/components/link-card/link-card.ts",
+    "src/components/fieldset/fieldset.ts",
+    "src/components/disabled-wall/disabled-wall.ts",
+    "src/components/entity/entity.ts",
+    "src/components/item/item.ts",
+    "src/components/tile/tile.ts",
+    "src/components/setting-row/setting-row.ts",
+    "src/components/entity-list/entity-list.ts",
+    "src/components/entity-content/entity-content.ts",
+    "src/components/items/items.ts",
+    "docs-src/pages/components/entity.ts",
+    "docs-src/pages/components/item.ts",
+    "docs-src/pages/components/setting-row.ts",
+    "tools/geist/corpus/md/entity.md",
+    "tools/geist/corpus/md/fieldset.md"
+  ],
+  "decisionsChecked": [
+    "native-and-managed-forms.md",
+    "state-on-tanstack-store.md",
+    "zag-behaviour-ports.md",
+    "reference-systems.md",
+    "composition-over-count.md",
+    "react-integration.md",
+    "box-primitive.md",
+    "bidirectional-support.md",
+    "density.md",
+    "non-canonical-elements.md",
+    "optional-ripples.md",
+    "tanstack-table-compatibility.md"
+  ],
+  "limits": [
+    "No new runtime, browser or screen-reader probe ran.",
+    "Remote main-branch observations are dated evidence, not pinned implementation inputs.",
+    "No reference package, navigation policy, new List interface or final row name was selected.",
+    "The interrupted row question selected nothing.",
+    "No source implementation, dependency installation, generator run, commit or publication is part of this capture."
+  ]
+}

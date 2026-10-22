@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m26-managed-forms",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.833Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m26-managed-forms/consumer-results.json",
+      "destination": "docs/verification/systematization/m26-managed-forms/consumer-results.json",
+      "bytes": 4113,
+      "sha256": "37457dc38199312a58faf61832345f9343b2d81415e5a8ab01f6ee5f1bc74ef4"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-managed-forms/initial-consumer-results.json",
+      "destination": "docs/verification/systematization/m26-managed-forms/initial-consumer-results.json",
+      "bytes": 3717,
+      "sha256": "8169ea56038bbdcfc41f472d91515be5e8954d8fe683371ebed808193d4236a2"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

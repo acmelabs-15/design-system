@@ -1,0 +1,2 @@
+import { chromium } from '/Users/peterkloss/Library/Caches/acme-design-system/browser-checks/node_modules/playwright/index.mjs';
+const b=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});const p=await b.newPage();await p.goto('http://localhost:4313');await p.waitForTimeout(500);console.log(await p.locator('acme-tab,acme-radio-card').evaluateAll(nodes=>nodes.map(n=>({html:n.outerHTML,shadow:n.shadowRoot.innerHTML}))));await b.close();

@@ -1,0 +1,588 @@
+{
+  "date": "2026-09-22",
+  "scope": "Existing Number Input increment/decrement actions and Pin Input fields reassigned between owner slots without disconnecting the participant.",
+  "rootCause": "ContextConsumer retains its original provider when only composed ancestry changes. The participant stays connected, so its normal disconnect/connect lifecycle does not request the new owner.",
+  "fix": "Both owner families use ComposedParticipants with identity registries and nested-owner boundaries. Reconnection unregisters the old participant, clears the consumer value, requests context on the new composed path, and projects from the current owner atom. Number actions release the old repeat controller; unowned Pin fields clear and disable their input.",
+  "publicApiChanges": [],
+  "state": "TanStack atoms remain canonical for owner references, participant membership, values and presentation.",
+  "before": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.53",
+      "results": [
+        {
+          "kind": "number",
+          "before": [
+            "1",
+            "10"
+          ],
+          "presented": [
+            {
+              "disabled": false,
+              "value": ""
+            },
+            {
+              "disabled": false,
+              "value": ""
+            }
+          ],
+          "after": [
+            "2",
+            "10"
+          ],
+          "afterDecrement": [
+            "1",
+            "10"
+          ],
+          "orphanDisabled": [
+            false,
+            false
+          ]
+        },
+        {
+          "kind": "pin",
+          "before": [
+            [
+              "1"
+            ],
+            [
+              "2"
+            ]
+          ],
+          "presented": [
+            {
+              "disabled": false,
+              "value": "1"
+            }
+          ],
+          "after": [
+            [
+              "3"
+            ],
+            [
+              "2"
+            ]
+          ],
+          "afterDecrement": [
+            [
+              "3"
+            ],
+            [
+              "2"
+            ]
+          ],
+          "orphanDisabled": [
+            false
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "results": [
+        {
+          "kind": "number",
+          "before": [
+            "1",
+            "10"
+          ],
+          "presented": [
+            {
+              "disabled": false,
+              "value": ""
+            },
+            {
+              "disabled": false,
+              "value": ""
+            }
+          ],
+          "after": [
+            "2",
+            "10"
+          ],
+          "afterDecrement": [
+            "1",
+            "10"
+          ],
+          "orphanDisabled": [
+            false,
+            false
+          ]
+        },
+        {
+          "kind": "pin",
+          "before": [
+            [
+              "1"
+            ],
+            [
+              "2"
+            ]
+          ],
+          "presented": [
+            {
+              "disabled": false,
+              "value": "1"
+            }
+          ],
+          "after": [
+            [
+              "3"
+            ],
+            [
+              "2"
+            ]
+          ],
+          "afterDecrement": [
+            [
+              "3"
+            ],
+            [
+              "2"
+            ]
+          ],
+          "orphanDisabled": [
+            false
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "results": [
+        {
+          "kind": "number",
+          "before": [
+            "1",
+            "10"
+          ],
+          "presented": [
+            {
+              "disabled": false,
+              "value": ""
+            },
+            {
+              "disabled": false,
+              "value": ""
+            }
+          ],
+          "after": [
+            "2",
+            "10"
+          ],
+          "afterDecrement": [
+            "1",
+            "10"
+          ],
+          "orphanDisabled": [
+            false,
+            false
+          ]
+        },
+        {
+          "kind": "pin",
+          "before": [
+            [
+              "1"
+            ],
+            [
+              "2"
+            ]
+          ],
+          "presented": [
+            {
+              "disabled": false,
+              "value": "1"
+            }
+          ],
+          "after": [
+            [
+              "3"
+            ],
+            [
+              "2"
+            ]
+          ],
+          "afterDecrement": [
+            [
+              "3"
+            ],
+            [
+              "2"
+            ]
+          ],
+          "orphanDisabled": [
+            false
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "after": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.53",
+      "results": [
+        {
+          "kind": "number",
+          "before": [
+            "1",
+            "10"
+          ],
+          "presented": [
+            {
+              "disabled": false,
+              "value": ""
+            },
+            {
+              "disabled": false,
+              "value": ""
+            }
+          ],
+          "after": [
+            "1",
+            "11"
+          ],
+          "afterDecrement": [
+            "1",
+            "10"
+          ],
+          "orphanDisabled": [
+            true,
+            true
+          ]
+        },
+        {
+          "kind": "pin",
+          "before": [
+            [
+              "1"
+            ],
+            [
+              "2"
+            ]
+          ],
+          "presented": [
+            {
+              "disabled": false,
+              "value": "2"
+            }
+          ],
+          "after": [
+            [
+              "1"
+            ],
+            [
+              "3"
+            ]
+          ],
+          "afterDecrement": [
+            [
+              "1"
+            ],
+            [
+              "3"
+            ]
+          ],
+          "orphanDisabled": [
+            true
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "results": [
+        {
+          "kind": "number",
+          "before": [
+            "1",
+            "10"
+          ],
+          "presented": [
+            {
+              "disabled": false,
+              "value": ""
+            },
+            {
+              "disabled": false,
+              "value": ""
+            }
+          ],
+          "after": [
+            "1",
+            "11"
+          ],
+          "afterDecrement": [
+            "1",
+            "10"
+          ],
+          "orphanDisabled": [
+            true,
+            true
+          ]
+        },
+        {
+          "kind": "pin",
+          "before": [
+            [
+              "1"
+            ],
+            [
+              "2"
+            ]
+          ],
+          "presented": [
+            {
+              "disabled": false,
+              "value": "2"
+            }
+          ],
+          "after": [
+            [
+              "1"
+            ],
+            [
+              "3"
+            ]
+          ],
+          "afterDecrement": [
+            [
+              "1"
+            ],
+            [
+              "3"
+            ]
+          ],
+          "orphanDisabled": [
+            true
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "results": [
+        {
+          "kind": "number",
+          "before": [
+            "1",
+            "10"
+          ],
+          "presented": [
+            {
+              "disabled": false,
+              "value": ""
+            },
+            {
+              "disabled": false,
+              "value": ""
+            }
+          ],
+          "after": [
+            "1",
+            "11"
+          ],
+          "afterDecrement": [
+            "1",
+            "10"
+          ],
+          "orphanDisabled": [
+            true,
+            true
+          ]
+        },
+        {
+          "kind": "pin",
+          "before": [
+            [
+              "1"
+            ],
+            [
+              "2"
+            ]
+          ],
+          "presented": [
+            {
+              "disabled": false,
+              "value": "2"
+            }
+          ],
+          "after": [
+            [
+              "1"
+            ],
+            [
+              "3"
+            ]
+          ],
+          "afterDecrement": [
+            [
+              "1"
+            ],
+            [
+              "3"
+            ]
+          ],
+          "orphanDisabled": [
+            true
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "nativeRegression": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.53",
+      "results": [
+        {
+          "name": "numberInputSlotRegression",
+          "passed": true
+        },
+        {
+          "name": "pinInputSlotRegression",
+          "passed": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "results": [
+        {
+          "name": "numberInputSlotRegression",
+          "passed": true
+        },
+        {
+          "name": "pinInputSlotRegression",
+          "passed": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "results": [
+        {
+          "name": "numberInputSlotRegression",
+          "passed": true
+        },
+        {
+          "name": "pinInputSlotRegression",
+          "passed": true
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "nativeFixtures": [
+    {
+      "path": "src/components/number-input/__tests__/number-input.browser.ts",
+      "entry": "numberInputSlotRegression",
+      "checks": [
+        "slot reassignment transfers increment and decrement",
+        "old owner value stays unchanged",
+        "orphan actions disable",
+        "orphaning cancels active press repeat",
+        "reassignment back requests original owner again"
+      ]
+    },
+    {
+      "path": "src/components/pin-input/__tests__/pin-input.browser.ts",
+      "entry": "pinInputSlotRegression",
+      "checks": [
+        "new owner value renders",
+        "edit changes only new owner",
+        "orphan field clears and disables",
+        "reassignment back updates presentation and edit ownership"
+      ]
+    }
+  ],
+  "unitValidation": {
+    "command": "bun test src/components/number-input/__tests__/number-input.test.ts src/components/pin-input/__tests__/pin-input.test.ts",
+    "passed": 9,
+    "failed": 0,
+    "assertions": 39,
+    "scope": "Existing component contracts plus physical DOM movement and orphan lifecycle."
+  },
+  "typecheck": {
+    "command": "bun /tmp/acme-m13-number-pin/typecheck.ts",
+    "strict": true,
+    "files": 336,
+    "errors": 0
+  },
+  "limitations": [
+    "Happy DOM does not reproduce native composed ContextRequest routing through forwarded slots. The adjacent browser fixtures supply this regression proof in Chromium, Firefox and WebKit; focused Bun tests cover physical DOM moves.",
+    "This bounded task did not run generators or the full build/test suite."
+  ],
+  "temporaryRunners": [
+    "/tmp/acme-m13-number-pin/run.ts",
+    "/tmp/acme-m13-number-pin/native-run.ts"
+  ],
+  "compiledVerification": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.53",
+      "results": [
+        {
+          "name": "numberInputSlotRegression",
+          "passed": true
+        },
+        {
+          "name": "pinInputSlotRegression",
+          "passed": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "results": [
+        {
+          "name": "numberInputSlotRegression",
+          "passed": true
+        },
+        {
+          "name": "pinInputSlotRegression",
+          "passed": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "results": [
+        {
+          "name": "numberInputSlotRegression",
+          "passed": true
+        },
+        {
+          "name": "pinInputSlotRegression",
+          "passed": true
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "mainVerification": {
+    "tests": 881,
+    "failures": 0,
+    "build": "strict package build passes",
+    "site": "96 pages, 4262 public elements, zero undocumented"
+  }
+}

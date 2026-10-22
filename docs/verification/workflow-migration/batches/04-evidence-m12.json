@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m12",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.501Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m12-number-input-2026-09-22.json",
+      "destination": "docs/verification/systematization/m12-number-input-2026-09-22.json",
+      "bytes": 52159,
+      "sha256": "c47b44ad597d4f1d6b5f88e142e9678036e29fd892b54da67898922e3caf7b9c"
+    },
+    {
+      "source": "notes/alignment/evidence/m12-pin-input-2026-09-22.json",
+      "destination": "docs/verification/systematization/m12-pin-input-2026-09-22.json",
+      "bytes": 32683,
+      "sha256": "fa9c99180d2f687d0f9d31ea69f2a71714af19582b5b3083448450dfecb7ebfc"
+    },
+    {
+      "source": "notes/alignment/evidence/m12-port-sources-2026-09-22.json",
+      "destination": "docs/verification/systematization/m12-port-sources-2026-09-22.json",
+      "bytes": 3969,
+      "sha256": "cf474c3a1575f397d24f9eeb3b1dcf94349c5ecb39eb6f4fdc098982447de615"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

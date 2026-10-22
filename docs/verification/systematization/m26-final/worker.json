@@ -1,0 +1,138 @@
+{
+  "date": "2026-09-27T05:41:31.187Z",
+  "core": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-0.3.0.tgz",
+  "react": "/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/release/archives/acmelabs-design-system-react-0.3.0.tgz",
+  "bun": "/private/tmp/acme-bun-1.4.2/bun-darwin-aarch64/bun",
+  "reports": [
+    {
+      "framework": "lit",
+      "directory": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-worker-consumer-HcWRyt",
+      "sourceFiles": [
+        "index.html",
+        "main.ts",
+        "examples/table/worker-lit.ts",
+        "examples/table/worker-session.ts",
+        "examples/table/worker-lit-entry.ts",
+        "examples/table/table-worker.ts",
+        "examples/table/setup.ts",
+        "examples/table/build-worker.ts"
+      ],
+      "red": "examples/table/data.ts(25,3): error TS2353: Object literal may only specify known properties, and 'reviewFeature' does not exist in type 'TableFeatures & { aggregationFns?: Record<string, AggregationFnDef<any, any, any, any>> | undefined; expandedRowModel?: ((table: any) => () => RowModel<...>) | undefined; ... 11 more ...; globalFilteringFeature?: TableFeature | undefined; }'.\nexamples/table/data.ts(63,61): error TS2322: Type '\"sum\"' is not assignable to type 'AggregationFnOption<TableFeatures, Delivery, unknown> | undefined'.\nexamples/table/review-feature.ts(24,3): error TS2322: Type '<TFeatures extends TableFeatures, TData extends RowData>(table: Table<TFeatures, TData>) => { onReviewedIdsChange: (updater: (old: never) => never) => void; }' is not assignable to type '<TFeatures extends TableFeatures, TData extends RowData>(table: Table<TFeatures, TData>) => Partial<TableOptions_All<TFeatures, TData>>'.\n  Call signature return types '{ onReviewedIdsChange: (updater: (old: never) => never) => void; }' and 'Partial<TableOptions_All<TFeatures, TData>>' are incompatible.\n    The types of 'onReviewedIdsChange' are incompatible between these types.\n      Type '(updater: (old: never) => never) => void' is not assignable to type 'OnChangeFn<string[]>'.\n        Types of parameters 'updater' and 'updaterOrValue' are incompatible.\n          Type 'Updater<string[]>' is not assignable to type '(old: never) => never'.\n            Type 'string[]' is not assignable to type '(old: never) => never'.\n              Type 'string[]' provides no match for the signature '(old: never): never'.\nexamples/table/review-feature.ts(27,21): error TS2345: Argument of type 'string' is not assignable to parameter of type 'keyof TFeatures & string'.\n  Type 'string' is not assignable to type 'keyof TFeatures'.\n    Type '\"reviewFeature\"' is not assignable to type '\"cellSelectionFeature\" | \"cellSpanningFeature\" | \"columnFilteringFeature\" | \"columnGroupingFeature\" | \"columnOrderingFeature\" | \"columnPinningFeature\" | \"columnResizingFeature\" | ... 32 more ... | \"coreTablesFeature\"'.\n",
+      "patch": "diff --git a/dist/worker/createTableWorker.d.ts b/dist/worker/createTableWorker.d.ts\nindex 0efdde0ef7ce7daf7584ccab83b60c8f536735ba..d1e76f4a2bf9c4ed42ceb84b7074ba3c2a5195dc 100644\n--- a/dist/worker/createTableWorker.d.ts\n+++ b/dist/worker/createTableWorker.d.ts\n@@ -3,12 +3,12 @@ import { Table } from \"../types/Table.js\";\n import { TableFeature } from \"../types/TableFeatures.js\";\n import { TableWorkerDataPayload } from \"./rebuildRowModel.js\";\n //#region src/worker/createTableWorker.d.ts\n-declare module '../types/TableFeatures' {\n+declare module '../index.js' {\n   interface Plugins {\n     workerRowModelsFeature: TableFeature;\n   }\n }\n-declare module '../types/TableState' {\n+declare module '../index.js' {\n   interface TableState_FeatureMap {\n     workerRowModelsFeature: TableState_WorkerRowModels;\n   }\n",
+      "strictTypesAfterSetup": true,
+      "cleanReinstallPasses": true,
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "154.0.8037.57",
+          "checks": [
+            "real worker loads 500 rows",
+            "filter returns one row",
+            "failure releases worker",
+            "retry starts working worker",
+            "server data terminates worker",
+            "remount starts clean session",
+            "removal during filtering releases worker",
+            "no page errors"
+          ],
+          "pass": true
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            "real worker loads 500 rows",
+            "filter returns one row",
+            "failure releases worker",
+            "retry starts working worker",
+            "server data terminates worker",
+            "remount starts clean session",
+            "removal during filtering releases worker",
+            "no page errors"
+          ],
+          "pass": true
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            "real worker loads 500 rows",
+            "filter returns one row",
+            "failure releases worker",
+            "retry starts working worker",
+            "server data terminates worker",
+            "remount starts clean session",
+            "removal during filtering releases worker",
+            "no page errors"
+          ],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "framework": "react",
+      "directory": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-worker-consumer-gWPqhA",
+      "sourceFiles": [
+        "index.html",
+        "main.ts",
+        "examples/table/worker-react.ts",
+        "examples/table/worker-session.ts",
+        "examples/table/worker-react-entry.ts",
+        "examples/table/table-worker.ts",
+        "examples/table/setup.ts",
+        "examples/table/build-worker.ts"
+      ],
+      "red": "examples/table/data.ts(25,3): error TS2353: Object literal may only specify known properties, and 'reviewFeature' does not exist in type 'TableFeatures & { aggregationFns?: Record<string, AggregationFnDef<any, any, any, any>> | undefined; expandedRowModel?: ((table: any) => () => RowModel<...>) | undefined; ... 11 more ...; globalFilteringFeature?: TableFeature | undefined; }'.\nexamples/table/data.ts(63,61): error TS2322: Type '\"sum\"' is not assignable to type 'AggregationFnOption<TableFeatures, Delivery, unknown> | undefined'.\nexamples/table/review-feature.ts(24,3): error TS2322: Type '<TFeatures extends TableFeatures, TData extends RowData>(table: Table<TFeatures, TData>) => { onReviewedIdsChange: (updater: (old: never) => never) => void; }' is not assignable to type '<TFeatures extends TableFeatures, TData extends RowData>(table: Table<TFeatures, TData>) => Partial<TableOptions_All<TFeatures, TData>>'.\n  Call signature return types '{ onReviewedIdsChange: (updater: (old: never) => never) => void; }' and 'Partial<TableOptions_All<TFeatures, TData>>' are incompatible.\n    The types of 'onReviewedIdsChange' are incompatible between these types.\n      Type '(updater: (old: never) => never) => void' is not assignable to type 'OnChangeFn<string[]>'.\n        Types of parameters 'updater' and 'updaterOrValue' are incompatible.\n          Type 'Updater<string[]>' is not assignable to type '(old: never) => never'.\n            Type 'string[]' is not assignable to type '(old: never) => never'.\n              Type 'string[]' provides no match for the signature '(old: never): never'.\nexamples/table/review-feature.ts(27,21): error TS2345: Argument of type 'string' is not assignable to parameter of type 'keyof TFeatures & string'.\n  Type 'string' is not assignable to type 'keyof TFeatures'.\n    Type '\"reviewFeature\"' is not assignable to type '\"cellSelectionFeature\" | \"cellSpanningFeature\" | \"columnFilteringFeature\" | \"columnGroupingFeature\" | \"columnOrderingFeature\" | \"columnPinningFeature\" | \"columnResizingFeature\" | ... 32 more ... | \"coreTablesFeature\"'.\n",
+      "patch": "diff --git a/dist/worker/createTableWorker.d.ts b/dist/worker/createTableWorker.d.ts\nindex 0efdde0ef7ce7daf7584ccab83b60c8f536735ba..d1e76f4a2bf9c4ed42ceb84b7074ba3c2a5195dc 100644\n--- a/dist/worker/createTableWorker.d.ts\n+++ b/dist/worker/createTableWorker.d.ts\n@@ -3,12 +3,12 @@ import { Table } from \"../types/Table.js\";\n import { TableFeature } from \"../types/TableFeatures.js\";\n import { TableWorkerDataPayload } from \"./rebuildRowModel.js\";\n //#region src/worker/createTableWorker.d.ts\n-declare module '../types/TableFeatures' {\n+declare module '../index.js' {\n   interface Plugins {\n     workerRowModelsFeature: TableFeature;\n   }\n }\n-declare module '../types/TableState' {\n+declare module '../index.js' {\n   interface TableState_FeatureMap {\n     workerRowModelsFeature: TableState_WorkerRowModels;\n   }\n",
+      "strictTypesAfterSetup": true,
+      "cleanReinstallPasses": true,
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "154.0.8037.57",
+          "checks": [
+            "real worker loads 500 rows",
+            "filter returns one row",
+            "failure releases worker",
+            "retry starts working worker",
+            "server data terminates worker",
+            "remount starts clean session",
+            "removal during filtering releases worker",
+            "no page errors"
+          ],
+          "pass": true
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            "real worker loads 500 rows",
+            "filter returns one row",
+            "failure releases worker",
+            "retry starts working worker",
+            "server data terminates worker",
+            "remount starts clean session",
+            "removal during filtering releases worker",
+            "no page errors"
+          ],
+          "pass": true
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            "real worker loads 500 rows",
+            "filter returns one row",
+            "failure releases worker",
+            "retry starts working worker",
+            "server data terminates worker",
+            "remount starts clean session",
+            "removal during filtering releases worker",
+            "no page errors"
+          ],
+          "pass": true
+        }
+      ]
+    }
+  ]
+}

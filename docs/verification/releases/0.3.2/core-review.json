@@ -1,0 +1,37 @@
+{
+  "recordedAt": "2026-10-20T21:48:15.680Z",
+  "package": "@acmelabs/design-system",
+  "version": "0.3.2",
+  "run": 39499520613,
+  "publishJob": 118902454892,
+  "verification": "all required tag gates pass",
+  "upload": "npm command succeeds; bounded public confirmation does not complete",
+  "publicRegistry": {
+    "observedAt": "2026-10-20T21:44:57.129Z",
+    "status": 404
+  },
+  "authenticatedWebsite": {
+    "url": "https://www.npmjs.com/package/@acmelabs/design-system?activeTab=versions",
+    "version": "0.3.2",
+    "status": "Validating",
+    "message": "Automated review has not finished; version remains unavailable until review completes",
+    "timing": "recordedAt records this evidence, not an exact server transition time"
+  },
+  "authenticationPending": false,
+  "publicationArtifact": {
+    "id": 12301416721,
+    "sha256": "08c9d111475dc94e7ddf8c2108f97cc6d8c305a59c4f9bbccfe1298df8281009",
+    "commit": "6ec538e70f3874d7543ce81816abc290dca60e6b",
+    "allFiveArchivesValidated": true
+  },
+  "nextAction": "Monitor public availability; verify actual tarball, provenance and latest tag; then rerun only the failed publish job without replacing the verified artifact",
+  "followupObservations": [
+    {
+      "recordedAt": "2026-10-20T22:00:49.269Z",
+      "source": "authenticated npm Versions page",
+      "version": "0.3.2",
+      "status": "Validating",
+      "authenticationRequested": false
+    }
+  ]
+}

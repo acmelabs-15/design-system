@@ -1,0 +1,71 @@
+{
+  "date": "2026-09-27T00:18:04.425Z",
+  "status": "Local lint,format,CSS and strict root type checks pass",
+  "runtime": {
+    "name": "Bun",
+    "version": "1.4.2",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "versions": {
+    "oxlint": "1.85.0",
+    "oxfmt": "0.70.0",
+    "ultracite": "7.12.0",
+    "stylelint": "17.15.0",
+    "postcss-lit": "1.4.1"
+  },
+  "javascript": {
+    "files": 811,
+    "activeRules": 342,
+    "diagnostics": 0
+  },
+  "css": {
+    "authoredFiles": 147,
+    "compiledFiles": 167,
+    "templateFiles": [
+      "src/__tests__/base.test.ts",
+      "src/shared/__tests__/root-styles.test.ts",
+      "src/shared/__tests__/static-styles.test.ts",
+      "src/shared/__tests__/style-properties.test.ts",
+      "src/shared/__tests__/style-renderer.test.ts"
+    ],
+    "diagnostics": 0
+  },
+  "format": {
+    "status": "pass",
+    "scope": "authored JS/TS only",
+    "generatedFilesChangedByFormatter": false
+  },
+  "types": {
+    "command": "bun node_modules/typescript/bin/tsc --noEmit",
+    "status": "pass"
+  },
+  "tests": {
+    "toolingReleaseAndVersionFixtures": {
+      "passed": 26,
+      "failed": 0,
+      "assertions": 151,
+      "files": 9
+    },
+    "runtimeFocused": {
+      "passed": 73,
+      "failed": 0,
+      "assertions": 330,
+      "files": 16
+    },
+    "generatorFocused": {
+      "passed": 68,
+      "failed": 0,
+      "assertions": 300,
+      "files": 13
+    },
+    "bookAndFrameworkSources": {
+      "passed": 9,
+      "failed": 0,
+      "assertions": 52,
+      "files": 4
+    },
+    "note": "Focused groups overlap; counts are not summed."
+  },
+  "remainingIntegration": "Root command/editor/CI cutover and final complete regeneration/build/package acceptance remain owned by the root task; no publication performed."
+}

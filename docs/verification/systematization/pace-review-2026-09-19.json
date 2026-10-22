@@ -1,0 +1,85 @@
+{
+  "date": "2026-09-19",
+  "deadlineRemoved": true,
+  "crossModel": "User chose Use these reviews; same-model independent reviews only",
+  "findings": [
+    {
+      "id": "style_approval_gate",
+      "classification": "valid_actionable",
+      "correction": "Restore representative style pipeline checks, including the listed Chromium/Firefox/WebKit rendered checks, before Phase 5 implementation approval. Full implementation regression verification remains Phase 6.",
+      "sources": [
+        "notes/decisions/style-production.md:13",
+        "notes/analysis/repository-layout.md:173",
+        "notes/alignment/phase-3-review.md:97",
+        "notes/alignment/phase-3-review.md:111",
+        "notes/alignment/inventory.md:49"
+      ]
+    },
+    {
+      "id": "container_font_basis",
+      "classification": "valid_actionable",
+      "correction": "Expose difference between MQ initial-font units and container query computed-font units; settle intended container threshold policy before responsive convention approval. Keep both width modes and Material names.",
+      "source": "https://drafts.csswg.org/css-conditional-5/#size-container"
+    },
+    {
+      "id": "stale_responsive_records",
+      "classification": "valid_actionable",
+      "correction": "Remove living-analysis claim that arrays are unselected and mark earlier responsive evidence open lists as superseded by the six Phase 4 choices."
+    }
+  ],
+  "scope": "Bounded re-review of Phase 3 closure and six recent Group/responsive choices after deadline pressure was removed",
+  "phaseDisposition": "No independent finding requires reopening entire responsibility-level Phase 3 closure; preserve selected directions and restore the altered gate.",
+  "persisted": true,
+  "fontPolicy": {
+    "status": "CONFIRMED",
+    "questionId": "responsive_font_basis",
+    "answer": "Native CSS rules (Recommended)",
+    "decision": "Viewport media query rem thresholds use the initial/browser-default font basis. Container query rem thresholds use the authored computed root font basis, per native CSS. Document and test both; do not add a normalization layer to force them equal.",
+    "example": {
+      "browserDefaultPx": 16,
+      "rootFontPx": 20,
+      "thresholdRem": 37.5,
+      "viewportThresholdPx": 600,
+      "containerThresholdPx": 750
+    },
+    "sources": [
+      "https://drafts.csswg.org/mediaqueries-5/#units",
+      "https://drafts.csswg.org/css-conditional-5/#size-container",
+      "https://github.com/web-platform-tests/wpt/blob/master/css/css-conditional/container-queries/font-relative-units.html"
+    ],
+    "verification": "Specification and upstream test source inspected; not a new local browser run."
+  },
+  "next": "Resume layout and typography with the shared responsive convention. Preserve the native font policy and restored Phase 5 pre-approval style gate.",
+  "reviewMethod": {
+    "skill": "agent-skills:doubt-driven-development",
+    "reviewers": [
+      "audit_recent_contracts",
+      "audit_phase_closure"
+    ],
+    "context": "Independent fresh-context reviewers using the same model",
+    "crossModel": "Offered; Peter chose Use these reviews (Recommended). No external model or CLI used.",
+    "reconciliation": "All three findings checked against source records/specifications and classified valid/actionable. No finding justified reversing the six capability choices or reopening all responsibility-level Phase 3 work."
+  },
+  "recordCorrections": [
+    "Restored representative style pipeline and three-engine pre-approval evidence gate in Phase 3 review, inventory and Phase 5 pass requirements.",
+    "Scoped viewport font scaling and recorded native container rem basis.",
+    "Removed stale living-analysis claims and annotated the original responsive research checkpoint as historical.",
+    "Recorded withdrawal of deadline pressure."
+  ],
+  "newRuntimeChecks": false,
+  "sourceImplementationChanged": false,
+  "inventoryApproved": false,
+  "migrationApproved": false,
+  "commitCreated": false,
+  "pushPerformed": false,
+  "recordVerification": {
+    "reviewer": "verify_audit_corrections",
+    "freshContext": true,
+    "result": "No substantive issues found in the correction scope",
+    "filesEditedByReviewer": false,
+    "browserTestsRun": false,
+    "localLinksChecked": 1124,
+    "protectedFilesChecked": 870,
+    "protectedFileDifferences": []
+  }
+}

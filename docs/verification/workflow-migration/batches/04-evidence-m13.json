@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m13",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.515Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m13-calendar-2026-09-23.json",
+      "destination": "docs/verification/systematization/m13-calendar-2026-09-23.json",
+      "bytes": 54016,
+      "sha256": "078f5f9609fe964325cbacbe08f9e73c568259e3e866cc28851ceb18f6f2d804"
+    },
+    {
+      "source": "notes/alignment/evidence/m13-calendar-reference-review-2026-09-22.json",
+      "destination": "docs/verification/systematization/m13-calendar-reference-review-2026-09-22.json",
+      "bytes": 34295,
+      "sha256": "69130dec58fb5338221e6683033cfc3165da490aa20bd1683f55a4b2410c54eb"
+    },
+    {
+      "source": "notes/alignment/evidence/m13-date-runtime-2026-09-22.json",
+      "destination": "docs/verification/systematization/m13-date-runtime-2026-09-22.json",
+      "bytes": 9619,
+      "sha256": "c02105685347eebeaaeac71cde7951514fec72dadab9b4f36f97aaf187eece7c"
+    },
+    {
+      "source": "notes/alignment/evidence/m13-menu-2026-09-22.json",
+      "destination": "docs/verification/systematization/m13-menu-2026-09-22.json",
+      "bytes": 23965,
+      "sha256": "19492ae1dcc2e7e27f05594118daa35e76879a581f6d1bef719ea96195a5694f"
+    },
+    {
+      "source": "notes/alignment/evidence/m13-menu-reference-review-2026-09-22.json",
+      "destination": "docs/verification/systematization/m13-menu-reference-review-2026-09-22.json",
+      "bytes": 5566,
+      "sha256": "a7de08910780592a1affe64db9a305bd5812b4dc2176f33fe67ce750f187d117"
+    },
+    {
+      "source": "notes/alignment/evidence/m13-number-pin-slot-2026-09-22.json",
+      "destination": "docs/verification/systematization/m13-number-pin-slot-2026-09-22.json",
+      "bytes": 12376,
+      "sha256": "d7884551a8b4c8d6cbe79a988b8e8f487ad35f39c97eed721ba0162fab59ebc3"
+    },
+    {
+      "source": "notes/alignment/evidence/m13-overlay-slots-2026-09-22.json",
+      "destination": "docs/verification/systematization/m13-overlay-slots-2026-09-22.json",
+      "bytes": 2448,
+      "sha256": "da8a868276e9502517be33ed967b972007a293c4f35fbd9692f710541cdb540c"
+    },
+    {
+      "source": "notes/alignment/evidence/m13-selection-2026-09-22.json",
+      "destination": "docs/verification/systematization/m13-selection-2026-09-22.json",
+      "bytes": 37815,
+      "sha256": "71a7fe0be3addfcaa78f11f5a559949f37acb6e2ab4f3257e7e4e58c7e4bffb4"
+    },
+    {
+      "source": "notes/alignment/evidence/m13-selection-dark-2026-09-22.png",
+      "destination": "docs/verification/systematization/m13-selection-dark-2026-09-22.png",
+      "bytes": 63223,
+      "sha256": "c509214ca2ce1cd830179211e48ddda5eecd5fc1bef31e06b850d676b40a97cb"
+    },
+    {
+      "source": "notes/alignment/evidence/m13-selection-light-2026-09-22.png",
+      "destination": "docs/verification/systematization/m13-selection-light-2026-09-22.png",
+      "bytes": 67099,
+      "sha256": "0a88ca7d23b67b64fa06934843648077af62a35fe7e3b88f43e913875a805088"
+    },
+    {
+      "source": "notes/alignment/evidence/m13-selection-preparation-2026-09-22.json",
+      "destination": "docs/verification/systematization/m13-selection-preparation-2026-09-22.json",
+      "bytes": 40039,
+      "sha256": "57b114bddd17cba038de10c7bb2526f9a13f30675153c0818a0ff1bfa6e6b03c"
+    },
+    {
+      "source": "notes/alignment/evidence/m13-shadow-sources-2026-09-22.json",
+      "destination": "docs/verification/systematization/m13-shadow-sources-2026-09-22.json",
+      "bytes": 6976,
+      "sha256": "e11c28fe4346f7166c6b4859c7ac722d576dfa827d24ea8d7c6f2a493ee45132"
+    },
+    {
+      "source": "notes/alignment/evidence/m13-slider-2026-09-22.json",
+      "destination": "docs/verification/systematization/m13-slider-2026-09-22.json",
+      "bytes": 33253,
+      "sha256": "d62da25caa974dbdf624567b5ad364e64a49db908eb723d35f36ec9b18d6a9f0"
+    },
+    {
+      "source": "notes/alignment/evidence/m13-slider-reference-review-2026-09-22.json",
+      "destination": "docs/verification/systematization/m13-slider-reference-review-2026-09-22.json",
+      "bytes": 41192,
+      "sha256": "ff3ce30a893dfc8309fed72e68f26fe758f7629fb5161e2ca93e33f062d6e7f0"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

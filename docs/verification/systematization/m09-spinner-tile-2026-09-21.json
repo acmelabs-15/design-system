@@ -1,0 +1,274 @@
+{
+  "date": "2026-09-21",
+  "batch": "M09 in progress",
+  "entries": [
+    "Icon Tile",
+    "Spinner"
+  ],
+  "native": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "medium Spinner has ten owned opacity animations",
+            "ok": true
+          },
+          {
+            "name": "native animation time advances",
+            "ok": true
+          },
+          {
+            "name": "label changes retain exactly one animation per blade",
+            "ok": true
+          },
+          {
+            "name": "small retains its source dimensions and blade count",
+            "ok": true
+          },
+          {
+            "name": "medium retains its source dimensions and blade count",
+            "ok": true
+          },
+          {
+            "name": "large retains its source dimensions and blade count",
+            "ok": true
+          },
+          {
+            "name": "extraLarge retains its source dimensions and blade count",
+            "ok": true
+          },
+          {
+            "name": "extraExtraLarge retains its source dimensions and blade count",
+            "ok": true
+          },
+          {
+            "name": "repeated resizing keeps controller ownership bounded",
+            "ok": true
+          },
+          {
+            "name": "disconnect cancels every owned animation",
+            "ok": true
+          },
+          {
+            "name": "reconnect starts the current blade set once",
+            "ok": true
+          },
+          {
+            "name": "document adoption restarts the current animation set",
+            "ok": true
+          },
+          {
+            "name": "Icon Tile preserves the authored image semantics",
+            "ok": true
+          },
+          {
+            "name": "Icon Tile dimensions include one padding and border charge",
+            "ok": true
+          },
+          {
+            "name": "status has its supplied accessible name",
+            "ok": true
+          },
+          {
+            "name": "Icon Tile preserves the authored accessible image",
+            "ok": true
+          },
+          {
+            "name": "live reduced motion cancels animation",
+            "ok": true
+          },
+          {
+            "name": "restored motion resumes one set",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "medium Spinner has ten owned opacity animations",
+            "ok": true
+          },
+          {
+            "name": "native animation time advances",
+            "ok": true
+          },
+          {
+            "name": "label changes retain exactly one animation per blade",
+            "ok": true
+          },
+          {
+            "name": "small retains its source dimensions and blade count",
+            "ok": true
+          },
+          {
+            "name": "medium retains its source dimensions and blade count",
+            "ok": true
+          },
+          {
+            "name": "large retains its source dimensions and blade count",
+            "ok": true
+          },
+          {
+            "name": "extraLarge retains its source dimensions and blade count",
+            "ok": true
+          },
+          {
+            "name": "extraExtraLarge retains its source dimensions and blade count",
+            "ok": true
+          },
+          {
+            "name": "repeated resizing keeps controller ownership bounded",
+            "ok": true
+          },
+          {
+            "name": "disconnect cancels every owned animation",
+            "ok": true
+          },
+          {
+            "name": "reconnect starts the current blade set once",
+            "ok": true
+          },
+          {
+            "name": "document adoption restarts the current animation set",
+            "ok": true
+          },
+          {
+            "name": "Icon Tile preserves the authored image semantics",
+            "ok": true
+          },
+          {
+            "name": "Icon Tile dimensions include one padding and border charge",
+            "ok": true
+          },
+          {
+            "name": "status has its supplied accessible name",
+            "ok": true
+          },
+          {
+            "name": "Icon Tile preserves the authored accessible image",
+            "ok": true
+          },
+          {
+            "name": "live reduced motion cancels animation",
+            "ok": true
+          },
+          {
+            "name": "restored motion resumes one set",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "medium Spinner has ten owned opacity animations",
+            "ok": true
+          },
+          {
+            "name": "native animation time advances",
+            "ok": true
+          },
+          {
+            "name": "label changes retain exactly one animation per blade",
+            "ok": true
+          },
+          {
+            "name": "small retains its source dimensions and blade count",
+            "ok": true
+          },
+          {
+            "name": "medium retains its source dimensions and blade count",
+            "ok": true
+          },
+          {
+            "name": "large retains its source dimensions and blade count",
+            "ok": true
+          },
+          {
+            "name": "extraLarge retains its source dimensions and blade count",
+            "ok": true
+          },
+          {
+            "name": "extraExtraLarge retains its source dimensions and blade count",
+            "ok": true
+          },
+          {
+            "name": "repeated resizing keeps controller ownership bounded",
+            "ok": true
+          },
+          {
+            "name": "disconnect cancels every owned animation",
+            "ok": true
+          },
+          {
+            "name": "reconnect starts the current blade set once",
+            "ok": true
+          },
+          {
+            "name": "document adoption restarts the current animation set",
+            "ok": true
+          },
+          {
+            "name": "Icon Tile preserves the authored image semantics",
+            "ok": true
+          },
+          {
+            "name": "Icon Tile dimensions include one padding and border charge",
+            "ok": true
+          },
+          {
+            "name": "status has its supplied accessible name",
+            "ok": true
+          },
+          {
+            "name": "Icon Tile preserves the authored accessible image",
+            "ok": true
+          },
+          {
+            "name": "live reduced motion cancels animation",
+            "ok": true
+          },
+          {
+            "name": "restored motion resumes one set",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "validation": {
+    "focusedTests": 10,
+    "fullTests": 896,
+    "failures": 0,
+    "assertions": 119152,
+    "files": 132,
+    "build": "pass",
+    "docs": "93 pages, 4254 elements, none undocumented",
+    "busyAdjustment": "Search and ComboBox focused tests pass after the full run"
+  },
+  "corrections": [
+    "Remove Spinner short-size aliases, color property, duplicate status text and inline blade declarations",
+    "Retain canonical store state and Lit Motion ownership",
+    "Dispose replaced directive controllers and reject stale animation starts",
+    "Icon Tile preserves named content and charges its padding/border once"
+  ],
+  "rejected": [
+    "Stable animation nodes: failed restart and cancellation checks; removed"
+  ],
+  "sources": {
+    "probe": "import {AcmeSpinner} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/spinner/spinner';\nimport {AcmeIconTile} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/icon-tile/icon-tile';\nconst owned=new WeakMap<object,Set<object>>();\nclass ObservedSpinner extends AcmeSpinner { addController(controller:any){let controllers=owned.get(this);if(!controllers){controllers=new Set();owned.set(this,controllers);}controllers.add(controller);super.addController(controller);} removeController(controller:any){owned.get(this)?.delete(controller);super.removeController(controller);} }\ncustomElements.define(\"acme-spinner\",ObservedSpinner);customElements.define('acme-icon-tile',AcmeIconTile);\nconst results:any[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});const wait=()=>new Promise(r=>setTimeout(r,80));\ntry{\n const spinner=new ObservedSpinner();spinner.id='spinner';document.body.append(spinner);await spinner.updateComplete;await wait();\n const animations=()=>spinner.shadowRoot!.getAnimations();\n check('medium Spinner has ten owned opacity animations',animations().length===10&&animations().every(a=>(a.effect as KeyframeEffect).getKeyframes().every(f=>f.transform===undefined)),animations().length);\n const before=animations()[0]?.currentTime;await wait();check('native animation time advances',Number(animations()[0]?.currentTime)>Number(before));\n spinner.label='Loading projects';await spinner.updateComplete;await wait();check('label changes retain exactly one animation per blade',animations().length===10&&spinner.shadowRoot!.querySelector('[role=status]')?.textContent?.trim()==='Loading projects');\n for(const [size,width,count]of [['small',12,8],['medium',16,10],['large',20,12],['extraLarge',24,12],['extraExtraLarge',32,15]] as const){spinner.size=size;await spinner.updateComplete;await wait();const box=spinner.shadowRoot!.querySelector('[part=root]')!.getBoundingClientRect();check(size+' retains its source dimensions and blade count',box.width===width&&box.height===width&&animations().length===count,{width:box.width,height:box.height,animations:animations().length});}\n const initialControllers=owned.get(spinner)!.size;for(let i=0;i<20;i++){spinner.size=i%2?\"extraExtraLarge\":\"small\";await spinner.updateComplete;await wait();}check(\"repeated resizing keeps controller ownership bounded\",owned.get(spinner)!.size===initialControllers,{before:initialControllers,after:owned.get(spinner)!.size});\n const running=animations();spinner.remove();await wait();check('disconnect cancels every owned animation',running.every(animation=>animation.playState==='idle'));document.body.append(spinner);await spinner.updateComplete;await wait();check('reconnect starts the current blade set once',animations().length===15);\n const frame=document.createElement('iframe');document.body.append(frame);frame.contentDocument!.body.append(spinner);await spinner.updateComplete;await wait();check('document adoption restarts the current animation set',animations().length===15);\n document.body.append(spinner);await spinner.updateComplete;await wait();\n const tile=new AcmeIconTile();tile.innerHTML='<span role=\"img\" aria-label=\"Project\">P</span>';document.body.append(tile);await tile.updateComplete;check('Icon Tile preserves the authored image semantics',!tile.shadowRoot!.querySelector('[part=root]')!.hasAttribute('aria-hidden'));\n tile.size='64px';await tile.updateComplete;const box=tile.getBoundingClientRect(),surface=tile.shadowRoot!.querySelector('[part=root]')!.getBoundingClientRect();check('Icon Tile dimensions include one padding and border charge',box.width===64&&box.height===64&&surface.width===64&&surface.height===64,{host:[box.width,box.height],surface:[surface.width,surface.height]});\n (window as any).__spinner=spinner;(window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n",
+    "runner": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m09-spinner\",root=\"/Users/peterkloss/Dev/ACMElabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\",splitting:true});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/dist/styles/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname.endsWith(\".js\")&&url.pathname!==\"/probe.js\")return new Response(Bun.file(directory+\"/bundle\"+url.pathname),{headers:{\"Content-Type\":\"text/javascript\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(!data.error){data.results.push({name:\"status has its supplied accessible name\",ok:await page.getByRole(\"status\",{name:\"Loading projects\",exact:true}).count()===1});data.results.push({name:\"Icon Tile preserves the authored accessible image\",ok:await page.getByRole(\"img\",{name:\"Project\",exact:true}).count()===1});await page.emulateMedia({reducedMotion:\"reduce\"});await page.waitForTimeout(100);const stopped=await page.evaluate(()=>window.__spinner.shadowRoot.getAnimations().length===0);data.results.push({name:\"live reduced motion cancels animation\",ok:stopped});await page.emulateMedia({reducedMotion:\"no-preference\"});await page.waitForTimeout(100);const resumed=await page.evaluate(()=>window.__spinner.shadowRoot.getAnimations().length===15);data.results.push({name:\"restored motion resumes one set\",ok:resumed});}if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.length!==18||r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+  },
+  "remaining": [
+    "M09 actions and identity families",
+    "Final consumer and release gates"
+  ]
+}

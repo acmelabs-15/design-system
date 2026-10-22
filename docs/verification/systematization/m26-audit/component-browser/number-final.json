@@ -1,0 +1,563 @@
+[
+  {
+    "engine": "chromium",
+    "suite": "number-input",
+    "results": [
+      {
+        "name": "native target has spinbutton role",
+        "pass": true
+      },
+      {
+        "name": "decimal increment and native form agree",
+        "pass": true
+      },
+      {
+        "name": "partial input stays editable and invalid without fabricated number",
+        "pass": true
+      },
+      {
+        "name": "empty value stays empty",
+        "pass": true
+      },
+      {
+        "name": "stepping from empty clamps to minimum",
+        "pass": true
+      },
+      {
+        "name": "range validation is immediate",
+        "pass": true
+      },
+      {
+        "name": "native reset preserves initial string default",
+        "pass": true
+      },
+      {
+        "name": "German parsing and native canonical submission",
+        "pass": true
+      },
+      {
+        "name": "German stepping preserves numeric value",
+        "pass": true
+      },
+      {
+        "name": "percent has adaptive default step",
+        "pass": true
+      },
+      {
+        "name": "numberInputSlotRegression",
+        "pass": true
+      },
+      {
+        "name": "arrow modifiers use custom step sizes",
+        "pass": true
+      },
+      {
+        "name": "Home moves to minimum",
+        "pass": true
+      },
+      {
+        "name": "End moves to maximum",
+        "pass": true
+      },
+      {
+        "name": "blur clamps by default",
+        "pass": true
+      },
+      {
+        "name": "explicit unclamped blur preserves out-of-range text",
+        "pass": true
+      },
+      {
+        "name": "invalid characters preserve a replacement selection",
+        "pass": true
+      },
+      {
+        "name": "Enter formats and commits exactly once",
+        "pass": true
+      },
+      {
+        "name": "pointer hold repeats and commits once",
+        "pass": true
+      },
+      {
+        "name": "release stops repetition",
+        "pass": true
+      },
+      {
+        "name": "spinOnPress false keeps one pointer step",
+        "pass": true
+      },
+      {
+        "name": "disabled during hold prevents later steps",
+        "pass": true
+      },
+      {
+        "name": "disconnect cancels repeat lifetime",
+        "pass": true
+      },
+      {
+        "name": "explicit locale changes preserve numeric amount",
+        "pass": true
+      },
+      {
+        "name": "format options are owned immutable snapshots",
+        "pass": true
+      },
+      {
+        "name": "custom increment part uses the same owner",
+        "pass": true
+      },
+      {
+        "name": "custom decrement part uses the same owner",
+        "pass": true
+      },
+      {
+        "name": "moving a part transfers ownership without editing the old control",
+        "pass": true
+      },
+      {
+        "name": "orphaned action parts are disabled",
+        "pass": true
+      },
+      {
+        "name": "inherited locale changes preserve numeric amount",
+        "pass": true
+      },
+      {
+        "name": "nonstandard notation is rejected before state changes",
+        "pass": true
+      },
+      {
+        "name": "tiny step remains representable in en-US",
+        "pass": true
+      },
+      {
+        "name": "tiny step remains representable in de-DE",
+        "pass": true
+      },
+      {
+        "name": "tiny step remains representable in ar-EG",
+        "pass": true
+      },
+      {
+        "name": "initial attribute order does not reinterpret localized values",
+        "pass": true
+      },
+      {
+        "name": "late owner upgrade connects existing action parts",
+        "pass": true
+      },
+      {
+        "name": "native required and disabled fieldset semantics are preserved",
+        "pass": true
+      },
+      {
+        "name": "wheel changes are off by default",
+        "pass": true
+      },
+      {
+        "name": "focused wheel opt-in steps the value",
+        "pass": true
+      },
+      {
+        "name": "canceled Enter does not format or commit",
+        "pass": true
+      },
+      {
+        "name": "programmatic invalid characters remain invalid",
+        "pass": true
+      },
+      {
+        "name": "modifier defaults avoid binary scaling drift",
+        "pass": true
+      },
+      {
+        "name": "zoom-modified wheel is not consumed",
+        "pass": true
+      },
+      {
+        "name": "disabling the active part stops its hold",
+        "pass": true
+      },
+      {
+        "name": "formatting whitespace preserves default actions and icons",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "suite": "number-input",
+    "results": [
+      {
+        "name": "native target has spinbutton role",
+        "pass": true
+      },
+      {
+        "name": "decimal increment and native form agree",
+        "pass": true
+      },
+      {
+        "name": "partial input stays editable and invalid without fabricated number",
+        "pass": true
+      },
+      {
+        "name": "empty value stays empty",
+        "pass": true
+      },
+      {
+        "name": "stepping from empty clamps to minimum",
+        "pass": true
+      },
+      {
+        "name": "range validation is immediate",
+        "pass": true
+      },
+      {
+        "name": "native reset preserves initial string default",
+        "pass": true
+      },
+      {
+        "name": "German parsing and native canonical submission",
+        "pass": true
+      },
+      {
+        "name": "German stepping preserves numeric value",
+        "pass": true
+      },
+      {
+        "name": "percent has adaptive default step",
+        "pass": true
+      },
+      {
+        "name": "numberInputSlotRegression",
+        "pass": true
+      },
+      {
+        "name": "arrow modifiers use custom step sizes",
+        "pass": true
+      },
+      {
+        "name": "Home moves to minimum",
+        "pass": true
+      },
+      {
+        "name": "End moves to maximum",
+        "pass": true
+      },
+      {
+        "name": "blur clamps by default",
+        "pass": true
+      },
+      {
+        "name": "explicit unclamped blur preserves out-of-range text",
+        "pass": true
+      },
+      {
+        "name": "invalid characters preserve a replacement selection",
+        "pass": true
+      },
+      {
+        "name": "Enter formats and commits exactly once",
+        "pass": true
+      },
+      {
+        "name": "pointer hold repeats and commits once",
+        "pass": true
+      },
+      {
+        "name": "release stops repetition",
+        "pass": true
+      },
+      {
+        "name": "spinOnPress false keeps one pointer step",
+        "pass": true
+      },
+      {
+        "name": "disabled during hold prevents later steps",
+        "pass": true
+      },
+      {
+        "name": "disconnect cancels repeat lifetime",
+        "pass": true
+      },
+      {
+        "name": "explicit locale changes preserve numeric amount",
+        "pass": true
+      },
+      {
+        "name": "format options are owned immutable snapshots",
+        "pass": true
+      },
+      {
+        "name": "custom increment part uses the same owner",
+        "pass": true
+      },
+      {
+        "name": "custom decrement part uses the same owner",
+        "pass": true
+      },
+      {
+        "name": "moving a part transfers ownership without editing the old control",
+        "pass": true
+      },
+      {
+        "name": "orphaned action parts are disabled",
+        "pass": true
+      },
+      {
+        "name": "inherited locale changes preserve numeric amount",
+        "pass": true
+      },
+      {
+        "name": "nonstandard notation is rejected before state changes",
+        "pass": true
+      },
+      {
+        "name": "tiny step remains representable in en-US",
+        "pass": true
+      },
+      {
+        "name": "tiny step remains representable in de-DE",
+        "pass": true
+      },
+      {
+        "name": "tiny step remains representable in ar-EG",
+        "pass": true
+      },
+      {
+        "name": "initial attribute order does not reinterpret localized values",
+        "pass": true
+      },
+      {
+        "name": "late owner upgrade connects existing action parts",
+        "pass": true
+      },
+      {
+        "name": "native required and disabled fieldset semantics are preserved",
+        "pass": true
+      },
+      {
+        "name": "wheel changes are off by default",
+        "pass": true
+      },
+      {
+        "name": "focused wheel opt-in steps the value",
+        "pass": true
+      },
+      {
+        "name": "canceled Enter does not format or commit",
+        "pass": true
+      },
+      {
+        "name": "programmatic invalid characters remain invalid",
+        "pass": true
+      },
+      {
+        "name": "modifier defaults avoid binary scaling drift",
+        "pass": true
+      },
+      {
+        "name": "zoom-modified wheel is not consumed",
+        "pass": true
+      },
+      {
+        "name": "disabling the active part stops its hold",
+        "pass": true
+      },
+      {
+        "name": "formatting whitespace preserves default actions and icons",
+        "pass": true
+      }
+    ],
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "suite": "number-input",
+    "results": [
+      {
+        "name": "native target has spinbutton role",
+        "pass": true
+      },
+      {
+        "name": "decimal increment and native form agree",
+        "pass": true
+      },
+      {
+        "name": "partial input stays editable and invalid without fabricated number",
+        "pass": true
+      },
+      {
+        "name": "empty value stays empty",
+        "pass": true
+      },
+      {
+        "name": "stepping from empty clamps to minimum",
+        "pass": true
+      },
+      {
+        "name": "range validation is immediate",
+        "pass": true
+      },
+      {
+        "name": "native reset preserves initial string default",
+        "pass": true
+      },
+      {
+        "name": "German parsing and native canonical submission",
+        "pass": true
+      },
+      {
+        "name": "German stepping preserves numeric value",
+        "pass": true
+      },
+      {
+        "name": "percent has adaptive default step",
+        "pass": true
+      },
+      {
+        "name": "numberInputSlotRegression",
+        "pass": true
+      },
+      {
+        "name": "arrow modifiers use custom step sizes",
+        "pass": true
+      },
+      {
+        "name": "Home moves to minimum",
+        "pass": true
+      },
+      {
+        "name": "End moves to maximum",
+        "pass": true
+      },
+      {
+        "name": "blur clamps by default",
+        "pass": true
+      },
+      {
+        "name": "explicit unclamped blur preserves out-of-range text",
+        "pass": true
+      },
+      {
+        "name": "invalid characters preserve a replacement selection",
+        "pass": true
+      },
+      {
+        "name": "Enter formats and commits exactly once",
+        "pass": true
+      },
+      {
+        "name": "pointer hold repeats and commits once",
+        "pass": true
+      },
+      {
+        "name": "release stops repetition",
+        "pass": true
+      },
+      {
+        "name": "spinOnPress false keeps one pointer step",
+        "pass": true
+      },
+      {
+        "name": "disabled during hold prevents later steps",
+        "pass": true
+      },
+      {
+        "name": "disconnect cancels repeat lifetime",
+        "pass": true
+      },
+      {
+        "name": "explicit locale changes preserve numeric amount",
+        "pass": true
+      },
+      {
+        "name": "format options are owned immutable snapshots",
+        "pass": true
+      },
+      {
+        "name": "custom increment part uses the same owner",
+        "pass": true
+      },
+      {
+        "name": "custom decrement part uses the same owner",
+        "pass": true
+      },
+      {
+        "name": "moving a part transfers ownership without editing the old control",
+        "pass": true
+      },
+      {
+        "name": "orphaned action parts are disabled",
+        "pass": true
+      },
+      {
+        "name": "inherited locale changes preserve numeric amount",
+        "pass": true
+      },
+      {
+        "name": "nonstandard notation is rejected before state changes",
+        "pass": true
+      },
+      {
+        "name": "tiny step remains representable in en-US",
+        "pass": true
+      },
+      {
+        "name": "tiny step remains representable in de-DE",
+        "pass": true
+      },
+      {
+        "name": "tiny step remains representable in ar-EG",
+        "pass": true
+      },
+      {
+        "name": "initial attribute order does not reinterpret localized values",
+        "pass": true
+      },
+      {
+        "name": "late owner upgrade connects existing action parts",
+        "pass": true
+      },
+      {
+        "name": "native required and disabled fieldset semantics are preserved",
+        "pass": true
+      },
+      {
+        "name": "wheel changes are off by default",
+        "pass": true
+      },
+      {
+        "name": "focused wheel opt-in steps the value",
+        "pass": true
+      },
+      {
+        "name": "canceled Enter does not format or commit",
+        "pass": true
+      },
+      {
+        "name": "programmatic invalid characters remain invalid",
+        "pass": true
+      },
+      {
+        "name": "modifier defaults avoid binary scaling drift",
+        "pass": true
+      },
+      {
+        "name": "zoom-modified wheel is not consumed",
+        "pass": true
+      },
+      {
+        "name": "disabling the active part stops its hold",
+        "pass": true
+      },
+      {
+        "name": "formatting whitespace preserves default actions and icons",
+        "pass": true
+      }
+    ],
+    "errors": []
+  }
+]

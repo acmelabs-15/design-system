@@ -1,0 +1,92 @@
+[
+  {
+    "engine": "chromium",
+    "framework": "lit",
+    "checks": [
+      "the narrow array row preserves the complete action label",
+      "native required reporting focuses the first invalid control",
+      "managed errors remain distinct from native validity",
+      "nested fields and array insertion/removal retain the correct value",
+      "native FormData contains the named nested fields and boolean control",
+      "submission before the next render reads the current TanStack value",
+      "disabled values are excluded and managed reset restores data and errors",
+      "detached edits do not leak through disposal and remount remains usable"
+    ],
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "framework": "react",
+    "checks": [
+      "the narrow array row preserves the complete action label",
+      "native required reporting focuses the first invalid control",
+      "managed errors remain distinct from native validity",
+      "nested fields and array insertion/removal retain the correct value",
+      "native FormData contains the named nested fields and boolean control",
+      "submission before the next render reads the current TanStack value",
+      "disabled values are excluded and managed reset restores data and errors",
+      "detached edits do not leak through disposal and remount remains usable"
+    ],
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "framework": "lit",
+    "checks": [
+      "the narrow array row preserves the complete action label",
+      "native required reporting focuses the first invalid control",
+      "managed errors remain distinct from native validity",
+      "nested fields and array insertion/removal retain the correct value",
+      "native FormData contains the named nested fields and boolean control",
+      "submission before the next render reads the current TanStack value",
+      "disabled values are excluded and managed reset restores data and errors",
+      "detached edits do not leak through disposal and remount remains usable"
+    ],
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "framework": "react",
+    "checks": [
+      "the narrow array row preserves the complete action label",
+      "native required reporting focuses the first invalid control",
+      "managed errors remain distinct from native validity",
+      "nested fields and array insertion/removal retain the correct value",
+      "native FormData contains the named nested fields and boolean control",
+      "submission before the next render reads the current TanStack value",
+      "disabled values are excluded and managed reset restores data and errors",
+      "detached edits do not leak through disposal and remount remains usable"
+    ],
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "framework": "lit",
+    "checks": [
+      "the narrow array row preserves the complete action label",
+      "native required reporting focuses the first invalid control",
+      "managed errors remain distinct from native validity",
+      "nested fields and array insertion/removal retain the correct value",
+      "native FormData contains the named nested fields and boolean control",
+      "submission before the next render reads the current TanStack value",
+      "disabled values are excluded and managed reset restores data and errors",
+      "detached edits do not leak through disposal and remount remains usable"
+    ],
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "framework": "react",
+    "checks": [
+      "the narrow array row preserves the complete action label",
+      "native required reporting focuses the first invalid control",
+      "managed errors remain distinct from native validity",
+      "nested fields and array insertion/removal retain the correct value",
+      "native FormData contains the named nested fields and boolean control",
+      "submission before the next render reads the current TanStack value",
+      "disabled values are excluded and managed reset restores data and errors",
+      "detached edits do not leak through disposal and remount remains usable"
+    ],
+    "errors": []
+  }
+]

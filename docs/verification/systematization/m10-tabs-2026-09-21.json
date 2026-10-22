@@ -1,0 +1,1065 @@
+{
+  "date": "2026-09-21",
+  "batch": "M10 Tabs",
+  "status": "complete at the assigned Tabs boundary; M10 is complete",
+  "reference": "m10-tabs-material-review-2026-09-21.json",
+  "native": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "omitted value chooses the first enabled tab once without a user event",
+            "ok": true
+          },
+          {
+            "name": "initial automatic selection immediately paints its indicator",
+            "ok": true
+          },
+          {
+            "name": "one selected native tab owns the matching visible panel",
+            "ok": true
+          },
+          {
+            "name": "native tab controls references its actual panel host",
+            "ok": true
+          },
+          {
+            "name": "programmatic changes stay silent and retain ordinary panel nodes",
+            "ok": true
+          },
+          {
+            "name": "primary indicator has the selected 3px height and at least 24px length",
+            "ok": true
+          },
+          {
+            "name": "user click emits one scalar notification",
+            "ok": true
+          },
+          {
+            "name": "manual focus does not select or move the semantic indicator target",
+            "ok": true
+          },
+          {
+            "name": "manual activation selects the focused tab",
+            "ok": true
+          },
+          {
+            "name": "removing a selected tab does not silently choose another value",
+            "ok": true
+          },
+          {
+            "name": "reinserting the selected tab restores its panel and indicator",
+            "ok": true
+          },
+          {
+            "name": "inset uses the shared outlined Group and button-sized indicator",
+            "ok": true
+          },
+          {
+            "name": "vertical layout separates tab choices along the block axis",
+            "ok": true
+          },
+          {
+            "name": "vertical primary indicator uses a 3px logical-start edge",
+            "ok": true
+          },
+          {
+            "name": "RTL vertical indicator remains at logical start",
+            "ok": true
+          },
+          {
+            "name": "disabled collection disables every native tab",
+            "ok": true
+          },
+          {
+            "name": "descendant value notifications do not impersonate a tab change",
+            "ok": true
+          },
+          {
+            "name": "explicit undefined clears selection after the initial default",
+            "ok": true
+          },
+          {
+            "name": "nested Tabs own their members without changing the outer value",
+            "ok": true
+          },
+          {
+            "name": "renderer-owned content retains its surrounding native form owner",
+            "ok": true
+          },
+          {
+            "name": "lazy mounting renders only the active template and keeps the source template intact",
+            "ok": true
+          },
+          {
+            "name": "unmount-on-exit removes renderer-owned content and renders the selected callback",
+            "ok": true
+          },
+          {
+            "name": "reactivation creates fresh template content without replacing the author template",
+            "ok": true
+          },
+          {
+            "name": "lazy content stays mounted after first entry when unmounting is off",
+            "ok": true
+          },
+          {
+            "name": "a canceled native click cannot commit manual selection",
+            "ok": true
+          },
+          {
+            "name": "disconnect and reconnect preserve the canonical value and ordinary content",
+            "ok": true
+          },
+          {
+            "name": "explicit tab naming reaches its native target",
+            "ok": true
+          },
+          {
+            "name": "focused offscreen tab scrolls into its own viewport",
+            "ok": true
+          },
+          {
+            "name": "the scrolling indicator canvas contains the selected paint",
+            "ok": true
+          },
+          {
+            "name": "automatic arrow navigation selects and reveals the next panel",
+            "ok": true
+          },
+          {
+            "name": "Home skips a disabled first tab",
+            "ok": true
+          },
+          {
+            "name": "manual End moves focus without selection",
+            "ok": true
+          },
+          {
+            "name": "native Space activates a manually focused tab",
+            "ok": true
+          },
+          {
+            "name": "accessibility exposes the named tablist and matching named active panel",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "omitted value chooses the first enabled tab once without a user event",
+            "ok": true
+          },
+          {
+            "name": "initial automatic selection immediately paints its indicator",
+            "ok": true
+          },
+          {
+            "name": "one selected native tab owns the matching visible panel",
+            "ok": true
+          },
+          {
+            "name": "native tab controls references its actual panel host",
+            "ok": true
+          },
+          {
+            "name": "programmatic changes stay silent and retain ordinary panel nodes",
+            "ok": true
+          },
+          {
+            "name": "primary indicator has the selected 3px height and at least 24px length",
+            "ok": true
+          },
+          {
+            "name": "user click emits one scalar notification",
+            "ok": true
+          },
+          {
+            "name": "manual focus does not select or move the semantic indicator target",
+            "ok": true
+          },
+          {
+            "name": "manual activation selects the focused tab",
+            "ok": true
+          },
+          {
+            "name": "removing a selected tab does not silently choose another value",
+            "ok": true
+          },
+          {
+            "name": "reinserting the selected tab restores its panel and indicator",
+            "ok": true
+          },
+          {
+            "name": "inset uses the shared outlined Group and button-sized indicator",
+            "ok": true
+          },
+          {
+            "name": "vertical layout separates tab choices along the block axis",
+            "ok": true
+          },
+          {
+            "name": "vertical primary indicator uses a 3px logical-start edge",
+            "ok": true
+          },
+          {
+            "name": "RTL vertical indicator remains at logical start",
+            "ok": true
+          },
+          {
+            "name": "disabled collection disables every native tab",
+            "ok": true
+          },
+          {
+            "name": "descendant value notifications do not impersonate a tab change",
+            "ok": true
+          },
+          {
+            "name": "explicit undefined clears selection after the initial default",
+            "ok": true
+          },
+          {
+            "name": "nested Tabs own their members without changing the outer value",
+            "ok": true
+          },
+          {
+            "name": "renderer-owned content retains its surrounding native form owner",
+            "ok": true
+          },
+          {
+            "name": "lazy mounting renders only the active template and keeps the source template intact",
+            "ok": true
+          },
+          {
+            "name": "unmount-on-exit removes renderer-owned content and renders the selected callback",
+            "ok": true
+          },
+          {
+            "name": "reactivation creates fresh template content without replacing the author template",
+            "ok": true
+          },
+          {
+            "name": "lazy content stays mounted after first entry when unmounting is off",
+            "ok": true
+          },
+          {
+            "name": "a canceled native click cannot commit manual selection",
+            "ok": true
+          },
+          {
+            "name": "disconnect and reconnect preserve the canonical value and ordinary content",
+            "ok": true
+          },
+          {
+            "name": "explicit tab naming reaches its native target",
+            "ok": true
+          },
+          {
+            "name": "focused offscreen tab scrolls into its own viewport",
+            "ok": true
+          },
+          {
+            "name": "the scrolling indicator canvas contains the selected paint",
+            "ok": true
+          },
+          {
+            "name": "automatic arrow navigation selects and reveals the next panel",
+            "ok": true
+          },
+          {
+            "name": "Home skips a disabled first tab",
+            "ok": true
+          },
+          {
+            "name": "manual End moves focus without selection",
+            "ok": true
+          },
+          {
+            "name": "native Space activates a manually focused tab",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "omitted value chooses the first enabled tab once without a user event",
+            "ok": true
+          },
+          {
+            "name": "initial automatic selection immediately paints its indicator",
+            "ok": true
+          },
+          {
+            "name": "one selected native tab owns the matching visible panel",
+            "ok": true
+          },
+          {
+            "name": "native tab controls references its actual panel host",
+            "ok": true
+          },
+          {
+            "name": "programmatic changes stay silent and retain ordinary panel nodes",
+            "ok": true
+          },
+          {
+            "name": "primary indicator has the selected 3px height and at least 24px length",
+            "ok": true
+          },
+          {
+            "name": "user click emits one scalar notification",
+            "ok": true
+          },
+          {
+            "name": "manual focus does not select or move the semantic indicator target",
+            "ok": true
+          },
+          {
+            "name": "manual activation selects the focused tab",
+            "ok": true
+          },
+          {
+            "name": "removing a selected tab does not silently choose another value",
+            "ok": true
+          },
+          {
+            "name": "reinserting the selected tab restores its panel and indicator",
+            "ok": true
+          },
+          {
+            "name": "inset uses the shared outlined Group and button-sized indicator",
+            "ok": true
+          },
+          {
+            "name": "vertical layout separates tab choices along the block axis",
+            "ok": true
+          },
+          {
+            "name": "vertical primary indicator uses a 3px logical-start edge",
+            "ok": true
+          },
+          {
+            "name": "RTL vertical indicator remains at logical start",
+            "ok": true
+          },
+          {
+            "name": "disabled collection disables every native tab",
+            "ok": true
+          },
+          {
+            "name": "descendant value notifications do not impersonate a tab change",
+            "ok": true
+          },
+          {
+            "name": "explicit undefined clears selection after the initial default",
+            "ok": true
+          },
+          {
+            "name": "nested Tabs own their members without changing the outer value",
+            "ok": true
+          },
+          {
+            "name": "renderer-owned content retains its surrounding native form owner",
+            "ok": true
+          },
+          {
+            "name": "lazy mounting renders only the active template and keeps the source template intact",
+            "ok": true
+          },
+          {
+            "name": "unmount-on-exit removes renderer-owned content and renders the selected callback",
+            "ok": true
+          },
+          {
+            "name": "reactivation creates fresh template content without replacing the author template",
+            "ok": true
+          },
+          {
+            "name": "lazy content stays mounted after first entry when unmounting is off",
+            "ok": true
+          },
+          {
+            "name": "a canceled native click cannot commit manual selection",
+            "ok": true
+          },
+          {
+            "name": "disconnect and reconnect preserve the canonical value and ordinary content",
+            "ok": true
+          },
+          {
+            "name": "explicit tab naming reaches its native target",
+            "ok": true
+          },
+          {
+            "name": "focused offscreen tab scrolls into its own viewport",
+            "ok": true
+          },
+          {
+            "name": "the scrolling indicator canvas contains the selected paint",
+            "ok": true
+          },
+          {
+            "name": "automatic arrow navigation selects and reveals the next panel",
+            "ok": true
+          },
+          {
+            "name": "Home skips a disabled first tab",
+            "ok": true
+          },
+          {
+            "name": "manual End moves focus without selection",
+            "ok": true
+          },
+          {
+            "name": "native Space activates a manually focused tab",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "verification": {
+    "typecheck": "870 files, zero errors",
+    "unit": "897 pass, zero fail across 137 files",
+    "build": "37,770 files; 119 compiled templates; 4,256 public elements",
+    "docs": "92 pages; zero undocumented elements; six live interactions per engine",
+    "native": "34 Chromium and 33 Firefox/WebKit checks in source and compiled definitions",
+    "contrast": "Both variants pass >=4.5:1 text and >=3:1 selected-indicator boundaries in light/dark across all engines"
+  },
+  "implementation": [
+    "One TanStack selected value and one-time first-enabled initialization; no child selected/tooltip/secondary aliases.",
+    "Native tab buttons, actual tablist and panel ElementInternals roles; panel labels refer to the public Tab host for cross-engine scope support. Native controls references resolve matching panel hosts.",
+    "Automatic/manual focus activation, Home/End, disabled/hidden navigation, RTL and one roving entry; nested values do not bubble as outer tab changes.",
+    "Primary geometry keeps the source 50px tab control and 24px gap, with the selected Material 3px indicator, 24px minimum length and 2px label inset. Panel separation retains 12px. Vertical placement is the approved logical-start house adaptation.",
+    "Inset composes the real Group, shared indicator and verified gray fill/outline treatment.",
+    "Ordinary children remain in place, hidden/inert when inactive. One inert HTML template or a pure renderContent callback supports lazyMount/unmountOnExit through a component-owned light-DOM container. Native surrounding form association is retained.",
+    "The indicator canvas uses the complete intrinsic scrolling width; viewport clipping must not shorten that canvas. Scroll offsets round outward to reveal fractional edges in WebKit."
+  ],
+  "limits": [
+    "M22 must implement React-owned child reconciliation and mount control using the canonical panel state; this native Lit/HTML renderer is not that React acceptance.",
+    "Actual speech output and final integrated browser/package checks remain M26."
+  ],
+  "sources": [
+    {
+      "file": "src/components/tabs/tabs.ts",
+      "sha256": "d40f2704b19557b6bece0d078ed1897e9cad5a0fb2161ee0aeb9f4dc7cf9554c"
+    },
+    {
+      "file": "src/components/tab/tab.ts",
+      "sha256": "a517cbefa475a050fe57b37b32d60be92e7c39a103f8566e509a070136278140"
+    },
+    {
+      "file": "src/components/tab-panel/tab-panel.ts",
+      "sha256": "e0ae2382ef2eb72c76e73dde764e68eeb83dab461893ab708a972498af2b0530"
+    },
+    {
+      "file": "src/shared/tab-parts.ts",
+      "sha256": "6b64e5e8805875e56532fa877a99df46e101b95acde0207910b35370b08bff22"
+    },
+    {
+      "file": "src/shared/semantic-element.ts",
+      "sha256": "26756d5d08bb9f37b9f763e5cfb69b26b69591774ad44da05cdef1b907094bfa"
+    },
+    {
+      "file": "src/shared/selection-member.ts",
+      "sha256": "7483b29b542f33fec6824569bddbf5cac004af6933a3c70e5cff31b2b60ad87d"
+    }
+  ],
+  "fixtures": [
+    {
+      "file": "probe.ts",
+      "source": "import {html} from '/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/index.js';\nimport {AcmeTabs} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/tabs/tabs';\nimport {AcmeTab} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/tab/tab';\nimport {AcmeTabPanel} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/tab-panel/tab-panel';\nimport {AcmeGroup} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/group/group';\nimport {AcmeSelectionIndicator} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/internal/selection-indicator/selection-indicator';\ncustomElements.define('acme-group',AcmeGroup);customElements.define('acme-selection-indicator',AcmeSelectionIndicator);customElements.define('acme-tab',AcmeTab);customElements.define('acme-tab-panel',AcmeTabPanel);customElements.define('acme-tabs',AcmeTabs);\nconst results:any[]=[];const check=(name:string,ok:boolean)=>results.push({name,ok});const wait=async(n=4)=>{while(n--)await new Promise(r=>requestAnimationFrame(r));};\nconst tabs=new AcmeTabs();tabs.ariaLabel='Account';tabs.innerHTML='<acme-tab id=\"disabled\" value=\"disabled\" disabled>Unavailable</acme-tab><acme-tab id=\"profile\" value=\"profile\">Profile</acme-tab><acme-tab id=\"settings\" value=\"settings\">Settings</acme-tab><acme-tab-panel id=\"profile-panel\" slot=\"panels\" value=\"profile\"><input value=\"Keep me\"></acme-tab-panel><acme-tab-panel id=\"settings-panel\" slot=\"panels\" value=\"settings\"><p>Settings content</p></acme-tab-panel>';document.body.append(tabs);const profile=tabs.querySelector<AcmeTab>('#profile')!,settings=tabs.querySelector<AcmeTab>('#settings')!,p1=tabs.querySelector<AcmeTabPanel>('#profile-panel')!,p2=tabs.querySelector<AcmeTabPanel>('#settings-panel')!;const button=(tab:AcmeTab)=>tab.shadowRoot!.querySelector('button')!;const indicator=()=>tabs.shadowRoot!.querySelector('acme-selection-indicator')!;const settle=async()=>{await wait();for(let n=0;n<180&&indicator().isAnimating;n++)await wait(1);await wait();};let events:any[]=[];tabs.addEventListener('acme-change',event=>events.push((event as CustomEvent).detail));\ntry{\nawait wait();check('omitted value chooses the first enabled tab once without a user event',tabs.value==='profile'&&events.length===0);check('initial automatic selection immediately paints its indicator',!indicator().shadowRoot!.querySelector<HTMLElement>('[part=paint]')!.hidden);check('one selected native tab owns the matching visible panel',button(profile).getAttribute('aria-selected')==='true'&&button(settings).getAttribute('aria-selected')==='false'&&!p1.hidden&&!p1.inert&&p2.hidden&&p2.inert);check('native tab controls references its actual panel host',button(profile).ariaControlsElements?.[0]===p1);const input=p1.querySelector('input')!;input.value='Preserve this edit';\ntabs.value='settings';await settle();check('programmatic changes stay silent and retain ordinary panel nodes',events.length===0&&p1.hidden&&!p2.hidden&&p1.querySelector('input')===input&&input.value==='Preserve this edit');check('primary indicator has the selected 3px height and at least 24px length',Math.abs(indicator().shadowRoot!.querySelector('[part=paint]')!.getBoundingClientRect().height-3)<.1&&indicator().shadowRoot!.querySelector('[part=paint]')!.getBoundingClientRect().width>=24);\nprofile.click();await settle();check('user click emits one scalar notification',tabs.value==='profile'&&events.length===1&&events[0].value==='profile');tabs.activation='manual';settings.focus();await wait();check('manual focus does not select or move the semantic indicator target',tabs.value==='profile'&&button(settings)===settings.shadowRoot!.activeElement);settings.click();await settle();check('manual activation selects the focused tab',tabs.value==='settings'&&!p2.hidden);\nsettings.remove();await wait();check('removing a selected tab does not silently choose another value',tabs.value==='settings'&&p1.hidden&&p2.hidden);tabs.insertBefore(settings,p1);await settle();check('reinserting the selected tab restores its panel and indicator',!p2.hidden&&indicator().target===button(settings).querySelector('[part=label]'));\ntabs.variant='inset';await settle();check('inset uses the shared outlined Group and button-sized indicator',getComputedStyle(tabs.shadowRoot!.querySelector('acme-group')!).borderTopWidth==='1px'&&indicator().target===button(settings)&&Math.abs(indicator().shadowRoot!.querySelector('[part=paint]')!.getBoundingClientRect().height-button(settings).getBoundingClientRect().height)<.1);\ntabs.orientation='vertical';await settle();check('vertical layout separates tab choices along the block axis',button(settings).getBoundingClientRect().top>button(profile).getBoundingClientRect().top);tabs.variant='primary';await settle();check('vertical primary indicator uses a 3px logical-start edge',Math.abs(indicator().shadowRoot!.querySelector('[part=paint]')!.getBoundingClientRect().width-3)<.1);tabs.dir='rtl';await settle();check('RTL vertical indicator remains at logical start',Math.abs(indicator().shadowRoot!.querySelector('[part=paint]')!.getBoundingClientRect().right-indicator().getBoundingClientRect().right)<.6);\ntabs.disabled=true;await wait();check('disabled collection disables every native tab',button(profile).disabled&&button(settings).disabled);tabs.disabled=false;tabs.orientation='horizontal';tabs.dir='ltr';tabs.activation='automatic';tabs.value='profile';await settle();\nconst previousEvents=events.length;p1.dispatchEvent(new CustomEvent('acme-change',{detail:{value:'field-value'},bubbles:true,composed:true}));check('descendant value notifications do not impersonate a tab change',events.length===previousEvents);\nconst beforeClear=tabs.value;tabs.value=undefined;await wait();check('explicit undefined clears selection after the initial default',p1.hidden&&p2.hidden&&tabs.value===undefined);tabs.value=beforeClear;await wait();\nconst nested=new AcmeTabs();nested.innerHTML='<acme-tab value=\"inner\">Inner</acme-tab><acme-tab-panel slot=\"panels\" value=\"inner\">Nested content</acme-tab-panel>';p1.append(nested);await wait();check('nested Tabs own their members without changing the outer value',nested.value==='inner'&&tabs.value==='profile');\nconst lazy=new AcmeTabs();lazy.lazyMount=true;lazy.unmountOnExit=true;lazy.ariaLabel='Lazy tabs';lazy.innerHTML='<acme-tab value=\"one\">One</acme-tab><acme-tab value=\"two\">Two</acme-tab><acme-tab-panel slot=\"panels\" value=\"one\"><template><input value=\"Template value\"></template></acme-tab-panel><acme-tab-panel slot=\"panels\" value=\"two\"></acme-tab-panel>';const [lp1,lp2]=[...lazy.querySelectorAll('acme-tab-panel')];let renders=0;lp2.renderContent=()=>{renders++;return html`<button>Callback content</button>`;};const form=document.createElement('form');form.append(lazy);document.body.append(form);await wait();const managedInput=lp1.querySelector<HTMLInputElement>('[data-acme-panel-content] input')!;managedInput.name='mounted';check('renderer-owned content retains its surrounding native form owner',managedInput.form===form&&new FormData(form).get('mounted')==='Template value');check('lazy mounting renders only the active template and keeps the source template intact',!!lp1.querySelector('[data-acme-panel-content] input')&&!lp2.querySelector('[data-acme-panel-content] button')&&renders===0&&!!lp1.querySelector('template')!.content.querySelector('input'));lazy.value='two';await wait();check('unmount-on-exit removes renderer-owned content and renders the selected callback',!lp1.querySelector('[data-acme-panel-content] input')&&!!lp2.querySelector('[data-acme-panel-content] button')&&renders>0);lazy.value='one';await wait();check('reactivation creates fresh template content without replacing the author template',!!lp1.querySelector('[data-acme-panel-content] input')&&!lp2.querySelector('[data-acme-panel-content] button')&&!!lp1.querySelector('template'));\nlazy.unmountOnExit=false;lazy.value='two';await wait();lazy.value='one';await wait();const retained=lp1.querySelector<HTMLInputElement>('[data-acme-panel-content] input')!;retained.value='Retained';lazy.value='two';await wait();check('lazy content stays mounted after first entry when unmounting is off',lp1.querySelector('input')===retained&&retained.value==='Retained');\ntabs.activation='manual';tabs.value='profile';const cancel=(event:Event)=>event.preventDefault();settings.addEventListener('click',cancel);settings.click();await wait();check('a canceled native click cannot commit manual selection',tabs.value==='profile');settings.removeEventListener('click',cancel);\ntabs.remove();document.body.prepend(tabs);await wait();check('disconnect and reconnect preserve the canonical value and ordinary content',tabs.value==='profile'&&p1.querySelector('input')===input&&!p1.hidden);\nprofile.ariaLabel='Personal profile';await wait();check('explicit tab naming reaches its native target',button(profile).getAttribute('aria-label')==='Personal profile');profile.ariaLabel=null;\nconst overflow=new AcmeTabs();overflow.style.width='150px';overflow.ariaLabel='Overflow';for(let i=0;i<6;i++){const tab=new AcmeTab();tab.value='tab-'+i;tab.textContent='Long label '+i;overflow.append(tab);}document.body.append(overflow);await wait();const last=overflow.querySelector('acme-tab:last-child') as AcmeTab;overflow.activation='automatic';last.focus();await wait();const viewport=overflow.shadowRoot!.querySelector('[part=list]')!.getBoundingClientRect(),lastBox=button(last).getBoundingClientRect();check('focused offscreen tab scrolls into its own viewport',lastBox.right<=viewport.right+.6&&lastBox.left>=viewport.left-.6);if(!(lastBox.right<=viewport.right+.6&&lastBox.left>=viewport.left-.6))(window as any).__overflow={viewport:viewport.toJSON(),last:lastBox.toJSON(),scroll:overflow.shadowRoot!.querySelector('[part=list]')!.scrollLeft};const overflowIndicator=overflow.shadowRoot!.querySelector('acme-selection-indicator')!;for(let n=0;n<180&&overflowIndicator.isAnimating;n++)await wait(1);await wait();const canvas=overflowIndicator.getBoundingClientRect(),paint=overflowIndicator.shadowRoot!.querySelector('[part=paint]')!.getBoundingClientRect();check('the scrolling indicator canvas contains the selected paint',paint.left>=canvas.left-.6&&paint.right<=canvas.right+.6);\ntabs.activation='automatic';tabs.value='profile';await settle();\n(window as any).__test={tabs,profile,settings,p1,p2,button,indicator,wait,settle,events,lazy,overflow};\n}catch(error){(window as any).__error=String(error);}\n(window as any).__results={results,error:(window as any).__error,overflow:(window as any).__overflow};\n"
+    },
+    {
+      "file": "run.ts",
+      "source": "import fs from 'node:fs';\nconst directory='/tmp/acme-m10-tabs',root='/Users/peterkloss/Dev/ACMElabs/design-system';\nconst built=await Bun.build({entrypoints:[directory+'/probe.ts'],outdir:directory+'/bundle',target:'browser',format:'esm',splitting:true});if(!built.success)throw new AggregateError(built.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';\nconst pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');\nconst server=Bun.serve({port:0,hostname:'127.0.0.1',fetch(req){const url=new URL(req.url);if(url.pathname==='/tokens.css')return new Response(Bun.file(root+'/src/generated/css/document/tokens.css'),{headers:{'Content-Type':'text/css'}});if(url.pathname.endsWith('.js'))return new Response(Bun.file(directory+'/bundle'+url.pathname),{headers:{'Content-Type':'text/javascript'}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{'Content-Type':'text/html'}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});try{const page=await browser.newPage();page.on('pageerror',e=>{console.log('PAGEERROR',e.stack);report.errors.push({engine,message:e.message});});await page.goto(server.url.href);await page.waitForFunction(()=>window.__results,{},{timeout:60000});const data=await page.evaluate(()=>window.__results);if(!data.error){await page.locator('#profile').press('ArrowRight');await page.evaluate(()=>window.__test.settle());data.results.push({name:'automatic arrow navigation selects and reveals the next panel',ok:await page.evaluate(()=>window.__test.tabs.value==='settings'&&!window.__test.p2.hidden)});await page.locator('#settings').press('Home');data.results.push({name:'Home skips a disabled first tab',ok:await page.evaluate(()=>window.__test.tabs.value==='profile')});await page.evaluate(()=>window.__test.tabs.activation='manual');await page.locator('#profile').press('End');data.results.push({name:'manual End moves focus without selection',ok:await page.evaluate(()=>window.__test.tabs.value==='profile'&&window.__test.settings.shadowRoot.activeElement===window.__test.button(window.__test.settings))});await page.locator('#settings').press('Space');data.results.push({name:'native Space activates a manually focused tab',ok:await page.evaluate(()=>window.__test.tabs.value==='settings')});if(engine==='chromium'){const session=await page.context().newCDPSession(page);const tree=await session.send('Accessibility.getFullAXTree');data.results.push({name:'accessibility exposes the named tablist and matching named active panel',ok:tree.nodes.some(n=>n.role?.value==='tablist'&&n.name?.value==='Account')&&tree.nodes.some(n=>n.role?.value==='tabpanel'&&n.name?.value==='Settings')});await page.screenshot({path:directory+'/tabs.png'});}}if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(r=>r.ok).length,total:data.results.length,failed:data.results.filter(r=>!r.ok),error:data.error});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+'/results.json',JSON.stringify(report,null,2)+'\\n');if(report.errors.length||report.engines.some(e=>e.results.length!==(e.engine==='chromium'?34:33)||e.results.some(r=>!r.ok)))process.exitCode=1;\n"
+    },
+    {
+      "file": "docs-check.ts",
+      "source": "process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');const results=[];\nfor(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});try{const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:4180/components/tabs');const automatic=page.locator('#tabs-auto');await automatic.locator('acme-tab[value=settings]').click();const selected=await automatic.evaluate(el=>el.value==='settings'&&!el.querySelector('acme-tab-panel[value=settings]').hidden);const manual=page.locator('#tabs-manual');await manual.locator('acme-tab[value=overview]').focus();await manual.locator('acme-tab[value=overview]').press('ArrowRight');const focused=await manual.evaluate(el=>el.value==='overview');await manual.locator('acme-tab[value=settings]').press('Space');const activated=await manual.evaluate(el=>el.value==='settings');const vertical=page.locator('#tabs-vertical');await vertical.locator('acme-tab[value=overview]').press('ArrowDown');const moved=await vertical.evaluate(el=>el.value==='settings');const lazy=page.locator('#tabs-lazy');const input=lazy.locator('[data-acme-panel-content] input');await input.fill('An edited draft');await lazy.locator('acme-tab[value=second]').click();const unmounted=await input.count()===0;await lazy.locator('acme-tab[value=first]').click();await input.waitFor();const recreated=await input.inputValue()==='Fresh draft';results.push({engine,selected,focused,activated,moved,unmounted,recreated,errors});console.log(results.at(-1));if(engine==='chromium')await page.locator('#tabs-inset').screenshot({path:'/tmp/acme-m10-tabs/docs-inset.png'});}finally{await browser.close();}}\nawait Bun.write('/tmp/acme-m10-tabs/docs-results.json',JSON.stringify(results,null,2)+'\\n');if(results.some(r=>!r.selected||!r.focused||!r.activated||!r.moved||!r.unmounted||!r.recreated||r.errors.length))process.exitCode=1;\n"
+    },
+    {
+      "file": "contrast.ts",
+      "source": "process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');const results=[];\nfor(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});try{const page=await browser.newPage();for(const scheme of ['light','dark']){await page.emulateMedia({colorScheme:scheme});await page.goto('http://127.0.0.1:4180/components/tabs');await page.locator('#tabs-auto').waitFor();for(const id of ['tabs-auto','tabs-inset']){const measurement=await page.locator('#'+id).evaluate(root=>{const canvas=document.createElement('canvas').getContext('2d');const luminance=color=>{canvas.clearRect(0,0,1,1);canvas.fillStyle=color;canvas.fillRect(0,0,1,1);const rgba=canvas.getImageData(0,0,1,1).data,a=[rgba[0],rgba[1],rgba[2]].map(v=>v/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return a[0]*.2126+a[1]*.7152+a[2]*.0722;};const contrast=(a,b)=>{const x=[luminance(a),luminance(b)].sort((a,b)=>b-a);return(x[0]+.05)/(x[1]+.05);};const indicator=root.shadowRoot.querySelector('acme-selection-indicator'),paint=indicator.shadowRoot.querySelector('[part=paint]'),button=[...root.querySelectorAll('acme-tab')].find(tab=>tab.value===root.value).shadowRoot.querySelector('button'),style=getComputedStyle(paint),fill=style.backgroundColor,background=getComputedStyle(document.body).backgroundColor,text=getComputedStyle(button).color;const outline=style.boxShadow.match(/rgba?\\([^)]+\\)/)?.[0];return {text:contrast(text,root.variant==='inset'?fill:background),indicator:contrast(outline??fill,background),inner:outline?contrast(outline,fill):undefined};});results.push({engine,scheme,id,...measurement});}}console.log(results.filter(r=>r.engine===engine));}finally{await browser.close();}}\nawait Bun.write('/tmp/acme-m10-tabs/contrast-results.json',JSON.stringify(results,null,2)+'\\n');if(results.some(r=>r.text<4.5||r.indicator<3||(r.inner!==undefined&&r.inner<3)))process.exitCode=1;\n"
+    }
+  ],
+  "completedDate": "2026-09-22",
+  "compiled": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "omitted value chooses the first enabled tab once without a user event",
+            "ok": true
+          },
+          {
+            "name": "initial automatic selection immediately paints its indicator",
+            "ok": true
+          },
+          {
+            "name": "one selected native tab owns the matching visible panel",
+            "ok": true
+          },
+          {
+            "name": "native tab controls references its actual panel host",
+            "ok": true
+          },
+          {
+            "name": "programmatic changes stay silent and retain ordinary panel nodes",
+            "ok": true
+          },
+          {
+            "name": "primary indicator has the selected 3px height and at least 24px length",
+            "ok": true
+          },
+          {
+            "name": "user click emits one scalar notification",
+            "ok": true
+          },
+          {
+            "name": "manual focus does not select or move the semantic indicator target",
+            "ok": true
+          },
+          {
+            "name": "manual activation selects the focused tab",
+            "ok": true
+          },
+          {
+            "name": "removing a selected tab does not silently choose another value",
+            "ok": true
+          },
+          {
+            "name": "reinserting the selected tab restores its panel and indicator",
+            "ok": true
+          },
+          {
+            "name": "inset uses the shared outlined Group and button-sized indicator",
+            "ok": true
+          },
+          {
+            "name": "vertical layout separates tab choices along the block axis",
+            "ok": true
+          },
+          {
+            "name": "vertical primary indicator uses a 3px logical-start edge",
+            "ok": true
+          },
+          {
+            "name": "RTL vertical indicator remains at logical start",
+            "ok": true
+          },
+          {
+            "name": "disabled collection disables every native tab",
+            "ok": true
+          },
+          {
+            "name": "descendant value notifications do not impersonate a tab change",
+            "ok": true
+          },
+          {
+            "name": "explicit undefined clears selection after the initial default",
+            "ok": true
+          },
+          {
+            "name": "nested Tabs own their members without changing the outer value",
+            "ok": true
+          },
+          {
+            "name": "renderer-owned content retains its surrounding native form owner",
+            "ok": true
+          },
+          {
+            "name": "lazy mounting renders only the active template and keeps the source template intact",
+            "ok": true
+          },
+          {
+            "name": "unmount-on-exit removes renderer-owned content and renders the selected callback",
+            "ok": true
+          },
+          {
+            "name": "reactivation creates fresh template content without replacing the author template",
+            "ok": true
+          },
+          {
+            "name": "lazy content stays mounted after first entry when unmounting is off",
+            "ok": true
+          },
+          {
+            "name": "a canceled native click cannot commit manual selection",
+            "ok": true
+          },
+          {
+            "name": "disconnect and reconnect preserve the canonical value and ordinary content",
+            "ok": true
+          },
+          {
+            "name": "explicit tab naming reaches its native target",
+            "ok": true
+          },
+          {
+            "name": "focused offscreen tab scrolls into its own viewport",
+            "ok": true
+          },
+          {
+            "name": "the scrolling indicator canvas contains the selected paint",
+            "ok": true
+          },
+          {
+            "name": "automatic arrow navigation selects and reveals the next panel",
+            "ok": true
+          },
+          {
+            "name": "Home skips a disabled first tab",
+            "ok": true
+          },
+          {
+            "name": "manual End moves focus without selection",
+            "ok": true
+          },
+          {
+            "name": "native Space activates a manually focused tab",
+            "ok": true
+          },
+          {
+            "name": "accessibility exposes the named tablist and matching named active panel",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "omitted value chooses the first enabled tab once without a user event",
+            "ok": true
+          },
+          {
+            "name": "initial automatic selection immediately paints its indicator",
+            "ok": true
+          },
+          {
+            "name": "one selected native tab owns the matching visible panel",
+            "ok": true
+          },
+          {
+            "name": "native tab controls references its actual panel host",
+            "ok": true
+          },
+          {
+            "name": "programmatic changes stay silent and retain ordinary panel nodes",
+            "ok": true
+          },
+          {
+            "name": "primary indicator has the selected 3px height and at least 24px length",
+            "ok": true
+          },
+          {
+            "name": "user click emits one scalar notification",
+            "ok": true
+          },
+          {
+            "name": "manual focus does not select or move the semantic indicator target",
+            "ok": true
+          },
+          {
+            "name": "manual activation selects the focused tab",
+            "ok": true
+          },
+          {
+            "name": "removing a selected tab does not silently choose another value",
+            "ok": true
+          },
+          {
+            "name": "reinserting the selected tab restores its panel and indicator",
+            "ok": true
+          },
+          {
+            "name": "inset uses the shared outlined Group and button-sized indicator",
+            "ok": true
+          },
+          {
+            "name": "vertical layout separates tab choices along the block axis",
+            "ok": true
+          },
+          {
+            "name": "vertical primary indicator uses a 3px logical-start edge",
+            "ok": true
+          },
+          {
+            "name": "RTL vertical indicator remains at logical start",
+            "ok": true
+          },
+          {
+            "name": "disabled collection disables every native tab",
+            "ok": true
+          },
+          {
+            "name": "descendant value notifications do not impersonate a tab change",
+            "ok": true
+          },
+          {
+            "name": "explicit undefined clears selection after the initial default",
+            "ok": true
+          },
+          {
+            "name": "nested Tabs own their members without changing the outer value",
+            "ok": true
+          },
+          {
+            "name": "renderer-owned content retains its surrounding native form owner",
+            "ok": true
+          },
+          {
+            "name": "lazy mounting renders only the active template and keeps the source template intact",
+            "ok": true
+          },
+          {
+            "name": "unmount-on-exit removes renderer-owned content and renders the selected callback",
+            "ok": true
+          },
+          {
+            "name": "reactivation creates fresh template content without replacing the author template",
+            "ok": true
+          },
+          {
+            "name": "lazy content stays mounted after first entry when unmounting is off",
+            "ok": true
+          },
+          {
+            "name": "a canceled native click cannot commit manual selection",
+            "ok": true
+          },
+          {
+            "name": "disconnect and reconnect preserve the canonical value and ordinary content",
+            "ok": true
+          },
+          {
+            "name": "explicit tab naming reaches its native target",
+            "ok": true
+          },
+          {
+            "name": "focused offscreen tab scrolls into its own viewport",
+            "ok": true
+          },
+          {
+            "name": "the scrolling indicator canvas contains the selected paint",
+            "ok": true
+          },
+          {
+            "name": "automatic arrow navigation selects and reveals the next panel",
+            "ok": true
+          },
+          {
+            "name": "Home skips a disabled first tab",
+            "ok": true
+          },
+          {
+            "name": "manual End moves focus without selection",
+            "ok": true
+          },
+          {
+            "name": "native Space activates a manually focused tab",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "omitted value chooses the first enabled tab once without a user event",
+            "ok": true
+          },
+          {
+            "name": "initial automatic selection immediately paints its indicator",
+            "ok": true
+          },
+          {
+            "name": "one selected native tab owns the matching visible panel",
+            "ok": true
+          },
+          {
+            "name": "native tab controls references its actual panel host",
+            "ok": true
+          },
+          {
+            "name": "programmatic changes stay silent and retain ordinary panel nodes",
+            "ok": true
+          },
+          {
+            "name": "primary indicator has the selected 3px height and at least 24px length",
+            "ok": true
+          },
+          {
+            "name": "user click emits one scalar notification",
+            "ok": true
+          },
+          {
+            "name": "manual focus does not select or move the semantic indicator target",
+            "ok": true
+          },
+          {
+            "name": "manual activation selects the focused tab",
+            "ok": true
+          },
+          {
+            "name": "removing a selected tab does not silently choose another value",
+            "ok": true
+          },
+          {
+            "name": "reinserting the selected tab restores its panel and indicator",
+            "ok": true
+          },
+          {
+            "name": "inset uses the shared outlined Group and button-sized indicator",
+            "ok": true
+          },
+          {
+            "name": "vertical layout separates tab choices along the block axis",
+            "ok": true
+          },
+          {
+            "name": "vertical primary indicator uses a 3px logical-start edge",
+            "ok": true
+          },
+          {
+            "name": "RTL vertical indicator remains at logical start",
+            "ok": true
+          },
+          {
+            "name": "disabled collection disables every native tab",
+            "ok": true
+          },
+          {
+            "name": "descendant value notifications do not impersonate a tab change",
+            "ok": true
+          },
+          {
+            "name": "explicit undefined clears selection after the initial default",
+            "ok": true
+          },
+          {
+            "name": "nested Tabs own their members without changing the outer value",
+            "ok": true
+          },
+          {
+            "name": "renderer-owned content retains its surrounding native form owner",
+            "ok": true
+          },
+          {
+            "name": "lazy mounting renders only the active template and keeps the source template intact",
+            "ok": true
+          },
+          {
+            "name": "unmount-on-exit removes renderer-owned content and renders the selected callback",
+            "ok": true
+          },
+          {
+            "name": "reactivation creates fresh template content without replacing the author template",
+            "ok": true
+          },
+          {
+            "name": "lazy content stays mounted after first entry when unmounting is off",
+            "ok": true
+          },
+          {
+            "name": "a canceled native click cannot commit manual selection",
+            "ok": true
+          },
+          {
+            "name": "disconnect and reconnect preserve the canonical value and ordinary content",
+            "ok": true
+          },
+          {
+            "name": "explicit tab naming reaches its native target",
+            "ok": true
+          },
+          {
+            "name": "focused offscreen tab scrolls into its own viewport",
+            "ok": true
+          },
+          {
+            "name": "the scrolling indicator canvas contains the selected paint",
+            "ok": true
+          },
+          {
+            "name": "automatic arrow navigation selects and reveals the next panel",
+            "ok": true
+          },
+          {
+            "name": "Home skips a disabled first tab",
+            "ok": true
+          },
+          {
+            "name": "manual End moves focus without selection",
+            "ok": true
+          },
+          {
+            "name": "native Space activates a manually focused tab",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "docs": [
+    {
+      "engine": "chromium",
+      "selected": true,
+      "focused": true,
+      "activated": true,
+      "moved": true,
+      "unmounted": true,
+      "recreated": true,
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "selected": true,
+      "focused": true,
+      "activated": true,
+      "moved": true,
+      "unmounted": true,
+      "recreated": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "selected": true,
+      "focused": true,
+      "activated": true,
+      "moved": true,
+      "unmounted": true,
+      "recreated": true,
+      "errors": []
+    }
+  ],
+  "contrast": [
+    {
+      "engine": "chromium",
+      "scheme": "light",
+      "id": "tabs-auto",
+      "text": 5.3149301900426575,
+      "indicator": 4.444030652517849
+    },
+    {
+      "engine": "chromium",
+      "scheme": "light",
+      "id": "tabs-inset",
+      "text": 15.038382524280774,
+      "indicator": 4.116376044741373,
+      "inner": 3.452933353985713
+    },
+    {
+      "engine": "chromium",
+      "scheme": "dark",
+      "id": "tabs-auto",
+      "text": 7.92286001304963,
+      "indicator": 4.454997559323268
+    },
+    {
+      "engine": "chromium",
+      "scheme": "dark",
+      "id": "tabs-inset",
+      "text": 14.079182164954604,
+      "indicator": 4.809605705440039,
+      "inner": 4.004244825101832
+    },
+    {
+      "engine": "firefox",
+      "scheme": "light",
+      "id": "tabs-auto",
+      "text": 5.3149301900426575,
+      "indicator": 4.444030652517849
+    },
+    {
+      "engine": "firefox",
+      "scheme": "light",
+      "id": "tabs-inset",
+      "text": 15.038382524280774,
+      "indicator": 4.116376044741373,
+      "inner": 3.452933353985713
+    },
+    {
+      "engine": "firefox",
+      "scheme": "dark",
+      "id": "tabs-auto",
+      "text": 7.92286001304963,
+      "indicator": 4.454997559323268
+    },
+    {
+      "engine": "firefox",
+      "scheme": "dark",
+      "id": "tabs-inset",
+      "text": 14.079182164954604,
+      "indicator": 4.809605705440039,
+      "inner": 4.004244825101832
+    },
+    {
+      "engine": "webkit",
+      "scheme": "light",
+      "id": "tabs-auto",
+      "text": 5.358448884133728,
+      "indicator": 4.618350489637076
+    },
+    {
+      "engine": "webkit",
+      "scheme": "light",
+      "id": "tabs-inset",
+      "text": 15.038382524280774,
+      "indicator": 4.116376044741373,
+      "inner": 3.452933353985713
+    },
+    {
+      "engine": "webkit",
+      "scheme": "dark",
+      "id": "tabs-auto",
+      "text": 7.8372103532041555,
+      "indicator": 4.3947391797655095
+    },
+    {
+      "engine": "webkit",
+      "scheme": "dark",
+      "id": "tabs-inset",
+      "text": 14.079182164954604,
+      "indicator": 4.809605705440039,
+      "inner": 4.004244825101832
+    }
+  ],
+  "metadata": [
+    {
+      "name": "Tabs declares only primary/inset",
+      "ok": true
+    },
+    {
+      "name": "Tab selection and private queries are not public properties",
+      "ok": true
+    },
+    {
+      "name": "Panel renderer is property-only and mounting state is private",
+      "ok": true
+    },
+    {
+      "name": "Tabs has no native form submission properties",
+      "ok": true
+    }
+  ],
+  "failuresFixed": [
+    "The scrolling indicator canvas initially matched the viewport width instead of the full intrinsic tab content.",
+    "WebKit rounded a fractional scroll delta and left a 0.65625px trailing edge; outward rounding reveals the complete edge.",
+    "A newly created native tab target did not invalidate the root renderer after initial selection. Explicit part notifications now schedule that update, and startup paint has a regression check."
+  ]
+}

@@ -1,0 +1,483 @@
+{
+  "version": "0.2.0",
+  "kind": "component",
+  "id": "acme-table",
+  "title": "acme-table",
+  "text": "# acme-table\n\nA styled native table with application-owned content, interactions and data.\n\n## `<acme-table>`\n\nStyles and scrolls one author-owned native table. Data and interactions belong to the application.\n\nVersion: 0.2.0\nSource: src/components/table/table.ts\n\n### Attributes and properties\n\n| Attribute | Property | Type | Default | Access | Inherited from | Description |\n|---|---|---|---|---|---|---|\n| ` variant ` | ` variant ` | ` \"default\" \\| \"striped\" \\| \"bordered\" ` | ` \"default\" ` | Set | ` — ` |  |\n| ` size ` | ` size ` | ` \"small\" \\| \"medium\" \\| \"large\" ` | ` \"medium\" ` | Set | ` — ` |  |\n| ` sticky-header ` | ` stickyHeader ` | ` boolean ` | ` false ` | Set | ` — ` |  |\n| ` loading ` | ` loading ` | ` boolean ` | ` false ` | Set | ` — ` |  |\n| ` role ` | ` role ` | ` string \\| null ` | ` — ` | Set | ` AcmeSemanticElement ` |  |\n| ` aria-label ` | ` ariaLabel ` | ` string \\| null ` | ` — ` | Set | ` AcmeSemanticElement ` |  |\n| ` aria-haspopup ` | ` ariaHasPopup ` | ` string \\| null ` | ` — ` | Set | ` AcmeSemanticElement ` |  |\n| ` aria-expanded ` | ` ariaExpanded ` | ` string \\| null ` | ` — ` | Set | ` AcmeSemanticElement ` |  |\n| ` aria-autocomplete ` | ` ariaAutoComplete ` | ` string \\| null ` | ` — ` | Set | ` AcmeSemanticElement ` |  |\n| ` — ` | ` ariaActiveDescendantElement ` | ` Element \\| null ` | ` — ` | Set | ` AcmeSemanticElement ` |  |\n| ` — ` | ` ariaControlsElements ` | ` Element[] \\| null ` | ` — ` | Set | ` AcmeSemanticElement ` |  |\n| ` — ` | ` ariaLabelledByElements ` | ` Element[] \\| null ` | ` — ` | Set | ` AcmeSemanticElement ` |  |\n| ` — ` | ` ariaDescribedByElements ` | ` Element[] \\| null ` | ` — ` | Set | ` AcmeSemanticElement ` |  |\n\n### Additional attributes\n\n| Attribute | Type | Default | Description |\n|---|---|---|---|\n| ` aria-labelledby ` | ` string ` | ` — ` | IDs in the author's tree scope that label the native root. |\n| ` aria-describedby ` | ` string ` | ` — ` | IDs in the author's tree scope that describe the native root. |\n| ` aria-controls ` | ` string ` | ` — ` | IDs in the author's tree scope controlled by the native root. |\n| ` aria-activedescendant ` | ` string ` | ` — ` | ID of the active item in the author's scope. |\n\n### Methods\n\n| Signature | Inherited from | Description |\n|---|---|---|\n| ` getScrollElement(): HTMLElement ` | ` — ` | Returns the stable native element used by a consumer virtualizer. |\n| ` getTableElement(): HTMLTableElement \\| null ` | ` — ` | Returns the application's direct native table without changing its ownership. |\n| ` getAttribute(name: string): string \\| null ` | ` AcmeSemanticElement ` |  |\n| ` hasAttribute(name: string): boolean ` | ` AcmeSemanticElement ` |  |\n| ` removeAttribute(name: string): void ` | ` AcmeSemanticElement ` |  |\n| ` toggleAttribute(name: string, force?: boolean): boolean ` | ` AcmeSemanticElement ` |  |\n\n### Slots\n\n| Name | Description |\n|---|---|\n| ` (default) ` | One native table, with native caption, sections, rows and cells. |\n\n### CSS parts\n\n| Part | Description |\n|---|---|\n| ` root ` | Stable outer box. |\n| ` viewport ` | Native scrolling viewport. |\n\n### CSS custom properties\n\n| Property | Default | Description |\n|---|---|---|\n| ` --acme-table-max-height ` | ` — ` | Optional maximum viewport block size. |\n| ` --acme-table-column-width ` | ` — ` | Measured width assigned to a native column or cell. |\n| ` --acme-table-row-height ` | ` — ` | Optional native row block size. |\n| ` --acme-table-sticky-block-start ` | ` — ` | Sticky header or pinned-row offset. |\n| ` --acme-table-sticky-block-end ` | ` — ` | Pinned footer-row offset. |\n| ` --acme-table-sticky-inline-start ` | ` — ` | Pinned start-column offset. |\n| ` --acme-table-sticky-inline-end ` | ` — ` | Pinned end-column offset. |\n| ` --acme-table-spacer-height ` | ` — ` | Virtual spacer-row block size. |\n\n## Best Practices\n\n**Content**\n\n- Supply one native table with its caption, sections, rows and cells. Lit or React retains ownership of those nodes.\n- getTableElement() returns that table. getScrollElement() returns the stable native viewport for application scrolling and virtualization.\n- Use native span attributes, aria-sort, headers, scope, row/column counts and indices where appropriate. Sorting and interactive grid keyboard behavior belong to the application.\n\n**Styling**\n\n- variant is default, striped or bordered. size is small, medium or large. Theme density controls the dedicated Table padding tokens.\n- Native cells can use data-pinned=start/end with logical sticky offset CSS properties. Pinned rows use data-pinned=top/bottom.\n- Use aria-selected for selected row/cell presentation, data-range-start/end/top/bottom for range borders and data-acme-table-part=spacer with --acme-table-spacer-height for virtual spacers.\n- No custom row or cell wrapper is needed. Generated light-DOM styles are installed in the table host’s actual document or shadow root.\n\n**Ownership**\n\n- The application creates its TanStack Table and TanStack Virtual instances, renders their final row/column models and retains refs for measurement and focus.\n- loading changes aria-busy only. Supply application-owned loading, empty, error and recovery content.\n",
+  "frameworks": [
+    "html",
+    "lit",
+    "react"
+  ],
+  "declaration": {
+    "kind": "class",
+    "description": "Styles and scrolls one author-owned native table. Data and interactions belong to the application.",
+    "name": "AcmeTable",
+    "cssProperties": [
+      {
+        "description": "Optional maximum viewport block size.",
+        "name": "--acme-table-max-height"
+      },
+      {
+        "description": "Measured width assigned to a native column or cell.",
+        "name": "--acme-table-column-width"
+      },
+      {
+        "description": "Optional native row block size.",
+        "name": "--acme-table-row-height"
+      },
+      {
+        "description": "Sticky header or pinned-row offset.",
+        "name": "--acme-table-sticky-block-start"
+      },
+      {
+        "description": "Pinned footer-row offset.",
+        "name": "--acme-table-sticky-block-end"
+      },
+      {
+        "description": "Pinned start-column offset.",
+        "name": "--acme-table-sticky-inline-start"
+      },
+      {
+        "description": "Pinned end-column offset.",
+        "name": "--acme-table-sticky-inline-end"
+      },
+      {
+        "description": "Virtual spacer-row block size.",
+        "name": "--acme-table-spacer-height"
+      }
+    ],
+    "cssParts": [
+      {
+        "description": "Stable outer box.",
+        "name": "root"
+      },
+      {
+        "description": "Native scrolling viewport.",
+        "name": "viewport"
+      }
+    ],
+    "slots": [
+      {
+        "description": "One native table, with native caption, sections, rows and cells.",
+        "name": ""
+      }
+    ],
+    "members": [
+      {
+        "kind": "field",
+        "name": "variant",
+        "default": "\"default\"",
+        "attribute": "variant",
+        "reflects": true,
+        "readonly": false,
+        "type": {
+          "text": "\"default\" | \"striped\" | \"bordered\""
+        }
+      },
+      {
+        "kind": "field",
+        "name": "size",
+        "default": "\"medium\"",
+        "attribute": "size",
+        "reflects": true,
+        "readonly": false,
+        "type": {
+          "text": "\"small\" | \"medium\" | \"large\""
+        }
+      },
+      {
+        "kind": "field",
+        "name": "stickyHeader",
+        "type": {
+          "text": "boolean"
+        },
+        "default": "false",
+        "attribute": "sticky-header",
+        "reflects": true
+      },
+      {
+        "kind": "field",
+        "name": "loading",
+        "type": {
+          "text": "boolean"
+        },
+        "default": "false",
+        "attribute": "loading"
+      },
+      {
+        "kind": "method",
+        "name": "getScrollElement",
+        "return": {
+          "type": {
+            "text": "HTMLElement"
+          }
+        },
+        "description": "Returns the stable native element used by a consumer virtualizer."
+      },
+      {
+        "kind": "method",
+        "name": "getTableElement",
+        "return": {
+          "type": {
+            "text": "HTMLTableElement | null"
+          }
+        },
+        "description": "Returns the application's direct native table without changing its ownership."
+      },
+      {
+        "kind": "field",
+        "name": "role",
+        "privacy": "public",
+        "type": {
+          "text": "string | null"
+        },
+        "attribute": "role",
+        "readonly": false,
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "ariaLabel",
+        "privacy": "public",
+        "type": {
+          "text": "string | null"
+        },
+        "attribute": "aria-label",
+        "readonly": false,
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "ariaHasPopup",
+        "privacy": "public",
+        "type": {
+          "text": "string | null"
+        },
+        "attribute": "aria-haspopup",
+        "readonly": false,
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "ariaExpanded",
+        "privacy": "public",
+        "type": {
+          "text": "string | null"
+        },
+        "attribute": "aria-expanded",
+        "readonly": false,
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "ariaAutoComplete",
+        "privacy": "public",
+        "type": {
+          "text": "string | null"
+        },
+        "attribute": "aria-autocomplete",
+        "readonly": false,
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "ariaActiveDescendantElement",
+        "privacy": "public",
+        "type": {
+          "text": "Element | null"
+        },
+        "readonly": false,
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "ariaControlsElements",
+        "privacy": "public",
+        "type": {
+          "text": "Element[] | null"
+        },
+        "readonly": false,
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "ariaLabelledByElements",
+        "privacy": "public",
+        "type": {
+          "text": "Element[] | null"
+        },
+        "readonly": false,
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "ariaDescribedByElements",
+        "privacy": "public",
+        "type": {
+          "text": "Element[] | null"
+        },
+        "readonly": false,
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "method",
+        "name": "getAttribute",
+        "return": {
+          "type": {
+            "text": "string | null"
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "type": {
+              "text": "string"
+            }
+          }
+        ],
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "method",
+        "name": "hasAttribute",
+        "return": {
+          "type": {
+            "text": "boolean"
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "type": {
+              "text": "string"
+            }
+          }
+        ],
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "method",
+        "name": "removeAttribute",
+        "return": {
+          "type": {
+            "text": "void"
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "type": {
+              "text": "string"
+            }
+          }
+        ],
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "method",
+        "name": "toggleAttribute",
+        "return": {
+          "type": {
+            "text": "boolean"
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "type": {
+              "text": "string"
+            }
+          },
+          {
+            "name": "force",
+            "optional": true,
+            "type": {
+              "text": "boolean"
+            }
+          }
+        ],
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "name": "variant",
+        "default": "\"default\"",
+        "fieldName": "variant",
+        "type": {
+          "text": "\"default\" | \"striped\" | \"bordered\""
+        }
+      },
+      {
+        "name": "size",
+        "default": "\"medium\"",
+        "fieldName": "size",
+        "type": {
+          "text": "\"small\" | \"medium\" | \"large\""
+        }
+      },
+      {
+        "name": "sticky-header",
+        "type": {
+          "text": "boolean"
+        },
+        "default": "false",
+        "fieldName": "stickyHeader"
+      },
+      {
+        "name": "loading",
+        "type": {
+          "text": "boolean"
+        },
+        "default": "false",
+        "fieldName": "loading"
+      },
+      {
+        "type": {
+          "text": "string"
+        },
+        "description": "IDs in the author's tree scope that label the native root.",
+        "name": "aria-labelledby",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "type": {
+          "text": "string"
+        },
+        "description": "IDs in the author's tree scope that describe the native root.",
+        "name": "aria-describedby",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "type": {
+          "text": "string"
+        },
+        "description": "IDs in the author's tree scope controlled by the native root.",
+        "name": "aria-controls",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "type": {
+          "text": "string"
+        },
+        "description": "ID of the active item in the author's scope.",
+        "name": "aria-activedescendant",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "name": "role",
+        "type": {
+          "text": "string | null"
+        },
+        "fieldName": "role",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "name": "aria-label",
+        "type": {
+          "text": "string | null"
+        },
+        "fieldName": "ariaLabel",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "name": "aria-haspopup",
+        "type": {
+          "text": "string | null"
+        },
+        "fieldName": "ariaHasPopup",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "name": "aria-expanded",
+        "type": {
+          "text": "string | null"
+        },
+        "fieldName": "ariaExpanded",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "name": "aria-autocomplete",
+        "type": {
+          "text": "string | null"
+        },
+        "fieldName": "ariaAutoComplete",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      }
+    ],
+    "superclass": {
+      "name": "AcmeSemanticElement",
+      "module": "dist/shared/semantic-element.js"
+    },
+    "tagName": "acme-table",
+    "customElement": true,
+    "module": "dist/components/table/table.js"
+  }
+}

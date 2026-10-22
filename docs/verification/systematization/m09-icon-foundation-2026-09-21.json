@@ -1,0 +1,230 @@
+{
+  "date": "2026-09-21",
+  "batch": "M09 in progress",
+  "revision": "27e9ef1dbeedc13d682fece4a58e1eda4cb0961a",
+  "catalog": {
+    "count": 24810,
+    "bytes": 12496389,
+    "tags": {
+      "svg": 24810,
+      "path": 24810
+    },
+    "attrs": {
+      "xmlns": 24810,
+      "height": 24810,
+      "viewBox": 24408,
+      "width": 24810,
+      "d": 24810
+    }
+  },
+  "native": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "native SVG geometry is drawable",
+            "ok": true
+          },
+          {
+            "name": "default decorative icon has no exposed image name",
+            "ok": true
+          },
+          {
+            "name": "named icon has one native image role",
+            "ok": true
+          },
+          {
+            "name": "size reaches the real host and SVG",
+            "ok": true
+          },
+          {
+            "name": "SVG paths inherit currentColor",
+            "ok": true
+          },
+          {
+            "name": "unloaded artwork reports an accessible missing marker",
+            "ok": true
+          },
+          {
+            "name": "explicit artwork installation replaces the marker",
+            "ok": true
+          },
+          {
+            "name": "explicit family and false fill override defaults",
+            "ok": true
+          },
+          {
+            "name": "reconnection reads current configuration and assets",
+            "ok": true
+          },
+          {
+            "name": "adoption keeps the generated size and SVG geometry",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "native SVG geometry is drawable",
+            "ok": true
+          },
+          {
+            "name": "default decorative icon has no exposed image name",
+            "ok": true
+          },
+          {
+            "name": "named icon has one native image role",
+            "ok": true
+          },
+          {
+            "name": "size reaches the real host and SVG",
+            "ok": true
+          },
+          {
+            "name": "SVG paths inherit currentColor",
+            "ok": true
+          },
+          {
+            "name": "unloaded artwork reports an accessible missing marker",
+            "ok": true
+          },
+          {
+            "name": "explicit artwork installation replaces the marker",
+            "ok": true
+          },
+          {
+            "name": "explicit family and false fill override defaults",
+            "ok": true
+          },
+          {
+            "name": "reconnection reads current configuration and assets",
+            "ok": true
+          },
+          {
+            "name": "adoption keeps the generated size and SVG geometry",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "native SVG geometry is drawable",
+            "ok": true
+          },
+          {
+            "name": "default decorative icon has no exposed image name",
+            "ok": true
+          },
+          {
+            "name": "named icon has one native image role",
+            "ok": true
+          },
+          {
+            "name": "size reaches the real host and SVG",
+            "ok": true
+          },
+          {
+            "name": "SVG paths inherit currentColor",
+            "ok": true
+          },
+          {
+            "name": "unloaded artwork reports an accessible missing marker",
+            "ok": true
+          },
+          {
+            "name": "explicit artwork installation replaces the marker",
+            "ok": true
+          },
+          {
+            "name": "explicit family and false fill override defaults",
+            "ok": true
+          },
+          {
+            "name": "reconnection reads current configuration and assets",
+            "ok": true
+          },
+          {
+            "name": "adoption keeps the generated size and SVG geometry",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "unit": {
+    "tests": 7,
+    "failures": 0
+  },
+  "build": "537 modules; 119 existing component tags; no per-icon generated entries yet",
+  "remaining": [
+    "Per-icon/family entry generation",
+    "Manifest/docs/package delivery",
+    "Internal glyph replacement",
+    "Spinner",
+    "Button/Icon Button/Toggle Button/Copy Button",
+    "Actual Group member adoption"
+  ],
+  "reproduction": {
+    "probe": "import {AcmeIconElement} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/icon-element';\nimport {IconArtwork,configureIcons} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/icon-artwork';\nimport data from './home.json';\nconst artwork=new IconArtwork('home',data['rounded:unfilled']);\nclass Home extends AcmeIconElement{protected get artwork(){return artwork;}}\ncustomElements.define('test-home-icon',Home);\nconst results:any[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});\ntry{\n const icon=new Home();document.body.append(icon);await icon.updateComplete;\n const root=()=>icon.shadowRoot!.querySelector('[part=root]') as SVGSVGElement;\n check('native SVG geometry is drawable',root().namespaceURI==='http://www.w3.org/2000/svg'&&root().querySelector('path')!.getBBox().width>0);\n check('default decorative icon has no exposed image name',root().getAttribute('aria-hidden')==='true'&&!root().hasAttribute('aria-label'));\n icon.label='Home';await icon.updateComplete;check('named icon has one native image role',root().getAttribute('role')==='img'&&root().getAttribute('aria-label')==='Home'&&!icon.hasAttribute('role'));\n icon.size='32px';await icon.updateComplete;check('size reaches the real host and SVG',icon.getBoundingClientRect().width===32&&root().getBoundingClientRect().width===32);\n icon.style.color='rgb(20, 80, 170)';check('SVG paths inherit currentColor',getComputedStyle(root().querySelector('path')!).fill==='rgb(20, 80, 170)');\n configureIcons({family:'sharp',filled:true});await icon.updateComplete;check('unloaded artwork reports an accessible missing marker',root().localName==='span'&&root().getAttribute('aria-label')!.includes('Artwork unavailable'));\n artwork.add('sharp',true,data['sharp:filled']);await icon.updateComplete;check('explicit artwork installation replaces the marker',root().localName==='svg'&&root().querySelector('path')!.getAttribute('d')===data['sharp:filled'].paths[0].d);\n icon.family='rounded';icon.filled=false;await icon.updateComplete;check('explicit family and false fill override defaults',root().querySelector('path')!.getAttribute('d')===data['rounded:unfilled'].paths[0].d);\n icon.remove();icon.family=undefined;icon.filled=undefined;configureIcons({family:'outlined',filled:false});artwork.add('outlined',false,data['outlined:unfilled']);document.body.append(icon);await icon.updateComplete;check('reconnection reads current configuration and assets',root().querySelector('path')!.getAttribute('d')===data['outlined:unfilled'].paths[0].d);\n const frame=document.createElement('iframe');document.body.append(frame);frame.contentDocument!.body.append(icon);await icon.updateComplete;check('adoption keeps the generated size and SVG geometry',root().getBoundingClientRect().width===32&&root().querySelector('path')!.getBBox().height>0);\n (window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n",
+    "runner": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m09-icons\",root=\"/Users/peterkloss/Dev/ACMElabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\",splitting:true});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/dist/styles/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname.endsWith(\".js\")&&url.pathname!==\"/probe.js\")return new Response(Bun.file(directory+\"/bundle\"+url.pathname),{headers:{\"Content-Type\":\"text/javascript\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.length!==10||r.results.some(v=>!v.ok)))process.exitCode=1;\n",
+    "artwork": {
+      "rounded:unfilled": {
+        "viewBox": "0 -960 960 960",
+        "paths": [
+          {
+            "d": "M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"
+          }
+        ]
+      },
+      "rounded:filled": {
+        "viewBox": "0 -960 960 960",
+        "paths": [
+          {
+            "d": "M160-200v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H600q-17 0-28.5-11.5T560-160v-200q0-17-11.5-28.5T520-400h-80q-17 0-28.5 11.5T400-360v200q0 17-11.5 28.5T360-120H240q-33 0-56.5-23.5T160-200Z"
+          }
+        ]
+      },
+      "outlined:unfilled": {
+        "viewBox": "0 -960 960 960",
+        "paths": [
+          {
+            "d": "M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"
+          }
+        ]
+      },
+      "outlined:filled": {
+        "viewBox": "0 -960 960 960",
+        "paths": [
+          {
+            "d": "M160-120v-480l320-240 320 240v480H560v-280H400v280H160Z"
+          }
+        ]
+      },
+      "sharp:unfilled": {
+        "viewBox": "0 -960 960 960",
+        "paths": [
+          {
+            "d": "M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"
+          }
+        ]
+      },
+      "sharp:filled": {
+        "viewBox": "0 -960 960 960",
+        "paths": [
+          {
+            "d": "M160-120v-480l320-240 320 240v480H560v-280H400v280H160Z"
+          }
+        ]
+      }
+    }
+  }
+}

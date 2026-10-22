@@ -1,0 +1,24 @@
+Verified 1000 of 25120 deployed files.
+Verified 2000 of 25120 deployed files.
+Verified 3000 of 25120 deployed files.
+14 | const queue = [...files];
+15 | await Promise.all(Array.from({ length: 4 }, async () => {
+16 |   while (queue.length) {
+17 |     const file = queue.shift()!;
+18 |     const response = await fetch(new URL(file, origin), { redirect: "error", signal: AbortSignal.timeout(30000) });
+19 |     assert.equal(response.status, 200, file);
+                ^
+AssertionError: assets/material-symbols/bomb/outlined-unfilled.svg
+
+503 !== 200
+
+ generatedMessage: false,
+     actual: 503,
+   expected: 200,
+   operator: "strictEqual",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/verify-pages-0.3.1.ts:19:12
+
+Bun v1.4.2 (macOS arm64)

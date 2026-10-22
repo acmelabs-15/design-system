@@ -1,0 +1,72 @@
+{
+  "date": "2026-09-19",
+  "status": "Toolbar/Group/selection responsibility split selected; exact keyboard/composition and App Bar/Search dispositions remain open.",
+  "userRequirements": [
+    "Toolbar useful in dialogs and many contexts, beyond above-list placement.",
+    "Research Material Design Toolbar, App Bar and Search together.",
+    "Include Radix Primitives/Themes and Chakra and verify actual availability."
+  ],
+  "verifiedReferences": {
+    "radix": "Primitives Toolbar docs and full source read: roving focus, role toolbar, orientation/direction/loop; nested ToggleGroup rovingFocus false. Themes full nontruncated tree has no toolbar files; actual components/index.tsx exports no Toolbar.",
+    "chakra": "Core components index has no general Toolbar; RichTextEditor.Toolbar is copyable composition HStack with fixed/sticky/floating styling, wrap and separator; no automatic role or roving focus in inspected composition. ActionBar actual root uses ArkPopover with autoFocus:false despite docs inherited default true. Selection actions and dialog-composition example; not adopted runtime.",
+    "material": "Full main tree search found Toolbar/Search tokens but no named full component implementations; actual Labs GB AppBarElement and helper read in full, with standard/search variants, size/subtitle/scrolled styling. Package latest2.5.0 published2026-07-15 inspected manifest/all.js. Repo experimental code is distinct from published stable components.",
+    "patternfly": "Read Toolbar purpose and examples/API first16000 characters of37378; responsive data controls/search/filter/bulk actions, sticky/vertical/overflow togglegroups; rest of API not read. Do not claim full review."
+  },
+  "guidanceRead": [
+    "Material Toolbar guidelines and accessibility",
+    "Material App Bar guidelines and accessibility",
+    "Material Search guidelines and accessibility",
+    "WAI APG Toolbar pattern"
+  ],
+  "materialBoundaries": "Toolbar task/page actions with docked/floating; App Bar page/navigation and key actions/search entry; Search query plus optional suggestions/results with docked/fullscreen view. Web exceptions allow rounded docked toolbar in different page locations; do not enforce mobile-only bottom placement on house dialog/card/page Toolbar.",
+  "conflictsToResolve": [
+    "Material Tab-per-control toolbar text versus Radix/APG roving arrow navigation.",
+    "Text editing and nested controls consume arrows; cannot blindly bind current RovingTabindex (no direction/input-target checks).",
+    "Material ripple default versus house off-by-default opt-in.",
+    "Material 48dp controls versus selected spacing-only density and explicit compact24CSSpx floor; not interchangeable units/blanket overrides.",
+    "Material filled-icon preference versus house Rounded/unfilled default with explicit per-icon override.",
+    "Material shadows versus chosen Radix scale; floating Toolbar/Search role tiers unassigned.",
+    "Material app-bar 3:1 text advice versus regular-text WCAG requirements/house contrast checks.",
+    "Experimental Material @state and style/directive mechanisms need adaptation to TanStack Store, Lit Motion and generated styles."
+  ],
+  "dependencies": [
+    "Phase2.4 Group responsibility and selection-group/segmented-control keyboard semantics",
+    "Existing Modal→Dialog plan: focus entry/restoration, layered Escape and child popover clipping",
+    "Existing Input clearable consolidation; Search currently extends to-be-removed ClearableInput and only provides icon/loading/clearable input",
+    "Search advanced-view scope versus ComboBox/CommandMenu/list/overlay responsibilities",
+    "Appbar/Topbar/PageHead overlapping scopes; Appbar candidate unselected in disposition register",
+    "Responsive shared window/container design; floating/overflow/motion roles",
+    "Consumer search data/filter state versus presentation; no adopted backend or runtime dependency"
+  ],
+  "next": "Review Stat with Tile next. Return to exact Toolbar/Group composition in Phase2.4 Group; retain App Bar/Search and inventory gates.",
+  "materialPublishedCheck": {
+    "version": "2.5.0",
+    "published": "2026-07-15T14:39:18.532Z",
+    "manifestTagCount": 54,
+    "toolbarAppbarSearchTagMatches": [],
+    "scope": "Published manifest/all.js and relevant tarball paths inspected; experimental AppBar main-branch source is a distinct evidence source, not proof of stable package support."
+  },
+  "followups": [
+    {
+      "question": "Exact composition of selected Group/Toolbar/selection responsibilities, including nested controls, focus and keyboard ownership",
+      "revisit": "Bring relevant Phase2.4 Group comparison forward before choosing this contract; must resolve Toolbar disposition responsibilities before Phase2 closure, exact slots/controllers Phase3-4."
+    },
+    {
+      "question": "App Bar vs existing Appbar/Topbar/PageHead boundaries and retention",
+      "revisit": "Phase2 noncanonical disposition review, before inventory. Material source is experimental; no retention decision selected."
+    },
+    {
+      "question": "Simple Search field vs expanded suggestions/results view, and reuse of ComboBox/CommandMenu/Dialog/list",
+      "revisit": "Phase2 Search/Input and overlay/list responsibility review before accepting expanded Search scope; detailed UI/keyboard contract Phase4."
+    }
+  ],
+  "referenceCautions": [
+    "Chakra ActionBar docs show inherited autoFocus:true; actual root sets false.",
+    "Material AppBar guidance gives3:1 text guidance; W3C contrast-minimum regulartext4.5:1 and large3:1 must be distinguished. No change tohousecontrastbar.",
+    "Material Toolbar docked bottom-only statement has explicit web/large-screen exception allowing differentpagepositions androunded corners.",
+    "Material Search arrow keys operate results; text-entry keys and list vscombobox vsdialog semantics require explicit webdesign, notplatformguidancecopy."
+  ],
+  "wcagSource": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum",
+  "expandedReview": "material-full-review-2026-09-19.json",
+  "selectedDecision": "../../decisions/toolbar-group-responsibilities.md"
+}

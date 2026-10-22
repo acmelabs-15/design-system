@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-09-19T20:15:40.492Z",
+  "status": "verified collection with stated limitations",
+  "snapshot": {
+    "ledgerSha256": "997f637c604f879535cbf7788ef9810bea0720630d6b5fcaacc5e4fbe635d84e",
+    "indexSha256": "62873909eef87a348ed344bec0c7855a26884f6f26a04dc02d2688ca059624b4",
+    "ledgerUpdatedAt": "2026-09-19T20:08:40.857Z",
+    "indexGeneratedAt": "2026-09-19T20:15:39.315Z",
+    "duringAuditChanged": false
+  },
+  "counts": {
+    "catalogBlocks": 338,
+    "fullyReadBlocks": 338,
+    "fullyReadBlockFiles": 1003,
+    "kitFiles": 250,
+    "fullyReadKitFiles": 250
+  },
+  "catalog": {
+    "categories": 51,
+    "variants": 338,
+    "groups": {
+      "application": 151,
+      "marketing": 114,
+      "e-commerce": 23,
+      "documentation": 50
+    }
+  },
+  "files": {
+    "total": 1253,
+    "completeCaptureFiles": 1003,
+    "sourceReportFiles": 972,
+    "parentReviewFiles": 81,
+    "duplicateReferences": 340,
+    "duplicateCycles": 0
+  },
+  "aliases": [
+    {
+      "title": "Card Authentification",
+      "canonical": "card-authentification",
+      "files": 1,
+      "verified": true
+    },
+    {
+      "title": "Pricing Simple",
+      "canonical": "pricing-simple",
+      "files": 4,
+      "verified": true
+    },
+    {
+      "title": "Testimonial Simple Text",
+      "canonical": "testimonial-simple-text",
+      "files": 2,
+      "verified": true
+    },
+    {
+      "title": "Stat Centered",
+      "canonical": "stat-centered",
+      "files": 2,
+      "verified": true
+    },
+    {
+      "title": "Banner With Link",
+      "canonical": "banner-with-link",
+      "files": 1,
+      "verified": true
+    },
+    {
+      "title": "Banner With Text",
+      "canonical": "banner-with-text",
+      "files": 1,
+      "verified": true
+    },
+    {
+      "title": "Footer With Social",
+      "canonical": "footer-with-social",
+      "files": 3,
+      "verified": true
+    }
+  ],
+  "index": {
+    "entries": 340,
+    "files": 1253,
+    "componentNames": 592,
+    "usages": 10742,
+    "missingNamespaceUsages": 0
+  },
+  "searchChecks": [
+    {
+      "args": [
+        "--component",
+        "Pagination"
+      ],
+      "totalMatches": 2,
+      "shown": 2,
+      "resultIds": [
+        "webhooks-event-log-03",
+        "docs-kit"
+      ],
+      "contextualFindings": 2,
+      "linkedSources": 2
+    },
+    {
+      "args": [
+        "--component",
+        "CheckboxCard"
+      ],
+      "totalMatches": 3,
+      "shown": 3,
+      "resultIds": [
+        "onboarding-simple-02",
+        "onboarding-with-image-02",
+        "onboarding-with-image-04"
+      ],
+      "contextualFindings": 3,
+      "linkedSources": 3
+    },
+    {
+      "args": [
+        "--topic",
+        "selection"
+      ],
+      "totalMatches": 31,
+      "shown": 20,
+      "resultIds": [
+        "setting-appearance",
+        "setting-notification-social",
+        "onboarding-simple-02",
+        "onboarding-simple-03",
+        "onboarding-with-image-01",
+        "onboarding-with-image-02",
+        "onboarding-with-image-03",
+        "onboarding-workspace-04",
+        "card-payment",
+        "sharing-01",
+        "webhooks-form-01",
+        "webhooks-form-04",
+        "pricing-upgrade",
+        "store-signup-offer-01",
+        "course-kit",
+        "page-header-with-actions-02",
+        "login-with-email-and-password-01",
+        "login-with-email-and-password-02",
+        "setting-api-key-01",
+        "setting-export-data"
+      ],
+      "contextualFindings": 20,
+      "linkedSources": 20
+    },
+    {
+      "args": [
+        "page",
+        "size"
+      ],
+      "totalMatches": 22,
+      "shown": 20,
+      "resultIds": [
+        "webhooks-event-log-03",
+        "pagination-001",
+        "course-kit",
+        "docs-kit",
+        "page-header-with-breadcrumb-actions",
+        "sidebar-with-side-navbar",
+        "page-header-with-call-to-action",
+        "page-header-with-form",
+        "page-header-with-search",
+        "team-with-avatar",
+        "team-with-card",
+        "team-with-large-image",
+        "team-with-square-photo",
+        "faq-centered",
+        "contact-simple-form",
+        "navbar-005",
+        "navbar-006",
+        "api-header",
+        "header-with-actions",
+        "simple-header"
+      ],
+      "contextualFindings": 20,
+      "linkedSources": 18
+    },
+    {
+      "args": [
+        "action",
+        "row"
+      ],
+      "totalMatches": 152,
+      "shown": 20,
+      "resultIds": [
+        "login-with-email-and-password-03",
+        "setting-audit-log",
+        "setting-team-02",
+        "setting-integrations-10",
+        "profile-05",
+        "ai-code-and-preview",
+        "ai-prompt-with-action-centered",
+        "ai-studio-playground",
+        "sharing-02",
+        "shopping-cart-mini-01",
+        "course-kit",
+        "page-header-with-actions-01",
+        "page-header-with-actions-02",
+        "page-header-with-breadcrumb-actions",
+        "navbar-with-centered-search",
+        "navbar-with-search",
+        "sidebar-with-collapsible",
+        "sidebar-with-side-navbar",
+        "login-with-email-and-password-01",
+        "social-login-with-email-02"
+      ],
+      "contextualFindings": 20,
+      "linkedSources": 3
+    }
+  ],
+  "protected": {
+    "expected": 870,
+    "checked": 870,
+    "changed": [],
+    "missing": []
+  },
+  "pending": [],
+  "errors": [],
+  "warnings": [],
+  "limitations": [
+    "This audit validates saved evidence and indexes; it does not redo each human-readable source review or certify all runtime states.",
+    "Source hashes prove recorded content equality, not correctness or accessibility of reference implementations.",
+    "Notification open-state follow-ups are tracked separately by the parent."
+  ]
+}

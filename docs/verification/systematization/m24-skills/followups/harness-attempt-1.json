@@ -1,0 +1,61 @@
+[
+  {
+    "variant": "react-baseline",
+    "check": "native FormData after application supplies form/name",
+    "pass": true,
+    "original": {
+      "name": "plan",
+      "form": false
+    },
+    "formData": {
+      "owner": "followup-form",
+      "value": "starter",
+      "entries": [
+        [
+          "plan",
+          "starter"
+        ]
+      ]
+    },
+    "scope": "Supplemental named-form integration, not an assertion that the original artifact authored a form/name"
+  },
+  {
+    "variant": "react-baseline",
+    "check": "detached wrapper callback removed",
+    "pass": true,
+    "evidence": {
+      "before": 0,
+      "after": 0
+    }
+  },
+  {
+    "variant": "react-skilled",
+    "check": "native FormData after application supplies form/name",
+    "pass": true,
+    "original": {
+      "name": "plan",
+      "form": false
+    },
+    "formData": {
+      "owner": "followup-form",
+      "value": "starter",
+      "entries": [
+        [
+          "plan",
+          "starter"
+        ]
+      ]
+    },
+    "scope": "Supplemental named-form integration, not an assertion that the original artifact authored a form/name"
+  },
+  {
+    "variant": "table-baseline",
+    "pass": false,
+    "error": "Error: waitFor: Error: strict mode violation: locator('consumer-table acme-pagination-next button') resolved to 2 elements:\n    1) <button name=\"\" value=\"\" hidden=\"\" tabindex=\"-1\" type=\"button\" aria-hidden=\"true\" slot=\"acme-form-submitter\"></button> aka locator('button').nth(4)\n    2) <button type=\"button\" class=\"action\" part=\"root item\" aria-busy=\"false\" data-size=\"medium\" data-variant=\"tertiary\">…</button> aka getByRole('button', { name: 'Next' })\n\nCall log:\n\u001b[2m  - waiting for locator('consumer-table acme-pagination-next button') to be visible\u001b[22m\n"
+  },
+  {
+    "variant": "table-skilled",
+    "pass": false,
+    "error": "TimeoutError: waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('delivery-app acme-pagination-next button') to be visible\u001b[22m\n"
+  }
+]

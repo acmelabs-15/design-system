@@ -1,0 +1,697 @@
+{
+  "date": "2026-09-23",
+  "status": "accepted at native/Lit boundary",
+  "scope": [
+    "D-03 Chart",
+    "D-04 Sparkline and Legend"
+  ],
+  "package": "@tanstack/charts 0.16.2",
+  "sources": {
+    "packageDocs": [
+      "README",
+      "DOM host",
+      "adapter controller",
+      "Lit adapter and reference",
+      "accessibility",
+      "tooltips and focus",
+      "themes and styling",
+      "line and area",
+      "bar and rect",
+      "dynamic data and animation"
+    ],
+    "read": "complete",
+    "chakraPro": [
+      "charts-02: block.tsx, area-chart.tsx, data.ts",
+      "charts-04: block.tsx, money-chart.tsx, data.ts"
+    ],
+    "material": "The previously reviewed current Material Web exports contain no Chart implementation; existing theme/motion decisions remain the comparison constraints."
+  },
+  "implementation": [
+    "Canonical immutable row/series inputs and typed SVG renderer lifetime",
+    "Grouped bars, explicit area baselines, missing/nonfinite gaps and true zero",
+    "Number, category and UTC Date axes; exact-value disclosure through Collapsible/Table",
+    "Opt-in activation requests; default pointer and keyboard inspection",
+    "Safe text formatting and authored supplementary tooltip content without reparenting author nodes",
+    "Sparkline reuses the engine with no axes, focus or tooltip and separate direction/sentiment",
+    "Passive Legend with native hidden semantics and independent composed controls"
+  ],
+  "corrections": [
+    "UTC ISO data values preserve time-of-day",
+    "Default exact-value number formatting preserves small finite values",
+    "Explicit public DomChartDefinition return type makes generated declarations portable",
+    "Chart palette 2/3 use existing amber-900/blue-900 tokens after measured contrast failures",
+    "One orphan Table hue rule discovered during retirement is removed"
+  ],
+  "verification": {
+    "strictBuild": true,
+    "portableDeclarationCheck": true,
+    "site": {
+      "pages": 107,
+      "elements": 4317,
+      "undocumented": 0
+    },
+    "suite": {
+      "pass": 870,
+      "fail": 0
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "the chart exposes a meaningful native name and exact values",
+            "pass": true
+          },
+          {
+            "name": "all three mark types rebuild without leaking extra SVG surfaces",
+            "pass": true
+          },
+          {
+            "name": "keyboard inspection is available while activation remains explicitly opt-in",
+            "pass": true
+          },
+          {
+            "name": "clearing data removes the renderer and reconnect creates one current surface",
+            "pass": true
+          },
+          {
+            "name": "height, width and typed numerical/date axes use current measurements",
+            "pass": true
+          },
+          {
+            "name": "Sparkline keeps gaps, separate sentiment and decorative semantics",
+            "pass": true
+          },
+          {
+            "name": "Legend labels and authored controls remain passive and native hidden stays hidden",
+            "pass": true
+          },
+          {
+            "name": "supplementary tooltip content retains author nodes and formatters remain text",
+            "pass": true
+          },
+          {
+            "name": "a missing required label does not mount an unnamed interactive graphic",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "the chart exposes a meaningful native name and exact values",
+            "pass": true
+          },
+          {
+            "name": "all three mark types rebuild without leaking extra SVG surfaces",
+            "pass": true
+          },
+          {
+            "name": "keyboard inspection is available while activation remains explicitly opt-in",
+            "pass": true
+          },
+          {
+            "name": "clearing data removes the renderer and reconnect creates one current surface",
+            "pass": true
+          },
+          {
+            "name": "height, width and typed numerical/date axes use current measurements",
+            "pass": true
+          },
+          {
+            "name": "Sparkline keeps gaps, separate sentiment and decorative semantics",
+            "pass": true
+          },
+          {
+            "name": "Legend labels and authored controls remain passive and native hidden stays hidden",
+            "pass": true
+          },
+          {
+            "name": "supplementary tooltip content retains author nodes and formatters remain text",
+            "pass": true
+          },
+          {
+            "name": "a missing required label does not mount an unnamed interactive graphic",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "the chart exposes a meaningful native name and exact values",
+            "pass": true
+          },
+          {
+            "name": "all three mark types rebuild without leaking extra SVG surfaces",
+            "pass": true
+          },
+          {
+            "name": "keyboard inspection is available while activation remains explicitly opt-in",
+            "pass": true
+          },
+          {
+            "name": "clearing data removes the renderer and reconnect creates one current surface",
+            "pass": true
+          },
+          {
+            "name": "height, width and typed numerical/date axes use current measurements",
+            "pass": true
+          },
+          {
+            "name": "Sparkline keeps gaps, separate sentiment and decorative semantics",
+            "pass": true
+          },
+          {
+            "name": "Legend labels and authored controls remain passive and native hidden stays hidden",
+            "pass": true
+          },
+          {
+            "name": "supplementary tooltip content retains author nodes and formatters remain text",
+            "pass": true
+          },
+          {
+            "name": "a missing required label does not mount an unnamed interactive graphic",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "the chart exposes a meaningful native name and exact values",
+            "pass": true
+          },
+          {
+            "name": "all three mark types rebuild without leaking extra SVG surfaces",
+            "pass": true
+          },
+          {
+            "name": "keyboard inspection is available while activation remains explicitly opt-in",
+            "pass": true
+          },
+          {
+            "name": "clearing data removes the renderer and reconnect creates one current surface",
+            "pass": true
+          },
+          {
+            "name": "height, width and typed numerical/date axes use current measurements",
+            "pass": true
+          },
+          {
+            "name": "Sparkline keeps gaps, separate sentiment and decorative semantics",
+            "pass": true
+          },
+          {
+            "name": "Legend labels and authored controls remain passive and native hidden stays hidden",
+            "pass": true
+          },
+          {
+            "name": "supplementary tooltip content retains author nodes and formatters remain text",
+            "pass": true
+          },
+          {
+            "name": "a missing required label does not mount an unnamed interactive graphic",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "the chart exposes a meaningful native name and exact values",
+            "pass": true
+          },
+          {
+            "name": "all three mark types rebuild without leaking extra SVG surfaces",
+            "pass": true
+          },
+          {
+            "name": "keyboard inspection is available while activation remains explicitly opt-in",
+            "pass": true
+          },
+          {
+            "name": "clearing data removes the renderer and reconnect creates one current surface",
+            "pass": true
+          },
+          {
+            "name": "height, width and typed numerical/date axes use current measurements",
+            "pass": true
+          },
+          {
+            "name": "Sparkline keeps gaps, separate sentiment and decorative semantics",
+            "pass": true
+          },
+          {
+            "name": "Legend labels and authored controls remain passive and native hidden stays hidden",
+            "pass": true
+          },
+          {
+            "name": "supplementary tooltip content retains author nodes and formatters remain text",
+            "pass": true
+          },
+          {
+            "name": "a missing required label does not mount an unnamed interactive graphic",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "the chart exposes a meaningful native name and exact values",
+            "pass": true
+          },
+          {
+            "name": "all three mark types rebuild without leaking extra SVG surfaces",
+            "pass": true
+          },
+          {
+            "name": "keyboard inspection is available while activation remains explicitly opt-in",
+            "pass": true
+          },
+          {
+            "name": "clearing data removes the renderer and reconnect creates one current surface",
+            "pass": true
+          },
+          {
+            "name": "height, width and typed numerical/date axes use current measurements",
+            "pass": true
+          },
+          {
+            "name": "Sparkline keeps gaps, separate sentiment and decorative semantics",
+            "pass": true
+          },
+          {
+            "name": "Legend labels and authored controls remain passive and native hidden stays hidden",
+            "pass": true
+          },
+          {
+            "name": "supplementary tooltip content retains author nodes and formatters remain text",
+            "pass": true
+          },
+          {
+            "name": "a missing required label does not mount an unnamed interactive graphic",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "documentation": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "exact-value disclosure",
+          "point activation",
+          "application series visibility",
+          "narrow chart layout",
+          "named Sparkline",
+          "independent Legend control"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "exact-value disclosure",
+          "point activation",
+          "application series visibility",
+          "narrow chart layout",
+          "named Sparkline",
+          "independent Legend control"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "exact-value disclosure",
+          "point activation",
+          "application series visibility",
+          "narrow chart layout",
+          "named Sparkline",
+          "independent Legend control"
+        ],
+        "errors": []
+      }
+    ],
+    "palette": {
+      "baseline": [
+        {
+          "engine": "chromium",
+          "measurements": [
+            {
+              "color": "rgb(51, 146, 255)",
+              "background": "hsla(0, 0%, 100%, 1)",
+              "contrast": 3.1360530889708196
+            },
+            {
+              "color": "rgb(255, 178, 36)",
+              "background": "hsla(0, 0%, 100%, 1)",
+              "contrast": 1.803251075907392
+            },
+            {
+              "color": "rgb(82, 174, 255)",
+              "background": "hsla(0, 0%, 100%, 1)",
+              "contrast": 2.3709555498409163
+            },
+            {
+              "color": "rgb(229, 72, 77)",
+              "background": "hsla(0, 0%, 100%, 1)",
+              "contrast": 3.913738950339162
+            },
+            {
+              "color": "rgb(125, 125, 125)",
+              "background": "hsla(0, 0%, 100%, 1)",
+              "contrast": 4.116376044741373
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "measurements": [
+            {
+              "color": "rgb(51, 146, 255)",
+              "background": "hsla(0, 0%, 100%, 1)",
+              "contrast": 3.1360530889708196
+            },
+            {
+              "color": "rgb(255, 178, 36)",
+              "background": "hsla(0, 0%, 100%, 1)",
+              "contrast": 1.803251075907392
+            },
+            {
+              "color": "rgb(82, 174, 255)",
+              "background": "hsla(0, 0%, 100%, 1)",
+              "contrast": 2.3709555498409163
+            },
+            {
+              "color": "rgb(229, 72, 77)",
+              "background": "hsla(0, 0%, 100%, 1)",
+              "contrast": 3.913738950339162
+            },
+            {
+              "color": "rgb(125, 125, 125)",
+              "background": "hsla(0, 0%, 100%, 1)",
+              "contrast": 4.116376044741373
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "measurements": [
+            {
+              "color": "rgb(51, 146, 255)",
+              "background": "hsla(0, 0%, 100%, 1)",
+              "contrast": 3.1360530889708196
+            },
+            {
+              "color": "rgb(255, 178, 36)",
+              "background": "hsla(0, 0%, 100%, 1)",
+              "contrast": 1.803251075907392
+            },
+            {
+              "color": "rgb(82, 174, 255)",
+              "background": "hsla(0, 0%, 100%, 1)",
+              "contrast": 2.3709555498409163
+            },
+            {
+              "color": "rgb(229, 72, 77)",
+              "background": "hsla(0, 0%, 100%, 1)",
+              "contrast": 3.913738950339162
+            },
+            {
+              "color": "rgb(125, 125, 125)",
+              "background": "hsla(0, 0%, 100%, 1)",
+              "contrast": 4.116376044741373
+            }
+          ]
+        }
+      ],
+      "final": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "checks": [
+            {
+              "name": "palette measurements",
+              "values": [
+                {
+                  "color": "rgb(51, 146, 255)",
+                  "background": "hsla(0, 0%, 100%, 1)",
+                  "contrast": 3.1360530889708196
+                },
+                {
+                  "color": "rgb(163, 82, 0)",
+                  "background": "hsla(0, 0%, 100%, 1)",
+                  "contrast": 5.578840030422265
+                },
+                {
+                  "color": "rgb(0, 104, 214)",
+                  "background": "hsla(0, 0%, 100%, 1)",
+                  "contrast": 5.3149301900426575
+                },
+                {
+                  "color": "rgb(229, 72, 77)",
+                  "background": "hsla(0, 0%, 100%, 1)",
+                  "contrast": 3.913738950339162
+                },
+                {
+                  "color": "rgb(125, 125, 125)",
+                  "background": "hsla(0, 0%, 100%, 1)",
+                  "contrast": 4.116376044741373
+                }
+              ],
+              "pass": true
+            },
+            {
+              "name": "measure default palette contrast",
+              "pass": true
+            },
+            {
+              "name": "palette measurements",
+              "values": [
+                {
+                  "color": "rgb(51, 146, 255)",
+                  "background": "hsla(0, 0%, 4%, 1)",
+                  "contrast": 6.313077345582216
+                },
+                {
+                  "color": "rgb(242, 162, 13)",
+                  "background": "hsla(0, 0%, 4%, 1)",
+                  "contrast": 9.379977699269237
+                },
+                {
+                  "color": "rgb(82, 168, 255)",
+                  "background": "hsla(0, 0%, 4%, 1)",
+                  "contrast": 7.92286001304963
+                },
+                {
+                  "color": "rgb(229, 72, 77)",
+                  "background": "hsla(0, 0%, 4%, 1)",
+                  "contrast": 5.058627047368378
+                },
+                {
+                  "color": "rgb(125, 125, 125)",
+                  "background": "hsla(0, 0%, 4%, 1)",
+                  "contrast": 4.809605705440039
+                }
+              ],
+              "pass": true
+            },
+            {
+              "name": "measure dark palette contrast",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "checks": [
+            {
+              "name": "palette measurements",
+              "values": [
+                {
+                  "color": "rgb(51, 146, 255)",
+                  "background": "hsla(0, 0%, 100%, 1)",
+                  "contrast": 3.1360530889708196
+                },
+                {
+                  "color": "rgb(163, 82, 0)",
+                  "background": "hsla(0, 0%, 100%, 1)",
+                  "contrast": 5.578840030422265
+                },
+                {
+                  "color": "rgb(0, 104, 214)",
+                  "background": "hsla(0, 0%, 100%, 1)",
+                  "contrast": 5.3149301900426575
+                },
+                {
+                  "color": "rgb(229, 72, 77)",
+                  "background": "hsla(0, 0%, 100%, 1)",
+                  "contrast": 3.913738950339162
+                },
+                {
+                  "color": "rgb(125, 125, 125)",
+                  "background": "hsla(0, 0%, 100%, 1)",
+                  "contrast": 4.116376044741373
+                }
+              ],
+              "pass": true
+            },
+            {
+              "name": "measure default palette contrast",
+              "pass": true
+            },
+            {
+              "name": "palette measurements",
+              "values": [
+                {
+                  "color": "rgb(51, 146, 255)",
+                  "background": "hsla(0, 0%, 4%, 1)",
+                  "contrast": 6.313077345582216
+                },
+                {
+                  "color": "rgb(242, 162, 13)",
+                  "background": "hsla(0, 0%, 4%, 1)",
+                  "contrast": 9.379977699269237
+                },
+                {
+                  "color": "rgb(82, 168, 255)",
+                  "background": "hsla(0, 0%, 4%, 1)",
+                  "contrast": 7.92286001304963
+                },
+                {
+                  "color": "rgb(229, 72, 77)",
+                  "background": "hsla(0, 0%, 4%, 1)",
+                  "contrast": 5.058627047368378
+                },
+                {
+                  "color": "rgb(125, 125, 125)",
+                  "background": "hsla(0, 0%, 4%, 1)",
+                  "contrast": 4.809605705440039
+                }
+              ],
+              "pass": true
+            },
+            {
+              "name": "measure dark palette contrast",
+              "pass": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "checks": [
+            {
+              "name": "palette measurements",
+              "values": [
+                {
+                  "color": "rgb(51, 146, 255)",
+                  "background": "hsla(0, 0%, 100%, 1)",
+                  "contrast": 3.1360530889708196
+                },
+                {
+                  "color": "oklch(0.5279 0.1496 54.650002)",
+                  "background": "hsla(0, 0%, 100%, 1)",
+                  "contrast": 5.569168486310038
+                },
+                {
+                  "color": "oklch(0.5318 0.2399 256.98999)",
+                  "background": "hsla(0, 0%, 100%, 1)",
+                  "contrast": 5.358448884133728
+                },
+                {
+                  "color": "rgb(229, 72, 77)",
+                  "background": "hsla(0, 0%, 100%, 1)",
+                  "contrast": 3.913738950339162
+                },
+                {
+                  "color": "rgb(125, 125, 125)",
+                  "background": "hsla(0, 0%, 100%, 1)",
+                  "contrast": 4.116376044741373
+                }
+              ],
+              "pass": true
+            },
+            {
+              "name": "measure default palette contrast",
+              "pass": true
+            },
+            {
+              "name": "palette measurements",
+              "values": [
+                {
+                  "color": "rgb(51, 146, 255)",
+                  "background": "hsla(0, 0%, 4%, 1)",
+                  "contrast": 6.313077345582216
+                },
+                {
+                  "color": "oklch(0.7721 0.1991 64.279999)",
+                  "background": "hsla(0, 0%, 4%, 1)",
+                  "contrast": 8.886055830607841
+                },
+                {
+                  "color": "oklch(0.717 0.1648 250.794006)",
+                  "background": "hsla(0, 0%, 4%, 1)",
+                  "contrast": 7.8372103532041555
+                },
+                {
+                  "color": "rgb(229, 72, 77)",
+                  "background": "hsla(0, 0%, 4%, 1)",
+                  "contrast": 5.058627047368378
+                },
+                {
+                  "color": "rgb(125, 125, 125)",
+                  "background": "hsla(0, 0%, 4%, 1)",
+                  "contrast": 4.809605705440039
+                }
+              ],
+              "pass": true
+            },
+            {
+              "name": "measure dark palette contrast",
+              "pass": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "minimum": 3.1360530889708196
+    }
+  },
+  "reproduction": {
+    "fixture": "src/components/chart/__tests__/chart.browser.ts",
+    "modelTests": "src/shared/__tests__/chart-data.test.ts",
+    "browserCases": "await check('the chart exposes a meaningful native name and exact values',async()=>{await page.getByRole('img',{name:'Weekly requests',exact:true}).waitFor();await page.getByRole('button',{name:'View data',exact:true}).click();await page.locator('acme-chart acme-table table').waitFor();assert.equal(await page.locator('tbody tr').first().locator('td').first().textContent(),'0');assert.equal(await page.locator('tbody tr').last().locator('td').last().textContent(),'—');});\nawait check('all three mark types rebuild without leaking extra SVG surfaces',async()=>{for(const type of ['bar','area','line']){await page.locator('#chart').evaluate((el,type)=>el.type=type,type);await page.waitForTimeout(80);assert.equal(await page.locator('#chart svg').count(),1);assert.ok(await page.locator('#chart svg').evaluate(svg=>svg.querySelectorAll('path,rect,polyline').length>0));}});\nawait check('keyboard inspection is available while activation remains explicitly opt-in',async()=>{await page.getByRole('img',{name:'Weekly requests',exact:true}).focus();await page.keyboard.press('ArrowRight');await page.keyboard.press('Enter');assert.equal(await page.evaluate(()=>window.requests.length),0);await page.evaluate(()=>window.chart.interactive=true);await page.keyboard.press('Enter');assert.equal(await page.evaluate(()=>window.requests.length),1);assert.equal(await page.evaluate(()=>window.requests[0].action),'point');assert.equal(typeof await page.evaluate(()=>window.requests[0].index),'number');});\nawait check('clearing data removes the renderer and reconnect creates one current surface',async()=>{await page.evaluate(()=>{window.saved=window.chart.data;window.chart.data=[]});await page.waitForFunction(()=>document.querySelector('#chart').shadowRoot.querySelector('svg')===null);await page.getByText('No data',{exact:true}).waitFor();await page.evaluate(()=>{window.chart.remove();window.chart.data=window.saved;document.body.append(window.chart)});await page.getByRole('img',{name:'Weekly requests',exact:true}).waitFor();assert.equal(await page.locator('#chart svg').count(),1);});\nawait check('height, width and typed numerical/date axes use current measurements',async()=>{await page.locator('#chart').evaluate(el=>{el.height='260px';el.style.width='420px';el.data=[{x:new Date('2026-01-01'),requests:2},{x:new Date('2026-02-01'),requests:4}];el.series=[{key:'requests',label:'Requests'}]});await page.waitForFunction(()=>document.querySelector('#chart').shadowRoot.querySelector('svg')?.viewBox.baseVal.height===260);const rect=await page.locator('#chart svg').boundingBox();assert.ok(rect.width<=421);assert.ok(await page.locator('#chart svg text').count()>0);});\nawait check('Sparkline keeps gaps, separate sentiment and decorative semantics',async()=>{await page.evaluate(()=>{const spark=document.createElement('acme-sparkline');spark.id='spark';spark.values=[1,2,null,4,3];spark.direction='down';spark.sentiment='positive';document.body.append(spark)});await page.locator('#spark svg').waitFor();assert.equal(await page.locator('#spark svg').getAttribute('aria-hidden'),'true');assert.ok(await page.locator('#spark [part=line]').count()>0);assert.ok(await page.locator('#spark [part=fill]').count()>0);await page.locator('#spark').evaluate(el=>el.label='Fewer delivery failures');await page.getByRole('img',{name:'Fewer delivery failures',exact:true}).waitFor();assert.ok((await page.locator('#spark svg').textContent()).includes('Down, Favorable'));await page.locator('#spark').evaluate(el=>el.values=[]);await page.waitForFunction(()=>document.querySelector('#spark').shadowRoot.querySelector('svg')===null);});\nawait check('Legend labels and authored controls remain passive and native hidden stays hidden',async()=>{await page.evaluate(()=>{const legend=document.createElement('acme-legend');legend.id='legend';legend.orientation='vertical';legend.innerHTML='<acme-legend-item value=\"a\" label=\"Requests\" color=\"blue\"></acme-legend-item><acme-legend-item value=\"b\"><button id=\"legend-action\">Toggle errors</button></acme-legend-item>';document.body.append(legend);window.legendClicks=0;document.querySelector('#legend-action').addEventListener('click',()=>window.legendClicks++)});await page.getByText('Requests',{exact:true}).last().waitFor();await page.getByRole('button',{name:'Toggle errors'}).click();assert.equal(await page.evaluate(()=>window.legendClicks),1);await page.locator('#legend acme-legend-item').first().evaluate(el=>el.hidden=true);assert.equal(await page.locator('#legend acme-legend-item').first().isVisible(),false);});\nawait check('supplementary tooltip content retains author nodes and formatters remain text',async()=>{await page.locator('#chart').evaluate(el=>{el.innerHTML='<span slot=\"tooltip\" id=\"supplement\">Recorded requests</span>';window.supplement=el.querySelector('#supplement');el.series=[{key:'requests',label:'Requests',formatter:value=>'<b>'+value+'</b>'}];el.focus()});await page.keyboard.press('ArrowRight');await page.locator('#chart [part=tooltip]').waitFor();assert.equal(await page.locator('#chart [part=tooltip] b b').count(),0);assert.equal(await page.evaluate(()=>window.supplement===window.chart.querySelector('#supplement')),true);assert.ok((await page.locator('#chart [part=tooltip]').textContent()).includes('<b>'));});\nawait check('a missing required label does not mount an unnamed interactive graphic',async()=>{await page.locator('#chart').evaluate(el=>el.label='');await page.waitForFunction(()=>document.querySelector('#chart').shadowRoot.querySelector('svg')===null);});\n",
+    "scratch": "/tmp/acme-m20"
+  },
+  "limits": [
+    "Flow Diagram is the remaining M20 entry.",
+    "Actual Safari/assistive-technology and final React-wrapper acceptance remain M22/M26.",
+    "No SSR, additional chart types or universal large-data performance guarantee is claimed."
+  ]
+}

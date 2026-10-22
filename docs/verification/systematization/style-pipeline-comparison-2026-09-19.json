@@ -1,0 +1,213 @@
+{
+  "date": "2026-09-19",
+  "status": "Architecture direction selected after bounded comparison; implementation gates remain",
+  "userPreference": {
+    "direction": "Compiled CSS converted into generated Lit style modules",
+    "wording": "leaning towards",
+    "finalSelection": true
+  },
+  "material": {
+    "pin": "56a486b147b8b7e95e6e8035fa02aed7e0009a85",
+    "published": "@material/web@2.5.0",
+    "releaseHead": "b4de401eb665ec63474f39319a4ba8f2145974cc",
+    "verified": [
+      "Sass -> compressed CSS -> generated Lit CSSResult TS -> JS",
+      "Filled Button composes shared, shared-elevation and filled CSSResult modules; Divider also imports generated styles",
+      "Three published Button CSSResult templates AST-decode exactly to published compiled CSS after map-comment removal",
+      "Eight relevant shared/token Sass files match pinned source",
+      "Token fallback chains remain in CSS; not all theme values frozen",
+      "Converter performs no property registration; Labs ripple registers separately"
+    ],
+    "versionDifference": "Release converter lacks the three escaping operations present in inspected main; don't conflate them.",
+    "maps": "SCSS->CSS and generatedTS->JS maps are separate; continuous CSS debugging unverified."
+  },
+  "spectrumFirst": {
+    "pin": "18c1177b5352c89569eacfe95660fc0ab27030d7",
+    "published": "@spectrum-web-components/button and theme@1.12.2",
+    "verified": [
+      "Build CSS enumerates CSS sources",
+      "Lightning CSS bundles imports/minifies CSS",
+      "Generated .css.ts Lit CSSResult modules compiled by esbuild",
+      "Button and theme fragments consume generated results",
+      "Published generated CSS JS map names generated .css.ts, not full authored CSS chain"
+    ],
+    "limits": [
+      "Wrapper has no explicit Material-like escaping step; no particular defect proved",
+      "Compiler enables errorRecovery and catches/logs errors; not adopted house policy"
+    ]
+  },
+  "spectrumSecond": {
+    "pin": "18c1177b5352c89569eacfe95660fc0ab27030d7",
+    "published": "@adobe/spectrum-wc@2.0.0-beta.3 verified",
+    "plugin": "vite-plugin-lit-css@2.2.2",
+    "verified": [
+      "Vite processed inline CSS is wrapped as Lit CSSResult JavaScript; intermediateTS not required",
+      "Global-elements generator deliberately translates host/slot selectors, combines relevant rules and omits component-only rules",
+      "Global styles derive from shared source before own compilation, not from emitted Lit JS",
+      "Selective module exports and external Lit",
+      "Published global-button.css separate from compiled Lit CSS",
+      "Nine prompt-field @property rules in source global swc.css also present in published documentCSS"
+    ],
+    "maps": "Published Button map has original CSS source name but empty mappings; inspected globalCSS has no map.",
+    "registrationLimit": "Published compiler rewrites an oklch initial value; resulting registration behavior not tested."
+  },
+  "webAwesome": {
+    "pin": "6d29eb0a71ca6d4fb9a127940126a62a7668d59c",
+    "verified": [
+      "Full Button stylesheet370lines read",
+      "Authored Lit css with reusable size/variant modules",
+      "Copies global CSS; separate bundled/unbundled outputs",
+      "No generatedJS->CSS reverse extraction in reviewed build"
+    ],
+    "comparison": "Credible different authored model, not evidence against house generator-owned compiledCSS."
+  },
+  "probe": {
+    "source": "https://raw.githubusercontent.com/material-components/material-web/56a486b147b8b7e95e6e8035fa02aed7e0009a85/scripts/css-to-ts.ts",
+    "runtime": "Bun, in-memory upstream converter with mocked file I/O; not a full build or browser style test",
+    "results": [
+      {
+        "name": "custom properties and selectors",
+        "ok": true
+      },
+      {
+        "name": "CSS unicode escapes and backslashes",
+        "ok": true
+      },
+      {
+        "name": "template syntax remains literal",
+        "ok": true
+      },
+      {
+        "name": "data URL and at-rules",
+        "ok": true
+      },
+      {
+        "name": "embedded source map handling",
+        "ok": true,
+        "sourceMapCommentRemoved": true
+      }
+    ]
+  },
+  "recommendation": "Keep generator source model authoritative; compileCSS and emitLitmodules asone output, explicitdocumentCSS/registration/metadata paths. Do not derive otheroutputs by reverse-parsing generatedLitTS.",
+  "notSelected": [
+    "Sass",
+    "Vite",
+    "Lightning CSS",
+    "Spectrum plugins",
+    "Source-map implementation",
+    "New runtime stylesheet mechanism"
+  ],
+  "verificationGates": [
+    "Representativehouse fixture comparison withsameoutputs",
+    "Exactescaping andCSSpreservation",
+    "Shadow/document scopeconversion",
+    "Registrationmetadata preservation andduplicate/conflict errors",
+    "Determinism andfailureoninvalidinput",
+    "Selective delivery/sideeffects",
+    "Actuallyuseful source maps",
+    "Rendered browserstates in Chromium/Firefox/WebKit"
+  ],
+  "coverageLimits": "Full relevant build/converter/plugin implementation sections and representative sourcechains read. Publishedlargeartifacts structurallyinspected/accounted, not fullvisualreading. No fullupstreambuild orbrowseracceptance. Deeper tokenimplementation/everycomponent outsideboundedcomparison.",
+  "sourceImplementationChanged": false,
+  "previousPartialSnapshot": {
+    "date": "2026-09-19",
+    "status": "Partial research; neither production model selected",
+    "material": {
+      "repositoryPin": "56a486b147b8b7e95e6e8035fa02aed7e0009a85",
+      "published": {
+        "version": "2.5.0",
+        "gitHead": "b4de401eb665ec63474f39319a4ba8f2145974cc"
+      },
+      "readFully": [
+        "package.json",
+        "scripts/css-to-ts.ts",
+        "tsconfig.json",
+        "tsconfig.base.json"
+      ],
+      "verified": [
+        "Sass produces compressed CSS",
+        "CSS converter writes generated cssresult.ts",
+        "Converter exports named Lit CSSResult and default styles.styleSheet",
+        "Escapes backslashes/backticks/template interpolation",
+        "Removes CSS sourceMappingURL comments before embedding",
+        "TypeScript emits JS/declarations/JS source maps"
+      ],
+      "unverified": [
+        "Representative main component and theme/token import chains in this comparison",
+        "Property registration handling",
+        "Original Sass map preservation across embedding is not established"
+      ]
+    },
+    "spectrum": {
+      "repositoryPin": "18c1177b5352c89569eacfe95660fc0ab27030d7",
+      "publishedFirstGeneration": {
+        "version": "1.12.2",
+        "packages": [
+          "@spectrum-web-components/button",
+          "@spectrum-web-components/theme"
+        ],
+        "gitHead": "ba9984303d09b9a0aeee1b6abf048e2da952cc04"
+      },
+      "gen2Source": {
+        "name": "@adobe/spectrum-wc",
+        "version": "2.0.0-beta.3",
+        "publicationVerified": false
+      },
+      "readFully": [
+        "package.json",
+        "gen2/packages/swc/package.json",
+        "gen2/packages/swc/vite.config.ts",
+        "gen2/packages/core/vite.config.js"
+      ],
+      "verifiedConfiguration": [
+        "vite-plugin-lit-css for component CSS",
+        "Separate standalone PostCSS path",
+        "_lit-styles excluded from standalone output",
+        "Token expansion, Autoprefixer and selected preset-env features",
+        "Standalone import rewrite for flattened dist",
+        "Preserved JS modules, external Lit/core, source maps and CSS minification configured",
+        "Selective component and global CSS exports"
+      ],
+      "unverified": [
+        "First-generation build-css/css-tools/build-ts located but unread",
+        "Lit-CSS/global-elements plugin implementation and transform order",
+        "Representative component/theme/token chains and emitted artifacts",
+        "Identical normalized CSS for the two paths is not established"
+      ]
+    },
+    "webAwesome": {
+      "repositoryPin": "6d29eb0a71ca6d4fb9a127940126a62a7668d59c",
+      "readFully": [
+        "packages/webawesome/scripts/build.js",
+        "packages/webawesome/src/components/button/button.ts",
+        "shared size stylesheet"
+      ],
+      "partial": "Only header of Button-specific stylesheet inspected",
+      "verified": [
+        "Reusable authored Lit CSS modules",
+        "Global style copying",
+        "Bundled and unbundled output",
+        "CEM generation before dependent docs/wrappers"
+      ],
+      "limits": "This authored model is not approval to abandon house generator ownership."
+    },
+    "conclusion": "Compiled CSS upstream of generated Lit modules is established practice in Material. Other systems have differing source/output paths. No community-preference or best-house-model conclusion is justified by this partial trace.",
+    "next": [
+      "Complete missing implementation and published-artifact paths",
+      "Compare equivalent requirements including globals/recipes, property registration, maps, escaping, minification and selective imports",
+      "Return recommendation to Peter only after comparison"
+    ],
+    "sourceImplementationChanged": false,
+    "userPreference": {
+      "direction": "Compiled CSS converted into generated Lit style modules",
+      "wording": "leaning towards",
+      "finalSelection": false
+    }
+  },
+  "selection": {
+    "source": "Great, then let's go with that direction.",
+    "decision": "Compiled CSS feeds generated Lit modules; explicit document/global/recipe/registration/metadata outputs from appropriate source records; no reverse-parsing generated Lit TS.",
+    "note": "notes/decisions/style-production.md",
+    "buildToolSelected": false
+  }
+}

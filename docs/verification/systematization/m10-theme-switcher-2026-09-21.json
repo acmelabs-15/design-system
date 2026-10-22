@@ -1,0 +1,526 @@
+{
+  "date": "2026-09-21",
+  "batch": "M10 Theme Switcher",
+  "status": "complete at the assigned Theme Switcher boundary",
+  "native": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "composition renders one native selected option and three decorative SVG symbols",
+            "ok": true
+          },
+          {
+            "name": "default collection name is localized-ready Appearance",
+            "ok": true
+          },
+          {
+            "name": "unaccepted request retains canonical preference and checked state",
+            "ok": true
+          },
+          {
+            "name": "request contains only the chosen appearance action and value",
+            "ok": true
+          },
+          {
+            "name": "no theme storage is written",
+            "ok": true
+          },
+          {
+            "name": "application acceptance updates the nested theme and selected option",
+            "ok": true
+          },
+          {
+            "name": "accepted theme updates do not recursively request another choice",
+            "ok": true
+          },
+          {
+            "name": "programmatic preference changes stay silent",
+            "ok": true
+          },
+          {
+            "name": "disabled selector blocks every option and request",
+            "ok": true
+          },
+          {
+            "name": "size reaches the composed options",
+            "ok": true
+          },
+          {
+            "name": "scope locale updates collection and option names",
+            "ok": true
+          },
+          {
+            "name": "authored accessible name overrides the default through the composed root",
+            "ok": true
+          },
+          {
+            "name": "reconnection restores preference and names",
+            "ok": true
+          },
+          {
+            "name": "nested appearance remains independently owned",
+            "ok": true
+          },
+          {
+            "name": "trusted radio navigation requests and applies the next appearance",
+            "ok": true
+          },
+          {
+            "name": "keyboard wrap reaches the system preference",
+            "ok": true
+          },
+          {
+            "name": "system changes resolve auto without overwriting the preference",
+            "ok": true
+          },
+          {
+            "name": "accessibility exposes the authored group name and localized choices",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "composition renders one native selected option and three decorative SVG symbols",
+            "ok": true
+          },
+          {
+            "name": "default collection name is localized-ready Appearance",
+            "ok": true
+          },
+          {
+            "name": "unaccepted request retains canonical preference and checked state",
+            "ok": true
+          },
+          {
+            "name": "request contains only the chosen appearance action and value",
+            "ok": true
+          },
+          {
+            "name": "no theme storage is written",
+            "ok": true
+          },
+          {
+            "name": "application acceptance updates the nested theme and selected option",
+            "ok": true
+          },
+          {
+            "name": "accepted theme updates do not recursively request another choice",
+            "ok": true
+          },
+          {
+            "name": "programmatic preference changes stay silent",
+            "ok": true
+          },
+          {
+            "name": "disabled selector blocks every option and request",
+            "ok": true
+          },
+          {
+            "name": "size reaches the composed options",
+            "ok": true
+          },
+          {
+            "name": "scope locale updates collection and option names",
+            "ok": true
+          },
+          {
+            "name": "authored accessible name overrides the default through the composed root",
+            "ok": true
+          },
+          {
+            "name": "reconnection restores preference and names",
+            "ok": true
+          },
+          {
+            "name": "nested appearance remains independently owned",
+            "ok": true
+          },
+          {
+            "name": "trusted radio navigation requests and applies the next appearance",
+            "ok": true
+          },
+          {
+            "name": "keyboard wrap reaches the system preference",
+            "ok": true
+          },
+          {
+            "name": "system changes resolve auto without overwriting the preference",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "composition renders one native selected option and three decorative SVG symbols",
+            "ok": true
+          },
+          {
+            "name": "default collection name is localized-ready Appearance",
+            "ok": true
+          },
+          {
+            "name": "unaccepted request retains canonical preference and checked state",
+            "ok": true
+          },
+          {
+            "name": "request contains only the chosen appearance action and value",
+            "ok": true
+          },
+          {
+            "name": "no theme storage is written",
+            "ok": true
+          },
+          {
+            "name": "application acceptance updates the nested theme and selected option",
+            "ok": true
+          },
+          {
+            "name": "accepted theme updates do not recursively request another choice",
+            "ok": true
+          },
+          {
+            "name": "programmatic preference changes stay silent",
+            "ok": true
+          },
+          {
+            "name": "disabled selector blocks every option and request",
+            "ok": true
+          },
+          {
+            "name": "size reaches the composed options",
+            "ok": true
+          },
+          {
+            "name": "scope locale updates collection and option names",
+            "ok": true
+          },
+          {
+            "name": "authored accessible name overrides the default through the composed root",
+            "ok": true
+          },
+          {
+            "name": "reconnection restores preference and names",
+            "ok": true
+          },
+          {
+            "name": "nested appearance remains independently owned",
+            "ok": true
+          },
+          {
+            "name": "trusted radio navigation requests and applies the next appearance",
+            "ok": true
+          },
+          {
+            "name": "keyboard wrap reaches the system preference",
+            "ok": true
+          },
+          {
+            "name": "system changes resolve auto without overwriting the preference",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "verification": {
+    "unit": "900 pass, zero fail across 137 files",
+    "typecheck": "871 files, zero errors",
+    "build": "37,771 files; 119 compiled templates; 4,256 public elements",
+    "docs": "92 pages; zero undocumented elements; three live scoped examples and the application header pass in each engine"
+  },
+  "choices": [
+    "Use actual Segmented Control and the shared indicator with decorative Material Symbols.",
+    "The application retains preference/theme/storage ownership. Restore the supplied value when a request is not applied; do not retain a second selected state.",
+    "Use themeSwitcher.label/auto/light/dark localization messages and forward author naming to the composed native group."
+  ],
+  "limits": [
+    "Tabs remains before M10 closes.",
+    "Final integrated React/package/actual speech-output gates remain assigned to M22/M26."
+  ],
+  "sources": [
+    {
+      "file": "src/components/theme-switcher/theme-switcher.ts",
+      "sha256": "a9aac1f62b17364608b8104ffbb66b123f86c28ed1e5f278c6f3d5d8b49c94ea"
+    },
+    {
+      "file": "styles/components/theme-switcher/theme-switcher-structure.css",
+      "sha256": "d2ad84658de214990da6ce8c5aae1f47d52f75e8b524613349abc2e622f257dd"
+    },
+    {
+      "file": "src/define/theme-switcher.ts",
+      "sha256": "01337ef2d1dd64a7c9d83b05d18637be13a0e3ba14a9486393e5720adf3262a7"
+    }
+  ],
+  "fixtures": [
+    {
+      "file": "probe.ts",
+      "source": "import {AcmeThemeSwitcher} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/theme-switcher/theme-switcher';\nimport {AcmeTheme} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/theme/theme';\nimport {AcmeSegmentedControl} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/segmented-control/segmented-control';\nimport {AcmeSegmentedControlItem} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/segmented-control-item/segmented-control-item';\nimport {AcmeSelectionIndicator} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/internal/selection-indicator/selection-indicator';\nimport {AcmeGroup} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/group/group';\nimport {AcmeDesktopWindowsIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/icons/classes/desktop-windows-icon';\nimport {AcmeLightModeIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/icons/classes/light-mode-icon';\nimport {AcmeDarkModeIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/icons/classes/dark-mode-icon';\nimport {configureMessages} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/messages';\ncustomElements.define('acme-group',AcmeGroup);customElements.define('acme-selection-indicator',AcmeSelectionIndicator);customElements.define('acme-segmented-control',AcmeSegmentedControl);customElements.define('acme-segmented-control-item',AcmeSegmentedControlItem);customElements.define('acme-theme',AcmeTheme);customElements.define('acme-theme-switcher',AcmeThemeSwitcher);customElements.define('acme-desktop-windows-icon',AcmeDesktopWindowsIcon);customElements.define('acme-light-mode-icon',AcmeLightModeIcon);customElements.define('acme-dark-mode-icon',AcmeDarkModeIcon);\nconst results:any[]=[];const check=(name:string,ok:boolean)=>results.push({name,ok});const wait=async(n=4)=>{while(n--)await new Promise(r=>requestAnimationFrame(r));};\nconst scope=new AcmeTheme();scope.appearance='light';const picker=new AcmeThemeSwitcher();picker.id='picker';scope.append(picker);document.body.append(scope);const items=()=>[...picker.shadowRoot!.querySelectorAll('acme-segmented-control-item')];const input=(index:number)=>items()[index].shadowRoot!.querySelector('input')!;let requests:any[]=[],accept=false;picker.addEventListener('acme-request',(event:any)=>{requests.push(event.detail);if(accept){picker.value=event.detail.value;scope.appearance=event.detail.value;}else event.preventDefault();});const before=localStorage.length;\ntry{\nawait wait();check('composition renders one native selected option and three decorative SVG symbols',input(0).checked&&!input(1).checked&&!input(2).checked&&items().every(item=>item.firstElementChild!.shadowRoot!.querySelector('svg')));check('default collection name is localized-ready Appearance',picker.shadowRoot!.querySelector('acme-segmented-control')!.shadowRoot!.querySelector('[part=root]')!.getAttribute('aria-label')==='Appearance');\nitems()[2].click();await wait();check('unaccepted request retains canonical preference and checked state',picker.value==='auto'&&input(0).checked&&!input(2).checked&&scope.appearance==='light');check('request contains only the chosen appearance action and value',requests.length===1&&requests[0].action==='appearance'&&requests[0].value==='dark');check('no theme storage is written',localStorage.length===before);\naccept=true;items()[2].click();await wait();check('application acceptance updates the nested theme and selected option',picker.value==='dark'&&scope.appearance==='dark'&&input(2).checked);check('accepted theme updates do not recursively request another choice',requests.length===2);\npicker.value='light';await wait();check('programmatic preference changes stay silent',requests.length===2&&input(1).checked);picker.disabled=true;await wait();items()[0].click();check('disabled selector blocks every option and request',input(0).disabled&&input(1).disabled&&input(2).disabled&&requests.length===2);picker.disabled=false;picker.size='large';await wait();check('size reaches the composed options',input(0).getBoundingClientRect().height===32);\nconfigureMessages('fr',{'themeSwitcher.label':'Apparence','themeSwitcher.auto':'Système','themeSwitcher.light':'Clair','themeSwitcher.dark':'Sombre'});scope.locale='fr';await wait();check('scope locale updates collection and option names',input(0).getAttribute('aria-label')==='Système'&&input(1).getAttribute('aria-label')==='Clair'&&input(2).getAttribute('aria-label')==='Sombre');\npicker.ariaLabel='Choose contrast';await wait();check('authored accessible name overrides the default through the composed root',picker.shadowRoot!.querySelector('acme-segmented-control')!.shadowRoot!.querySelector('[part=root]')!.getAttribute('aria-label')==='Choose contrast');\npicker.remove();scope.append(picker);await wait();check('reconnection restores preference and names',picker.value==='light'&&input(1).checked&&input(0).getAttribute('aria-label')==='Système');\nconst nested=new AcmeTheme();nested.appearance='light';const inner=new AcmeThemeSwitcher();inner.value='light';nested.append(inner);scope.append(nested);await wait();check('nested appearance remains independently owned',nested.appearance==='light'&&scope.appearance==='dark');\n(window as any).__test={picker,scope,items,input,wait,requests};\n}catch(error){(window as any).__error=String(error);}\n(window as any).__results={results,error:(window as any).__error};\n"
+    },
+    {
+      "file": "run.ts",
+      "source": "import fs from 'node:fs';\nconst directory='/tmp/acme-m10-theme-switcher',root='/Users/peterkloss/Dev/ACMElabs/design-system';\nconst built=await Bun.build({entrypoints:[directory+'/probe.ts'],outdir:directory+'/bundle',target:'browser',format:'esm',splitting:true});if(!built.success)throw new AggregateError(built.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';\nconst pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');\nconst server=Bun.serve({port:0,hostname:'127.0.0.1',fetch(req){const url=new URL(req.url);if(url.pathname==='/tokens.css')return new Response(Bun.file(root+'/src/generated/css/document/tokens.css'),{headers:{'Content-Type':'text/css'}});if(url.pathname.endsWith('.js'))return new Response(Bun.file(directory+'/bundle'+url.pathname),{headers:{'Content-Type':'text/javascript'}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{'Content-Type':'text/html'}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});try{const page=await browser.newPage();page.on('pageerror',e=>{console.log('PAGEERROR',e.stack);report.errors.push({engine,message:e.message});});await page.goto(server.url.href);await page.waitForFunction(()=>window.__results,{},{timeout:60000});const data=await page.evaluate(()=>window.__results);if(!data.error){await page.locator('#picker acme-segmented-control-item[value=light]').press('ArrowRight');await page.evaluate(()=>window.__test.wait());data.results.push({name:'trusted radio navigation requests and applies the next appearance',ok:await page.evaluate(()=>window.__test.picker.value==='dark'&&window.__test.scope.appearance==='dark')});await page.locator('#picker acme-segmented-control-item[value=dark]').press('ArrowRight');await page.evaluate(()=>window.__test.wait());data.results.push({name:'keyboard wrap reaches the system preference',ok:await page.evaluate(()=>window.__test.picker.value==='auto'&&window.__test.scope.appearance==='auto')});await page.emulateMedia({colorScheme:'dark'});await page.evaluate(()=>window.__test.wait());data.results.push({name:'system changes resolve auto without overwriting the preference',ok:await page.evaluate(()=>window.__test.picker.value==='auto'&&window.__test.scope.hasAttribute('data-dark'))});if(engine==='chromium'){const session=await page.context().newCDPSession(page);const tree=await session.send('Accessibility.getFullAXTree');data.results.push({name:'accessibility exposes the authored group name and localized choices',ok:tree.nodes.some(n=>n.role?.value==='radiogroup'&&n.name?.value==='Choose contrast')&&tree.nodes.some(n=>n.role?.value==='radio'&&n.name?.value==='Système')});await page.screenshot({path:directory+'/theme-switcher.png'});}}if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(r=>r.ok).length,total:data.results.length,failed:data.results.filter(r=>!r.ok),error:data.error});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+'/results.json',JSON.stringify(report,null,2)+'\\n');if(report.errors.length||report.engines.some(e=>e.results.length!==(e.engine==='chromium'?18:17)||e.results.some(r=>!r.ok)))process.exitCode=1;\n"
+    }
+  ],
+  "compiled": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "composition renders one native selected option and three decorative SVG symbols",
+            "ok": true
+          },
+          {
+            "name": "default collection name is localized-ready Appearance",
+            "ok": true
+          },
+          {
+            "name": "unaccepted request retains canonical preference and checked state",
+            "ok": true
+          },
+          {
+            "name": "request contains only the chosen appearance action and value",
+            "ok": true
+          },
+          {
+            "name": "no theme storage is written",
+            "ok": true
+          },
+          {
+            "name": "application acceptance updates the nested theme and selected option",
+            "ok": true
+          },
+          {
+            "name": "accepted theme updates do not recursively request another choice",
+            "ok": true
+          },
+          {
+            "name": "programmatic preference changes stay silent",
+            "ok": true
+          },
+          {
+            "name": "disabled selector blocks every option and request",
+            "ok": true
+          },
+          {
+            "name": "size reaches the composed options",
+            "ok": true
+          },
+          {
+            "name": "scope locale updates collection and option names",
+            "ok": true
+          },
+          {
+            "name": "authored accessible name overrides the default through the composed root",
+            "ok": true
+          },
+          {
+            "name": "reconnection restores preference and names",
+            "ok": true
+          },
+          {
+            "name": "nested appearance remains independently owned",
+            "ok": true
+          },
+          {
+            "name": "trusted radio navigation requests and applies the next appearance",
+            "ok": true
+          },
+          {
+            "name": "keyboard wrap reaches the system preference",
+            "ok": true
+          },
+          {
+            "name": "system changes resolve auto without overwriting the preference",
+            "ok": true
+          },
+          {
+            "name": "accessibility exposes the authored group name and localized choices",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "composition renders one native selected option and three decorative SVG symbols",
+            "ok": true
+          },
+          {
+            "name": "default collection name is localized-ready Appearance",
+            "ok": true
+          },
+          {
+            "name": "unaccepted request retains canonical preference and checked state",
+            "ok": true
+          },
+          {
+            "name": "request contains only the chosen appearance action and value",
+            "ok": true
+          },
+          {
+            "name": "no theme storage is written",
+            "ok": true
+          },
+          {
+            "name": "application acceptance updates the nested theme and selected option",
+            "ok": true
+          },
+          {
+            "name": "accepted theme updates do not recursively request another choice",
+            "ok": true
+          },
+          {
+            "name": "programmatic preference changes stay silent",
+            "ok": true
+          },
+          {
+            "name": "disabled selector blocks every option and request",
+            "ok": true
+          },
+          {
+            "name": "size reaches the composed options",
+            "ok": true
+          },
+          {
+            "name": "scope locale updates collection and option names",
+            "ok": true
+          },
+          {
+            "name": "authored accessible name overrides the default through the composed root",
+            "ok": true
+          },
+          {
+            "name": "reconnection restores preference and names",
+            "ok": true
+          },
+          {
+            "name": "nested appearance remains independently owned",
+            "ok": true
+          },
+          {
+            "name": "trusted radio navigation requests and applies the next appearance",
+            "ok": true
+          },
+          {
+            "name": "keyboard wrap reaches the system preference",
+            "ok": true
+          },
+          {
+            "name": "system changes resolve auto without overwriting the preference",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "composition renders one native selected option and three decorative SVG symbols",
+            "ok": true
+          },
+          {
+            "name": "default collection name is localized-ready Appearance",
+            "ok": true
+          },
+          {
+            "name": "unaccepted request retains canonical preference and checked state",
+            "ok": true
+          },
+          {
+            "name": "request contains only the chosen appearance action and value",
+            "ok": true
+          },
+          {
+            "name": "no theme storage is written",
+            "ok": true
+          },
+          {
+            "name": "application acceptance updates the nested theme and selected option",
+            "ok": true
+          },
+          {
+            "name": "accepted theme updates do not recursively request another choice",
+            "ok": true
+          },
+          {
+            "name": "programmatic preference changes stay silent",
+            "ok": true
+          },
+          {
+            "name": "disabled selector blocks every option and request",
+            "ok": true
+          },
+          {
+            "name": "size reaches the composed options",
+            "ok": true
+          },
+          {
+            "name": "scope locale updates collection and option names",
+            "ok": true
+          },
+          {
+            "name": "authored accessible name overrides the default through the composed root",
+            "ok": true
+          },
+          {
+            "name": "reconnection restores preference and names",
+            "ok": true
+          },
+          {
+            "name": "nested appearance remains independently owned",
+            "ok": true
+          },
+          {
+            "name": "trusted radio navigation requests and applies the next appearance",
+            "ok": true
+          },
+          {
+            "name": "keyboard wrap reaches the system preference",
+            "ok": true
+          },
+          {
+            "name": "system changes resolve auto without overwriting the preference",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "docs": [
+    {
+      "engine": "chromium",
+      "examples": 3,
+      "header": true,
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "examples": 3,
+      "header": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "examples": 3,
+      "header": true,
+      "errors": []
+    }
+  ]
+}

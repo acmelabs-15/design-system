@@ -1,0 +1,60 @@
+{
+  "date": "2026-09-19",
+  "fingerprintedFiles": 870,
+  "changed": [],
+  "tests": {
+    "pass": 608,
+    "fail": 0,
+    "assertions": 3317,
+    "files": 88
+  },
+  "isolatedBuild": {
+    "modules": 330,
+    "compiledTemplates": 128,
+    "docsPages": 104,
+    "registeredElements": 150
+  },
+  "browser": {
+    "version": "Chrome 153",
+    "copyButton": {
+      "propertyAfterToggle": true,
+      "renderedCopied": false
+    },
+    "sharedBaseSheet": true,
+    "inputReset": {
+      "before": "changed",
+      "after": "initial",
+      "formDataRestored": true
+    },
+    "requiredInput": {
+      "formValid": true,
+      "nativeInputValid": false
+    },
+    "disabledFieldset": {
+      "hostDisabled": true,
+      "innerDisabled": false
+    }
+  },
+  "ssr": {
+    "compiled": {
+      "button": "missing template strings",
+      "calendar": "missing template strings",
+      "fieldset": "MutationObserver undefined"
+    },
+    "uncompiledControl": {
+      "button": "rendered shadow markup",
+      "calendar": "rendered shadow markup",
+      "fieldset": "MutationObserver undefined"
+    }
+  },
+  "cleanup": {
+    "temporaryBrowserPageClosed": true,
+    "temporaryServerStopped": true
+  },
+  "reviewView": {
+    "topics": 9,
+    "syntaxErrors": 0,
+    "typeErrors": 0,
+    "runtimePreview": "queued by Codex; visual rendering not independently verified"
+  }
+}

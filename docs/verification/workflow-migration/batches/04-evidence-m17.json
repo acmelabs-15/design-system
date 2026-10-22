@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m17",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.548Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m17-help-2026-09-23.json",
+      "destination": "docs/verification/systematization/m17-help-2026-09-23.json",
+      "bytes": 25915,
+      "sha256": "fcb07bb9146f2adac9defc6be121ede917de231b7c5f0e284bf9396446962d8d"
+    },
+    {
+      "source": "notes/alignment/evidence/m17-native-dialogs-2026-09-23.json",
+      "destination": "docs/verification/systematization/m17-native-dialogs-2026-09-23.json",
+      "bytes": 49118,
+      "sha256": "35119b184b622a47aa2022fef5261782c6ad7ce4625a6c8957195158d0913a1c"
+    },
+    {
+      "source": "notes/alignment/evidence/m17-native-dialogs-2026-09-23.png",
+      "destination": "docs/verification/systematization/m17-native-dialogs-2026-09-23.png",
+      "bytes": 66967,
+      "sha256": "b2284eadae6144c42cda1c8a643056d98deee8c5679cdce29770beaba80f804d"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

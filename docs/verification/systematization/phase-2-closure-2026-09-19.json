@@ -1,0 +1,227 @@
+{
+  "date": "2026-09-19",
+  "answers": [
+    {
+      "questionId": "item_companion_mapping",
+      "answer": "Use List and Group (Recommended)",
+      "note": "notes/decisions/item-content-family.md"
+    },
+    {
+      "questionId": "segmented_control_semantics",
+      "answer": "Radio-based choice (Recommended)",
+      "note": "notes/decisions/segmented-control.md"
+    },
+    {
+      "questionId": "app_bar_disposition",
+      "answer": "One App Bar (Recommended)",
+      "note": "notes/decisions/app-bar.md"
+    },
+    {
+      "questionId": "navigation_companion_disposition",
+      "answer": "Navigation compositions (Recommended)",
+      "note": "notes/decisions/navigation-compositions.md"
+    },
+    {
+      "questionId": "tags_wrapper_disposition",
+      "answer": "Use Group (Recommended)",
+      "note": "notes/decisions/group-presentation.md"
+    },
+    {
+      "questionId": "logs_component_disposition",
+      "answer": "Event-log examples (Recommended)",
+      "note": "notes/decisions/logs-composition.md"
+    },
+    {
+      "questionId": "named_size_vocabulary",
+      "answer": "Full words (Recommended)",
+      "note": "notes/decisions/named-size-vocabulary.md"
+    },
+    {
+      "questionId": "shape_vocabulary",
+      "answer": "Separate the concepts (Recommended)",
+      "note": "notes/decisions/shape-vocabulary.md"
+    },
+    {
+      "questionId": "state_vocabulary",
+      "answer": "Meaning-specific names (Recommended)",
+      "note": "notes/decisions/state-vocabulary.md"
+    },
+    {
+      "questionId": "chip_toggle_button_disposition",
+      "answer": "Toggle Button (Recommended)",
+      "note": "notes/decisions/toggle-button.md"
+    },
+    {
+      "questionId": "text_role_vocabulary",
+      "answer": "Heading (Recommended)",
+      "note": "notes/decisions/text-role-vocabulary.md"
+    },
+    {
+      "questionId": "open_expanded_vocabulary",
+      "answer": "Distinguish them (Recommended)",
+      "note": "notes/decisions/open-expanded-vocabulary.md"
+    },
+    {
+      "questionId": "event_vocabulary",
+      "answer": "Shared meaning-based names (Recommended)",
+      "note": "notes/decisions/event-vocabulary.md"
+    }
+  ],
+  "clarification": {
+    "source": "You can also use V and H stack and stack components instead of group, where group specific stuff isn't needed.",
+    "decision": "Ordinary spacing/alignment uses Stack/HStack/VStack; Group reserved where attached/shared-presentation/group-specific behavior required. List retains semantic collection responsibility, Card surface. Prior votes did not impose Group on every recipe."
+  },
+  "decisions": {
+    "itemCompanions": {
+      "answer": "Use List and Group (Recommended)",
+      "decision": "Remove Entity Content, Entity List and Items. Item parts supply content; List supplies semantic collections; Group/Card supply arrangement/surfaces. Preserve border/separator/stripe examples; no new ItemGroup.",
+      "savedToProject": false
+    },
+    "formsCorrection": "Forms is documentation guide tags[], not acme-forms. Preserve native and optional TanStack Form already selected.",
+    "sourceAudit": "Current companion source and saved full reference review read; shadcn Base Item full page revisited.",
+    "segmented": {
+      "answer": "Radio-based choice (Recommended)",
+      "decision": "Segmented Control shares Radio Group behavior and forms, Group attached presentation, shared single-selection indicator owning Lit Motion; replace Switch/SwitchControl old interfaces; Tabs remains panel control."
+    },
+    "appBar": {
+      "answer": "One App Bar (Recommended)",
+      "decision": "One flexible App Bar replaces Appbar and Topbar. Optional composable identity/navigation/search/actions; no compulsory theme switcher or implicit Toolbar role."
+    },
+    "navigation": {
+      "answer": "Navigation compositions (Recommended)",
+      "decision": "Remove Side Nav/Subnav; Sidebar and horizontal page/AppBar compositions retain real links/current-page indication. No new Navigation family or automaticTabs."
+    },
+    "tags": {
+      "answer": "Use Group (Recommended)",
+      "decision": "Remove Tags wrapper, retain Tag. Later clarification uses Stack/HStack/VStack for simple wrapping/spacing as supported, Group only for group-specific features."
+    },
+    "logs": {
+      "answer": "Event-log examples (Recommended)",
+      "decision": "Remove fixed HTTP-schema Logs; preserve event history via Table/Accordion examples. Live-stream announcement/follow semantics require separate requirements; no broad Log Viewer selected."
+    },
+    "layoutClarification": {
+      "source": "You can also use V and H stack and stack components instead of group, where group specific stuff isn't needed.",
+      "decision": "Ordinary spacing/alignment uses Stack/HStack/VStack; Group reserved where attached/shared-presentation/group-specific behavior required. List retains semantic collection responsibility, Card surface. Prior votes did not impose Group on every recipe."
+    },
+    "savedToProject": true,
+    "chip": {
+      "answer": "Toggle Button (Recommended)",
+      "decision": "Remove Chip; preserve persistent aria-pressed button capability within Buttonfamily. Shape separate; no broaderChip removals/selection/formengine adopted. OldToggle->Switch stands."
+    },
+    "size": {
+      "answer": "Full words (Recommended)",
+      "decision": "Named size tiers use fullwords tiny/small/medium/large, consistently named extensions asneeded; no short aliases. Relative scale notidenticalpixels; explicitdimensions anddensity distinct."
+    },
+    "shape": {
+      "answer": "Separate the concepts (Recommended)",
+      "decision": "Overall circle/pill/square shape distinct fromcorner treatment; square means equalsides, notsharpcorners. Exact support/props inventory."
+    },
+    "state": {
+      "answer": "Meaning-specific names (Recommended)",
+      "decision": "Highlighted navigatedoption; Selected collectionvalue; Checked checkbox/radio value; Pressed togglestate; Current navigation; Focused actualfocus. NativeARIA/CSSkeepplatformterms; persistentpressed nottransientactive."
+    },
+    "technicalClosure": {
+      "toolbar": "Selected responsibility split plus radio-based Segmented Control resolves Phase2 ownership: Group/Stacks arrange; Toolbar coordinates effective focus; nested inputs/selection controls retain their value/form and necessary key semantics. One owner per gesture; context-specific key routing, disabled discovery, RTL and overlay focus are explicit Phase4 acceptance obligations, not independent competing engines.",
+      "existingConventions": "Variant vs type; start/end and external add-ons already selected. Preserve nativeARIA/CSS names. Spell out unambiguous retained helper concepts (Sparkline, description, footer, information icon, usage summary); exact component survival/implementation reviewed in inventory, no aliases.",
+      "stateDerived": "Invalid control state and error content are different. Public loading versus native aria-busy differ in role; no new busy/pending naming vote needed. Open content state, expanded disclosure indication and transition visibility must not be blindly unified; native attribute forwarding remains intact.",
+      "formsCorrection": "Remove forms from component disposition table, retaining forms guide and selected native/TanStack form support.",
+      "knownResearchGaps": "Material Chips all four article bodies read; dynamic tokens and16specfigures notvisuallyinspected. Broader Chip family notadopted; full visual/reference verification remains needed for relevant future visual decisions. Material Progress pending gap frompreviouscheckpoint stands."
+    },
+    "textRoles": {
+      "answer": "Heading (Recommended)",
+      "decision": "Use heading for visible component headings; label forcontrol/option names; description forsupportingprose; metadata forstructuredfacts; header/footer forregions. KeepnativeHTMLtitle meaning. Headingname doesnotforceHTMLlevel."
+    },
+    "openState": {
+      "answer": "Distinguish them (Recommended)",
+      "decision": "Open forfloating surfaces; expanded fordisclosure/hierarchy; visible foractualpresentation where needed. Nativearia-expanded/platform meanings retained; no multiple competingstatepropsinonecomponent."
+    },
+    "events": {
+      "answer": "Shared meaning-based names (Recommended)",
+      "decision": "Keep acme- prefix, commonnames forcommonmeanings. Distinguish liveinput/committedchange,closerequest/transitioncompletion. Exactlyonepublicnotificationperaction throughcomposition; payloads/cancellation/timing inventory."
+    },
+    "census": {
+      "files": 649,
+      "surfaces": {
+        "src/components": 386,
+        "src/shared": 27,
+        "docs-src": 109,
+        "tools/geist/maps": 127
+      },
+      "componentImplementationFiles": 150,
+      "registeredTags": 150,
+      "decoratedPropertyDeclarations": 777,
+      "distinctPropertyNames": 386,
+      "explicitStringAttributeNames": 177,
+      "literalNamedSlots": 56,
+      "slotOccurrences": 128,
+      "literalCustomEventNames": 31,
+      "emitSites": 80,
+      "referencedCssProperties": {
+        "acme": 89,
+        "ds": 218
+      },
+      "limits": "Staticproducer names exclude inherited/dynamicallysupplied APIs; CSSrefs notclassified public hooks; exactcomponentinterfaces stillPhase4."
+    },
+    "remainingClassifications": [
+      "Positioning distinguishes placement, alignment, offset and stack index; combined/separate properties inventory.",
+      "Clearability synonyms normalize to alreadyselected clearable capability onlywhere meaningmatches; visibility/interactionpolicy/booleandefaults notblindlymerged.",
+      "Color CSSvalues, palette scales, semanticintent andnumericdirection distinct; Stat alreadyseparatesdirection/desirability.",
+      "CSS namespaces --acme/--ds census is notpublicAPI approval; public/private andtheme contractsPhase4.",
+      "Expand obviousabbreviations description/header/footer/chevron/breadcrumbs/conversion; don'tmerge metadata/context/subtitle.",
+      "Retainedhelper concepts use Sparkline, information icon andusage summary; exactpublicparts &filesmigration later. atom-state correctlynamesTanStackAtoms.",
+      "Family suffixes followselectedsemantics, no blanketplural->Group; Radio/Checkboxselection,Accordion,TreeView retainownership."
+    ],
+    "closureStatus": "Phase 2 complete: decisions, terminology, handoff and record validation captured. Phase 3 awaits Peter's start.",
+    "fileCensusVerification": {
+      "files": 649,
+      "sha256Recorded": true,
+      "excluded": "Finder .DS_Store metadata; not project source"
+    },
+    "nextPersistence": [
+      "Create notes/alignment/terms.md with resolvedclusters,fullcensus coverage and explicitinventoryreturnpoints",
+      "Record13selecteddecisions plusStack/HStack/VStack clarification andFormsclassificationcorrection",
+      "Update existing Item/Group/Toolbar/Stat andnewAppBar/ToggleButton/segmented decisions withoutresurrectingoldnames",
+      "Update register missingTopbar/SideNav/Subnav/Tags andexplicitcomponentmappings",
+      "UpdateglossaryandWhereweare; markPhase2complete onlyafter recordsandvalidation",
+      "PreserveMaterialProgress/Chips visualcoverage gaps as inventory preconditions,notfinishedfullreviews"
+    ],
+    "nextAfterPersistence": "Ready for Peter to startPhase3 architecture review; no sourceimplementation.",
+    "verifiedCensus": {
+      "files": 649,
+      "implementationFiles": 150,
+      "registeredTags": 150,
+      "propertyDeclarations": 777,
+      "decoratedAccessors": 1,
+      "distinctPropertyNames": 386,
+      "namedSlots": 56,
+      "slotOccurrences": 128,
+      "literalAcmeEventSites": 74,
+      "distinctAcmeEvents": 31,
+      "dynamicEventSites": 7,
+      "otherEventSites": 0
+    },
+    "censusCorrection": "Earlier broad report of80literal emission sites was not reproduced by the final AST method. Current component AST has74literal acme- sites and7dynamic Event/CustomEvent sites;31distinct literal names.777property declarations plus1decoratedaccessor;386distinct names."
+  },
+  "census": {
+    "files": 649,
+    "implementationFiles": 150,
+    "registeredTags": 150,
+    "propertyDeclarations": 777,
+    "decoratedAccessors": 1,
+    "distinctPropertyNames": 386,
+    "namedSlots": 56,
+    "slotOccurrences": 128,
+    "literalAcmeEventSites": 74,
+    "distinctAcmeEvents": 31,
+    "dynamicEventSites": 7,
+    "otherEventSites": 0
+  },
+  "censusFile": "notes/alignment/evidence/phase-2-terms-census-2026-09-19.json",
+  "limits": [
+    "Source implementation unchanged.",
+    "Material Progress dynamic token/diagram and Lit implementation review remains a visual-inventory prerequisite.",
+    "Material Chips four article bodies read; dynamic tokens and16figures notvisuallyreviewed. BroaderChipfamily notselected.",
+    "Exact component APIs, payloads/defaults, combinedaccessibility tests and pathmigration remainPhases3–5."
+  ],
+  "savedToProject": true
+}

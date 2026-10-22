@@ -1,0 +1,104 @@
+{
+  "evaluation": "react-baseline",
+  "packages": {
+    "core": "0.2.0",
+    "reactWrappers": "0.2.0",
+    "react": "19.3.0",
+    "reactDOM": "19.3.0"
+  },
+  "build": "pass",
+  "typecheck": "pass",
+  "checks": [
+    {
+      "name": "Native AX names",
+      "pass": true,
+      "detail": [
+        "tablist:Editor views",
+        "tabpanel:Source",
+        "radiogroup:Plan",
+        "radio:Starter",
+        "radio:Pro",
+        "tab:Source",
+        "tab:Output"
+      ]
+    },
+    {
+      "name": "Attached surfaces",
+      "pass": true
+    },
+    {
+      "name": "Keyboard Tab enters selected Source tab",
+      "pass": true
+    },
+    {
+      "name": "ArrowRight activates Output",
+      "pass": true
+    },
+    {
+      "name": "Editor state preserved",
+      "pass": true
+    },
+    {
+      "name": "Editor mounted once while switching",
+      "pass": true,
+      "detail": {
+        "events": [
+          {
+            "kind": "tab",
+            "value": "output"
+          },
+          {
+            "kind": "tab",
+            "value": "source"
+          }
+        ],
+        "mounts": 1,
+        "cleanups": 0
+      }
+    },
+    {
+      "name": "Plan changes independently of tab",
+      "pass": false
+    }
+  ],
+  "firstFailuresAndRepairs": [
+    {
+      "phase": "setup",
+      "error": "Evaluation directory did not exist; initial ls returned ENOENT.",
+      "repair": "Created assigned evaluation directory."
+    },
+    {
+      "phase": "API discovery",
+      "error": "card-group.d.ts did not exist.",
+      "repair": "Read Group declarations; composed RadioGroup > Group attached > RadioCard."
+    },
+    {
+      "phase": "typecheck",
+      "error": "TS5103: Invalid value for '--ignoreDeprecations' (6.0).",
+      "repair": "Removed unnecessary ignoreDeprecations setting; typecheck passes."
+    },
+    {
+      "phase": "browser",
+      "error": "Error: Plan changes independently of tab: undefined"
+    }
+  ],
+  "pass": false,
+  "evidence": {
+    "events": [
+      {
+        "kind": "tab",
+        "value": "output"
+      },
+      {
+        "kind": "tab",
+        "value": "source"
+      },
+      {
+        "kind": "plan",
+        "value": "pro"
+      }
+    ],
+    "mounts": 1,
+    "cleanups": 0
+  }
+}

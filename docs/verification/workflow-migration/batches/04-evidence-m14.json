@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m14",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.522Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m14-card-2026-09-23.png",
+      "destination": "docs/verification/systematization/m14-card-2026-09-23.png",
+      "bytes": 12141,
+      "sha256": "aec7f4a9e5694b5a83d99b036806b549329eca98202568c011874cb35cb28a7c"
+    },
+    {
+      "source": "notes/alignment/evidence/m14-item-2026-09-23.png",
+      "destination": "docs/verification/systematization/m14-item-2026-09-23.png",
+      "bytes": 8920,
+      "sha256": "db6464ae474c3747c3165bfe6a140d89658724bdec351f88895402c0dbd776fc"
+    },
+    {
+      "source": "notes/alignment/evidence/m14-native-content-2026-09-23.json",
+      "destination": "docs/verification/systematization/m14-native-content-2026-09-23.json",
+      "bytes": 15977,
+      "sha256": "d16a2234bad1608e9a50b4add123993a7d3912b6ac9a11d15a0cfb79369120da"
+    },
+    {
+      "source": "notes/alignment/evidence/m14-resizable-2026-09-23.json",
+      "destination": "docs/verification/systematization/m14-resizable-2026-09-23.json",
+      "bytes": 51870,
+      "sha256": "abe2d9961a9d7c5b4b66db64de92e308a0025cc466ea3bcafc5c8c34ba66f01f"
+    },
+    {
+      "source": "notes/alignment/evidence/m14-resizable-2026-09-23.png",
+      "destination": "docs/verification/systematization/m14-resizable-2026-09-23.png",
+      "bytes": 15885,
+      "sha256": "eca44357f19bd34ae492d559ba9a2ece2a67c8b28b84ff916f8a03521b1ebf82"
+    },
+    {
+      "source": "notes/alignment/evidence/m14-scroll-area-2026-09-23.json",
+      "destination": "docs/verification/systematization/m14-scroll-area-2026-09-23.json",
+      "bytes": 34553,
+      "sha256": "89ec33fae03c05c6d6cf9c7c01fc7e2c9ac0e80cf5db623f2510d904ae55bf78"
+    },
+    {
+      "source": "notes/alignment/evidence/m14-scroll-area-2026-09-23.png",
+      "destination": "docs/verification/systematization/m14-scroll-area-2026-09-23.png",
+      "bytes": 6412,
+      "sha256": "a20994076403a47383e3f0bddd7a24ab8093f63269d4787f6bdc232192d4a315"
+    },
+    {
+      "source": "notes/alignment/evidence/m14-surfaces-2026-09-23.json",
+      "destination": "docs/verification/systematization/m14-surfaces-2026-09-23.json",
+      "bytes": 18920,
+      "sha256": "055d000bb997c99c293d347b75a31858c20a5ef421176a7ad7eb147b269cea18"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m15",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.535Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m15-command-menu-2026-09-23.json",
+      "destination": "docs/verification/systematization/m15-command-menu-2026-09-23.json",
+      "bytes": 26614,
+      "sha256": "0b190e782b959ae71272ec4d5aa346b63d1521e5b96cba00e04a377b0e4e9321"
+    },
+    {
+      "source": "notes/alignment/evidence/m15-command-menu-2026-09-23.png",
+      "destination": "docs/verification/systematization/m15-command-menu-2026-09-23.png",
+      "bytes": 69461,
+      "sha256": "80543055b62742090f9ce53ef8525e3740669d614dac4e97a88365d5b1708f89"
+    },
+    {
+      "source": "notes/alignment/evidence/m15-disclosure-2026-09-23.json",
+      "destination": "docs/verification/systematization/m15-disclosure-2026-09-23.json",
+      "bytes": 27009,
+      "sha256": "aed1e5e7f65571adb3abfcd87be59a57351f568369bc0e772ca6dd9d7172209b"
+    },
+    {
+      "source": "notes/alignment/evidence/m15-disclosure-2026-09-23.png",
+      "destination": "docs/verification/systematization/m15-disclosure-2026-09-23.png",
+      "bytes": 329225,
+      "sha256": "b1b78babe959cdd38806a6e7936d7e060a21e23d2bcd3cae19c55a4793a826bb"
+    },
+    {
+      "source": "notes/alignment/evidence/m15-navigation-2026-09-23.json",
+      "destination": "docs/verification/systematization/m15-navigation-2026-09-23.json",
+      "bytes": 23028,
+      "sha256": "b6f1becbedc71fcf4ec364cd57ab69dcd51cf4ee69f6d70a781f09e89030ffe4"
+    },
+    {
+      "source": "notes/alignment/evidence/m15-navigation-app-bar-2026-09-23.png",
+      "destination": "docs/verification/systematization/m15-navigation-app-bar-2026-09-23.png",
+      "bytes": 264332,
+      "sha256": "cb612a84bfdcf6c436b73d36fa05c7cd3597e0c05a541d4a2abe357c5048a231"
+    },
+    {
+      "source": "notes/alignment/evidence/m15-navigation-mobile-2026-09-23.png",
+      "destination": "docs/verification/systematization/m15-navigation-mobile-2026-09-23.png",
+      "bytes": 201544,
+      "sha256": "37da780e27beac8854a12a0f8fe47967d10aced56f0de108dec2cdcbabc1fadc"
+    },
+    {
+      "source": "notes/alignment/evidence/m15-steps-2026-09-23.png",
+      "destination": "docs/verification/systematization/m15-steps-2026-09-23.png",
+      "bytes": 579289,
+      "sha256": "07db62c2e0012fc8469f365e645266c923a5dcbd264fa9092168d2f3e191cc9e"
+    },
+    {
+      "source": "notes/alignment/evidence/m15-steps-timeline-2026-09-23.json",
+      "destination": "docs/verification/systematization/m15-steps-timeline-2026-09-23.json",
+      "bytes": 26308,
+      "sha256": "0fdc070fb0661fc0b8c5bf17cd1372cd4855dde652bb719d55d14fdd5a2f6010"
+    },
+    {
+      "source": "notes/alignment/evidence/m15-timeline-2026-09-23.png",
+      "destination": "docs/verification/systematization/m15-timeline-2026-09-23.png",
+      "bytes": 267871,
+      "sha256": "80fe9889ff1f0b9c31ff49dfc575cc76f52107355319f7a5c42fd409b6937c90"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "reviewedOn": "2026-09-19",
+  "scope": "Phase 2 glossary separation and message-family dispositions; records only",
+  "decisions": [
+    {
+      "id": "glossary_contexts",
+      "answer": "Two linked glossaries (Recommended)",
+      "effect": "Separate component-library and generation/comparison contexts; shared terms defined once."
+    },
+    {
+      "id": "feedback_both",
+      "answer": "Component plus examples (Recommended)",
+      "effect": "Rebuild Feedback from shared house controls; inline/pop-up examples; application sends data."
+    },
+    {
+      "id": "error_disposition_diagram",
+      "answer": "Remove standalone Error (Recommended)",
+      "effect": "Choose Toast/Alert/Banner by context; preserve attached validation and small plain treatments."
+    },
+    {
+      "id": "empty_state_followup",
+      "answer": "Great, let's continue.",
+      "answerContext": "Peter challenged the recipe-only recommendation and asked for a Chakra comparison. The assistant then recommended keeping Empty State built from shared parts with examples, explaining that consistent structure can justify it; Peter accepted.",
+      "effect": "Keep Empty State component and examples. Exact interface/style contracts remain pending."
+    }
+  ],
+  "diagram": {
+    "path": "/Users/peterkloss/Documents/toast-vs-alert-vs-banner.png",
+    "inspected": true,
+    "role": "User-supplied reference for message scope, placement and lifecycle; not independent prevalence evidence."
+  },
+  "sources": [
+    {
+      "url": "https://chakra-ui.com/docs/components/popover",
+      "finding": "Documents composing a form inside Popover."
+    },
+    {
+      "url": "https://www.radix-ui.com/themes/docs/components/popover",
+      "finding": "Shows comment content built from shared controls inside Popover."
+    },
+    {
+      "url": "https://material-web.dev/about/intro/",
+      "finding": "Shows Material controls composed in native forms."
+    },
+    {
+      "url": "https://github.com/material-components/material-web/blob/main/dialog/internal/dialog.ts",
+      "finding": "Full Lit implementation inspected: content/actions slots, native modal dialog, form method=dialog handling; no generic feedback submission service."
+    },
+    {
+      "url": "https://developer.semrush.com/intergalactic/components/feedback-form/feedback-form",
+      "finding": "Dedicated FeedbackForm supports larger feedback patterns."
+    },
+    {
+      "url": "https://developer.semrush.com/intergalactic/components/feedback-form/feedback-form-api",
+      "finding": "Shared form parts and preconfigured FeedbackRating; application onSubmit; Final Form used upstream only."
+    },
+    {
+      "url": "https://developer.semrush.com/intergalactic/patterns/feedback-rating/feedback-rating",
+      "finding": "Larger pattern uses FeedbackForm, rating, notice, modal and success notification."
+    },
+    {
+      "url": "https://cloudscape.design/patterns/general/collect-user-feedback/",
+      "finding": "Four composed examples; documented submission, error, focus and announcement states."
+    },
+    {
+      "url": "https://design-system.e-infra.cz/docs/components/compounds/feedback-form",
+      "finding": "Complete Feedback Form with asynchronous application submit handler and success/error states."
+    },
+    {
+      "url": "https://atlaskit.atlassian.com/packages/web-platform/feedback-collector",
+      "finding": "Search result described a form and collector, but full retrieval returned Oops/Could not find page. Current claims verified in published package instead."
+    },
+    {
+      "url": "https://registry.npmjs.org/@atlaskit/feedback-collector/-/feedback-collector-16.11.2.tgz",
+      "finding": "Read FeedbackForm and FeedbackCollector declarations and collector implementation directly from archive; form callback separate from service-specific collector.",
+      "files": [
+        "package/dist/types/components/FeedbackForm.d.ts",
+        "package/dist/types/components/FeedbackCollector.d.ts",
+        "package/dist/es2019/components/FeedbackCollector.js"
+      ]
+    },
+    {
+      "url": "https://chakra-ui.com/docs/components/field",
+      "finding": "Field.ErrorText belongs to field composition."
+    },
+    {
+      "url": "https://chakra-ui.com/docs/components/alert",
+      "finding": "Alert supports contextual messages with error/success/warning/info status."
+    },
+    {
+      "url": "https://material-web.dev/components/text-field/",
+      "finding": "Native/manual validation and error/supporting text."
+    },
+    {
+      "url": "https://github.com/material-components/material-web/blob/main/textfield/internal/text-field.ts",
+      "finding": "Targeted source inspection: error text routed through field; input and textarea aria-describedby target description; reportValidity handling inspected."
+    },
+    {
+      "url": "https://chakra-ui.com/docs/components/empty-state",
+      "finding": "Named root/content/indicator/title/description and closed composition example."
+    },
+    {
+      "url": "https://github.com/chakra-ui/chakra-ui/blob/main/packages/react/src/components/empty-state/empty-state.ts",
+      "finding": "Full source read: div root/content/indicator, h3 title, paragraph description; no dedicated interaction state machine in file."
+    },
+    {
+      "url": "https://github.com/chakra-ui/chakra-ui/blob/main/packages/react/src/theme/recipes/empty-state.ts",
+      "finding": "Full style source read: width, centering, indicator/text styling, sm/md/lg padding/gap/typography."
+    },
+    {
+      "url": "https://ant.design/components/empty",
+      "finding": "Named absent-content component with configurable image, description and actions."
+    },
+    {
+      "url": "https://github.com/material-components/material-web/blob/main/all.ts",
+      "finding": "Full all-component entry read; no Empty State entry. This is a bounded catalogue observation."
+    }
+  ],
+  "publishedPackages": [
+    {
+      "name": "@atlaskit/feedback-collector",
+      "version": "16.11.2",
+      "published": "2026-09-17T03:50:59.235Z",
+      "deprecated": null
+    },
+    {
+      "name": "@semcore/feedback-form",
+      "version": "17.2.3",
+      "published": "2026-09-10T13:56:16.149Z",
+      "deprecated": null
+    }
+  ],
+  "localEvidence": [
+    {
+      "path": "src/components/feedback/feedback.ts",
+      "locations": "100-175;238-303",
+      "finding": "Presentations, settings, fixed topics, payload context, validation, POST, success/close."
+    },
+    {
+      "path": "src/components/error/error.ts",
+      "locations": "28-41",
+      "finding": "Generic error object, label/size, always-atomic alert, external action link."
+    },
+    {
+      "path": "src/components/input/input.ts",
+      "locations": "149-169",
+      "finding": "Error rendered without explicit aria-describedby connection in inspected render."
+    },
+    {
+      "path": "src/components/textarea/textarea.ts",
+      "locations": "73-94",
+      "finding": "Error rendered without explicit aria-describedby connection in inspected render."
+    },
+    {
+      "path": "src/components/select/select.ts",
+      "locations": "171-188",
+      "finding": "Error connected through aria-describedby."
+    },
+    {
+      "path": "src/components/destructive-modal/destructive-modal.ts",
+      "locations": "120-145",
+      "finding": "Consumes field error and separate operation error."
+    },
+    {
+      "path": "src/components/empty-state/empty-state.ts",
+      "locations": "19-26;54-65",
+      "finding": "Optional parts; title/description divs; border and combined secondary treatment."
+    },
+    {
+      "path": "src/components/empty-state/empty-state.styles.ts",
+      "finding": "Generated styles include 70px horizontal padding, 340px text width, coupled background/title size."
+    },
+    {
+      "path": "tools/geist/maps/empty-state.ts",
+      "finding": "Generator input inspected; no modifications."
+    },
+    {
+      "path": "src/components/note/note.ts",
+      "finding": "Inline label/icon/action message; role note presently."
+    },
+    {
+      "path": "src/components/banner/banner.ts",
+      "finding": "Promotional link arrangement with 961px responsive switch; no general dismissal interface in class."
+    },
+    {
+      "path": "src/components/toast/toast.ts",
+      "locations": "69-105;145-206",
+      "finding": "Existing timing/action/announcement mechanisms; no new contract adopted."
+    },
+    {
+      "path": "src/components/error-card/error-card.ts",
+      "finding": "Error logging/retry surface; prior deletion stands."
+    },
+    {
+      "path": "src/components/project-banner/project-banner.ts",
+      "finding": "Project-wide message/action; prior deletion stands."
+    },
+    {
+      "path": "tools/geist/corpus/md/feedback.md",
+      "finding": "Saved reference snapshot read, not reverified live."
+    },
+    {
+      "path": "tools/geist/corpus/md/error.md",
+      "finding": "Saved reference snapshot read, not reverified live."
+    },
+    {
+      "path": "tools/geist/corpus/md/empty-state.md",
+      "finding": "Saved reference snapshot read, not reverified live."
+    }
+  ],
+  "limits": [
+    "No community-wide popularity measurement.",
+    "Remote main-branch source observations are dated, not pinned implementation inputs.",
+    "No browser, screen-reader or completed component acceptance test ran.",
+    "No reference package or policy adopted except the explicitly selected house dispositions.",
+    "Exact public interfaces, style values, heading semantics and announcement/dismissal/submission contracts remain for inventory.",
+    "Implementation waits for Phase 5 approval."
+  ],
+  "researchCorrections": [
+    "Initial Feedback recipe-only recommendation replaced after Peter requested broader component/pattern research.",
+    "Initial Empty State recipe-only recommendation replaced after Chakra comparison and clarification of consistent-structure value.",
+    "Guessed Chakra empty-state.tsx returned 404; directory listing located empty-state.ts, read fully."
+  ]
+}

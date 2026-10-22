@@ -1,0 +1,321 @@
+{
+  "date": "2026-09-22",
+  "status": "Date runtime correction and production delivery complete; Calendar UI remains in progress",
+  "dependency": "@internationalized/date 3.12.4",
+  "patch": "patches/@internationalized%2Fdate@3.12.4.patch",
+  "writer": "scripts/date-runtime.ts",
+  "runtime": "dist/shared/date.js",
+  "provenance": "dist/licenses/date-runtime.json",
+  "defects": [
+    "Negative fractional UTC offsets, including negative zero hours",
+    "Day zero accepted by three date-time parsers"
+  ],
+  "verification": {
+    "focusedTests": 12,
+    "focusedAssertions": 114,
+    "fullSuite": {
+      "passed": 892,
+      "failed": 0,
+      "assertions": 121268
+    },
+    "build": "strict full package build passes",
+    "site": {
+      "pages": 96,
+      "elements": 4262,
+      "undocumented": 0
+    },
+    "distributions": [
+      {
+        "engine": "chromium",
+        "entry": "cdn/define/relative-time.js",
+        "pass": true,
+        "result": {
+          "values": [
+            {
+              "value": "2026-09-22T00:30:00-03:30",
+              "expected": "2026-09-22T04:00:00.000Z",
+              "actual": "2026-09-22T04:00:00.000Z"
+            },
+            {
+              "value": "2026-09-22T00:30:00-00:30",
+              "expected": "2026-09-22T01:00:00.000Z",
+              "actual": "2026-09-22T01:00:00.000Z"
+            }
+          ],
+          "invalidRejected": true
+        }
+      },
+      {
+        "engine": "chromium",
+        "entry": "bundle/design-system.js",
+        "pass": true,
+        "result": {
+          "values": [
+            {
+              "value": "2026-09-22T00:30:00-03:30",
+              "expected": "2026-09-22T04:00:00.000Z",
+              "actual": "2026-09-22T04:00:00.000Z"
+            },
+            {
+              "value": "2026-09-22T00:30:00-00:30",
+              "expected": "2026-09-22T01:00:00.000Z",
+              "actual": "2026-09-22T01:00:00.000Z"
+            }
+          ],
+          "invalidRejected": true
+        }
+      },
+      {
+        "engine": "chromium",
+        "entry": "bundle/design-system.min.js",
+        "pass": true,
+        "result": {
+          "values": [
+            {
+              "value": "2026-09-22T00:30:00-03:30",
+              "expected": "2026-09-22T04:00:00.000Z",
+              "actual": "2026-09-22T04:00:00.000Z"
+            },
+            {
+              "value": "2026-09-22T00:30:00-00:30",
+              "expected": "2026-09-22T01:00:00.000Z",
+              "actual": "2026-09-22T01:00:00.000Z"
+            }
+          ],
+          "invalidRejected": true
+        }
+      },
+      {
+        "engine": "chromium",
+        "entry": "bundle/design-system.standalone.min.js",
+        "pass": true,
+        "result": {
+          "values": [
+            {
+              "value": "2026-09-22T00:30:00-03:30",
+              "expected": "2026-09-22T04:00:00.000Z",
+              "actual": "2026-09-22T04:00:00.000Z"
+            },
+            {
+              "value": "2026-09-22T00:30:00-00:30",
+              "expected": "2026-09-22T01:00:00.000Z",
+              "actual": "2026-09-22T01:00:00.000Z"
+            }
+          ],
+          "invalidRejected": true
+        }
+      },
+      {
+        "engine": "firefox",
+        "entry": "cdn/define/relative-time.js",
+        "pass": true,
+        "result": {
+          "values": [
+            {
+              "value": "2026-09-22T00:30:00-03:30",
+              "expected": "2026-09-22T04:00:00.000Z",
+              "actual": "2026-09-22T04:00:00.000Z"
+            },
+            {
+              "value": "2026-09-22T00:30:00-00:30",
+              "expected": "2026-09-22T01:00:00.000Z",
+              "actual": "2026-09-22T01:00:00.000Z"
+            }
+          ],
+          "invalidRejected": true
+        }
+      },
+      {
+        "engine": "firefox",
+        "entry": "bundle/design-system.js",
+        "pass": true,
+        "result": {
+          "values": [
+            {
+              "value": "2026-09-22T00:30:00-03:30",
+              "expected": "2026-09-22T04:00:00.000Z",
+              "actual": "2026-09-22T04:00:00.000Z"
+            },
+            {
+              "value": "2026-09-22T00:30:00-00:30",
+              "expected": "2026-09-22T01:00:00.000Z",
+              "actual": "2026-09-22T01:00:00.000Z"
+            }
+          ],
+          "invalidRejected": true
+        }
+      },
+      {
+        "engine": "firefox",
+        "entry": "bundle/design-system.min.js",
+        "pass": true,
+        "result": {
+          "values": [
+            {
+              "value": "2026-09-22T00:30:00-03:30",
+              "expected": "2026-09-22T04:00:00.000Z",
+              "actual": "2026-09-22T04:00:00.000Z"
+            },
+            {
+              "value": "2026-09-22T00:30:00-00:30",
+              "expected": "2026-09-22T01:00:00.000Z",
+              "actual": "2026-09-22T01:00:00.000Z"
+            }
+          ],
+          "invalidRejected": true
+        }
+      },
+      {
+        "engine": "firefox",
+        "entry": "bundle/design-system.standalone.min.js",
+        "pass": true,
+        "result": {
+          "values": [
+            {
+              "value": "2026-09-22T00:30:00-03:30",
+              "expected": "2026-09-22T04:00:00.000Z",
+              "actual": "2026-09-22T04:00:00.000Z"
+            },
+            {
+              "value": "2026-09-22T00:30:00-00:30",
+              "expected": "2026-09-22T01:00:00.000Z",
+              "actual": "2026-09-22T01:00:00.000Z"
+            }
+          ],
+          "invalidRejected": true
+        }
+      },
+      {
+        "engine": "webkit",
+        "entry": "cdn/define/relative-time.js",
+        "pass": true,
+        "result": {
+          "values": [
+            {
+              "value": "2026-09-22T00:30:00-03:30",
+              "expected": "2026-09-22T04:00:00.000Z",
+              "actual": "2026-09-22T04:00:00.000Z"
+            },
+            {
+              "value": "2026-09-22T00:30:00-00:30",
+              "expected": "2026-09-22T01:00:00.000Z",
+              "actual": "2026-09-22T01:00:00.000Z"
+            }
+          ],
+          "invalidRejected": true
+        }
+      },
+      {
+        "engine": "webkit",
+        "entry": "bundle/design-system.js",
+        "pass": true,
+        "result": {
+          "values": [
+            {
+              "value": "2026-09-22T00:30:00-03:30",
+              "expected": "2026-09-22T04:00:00.000Z",
+              "actual": "2026-09-22T04:00:00.000Z"
+            },
+            {
+              "value": "2026-09-22T00:30:00-00:30",
+              "expected": "2026-09-22T01:00:00.000Z",
+              "actual": "2026-09-22T01:00:00.000Z"
+            }
+          ],
+          "invalidRejected": true
+        }
+      },
+      {
+        "engine": "webkit",
+        "entry": "bundle/design-system.min.js",
+        "pass": true,
+        "result": {
+          "values": [
+            {
+              "value": "2026-09-22T00:30:00-03:30",
+              "expected": "2026-09-22T04:00:00.000Z",
+              "actual": "2026-09-22T04:00:00.000Z"
+            },
+            {
+              "value": "2026-09-22T00:30:00-00:30",
+              "expected": "2026-09-22T01:00:00.000Z",
+              "actual": "2026-09-22T01:00:00.000Z"
+            }
+          ],
+          "invalidRejected": true
+        }
+      },
+      {
+        "engine": "webkit",
+        "entry": "bundle/design-system.standalone.min.js",
+        "pass": true,
+        "result": {
+          "values": [
+            {
+              "value": "2026-09-22T00:30:00-03:30",
+              "expected": "2026-09-22T04:00:00.000Z",
+              "actual": "2026-09-22T04:00:00.000Z"
+            },
+            {
+              "value": "2026-09-22T00:30:00-00:30",
+              "expected": "2026-09-22T01:00:00.000Z",
+              "actual": "2026-09-22T01:00:00.000Z"
+            }
+          ],
+          "invalidRejected": true
+        }
+      }
+    ],
+    "consumers": [
+      {
+        "engine": "chromium",
+        "manager": "bun",
+        "actual": "2026-09-22T04:00:00.000Z",
+        "errors": [],
+        "upstreamInstant": "2026-09-22T03:00:00.000Z"
+      },
+      {
+        "engine": "chromium",
+        "manager": "npm",
+        "actual": "2026-09-22T04:00:00.000Z",
+        "errors": [],
+        "upstreamInstant": "2026-09-22T03:00:00.000Z"
+      },
+      {
+        "engine": "firefox",
+        "manager": "bun",
+        "actual": "2026-09-22T04:00:00.000Z",
+        "errors": [],
+        "upstreamInstant": "2026-09-22T03:00:00.000Z"
+      },
+      {
+        "engine": "firefox",
+        "manager": "npm",
+        "actual": "2026-09-22T04:00:00.000Z",
+        "errors": [],
+        "upstreamInstant": "2026-09-22T03:00:00.000Z"
+      },
+      {
+        "engine": "webkit",
+        "manager": "bun",
+        "actual": "2026-09-22T04:00:00.000Z",
+        "errors": [],
+        "upstreamInstant": "2026-09-22T03:00:00.000Z"
+      },
+      {
+        "engine": "webkit",
+        "manager": "npm",
+        "actual": "2026-09-22T04:00:00.000Z",
+        "errors": [],
+        "upstreamInstant": "2026-09-22T03:00:00.000Z"
+      }
+    ]
+  },
+  "delivery": "Fresh Bun and npm consumers have no patchedDependencies. Their own unpatched upstream parser still returns 03:00Z for the counterexample, while the packaged public RelativeTime element correctly renders 04:00Z. No postinstall mutation or registry fork is required.",
+  "sources": "m13-calendar-reference-review-2026-09-22.json",
+  "limits": [
+    "No claim that other upstream date-library behavior is exhaustively certified",
+    "Calendar UI/native acceptance remains separate",
+    "No push or publication"
+  ]
+}

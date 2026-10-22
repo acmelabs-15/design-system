@@ -1,0 +1,755 @@
+{
+  "date": "2026-09-21",
+  "batch": "M07 in progress",
+  "entry": "Box and structural semantics",
+  "geometry": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "one charge for dimensions padding and border",
+            "ok": true
+          },
+          {
+            "name": "block defaults fill parent width",
+            "ok": true
+          },
+          {
+            "name": "percentage sizes resolve against actual parent",
+            "ok": true
+          },
+          {
+            "name": "inline-block retains content-box width",
+            "ok": true
+          },
+          {
+            "name": "inline phrasing wraps like a native span",
+            "ok": true
+          },
+          {
+            "name": "grid placement belongs to the host",
+            "ok": true
+          },
+          {
+            "name": "parent flex growth and stretch reach real host boxes",
+            "ok": true
+          },
+          {
+            "name": "native HTML JSON parsing preserves responsive state",
+            "ok": true
+          },
+          {
+            "name": "later shorthand wins at the current viewport",
+            "ok": true
+          },
+          {
+            "name": "removing shorthand restores retained logical input",
+            "ok": true
+          },
+          {
+            "name": "helper order reaches the actual generated declarations",
+            "ok": true
+          },
+          {
+            "name": "explicit helper clearing removes owned styles",
+            "ok": true
+          },
+          {
+            "name": "pre-upgrade property order survives capture",
+            "ok": true
+          },
+          {
+            "name": "semantic tag changes preserve children",
+            "ok": true
+          },
+          {
+            "name": "hidden hides the full component",
+            "ok": true
+          },
+          {
+            "name": "adoption restores generated and responsive sheets",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "one charge for dimensions padding and border",
+            "ok": true
+          },
+          {
+            "name": "block defaults fill parent width",
+            "ok": true
+          },
+          {
+            "name": "percentage sizes resolve against actual parent",
+            "ok": true
+          },
+          {
+            "name": "inline-block retains content-box width",
+            "ok": true
+          },
+          {
+            "name": "inline phrasing wraps like a native span",
+            "ok": true
+          },
+          {
+            "name": "grid placement belongs to the host",
+            "ok": true
+          },
+          {
+            "name": "parent flex growth and stretch reach real host boxes",
+            "ok": true
+          },
+          {
+            "name": "native HTML JSON parsing preserves responsive state",
+            "ok": true
+          },
+          {
+            "name": "later shorthand wins at the current viewport",
+            "ok": true
+          },
+          {
+            "name": "removing shorthand restores retained logical input",
+            "ok": true
+          },
+          {
+            "name": "helper order reaches the actual generated declarations",
+            "ok": true
+          },
+          {
+            "name": "explicit helper clearing removes owned styles",
+            "ok": true
+          },
+          {
+            "name": "pre-upgrade property order survives capture",
+            "ok": true
+          },
+          {
+            "name": "semantic tag changes preserve children",
+            "ok": true
+          },
+          {
+            "name": "hidden hides the full component",
+            "ok": true
+          },
+          {
+            "name": "adoption restores generated and responsive sheets",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "one charge for dimensions padding and border",
+            "ok": true
+          },
+          {
+            "name": "block defaults fill parent width",
+            "ok": true
+          },
+          {
+            "name": "percentage sizes resolve against actual parent",
+            "ok": true
+          },
+          {
+            "name": "inline-block retains content-box width",
+            "ok": true
+          },
+          {
+            "name": "inline phrasing wraps like a native span",
+            "ok": true
+          },
+          {
+            "name": "grid placement belongs to the host",
+            "ok": true
+          },
+          {
+            "name": "parent flex growth and stretch reach real host boxes",
+            "ok": true
+          },
+          {
+            "name": "native HTML JSON parsing preserves responsive state",
+            "ok": true
+          },
+          {
+            "name": "later shorthand wins at the current viewport",
+            "ok": true
+          },
+          {
+            "name": "removing shorthand restores retained logical input",
+            "ok": true
+          },
+          {
+            "name": "helper order reaches the actual generated declarations",
+            "ok": true
+          },
+          {
+            "name": "explicit helper clearing removes owned styles",
+            "ok": true
+          },
+          {
+            "name": "pre-upgrade property order survives capture",
+            "ok": true
+          },
+          {
+            "name": "semantic tag changes preserve children",
+            "ok": true
+          },
+          {
+            "name": "hidden hides the full component",
+            "ok": true
+          },
+          {
+            "name": "adoption restores generated and responsive sheets",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "semantics": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "role and name remain canonical",
+            "ok": true
+          },
+          {
+            "name": "only the native root has physical role and name attributes",
+            "ok": true
+          },
+          {
+            "name": "one directly named region in normal role queries",
+            "ok": true
+          },
+          {
+            "name": "parent-scope reference reaches native root",
+            "ok": true,
+            "actual": [
+              "External name"
+            ]
+          },
+          {
+            "name": "parent-scope reference reaches native root — native accessibility tree",
+            "ok": true,
+            "actual": [
+              {
+                "name": "External name",
+                "description": "External help"
+              }
+            ]
+          },
+          {
+            "name": "reference content remains live",
+            "ok": true,
+            "actual": [
+              "Updated name"
+            ]
+          },
+          {
+            "name": "reference content remains live — native accessibility tree",
+            "ok": true,
+            "actual": [
+              {
+                "name": "Updated name",
+                "description": "External help"
+              }
+            ]
+          },
+          {
+            "name": "explicit element reference needs no ID",
+            "ok": true,
+            "actual": [
+              "Reference name"
+            ]
+          },
+          {
+            "name": "explicit element reference needs no ID — native accessibility tree",
+            "ok": true,
+            "actual": [
+              {
+                "name": "Reference name",
+                "description": "External help"
+              }
+            ]
+          },
+          {
+            "name": "removal restores direct name",
+            "ok": true
+          },
+          {
+            "name": "late ID reference is discovered",
+            "ok": true,
+            "actual": [
+              "Late name"
+            ]
+          },
+          {
+            "name": "late ID reference is discovered — native accessibility tree",
+            "ok": true,
+            "actual": [
+              {
+                "name": "Late name",
+                "description": "External help"
+              }
+            ]
+          },
+          {
+            "name": "shadow-scope move resolves current IDs",
+            "ok": true,
+            "actual": [
+              "Scoped name"
+            ]
+          },
+          {
+            "name": "shadow-scope move resolves current IDs — native accessibility tree",
+            "ok": true,
+            "actual": [
+              {
+                "name": "Scoped name"
+              }
+            ]
+          },
+          {
+            "name": "document adoption resolves current IDs",
+            "ok": true,
+            "actual": [
+              "Adopted name"
+            ]
+          },
+          {
+            "name": "document adoption resolves current IDs — native accessibility tree",
+            "ok": true,
+            "actual": [
+              {
+                "name": "Adopted name"
+              }
+            ]
+          }
+        ],
+        "observations": {
+          "houseRoleQuery": 0,
+          "nativeRoleQuery": "",
+          "nativeRoleQueryMatch": 0,
+          "nativeControlAX": [
+            "External name",
+            "External name"
+          ]
+        }
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "role and name remain canonical",
+            "ok": true
+          },
+          {
+            "name": "only the native root has physical role and name attributes",
+            "ok": true
+          },
+          {
+            "name": "one directly named region in normal role queries",
+            "ok": true
+          },
+          {
+            "name": "parent-scope reference reaches native root",
+            "ok": true,
+            "actual": [
+              "External name"
+            ]
+          },
+          {
+            "name": "reference content remains live",
+            "ok": true,
+            "actual": [
+              "Updated name"
+            ]
+          },
+          {
+            "name": "explicit element reference needs no ID",
+            "ok": true,
+            "actual": [
+              "Reference name"
+            ]
+          },
+          {
+            "name": "removal restores direct name",
+            "ok": true
+          },
+          {
+            "name": "late ID reference is discovered",
+            "ok": true,
+            "actual": [
+              "Late name"
+            ]
+          },
+          {
+            "name": "shadow-scope move resolves current IDs",
+            "ok": true,
+            "actual": [
+              "Scoped name"
+            ]
+          },
+          {
+            "name": "document adoption resolves current IDs",
+            "ok": true,
+            "actual": [
+              "Adopted name"
+            ]
+          }
+        ],
+        "observations": {
+          "houseRoleQuery": 0,
+          "nativeRoleQuery": "",
+          "nativeRoleQueryMatch": 0
+        }
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "role and name remain canonical",
+            "ok": true
+          },
+          {
+            "name": "only the native root has physical role and name attributes",
+            "ok": true
+          },
+          {
+            "name": "one directly named region in normal role queries",
+            "ok": true
+          },
+          {
+            "name": "parent-scope reference reaches native root",
+            "ok": true,
+            "actual": [
+              "External name"
+            ]
+          },
+          {
+            "name": "reference content remains live",
+            "ok": true,
+            "actual": [
+              "Updated name"
+            ]
+          },
+          {
+            "name": "explicit element reference needs no ID",
+            "ok": true,
+            "actual": [
+              "Reference name"
+            ]
+          },
+          {
+            "name": "removal restores direct name",
+            "ok": true
+          },
+          {
+            "name": "late ID reference is discovered",
+            "ok": true,
+            "actual": [
+              "Late name"
+            ]
+          },
+          {
+            "name": "shadow-scope move resolves current IDs",
+            "ok": true,
+            "actual": [
+              "Scoped name"
+            ]
+          },
+          {
+            "name": "document adoption resolves current IDs",
+            "ok": true,
+            "actual": [
+              "Adopted name"
+            ]
+          }
+        ],
+        "observations": {
+          "houseRoleQuery": 0,
+          "nativeRoleQuery": "",
+          "nativeRoleQueryMatch": 0
+        }
+      }
+    ],
+    "errors": []
+  },
+  "roleQueryControl": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "role and name remain canonical",
+            "ok": true
+          },
+          {
+            "name": "only the native root has physical role and name attributes",
+            "ok": true
+          },
+          {
+            "name": "one named region in normal role queries",
+            "ok": true,
+            "actual": 1
+          },
+          {
+            "name": "parent scope ID names the actual native root",
+            "ok": false
+          },
+          {
+            "name": "referenced text stays live",
+            "ok": false
+          },
+          {
+            "name": "explicit element reference without an ID names the root",
+            "ok": false
+          },
+          {
+            "name": "removing references restores direct name",
+            "ok": true
+          },
+          {
+            "name": "late reference appears without host refresh",
+            "ok": false
+          },
+          {
+            "name": "moving into author shadow scope rebinds IDs",
+            "ok": false
+          },
+          {
+            "name": "document adoption rebinds IDs",
+            "ok": false
+          }
+        ],
+        "nativeAX": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "role and name remain canonical",
+            "ok": true
+          },
+          {
+            "name": "only the native root has physical role and name attributes",
+            "ok": true
+          },
+          {
+            "name": "one named region in normal role queries",
+            "ok": true,
+            "actual": 1
+          },
+          {
+            "name": "parent scope ID names the actual native root",
+            "ok": false
+          },
+          {
+            "name": "referenced text stays live",
+            "ok": false
+          },
+          {
+            "name": "explicit element reference without an ID names the root",
+            "ok": false
+          },
+          {
+            "name": "removing references restores direct name",
+            "ok": true
+          },
+          {
+            "name": "late reference appears without host refresh",
+            "ok": false
+          },
+          {
+            "name": "moving into author shadow scope rebinds IDs",
+            "ok": false
+          },
+          {
+            "name": "document adoption rebinds IDs",
+            "ok": false
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "role and name remain canonical",
+            "ok": true
+          },
+          {
+            "name": "only the native root has physical role and name attributes",
+            "ok": true
+          },
+          {
+            "name": "one named region in normal role queries",
+            "ok": true,
+            "actual": 1
+          },
+          {
+            "name": "parent scope ID names the actual native root",
+            "ok": false
+          },
+          {
+            "name": "referenced text stays live",
+            "ok": false
+          },
+          {
+            "name": "explicit element reference without an ID names the root",
+            "ok": false
+          },
+          {
+            "name": "removing references restores direct name",
+            "ok": true
+          },
+          {
+            "name": "late reference appears without host refresh",
+            "ok": false
+          },
+          {
+            "name": "moving into author shadow scope rebinds IDs",
+            "ok": false
+          },
+          {
+            "name": "document adoption rebinds IDs",
+            "ok": false
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "packedConsumer": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "class entry stays inert",
+            "ok": true
+          },
+          {
+            "name": "packed class is defined and renders native semantics",
+            "ok": true
+          },
+          {
+            "name": "packed helper applies canonical structured state",
+            "ok": true
+          },
+          {
+            "name": "packed generated styles use shipped tokens",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "class entry stays inert",
+            "ok": true
+          },
+          {
+            "name": "packed class is defined and renders native semantics",
+            "ok": true
+          },
+          {
+            "name": "packed helper applies canonical structured state",
+            "ok": true
+          },
+          {
+            "name": "packed generated styles use shipped tokens",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "class entry stays inert",
+            "ok": true
+          },
+          {
+            "name": "packed class is defined and renders native semantics",
+            "ok": true
+          },
+          {
+            "name": "packed helper applies canonical structured state",
+            "ok": true
+          },
+          {
+            "name": "packed generated styles use shipped tokens",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "validation": {
+    "focused": "bun test v1.4.0 (34cbb9a40)\n\nscripts/__tests__/manifest.test.ts:\n(pass) store-backed public properties retain manifest defaults and inherited attribute metadata [466.67ms]\n(pass) the manifest matches every registered Lit class and its runtime property attributes [1838.65ms]\n(pass) manifest facts cover conditional events, event variables, slots and forwarded parts [275.11ms]\n(pass) unresolved local paths fail manifest normalization [0.24ms]\n(pass) the analyzer distinguishes package exports from relative exports with either quote style [0.23ms]\n(pass) Lit default attributes use lowercase names while explicit names stay intact [0.51ms]\n(pass) events dispatched by field callbacks and constructors remain public events [0.24ms]\n\nsrc/shared/__tests__/semantic-element.test.ts:\n(pass) role and label name only the native root while canonical inputs remain readable [15.61ms]\n(pass) property writes and ordinary DOM updates share the same accessible inputs [1.09ms]\n(pass) ID references resolve in the author's scope and late IDs update without another render [4.28ms]\n(pass) explicit references replace strings and string writes replace explicit references [1.21ms]\n(pass) reconnection resolves references in the new author scope [1.67ms]\n\nsrc/components/box/__tests__/box.test.ts:\n(pass) all structural tags keep one semantic root and the same author-owned content [5.06ms]\n(pass) all common inputs have accessors and observed attributes outside Lit metadata [1.66ms]\n(pass) HTML scalars and structured properties share canonical inputs; removal clears one property [2.73ms]\n(pass) Box rejects an arrangement display and keeps native semantic naming on its root [0.71ms]\n\n 16 pass\n 0 fail\n 5262 expect() calls\nRan 16 tests across 3 files. [3.02s]\n",
+    "build": "$ bun scripts/build.ts\nmodules: 499 files, 98 with compiled templates\nmanifest: 111 elements\nbundle 2635.4 KB min 1281.7 KB tokens.css 153.1 KB dashboard.css 14.3 KB\n",
+    "docs": "$ bun site/build.ts\ndocs: 82 pages, 111 elements (0 undocumented), app.js 1355 KB\n",
+    "packedTypecheck": "Fresh consumer passed strict TypeScript with root helper/types and explicit Box definition entry."
+  },
+  "fixtures": {
+    "geometry": "import { AcmeBox } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/box/box.ts\";\nimport { html,render } from \"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/index.js\";\nimport { styleInputs } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/style-inputs.ts\";\ncustomElements.define(\"acme-box\",AcmeBox);\nconst results:{name:string;ok:boolean;actual?:unknown}[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});\nconst rect=(el:Element)=>{const r=el.getBoundingClientRect();return {width:r.width,height:r.height,x:r.x,y:r.y}};\nconst root=(el:AcmeBox)=>el.shadowRoot!.querySelector('[part=\"root\"]') as HTMLElement;\nasync function add(markup:string){const container=document.createElement(\"div\");container.innerHTML=markup;document.body.append(container);for(const box of container.querySelectorAll(\"acme-box\"))await(box as AcmeBox).updateComplete;return container;}\ntry{\n  for(const n of [0,2,4,8])document.documentElement.style.setProperty(`--acme-spacing-${n}`,`${n/4}rem`);\n  document.documentElement.style.setProperty(\"--acme-size-40\",\"10rem\");\n  let fixture=await add('<acme-box width=\"200px\" height=\"100px\" padding=\"20px\" border-width=\"2px\" border-style=\"solid\">Content</acme-box>');let box=fixture.firstElementChild as AcmeBox;\n  check(\"one charge for dimensions padding and border\",rect(box).width===200&&rect(box).height===100&&rect(root(box)).width===156&&rect(root(box)).height===56,{host:rect(box),root:rect(root(box))});\n  fixture=await add('<div style=\"width:300px\"><acme-box>Auto width</acme-box></div>');box=fixture.querySelector(\"acme-box\")!;check(\"block defaults fill parent width\",rect(box).width===300&&rect(root(box)).width===300);\n  fixture=await add('<div style=\"width:200px;height:120px\"><acme-box width=\"50%\" height=\"50%\" padding=\"10px\">Percent</acme-box></div>');box=fixture.querySelector(\"acme-box\")!;check(\"percentage sizes resolve against actual parent\",rect(box).width===100&&rect(box).height===60&&rect(root(box)).width===80&&rect(root(box)).height===40,{host:rect(box),root:rect(root(box))});\n  fixture=await add('<acme-box display=\"inline-block\" width=\"120px\" padding=\"10px\" border-width=\"2px\" border-style=\"solid\">Inline block</acme-box>');box=fixture.firstElementChild as AcmeBox;check(\"inline-block retains content-box width\",rect(box).width===120&&rect(root(box)).width===96,{host:rect(box),root:rect(root(box))});\n  fixture=await add('<p style=\"width:130px;font:16px/20px monospace\">Before <acme-box as=\"span\">several words that wrap across lines</acme-box> after</p><p style=\"width:130px;font:16px/20px monospace\">Before <span>several words that wrap across lines</span> after</p>');box=fixture.querySelector(\"acme-box\")!;const control=fixture.lastElementChild!.querySelector(\"span\")!;const a=[...box.getClientRects()].map(r=>[r.width,r.height]),b=[...control.getClientRects()].map(r=>[r.width,r.height]);check(\"inline phrasing wraps like a native span\",JSON.stringify(a)===JSON.stringify(b),{house:a,native:b});\n  fixture=await add('<div style=\"display:grid;grid-template-columns:100px 150px\"><acme-box grid-column=\"2\" padding=\"10px\">Grid child</acme-box></div>');box=fixture.querySelector(\"acme-box\")!;check(\"grid placement belongs to the host\",rect(box).width===150&&rect(root(box)).width===130&&rect(box).x-rect(box.parentElement!).x===100,{host:rect(box),root:rect(root(box))});\n  fixture=await add('<div style=\"display:flex;width:300px;height:90px\"><acme-box flex-grow=\"1\" flex-basis=\"0px\">First</acme-box><acme-box flex-grow=\"2\" flex-basis=\"0px\">Second</acme-box></div>');const flexBoxes=[...fixture.querySelectorAll(\"acme-box\")] as AcmeBox[];check(\"parent flex growth and stretch reach real host boxes\",rect(flexBoxes[0]).width===100&&rect(flexBoxes[1]).width===200&&rect(root(flexBoxes[0])).height===90,flexBoxes.map(x=>({host:rect(x),root:rect(root(x))})));\n  fixture=await add(`<acme-box padding-inline=\"2\" padding='{\"compact\":4,\"expanded\":8}'></acme-box>`);box=fixture.firstElementChild as AcmeBox;check(\"native HTML JSON parsing preserves responsive state\",typeof box.padding===\"object\"&&box.padding.compact===4&&box.padding.expanded===8,box.padding);check(\"later shorthand wins at the current viewport\",getComputedStyle(box).paddingInlineStart===\"32px\",getComputedStyle(box).paddingInlineStart);\n  box.removeAttribute(\"padding\");await box.updateComplete;check(\"removing shorthand restores retained logical input\",getComputedStyle(box).paddingInlineStart===\"8px\",getComputedStyle(box).paddingInlineStart);\n  const target=document.createElement(\"div\");document.body.append(target);const view=(active:boolean)=>html`<acme-box ${styleInputs(active?{padding:4,paddingInline:2}:{})}>Directive</acme-box>`;render(view(true),target);box=target.querySelector(\"acme-box\")!;await box.updateComplete;check(\"helper order reaches the actual generated declarations\",getComputedStyle(box).paddingTop===\"16px\"&&getComputedStyle(box).paddingInlineStart===\"8px\");render(view(false),target);await box.updateComplete;check(\"explicit helper clearing removes owned styles\",box.padding===undefined&&box.paddingInline===undefined&&getComputedStyle(box).paddingTop===\"0px\");\n  const unknown=document.createElement(\"late-layout-box\") as AcmeBox;unknown.setAttribute(\"padding\",\"4\");unknown.paddingInline=2;document.body.append(unknown);customElements.define(\"late-layout-box\",class extends AcmeBox{});await unknown.updateComplete;check(\"pre-upgrade property order survives capture\",unknown.padding===4&&unknown.paddingInline===2&&getComputedStyle(unknown).paddingInlineStart===\"8px\");\n  box=flexBoxes[0];const child=box.firstChild;box.as=\"article\";await box.updateComplete;check(\"semantic tag changes preserve children\",root(box).localName===\"article\"&&box.firstChild===child);\n  box.hidden=true;check(\"hidden hides the full component\",getComputedStyle(box).display===\"none\");box.hidden=false;\n  const frame=document.createElement(\"iframe\");document.body.append(frame);frame.contentDocument!.body.append(unknown);await unknown.updateComplete;frame.contentDocument!.documentElement.style.setProperty(\"--acme-spacing-4\",\"1rem\");frame.contentDocument!.documentElement.style.setProperty(\"--acme-spacing-2\",\".5rem\");check(\"adoption restores generated and responsive sheets\",frame.contentWindow!.getComputedStyle(unknown).paddingInlineStart===\"8px\"&&frame.contentWindow!.getComputedStyle(unknown).display===\"block\");\n  (window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n",
+    "geometryRunner": "import fs from \"node:fs\";import path from \"node:path\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\",directory=\"/tmp/acme-m07-box\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\"});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(data.error){report.errors.push({engine,message:data.error,stack:data.stack});data.results.push({name:'fixture completes',ok:false,error:data.error});}report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;\n",
+    "semantics": "import { html } from \"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/index.js\";\nimport { AcmeSemanticElement } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/semantic-element.ts\";\nclass Probe extends AcmeSemanticElement { render(){return html`<section part=\"root\"><slot></slot></section>`;} }\ncustomElements.define(\"semantic-native-probe\",Probe);\nconst results:{name:string;ok:boolean;actual?:unknown}[]=[];\nconst check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});\ntry {\n  document.body.innerHTML='<span id=\"name\">External name</span><span id=\"help\">External help</span><semantic-native-probe role=\"region\" aria-label=\"Direct name\">Content</semantic-native-probe>';\n  const host=document.querySelector(\"semantic-native-probe\") as Probe;await host.updateComplete;const root=host.shadowRoot!.querySelector(\"section\")!;\n  check(\"role and name remain canonical\",host.role===\"region\"&&host.ariaLabel===\"Direct name\");\n  check(\"only the native root has physical role and name attributes\",!Element.prototype.hasAttribute.call(host,\"role\")&&!Element.prototype.hasAttribute.call(host,\"aria-label\")&&root.getAttribute(\"role\")===\"region\"&&root.getAttribute(\"aria-label\")===\"Direct name\");\n  (window as any).__probe={host,root};(window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error)}}\n",
+    "semanticsRunner": "const directory='/tmp/acme-m07-semantics';\nconst build=await Bun.build({entrypoints:[directory+'/probe.ts'],outdir:directory+'/bundle',target:'browser',format:'esm'});if(!build.success)throw new AggregateError(build.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';\nconst pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');\nconst server=Bun.serve({port:0,hostname:'127.0.0.1',fetch(req){return new URL(req.url).pathname==='/probe.js'?new Response(Bun.file(directory+'/bundle/probe.js'),{headers:{'Content-Type':'text/javascript'}}):new Response('<!doctype html><script type=\"module\" src=\"/probe.js\"></script>',{headers:{'Content-Type':'text/html'}})}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of ['chromium','firefox','webkit']){\nconst browser=await pw[engine].launch(engine==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});\nconst results=[];const observations={};\ntry{\nconst page=await browser.newPage();page.on('pageerror',error=>report.errors.push({engine,error:String(error)}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const initial=await page.evaluate(()=>window.__results);results.push(...initial.results);if(initial.error)throw new Error(initial.error);\nconst cdp=engine==='chromium'?await page.context().newCDPSession(page):undefined;\nasync function references(name:string,expected:string,frame=false){const actual=await page.evaluate(()=>window.__probe.root.ariaLabelledByElements?.map(e=>e.textContent));results.push({name,ok:actual?.length===1&&actual[0]===expected,actual});if(cdp){const frameId=frame?(await cdp.send('Page.getFrameTree')).frameTree.childFrames[0].frame.id:undefined;const regions=(await cdp.send('Accessibility.getFullAXTree',frameId?{frameId}:{})).nodes.filter(n=>!n.ignored&&n.role?.value==='region');results.push({name:name+' — native accessibility tree',ok:regions.length===1&&regions[0].name?.value===expected,actual:regions.map(n=>({name:n.name?.value,description:n.description?.value}))})}}\nresults.push({name:'one directly named region in normal role queries',ok:await page.getByRole('region',{name:'Direct name',exact:true}).count()===1});\nawait page.evaluate(()=>{const{host}=window.__probe;host.setAttribute('aria-labelledby','name');host.setAttribute('aria-describedby','help')});await references('parent-scope reference reaches native root','External name');\nobservations.houseRoleQuery=await page.getByRole('region',{name:'External name',exact:true}).count();\nawait page.evaluate(()=>{const control=document.createElement('section');control.setAttribute('role','region');control.ariaLabelledByElements=[document.querySelector('#name')];control.id='native-control';document.body.append(control)});\nobservations.nativeRoleQuery=await page.locator('#native-control').getAttribute('aria-labelledby');observations.nativeRoleQueryMatch=await page.getByRole('region',{name:'External name',exact:true}).count();\nif(cdp)observations.nativeControlAX=(await cdp.send('Accessibility.getFullAXTree')).nodes.filter(n=>!n.ignored&&n.role?.value==='region').map(n=>n.name?.value);\nawait page.evaluate(()=>document.querySelector('#native-control').remove());\nawait page.evaluate(()=>document.querySelector('#name').textContent='Updated name');await references('reference content remains live','Updated name');\nawait page.evaluate(()=>{const label=document.createElement('span');label.textContent='Reference name';document.body.append(label);window.__probe.host.ariaLabelledByElements=[label]});await references('explicit element reference needs no ID','Reference name');\nawait page.evaluate(()=>window.__probe.host.removeAttribute('aria-labelledby'));results.push({name:'removal restores direct name',ok:await page.getByRole('region',{name:'Direct name',exact:true}).count()===1});\nawait page.evaluate(async()=>{window.__probe.host.setAttribute('aria-labelledby','late');const label=document.createElement('span');label.id='late';label.textContent='Late name';document.body.append(label);await new Promise(resolve=>setTimeout(resolve,0))});await references('late ID reference is discovered','Late name');\nawait page.evaluate(async()=>{const{host}=window.__probe;const wrapper=document.createElement('div'),shadow=wrapper.attachShadow({mode:'open'}),label=document.createElement('span');label.id='late';label.textContent='Scoped name';shadow.append(label,host);document.body.append(wrapper);await host.updateComplete});await references('shadow-scope move resolves current IDs','Scoped name');\nawait page.evaluate(async()=>{const{host}=window.__probe;const frame=document.createElement('iframe');document.body.append(frame);const label=frame.contentDocument.createElement('span');label.id='late';label.textContent='Adopted name';frame.contentDocument.body.append(label,host);await host.updateComplete});await references('document adoption resolves current IDs','Adopted name',true);\nreport.engines.push({engine,version:browser.version(),results,observations});console.log({engine,passed:results.filter(r=>r.ok).length,total:results.length,failed:results.filter(r=>!r.ok),observations});\n}catch(error){report.errors.push({engine,error:String(error)});report.engines.push({engine,results,error:String(error)});}finally{await browser.close()}\n}}finally{server.stop(true);await Bun.write(directory+'/verified-results.json',JSON.stringify(report,null,2)+'\\n')}\nif(report.errors.length||report.engines.some(e=>e.results.some(r=>!r.ok)))process.exitCode=1;\n",
+    "consumer": "import {AcmeBox,configureBreakpoints,styleInputs,type ResponsiveInput,type StructuralTag} from \"@acmelabs/design-system\";\nimport {html,render} from \"lit\";\nconst results:{name:string;ok:boolean}[]=[];\ntry{\n  results.push({name:\"class entry stays inert\",ok:customElements.get(\"acme-box\")===undefined});\n  configureBreakpoints({medium:37.5});await import(\"@acmelabs/design-system/define/box\");\n  const padding:ResponsiveInput<number>={compact:4,expanded:8};const tag:StructuralTag=\"section\";\n  render(html`<acme-box .as=${tag} ${styleInputs({padding,paddingInline:2})} aria-label=\"Packed box\">Content</acme-box>`,document.body);\n  const box=document.querySelector(\"acme-box\") as AcmeBox;await box.updateComplete;\n  results.push({name:\"packed class is defined and renders native semantics\",ok:box instanceof AcmeBox&&box.shadowRoot!.querySelector('[part=\"root\"]')?.localName===\"section\"});\n  results.push({name:\"packed helper applies canonical structured state\",ok:typeof box.padding===\"object\"&&box.paddingInline===2});\n  results.push({name:\"packed generated styles use shipped tokens\",ok:getComputedStyle(box).paddingTop===\"32px\"&&getComputedStyle(box).paddingInlineStart===\"32px\"});\n  // Query ranges precede per-range declaration order: expanded padding overrides baseline paddingInline.\n  (window as unknown as {__results:unknown}).__results={results};\n}catch(error){(window as unknown as {__results:unknown}).__results={results,error:String(error)}}\n",
+    "consumerRunner": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m07-box/consumer\",root=directory+\"/node_modules/@acmelabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\"});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/dist/styles/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+  },
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/material-components/material-web/56a486b147b8b7e95e6e8035fa02aed7e0009a85/internal/aria/delegate.ts",
+      "read": "full"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/material-components/material-web/56a486b147b8b7e95e6e8035fa02aed7e0009a85/internal/aria/aria.ts",
+      "read": "full"
+    }
+  ],
+  "implementation": [
+    "Shared structural base with nine explicit native templates and 77 ordered common style accessors",
+    "Canonical role and accessible naming reach one native semantic root; native ID reference properties resolve references in the author scope",
+    "Existing generated responsive renderer, style helper and breakpoint configuration are exported and used by the real Box",
+    "Manifest links explicitly annotated kebab-case attributes to their matching public getters; all 77 associations checked",
+    "CSS is authored in styles/shared and compiled; raw children retain parent and identity"
+  ],
+  "reviewCorrections": [
+    "Dynamic native tag templates fail the explicit dependency analyzer; nine literal templates preserve compile-time dependency verification",
+    "Happy DOM accepts invalid CSS grammar as supported; structured HTML parsing is asserted in native browsers, not inferred from its CSS.supports result",
+    "Element-reference inputs validate before state mutation; returned reference arrays are frozen and filtered by native scope",
+    "Playwright 1.63 role queries ignore ariaLabelledByElements, reproduced on a plain native section; Chromium native AX confirms both names correctly"
+  ],
+  "limits": [
+    "Firefox/WebKit checks prove native reference targets and lifecycle; native accessibility-tree snapshots here are Chromium only. No screen-reader speech certification is claimed.",
+    "Real layout geometry is verified for the named Box cases. Flex/Stack/Grid/Simple Grid/Group remain separate M07 entries.",
+    "Known Firefox late-definition-after-adoption and WebKit nested-slot container-query limits remain the existing E02/M26 records.",
+    "No React package implementation is claimed; the fresh consumer proves public type and HTML/Lit delivery."
+  ]
+}

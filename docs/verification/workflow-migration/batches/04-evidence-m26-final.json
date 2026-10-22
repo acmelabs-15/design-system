@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m26-final",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.831Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m26-final/acceptance.json",
+      "destination": "docs/verification/systematization/m26-final/acceptance.json",
+      "bytes": 3108,
+      "sha256": "3feb8abf5604764281b1f57c9be3ca72118228150e1fb46d75e570c60b60629f"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/browser-initial.json",
+      "destination": "docs/verification/systematization/m26-final/browser-initial.json",
+      "bytes": 3701,
+      "sha256": "b144d48e1f45e8fefc3b8b52f38e512b45a1af91619e81c9bb53d1c5c7efeef2"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/bundle.json",
+      "destination": "docs/verification/systematization/m26-final/bundle.json",
+      "bytes": 4258,
+      "sha256": "39b35ef25ca03b6d34d4cf519fe1c399add1ae10c7d38895ff2eb342ba28baec"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/components.json",
+      "destination": "docs/verification/systematization/m26-final/components.json",
+      "bytes": 180076,
+      "sha256": "12f0f803f0d9171a4001e5bfaee966ef9c827dd63a472328d16499af895672a4"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/crypto-smoke.json",
+      "destination": "docs/verification/systematization/m26-final/crypto-smoke.json",
+      "bytes": 1282,
+      "sha256": "1444ef426fc7a42a431e62634281ca2bd851bf1f7e77064bf801710e9684d1cd"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/default-restoration.json",
+      "destination": "docs/verification/systematization/m26-final/default-restoration.json",
+      "bytes": 740793,
+      "sha256": "765760fc3cb1820242d1a64ba3d73540bd6d1c3a215a076d30e256c4681cdc79"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/history.json",
+      "destination": "docs/verification/systematization/m26-final/history.json",
+      "bytes": 3909,
+      "sha256": "4d44e56bc6b63f99ef6beffa7ee0c5c4e4db0e055c4d718ba711c899d41c0670"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/inspector.json",
+      "destination": "docs/verification/systematization/m26-final/inspector.json",
+      "bytes": 2753,
+      "sha256": "c948de2984da200d521d6233789f1d080616a4d063e5c4375256ed06fee424e9"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/intent.json",
+      "destination": "docs/verification/systematization/m26-final/intent.json",
+      "bytes": 2171,
+      "sha256": "4d4c320d4b40c8a7f86a7956b04b873f9700312bf162263731b3c6e55be2409b"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/managed-forms.json",
+      "destination": "docs/verification/systematization/m26-final/managed-forms.json",
+      "bytes": 4113,
+      "sha256": "37457dc38199312a58faf61832345f9343b2d81415e5a8ab01f6ee5f1bc74ef4"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/mcp.json",
+      "destination": "docs/verification/systematization/m26-final/mcp.json",
+      "bytes": 748,
+      "sha256": "3732ecfb41120ad72992a2634ecebbfa53abef61d3a31e5bb1de3881b3227a54"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/official-firefox.json",
+      "destination": "docs/verification/systematization/m26-final/official-firefox.json",
+      "bytes": 28439,
+      "sha256": "068c3eeef9aafab7d63ffddf9d3998b331ad57d619aac1d3344bbb4930e6d312"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/production-exclusion.json",
+      "destination": "docs/verification/systematization/m26-final/production-exclusion.json",
+      "bytes": 68,
+      "sha256": "23362e66166614ca0710fa42fdec298a28f7367f36fc0ba961bf3ad4c4336843"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/published-trust.json",
+      "destination": "docs/verification/systematization/m26-final/published-trust.json",
+      "bytes": 879,
+      "sha256": "0ffecc1638219f4ef228af1928d749a19454fa76c63aea0fc0be50dea848da6d"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/release.json",
+      "destination": "docs/verification/systematization/m26-final/release.json",
+      "bytes": 1398,
+      "sha256": "6551310e03f54f6baafb22363dbd0a43358b7e5b020c373c636c9a27d48cb8e3"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/removals.json",
+      "destination": "docs/verification/systematization/m26-final/removals.json",
+      "bytes": 19006,
+      "sha256": "7b7e51bd938692a27b41707924cc30aa4c583d6347c18ef0a79e996793cb4c84"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/scoped-cdn.json",
+      "destination": "docs/verification/systematization/m26-final/scoped-cdn.json",
+      "bytes": 15016,
+      "sha256": "ffb6d87b8649066d6ea80a47be6c2f5bbf2f8ce13ccdfd221b3599df10947899"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/scoped-module.json",
+      "destination": "docs/verification/systematization/m26-final/scoped-module.json",
+      "bytes": 15503,
+      "sha256": "407a7135b4d8ac3d2958ca6a76b1fedfdf604cc67a8bc71c03c5f08498cafb30"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/table-declarations.json",
+      "destination": "docs/verification/systematization/m26-final/table-declarations.json",
+      "bytes": 2821,
+      "sha256": "8786642c97e656833b51dbcb50337daa45a93a87c12cb606ef81376c9850c2ef"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/tooling-recheck.json",
+      "destination": "docs/verification/systematization/m26-final/tooling-recheck.json",
+      "bytes": 1689,
+      "sha256": "51a405e1a13fcb369c5bd117594e22ebc713f26250100801d8c2e95d8205d2a1"
+    },
+    {
+      "source": "notes/alignment/evidence/m26-final/worker.json",
+      "destination": "docs/verification/systematization/m26-final/worker.json",
+      "bytes": 10332,
+      "sha256": "08cfbc33cb6bd7174233c6b3c7097e455f9c35f49246ac951c9780ee87ae17e9"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "date": "2026-09-21",
+  "status": "candidate mechanism, not completed Button",
+  "native": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "native shadow default action submits with real name/value",
+            "ok": true
+          },
+          {
+            "name": "submitter remains associated after dispatch",
+            "ok": true
+          },
+          {
+            "name": "native named collection contains one submitter",
+            "ok": true
+          },
+          {
+            "name": "stopped and canceled click has no submit",
+            "ok": true
+          },
+          {
+            "name": "ancestor cancellation reaches the native default action",
+            "ok": true
+          },
+          {
+            "name": "latest values and native overrides survive submission",
+            "ok": true
+          },
+          {
+            "name": "native constraint validation blocks submission",
+            "ok": true
+          },
+          {
+            "name": "submitter novalidate override is native",
+            "ok": true
+          },
+          {
+            "name": "reset uses the outer form native reset",
+            "ok": true
+          },
+          {
+            "name": "external form association works",
+            "ok": true
+          },
+          {
+            "name": "disabled Fieldset blocks before a render",
+            "ok": true
+          },
+          {
+            "name": "first legend preserves native Fieldset exception",
+            "ok": true
+          },
+          {
+            "name": "implicit Enter uses the native submitter",
+            "ok": true,
+            "actual": {
+              "count": 6,
+              "value": "implicit"
+            }
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "native shadow default action submits with real name/value",
+            "ok": true
+          },
+          {
+            "name": "submitter remains associated after dispatch",
+            "ok": true
+          },
+          {
+            "name": "native named collection contains one submitter",
+            "ok": true
+          },
+          {
+            "name": "stopped and canceled click has no submit",
+            "ok": true
+          },
+          {
+            "name": "ancestor cancellation reaches the native default action",
+            "ok": true
+          },
+          {
+            "name": "latest values and native overrides survive submission",
+            "ok": true
+          },
+          {
+            "name": "native constraint validation blocks submission",
+            "ok": true
+          },
+          {
+            "name": "submitter novalidate override is native",
+            "ok": true
+          },
+          {
+            "name": "reset uses the outer form native reset",
+            "ok": true
+          },
+          {
+            "name": "external form association works",
+            "ok": true
+          },
+          {
+            "name": "disabled Fieldset blocks before a render",
+            "ok": true
+          },
+          {
+            "name": "first legend preserves native Fieldset exception",
+            "ok": true
+          },
+          {
+            "name": "implicit Enter uses the native submitter",
+            "ok": true,
+            "actual": {
+              "count": 6,
+              "value": "implicit"
+            }
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "native shadow default action submits with real name/value",
+            "ok": true
+          },
+          {
+            "name": "submitter remains associated after dispatch",
+            "ok": true
+          },
+          {
+            "name": "native named collection contains one submitter",
+            "ok": true
+          },
+          {
+            "name": "stopped and canceled click has no submit",
+            "ok": true
+          },
+          {
+            "name": "ancestor cancellation reaches the native default action",
+            "ok": true
+          },
+          {
+            "name": "latest values and native overrides survive submission",
+            "ok": true
+          },
+          {
+            "name": "native constraint validation blocks submission",
+            "ok": true
+          },
+          {
+            "name": "submitter novalidate override is native",
+            "ok": true
+          },
+          {
+            "name": "reset uses the outer form native reset",
+            "ok": true
+          },
+          {
+            "name": "external form association works",
+            "ok": true
+          },
+          {
+            "name": "disabled Fieldset blocks before a render",
+            "ok": true
+          },
+          {
+            "name": "first legend preserves native Fieldset exception",
+            "ok": true
+          },
+          {
+            "name": "implicit Enter uses the native submitter",
+            "ok": true,
+            "actual": {
+              "count": 6,
+              "value": "implicit"
+            }
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "sources": {
+    "probe": "import {LitElement,html} from '/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit';\nimport {ActionSubmitter} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/action-submitter';\nclass ActionProbe extends LitElement {\n static observedAttributes=['type','name','value','disabled','form','formaction','formmethod','formenctype','formnovalidate','formtarget'];\n private readonly submitter=new ActionSubmitter(this,()=>({type:(this.getAttribute('type')??'button') as 'button'|'submit'|'reset',disabled:this.hasAttribute('disabled'),link:false,name:this.getAttribute('name')??'',value:this.getAttribute('value')??'',formAction:this.getAttribute('formaction')??undefined,formMethod:this.getAttribute('formmethod')??undefined,formEnctype:this.getAttribute('formenctype')??undefined,formTarget:this.getAttribute('formtarget')??undefined,formNoValidate:this.hasAttribute('formnovalidate')}),()=>this.sync());\n get proxy(){return this.submitter.element;}\n get surface(){return this.shadowRoot?.querySelector('button')!;}\n attributeChangedCallback(){this.sync();this.requestUpdate();}\n sync(){this.submitter?.sync();const control=this.surface;if(control){control.type=this.proxy.type;control.disabled=this.submitter.disabled.get();}}\n protected updated(){this.sync();}\n click(){this.sync();if(!this.submitter.disabled.get())this.surface?.click();}\n render(){return html`<form @submit=${(event:Event)=>this.submitter.activate(event)} @reset=${(event:Event)=>this.submitter.activate(event)}><button type=${this.getAttribute('type')??'button'}><slot></slot></button></form>`;}\n}\ncustomElements.define('action-probe',ActionProbe);\nconst results:any[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});\ntry{\n const form=document.createElement('form');form.id='owner';form.innerHTML='<input name=\"text\" value=\"one\" required><input name=\"second\" value=\"two\"><action-probe type=\"submit\" name=\"action\" value=\"save\">Save</action-probe>';document.body.append(form);const button=form.querySelector('action-probe') as ActionProbe;await button.updateComplete;let submits=0,last:HTMLButtonElement|undefined,data:FormData|undefined;form.addEventListener('submit',event=>{event.preventDefault();submits++;last=event.submitter as HTMLButtonElement;data=new FormData(form,last);});\n button.click();check('native shadow default action submits with real name/value',submits===1&&data?.get('action')==='save'&&last===button.proxy,{submits,owner:button.proxy.form?.id,proxyType:button.proxy.type,innerType:button.surface.type,children:button.innerHTML,innerOwner:button.surface.form?.outerHTML,data:data?[...data]:null});\n check('submitter remains associated after dispatch',last?.form===form&&new FormData(form,last).get('action')==='save');\n check('native named collection contains one submitter',form.elements.namedItem('action')===button.proxy);\n const cancel=(event:Event)=>{event.stopPropagation();event.preventDefault();};button.addEventListener('click',cancel);button.click();check('stopped and canceled click has no submit',submits===1);button.removeEventListener('click',cancel);\n const cancelAncestor=(event:Event)=>event.preventDefault();document.body.addEventListener('click',cancelAncestor);button.click();check('ancestor cancellation reaches the native default action',submits===1);document.body.removeEventListener('click',cancelAncestor);\n button.setAttribute('value','publish');button.setAttribute('formaction','/publish');button.setAttribute('formmethod','post');button.setAttribute('formenctype','text/plain');button.setAttribute('formtarget','result');button.click();check('latest values and native overrides survive submission',submits===2&&data?.get('action')==='publish'&&last?.getAttribute('formaction')==='/publish'&&last?.formMethod==='post'&&last?.formEnctype==='text/plain'&&last?.formTarget==='result');\n const input=form.querySelector('input')!;input.value='';button.click();check('native constraint validation blocks submission',submits===2);button.setAttribute('formnovalidate','');button.click();check('submitter novalidate override is native',submits===3);\n input.value='changed';button.setAttribute('type','reset');button.click();check('reset uses the outer form native reset',input.value==='one');\n const external=document.createElement('action-probe') as ActionProbe;external.setAttribute('form','owner');external.setAttribute('type','submit');external.setAttribute('name','external');external.setAttribute('value','yes');external.textContent='External';document.body.append(external);await external.updateComplete;external.click();check('external form association works',submits===4&&data?.get('external')==='yes');\n const fieldset=document.createElement('fieldset');fieldset.disabled=true;fieldset.innerHTML='<legend>Allowed</legend>';form.append(fieldset);fieldset.append(button);button.setAttribute('type','submit');button.click();check('disabled Fieldset blocks before a render',submits===4);fieldset.querySelector('legend')!.append(button);button.click();check('first legend preserves native Fieldset exception',submits===5);\n form.insertBefore(button,form.firstChild);button.id='primary';input.value='ready';button.setAttribute('value','implicit');\n (window as any).__submits=()=>submits;(window as any).__data=()=>data?.get('action');(window as any).__button=button;(window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n",
+    "runner": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m09-actions\",root=\"/Users/peterkloss/Dev/ACMElabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\",splitting:true});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/dist/styles/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname.endsWith(\".js\")&&url.pathname!==\"/probe.js\")return new Response(Bun.file(directory+\"/bundle\"+url.pathname),{headers:{\"Content-Type\":\"text/javascript\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(!data.error){const before=await page.evaluate(()=>window.__submits());await page.locator(\"input[name=text]\").focus();await page.keyboard.press(\"Enter\");const after=await page.evaluate(()=>({count:window.__submits(),value:window.__data()}));data.results.push({name:\"implicit Enter uses the native submitter\",ok:after.count===before+1&&after.value===\"implicit\",actual:after});}if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.length!==13||r.results.some(v=>!v.ok)))process.exitCode=1;\n",
+    "platformProbe": "class ActionProbe extends HTMLElement {\n readonly proxy=document.createElement('button');readonly surface:HTMLButtonElement;\n static observedAttributes=['type','name','value','disabled','form','formaction','formmethod','formenctype','formnovalidate','formtarget'];\n constructor(){super();const root=this.attachShadow({mode:'open'});const shadowForm=document.createElement('form'),control=document.createElement('button');control.type='button';control.append(document.createElement('slot'));shadowForm.append(control);root.append(shadowForm);this.surface=control;this.proxy.hidden=true;this.proxy.slot='native-submitter';root.querySelector('form')!.addEventListener('submit',event=>{event.preventDefault();const form=this.proxy.form;if(form&&!this.proxy.matches(':disabled'))HTMLFormElement.prototype.requestSubmit.call(form,this.proxy);});root.querySelector('form')!.addEventListener('reset',event=>{event.preventDefault();if(this.proxy.form&&!this.proxy.matches(':disabled'))HTMLFormElement.prototype.reset.call(this.proxy.form);});this.addEventListener('click',event=>{if(this.proxy.matches(':disabled')){event.preventDefault();event.stopImmediatePropagation();}},true);}\n connectedCallback(){this.append(this.proxy);this.sync();}\n attributeChangedCallback(){this.sync();}\n sync(){if(!this.surface)return;for(const attribute of ActionProbe.observedAttributes){const value=this.getAttribute(attribute);if(value===null)this.proxy.removeAttribute(attribute);else this.proxy.setAttribute(attribute,value);}this.proxy.type=this.getAttribute('type')??'button';this.surface.type=this.proxy.type;this.surface.disabled=this.proxy.matches(':disabled');}\n click(){this.sync();if(!this.proxy.matches(':disabled'))this.surface.click();}\n}\ncustomElements.define('action-probe',ActionProbe);\nconst results:any[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});\ntry{\n const form=document.createElement('form');form.id='owner';form.innerHTML='<input name=\"text\" value=\"one\" required><input name=\"second\" value=\"two\"><action-probe type=\"submit\" name=\"action\" value=\"save\">Save</action-probe>';document.body.append(form);const button=form.querySelector('action-probe') as ActionProbe;let submits=0,last:HTMLButtonElement|undefined,data:FormData|undefined;form.addEventListener('submit',event=>{event.preventDefault();submits++;last=event.submitter as HTMLButtonElement;data=new FormData(form,last);});\n button.click();check('native shadow default action submits with real name/value',submits===1&&data?.get('action')==='save'&&last===button.proxy,{submits,owner:button.proxy.form?.id,proxyType:button.proxy.type,innerType:button.surface.type,children:button.innerHTML,innerOwner:button.surface.form?.outerHTML,data:data?[...data]:null});\n check('submitter remains associated after dispatch',last?.form===form&&new FormData(form,last).get('action')==='save');\n check('native named collection contains one submitter',form.elements.namedItem('action')===button.proxy);\n const cancel=(event:Event)=>{event.stopPropagation();event.preventDefault();};button.addEventListener('click',cancel);button.click();check('stopped and canceled click has no submit',submits===1);button.removeEventListener('click',cancel);\n const cancelAncestor=(event:Event)=>event.preventDefault();document.body.addEventListener('click',cancelAncestor);button.click();check('ancestor cancellation reaches the native default action',submits===1);document.body.removeEventListener('click',cancelAncestor);\n button.setAttribute('value','publish');button.setAttribute('formaction','/publish');button.setAttribute('formmethod','post');button.setAttribute('formenctype','text/plain');button.setAttribute('formtarget','result');button.click();check('latest values and native overrides survive submission',submits===2&&data?.get('action')==='publish'&&last?.getAttribute('formaction')==='/publish'&&last?.formMethod==='post'&&last?.formEnctype==='text/plain'&&last?.formTarget==='result');\n const input=form.querySelector('input')!;input.value='';button.click();check('native constraint validation blocks submission',submits===2);button.setAttribute('formnovalidate','');button.click();check('submitter novalidate override is native',submits===3);\n input.value='changed';button.setAttribute('type','reset');button.click();check('reset uses the outer form native reset',input.value==='one');\n const external=document.createElement('action-probe') as ActionProbe;external.setAttribute('form','owner');external.setAttribute('type','submit');external.setAttribute('name','external');external.setAttribute('value','yes');external.textContent='External';document.body.append(external);external.click();check('external form association works',submits===4&&data?.get('external')==='yes');\n const fieldset=document.createElement('fieldset');fieldset.disabled=true;fieldset.innerHTML='<legend>Allowed</legend>';form.append(fieldset);fieldset.append(button);button.setAttribute('type','submit');button.click();check('disabled Fieldset blocks before a render',submits===4);fieldset.querySelector('legend')!.append(button);button.click();check('first legend preserves native Fieldset exception',submits===5);\n form.insertBefore(button,form.firstChild);button.id='primary';input.value='ready';button.setAttribute('value','implicit');\n (window as any).__submits=()=>submits;(window as any).__data=()=>data?.get('action');(window as any).__button=button;(window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n"
+  },
+  "limits": [
+    "Final action model and component APIs remain",
+    "Native label-for association to the autonomous host not certified",
+    "Framework child reconciliation not certified"
+  ]
+}

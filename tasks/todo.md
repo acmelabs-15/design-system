@@ -1,6 +1,6 @@
 # Tasks: maintainer workflow migration
 
-Status: approved for local implementation, 2026-10-21. Tasks 1–3 and Checkpoint A are complete. Task 4 is in progress. Full migration acceptance and independent review remain task 12.
+Status: approved for local implementation, 2026-10-21. Tasks 1–4 and Checkpoint A are complete. Decision and research conversion is next. Full migration acceptance and independent review remain task 12.
 
 The current handoff is still [the existing pass entry point](../notes/alignment/README.md#where-we-are). Task 11 changes that owner.
 
@@ -10,7 +10,7 @@ The current handoff is still [the existing pass entry point](../notes/alignment/
 - [x] 2. Complete the migration ledger and rule audit — [evidence](../docs/verification/workflow-migration/task-02.json).
 - [x] 3. Prove the migration guards — [evidence and review](../docs/verification/workflow-migration/task-03.json).
 - [x] Checkpoint A: safe preparation
-- [ ] 4. Migrate raw evidence batches
+- [x] 4. Migrate raw evidence batches — [690 byte-identical copies](../docs/verification/workflow-migration/task-04.json).
 - [ ] 5. Convert decision-record batches
 - [ ] 6. Convert research batches
 - [ ] 7. Reconcile specifications, design records and completed history
@@ -268,56 +268,56 @@ These are the plan-review decisions. Specification approval is already settled.
 
 The [batch index](../docs/verification/workflow-migration/batches.json) owns exact source/destination lists, dependencies, acceptance checks, verification and result paths. The ledger maps each source to one batch. The checkboxes below own completion state. A completed batch does not close its parent group until every child is verified.
 
-- [ ] 04-evidence-m00 — 2 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m01 — 1 source file; depends on task-02, task-03.
-- [ ] 04-evidence-m02 — 1 source file; depends on task-02, task-03.
-- [ ] 04-evidence-m03 — 2 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m04 — 1 source file; depends on task-02, task-03.
-- [ ] 04-evidence-m05 — 18 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m06 — 1 source file; depends on task-02, task-03.
-- [ ] 04-evidence-m07 — 6 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m08 — 2 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m09 — 7 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m10 — 10 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m11 — 5 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m12 — 3 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m13 — 14 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m14 — 8 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m15 — 10 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m16 — 3 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m17 — 3 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m18 — 6 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m19 — 1 source file; depends on task-02, task-03.
-- [ ] 04-evidence-m20 — 2 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m20-flow — 13 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m21 — 11 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m21-video — 16 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m22 — 1 source file; depends on task-02, task-03.
-- [ ] 04-evidence-m22-react — 8 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m23 — 1 source file; depends on task-02, task-03.
-- [ ] 04-evidence-m23-docs — 7 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m24-consumers — 7 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m24-devtools — 3 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m24-skills — 160 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m24-tabs-indicator — 2 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m25-release — 11 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m25-tooling — 6 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m25-workspace — 4 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m26-appearance — 79 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m26-audit — 14 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m26-bundle — 21 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m26-final — 21 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m26-managed-forms — 2 source files; depends on task-02, task-03.
-- [ ] 04-evidence-m26-native-forms — 1 source file; depends on task-02, task-03.
-- [ ] 04-evidence-m26-scoped — 8 source files; depends on task-02, task-03.
-- [ ] 04-evidence-release-0.3.0 — 12 source files; depends on task-02, task-03.
-- [ ] 04-evidence-release-0.3.1 — 28 source files; depends on task-02, task-03.
-- [ ] 04-evidence-release-0.3.2 — 69 source files; depends on task-02, task-03.
-- [ ] 04-evidence-research-2026-09-19 — 45 source files; depends on task-02, task-03.
-- [ ] 04-evidence-research-2026-09-20 — 21 source files; depends on task-02, task-03.
-- [ ] 04-evidence-research-2026-09-23 — 1 source file; depends on task-02, task-03.
-- [ ] 04-evidence-research-baseline — 11 source files; depends on task-02, task-03.
-- [ ] 04-original-request — 1 source file; depends on task-02, task-03.
+- [x] 04-evidence-m00 — 2 source files; depends on task-02, task-03.
+- [x] 04-evidence-m01 — 1 source file; depends on task-02, task-03.
+- [x] 04-evidence-m02 — 1 source file; depends on task-02, task-03.
+- [x] 04-evidence-m03 — 2 source files; depends on task-02, task-03.
+- [x] 04-evidence-m04 — 1 source file; depends on task-02, task-03.
+- [x] 04-evidence-m05 — 18 source files; depends on task-02, task-03.
+- [x] 04-evidence-m06 — 1 source file; depends on task-02, task-03.
+- [x] 04-evidence-m07 — 6 source files; depends on task-02, task-03.
+- [x] 04-evidence-m08 — 2 source files; depends on task-02, task-03.
+- [x] 04-evidence-m09 — 7 source files; depends on task-02, task-03.
+- [x] 04-evidence-m10 — 10 source files; depends on task-02, task-03.
+- [x] 04-evidence-m11 — 5 source files; depends on task-02, task-03.
+- [x] 04-evidence-m12 — 3 source files; depends on task-02, task-03.
+- [x] 04-evidence-m13 — 14 source files; depends on task-02, task-03.
+- [x] 04-evidence-m14 — 8 source files; depends on task-02, task-03.
+- [x] 04-evidence-m15 — 10 source files; depends on task-02, task-03.
+- [x] 04-evidence-m16 — 3 source files; depends on task-02, task-03.
+- [x] 04-evidence-m17 — 3 source files; depends on task-02, task-03.
+- [x] 04-evidence-m18 — 6 source files; depends on task-02, task-03.
+- [x] 04-evidence-m19 — 1 source file; depends on task-02, task-03.
+- [x] 04-evidence-m20 — 2 source files; depends on task-02, task-03.
+- [x] 04-evidence-m20-flow — 13 source files; depends on task-02, task-03.
+- [x] 04-evidence-m21 — 11 source files; depends on task-02, task-03.
+- [x] 04-evidence-m21-video — 16 source files; depends on task-02, task-03.
+- [x] 04-evidence-m22 — 1 source file; depends on task-02, task-03.
+- [x] 04-evidence-m22-react — 8 source files; depends on task-02, task-03.
+- [x] 04-evidence-m23 — 1 source file; depends on task-02, task-03.
+- [x] 04-evidence-m23-docs — 7 source files; depends on task-02, task-03.
+- [x] 04-evidence-m24-consumers — 7 source files; depends on task-02, task-03.
+- [x] 04-evidence-m24-devtools — 3 source files; depends on task-02, task-03.
+- [x] 04-evidence-m24-skills — 160 source files; depends on task-02, task-03.
+- [x] 04-evidence-m24-tabs-indicator — 2 source files; depends on task-02, task-03.
+- [x] 04-evidence-m25-release — 11 source files; depends on task-02, task-03.
+- [x] 04-evidence-m25-tooling — 6 source files; depends on task-02, task-03.
+- [x] 04-evidence-m25-workspace — 4 source files; depends on task-02, task-03.
+- [x] 04-evidence-m26-appearance — 79 source files; depends on task-02, task-03.
+- [x] 04-evidence-m26-audit — 14 source files; depends on task-02, task-03.
+- [x] 04-evidence-m26-bundle — 21 source files; depends on task-02, task-03.
+- [x] 04-evidence-m26-final — 21 source files; depends on task-02, task-03.
+- [x] 04-evidence-m26-managed-forms — 2 source files; depends on task-02, task-03.
+- [x] 04-evidence-m26-native-forms — 1 source file; depends on task-02, task-03.
+- [x] 04-evidence-m26-scoped — 8 source files; depends on task-02, task-03.
+- [x] 04-evidence-release-0.3.0 — 12 source files; depends on task-02, task-03.
+- [x] 04-evidence-release-0.3.1 — 28 source files; depends on task-02, task-03.
+- [x] 04-evidence-release-0.3.2 — 69 source files; depends on task-02, task-03.
+- [x] 04-evidence-research-2026-09-19 — 45 source files; depends on task-02, task-03.
+- [x] 04-evidence-research-2026-09-20 — 21 source files; depends on task-02, task-03.
+- [x] 04-evidence-research-2026-09-23 — 1 source file; depends on task-02, task-03.
+- [x] 04-evidence-research-baseline — 11 source files; depends on task-02, task-03.
+- [x] 04-original-request — 1 source file; depends on task-02, task-03.
 - [ ] 05-decisions-001 — 1 source file; depends on task-02, task-03.
 - [ ] 05-decisions-002 — 1 source file; depends on task-02, task-03.
 - [ ] 05-decisions-003 — 4 source files; depends on task-02, task-03.

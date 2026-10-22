@@ -1,0 +1,19 @@
+Preserved public byte verification for 25120 unchanged reviewed files.
+chromium: index passes.
+chromium: components/button passes.
+57689 |       throw new Error("Serialized error must have either an error or a value");
+57690 |     return parseSerializedValue(error.value, void 0);
+57691 |   }
+57692 |   let e;
+57693 |   if (error.error.name === "TimeoutError")
+57694 |     e = new TimeoutError2(error.error.message);
+                    ^
+TimeoutError: goto: Timeout 30000ms exceeded.
+Call log:
+[2m  - navigating to "https://acmelabs-15.github.io/design-system/components/flow-diagram", waiting until "networkidle"[22m
+
+  log: [ "  - navigating to \"https://acmelabs-15.github.io/design-system/components/flow-diagram\", waiting until \"networkidle\"" ],
+
+      at /Users/peterkloss/Library/Caches/acme-design-system/browser-checks/node_modules/playwright-core/lib/coreBundle.js:57694:13
+
+Bun v1.4.2 (macOS arm64)

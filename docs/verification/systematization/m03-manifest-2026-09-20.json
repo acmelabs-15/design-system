@@ -1,0 +1,81 @@
+{
+  "date": "2026-09-20",
+  "phase": "M03",
+  "scope": "Standard manifest generation, normalization, package export and site/Markdown consumption; registration/browser delivery remains in progress",
+  "analyzer": {
+    "version": "0.11.0",
+    "patch": "patches/@custom-elements-manifest%2Fanalyzer@0.11.0.patch",
+    "fixes": [
+      "package-versus-relative quote classification",
+      "programmatic create/ts declarations",
+      "lowercase default Lit attributes",
+      "events in field callbacks and constructors",
+      "only literal event names from syntax-only analysis"
+    ]
+  },
+  "metadata": {
+    "modules": 163,
+    "elements": 150,
+    "reactivePropertiesCheckedAgainstRuntime": 809,
+    "slots": 239,
+    "parts": 228,
+    "events": 92,
+    "localReferences": 912,
+    "missing": [],
+    "deterministic": true,
+    "manifestSha256": "784d2b12fc396dd957a054f2822fac11ada63a19f0f73980c7fdcf705b67a62d"
+  },
+  "checks": {
+    "build": "pass: 457 modules, 128 compiled templates",
+    "docs": "pass: 104 pages, 150 elements, no undocumented elements",
+    "focusedManifest": "6 tests, 5062 assertions pass",
+    "fullSuite": "634 tests, 8448 assertions pass in combined worktree; includes four passing preliminary style-registration tests kept separate from this commit",
+    "typecheck": "manifest and site adapter strict check passes; importing the existing full component test graph retains the pre-existing Choicebox strict error",
+    "package": [
+      "packed 1.35MB dist/custom-elements.json",
+      "Total files: 1383",
+      "Unpacked size: 14.1MB"
+    ],
+    "browser": {
+      "version": "153.0.8010.48",
+      "pages": [
+        {
+          "name": "stat",
+          "expected": "meterlabel",
+          "passed": true
+        },
+        {
+          "name": "dots-menu",
+          "expected": "acme-open",
+          "passed": true
+        },
+        {
+          "name": "fieldset",
+          "expected": "actions",
+          "passed": true
+        }
+      ],
+      "errors": []
+    }
+  },
+  "review": {
+    "first": "Request changes: dynamic identifier event names and incomplete/inconsistent member type/default facts",
+    "red": "bun test v1.4.0 (34cbb9a40)\n\nscripts/__tests__/manifest.test.ts:\n22 |   for (const element of elements) {\n23 |     expect(element.events?.some(event => event.name === \"type\") ?? false).toBe(false);\n24 |     for (const member of element.members ?? []) {\n25 |       if (member.static || member.privacy === \"private\" || member.privacy === \"protected\") continue;\n26 |       if (member.kind === \"field\") expect(member.type?.text).toBeTruthy();\n27 |       if (member.kind === \"method\") expect(member.return?.type?.text).toBeTruthy();\n                                                                           ^\nerror: expect(received).toBeTruthy()\n\nReceived: undefined\n\n      at <anonymous> (/Users/peterkloss/Dev/ACMElabs/design-system/scripts/__tests__/manifest.test.ts:27:71)\n(fail) the manifest matches every registered Lit class and its runtime property attributes [1564.64ms]\n(pass) manifest facts cover conditional events, event variables, slots and forwarded parts [274.18ms]\n(pass) unresolved local paths fail manifest normalization [0.24ms]\n(pass) the analyzer distinguishes package exports from relative exports with either quote style [0.18ms]\n(pass) Lit default attributes use lowercase names while explicit names stay intact [0.61ms]\n(pass) events dispatched by field callbacks and constructors remain public events [0.20ms]\n\n 5 pass\n 1 fail\n 636 expect() calls\nRan 6 tests across 1 file. [2.26s]\n",
+    "resolution": "Literal-only analyzer patch; real event-name union; TypeScript-inferred missing field and method-return types; final attribute facts copied from linked fields; explicit dynamic annotation gate",
+    "final": "Approve: no required defects"
+  },
+  "reproduce": [
+    "bun install --ignore-scripts",
+    "bun run split",
+    "bun run build",
+    "bun run docs",
+    "bun test scripts/__tests__/manifest.test.ts",
+    "bun test",
+    "bun pm pack --dry-run"
+  ],
+  "limits": [
+    "Final CSS custom-property/state annotations and complete DocAPI presentation remain in family work and M23.",
+    "No selective-import or final inventory acceptance is claimed by this slice.",
+    "No package publication, push or Pages setting change."
+  ]
+}

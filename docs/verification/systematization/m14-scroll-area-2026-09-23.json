@@ -1,0 +1,549 @@
+{
+  "date": "2026-09-23",
+  "status": "Scroll Area complete at assigned native/Lit boundary; Resizable remains in M14",
+  "implementation": [
+    "Native viewport remains the scroll owner; TanStack holds derived geometry, visibility and pointer state",
+    "Scroll Area/Viewport/Scrollbar/Thumb/Corner and optional Button; custom bars replace matching defaults",
+    "Public Lit Motion springs control bar visibility; Scroll Button composes the existing Button",
+    "Native scrollTo/scrollBy/getViewport, logical buttons, native keyboard/wheel behavior, inherited RTL, optional four-edge fades",
+    "Scoped registration and native resource cleanup; transient state resets after disconnect",
+    "Scroller source, definitions/exports, maps/styles, tests and page are removed"
+  ],
+  "verification": {
+    "build": "Strict package build passes",
+    "site": {
+      "pages": 98,
+      "elements": 4278,
+      "undocumented": 0
+    },
+    "tests": {
+      "passed": 909,
+      "failed": 0,
+      "assertions": 122450,
+      "files": 153
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "one native viewport exposes measured scrollbar geometry",
+            "pass": true
+          },
+          {
+            "name": "native programmatic scrolling moves the thumb without a fabricated change event",
+            "pass": true
+          },
+          {
+            "name": "native keyboard scroll remains owned by the viewport",
+            "pass": true
+          },
+          {
+            "name": "thumb pointer drag translates track travel to native position",
+            "pass": true
+          },
+          {
+            "name": "RTL uses negative native offsets and a right-hand initial thumb",
+            "pass": true
+          },
+          {
+            "name": "content shrink hides bars and removes the automatic viewport tab stop",
+            "pass": true
+          },
+          {
+            "name": "reconnect releases and restores measurement",
+            "pass": true
+          },
+          {
+            "name": "optional buttons use native movement, physical lengths and edge disability",
+            "pass": true
+          },
+          {
+            "name": "custom scrollbar replaces the matching default without moving viewport content",
+            "pass": true
+          },
+          {
+            "name": "a cancelled drag stops subsequent pointer movement",
+            "pass": true
+          },
+          {
+            "name": "ancestor direction changes update physical thumb placement",
+            "pass": true
+          },
+          {
+            "name": "hidden to visible layout obtains current overflow geometry",
+            "pass": true
+          },
+          {
+            "name": "reconnect clears transient hover visibility",
+            "pass": true
+          },
+          {
+            "name": "TanStack Virtual uses the exposed native viewport",
+            "pass": true
+          },
+          {
+            "name": "wheel scrolling stays native and custom tracks release boundary wheels",
+            "pass": true
+          },
+          {
+            "name": "moving a viewport transfers ownership and clears obsolete bars",
+            "pass": true
+          },
+          {
+            "name": "edge fades follow native positions and the enabled axes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "one native viewport exposes measured scrollbar geometry",
+            "pass": true
+          },
+          {
+            "name": "native programmatic scrolling moves the thumb without a fabricated change event",
+            "pass": true
+          },
+          {
+            "name": "native keyboard scroll remains owned by the viewport",
+            "pass": true
+          },
+          {
+            "name": "thumb pointer drag translates track travel to native position",
+            "pass": true
+          },
+          {
+            "name": "RTL uses negative native offsets and a right-hand initial thumb",
+            "pass": true
+          },
+          {
+            "name": "content shrink hides bars and removes the automatic viewport tab stop",
+            "pass": true
+          },
+          {
+            "name": "reconnect releases and restores measurement",
+            "pass": true
+          },
+          {
+            "name": "optional buttons use native movement, physical lengths and edge disability",
+            "pass": true
+          },
+          {
+            "name": "custom scrollbar replaces the matching default without moving viewport content",
+            "pass": true
+          },
+          {
+            "name": "a cancelled drag stops subsequent pointer movement",
+            "pass": true
+          },
+          {
+            "name": "ancestor direction changes update physical thumb placement",
+            "pass": true
+          },
+          {
+            "name": "hidden to visible layout obtains current overflow geometry",
+            "pass": true
+          },
+          {
+            "name": "reconnect clears transient hover visibility",
+            "pass": true
+          },
+          {
+            "name": "TanStack Virtual uses the exposed native viewport",
+            "pass": true
+          },
+          {
+            "name": "wheel scrolling stays native and custom tracks release boundary wheels",
+            "pass": true
+          },
+          {
+            "name": "moving a viewport transfers ownership and clears obsolete bars",
+            "pass": true
+          },
+          {
+            "name": "edge fades follow native positions and the enabled axes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "one native viewport exposes measured scrollbar geometry",
+            "pass": true
+          },
+          {
+            "name": "native programmatic scrolling moves the thumb without a fabricated change event",
+            "pass": true
+          },
+          {
+            "name": "native keyboard scroll remains owned by the viewport",
+            "pass": true
+          },
+          {
+            "name": "thumb pointer drag translates track travel to native position",
+            "pass": true
+          },
+          {
+            "name": "RTL uses negative native offsets and a right-hand initial thumb",
+            "pass": true
+          },
+          {
+            "name": "content shrink hides bars and removes the automatic viewport tab stop",
+            "pass": true
+          },
+          {
+            "name": "reconnect releases and restores measurement",
+            "pass": true
+          },
+          {
+            "name": "optional buttons use native movement, physical lengths and edge disability",
+            "pass": true
+          },
+          {
+            "name": "custom scrollbar replaces the matching default without moving viewport content",
+            "pass": true
+          },
+          {
+            "name": "a cancelled drag stops subsequent pointer movement",
+            "pass": true
+          },
+          {
+            "name": "ancestor direction changes update physical thumb placement",
+            "pass": true
+          },
+          {
+            "name": "hidden to visible layout obtains current overflow geometry",
+            "pass": true
+          },
+          {
+            "name": "reconnect clears transient hover visibility",
+            "pass": true
+          },
+          {
+            "name": "TanStack Virtual uses the exposed native viewport",
+            "pass": true
+          },
+          {
+            "name": "wheel scrolling stays native and custom tracks release boundary wheels",
+            "pass": true
+          },
+          {
+            "name": "moving a viewport transfers ownership and clears obsolete bars",
+            "pass": true
+          },
+          {
+            "name": "edge fades follow native positions and the enabled axes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "one native viewport exposes measured scrollbar geometry",
+            "pass": true
+          },
+          {
+            "name": "native programmatic scrolling moves the thumb without a fabricated change event",
+            "pass": true
+          },
+          {
+            "name": "native keyboard scroll remains owned by the viewport",
+            "pass": true
+          },
+          {
+            "name": "thumb pointer drag translates track travel to native position",
+            "pass": true
+          },
+          {
+            "name": "RTL uses negative native offsets and a right-hand initial thumb",
+            "pass": true
+          },
+          {
+            "name": "content shrink hides bars and removes the automatic viewport tab stop",
+            "pass": true
+          },
+          {
+            "name": "reconnect releases and restores measurement",
+            "pass": true
+          },
+          {
+            "name": "optional buttons use native movement, physical lengths and edge disability",
+            "pass": true
+          },
+          {
+            "name": "custom scrollbar replaces the matching default without moving viewport content",
+            "pass": true
+          },
+          {
+            "name": "a cancelled drag stops subsequent pointer movement",
+            "pass": true
+          },
+          {
+            "name": "ancestor direction changes update physical thumb placement",
+            "pass": true
+          },
+          {
+            "name": "hidden to visible layout obtains current overflow geometry",
+            "pass": true
+          },
+          {
+            "name": "reconnect clears transient hover visibility",
+            "pass": true
+          },
+          {
+            "name": "TanStack Virtual uses the exposed native viewport",
+            "pass": true
+          },
+          {
+            "name": "wheel scrolling stays native and custom tracks release boundary wheels",
+            "pass": true
+          },
+          {
+            "name": "moving a viewport transfers ownership and clears obsolete bars",
+            "pass": true
+          },
+          {
+            "name": "edge fades follow native positions and the enabled axes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "one native viewport exposes measured scrollbar geometry",
+            "pass": true
+          },
+          {
+            "name": "native programmatic scrolling moves the thumb without a fabricated change event",
+            "pass": true
+          },
+          {
+            "name": "native keyboard scroll remains owned by the viewport",
+            "pass": true
+          },
+          {
+            "name": "thumb pointer drag translates track travel to native position",
+            "pass": true
+          },
+          {
+            "name": "RTL uses negative native offsets and a right-hand initial thumb",
+            "pass": true
+          },
+          {
+            "name": "content shrink hides bars and removes the automatic viewport tab stop",
+            "pass": true
+          },
+          {
+            "name": "reconnect releases and restores measurement",
+            "pass": true
+          },
+          {
+            "name": "optional buttons use native movement, physical lengths and edge disability",
+            "pass": true
+          },
+          {
+            "name": "custom scrollbar replaces the matching default without moving viewport content",
+            "pass": true
+          },
+          {
+            "name": "a cancelled drag stops subsequent pointer movement",
+            "pass": true
+          },
+          {
+            "name": "ancestor direction changes update physical thumb placement",
+            "pass": true
+          },
+          {
+            "name": "hidden to visible layout obtains current overflow geometry",
+            "pass": true
+          },
+          {
+            "name": "reconnect clears transient hover visibility",
+            "pass": true
+          },
+          {
+            "name": "TanStack Virtual uses the exposed native viewport",
+            "pass": true
+          },
+          {
+            "name": "wheel scrolling stays native and custom tracks release boundary wheels",
+            "pass": true
+          },
+          {
+            "name": "moving a viewport transfers ownership and clears obsolete bars",
+            "pass": true
+          },
+          {
+            "name": "edge fades follow native positions and the enabled axes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "one native viewport exposes measured scrollbar geometry",
+            "pass": true
+          },
+          {
+            "name": "native programmatic scrolling moves the thumb without a fabricated change event",
+            "pass": true
+          },
+          {
+            "name": "native keyboard scroll remains owned by the viewport",
+            "pass": true
+          },
+          {
+            "name": "thumb pointer drag translates track travel to native position",
+            "pass": true
+          },
+          {
+            "name": "RTL uses negative native offsets and a right-hand initial thumb",
+            "pass": true
+          },
+          {
+            "name": "content shrink hides bars and removes the automatic viewport tab stop",
+            "pass": true
+          },
+          {
+            "name": "reconnect releases and restores measurement",
+            "pass": true
+          },
+          {
+            "name": "optional buttons use native movement, physical lengths and edge disability",
+            "pass": true
+          },
+          {
+            "name": "custom scrollbar replaces the matching default without moving viewport content",
+            "pass": true
+          },
+          {
+            "name": "a cancelled drag stops subsequent pointer movement",
+            "pass": true
+          },
+          {
+            "name": "ancestor direction changes update physical thumb placement",
+            "pass": true
+          },
+          {
+            "name": "hidden to visible layout obtains current overflow geometry",
+            "pass": true
+          },
+          {
+            "name": "reconnect clears transient hover visibility",
+            "pass": true
+          },
+          {
+            "name": "TanStack Virtual uses the exposed native viewport",
+            "pass": true
+          },
+          {
+            "name": "wheel scrolling stays native and custom tracks release boundary wheels",
+            "pass": true
+          },
+          {
+            "name": "moving a viewport transfers ownership and clears obsolete bars",
+            "pass": true
+          },
+          {
+            "name": "edge fades follow native positions and the enabled axes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "docs": [
+      {
+        "engine": "chromium",
+        "pass": true,
+        "checks": 3,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "pass": true,
+        "checks": 3,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "pass": true,
+        "checks": 3,
+        "errors": []
+      }
+    ],
+    "screenshot": "m14-scroll-area-2026-09-23.png",
+    "visualInspection": "Chromium custom bar and visible records inspected after centering clear of the documentation header"
+  },
+  "review": {
+    "correctness": "Seventeen native cases per engine include pointer cancellation, custom parts, viewport transfer, finite geometry, RTL and native wheel boundary release",
+    "architecture": "Uses the existing state, motion, Button and composed-ownership mechanisms; no Zag runtime or virtualizer owner added",
+    "security": "No data fetching, raw HTML property rendering or storage; step values use native CSS validation",
+    "performance": "One frame-coalesced measurement path; observers update only their changed target set; idle timer and pointer resources release"
+  },
+  "reference": {
+    "zag": "Published 1.44.0 machine/connect/DOM/types and scroll helpers read in full",
+    "nativeKeyboard": "Plain WebKit native controls also fail the zero-duration automated ArrowDown press; a held 100ms press scrolls both. No replacement key handler added.",
+    "virtualization": "Real @tanstack/lit-virtual 3.14.0 consumer scrolls to row 500 while rendering fewer than 25 rows, using getViewport as the native scroll owner",
+    "minimumThumb": "24 CSS pixels along the track, capped to track length; zero travel preserves position",
+    "visibilityDelay": "Internal 1000ms recent-scroll visibility follows the inspected behavior source; no extra public delay API"
+  },
+  "limits": [
+    "Actual touch hardware, assistive technology and Safari interaction remain M22/M26",
+    "Final generated React-wrapper and whole-library package/appearance gates remain M22/M26"
+  ],
+  "reproduction": {
+    "directory": "/private/tmp/acme-m14-scroll",
+    "fixture": "import {AcmeButton} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/button/button\";customElements.define(\"acme-button\",AcmeButton);\nimport \"./virtual-fixture\";\nimport {AcmeScrollButton} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/scroll-button/scroll-button';customElements.define('acme-scroll-button',AcmeScrollButton);\nimport {AcmeScrollArea} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/scroll-area/scroll-area';import {AcmeScrollViewport} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/scroll-viewport/scroll-viewport';import {AcmeScrollbar} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/scrollbar/scrollbar';import {AcmeScrollThumb} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/scroll-thumb/scroll-thumb';import {AcmeScrollCorner} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/scroll-corner/scroll-corner';\ncustomElements.define('acme-scroll-area',AcmeScrollArea);customElements.define('acme-scroll-viewport',AcmeScrollViewport);customElements.define('acme-scrollbar',AcmeScrollbar);customElements.define('acme-scroll-thumb',AcmeScrollThumb);customElements.define('acme-scroll-corner',AcmeScrollCorner);\ndocument.body.innerHTML='<acme-scroll-area id=\"area\" style=\"width:300px;height:200px\" scrollbar-visibility=\"always\"><acme-scroll-viewport aria-label=\"Scrollable content\"><div id=\"content\" style=\"width:800px;height:1000px\"><button>First</button><button id=\"last\" style=\"display:block;margin-top:850px;margin-left:600px\">Last</button></div></acme-scroll-viewport></acme-scroll-area>';\n",
+    "runner": "import assert from 'node:assert/strict';const dir='/tmp/acme-m14-scroll';const build=await Bun.build({entrypoints:[dir+'/main-candidate.ts'],outdir:dir+'/main-bundle',target:'browser',format:'esm'});if(!build.success)throw new AggregateError(build.logs);process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');const server=Bun.serve({port:0,fetch(req){const p=new URL(req.url).pathname;return p==='/candidate.js'?new Response(Bun.file(dir+'/main-bundle/main-candidate.js'),{headers:{'Content-Type':'text/javascript'}}):p==='/tokens.css'?new Response(Bun.file('/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/css/document/tokens.css'),{headers:{'Content-Type':'text/css'}}):new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/candidate.js\"></script>',{headers:{'Content-Type':'text/html'}})}});const reports=[];\ntry{for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true}:{headless:true});const page=await browser.newPage({reducedMotion:'reduce'});page.setDefaultTimeout(5000);const errors=[],checks=[];page.on('pageerror',e=>{errors.push(String(e));console.log(engine,'ERROR',String(e))});const check=async(name,run)=>{try{await page.goto(server.url.href);await page.waitForFunction(()=>document.querySelector('#area')?.getViewport?.()?.clientHeight===200,null,{timeout:5000});await page.waitForFunction(()=>document.querySelector('#area').shadowRoot.querySelector('acme-scrollbar[orientation=vertical]')?.hasAttribute('data-visible'),null,{timeout:5000});await page.waitForFunction(()=>{const b=document.querySelector('#area').shadowRoot.querySelector('acme-scrollbar[orientation=vertical]'),t=b?.shadowRoot.querySelector('acme-scroll-thumb');return t&&t.getBoundingClientRect().height>=24&&t.getBoundingClientRect().height<b.getBoundingClientRect().height},null,{timeout:5000});await run();checks.push({name,pass:true});console.log(engine,'PASS',name)}catch(e){checks.push({name,pass:false,error:String(e)});console.log(engine,'FAIL',name,String(e))}};\nawait check('one native viewport exposes measured scrollbar geometry',async()=>{const d=await page.locator('#area').evaluate(el=>{const v=el.getViewport(),bar=el.shadowRoot.querySelector('acme-scrollbar[orientation=vertical]'),thumb=bar.shadowRoot.querySelector('acme-scroll-thumb');return{v:v.localName,height:v.clientHeight,max:v.scrollHeight-v.clientHeight,tab:v.tabIndex,thumb:thumb.getBoundingClientRect().height,track:bar.getBoundingClientRect().height}});assert.equal(d.v,'div');assert.equal(d.tab,0);assert.ok(d.max>=800);assert.ok(d.thumb>=24&&d.thumb<d.track);});\nawait check('native programmatic scrolling moves the thumb without a fabricated change event',async()=>{await page.locator('#area').evaluate(el=>{window.changes=0;el.addEventListener('acme-change',()=>window.changes++);el.scrollTo({top:400})});await page.waitForFunction(()=>document.querySelector('#area').getViewport().scrollTop===400);await page.waitForFunction(()=>parseFloat(getComputedStyle(document.querySelector('#area').shadowRoot.querySelector('acme-scrollbar[orientation=vertical]').shadowRoot.querySelector('acme-scroll-thumb')).top)>0);assert.equal(await page.evaluate(()=>window.changes),0);});\nawait check('native keyboard scroll remains owned by the viewport',async()=>{await page.locator('acme-scroll-viewport div[part~=viewport]').click({position:{x:100,y:100}});await page.keyboard.press('ArrowDown',{delay:100});await page.waitForFunction(()=>document.querySelector('#area').getViewport().scrollTop>0);});\nawait check('thumb pointer drag translates track travel to native position',async()=>{const thumb=page.locator('acme-scrollbar[orientation=vertical] acme-scroll-thumb');const b=await thumb.boundingBox();await page.mouse.move(b.x+b.width/2,b.y+b.height/2);await page.mouse.down();await page.mouse.move(b.x+b.width/2,b.y+b.height/2+70,{steps:4});await page.mouse.up();assert.ok(await page.locator('#area').evaluate(el=>el.getViewport().scrollTop)>100);});\nawait check('RTL uses negative native offsets and a right-hand initial thumb',async()=>{await page.locator('#area').evaluate(el=>el.dir='rtl');await page.waitForFunction(()=>parseFloat(getComputedStyle(document.querySelector('#area').shadowRoot.querySelector('acme-scrollbar[orientation=horizontal]').shadowRoot.querySelector('acme-scroll-thumb')).left)>0);await page.locator('#area').evaluate(el=>el.scrollTo({left:-300}));assert.equal(await page.locator('#area').evaluate(el=>el.getViewport().scrollLeft),-300);});\nawait check('content shrink hides bars and removes the automatic viewport tab stop',async()=>{await page.locator('#content').evaluate(el=>{el.innerHTML='Small';el.style.width='20px';el.style.height='20px'});await page.waitForFunction(()=>document.querySelector('#area').getViewport().tabIndex===-1);assert.equal(await page.locator('acme-scrollbar:not([data-inactive])').count(),0);});\nawait check('reconnect releases and restores measurement',async()=>{await page.locator('#area').evaluate(el=>{el.remove();document.body.append(el)});await page.locator('#area').evaluate(el=>el.scrollTo({top:300}));await page.waitForFunction(()=>parseFloat(getComputedStyle(document.querySelector('#area').shadowRoot.querySelector('acme-scrollbar[orientation=vertical]').shadowRoot.querySelector('acme-scroll-thumb')).top)>0);});\n\nawait check('optional buttons use native movement, physical lengths and edge disability',async()=>{await page.locator('#area').evaluate(el=>el.insertAdjacentHTML('beforeend','<acme-scroll-button slot=\"controls\" direction=\"block-start\" id=\"previous\"></acme-scroll-button><acme-scroll-button slot=\"controls\" direction=\"block-end\" step=\"40px\" id=\"next\"></acme-scroll-button>'));await page.waitForFunction(()=>document.querySelector('#next').shadowRoot?.querySelector('acme-button')?.disabled===false);assert.equal(await page.locator('#previous button[part=root]').isDisabled(),true);await page.locator('#next button[part=root]').click();assert.equal(await page.locator('#area').evaluate(el=>el.getViewport().scrollTop),40);await page.waitForFunction(()=>!document.querySelector('#previous').shadowRoot.querySelector('acme-button').disabled);await page.locator('#previous button[part=root]').click();assert.equal(await page.locator('#area').evaluate(el=>el.getViewport().scrollTop),0);});\nawait check('custom scrollbar replaces the matching default without moving viewport content',async()=>{await page.locator('#area').evaluate(el=>{window.savedContent=el.querySelector('#content');el.insertAdjacentHTML('beforeend','<acme-scrollbar orientation=\"vertical\" id=\"custom-bar\"><acme-scroll-thumb></acme-scroll-thumb></acme-scrollbar>')});await page.waitForFunction(()=>!document.querySelector('#area').shadowRoot.querySelector('acme-scrollbar[orientation=vertical]'));assert.equal(await page.locator('#area').evaluate(el=>el.querySelector('#content')===window.savedContent),true);assert.equal(await page.locator('#custom-bar').evaluate(el=>el.getBoundingClientRect().height>0),true);});\nawait check('a cancelled drag stops subsequent pointer movement',async()=>{await page.evaluate(()=>document.addEventListener('pointerdown',e=>window.activePointer=e.pointerId,{capture:true,once:true}));const thumb=page.locator('acme-scrollbar[orientation=vertical] acme-scroll-thumb');const box=await thumb.boundingBox();await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();await page.mouse.move(box.x+box.width/2,box.y+box.height/2+40);const before=await page.locator('#area').evaluate(el=>el.getViewport().scrollTop);await page.locator('acme-scrollbar[orientation=vertical] div[part=scrollbar]').evaluate(el=>el.dispatchEvent(new PointerEvent('pointercancel',{pointerId:window.activePointer,bubbles:true})));await page.mouse.move(box.x+box.width/2,box.y+box.height/2+90);assert.equal(await page.locator('#area').evaluate(el=>el.getViewport().scrollTop),before);await page.mouse.up();});\nawait check('ancestor direction changes update physical thumb placement',async()=>{await page.evaluate(()=>document.body.dir='rtl');await page.waitForFunction(()=>parseFloat(getComputedStyle(document.querySelector('#area').shadowRoot.querySelector('acme-scrollbar[orientation=horizontal]').shadowRoot.querySelector('acme-scroll-thumb')).left)>0);await page.evaluate(()=>document.body.dir='ltr');});\nawait check('hidden to visible layout obtains current overflow geometry',async()=>{await page.locator('#area').evaluate(el=>el.hidden=true);await page.locator('#content').evaluate(el=>el.style.height='1400px');await page.locator('#area').evaluate(el=>el.hidden=false);await page.waitForFunction(()=>document.querySelector('#area').getViewport().scrollHeight===1400);await page.locator('#area').evaluate(el=>el.scrollTo({top:1000}));assert.equal(await page.locator('#area').evaluate(el=>el.getViewport().scrollTop),1000);});\nawait check(\"reconnect clears transient hover visibility\",async()=>{await page.locator(\"#area\").evaluate(async el=>{el.scrollbarVisibility=\"hover\";await el.updateComplete;el.dispatchEvent(new PointerEvent(\"pointerenter\"));window.detachedArea=el;el.remove()});await page.mouse.move(1100,700);await page.evaluate(()=>document.body.append(window.detachedArea));await page.waitForFunction(()=>{const bar=document.querySelector(\"#area\").shadowRoot.querySelector(\"acme-scrollbar[orientation=vertical]\");return !bar.hasAttribute(\"data-inactive\")&&!bar.hasAttribute(\"data-visible\")});});\nawait check(\"TanStack Virtual uses the exposed native viewport\",async()=>{await page.evaluate(()=>document.body.insertAdjacentHTML(\"beforeend\",\"<virtual-scroll-example></virtual-scroll-example>\"));await page.waitForFunction(()=>document.querySelector(\"virtual-scroll-example\").shadowRoot?.querySelectorAll(\"[data-row]\").length>0);await page.locator(\"virtual-scroll-example\").evaluate(el=>el.virtual.getVirtualizer().scrollToIndex(500,{align:\"start\"}));await page.waitForFunction(()=>document.querySelector(\"virtual-scroll-example\").shadowRoot.querySelector(\"[data-row=\\\"500\\\"]\"));const state=await page.locator(\"virtual-scroll-example\").evaluate(el=>({rows:el.shadowRoot.querySelectorAll(\"[data-row]\").length,position:el.shadowRoot.querySelector(\"acme-scroll-area\").getViewport().scrollTop}));assert.ok(state.rows<25);assert.ok(state.position>14000);});\n\nawait check('wheel scrolling stays native and custom tracks release boundary wheels',async()=>{await page.locator('acme-scroll-viewport').hover();await page.mouse.wheel(0,100);await page.waitForFunction(()=>document.querySelector('#area').getViewport().scrollTop>0);await page.locator('#area').evaluate(el=>el.scrollTo({top:0}));const track=page.locator('acme-scrollbar[orientation=vertical] div[part=scrollbar]');assert.equal(await track.evaluate(el=>el.dispatchEvent(new WheelEvent('wheel',{deltaY:80,bubbles:true,cancelable:true}))),false);assert.equal(await page.locator('#area').evaluate(el=>el.getViewport().scrollTop),80);await page.locator('#area').evaluate(el=>el.scrollTo({top:1e6}));await page.waitForFunction(()=>{const v=document.querySelector('#area').getViewport();return v.scrollTop===v.scrollHeight-v.clientHeight});assert.equal(await track.evaluate(el=>el.dispatchEvent(new WheelEvent('wheel',{deltaY:80,bubbles:true,cancelable:true}))),true);});\nawait check('moving a viewport transfers ownership and clears obsolete bars',async()=>{await page.locator('#area').evaluate(el=>{const other=document.createElement('acme-scroll-area');other.id='other';other.style.cssText='width:240px;height:160px';other.scrollbarVisibility='always';document.body.append(other);window.movedViewport=el.getViewport();other.append(el.querySelector('acme-scroll-viewport'))});await page.waitForFunction(()=>{const other=document.querySelector('#other');return other.getViewport?.()===window.movedViewport&&document.querySelector('#area').shadowRoot.querySelector('acme-scrollbar[orientation=vertical]')?.hasAttribute('data-inactive')});assert.equal(await page.locator('#other').evaluate(el=>el.getViewport().clientHeight),160);});\n\nawait check('edge fades follow native positions and the enabled axes',async()=>{await page.locator('#area').evaluate(async el=>{el.edgeFades=true;await el.updateComplete});assert.equal(await page.locator('#area div[part=surface]').getAttribute('data-fade-top'),null);assert.notEqual(await page.locator('#area div[part=surface]').getAttribute('data-fade-bottom'),null);await page.locator('#area').evaluate(el=>el.scrollTo({top:200,left:200}));await page.waitForFunction(()=>document.querySelector('#area').shadowRoot.querySelector('[part=surface]').hasAttribute('data-fade-left'));await page.locator('#area').evaluate(async el=>{el.orientation='vertical';await el.updateComplete});assert.equal(await page.locator('#area div[part=surface]').getAttribute('data-fade-left'),null);assert.equal(await page.locator('#area .inline-fades').evaluate(el=>getComputedStyle(el,'::before').pointerEvents),'none');});\nreports.push({engine,checks,errors});await browser.close();}}finally{server.stop(true)}await Bun.write(dir+'/main-native-results.json',JSON.stringify(reports,null,2)+'\\n');if(reports.some(r=>r.errors.length||r.checks.some(c=>!c.pass)))process.exitCode=1;\n",
+    "virtualFixture": "import {LitElement,html} from '/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/index.js';\nimport {VirtualizerController} from '/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/@tanstack/lit-virtual/src/index.ts';\nclass VirtualScrollExample extends LitElement{\n readonly virtual=new VirtualizerController<HTMLElement,HTMLElement>(this,{count:1000,estimateSize:()=>30,overscan:3,getScrollElement:()=>{try{return this.renderRoot.querySelector('acme-scroll-area')?.getViewport()??null}catch{return null}}});\n async firstUpdated(){await this.renderRoot.querySelector('acme-scroll-area')?.updateComplete;await this.renderRoot.querySelector('acme-scroll-viewport')?.updateComplete;this.requestUpdate();}\n render(){const v=this.virtual.getVirtualizer();return html`<acme-scroll-area style=\"width:320px;height:200px\" scrollbar-visibility=\"always\"><acme-scroll-viewport aria-label=\"Virtual records\"><div style=${`height:${v.getTotalSize()}px;position:relative;`}>${v.getVirtualItems().map(row=>html`<div data-row=${row.index} style=${`position:absolute;left:0;right:0;top:${row.start}px;height:30px;`}>Record ${row.index}</div>`)}</div></acme-scroll-viewport></acme-scroll-area>`;}\n}\ncustomElements.define('virtual-scroll-example',VirtualScrollExample);\n",
+    "logs": [
+      "build.log",
+      "docs.log",
+      "suite.log",
+      "source-complete.log",
+      "compiled-complete.log",
+      "docs-native-final.log"
+    ],
+    "keyboardReference": [
+      {
+        "padding": "0px",
+        "top": 57
+      },
+      {
+        "padding": "10px",
+        "top": 62
+      },
+      {
+        "padding": "0px 10px 10px 0px",
+        "top": 76
+      },
+      {
+        "padding": "0px 10px 0px 0px",
+        "top": 61
+      },
+      {
+        "padding": "0px 0px 10px 0px",
+        "top": 59
+      }
+    ]
+  }
+}

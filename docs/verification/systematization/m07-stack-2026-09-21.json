@@ -1,0 +1,903 @@
+{
+  "date": "2026-09-21",
+  "batch": "M07 in progress",
+  "entries": [
+    "Stack",
+    "HStack",
+    "VStack"
+  ],
+  "results": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "acme-stack defaults",
+            "ok": true
+          },
+          {
+            "name": "acme-h-stack defaults",
+            "ok": true
+          },
+          {
+            "name": "acme-v-stack defaults",
+            "ok": true
+          },
+          {
+            "name": "wrapped width 150",
+            "ok": true
+          },
+          {
+            "name": "wrapped width 220",
+            "ok": true
+          },
+          {
+            "name": "wrapped width 350",
+            "ok": true
+          },
+          {
+            "name": "row-reverse RTL false wraps without orphan",
+            "ok": true
+          },
+          {
+            "name": "row RTL true wraps without orphan",
+            "ok": true
+          },
+          {
+            "name": "column RTL false wraps without orphan",
+            "ok": true
+          },
+          {
+            "name": "column-reverse RTL false wraps without orphan",
+            "ok": true
+          },
+          {
+            "name": "unequal centered heights share one visual line",
+            "ok": true
+          },
+          {
+            "name": "resize preserves children focus events and line membership",
+            "ok": true
+          },
+          {
+            "name": "semantic tag changes retain native focus",
+            "ok": true
+          },
+          {
+            "name": "hidden members leave the sequence",
+            "ok": true
+          },
+          {
+            "name": "CSS order determines visible neighbors",
+            "ok": true
+          },
+          {
+            "name": "disabling separators restores ordinary gap",
+            "ok": true
+          },
+          {
+            "name": "zero gap retains only separator thickness",
+            "ok": true
+          },
+          {
+            "name": "scale preserves local separator spacing",
+            "ok": true
+          },
+          {
+            "name": "line hooks update geometry",
+            "ok": true
+          },
+          {
+            "name": "reconnect recreates bounded decoration",
+            "ok": true
+          },
+          {
+            "name": "raw text keeps content and ordinary gaps without decorators",
+            "ok": true
+          },
+          {
+            "name": "removing raw text restores decorators",
+            "ok": true
+          },
+          {
+            "name": "decoration does not change authored absolute containing blocks",
+            "ok": true
+          },
+          {
+            "name": "separator part reaches the actual line",
+            "ok": true
+          },
+          {
+            "name": "unwrapped vertical separators stretch across the content width",
+            "ok": true
+          },
+          {
+            "name": "named theme changes update spacing in a fixed-size Stack",
+            "ok": true
+          },
+          {
+            "name": "default gaps follow compact density",
+            "ok": true
+          },
+          {
+            "name": "explicit spacing keys are not density-scaled",
+            "ok": true
+          },
+          {
+            "name": "adoption restores measurement and generated styles",
+            "ok": true
+          },
+          {
+            "name": "one geometry observer owns the active stack",
+            "ok": true
+          },
+          {
+            "name": "disabling decoration releases geometry observation",
+            "ok": true
+          },
+          {
+            "name": "removal cancels pending geometry and releases observation",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "acme-stack defaults",
+            "ok": true
+          },
+          {
+            "name": "acme-h-stack defaults",
+            "ok": true
+          },
+          {
+            "name": "acme-v-stack defaults",
+            "ok": true
+          },
+          {
+            "name": "wrapped width 150",
+            "ok": true
+          },
+          {
+            "name": "wrapped width 220",
+            "ok": true
+          },
+          {
+            "name": "wrapped width 350",
+            "ok": true
+          },
+          {
+            "name": "row-reverse RTL false wraps without orphan",
+            "ok": true
+          },
+          {
+            "name": "row RTL true wraps without orphan",
+            "ok": true
+          },
+          {
+            "name": "column RTL false wraps without orphan",
+            "ok": true
+          },
+          {
+            "name": "column-reverse RTL false wraps without orphan",
+            "ok": true
+          },
+          {
+            "name": "unequal centered heights share one visual line",
+            "ok": true
+          },
+          {
+            "name": "resize preserves children focus events and line membership",
+            "ok": true
+          },
+          {
+            "name": "semantic tag changes retain native focus",
+            "ok": true
+          },
+          {
+            "name": "hidden members leave the sequence",
+            "ok": true
+          },
+          {
+            "name": "CSS order determines visible neighbors",
+            "ok": true
+          },
+          {
+            "name": "disabling separators restores ordinary gap",
+            "ok": true
+          },
+          {
+            "name": "zero gap retains only separator thickness",
+            "ok": true
+          },
+          {
+            "name": "scale preserves local separator spacing",
+            "ok": true
+          },
+          {
+            "name": "line hooks update geometry",
+            "ok": true
+          },
+          {
+            "name": "reconnect recreates bounded decoration",
+            "ok": true
+          },
+          {
+            "name": "raw text keeps content and ordinary gaps without decorators",
+            "ok": true
+          },
+          {
+            "name": "removing raw text restores decorators",
+            "ok": true
+          },
+          {
+            "name": "decoration does not change authored absolute containing blocks",
+            "ok": true
+          },
+          {
+            "name": "separator part reaches the actual line",
+            "ok": true
+          },
+          {
+            "name": "unwrapped vertical separators stretch across the content width",
+            "ok": true
+          },
+          {
+            "name": "named theme changes update spacing in a fixed-size Stack",
+            "ok": true
+          },
+          {
+            "name": "default gaps follow compact density",
+            "ok": true
+          },
+          {
+            "name": "explicit spacing keys are not density-scaled",
+            "ok": true
+          },
+          {
+            "name": "adoption restores measurement and generated styles",
+            "ok": true
+          },
+          {
+            "name": "one geometry observer owns the active stack",
+            "ok": true
+          },
+          {
+            "name": "disabling decoration releases geometry observation",
+            "ok": true
+          },
+          {
+            "name": "removal cancels pending geometry and releases observation",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "acme-stack defaults",
+            "ok": true
+          },
+          {
+            "name": "acme-h-stack defaults",
+            "ok": true
+          },
+          {
+            "name": "acme-v-stack defaults",
+            "ok": true
+          },
+          {
+            "name": "wrapped width 150",
+            "ok": true
+          },
+          {
+            "name": "wrapped width 220",
+            "ok": true
+          },
+          {
+            "name": "wrapped width 350",
+            "ok": true
+          },
+          {
+            "name": "row-reverse RTL false wraps without orphan",
+            "ok": true
+          },
+          {
+            "name": "row RTL true wraps without orphan",
+            "ok": true
+          },
+          {
+            "name": "column RTL false wraps without orphan",
+            "ok": true
+          },
+          {
+            "name": "column-reverse RTL false wraps without orphan",
+            "ok": true
+          },
+          {
+            "name": "unequal centered heights share one visual line",
+            "ok": true
+          },
+          {
+            "name": "resize preserves children focus events and line membership",
+            "ok": true
+          },
+          {
+            "name": "semantic tag changes retain native focus",
+            "ok": true
+          },
+          {
+            "name": "hidden members leave the sequence",
+            "ok": true
+          },
+          {
+            "name": "CSS order determines visible neighbors",
+            "ok": true
+          },
+          {
+            "name": "disabling separators restores ordinary gap",
+            "ok": true
+          },
+          {
+            "name": "zero gap retains only separator thickness",
+            "ok": true
+          },
+          {
+            "name": "scale preserves local separator spacing",
+            "ok": true
+          },
+          {
+            "name": "line hooks update geometry",
+            "ok": true
+          },
+          {
+            "name": "reconnect recreates bounded decoration",
+            "ok": true
+          },
+          {
+            "name": "raw text keeps content and ordinary gaps without decorators",
+            "ok": true
+          },
+          {
+            "name": "removing raw text restores decorators",
+            "ok": true
+          },
+          {
+            "name": "decoration does not change authored absolute containing blocks",
+            "ok": true
+          },
+          {
+            "name": "separator part reaches the actual line",
+            "ok": true
+          },
+          {
+            "name": "unwrapped vertical separators stretch across the content width",
+            "ok": true
+          },
+          {
+            "name": "named theme changes update spacing in a fixed-size Stack",
+            "ok": true
+          },
+          {
+            "name": "default gaps follow compact density",
+            "ok": true
+          },
+          {
+            "name": "explicit spacing keys are not density-scaled",
+            "ok": true
+          },
+          {
+            "name": "adoption restores measurement and generated styles",
+            "ok": true
+          },
+          {
+            "name": "one geometry observer owns the active stack",
+            "ok": true
+          },
+          {
+            "name": "disabling decoration releases geometry observation",
+            "ok": true
+          },
+          {
+            "name": "removal cancels pending geometry and releases observation",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "packedConsumer": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "class imports remain inert",
+            "ok": true
+          },
+          {
+            "name": "explicit entry defines the separator dependency",
+            "ok": true
+          },
+          {
+            "name": "packed compiled Stack preserves per-side spacing",
+            "ok": true
+          },
+          {
+            "name": "named forms have no direction input",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "class imports remain inert",
+            "ok": true
+          },
+          {
+            "name": "explicit entry defines the separator dependency",
+            "ok": true
+          },
+          {
+            "name": "packed compiled Stack preserves per-side spacing",
+            "ok": true
+          },
+          {
+            "name": "named forms have no direction input",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "class imports remain inert",
+            "ok": true
+          },
+          {
+            "name": "explicit entry defines the separator dependency",
+            "ok": true
+          },
+          {
+            "name": "packed compiled Stack preserves per-side spacing",
+            "ok": true
+          },
+          {
+            "name": "named forms have no direction input",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "validation": {
+    "fullSuite": "bun test v1.4.0 (34cbb9a40)\n\nscripts/__tests__/manifest.test.ts:\n(pass) store-backed public properties retain manifest defaults and inherited attribute metadata [471.81ms]\n(pass) the manifest matches every registered Lit class and its runtime property attributes [1838.26ms]\n(pass) manifest facts cover conditional events, event variables, slots and forwarded parts [265.46ms]\n(pass) unresolved local paths fail manifest normalization [1.24ms]\n(pass) the analyzer distinguishes package exports from relative exports with either quote style [0.31ms]\n(pass) Lit default attributes use lowercase names while explicit names stay intact [0.64ms]\n(pass) events dispatched by field callbacks and constructors remain public events [0.29ms]\n\nscripts/__tests__/responsive-styles.test.ts:\n(pass) the generated delivery owns every common CSS declaration and target [1.10ms]\n(pass) the producer writes stable source and verification rejects stale delivery [3.49ms]\n\nscripts/__tests__/dev.test.ts:\n(pass) an authored stylesheet change reaches the served page without a regeneration loop [1531.38ms]\n(pass) a failed style generation leaves the last successful page intact [555.41ms]\n(pass) a numeric catalog edit regenerates styles before serving the page without a loop [1599.90ms]\n\nscripts/__tests__/styles.test.ts:\n(pass) channel consumers use full colors and fixed alpha without making palette definitions circular [3.27ms]\n(pass) font consumers use canonical families and numeric weight tokens without family-as-weight declarations [0.56ms]\n(pass) generated Lit styles attach defaults without registering them during import [5.19ms]\n(pass) compiled CSS survives Lit template escaping exactly and maps to its CSS input [1.32ms]\n(pass) invalid CSS stops generation instead of producing a partial artifact [0.57ms]\n(pass) property definitions are parsed, deduplicated and rejected on conflict [0.43ms]\n(pass) document styles keep their explicit scope [0.11ms]\n(pass) partitioning retains quoted braces, variables and conditional ownership [0.61ms]\n(pass) the manifest rejects changed inputs and tampered outputs, without requiring the external corpus [15.09ms]\n(pass) invalid CSS and registration conflicts leave previous generated artifacts intact [5.60ms]\n(pass) family ownership is assigned before the compiler merges equal rules [0.18ms]\n(pass) nested selectors inherit their outer component family [0.23ms]\n(pass) constant line-height ratios retain browser precision and original source maps [0.21ms]\n(pass) line-height preservation respects nested rules and custom-property values [0.35ms]\n(pass) an active output lock cannot overwrite the manifest [4.37ms]\n\nscripts/__tests__/package.test.ts:\n(pass) private workspaces resolve the one live core build [1.15ms]\n(pass) production metadata contains runtime contracts and resolves coordinated workspaces [0.30ms]\n(pass) packing preserves the authoring manifest and ships only staged production files [15.12ms]\n\nscripts/__tests__/numeric-tokens.test.ts:\n(pass) numeric CSS declares independent spacing and size defaults with no negative aliases [0.16ms]\n(pass) the generated manifest links every public key to its one property, default and source [5.01ms]\n\nscripts/__tests__/theme-tokens.test.ts:\n(pass) document selector normalization preserves automatic appearance guards and unrelated attributes [0.38ms]\n(pass) scope output accepts the normalized internal document appearance selectors [5.24ms]\n(pass) appearance output includes changed values and dependent aliases, not invariant inheritance [2.41ms]\n(pass) full reset includes invariant and canonical defaults while ambient document rules stay outside [2.25ms]\n(pass) conditional source order is preserved rather than flattened [2.24ms]\n(pass) compact density emits only four role overrides with a normal reset path [2.22ms]\n(pass) root output contains the observed weight and density defaults once [2.23ms]\n(pass) generation is deterministic and has no file-writing side effects [3.63ms]\n\nscripts/__tests__/entries.test.ts:\n(pass) the entries command updates definitions and exports together [481.94ms]\n(pass) records use tag declarations and owned markup, not component imports or text [246.05ms]\n(pass) inherits owned rendering and resolves aliased templates, helpers and literal creation [275.00ms]\n(pass) tag maps resolve imported class aliases without retaining a second tag catalog [240.29ms]\n(pass) rejects duplicate before writing [232.34ms]\n(pass) rejects missing class before writing [236.57ms]\n(pass) rejects unknown child before writing [231.27ms]\n(pass) rejects cycle before writing [236.37ms]\n(pass) rejects self cycle before writing [222.58ms]\n(pass) writes deterministic definitions, preserves authored files and removes only stale generated files [464.57ms]\n(pass) package exports track the source records and retain unrelated authored exports [459.89ms]\n(pass) refuses to overwrite authored entries [239.85ms]\n(pass) an authored all entry blocks every output write [232.73ms]\n(pass) rejects unresolved Lit tag expressions: render(){return html`<${this.tag}></${this.tag}>`;} [229.35ms]\n(pass) rejects unresolved Lit tag expressions: render(){return html`<acme-${this.tag}/>`;} [232.71ms]\n(pass) rejects unresolved Lit tag expressions: render(){return html`<div></${this.tag}>`;} [228.65ms]\n(pass) dynamic attributes, content and comment expressions do not become tag names [243.70ms]\n(pass) enumerates finite createElement tags and ignores known native names [248.61ms]\n(pass) rejects an unbounded createElement name with its source location [233.26ms]\n(pass) rejects an unknown acme tag in a finite createElement union [233.62ms]\n(pass) a known non-acme prefix does not need a component definition [240.21ms]\n(pass) an unbounded acme prefix still requires explicit dependencies [224.22ms]\n\nsite/__tests__/build.test.ts:\n(pass) docs site > the shell, its 404 twin, the app and every authored page are built [20.29ms]\n(pass) docs site > pages/colors.html renders [60.55ms]\n(pass) docs site > pages/index.html renders [56.49ms]\n(pass) docs site > pages/tokens.html renders [44.97ms]\n(pass) docs site > pages/materials.html renders [45.04ms]\n(pass) docs site > pages/typography.html renders [47.91ms]\n(pass) docs site > pages/icons.html renders [46.97ms]\n(pass) docs site > pages/typeface.html renders [43.08ms]\n(pass) docs site > pages/components/select.html renders [62.79ms]\n(pass) docs site > pages/components/choicebox.html renders [51.91ms]\n(pass) docs site > pages/components/browser.html renders [44.34ms]\n(pass) docs site > pages/components/separator.html renders [48.14ms]\n(pass) docs site > pages/components/search-input.html renders [48.02ms]\n(pass) docs site > pages/components/split-button.html renders [58.90ms]\n(pass) docs site > pages/components/trend.html renders [47.85ms]\n(pass) docs site > pages/components/badge.html renders [69.84ms]\n(pass) docs site > pages/components/toggle.html renders [53.54ms]\n(pass) docs site > pages/components/scroller.html renders [48.23ms]\n(pass) docs site > pages/components/label.html renders [44.30ms]\n(pass) docs site > pages/components/feedback.html renders [64.24ms]\n(pass) docs site > pages/components/calendar.html renders [101.90ms]\n(pass) docs site > pages/components/pagination.html renders [45.21ms]\n(pass) docs site > pages/components/status-dot.html renders [45.81ms]\n(pass) docs site > pages/components/command-menu.html renders [52.66ms]\n(pass) docs site > pages/components/gauge.html renders [50.34ms]\n(pass) docs site > pages/components/combobox.html renders [73.80ms]\n(pass) docs site > pages/components/theme-switcher.html renders [46.58ms]\n(pass) docs site > pages/components/avatar.html renders [51.55ms]\n(pass) docs site > pages/components/video.html renders [45.30ms]\n(pass) docs site > pages/components/flex.html renders [52.27ms]\n(pass) docs site > pages/components/progress.html renders [48.84ms]\n(pass) docs site > pages/components/textarea.html renders [47.21ms]\n(pass) docs site > pages/components/radio.html renders [49.17ms]\n(pass) docs site > pages/components/skeleton.html renders [49.15ms]\n(pass) docs site > pages/components/tabs.html renders [57.10ms]\n(pass) docs site > pages/components/clearable-input.html renders [47.23ms]\n(pass) docs site > pages/components/copy-button.html renders [44.25ms]\n(pass) docs site > pages/components/show-more.html renders [45.25ms]\n(pass) docs site > pages/components/forms.html renders [44.33ms]\n(pass) docs site > pages/components/table.html renders [49.46ms]\n(pass) docs site > pages/components/grid.html renders [68.04ms]\n(pass) docs site > pages/components/relative-time-card.html renders [45.33ms]\n(pass) docs site > pages/components/breadcrumbs.html renders [46.14ms]\n(pass) docs site > pages/components/card.html renders [44.25ms]\n(pass) docs site > pages/components/button.html renders [60.20ms]\n(pass) docs site > pages/components/menu.html renders [60.55ms]\n(pass) docs site > pages/components/stat.html renders [47.84ms]\n(pass) docs site > pages/components/keyboard-input.html renders [44.49ms]\n(pass) docs site > pages/components/middle-truncate.html renders [51.10ms]\n(pass) docs site > pages/components/context-menu.html renders [50.82ms]\n(pass) docs site > pages/components/description.html renders [44.70ms]\n(pass) docs site > pages/components/context-card.html renders [48.07ms]\n(pass) docs site > pages/components/checkbox.html renders [59.05ms]\n(pass) docs site > pages/components/chart.html renders [48.38ms]\n(pass) docs site > pages/components/load-more-button.html renders [44.23ms]\n(pass) docs site > pages/components/code-block.html renders [61.06ms]\n(pass) docs site > pages/components/toolbar.html renders [44.28ms]\n(pass) docs site > pages/components/note.html renders [57.81ms]\n(pass) docs site > pages/components/collapse.html renders [46.80ms]\n(pass) docs site > pages/components/chip.html renders [44.93ms]\n(pass) docs site > pages/components/fieldset.html renders [57.49ms]\n(pass) docs site > pages/components/book.html renders [54.03ms]\n(pass) docs site > pages/components/banner.html renders [46.20ms]\n(pass) docs site > pages/components/multi-select.html renders [49.72ms]\n(pass) docs site > pages/components/markdown.html renders [44.82ms]\n(pass) docs site > pages/components/input.html renders [53.32ms]\n(pass) docs site > pages/components/slider.html renders [49.05ms]\n(pass) docs site > pages/components/spinner.html renders [51.18ms]\n(pass) docs site > pages/components/tooltip.html renders [56.53ms]\n(pass) docs site > pages/components/app-bar.html renders [45.71ms]\n(pass) docs site > pages/components/code.html renders [43.83ms]\n(pass) docs site > pages/components/modal.html renders [58.50ms]\n(pass) docs site > pages/components/toast.html renders [48.57ms]\n(pass) docs site > pages/components/box.html renders [53.55ms]\n(pass) docs site > pages/components/theme.html renders [47.09ms]\n(pass) docs site > pages/components/drawer.html renders [46.36ms]\n(pass) docs site > pages/components/file-tree.html renders [47.23ms]\n(pass) docs site > pages/components/error.html renders [46.48ms]\n(pass) docs site > pages/components/sheet.html renders [48.83ms]\n(pass) docs site > pages/components/empty-state.html renders [48.41ms]\n(pass) docs site > pages/components/switch.html renders [58.85ms]\n(pass) docs site > pages/components/json-view.html renders [47.84ms]\n(pass) docs site > pages/components/snippet.html renders [48.10ms]\n(pass) docs site > pages/components/stack.html renders [62.31ms]\n(pass) docs site > pages/components/item.html renders [46.67ms]\n\nsrc/__tests__/base.test.ts:\n(pass) allows light DOM render roots with a host property without applying shadow styles [0.70ms]\n(pass) restores styles through the render root when the shadow root is closed [0.29ms]\n(pass) keeps Lit's rendering boundary when inert-document style nodes are removed [2.12ms]\n\nsrc/shared/__tests__/responsive.test.ts:\n(pass) scalars preserve zero, false and bracketed CSS; absence removes the override [0.06ms]\n(pass) five array positions map to the selected bands and skip only null or undefined [0.11ms]\n(pass) equivalent intervals collapse when their values agree [0.06ms]\n(pass) conflicting equivalent intervals reject the whole input without mutation [0.15ms]\n(pass) Chakra categories order baseline, ascending minima and descending maximum-only queries [0.06ms]\n(pass) equal minima use source query-text ties, not a numeric maximum or narrowest-first rule [0.15ms]\n(pass) the shared comparator groups equal ranges without imposing a property declaration order [0.03ms]\n(pass) all selected conditions normalize to fifteen unique intervals [0.12ms]\n(pass) normalization returns frozen records and does not retain mutable container state [0.04ms]\n(pass) a pure transition table changes numeric rem bounds without mutating defaults [0.05ms]\n(pass) plain responsive records and breakpoint tables work across realms [0.45ms]\n(pass) nonplain objects from another realm remain invalid [0.55ms]\n(pass) rejects unsupported input shape or condition 0 [0.02ms]\n(pass) rejects unsupported input shape or condition 1\n(pass) rejects unsupported input shape or condition 2\n(pass) rejects unsupported input shape or condition 3\n(pass) rejects unsupported input shape or condition 4\n(pass) rejects unsupported input shape or condition 5\n(pass) rejects unsupported input shape or condition 6\n(pass) rejects unsupported input shape or condition 7\n(pass) rejects unsupported input shape or condition 8\n(pass) rejects unsupported input shape or condition 9\n(pass) rejects unsupported input shape or condition 10\n(pass) rejects unsupported input shape or condition 11\n(pass) rejects unsupported input shape or condition 12\n(pass) rejects unsupported input shape or condition 13\n(pass) rejects unsupported input shape or condition 14\n(pass) rejects unsupported input shape or condition 15\n(pass) rejects unsupported input shape or condition 16\n(pass) rejects unsupported input shape or condition 17\n(pass) rejects invalid or unordered transition tables 0 [0.02ms]\n(pass) rejects invalid or unordered transition tables 1\n(pass) rejects invalid or unordered transition tables 2\n(pass) rejects invalid or unordered transition tables 3\n(pass) rejects invalid or unordered transition tables 4\n(pass) rejects invalid or unordered transition tables 5\n(pass) rejects invalid or unordered transition tables 6\n(pass) rejects invalid or unordered transition tables 7 [0.04ms]\n\nsrc/shared/__tests__/places.test.ts:\n(pass) Places > a nested child's slot does not occupy the host's place [0.69ms]\n(pass) Places > changing a direct child's slot updates occupancy without an explicit read [1.81ms]\n(pass) Places > an empty element fills no place and renders no place span [0.28ms]\n(pass) Places > content in a slot fills that place and only that place [0.22ms]\n(pass) Places > both places fill independently [0.20ms]\n(pass) Places > content added later fills the place, and removing it empties it [0.47ms]\n(pass) Places > a read that changes nothing requests no update [0.18ms]\n\nsrc/shared/__tests__/interaction.test.ts:\n(pass) secondary contacts and non-primary buttons do not start a visual press [0.51ms]\n(pass) disconnect removes temporary window release listeners and clears visual state [0.34ms]\n(pass) an unrelated pointer cannot end the active pointer's visual press [0.13ms]\n(pass) reconnect restores the retained target without requiring another attach call [0.16ms]\n(pass) touch does not hover, and disabling cancels current visual interaction [0.12ms]\n(pass) keyboard release must match the held activation key and window blur cancels it [0.22ms]\n\nsrc/shared/__tests__/plain-record.test.ts:\n(pass) accepts data records from this or another realm [0.35ms]\n(pass) rejects primitives, collections, class instances and custom prototype chains [0.16ms]\n(pass) does not run an object's or prototype's constructor getter [0.04ms]\n\nsrc/shared/__tests__/roving-tabindex.test.ts:\n(pass) RovingTabindex > moves to the neighbour, stops at a disabled one and at the ends by default [0.80ms]\n(pass) RovingTabindex > wrap, skipDisabled and homeEnd widen the moves [0.34ms]\n\nsrc/shared/__tests__/form.test.ts:\n(pass) bindField > pushes input events into the field and errors back into the element [7.44ms]\n(pass) bindField > binds booleans to checked [2.32ms]\n\nsrc/shared/__tests__/responsive-input.test.ts:\n(pass) responsive attribute conversion > absence and empty attributes clear while numeric tokens retain their type [0.06ms]\n(pass) responsive attribute conversion > a numeric attribute cannot bypass its numeric bounds as a CSS string [0.08ms]\n(pass) responsive attribute conversion > recognizes scalar CSS before attempting structured JSON [0.02ms]\n(pass) responsive attribute conversion > preserves authored responsive objects and skipped array positions [0.07ms]\n(pass) responsive attribute conversion > preserves false only when the property's scalar contract permits it [0.04ms]\n(pass) responsive attribute conversion > malformed JSON produces an absent current value with a bounded diagnostic [0.05ms]\n(pass) responsive attribute conversion > invalid structure or leaf clears this attribute: {\"compact\":-2} [0.02ms]\n(pass) responsive attribute conversion > invalid structure or leaf clears this attribute: {\"other\":2}\n(pass) responsive attribute conversion > invalid structure or leaf clears this attribute: {\"compactOnly\":2,\"mediumDown\":4}\n(pass) responsive attribute conversion > invalid structure or leaf clears this attribute: [2,2,2,2,2,2]\n(pass) responsive attribute conversion > invalid structure or leaf clears this attribute: null\n(pass) responsive attribute conversion > invalid structure or leaf clears this attribute: \"4px\"\n(pass) responsive attribute conversion > invalid structure or leaf clears this attribute: {\"medium\":null}\n(pass) responsive authored snapshots > validates before returning an immutable copy without normalizing away author syntax [0.06ms]\n(pass) responsive authored snapshots > copies foreign records and sparse arrays without invoking inherited positions [0.20ms]\n(pass) responsive authored snapshots > returns frozen successful and invalid converter results [0.03ms]\n\nsrc/shared/__tests__/semantic-element.test.ts:\n(pass) role and label name only the native root while canonical inputs remain readable [0.79ms]\n(pass) property writes and ordinary DOM updates share the same accessible inputs [0.36ms]\n(pass) ID references resolve in the author's scope and late IDs update without another render [2.79ms]\n(pass) explicit references replace strings and string writes replace explicit references [0.43ms]\n(pass) reconnection resolves references in the new author scope [0.46ms]\n\nsrc/shared/__tests__/style-input-binding.test.ts:\n(pass) same-owner clearing during first publication sees its newly supplied keys [0.35ms]\n(pass) writes triggered while attaching a controller are applied instead of lost [0.10ms]\n(pass) grouped updates keep supplied order, remove missing owned keys and preserve unrelated inputs [0.12ms]\n(pass) an older or unrelated owner cannot clear a newer owner's inputs [0.07ms]\n(pass) failed grouped validation rolls back ownership without committing earlier values or removals [0.25ms]\n(pass) pending clearing remains explicit and survives attachment validation failure [0.09ms]\n(pass) pending owners keep their latest order and an empty unrelated owner has no inherited claim [0.05ms]\n(pass) pending responsive values are snapshots, not retained caller objects [0.04ms]\n(pass) malformed helper data never invokes accessors or changes existing ownership [0.07ms]\n(pass) newer reentrant ownership survives an older invocation and its later clearing [0.07ms]\n\nsrc/shared/__tests__/reflect.test.ts:\n(pass) reflected properties do not spawn attributes the consumer never set > a default value reflects nothing [0.68ms]\n(pass) reflected properties do not spawn attributes the consumer never set > a value the consumer sets still reflects [0.38ms]\n(pass) reflected properties do not spawn attributes the consumer never set > a value set through the property reflects too [0.39ms]\n\nsrc/shared/__tests__/inherited-appearance.test.ts:\n(pass) inherited appearance > distinguishes component defaults from an authored value equal to the default [0.20ms]\n(pass) inherited appearance > follows current provider changes, replacement and clearing [0.07ms]\n(pass) inherited appearance > uses a fresh nested provider without merging outer defaults [0.02ms]\n(pass) inherited appearance > reports unsupported inherited values and uses the component default [0.06ms]\n(pass) inherited appearance > ignores provider values for a property the child does not support [0.03ms]\n(pass) inherited appearance > does not publish effective changes when authored inputs mask provider changes [0.04ms]\n(pass) inherited appearance > freezes snapshots and owns copies of definitions and authored inputs [0.05ms]\n(pass) inherited appearance > keeps size and variant supported-value types separate [0.04ms]\n(pass) inherited appearance > leaves subscription lifetime with the consumer and still reads current state after disposal [0.04ms]\n(pass) emitted appearance declarations retain absence and readonly contracts with strict=false [785.25ms]\n(pass) emitted appearance declarations retain absence and readonly contracts with strict=true [724.42ms]\n\nsrc/shared/__tests__/breakpoints.test.ts:\n(pass) inspection leaves startup configuration available and returns immutable defaults [0.13ms]\n(pass) configuration copies inputs and identical complete tables are harmless repeats [0.07ms]\n(pass) a successful first configuration prevents conflicting later startup calls [0.11ms]\n(pass) first actual use locks defaults even before any configuration call [0.06ms]\n(pass) use preserves configured widths and only equivalent later calls are accepted [0.03ms]\n(pass) invalid calls leave the startup opportunity and selected widths unchanged [0.21ms]\n(pass) cross-realm plain records configure normally while accessors are not invoked [0.33ms]\n(pass) test owners do not share mutable configuration [0.02ms]\n(pass) the singleton imports without locking and the standalone normalizer stays pure [19.39ms]\n\nsrc/shared/__tests__/static-styles.test.ts:\n(pass) shares each generated source within a document and creates destination-owned sheets [2.87ms]\n(pass) replaces only owned sheets while preserving unrelated sheets and author nodes [0.54ms]\n(pass) retains same-document raw sheets so later native changes remain live [1.08ms]\n(pass) refreshes a cached foreign raw stylesheet snapshot on application [0.71ms]\n(pass) updates foreign raw sheet media and disabled state even when its rules stay unchanged [0.61ms]\n(pass) uses literal styles when the owner view reports non-native ShadyCSS [0.70ms]\n(pass) preserves raw sheet metadata in literal nodes and clears it when a generated source replaces them [0.69ms]\n(pass) refreshes only owned fallback nonces when the root moves to another fallback view [0.61ms]\n(pass) uses owned literal styles without a window and keeps their cleanup boundary stable [0.48ms]\n\nsrc/shared/__tests__/theme-registry.test.ts:\n(pass) registers immutable independent spacing and size overrides and inherits omitted categories [0.44ms]\n(pass) equivalent repeated definitions are harmless and conflicting replacements fail [0.20ms]\n(pass) validates a complete definition before registration without invoking input accessors [0.25ms]\n(pass) uses token-specific native grammars including scale expressions [0.10ms]\n(pass) names are exact Map keys and unknown names cannot silently select the house theme [0.14ms]\n\nsrc/shared/__tests__/style-properties.test.ts:\n(pass) style metadata causes no registration until a component uses its styles [0.07ms]\n(pass) the same stylesheet registers independently in each document registry [0.05ms]\n(pass) conflicting definitions fail before registering any property in that style group [0.07ms]\n(pass) only duplicate-name platform errors are accepted; invalid registrations remain errors [0.07ms]\n\nsrc/shared/__tests__/numeric-tokens.test.ts:\n(pass) numeric tokens > defines exactly the approved 35 immutable keys [0.02ms]\n(pass) numeric tokens > keeps spacing and size names independent and encodes decimal keys [0.05ms]\n(pass) numeric tokens > derives negative spacing from positive properties without declaring negative tokens [0.04ms]\n(pass) numeric tokens > rejects unknown numeric keys and categories instead of emitting fallback pixels [0.09ms]\n(pass) numeric tokens > provides 70 unique immutable definitions with rem defaults for both categories [0.20ms]\n\nsrc/shared/__tests__/ordered-style-inputs.test.ts:\n(pass) ordered style inputs > direct updates retain position, clearing removes it, and re-adding appends [0.11ms]\n(pass) ordered style inputs > a complete helper patch preserves unrelated inputs and supplied object order [0.07ms]\n(pass) ordered style inputs > same values can reorder and every helper invocation reasserts its values [0.06ms]\n(pass) ordered style inputs > publishes one complete canonical snapshot for multiple changes [0.06ms]\n(pass) ordered style inputs > a late invalid value cannot commit earlier values or removals [0.07ms]\n(pass) ordered style inputs > rejects unknown supplied, removed and direct keys before writing [0.06ms]\n(pass) ordered style inputs > undefined is a clear while zero and structured values remain authored inputs [0.06ms]\n(pass) ordered style inputs > owns normalized copies and freezes snapshot tuples, nested values and returned keys [0.05ms]\n(pass) ordered style inputs > preserves each property's validator output type [0.01ms]\n(pass) ordered style inputs > exposes inferred mutable validator results as deeply readonly values [0.06ms]\n(pass) ordered style inputs > accepts ordinary ordered input objects from another realm [0.19ms]\n\nsrc/shared/__tests__/responsive-style-plan.test.ts:\n(pass) merges equivalent conditions across properties before applying authored declaration order [0.14ms]\n(pass) query order wins across conditions even when the broad shorthand is authored last [0.06ms]\n(pass) preserves raw CSS and uses independent numeric categories with signed spacing [0.07ms]\n(pass) display reaches both boxes while ordinary geometry reaches only the host [0.14ms]\n(pass) a fresh empty input plan removes all prior declarations, without a saved last-valid result [0.04ms]\n(pass) invalid CSS leaves do not retain previous values or discard valid sibling conditions [0.07ms]\n(pass) validates whole inputs and duplicate fields before returning a plan [0.10ms]\n(pass) snapshots supplied transitions and authored values into deeply immutable plans [0.06ms]\n\nsrc/shared/__tests__/system-appearance.test.ts:\n(pass) one document shares its media observation and exposes only readonly state [0.07ms]\n(pass) changes publish through the canonical source and disposal is idempotent [0.08ms]\n(pass) reacquiring after the final release reads the current document preference [0.02ms]\n(pass) documents do not share preferences or listener lifetime [0.02ms]\n(pass) a document without a browsing context uses the light baseline without global access\n\nsrc/shared/__tests__/style-input-controller.test.ts:\n(pass) style input capture > captures actual attribute order and composes ordinary observed attributes [0.33ms]\n(pass) style input capture > captures non-enumerable own data properties in their creation order before connection [0.12ms]\n(pass) style input capture > rejects own accessors without invoking them or deleting other inputs [0.05ms]\n(pass) style input capture > rejects non-configurable own inputs and conflicting Lit property metadata [0.23ms]\n(pass) style input capture > initial attribute replay does not replace early property values [0.08ms]\n(pass) style input capture > same-text writes and removal/re-addition before connection remain real changes [0.12ms]\n(pass) style input capture > reentrant attribute changes cannot discard other pending initial callbacks [0.10ms]\n(pass) style input capture > direct updates retain position; undefined removes it and re-addition appends [0.10ms]\n(pass) style input capture > invalid HTML clears its override and reports a diagnostic while unrelated values survive [0.13ms]\n(pass) style input capture > keeps responsive authored shape and owns copies rather than viewport results [0.08ms]\n(pass) style input capture > disconnected attributes and properties update canonical state and render on reconnect [0.48ms]\n\nsrc/shared/__tests__/theme-context.test.ts:\n(pass) nearest providers carry live TanStack state without replacing the provided source [0.84ms]\n(pass) moving outside a provider clears the previous source [0.37ms]\n(pass) an existing host can start providing after consumers connect [0.24ms]\n(pass) the same controller can provide and consume without selecting itself [0.21ms]\n(pass) native opener binding follows moves and stops discovery after release [0.47ms]\n(pass) consumer resource connection and release can repeat [0.38ms]\n(pass) opener detachment ends its binding and retains the final appearance for exit [0.25ms]\n\nsrc/shared/__tests__/theme-scope.test.ts:\n(pass) theme scope > uses house tokens, auto appearance and normal density without authoring those defaults [0.03ms]\n(pass) theme scope > inherits the nearest parent's effective inputs and clears own overrides back to it [0.07ms]\n(pass) theme scope > explicit auto overrides inherited dark and follows the supplied system source [0.04ms]\n(pass) theme scope > omitted appearance inherits its parent's resolution while explicit auto uses its own source [0.02ms]\n(pass) theme scope > follows parent updates and replacement without merging a removed provider [0.08ms]\n(pass) theme scope > replaces the document system source and reads current state without a subscription [0.02ms]\n(pass) theme scope > an explicit normal value remains authored when a parent later becomes compact [0.03ms]\n(pass) theme scope > validates the complete authored transaction before notifying subscribers [0.22ms]\n(pass) theme scope > copies authored records, freezes snapshots and accepts data from another realm [0.19ms]\n(pass) theme scope > rejects the appearance accessor without invoking it or committing an earlier field [0.04ms]\n(pass) theme scope > rejects the unknown accessor without invoking it or committing an earlier field\n(pass) theme scope > rejects non-enumerable fields without committing an earlier field [0.02ms]\n(pass) theme scope > consumer disposal stops notifications without disabling later reads or subscriptions [0.03ms]\n(pass) theme scope > keeps authored and effective contracts distinct without requiring a named house theme [0.02ms]\n\nsrc/shared/__tests__/overlay-coordination.test.ts:\n(pass) Escape dismisses only the top surface and cancels native default dismissal [0.52ms]\n(pass) outside dismissal requires the same pointer to start and end outside [0.27ms]\n(pass) the anchor is inside and a cancelled pointer cannot dismiss [0.12ms]\n(pass) a gesture cannot fall through to the surface below a released session [0.06ms]\n\nsrc/shared/__tests__/style-inputs.test.ts:\n(pass) accepts only element expressions [0.22ms]\n(pass) reasserts the same object on every helper render and keeps unrelated settings [0.55ms]\n(pass) key removal and explicit empty input clear only the same helper's supplied keys [0.18ms]\n(pass) temporary detach and complete element removal do not clear authored inputs [0.21ms]\n(pass) a replacement helper on a retained element does not inherit a removed helper's claims [0.18ms]\n(pass) keeps grammar-invalid authored CSS for the native declaration planner [0.10ms]\n\nsrc/shared/__tests__/theme-tokens.test.ts:\n(pass) all ten theme categories expose exact, unique keys and properties [0.32ms]\n(pass) existing names map directly while private channels and composition fields stay private [0.23ms]\n(pass) numeric spacing and dimensions remain independent [0.15ms]\n(pass) weight defaults are the six numeric values present in authored and generated CSS [0.02ms]\n(pass) compact density changes only the approved role values [0.03ms]\n(pass) the public definition type accepts CSS strings under exact category keys [0.01ms]\n\nsrc/shared/__tests__/field-association.test.ts:\n(pass) a Field associates one logical control and disables ambiguous associations [0.13ms]\n(pass) association owns only its mirror references and uses text rather than markup [0.43ms]\n(pass) moving a target rehomes stable mirror IDs into its new root [0.19ms]\n\nsrc/shared/__tests__/atom-state.test.ts:\n(pass) atomState > reads its initial value and re-renders on write [0.36ms]\n(pass) atomState > two fields on one element are independent [0.13ms]\n(pass) atomState > two instances do not share state [0.15ms]\n(pass) atomState > writing the same value again does not re-render [0.09ms]\n(pass) atomState > a field with no initializer still re-renders once written [0.21ms]\n(pass) atomState > survives the host being moved in the DOM [0.18ms]\n(pass) atomState with a shared atom > every instance reads and writes the same value [0.28ms]\n(pass) atomState with a shared atom > follows detached changes and reconnects without accumulating subscriptions [0.44ms]\n(pass) atomState with a compare > a rebuilt object with the same shape does not re-render [0.26ms]\n(pass) atomState and changedProperties > a write is recorded, so an element can ask which of its fields moved [0.11ms]\n(pass) atomState with public Lit metadata > keeps initial defaults absent and reflects an explicit same-default write [0.27ms]\n(pass) atomState with public Lit metadata > updates canonical and derived values synchronously, independent of rendering [0.18ms]\n(pass) atomState with public Lit metadata > converts attributes and restores the captured default on removal [0.14ms]\n(pass) atomState with public Lit metadata > reflects shared accessor writes and external writes with the property name [0.13ms]\n(pass) atomState with public Lit metadata > reconciles detached local and external writes when connected [0.14ms]\n(pass) atomState with public Lit metadata > preserves defaults after writes before first connection [0.12ms]\n(pass) atomState with public Lit metadata > replays pre-definition properties over attributes without replacing defaults [0.30ms]\n(pass) atomState with public Lit metadata > retains named equality behavior for NaN and signed zero [0.17ms]\n(pass) atomState with public Lit metadata > reflects the final batched external value with its original old value [0.11ms]\n(pass) atomState with public Lit metadata > retains the first old value when a batch mixes external and accessor writes [0.11ms]\n(pass) atomState with public Lit metadata > uses subclass metadata and converters without replacing the atom accessor [0.27ms]\n\nsrc/shared/__tests__/stack-geometry.test.ts:\n(pass) wrapped lines have no orphan or cross-line dividers [0.08ms]\n(pass) unequal cross-axis alignment remains on the same flex line [0.02ms]\n(pass) reverse RTL and CSS order use native visual adjacency [0.04ms]\n(pass) zero-size rendered elements remain members and no-wrap lines stretch across their container [0.02ms]\n(pass) vertical wrapped columns use the same geometry [0.02ms]\n\nsrc/shared/__tests__/style-renderer.test.ts:\n(pass) serializes generated declarations in exact native window and container query order [0.55ms]\n(pass) owns one runtime stylesheet, preserves unrelated styles and locks breakpoints on responsive use [0.70ms]\n(pass) missing nearest or named containers retain baseline output and emit one bounded diagnostic [1.08ms]\n(pass) defers missing-container diagnostics while disconnected and checks again on reconnect [0.31ms]\n(pass) recreates owned delivery in the adopted document and preserves unrelated sheets [1.01ms]\n(pass) uses one nonce-bearing fallback node and removes only that owned node [0.48ms]\n\nsrc/shared/__tests__/store-reconnect.test.ts:\n(pass) a store selector across a move > keeps following the store after its host is re-parented [1.47ms]\n(pass) a store selector across a move > still re-renders on every later change, not just the first [3.61ms]\n(pass) a store selector across a move > schedules one connection update for a host with selectors and atom fields [0.32ms]\n(pass) a store selector across a move > preserves selector and comparison options after reconnect [0.23ms]\n\nsrc/shared/__tests__/native-form.test.ts:\n(pass) native submission is current before canonical observers and inside an outer batch [0.25ms]\n(pass) same-value writes become dirty; defaults and reset follow native ownership [0.10ms]\n(pass) custom validation overrides family validation and clearing restores it [0.06ms]\n(pass) fieldset state remains separate from authored disabled state [0.04ms]\n(pass) extra canonical state synchronizes while connected and catches up after reconnect [0.05ms]\n(pass) restoration uses the family decoder and preserves an explicit null restoration state [0.06ms]\n(pass) a constraint callback cannot leave native submission behind the canonical value [0.05ms]\n\nsrc/shared/__tests__/style-input-schema.test.ts:\n(pass) common style input schema > keeps authored CSS strings current while retaining numeric and display domain checks [0.05ms]\n(pass) common style input schema > contains exactly the approved 77 property and attribute names with their targets [0.16ms]\n(pass) common style input schema > keeps the complete spacing and size token keys independent and immutable [0.03ms]\n(pass) common style input schema > accepts only selected numeric spacing/size keys, with signs restricted to margins and insets [0.59ms]\n(pass) common style input schema > uses the approved unitless and zero-only numeric boundaries [0.10ms]\n(pass) common style input schema > passes integer grid lines through the supplied native-property grammar check [0.05ms]\n(pass) common style input schema > delegates string and shorthand grammar using each exact CSS property [0.04ms]\n(pass) common style input schema > requires an explicit layout display subset and always excludes contents [0.02ms]\n(pass) common style input schema > rejects non-scalars without consulting browser grammar and narrows unknown values [0.02ms]\n\ntools/geist/__tests__/census.test.ts:\n(pass) state rewrite > a pseudo-class on a compound carries the state down to the parts inside [0.08ms]\n(pass) state rewrite > a bare pseudo-class keeps the element clause only [0.01ms]\n(pass) state rewrite > a bare pseudo-class is recognised after every combinator [0.03ms]\n(pass) state rewrite > focus-visible maps to the focus attribute, and focus does too [0.01ms]\n(pass) state rewrite > an escaped colon in a utility class name is left alone\n(pass) state rewrite > a pseudo-class that only starts the same way is left alone\n\ntools/geist/__tests__/gen.test.ts:\n(pass) composed descendant rules reach the terminal part through its ancestor host [11.92ms]\n\ntools/geist/__tests__/simplify.test.ts:\n(pass) simplify: shorthand reset > a shorthand replaces the longhands it does reset [0.28ms]\n(pass) simplify: shorthand reset > outline keeps outline-offset: the shorthand does not reset it [0.03ms]\n(pass) simplify: shorthand reset > outline still replaces its own longhands [0.03ms]\n(pass) simplify: shorthand reset > transform keeps transform-style: they are separate properties [0.04ms]\n(pass) simplify: shorthand reset > a same-prefixed property outside its shorthand survives [0.05ms]\n(pass) reference defaults use linked CSS sheets rather than sidecar files [2.25ms]\n\ntools/geist/__tests__/token-declarations.test.ts:\n(pass) removes only imported numeric spacing declarations [0.35ms]\n(pass) rewrites positive and signed references into the canonical spacing category [0.35ms]\n(pass) preserves positive fallbacks and does not rewrite quoted text [0.10ms]\n(pass) rejects unsupported numeric references instead of emitting missing variables [0.13ms]\n(pass) the actual token generator retires aliases and emits stable bytes across clock dates [38.95ms]\n\nsrc/components/tabs/__tests__/tabs.test.ts:\n(pass) acme-tabs > the tab list carries the variant; the selected tab is marked and tabbable [1.74ms]\n(pass) acme-tabs > disabled on the row disables every tab; a tab with a tooltip wraps its button [2.01ms]\n(pass) acme-tabs > secondary reaches the row and each tab; an icon renders in its own box [0.61ms]\n(pass) acme-tabs > ArrowRight selects the neighbour and fires acme-change; a disabled neighbour stops it; the ring hides until a blur [1.26ms]\n(pass) acme-tabs > a click or focus on a tab selects it [0.88ms]\n\nsrc/components/split-button/__tests__/split-button.test.ts:\n(pass) acme-split-button > two composed buttons of the variant and size in a divided row; the chevron carries the menu label [2.18ms]\n(pass) acme-split-button > the chevron opens a role=menu list of the given width and alignment; Escape starts the fade and closes [455.34ms]\n(pass) acme-split-button > the primary button fires acme-click; an item fires acme-select and closes the menu [14.27ms]\n(pass) acme-split-button-item > a menuitem row: the icon slot and title in a row, the description below; disabled rows do not select [1.95ms]\n\nsrc/components/kbd/__tests__/kbd.test.ts:\n(pass) acme-kbd > a modifier alone renders one key span; meta is an inline block of 1em [0.92ms]\n(pass) acme-kbd > modifiers keep the order meta, shift, alt, ctrl [0.61ms]\n(pass) acme-kbd > the key content gets its own span after the modifiers; small maps to the class [0.56ms]\n\nsrc/components/note/__tests__/note.test.ts:\n(pass) acme-note > renders role=note with the body, icon, text and content parts [0.99ms]\n(pass) acme-note > variant, fill, size and disabled map to modifier classes; disabled marks the root [0.68ms]\n(pass) acme-note > a slotted icon replaces the variant's icon; no-icon draws no icon span [1.02ms]\n(pass) acme-note > a slotted label renders the label span inside the content [0.63ms]\n(pass) acme-note > a slotted action renders the action wrapper and rounds the root; a disabled note disables the button [2.55ms]\n\nsrc/components/theme-switcher/__tests__/theme-switcher.test.ts:\n(pass) renders one named native radio group with auto selected and small default size [1.84ms]\n(pass) requests a preference without owning it, writing root attributes or saving storage [2.14ms]\n(pass) application updates drive the control and programmatic updates emit no request [1.40ms]\n(pass) disabled blocks requests and named sizes reach the rendered root [0.98ms]\n(pass) removing authored value and size attributes restores the declared defaults [1.00ms]\n\nsrc/components/context-card/__tests__/context-card.test.ts:\n(pass) acme-context-card > renders a trigger around the content, with no tab stop of its own, and no layer until shown [0.56ms]\n(pass) acme-context-card > shown opens the card in a manual popover layer: fader, shell, stem, content box and body, skipping the move [2.04ms]\n(pass) acme-context-card > side maps to a class on the layer, 8 in shown keeps the move transition, no-padding and ignore-card-pointer-events land on the box, hide keeps it closed [3.13ms]\n(pass) acme-context-card > a mouse enter mounts the content at once and raises the card after the entry delay; a leave lowers it after the inactive timeout [204.19ms]\n(pass) acme-context-card > a neighbouring card entered while one is up opens at once and slides there; the first drops its layer [178.03ms]\n(pass) acme-context-card > focus on slotted content opens the card, Escape closes it and returns focus, a click on a link closes it [212.15ms]\n(pass) acme-context-card > Escape keeps the card shut while focus stays on the content, and focus opens it again once focus has left and returned [49.35ms]\n(pass) acme-context-card > disable-triggers ignores hover and focus; shown still opens [202.91ms]\n\nsrc/components/drawer/__tests__/drawer.test.ts:\n(pass) acme-drawer > renders an empty closed dialog, then the popup in the top layer when open, scroll locked [527.64ms]\n(pass) acme-drawer > height, vertical-scroll and nested map to the popup and the dialog [523.45ms]\n(pass) acme-drawer > focus lands on the first tabbable, else the popup, and returns to the opener after the exit [1579.84ms]\n(pass) acme-drawer > Escape and an outside press ask to close through a cancelable acme-dismiss, only once the entrance has ended [3140.54ms]\n(pass) acme-drawer > a swipe down moves the popup with the pointer, damped upward, and springs back when released short and slow [1051.60ms]\n(pass) acme-drawer > a swipe past half the height, or a fast flick, closes the drawer with the swipe reason [2094.85ms]\n(pass) acme-drawer > a press on a control, or inside scrolled content, starts no swipe [1047.17ms]\n(pass) acme-drawer > acme-open, acme-scroll and acme-close bracket the visit; reset-scroll scrolls the popup to its top [1045.20ms]\n\nsrc/components/pagination/__tests__/pagination.test.ts:\n(pass) acme-pagination > two links with the accessible names: a direction label over a title row with the chevron [2.36ms]\n(pass) acme-pagination > an end without a title renders no link; hover lands on the link as data-hover [0.75ms]\n\nsrc/components/choicebox/__tests__/choicebox.test.ts:\n(pass) acme-choicebox > a radio group renders a radiogroup of tiles, each a label around a composed acme-radio, the chosen one checked [2.11ms]\n(pass) acme-choicebox > a change on a tile's control moves the value and fires acme-change once [1.64ms]\n(pass) acme-choicebox > a checkbox group collects values; the label shows with show-label; disabled reaches every tile [1.85ms]\n(pass) acme-choicebox > arrow keys move the choice of a radio group and skip disabled tiles [2.22ms]\n(pass) acme-choicebox > slotted content opens under the row once the tile is selected; interactive content sits beside the label [2.03ms]\n(pass) acme-choicebox > control-position start puts the control first; a disabled reason wraps the label in a tooltip [1.43ms]\n(pass) acme-choicebox > interaction states land as data attributes on the tile; the radio control keeps its own hover [1.36ms]\n\nsrc/components/show-more/__tests__/show-more.test.ts:\n(pass) acme-show-more > two hairlines around a pill holding a small rounded secondary button that reads Show More [1.03ms]\n(pass) acme-show-more > expanded reads Show Less and turns the chevron; loading only counts while expanded [1.27ms]\n(pass) acme-show-more > no-border marks the root; slotted content replaces the text; a click does not toggle by itself [0.76ms]\n\nsrc/components/video/__tests__/video.test.ts:\n(pass) acme-video > lazy=false renders the figure, the frame ratio and the muted, inline, autoplaying video without a loop attribute [0.89ms]\n(pass) acme-video > the false-valued booleans turn the defaults off [0.49ms]\n(pass) acme-video > margin, width, max-width and border-radius reach the figure; a bare number is pixels [0.37ms]\n(pass) acme-video > the control bar renders once the video can play: play button, times, scrubber, progress and handle [0.79ms]\n(pass) acme-video > a source that is not yet playable keeps the bar out [0.36ms]\n(pass) acme-video > the pointer over the player shows the bar; leaving hides it [0.53ms]\n(pass) acme-video > playback flips the button, fires acme-play with the source, and the time follows the video [0.71ms]\n(pass) acme-video > loop restarts the video twice after it ends, then stops; loop=false stops at once [0.92ms]\n(pass) acme-video > the scrubber seeks on release: the position follows the drag, the video's time is set at the end [0.69ms]\n(pass) acme-video > lazy defers the source until the frame nears the viewport (20% margin, observed once) [0.42ms]\n(pass) acme-video > formatTime pads minutes and seconds and reads a missing time as zero [0.02ms]\n\nsrc/components/tooltip/__tests__/tooltip.test.ts:\n(pass) acme-tooltip > renders a focusable trigger around the content and no bubble until shown [0.47ms]\n(pass) acme-tooltip > shown opens the bubble in a manual popover layer, described from the trigger, with the arrow first [7.60ms]\n(pass) acme-tooltip > position, box-align, delay, lower-delay, type, fill, center, wrap and invert-theme map to modifiers [5.59ms]\n(pass) acme-tooltip > tip=false drops the arrow; a touch open adds the backdrop and the faster fade; force-hide keeps it closed [4.94ms]\n(pass) acme-tooltip > a key in the content marks the bubble as a row and the key as the bubble's [4.80ms]\n(pass) acme-tooltip > without text or content, and with the triggers off while closed, the content stands alone [2.89ms]\n(pass) acme-tooltip > a mouse enter opens after delay-time, a leave closes 100ms later; Enter opens, Escape closes; focus opens only with sticky [144.33ms]\n(pass) acme-tooltip > a touch never opens with desktop-only, and a scroll closes an open bubble [2.52ms]\n(pass) acme-tooltip > the bubble holds no whitespace text nodes: pre-line would turn them into blank lines [2.25ms]\n\nsrc/components/box/__tests__/box.test.ts:\n(pass) all structural tags keep one semantic root and the same author-owned content [1.71ms]\n(pass) all common inputs have accessors and observed attributes outside Lit metadata [1.08ms]\n(pass) HTML scalars and structured properties share canonical inputs; removal clears one property [1.38ms]\n(pass) Box rejects an arrangement display and keeps native semantic naming on its root [0.59ms]\n\nsrc/components/calendar/__tests__/calendar.test.ts:\n(pass) acme-calendar > the trigger reads the chosen range and the popover holds Start, End, Apply and a timezone select [4.17ms]\n(pass) acme-calendar > presets are real buttons; preset-index selects one at the start [9.10ms]\n(pass) acme-calendar > compact joins a period combobox; horizontal-layout, small and show-time-input=false map to the popover [3.52ms]\n(pass) acme-calendar > min-value and max-value disable cells; pinned-timezone is read-only text; allow-clear adds the clear button [3.54ms]\n(pass) acme-calendar > arrow keys move the focused day and Enter picks it; Escape closes [4.36ms]\n\nsrc/components/radio/__tests__/radio.test.ts:\n(pass) acme-radio > renders a native radio with the name, value, aria-label and checked state; no text gives a span root [0.95ms]\n(pass) acme-radio > select() checks it, unchecks its siblings and dispatches acme-change once [0.81ms]\n(pass) acme-radio > disabled, through the group too, disables the input and blocks select() [0.38ms]\n\nsrc/components/status-dot/__tests__/status-dot.test.ts:\n(pass) acme-status-dot > the default state is queued: a bare root, the dot child, the label and title [0.29ms]\n(pass) acme-status-dot > each state maps to its class, label and sentence [0.65ms]\n(pass) acme-status-dot > lower-case state values are accepted [0.11ms]\n(pass) acme-status-dot > label renders the state name after the dot [0.17ms]\n\nsrc/components/code-block/__tests__/code-block.test.ts:\n(pass) acme-code-block > a filename renders the bar with the file icon, the name and the copy button; the content is a grid of numbered lines [2.25ms]\n(pass) acme-code-block > without a filename the copy button floats over the code [1.21ms]\n(pass) acme-code-block > highlighted, added and removed lines mark every line; hide-line-numbers marks the root [1.20ms]\n(pass) acme-code-block > pressing a line number references the line and fires acme-reference; pressing again clears it [1.78ms]\n(pass) acme-code-block > switcher composes an acme-select in the actions; its acme-change fires ours [2.02ms]\n(pass) acme-code-block > tabs render a strip with an acme-switch above the bar; the reference form with options and value is read too [2.12ms]\n(pass) acme-code-block > v0 adds a foot: ask is a link button, build a split button [3.72ms]\n(pass) acme-code-block > copy writes the source to the clipboard and fires acme-copy [2.18ms]\n\nsrc/components/load-more/__tests__/load-more.test.ts:\n(pass) acme-load-more > composes a secondary submit button around the slotted text [0.63ms]\n(pass) acme-load-more > loading passes to the button [0.70ms]\n(pass) acme-load-more > no-gap and no-border-radius become modifier classes on the button [0.40ms]\n(pass) acme-load-more placeholder and disabled > placeholder renders an empty block instead of the button; disabled passes through [0.49ms]\n\nsrc/components/copy-button/__tests__/copy-button.test.ts:\n(pass) acme-copy-button > composes a secondary square icon-only button named by its label, around a check and a copy layer [0.86ms]\n(pass) acme-copy-button > copied swaps the layers and announces it [0.50ms]\n(pass) acme-copy-button > a click writes the clipboard, fires acme-copy and shows the check for a second [1.79ms]\n(pass) acme-copy-button > a failed copy fires acme-copy-error and keeps the copy glyph [1.87ms]\n(pass) acme-copy-button > custom colors switch the button to the custom variant; size and shape pass through [1.10ms]\n(pass) acme-copy-button > the icon slot is always rendered, so content assigned at any time reaches it [1.47ms]\n\nsrc/components/progress/__tests__/progress.test.ts:\n(pass) acme-progress > renders a native progress bar with value and max inside the sized wrapper [0.47ms]\n(pass) acme-progress > type sets the bar colour; height sizes the wrapper and the bar; width lands on the host, the wrapper fills it [0.31ms]\n(pass) acme-progress > stops draw a tick with a tooltip trigger at each value and square the bar [0.72ms]\n(pass) acme-progress > colors pick the highest threshold at or under the value [0.37ms]\n\nsrc/components/input/__tests__/input.test.ts:\n(pass) acme-input > renders the wrapper with the field first; size, label, error and disabled reach the DOM [1.23ms]\n(pass) acme-input > each side renders one cell, whichever of its two places is occupied [0.76ms]\n(pass) acme-input > an in-field place uses the same cell and marks the side inside [0.50ms]\n(pass) acme-input > the sides are independent: an add-on at the start, an in-field place at the end [0.31ms]\n(pass) acme-input > an add-on wins its side, so the two places never render together [0.29ms]\n(pass) acme-input > a side with nothing in it renders no cell at all [0.27ms]\n(pass) acme-input > input events carry the value; width and the large icon size land on the wrapper [0.35ms]\n(pass) acme-input > hover lands on the wrapper as data-hover [0.21ms]\n\nsrc/components/markdown/__tests__/markdown.test.ts:\n(pass) acme-markdown > renders headings, emphasis and lists in the Geist scale [0.74ms]\n(pass) acme-markdown > highlights code fences and escapes raw HTML by default [0.57ms]\n(pass) acme-markdown > text property overrides the content [0.21ms]\n\nsrc/components/skeleton/__tests__/skeleton.test.ts:\n(pass) acme-skeleton > a set width renders a bare block with width and the default min-height [0.32ms]\n(pass) acme-skeleton > box-height becomes bottom margin; a CSS length passes through [0.28ms]\n(pass) acme-skeleton > children without a size wrap; show=false turns the skeleton off [0.31ms]\n(pass) acme-skeleton > a fixed size with children hides automatically and keeps the size [0.16ms]\n(pass) acme-skeleton > shape, animation and button flags map to classes [0.58ms]\n\nsrc/components/separator/__tests__/separator.test.ts:\n(pass) acme-separator > horizontal and decorative by default [0.21ms]\n(pass) acme-separator > vertical maps to the class and the orientation [0.14ms]\n(pass) acme-separator > property changes and attribute removal restore the canonical defaults [0.20ms]\n\nsrc/components/toast/__tests__/toast.test.ts:\n(pass) acme-toaster and acme-toast > message() renders a status toast with the text and the dismiss control, shown once measured [2.90ms]\n(pass) acme-toaster and acme-toast > success, error and warning set the type, read it before the message, and take a default text [1.33ms]\n(pass) acme-toaster and acme-toast > an action renders the cancel and action buttons, makes the toast an alert dialog, and runs the handlers before hiding [1.55ms]\n(pass) acme-toaster and acme-toast > an action as a link renders an anchor [0.65ms]\n(pass) acme-toaster and acme-toast > onUndoAction adds the undo control before the dismiss control; the dismiss control reports the removal as dismissed [1.24ms]\n(pass) acme-toaster and acme-toast > a toast hides itself after 3500ms and leaves 160ms later; preserve and an action keep it; preserve: false with an action restores the timer [2.13ms]\n(pass) acme-toaster and acme-toast > the pointer over the area pauses the timer and expands the stack; leaving restarts the full timer [1.58ms]\n(pass) acme-toaster and acme-toast > the stack places the newest toast in front and writes each toast's geometry [1.36ms]\n(pass) acme-toaster and acme-toast > setHiding hides every toast 300ms later; setMessage, removeToast, removeToastByKey, a repeated key and clear shape the queue [2.07ms]\n(pass) acme-toaster and acme-toast > hideX, fullWidth, fullBleed, overflowHidden and a visual set the modifiers; a sized visual takes its height [1.08ms]\n(pass) acme-toaster and acme-toast > the text takes a node or a string; center moves the area [0.69ms]\n(pass) acme-toaster and acme-toast > of two viewports on one queue the first renders; the second takes over when it leaves; loaded follows the viewports [0.89ms]\n(pass) acme-toaster and acme-toast > a viewport without a queue of its own renders the shared toasts queue; show() is message with the text apart [0.85ms]\n(pass) acme-toaster and acme-toast > a queue set after the viewport is in the document is the one it renders [0.50ms]\n(pass) acme-toaster and acme-toast > the interaction states land on the buttons [1.04ms]\n\nsrc/components/chart/__tests__/chart.test.ts:\n(pass) acme-chart > without data the default slot carries the plot [0.65ms]\n(pass) acme-chart > with data it renders the chart host and parses the series keys [2.40ms]\n\nsrc/components/multi-select/__tests__/multi-select.test.ts:\n(pass) acme-multi-select > the trigger is a button that names a dialog, with the slotted text in its label and a chevron in its suffix; the list is not rendered while closed [2.79ms]\n(pass) acme-multi-select > the rows learn the counts and read the hint for a mixed selection; a press on a checked row checks all, on an unchecked row checks it alone [2.70ms]\n(pass) acme-multi-select > with nothing checked every hint reads Check and a press toggles; the hint press runs the action it names [2.27ms]\n(pass) acme-multi-select > value set from outside checks those rows and no other, before and after the rows arrive [4.57ms]\n(pass) acme-multi-select > a cancelled acme-select leaves the selection alone [1.91ms]\n(pass) acme-multi-select > a click on the trigger opens the list as a dialog the trigger controls, and closes it again [5.60ms]\n(pass) acme-multi-select > Arrow Down on the trigger opens; in the list the arrows move focus between the rows and keep the column, Left and Right switch it, Escape closes [5.36ms]\n(pass) acme-multi-select > Enter on a focused row runs its action, or toggles it while the checkbox column is active [4.73ms]\n(pass) acme-multi-select > a press outside closes the list [5.13ms]\n(pass) acme-multi-select > the rows' pointer states reach the list: a hovered row, then its checkbox [3.73ms]\n(pass) acme-multi-select > a disabled row takes no press; a disabled multi select does not open [3.65ms]\n\nsrc/components/relative-time/__tests__/relative-time.test.ts:\n(pass) acme-relative-time > the short age names whole days, hours or minutes, or Just now, and is empty without a moment [0.08ms]\n(pass) acme-relative-time > the full age names up to three units, largest first, with zero units kept after the first [0.09ms]\n(pass) acme-relative-time > a zone reads as its abbreviation, the long date and the clock time [1.98ms]\n(pass) acme-relative-time > without a moment the slotted content stands alone; with one, a context card wraps it [1.98ms]\n(pass) acme-relative-time > the card's content is the full age over the UTC row and the local row [0.66ms]\n(pass) acme-relative-time > side, align, offsets, the open bits and the trigger switch reach the composed card [0.87ms]\n(pass) acme-relative-time > the host is an inline flex item that never grows [0.51ms]\n\nsrc/components/checkbox/__tests__/checkbox.test.ts:\n(pass) acme-checkbox > renders a label root with the hidden checkbox, the box with check and dash, and the text slot [0.54ms]\n(pass) acme-checkbox > checked, indeterminate and disabled reach the native input and the root's data attributes [0.34ms]\n(pass) acme-checkbox > a change on the input updates checked, clears indeterminate and emits acme-change [0.37ms]\n(pass) acme-checkbox > interaction states land on the label root, except while disabled [0.31ms]\n\nsrc/components/code/__tests__/code.test.ts:\n(pass) acme-code > renders the source in a pre with a code body, tokens as token spans [0.60ms]\n(pass) acme-code > lines split at newlines and keep their order; unknown languages stay plain [0.31ms]\n(pass) acme-code > tokenLines maps the highlighter's kinds to the styled names [0.08ms]\n(pass) acme-code > a change of the text re-renders [1.47ms]\n\nsrc/components/snippet/__tests__/snippet.test.ts:\n(pass) acme-snippet > renders the command in a pre, the width and height on the root, and the copy button in its wrapper [1.46ms]\n(pass) acme-snippet > prompt=false, dark, type, fill and an empty text with a placeholder map to modifier classes [1.68ms]\n(pass) acme-snippet > a JSON array in text renders one pre per line; compact fixes the height [1.22ms]\n(pass) acme-snippet > icon=false drops the button; not-focusable disables it [0.74ms]\n(pass) acme-snippet > copied passes through to the button, which shows the check [0.74ms]\n(pass) acme-snippet > copy-text wins over text, and copy() delegates to the button [1.80ms]\n(pass) acme-snippet > without copy-text the lines are joined for the clipboard [1.43ms]\n\nsrc/components/label/__tests__/label.test.ts:\n(pass) acme-label > renders a label with the text block and for [0.47ms]\n(pass) acme-label > bypass-casing and with-input map to classes [0.19ms]\n(pass) acme-label > a click focuses the control the label names [0.48ms]\n\nsrc/components/slider/__tests__/slider.test.ts:\n(pass) acme-slider > a single value draws one thumb, fills the track to it and has no value text; a bare number is accepted [1.30ms]\n(pass) acme-slider > a range draws two thumbs, fills between them, speaks start and end, and the fields are small inputs with the reference labels [1.04ms]\n(pass) acme-slider > disabled reaches the group, its parts, the range inputs and the fields [1.03ms]\n(pass) acme-slider > the label is a label element above the row, tied to the first thumb or to the start field; full-width marks the root [1.37ms]\n(pass) acme-slider > keys move a thumb by a step, a large step, or to a bound, and commit each move [1.67ms]\n(pass) acme-slider > in a range a key keeps a thumb between its neighbours and End and Home stop at them [1.37ms]\n(pass) acme-slider > a press on the track sets the nearest thumb and focuses it, a drag follows the pointer, and release commits once [1.84ms]\n(pass) acme-slider > dragging a range thumb pushes its neighbour along and lets it fall back to where it stood [0.86ms]\n(pass) acme-slider > focus inside a thumb lands on the thumb as data-focus-within, and a visible focus as data-focus [0.77ms]\n(pass) acme-slider > a form reset restores the initial value [0.81ms]\n\nsrc/components/empty-state/__tests__/empty-state.test.ts:\n(pass) acme-empty-state > renders the title and the description in the text column, no icon wrapper without an icon [0.79ms]\n(pass) acme-empty-state > a slotted icon renders inside the icon wrapper [0.50ms]\n(pass) acme-empty-state > the children are slotted straight into the column, with no row of their own [0.65ms]\n(pass) acme-empty-state > an empty title and description render no line; the title and description slots render one [0.66ms]\n(pass) acme-empty-state > border=false and secondary map to the modifier classes [0.47ms]\n(pass) acme-icon-tile > renders the tile, hidden from assistive technology, around the slotted icon [0.20ms]\n(pass) acme-icon-tile > size fixes the width and the height: a number in pixels, a length as given [0.24ms]\n\nsrc/components/collapse/__tests__/collapse.test.ts:\n(pass) acme-collapse > a heading with the button trigger over the inert region; a click opens it and fires the events [0.89ms]\n(pass) acme-collapse > default-expanded starts open; size small maps to sm [0.36ms]\n(pass) acme-collapse-group > marks its panels grouped; one open at a time, several with multiple, a second click closes [5.38ms]\n(pass) acme-collapse-group > a default-expanded panel shows while nothing is chosen and cannot close itself [4.13ms]\n\nsrc/components/spinner/__tests__/spinner.test.ts:\n(pass) acme-spinner > default size renders ten blades, the status role and the hidden text [0.56ms]\n(pass) acme-spinner > blade count, cycle and delays follow the size [1.61ms]\n(pass) acme-spinner > color lands on the root as an inline colour [0.32ms]\n\nsrc/components/feedback/__tests__/feedback.test.ts:\n(pass) acme-feedback > the trigger is a small secondary button that owns a dialog; prefix and suffix decorate it [1.68ms]\n(pass) acme-feedback > the trigger opens a fixed 340px card: form with textarea, hint, four emotion radios and Send; it closes on Escape and returns focus [4.49ms]\n(pass) acme-feedback > an element that starts open mounts its card; show-topics and show-email add the select and the email field first [3.66ms]\n(pass) acme-feedback > Send validates topic, email, note and emotion in that order and shows the message under the textarea [3.56ms]\n(pass) acme-feedback > a dry run submits at once: acme-submit carries the payload, the form leaves and the thank-you view shows in a 195px card [4.57ms]\n(pass) acme-feedback > type=inline renders the pill: copy, four radios, the form hidden in a 48px box; a face grows it into the 336px card, the same face closes it [1.73ms]\n(pass) acme-feedback > inline: full-width fills the row, upwards keeps the row 48px and shifts the card; a message adds 28px; the thank-you fills 75% [4.72ms]\n(pass) acme-feedback > the emotion radios carry the interaction states as attributes [1.27ms]\n\nsrc/components/combobox/__tests__/combobox.test.ts:\n(pass) acme-combobox > the shell is a combobox around a searchbox with the glass, the hidden clear button and the menu button; the rows are not rendered while closed [1.92ms]\n(pass) acme-combobox > a value shows its row's label, swaps the menu button for the clear button and marks the row once open [3.83ms]\n(pass) acme-combobox > open renders the list in a manual popover at the field's width with every row, the first highlighted and announced [2.74ms]\n(pass) acme-combobox > typing filters and ranks the rows, highlights the first match and marks the list typed; Enter takes it, closes and fills the label after a beat [176.90ms]\n(pass) acme-combobox > no match shows the empty message and announces it; a custom message replaces it [10.90ms]\n(pass) acme-combobox > the arrows move the highlight around the ends and past a disabled row; Home and End jump; Escape closes [7.05ms]\n(pass) acme-combobox > the clear button empties the value and the field and fires acme-clear and acme-change with null [2.62ms]\n(pass) acme-combobox > a row's pointer release chooses it; a handler that prevents acme-select takes the choice over [7.45ms]\n(pass) acme-combobox > size, errored, loading, width, no-input-start, show-menu-button and display-selected-end map to the classes and the parts [5.10ms]\n(pass) acme-combobox > the footer slot renders under the rows while open; Arrow Down past the last row moves focus into it and back [4.57ms]\n(pass) acme-combobox > the form value follows the value, a reset restores the attribute, and a value no row carries shows raw unless no-raw-selected-value [175.42ms]\n(pass) acme-combobox-option > a plain row wraps its text in the label span; rich content renders as given with the value as its text [1.15ms]\n\nsrc/components/context-menu/__tests__/context-menu.test.ts:\n(pass) acme-context-menu > composes a right-start menu, 160 wide, anchored to an empty box; the host wraps the content, closed [1.61ms]\n(pass) acme-context-menu > a right click on the content opens the menu at the point and keeps the browser's own menu off [3.68ms]\n(pass) acme-context-menu > width sizes the list; disabled keeps the menu shut and marks the host [1.28ms]\n(pass) acme-context-menu > a selected row closes the menu; acme-open and acme-close fire again from the host [3.00ms]\n(pass) acme-context-menu > show and close drive the menu, and open follows it both ways [4.55ms]\n(pass) acme-context-menu > the open menu is modal: the page takes no pointer events and stops scrolling until it closes [3.05ms]\n(pass) acme-context-menu > over a link, the list leads with Open in New Tab and Copy Link Address before a separator, and forgets them on close [3.92ms]\n(pass) acme-context-menu > a link to nowhere adds no rows [2.24ms]\n(pass) acme-context-menu > a long press of a touch pointer opens the menu; a lifted one does not [1453.24ms]\n(pass) acme-context-menu > Escape closes the menu and returns focus to where it was [9.50ms]\n\nsrc/components/search/__tests__/search.test.ts:\n(pass) acme-search > composes a search-typed clearable input named Search, with the glass in the start place [2.15ms]\n(pass) acme-search > cmdk shows the keys, loading swaps the glass for a spinner, disabled reaches the field [4.07ms]\n(pass) acme-search > a value shows the Esc key and clear() empties it; clearable false drops both [3.29ms]\n\nsrc/components/toggle/__tests__/toggle.test.ts:\n(pass) acme-toggle > renders a label root with the hidden switch checkbox, a track and a thumb; no text means no text span [1.08ms]\n(pass) acme-toggle > size, color, direction, label casing and no-margin map to classes and color variables; text renders in its span [0.67ms]\n(pass) acme-toggle > checked and disabled reach the input and the root's data attributes; a change emits acme-change [0.70ms]\n(pass) acme-toggle > icons render in the thumb through the slot of the current state [0.76ms]\n\nsrc/components/browser/__tests__/browser.test.ts:\n(pass) acme-browser > formatAddress drops the scheme, www. and a trailing slash [0.04ms]\n(pass) acme-browser > renders the frame in an inline-size container: a header of dots, controls, the address pill and a spacer, then the slot [2.20ms]\n(pass) acme-browser > the address pill shows the formatted address beside a tertiary, tiny, square icon-only copy button [1.38ms]\n(pass) acme-browser > a click copies the full address, names the button Copied and shows the check for a second [1054.06ms]\n(pass) acme-browser > a failed copy keeps the copy glyph [4.78ms]\n(pass) acme-browser > carries no theme variant and no aria-hidden of its own [0.86ms]\n\nsrc/components/json-view/__tests__/json-view.test.ts:\n(pass) acme-json-view > renders the tree: an inline root item over a block group of rows, labels, levels and a roving tab index [1.44ms]\n(pass) acme-json-view > depth 1 keeps nested objects collapsed: the toggle shows the ellipsis and the closing bracket with its comma [1.06ms]\n(pass) acme-json-view > the default depth is 3: nested rows render open, with the block closing bracket after the group [1.53ms]\n(pass) acme-json-view > value kinds: string, number, boolean and null rows; arrays index their rows [1.35ms]\n(pass) acme-json-view > an empty object has a bare bracket span, no chevron, no toggle and no aria-expanded [0.74ms]\n(pass) acme-json-view > one short pair stays on one line in an inline group; a long pair stacks (block line wrapper below the root) [1.52ms]\n(pass) acme-json-view > a click, Enter, Space, ArrowRight and ArrowLeft toggle a node [3.08ms]\n(pass) acme-json-view > arrows, Home, End and a typed character move the roving tab index through the visible nodes [1.88ms]\n(pass) acme-json-view > highlight-pattern marks keys and primitive values; makeJsonViewHighlightPattern builds it from terms [1.85ms]\n(pass) acme-json-view > hover lands on the toggle as data-hover for mouse pointers, never for touch [1.01ms]\n\nsrc/components/textarea/__tests__/textarea.test.ts:\n(pass) acme-textarea > renders a label root around the wrapper and the textarea; aria-label, placeholder, value and min-height reach it [0.58ms]\n(pass) acme-textarea > error paints aria-invalid, the message under the wrapper and the size class [0.50ms]\n(pass) acme-textarea > disabled, readonly and rows reach the textarea; input events carry the value [0.39ms]\n\nsrc/components/button/__tests__/button.test.ts:\n(pass) acme-button > renders a root with a label span and no place spans [0.55ms]\n(pass) acme-button > variant default is the primary look (no modifier); tiny, svg-only and shapes map to classes [0.38ms]\n(pass) acme-button > content in the start slot renders the start span [1.48ms]\n(pass) acme-button > loading shows the spinner in the start place, disables the button and announces busy [0.71ms]\n(pass) acme-button > href renders an anchor with role=link [0.38ms]\n(pass) acme-button > custom colors become --button-custom-* variables and width sets min and max [0.44ms]\n(pass) acme-button > an element-only child marks the label as a flex box; text does not; svg-only wins [0.85ms]\n(pass) acme-button > interaction states land as data attributes on the root [0.36ms]\n\nsrc/components/multi-select-row/__tests__/multi-select-row.test.ts:\n(pass) acme-multi-select-row > renders the box with a labelled checkbox before a button that names the row [1.32ms]\n(pass) acme-multi-select-row > the hint follows the selection: Only on an unchecked row of a mixed selection, Only for all, Check for none, Check or Uncheck in the checkbox column; none without the label [0.96ms]\n(pass) acme-multi-select-row > a press asks for the action its state names, cancelable; the checkbox asks for a toggle and follows the answer [0.92ms]\n(pass) acme-multi-select-row > the checkbox at the end, leading content and a disabled row take their classes; a disabled row fires nothing [0.82ms]\n\nsrc/components/description/__tests__/description.test.ts:\n(pass) acme-description > renders a dl with the key in dt.title and the value in dd.content; the host loses its title attribute [0.50ms]\n(pass) acme-description > tooltip renders the info wrapper as a tooltip with a focusable 14px icon after the key [0.75ms]\n(pass) acme-description > right and ellipsis map to modifier classes [0.34ms]\n(pass) acme-description > slotted content lands in the dd [0.27ms]\n\nsrc/components/theme/__tests__/theme.test.ts:\n(pass) nested settings inherit, explicit defaults override, and removal resumes inheritance [1.53ms]\n(pass) registered overrides use owned sheets without replacing author inline custom properties [8.01ms]\n(pass) moving a scope changes its inherited source without preserving the former parent [1.28ms]\n(pass) an unknown theme fails before changing the current selected name [0.08ms]\n\nsrc/components/table/__tests__/table.test.ts:\n(pass) acme-table > renders a scroll box around a native table: colgroup, header, spacer body, body; an em dash for an empty cell [1.31ms]\n(pass) acme-table > striped, bordered, interactive and a compact density are modifiers on the root; remove-spacing drops the spacer body [0.73ms]\n(pass) acme-table > footer cells render in a tfoot with colspan [0.66ms]\n(pass) acme-table > an interactive row carries data-hover under a mouse pointer, never a touch one, and reports a click as acme-row [0.90ms]\n(pass) acme-table > virtualize keeps the body at full height and holds the place of the rows left out with hidden spacer rows [1.55ms]\n(pass) acme-table > selectable composes a checkbox column: the header checkbox selects every row, a row's toggles its index, and acme-select reports the selection [2.08ms]\n\nsrc/components/menu/__tests__/menu.test.ts:\n(pass) acme-menu > closed by default; a click on the trigger opens the list in a manual popover at the set width and marks the trigger [454.48ms]\n(pass) acme-menu > Arrow Down on the trigger opens on the first enabled row; the width defaults to 150 [4.50ms]\n(pass) acme-menu > items come from sections, wrappers and forwarded slots, inert rows included [2.37ms]\n(pass) acme-menu > arrows, Home, End and typeahead move the highlight; rotate wraps it [4.39ms]\n(pass) acme-menu > Enter activates the highlighted row, which selects and closes; close-on-select=false keeps it open [5.90ms]\n(pass) acme-menu > Escape (cancelable) and a press outside close it, Tab is swallowed; disable-interact-outside keeps it open [6.76ms]\n(pass) acme-menu > a plain button works as the trigger, and hover mode opens on the pointer [34.04ms]\n(pass) acme-menu-item > a link, an error row, a locked row, a disabled row and a highlighted row render their states [2.36ms]\n(pass) acme-menu-button > a text trigger is a plain button; show-chevron adds the turning chevron; open marks the root [0.74ms]\n(pass) acme-menu-button > an element child makes an icon-only trigger named Menu; unstyled takes none of the button's root classes [1.01ms]\n\nsrc/components/gauge/__tests__/gauge.test.ts:\n(pass) acme-gauge > is a progressbar with the ring variables on the root and two arcs sized by the value [0.91ms]\n(pass) acme-gauge > tiny uses the thick stroke and the wide gap; 100 hides the secondary arc with no gap [0.77ms]\n(pass) acme-gauge > the primary colour follows the threshold scale or the colors map [0.85ms]\n(pass) acme-gauge > equal arc priority splits the gap between both arcs [0.32ms]\n(pass) acme-gauge > show-value prints the number at the size's type, and nothing for tiny [0.72ms]\n(pass) acme-gauge > indeterminate drops the value announcement and shows the icon [0.35ms]\n\nsrc/components/book/__tests__/book.test.ts:\n(pass) acme-book > a stripe cover by default: amber band, the title, the default mark, the pages and the back [0.91ms]\n(pass) acme-book > the title attribute is read and removed, so no tooltip shows [0.75ms]\n(pass) acme-book > simple: no band, no color by default, the default illustration below the title [0.55ms]\n(pass) acme-book > color and text-color become the wrapper's variables; a simple cover with a color is .color [0.45ms]\n(pass) acme-book > width: a number, or a per-breakpoint object [0.85ms]\n(pass) acme-book > textured: the grain over the cover, turned by the title's hash; the pages take the ribbed edge through the root class [0.95ms]\n(pass) acme-book > a slotted icon replaces the default mark [1.73ms]\n(pass) acme-book > the gesture is one store with one action, and the frames derive from it [2.58ms]\n(pass) acme-book > a repeat of the current direction changes nothing [1.19ms]\n(pass) acme-book > the caught matrix is read before Interaction flips data-hover [1.11ms]\n(pass) acme-book > a turn cancels the motion in flight, so the reversal does not overshoot [1.15ms]\n(pass) acme-book > hover lands on the perspective root as data-hover, for mouse pointers only [1.36ms]\n\nsrc/components/avatar/__tests__/avatar.test.ts:\n(pass) acme-avatar > username renders the image at twice the size, labels the root and starts unresolved [0.59ms]\n(pass) acme-avatar > the image's load resolves the root; a new source starts over [0.34ms]\n(pass) acme-avatar > title names the entity and leaves the host without a tooltip; mask=false is an attribute state [0.29ms]\n(pass) acme-avatar > letter renders uppercase initials with the screen-reader prefix; placeholder drops the image and renders the empty shell [0.54ms]\n(pass) acme-avatar > git wraps the avatar with the service dot and the provider's mark; GitHub images come from GitHub [0.36ms]\n(pass) acme-avatar > a slotted icon gets the dot; icon-background marks its disc [0.37ms]\n\nsrc/components/command-menu/__tests__/command-menu.test.ts:\n(pass) acme-command-menu > renders a closed native dialog with the input block and the list; open shows it in the top layer, locks scroll and focuses the searchbox [3.04ms]\n(pass) acme-command-menu > the first row is highlighted on open; the arrows move the highlight while focus stays in the searchbox; Home, End, Meta and Alt jump [3.61ms]\n(pass) acme-command-menu > typing scores the rows: the others hide, groups without a match hide, dividers hide, the best row is highlighted; an unmatched query shows the empty message [3.42ms]\n(pass) acme-command-menu > a query sorts the rows by score and the matched groups by their best row; should-filter=false leaves everything as it is [3.39ms]\n(pass) acme-command-menu > Enter selects the highlighted row: acme-select carries the value and the menu closes; close-on-callback=false and a canceled event keep it open [3.57ms]\n(pass) acme-command-menu > Escape, the Esc chip and a press on the backdrop close the menu; acme-close fires once it has left and the page scrolls again [3.75ms]\n(pass) acme-command-menu > pages: the crumbs show the stack, the active page's placeholder and rows apply, a crumb and Backspace on an empty searchbox go up, addPage goes down [4.07ms]\n(pass) acme-command-menu > the hotkey toggles the menu from the document; hotkey=false turns it off [1.96ms]\n(pass) acme-command-menu > rows: the row renders its parts, a keybind as kbd chips, a disabled row takes no highlight or selection; groups and dividers render their boxes [2.60ms]\n(pass) acme-command-menu > loading renders the bar under the input block; value from outside highlights that row [2.40ms]\n\nsrc/components/fieldset/__tests__/fieldset.test.ts:\n(pass) acme-fieldset > renders the card, the content with title and subtitle, and a footer of status and actions [1.26ms]\n(pass) acme-fieldset > each action takes a wrapper of its own, in order, and is small unless sized [0.81ms]\n(pass) acme-fieldset > no footer without status, actions or footer text; footer text slots straight into the footer [0.74ms]\n(pass) acme-fieldset > disabled marks the root and renders the wall first in the content, before the title [0.43ms]\n(pass) acme-fieldset > type maps to a root modifier; error and warning text sit in their own rows [0.46ms]\n(pass) acme-fieldset > the default slot renders only with content, so the subtitle is the content's last child otherwise [0.60ms]\n(pass) acme-fieldset > children added later reach their slots [1.43ms]\n(pass) acme-disabled-wall > renders the overlay, hidden from assistive technology [0.14ms]\n\nsrc/components/switch/__tests__/switch.test.ts:\n(pass) acme-switch > renders the group root with the size class and the controls as label roots with a hidden radio and a label box [0.89ms]\n(pass) acme-switch > selecting a control moves the value, the checked state and the Tab stop, and emits acme-change [0.75ms]\n(pass) acme-switch > a disabled control carries data-disabled and disables its radio; hide-border and checked-color reach the DOM [0.36ms]\n(pass) acme-switch > the group's size wins over a direct control's own size; an icon control hides its text and sizes the icon [0.43ms]\n(pass) acme-switch > interaction states land as data attributes on the label root [0.34ms]\n\nsrc/components/avatar-group/__tests__/avatar-group.test.ts:\n(pass) acme-avatar-group > three members at the default limit: two plain, the third in the last slot without a count, first on top [0.90ms]\n(pass) acme-avatar-group > past the limit the last slot counts the hidden members; extra adds to it; 0 shows all [1.06ms]\n(pass) acme-avatar-group > reverse leaves the stacking to document order; a number fixes the overlap [0.56ms]\n(pass) acme-avatar-group > members pass their size, source, letters and service to the avatars [0.80ms]\n\nsrc/components/radio-group/__tests__/radio-group.test.ts:\n(pass) acme-radio-group > renders the hidden group label, shares a name and checks the radio matching value [1.01ms]\n(pass) acme-radio-group > a radio change updates the value and dispatches acme-change from the group [0.78ms]\n(pass) acme-radio-group > arrow keys move the selection and skip disabled radios [1.17ms]\n(pass) acme-radio-group > disabled and required reach every radio; aria-label names a group with no label [0.61ms]\n\nsrc/components/modal-inset/__tests__/modal-inset.test.ts:\n(pass) acme-modal-inset > renders its slot, reflects last, and marks an inset no div follows [0.41ms]\n\nsrc/components/select/__tests__/select.test.ts:\n(pass) acme-select > the wrapper carries the size and the placeholder is a disabled first option [1.26ms]\n(pass) acme-select > tiny is the tier below small and marks the wrapper [0.62ms]\n(pass) acme-select > a start place renders and marks the wrapper; a slotted end replaces the chevron [0.47ms]\n(pass) acme-select > the chevron is the end slot's fallback; end=false leaves the place empty [0.68ms]\n(pass) acme-select > label, required, error and disabled reach the field and the wrapper [0.95ms]\n(pass) acme-select > a large field's error message is large; with-label=false drops the label element; bypass-casing marks the label raw [1.26ms]\n(pass) acme-select > value selects the matching option; a value equal to the placeholder reads as empty [0.94ms]\n(pass) acme-select > the secondary type and the options property [0.51ms]\n(pass) acme-select > a change on the field updates value and fires acme-change with it [0.60ms]\n(pass) acme-select > hover and focus land as data attributes on the wrapper [0.56ms]\n\nsrc/components/stack/__tests__/stack.test.ts:\n(pass) Stack supports direction while named variants do not expose it [0.65ms]\n(pass) named forms retain author nodes and have no decoration while disabled [0.73ms]\n\nsrc/components/scroller/__tests__/scroller.test.ts:\n(pass) acme-scroller > renders the viewport, the overlay and the container; the axis lands on the root and the container [0.74ms]\n(pass) acme-scroller > both is the default axis; gradient and mobile-grid reach the overlay and the root [0.33ms]\n(pass) acme-scroller > with-buttons: two round secondary buttons above a vertical viewport, below a horizontal one, none for both [1.74ms]\n(pass) acme-scroller > the edges the content lies past land on the root 100ms after a scroll, and data-overflowing on the host [468.66ms]\n(pass) acme-scroller > the buttons scroll smoothly to the next and previous direct child, and hold for 400ms after a move [1282.21ms]\n\nsrc/components/clearable-input/__tests__/clearable-input.test.ts:\n(pass) acme-clearable-input > composes a clearable input with the placeholder, label and accessible name [3.56ms]\n(pass) acme-clearable-input > a value shows the clear button with its Esc key; Escape clears and fires acme-clear [2.14ms]\n(pass) acme-clearable-input > cmdk shows the ⌘ K keys in the end place [1.41ms]\n(pass) acme-clearable-input > disabled keeps the clear button out of the Tab order and the field disabled; show-clear-button false hides it [1.53ms]\n\nsrc/components/file-tree/__tests__/file-tree.test.ts:\n(pass) acme-file-tree > renders the tree root; card adds its modifier [1.37ms]\n(pass) acme-file-tree > a folder is closed by default and renders no rows; default-open renders the list; a click flips open and fires acme-toggle [2.22ms]\n(pass) acme-file-tree > each row carries one indent guide per folder level above it [1.73ms]\n(pass) acme-file-tree > a file is a link with href, a plain anchor without; active, type and show-icon shape the row [1.42ms]\n(pass) acme-file-tree > label shows in place of name, in the text and the tooltip [0.96ms]\n(pass) acme-file-tree > hover lands as data-hover on the toggle and the link [0.93ms]\n\nsrc/components/modal/__tests__/modal.test.ts:\n(pass) acme-modal > renders an empty closed dialog, then the panel in the top layer when open [6.41ms]\n(pass) acme-modal > sticky, allow-overflow, center, body-padding and width map to the panel [1.80ms]\n(pass) acme-modal > a header with nothing slotted after it is marked last; no heading and no subtitle means no header [1.97ms]\n(pass) acme-modal > actions become small buttons; a block action defaults to secondary [3.01ms]\n(pass) acme-modal > focus lands on the initial-focus target, else on the first tabbable that is not an action, else on the wrapper; and returns to the opener after the exit [828.55ms]\n(pass) acme-modal > Escape asks to close through a cancelable acme-dismiss, unless no-dismiss [811.08ms]\n(pass) acme-modal > a press on the backdrop closes it; Enter fires acme-enter; acme-open and acme-close bracket the visit [409.61ms]\n(pass) acme-modal > the sheet form: under 600px the panel is the sheet with its fade, no trap, and the drawer height [8.34ms]\n\nsrc/components/sheet/__tests__/sheet.test.ts:\n(pass) acme-sheet > renders a closed dialog with the header, body and footer; right is the default side [4.76ms]\n(pass) acme-sheet > side, inset and modal map to the dialog's classes; no body and no footer leave their boxes out [2.71ms]\n(pass) acme-sheet > the trigger opens it in the top layer, a modal sheet locks the page scroll, and the trigger says so [3.24ms]\n(pass) acme-sheet > focus lands on the first tabbable element, else the panel, and returns to the opener on close [5.71ms]\n(pass) acme-sheet > Escape asks to close through a cancelable acme-dismiss [1.08ms]\n(pass) acme-sheet > a press outside the panel closes it; one inside does not; a data-close element closes it [4.66ms]\n\nsrc/components/flex/__tests__/flex.test.ts:\n(pass) Flex arrangement inputs are absent until supplied [2.05ms]\n(pass) Flex has its own display modes and retains semantics and children [1.07ms]\n\nsrc/components/error/__tests__/error.test.ts:\n(pass) acme-error > renders an atomic alert with the icon and text parts, and no label by default [0.92ms]\n(pass) acme-error > label renders a bold prefix inside the text; label=false renders none [0.79ms]\n(pass) acme-error > size maps to modifier classes [0.58ms]\n(pass) acme-error > the error object renders the message and the action link in a new tab [0.72ms]\n\nsrc/components/breadcrumbs/__tests__/breadcrumbs.test.ts:\n(pass) acme-breadcrumbs > the text type is a labelled nav around a list; each crumb is a list item with a chevron [2.76ms]\n(pass) acme-breadcrumbs > the menu type is a row of chips: a span around a div around a button, disabled when the crumb is [2.20ms]\n(pass) acme-breadcrumbs > href renders a link: an anchor around the text in a list, the chip itself in a menu [3.69ms]\n(pass) acme-breadcrumbs > changing the type re-renders the list and the crumbs [1.89ms]\n(pass) acme-breadcrumbs > hover lands on the list item, the chip's focus and hover on the chip [3.27ms]\n\nsrc/components/middle-truncate/__tests__/middle-truncate.test.ts:\n(pass) acme-middle-truncate > whole: the root is an inline grid of sizer, text and measure; no title, no hidden copy [1.05ms]\n(pass) acme-middle-truncate > cut: the visible text is head, one ellipsis glyph and tail in three spans; the full value stays as title and hidden copy [1.72ms]\n(pass) acme-middle-truncate > cut splits the kept graphemes: below six an even split with the head longer, from six up at least three in the tail [0.04ms]\n(pass) acme-middle-truncate > fitCut keeps the whole value when it fits and returns the widest cut otherwise; nothing fits below one glyph [0.08ms]\n(pass) acme-middle-truncate > a selection across the ellipsis expands to the matching part of the value [0.09ms]\n(pass) acme-middle-truncate > a copy of the cut text yields the full value (a selection wider than the text span takes the text route) [1.25ms]\n\nsrc/components/banner/__tests__/banner.test.ts:\n(pass) acme-banner > renders the mobile button and the wide row with the message and the action link [1.62ms]\n(pass) acme-banner > wide: the message and the prefix sit in the row; the mobile copy slot stays in the mobile button [1.23ms]\n(pass) acme-banner > narrow: the message and the prefix move into the mobile button; slotted mobile copy replaces the message there [2.51ms]\n(pass) acme-banner > no prefix: the mobile button gets no prefix slot, so the composed button renders no prefix [1.14ms]\n\nsrc/components/grid/__tests__/grid.test.ts:\n(pass) responsive helpers > restrict fills the breakpoints from their neighbours; a plain value applies everywhere [0.08ms]\n(pass) responsive helpers > breakpointVars writes one variable for a plain value and one per changed breakpoint for an object [0.07ms]\n(pass) responsive helpers > positionSpan reads numbers, start/end strings and pairs; negative lines count from the end [0.04ms]\n(pass) acme-grid-system > renders the wrapper with the system box, the lazy box and the modifier classes; the variables land as inline style [1.48ms]\n(pass) acme-grid-system > the first two children go to the box, the rest to the lazy box [0.70ms]\n(pass) acme-grid > renders the section with the count variables and one guide per track; the last track's edges are clipped [0.63ms]\n(pass) acme-grid > height preserve-aspect-ratio and the guide options [1.20ms]\n(pass) acme-grid > a solid cell clips the guides it covers; the grid follows cell changes [3.83ms]\n(pass) acme-grid > responsive counts write a variable per breakpoint and draw one guide set per breakpoint [1.10ms]\n(pass) acme-grid > the system's debug and dashed modes reach the section as attributes and follow changes [1.69ms]\n(pass) acme-grid-cell > placement lands on the host as variables per breakpoint; the shadow tree is a slot [0.57ms]\n(pass) acme-grid-cell > responsive placement writes the breakpoints that differ [0.35ms]\n(pass) acme-grid-cell > no-padding, behind-grid, overflow and hide become inline styles [0.42ms]\n(pass) acme-grid-cell > a solid cell without a row and a column is refused [0.14ms]\n(pass) acme-grid-cross and acme-grid-page > a cross records its lines on the host and draws a vertical and a horizontal line [0.29ms]\n(pass) acme-grid-cross and acme-grid-page > a page renders the padded column, a banner slot first, and the modifier styles [1.85ms]\n\nsrc/components/badge/__tests__/badge.test.ts:\n(pass) acme-badge > defaults render the bare root with the icon slot and the label span [0.30ms]\n(pass) acme-badge > variant, contrast and size map to modifier classes [0.27ms]\n(pass) acme-badge > inverted, trial and turbo are variants [0.47ms]\n(pass) acme-badge > a slotted icon lands in the icon slot; a circular glyph is mirrored onto the slot [0.35ms]\n(pass) acme-pill > renders a link in the three sizes [0.30ms]\n\n 865 pass\n 0 fail\n 13217 expect() calls\nRan 865 tests across 119 files. [39.13s]\n",
+    "build": "$ bun scripts/build.ts\nmodules: 515 files, 113 with compiled templates\nmanifest: 115 elements\nbundle 2659.5 KB min 1294.8 KB tokens.css 153.1 KB dashboard.css 14.3 KB\n",
+    "docs": "$ bun site/build.ts\ndocs: 84 pages, 115 elements (0 undocumented), app.js 1368 KB\n",
+    "focused": "bun test v1.4.0 (34cbb9a40)\n\nsrc/shared/__tests__/stack-geometry.test.ts:\n(pass) wrapped lines have no orphan or cross-line dividers [0.98ms]\n(pass) unequal cross-axis alignment remains on the same flex line [0.04ms]\n(pass) reverse RTL and CSS order use native visual adjacency [0.05ms]\n(pass) zero-size rendered elements remain members and no-wrap lines stretch across their container [0.03ms]\n(pass) vertical wrapped columns use the same geometry [0.04ms]\n\nsrc/components/box/__tests__/box.test.ts:\n(pass) all structural tags keep one semantic root and the same author-owned content [10.99ms]\n(pass) all common inputs have accessors and observed attributes outside Lit metadata [1.88ms]\n(pass) HTML scalars and structured properties share canonical inputs; removal clears one property [2.69ms]\n(pass) Box rejects an arrangement display and keeps native semantic naming on its root [1.39ms]\n\nsrc/components/stack/__tests__/stack.test.ts:\n(pass) Stack supports direction while named variants do not expose it [0.77ms]\n(pass) named forms retain author nodes and have no decoration while disabled [1.52ms]\n\nsrc/components/flex/__tests__/flex.test.ts:\n(pass) Flex arrangement inputs are absent until supplied [1.33ms]\n(pass) Flex has its own display modes and retains semantics and children [1.17ms]\n\n 13 pass\n 0 fail\n 286 expect() calls\nRan 13 tests across 4 files. [220.00ms]\n",
+    "packedTypecheck": "Fresh packed consumer passes strict TypeScript, including negative direction-property cases on HStack/VStack."
+  },
+  "regressions": {
+    "box": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "results": [
+            {
+              "name": "one charge for dimensions padding and border",
+              "ok": true
+            },
+            {
+              "name": "block defaults fill parent width",
+              "ok": true
+            },
+            {
+              "name": "percentage sizes resolve against actual parent",
+              "ok": true
+            },
+            {
+              "name": "inline-block retains content-box width",
+              "ok": true
+            },
+            {
+              "name": "inline phrasing wraps like a native span",
+              "ok": true
+            },
+            {
+              "name": "grid placement belongs to the host",
+              "ok": true
+            },
+            {
+              "name": "parent flex growth and stretch reach real host boxes",
+              "ok": true
+            },
+            {
+              "name": "native HTML JSON parsing preserves responsive state",
+              "ok": true
+            },
+            {
+              "name": "later shorthand wins at the current viewport",
+              "ok": true
+            },
+            {
+              "name": "removing shorthand restores retained logical input",
+              "ok": true
+            },
+            {
+              "name": "helper order reaches the actual generated declarations",
+              "ok": true
+            },
+            {
+              "name": "explicit helper clearing removes owned styles",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade property order survives capture",
+              "ok": true
+            },
+            {
+              "name": "semantic tag changes preserve children",
+              "ok": true
+            },
+            {
+              "name": "hidden hides the full component",
+              "ok": true
+            },
+            {
+              "name": "adoption restores generated and responsive sheets",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "one charge for dimensions padding and border",
+              "ok": true
+            },
+            {
+              "name": "block defaults fill parent width",
+              "ok": true
+            },
+            {
+              "name": "percentage sizes resolve against actual parent",
+              "ok": true
+            },
+            {
+              "name": "inline-block retains content-box width",
+              "ok": true
+            },
+            {
+              "name": "inline phrasing wraps like a native span",
+              "ok": true
+            },
+            {
+              "name": "grid placement belongs to the host",
+              "ok": true
+            },
+            {
+              "name": "parent flex growth and stretch reach real host boxes",
+              "ok": true
+            },
+            {
+              "name": "native HTML JSON parsing preserves responsive state",
+              "ok": true
+            },
+            {
+              "name": "later shorthand wins at the current viewport",
+              "ok": true
+            },
+            {
+              "name": "removing shorthand restores retained logical input",
+              "ok": true
+            },
+            {
+              "name": "helper order reaches the actual generated declarations",
+              "ok": true
+            },
+            {
+              "name": "explicit helper clearing removes owned styles",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade property order survives capture",
+              "ok": true
+            },
+            {
+              "name": "semantic tag changes preserve children",
+              "ok": true
+            },
+            {
+              "name": "hidden hides the full component",
+              "ok": true
+            },
+            {
+              "name": "adoption restores generated and responsive sheets",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "one charge for dimensions padding and border",
+              "ok": true
+            },
+            {
+              "name": "block defaults fill parent width",
+              "ok": true
+            },
+            {
+              "name": "percentage sizes resolve against actual parent",
+              "ok": true
+            },
+            {
+              "name": "inline-block retains content-box width",
+              "ok": true
+            },
+            {
+              "name": "inline phrasing wraps like a native span",
+              "ok": true
+            },
+            {
+              "name": "grid placement belongs to the host",
+              "ok": true
+            },
+            {
+              "name": "parent flex growth and stretch reach real host boxes",
+              "ok": true
+            },
+            {
+              "name": "native HTML JSON parsing preserves responsive state",
+              "ok": true
+            },
+            {
+              "name": "later shorthand wins at the current viewport",
+              "ok": true
+            },
+            {
+              "name": "removing shorthand restores retained logical input",
+              "ok": true
+            },
+            {
+              "name": "helper order reaches the actual generated declarations",
+              "ok": true
+            },
+            {
+              "name": "explicit helper clearing removes owned styles",
+              "ok": true
+            },
+            {
+              "name": "pre-upgrade property order survives capture",
+              "ok": true
+            },
+            {
+              "name": "semantic tag changes preserve children",
+              "ok": true
+            },
+            {
+              "name": "hidden hides the full component",
+              "ok": true
+            },
+            {
+              "name": "adoption restores generated and responsive sheets",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "flex": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "results": [
+            {
+              "name": "row alignment",
+              "ok": true
+            },
+            {
+              "name": "single padding and border charge",
+              "ok": true
+            },
+            {
+              "name": "wrapping with unequal axis gaps",
+              "ok": true
+            },
+            {
+              "name": "reverse row",
+              "ok": true
+            },
+            {
+              "name": "RTL row",
+              "ok": true
+            },
+            {
+              "name": "column with definite height",
+              "ok": true
+            },
+            {
+              "name": "inline shrink-to-fit",
+              "ok": true
+            },
+            {
+              "name": "span remains flex",
+              "ok": true
+            },
+            {
+              "name": "span inline mode",
+              "ok": true
+            },
+            {
+              "name": "arrangement queries the host ancestor instead of its own container",
+              "ok": true
+            },
+            {
+              "name": "explicit display overrides the span default",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "row alignment",
+              "ok": true
+            },
+            {
+              "name": "single padding and border charge",
+              "ok": true
+            },
+            {
+              "name": "wrapping with unequal axis gaps",
+              "ok": true
+            },
+            {
+              "name": "reverse row",
+              "ok": true
+            },
+            {
+              "name": "RTL row",
+              "ok": true
+            },
+            {
+              "name": "column with definite height",
+              "ok": true
+            },
+            {
+              "name": "inline shrink-to-fit",
+              "ok": true
+            },
+            {
+              "name": "span remains flex",
+              "ok": true
+            },
+            {
+              "name": "span inline mode",
+              "ok": true
+            },
+            {
+              "name": "arrangement queries the host ancestor instead of its own container",
+              "ok": true
+            },
+            {
+              "name": "explicit display overrides the span default",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "row alignment",
+              "ok": true
+            },
+            {
+              "name": "single padding and border charge",
+              "ok": true
+            },
+            {
+              "name": "wrapping with unequal axis gaps",
+              "ok": true
+            },
+            {
+              "name": "reverse row",
+              "ok": true
+            },
+            {
+              "name": "RTL row",
+              "ok": true
+            },
+            {
+              "name": "column with definite height",
+              "ok": true
+            },
+            {
+              "name": "inline shrink-to-fit",
+              "ok": true
+            },
+            {
+              "name": "span remains flex",
+              "ok": true
+            },
+            {
+              "name": "span inline mode",
+              "ok": true
+            },
+            {
+              "name": "arrangement queries the host ancestor instead of its own container",
+              "ok": true
+            },
+            {
+              "name": "explicit display overrides the span default",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    }
+  },
+  "fixtures": {
+    "probe": "import {AcmeStack} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/stack/stack.ts\";\nimport {AcmeHStack} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/h-stack/h-stack.ts\";\nimport {AcmeVStack} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/v-stack/v-stack.ts\";\nimport {AcmeSeparator} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/separator/separator.ts\";\nimport {AcmeTheme} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/theme/theme.ts\";\nimport {registerTheme} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/theme-registry.ts\";\ncustomElements.define(\"acme-separator\",AcmeSeparator);customElements.define(\"acme-stack\",AcmeStack);customElements.define(\"acme-h-stack\",AcmeHStack);customElements.define(\"acme-v-stack\",AcmeVStack);\ncustomElements.define(\"acme-theme\",AcmeTheme);\nconst results:{name:string;ok:boolean;actual?:unknown}[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});\nconst frame=()=>new Promise(resolve=>requestAnimationFrame(resolve));\nasync function settled(element:AcmeStack|AcmeHStack|AcmeVStack){await element.updateComplete;for(let i=0;i<4;i++)await frame();}\nconst dividers=(element:Element)=>[...element.shadowRoot!.querySelectorAll(\"acme-separator\")];\nconst fixed=(width=100,height=30)=>`<button style=\"width:${width}px;height:${height}px;flex:none\">Item</button>`;\ntry{\n document.documentElement.style.setProperty(\"--acme-spacing-2\",\".5rem\");document.documentElement.style.setProperty(\"--ds-gray-200\",\"#ddd\");\n for(const[tag,direction,alignment]of [[\"acme-stack\",\"column\",\"stretch\"],[\"acme-h-stack\",\"row\",\"center\"],[\"acme-v-stack\",\"column\",\"center\"]]){\n  const element=document.createElement(tag) as AcmeStack;element.innerHTML=fixed()+fixed();document.body.append(element);await settled(element);const style=getComputedStyle(element.shadowRoot!.querySelector('[part=\"root\"]')!);check(`${tag} defaults`,style.flexDirection===direction&&style.alignItems===alignment&&style.gap===\"8px\"&&element.gap===undefined,{direction:style.flexDirection,alignment:style.alignItems,gap:style.gap});element.remove();\n }\n for(const[width,count]of [[150,0],[220,1],[350,2]]){\n  const stack=document.createElement(\"acme-h-stack\") as AcmeHStack;stack.separator=true;stack.width=`${width}px`;stack.flexWrap=\"wrap\";stack.rowGap=\"9px\";stack.innerHTML=fixed()+fixed()+fixed();document.body.append(stack);await settled(stack);\n  const lines=dividers(stack),rects=[...stack.children].map(child=>child.getBoundingClientRect());const line=lines[0]?.getBoundingClientRect();const spacing=count===0||Math.abs(line!.left-rects[0].right-8)<.1&&Math.abs(rects[1].left-line!.right-8)<.1;\n  check(`wrapped width ${width}`,lines.length===count&&spacing,{count:lines.length,rects:rects.map(r=>({x:r.x,y:r.y,w:r.width,h:r.height})),lines:lines.map(x=>{const r=x.getBoundingClientRect();return{x:r.x,y:r.y,w:r.width,h:r.height}})});stack.remove();\n }\n for(const[direction,rtl]of [[\"row-reverse\",false],[\"row\",true],[\"column\",false],[\"column-reverse\",false]] as const){\n  const stack=document.createElement(\"acme-stack\") as AcmeStack;stack.separator=true;stack.flexDirection=direction;stack.flexWrap=\"wrap\";if(rtl)stack.dir=\"rtl\";const vertical=direction.startsWith(\"column\");stack.width=vertical?\"100px\":\"220px\";if(vertical)stack.height=\"220px\";stack.innerHTML=vertical?fixed(30,100).repeat(3):fixed().repeat(3);document.body.append(stack);await settled(stack);check(`${direction} RTL ${rtl} wraps without orphan`,dividers(stack).length===1,dividers(stack).length);stack.remove();\n }\n const stack=document.createElement(\"acme-h-stack\") as AcmeHStack;stack.separator=true;stack.width=\"350px\";stack.flexWrap=\"wrap\";stack.innerHTML=fixed(100,10)+fixed(100,50)+fixed(100,30);document.body.append(stack);await settled(stack);check(\"unequal centered heights share one visual line\",dividers(stack).length===2&&dividers(stack).every(line=>Math.abs(line.getBoundingClientRect().height-50)<.1),dividers(stack).map(line=>line.getBoundingClientRect().height));\n const first=stack.firstElementChild as HTMLButtonElement;let clicks=0;first.onclick=()=>clicks++;first.focus();stack.width=\"220px\";await settled(stack);first.click();check(\"resize preserves children focus events and line membership\",stack.firstElementChild===first&&document.activeElement===first&&clicks===1&&dividers(stack).length===1);\n stack.as=\"nav\";await settled(stack);check(\"semantic tag changes retain native focus\",document.activeElement===first);\n (stack.children[1] as HTMLElement).hidden=true;await settled(stack);check(\"hidden members leave the sequence\",dividers(stack).length===1);\n (stack.children[1] as HTMLElement).hidden=false;(stack.children[0] as HTMLElement).style.order=\"2\";await settled(stack);check(\"CSS order determines visible neighbors\",dividers(stack).length===1);\n stack.separator=false;await settled(stack);check(\"disabling separators restores ordinary gap\",dividers(stack).length===0&&getComputedStyle(stack.shadowRoot!.querySelector('[part=\"root\"]')!).columnGap===\"8px\");\n stack.separator=true;stack.gap=0;stack.width=\"350px\";await settled(stack);const ordered=[...stack.children].sort((a,b)=>a.getBoundingClientRect().x-b.getBoundingClientRect().x);check(\"zero gap retains only separator thickness\",Math.abs(ordered[1].getBoundingClientRect().left-ordered[0].getBoundingClientRect().right-1)<.1);\n stack.gap=2;stack.style.transform=\"scale(.5)\";stack.style.transformOrigin=\"top left\";await settled(stack);const ordered2=[...stack.children].sort((a,b)=>a.getBoundingClientRect().x-b.getBoundingClientRect().x),line=dividers(stack)[0].getBoundingClientRect();check(\"scale preserves local separator spacing\",Math.abs((line.left-ordered2[0].getBoundingClientRect().right)/.5-8)<.1&&Math.abs(line.width/.5-1)<.1,{line:{x:line.x,w:line.width},before:ordered2[0].getBoundingClientRect().right});\n stack.style.transform=\"\";stack.style.setProperty(\"--acme-stack-separator-width\",\"3px\");stack.style.setProperty(\"--acme-stack-separator-inset\",\"4px\");await settled(stack);check(\"line hooks update geometry\",dividers(stack).every(line=>Math.abs(line.getBoundingClientRect().width-3)<.1&&Math.abs(line.getBoundingClientRect().height-42)<.1),dividers(stack).map(line=>({width:line.getBoundingClientRect().width,height:line.getBoundingClientRect().height})));\n stack.remove();document.body.append(stack);await settled(stack);check(\"reconnect recreates bounded decoration\",dividers(stack).length===2);\n const raw=document.createTextNode(\"Unwrapped text\");stack.append(raw);await settled(stack);check(\"raw text keeps content and ordinary gaps without decorators\",dividers(stack).length===0&&stack.contains(raw)&&getComputedStyle(stack.shadowRoot!.querySelector('[part=\"root\"]')!).columnGap===\"8px\");raw.remove();await settled(stack);check(\"removing raw text restores decorators\",dividers(stack).length===2);\n const ancestor=document.createElement(\"div\");ancestor.style.cssText=\"position:relative;height:100px;width:200px\";const nested=document.createElement(\"acme-h-stack\") as AcmeHStack;nested.separator=true;nested.innerHTML=fixed(30,20)+fixed(30,20)+'<span style=\"position:absolute;left:0;top:0\">Outside flow</span>';ancestor.append(nested);document.body.append(ancestor);await settled(nested);check(\"decoration does not change authored absolute containing blocks\",getComputedStyle(nested.shadowRoot!.querySelector('[part=\"root\"]')!).position===\"static\"&&Math.abs(nested.lastElementChild!.getBoundingClientRect().top-ancestor.getBoundingClientRect().top)<.1&&dividers(nested).length===1);\n const color=document.createElement(\"style\");color.textContent='acme-h-stack::part(separator){background-color:rgb(200, 0, 0)}';document.head.append(color);check(\"separator part reaches the actual line\",getComputedStyle(dividers(nested)[0].shadowRoot!.querySelector('[part=\"root\"]')!).backgroundColor===\"rgb(200, 0, 0)\");color.remove();\n const vertical=document.createElement(\"acme-v-stack\") as AcmeVStack;vertical.separator=true;vertical.width=\"160px\";vertical.innerHTML=fixed(100,30)+fixed(100,30);document.body.append(vertical);await settled(vertical);const vr=dividers(vertical)[0].getBoundingClientRect();check(\"unwrapped vertical separators stretch across the content width\",Math.abs(vr.width-160)<.1&&Math.abs(vr.height-1)<.1,{width:vr.width,height:vr.height});\n registerTheme(\"stack-gap-test\",{spacing:{\"acme-layout-gap-2\":\"20px\"}});\n const theme=document.createElement(\"acme-theme\") as AcmeTheme,themed=document.createElement(\"acme-h-stack\") as AcmeHStack;themed.separator=true;themed.width=\"200px\";themed.height=\"60px\";themed.innerHTML=fixed(30,20)+fixed(30,20);theme.append(themed);document.body.append(theme);await theme.updateComplete;await settled(themed);\n const mainGap=()=>themed.children[1].getBoundingClientRect().left-themed.children[0].getBoundingClientRect().right;\n theme.theme=\"stack-gap-test\";await theme.updateComplete;await settled(themed);check(\"named theme changes update spacing in a fixed-size Stack\",Math.abs(mainGap()-41)<.1,mainGap());\n theme.theme=undefined;theme.density=\"compact\";await theme.updateComplete;await settled(themed);check(\"default gaps follow compact density\",Math.abs(mainGap()-13)<.1,mainGap());\n themed.gap=2;await settled(themed);check(\"explicit spacing keys are not density-scaled\",Math.abs(mainGap()-17)<.1,mainGap());\n const iframe=document.createElement(\"iframe\");document.body.append(iframe);iframe.contentDocument!.documentElement.style.setProperty(\"--acme-spacing-2\",\".5rem\");iframe.contentDocument!.body.append(stack);await settled(stack);check(\"adoption restores measurement and generated styles\",dividers(stack).length===2&&dividers(stack).every(line=>Math.abs(line.getBoundingClientRect().width-3)<.1));\n const NativeResize=window.ResizeObserver,active=new Set<ResizeObserver>();\n window.ResizeObserver=new Proxy(NativeResize,{construct(Target,args){const observer=Reflect.construct(Target,args) as ResizeObserver;const observe=observer.observe.bind(observer),disconnect=observer.disconnect.bind(observer);observer.observe=(target,options)=>{active.add(observer);observe(target,options)};observer.disconnect=()=>{active.delete(observer);disconnect()};return observer}});\n try{const resource=document.createElement(\"acme-h-stack\") as AcmeHStack;resource.separator=true;resource.innerHTML=fixed()+fixed();document.body.append(resource);await settled(resource);check(\"one geometry observer owns the active stack\",active.size===1,active.size);resource.separator=false;await settled(resource);check(\"disabling decoration releases geometry observation\",active.size===0,active.size);resource.separator=true;await settled(resource);resource.width=\"500px\";await resource.updateComplete;resource.remove();for(let i=0;i<4;i++)await frame();check(\"removal cancels pending geometry and releases observation\",active.size===0,active.size);}finally{window.ResizeObserver=NativeResize;}\n (window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n",
+    "runner": "import fs from \"node:fs\";import path from \"node:path\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\",directory=\"/tmp/acme-m07-stack\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\"});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(data.error){report.errors.push({engine,message:data.error,stack:data.stack});data.results.push({name:'fixture completes',ok:false,error:data.error});}report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;\n",
+    "consumer": "import {AcmeStack,AcmeHStack,AcmeVStack,styleInputs} from \"@acmelabs/design-system\";\nimport {html,render} from \"lit\";\nconst results:{name:string;ok:boolean}[]=[];\ntry{\n results.push({name:\"class imports remain inert\",ok:customElements.get(\"acme-h-stack\")===undefined&&customElements.get(\"acme-separator\")===undefined});\n await import(\"@acmelabs/design-system/define/h-stack\");\n results.push({name:\"explicit entry defines the separator dependency\",ok:customElements.get(\"acme-h-stack\")===AcmeHStack&&!!customElements.get(\"acme-separator\")});\n render(html`<acme-h-stack separator ${styleInputs({gap:2})}><button>First</button><button>Second</button></acme-h-stack>`,document.body);\n const stack=document.querySelector(\"acme-h-stack\") as AcmeHStack;await stack.updateComplete;for(let i=0;i<4;i++)await new Promise(resolve=>requestAnimationFrame(resolve));\n const divider=stack.shadowRoot!.querySelector(\"acme-separator\")!;const before=stack.children[0].getBoundingClientRect(),line=divider.getBoundingClientRect(),after=stack.children[1].getBoundingClientRect();\n results.push({name:\"packed compiled Stack preserves per-side spacing\",ok:Math.abs(line.left-before.right-8)<.1&&Math.abs(after.left-line.right-8)<.1});\n results.push({name:\"named forms have no direction input\",ok:!(\"flexDirection\" in AcmeHStack.prototype)&&!(\"flexDirection\" in AcmeVStack.prototype)&&\"flexDirection\" in AcmeStack.prototype});\n (window as unknown as {__results:unknown}).__results={results};\n}catch(error){(window as unknown as {__results:unknown}).__results={results,error:String(error)}}\n",
+    "types": "import type {AcmeHStack,AcmeStack,AcmeVStack} from \"@acmelabs/design-system\";\ndeclare const stack:AcmeStack,horizontal:AcmeHStack,vertical:AcmeVStack;\nstack.flexDirection={compact:\"column\",expanded:\"row\"};\nhorizontal.gap=2;vertical.alignItems=\"stretch\";\n// @ts-expect-error Named horizontal forms do not offer a direction input.\nhorizontal.flexDirection=\"column\";\n// @ts-expect-error Named vertical forms do not offer a direction input.\nvertical.flexDirection=\"row\";\n",
+    "consumerRunner": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m07-stack/consumer\",root=directory+\"/node_modules/@acmelabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\"});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/dist/styles/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+  },
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/stack/get-separator-style.ts",
+      "read": "complete"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/stack/stack-separator.tsx",
+      "read": "complete"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/stack/stack.tsx",
+      "read": "complete"
+    }
+  ],
+  "implementation": [
+    "General Stack supports responsive direction. Named forms do not expose a direction property.",
+    "Default spacing uses the existing compact-eligible house step-2 role; explicit numeric spacing does not inherit density scaling.",
+    "Native layout determines member rectangles. Line grouping uses native positions, CSS order and direction.",
+    "Automatic separators compose the real Separator primitive, export its root part, and use generated declaration names for geometry.",
+    "A zero-size absolute decoration layer keeps authored child containing blocks unchanged. Author nodes never move or clone.",
+    "No-wrap lines stretch across the content box; wrapped lines use the bounds of visible members on their own line.",
+    "Raw text and display:contents children keep ordinary content/gaps and disable decoration with a bounded diagnostic; absolute/fixed elements remain outside the flex sequence.",
+    "Positive scale is normalized to local coordinates, covering viewer zoom and ordinary scaled entrances.",
+    "Observation is active only while separator is enabled and is released on disconnect."
+  ],
+  "limits": [
+    "No claim of arbitrary rotated/perspective/zero-scale animation geometry.",
+    "The public input/theme paths and recorded style/resize/font/membership changes are covered; arbitrary CSSOM mutations with no observable layout or DOM change are not certified.",
+    "Group and Grid/Simple Grid remain separate unfinished M07 work."
+  ]
+}

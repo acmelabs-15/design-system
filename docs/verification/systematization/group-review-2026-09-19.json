@@ -1,0 +1,919 @@
+{
+  "date": "2026-09-19",
+  "commit": "1ff9873754e9913fc3d849d23c0844a628f5f20d",
+  "coverage": {
+    "archiveFiles": 3849,
+    "textFilesScanned": 3528,
+    "lexicalMatches": 145,
+    "directImportFiles": 63,
+    "directExamples": 54,
+    "allDirectImportFilesRead": true,
+    "generatedGroupEntries": 58,
+    "generatedASTBodyMatches": 54,
+    "generatedDifferencesRead": 4,
+    "testFilesScanned": 88,
+    "directGroupRuntimeTestsFound": 0,
+    "proExactBlocks": 18,
+    "proExactFiles": 19,
+    "kitFiles": 2,
+    "proScopeNote": "18 blocks/19 directly matching Group/ButtonGroup/RadioCard/CheckboxCard files plus two kit files revisited after earlier complete Pro review; AvatarGroup later adds help-center-collection-03."
+  },
+  "registryComparison": {
+    "method": "TypeScript AST printer; imports and use-client directives excluded; string contents preserved",
+    "entries": 58,
+    "matched": 54,
+    "differences": [
+      {
+        "registry": "apps/www/public/compositions/input-group.json",
+        "name": "input-group.tsx",
+        "matches": [],
+        "candidates": [
+          "apps/compositions/src/ui/input-group.tsx"
+        ]
+      },
+      {
+        "registry": "apps/www/public/compositions/scrubber-input.json",
+        "name": "scrubber-input.tsx",
+        "matches": [],
+        "candidates": []
+      },
+      {
+        "registry": "apps/www/public/r/examples/group.json",
+        "name": "group-basic",
+        "matches": [],
+        "candidates": [
+          "apps/compositions/src/examples/group-basic.tsx"
+        ]
+      },
+      {
+        "registry": "apps/www/public/r/examples/scroll-area.json",
+        "name": "scroll-area-stick-to-bottom",
+        "matches": [],
+        "candidates": [
+          "apps/compositions/src/examples/scroll-area-stick-to-bottom.tsx"
+        ]
+      }
+    ]
+  },
+  "responsibilities": {
+    "Group": "Real-box arrangement, orientation, gap/alignment/wrap/grow, attached edge/border coordination, source-child markers and stacking. No automatic role, label, selection, forms, keys.",
+    "ButtonGroup": "Group plus nearest Button recipe defaults; explicit child wins; not automatic disabled/loading/handler propagation.",
+    "AvatarGroup": "Group plus overlap and Avatar recipe defaults; not overflow counting; Avatar reacts to group markers.",
+    "StatGroup": "Independent real div role=group with flex wrap and Stat defaults, not generic Group.",
+    "InputGroup": "Positions elements/addons and compensates input padding; package, UI composition and published snippet differ.",
+    "Selection": "Radio/Checkbox families own values/forms and appropriate keys; Group only arranges.",
+    "Toolbar": "Coordinates appropriate child focus contracts; not universal sole owner of all keyboard navigation."
+  },
+  "edgeCases": [
+    "Direct text/numbers/raw portals filtered out; fragments/custom components opaque.",
+    "One/one eligible child remains unmarked; skipped children still participate in CSS grow/layout.",
+    "Source order may differ from hidden/custom-null/visual-order/wrapped-line positions.",
+    "Focus z-index1 can be under stacking siblings; no automatic wrapper focus-within raise.",
+    "Responsive attached compound variants require verification.",
+    "asChild expects one rendered child; multiple processed children risk discard.",
+    "Nested family providers replace nearest defaults rather than aggregate inherited defaults.",
+    "CSS group selectors require class=group; not same as Group component."
+  ],
+  "usageFindings": [
+    "Buttons, badges, swatches, inputs, PIN chunks, RadioCards, avatar/menu overflow, menus, overlays, pagination, Steps, scrolling, TreeView and custom docs controls.",
+    "All15 Steps demos use small/outline ButtonGroup, even when Steps size/orientation vary; Steps owns navigation/validation.",
+    "All11 pagination examples share button defaults; Pagination owns state and supplies props to generated Items; custom children must forward group settings.",
+    "Pro no indexed exact Stat+RadioCard/CheckboxCard composition; pricing large value is supporting analogy only."
+  ],
+  "browser": {
+    "page": "https://chakra-ui.com/docs/components/group",
+    "observed": "ordinary buttons retain native Tab stops/no group role; normal gap8px; attached gap0,adjacent corners0,marginInlineEnd-1px; grow widths approx227.33px equally. These are live Chakra reference values, not house defaults.",
+    "limits": "Only rendered default examples measured. No exhaustive keyboard/browser/screen-reader/edge-case validation. Pinned source and live deployed build not proven identical."
+  },
+  "materialForwardWork": "Material Lists all four text tabs read; both token sets expanded at Default/Light and all 35 static Specs figures inspected. Motion/permutation testing not claimed.",
+  "sourceFreeze": true,
+  "sharedDefaultsDecision": {
+    "selected": true,
+    "source": "group_shared_family_defaults: Shared defaults (Recommended)",
+    "scope": "General Group owns applicable shared appearance defaults, with explicit child overrides. Exact properties and inheritance/participation contract remain unresolved."
+  },
+  "selectionPresentationDirection": {
+    "source": "Peter requests Group support for attached Radio Cards and Checkbox Cards, and internal reuse of the planned shared selected/active indicator mechanism, with radio cards and tabs as examples.",
+    "requested": [
+      "Group coordinates attached presentation for Radio Cards and Checkbox Cards.",
+      "Grouped controls with an appropriate selected/active indicator reuse the planned shared motion mechanism."
+    ],
+    "preserve": [
+      "Selection controls supply selected/active values and own form/keyboard behavior.",
+      "Visible keyboard focus remains distinct from selected state.",
+      "Lit Motion is inside one shared active-indicator component. Its exact public exposure and internal contract remain inventory work.",
+      "House shape needs determine the indicator appearance; no automatic Material shape adoption."
+    ],
+    "open": [
+      "Which single-selection grouped controls use the shared travelling indicator by default or as a presentation option.",
+      "Shared outline treatment and its relation to individual child borders, padding and focus visibility.",
+      "Indicator shape/placement and child-state/geometry integration."
+    ],
+    "research": "Read complete pinned Chakra radio-card and checkbox-card recipes: checked borders/backgrounds/marks are item-local; generic Group does not supply a travelling indicator. This requested Group integration is house design direction, not claimed Chakra behavior.",
+    "dependencies": [
+      "Shared selection-indicator decision",
+      "Group/Toolbar/selection split",
+      "RadioCard/CheckboxCard inventory",
+      "Tabs manual activation/focus",
+      "responsive/RTL/reduced-motion",
+      "house-specific shape changes"
+    ],
+    "singleSelectionClarification": "Peter explicitly limits the shared travelling selected/active indicator to single-selection patterns. Checkbox/multi-selection patterns are excluded.",
+    "outlineProposal": {
+      "status": "User-suggested capability to evaluate",
+      "description": "Optional shared outline around attached children, visually independent from the selected-item highlight. Screenshot shows rounded outer frame and inset rounded selected fill.",
+      "reference": "notes/alignment/evidence/group-outline-reference-2026-09-19.png",
+      "unresolved": "Exact border/corner/inset settings, relation to child borders and attached presentation, theme/focus/forced-colour behavior and public interface."
+    }
+  },
+  "buttonGroupDecision": {
+    "selected": "Use Group",
+    "source": "button_group_default_owner: Use Group (Recommended)",
+    "effect": "General Group provides arrangement and compatible shared appearance defaults. Remove separate ButtonGroup during approved migration.",
+    "open": "Supported common settings, child participation and explicit overrides to be specified; no blind propagation of behaviour properties.",
+    "scope": "Does not automatically remove other specialised groups."
+  },
+  "avatarGroupDecision": {
+    "selected": "Keep Avatar Group",
+    "source": "avatar_group_disposition: Keep Avatar Group (Recommended)",
+    "purpose": "Avatar-family member limits and remaining-member count, composing general Group for shared presentation.",
+    "notSelected": "Exact member/slot API, counting conventions, overflow interaction, empty-list treatment, accessible names and dynamic update contract remain for inventory.",
+    "evidence": [
+      "src/components/avatar-group/avatar-group.ts",
+      "src/components/avatar-group/__tests__/avatar-group.test.ts",
+      "docs-src/pages/components/avatar.ts",
+      "https://vercel.com/geist/avatar",
+      "https://chakra-ui.com/docs/components/avatar",
+      "Chakra pinned avatar-with-overflow.tsx",
+      "Private Pro help-center-collection-03/block.tsx"
+    ],
+    "limits": "Local tests inspected, not rerun. Pro author slice/count code is application-owned and fails for empty author arrays; no house browser acceptance claim."
+  },
+  "inputAddonsDirection": {
+    "source": "Peter: add-ons are effectively visually an attached group; confirmed Great, let's continue.",
+    "scope": "Evaluate/reuse Group attachment and optional outline presentation for external input add-ons; input retains text entry, validation and form behavior; internal start/end stays distinct.",
+    "implementation": "Exact internal reuse/public composition shape remains inventory work; no extra consumer wrapper requirement selected.",
+    "evidence": "Full pinned Chakra package InputGroup automatically enables Group attachment with external addons; current house has start/end and start-addon/end-addon slots."
+  },
+  "activeIndicatorClarification": {
+    "source": "Peter explicitly clarifies Lit Motion should be inside the shared active-indicator component.",
+    "responsibility": "One shared active-indicator component owns indicator movement/resizing through Lit Motion; consuming controls supply selected target/state, no independent indicator animation implementation per control.",
+    "scope": "Single selection only. Exact public exposure/properties/helper architecture remains inventory design.",
+    "requiredOrientations": [
+      "horizontal",
+      "vertical"
+    ],
+    "orientationSource": "Peter explicitly requires both horizontal and vertical indicator animation during records capture."
+  },
+  "segmentedAndTabsDirection": {
+    "requested": "Evaluate Segmented Control built with Radio + Group + shared active indicator; add Tabs variant matching image1 and Segmented presentation matching image2.",
+    "images": [
+      "notes/alignment/evidence/tabs-variant-reference-2026-09-19.png",
+      "notes/alignment/evidence/segmented-control-reference-2026-09-19.png"
+    ],
+    "appearance": "Rounded shared outline, inset rounded selected fill, text and icon examples. Additional Tabs variant; earlier Material primary indicator remains baseline for its treatment.",
+    "research": "Full Chakra SegmentGroup implementation/recipe/docs and all11examples; tabsrecipe; Ark5.39.2 segment hook/root; fullZag1.43.3 radio connector. Chakra uses radio group plus distinct indicator. Selected house uses noZagruntime and internalLitMotion.",
+    "caveat": "Ark SegmentGroup inspected hook/root do not consume Field context; its Field examples therefore do not establish automatic label/error association. Verify house composition explicitly."
+  },
+  "captureStatus": "Decisions, requests and proposals captured in repository records; source implementation unchanged.",
+  "sourceCensus": {
+    "commit": "1ff9873754e9913fc3d849d23c0844a628f5f20d",
+    "files": 3849,
+    "importFiles": 63,
+    "imports": [
+      {
+        "path": "apps/compositions/src/examples/avatar-with-overflow.tsx",
+        "lines": 64,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/badge-with-context.tsx",
+        "lines": 13,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/badge-with-group.tsx",
+        "lines": 15,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/button-with-group-flushed.tsx",
+        "lines": 14,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/button-with-group.tsx",
+        "lines": 11,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/button-with-radius.tsx",
+        "lines": 29,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/button-with-spinner-placement.tsx",
+        "lines": 15,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/button-with-split-menu.tsx",
+        "lines": 37,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/color-swatch-palette.tsx",
+        "lines": 14,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/drawer-with-header-actions.tsx",
+        "lines": 43,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/empty-state-with-action.tsx",
+        "lines": 25,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/group-basic.tsx",
+        "lines": 16,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/group-with-attached.tsx",
+        "lines": 22,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/group-with-button.tsx",
+        "lines": 11,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/group-with-grow.tsx",
+        "lines": 12,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/input-with-card-details.tsx",
+        "lines": 39,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/input-with-end-button.tsx",
+        "lines": 13,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/marquee-with-store.tsx",
+        "lines": 64,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/menu-with-mixed-layout.tsx",
+        "lines": 61,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/pagination-as-link.tsx",
+        "lines": 55,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/pagination-attached.tsx",
+        "lines": 36,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/pagination-basic.tsx",
+        "lines": 33,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/pagination-compact.tsx",
+        "lines": 23,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/pagination-controlled.tsx",
+        "lines": 41,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/pagination-with-content.tsx",
+        "lines": 65,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/pagination-with-count-text.tsx",
+        "lines": 23,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/pagination-with-custom-format.tsx",
+        "lines": 28,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/pagination-with-sibling-count.tsx",
+        "lines": 38,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/pagination-with-sizes.tsx",
+        "lines": 45,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/pagination-with-variants.tsx",
+        "lines": 33,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/pin-input-closed-component.tsx",
+        "lines": 28,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/pin-input-with-separator.tsx",
+        "lines": 23,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/pin-input-with-store.tsx",
+        "lines": 33,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/popover-with-initial-focus.tsx",
+        "lines": 41,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/radio-card-composition.tsx",
+        "lines": 44,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/scroll-area-scroll-to-side.tsx",
+        "lines": 45,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/scroll-area-stick-to-bottom.tsx",
+        "lines": 96,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/steps-basic.tsx",
+        "lines": 49,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/steps-controlled.tsx",
+        "lines": 58,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/steps-explorer-demo.tsx",
+        "lines": 82,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/steps-size-table.tsx",
+        "lines": 99,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/steps-variant-table.tsx",
+        "lines": 102,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/steps-vertical.tsx",
+        "lines": 56,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/steps-with-colors.tsx",
+        "lines": 63,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/steps-with-description.tsx",
+        "lines": 55,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/steps-with-icon.tsx",
+        "lines": 51,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/steps-with-number-only.tsx",
+        "lines": 48,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/steps-with-sizes.tsx",
+        "lines": 56,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/steps-with-store.tsx",
+        "lines": 65,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/steps-with-trigger.tsx",
+        "lines": 51,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/steps-with-validation.tsx",
+        "lines": 146,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/steps-with-variants.tsx",
+        "lines": 57,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/table-with-pagination.tsx",
+        "lines": 70,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/examples/tree-view-expand-collapse-all.tsx",
+        "lines": 114,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/ui/input-group.tsx",
+        "lines": 78,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "apps/compositions/src/ui/pin-input.tsx",
+        "lines": 28,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "apps/www/components/llms-copy-widget.tsx",
+        "lines": 139,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "ButtonGroup",
+            "local": "ButtonGroup"
+          }
+        ]
+      },
+      {
+        "path": "apps/www/components/site/sponsor.section.tsx",
+        "lines": 194,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "packages/react/src/components/avatar/avatar.tsx",
+        "lines": 182,
+        "bindings": [
+          {
+            "module": "../group",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "packages/react/src/components/button/button-group.tsx",
+        "lines": 27,
+        "bindings": [
+          {
+            "module": "../group",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "packages/react/src/components/input-group/input-group.tsx",
+        "lines": 109,
+        "bindings": [
+          {
+            "module": "../group",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "sandbox/vite-jsx/src/components/ui/avatar.jsx",
+        "lines": 50,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      },
+      {
+        "path": "sandbox/vite-jsx/src/components/ui/input-group.jsx",
+        "lines": 40,
+        "bindings": [
+          {
+            "module": "@chakra-ui/react",
+            "original": "Group",
+            "local": "Group"
+          }
+        ]
+      }
+    ],
+    "registryEntries": 58,
+    "registryDuplicates": 54,
+    "registryDifferences": [
+      {
+        "registry": "apps/www/public/compositions/input-group.json",
+        "name": "input-group.tsx",
+        "sourceMatches": [],
+        "candidates": [
+          "apps/compositions/src/ui/input-group.tsx"
+        ],
+        "lines": 54
+      },
+      {
+        "registry": "apps/www/public/compositions/scrubber-input.json",
+        "name": "scrubber-input.tsx",
+        "sourceMatches": [],
+        "candidates": [],
+        "lines": 32
+      },
+      {
+        "registry": "apps/www/public/r/examples/group.json",
+        "name": "group-basic",
+        "sourceMatches": [],
+        "candidates": [
+          "apps/compositions/src/examples/group-basic.tsx"
+        ],
+        "lines": 13
+      },
+      {
+        "registry": "apps/www/public/r/examples/scroll-area.json",
+        "name": "scroll-area-stick-to-bottom",
+        "sourceMatches": [],
+        "candidates": [
+          "apps/compositions/src/examples/scroll-area-stick-to-bottom.tsx"
+        ],
+        "lines": 82
+      }
+    ]
+  },
+  "status": "Records captured; Group review remains in progress",
+  "implementationApproved": false
+}

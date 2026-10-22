@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-research-baseline",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.993Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/build-bundles.json",
+      "destination": "docs/verification/systematization/build-bundles.json",
+      "bytes": 446,
+      "sha256": "4e000f520d9e0aec274329cb638795bcc3aa7ee908304a235a5ae199d7986c87"
+    },
+    {
+      "source": "notes/alignment/evidence/chakra-pro-collection-audit.json",
+      "destination": "docs/verification/systematization/chakra-pro-collection-audit.json",
+      "bytes": 5708,
+      "sha256": "6fe6158377ae0cd91dc28a41e9a9df24ab73d4444fa3a9c2d97556062d0d2daf"
+    },
+    {
+      "source": "notes/alignment/evidence/chakra-pro-review-ledger.json",
+      "destination": "docs/verification/systematization/chakra-pro-review-ledger.json",
+      "bytes": 1089480,
+      "sha256": "997f637c604f879535cbf7788ef9810bea0720630d6b5fcaacc5e4fbe635d84e"
+    },
+    {
+      "source": "notes/alignment/evidence/composition-candidates.json",
+      "destination": "docs/verification/systematization/composition-candidates.json",
+      "bytes": 53840,
+      "sha256": "8f4f8adb718f9c3f393846101417cfda064dc4b2a5a36bc7c8da2fab6b6aad4d"
+    },
+    {
+      "source": "notes/alignment/evidence/extension-capture-verification.json",
+      "destination": "docs/verification/systematization/extension-capture-verification.json",
+      "bytes": 307010,
+      "sha256": "a2d443d6b9be8fa16df7f21b7f3006381e92f5c9a7f049eea21b584a845a0cd6"
+    },
+    {
+      "source": "notes/alignment/evidence/filter-comparison.json",
+      "destination": "docs/verification/systematization/filter-comparison.json",
+      "bytes": 22043,
+      "sha256": "801dae1079895e1a8d6bf97f28fd5314b36bc2e0dcdb91e5f5c65d8490abe5a8"
+    },
+    {
+      "source": "notes/alignment/evidence/package-bundles.json",
+      "destination": "docs/verification/systematization/package-bundles.json",
+      "bytes": 881,
+      "sha256": "90a2c0eb4da041c2fa44d9a28e9cc93324b3a2353d54d1b19b34d8c5b80693e4"
+    },
+    {
+      "source": "notes/alignment/evidence/package-survey.json",
+      "destination": "docs/verification/systematization/package-survey.json",
+      "bytes": 5249,
+      "sha256": "76795fa6e7fa62cf3cafdb9fdff64082d3e65499595b0b8bdfe74bb800e25257"
+    },
+    {
+      "source": "notes/alignment/evidence/protected-files.json",
+      "destination": "docs/verification/systematization/protected-files.json",
+      "bytes": 98252,
+      "sha256": "169dbcb042fc002596ad11c2d8baba70dccc4684ce7df3398f1e1c11e3402aa4"
+    },
+    {
+      "source": "notes/alignment/evidence/token-reachability.json",
+      "destination": "docs/verification/systematization/token-reachability.json",
+      "bytes": 4026,
+      "sha256": "27a10dbcb10794e6c9017a08bb6f8801871fb585b281bd40236260ea8eecf362"
+    },
+    {
+      "source": "notes/alignment/evidence/verification.json",
+      "destination": "docs/verification/systematization/verification.json",
+      "bytes": 1355,
+      "sha256": "4bbc338e90cafc2bb3d9a8647e143087f89b74753e36a73a2a91b61ba78bfa5d"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

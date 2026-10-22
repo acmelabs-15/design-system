@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m09",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.476Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m09-actions-2026-09-21.json",
+      "destination": "docs/verification/systematization/m09-actions-2026-09-21.json",
+      "bytes": 97602,
+      "sha256": "e35f4a0d259989c186a064c8ed5357ec8481a03d78a602e3392e0cb193eabde7"
+    },
+    {
+      "source": "notes/alignment/evidence/m09-glyph-replacement-2026-09-21.json",
+      "destination": "docs/verification/systematization/m09-glyph-replacement-2026-09-21.json",
+      "bytes": 32109,
+      "sha256": "43ca607ee4de054bc7ea3a1433e0e3139f03f9a097b25c595ced134bf2b6997a"
+    },
+    {
+      "source": "notes/alignment/evidence/m09-icon-delivery-2026-09-21.json",
+      "destination": "docs/verification/systematization/m09-icon-delivery-2026-09-21.json",
+      "bytes": 180184,
+      "sha256": "3a5b6bbffa647bfff6976920f9856f12fd1f8de3551504a6c0611fc11f3d3413"
+    },
+    {
+      "source": "notes/alignment/evidence/m09-icon-foundation-2026-09-21.json",
+      "destination": "docs/verification/systematization/m09-icon-foundation-2026-09-21.json",
+      "bytes": 11921,
+      "sha256": "9357886a1e55258d4bf71b9cbd8a4785436a67b681721fbb371726af9bf987a9"
+    },
+    {
+      "source": "notes/alignment/evidence/m09-identity-2026-09-21.json",
+      "destination": "docs/verification/systematization/m09-identity-2026-09-21.json",
+      "bytes": 44203,
+      "sha256": "fce1dc0f4a74ac5e1683371e4d0520f732c27fe91aeda8b7ed2460d5eca4b48b"
+    },
+    {
+      "source": "notes/alignment/evidence/m09-spinner-tile-2026-09-21.json",
+      "destination": "docs/verification/systematization/m09-spinner-tile-2026-09-21.json",
+      "bytes": 15103,
+      "sha256": "0dc5be9fa6ae39c97ac353679c63b42a6093d12f8df58482ef302b8bca6aa6eb"
+    },
+    {
+      "source": "notes/alignment/evidence/m09-submitter-candidate-2026-09-21.json",
+      "destination": "docs/verification/systematization/m09-submitter-candidate-2026-09-21.json",
+      "bytes": 19543,
+      "sha256": "a40ba85d3910a0b97d9757009fc4530c95fb30f96f915a28bc3242505f6f5175"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

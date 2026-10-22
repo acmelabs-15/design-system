@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "typeRoots": [
+      "/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/@types"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "react": [
+        "/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/@types/react"
+      ],
+      "react/*": [
+        "/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/@types/react/*"
+      ],
+      "react-dom/*": [
+        "/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/@types/react-dom/*"
+      ]
+    }
+  },
+  "include": [
+    "app.tsx"
+  ]
+}

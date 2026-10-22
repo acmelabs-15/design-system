@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-10-20T21:49:00.023Z",
+  "sourceTree": "091eca0366d04993f78c731518a4ecd29c78cf4d",
+  "builds": [
+    {
+      "run": 39495252945,
+      "commit": "e61c09cbf98d8a12550c82b70b7bea2a8ea75cda",
+      "artifactId": 12299795197,
+      "artifactZipSha256": "ef0489b19dd7d0f6feab04a07d2cf828c605cfa60c6cb723ed00835f253b43a7"
+    },
+    {
+      "run": 39499520613,
+      "commit": "6ec538e70f3874d7543ce81816abc290dca60e6b",
+      "artifactId": 12301416721,
+      "artifactZipSha256": "08c9d111475dc94e7ddf8c2108f97cc6d8c305a59c4f9bbccfe1298df8281009"
+    }
+  ],
+  "packages": [
+    {
+      "name": "@acmelabs/design-system",
+      "version": "0.3.2",
+      "filename": "acmelabs-design-system-0.3.2.tgz",
+      "sha512": "236e2c4b02b723d44aa4eab3171c15cc5b3bbba40c3b3da2d7989d664b16c6dca1e89a36b9819f3d5fbadf8b1892d83bcd5a81fa60413776f7294cd9020af796",
+      "blockers": []
+    },
+    {
+      "name": "@acmelabs/design-system-react",
+      "version": "0.3.2",
+      "filename": "acmelabs-design-system-react-0.3.2.tgz",
+      "sha512": "423f14f868b30dd7c81648eefd4c54384c4d3fcbc71c9fefa28172ec4c6e139ddf519f136a34b7f0915096e2dfa53a4d97c3a2d435ffa36d6ceb3c7ca22a302a",
+      "blockers": []
+    },
+    {
+      "name": "@acmelabs/design-system-devtools",
+      "version": "0.3.2",
+      "filename": "acmelabs-design-system-devtools-0.3.2.tgz",
+      "sha512": "1f54cf7c4f80de3461a77fd869a1597836efbbcfb38a129b3258ffe760a7f33923db34337aa7dc6654ae528b84afc1ad170bdadc6b8e5d7bf54308971ac6f939",
+      "blockers": []
+    },
+    {
+      "name": "@acmelabs/design-system-mcp",
+      "version": "0.3.2",
+      "filename": "acmelabs-design-system-mcp-0.3.2.tgz",
+      "sha512": "27dff9404570a98143496fc7a46ec7bf09049fdb0ddce593dbf07c1b5c7001063f517450ab7d251602d988f8367226acd08955720aec268cecb71c2666cf49b5",
+      "blockers": []
+    },
+    {
+      "name": "@acmelabs/design-system-browser",
+      "version": "0.3.2",
+      "filename": "acmelabs-design-system-browser-0.3.2.tgz",
+      "sha512": "71c26b1ea907fff8087c394a930697d61c49fb61cc00034e65f6beb77d3edf0525161e9c8bc2300393d1347821079e93653974f311f38211bec618b2a759e794",
+      "blockers": []
+    }
+  ],
+  "result": "All five actual archives are byte-identical across independent clean Linux builds of the same verified source tree"
+}

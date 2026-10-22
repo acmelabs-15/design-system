@@ -1,0 +1,1673 @@
+{
+  "date": "2026-09-22",
+  "batch": "M11 Field",
+  "status": "complete at the Field/selection/native-control boundary; new text controls integrate next",
+  "native": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "Field names its one logical control through the semantic owner",
+            "ok": true
+          },
+          {
+            "name": "Field help supplements existing external descriptions",
+            "ok": true
+          },
+          {
+            "name": "active Field error is described and shown as presentation",
+            "ok": true
+          },
+          {
+            "name": "clearing the error retains other descriptions",
+            "ok": true
+          },
+          {
+            "name": "Field disability updates native input and submission before render without overwriting own disabled",
+            "ok": true
+          },
+          {
+            "name": "clearing Field disability restores participation",
+            "ok": true
+          },
+          {
+            "name": "own disabled remains authoritative when the Field enables",
+            "ok": true
+          },
+          {
+            "name": "a composite registers once and receives the group name",
+            "ok": true
+          },
+          {
+            "name": "individual radio labels remain independent",
+            "ok": true
+          },
+          {
+            "name": "ambiguous controls receive no accidental shared label",
+            "ok": true
+          },
+          {
+            "name": "removing the second control restores the single association",
+            "ok": true
+          },
+          {
+            "name": "moving the control releases old Field metadata",
+            "ok": true
+          },
+          {
+            "name": "required and optional flags are mutually exclusive",
+            "ok": true
+          },
+          {
+            "name": "horizontal layout and optional presentation render without value ownership",
+            "ok": true
+          },
+          {
+            "name": "same-Field reordering reconnects the existing association",
+            "ok": true
+          },
+          {
+            "name": "native select gets the Field name and retains unresolved external descriptions",
+            "ok": true
+          },
+          {
+            "name": "native references follow an authored label ID change",
+            "ok": true
+          },
+          {
+            "name": "late external descriptions still resolve natively",
+            "ok": true
+          },
+          {
+            "name": "native Field disability synchronizes before submission",
+            "ok": true
+          },
+          {
+            "name": "latest native own disabled intent survives clearing Field disability in the same task",
+            "ok": true
+          },
+          {
+            "name": "native invalid presentation keeps constraint validity independent",
+            "ok": true
+          },
+          {
+            "name": "native clearing preserves other descriptions",
+            "ok": true
+          },
+          {
+            "name": "Field label focuses and activates a checked control once",
+            "ok": true
+          },
+          {
+            "name": "group Field label focuses its entry without selecting",
+            "ok": true
+          },
+          {
+            "name": "native Field label focuses its native select",
+            "ok": true
+          },
+          {
+            "name": "accessibility names the checkbox and the logical radio group",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "Field names its one logical control through the semantic owner",
+            "ok": true
+          },
+          {
+            "name": "Field help supplements existing external descriptions",
+            "ok": true
+          },
+          {
+            "name": "active Field error is described and shown as presentation",
+            "ok": true
+          },
+          {
+            "name": "clearing the error retains other descriptions",
+            "ok": true
+          },
+          {
+            "name": "Field disability updates native input and submission before render without overwriting own disabled",
+            "ok": true
+          },
+          {
+            "name": "clearing Field disability restores participation",
+            "ok": true
+          },
+          {
+            "name": "own disabled remains authoritative when the Field enables",
+            "ok": true
+          },
+          {
+            "name": "a composite registers once and receives the group name",
+            "ok": true
+          },
+          {
+            "name": "individual radio labels remain independent",
+            "ok": true
+          },
+          {
+            "name": "ambiguous controls receive no accidental shared label",
+            "ok": true
+          },
+          {
+            "name": "removing the second control restores the single association",
+            "ok": true
+          },
+          {
+            "name": "moving the control releases old Field metadata",
+            "ok": true
+          },
+          {
+            "name": "required and optional flags are mutually exclusive",
+            "ok": true
+          },
+          {
+            "name": "horizontal layout and optional presentation render without value ownership",
+            "ok": true
+          },
+          {
+            "name": "same-Field reordering reconnects the existing association",
+            "ok": true
+          },
+          {
+            "name": "native select gets the Field name and retains unresolved external descriptions",
+            "ok": true
+          },
+          {
+            "name": "native references follow an authored label ID change",
+            "ok": true
+          },
+          {
+            "name": "late external descriptions still resolve natively",
+            "ok": true
+          },
+          {
+            "name": "native Field disability synchronizes before submission",
+            "ok": true
+          },
+          {
+            "name": "latest native own disabled intent survives clearing Field disability in the same task",
+            "ok": true
+          },
+          {
+            "name": "native invalid presentation keeps constraint validity independent",
+            "ok": true
+          },
+          {
+            "name": "native clearing preserves other descriptions",
+            "ok": true
+          },
+          {
+            "name": "Field label focuses and activates a checked control once",
+            "ok": true
+          },
+          {
+            "name": "group Field label focuses its entry without selecting",
+            "ok": true
+          },
+          {
+            "name": "native Field label focuses its native select",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "Field names its one logical control through the semantic owner",
+            "ok": true
+          },
+          {
+            "name": "Field help supplements existing external descriptions",
+            "ok": true
+          },
+          {
+            "name": "active Field error is described and shown as presentation",
+            "ok": true
+          },
+          {
+            "name": "clearing the error retains other descriptions",
+            "ok": true
+          },
+          {
+            "name": "Field disability updates native input and submission before render without overwriting own disabled",
+            "ok": true
+          },
+          {
+            "name": "clearing Field disability restores participation",
+            "ok": true
+          },
+          {
+            "name": "own disabled remains authoritative when the Field enables",
+            "ok": true
+          },
+          {
+            "name": "a composite registers once and receives the group name",
+            "ok": true
+          },
+          {
+            "name": "individual radio labels remain independent",
+            "ok": true
+          },
+          {
+            "name": "ambiguous controls receive no accidental shared label",
+            "ok": true
+          },
+          {
+            "name": "removing the second control restores the single association",
+            "ok": true
+          },
+          {
+            "name": "moving the control releases old Field metadata",
+            "ok": true
+          },
+          {
+            "name": "required and optional flags are mutually exclusive",
+            "ok": true
+          },
+          {
+            "name": "horizontal layout and optional presentation render without value ownership",
+            "ok": true
+          },
+          {
+            "name": "same-Field reordering reconnects the existing association",
+            "ok": true
+          },
+          {
+            "name": "native select gets the Field name and retains unresolved external descriptions",
+            "ok": true
+          },
+          {
+            "name": "native references follow an authored label ID change",
+            "ok": true
+          },
+          {
+            "name": "late external descriptions still resolve natively",
+            "ok": true
+          },
+          {
+            "name": "native Field disability synchronizes before submission",
+            "ok": true
+          },
+          {
+            "name": "latest native own disabled intent survives clearing Field disability in the same task",
+            "ok": true
+          },
+          {
+            "name": "native invalid presentation keeps constraint validity independent",
+            "ok": true
+          },
+          {
+            "name": "native clearing preserves other descriptions",
+            "ok": true
+          },
+          {
+            "name": "Field label focuses and activates a checked control once",
+            "ok": true
+          },
+          {
+            "name": "group Field label focuses its entry without selecting",
+            "ok": true
+          },
+          {
+            "name": "native Field label focuses its native select",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "regressions": {
+    "checkboxGroup": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "empty group has no implicit selected member",
+              "ok": true
+            },
+            {
+              "name": "one owner submits each selected member once before render",
+              "ok": true
+            },
+            {
+              "name": "group values project native and painted checked state",
+              "ok": true
+            },
+            {
+              "name": "contained user action becomes one root change",
+              "ok": true
+            },
+            {
+              "name": "member property writes update the same owner without user events",
+              "ok": true
+            },
+            {
+              "name": "native reset restores root defaults and current member projection",
+              "ok": true
+            },
+            {
+              "name": "aggregate required means one choice rather than every checkbox",
+              "ok": true
+            },
+            {
+              "name": "any enabled member satisfies the aggregate requirement",
+              "ok": true
+            },
+            {
+              "name": "group disability reaches native targets without changing child inputs",
+              "ok": true
+            },
+            {
+              "name": "re-enabling restores the canonical selection",
+              "ok": true
+            },
+            {
+              "name": "disabled member values are omitted and do not satisfy required",
+              "ok": true
+            },
+            {
+              "name": "group supplies default member size through the shared appearance model",
+              "ok": true
+            },
+            {
+              "name": "authored member size stays independent of group defaults",
+              "ok": true
+            },
+            {
+              "name": "clearing a member override resumes group size",
+              "ok": true
+            },
+            {
+              "name": "changing a member value updates native entries immediately",
+              "ok": true
+            },
+            {
+              "name": "duplicate member values invalidate the group without duplicate data",
+              "ok": true
+            },
+            {
+              "name": "form entries follow current member order",
+              "ok": true
+            },
+            {
+              "name": "removed members stop submitting while their explicit root value remains",
+              "ok": true
+            },
+            {
+              "name": "leaving a group transfers the visible state to standalone ownership",
+              "ok": true
+            },
+            {
+              "name": "external form owns only the group entries",
+              "ok": true
+            },
+            {
+              "name": "nested selection owners do not steal each other members or events",
+              "ok": true
+            },
+            {
+              "name": "canonical values and form entries are current for native input observers",
+              "ok": true
+            },
+            {
+              "name": "attached Checkbox Cards share Group appearance over collection defaults",
+              "ok": true
+            },
+            {
+              "name": "Group joins the actual card border surfaces",
+              "ok": true
+            },
+            {
+              "name": "card heading and description name the native control",
+              "ok": true
+            },
+            {
+              "name": "independent action does not select the card",
+              "ok": true
+            },
+            {
+              "name": "whole-card native label selects once through its collection",
+              "ok": true
+            },
+            {
+              "name": "selected card retains its emphasized border in the outer frame",
+              "ok": true
+            },
+            {
+              "name": "multiple selection has no travelling indicator",
+              "ok": true
+            },
+            {
+              "name": "small cards retain their label type size",
+              "ok": true
+            },
+            {
+              "name": "group focus skips hidden members",
+              "ok": true
+            },
+            {
+              "name": "late forwarded slot acquires its logical selection owner",
+              "ok": true
+            },
+            {
+              "name": "removing a projected owner releases the still-connected member",
+              "ok": true
+            },
+            {
+              "name": "independent action-region controls keep their own state",
+              "ok": true
+            },
+            {
+              "name": "independent action notifications do not masquerade as selection changes",
+              "ok": true
+            },
+            {
+              "name": "default card content names the control without repeating its description",
+              "ok": true
+            },
+            {
+              "name": "requested stretch joins cards with equal actual surface heights",
+              "ok": true
+            },
+            {
+              "name": "trusted independent action leaves selection unchanged",
+              "ok": true
+            },
+            {
+              "name": "trusted whole-card click selects its value",
+              "ok": true
+            },
+            {
+              "name": "trusted keyboard activation preserves one selection owner",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "empty group has no implicit selected member",
+              "ok": true
+            },
+            {
+              "name": "one owner submits each selected member once before render",
+              "ok": true
+            },
+            {
+              "name": "group values project native and painted checked state",
+              "ok": true
+            },
+            {
+              "name": "contained user action becomes one root change",
+              "ok": true
+            },
+            {
+              "name": "member property writes update the same owner without user events",
+              "ok": true
+            },
+            {
+              "name": "native reset restores root defaults and current member projection",
+              "ok": true
+            },
+            {
+              "name": "aggregate required means one choice rather than every checkbox",
+              "ok": true
+            },
+            {
+              "name": "any enabled member satisfies the aggregate requirement",
+              "ok": true
+            },
+            {
+              "name": "group disability reaches native targets without changing child inputs",
+              "ok": true
+            },
+            {
+              "name": "re-enabling restores the canonical selection",
+              "ok": true
+            },
+            {
+              "name": "disabled member values are omitted and do not satisfy required",
+              "ok": true
+            },
+            {
+              "name": "group supplies default member size through the shared appearance model",
+              "ok": true
+            },
+            {
+              "name": "authored member size stays independent of group defaults",
+              "ok": true
+            },
+            {
+              "name": "clearing a member override resumes group size",
+              "ok": true
+            },
+            {
+              "name": "changing a member value updates native entries immediately",
+              "ok": true
+            },
+            {
+              "name": "duplicate member values invalidate the group without duplicate data",
+              "ok": true
+            },
+            {
+              "name": "form entries follow current member order",
+              "ok": true
+            },
+            {
+              "name": "removed members stop submitting while their explicit root value remains",
+              "ok": true
+            },
+            {
+              "name": "leaving a group transfers the visible state to standalone ownership",
+              "ok": true
+            },
+            {
+              "name": "external form owns only the group entries",
+              "ok": true
+            },
+            {
+              "name": "nested selection owners do not steal each other members or events",
+              "ok": true
+            },
+            {
+              "name": "canonical values and form entries are current for native input observers",
+              "ok": true
+            },
+            {
+              "name": "attached Checkbox Cards share Group appearance over collection defaults",
+              "ok": true
+            },
+            {
+              "name": "Group joins the actual card border surfaces",
+              "ok": true
+            },
+            {
+              "name": "card heading and description name the native control",
+              "ok": true
+            },
+            {
+              "name": "independent action does not select the card",
+              "ok": true
+            },
+            {
+              "name": "whole-card native label selects once through its collection",
+              "ok": true
+            },
+            {
+              "name": "selected card retains its emphasized border in the outer frame",
+              "ok": true
+            },
+            {
+              "name": "multiple selection has no travelling indicator",
+              "ok": true
+            },
+            {
+              "name": "small cards retain their label type size",
+              "ok": true
+            },
+            {
+              "name": "group focus skips hidden members",
+              "ok": true
+            },
+            {
+              "name": "late forwarded slot acquires its logical selection owner",
+              "ok": true
+            },
+            {
+              "name": "removing a projected owner releases the still-connected member",
+              "ok": true
+            },
+            {
+              "name": "independent action-region controls keep their own state",
+              "ok": true
+            },
+            {
+              "name": "independent action notifications do not masquerade as selection changes",
+              "ok": true
+            },
+            {
+              "name": "default card content names the control without repeating its description",
+              "ok": true
+            },
+            {
+              "name": "requested stretch joins cards with equal actual surface heights",
+              "ok": true
+            },
+            {
+              "name": "trusted independent action leaves selection unchanged",
+              "ok": true
+            },
+            {
+              "name": "trusted whole-card click selects its value",
+              "ok": true
+            },
+            {
+              "name": "trusted keyboard activation preserves one selection owner",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "empty group has no implicit selected member",
+              "ok": true
+            },
+            {
+              "name": "one owner submits each selected member once before render",
+              "ok": true
+            },
+            {
+              "name": "group values project native and painted checked state",
+              "ok": true
+            },
+            {
+              "name": "contained user action becomes one root change",
+              "ok": true
+            },
+            {
+              "name": "member property writes update the same owner without user events",
+              "ok": true
+            },
+            {
+              "name": "native reset restores root defaults and current member projection",
+              "ok": true
+            },
+            {
+              "name": "aggregate required means one choice rather than every checkbox",
+              "ok": true
+            },
+            {
+              "name": "any enabled member satisfies the aggregate requirement",
+              "ok": true
+            },
+            {
+              "name": "group disability reaches native targets without changing child inputs",
+              "ok": true
+            },
+            {
+              "name": "re-enabling restores the canonical selection",
+              "ok": true
+            },
+            {
+              "name": "disabled member values are omitted and do not satisfy required",
+              "ok": true
+            },
+            {
+              "name": "group supplies default member size through the shared appearance model",
+              "ok": true
+            },
+            {
+              "name": "authored member size stays independent of group defaults",
+              "ok": true
+            },
+            {
+              "name": "clearing a member override resumes group size",
+              "ok": true
+            },
+            {
+              "name": "changing a member value updates native entries immediately",
+              "ok": true
+            },
+            {
+              "name": "duplicate member values invalidate the group without duplicate data",
+              "ok": true
+            },
+            {
+              "name": "form entries follow current member order",
+              "ok": true
+            },
+            {
+              "name": "removed members stop submitting while their explicit root value remains",
+              "ok": true
+            },
+            {
+              "name": "leaving a group transfers the visible state to standalone ownership",
+              "ok": true
+            },
+            {
+              "name": "external form owns only the group entries",
+              "ok": true
+            },
+            {
+              "name": "nested selection owners do not steal each other members or events",
+              "ok": true
+            },
+            {
+              "name": "canonical values and form entries are current for native input observers",
+              "ok": true
+            },
+            {
+              "name": "attached Checkbox Cards share Group appearance over collection defaults",
+              "ok": true
+            },
+            {
+              "name": "Group joins the actual card border surfaces",
+              "ok": true
+            },
+            {
+              "name": "card heading and description name the native control",
+              "ok": true
+            },
+            {
+              "name": "independent action does not select the card",
+              "ok": true
+            },
+            {
+              "name": "whole-card native label selects once through its collection",
+              "ok": true
+            },
+            {
+              "name": "selected card retains its emphasized border in the outer frame",
+              "ok": true
+            },
+            {
+              "name": "multiple selection has no travelling indicator",
+              "ok": true
+            },
+            {
+              "name": "small cards retain their label type size",
+              "ok": true
+            },
+            {
+              "name": "group focus skips hidden members",
+              "ok": true
+            },
+            {
+              "name": "late forwarded slot acquires its logical selection owner",
+              "ok": true
+            },
+            {
+              "name": "removing a projected owner releases the still-connected member",
+              "ok": true
+            },
+            {
+              "name": "independent action-region controls keep their own state",
+              "ok": true
+            },
+            {
+              "name": "independent action notifications do not masquerade as selection changes",
+              "ok": true
+            },
+            {
+              "name": "default card content names the control without repeating its description",
+              "ok": true
+            },
+            {
+              "name": "requested stretch joins cards with equal actual surface heights",
+              "ok": true
+            },
+            {
+              "name": "trusted independent action leaves selection unchanged",
+              "ok": true
+            },
+            {
+              "name": "trusted whole-card click selects its value",
+              "ok": true
+            },
+            {
+              "name": "trusted keyboard activation preserves one selection owner",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "radio": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "Radio Group starts with no implicit choice",
+              "ok": true
+            },
+            {
+              "name": "one enabled member starts in the tab sequence",
+              "ok": true
+            },
+            {
+              "name": "one group owner submits synchronously",
+              "ok": true
+            },
+            {
+              "name": "native and painted selection follow the owner",
+              "ok": true
+            },
+            {
+              "name": "one user selection emits only the root value event",
+              "ok": true
+            },
+            {
+              "name": "activating the selected member emits no change",
+              "ok": true
+            },
+            {
+              "name": "native reset restores the separate default selection",
+              "ok": true
+            },
+            {
+              "name": "required group is invalid until a choice is supplied",
+              "ok": true
+            },
+            {
+              "name": "selection satisfies aggregate native validity",
+              "ok": true
+            },
+            {
+              "name": "group disability reaches inputs without overwriting own disabled values",
+              "ok": true
+            },
+            {
+              "name": "disabled selected value follows native omission and required semantics",
+              "ok": true
+            },
+            {
+              "name": "external association moves the one group value",
+              "ok": true
+            },
+            {
+              "name": "standalone names group within one form and preserve other forms",
+              "ok": true
+            },
+            {
+              "name": "standalone required state covers all same-name peers",
+              "ok": true
+            },
+            {
+              "name": "a peer selection satisfies the native radio requirement",
+              "ok": true
+            },
+            {
+              "name": "standalone grouping respects tree scope",
+              "ok": true
+            },
+            {
+              "name": "Radio Card actions do not select",
+              "ok": true
+            },
+            {
+              "name": "whole-card activation keeps one scalar owner",
+              "ok": true
+            },
+            {
+              "name": "Radio Card exposes no checkbox-only state",
+              "ok": true
+            },
+            {
+              "name": "unknown values do not invent a selected member or successful entry",
+              "ok": true
+            },
+            {
+              "name": "duplicate values invalidate without duplicating submission",
+              "ok": true
+            },
+            {
+              "name": "a hidden selected member does not remove the visible tab entry",
+              "ok": true
+            },
+            {
+              "name": "showing a changed hidden group restores one tab entry",
+              "ok": true
+            },
+            {
+              "name": "indicator styling can move the marker before card content",
+              "ok": true
+            },
+            {
+              "name": "hiding the indicator preserves a real focusable control",
+              "ok": true
+            },
+            {
+              "name": "automatic peer unchecking preserves native pristine/default behavior",
+              "ok": true
+            },
+            {
+              "name": "medium radio retains the 16px ring and 8px dot",
+              "ok": true
+            },
+            {
+              "name": "trusted arrow selects the next enabled radio",
+              "ok": true
+            },
+            {
+              "name": "arrows wrap and skip disabled members",
+              "ok": true
+            },
+            {
+              "name": "horizontal radio keys follow live RTL direction",
+              "ok": true
+            },
+            {
+              "name": "loop=false stops at the enabled edge",
+              "ok": true
+            },
+            {
+              "name": "Toolbar receives the key without a radio selection change",
+              "ok": true
+            },
+            {
+              "name": "indicator-free Radio Card still selects from the keyboard",
+              "ok": true
+            },
+            {
+              "name": "native accessibility exposes one named radio group and its checked choice",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "Radio Group starts with no implicit choice",
+              "ok": true
+            },
+            {
+              "name": "one enabled member starts in the tab sequence",
+              "ok": true
+            },
+            {
+              "name": "one group owner submits synchronously",
+              "ok": true
+            },
+            {
+              "name": "native and painted selection follow the owner",
+              "ok": true
+            },
+            {
+              "name": "one user selection emits only the root value event",
+              "ok": true
+            },
+            {
+              "name": "activating the selected member emits no change",
+              "ok": true
+            },
+            {
+              "name": "native reset restores the separate default selection",
+              "ok": true
+            },
+            {
+              "name": "required group is invalid until a choice is supplied",
+              "ok": true
+            },
+            {
+              "name": "selection satisfies aggregate native validity",
+              "ok": true
+            },
+            {
+              "name": "group disability reaches inputs without overwriting own disabled values",
+              "ok": true
+            },
+            {
+              "name": "disabled selected value follows native omission and required semantics",
+              "ok": true
+            },
+            {
+              "name": "external association moves the one group value",
+              "ok": true
+            },
+            {
+              "name": "standalone names group within one form and preserve other forms",
+              "ok": true
+            },
+            {
+              "name": "standalone required state covers all same-name peers",
+              "ok": true
+            },
+            {
+              "name": "a peer selection satisfies the native radio requirement",
+              "ok": true
+            },
+            {
+              "name": "standalone grouping respects tree scope",
+              "ok": true
+            },
+            {
+              "name": "Radio Card actions do not select",
+              "ok": true
+            },
+            {
+              "name": "whole-card activation keeps one scalar owner",
+              "ok": true
+            },
+            {
+              "name": "Radio Card exposes no checkbox-only state",
+              "ok": true
+            },
+            {
+              "name": "unknown values do not invent a selected member or successful entry",
+              "ok": true
+            },
+            {
+              "name": "duplicate values invalidate without duplicating submission",
+              "ok": true
+            },
+            {
+              "name": "a hidden selected member does not remove the visible tab entry",
+              "ok": true
+            },
+            {
+              "name": "showing a changed hidden group restores one tab entry",
+              "ok": true
+            },
+            {
+              "name": "indicator styling can move the marker before card content",
+              "ok": true
+            },
+            {
+              "name": "hiding the indicator preserves a real focusable control",
+              "ok": true
+            },
+            {
+              "name": "automatic peer unchecking preserves native pristine/default behavior",
+              "ok": true
+            },
+            {
+              "name": "medium radio retains the 16px ring and 8px dot",
+              "ok": true
+            },
+            {
+              "name": "trusted arrow selects the next enabled radio",
+              "ok": true
+            },
+            {
+              "name": "arrows wrap and skip disabled members",
+              "ok": true
+            },
+            {
+              "name": "horizontal radio keys follow live RTL direction",
+              "ok": true
+            },
+            {
+              "name": "loop=false stops at the enabled edge",
+              "ok": true
+            },
+            {
+              "name": "Toolbar receives the key without a radio selection change",
+              "ok": true
+            },
+            {
+              "name": "indicator-free Radio Card still selects from the keyboard",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "Radio Group starts with no implicit choice",
+              "ok": true
+            },
+            {
+              "name": "one enabled member starts in the tab sequence",
+              "ok": true
+            },
+            {
+              "name": "one group owner submits synchronously",
+              "ok": true
+            },
+            {
+              "name": "native and painted selection follow the owner",
+              "ok": true
+            },
+            {
+              "name": "one user selection emits only the root value event",
+              "ok": true
+            },
+            {
+              "name": "activating the selected member emits no change",
+              "ok": true
+            },
+            {
+              "name": "native reset restores the separate default selection",
+              "ok": true
+            },
+            {
+              "name": "required group is invalid until a choice is supplied",
+              "ok": true
+            },
+            {
+              "name": "selection satisfies aggregate native validity",
+              "ok": true
+            },
+            {
+              "name": "group disability reaches inputs without overwriting own disabled values",
+              "ok": true
+            },
+            {
+              "name": "disabled selected value follows native omission and required semantics",
+              "ok": true
+            },
+            {
+              "name": "external association moves the one group value",
+              "ok": true
+            },
+            {
+              "name": "standalone names group within one form and preserve other forms",
+              "ok": true
+            },
+            {
+              "name": "standalone required state covers all same-name peers",
+              "ok": true
+            },
+            {
+              "name": "a peer selection satisfies the native radio requirement",
+              "ok": true
+            },
+            {
+              "name": "standalone grouping respects tree scope",
+              "ok": true
+            },
+            {
+              "name": "Radio Card actions do not select",
+              "ok": true
+            },
+            {
+              "name": "whole-card activation keeps one scalar owner",
+              "ok": true
+            },
+            {
+              "name": "Radio Card exposes no checkbox-only state",
+              "ok": true
+            },
+            {
+              "name": "unknown values do not invent a selected member or successful entry",
+              "ok": true
+            },
+            {
+              "name": "duplicate values invalidate without duplicating submission",
+              "ok": true
+            },
+            {
+              "name": "a hidden selected member does not remove the visible tab entry",
+              "ok": true
+            },
+            {
+              "name": "showing a changed hidden group restores one tab entry",
+              "ok": true
+            },
+            {
+              "name": "indicator styling can move the marker before card content",
+              "ok": true
+            },
+            {
+              "name": "hiding the indicator preserves a real focusable control",
+              "ok": true
+            },
+            {
+              "name": "automatic peer unchecking preserves native pristine/default behavior",
+              "ok": true
+            },
+            {
+              "name": "medium radio retains the 16px ring and 8px dot",
+              "ok": true
+            },
+            {
+              "name": "trusted arrow selects the next enabled radio",
+              "ok": true
+            },
+            {
+              "name": "arrows wrap and skip disabled members",
+              "ok": true
+            },
+            {
+              "name": "horizontal radio keys follow live RTL direction",
+              "ok": true
+            },
+            {
+              "name": "loop=false stops at the enabled edge",
+              "ok": true
+            },
+            {
+              "name": "Toolbar receives the key without a radio selection change",
+              "ok": true
+            },
+            {
+              "name": "indicator-free Radio Card still selects from the keyboard",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    }
+  },
+  "verification": {
+    "typecheck": "877 files, zero errors",
+    "unit": "901 pass, zero fail across 140 files",
+    "build": "37,777 modules; 120 compiled templates; 4,257 public elements",
+    "docs": "94 pages, zero undocumented elements; invalid/submit/reset/group-label actions pass per engine",
+    "native": "26 Chromium and 25 Firefox/WebKit source and compiled checks"
+  },
+  "implementation": [
+    "Refine the existing FieldRegistry and FieldAssociation. One logical registered value owner receives the association; ambiguous controls receive none. Ownership transfers release the previous Field before applying the next one.",
+    "Association returns owned semantic defaults rather than writing over the semantic controller. Public slot elements provide native references; scoped text mirrors handle the remaining text/reference boundary.",
+    "Native form context excludes a Field-disabled control from submission and active validation without rewriting its own disabled setting or losing its current value. Root groups propagate effective disability through their existing member protocol.",
+    "Native input/select/textarea adapters retain authored descriptions, native validation and their own disabled intent, including same-task changes before clearing Field disability.",
+    "required/optional are mutually exclusive label presentation; control required/native validity remains explicit. invalid adds presentation and an error description without inventing native invalidity.",
+    "Field consumes one group root, preserving option labels. Selection cards retain their own descriptions alongside Field help/errors."
+  ],
+  "limits": [
+    "Generated React reconciliation/adapter acceptance remains M22.",
+    "Structural native-control attribute changes settle through their observers; Field property changes and control submission synchronization are immediate.",
+    "Actual speech output and final library-wide acceptance remain M26."
+  ],
+  "sources": [
+    {
+      "file": "src/components/field/field.ts",
+      "sha256": "1f3d241017444d8f0a415d8537b803382daf58ce469c9eb713686d9171a8f381"
+    },
+    {
+      "file": "src/shared/field-association.ts",
+      "sha256": "e1a2b2ea4fc083f13c4b851ada904083005ecfa3866725fa20c7e59cd0819e4d"
+    },
+    {
+      "file": "src/shared/field-control.ts",
+      "sha256": "1ce415763ce1c41c2a069d2eb40b5824cca80ae88d5210f4f8f963a2ff3a939d"
+    },
+    {
+      "file": "src/shared/native-field-control.ts",
+      "sha256": "caab4aa1b0f081d1e8043fbe9542c56c98eda59555250f5120d1b016e478fdb2"
+    },
+    {
+      "file": "src/shared/native-form.ts",
+      "sha256": "0560e7189a2364a20a728f3233089094bbdd6cb492042d847c7816687ac62f46"
+    },
+    {
+      "file": "src/shared/native-form-element.ts",
+      "sha256": "9a23600fe4dfc13102d5b9e6aa003874c839adbf086aae6ca583e286058762b1"
+    }
+  ],
+  "fixtures": [
+    {
+      "file": "probe.ts",
+      "source": "import {AcmeField} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/field/field';\nimport {AcmeCheckbox} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/checkbox/checkbox';\nimport {AcmeRadioGroup} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/radio-group/radio-group';\nimport {AcmeRadio} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/radio/radio';\nimport {AcmeCheckIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/icons/classes/check-icon';\nimport {AcmeRemoveIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/icons/classes/remove-icon';\ncustomElements.define('acme-field',AcmeField);customElements.define('acme-checkbox',AcmeCheckbox);customElements.define('acme-radio-group',AcmeRadioGroup);customElements.define('acme-radio',AcmeRadio);customElements.define('acme-check-icon',AcmeCheckIcon);customElements.define('acme-remove-icon',AcmeRemoveIcon);\nconst results:any[]=[];const check=(name:string,ok:boolean)=>results.push({name,ok});const wait=async(n=4)=>{while(n--)await new Promise(r=>requestAnimationFrame(r));};\nconst form=document.createElement('form');form.innerHTML='<span id=\"external-help\">External help</span><acme-field id=\"field\"><span slot=\"label\">Notifications</span><acme-checkbox name=\"notifications\" aria-describedby=\"external-help\"></acme-checkbox><span slot=\"help\">Choose what to receive.</span><span slot=\"error\">Review your selection.</span></acme-field>';document.body.append(form);const field=form.querySelector('acme-field')!,control=form.querySelector('acme-checkbox')!,input=()=>control.shadowRoot!.querySelector('input')!;\ntry{await wait();const label=field.querySelector('[slot=label]')!,help=field.querySelector('[slot=help]')!,error=field.querySelector('[slot=error]')!;check('Field names its one logical control through the semantic owner',input().ariaLabelledByElements?.[0]===label);check('Field help supplements existing external descriptions',input().ariaDescribedByElements?.includes(help)===true&&input().ariaDescribedByElements?.includes(form.querySelector('#external-help')!)===true);field.invalid=true;await wait();check('active Field error is described and shown as presentation',input().ariaDescribedByElements?.includes(error)===true&&input().getAttribute('aria-invalid')==='true'&&control.validity.valid);field.invalid=false;await wait();check('clearing the error retains other descriptions',!input().ariaDescribedByElements?.includes(error)&&input().ariaDescribedByElements?.includes(help)===true);\ncontrol.checked=true;field.disabled=true;check('Field disability updates native input and submission before render without overwriting own disabled',input().disabled&&!control.disabled&&!new FormData(form).has('notifications')&&!control.willValidate);field.disabled=false;check('clearing Field disability restores participation',!input().disabled&&new FormData(form).get('notifications')==='on');control.disabled=true;field.disabled=true;field.disabled=false;check('own disabled remains authoritative when the Field enables',control.disabled&&input().disabled);control.disabled=false;control.checked=false;\nconst groupField=new AcmeField();groupField.id='group-field';groupField.innerHTML='<span slot=\"label\">Plan</span><acme-radio-group><acme-radio value=\"one\">One</acme-radio><acme-radio value=\"two\">Two</acme-radio></acme-radio-group><span slot=\"help\">Choose a plan.</span>';form.append(groupField);await wait();const group=groupField.querySelector('acme-radio-group')!,groupRoot=group.shadowRoot!.querySelector<HTMLElement>('[part=root]')!;check('a composite registers once and receives the group name',groupRoot.ariaLabelledByElements?.[0]===groupField.querySelector('[slot=label]'));check('individual radio labels remain independent',group.querySelector('acme-radio')!.shadowRoot!.querySelector('input')!.ariaLabelledByElements?.[0]?.getAttribute('part')==='label');\nconst second=new AcmeCheckbox();field.append(second);await wait();check('ambiguous controls receive no accidental shared label',!input().ariaLabelledByElements?.includes(label));second.remove();await wait();check('removing the second control restores the single association',input().ariaLabelledByElements?.includes(label)===true);\nconst destination=new AcmeField();destination.innerHTML='<span slot=\"label\">Moved option</span>';form.append(destination);destination.append(control);await wait();check('moving the control releases old Field metadata',input().ariaLabelledByElements?.[0]===destination.querySelector('[slot=label]')&&!input().ariaDescribedByElements?.includes(help));field.append(control);await wait();field.orientation='horizontal';field.required=true;check('required and optional flags are mutually exclusive',(()=>{try{field.optional=true;return false;}catch{return true;}})());field.required=false;field.optional=true;await wait();check('horizontal layout and optional presentation render without value ownership',field.shadowRoot!.querySelector('[part=root]')!.getAttribute('data-orientation')==='horizontal'&&!('value' in field));\nfield.append(control);await wait();check('same-Field reordering reconnects the existing association',input().ariaLabelledByElements?.includes(field.querySelector('[slot=label]')!)===true);const nativeField=new AcmeField();nativeField.id='native-field';nativeField.innerHTML='<span slot=\"label\">Country</span><select name=\"country\" aria-describedby=\"later-description\"><option value=\"ca\">Canada</option></select><span slot=\"help\">Native control help.</span><span slot=\"error\">Native error.</span>';form.append(nativeField);await wait();const select=nativeField.querySelector('select')!;check('native select gets the Field name and retains unresolved external descriptions',select.ariaLabelledByElements?.[0]===nativeField.querySelector('[slot=label]')&&select.getAttribute('aria-describedby')!.includes('later-description'));\nnativeField.querySelector('[slot=label]')!.id='renamed-native-label';await wait();check('native references follow an authored label ID change',select.getAttribute('aria-labelledby')==='renamed-native-label');const later=document.createElement('span');later.id='later-description';later.textContent='Later description';form.append(later);check('late external descriptions still resolve natively',select.ariaDescribedByElements?.includes(later)===true);nativeField.disabled=true;check('native Field disability synchronizes before submission',select.disabled&&!new FormData(form).has('country'));select.disabled=true;nativeField.disabled=false;check('latest native own disabled intent survives clearing Field disability in the same task',select.disabled);select.disabled=false;await wait();nativeField.invalid=true;await wait();check('native invalid presentation keeps constraint validity independent',select.getAttribute('aria-invalid')==='true'&&select.validity.valid&&select.ariaDescribedByElements?.includes(nativeField.querySelector('[slot=error]')!)===true);nativeField.invalid=false;await wait();check('native clearing preserves other descriptions',select.getAttribute('aria-describedby')!.includes('later-description')&&!select.ariaDescribedByElements?.includes(nativeField.querySelector('[slot=error]')!));\n(window as any).__test={field,control,input,groupField,group,nativeField,select,wait};\n}catch(error){(window as any).__error=String(error);}(window as any).__results={results,error:(window as any).__error};\n"
+    },
+    {
+      "file": "run.ts",
+      "source": "import fs from 'node:fs';\nconst directory='/tmp/acme-m11-field',root='/Users/peterkloss/Dev/ACMElabs/design-system';\nconst built=await Bun.build({entrypoints:[directory+'/probe.ts'],outdir:directory+'/bundle',target:'browser',format:'esm',splitting:true});if(!built.success)throw new AggregateError(built.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';\nconst pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');\nconst server=Bun.serve({port:0,hostname:'127.0.0.1',fetch(req){const url=new URL(req.url);if(url.pathname==='/tokens.css')return new Response(Bun.file(root+'/src/generated/css/document/tokens.css'),{headers:{'Content-Type':'text/css'}});if(url.pathname.endsWith('.js'))return new Response(Bun.file(directory+'/bundle'+url.pathname),{headers:{'Content-Type':'text/javascript'}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{'Content-Type':'text/html'}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});try{const page=await browser.newPage();page.on('pageerror',e=>{console.log('PAGEERROR',e.stack);report.errors.push({engine,message:e.message});});await page.goto(server.url.href);await page.waitForFunction(()=>window.__results,{},{timeout:60000});const data=await page.evaluate(()=>window.__results);if(!data.error){await page.locator('#field [slot=label]').click();await page.evaluate(()=>window.__test.wait());data.results.push({name:'Field label focuses and activates a checked control once',ok:await page.evaluate(()=>window.__test.control.checked&&window.__test.control.shadowRoot.activeElement===window.__test.input())});await page.locator('#group-field [slot=label]').click();data.results.push({name:'group Field label focuses its entry without selecting',ok:await page.evaluate(()=>{const g=window.__test.group,radio=g.querySelector('acme-radio');return g.value===undefined&&radio.shadowRoot.activeElement===radio.shadowRoot.querySelector('input');})});await page.locator('#native-field [slot=label]').click();data.results.push({name:'native Field label focuses its native select',ok:await page.evaluate(()=>document.activeElement===window.__test.select)});if(engine==='chromium'){const session=await page.context().newCDPSession(page);const tree=await session.send('Accessibility.getFullAXTree');data.results.push({name:'accessibility names the checkbox and the logical radio group',ok:tree.nodes.some(n=>n.role?.value==='checkbox'&&n.name?.value==='Notifications')&&tree.nodes.some(n=>n.role?.value==='radiogroup'&&n.name?.value==='Plan')});}}if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(r=>r.ok).length,total:data.results.length,failed:data.results.filter(r=>!r.ok),error:data.error});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+'/results.json',JSON.stringify(report,null,2)+'\\n');if(report.errors.length||report.engines.some(e=>e.results.length!==(e.engine==='chromium'?26:25)||e.results.some(r=>!r.ok)))process.exitCode=1;\n"
+    },
+    {
+      "file": "docs-check.ts",
+      "source": "process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');const results=[];for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});try{const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:4180/components/field');const form=page.locator('#field-form-example');await form.locator('acme-button[type=submit]').click();const invalid=await form.evaluate(el=>el.querySelector('acme-field').invalid&&!el.checkValidity());await form.locator('select').selectOption('ca');await form.locator('acme-button[type=submit]').click();const submitted=await form.locator('output').textContent()==='ca';await form.locator('acme-button[type=reset]').click();const reset=await form.evaluate(el=>!el.querySelector('acme-field').invalid&&el.querySelector('select').value==='');await page.locator('#field-radio-example [slot=label]').click();const focus=await page.locator('#field-radio-example').evaluate(el=>{const radio=el.querySelector('acme-radio');return radio.shadowRoot.activeElement===radio.shadowRoot.querySelector('input');});results.push({engine,invalid,submitted,reset,focus,errors});console.log(results.at(-1));}finally{await browser.close();}}await Bun.write('/tmp/acme-m11-field/docs-results.json',JSON.stringify(results,null,2)+'\\n');if(results.some(r=>!r.invalid||!r.submitted||!r.reset||!r.focus||r.errors.length))process.exitCode=1;\n"
+    }
+  ],
+  "compiled": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "Field names its one logical control through the semantic owner",
+            "ok": true
+          },
+          {
+            "name": "Field help supplements existing external descriptions",
+            "ok": true
+          },
+          {
+            "name": "active Field error is described and shown as presentation",
+            "ok": true
+          },
+          {
+            "name": "clearing the error retains other descriptions",
+            "ok": true
+          },
+          {
+            "name": "Field disability updates native input and submission before render without overwriting own disabled",
+            "ok": true
+          },
+          {
+            "name": "clearing Field disability restores participation",
+            "ok": true
+          },
+          {
+            "name": "own disabled remains authoritative when the Field enables",
+            "ok": true
+          },
+          {
+            "name": "a composite registers once and receives the group name",
+            "ok": true
+          },
+          {
+            "name": "individual radio labels remain independent",
+            "ok": true
+          },
+          {
+            "name": "ambiguous controls receive no accidental shared label",
+            "ok": true
+          },
+          {
+            "name": "removing the second control restores the single association",
+            "ok": true
+          },
+          {
+            "name": "moving the control releases old Field metadata",
+            "ok": true
+          },
+          {
+            "name": "required and optional flags are mutually exclusive",
+            "ok": true
+          },
+          {
+            "name": "horizontal layout and optional presentation render without value ownership",
+            "ok": true
+          },
+          {
+            "name": "same-Field reordering reconnects the existing association",
+            "ok": true
+          },
+          {
+            "name": "native select gets the Field name and retains unresolved external descriptions",
+            "ok": true
+          },
+          {
+            "name": "native references follow an authored label ID change",
+            "ok": true
+          },
+          {
+            "name": "late external descriptions still resolve natively",
+            "ok": true
+          },
+          {
+            "name": "native Field disability synchronizes before submission",
+            "ok": true
+          },
+          {
+            "name": "latest native own disabled intent survives clearing Field disability in the same task",
+            "ok": true
+          },
+          {
+            "name": "native invalid presentation keeps constraint validity independent",
+            "ok": true
+          },
+          {
+            "name": "native clearing preserves other descriptions",
+            "ok": true
+          },
+          {
+            "name": "Field label focuses and activates a checked control once",
+            "ok": true
+          },
+          {
+            "name": "group Field label focuses its entry without selecting",
+            "ok": true
+          },
+          {
+            "name": "native Field label focuses its native select",
+            "ok": true
+          },
+          {
+            "name": "accessibility names the checkbox and the logical radio group",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "Field names its one logical control through the semantic owner",
+            "ok": true
+          },
+          {
+            "name": "Field help supplements existing external descriptions",
+            "ok": true
+          },
+          {
+            "name": "active Field error is described and shown as presentation",
+            "ok": true
+          },
+          {
+            "name": "clearing the error retains other descriptions",
+            "ok": true
+          },
+          {
+            "name": "Field disability updates native input and submission before render without overwriting own disabled",
+            "ok": true
+          },
+          {
+            "name": "clearing Field disability restores participation",
+            "ok": true
+          },
+          {
+            "name": "own disabled remains authoritative when the Field enables",
+            "ok": true
+          },
+          {
+            "name": "a composite registers once and receives the group name",
+            "ok": true
+          },
+          {
+            "name": "individual radio labels remain independent",
+            "ok": true
+          },
+          {
+            "name": "ambiguous controls receive no accidental shared label",
+            "ok": true
+          },
+          {
+            "name": "removing the second control restores the single association",
+            "ok": true
+          },
+          {
+            "name": "moving the control releases old Field metadata",
+            "ok": true
+          },
+          {
+            "name": "required and optional flags are mutually exclusive",
+            "ok": true
+          },
+          {
+            "name": "horizontal layout and optional presentation render without value ownership",
+            "ok": true
+          },
+          {
+            "name": "same-Field reordering reconnects the existing association",
+            "ok": true
+          },
+          {
+            "name": "native select gets the Field name and retains unresolved external descriptions",
+            "ok": true
+          },
+          {
+            "name": "native references follow an authored label ID change",
+            "ok": true
+          },
+          {
+            "name": "late external descriptions still resolve natively",
+            "ok": true
+          },
+          {
+            "name": "native Field disability synchronizes before submission",
+            "ok": true
+          },
+          {
+            "name": "latest native own disabled intent survives clearing Field disability in the same task",
+            "ok": true
+          },
+          {
+            "name": "native invalid presentation keeps constraint validity independent",
+            "ok": true
+          },
+          {
+            "name": "native clearing preserves other descriptions",
+            "ok": true
+          },
+          {
+            "name": "Field label focuses and activates a checked control once",
+            "ok": true
+          },
+          {
+            "name": "group Field label focuses its entry without selecting",
+            "ok": true
+          },
+          {
+            "name": "native Field label focuses its native select",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "Field names its one logical control through the semantic owner",
+            "ok": true
+          },
+          {
+            "name": "Field help supplements existing external descriptions",
+            "ok": true
+          },
+          {
+            "name": "active Field error is described and shown as presentation",
+            "ok": true
+          },
+          {
+            "name": "clearing the error retains other descriptions",
+            "ok": true
+          },
+          {
+            "name": "Field disability updates native input and submission before render without overwriting own disabled",
+            "ok": true
+          },
+          {
+            "name": "clearing Field disability restores participation",
+            "ok": true
+          },
+          {
+            "name": "own disabled remains authoritative when the Field enables",
+            "ok": true
+          },
+          {
+            "name": "a composite registers once and receives the group name",
+            "ok": true
+          },
+          {
+            "name": "individual radio labels remain independent",
+            "ok": true
+          },
+          {
+            "name": "ambiguous controls receive no accidental shared label",
+            "ok": true
+          },
+          {
+            "name": "removing the second control restores the single association",
+            "ok": true
+          },
+          {
+            "name": "moving the control releases old Field metadata",
+            "ok": true
+          },
+          {
+            "name": "required and optional flags are mutually exclusive",
+            "ok": true
+          },
+          {
+            "name": "horizontal layout and optional presentation render without value ownership",
+            "ok": true
+          },
+          {
+            "name": "same-Field reordering reconnects the existing association",
+            "ok": true
+          },
+          {
+            "name": "native select gets the Field name and retains unresolved external descriptions",
+            "ok": true
+          },
+          {
+            "name": "native references follow an authored label ID change",
+            "ok": true
+          },
+          {
+            "name": "late external descriptions still resolve natively",
+            "ok": true
+          },
+          {
+            "name": "native Field disability synchronizes before submission",
+            "ok": true
+          },
+          {
+            "name": "latest native own disabled intent survives clearing Field disability in the same task",
+            "ok": true
+          },
+          {
+            "name": "native invalid presentation keeps constraint validity independent",
+            "ok": true
+          },
+          {
+            "name": "native clearing preserves other descriptions",
+            "ok": true
+          },
+          {
+            "name": "Field label focuses and activates a checked control once",
+            "ok": true
+          },
+          {
+            "name": "group Field label focuses its entry without selecting",
+            "ok": true
+          },
+          {
+            "name": "native Field label focuses its native select",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "docs": [
+    {
+      "engine": "chromium",
+      "invalid": true,
+      "submitted": true,
+      "reset": true,
+      "focus": true,
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "invalid": true,
+      "submitted": true,
+      "reset": true,
+      "focus": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "invalid": true,
+      "submitted": true,
+      "reset": true,
+      "focus": true,
+      "errors": []
+    }
+  ]
+}

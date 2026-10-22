@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-m21",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.581Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/m21-book-2026-09-23.json",
+      "destination": "docs/verification/systematization/m21-book-2026-09-23.json",
+      "bytes": 26890,
+      "sha256": "65cadefb9885f8510a686fb6b1303ad2c2367ed6e2abbf083c106d2f5b645ed2"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-book-checks.ts",
+      "destination": "docs/verification/systematization/m21-book-checks.ts",
+      "bytes": 8986,
+      "sha256": "cb1cf826dce691ffbaa3efc537afa86c73e7fd0c9de9c25db9bde9aa2ca412f4"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-code-block-2026-09-23.json",
+      "destination": "docs/verification/systematization/m21-code-block-2026-09-23.json",
+      "bytes": 9900,
+      "sha256": "faa1cb8be131ba23f44318a0e30d3b70484f30771d9aa82d2d92b6023f4c0c46"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-code-block-checks.ts",
+      "destination": "docs/verification/systematization/m21-code-block-checks.ts",
+      "bytes": 6571,
+      "sha256": "d337bcd6807d539b70ab07131b6f9960dcfa05839f97d230627b5f1e44f22964"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-json-view-2026-09-23.json",
+      "destination": "docs/verification/systematization/m21-json-view-2026-09-23.json",
+      "bytes": 10915,
+      "sha256": "fb8a0c21086b7cad11279d41cc092b9f1f26108dda5ccb56bc56740591ea374f"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-json-view-checks.ts",
+      "destination": "docs/verification/systematization/m21-json-view-checks.ts",
+      "bytes": 6702,
+      "sha256": "6c08b134686e52477cd6213e032c5c4eec37167b5479b42de360760fd1926801"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-markdown-2026-09-23.json",
+      "destination": "docs/verification/systematization/m21-markdown-2026-09-23.json",
+      "bytes": 10596,
+      "sha256": "a03f411ed0e86119264d367c1e3c738241be9fae45a3a7cde9428f8c5c6242f7"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-markdown-checks.ts",
+      "destination": "docs/verification/systematization/m21-markdown-checks.ts",
+      "bytes": 7575,
+      "sha256": "83a5a4900770ff4c352b42c8d0c361bf4e7089ade96c6ff724390e4dbf263296"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-snippet-browser-2026-09-23.json",
+      "destination": "docs/verification/systematization/m21-snippet-browser-2026-09-23.json",
+      "bytes": 9613,
+      "sha256": "bc470d8fb65f56f5c56fd9c3af26640c6deaa5a53f696b9cb3f658311bfee369"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-snippet-browser-checks.ts",
+      "destination": "docs/verification/systematization/m21-snippet-browser-checks.ts",
+      "bytes": 7033,
+      "sha256": "055c1490d10bd28faef9f6102daba1c7667c340a5ba2c08885cf789f053d6bf6"
+    },
+    {
+      "source": "notes/alignment/evidence/m21-video-2026-09-23.json",
+      "destination": "docs/verification/systematization/m21-video-2026-09-23.json",
+      "bytes": 23143,
+      "sha256": "8ac5a3ce1a0a0fb13042eb304e14ba83dc92d752b1e8f635248c5807e6bf3b11"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}

@@ -1,0 +1,2182 @@
+{
+  "date": "2026-09-20",
+  "phase": "Phase 6",
+  "batch": "M05-03",
+  "status": "canonical ordered inputs and responsive normalization implemented; directive/renderer integration remains",
+  "files": [
+    "src/shared/ordered-style-inputs.ts",
+    "src/shared/plain-record.ts",
+    "src/shared/responsive.ts"
+  ],
+  "checks": {
+    "unit": {
+      "ordered": {
+        "tests": 11,
+        "assertions": 44
+      },
+      "plainRecord": {
+        "tests": 3,
+        "assertions": 19
+      },
+      "responsive": {
+        "tests": 38,
+        "assertions": 67
+      }
+    },
+    "fullSuite": {
+      "tests": 667,
+      "failed": 0,
+      "assertions": 7771,
+      "files": 90
+    },
+    "split": "$ bun scripts/split-css.ts\nstyles: 75 house families and document tokens\n",
+    "build": "$ bun scripts/build.ts\nmodules: 466 files, 98 with compiled templates\nmanifest: 109 elements\nbundle 2223.4 KB min 1078.1 KB tokens.css 151.0 KB dashboard.css 13.8 KB\n",
+    "docs": "$ bun site/build.ts\ndocs: 80 pages, 109 elements (0 undocumented), app.js 1151 KB\n",
+    "strictTypes": "Changed helpers and tests pass. Whole-repository strict mode remains outside this claim.",
+    "review": {
+      "agent": "/root/m00_form_reproduction",
+      "verdict": "approved",
+      "comparatorPairs": 392,
+      "thresholdSets": [
+        "default",
+        "custom"
+      ]
+    }
+  },
+  "browser": {
+    "results": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "results": [
+            {
+              "name": "actual iframe viewport 599",
+              "actual": 599,
+              "expected": 599,
+              "ok": true
+            },
+            {
+              "name": "window boundary 599",
+              "actual": "0",
+              "expected": "0",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 600",
+              "actual": 600,
+              "expected": 600,
+              "ok": true
+            },
+            {
+              "name": "window boundary 600",
+              "actual": "1",
+              "expected": "1",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 839",
+              "actual": 839,
+              "expected": 839,
+              "ok": true
+            },
+            {
+              "name": "window boundary 839",
+              "actual": "1",
+              "expected": "1",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 840",
+              "actual": 840,
+              "expected": 840,
+              "ok": true
+            },
+            {
+              "name": "window boundary 840",
+              "actual": "2",
+              "expected": "2",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 1199",
+              "actual": 1199,
+              "expected": 1199,
+              "ok": true
+            },
+            {
+              "name": "window boundary 1199",
+              "actual": "2",
+              "expected": "2",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 1200",
+              "actual": 1200,
+              "expected": 1200,
+              "ok": true
+            },
+            {
+              "name": "window boundary 1200",
+              "actual": "3",
+              "expected": "3",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 1599",
+              "actual": 1599,
+              "expected": 1599,
+              "ok": true
+            },
+            {
+              "name": "window boundary 1599",
+              "actual": "3",
+              "expected": "3",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 1600",
+              "actual": 1600,
+              "expected": 1600,
+              "ok": true
+            },
+            {
+              "name": "window boundary 1600",
+              "actual": "3",
+              "expected": "3",
+              "ok": true
+            },
+            {
+              "name": "window rem ignores authored root font",
+              "actual": "1",
+              "expected": "1",
+              "ok": true
+            },
+            {
+              "name": "container rem uses authored root font below boundary",
+              "actual": "0",
+              "expected": "0",
+              "ok": true
+            },
+            {
+              "name": "container rem uses authored root font at boundary",
+              "actual": "1",
+              "expected": "1",
+              "ok": true
+            },
+            {
+              "name": "container responds to changed root font",
+              "actual": "1",
+              "expected": "1",
+              "ok": true
+            },
+            {
+              "name": "missing query container keeps baseline",
+              "actual": "0",
+              "expected": "0",
+              "ok": true
+            },
+            {
+              "name": "equal-minimum source text order applies",
+              "actual": "4",
+              "expected": "4",
+              "ok": true
+            },
+            {
+              "name": "declaration order broad then inline",
+              "actual": [
+                "16px",
+                "8px",
+                "16px",
+                "8px"
+              ],
+              "expected": [
+                "16px",
+                "8px",
+                "16px",
+                "8px"
+              ],
+              "ok": true
+            },
+            {
+              "name": "same-value reorder inline then broad",
+              "actual": [
+                "16px",
+                "16px",
+                "16px",
+                "16px"
+              ],
+              "expected": [
+                "16px",
+                "16px",
+                "16px",
+                "16px"
+              ],
+              "ok": true
+            },
+            {
+              "name": "complete transaction publishes once",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "subscriber sees complete ordered values",
+              "actual": [
+                [
+                  "padding",
+                  20
+                ],
+                [
+                  "paddingInline",
+                  4
+                ]
+              ],
+              "expected": [
+                [
+                  "padding",
+                  20
+                ],
+                [
+                  "paddingInline",
+                  4
+                ]
+              ],
+              "ok": true
+            },
+            {
+              "name": "invalid transaction leaves snapshot untouched",
+              "actual": [
+                [
+                  "padding",
+                  20
+                ],
+                [
+                  "paddingInline",
+                  4
+                ]
+              ],
+              "expected": [
+                [
+                  "padding",
+                  20
+                ],
+                [
+                  "paddingInline",
+                  4
+                ]
+              ],
+              "ok": true
+            },
+            {
+              "name": "responsive input from another document",
+              "actual": [
+                {
+                  "min": 37.5,
+                  "value": 2
+                }
+              ],
+              "expected": [
+                {
+                  "min": 37.5,
+                  "value": 2
+                }
+              ],
+              "ok": true
+            },
+            {
+              "name": "ordered inputs from another document",
+              "actual": 24,
+              "expected": 24,
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "actual iframe viewport 599",
+              "actual": 599,
+              "expected": 599,
+              "ok": true
+            },
+            {
+              "name": "window boundary 599",
+              "actual": "0",
+              "expected": "0",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 600",
+              "actual": 600,
+              "expected": 600,
+              "ok": true
+            },
+            {
+              "name": "window boundary 600",
+              "actual": "1",
+              "expected": "1",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 839",
+              "actual": 839,
+              "expected": 839,
+              "ok": true
+            },
+            {
+              "name": "window boundary 839",
+              "actual": "1",
+              "expected": "1",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 840",
+              "actual": 840,
+              "expected": 840,
+              "ok": true
+            },
+            {
+              "name": "window boundary 840",
+              "actual": "2",
+              "expected": "2",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 1199",
+              "actual": 1199,
+              "expected": 1199,
+              "ok": true
+            },
+            {
+              "name": "window boundary 1199",
+              "actual": "2",
+              "expected": "2",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 1200",
+              "actual": 1200,
+              "expected": 1200,
+              "ok": true
+            },
+            {
+              "name": "window boundary 1200",
+              "actual": "3",
+              "expected": "3",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 1599",
+              "actual": 1599,
+              "expected": 1599,
+              "ok": true
+            },
+            {
+              "name": "window boundary 1599",
+              "actual": "3",
+              "expected": "3",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 1600",
+              "actual": 1600,
+              "expected": 1600,
+              "ok": true
+            },
+            {
+              "name": "window boundary 1600",
+              "actual": "3",
+              "expected": "3",
+              "ok": true
+            },
+            {
+              "name": "window rem ignores authored root font",
+              "actual": "1",
+              "expected": "1",
+              "ok": true
+            },
+            {
+              "name": "container rem uses authored root font below boundary",
+              "actual": "0",
+              "expected": "0",
+              "ok": true
+            },
+            {
+              "name": "container rem uses authored root font at boundary",
+              "actual": "1",
+              "expected": "1",
+              "ok": true
+            },
+            {
+              "name": "container responds to changed root font",
+              "actual": "1",
+              "expected": "1",
+              "ok": true
+            },
+            {
+              "name": "missing query container keeps baseline",
+              "actual": "0",
+              "expected": "0",
+              "ok": true
+            },
+            {
+              "name": "equal-minimum source text order applies",
+              "actual": "4",
+              "expected": "4",
+              "ok": true
+            },
+            {
+              "name": "declaration order broad then inline",
+              "actual": [
+                "16px",
+                "8px",
+                "16px",
+                "8px"
+              ],
+              "expected": [
+                "16px",
+                "8px",
+                "16px",
+                "8px"
+              ],
+              "ok": true
+            },
+            {
+              "name": "same-value reorder inline then broad",
+              "actual": [
+                "16px",
+                "16px",
+                "16px",
+                "16px"
+              ],
+              "expected": [
+                "16px",
+                "16px",
+                "16px",
+                "16px"
+              ],
+              "ok": true
+            },
+            {
+              "name": "complete transaction publishes once",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "subscriber sees complete ordered values",
+              "actual": [
+                [
+                  "padding",
+                  20
+                ],
+                [
+                  "paddingInline",
+                  4
+                ]
+              ],
+              "expected": [
+                [
+                  "padding",
+                  20
+                ],
+                [
+                  "paddingInline",
+                  4
+                ]
+              ],
+              "ok": true
+            },
+            {
+              "name": "invalid transaction leaves snapshot untouched",
+              "actual": [
+                [
+                  "padding",
+                  20
+                ],
+                [
+                  "paddingInline",
+                  4
+                ]
+              ],
+              "expected": [
+                [
+                  "padding",
+                  20
+                ],
+                [
+                  "paddingInline",
+                  4
+                ]
+              ],
+              "ok": true
+            },
+            {
+              "name": "responsive input from another document",
+              "actual": [
+                {
+                  "min": 37.5,
+                  "value": 2
+                }
+              ],
+              "expected": [
+                {
+                  "min": 37.5,
+                  "value": 2
+                }
+              ],
+              "ok": true
+            },
+            {
+              "name": "ordered inputs from another document",
+              "actual": 24,
+              "expected": 24,
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "actual iframe viewport 599",
+              "actual": 599,
+              "expected": 599,
+              "ok": true
+            },
+            {
+              "name": "window boundary 599",
+              "actual": "0",
+              "expected": "0",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 600",
+              "actual": 600,
+              "expected": 600,
+              "ok": true
+            },
+            {
+              "name": "window boundary 600",
+              "actual": "1",
+              "expected": "1",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 839",
+              "actual": 839,
+              "expected": 839,
+              "ok": true
+            },
+            {
+              "name": "window boundary 839",
+              "actual": "1",
+              "expected": "1",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 840",
+              "actual": 840,
+              "expected": 840,
+              "ok": true
+            },
+            {
+              "name": "window boundary 840",
+              "actual": "2",
+              "expected": "2",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 1199",
+              "actual": 1199,
+              "expected": 1199,
+              "ok": true
+            },
+            {
+              "name": "window boundary 1199",
+              "actual": "2",
+              "expected": "2",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 1200",
+              "actual": 1200,
+              "expected": 1200,
+              "ok": true
+            },
+            {
+              "name": "window boundary 1200",
+              "actual": "3",
+              "expected": "3",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 1599",
+              "actual": 1599,
+              "expected": 1599,
+              "ok": true
+            },
+            {
+              "name": "window boundary 1599",
+              "actual": "3",
+              "expected": "3",
+              "ok": true
+            },
+            {
+              "name": "actual iframe viewport 1600",
+              "actual": 1600,
+              "expected": 1600,
+              "ok": true
+            },
+            {
+              "name": "window boundary 1600",
+              "actual": "3",
+              "expected": "3",
+              "ok": true
+            },
+            {
+              "name": "window rem ignores authored root font",
+              "actual": "1",
+              "expected": "1",
+              "ok": true
+            },
+            {
+              "name": "container rem uses authored root font below boundary",
+              "actual": "0",
+              "expected": "0",
+              "ok": true
+            },
+            {
+              "name": "container rem uses authored root font at boundary",
+              "actual": "1",
+              "expected": "1",
+              "ok": true
+            },
+            {
+              "name": "container responds to changed root font",
+              "actual": "1",
+              "expected": "1",
+              "ok": true
+            },
+            {
+              "name": "missing query container keeps baseline",
+              "actual": "0",
+              "expected": "0",
+              "ok": true
+            },
+            {
+              "name": "equal-minimum source text order applies",
+              "actual": "4",
+              "expected": "4",
+              "ok": true
+            },
+            {
+              "name": "declaration order broad then inline",
+              "actual": [
+                "16px",
+                "8px",
+                "16px",
+                "8px"
+              ],
+              "expected": [
+                "16px",
+                "8px",
+                "16px",
+                "8px"
+              ],
+              "ok": true
+            },
+            {
+              "name": "same-value reorder inline then broad",
+              "actual": [
+                "16px",
+                "16px",
+                "16px",
+                "16px"
+              ],
+              "expected": [
+                "16px",
+                "16px",
+                "16px",
+                "16px"
+              ],
+              "ok": true
+            },
+            {
+              "name": "complete transaction publishes once",
+              "actual": 1,
+              "expected": 1,
+              "ok": true
+            },
+            {
+              "name": "subscriber sees complete ordered values",
+              "actual": [
+                [
+                  "padding",
+                  20
+                ],
+                [
+                  "paddingInline",
+                  4
+                ]
+              ],
+              "expected": [
+                [
+                  "padding",
+                  20
+                ],
+                [
+                  "paddingInline",
+                  4
+                ]
+              ],
+              "ok": true
+            },
+            {
+              "name": "invalid transaction leaves snapshot untouched",
+              "actual": [
+                [
+                  "padding",
+                  20
+                ],
+                [
+                  "paddingInline",
+                  4
+                ]
+              ],
+              "expected": [
+                [
+                  "padding",
+                  20
+                ],
+                [
+                  "paddingInline",
+                  4
+                ]
+              ],
+              "ok": true
+            },
+            {
+              "name": "responsive input from another document",
+              "actual": [
+                {
+                  "min": 37.5,
+                  "value": 2
+                }
+              ],
+              "expected": [
+                {
+                  "min": 37.5,
+                  "value": 2
+                }
+              ],
+              "ok": true
+            },
+            {
+              "name": "ordered inputs from another document",
+              "actual": 24,
+              "expected": 24,
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "fixture": "import { normalizeResponsive } from \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/shared/responsive.js\";\nimport { createOrderedStyleInputs } from \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/shared/ordered-style-inputs.js\";\nconst results=[];const check=(name,actual,expected)=>results.push({name,actual,expected,ok:JSON.stringify(actual)===JSON.stringify(expected)});\nconst number=(v)=>typeof v===\"number\"&&Number.isFinite(v);\nconst declarations=normalizeResponsive({compact:0,medium:1,expandedToExtraLarge:2,large:3},number);\nconst query=range=>range.max===undefined ? \"(width >= \"+range.min+\"rem)\" : range.min===0 ? \"(width < \"+range.max+\"rem)\" : \"(\"+range.min+\"rem <= width < \"+range.max+\"rem)\";\nconst rules=(entries,kind=\"media\")=>entries.map(range=>range.min===0&&range.max===undefined ? \"#target{--value:\"+range.value+\"}\" : \"@\"+kind+\" \"+query(range)+\"{#target{--value:\"+range.value+\"}}\").join(\"\");\nconst frame=document.createElement(\"iframe\");frame.style.border=\"0\";document.body.append(frame);\nconst doc=frame.contentDocument;doc.open();doc.write(\"<!doctype html><html><head></head><body><div id=container><div id=target></div></div></body></html>\");doc.close();\nconst sheet=doc.createElement(\"style\");doc.head.append(sheet);\nconst read=()=>frame.contentWindow.getComputedStyle(doc.querySelector(\"#target\")).getPropertyValue(\"--value\").trim();\nsheet.textContent=rules(declarations);\nfor(const [width,wanted] of [[599,0],[600,1],[839,1],[840,2],[1199,2],[1200,3],[1599,3],[1600,3]]){frame.style.width=width+\"px\";frame.getBoundingClientRect();await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));check(\"actual iframe viewport \"+width,frame.contentWindow.innerWidth,width);check(\"window boundary \"+width,read(),String(wanted));}\ndoc.documentElement.style.fontSize=\"20px\";frame.style.width=\"600px\";frame.getBoundingClientRect();await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));\ncheck(\"window rem ignores authored root font\",read(),\"1\");\nsheet.textContent=\"#container{container-type:inline-size;width:749px}\"+rules(normalizeResponsive({compact:0,medium:1},number),\"container\");\ncheck(\"container rem uses authored root font below boundary\",read(),\"0\");\ndoc.querySelector(\"#container\").style.width=\"750px\";\ncheck(\"container rem uses authored root font at boundary\",read(),\"1\");\ndoc.documentElement.style.fontSize=\"16px\";doc.querySelector(\"#container\").style.width=\"600px\";\ncheck(\"container responds to changed root font\",read(),\"1\");\ndoc.querySelector(\"#container\").style.containerType=\"normal\";\ncheck(\"missing query container keeps baseline\",read(),\"0\");\ndoc.documentElement.style.fontSize=\"16px\";frame.style.width=\"800px\";frame.getBoundingClientRect();await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));\nconst equalMin=normalizeResponsive({mediumToLarge:4,mediumOnly:2,mediumToExtraLarge:3,medium:1},number);\nsheet.textContent=rules(equalMin);\ncheck(\"equal-minimum source text order applies\",read(),\"4\");\nconst inputs=createOrderedStyleInputs({padding:v=>{if(typeof v!==\"number\"||v<0)throw Error(\"Invalid padding\");return v;},paddingInline:v=>{if(typeof v!==\"number\"||v<0)throw Error(\"Invalid padding\");return v;}});\nlet keys=inputs.apply({padding:16,paddingInline:8});\nconst paint=()=>{sheet.textContent=\"#target{\"+inputs.entries.get().map(([key,value])=>(key===\"paddingInline\"?\"padding-inline\":\"padding\")+\":\"+value+\"px\").join(\";\")+\"}\";};\nconst edges=()=>{const s=frame.contentWindow.getComputedStyle(doc.querySelector(\"#target\"));return[s.paddingTop,s.paddingRight,s.paddingBottom,s.paddingLeft];};\npaint();check(\"declaration order broad then inline\",edges(),[\"16px\",\"8px\",\"16px\",\"8px\"]);\nkeys=inputs.apply({paddingInline:8,padding:16},keys);paint();check(\"same-value reorder inline then broad\",edges(),[\"16px\",\"16px\",\"16px\",\"16px\"]);\nconst snapshots=[];const subscription=inputs.entries.subscribe(v=>snapshots.push(v));inputs.apply({padding:20,paddingInline:4},keys);\ncheck(\"complete transaction publishes once\",snapshots.length,1);check(\"subscriber sees complete ordered values\",snapshots[0],[[\"padding\",20],[\"paddingInline\",4]]);\ntry{inputs.apply({padding:30,paddingInline:-1},keys);}catch{}\ncheck(\"invalid transaction leaves snapshot untouched\",inputs.entries.get(),[[\"padding\",20],[\"paddingInline\",4]]);\nsubscription.unsubscribe();\ntry{check(\"responsive input from another document\",normalizeResponsive(frame.contentWindow.JSON.parse('{\"medium\":2}'),number),[{min:37.5,value:2}]);}catch(error){check(\"responsive input from another document\",String(error),\"accepted\");}\ntry{inputs.apply(frame.contentWindow.JSON.parse('{\"padding\":24}'));check(\"ordered inputs from another document\",inputs.get(\"padding\"),24);}catch(error){check(\"ordered inputs from another document\",String(error),\"accepted\");}\nframe.remove();window.__results={results};\n",
+    "runner": "import fs from \"node:fs\";import path from \"node:path\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\",directory=\"/tmp/acme-m05-styles\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\"});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;\n",
+    "independentCrossRealm": [
+      {
+        "name": "chromium",
+        "version": "153.0.8010.48",
+        "differentObjectPrototype": true,
+        "plainAccepted": true,
+        "normalized": [
+          {
+            "min": 40,
+            "value": 2
+          }
+        ],
+        "snapshot": [
+          [
+            "padding",
+            [
+              0,
+              2
+            ]
+          ],
+          [
+            "paddingInline",
+            "8px"
+          ]
+        ],
+        "unchanged": true,
+        "frozen": true
+      },
+      {
+        "name": "firefox",
+        "version": "155.0",
+        "differentObjectPrototype": true,
+        "plainAccepted": true,
+        "normalized": [
+          {
+            "min": 40,
+            "value": 2
+          }
+        ],
+        "snapshot": [
+          [
+            "padding",
+            [
+              0,
+              2
+            ]
+          ],
+          [
+            "paddingInline",
+            "8px"
+          ]
+        ],
+        "unchanged": true,
+        "frozen": true
+      },
+      {
+        "name": "webkit",
+        "version": "26.6",
+        "differentObjectPrototype": true,
+        "plainAccepted": true,
+        "normalized": [
+          {
+            "min": 40,
+            "value": 2
+          }
+        ],
+        "snapshot": [
+          [
+            "padding",
+            [
+              0,
+              2
+            ]
+          ],
+          [
+            "paddingInline",
+            "8px"
+          ]
+        ],
+        "unchanged": true,
+        "frozen": true
+      }
+    ]
+  },
+  "corrections": [
+    {
+      "issue": "Frozen runtime values exposed mutable inferred validator types.",
+      "fix": "Getter and entry values use deep readonly types; negative compile checks reject push and nested writes."
+    },
+    {
+      "issue": "Same-realm Object.prototype identity rejected ordinary records from an adopted document.",
+      "fix": "Shared plain-record checker accepts actual cross-realm records while rejecting custom prototypes/classes; real iframe and VM cases pass.",
+      "control": {
+        "engines": [
+          {
+            "engine": "chromium",
+            "version": "153.0.8010.48",
+            "results": [
+              {
+                "name": "actual iframe viewport 599",
+                "actual": 599,
+                "expected": 599,
+                "ok": true
+              },
+              {
+                "name": "window boundary 599",
+                "actual": "0",
+                "expected": "0",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 600",
+                "actual": 600,
+                "expected": 600,
+                "ok": true
+              },
+              {
+                "name": "window boundary 600",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 839",
+                "actual": 839,
+                "expected": 839,
+                "ok": true
+              },
+              {
+                "name": "window boundary 839",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 840",
+                "actual": 840,
+                "expected": 840,
+                "ok": true
+              },
+              {
+                "name": "window boundary 840",
+                "actual": "2",
+                "expected": "2",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 1199",
+                "actual": 1199,
+                "expected": 1199,
+                "ok": true
+              },
+              {
+                "name": "window boundary 1199",
+                "actual": "2",
+                "expected": "2",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 1200",
+                "actual": 1200,
+                "expected": 1200,
+                "ok": true
+              },
+              {
+                "name": "window boundary 1200",
+                "actual": "3",
+                "expected": "3",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 1599",
+                "actual": 1599,
+                "expected": 1599,
+                "ok": true
+              },
+              {
+                "name": "window boundary 1599",
+                "actual": "3",
+                "expected": "3",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 1600",
+                "actual": 1600,
+                "expected": 1600,
+                "ok": true
+              },
+              {
+                "name": "window boundary 1600",
+                "actual": "3",
+                "expected": "3",
+                "ok": true
+              },
+              {
+                "name": "window rem ignores authored root font",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "container rem uses authored root font below boundary",
+                "actual": "0",
+                "expected": "0",
+                "ok": true
+              },
+              {
+                "name": "container rem uses authored root font at boundary",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "container responds to changed root font",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "missing query container keeps baseline",
+                "actual": "0",
+                "expected": "0",
+                "ok": true
+              },
+              {
+                "name": "equal-minimum source text order applies",
+                "actual": "4",
+                "expected": "4",
+                "ok": true
+              },
+              {
+                "name": "declaration order broad then inline",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "ok": true
+              },
+              {
+                "name": "same-value reorder inline then broad",
+                "actual": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "ok": true
+              },
+              {
+                "name": "complete transaction publishes once",
+                "actual": 1,
+                "expected": 1,
+                "ok": true
+              },
+              {
+                "name": "subscriber sees complete ordered values",
+                "actual": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "expected": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "ok": true
+              },
+              {
+                "name": "invalid transaction leaves snapshot untouched",
+                "actual": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "expected": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "ok": true
+              },
+              {
+                "name": "responsive input from another document",
+                "actual": [
+                  {
+                    "min": 37.5,
+                    "value": 2
+                  }
+                ],
+                "expected": [
+                  {
+                    "min": 37.5,
+                    "value": 2
+                  }
+                ],
+                "ok": true
+              },
+              {
+                "name": "ordered inputs from another document",
+                "actual": "TypeError: Style inputs must be a plain ordered object",
+                "expected": "accepted",
+                "ok": false
+              }
+            ]
+          },
+          {
+            "engine": "firefox",
+            "version": "155.0",
+            "results": [
+              {
+                "name": "actual iframe viewport 599",
+                "actual": 599,
+                "expected": 599,
+                "ok": true
+              },
+              {
+                "name": "window boundary 599",
+                "actual": "0",
+                "expected": "0",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 600",
+                "actual": 600,
+                "expected": 600,
+                "ok": true
+              },
+              {
+                "name": "window boundary 600",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 839",
+                "actual": 839,
+                "expected": 839,
+                "ok": true
+              },
+              {
+                "name": "window boundary 839",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 840",
+                "actual": 840,
+                "expected": 840,
+                "ok": true
+              },
+              {
+                "name": "window boundary 840",
+                "actual": "2",
+                "expected": "2",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 1199",
+                "actual": 1199,
+                "expected": 1199,
+                "ok": true
+              },
+              {
+                "name": "window boundary 1199",
+                "actual": "2",
+                "expected": "2",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 1200",
+                "actual": 1200,
+                "expected": 1200,
+                "ok": true
+              },
+              {
+                "name": "window boundary 1200",
+                "actual": "3",
+                "expected": "3",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 1599",
+                "actual": 1599,
+                "expected": 1599,
+                "ok": true
+              },
+              {
+                "name": "window boundary 1599",
+                "actual": "3",
+                "expected": "3",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 1600",
+                "actual": 1600,
+                "expected": 1600,
+                "ok": true
+              },
+              {
+                "name": "window boundary 1600",
+                "actual": "3",
+                "expected": "3",
+                "ok": true
+              },
+              {
+                "name": "window rem ignores authored root font",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "container rem uses authored root font below boundary",
+                "actual": "0",
+                "expected": "0",
+                "ok": true
+              },
+              {
+                "name": "container rem uses authored root font at boundary",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "container responds to changed root font",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "missing query container keeps baseline",
+                "actual": "0",
+                "expected": "0",
+                "ok": true
+              },
+              {
+                "name": "equal-minimum source text order applies",
+                "actual": "4",
+                "expected": "4",
+                "ok": true
+              },
+              {
+                "name": "declaration order broad then inline",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "ok": true
+              },
+              {
+                "name": "same-value reorder inline then broad",
+                "actual": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "ok": true
+              },
+              {
+                "name": "complete transaction publishes once",
+                "actual": 1,
+                "expected": 1,
+                "ok": true
+              },
+              {
+                "name": "subscriber sees complete ordered values",
+                "actual": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "expected": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "ok": true
+              },
+              {
+                "name": "invalid transaction leaves snapshot untouched",
+                "actual": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "expected": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "ok": true
+              },
+              {
+                "name": "responsive input from another document",
+                "actual": [
+                  {
+                    "min": 37.5,
+                    "value": 2
+                  }
+                ],
+                "expected": [
+                  {
+                    "min": 37.5,
+                    "value": 2
+                  }
+                ],
+                "ok": true
+              },
+              {
+                "name": "ordered inputs from another document",
+                "actual": "TypeError: Style inputs must be a plain ordered object",
+                "expected": "accepted",
+                "ok": false
+              }
+            ]
+          },
+          {
+            "engine": "webkit",
+            "version": "26.6",
+            "results": [
+              {
+                "name": "actual iframe viewport 599",
+                "actual": 599,
+                "expected": 599,
+                "ok": true
+              },
+              {
+                "name": "window boundary 599",
+                "actual": "0",
+                "expected": "0",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 600",
+                "actual": 600,
+                "expected": 600,
+                "ok": true
+              },
+              {
+                "name": "window boundary 600",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 839",
+                "actual": 839,
+                "expected": 839,
+                "ok": true
+              },
+              {
+                "name": "window boundary 839",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 840",
+                "actual": 840,
+                "expected": 840,
+                "ok": true
+              },
+              {
+                "name": "window boundary 840",
+                "actual": "2",
+                "expected": "2",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 1199",
+                "actual": 1199,
+                "expected": 1199,
+                "ok": true
+              },
+              {
+                "name": "window boundary 1199",
+                "actual": "2",
+                "expected": "2",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 1200",
+                "actual": 1200,
+                "expected": 1200,
+                "ok": true
+              },
+              {
+                "name": "window boundary 1200",
+                "actual": "3",
+                "expected": "3",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 1599",
+                "actual": 1599,
+                "expected": 1599,
+                "ok": true
+              },
+              {
+                "name": "window boundary 1599",
+                "actual": "3",
+                "expected": "3",
+                "ok": true
+              },
+              {
+                "name": "actual iframe viewport 1600",
+                "actual": 1600,
+                "expected": 1600,
+                "ok": true
+              },
+              {
+                "name": "window boundary 1600",
+                "actual": "3",
+                "expected": "3",
+                "ok": true
+              },
+              {
+                "name": "window rem ignores authored root font",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "container rem uses authored root font below boundary",
+                "actual": "0",
+                "expected": "0",
+                "ok": true
+              },
+              {
+                "name": "container rem uses authored root font at boundary",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "container responds to changed root font",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "missing query container keeps baseline",
+                "actual": "0",
+                "expected": "0",
+                "ok": true
+              },
+              {
+                "name": "equal-minimum source text order applies",
+                "actual": "4",
+                "expected": "4",
+                "ok": true
+              },
+              {
+                "name": "declaration order broad then inline",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "ok": true
+              },
+              {
+                "name": "same-value reorder inline then broad",
+                "actual": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "ok": true
+              },
+              {
+                "name": "complete transaction publishes once",
+                "actual": 1,
+                "expected": 1,
+                "ok": true
+              },
+              {
+                "name": "subscriber sees complete ordered values",
+                "actual": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "expected": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "ok": true
+              },
+              {
+                "name": "invalid transaction leaves snapshot untouched",
+                "actual": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "expected": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "ok": true
+              },
+              {
+                "name": "responsive input from another document",
+                "actual": [
+                  {
+                    "min": 37.5,
+                    "value": 2
+                  }
+                ],
+                "expected": [
+                  {
+                    "min": 37.5,
+                    "value": 2
+                  }
+                ],
+                "ok": true
+              },
+              {
+                "name": "ordered inputs from another document",
+                "actual": "TypeError: Style inputs must be a plain ordered object",
+                "expected": "accepted",
+                "ok": false
+              }
+            ]
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "issue": "Immediate child computed-style reads did not flush changed parent iframe viewport in WebKit.",
+      "fix": "Fixture waits for layout and verifies iframe.innerWidth at every tested boundary before reading computed output. No source workaround.",
+      "control": {
+        "engines": [
+          {
+            "engine": "chromium",
+            "version": "153.0.8010.48",
+            "results": [
+              {
+                "name": "window boundary 599",
+                "actual": "0",
+                "expected": "0",
+                "ok": true
+              },
+              {
+                "name": "window boundary 600",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "window boundary 839",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "window boundary 840",
+                "actual": "2",
+                "expected": "2",
+                "ok": true
+              },
+              {
+                "name": "window boundary 1199",
+                "actual": "2",
+                "expected": "2",
+                "ok": true
+              },
+              {
+                "name": "window boundary 1200",
+                "actual": "3",
+                "expected": "3",
+                "ok": true
+              },
+              {
+                "name": "window boundary 1599",
+                "actual": "3",
+                "expected": "3",
+                "ok": true
+              },
+              {
+                "name": "window boundary 1600",
+                "actual": "3",
+                "expected": "3",
+                "ok": true
+              },
+              {
+                "name": "window rem ignores authored root font",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "container rem uses authored root font below boundary",
+                "actual": "0",
+                "expected": "0",
+                "ok": true
+              },
+              {
+                "name": "container rem uses authored root font at boundary",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "container responds to changed root font",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "missing query container keeps baseline",
+                "actual": "0",
+                "expected": "0",
+                "ok": true
+              },
+              {
+                "name": "equal-minimum source text order applies",
+                "actual": "4",
+                "expected": "4",
+                "ok": true
+              },
+              {
+                "name": "declaration order broad then inline",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "ok": true
+              },
+              {
+                "name": "same-value reorder inline then broad",
+                "actual": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "ok": true
+              },
+              {
+                "name": "complete transaction publishes once",
+                "actual": 1,
+                "expected": 1,
+                "ok": true
+              },
+              {
+                "name": "subscriber sees complete ordered values",
+                "actual": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "expected": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "ok": true
+              },
+              {
+                "name": "invalid transaction leaves snapshot untouched",
+                "actual": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "expected": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "ok": true
+              }
+            ]
+          },
+          {
+            "engine": "firefox",
+            "version": "155.0",
+            "results": [
+              {
+                "name": "window boundary 599",
+                "actual": "0",
+                "expected": "0",
+                "ok": true
+              },
+              {
+                "name": "window boundary 600",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "window boundary 839",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "window boundary 840",
+                "actual": "2",
+                "expected": "2",
+                "ok": true
+              },
+              {
+                "name": "window boundary 1199",
+                "actual": "2",
+                "expected": "2",
+                "ok": true
+              },
+              {
+                "name": "window boundary 1200",
+                "actual": "3",
+                "expected": "3",
+                "ok": true
+              },
+              {
+                "name": "window boundary 1599",
+                "actual": "3",
+                "expected": "3",
+                "ok": true
+              },
+              {
+                "name": "window boundary 1600",
+                "actual": "3",
+                "expected": "3",
+                "ok": true
+              },
+              {
+                "name": "window rem ignores authored root font",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "container rem uses authored root font below boundary",
+                "actual": "0",
+                "expected": "0",
+                "ok": true
+              },
+              {
+                "name": "container rem uses authored root font at boundary",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "container responds to changed root font",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "missing query container keeps baseline",
+                "actual": "0",
+                "expected": "0",
+                "ok": true
+              },
+              {
+                "name": "equal-minimum source text order applies",
+                "actual": "4",
+                "expected": "4",
+                "ok": true
+              },
+              {
+                "name": "declaration order broad then inline",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "ok": true
+              },
+              {
+                "name": "same-value reorder inline then broad",
+                "actual": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "ok": true
+              },
+              {
+                "name": "complete transaction publishes once",
+                "actual": 1,
+                "expected": 1,
+                "ok": true
+              },
+              {
+                "name": "subscriber sees complete ordered values",
+                "actual": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "expected": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "ok": true
+              },
+              {
+                "name": "invalid transaction leaves snapshot untouched",
+                "actual": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "expected": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "ok": true
+              }
+            ]
+          },
+          {
+            "engine": "webkit",
+            "version": "26.6",
+            "results": [
+              {
+                "name": "window boundary 599",
+                "actual": "0",
+                "expected": "0",
+                "ok": true
+              },
+              {
+                "name": "window boundary 600",
+                "actual": "0",
+                "expected": "1",
+                "ok": false
+              },
+              {
+                "name": "window boundary 839",
+                "actual": "0",
+                "expected": "1",
+                "ok": false
+              },
+              {
+                "name": "window boundary 840",
+                "actual": "0",
+                "expected": "2",
+                "ok": false
+              },
+              {
+                "name": "window boundary 1199",
+                "actual": "0",
+                "expected": "2",
+                "ok": false
+              },
+              {
+                "name": "window boundary 1200",
+                "actual": "0",
+                "expected": "3",
+                "ok": false
+              },
+              {
+                "name": "window boundary 1599",
+                "actual": "0",
+                "expected": "3",
+                "ok": false
+              },
+              {
+                "name": "window boundary 1600",
+                "actual": "0",
+                "expected": "3",
+                "ok": false
+              },
+              {
+                "name": "window rem ignores authored root font",
+                "actual": "0",
+                "expected": "1",
+                "ok": false
+              },
+              {
+                "name": "container rem uses authored root font below boundary",
+                "actual": "0",
+                "expected": "0",
+                "ok": true
+              },
+              {
+                "name": "container rem uses authored root font at boundary",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "container responds to changed root font",
+                "actual": "1",
+                "expected": "1",
+                "ok": true
+              },
+              {
+                "name": "missing query container keeps baseline",
+                "actual": "0",
+                "expected": "0",
+                "ok": true
+              },
+              {
+                "name": "equal-minimum source text order applies",
+                "actual": "",
+                "expected": "4",
+                "ok": false
+              },
+              {
+                "name": "declaration order broad then inline",
+                "actual": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "expected": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ],
+                "ok": true
+              },
+              {
+                "name": "same-value reorder inline then broad",
+                "actual": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "expected": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ],
+                "ok": true
+              },
+              {
+                "name": "complete transaction publishes once",
+                "actual": 1,
+                "expected": 1,
+                "ok": true
+              },
+              {
+                "name": "subscriber sees complete ordered values",
+                "actual": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "expected": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "ok": true
+              },
+              {
+                "name": "invalid transaction leaves snapshot untouched",
+                "actual": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "expected": [
+                  [
+                    "padding",
+                    20
+                  ],
+                  [
+                    "paddingInline",
+                    4
+                  ]
+                ],
+                "ok": true
+              }
+            ]
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "issue": "Appearance provider's undefined atom seed selected a readonly overload under the production compiler's non-strict settings.",
+      "fix": "Store the optional provider inside a concrete object atom; strict and production declaration checks now agree."
+    },
+    {
+      "issue": "Non-strict declaration emission narrowed inferred effective appearance values, losing undefined and producing never for unsupported fields.",
+      "fix": "Explicit exported return contract preserves absence and readonly values; an in-memory emitted-declaration test checks strict consumers of both compiler modes."
+    }
+  ],
+  "orderingSource": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/sort-at-params.ts",
+  "comparatorReproduction": "import {compareResponsiveRanges,normalizeResponsive} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/responsive';\nconst url='https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/sort-at-params.ts';\nconst source=await(await fetch(url)).text();\nconst code=new Bun.Transpiler({loader:'ts'}).transformSync(source.replace('import { memo } from \"../utils/memo\"','const memo = (fn: any) => fn;'));\nconst {sortAtParams}=await import('data:text/javascript;base64,'+Buffer.from(code).toString('base64'));\nconst bands=['compact','medium','expanded','large','extraLarge'];const conditions={};for(const [i,band]of bands.entries()){conditions[band]=1;conditions[band+'Only']=1;if(i)conditions[band+'Down']=1;for(const upper of bands.slice(i+1))conditions[band+'To'+upper[0].toUpperCase()+upper.slice(1)]=1;}\nconst key=r=>['@media screen',...(r.min>0?[`(min-width: ${r.min}rem)`]:[]),...(r.max!==undefined?[`(max-width: ${r.max}rem)`]:[])].join(' and ');\nlet comparisons=0;const differences=[];for(const widths of [undefined,{medium:40,expanded:60,large:80,extraLarge:120}]){const ranges=normalizeResponsive(conditions,(v):v is number=>typeof v==='number',widths).filter(r=>r.min>0||r.max!==undefined);for(const a of ranges)for(const b of ranges){comparisons++;const expected=Math.sign(sortAtParams(key(a),key(b)));const actual=Math.sign(compareResponsiveRanges(a,b));if(actual!==expected)differences.push({a,b,actual,expected});}}\nconsole.log(JSON.stringify({comparisons,differences}));\n",
+  "limits": [
+    "The browser fixture emits representative native queries around built normalization modules; it is not the final generated layout renderer.",
+    "Full property grammar, HTML conversion/capture, scoped registry/late definition integration and the public styleInputs directive remain M05.",
+    "Startup breakpoint configuration, theme scope/token registration and per-component responsive integration remain.",
+    "A real Lit lifecycle conflict prevents silently implementing the approved automatic helper-removal behavior; see separate evidence."
+  ]
+}

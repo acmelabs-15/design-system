@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "batch": "04-evidence-release-0.3.1",
+  "status": "complete",
+  "date": "2026-10-22T05:09:00.872Z",
+  "sourceRevision": "2ca045ffe9e6d765551442af75f8ba0e5c795569",
+  "implementationRevision": "7834b50cae89d9840f4dfa1b3093be506b32bb5b",
+  "verification": {
+    "passed": true,
+    "method": "Source SHA-256 matches the Git-bound ledger; exclusive copy (or verified identical resume); complete destination SHA-256 and direct byte equality",
+    "semanticEdits": false,
+    "originalsRetainedUntilCutover": true
+  },
+  "files": [
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/browser-publication.json",
+      "destination": "docs/verification/releases/0.3.1/browser-publication.json",
+      "bytes": 467,
+      "sha256": "c7cd57f0aba9701b5cd0fd112c14eb268606927e3949dd2bd45f647d335e7e37"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/browser-stage.json",
+      "destination": "docs/verification/releases/0.3.1/browser-stage.json",
+      "bytes": 2142,
+      "sha256": "02a7674eb3bdcf1c64345991f92c723017b6ec81b3548e93249b5123b9ac6bcc"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/cdn-chunk-recovery.json",
+      "destination": "docs/verification/releases/0.3.1/cdn-chunk-recovery.json",
+      "bytes": 282,
+      "sha256": "af7f59f07a2127fa2395f4459b9a28e6e97be094eac2743b8c5501d23a0e92f3"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/cdn-initial-failure.json",
+      "destination": "docs/verification/releases/0.3.1/cdn-initial-failure.json",
+      "bytes": 51576,
+      "sha256": "072695953a0b716706efc921121b13065dec2d0a685198065e6ba62d70bfd4f7"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/cdn-public-verification.json",
+      "destination": "docs/verification/releases/0.3.1/cdn-public-verification.json",
+      "bytes": 55537,
+      "sha256": "5634d6fd74d301d9c4930522a5ef9603c8238529815a636aa7e2354926c7342c"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/clean-build-reproducibility.json",
+      "destination": "docs/verification/releases/0.3.1/clean-build-reproducibility.json",
+      "bytes": 1823,
+      "sha256": "b564aab9860c1f060915c8ea670374de045911e38539b677f89493ef03febca9"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/core-archive-comparison.json",
+      "destination": "docs/verification/releases/0.3.1/core-archive-comparison.json",
+      "bytes": 7587,
+      "sha256": "a0bf84ea5e08165e8855a1e6f1647cd27267c1f18533ea9b0a3d7a08090728d6"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/core-declaration-diff.patch",
+      "destination": "docs/verification/releases/0.3.1/core-declaration-diff.patch",
+      "bytes": 43523,
+      "sha256": "8a07040bde03f5441b76db735d86b1c2cc5f6165bcdcf7b9f81dca959919f3da"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/core-publication.json",
+      "destination": "docs/verification/releases/0.3.1/core-publication.json",
+      "bytes": 804,
+      "sha256": "f74c4bd55ef44ffcb1de528983431697ea1a327a7fe6c8cd3f9c053fbe232f4e"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/core-review.json",
+      "destination": "docs/verification/releases/0.3.1/core-review.json",
+      "bytes": 856,
+      "sha256": "0e2d41e69c3ac93bb1ea2a25a20bd894d4db28eb9534db059ae730a3d3cb4efd"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/declaration-order-green.txt",
+      "destination": "docs/verification/releases/0.3.1/declaration-order-green.txt",
+      "bytes": 330,
+      "sha256": "92c685085155b27078b958549a19dec7e24b0ec52f11bf74ed4dc63a9638fb56"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/declaration-order-red.txt",
+      "destination": "docs/verification/releases/0.3.1/declaration-order-red.txt",
+      "bytes": 1020,
+      "sha256": "fe4c3749119fdd29dc836d6d5a137547b89170065bc511ae7c34e2d7228962bb"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/declaration-reproducibility.json",
+      "destination": "docs/verification/releases/0.3.1/declaration-reproducibility.json",
+      "bytes": 1766,
+      "sha256": "05c5b7457581f6bfa5d718b39466a8f5fde4706f947198a913eec4c51be6d3b9"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/linux-acceptance.json",
+      "destination": "docs/verification/releases/0.3.1/linux-acceptance.json",
+      "bytes": 589,
+      "sha256": "470e620002d4576803ef69a6dd82010d4875598b3ad3a58be173dd85ab78194e"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/linux-archive-finding.json",
+      "destination": "docs/verification/releases/0.3.1/linux-archive-finding.json",
+      "bytes": 770,
+      "sha256": "0bc4d7c3e9b33a0831f4a13a4d81e679bd9a30d7be26edd08332ad8adaf176e8"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/linux-browser.json",
+      "destination": "docs/verification/releases/0.3.1/linux-browser.json",
+      "bytes": 3728,
+      "sha256": "265cb737b2d7784bf9556f4e86d59a596a39bf309ee01cdcf070a4fbcf600bb7"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/linux-flow-distributions.json",
+      "destination": "docs/verification/releases/0.3.1/linux-flow-distributions.json",
+      "bytes": 7890,
+      "sha256": "d6492e4428aa1c3f6c6c12fa182588af568737512d2efee7a2f25158b9aad06c"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/local-archive-counts.json",
+      "destination": "docs/verification/releases/0.3.1/local-archive-counts.json",
+      "bytes": 831,
+      "sha256": "14ce4c86a7e0d2de6a813901e4f6ebd5512039db77bef8a41c3282eebc70af37"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/local-browser.json",
+      "destination": "docs/verification/releases/0.3.1/local-browser.json",
+      "bytes": 3726,
+      "sha256": "ff049758216367acea54d3e7ba821b0d27579fa1d8d7efba56562cf5089b1a7c"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/local-flow-distributions.json",
+      "destination": "docs/verification/releases/0.3.1/local-flow-distributions.json",
+      "bytes": 7890,
+      "sha256": "9ce243744804b4f1cb9dd706082d8d571762c5b0c198b65439c7de4070d52de7"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/public-verification.json",
+      "destination": "docs/verification/releases/0.3.1/public-verification.json",
+      "bytes": 1834,
+      "sha256": "15ef3b68232266956b0c8276a15f925d462b017ad136b5c7dbfd12364b571bfa"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/publication-release.json",
+      "destination": "docs/verification/releases/0.3.1/publication-release.json",
+      "bytes": 1717,
+      "sha256": "244e11d7ac4dd7b05766270f73d41577c0d9b1085529190a836866422b2efd69"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/published-assets.json",
+      "destination": "docs/verification/releases/0.3.1/published-assets.json",
+      "bytes": 415,
+      "sha256": "0b4c3cb06a91764d590eeb2f0de892f7622fb73e3cec5606aaa79d5da90e333f"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/react-devtools-publication.json",
+      "destination": "docs/verification/releases/0.3.1/react-devtools-publication.json",
+      "bytes": 811,
+      "sha256": "1f4e40f3fa9488e1cd58dbf121afaad5f3ffc84c0c998ba3a2d70ea407b6c1aa"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/react-review.json",
+      "destination": "docs/verification/releases/0.3.1/react-review.json",
+      "bytes": 487,
+      "sha256": "ff66ec2fe35558d97c1cd883a11d3288bd10db8b19b05ca1af699fb12f64601c"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/signed-artifacts.json",
+      "destination": "docs/verification/releases/0.3.1/signed-artifacts.json",
+      "bytes": 656,
+      "sha256": "544bd66778ced685c2bffe2f31cddc5f42efbe83231ab2092c7b375d2e5f6a95"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/signed-release.json",
+      "destination": "docs/verification/releases/0.3.1/signed-release.json",
+      "bytes": 1717,
+      "sha256": "2071bfdabcf59524cdaa1ac8d05fc73784e31d14596c5202577a759450a0f5c2"
+    },
+    {
+      "source": "notes/alignment/evidence/release-0.3.1/trusted-publishers.json",
+      "destination": "docs/verification/releases/0.3.1/trusted-publishers.json",
+      "bytes": 994,
+      "sha256": "23338b0dd4f4c2e7af23feafb67c0f901a89c46ab888bdd06f43d6632980abb2"
+    }
+  ],
+  "limits": [
+    "Full migration final acceptance remains pending. These are immutable historical payloads, not active instructions."
+  ]
+}
