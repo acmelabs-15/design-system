@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "batch": "06-research-09-documentation-site",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "All20 originals were fully read during audit and conversion. Specific findings distinguish observations, proposals, approved choices, unverified claims, supersession and dated history. Rule dispositions retire completed process instructions.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/analysis/documentation-site.md",
+      "destination": "docs/research/09-documentation-site.md",
+      "sourceSha256": "c96c5c4fb0784aa4e20beced0bb17650f760f3cf3c432e89690e6132e9d8a765",
+      "destinationSha256": "c4c2b1d31da2afa0a38ef30aa8619c64645f6726ab9b4691e79c23443b855f2e",
+      "changes": [
+        "Converted to numbered research with explicit dated scope, findings, provenance and limitations.",
+        "Relocated live Markdown links through the final ledger; retained source paths as historical provenance.",
+        {
+          "old": "Its output still needs a repository-specific trial; the page layout and doc-component interfaces remain proposals.",
+          "new": "At that walkthrough, its output still needed a repository-specific trial; the page layout and doc-component interfaces remained proposals."
+        },
+        {
+          "old": "## Existing implementation",
+          "new": "## Existing implementation at the 2026-09-19 checkpoint"
+        },
+        {
+          "old": "These names and interfaces are proposals for the Phase 4 documentation inventory. Existing pure render functions can remain behind them; do not wrap every static fragment in a custom element solely to increase the component count.",
+          "new": "These names and interfaces were proposals for the Phase 4 documentation inventory. The proposal retained pure render functions where sufficient and did not require a custom element for every static fragment."
+        },
+        {
+          "old": "Final names and control interfaces remain for Phases 2–4.",
+          "new": "Final names and control interfaces were then left to Phases 2–4 of the completed pass."
+        },
+        {
+          "old": "Read [Chakra Pagination documentation]",
+          "new": "The investigation read [Chakra Pagination documentation]"
+        },
+        {
+          "old": "Read the [TanStack Lit pagination example]",
+          "new": "The investigation read the [TanStack Lit pagination example]"
+        },
+        {
+          "old": "Revisit the component/recipe boundary after the complete Pro review and before the Pagination inventory entry is approved. Jump-to-page composition was not specifically reselected by Peter's example; evaluate its relationship without silently expanding this request.",
+          "new": "The research left the component/recipe boundary for the complete Pro review and Pagination inventory decision. Jump-to-page composition was not specifically reselected by Peter's example; that relationship remained an explicit scope question."
+        },
+        {
+          "old": "Use this additional source alongside the other reference systems under the [standing comparison rule]",
+          "new": "The investigation used this additional source alongside other reference systems under the then-applicable [standing comparison rule]"
+        },
+        {
+          "old": "M00 technical prerequisites remain active before dependent implementation. Production implementation has not started; approval is not a runtime result.",
+          "new": "At the approval checkpoint, M00 prerequisites preceded dependent implementation and production implementation had not started. The later M23/M26 results below supersede that status; approval alone was not a runtime result."
+        },
+        {
+          "old": "Switching the workflow and removing that snapshot remains the publishing migration.",
+          "new": "At that checkpoint, switching the workflow and removing the snapshot remained publishing-migration work. The release 0.3.2 record linked above records its later completion."
+        },
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance.",
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance."
+      ],
+      "retainedQualifications": [
+        "Empty metadata categories do not prove missing capabilities.",
+        "Pro snippets can be unwired or differ from rendered source; search findings are bounded.",
+        "Smoke rendering is not interaction acceptance; fallback-font geometry is not chosen-font certification.",
+        "Three matched skill tasks retain all original grades/attempts and are not statistical superiority.",
+        "Actual-font results are representative and may use the preferred installed mono family; not whole-site/Safari/AT certification.",
+        "Page-overflow checks missed clipped action text; preserve separate correction."
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/analysis/documentation-site.md",
+      "oldAnchor": "documentation-site-investigation",
+      "destination": "docs/research/09-documentation-site.md",
+      "newAnchor": "research-09-documentation-site-investigation"
+    },
+    {
+      "source": "notes/analysis/documentation-site.md",
+      "oldAnchor": "existing-implementation",
+      "destination": "docs/research/09-documentation-site.md",
+      "newAnchor": "existing-implementation-at-the-2026-09-19-checkpoint"
+    }
+  ],
+  "findings": []
+}
