@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-026",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/non-canonical-elements.md",
+      "destination": "docs/decisions/0070-non-canonical-elements.md",
+      "sourceSha256": "1617763d43830671b115ecbd293e06edf32331eabcd8da7a1352a53fb27d8ff7",
+      "destinationSha256": "972551f057036f370433d295fe65f8f95d5374d36abbe52e998822861694604b",
+      "changes": [
+        "Rewrote completed per-element review procedure as dated history.",
+        "Preserved retained capabilities and every explicit removal; linked later disposition resolution."
+      ],
+      "retainedQualifications": [
+        "Reference parity did not automatically apply to added elements.",
+        "Capability selection alone did not approve implementation or every helper.",
+        "Removal scope includes dedicated maps, sketches, specs, census and docs; counts are historical."
+      ]
+    },
+    {
+      "source": "notes/decisions/number-input-behaviour.md",
+      "destination": "docs/decisions/0071-number-input-behaviour.md",
+      "sourceSha256": "3bfbd9c6b156844c69100515a44c7f2f580b4df3c5d9101ea5729b81e17b6e92",
+      "destinationSha256": "c1ddbfd103d2c87190411246639fb162de9f91b29ea8a48b649069bb783fdd23",
+      "changes": [
+        "Preserved richer Number Input selection and superseded adapter/runtime strategy.",
+        "Dated initial verification gaps and linked later contract/release."
+      ],
+      "retainedQualifications": [
+        "Zag remains a behavior reference, without its runtime.",
+        "A new or rebuilt Lit component is allowed.",
+        "Locales, editing states, forms, disabled behavior, input interaction and cleanup remain named acceptance dimensions."
+      ]
+    },
+    {
+      "source": "notes/decisions/number-utilities.md",
+      "destination": "docs/decisions/0072-number-utilities.md",
+      "sourceSha256": "a2da0140e287e9b1b38ef3e551ba72964fe0fce68bfa35dddf048f0caa21e6d9",
+      "destinationSha256": "ac1e90f0a1496982f6048336b9a3f3c2cc44dc901efdbe93ef4daed0dbf7ff4f",
+      "changes": [
+        "Preserved independent utility rationale and boundaries.",
+        "Dated package probe and replaced completed installation gate with contract reference."
+      ],
+      "retainedQualifications": [
+        "3.6.8 is a researched candidate, not a permanent version pin.",
+        "Six Bun API checks do not prove browser/component/form/IME acceptance.",
+        "Parsing, editing, stepping and committed values stay distinct; no Zag/React state runtime."
+      ]
+    },
+    {
+      "source": "notes/decisions/open-expanded-vocabulary.md",
+      "destination": "docs/decisions/0073-open-expanded-vocabulary.md",
+      "sourceSha256": "0cc532412ed08e4a277b8bd356852f6acee6295162fd84eadc2fd5cd2fb7c23a",
+      "destinationSha256": "164f713e92e50e3e22cd173fd13be94e0ff8d97784449b11c921cbbc5ca5be73",
+      "changes": [
+        "Retained state vocabulary and native-attribute distinction.",
+        "Linked final contracts instead of retaining a pending inventory task."
+      ],
+      "retainedQualifications": [
+        "No requirement for multiple competing state properties.",
+        "Visible can outlive open during closing; native aria-expanded retains platform meaning."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}
