@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "batch": "05-decisions-027",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer semantic/source review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "Source-specific audit dispositions and writer reviews retain approved choices, alternatives, qualifications and supersession. Coordinator reviews the rule conflicts and bounded findings; no new product choice is inferred.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/decisions/optional-ripples.md",
+      "destination": "docs/decisions/0074-optional-ripples.md",
+      "sourceSha256": "3490da618016bc2f3aa45783f4bfd1c1a4aa3fac46797ae89057a91401d98f43",
+      "destinationSha256": "fc93f30da660ada8a6baf1ac6a98af9ef3c4949b0c548790ba441ae5aa5762da",
+      "changes": [
+        "Retained opt-in ripple scope and separate state animation.",
+        "Linked detailed contract instead of open inventory work."
+      ],
+      "retainedQualifications": [
+        "Material Web is a reference, not a selected dependency.",
+        "Contrast, reduced motion, cancellation, scrolling, keyboard, repeats, disabled/forced-colors and cleanup require verification."
+      ]
+    },
+    {
+      "source": "notes/decisions/overlay-architecture.md",
+      "destination": "docs/decisions/0075-overlay-architecture.md",
+      "sourceSha256": "4715d50120a513fa821ce85da52b7d17c99eedf255b2575a1d5aef1ebad448fc",
+      "destinationSha256": "9c611761f755d7930aec88e7f28e6ebef429a3de2a5500086677928dba5e53d0",
+      "changes": [
+        "Led with accepted architecture and reason.",
+        "Retained evidence-audit anchor and limits while retiring completed Phase 3 procedure.",
+        "Linked later lifecycle/family details."
+      ],
+      "retainedQualifications": [
+        "Supported composition and duplicated source logic did not prove superiority over an equally capable base.",
+        "Owned exit controls isolation/scroll lock; reopen/removal/reduced-motion and stale placement completion have explicit semantics.",
+        "Three-engine runtime tests remain distinct from source evidence."
+      ]
+    },
+    {
+      "source": "notes/decisions/overlay-help-components.md",
+      "destination": "docs/decisions/0076-overlay-help-components.md",
+      "sourceSha256": "b9b17c6a571b2be2b1a33476376d2f3ee1d43bc41ebf74c0b86f74fa9ec5067d",
+      "destinationSha256": "7a9b5bdf02065a3f8520550ac039a16045109bfcc425c6ff63d255e935239d31",
+      "changes": [
+        "Retained three help patterns and final Context Card removal.",
+        "Removed competing origin category and linked detailed contract."
+      ],
+      "retainedQualifications": [
+        "Rich previews differ from interactive help; simple formatting does not require Hover Card.",
+        "Toggle Tip composes shared overlay behavior without a second engine.",
+        "Chakra accessibility limits are comparison evidence only; initial decision leaves full Popover/access/delay/parts detail to contract."
+      ]
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}
