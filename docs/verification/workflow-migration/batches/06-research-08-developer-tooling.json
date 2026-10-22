@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "batch": "06-research-08-developer-tooling",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "All20 originals were fully read during audit and conversion. Specific findings distinguish observations, proposals, approved choices, unverified claims, supersession and dated history. Rule dispositions retire completed process instructions.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/analysis/developer-tooling.md",
+      "destination": "docs/research/08-developer-tooling.md",
+      "sourceSha256": "c15bd3781a249e2508701c3530568afbe07e460338069e3d489d2c5919f61f99",
+      "destinationSha256": "7ea35e4cd603fc2a4cdd1eba572c4e1522b404ab4658f3b904be940842a1c485",
+      "changes": [
+        "Converted to numbered research with explicit dated scope, findings, provenance and limitations.",
+        "Relocated live Markdown links through the final ledger; retained source paths as historical provenance.",
+        {
+          "old": "# Developer tooling: Phase 1 extension",
+          "new": "# Developer tooling and release verification"
+        },
+        {
+          "old": "Checkpoint 2026-09-19. [Oxlint toolset adoption]",
+          "new": "Historical checkpoint 2026-09-19. [Oxlint toolset adoption]"
+        },
+        {
+          "old": "Read the [quick start]",
+          "new": "The investigation read the [quick start]"
+        },
+        {
+          "old": "### Remaining design and verification",
+          "new": "### Design and verification remaining at the 2026-09-19 checkpoint"
+        },
+        {
+          "old": "**Review complete at the convention level; recommendations are not new package adoptions.** Read all seven convention/provider docs:",
+          "new": "**Review complete at the convention level; recommendations are not new package adoptions.** The investigation read all seven convention/provider docs:"
+        },
+        {
+          "old": "Recommended practices to bring into the later migration:",
+          "new": "The research recommended these practices for the later migration:"
+        },
+        {
+          "old": "Preserve the existing trusted-publishing/provenance guarantees while resolving a verified path consistent with the pure-Bun rule. Do not silently replace them with a permanent token or claim the runtime conflict is solved.",
+          "new": "The research required preservation of trusted publishing and provenance while resolving a pure-Bun path. It did not select a permanent-token replacement or establish that the runtime conflict was solved."
+        },
+        {
+          "old": "Q08 asks only the actual remaining read-only-versus-temporary-editing scope.",
+          "new": "The historical Q08 question concerned only the then-open read-only-versus-temporary-editing scope."
+        },
+        {
+          "old": "M00 technical prerequisites remain active before dependent implementation. Production implementation has not started; approval is not a runtime result.",
+          "new": "At the approval checkpoint, M00 prerequisites preceded dependent implementation and production implementation had not started. Later implementation and release records below supersede that status. Approval alone was not a runtime result."
+        },
+        {
+          "old": "M25 must pin and run the same smoke checks on the Linux release runner, then verify actual GitHub/npm identity configuration and real Sigstore behavior before enabling publication.",
+          "new": "The M00 conclusion left pinned Linux smoke checks, actual GitHub/npm identity configuration and real Sigstore behavior for M25 before publication."
+        },
+        {
+          "old": "`notes/alignment/evidence/m24-devtools/browser-run.ts`",
+          "new": "`scripts/verification/devtools/browser-check.ts`"
+        },
+        {
+          "old": "The task retries the exact verified archive once after the name exists, with unchanged provenance, and waits for the required npm authentication.",
+          "new": "At that checkpoint, the task retried the exact verified archive once after the name existed, with unchanged provenance, and awaited required npm authentication."
+        },
+        {
+          "old": "Preserve the reserved version and wait for the external review; do not repeatedly upload or unpublish it.",
+          "new": "The recorded response preserved the reserved version and awaited external review without repeated uploads or unpublishing."
+        },
+        {
+          "old": "Set up companion configurations immediately before their next real version rather than leaving unused configurations to expire or inventing an extra release.",
+          "new": "The resulting recommendation scheduled companion configurations immediately before their next real version, avoiding unused expiry or an invented extra release."
+        },
+        {
+          "old": "Keep the reserved version unchanged, wait for public integrity and provenance, then resume only the failed publish job.",
+          "new": "The release response kept the reserved version unchanged, awaited public integrity and provenance, then resumed only the failed publish job."
+        },
+        {
+          "old": "Final GitHub release assets must identify the actual published archive set and its public provenance, while retaining preparation as evidence.",
+          "new": "The final release-asset requirement identified the actual published archive set and public provenance, retaining preparation as separate evidence."
+        },
+        {
+          "old": "The token should be revoked and replaced by its owner; no credential rotation or account change was attempted. Keep this follow-up visible in the final handoff without reading or printing the token again.",
+          "new": "Revocation and replacement remain owner-controlled follow-up work. No credential rotation or account change was attempted. The current handoff owns this unresolved action; the secret is neither retained nor reread."
+        },
+        {
+          "old": "Keep it open in the new workflow's handoff and issue records.",
+          "new": "The current handoff and issue records retain this unresolved failure."
+        },
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance.",
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance."
+      ],
+      "retainedQualifications": [
+        "Lint counts/timing are not a correctness/speed ranking; TypeScript-Go does not replace TypeScript 5.9.",
+        "Oxlint pipe-truncation cause remains unknown; selected capture and stale-byte correction are verified separately.",
+        "Synthetic inspector/signing probes do not establish full-shell suitability, official npm-on-Bun support or real external trust.",
+        "Security dispositions are exact version/hash/boundary proofs with a 2026-11-20 review deadline; changed/new findings invalidate them.",
+        "Exit zero/202 is not public integrity/provenance success. Preserve exact staged/published/preparation archive identities.",
+        "60,000 entries is a project budget, not a verified registry limit; metadata-only missing-license evidence is not full notice text or source binding.",
+        "Transient CDN/Pages and networkidle causes remain unverified.",
+        "Token rotation stays owner-controlled; no secret is retained or reread.",
+        "One Chromium Hover Card failure remains open: quality passes, docs fails, deployment skips; cause is unverified."
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/analysis/developer-tooling.md",
+      "oldAnchor": "developer-tooling-phase-1-extension",
+      "destination": "docs/research/08-developer-tooling.md",
+      "newAnchor": "research-08-developer-tooling-and-release-verification"
+    },
+    {
+      "source": "notes/analysis/developer-tooling.md",
+      "oldAnchor": "remaining-design-and-verification",
+      "destination": "docs/research/08-developer-tooling.md",
+      "newAnchor": "design-and-verification-remaining-at-the-2026-09-19-checkpoint"
+    }
+  ],
+  "findings": [
+    "One later Chromium Hover Card activation case fails at commit1b5d08a420f7f916b0c87b166527c60985937f4d. The cause is unverified.",
+    "Credential rotation remains owner-controlled and unverified. Security dispositions retain their exact-version/hash/boundary constraints and2026-11-20 review deadline."
+  ]
+}
