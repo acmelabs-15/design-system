@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "batch": "06-research-17-question-dialog-countdown",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "writer complete source/semantic review; coordinator guard/review pending",
+    "coordinator": {
+      "mechanical": "Complete source/destination hash, original date and external citation retention checks pass. Real preparation guard passes with zero errors; allocated future targets remain pending.",
+      "semantic": "All20 originals were fully read during audit and conversion. Specific findings distinguish observations, proposals, approved choices, unverified claims, supersession and dated history. Rule dispositions retire completed process instructions.",
+      "fullMigrationReview": "Task12 remains pending."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/analysis/question-dialog-countdown.md",
+      "destination": "docs/research/17-question-dialog-countdown.md",
+      "sourceSha256": "e5de5484f2816dc15316fa2891d954be216552534fd391131dea556bc78b52a1",
+      "destinationSha256": "11ec788ba2186671427fc38993f70ca751bdc3bab1a409a692f1e8aae361970c",
+      "changes": [
+        "Converted to numbered research with explicit dated scope, findings, provenance and limitations.",
+        "Relocated live Markdown links through the final ledger; retained source paths as historical provenance.",
+        {
+          "old": "Use the standard blocking question tool in Plan mode for the walkthrough. Do not resume the asynchronous question route, claim that a sleep loop removes the UI countdown, or add an unsupported timeout argument.",
+          "new": "The walkthrough selected the standard blocking Plan-mode tool. The evidence did not support a sleep-loop fix or timeout argument, so the asynchronous route was not resumed at that checkpoint."
+        },
+        {
+          "old": "Follow the current pass handoff for the active phase; preserve answered decisions rather than re-asking them.",
+          "new": "The old pass handoff then owned the active phase. Answered decisions remained valid through the troubleshooting interruption."
+        },
+        {
+          "old": "Use a compact, self-contained premise and the separately rendered option descriptions for the comparison. Do not keep sending a long structured field on the assumption that newlines render, or claim the host is fixed.",
+          "new": "The response used a self-contained premise and separate option descriptions. It could not assume line breaks rendered or claim the host was fixed."
+        },
+        {
+          "old": "The assistant should answer the clarification, return to that choice through the tool, preserve the submitted answer, and continue with the next supported decision. Do not end repeatedly with a description of the next question instead of asking it. These communication corrections do not alter the project's source freeze or approval phases.",
+          "new": "The correction required answering the clarification, returning to the pending choice, preserving its answer and continuing the decision walk. Describing the next question without asking it had stalled that walk. These repairs did not change the then-active source freeze or approval phases; those completed-pass procedures are historical."
+        },
+        {
+          "old": "Follow the local skill's writing and layout rules, rather than imposing a short-question rule. Peter explicitly clarified that length is not the problem: a question can be long when the decision needs it. Choose the layout before composing its fields; organize distinct subjects visibly where the host supports it, and put option-specific consequences in their separate descriptions. Keep the research, recommendation and all information needed to decide inside the question surface. Evidence notes retain the supporting investigation, but do not substitute for necessary context in the card. Account for the reported rendering limitation without assuming that Markdown or line breaks work, and do not shorten away detail to conceal it. Preserve an answer received alongside criticism instead of asking it again.",
+          "new": "Peter clarified that length was not the problem: a question could be long when the decision needed it. The correction used the selected local skill's layout rules at that checkpoint, with distinct subjects where supported and option consequences in separate descriptions. It kept research, recommendation and decision-relevant information in the question surface; supporting evidence notes did not replace necessary card context. It accounted for the reported renderer limit without assuming Markdown or line-break support, preserved necessary detail and retained answers received alongside criticism. Current plugin routing is owned by the approved workflow, not that old local-skill selection."
+        },
+        {
+          "old": "Continue to use the permitted blocking Plan-mode tool without an agent deadline.",
+          "new": "The walkthrough continued through the then-permitted blocking Plan-mode tool without an agent deadline."
+        },
+        {
+          "old": "Do not claim that a renderer can be supplied to request_user_input, or that every possible engineering solution is impossible.",
+          "new": "The evidence established neither a supported custom renderer for request_user_input nor the impossibility of every engineering solution."
+        },
+        {
+          "old": "Continue with the existing blocking Plan-mode route. Use its supported question/option blocks: put shared context, evidence and the recommendation in the question, and each option's consequences in its description. Do not rely on HTML, Markdown or newline headings to create structure. Preserve all information needed to choose; avoid artificial sentence compression or hiding necessary facts outside the card. If the text cannot fit this layout intelligibly, repair its scope rather than claim the host formatting is fixed. Keep every unanswered choice pending without an agent countdown.",
+          "new": "The walkthrough continued with the existing blocking Plan-mode route. Its supported question/option blocks carried shared context, evidence and recommendation in the question, with option consequences in their descriptions. HTML, Markdown and newline headings were not a verified structure mechanism. The repair preserved all information needed to choose and adjusted question scope when necessary, without claiming a renderer fix. Unanswered choices remained pending without an agent countdown."
+        },
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance.",
+        "Checked newly authored links against allocated destinations; kept historical source-path literals as dated provenance."
+      ],
+      "retainedQualifications": [
+        "Clock/wait attribution was wrong.",
+        "Answer delivery does not prove countdown absence or renderer repair.",
+        "No verified workaround/custom renderer is claimed; not every solution is ruled impossible.",
+        "Repair preserves decision-relevant detail and answers delivered beside criticism.",
+        "Peter declined a new tool; current permitted surfaces still follow brain and unanswered choices remain pending."
+      ]
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/analysis/question-dialog-countdown.md",
+      "oldAnchor": "question-dialog-countdown-cause-and-supported-route",
+      "destination": "docs/research/17-question-dialog-countdown.md",
+      "newAnchor": "research-17-question-dialog-countdown-cause-and-supported-route"
+    }
+  ],
+  "findings": []
+}
