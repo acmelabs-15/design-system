@@ -1,0 +1,942 @@
+{
+  "schemaVersion": 1,
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Writer complete source-to-target semantic review, original source hashes and owned-reference checks; coordinator guard and independent review pending.",
+    "ownedReferenceReview": {
+      "passed": true,
+      "scope": "Six owned targets only; allocated pending destinations are not final migration acceptance.",
+      "links": 419,
+      "pendingAllocatedTargets": 32
+    },
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "findings": [],
+  "batch": "07-completed-plan",
+  "files": [
+    {
+      "source": "notes/alignment/migration-plan.md",
+      "destination": "tasks/done/systematization/plan.md",
+      "sourceSha256": "3993f95efcf519aee461189850b6795a4b04b8dc824f57545bfb1ba4435f65d3",
+      "destinationSha256": "6b0f1dd0baf60906bebb9c489b0ea8dbd2f1a66f5171751063f2cb7f1485c16d",
+      "changes": [
+        "Preserved every milestone/slice and dated checkpoint, original dependency/path plan, exact counts and evidence references.",
+        "Converted implementation commands, source freezes and execution permission into completed-plan history.",
+        "Recorded later core-workspace/browser-package corrections beside the original root-package plan.",
+        "Retained initial 22/23 browser failure and exact same-archive targeted correction, followed by 0.3.2 release closure."
+      ],
+      "retainedQualifications": [
+        "M00 representative proof is distinct from family, package and actual-platform acceptance.",
+        "Firefox 155 crash cause remains unverified despite passing official 156.0.1 control.",
+        "Historical release success does not close the later Chromium Hover Card baseline failure.",
+        "Actual OS IME/dictation/autofill, actual Safari/assistive technology and background-window checks remain unperformed."
+      ]
+    },
+    {
+      "source": "notes/alignment/migration-plan.md",
+      "destination": "tasks/done/systematization/todo.md",
+      "sourceSha256": "3993f95efcf519aee461189850b6795a4b04b8dc824f57545bfb1ba4435f65d3",
+      "destinationSha256": "6696b4932aa19089f1746ab648eb4366dd60191ab3da0f7677f3134a8ddea98a",
+      "changes": [
+        "Projected completed M00–M26 tasks and authorized release closure into a checked list with exact plan anchors.",
+        "Kept proof boundaries and unperformed-platform limits separate from checked implementation milestones."
+      ],
+      "retainedQualifications": [
+        "The first shared browser command remains red in the record; combined acceptance is not an original green run.",
+        "Published tags/archives remain immutable; this completed plan grants no new external permission."
+      ]
+    }
+  ],
+  "sourceTrace": [
+    {
+      "sourceLines": [
+        1,
+        6
+      ],
+      "sourceHeading": "Phase 5 migration plan",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        7,
+        32
+      ],
+      "sourceHeading": "Current evidence and final structure",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope."
+    },
+    {
+      "sourceLines": [
+        33,
+        48
+      ],
+      "sourceHeading": "M00 — Close pre-implementation evidence",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        49,
+        75
+      ],
+      "sourceHeading": "Implementation progress",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope."
+    },
+    {
+      "sourceLines": [
+        76,
+        116
+      ],
+      "sourceHeading": "Ordered implementation work packages",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        117,
+        127
+      ],
+      "sourceHeading": "Per-slice acceptance and removal checks",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope."
+    },
+    {
+      "sourceLines": [
+        128,
+        135
+      ],
+      "sourceHeading": "Publishing and completion",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope."
+    },
+    {
+      "sourceLines": [
+        136,
+        141
+      ],
+      "sourceHeading": "M07 foundation completion — 2026-09-21",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        142,
+        147
+      ],
+      "sourceHeading": "M08 completion — 2026-09-21",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        148,
+        151
+      ],
+      "sourceHeading": "M09 icon-delivery checkpoint — 2026-09-21",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        152,
+        155
+      ],
+      "sourceHeading": "M09 action acceptance — 2026-09-21",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        156,
+        159
+      ],
+      "sourceHeading": "M09 completion — 2026-09-21",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        160,
+        167
+      ],
+      "sourceHeading": "M10/M11 integration return points — 2026-09-21",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        168,
+        171
+      ],
+      "sourceHeading": "M10 standalone Checkbox slice — 2026-09-21",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        172,
+        175
+      ],
+      "sourceHeading": "M10 Checkbox Group/Card slice — 2026-09-21",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        176,
+        181
+      ],
+      "sourceHeading": "Radio / Toolbar integration return point — 2026-09-21",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        182,
+        196
+      ],
+      "sourceHeading": "Exact-parity census scope for rebuilt controls — 2026-09-21",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        197,
+        200
+      ],
+      "sourceHeading": "M10 Radio family slice — 2026-09-21",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        201,
+        204
+      ],
+      "sourceHeading": "M10 shared indicator checkpoint — 2026-09-21",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        205,
+        208
+      ],
+      "sourceHeading": "M10 Segmented Control and Switch — 2026-09-21",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        209,
+        212
+      ],
+      "sourceHeading": "M10 Theme Switcher — 2026-09-21",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        213,
+        216
+      ],
+      "sourceHeading": "M10 Tabs implementation and M22 return point — 2026-09-21",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        217,
+        220
+      ],
+      "sourceHeading": "M10 completion — 2026-09-22",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        221,
+        224
+      ],
+      "sourceHeading": "M11 Fieldset native container and M22 return point — 2026-09-22",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        225,
+        228
+      ],
+      "sourceHeading": "M11 Fieldset acceptance — 2026-09-22",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        229,
+        232
+      ],
+      "sourceHeading": "M11 Label acceptance — 2026-09-22",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        233,
+        236
+      ],
+      "sourceHeading": "M11 Field acceptance — 2026-09-22",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        237,
+        243
+      ],
+      "sourceHeading": "M11 text and managed-form acceptance — 2026-09-22",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        244,
+        248
+      ],
+      "sourceHeading": "M12 Number Input acceptance — 2026-09-22",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        249,
+        252
+      ],
+      "sourceHeading": "M12 complete — 2026-09-22",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        253,
+        259
+      ],
+      "sourceHeading": "M13 Menu family and Split Button complete — 2026-09-22",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        260,
+        264
+      ],
+      "sourceHeading": "M13 selection replacement in verification — 2026-09-22",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        265,
+        269
+      ],
+      "sourceHeading": "M13 selection family complete — 2026-09-22",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        270,
+        273
+      ],
+      "sourceHeading": "M13 Slider complete — 2026-09-22",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        274,
+        277
+      ],
+      "sourceHeading": "M13 complete — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        278,
+        281
+      ],
+      "sourceHeading": "M14 native-content and Disabled Wall slice — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        282,
+        285
+      ],
+      "sourceHeading": "M14 Card/Inset/Item slice — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        286,
+        289
+      ],
+      "sourceHeading": "M14 Scroll Area slice — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        290,
+        293
+      ],
+      "sourceHeading": "M14 complete — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        294,
+        297
+      ],
+      "sourceHeading": "M15 disclosure slice complete — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        298,
+        301
+      ],
+      "sourceHeading": "M15 Steps and Timeline complete — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        302,
+        305
+      ],
+      "sourceHeading": "M15 navigation slice complete — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        306,
+        309
+      ],
+      "sourceHeading": "Native-dialog dependency order — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        310,
+        313
+      ],
+      "sourceHeading": "O01/O02/O03 brought-forward slice complete — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        314,
+        318
+      ],
+      "sourceHeading": "M15 complete — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        319,
+        323
+      ],
+      "sourceHeading": "M16 TOC acceptance — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        324,
+        328
+      ],
+      "sourceHeading": "M16 Sidebar acceptance — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        329,
+        333
+      ],
+      "sourceHeading": "M16 complete — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        334,
+        338
+      ],
+      "sourceHeading": "M17 complete — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        339,
+        343
+      ],
+      "sourceHeading": "M18 message surfaces — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        344,
+        348
+      ],
+      "sourceHeading": "M18 passive display surfaces — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        349,
+        353
+      ],
+      "sourceHeading": "M18 measurements — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        354,
+        357
+      ],
+      "sourceHeading": "M18 Stat family — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        358,
+        361
+      ],
+      "sourceHeading": "M18 scoped Toast — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        362,
+        365
+      ],
+      "sourceHeading": "M18 completion — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        366,
+        369
+      ],
+      "sourceHeading": "M19 completion — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        370,
+        373
+      ],
+      "sourceHeading": "M20 chart families — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        374,
+        377
+      ],
+      "sourceHeading": "M20 Flow implementation checkpoint — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        378,
+        381
+      ],
+      "sourceHeading": "M21 Browser and Snippet — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        382,
+        385
+      ],
+      "sourceHeading": "M21 Code Block — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        386,
+        389
+      ],
+      "sourceHeading": "M21 JSON View — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        390,
+        393
+      ],
+      "sourceHeading": "M20 current Firefox acceptance — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        394,
+        397
+      ],
+      "sourceHeading": "M21 Markdown — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        398,
+        401
+      ],
+      "sourceHeading": "M21 Book — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        402,
+        405
+      ],
+      "sourceHeading": "M21 Video and content batch closure — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        406,
+        409
+      ],
+      "sourceHeading": "M22 React package complete — 2026-09-23",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        410,
+        413
+      ],
+      "sourceHeading": "M23 documentation complete — 2026-09-26",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        414,
+        417
+      ],
+      "sourceHeading": "M24 consumer tooling implemented — 2026-09-26",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        418,
+        423
+      ],
+      "sourceHeading": "M25 local toolchain and release gates implemented — 2026-09-26",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        424,
+        431
+      ],
+      "sourceHeading": "M26 final combined acceptance in progress — 2026-09-26",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        432,
+        437
+      ],
+      "sourceHeading": "M26 local acceptance complete — 2026-09-26",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    },
+    {
+      "sourceLines": [
+        438,
+        444
+      ],
+      "sourceHeading": "Authorized release delivery — 2026-10-20",
+      "destinations": [
+        "tasks/done/systematization/plan.md"
+      ],
+      "disposition": "Full dated factual record and evidence retained; imperative workflow rewritten as historical scope.",
+      "summaryProjection": "tasks/done/systematization/todo.md"
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/alignment/migration-plan.md",
+      "from": "phase-5-migration-plan",
+      "to": "completed-systematization-migration-plan",
+      "destination": "tasks/done/systematization/plan.md",
+      "reason": "Completed-plan title and dated baseline replace active-stage labels."
+    },
+    {
+      "source": "notes/alignment/migration-plan.md",
+      "from": "current-evidence-and-final-structure",
+      "to": "baseline-and-originally-intended-structure",
+      "destination": "tasks/done/systematization/plan.md",
+      "reason": "Completed-plan title and dated baseline replace active-stage labels."
+    }
+  ],
+  "laterDecisions": [
+    "docs/decisions/0020-core-workspace.md",
+    "docs/decisions/0010-browser-distribution-package.md"
+  ],
+  "knownUnresolvedRequirements": [
+    "Named actual-platform checks remain unperformed.",
+    "Current Chromium Hover Card baseline failure remains owned by the active workflow specification."
+  ]
+}

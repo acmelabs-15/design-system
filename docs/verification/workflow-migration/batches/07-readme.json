@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-readme",
+  "status": "complete",
+  "recordedAt": "2026-10-22T05:42:47.960Z",
+  "verification": {
+    "passed": true,
+    "scope": "Full522-line source audit/conversion and split ownership review. Current migration state is prepared in STATUS; completed phases/checkpoints remain dated history. The old entry point still owns startup until task11.",
+    "history": {
+      "sourceSemanticReview": true,
+      "coordinatorGuardPending": true,
+      "originalDatesRetained": true,
+      "originalSectionHeadingsRetained": true,
+      "sourceEvidenceLinksRetained": true,
+      "retiredOwnershipLinkRetargeted": true
+    },
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/alignment/README.md",
+      "destination": "docs/STATUS.md",
+      "sourceSha256": "c76e2aa34c04ba4de00934d45a27c58da87cce420d6faeecf27daa6d58dce832",
+      "destinationSha256": "2680064317383c736cb74e5ca0844fab1c4129f9077d8a436451d52d9a5ef4cf",
+      "purpose": "Prepared current handoff; coordinator updates this living document through activation."
+    },
+    {
+      "source": "notes/alignment/README.md",
+      "destination": "docs/history/systematization/pass-history.md",
+      "sourceSha256": "c76e2aa34c04ba4de00934d45a27c58da87cce420d6faeecf27daa6d58dce832",
+      "destinationSha256": "2ee673aaa63e8043ad7f3af8a5b383dc1e277f40676ef5f33da1fb96f258e4f8",
+      "purpose": "Complete substantive history and original phase anchors; old process/grants are narrative."
+    }
+  ],
+  "mappedSections": [
+    {
+      "source": "Opening and Where we are current-migration state",
+      "destination": "docs/STATUS.md and approved migration spec/plan/tasks/task01-06 evidence",
+      "treatment": "Current state not duplicated; approval/branch provenance and dated baseline retained in workflow transition."
+    },
+    {
+      "source": "Where we are release/runtime/implementation prefix",
+      "destination": "Where we are / release closure, workflow transition, environment and limits",
+      "treatment": "All substantive closure counts, commit identities, evidence and platform/security qualifications retained as dated facts."
+    },
+    {
+      "source": "Earlier checkpoints, Proposal files, Decision and evidence index",
+      "destination": "Same original headings and linked evidence",
+      "treatment": "Old next actions and permission claims rewritten as historical decisions/results."
+    },
+    {
+      "source": "Why this library exists, Skills, Rules specific to this pass",
+      "destination": "Same original headings",
+      "treatment": "Purpose retained; local routing, priority overrides, source freeze and grants describe the completed process."
+    },
+    {
+      "source": "Phases0-6 and disposition/terminology/inventory sections",
+      "destination": "Same original headings",
+      "treatment": "Historical intent, scope, alternatives, examples and gates retained; operational directions rewritten as narrative."
+    },
+    {
+      "source": "Generated files and Output",
+      "destination": "Same original headings",
+      "treatment": "Current ownership map linked; retired path/output procedure described historically."
+    },
+    {
+      "source": "Trailing M10-M13 implementation/review checkpoints",
+      "destination": "Following Output",
+      "treatment": "Exact tests/failures/revisions preserved; worktrees/continuations scoped to recorded dates."
+    }
+  ],
+  "anchorChanges": [],
+  "limits": [
+    "Current migration progress is represented by coordinator-owned STATUS/tasks and task01-06 evidence, as requested.",
+    "Actual OS IME/dictation/autofill, Safari/assistive technology, real background-window behavior and owner-controlled credential rotation are not closed by this record.",
+    "Material Progress source coverage and other bounded research remain qualified.",
+    "Original illustrative Radio Card markup is retained as historical and is not a current API example.",
+    "The source README may change while coordinator maintains its live prefix; the recorded hash identifies the exact converted snapshot."
+  ],
+  "coordinatorAnchorRouting": {
+    "date": "2026-10-22T05:48:12.835Z",
+    "method": "Retargeted relative Markdown links using explicit source-anchor routes; fenced evidence and external URLs unchanged."
+  }
+}

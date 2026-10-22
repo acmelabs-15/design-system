@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "batch": "07-conventions",
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Writer semantic/source review; coordinator guard and review pending",
+    "ownedReferenceReview": {
+      "passed": true,
+      "scope": "Six owned targets only; allocated pending destinations are not final migration acceptance.",
+      "links": 419,
+      "pendingAllocatedTargets": 32
+    },
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "files": [
+    {
+      "source": "notes/conventions.md",
+      "destination": "docs/development/interfaces.md",
+      "sourceSha256": "4e39e035ef6e48b24e8158e239d47d2c47e63cd73af908b45f7cec0adeac4409",
+      "destinationSha256": "1287d77a1eb5aaf63ebe884a3ca00fb29d04c17118cfb2f5f0ea2d15206195aa",
+      "changes": [
+        "Retargeted the eight normative navigation pointers to their allocated specification owners.",
+        "Replaced completed migration staging with current consumer-documentation ownership.",
+        "Kept direct component naming and original 2026-09-20 approval."
+      ],
+      "retainedQualifications": [
+        "No duplicate contract tables.",
+        "Whole-set approval does not prove implementation; explicit declined alternatives remain excluded.",
+        "Each family owns its extensions."
+      ]
+    }
+  ],
+  "sourceTrace": [
+    {
+      "sourceLines": [
+        1,
+        18
+      ],
+      "destination": "docs/development/interfaces.md",
+      "disposition": "Retained normative navigation and approval provenance; rewritten completed migration staging and direct component terminology."
+    }
+  ],
+  "anchorChanges": [],
+  "findings": []
+}

@@ -1,0 +1,551 @@
+{
+  "schemaVersion": 1,
+  "status": "complete",
+  "verification": {
+    "passed": true,
+    "scope": "Writer complete source-to-target semantic review, original source hashes and owned-reference checks; coordinator guard and independent review pending.",
+    "ownedReferenceReview": {
+      "passed": true,
+      "scope": "Six owned targets only; allocated pending destinations are not final migration acceptance.",
+      "links": 419,
+      "pendingAllocatedTargets": 32
+    },
+    "preservedStructuredContent": {
+      "propertyTable": "All 77 properties/types/targets/defaults match source exactly.",
+      "exampleBlocks": 9,
+      "examplesByteIdentical": true
+    },
+    "coordinatorReview": {
+      "status": "accepted",
+      "method": "Full source-to-target reviews, source/date/identifier retention, exact table/example checks, explicit later-resolution trace and independent semantic re-review. Aggregate preparation guard follows this completion update.",
+      "reviewRecord": "docs/verification/workflow-migration/task-07.json",
+      "limits": "Full migration acceptance remains pending;22 summary batches depend on runtime relocation."
+    }
+  },
+  "findings": [],
+  "batch": "07-inventory",
+  "files": [
+    {
+      "source": "notes/alignment/inventory.md",
+      "destination": "spec/SPEC-design-system.md",
+      "sourceSha256": "f7d266c6b5f654177ea55b9d0f6219422a82d393daf4f58a0f46877a1d4416d9",
+      "destinationSha256": "68db8a34ae035ae24efe47f0484b2038377f12c3a1d9f0576b20bb102bfed993",
+      "changes": [
+        "Retained approved shared architecture, all 77 property fields/types/targets/defaults, six complete core layout entries and all 9 unchanged example blocks.",
+        "Removed completed phase instructions and draft status from current requirements.",
+        "Folded only explicit later decisions: helper empty-object clearing, canonical minimum-input mode, Group --r token and logical collection size fallback.",
+        "Relocated links to final specification, decision, research and evidence owners."
+      ],
+      "retainedQualifications": [
+        "Original whole-set approval date/scope remains 2026-09-20; it does not certify current runtime behavior.",
+        "Subgrid across retained host/root boxes is not promised.",
+        "Current requirements stay intact even where a future implementation comparison could reveal a gap.",
+        "Three-engine mechanism evidence does not certify actual-platform accessibility."
+      ]
+    },
+    {
+      "source": "notes/alignment/inventory.md",
+      "destination": "docs/history/systematization/inventory-history.md",
+      "sourceSha256": "f7d266c6b5f654177ea55b9d0f6219422a82d393daf4f58a0f46877a1d4416d9",
+      "destinationSha256": "95981c823ab990c017eddd9411f1759537717b58a60898406b05ceda84912246",
+      "changes": [
+        "Separated original review order, phase boundaries, scratch counts and initial unresolved interfaces into dated history.",
+        "Preserved original/updated ownership, rejected alternatives, evidence sources and later resolution chronology without a new task queue."
+      ],
+      "retainedQualifications": [
+        "24-state/11-regression and15-native/6-failure probes remain bounded.",
+        "Whole-set approval is distinct from migration approval and testing.",
+        "Earlier proposed cleanup, API spellings and nonexistent radius token remain historical facts."
+      ]
+    }
+  ],
+  "sourceTrace": [
+    {
+      "sourceLines": [
+        1,
+        6
+      ],
+      "sourceHeading": "Design-system inventory",
+      "destinations": [
+        "spec/SPEC-design-system.md",
+        "docs/history/systematization/inventory-history.md"
+      ],
+      "disposition": "Retain accepted requirement in specification; preserve original qualification and stage in history."
+    },
+    {
+      "sourceLines": [
+        7,
+        28
+      ],
+      "sourceHeading": "Complete proposal set",
+      "destinations": [
+        "spec/SPEC-design-system.md"
+      ],
+      "disposition": "Retain complete approved contract, examples, values, references and acceptance requirements."
+    },
+    {
+      "sourceLines": [
+        29,
+        30
+      ],
+      "sourceHeading": "Shared architecture carried forward",
+      "destinations": [
+        "spec/SPEC-design-system.md",
+        "docs/history/systematization/inventory-history.md"
+      ],
+      "disposition": "Retain accepted requirement in specification; preserve original qualification and stage in history."
+    },
+    {
+      "sourceLines": [
+        31,
+        40
+      ],
+      "sourceHeading": "Overlay lifetime, placement and coordination",
+      "destinations": [
+        "spec/SPEC-design-system.md",
+        "docs/history/systematization/inventory-history.md"
+      ],
+      "disposition": "Retain accepted requirement in specification; preserve original qualification and stage in history."
+    },
+    {
+      "sourceLines": [
+        41,
+        50
+      ],
+      "sourceHeading": "Canonical state and public properties",
+      "destinations": [
+        "spec/SPEC-design-system.md",
+        "docs/history/systematization/inventory-history.md"
+      ],
+      "disposition": "Retain accepted requirement in specification; preserve original qualification and stage in history."
+    },
+    {
+      "sourceLines": [
+        51,
+        60
+      ],
+      "sourceHeading": "Native form mechanics",
+      "destinations": [
+        "spec/SPEC-design-system.md",
+        "docs/history/systematization/inventory-history.md"
+      ],
+      "disposition": "Retain accepted requirement in specification; preserve original qualification and stage in history."
+    },
+    {
+      "sourceLines": [
+        61,
+        68
+      ],
+      "sourceHeading": "Effective theme and preference storage",
+      "destinations": [
+        "spec/SPEC-design-system.md",
+        "docs/history/systematization/inventory-history.md"
+      ],
+      "disposition": "Retain accepted requirement in specification; preserve original qualification and stage in history."
+    },
+    {
+      "sourceLines": [
+        69,
+        78
+      ],
+      "sourceHeading": "Style production",
+      "destinations": [
+        "spec/SPEC-design-system.md",
+        "docs/history/systematization/inventory-history.md"
+      ],
+      "disposition": "Retain accepted requirement in specification; preserve original qualification and stage in history."
+    },
+    {
+      "sourceLines": [
+        79,
+        85
+      ],
+      "sourceHeading": "Content and interaction architecture recommendations",
+      "destinations": [
+        "spec/SPEC-design-system.md",
+        "docs/history/systematization/inventory-history.md"
+      ],
+      "disposition": "Retain accepted requirement in specification; preserve original qualification and stage in history."
+    },
+    {
+      "sourceLines": [
+        86,
+        93
+      ],
+      "sourceHeading": "Component review order",
+      "destinations": [
+        "docs/history/systematization/inventory-history.md"
+      ],
+      "disposition": "Retain dated review/approval history; retire active procedure."
+    },
+    {
+      "sourceLines": [
+        94,
+        103
+      ],
+      "sourceHeading": "C-RESP: Shared responsive convention",
+      "destinations": [
+        "spec/SPEC-design-system.md"
+      ],
+      "disposition": "Retain complete approved contract, examples, values, references and acceptance requirements."
+    },
+    {
+      "sourceLines": [
+        104,
+        115
+      ],
+      "sourceHeading": "C-SPACE: Shared layout and spacing properties",
+      "destinations": [
+        "spec/SPEC-design-system.md",
+        "docs/history/systematization/inventory-history.md"
+      ],
+      "disposition": "Retain accepted requirement in specification; preserve original qualification and stage in history."
+    },
+    {
+      "sourceLines": [
+        116,
+        121
+      ],
+      "sourceHeading": "C-SIZE: Numeric dimensions and independent theme values",
+      "destinations": [
+        "spec/SPEC-design-system.md"
+      ],
+      "disposition": "Retain complete approved contract, examples, values, references and acceptance requirements."
+    },
+    {
+      "sourceLines": [
+        122,
+        129
+      ],
+      "sourceHeading": "C-AS: Native element semantics",
+      "destinations": [
+        "spec/SPEC-design-system.md"
+      ],
+      "disposition": "Retain complete approved contract, examples, values, references and acceptance requirements."
+    },
+    {
+      "sourceLines": [
+        130,
+        135
+      ],
+      "sourceHeading": "Core layout proposal for review",
+      "destinations": [
+        "spec/SPEC-design-system.md",
+        "docs/history/systematization/inventory-history.md"
+      ],
+      "disposition": "Retain accepted requirement in specification; preserve original qualification and stage in history."
+    },
+    {
+      "sourceLines": [
+        136,
+        148
+      ],
+      "sourceHeading": "Which layout element to use",
+      "destinations": [
+        "spec/SPEC-design-system.md"
+      ],
+      "disposition": "Retain complete approved contract, examples, values, references and acceptance requirements."
+    },
+    {
+      "sourceLines": [
+        149,
+        168
+      ],
+      "sourceHeading": "Shared value and input contract",
+      "destinations": [
+        "spec/SPEC-design-system.md",
+        "docs/history/systematization/inventory-history.md"
+      ],
+      "disposition": "Retain accepted requirement in specification; preserve original qualification and stage in history."
+    },
+    {
+      "sourceLines": [
+        169,
+        189
+      ],
+      "sourceHeading": "Responsive authoring proposal",
+      "destinations": [
+        "spec/SPEC-design-system.md",
+        "docs/history/systematization/inventory-history.md"
+      ],
+      "disposition": "Retain accepted requirement in specification; preserve original qualification and stage in history."
+    },
+    {
+      "sourceLines": [
+        190,
+        193
+      ],
+      "sourceHeading": "Common box properties",
+      "destinations": [
+        "spec/SPEC-design-system.md"
+      ],
+      "disposition": "Retain complete approved contract, examples, values, references and acceptance requirements."
+    },
+    {
+      "sourceLines": [
+        194,
+        226
+      ],
+      "sourceHeading": "Candidate property table",
+      "destinations": [
+        "spec/SPEC-design-system.md"
+      ],
+      "disposition": "Retain complete approved contract, examples, values, references and acceptance requirements."
+    },
+    {
+      "sourceLines": [
+        227,
+        238
+      ],
+      "sourceHeading": "Semantics, state, events and lifecycle",
+      "destinations": [
+        "spec/SPEC-design-system.md",
+        "docs/history/systematization/inventory-history.md"
+      ],
+      "disposition": "Retain accepted requirement in specification; preserve original qualification and stage in history."
+    },
+    {
+      "sourceLines": [
+        239,
+        290
+      ],
+      "sourceHeading": "HTML, Lit and React authoring",
+      "destinations": [
+        "spec/SPEC-design-system.md",
+        "docs/history/systematization/inventory-history.md"
+      ],
+      "disposition": "Retain accepted requirement in specification; preserve original qualification and stage in history."
+    },
+    {
+      "sourceLines": [
+        291,
+        307
+      ],
+      "sourceHeading": "Review choices and approval gates",
+      "destinations": [
+        "docs/history/systematization/inventory-history.md"
+      ],
+      "disposition": "Retain dated review/approval history; retire active procedure."
+    },
+    {
+      "sourceLines": [
+        308,
+        323
+      ],
+      "sourceHeading": "L-01: Box",
+      "destinations": [
+        "spec/SPEC-design-system.md"
+      ],
+      "disposition": "Retain complete approved contract, examples, values, references and acceptance requirements."
+    },
+    {
+      "sourceLines": [
+        324,
+        355
+      ],
+      "sourceHeading": "L-02: Stack family",
+      "destinations": [
+        "spec/SPEC-design-system.md"
+      ],
+      "disposition": "Retain complete approved contract, examples, values, references and acceptance requirements."
+    },
+    {
+      "sourceLines": [
+        356,
+        389
+      ],
+      "sourceHeading": "L-03: Simple Grid",
+      "destinations": [
+        "spec/SPEC-design-system.md"
+      ],
+      "disposition": "Retain complete approved contract, examples, values, references and acceptance requirements."
+    },
+    {
+      "sourceLines": [
+        390,
+        413
+      ],
+      "sourceHeading": "L-04: Flex",
+      "destinations": [
+        "spec/SPEC-design-system.md"
+      ],
+      "disposition": "Retain complete approved contract, examples, values, references and acceptance requirements."
+    },
+    {
+      "sourceLines": [
+        414,
+        434
+      ],
+      "sourceHeading": "L-05: Grid",
+      "destinations": [
+        "spec/SPEC-design-system.md"
+      ],
+      "disposition": "Retain complete approved contract, examples, values, references and acceptance requirements."
+    },
+    {
+      "sourceLines": [
+        435,
+        438
+      ],
+      "sourceHeading": "T-01: Text",
+      "destinations": [
+        "spec/SPEC-typography.md#shared-typography-interface"
+      ],
+      "disposition": "Remove redirect stub; complete typography owner already retains meaning."
+    },
+    {
+      "sourceLines": [
+        439,
+        442
+      ],
+      "sourceHeading": "T-02: Heading",
+      "destinations": [
+        "spec/SPEC-typography.md#shared-typography-interface"
+      ],
+      "disposition": "Remove redirect stub; complete typography owner already retains meaning."
+    },
+    {
+      "sourceLines": [
+        443,
+        446
+      ],
+      "sourceHeading": "G-01: Group",
+      "destinations": [
+        "spec/SPEC-design-system.md",
+        "docs/history/systematization/inventory-history.md"
+      ],
+      "disposition": "Retain accepted requirement in specification; preserve original qualification and stage in history."
+    },
+    {
+      "sourceLines": [
+        447,
+        466
+      ],
+      "sourceHeading": "Properties and defaults",
+      "destinations": [
+        "spec/SPEC-design-system.md"
+      ],
+      "disposition": "Retain complete approved contract, examples, values, references and acceptance requirements."
+    },
+    {
+      "sourceLines": [
+        467,
+        484
+      ],
+      "sourceHeading": "Compatible defaults and membership",
+      "destinations": [
+        "spec/SPEC-design-system.md"
+      ],
+      "disposition": "Retain complete approved contract, examples, values, references and acceptance requirements."
+    },
+    {
+      "sourceLines": [
+        485,
+        505
+      ],
+      "sourceHeading": "Border, corners, focus and slots",
+      "destinations": [
+        "spec/SPEC-design-system.md"
+      ],
+      "disposition": "Retain complete approved contract, examples, values, references and acceptance requirements."
+    },
+    {
+      "sourceLines": [
+        506,
+        548
+      ],
+      "sourceHeading": "Composition examples and boundaries",
+      "destinations": [
+        "spec/SPEC-design-system.md"
+      ],
+      "disposition": "Retain complete approved contract, examples, values, references and acceptance requirements."
+    },
+    {
+      "sourceLines": [
+        549,
+        555
+      ],
+      "sourceHeading": "Acceptance and dependencies",
+      "destinations": [
+        "spec/SPEC-design-system.md"
+      ],
+      "disposition": "Retain complete approved contract, examples, values, references and acceptance requirements."
+    }
+  ],
+  "anchorChanges": [
+    {
+      "source": "notes/alignment/inventory.md",
+      "from": "design-system-inventory",
+      "to": "design-system-contract",
+      "destination": "spec/SPEC-design-system.md",
+      "reason": "Current contract headings or historical ownership replace draft-stage headings; no forwarding specification stubs."
+    },
+    {
+      "source": "notes/alignment/inventory.md",
+      "from": "content-and-interaction-architecture-recommendations",
+      "to": "content-and-interaction-ownership",
+      "destination": "spec/SPEC-design-system.md",
+      "reason": "Current contract headings or historical ownership replace draft-stage headings; no forwarding specification stubs."
+    },
+    {
+      "source": "notes/alignment/inventory.md",
+      "from": "component-review-order",
+      "to": "approval-and-review-sequence",
+      "destination": "docs/history/systematization/inventory-history.md",
+      "reason": "Current contract headings or historical ownership replace draft-stage headings; no forwarding specification stubs."
+    },
+    {
+      "source": "notes/alignment/inventory.md",
+      "from": "core-layout-proposal-for-review",
+      "to": "core-layout-contract",
+      "destination": "spec/SPEC-design-system.md",
+      "reason": "Current contract headings or historical ownership replace draft-stage headings; no forwarding specification stubs."
+    },
+    {
+      "source": "notes/alignment/inventory.md",
+      "from": "responsive-authoring-proposal",
+      "to": "responsive-authoring",
+      "destination": "spec/SPEC-design-system.md",
+      "reason": "Current contract headings or historical ownership replace draft-stage headings; no forwarding specification stubs."
+    },
+    {
+      "source": "notes/alignment/inventory.md",
+      "from": "candidate-property-table",
+      "to": "property-table",
+      "destination": "spec/SPEC-design-system.md",
+      "reason": "Current contract headings or historical ownership replace draft-stage headings; no forwarding specification stubs."
+    },
+    {
+      "source": "notes/alignment/inventory.md",
+      "from": "review-choices-and-approval-gates",
+      "to": "review-choices-and-approval-gates",
+      "destination": "docs/history/systematization/inventory-history.md",
+      "reason": "Current contract headings or historical ownership replace draft-stage headings; no forwarding specification stubs."
+    },
+    {
+      "source": "notes/alignment/inventory.md",
+      "from": "t-01-text",
+      "to": "shared-typography-interface",
+      "destination": "spec/SPEC-typography.md",
+      "reason": "Current contract headings or historical ownership replace draft-stage headings; no forwarding specification stubs."
+    },
+    {
+      "source": "notes/alignment/inventory.md",
+      "from": "t-02-heading",
+      "to": "shared-typography-interface",
+      "destination": "spec/SPEC-typography.md",
+      "reason": "Current contract headings or historical ownership replace draft-stage headings; no forwarding specification stubs."
+    }
+  ],
+  "laterDecisions": [
+    "docs/decisions/0049-inventory-approval.md",
+    "docs/decisions/0052-layout-spacing-properties.md",
+    "docs/decisions/0051-layout-grid.md",
+    "docs/decisions/0045-group-presentation.md",
+    "docs/decisions/0035-execution-delegation.md"
+  ],
+  "knownUnresolvedRequirements": [
+    "Subgrid needs separate feasibility evidence before support is advertised.",
+    "Actual-platform accessibility is not certified by this conversion."
+  ]
+}
