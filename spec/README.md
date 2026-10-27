@@ -4,7 +4,7 @@ This index routes the shared design-system contracts and the approved maintainer
 
 | Work | Status | Specification |
 |---|---|---|
-| MCP dependency advisory, [issue #9](https://github.com/acmelabs-15/design-system/issues/9) | Plan approved by Peter, 2026-10-27; tasks 1–4 complete; publication awaits approval | No contract change; [plan](../tasks/plan.md), [tasks](../tasks/todo.md), [release record](../docs/releases/0.3.3.md) |
+| MCP dependency advisory, [issue #9](https://github.com/acmelabs-15/design-system/issues/9) | Plan approved by Peter, 2026-10-27; tasks 1–4 complete; publication approved and in progress | No contract change; [plan](../tasks/plan.md), [tasks](../tasks/todo.md), [release record](../docs/releases/0.3.3.md) |
 | Maintainer workflow | Completed and merged, 2026-10-22 | [Maintainer workflow](SPEC-maintainer-workflow.md), [plan](../tasks/done/maintainer-workflow/plan.md), [tasks](../tasks/done/maintainer-workflow/todo.md) |
 | Released design system | Version 0.3.2 is released; converted contracts retain whole-set approval and explicit later resolutions | [Design-system contract](SPEC-design-system.md), [release record](../docs/releases/0.3.2.md) |
 

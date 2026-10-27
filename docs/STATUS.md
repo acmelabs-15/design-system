@@ -10,13 +10,18 @@ Tasks 1 to 4 are complete on branch claude/issue-9-mcp-dependencies. The MCP pac
 
 ## Next step
 
-Checkpoint 2 waits for Peter's approval of the task 5 outward actions. After approval, in this order:
+Task 5, publication, is in progress. Peter approves the held-Pages plan on 2026-10-27. The order:
 
-1. Push the branch and open a PR to main.
-2. Pass the Linux quality checks on the PR head, then merge with a merge commit.
-3. Tag v0.3.3 on the merge commit and pass the publish workflow.
-4. Verify the five public npm versions, their provenance and latest tags, and a fresh consumer's `zod` resolution.
-5. Publish the GitHub release, verify Pages, then comment on and close issue #9.
+1. Set the repository variable `ACME_PAGES_ENABLED` to false.
+2. Push the branch and open a PR to main.
+3. Pass the Linux quality checks on the PR head, then merge with a merge commit.
+4. Tag v0.3.3 on the merge commit and pass the publish workflow.
+5. Verify the five public npm versions, their provenance and latest tags, and a fresh consumer's `zod` resolution.
+6. Set `ACME_PAGES_ENABLED` to true, rerun the documentation deploy for the merge commit, and verify the site.
+7. Publish the GitHub release, then comment on and close issue #9.
+8. Land the final records through a records-only PR.
+
+If this session stops, check the GitHub state of each step before repeating it. `ACME_PAGES_ENABLED` must return to true.
 
 ## Red checks
 
@@ -55,7 +60,7 @@ The verified local browser runtime is:
 
 These paths are machine-specific. Verify them before use. The [verification guide](agents/verification.md) owns check policy and dependency order.
 
-Plan approval authorizes local implementation and verified local commits on the work branch. No push, PR, merge, tag, release or publication is authorized yet. Task 5 needs Peter's separate approval. The earlier migration approvals do not cover this work.
+Plan approval authorizes local implementation and verified local commits on the work branch. On 2026-10-27 Peter approves the task 5 outward actions in the held-Pages order above: the two variable changes, push, PR, merge with a merge commit after passing checks, tag v0.3.3, npm publication, deploy rerun, GitHub release, the issue #9 comment and closure, and the final records PR. This approval covers release 0.3.3 only. The earlier migration approvals do not cover this work.
 
 ## Product checkpoint
 

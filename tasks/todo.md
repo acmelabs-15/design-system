@@ -9,7 +9,7 @@ Status: approved by Peter on 2026-10-27 through the task-size, dependency-order 
 - [x] Checkpoint 1: audit, units, static checks, types and build are green
 - [x] 3. Coordinated version 0.3.3
 - [x] 4. Release record, complete gate and review
-- [ ] Checkpoint 2: ready for publication; Peter's outward-action approval
+- [x] Checkpoint 2: ready for publication; Peter's outward-action approval
 - [ ] 5. Publication and issue #9 closure
 
 ## Task 1: MCP runtime dependencies
@@ -97,7 +97,7 @@ Status: approved by Peter on 2026-10-27 through the task-size, dependency-order 
 ## Checkpoint 2
 
 - [x] Every acceptance check of tasks 1–4 has evidence.
-- [ ] Peter approves the outward actions of task 5.
+- [x] Peter approves the outward actions of task 5: on 2026-10-27 he selects "Approve, hold Pages", the 0.3.2 order with Pages held until npm verifies.
 
 ## Task 5: Publication and issue #9 closure
 
