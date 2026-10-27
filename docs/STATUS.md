@@ -1,26 +1,26 @@
 # Project status
 
-Updated 2026-10-22. This file is the sole current handoff for the repository.
+Updated 2026-10-27. This file is the sole current handoff for the repository.
 
 ## Current work
 
-The maintainer workflow migration is implemented and published through [PR #7](https://github.com/acmelabs-15/design-system/pull/7). Its merge commit is 5488580a6aec0abac16470656aecb38f6f9c4840. All twelve tasks and Checkpoint D are complete. [Specification](../spec/SPEC-maintainer-workflow.md), [plan](../tasks/plan.md), [task list](../tasks/todo.md), [evidence](verification/workflow-migration/README.md).
+[Issue #9](https://github.com/acmelabs-15/design-system/issues/9): the published MCP package 0.3.2 pins `zod` at exactly 4.6.5, which has a high advisory. The fix releases 0.3.3 of all five packages. [Plan](../tasks/plan.md), [tasks](../tasks/todo.md).
 
-Brain and agent-skills now provide one shared workflow for all five packages. All 970 original files are migrated or explicitly retired. The old notes tree, root port plan and five local skills are removed. Component behavior, dependencies and package versions are unchanged.
+Peter approves the plan on 2026-10-27. He selects caret ranges for both MCP runtime dependencies: `zod ^4.6.7` and `@modelcontextprotocol/sdk ^1.32.0`. Work happens on branch claude/issue-9-mcp-dependencies.
 
 ## Next step
 
-Only delivery of the final records can remain. Check the GitHub PR for the branch codex/workflow-publication-receipt. If it is open, finish its checks and merge with a merge commit under Peter's existing full-publication approval. Once that PR is merged, no migration work or pending decision remains. Await Peter's next request.
+Start task 1, MCP runtime dependencies. Tasks 1 and 2 are independent; task 3 waits for both.
 
-This receipt certifies the implementation merge and deployment above. GitHub records the receipt PR's own checks and merge, so another receipt commit is unnecessary. Inspect local Git status before resuming and preserve unrelated work. [Publication receipt and authorization](verification/workflow-migration/task-12.json).
+## Red checks
 
-## Verification
+The dependency audit fails with four unresolved high findings: `zod`, `body-parser`, `happy-dom` and `undici`. Tasks 1 and 2 own them. The quality workflow runs the audit stage, so every PR fails until they are fixed. [Baseline](../tasks/plan.md#baseline).
 
-- The complete [PR quality run](https://github.com/acmelabs-15/design-system/actions/runs/39765513004) passes on reviewed head 9fa57f8287bf151f7de53bb64e8f5597110220ff. The merge has both expected parents and an identical source tree.
-- The complete [main quality run](https://github.com/acmelabs-15/design-system/actions/runs/39771017002) and [documentation workflow](https://github.com/acmelabs-15/design-system/actions/runs/39771017203) pass on the merge commit. GitHub Pages deploys the verified artifact.
-- The [live documentation](https://acmelabs-15.github.io/design-system/) passes the isolated browser check. Home-to-Button navigation, native link naming and component rendering work. No console error, warning or network failure occurs. The index, application script, documentation stylesheet and Button page match the deployed artifact byte for byte.
-- The migration guard accounts for 970 sources, 980 destinations and 197 batches, with zero errors or pending references. All 728 original raw files retain their bytes. Three release-body evidence links now use the immutable pre-migration commit. Tag objects and all eight release assets remain unchanged.
-- Earlier local attempts, resumed stages, host checks and five-axis reviews remain in [task 12](verification/workflow-migration/task-12.json). A complete local full-gate invocation did not pass uninterrupted; the later complete GitHub runs do. Fresh-host checks are bounded samples. They do not certify compaction, process cancellation or write-time handoff. Native Claude package imports retain their recorded consent limitation; the explicit shared-file read passes.
+## Working tree
+
+Another session owns uncommitted changes from 2026-10-22 and 2026-10-23: `.vscode/settings.json`, `src/components/checkbox-card/checkbox-card.ts`, `AGENTS_proposal.md`, `CLAUDE_proposal.md` and `README_proposal.md`. They stay in the working tree and are never staged with this work.
+
+The maintainer workflow migration is complete. Its plan and tasks are in [tasks/done/maintainer-workflow](../tasks/done/maintainer-workflow/plan.md). PR #8 merges its publication receipt as 76acca900.
 
 ## Open follow-ups
 
@@ -48,10 +48,10 @@ The verified local browser runtime is:
 
 These paths are machine-specific. Verify them before use. The [verification guide](agents/verification.md) owns check policy and dependency order.
 
-Peter approves this migration's local work and commits. His explicit 2026-10-22 full-publication approval covers its push, PR, three link-only release edits, merge after passing checks, normal documentation deployment and final records. The earlier Claude verification approval covers its recorded transmissions. Neither approval grants permission for a new feature or unrelated publication.
+Plan approval authorizes local implementation and verified local commits on the work branch. No push, PR, merge, tag, release or publication is authorized. Task 5 needs Peter's separate approval, asked once at checkpoint 2. The earlier migration approvals do not cover this work.
 
 ## Product checkpoint
 
-The systematization pass is implemented and released as 0.3.2 across five packages. Its [release record](releases/0.3.2.md) preserves that release's acceptance and limits. This maintainer migration creates no new package release.
+Version 0.3.2 is the latest release across five packages. Its [release record](releases/0.3.2.md) preserves that release's acceptance and limits.
 
 The [specification index](../spec/README.md) routes current contracts. [Decisions](decisions/README.md), [research](research/README.md) and [completed pass history](history/systematization/pass-history.md) provide supporting context.

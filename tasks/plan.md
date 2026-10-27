@@ -1,188 +1,92 @@
-# Implementation plan: maintainer workflow migration
+# Implementation plan: MCP dependency advisory
 
-Status: approved by Peter for local implementation on 2026-10-21. Current execution state belongs in [STATUS](../docs/STATUS.md).
-
-Task state belongs in [todo.md](todo.md). [STATUS](../docs/STATUS.md) is the current handoff.
+Status: approved by Peter on 2026-10-27 through the task-size, dependency-order and task-boundary questions. Current execution state belongs in [STATUS](../docs/STATUS.md). Task state belongs in [todo.md](todo.md).
 
 ## Outcome
 
-One brain-led workflow serves the monorepo. Current state, specifications, tasks, decisions, research, release records and evidence use the new structure. All five local skills and the old active structure are removed.
+[Issue #9](https://github.com/acmelabs-15/design-system/issues/9) reports that `@acmelabs/design-system-mcp` 0.3.2 pins `zod` at exactly 4.6.5. Every `zod` version below 4.6.6 has a high advisory, [GHSA-mrhx-c7xc-m3w5](https://github.com/advisories/GHSA-mrhx-c7xc-m3w5). The exact pin stops consumers from getting the fix without a new release.
 
-The migration preserves information and verification strength. It retires conflicting instructions instead of carrying them forward as exceptions.
+This work releases 0.3.3 of all five packages. The MCP package declares `zod ^4.6.7` and `@modelcontextprotocol/sdk ^1.32.0`. The dependency audit reports no unresolved high or critical finding. Issue #9 closes with evidence.
 
-## Baseline and scope
+## Baseline
 
-- Branch: codex/maintainer-workflow-migration, starting from the locally committed proposal d009bdc35.
-- The initial inventory contains 930 tracked files. Two proposal records make the original baseline 932. A later full filesystem census captures 38 ignored verification logs, bringing source coverage to 970. The original baseline remains fixed; the supplemental Git capture adds only the omitted evidence. Finder metadata has a local backup and stays outside project evidence.
-- Main remains at the recorded 0.3.2 closure revision. Its quality run passes; a separate documentation run fails one Chromium Hover Card case. The cause remains unverified.
-- The runner currently lists 23 browser entry points and creates 24 invocations, because scoped registration runs in two modes. Nineteen entry points live under the old evidence tree.
-- Source components, dependencies and published versions are outside this migration. Active verification code and documentation-reference consumers must change where paths require it.
+Recorded 2026-10-27 on main 76acca900, with Bun 1.4.2 from the verified local runtime.
 
-[Baseline evidence](../docs/verification/workflow-migration/initial-research.json).
+- The last complete quality run, [39771017002](https://github.com/acmelabs-15/design-system/actions/runs/39771017002) on 5488580a6, passes. Run 39784095475 on 76acca900 is cancelled.
+- `bun scripts/dependency-audit.ts` fails with four unresolved high findings. The two existing reviewed dispositions still verify.
 
-## Implementation choices
+| Package | Locked version | Advisory | First fix | Reaches |
+|---|---|---|---|---|
+| `zod` | 4.6.5 | [GHSA-mrhx-c7xc-m3w5](https://github.com/advisories/GHSA-mrhx-c7xc-m3w5) | 4.6.6 | MCP runtime: direct exact pin |
+| `body-parser` | 2.3.0 | [GHSA-27r3-jxmh-p828](https://github.com/advisories/GHSA-27r3-jxmh-p828) | 2.4.0 | MCP runtime: SDK, then `express` `^2.2.1` |
+| `happy-dom` | 20.14.0 | [GHSA-834v-8h66-3h79](https://github.com/advisories/GHSA-834v-8h66-3h79) | 21.0.4 | Development: unit fixtures, exact pin |
+| `undici` | 8.11.2 | [GHSA-xjj6-f33q-929c](https://github.com/advisories/GHSA-xjj6-f33q-929c) | 8.12.2 | Lockfile entry only; see below |
 
-| Choice | Evidence and reason |
+The `undici` entry is `npm/undici` under the pinned `npm` 12.0.2 development tool. The `npm` tarball bundles `node-gyp` 13.0.0, which requires `undici ^6.25.0`. The installed copy is 6.27.0, outside the advisory range. Bun records a resolution for the bundled dependency (`npm/node-gyp@13.0.2`, `npm/undici@8.11.2`) but installs the bundled files. `bun audit` reads the recorded resolution.
+
+Moderate and low findings do not block the gate. Those under the MCP runtime (`fast-uri`, `ip-address`, `qs`) refresh with the same lockfile operation where a fix exists inside the declared range.
+
+## Decisions
+
+| Decision | Source and reason |
 |---|---|
-| Decouple browser-check behavior from filenames first | scripts/check.ts uses an exact old path for the two scoped modes and a filename regex for audit outputs. A rename can silently change the check plan. Stable check identities make path moves independent of those behaviors. |
-| Use a complete migration ledger | The old tree mixes current instructions, historical prose, raw evidence, live drivers, helpers and fixtures. Extension-based moves would misclassify files. |
-| Use a narrow migration verifier, not a new workflow manager | Coverage, hashes, links and references need repeatable checks. It must not infer whether prose is correct or maintain a second task queue. |
-| Prepare targets, migrate consumers, then remove the old structure | This is a wide refactor. Temporary preparation copies can exist on the integration branch; only the old entry point is active until the cutover. The final tree has no compatibility copies or forwarding links. |
-| Review semantic rewrites separately from mechanical moves | A hash proves byte preservation, not that an edited decision retained its meaning. |
-| Keep one handoff and one active plan/task list | The five packages share source and generated metadata. Separate workflows would create conflicting state. |
-| Keep the two existing contexts | They represent distinct terminology, already selected by Peter. No package-per-glossary expansion is needed. |
-| Serialize shared operations | One coordinator owns the ledger, indexes, current task state, cutover, build and generator runs. Workers receive disjoint files and result-file paths. |
-
-Numbered document names are allocated once in the ledger. Preserve dates and original source identities separately; numbering must not invent a chronology or approval.
+| Caret ranges for both MCP runtime dependencies | Peter, 2026-10-27, through the dependency-declaration question. Consumers get upstream fixes without a design-system release. Accepted cost: a consumer can resolve a newer version that our CI did not test. |
+| Fix all four blocking findings by upgrade; add no new disposition | The publish workflow runs the quality workflow, which runs the audit stage. A release cannot pass with any of them. An upgrade removes the finding; a disposition only explains it. |
+| Refresh the `npm/undici` lockfile entry | The installed bytes are not affected, so the refresh changes no installed file. The underlying defect is Bun's recorded resolution for a bundled dependency. A local follow-up issue names it. |
+| Pin `happy-dom` and its global registrator at exact 21.0.4 | The root manifest pins both exactly. This keeps that convention. |
+| Keep the SDK locked at 1.32.0 | It is the tested version and has no blocking advisory. The new range lets consumers resolve later 1.32 releases. |
+| The install test restores the manifest's own `zod` value | The test now hard-codes 4.6.5 as the value to restore. Reading the original value removes that coupling. |
+| Coordinated version 0.3.3 | The [repository map](../docs/agents/repository.md) requires coordinated versions for all five packages. |
+| Work on branch claude/issue-9-mcp-dependencies | Another session has uncommitted files on main in the same checkout. They are never staged. The full gate runs on a clean committed candidate. |
 
 ## Ordered work
 
-The detailed acceptance checks are in todo.md. Rows 4–8 are batch groups, not single unchecked bulk edits.
-
 | Task | Deliverable | Blocked by |
 |---|---|---|
-| 1 | Browser check behavior survives path renaming | none |
-| 2 | Complete file/reference ledger and rule dispositions | none |
-| 3 | Coverage, integrity and reference guards | 2 |
-| 4 | Saved evidence at its final paths, with original bytes | 2, 3 |
-| 5 | Numbered decisions in the new format | 2, 3 |
-| 6 | Numbered research and its index | 2, 3 |
-| 7 | Current specifications, completed plans, design records and history | 4, 5, 6 |
-| 8 | Live verification drivers and fixtures at their final paths | 1, 2, 3; only consumed evidence batches from 4 |
-| 9 | New shared guidance and tracker adapters, prepared for activation | 2, 5, 6, 7 |
-| 10 | Source consumers use the new references and generated projections agree | 4, 5, 6, 7, 8 |
-| 11 | One atomic workflow cutover removes the old structure and local skills | 3, 9, 10 |
-| 12 | Full migration acceptance, fresh sessions and independent review | 11 |
+| 1 | MCP runtime dependencies: ranges, fixed lockfile, install test, decision record | none |
+| 2 | Development dependencies: `happy-dom` 21.0.4, refreshed `undici` entry, follow-up issue | none |
+| 3 | Coordinated version 0.3.3 across five packages and their projections | 1, 2 |
+| 4 | Release record, complete gate on a clean candidate, independent review | 3 |
+| 5 | Publication: PR, merge, tag, npm, GitHub release, Pages, issue #9 closure | 4 and Peter's outward-action approval |
 
-Tasks 1 and 2 can proceed independently. After task 3, disjoint evidence, decision and research batches can proceed independently. Task 8 waits only for the evidence or helper batches its checks actually consume, not the whole raw-evidence group. Tasks 7 and 8 can overlap once their own dependencies are complete. Tasks 10–12 are coordinated and sequential.
+Tasks 1 and 2 are independent. Task 3 is one mechanical change: the release policy rejects mixed versions, so it cannot land in smaller green parts.
 
 ### Checkpoints
 
-1. After tasks 1–3: runner behavior is unchanged; every source has a destination or justified retirement; guards fail on deliberate corruption.
-2. After the record batches and task 8: converted meaning is reviewed; raw hashes match; live checks execute at new paths.
-3. Before task 11: no unresolved live reference will be broken by deleting the old tree.
-4. After task 12: one active workflow, complete evidence, and actual fresh-session behavior verified.
-
-## Batch bounds
-
-The ledger allocates exact batch IDs and file lists before any file in that batch changes. Add each batch as its own checkbox under the owning task in todo.md. This refines the same approved work; it does not authorize new scope.
-
-| Batch | Bound and completion proof |
-|---|---|
-| Decision conversion | At most four authored records per task, plus their index/ledger update. Long or disputed records get their own task. Each decision and qualification has a source trace. |
-| Research conversion | At most two long notes or four short notes per task. Read each in full; distinguish facts, proposals, limits and dated history. |
-| Specifications and history | One family or at most four related records per task. Resolve provenance before calling a contract current. |
-| Raw evidence moves | One named release or milestone directory per task. These can contain many files because every byte is checked mechanically. No semantic editing in that commit. |
-| Verification code moves | One driver and its dependency closure per task; combine up to three short drivers only when their shared fixtures make that one unit. Record extra fixture files explicitly. |
-
-If a code batch grows beyond about five authored files, split it before editing. Data-only moves retain the wide-refactor exception and their full hash checks. No batch is complete merely because its files have moved.
-
-## Record ownership and formats
-
-The ledger records the old path and source revision/hash, destination, document kind, current/historical status, owning batch, reference consumers and verification method. It includes records created during this migration.
-
-The rule matrix records each instruction's source, retain/rewrite/retire/resolve disposition, the applicable brain or agent-skills guidance, and its sole new owner. A generic “old project rules win” exception is not permitted.
-
-| Record type | Target |
-|---|---|
-| Current state | docs/STATUS.md |
-| Agent routing and repository guidance | AGENTS.md, CLAUDE.md and docs/agents/ |
-| Compatible development constraints | docs/development/ |
-| Current contracts | spec/ |
-| Active plan/tasks | tasks/plan.md and tasks/todo.md |
-| Completed plans/tasks | tasks/done/systematization/ |
-| Decisions | docs/decisions/NNNN-slug.md |
-| Research | docs/research/NN-slug.md and README.md |
-| Original intent/interview records | docs/design/ |
-| Completed prose history | docs/history/ |
-| Release summaries | docs/releases/ |
-| Immutable evidence and migration reports | docs/verification/ |
-| Live acceptance code and its fixtures | scripts/verification/ |
-| Unresolved follow-ups | .scratch/maintenance/issues/ |
-
-Keep a requirement when its approved intent remains valid, even if current code does not implement it. Record that disagreement as an open issue. Do not silently rewrite the requirement to match the code.
-
-Retired process instructions remain available in Git history. Converted documents describe their history without presenting them as commands for the current agent.
-
-## Live verification migration
-
-The ledger follows imports, relative URLs, file reads, copied fixture trees, generated inputs and runner arguments. The currently known entry groups are:
-
-| Group | Existing area | Essential behavior |
-|---|---|---|
-| Shared helpers | evidence/browser-distribution.ts and its colocated test | Runtime and distribution setup remains shared |
-| React | m22-react | Wrapper behavior and default restoration |
-| Documentation pages | m23-docs pages, navigation and icons | Complete page coverage, route behavior and icon loading |
-| Documentation recipes | m23-docs recipes, accessibility, copied examples and video | Actual outcomes, cleanup and copied-consumer behavior |
-| Consumer tooling | m24-consumers | Packed installation and tools/skills contract |
-| Native forms | m26-native-forms | Real history restoration |
-| API/removal audits | m26-audit | Removed interfaces, defaults and Table patch proof |
-| Scoped registration | m26-scoped | Both module and CDN invocations |
-| Flow | m20-flow | All six entries, two origins and actual worker closure |
-| Bundle/worker consumers | m26-bundle and m26-audit | Archive arguments and consumer identity |
-| Component-case inputs | m26-audit/component-browser | cases.json and controls.json are live fixture inputs |
-| Release/security proof helpers | release-0.3.0 and any further discovered consumers | The npm cache regression and existing audit dispositions keep their meaning |
-
-This table is the known starting set. Task 2 must find transitive and dynamically named consumers before classifying the rest as historical.
-
-The normal lint walk includes scripts/ but excludes the old notes tree. Moved live code must satisfy its new authored-code checks. Historical example code stays classified as evidence. Do not add broad exclusions to make the move pass.
-
-Keep the runner's ordering, arguments, environment isolation, failure aggregation and output ownership. The complete browser plan must retain all 24 invocations unless new evidence leads to a separately reviewed change.
+1. After tasks 1 and 2: the audit reports no unresolved high or critical finding. The unit suite, static checks and types pass. The build shows no generated drift.
+2. After task 4: the complete gate passes on the clean candidate, and review findings are resolved. Then ask Peter once for the outward actions in task 5.
 
 ## Verification
 
-Run commands with Bun 1.4.2. The approved task uses brain's focused-per-slice verification and the complete final gate.
-
-Existing commands:
+Run every command with Bun 1.4.2 and the [verification guide](../docs/agents/verification.md). Focused checks run per task:
 
 ~~~sh
-bun test scripts/__tests__/check.test.ts
-bun test scripts/__tests__/release-workflows.test.ts
+bun scripts/dependency-audit.ts
+bun test packages/mcp/src/__tests__
+bun test scripts/__tests__/workspace-install.test.ts
+bun test
 bun scripts/check.ts static
 bun scripts/check.ts types
-bun run check
+bun run split
+bun run build
+bun run docs
+bun run build:tooling
+bun run release:prepare
+bun run release:validate
 git diff --check
 ~~~
 
-The migration guard and its colocated tests are new task-3 work. It proves file coverage, preserved hashes, destination uniqueness and resolvable active references. Its report keeps natural-language review separate from those mechanical proofs.
+Task 4 runs `bun run check` on the clean committed candidate. If a local run cannot complete, the complete CI quality run on the PR head is the closure evidence, and the record states both outcomes.
 
-For each migrated live driver, run its actual scenario with the prepared package set and pinned browser runtime. Source-only success does not substitute for packed-consumer acceptance.
+## Risks
 
-Final acceptance also checks:
+| Risk | Impact | Mitigation |
+|---|---|---|
+| `happy-dom` 21 turns off CSS file and iframe page loading by default | Unit fixtures or generated output can change | Task 2 runs the full unit suite and the build drift check. `scripts/docs-icons.ts` and `scripts/manifest.ts` already turn both off; their deprecated `disableCSSFileLoading` setting is checked for warnings. |
+| A newer transitive version changes MCP behaviour | Server or protocol failure | MCP protocol, stdio and catalog tests; packed-consumer checks in the complete gate. |
+| A local complete gate does not finish uninterrupted | Missing local closure evidence | The 0.3.2 and migration precedent: the complete CI run on the reviewed head closes the task. |
+| npm holds a new version in automated review | Publication waits | Bounded monitoring, as in the [0.3.2 release](../docs/releases/0.3.2.md). |
 
-- The site and generated metadata refer to the new documents.
-- Public package allowlists do not accidentally include maintainer instructions or historical test fixtures.
-- Root and package-start sessions in Claude and Codex load the intended context and choose brain on overlapping skill names.
-- Interrupted work, a new request beside an incomplete plan, no approved next task, and a failed baseline are handled correctly.
-- No removed path is still an active instruction, import, filesystem dependency or generated reference.
-- Old path strings in immutable evidence are labelled historical data, not treated as live references.
+## Authorization
 
-## Known failure and other limits
-
-The Chromium Hover Card activation failure remains an explicit issue. Capture its exact test scope, source revision and result before moving verification code. A passing rerun alone does not establish the cause.
-
-If it blocks the final gate, investigate under brain's debugging workflow. Keep a required fix separate from the path migration. Do not skip the assertion or claim migration acceptance from a red final run.
-
-Actual Safari, assistive technology, OS input/autofill, background-window behavior and the earlier token-rotation confirmation remain visible follow-ups. This migration does not certify them.
-
-## External references and permissions
-
-The ledger includes local links, site-generated references, GitHub release-note links and references embedded in published artifacts.
-
-Prepare mutable external-link corrections locally. Do not rewrite published npm bytes, signed provenance or release tags. If an immutable published reference cannot survive the selected structure, record the exact conflict before deleting its target.
-
-Plan approval authorizes the local implementation and its verified local commits. It does not grant a standing push, PR, merge, release or publication permission. Prepare the reviewed result first, then ask once for the concrete outward-facing action that is needed.
-
-No global plugin configuration or reference-project file changes are included.
-
-## Review state
-
-Specification: approved 2026-10-21.
-
-Implementation plan:
-
-- Task size: approved by Peter on 2026-10-21 through “approved,” answering the task-size review question.
-- Dependency order: approved by Peter on 2026-10-21 through “approved,” answering the dependency-order review question.
-- Task boundaries: approved by Peter on 2026-10-21 through “approved,” completing the plan review.
-
-Brain's plan-review questions cover these three points, one question at a time. Clear written approval of the presented plan must be preserved; settled specification choices are not reopened.
+Approval of this plan authorizes local implementation and verified local commits on the work branch. It grants no push, PR, merge, tag, release or publication. Task 5 needs Peter's separate approval, asked once at checkpoint 2.

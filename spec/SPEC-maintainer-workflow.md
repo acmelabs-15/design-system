@@ -1,6 +1,6 @@
 # Spec: Maintainer workflow migration
 
-Status: approved by Peter on 2026-10-21 through “approved,” in reply to the specification-approval request. The [implementation plan](../tasks/plan.md) and [task list](../tasks/todo.md) are approved by Peter after all three plan-review questions. Current execution state belongs in [STATUS](../docs/STATUS.md).
+Status: approved by Peter on 2026-10-21 through “approved,” in reply to the specification-approval request. The [implementation plan](../tasks/done/maintainer-workflow/plan.md) and [task list](../tasks/done/maintainer-workflow/todo.md) are approved by Peter after all three plan-review questions. Current execution state belongs in [STATUS](../docs/STATUS.md).
 
 This is one maintenance capability: a fresh agent finds the right context, follows the selected workflow, and leaves an accurate handoff. The sections below describe its parts, not separate product projects.
 
