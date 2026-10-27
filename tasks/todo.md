@@ -7,8 +7,8 @@ Status: approved by Peter on 2026-10-27 through the task-size, dependency-order 
 - [x] 1. MCP runtime dependencies
 - [x] 2. Development dependencies
 - [x] Checkpoint 1: audit, units, static checks, types and build are green
-- [ ] 3. Coordinated version 0.3.3
-- [ ] 4. Release record, complete gate and review
+- [x] 3. Coordinated version 0.3.3
+- [x] 4. Release record, complete gate and review
 - [ ] Checkpoint 2: ready for publication; Peter's outward-action approval
 - [ ] 5. Publication and issue #9 closure
 
@@ -61,9 +61,9 @@ Status: approved by Peter on 2026-10-27 through the task-size, dependency-order 
 **Description:** Advance all five packages, their core peer versions, README examples and the version table, the seven consumer-skill records and the lockfile workspace versions to 0.3.3. Regenerate the projections through their producers.
 
 **Acceptance criteria:**
-- [ ] No live authored file outside history and evidence names 0.3.2 as the current version.
-- [ ] Generated projections come from their producers, and the build shows no drift.
-- [ ] `release:prepare` and `release:validate` accept five 0.3.3 archives.
+- [x] No live authored file outside history and evidence names 0.3.2 as the current version.
+- [x] Generated projections come from their producers, and the build shows no drift.
+- [x] `release:prepare` and `release:validate` accept five 0.3.3 archives.
 
 **Verification:** `bun run split`; `bun run build`; `bun run docs`; `bun run build:tooling`; `bun run release:prepare`; `bun run release:validate`; a search for stale version strings.
 
@@ -73,14 +73,16 @@ Status: approved by Peter on 2026-10-27 through the task-size, dependency-order 
 
 **Scope:** One mechanical coordinated change. The release policy rejects mixed versions, so it cannot land in smaller green parts.
 
+**Result, 2026-10-27, Bun 1.4.2, commit f9dc599c8:** 16 version strings move to 0.3.3. `bun install` updates the five workspace versions but leaves the three core peer entries in bun.lock at 0.3.2, and a frozen install accepts that mismatch. `bun install --force --lockfile-only` refreshes exactly those three lines; a scratch-copy probe showed the same six-line change first. The build stage before the commit fails only because `packages/core/package.json` is uncommitted; the build changes nothing else in it. The complete gate in task 4 then passes its build stage with no drift and its packages stage with five 0.3.3 archives that name commit f9dc599c8. The packages stage runs the same prepare and validate steps as `release:prepare` and `release:validate`.
+
 ## Task 4: Release record, complete gate and review
 
 **Description:** Write the 0.3.3 release record. Run the complete gate on the clean committed candidate. Obtain an independent five-axis review and resolve its findings.
 
 **Acceptance criteria:**
-- [ ] The complete gate passes on the clean candidate, or the record states the local outcome and the complete CI run on the same head.
-- [ ] Review findings are resolved or returned to Peter.
-- [ ] STATUS names the exact next action and the pending approval.
+- [x] The complete gate passes on the clean candidate, or the record states the local outcome and the complete CI run on the same head.
+- [x] Review findings are resolved or returned to Peter.
+- [x] STATUS names the exact next action and the pending approval.
 
 **Verification:** `bun run check`; `git diff --check`; review report.
 
@@ -90,9 +92,11 @@ Status: approved by Peter on 2026-10-27 through the task-size, dependency-order 
 
 **Scope:** Small; three authored files plus evidence.
 
+**Result, 2026-10-27:** `bun run check` exits 0 on a clean detached checkout of f9dc599c8: static, build, types, 1,126 unit tests, audit, packages, browser installation, 24 of 24 browser invocations and release checks. The five-axis review approves; 1394fc019 and ea74d45c8 apply its findings, with their own focused checks. [Release record](../docs/releases/0.3.3.md), [review](../docs/verification/releases/0.3.3/review/README.md).
+
 ## Checkpoint 2
 
-- [ ] Every acceptance check of tasks 1–4 has evidence.
+- [x] Every acceptance check of tasks 1–4 has evidence.
 - [ ] Peter approves the outward actions of task 5.
 
 ## Task 5: Publication and issue #9 closure

@@ -19,4 +19,4 @@ The accepted cost: a consumer can resolve a newer version that this repository's
 
 [A manifest test](../../packages/mcp/__tests__/package.test.ts) fails when an MCP runtime dependency is not a caret range. A change to this decision changes that test too.
 
-Evidence: [issue #9](https://github.com/acmelabs-15/design-system/issues/9), [zod 4.6.6 release notes](https://github.com/colinhacks/zod/releases/tag/v4.6.6).
+Evidence: [issue #9](https://github.com/acmelabs-15/design-system/issues/9), [release 0.3.3 record](../releases/0.3.3.md), [zod 4.6.6 release notes](https://github.com/colinhacks/zod/releases/tag/v4.6.6).

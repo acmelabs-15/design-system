@@ -4,33 +4,40 @@ Updated 2026-10-27. This file is the sole current handoff for the repository.
 
 ## Current work
 
-[Issue #9](https://github.com/acmelabs-15/design-system/issues/9): the published MCP package 0.3.2 pins `zod` at exactly 4.6.5, which has a high advisory. The fix releases 0.3.3 of all five packages. [Plan](../tasks/plan.md), [tasks](../tasks/todo.md).
+[Issue #9](https://github.com/acmelabs-15/design-system/issues/9): the published MCP package 0.3.2 pins `zod` at exactly 4.6.5, which has a high advisory. The fix releases 0.3.3 of all five packages. [Plan](../tasks/plan.md), [tasks](../tasks/todo.md), [release record](releases/0.3.3.md).
 
-Peter approves the plan on 2026-10-27. He selects caret ranges for both MCP runtime dependencies: `zod ^4.6.7` and `@modelcontextprotocol/sdk ^1.32.0`. Work happens on branch claude/issue-9-mcp-dependencies.
+Tasks 1 to 4 are complete on branch claude/issue-9-mcp-dependencies. The MCP package declares `zod ^4.6.7` and `@modelcontextprotocol/sdk ^1.32.0`, as Peter selected in [decision 0116](decisions/0116-mcp-dependency-ranges.md). The four high audit findings are fixed by upgrade, and all five packages are at 0.3.3. The complete gate passes on a clean checkout of f9dc599c8, and the five-axis review approves.
 
 ## Next step
 
-Start task 1, MCP runtime dependencies. Tasks 1 and 2 are independent; task 3 waits for both.
+Checkpoint 2 waits for Peter's approval of the task 5 outward actions. After approval, in this order:
+
+1. Push the branch and open a PR to main.
+2. Pass the Linux quality checks on the PR head, then merge with a merge commit.
+3. Tag v0.3.3 on the merge commit and pass the publish workflow.
+4. Verify the five public npm versions, their provenance and latest tags, and a fresh consumer's `zod` resolution.
+5. Publish the GitHub release, verify Pages, then comment on and close issue #9.
 
 ## Red checks
 
-The dependency audit fails with four unresolved high findings: `zod`, `body-parser`, `happy-dom` and `undici`. Tasks 1 and 2 own them. The quality workflow runs the audit stage, so every PR fails until they are fixed. [Baseline](../tasks/plan.md#baseline).
+None locally. The Linux quality workflow has not run on this branch yet. Main's last quality run, 39784095475 on 76acca900, is cancelled. The local audit on main's lockfile fails with four high findings, as the [plan baseline](../tasks/plan.md#baseline) records.
 
 ## Working tree
 
-Another session owns uncommitted changes from 2026-10-22 and 2026-10-23: `.vscode/settings.json`, `src/components/checkbox-card/checkbox-card.ts`, `AGENTS_proposal.md`, `CLAUDE_proposal.md` and `README_proposal.md`. They stay in the working tree and are never staged with this work.
+Branch claude/issue-9-mcp-dependencies holds the committed work; nothing is pushed. Another session owns uncommitted changes from 2026-10-22 and 2026-10-23: `.vscode/settings.json`, `src/components/checkbox-card/checkbox-card.ts`, `AGENTS_proposal.md`, `CLAUDE_proposal.md` and `README_proposal.md`. They stay in the working tree and are never staged with this work.
 
-The maintainer workflow migration is complete. Its plan and tasks are in [tasks/done/maintainer-workflow](../tasks/done/maintainer-workflow/plan.md). PR #8 merges its publication receipt as 76acca900.
+The maintainer workflow migration is complete. Its plan and tasks are in [tasks/done/maintainer-workflow](../tasks/done/maintainer-workflow/plan.md).
 
 ## Open follow-ups
 
-These existing maintenance issues do not become resolved merely because later checks pass:
+These maintenance issues do not become resolved merely because later checks pass:
 
 - [Earlier Hover Card activation failure](../.scratch/maintenance/issues/001-hover-card-activation.md): its cause remains unverified.
 - [Earlier registration-test timeout](../.scratch/maintenance/issues/005-registration-test-timeout.md): its cause remains unverified. No assertion or timeout is relaxed.
 - [Actual-platform verification](../.scratch/maintenance/issues/002-actual-platform-verification.md): actual Safari, assistive technology, operating-system input/autofill and background-window checks remain unperformed.
 - [Owner-controlled token rotation](../.scratch/maintenance/issues/003-npm-token-rotation.md): rotation is unconfirmed. Release authentication is complete.
 - [Dependency disposition review](../.scratch/maintenance/issues/004-advisory-review-deadline.md): review is due 2026-11-20.
+- [Bun lockfile entries for bundled dependencies](../.scratch/maintenance/issues/006-bun-bundled-dependency-lock.md): Bun records versions it never installs; revisit with issue 004.
 
 ## Runtime and authorization
 
@@ -48,10 +55,10 @@ The verified local browser runtime is:
 
 These paths are machine-specific. Verify them before use. The [verification guide](agents/verification.md) owns check policy and dependency order.
 
-Plan approval authorizes local implementation and verified local commits on the work branch. No push, PR, merge, tag, release or publication is authorized. Task 5 needs Peter's separate approval, asked once at checkpoint 2. The earlier migration approvals do not cover this work.
+Plan approval authorizes local implementation and verified local commits on the work branch. No push, PR, merge, tag, release or publication is authorized yet. Task 5 needs Peter's separate approval. The earlier migration approvals do not cover this work.
 
 ## Product checkpoint
 
-Version 0.3.2 is the latest release across five packages. Its [release record](releases/0.3.2.md) preserves that release's acceptance and limits.
+Version 0.3.2 is the latest public release across five packages. Version 0.3.3 is prepared and verified locally; it is not published. [Release 0.3.2](releases/0.3.2.md), [release 0.3.3](releases/0.3.3.md).
 
 The [specification index](../spec/README.md) routes current contracts. [Decisions](decisions/README.md), [research](research/README.md) and [completed pass history](history/systematization/pass-history.md) provide supporting context.
