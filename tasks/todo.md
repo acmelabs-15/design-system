@@ -4,7 +4,7 @@ Status: approved by Peter on 2026-10-27 through the task-size, dependency-order 
 
 ## Checklist
 
-- [ ] 1. MCP runtime dependencies
+- [x] 1. MCP runtime dependencies
 - [ ] 2. Development dependencies
 - [ ] Checkpoint 1: audit, units, static checks, types and build are green
 - [ ] 3. Coordinated version 0.3.3
@@ -17,9 +17,9 @@ Status: approved by Peter on 2026-10-27 through the task-size, dependency-order 
 **Description:** Declare `zod ^4.6.7` and `@modelcontextprotocol/sdk ^1.32.0` in the MCP manifest. Lock `zod` 4.6.7 and `body-parser` 2.4.0. Refresh moderate MCP runtime findings where a fix exists inside the declared range. Make the install test restore the manifest's own `zod` value. Record the dependency-range decision.
 
 **Acceptance criteria:**
-- [ ] `bun why zod` and `bun why body-parser` show only 4.6.7 and 2.4.0. The SDK stays at 1.32.0.
-- [ ] The audit no longer reports `zod` or `body-parser`.
-- [ ] MCP protocol, stdio and catalog tests and the workspace install test pass.
+- [x] `bun why zod` and `bun why body-parser` show only 4.6.7 and 2.4.0. The SDK stays at 1.32.0.
+- [x] The audit no longer reports `zod` or `body-parser`.
+- [x] MCP protocol, stdio and catalog tests and the workspace install test pass.
 
 **Verification:** `bun test packages/mcp/src/__tests__`; `bun test scripts/__tests__/workspace-install.test.ts`; `bun scripts/dependency-audit.ts`; static checks and types on the changed files.
 
@@ -28,6 +28,8 @@ Status: approved by Peter on 2026-10-27 through the task-size, dependency-order 
 **Files likely touched:** packages/mcp/package.json; bun.lock; scripts/__tests__/workspace-install.test.ts; docs/decisions/0116-mcp-dependency-ranges.md; docs/decisions/README.md.
 
 **Scope:** Medium; five files.
+
+**Result, 2026-10-27, Bun 1.4.2, on c603a41c7 plus this change:** `bun install` locks `zod` 4.6.7; its integrity matches the registry and it carries SLSA provenance from the upstream release workflow. `bun update body-parser fast-uri ip-address qs` changes only bun.lock: 2.4.0, 3.1.9, 10.7.5 and 6.17.0. The SDK stays at 1.32.0. The audit no longer reports these five packages; `happy-dom` and `undici` remain for task 2. `bun test packages/mcp/src/__tests__ scripts/__tests__/workspace-install.test.ts`: 9 pass, 96 assertions. `bun scripts/check.ts static`: 0 diagnostics. `bun scripts/check.ts types`: exit 0. The working tree also holds another session's uncommitted files, so these two checks cover them too.
 
 ## Task 2: Development dependencies
 

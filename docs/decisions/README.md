@@ -121,3 +121,4 @@ Read the [current status](../STATUS.md) and [active tasks](../../tasks/todo.md) 
 | [0113](0113-track-census-results.md) | Decided: measurement results go into version control |
 | [0114](0114-zag-behaviour-ports.md) | Port behaviour into Lit with TanStack Store |
 | [0115](0115-zag-lit-integration.md) | Superseded: Zag behaviour packages through a Lit adapter |
+| [0116](0116-mcp-dependency-ranges.md) | Declare MCP runtime dependencies as caret ranges |
