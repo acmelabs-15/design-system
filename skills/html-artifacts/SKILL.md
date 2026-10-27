@@ -4,7 +4,7 @@ description: Build standalone HTML artifacts with @acmelabs/design-system-browse
 license: MIT
 metadata:
   library: "@acmelabs/design-system"
-  library_version: "0.3.2"
+  library_version: "0.3.3"
   type: "sub-skill"
   framework: "html"
 ---

@@ -1,6 +1,6 @@
 {
   "name": "@acmelabs/design-system-mcp",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Local versioned design-system documentation server",
   "license": "MIT",
   "type": "module",
@@ -9,7 +9,7 @@
     "README.md"
   ],
   "peerDependencies": {
-    "@acmelabs/design-system": "0.3.2"
+    "@acmelabs/design-system": "0.3.3"
   },
   "exports": {
     ".": {
@@ -21,8 +21,8 @@
     "acme-design-system-mcp": "./dist/cli.js"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "1.32.0",
-    "zod": "4.6.5"
+    "@modelcontextprotocol/sdk": "^1.32.0",
+    "zod": "^4.6.7"
   },
   "repository": {
     "type": "git",

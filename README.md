@@ -10,10 +10,10 @@ No build step. Import the elements the page uses:
 
 ```html
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Google+Sans+Code:wght@400..700&display=swap">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@0.3.2/styles/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@0.3.3/styles/tokens.css">
 <script type="module">
-  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@0.3.2/dist/define/button.js";
-  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@0.3.2/dist/define/badge.js";
+  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@0.3.3/dist/define/button.js";
+  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@0.3.3/dist/define/badge.js";
 </script>
 
 <acme-button>Deploy</acme-button>
@@ -24,7 +24,7 @@ A host that admits a script from a CDN but no stylesheet from one (the Claude ar
 can use the browser bootstrap, which installs `tokens.css` into the document on import:
 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@0.3.2/dist/standalone.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@0.3.3/dist/standalone.js"></script>
 ```
 
 `tokens.css` is the global layer: the color scales, the semantic tokens, the reset, the type
@@ -125,7 +125,7 @@ It reports public component inputs, effective theme, declared states and bounded
 
 | Core release | Browser | React | MCP | Devtools |
 |---|---|---|---|---|
-| 0.3.2 | 0.3.2 | 0.3.2 | 0.3.2 | 0.3.2 |
+| 0.3.3 | 0.3.3 | 0.3.3 | 0.3.3 | 0.3.3 |
 
 ## SVG icons
 

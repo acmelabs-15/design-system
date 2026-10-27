@@ -260,7 +260,7 @@ No startup rule, local skill, product source, package version or plugin setting 
 
 ### Implementation planning after specification approval
 
-The [implementation plan](../../tasks/plan.md) and [task list](../../tasks/todo.md) contain twelve ordered tasks or batch groups. They keep one active workflow during preparation, migrate consumers, then remove the old structure in one coordinated cutover. Semantic rewrites are separate from byte-preserving evidence moves. Exact child batches are recorded before editing; no parent group counts as one unbounded implementation task.
+The [implementation plan](../../tasks/done/maintainer-workflow/plan.md) and [task list](../../tasks/done/maintainer-workflow/todo.md) contain twelve ordered tasks or batch groups. They keep one active workflow during preparation, migrate consumers, then remove the old structure in one coordinated cutover. Semantic rewrites are separate from byte-preserving evidence moves. Exact child batches are recorded before editing; no parent group counts as one unbounded implementation task.
 
 The current check runner contains 23 browser entry points and produces 24 invocations. Nineteen entry points live under the old evidence tree. Its behavior is partly coupled to filenames: an exact scoped-check path selects module/CDN runs, a regular expression routes audit outputs, and a worker filename selects archive arguments. The first proposed task replaces that coupling with stable identities before any driver rename. Existing runner tests already cover failure aggregation, runtime identity, environment isolation and special arguments; those behaviors stay intact.
 

@@ -44,7 +44,8 @@ test("workspace installs preserve one live core after dependency changes", async
     verify("child add");
     const file = path.join(root, "packages/mcp/package.json");
     const mcp = JSON.parse(fs.readFileSync(file, "utf8"));
-    for (const version of ["3.25.76", "4.6.5"]) {
+    const original = mcp.dependencies.zod;
+    for (const version of ["3.25.76", original]) {
       if (mcp.dependencies.zod === version) {
         continue;
       }
