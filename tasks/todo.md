@@ -5,7 +5,7 @@ Status: approved by Peter on 2026-10-27 through the task-size, dependency-order 
 ## Checklist
 
 - [x] 1. MCP runtime dependencies
-- [ ] 2. Development dependencies
+- [x] 2. Development dependencies
 - [ ] Checkpoint 1: audit, units, static checks, types and build are green
 - [ ] 3. Coordinated version 0.3.3
 - [ ] 4. Release record, complete gate and review
@@ -36,9 +36,9 @@ Status: approved by Peter on 2026-10-27 through the task-size, dependency-order 
 **Description:** Pin `happy-dom` and `@happy-dom/global-registrator` at 21.0.4. Refresh the `npm/undici` lockfile entry to a fixed 8.x version. Record Bun's recorded resolution for bundled dependencies as a local follow-up issue.
 
 **Acceptance criteria:**
-- [ ] The audit reports no unresolved high or critical finding, and the two existing dispositions still verify.
-- [ ] The full unit suite passes, and the build shows no generated drift.
-- [ ] The follow-up issue states the evidence: the locked and the installed `node-gyp` and `undici` versions.
+- [x] The audit reports no unresolved high or critical finding, and the two existing dispositions still verify.
+- [x] The full unit suite passes, and the build shows no generated drift.
+- [x] The follow-up issue states the evidence: the locked and the installed `node-gyp` and `undici` versions.
 
 **Verification:** `bun scripts/dependency-audit.ts`; `bun test`; `bun run split`; `bun run build`; static checks and types.
 
@@ -47,6 +47,8 @@ Status: approved by Peter on 2026-10-27 through the task-size, dependency-order 
 **Files likely touched:** package.json; bun.lock; .scratch/maintenance/issues/006-bun-bundled-dependency-lock.md; .scratch/maintenance/issues/README.md.
 
 **Scope:** Small; four files.
+
+**Result, 2026-10-27, Bun 1.4.2, on c588f2db0 plus this change:** `bun install` locks `happy-dom` and `@happy-dom/global-registrator` 21.0.4. bun.lock records `npm/undici` 8.12.3; the installed bundled copy stays 6.27.0, which confirms [issue 006](../.scratch/maintenance/issues/006-bun-bundled-dependency-lock.md). `bun scripts/dependency-audit.ts`: exit 0, no unresolved high or critical finding, no lower finding. The native report lists only `http-cache-semantics`, so a direct `verifyAuditProof` run checks both reviewed dispositions: `braces` and `http-cache-semantics` verify. `bun test` under a pseudo-terminal: 1,126 pass, 0 fail, 191,007 assertions, 218 files, 132.64 s. `bun scripts/check.ts build`: exit 0, no generated drift, no deprecation warning, 4,319 manifest elements as in the 0.3.2 build. `scripts/docs-icons.ts` and `scripts/manifest.ts` still pass the deprecated `disableCSSFileLoading` and `disableIframePageLoading` settings; `happy-dom` 21 accepts them and its new defaults match them.
 
 ## Checkpoint 1
 
