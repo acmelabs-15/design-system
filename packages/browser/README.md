@@ -4,9 +4,9 @@ Self-contained browser modules, bundles and styles for the ACME design system. U
 
 ```html
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Google+Sans+Code:wght@400..700&display=swap">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@0.3.2/styles/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@0.3.3/styles/tokens.css">
 <script type="module">
-  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@0.3.2/dist/define/button.js";
+  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@0.3.3/dist/define/button.js";
 </script>
 
 <acme-button>Save</acme-button>

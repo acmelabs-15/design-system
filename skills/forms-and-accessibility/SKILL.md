@@ -4,7 +4,7 @@ description: Compose accessible forms with @acmelabs/design-system native contro
 license: MIT
 metadata:
   library: "@acmelabs/design-system"
-  library_version: "0.3.2"
+  library_version: "0.3.3"
   type: "sub-skill"
 ---
 

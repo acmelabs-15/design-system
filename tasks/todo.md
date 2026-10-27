@@ -6,7 +6,7 @@ Status: approved by Peter on 2026-10-27 through the task-size, dependency-order 
 
 - [x] 1. MCP runtime dependencies
 - [x] 2. Development dependencies
-- [ ] Checkpoint 1: audit, units, static checks, types and build are green
+- [x] Checkpoint 1: audit, units, static checks, types and build are green
 - [ ] 3. Coordinated version 0.3.3
 - [ ] 4. Release record, complete gate and review
 - [ ] Checkpoint 2: ready for publication; Peter's outward-action approval
@@ -52,9 +52,9 @@ Status: approved by Peter on 2026-10-27 through the task-size, dependency-order 
 
 ## Checkpoint 1
 
-- [ ] The audit has zero unresolved high or critical findings.
-- [ ] `bun test`, static checks and types pass.
-- [ ] The build shows no generated drift.
+- [x] The audit has zero unresolved high or critical findings.
+- [x] `bun test`, static checks and types pass. Static checks and types rerun after task 2: both exit 0, with 0 diagnostics in 885 files.
+- [x] The build shows no generated drift.
 
 ## Task 3: Coordinated version 0.3.3
 
