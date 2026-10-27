@@ -15,7 +15,7 @@ The pinned `npm` 12.0.2 development tool lists `undici` among its bundled depend
 | `node_modules/npm/node_modules/node-gyp` | 13.0.2 | 13.0.0 |
 | `node_modules/npm/node_modules/undici` | 8.11.2 | 6.27.0 |
 
-So bun.lock records a resolution of npm's declared ranges that Bun never installs, and `bun audit` reads that recorded resolution. The installed `undici` 6.27.0 is outside the advisory range. The same pattern appears for `npm/ip-address`.
+So bun.lock records a resolution of npm's declared ranges that Bun never installs. `bun audit` reads that recorded resolution. The installed `undici` 6.27.0 is outside the advisory range. The same pattern appears for `npm/ip-address`.
 
 [Issue #9](https://github.com/acmelabs-15/design-system/issues/9) work refreshes the `npm/undici` entry to 8.12.3 with `bun update undici`. That clears the finding without an audit disposition, but the lockfile entry still does not describe the installed bytes.
 
@@ -28,6 +28,8 @@ So bun.lock records a resolution of npm's declared ranges that Bun never install
 ## Completion
 
 Confirm the behaviour against Bun's documentation or source, and find or report the upstream issue. Decide through the applicable workflow whether the audit needs a change. A refreshed lockfile entry alone does not close this issue.
+
+Revisit this issue with the [dependency review](004-advisory-review-deadline.md) due 2026-11-20, or earlier when the pinned `npm` version changes. The audit still blocks any new finding in the meantime, so a recurrence cannot pass unnoticed.
 
 ## Comments
 
