@@ -1,6 +1,6 @@
 # Implementation plan: MCP dependency advisory
 
-Status: approved by Peter on 2026-10-27 through the task-size, dependency-order and task-boundary questions. Current execution state belongs in [STATUS](../docs/STATUS.md). Task state belongs in [todo.md](todo.md).
+Status: completed 2026-10-27. Approved by Peter on 2026-10-27 through the task-size, dependency-order and task-boundary questions. Current execution state belongs in [STATUS](../docs/STATUS.md). Task state belongs in [todo.md](todo.md).
 
 ## Outcome
 

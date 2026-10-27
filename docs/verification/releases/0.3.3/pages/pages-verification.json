@@ -1,0 +1,136 @@
+{
+  "checkedAt": "2026-10-27T23:40:11.864Z",
+  "origin": "https://acmelabs-15.github.io/design-system/",
+  "playwrightVersion": "1.63.0",
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "2711a802cbf5d4ad65ea26fbff47ceb9fdc1a5a50aeceb3367d8f95c4089da3f"
+    },
+    {
+      "path": "404.html",
+      "sha256": "2711a802cbf5d4ad65ea26fbff47ceb9fdc1a5a50aeceb3367d8f95c4089da3f"
+    },
+    {
+      "path": "app.js",
+      "sha256": "9cba23742d4feeed549b42a5a5f4525673e353de0e10cbacccdefa948eeff152"
+    },
+    {
+      "path": "styles/tokens.css",
+      "sha256": "58bf2c1ff97cfa75333c007132d21686daf40e5a0ee46aefc4f7f1bad6f94e70"
+    },
+    {
+      "path": "styles/dashboard.css",
+      "sha256": "4d4cc9aeee0c95875d154508c2f4974d2b214e90d873d1d23e3faa4a90f3a17e"
+    },
+    {
+      "path": "styles/docs.css",
+      "sha256": "52feeb01fce266964044f3669688d8826c2581e141bfba9042ff01c349f17536"
+    },
+    {
+      "path": "index.md",
+      "sha256": "c8956253306dfb718bcfdcde40f83b848c19c37079aa8fd12d96c9613712bb7c"
+    },
+    {
+      "path": "components/button.md",
+      "sha256": "69d581893e727a789b8db127ccfb64ee5eeaa285392c8c812cb6c8aa441746e2"
+    }
+  ],
+  "cdn": "https://cdn.jsdelivr.net/npm/@acmelabs/design-system-browser@0.3.3/",
+  "cdnFiles": [
+    {
+      "path": "styles/tokens.css",
+      "sha256": "58bf2c1ff97cfa75333c007132d21686daf40e5a0ee46aefc4f7f1bad6f94e70"
+    },
+    {
+      "path": "dist/define/button.js",
+      "sha256": "efd557a6a9870e03193753d559876bbb3b134d8b2fc0c341819ac8e94597e844"
+    },
+    {
+      "path": "dist/define/badge.js",
+      "sha256": "6da845b0a1682c61f4f384a15baf7408762c1215ff0372eb77bd58d83805bf9f"
+    },
+    {
+      "path": "dist/standalone.js",
+      "sha256": "c7a0f8eb8b8240250c96cbc03936722daebb7937d0099f3d8a748c4bd9e255e2"
+    }
+  ],
+  "results": [
+    {
+      "engine": "chromium",
+      "browser": "153.0.8010.12",
+      "route": "index",
+      "pass": true
+    },
+    {
+      "engine": "chromium",
+      "browser": "153.0.8010.12",
+      "route": "components/button",
+      "pass": true
+    },
+    {
+      "engine": "chromium",
+      "browser": "153.0.8010.12",
+      "route": "components/flow-diagram",
+      "pass": true
+    },
+    {
+      "engine": "chromium",
+      "browser": "153.0.8010.12",
+      "route": "recipes/experimental-worker-table",
+      "pass": true
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "route": "index",
+      "pass": true
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "route": "components/button",
+      "pass": true
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "route": "components/flow-diagram",
+      "pass": true
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "route": "recipes/experimental-worker-table",
+      "pass": true
+    },
+    {
+      "engine": "webkit",
+      "browser": "26.6",
+      "route": "index",
+      "pass": true
+    },
+    {
+      "engine": "webkit",
+      "browser": "26.6",
+      "route": "components/button",
+      "pass": true
+    },
+    {
+      "engine": "webkit",
+      "browser": "26.6",
+      "route": "components/flow-diagram",
+      "pass": true
+    },
+    {
+      "engine": "webkit",
+      "browser": "26.6",
+      "route": "recipes/experimental-worker-table",
+      "pass": true
+    }
+  ],
+  "limits": [
+    "Entry files only; not a crawl of all 25,120 site files",
+    "Three Playwright engines; not actual Safari"
+  ]
+}

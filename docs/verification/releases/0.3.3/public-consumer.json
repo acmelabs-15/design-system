@@ -1,0 +1,17 @@
+{
+  "recordedAt": "2026-10-27",
+  "runtime": "Bun 1.4.2, macOS arm64",
+  "command": "bun add @acmelabs/design-system@0.3.3 @acmelabs/design-system-mcp@0.3.3 --ignore-scripts in an empty consumer, then bun audit",
+  "source": "Public npm registry",
+  "resolved": {
+    "@acmelabs/design-system-mcp": "0.3.3",
+    "zod": "4.6.7",
+    "zodCopies": 1,
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "body-parser": "2.4.0"
+  },
+  "audit": "No vulnerabilities found (checked 166 packages)",
+  "issue": "https://github.com/acmelabs-15/design-system/issues/9",
+  "interpretation": "A normal install of the public MCP package now resolves zod 4.6.7, above the first fixed version 4.6.6, without an override.",
+  "limits": "Registry state on the recorded date; later zod releases within ^4.6.7 resolve differently."
+}
