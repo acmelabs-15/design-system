@@ -1,6 +1,6 @@
 # Tasks: MCP dependency advisory
 
-Status: approved by Peter on 2026-10-27 through the task-size, dependency-order and task-boundary questions. Current execution state belongs in [STATUS](../docs/STATUS.md). The [plan](plan.md) owns decisions, risks and authorization.
+Status: completed 2026-10-27. Approved by Peter on 2026-10-27 through the task-size, dependency-order and task-boundary questions. Current execution state belongs in [STATUS](../docs/STATUS.md). The [plan](plan.md) owns decisions, risks and authorization.
 
 ## Checklist
 
@@ -10,7 +10,7 @@ Status: approved by Peter on 2026-10-27 through the task-size, dependency-order 
 - [x] 3. Coordinated version 0.3.3
 - [x] 4. Release record, complete gate and review
 - [x] Checkpoint 2: ready for publication; Peter's outward-action approval
-- [ ] 5. Publication and issue #9 closure
+- [x] 5. Publication and issue #9 closure
 
 ## Task 1: MCP runtime dependencies
 
@@ -104,9 +104,9 @@ Status: approved by Peter on 2026-10-27 through the task-size, dependency-order 
 **Description:** Push the branch, open the PR and pass its checks. Merge with a merge commit. Tag v0.3.3 and pass the publish workflow. Verify the five public npm versions, their provenance and latest tags. Publish the GitHub release, verify Pages, and close issue #9 with the evidence.
 
 **Acceptance criteria:**
-- [ ] `npm view @acmelabs/design-system-mcp@0.3.3 dependencies` shows `zod ^4.6.7`. A fresh consumer install resolves `zod` 4.6.6 or later.
-- [ ] All five 0.3.3 versions are public with verified provenance.
-- [ ] Issue #9 is closed with a link to the release and its evidence.
+- [x] `npm view @acmelabs/design-system-mcp@0.3.3 dependencies` shows `zod ^4.6.7`. A fresh consumer install resolves `zod` 4.6.6 or later.
+- [x] All five 0.3.3 versions are public with verified provenance.
+- [x] Issue #9 is closed with a link to the release and its evidence.
 
 **Verification:** CI run results; public registry checks; the issue state.
 
@@ -115,3 +115,5 @@ Status: approved by Peter on 2026-10-27 through the task-size, dependency-order 
 **Files likely touched:** docs/releases/0.3.3.md; docs/STATUS.md; tasks/todo.md; publication evidence under docs/verification/releases/0.3.3/.
 
 **Scope:** Outward actions plus three record files.
+
+**Result, 2026-10-27:** PR #10 merges as 998d72c8c after its Linux quality run passes. Tag v0.3.3 publishes all five packages through four attempts of the publish job, because the script's confirmation wait is shorter than npm's review ([issue 007](../.scratch/maintenance/issues/007-publication-confirmation-wait.md)). The public tarballs equal the verified archives, their provenance verifies, and `latest` is 0.3.3. A fresh install of the public MCP package resolves `zod` 4.6.7, and `bun audit` finds nothing. Pages redeploys after npm verification and passes in three engines. The GitHub release is published, its duplicate publish run is cancelled, and issue #9 is closed. [Release record](../docs/releases/0.3.3.md#publication).

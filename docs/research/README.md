@@ -26,5 +26,6 @@ Read the [current status](../STATUS.md) and [active tasks](../../tasks/todo.md) 
 | [18](18-repository-layout.md) | Research 18: Repository layout investigation |
 | [19](19-slotted-cascade.md) | Research 19: Styling slotted content: what the cascade actually allows |
 | [20](20-systematic-approach.md) | Research 20: Systematic verification and maintainer-workflow research |
+| [22](22-ci-duration.md) | Research 22: CI duration and how to shorten it |
 
 [Chakra Pro collection review](21-chakra-pro-collection.md) explains the separately stored licensed reference collection.
