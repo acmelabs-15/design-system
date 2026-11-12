@@ -88,7 +88,7 @@ const report: AppearanceReport = {
   date: new Date().toISOString(),
   runtime: Bun.version,
   base,
-  fontSource: "docs/decisions/0077-parity-scope.md",
+  fontSource: "docs/decisions/DEC-077-parity-scope.md",
   expectedFonts: ["Google Sans Flex", "Google Sans Code"],
   engines: [],
 };

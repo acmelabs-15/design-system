@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dir, "../../..");
-const coverage = fs.readFileSync(path.join(root, "spec/component-coverage.md"), "utf8");
+const coverage = fs.readFileSync(path.join(root, "docs/history/systematization/component-coverage.md"), "utf8");
 const rows = coverage
   .split("\n")
   .filter((line) => /^\| acme-/.test(line))
