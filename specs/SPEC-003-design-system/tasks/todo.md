@@ -1,3 +1,7 @@
+---
+spec: SPEC-003
+migrated: 0.8
+---
 # Completed systematization tasks
 
 Status: completed at the implementation and local automated boundary on 2026-09-26. External delivery and snapshot retirement subsequently close with version 0.3.2 on 2026-10-20. Peter approved the migration on 2026-09-20 through “approved.” The [completed plan](plan.md) retains the original dependency table, slice estimates, full dated evidence and qualifications.

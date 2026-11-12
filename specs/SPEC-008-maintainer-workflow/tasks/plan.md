@@ -1,3 +1,7 @@
+---
+spec: SPEC-008
+migrated: 0.8
+---
 # Implementation plan: maintainer workflow migration
 
 Status: approved by Peter for local implementation on 2026-10-21. Current execution state belongs in [STATUS](../../../docs/STATUS.md).

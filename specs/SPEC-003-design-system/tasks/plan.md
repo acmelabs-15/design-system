@@ -1,3 +1,7 @@
+---
+spec: SPEC-003
+migrated: 0.8
+---
 # Completed systematization migration plan
 
 **Approved by Peter on 2026-09-20 through “approved”.** [Migration approval](../../../docs/decisions/0064-migration-approval.md). The [Phase 4 approval](../../../docs/decisions/0049-inventory-approval.md) fixes the design and five recommended outcomes. The [inventory](../../../spec/SPEC-design-system.md#complete-proposal-set), [conventions](../../../docs/development/interfaces.md) and [coverage map](../../../spec/component-coverage.md) are implementation requirements, not a new interview queue.
