@@ -29,7 +29,7 @@ Planned steps:
 Safe to repeat: steps 2, 3 and 5, on a draft file only. Step 4 is a purchase; do not repeat it.
 
 ## Findings
-- The email address of a Figma account can be changed in the account settings. An account that uses Google sign-in must first switch to email and password; "Once updated, you can change the email to any address." Source: https://help.figma.com/hc/en-us/articles/360039820114-Manage-email-address-or-password, checked 2026-11-12.
+- The email address of a Figma account can be changed in the account settings. An account that uses Google sign-in must first switch to email and password; after that the email can change to any address. Source: https://help.figma.com/hc/en-us/articles/360039820114-Manage-email-address-or-password, checked 2026-11-12.
 - The current owner of a team can transfer ownership to another team member. Source: https://help.figma.com/hc/en-us/articles/360039481134-Transfer-ownership-of-a-team, checked 2026-11-12.
 - Figma has a procedure to transfer a team to another plan. Source: https://help.figma.com/hc/en-us/articles/10250387712407-Transfer-a-folder-or-team-to-another-plan, checked 2026-11-12.
 
