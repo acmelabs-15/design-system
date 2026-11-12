@@ -35,6 +35,17 @@ Source: Peter's kickoff prompt of 2026-11-12, [saved word for word](../design/v1
 - The 0.3.3 decision and research records are evidence for a question. They do not answer it.
 - A question that belongs to a later idea goes into that idea's map as an open row.
 
+### Working state for all six ideas
+Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to brain's layout 2. The ideas and their records now hold the state; `brain status` reports it.
+
+- Authorization: the kickoff prompt authorizes commits and pushes of this work on `v1`. It authorizes no merge, release or publication.
+- Baseline: `v1` starts at ee37be98e, the tip of `main` on 2026-11-12, where the quality run passes. No product check has run on `v1`; the branch changes records only so far.
+- Runtime: the repo requires Bun 1.4.2. The `v1` worktree has no local runtime yet. On Peter's machine the verified executable is `/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun`.
+- MCP proof: the 0.3.3 design system MCP answers `resolve_version` and `search_docs` over stdio (2026-11-12, from the built package in the `main` checkout).
+- Capability gaps: no skill named Anthropic's deep research skill is installed; no Figma MCP is connected; the folder `.agents/skills/` does not exist. The seven consumer skills are in `skills/`.
+- Other sessions: the branches `claude/ci-speed` and `claude/issue-12-strict-style-policy` have their own worktrees, and the `main` checkout holds uncommitted files. They change the system that 1.0 replaces. Leave them as they are.
+- The open maintenance issues of 0.3.3 stay in the local tracker, `.scratch/maintenance/issues/`.
+
 ### Waits
 - Decision records: the prompt's own decisions (full replacement, branch, no compatibility) get DEC files after the workspace migration. Before it, new DEC numbers collide with the legacy records 0001 to 0116.
 - Row 01 — wait: this session has no skill named Anthropic's deep research skill. Retry when Peter installs it or names a substitute.
