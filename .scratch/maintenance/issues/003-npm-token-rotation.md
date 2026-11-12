@@ -6,7 +6,7 @@ Owner: Peter
 
 ## Evidence and boundary
 
-An earlier delegated check printed an npm token into tool output. Peter was informed. The project record says no secret was committed. Revocation or replacement remains unconfirmed. [Incident record](../../../docs/research/08-developer-tooling.md#credential-handling-incident).
+An earlier delegated check printed an npm token into tool output. Peter was informed. The project record says no secret was committed. Revocation or replacement remains unconfirmed. [Incident record](../../../docs/research/RES-008-developer-tooling.md#credential-handling-incident).
 
 The releases are complete. No release authentication is pending. That fact does not close this separate credential action.
 

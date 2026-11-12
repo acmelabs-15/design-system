@@ -9,9 +9,9 @@ Status: historical research with dated implementation follow-ups. Converted 2026
 
 ## Scope and current interpretation
 
-This source survey belongs to the closed parity port. Its registry, corpus and source-map observations are dated 2026-09-10. The later [browser access investigation](03-behaviour-verification-method.md#browser-access-solved-and-how-to-measure-motion) supersedes the initial claim that the built-in pane cannot reach the reference or run timers. Approved later component contracts supersede a blanket reference-wins policy.
+This source survey belongs to the closed parity port. Its registry, corpus and source-map observations are dated 2026-09-10. The later [browser access investigation](RES-003-behaviour-verification-method.md#browser-access-solved-and-how-to-measure-motion) supersedes the initial claim that the built-in pane cannot reach the reference or run timers. Approved later component contracts supersede a blanket reference-wins policy.
 
-The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../STATUS.md) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
+The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../agents/workspace.md#session-state) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
 
 ## Findings and dated evidence
 
@@ -105,7 +105,7 @@ This historical parity policy does not override later approved component adaptat
 
 The same rule applies to our own API. Radix's prop names are not our target; parity with the
 reference is, under the naming rules in
-[../decisions/parity-scope.md](../decisions/0077-parity-scope.md).
+[../decisions/parity-scope.md](../decisions/DEC-077-parity-scope.md).
 
 Where evidence is genuinely unavailable, record the gap as unverified. Do not fill it with a
 plausible inference.

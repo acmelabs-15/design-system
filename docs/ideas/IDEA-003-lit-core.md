@@ -31,7 +31,7 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 - Every framework wrapper exports both the convenience component (for example `Stepper`) and every subcomponent (`Stepper.Root`, `Stepper.Item`, `Stepper.Indicator`), the way Chakra does.
 
 ### Evidence from 0.3.3
-These records are evidence, not answers. Find them through the [decision index](../decisions/README.md) and the [research index](../research/README.md).
+These records are evidence, not answers. Find them through the [decision index](../history/decision-index-0.3.md) and the [research index](../history/research-index-0.3.md).
 
 - Decision 0092 excludes server rendering.
 - Decisions 0101 and 0114 keep element state in TanStack Store and port behaviour into Lit. Decision 0115, on Zag packages through a Lit adapter, is superseded.

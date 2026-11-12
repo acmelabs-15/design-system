@@ -16,6 +16,6 @@ The probe used a synthetic upstream fixture in a temporary directory. It tested 
 
 Detailed CI integration, skill authoring and consumer installation guidance were not settled by this selection. This decision does not authorize automatic edits to AGENTS.md, global settings or agent hooks. The selection did not replace project workflow or official skill-authoring rules.
 
-Evidence: [Intent review](../research/01-agent-tooling.md#tanstack-intent) and [probe results](../verification/systematization/intent-probe-2026-09-19.json).
+Evidence: [Intent review](../research/RES-001-agent-tooling.md#tanstack-intent) and [probe results](../verification/systematization/intent-probe-2026-09-19.json).
 
-The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.
+The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../specs/SPEC-003-design-system/spec.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.

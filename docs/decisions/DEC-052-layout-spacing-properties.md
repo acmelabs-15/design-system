@@ -62,7 +62,7 @@ The two-property CSS-default fixture passes fourteen targeted cases per engine i
 
 The [package/compiler follow-up](../verification/systematization/style-package-verification-2026-09-20.json) verifies the candidate's string/undefined declaration types and inherited manifest links, and retains all fifteen capture passes per engine after the installed Lit template transform. Real-source manifest path/classification defects are reproduced and corrected in scratch. The complete input-order protocol, token/responsive types, final metadata/public type surface and generated-CSS pipeline were still approval work at that checkpoint; no new public interface choice is implied by these checks.
 
-New [late/mixed Lit input tests](../research/15-lit-practice-review.md#lit-ordering-with-late-and-mixed-inputs) expose an additional ordering gap. Peter subsequently selected the Lit helper below. The declaration-order direction and undefined getter rule remain unchanged. Supplied-setting ownership and next-render reassertion are selected below; helper-expression removal, final types and the full shared contract were still unspecified at that checkpoint.
+New [late/mixed Lit input tests](../research/RES-015-lit-practice-review.md#lit-ordering-with-late-and-mixed-inputs) expose an additional ordering gap. Peter subsequently selected the Lit helper below. The declaration-order direction and undefined getter rule remain unchanged. Supplied-setting ownership and next-render reassertion are selected below; helper-expression removal, final types and the full shared contract were still unspecified at that checkpoint.
 
 ## Lit helper for ordered styling inputs
 
@@ -90,7 +90,7 @@ Peter selected “Restore helper value (Recommended)” over allowing an outside
 
 This follows the inspected styleMap update pattern, the existing form bind directive's supplied-value behavior and the tested React wrapper. Ordinary Lit property bindings use a different comparison with the previous bound value; live() explicitly addresses that distinction. The [browser fixture](../verification/systematization/lit-style-ownership-review-2026-09-20.json) checks restoration, supplied-key ownership and TanStack-batched publication in all three engines. Its nineteen assertions include an unbatched comparison exposing intermediate values; this is bounded evidence, not full helper approval or transaction rollback.
 
-A direct edit to a managed component property can be temporary. The later [inspector decision](0026-design-system-devtools.md#approved-read-only-scope) selects read-only operation, so this dependency does not authorize an editing bridge. It remains relevant to any separately approved editing capability.
+A direct edit to a managed component property can be temporary. The later [inspector decision](DEC-026-design-system-devtools.md#approved-read-only-scope) selects read-only operation, so this dependency does not authorize an editing bridge. It remains relevant to any separately approved editing capability.
 
 ## Explicit clearing for the style helper
 
@@ -112,6 +112,6 @@ Decided 2026-09-20 by Peter: when asked how invalid styling inputs should behave
 
 The complete pinned source inspection shows styles derived from current props, nullish leaves skipped, token/raw values transformed and CSS serialized into the current generated class. It does not implement a separate last-valid-value store or a universal CSS-value validator. The prior recommendation to retain previous accepted values is withdrawn. This is source evidence, not a new browser test or a claim that every malformed input produces one universal result.
 
-Chakra's JavaScript input path has no equivalent to our HTML JSON decoder. Malformed JSON and structurally invalid responsive inputs therefore remained open at that checkpoint. Do not infer whole-input rollback, automatic clearing or guaranteed diagnostics from this answer. The bounded converter contract belonged to R01/E02–E03, with valid scalar CSS, responsive objects and helper lifecycle behavior kept distinct. [Source analysis](../research/07-design-foundations.md#chakra-style-input-follow-up), [exact answer and evidence](../verification/systematization/layout-contract-selections-2026-09-20.json).
+Chakra's JavaScript input path has no equivalent to our HTML JSON decoder. Malformed JSON and structurally invalid responsive inputs therefore remained open at that checkpoint. Do not infer whole-input rollback, automatic clearing or guaranteed diagnostics from this answer. The bounded converter contract belonged to R01/E02–E03, with valid scalar CSS, responsive objects and helper lifecycle behavior kept distinct. [Source analysis](../research/RES-007-design-foundations.md#chakra-style-input-follow-up), [exact answer and evidence](../verification/systematization/layout-contract-selections-2026-09-20.json).
 
-The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.
+The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../specs/SPEC-003-design-system/spec.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.

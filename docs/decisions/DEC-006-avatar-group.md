@@ -14,6 +14,6 @@ Its distinct responsibility is presenting a bounded set of people and the count 
 
 Exact member inputs, count conventions, empty collections, accessible names, dynamic updates, overlap settings and any overflow interaction were still unspecified at selection time. Keeping the component does not adopt a menu, retain every current property or certify the current implementation.
 
-Evidence: [Group and specialised-family review](../research/06-codebase-systematization.md#comprehensive-chakra-group-review), [Group evidence](../verification/systematization/group-review-2026-09-19.json), [general Group decision](0045-group-presentation.md).
+Evidence: [Group and specialised-family review](../research/RES-006-codebase-systematization.md#comprehensive-chakra-group-review), [Group evidence](../verification/systematization/group-review-2026-09-19.json), [general Group decision](DEC-045-group-presentation.md).
 
-The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.
+The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../specs/SPEC-003-design-system/spec.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.

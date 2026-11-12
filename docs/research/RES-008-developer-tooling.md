@@ -11,12 +11,12 @@ Status: historical research with dated implementation follow-ups. Converted 2026
 
 The toolchain, optional scoped inspector and five-package release are implemented. Release 0.3.2 is complete at its recorded scope. Each earlier preparation, staging and publication claim below keeps its date and archive identity. Actual-platform checks and owner-controlled token rotation remain unverified. The later records commit has one Chromium Hover Card activation failure; quality passes, documentation fails and deployment skips. Its cause remains unverified.
 
-The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../STATUS.md) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
+The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../agents/workspace.md#session-state) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
 
 ## Findings and dated evidence
 
 
-Historical checkpoint 2026-09-19. [Oxlint toolset adoption](../decisions/0053-lint-toolchain.md) is selected for the later migration. [TanStack Devtools](../decisions/0026-design-system-devtools.md) is also selected; the Config convention review is complete, with migration recommendations still unapproved.
+Historical checkpoint 2026-09-19. [Oxlint toolset adoption](../decisions/DEC-053-lint-toolchain.md) is selected for the later migration. [TanStack Devtools](../decisions/DEC-026-design-system-devtools.md) is also selected; the Config convention review is complete, with migration recommendations still unapproved.
 
 ## Oxlint, Oxfmt and Ultracite
 
@@ -53,7 +53,7 @@ These runs have different languages, rules and exclusions. Counts and one-run ti
 
 ## TanStack Devtools
 
-**Selected:** [one shared design-system inspector with Lit and React integrations](../decisions/0026-design-system-devtools.md). Peter explicitly confirmed the additional Solid dependency after asking what it meant.
+**Selected:** [one shared design-system inspector with Lit and React integrations](../decisions/DEC-026-design-system-devtools.md). Peter explicitly confirmed the additional Solid dependency after asking what it meant.
 
 The investigation read the [quick start](https://github.com/TanStack/devtools/blob/main/docs/quick-start.md), [custom-plugin guide](https://github.com/TanStack/devtools/blob/main/docs/building-custom-plugins.md), [lifecycle](https://github.com/TanStack/devtools/blob/main/docs/plugin-lifecycle.md), [production guidance](https://github.com/TanStack/devtools/blob/main/docs/production.md), core and React adapter source, and the published package metadata.
 
@@ -79,7 +79,7 @@ A conditional development entry compiled to a 59-byte production stub with no De
 ### Design and verification remaining at the 2026-09-19 checkpoint
 
 - Define useful properties/events/theme/state views; read-only inspection versus temporary editing is not selected.
-- If editing is selected, account for [helper-controlled styling inputs](../decisions/0052-layout-spacing-properties.md#external-writes-to-helper-managed-settings): a direct property edit is effective immediately but can be overwritten by the next helper/template render. Distinguish that temporary edit from a persistent change to supplied input. No editing bridge or inspector mutation behavior is selected by this dependency.
+- If editing is selected, account for [helper-controlled styling inputs](../decisions/DEC-052-layout-spacing-properties.md#external-writes-to-helper-managed-settings): a direct property edit is effective immediately but can be overwritten by the next helper/template render. Distinguish that temporary edit from a persistent change to supplied input. No editing bridge or inspector mutation behavior is selected by this dependency.
 - Verify the real inspector in Chromium, Firefox and WebKit, including repeated mount/unmount, hidden panels, subscriptions and controlled components.
 - Keep all normal library/CDN/React production entries free of the inspector, Solid and developer assets.
 - Design the Bun asset and optional source-location integration; no Vite migration is selected.
@@ -115,11 +115,11 @@ The research required preservation of trusted publishing and provenance while re
 
 ## Complete inspector proposal
 
-The [Phase 4 inspector contract](../../spec/SPEC-documentation-tooling.md#inspector) specifies explicit mounting/disposal, scoped collection, bounded event retention, sensitive-value redaction, Lit/React use of one tool and production exclusion. The historical Q08 question concerned only the then-open read-only-versus-temporary-editing scope. The selected Solid/TanStack Devtools delivery and helper-controlled-input boundary stand; no persistent editing bridge or source rewriting is silently added. Proposal assembly does not certify the real packaged inspector.
+The [Phase 4 inspector contract](../../specs/SPEC-004-documentation-tooling/spec.md#inspector) specifies explicit mounting/disposal, scoped collection, bounded event retention, sensitive-value redaction, Lit/React use of one tool and production exclusion. The historical Q08 question concerned only the then-open read-only-versus-temporary-editing scope. The selected Solid/TanStack Devtools delivery and helper-controlled-input boundary stand; no persistent editing bridge or source rewriting is silently added. Proposal assembly does not certify the real packaged inspector.
 
 ### Whole-set approval and Phase 5 handoff
 
-On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/0049-inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/0064-migration-approval.md) through “approved”. At the approval checkpoint, M00 prerequisites preceded dependent implementation and production implementation had not started. Later implementation and release records below supersede that status. Approval alone was not a runtime result.
+On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/DEC-049-inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/DEC-064-migration-approval.md) through “approved”. At the approval checkpoint, M00 prerequisites preceded dependent implementation and production implementation had not started. Later implementation and release records below supersede that status. Approval alone was not a runtime result.
 
 ## M00 Bun release probe, 2026-09-20
 
@@ -340,7 +340,7 @@ The registry's exact current file limit is not established by official documenta
 
 The bounded correction under review separates browser-ready output from package modules and consolidates equivalent artwork declarations. Generated declaration maps refer to source files absent from the public archive. Preserve all4,135 icons, six artwork styles, selective imports, one browser graph, canonical state and native tag inference. An existing definition-only type gap must be covered when declarations change. [Release failure and recovery checkpoint](../releases/0.3.0.md#core-registry-rejection-too-many-files).
 
-The selected [separate browser package](../decisions/0010-browser-distribution-package.md) is implemented for 0.3.1. Its exact delivery links retain the existing generated graph. Six artwork patterns resolve types through per-symbol records; exact definition/registration exports use shared type declarations. This preserves real native tag types and rejects nonexistent entry names. Actual packed counts are 55,399 for core and 54,950 for browser.
+The selected [separate browser package](../decisions/DEC-010-browser-distribution-package.md) is implemented for 0.3.1. Its exact delivery links retain the existing generated graph. Six artwork patterns resolve types through per-symbol records; exact definition/registration exports use shared type declarations. This preserves real native tag types and rejects nonexistent entry names. Actual packed counts are 55,399 for core and 54,950 for browser.
 
 Review reproduces a source-ancestor substitution at the packing boundary. Canonical path checks now cover both approved targets and known package directories. The regression fails before the correction and passes afterward. Separate definition-only and registration-only TypeScript programs also reject a mutation that previously passed through combined-import tests.
 

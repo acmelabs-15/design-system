@@ -11,7 +11,7 @@ Status: historical research with dated implementation follow-ups. Converted 2026
 
 This is a historical generator investigation from 2026-09-10. Its initial checkpoint records four measured differences, a known cause and two rejected fixes. The [later port completion record](../history/parity-port-plan.md) says Peter accepted the four differences rather than fixing the generator, and Split Button's census reached zero hard differences in both themes. That is acceptance of a measured deviation, not evidence of a generator correction or current component behavior. The migration creates no cleanup task from this closed port question.
 
-The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../STATUS.md) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
+The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../agents/workspace.md#session-state) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
 
 ## Findings and dated evidence
 

@@ -11,12 +11,12 @@ Status: historical research with dated implementation follow-ups. Converted 2026
 
 The consumer skills, documentation/API MCP server and Intent development tooling were selected and implemented in the completed systematization pass. The authoring-only scope excludes runtime AI control. The [final evidence](../verification/systematization/m26-final/README.md) records acceptance at its tested scope; the 2026-09-19 probes below do not establish that later acceptance by themselves.
 
-The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../STATUS.md) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
+The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../agents/workspace.md#session-state) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
 
 ## Findings and dated evidence
 
 
-Checkpoint 2026-09-19, updated after the second guided review. **Selected:** [versioned consumer skills](../decisions/0019-consumer-skills.md), a [documentation/API MCP server](../decisions/0027-design-system-mcp.md), and [TanStack Intent development tooling](../decisions/0048-intent-tooling.md). [Live AI component control is outside this pass](../decisions/0003-ai-authoring-scope.md). No project tools or services have been installed.
+Checkpoint 2026-09-19, updated after the second guided review. **Selected:** [versioned consumer skills](../decisions/DEC-019-consumer-skills.md), a [documentation/API MCP server](../decisions/DEC-027-design-system-mcp.md), and [TanStack Intent development tooling](../decisions/DEC-048-intent-tooling.md). [Live AI component control is outside this pass](../decisions/DEC-003-ai-authoring-scope.md). No project tools or services have been installed.
 
 ## Existing capability at the 2026-09-19 checkpoint
 
@@ -83,11 +83,11 @@ The main adoption choices are resolved. At this checkpoint, skill taxonomy/evalu
 
 ## Complete tooling proposal
 
-The [Phase 4 tooling contract](../../spec/SPEC-documentation-tooling.md) now proposes release-qualified documentation resources/tools, local stdio delivery, explicit version/framework resolution, shared generated API/example data and a concrete consumer-skill taxonomy. No runtime AI operations, project mutations, network model calls or global hook installation are introduced. These are reviewable proposals under selected capabilities, not shipped services or newly approved tool names.
+The [Phase 4 tooling contract](../../specs/SPEC-004-documentation-tooling/spec.md) now proposes release-qualified documentation resources/tools, local stdio delivery, explicit version/framework resolution, shared generated API/example data and a concrete consumer-skill taxonomy. No runtime AI operations, project mutations, network model calls or global hook installation are introduced. These are reviewable proposals under selected capabilities, not shipped services or newly approved tool names.
 
 ### Whole-set approval and Phase 5 handoff
 
-On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/0049-inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/0064-migration-approval.md) through “approved”. At the approval checkpoint, M00 technical prerequisites preceded dependent implementation and production implementation had not started. Later implementation and acceptance are recorded in the final evidence linked above. Approval alone was not a runtime result.
+On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/DEC-049-inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/DEC-064-migration-approval.md) through “approved”. At the approval checkpoint, M00 technical prerequisites preceded dependent implementation and production implementation had not started. Later implementation and acceptance are recorded in the final evidence linked above. Approval alone was not a runtime result.
 
 ## Sources and limitations
 

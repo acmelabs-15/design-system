@@ -16,11 +16,11 @@ Chakra supplies both a general tree collection and a file-path helper returning 
 
 Ordinary Sidebar links and TOC links retain their navigation behaviour. Visual indentation alone does not make a navigation list a Tree View. Tree View may be used inside a Sidebar or other container when its coordinated hierarchy interaction is appropriate.
 
-The later approved [Tree contract](../../spec/SPEC-navigation-disclosure.md#n-06-tree-view) defines node identity/content, selection/expansion events and keyboard ownership. Advanced multiple selection, checkbox propagation, built-in asynchronous children, filtering, renaming/reordering and virtualization are excluded by the whole-set approval below. No submitted form value is implied. TanStack Virtual remains required for any separately approved future virtualization extension.
+The later approved [Tree contract](../../specs/SPEC-010-navigation-disclosure/spec.md#n-06-tree-view) defines node identity/content, selection/expansion events and keyboard ownership. Advanced multiple selection, checkbox propagation, built-in asynchronous children, filtering, renaming/reordering and virtualization are excluded by the whole-set approval below. No submitted form value is implied. TanStack Virtual remains required for any separately approved future virtualization extension.
 
 The established native Lit, TanStack Store, Lit Motion, generated styles and React-wrapper approach governs implementation. Chakra's Ark/Zag implementation and MUI's packages are references, not adopted dependencies.
 
-Evidence: [joint review](../research/06-codebase-systematization.md#joint-content-selection-and-navigation-review), [source record](../verification/systematization/joint-composition-review-2026-09-19.json). The initial selection left the File Tree/Folder/File replacement details to the later approved migration.
+Evidence: [joint review](../research/RES-006-codebase-systematization.md#joint-content-selection-and-navigation-review), [source record](../verification/systematization/joint-composition-review-2026-09-19.json). The initial selection left the File Tree/Folder/File replacement details to the later approved migration.
 
 ## Approved core scope
 
@@ -28,6 +28,6 @@ Decided 2026-09-20 by Peter through “I approve all proposals.”
 
 Peter's whole-set approval selects the core interactive hierarchy, single selection and file-tree recipe. Multiple selection, checkbox propagation, built-in asynchronous child loading, filtering, renaming/reordering and virtualization are outside this pass's Tree contract. Applications can still replace supplied data; that is not a new built-in loading engine. The TanStack Virtual requirement remains for components whose virtualization is in scope and for any separately approved future Tree extension.
 
-[Complete approval record](0049-inventory-approval.md), [closed question register](../design/systematization-decisions.md).
+[Complete approval record](DEC-049-inventory-approval.md), [closed question register](../design/systematization-decisions.md).
 
-The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.
+The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../specs/SPEC-003-design-system/spec.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.

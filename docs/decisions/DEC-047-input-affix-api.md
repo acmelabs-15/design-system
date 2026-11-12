@@ -6,7 +6,7 @@ decided: 2026-09-10
 ---
 # Prefix and suffix are two named treatments, not one concept with booleans
 
-Input distinguishes outside add-ons from inside start/end content through named slots. This preserves the 2026-09-10 rationale and measurements; the later [text-control resolution](0035-execution-delegation.md#text-control-implementation-details--2026-09-22) replaces one-cell precedence with all four slots rendered together, and current Select interfaces belong to the [component contracts](../../spec/SPEC-design-system.md).
+Input distinguishes outside add-ons from inside start/end content through named slots. This preserves the 2026-09-10 rationale and measurements; the later [text-control resolution](DEC-035-execution-delegation.md#text-control-implementation-details--2026-09-22) replaces one-cell precedence with all four slots rendered together, and current Select interfaces belong to the [component contracts](../../specs/SPEC-003-design-system/spec.md).
 
 Decided 2026-09-10 by Peter.
 
@@ -81,7 +81,7 @@ It is a faithful transcription of the reference's React props: `prefix={<Icon/>}
 one name covers both and booleans carry the rest.
 
 That is an implementation, not a behaviour. **Parity is style, behaviour and functionality, never
-implementation** ([parity scope](0077-parity-scope.md)). The idiomatic web-component spelling of "put this element
+implementation** ([parity scope](DEC-077-parity-scope.md)). The idiomatic web-component spelling of "put this element
 there" is a slot, and we already had slots — keeping the props as well is what produced six
 properties.
 
@@ -125,7 +125,7 @@ nothing to undo.
 
 The incident left a cascade question open at the time: 64 generated rules carried
 !important on slotted content, and the review identified 11 as needed. This decision did not settle it because the change removed the triggering case. See
-[Slotted cascade analysis](../research/19-slotted-cascade.md).
+[Slotted cascade analysis](../research/RES-019-slotted-cascade.md).
 
 ## Select takes the same convention
 
@@ -207,7 +207,7 @@ the old slot name; renaming the map fixed it.
 
 ## Deferred, deliberately
 
-These deferrals describe 2026-09-10. Later [Group](0045-group-presentation.md) and [icon-element](0046-icon-element-shape.md) decisions select both capabilities.
+These deferrals describe 2026-09-10. Later [Group](DEC-045-group-presentation.md) and [icon-element](DEC-046-icon-element-shape.md) decisions select both capabilities.
 
 - **A group element** for an attached control (a button on the end of a field), the way Chakra's
   `Group` and Bootstrap's `input-group` compose them as siblings. Peter: worth doing, not now. The

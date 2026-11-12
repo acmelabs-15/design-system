@@ -14,7 +14,7 @@ Peter selected “Keep layout grids only” over the recommendation to retain a 
 
 The new layout Grid replaces the old same-named implementation outright. Do not preserve the old breakpoint rules, helper exports or decorative child contracts as compatibility interfaces. Exact layout parts, responsive properties and remaining Simple Grid details follow the selected responsive and spacing rules.
 
-Evidence: [grid review](../research/06-codebase-systematization.md#disclosure-layout-and-smaller-component-dispositions), [selection record](../verification/systematization/disposition-checkpoint-2026-09-19.json).
+Evidence: [grid review](../research/RES-006-codebase-systematization.md#disclosure-layout-and-smaller-component-dispositions), [selection record](../verification/systematization/disposition-checkpoint-2026-09-19.json).
 
 ## Simple Grid sizing modes
 
@@ -26,7 +26,7 @@ The Pro census found 83 literal SimpleGrid tags across the 938 indexed JSX/TSX f
 
 ## Source-defined sizing details
 
-Recorded 2026-09-20 under Peter's [standing reference instruction](0082-reference-systems.md#follow-the-established-reference-without-another-preference-question), not a separate preference vote. The complete pinned Chakra SimpleGrid source already supplies these details:
+Recorded 2026-09-20 under Peter's [standing reference instruction](DEC-082-reference-systems.md#follow-the-established-reference-without-another-preference-question), not a separate preference vote. The complete pinned Chakra SimpleGrid source already supplies these details:
 
 - Minimum-width mode uses repeat(auto-fit, minmax(width, 1fr)) with no implicit clamp to the container. Honor the authored minimum, including possible overflow in a narrower container. An author can supply an explicit fitting expression when needed. The queued clamp-versus-honor question is retired.
 - The component chooses minimum-width mode before mapping responsive values. While that valid input is supplied, columns does not become a fallback at widths where minChildWidth has no active value. Clear the minimum-width input to return to column-count mode. This corrects the later draft's per-width mode switching and follows the existing valid-setting precedence decision.

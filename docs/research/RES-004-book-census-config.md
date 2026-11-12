@@ -11,7 +11,7 @@ Status: historical research with dated implementation follow-ups. Converted 2026
 
 The 2026-09-10 investigation found four measurement faults and no Book defect. The 2026-09-26 correction narrowed an overbroad comparison rule. Its passing saved light/dark comparisons are not a new census of the current Book. Later implementation evidence is separate: [M21 Book](../verification/systematization/m21-book-2026-09-23.json).
 
-The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../STATUS.md) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
+The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../agents/workspace.md#session-state) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
 
 ## Findings and dated evidence
 

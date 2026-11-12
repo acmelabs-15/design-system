@@ -4,9 +4,9 @@ migrated: 0.8
 ---
 # Messages, progress and statistics — R09
 
-**Status: approved contract.** Peter approved the complete proposal set on 2026-09-20. The stated recommendations are selected; explicitly recorded later resolutions are incorporated below. [Approval](../docs/decisions/0049-inventory-approval.md). Verification evidence retains its original date and scope.
+**Status: approved contract.** Peter approved the complete proposal set on 2026-09-20. The stated recommendations are selected; explicitly recorded later resolutions are incorporated below. [Approval](../../docs/decisions/DEC-049-inventory-approval.md). Verification evidence retains its original date and scope.
 
-**Approved family contract.** Preserve the glossary's Toast/Alert/Banner contexts and the [selected component dispositions](../docs/decisions/0062-message-context-and-errors.md). Use shared primitives, events, state, theme and motion. Existing declarations are in [the AST snapshot](../docs/verification/systematization/current-public-interfaces-2026-09-20.json).
+**Approved family contract.** Preserve the glossary's Toast/Alert/Banner contexts and the [selected component dispositions](../../docs/decisions/DEC-062-message-context-and-errors.md). Use shared primitives, events, state, theme and motion. Existing declarations are in [the AST snapshot](../../docs/verification/systematization/current-public-interfaces-2026-09-20.json).
 
 ## M-01 Alert and Banner
 
@@ -24,7 +24,7 @@ Store methods add(record)→id, update(id,patch), dismiss(id), clear(). Data rec
 
 Newest messages are immediately visible; older beyond the limit are hidden from pointer/focus/announcements, as selected. Preserve overlapping presentation and expansion on interaction. Timer pause/resume accounts for focus, pointer and background document state. Swipe behavior follows the assigned Base reference only where tested; no accidental click while dragging. Shadow5 and shared Lit Motion; scope-correct themes and normal inherited density.
 
-Acceptance: visible limit, rapid arrival/update/dismiss, persistence, action focus, close interruption, reduced motion, touch/keyboard expansion, timer cleanup, hidden-item access and exactly-once live announcements. Unknown application results are not automatically toasted. [Decision](../docs/decisions/0110-toast-behaviour.md).
+Acceptance: visible limit, rapid arrival/update/dismiss, persistence, action focus, close interruption, reduced motion, touch/keyboard expansion, timer cleanup, hidden-item access and exactly-once live announcements. Unknown application results are not automatically toasted. [Decision](../../docs/decisions/DEC-110-toast-behaviour.md).
 
 ## M-03 Feedback
 
@@ -32,7 +32,7 @@ acme-feedback props value: { rating?:string, message:string, email?:string, topi
 
 Emit cancelable acme-request { action:"submit", value }; the application sends data and supplies submitting/error/success. No endpoint, dryRun, siteType or implicit network request remains. Inline and Toggle Tip/Dialog examples reuse the same form; the component does not own a second popup interface. reset() restores the supplied initial value. User edits use acme-input { value } and committed acme-change where meaningful.
 
-Acceptance: required validation, keyboard rating/message, repeated submit prevention, failure/retry without lost message, optional email/topic and explicit application submission. [Decision](../docs/decisions/0036-feedback-component.md), compared form examples. These selected default fields are not an assumed backend schema.
+Acceptance: required validation, keyboard rating/message, repeated submit prevention, failure/retry without lost message, optional email/topic and explicit application submission. [Decision](../../docs/decisions/DEC-036-feedback-component.md), compared form examples. These selected default fields are not an assumed backend schema.
 
 ## M-04 Empty State
 
@@ -48,11 +48,11 @@ Use for absent collections/views; loading, failure and permission denial are exp
 | acme-progress | value?: number; max=100; variant: default\|success\|error\|warning\|secondary=default; label=""; shape=linear | Native progress semantics; absent value is indeterminate, supplied 0 is real zero; root/track/range/label parts; optional default label content |
 | acme-skeleton | loading=true; shape: rectangle\|circle=rectangle; width/height?: CSS sizes | Placeholder hidden from accessibility; default content can be shown when loading=false; root/content parts; no fake progress announcements |
 
-The application or consuming control owns surrounding busy state; Spinner does not infer it by inspecting ancestors. Button/Menu Trigger and Search/ComboBox expose their own busy state when composing an unnamed Spinner. The five selected Spinner tiers retain their first five source geometries and cycle periods. Lit Motion owns opacity; generated CSS owns blade placement. Replaced directives/controllers are disposed through public Lit APIs, with generation guards and live reduced-motion handling. [2026-09-21 activity resolution](../docs/decisions/0035-execution-delegation.md#activity-presentation--2026-09-21).
+The application or consuming control owns surrounding busy state; Spinner does not infer it by inspecting ancestors. Button/Menu Trigger and Search/ComboBox expose their own busy state when composing an unnamed Spinner. The five selected Spinner tiers retain their first five source geometries and cycle periods. Lit Motion owns opacity; generated CSS owns blade placement. Replaced directives/controllers are disposed through public Lit APIs, with generation guards and live reduced-motion handling. [2026-09-21 activity resolution](../../docs/decisions/DEC-035-execution-delegation.md#activity-presentation--2026-09-21).
 
 No public change events for animation frames. Loading Dots is removed entirely. Determinate Progress clamps display to its valid range while reporting invalid configuration diagnostically; max must be positive. User-provided value text is optional for localized description. Reduced motion removes distracting movement without fabricating completion.
 
-Retain assigned Geist visuals except recorded named deviations. The [2026-09-23 contrast correction](../docs/research/07-design-foundations.md#m18-measurement-foreground-contrast-deviation--2026-09-23) selects Meter green-900/amber-900 and Progress amber-900/gray-900 while preserving passing tones and geometry; custom themes retain their own contrast responsibility. Full Material Progress token/diagram coverage is still incomplete in prior research; it is not authority for new visual values. A future Material-based shape/treatment recommendation requires that specific coverage gap to be closed. An additional circular task-progress shape is not silently inferred from Meter's circular display.
+Retain assigned Geist visuals except recorded named deviations. The [2026-09-23 contrast correction](../../docs/research/RES-007-design-foundations.md#m18-measurement-foreground-contrast-deviation--2026-09-23) selects Meter green-900/amber-900 and Progress amber-900/gray-900 while preserving passing tones and geometry; custom themes retain their own contrast responsibility. Full Material Progress token/diagram coverage is still incomplete in prior research; it is not authority for new visual values. A future Material-based shape/treatment recommendation requires that specific coverage gap to be closed. An additional circular task-progress shape is not silently inferred from Meter's circular display.
 
 ## M-06 Meter
 
@@ -60,7 +60,7 @@ acme-meter replaces Gauge. value?: finite number; min=0, max=100; low?/high?/opt
 
 Native meter semantics for a known value; loading/absent value removes the numerical announcement and shows a distinct loading/empty treatment. Never announce invented zero while waiting. Progress remains task completion. Threshold color mappings use theme semantic roles; no raw record of unlabeled magic cut points without declared meaning. acme-change is not emitted for a display update.
 
-Acceptance: zero/negative ranges, min=max/invalid limits, thresholds, absent/error/loading, locale/valueText, reduced motion, contrast and true meter accessibility. [Decision](../docs/decisions/0063-meter-component.md).
+Acceptance: zero/negative ranges, min=max/invalid limits, thresholds, absent/error/loading, locale/valueText, reduced motion, contrast and true meter accessibility. [Decision](../../docs/decisions/DEC-063-meter-component.md).
 
 ## M-07 Stat
 
@@ -68,7 +68,7 @@ Family acme-stat, acme-stat-label, acme-stat-value, acme-stat-unit, acme-stat-de
 
 Change props direction: up|down|flat; sentiment: positive|negative|neutral=neutral; value?: number; formatOptions? for explicit formatting. Direction and meaning remain separate: fewer failures can be down and positive. Parts root/label/value/unit/description/change/footer; accessible text states change meaning without relying on arrow/color. No standalone Trend.
 
-Stat can contain Sparkline/Meter as authored content without owning their data. Missing data differs from zero. No independent click/selection event; Radio/Checkbox Card compositions own selectable stats. Replace Stat Delta/Desc/Foot with full-word family parts, Metric List with Stat+List, and Stat Strip/Strip Item with selection recipes. [Decision](../docs/decisions/0100-stat-family.md).
+Stat can contain Sparkline/Meter as authored content without owning their data. Missing data differs from zero. No independent click/selection event; Radio/Checkbox Card compositions own selectable stats. Replace Stat Delta/Desc/Foot with full-word family parts, Metric List with Stat+List, and Stat Strip/Strip Item with selection recipes. [Decision](../../docs/decisions/DEC-100-stat-family.md).
 
 ## M-08 Status
 

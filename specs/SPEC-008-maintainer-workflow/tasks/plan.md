@@ -4,9 +4,9 @@ migrated: 0.8
 ---
 # Implementation plan: maintainer workflow migration
 
-Status: approved by Peter for local implementation on 2026-10-21. Current execution state belongs in [STATUS](../../../docs/STATUS.md).
+Status: approved by Peter for local implementation on 2026-10-21. Current execution state belongs in [STATUS](../../../docs/agents/workspace.md#session-state).
 
-Task state belongs in [todo.md](todo.md). [STATUS](../../../docs/STATUS.md) is the current handoff.
+Task state belongs in [todo.md](todo.md). [STATUS](../../../docs/agents/workspace.md#session-state) is the current handoff.
 
 ## Outcome
 

@@ -11,16 +11,16 @@ Status: historical research with dated implementation follow-ups. Converted 2026
 
 Peter retained Lit Motion and selected Material motion roles with both schemes. The M00 and M10 findings below record later implementation evidence. The [final evidence](../verification/systematization/m26-final/README.md) closes systematization at its recorded scope. No full Material shape catalogue, additional geometry dependency, global Standard/Expressive default or Android frame identity is implied.
 
-The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../STATUS.md) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
+The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../agents/workspace.md#session-state) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
 
 ## Findings and dated evidence
 
 
-Phase 1.5, researched 2026-09-19. **Decided by Peter: retain `@lit-labs/motion`, subject to browser verification.** The [decision](../decisions/0004-animation-package.md) records the reasons and limits. At this research checkpoint, shared lifecycle design remained for the later architecture, inventory and migration stages. This investigation changed no dependency or implementation.
+Phase 1.5, researched 2026-09-19. **Decided by Peter: retain `@lit-labs/motion`, subject to browser verification.** The [decision](../decisions/DEC-004-animation-package.md) records the reasons and limits. At this research checkpoint, shared lifecycle design remained for the later architecture, inventory and migration stages. This investigation changed no dependency or implementation.
 
 ## Existing evidence and needs
 
-The [Book decision](../decisions/0065-motion-on-the-book.md) already establishes that the directive can run a 3D transform through `onFrames`. It also establishes capture-before-state-change ordering and cancellation during reversal. This investigation does not reopen those findings. `src/components/book/book.ts:150` owns an AnimateController, while `collapse/collapse.ts:84` measures height manually; modal, drawer, toast, menu and tooltip retain their own enter/exit timing. Motion must cover size changes, entry, exit, interruption, reduced motion and disconnect cleanup while keeping the state styles measurable by the census.
+The [Book decision](../decisions/DEC-065-motion-on-the-book.md) already establishes that the directive can run a 3D transform through `onFrames`. It also establishes capture-before-state-change ordering and cancellation during reversal. This investigation does not reopen those findings. `src/components/book/book.ts:150` owns an AnimateController, while `collapse/collapse.ts:84` measures height manually; modal, drawer, toast, menu and tooltip retain their own enter/exit timing. Motion must cover size changes, entry, exit, interruption, reduced motion and disconnect cleanup while keeping the state styles measurable by the census.
 
 ## Compared candidates
 
@@ -57,7 +57,7 @@ No cross-library FPS ranking is claimed, no mobile performance trace was run, an
 
 ## Phase 1 extension: Material motion and shapes
 
-Peter selected [Material spring roles with both schemes](../decisions/0059-material-motion-system.md) and retained Lit Motion. The later [shape clarification](../decisions/0094-shape-support.md) makes morphing specific to demonstrated needs; it supersedes the earlier complete abstract-shape-library interpretation. No single global Standard/Expressive default was selected.
+Peter selected [Material spring roles with both schemes](../decisions/DEC-059-material-motion-system.md) and retained Lit Motion. The later [shape clarification](../decisions/DEC-094-shape-support.md) makes morphing specific to demonstrated needs; it supersedes the earlier complete abstract-shape-library interpretation. No single global Standard/Expressive default was selected.
 
 The investigation read the supplied [motion physics](https://m3.material.io/styles/motion/overview/how-it-works), [easing/duration](https://m3.material.io/styles/motion/easing-and-duration/applying-easing-and-duration), [transition patterns](https://m3.material.io/styles/motion/transitions/transition-patterns), [shape overview](https://m3.material.io/styles/shape/overview-principles), [corner scale](https://m3.material.io/styles/shape/corner-radius-scale) and [morphing](https://m3.material.io/styles/shape/shape-morph) main content. Interactive specification controls did not expose every value; the record leaves those parameters unverified.
 
@@ -77,7 +77,7 @@ No port, geometry dependency, new animation engine or concrete spring-token valu
 
 ## Control state and ripple source review
 
-The investigation read 2026-09-19. These are source observations, not a browser comparison of completed animations. [Peter selected optional ripples, off by default](../decisions/0074-optional-ripples.md). This is separate from control selection/state motion and does not reopen Lit Motion or the selected Material motion roles.
+The investigation read 2026-09-19. These are source observations, not a browser comparison of completed animations. [Peter selected optional ripples, off by default](../decisions/DEC-074-optional-ripples.md). This is separate from control selection/state motion and does not reopen Lit Motion or the selected Material motion roles.
 
 ### Controls at the 2026-09-19 checkpoint
 
@@ -105,11 +105,11 @@ The [evidence record](../verification/systematization/blue-control-review-2026-0
 
 ## Shared selection indicator
 
-[Peter selected one shared active-indicator component](../decisions/0097-shared-selection-indicator.md) for suitable single-selection groups, extending the tab-only scope without changing each control's appearance or selection rules. His later clarification places Lit Motion inside this component: it owns movement and resizing, while Tabs, Segmented Control and other suitable controls supply the selected target. Both horizontal and vertical orientations are required capabilities of the shared component. A separate indicator animation in each control is excluded. Public naming and the target/measurement interface remain for architecture review. Checkbox and multi-select controls do not use this travelling indicator. No additional Zag package is selected.
+[Peter selected one shared active-indicator component](../decisions/DEC-097-shared-selection-indicator.md) for suitable single-selection groups, extending the tab-only scope without changing each control's appearance or selection rules. His later clarification places Lit Motion inside this component: it owns movement and resizing, while Tabs, Segmented Control and other suitable controls supply the selected target. Both horizontal and vertical orientations are required capabilities of the shared component. A separate indicator animation in each control is excluded. Public naming and the target/measurement interface remain for architecture review. Checkbox and multi-select controls do not use this travelling indicator. No additional Zag package is selected.
 
 The actual [Material Web Tab](https://github.com/material-components/material-web/blob/main/tabs/internal/tab.ts) measures the previous/current indicator rectangles, cancels existing animations and applies a translate/scale animation for 250ms. Reduced motion falls back to opacity. This is timed tab-specific source, not a generic spring implementation. Current Tabs and the segmented control (switch.ts) update selection without a shared travelling-indicator mechanism.
 
-[Chakra's Segmented Control guide](https://chakra-ui.com/docs/components/segmented-control) exposes an Indicator part. Its recipe reads width/height/top/left variables. Ark's use-segment-group.ts uses @zag-js/radio-group with direction/root context; there was no separate @zag-js/segment-group machine at the inspected path. This is implementation evidence, not authorization to add the radio-group dependency. [Radix Segmented Control](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/segmented-control.tsx) also renders an indicator and currently uses ToggleGroup type=single. Its current source differs from the earlier plan's radio-backed characterization; the subsequently selected [radio-based Segmented Control](../decisions/0090-segmented-control.md), while preserving this reference difference as evidence.
+[Chakra's Segmented Control guide](https://chakra-ui.com/docs/components/segmented-control) exposes an Indicator part. Its recipe reads width/height/top/left variables. Ark's use-segment-group.ts uses @zag-js/radio-group with direction/root context; there was no separate @zag-js/segment-group machine at the inspected path. This is implementation evidence, not authorization to add the radio-group dependency. [Radix Segmented Control](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/segmented-control.tsx) also renders an indicator and currently uses ToggleGroup type=single. Its current source differs from the earlier plan's radio-backed characterization; the subsequently selected [radio-based Segmented Control](../decisions/DEC-090-segmented-control.md), while preserving this reference difference as evidence.
 
 Required later cases: interrupted/reversed selection, differing item sizes, font/content changes, reordered or removed items, scrolling, horizontal and vertical orientations, changes of orientation or text direction, RTL, reduced motion and cleanup. The moving visual must remain distinct from accessible selected state and keyboard focus. No shared implementation or browser acceptance ran. [Source record](../verification/systematization/foundation-followup-2026-09-19.json).
 
@@ -124,7 +124,7 @@ The two user attachments specify a related visual treatment:
 - [Source/Output Tabs](../verification/systematization/tabs-variant-reference-2026-09-19.png): white rounded outer surface, light outline, and an inset rounded light-gray fill behind Source. Peter requested this as an additional Tabs variant.
 - [Icon Segmented Control](../verification/systematization/segmented-control-reference-2026-09-19.png): grid/list choices in three example sizes or proportions, using the same outlined outer surface and inset selected fill. The attachment establishes the visual relationship, not exact size or radius tokens.
 
-No variant name, default treatment, exact dimensions, dark-theme mapping or new duration was selected from these images. The [Material primary-tab treatment](../decisions/0061-material-tab-indicator.md) remains available with its own appearance and states. The shared component must support each participating treatment without duplicating the animation implementation.
+No variant name, default treatment, exact dimensions, dark-theme mapping or new duration was selected from these images. The [Material primary-tab treatment](../decisions/DEC-061-material-tab-indicator.md) remains available with its own appearance and states. The shared component must support each participating treatment without duplicating the animation implementation.
 
 #### Source evidence and its limits
 

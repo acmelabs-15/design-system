@@ -6,7 +6,7 @@ decided: 2026-09-19
 ---
 # Provide resizable panes
 
-Add user-resizable page sections, operated by dragging or keyboard. Peter chose this over layouts that only adapt automatically to window width. Implement them through the [native Lit/TanStack port strategy](0114-zag-behaviour-ports.md), with Zag Splitter as a behaviour reference and React wrapping the same Lit implementation. A new Lit component is allowed.
+Add user-resizable page sections, operated by dragging or keyboard. Peter chose this over layouts that only adapt automatically to window width. Implement them through the [native Lit/TanStack port strategy](DEC-114-zag-behaviour-ports.md), with Zag Splitter as a behaviour reference and React wrapping the same Lit implementation. A new Lit component is allowed.
 
 Decided 2026-09-19 by Peter.
 
@@ -24,12 +24,12 @@ The consuming application owns saving across page reloads. Expose complete prefe
 
 The published 1.44.0 connector reports the layout orientation as the separator orientation; side-by-side panes need a vertical separator. Its keyboard-step documentation says pixels, but the inspected sizing path uses percentage points. Acceptance requires correcting and verifying both. The keyboard collapse path also differs from the programmatic restore path; the Lit integration must deliver the selected previous-size behaviour consistently. No correction was implemented in this research.
 
-Verify dragging, keyboard operation, size constraints, collapse/reopen, focus and hidden content, RTL, nested layouts and disconnect/reconnect in Chromium, Firefox and WebKit. The exact name, public fields, defaults, event payloads, storage example format and responsive restoration rules were left to the later [layout contract](../../spec/SPEC-layout.md). The historical Phase 5 gate is retired; the [release record](../releases/0.3.0.md) records acceptance and its limits.
+Verify dragging, keyboard operation, size constraints, collapse/reopen, focus and hidden content, RTL, nested layouts and disconnect/reconnect in Chromium, Firefox and WebKit. The exact name, public fields, defaults, event payloads, storage example format and responsive restoration rules were left to the later [layout contract](../../specs/SPEC-007-layout/spec.md). The historical Phase 5 gate is retired; the [release record](../releases/0.3.0.md) records acceptance and its limits.
 
-Evidence: [pane behaviour](../research/07-design-foundations.md#resizable-panes), [package comparison](../research/16-package-choices.md#resizable-pane-package-comparison), and [probe record](../verification/systematization/resizable-panes-2026-09-19.json).
+Evidence: [pane behaviour](../research/RES-007-design-foundations.md#resizable-panes), [package comparison](../research/RES-016-package-choices.md#resizable-pane-package-comparison), and [probe record](../verification/systematization/resizable-panes-2026-09-19.json).
 
 ## Shadcn composition reference
 
 Peter subsequently requested [shadcn Base Resizable](https://ui.shadcn.com/docs/components/base/resizable) and its use where appropriate in other components/layouts. Inclusion is already covered by this decision. Add its Panel Group/Panel/Handle composition to the comparison, and examine suitable Sidebar, supporting-pane, editor and Scroll Area combinations. This does not make all those surfaces resizable by default.
 
-The inspected wrapper uses react-resizable-panels, even though its documentation route says Base. Keep the selected shared Lit implementation and React wrapper; no separate React engine is adopted. Exact names, parts and responsive/collapse/focus/scroll combinations belong to the layout contract. [Follow-up evidence](../research/07-design-foundations.md#shadcn-resizable-follow-up), [request record](../verification/systematization/disposition-checkpoint-2026-09-19.json).
+The inspected wrapper uses react-resizable-panels, even though its documentation route says Base. Keep the selected shared Lit implementation and React wrapper; no separate React engine is adopted. Exact names, parts and responsive/collapse/focus/scroll combinations belong to the layout contract. [Follow-up evidence](../research/RES-007-design-foundations.md#shadcn-resizable-follow-up), [request record](../verification/systematization/disposition-checkpoint-2026-09-19.json).

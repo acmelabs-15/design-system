@@ -1,6 +1,6 @@
 # Component implementation
 
-Read this guide before changing a component interface, behavior or composition. Read its current specification and applicable decisions through the [specification index](../../spec/README.md).
+Read this guide before changing a component interface, behavior or composition. Read its current specification and applicable decisions through the [specification index](../history/specification-index-0.3.md).
 
 ## Interfaces and state
 
@@ -20,14 +20,14 @@ Read a composed component's actual variants, slots, parts and event contract bef
 
 Keep required reactive-controller registrations even when a field appears unused. Snapshot live collections before mutation. Test slot behavior in a real browser. Preserve native form submission, submitter identity, reset, validity and focus behavior where the component contract requires them.
 
-Focus rings belong to the component that owns the interaction. Follow the [focus-ring decision](../decisions/0041-focus-ring-ownership.md), including its qualifications. Use the shared [start/end place model](../decisions/0099-start-and-end-places.md). Book's state and animation requirements remain in its [motion decision](../decisions/0065-motion-on-the-book.md); its historical census method is not a universal animation rule.
+Focus rings belong to the component that owns the interaction. Follow the [focus-ring decision](../decisions/DEC-041-focus-ring-ownership.md), including its qualifications. Use the shared [start/end place model](../decisions/DEC-099-start-and-end-places.md). Book's state and animation requirements remain in its [motion decision](../decisions/DEC-065-motion-on-the-book.md); its historical census method is not a universal animation rule.
 
 ## Styling and source boundaries
 
-Default typography uses Google Sans Flex for text and Google Sans Code for numbers, labels and code. Custom themes retain their approved override contract. Use component class names and authored interfaces; preserve the selected appearance, density, motion, shape and direction contracts in the [foundations specification](../../spec/SPEC-foundations.md).
+Default typography uses Google Sans Flex for text and Google Sans Code for numbers, labels and code. Custom themes retain their approved override contract. Use component class names and authored interfaces; preserve the selected appearance, density, motion, shape and direction contracts in the [foundations specification](../../specs/SPEC-005-foundations/spec.md).
 
 Keep Geist identity out of source code, comments and JSDoc under `src/`. Put reference provenance in research and decision records. [Reference guidance](reference-sources.md) explains the source-selection obligations and citation location. Another organization's brand identity is not a design-system capability.
 
 CSS changes use the owning producer described in [style guidance](styles.md). A removal or rename reaches the actual source, styles, registration, exports, metadata, examples and callers. Check platform name collisions and owned internal parts. Do not infer completion from an import search or a generated summary alone.
 
-These constraints preserve [parity-scope decisions](../decisions/0077-parity-scope.md), [canonical state](../decisions/0101-state-on-tanstack-store.md) and the completed systematization resolutions. Verification requirements live in [verification guidance](../agents/verification.md).
+These constraints preserve [parity-scope decisions](../decisions/DEC-077-parity-scope.md), [canonical state](../decisions/DEC-101-state-on-tanstack-store.md) and the completed systematization resolutions. Verification requirements live in [verification guidance](../agents/verification.md).

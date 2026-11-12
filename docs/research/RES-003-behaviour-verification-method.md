@@ -9,15 +9,15 @@ Status: historical research with dated implementation follow-ups. Converted 2026
 
 ## Scope and current interpretation
 
-This is the 2026-09-10 parity-method investigation, followed by 2026-09-19 browser probes. The later [browser verification decision](../decisions/0011-browser-verification.md) selects Bun orchestration and supersedes the Vitest recommendation. [Bidirectional support](../decisions/0007-bidirectional-support.md) supersedes the original no-RTL scope; [server rendering](../decisions/0092-server-rendering.md) is excluded. The event-boundary claim below is retained as a disputed historical claim: a non-composed event dispatched inside a shadow root reaching the host is not established and requires revalidation before reuse.
+This is the 2026-09-10 parity-method investigation, followed by 2026-09-19 browser probes. The later [browser verification decision](../decisions/DEC-011-browser-verification.md) selects Bun orchestration and supersedes the Vitest recommendation. [Bidirectional support](../decisions/DEC-007-bidirectional-support.md) supersedes the original no-RTL scope; [server rendering](../decisions/DEC-092-server-rendering.md) is excluded. The event-boundary claim below is retained as a disputed historical claim: a non-composed event dispatched inside a shadow root reaching the host is not established and requires revalidation before reuse.
 
-The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../STATUS.md) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
+The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../agents/workspace.md#session-state) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
 
 ## Findings and dated evidence
 
 
 Researched 2026-09-10. The historical port plan linked this investigation from section 5.4.
-[Functional parity sources](12-functional-parity-sources.md) records the reference evidence available at that date.
+[Functional parity sources](RES-012-functional-parity-sources.md) records the reference evidence available at that date.
 
 Every claim here was checked against our own saved corpus before being written down, per the standing
 rule that evidence beats inference.
@@ -44,7 +44,7 @@ parity claim goes wrong.
 
 W3C WebDriver defines endpoints that ask the **browser** for an element's computed ARIA role and
 accessible name. Reachable from Selenium 4 and WebdriverIO. Detail and the driver support matrix are in
-[functional-parity-sources.md](12-functional-parity-sources.md).
+[functional-parity-sources.md](RES-012-functional-parity-sources.md).
 
 Point the same assertion at the reference and at us. This is the strongest machine-checkable evidence of
 semantic parity we can get.
@@ -165,7 +165,7 @@ Each is one flag on a harness we already need:
 ## Two scope questions, not research gaps
 
 - **Historical right-to-left scope: none**, on the then-recorded evidence that the reference had none. Later bidirectional support supersedes this scope. See
-  [../decisions/parity-scope.md](../decisions/0077-parity-scope.md).
+  [../decisions/parity-scope.md](../decisions/DEC-077-parity-scope.md).
 - **Server rendering and hydration:** the reference is React with server components. A Lit port cannot
   follow that architecture, so there is nothing to match. Whether our elements should be
   server-renderable at all is a separate product decision.

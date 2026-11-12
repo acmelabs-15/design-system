@@ -6,7 +6,7 @@ decided: 2026-09-10
 ---
 # The code block's language switcher composes our own elements
 
-Code Block reused selection controls so language selection did not duplicate existing behavior. This record preserves the 2026-09-10 implementation and its measured defects. The approved 2026-09-20 [Code Block contract](../../spec/SPEC-rich-content.md#rc-01-code-block) subsequently removes internal switcher/tabs state and composes Select/Tabs with application-owned code; the old names, properties, tokens and paths below are historical.
+Code Block reused selection controls so language selection did not duplicate existing behavior. This record preserves the 2026-09-10 implementation and its measured defects. The approved 2026-09-20 [Code Block contract](../../specs/SPEC-012-rich-content/spec.md#rc-01-code-block) subsequently removes internal switcher/tabs state and composes Select/Tabs with application-owned code; the old names, properties, tokens and paths below are historical.
 
 Decided 2026-09-10 by Peter, who asked why the switcher is not our select and the language tabs
 are not our switch.
@@ -39,7 +39,7 @@ list", not three.** Parity governs style, behaviour and functionality. It does n
 copy the reference's decision to skip its own component.
 
 The tabs are the clearer case. A language switcher picks one of several mutually exclusive views.
-At that time, `acme-switch` was the segmented selector with radio semantics, while `acme-tabs` served panels. The later [Segmented Control decision](0090-segmented-control.md) resolves the old Switch name.
+At that time, `acme-switch` was the segmented selector with radio semantics, while `acme-tabs` served panels. The later [Segmented Control decision](DEC-090-segmented-control.md) resolves the old Switch name.
 
 ## What it costs
 

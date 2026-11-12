@@ -11,7 +11,7 @@ Status: historical research with dated implementation follow-ups. Converted 2026
 
 This 2026-09-10 investigation records cascade measurements and a bounded ten-system source survey. No narrowing of generated important rules or adoption of the Spectrum guard was selected. The input affix change removed the triggering case. The 64/11/53 counts remain dated findings and do not create a current cleanup queue.
 
-The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../STATUS.md) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
+The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../agents/workspace.md#session-state) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
 
 ## Findings and dated evidence
 
@@ -107,7 +107,7 @@ Two refinements to the third, both verified in source:
 ## Why no decision was taken
 
 The case that raised it dissolved. The input's affix API was replaced (see
-[the input affix decision](../decisions/0047-input-affix-api.md)), and with two named places there is no switched-off cell for a positional rule
+[the input affix decision](../decisions/DEC-047-input-affix-api.md)), and with two named places there is no switched-off cell for a positional rule
 to land on. The input page reaches parity with the `!important` untouched.
 
 ## What is still open

@@ -4,7 +4,7 @@ migrated: 0.8
 ---
 # Implementation plan: MCP dependency advisory
 
-Status: completed 2026-10-27. Approved by Peter on 2026-10-27 through the task-size, dependency-order and task-boundary questions. Current execution state belongs in [STATUS](../docs/STATUS.md). Task state belongs in [todo.md](todo.md).
+Status: completed 2026-10-27. Approved by Peter on 2026-10-27 through the task-size, dependency-order and task-boundary questions. Current execution state belongs in [STATUS](../../../docs/agents/workspace.md#session-state). Task state belongs in [todo.md](todo.md).
 
 ## Outcome
 
@@ -40,7 +40,7 @@ Moderate and low findings do not block the gate. Those under the MCP runtime (`f
 | Pin `happy-dom` and its global registrator at exact 21.0.4 | The root manifest pins both exactly. This keeps that convention. |
 | Keep the SDK locked at 1.32.0 | It is the tested version and has no blocking advisory. The new range lets consumers resolve later 1.32 releases. |
 | The install test restores the manifest's own `zod` value | The test now hard-codes 4.6.5 as the value to restore. Reading the original value removes that coupling. |
-| Coordinated version 0.3.3 | The [repository map](../docs/agents/repository.md) requires coordinated versions for all five packages. |
+| Coordinated version 0.3.3 | The [repository map](../../../docs/agents/repository.md) requires coordinated versions for all five packages. |
 | Work on branch claude/issue-9-mcp-dependencies | Another session has uncommitted files on main in the same checkout. They are never staged. The full gate runs on a clean committed candidate. |
 
 ## Ordered work
@@ -62,7 +62,7 @@ Tasks 1 and 2 are independent. Task 3 is one mechanical change: the release poli
 
 ## Verification
 
-Run every command with Bun 1.4.2 and the [verification guide](../docs/agents/verification.md). Focused checks run per task:
+Run every command with Bun 1.4.2 and the [verification guide](../../../docs/agents/verification.md). Focused checks run per task:
 
 ~~~sh
 bun scripts/dependency-audit.ts
@@ -89,7 +89,7 @@ Task 4 runs `bun run check` on the clean committed candidate. If a local run can
 | `happy-dom` 21 turns off CSS file and iframe page loading by default | Unit fixtures or generated output can change | Task 2 runs the full unit suite and the build drift check. `scripts/docs-icons.ts` and `scripts/manifest.ts` already turn both off; their deprecated `disableCSSFileLoading` setting is checked for warnings. |
 | A newer transitive version changes MCP behaviour | Server or protocol failure | MCP protocol, stdio and catalog tests; packed-consumer checks in the complete gate. |
 | A local complete gate does not finish uninterrupted | Missing local closure evidence | The 0.3.2 and migration precedent: the complete CI run on the reviewed head closes the task. |
-| npm holds a new version in automated review | Publication waits | Bounded monitoring, as in the [0.3.2 release](../docs/releases/0.3.2.md). |
+| npm holds a new version in automated review | Publication waits | Bounded monitoring, as in the [0.3.2 release](../../../docs/releases/0.3.2.md). |
 
 ## Authorization
 

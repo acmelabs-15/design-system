@@ -10,7 +10,7 @@ Peter reaffirmed that recommendations require evidence and must favor the best i
 
 Decided 2026-09-19 by Peter.
 
-Peter's words were “everything should be based on evidence, no assumptions.” The issue was inconsistent application of his existing “Best, not fastest” and “Investigate first” preferences. Requests for speed changed pacing, parallelism and evidence reuse; they did not lower the evidence or quality standard. The [maintainer workflow](../../spec/SPEC-maintainer-workflow.md) now assigns the procedure and handoff owners.
+Peter's words were “everything should be based on evidence, no assumptions.” The issue was inconsistent application of his existing “Best, not fastest” and “Investigate first” preferences. Requests for speed changed pacing, parallelism and evidence reuse; they did not lower the evidence or quality standard. The [maintainer workflow](../../specs/SPEC-008-maintainer-workflow/spec.md) now assigns the procedure and handoff owners.
 
 ## Required method
 
@@ -24,6 +24,6 @@ The reaffirmation required these distinctions and comparison criteria:
 - Insufficient evidence or new findings triggered reevaluation. Peter's choice history stayed intact; a changed direction needed a supported revision. Approval did not establish implementation verification.
 - The handoff kept open research and verification with an owner and return point, so compaction could not turn them into settled facts.
 
-At this reaffirmation, CSS-first was an unselected proposal. The actual Lit-system comparison preceded a renewed recommendation. Peter subsequently [selected compiled CSS feeding generated Lit modules](0104-style-production.md). This history illustrates the evidence requirement without claiming that design approval completed implementation checks.
+At this reaffirmation, CSS-first was an unselected proposal. The actual Lit-system comparison preceded a renewed recommendation. Peter subsequently [selected compiled CSS feeding generated Lit modules](DEC-104-style-production.md). This history illustrates the evidence requirement without claiming that design approval completed implementation checks.
 
-Evidence audit and follow-ups: [Phase 3 review](../history/systematization/architecture-review.md#evidence-audit), [method record](../research/20-systematic-approach.md#evidence-and-implementation-quality-reaffirmation). The completed pass originally put this reminder at the top of its startup record.
+Evidence audit and follow-ups: [Phase 3 review](../history/systematization/architecture-review.md#evidence-audit), [method record](../research/RES-020-systematic-approach.md#evidence-and-implementation-quality-reaffirmation). The completed pass originally put this reminder at the top of its startup record.

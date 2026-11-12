@@ -1,6 +1,6 @@
 # Reference generation and measurement
 
-Read this guide before changing extraction, reference maps, census configuration or comparison evidence. Read the [tooling glossary](../../tools/geist/CONTEXT.md) and [reference guidance](reference-sources.md) for the applicable concepts and source roles.
+Read this guide before changing extraction, reference maps, census configuration or comparison evidence. Read the [tooling glossary](../../tools/geist/GLOSSARY.md) and [reference guidance](reference-sources.md) for the applicable concepts and source roles.
 
 ## Match the actual boxes
 

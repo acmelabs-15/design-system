@@ -4,9 +4,9 @@ migrated: 0.8
 ---
 # Rich content and media — R12
 
-**Status: approved contract.** Peter approved the complete proposal set on 2026-09-20. The stated recommendations are selected; explicitly recorded later resolutions are incorporated below. [Approval](../docs/decisions/0049-inventory-approval.md). Verification evidence retains its original date and scope.
+**Status: approved contract.** Peter approved the complete proposal set on 2026-09-20. The stated recommendations are selected; explicitly recorded later resolutions are incorporated below. [Approval](../../docs/decisions/DEC-049-inventory-approval.md). Verification evidence retains its original date and scope.
 
-**Approved family contract.** primitives, shared state, generated CSS, TanStack highlighting/Markdown and Lit Motion remain required. Inputs below define the approved interface; source evidence comes from the [complete current declaration snapshot](../docs/verification/systematization/current-public-interfaces-2026-09-20.json) and the referenced source files. No old aliases survive migration.
+**Approved family contract.** primitives, shared state, generated CSS, TanStack highlighting/Markdown and Lit Motion remain required. Inputs below define the approved interface; source evidence comes from the [complete current declaration snapshot](../../docs/verification/systematization/current-public-interfaces-2026-09-20.json) and the referenced source files. No old aliases survive migration.
 
 ## RC-01 Code Block
 
@@ -16,7 +16,7 @@ Default slot is not a competing code source. Slots header/start/end/footer and e
 
 Render escaped code through TanStack Highlight. Preserve meaningful source lines/trailing newline; invalid line numbers do not create phantom content. On highlighter failure show safe plain text, not an empty success. Long code supports Scroll Area and optional wrapping; reading/copying must work without per-line tabindex noise.
 
-**Acceptance:** languages supported by installed package, malformed source text, overlapping line decorations, empty content, hidden/reopened blocks, very long lines, copy correctness, dynamic code and listener cleanup. Source: src/components/code-block/code-block.ts; Pro Code Block examples in [docs review](../docs/research/09-documentation-site.md#complete-pro-documentation-and-kit-evidence).
+**Acceptance:** languages supported by installed package, malformed source text, overlapping line decorations, empty content, hidden/reopened blocks, very long lines, copy correctness, dynamic code and listener cleanup. Source: src/components/code-block/code-block.ts; Pro Code Block examples in [docs review](../../docs/research/RES-009-documentation-site.md#complete-pro-documentation-and-kit-evidence).
 
 ## RC-02 Snippet
 
@@ -28,7 +28,7 @@ Acceptance: single/multiple lines, command prompts excluded from copy, explicit 
 
 ## RC-03 JSON View
 
-**Tag:** acme-json-view. Inputs value: unknown (absent undefined), expandedDepth: nonnegative integer=3, highlight?: string|RegExp, readOnly=true (fixed viewer scope). Data is a property; a documented JSON value attribute supports static valid JSON. Do not evaluate code or ordinary getters while traversing. The later [JSON View analysis](../docs/research/15-lit-practice-review.md#m21-json-view-in-progress) distinguishes this from arbitrary executable Proxy reflection traps, which are outside the no-getter guarantee.
+**Tag:** acme-json-view. Inputs value: unknown (absent undefined), expandedDepth: nonnegative integer=3, highlight?: string|RegExp, readOnly=true (fixed viewer scope). Data is a property; a documented JSON value attribute supports static valid JSON. Do not evaluate code or ordinary getters while traversing. The later [JSON View analysis](../../docs/research/RES-015-lit-practice-review.md#m21-json-view-in-progress) distinguishes this from arbitrary executable Proxy reflection traps, which are outside the no-getter guarantee.
 
 Parts root/item/key/value/toggle; no content slots that become another value source. Method expandAll()/collapseAll() operates presentation only. Event acme-expanded-change { expanded: string[] } for user expansion; data remains application-owned. Detect cycles and show a stable circular-reference marker; objects/functions not representable as JSON are labelled rather than executed. Expansion keys use stable encoded paths and reset only for replaced subtrees.
 
@@ -48,7 +48,7 @@ Acceptance: headings/lists/tables/fences, inline code in search indexing, links/
 
 **Tag:** acme-book. Inputs heading="", variant: stripe|simple=stripe, color?: CSS color, textColor?: CSS color, width: shared responsive size input=196px (numeric size tokens or CSS lengths; common responsiveTarget/responsiveContainer apply), textured=false. Slots illustration/start; parts root/cover/spine/content. Native semantic content is decorative/product presentation, not an action unless an explicit Link composition surrounds suitable content.
 
-Keep the established hover/tilt motion and interruption/reduced-motion behavior through Lit Motion. The [complete Book motion decision](../docs/decisions/0065-motion-on-the-book.md) owns detailed spring/transform constraints and source values; this entry does not replace it with generic CSS transitions. The final interface uses heading and start; the old visible title and icon slot remain removed.
+Keep the established hover/tilt motion and interruption/reduced-motion behavior through Lit Motion. The [complete Book motion decision](../../docs/decisions/DEC-065-motion-on-the-book.md) owns detailed spring/transform constraints and source values; this entry does not replace it with generic CSS transitions. The final interface uses heading and start; the old visible title and icon slot remain removed.
 
 Acceptance: both appearances, illustration replacement, pointer leave/reenter, interrupted motion, reduced motion, resize/zoom and generated textures. Preserve source/census fixtures for src/components/book/book.ts with only named deviations.
 
@@ -66,4 +66,4 @@ Methods play(): `Promise<void>`, pause(), getVideoElement(): HTMLVideoElement. F
 
 Retain the assigned source's preference-sensitive autoplay default; the original Q10 did not select a different default. Browser autoplay policy still applies. Lazy loading and preference changes must not override an explicit user pause or silently restart after reconnection. The external-spacing migration is evaluated against the existing margin-ownership rule rather than mechanically copying gallery spacing.
 
-Acceptance: rejected autoplay, controls/keyboard, captions, source errors, lazy intersection, resize/aspect ratio, user pause persistence and reduced motion. Source src/components/video/video.ts. The original proposal review downloaded or played no remote media. Later [Video acceptance](../docs/verification/systematization/m21-video-2026-09-23.json) records actual native playback/autoplay checks. Its deterministic WebKit keyboard path uses native fullscreen Space; inline traversal and actual Safari/assistive technology remain distinct verification limits.
+Acceptance: rejected autoplay, controls/keyboard, captions, source errors, lazy intersection, resize/aspect ratio, user pause persistence and reduced motion. Source src/components/video/video.ts. The original proposal review downloaded or played no remote media. Later [Video acceptance](../../docs/verification/systematization/m21-video-2026-09-23.json) records actual native playback/autoplay checks. Its deterministic WebKit keyboard path uses native fullscreen Space; inline traversal and actual Safari/assistive technology remain distinct verification limits.

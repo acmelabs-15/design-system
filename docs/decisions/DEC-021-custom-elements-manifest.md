@@ -14,7 +14,7 @@ The extractor inspected at selection time omitted 32 runtime properties and misn
 
 This selects the tool and its development-dependency role. Installation, source annotations, output paths and integration were not completed by this initial tool selection.
 
-Evidence: [documentation investigation](../research/09-documentation-site.md), [Lit review](../research/15-lit-practice-review.md), and [official analyzer documentation](https://custom-elements-manifest.open-wc.org/analyzer/getting-started/).
+Evidence: [documentation investigation](../research/RES-009-documentation-site.md), [Lit review](../research/RES-015-lit-practice-review.md), and [official analyzer documentation](https://custom-elements-manifest.open-wc.org/analyzer/getting-started/).
 
 ## Bounded source and package verification
 
@@ -22,4 +22,4 @@ The [style-input comparison](../verification/systematization/style-input-integra
 
 The annotated two-property fixture passes strict declaration emission and consumer-type checks, and its mapped emitted files exist. This supports continuing with the selected analyzer. It does not approve the exact temporary patch/plugin, certify all API metadata or finalize future package exports. The replacement requirements were to fix the analyzer defect at its source, tie path mapping to the approved output layout, reject unresolved references and verify full runtime/manifest agreement. Keep semantic-control helper checks distinct from this CSS-input fixture. No project installation or production annotation was made by those probes.
 
-The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.
+The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../specs/SPEC-003-design-system/spec.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.

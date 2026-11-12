@@ -1,6 +1,6 @@
 # Generation and comparison tools
 
-The descriptions and measurements used to generate styles and compare the library with its references. Component, primitive, recipe and message names are defined in the [component glossary](../../CONTEXT.md).
+The descriptions and measurements used to generate styles and compare the library with its references. Component, primitive, recipe and message names are defined in the [component glossary](../../GLOSSARY.md).
 
 ## Language
 

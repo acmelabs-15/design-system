@@ -30,7 +30,7 @@ A spec for the MCP server and the consumer skills of 1.0: where they ship, what 
 - The alternative to evaluate is separate packages. Peter decides after the research.
 
 ### Evidence from 0.3.3
-These records are evidence, not answers. Find them through the [decision index](../decisions/README.md).
+These records are evidence, not answers. Find them through the [decision index](../history/decision-index-0.3.md).
 
 - The MCP server is a separate package with an exact peer version of the core (decisions 0027 and 0116).
 - Seven consumer skills ship in the core package, with TanStack Intent as their tooling (decisions 0019 and 0048).

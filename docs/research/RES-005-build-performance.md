@@ -9,14 +9,14 @@ Status: historical research with dated implementation follow-ups. Converted 2026
 
 ## Scope and current interpretation
 
-Selective component imports and the explicit standalone option were selected. [M03 registration and packed delivery](18-repository-layout.md#m03-registration-and-packed-delivery-2026-09-20) and the later [browser distribution package](../decisions/0010-browser-distribution-package.md) record the implementation direction. The measurements below describe the 2026-09-19 temporary build. They are not current network, CPU or first-paint results. SSR remains excluded.
+Selective component imports and the explicit standalone option were selected. [M03 registration and packed delivery](RES-018-repository-layout.md#m03-registration-and-packed-delivery-2026-09-20) and the later [browser distribution package](../decisions/DEC-010-browser-distribution-package.md) record the implementation direction. The measurements below describe the 2026-09-19 temporary build. They are not current network, CPU or first-paint results. SSR remains excluded.
 
-The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../STATUS.md) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
+The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../agents/workspace.md#session-state) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
 
 ## Findings and dated evidence
 
 
-Phase 1.8, measured and reviewed 2026-09-19. **Peter selected [selective component imports as the normal generated-HTML path](../decisions/0091-selective-component-loading.md), retaining the complete standalone bundle as an explicit option.** Browser-ready selective delivery remained to build and verify at this checkpoint. The recommendation retained Lit's working stylesheet sharing; [SSR is explicitly excluded](../decisions/0092-server-rendering.md); its earlier probes remain historical evidence.
+Phase 1.8, measured and reviewed 2026-09-19. **Peter selected [selective component imports as the normal generated-HTML path](../decisions/DEC-091-selective-component-loading.md), retaining the complete standalone bundle as an explicit option.** Browser-ready selective delivery remained to build and verify at this checkpoint. The recommendation retained Lit's working stylesheet sharing; [SSR is explicitly excluded](../decisions/DEC-092-server-rendering.md); its earlier probes remain historical evidence.
 
 ## Method and baseline
 
@@ -60,7 +60,7 @@ The generator intentionally preserves light, dark and wide-gamut branches. The p
 
 ## SSR readiness: measured, not assumed
 
-**Scope update, 2026-09-19:** Peter [excluded SSR altogether](../decisions/0092-server-rendering.md). The following measurements are historical and create no future implementation milestone.
+**Scope update, 2026-09-19:** Peter [excluded SSR altogether](../decisions/DEC-092-server-rendering.md). The following measurements are historical and create no future implementation milestone.
 
 Bare Bun import succeeds. Rendering Button or Calendar from the compiled published output using Lit SSR 4.1.0 fails on template strings. An isolated TypeScript-only control build, without the Lit template compiler transform, renders both with declarative shadow markup. Fieldset fails in both because its constructor initializes an unguarded MutationObserver. These tests distinguish an import from rendering and isolate a compiled-template problem from an element lifecycle problem. They do not establish hydration support.
 

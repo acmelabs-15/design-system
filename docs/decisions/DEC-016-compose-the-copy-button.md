@@ -53,7 +53,7 @@ own tertiary colour, and `text-gray-900!` on top — and in React both sit in on
 important wins. Ours cannot: the tertiary colour lives inside `acme-button`'s shadow root as
 `!important`, code-block's rule sits outside it, and **an inner tree's important always beats an
 outer tree's**, whatever the specificity. The same rule that governs slotted content; see the
-[slotted cascade analysis](../research/19-slotted-cascade.md).
+[slotted cascade analysis](../research/RES-019-slotted-cascade.md).
 
 Composing changes which tree the icon lives in, so the defect is expected to dissolve rather than
 need a cascade workaround. That expectation required per-element checks; it was not assumed.

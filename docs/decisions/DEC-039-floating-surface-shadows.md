@@ -31,7 +31,7 @@ The later inventory fixed the surviving set. The selection-time recommendation w
 | command-menu dialog; modal drawer | `--shadow-6` | Dialog role; extending this tier to modal drawers was explicit in Peter's selected option and still needed inventory verification at selection time |
 | sheet, while present as a modal surface | `--shadow-6` | Dialog role; the selected replacement was Drawer, without a lasting separate Sheet treatment |
 
-These are role assignments, not approval of every reviewed element's survival or interface. The inventory resolves renamed/composed surfaces and any non-modal drawer treatment. Plain Tooltip is distinct from an interactive rich information panel; Hover Card and Toggle Tip now have selected purposes under the [overlay-help decision](0076-overlay-help-components.md), while exact focus and composition contracts were still inventory work. Material's elevation numbers do not map directly to Radix's shadow numbers.
+These are role assignments, not approval of every reviewed element's survival or interface. The inventory resolves renamed/composed surfaces and any non-modal drawer treatment. Plain Tooltip is distinct from an interactive rich information panel; Hover Card and Toggle Tip now have selected purposes under the [overlay-help decision](DEC-076-overlay-help-components.md), while exact focus and composition contracts were still inventory work. Material's elevation numbers do not map directly to Radix's shadow numbers.
 
 ## Evidence behind the two exceptions
 
@@ -39,10 +39,10 @@ Radix Tooltip's CSS supplies an inverse surface without a shadow. Material 3 dis
 
 Chakra Toast uses its `xl` shadow, and Material Snackbar uses Material elevation level 3. These are not numerical equivalents of Radix tokens. The inspected Toast used `--ds-shadow-menu`; Peter selected Radix shadow 5 to preserve that relative prominence rather than the initially proposed lighter tier 4. Check the result against varied backgrounds, themes and stacked messages.
 
-The [shadow investigation](../research/11-floating-surface-shadows.md) records primary sources and verification limits, including the unavailable Material Web tooltip implementation. Final token names and generator changes were not settled by this role selection.
+The [shadow investigation](../research/RES-011-floating-surface-shadows.md) records primary sources and verification limits, including the unavailable Material Web tooltip implementation. Final token names and generator changes were not settled by this role selection.
 
 Sources read: [shadow scale and tier guidance](https://www.radix-ui.com/themes/docs/theme/shadows), [Hover Card](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/hover-card.css), [Popover](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/popover.css), [Select](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/select.css), [base menu](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/_internal/base-menu.css), [base dialog](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/_internal/base-dialog.css), and [Tooltip](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/tooltip.css).
 
 The [token source](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/styles/tokens/shadow.css) has light, dark and color-mix branches and depends on Radix gray/black alpha values. Port the complete documented values through the generator with explicit color dependencies. Replacing a Radix gray token with a same-numbered design-system token is not proven equivalent. Record any such adaptation as a separate deviation. Final token names were left to the subsequent conventions review.
 
-The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.
+The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../specs/SPEC-003-design-system/spec.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.

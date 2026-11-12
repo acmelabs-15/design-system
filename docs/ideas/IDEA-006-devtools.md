@@ -32,7 +32,7 @@ A spec for the 1.0 devtools package: its base, its capabilities, and how it reac
 - The options to evaluate: TanStack Devtools (extend it, or fork it into something custom) against our own build. Research comes first.
 
 ### Evidence from 0.3.3
-- Decision 0026 builds the 0.3.3 inspector on TanStack Devtools. It is evidence, not an answer. Find it through the [decision index](../decisions/README.md).
+- Decision 0026 builds the 0.3.3 inspector on TanStack Devtools. It is evidence, not an answer. Find it through the [decision index](../history/decision-index-0.3.md).
 
 ## Map
 

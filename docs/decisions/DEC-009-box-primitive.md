@@ -14,7 +14,7 @@ Box supplies general spacing, dimensions, visibility and surface styling. Flex, 
 
 Chakra implements Box through its shared styling factory; Radix provides a more focused layout interface. Material Web has no equivalent Box in the inspected repository tree. The exact properties and composition were not yet designed. Do not assume every element must add a nested Box node, or that Chakra's as/asChild behaviour transfers unchanged to a Lit custom-element host.
 
-Evidence: [Box comparison](../research/07-design-foundations.md#box-primitive). This initial selection added an inventory candidate; it did not approve a complete implementation.
+Evidence: [Box comparison](../research/RES-007-design-foundations.md#box-primitive). This initial selection added an inventory candidate; it did not approve a complete implementation.
 
 ## Focused styling interface
 
@@ -22,13 +22,13 @@ Peter selected a focused shared styling set: spacing, dimensions, positioning, v
 
 The comparison used Chakra's all-CSS-props Box and Radix's focused layout interface. A source census of all 938 indexed Pro JSX/TSX files found 479 literal Box tags across 240 files, with frequent background, positioning, spacing, border and sizing properties. This is authoring evidence, not browser validation or a count of aliases/runtime-generated tags. The exact property names, values, token mappings and defaults were not yet approved. [Evidence and answer](../verification/systematization/layout-typography-review-2026-09-19.json).
 
-The later [shared layout/spacing convention](0052-layout-spacing-properties.md) selects full CSS property names, logical directions, numbered spacing token keys and explicit CSS lengths alongside theme values. Apply that convention to Box's focused set; it does not approve the final per-property list or tokens.
+The later [shared layout/spacing convention](DEC-052-layout-spacing-properties.md) selects full CSS property names, logical directions, numbered spacing token keys and explicit CSS lengths alongside theme values. Apply that convention to Box's focused set; it does not approve the final per-property list or tokens.
 
 ## Inline content
 
 Decided 2026-09-20 by Peter: Box supports as="span" for styling inline content alongside its block structural-container uses. Text retains typography responsibility. Radix Box supports div/span; the complete Pro source comparison also shows structural containers, but its arbitrary React substitutions are not the selected contract.
 
-Verify inline wrapping, spacing and borders through the retained Lit host and native inner element. The tag set and display default are now selected below; complete CSS target mapping was still inventory work. Use the selected [standard accessible naming direction](0001-additional-component-capabilities.md#text-tag-set-and-standard-accessible-naming). The existing host-box rule remains; this does not authorize display:contents wrappers or arbitrary as substitution. [Initial answer and evidence](../verification/systematization/primitive-interfaces-review-2026-09-20.json).
+Verify inline wrapping, spacing and borders through the retained Lit host and native inner element. The tag set and display default are now selected below; complete CSS target mapping was still inventory work. Use the selected [standard accessible naming direction](DEC-001-additional-component-capabilities.md#text-tag-set-and-standard-accessible-naming). The existing host-box rule remains; this does not authorize display:contents wrappers or arbitrary as substitution. [Initial answer and evidence](../verification/systematization/primitive-interfaces-review-2026-09-20.json).
 
 ## Native tags and default display
 
@@ -44,6 +44,6 @@ For colors, corners and shadows, Peter answered “Do what chakra does” to the
 
 The selection-time candidate property list was a draft derived from the focused scope, full CSS naming, logical directions and inspected reference use. The four choices above do not approve all candidate names, token identifiers, CSS-part names or a complete Box row. [Answers, coverage and candidate groups](../verification/systematization/box-contract-review-2026-09-20.json).
 
-The later [shared default rule](0052-layout-spacing-properties.md#omitted-styling-inputs-and-visual-defaults) is selected: absent CSS styling inputs read undefined, while CSS supplies their visual defaults. Box's as-based display remains the selected visible behaviour; it does not require a default value in the display getter. Native as retains its separately selected div default. Exact property types, token/style targets and the complete row were still open at selection time.
+The later [shared default rule](DEC-052-layout-spacing-properties.md#omitted-styling-inputs-and-visual-defaults) is selected: absent CSS styling inputs read undefined, while CSS supplies their visual defaults. Box's as-based display remains the selected visible behaviour; it does not require a default value in the display getter. Native as retains its separately selected div default. Exact property types, token/style targets and the complete row were still open at selection time.
 
-The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.
+The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../specs/SPEC-003-design-system/spec.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.

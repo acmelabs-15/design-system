@@ -16,4 +16,4 @@ Chakra, Radix and TanStack exclude their website build outputs from Git; Materia
 
 The initial review changed no site setting, workflow, deployment or generated output. It required source/build consistency and site validation before the publishing switch.
 
-Evidence: [layout and deployment comparison](../research/18-repository-layout.md#website-source-and-build-output) and [GitHub Pages custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+Evidence: [layout and deployment comparison](../research/RES-018-repository-layout.md#website-source-and-build-output) and [GitHub Pages custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).

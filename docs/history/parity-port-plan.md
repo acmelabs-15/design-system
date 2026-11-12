@@ -6,8 +6,8 @@ Current ownership:
 
 | Subject | Current owner |
 | --- | --- |
-| Startup, active work and handoff | [AGENTS](../../AGENTS.md), [status](../STATUS.md) and the [maintainer workflow](../../spec/SPEC-maintainer-workflow.md) |
-| Approved system and family contracts | [Design-system specification](../../spec/SPEC-design-system.md) |
+| Startup, active work and handoff | [AGENTS](../../AGENTS.md), [status](../agents/workspace.md#session-state) and the [maintainer workflow](../../specs/SPEC-008-maintainer-workflow/spec.md) |
+| Approved system and family contracts | [Design-system specification](../../specs/SPEC-003-design-system/spec.md) |
 | Component conventions and complete replacements | [Component guidance](../development/components.md) and [interface navigation](../development/interfaces.md) |
 | Dependency responsibilities | [Selected stack](../development/stack.md); manifests and lockfile own versions |
 | Styles and generated source | [Style guidance](../development/styles.md) and [producer map](../agents/repository.md) |
@@ -15,11 +15,11 @@ Current ownership:
 | Browser, consumer and release verification | [Verification guidance](../agents/verification.md) |
 | Documentation examples and source comparisons | [Documentation guidance](../development/documentation.md) and [reference sources](../development/reference-sources.md) |
 
-The systematization pass replaced the port's unconditional exact-parity goal with [interface consistency and verified adaptations](../decisions/0105-systematization-goal.md). Its Phase 0 records also covered [composition](../decisions/0018-composition-over-count.md), [added elements](../decisions/0070-non-canonical-elements.md), [reference roles](../decisions/0082-reference-systems.md), [floating shadows](../decisions/0039-floating-surface-shadows.md), [tab indicators](../decisions/0061-material-tab-indicator.md) and [icons](../decisions/0096-shared-icon-library.md). Peter confirmed scope on 2026-09-19.
+The systematization pass replaced the port's unconditional exact-parity goal with [interface consistency and verified adaptations](../decisions/DEC-105-systematization-goal.md). Its Phase 0 records also covered [composition](../decisions/DEC-018-composition-over-count.md), [added elements](../decisions/DEC-070-non-canonical-elements.md), [reference roles](../decisions/DEC-082-reference-systems.md), [floating shadows](../decisions/DEC-039-floating-surface-shadows.md), [tab indicators](../decisions/DEC-061-material-tab-indicator.md) and [icons](../decisions/DEC-096-shared-icon-library.md). Peter confirmed scope on 2026-09-19.
 
-Phase 1 retained [Lit Motion](../decisions/0004-animation-package.md), selected [Material Symbols SVGs](../decisions/0060-material-symbols-icons.md), [published match-sorter](../decisions/0058-match-sorter.md) and [native Lit behavior ports](../decisions/0114-zag-behaviour-ports.md). [Style production](../decisions/0104-style-production.md) selected compiled CSS feeding Lit/document outputs and later build-only Lightning CSS 1.33.0, with Bun as runtime and JavaScript bundler.
+Phase 1 retained [Lit Motion](../decisions/DEC-004-animation-package.md), selected [Material Symbols SVGs](../decisions/DEC-060-material-symbols-icons.md), [published match-sorter](../decisions/DEC-058-match-sorter.md) and [native Lit behavior ports](../decisions/DEC-114-zag-behaviour-ports.md). [Style production](../decisions/DEC-104-style-production.md) selected compiled CSS feeding Lit/document outputs and later build-only Lightning CSS 1.33.0, with Bun as runtime and JavaScript bundler.
 
-Research and terminology closed; [Phase 3 responsibilities](systematization/architecture-review.md#phase-3-closure), [complete inventory approval](../decisions/0049-inventory-approval.md) and [migration approval](../decisions/0064-migration-approval.md) followed. The [execution delegation](../decisions/0035-execution-delegation.md) applied to that completed implementation and local commits, excluding otherwise-unapproved push/publication/deployment. It does not authorize new work. [Systematization history](systematization/pass-history.md) and the [completed migration](../../tasks/done/systematization/plan.md) retain progress and scope.
+Research and terminology closed; [Phase 3 responsibilities](systematization/architecture-review.md#phase-3-closure), [complete inventory approval](../decisions/DEC-049-inventory-approval.md) and [migration approval](../decisions/DEC-064-migration-approval.md) followed. The [execution delegation](../decisions/DEC-035-execution-delegation.md) applied to that completed implementation and local commits, excluding otherwise-unapproved push/publication/deployment. It does not authorize new work. [Systematization history](systematization/pass-history.md) and the [completed migration](../../specs/SPEC-003-design-system/tasks/plan.md) retain progress and scope.
 
 Historical headings retain their original status notation: [x] meant done, [~] running, [ ] queued and [?] a Peter-owned question. Lists below use explicit recorded statuses. Later contracts and release evidence supersede those old queues.
 
@@ -36,7 +36,7 @@ behaviour and functionality. Confirmed against the live site on 2026-09-10 — o
 all 77 of its pages, name for name, and the pages carry that address in their own markup. Every docs page shows the same sections as the reference page. The
 foundations pages match too.
 
-**Parity is not implementation parity.** Decided by Peter on 2026-09-10, and recorded in [notes/decisions/parity-scope.md](../decisions/0077-parity-scope.md). The reference is
+**Parity is not implementation parity.** Decided by Peter on 2026-09-10, and recorded in [notes/decisions/parity-scope.md](../decisions/DEC-077-parity-scope.md). The reference is
 React; ours is Lit web components. Copying React's internal shape into a web component does not make
 the port more faithful, it makes it worse on the platform it runs on. The port's implementation question was: *what is the best decision for a Lit web component that has to reach
 style, behaviour and functional parity with the reference?*
@@ -95,21 +95,21 @@ The recorded dependency responsibilities were:
 
 Additional selections during the completed pass:
 
-- [Native Lit behaviour ports](../decisions/0114-zag-behaviour-ports.md) for Pin Input, Number Input, Scroll Area, Steps and resizable panes. This supersedes the earlier actual Zag component dependency/adapter selection. The ports retained TanStack Store, Lit Motion, generated styles and the selected stack. Zag supplied source behavior, without its createMachine/interpreter, vanilla runtime or store. Ports may create new components, rebuild existing ones or replace them outright. The capability selections survived; the completed Phase 5 gate is historical.
-- Published `match-sorter` for ComboBox ranking, replacing the local copy after [compatibility verification](../decisions/0058-match-sorter.md). Command Menu's separate scorer stays unchanged.
-- [@internationalized/number](../decisions/0072-number-utilities.md) as an independent Number Input utility, retaining the complete component implementation. It is installed; packages/core/package.json and the lockfile own the exact runtime version.
-- A [separate React integration package](../decisions/0081-react-integration.md) and [native forms with optional TanStack Form](../decisions/0067-native-and-managed-forms.md). The coordinated core and React exports are implemented; consumer references describe their exact interfaces.
-- Development tooling: [Oxlint + Oxfmt with Ultracite and Stylelint](../decisions/0053-lint-toolchain.md), now implemented with explicit rule mapping, CSS checks and source-preserving formatting. Biome is removed.
+- [Native Lit behaviour ports](../decisions/DEC-114-zag-behaviour-ports.md) for Pin Input, Number Input, Scroll Area, Steps and resizable panes. This supersedes the earlier actual Zag component dependency/adapter selection. The ports retained TanStack Store, Lit Motion, generated styles and the selected stack. Zag supplied source behavior, without its createMachine/interpreter, vanilla runtime or store. Ports may create new components, rebuild existing ones or replace them outright. The capability selections survived; the completed Phase 5 gate is historical.
+- Published `match-sorter` for ComboBox ranking, replacing the local copy after [compatibility verification](../decisions/DEC-058-match-sorter.md). Command Menu's separate scorer stays unchanged.
+- [@internationalized/number](../decisions/DEC-072-number-utilities.md) as an independent Number Input utility, retaining the complete component implementation. It is installed; packages/core/package.json and the lockfile own the exact runtime version.
+- A [separate React integration package](../decisions/DEC-081-react-integration.md) and [native forms with optional TanStack Form](../decisions/DEC-067-native-and-managed-forms.md). The coordinated core and React exports are implemented; consumer references describe their exact interfaces.
+- Development tooling: [Oxlint + Oxfmt with Ultracite and Stylelint](../decisions/DEC-053-lint-toolchain.md), now implemented with explicit rule mapping, CSS checks and source-preserving formatting. Biome is removed.
 
-The extension also selects [Material motion roles](../decisions/0059-material-motion-system.md), [shape support](../decisions/0094-shape-support.md), [full custom themes](../decisions/0022-custom-themes.md) and the [blue accent](../decisions/0008-blue-accent.md). The font/appearance table above describes the default appearance; consumer themes can override visual settings under the new theme contract. [SSR is excluded altogether](../decisions/0092-server-rendering.md). [Toast uses the selected packages](../decisions/0110-toast-behaviour.md), not an extension of the four-control Zag approval. The later review selects [versioned consumer skills](../decisions/0019-consumer-skills.md), a [documentation/API MCP](../decisions/0027-design-system-mcp.md), [Intent development tooling](../decisions/0048-intent-tooling.md), and [TanStack Devtools for the optional inspector](../decisions/0026-design-system-devtools.md). [Live AI control is outside this pass](../decisions/0003-ai-authoring-scope.md). [Responsive scope/defaults](../decisions/0086-responsive-system.md) and [Box](../decisions/0009-box-primitive.md) are also selected. TanStack Config practices remain migration recommendations, not package or automation adoption.
+The extension also selects [Material motion roles](../decisions/DEC-059-material-motion-system.md), [shape support](../decisions/DEC-094-shape-support.md), [full custom themes](../decisions/DEC-022-custom-themes.md) and the [blue accent](../decisions/DEC-008-blue-accent.md). The font/appearance table above describes the default appearance; consumer themes can override visual settings under the new theme contract. [SSR is excluded altogether](../decisions/DEC-092-server-rendering.md). [Toast uses the selected packages](../decisions/DEC-110-toast-behaviour.md), not an extension of the four-control Zag approval. The later review selects [versioned consumer skills](../decisions/DEC-019-consumer-skills.md), a [documentation/API MCP](../decisions/DEC-027-design-system-mcp.md), [Intent development tooling](../decisions/DEC-048-intent-tooling.md), and [TanStack Devtools for the optional inspector](../decisions/DEC-026-design-system-devtools.md). [Live AI control is outside this pass](../decisions/DEC-003-ai-authoring-scope.md). [Responsive scope/defaults](../decisions/DEC-086-responsive-system.md) and [Box](../decisions/DEC-009-box-primitive.md) are also selected. TanStack Config practices remain migration recommendations, not package or automation adoption.
 
-The latest control review selects [darker blue with white text](../decisions/0008-blue-accent.md) and [optional ripples, off by default](../decisions/0074-optional-ripples.md). Approved state roles and ripple interfaces are recorded in the inventory and component acceptance.
+The latest control review selects [darker blue with white text](../decisions/DEC-008-blue-accent.md) and [optional ripples, off by default](../decisions/DEC-074-optional-ripples.md). Approved state roles and ripple interfaces are recorded in the inventory and component acceptance.
 
-The foundation follow-up selects [shared spacing-only density](../decisions/0025-density.md), normal by default, with normal inherited spacing for menus/dialogs/Toasts and a 24 × 24 CSS-pixel clickable-area floor in explicitly selected compact mode. Larger touch-friendly sizing remains available; no new universal normal-mode target is selected. [LTR/RTL support](../decisions/0007-bidirectional-support.md) covers pages/sections in Lit/React. [Shared moving indicators](../decisions/0097-shared-selection-indicator.md) use Lit Motion for suitable single-selection groups without adding another Zag dependency. The approved inventory and implemented family evidence specify their interfaces and eligibility.
+The foundation follow-up selects [shared spacing-only density](../decisions/DEC-025-density.md), normal by default, with normal inherited spacing for menus/dialogs/Toasts and a 24 × 24 CSS-pixel clickable-area floor in explicitly selected compact mode. Larger touch-friendly sizing remains available; no new universal normal-mode target is selected. [LTR/RTL support](../decisions/DEC-007-bidirectional-support.md) covers pages/sections in Lit/React. [Shared moving indicators](../decisions/DEC-097-shared-selection-indicator.md) use Lit Motion for suitable single-selection groups without adding another Zag dependency. The approved inventory and implemented family evidence specify their interfaces and eligibility.
 
-[Shape morphing follows demonstrated component needs](../decisions/0094-shape-support.md). The full Material shape catalogue is not required. Ordinary shape properties were preferred; custom geometry required a concrete component need. No geometry package is selected.
+[Shape morphing follows demonstrated component needs](../decisions/DEC-094-shape-support.md). The full Material shape catalogue is not required. Ordinary shape properties were preferred; custom geometry required a concrete component need. No geometry package is selected.
 
-[Table must support consumers who use TanStack Table](../decisions/0107-tanstack-table-compatibility.md); the design system does not integrate or run that package. Applications own its processing, state and optional experimental workers. TanStack Table is not part of the mandated design-system runtime stack. Consumer examples/checks can use TanStack Table; 9.2.4 is the pinned consumer-example baseline; its experimental worker declaration correction belongs to application setup. The later [Flow Diagram decision](../decisions/0040-flow-diagram.md) separately selects ELK for layout/routing with a Lit viewer; its implemented worker delivery and acceptance are recorded in M20. **TanStack Virtual is chosen for virtualization in both Lit and React.** [Reusable results pagination](../decisions/0087-results-pagination.md) supplies numbered/compact navigation and unknown-total support, with application-owned page state and data loading. The page-position, page-size and navigation parts are approved and implemented; application-owned results state remains separate from document navigation. The [current handoff](../STATUS.md) now owns new work; this is the recorded product scope.
+[Table must support consumers who use TanStack Table](../decisions/DEC-107-tanstack-table-compatibility.md); the design system does not integrate or run that package. Applications own its processing, state and optional experimental workers. TanStack Table is not part of the mandated design-system runtime stack. Consumer examples/checks can use TanStack Table; 9.2.4 is the pinned consumer-example baseline; its experimental worker declaration correction belongs to application setup. The later [Flow Diagram decision](../decisions/DEC-040-flow-diagram.md) separately selects ELK for layout/routing with a Lit viewer; its implemented worker delivery and acceptance are recorded in M20. **TanStack Virtual is chosen for virtualization in both Lit and React.** [Reusable results pagination](../decisions/DEC-087-results-pagination.md) supplies numbered/compact navigation and unknown-total support, with application-owned page state and data loading. The page-position, page-size and navigation parts are approved and implemented; application-owned results state remains separate from document navigation. The [current handoff](../agents/workspace.md#session-state) now owns new work; this is the recorded product scope.
 
 The recorded stack mapping assigned highlighting to TanStack highlight rather than Shiki; hotkeys to TanStack hotkeys rather than hotkeys-js; virtualization, charts and rate limiting/debouncing to TanStack virtual/charts/pacer; placement to Floating UI; and animation to Lit Motion. The maintained stack owner above carries current responsibilities.
 
@@ -139,7 +139,7 @@ This heading preserves the original anchor. The former standing rules no longer 
 | Bun 1.4.2, colocated bun:test, strict types and current lint/format/style tools | [Verification guidance](../agents/verification.md) |
 | Generator/build/docs/tooling dependencies, browser checks and local package preparation | [Verification guidance](../agents/verification.md) and [source/output map](../agents/repository.md) |
 | Executed example source, reset/removal cleanup and outcome checks | [Documentation guidance](../development/documentation.md) |
-| Handoff/analysis/decision updates and task permissions | Current [maintainer workflow](../../spec/SPEC-maintainer-workflow.md); the completed delegation is retired as authority |
+| Handoff/analysis/decision updates and task permissions | Current [maintainer workflow](../../specs/SPEC-008-maintainer-workflow/spec.md); the completed delegation is retired as authority |
 
 ### Historical parity-port rules and observations (2026-09-10)
 
@@ -165,7 +165,7 @@ These dated observations explain the old investigations. Current product and wor
 - **The port removed shared/global focus rings.** Rings arrive through
   the generator, in the element that draws them, because that is what the reference does: it has no
   page-wide focus rule of any kind and leaves the browser's own ring on anything it does not style.
-  See [notes/decisions/focus-ring-ownership.md](../decisions/0041-focus-ring-ownership.md).
+  See [notes/decisions/focus-ring-ownership.md](../decisions/DEC-041-focus-ring-ownership.md).
 - Port documentation matched reference sections. Extra measured states used census:true examples on /census/<id>. Later documentation contracts replace that page-shape requirement.
 - The recorded test layout was colocated __tests__/<file>.test.ts with bun:test. Current verification guidance owns the convention.
 - The old procedure used one question dialog at a time and commits only on request. Current workflow and actual task authorization supersede that repository procedure; global preferences remain unchanged.
@@ -174,7 +174,7 @@ These dated observations explain the old investigations. Current product and wor
   not zero.** Roots pair by order, so a mismatch makes every difference downstream meaningless, and a
   zero-root run reads as clean while measuring nothing. The collector now refuses to save an empty run
   and the comparison now fails loudly on either case, so this cannot be forgotten. See
-  [notes/decisions/track-census-results.md](../decisions/0113-track-census-results.md).
+  [notes/decisions/track-census-results.md](../decisions/DEC-113-track-census-results.md).
 - **The old record required checked evidence.** Its examples included file contents, counts, decisions, tool behavior and failure scope. Session memory alone was not proof; inaccessible checks remained labelled unverified with a reason. Current source research and verification guidance own the procedure.
 - **Reference claims required observed evidence:** its own prose, its own example code, its compiled output, or its live behaviour. Finding
   that the reference wraps Radix, cmdk or react-aria tells us *where to look*, never what the answer
@@ -216,7 +216,7 @@ These dated observations explain the old investigations. Current product and wor
   so an attribute-driven hover needs reactive state beside `data-hover`, never instead of it: the
   CSS rule keeps holding both states, the directive animates between them, and the census reads the
   same matrix as before. Replacing the CSS with script would break the harness that proves the
-  animation is right. See [motion-on-the-book.md](../decisions/0065-motion-on-the-book.md).
+  animation is right. See [motion-on-the-book.md](../decisions/DEC-065-motion-on-the-book.md).
 - **The Book test initially dispatched at the wrong pointer target.**
   Verified the expensive way 2026-09-10: my book tests fired on `.wrap`, where `Interaction` has no
   listener, so `data-hover` was never set and I never saw the hitch Peter hit in Chrome. A handler
@@ -229,7 +229,7 @@ These dated observations explain the old investigations. Current product and wor
 - **The places beside content are `start` and `end`, in every element, and no element keeps its own
   `hasStart`/`hasEnd`.** Decided 2026-09-10 by Peter. Nine elements moved off `prefix`/`suffix`,
   `data-prefix`/`data-suffix` are gone (no generated stylesheet ever read them), and the eight that
-  hand-rolled the same two booleans now share `src/shared/places.ts`, a reactive controller. Its then-current query was this.places.has("start"). See [start-and-end-places.md](../decisions/0099-start-and-end-places.md).
+  hand-rolled the same two booleans now share `src/shared/places.ts`, a reactive controller. Its then-current query was this.places.has("start"). See [start-and-end-places.md](../decisions/DEC-099-start-and-end-places.md).
   `middle-truncate` keeps `prefix`/`suffix` for the two halves of a truncated string, which is the
   correct word for text rather than for a place.
 - **An example heading in a map's `skip` list is the REFERENCE's heading, not ours.** Verified
@@ -257,7 +257,7 @@ These dated observations explain the old investigations. Current product and wor
   2026-09-10 on the code block. Its `margin-block` is on `.code-block` in the shadow tree, so
   `.preview > * { margin-block: 0 }` on the docs page did nothing. The element now exposes
   `--acme-code-block-margin-block`, defaulting to the reference's value, and the docs preview sets
-  it to `0`. See [demo-margin-ownership.md](../decisions/0024-demo-margin-ownership.md).
+  it to `0`. See [demo-margin-ownership.md](../decisions/DEC-024-demo-margin-ownership.md).
 - **A difference between two docs pages is not automatically an element defect.** The reference's
   docs harness styles its own demos, so copying the element faithfully and copying the harness
   faithfully are two separate jobs. The investigation distinguished harness behavior from component behavior.
@@ -307,45 +307,45 @@ The table preserves the port's supporting-document index, with links relocated t
 |---|---|
 | [tools/geist/README.md](../../tools/geist/README.md) | The full runbook for the parity pipeline, and every guarantee the generator makes |
 | [notes/alignment/README.md](systematization/pass-history.md) | Historical systematization goal, phases, dispositions and dated state |
-| [notes/decisions/systematization-goal.md](../decisions/0105-systematization-goal.md) | **Decided.** Interface consistency is the main test of success for the systematization pass; composition, appearance, and behaviour remain in scope |
-| [notes/decisions/agent-skills-workflow.md](../decisions/0002-agent-skills-workflow.md) | **Decided.** Use Addy Osmani's Agent Skills for the remaining pass, preserving project decisions and approval steps |
-| [notes/decisions/custom-elements-manifest.md](../decisions/0021-custom-elements-manifest.md) | **Decided.** Use the standard Custom Elements Manifest analyzer; verify its output on this repository before replacing the current extractor |
-| [notes/decisions/browser-verification.md](../decisions/0011-browser-verification.md) | **Decided.** Require Chromium, Firefox and WebKit verification alongside the Bun unit tier |
-| [notes/decisions/animation-package.md](../decisions/0004-animation-package.md) | **Decided.** Retain Lit Motion for its technical fit, subject to browser checks; implementation effort does not decide the choice |
-| [notes/decisions/icon-element-shape.md](../decisions/0046-icon-element-shape.md) | **Decided.** One element per icon, with shared behaviour and selective imports |
-| [notes/decisions/material-symbols-icons.md](../decisions/0060-material-symbols-icons.md) | **Decided.** Material Symbols SVGs, Rounded/unfilled defaults, three supported families and official filled/unfilled artwork; no icon font or two-tone |
-| [notes/decisions/zag-behaviour-ports.md](../decisions/0114-zag-behaviour-ports.md) | **Current.** Native Lit ports using the selected packages; new/rebuilt/replacement components allowed. Supersedes Zag runtime/adapter adoption |
-| [notes/decisions/zag-lit-integration.md](../decisions/0115-zag-lit-integration.md) | **Superseded.** Historical five-control Zag runtime/adapter selection |
-| [notes/decisions/pin-input-behaviour.md](../decisions/0078-pin-input-behaviour.md) | **Decided.** Separate-field Pin Input; native Lit port |
-| [notes/decisions/number-input-behaviour.md](../decisions/0071-number-input-behaviour.md) | **Decided.** Formatted Number Input and stepping; native Lit port |
-| [notes/decisions/scroll-area-behaviour.md](../decisions/0089-scroll-area-behaviour.md) | **Decided.** Custom scrollbar controls over native scrolling; native Lit port |
-| [notes/decisions/steps-behaviour.md](../decisions/0103-steps-behaviour.md) | **Decided.** Interactive Steps with navigation/content; native Lit port |
-| [notes/decisions/match-sorter.md](../decisions/0058-match-sorter.md) | **Decided.** Published package replaces the local ComboBox ranking copy after wider compatibility tests |
-| [notes/decisions/generated-style-location.md](../decisions/0044-generated-style-location.md) | **Decided.** Move generated styles under src/generated and retain them in Git for the current pipeline |
-| [notes/decisions/documentation-publishing.md](../decisions/0030-documentation-publishing.md) | **Decided.** Build the website in a GitHub Pages workflow; stop committing generated pages |
-| [notes/decisions/selective-component-loading.md](../decisions/0091-selective-component-loading.md) | **Decided.** Selective imports are the normal static-artifact path; the complete bundle stays available |
-| [notes/analysis/systematic-approach.md](../research/20-systematic-approach.md) | Historical method: what a script decides, what a person decides, and the measured evidence for where that line falls |
+| [notes/decisions/systematization-goal.md](../decisions/DEC-105-systematization-goal.md) | **Decided.** Interface consistency is the main test of success for the systematization pass; composition, appearance, and behaviour remain in scope |
+| [notes/decisions/agent-skills-workflow.md](../decisions/DEC-002-agent-skills-workflow.md) | **Decided.** Use Addy Osmani's Agent Skills for the remaining pass, preserving project decisions and approval steps |
+| [notes/decisions/custom-elements-manifest.md](../decisions/DEC-021-custom-elements-manifest.md) | **Decided.** Use the standard Custom Elements Manifest analyzer; verify its output on this repository before replacing the current extractor |
+| [notes/decisions/browser-verification.md](../decisions/DEC-011-browser-verification.md) | **Decided.** Require Chromium, Firefox and WebKit verification alongside the Bun unit tier |
+| [notes/decisions/animation-package.md](../decisions/DEC-004-animation-package.md) | **Decided.** Retain Lit Motion for its technical fit, subject to browser checks; implementation effort does not decide the choice |
+| [notes/decisions/icon-element-shape.md](../decisions/DEC-046-icon-element-shape.md) | **Decided.** One element per icon, with shared behaviour and selective imports |
+| [notes/decisions/material-symbols-icons.md](../decisions/DEC-060-material-symbols-icons.md) | **Decided.** Material Symbols SVGs, Rounded/unfilled defaults, three supported families and official filled/unfilled artwork; no icon font or two-tone |
+| [notes/decisions/zag-behaviour-ports.md](../decisions/DEC-114-zag-behaviour-ports.md) | **Current.** Native Lit ports using the selected packages; new/rebuilt/replacement components allowed. Supersedes Zag runtime/adapter adoption |
+| [notes/decisions/zag-lit-integration.md](../decisions/DEC-115-zag-lit-integration.md) | **Superseded.** Historical five-control Zag runtime/adapter selection |
+| [notes/decisions/pin-input-behaviour.md](../decisions/DEC-078-pin-input-behaviour.md) | **Decided.** Separate-field Pin Input; native Lit port |
+| [notes/decisions/number-input-behaviour.md](../decisions/DEC-071-number-input-behaviour.md) | **Decided.** Formatted Number Input and stepping; native Lit port |
+| [notes/decisions/scroll-area-behaviour.md](../decisions/DEC-089-scroll-area-behaviour.md) | **Decided.** Custom scrollbar controls over native scrolling; native Lit port |
+| [notes/decisions/steps-behaviour.md](../decisions/DEC-103-steps-behaviour.md) | **Decided.** Interactive Steps with navigation/content; native Lit port |
+| [notes/decisions/match-sorter.md](../decisions/DEC-058-match-sorter.md) | **Decided.** Published package replaces the local ComboBox ranking copy after wider compatibility tests |
+| [notes/decisions/generated-style-location.md](../decisions/DEC-044-generated-style-location.md) | **Decided.** Move generated styles under src/generated and retain them in Git for the current pipeline |
+| [notes/decisions/documentation-publishing.md](../decisions/DEC-030-documentation-publishing.md) | **Decided.** Build the website in a GitHub Pages workflow; stop committing generated pages |
+| [notes/decisions/selective-component-loading.md](../decisions/DEC-091-selective-component-loading.md) | **Decided.** Selective imports are the normal static-artifact path; the complete bundle stays available |
+| [notes/analysis/systematic-approach.md](../research/RES-020-systematic-approach.md) | Historical method: what a script decides, what a person decides, and the measured evidence for where that line falls |
 | [notes/alignment/phase-1-review.md](systematization/research-review.md) | Completed Phase 1 findings and decisions; the later Phase 2 sequence is preserved in pass history |
 | [notes/alignment/additional-functionality-review.md](../design/additional-capabilities.md) | Completed Phase 1 extension: decisions, evidence and later acceptance obligations |
-| [notes/analysis/codebase-systematization.md](../research/06-codebase-systematization.md) | Phase 1 codebase census, shared-responsibility findings and focused browser reproductions |
-| [notes/analysis/animation-package.md](../research/02-animation-package.md) | Animation comparison, measured package costs, retention decision and verification limits |
-| [notes/analysis/icon-library.md](../research/14-icon-library.md) | Icon shapes, licences, historical import measurements and Material Symbols SVG evidence; records the selected shape/source and open defaults |
-| [notes/analysis/repository-layout.md](../research/18-repository-layout.md) | Reference-library survey, proposed layout and verified generator ownership |
-| [notes/analysis/build-performance.md](../research/05-build-performance.md) | Isolated build, selective-entry measurements, CSS delivery and SSR experiment |
-| [notes/analysis/documentation-site.md](../research/09-documentation-site.md) | Proposed standard docs page, manifest contract and doc-component responsibilities |
-| [notes/analysis/floating-surface-shadows.md](../research/11-floating-surface-shadows.md) | Shadow role evidence, Material plain/rich tooltip distinction, Toast comparison and verification limits |
-| [notes/analysis/behaviour-verification-method.md](../research/03-behaviour-verification-method.md) | How behaviour parity gets proven: the four instruments, what each is for, and the traps. Includes the test-tier decision and the cheap checks we were missing |
-| [notes/analysis/hand-rolled-audit.md](../research/13-hand-rolled-audit.md) | Living record of what we hand-roll that a package could own, with an assessment and reason for each |
-| [notes/analysis/lit-practice-review.md](../research/15-lit-practice-review.md) | Which Lit mechanisms we use and which we are missing, checked against our own code. Includes the accessibility evidence for keeping ARIA on inner elements |
-| [notes/analysis/package-choices.md](../research/16-package-choices.md) | Every package choice with its evidence: confirmed, worth adopting, or to avoid. Records that no Zag adapter for Lit exists |
-| [notes/analysis/slotted-cascade.md](../research/19-slotted-cascade.md) | Why a shadow rule loses to the page when it styles slotted content, measured; what ten production systems do about it; and the 64 `!important` rules of ours, 11 of which genuinely need it. **No decision taken** |
-| [notes/analysis/functional-parity-sources.md](../research/12-functional-parity-sources.md) | What is and is not obtainable for verifying behaviour, and the method that follows. Records that there is no source code to read, so nobody looks twice |
-| [notes/decisions/track-census-results.md](../decisions/0113-track-census-results.md) | **Decided.** Measurement results are version-controlled, and the two guards that stop an empty run being read as a pass |
-| [notes/decisions/parity-scope.md](../decisions/0077-parity-scope.md) | **Decided.** What parity means: style, behaviour and functionality, never implementation. The rule every API choice is judged against |
-| [notes/decisions/prop-naming-vs-reference.md](../decisions/0079-prop-naming-vs-reference.md) | The button `type`/`typeName` case that raised the question, kept for its evidence. Settled by the parity-scope decision |
-| [notes/decisions/state-on-tanstack-store.md](../decisions/0101-state-on-tanstack-store.md) | **Decided.** Every element holds its own state in a per-instance TanStack Store, as TanStack Form does. Carries the pattern, its four traps, the evidence gathered before deciding, and the migration order |
-| [notes/decisions/input-affix-api.md](../decisions/0047-input-affix-api.md) | **Decided.** A field's prefix and suffix are two named places, not one concept with booleans: the name carries where the thing sits. Carries the measurement that proved the place is binary, and the group and icon elements deferred |
-| [notes/decisions/focus-ring-ownership.md](../decisions/0041-focus-ring-ownership.md) | **Decided.** Every element draws its own focus ring; the shipped sheet carries no page-wide focus rule, because the reference carries none. Includes the 955-box sweep that proved nothing lost a ring |
+| [notes/analysis/codebase-systematization.md](../research/RES-006-codebase-systematization.md) | Phase 1 codebase census, shared-responsibility findings and focused browser reproductions |
+| [notes/analysis/animation-package.md](../research/RES-002-animation-package.md) | Animation comparison, measured package costs, retention decision and verification limits |
+| [notes/analysis/icon-library.md](../research/RES-014-icon-library.md) | Icon shapes, licences, historical import measurements and Material Symbols SVG evidence; records the selected shape/source and open defaults |
+| [notes/analysis/repository-layout.md](../research/RES-018-repository-layout.md) | Reference-library survey, proposed layout and verified generator ownership |
+| [notes/analysis/build-performance.md](../research/RES-005-build-performance.md) | Isolated build, selective-entry measurements, CSS delivery and SSR experiment |
+| [notes/analysis/documentation-site.md](../research/RES-009-documentation-site.md) | Proposed standard docs page, manifest contract and doc-component responsibilities |
+| [notes/analysis/floating-surface-shadows.md](../research/RES-011-floating-surface-shadows.md) | Shadow role evidence, Material plain/rich tooltip distinction, Toast comparison and verification limits |
+| [notes/analysis/behaviour-verification-method.md](../research/RES-003-behaviour-verification-method.md) | How behaviour parity gets proven: the four instruments, what each is for, and the traps. Includes the test-tier decision and the cheap checks we were missing |
+| [notes/analysis/hand-rolled-audit.md](../research/RES-013-hand-rolled-audit.md) | Living record of what we hand-roll that a package could own, with an assessment and reason for each |
+| [notes/analysis/lit-practice-review.md](../research/RES-015-lit-practice-review.md) | Which Lit mechanisms we use and which we are missing, checked against our own code. Includes the accessibility evidence for keeping ARIA on inner elements |
+| [notes/analysis/package-choices.md](../research/RES-016-package-choices.md) | Every package choice with its evidence: confirmed, worth adopting, or to avoid. Records that no Zag adapter for Lit exists |
+| [notes/analysis/slotted-cascade.md](../research/RES-019-slotted-cascade.md) | Why a shadow rule loses to the page when it styles slotted content, measured; what ten production systems do about it; and the 64 `!important` rules of ours, 11 of which genuinely need it. **No decision taken** |
+| [notes/analysis/functional-parity-sources.md](../research/RES-012-functional-parity-sources.md) | What is and is not obtainable for verifying behaviour, and the method that follows. Records that there is no source code to read, so nobody looks twice |
+| [notes/decisions/track-census-results.md](../decisions/DEC-113-track-census-results.md) | **Decided.** Measurement results are version-controlled, and the two guards that stop an empty run being read as a pass |
+| [notes/decisions/parity-scope.md](../decisions/DEC-077-parity-scope.md) | **Decided.** What parity means: style, behaviour and functionality, never implementation. The rule every API choice is judged against |
+| [notes/decisions/prop-naming-vs-reference.md](../decisions/DEC-079-prop-naming-vs-reference.md) | The button `type`/`typeName` case that raised the question, kept for its evidence. Settled by the parity-scope decision |
+| [notes/decisions/state-on-tanstack-store.md](../decisions/DEC-101-state-on-tanstack-store.md) | **Decided.** Every element holds its own state in a per-instance TanStack Store, as TanStack Form does. Carries the pattern, its four traps, the evidence gathered before deciding, and the migration order |
+| [notes/decisions/input-affix-api.md](../decisions/DEC-047-input-affix-api.md) | **Decided.** A field's prefix and suffix are two named places, not one concept with booleans: the name carries where the thing sits. Carries the measurement that proved the place is binary, and the group and icon elements deferred |
+| [notes/decisions/focus-ring-ownership.md](../decisions/DEC-041-focus-ring-ownership.md) | **Decided.** Every element draws its own focus ring; the shipped sheet carries no page-wide focus rule, because the reference carries none. Includes the 955-box sweep that proved nothing lost a ring |
 
 ---
 
@@ -683,7 +683,7 @@ The initial checkpoint planned the 21 pages with reported differences by expecte
   and the test was proven by reintroducing the bug.
 
 - Recorded done — **The page-wide focus ring is gone from the shipped sheet.** Decided by Peter; see
-  [focus-ring-ownership.md](../decisions/0041-focus-ring-ownership.md). The reference has no page-wide focus rule of any kind and
+  [focus-ring-ownership.md](../decisions/DEC-041-focus-ring-ownership.md). The reference has no page-wide focus rule of any kind and
   leaves the browser's own ring on anything it does not style itself, proven by probing a plain button
   and a plain div on its page. Ours put a Geist ring and a 6px radius on every focusable thing,
   through a published entry point, so it reached consumers' own controls too.
@@ -698,7 +698,7 @@ The initial checkpoint planned the 21 pages with reported differences by expecte
   so it went. Two places per side, each a slot, the name carrying where the thing sits:
   `start-addon` / `end-addon` attached to the outside of the field, `start` / `end` inside its own
   box. Six properties become none; the select keeps one, `end="false"`, for a place that is empty.
-  Recorded in [notes/decisions/input-affix-api.md](../decisions/0047-input-affix-api.md).
+  Recorded in [notes/decisions/input-affix-api.md](../decisions/DEC-047-input-affix-api.md).
 
   Two measurement faults surfaced, both older than this work: **the input page never had matching
   root counts** (22 against 20, two of its examples being search fields we render elsewhere), so its
@@ -712,11 +712,11 @@ The initial checkpoint planned the 21 pages with reported differences by expecte
   `class="relative"` on the icons they pass in — now an ACCEPTED entry with that evidence.
   split-button: 60 → **0 hard**, both themes, after rebuilding its census config; the last 4 were
   one cause, and Peter accepted it rather than fixing it
-  ([element-child-radius.md](../research/10-element-child-radius.md)).
+  ([element-child-radius.md](../research/RES-010-element-child-radius.md)).
 
   **book: 142 → 0 hard, both themes.** Every difference was the measurement, not the element: all
   162 geometry readings match exactly. Four faults, the first being that `BH179W_stripe` names two
-  boxes per book. Written up in [book-census-config.md](../research/04-book-census-config.md), including two wrong turns —
+  boxes per book. Written up in [book-census-config.md](../research/RES-004-book-census-config.md), including two wrong turns —
   I blamed a transition the census already disables, and I compared the wrong roots.
 
   **code-block, 2026-09-10.** Its 31 hard differences are three causes only, and none is an element
@@ -806,7 +806,7 @@ Measured, not estimated:
 
 ### 5.4 Prove behaviour, not just styles `[ ]`
 
-Method in [notes/analysis/behaviour-verification-method.md](../research/03-behaviour-verification-method.md).
+Method in [notes/analysis/behaviour-verification-method.md](../research/RES-003-behaviour-verification-method.md).
 The census reads computed styles and is blind to behaviour: a control with perfect styles that does
 nothing measures clean, which is exactly what shipped in the virtualized table.
 
@@ -845,7 +845,7 @@ The investigation used a one-frame probe with a timeout and two separated animat
 mid-flight at 55% opacity with the pane minimized.
 
 The old operating preference was the preview pane, with DevTools used when the frame probe failed or identifiers helped interaction. It limited cleanup to tabs opened by the agent. Current host tools and their skills supersede that procedure. Historical method and code:
-[notes/analysis/behaviour-verification-method.md](../research/03-behaviour-verification-method.md).
+[notes/analysis/behaviour-verification-method.md](../research/RES-003-behaviour-verification-method.md).
 
 First real finding from it, already: the reference wires `aria-describedby` on a tooltip trigger **only
 while the tooltip is open**, and our page has none of its 31 tooltips open at rest. The census cannot see
@@ -862,12 +862,12 @@ The recorded reference comparison required real driver input because synthetic e
 
 Three research records held the original package/practice questions. Their later decisions and evidence, rather than this historical queue, establish current selections:
 
-- [notes/analysis/package-choices.md](../research/16-package-choices.md) — what we use, what to adopt,
+- [notes/analysis/package-choices.md](../research/RES-016-package-choices.md) — what we use, what to adopt,
   what to avoid. Confirms floating-ui, `@internationalized/date` and TanStack; recorded no Zag Lit adapter at that date. The later selected native ports replace the runtime-adapter proposal.
-- [notes/analysis/hand-rolled-audit.md](../research/13-hand-rolled-audit.md) — what we hand-roll that a
+- [notes/analysis/hand-rolled-audit.md](../research/RES-013-hand-rolled-audit.md) — what we hand-roll that a
   package could own. Includes the shared floating-ui controller, since six elements each call
   `computePosition` twice with the same shape.
-- [notes/analysis/lit-practice-review.md](../research/15-lit-practice-review.md) — the Lit mechanisms we
+- [notes/analysis/lit-practice-review.md](../research/RES-015-lit-practice-review.md) — the Lit mechanisms we
   are not using. The then-missing custom-elements manifest was a leading finding; the standard analyzer was implemented later.
 
 ### 5.7 Cleanup `[ ]`
@@ -879,7 +879,7 @@ Three research records held the original package/practice questions. Their later
 - Recorded pending — Menu: the reference's mobile path. Under 601px the list opens inside a drawer, which sets no shadow on it. Absent from the corpus, so sketch it alongside the combobox mobile form.
 - Recorded pending — Modal: a `form` option wrapping body and footer, so destructive-action-modal drops its two context lines
 - Recorded pending — Combobox: the reference's mobile form, a button that opens a drawer under 601px
-- Recorded pending — **Move the animated elements onto `@lit-labs/motion`.** Retention was [selected in Phase 1.5 review](../decisions/0004-animation-package.md); the former Phase 5 gate is retired. Two patterns cover nearly all of it:
+- Recorded pending — **Move the animated elements onto `@lit-labs/motion`.** Retention was [selected in Phase 1.5 review](../decisions/DEC-004-animation-package.md); the former Phase 5 gate is retired. Two patterns cover nearly all of it:
 
   1. *A box whose size changes.* Collapse is the clearest case: it measures the body with
      `getBoundingClientRect` and drives an inline pixel height, which is precisely what the
@@ -906,7 +906,7 @@ Three research records held the original package/practice questions. Their later
   name the visual look `variant`, up from 11.** The sweep also drew the line that keeps `type` where it
   names a kind of thing rather than an appearance — chart's shape, choicebox's selection mode, file's
   icon, breadcrumbs' layout, and the real HTML attribute on button, copy-button, split-button and input.
-  The test and the reasoning are in [notes/decisions/parity-scope.md](../decisions/0077-parity-scope.md).
+  The test and the reasoning are in [notes/decisions/parity-scope.md](../decisions/DEC-077-parity-scope.md).
   It changes the 0.2.0 interface on seven elements, which costs a release note and nothing more.
 - Recorded done — ~~Sweep the same way for every other concept that may carry two names (size, shape, state).~~ Superseded by the systematization pass, Phase 2.6.
 - Recorded pending — Select: decide the additional `options` property, which feedback uses `[?]`
@@ -918,14 +918,14 @@ The original statuses above are preserved, not reopened. Later selected contract
 
 | Original queue area | Later owner or disposition |
 | --- | --- |
-| Stylesheet rename, generated CSS and output paths | M01/M02 in the [completed migration](../../tasks/done/systematization/plan.md) |
+| Stylesheet rename, generated CSS and output paths | M01/M02 in the [completed migration](../../specs/SPEC-003-design-system/tasks/plan.md) |
 | Token size and bundle splitting | The complete token catalog and selective module delivery replaced the old prune/split proposal; no blanket token deletion follows from its 260 KB observation |
-| Sheet/Modal/Menu/ComboBox mobile and form proposals | Approved [overlay/help](../../spec/SPEC-overlays-help.md), [selection](../../spec/SPEC-selection.md) and [inputs/forms](../../spec/SPEC-inputs-forms.md) contracts replace the old component interfaces |
+| Sheet/Modal/Menu/ComboBox mobile and form proposals | Approved [overlay/help](../../specs/SPEC-011-overlays-help/spec.md), [selection](../../specs/SPEC-013-selection/spec.md) and [inputs/forms](../../specs/SPEC-006-inputs-forms/spec.md) contracts replace the old component interfaces |
 | Motion migration and source naming | Selected motion roles, rebuilt families and removal/export audits in the completed migration |
-| README and consumer documentation | Current package contracts and [documentation specification](../../spec/SPEC-documentation-tooling.md); the former signals/virtualizer listing is historical |
+| README and consumer documentation | Current package contracts and [documentation specification](../../specs/SPEC-004-documentation-tooling/spec.md); the former signals/virtualizer listing is historical |
 | Select options and Feedback use | Approved authored Option/selection contracts and rebuilt Feedback replace the old data-property question |
 | Foundation heading levels | Current typography/documentation contracts govern semantic structure; the old exact-reference-page question does not restart |
-| Slotted !important narrowing | The [research](../research/19-slotted-cascade.md) retains the undecided 64/11/53 analysis; this migration selects no new cascade policy |
+| Slotted !important narrowing | The [research](../research/RES-019-slotted-cascade.md) retains the undecided 64/11/53 analysis; this migration selects no new cascade policy |
 
 ### 5.8 Release
 
@@ -960,7 +960,7 @@ This is the original defect ledger. Paths identify the code at that revision, in
 | `tools/geist/census.js` | The state rewrite ran on the reference side only, on the belief that our generated sheets always key states off attributes. Most do; a rule the reference wrote as a real `:hover` or `:focus-visible` comes through the generator as one, and such a rule of ours was unreachable. The state then read as its resting value and the diff reported a difference the element does not have — the search field's clear button, on both hover colour and focus outline. | Both sides are rewritten. A second rule keeps the descendant clause off a compound that is the pseudo-class alone, or a page-wide rule lands on every descendant of the focused box. Six tests, each proven by reintroducing the bug it guards. |
 | `src/components/error/error.ts` | The reference's alert is the box its container lays out. Ours had a host box between them, so a flex row's `items-stretch` reached the host and left the alert at its own height: 20px where the reference reads 24. | `:host { display: contents }`. Its three accepted leftovers went with it — they were the wrapper box. |
 | `src/components/kbd/kbd.ts` | Same shape. The reference's key is one element, `inline-flex` in prose and blockified to `flex` in a flex row, so the row sizes to the key's 20px. Our host made the search field's key row 25px. | `:host { display: contents }`. Verified in both contexts: the key row reads 58x20 with both keys 20x20, and the standalone page still reads inline-flex at 26x24, 24x24 and 40x24. |
-| `src/geist.css` | A page-wide `:focus-visible` rule put a Geist ring and a 6px radius on every focusable thing, through a published entry point, so it reached consumers' own controls. The reference has no page-wide focus rule of any kind. It also broke the measurement: the census marks a focused root and every descendant, so a rule with no element part landed on each icon inside. | Removed, with the `:focus { outline: none }` beside it. Swept 955 keyboard-reachable boxes across 98 pages afterwards; no element lost a ring it had. See [notes/decisions/focus-ring-ownership.md](../decisions/0041-focus-ring-ownership.md). |
+| `src/geist.css` | A page-wide `:focus-visible` rule put a Geist ring and a 6px radius on every focusable thing, through a published entry point, so it reached consumers' own controls. The reference has no page-wide focus rule of any kind. It also broke the measurement: the census marks a focused root and every descendant, so a rule with no element part landed on each icon inside. | Removed, with the `:focus { outline: none }` beside it. Swept 955 keyboard-reachable boxes across 98 pages afterwards; no element lost a ring it had. See [notes/decisions/focus-ring-ownership.md](../decisions/DEC-041-focus-ring-ownership.md). |
 | `src/geist.css` | 44 lines of dead CSS for the select — `.select-wrap`, `.affix-l`, `.affix-r` — a third vocabulary for the input's prefix and suffix, unreferenced by any element, docs page or generated module. | Removed, with the `split-css` routing rule that filed it. |
 | `tools/geist/census/input.config.json` | The input page never had matching root counts: 22 on the reference against our 20, because two of its examples are search fields we render on their own page. Every difference the page reported was computed across misaligned roots. | `previews` names the seven shared examples. |
 
@@ -972,7 +972,7 @@ This is the original defect ledger. Paths identify the code at that revision, in
 attributes, zero direction selectors, and it mixes 87 physical properties with 75 logical ones, which
 would break in a right-to-left context. Our modules inherited that mix faithfully. Supporting it would
 mean *deviating* from the reference on several hundred declarations, each becoming a census difference to
-accept. Reasoning in [notes/decisions/parity-scope.md](../decisions/0077-parity-scope.md).
+accept. Reasoning in [notes/decisions/parity-scope.md](../decisions/DEC-077-parity-scope.md).
 
 **Historical compatibility premise, retired as future authority.** The old record asserted no consumers and therefore required complete replacements without aliases, fallbacks or old-interface comments in current code. Actual usage was not established. Completed approved replacements remain final; this premise creates no permanent policy or permission for future changes.
 
@@ -989,14 +989,14 @@ accept. Reasoning in [notes/decisions/parity-scope.md](../decisions/0077-parity-
   Peter, 2026-09-10. The reference has no such component among its 77 pages, so this is ours to
   design rather than port, and no web component library models it either except Nord's alpha
   `nord-input-group`.
-- **Icon elements.** Deferred on 2026-09-10; the 2026-09-19 pass review selected [one element per icon](../decisions/0046-icon-element-shape.md) using [Material Symbols SVGs](../decisions/0060-material-symbols-icons.md). The later complete inventory/migration and icon delivery resolve that stage; the old approval gates are retired.
+- **Icon elements.** Deferred on 2026-09-10; the 2026-09-19 pass review selected [one element per icon](../decisions/DEC-046-icon-element-shape.md) using [Material Symbols SVGs](../decisions/DEC-060-material-symbols-icons.md). The later complete inventory/migration and icon delivery resolve that stage; the old approval gates are retired.
 - **Narrowing the 64 slotted `!important` rules.** 11 of them genuinely need it; the other 53 never
   meet a page rule and only cost a consumer their inline style. Whether to narrow them, and whether
   to adopt Spectrum's `:not([class])` guard, is undecided — the case that raised it dissolved when the
   input's affix API was replaced. Measurement and options in
-  [notes/analysis/slotted-cascade.md](../research/19-slotted-cascade.md).
+  [notes/analysis/slotted-cascade.md](../research/RES-019-slotted-cascade.md).
 - **Data layer** (TanStack Query and DB): a separate package, later.
 
 ### Later resolution of deferred scope
 
-The [bidirectional-support decision](../decisions/0007-bidirectional-support.md) supersedes the old no-RTL decision. [Group](../decisions/0045-group-presentation.md), [per-icon Material Symbols](../decisions/0060-material-symbols-icons.md) and scoped-registration delivery are implemented; the [release evidence](../releases/0.3.2.md) retains their verification limits. The slotted !important investigation and separate Query/DB idea do not become new implementation tasks through this historical conversion. No inspected later record certifies the proposed provenance.js audit as delivered. Current reference measurement must still use valid, controlled evidence.
+The [bidirectional-support decision](../decisions/DEC-007-bidirectional-support.md) supersedes the old no-RTL decision. [Group](../decisions/DEC-045-group-presentation.md), [per-icon Material Symbols](../decisions/DEC-060-material-symbols-icons.md) and scoped-registration delivery are implemented; the [release evidence](../releases/0.3.2.md) retains their verification limits. The slotted !important investigation and separate Query/DB idea do not become new implementation tasks through this historical conversion. No inspected later record certifies the proposed provenance.js audit as delivered. Current reference measurement must still use valid, controlled evidence.

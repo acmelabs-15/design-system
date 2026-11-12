@@ -47,4 +47,4 @@ The older Playwright-patched Firefox155 crash and the passing checksum/signature
 
 The 0.3.2 release verified all 25,120 public site files against the reviewed artifact. The two independent Linux builds of the same source tree produced identical archives for all five packages. Original tags and archives remain immutable.
 
-Actual OS IME/dictation/autofill, actual Safari/assistive technology and OS background-window behavior remain unperformed. These limits are neither waived nor counted as completed implementation work. Current follow-ups, including the later Chromium Hover Card failure, belong to [status](../../../docs/STATUS.md) and the [active maintainer-workflow specification](../../../spec/SPEC-maintainer-workflow.md).
+Actual OS IME/dictation/autofill, actual Safari/assistive technology and OS background-window behavior remain unperformed. These limits are neither waived nor counted as completed implementation work. Current follow-ups, including the later Chromium Hover Card failure, belong to [status](../../../docs/agents/workspace.md#session-state) and the [active maintainer-workflow specification](../../SPEC-008-maintainer-workflow/spec.md).

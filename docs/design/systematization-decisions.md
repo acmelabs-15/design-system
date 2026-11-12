@@ -6,12 +6,12 @@ Status: All five recommendations approved by Peter on 2026-09-20.
 
 This is the completed decision register. Q02, Q08, Q13, Q14 and Q15 preserve their choices, alternatives and consequences. The numeric density comparison remains a proposal illustration at a 16px root, not a measured future-component result. Approval of recommendations remains distinct from engineering and runtime acceptance.
 
-The dated findings below retain their source versions, measurements, corrections and verification limits. Old phase gates, source freezes, local-skill routing and task-specific permission grants describe the completed pass. They do not govern new work. The [current handoff](../STATUS.md) owns the next action.
+The dated findings below retain their source versions, measurements, corrections and verification limits. Old phase gates, source freezes, local-skill routing and task-specific permission grants describe the completed pass. They do not govern new work. The [current handoff](../agents/workspace.md#session-state) owns the next action.
 
 
-Closed 2026-09-20 when Peter said “I approve all proposals.” **All five recommendations are approved; no question remains pending.** The sections below preserve the choices and their reasoning. [Approval record](../decisions/0049-inventory-approval.md). Migration approval and technical verification remain separate.
+Closed 2026-09-20 when Peter said “I approve all proposals.” **All five recommendations are approved; no question remains pending.** The sections below preserve the choices and their reasoning. [Approval record](../decisions/DEC-049-inventory-approval.md). Migration approval and technical verification remain separate.
 
-The [proposal set](../../spec/SPEC-design-system.md#complete-proposal-set) contained each family recommendation. Source facts, ordinary implementation details and verification remained engineering work rather than additional user questions.
+The [proposal set](../../specs/SPEC-003-design-system/spec.md#complete-proposal-set) contained each family recommendation. Source facts, ordinary implementation details and verification remained engineering work rather than additional user questions.
 
 ## Q02 — Compact density treatment
 
@@ -34,7 +34,7 @@ Concrete comparison for the walkthrough, at a 16px root font. These are proposed
 
 Both leave text/icons/borders unchanged, preserve explicit CSS overrides and enforce the selected control target floor. The first approach keeps role exceptions; the second applies the same ratio to every eligible spacing. The comparison was the bounded decision aid, rather than a new broad density investigation.
 
-**Affected proposals:** [foundations](../../spec/SPEC-foundations.md), controls, Table, Toolbar, menus/dialogs/Toasts' selected normal-density exceptions.
+**Affected proposals:** [foundations](../../specs/SPEC-005-foundations/spec.md), controls, Table, Toolbar, menus/dialogs/Toasts' selected normal-density exceptions.
 
 ## Q08 — Inspector scope
 
@@ -44,7 +44,7 @@ Both leave text/icons/borders unchanged, preserve explicit CSS overrides and enf
 
 **Recommendation:** read-only properties/events/theme/state diagnostics for this pass. Alternative: add deliberate temporary edits with explicit indication that a subsequent Lit helper/React render can restore the application value. Editing the application source or persisting edits is not either option.
 
-**Evidence/consequence:** the selected next-render reassertion is verified in the saved helper/wrapper fixtures. Devtools mounting does not establish a safe persistent editing bridge. [Complete proposal](../../spec/SPEC-documentation-tooling.md#inspector), [existing decision](../decisions/0026-design-system-devtools.md).
+**Evidence/consequence:** the selected next-render reassertion is verified in the saved helper/wrapper fixtures. Devtools mounting does not establish a safe persistent editing bridge. [Complete proposal](../../specs/SPEC-004-documentation-tooling/spec.md#inspector), [existing decision](../decisions/DEC-026-design-system-devtools.md).
 
 ## Q13 — TOC ownership of missing heading IDs
 
@@ -54,7 +54,7 @@ Both leave text/icons/borders unchanged, preserve explicit CSS overrides and enf
 
 **Recommendation:** require stable authored IDs and report/omit missing targets. Alternative: generate IDs only for headings without IDs, with a documented stable collision rule and no rewriting of explicit IDs. Both use real links and preserve native/Heading discovery.
 
-**Consequence:** required IDs keep bookmark ownership with the application; automatic IDs make generated documents work with less setup but add mutation/lifecycle behavior. Explicit items take precedence over discovery in both proposals; that routine rule is not a second question. [Proposal](../../spec/SPEC-navigation-disclosure.md#n-04-table-of-contents).
+**Consequence:** required IDs keep bookmark ownership with the application; automatic IDs make generated documents work with less setup but add mutation/lifecycle behavior. Explicit items take precedence over discovery in both proposals; that routine rule is not a second question. [Proposal](../../specs/SPEC-010-navigation-disclosure/spec.md#n-04-table-of-contents).
 
 ## Q14 — Advanced Tree View scope
 
@@ -64,7 +64,7 @@ Both leave text/icons/borders unchanged, preserve explicit CSS overrides and enf
 
 **Recommendation:** finish the core interactive hierarchy and file-tree recipe in this pass; keep editing and advanced data features outside its initial contract. At the original review, any needed advanced capability would have required an explicit extension of this proposal before approval. Unrequested source features and speculative per-feature votes were outside that scope.
 
-**Consequence:** additional capabilities change node/state/events, rendering and the test matrix. TanStack Virtual is already mandatory if virtualization is included; package selection is not reopened. [Proposal](../../spec/SPEC-navigation-disclosure.md#n-06-tree-view), [scope decision](../decisions/0043-general-tree-view.md).
+**Consequence:** additional capabilities change node/state/events, rendering and the test matrix. TanStack Virtual is already mandatory if virtualization is included; package selection is not reopened. [Proposal](../../specs/SPEC-010-navigation-disclosure/spec.md#n-06-tree-view), [scope decision](../decisions/DEC-043-general-tree-view.md).
 
 ## Q15 — Coordinated Pagination parts
 
@@ -74,7 +74,7 @@ Both leave text/icons/borders unchanged, preserve explicit CSS overrides and enf
 
 **Recommendation:** include optional Pagination Position and Page Size parts alongside navigation/items, sharing the root's supplied state and reusing existing controls. Alternative: keep Page Size entirely in documented recipes. Application-owned page/page-size/reset/data loading and unknown-total behavior remain the same.
 
-**Evidence:** Pro Event Log 03 composes shared pagination context, page text, navigation and a page-size NativeSelect; its application resets page after size changes. This supports coordinated parts but does not itself approve the boundary revision. [Complete proposal](../../spec/SPEC-data-displays.md#d-02-results-pagination), [saved source/live result](../research/09-documentation-site.md#chakra-pro-pagination-review).
+**Evidence:** Pro Event Log 03 composes shared pagination context, page text, navigation and a page-size NativeSelect; its application resets page after size changes. This supports coordinated parts but does not itself approve the boundary revision. [Complete proposal](../../specs/SPEC-002-data-displays/spec.md#d-02-results-pagination), [saved source/live result](../research/RES-009-documentation-site.md#chakra-pro-pagination-review).
 
 ## Removed from the user-question queue
 

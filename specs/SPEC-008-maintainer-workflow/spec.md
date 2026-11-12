@@ -4,7 +4,7 @@ migrated: 0.8
 ---
 # Spec: Maintainer workflow migration
 
-Status: approved by Peter on 2026-10-21 through “approved,” in reply to the specification-approval request. The [implementation plan](../tasks/done/maintainer-workflow/plan.md) and [task list](../tasks/done/maintainer-workflow/todo.md) are approved by Peter after all three plan-review questions. Current execution state belongs in [STATUS](../docs/STATUS.md).
+Status: approved by Peter on 2026-10-21 through “approved,” in reply to the specification-approval request. The [implementation plan](tasks/plan.md) and [task list](tasks/todo.md) are approved by Peter after all three plan-review questions. Current execution state belongs in [STATUS](../../docs/agents/workspace.md#session-state).
 
 This is one maintenance capability: a fresh agent finds the right context, follows the selected workflow, and leaves an accurate handoff. The sections below describe its parts, not separate product projects.
 
@@ -33,7 +33,7 @@ Complete the migration to the new directory layout, names and document formats. 
 - The old evidence tree contains executable acceptance drivers. The site also references existing decision and evidence paths. A complete migration must update these consumers.
 - Authored website content is in site/ and generated output is in _site/. The former tracked docs/ snapshot is removed, so docs/ can hold maintainer documentation.
 
-Sources and exact observations: [workflow research](../docs/research/20-systematic-approach.md#maintainer-workflow-migration-2026-10-21), [migration evidence](../docs/verification/workflow-migration/initial-research.json).
+Sources and exact observations: [workflow research](../../docs/research/RES-020-systematic-approach.md#maintainer-workflow-migration-2026-10-21), [migration evidence](../../docs/verification/workflow-migration/initial-research.json).
 
 ## Tools and commands
 
@@ -251,7 +251,7 @@ Use the official skill-creator workflow when editing AGENTS.md or retiring the l
 
 ### Prior-art checks
 
-[scripts/__tests__/check.test.ts](../scripts/__tests__/check.test.ts) and [scripts/__tests__/release-workflows.test.ts](../scripts/__tests__/release-workflows.test.ts) are the existing verification-runner and workflow checks to preserve while paths move. Their behavioral scope does not prove agent startup.
+[scripts/__tests__/check.test.ts](../../scripts/__tests__/check.test.ts) and [scripts/__tests__/release-workflows.test.ts](../../scripts/__tests__/release-workflows.test.ts) are the existing verification-runner and workflow checks to preserve while paths move. Their behavioral scope does not prove agent startup.
 
 The reference projects' startup/status/task files are the behavioral model for the fresh-session checks. No existing cold-start evaluation is claimed. Static checks and actual Claude/Codex session checks remain distinct.
 

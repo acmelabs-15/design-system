@@ -10,10 +10,10 @@ Use one element per icon, with a distinct tag and selective import. Peter select
 
 Decided 2026-09-19 by Peter.
 
-Share rendering and the rules for size, colour, accessible labels and composition across the icon elements. Changing an icon's style must not require changing its identity. The [Material Symbols decision](0060-material-symbols-icons.md) supplies the artwork families and fill states.
+Share rendering and the rules for size, colour, accessible labels and composition across the icon elements. Changing an icon's style must not require changing its identity. The [Material Symbols decision](DEC-060-material-symbols-icons.md) supplies the artwork families and fill states.
 
 Exact tag names, properties, module paths and the generated catalog were left for the inventory and migration plan. Examples used during the comparison illustrate the shape, not an approved naming map. This initial selection did not approve a complete naming map or implementation.
 
-Evidence and alternatives: [icon investigation](../research/14-icon-library.md). The earlier single-element recommendation is superseded by Peter's selection.
+Evidence and alternatives: [icon investigation](../research/RES-014-icon-library.md). The earlier single-element recommendation is superseded by Peter's selection.
 
-The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.
+The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../specs/SPEC-003-design-system/spec.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.

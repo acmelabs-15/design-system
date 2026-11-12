@@ -11,7 +11,7 @@ Status: historical research with dated implementation follow-ups. Converted 2026
 
 This is a 2026-09-19–20 investigation of a specific desktop app build and its question renderer. It corrects the clock/wait attribution and records successful answer delivery without claiming the countdown disappeared. The approved maintainer workflow now follows brain's permitted question surface and keeps unanswered choices pending without an agent deadline. The old Plan-only route and local-skill preference below are historical selections, not current host or plugin routing.
 
-The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../STATUS.md) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
+The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../agents/workspace.md#session-state) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
 
 ## Findings and dated evidence
 

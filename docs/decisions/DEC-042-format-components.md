@@ -14,7 +14,7 @@ Chakra's format components use a required numeric value; the inspected Ark wrapp
 
 Use the selected stack. These references do not adopt Ark/Zag formatting dependencies or change the independent Number Input parser decision. Locale inheritance, supported number options, decimal/binary byte units, rounding, absent/invalid values and accessible full values were left for the inventory at selection time. Formatters display values; they do not own input editing, calculations or form state.
 
-Evidence: [capability review](../research/06-codebase-systematization.md#accelerated-capability-and-disposition-checkpoint), [choice record](../verification/systematization/capability-checkpoint-2026-09-19.json). The initial selection did not approve the complete implementation.
+Evidence: [capability review](../research/RES-006-codebase-systematization.md#accelerated-capability-and-disposition-checkpoint), [choice record](../verification/systematization/capability-checkpoint-2026-09-19.json). The initial selection did not approve the complete implementation.
 
 ## Implementation and binary-unit data — 2026-09-21
 

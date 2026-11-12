@@ -18,7 +18,7 @@ so the system has one word for one idea rather than two vocabularies.
 
 `data-prefix` and `data-suffix` are removed everywhere.
 
-The implementation details and verification counts below describe the 2026-09-10 sweep. Later [actions](../../spec/SPEC-actions.md), [inputs/forms](../../spec/SPEC-inputs-forms.md) and [selection](../../spec/SPEC-selection.md) contracts own the supported component interfaces.
+The implementation details and verification counts below describe the 2026-09-10 sweep. Later [actions](../../specs/SPEC-001-actions/spec.md), [inputs/forms](../../specs/SPEC-006-inputs-forms/spec.md) and [selection](../../specs/SPEC-013-selection/spec.md) contracts own the supported component interfaces.
 
 ## What was there
 

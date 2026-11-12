@@ -11,7 +11,7 @@ Use Lit Motion for Book's hover animation. Reactive gesture state supplies the f
 Decided 2026-09-10 by Peter, who asked for the package to drive the animation and, when I argued it
 did not fit, pointed at the demos that show it does.
 
-The sections below preserve the 2026-09-10 investigation, including superseded attempts, measured results and corrections. Code examples describe that revision, not the current state-helper API. The later [animation decision](0004-animation-package.md) retains the package; the [rich-content contract](../../spec/SPEC-rich-content.md) owns the current Book interface.
+The sections below preserve the 2026-09-10 investigation, including superseded attempts, measured results and corrections. Code examples describe that revision, not the current state-helper API. The later [animation decision](DEC-004-animation-package.md) retains the package; the [rich-content contract](../../specs/SPEC-012-rich-content/spec.md) owns the current Book interface.
 
 ## What I got wrong, and what the demos settled
 

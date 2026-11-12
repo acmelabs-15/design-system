@@ -12,4 +12,4 @@ Decided 2026-09-19 by Peter.
 
 Earlier SSR probes remain historical evidence. They do not create follow-up implementation work. This decision does not exclude server-side table filtering, sorting or pagination, or submitting forms to a server.
 
-Evidence and historical results: [build investigation](../research/05-build-performance.md#ssr-readiness-measured-not-assumed).
+Evidence and historical results: [build investigation](../research/RES-005-build-performance.md#ssr-readiness-measured-not-assumed).

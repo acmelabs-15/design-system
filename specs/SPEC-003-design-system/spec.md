@@ -6,29 +6,29 @@ migrated: 0.8
 
 Status: approved by Peter on 2026-09-20 through “I approve all proposals.” This contract preserves the complete inventory, conventions and documentation layout, including stated recommendations and the explicit later decisions cited below. Design approval does not establish verification.
 
-This specification and its linked family files own the detailed contracts. The [inventory review history](../docs/history/systematization/inventory-history.md) preserves draft stages, bounded probes and former phase gates. [Approval scope and original source hashes](../docs/decisions/0049-inventory-approval.md). Current work and verification status belong to [status](../docs/STATUS.md).
+This specification and its linked family files own the detailed contracts. The [inventory review history](../../docs/history/systematization/inventory-history.md) preserves draft stages, bounded probes and former phase gates. [Approval scope and original source hashes](../../docs/decisions/DEC-049-inventory-approval.md). Current work and verification status belong to [status](../../docs/agents/workspace.md#session-state).
 
 ## Complete proposal set
 
-The six core layout entries remain below. Each other family has one owning specification; shared conventions apply across them. The [whole-set approval](../docs/decisions/0049-inventory-approval.md) covers thirteen review groups, 91 numbered component/family/adapter entries and seven documentation units. These are approval-scope counts, not the current number of elements. The [release records](../docs/releases/0.3.2.md) preserve subsequent verification and its limits.
+The six core layout entries remain below. Each other family has one owning specification; shared conventions apply across them. The [whole-set approval](../../docs/decisions/DEC-049-inventory-approval.md) covers thirteen review groups, 91 numbered component/family/adapter entries and seven documentation units. These are approval-scope counts, not the current number of elements. The [release records](../../docs/releases/0.3.2.md) preserve subsequent verification and its limits.
 
 | Group | Contract owner |
 | --- | --- |
-| R01 | [Shared rules and themes](SPEC-foundations.md) |
-| R02 | [Layout and attached groups](SPEC-layout.md) |
-| R03 | [Text and formatting](SPEC-typography.md) |
-| R04 | [Actions, icons and identity](SPEC-actions.md) |
-| R05 | [Selection and tabs](SPEC-selection.md) |
-| R06 | [Inputs and forms](SPEC-inputs-forms.md) |
-| R07 | [Surfaces and content composition](SPEC-surfaces.md) |
-| R08 | [Navigation and disclosure](SPEC-navigation-disclosure.md) |
-| R09 | [Messages, progress and statistics](SPEC-messages-statistics.md) |
-| R10 | [Overlays and help](SPEC-overlays-help.md) |
-| R11 | [Tables, charts and diagrams](SPEC-data-displays.md) |
-| R12 | [Rich content and media](SPEC-rich-content.md) |
-| R13 | [Documentation and public tooling](SPEC-documentation-tooling.md) |
+| R01 | [Shared rules and themes](../SPEC-005-foundations/spec.md) |
+| R02 | [Layout and attached groups](../SPEC-007-layout/spec.md) |
+| R03 | [Text and formatting](../SPEC-015-typography/spec.md) |
+| R04 | [Actions, icons and identity](../SPEC-001-actions/spec.md) |
+| R05 | [Selection and tabs](../SPEC-013-selection/spec.md) |
+| R06 | [Inputs and forms](../SPEC-006-inputs-forms/spec.md) |
+| R07 | [Surfaces and content composition](../SPEC-014-surfaces/spec.md) |
+| R08 | [Navigation and disclosure](../SPEC-010-navigation-disclosure/spec.md) |
+| R09 | [Messages, progress and statistics](../SPEC-009-messages-statistics/spec.md) |
+| R10 | [Overlays and help](../SPEC-011-overlays-help/spec.md) |
+| R11 | [Tables, charts and diagrams](../SPEC-002-data-displays/spec.md) |
+| R12 | [Rich content and media](../SPEC-012-rich-content/spec.md) |
+| R13 | [Documentation and public tooling](../SPEC-004-documentation-tooling/spec.md) |
 
-[Coverage and replacement map](component-coverage.md) accounts for all 150 original source tags and all thirty extension records. [The decision register](../docs/design/systematization-decisions.md) records all five recommendations as approved; source-defined defaults and ordinary engineering work are not another question queue. The [foundations](SPEC-foundations.md) define common part/event/state/semantics contracts; family entries list their additions. Documentation units and release/tooling contracts are part of this set, not deferred omissions.
+[Coverage and replacement map](../../docs/history/systematization/component-coverage.md) accounts for all 150 original source tags and all thirty extension records. [The decision register](../../docs/design/systematization-decisions.md) records all five recommendations as approved; source-defined defaults and ordinary engineering work are not another question queue. The [foundations](../SPEC-005-foundations/spec.md) define common part/event/state/semantics contracts; family entries list their additions. Documentation units and release/tooling contracts are part of this set, not deferred omissions.
 
 ## Shared architecture carried forward
 
@@ -40,7 +40,7 @@ Consumers include Dialog, Alert Dialog, Drawer, Menu, Select/ComboBox and the re
 
 **Acceptance:** nested overlays, close/reopen interruption, obsolete placement results, removed openers, reduced motion, unrelated child animations, disconnect/reconnect and exactly-once cleanup. Test the affected implementations in Chromium, Firefox and WebKit.
 
-Controller integration and per-family native modes follow the [overlay/help contract](SPEC-overlays-help.md) and [shared-lifecycle evidence](../docs/verification/systematization/m06-shared-lifetimes-2026-09-21.json). [Decision](../docs/decisions/0075-overlay-architecture.md).
+Controller integration and per-family native modes follow the [overlay/help contract](../SPEC-011-overlays-help/spec.md) and [shared-lifecycle evidence](../../docs/verification/systematization/m06-shared-lifetimes-2026-09-21.json). [Decision](../../docs/decisions/DEC-075-overlay-architecture.md).
 
 ### Canonical state and public properties
 
@@ -48,7 +48,7 @@ Controller integration and per-family native modes follow the [overlay/help cont
 
 **Acceptance:** every supported write path keeps public and derived state current; reflected attributes and named changes agree; defaults, upgrade, inheritance, equality, batching and reconnect retain their specified behaviour. Validate the actual compiler, CEM output, React wrapper and all three engines against the actual supported distributions.
 
-The [foundations contract](SPEC-foundations.md) and [state-bridge decision](../docs/decisions/0080-public-state-bridge.md) own the public-state rules. Authoring rules, including decorator constraints, must remain explicit. The original candidate's counts and proof limits are in the inventory review history.
+The [foundations contract](../SPEC-005-foundations/spec.md) and [state-bridge decision](../../docs/decisions/DEC-080-public-state-bridge.md) own the public-state rules. Authoring rules, including decorator constraints, must remain explicit. The original candidate's counts and proof limits are in the inventory review history.
 
 ### Native form mechanics
 
@@ -56,7 +56,7 @@ The [foundations contract](SPEC-foundations.md) and [state-bridge decision](../d
 
 **Acceptance:** immediate submission/validity, reset, own versus inherited disabled state, first-legend exceptions, external form ownership, restoration, one composite value, validity focus, Field associations and managed-form integration. Cover relevant control families and all three engines. Calling a restoration callback directly is not browser-history or autofill verification.
 
-The [inputs/forms contract](SPEC-inputs-forms.md) supplies per-control mappings and validation/events. [Native-form decision](../docs/decisions/0068-native-form-architecture.md) and [shared-lifecycle evidence](../docs/verification/systematization/m06-shared-lifetimes-2026-09-21.json).
+The [inputs/forms contract](../SPEC-006-inputs-forms/spec.md) supplies per-control mappings and validation/events. [Native-form decision](../../docs/decisions/DEC-068-native-form-architecture.md) and [shared-lifecycle evidence](../../docs/verification/systematization/m06-shared-lifetimes-2026-09-21.json).
 
 ### Effective theme and preference storage
 
@@ -64,7 +64,7 @@ The [inputs/forms contract](SPEC-inputs-forms.md) supplies per-control mappings 
 
 **Acceptance:** nested and moved scopes, local overrides, custom themes, system preference and changes while overlays are open. Group appearance defaults and density exceptions retain their own contracts.
 
-The [foundations contract](SPEC-foundations.md) defines scope authoring and JavaScript delivery. CSS inheritance remains authoritative for inherited values. The [theme decision](../docs/decisions/0109-theme-resolution-architecture.md#context-transport-selected-2026-09-21) selects read-only TanStack source transport through Lit context; it adds no writable theme copy.
+The [foundations contract](../SPEC-005-foundations/spec.md) defines scope authoring and JavaScript delivery. CSS inheritance remains authoritative for inherited values. The [theme decision](../../docs/decisions/DEC-109-theme-resolution-architecture.md#context-transport-selected-2026-09-21) selects read-only TanStack source transport through Lit context; it adds no writable theme copy.
 
 ### Style production
 
@@ -74,11 +74,11 @@ The [foundations contract](SPEC-foundations.md) defines scope authoring and Java
 
 The full implemented pipeline and affected components also require complete build-order, generated-output, escaping/minification, selective-delivery, registration and source-map checks. Representative probes do not replace full acceptance.
 
-The [style-production decision](../docs/decisions/0104-style-production.md) records the later build-only Lightning CSS selection and prerequisite evidence. The [source/output map](../docs/agents/repository.md) owns generated-file locations.
+The [style-production decision](../../docs/decisions/DEC-104-style-production.md) records the later build-only Lightning CSS selection and prerequisite evidence. The [source/output map](../../docs/agents/repository.md) owns generated-file locations.
 
 ## Content and interaction ownership
 
-Content tracking follows content actually assigned to the host's declared slots, including first render and reconnection. Temporary pointer listeners and cancellation/teardown have one lifecycle owner. Visual interaction state stays separate from selection, form values and control-specific commit rules. This selects no global gesture engine. [M06 shared-lifecycle evidence](../docs/verification/systematization/m06-shared-lifetimes-2026-09-21.json) records implementation; the inventory review history retains the initial recommendation status and source defects.
+Content tracking follows content actually assigned to the host's declared slots, including first render and reconnection. Temporary pointer listeners and cancellation/teardown have one lifecycle owner. Visual interaction state stays separate from selection, form values and control-specific commit rules. This selects no global gesture engine. [M06 shared-lifecycle evidence](../../docs/verification/systematization/m06-shared-lifetimes-2026-09-21.json) records implementation; the inventory review history retains the initial recommendation status and source defects.
 
 ## C-RESP: Shared responsive convention
 
@@ -88,33 +88,33 @@ Use native font bases: media-query rem follows the browser initial font, contain
 
 One HTML attribute accepts plain or JSON input; Lit/React use actual values. Preserve zero/false where their property allows them. Array null/undefined skips a position. Do not reflect object/array writes automatically. Valid scalar bracketed Grid CSS must survive.
 
-Exact condition names, equivalence/order rules, target/configuration names and input semantics are in the approved [responsive contract](#responsive-authoring) and [shared adaptation](SPEC-foundations.md#responsive-layout-and-styles). Verify boundaries, fonts, nested/missing containers, malformed input and reconnect; approval is not runtime evidence. [Decision](../docs/decisions/0086-responsive-system.md), [bounded checks](../docs/verification/systematization/responsive-spacing-review-2026-09-20.json).
+Exact condition names, equivalence/order rules, target/configuration names and input semantics are in the approved [responsive contract](#responsive-authoring) and [shared adaptation](../SPEC-005-foundations/spec.md#responsive-layout-and-styles). Verify boundaries, fonts, nested/missing containers, malformed input and reconnect; approval is not runtime evidence. [Decision](../../docs/decisions/DEC-086-responsive-system.md), [bounded checks](../../docs/verification/systematization/responsive-spacing-review-2026-09-20.json).
 
 ## C-SPACE: Shared layout and spacing properties
 
 **Approved contract.** Use full CSS names and logical directions, camelCase properties and kebab-case attributes, with no shorthand aliases. All six layout entries share the focused scope. Numeric inputs are selected theme keys, not pixel counts; explicit CSS values keep their authored meaning and do not receive automatic density scaling.
 
-Use the [34 positive spacing keys plus zero](../docs/decisions/0052-layout-spacing-properties.md#complete-spacing-scale), defaulting to key × .25rem. Margins/insets accept signed steps where CSS permits; padding/gaps are nonnegative. Role-specific compact density is approved under the [density decision](../docs/decisions/0025-density.md#approved-compact-treatment); fonts/icons/borders and the pixel target floor remain separate.
+Use the [34 positive spacing keys plus zero](../../docs/decisions/DEC-052-layout-spacing-properties.md#complete-spacing-scale), defaulting to key × .25rem. Margins/insets accept signed steps where CSS permits; padding/gaps are nonnegative. Role-specific compact density is approved under the [density decision](../../docs/decisions/DEC-025-density.md#approved-compact-treatment); fonts/icons/borders and the pixel target floor remain separate.
 
-Overlapping properties under one condition follow declaration order, not setter arrival or a fixed side hierarchy. Omitted CSS inputs read undefined; CSS supplies visible defaults. Native/semantic state defaults are separate. Named appearance inheritance tracks authored presence under [the conventions](SPEC-foundations.md#contract-used-by-every-entry).
+Overlapping properties under one condition follow declaration order, not setter arrival or a fixed side hierarchy. Omitted CSS inputs read undefined; CSS supplies visible defaults. Native/semantic state defaults are separate. Named appearance inheritance tracks authored presence under [the conventions](../SPEC-005-foundations/spec.md#contract-used-by-every-entry).
 
-The approved Lit helper accepts overlapping settings together, manages supplied keys only, clears removed owned keys and reasserts current inputs on each helper/template render. Direct writes work immediately until that later render. React preserves complete prop order. The detailed [helper contract](#html-lit-and-react-authoring) and [failure adaptation](SPEC-foundations.md#responsive-layout-and-styles) are approved designs; final types, scoped registry/adoption, cleanup and full property coverage remain engineering checks.
+The approved Lit helper accepts overlapping settings together, manages supplied keys only, clears removed owned keys and reasserts current inputs on each helper/template render. Direct writes work immediately until that later render. React preserves complete prop order. The detailed [helper contract](#html-lit-and-react-authoring) and [failure adaptation](../SPEC-005-foundations/spec.md#responsive-layout-and-styles) are approved designs; final types, scoped registry/adoption, cleanup and full property coverage remain engineering checks.
 
-The [inventory review history](../docs/history/systematization/inventory-history.md#core-layout-proposal-and-bounded-probes) preserves the original ordering, React/CSS-default, compiler/CEM, lifecycle and ownership probes. Their bounded scope does not certify a complete production implementation.
+The [inventory review history](../../docs/history/systematization/inventory-history.md#core-layout-proposal-and-bounded-probes) preserves the original ordering, React/CSS-default, compiler/CEM, lifecycle and ownership probes. Their bounded scope does not certify a complete production implementation.
 
 ## C-SIZE: Numeric dimensions and independent theme values
 
 **Approved contract.** Width/height and their limits accept the selected nonnegative numeric steps plus zero as size tokens, alongside valid CSS. Size and spacing categories have matching defaults and independent overrides. Do not make ratios/flex growth into size tokens or silently rescale all dimensions under density.
 
-The complete [property table](#common-box-properties), Simple Grid minimum-width contract and [theme scope](SPEC-foundations.md#theme-scope-and-customization) supply the approved interface. Verify all supported token/CSS values and literal overrides; the choice does not prove generated/native layout behavior. [Decision and evidence](../docs/decisions/0052-layout-spacing-properties.md#signed-spacing-and-separate-size-values).
+The complete [property table](#common-box-properties), Simple Grid minimum-width contract and [theme scope](../SPEC-005-foundations/spec.md#theme-scope-and-customization) supply the approved interface. Verify all supported token/CSS values and literal overrides; the choice does not prove generated/native layout behavior. [Decision and evidence](../../docs/decisions/DEC-052-layout-spacing-properties.md#signed-spacing-and-separate-size-values).
 
 ## C-AS: Native element semantics
 
-**Approved contract.** Retain real custom-element hosts plus native semantic roots for the structural primitives. Box, Flex, Stack/HStack/VStack, Grid, Simple Grid and Group use div/span/section/article/main/nav/aside/header/footer, default div. Box's span display is inline and other tags block by default; layout families retain their arrangement. Text uses p/span/div, default p; Heading uses h1–h6, default h2. The [complete typography interface](SPEC-typography.md#shared-typography-interface) owns their native meaning, style and TOC relationship.
+**Approved contract.** Retain real custom-element hosts plus native semantic roots for the structural primitives. Box, Flex, Stack/HStack/VStack, Grid, Simple Grid and Group use div/span/section/article/main/nav/aside/header/footer, default div. Box's span display is inline and other tags block by default; layout families retain their arrangement. Text uses p/span/div, default p; Heading uses h1–h6, default h2. The [complete typography interface](../SPEC-015-typography/spec.md#shared-typography-interface) owns their native meaning, style and TOC relationship.
 
 Use ordinary aria-label/labelledby/describedby inputs with forwarding to the actual semantic target, avoiding duplicate names and supporting required references. Native ID/class/style/slot ownership and part targets are in [the detailed semantics contract](#semantics-state-events-and-lifecycle). Arbitrary React substitution/asChild is excluded.
 
-Real inline flow, content models, form/focus/ARIA references, native collections, scoped registries and adoption remain required engineering verification. An as tag in a template is not proof of accessible meaning. [Decision](../docs/decisions/0001-additional-component-capabilities.md), [bounded Chromium evidence](../docs/verification/systematization/primitive-interfaces-review-2026-09-20.json).
+Real inline flow, content models, form/focus/ARIA references, native collections, scoped registries and adoption remain required engineering verification. An as tag in a template is not proof of accessible meaning. [Decision](../../docs/decisions/DEC-001-additional-component-capabilities.md), [bounded Chromium evidence](../../docs/verification/systematization/primitive-interfaces-review-2026-09-20.json).
 
 ## Core layout contract
 
@@ -137,7 +137,7 @@ A component can style its own box. A Grid does not require a Box around it just 
 
 ### Shared value and input contract
 
-These approved details complete the shared conventions. Package exports and public types follow the [documentation/tooling contract](SPEC-documentation-tooling.md).
+These approved details complete the shared conventions. Package exports and public types follow the [documentation/tooling contract](../SPEC-004-documentation-tooling/spec.md).
 
 | Input | Contract |
 | --- | --- |
@@ -153,7 +153,7 @@ These approved details complete the shared conventions. Package exports and publ
 | Removal | Removing a supplied input restores its absence and CSS/component default. An undefined property clears it. Empty CSS attribute values clear that style input. Empty boolean attributes mean true. |
 | Reflection | Object/array writes do not serialize back to attributes automatically. Property reads retain authored inputs, not resolved pixels or the currently active responsive branch. |
 
-**Selected reference direction:** Peter answered “whatever chakra does” for invalid styling inputs. Follow Chakra's current-input CSS processing for comparable values; the proposed last-valid-value retention policy is withdrawn. Neither blanket clearing nor whole-input rollback/diagnostics is selected. Malformed HTML JSON has no direct Chakra equivalent. The [full-set proposal](SPEC-foundations.md#responsive-layout-and-styles) now supplies a source-backed component adaptation from the installed Lit converter: malformed structured input produces no current override, preserving unrelated inputs and valid scalar CSS. It is part of the approved full-set contract, not an additional individual Peter vote. Structural validation and browser verification remain required. CSS variable resolution retains native CSS behavior. The complete pinned-source inspection is not a new runtime check. [Decision](../docs/decisions/0052-layout-spacing-properties.md#follow-chakra-for-comparable-style-inputs), [analysis](../docs/research/07-design-foundations.md#chakra-style-input-follow-up).
+**Selected reference direction:** Peter answered “whatever chakra does” for invalid styling inputs. Follow Chakra's current-input CSS processing for comparable values; the proposed last-valid-value retention policy is withdrawn. Neither blanket clearing nor whole-input rollback/diagnostics is selected. Malformed HTML JSON has no direct Chakra equivalent. The [full-set proposal](../SPEC-005-foundations/spec.md#responsive-layout-and-styles) now supplies a source-backed component adaptation from the installed Lit converter: malformed structured input produces no current override, preserving unrelated inputs and valid scalar CSS. It is part of the approved full-set contract, not an additional individual Peter vote. Structural validation and browser verification remain required. CSS variable resolution retains native CSS behavior. The complete pinned-source inspection is not a new runtime check. [Decision](../../docs/decisions/DEC-052-layout-spacing-properties.md#follow-chakra-for-comparable-style-inputs), [analysis](../../docs/research/RES-007-design-foundations.md#chakra-style-input-follow-up).
 
 ### Responsive authoring
 
@@ -178,7 +178,7 @@ The HTML converter first recognizes a property-valid scalar, then validates JSON
 
 ### Common box properties
 
-The following is the approved 77-property table with values, targets and defaults. Peter approved it with the full inventory after previously selecting the shared scope across all six layouts. Each entry restricts display to its own modes. [Scope decision](../docs/decisions/0052-layout-spacing-properties.md#shared-styling-across-layout-components), [whole-set approval](../docs/decisions/0049-inventory-approval.md). Spacing/size token values come from C-SPACE/C-SIZE; no new numeric scale is added.
+The following is the approved 77-property table with values, targets and defaults. Peter approved it with the full inventory after previously selecting the shared scope across all six layouts. Each entry restricts display to its own modes. [Scope decision](../../docs/decisions/DEC-052-layout-spacing-properties.md#shared-styling-across-layout-components), [whole-set approval](../../docs/decisions/DEC-049-inventory-approval.md). Spacing/size token values come from C-SPACE/C-SIZE; no new numeric scale is added.
 
 #### Property table
 
@@ -215,7 +215,7 @@ Host box-sizing is border-box. Author CSS remains available for less common rule
 
 ### Semantics, state, events and lifecycle
 
-**Selected:** Flex, Stack/HStack/VStack, Grid, Simple Grid and Group share Box's nine structural as values, with div default. Peter selected this extension, supported by Pro's Stack as="article" and semantic Box page regions. [Decision](../docs/decisions/0001-additional-component-capabilities.md#shared-structural-tags-for-layout-components). Choosing span requires valid phrasing content; it is not a way to put arbitrary blocks inside paragraphs. Semantic tag changes do not change a layout entry's flex/grid arrangement.
+**Selected:** Flex, Stack/HStack/VStack, Grid, Simple Grid and Group share Box's nine structural as values, with div default. Peter selected this extension, supported by Pro's Stack as="article" and semantic Box page regions. [Decision](../../docs/decisions/DEC-001-additional-component-capabilities.md#shared-structural-tags-for-layout-components). Choosing span requires valid phrasing content; it is not a way to put arbitrary blocks inside paragraphs. Semantic tag changes do not change a layout entry's flex/grid arrangement.
 
 Standard aria-label/labelledby/describedby and an explicit role describe the native root, without a second named host role. Keep id, class, style, slot and data-* on the host; id remains the page's fragment/host reference. lang and dir preserve native inheritance through the root. hidden hides the entire component; inert retains native subtree behavior. These layout entries add no tab stop or click/keyboard behavior. External ID references and supported element-reference properties require cross-shadow verification; do not promise that copying an attribute string solves it.
 
@@ -260,7 +260,7 @@ html`<acme-box ${styleInputs({
 
 The selected helper rules apply: only supplied keys are managed, removed keys clear, unrelated settings remain, and each parent/helper render reasserts its current inputs. Keep the expression present and send styleInputs({}) to clear its remaining owned inputs. Expression removal or disconnection alone preserves canonical styles. Ownership tracking prevents an older helper from clearing a newer helper's inputs. Mixed overlapping writers are unsupported authoring; group overlapping settings into this single input. Preserve the previously tested immediate direct-write/next-render reassertion behavior.
 
-**Resolved 2026-09-21:** Peter selected [explicit empty-helper clearing](../docs/decisions/0052-layout-spacing-properties.md#explicit-clearing-for-the-style-helper). This replaces automatic expression-removal cleanup following the [three-engine reproduction](../docs/verification/systematization/m05-style-helper-lifecycle-2026-09-20.json). The rest of the input/ownership/order contract stands.
+**Resolved 2026-09-21:** Peter selected [explicit empty-helper clearing](../../docs/decisions/DEC-052-layout-spacing-properties.md#explicit-clearing-for-the-style-helper). This replaces automatic expression-removal cleanup following the [three-engine reproduction](../../docs/verification/systematization/m05-style-helper-lifecycle-2026-09-20.json). The rest of the input/ownership/order contract stands.
 
 React wraps the same Lit components and supplies ordinary properties in declaration order:
 
@@ -279,7 +279,7 @@ The React order-synchronization work is part of the wrapper contract; plain @lit
 
 ## L-01: Box
 
-**Implemented in M07.** [Evidence](../docs/verification/systematization/m07-box-2026-09-21.json). Tag acme-box; React Box. Inclusion, the nine as tags, default tag/display, parent placement and token/CSS surface values are already selected. The [common contract](#common-box-properties) supplies every property/type/default/target, responsive input, native attribute, slot, part and lifecycle rule.
+**Implemented in M07.** [Evidence](../../docs/verification/systematization/m07-box-2026-09-21.json). Tag acme-box; React Box. Inclusion, the nine as tags, default tag/display, parent placement and token/CSS surface values are already selected. The [common contract](#common-box-properties) supplies every property/type/default/target, responsive input, native attribute, slot, part and lifecycle rule.
 
 Box supplies a semantic container and its own surface. It does not arrange children with flex/grid, substitute for Card's content contract, or own interaction.
 
@@ -289,13 +289,13 @@ Box supplies a semantic container and its own surface. It does not arrange child
 | display | Responsive none, inline, inline-block or block; CSS default inline for span and block otherwise |
 | responsiveTarget, responsiveContainer | Shared target contract; window and undefined |
 
-No additional properties, named slots, events, methods or component states. part="root" identifies the native semantic element. The host owns the common box styling. Source [Box decision](../docs/decisions/0009-box-primitive.md), [reference/local comparison](../docs/research/07-design-foundations.md#box-primitive) and [candidate evidence](../docs/verification/systematization/box-contract-review-2026-09-20.json) remain the basis.
+No additional properties, named slots, events, methods or component states. part="root" identifies the native semantic element. The host owns the common box styling. Source [Box decision](../../docs/decisions/DEC-009-box-primitive.md), [reference/local comparison](../../docs/research/RES-007-design-foundations.md#box-primitive) and [candidate evidence](../../docs/verification/systematization/box-contract-review-2026-09-20.json) remain the basis.
 
 **Acceptance:** inline phrasing wraps across lines; block/inline-block sizing; fixed/min/max dimensions; overflow and positioned descendants; all logical edges in RTL; ordinary and responsive parent Grid/Flex placement; name/role forwarding without duplicates; equivalent HTML/Lit/React results. Confirm zero, theme changes, removal, pre-upgrade inputs and reconnect. An inner span tag alone is not evidence that the two-box inline layout works.
 
 ## L-02: Stack family
 
-**Implemented in M07.** [Evidence](../docs/verification/systematization/m07-stack-2026-09-21.json). Tags acme-stack, acme-h-stack, acme-v-stack; React Stack, HStack, VStack. All use the common contract. They arrange children with shared spacing. Group retains attachment/default propagation; Stack owns no selection, form or keyboard state.
+**Implemented in M07.** [Evidence](../../docs/verification/systematization/m07-stack-2026-09-21.json). Tags acme-stack, acme-h-stack, acme-v-stack; React Stack, HStack, VStack. All use the common contract. They arrange children with shared spacing. Group retains attachment/default propagation; Stack owns no selection, form or keyboard state.
 
 | Additional/restricted input | Type | Visual/component default |
 | --- | --- | --- |
@@ -323,11 +323,11 @@ Eligible automatic-divider members are direct assigned element children with ren
 </acme-h-stack>
 ```
 
-**Acceptance:** the shared cases plus all three forms, reverse/RTL, unequal sizes, wrapping in either axis, rowGap/columnGap, zero gap, hidden members, insertion/removal/reordering and font/width changes. Verify no orphan dividers, unchanged child identity/events, decorative accessibility and no extra focus stops. The existing wrap probe proves the reference defect, not the correction. The linked M07 evidence records implementation checks. [Decision](../docs/decisions/0098-stack-layout.md), [source review](../docs/research/07-design-foundations.md#spacing-scale-and-separator-follow-up).
+**Acceptance:** the shared cases plus all three forms, reverse/RTL, unequal sizes, wrapping in either axis, rowGap/columnGap, zero gap, hidden members, insertion/removal/reordering and font/width changes. Verify no orphan dividers, unchanged child identity/events, decorative accessibility and no extra focus stops. The existing wrap probe proves the reference defect, not the correction. The linked M07 evidence records implementation checks. [Decision](../../docs/decisions/DEC-098-stack-layout.md), [source review](../../docs/research/RES-007-design-foundations.md#spacing-scale-and-separator-follow-up).
 
 ## L-03: Simple Grid
 
-**Implemented in M07.** [Evidence](../docs/verification/systematization/m07-grid-2026-09-21.json). Tag acme-simple-grid; React SimpleGrid. Uses the common contract. Column counts, minimum child widths and minimum-width precedence are selected. It lays out content, without owning data processing, selection or keyboard navigation.
+**Implemented in M07.** [Evidence](../../docs/verification/systematization/m07-grid-2026-09-21.json). Tag acme-simple-grid; React SimpleGrid. Uses the common contract. Column counts, minimum child widths and minimum-width precedence are selected. It lays out content, without owning data processing, selection or keyboard navigation.
 
 | Additional/restricted input | Type | Visual/component default |
 | --- | --- | --- |
@@ -341,7 +341,7 @@ Eligible automatic-divider members are direct assigned element children with ren
 
 columns and minChildWidth read undefined when omitted. Do not introduce a columns=1 override absent from the reference; ordinary unplaced children follow native implicit row-flow layout, while explicit child placement can create additional tracks. No gridTemplateColumns input competes with these modes; use Grid for manual tracks. No Grid Cell element is required; child layout primitives use their common placement properties.
 
-Follow Chakra's component-level mode choice before responsive mapping. Canonical authored minChildWidth selects minimum-width mode for the component under the later presence-based resolution below; columns does not control it at other widths. Counts produce repeat(n, minmax(0, 1fr)); minimum widths produce repeat(auto-fit, minmax(width, 1fr)). Empty tracks collapse under auto-fit. Removing the complete minChildWidth input returns to column-count mode. The [2026-09-21 implementation resolution](../docs/decisions/0051-layout-grid.md#implementation-completed--2026-09-21) makes this mode follow canonical authored minimum-input presence: skipped branches and invalid current JavaScript CSS do not revive column counts; undefined/removal restores count mode. Invalid scalar HTML follows the agreed converter and clears the override. A skipped responsive position preserves an earlier value within the chosen mode; before any value applies there is no track override from that input, not a fallback to columns. This corrects the earlier draft's unsupported per-width mode switching. [Source-defined contract](../docs/decisions/0051-layout-grid.md#source-defined-sizing-details).
+Follow Chakra's component-level mode choice before responsive mapping. Canonical authored minChildWidth selects minimum-width mode for the component under the later presence-based resolution below; columns does not control it at other widths. Counts produce repeat(n, minmax(0, 1fr)); minimum widths produce repeat(auto-fit, minmax(width, 1fr)). Empty tracks collapse under auto-fit. Removing the complete minChildWidth input returns to column-count mode. The [2026-09-21 implementation resolution](../../docs/decisions/DEC-051-layout-grid.md#implementation-completed--2026-09-21) makes this mode follow canonical authored minimum-input presence: skipped branches and invalid current JavaScript CSS do not revive column counts; undefined/removal restores count mode. Invalid scalar HTML follows the agreed converter and clears the override. A skipped responsive position preserves an earlier value within the chosen mode; before any value applies there is no track override from that input, not a fallback to columns. This corrects the earlier draft's unsupported per-width mode switching. [Source-defined contract](../../docs/decisions/DEC-051-layout-grid.md#source-defined-sizing-details).
 
 The numeric zero case is an explicit approved normalization: preserve the selected zero size token and test for supplied valid input, not JavaScript truthiness. Chakra's raw numeric 0 and CSS string "0px" take different branches; do not describe Simple Grid's consistent zero treatment as byte-for-byte source behavior. Column count 0 remains invalid. Zero-minimum track behavior requires verification.
 
@@ -357,11 +357,11 @@ The numeric zero case is an explicit approved normalization: preserve the select
 </acme-simple-grid>
 ```
 
-Public parts/slots/events are the shared root/default/none. **Acceptance:** both modes separately/together, transitions/removal, 1 and large counts, invalid zero/non-integer column counts, explicit zero minimum width, fewer items than tracks, empty content, named grid lines in other CSS inputs, narrow containers, intrinsic overflow, RTL and dynamic children. [Decision](../docs/decisions/0051-layout-grid.md#simple-grid-sizing-modes), [reference](../docs/research/07-design-foundations.md#simple-grid-sizing-modes).
+Public parts/slots/events are the shared root/default/none. **Acceptance:** both modes separately/together, transitions/removal, 1 and large counts, invalid zero/non-integer column counts, explicit zero minimum width, fewer items than tracks, empty content, named grid lines in other CSS inputs, narrow containers, intrinsic overflow, RTL and dynamic children. [Decision](../../docs/decisions/DEC-051-layout-grid.md#simple-grid-sizing-modes), [reference](../../docs/research/RES-007-design-foundations.md#simple-grid-sizing-modes).
 
 ## L-04: Flex
 
-**Implemented in M07.** [Evidence](../docs/verification/systematization/m07-flex-2026-09-21.json). Tag acme-flex; React Flex. Uses the common contract. It is the direct flex-layout option without Stack separators/default gap or Group appearance behavior.
+**Implemented in M07.** [Evidence](../../docs/verification/systematization/m07-flex-2026-09-21.json). Tag acme-flex; React Flex. Uses the common contract. It is the direct flex-layout option without Stack separators/default gap or Group appearance behavior.
 
 | Additional/restricted input | Type | Visual/component default |
 | --- | --- | --- |
@@ -385,7 +385,7 @@ Shared root/default-slot/no-event contract applies. **Acceptance:** main/cross a
 
 ## L-05: Grid
 
-**Implemented in M07.** [Evidence](../docs/verification/systematization/m07-grid-2026-09-21.json). Tag acme-grid; React Grid. Uses the common contract. It exposes native track and alignment concepts. The removed decorative Grid/Cell/Cross/System/Page family does not return.
+**Implemented in M07.** [Evidence](../../docs/verification/systematization/m07-grid-2026-09-21.json). Tag acme-grid; React Grid. Uses the common contract. It exposes native track and alignment concepts. The removed decorative Grid/Cell/Cross/System/Page family does not return.
 
 | Additional/restricted input | Type | Visual/component default |
 | --- | --- | --- |
@@ -402,11 +402,11 @@ Named lines and areas are authored as ordinary CSS strings. Grid supplies no num
 
 The shared page example demonstrates Grid plus Box/Stack. For a named region, use a child Box grid-area="content". Visual order never changes DOM reading/tab order; documentation must show meaningful source order. There are no row/cell parts or data-table semantics.
 
-Shared root/default-slot/no-event contract applies. **Acceptance:** tracks/areas, bracketed scalar CSS, implicit rows/columns, placement/span, auto flow including dense, intrinsic/percentage sizing, RTL, overflow and responsive changes; check host/root effects and reading order. [Grid decision](../docs/decisions/0051-layout-grid.md), [Chakra source](https://github.com/chakra-ui/chakra-ui/blob/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/grid/grid.tsx), [Radix props](https://github.com/radix-ui/themes/blob/1faff10ac26ae17f09944d418c6949b93fc6b566/packages/radix-ui-themes/src/components/grid.props.tsx).
+Shared root/default-slot/no-event contract applies. **Acceptance:** tracks/areas, bracketed scalar CSS, implicit rows/columns, placement/span, auto flow including dense, intrinsic/percentage sizing, RTL, overflow and responsive changes; check host/root effects and reading order. [Grid decision](../../docs/decisions/DEC-051-layout-grid.md), [Chakra source](https://github.com/chakra-ui/chakra-ui/blob/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/grid/grid.tsx), [Radix props](https://github.com/radix-ui/themes/blob/1faff10ac26ae17f09944d418c6949b93fc6b566/packages/radix-ui-themes/src/components/grid.props.tsx).
 
 ## G-01: Group
 
-**Approved design.** [M07 protocol evidence](../docs/verification/systematization/m07-group-2026-09-21.json) records the implementation boundary; later family contracts own action/card/input integration. Tag acme-group; React Group. General Group replaces ButtonGroup. It combines the common box contract with joined edges and compatible child defaults. It supplies no selected value, form submission, disabled-state owner or arrow-key manager.
+**Approved design.** [M07 protocol evidence](../../docs/verification/systematization/m07-group-2026-09-21.json) records the implementation boundary; later family contracts own action/card/input integration. Tag acme-group; React Group. General Group replaces ButtonGroup. It combines the common box contract with joined edges and compatible child defaults. It supplies no selected value, form submission, disabled-state owner or arrow-key manager.
 
 ### Properties and defaults
 
@@ -430,7 +430,7 @@ CSS getters retain undefined when omitted. attached forces zero inter-member gap
 
 ### Compatible defaults and membership
 
-Only size and variant are shared defaults. Explicit child values win; unsupported inherited values leave the child's own default intact and issue a development diagnostic. Invalid child appearance values remain part of the child-enum contract; the Chakra CSS-input direction does not automatically define them. The Group does not coerce a value into a different size or appearance. Nested Groups start fresh as selected; ordinary theme inheritance still crosses the boundary. Selection members also retain the [later collection fallback](../docs/decisions/0035-execution-delegation.md#logical-collection-appearance-defaults--2026-09-21): explicit member, nearest Group, applicable owning collection, then component default. Checkbox Group supplies no variant.
+Only size and variant are shared defaults. Explicit child values win; unsupported inherited values leave the child's own default intact and issue a development diagnostic. Invalid child appearance values remain part of the child-enum contract; the Chakra CSS-input direction does not automatically define them. The Group does not coerce a value into a different size or appearance. Nested Groups start fresh as selected; ordinary theme inheritance still crosses the boundary. Selection members also retain the [later collection fallback](../../docs/decisions/DEC-035-execution-delegation.md#logical-collection-appearance-defaults--2026-09-21): explicit member, nearest Group, applicable owning collection, then component default. Checkbox Group supplies no variant.
 
 This matrix and the explicit supported value subsets in the approved action/selection/input files define eligibility:
 
@@ -465,7 +465,7 @@ attached joins eligible surfaces with zero gap, removes their internal adjoining
 
 Unequal-height controls can attach, but attachment does not promise a single smooth perimeter unless their surfaces align. The default center alignment follows Chakra; use alignItems="stretch" when a composition needs matching cross-axis bounds. Wrapped attachment keeps selected member-order corners. The optional outer border encloses the entire Group, not each wrapped row.
 
-The attachment protocol addresses documented participating surfaces, not arbitrary shadow selectors. Generated component styles own normal/hover/focus/disabled/selected/error seams. The [later Group resolution](../docs/decisions/0045-group-presentation.md#foundation-implementation--2026-09-21) supplies the actual --r radius token used above. Representative visuals must establish the precise corner/seam treatment; these prose outcomes do not constitute rendered verification.
+The attachment protocol addresses documented participating surfaces, not arbitrary shadow selectors. Generated component styles own normal/hover/focus/disabled/selected/error seams. The [later Group resolution](../../docs/decisions/DEC-045-group-presentation.md#foundation-implementation--2026-09-21) supplies the actual --r radius token used above. Representative visuals must establish the precise corner/seam treatment; these prose outcomes do not constitute rendered verification.
 
 ### Composition examples and boundaries
 
@@ -516,4 +516,4 @@ Verify Button/Icon Button, Radio Cards, Checkbox Cards, outlined single-selectio
 
 Group's property/ownership contract and R04–R06 compatibility subsets are approved. Common host/semantics checks and actual visual/behavior verification remain required before implementation acceptance.
 
-Sources: [Group decision](../docs/decisions/0045-group-presentation.md), [complete Chakra/Pro review](../docs/research/06-codebase-systematization.md#comprehensive-chakra-group-review), [review ledger](../docs/verification/systematization/group-review-2026-09-19.json), [Toolbar split](../docs/decisions/0112-toolbar-group-responsibilities.md), [indicator](../docs/decisions/0097-shared-selection-indicator.md), [source follow-up](../docs/research/07-design-foundations.md#core-layout-contract-proposal).
+Sources: [Group decision](../../docs/decisions/DEC-045-group-presentation.md), [complete Chakra/Pro review](../../docs/research/RES-006-codebase-systematization.md#comprehensive-chakra-group-review), [review ledger](../../docs/verification/systematization/group-review-2026-09-19.json), [Toolbar split](../../docs/decisions/DEC-112-toolbar-group-responsibilities.md), [indicator](../../docs/decisions/DEC-097-shared-selection-indicator.md), [source follow-up](../../docs/research/RES-007-design-foundations.md#core-layout-contract-proposal).

@@ -14,4 +14,4 @@ Peter selected authoring support only after the distinction was explained with t
 
 The AG Grid schema-builder investigation remains research evidence. It does not authorize model calls, application-data transfer, or a second declarative UI representation.
 
-Evidence: [AI Toolkit review](../research/01-agent-tooling.md#ag-grid-ai-toolkit).
+Evidence: [AI Toolkit review](../research/RES-001-agent-tooling.md#ag-grid-ai-toolkit).

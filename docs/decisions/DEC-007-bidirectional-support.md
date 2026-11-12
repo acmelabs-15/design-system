@@ -14,6 +14,6 @@ Direction must affect behaviour as well as alignment. Preserve relevant exceptio
 
 Exact direction propagation, dynamic changes, icon metadata, locale-specific exceptions and per-component keyboard rules were left for later design reviews. Verify nested directions and actual interaction in Chromium, Firefox and WebKit before claiming complete support.
 
-Evidence: [direction analysis](../research/07-design-foundations.md#right-to-left-support).
+Evidence: [direction analysis](../research/RES-007-design-foundations.md#right-to-left-support).
 
-The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.
+The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../specs/SPEC-003-design-system/spec.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.

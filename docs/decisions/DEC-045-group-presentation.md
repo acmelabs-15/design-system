@@ -12,7 +12,7 @@ Decided 2026-09-19 by Peter.
 
 The comparison matters: Chakra's generic Group joins and positions children, while ButtonGroup adds shared Button recipe defaults. Our broader Group is a deliberate design direction, not a claim that Chakra Group already supplies all family defaults. A smaller interface count alone is not the rationale; one predictable authoring pattern and shared implementation are.
 
-Peter requests attached presentation for Radio Cards and Checkbox Cards. Suitable single-selection patterns can reuse the [shared active-indicator component](0097-shared-selection-indicator.md), with Lit Motion inside that component. Checkbox and other multiple-selection patterns do not use a single travelling indicator. Controls retain selected values, form participation and their appropriate keyboard behaviour; Toolbar coordinates nested controls when applicable.
+Peter requests attached presentation for Radio Cards and Checkbox Cards. Suitable single-selection patterns can reuse the [shared active-indicator component](DEC-097-shared-selection-indicator.md), with Lit Motion inside that component. Checkbox and other multiple-selection patterns do not use a single travelling indicator. Controls retain selected values, form participation and their appropriate keyboard behaviour; Toolbar coordinates nested controls when applicable.
 
 ## Visual directions to evaluate in the inventory
 
@@ -26,7 +26,7 @@ Specify compatible children, themes, explicit overrides, dynamic/hidden/reordere
 
 Other specialised groups are reviewed individually. This decision does not remove selection/disclosure behaviour, member-count logic or semantic lists merely because their names contain Group.
 
-Evidence: [complete Group comparison](../research/06-codebase-systematization.md#comprehensive-chakra-group-review), [coverage and choices](../verification/systematization/group-review-2026-09-19.json). The initial selection did not approve exact interfaces or implementation.
+Evidence: [complete Group comparison](../research/RES-006-codebase-systematization.md#comprehensive-chakra-group-review), [coverage and choices](../verification/systematization/group-review-2026-09-19.json). The initial selection did not approve exact interfaces or implementation.
 
 ## Ordinary layout and Tags
 
@@ -34,7 +34,7 @@ Peter clarified that Stack, HStack and VStack should be used where Group-specifi
 
 Peter selected “Use Group” to remove the Tags wrapper while retaining Tag. With the later layout clarification, the replacement example uses suitable Stack layout unless it needs Group's features. The inspected Tags supplied only wrapping/spacing; it had no selection or count owner. List remains responsible for list semantics, and Card for a surrounding surface. [Closure choices](../verification/systematization/phase-2-closure-2026-09-19.json).
 
-The [Stack-family decision](0098-stack-layout.md) now selects gap token 2 and fixed directions for HStack/VStack, with general Stack handling responsive direction. This does not select Group's own unattached gap or change attached edge rules.
+The [Stack-family decision](DEC-098-stack-layout.md) now selects gap token 2 and fixed directions for HStack/VStack, with general Stack handling responsive direction. This does not select Group's own unattached gap or change attached edge rules.
 
 ## Phase 4 wrapping and nested defaults
 
@@ -42,7 +42,7 @@ Peter answered “Align with what chakra does” for attached wrapping. The comp
 
 Peter again chose Chakra's behaviour for nested appearance defaults. Each nested Group supplies a fresh set of compatible defaults. Unspecified settings use the component defaults, rather than merge the outer Group's defaults. Explicit child settings still override them. CSS theme inheritance is a separate contract and remains unchanged.
 
-The later [Stack separator choice](0098-stack-layout.md#separator-spacing-and-wrapped-lines) makes automatic Stack dividers follow visible rows/columns. It does not revise this Group decision: attached corners still follow member order, without per-wrapped-row correction. Review the two presentation contracts separately when composing them.
+The later [Stack separator choice](DEC-098-stack-layout.md#separator-spacing-and-wrapped-lines) makes automatic Stack dividers follow visible rows/columns. It does not revise this Group decision: attached corners still follow member order, without per-wrapped-row correction. Review the two presentation contracts separately when composing them.
 
 Sources: [Group implementation](https://github.com/chakra-ui/chakra-ui/blob/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/group/group.tsx), [ButtonGroup provider](https://github.com/chakra-ui/chakra-ui/blob/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/button/button-group.tsx), [choice record](../verification/systematization/phase-4-checkpoint-2026-09-19.json). These choices did not approve the entire Group inventory entry or source implementation at that time.
 
@@ -52,4 +52,4 @@ The complete inventory and migration were approved on 2026-09-20. Group's layout
 
 At that checkpoint, M09–M11 still owned real action/card/input participation and paint/focus checks. The native-control protocol fixture does not certify those unmodified families. The shared indicator remains owned by the later single-selection family; this Group foundation introduces no selected value or keyboard manager. ButtonGroup is removed outright. The actual radius token is --r, so it supplies the outline default rather than the proposal's nonexistent --acme-radius token.
 
-The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.
+The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../specs/SPEC-003-design-system/spec.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.

@@ -12,7 +12,7 @@ Decided 2026-09-21 by Peter.
 
 Peter instructed: “No more questions. Just do all the things that you would recommend doing when you have a question. I just want you to finish.” Within that pass, agents selected and recorded the best evidence-supported implementation, interface and package choices. The grant replaced its question/approval pauses while retaining approved scope, investigation, records, review and full acceptance. A subtask or passing prototype did not complete that migration.
 
-The immediate application was the recommended @lit/context dependency for theme discovery and subscription transport. TanStack remains the canonical state owner. See [theme architecture](0109-theme-resolution-architecture.md).
+The immediate application was the recommended @lit/context dependency for theme discovery and subscription transport. TanStack remains the canonical state owner. See [theme architecture](DEC-109-theme-resolution-architecture.md).
 
 ## Default-true property attributes — 2026-09-21
 
@@ -48,7 +48,7 @@ Avatar uses native image loading with a separate loaded/error state and source-g
 
 Avatar Group shows all real members when they fit, reserves one bounded slot for overflow when needed, and renders extra-only one as +1. limit=0 shows all supplied members. Count messages use avatarGroup.more plus the locale's plural category (for example avatarGroup.more.one and avatarGroup.more.other), with {count} substitution. Keyed immutable records preserve identity. Count surfaces retain dark black/white contrast through the corresponding theme tokens without resetting every color in the subtree.
 
-Tag's existing 20px treatment is medium; small/large use 16/24px passive-label geometry with 6/10px inline padding. Badge/Pill retain 20/24/32px tiers. These passive sizes do not set the target size for action controls; removable Tag examples compose an explicitly named Icon Button. [Implementation analysis](../research/06-codebase-systematization.md#m09-identity-implementation-review--2026-09-21).
+Tag's existing 20px treatment is medium; small/large use 16/24px passive-label geometry with 6/10px inline padding. Badge/Pill retain 20/24/32px tiers. These passive sizes do not set the target size for action controls; removable Tag examples compose an explicitly named Icon Button. [Implementation analysis](../research/RES-006-codebase-systematization.md#m09-identity-implementation-review--2026-09-21).
 
 ## Selection card action region — 2026-09-21
 
@@ -96,17 +96,17 @@ Use public element references where their scope is valid and retain scoped text 
 
 The selected implementation retains raw string reset defaults separately from browser-sanitized current values. Preserve native event meanings and native textarea hard-wrap serialization. Bridge the native input's implicit submit action to the outer form using its default submitter, including cancellation and disabled-default behavior.
 
-Expose all four approved affix slots together rather than discarding inside content when an outside add-on is present. This replaces the earlier one-cell precedence implementation in the [input affix decision](0047-input-affix-api.md). Each outside action retains its own focus; Group still owns sibling attachment. The visible control boundary uses gray-700, following the selection-family contrast correction; final rendered contrast remained an acceptance requirement. Search and Password Input reuse the single-line implementation with fixed native types. Clearable Input is removed; Input owns clearable behavior. [Implementation analysis](../research/15-lit-practice-review.md#m11-text-control-implementation--2026-09-22).
+Expose all four approved affix slots together rather than discarding inside content when an outside add-on is present. This replaces the earlier one-cell precedence implementation in the [input affix decision](DEC-047-input-affix-api.md). Each outside action retains its own focus; Group still owns sibling attachment. The visible control boundary uses gray-700, following the selection-family contrast correction; final rendered contrast remained an acceptance requirement. Search and Password Input reuse the single-line implementation with fixed native types. Clearable Input is removed; Input owns clearable behavior. [Implementation analysis](../research/RES-015-lit-practice-review.md#m11-text-control-implementation--2026-09-22).
 
 ## Number Input format and action boundaries — 2026-09-22
 
-Number Input formatOptions uses Intl options with notation limited to standard. The selected Adobe parser and Adobe's own NumberField do not support reliable compact/scientific/engineering input parsing; local probes demonstrate wrong numeric results. Reject those options before changing state. Keep the full display-only Format Number API. This replaces the broader notation allowance implied by the inventory's original Intl.NumberFormatOptions type. [Evidence and source](../research/16-package-choices.md#m12-port-preparation--2026-09-22).
+Number Input formatOptions uses Intl options with notation limited to standard. The selected Adobe parser and Adobe's own NumberField do not support reliable compact/scientific/engineering input parsing; local probes demonstrate wrong numeric results. Reject those options before changing state. Keep the full display-only Format Number API. This replaces the broader notation allowance implied by the inventory's original Intl.NumberFormatOptions type. [Evidence and source](../research/RES-016-package-choices.md#m12-port-preparation--2026-09-22).
 
 Optional increment/decrement parts bind to the nearest Number Input through the installed Lit context mechanism and read its TanStack state. The root supplies both actions when no custom control content is supplied. Authors who supply that content include the actions they need. Parts retain authored appearance, followed by Group defaults and then numeric-control defaults. A part outside a Number Input is disabled; moving a part transfers its owner.
 
 ## Menu navigation policy — 2026-09-22
 
-Disabled menu actions remain reachable by arrow navigation and typeahead, but cannot activate or follow links. This meets the approved disabled-discovery requirement and current Material/APG guidance. Material Web's contrary skip-disabled implementation is not copied. Native Tab leaves the menu; Escape closes the topmost menu and returns focus. Each menu owns only its immediate collection, including items in its sections and excluding nested menu collections. [Full review and source boundaries](../research/06-codebase-systematization.md#m13-menu-reference-review--2026-09-22).
+Disabled menu actions remain reachable by arrow navigation and typeahead, but cannot activate or follow links. This meets the approved disabled-discovery requirement and current Material/APG guidance. Material Web's contrary skip-disabled implementation is not copied. Native Tab leaves the menu; Escape closes the topmost menu and returns focus. Each menu owns only its immediate collection, including items in its sections and excluding nested menu collections. [Full review and source boundaries](../research/RES-006-codebase-systematization.md#m13-menu-reference-review--2026-09-22).
 
 ## Menu composition and completion — 2026-09-22
 
@@ -156,4 +156,4 @@ The selected implementation uses side=all|inline|block|inline-start|inline-end|b
 
 Each handle resizes its two adjacent panes. Other panes and their independent collapsed state stay fixed. This keeps the handle's value/range tied to its primary pane, as the [APG window-splitter pattern](https://www.w3.org/WAI/ARIA/apg/patterns/windowsplitter/) describes. The inspected Zag algorithm can propagate resizing to more distant panes; that behavior is not adopted because the primary-pane value can stay unchanged while the separator moves. Conflicting adjacent limits clamp resizing or reject collapse/expansion with a diagnostic. Initial/full-layout normalization can redistribute all shares within valid bounds. Pointer and keyboard reopening use the same previous-size restore operation; a collapse during one gesture remembers its last committed open size.
 
-The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.
+The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../specs/SPEC-003-design-system/spec.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.

@@ -1,6 +1,6 @@
 # Component library
 
-The reusable elements and documented arrangements that give artifacts a consistent design language. Related tooling terms live in the context linked from [the context map](CONTEXT-MAP.md).
+The reusable elements and documented arrangements that give artifacts a consistent design language. Related tooling terms live in the context linked from [the context map](GLOSSARY-MAP.md).
 
 ## Language
 

@@ -4,7 +4,7 @@ Read this guide when applicable component work needs a reference comparison or s
 
 ## Select the relevant evidence
 
-The [reference-systems decision](../decisions/0082-reference-systems.md) is the authority for these assignments and their extensions.
+The [reference-systems decision](../decisions/DEC-082-reference-systems.md) is the authority for these assignments and their extensions.
 
 Use the current implementation together with the applicable authoritative source evidence when making a recommendation. Identify discrepancies before treating either as the selected contract.
 
@@ -16,7 +16,7 @@ Use the current implementation together with the applicable authoritative source
 | Material Web | Actual Lit implementation, layout and build comparisons where an implementation exists |
 | Chakra UI Pro blocks and supplied kits | Complete compositions and additional evidence for relevant comparisons |
 
-Whenever a review considers Radix, Chakra, Material guidance or Material Web, also consult relevant Chakra Pro evidence. Search the recorded collection by capability as well as component name. Record the complete examples inspected. If none supplies relevant evidence, state that limit. The [collection review](../research/21-chakra-pro-collection.md) records the completed full review and searchable source location.
+Whenever a review considers Radix, Chakra, Material guidance or Material Web, also consult relevant Chakra Pro evidence. Search the recorded collection by capability as well as component name. Record the complete examples inspected. If none supplies relevant evidence, state that limit. The [collection review](../research/RES-021-chakra-pro-collection.md) records the completed full review and searchable source location.
 
 Pro examples and kits are additional sources, not an implementation checklist. A listed package, backend, visual treatment or placeholder does not select a capability. Material extensions likewise do not select every Material visual detail or the full shape catalogue. Compare value, implementation and compatibility with the existing decisions.
 

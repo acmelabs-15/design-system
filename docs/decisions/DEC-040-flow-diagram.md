@@ -26,6 +26,6 @@ ELK can rearrange other nodes when content changes. It is not a general fixed-po
 
 Exact public parts/data contract, graph scale, node-size policies, ordering/stability, accessible relationships, viewport controls, nested groups, exports and layout overrides were still architecture/inventory work at selection time. Acceptance required Chromium, Firefox and WebKit verification; this initial selection did not approve the complete implementation.
 
-Evidence: [package comparison](../research/16-package-choices.md#flow-diagram-library-review), [composition dependencies](../research/06-codebase-systematization.md#flow-diagram-capability-and-dependencies), [research and probe record](../verification/systematization/flow-diagram-review-2026-09-19.json).
+Evidence: [package comparison](../research/RES-016-package-choices.md#flow-diagram-library-review), [composition dependencies](../research/RES-006-codebase-systematization.md#flow-diagram-capability-and-dependencies), [research and probe record](../verification/systematization/flow-diagram-review-2026-09-19.json).
 
-The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.
+The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../specs/SPEC-003-design-system/spec.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.

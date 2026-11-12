@@ -6,15 +6,15 @@ decided: 2026-10-21
 ---
 # Give stacks shared spacing and clear directions
 
-Stack, HStack and VStack default to spacing token 2. The [2026-09-20 spacing decision](0052-layout-spacing-properties.md#font-relative-spacing) sets its default to 0.5rem, equivalent to 8px at a 16px root font. The source still used 8px at that decision checkpoint. Authors can override gap, including zero. The default follows root-font, theme and density settings rather than freezing a literal 8px value.
+Stack, HStack and VStack default to spacing token 2. The [2026-09-20 spacing decision](DEC-052-layout-spacing-properties.md#font-relative-spacing) sets its default to 0.5rem, equivalent to 8px at a 16px root font. The source still used 8px at that decision checkpoint. Authors can override gap, including zero. The default follows root-font, theme and density settings rather than freezing a literal 8px value.
 
 Decided 2026-09-19 by Peter.
 
-This is the visual default. Under Peter's later [omitted styling input rule](0052-layout-spacing-properties.md#omitted-styling-inputs-and-visual-defaults), an unset gap property reads undefined; CSS supplies step 2. Explicit gap values read back as supplied. Apply the same distinction to CSS styling inputs such as alignItems; semantic capabilities retain their own contracts. The default/override probe covers two padding properties, not the final Stack/separator implementation.
+This is the visual default. Under Peter's later [omitted styling input rule](DEC-052-layout-spacing-properties.md#omitted-styling-inputs-and-visual-defaults), an unset gap property reads undefined; CSS supplies step 2. Explicit gap values read back as supplied. Apply the same distinction to CSS styling inputs such as alignItems; semantic capabilities retain their own contracts. The default/override probe covers two padding properties, not the final Stack/separator implementation.
 
-HStack and VStack keep their named horizontal and vertical directions in their component interfaces. Use general Stack when direction changes responsively. This is the component property contract, not a claim that consumer CSS cannot override layout. Exact shared properties, remaining defaults and tag spellings belong to the later [layout contract](../../spec/SPEC-layout.md).
+HStack and VStack keep their named horizontal and vertical directions in their component interfaces. Use general Stack when direction changes responsively. This is the component property contract, not a claim that consumer CSS cannot override layout. Exact shared properties, remaining defaults and tag spellings belong to the later [layout contract](../../specs/SPEC-007-layout/spec.md).
 
-Chakra Stack uses a 0.5rem default gap; its named wrappers explicitly supply row/column, although its broad CSS props offer another override path. Peter selected the clearer fixed-direction interface for the named stacks. Pro source usage and the inspected implementation are recorded in the [contract checkpoint](../verification/systematization/layout-contract-review-2026-09-19.json). Stack-family inclusion and its distinction from Group remain the [earlier decision](0045-group-presentation.md#ordinary-layout-and-tags).
+Chakra Stack uses a 0.5rem default gap; its named wrappers explicitly supply row/column, although its broad CSS props offer another override path. Peter selected the clearer fixed-direction interface for the named stacks. Pro source usage and the inspected implementation are recorded in the [contract checkpoint](../verification/systematization/layout-contract-review-2026-09-19.json). Stack-family inclusion and its distinction from Group remain the [earlier decision](DEC-045-group-presentation.md#ordinary-layout-and-tags).
 
 ## Alignment and separators
 
@@ -36,4 +36,4 @@ A standalone Chromium reproduction of the inspected reference layout left divide
 
 The [implemented family and checks](../verification/systematization/m07-stack-2026-09-21.json) preserve the approved direction, gap, density and line-aware behavior. Automatic members are normal-flow assigned elements with boxes; absolute/fixed content retains native positioning outside the flex sequence. Non-wrapping separators stretch across the content box. Wrapped separators use their own visible member row/column bounds and do not extend across another line. The actual Separator primitive supplies the line and its public part.
 
-These are implementation resolutions under Peter's [delegation](0035-execution-delegation.md), not new preference votes. Default gaps use the existing compact-eligible spacing role; explicit spacing remains authored. No Material spacing values are substituted. The exact behavior, reference-source reads and remaining limits are in the evidence above.
+These are implementation resolutions under Peter's [delegation](DEC-035-execution-delegation.md), not new preference votes. Default gaps use the existing compact-eligible spacing role; explicit spacing remains authored. No Material spacing values are substituted. The exact behavior, reference-source reads and remaining limits are in the evidence above.

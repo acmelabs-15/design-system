@@ -6,7 +6,7 @@ decided: 2026-10-21
 ---
 # Use Material Symbols SVG artwork
 
-Use Google's current Material Symbols collection as actual SVG artwork, with one element per icon as [already selected](0046-icon-element-shape.md). Support the Outlined, Rounded and Sharp families, using Google's official filled and unfilled artwork. Do not use an icon font. Two-tone is omitted; the plan does not require drawing our own filled versions.
+Use Google's current Material Symbols collection as actual SVG artwork, with one element per icon as [already selected](DEC-046-icon-element-shape.md). Support the Outlined, Rounded and Sharp families, using Google's official filled and unfilled artwork. Do not use an icon font. Two-tone is omitted; the plan does not require drawing our own filled versions.
 
 Decided 2026-09-19 by Peter.
 
@@ -18,7 +18,7 @@ Peter first considered classic Material Icons plus selected newer Symbols and cu
 
 Google publishes the artwork under Apache-2.0; retain the required licence and notices. Replacements of existing glyphs are named visual deviations. Verify required artwork, size, visual weight, accessibility and both themes before implementation acceptance. The Home SVG files were inspected across all three families and both fill states; that sample does not establish complete catalog coverage or final bundle costs.
 
-Evidence: [icon investigation and SVG source links](../research/14-icon-library.md#material-svg-investigation-and-peters-selection), [Google's collection comparison](https://github.com/google/material-design-icons#material-symbols), and [Material Symbols guide](https://developers.google.com/fonts/docs/material_symbols). The historical Phase 5 gate is retired.
+Evidence: [icon investigation and SVG source links](../research/RES-014-icon-library.md#material-svg-investigation-and-peters-selection), [Google's collection comparison](https://github.com/google/material-design-icons#material-symbols), and [Material Symbols guide](https://developers.google.com/fonts/docs/material_symbols). The historical Phase 5 gate is retired.
 
 ## Pinned baseline catalog — 2026-09-21
 
@@ -38,4 +38,4 @@ Registration declarations retain their class module so a definition-only import 
 
 [Delivery evidence](../verification/systematization/m09-icon-delivery-2026-09-21.json) closed these prerequisites. At that checkpoint, internal glyph replacement, Spinner, action controls and identity families remained M09 work. Split Button's Menu composition remained M13; Theme Switcher remained M10. An icon replacement required its internal consumer to stop using the earlier glyph implementation.
 
-Later records cover [glyph replacement](../verification/systematization/m09-glyph-replacement-2026-09-21.json), [Spinner and Icon Tile](../verification/systematization/m09-spinner-tile-2026-09-21.json), [actions](../verification/systematization/m09-actions-2026-09-21.json), [identity](../verification/systematization/m09-identity-2026-09-21.json), and the [actions](../../spec/SPEC-actions.md) and [selection](../../spec/SPEC-selection.md) contracts. Those records retain their own verification scope.
+Later records cover [glyph replacement](../verification/systematization/m09-glyph-replacement-2026-09-21.json), [Spinner and Icon Tile](../verification/systematization/m09-spinner-tile-2026-09-21.json), [actions](../verification/systematization/m09-actions-2026-09-21.json), [identity](../verification/systematization/m09-identity-2026-09-21.json), and the [actions](../../specs/SPEC-001-actions/spec.md) and [selection](../../specs/SPEC-013-selection/spec.md) contracts. Those records retain their own verification scope.

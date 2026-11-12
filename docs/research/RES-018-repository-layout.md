@@ -11,12 +11,12 @@ Status: historical research with dated implementation follow-ups. Converted 2026
 
 The directory, style-production and package-delivery proposals progressed to the M01–M03 and M25 implementations recorded below. Lightning CSS and generated Lit style modules were selected after the bounded comparisons. The public core manifest now belongs to packages/core; the later browser package uses the same build. The [final evidence](../verification/systematization/m26-final/README.md) records integration limits. The early single-package tree, generated docs directory and source freeze are historical.
 
-The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../STATUS.md) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
+The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../agents/workspace.md#session-state) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
 
 ## Findings and dated evidence
 
 
-Phase 1.7, researched and reviewed 2026-09-19. **Selected:** [committed generated styles under src/generated](../decisions/0044-generated-style-location.md) and [workflow-built website output excluded from Git](../decisions/0030-documentation-publishing.md). The complete tree below remains a proposal for the migration plan; no files had moved at that checkpoint. Peter subsequently selected a separate React integration package. The earlier single-package draft is superseded in that respect; site/_site and exact package paths remain proposals.
+Phase 1.7, researched and reviewed 2026-09-19. **Selected:** [committed generated styles under src/generated](../decisions/DEC-044-generated-style-location.md) and [workflow-built website output excluded from Git](../decisions/DEC-030-documentation-publishing.md). The complete tree below remains a proposal for the migration plan; no files had moved at that checkpoint. Peter subsequently selected a separate React integration package. The earlier single-package draft is superseded in that respect; site/_site and exact package paths remain proposals.
 
 ## What the code actually writes
 
@@ -112,7 +112,7 @@ The selected separation makes ownership visible in paths, addressing a problem w
 
 ## Phase 1 extension: framework packages
 
-Peter selected [a separate React integration package](../decisions/0081-react-integration.md). The earlier single-package tree is a historical proposal, superseded in that respect. At that checkpoint, exact names, paths, exports and release coordination remained unapproved.
+Peter selected [a separate React integration package](../decisions/DEC-081-react-integration.md). The earlier single-package tree is a historical proposal, superseded in that respect. At that checkpoint, exact names, paths, exports and release coordination remained unapproved.
 
 A bounded survey enumerated 25 active, public, non-fork TanStack repositories and inspected package directories plus representative core/adapter manifests: ai, charts, cli, config, db, devtools, form, highlight, hotkeys, intent, markdown, pacer, persist, query, ranger, redact, router, select, store, table, tanstack.com, template, time, virtual and workflow. This is not a claim to have audited every file or certified every adapter's release.
 
@@ -125,13 +125,13 @@ Important qualifications:
 - Time had a README but no package implementation at the inspected revision.
 - Main-branch directories, peer metadata and npm releases are separate evidence.
 
-The package-layout decision preserves one underlying component system. React-specific rendering, especially TanStack Table JSX cells, needs an explicit bridge rather than an assumed generic wrapper. [Lit practice findings](15-lit-practice-review.md#phase-1-extension-react-and-forms).
+The package-layout decision preserves one underlying component system. React-specific rendering, especially TanStack Table JSX cells, needs an explicit bridge rather than an assumed generic wrapper. [Lit practice findings](RES-015-lit-practice-review.md#phase-1-extension-react-and-forms).
 
-The completed [TanStack Config convention review](08-developer-tooling.md#tanstack-config) proposes package-artifact checks, explicit quality commands, release intent and dependency alignment. It does not select Nx, pnpm, Vite, ESLint or other new tooling. Consumer-skill/MCP and inspector packaging must be considered alongside the separate React package in the later layout review.
+The completed [TanStack Config convention review](RES-008-developer-tooling.md#tanstack-config) proposes package-artifact checks, explicit quality commands, release intent and dependency alignment. It does not select Nx, pnpm, Vite, ESLint or other new tooling. Consumer-skill/MCP and inspector packaging must be considered alongside the separate React package in the later layout review.
 
 ## Phase 3 style-production comparison
 
-**Partial research, 2026-09-19. No production model selected.** Peter requested evidence of best practices and actual community implementations before deciding between parallel CSS-derived outputs and a generated Lit-style central artifact. The [evidence/quality rule](../decisions/0034-evidence-and-implementation-quality.md) applies; the local ownership defect does not select its replacement. [Coverage snapshot](../verification/systematization/style-pipeline-comparison-2026-09-19.json).
+**Partial research, 2026-09-19. No production model selected.** Peter requested evidence of best practices and actual community implementations before deciding between parallel CSS-derived outputs and a generated Lit-style central artifact. The [evidence/quality rule](../decisions/DEC-034-evidence-and-implementation-quality.md) applies; the local ownership defect does not select its replacement. [Coverage snapshot](../verification/systematization/style-pipeline-comparison-2026-09-19.json).
 
 ### Material Web
 
@@ -161,7 +161,7 @@ The investigation then identified missing source/published-output traces and com
 
 ## Completed bounded style-pipeline comparison
 
-The follow-up source and published-artifact checks support **compiled CSS converted into generated Lit style modules** for this generator. Peter initially leaned toward it and subsequently [selected the direction](../decisions/0104-style-production.md) after this comparison. [Updated evidence and probe](../verification/systematization/style-pipeline-comparison-2026-09-19.json). The partial snapshot above records earlier coverage, superseded by this completed bounded comparison.
+The follow-up source and published-artifact checks support **compiled CSS converted into generated Lit style modules** for this generator. Peter initially leaned toward it and subsequently [selected the direction](../decisions/DEC-104-style-production.md) after this comparison. [Updated evidence and probe](../verification/systematization/style-pipeline-comparison-2026-09-19.json). The partial snapshot above records earlier coverage, superseded by this completed bounded comparison.
 
 ### Verified production paths
 
@@ -190,17 +190,17 @@ The proposed acceptance covered representative styles, exact escaping, CSS scope
 
 ### Selection after comparison
 
-Peter accepted the evidence-supported direction: compiled CSS feeds generated Lit style modules, with explicit document-style, registration and metadata output paths. [Decision](../decisions/0104-style-production.md). Earlier partial/unselected statements above record the sequence of the investigation; this selection is current. No build tool or source implementation is selected by implication.
+Peter accepted the evidence-supported direction: compiled CSS feeds generated Lit style modules, with explicit document-style, registration and metadata output paths. [Decision](../decisions/DEC-104-style-production.md). Earlier partial/unselected statements above record the sequence of the investigation; this selection is current. No build tool or source implementation is selected by implication.
 
 ## Full proposal output boundaries
 
-The [complete inventory set](../../spec/SPEC-design-system.md#complete-proposal-set) proposes native author-owned Table/List/Data List content and component-owned native Markdown prose to preserve semantics and real fragment targets. Those families require generated scoped document CSS alongside shadow-style outputs; they must not rely on a shadow stylesheet styling unrelated light-DOM descendants.
+The [complete inventory set](../../specs/SPEC-003-design-system/spec.md#complete-proposal-set) proposes native author-owned Table/List/Data List content and component-owned native Markdown prose to preserve semantics and real fragment targets. Those families require generated scoped document CSS alongside shadow-style outputs; they must not rely on a shadow stylesheet styling unrelated light-DOM descendants.
 
 This fits the selected explicit document-output direction, but it is not yet verified pipeline support. Those representative cases were assigned to the original pre-Phase-5 CSS scope/registration/selective-loading/source-map gate. The proposal does not select a new compiler, edit generated modules, import a React renderer or create a compatibility stylesheet for retired interfaces. [Family/code coverage and limits](../verification/systematization/full-proposal-review-2026-09-20.json).
 
 ### Whole-set approval and Phase 5 handoff
 
-On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/0049-inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/0064-migration-approval.md) through “approved”. At that approval checkpoint, M00 prerequisites preceded dependent implementation and production implementation had not started. Later implementation evidence below supersedes that status; approval alone was not a runtime result.
+On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/DEC-049-inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/DEC-064-migration-approval.md) through “approved”. At that approval checkpoint, M00 prerequisites preceded dependent implementation and production implementation had not started. Later implementation evidence below supersedes that status; approval alone was not a runtime result.
 
 ## M00 compiler and browser evidence, 2026-09-20
 
@@ -234,7 +234,7 @@ These checks establish representative M00 feasibility. Final generated exports, 
 
 ## Compiler selection and first migration slice
 
-Peter selected option A on 2026-09-20: Lightning CSS 1.33.0 as a build-only dependency. [Decision](../decisions/0104-style-production.md#compiler-selected-2026-09-20). The preceding candidate-status statements describe the investigation before that reply; the compiler is now selected and installed.
+Peter selected option A on 2026-09-20: Lightning CSS 1.33.0 as a build-only dependency. [Decision](../decisions/DEC-104-style-production.md#compiler-selected-2026-09-20). The preceding candidate-status statements describe the investigation before that reply; the compiler is now selected and installed.
 
 The first M01 slice moves the audited stylesheet unchanged to styles/house.css and updates split/development consumers. Development changes to the authored sheet run split before build/docs; changes to generated styles rebuild consumers without rerunning split. This avoids a regeneration loop while preserving independently regenerated styles. Two scratch-server integration tests check served output, split count and failure preservation; the old watcher fails the source-change oracle.
 
@@ -284,7 +284,7 @@ Incrementally changing a workspace dependency reproduces a Bun installer defect:
 
 The supported correction makes `packages/core/package.json` the public package manifest and the repository root a private build workspace. Runtime dependencies and public exports belong to core; build tools belong to root. The correction removed the self-override. Core, React, MCP and Devtools now use ordinary workspace dependency resolution. Source remains under src and the single generated runtime remains under dist. Generated core delivery links point only to dist, approved assets, the consumer README and generated skills; no package directory points back to the repository root. Packaging validates/dereferences only those exact delivery targets and rejects other symlinks.
 
-Thirty-one focused metadata/entry/package checks pass. A separate fresh-process installer matrix passes twenty-five assertions covering fresh and frozen installs, a child React add, MCP dependency changes in both directions and final repeated installs. All workspaces resolve the same actual dist/index.js. Full rebuild and final packed-consumer checks follow as M25/M26 gates. [Decision](../decisions/0020-core-workspace.md).
+Thirty-one focused metadata/entry/package checks pass. A separate fresh-process installer matrix passes twenty-five assertions covering fresh and frozen installs, a child React add, MCP dependency changes in both directions and final repeated installs. All workspaces resolve the same actual dist/index.js. Full rebuild and final packed-consumer checks follow as M25/M26 gates. [Decision](../decisions/DEC-020-core-workspace.md).
 
 ## Sources and limitations
 

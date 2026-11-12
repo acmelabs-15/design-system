@@ -12,6 +12,6 @@ Decided 2026-09-19 by Peter.
 
 These words do not require several competing state properties on each component. A closing animation can leave content visible after its open state changes. Native attributes such as aria-expanded keep their platform meaning.
 
-Exact root/item state shapes, controlled values and transition lifetime belong to the later [overlay/help](../../spec/SPEC-overlays-help.md) and [navigation/disclosure](../../spec/SPEC-navigation-disclosure.md) contracts. This decision supersedes the old Collapse open name for Accordion/Collapsible disclosure state.
+Exact root/item state shapes, controlled values and transition lifetime belong to the later [overlay/help](../../specs/SPEC-011-overlays-help/spec.md) and [navigation/disclosure](../../specs/SPEC-010-navigation-disclosure/spec.md) contracts. This decision supersedes the old Collapse open name for Accordion/Collapsible disclosure state.
 
 Evidence: [terminology record](../design/component-vocabulary.md#open-expanded-and-visible), [answer](../verification/systematization/phase-2-closure-2026-09-19.json).

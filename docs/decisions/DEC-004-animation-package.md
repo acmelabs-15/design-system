@@ -14,8 +14,8 @@ Lit Motion coordinates measurements with Lit updates, supports entry and exit, a
 
 The decision required standardized cancellation, completion, disconnection and reduced-motion handling. The shared implementation was not yet designed. Acceptance requires the relevant checks in Chromium, Firefox and WebKit. New evidence of a more reliable alternative can reopen the package choice.
 
-Evidence: [animation investigation](../research/02-animation-package.md), [Book decision](0065-motion-on-the-book.md), [browser coverage](0011-browser-verification.md), and [official Lit Motion documentation](https://github.com/lit/lit/tree/main/packages/labs/motion).
+Evidence: [animation investigation](../research/RES-002-animation-package.md), [Book decision](DEC-065-motion-on-the-book.md), [browser coverage](DEC-011-browser-verification.md), and [official Lit Motion documentation](https://github.com/lit/lit/tree/main/packages/labs/motion).
 
-The later [Material motion decision](0059-material-motion-system.md) selects shared spring roles and both Standard/Expressive schemes while retaining this package choice. [Shape support](0094-shape-support.md) includes abstract geometry and morphing; no geometry port was selected by this decision.
+The later [Material motion decision](DEC-059-material-motion-system.md) selects shared spring roles and both Standard/Expressive schemes while retaining this package choice. [Shape support](DEC-094-shape-support.md) includes abstract geometry and morphing; no geometry port was selected by this decision.
 
-The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.
+The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../specs/SPEC-003-design-system/spec.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.

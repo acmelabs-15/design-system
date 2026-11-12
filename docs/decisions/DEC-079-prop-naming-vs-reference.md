@@ -8,7 +8,7 @@ decided: 2026-09-09
 
 Keep variant for visual appearance and type for the HTML button type. Consistent Lit conventions take priority over literal reference property names.
 
-Raised and settled 2026-09-10. **Decided by [parity-scope.md](0077-parity-scope.md):** parity covers
+Raised and settled 2026-09-10. **Decided by [parity-scope.md](DEC-077-parity-scope.md):** parity covers
 style, behaviour and functionality, never implementation, and our API must be self-consistent and
 idiomatic for Lit first, familiar to a reference user second.
 
@@ -78,4 +78,4 @@ That retains the naming described in option 2, for a better reason than "it is m
 reference contradicts itself, we choose the name that is self-consistent and idiomatic. `variant`
 is also the reference's own majority name, so familiarity is preserved too.
 
-The naming priority lives in [parity-scope.md](0077-parity-scope.md). Its exact-parity scope was later qualified by [systematization](0105-systematization-goal.md); the explicit variant/type decision remains.
+The naming priority lives in [parity-scope.md](DEC-077-parity-scope.md). Its exact-parity scope was later qualified by [systematization](DEC-105-systematization-goal.md); the explicit variant/type decision remains.

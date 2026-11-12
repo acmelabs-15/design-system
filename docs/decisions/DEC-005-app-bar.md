@@ -14,6 +14,6 @@ App Bar supplies a page/app header; Toolbar supplies coordinated action-control 
 
 Exact parts, placement, sticky/overflow/responsive behaviour and composition with Sidebar/Toolbar remained inventory work at selection time. The migration included the docs application's Appbar consumer and Topbar's shared Shell styles.
 
-Evidence: [closure source review](../research/06-codebase-systematization.md#phase-2-closure-review), [answers](../verification/systematization/phase-2-closure-2026-09-19.json).
+Evidence: [closure source review](../research/RES-006-codebase-systematization.md#phase-2-closure-review), [answers](../verification/systematization/phase-2-closure-2026-09-19.json).
 
-The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.
+The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../specs/SPEC-003-design-system/spec.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.

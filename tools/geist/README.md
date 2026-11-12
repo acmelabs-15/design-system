@@ -2,9 +2,9 @@
 
 These build-time tools derive mapped styles from captured reference output and compare corresponding boxes in a browser. They do not own every component's styles or define its public contract. Nothing under `tools/` ships. Keep reference identity out of code, comments and JSDoc under `src/`.
 
-Read the [generation guide](../../docs/development/generation.md) and the [producer map](../../docs/agents/repository.md#generator-and-delivery-map) before changing an input. The [current specification](../../spec/README.md) and applicable decisions own the component's accepted interface and adaptations. Installed brain skills own the task workflow.
+Read the [generation guide](../../docs/development/generation.md) and the [producer map](../../docs/agents/repository.md#generator-and-delivery-map) before changing an input. The [current specification](../../docs/history/specification-index-0.3.md) and applicable decisions own the component's accepted interface and adaptations. Installed brain skills own the task workflow.
 
-Google Sans Flex and Google Sans Code remain the default fonts. [Custom themes](../../docs/decisions/0022-custom-themes.md) can override them. The [systematization goal](../../docs/decisions/0105-systematization-goal.md) replaces unconditional exact parity with named, sourced and verified differences. Each affected component records its difference in the comparison's `ACCEPTED` table or explicitly leaves that sweep. Components absent from the reference use their selected source system's published values.
+Google Sans Flex and Google Sans Code remain the default fonts. [Custom themes](../../docs/decisions/DEC-022-custom-themes.md) can override them. The [systematization goal](../../docs/decisions/DEC-105-systematization-goal.md) replaces unconditional exact parity with named, sourced and verified differences. Each affected component records its difference in the comparison's `ACCEPTED` table or explicitly leaves that sweep. Components absent from the reference use their selected source system's published values.
 
 ## Pieces
 
@@ -27,7 +27,7 @@ The file column is relative to this directory. Commands and output paths use the
 
 Run the commands below from the repository root with pinned Bun 1.4.2. Check the manifest's producer before selecting a map: authored CSS and reference-only maps have different roles. The generator skips reference-only maps and removes their stale generated style output.
 
-Consumer documentation follows the [approved page and example contract](../../spec/SPEC-documentation-tooling.md#standard-page-layout), not an exact copy of reference sections. A comparison-only state can still use an `Example` with `census: true`. It renders on `http://localhost:4180/census/<id>`, not the ordinary documentation or Markdown page. Keep paired roots in the mirror's order: page examples first, sketches after. The existing renderer includes every example on that census page. Put measurement-only setup, such as opening an overlay or setting scroll position, in the config's `prepare` script. `__census` runs it before freezing transitions. Ordinary examples retain their actual supported interactions.
+Consumer documentation follows the [approved page and example contract](../../specs/SPEC-004-documentation-tooling/spec.md#standard-page-layout), not an exact copy of reference sections. A comparison-only state can still use an `Example` with `census: true`. It renders on `http://localhost:4180/census/<id>`, not the ordinary documentation or Markdown page. Keep paired roots in the mirror's order: page examples first, sketches after. The existing renderer includes every example on that census page. Put measurement-only setup, such as opening an overlay or setting scroll position, in the config's `prepare` script. `__census` runs it before freezing transitions. Ordinary examples retain their actual supported interactions.
 
 Save existing measurements before a rerun. The collector writes directly to `tools/geist/census/` and rejects zero-root captures. Historical results do not establish a fresh pass.
 

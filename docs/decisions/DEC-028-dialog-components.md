@@ -18,6 +18,6 @@ Exact focus targets, Escape/outside dismissal, nested Menu/Dialog transitions, b
 
 Material's four Dialog tabs were read, both token sets expanded in Default Light, and all six specification figures inspected. The full-screen measurement figure shows 64 for the header region while the table/token says 56; no component measurement is selected from that discrepancy. That source review did not verify implementation visual tokens, motion or accessibility.
 
-Evidence: [overlay review](../research/11-floating-surface-shadows.md#phase-2-overlay-dispositions), [Material coverage](../verification/systematization/material-dialog-review-2026-09-19.json), [decision and revision record](../verification/systematization/disposition-checkpoint-2026-09-19.json).
+Evidence: [overlay review](../research/RES-011-floating-surface-shadows.md#phase-2-overlay-dispositions), [Material coverage](../verification/systematization/material-dialog-review-2026-09-19.json), [decision and revision record](../verification/systematization/disposition-checkpoint-2026-09-19.json).
 
-The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.
+The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../specs/SPEC-003-design-system/spec.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.

@@ -6,10 +6,10 @@ Status: Completed pass history; open verification follow-ups have separate issue
 
 The queue records thirteen review groups, six engineering areas and completed implementation/release work. The release results retain their exact scope and dates. A later records commit has a Chromium Hover Card failure with an unverified cause. Actual-platform verification and credential rotation remain open issues; the completed queue is not a new execution plan.
 
-The dated findings below retain their source versions, measurements, corrections and verification limits. Old phase gates, source freezes, local-skill routing and task-specific permission grants describe the completed pass. They do not govern new work. The [current handoff](../../../docs/STATUS.md) owns the next action.
+The dated findings below retain their source versions, measurements, corrections and verification limits. Old phase gates, source freezes, local-skill routing and task-specific permission grants describe the completed pass. They do not govern new work. The [current handoff](../../agents/workspace.md#session-state) owns the next action.
 
 
-The [central handoff](../../../docs/STATUS.md) owns current status. The [inventory index](../../../spec/SPEC-design-system.md#complete-proposal-set) and linked family files own detailed contracts. The [coverage map](../../../spec/component-coverage.md) accounts for all 150 original source tags and the selected additions.
+The [central handoff](../../agents/workspace.md#session-state) owns current status. The [inventory index](../../../specs/SPEC-003-design-system/spec.md#complete-proposal-set) and linked family files own detailed contracts. The [coverage map](component-coverage.md) accounts for all 150 original source tags and the selected additions.
 
 ## Completion at the recorded release checkpoint
 
@@ -19,10 +19,10 @@ The [central handoff](../../../docs/STATUS.md) owns current status. The [invento
 | Phase 3 | Architecture responsibilities agreed; mechanism gates remain explicit |
 | Phase 4 | Complete design approved: all thirteen groups, conventions and documentation/tooling |
 | Complete inventory approval | Granted 2026-09-20 by Peter; technical verification is not implied |
-| User-owned decision queue | Original five recommendations approved in [the register](../../../docs/design/systematization-decisions.md); [explicit helper clearing](../../../docs/decisions/0052-layout-spacing-properties.md#explicit-clearing-for-the-style-helper) selected 2026-09-21; @lit/context selected under [delegated execution](../../../docs/decisions/0035-execution-delegation.md); remaining choices are agent-owned |
+| User-owned decision queue | Original five recommendations approved in [the register](../../design/systematization-decisions.md); [explicit helper clearing](../../decisions/DEC-052-layout-spacing-properties.md#explicit-clearing-for-the-style-helper) selected 2026-09-21; @lit/context selected under [delegated execution](../../decisions/DEC-035-execution-delegation.md); remaining choices are agent-owned |
 | Engineering gates | Six representative M00 technical areas verified; final implementation acceptance stays assigned |
-| Phase 5 | [Migration plan approved](../../../docs/decisions/0064-migration-approval.md); M00 closed after compiler selection |
-| Phase 6 | M01–M25 and M26 automated acceptance are complete. All five 0.3.2 packages, CDN delivery and public Pages pass verification. The obsolete snapshot removal is merged. GitHub 0.3.2 is stable/latest; actual-platform limits stay explicit. See the [completed release record](../../../docs/releases/0.3.2.md). |
+| Phase 5 | [Migration plan approved](../../decisions/DEC-064-migration-approval.md); M00 closed after compiler selection |
+| Phase 6 | M01–M25 and M26 automated acceptance are complete. All five 0.3.2 packages, CDN delivery and public Pages pass verification. The obsolete snapshot removal is merged. GitHub 0.3.2 is stable/latest; actual-platform limits stay explicit. See the [completed release record](../../releases/0.3.2.md). |
 
 These are review groups, not thirteen questions, equal-sized tasks or duration estimates. The groups describe the approved design decomposition. The recorded implementation status is above; technical acceptance remains distinct from design approval.
 
@@ -30,29 +30,29 @@ These are review groups, not thirteen questions, equal-sized tasks or duration e
 
 | Group | Proposal owner |
 | --- | --- |
-| R01 | [Shared rules and themes](../../../spec/SPEC-foundations.md) |
-| R02 | [Layout and attached groups](../../../spec/SPEC-layout.md) |
-| R03 | [Text and formatting](../../../spec/SPEC-typography.md) |
-| R04 | [Actions, icons and identity](../../../spec/SPEC-actions.md) |
-| R05 | [Selection and tabs](../../../spec/SPEC-selection.md) |
-| R06 | [Inputs and forms](../../../spec/SPEC-inputs-forms.md) |
-| R07 | [Surfaces and content composition](../../../spec/SPEC-surfaces.md) |
-| R08 | [Navigation and disclosure](../../../spec/SPEC-navigation-disclosure.md) |
-| R09 | [Messages, progress and statistics](../../../spec/SPEC-messages-statistics.md) |
-| R10 | [Overlays and help](../../../spec/SPEC-overlays-help.md) |
-| R11 | [Tables, charts and diagrams](../../../spec/SPEC-data-displays.md) |
-| R12 | [Rich content and media](../../../spec/SPEC-rich-content.md) |
-| R13 | [Documentation and public tooling](../../../spec/SPEC-documentation-tooling.md) |
+| R01 | [Shared rules and themes](../../../specs/SPEC-005-foundations/spec.md) |
+| R02 | [Layout and attached groups](../../../specs/SPEC-007-layout/spec.md) |
+| R03 | [Text and formatting](../../../specs/SPEC-015-typography/spec.md) |
+| R04 | [Actions, icons and identity](../../../specs/SPEC-001-actions/spec.md) |
+| R05 | [Selection and tabs](../../../specs/SPEC-013-selection/spec.md) |
+| R06 | [Inputs and forms](../../../specs/SPEC-006-inputs-forms/spec.md) |
+| R07 | [Surfaces and content composition](../../../specs/SPEC-014-surfaces/spec.md) |
+| R08 | [Navigation and disclosure](../../../specs/SPEC-010-navigation-disclosure/spec.md) |
+| R09 | [Messages, progress and statistics](../../../specs/SPEC-009-messages-statistics/spec.md) |
+| R10 | [Overlays and help](../../../specs/SPEC-011-overlays-help/spec.md) |
+| R11 | [Tables, charts and diagrams](../../../specs/SPEC-002-data-displays/spec.md) |
+| R12 | [Rich content and media](../../../specs/SPEC-012-rich-content/spec.md) |
+| R13 | [Documentation and public tooling](../../../specs/SPEC-004-documentation-tooling/spec.md) |
 
-R02 also uses the six existing [core layout entries](../../../spec/SPEC-design-system.md#core-layout-contract). Text and Heading have moved to the typography proposal, so the old partial drafts are no longer independent contract owners. Retired source tags map to replacement/recipe entries; their presence in coverage is not retention approval.
+R02 also uses the six existing [core layout entries](../../../specs/SPEC-003-design-system/spec.md#core-layout-contract). Text and Heading have moved to the typography proposal, so the old partial drafts are no longer independent contract owners. Retired source tags map to replacement/recipe entries; their presence in coverage is not retention approval.
 
 ## Historical review sequence
 
-Peter requested the whole proposal set before further questions. That assembly is now complete across all groups. The completed review applied [definitive reference behavior](../../../docs/decisions/0082-reference-systems.md#follow-the-established-reference-without-another-preference-question), preserved approved deviations and assigned ordinary engineering choices to the proposal.
+Peter requested the whole proposal set before further questions. That assembly is now complete across all groups. The completed review applied [definitive reference behavior](../../decisions/DEC-082-reference-systems.md#follow-the-established-reference-without-another-preference-question), preserved approved deviations and assigned ordinary engineering choices to the proposal.
 
-Peter approved all five recommendations with the complete set: role-specific density, read-only inspector, authored TOC IDs, core Tree scope and coordinated Pagination parts. The [decision register](../../../docs/design/systematization-decisions.md) is closed. Peter subsequently selected Lightning CSS 1.33.0 as the build-only compiler, closing M00.
+Peter approved all five recommendations with the complete set: role-specific density, read-only inspector, authored TOC IDs, core Tree scope and coordinated Pagination parts. The [decision register](../../design/systematization-decisions.md) is closed. Peter subsequently selected Lightning CSS 1.33.0 as the build-only compiler, closing M00.
 
-The original continuation followed [M00 and the approved migration plan](plan.md). M00 closed before dependent slices proceeded; inventory and migration approvals were already settled. The [M00 results](../../../docs/verification/systematization/m00-prerequisites-2026-09-20.json) preserve passing candidates, failing controls and unresolved limits.
+The original continuation followed [M00 and the approved migration plan](../../../specs/SPEC-003-design-system/tasks/plan.md). M00 closed before dependent slices proceeded; inventory and migration approvals were already settled. The [M00 results](../../verification/systematization/m00-prerequisites-2026-09-20.json) preserve passing candidates, failing controls and unresolved limits.
 
 ## Engineering work owned by the agent
 
@@ -77,10 +77,10 @@ Each investigation had an affected interface/gate and completion condition. The 
 - [x] Verified useful CSS map delivery, complete existing CSS syntax coverage with the generator correction, packaged consumers and the local Bun publication mechanism.
 - [x] Selected Lightning CSS 1.33.0 and closed M00. Final real CI/account/publication acceptance was then assigned to M25.
 - [x] Implemented approved batches with matching docs/tooling and no compatibility aliases.
-- [x] Finished local archive acceptance: all23 required browser invocations were accepted, with the corrected Intent oracle rerun explicitly recorded. [Final evidence](../../../docs/verification/systematization/m26-final/README.md).
+- [x] Finished local archive acceptance: all23 required browser invocations were accepted, with the corrected Intent oracle rerun explicitly recorded. [Final evidence](../../verification/systematization/m26-final/README.md).
 - [x] Published and verified all five 0.3.2 packages, provenance and public CDN behavior under the recorded release authorization.
 - [x] Verified all 25,120 public Pages files and the three-engine navigation/Flow matrix.
-- [x] Merged the reviewed snapshot retirement and published the stable GitHub release. [Complete evidence](../../../docs/releases/0.3.2.md).
+- [x] Merged the reviewed snapshot retirement and published the stable GitHub release. [Complete evidence](../../releases/0.3.2.md).
 - [ ] Actual Safari, assistive-technology, OS input/autofill and background-window checks remained unperformed at closure. Their current owner is the [actual-platform issue](../../../.scratch/maintenance/issues/002-actual-platform-verification.md); automated engines do not establish them.
 
 The old protected-file hashes describe the completed pre-implementation baseline. Peter's release request supplied the separate authorization for that completed publication. Existing research snapshots are historical evidence, not current runtime results.
@@ -91,12 +91,12 @@ The original reporting correction emphasized complete proposal coverage, actual 
 
 ## Added verification return points — 2026-09-23
 
-- Closed M25/E03: mapped-style fingerprints include transitive local runtime imports, with a stale-helper regression. Current outputs retain the same CSS. The historical Command Menu Input map was removed. [Evidence](../../../docs/verification/systematization/m26-audit/README.md).
+- Closed M25/E03: mapped-style fingerprints include transitive local runtime imports, with a stale-helper regression. Current outputs retain the same CSS. The historical Command Menu Input map was removed. [Evidence](../../verification/systematization/m26-audit/README.md).
 - M22/M26: verify the native date/time Tab boundary and modal focus with actual Safari and assistive technology. Paired native controls plus source/compiled Chromium/Firefox/WebKit cases pass; these are not actual-platform certification.
 
 ### M26 public attribute default audit — 2026-09-23
 
-A failing M18 reproduction found that removing a nonnullable string attribute produced null instead of its documented default. Status value, Tooltip content and Alert/Banner heading now use Lit's useDefault and pass explicit removal tests. The complete rebuilt audit now passes 704 scalar default resets and 736 native ARIA resets in each engine. The 41 baseline failures are corrected, including inherited and subclass defaults. Intentionally optional undefined values remain distinct. [Evidence](../../../docs/verification/systematization/m26-audit/README.md). Evidence: the colocated status/tooltip/alert tests and /tmp/acme-m18-passive/defaults-red.log and defaults-green.log.
+A failing M18 reproduction found that removing a nonnullable string attribute produced null instead of its documented default. Status value, Tooltip content and Alert/Banner heading now use Lit's useDefault and pass explicit removal tests. The complete rebuilt audit now passes 704 scalar default resets and 736 native ARIA resets in each engine. The 41 baseline failures are corrected, including inherited and subclass defaults. Intentionally optional undefined values remain distinct. [Evidence](../../verification/systematization/m26-audit/README.md). Evidence: the colocated status/tooltip/alert tests and /tmp/acme-m18-passive/defaults-red.log and defaults-green.log.
 
 ### M25 documentation coverage gate — 2026-09-23
 
@@ -104,11 +104,11 @@ Replacing the Empty State page temporarily removed Icon Tile's only documentatio
 
 ### M22/M25/M26 durable browser and platform acceptance — 2026-09-23
 
-The durable component runner preserves all 31 colocated fixtures and their accepted drivers; 482 result rows pass per engine across the recorded complete matrix and focused follow-ups. The shared final archive gate runs this suite. Real Input history/back restoration also passes in fresh documents in all three engines. Actual OS background-window pause/resume for Toast remains unverified: injected visibility/timer checks establish their narrower paths only. [Family evidence](../../../docs/verification/systematization/m26-audit/component-browser/README.md), [history evidence](../../../docs/verification/systematization/m26-native-forms/README.md).
+The durable component runner preserves all 31 colocated fixtures and their accepted drivers; 482 result rows pass per engine across the recorded complete matrix and focused follow-ups. The shared final archive gate runs this suite. Real Input history/back restoration also passes in fresh documents in all three engines. Actual OS background-window pause/resume for Toast remains unverified: injected visibility/timer checks establish their narrower paths only. [Family evidence](../../verification/systematization/m26-audit/component-browser/README.md), [history evidence](../../verification/systematization/m26-native-forms/README.md).
 
 ### M25 dependency and consumer gates — 2026-09-23
 
-The acceptance contract retained the combined custom-feature/experimental-worker type regression for Table dependency changes. The worker recipe supplies the exact guarded 9.2.4 declaration correction and verifies it in a fresh application; runtime JavaScript is unchanged. Core has no Table engine or lit-virtual dependency. The inspector runtime dependencies remain outside production core. [Worker delivery](../../../docs/verification/systematization/m26-audit/README.md#worker-example-delivery-closure).
+The acceptance contract retained the combined custom-feature/experimental-worker type regression for Table dependency changes. The worker recipe supplies the exact guarded 9.2.4 declaration correction and verifies it in a fresh application; runtime JavaScript is unchanged. Core has no Table engine or lit-virtual dependency. The inspector runtime dependencies remain outside production core. [Worker delivery](../../verification/systematization/m26-audit/README.md#worker-example-delivery-closure).
 
 ## Open follow-ups
 

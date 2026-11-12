@@ -6,7 +6,7 @@ decided: 2026-09-20
 ---
 # Approve the complete Phase 4 proposal set
 
-Peter said: “I approve all proposals.” This approves the complete inventory, shared conventions, documentation layout/units and consumer-tooling contracts presented through the [proposal index](../../spec/SPEC-design-system.md#complete-proposal-set): all thirteen review groups, 91 numbered component/family/adapter entries and seven documentation units. The [approval evidence](../verification/systematization/inventory-approval-2026-09-20.json) preserves the pre-update file hashes and scope.
+Peter said: “I approve all proposals.” This approves the complete inventory, shared conventions, documentation layout/units and consumer-tooling contracts presented through the [proposal index](../../specs/SPEC-003-design-system/spec.md#complete-proposal-set): all thirteen review groups, 91 numbered component/family/adapter entries and seven documentation units. The [approval evidence](../verification/systematization/inventory-approval-2026-09-20.json) preserves the pre-update file hashes and scope.
 
 Decided 2026-09-20 by Peter.
 
@@ -24,4 +24,4 @@ At that point, the approval covered design only. It did not approve an unwritten
 
 ## Subsequent migration approval
 
-Peter subsequently approved the concrete migration plan through “approved”. The [migration approval](0064-migration-approval.md) supersedes the earlier plan-approval boundary above. M00 technical prerequisites remained required before the dependent edits in that migration. The [release record](../releases/0.3.2.md) records subsequent completion and verification limits.
+Peter subsequently approved the concrete migration plan through “approved”. The [migration approval](DEC-064-migration-approval.md) supersedes the earlier plan-approval boundary above. M00 technical prerequisites remained required before the dependent edits in that migration. The [release record](../releases/0.3.2.md) records subsequent completion and verification limits.

@@ -11,7 +11,7 @@ Status: Completed bounded source review, 2026-09-19; private collection remains 
 
 All 338 blocks, 1,003 exposed block files and 250 kit files were read. Default preview DOM and named follow-ups are separate from exhaustive interaction/accessibility acceptance. The later whole-set approval resolves Pagination optional parts. Licensed source remains in the private collection; only metadata and findings belong here.
 
-The dated findings below retain their source versions, measurements, corrections and verification limits. Old phase gates, source freezes, local-skill routing and task-specific permission grants describe the completed pass. They do not govern new work. The [current handoff](../STATUS.md) owns the next action.
+The dated findings below retain their source versions, measurements, corrections and verification limits. Old phase gates, source freezes, local-skill routing and task-specific permission grants describe the completed pass. They do not govern new work. The [current handoff](../agents/workspace.md#session-state) owns the next action.
 
 
 This completed review preserves source evidence and dated checkpoints. Later decisions and approved contracts resolve the earlier pending questions.
@@ -64,7 +64,7 @@ Seven notification examples needed a second default-state capture after their pr
 
 ## How findings affect decisions
 
-Peter's [standing comparison rule](../decisions/0082-reference-systems.md#standing-comparison-rule) requires this collection to be consulted whenever the other reference systems are considered in a relevant review. Its examples provide additional evidence; they do not automatically approve a capability, component, interface, appearance or dependency.
+Peter's [standing comparison rule](../decisions/DEC-082-reference-systems.md#standing-comparison-rule) requires this collection to be consulted whenever the other reference systems are considered in a relevant review. Its examples provide additional evidence; they do not automatically approve a capability, component, interface, appearance or dependency.
 
 The review recorded composition, public settings/slots, state/data ownership, keyboard/focus/forms, responsive/theme rules, placeholders and verification limits per family. It compared accepted decisions and dependencies through the historical [decision-review procedure](../history/systematization/scope-review.md#decision-compatibility-and-dependencies).
 
@@ -72,9 +72,9 @@ Peter further emphasized that these examples show how components can be flexible
 
 Peter connected the row variations to Checkbox Cards and Radio Cards. The resulting review selected one focused Item family while keeping layout, surface, selection, forms and navigation distinct. Exact compositions subsequently entered the inventory; this was not an open vote on retaining a universal Entity component.
 
-Card and Fieldset directions remain accepted. [Focused Item](../decisions/0050-item-content-family.md) and [App Bar consolidation](../decisions/0005-app-bar.md) are selected, as is the [Group/Toolbar/selection split](../decisions/0112-toolbar-group-responsibilities.md). Exact composition, keyboard behaviour, expanded Search interfaces and migration paths remain inventory/migration work. New reference evidence cannot silently reverse a selection.
+Card and Fieldset directions remain accepted. [Focused Item](../decisions/DEC-050-item-content-family.md) and [App Bar consolidation](../decisions/DEC-005-app-bar.md) are selected, as is the [Group/Toolbar/selection split](../decisions/DEC-112-toolbar-group-responsibilities.md). Exact composition, keyboard behaviour, expanded Search interfaces and migration paths remain inventory/migration work. New reference evidence cannot silently reverse a selection.
 
-Peter specifically requested reconsidering [results pagination](../decisions/0087-results-pagination.md): Webhooks Event Log 03 combines page-position text, numbered/previous/next navigation and page-size selection. That request reopened the recipe boundary to consider coordinated Pagination parts. It was unresolved at this checkpoint. The later [whole-set approval](../decisions/0049-inventory-approval.md) selects the coordinated optional parts; this earlier review alone did not select the final interface.
+Peter specifically requested reconsidering [results pagination](../decisions/DEC-087-results-pagination.md): Webhooks Event Log 03 combines page-position text, numbered/previous/next navigation and page-size selection. That request reopened the recipe boundary to consider coordinated Pagination parts. It was unresolved at this checkpoint. The later [whole-set approval](../decisions/DEC-049-inventory-approval.md) selects the coordinated optional parts; this earlier review alone did not select the final interface.
 
 ## Historical completion and use
 
@@ -82,7 +82,7 @@ Peter explicitly authorized increased parallelism. Four workers covered separate
 
 The full review identifies useful evidence for arbitrary row content/actions, associated labels, form-group semantics, media-rich selection cards, optional pagination parts, flexible Code and Stat parts, and clear application-owned state. These are design inputs, not newly approved scope. Several examples leave persistence or domain actions unimplemented; retain those limits when using them as references.
 
-The completed ledger and collection informed the [inventory](../../spec/SPEC-design-system.md), including Toolbar/selection/Item combinations and the then-open Pagination parts question. Family dispositions were settled. Later whole-set approval resolves the parts question; new evidence remains distinct from a changed user decision.
+The completed ledger and collection informed the [inventory](../../specs/SPEC-003-design-system/spec.md), including Toolbar/selection/Item combinations and the then-open Pagination parts question. Family dispositions were settled. Later whole-set approval resolves the parts question; new evidence remains distinct from a changed user decision.
 
 Source implementation was frozen until the original Phase 5 approval. Peter later authorized committing and pushing those research records. That historical permission does not authorize new publication; the licensed collection remains private and outside the repository.
 

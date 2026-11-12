@@ -14,4 +14,4 @@ The inspected Logs accepted only time, HTTP method, status, host and path. It ha
 
 Distinguish static event history from a live stream. Preserve or deliberately replace the then-existing role=log announcement intent when migrating actual uses; a static table does not automatically provide appropriate live announcements. No broader streaming Log Viewer capability is selected. Exact live-use requirements must return to Peter if discovered.
 
-Evidence: [closure review](../research/06-codebase-systematization.md#phase-2-closure-review), [answers](../verification/systematization/phase-2-closure-2026-09-19.json).
+Evidence: [closure review](../research/RES-006-codebase-systematization.md#phase-2-closure-review), [answers](../verification/systematization/phase-2-closure-2026-09-19.json).

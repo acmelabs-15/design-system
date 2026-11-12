@@ -9,9 +9,9 @@ Status: historical research with dated implementation follow-ups. Converted 2026
 
 ## Scope and current interpretation
 
-This record preserves the closed parity/systematization methods and the later approved maintainer-workflow investigation. The old reading order, phase queue, source freeze, project-over-plugin exceptions and delegation are retired. The [approved specification](../../spec/SPEC-maintainer-workflow.md), [plan](../../tasks/plan.md) and [current handoff](../STATUS.md) own the new work. The dated task1–4 results below do not close full migration or fresh-session acceptance. The Chromium Hover Card failure and its unverified cause remain explicit.
+This record preserves the closed parity/systematization methods and the later approved maintainer-workflow investigation. The old reading order, phase queue, source freeze, project-over-plugin exceptions and delegation are retired. The [approved specification](../../specs/SPEC-008-maintainer-workflow/spec.md), [plan](../../specs/SPEC-004-documentation-tooling/tasks/plan.md) and [current handoff](../agents/workspace.md#session-state) own the new work. The dated task1–4 results below do not close full migration or fresh-session acceptance. The Chromium Hover Card failure and its unverified cause remain explicit.
 
-The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../STATUS.md) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
+The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../agents/workspace.md#session-state) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
 
 ## Findings and dated evidence
 
@@ -100,9 +100,9 @@ The original proposed order was historical port work:
 1. Re-measuring the 21 pages with differences, retaining the 103 clean readings rather than rerunning all 124. Each new run needed a config; 67 roots lacked one.
 2. Fixing surviving defects in their generator owner.
 3. Completing Relative Time Card, then Context Card, then Calendar.
-4. Behavior parity using the [method investigation](03-behaviour-verification-method.md); checklists existed but the browser tier did not yet.
-5. The [package audit](16-package-choices.md) and [hand-written responsibility audit](13-hand-rolled-audit.md).
-6. [Lit practice](15-lit-practice-review.md), with manifest work then judged the highest-value item.
+4. Behavior parity using the [method investigation](RES-003-behaviour-verification-method.md); checklists existed but the browser tier did not yet.
+5. The [package audit](RES-016-package-choices.md) and [hand-written responsibility audit](RES-013-hand-rolled-audit.md).
+6. [Lit practice](RES-015-lit-practice-review.md), with manifest work then judged the highest-value item.
 7. Cleanup and a release supported by parity evidence.
 
 This sequence is closed history, not a restart queue.
@@ -138,7 +138,7 @@ If they differ, nothing downstream means anything. The runner prints them for ex
 
 ## Agent Skills for the systematization pass
 
-Checked 2026-09-19. Peter chose to use the pack throughout the remaining pass, with the existing decisions and approval steps preserved. See [the decision](../decisions/0002-agent-skills-workflow.md).
+Checked 2026-09-19. Peter chose to use the pack throughout the remaining pass, with the existing decisions and approval steps preserved. See [the decision](../decisions/DEC-002-agent-skills-workflow.md).
 
 ### Installation and evidence
 
@@ -166,11 +166,11 @@ This heading records the original override policy. The approved maintainer workf
 - Specification skill line 182 defaulted to tasks/. The original pass retained notes/alignment/. The approved migration now selects spec/ and tasks/ explicitly.
 - Generic examples did not change selected package roles, generated CSS ownership, colocated tests or build dependencies. Reference evidence stayed outside src. Their current owners are assigned by the rule audit, rather than this old override list.
 
-No project build or runtime behaviour changed during installation. After installation, Peter separately confirmed the existing pass scope. Its seven principles are recorded, and the later walkthrough selected the [shadow-role mapping](../decisions/0039-floating-surface-shadows.md). Plugin adoption itself did not approve element interfaces or implementation.
+No project build or runtime behaviour changed during installation. After installation, Peter separately confirmed the existing pass scope. Its seven principles are recorded, and the later walkthrough selected the [shadow-role mapping](../decisions/DEC-039-floating-surface-shadows.md). Plugin adoption itself did not approve element interfaces or implementation.
 
 ## Phase 1 extension checkpoint
 
-Historical checkpoint: the current status is in the [pass handoff](../STATUS.md). The paragraph below records the earlier capture.
+Historical checkpoint: the current status is in the [pass handoff](../agents/workspace.md#session-state). The paragraph below records the earlier capture.
 
 At this historical capture, Peter had expanded the pass and Phase 2 was underway. That phase later closed. The [extension register](../design/additional-capabilities.md) preserves the research and acceptance obligations. The seven-phase lifecycle and source freeze applied then; they are retired workflow history.
 
@@ -178,7 +178,7 @@ The records-only capture saves decisions made while Plan mode prevented file wri
 
 ## Evidence and implementation quality reaffirmation
 
-Reaffirmed 2026-09-19 by Peter. [Standing decision](../decisions/0034-evidence-and-implementation-quality.md), [retrospective audit](../history/systematization/architecture-review.md#evidence-audit). The existing rules were already clear; the correction is to apply them before a recommendation is put forward.
+Reaffirmed 2026-09-19 by Peter. [Standing decision](../decisions/DEC-034-evidence-and-implementation-quality.md), [retrospective audit](../history/systematization/architecture-review.md#evidence-audit). The existing rules were already clear; the correction is to apply them before a recommendation is put forward.
 
 The reaffirmed quality bar required current code evidence, relevant official/reference practice and tests appropriate to consequential recommendations. It separated observations, bounded feasibility, comparisons and unknowns. Missing facts required investigation; community-preference claims required a stated survey and limits rather than a few names presented as consensus.
 
@@ -198,21 +198,21 @@ The old central handoff owned phase and next-step state. Completed reviews linke
 
 Peter approved a workflow correction on 2026-09-20 after the foundation investigation expanded into repeated small decisions and probes without completing inventory entries. The evidence remains useful; the problem was unbounded sequencing and progress reporting that foregrounded activity instead of completed contracts.
 
-The correction used the [remaining-work queue](../../tasks/done/systematization/review-queue.md) to assemble complete family proposals, dependencies and engineering checks. The agent owned discoverable facts and ordinary implementation details; Peter owned consequential unresolved authoring/behavior choices. A finding could block its affected interface without suspending unrelated preparation.
+The correction used the [remaining-work queue](../history/systematization/review-queue.md) to assemble complete family proposals, dependencies and engineering checks. The agent owned discoverable facts and ordinary implementation details; Peter owned consequential unresolved authoring/behavior choices. A finding could block its affected interface without suspending unrelated preparation.
 
-The first proposed delivery was shared rules/layout, based on Group, Box, Stack, Simple Grid and control-compatibility evidence. This replaced isolated helper-detail questioning. Reporting emphasized complete proposals, approvals, remaining groups and blockers, with test/link/fingerprint results as evidence. The original source freeze and Phase 4/5 gates still applied then; they are historical. [Decision](../decisions/0002-agent-skills-workflow.md#complete-component-proposals-and-visible-progress), [coverage](../verification/systematization/remaining-work-consolidation-2026-09-20.json).
+The first proposed delivery was shared rules/layout, based on Group, Box, Stack, Simple Grid and control-compatibility evidence. This replaced isolated helper-detail questioning. Reporting emphasized complete proposals, approvals, remaining groups and blockers, with test/link/fingerprint results as evidence. The original source freeze and Phase 4/5 gates still applied then; they are historical. [Decision](../decisions/DEC-002-agent-skills-workflow.md#complete-component-proposals-and-visible-progress), [coverage](../verification/systematization/remaining-work-consolidation-2026-09-20.json).
 
-Peter subsequently required the [entire Phase 4 proposal set before further questions](../decisions/0002-agent-skills-workflow.md#assemble-the-whole-proposal-set-before-the-next-decision-walk). The first layout delivery completed preparation for one group. Peter's correction required assembling all remaining groups, dependencies and genuine choices before the next decision walk. The [established-reference rule](../decisions/0082-reference-systems.md#follow-the-established-reference-without-another-preference-question) resolves source-defined details without individual preference votes. No production source or migration approval is implied.
+Peter subsequently required the [entire Phase 4 proposal set before further questions](../decisions/DEC-002-agent-skills-workflow.md#assemble-the-whole-proposal-set-before-the-next-decision-walk). The first layout delivery completed preparation for one group. Peter's correction required assembling all remaining groups, dependencies and genuine choices before the next decision walk. The [established-reference rule](../decisions/DEC-082-reference-systems.md#follow-the-established-reference-without-another-preference-question) resolves source-defined details without individual preference votes. No production source or migration approval is implied.
 
-That assembly now covers all thirteen groups through the [complete proposal index](../../spec/SPEC-design-system.md#complete-proposal-set). The [coverage map](../../spec/component-coverage.md) accounts for all 150 source tags and thirty extension records, and the [five-question register](../design/systematization-decisions.md) separates user choices from retired source lookups/engineering details. The five-question register replaced the earlier one-family draft loop. Assembly itself approved neither complete entries nor implementation.
+That assembly now covers all thirteen groups through the [complete proposal index](../../specs/SPEC-003-design-system/spec.md#complete-proposal-set). The [coverage map](../history/systematization/component-coverage.md) accounts for all 150 source tags and thirty extension records, and the [five-question register](../design/systematization-decisions.md) separates user choices from retired source lookups/engineering details. The five-question register replaced the earlier one-family draft loop. Assembly itself approved neither complete entries nor implementation.
 
 ### Whole-set approval and Phase 5 handoff
 
-On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/0049-inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/0064-migration-approval.md) through “approved”. At that approval checkpoint, M00 prerequisites preceded dependent implementation and production implementation had not started. The completed systematization evidence supersedes that status; approval alone was not a runtime result.
+On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/DEC-049-inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/DEC-064-migration-approval.md) through “approved”. At that approval checkpoint, M00 prerequisites preceded dependent implementation and production implementation had not started. The completed systematization evidence supersedes that status; approval alone was not a runtime result.
 
 ## Maintainer workflow migration 2026-10-21
 
-Peter now requests the agent-skills/brain workflow used in the CLI and D&D projects. He clarifies three requirements: complete migration to the new layout and formats, deletion of all five local skills, and removal or rewriting of rules that conflict with the new workflow. [Decision](../decisions/0057-maintainer-workflow-migration.md), [approved specification](../../spec/SPEC-maintainer-workflow.md), [observations and inventory](../verification/workflow-migration/initial-research.json).
+Peter now requests the agent-skills/brain workflow used in the CLI and D&D projects. He clarifies three requirements: complete migration to the new layout and formats, deletion of all five local skills, and removal or rewriting of rules that conflict with the new workflow. [Decision](../decisions/DEC-057-maintainer-workflow-migration.md), [approved specification](../../specs/SPEC-008-maintainer-workflow/spec.md), [observations and inventory](../verification/workflow-migration/initial-research.json).
 
 ### What creates the continuity in the reference projects
 
@@ -265,7 +265,7 @@ No startup rule, local skill, product source, package version or plugin setting 
 
 ### Implementation planning after specification approval
 
-The [implementation plan](../../tasks/done/maintainer-workflow/plan.md) and [task list](../../tasks/done/maintainer-workflow/todo.md) contain twelve ordered tasks or batch groups. They keep one active workflow during preparation, migrate consumers, then remove the old structure in one coordinated cutover. Semantic rewrites are separate from byte-preserving evidence moves. Exact child batches are recorded before editing; no parent group counts as one unbounded implementation task.
+The [implementation plan](../../specs/SPEC-008-maintainer-workflow/tasks/plan.md) and [task list](../../specs/SPEC-008-maintainer-workflow/tasks/todo.md) contain twelve ordered tasks or batch groups. They keep one active workflow during preparation, migrate consumers, then remove the old structure in one coordinated cutover. Semantic rewrites are separate from byte-preserving evidence moves. Exact child batches are recorded before editing; no parent group counts as one unbounded implementation task.
 
 The current check runner contains 23 browser entry points and produces 24 invocations. Nineteen entry points live under the old evidence tree. Its behavior is partly coupled to filenames: an exact scoped-check path selects module/CDN runs, a regular expression routes audit outputs, and a worker filename selects archive arguments. The first proposed task replaces that coupling with stable identities before any driver rename. Existing runner tests already cover failure aggregation, runtime identity, environment isolation and special arguments; those behaviors stay intact.
 

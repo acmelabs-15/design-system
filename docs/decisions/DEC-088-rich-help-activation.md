@@ -10,8 +10,8 @@ Rich help containing links or buttons opens through click, tap or keyboard activ
 
 Decided 2026-09-19 by Peter.
 
-Plain tooltips and supplementary hover previews remain separate behaviours. The later [help-component decision](0076-overlay-help-components.md) adds a named Toggle Tip and removes Context Card. Tooltip and Hover Card retain distinct purposes; exact overlay interfaces and accessibility belong to the later [overlay/help contract](../../spec/SPEC-overlays-help.md).
+Plain tooltips and supplementary hover previews remain separate behaviours. The later [help-component decision](DEC-076-overlay-help-components.md) adds a named Toggle Tip and removes Context Card. Tooltip and Hover Card retain distinct purposes; exact overlay interfaces and accessibility belong to the later [overlay/help contract](../../specs/SPEC-011-overlays-help/spec.md).
 
 Material Web's inspected repository provides tooltip tokens but no Tooltip Lit component. Use the published guidance as guidance, not as evidence of a shipped Lit implementation.
 
-Evidence: [overlay research](../research/11-floating-surface-shadows.md#phase-1-extension-toast-and-rich-help).
+Evidence: [overlay research](../research/RES-011-floating-surface-shadows.md#phase-1-extension-toast-and-rich-help).

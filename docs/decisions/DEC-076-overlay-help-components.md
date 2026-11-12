@@ -10,8 +10,8 @@ Provide Tooltip for short non-interactive help, Hover Card for supplementary ric
 
 Decided 2026-09-19 by Peter.
 
-Peter suggested Hover Card could replace the rich Tooltip variation. Map rich supplementary previews there; simple formatting or a keyboard-shortcut label alone does not require a Hover Card. Interactive rich help keeps the earlier [explicit-activation rule](0088-rich-help-activation.md), using Toggle Tip rather than automatically opening on hover.
+Peter suggested Hover Card could replace the rich Tooltip variation. Map rich supplementary previews there; simple formatting or a keyboard-shortcut label alone does not require a Hover Card. Interactive rich help keeps the earlier [explicit-activation rule](DEC-088-rich-help-activation.md), using Toggle Tip rather than automatically opening on hover.
 
-Chakra's Toggle Tip composes Popover; share underlying overlay behaviour without adding a second engine. This choice does not settle the full general Popover interface, Hover Card keyboard/touch access, essential-content alternatives, delays or exact parts. Chakra's documented accessibility limits are comparison evidence, not approved component behavior. Each migrated use requires the correct content and interaction pattern. The later [overlay/help contract](../../spec/SPEC-overlays-help.md) records the detailed interfaces and acceptance criteria.
+Chakra's Toggle Tip composes Popover; share underlying overlay behaviour without adding a second engine. This choice does not settle the full general Popover interface, Hover Card keyboard/touch access, essential-content alternatives, delays or exact parts. Chakra's documented accessibility limits are comparison evidence, not approved component behavior. Each migrated use requires the correct content and interaction pattern. The later [overlay/help contract](../../specs/SPEC-011-overlays-help/spec.md) records the detailed interfaces and acceptance criteria.
 
-Evidence: [overlay analysis](../research/11-floating-surface-shadows.md#phase-2-overlay-dispositions), [selection record](../verification/systematization/disposition-checkpoint-2026-09-19.json).
+Evidence: [overlay analysis](../research/RES-011-floating-surface-shadows.md#phase-2-overlay-dispositions), [selection record](../verification/systematization/disposition-checkpoint-2026-09-19.json).

@@ -4,7 +4,7 @@ migrated: 0.8
 ---
 # Tasks: MCP dependency advisory
 
-Status: completed 2026-10-27. Approved by Peter on 2026-10-27 through the task-size, dependency-order and task-boundary questions. Current execution state belongs in [STATUS](../docs/STATUS.md). The [plan](plan.md) owns decisions, risks and authorization.
+Status: completed 2026-10-27. Approved by Peter on 2026-10-27 through the task-size, dependency-order and task-boundary questions. Current execution state belongs in [STATUS](../../../docs/agents/workspace.md#session-state). The [plan](plan.md) owns decisions, risks and authorization.
 
 ## Checklist
 
@@ -52,7 +52,7 @@ Status: completed 2026-10-27. Approved by Peter on 2026-10-27 through the task-s
 
 **Scope:** Small; four files.
 
-**Result, 2026-10-27, Bun 1.4.2, on c588f2db0 plus this change:** `bun install` locks `happy-dom` and `@happy-dom/global-registrator` 21.0.4. bun.lock records `npm/undici` 8.12.3; the installed bundled copy stays 6.27.0, which confirms [issue 006](../.scratch/maintenance/issues/006-bun-bundled-dependency-lock.md). `bun scripts/dependency-audit.ts`: exit 0, no unresolved high or critical finding, no lower finding. The native report lists only `http-cache-semantics`, so a direct `verifyAuditProof` run checks both reviewed dispositions: `braces` and `http-cache-semantics` verify. `bun test` under a pseudo-terminal: 1,126 pass, 0 fail, 191,007 assertions, 218 files, 132.64 s. `bun scripts/check.ts build`: exit 0, no generated drift, no deprecation warning, 4,319 manifest elements as in the 0.3.2 build. `scripts/docs-icons.ts` and `scripts/manifest.ts` still pass the deprecated `disableCSSFileLoading` and `disableIframePageLoading` settings; `happy-dom` 21 accepts them and its new defaults match them.
+**Result, 2026-10-27, Bun 1.4.2, on c588f2db0 plus this change:** `bun install` locks `happy-dom` and `@happy-dom/global-registrator` 21.0.4. bun.lock records `npm/undici` 8.12.3; the installed bundled copy stays 6.27.0, which confirms [issue 006](../../../.scratch/maintenance/issues/006-bun-bundled-dependency-lock.md). `bun scripts/dependency-audit.ts`: exit 0, no unresolved high or critical finding, no lower finding. The native report lists only `http-cache-semantics`, so a direct `verifyAuditProof` run checks both reviewed dispositions: `braces` and `http-cache-semantics` verify. `bun test` under a pseudo-terminal: 1,126 pass, 0 fail, 191,007 assertions, 218 files, 132.64 s. `bun scripts/check.ts build`: exit 0, no generated drift, no deprecation warning, 4,319 manifest elements as in the 0.3.2 build. `scripts/docs-icons.ts` and `scripts/manifest.ts` still pass the deprecated `disableCSSFileLoading` and `disableIframePageLoading` settings; `happy-dom` 21 accepts them and its new defaults match them.
 
 ## Checkpoint 1
 
@@ -96,7 +96,7 @@ Status: completed 2026-10-27. Approved by Peter on 2026-10-27 through the task-s
 
 **Scope:** Small; three authored files plus evidence.
 
-**Result, 2026-10-27:** `bun run check` exits 0 on a clean detached checkout of f9dc599c8: static, build, types, 1,126 unit tests, audit, packages, browser installation, 24 of 24 browser invocations and release checks. The five-axis review approves; 1394fc019 and ea74d45c8 apply its findings, with their own focused checks. [Release record](../docs/releases/0.3.3.md), [review](../docs/verification/releases/0.3.3/review/README.md).
+**Result, 2026-10-27:** `bun run check` exits 0 on a clean detached checkout of f9dc599c8: static, build, types, 1,126 unit tests, audit, packages, browser installation, 24 of 24 browser invocations and release checks. The five-axis review approves; 1394fc019 and ea74d45c8 apply its findings, with their own focused checks. [Release record](../../../docs/releases/0.3.3.md), [review](../../../docs/verification/releases/0.3.3/review/README.md).
 
 ## Checkpoint 2
 
@@ -120,4 +120,4 @@ Status: completed 2026-10-27. Approved by Peter on 2026-10-27 through the task-s
 
 **Scope:** Outward actions plus three record files.
 
-**Result, 2026-10-27:** PR #10 merges as 998d72c8c after its Linux quality run passes. Tag v0.3.3 publishes all five packages through four attempts of the publish job, because the script's confirmation wait is shorter than npm's review ([issue 007](../.scratch/maintenance/issues/007-publication-confirmation-wait.md)). The public tarballs equal the verified archives, their provenance verifies, and `latest` is 0.3.3. A fresh install of the public MCP package resolves `zod` 4.6.7, and `bun audit` finds nothing. Pages redeploys after npm verification and passes in three engines. The GitHub release is published, its duplicate publish run is cancelled, and issue #9 is closed. [Release record](../docs/releases/0.3.3.md#publication).
+**Result, 2026-10-27:** PR #10 merges as 998d72c8c after its Linux quality run passes. Tag v0.3.3 publishes all five packages through four attempts of the publish job, because the script's confirmation wait is shorter than npm's review ([issue 007](../../../.scratch/maintenance/issues/007-publication-confirmation-wait.md)). The public tarballs equal the verified archives, their provenance verifies, and `latest` is 0.3.3. A fresh install of the public MCP package resolves `zod` 4.6.7, and `bun audit` finds nothing. Pages redeploys after npm verification and passes in three engines. The GitHub release is published, its duplicate publish run is cancelled, and issue #9 is closed. [Release record](../../../docs/releases/0.3.3.md#publication).

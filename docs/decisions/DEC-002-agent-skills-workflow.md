@@ -6,7 +6,7 @@ decided: 2026-10-21
 ---
 # Use Agent Skills throughout the remaining systematization pass
 
-Peter selected Agent Skills for the complete systematization pass to improve planning, implementation and review. This is a historical adoption decision; the [approved maintainer workflow](../../spec/SPEC-maintainer-workflow.md) now gives brain lifecycle ownership.
+Peter selected Agent Skills for the complete systematization pass to improve planning, implementation and review. This is a historical adoption decision; the [approved maintainer workflow](../../specs/SPEC-008-maintainer-workflow/spec.md) now gives brain lifecycle ownership.
 
 Decided 2026-09-19 by Peter.
 
@@ -14,7 +14,7 @@ Peter chose planning-through-review use over implementation-only use or final te
 
 The original adoption supplemented the existing pass and did not approve element interfaces or its migration plan. Package-stack, generated-CSS, Bun-test, product-decision and publication constraints remained in force. The former note-path ownership and project-over-plugin procedure are superseded.
 
-Installation evidence, workflow mapping and the then-recorded differences from plugin defaults: [systematic approach](../research/20-systematic-approach.md#agent-skills-for-the-systematization-pass).
+Installation evidence, workflow mapping and the then-recorded differences from plugin defaults: [systematic approach](../research/RES-020-systematic-approach.md#agent-skills-for-the-systematization-pass).
 
 ## Complete replacements and current documentation
 
@@ -26,11 +26,11 @@ Current code, JSDoc, README and consumer documentation describe the supported de
 
 Decided 2026-09-20 by Peter: consolidate existing decisions and evidence into complete component proposals. Agents resolved routine engineering details; questions covered consequential choices in those proposals. Peter approved this correction because prolonged foundation/helper discussion was not producing visible phase-level progress.
 
-The [remaining-work queue](../../tasks/done/systematization/review-queue.md) grouped the agreed scope and assigned technical checks to the agent. It neither added phases nor waived evidence, individual inventory approval or migration approval. Existing selections remained settled unless new evidence supported a concrete revision.
+The [remaining-work queue](../history/systematization/review-queue.md) grouped the agreed scope and assigned technical checks to the agent. It neither added phases nor waived evidence, individual inventory approval or migration approval. Existing selections remained settled unless new evidence supported a concrete revision.
 
 The selected progress measures were complete proposals ready for review, approved entries, remaining review groups, the next complete deliverable and material blockers. Link counts and probe counts were supporting evidence. Peter retained one-question-at-a-time decisions and rejected open-ended implementation-detail interviews. [Coverage and approval record](../verification/systematization/remaining-work-consolidation-2026-09-20.json).
 
-The later [established-reference instruction](0082-reference-systems.md#follow-the-established-reference-without-another-preference-question) reduced the queue: inspect and apply assigned Chakra/Radix/other behavior unless a demonstrated conflict or gap required a choice. Source-derived resolutions remained distinct from Peter's votes and full-entry approval.
+The later [established-reference instruction](DEC-082-reference-systems.md#follow-the-established-reference-without-another-preference-question) reduced the queue: inspect and apply assigned Chakra/Radix/other behavior unless a demonstrated conflict or gap required a choice. Source-derived resolutions remained distinct from Peter's votes and full-entry approval.
 
 ## Assemble the whole proposal set before the next decision walk
 

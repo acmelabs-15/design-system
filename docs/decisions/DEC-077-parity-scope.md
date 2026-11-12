@@ -10,7 +10,7 @@ Public interfaces prioritize self-consistency, then Lit and web-component conven
 
 Decided by Peter on 2026-09-10. The original port plan linked this decision.
 
-The systematization pass supersedes this note's unconditional exact-parity requirements: [systematization-goal.md](0105-systematization-goal.md) permits named, sourced, explicitly verified differences. The later [bidirectional-support decision](0007-bidirectional-support.md) also supersedes the no-RTL section below, and [custom themes](0022-custom-themes.md) qualify the fixed default appearance as the default rather than the only supported theme. The interface priority order remains in force; apply later decision notes where they supersede this dated port record.
+The systematization pass supersedes this note's unconditional exact-parity requirements: [systematization-goal.md](DEC-105-systematization-goal.md) permits named, sourced, explicitly verified differences. The later [bidirectional-support decision](DEC-007-bidirectional-support.md) also supersedes the no-RTL section below, and [custom themes](DEC-022-custom-themes.md) qualify the fixed default appearance as the default rather than the only supported theme. The interface priority order remains in force; apply later decision notes where they supersede this dated port record.
 
 ## The rule
 
@@ -101,7 +101,7 @@ directions, and this is now the written tie-breaker rather than a judgement to r
 
 ## Decided: no right-to-left support, because the reference has none
 
-**Superseded by [bidirectional-support.md](0007-bidirectional-support.md):** the selected scope includes LTR/RTL for pages and sections. The evidence and reasoning below describe the 2026-09-10 port decision, not the current scope.
+**Superseded by [bidirectional-support.md](DEC-007-bidirectional-support.md):** the selected scope includes LTR/RTL for pages and sections. The evidence and reasoning below describe the 2026-09-10 port decision, not the current scope.
 
 Decided 2026-09-10, on evidence rather than preference. Peter's position was that it is not a priority
 unless it comes free with the reference's own implementation. It does not.
@@ -129,4 +129,4 @@ The historical decision excluded right-to-left support to preserve that exact-po
 
 ## Applying it from here
 
-The retained product priority is self-consistency first, platform idiom second, and familiarity to a reference user third. Its rationale is that an inconsistency costs users across the whole API, while an unfamiliar consistent name is learned once. Current decision and approval procedure belongs to the [maintainer workflow](../../spec/SPEC-maintainer-workflow.md).
+The retained product priority is self-consistency first, platform idiom second, and familiarity to a reference user third. Its rationale is that an inconsistency costs users across the whole API, while an unfamiliar consistent name is learned once. Current decision and approval procedure belongs to the [maintainer workflow](../../specs/SPEC-008-maintainer-workflow/spec.md).

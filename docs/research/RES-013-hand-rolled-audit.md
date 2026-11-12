@@ -11,12 +11,12 @@ Status: historical research with dated implementation follow-ups. Converted 2026
 
 This audit preserves dated hand-written implementations and package-responsibility findings. A row was never automatic proof of a defect. Native Lit/TanStack behavior ports supersede the earlier Zag runtime/adapter proposal. The systematization pass is complete at the scope in [final evidence](../verification/systematization/m26-final/README.md); installed packages alone do not establish every integration. SSR is excluded by the later decision.
 
-The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../STATUS.md) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
+The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../agents/workspace.md#session-state) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
 
 ## Findings and dated evidence
 
 
-The 2026-09-19 recheck supersedes older counts and the claim below that Zag supplies a Lit adapter. The current decision is [native Lit behaviour ports using the full stack](../decisions/0114-zag-behaviour-ports.md) for Pin Input, Number Input, Scroll Area, Steps and resizable panes; the earlier actual-Zag runtime/adapter choice is superseded. Zag remains a source reference. [Published match-sorter](../decisions/0058-match-sorter.md) is also selected. These were migration decisions at that checkpoint; the investigation itself changed no source.
+The 2026-09-19 recheck supersedes older counts and the claim below that Zag supplies a Lit adapter. The current decision is [native Lit behaviour ports using the full stack](../decisions/DEC-114-zag-behaviour-ports.md) for Pin Input, Number Input, Scroll Area, Steps and resizable panes; the earlier actual-Zag runtime/adapter choice is superseded. Zag remains a source reference. [Published match-sorter](../decisions/DEC-058-match-sorter.md) is also selected. These were migration decisions at that checkpoint; the investigation itself changed no source.
 
 Started 2026-09-10 and linked from the historical port plan. The original audit accumulated rows as findings appeared.
 

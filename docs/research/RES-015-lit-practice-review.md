@@ -5,7 +5,7 @@ date: 2026-09-09
 ---
 # Lit practice review
 
-This record preserves research and implementation checkpoints from 2026-09-10 through 2026-09-26. Versions, source paths, scratch paths, counts and unfinished work describe those checkpoints; they are not current tasks or a new setup procedure. Later [component contracts](../../spec/SPEC-design-system.md), [final audit](../verification/systematization/m26-audit/README.md) and [release evidence](../releases/0.3.2.md) record subsequent scope and limits.
+This record preserves research and implementation checkpoints from 2026-09-10 through 2026-09-26. Versions, source paths, scratch paths, counts and unfinished work describe those checkpoints; they are not current tasks or a new setup procedure. Later [component contracts](../../specs/SPEC-003-design-system/spec.md), [final audit](../verification/systematization/m26-audit/README.md) and [release evidence](../releases/0.3.2.md) record subsequent scope and limits.
 
 The progression below distinguishes early recommendations, selected revisions, bounded probes and implementation results. No new browser run or external-source revalidation is claimed by this conversion.
 
@@ -157,11 +157,11 @@ The [standalone primitive probe](../verification/systematization/primitive-seman
 
 This outward reference from an inner element to a parent-scope label is available; it must not be confused with the outside-to-inner reference-target problem above. [MDN documents both scope rules](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Reflected_attributes#reflected_element_references). The naming vote selects ordinary aria-label, aria-labelledby and aria-describedby inputs with shared forwarding to the inner semantic element. Define lifecycle, removal, changes to referenced nodes and descriptions against the actual API; the probe only exercises a static name reference.
 
-The complete Material Web internal/aria/delegate.ts and aria.ts at 56a486b147b8b7e95e6e8035fa02aed7e0009a85 were inspected. Its helper shifts supported scalar ARIA attributes into data attributes and overrides attribute/property access to avoid duplicate host/inner announcements. It explicitly lacks ID-reference support. Do not treat its storage or method overrides as a selected implementation. Preserve canonical state, deliberate property metadata and component-specific semantics; the forwarding mechanism still required three-engine verification at that checkpoint. [Decision](../decisions/0001-additional-component-capabilities.md#text-tag-set-and-standard-accessible-naming), [source and probe record](../verification/systematization/primitive-interfaces-review-2026-09-20.json).
+The complete Material Web internal/aria/delegate.ts and aria.ts at 56a486b147b8b7e95e6e8035fa02aed7e0009a85 were inspected. Its helper shifts supported scalar ARIA attributes into data attributes and overrides attribute/property access to avoid duplicate host/inner announcements. It explicitly lacks ID-reference support. Do not treat its storage or method overrides as a selected implementation. Preserve canonical state, deliberate property metadata and component-specific semantics; the forwarding mechanism still required three-engine verification at that checkpoint. [Decision](../decisions/DEC-001-additional-component-capabilities.md#text-tag-set-and-standard-accessible-naming), [source and probe record](../verification/systematization/primitive-interfaces-review-2026-09-20.json).
 
 ## Systematization recheck, 2026-09-19
 
-The AST baseline now finds 150 registered elements and no actual Lit `@state` declarations. Local state uses 129 `@atomState` declarations in 52 files. The older migration count is obsolete. See [codebase-systematization.md](06-codebase-systematization.md) for the method and limits.
+The AST baseline now finds 150 registered elements and no actual Lit `@state` declarations. Local state uses 129 `@atomState` declarations in 52 files. The older migration count is obsolete. See [codebase-systematization.md](RES-006-codebase-systematization.md) for the method and limits.
 
 Two current defects directly affect interface predictability:
 
@@ -174,7 +174,7 @@ Official Lit publishing guidance was read on 2026-09-19: <https://lit.dev/docs/t
 
 ## Phase 1.2 conclusions
 
-Walkthrough decisions, 2026-09-19: Peter selected the [standard manifest analyzer](../decisions/0021-custom-elements-manifest.md) and [required Chromium, Firefox and WebKit checks](../decisions/0011-browser-verification.md). This was selection-time research, before the completed pass's implementation approval.
+Walkthrough decisions, 2026-09-19: Peter selected the [standard manifest analyzer](../decisions/DEC-021-custom-elements-manifest.md) and [required Chromium, Firefox and WebKit checks](../decisions/DEC-011-browser-verification.md). This was selection-time research, before the completed pass's implementation approval.
 
 **Recommendation: fix contract metadata and native form/state behaviour before adopting more framework mechanisms.** Keep the controllers and shared stylesheet objects already working here.
 
@@ -203,7 +203,7 @@ The current docs app still contains four `@state()` fields (`docs-src/app/docs-a
 
 ## Phase 1 extension: React and forms
 
-Captured 2026-09-19. Peter selected [a separate React package](../decisions/0081-react-integration.md), [native forms plus optional TanStack Form](../decisions/0067-native-and-managed-forms.md), and [no server rendering](../decisions/0092-server-rendering.md).
+Captured 2026-09-19. Peter selected [a separate React package](../decisions/DEC-081-react-integration.md), [native forms plus optional TanStack Form](../decisions/DEC-067-native-and-managed-forms.md), and [no server rendering](../decisions/DEC-092-server-rendering.md).
 
 ### React
 
@@ -213,7 +213,7 @@ Inspected @lit/react create-component source: reserved props, prototype-based pr
 
 React children still need real DOM elements to carry slot attributes. Do not copy a display:contents workaround against our wrapper-box rule. No React runtime integration or JSX table-cell rendering was proven in this extension.
 
-Later clarification: [Table is a consumer integration target](../decisions/0107-tanstack-table-compatibility.md), not a TanStack Table adapter. The application renders its own headers, rows and cells, using React for React content and Lit for Lit content. The required verification is that the structure preserves that framework ownership, context, identity, event handling, element access and cleanup. A React-to-Lit cell-renderer bridge is not selected. TanStack Virtual is explicitly required for virtualization in both framework paths.
+Later clarification: [Table is a consumer integration target](../decisions/DEC-107-tanstack-table-compatibility.md), not a TanStack Table adapter. The application renders its own headers, rows and cells, using React for React content and Lit for Lit content. The required verification is that the structure preserves that framework ownership, context, identity, event handling, element access and cleanup. A React-to-Lit cell-renderer bridge is not selected. TanStack Virtual is explicitly required for virtualization in both framework paths.
 
 ### Forms
 
@@ -225,7 +225,7 @@ Material Web's actual [form-associated behaviour](https://github.com/material-co
 
 TanStack snapshots: form-core/react-form 1.33.5, lit-form 1.25.5, with its separate lit-store dependency. [Lit quick start](https://tanstack.com/form/latest/docs/framework/lit/quick-start), [validation](https://tanstack.com/form/latest/docs/framework/lit/guides/validation), [arrays](https://tanstack.com/form/latest/docs/framework/react/guides/arrays), [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) and [native validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Constraint_validation) informed the comparison.
 
-Acceptance must cover form values, serialization, validation, disabled state, reset/restoration and synchronous event/FormData consistency, plus nested/array fields, async validation and submission in managed mode. Shared native-form ownership is now selected in [native-form-architecture.md](../decisions/0068-native-form-architecture.md). Exact control-specific rules and interfaces remain inventory work.
+Acceptance must cover form values, serialization, validation, disabled state, reset/restoration and synchronous event/FormData consistency, plus nested/array fields, async validation and submission in managed mode. Shared native-form ownership is now selected in [native-form-architecture.md](../decisions/DEC-068-native-form-architecture.md). Exact control-specific rules and interfaces remain inventory work.
 
 ## Phase 3 state and form mechanism follow-up
 
@@ -280,7 +280,7 @@ This is a text-control mechanism probe, not certification of forms. The restorat
 
 ### Style declaration order follow-up, 2026-09-20
 
-The shared style-property review selects [Chakra declaration-order behaviour](../decisions/0052-layout-spacing-properties.md#declaration-order-for-overlapping-properties) within a responsive condition. That is not automatically the order in which values most recently changed. Existing value/notification probe successes do not establish preservation of style declaration order.
+The shared style-property review selects [Chakra declaration-order behaviour](../decisions/DEC-052-layout-spacing-properties.md#declaration-order-for-overlapping-properties) within a responsive condition. That is not automatically the order in which values most recently changed. Existing value/notification probe successes do not establish preservation of style declaration order.
 
 Installed ReactiveElement source at node_modules/@lit/reactive-element/development/reactive-element.js:535–553 saves own properties set before upgrade by iterating constructor.elementProperties.keys(); lines 859–865 replay the resulting Map. The input values survive, but that traversal does not recover the author's original property order. This began as a source finding; the subsequent browser probe below reproduces the issue.
 
@@ -325,7 +325,7 @@ Each fraction is passed assertions/total assertions, not component coverage. The
 
 The isolated manifest API also emitted a superclass module reference such as /base while the module path was base.ts. Across six filename/import combinations, only an absolute fixture path with an explicit .ts import matched the module identifiers. Keep actual analyzer configuration, source-to-published paths, exports and module-reference normalization as a required integration check. This is not proof of a defect in a real CLI/project run, and it does not justify changing all source import spellings.
 
-**Defaults and lifecycle:** derived constructor assignments overwrite early author values in the negative comparison. CSS defaults preserve supplied values/order, removal exposing defaults, theme-variable changes, initial attributes, detached writes and reconnect. The initial equality helper serializes arrays as JSON, which conflates undefined and null; extra strict checks in each engine establish that omitted inputs are actually undefined. These tests do not disprove a correctly implemented default-returning getter. Peter subsequently chose [undefined for omitted CSS inputs](../decisions/0052-layout-spacing-properties.md#omitted-styling-inputs-and-visual-defaults); semantic-control defaults remain separate.
+**Defaults and lifecycle:** derived constructor assignments overwrite early author values in the negative comparison. CSS defaults preserve supplied values/order, removal exposing defaults, theme-variable changes, initial attributes, detached writes and reconnect. The initial equality helper serializes arrays as JSON, which conflates undefined and null; extra strict checks in each engine establish that omitted inputs are actually undefined. These tests do not disprove a correctly implemented default-returning getter. Peter subsequently chose [undefined for omitted CSS inputs](../decisions/DEC-052-layout-spacing-properties.md#omitted-styling-inputs-and-visual-defaults); semantic-control defaults remain separate.
 
 All owned probe tabs, browser instances and temporary servers were stopped. Playwright 1.63.0 and Firefox/WebKit binaries were installed only in the dedicated temporary test cache recorded in the evidence; the existing global cache and project dependencies were untouched. Runners use Bun. No production build, strict full-project type check or Lit-template compiler pass is claimed. Final metadata/attribute conversion, all 77 candidate styling properties, responsive combinations, inheritance/store-origin changes and the representative CSS pipeline were still required at that checkpoint.
 
@@ -355,7 +355,7 @@ Installed Lit source at development/lit-html.js:1197–1292 commits changed prop
 
 A small public ElementPart directive receiving the complete two-property input object passes six targeted checks per engine: child identity, canonical input access, late-value order/results and clearing an input. It writes the existing TanStack-backed properties and supplies their order; it does not create a second state store or use private Lit hooks. This first prototype targets already-defined elements and string values only. The subsequent lifecycle/registry study below extends definition and compilation coverage after Peter selected the helper; complete ownership/cleanup, responsive values, larger property sets and final types remain acceptance work.
 
-**Selected follow-up:** Peter chose the complete-input Lit authoring helper, retaining the existing order rule, component properties and static HTML authoring. A restricted all-property-binding convention fixes the tested late-value cases but does not solve mixed literal/bound overlap; it is not equivalent coverage. Fixed property priority was not selected. Exact helper naming/types and input ownership still need the full contract. [Decision](../decisions/0052-layout-spacing-properties.md#lit-helper-for-ordered-styling-inputs), [remaining return point](../history/systematization/scope-review.md#lit-style-authoring-and-declaration-order).
+**Selected follow-up:** Peter chose the complete-input Lit authoring helper, retaining the existing order rule, component properties and static HTML authoring. A restricted all-property-binding convention fixes the tested late-value cases but does not solve mixed literal/bound overlap; it is not equivalent coverage. Fixed property priority was not selected. Exact helper naming/types and input ownership still need the full contract. [Decision](../decisions/DEC-052-layout-spacing-properties.md#lit-helper-for-ordered-styling-inputs), [remaining return point](../history/systematization/scope-review.md#lit-style-authoring-and-declaration-order).
 
 ### Lit helper lifecycle and registry boundary
 
@@ -377,7 +377,7 @@ The [then-recorded scoped-registry direction](../history/parity-port-plan.md#7-d
 
 ### Lit helper ownership and batched updates
 
-Peter selected two further rules: the helper manages only supplied settings and clears ones it previously managed when removed; it reapplies its currently supplied values on every helper render, even after an external property write. Unrelated settings remain intact. [Decisions](../decisions/0052-layout-spacing-properties.md#settings-managed-by-the-lit-helper), [source/answer/probe record](../verification/systematization/lit-style-ownership-review-2026-09-20.json).
+Peter selected two further rules: the helper manages only supplied settings and clears ones it previously managed when removed; it reapplies its currently supplied values on every helper render, even after an external property write. Unrelated settings remain intact. [Decisions](../decisions/DEC-052-layout-spacing-properties.md#settings-managed-by-the-lit-helper), [source/answer/probe record](../verification/systematization/lit-style-ownership-review-2026-09-20.json).
 
 The complete installed style-map.js and live.js were read alongside the official [styleMap](https://lit.dev/docs/templates/directives/#stylemap) and [live](https://lit.dev/docs/templates/directives/#live) documentation. styleMap records supplied keys, removes old keys that become nullish and writes all currently supplied names on updates. Ordinary property bindings compare against the last bound value; live compares against the current DOM. These are different update contracts. The helper's reassertion rule is an explicit selection, not a claim that every Lit binding already behaves this way.
 
@@ -389,7 +389,7 @@ The helper prototype tracks the keys it previously supplied, clears removed keys
 
 When the fixture acquires backgroundColor and later removes it, its property becomes undefined and the CSS default applies; it does not restore the earlier value. This is not approval of unrestricted same-property writers or a complete attribute-reflection contract. Exact helper-expression removal, multiple/competing writers, types, scoped registries/adoption and the full responsive/property set remain open. The ownership harness was bundled without a new Lit compiler transform or strict type check; earlier compiled lifecycle results remain separate. All test browsers and the server are stopped. No production source or project dependency changed.
 
-At this checkpoint, inspector editing was unselected. The later [read-only inspector decision](../decisions/0026-design-system-devtools.md#approved-read-only-scope) excludes it from the selected scope. Any separately approved editing feature would need to distinguish temporary property edits from helper-input changes, because a later parent render can restore the supplied value.
+At this checkpoint, inspector editing was unselected. The later [read-only inspector decision](../decisions/DEC-026-design-system-devtools.md#approved-read-only-scope) excludes it from the selected scope. Any separately approved editing feature would need to distinguish temporary property edits from helper-input changes, because a later parent render can restore the supplied value.
 
 ## M00 native forms and scoped registries, 2026-09-20
 
@@ -497,7 +497,7 @@ Eleven focused tests and 23 final-source browser checks per engine pass. The int
 
 ## M05 explicit helper clearing and current CSS inputs, 2026-09-21
 
-Peter selected [explicit clearing](../decisions/0052-layout-spacing-properties.md#explicit-clearing-for-the-style-helper), resolving the lifecycle choice above. Keep the expression present and pass styleInputs({}); expression removal and temporary disconnect preserve canonical values. This permits a plain Lit directive with instance-based target attachment, without private lifecycle hooks or registry promises. Helper/controller integration was in progress at this checkpoint; acceptance follows below.
+Peter selected [explicit clearing](../decisions/DEC-052-layout-spacing-properties.md#explicit-clearing-for-the-style-helper), resolving the lifecycle choice above. Keep the expression present and pass styleInputs({}); expression removal and temporary disconnect preserve canonical values. This permits a plain Lit directive with instance-based target attachment, without private lifecycle hooks or registry promises. Helper/controller integration was in progress at this checkpoint; acceptance follows below.
 
 The prior internal canonical-input validator rejected invalid JavaScript CSS strings before state changed. Exposing that behavior through the helper would retain the previous valid value, contrary to the existing Chakra current-input decision. Authored strings now enter canonical state, and the planner omits grammar-invalid leaves while processing other properties/conditions. Native computed-invalid variables still reach CSS unchanged. Numeric/domain restrictions and the component's display subset remain checked; HTML retains its selected strict scalar/JSON conversion.
 

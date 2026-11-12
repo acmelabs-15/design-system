@@ -46,7 +46,7 @@ its own value.
 
 ## The pattern
 
-This historical excerpt comes from the first migrated element, `src/components/copy-button/copy-button.ts`. The later [public-state bridge decision](0080-public-state-bridge.md) records a derived-state failure and the canonical public-property contract; this excerpt is not the current recommended API:
+This historical excerpt comes from the first migrated element, `src/components/copy-button/copy-button.ts`. The later [public-state bridge decision](DEC-080-public-state-bridge.md) records a derived-state failure and the canonical public-property contract; this excerpt is not the current recommended API:
 
 ```ts
 private ownState = createStore({ done: false, hasIcon: false });

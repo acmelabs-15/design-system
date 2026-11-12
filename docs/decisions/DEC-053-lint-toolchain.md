@@ -16,4 +16,4 @@ Review the preset against Lit, Bun and the generated-style pipeline. Its default
 
 Keep the existing TypeScript compiler check while verifying the TypeScript-Go-based checks. Preserve CSS correctness coverage; a passing JavaScript linter alone is insufficient. Resolve generator defects at their source and distinguish intentional CSS fallbacks from accidental duplication.
 
-Versions tested, results and remaining limits: [developer-tooling analysis](../research/08-developer-tooling.md#oxlint-oxfmt-and-ultracite).
+Versions tested, results and remaining limits: [developer-tooling analysis](../research/RES-008-developer-tooling.md#oxlint-oxfmt-and-ultracite).

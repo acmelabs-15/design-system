@@ -9,14 +9,14 @@ Status: historical research with dated implementation follow-ups. Converted 2026
 
 ## Scope and current interpretation
 
-Peter selected one element per icon and Material Symbols SVG artwork with Rounded, unfilled defaults. M09 records below preserve catalogue, renderer, delivery and replacement acceptance. The [final evidence](../verification/systematization/m26-final/README.md) and [browser package decision](../decisions/0010-browser-distribution-package.md) record later integration and delivery. Catalogue geometry coverage is not an aesthetic review or field-performance result.
+Peter selected one element per icon and Material Symbols SVG artwork with Rounded, unfilled defaults. M09 records below preserve catalogue, renderer, delivery and replacement acceptance. The [final evidence](../verification/systematization/m26-final/README.md) and [browser package decision](../decisions/DEC-010-browser-distribution-package.md) record later integration and delivery. Catalogue geometry coverage is not an aesthetic review or field-performance result.
 
-The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../STATUS.md) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
+The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../agents/workspace.md#session-state) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
 
 ## Findings and dated evidence
 
 
-Phase 1.6, researched and reviewed 2026-09-19. **Peter selected [one element per icon](../decisions/0046-icon-element-shape.md) and [Material Symbols SVG artwork](../decisions/0060-material-symbols-icons.md), with Rounded, unfilled defaults.** These decisions supersede the initial single-element/Lucide recommendation after Peter requested multiple artwork styles. Detailed interfaces and delivery remained open at the research checkpoint. This investigation changed no source or dependency.
+Phase 1.6, researched and reviewed 2026-09-19. **Peter selected [one element per icon](../decisions/DEC-046-icon-element-shape.md) and [Material Symbols SVG artwork](../decisions/DEC-060-material-symbols-icons.md), with Rounded, unfilled defaults.** These decisions supersede the initial single-element/Lucide recommendation after Peter requested multiple artwork styles. Detailed interfaces and delivery remained open at the research checkpoint. This investigation changed no source or dependency.
 
 ## Current implementation at the research checkpoint
 

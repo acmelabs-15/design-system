@@ -14,6 +14,6 @@ The selected scope supports artifact authoring and version-aware retrieval. It d
 
 Transport, packaging/hosting, version resolution for installed packages and CDN-only artifacts, resource/tool names, prompt scope, and verification were not yet designed by this selection. The inspected AG Grid package's cached defaults and name inconsistencies are findings to learn from, not a selected interface to copy.
 
-Evidence: [MCP implementation review](../research/01-agent-tooling.md#ag-grid-mcp-server). The initial decision installed, configured, deployed or published no MCP server.
+Evidence: [MCP implementation review](../research/RES-001-agent-tooling.md#ag-grid-mcp-server). The initial decision installed, configured, deployed or published no MCP server.
 
-The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.
+The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../specs/SPEC-003-design-system/spec.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.

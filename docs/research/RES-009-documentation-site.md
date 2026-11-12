@@ -11,7 +11,7 @@ Status: historical research with dated implementation follow-ups. Converted 2026
 
 The manifest-driven documentation, shared examples and workflow publishing were implemented. M23 acceptance and M26 appearance results below retain their exact coverage. The tracked website snapshot was later retired after [release 0.3.2 verification](../releases/0.3.2.md). Earlier proposed component names, unapproved layouts and old site paths describe research checkpoints, not current implementation instructions.
 
-The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../STATUS.md) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
+The findings below retain their original research dates, source versions, measurements and verification limits. Statements about current code describe the checkpoint in their section. A proposal or source survey is not a decision or runtime acceptance. The [current handoff](../agents/workspace.md#session-state) owns unfinished work; the closed pass's phase gates and delegation do not apply to new work.
 
 ## Findings and dated evidence
 
@@ -28,9 +28,9 @@ Runtime verification covers every one of the 150 exported/registered classes and
 
 The complete DocAPI layout, CSS-property/state annotations for rebuilt families, and final consumer delivery remain assigned to M03/M23. Empty annotation categories are not evidence that a future family has no supported styling API. This slice does not certify the final inventory or selective import delivery.
 
-Walkthrough decision, 2026-09-19: Peter selected `@custom-elements-manifest/analyzer` as the manifest generator. [Decision record](../decisions/0021-custom-elements-manifest.md). At that walkthrough, its output still needed a repository-specific trial; the page layout and doc-component interfaces remained proposals.
+Walkthrough decision, 2026-09-19: Peter selected `@custom-elements-manifest/analyzer` as the manifest generator. [Decision record](../decisions/DEC-021-custom-elements-manifest.md). At that walkthrough, its output still needed a repository-specific trial; the page layout and doc-component interfaces remained proposals.
 
-The later walkthrough reviewed the existing shared renderers, missing API data, example reset/cleanup and matching displayed/executed code. [Material Web's documentation generator](https://github.com/material-components/material-web/blob/main/scripts/analyzer/update-docs.ts) was rechecked: it replaces marked API sections while retaining authored guidance. The discussion carries these findings into Phase 4; it does not approve the final page layout or proposed doc-component names. Separately, Peter selected [workflow-built website publishing](../decisions/0030-documentation-publishing.md) and [selective component loading](../decisions/0091-selective-component-loading.md).
+The later walkthrough reviewed the existing shared renderers, missing API data, example reset/cleanup and matching displayed/executed code. [Material Web's documentation generator](https://github.com/material-components/material-web/blob/main/scripts/analyzer/update-docs.ts) was rechecked: it replaces marked API sections while retaining authored guidance. The discussion carries these findings into Phase 4; it does not approve the final page layout or proposed doc-component names. Separately, Peter selected [workflow-built website publishing](../decisions/DEC-030-documentation-publishing.md) and [selective component loading](../decisions/DEC-091-selective-component-loading.md).
 
 ## Existing implementation at the 2026-09-19 checkpoint
 
@@ -90,11 +90,11 @@ Peter selected reusable results pagination after this investigation; details are
 
 Material Web's inspected component tree has no pagination component to reuse. Do not infer one from Material guidance or Angular Material's separate implementation. The document-navigation and data-pagination concepts should be explained distinctly in the inventory.
 
-The selected React package and agent-tooling research also affect documentation delivery. [Agent tooling](01-agent-tooling.md) tracks the existing skill-reference generator and selected versioned consumer guidance; versioned consumer skills, a documentation/API MCP and Intent tooling are selected for the later migration, with no installation performed.
+The selected React package and agent-tooling research also affect documentation delivery. [Agent tooling](RES-001-agent-tooling.md) tracks the existing skill-reference generator and selected versioned consumer guidance; versioned consumer skills, a documentation/API MCP and Intent tooling are selected for the later migration, with no installation performed.
 
 ## Results pagination capability
 
-[Peter selected reusable results pagination](../decisions/0087-results-pagination.md): numbered and compact navigation for tables and lists, including unknown totals. Page-size and jump-to-page layouts are documented compositions of existing controls. The application owns page state and data loading; no TanStack Table runtime dependency is selected. Keeping only documentation links and requiring applications to assemble all result controls was the rejected option.
+[Peter selected reusable results pagination](../decisions/DEC-087-results-pagination.md): numbered and compact navigation for tables and lists, including unknown totals. Page-size and jump-to-page layouts are documented compositions of existing controls. The application owns page state and data loading; no TanStack Table runtime dependency is selected. Keeping only documentation links and requiring applications to assemble all result controls was the rejected option.
 
 Current pagination.ts:30–35 exposes only destination titles and URLs; :47–64 renders the two document links and a centre slot. It cannot represent a results page/count/range. Keep that document-navigation concept distinct from the newly selected capability; exact naming and element/recipe boundaries are still open.
 
@@ -118,13 +118,13 @@ The extension point worth evaluating is a cohesive Pagination family with option
 
 Preserve application-owned state/data/loading and unknown-total support. The reference's totalPages/pages-length/fallback-1 expression is written for its known-count demo and must not manufacture a last page in unknown-total cases. Verify page-size changes, reset policy, out-of-range pages, loading, localization, real links versus buttons and accessible select labels. The visible Show text is not explicitly associated with the select in this source.
 
-The [decision note](../decisions/0087-results-pagination.md#review-pending-after-the-chakra-ui-pro-example) marks this as pending review. The research left the component/recipe boundary for the complete Pro review and Pagination inventory decision. Jump-to-page composition was not specifically reselected by Peter's example; that relationship remained an explicit scope question.
+The [decision note](../decisions/DEC-087-results-pagination.md#review-pending-after-the-chakra-ui-pro-example) marks this as pending review. The research left the component/recipe boundary for the complete Pro review and Pagination inventory decision. Jump-to-page composition was not specifically reselected by Peter's example; that relationship remained an explicit scope question.
 
 One live Pro preview check changed the page-size select to 25. The selected value became 25, the summary became Page 1 of 1, and the table contained 16 rows including its header (15 data rows). This verifies that specific composed state update in the reference preview. It is not a implementation test, a full pagination audit, or proof of unknown-total behaviour.
 
 ## Complete Pro documentation and kit evidence
 
-The [complete Pro review](21-chakra-pro-collection.md) includes all 50 Documentation blocks and every file in both kits. The private [capability synthesis](/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/reviews/capability-synthesis.md) links exact source lines for Code, Search, prose, navigation and Timeline. The investigation used this additional source alongside other reference systems under the then-applicable [standing comparison rule](../decisions/0082-reference-systems.md#standing-comparison-rule); none of these examples automatically expands the planned docs or library scope.
+The [complete Pro review](RES-021-chakra-pro-collection.md) includes all 50 Documentation blocks and every file in both kits. The private [capability synthesis](/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/reviews/capability-synthesis.md) links exact source lines for Code, Search, prose, navigation and Timeline. The investigation used this additional source alongside other reference systems under the then-applicable [standing comparison rule](../decisions/DEC-082-reference-systems.md#standing-comparison-rule); none of these examples automatically expands the planned docs or library scope.
 
 CodeBlock examples separate title/status, language or file controls, copy, content, optional line information and collapse. Some accept arbitrary empty-state content. These are useful optional-parts proposals, while Copy, Select and selection controls should retain their own shared responsibilities. Keep the selected highlighting/state packages. Some preview examples show different code from the rendered example, reset state by unmounting, or include unwired controls. Source/render fidelity and teardown need explicit acceptance checks.
 
@@ -134,13 +134,13 @@ Documentation pagination and lesson navigation use adjacent-document links, dist
 
 ## Complete Phase 4 documentation proposal
 
-The [documentation/tooling proposal](../../spec/SPEC-documentation-tooling.md) now specifies the page contract, seven documentation units, cleanup/reset/source fidelity, complete manifest tables, persistent document navigation, tested recipes and version-matched HTML/Lit/React references. It keeps static rendering functions where they suffice rather than turning every section into a custom element. Results Pagination remains a separate consumer family; the Pro-inspired coordinated parts are Q15 in the [five-question register](../design/systematization-decisions.md).
+The [documentation/tooling proposal](../../specs/SPEC-004-documentation-tooling/spec.md) now specifies the page contract, seven documentation units, cleanup/reset/source fidelity, complete manifest tables, persistent document navigation, tested recipes and version-matched HTML/Lit/React references. It keeps static rendering functions where they suffice rather than turning every section into a custom element. Results Pagination remains a separate consumer family; the Pro-inspired coordinated parts are Q15 in the [five-question register](../design/systematization-decisions.md).
 
 This is proposal assembly, not source implementation or final page-layout approval. CEM/private-member classification, packaged API consistency, native table/light-DOM styling delivery and example acceptance remain named engineering gates. Historical API omission/build counts above retain their dated scope; the fresh [source snapshot](../verification/systematization/current-public-interfaces-2026-09-20.json) is static coverage, not a replacement manifest.
 
 ### Whole-set approval and Phase 5 handoff
 
-On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/0049-inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/0064-migration-approval.md) through “approved”. At the approval checkpoint, M00 prerequisites preceded dependent implementation and production implementation had not started. The later M23/M26 results below supersede that status; approval alone was not a runtime result.
+On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/DEC-049-inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/DEC-064-migration-approval.md) through “approved”. At the approval checkpoint, M00 prerequisites preceded dependent implementation and production implementation had not started. The later M23/M26 results below supersede that status; approval alone was not a runtime result.
 
 ## M01/M02 source and output routing
 
@@ -151,7 +151,7 @@ GitHub Pages still serves main/docs, verified through the repository API on 2026
 
 ## Component naming — 2026-09-22
 
-Peter requires component names to stand on their own. The documentation previously separated one subset into a House navigation group, used different badge colors and appended a component-category sentence in Markdown/skill references. Those distinctions are removed. All components share the Components navigation group and badge treatment; Tokens belongs in Foundations. The unused metadata flag is removed from page and navigation types. Current guidance and glossary wording follow the [component-language decision](../decisions/0014-component-language.md). The site rebuild reports 96 pages and 4262 documented elements; 99 documentation tests pass.
+Peter requires component names to stand on their own. The documentation previously separated one subset into a House navigation group, used different badge colors and appended a component-category sentence in Markdown/skill references. Those distinctions are removed. All components share the Components navigation group and badge treatment; Tokens belongs in Foundations. The unused metadata flag is removed from page and navigation types. Current guidance and glossary wording follow the [component-language decision](../decisions/DEC-014-component-language.md). The site rebuild reports 96 pages and 4262 documented elements; 99 documentation tests pass.
 
 ## M22 metadata corrections — 2026-09-23
 

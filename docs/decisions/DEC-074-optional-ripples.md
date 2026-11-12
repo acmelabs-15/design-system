@@ -10,8 +10,8 @@ Support ripple feedback as an option, with ripples off by default. This preserve
 
 Decided 2026-09-19 by Peter.
 
-Material Web implements ripple feedback separately from the Checkbox, Radio and Switch state transitions. It is an implementation reference; this decision does not adopt Material Web as a package or settle the ripple interface. The later [actions contract](../../spec/SPEC-actions.md) defines the configuration level, applicable controls and public names.
+Material Web implements ripple feedback separately from the Checkbox, Radio and Switch state transitions. It is an implementation reference; this decision does not adopt Material Web as a package or settle the ripple interface. The later [actions contract](../../specs/SPEC-001-actions/spec.md) defines the configuration level, applicable controls and public names.
 
 When enabled, ripples must preserve contrast in combined hover/press states and respect reduced motion. Pointer cancellation, touch scrolling, keyboard activation, repeated presses, disabled state, forced colours and cleanup need verification.
 
-Evidence: [control and ripple source review](../research/02-animation-package.md#control-state-and-ripple-source-review).
+Evidence: [control and ripple source review](../research/RES-002-animation-package.md#control-state-and-ripple-source-review).

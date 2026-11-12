@@ -16,7 +16,7 @@ For explicitly selected compact mode, use a **24 × 24 CSS-pixel minimum clickab
 
 The approved Theme contract uses normal/compact and the role-specific mapping below. Complete per-component mapping and rendered limits require engineering verification, with the named constraints preserved. Text size changes belong to their own size/theme/responsive settings. No implementation or all-engine target audit is implied by design approval.
 
-Evidence: [density analysis](../research/07-design-foundations.md#density-and-interaction-targets).
+Evidence: [density analysis](../research/RES-007-design-foundations.md#density-and-interaction-targets).
 
 ## Approved compact treatment
 
@@ -24,6 +24,6 @@ Decided 2026-09-20 by Peter through “I approve all proposals.”
 
 Peter's whole-set approval selects role-specific compact tokens rather than one uniform multiplier. The approved comparison targets at a 16px root reference are layout gaps 8→6px and 16→12px, Table block padding 10→5px, and unchanged Table inline padding 8px. Express the token values consistently with the selected rem scale; explicit CSS overrides retain their authored values. All role mappings must preserve unchanged typography/icons/borders, normal-density overlay exceptions and the 24×24 CSS-pixel compact target floor. Verify the actual rendered mappings; approval is not a measurement.
 
-[Complete approval record](0049-inventory-approval.md), [closed question register](../design/systematization-decisions.md).
+[Complete approval record](DEC-049-inventory-approval.md), [closed question register](../design/systematization-decisions.md).
 
-The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.
+The unresolved implementation details above describe the selection-time scope. Later [component contracts](../../specs/SPEC-003-design-system/spec.md) and [release evidence](../releases/0.3.2.md) record subsequent work and its verification limits.

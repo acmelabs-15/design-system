@@ -10,8 +10,8 @@ Provide Segmented Control as one selected value, built on shared Radio Group beh
 
 Decided 2026-09-19 by Peter.
 
-This follows Peter's earlier Radio-plus-Group direction. Chakra uses radio-group behaviour, whereas the reviewed Radix and Material Lit implementations use toggle-button machinery. Tabs remains the component for associated content panels. Independent pressed buttons belong to [Toggle Button](0111-toggle-button.md).
+This follows Peter's earlier Radio-plus-Group direction. Chakra uses radio-group behaviour, whereas the reviewed Radix and Material Lit implementations use toggle-button machinery. Tabs remains the component for associated content panels. Independent pressed buttons belong to [Toggle Button](DEC-111-toggle-button.md).
 
-The shared indicator owns Lit Motion, including horizontal and vertical movement. Group does not acquire selection/form ownership. Exact values, initial/empty selection, orientation support, parts and nested Toolbar key rules belong to the later [selection contract](../../spec/SPEC-selection.md). One effective owner handles each key or gesture; no duplicate selection or focus engine.
+The shared indicator owns Lit Motion, including horizontal and vertical movement. Group does not acquire selection/form ownership. Exact values, initial/empty selection, orientation support, parts and nested Toolbar key rules belong to the later [selection contract](../../specs/SPEC-013-selection/spec.md). One effective owner handles each key or gesture; no duplicate selection or focus engine.
 
-Evidence: [source and comparison](../research/06-codebase-systematization.md#phase-2-closure-review), [answers](../verification/systematization/phase-2-closure-2026-09-19.json).
+Evidence: [source and comparison](../research/RES-006-codebase-systematization.md#phase-2-closure-review), [answers](../verification/systematization/phase-2-closure-2026-09-19.json).

@@ -4,31 +4,31 @@ This index routes the shared design-system contracts and the approved maintainer
 
 | Work | Status | Specification |
 |---|---|---|
-| MCP dependency advisory, [issue #9](https://github.com/acmelabs-15/design-system/issues/9) | Completed 2026-10-27; 0.3.3 published; issue closed | No contract change; [plan](../tasks/plan.md), [tasks](../tasks/todo.md), [release record](../docs/releases/0.3.3.md) |
-| Maintainer workflow | Completed and merged, 2026-10-22 | [Maintainer workflow](SPEC-maintainer-workflow.md), [plan](../tasks/done/maintainer-workflow/plan.md), [tasks](../tasks/done/maintainer-workflow/todo.md) |
-| Released design system | Version 0.3.3 is the latest release; converted contracts retain whole-set approval and explicit later resolutions | [Design-system contract](SPEC-design-system.md), [release record](../docs/releases/0.3.3.md) |
+| MCP dependency advisory, [issue #9](https://github.com/acmelabs-15/design-system/issues/9) | Completed 2026-10-27; 0.3.3 published; issue closed | No contract change; [plan](../../specs/SPEC-004-documentation-tooling/tasks/plan.md), [tasks](../../specs/SPEC-004-documentation-tooling/tasks/todo.md), [release record](../releases/0.3.3.md) |
+| Maintainer workflow | Completed and merged, 2026-10-22 | [Maintainer workflow](../../specs/SPEC-008-maintainer-workflow/spec.md), [plan](../../specs/SPEC-008-maintainer-workflow/tasks/plan.md), [tasks](../../specs/SPEC-008-maintainer-workflow/tasks/todo.md) |
+| Released design system | Version 0.3.3 is the latest release; converted contracts retain whole-set approval and explicit later resolutions | [Design-system contract](../../specs/SPEC-003-design-system/spec.md), [release record](../releases/0.3.3.md) |
 
-The [current status](../docs/STATUS.md) owns activation, progress and the active task. Design approval, released implementation and present verification results are distinct.
+The [current status](../agents/workspace.md#session-state) owns activation, progress and the active task. Design approval, released implementation and present verification results are distinct.
 
 ## Product contracts
 
 | Capability | Specification |
 | --- | --- |
-| Shared state, styling, themes and forms | [Foundations](SPEC-foundations.md) |
-| Box, Flex, Stack, Grid, Group, Scroll Area and Resizable | [Core layout](SPEC-design-system.md#core-layout-contract) and [remaining layout](SPEC-layout.md) |
-| Text, headings, formatting and time | [Typography](SPEC-typography.md) |
-| Buttons, icons, identity and theme selection | [Actions](SPEC-actions.md) |
-| Checkbox, Radio, Switch, Segmented Control and Tabs | [Selection](SPEC-selection.md) |
-| Text and numeric controls, Calendar, Field and native forms | [Inputs and forms](SPEC-inputs-forms.md) |
-| Card, Item, List, Data List and Disabled Wall | [Surfaces](SPEC-surfaces.md) |
-| Navigation, menus, trees and disclosure | [Navigation and disclosure](SPEC-navigation-disclosure.md) |
-| Notifications, progress, measurements and statistics | [Messages and statistics](SPEC-messages-statistics.md) |
-| Dialogs, drawers and help | [Overlays and help](SPEC-overlays-help.md) |
-| Tables, pagination, charts and flow diagrams | [Data displays](SPEC-data-displays.md) |
-| Code, Markdown, JSON, Book and media | [Rich content](SPEC-rich-content.md) |
-| Five-package delivery, React, documentation and consumer tooling | [Documentation and tooling](SPEC-documentation-tooling.md) |
+| Shared state, styling, themes and forms | [Foundations](../../specs/SPEC-005-foundations/spec.md) |
+| Box, Flex, Stack, Grid, Group, Scroll Area and Resizable | [Core layout](../../specs/SPEC-003-design-system/spec.md#core-layout-contract) and [remaining layout](../../specs/SPEC-007-layout/spec.md) |
+| Text, headings, formatting and time | [Typography](../../specs/SPEC-015-typography/spec.md) |
+| Buttons, icons, identity and theme selection | [Actions](../../specs/SPEC-001-actions/spec.md) |
+| Checkbox, Radio, Switch, Segmented Control and Tabs | [Selection](../../specs/SPEC-013-selection/spec.md) |
+| Text and numeric controls, Calendar, Field and native forms | [Inputs and forms](../../specs/SPEC-006-inputs-forms/spec.md) |
+| Card, Item, List, Data List and Disabled Wall | [Surfaces](../../specs/SPEC-014-surfaces/spec.md) |
+| Navigation, menus, trees and disclosure | [Navigation and disclosure](../../specs/SPEC-010-navigation-disclosure/spec.md) |
+| Notifications, progress, measurements and statistics | [Messages and statistics](../../specs/SPEC-009-messages-statistics/spec.md) |
+| Dialogs, drawers and help | [Overlays and help](../../specs/SPEC-011-overlays-help/spec.md) |
+| Tables, pagination, charts and flow diagrams | [Data displays](../../specs/SPEC-002-data-displays/spec.md) |
+| Code, Markdown, JSON, Book and media | [Rich content](../../specs/SPEC-012-rich-content/spec.md) |
+| Five-package delivery, React, documentation and consumer tooling | [Documentation and tooling](../../specs/SPEC-004-documentation-tooling/spec.md) |
 
-The [replacement map](component-coverage.md) accounts for the original 150 tags and selected additions. Completed replacements remain final. Their history and former phase gates are supporting records, not an implementation queue.
+The [replacement map](systematization/component-coverage.md) accounts for the original 150 tags and selected additions. Completed replacements remain final. Their history and former phase gates are supporting records, not an implementation queue.
 
 ## Scope and new work
 

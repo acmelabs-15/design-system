@@ -4,9 +4,9 @@ migrated: 0.8
 ---
 # Tables, pagination, charts and diagrams — R11
 
-**Status: approved contract.** Peter approved the complete proposal set on 2026-09-20. The stated recommendations are selected; explicitly recorded later resolutions are incorporated below. [Approval](../docs/decisions/0049-inventory-approval.md). Verification evidence retains its original date and scope.
+**Status: approved contract.** Peter approved the complete proposal set on 2026-09-20. The stated recommendations are selected; explicitly recorded later resolutions are incorporated below. [Approval](../../docs/decisions/DEC-049-inventory-approval.md). Verification evidence retains its original date and scope.
 
-**Approved family contract.** Data processing stays with the application. Keep the [selected TanStack Table boundary](../docs/decisions/0107-tanstack-table-compatibility.md), TanStack Virtual in both frameworks, TanStack Charts and [ELK viewer scope](../docs/decisions/0040-flow-diagram.md). This page supplies concrete interfaces and acceptance, not a claim of verified compatibility.
+**Approved family contract.** Data processing stays with the application. Keep the [selected TanStack Table boundary](../../docs/decisions/DEC-107-tanstack-table-compatibility.md), TanStack Virtual in both frameworks, TanStack Charts and [ELK viewer scope](../../docs/decisions/DEC-040-flow-diagram.md). This page supplies concrete interfaces and acceptance, not a claim of verified compatibility.
 
 ## D-01 Table
 
@@ -40,7 +40,7 @@ migrated: 0.8
 | Row selection | Checkbox/Radio composition, stable IDs and selected styling | Select/filter/page/reorder retains consumer-owned selected IDs |
 | Sorting | Header Button/Icon Button, aria-sort and arbitrary sort indicators | Multi/single/manual sorting remains consumer-owned and correctly announced |
 
-Custom features must work through the same native content/events/styles. Experimental worker data can show pending/error/recovery states; the application owns worker lifecycle. The [2026-09-26 Table setup record](../docs/research/06-codebase-systematization.md#m26-table-worker-application-setup--2026-09-26) documents the exact 9.2.4 declaration-only correction for combining custom features and experimental workers. Its guarded setup belongs to the application; it is not a Table runtime dependency or general future-version guarantee. No universal future-version compatibility promise is made.
+Custom features must work through the same native content/events/styles. Experimental worker data can show pending/error/recovery states; the application owns worker lifecycle. The [2026-09-26 Table setup record](../../docs/research/RES-006-codebase-systematization.md#m26-table-worker-application-setup--2026-09-26) documents the exact 9.2.4 declaration-only correction for combining custom features and experimental workers. Its guarded setup belongs to the application; it is not a Table runtime dependency or general future-version guarantee. No universal future-version compatibility promise is made.
 
 ### Virtualization and framework ownership
 
@@ -48,7 +48,7 @@ Applications connect TanStack Virtual to getScrollElement() and native measureme
 
 Vertical, horizontal and combined virtualization need finite layout sizes, row/column counts, aria-rowindex/colindex and focus restoration for offscreen logical cells. Native table versus CSS grid geometry is an explicit consumer layout recipe using the same semantic nodes; browser/assistive-tech checks must establish that CSS changes preserve meaning. Do not claim cell spans/pinned rows work merely because a minimal virtual list passed.
 
-**Required combination tests:** ordering+visibility+grouped headers; resizing+pinning+RTL; selection+pagination+filtering; expansion+virtualization+dynamic heights; spanning+pinned/virtual columns; custom feature+sorting/filtering; worker pending/error+manual data. All in Chromium/Firefox/WebKit, Lit/React, packaged imports. [Research checklist](../docs/research/06-codebase-systematization.md#capability-checklist-for-later-acceptance).
+**Required combination tests:** ordering+visibility+grouped headers; resizing+pinning+RTL; selection+pagination+filtering; expansion+virtualization+dynamic heights; spanning+pinned/virtual columns; custom feature+sorting/filtering; worker pending/error+manual data. All in Chromium/Firefox/WebKit, Lit/React, packaged imports. [Research checklist](../../docs/research/RES-006-codebase-systematization.md#capability-checklist-for-later-acceptance).
 
 ## D-02 Results Pagination
 
@@ -60,7 +60,7 @@ Position reads root context and renders known "page x of y" or unknown-total tex
 
 Q15 is closed: Position and Page Size are optional coordinated public parts of Pagination. Both keep application-owned reset/loading. The complete Pro event-log source supports the design; Peter's whole-set approval resolves the earlier boundary revision.
 
-Acceptance: zero/one/many results, out-of-range supplied page, unknown totals, explicit next availability, loading/failure/retry, changed sizes/filters, URL actions, focus and localization. [Decision and completed scope revision](../docs/decisions/0087-results-pagination.md), [complete Pro comparison](../docs/research/09-documentation-site.md#chakra-pro-pagination-review).
+Acceptance: zero/one/many results, out-of-range supplied page, unknown totals, explicit next availability, loading/failure/retry, changed sizes/filters, URL actions, focus and localization. [Decision and completed scope revision](../../docs/decisions/DEC-087-results-pagination.md), [complete Pro comparison](../../docs/research/RES-009-documentation-site.md#chakra-pro-pagination-review).
 
 ## D-03 Chart
 
@@ -68,7 +68,7 @@ acme-chart props type: line|bar|area=line; data: readonly `Record<string,unknown
 
 Slots header/legend/tooltip/empty; parts root/plot/axes/grid/tooltip. Tooltip content is author-owned and safe; axis/value formatting follows supplied formatters/locale. acme-request { action:"point", seriesKey, index } only when interactive=true; a static chart is not an automatic selection control.
 
-Keyboard/accessible summary and data alternative are required. Loading/empty/error/zero datasets remain distinct. Gaps/missing data are not zeros. Multiple series, numerical/time/category axes and combined interactions must use supported installed package APIs; extensions beyond the reviewed three types require new evidence. Retain the visual baseline and explicit shadow/tooltip rules, including the [2026-09-23 named Chart contrast correction](../docs/research/07-design-foundations.md#m20-chart-palette-contrast-deviation--2026-09-23): Chart 2 uses existing amber-900 and Chart 3 existing blue-900. The other palette entries and semantic color scales are unchanged; custom palettes retain their own contrast responsibility.
+Keyboard/accessible summary and data alternative are required. Loading/empty/error/zero datasets remain distinct. Gaps/missing data are not zeros. Multiple series, numerical/time/category axes and combined interactions must use supported installed package APIs; extensions beyond the reviewed three types require new evidence. Retain the visual baseline and explicit shadow/tooltip rules, including the [2026-09-23 named Chart contrast correction](../../docs/research/RES-007-design-foundations.md#m20-chart-palette-contrast-deviation--2026-09-23): Chart 2 uses existing amber-900 and Chart 3 existing blue-900. The other palette entries and semantic color scales are unchanged; custom palettes retain their own contrast responsibility.
 
 ## D-04 Sparkline and Legend
 
@@ -76,7 +76,7 @@ acme-sparkline props values: readonly (number|null)[]=[], label="", direction?: 
 
 acme-legend contains acme-legend-item; root orientation horizontal|vertical=horizontal, item value:string required, label="", color?:CSS color, hidden=false. Default item content; root/item/swatch/label parts. Passive by default. An interactive legend is composed from Checkbox/Toggle Button and emits those controls' events; Legend does not create a second series-selection store. Data links to Chart remain application-owned.
 
-Acceptance: multiple/empty series, colors versus labels, line direction independent of favorable meaning, keyboard alternatives, contrast and resizing. Current Chart/Spark/Legend declarations and [Stat decision](../docs/decisions/0100-stat-family.md) are the local baseline.
+Acceptance: multiple/empty series, colors versus labels, line direction independent of favorable meaning, keyboard alternatives, contrast and resizing. Current Chart/Spark/Legend declarations and [Stat decision](../../docs/decisions/DEC-100-stat-family.md) are the local baseline.
 
 ## D-05 Flow Diagram
 
@@ -90,7 +90,7 @@ ELK loads separately with explicit worker asset delivery and cancellation/stale-
 
 Validate unique IDs/ports/references, finite geometry, empty/disconnected/cyclic graphs, parallel/back edges and labels. Initial package research covered a 100-node case, not a general performance budget. Verification retains the recorded small/100-node fixtures, adds a larger stress case, measures responsiveness and reports tested sizes. The original Q16 did not select a universal graph limit.
 
-Parts root/viewport/background/node/edge/edge-label/controls; no raw SVG/ELK mutation API exposed as public state. No auxiliary pan/zoom/curve package is selected. Source [ELK decision/probe](../docs/decisions/0040-flow-diagram.md) and supplied screenshot determine viewer scope; the user image's workflow text is sample content.
+Parts root/viewport/background/node/edge/edge-label/controls; no raw SVG/ELK mutation API exposed as public state. No auxiliary pan/zoom/curve package is selected. Source [ELK decision/probe](../../docs/decisions/DEC-040-flow-diagram.md) and supplied screenshot determine viewer scope; the user image's workflow text is sample content.
 
 ## Complete consumer example shape
 
@@ -110,8 +110,8 @@ Parts root/viewport/background/node/edge/edge-label/controls; no raw SVG/ELK mut
 </acme-pagination>
 ```
 
-The runnable Lit/React acceptance examples create their own TanStack Table/Virtual instances and render native table content. Static HTML needs neither package for ordinary content. The retained illustration states intended composition; it is not a fresh execution. Later [Table/Pagination acceptance](../docs/verification/systematization/m19-table-pagination-2026-09-23.json), [Chart acceptance](../docs/verification/systematization/m20-chart-sparkline-legend-2026-09-23.json) and [Flow evidence](../docs/verification/systematization/m20-flow-diagram-2026-09-23.json) record their tested scope and limits.
+The runnable Lit/React acceptance examples create their own TanStack Table/Virtual instances and render native table content. Static HTML needs neither package for ordinary content. The retained illustration states intended composition; it is not a fresh execution. Later [Table/Pagination acceptance](../../docs/verification/systematization/m19-table-pagination-2026-09-23.json), [Chart acceptance](../../docs/verification/systematization/m20-chart-sparkline-legend-2026-09-23.json) and [Flow evidence](../../docs/verification/systematization/m20-flow-diagram-2026-09-23.json) record their tested scope and limits.
 
 ## Dated Flow verification limit
 
-The signed Firefox 156.0.1 release passed the timing-varied twenty-cycle cancellation/navigation comparison, while the older patched Firefox 155 test binary failed. This supports the recorded release comparison and does not diagnose or repair the older native crash. The [Flow comparison](../docs/research/15-lit-practice-review.md#flow-current-release-comparison) retains both results; larger graph fixtures and automated accessibility checks do not imply unlimited graph scale or actual assistive-technology coverage.
+The signed Firefox 156.0.1 release passed the timing-varied twenty-cycle cancellation/navigation comparison, while the older patched Firefox 155 test binary failed. This supports the recorded release comparison and does not diagnose or repair the older native crash. The [Flow comparison](../../docs/research/RES-015-lit-practice-review.md#flow-current-release-comparison) retains both results; larger graph fixtures and automated accessibility checks do not imply unlimited graph scale or actual assistive-technology coverage.

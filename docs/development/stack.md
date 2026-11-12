@@ -32,7 +32,7 @@ Versions and dependency placement belong to the [core manifest](../../packages/c
 
 Native Lit behavior ports use the selected state, motion, style and utility stack. Zag can supply source evidence; its component machine, interpreter and state runtime are not adopted. The selected scroll-lock utility keeps its separate role.
 
-Application React examples can use React Store. They do not replace the wrapped component's canonical Lit state. Application page state and data loading remain separate from navigation and presentation. Query/DB is deferred scope. The [server-rendering decision](../decisions/0092-server-rendering.md) retains the browser-only product scope.
+Application React examples can use React Store. They do not replace the wrapped component's canonical Lit state. Application page state and data loading remain separate from navigation and presentation. Query/DB is deferred scope. The [server-rendering decision](../decisions/DEC-092-server-rendering.md) retains the browser-only product scope.
 
 ## Authoring and delivery tools
 
@@ -52,7 +52,7 @@ Application React examples can use React Store. They do not replace the wrapped 
 | Documentation/API MCP | `@modelcontextprotocol/sdk` and `zod` in the optional Bun server |
 | Inspector | `@tanstack/devtools-ui` and `solid-js` in the optional devtools package |
 
-Intent does not replace artifact-quality evaluations or implement the MCP server. Its [decision](../decisions/0048-intent-tooling.md) records the probe limits. Reference systems do not authorize importing their runtime packages. TanStack Config practices are recommendations, not adoption of another package or automation system.
+Intent does not replace artifact-quality evaluations or implement the MCP server. Its [decision](../decisions/DEC-048-intent-tooling.md) records the probe limits. Reference systems do not authorize importing their runtime packages. TanStack Config practices are recommendations, not adoption of another package or automation system.
 
 ## Changes to the stack
 

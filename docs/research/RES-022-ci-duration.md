@@ -50,7 +50,7 @@ Concurrent checks collide on a few shared resources: port 4180 for four document
 
 `bun test --parallel=4` takes 60.5 s locally against 123.6 s serial. One timing-sensitive test failed once under load: the dev watcher test with a 5 s deadline. `scripts/__tests__/manifest.test.ts` alone takes 47 s, because it repeats the whole-repository manifest analysis. An open Bun report describes a `--parallel` deadlock on 1.4.0 ([oven-sh/bun#39987](https://github.com/oven-sh/bun/issues/39987)).
 
-Types take 37–54 s with TypeScript 5.9. The two programs can run in parallel and must follow the build. TypeScript 7, the official Go compiler, has been stable since 2026-07-08 and reports 8–12x faster checks; it has no programmatic API until 7.1. Rust ports exist: `tsrs` from Cloudflare with VoidZero (experimental, announced 2026-10-20, up to 8x TypeScript 7.0) and `tsc-rs`, `tsz` and `ts-r`. For this pipeline they would save a few seconds beyond TypeScript 7. [Decision 0053](../decisions/0053-lint-toolchain.md) keeps TypeScript 5.9 as the gate until a native compiler's equivalence is proven.
+Types take 37–54 s with TypeScript 5.9. The two programs can run in parallel and must follow the build. TypeScript 7, the official Go compiler, has been stable since 2026-07-08 and reports 8–12x faster checks; it has no programmatic API until 7.1. Rust ports exist: `tsrs` from Cloudflare with VoidZero (experimental, announced 2026-10-20, up to 8x TypeScript 7.0) and `tsc-rs`, `tsz` and `ts-r`. For this pipeline they would save a few seconds beyond TypeScript 7. [Decision 0053](../decisions/DEC-053-lint-toolchain.md) keeps TypeScript 5.9 as the gate until a native compiler's equivalence is proven.
 
 ### Records-only changes
 
@@ -93,7 +93,7 @@ Recorded 2026-10-27 through the question tool. They scope the next CI plan; that
 - A target below the 6–7 minute free-runner estimate for a code change, with a task-level build cache as well, aiming at about 5–5.5 minutes.
 - The cache uses GitHub's `actions/cache`, with one key per build step. Turborepo is not used.
 
-Still open for the plan: TypeScript 7 against [decision 0053](../decisions/0053-lint-toolchain.md), the Firefox per-route isolation in the documentation check, and the trust check in the publish path.
+Still open for the plan: TypeScript 7 against [decision 0053](../decisions/DEC-053-lint-toolchain.md), the Firefox per-route isolation in the documentation check, and the trust check in the publish path.
 
 ## Limits
 

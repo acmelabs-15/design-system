@@ -14,6 +14,6 @@ The earlier “support both and create our own port where needed” discussion w
 
 Use ordinary properties such as corner radius, size, position and transforms when they can express the required behaviour. Add custom geometry only when a demonstrated transition needs it. Material remains a reference for behaviour and technique. Lit Motion remains the animation engine, with the rest of the selected stack governing the implementation.
 
-No geometry package or complete shape port is selected. The explored material-shapes-ts and shape-morph libraries remain background candidates. Exact transitions belong to the applicable [component contracts](../../spec/SPEC-design-system.md). Verify interruption, reduced motion, closure/interpolation where relevant, clipping, focus and usable interaction targets. Preserve provenance and license notices for any geometry later reused or ported.
+No geometry package or complete shape port is selected. The explored material-shapes-ts and shape-morph libraries remain background candidates. Exact transitions belong to the applicable [component contracts](../../specs/SPEC-003-design-system/spec.md). Verify interruption, reduced motion, closure/interpolation where relevant, clipping, focus and usable interaction targets. Preserve provenance and license notices for any geometry later reused or ported.
 
-Evidence and candidate limits: [animation analysis](../research/02-animation-package.md#phase-1-extension-material-motion-and-shapes).
+Evidence and candidate limits: [animation analysis](../research/RES-002-animation-package.md#phase-1-extension-material-motion-and-shapes).

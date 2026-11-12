@@ -6,7 +6,7 @@ decided: 2026-10-21
 ---
 # Separate package modules from browser delivery
 
-The combined core 0.3.0 archive was rejected by npm with E415 because it contained 185,977 files. The package split was resolved under [Peter's then-scoped execution delegation](0035-execution-delegation.md). Keep package modules and types in @acmelabs/design-system. Publish the existing browser module graph, bundles, styles and notices in the coordinated @acmelabs/design-system-browser package. Use the new browser package in CDN examples and generated consumer guidance.
+The combined core 0.3.0 archive was rejected by npm with E415 because it contained 185,977 files. The package split was resolved under [Peter's then-scoped execution delegation](DEC-035-execution-delegation.md). Keep package modules and types in @acmelabs/design-system. Publish the existing browser module graph, bundles, styles and notices in the coordinated @acmelabs/design-system-browser package. Use the new browser package in CDN examples and generated consumer guidance.
 
 Decided 2026-10-20 by Peter.
 
