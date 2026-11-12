@@ -32,7 +32,7 @@ Source: Peter's kickoff prompt of 2026-11-12, [saved word for word](../design/v1
 - After every answer the agent evaluates the whole map, saves it, and tells Peter in one or two lines what changed.
 - Research starts only for the row in front of us, or for a big unknown that shapes the map. It gives no recommendation unless Peter asks. Its output goes to files with sources and dates.
 - Landscape sweeps use `deep-research`, the built-in workflow of Claude Code that `/deep-research` starts: IDEA-001#01, IDEA-004#01, IDEA-005#01 and IDEA-006#01. Narrow questions use brain research records.
-- Delegated research agents run on Opus 5.5 at medium effort where that makes sense (Peter, 2026-11-12). This is the default for every research row. A row that needs hard reasoning across many sources can keep the session's model; the agent states the reason in chat.
+- The model and effort for delegated research agents are in [the capabilities file](../agents/capabilities.md#sub-agents).
 - The 0.3.3 decision and research records are evidence for a question. They do not answer it.
 - A question that belongs to a later idea goes into that idea's map as an open row.
 
