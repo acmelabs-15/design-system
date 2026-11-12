@@ -1,0 +1,56 @@
+---
+id: IDEA-006
+status: define # define | specced | done | parked
+result: # with status: done, the DEC-NNN or the commit SHA this idea produced
+---
+# IDEA-006: Devtools for all framework versions
+
+## Intent
+- Outcome: a devtools package that works with every framework version of 1.0, with live prop switching on a selected component and theming controls.
+- User: Peter decides. Developers use it while they build with 1.0.
+- Why now: 1.0 replaces the 0.3.3 inspector, so its base is chosen again: TanStack Devtools, a fork of it, or our own.
+- Success: research covers extending TanStack Devtools, forking it and building our own; Peter has chosen; the capability list is fixed; a spec exists.
+- Constraint: research comes first, then Peter decides.
+- Out of scope: no later idea exists. IDEA-002 owns the token pipeline, IDEA-003 the Lit core, IDEA-004 the wrappers and IDEA-005 the MCP server and skills.
+
+<!-- After the user's explicit yes to this intent, add the line: Confirmed by <name> on <YYYY-MM-DD>. -->
+
+## Destination
+A spec for the 1.0 devtools package: its base, its capabilities, and how it reaches each framework version.
+
+## Notes
+- Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas).
+
+### Waits
+- Row 01 — wait: the deep research skill. See the waits in IDEA-001.
+- Row 07 — wait: IDEA-003#05 and IDEA-004#04 are resolved.
+- Row 08 — wait: IDEA-002#09 is resolved.
+
+### Settled by the prompt
+- One devtools package serves all the framework versions.
+- Its capabilities include live prop switching on a selected component, and theming controls.
+- The options to evaluate: TanStack Devtools (extend it, or fork it into something custom) against our own build. Research comes first.
+
+### Evidence from 0.3.3
+- Decision 0026 builds the 0.3.3 inspector on TanStack Devtools. It is evidence, not an answer. Find it through the [decision index](../decisions/README.md).
+
+## Map
+
+| # | Question | Type | Status | Blocked by | Result |
+|---|---|---|---|---|---|
+| 01 | What does TanStack Devtools offer for extension and for a fork, and which other bases for devtools exist? | research | open | — | — |
+| 02 | What does the 0.3.3 devtools package do, and which limits do its records name? | research | open | — | — |
+| 03 | Which capabilities must the first devtools release have beyond live prop switching and theming controls? | interview | open | — | — |
+| 04 | Is devtools built on TanStack Devtools (extended or forked), or built by us? | interview | open | 01, 02, 03 | — |
+| 05 | Does devtools work on the custom elements for every framework, or through an adapter for each framework? | interview | open | 04, 07 | — |
+| 06 | Do the theming controls only preview token values, or do they also export changes? | interview | open | 03, 08 | — |
+| 07 | Import the composition architecture from IDEA-003 and the wrapper targets from IDEA-004. | task | open | — | — |
+| 08 | Import the token pipeline decision from IDEA-002. | task | open | — | — |
+
+## Not yet specified
+- How devtools stays out of production bundles.
+- Whether devtools and the MCP server read component metadata from one source.
+
+## Out of scope
+- The token pipeline (IDEA-002), the Lit core (IDEA-003) and the wrappers (IDEA-004).
+- The MCP server and the skills (IDEA-005).
