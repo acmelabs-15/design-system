@@ -1,3 +1,8 @@
+---
+id: RES-008
+migrated: 0.8
+date: 2026-09-19
+---
 # Research 08: Developer tooling and release verification
 
 Status: historical research with dated implementation follow-ups. Converted 2026-10-21.

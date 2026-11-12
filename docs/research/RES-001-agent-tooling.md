@@ -1,3 +1,8 @@
+---
+id: RES-001
+migrated: 0.8
+date: 2026-10-21
+---
 # Research 01: Agent tooling
 
 Status: historical research with dated implementation follow-ups. Converted 2026-10-21.

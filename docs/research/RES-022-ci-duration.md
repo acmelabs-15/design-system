@@ -1,3 +1,8 @@
+---
+id: RES-022
+migrated: 0.8
+date: 2026-10-27
+---
 # Research 22: CI duration and how to shorten it
 
 Status: research for the next CI plan. It records measurements, sources and estimates; it selects nothing. Recorded 2026-10-27.

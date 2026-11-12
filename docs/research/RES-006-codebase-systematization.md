@@ -1,3 +1,8 @@
+---
+id: RES-006
+migrated: 0.8
+date: 2026-09-19
+---
 # Codebase analysis for the systematization pass
 
 This record follows research and implementation checkpoints from 2026-09-19 through 2026-09-26. Selected responsibilities and removals remain decisions; source locations, versions, counts and unfinished work describe their dated checkpoints. Later [component contracts](../../spec/SPEC-design-system.md) and [release evidence](../releases/0.3.2.md) record the resulting product and verification limits.

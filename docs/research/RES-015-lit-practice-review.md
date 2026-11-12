@@ -1,3 +1,8 @@
+---
+id: RES-015
+migrated: 0.8
+date: 2026-09-09
+---
 # Lit practice review
 
 This record preserves research and implementation checkpoints from 2026-09-10 through 2026-09-26. Versions, source paths, scratch paths, counts and unfinished work describe those checkpoints; they are not current tasks or a new setup procedure. Later [component contracts](../../spec/SPEC-design-system.md), [final audit](../verification/systematization/m26-audit/README.md) and [release evidence](../releases/0.3.2.md) record subsequent scope and limits.

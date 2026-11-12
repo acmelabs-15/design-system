@@ -1,3 +1,8 @@
+---
+id: RES-003
+migrated: 0.8
+date: 2026-09-09
+---
 # Research 03: Behaviour parity verification investigation
 
 Status: historical research with dated implementation follow-ups. Converted 2026-10-21.

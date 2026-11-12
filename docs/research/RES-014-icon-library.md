@@ -1,3 +1,8 @@
+---
+id: RES-014
+migrated: 0.8
+date: 2026-09-19
+---
 # Research 14: Icon library investigation
 
 Status: historical research with dated implementation follow-ups. Converted 2026-10-21.

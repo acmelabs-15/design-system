@@ -1,3 +1,8 @@
+---
+id: RES-020
+migrated: 0.8
+date: 2026-09-09
+---
 # Research 20: Systematic verification and maintainer-workflow research
 
 Status: historical research with dated implementation follow-ups. Converted 2026-10-21.

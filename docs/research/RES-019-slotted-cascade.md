@@ -1,3 +1,8 @@
+---
+id: RES-019
+migrated: 0.8
+date: 2026-09-10
+---
 # Research 19: Styling slotted content: what the cascade actually allows
 
 Status: historical research with dated implementation follow-ups. Converted 2026-10-21.

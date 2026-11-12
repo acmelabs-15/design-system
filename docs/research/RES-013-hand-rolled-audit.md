@@ -1,3 +1,8 @@
+---
+id: RES-013
+migrated: 0.8
+date: 2026-09-09
+---
 # Research 13: Audit: what we hand-rolled that a package could own
 
 Status: historical research with dated implementation follow-ups. Converted 2026-10-21.

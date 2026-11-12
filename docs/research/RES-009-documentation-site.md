@@ -1,3 +1,8 @@
+---
+id: RES-009
+migrated: 0.8
+date: 2026-09-19
+---
 # Research 09: Documentation site investigation
 
 Status: historical research with dated implementation follow-ups. Converted 2026-10-21.

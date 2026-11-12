@@ -1,3 +1,8 @@
+---
+id: RES-010
+migrated: 0.8
+date: 2026-09-10
+---
 # Research 10: `.el` gives a large button the wrong radius, and the spec cannot say otherwise
 
 Status: historical research with dated implementation follow-ups. Converted 2026-10-21.

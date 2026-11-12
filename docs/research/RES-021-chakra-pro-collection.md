@@ -1,3 +1,8 @@
+---
+id: RES-021
+migrated: 0.8
+date: 2026-09-19
+---
 # Research 21: Chakra UI Pro collection review
 
 Status: Completed bounded source review, 2026-09-19; private collection remains outside the repository.

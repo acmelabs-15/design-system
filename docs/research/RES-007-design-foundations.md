@@ -1,3 +1,8 @@
+---
+id: RES-007
+migrated: 0.8
+date: 2026-09-19
+---
 # Design foundations: Phase 1 extension
 
 This record follows foundation research from 2026-09-19 through the dated implementation and contrast checks below. It preserves proposals, selections, failed experiments and bounded results. The [component contracts](../../spec/SPEC-design-system.md) own the approved interfaces; the [release record](../releases/0.3.2.md) owns later completion evidence and limits. The [historical request register](../design/additional-capabilities.md) records the original additions and review state.
