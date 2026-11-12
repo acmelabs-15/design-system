@@ -1,6 +1,7 @@
 ---
 id: RES-025
-status: in-progress # in-progress | resolved
+status: resolved # in-progress | resolved
+outcome: answered
 kind: task
 from: IDEA-002#16
 date: 2026-11-12
@@ -11,40 +12,68 @@ date: 2026-11-12
 What does a live trial of one component made through the Figma MCP show: the number of calls, the manual cleanup, the errors, whether `use_figma` counts against the rate limit, and whether a Starter account can write to its own drafts?
 
 ## Answer
-Not answered yet. Steps 1 to 4 are done except the small write test, which is now part of step 5. Step 5 runs.
+The trial passed on 2026-11-12. One component set "Button" exists in a draft file of the plan "ACME Labs" (Professional, Full seat), made through the remote Figma MCP. Trial file: https://www.figma.com/design/IDZGIYgjCi97TKQgecNVO4
 
-Progress:
+Completion condition: one component with variants, component properties and variable bindings exists in a Figma draft file, made through the remote Figma MCP, and this record states the calls, the errors and the cleanup. That part is met. Two parts of the question stay open; see "Not answered".
 
-- 2026-11-12: Peter reports that he created the team "ACME Labs" under a Figma account he already had on his personal Gmail address, and bought the Professional plan for it. Not stated: monthly or annual billing, and his seat type. The team link is not in this repo, because it holds account identifiers.
-- 2026-11-12: the agent started the Figma sign-in and gave Peter the approval link. The Figma tools are not available yet, so the approval is still open.
-- 2026-11-12: Peter reports that he created a Figma access token and stored it in 1Password, beside an older Figma entry. The MCP sign-in does not use a token. The token is for Figma's REST API and may serve rows 08 and 09. It is not in this repo and was not shown in chat.
-- 2026-11-12: Peter approved the sign-in. The Figma tools are available. `whoami` answers: a Full seat and the admin role on the plan "ACME Labs", tier `pro`. The same account also has a Starter team; the trial does not touch it.
-- 2026-11-12: step 5 started. A sub-agent named `trial-idea002-16` builds the trial component in a new draft file of the ACME Labs plan. It runs on the session's model, so that the result shows what the route can do at its best. Its progress file is `.artifacts/v1/trial/IDEA-002-16-progress.md` and its result file is `.artifacts/v1/trial/IDEA-002-16-result.md`; both are scratch files outside git.
-- 2026-11-12: Peter corrected the model. The first sub-agent was stopped after two Figma calls (`whoami`, `create_new_file`). The trial file exists; its key is in the scratch progress file. A second sub-agent, `trial-idea002-16b`, continues in that file on Opus 5.5 at medium effort, as `docs/agents/capabilities.md` requires.
-- Consequence: the question "can a Starter account write to its own drafts" can no longer be tested with this account. It stays unanswered unless a second, free account is used.
+### Measured
 
-The three findings on account email and team ownership come from search excerpts of the named help articles, not from full reads of the pages. UNVERIFIED: whether Figma accepts a Gmail address as a work email address for the Organization upgrade.
+| Measure | Result |
+|---|---|
+| Figma calls in total | 11: `use_figma` 5 (3 write, 2 read), `whoami` 2, `create_new_file` 1, `create_session` 1, `get_metadata` 1, `get_screenshot` 1 |
+| Time | About 4 minutes for the 9 calls of the second agent |
+| Model | Calls 1 and 2: first agent, on the session's model. Calls 3 to 11: Opus 5.5 at medium effort |
+| Errors, refusals, time-limit failures | None. Every call returned a result on its first attempt |
+| Rate-limit messages | None |
+| AI credits | None spent |
 
-Completion condition: one component with variants, component properties and variable bindings exists in a Figma draft file, made through the remote Figma MCP. This record then states the number of tool calls, each error, the manual cleanup that was necessary, the answer on the rate limit and the answer on Starter drafts.
+### What exists in the file
 
-Planned steps:
+- A variable collection "Trial tokens" with the modes Light and Dark and 13 variables: 8 colours, 2 radii, 3 spacing steps. Each has scopes and a WEB code syntax.
+- A component `Icon/Plus` and a component set `Button` with 12 variants: Variant (Solid, Outline) × Size (Small, Medium) × State (Default, Hover, Disabled). Every variant uses auto layout.
+- Three component properties: Label (TEXT), Show icon (BOOLEAN) and Icon (INSTANCE_SWAP).
+- Variable bindings: a read script found 0 unbound fills, strokes, paddings, gaps and radii in the 12 variants. Instances in an explicit Dark mode resolve to the Dark values.
+- A Review frame with 12 instances in Light and 12 in Dark.
 
-1. Peter creates a free Figma account (Starter) for ACMElabs. ACMElabs has no work email address yet (Peter, 2026-11-12), so he signs up with his personal Gmail address, with email and password and not with Google sign-in, and names the team ACMElabs. Only Peter can do this step. The findings below show that the email address and the team owner can change later. RES-024 finds that a self-serve upgrade to Organization needs an account with a work email address.
-2. Peter says so. The agent starts the Figma sign-in of the installed plugin, and Peter approves it in the browser.
-3. The agent makes one read call and one small write call to a draft file. This shows whether a Starter account can write to its own drafts. Starter allows 20 read calls each month, so the agent counts every call here.
-4. If Starter cannot write: Peter buys the Professional plan with one Full seat and monthly billing (RES-024: $20 for each month). Only Peter can do this step.
-5. The agent builds the trial component in a draft file, in the order that the `figma-generate-library` skill gives: variables first, then the component set.
-6. The agent writes the results here and sets the outcome.
+### Defects and cleanup
 
-Safe to repeat: steps 2, 3 and 5, on a draft file only. Step 4 is a purchase; do not repeat it.
+1. Found and fixed through the MCP: each Outline variant was 2 px larger than its Solid counterpart, because new auto-layout components include strokes in the layout.
+2. The variant grid has uneven gaps and no row or column labels.
+3. Not bound to variables: the label font and its sizes, the Outline stroke weight, the icon size and the icon stroke width. The file has no text style.
+4. The icon colour is an override on the nested instance. The trial did not test whether it survives a swap to another icon.
+5. In Dark mode the disabled Solid button is hard to see on the dark ground. This is a fault of the trial token values.
+6. The page keeps its default name, and the icon component sits alone on the canvas.
+
+### Limits of this evidence
+
+- The agent judged its own output from a screenshot and from structure reads. No person has inspected the file yet.
+- A Button is a simple component. The trial has no nested slots, no overlay and no motion.
+- `get_metadata` shows no component properties and no variable bindings. Their check needs a `use_figma` read script.
+- Not tried, by the rules of the trial: library publication and a second file. Not tried at all: an icon swap, and the `get_libraries` and `search_design_system` tools.
+
+### Not answered
+
+- UNVERIFIED: whether `use_figma` counts against the rate limit. Eleven calls brought no rate-limit message, which settles nothing.
+- Whether a Starter account can write to its own drafts. The account is on Professional, so the trial could not test it. The decision in IDEA-002#02 does not need it.
+
+### Progress
+
+- 2026-11-12: Peter created the team "ACME Labs" under a Figma account he already had on his personal Gmail address, bought the Professional plan for it, and stored a Figma access token in 1Password. The MCP sign-in does not use the token.
+- 2026-11-12: Peter approved the Figma sign-in. `whoami` answers: a Full seat and the admin role on "ACME Labs", tier `pro`.
+- 2026-11-12: a first sub-agent on the session's model made two calls and was stopped on Peter's correction. A second sub-agent, `trial-idea002-16b`, on Opus 5.5 at medium effort, finished the trial and reported a pass.
 
 ## Findings
 - The email address of a Figma account can be changed in the account settings. An account that uses Google sign-in must first switch to email and password; after that the email can change to any address. Source: https://help.figma.com/hc/en-us/articles/360039820114-Manage-email-address-or-password, checked 2026-11-12.
 - The current owner of a team can transfer ownership to another team member. Source: https://help.figma.com/hc/en-us/articles/360039481134-Transfer-ownership-of-a-team, checked 2026-11-12.
 - Figma has a procedure to transfer a team to another plan. Source: https://help.figma.com/hc/en-us/articles/10250387712407-Transfer-a-folder-or-team-to-another-plan, checked 2026-11-12.
+- The component set "Button" has 12 variants and the properties Label (TEXT), Show icon (BOOLEAN) and Icon (INSTANCE_SWAP). Source: https://www.figma.com/design/IDZGIYgjCi97TKQgecNVO4, checked 2026-11-12.
+- A read script found 0 unbound fills, strokes, paddings, gaps and radii in the 12 variants, and the Dark mode resolves to the Dark values. Source: the trial agent's result file `.artifacts/v1/trial/IDEA-002-16-result.md` (scratch, outside git), checked 2026-11-12.
+- The trial used 11 Figma calls with no error, no refusal, no time-limit failure and no rate-limit message. Source: the trial agent's result file `.artifacts/v1/trial/IDEA-002-16-result.md` (scratch, outside git), checked 2026-11-12.
+- New auto-layout components include strokes in the layout, which made the Outline variants 2 px larger until a script set `strokesIncludedInLayout` to false. Source: the trial agent's result file `.artifacts/v1/trial/IDEA-002-16-result.md` (scratch, outside git), checked 2026-11-12.
 
 ## Follow-ups
-None.
+- Does a `use_figma` call count against the MCP rate limit of the seat? It matters when many components are built in one day.
+- Does an icon colour override survive an instance swap? The first real component with an icon can show it.
 
 ## Next action
-Wait for the sub-agent `trial-idea002-16b`. Then read its result file in full, copy the measured facts into this record (step 6) and set the outcome. If the sub-agent stopped early, continue step 5 from its progress file, in the same trial file.
+None.

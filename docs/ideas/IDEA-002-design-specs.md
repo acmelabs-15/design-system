@@ -24,20 +24,21 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 ### Waits
 - Row 14 — wait: IDEA-001 reaches `done`.
 
-### Row 16 — in progress
-- Record: [RES-025](../research/RES-025-figma-live-trial.md) holds the steps, the detailed progress and the sources.
-- Settled: Peter created the team "ACME Labs" under a Figma account he already had, and bought the Professional plan for it. He approved the Figma sign-in. He has a Full seat and the admin role on that plan.
-- Source: Peter's replies of 2026-11-12 ("I created a new team ACME Labs under a figma acount i already had created ... and got the profressional", "i opened it") and the `whoami` call of the same day.
-- Also settled: Peter stored a Figma access token in 1Password. The MCP sign-in does not use it. It may serve rows 08 and 09.
-- Conditions: the account stays on Peter's personal address until ACMElabs has a work email address; the email address and the team owner can change later. No Organization or Enterprise plan before rows 07 and 09 are decided.
-- Running: sub-agent `trial-idea002-16b` on Opus 5.5 at medium effort, started 2026-11-12. It builds the trial component in the draft file that the first agent created. The first agent, `trial-idea002-16`, ran on the session's model and was stopped after two calls, on Peter's correction. Its scratch files are `.artifacts/v1/trial/IDEA-002-16-progress.md` and `.artifacts/v1/trial/IDEA-002-16-result.md`.
-- Open: the trial result. Two questions stay untested for now: whether a Starter account can write to its own drafts, and how files move when a Professional team upgrades to Organization.
-- Next: read the result file in full, copy the measured facts into RES-025, and review them with Peter before row 02.
+### Figma account
+- Peter's Figma account has the team "ACME Labs" on the Professional plan, with a Full seat and the admin role (2026-11-12). The Figma MCP is signed in for this account.
+- The account stays on Peter's personal address until ACMElabs has a work email address; the email address and the team owner can change later (RES-025).
+- Peter stored a Figma access token in 1Password. The MCP does not use it. It may serve rows 08 and 09.
+- Direction given on 2026-11-12: no Organization or Enterprise plan before rows 07 and 09 are decided. Not checked: how files move when a Professional team upgrades to Organization.
+
+### Row 02 — pending question
+- Asked on 2026-11-12, after RES-023, RES-024 and RES-025: where is the design spec of each component made? Options put to Peter: both media split by content (recommended), Figma only, repo documents only.
+- Not asked yet in the question: a look at the trial file by Peter himself. The question gives him the link.
 
 ### Facts that shape later rows
 - RES-024: the Variables REST API needs the Enterprise plan. A private plugin needs Organization or Enterprise. A library can be published from Professional upward.
 - RES-023 and RES-024 disagree on variable modes for each collection. RES-023 takes 1, 4 and 40 from the plugin files. RES-024 takes 10, 20 and unlimited from Figma's pricing and plan pages of 2026-11-12, and row 15 owns plan facts.
 - Writing through the MCP is free in beta and becomes a usage-based paid feature. Figma gives no price and no date.
+- RES-025: the live trial passed with 11 calls, about 4 minutes and no error. No person has inspected the trial file yet. Open: whether `use_figma` counts against the rate limit.
 
 ### Settled by the prompt
 - A design spec covers anatomy and parts, variants, sizes, states, tokens, slots and subcomponents, accessibility behaviour and motion.
@@ -68,7 +69,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 13 | What must one design spec hold before a component can be built from it? | interview | open | 02 | — |
 | 14 | Import the final component list from IDEA-001. | task | open | — | — |
 | 15 | Which Figma plan and seat does each capability need (MCP use, variables and modes, library publishing, the Variables REST API, plugins), and what does each cost today? | research | resolved | — | [RES-024](../research/RES-024-figma-plans-and-prices.md) |
-| 16 | What does a live trial of one component made through the Figma MCP show: the number of calls, the manual cleanup, the errors, whether `use_figma` counts against the rate limit, and whether a Starter account can write to its own drafts? | task | in-progress | 15 | — |
+| 16 | What does a live trial of one component made through the Figma MCP show: the number of calls, the manual cleanup, the errors, whether `use_figma` counts against the rate limit, and whether a Starter account can write to its own drafts? | task | resolved | 15 | [RES-025](../research/RES-025-figma-live-trial.md) |
 
 ## Not yet specified
 - The order and batch size of the component specs. The plan settles it.
