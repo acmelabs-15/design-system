@@ -27,28 +27,26 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 ### Figma account
 - Peter's Figma account has the team "ACME Labs" on the Professional plan, with a Full seat and the admin role (2026-11-12). The Figma MCP is signed in for this account.
 - The account stays on Peter's personal address until ACMElabs has a work email address; the email address and the team owner can change later (RES-025).
-- Peter stored a Figma access token in 1Password. The MCP does not use it. It may serve rows 08 and 09.
+- Peter stored a Figma access token in 1Password: the item "Figma Auth Token" in the vault "Personal". The MCP does not use it. The item gives 2027-02-01 as the expiry date. The token has 16 scopes; `file_variables:read` is not one of them (RES-028).
+- Peter, 2026-11-12, during row 19: "there should be a figma token you can use from 1password". The agent used it for the six REST reads of RES-028 only. Another use needs its own reason in the row that needs it.
 - Direction given on 2026-11-12: no Organization or Enterprise plan before rows 07 and 09 are decided. Not checked: how files move when a Professional team upgrades to Organization.
 
-### Row 18 — partial, ready to ask
+### Row 18 — partial, question pending
 - Settled: Peter prefers one source. All of a spec goes in Figma, and a pipeline pulls what the repo needs into Markdown files, with a conversion step where necessary. He is not worried about the beta and price risk of Figma.
 - Source: Peter's reply of 2026-11-12 to the row 02 question: "all of it should go in Figma and then we should basically leverage the Figma API to create like a pipeline where those... things that are needed in the repo get pulled down into Markdown files", "that would be one way to have a single source for updating", "I'm not worried about the beta and price risk".
 - Conditions: he worded it as a thought ("I'm wondering if"), and he was not sure which tools exist.
 - Facts now in RES-027: his direction is workable. An agent that reads through the Figma MCP can pull every kind of spec content, also Figma Specs documents as Markdown, rich-text descriptions, motion and variable values. An unattended CI job with the access token reads less: structure, variants, properties, plain-text descriptions, one plain annotation for each node and text layers; it reads no Specs document, no rich text and no variable values. Figma ships no command-line tool for export; its `figma` command serves Code Connect only.
+- Live results in RES-028, 2026-11-12: the MCP returned the Spec as Markdown, the rich-text description, the annotations with their categories and the variable values for both modes. The REST API returned the description and the annotations as plain text without categories, the variable bindings as IDs, and for the Spec only its title and empty nodes. The Variables endpoint answered 403.
 - Open: Peter's confirmation of the single source, and the shape of the pipeline: run by an agent through the MCP on demand, or unattended in CI through the REST API with the limits above.
-- Next: run row 19 first, because it takes minutes and settles the UNVERIFIED lines. Then ask row 18 with these options: one source with an agent-run pipeline through the MCP; one source with a CI pipeline through the REST API and plain-text behaviour notes; behaviour documents written in the repo.
+- Pending question, asked on 2026-11-12 after row 19: where does the whole design spec live? Options: all in Figma with an agent-run pull through the MCP (recommended, because it is the one option that keeps one source for the whole spec); all in Figma with a CI pull through the REST API and plain-text behaviour notes; behaviour documents written in the repo.
 
 ### Row 09 — delegated, not decided yet
 - Peter delegated the token route on 2026-11-12: "we want the Figma tokens to get pulled into the design system code base via whatever method makes the most sense. I think Figma has a couple different options for doing that."
 - Scope: the agent chooses the route after rows 08 and 19, records the decision, and tells Peter. It does not ask him again unless the choice needs a purchase or a higher plan.
 - Facts in RES-026: on the Professional plan no route reads variable values unattended. The routes that work there: a `use_figma` read script run by an agent, Figma's own "Export modes" JSON run by a person or a browser agent, a custom plugin, and plugins such as Tokens Studio (Team plan: 39 euros a month for each editor). The Variables REST API runs unattended and has an official GitHub example, but it needs Enterprise, which is outside the delegation.
 - Leaning, not a decision: an agent reads the variables through the MCP and writes files in the W3C design tokens format, version 2025.10; Terrazzo or Style Dictionary turns them into CSS custom properties and TypeScript. It costs nothing more, and the same route reads the spec content.
-- Why not decided on 2026-11-12: two cheap checks are missing, and row 19 holds both. The exact file that "Export modes" writes is unverified, and no variable read has run through `use_figma` yet.
-
-### Row 19 — do next
-- A task for the agent, on the trial file of RES-025. It needs the signed-in Figma MCP, the access token from 1Password for the REST calls, and a browser or Peter for one "Export modes" file.
-- It answers the follow-ups of RES-026 and RES-027: what `GET file nodes` returns for a description, an annotation and an embedded Spec; what `get_design_context` returns; whether a `use_figma` script reads variable values and a Spec as Markdown; which format "Export modes" writes.
-- Create its task record before the first call, as the interview skill says for do rows.
+- Both checks are done in RES-028. "Export modes" writes one DTCG 2025.10 file for each mode, with aliases as `{group.name}` references and Figma's IDs, scopes and code syntax in `$extensions`; a browser agent ran it with two clicks. A `use_figma` script reads the values for each mode in Figma's own JSON, about 345 bytes for each variable, so a large set needs several calls and a conversion to DTCG.
+- Not decided yet: both candidate routes need an agent or a person. The choice waits for Peter's answer to row 18, because that answer says whether a pull may need an agent. If he requires an unattended pull, no route on the Professional plan gives token values, and the delegation does not cover a higher plan.
 
 ### Facts that shape later rows
 - RES-024: the Variables REST API needs the Enterprise plan. A private plugin needs Organization or Enterprise. A library can be published from Professional upward.
@@ -61,6 +59,9 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - The delegated agents of 2026-11-12 ran on Opus 5.5 at `xhigh` effort, not medium; see the note in the capabilities file.
 - Peter, 2026-11-12: "the agents can use the browser to make updates to Figma". This covers steps that the MCP cannot do, such as publishing a library.
 - RES-025: the live trial passed with 11 calls, about 4 minutes and no error. No person has inspected the trial file yet. Open: whether `use_figma` counts against the rate limit.
+- RES-028: `get_design_context` gives an agent the annotations and the component descriptions, but it changes bold and italic marks and drops pinned properties. Exact text needs a `use_figma` script.
+- RES-028: `use_figma` cannot read or add dev resources. The REST endpoint for dev resources answers on Professional.
+- RES-028: the trial file now also holds read fixtures: a rich-text description, three annotations, one embedded Spec and three more variables.
 
 ### Settled by the prompt
 - A design spec covers anatomy and parts, variants, sizes, states, tokens, slots and subcomponents, accessibility behaviour and motion.
@@ -94,7 +95,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 16 | What does a live trial of one component made through the Figma MCP show: the number of calls, the manual cleanup, the errors, whether `use_figma` counts against the rate limit, and whether a Starter account can write to its own drafts? | task | resolved | 15 | [RES-025](../research/RES-025-figma-live-trial.md) |
 | 17 | Which routes can read the whole design spec of a component out of Figma into files in the repo, and what can each one read? | research | resolved | 02 | [RES-027](../research/RES-027-figma-spec-export-routes.md) |
 | 18 | Does Figma hold the whole design spec, with the Markdown in the repo generated by a pipeline, or do the behaviour parts live in documents written in the repo? | interview | open | 17 | — |
-| 19 | What do live reads of the trial file return: the REST API with the access token, the MCP read tools, a `use_figma` read script for variables and for an embedded Spec, and the native "Export modes" file? | task | open | — | — |
+| 19 | What do live reads of the trial file return: the REST API with the access token, the MCP read tools, a `use_figma` read script for variables and for an embedded Spec, and the native "Export modes" file? | task | resolved | — | [RES-028](../research/RES-028-figma-live-reads.md) |
 
 ## Not yet specified
 - The order and batch size of the component specs. The plan settles it.
