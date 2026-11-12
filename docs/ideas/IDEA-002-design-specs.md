@@ -22,13 +22,17 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas).
 
 ### Waits
-- Row 16 — wait: Peter's Figma account and sign-in. RES-023 answers row 01 from documentation only; no live call was made. Its follow-ups (write quality for one component, whether `use_figma` counts against the rate limit, plugin version 2.2.157 against 2.2.207) are row 16. RES-023 finds that writing through the MCP needs a paid plan and a Full seat, so the trial also waits on the plan facts of row 15.
 - Row 14 — wait: IDEA-001 reaches `done`.
 
-### Work in progress
-- Row 16: the trial record is [RES-025](../research/RES-025-figma-live-trial.md). Its next step is Peter's: create a free Figma account.
-- Peter asked on 2026-11-12 for direction on the Figma sign-up and on what to buy. The direction given: a free account now; Professional with one Full seat and monthly billing only when the trial needs to write; no Organization or Enterprise plan before rows 07 and 09 are decided.
-- Peter wants the Figma account to be for ACMElabs (2026-11-12). ACMElabs has no work email address yet, so the direction is: his personal Gmail address with email and password, a team named ACMElabs, and no Organization plan now. The email address and the team owner can change later (RES-025). Not checked yet: how files move when a Professional team upgrades to Organization.
+### Row 16 — in progress
+- Record: [RES-025](../research/RES-025-figma-live-trial.md) holds the steps, the detailed progress and the sources.
+- Settled: Peter created the team "ACME Labs" under a Figma account he already had, and bought the Professional plan for it. He approved the Figma sign-in. He has a Full seat and the admin role on that plan.
+- Source: Peter's replies of 2026-11-12 ("I created a new team ACME Labs under a figma acount i already had created ... and got the profressional", "i opened it") and the `whoami` call of the same day.
+- Also settled: Peter stored a Figma access token in 1Password. The MCP sign-in does not use it. It may serve rows 08 and 09.
+- Conditions: the account stays on Peter's personal address until ACMElabs has a work email address; the email address and the team owner can change later. No Organization or Enterprise plan before rows 07 and 09 are decided.
+- Running: sub-agent `trial-idea002-16`, started 2026-11-12. It builds the trial component in a new draft file of the ACME Labs plan. Its scratch files are `.artifacts/v1/trial/IDEA-002-16-progress.md` and `.artifacts/v1/trial/IDEA-002-16-result.md`.
+- Open: the trial result. Two questions stay untested for now: whether a Starter account can write to its own drafts, and how files move when a Professional team upgrades to Organization.
+- Next: read the result file in full, copy the measured facts into RES-025, and review them with Peter before row 02.
 
 ### Facts that shape later rows
 - RES-024: the Variables REST API needs the Enterprise plan. A private plugin needs Organization or Enterprise. A library can be published from Professional upward.
