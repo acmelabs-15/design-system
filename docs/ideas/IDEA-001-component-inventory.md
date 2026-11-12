@@ -50,8 +50,8 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 - Other sessions: the branches `claude/ci-speed` and `claude/issue-12-strict-style-policy` have their own worktrees, and the `main` checkout holds uncommitted files. They change the system that 1.0 replaces. Leave them as they are.
 - The open maintenance issues of 0.3.3 stay in the local tracker, `.scratch/maintenance/issues/`.
 
-### Row 03 — pending question
-- Asked on 2026-11-12: who is 1.0 for, and what do they build with it? Options put to Peter, which can combine: ACME Labs' own applications; AI-written artifacts and prototypes; other teams, as a public design system; marketing and content sites. The evidence favours no option.
+### Row 03 — next question to ask
+- Prepared on 2026-11-12 and not asked yet, because Peter cleared the session first: who is 1.0 for, and what do they build with it? Options put to Peter, which can combine: ACME Labs' own applications; AI-written artifacts and prototypes; other teams, as a public design system; marketing and content sites. The evidence favours no option. Evidence for the question: the 0.3.3 glossary says the system gives "artifacts" a consistent design language, and one consumer skill is `html-artifacts`; the kickoff prompt adds framework packages, devtools and an MCP server, which points at full applications. No record names the products.
 
 ### Waits
 - Decision records: the prompt's own decisions (full replacement, branch, no compatibility) have no DEC files yet. The same holds for Peter's setup decisions of 2026-11-12: the kickoff prompt lives in `docs/design/`, the glossary takes the GLOSSARY names, every legacy record moves to layout 2, the tracker files are removed, and `docs/agents/workflow.md` gives way to the workspace file. The workspace is on layout 2 since 2026-11-12, so `brain new-doc DEC` now gives DEC-117 and later. The first decision record is DEC-117 (IDEA-002#02). Next: create the records for the prompt's decisions and the setup decisions.
