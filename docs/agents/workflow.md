@@ -9,6 +9,7 @@ Brain owns the workflow. These locations adapt its records to this repository an
 | Approved current plan and task acceptance | tasks/plan.md and tasks/todo.md |
 | Completed plans and task snapshots | tasks/done/ |
 | Intent and interview answers | docs/design/ |
+| Scope, phases and interview rules of the 1.0 refactor, in Peter's words | [Kickoff prompt](../design/v1-kickoff-prompt-original-2026-11-12.md) |
 | Selected decisions and their reasons | docs/decisions/NNNN-slug.md |
 | Research and its index | docs/research/NN-slug.md and README.md |
 | Release summaries | docs/releases/ |
