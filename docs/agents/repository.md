@@ -14,7 +14,7 @@ The repository builds Lit web components with the `acme-` prefix. The root [pack
 | [MCP](../../packages/mcp/package.json) | Bun documentation/API server and generated documentation records |
 | [Devtools](../../packages/devtools/package.json) | Optional inspector and generated public metadata |
 
-The manifests and lockfile own versions and dependencies. Package roles live in [stack guidance](../development/stack.md). All five releases use coordinated versions and one build tree. Normal workspace resolution uses that tree without root-package overrides.
+The manifests and lockfile own versions and dependencies. Package roles live in [stack guidance](../development/stack.md). All five releases use coordinated versions and one build tree. Normal workspace resolution uses that tree without root-package overrides. A package-local rule is justified only by an actual local difference.
 
 Authored areas include component/shared source, styles, site, scripts, examples, package source, reference tools, docs, spec and tasks. Generated exceptions appear below. The committed generated source is reviewable output. Build and website output are disposable.
 
@@ -62,3 +62,29 @@ Packing materializes approved links into self-contained output. Development patc
 The core README links to the root consumer README. Maintain one copy; use published-package-resolvable links for maintainer material. Published consumer skills are separate from maintainer workflow skills.
 
 The [Pages workflow](../../.github/workflows/pages.yml) deploys the verified website artifact from its dependent quality job. Website output is not tracked. Local release preparation records its source state; it does not establish publication or a clean candidate. Current work belongs to the unfinished ideas and specs. Release state belongs to the [release records](../releases/).
+
+## Record ownership
+
+[The workspace](workspace.md) names the folders for ideas, decisions, research and specs, and says how to find the active work. These records live outside those folders:
+
+| Record | Owner |
+| --- | --- |
+| Source prompts and intent documents, including [Peter's kickoff prompt for 1.0](../design/v1-kickoff-prompt-original-2026-11-12.md) | docs/design/ |
+| Indexes of the decisions, research and specifications of releases 0.1 to 0.3 | docs/history/ |
+| Completed process history, including the [maintainer migration terms](../history/maintainer-migration-terms.md) | docs/history/ |
+| The retired status note, with its bytes kept | [docs/agents/history/STATUS.md](history/STATUS.md) |
+| Release summaries | docs/releases/ |
+| Durable verification and original evidence | docs/verification/ |
+| Unresolved follow-ups of release 0.3.3 | [Maintenance index](../../.scratch/maintenance/issues/README.md) |
+| Live cross-package acceptance code and fixtures | scripts/verification/ |
+| Scratch outputs | .artifacts/ |
+
+Research updates its existing subject record; a new subject gets a new record. Numbers identify records; they do not invent decision chronology. An explicit later decision can supersede an earlier selection: preserve the earlier reasons and date, then link the resolution. Historical evidence keeps its original bytes and limits.
+
+## Domain and earlier records
+
+Use component names directly. Every component belongs to the same design system. Explain a material Lit or platform trade-off when the task needs it.
+
+The decision, research and specification records of releases 0.1 to 0.3 keep their dates, evidence and supersession links. They are evidence for a 1.0 question, not its answer. A historical count or a passing prototype proves only its recorded scope. Find them through the [decision index](../history/decision-index-0.3.md), the [research index](../history/research-index-0.3.md) and the [specification index](../history/specification-index-0.3.md).
+
+A code difference does not change an approved contract. Name the conflict and record the decision through brain:domain-modeling.

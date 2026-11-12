@@ -18,7 +18,7 @@ Use the affected test files for focused checks. The full unit command is:
 bun test
 ```
 
-Generation dependencies run in this order. Documentation needs the built runtime; tooling needs documentation and metadata.
+Generation dependencies run in this order. Documentation needs the built runtime; tooling needs documentation and metadata. Serialize shared generator, build and browser jobs.
 
 ```sh
 bun run split

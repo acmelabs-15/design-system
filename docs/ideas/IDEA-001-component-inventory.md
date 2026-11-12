@@ -50,7 +50,7 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 - The open maintenance issues of 0.3.3 stay in the local tracker, `.scratch/maintenance/issues/`.
 
 ### Waits
-- Decision records: the prompt's own decisions (full replacement, branch, no compatibility) have no DEC files yet. The workspace is on layout 2 since 2026-11-12, so `brain new-doc DEC` now gives DEC-117 and later. Next: create them before the first interview question.
+- Decision records: the prompt's own decisions (full replacement, branch, no compatibility) have no DEC files yet. The same holds for Peter's setup decisions of 2026-11-12: the kickoff prompt lives in `docs/design/`, the glossary takes the GLOSSARY names, every legacy record moves to layout 2, the tracker files are removed, and `docs/agents/workflow.md` gives way to the workspace file. The workspace is on layout 2 since 2026-11-12, so `brain new-doc DEC` now gives DEC-117 and later. Next: create them before the first interview question.
 - Row 01 — wait: this session has no skill named Anthropic's deep research skill. Retry when Peter installs it or names a substitute.
 
 ### Settled by the prompt

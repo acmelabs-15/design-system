@@ -131,7 +131,7 @@ This heading preserves the original anchor. The former standing rules no longer 
 
 | Recorded meaning | Sole current owner or disposition |
 | --- | --- |
-| Approved product contracts and supporting evidence | Specifications and decisions; current [workflow](../agents/workflow.md) owns updates and approval scope |
+| Approved product contracts and supporting evidence | Specifications and decisions; current [workflow](../agents/repository.md#record-ownership) owns updates and approval scope |
 | Selected stack, TanStack state and shared Lit/React behavior; application Table/Virtual/Form ownership | [Component guidance](../development/components.md) and [stack](../development/stack.md) |
 | Producer-authored CSS and generated CSS/maps/Lit modules | [Style guidance](../development/styles.md) |
 | Real wrapper boxes and native content where required | [Component guidance](../development/components.md) |

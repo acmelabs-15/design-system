@@ -22,7 +22,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas).
 
 ### Waits
-- Row 01 — wait: no Figma MCP is connected in this session. The row can use published documentation. A live test needs the server; retry it when Peter connects one.
+- Row 01 — wait: a Figma plugin with an MCP server is installed since 2026-11-12, but it is not authenticated. The row can use published documentation. A live test needs Peter to complete the Figma sign-in; retry it after that.
 - Row 14 — wait: IDEA-001 reaches `done`.
 
 ### Settled by the prompt
