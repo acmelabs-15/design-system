@@ -16,6 +16,8 @@ Not answered yet. Steps 1 and 4 are done; no call has run.
 Progress:
 
 - 2026-11-12: Peter reports that he created the team "ACME Labs" under a Figma account he already had on his personal Gmail address, and bought the Professional plan for it. Not stated: monthly or annual billing, and his seat type. The team link is not in this repo, because it holds account identifiers.
+- 2026-11-12: the agent started the Figma sign-in and gave Peter the approval link. The Figma tools are not available yet, so the approval is still open.
+- 2026-11-12: Peter reports that he created a Figma access token and stored it in 1Password, beside an older Figma entry. The MCP sign-in does not use a token. The token is for Figma's REST API and may serve rows 08 and 09. It is not in this repo and was not shown in chat.
 - Consequence: the question "can a Starter account write to its own drafts" can no longer be tested with this account. It stays unanswered unless a second, free account is used.
 
 The three findings on account email and team ownership come from search excerpts of the named help articles, not from full reads of the pages. UNVERIFIED: whether Figma accepts a Gmail address as a work email address for the Organization upgrade.
