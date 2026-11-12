@@ -16,6 +16,8 @@ From a package directory, find the Git repository root and use it for this workf
 
 Load brain:using-brain at session start, then select the applicable skill. Agent-skills remains available. When both plugins provide the same skill, use brain's version. The plugins own the lifecycle and engineering procedures; this repository supplies its facts and record locations.
 
+Before starting a sub-agent, read [capabilities](docs/agents/capabilities.md). It sets how to start one: without a name, with its model and effort in the call.
+
 Before composing a user-owned decision or permission question, load brain:ask-user-question and read its applicable host reference in full. Keep approval scoped to the actual task and action. The active idea or spec records current authorization; a completed pass or another repository grants no standing permission here.
 
 Setup, wait-what and handoff start from Peter's prompt. When one is needed, give him the applicable command or skill invocation. [CLAUDE.md](CLAUDE.md) carries Claude command spellings; Codex uses the installed skill names.

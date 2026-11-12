@@ -1,6 +1,6 @@
 # Kickoff prompt for the 1.0 refactor
 
-Peter's kickoff prompt of 2026-11-12, corrected on the same day in six passages so that it matches the brain plugin (version 0.13.0). Git holds the first version (commit e2a91b559) and the list of corrections (commit 33d37d800).
+Peter's kickoff prompt of 2026-11-12, corrected on the same day in six passages so that it matches the brain plugin (version 0.13.0), and extended by one sentence on how to start sub-agents. Git holds the first version (commit e2a91b559) and the list of corrections (commit 33d37d800).
 
 ---
 
@@ -96,7 +96,7 @@ Never research the whole tree up front. Start research only for the row in front
 
 ## Sub-agents
 
-Every sub-agent brief names the exact skills the agent must load and whether it needs the MCP. A research agent keeps its progress in its own research record, its RES file, and writes no other file. A task agent appends granular progress lines to its own file in the scratch folder, and writes its result to a file whose name starts with the row or task ID. Run independent work in parallel; don't be conservative about how much runs at once.
+Every sub-agent brief names the exact skills the agent must load and whether it needs the MCP. Start each delegated agent the way docs/agents/capabilities.md says: without a name, on Opus 5.5 at medium effort. A research agent keeps its progress in its own research record, its RES file, and writes no other file. A task agent appends granular progress lines to its own file in the scratch folder, and writes its result to a file whose name starts with the row or task ID. Run independent work in parallel; don't be conservative about how much runs at once.
 
 ## Stopping points
 
