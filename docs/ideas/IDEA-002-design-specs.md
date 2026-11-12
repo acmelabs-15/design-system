@@ -30,14 +30,26 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Peter stored a Figma access token in 1Password. The MCP does not use it. It may serve rows 08 and 09.
 - Direction given on 2026-11-12: no Organization or Enterprise plan before rows 07 and 09 are decided. Not checked: how files move when a Professional team upgrades to Organization.
 
-### Row 02 — pending question
-- Asked on 2026-11-12, after RES-023, RES-024 and RES-025: where is the design spec of each component made? Options put to Peter: both media split by content (recommended), Figma only, repo documents only.
-- Not asked yet in the question: a look at the trial file by Peter himself. The question gives him the link.
+### Row 18 — partial
+- Settled: Peter prefers one source. All of a spec goes in Figma, and a pipeline pulls what the repo needs into Markdown files, with a conversion step where necessary. He is not worried about the beta and price risk of Figma.
+- Source: Peter's reply of 2026-11-12 to the row 02 question: "all of it should go in Figma and then we should basically leverage the Figma API to create like a pipeline where those... things that are needed in the repo get pulled down into Markdown files", "that would be one way to have a single source for updating", "I'm not worried about the beta and price risk".
+- Conditions: he worded it as a thought ("I'm wondering if"), and he is not sure which tools exist ("I'm not sure if Figma has an CLI, but I know there's other ways to hit the API").
+- Open: whether every part of a spec can live in Figma and be read out by a pipeline. Row 17 finds that out.
+- Next: review the row 17 record with Peter, then ask row 18.
+
+### Row 09 — delegated
+- Peter delegated the token route on 2026-11-12: "we want the Figma tokens to get pulled into the design system code base via whatever method makes the most sense. I think Figma has a couple different options for doing that."
+- Scope: the agent chooses the route after row 08, records the decision, and tells Peter. It does not ask him again unless the choice needs a purchase or a higher plan.
+
+### Research in progress
+- Row 08: agent `res-idea002-08`, on Opus 5.5 at medium effort, started 2026-11-12. Its record has `from: IDEA-002#08`.
+- Row 17: agent `res-idea002-17`, on Opus 5.5 at medium effort, started 2026-11-12. Its record has `from: IDEA-002#17`.
 
 ### Facts that shape later rows
 - RES-024: the Variables REST API needs the Enterprise plan. A private plugin needs Organization or Enterprise. A library can be published from Professional upward.
 - RES-023 and RES-024 disagree on variable modes for each collection. RES-023 takes 1, 4 and 40 from the plugin files. RES-024 takes 10, 20 and unlimited from Figma's pricing and plan pages of 2026-11-12, and row 15 owns plan facts.
 - Writing through the MCP is free in beta and becomes a usage-based paid feature. Figma gives no price and no date.
+- Peter, 2026-11-12: "the agents can use the browser to make updates to Figma". This covers steps that the MCP cannot do, such as publishing a library.
 - RES-025: the live trial passed with 11 calls, about 4 minutes and no error. No person has inspected the trial file yet. Open: whether `use_figma` counts against the rate limit.
 
 ### Settled by the prompt
@@ -48,28 +60,30 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - The token research covers how changes reach the repo (manual export, CI job or pull request), how they are versioned, and how they feed the Lit core and every framework package.
 
 ### Conditions
-- Rows 06 to 11 apply as written only when row 02 selects Figma. With spec documents in the repo, rows 06 and 07 go out of scope, and the token source in rows 08 to 11 becomes an open question.
+- Row 02 selected Figma (DEC-117), so rows 06 to 11 apply as written.
 
 ## Map
 
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
 | 01 | What can the Figma MCP read and write today (components, variants, variables, libraries), and what are its limits? | research | resolved | — | [RES-023](../research/RES-023-figma-mcp-capabilities.md) |
-| 02 | Are the design specs made in Figma through the Figma MCP, or as spec documents in the repo? | interview | open | 01, 15, 16 | — |
+| 02 | Are the design specs made in Figma through the Figma MCP, or as spec documents in the repo? | interview | resolved | 01, 15, 16 | [DEC-117](../decisions/DEC-117-design-specs-in-figma.md) |
 | 03 | What is the visual starting point for 1.0: the 0.3.3 look, the look of one reference system, or a new design? | interview | open | — | — |
 | 04 | Which theme dimensions must the tokens carry (colour scheme, density, accent, custom themes)? | interview | open | — | — |
 | 05 | Which accessibility standard, reading directions and input modes do the specs target? | interview | open | — | — |
 | 06 | How do a published Figma library and a custom Figma plugin each give components to designers, and how does each stay in sync with new versions? | research | open | 02 | — |
 | 07 | Do designers get the system through a published library, a custom plugin, or both? | interview | open | 06 | — |
-| 08 | Which routes export tokens from Figma to the repo, and how does each handle change flow and versions? | research | open | 02 | — |
+| 08 | Which routes export tokens from Figma to the repo, and how does each handle change flow and versions? | research | in-progress | 02 | — |
 | 09 | Which token export route does 1.0 use? | interview | open | 08 | — |
 | 10 | How do token changes reach the repo (manual export, CI job or pull request), and how are they versioned? | interview | open | 09 | — |
 | 11 | Which token files does the pipeline hand to the Lit core and the framework packages? | interview | open | 09 | — |
 | 12 | Who makes each design spec, and who approves it? | interview | open | 02 | — |
-| 13 | What must one design spec hold before a component can be built from it? | interview | open | 02 | — |
+| 13 | What must one design spec hold before a component can be built from it? | interview | open | 02, 18 | — |
 | 14 | Import the final component list from IDEA-001. | task | open | — | — |
 | 15 | Which Figma plan and seat does each capability need (MCP use, variables and modes, library publishing, the Variables REST API, plugins), and what does each cost today? | research | resolved | — | [RES-024](../research/RES-024-figma-plans-and-prices.md) |
 | 16 | What does a live trial of one component made through the Figma MCP show: the number of calls, the manual cleanup, the errors, whether `use_figma` counts against the rate limit, and whether a Starter account can write to its own drafts? | task | resolved | 15 | [RES-025](../research/RES-025-figma-live-trial.md) |
+| 17 | Which routes can read the whole design spec of a component out of Figma into files in the repo, and what can each one read? | research | in-progress | 02 | — |
+| 18 | Does Figma hold the whole design spec, with the Markdown in the repo generated by a pipeline, or do the behaviour parts live in documents written in the repo? | interview | open | 17 | — |
 
 ## Not yet specified
 - The order and batch size of the component specs. The plan settles it.
