@@ -22,7 +22,7 @@ A spec for the framework packages: the chosen targets, the way each wrapper is p
 - Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas).
 
 ### Waits
-- Row 01 — wait: the deep research skill. See the waits in IDEA-001.
+- Row 01 — wait: Peter's go for the four sweeps. It runs through the `deep-research` workflow; see the waits in IDEA-001.
 - Row 02 — wait: IDEA-003#05 is resolved.
 
 ### Settled by the prompt

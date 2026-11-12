@@ -60,6 +60,7 @@ These sharpen after row 05.
 - Browser and CDN delivery. Release 0.3.3 has a separate browser package.
 - Form participation, element names and registration.
 - The test strategy and the browser matrix.
+- What replaces `docs/agents/verification.md` and `docs/agents/repository.md`, which describe the 0.3.3 code. Brain's place for a quality bar is `CONSTRAINTS.md`; package facts belong to the 1.0 specs.
 
 ## Out of scope
 - Which components exist (IDEA-001) and how they look (IDEA-002).

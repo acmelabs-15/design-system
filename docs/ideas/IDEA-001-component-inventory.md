@@ -31,7 +31,7 @@ Source: Peter's kickoff prompt of 2026-11-12, [saved word for word](../design/v1
 - Questions: one at a time, most important first, and only for real decisions. The agent makes cheap, reversible choices and states them in chat. Research settles facts.
 - After every answer the agent evaluates the whole map, saves it, and tells Peter in one or two lines what changed.
 - Research starts only for the row in front of us, or for a big unknown that shapes the map. It gives no recommendation unless Peter asks. Its output goes to files with sources and dates.
-- Landscape sweeps use the deep research skill: IDEA-001#01, IDEA-004#01, IDEA-005#01 and IDEA-006#01. Narrow questions use brain research records.
+- Landscape sweeps use `deep-research`, the built-in workflow of Claude Code that `/deep-research` starts: IDEA-001#01, IDEA-004#01, IDEA-005#01 and IDEA-006#01. Narrow questions use brain research records.
 - The 0.3.3 decision and research records are evidence for a question. They do not answer it.
 - A question that belongs to a later idea goes into that idea's map as an open row.
 
@@ -51,7 +51,7 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 
 ### Waits
 - Decision records: the prompt's own decisions (full replacement, branch, no compatibility) have no DEC files yet. The same holds for Peter's setup decisions of 2026-11-12: the kickoff prompt lives in `docs/design/`, the glossary takes the GLOSSARY names, every legacy record moves to layout 2, the tracker files are removed, and `docs/agents/workflow.md` gives way to the workspace file. The workspace is on layout 2 since 2026-11-12, so `brain new-doc DEC` now gives DEC-117 and later. Next: create them before the first interview question.
-- Row 01 — wait: this session has no skill named Anthropic's deep research skill. Retry when Peter installs it or names a substitute.
+- Row 01 — wait: Peter's go for the four sweeps. The tool is settled: on 2026-11-12 Peter pointed to `/deep-research`, which is Claude Code's built-in `deep-research` workflow, not a skill. One run fetches at most 15 sources, so the matrix takes one run for each of the five columns. Anthropic's skill of the same name sits in the skills trash since 2026-11-05.
 
 ### Settled by the prompt
 - The matrix has five columns: shadcn/ui, Radix Primitives, Radix Themes, Chakra UI and Vercel's Geist.

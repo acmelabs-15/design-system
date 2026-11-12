@@ -22,7 +22,7 @@ A spec for the 1.0 devtools package: its base, its capabilities, and how it reac
 - Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas).
 
 ### Waits
-- Row 01 — wait: the deep research skill. See the waits in IDEA-001.
+- Row 01 — wait: Peter's go for the four sweeps. It runs through the `deep-research` workflow; see the waits in IDEA-001.
 - Row 07 — wait: IDEA-003#05 and IDEA-004#04 are resolved.
 - Row 08 — wait: IDEA-002#09 is resolved.
 

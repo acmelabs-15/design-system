@@ -25,6 +25,10 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Row 01 — wait: a Figma plugin with an MCP server is installed since 2026-11-12, but it is not authenticated. The row can use published documentation. A live test needs Peter to complete the Figma sign-in; retry it after that.
 - Row 14 — wait: IDEA-001 reaches `done`.
 
+### Research in progress
+- Row 01: agent `res-idea002-01`, started 2026-11-12. Its record has `from: IDEA-002#01`.
+- Row 15: agent `res-idea002-15`, started 2026-11-12. Its record has `from: IDEA-002#15`. Peter asked on 2026-11-12 for direction on the Figma sign-up and on what to buy. The record holds facts only; the direction comes with rows 02, 07 and 09.
+
 ### Settled by the prompt
 - A design spec covers anatomy and parts, variants, sizes, states, tokens, slots and subcomponents, accessibility behaviour and motion.
 - Peter decides between Figma and spec documents in the repo after he sees the trade-offs.
@@ -39,8 +43,8 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
-| 01 | What can the Figma MCP read and write today (components, variants, variables, libraries), and what are its limits? | research | open | — | — |
-| 02 | Are the design specs made in Figma through the Figma MCP, or as spec documents in the repo? | interview | open | 01 | — |
+| 01 | What can the Figma MCP read and write today (components, variants, variables, libraries), and what are its limits? | research | in-progress | — | — |
+| 02 | Are the design specs made in Figma through the Figma MCP, or as spec documents in the repo? | interview | open | 01, 15 | — |
 | 03 | What is the visual starting point for 1.0: the 0.3.3 look, the look of one reference system, or a new design? | interview | open | — | — |
 | 04 | Which theme dimensions must the tokens carry (colour scheme, density, accent, custom themes)? | interview | open | — | — |
 | 05 | Which accessibility standard, reading directions and input modes do the specs target? | interview | open | — | — |
@@ -53,6 +57,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 12 | Who makes each design spec, and who approves it? | interview | open | 02 | — |
 | 13 | What must one design spec hold before a component can be built from it? | interview | open | 02 | — |
 | 14 | Import the final component list from IDEA-001. | task | open | — | — |
+| 15 | Which Figma plan and seat does each capability need (MCP use, variables and modes, library publishing, the Variables REST API, plugins), and what does each cost today? | research | in-progress | — | — |
 
 ## Not yet specified
 - The order and batch size of the component specs. The plan settles it.

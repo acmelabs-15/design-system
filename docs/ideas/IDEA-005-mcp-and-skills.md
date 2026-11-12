@@ -22,7 +22,7 @@ A spec for the MCP server and the consumer skills of 1.0: where they ship, what 
 - Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas).
 
 ### Waits
-- Row 01 — wait: the deep research skill. See the waits in IDEA-001.
+- Row 01 — wait: Peter's go for the four sweeps. It runs through the `deep-research` workflow; see the waits in IDEA-001.
 
 ### Settled by the prompt
 - The direction to test: the MCP server and the skills ship inside the design system npm package, so their versions always match the installed components.
