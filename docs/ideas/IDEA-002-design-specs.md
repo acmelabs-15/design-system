@@ -42,8 +42,9 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Scope: the agent chooses the route after row 08, records the decision, and tells Peter. It does not ask him again unless the choice needs a purchase or a higher plan.
 
 ### Research in progress
-- Row 08: agent `res-idea002-08`, on Opus 5.5 at medium effort, started 2026-11-12. Its record has `from: IDEA-002#08`.
-- Row 17: agent `res-idea002-17`, on Opus 5.5 at medium effort, started 2026-11-12. Its record has `from: IDEA-002#17`.
+- Both agents were launched with medium effort, but the session log shows `xhigh` on every request. The model is correct. See the note in the capabilities file.
+- Row 08: agent `res-idea002-08`, on Opus 5.5, started 2026-11-12. Its record has `from: IDEA-002#08`.
+- Row 17: agent `res-idea002-17`, on Opus 5.5, started 2026-11-12. Its record has `from: IDEA-002#17`.
 
 ### Facts that shape later rows
 - RES-024: the Variables REST API needs the Enterprise plan. A private plugin needs Organization or Enterprise. A library can be published from Professional upward.

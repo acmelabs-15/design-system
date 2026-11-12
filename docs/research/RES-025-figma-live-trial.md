@@ -22,7 +22,7 @@ Completion condition: one component with variants, component properties and vari
 |---|---|
 | Figma calls in total | 11: `use_figma` 5 (3 write, 2 read), `whoami` 2, `create_new_file` 1, `create_session` 1, `get_metadata` 1, `get_screenshot` 1 |
 | Time | About 4 minutes for the 9 calls of the second agent |
-| Model | Calls 1 and 2: first agent, on the session's model. Calls 3 to 11: Opus 5.5 at medium effort |
+| Model | Calls 1 and 2: first agent, on the session's model. Calls 3 to 11: Opus 5.5. The launch asked for medium effort, but the session log shows `xhigh` on every request |
 | Errors, refusals, time-limit failures | None. Every call returned a result on its first attempt |
 | Rate-limit messages | None |
 | AI credits | None spent |
@@ -60,7 +60,7 @@ Completion condition: one component with variants, component properties and vari
 
 - 2026-11-12: Peter created the team "ACME Labs" under a Figma account he already had on his personal Gmail address, bought the Professional plan for it, and stored a Figma access token in 1Password. The MCP sign-in does not use the token.
 - 2026-11-12: Peter approved the Figma sign-in. `whoami` answers: a Full seat and the admin role on "ACME Labs", tier `pro`.
-- 2026-11-12: a first sub-agent on the session's model made two calls and was stopped on Peter's correction. A second sub-agent, `trial-idea002-16b`, on Opus 5.5 at medium effort, finished the trial and reported a pass.
+- 2026-11-12: a first sub-agent on the session's model made two calls and was stopped on Peter's correction. A second sub-agent, `trial-idea002-16b`, on Opus 5.5, finished the trial and reported a pass. Its launch asked for medium effort; the session log shows that it ran at `xhigh`.
 
 ## Findings
 - The email address of a Figma account can be changed in the account settings. An account that uses Google sign-in must first switch to email and password; after that the email can change to any address. Source: https://help.figma.com/hc/en-us/articles/360039820114-Manage-email-address-or-password, checked 2026-11-12.

@@ -34,3 +34,5 @@ Brain's capability check runs before each sub-agent starts, so read these settin
 | Every delegated agent that gathers evidence for a row: research rows, task rows such as a trial, and search or fetch agents | Opus 5.5 (`opus` in the Agent tool) | `medium` | Peter, 2026-11-12 |
 
 Set both values in the Agent call; an agent without them inherits the session's model. Another model needs Peter's yes before the agent starts.
+
+Known fault, found on 2026-11-12: the `effort` value of the Agent call did not take effect. Three agents launched with `model: opus` and `effort: medium` ran on `claude-opus-5-5`, but every request carried the session's effort, `xhigh`. After each launch, read the agent's log to confirm both values: `~/.claude/projects/<project>/<session>/subagents/agent-<id>.jsonl` records `model` and `output_config.effort` on each request. Until the cause is known, the session's own effort decides the effort of its agents.
