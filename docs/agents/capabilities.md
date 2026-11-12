@@ -37,4 +37,11 @@ Set both values in the Agent call; an agent without them inherits the session's 
 
 Known fault, found on 2026-11-12: the `effort` value of the Agent call did not take effect. Three agents launched with `model: opus` and `effort: medium` ran on `claude-opus-5-5`, but every request carried the session's effort, `xhigh`. After each launch, read the agent's log to confirm both values: `~/.claude/projects/<project>/<session>/subagents/agent-<id>.jsonl` records `model` and `output_config.effort` on each request. Until the cause is known, the session's own effort decides the effort of its agents.
 
-A likely cause, found on 2026-11-12 and not confirmed: Peter's user settings (`~/.claude/settings.json`) set effort by model under `modelSettings`, with `xhigh` for `claude-opus-5-5` and for `claude-fable-5-2`. Peter asked whether the project's `.claude/settings.json` can define the model and effort of sub-agents. A documentation lookup for that was still running when this note was written; no settings file was changed. Next: get that answer, propose the smallest setting to Peter, and change a settings file only after his yes.
+What Claude Code's documentation says, looked up on 2026-11-12 (https://code.claude.com/docs/en/sub-agents, https://code.claude.com/docs/en/model-config, https://code.claude.com/docs/en/agent-teams):
+
+- Model order, first wins: the `model` of the Agent call, the agent definition, the variable `CLAUDE_CODE_SUBAGENT_MODEL`, the session's model. A project's `.claude/settings.json` may set that variable in its `env` block.
+- Effort order, first wins: the variable `CLAUDE_CODE_EFFORT_LEVEL`, the `effort` of the Agent call, the agent definition, the session's level. No setting applies to sub-agents only. `modelSettings.<model>.effortLevel` sets effort for one model, and a project file outranks the user file.
+- Agent teams are on in Peter's user settings. With teams on, an Agent call that has a `name` starts a teammate, and the teammate documentation lists no per-call effort. This is the likely reason for the fault above: the named Opus agents took `xhigh` from `modelSettings` in Peter's user settings.
+- So the documented way to get medium effort is an Agent call without a `name`, with `model` and `effort` in the call, or an agent definition that sets `effort`.
+
+No settings file was changed. Peter's choice between unnamed calls and a project setting is recorded below when he makes it.
