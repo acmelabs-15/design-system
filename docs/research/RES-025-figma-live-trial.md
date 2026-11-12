@@ -11,7 +11,12 @@ date: 2026-11-12
 What does a live trial of one component made through the Figma MCP show: the number of calls, the manual cleanup, the errors, whether `use_figma` counts against the rate limit, and whether a Starter account can write to its own drafts?
 
 ## Answer
-Not answered yet. No step has run.
+Not answered yet. Steps 1 and 4 are done; no call has run.
+
+Progress:
+
+- 2026-11-12: Peter reports that he created the team "ACME Labs" under a Figma account he already had on his personal Gmail address, and bought the Professional plan for it. Not stated: monthly or annual billing, and his seat type. The team link is not in this repo, because it holds account identifiers.
+- Consequence: the question "can a Starter account write to its own drafts" can no longer be tested with this account. It stays unanswered unless a second, free account is used.
 
 The three findings on account email and team ownership come from search excerpts of the named help articles, not from full reads of the pages. UNVERIFIED: whether Figma accepts a Gmail address as a work email address for the Organization upgrade.
 
@@ -37,4 +42,4 @@ Safe to repeat: steps 2, 3 and 5, on a draft file only. Step 4 is a purchase; do
 None.
 
 ## Next action
-Step 1: Peter creates the free Figma account for ACMElabs (personal Gmail address, email and password, team named ACMElabs) and says so.
+Step 2: the agent starts the Figma sign-in of the installed plugin and Peter approves it in the browser. Then step 3: one read call and one small write call to a draft, which also shows the seat type.
