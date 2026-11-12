@@ -17,7 +17,7 @@ Completion condition: one component with variants, component properties and vari
 
 Planned steps:
 
-1. Peter creates a free Figma account (Starter). Only Peter can do this step.
+1. Peter creates a free Figma account (Starter) for ACMElabs: he signs up with an ACMElabs work email address and names the team ACMElabs. Only Peter can do this step. RES-024 finds that a later self-serve upgrade to Organization needs an account with a work email address.
 2. Peter says so. The agent starts the Figma sign-in of the installed plugin, and Peter approves it in the browser.
 3. The agent makes one read call and one small write call to a draft file. This shows whether a Starter account can write to its own drafts. Starter allows 20 read calls each month, so the agent counts every call here.
 4. If Starter cannot write: Peter buys the Professional plan with one Full seat and monthly billing (RES-024: $20 for each month). Only Peter can do this step.
@@ -32,4 +32,4 @@ Safe to repeat: steps 2, 3 and 5, on a draft file only. Step 4 is a purchase; do
 None.
 
 ## Next action
-Step 1: Peter creates the free Figma account and says so.
+Step 1: Peter creates the free Figma account for ACMElabs (work email address, team named ACMElabs) and says so.

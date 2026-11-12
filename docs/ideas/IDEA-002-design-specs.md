@@ -28,6 +28,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 ### Work in progress
 - Row 16: the trial record is [RES-025](../research/RES-025-figma-live-trial.md). Its next step is Peter's: create a free Figma account.
 - Peter asked on 2026-11-12 for direction on the Figma sign-up and on what to buy. The direction given: a free account now; Professional with one Full seat and monthly billing only when the trial needs to write; no Organization or Enterprise plan before rows 07 and 09 are decided.
+- Peter wants the Figma account to be for ACMElabs (2026-11-12). Direction given: an ACMElabs work email address and a team named ACMElabs; no Organization plan now. Not checked yet: how files move when a Professional team upgrades to Organization.
 
 ### Facts that shape later rows
 - RES-024: the Variables REST API needs the Enterprise plan. A private plugin needs Organization or Enterprise. A library can be published from Professional upward.
