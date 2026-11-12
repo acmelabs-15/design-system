@@ -1,20 +1,21 @@
-# Domain documentation
+# Domain docs
 
-This repository has two linked contexts. Packages share those contexts; package count does not create more glossaries.
+How brain's skills read this repo's domain documentation. Layout: multi-context.
 
-Before naming a domain concept, read [the context map](../../CONTEXT-MAP.md) and the glossary it selects:
+## Before you name a domain concept, read these
 
-- [Component library](../../CONTEXT.md): components, primitives, recipes, content and interaction names.
-- [Generation and comparison tools](../../tools/geist/CONTEXT.md): reference descriptions, generated styles and measured comparisons.
+- `GLOSSARY.md` at the repo root: the glossary, one term per entry, with the words to avoid.
+- `GLOSSARY-MAP.md` at the repo root, when it exists: the repo has several contexts, and the map points to the `GLOSSARY.md` for each. Read the one your topic belongs to.
+- `docs/decisions/`: the decision records that touch the area you work in, one `DEC-NNN-<slug>.md` file per decision. An architecture decision is a decision record with `kind: architecture`. When `docs/agents/workspace.md` names another decisions folder, read that one.
 
-Shared component terms are defined once in the component glossary. Tooling records refer to them there. Use the glossary's term and respect its words to avoid. A missing or unclear concept goes through brain:domain-modeling; implementation details belong in specifications or research.
+If a file is absent, proceed without it and do not suggest creating it. The domain-modeling skill creates `GLOSSARY.md` and the first decision record lazily, when a term or a decision is resolved.
 
-Use component names directly. Every component belongs to the same design system. Explain a material Lit or platform trade-off when the task needs it.
+## Use the glossary's words
 
-## Decisions and requirements
+When your output names a domain concept, in a task title, a spec, a test name or a reply, use the term as `GLOSSARY.md` defines it. A word the glossary marks _Avoid_ stays out.
 
-[Numbered decision records](../decisions/README.md) serve both contexts. Read the records relevant to the changed area in full. Keep their original dates, authors, evidence and supersession relationships. A short record can be a title and a few sentences; add sections when they preserve useful reasons or qualifications.
+A concept the glossary lacks is a signal: either you are inventing a word the project does not use, so reconsider, or there is a real gap, so note it for the domain-modeling skill.
 
-The [specification index](../../spec/README.md) routes current requirements. A code difference does not silently change an approved contract. Identify the conflict and use brain's applicable decision workflow.
+## Flag a decision you contradict
 
-The [research index](../research/README.md) separates source observations, experiments, proposals and selected outcomes. Historical counts and a passing prototype prove only their recorded scope.
+If your output contradicts a decision record, say so where the reader will see it, and say why it is worth reopening. Do not override it in silence.
