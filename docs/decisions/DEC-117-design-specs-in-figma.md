@@ -16,5 +16,5 @@ IDEA-002 had to choose where the design spec of each 1.0 component is made. Pete
 
 ## Consequences
 
-- Peter's direction is that all of a spec goes in Figma and a pipeline pulls what the repo needs into Markdown files. Whether that works for the whole spec is open in IDEA-002#18.
+- Peter's direction is that all of a spec goes in Figma and a pipeline pulls what the repo needs into Markdown files. DEC-118 settled that it works for the whole spec, with an agent-run pull.
 - Agents may also use the browser to make updates in Figma.
