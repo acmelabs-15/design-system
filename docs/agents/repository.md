@@ -69,7 +69,7 @@ The [Pages workflow](../../.github/workflows/pages.yml) deploys the verified web
 
 | Record | Owner |
 | --- | --- |
-| Source prompts and intent documents, including [Peter's kickoff prompt for 1.0, as amended](../design/v1-kickoff-prompt.md) and its word-for-word original | docs/design/ |
+| Source prompts and intent documents, including [Peter's kickoff prompt for 1.0](../design/v1-kickoff-prompt.md) | docs/design/ |
 | Indexes of the decisions, research and specifications of releases 0.1 to 0.3 | docs/history/ |
 | Completed process history, including the [maintainer migration terms](../history/maintainer-migration-terms.md) | docs/history/ |
 | The retired status note, with its bytes kept | [docs/agents/history/STATUS.md](history/STATUS.md) |

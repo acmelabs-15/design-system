@@ -1,17 +1,6 @@
-# Kickoff prompt for the 1.0 refactor, amended
+# Kickoff prompt for the 1.0 refactor
 
-This is Peter's kickoff prompt of 2026-11-12. Six passages are changed, because they conflicted with the brain plugin (version 0.13.0) or with a fact found on that day. Every other word is his original. Read this file for the rules. The [word-for-word original](v1-kickoff-prompt-original-2026-11-12.md) stays as history.
-
-Amended on 2026-11-12, at Peter's request:
-
-| Passage | The original said | Now | Reason |
-| --- | --- | --- | --- |
-| Lifecycle | define, plan, build, review, ship | Adds verify | Brain's lifecycle has six stages. |
-| Branch name | Record it "in the plan" | Record it in the idea files | Brain has no plan before a spec exists. |
-| Capability check | Load "the repo's skills in .agents/skills/"; run at start and phase change | Load the skills that `docs/agents/capabilities.md` names; also run before a sub-agent starts | That folder does not exist. Brain's check reads the capabilities file and also runs before each sub-agent. |
-| Idea file | Keep it current after every answer | Adds what the idea file holds, and that a row's detailed progress goes in its RES record | Brain: "A research or do record is its own living progress record." |
-| Research tool | "Anthropic's deep research skill" | Claude Code's `deep-research` workflow | The installed `/deep-research` is a built-in workflow, not a skill. |
-| Sub-agent progress | Every agent appends progress to a scratch file and writes a report | A research agent writes only its RES record; a task agent uses a scratch progress file and a result file | Brain's protocol: the progress file is "a task agent's scratch file, or a research agent's RES file". |
+Peter's kickoff prompt of 2026-11-12, corrected on the same day in six passages so that it matches the brain plugin (version 0.13.0). Git holds the first version (commit e2a91b559) and the list of corrections (commit 33d37d800).
 
 ---
 
