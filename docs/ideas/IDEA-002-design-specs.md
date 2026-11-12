@@ -25,8 +25,14 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Row 16 — wait: Peter's Figma account and sign-in. RES-023 answers row 01 from documentation only; no live call was made. Its follow-ups (write quality for one component, whether `use_figma` counts against the rate limit, plugin version 2.2.157 against 2.2.207) are row 16. RES-023 finds that writing through the MCP needs a paid plan and a Full seat, so the trial also waits on the plan facts of row 15.
 - Row 14 — wait: IDEA-001 reaches `done`.
 
-### Research in progress
-- Row 15: agent `res-idea002-15`, started 2026-11-12. Its record has `from: IDEA-002#15`. Peter asked on 2026-11-12 for direction on the Figma sign-up and on what to buy. The record holds facts only; the direction comes with rows 02, 07 and 09.
+### Work in progress
+- Row 16: the trial record is [RES-025](../research/RES-025-figma-live-trial.md). Its next step is Peter's: create a free Figma account.
+- Peter asked on 2026-11-12 for direction on the Figma sign-up and on what to buy. The direction given: a free account now; Professional with one Full seat and monthly billing only when the trial needs to write; no Organization or Enterprise plan before rows 07 and 09 are decided.
+
+### Facts that shape later rows
+- RES-024: the Variables REST API needs the Enterprise plan. A private plugin needs Organization or Enterprise. A library can be published from Professional upward.
+- RES-023 and RES-024 disagree on variable modes for each collection. RES-023 takes 1, 4 and 40 from the plugin files. RES-024 takes 10, 20 and unlimited from Figma's pricing and plan pages of 2026-11-12, and row 15 owns plan facts.
+- Writing through the MCP is free in beta and becomes a usage-based paid feature. Figma gives no price and no date.
 
 ### Settled by the prompt
 - A design spec covers anatomy and parts, variants, sizes, states, tokens, slots and subcomponents, accessibility behaviour and motion.
@@ -56,8 +62,8 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 12 | Who makes each design spec, and who approves it? | interview | open | 02 | — |
 | 13 | What must one design spec hold before a component can be built from it? | interview | open | 02 | — |
 | 14 | Import the final component list from IDEA-001. | task | open | — | — |
-| 15 | Which Figma plan and seat does each capability need (MCP use, variables and modes, library publishing, the Variables REST API, plugins), and what does each cost today? | research | in-progress | — | — |
-| 16 | What does a live trial of one component made through the Figma MCP show: the number of calls, the manual cleanup, the errors, and whether `use_figma` counts against the rate limit? | task | open | 15 | — |
+| 15 | Which Figma plan and seat does each capability need (MCP use, variables and modes, library publishing, the Variables REST API, plugins), and what does each cost today? | research | resolved | — | [RES-024](../research/RES-024-figma-plans-and-prices.md) |
+| 16 | What does a live trial of one component made through the Figma MCP show: the number of calls, the manual cleanup, the errors, whether `use_figma` counts against the rate limit, and whether a Starter account can write to its own drafts? | task | in-progress | 15 | — |
 
 ## Not yet specified
 - The order and batch size of the component specs. The plan settles it.
