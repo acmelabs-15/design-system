@@ -30,7 +30,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Source: Peter's replies of 2026-11-12 ("I created a new team ACME Labs under a figma acount i already had created ... and got the profressional", "i opened it") and the `whoami` call of the same day.
 - Also settled: Peter stored a Figma access token in 1Password. The MCP sign-in does not use it. It may serve rows 08 and 09.
 - Conditions: the account stays on Peter's personal address until ACMElabs has a work email address; the email address and the team owner can change later. No Organization or Enterprise plan before rows 07 and 09 are decided.
-- Running: sub-agent `trial-idea002-16`, started 2026-11-12. It builds the trial component in a new draft file of the ACME Labs plan. Its scratch files are `.artifacts/v1/trial/IDEA-002-16-progress.md` and `.artifacts/v1/trial/IDEA-002-16-result.md`.
+- Running: sub-agent `trial-idea002-16b` on Opus 5.5 at medium effort, started 2026-11-12. It builds the trial component in the draft file that the first agent created. The first agent, `trial-idea002-16`, ran on the session's model and was stopped after two calls, on Peter's correction. Its scratch files are `.artifacts/v1/trial/IDEA-002-16-progress.md` and `.artifacts/v1/trial/IDEA-002-16-result.md`.
 - Open: the trial result. Two questions stay untested for now: whether a Starter account can write to its own drafts, and how files move when a Professional team upgrades to Organization.
 - Next: read the result file in full, copy the measured facts into RES-025, and review them with Peter before row 02.
 

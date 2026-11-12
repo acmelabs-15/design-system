@@ -31,6 +31,6 @@ Brain's capability check runs before each sub-agent starts, so read these settin
 
 | Work | Model | Effort | From |
 |---|---|---|---|
-| Delegated research: a research row, or a search or fetch agent | Opus 5.5 (`opus` in the Agent tool) | `medium` | Peter, 2026-11-12, "where it makes sense" |
+| Every delegated agent that gathers evidence for a row: research rows, task rows such as a trial, and search or fetch agents | Opus 5.5 (`opus` in the Agent tool) | `medium` | Peter, 2026-11-12 |
 
-A row that needs hard reasoning across many sources can keep the session's model. Say so in chat when you use this exception.
+Set both values in the Agent call; an agent without them inherits the session's model. Another model needs Peter's yes before the agent starts.
