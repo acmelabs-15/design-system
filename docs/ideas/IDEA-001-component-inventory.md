@@ -21,7 +21,7 @@ A decision: the 1.0 component inventory. One inventory record lists each include
 ## Notes
 
 ### Program rules for all six ideas
-Source: Peter's kickoff prompt of 2026-11-12, [saved word for word](../design/v1-kickoff-prompt-original-2026-11-12.md). IDEA-002 to IDEA-006 link to this section.
+Source: Peter's kickoff prompt of 2026-11-12, [as amended](../design/v1-kickoff-prompt.md). The [word-for-word original](../design/v1-kickoff-prompt-original-2026-11-12.md) is history. IDEA-002 to IDEA-006 link to this section.
 
 - Target: version 1.0.0. The current release is 0.3.3 across five packages.
 - 1.0 is a full replacement. Nobody uses the package yet, so nothing needs backwards compatibility. Nothing from 0.3.3 survives in code unless a decision record keeps it.
