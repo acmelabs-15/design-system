@@ -22,11 +22,10 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas).
 
 ### Waits
-- Row 01 — wait: a Figma plugin with an MCP server is installed since 2026-11-12, but it is not authenticated. The row can use published documentation. A live test needs Peter to complete the Figma sign-in; retry it after that.
+- Row 16 — wait: Peter's Figma account and sign-in. RES-023 answers row 01 from documentation only; no live call was made. Its follow-ups (write quality for one component, whether `use_figma` counts against the rate limit, plugin version 2.2.157 against 2.2.207) are row 16. RES-023 finds that writing through the MCP needs a paid plan and a Full seat, so the trial also waits on the plan facts of row 15.
 - Row 14 — wait: IDEA-001 reaches `done`.
 
 ### Research in progress
-- Row 01: agent `res-idea002-01`, started 2026-11-12. Its record has `from: IDEA-002#01`.
 - Row 15: agent `res-idea002-15`, started 2026-11-12. Its record has `from: IDEA-002#15`. Peter asked on 2026-11-12 for direction on the Figma sign-up and on what to buy. The record holds facts only; the direction comes with rows 02, 07 and 09.
 
 ### Settled by the prompt
@@ -43,8 +42,8 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
-| 01 | What can the Figma MCP read and write today (components, variants, variables, libraries), and what are its limits? | research | in-progress | — | — |
-| 02 | Are the design specs made in Figma through the Figma MCP, or as spec documents in the repo? | interview | open | 01, 15 | — |
+| 01 | What can the Figma MCP read and write today (components, variants, variables, libraries), and what are its limits? | research | resolved | — | [RES-023](../research/RES-023-figma-mcp-capabilities.md) |
+| 02 | Are the design specs made in Figma through the Figma MCP, or as spec documents in the repo? | interview | open | 01, 15, 16 | — |
 | 03 | What is the visual starting point for 1.0: the 0.3.3 look, the look of one reference system, or a new design? | interview | open | — | — |
 | 04 | Which theme dimensions must the tokens carry (colour scheme, density, accent, custom themes)? | interview | open | — | — |
 | 05 | Which accessibility standard, reading directions and input modes do the specs target? | interview | open | — | — |
@@ -58,6 +57,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 13 | What must one design spec hold before a component can be built from it? | interview | open | 02 | — |
 | 14 | Import the final component list from IDEA-001. | task | open | — | — |
 | 15 | Which Figma plan and seat does each capability need (MCP use, variables and modes, library publishing, the Variables REST API, plugins), and what does each cost today? | research | in-progress | — | — |
+| 16 | What does a live trial of one component made through the Figma MCP show: the number of calls, the manual cleanup, the errors, and whether `use_figma` counts against the rate limit? | task | open | 15 | — |
 
 ## Not yet specified
 - The order and batch size of the component specs. The plan settles it.
