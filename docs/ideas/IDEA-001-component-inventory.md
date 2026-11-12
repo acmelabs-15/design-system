@@ -40,7 +40,7 @@ Source: [Peter's kickoff prompt](../design/v1-kickoff-prompt.md) of 2026-11-12. 
 Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to brain's layout 2. The ideas and their records now hold the state; `brain status` reports it.
 
 - Checks of the 0.3.3 code: none has run on `v1` since the migration moved the records. `scripts/workflow-migration.ts` and its test still name the old layout, because they verify the completed maintainer migration. Run the unit suite before the first product change on `v1`, then repair or retire that verifier.
-- Links: `docs/verification/` and `docs/agents/history/` keep their bytes, so 3 links in `docs/verification/` and 8 in the retired status note still name old paths.
+- Links: `docs/verification/` and `docs/agents/history/` keep their bytes, so 3 links in `docs/verification/` and 7 in the retired status note still name old paths. The note's link to the kickoff prompt is the one exception: it points to the corrected prompt, on Peter's instruction of 2026-11-12.
 
 - Authorization: the kickoff prompt authorizes commits and pushes of this work on `v1`. It authorizes no merge, release or publication.
 - Baseline: `v1` starts at ee37be98e, the tip of `main` on 2026-11-12, where the quality run passes. No product check has run on `v1`; the branch changes records only so far.

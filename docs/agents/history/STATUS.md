@@ -4,7 +4,7 @@ Updated 2026-11-12, on branch `v1`. This file is the sole current handoff for th
 
 ## Current work
 
-The 1.0 refactor replaces the whole design system on the long-lived branch `v1`. Release 0.3.3 is the latest, so the next major version is 1.0.0. [Peter's kickoff prompt](design/v1-kickoff-prompt-original-2026-11-12.md) sets the scope, the phases and the interview rules.
+The 1.0 refactor replaces the whole design system on the long-lived branch `v1`. Release 0.3.3 is the latest, so the next major version is 1.0.0. [Peter's kickoff prompt](../../design/v1-kickoff-prompt.md) sets the scope, the phases and the interview rules.
 
 The work is in the define phase. Six ideas hold it. Each idea file has its intent, its map of questions and its out-of-scope list.
 
