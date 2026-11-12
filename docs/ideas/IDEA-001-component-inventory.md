@@ -38,6 +38,9 @@ Source: Peter's kickoff prompt of 2026-11-12, [saved word for word](../design/v1
 ### Working state for all six ideas
 Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to brain's layout 2. The ideas and their records now hold the state; `brain status` reports it.
 
+- Checks of the 0.3.3 code: none has run on `v1` since the migration moved the records. `scripts/workflow-migration.ts` and its test still name the old layout, because they verify the completed maintainer migration. Run the unit suite before the first product change on `v1`, then repair or retire that verifier.
+- Links: `docs/verification/` and `docs/agents/history/` keep their bytes, so 3 links in `docs/verification/` and 8 in the retired status note still name old paths.
+
 - Authorization: the kickoff prompt authorizes commits and pushes of this work on `v1`. It authorizes no merge, release or publication.
 - Baseline: `v1` starts at ee37be98e, the tip of `main` on 2026-11-12, where the quality run passes. No product check has run on `v1`; the branch changes records only so far.
 - Runtime: the repo requires Bun 1.4.2. The `v1` worktree has no local runtime yet. On Peter's machine the verified executable is `/Users/peterkloss/Dev/ACMElabs/design-system/.artifacts/runtime/bun-1.4.2/bun-darwin-aarch64/bun`.
@@ -47,7 +50,7 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 - The open maintenance issues of 0.3.3 stay in the local tracker, `.scratch/maintenance/issues/`.
 
 ### Waits
-- Decision records: the prompt's own decisions (full replacement, branch, no compatibility) get DEC files after the workspace migration. Before it, new DEC numbers collide with the legacy records 0001 to 0116.
+- Decision records: the prompt's own decisions (full replacement, branch, no compatibility) have no DEC files yet. The workspace is on layout 2 since 2026-11-12, so `brain new-doc DEC` now gives DEC-117 and later. Next: create them before the first interview question.
 - Row 01 — wait: this session has no skill named Anthropic's deep research skill. Retry when Peter installs it or names a substitute.
 
 ### Settled by the prompt

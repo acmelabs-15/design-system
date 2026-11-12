@@ -33,10 +33,10 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 ### Evidence from 0.3.3
 These records are evidence, not answers. Find them through the [decision index](../history/decision-index-0.3.md) and the [research index](../history/research-index-0.3.md).
 
-- Decision 0092 excludes server rendering.
-- Decisions 0101 and 0114 keep element state in TanStack Store and port behaviour into Lit. Decision 0115, on Zag packages through a Lit adapter, is superseded.
-- Decision 0081 publishes React support as a separate package.
-- Research 15 reviews Lit practice. Research 19 covers the styling of slotted content.
+- DEC-092 excludes server rendering.
+- DEC-101 and DEC-114 keep element state in TanStack Store and port behaviour into Lit. DEC-115, on Zag packages through a Lit adapter, is superseded.
+- DEC-081 publishes React support as a separate package.
+- RES-015 reviews Lit practice. RES-019 covers the styling of slotted content.
 
 ## Map
 

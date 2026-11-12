@@ -32,8 +32,8 @@ A spec for the MCP server and the consumer skills of 1.0: where they ship, what 
 ### Evidence from 0.3.3
 These records are evidence, not answers. Find them through the [decision index](../history/decision-index-0.3.md).
 
-- The MCP server is a separate package with an exact peer version of the core (decisions 0027 and 0116).
-- Seven consumer skills ship in the core package, with TanStack Intent as their tooling (decisions 0019 and 0048).
+- The MCP server is a separate package with an exact peer version of the core (DEC-027 and DEC-116).
+- Seven consumer skills ship in the core package, with TanStack Intent as their tooling (DEC-019 and DEC-048).
 
 ### Boundary question
 - Row 08: the kickoff prompt says the merge replaces the docs, but no idea names the documentation website. The row sits here because the MCP server serves the same records as the website.
