@@ -12,4 +12,4 @@ These issues preserve unresolved work from the released design system. The maint
 | [006: Bun lockfile entries for bundled dependencies](006-bun-bundled-dependency-lock.md) | needs-triage | Maintainer investigation |
 | [007: Publication confirmation wait](007-publication-confirmation-wait.md) | needs-triage | Maintainer investigation |
 
-Each issue owns its evidence and completion condition. [STATUS](../../../docs/STATUS.md) owns the active task. The [tracker adapter](../../../docs/agents/issue-tracker.md) supplies file conventions.
+Each issue owns its evidence and completion condition. Each is one numbered Markdown file with a `Status:` line near its top. The status values: `needs-triage` (not evaluated yet), `needs-info` (more information needed), `ready-for-agent` (specified for an agent), `ready-for-human` (a human must do it) and `wontfix`. A status change alone does not prove a result.

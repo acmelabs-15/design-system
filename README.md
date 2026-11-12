@@ -191,8 +191,7 @@ the application and update the switcher's `value` and the relevant theme scope's
 ## Working on this repository
 
 Use Bun 1.4.2, as selected by the repository's `.bun-version` and package manager field.
-Start with the [maintainer instructions](https://github.com/acmelabs-15/design-system/blob/main/AGENTS.md)
-and [current handoff](https://github.com/acmelabs-15/design-system/blob/main/docs/STATUS.md).
+Start with the [maintainer instructions](https://github.com/acmelabs-15/design-system/blob/main/AGENTS.md).
 Installed brain skills own the maintainer workflow; the seven packaged skills above remain consumer guidance.
 
 Before changing source or generated files, read the

@@ -64,7 +64,7 @@ Runnable profiles live under [scripts/verification](../../scripts/verification/)
 
 Regeneration can affect registration, exports, declarations, CEM, styles, site examples, consumer skills and tool packages. Verify each affected consumer through its actual delivery path. Keep controller registrations and live-collection behavior covered by applicable tests.
 
-A local browser pass does not diagnose an earlier CI failure. In particular, later local Hover Card success does not establish the cause of the earlier Linux CI failure. [STATUS](../STATUS.md) owns the current baseline; dated evidence owns each observed result.
+A local browser pass does not diagnose an earlier CI failure. In particular, later local Hover Card success does not establish the cause of the earlier Linux CI failure. The active idea or spec owns the current baseline; dated evidence owns each observed result.
 
 Automated WebKit is not an actual Safari session. Genuine OS IME, dictation, autofill, assistive technology and background-window behavior need their named platform checks. Record them as unperformed until evidence exists. For screenshots, record whether inspection occurred and who performed it. Agent image review and human inspection are distinct evidence.
 

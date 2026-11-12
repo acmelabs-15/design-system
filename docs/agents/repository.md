@@ -61,4 +61,4 @@ Packing materializes approved links into self-contained output. Development patc
 
 The core README links to the root consumer README. Maintain one copy; use published-package-resolvable links for maintainer material. Published consumer skills are separate from maintainer workflow skills.
 
-The [Pages workflow](../../.github/workflows/pages.yml) deploys the verified website artifact from its dependent quality job. Website output is not tracked. Local release preparation records its source state; it does not establish publication or a clean candidate. Current work and release state belong in [STATUS](../STATUS.md).
+The [Pages workflow](../../.github/workflows/pages.yml) deploys the verified website artifact from its dependent quality job. Website output is not tracked. Local release preparation records its source state; it does not establish publication or a clean candidate. Current work belongs to the unfinished ideas and specs. Release state belongs to the [release records](../releases/).
