@@ -41,6 +41,7 @@ Source: [Peter's kickoff prompt](../design/v1-kickoff-prompt.md) of 2026-11-12 a
 - Since 2026-11-13 the work has ten ideas. Peter's additional scope adds IDEA-008 (Claude Design compatibility) and IDEA-009 (design skill for Figma), each with his words "Stub its idea file now", and IDEA-010 (CI/CD, deployment and build tooling), which is a proposal until he decides IDEA-010#01. These rules hold for all ten.
 - Work of the spec phase is a deferred row (DEC-147). [The workspace file](../agents/workspace.md#deferred-rows) holds the rule.
 - Peter, 2026-11-13: "Show me which ideas changed and any new ideas you propose, before interviewing on them." The agent showed him the changes in chat on 2026-11-13. No interview on a new row starts before he has seen them.
+- Peter, 2026-11-13, asked whether brain holds a dependency graph between ideas. It does not in version 0.13.0: the header of an idea names no other idea, a "Blocked by" cell takes only rows of the same map, and `brain status` computes each idea alone. The ideas hold their links by hand, as "Import" task rows with a note on what each waits for. The agent offered one hand-kept table of row-to-row links in this file, and Peter answered "no". So no such table is made.
 
 ### Working state for all six ideas
 Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to brain's layout 2. The ideas and their records now hold the state; `brain status` reports it.
@@ -55,6 +56,21 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 - Capability gaps: no skill named Anthropic's deep research skill is installed; no Figma MCP is connected; the folder `.agents/skills/` does not exist. The seven consumer skills are in `skills/`.
 - Other sessions: the branches `claude/ci-speed` and `claude/issue-12-strict-style-policy` have their own worktrees, and the `main` checkout holds uncommitted files. They change the system that 1.0 replaces. Leave them as they are.
 - The open maintenance issues of 0.3.3 stay in the local tracker, `.scratch/maintenance/issues/`.
+
+### Next actions, 2026-11-13
+State at the end of the session of 2026-11-13, which Peter ended to save context: "we've used a lot of this session's context".
+
+- No agent runs. The local servers of the two prototypes are stopped. The working tree is clean, and `brain check` reports no finding.
+- Peter saw the changes from his additional scope in chat on 2026-11-13: the changed ideas, the three new ideas, the place of the rule for deferred rows, and three readings of the agent. He gave no correction to them. Not confirmed by him:
+  - Code Block: the review of its parts asks whether the rendering of markdown is part of Code Block or a component of its own (row 09, Notes).
+  - The choice of the architecture does not wait for the inventory of utilities and hooks (IDEA-003, Notes).
+  - "Documentation blocks" are the pieces of the website's own pages (IDEA-007, Notes).
+  - IDEA-010 as an idea of its own (IDEA-010#01), and the agent's recommendation that the blocks get an idea of their own (IDEA-007#09).
+- Next, in this order:
+  1. Ask the pending question IDEA-003#05 again. IDEA-003, Notes, holds its text, its four options and the recommendation.
+  2. Ask for Peter's go for the next block of agent work. The go of 2026-11-12 covered the 14 agents only. Ready rows: the research rows IDEA-001#12, IDEA-005#10, IDEA-005#11, IDEA-006#09, IDEA-007#10, IDEA-008#01, IDEA-009#01 and IDEA-010#02; the listing task IDEA-010#04; and the trial IDEA-005#03. The test IDEA-004#03 follows his choice of the architecture and IDEA-004#02.
+  3. Continue the follow-up questions of the list under "Block of agent work" below, most important first, one at a time.
+- The Notes of each idea hold the facts of each result of the block. A session reads a result file in full for the question in front of it.
 
 ### Additional scope of 2026-11-13
 [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-13, saved word for word. Where each item went:
