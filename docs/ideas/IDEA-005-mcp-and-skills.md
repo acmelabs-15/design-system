@@ -97,8 +97,24 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Many of the servers are built on the same `llms.txt` files that the documentation website serves. That bears on IDEA-007#04, the source of the records.
 - Limits of the record: no server ran, so no live list of tools was compared with the code. Fluent UI, Material Web and Vaadin were not checked.
 
+### Row 03 — resolved
+- RES-077 and its result file, 2026-11-13: a throwaway package with a small MCP server, two skills and an `init` command in its `bin`, installed from a local tarball into fresh projects. One machine, one run. Nothing was published.
+- The answer to the row: yes, with limits. Facts for row 04, inside the package or apart:
+  - `init` ran from the `bin` after an install with npm, with pnpm and with the pinned Bun, and wrote the same files each time.
+  - The installed server answered over stdio by the exact command that `init` wrote.
+  - After an update of the package with no new `init`, the server answered as the new version at once, and so did each skill that is a link to the installed package. So a pointer keeps the server and the skills in step with the installed components, which is the reason for the direction of the prompt.
+- Facts for row 05, what `init` installs and how it updates:
+  - A skill reaches a host as a link to the installed package where the host's documentation allows links (Claude Code, Codex), and as a copy where it does not say (Cursor, Gemini CLI, VS Code). A copy stays at the old version until `init` runs again.
+  - A skill that a new version removes leaves a dead link or an old copy, because the trial's `init` only adds and replaces. Gemini CLI then served the removed skill from its old copy. So `init` needs a step that removes.
+  - The command for the server is a path relative to the project root. A host that starts in a subfolder fails to connect.
+  - A second run of `init` kept every other MCP server, setting and skill of the project.
+  - Each host asks a person before it uses a server from a project: Claude Code lists it as "Pending approval", and Codex and Gemini CLI need a trusted folder. So `init` cannot make the server work with no step of the developer.
+  - The current revision of the MCP specification, 2026-07-28, has no `initialize` handshake; Claude Code spoke the new form. A server of 1.0 must answer both forms for a time.
+- Facts for IDEA-004#07 and for "How `init` reaches a consumer who installs only a framework package" under "Not yet specified": with only a package that depends on the first, npm and Bun make the `bin` available, and pnpm does not; `pnpm exec` fails with "Command not found".
+- Not observed, and in row 15: a real approval by a person in the dialog of each host (the trial wrote the hosts' state files in a scratch home folder); a session in which a model uses a skill and calls the tool; Cursor, VS Code Copilot and Devin. The trial agent asks whether Peter wants these before rows 04 and 05. The main session's reading: they do not separate the two options of row 04, because they hold for a package of its own too. They bear on row 05, so row 15 blocks row 05.
+
 ### Second block of agent work
-- Row 03 — running since 2026-11-13, in the second block of agent work. Task agent `ac68d178289fa47aa`, started without a name; its log records Opus 5.5 and the effort `medium`. Its task record is RES-077, which the main session created before the start. Its brief is `.artifacts/v1/briefs/IDEA-005-03.md` with `common-task.md`, and its scratch folder is `.artifacts/v1/trial/IDEA-005-03/`. Check the log again when the agent ends, before its record is read.
+- Row 03 — done on 2026-11-13: task record RES-077, from the task agent `ac68d178289fa47aa`, started without a name. Its log records Opus 5.5 and the effort `medium` on all 126 requests, checked after the agent ended. Its result file is `.artifacts/v1/trial/IDEA-005-03/IDEA-005-03-result.md` (scratch, outside git), with the logs of each case and the trial packages. The main session read the result file and the record in full. It checked that the repo holds no new file except the record, and that no host file in the real home folder names the trial package.
 - Row 10 — done on 2026-11-13: RES-070, from the researcher agent `ae876dde1bf071a5a`, started without a name. Its log records Opus 5.5 and the effort `medium` on all 176 requests, checked after the agent ended. It was the third start of the row; two starts of the same day ended in outages of the Claude login. The main session read the Answer, with its two tables, and the findings on MUI, Chakra UI and shadcn/ui in full. It reads the findings on each other system when rows 06 and 07 are next.
 - Row 11 — done on 2026-11-13: RES-066, from the researcher agent `a390f05d09d1064c0`, started without a name. Its log records Opus 5.5 and the effort `medium` on all 108 requests, checked after the agent ended. It was the third start of the row; two starts of the same day ended in outages of the Claude login.
 
@@ -107,9 +123,9 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
 | 01 | How do other libraries ship MCP servers and agent skills (inside the library package or apart), how do they install them into a consumer project, and how do agent hosts find them? | research | resolved | — | [RES-030](../research/RES-030-mcp-and-skills-shipping-landscape.md) |
-| 03 | Does an `init` script from the package's `bin` install a working MCP server and skills into a consumer project? | task | in-progress | 01 | — |
+| 03 | Does an `init` script from the package's `bin` install a working MCP server and skills into a consumer project? | task | resolved | 01 | [RES-077](../research/RES-077-init-script-trial.md) |
 | 04 | Do the MCP server and the skills ship inside the design system package, or as separate packages? | interview | open | 01, 03 | — |
-| 05 | What does `init` install, into which agent hosts, and how does it update on a new version? | interview | open | 04 | — |
+| 05 | What does `init` install, into which agent hosts, and how does it update on a new version? | interview | open | 04, 15 | — |
 | 06 | Which tools and records does the 1.0 MCP server serve? | interview | open | 04, 10 | — |
 | 07 | Which skills ship for consumers? | interview | open | 04, 10 | — |
 | 08 | Which idea owns the documentation website and its records? | interview | resolved | — | [DEC-139](../decisions/DEC-139-seventh-idea-owns-the-documentation-website.md) |
@@ -119,6 +135,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 12 | Does the 1.0 MCP server have tools that return rendered UI? | interview | open | 04, 11, 14 | — |
 | 13 | Are the blocks exposed to agents through the MCP server, through a skill, or through both? | interview | open | 04 | — |
 | 14 | Do Claude Code, Codex and Gemini CLI show the view of a tool that uses MCP Apps: what does each host's own documentation say, and what does a test with a minimal server show? RES-066 found only that the community's list of hosts has no tick for them. | research | open | — | — |
+| 15 | In the trial project of RES-077, with Peter at the keyboard: does each host work after a real approval in its own dialog, does a model in a session use a skill and call the tool, and what do Cursor and VS Code Copilot show? Only Peter can approve in a host's dialog and sign in, so this is a step that he runs; the main session gives him the checklist when row 05 is next. | task | open | 03 | — |
 
 ## Not yet specified
 - Google's A2UI, a declarative format for UI that a Google post joins with MCP Apps. RES-066 saw it in a search result and did not read it. It sharpens at row 12, if a second mechanism beside MCP Apps matters then.
