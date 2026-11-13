@@ -54,8 +54,22 @@ A spec for the repository of 1.0: its build tools, its checks in CI, its release
 - Limits of the record: the times are wall time of runs that passed at the first attempt; for TanStack the share of the cache is visible only in Nx Cloud. Few maintainers state why they chose a tool.
 - Peter asked for "a comprehensive plan" from this research. Row 03 is that decision; the agent prepares a proposal for the plan before it asks.
 
+### Row 04 — resolved
+- RES-076 and its result file, 2026-11-13: one table of 32 areas for the 70,498 tracked files of the branch at commit `e25f8dc96`, 248.7 MB in all. The task changed and removed nothing.
+- Facts for rows 05 and 06:
+  - 95% of the files are of three areas: generated icon code (41,359 files), icon artwork from Material Symbols (24,812 files) and the verification evidence of the old releases (1,107 files, 48.9 MB).
+  - The largest area by size is the measurements of the Geist tool: 569 generated files, 139.0 MB. No file of the work on the new system names them. The same holds for the authored styles in `styles/`.
+  - Code of the old system: component source 527 files; generated styles, tokens and entries about 1,000 files; five package folders; the website 135 files; build, check and release scripts 130 files; the Geist tool 288 files; three CI workflows.
+  - Records of releases 0.1 to 0.3: 116 decisions, 22 research records, 15 specs, 4 release notes, 12 history files, the verification evidence and 7 maintenance issues.
+  - Records of the work on the new system: 34 decisions, 33 tracked research records, the 10 ideas and six files in `docs/design/`, three of them Peter's saved prompts.
+  - Agent context files: 11. Glossaries: `GLOSSARY.md` with 70 entries, most of them from the old system, its map, and the glossary of the Geist tool with 10.
+  - Outside git, and used by the work on the new system: `.artifacts/v1/` (183.4 MB; the trial folder alone has 7,073 files) and the pinned Bun 1.4.2 in the other checkout (87.3 MB). A removal of the old system must keep a way to run Bun 1.4.2.
+  - Other worktrees and branches hold work on the old system: `claude/ci-speed`, `claude/issue-12-strict-style-policy` and others.
+- Limit: "what uses it" in the table is a search for names in files. It is no dependency graph.
+- The numbers are for one commit. To refresh them, run `areas.py` and then `uses.py` in the scratch folder.
+
 ### Second block of agent work
-- Row 04 — running since 2026-11-13, in the second block of agent work. Task agent `a2dfef76d0234e4bb`, started without a name; its log records Opus 5.5 and the effort `medium`. Its task record is RES-076, which the main session created before the start. Its brief is `.artifacts/v1/briefs/IDEA-010-04.md` with `common-task.md`, and its scratch folder is `.artifacts/v1/task/IDEA-010-04/`. The task reads the files of release 0.3.3, because the list is its purpose; it removes and changes nothing. Check the log again when the agent ends, before its record is read.
+- Row 04 — done on 2026-11-13: task record RES-076, from the task agent `a2dfef76d0234e4bb`, started without a name. Its log records Opus 5.5 and the effort `medium` on all 62 requests, checked after the agent ended. Its result file is `.artifacts/v1/task/IDEA-010-04/IDEA-010-04-result.md` (scratch, outside git), with the raw list and the two scripts that made it. The main session read the result file in full and checked it against git: the raw list holds each of the 70,498 tracked files of commit `e25f8dc96` once, with none missing and none extra.
 - Row 02 — done on 2026-11-13: RES-068, from the researcher agent `ae5fe8e4a588868c0`, started without a name. Its log records Opus 5.5 and the effort `medium` on all 140 requests, checked after the agent ended. It was the third start of the row; two starts of the same day ended in outages of the Claude login.
 
 ## Map
@@ -65,7 +79,7 @@ A spec for the repository of 1.0: its build tools, its checks in CI, its release
 | 01 | Is CI/CD, deployment and build tooling an idea of its own, which is this one, or a part of another idea? | interview | open | — | — |
 | 02 | What do shadcn/ui, Radix (Primitives and Themes), Chakra UI, Geist and TanStack use for CI/CD, deployment and build tools: the monorepo tool, the package manager, the bundler, the test runners and browsers in CI, caching, the release and publish flow and preview deployments, and how long do their pipelines take? | research | resolved | — | [RES-068](../research/RES-068-ci-cd-and-build-tools-of-the-reference-systems.md) |
 | 03 | Which build tools, CI pipeline, release flow and deployment does 1.0 use? | interview | open | 02 | — |
-| 04 | List what the branch holds now, by area: code, packages, website, tools, CI, docs, research, specs, glossaries, agent context files and saved prompts, with the size of each area and what uses it. | task | in-progress | — | — |
+| 04 | List what the branch holds now, by area: code, packages, website, tools, CI, docs, research, specs, glossaries, agent context files and saved prompts, with the size of each area and what uses it. | task | resolved | — | [RES-076](../research/RES-076-list-of-what-the-branch-holds.md) |
 | 05 | What survives the removal of the old system: for each area of the list, does it stay, go or move? | interview | open | 04 | — |
 | 06 | When is the old system removed from the branch? | interview | open | 04 | — |
 
