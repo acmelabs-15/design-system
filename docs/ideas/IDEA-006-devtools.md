@@ -28,6 +28,19 @@ A spec for the 1.0 devtools package: its base, its capabilities, and how it reac
 - Row 07 — wait: IDEA-003#05 and IDEA-004#04 are resolved.
 - Row 08 — done on 2026-11-12 by the main session: RES-044.
 
+### Row 01 — resolved
+- RES-031 is answered since 2026-11-12: the sweep, then one research agent for each of its two follow-up questions (`a0becb199c1440699` and `ae5af13955a9023dc`; both logs record `claude-opus-5-5` and the effort `medium`). The second agent also covered the Vite DevTools Kit and Devframe, the follow-up of the first.
+- Facts for row 04, the base:
+  - TanStack Devtools (0.16.0, alpha, MIT): a panel can be plain DOM code, and the core mounts with no framework. Its shell is written in Solid. No source covers its use on a page with no build step; the published core imports Solid by bare module names. It has an accessibility plugin with rules up to WCAG 2.2 AA and a download from its panel. No source describes property editing or theme controls as a feature; the documentation names state editing as something that a plugin can build.
+  - Storybook has most of the six capabilities of DEC-143 ready, but it is an application of its own and does not run inside the consumer's application.
+  - Vue DevTools, Nuxt DevTools and the Astro dev toolbar each run only in their own framework. The Vercel toolbar documents no API for third parties.
+  - Devframe (1.3.3, MIT, first published in April 2026) is a framework-neutral base for devtools. It needs a running JavaScript server. The Vite DevTools Kit needs Vite 8.3 or later.
+  - Tools for web components: Lit DevTools (third party, BSD-3-Clause, Lit elements only) edits properties on the live element, records events and reads a Custom Elements Manifest; it runs on Vite DevTools or on Devframe. The browser extensions run in the browser's own devtools and not in the page. `api-viewer-element` works on its own demo instance and not on a component of a running application.
+  - No base documents a token inspector, an editor for the values of a custom theme, or the export of a theme file (DEC-145). So 1.0 builds these three on any base.
+  - No base documents a plain HTML page with no server and no build step as a host. DEC-119 names such pages as one way of use.
+- Facts for row 05: the table in RES-031 holds each base against the six capabilities and the theme export. Lit DevTools shows that one tool can work on the custom elements themselves, for Lit elements.
+- Points that no source covers, marked UNVERIFIED in the record: a custom element as a TanStack panel; TanStack Devtools with no build step; a theme file written through the server functions of Devframe.
+
 ### Evidence from other ideas
 - DEC-137 (IDEA-002#04), for rows 03 and 06: the tokens carry light and dark, and custom themes with a team's own brand colour, typeface and corner radius. 1.0 has no density setting and no built-in accent choice. The theming controls work on these.
 - DEC-127 (IDEA-003#04): 1.0 does not render on the server.
@@ -47,7 +60,7 @@ A spec for the 1.0 devtools package: its base, its capabilities, and how it reac
 
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
-| 01 | What does TanStack Devtools offer for extension and for a fork, and which other bases for devtools exist? | research | in-progress | — | — |
+| 01 | What does TanStack Devtools offer for extension and for a fork, and which other bases for devtools exist? | research | resolved | — | [RES-031](../research/RES-031-devtools-bases-landscape.md) |
 | 03 | Which capabilities must the first devtools release have beyond live prop switching and theming controls? | interview | resolved | — | [DEC-143](../decisions/DEC-143-devtools-first-release-capabilities.md) |
 | 04 | Is devtools built on TanStack Devtools (extended or forked), or built by us? | interview | open | 01, 03 | — |
 | 05 | Does devtools work on the custom elements for every framework, or through an adapter for each framework? | interview | open | 04, 07 | — |
