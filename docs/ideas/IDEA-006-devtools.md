@@ -24,7 +24,7 @@ A spec for the 1.0 devtools package: its base, its capabilities, and how it reac
 ### Waits
 - Row 01 — running since 2026-11-12, after Peter's go (IDEA-001, Notes). Record: RES-031. Workflow run `wf_40354acd-051`, task `w76opab21`, from the script `.artifacts/v1/research/deep-research-opus-medium.js`. Its first agent's log records `claude-opus-5-5` and the effort `medium`. The run ended on 2026-11-12 with 104 agents and no error. RES-031 holds a partial answer: 8 findings on TanStack Devtools (alpha, version 0.16.0, shell written in Solid.js, adapters for six frameworks, none for Lit or plain custom elements); no confirmed claim on any other base. Two narrower runs are named in RES-031, Next action. The agent holds these runs until the decision rows of this idea are next: the facts are about tools that change each month, and no decision that needs them is on the frontier. Peter can ask for them sooner.
 - Row 07 — wait: IDEA-003#05 and IDEA-004#04 are resolved.
-- Row 08 — ready: DEC-120 resolved IDEA-002#09 on 2026-11-12. The token files in the repo are Figma's exported DTCG files, and Figma stays the place where a token changes. Row 06 needs that fact.
+- Row 08 — done on 2026-11-12 by the main session: RES-044.
 
 ### Evidence from other ideas
 - DEC-137 (IDEA-002#04), for rows 03 and 06: the tokens carry light and dark, and custom themes with a team's own brand colour, typeface and corner radius. 1.0 has no density setting and no built-in accent choice. The theming controls work on these.
@@ -35,21 +35,23 @@ A spec for the 1.0 devtools package: its base, its capabilities, and how it reac
 - Its capabilities include live prop switching on a selected component, and theming controls.
 - The options to evaluate: TanStack Devtools (extend it, or fork it into something custom) against our own build. Research comes first.
 
-### Row 03 — pending question
-- Pending question, 2026-11-12, with more than one answer possible: which capabilities must the first devtools release have beside live prop switching and theming controls? Options: "Token inspector (Recommended)": the tokens that the selected component uses, with their values in light and dark; "Accessibility checks": the name, the role and the contrast of the selected component against WCAG 2.2 level AA; "Event log": the events that the components fire; "Breakpoint view": the style props of a layout component at each breakpoint. To choose none, he types "none".
-- The agent's reasons: a custom theme changes token values (DEC-137), so a developer must see which tokens a component uses; each further capability makes the first release larger before its base is chosen (row 04).
+### Row 03 — resolved
+- DEC-143, Peter, 2026-11-12: the first release has six capabilities: live prop switching with prop inspection, theming controls, token inspector, accessibility checks, event log and breakpoint view. He selected all four that the agent offered; the agent had recommended the token inspector only.
+
+### Row 06 — ready to ask
+- Rows 03 and 08 are resolved, so row 06 is on the frontier. RES-044 holds its facts: Figma is the one place where a token of 1.0 changes, so the theming controls cannot write the 1.0 tokens into the repo; the values of a custom theme belong to the outside team, so an export of those breaks no rule.
 
 ## Map
 
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
 | 01 | What does TanStack Devtools offer for extension and for a fork, and which other bases for devtools exist? | research | in-progress | — | — |
-| 03 | Which capabilities must the first devtools release have beyond live prop switching and theming controls? | interview | open | — | — |
+| 03 | Which capabilities must the first devtools release have beyond live prop switching and theming controls? | interview | resolved | — | [DEC-143](../decisions/DEC-143-devtools-first-release-capabilities.md) |
 | 04 | Is devtools built on TanStack Devtools (extended or forked), or built by us? | interview | open | 01, 03 | — |
 | 05 | Does devtools work on the custom elements for every framework, or through an adapter for each framework? | interview | open | 04, 07 | — |
 | 06 | Do the theming controls only preview token values, or do they also export changes? | interview | open | 03, 08 | — |
 | 07 | Import the composition architecture from IDEA-003 and the wrapper targets from IDEA-004. | task | open | — | — |
-| 08 | Import the token pipeline decision from IDEA-002. | task | open | — | — |
+| 08 | Import the token pipeline decision from IDEA-002. | task | resolved | — | [RES-044](../research/RES-044-devtools-import-of-the-token-pipeline.md) |
 
 ## Not yet specified
 - How devtools stays out of production bundles.

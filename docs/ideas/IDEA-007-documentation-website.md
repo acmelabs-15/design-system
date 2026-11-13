@@ -22,6 +22,10 @@ A spec for the documentation website of 1.0: what it holds, where its records co
 - Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas). They hold for this idea too.
 - This idea began on 2026-11-12 with DEC-139. Peter has seen its scope lines in chat and has not yet confirmed its intent.
 
+### Row 01 — pending question
+- Pending question, 2026-11-12: what does the website hold? The agent proposes one full set. Each component page: what the component is and when to use it; live examples; the code of each example in plain HTML and for each framework package; its props, events, slots and parts; its keyboard and screen reader behaviour; the tokens that it uses. Beside the component pages: Get started; Theming; Tokens; Icons; Blocks; a page on the MCP server and the skills; a page for designers on the Figma library; the changelog. Options: "The full set (Recommended)"; "Reference only": examples and reference tables on each component page, with Get started, Theming and Blocks beside them, and no text on when to use a component.
+- The agent's reasons: the four audiences of DEC-119 include coding agents and outside teams, who need to know when to use which of 145 components; the text on when to use a component is the usage guidance of DEC-142.
+
 ### Waits
 - Row 07 — wait: IDEA-003#05 and IDEA-004#04 are resolved.
 - Row 08 — wait: IDEA-001 reaches `done`, and IDEA-002 resolves its row 13.
@@ -55,7 +59,7 @@ A spec for the documentation website of 1.0: what it holds, where its records co
 
 ## Not yet specified
 - Search, and a version switch for later releases.
-- A playground where a reader changes the props of a live component. It overlaps with devtools (IDEA-006).
+- A playground where a reader changes the props of a live component. It overlaps with devtools (IDEA-006): DEC-143 gives devtools live prop switching with prop inspection.
 - How a coding agent reads the website, for example through a text version of each page. It sharpens with IDEA-005#09.
 - The look of the website itself. It follows the design direction of IDEA-002#26.
 
