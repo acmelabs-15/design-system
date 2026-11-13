@@ -77,9 +77,29 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Facts for row 06, the tools of the server: Storybook's server has nine tools in three sets (development, documentation, tests). Its documentation tools need a components manifest, which a Storybook of web components does not get in 10.6. NVIDIA Elements' server has 17 tools and four prompts.
 - Evidence for row 09, an agent with no project: the view of NVIDIA Elements needs no project and no server, and the hosts where such agents often run are ticked for MCP Apps.
 
+### Row 10 — resolved
+- RES-070, 2026-11-13, from the published packages and repositories of fifteen systems. No server was started. Fourteen ship an MCP server and eleven ship skills. Web Awesome, the only library of web components in the set, ships skills and `llms.txt` files and no MCP server.
+- Facts for row 06, the tools of the server. The record joins every tool into concepts:
+  - Nearly every server has: list the components; search the components or the documentation; get the documentation or the API of one component; get an example.
+  - Many have: tokens and the theme; guidelines for usage and accessibility; icons; patterns, templates or blocks; a guide for a migration; several lookups in one call.
+  - Six check the code that an agent wrote: for example Primer runs Stylelint, PrimeTek checks a usage against the API metadata, and Shopify checks each code block.
+  - One system only: shadcn/ui returns the command that adds a component; Atlassian checks the accessibility of a running local page with a headless browser; MUI generates code on its own backend.
+  - The number of tools goes from 3 (MUI) to 21 (Atlassian). Three servers also have prompts, and two have resources.
+- Facts for row 07, the skills:
+  - Most systems ship one umbrella skill, "build UI with this library". Some add skills for theming and design, for a migration between versions, and for a review of existing code.
+  - Common steps inside a skill: read the project first (its framework, its installed components); ask the server or the command line tool before writing code; run a check before the work is called done.
+- What the sources say about why, and what did not work:
+  - The knowledge of a model is stale, so a server gives the current props and names.
+  - Agents skip the server: MUI saw hosts choose their own edit tools, and Web Awesome writes "the agent never looked". Both answer with a block in the project's instructions file or with a skill.
+  - The server gives the facts, and the skill says when to ask for them (Carbon).
+  - Each tool costs context, about 200 to 500 tokens by Angular's count. Several systems answer with filters, batches and fewer tools.
+- For IDEA-005#13, blocks for agents: Chakra UI, Nuxt UI and Primer have tools that list and return patterns, templates or blocks.
+- Many of the servers are built on the same `llms.txt` files that the documentation website serves. That bears on IDEA-007#04, the source of the records.
+- Limits of the record: no server ran, so no live list of tools was compared with the code. Fluent UI, Material Web and Vaadin were not checked.
+
 ### Second block of agent work
 - Row 03 — running since 2026-11-13, in the second block of agent work. Task agent `ac68d178289fa47aa`, started without a name; its log records Opus 5.5 and the effort `medium`. Its task record is RES-077, which the main session created before the start. Its brief is `.artifacts/v1/briefs/IDEA-005-03.md` with `common-task.md`, and its scratch folder is `.artifacts/v1/trial/IDEA-005-03/`. Check the log again when the agent ends, before its record is read.
-- Row 10 — running since 2026-11-13, in the second block of agent work (IDEA-001, Notes, "Second block of agent work"). Researcher agent `ae876dde1bf071a5a`, started without a name on Peter's word "start the block"; its log records Opus 5.5 and the effort `medium`. Its record is found by its `from`. Its brief is `.artifacts/v1/briefs/IDEA-005-10.md` with `common.md`. It is the third start: two starts of the same day ended in outages of the Claude login, and their records were removed at Peter's request. Check the log again when the agent ends, before its record is read.
+- Row 10 — done on 2026-11-13: RES-070, from the researcher agent `ae876dde1bf071a5a`, started without a name. Its log records Opus 5.5 and the effort `medium` on all 176 requests, checked after the agent ended. It was the third start of the row; two starts of the same day ended in outages of the Claude login. The main session read the Answer, with its two tables, and the findings on MUI, Chakra UI and shadcn/ui in full. It reads the findings on each other system when rows 06 and 07 are next.
 - Row 11 — done on 2026-11-13: RES-066, from the researcher agent `a390f05d09d1064c0`, started without a name. Its log records Opus 5.5 and the effort `medium` on all 108 requests, checked after the agent ended. It was the third start of the row; two starts of the same day ended in outages of the Claude login.
 
 ## Map
@@ -94,7 +114,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 07 | Which skills ship for consumers? | interview | open | 04, 10 | — |
 | 08 | Which idea owns the documentation website and its records? | interview | resolved | — | [DEC-139](../decisions/DEC-139-seventh-idea-owns-the-documentation-website.md) |
 | 09 | How does an agent that writes one HTML page, with no project and no package install, get the 1.0 guidance? | interview | open | 01, 04 | — |
-| 10 | Which skills do other design systems ship and what does each skill do, and which tools do their MCP servers expose and what does each tool do? RES-030 holds how they package and distribute them. | research | in-progress | — | — |
+| 10 | Which skills do other design systems ship and what does each skill do, and which tools do their MCP servers expose and what does each tool do? RES-030 holds how they package and distribute them. | research | resolved | — | [RES-070](../research/RES-070-skills-and-mcp-tools-of-other-design-systems.md) |
 | 11 | How do Storybook's skills and its MCP server work, and in particular its MCP tools that return rendered UI; who else returns rendered UI from an MCP tool, and how does that work? | research | resolved | — | [RES-066](../research/RES-066-storybook-mcp-and-rendered-ui-tools.md) |
 | 12 | Does the 1.0 MCP server have tools that return rendered UI? | interview | open | 04, 11, 14 | — |
 | 13 | Are the blocks exposed to agents through the MCP server, through a skill, or through both? | interview | open | 04 | — |
