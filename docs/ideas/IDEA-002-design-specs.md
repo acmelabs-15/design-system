@@ -24,7 +24,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 ### Waits
 - Rows 06, 20, 26 and 28 — running since 2026-11-12, in the block of agent work that Peter approved. Each agent started without a name; its log records `claude-opus-5-5` and the effort `medium`. The list is in IDEA-001, Notes, "Block of agent work".
   - Row 06: done on 2026-11-12. Researcher agent `a278b8c98ca46fab4`, record RES-046.
-  - Row 28: researcher agent `a51af336d2021a7fa`, record RES-049.
+  - Row 28: done on 2026-11-12. Researcher agent `a51af336d2021a7fa`, record RES-049.
   - Row 20: done on 2026-11-12. Task agent `afaf8c600aefa4a34`, task record RES-048, scratch folder `.artifacts/v1/trial/IDEA-002-20/`.
   - Row 26: task agent `a1f8073e09f49bbcb` builds the prototype in `.artifacts/v1/prototype/IDEA-002-26/`, with `IDEA-002-26-progress.md` and `IDEA-002-26-result.md`. When the result is complete, the row is open again and waits for Peter's choice.
 - Row 14 — wait: IDEA-001 reaches `done`.
@@ -86,8 +86,15 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Settled: an internal skill that tells an agent how to bring the tokens in is acceptable for the work of the maintainers. Conditions: none stated.
 - His leaning, no decision: a script that a package script starts.
 - A fact that limits such a script, which the agent told him: on the Professional plan no script can read the variables out of Figma, because the Variables REST API needs the Enterprise plan (RES-024). A script can do every step after the export: take the exported files, build the token output and show what changed.
-- Open: the flow, who starts it, and the versions. They wait for row 28, the research that he asked for.
-- Next: run row 28 in the block of agent work. Then ask row 10 again with its facts.
+- Open: the flow, who starts it, and the versions. Row 28, the research that he asked for, is resolved by RES-049.
+- Facts from RES-049 for the question, from the public repositories of nine design systems that author tokens in Figma:
+  - Four read Figma's REST API from a script or a CI job, and that route needs the Enterprise plan. Three use Tokens Studio. One runs a plugin of its own by hand. Three use the native "Export modes", and in each of them a person takes the files out of Figma.
+  - No system states that it runs its route on the Professional plan.
+  - Seven land a token change through a pull request. One commits directly.
+  - All version tokens with a package: six in a token package of its own, three inside the main package. None takes a version from Figma.
+  - On the Professional plan a script cannot read the variables and cannot start the export. Once the exported files exist, a script can do each later step: place the files, check the modes, build the output, show what changed, and open the pull request.
+  - Four more systems author tokens in code and push them to Figma. That direction is against the constraint of this idea.
+- Next: ask row 10 again with these facts.
 
 ### Row 20 — resolved
 - RES-048, 2026-11-12: the trial with the 16-variable export of RES-028. Facts from it for row 11:
@@ -167,9 +174,10 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 25 | What do the five reference systems define for colour, type scale, shape, spacing and sizes, elevation and motion, what does Geist leave out, and what do Vercel's terms say about the reuse of Geist's values? | research | resolved | — | [RES-041](../research/RES-041-look-of-the-reference-systems.md) |
 | 26 | Which design direction does 1.0 take: for colour, type scale, shape, density and motion, what comes from Geist, what comes from another system and what is new? | prototype | in-progress | 04, 05, 24, 25, 27 | — |
 | 27 | Does 1.0 take Geist's exact values (colours, text styles, shadows), or its own values in a structure like Geist's, given that Vercel publishes no license for them? | interview | resolved | 25 | [DEC-136](../decisions/DEC-136-geist-exact-values-without-a-check.md) |
-| 28 | How do other design systems bring token changes from Figma into their repo (a script, a plugin, a CI job or by hand), on which Figma plan, and how do they name token versions? | research | in-progress | — | — |
+| 28 | How do other design systems bring token changes from Figma into their repo (a script, a plugin, a CI job or by hand), on which Figma plan, and how do they name token versions? | research | resolved | — | [RES-049](../research/RES-049-figma-token-change-flow-in-other-systems.md) |
 
 ## Not yet specified
+- What "Export modes" writes for an alias to a variable in another collection, and whether it writes `com.figma.isOverride`. Other systems' exports hold both (RES-049, Follow-ups), and the trial export held neither (RES-048, Limits). It sharpens at row 11, when the first real collections exist.
 - How a designer of another Professional team, with view access to the library file only, finds the library and adds it to a file of that team (RES-046, Follow-ups). It needs a live test with a second Figma account. It sharpens at row 07.
 - How many design specs the agents draw at one time. DEC-141 asks for as many as possible; the limits of the Figma MCP are not known (RES-025). The plan settles it.
 - Whether the design direction of row 26 needs one decision for each part of the look. It sharpens when the first samples are drawn.
