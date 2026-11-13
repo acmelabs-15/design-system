@@ -25,6 +25,7 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 ### Waits
 - Rows 01 and 02 — done on 2026-11-12: RES-042 from the researcher agent `ae3a841db00a620a6` and RES-043 from the researcher agent `a8a44290116cb20e5`. Both started without a name when DEC-127 resolved row 04; their logs record `claude-opus-5-5` and the effort `medium` on each request.
 - Row 05 — ready, next for the agent: explain the mechanisms of RES-043 to Peter in plain words, then build the prototype with brain's prototype skill. Peter chooses the architecture from it.
+- Row 14 — ready, not started: the agent starts it when the style props are the next topic. No decision on the frontier needs it yet.
 - Row 09 — wait: IDEA-001 reaches `done`.
 - Row 10 — wait: IDEA-002 resolves its rows 11 and 13. Row 09 is resolved by DEC-120.
 - Row 12 — wait: IDEA-002#22 decides the variations of Material Symbols. DEC-123 holds Peter's decisions that each icon is a component built with the Icon component, and that the Icon component renders SVG, not an icon font.
@@ -42,6 +43,8 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 - RES-035 and RES-037 (IDEA-001#01), evidence for rows 01 and 06: the Chakra UI inventory marks 19 of 115 components as offered both as one ready-made component and as parts, 46 as parts only and 50 as one component.
 - DEC-124 (IDEA-001#06), for rows 05 and 06: Peter decides the parts and the structure of each component by review, and he expects a mix of several systems. The architecture must not assume the structure of one reference system.
 - DEC-128 (IDEA-002#24), for row 13: the typefaces are Google Sans Flex for text and Google Sans Code for code. Their license facts come from search excerpts; row 13 checks the license at its source first. Row 13 waits for row 11, because the delivery of the fonts follows the delivery of the components.
+- DEC-131 (Peter, 2026-11-12), for rows 14 and 15: the layout components take style props that work as in Chakra UI, responsive values included, and the Lit components have this too. 1.0 uses no CSS-in-JS. The values of such a prop are token values, so row 15 touches row 08.
+- Peter's leaning, same message, for the build tooling under "Not yet specified": the styles are written in "css or the css module rather (scss I tink)". It is no decision.
 - RES-042, for rows 05 to 07: in Chakra UI the state of a component lives in three layers. A Zag.js state machine owns the logic, the keyboard and the ARIA behaviour, with no framework. Ark UI puts the machine's API into a React context at the root, and each part reads it. Chakra UI adds only style.
 - RES-043, for rows 05, 06 and 11:
   - A slot takes only the top-level children of its host. A part inside a wrapper element is not assigned, and the parent sees the wrapper. Events and context pass through a wrapper.
@@ -66,6 +69,8 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 | 11 | Which delivery lets one HTML page use 1.0 from a CDN with no build step, and does it cover every component? | interview | open | 05 | — |
 | 12 | How does the icon library make one component for each icon from the Icon component, and how do the variations of an icon reach it? | interview | open | 05 | — |
 | 13 | How do the typefaces of 1.0 reach a page: font files in the package, a link to Google Fonts, or the consumer's own loading? | interview | open | 11 | — |
+| 14 | How do Chakra UI and Radix Themes turn style props with responsive values into CSS, and how can a custom element take a value for each breakpoint from an HTML attribute with no CSS-in-JS? | research | open | — | — |
+| 15 | Which mechanism do the style props of the layout components use in the Lit core? | interview | open | 14 | — |
 
 ## Not yet specified
 These sharpen after row 05.

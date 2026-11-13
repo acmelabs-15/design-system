@@ -33,6 +33,7 @@ A spec for the framework packages: the chosen targets, the way each wrapper is p
 - Each target is evaluated on three points: whether it is needed, how its wrapper is generated or written, and how it is tested.
 
 ### Evidence from other ideas
+- DEC-131 (Peter, 2026-11-12), for row 05: the layout components take style props with responsive values, as in Chakra UI. In React such a value is an object or a list, so a wrapper must pass it on to the Lit component. IDEA-003 rows 14 and 15 hold the mechanism.
 - RES-042 (IDEA-003#01), for row 05: Chakra UI exports each part as a named component and adds `export * as Steps` for the short names. That namespace cannot be used as a component, so a wrapper that offers `Stepper` and `Stepper.Root` together needs another export shape.
 - RES-043 (IDEA-003#02), for rows 01 and 05: a slot takes only the top-level children of its host, so a wrapper element that a framework adds around a part breaks the slot assignment. Events and context pass through such an element.
 - DEC-119 (IDEA-001#03): 1.0 serves ACME Labs applications, AI-written artifacts, outside teams and marketing and content sites. It is evidence for row 04: outside teams use more frameworks than one company does. It settles no target.

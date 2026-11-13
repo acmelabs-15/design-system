@@ -76,6 +76,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Row 21 is resolved by RES-040. Facts for row 22: Material Symbols has the styles Outlined, Rounded and Sharp. As SVG files each icon exists in 7 weights (100 to 700), 3 grades (-25, 0, 200), filled and unfilled, and 4 sizes (20, 24, 40, 48 px): 168 files for each style. No file exists between those steps. Google publishes no npm package for the set; the license is Apache-2.0. The count of icons is about 4,000 and differs by source.
 
 ### Evidence from other ideas
+- DEC-131 (Peter, 2026-11-12), for rows 11 and 13: the layout components take style props with responsive values, as in Chakra UI. So the breakpoints are tokens, and the design spec of a layout component lists its style props. IDEA-003 rows 14 and 15 hold the mechanism.
 - DEC-119 (IDEA-001#03): 1.0 serves ACME Labs applications, AI-written artifacts, outside teams and marketing and content sites. It is evidence for rows 03, 04 and 05 and settles none of them. Outside teams bring their own brand, which bears on custom themes in row 04.
 
 ### Settled by the prompt
