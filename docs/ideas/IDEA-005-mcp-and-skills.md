@@ -37,6 +37,7 @@ A spec for the MCP server and the consumer skills of 1.0: where they ship, what 
 
 ### Boundary question
 - Row 08: the kickoff prompt says the merge replaces the docs, but no idea names the documentation website. The row sits here because the MCP server serves the same records as the website.
+- Evidence for row 08, Peter, 2026-11-12 (IDEA-001, Row 11 — partial): recipes are not given out as components, and 1.0 "should just include a blocks section in the docs like they do", as shadcn/ui does. So the documentation website of 1.0 has a blocks section. Which idea holds it is open with row 08.
 
 ## Map
 
