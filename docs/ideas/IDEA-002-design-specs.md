@@ -26,7 +26,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
   - Row 06: done on 2026-11-12. Researcher agent `a278b8c98ca46fab4`, record RES-046.
   - Row 28: done on 2026-11-12. Researcher agent `a51af336d2021a7fa`, record RES-049.
   - Row 20: done on 2026-11-12. Task agent `afaf8c600aefa4a34`, task record RES-048, scratch folder `.artifacts/v1/trial/IDEA-002-20/`.
-  - Row 26: task agent `a1f8073e09f49bbcb` builds the prototype in `.artifacts/v1/prototype/IDEA-002-26/`, with `IDEA-002-26-progress.md` and `IDEA-002-26-result.md`. When the result is complete, the row is open again and waits for Peter's choice.
+  - Row 26: the prototype is complete since 2026-11-12, and the row waits for Peter's choice. Task agent `a1f8073e09f49bbcb`; folder `.artifacts/v1/prototype/IDEA-002-26/` (scratch, outside git), with `IDEA-002-26-progress.md` and `IDEA-002-26-result.md`.
 - Row 14 — wait: IDEA-001 reaches `done`.
 - Row 25 — done on 2026-11-12: RES-041, from the researcher agent `af48e18cec0f3b798`, started without a name; its log records `claude-opus-5-5` and the effort `medium` on each request.
 
@@ -58,9 +58,22 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 ### Row 05 — resolved
 - DEC-138, Peter, 2026-11-12: WCAG 2.2 level AA; left-to-right and right-to-left; mouse, touch, keyboard and screen reader. Where one of Geist's exact values fails level AA, that value changes.
 
-### Row 26 — ready, next for the agent
-- Every row that row 26 waited for is resolved: 04, 05, 24, 25 and 27.
-- Next: load brain's prototype skill and draw sample components in the candidate directions. The fixed inputs: Geist's exact values where a part comes from Geist (DEC-136); Google Sans Flex and Google Sans Code (DEC-128); light and dark, with custom themes (DEC-137); level AA and both reading directions (DEC-138); Material Symbols (DEC-123). The open parts: spacing, control heights, motion and focus ring, which Geist does not document; the text styles with the new typeface; each colour of Geist that fails level AA.
+### Row 26 — the prototype is built, next: Peter's choice
+- Open the page from the repo root with `open .artifacts/v1/prototype/IDEA-002-26/index.html`. It needs no server; the fonts load from Google Fonts. The view is set by `?variant=1|2|3|4&scheme=light|dark&dir=ltr|rtl`, and a floating bar changes it.
+- What was built: one static page with 15 sample components under their DEC-135 names (Button, Icon Button, Input, Field, Select, Checkbox, Switch, Tabs, Badge, Alert, Card, Dropdown Menu, Tooltip, Code, Dialog), in four variants. 1: Geist as Vercel's site has it. 2: Geist's colours and materials with the sizes, spacing, radius and focus ring of Radix Themes 3.3.0. 3: the same with those of Chakra UI 3.38.0. 4: new values with a stated rule for each. All four use Google Sans Flex, Google Sans Code and Material Symbols as SVG. Each view shows a table of its values with the source of each.
+- Observed in Chrome: the 16 views (4 variants, light and dark, both directions) render with no console message; a screenshot of each is in `screenshots/`. The main session looked at one screenshot on 2026-11-12 (variant 4, light, left-to-right); no person has inspected the page yet.
+- Control heights as rendered, small / medium / large: variant 1, 32 / 36 / 40 px; variant 2, 24 / 32 / 40 px; variant 3, 36 / 40 / 44 px; variant 4, 32 / 36 / 40 px, equal to Geist's by its own rule.
+- Variant 1 has gaps: nine values that neither Geist's pages nor the CSS of Vercel's site give, such as the padding of Card, Dialog, Tooltip and Alert and the space between a label and its input. The page marks each gap. Variants 2 and 3 have two gaps each, and variant 4 has none.
+- Geist's text styles with Google Sans Flex: at one size the x-height is 3.8% lower than in Geist's own typeface, and the cap height is nearly the same. Geist's three largest headings set the line height equal to the size, below the content area of Google Sans Flex.
+- The contrast list, from a script over 194 pairs in each scheme (`contrast.py`, all pairs in `contrast-results.md`), for DEC-138:
+  - Each text pair of steps 9 and 10 passes 4.5:1 in light and dark.
+  - Each border step (4, 5, 6) fails 3:1 in light, and 50 of 72 fail in dark. Where a border is the only sign of a control, as on Geist's Input and on its unchecked Toggle, that is a failure of level AA.
+  - Text that fails: the link colour blue-700 (4.44:1 in light), white on blue-700, white on red-700, and five Badge fills in light.
+- Choices of the agent inside the brief, for Peter's review: variants 2 and 3 keep Geist's text styles and motion; variant 4 takes its motion values from Material 3's tokens and sets letter spacing to 0, because the typeface has an optical size axis.
+- Two facts about the source that bear on DEC-136: Vercel's site serves two stylesheets with different values for the same colour names (for example red-700), and the difference is not explained; the prototype uses the set that RES-041 read. Geist uses blue for success.
+- Limits: Chrome only; no forced-colours mode and no reduced-motion setting; right-to-left with Latin text only.
+- The prototype recommends nothing, and its result file has no question for Peter.
+- The fixed inputs of the prototype: Geist's exact values where a part comes from Geist (DEC-136); Google Sans Flex and Google Sans Code (DEC-128); light and dark, with custom themes (DEC-137); level AA and both reading directions (DEC-138); Material Symbols (DEC-123). The open parts: spacing, control heights, motion and focus ring, which Geist does not document; the text styles with the new typeface; each colour of Geist that fails level AA.
 
 ### Row 06 — resolved
 - RES-046, 2026-11-12, from Figma's documentation, with no Figma call. Facts from it for row 07:
@@ -172,7 +185,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 20 | Do Terrazzo and Style Dictionary read the files that "Export modes" writes, and what CSS does each write for two modes, an alias, a number with no unit, a string and a boolean? | task | resolved | 09 | [RES-048](../research/RES-048-token-tools-read-export-modes.md) |
 | 24 | Which typefaces does 1.0 use for text and for code? | interview | resolved | — | [DEC-128](../decisions/DEC-128-typefaces-google-sans-flex-and-code.md) |
 | 25 | What do the five reference systems define for colour, type scale, shape, spacing and sizes, elevation and motion, what does Geist leave out, and what do Vercel's terms say about the reuse of Geist's values? | research | resolved | — | [RES-041](../research/RES-041-look-of-the-reference-systems.md) |
-| 26 | Which design direction does 1.0 take: for colour, type scale, shape, density and motion, what comes from Geist, what comes from another system and what is new? | prototype | in-progress | 04, 05, 24, 25, 27 | — |
+| 26 | Which design direction does 1.0 take: for colour, type scale, shape, density and motion, what comes from Geist, what comes from another system and what is new? | prototype | open | 04, 05, 24, 25, 27 | — |
 | 27 | Does 1.0 take Geist's exact values (colours, text styles, shadows), or its own values in a structure like Geist's, given that Vercel publishes no license for them? | interview | resolved | 25 | [DEC-136](../decisions/DEC-136-geist-exact-values-without-a-check.md) |
 | 28 | How do other design systems bring token changes from Figma into their repo (a script, a plugin, a CI job or by hand), on which Figma plan, and how do they name token versions? | research | resolved | — | [RES-049](../research/RES-049-figma-token-change-flow-in-other-systems.md) |
 
