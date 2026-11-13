@@ -9,7 +9,7 @@ result: # with status: done, the DEC-NNN or the commit SHA this idea produced
 - Outcome: a documentation website for 1.0 that replaces the website of release 0.3.3 at the merge, with a page for each component, examples for each way to use 1.0, and a blocks section for recipes.
 - User: Peter decides. Developers, designers and coding agents read the website. The MCP server of IDEA-005 serves the same records.
 - Why now: the merge replaces the docs, and none of the first six ideas owns the website (DEC-139).
-- Success: open, rows 03, 04 and 05. A draft: Peter has chosen what the website holds, where its records come from and how it is built and published; the blocks of 1.0 are decided; a spec exists.
+- Success: open, rows 04 and 05. A draft: Peter has chosen what the website holds, where its records come from and how it is built and published; the blocks of 1.0 are decided; a spec exists.
 - Constraint: release 0.3.3, its website included, is no input (DEC-125). Research comes before each decision that rests on facts.
 - Out of scope: the component list, names and parts (IDEA-001), the design specs and tokens (IDEA-002), the Lit core (IDEA-003), the framework packages (IDEA-004), how the MCP server and the skills ship (IDEA-005) and devtools (IDEA-006).
 
@@ -25,14 +25,9 @@ A spec for the documentation website of 1.0: what it holds, where its records co
 ### Row 01 — resolved
 - DEC-144, Peter, 2026-11-12: the website holds the full set. He selected "The full set (Recommended)" in the dialog.
 
-### Row 03 — ready to ask
-- Row 01 is resolved, so row 03 is on the frontier.
-- The name of the section is settled by Peter's words, by the agent's reading: he said "a blocks section in the docs" twice, so the section is named Blocks. The glossary keeps Recipe as the word for the thing, and says that the documentation shows recipes in its Blocks section.
-- Candidates for the blocks, from Peter's words and the inventories: agent interfaces (the 21 patterns of AI Elements of shadcn/ui), app layouts (the blocks of shadcn/ui: dashboard, sidebar, login, signup), page sections for marketing and content sites (no reference system has them), and charts (shadcn/ui and Chakra UI build them on Recharts).
-
-### Row 03 — pending question
-- Pending question, 2026-11-12, with more than one answer possible: which groups of blocks does the Blocks section have in 1.0? Options: "Agent interfaces (Recommended)": blocks such as a chat, a prompt input and a tool call, after the patterns of AI Elements of shadcn/ui; "Page sections (Recommended)": blocks for marketing and content sites, such as a hero, a pricing table and a footer; "App layouts": a dashboard, a sidebar layout, a login and a signup page, as the blocks of shadcn/ui; "Charts": chart blocks on a third-party chart engine. To choose none, he types "none".
-- The agent's reasons: Peter asked for the AI components of shadcn/ui, and their patterns are recipes (DEC-133); marketing and content sites are an audience of DEC-119, and no reference system gives them components for page sections; the Chart component is out of the list because it wraps a third-party engine (DEC-133).
+### Row 03 — resolved
+- DEC-146, Peter, 2026-11-12: the Blocks section has four groups: agent interfaces, page sections for marketing and content sites, app layouts, and charts. He named two more with "maybe"; they are under "Not yet specified".
+- The section is named Blocks, by the agent's reading of his words "a blocks section in the docs". The glossary keeps Recipe as the word for the thing.
 
 ### Waits
 - Row 07 — wait: IDEA-003#05 and IDEA-004#04 are resolved.
@@ -57,8 +52,8 @@ A spec for the documentation website of 1.0: what it holds, where its records co
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
 | 01 | What does the website hold for each component, and what does it hold beside the component pages (guides, tokens and themes, blocks)? | interview | resolved | — | [DEC-144](../decisions/DEC-144-website-holds-the-full-set.md) |
-| 02 | How do other design systems with web components and several framework packages build their documentation websites: which site tools they use, how one page shows an example for each framework, and how they hold a blocks section? | research | open | — | — |
-| 03 | Which blocks does the Blocks section have in 1.0? | interview | open | 01 | — |
+| 02 | How do other design systems with web components and several framework packages build their documentation websites: which site tools they use, how one page shows an example for each framework, how they hold a blocks section, and which TanStack packages (Table, Virtual, Form) work with Lit and with each framework target? | research | open | — | — |
+| 03 | Which blocks does the Blocks section have in 1.0? | interview | resolved | 01 | [DEC-146](../decisions/DEC-146-blocks-section-has-four-groups.md) |
 | 04 | Where do the records of the website come from (component metadata, the design specs pulled from Figma, pages written by hand), and does the MCP server read the same source? | interview | open | 02 | — |
 | 05 | Which tool builds the website, and where is it published? | interview | open | 02 | — |
 | 06 | How does a page show one example in plain HTML and in each framework package? | interview | open | 02, 07 | — |
@@ -66,6 +61,8 @@ A spec for the documentation website of 1.0: what it holds, where its records co
 | 08 | Import the component list, names and parts from IDEA-001 and the format of a design spec from IDEA-002. | task | open | — | — |
 
 ## Not yet specified
+- Whether the Blocks section also has data tables with virtualization and forms that use TanStack packages. Peter named both with "maybe" (DEC-146). Row 02 checks which TanStack packages work with Lit and with each framework target.
+- Which chart engine the chart blocks use.
 - Search, and a version switch for later releases.
 - A playground where a reader changes the props of a live component. It overlaps with devtools (IDEA-006): DEC-143 gives devtools live prop switching with prop inspection.
 - How a coding agent reads the website, for example through a text version of each page. It sharpens with IDEA-005#09.
