@@ -50,6 +50,9 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 - Other sessions: the branches `claude/ci-speed` and `claude/issue-12-strict-style-policy` have their own worktrees, and the `main` checkout holds uncommitted files. They change the system that 1.0 replaces. Leave them as they are.
 - The open maintenance issues of 0.3.3 stay in the local tracker, `.scratch/maintenance/issues/`.
 
+### Row 02 — running
+- Started on 2026-11-12, when row 01 resolved and row 04 came to wait on this row alone. One brain researcher agent, started without a name on Opus 5.5 at medium effort; agent ID `a227031980dd6a9e0`. It claims its own research record with the slug `components-of-release-0-3-3`. It writes no other file.
+
 ### Row 05 — partial
 - Settled: the name that Geist uses for a component has no priority, although the 1.0 look starts from the Geist-based look of 0.3.3 (DEC-121). Standardizing names is part of the work.
 - Source: Peter's reply of 2026-11-12 to the question for IDEA-002#03: "I don't want to just assume that the name geist uses for a component is the correct one - part of this is standardizing names, etc - but like I know that some of the component names that geist uses are not what the rest of the industry uses".
@@ -81,7 +84,7 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
 | 01 | Which component concepts do shadcn/ui, Radix Primitives, Radix Themes, Chakra UI and Geist have, what does each system call them, how does each split them into parts, and where do they disagree? | research | resolved | — | [RES-037](../research/RES-037-component-comparison-matrix.md) |
-| 02 | Which components, parts and recipes does release 0.3.3 ship, and which decision records chose their names? | research | open | — | — |
+| 02 | Which components, parts and recipes does release 0.3.3 ship, and which decision records chose their names? | research | in-progress | — | — |
 | 03 | Which products and users does 1.0 serve, and what does that rule in or out of the list? | interview | resolved | — | [DEC-119](../decisions/DEC-119-four-audiences-for-1-0.md) |
 | 04 | Can the list hold a component concept that none of the five reference columns has? | interview | open | 02, 03 | — |
 | 05 | When the reference systems disagree on a name, which rule picks the 1.0 name? | interview | open | 01 | — |
