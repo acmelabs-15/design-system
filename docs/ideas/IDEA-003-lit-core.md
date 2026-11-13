@@ -88,7 +88,9 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
   - A fact for the next ask of row 05: the two sides differ in the records so far. The two Lit libraries of RES-043 read the slot (candidate B). Chakra UI shares state through context (candidate A, RES-042). Rows 20 and 21 show whether that holds across the reference systems and across the Lit libraries.
   - The practices beyond composition are the deferred row 22.
 - Open: the choice of the architecture.
-- Next: run rows 20 and 21 in the next block of agent work, after his go. Then review both results with him in plain words, and ask row 05 again against the test of DEC-149.
+- Rows 20 and 21 are resolved on 2026-11-13 by RES-072 and RES-069. "Row 20 — resolved" and "Row 21 — resolved" below hold their facts.
+- Pending question, asked on 2026-11-13 through the question dialog, after a review of both records in chat in plain words: may a developer put an own element between two parts of a component? This is the contract of row 05, as the placement above says; the mechanism inside is spec phase. Options: "Yes, at any depth (Recommended)", which is candidate A as a contract; "No, direct children only", which is candidate B as a contract. The question says that one closed tag, candidate C, is out, because it gives no subcomponents and no surveyed library builds such a component that way.
+  - The agent recommends "any depth", against the test of DEC-149. Reasons: each React system with public source works so, and react.dev calls a parent that reads its children fragile; a user of web components loses nothing, because direct children work as before; a React developer's wrapper breaks the other option with no error message. Stated costs: more code in each component; the library must handle the load order, as two libraries already do by themselves; fewer libraries of web components work this way today, three of thirteen with context.
 
 ### Settled by the prompt
 - Lit web components are the core implementation.
@@ -140,9 +142,33 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Not confirmed by the record: how the parts of Geist share state, and on which layer Geist is built.
 - The glossary terms wait for RES-069, the same facts for web component libraries (row 21). Then the agent brings the terms to Peter with the names of both sides.
 
+### Row 21 — resolved
+- RES-069, 2026-11-13, from the source code of thirteen libraries of web components, each at a named commit, ten of them built on Lit, and from lit.dev, replies of Lit's maintainers, Google's best practices, the Gold Standard checklist, the Community Group and Open UI. Wrapper behaviour was read from source code and was not run in a browser.
+- Facts for row 05, the architecture:
+  - Six mechanisms occur, and most libraries use more than one and choose by component.
+  - For tabs, an accordion and a stepper, most libraries let the parent read its slot or its direct children: Web Awesome, Shoelace, Material Web, Spectrum, Fluent UI, UI5, Lion and Vaadin. That is candidate B. A part inside a wrapper element is then not found. Two sources say so in writing; for the others it is read from the source.
+  - Four libraries wrote special code so that one component takes a wrapper, for example the button groups of Web Awesome and Shoelace.
+  - Parts at any depth exist too: Carbon's older components and Ionic search all descendants or let the part look for its parent; Spectrum's menu and Lion's forms let a part announce itself with an event.
+  - Context, the mechanism of candidate A, is in production in three libraries: Carbon's newer components, PatternFly Elements and the Red Hat Design System. Carbon documents a new component as "New Composable" and keeps the earlier one in a folder named deprecated. Its newer components have the shape of the compound pattern of React libraries.
+  - Context alone does not give any depth: PatternFly Elements and the Red Hat Design System pass state through context and still list their parts from direct children. The parts must also register with their root.
+  - The load order problem of candidate A is known in practice. PatternFly Elements and the Red Hat Design System create each context through a helper that attaches a `ContextRoot` to the page by itself, so the page author has no step. A Lit maintainer names `ContextRoot` as the answer, and the Lit team wrote in 2024 that it considers applying it automatically.
+  - No surveyed library builds tabs, an accordion or a stepper as one element with no part elements. The nearest to candidate C is UI5, where the parent draws everything from child elements that only carry data.
+  - No source states which mechanism a parent with parts should use, and none states what should happen to a part inside a wrapper. lit.dev shows both shapes without choosing. It names context for the case where an element gives data to its light DOM children.
+  - The platform moved towards wrappers: for the customizable select, the HTML parser now allows almost all tags between `<select>` and `<option>` (Open UI).
+- Facts for row 06, the convenience component:
+  - No library has, for one component, a full set of part elements and a second element that composes those same parts. Two elements offer a data form and a composed form on the same element: Vaadin's select and Spectrum's table.
+  - The libraries reach the ready-made case through coarse parts. Web Awesome's step is one element with three slots and nine CSS parts, where Chakra UI composes eight parts for one step.
+  - A high-level element composes other exported elements in its own shadow DOM, for example Material Web's select renders its menu element.
+- Facts for the review of the parts (IDEA-001#09): the grain differs between the two sides. Web component libraries have few, coarse part elements with slots and CSS parts; React libraries have many fine parts.
+- Facts for the glossary, by the rule of DEC-148:
+  - lit.dev writes "subcomponents", "light DOM children" and "component composition". Open UI writes "parts", "anatomy" and "composite component". Carbon writes "composable" and "subcomponents".
+  - "Compound" does not occur on lit.dev, and "compound component" does not occur in the pages of Open UI. On the web component side the name was found once, in a comment of an IBM repository.
+  - No source of the web component side names the ready-made form.
+- Other differences from the React side, for rows 06, 07 and 17: a developer replaces a part with an own element that carries a marker (an attribute or an ARIA role), not by merging onto a child; code outside the tree drives a component through properties, methods and events of the element; style reaches a part through `::part` and custom properties. Zag.js, the state machine layer under Chakra UI, has no adapter for Lit or custom elements.
+
 ### Second block of agent work
 - Row 20 — done on 2026-11-13: RES-072, from the researcher agent `aa7db2071f50929c7`, started without a name. Its log records Fable 5.2 and the effort `high` on all 126 requests, checked after the agent ended. It was the third start of the row; two starts of the same day ended in outages of the Claude login.
-- Row 21 — running since 2026-11-13, in the second block of agent work (IDEA-001, Notes, "Second block of agent work"). Researcher agent `a3e0087fad1bd8f22`, started without a name on Peter's word "start the block"; its log records Fable 5.2 and the effort `high`. Its record is found by its `from`. Its brief is `.artifacts/v1/briefs/IDEA-003-21.md` with `common.md`. It is the third start: two starts of the same day ended in outages of the Claude login, and their records were removed at Peter's request. Check the log again when the agent ends, before its record is read.
+- Row 21 — done on 2026-11-13: RES-069, from the researcher agent `a3e0087fad1bd8f22`, started without a name. Its log records Fable 5.2 and the effort `high` on all 198 requests, checked after the agent ended. It was the third start of the row; two starts of the same day ended in outages of the Claude login. The main session read the Answer, its tables and the findings on stated practice in full. It reads the findings on a single library when a later row needs them.
 
 ## Map
 
@@ -165,7 +191,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 16 | Import the list of utilities and hooks from IDEA-001. | task | open | — | — |
 | 17 | In which form does the Lit core hold the logic of the utilities and hooks, and how does it export that logic for users of plain web components? | interview | open | 05, 16 | — |
 | 20 | How do shadcn/ui, Radix Primitives, Radix Themes and Geist let a developer compose a component from its parts: which parts does each export, does a component that composes the subcomponents exist beside them and where does it live, how do the parts share state, and how does a developer wrap or replace a part? Which names do these systems, React's documentation and wider React writing give to this pattern and to its two forms, and what do they state as best practice for it? RES-042 holds the same facts for Chakra UI. | research | resolved | — | [RES-072](../research/RES-072-react-reference-systems-composition.md) |
-| 21 | How do Lit libraries and other web component libraries in wide use build a component with parts: which mechanism links a parent and its parts (the parent reads its slot, context, events, or one closed element), what happens to a part inside a wrapper element, and does any library offer one component as a ready-made form and as a composed form? What do Lit's documentation, its maintainers and the published best practices for web components state for such components, and which names do they use? RES-043 holds the mechanisms and two examples. | research | in-progress | — | — |
+| 21 | How do Lit libraries and other web component libraries in wide use build a component with parts: which mechanism links a parent and its parts (the parent reads its slot, context, events, or one closed element), what happens to a part inside a wrapper element, and does any library offer one component as a ready-made form and as a composed form? What do Lit's documentation, its maintainers and the published best practices for web components state for such components, and which names do they use? RES-043 holds the mechanisms and two examples. | research | resolved | — | [RES-069](../research/RES-069-web-component-libraries-components-with-parts.md) |
 
 ## Deferred rows
 Rows of the spec phase, by [the workspace rule](../agents/workspace.md#deferred-rows). They are not open and not on the frontier. Each one moves into the spec of this idea when its spec phase starts.
