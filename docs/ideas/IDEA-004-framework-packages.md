@@ -34,6 +34,7 @@ A spec for the framework packages: the chosen targets, the way each wrapper is p
 - Each target is evaluated on three points: whether it is needed, how its wrapper is generated or written, and how it is tested.
 
 ### Evidence from other ideas
+- RES-047 (IDEA-007#02), for rows 04 and 05: Web Awesome and Spectrum Web Components make their React wrappers with `@lit/react` from the Custom Elements Manifest. Web Awesome's documentation says that React 19 needs no wrapper, and it keeps its wrappers for React 18 and below. TanStack Virtual has no package for Preact; Table and Form have one for each of Lit, React, Preact and Solid.
 - DEC-146 (IDEA-007#03), for row 04: each block of the documentation is written for plain HTML and for each framework target, and Peter named blocks that use TanStack packages with "maybe". So each target multiplies the work on the blocks.
 - DEC-131 (Peter, 2026-11-12), for row 05: the layout components take style props with responsive values, as in Chakra UI. In React such a value is an object or a list, so a wrapper must pass it on to the Lit component. IDEA-003 rows 14 and 15 hold the mechanism.
 - RES-042 (IDEA-003#01), for row 05: Chakra UI exports each part as a named component and adds `export * as Steps` for the short names. That namespace cannot be used as a component, so a wrapper that offers `Stepper` and `Stepper.Root` together needs another export shape.

@@ -29,11 +29,19 @@ A spec for the documentation website of 1.0: what it holds, where its records co
 - DEC-146, Peter, 2026-11-12: the Blocks section has four groups: agent interfaces, page sections for marketing and content sites, app layouts, and charts. He named two more with "maybe"; they are under "Not yet specified".
 - The section is named Blocks, by the agent's reading of his words "a blocks section in the docs". The glossary keeps Recipe as the word for the thing.
 
+### Row 02 — resolved
+- RES-047, 2026-11-12, from the repositories and sites of ten web component systems. Six ship a framework package; five of them are covered in full, and the site source of Calcite is not public.
+- Facts for row 05, the site tool: Eleventy builds the sites of Web Awesome, Shoelace, Spectrum Web Components (first generation) and Material Web. Docusaurus builds those of Ionic and UI5 Web Components. Astro builds Lion's. Storybook is the site of Fluent UI Web Components, Carbon Web Components and the second generation of Spectrum. The hosts named are Vercel, GitHub Pages and Firebase.
+- Facts for row 04, the source of the records: the prose of a page is written by hand in each system. The API tables come from a Custom Elements Manifest or from generated metadata in Web Awesome, Shoelace, Spectrum, Ionic and UI5.
+- Facts for row 06, one example for each framework: only Ionic and UI5 show a snippet for each framework in every example; each keeps an example as a folder with one file for each framework, and a toggle or tabs switch between them. Shoelace pairs an HTML and a React snippet by hand. Web Awesome and Spectrum show HTML examples only and put the use in a framework on guide pages. All run the HTML example live in the page.
+- Facts for the Blocks section: shadcn/ui has 97 blocks, 27 pages and layouts and 70 charts; each is a folder of files with a preview in an iframe and a command that copies it into the project. The documentation of Chakra UI has no blocks section; its 338 blocks are on the paid Chakra UI Pro site. Web Awesome has 50 patterns of plain HTML to copy, a case from a web component system.
+- Facts for the two blocks that Peter named with "maybe": TanStack Table has packages for Lit, React, Preact and Solid (9.3.1). TanStack Form has all four too. TanStack Virtual has Lit, React and Solid, and none for Preact. No TanStack document says whether the React packages run on Redact.
+- For "How a coding agent reads the website" under "Not yet specified": the sites of Ionic and UI5 build a text version for agents with an `llms.txt` plugin.
+
 ### Waits
-- Row 02 — running since 2026-11-12, in the block of agent work that Peter approved: researcher agent `a0832e1b4ed460aa0`, record RES-047. It started without a name; its log records `claude-opus-5-5` and the effort `medium`. The list is in IDEA-001, Notes, "Block of agent work".
+- Row 02 — done on 2026-11-12, in the block of agent work that Peter approved: researcher agent `a0832e1b4ed460aa0`, record RES-047. It started without a name; its log records `claude-opus-5-5` and the effort `medium`. The list is in IDEA-001, Notes, "Block of agent work".
 - Row 07 — wait: IDEA-003#05 and IDEA-004#04 are resolved.
 - Row 08 — wait: IDEA-001 reaches `done`, and IDEA-002 resolves its row 13.
-- Row 02 — ready, not started: the agent starts it when a decision of this idea is the next question. No decision on the frontier needs it yet.
 
 ### Settled by Peter
 - DEC-139: this idea owns the website, its pages, its examples, the blocks section and the records that the MCP server also serves.
@@ -53,7 +61,7 @@ A spec for the documentation website of 1.0: what it holds, where its records co
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
 | 01 | What does the website hold for each component, and what does it hold beside the component pages (guides, tokens and themes, blocks)? | interview | resolved | — | [DEC-144](../decisions/DEC-144-website-holds-the-full-set.md) |
-| 02 | How do other design systems with web components and several framework packages build their documentation websites: which site tools they use, how one page shows an example for each framework, how they hold a blocks section, and which TanStack packages (Table, Virtual, Form) work with Lit and with each framework target? | research | in-progress | — | — |
+| 02 | How do other design systems with web components and several framework packages build their documentation websites: which site tools they use, how one page shows an example for each framework, how they hold a blocks section, and which TanStack packages (Table, Virtual, Form) work with Lit and with each framework target? | research | resolved | — | [RES-047](../research/RES-047-documentation-websites-of-web-component-systems.md) |
 | 03 | Which blocks does the Blocks section have in 1.0? | interview | resolved | 01 | [DEC-146](../decisions/DEC-146-blocks-section-has-four-groups.md) |
 | 04 | Where do the records of the website come from (component metadata, the design specs pulled from Figma, pages written by hand), and does the MCP server read the same source? | interview | open | 02 | — |
 | 05 | Which tool builds the website, and where is it published? | interview | open | 02 | — |
