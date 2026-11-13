@@ -72,6 +72,7 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 - The matrix has five columns: shadcn/ui, Radix Primitives, Radix Themes, Chakra UI and Vercel's Geist.
 - For each component concept the matrix records which systems have it, what they call it, how they split it into parts, and where they disagree.
 - The final list, names and compositions come from an interview after the research. Each final choice gets a decision record.
+- The words for the pieces of a component, the first half of row 06: the prompt uses "parts" for the pieces of the anatomy ("root, trigger, content, item and so on"), "subcomponent" for a piece that a wrapper exports ("`Stepper.Root`, `Stepper.Item`, `Stepper.Indicator`"), and "slots" for the way Lit composes. The glossary holds the three terms since 2026-11-12. The second half of row 06, the shared part names, is open.
 
 ### Agent choices
 - The matrix lives under `docs/research/`, one table per component category, with the version of each system and the access date.
@@ -97,7 +98,7 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 ## Not yet specified
 - The per-category rows for rows 07 to 09. The matrix sets the categories.
 - Whether recipes need their own inventory decisions. Icons are settled by DEC-123.
-- Which 0.3.3 glossary terms stay. The glossary has no word yet for the pieces of a component.
+- Which 0.3.3 glossary terms stay.
 - Which audience wins when two audiences need different things from one component. It sharpens at row 07, with real cases.
 
 ## Out of scope

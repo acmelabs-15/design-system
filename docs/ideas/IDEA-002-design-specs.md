@@ -56,7 +56,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - RES-028: the trial file now also holds read fixtures: a rich-text description, three annotations, one embedded Spec and three more variables.
 
 ### Icons
-- DEC-123, Peter, 2026-11-12: 1.0 has an Icon component, the icon library makes one component for each icon with it, and the icons come from Material Symbols. He named the variations of Material Symbols as a point to consider. Rows 21 and 22 hold that point.
+- DEC-123, Peter, 2026-11-12: 1.0 has an Icon component, the icon library makes one component for each icon with it, and the icons come from Material Symbols. He named the variations of Material Symbols as a point to consider. Rows 21 and 22 hold that point. Second message, same day: "also that icon component should be rendering svgs, not a font-icon". Row 22 can therefore choose only among variations that exist as SVG.
 - DEC-121 already keeps the Material Symbols icons of 0.3.3 (DEC-060) as the starting point.
 - Row 21 — running since 2026-11-12: one brain researcher agent, without a name, on Opus 5.5 at medium effort; agent ID `acbc79c1697890ee0`. It claims its own record with the slug `material-symbols-variations`.
 

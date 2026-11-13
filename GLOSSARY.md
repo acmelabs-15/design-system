@@ -18,6 +18,18 @@ _Avoid_: A second name for the same building block in each consuming component.
 A documented arrangement of shared components for a particular use. A recipe can contain optional content and different sizes.
 _Avoid_: Treating a recipe as a separate component; confusing this meaning with another system's style configuration called a recipe.
 
+**Part**:
+A named piece of a component's anatomy, such as the root, the trigger, the content or an item.
+_Avoid_: Piece or element as competing names; slot for a part.
+
+**Subcomponent**:
+A part that the library offers as a component of its own, so that a developer can compose a custom version of the whole.
+_Avoid_: Child component; part when the point is that a developer can use it alone.
+
+**Slot**:
+A named place in a component where a developer puts content.
+_Avoid_: Slot for a part of the anatomy.
+
 **Variant**:
 The visual treatment of a component.
 _Avoid_: Type for a visual treatment.

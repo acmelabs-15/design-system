@@ -25,7 +25,7 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 ### Waits
 - Row 09 — wait: IDEA-001 reaches `done`.
 - Row 10 — wait: IDEA-002 resolves its rows 11 and 13. Row 09 is resolved by DEC-120.
-- Row 12 — wait: IDEA-002#22 decides the variations of Material Symbols. DEC-123 holds Peter's decision that each icon is a component built with the Icon component. Evidence from 0.3.3: DEC-046 (the shape of the icon element), DEC-096 (the shared icon library) and the generated icon entries that `docs/agents/repository.md` lists.
+- Row 12 — wait: IDEA-002#22 decides the variations of Material Symbols. DEC-123 holds Peter's decisions that each icon is a component built with the Icon component, and that the Icon component renders SVG, not an icon font. Evidence from 0.3.3: DEC-046 (the shape of the icon element), DEC-096 (the shared icon library) and the generated icon entries that `docs/agents/repository.md` lists.
 
 ### Settled by the prompt
 - Lit web components are the core implementation.
