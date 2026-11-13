@@ -35,6 +35,10 @@ These records are evidence, not answers. Find them through the [decision index](
 - The MCP server is a separate package with an exact peer version of the core (DEC-027 and DEC-116).
 - Seven consumer skills ship in the core package, with TanStack Intent as their tooling (DEC-019 and DEC-048).
 
+### Evidence from other ideas
+- DEC-119 (IDEA-001#03): AI-written artifacts are one of the four audiences of 1.0. Such an agent often has no consumer project, so an `init` script from the package cannot reach it. Row 09 asks how it gets the guidance. It is also evidence for row 07: release 0.3.3 ships a skill named `html-artifacts`.
+- DEC-118 (IDEA-002#18): each design spec reaches the repo as Markdown that an agent pulls from Figma. Row 06 decides whether the MCP server serves those records.
+
 ### Boundary question
 - Row 08: the kickoff prompt says the merge replaces the docs, but no idea names the documentation website. The row sits here because the MCP server serves the same records as the website.
 
@@ -50,6 +54,7 @@ These records are evidence, not answers. Find them through the [decision index](
 | 06 | Which tools and records does the 1.0 MCP server serve? | interview | open | 04 | — |
 | 07 | Which skills ship for consumers? | interview | open | 04 | — |
 | 08 | Which idea owns the documentation website and its records? | interview | open | — | — |
+| 09 | How does an agent that writes one HTML page, with no project and no package install, get the 1.0 guidance? | interview | open | 01, 04 | — |
 
 ## Not yet specified
 - How `init` reaches a consumer who installs only a framework package. It sharpens after IDEA-004#07.

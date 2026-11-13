@@ -37,6 +37,13 @@ These records are evidence, not answers. Find them through the [decision index](
 - DEC-101 and DEC-114 keep element state in TanStack Store and port behaviour into Lit. DEC-115, on Zag packages through a Lit adapter, is superseded.
 - DEC-081 publishes React support as a separate package.
 - RES-015 reviews Lit practice. RES-019 covers the styling of slotted content.
+- DEC-010 gives release 0.3.3 a separate browser package for CDN delivery. It is evidence for row 11.
+
+### Evidence from other ideas
+- DEC-119 (IDEA-001#03): 1.0 serves ACME Labs applications, AI-written artifacts, outside teams and marketing and content sites.
+- For row 04: content sites and outside teams often render pages on a server. This is evidence for the question, not Peter's answer.
+- For row 11: artifacts are often one HTML file that loads from a CDN, so 1.0 must work with no build step. DEC-119 states that need; row 11 decides the delivery.
+- DEC-118 (IDEA-002#18): each design spec reaches the repo as Markdown that an agent pulls from Figma. Row 10 imports that format.
 
 ## Map
 
@@ -52,12 +59,12 @@ These records are evidence, not answers. Find them through the [decision index](
 | 08 | How do the token files from IDEA-002 reach the styles of the components? | interview | open | 05, 10 | — |
 | 09 | Import the final component list from IDEA-001. | task | open | — | — |
 | 10 | Import the design spec format and the token output from IDEA-002. | task | open | — | — |
+| 11 | Which delivery lets one HTML page use 1.0 from a CDN with no build step, and does it cover every component? | interview | open | 05 | — |
 
 ## Not yet specified
 These sharpen after row 05.
 
 - The package layout and build tooling of the core.
-- Browser and CDN delivery. Release 0.3.3 has a separate browser package.
 - Form participation, element names and registration.
 - The test strategy and the browser matrix.
 - What replaces `docs/agents/verification.md` and `docs/agents/repository.md`, which describe the 0.3.3 code. Brain's place for a quality bar is `CONSTRAINTS.md`; package facts belong to the 1.0 specs.

@@ -29,7 +29,7 @@ Source: [Peter's kickoff prompt](../design/v1-kickoff-prompt.md) of 2026-11-12. 
 - Every decision is the best one for the product, not the easiest or the fastest.
 - Each session loads brain's ask-user-question, domain-modeling, context-engineering and the skill for the current phase. It proves the design system MCP with one real read-only call.
 - Questions: one at a time, most important first, and only for real decisions. The agent makes cheap, reversible choices and states them in chat. Research settles facts.
-- After every answer the agent evaluates the whole map, saves it, and tells Peter in one or two lines what changed.
+- After every answer the agent evaluates the maps of all six ideas, not only the idea of the question. It closes, merges, drops and adds rows, computes the frontier again, saves the files, and tells Peter in one or two lines what changed. Then it asks the next most important frontier question. Peter, 2026-11-12: "don't just check the idea you're working on - should do this across all ideas".
 - Research starts only for the row in front of us, or for a big unknown that shapes the map. It gives no recommendation unless Peter asks. Its output goes to files with sources and dates.
 - Landscape sweeps use `deep-research`, the built-in workflow of Claude Code that `/deep-research` starts: IDEA-001#01, IDEA-004#01, IDEA-005#01 and IDEA-006#01. Narrow questions use brain research records.
 - How to start a delegated agent is in [the capabilities file](../agents/capabilities.md#sub-agents): without a name, on Opus 5.5 at medium effort, with a check of its log afterwards.
@@ -50,9 +50,6 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 - Other sessions: the branches `claude/ci-speed` and `claude/issue-12-strict-style-policy` have their own worktrees, and the `main` checkout holds uncommitted files. They change the system that 1.0 replaces. Leave them as they are.
 - The open maintenance issues of 0.3.3 stay in the local tracker, `.scratch/maintenance/issues/`.
 
-### Row 03 — next question to ask
-- Prepared on 2026-11-12 and not asked yet, because Peter cleared the session first: who is 1.0 for, and what do they build with it? Options put to Peter, which can combine: ACME Labs' own applications; AI-written artifacts and prototypes; other teams, as a public design system; marketing and content sites. The evidence favours no option. Evidence for the question: the 0.3.3 glossary says the system gives "artifacts" a consistent design language, and one consumer skill is `html-artifacts`; the kickoff prompt adds framework packages, devtools and an MCP server, which points at full applications. No record names the products.
-
 ### Waits
 - Decision records: the prompt's own decisions (full replacement, branch, no compatibility) have no DEC files yet. The same holds for Peter's setup decisions of 2026-11-12: the kickoff prompt lives in `docs/design/`, the glossary takes the GLOSSARY names, every legacy record moves to layout 2, the tracker files are removed, `docs/agents/workflow.md` gives way to the workspace file, one corrected kickoff prompt replaces the original, and delegated agents start without a name on Opus 5.5 at medium effort. The workspace is on layout 2 since 2026-11-12, so `brain new-doc DEC` now gives DEC-117 and later. The first decision record is DEC-117 (IDEA-002#02). Next: create the records for the prompt's decisions and the setup decisions.
 - Row 01 — wait: Peter's go for the four sweeps. The tool is settled: on 2026-11-12 Peter pointed to `/deep-research`, which is Claude Code's built-in `deep-research` workflow, not a skill. One run fetches at most 15 sources, so the matrix takes one run for each of the five columns. Before the first run, check whether the workflow lets the caller set the model of its agents, for Peter's Opus 5.5 preference. Anthropic's skill of the same name sits in the skills trash since 2026-11-05.
@@ -65,6 +62,8 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 ### Agent choices
 - The matrix lives under `docs/research/`, one table per component category, with the version of each system and the access date.
 - Rows 07 to 09 are decided by rule first (rows 03 to 06). Peter is then asked only about the exceptions.
+- The rule from row 03 (DEC-119): a component concept is a candidate when one of the four audiences needs it. No audience rules a concept out.
+- Evidence for row 04, not an answer: the marketing and content audience needs page sections, and the reference columns may not have them. Row 01 shows whether they do.
 
 ## Map
 
@@ -72,7 +71,7 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 |---|---|---|---|---|---|
 | 01 | Which component concepts do shadcn/ui, Radix Primitives, Radix Themes, Chakra UI and Geist have, what does each system call them, how does each split them into parts, and where do they disagree? | research | open | — | — |
 | 02 | Which components, parts and recipes does release 0.3.3 ship, and which decision records chose their names? | research | open | — | — |
-| 03 | Which products and users does 1.0 serve, and what does that rule in or out of the list? | interview | open | — | — |
+| 03 | Which products and users does 1.0 serve, and what does that rule in or out of the list? | interview | resolved | — | [DEC-119](../decisions/DEC-119-four-audiences-for-1-0.md) |
 | 04 | Can the list hold a component concept that none of the five reference columns has? | interview | open | 02, 03 | — |
 | 05 | When the reference systems disagree on a name, which rule picks the 1.0 name? | interview | open | 01 | — |
 | 06 | Which words name the pieces of a component (part, subcomponent, slot), and which shared part names apply across components? | interview | open | 01 | — |
@@ -84,6 +83,7 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 - The per-category rows for rows 07 to 09. The matrix sets the categories.
 - Whether recipes and icons need their own inventory decisions.
 - Which 0.3.3 glossary terms stay. The glossary has no word yet for the pieces of a component.
+- Which audience wins when two audiences need different things from one component. It sharpens at row 07, with real cases.
 
 ## Out of scope
 - Design specs: anatomy, variants, named sizes, states, tokens, accessibility behaviour and motion. IDEA-002 owns them.

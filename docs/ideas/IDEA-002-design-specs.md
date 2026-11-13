@@ -54,6 +54,9 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - RES-028: `use_figma` cannot read or add dev resources. The REST endpoint for dev resources answers on Professional.
 - RES-028: the trial file now also holds read fixtures: a rich-text description, three annotations, one embedded Spec and three more variables.
 
+### Evidence from other ideas
+- DEC-119 (IDEA-001#03): 1.0 serves ACME Labs applications, AI-written artifacts, outside teams and marketing and content sites. It is evidence for rows 03, 04 and 05 and settles none of them. Outside teams bring their own brand, which bears on custom themes in row 04.
+
 ### Settled by the prompt
 - A design spec covers anatomy and parts, variants, sizes, states, tokens, slots and subcomponents, accessibility behaviour and motion.
 - Peter decides between Figma and spec documents in the repo after he sees the trade-offs.
