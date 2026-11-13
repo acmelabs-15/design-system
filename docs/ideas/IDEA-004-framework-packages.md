@@ -11,7 +11,7 @@ result: # with status: done, the DEC-NNN or the commit SHA this idea produced
 - Why now: the wrappers carry the composition contract of IDEA-003 to consumers, and each extra target adds cost to every release.
 - Success: each target has a decision with evidence; a test shows whether the React package runs on Redact unchanged; a spec for the framework packages exists.
 - Constraint: test the React package on Redact before any plan for a separate Redact build.
-- Out of scope: MCP and skills (IDEA-005) and devtools (IDEA-006). IDEA-003 owns the composition architecture.
+- Out of scope: MCP and skills (IDEA-005), devtools (IDEA-006) and the documentation website (IDEA-007). IDEA-003 owns the composition architecture.
 
 <!-- After the user's explicit yes to this intent, add the line: Confirmed by <name> on <YYYY-MM-DD>. -->
 

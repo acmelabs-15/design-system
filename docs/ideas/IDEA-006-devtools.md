@@ -11,7 +11,7 @@ result: # with status: done, the DEC-NNN or the commit SHA this idea produced
 - Why now: 1.0 replaces the 0.3.3 inspector, so its base is chosen again: TanStack Devtools, a fork of it, or our own.
 - Success: research covers extending TanStack Devtools, forking it and building our own; Peter has chosen; the capability list is fixed; a spec exists.
 - Constraint: research comes first, then Peter decides.
-- Out of scope: no later idea exists. IDEA-002 owns the token pipeline, IDEA-003 the Lit core, IDEA-004 the wrappers and IDEA-005 the MCP server and skills.
+- Out of scope: the documentation website (IDEA-007). IDEA-002 owns the token pipeline, IDEA-003 the Lit core, IDEA-004 the wrappers and IDEA-005 the MCP server and skills.
 
 <!-- After the user's explicit yes to this intent, add the line: Confirmed by <name> on <YYYY-MM-DD>. -->
 

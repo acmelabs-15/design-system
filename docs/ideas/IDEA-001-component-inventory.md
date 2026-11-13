@@ -11,7 +11,7 @@ result: # with status: done, the DEC-NNN or the commit SHA this idea produced
 - Why now: the 0.3.3 component set does not make enough sense, and 1.0 replaces it with no compatibility duty.
 - Success: the comparison matrix is in the repo with sources and no opinions; every component concept in it is in or out; every included component has a name and its parts.
 - Constraint: research returns facts, sources and disagreements only. It gives no recommendation unless Peter asks.
-- Out of scope: design specs (IDEA-002), the Lit core (IDEA-003), framework packages (IDEA-004), MCP and skills (IDEA-005) and devtools (IDEA-006).
+- Out of scope: design specs (IDEA-002), the Lit core (IDEA-003), framework packages (IDEA-004), MCP and skills (IDEA-005), devtools (IDEA-006) and the documentation website with its recipes (IDEA-007).
 
 <!-- After the user's explicit yes to this intent, add the line: Confirmed by <name> on <YYYY-MM-DD>. -->
 
@@ -35,6 +35,7 @@ Source: [Peter's kickoff prompt](../design/v1-kickoff-prompt.md) of 2026-11-12. 
 - How to start a delegated agent is in [the capabilities file](../agents/capabilities.md#sub-agents): without a name, on Opus 5.5 at medium effort, with a check of its log afterwards.
 - Release 0.3.3, the current design system, is no input for 1.0 (DEC-125): not its code, its component list, its names, its look, or its decision and research records. Peter, 2026-11-12: "I think we shouldnt' take the current acmelabs design system into consideration at all for this"; and to the question how far that goes: "I think everything".
 - A question that belongs to a later idea goes into that idea's map as an open row.
+- Since 2026-11-12 the work has seven ideas: IDEA-007 owns the documentation website (DEC-139). These rules hold for it, and "all six ideas" in this section means all seven. The heading keeps its words, because the other ideas link to it.
 
 ### Working state for all six ideas
 Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to brain's layout 2. The ideas and their records now hold the state; `brain status` reports it.
@@ -63,12 +64,8 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 - DEC-135 holds the 145 final names, Peter's decisions on the ten ties and the names that the rule of DEC-122 gives. Resizable is his choice against the lead of the survey RES-039. DEC-134 holds his decision that Progress is one component, linear or circular.
 - The glossary has the names that he decided on 2026-11-12: Progress, Gauge, Toggle, Bleed, Pin Input, Password Input, Native Select, Checkbox Card and Radio Card, Status and Copy Button.
 
-### Row 11 — partial
-- Settled: 1.0 does not give recipes out as components. Its documentation gets a blocks section, as shadcn/ui has one.
-- Source: Peter's answer of 2026-11-12 on the AI components: "if they're recipes and aren't exported then we shouldn't - should just include a blocks section in the docs like they do". In DEC-129 he counts blocks, charts and the like as recipes.
-- Conditions: none stated.
-- Open: which recipes the blocks section holds, which idea holds their list, and whether the section is named "Blocks" or "Recipes". The glossary has the term Recipe; "block" is the word of shadcn/ui. IDEA-005#08 asks which idea owns the documentation website.
-- Next: ask when row 11 is the most important question.
+### Row 11 — resolved
+- DEC-140, Peter, 2026-11-12: 1.0 gives no recipe out as a component; its documentation gets a blocks section. DEC-139 gives that section to IDEA-007, and IDEA-007#03 decides which blocks it has and how it is named.
 
 ### Row 07 — evidence
 - Peter, 2026-11-12, same reply: "shadcn includes ai components as well for example - none of the others do I don't think". The inventories agree in part: shadcn/ui lists eight chat components among its components and a separate catalog "AI Elements" with 21 patterns (RES-032). RES-037 shows which concepts only one system has. This is evidence for row 07; it puts no component in or out.
@@ -102,7 +99,7 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 | 08 | What is the final name of each included component? | interview | resolved | 05, 07, 10 | [DEC-135](../decisions/DEC-135-final-names-of-the-1-0-components.md) |
 | 09 | What is the final part composition of each included component? | interview | open | 06, 07 | — |
 | 10 | For the 11 concepts on which the five systems tie, which name do more sources use: the WAI-ARIA patterns and other widely used component libraries? | research | resolved | 05 | [RES-039](../research/RES-039-names-for-the-tied-concepts.md) |
-| 11 | Does 1.0 ship recipes, such as page sections, app layouts and charts, and which idea holds their list? | interview | open | 07 | — |
+| 11 | Does 1.0 ship recipes, such as page sections, app layouts and charts, and which idea holds their list? | interview | resolved | 07 | [DEC-140](../decisions/DEC-140-recipes-are-blocks-in-the-documentation.md) |
 
 ## Not yet specified
 - The per-category rows for rows 08 and 09. The matrix sets the categories. Row 07 runs in five batches (Notes).

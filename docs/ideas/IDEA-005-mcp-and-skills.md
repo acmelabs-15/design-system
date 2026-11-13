@@ -11,7 +11,7 @@ result: # with status: done, the DEC-NNN or the commit SHA this idea produced
 - Why now: the MCP server and the skills must match the installed component version, and the inside-the-package direction is not tested yet.
 - Success: research covers the packaging options; a test shows whether an `init` script from the package's `bin` installs a working MCP server and skills; Peter has chosen; a spec exists.
 - Constraint: research comes first. Shipping inside the package is a direction to test, not a decision.
-- Out of scope: devtools (IDEA-006). The content that the server and the skills describe comes from IDEA-001 to IDEA-004.
+- Out of scope: devtools (IDEA-006) and the documentation website (IDEA-007). The content that the server and the skills describe comes from IDEA-001 to IDEA-004.
 
 <!-- After the user's explicit yes to this intent, add the line: Confirmed by <name> on <YYYY-MM-DD>. -->
 
@@ -35,14 +35,9 @@ A spec for the MCP server and the consumer skills of 1.0: where they ship, what 
 
 - RES-030, evidence for row 09: Nuxt UI runs a hosted MCP server over HTTP, which needs no install in a project. Evidence for row 04: TanStack Intent and Storybook 10.6 ship skills with the installed package, so the skills match the installed version.
 
-### Boundary question
-- Row 08: the kickoff prompt says the merge replaces the docs, but no idea names the documentation website. The row sits here because the MCP server serves the same records as the website.
-- Evidence for row 08, Peter, 2026-11-12 (IDEA-001, Row 11 — partial): recipes are not given out as components, and 1.0 "should just include a blocks section in the docs like they do", as shadcn/ui does. So the documentation website of 1.0 has a blocks section. Which idea holds it is open with row 08.
-
-### Row 08 — pending question
-- Pending question, 2026-11-12: which idea owns the documentation website? Options: "A seventh idea (Recommended)": IDEA-007 owns the website, its pages, its examples, the blocks section and the records that the MCP server also serves; "IDEA-005 owns it": this idea becomes documentation, MCP and skills.
-- Facts for the question: the kickoff prompt says that the merge replaces "components, packages, docs, MCP and skills", and it names six ideas, none for the website. Peter wants a blocks section in the documentation (IDEA-001, Row 11 — partial). The MCP server serves records that the website also shows (row 06).
-- The agent's reasons: the website has its own destination, a spec for its pages and examples, and its examples need the architecture of IDEA-003 and the targets of IDEA-004; IDEA-005 decides how the MCP server and the skills ship, which is another kind of question.
+### Boundary with IDEA-007
+- DEC-139, Peter, 2026-11-12: a seventh idea, IDEA-007, owns the documentation website, its pages, its examples, the blocks section and the records that this idea's MCP server also serves. Row 08 is resolved.
+- Row 06 here and IDEA-007#04 are two views of one source of records. Decide them together.
 
 ## Map
 
@@ -54,7 +49,7 @@ A spec for the MCP server and the consumer skills of 1.0: where they ship, what 
 | 05 | What does `init` install, into which agent hosts, and how does it update on a new version? | interview | open | 04 | — |
 | 06 | Which tools and records does the 1.0 MCP server serve? | interview | open | 04 | — |
 | 07 | Which skills ship for consumers? | interview | open | 04 | — |
-| 08 | Which idea owns the documentation website and its records? | interview | open | — | — |
+| 08 | Which idea owns the documentation website and its records? | interview | resolved | — | [DEC-139](../decisions/DEC-139-seventh-idea-owns-the-documentation-website.md) |
 | 09 | How does an agent that writes one HTML page, with no project and no package install, get the 1.0 guidance? | interview | open | 01, 04 | — |
 
 ## Not yet specified
@@ -64,4 +59,5 @@ A spec for the MCP server and the consumer skills of 1.0: where they ship, what 
 ## Out of scope
 - Row 02, retired on 2026-11-12: "How does release 0.3.3 ship its MCP server and consumer skills, and which limits do its records name?" DEC-125 takes release 0.3.3 out as input.
 - Devtools (IDEA-006).
+- The documentation website. IDEA-007 owns it (DEC-139).
 - The components, their design, the Lit core and the wrappers that the server and skills describe (IDEA-001 to IDEA-004).

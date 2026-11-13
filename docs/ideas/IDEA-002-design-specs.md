@@ -11,7 +11,7 @@ result: # with status: done, the DEC-NNN or the commit SHA this idea produced
 - Why now: 1.0 is built from specs, so the design of each component must be fixed before the Lit core starts.
 - Success: Peter has chosen the medium; each listed component has a spec with anatomy and parts, variants, named sizes, states, tokens, slots and subcomponents, accessibility behaviour and motion; with Figma, the designer route and the token pipeline are decided.
 - Constraint: no implementation happens in this idea. With Figma as the source, nobody maintains tokens by hand in code.
-- Out of scope: the Lit core (IDEA-003), framework packages (IDEA-004), MCP and skills (IDEA-005) and devtools (IDEA-006). IDEA-001 owns the component list.
+- Out of scope: the Lit core (IDEA-003), framework packages (IDEA-004), MCP and skills (IDEA-005), devtools (IDEA-006) and the documentation website (IDEA-007). IDEA-001 owns the component list.
 
 <!-- After the user's explicit yes to this intent, add the line: Confirmed by <name> on <YYYY-MM-DD>. -->
 

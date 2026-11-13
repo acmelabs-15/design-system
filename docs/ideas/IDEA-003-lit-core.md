@@ -11,7 +11,7 @@ result: # with status: done, the DEC-NNN or the commit SHA this idea produced
 - Why now: Lit composes through slots, and React composes through children and context. The architecture must bridge both before any component is built.
 - Success: Peter has chosen the architecture with its trade-offs explained; a prototype shows one component as `Stepper` and as `Stepper.Root`, `Stepper.Item` and `Stepper.Indicator` over the Lit core; a spec for the core build exists.
 - Constraint: the architecture is settled with Peter before anything is built. Each Lit trade-off is explained in plain terms.
-- Out of scope: framework packages beyond the prototype wrapper (IDEA-004), MCP and skills (IDEA-005) and devtools (IDEA-006). The component list (IDEA-001) and the design specs (IDEA-002) are inputs.
+- Out of scope: framework packages beyond the prototype wrapper (IDEA-004), MCP and skills (IDEA-005), devtools (IDEA-006) and the documentation website (IDEA-007). The component list (IDEA-001) and the design specs (IDEA-002) are inputs.
 
 <!-- After the user's explicit yes to this intent, add the line: Confirmed by <name> on <YYYY-MM-DD>. -->
 
