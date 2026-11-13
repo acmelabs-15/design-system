@@ -23,6 +23,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 
 ### Waits
 - Row 14 — wait: IDEA-001 reaches `done`.
+- Row 25 — running since 2026-11-12. Record: RES-041. Researcher agent `af48e18cec0f3b798`, started without a name; its log records `claude-opus-5-5` and the effort `medium` on each request.
 
 ### Figma account
 - Peter's Figma account has the team "ACME Labs" on the Professional plan, with a Full seat and the admin role (2026-11-12). The Figma MCP is signed in for this account.
@@ -31,13 +32,20 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Peter, 2026-11-12, during row 19: "there should be a figma token you can use from 1password". The agent used it for the six REST reads of RES-028 only. Another use needs its own reason in the row that needs it.
 - Direction given on 2026-11-12: no Organization or Enterprise plan before rows 07 and 09 are decided. Not checked: how files move when a Professional team upgrades to Organization.
 
-### Row 23 — partial, resume here
-- Question of 2026-11-12, after DEC-125: where does the 1.0 look start, with release 0.3.3 out? Options: a new design, with a design direction step first (recommended); the look of Geist; the look of shadcn/ui; the look of Radix Themes or Chakra UI.
-- Answer, Peter, 2026-11-12, typed into the question dialog: "I think a new design, there is a significant amount that I really like from Vercels geist that will probably win in most cases - but geist also leaves a lot of tihngs out that a lot of other design systems include - so i think option 1".
-- Second message, right after it: "Or maybe certain things should be based on geist or be pulled from geist and other things should be a new design? also this conversation has used up a lot of context - we should find a good place to stop so I can \"/clear\" and we can pick up where we left off".
-- Settled: 1.0 does not take the look of one system as a whole. It gets a new design. Geist is the reference that Peter likes most and that will win in most cases; other systems supply what Geist leaves out.
-- Open: his second message asks whether some things are taken from Geist and other things are designed new. The agent reads both messages as one direction: a new design that takes from Geist where Peter prefers Geist. He has not confirmed that reading, so no decision record exists yet and the row stays open.
-- Next: confirm the reading with one question. Then record the decision, and start the design direction step: for colour, type, shape, density and motion, decide what comes from Geist, what comes from another system and what is new.
+### Row 24 — partial, resume here
+- Settled: the typeface for text is Google Sans Flex.
+- Source: Peter's reply to the question of row 23 on 2026-11-12, typed into the question dialog: "option 1 - for the font we should be using google sans flex and for coding font google sans flex mono".
+- Conditions: none stated.
+- Fact check, 2026-11-12, from search excerpts and not from the full pages: no typeface with the name "Google Sans Flex Mono" was found. Google's typeface for code in this family is Google Sans Code, open source since August 2025 under the SIL Open Font License. Google Sans Flex is open source since 2025-11-18 under the same license. Google Sans Mono is the older fixed-width typeface of 2020, and Google Sans Code replaced it. Sources: https://fonts.google.com/specimen/Google+Sans+Flex, https://fonts.google.com/specimen/Google+Sans+Code, https://design.google/library/google-sans-flex-font and https://en.wikipedia.org/wiki/Product_Sans.
+- Open: which typeface Peter means for code.
+- Pending question, 2026-11-12: no typeface has the name "Google Sans Flex Mono"; does he mean Google Sans Code? Options: "Google Sans Code (Recommended)", the coding typeface of the same family; "Choose it in the design direction step", where he sees two or three coding typefaces beside Google Sans Flex.
+- Next: ask that question. Then record one decision for both typefaces.
+
+### Design direction step
+- DEC-126 puts this step before the first Figma library. Rows 25 and 26 hold it.
+- Row 25 gives the facts: what each reference system defines for each part of the look, and what Geist leaves out.
+- Row 26 is a prototype row, by the agent's choice: Peter chooses from sample components drawn in the candidate directions, because a look is judged by eye. It waits for rows 04 and 05: the direction must cover each colour scheme and density that the tokens carry, and the contrast target shapes the colours.
+- Row 22 now waits for row 26, by the agent's choice: the style of the icons (Outlined, Rounded or Sharp) and their default weight are part of the look.
 
 ### Row 10 — partial
 - Settled by DEC-120: a token change reaches the repo when a browser agent or a person runs "Export modes"; no CI job reads token values on the Professional plan.
@@ -80,7 +88,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 ### Conditions
 - Row 02 selected Figma (DEC-117), so rows 06 to 11 apply as written.
 - Row 18 put the whole spec in Figma with an agent-run pull (DEC-118). Row 13 now also decides where each part of a spec sits in Figma.
-- Row 03 made the 0.3.3 look the start (DEC-121) on 2026-11-12. On the same day DEC-125 took release 0.3.3 out as input and replaced DEC-121. Row 23 asks for the visual start again, with no 0.3.3 option.
+- Row 03 made the 0.3.3 look the start (DEC-121) on 2026-11-12. On the same day DEC-125 took release 0.3.3 out as input and replaced DEC-121. Row 23 asked for the visual start again, with no 0.3.3 option, and DEC-126 answers it: a new design with Geist as the first reference.
 
 ## Map
 
@@ -106,13 +114,16 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 18 | Does Figma hold the whole design spec, with the Markdown in the repo generated by a pipeline, or do the behaviour parts live in documents written in the repo? | interview | resolved | 17 | [DEC-118](../decisions/DEC-118-spec-source-figma-agent-pull.md) |
 | 19 | What do live reads of the trial file return: the REST API with the access token, the MCP read tools, a `use_figma` read script for variables and for an embedded Spec, and the native "Export modes" file? | task | resolved | — | [RES-028](../research/RES-028-figma-live-reads.md) |
 | 21 | Which variations does Material Symbols have today (styles, fill, weight, grade, optical size), in which formats and under which license? | research | resolved | — | [RES-040](../research/RES-040-material-symbols-variations.md) |
-| 22 | Which variations of Material Symbols does 1.0 ship, and which of them can a consumer change on one icon? | interview | open | 21 | — |
-| 23 | What is the visual starting point for 1.0: the look of one reference system, or a new design? | interview | open | — | — |
+| 22 | Which variations of Material Symbols does 1.0 ship, and which of them can a consumer change on one icon? | interview | open | 21, 26 | — |
+| 23 | What is the visual starting point for 1.0: the look of one reference system, or a new design? | interview | resolved | — | [DEC-126](../decisions/DEC-126-visual-start-new-design-geist-first.md) |
 | 20 | Do Terrazzo and Style Dictionary read the files that "Export modes" writes, and what CSS does each write for two modes, an alias, a number with no unit, a string and a boolean? | task | open | 09 | — |
+| 24 | Which typefaces does 1.0 use for text and for code? | interview | open | — | — |
+| 25 | What do the five reference systems define for colour, type scale, shape, spacing and sizes, elevation and motion, what does Geist leave out, and what do Vercel's terms say about the reuse of Geist's values? | research | in-progress | — | — |
+| 26 | Which design direction does 1.0 take: for colour, type scale, shape, density and motion, what comes from Geist, what comes from another system and what is new? | prototype | open | 04, 05, 24, 25 | — |
 
 ## Not yet specified
 - The order and batch size of the component specs. The plan settles it.
-- The motion system. It sharpens after row 23. The icon set is Material Symbols (DEC-123).
+- Whether the design direction of row 26 needs one decision for each part of the look. It sharpens when row 25 returns.
 - How a design spec records responsive behaviour.
 - The layout of the pulled Markdown files in the repo, and what starts a pull. They sharpen after row 13.
 

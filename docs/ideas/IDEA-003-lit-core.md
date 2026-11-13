@@ -23,6 +23,9 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 - Standing preference: before each architecture question, explain the Lit concept and the trade-off in plain terms. Peter has not used Lit before.
 
 ### Waits
+- Row 01 — running since 2026-11-12. Record: RES-042. Researcher agent `ae3a841db00a620a6`, started without a name; its log records `claude-opus-5-5` and the effort `medium` on each request.
+- Row 02 — running since 2026-11-12. Record: RES-043. Researcher agent `a8a44290116cb20e5`, started without a name; its log records `claude-opus-5-5` and the effort `medium` on each request.
+- Rows 01 and 02 started when DEC-127 resolved row 04: they are now the only rows that row 05 waits for, and row 05 shapes IDEA-003, IDEA-004 and IDEA-006.
 - Row 09 — wait: IDEA-001 reaches `done`.
 - Row 10 — wait: IDEA-002 resolves its rows 11 and 13. Row 09 is resolved by DEC-120.
 - Row 12 — wait: IDEA-002#22 decides the variations of Material Symbols. DEC-123 holds Peter's decisions that each icon is a component built with the Icon component, and that the Icon component renders SVG, not an icon font.
@@ -33,20 +36,21 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 
 ### Evidence from other ideas
 - DEC-119 (IDEA-001#03): 1.0 serves ACME Labs applications, AI-written artifacts, outside teams and marketing and content sites.
-- For row 04: content sites and outside teams often render pages on a server. This is evidence for the question, not Peter's answer.
+- Row 04 is resolved by DEC-127: 1.0 does not render on the server. Peter gave the answer in a message of his own on 2026-11-12. The evidence that content sites and outside teams often render pages on a server is in that record.
 - For row 11: artifacts are often one HTML file that loads from a CDN, so 1.0 must work with no build step. DEC-119 states that need; row 11 decides the delivery.
 - DEC-118 (IDEA-002#18): each design spec reaches the repo as Markdown that an agent pulls from Figma. Row 10 imports that format.
 - RES-035 and RES-037 (IDEA-001#01), evidence for rows 01 and 06: the Chakra UI inventory marks 19 of 115 components as offered both as one ready-made component and as parts, 46 as parts only and 50 as one component.
 - DEC-124 (IDEA-001#06), for rows 05 and 06: Peter decides the parts and the structure of each component by review, and he expects a mix of several systems. The architecture must not assume the structure of one reference system.
-- RES-029 (IDEA-004#01), evidence for row 04: Preact's server renderer does not write complex property values into the HTML; they reach the element at hydration. React's rule for properties on the server is not confirmed yet.
+- IDEA-002#24, for row 13: Peter set the typeface for text on 2026-11-12, Google Sans Flex; the typeface for code is open there. Row 13 waits for row 11, because the delivery of the fonts follows the delivery of the components.
+- RES-029 (IDEA-004#01), collected for row 04 before DEC-127 resolved it: Preact's server renderer does not write complex property values into the HTML; they reach the element at hydration. React's rule for properties on the server is not confirmed yet.
 
 ## Map
 
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
-| 01 | How does Chakra UI export a convenience component beside its subcomponents, and how do the subcomponents share state? | research | open | — | — |
-| 02 | Which mechanisms does Lit give for composition between a parent and its parts (slots, light DOM children, context, shadow parts), and what are the limits of each? | research | open | — | — |
-| 04 | Must 1.0 render on the server? | interview | open | — | — |
+| 01 | How does Chakra UI export a convenience component beside its subcomponents, and how do the subcomponents share state? | research | in-progress | — | — |
+| 02 | Which mechanisms does Lit give for composition between a parent and its parts (slots, light DOM children, context, shadow parts), and what are the limits of each? | research | in-progress | — | — |
+| 04 | Must 1.0 render on the server? | interview | resolved | — | [DEC-127](../decisions/DEC-127-no-server-rendering-in-1-0.md) |
 | 05 | Which composition architecture does the Lit core use? | prototype | open | 01, 02, 04 | — |
 | 06 | Is the convenience component a Lit element in the core, or does it exist only in the framework wrappers? | interview | open | 05 | — |
 | 07 | Which source gives the components their behaviour: state machine packages, ports of them, or our own logic? | interview | open | 05 | — |
@@ -55,6 +59,7 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 | 10 | Import the design spec format and the token output from IDEA-002. | task | open | — | — |
 | 11 | Which delivery lets one HTML page use 1.0 from a CDN with no build step, and does it cover every component? | interview | open | 05 | — |
 | 12 | How does the icon library make one component for each icon from the Icon component, and how do the variations of an icon reach it? | interview | open | 05 | — |
+| 13 | How do the typefaces of 1.0 reach a page: font files in the package, a link to Google Fonts, or the consumer's own loading? | interview | open | 11 | — |
 
 ## Not yet specified
 These sharpen after row 05.

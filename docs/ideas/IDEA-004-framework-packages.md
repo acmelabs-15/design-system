@@ -23,6 +23,7 @@ A spec for the framework packages: the chosen targets, the way each wrapper is p
 
 ### Waits
 - Row 01 — running since 2026-11-12, after Peter's go (IDEA-001, Notes). Record: RES-029. Workflow run `wf_737727d2-447`, task `w9wlqmzrx`, from the script `.artifacts/v1/research/deep-research-opus-medium.js`. Its first agent's log records `claude-opus-5-5` and the effort `medium`. The run ended on 2026-11-12 with 104 agents and no error. RES-029 holds a partial answer: 14 findings on the runtimes and on TanStack Redact; nothing confirmed on how named libraries make and test their wrappers. Two narrower runs are named in RES-029, Next action. The agent holds these runs until the decision rows of this idea are next: the facts are about tools that change each month, and no decision that needs them is on the frontier. Peter can ask for them sooner.
+- Row 01 — scope: DEC-127 of 2026-11-12 takes server rendering out of 1.0. The two follow-up runs leave it out.
 - Row 02 — wait: IDEA-003#05 is resolved.
 
 ### Settled by the prompt
@@ -47,7 +48,7 @@ A spec for the framework packages: the chosen targets, the way each wrapper is p
 | 07 | Is each target its own npm package, or an entry of one package? | interview | open | 04 | — |
 
 ## Not yet specified
-- Server rendering for each target. It depends on IDEA-003#04.
+- Whether a framework package must load without an error in an app that renders its pages on a server, where the components then appear only in the browser. DEC-127 (IDEA-003#04) rules out server rendering itself and does not answer this point. It sharpens at row 04, with the targets.
 - Typed JSX for the custom elements in each target.
 - How the components for single icons (DEC-123) reach each framework package. It sharpens after IDEA-003#12.
 
