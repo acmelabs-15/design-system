@@ -27,7 +27,7 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 - Row 05 — ready, next for the agent: explain the mechanisms of RES-043 to Peter in plain words, then build the prototype with brain's prototype skill. Peter chooses the architecture from it.
 - Row 14 — ready, not started: the agent starts it when the style props are the next topic. No decision on the frontier needs it yet.
 - Row 09 — wait: IDEA-001 reaches `done`.
-- Row 10 — wait: IDEA-002 resolves its rows 11 and 13. Row 09 is resolved by DEC-120.
+- Row 10 — wait: IDEA-002 resolves its rows 11 and 13. Row 09 is resolved by DEC-120. DEC-141: Peter approves the design specs once, when all are complete, so the build of the components starts after that approval.
 - Row 12 — wait: IDEA-002#22 decides the variations of Material Symbols. DEC-123 holds Peter's decisions that each icon is a component built with the Icon component, and that the Icon component renders SVG, not an icon font.
 
 ### Settled by the prompt

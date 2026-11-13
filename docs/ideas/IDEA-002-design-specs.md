@@ -57,6 +57,10 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Every row that row 26 waited for is resolved: 04, 05, 24, 25 and 27.
 - Next: load brain's prototype skill and draw sample components in the candidate directions. The fixed inputs: Geist's exact values where a part comes from Geist (DEC-136); Google Sans Flex and Google Sans Code (DEC-128); light and dark, with custom themes (DEC-137); level AA and both reading directions (DEC-138); Material Symbols (DEC-123). The open parts: spacing, control heights, motion and focus ring, which Geist does not document; the text styles with the new typeface; each colour of Geist that fails level AA.
 
+### Row 12 — resolved
+- DEC-141, Peter, 2026-11-12: agents make the design specs in parallel, as many at one time as possible, and he approves once, when all are complete. His words: "option 1 - they can all be created in a parallel - or as much in parallel as possible - I approve when all are completed".
+- Effect on row 13: no approval comes before the last spec, so the format of one spec must be exact before the first spec is drawn.
+
 ### Row 10 — partial
 - Settled by DEC-120: a token change reaches the repo when a browser agent or a person runs "Export modes"; no CI job reads token values on the Professional plan.
 - Source: DEC-120, decided by the agent on 2026-11-12 under Peter's delegation of the token route.
@@ -117,7 +121,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 09 | Which token export route does 1.0 use? | interview | resolved | 08, 19 | [DEC-120](../decisions/DEC-120-token-export-route.md) |
 | 10 | How do token changes reach the repo (manual export, CI job or pull request), and how are they versioned? | interview | open | 09 | — |
 | 11 | Which token files does the pipeline hand to the Lit core and the framework packages? | interview | open | 09, 20 | — |
-| 12 | Who makes each design spec, and who approves it? | interview | open | 02 | — |
+| 12 | Who makes each design spec, and who approves it? | interview | resolved | 02 | [DEC-141](../decisions/DEC-141-agents-make-the-specs-in-parallel-one-approval.md) |
 | 13 | What must one design spec hold before a component can be built from it? | interview | open | 02, 18 | — |
 | 14 | Import the final component list from IDEA-001. | task | open | — | — |
 | 15 | Which Figma plan and seat does each capability need (MCP use, variables and modes, library publishing, the Variables REST API, plugins), and what does each cost today? | research | resolved | — | [RES-024](../research/RES-024-figma-plans-and-prices.md) |
@@ -135,7 +139,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 27 | Does 1.0 take Geist's exact values (colours, text styles, shadows), or its own values in a structure like Geist's, given that Vercel publishes no license for them? | interview | resolved | 25 | [DEC-136](../decisions/DEC-136-geist-exact-values-without-a-check.md) |
 
 ## Not yet specified
-- The order and batch size of the component specs. The plan settles it.
+- How many design specs the agents draw at one time. DEC-141 asks for as many as possible; the limits of the Figma MCP are not known (RES-025). The plan settles it.
 - Whether the design direction of row 26 needs one decision for each part of the look. It sharpens when the first samples are drawn.
 - How a design spec records responsive behaviour.
 - The layout of the pulled Markdown files in the repo, and what starts a pull. They sharpen after row 13.
