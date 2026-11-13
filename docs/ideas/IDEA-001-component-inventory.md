@@ -50,9 +50,6 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 - Other sessions: the branches `claude/ci-speed` and `claude/issue-12-strict-style-policy` have their own worktrees, and the `main` checkout holds uncommitted files. They change the system that 1.0 replaces. Leave them as they are.
 - The open maintenance issues of 0.3.3 stay in the local tracker, `.scratch/maintenance/issues/`.
 
-### Row 02 — running
-- Started on 2026-11-12, when row 01 resolved and row 04 came to wait on this row alone. One brain researcher agent, started without a name on Opus 5.5 at medium effort; agent ID `a227031980dd6a9e0`. It claims its own research record with the slug `components-of-release-0-3-3`. It writes no other file.
-
 ### Row 10 — running
 - Started on 2026-11-12: one brain researcher agent, without a name, on Opus 5.5 at medium effort; agent ID `ad94ad192eada27c8`. It claims its own record with the slug `names-for-the-tied-concepts`. Its survey set is fixed: the WAI-ARIA patterns, native HTML, Base UI, React Aria Components, MUI, Mantine, Ant Design, Ark UI, Headless UI, Fluent UI React, Carbon and Material Design 3.
 - The 11 ties of RES-037: Bleed or Inset; Resizable or Splitter; Item or Entity; Copy Button or Clipboard; Checkbox Cards or Checkbox Card; Radio Cards or Radio Card; Native Select or Select (Native); Input OTP, One-Time Password Field or Pin Input; Password Input or Password Toggle Field; Status or Status Dot; Direction Provider or Direction.
@@ -61,11 +58,9 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 ### Settled by Peter outside a row
 - DEC-123, 2026-11-12: the list holds an Icon component. The icon library makes one component for each icon with it, from Material Symbols. The components for single icons are not entries of the list.
 
-### Row 06 — partial, question pending
-- Settled by the prompt: the three words Part, Subcomponent and Slot; see "Settled by the prompt" and the glossary.
-- Numbers from RES-037: two systems or more split 47 concepts into parts, and only 2 of the 47 have the same part names in all of them. Root, Trigger, Content, Item, Label and Title are common to all five systems. The systems differ on others, for example Close or CloseTrigger, Overlay or Backdrop, Portal or Positioner.
-- Pending question, asked on 2026-11-12: which rule names the parts? Options: one name for each role in every component, chosen as the name that most of the five systems use for that role across all components (recommended, because a developer then learns each part name once); the most-used name component by component; the part names of one system for everything.
-- The rule names parts only. Which parts a component has is decided in row 09, after the composition architecture of IDEA-003#05.
+### Row 04 — evidence
+- RES-038: these 0.3.3 components have no matching concept in RES-037: App Bar, Disabled Wall, Flow Diagram, Icon Tile, Legend, Markdown, Sparkline, Table of Contents and Pill. Only two concepts that four or five reference systems have are absent from 0.3.3: Aspect Ratio and Popover.
+- RES-038: release 0.3.3 ships 184 public elements on 100 component pages, 17 recipes, and 4,135 icon elements.
 
 ### Row 07 — evidence
 - Peter, 2026-11-12, same reply: "shadcn includes ai components as well for example - none of the others do I don't think". The inventories agree in part: shadcn/ui lists eight chat components among its components and a separate catalog "AI Elements" with 21 patterns (RES-032). RES-037 shows which concepts only one system has. This is evidence for row 07; it puts no component in or out.
@@ -82,7 +77,7 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 
 ### Agent choices
 - The matrix lives under `docs/research/`, one table per component category, with the version of each system and the access date.
-- Rows 07 to 09 are decided by rule first (rows 03 to 06). Peter is then asked only about the exceptions.
+- Rows 07 and 08 are decided by rule first (rows 03 to 05). Peter is then asked only about the exceptions and the ties. Row 09 is a review with Peter (DEC-124): the agent prepares the parts of one family of components side by side for the five systems, and Peter decides the structure where they disagree.
 - The rule from row 03 (DEC-119): a component concept is a candidate when one of the four audiences needs it. No audience rules a concept out.
 - Evidence for row 04, not an answer: the marketing and content audience needs page sections, and the reference columns may not have them. Row 01 shows whether they do.
 
@@ -91,11 +86,11 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
 | 01 | Which component concepts do shadcn/ui, Radix Primitives, Radix Themes, Chakra UI and Geist have, what does each system call them, how does each split them into parts, and where do they disagree? | research | resolved | — | [RES-037](../research/RES-037-component-comparison-matrix.md) |
-| 02 | Which components, parts and recipes does release 0.3.3 ship, and which decision records chose their names? | research | in-progress | — | — |
+| 02 | Which components, parts and recipes does release 0.3.3 ship, and which decision records chose their names? | research | resolved | — | [RES-038](../research/RES-038-components-of-release-0-3-3.md) |
 | 03 | Which products and users does 1.0 serve, and what does that rule in or out of the list? | interview | resolved | — | [DEC-119](../decisions/DEC-119-four-audiences-for-1-0.md) |
 | 04 | Can the list hold a component concept that none of the five reference columns has? | interview | open | 02, 03 | — |
 | 05 | When the reference systems disagree on a name, which rule picks the 1.0 name? | interview | resolved | 01 | [DEC-122](../decisions/DEC-122-name-rule-most-of-five.md) |
-| 06 | Which words name the pieces of a component (part, subcomponent, slot), and which shared part names apply across components? | interview | open | 01 | — |
+| 06 | Which words name the pieces of a component (part, subcomponent, slot), and which shared part names apply across components? | interview | resolved | 01 | [DEC-124](../decisions/DEC-124-parts-reviewed-where-systems-disagree.md) |
 | 07 | Which component concepts from the matrix are in the 1.0 list? | interview | open | 01, 03, 04 | — |
 | 08 | What is the final name of each included component? | interview | open | 05, 07, 10 | — |
 | 09 | What is the final part composition of each included component? | interview | open | 06, 07 | — |
