@@ -76,6 +76,7 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
   - Context goes from an ancestor down, through a DOM event. A part that connects before its provider gets no value unless a `ContextRoot` or a second request repairs it. On a page with no build step that order depends on which `define()` runs first.
   - A reference by ID for ARIA works only inside one tree. Reference Target, which closes the gap into a shadow root, ships in Chromium only and is behind a flag in Firefox and Safari.
   - Lit ships single-file bundles for a page with no build step. Decorators need a compiler; each one has a form in plain JavaScript.
+- RES-029 (IDEA-004#01), for row 06: none of six web component libraries exports a React component with members such as `Steps.Root`; each exports one flat component for each tag. So the export shape of the prompt has no model among them.
 - RES-029 (IDEA-004#01), collected for row 04 before DEC-127 resolved it: Preact's server renderer does not write complex property values into the HTML; they reach the element at hydration. React's rule for properties on the server is not confirmed yet.
 
 ## Map

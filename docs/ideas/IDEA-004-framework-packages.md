@@ -27,6 +27,14 @@ A spec for the framework packages: the chosen targets, the way each wrapper is p
 - Row 01 — scope: DEC-127 of 2026-11-12 takes server rendering out of 1.0. The two follow-up runs leave it out.
 - Row 02 — wait: IDEA-003#05 is resolved.
 
+### Row 01 — resolved
+- RES-029 is answered since 2026-11-12: the sweep, then one research agent for each of its two follow-up questions (`a250484f13dcbb03c` and `a4717c5e0e713bd19`; both logs record `claude-opus-5-5` and the effort `medium`).
+- Facts for row 03: React 19 sets a prop as a property when the element has a property of that name at the moment of the write; this comes from React's source. Redact 0.3.1 has no branch for custom elements: it writes each prop as an attribute with a lower-case name and a string value, and it puts event names in lower case. So an array or an object prop does not arrive, and an event with capital letters in its name is not heard. No source of Redact states this; it comes from its source code, and no run observed it in a browser. Row 03 is that test, and RES-029 names the six points that it must observe.
+- Facts for row 04: none of the six libraries ships a wrapper package for Preact or for Solid. Stencil generates only type declarations for both. Web Awesome's documentation calls its React wrappers legacy and says that React 19 needs none; it still ships them.
+- Facts for row 05: each generated React wrapper in the five libraries that have one is a call to `createComponent` of `@lit/react`. The input is a Custom Elements Manifest (Web Awesome, Shoelace, Spectrum), compiler metadata (Stencil, Ionic), or the TypeScript source (Lit's own labs generator). Each library exports one flat component for each tag. None exports a component with members such as `Steps.Root`, so no library is a model for the export shape that the prompt asks for.
+- Facts for row 06: Stencil and Ionic test their wrappers in a browser, in example applications; Ionic runs a React 18 and a React 19 application. `@lit/react` tests in three browsers against React 18.2. Web Awesome, Shoelace and Spectrum have no test of their wrappers.
+- Limits of the record: nothing is observed in a browser; refs, children and slots in Preact and Solid were not researched; two findings on Preact and Solid rest on a 2-1 vote and on older documentation; no source has a wrapper test under Preact or Solid, or a test of `@lit/react` under React 19.
+
 ### Settled by the prompt
 - The candidate targets are React, Preact, TanStack Redact and possibly Solid.
 - The prompt describes Redact as a React-API-compatible runtime. RES-029 checked it: TanStack publishes `@tanstack/redact`, version 0.3.1 of 2026-11-04, before 1.0. Its repository claims "100% API compliancy", and its own compatibility pages list behaviour that it does not implement, mainly concurrency.
@@ -45,7 +53,7 @@ A spec for the framework packages: the chosen targets, the way each wrapper is p
 
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
-| 01 | For React, Preact, TanStack Redact and Solid: how does each handle custom elements, how do other libraries generate or write wrappers for it, and how do they test those wrappers? | research | in-progress | — | — |
+| 01 | For React, Preact, TanStack Redact and Solid: how does each handle custom elements, how do other libraries generate or write wrappers for it, and how do they test those wrappers? | research | resolved | — | [RES-029](../research/RES-029-framework-wrapper-landscape.md) |
 | 02 | Import the composition architecture from IDEA-003. | task | open | — | — |
 | 03 | Does the React package run on Redact unchanged? | task | open | 01, 02 | — |
 | 04 | Which targets ship in 1.0? | interview | open | 01, 03 | — |
