@@ -39,6 +39,11 @@ A spec for the MCP server and the consumer skills of 1.0: where they ship, what 
 - Row 08: the kickoff prompt says the merge replaces the docs, but no idea names the documentation website. The row sits here because the MCP server serves the same records as the website.
 - Evidence for row 08, Peter, 2026-11-12 (IDEA-001, Row 11 — partial): recipes are not given out as components, and 1.0 "should just include a blocks section in the docs like they do", as shadcn/ui does. So the documentation website of 1.0 has a blocks section. Which idea holds it is open with row 08.
 
+### Row 08 — pending question
+- Pending question, 2026-11-12: which idea owns the documentation website? Options: "A seventh idea (Recommended)": IDEA-007 owns the website, its pages, its examples, the blocks section and the records that the MCP server also serves; "IDEA-005 owns it": this idea becomes documentation, MCP and skills.
+- Facts for the question: the kickoff prompt says that the merge replaces "components, packages, docs, MCP and skills", and it names six ideas, none for the website. Peter wants a blocks section in the documentation (IDEA-001, Row 11 — partial). The MCP server serves records that the website also shows (row 06).
+- The agent's reasons: the website has its own destination, a spec for its pages and examples, and its examples need the architecture of IDEA-003 and the targets of IDEA-004; IDEA-005 decides how the MCP server and the skills ship, which is another kind of question.
+
 ## Map
 
 | # | Question | Type | Status | Blocked by | Result |

@@ -50,11 +50,12 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 ### Row 04 — resolved
 - DEC-137, Peter, 2026-11-12: the tokens carry light and dark, and custom themes. He selected both in the dialog and did not select density or accent choice.
 
-### Row 05 — pending question
-- Pending question, 2026-11-12: which accessibility target do the design specs have? The agent proposes one target with three parts: WCAG 2.2 at level AA; both reading directions, left-to-right and right-to-left; mouse, touch, keyboard and screen reader. Options: "AA, both directions (Recommended)"; "AA, left-to-right only"; "AAA contrast, both directions": as the first option, with the text contrast of level AAA.
-- Facts for the question: WCAG 2.2 level AA asks for a contrast of 4.5 to 1 for text and 3 to 1 for the parts of a control, and for a target of at least 24 by 24 CSS pixels. Level AAA asks for 7 to 1 for text. From RES-041: Geist claims "accessible text and icons" for steps 9 and 10 of each scale and states no ratio and no method; Radix Colors names its method (APCA) and guarantees its text steps; Chakra UI says that its animations play whatever the reduced-motion setting is.
-- A consequence that the question names: 1.0 takes Geist's exact values (DEC-136). Where a value of Geist fails the target, the value changes, so the target limits that decision.
-- The agent's reasons: level AA is the level that most laws and customers ask for; both directions cost little when every spec uses start and end from the first day, and much when they come later; the four input modes are what the four audiences of DEC-119 use.
+### Row 05 — resolved
+- DEC-138, Peter, 2026-11-12: WCAG 2.2 level AA; left-to-right and right-to-left; mouse, touch, keyboard and screen reader. Where one of Geist's exact values fails level AA, that value changes.
+
+### Row 26 — ready, next for the agent
+- Every row that row 26 waited for is resolved: 04, 05, 24, 25 and 27.
+- Next: load brain's prototype skill and draw sample components in the candidate directions. The fixed inputs: Geist's exact values where a part comes from Geist (DEC-136); Google Sans Flex and Google Sans Code (DEC-128); light and dark, with custom themes (DEC-137); level AA and both reading directions (DEC-138); Material Symbols (DEC-123). The open parts: spacing, control heights, motion and focus ring, which Geist does not document; the text styles with the new typeface; each colour of Geist that fails level AA.
 
 ### Row 10 — partial
 - Settled by DEC-120: a token change reaches the repo when a browser agent or a person runs "Export modes"; no CI job reads token values on the Professional plan.
@@ -109,7 +110,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 02 | Are the design specs made in Figma through the Figma MCP, or as spec documents in the repo? | interview | resolved | 01, 15, 16 | [DEC-117](../decisions/DEC-117-design-specs-in-figma.md) |
 | 03 | What is the visual starting point for 1.0: the 0.3.3 look, the look of one reference system, or a new design? | interview | superseded by 23 | — | — |
 | 04 | Which theme dimensions must the tokens carry (colour scheme, density, accent, custom themes)? | interview | resolved | — | [DEC-137](../decisions/DEC-137-theme-dimensions-light-dark-and-custom-themes.md) |
-| 05 | Which accessibility standard, reading directions and input modes do the specs target? | interview | open | — | — |
+| 05 | Which accessibility standard, reading directions and input modes do the specs target? | interview | resolved | — | [DEC-138](../decisions/DEC-138-accessibility-target-wcag-2-2-aa-both-directions.md) |
 | 06 | How do a published Figma library and a custom Figma plugin each give components to designers, and how does each stay in sync with new versions? | research | open | 02 | — |
 | 07 | Do designers get the system through a published library, a custom plugin, or both? | interview | open | 06 | — |
 | 08 | Which routes export tokens from Figma to the repo, and how does each handle change flow and versions? | research | resolved | 02 | [RES-026](../research/RES-026-figma-token-export-routes.md) |
