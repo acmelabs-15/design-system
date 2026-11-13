@@ -60,9 +60,20 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 - Next: put the ties to Peter when row 07 has decided which of these concepts are in the list.
 
 ### Row 07 — resolved
+- DEC-134 changed the list in one point on the same day: Progress Circle is no concept of its own. The list holds 145 concepts.
 - DEC-133 holds the list: 146 concepts in and 36 out, with Peter's answers, the reasons for out, and the readings of the agent that he saw and did not correct. DEC-130 and DEC-132 hold his two rules, and DEC-131 holds his words on the style props of the layout components.
 - How it ran: the agent proposed in or out for each of the 182 concepts, and Peter reviewed the proposal in three questions by category on 2026-11-12.
 - Reasons for out that Peter did not accept, for any later proposal: "a plain HTML element or CSS does the job" (DEC-130) and "other components can compose it" (DEC-132).
+
+### Row 08 — pending question
+- All ten concepts of the open ties are in the list (DEC-133). DEC-122 settles 15 other names by the rule; the concepts that one system has keep that system's name.
+- Pending question, 2026-11-12: does Peter accept eleven names? Five by the lead of the survey RES-039: Splitter, Password Input, Copy Button, Pin Input, Native Select. Five where the survey gives no lead, by the agent's proposal: Bleed, Item, Status, Checkbox Card, Radio Card. One from his own words: Circular Progress. Options: "Accept the eleven names (Recommended)"; "Other name in the open ties": Inset, Entity, Status Dot, Checkbox Cards and Radio Cards, with the other six as proposed. He can also type the names to change.
+- Answer, Peter, 2026-11-12, typed into the question dialog: "Mostly accept option 1 as is - what is a splitter and I want to make sure we ahve both a native and none native select - not circular progress, I think what most libs do is the progress can be linear or circular".
+- Settled: nine names are final: Password Input, Copy Button, Pin Input, Native Select, Bleed, Item, Status, Checkbox Card and Radio Card. Select and Native Select are both in the list, which is what he asks for. There is no component with the name Circular Progress: Progress is one component that is linear or circular (DEC-134).
+- Open: Splitter or Resizable. He asked what a splitter is, so he has not chosen that name.
+- Pending question, 2026-11-12: Splitter or Resizable, with the explanation of the component. Facts from RES-039: the WAI-ARIA Authoring Practices name the pattern "Window Splitter", "a moveable separator between two sections, or panes, of a window that enables users to change the relative size of the panes"; Mantine, Ant Design and Ark UI name the component Splitter; no surveyed source names it Resizable. Options: "Splitter (Recommended)"; "Resizable".
+- Next: ask that question. Then record the names in one decision record.
+- The agent's reasons for the five open ties: Bleed says what the component does, and "inset" is also a CSS property with another meaning; Item is the plain word, and Entity is a word of Geist alone; Status is shorter, and the component can hold a label beside its dot; Checkbox Card and Radio Card are singular like Card and Checkbox.
 
 ### Row 08 — Peter's direct choices
 - Peter, 2026-11-12, in his answer on the rest of the list: "I think circlular progress and spinner are the same - prefer circular progress". The concept that joins Progress Circle and Spinner takes the name "circular progress". DEC-122 would give "Spinner", the name that most systems use, so this is his own choice against the rule. The exact form, "Circular Progress" or "Progress Circle", is open.

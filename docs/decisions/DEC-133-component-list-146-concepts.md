@@ -14,6 +14,8 @@ decided: 2026-11-12 by Peter
 
 The comparison matrix (RES-037) holds 182 component concepts. The agent proposed in or out for each one, and Peter reviewed the proposal in three questions on 2026-11-12 and changed it with two rules of his own (DEC-130, DEC-132). The 1.0 list holds 146 concepts, and 36 are out. The names below are the names of the matrix; IDEA-001#08 decides the final names.
 
+Changed on the same day by DEC-134 in one point: Progress Circle is no concept of its own, because Progress is one component that is linear or circular. The list then holds 145 concepts, and 37 are out.
+
 ## In, 146
 
 - Layout, 20: Separator, Aspect Ratio, Scroll Area, Card, Grid, Bleed, Container, Item, Resizable, Group, Section, Sidebar, Stack, Box, Flex, Center, AbsoluteCenter, Float, Wrap, SimpleGrid.
