@@ -63,8 +63,25 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 ### Row 06 — resolved
 - DEC-145, Peter, 2026-11-12: the theming controls preview a custom theme and export it as a theme file. The export holds only a team's own values; RES-044 holds the facts.
 
+### Row 09 — resolved
+- RES-071, 2026-11-13: 21 design systems checked, the tools and plugins of TanStack Devtools, and one list of 41 candidate capabilities, each marked as one of the six of DEC-143, the theme export of DEC-145, or new.
+- Facts for row 10, the capabilities:
+  - Three of the 21 systems ship a tool inside the running application: Radix Themes (a theme panel only), Vaadin (Copilot, a broad tool) and SAP UI5 (rule checks). Vaadin's and UI5's tools work only in their own framework.
+  - Three ship a browser extension of their own: Carbon (a grid overlay, the tokens that an element uses, a list of the components on the page, the current breakpoint), Fluent UI and SAP UI5.
+  - A theme editor on a website is the most common kind: Ant Design, Fluent UI, Material, Mantine, shadcn/ui, Web Awesome, PrimeTek and Ionic.
+  - Lint plugins are common among the large systems: Carbon, Atlassian, Fluent UI, Polaris, Primer, Salesforce and Elastic. They check for tokens in place of raw values, for the system's components in place of raw HTML, and for accessible use of a component.
+  - The six of DEC-143 all appear in the list. Close to them and not the same: a breakpoint view that also resizes the page (Carbon), and an accessibility check of the whole page; DEC-143 scopes its check to the selected component.
+  - New against DEC-143, among others: a list of the system's components on the page; a tree of the components; go to source, which opens the editor at the line of a component; style changes for one component; a palette from one brand colour; import of a theme; saving a change back into the project's stylesheet; a browser for all tokens with their alias chains; a grid overlay; a gallery of all components under the current theme; the documentation of the selected component in the panel; a notice of a new version with migration help.
+  - Kinds that are no panel in the page: lint plugins, editor extensions and command line tools, and tools for Figma. The record lists them as candidates.
+- Facts for row 04, the base:
+  - None of the 21 systems ships a devtools panel on TanStack Devtools, on Vite DevTools or on Vue DevTools.
+  - No plugin of TanStack Devtools edits the props of a component, theme values or tokens.
+  - TanStack Devtools gives its users: a shell with hotkeys, a trigger that docks at an edge, and a workspace of several panels; go to source through its Vite plugin; logs with source locations; removal from production builds; and a marketplace that installs a plugin.
+- Evidence for DEC-145: Radix Themes' panel copies the theme as text; Material Theme Builder and PrimeTek's designer export a file.
+- Not confirmed by the record: whether the theme editors of Fluent UI and of Ant Design export a file; the Figma tools of most systems, which it did not check. "None found" rests on the searches and the pages that it read.
+
 ### Second block of agent work
-- Row 09 — running since 2026-11-13, in the second block of agent work (IDEA-001, Notes, "Second block of agent work"). Researcher agent `a032cbfd32335d65d`, started without a name on Peter's word "start the block"; its log records Opus 5.5 and the effort `medium`. Its record is found by its `from`. Its brief is `.artifacts/v1/briefs/IDEA-006-09.md` with `common.md`. It is the third start: two starts of the same day ended in outages of the Claude login, and their records were removed at Peter's request. Check the log again when the agent ends, before its record is read.
+- Row 09 — done on 2026-11-13: RES-071, from the researcher agent `a032cbfd32335d65d`, started without a name. Its log records Opus 5.5 and the effort `medium` on all 170 requests, checked after the agent ended. It was the third start of the row; two starts of the same day ended in outages of the Claude login.
 
 ## Map
 
@@ -77,10 +94,11 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 06 | Do the theming controls only preview token values, or do they also export changes? | interview | resolved | 03, 08 | [DEC-145](../decisions/DEC-145-theming-controls-preview-and-export-a-custom-theme.md) |
 | 07 | Import the composition architecture from IDEA-003 and the wrapper targets from IDEA-004. | task | open | — | — |
 | 08 | Import the token pipeline decision from IDEA-002. | task | resolved | — | [RES-044](../research/RES-044-devtools-import-of-the-token-pipeline.md) |
-| 09 | Which design systems ship devtools of their own, Material and other large systems among them, what does each tool do, and what do the tools of TanStack Devtools do for their users? The result is a full list of candidate capabilities for ours. | research | in-progress | — | — |
+| 09 | Which design systems ship devtools of their own, Material and other large systems among them, what does each tool do, and what do the tools of TanStack Devtools do for their users? The result is a full list of candidate capabilities for ours. | research | resolved | — | [RES-071](../research/RES-071-devtools-of-design-systems-and-candidate-capabilities.md) |
 | 10 | Which capabilities does the survey add to the six of DEC-143, and does one of the six go? | interview | open | 09 | — |
 
 ## Not yet specified
+- Whether a lint plugin, an editor extension and a tool for Figma are part of devtools or belong to another idea. RES-071 lists them as kinds of tooling that other systems ship. It sharpens at row 10, with Peter's choice of the capabilities. If he takes the Figma kind, the Figma tools of the systems that RES-071 did not check need a look first.
 - How devtools stays out of production bundles.
 - Whether devtools and the MCP server read component metadata from one source.
 

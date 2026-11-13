@@ -40,17 +40,32 @@ A spec for the repository of 1.0: its build tools, its checks in CI, its release
 - RES-029 (IDEA-004#01), for row 03: how Stencil, Ionic and `@lit/react` test wrappers in CI, with their runners and browsers.
 - RES-047 (IDEA-007#02), for row 03: where ten design systems host their documentation websites.
 
+### Row 02 — resolved
+- RES-068, 2026-11-13, from the files of each repository at a named commit, the public API of GitHub and the npm registry. Nothing was run. The component code of Geist is not public, so its row is empty apart from its font.
+- Facts for row 03, from ten repositories (shadcn/ui, Radix Primitives, Radix Themes, Chakra UI, Ark UI, Zag.js, and TanStack Query, Router, Table and Form):
+  - Monorepo tool: TanStack uses Nx with a remote cache and several machines for one run. shadcn/ui and Radix Themes use Turborepo with no remote cache in CI. Radix Primitives, Chakra UI and Zag.js use the workspaces of pnpm alone. Ark UI uses the workspaces of Bun 1.4.2, the version that this repo pins.
+  - Package manager: pnpm in nine of the ten; Bun in Ark UI.
+  - Bundler: tsdown (Zag.js, TanStack Query and Table), tsup (shadcn/ui), esbuild scripts (Radix), Rollup (Chakra UI), the library build of Vite (TanStack Router and Form, Ark UI).
+  - Tests: Vitest in each repository that has unit tests. Where a browser runs in CI it is Chromium, except Radix Themes, which runs Chromium, Firefox and WebKit for its visual tests. Chakra UI, Ark UI and TanStack Query run no browser in CI.
+  - Release: Changesets in each public repository except Radix Themes, which releases by hand. Most publish with npm's trusted publishing, which adds provenance; Chakra UI and Zag.js publish with a token.
+  - Previews: the documentation sites of shadcn/ui, Radix, Chakra UI, Ark UI and Zag.js deploy on Vercel with a preview for each pull request. TanStack serves all documentation from one site on Cloudflare Workers that reads the docs of each repository from GitHub. TanStack publishes each pull request as a package preview through pkg.pr.new; shadcn/ui does it on request, by a label.
+  - Time of the main workflow of a pull request, as the median of about 30 runs that passed: 1.6 minutes (Chakra UI), 2.3 (Radix Primitives), 3.0 (Ark UI), 3.4 (Radix Themes), 3.9 (Zag.js), 4.5 (TanStack Form), 7.9 (TanStack Query), 8.2 (TanStack Table), 12.5 (shadcn/ui) and 13.0 (TanStack Router).
+  - Statements of maintainers: TanStack uses Nx only as a runner of scripts with a cache, and says that its extra machines "incur quite a significant startup delay". Zag.js moved from tsup to tsdown on 2026-11-02, because tsup's way to write type declarations does not work with TypeScript 7. Radix Primitives moved from ESLint and Prettier to oxlint and oxfmt, and from Cypress to Playwright, with no stated reason.
+- Limits of the record: the times are wall time of runs that passed at the first attempt; for TanStack the share of the cache is visible only in Nx Cloud. Few maintainers state why they chose a tool.
+- Peter asked for "a comprehensive plan" from this research. Row 03 is that decision; the agent prepares a proposal for the plan before it asks.
+
 ### Second block of agent work
-- Row 02 — running since 2026-11-13, in the second block of agent work (IDEA-001, Notes, "Second block of agent work"). Researcher agent `ae5fe8e4a588868c0`, started without a name on Peter's word "start the block"; its log records Opus 5.5 and the effort `medium`. Its record is found by its `from`. Its brief is `.artifacts/v1/briefs/IDEA-010-02.md` with `common.md`. It is the third start: two starts of the same day ended in outages of the Claude login, and their records were removed at Peter's request. Check the log again when the agent ends, before its record is read.
+- Row 04 — running since 2026-11-13, in the second block of agent work. Task agent `a2dfef76d0234e4bb`, started without a name; its log records Opus 5.5 and the effort `medium`. Its task record is RES-076, which the main session created before the start. Its brief is `.artifacts/v1/briefs/IDEA-010-04.md` with `common-task.md`, and its scratch folder is `.artifacts/v1/task/IDEA-010-04/`. The task reads the files of release 0.3.3, because the list is its purpose; it removes and changes nothing. Check the log again when the agent ends, before its record is read.
+- Row 02 — done on 2026-11-13: RES-068, from the researcher agent `ae5fe8e4a588868c0`, started without a name. Its log records Opus 5.5 and the effort `medium` on all 140 requests, checked after the agent ended. It was the third start of the row; two starts of the same day ended in outages of the Claude login.
 
 ## Map
 
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
 | 01 | Is CI/CD, deployment and build tooling an idea of its own, which is this one, or a part of another idea? | interview | open | — | — |
-| 02 | What do shadcn/ui, Radix (Primitives and Themes), Chakra UI, Geist and TanStack use for CI/CD, deployment and build tools: the monorepo tool, the package manager, the bundler, the test runners and browsers in CI, caching, the release and publish flow and preview deployments, and how long do their pipelines take? | research | in-progress | — | — |
+| 02 | What do shadcn/ui, Radix (Primitives and Themes), Chakra UI, Geist and TanStack use for CI/CD, deployment and build tools: the monorepo tool, the package manager, the bundler, the test runners and browsers in CI, caching, the release and publish flow and preview deployments, and how long do their pipelines take? | research | resolved | — | [RES-068](../research/RES-068-ci-cd-and-build-tools-of-the-reference-systems.md) |
 | 03 | Which build tools, CI pipeline, release flow and deployment does 1.0 use? | interview | open | 02 | — |
-| 04 | List what the branch holds now, by area: code, packages, website, tools, CI, docs, research, specs, glossaries, agent context files and saved prompts, with the size of each area and what uses it. | task | open | — | — |
+| 04 | List what the branch holds now, by area: code, packages, website, tools, CI, docs, research, specs, glossaries, agent context files and saved prompts, with the size of each area and what uses it. | task | in-progress | — | — |
 | 05 | What survives the removal of the old system: for each area of the list, does it stay, go or move? | interview | open | 04 | — |
 | 06 | When is the old system removed from the branch? | interview | open | 04 | — |
 

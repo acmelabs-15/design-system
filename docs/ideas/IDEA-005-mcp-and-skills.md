@@ -58,6 +58,8 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 
 - RES-030, evidence for row 09: Nuxt UI runs a hosted MCP server over HTTP, which needs no install in a project. Evidence for row 04: TanStack Intent and Storybook 10.6 ship skills with the installed package, so the skills match the installed version.
 
+- RES-071 (IDEA-006#09), evidence for row 06: TanStack Devtools has a package, `devtools-webmcp`, that gives an agent in the browser a way to read a library's internals during development. The record did not read it further. Spectrum's site lists MCP servers and skills among its tools.
+
 ### Boundary with IDEA-007
 - DEC-139, Peter, 2026-11-12: a seventh idea, IDEA-007, owns the documentation website, its pages, its examples, the blocks section and the records that this idea's MCP server also serves. Row 08 is resolved.
 - Row 06 here and IDEA-007#04 are two views of one source of records. Decide them together.
@@ -76,6 +78,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Evidence for row 09, an agent with no project: the view of NVIDIA Elements needs no project and no server, and the hosts where such agents often run are ticked for MCP Apps.
 
 ### Second block of agent work
+- Row 03 — running since 2026-11-13, in the second block of agent work. Task agent `ac68d178289fa47aa`, started without a name; its log records Opus 5.5 and the effort `medium`. Its task record is RES-077, which the main session created before the start. Its brief is `.artifacts/v1/briefs/IDEA-005-03.md` with `common-task.md`, and its scratch folder is `.artifacts/v1/trial/IDEA-005-03/`. Check the log again when the agent ends, before its record is read.
 - Row 10 — running since 2026-11-13, in the second block of agent work (IDEA-001, Notes, "Second block of agent work"). Researcher agent `ae876dde1bf071a5a`, started without a name on Peter's word "start the block"; its log records Opus 5.5 and the effort `medium`. Its record is found by its `from`. Its brief is `.artifacts/v1/briefs/IDEA-005-10.md` with `common.md`. It is the third start: two starts of the same day ended in outages of the Claude login, and their records were removed at Peter's request. Check the log again when the agent ends, before its record is read.
 - Row 11 — done on 2026-11-13: RES-066, from the researcher agent `a390f05d09d1064c0`, started without a name. Its log records Opus 5.5 and the effort `medium` on all 108 requests, checked after the agent ended. It was the third start of the row; two starts of the same day ended in outages of the Claude login.
 
@@ -84,7 +87,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
 | 01 | How do other libraries ship MCP servers and agent skills (inside the library package or apart), how do they install them into a consumer project, and how do agent hosts find them? | research | resolved | — | [RES-030](../research/RES-030-mcp-and-skills-shipping-landscape.md) |
-| 03 | Does an `init` script from the package's `bin` install a working MCP server and skills into a consumer project? | task | open | 01 | — |
+| 03 | Does an `init` script from the package's `bin` install a working MCP server and skills into a consumer project? | task | in-progress | 01 | — |
 | 04 | Do the MCP server and the skills ship inside the design system package, or as separate packages? | interview | open | 01, 03 | — |
 | 05 | What does `init` install, into which agent hosts, and how does it update on a new version? | interview | open | 04 | — |
 | 06 | Which tools and records does the 1.0 MCP server serve? | interview | open | 04, 10 | — |
