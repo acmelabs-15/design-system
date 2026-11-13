@@ -43,9 +43,14 @@ A spec for the design work: the chosen medium, the format of one design spec, th
   - For row 04: Radix Themes has five theme settings (accent colour of 26, gray of 6, panel background, scaling from 90% to 110%, radius from none to full). Chakra UI has a colour palette for each component. shadcn/ui has 7 base colours and one radius value. Geist has light and dark, and no accent, density or radius setting.
   - For row 05: Radix Colors names its contrast method (APCA) and guarantees its text steps. Geist claims "accessible text and icons" for steps 9 and 10 and states no ratio and no method. Chakra UI and shadcn/ui make no contrast claim. Chakra UI says that its animations play whatever the reduced-motion setting is; Radix Themes animates only when the user has no such preference.
 - RES-041 reads Radix Themes at version 3.3.0; the inventory RES-034 names 3.1.3. The difference is not explained.
-- Row 25 gives the facts: what each reference system defines for each part of the look, and what Geist leaves out.
-- Row 26 is a prototype row, by the agent's choice: Peter chooses from sample components drawn in the candidate directions, because a look is judged by eye. It waits for rows 04 and 05: the direction must cover each colour scheme and density that the tokens carry, and the contrast target shapes the colours.
-- Row 22 now waits for row 26, by the agent's choice: the style of the icons (Outlined, Rounded or Sharp) and their default weight are part of the look.
+
+### Row 27 — resolved
+- DEC-136, Peter, 2026-11-12: Geist's exact values go into the first Figma library, with no legal check. He selected this option against the agent's recommendation and with its cost in the option text. Row 26 decides what happens with the values that only the CSS of Vercel's site holds, and it checks Geist's text styles with Google Sans Flex.
+
+### Row 04 — pending question
+- Pending question, 2026-11-12, with more than one answer possible: which theme dimensions do the tokens carry? Options: "Light and dark (Recommended)"; "Custom themes (Recommended)": an outside team replaces the brand colour, the typeface and the corner radius with its own values; "Density": two or three densities for the whole interface; "Accent choice": a built-in choice among several accent colours. To choose none, he types "none".
+- Facts for the question, from RES-041: Geist has light and dark, and no setting for accent, density or radius. Radix Themes has light and dark, 26 accent colours, 6 grays, scaling from 90% to 110% and a radius setting. Chakra UI has light and dark and a colour palette for each component. shadcn/ui has light and dark, 7 base colours and one radius value. From DEC-119: outside teams bring their own brand. From RES-024: each dimension is one collection of variables in Figma with one mode for each value, and the Professional plan has a limit of modes for each collection.
+- The agent's reasons: all four styled systems have light and dark; DEC-119 needs custom themes; density and accent choice each multiply the values that every design spec must check for 145 components, and a custom theme already lets a team set its own brand colour.
 
 ### Row 10 — partial
 - Settled by DEC-120: a token change reaches the repo when a browser agent or a person runs "Export modes"; no CI job reads token values on the Professional plan.
@@ -122,7 +127,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 24 | Which typefaces does 1.0 use for text and for code? | interview | resolved | — | [DEC-128](../decisions/DEC-128-typefaces-google-sans-flex-and-code.md) |
 | 25 | What do the five reference systems define for colour, type scale, shape, spacing and sizes, elevation and motion, what does Geist leave out, and what do Vercel's terms say about the reuse of Geist's values? | research | resolved | — | [RES-041](../research/RES-041-look-of-the-reference-systems.md) |
 | 26 | Which design direction does 1.0 take: for colour, type scale, shape, density and motion, what comes from Geist, what comes from another system and what is new? | prototype | open | 04, 05, 24, 25, 27 | — |
-| 27 | Does 1.0 take Geist's exact values (colours, text styles, shadows), or its own values in a structure like Geist's, given that Vercel publishes no license for them? | interview | open | 25 | — |
+| 27 | Does 1.0 take Geist's exact values (colours, text styles, shadows), or its own values in a structure like Geist's, given that Vercel publishes no license for them? | interview | resolved | 25 | [DEC-136](../decisions/DEC-136-geist-exact-values-without-a-check.md) |
 
 ## Not yet specified
 - The order and batch size of the component specs. The plan settles it.
