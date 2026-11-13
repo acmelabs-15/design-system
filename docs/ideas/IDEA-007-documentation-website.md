@@ -67,6 +67,9 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - IDEA-005#06 asks which tools and records the MCP server serves, and IDEA-005#09 asks how an agent with no project gets the 1.0 guidance. Row 04 here is the other view of the same source.
 - IDEA-003#11: one HTML page uses 1.0 from a CDN with no build step. The website shows that way of use beside the framework packages.
 
+### Second block of agent work
+- Row 10 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `ac48c8f080a6593e2`, started without a name; its log records `claude-opus-5-5` and the effort `medium`. Its record is found by its `from`.
+
 ## Map
 
 | # | Question | Type | Status | Blocked by | Result |
@@ -80,7 +83,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 07 | Import the composition architecture from IDEA-003 and the framework targets from IDEA-004. | task | open | — | — |
 | 08 | Import the component list, names and parts from IDEA-001 and the format of a design spec from IDEA-002. | task | open | — | — |
 | 09 | Do the blocks and recipes get an idea of their own, or do they stay in this idea? | interview | open | — | — |
-| 10 | Which blocks and recipes do shadcn/ui, Radix (Primitives and Themes), Chakra UI and Geist have, and which AI components and AI blocks among them: for each, what it composes, which state and composition pattern it shows, and how the system gives it out? | research | open | — | — |
+| 10 | Which blocks and recipes do shadcn/ui, Radix (Primitives and Themes), Chakra UI and Geist have, and which AI components and AI blocks among them: for each, what it composes, which state and composition pattern it shows, and how the system gives it out? | research | in-progress | — | — |
 | 11 | Which blocks does 1.0 have, by name, in each group of DEC-146? | interview | open | 10 | — |
 | 12 | Is Figma or code the source of truth of a block? | interview | open | — | — |
 | 13 | Where do the blocks live in the documentation, and where do the source files of a block live? | interview | open | — | — |

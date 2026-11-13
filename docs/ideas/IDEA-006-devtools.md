@@ -63,6 +63,9 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 ### Row 06 — resolved
 - DEC-145, Peter, 2026-11-12: the theming controls preview a custom theme and export it as a theme file. The export holds only a team's own values; RES-044 holds the facts.
 
+### Second block of agent work
+- Row 09 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `a96e132160640b841`, started without a name; its log records `claude-opus-5-5` and the effort `medium`. Its record is found by its `from`.
+
 ## Map
 
 | # | Question | Type | Status | Blocked by | Result |
@@ -74,7 +77,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 06 | Do the theming controls only preview token values, or do they also export changes? | interview | resolved | 03, 08 | [DEC-145](../decisions/DEC-145-theming-controls-preview-and-export-a-custom-theme.md) |
 | 07 | Import the composition architecture from IDEA-003 and the wrapper targets from IDEA-004. | task | open | — | — |
 | 08 | Import the token pipeline decision from IDEA-002. | task | resolved | — | [RES-044](../research/RES-044-devtools-import-of-the-token-pipeline.md) |
-| 09 | Which design systems ship devtools of their own, Material and other large systems among them, what does each tool do, and what do the tools of TanStack Devtools do for their users? The result is a full list of candidate capabilities for ours. | research | open | — | — |
+| 09 | Which design systems ship devtools of their own, Material and other large systems among them, what does each tool do, and what do the tools of TanStack Devtools do for their users? The result is a full list of candidate capabilities for ours. | research | in-progress | — | — |
 | 10 | Which capabilities does the survey add to the six of DEC-143, and does one of the six go? | interview | open | 09 | — |
 
 ## Not yet specified

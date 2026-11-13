@@ -119,6 +119,10 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - RES-029 (IDEA-004#01), for row 06: none of six web component libraries exports a React component with members such as `Steps.Root`; each exports one flat component for each tag. So the export shape of the prompt has no model among them.
 - RES-029 (IDEA-004#01), collected for row 04 before DEC-127 resolved it: Preact's server renderer does not write complex property values into the HTML; they reach the element at hydration. React's rule for properties on the server is not confirmed yet.
 
+### Second block of agent work
+- Row 20 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `ae81d7fa184fcddfd`, started without a name; its log records `claude-fable-5-2` and the effort `medium`. Its record is found by its `from`.
+- Row 21 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `a833e86824310cc58`, started without a name; its log records `claude-fable-5-2` and the effort `medium`. Its record is found by its `from`.
+
 ## Map
 
 | # | Question | Type | Status | Blocked by | Result |
@@ -139,8 +143,8 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 15 | Which mechanism do the style props of the layout components use in the Lit core? | interview | open | 14 | — |
 | 16 | Import the list of utilities and hooks from IDEA-001. | task | open | — | — |
 | 17 | In which form does the Lit core hold the logic of the utilities and hooks, and how does it export that logic for users of plain web components? | interview | open | 05, 16 | — |
-| 20 | How do shadcn/ui, Radix Primitives, Radix Themes and Geist let a developer compose a component from its parts: which parts does each export, does a component that composes the subcomponents exist beside them and where does it live, how do the parts share state, and how does a developer wrap or replace a part? Which names do these systems, React's documentation and wider React writing give to this pattern and to its two forms, and what do they state as best practice for it? RES-042 holds the same facts for Chakra UI. | research | open | — | — |
-| 21 | How do Lit libraries and other web component libraries in wide use build a component with parts: which mechanism links a parent and its parts (the parent reads its slot, context, events, or one closed element), what happens to a part inside a wrapper element, and does any library offer one component as a ready-made form and as a composed form? What do Lit's documentation, its maintainers and the published best practices for web components state for such components, and which names do they use? RES-043 holds the mechanisms and two examples. | research | open | — | — |
+| 20 | How do shadcn/ui, Radix Primitives, Radix Themes and Geist let a developer compose a component from its parts: which parts does each export, does a component that composes the subcomponents exist beside them and where does it live, how do the parts share state, and how does a developer wrap or replace a part? Which names do these systems, React's documentation and wider React writing give to this pattern and to its two forms, and what do they state as best practice for it? RES-042 holds the same facts for Chakra UI. | research | in-progress | — | — |
+| 21 | How do Lit libraries and other web component libraries in wide use build a component with parts: which mechanism links a parent and its parts (the parent reads its slot, context, events, or one closed element), what happens to a part inside a wrapper element, and does any library offer one component as a ready-made form and as a composed form? What do Lit's documentation, its maintainers and the published best practices for web components state for such components, and which names do they use? RES-043 holds the mechanisms and two examples. | research | in-progress | — | — |
 
 ## Deferred rows
 Rows of the spec phase, by [the workspace rule](../agents/workspace.md#deferred-rows). They are not open and not on the frontier. Each one moves into the spec of this idea when its spec phase starts.

@@ -62,6 +62,10 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - DEC-139, Peter, 2026-11-12: a seventh idea, IDEA-007, owns the documentation website, its pages, its examples, the blocks section and the records that this idea's MCP server also serves. Row 08 is resolved.
 - Row 06 here and IDEA-007#04 are two views of one source of records. Decide them together.
 
+### Second block of agent work
+- Row 10 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `af3791617d31baa3d`, started without a name; its log records `claude-opus-5-5` and the effort `medium`. Its record is found by its `from`.
+- Row 11 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `a21096afbdac601b0`, started without a name; its log records `claude-opus-5-5` and the effort `medium`. Its record is found by its `from`.
+
 ## Map
 
 | # | Question | Type | Status | Blocked by | Result |
@@ -74,8 +78,8 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 07 | Which skills ship for consumers? | interview | open | 04, 10 | — |
 | 08 | Which idea owns the documentation website and its records? | interview | resolved | — | [DEC-139](../decisions/DEC-139-seventh-idea-owns-the-documentation-website.md) |
 | 09 | How does an agent that writes one HTML page, with no project and no package install, get the 1.0 guidance? | interview | open | 01, 04 | — |
-| 10 | Which skills do other design systems ship and what does each skill do, and which tools do their MCP servers expose and what does each tool do? RES-030 holds how they package and distribute them. | research | open | — | — |
-| 11 | How do Storybook's skills and its MCP server work, and in particular its MCP tools that return rendered UI; who else returns rendered UI from an MCP tool, and how does that work? | research | open | — | — |
+| 10 | Which skills do other design systems ship and what does each skill do, and which tools do their MCP servers expose and what does each tool do? RES-030 holds how they package and distribute them. | research | in-progress | — | — |
+| 11 | How do Storybook's skills and its MCP server work, and in particular its MCP tools that return rendered UI; who else returns rendered UI from an MCP tool, and how does that work? | research | in-progress | — | — |
 | 12 | Does the 1.0 MCP server have tools that return rendered UI? | interview | open | 04, 11 | — |
 | 13 | Are the blocks exposed to agents through the MCP server, through a skill, or through both? | interview | open | 04 | — |
 

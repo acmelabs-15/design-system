@@ -71,8 +71,17 @@ State at the end of the session of 2026-11-13, which Peter ended to save context
 - Next, in this order:
   1. Done in a new session on 2026-11-13: the question IDEA-003#05 was asked twice. Peter made no choice. He asked for research and set two rules (DEC-148 and DEC-149). IDEA-003, Notes, "Row 05 — partial" holds his words. The research is IDEA-003 rows 20 and 21; after their results the agent reviews both with him and asks row 05 again.
   2. Ask for Peter's go for the next block of agent work. The go of 2026-11-12 covered the 14 agents only. Ready rows, 12 in all: the research rows IDEA-001#12, IDEA-003#20, IDEA-003#21, IDEA-005#10, IDEA-005#11, IDEA-006#09, IDEA-007#10, IDEA-008#01, IDEA-009#01 and IDEA-010#02; the listing task IDEA-010#04; and the trial IDEA-005#03. The test IDEA-004#03 follows his choice of the architecture and IDEA-004#02.
+     - Asked on 2026-11-13 through the question dialog, with the options "Go, all 12 (Recommended)", "Go, architecture rows only" and "Not yet". Peter chose all 12; "Second block of agent work" below holds his words and the state of the block.
   3. Continue the follow-up questions of the list under "Block of agent work" below, most important first, one at a time. Questions 1 and 3 of that list wait for IDEA-003 rows 20 and 21. The next one is question 2, the design direction (IDEA-002#26).
 - The Notes of each idea hold the facts of each result of the block. A session reads a result file in full for the question in front of it.
+
+### Second block of agent work — go on 2026-11-13
+- Go: Peter, 2026-11-13, typed into the question dialog: "Option 1, where you think Fable should be used with a delegated subcomponent instead of our standard opus 5.5, I'll leave that up to you in this instance." Option 1 read: "Go, all 12 (Recommended): All 12 agents start, the first eight now and the other four as agents end. I check the model and the effort in each agent's log. Cost: 12 agent runs." The message was dictated; "subcomponent" stands for sub-agent.
+- Settled: the 12 rows start. The agent chooses, for this block only, which agent runs on Fable 5.2 in place of Opus 5.5. The effort stays medium, and the capabilities file stays as it is. The go covers these 12 agents and no workflow run.
+- The agent's choice of the model: Fable 5.2 for IDEA-003 rows 20 and 21, because the architecture and every row behind it rest on these two results, and both ask for a judgment of what a source states as best practice. Opus 5.5 for the other ten rows.
+- Order: eight at one time. First IDEA-003#20, IDEA-003#21, IDEA-001#12, IDEA-005#10, IDEA-005#11, IDEA-006#09, IDEA-007#10 and IDEA-010#02. Then IDEA-008#01, IDEA-009#01, IDEA-010#04 and IDEA-005#03.
+- A research agent is brain's researcher with the brief of interview-me's RESEARCH.md, and it writes only its research record. A task agent gets a task record that the main session creates, a scratch folder under `.artifacts/v1/`, a progress file and a result file. Each brief names the pinned Bun 1.4.2. No agent reads code or records of release 0.3.3 (DEC-125), and no agent recommends.
+- The Notes of each idea hold the agent ID and the record of its rows.
 
 ### Additional scope of 2026-11-13
 [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-13, saved word for word. Where each item went:
@@ -176,6 +185,9 @@ State at the end of the session of 2026-11-13, which Peter ended to save context
 - The rule from row 03 (DEC-119): a component concept is a candidate when one of the four audiences needs it. No audience rules a concept out.
 - Evidence for row 04, not an answer: the marketing and content audience needs page sections, and the reference columns may not have them. Row 01 shows whether they do.
 
+### Second block of agent work
+- Row 12 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `a7fd65dc69fe1f4d1`, started without a name; its log records `claude-opus-5-5` and the effort `medium`. Its record is found by its `from`.
+
 ## Map
 
 | # | Question | Type | Status | Blocked by | Result |
@@ -190,7 +202,7 @@ State at the end of the session of 2026-11-13, which Peter ended to save context
 | 09 | What is the final part composition of each included component? | interview | open | 06, 07 | — |
 | 10 | For the 11 concepts on which the five systems tie, which name do more sources use: the WAI-ARIA patterns and other widely used component libraries? | research | resolved | 05 | [RES-039](../research/RES-039-names-for-the-tied-concepts.md) |
 | 11 | Does 1.0 ship recipes, such as page sections, app layouts and charts, and which idea holds their list? | interview | resolved | 07 | [DEC-140](../decisions/DEC-140-recipes-are-blocks-in-the-documentation.md) |
-| 12 | Which utility functions and hooks do shadcn/ui, Radix Primitives, Radix Themes, Chakra UI and Geist export, what does each system call them, what does each one do, and where do the systems disagree? | research | open | — | — |
+| 12 | Which utility functions and hooks do shadcn/ui, Radix Primitives, Radix Themes, Chakra UI and Geist export, what does each system call them, what does each one do, and where do the systems disagree? | research | in-progress | — | — |
 | 13 | Which utility and hook concepts are in the 1.0 list? | interview | open | 12 | — |
 | 14 | What is the final name of each included utility and hook? | interview | open | 13 | — |
 
