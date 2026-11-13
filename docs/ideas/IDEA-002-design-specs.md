@@ -23,7 +23,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 
 ### Waits
 - Row 14 — wait: IDEA-001 reaches `done`.
-- Row 25 — running since 2026-11-12. Record: RES-041. Researcher agent `af48e18cec0f3b798`, started without a name; its log records `claude-opus-5-5` and the effort `medium` on each request.
+- Row 25 — done on 2026-11-12: RES-041, from the researcher agent `af48e18cec0f3b798`, started without a name; its log records `claude-opus-5-5` and the effort `medium` on each request.
 
 ### Figma account
 - Peter's Figma account has the team "ACME Labs" on the Professional plan, with a Full seat and the admin role (2026-11-12). The Figma MCP is signed in for this account.
@@ -37,7 +37,12 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 
 ### Design direction step
 - DEC-126 puts this step before the first Figma library. Rows 25 and 26 hold it.
-- Rows 04 and 05 wait in practice for row 25: its record also gives the theme settings and the contrast claims of the five systems, which are evidence for both questions. They stay unblocked in the map, and the agent asks them when RES-041 is back.
+- RES-041 is back, so rows 04, 05 and 27 are ready to ask. Facts from it for those rows:
+  - For row 27: the Geist pages carry no license and no statement on reuse. Vercel's Terms of Service forbid derivative works "based on the Services" and do not name Geist or its pages. The Brands page covers trademarks only. The record draws no legal conclusion.
+  - For row 27: Geist documents its colours (10 scales of 10 steps with a stated role for each step), 29 text styles and 8 materials. Its spacing scale, control heights, motion values, focus ring and status colours exist only in the CSS of Vercel's site, which is no published package and can change without notice.
+  - For row 04: Radix Themes has five theme settings (accent colour of 26, gray of 6, panel background, scaling from 90% to 110%, radius from none to full). Chakra UI has a colour palette for each component. shadcn/ui has 7 base colours and one radius value. Geist has light and dark, and no accent, density or radius setting.
+  - For row 05: Radix Colors names its contrast method (APCA) and guarantees its text steps. Geist claims "accessible text and icons" for steps 9 and 10 and states no ratio and no method. Chakra UI and shadcn/ui make no contrast claim. Chakra UI says that its animations play whatever the reduced-motion setting is; Radix Themes animates only when the user has no such preference.
+- RES-041 reads Radix Themes at version 3.3.0; the inventory RES-034 names 3.1.3. The difference is not explained.
 - Row 25 gives the facts: what each reference system defines for each part of the look, and what Geist leaves out.
 - Row 26 is a prototype row, by the agent's choice: Peter chooses from sample components drawn in the candidate directions, because a look is judged by eye. It waits for rows 04 and 05: the direction must cover each colour scheme and density that the tokens carry, and the contrast target shapes the colours.
 - Row 22 now waits for row 26, by the agent's choice: the style of the icons (Outlined, Rounded or Sharp) and their default weight are part of the look.
@@ -113,12 +118,13 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 23 | What is the visual starting point for 1.0: the look of one reference system, or a new design? | interview | resolved | — | [DEC-126](../decisions/DEC-126-visual-start-new-design-geist-first.md) |
 | 20 | Do Terrazzo and Style Dictionary read the files that "Export modes" writes, and what CSS does each write for two modes, an alias, a number with no unit, a string and a boolean? | task | open | 09 | — |
 | 24 | Which typefaces does 1.0 use for text and for code? | interview | resolved | — | [DEC-128](../decisions/DEC-128-typefaces-google-sans-flex-and-code.md) |
-| 25 | What do the five reference systems define for colour, type scale, shape, spacing and sizes, elevation and motion, what does Geist leave out, and what do Vercel's terms say about the reuse of Geist's values? | research | in-progress | — | — |
-| 26 | Which design direction does 1.0 take: for colour, type scale, shape, density and motion, what comes from Geist, what comes from another system and what is new? | prototype | open | 04, 05, 24, 25 | — |
+| 25 | What do the five reference systems define for colour, type scale, shape, spacing and sizes, elevation and motion, what does Geist leave out, and what do Vercel's terms say about the reuse of Geist's values? | research | resolved | — | [RES-041](../research/RES-041-look-of-the-reference-systems.md) |
+| 26 | Which design direction does 1.0 take: for colour, type scale, shape, density and motion, what comes from Geist, what comes from another system and what is new? | prototype | open | 04, 05, 24, 25, 27 | — |
+| 27 | Does 1.0 take Geist's exact values (colours, text styles, shadows), or its own values in a structure like Geist's, given that Vercel publishes no license for them? | interview | open | 25 | — |
 
 ## Not yet specified
 - The order and batch size of the component specs. The plan settles it.
-- Whether the design direction of row 26 needs one decision for each part of the look. It sharpens when row 25 returns.
+- Whether the design direction of row 26 needs one decision for each part of the look. It sharpens when the first samples are drawn.
 - How a design spec records responsive behaviour.
 - The layout of the pulled Markdown files in the repo, and what starts a pull. They sharpen after row 13.
 

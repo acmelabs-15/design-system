@@ -59,9 +59,11 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 - Still a tie after the survey: Bleed or Inset (0 to 0); Item or Entity (0 to 0); Status or Status Dot (0 to 0); Checkbox Cards or Checkbox Card, and Radio Cards or Radio Card (one source uses the singular, and one uses another name).
 - Next: put the ties to Peter when row 07 has decided which of these concepts are in the list.
 
-### Row 04 — pending question
-- Facts for the question: the matrix (RES-037) holds 182 concepts from the component pages of the five systems. A search of it finds no page section such as a hero or a pricing table. The catalogs that a system has beside its components are not in the matrix: shadcn/ui has AI Elements (21 patterns for agent interfaces), Blocks (27: dashboard, sidebar, login, signup) and Charts (70 chart blocks); Chakra UI has Charts (10 charts). Sources: RES-032 and RES-035, "Catalogs beside the components"; RES-037, Follow-ups.
-- Pending question, 2026-11-12: from where can a component concept enter the list? Options: "Any concept an audience needs (Recommended)": a concept that no reference system has can enter when one of the four audiences of DEC-119 needs it; the agent proposes each one with its reason, Peter approves it at row 07, and each one needs its own research for its name and parts. "The five systems with their catalogs": a concept can come from the matrix or from a catalog beside the components, and from nowhere else. "The matrix only": the list is a part of the 182 concepts.
+### Row 07 — how the agent runs it
+- The agent proposes in or out for each of the 182 concepts and gives the reason for each concept that needs one. Peter reviews the proposal in five batches by category and changes what he disagrees with. Notes hold each batch as a partial answer; one decision record holds the list when all five are settled.
+- The base of the proposal, by the agent's choice: a concept that two systems or more have is in, unless it is only a helper of React or of one styling system. A concept that one system has is in when an audience of DEC-119 needs it and it is not specific to the product of that system's maker. The counts by RES-037: 13 concepts in five systems, 15 in four, 17 in three, 33 in two and 104 in one (49 only in Chakra UI, 34 only in Geist, 12 only in shadcn/ui, 7 only in Radix Themes, 2 only in Radix Primitives).
+- The 104 concepts that one system has are no remainder: Stack, Steps, Number Input, Toolbar, Tree View, Icon and Image are among them. So no rule by count alone decides the list.
+- The batches: 1 Layout, Typography and Utilities; 2 Buttons and actions, and Form controls; 3 Menus and selection, Navigation, Overlays and Disclosure; 4 Feedback and status, and Data display; 5 Media and icons, Date and time, and Other.
 
 ### Row 07 — evidence
 - Peter, 2026-11-12, same reply: "shadcn includes ai components as well for example - none of the others do I don't think". The inventories agree in part: shadcn/ui lists eight chat components among its components and a separate catalog "AI Elements" with 21 patterns (RES-032). RES-037 shows which concepts only one system has. This is evidence for row 07; it puts no component in or out.
@@ -88,17 +90,17 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 |---|---|---|---|---|---|
 | 01 | Which component concepts do shadcn/ui, Radix Primitives, Radix Themes, Chakra UI and Geist have, what does each system call them, how does each split them into parts, and where do they disagree? | research | resolved | — | [RES-037](../research/RES-037-component-comparison-matrix.md) |
 | 03 | Which products and users does 1.0 serve, and what does that rule in or out of the list? | interview | resolved | — | [DEC-119](../decisions/DEC-119-four-audiences-for-1-0.md) |
-| 04 | Can the list hold a component concept that none of the five reference columns has? | interview | open | 03 | — |
+| 04 | Can the list hold a component concept that none of the five reference columns has? | interview | resolved | 03 | [DEC-129](../decisions/DEC-129-list-sources-case-by-case-catalogs-are-recipes.md) |
 | 05 | When the reference systems disagree on a name, which rule picks the 1.0 name? | interview | resolved | 01 | [DEC-122](../decisions/DEC-122-name-rule-most-of-five.md) |
 | 06 | Which words name the pieces of a component (part, subcomponent, slot), and which shared part names apply across components? | interview | resolved | 01 | [DEC-124](../decisions/DEC-124-parts-reviewed-where-systems-disagree.md) |
 | 07 | Which component concepts from the matrix are in the 1.0 list? | interview | open | 01, 03, 04 | — |
 | 08 | What is the final name of each included component? | interview | open | 05, 07, 10 | — |
 | 09 | What is the final part composition of each included component? | interview | open | 06, 07 | — |
 | 10 | For the 11 concepts on which the five systems tie, which name do more sources use: the WAI-ARIA patterns and other widely used component libraries? | research | resolved | 05 | [RES-039](../research/RES-039-names-for-the-tied-concepts.md) |
+| 11 | Does 1.0 ship recipes, such as page sections, app layouts and charts, and which idea holds their list? | interview | open | 07 | — |
 
 ## Not yet specified
-- The per-category rows for rows 07 to 09. The matrix sets the categories.
-- Whether recipes need their own inventory decisions. Icons are settled by DEC-123.
+- The per-category rows for rows 08 and 09. The matrix sets the categories. Row 07 runs in five batches (Notes).
 - The glossary still holds the component names of release 0.3.3. Row 08 replaces them; until then they decide nothing for 1.0 (DEC-125).
 - Which audience wins when two audiences need different things from one component. It sharpens at row 07, with real cases.
 
