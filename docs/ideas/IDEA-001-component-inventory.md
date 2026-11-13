@@ -59,6 +59,10 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 - Still a tie after the survey: Bleed or Inset (0 to 0); Item or Entity (0 to 0); Status or Status Dot (0 to 0); Checkbox Cards or Checkbox Card, and Radio Cards or Radio Card (one source uses the singular, and one uses another name).
 - Next: put the ties to Peter when row 07 has decided which of these concepts are in the list.
 
+### Row 04 — pending question
+- Facts for the question: the matrix (RES-037) holds 182 concepts from the component pages of the five systems. A search of it finds no page section such as a hero or a pricing table. The catalogs that a system has beside its components are not in the matrix: shadcn/ui has AI Elements (21 patterns for agent interfaces), Blocks (27: dashboard, sidebar, login, signup) and Charts (70 chart blocks); Chakra UI has Charts (10 charts). Sources: RES-032 and RES-035, "Catalogs beside the components"; RES-037, Follow-ups.
+- Pending question, 2026-11-12: from where can a component concept enter the list? Options: "Any concept an audience needs (Recommended)": a concept that no reference system has can enter when one of the four audiences of DEC-119 needs it; the agent proposes each one with its reason, Peter approves it at row 07, and each one needs its own research for its name and parts. "The five systems with their catalogs": a concept can come from the matrix or from a catalog beside the components, and from nowhere else. "The matrix only": the list is a part of the 182 concepts.
+
 ### Row 07 — evidence
 - Peter, 2026-11-12, same reply: "shadcn includes ai components as well for example - none of the others do I don't think". The inventories agree in part: shadcn/ui lists eight chat components among its components and a separate catalog "AI Elements" with 21 patterns (RES-032). RES-037 shows which concepts only one system has. This is evidence for row 07; it puts no component in or out.
 

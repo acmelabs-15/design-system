@@ -32,17 +32,12 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Peter, 2026-11-12, during row 19: "there should be a figma token you can use from 1password". The agent used it for the six REST reads of RES-028 only. Another use needs its own reason in the row that needs it.
 - Direction given on 2026-11-12: no Organization or Enterprise plan before rows 07 and 09 are decided. Not checked: how files move when a Professional team upgrades to Organization.
 
-### Row 24 — partial, resume here
-- Settled: the typeface for text is Google Sans Flex.
-- Source: Peter's reply to the question of row 23 on 2026-11-12, typed into the question dialog: "option 1 - for the font we should be using google sans flex and for coding font google sans flex mono".
-- Conditions: none stated.
-- Fact check, 2026-11-12, from search excerpts and not from the full pages: no typeface with the name "Google Sans Flex Mono" was found. Google's typeface for code in this family is Google Sans Code, open source since August 2025 under the SIL Open Font License. Google Sans Flex is open source since 2025-11-18 under the same license. Google Sans Mono is the older fixed-width typeface of 2020, and Google Sans Code replaced it. Sources: https://fonts.google.com/specimen/Google+Sans+Flex, https://fonts.google.com/specimen/Google+Sans+Code, https://design.google/library/google-sans-flex-font and https://en.wikipedia.org/wiki/Product_Sans.
-- Open: which typeface Peter means for code.
-- Pending question, 2026-11-12: no typeface has the name "Google Sans Flex Mono"; does he mean Google Sans Code? Options: "Google Sans Code (Recommended)", the coding typeface of the same family; "Choose it in the design direction step", where he sees two or three coding typefaces beside Google Sans Flex.
-- Next: ask that question. Then record one decision for both typefaces.
+### Typefaces
+- DEC-128, Peter, 2026-11-12: Google Sans Flex for text and Google Sans Code for code. The fact check behind the question used search excerpts, not the full pages. Sources: https://fonts.google.com/specimen/Google+Sans+Flex, https://fonts.google.com/specimen/Google+Sans+Code, https://design.google/library/google-sans-flex-font and https://en.wikipedia.org/wiki/Product_Sans. Google Sans Mono is the older fixed-width typeface of 2020, and Google Sans Code replaced it.
 
 ### Design direction step
 - DEC-126 puts this step before the first Figma library. Rows 25 and 26 hold it.
+- Rows 04 and 05 wait in practice for row 25: its record also gives the theme settings and the contrast claims of the five systems, which are evidence for both questions. They stay unblocked in the map, and the agent asks them when RES-041 is back.
 - Row 25 gives the facts: what each reference system defines for each part of the look, and what Geist leaves out.
 - Row 26 is a prototype row, by the agent's choice: Peter chooses from sample components drawn in the candidate directions, because a look is judged by eye. It waits for rows 04 and 05: the direction must cover each colour scheme and density that the tokens carry, and the contrast target shapes the colours.
 - Row 22 now waits for row 26, by the agent's choice: the style of the icons (Outlined, Rounded or Sharp) and their default weight are part of the look.
@@ -117,7 +112,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 22 | Which variations of Material Symbols does 1.0 ship, and which of them can a consumer change on one icon? | interview | open | 21, 26 | — |
 | 23 | What is the visual starting point for 1.0: the look of one reference system, or a new design? | interview | resolved | — | [DEC-126](../decisions/DEC-126-visual-start-new-design-geist-first.md) |
 | 20 | Do Terrazzo and Style Dictionary read the files that "Export modes" writes, and what CSS does each write for two modes, an alias, a number with no unit, a string and a boolean? | task | open | 09 | — |
-| 24 | Which typefaces does 1.0 use for text and for code? | interview | open | — | — |
+| 24 | Which typefaces does 1.0 use for text and for code? | interview | resolved | — | [DEC-128](../decisions/DEC-128-typefaces-google-sans-flex-and-code.md) |
 | 25 | What do the five reference systems define for colour, type scale, shape, spacing and sizes, elevation and motion, what does Geist leave out, and what do Vercel's terms say about the reuse of Geist's values? | research | in-progress | — | — |
 | 26 | Which design direction does 1.0 take: for colour, type scale, shape, density and motion, what comes from Geist, what comes from another system and what is new? | prototype | open | 04, 05, 24, 25 | — |
 
