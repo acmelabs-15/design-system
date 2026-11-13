@@ -25,7 +25,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Rows 06, 20, 26 and 28 — running since 2026-11-12, in the block of agent work that Peter approved. Each agent started without a name; its log records `claude-opus-5-5` and the effort `medium`. The list is in IDEA-001, Notes, "Block of agent work".
   - Row 06: researcher agent `a278b8c98ca46fab4`, record RES-046.
   - Row 28: researcher agent `a51af336d2021a7fa`, record RES-049.
-  - Row 20: task agent `afaf8c600aefa4a34`, task record RES-048, scratch folder `.artifacts/v1/trial/IDEA-002-20/`.
+  - Row 20: done on 2026-11-12. Task agent `afaf8c600aefa4a34`, task record RES-048, scratch folder `.artifacts/v1/trial/IDEA-002-20/`.
   - Row 26: task agent `a1f8073e09f49bbcb` builds the prototype in `.artifacts/v1/prototype/IDEA-002-26/`, with `IDEA-002-26-progress.md` and `IDEA-002-26-result.md`. When the result is complete, the row is open again and waits for Peter's choice.
 - Row 14 — wait: IDEA-001 reaches `done`.
 - Row 25 — done on 2026-11-12: RES-041, from the researcher agent `af48e18cec0f3b798`, started without a name; its log records `claude-opus-5-5` and the effort `medium` on each request.
@@ -79,8 +79,15 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Open: the flow, who starts it, and the versions. They wait for row 28, the research that he asked for.
 - Next: run row 28 in the block of agent work. Then ask row 10 again with its facts.
 
-### Row 20 — next for the agent
-- A trial with the two exported archives of RES-028, in `.artifacts/v1/trial/IDEA-002-19/`. It needs no Figma call. Create its task record before the first step.
+### Row 20 — resolved
+- RES-048, 2026-11-12: the trial with the 16-variable export of RES-028. Facts from it for row 11:
+  - Style Dictionary 5.8.0 and Terrazzo 2.10.0 both read the files of "Export modes" with no edit and no extra plugin.
+  - Neither tool reads the two files as two modes by itself. Style Dictionary needs one build for each mode file. Terrazzo needs one resolver file that names the two files.
+  - An alias: Terrazzo writes `var()` by default; Style Dictionary writes the resolved value unless `outputReferences` is on.
+  - A number has no unit in the CSS of both tools (`--radius-small: 4;`). Both keep Figma's scopes in memory, so a custom transform could add the unit. Row 11 owns that point.
+  - A boolean becomes 1 or 0. A string is written without quotes.
+  - Neither tool uses the code-syntax names from Figma for the variable names; both take the token path.
+  - Not tried: an alias to a variable in another collection, and a collection with one mode. The export held neither.
 
 ### Facts that shape later rows
 - RES-024: the Variables REST API needs the Enterprise plan. A private plugin needs Organization or Enterprise. A library can be published from Professional upward.
@@ -145,7 +152,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 21 | Which variations does Material Symbols have today (styles, fill, weight, grade, optical size), in which formats and under which license? | research | resolved | — | [RES-040](../research/RES-040-material-symbols-variations.md) |
 | 22 | Which variations of Material Symbols does 1.0 ship, and which of them can a consumer change on one icon? | interview | open | 21, 26 | — |
 | 23 | What is the visual starting point for 1.0: the look of one reference system, or a new design? | interview | resolved | — | [DEC-126](../decisions/DEC-126-visual-start-new-design-geist-first.md) |
-| 20 | Do Terrazzo and Style Dictionary read the files that "Export modes" writes, and what CSS does each write for two modes, an alias, a number with no unit, a string and a boolean? | task | in-progress | 09 | — |
+| 20 | Do Terrazzo and Style Dictionary read the files that "Export modes" writes, and what CSS does each write for two modes, an alias, a number with no unit, a string and a boolean? | task | resolved | 09 | [RES-048](../research/RES-048-token-tools-read-export-modes.md) |
 | 24 | Which typefaces does 1.0 use for text and for code? | interview | resolved | — | [DEC-128](../decisions/DEC-128-typefaces-google-sans-flex-and-code.md) |
 | 25 | What do the five reference systems define for colour, type scale, shape, spacing and sizes, elevation and motion, what does Geist leave out, and what do Vercel's terms say about the reuse of Geist's values? | research | resolved | — | [RES-041](../research/RES-041-look-of-the-reference-systems.md) |
 | 26 | Which design direction does 1.0 take: for colour, type scale, shape, density and motion, what comes from Geist, what comes from another system and what is new? | prototype | in-progress | 04, 05, 24, 25, 27 | — |
