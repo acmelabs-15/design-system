@@ -75,8 +75,18 @@ An effort is the idea or spec that a session works on. The active effort is the 
 
 - An idea: load interview-me and follow interview-me's **Resume** before choosing a row. It reconciles saved answers, linked records, running research and uncertain effects, then evaluates the whole map. The frontier is every `open` row whose `Blocked by` rows are all `resolved`.
 - A spec: read `spec.md`, `tasks/plan.md`, `tasks/todo.md` and relevant result records. Reconcile completed work with actual changes and verification evidence before repeating a task. Load the workflow for the next approved action; incremental-implementation owns a build task. Its task block holds the acceptance criteria.
-- An idea with `status: specced` is finished. Resume the spec that lists it in `sources:`.
+- An idea with `status: specced` is finished. Resume the spec that lists it in `sources:`. Before an idea gets that status, account for its deferred rows as **Deferred rows** below says.
 - An idea with `status: done` is finished with no spec. Its `result:` names what it produced: a `DEC-NNN` for a decision, or a commit SHA for a change made in place.
+
+## Deferred rows
+
+A deferred row holds work of the spec phase: research or a task that settles how to build a thing that is already decided. Peter set this rule on 2026-11-13 ([DEC-147](../decisions/DEC-147-spec-phase-rows-are-deferred.md)).
+
+- **Phase.** Research that changes what is built or what is in scope is an open row of the map. Research that settles how to build a decided thing is a deferred row. For an unclear item, choose the phase and give a one-line reason; ask Peter only when the placement changes scope.
+- **Status.** `deferred`. A deferred row is not open: it is not on the frontier, and an idea finishes with it in place.
+- **Place.** The table under the heading `## Deferred rows` of its idea file, after the map, with the columns of the map. Its number continues the numbers of the map and is never reused, so `IDEA-003#18` names it. Brain 0.13.0 accepts `open`, `in-progress`, `resolved` and `superseded by NN` in a map and reads the first table of a file only; this second table keeps `brain check` green.
+- **Content.** Each row stands on its own: what to find out or to do, for which decided thing, and the source of the request.
+- **Handoff.** When an idea is finished and its spec phase starts, move each deferred row into that spec as an open question or a task, and write into the row's Result cell where it went. The handoff is complete when every deferred row of the idea is accounted for. Create the spec folder at that point.
 
 ## Sub-agents
 

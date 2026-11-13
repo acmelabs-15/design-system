@@ -21,6 +21,13 @@ A spec for the 1.0 devtools package: its base, its capabilities, and how it reac
 ## Notes
 - Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas).
 
+### Additional scope of 2026-11-13
+Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-13. IDEA-001, Notes, has the table of all items.
+
+- Item 6, his words: "Find out whether other design systems ship devtools. Study TanStack Devtools, and look at what larger systems such as Material do. From that, research comprehensively what belongs in our devtools."
+- RES-031 covers TanStack Devtools and eleven other bases as a base for our package. It does not say which design systems ship devtools of their own, and it does not list what such tools do. Row 09 holds that survey.
+- The six capabilities of DEC-143 stand until row 10, which asks what the survey adds or takes away. Row 04, the base, now waits for row 10, because the base must carry the final list.
+
 ### Waits
 - Row 01, the two follow-up questions of RES-031 — in the block of agent work that Peter approved on 2026-11-12, as two single research agents and not as workflow runs. Question 1 (the other in-page bases) is answered in RES-031 since 2026-11-12, by the researcher agent `a0becb199c1440699`. Question 2 (devtools for web components, and TanStack Devtools with no framework) runs since 2026-11-12 in the same record: researcher agent `ae5af13955a9023dc`, started without a name. The main session added the follow-up of question 1 to its brief: the Vite DevTools Kit and Devframe, a base that the first run did not name. It is the same row question and needs no further agent.
 - RES-031, from question 1, evidence for row 04: Storybook has something ready for most of the six capabilities of DEC-143, but it does not run inside the consumer's application. Vue DevTools and Nuxt DevTools run only in a Vue or Nuxt application, and the Astro dev toolbar only in an Astro site. The Vercel toolbar has no documented API for third parties. No base, TanStack Devtools included, documents a token inspector, an editor for the values of a custom theme, or the export of a theme file (DEC-145). The list is in IDEA-001, Notes, "Block of agent work".
@@ -62,11 +69,13 @@ A spec for the 1.0 devtools package: its base, its capabilities, and how it reac
 |---|---|---|---|---|---|
 | 01 | What does TanStack Devtools offer for extension and for a fork, and which other bases for devtools exist? | research | resolved | — | [RES-031](../research/RES-031-devtools-bases-landscape.md) |
 | 03 | Which capabilities must the first devtools release have beyond live prop switching and theming controls? | interview | resolved | — | [DEC-143](../decisions/DEC-143-devtools-first-release-capabilities.md) |
-| 04 | Is devtools built on TanStack Devtools (extended or forked), or built by us? | interview | open | 01, 03 | — |
+| 04 | Is devtools built on TanStack Devtools (extended or forked), or built by us? | interview | open | 01, 03, 10 | — |
 | 05 | Does devtools work on the custom elements for every framework, or through an adapter for each framework? | interview | open | 04, 07 | — |
 | 06 | Do the theming controls only preview token values, or do they also export changes? | interview | resolved | 03, 08 | [DEC-145](../decisions/DEC-145-theming-controls-preview-and-export-a-custom-theme.md) |
 | 07 | Import the composition architecture from IDEA-003 and the wrapper targets from IDEA-004. | task | open | — | — |
 | 08 | Import the token pipeline decision from IDEA-002. | task | resolved | — | [RES-044](../research/RES-044-devtools-import-of-the-token-pipeline.md) |
+| 09 | Which design systems ship devtools of their own, Material and other large systems among them, what does each tool do, and what do the tools of TanStack Devtools do for their users? The result is a full list of candidate capabilities for ours. | research | open | — | — |
+| 10 | Which capabilities does the survey add to the six of DEC-143, and does one of the six go? | interview | open | 09 | — |
 
 ## Not yet specified
 - How devtools stays out of production bundles.

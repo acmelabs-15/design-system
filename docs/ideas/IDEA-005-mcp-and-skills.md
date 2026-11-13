@@ -21,6 +21,14 @@ A spec for the MCP server and the consumer skills of 1.0: where they ship, what 
 ## Notes
 - Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas).
 
+### Additional scope of 2026-11-13
+Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-13. IDEA-001, Notes, has the table of all items.
+
+- Item 5, his words: "Research how other design systems build their skills and MCPs: which skills they ship and what they do, which tools their MCPs expose and what they do, and how they package and distribute them." RES-030 answers the last part, how they package and distribute. Row 10 holds the first two parts.
+- Item 5, his words: "Study Storybook's skills and MCP, especially the MCP UI tools that return rendered UI. Find out who else does this, how it works, and what makes sense for us." Row 11 holds the research, and row 12 the decision. He asks for "what makes sense for us", so the record of row 11 can hold an assessment against the decisions of 1.0; it keeps that part apart from its facts.
+- Item 2, an open question that he wants to settle: are the blocks exposed "through the MCP, a skill, or both?" Row 13 holds it.
+- Item 11: the design skill for Figma is an idea of its own, IDEA-009.
+
 ### Waits
 - Row 01, the two follow-up questions of RES-030 — in the block of agent work that Peter approved on 2026-11-12, as two single research agents and not as workflow runs. Question 1 (the agent hosts' own documentation) is answered in RES-030 since 2026-11-12, by the researcher agent `a24d9f4296e3e280c`. Question 2 (the libraries that the first run missed, and how in-package skills refresh after an update) runs since 2026-11-12 in the same record: researcher agent `a3a0147c45ccc9e1d`, started without a name.
 - RES-030, from question 1, evidence for rows 03, 04 and 05: the documentation of no host says that it finds skills or MCP server definitions inside `node_modules`. Skills from a package reach a host through a copy or a symlink in a host folder, through a plugin, or through a VS Code extension. So a package that holds its skills needs a step that puts them where a host reads; the record has the folders of each host. Two facts in it are newer than the first run: VS Code's documentation calls `.vscode/mcp.json` the deprecated format, and Windsurf's documentation now redirects to Devin Desktop. The list is in IDEA-001, Notes, "Block of agent work".
@@ -62,10 +70,14 @@ A spec for the MCP server and the consumer skills of 1.0: where they ship, what 
 | 03 | Does an `init` script from the package's `bin` install a working MCP server and skills into a consumer project? | task | open | 01 | — |
 | 04 | Do the MCP server and the skills ship inside the design system package, or as separate packages? | interview | open | 01, 03 | — |
 | 05 | What does `init` install, into which agent hosts, and how does it update on a new version? | interview | open | 04 | — |
-| 06 | Which tools and records does the 1.0 MCP server serve? | interview | open | 04 | — |
-| 07 | Which skills ship for consumers? | interview | open | 04 | — |
+| 06 | Which tools and records does the 1.0 MCP server serve? | interview | open | 04, 10 | — |
+| 07 | Which skills ship for consumers? | interview | open | 04, 10 | — |
 | 08 | Which idea owns the documentation website and its records? | interview | resolved | — | [DEC-139](../decisions/DEC-139-seventh-idea-owns-the-documentation-website.md) |
 | 09 | How does an agent that writes one HTML page, with no project and no package install, get the 1.0 guidance? | interview | open | 01, 04 | — |
+| 10 | Which skills do other design systems ship and what does each skill do, and which tools do their MCP servers expose and what does each tool do? RES-030 holds how they package and distribute them. | research | open | — | — |
+| 11 | How do Storybook's skills and its MCP server work, and in particular its MCP tools that return rendered UI; who else returns rendered UI from an MCP tool, and how does that work? | research | open | — | — |
+| 12 | Does the 1.0 MCP server have tools that return rendered UI? | interview | open | 04, 11 | — |
+| 13 | Are the blocks exposed to agents through the MCP server, through a skill, or through both? | interview | open | 04 | — |
 
 ## Not yet specified
 - Which instructions file Claude Code reads at the start of a session: two libraries' guides disagree (RES-030, Follow-ups), and neither run read Claude Code's own documentation on it. It decides where `init` writes its block. Check it at its source when row 05 is next.
@@ -76,4 +88,5 @@ A spec for the MCP server and the consumer skills of 1.0: where they ship, what 
 - Row 02, retired on 2026-11-12: "How does release 0.3.3 ship its MCP server and consumer skills, and which limits do its records name?" DEC-125 takes release 0.3.3 out as input.
 - Devtools (IDEA-006).
 - The documentation website. IDEA-007 owns it (DEC-139).
+- The design skill for Figma. IDEA-009 owns it.
 - The components, their design, the Lit core and the wrappers that the server and skills describe (IDEA-001 to IDEA-004).

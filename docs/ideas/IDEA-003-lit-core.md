@@ -22,6 +22,14 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 - Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas).
 - Standing preference: before each architecture question, explain the Lit concept and the trade-off in plain terms. Peter has not used Lit before.
 
+### Additional scope of 2026-11-13
+Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-13. IDEA-001, Notes, has the table of all items.
+
+- Item 3, settled by Peter: the logic of the utilities and hooks lives in the Lit core, and the core exports it for users of plain web components. Each framework package exposes it as hooks, plain utilities or both (IDEA-004#09). Row 16 imports the list from IDEA-001, and row 17 decides the form of the export.
+- Item 3, his words on the order: "Design this from the core up, alongside the composition, props and slots model, accounting for how web components and React differ." The agent's reading, which it told him: the choice of row 05 does not wait for the inventory, because the prototype holds the logic in one module with no DOM access in all three candidates. Row 17 follows row 05 and the inventory. He can ask for the inventory first.
+- Item 1, settled by Peter: Code Block is built on TanStack Markdown and TanStack Highlight, and it renders markdown as a stream and as static text. The research and the integration are the deferred rows 18 and 19. Evidence for row 07: he accepts packages of TanStack as the base of one component.
+- Item 7: IDEA-010 holds the research on build tools and CI. The fog here on the build tooling of the core waits for it.
+
 ### Waits
 - Rows 05 and 14 — running since 2026-11-12, in the block of agent work that Peter approved. Each agent started without a name; its log records `claude-opus-5-5` and the effort `medium`. The list is in IDEA-001, Notes, "Block of agent work".
   - Row 05: the prototype is complete since 2026-11-12, and the row waits for Peter's choice. Task agent `afbdfc01151967238`; folder `.artifacts/v1/prototype/IDEA-003-05/` (scratch, outside git), with `IDEA-003-05-progress.md` and `IDEA-003-05-result.md`.
@@ -38,7 +46,7 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
   - Limits: Chrome only; no screen reader and no touch; an outside label that points into C's shadow DOM was not tried; form participation was not tried.
   - The main session checked two cells again on 2026-11-12 in the browser, and both match the result file: case 3 for B (the root counts 2 steps, 4 parts with no state) and case 2 for A with the repair off (0 steps, 19 parts with no state, no console message).
   - The prototype recommends nothing, and its result file has no question for Peter.
-- Row 05 — pending question, asked on 2026-11-12 through the question dialog, after all 14 results of the block were in: which architecture does the Lit core use? The question explains part and subcomponent, the three candidates and the observed results. Options: "A: context (Recommended)"; "B: slots"; "C: one element"; "Look at the prototype first". The main session recommends A, because it alone passed all eight cases and gives every subcomponent that the prompt asks for; its stated cost is the most code in each component and a repair that must always be installed. No answer yet.
+- Row 05 — pending question, asked on 2026-11-12 through the question dialog, after all 14 results of the block were in: which architecture does the Lit core use? The question explains part and subcomponent, the three candidates and the observed results. Options: "A: context (Recommended)"; "B: slots"; "C: one element"; "Look at the prototype first". The main session recommends A, because it alone passed all eight cases and gives every subcomponent that the prompt asks for; its stated cost is the most code in each component and a repair that must always be installed. Peter closed the dialog on 2026-11-13 without an answer and sent his additional scope. The question stays pending.
 - Row 14 — resolved by RES-045 on 2026-11-12. Facts from it for row 15:
   - Chakra UI 3 writes the CSS of a responsive value in the browser, with Emotion, while React renders. That is CSS-in-JS, which DEC-131 rules out. So 1.0 can take Chakra's syntax and not its mechanism.
   - Radix Themes ships one static CSS file with a class for each token value at each breakpoint, 812,667 bytes. React only sets class names. A value outside the token list goes into an inline custom property.
@@ -98,11 +106,21 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 | 13 | How do the typefaces of 1.0 reach a page: font files in the package, a link to Google Fonts, or the consumer's own loading? | interview | open | 11 | — |
 | 14 | How do Chakra UI and Radix Themes turn style props with responsive values into CSS, and how can a custom element take a value for each breakpoint from an HTML attribute with no CSS-in-JS? | research | resolved | — | [RES-045](../research/RES-045-responsive-style-props-mechanisms.md) |
 | 15 | Which mechanism do the style props of the layout components use in the Lit core? | interview | open | 14 | — |
+| 16 | Import the list of utilities and hooks from IDEA-001. | task | open | — | — |
+| 17 | In which form does the Lit core hold the logic of the utilities and hooks, and how does it export that logic for users of plain web components? | interview | open | 05, 16 | — |
+
+## Deferred rows
+Rows of the spec phase, by [the workspace rule](../agents/workspace.md#deferred-rows). They are not open and not on the frontier. Each one moves into the spec of this idea when its spec phase starts.
+
+| # | Question | Type | Status | Blocked by | Result |
+|---|---|---|---|---|---|
+| 18 | Code Block: which API do other components have that render code and markdown as a stream and as static text: their props, their events, how they take a stream, and how they highlight code? Peter asks for this research before the design of ours. Source: his additional scope of 2026-11-13, item 1. | research | deferred | — | — |
+| 19 | Code Block: how are TanStack Markdown and TanStack Highlight built into the component, for streaming and for static rendering, in a Lit element that also works on a page with no build step? Source: the same item. | task | deferred | — | — |
 
 ## Not yet specified
 These sharpen after row 05.
 
-- The package layout and build tooling of the core.
+- The package layout and build tooling of the core. IDEA-010 holds the research on build tools and the plan for CI.
 - Form participation, element names and registration.
 - The test strategy and the browser matrix.
 - What replaces `docs/agents/verification.md` and `docs/agents/repository.md`, which describe the 0.3.3 code. Brain's place for a quality bar is `CONSTRAINTS.md`; package facts belong to the 1.0 specs.

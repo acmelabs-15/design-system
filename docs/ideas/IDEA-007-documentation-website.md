@@ -38,6 +38,17 @@ A spec for the documentation website of 1.0: what it holds, where its records co
 - Facts for the two blocks that Peter named with "maybe": TanStack Table has packages for Lit, React, Preact and Solid (9.3.1). TanStack Form has all four too. TanStack Virtual has Lit, React and Solid, and none for Preact. No TanStack document says whether the React packages run on Redact.
 - For "How a coding agent reads the website" under "Not yet specified": the sites of Ionic and UI5 build a text version for agents with an `llms.txt` plugin.
 
+### Additional scope of 2026-11-13
+Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-13, item 2. IDEA-001, Notes, has the table of all items.
+
+- Settled by Peter: "Blocks aren't exported from the package. They show how to compose components into layouts." It agrees with DEC-140.
+- Settled by Peter: the research covers the blocks and recipes of all four systems, "not only shadcn", and "the AI components and AI blocks (composed layouts that show the state and composition patterns) are a must-have. Others will be too." Row 10 holds the research. RES-047 has how shadcn/ui, Chakra UI and Web Awesome store and show blocks, with their counts; it has no list of the blocks by name.
+- Settled by Peter: the blocks are in Figma in any case, as a library that designers can use. IDEA-002 draws them (IDEA-002#30).
+- Open, to settle with Peter: whether Figma or code is the source of truth of a block (row 12); where the blocks live in the documentation (row 13); whether the blocks are exposed through the MCP server, a skill or both (IDEA-005#13).
+- Row 13 and DEC-146: DEC-146 gives the blocks a section of the website with four groups. His question of 2026-11-13, "Where do they live in the docs?", comes after that decision, so row 13 asks it again and adds where the source files of a block live.
+- Settled by Peter: "The documentation site itself gets designed in Figma first. That spec is then broken down into documentation blocks." The step is the deferred row 14. The agent's reading, not confirmed: the documentation blocks are the pieces of the website's own pages. Whether they are a fifth group of the Blocks section is open inside that row.
+- His words on the owner: "It may need its own idea; decide that with me." Row 09 holds that decision. Until then the rows stay here, because DEC-139 gives the blocks section to this idea. The work now reaches IDEA-002 (blocks in Figma), IDEA-005 (blocks for agents) and IDEA-009 (the design skill knows the blocks).
+
 ### Waits
 - Row 02 — done on 2026-11-12, in the block of agent work that Peter approved: researcher agent `a0832e1b4ed460aa0`, record RES-047. It started without a name; its log records `claude-opus-5-5` and the effort `medium`. The list is in IDEA-001, Notes, "Block of agent work".
 - Row 07 — wait: IDEA-003#05 and IDEA-004#04 are resolved.
@@ -68,6 +79,18 @@ A spec for the documentation website of 1.0: what it holds, where its records co
 | 06 | How does a page show one example in plain HTML and in each framework package? | interview | open | 02, 07 | — |
 | 07 | Import the composition architecture from IDEA-003 and the framework targets from IDEA-004. | task | open | — | — |
 | 08 | Import the component list, names and parts from IDEA-001 and the format of a design spec from IDEA-002. | task | open | — | — |
+| 09 | Do the blocks and recipes get an idea of their own, or do they stay in this idea? | interview | open | — | — |
+| 10 | Which blocks and recipes do shadcn/ui, Radix (Primitives and Themes), Chakra UI and Geist have, and which AI components and AI blocks among them: for each, what it composes, which state and composition pattern it shows, and how the system gives it out? | research | open | — | — |
+| 11 | Which blocks does 1.0 have, by name, in each group of DEC-146? | interview | open | 10 | — |
+| 12 | Is Figma or code the source of truth of a block? | interview | open | — | — |
+| 13 | Where do the blocks live in the documentation, and where do the source files of a block live? | interview | open | — | — |
+
+## Deferred rows
+Rows of the spec phase, by [the workspace rule](../agents/workspace.md#deferred-rows). They are not open and not on the frontier. Each one moves into the spec of this idea when its spec phase starts.
+
+| # | Question | Type | Status | Blocked by | Result |
+|---|---|---|---|---|---|
+| 14 | Design the documentation website in Figma first, then break that design spec down into documentation blocks. Open inside this row: whether the documentation blocks are a fifth group of the Blocks section. Source: Peter's additional scope of 2026-11-13, item 2. | task | deferred | — | — |
 
 ## Not yet specified
 - Whether the Blocks section also has data tables with virtualization and forms that use TanStack packages. Peter named both with "maybe" (DEC-146). Row 02 checks which TanStack packages work with Lit and with each framework target.

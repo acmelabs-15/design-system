@@ -21,6 +21,15 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 ## Notes
 - Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas).
 
+### Additional scope of 2026-11-13
+Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-13. IDEA-001, Notes, has the table of all items.
+
+- Item 4, settled by Peter: "Build Figma the way we build code: reusable primitives and shared parts first, reused everywhere. Run as much as possible in parallel, but follow the dependency graph. Don't build everything in parallel blindly." It sharpens DEC-141, which asks for as many specs in parallel as possible, and it agrees with the dependency graph of DEC-142. The work is the deferred row 29.
+- Item 2, settled by Peter: the blocks are in Figma in any case, "as a library designers can use (for example, the AI blocks for my resume site's chatbot design)". So this idea draws the blocks too, and row 30 imports their list. Open, in IDEA-007#12: whether Figma or code is the source of truth of a block.
+- Item 2, settled by Peter: the documentation website is designed in Figma first. IDEA-007 owns the website and holds that step as its deferred row 14. The medium, the format and the design direction of this idea hold for that design.
+- Item 1, evidence for the design spec of Code Block: it renders markdown as a stream and as static text, so its states include a stream that is not complete yet.
+- Items 8 and 11: IDEA-008 (Claude Design) and IDEA-009 (design skill for Figma) are new. Both can need the Figma library and the token output of this idea.
+
 ### Waits
 - Rows 06, 20, 26 and 28 — running since 2026-11-12, in the block of agent work that Peter approved. Each agent started without a name; its log records `claude-opus-5-5` and the effort `medium`. The list is in IDEA-001, Notes, "Block of agent work".
   - Row 06: done on 2026-11-12. Researcher agent `a278b8c98ca46fab4`, record RES-046.
@@ -188,6 +197,14 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 26 | Which design direction does 1.0 take: for colour, type scale, shape, density and motion, what comes from Geist, what comes from another system and what is new? | prototype | open | 04, 05, 24, 25, 27 | — |
 | 27 | Does 1.0 take Geist's exact values (colours, text styles, shadows), or its own values in a structure like Geist's, given that Vercel publishes no license for them? | interview | resolved | 25 | [DEC-136](../decisions/DEC-136-geist-exact-values-without-a-check.md) |
 | 28 | How do other design systems bring token changes from Figma into their repo (a script, a plugin, a CI job or by hand), on which Figma plan, and how do they name token versions? | research | resolved | — | [RES-049](../research/RES-049-figma-token-change-flow-in-other-systems.md) |
+| 30 | Import the list of the blocks from the idea that owns them, which is IDEA-007 on 2026-11-13. | task | open | — | — |
+
+## Deferred rows
+Rows of the spec phase, by [the workspace rule](../agents/workspace.md#deferred-rows). They are not open and not on the frontier. Each one moves into the spec of this idea when its spec phase starts.
+
+| # | Question | Type | Status | Blocked by | Result |
+|---|---|---|---|---|---|
+| 29 | The build order in Figma: which reusable primitives and shared parts are made first, in which order do the components and the blocks follow from the dependency graph of DEC-142, and how many are made at one time? Peter, 2026-11-13: build Figma the way code is built, shared parts first and reused everywhere, in parallel as far as the graph allows, and not everything in parallel blindly. Source: his additional scope, item 4. | task | deferred | — | — |
 
 ## Not yet specified
 - What "Export modes" writes for an alias to a variable in another collection, and whether it writes `com.figma.isOverride`. Other systems' exports hold both (RES-049, Follow-ups), and the trial export held neither (RES-048, Limits). It sharpens at row 11, when the first real collections exist.
@@ -203,3 +220,4 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Framework packages (IDEA-004) and MCP and skills (IDEA-005).
 - Theming controls in devtools. IDEA-006#06 owns them.
 - Component code of any kind.
+- Claude Design (IDEA-008) and the design skill for Figma (IDEA-009).

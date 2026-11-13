@@ -21,6 +21,12 @@ A spec for the framework packages: the chosen targets, the way each wrapper is p
 ## Notes
 - Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas).
 
+### Additional scope of 2026-11-13
+Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-13. IDEA-001, Notes, has the table of all items.
+
+- Item 3, settled by Peter: the logic of the utilities and hooks lives in the Lit core. "Each framework package exposes it as hooks, plain utilities, or both, whichever fits." Row 08 imports the list and the form of the export, and row 09 decides the form in each package.
+- The four reference systems are React libraries, so their hooks are React hooks. RES-029 holds how Preact, Solid and Redact differ from React at a custom element; none of its findings is about hooks.
+
 ### Waits
 - Row 01, the two follow-up questions of RES-029 — in the block of agent work that Peter approved on 2026-11-12, as two single research agents and not as workflow runs. Question 1 (React 19 and Redact on the client) is answered in RES-029 since 2026-11-12, by the researcher agent `a250484f13dcbb03c`. Question 2 (how named libraries make and test their wrappers) runs since 2026-11-12 in the same record; its agent ID is in IDEA-001, Notes, "Block of agent work". The list is in IDEA-001, Notes, "Block of agent work".
 - Row 01 — running since 2026-11-12, after Peter's go (IDEA-001, Notes). Record: RES-029. Workflow run `wf_737727d2-447`, task `w9wlqmzrx`, from the script `.artifacts/v1/research/deep-research-opus-medium.js`. Its first agent's log records `claude-opus-5-5` and the effort `medium`. The run ended on 2026-11-12 with 104 agents and no error. RES-029 holds a partial answer: 14 findings on the runtimes and on TanStack Redact; nothing confirmed on how named libraries make and test their wrappers. Two narrower runs are named in RES-029, Next action. The agent holds these runs until the decision rows of this idea are next: the facts are about tools that change each month, and no decision that needs them is on the frontier. Peter can ask for them sooner.
@@ -60,6 +66,8 @@ A spec for the framework packages: the chosen targets, the way each wrapper is p
 | 05 | Is each wrapper generated from component metadata or written by hand? | interview | open | 02, 04 | — |
 | 06 | How is each wrapper tested? | interview | open | 04, 05 | — |
 | 07 | Is each target its own npm package, or an entry of one package? | interview | open | 04 | — |
+| 08 | Import the list of utilities and hooks from IDEA-001 and the form of their export from IDEA-003. | task | open | — | — |
+| 09 | For each utility: does a framework package expose it as a hook, as a plain function, or as both? | interview | open | 04, 08 | — |
 
 ## Not yet specified
 - Whether a framework package must load without an error in an app that renders its pages on a server, where the components then appear only in the browser. DEC-127 (IDEA-003#04) rules out server rendering itself and does not answer this point. It sharpens at row 04, with the targets.
