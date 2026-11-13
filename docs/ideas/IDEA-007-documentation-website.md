@@ -30,6 +30,7 @@ A spec for the documentation website of 1.0: what it holds, where its records co
 - The section is named Blocks, by the agent's reading of his words "a blocks section in the docs". The glossary keeps Recipe as the word for the thing.
 
 ### Waits
+- Row 02 — in the block of agent work that Peter approved on 2026-11-12. No agent has started. The list is in IDEA-001, Notes, "Block of agent work".
 - Row 07 — wait: IDEA-003#05 and IDEA-004#04 are resolved.
 - Row 08 — wait: IDEA-001 reaches `done`, and IDEA-002 resolves its row 13.
 - Row 02 — ready, not started: the agent starts it when a decision of this idea is the next question. No decision on the frontier needs it yet.

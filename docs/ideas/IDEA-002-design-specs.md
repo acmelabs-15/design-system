@@ -22,6 +22,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas).
 
 ### Waits
+- Rows 06, 20, 26 and 28 — in the block of agent work that Peter approved on 2026-11-12. No agent has started. The list is in IDEA-001, Notes, "Block of agent work".
 - Row 14 — wait: IDEA-001 reaches `done`.
 - Row 25 — done on 2026-11-12: RES-041, from the researcher agent `af48e18cec0f3b798`, started without a name; its log records `claude-opus-5-5` and the effort `medium` on each request.
 

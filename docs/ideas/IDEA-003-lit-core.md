@@ -23,6 +23,7 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 - Standing preference: before each architecture question, explain the Lit concept and the trade-off in plain terms. Peter has not used Lit before.
 
 ### Waits
+- Rows 05 and 14 — in the block of agent work that Peter approved on 2026-11-12. No agent has started. The list is in IDEA-001, Notes, "Block of agent work".
 - Rows 01 and 02 — done on 2026-11-12: RES-042 from the researcher agent `ae3a841db00a620a6` and RES-043 from the researcher agent `a8a44290116cb20e5`. Both started without a name when DEC-127 resolved row 04; their logs record `claude-opus-5-5` and the effort `medium` on each request.
 - Row 05 — ready, next for the agent: explain the mechanisms of RES-043 to Peter in plain words, then build the prototype with brain's prototype skill. Peter chooses the architecture from it.
 - Row 14 — ready, not started: the agent starts it when the style props are the next topic. No decision on the frontier needs it yet.
