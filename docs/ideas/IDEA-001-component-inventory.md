@@ -61,6 +61,12 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 ### Settled by Peter outside a row
 - DEC-123, 2026-11-12: the list holds an Icon component. The icon library makes one component for each icon with it, from Material Symbols. The components for single icons are not entries of the list.
 
+### Row 06 — partial, question pending
+- Settled by the prompt: the three words Part, Subcomponent and Slot; see "Settled by the prompt" and the glossary.
+- Numbers from RES-037: two systems or more split 47 concepts into parts, and only 2 of the 47 have the same part names in all of them. Root, Trigger, Content, Item, Label and Title are common to all five systems. The systems differ on others, for example Close or CloseTrigger, Overlay or Backdrop, Portal or Positioner.
+- Pending question, asked on 2026-11-12: which rule names the parts? Options: one name for each role in every component, chosen as the name that most of the five systems use for that role across all components (recommended, because a developer then learns each part name once); the most-used name component by component; the part names of one system for everything.
+- The rule names parts only. Which parts a component has is decided in row 09, after the composition architecture of IDEA-003#05.
+
 ### Row 07 — evidence
 - Peter, 2026-11-12, same reply: "shadcn includes ai components as well for example - none of the others do I don't think". The inventories agree in part: shadcn/ui lists eight chat components among its components and a separate catalog "AI Elements" with 21 patterns (RES-032). RES-037 shows which concepts only one system has. This is evidence for row 07; it puts no component in or out.
 
