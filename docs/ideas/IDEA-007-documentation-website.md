@@ -30,6 +30,10 @@ A spec for the documentation website of 1.0: what it holds, where its records co
 - The name of the section is settled by Peter's words, by the agent's reading: he said "a blocks section in the docs" twice, so the section is named Blocks. The glossary keeps Recipe as the word for the thing, and says that the documentation shows recipes in its Blocks section.
 - Candidates for the blocks, from Peter's words and the inventories: agent interfaces (the 21 patterns of AI Elements of shadcn/ui), app layouts (the blocks of shadcn/ui: dashboard, sidebar, login, signup), page sections for marketing and content sites (no reference system has them), and charts (shadcn/ui and Chakra UI build them on Recharts).
 
+### Row 03 — pending question
+- Pending question, 2026-11-12, with more than one answer possible: which groups of blocks does the Blocks section have in 1.0? Options: "Agent interfaces (Recommended)": blocks such as a chat, a prompt input and a tool call, after the patterns of AI Elements of shadcn/ui; "Page sections (Recommended)": blocks for marketing and content sites, such as a hero, a pricing table and a footer; "App layouts": a dashboard, a sidebar layout, a login and a signup page, as the blocks of shadcn/ui; "Charts": chart blocks on a third-party chart engine. To choose none, he types "none".
+- The agent's reasons: Peter asked for the AI components of shadcn/ui, and their patterns are recipes (DEC-133); marketing and content sites are an audience of DEC-119, and no reference system gives them components for page sections; the Chart component is out of the list because it wraps a third-party engine (DEC-133).
+
 ### Waits
 - Row 07 — wait: IDEA-003#05 and IDEA-004#04 are resolved.
 - Row 08 — wait: IDEA-001 reaches `done`, and IDEA-002 resolves its row 13.

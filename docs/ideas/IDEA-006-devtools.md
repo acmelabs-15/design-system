@@ -38,12 +38,8 @@ A spec for the 1.0 devtools package: its base, its capabilities, and how it reac
 ### Row 03 — resolved
 - DEC-143, Peter, 2026-11-12: the first release has six capabilities: live prop switching with prop inspection, theming controls, token inspector, accessibility checks, event log and breakpoint view. He selected all four that the agent offered; the agent had recommended the token inspector only.
 
-### Row 06 — ready to ask
-- Rows 03 and 08 are resolved, so row 06 is on the frontier. RES-044 holds its facts: Figma is the one place where a token of 1.0 changes, so the theming controls cannot write the 1.0 tokens into the repo; the values of a custom theme belong to the outside team, so an export of those breaks no rule.
-
-### Row 06 — pending question
-- Pending question, 2026-11-12: do the theming controls only preview, or do they also export? Options: "Preview and export of a custom theme (Recommended)": a developer tries values for the brand colour, the typeface and the corner radius and saves them as a theme file for the project; "Preview only": the controls change the page while devtools is open and save nothing.
-- The agent's reasons: a custom theme is a dimension of the tokens (DEC-137), and an outside team needs a way to make one; the export touches only the team's own values, so Figma stays the one place where a token of 1.0 changes (RES-044).
+### Row 06 — resolved
+- DEC-145, Peter, 2026-11-12: the theming controls preview a custom theme and export it as a theme file. The export holds only a team's own values; RES-044 holds the facts.
 
 ## Map
 
@@ -53,7 +49,7 @@ A spec for the 1.0 devtools package: its base, its capabilities, and how it reac
 | 03 | Which capabilities must the first devtools release have beyond live prop switching and theming controls? | interview | resolved | — | [DEC-143](../decisions/DEC-143-devtools-first-release-capabilities.md) |
 | 04 | Is devtools built on TanStack Devtools (extended or forked), or built by us? | interview | open | 01, 03 | — |
 | 05 | Does devtools work on the custom elements for every framework, or through an adapter for each framework? | interview | open | 04, 07 | — |
-| 06 | Do the theming controls only preview token values, or do they also export changes? | interview | open | 03, 08 | — |
+| 06 | Do the theming controls only preview token values, or do they also export changes? | interview | resolved | 03, 08 | [DEC-145](../decisions/DEC-145-theming-controls-preview-and-export-a-custom-theme.md) |
 | 07 | Import the composition architecture from IDEA-003 and the wrapper targets from IDEA-004. | task | open | — | — |
 | 08 | Import the token pipeline decision from IDEA-002. | task | resolved | — | [RES-044](../research/RES-044-devtools-import-of-the-token-pipeline.md) |
 
