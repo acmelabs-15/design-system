@@ -60,20 +60,24 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 - The open maintenance issues of 0.3.3 stay in the local tracker, `.scratch/maintenance/issues/`.
 
 ### Next actions, 2026-11-13
-State at the end of the session of 2026-11-13, which Peter ended to save context: "we've used a lot of this session's context".
+State at the end of the second session of 2026-11-13, which Peter ended to save context: "we've used a lot of this session's context - make any additional updates you need to make and provide me with the prompt I should provide to you after running "/clear"".
 
-- No agent runs. The local servers of the two prototypes are stopped. The working tree is clean, and `brain check` reports no finding.
-- Peter saw the changes from his additional scope in chat on 2026-11-13: the changed ideas, the three new ideas, the place of the rule for deferred rows, and three readings of the agent. He gave no correction to them. Not confirmed by him:
-  - Code Block: the review of its parts asks whether the rendering of markdown is part of Code Block or a component of its own (row 09, Notes).
-  - The choice of the architecture does not wait for the inventory of utilities and hooks (IDEA-003, Notes).
-  - "Documentation blocks" are the pieces of the website's own pages (IDEA-007, Notes).
-  - IDEA-010 as an idea of its own (IDEA-010#01), and the agent's recommendation that the blocks get an idea of their own (IDEA-007#09).
+- No agent runs. The second block of agent work is complete: all 12 rows are resolved. The working tree is clean, everything is pushed, and `brain check` reports no finding.
 - Next, in this order:
-  1. Done in a new session on 2026-11-13: the question IDEA-003#05 was asked twice. Peter made no choice. He asked for research and set two rules (DEC-148 and DEC-149). IDEA-003, Notes, "Row 05 — partial" holds his words. The research is IDEA-003 rows 20 and 21; after their results the agent reviews both with him and asks row 05 again.
-  2. Ask for Peter's go for the next block of agent work. The go of 2026-11-12 covered the 14 agents only. Ready rows, 12 in all: the research rows IDEA-001#12, IDEA-003#20, IDEA-003#21, IDEA-005#10, IDEA-005#11, IDEA-006#09, IDEA-007#10, IDEA-008#01, IDEA-009#01 and IDEA-010#02; the listing task IDEA-010#04; and the trial IDEA-005#03. The test IDEA-004#03 follows his choice of the architecture and IDEA-004#02.
-     - Asked on 2026-11-13 through the question dialog, with the options "Go, all 12 (Recommended)", "Go, architecture rows only" and "Not yet". Peter chose all 12; "Second block of agent work" below holds his words and the state of the block.
-  3. Continue the follow-up questions of the list under "Block of agent work" below, most important first, one at a time. Questions 1 and 3 of that list wait for IDEA-003 rows 20 and 21. The next one is question 2, the design direction (IDEA-002#26).
-- The Notes of each idea hold the facts of each result of the block. A session reads a result file in full for the question in front of it.
+  1. Two questions are pending. Peter closed the dialog of each with the host's choice "clarify these questions", and he has not said what he wants to clarify. Ask him that first, in chat. Then ask each question again.
+     - IDEA-003#05, the architecture, asked as a contract: a part at any depth below its root, or direct children only. IDEA-003, Notes, holds the question, its two options, the recommendation and the facts of RES-072 and RES-069.
+     - IDEA-002#26, the design direction. IDEA-002, Notes, "Row 26", holds the question, its four options and the command that opens the prototype page. Open the page for him first.
+  2. The follow-up questions, most important first, one at a time:
+     - Ready with no further work: IDEA-005#04; IDEA-010#01 and IDEA-007#09, the two questions on the ideas themselves; IDEA-007 rows 12 and 13; IDEA-002 rows 10, 11 and 07; IDEA-003#15; IDEA-007 rows 05 and 04; IDEA-010 rows 05 and 06.
+     - Ready after a proposal of the agent, which it prepares before the question: IDEA-007#11 (the blocks by name, from RES-067), IDEA-006#10 (the capabilities of devtools, from the 41 candidates of RES-071), IDEA-010#03 (the plan for build tools, CI, release and deployment, from RES-068) and IDEA-001#13 (the utilities and hooks, from the 80 concepts of RES-073).
+     - Wait for the architecture: IDEA-001#09, the review of the parts; IDEA-003 rows 06, 07, 08, 11, 12 and 17; IDEA-004 rows 02 and 03. After Peter's choice the terms for the glossary go to him with the names of both sides (DEC-148); IDEA-003, Notes, "Row 20 — resolved" and "Row 21 — resolved" hold those names.
+     - Need Peter's word or his hands: the trial IDEA-008#03, which uploads to his Claude account, and the check IDEA-005#15.
+     - Research that starts when its decision is next: IDEA-005#14.
+  3. The readings of the agent that Peter has not confirmed: Code Block and markdown (row 09, Notes); "documentation blocks" (IDEA-007, Notes, with the evidence of RES-067); the placement of the architecture research and of its contract in the idea phase (IDEA-003, Notes, "Row 05 — partial"); the effort rule of DEC-150; the readings in DEC-133, DEC-142 and DEC-124; and the intent of each idea.
+- How to ask, from this session: Peter answered "huh?" to the first, dense form of the architecture question. Keep each question short, with one concrete example, and put the explanation in chat before the dialog. This is the agent's note and not his words.
+- If the Claude login fails while agents run: on 2026-11-13 Peter twice asked to remove what the agents wrote and to start again only on his word.
+- Tools in `.artifacts/v1/briefs/` (scratch, outside git): `mcp-proof.py` makes the one read-only call that proves the design system MCP, and `agent-log-check.py` prints the models and the efforts in the log of a delegated agent. The usage of each is at the top of its file.
+- The Notes of each idea hold the facts of each result. A session reads a record or a result file for the question in front of it.
 
 ### Row 12 — resolved
 - RES-073, 2026-11-13, from the export files of the packages and the documentation of each system. For Geist it has only the names that the code samples of the documentation import, because Geist has no public package; that list cannot be shown to be complete.
@@ -99,13 +103,7 @@ State at the end of the session of 2026-11-13, which Peter ended to save context
 - Peter, 2026-11-13: "oauth failed again - alegedly there is a fix out now - I canceled all the subagents - just like we did before we're going to delete anything they created and kick them off again - do teh delete anything they created part - feel free to prepare the kick off again but don't actually kick them off until I explicitely tell you too".
 - Third start, running: Peter, 2026-11-13: "start the block". The first eight rows run since then, each with a new agent, and the first check of each log confirms its model and its effort. `.artifacts/v1/briefs/third-start.args` holds the agent of each row for `agent-log-check.py`; the Notes of each idea hold the same IDs. Not started: IDEA-008#01, IDEA-009#01, IDEA-010#04 and IDEA-005#03; they start as agents end.
 - Results of the block: IDEA-005#11 is resolved by RES-066 on 2026-11-13; it adds the research row IDEA-005#14. IDEA-008#01 started when that agent ended. IDEA-007#10 is resolved by RES-067 on 2026-11-13, and IDEA-009#01 started when its agent ended. Resolved later on the same day: IDEA-006#09 by RES-071, IDEA-008#01 by RES-074, IDEA-003#20 by RES-072 and IDEA-010#02 by RES-068. All 12 rows of the block have started: the task rows IDEA-010#04 (record RES-076) and IDEA-005#03 (record RES-077) started when agents ended. IDEA-005#10 is resolved by RES-070, IDEA-001#12 by RES-073, IDEA-009#01 by RES-075 and IDEA-010#04 by RES-076. IDEA-003#21 is resolved by RES-069, and IDEA-005#03 by RES-077. **The second block is complete on 2026-11-13: all 12 rows are resolved, and no agent runs.** The log of each of the 12 agents records its model and its effort on every request.
-- State for a new session, 2026-11-13, after the block:
-  - Two questions were asked and are pending, because Peter closed each dialog to clarify it and has not said what: IDEA-003#05, the architecture, as the contract "a part at any depth, or direct children only"; and IDEA-002#26, the design direction. Each idea's Notes hold the question, its options and the recommendation. Ask him first what he wants to clarify.
-  - Ready for a question with no further work: IDEA-005#04 (inside the package or apart), IDEA-010#01, IDEA-007 rows 09, 12 and 13, IDEA-002 rows 07, 10 and 11, IDEA-003#15, IDEA-007 rows 04 and 05, IDEA-010 rows 05 and 06.
-  - Ready after a proposal of the agent: IDEA-007#11, IDEA-006#10, IDEA-010#03 and IDEA-001#13.
-  - Wait for the architecture: IDEA-001#09, IDEA-003 rows 06, 07, 08, 11, 12 and 17, IDEA-004 rows 02 and 03.
-  - Need Peter's word or his hands: the trial IDEA-008#03 and the check IDEA-005#15.
-  - New rows of this block: IDEA-005#14, IDEA-005#15 and IDEA-008#03.
+- The state for a new session is under "Next actions, 2026-11-13" above. New rows of this block: IDEA-005#14, IDEA-005#15 and IDEA-008#03, and the deferred row IDEA-003#22.
 - New rows from the results: IDEA-005#14 (which hosts show the view of an MCP Apps tool) and IDEA-008#03 (a trial of Claude Design with Peter's account, which starts only on his word).
 - Decide rows that the results made ready, each with a proposal of the agent before the question: IDEA-007#11 (the blocks by name), IDEA-006#10 (the capabilities of devtools) and IDEA-010#03 (the plan for build tools, CI, release and deployment), IDEA-001#13 (the utilities and hooks), and IDEA-010 rows 05 and 06 (what survives the removal of the old system, and when).
 - If the login fails again: Peter's rule of the two earlier failures is to remove what the agents wrote and to start again on his word. Do not start again without it.

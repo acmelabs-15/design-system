@@ -23,7 +23,7 @@ Load a library's skills before you write code that uses the library. `plugin:*` 
 
 | Server | Configured in | Prove with |
 |---|---|---|
-| `acme-design-system-docs`, the design system MCP in `packages/mcp` | No host configuration in this repo. Run `bun packages/mcp/dist/cli.js` over stdio from a built checkout. | `resolve_version` with the package version and `framework: "lit"` |
+| `acme-design-system-docs`, the design system MCP in `packages/mcp` | No host configuration in this repo. Run `bun packages/mcp/dist/cli.js` over stdio from a built checkout. | `resolve_version` with `packageVersion`, the version of the package, and `framework: "lit"` |
 
 ## Sub-agents
 
