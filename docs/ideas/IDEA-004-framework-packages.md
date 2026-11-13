@@ -52,6 +52,7 @@ A spec for the framework packages: the chosen targets, the way each wrapper is p
 ## Not yet specified
 - Server rendering for each target. It depends on IDEA-003#04.
 - Typed JSX for the custom elements in each target.
+- How the components for single icons (DEC-123) reach each framework package. It sharpens after IDEA-003#12.
 
 ## Out of scope
 - The composition architecture. IDEA-003 owns it.

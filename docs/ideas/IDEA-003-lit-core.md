@@ -25,6 +25,7 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 ### Waits
 - Row 09 — wait: IDEA-001 reaches `done`.
 - Row 10 — wait: IDEA-002 resolves its rows 11 and 13. Row 09 is resolved by DEC-120.
+- Row 12 — wait: IDEA-002#22 decides the variations of Material Symbols. DEC-123 holds Peter's decision that each icon is a component built with the Icon component. Evidence from 0.3.3: DEC-046 (the shape of the icon element), DEC-096 (the shared icon library) and the generated icon entries that `docs/agents/repository.md` lists.
 
 ### Settled by the prompt
 - Lit web components are the core implementation.
@@ -62,6 +63,7 @@ These records are evidence, not answers. Find them through the [decision index](
 | 09 | Import the final component list from IDEA-001. | task | open | — | — |
 | 10 | Import the design spec format and the token output from IDEA-002. | task | open | — | — |
 | 11 | Which delivery lets one HTML page use 1.0 from a CDN with no build step, and does it cover every component? | interview | open | 05 | — |
+| 12 | How does the icon library make one component for each icon from the Icon component, and how do the variations of an icon reach it? | interview | open | 05 | — |
 
 ## Not yet specified
 These sharpen after row 05.

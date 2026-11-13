@@ -53,14 +53,13 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 ### Row 02 — running
 - Started on 2026-11-12, when row 01 resolved and row 04 came to wait on this row alone. One brain researcher agent, started without a name on Opus 5.5 at medium effort; agent ID `a227031980dd6a9e0`. It claims its own research record with the slug `components-of-release-0-3-3`. It writes no other file.
 
-### Row 05 — partial
-- Settled: the name that Geist uses for a component has no priority, although the 1.0 look starts from the Geist-based look of 0.3.3 (DEC-121). Standardizing names is part of the work.
-- Source: Peter's reply of 2026-11-12 to the question for IDEA-002#03: "I don't want to just assume that the name geist uses for a component is the correct one - part of this is standardizing names, etc - but like I know that some of the component names that geist uses are not what the rest of the industry uses".
-- Evidence from 0.3.3, not an answer: DEC-082 says to choose the more widely used name where reference systems disagree, and to record the survey.
-- Evidence from RES-037: where Geist's name differs from the other systems, the others mostly agree with each other, for example Dialog (Geist: Modal), Switch (Geist: Toggle), Hover Card (Geist: Context Card), Accordion (Geist: Collapse) and Alert (Geist: Note). The 0.3.3 glossary already avoids several of these Geist names.
-- Open: the exact rule. For example the name that most of the five systems use, or the name that the wider industry uses beyond the five.
-- Numbers from RES-037: 78 concepts are in two systems or more; in 52 all systems use one name; in 26 the names differ. In 15 of the 26 one name is used by more systems than any other, and in 10 of those 15 Geist alone has its own name. 11 are ties.
-- Pending question, asked on 2026-11-12: which rule picks the name? Options: the name that most of the five systems use, with a wider survey for ties (recommended, because it settles 15 names from the matrix and matches the rule of DEC-082); a wider survey for all 26; Peter decides each name.
+### Row 10 — running
+- Started on 2026-11-12: one brain researcher agent, without a name, on Opus 5.5 at medium effort; agent ID `ad94ad192eada27c8`. It claims its own record with the slug `names-for-the-tied-concepts`. Its survey set is fixed: the WAI-ARIA patterns, native HTML, Base UI, React Aria Components, MUI, Mantine, Ant Design, Ark UI, Headless UI, Fluent UI React, Carbon and Material Design 3.
+- The 11 ties of RES-037: Bleed or Inset; Resizable or Splitter; Item or Entity; Copy Button or Clipboard; Checkbox Cards or Checkbox Card; Radio Cards or Radio Card; Native Select or Select (Native); Input OTP, One-Time Password Field or Pin Input; Password Input or Password Toggle Field; Status or Status Dot; Direction Provider or Direction.
+- DEC-122: the agent surveys more sources for each tie and then puts each tie to Peter. Row 08 holds his decisions.
+
+### Settled by Peter outside a row
+- DEC-123, 2026-11-12: the list holds an Icon component. The icon library makes one component for each icon with it, from Material Symbols. The components for single icons are not entries of the list.
 
 ### Row 07 — evidence
 - Peter, 2026-11-12, same reply: "shadcn includes ai components as well for example - none of the others do I don't think". The inventories agree in part: shadcn/ui lists eight chat components among its components and a separate catalog "AI Elements" with 21 patterns (RES-032). RES-037 shows which concepts only one system has. This is evidence for row 07; it puts no component in or out.
@@ -88,15 +87,16 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 | 02 | Which components, parts and recipes does release 0.3.3 ship, and which decision records chose their names? | research | in-progress | — | — |
 | 03 | Which products and users does 1.0 serve, and what does that rule in or out of the list? | interview | resolved | — | [DEC-119](../decisions/DEC-119-four-audiences-for-1-0.md) |
 | 04 | Can the list hold a component concept that none of the five reference columns has? | interview | open | 02, 03 | — |
-| 05 | When the reference systems disagree on a name, which rule picks the 1.0 name? | interview | open | 01 | — |
+| 05 | When the reference systems disagree on a name, which rule picks the 1.0 name? | interview | resolved | 01 | [DEC-122](../decisions/DEC-122-name-rule-most-of-five.md) |
 | 06 | Which words name the pieces of a component (part, subcomponent, slot), and which shared part names apply across components? | interview | open | 01 | — |
 | 07 | Which component concepts from the matrix are in the 1.0 list? | interview | open | 01, 03, 04 | — |
-| 08 | What is the final name of each included component? | interview | open | 05, 07 | — |
+| 08 | What is the final name of each included component? | interview | open | 05, 07, 10 | — |
 | 09 | What is the final part composition of each included component? | interview | open | 06, 07 | — |
+| 10 | For the 11 concepts on which the five systems tie, which name do more sources use: the WAI-ARIA patterns and other widely used component libraries? | research | in-progress | 05 | — |
 
 ## Not yet specified
 - The per-category rows for rows 07 to 09. The matrix sets the categories.
-- Whether recipes and icons need their own inventory decisions.
+- Whether recipes need their own inventory decisions. Icons are settled by DEC-123.
 - Which 0.3.3 glossary terms stay. The glossary has no word yet for the pieces of a component.
 - Which audience wins when two audiences need different things from one component. It sharpens at row 07, with real cases.
 
