@@ -31,6 +31,10 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Peter, 2026-11-12, during row 19: "there should be a figma token you can use from 1password". The agent used it for the six REST reads of RES-028 only. Another use needs its own reason in the row that needs it.
 - Direction given on 2026-11-12: no Organization or Enterprise plan before rows 07 and 09 are decided. Not checked: how files move when a Professional team upgrades to Organization.
 
+### Row 03 — question pending
+- Asked on 2026-11-12 through the question dialog: where does the 1.0 look start? Options: the 0.3.3 look (recommended: Peter chose its parts one by one, no record says the look is the problem, and its token values exist in the repo); the look of one reference system; a new design with a design direction step first.
+- Evidence in the question: DEC-082 (Geist is the baseline of the 0.3.3 look), DEC-060 (Material Symbols icons), DEC-059 (Material motion), DEC-008 (blue accent), the Google Sans Flex fonts, and DEC-119 (outside teams and marketing sites are audiences).
+
 ### Row 10 — partial
 - Settled by DEC-120: a token change reaches the repo when a browser agent or a person runs "Export modes"; no CI job reads token values on the Professional plan.
 - Source: DEC-120, decided by the agent on 2026-11-12 under Peter's delegation of the token route.
