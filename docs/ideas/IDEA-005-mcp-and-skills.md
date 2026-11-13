@@ -63,8 +63,8 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Row 06 here and IDEA-007#04 are two views of one source of records. Decide them together.
 
 ### Second block of agent work
-- Row 10 — not running. Two starts on 2026-11-13 ended in outages of the Claude login, and the records of both were removed at Peter's request (IDEA-001, Notes, "Second block of agent work"). No record exists for this row. It waits for Peter's explicit word to start the block again. Its brief is `.artifacts/v1/briefs/IDEA-005-10.md` with `common.md`; it runs on Opus 5.5 at the effort `medium`.
-- Row 11 — not running. Two starts on 2026-11-13 ended in outages of the Claude login, and the records of both were removed at Peter's request (IDEA-001, Notes, "Second block of agent work"). No record exists for this row. It waits for Peter's explicit word to start the block again. Its brief is `.artifacts/v1/briefs/IDEA-005-11.md` with `common.md`; it runs on Opus 5.5 at the effort `medium`.
+- Row 10 — running since 2026-11-13, in the second block of agent work (IDEA-001, Notes, "Second block of agent work"). Researcher agent `ae876dde1bf071a5a`, started without a name on Peter's word "start the block"; its log records Opus 5.5 and the effort `medium`. Its record is found by its `from`. Its brief is `.artifacts/v1/briefs/IDEA-005-10.md` with `common.md`. It is the third start: two starts of the same day ended in outages of the Claude login, and their records were removed at Peter's request. Check the log again when the agent ends, before its record is read.
+- Row 11 — running since 2026-11-13, in the second block of agent work (IDEA-001, Notes, "Second block of agent work"). Researcher agent `a390f05d09d1064c0`, started without a name on Peter's word "start the block"; its log records Opus 5.5 and the effort `medium`. Its record is found by its `from`. Its brief is `.artifacts/v1/briefs/IDEA-005-11.md` with `common.md`. It is the third start: two starts of the same day ended in outages of the Claude login, and their records were removed at Peter's request. Check the log again when the agent ends, before its record is read.
 
 ## Map
 
@@ -78,8 +78,8 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 07 | Which skills ship for consumers? | interview | open | 04, 10 | — |
 | 08 | Which idea owns the documentation website and its records? | interview | resolved | — | [DEC-139](../decisions/DEC-139-seventh-idea-owns-the-documentation-website.md) |
 | 09 | How does an agent that writes one HTML page, with no project and no package install, get the 1.0 guidance? | interview | open | 01, 04 | — |
-| 10 | Which skills do other design systems ship and what does each skill do, and which tools do their MCP servers expose and what does each tool do? RES-030 holds how they package and distribute them. | research | open | — | — |
-| 11 | How do Storybook's skills and its MCP server work, and in particular its MCP tools that return rendered UI; who else returns rendered UI from an MCP tool, and how does that work? | research | open | — | — |
+| 10 | Which skills do other design systems ship and what does each skill do, and which tools do their MCP servers expose and what does each tool do? RES-030 holds how they package and distribute them. | research | in-progress | — | — |
+| 11 | How do Storybook's skills and its MCP server work, and in particular its MCP tools that return rendered UI; who else returns rendered UI from an MCP tool, and how does that work? | research | in-progress | — | — |
 | 12 | Does the 1.0 MCP server have tools that return rendered UI? | interview | open | 04, 11 | — |
 | 13 | Are the blocks exposed to agents through the MCP server, through a skill, or through both? | interview | open | 04 | — |
 

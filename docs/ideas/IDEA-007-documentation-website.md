@@ -68,7 +68,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - IDEA-003#11: one HTML page uses 1.0 from a CDN with no build step. The website shows that way of use beside the framework packages.
 
 ### Second block of agent work
-- Row 10 — not running. Two starts on 2026-11-13 ended in outages of the Claude login, and the records of both were removed at Peter's request (IDEA-001, Notes, "Second block of agent work"). No record exists for this row. It waits for Peter's explicit word to start the block again. Its brief is `.artifacts/v1/briefs/IDEA-007-10.md` with `common.md`; it runs on Opus 5.5 at the effort `medium`.
+- Row 10 — running since 2026-11-13, in the second block of agent work (IDEA-001, Notes, "Second block of agent work"). Researcher agent `ab6e1ab009a6abe73`, started without a name on Peter's word "start the block"; its log records Opus 5.5 and the effort `medium`. Its record is found by its `from`. Its brief is `.artifacts/v1/briefs/IDEA-007-10.md` with `common.md`. It is the third start: two starts of the same day ended in outages of the Claude login, and their records were removed at Peter's request. Check the log again when the agent ends, before its record is read.
 
 ## Map
 
@@ -83,7 +83,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 07 | Import the composition architecture from IDEA-003 and the framework targets from IDEA-004. | task | open | — | — |
 | 08 | Import the component list, names and parts from IDEA-001 and the format of a design spec from IDEA-002. | task | open | — | — |
 | 09 | Do the blocks and recipes get an idea of their own, or do they stay in this idea? | interview | open | — | — |
-| 10 | Which blocks and recipes do shadcn/ui, Radix (Primitives and Themes), Chakra UI and Geist have, and which AI components and AI blocks among them: for each, what it composes, which state and composition pattern it shows, and how the system gives it out? | research | open | — | — |
+| 10 | Which blocks and recipes do shadcn/ui, Radix (Primitives and Themes), Chakra UI and Geist have, and which AI components and AI blocks among them: for each, what it composes, which state and composition pattern it shows, and how the system gives it out? | research | in-progress | — | — |
 | 11 | Which blocks does 1.0 have, by name, in each group of DEC-146? | interview | open | 10 | — |
 | 12 | Is Figma or code the source of truth of a block? | interview | open | — | — |
 | 13 | Where do the blocks live in the documentation, and where do the source files of a block live? | interview | open | — | — |
