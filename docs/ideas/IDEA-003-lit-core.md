@@ -25,10 +25,17 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 ### Waits
 - Rows 05 and 14 — running since 2026-11-12, in the block of agent work that Peter approved. Each agent started without a name; its log records `claude-opus-5-5` and the effort `medium`. The list is in IDEA-001, Notes, "Block of agent work".
   - Row 05: task agent `afbdfc01151967238` builds the prototype in `.artifacts/v1/prototype/IDEA-003-05/`, with `IDEA-003-05-progress.md` and `IDEA-003-05-result.md`. When the result is complete, the row is open again and waits for Peter's choice.
-  - Row 14: researcher agent `aa4269e9b3b3956e9`, record RES-045.
+  - Row 14: done on 2026-11-12. Researcher agent `aa4269e9b3b3956e9`, record RES-045.
 - Rows 01 and 02 — done on 2026-11-12: RES-042 from the researcher agent `ae3a841db00a620a6` and RES-043 from the researcher agent `a8a44290116cb20e5`. Both started without a name when DEC-127 resolved row 04; their logs record `claude-opus-5-5` and the effort `medium` on each request.
 - Row 05 — ready, next for the agent: explain the mechanisms of RES-043 to Peter in plain words, then build the prototype with brain's prototype skill. Peter chooses the architecture from it.
-- Row 14 — ready, not started: the agent starts it when the style props are the next topic. No decision on the frontier needs it yet.
+- Row 14 — resolved by RES-045 on 2026-11-12. Facts from it for row 15:
+  - Chakra UI 3 writes the CSS of a responsive value in the browser, with Emotion, while React renders. That is CSS-in-JS, which DEC-131 rules out. So 1.0 can take Chakra's syntax and not its mechanism.
+  - Radix Themes ships one static CSS file with a class for each token value at each breakpoint, 812,667 bytes. React only sets class names. A value outside the token list goes into an inline custom property.
+  - Four web component libraries take a value for each breakpoint from an attribute, in four shapes: one attribute for each breakpoint with script (Ionic); one attribute for each breakpoint with static CSS (Carbon); one attribute of tokens with a breakpoint prefix and static CSS (NVIDIA Elements); one attribute with a small query language that script turns into a style element (Shopify Polaris).
+  - A limit of CSS: a custom property cannot set the width in a media query or a container query. So a breakpoint token reaches a query only as text that a build step or a script writes.
+  - A second limit: CSS cannot turn a token name such as `4` into `var(--space-4)`. Each token value at each breakpoint needs its own rule, or script does the mapping.
+  - Typed `attr()` and `if()` are not in every browser yet: `if()` is not in Firefox.
+  - A React prop that is an object reaches a custom element as a property only when the element has that property; RES-029 holds React's exact rule, from React's source. Redact 0.3.1 writes each prop as an attribute (RES-029), so an object prop does not arrive there.
 - Row 09 — wait: IDEA-001 reaches `done`.
 - Row 10 — wait: IDEA-002 resolves its rows 11 and 13. Row 09 is resolved by DEC-120. DEC-141: Peter approves the design specs once, when all are complete, so the build of the components starts after that approval.
 - Row 12 — wait: IDEA-002#22 decides the variations of Material Symbols. DEC-123 holds Peter's decisions that each icon is a component built with the Icon component, and that the Icon component renders SVG, not an icon font.
@@ -77,7 +84,7 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 | 11 | Which delivery lets one HTML page use 1.0 from a CDN with no build step, and does it cover every component? | interview | open | 05 | — |
 | 12 | How does the icon library make one component for each icon from the Icon component, and how do the variations of an icon reach it? | interview | open | 05 | — |
 | 13 | How do the typefaces of 1.0 reach a page: font files in the package, a link to Google Fonts, or the consumer's own loading? | interview | open | 11 | — |
-| 14 | How do Chakra UI and Radix Themes turn style props with responsive values into CSS, and how can a custom element take a value for each breakpoint from an HTML attribute with no CSS-in-JS? | research | in-progress | — | — |
+| 14 | How do Chakra UI and Radix Themes turn style props with responsive values into CSS, and how can a custom element take a value for each breakpoint from an HTML attribute with no CSS-in-JS? | research | resolved | — | [RES-045](../research/RES-045-responsive-style-props-mechanisms.md) |
 | 15 | Which mechanism do the style props of the layout components use in the Lit core? | interview | open | 14 | — |
 
 ## Not yet specified
