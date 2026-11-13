@@ -54,7 +54,7 @@ A spec for the MCP server and the consumer skills of 1.0: where they ship, what 
 
 ## Not yet specified
 - How `init` reaches a consumer who installs only a framework package. It sharpens after IDEA-004#07.
-- Maintainer skills for this repo, as distinct from consumer skills.
+- Maintainer skills for this repo, as distinct from consumer skills. Peter, 2026-11-12 (IDEA-002, Row 10 — partial): an internal skill that tells an agent how to bring the tokens in from Figma is acceptable for the work of the maintainers.
 
 ## Out of scope
 - Row 02, retired on 2026-11-12: "How does release 0.3.3 ship its MCP server and consumer skills, and which limits do its records name?" DEC-125 takes release 0.3.3 out as input.

@@ -35,6 +35,10 @@ A spec for the 1.0 devtools package: its base, its capabilities, and how it reac
 - Its capabilities include live prop switching on a selected component, and theming controls.
 - The options to evaluate: TanStack Devtools (extend it, or fork it into something custom) against our own build. Research comes first.
 
+### Row 03 — pending question
+- Pending question, 2026-11-12, with more than one answer possible: which capabilities must the first devtools release have beside live prop switching and theming controls? Options: "Token inspector (Recommended)": the tokens that the selected component uses, with their values in light and dark; "Accessibility checks": the name, the role and the contrast of the selected component against WCAG 2.2 level AA; "Event log": the events that the components fire; "Breakpoint view": the style props of a layout component at each breakpoint. To choose none, he types "none".
+- The agent's reasons: a custom theme changes token values (DEC-137), so a developer must see which tokens a component uses; each further capability makes the first release larger before its base is chosen (row 04).
+
 ## Map
 
 | # | Question | Type | Status | Blocked by | Result |

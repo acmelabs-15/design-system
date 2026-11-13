@@ -64,14 +64,15 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 ### Row 13 — resolved
 - DEC-142, 2026-11-12. Peter's words: "can also be multiple specs - specs also have a deps graph so its clear when/what can be doen in parallele". He chose none of the three options. The record keeps apart what he decided (more than one spec is allowed; the specs name what they depend on) and what the agent chose and told him (the twelve items of one design spec, and where each sits in Figma).
 
-### Row 10 — pending question
-- Pending question, 2026-11-12: how does a token change reach the repo, and how is it versioned? The agent proposes one flow: Peter asks an agent; the agent runs "Export modes" in Figma through the browser, checks the difference and opens a pull request; Peter merges it; the tokens take the version of the package release and have no version of their own. Options: "Pull request, package version (Recommended)"; "Direct commit, package version": the agent commits the export to the working branch with no pull request; "Pull request, own token version": the token files carry a version number of their own.
-
 ### Row 10 — partial
 - Settled by DEC-120: a token change reaches the repo when a browser agent or a person runs "Export modes"; no CI job reads token values on the Professional plan.
-- Source: DEC-120, decided by the agent on 2026-11-12 under Peter's delegation of the token route.
-- Open: whether an export goes into the repo as a pull request or as a direct commit, who starts it, and how token versions are named.
-- Next: ask Peter about those three points when row 10 is the most important question.
+- Question of 2026-11-12: one flow for the three open points. Peter asks an agent; the agent runs the export in Figma through the browser and opens a pull request; Peter merges it; the tokens take the version of the package release. Options: "Pull request, package version (Recommended)"; "Direct commit, package version"; "Pull request, own token version".
+- Answer, Peter, 2026-11-12, typed into the question dialog: "I don't mind there beign like an internal skill that tells an agent how to do this for internal dev work - but i think maybe it should be a script that can be run possibly via npm script or something - how do other libs do this part with figma - should research this".
+- Settled: an internal skill that tells an agent how to bring the tokens in is acceptable for the work of the maintainers. Conditions: none stated.
+- His leaning, no decision: a script that a package script starts.
+- A fact that limits such a script, which the agent told him: on the Professional plan no script can read the variables out of Figma, because the Variables REST API needs the Enterprise plan (RES-024). A script can do every step after the export: take the exported files, build the token output and show what changed.
+- Open: the flow, who starts it, and the versions. They wait for row 28, the research that he asked for.
+- Next: run row 28 in the block of agent work. Then ask row 10 again with its facts.
 
 ### Row 20 — next for the agent
 - A trial with the two exported archives of RES-028, in `.artifacts/v1/trial/IDEA-002-19/`. It needs no Figma call. Create its task record before the first step.
@@ -125,7 +126,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 07 | Do designers get the system through a published library, a custom plugin, or both? | interview | open | 06 | — |
 | 08 | Which routes export tokens from Figma to the repo, and how does each handle change flow and versions? | research | resolved | 02 | [RES-026](../research/RES-026-figma-token-export-routes.md) |
 | 09 | Which token export route does 1.0 use? | interview | resolved | 08, 19 | [DEC-120](../decisions/DEC-120-token-export-route.md) |
-| 10 | How do token changes reach the repo (manual export, CI job or pull request), and how are they versioned? | interview | open | 09 | — |
+| 10 | How do token changes reach the repo (manual export, CI job or pull request), and how are they versioned? | interview | open | 09, 28 | — |
 | 11 | Which token files does the pipeline hand to the Lit core and the framework packages? | interview | open | 09, 20 | — |
 | 12 | Who makes each design spec, and who approves it? | interview | resolved | 02 | [DEC-141](../decisions/DEC-141-agents-make-the-specs-in-parallel-one-approval.md) |
 | 13 | What must one design spec hold before a component can be built from it? | interview | resolved | 02, 18 | [DEC-142](../decisions/DEC-142-design-spec-content-and-spec-dependencies.md) |
@@ -143,6 +144,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 25 | What do the five reference systems define for colour, type scale, shape, spacing and sizes, elevation and motion, what does Geist leave out, and what do Vercel's terms say about the reuse of Geist's values? | research | resolved | — | [RES-041](../research/RES-041-look-of-the-reference-systems.md) |
 | 26 | Which design direction does 1.0 take: for colour, type scale, shape, density and motion, what comes from Geist, what comes from another system and what is new? | prototype | open | 04, 05, 24, 25, 27 | — |
 | 27 | Does 1.0 take Geist's exact values (colours, text styles, shadows), or its own values in a structure like Geist's, given that Vercel publishes no license for them? | interview | resolved | 25 | [DEC-136](../decisions/DEC-136-geist-exact-values-without-a-check.md) |
+| 28 | How do other design systems bring token changes from Figma into their repo (a script, a plugin, a CI job or by hand), on which Figma plan, and how do they name token versions? | research | open | — | — |
 
 ## Not yet specified
 - How many design specs the agents draw at one time. DEC-141 asks for as many as possible; the limits of the Figma MCP are not known (RES-025). The plan settles it.
