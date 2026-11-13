@@ -41,6 +41,10 @@ A spec for the 1.0 devtools package: its base, its capabilities, and how it reac
 ### Row 06 — ready to ask
 - Rows 03 and 08 are resolved, so row 06 is on the frontier. RES-044 holds its facts: Figma is the one place where a token of 1.0 changes, so the theming controls cannot write the 1.0 tokens into the repo; the values of a custom theme belong to the outside team, so an export of those breaks no rule.
 
+### Row 06 — pending question
+- Pending question, 2026-11-12: do the theming controls only preview, or do they also export? Options: "Preview and export of a custom theme (Recommended)": a developer tries values for the brand colour, the typeface and the corner radius and saves them as a theme file for the project; "Preview only": the controls change the page while devtools is open and save nothing.
+- The agent's reasons: a custom theme is a dimension of the tokens (DEC-137), and an outside team needs a way to make one; the export touches only the team's own values, so Figma stays the one place where a token of 1.0 changes (RES-044).
+
 ## Map
 
 | # | Question | Type | Status | Blocked by | Result |

@@ -15,8 +15,8 @@ A shared building block from which other components and recipes are composed.
 _Avoid_: A second name for the same building block in each consuming component.
 
 **Recipe**:
-A documented arrangement of shared components for a particular use. A recipe can contain optional content and different sizes. The library does not give a recipe out as a component.
-_Avoid_: Treating a recipe as a separate component; confusing this meaning with another system's style configuration called a recipe.
+A documented arrangement of shared components for a particular use. A recipe can contain optional content and different sizes. The library does not give a recipe out as a component; the documentation shows recipes in its Blocks section.
+_Avoid_: Block as a second name for a recipe outside the name of that section; treating a recipe as a separate component; confusing this meaning with another system's style configuration called a recipe.
 
 **Part**:
 A named piece of a component's anatomy, such as the root, the trigger, the content or an item.
