@@ -61,6 +61,11 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - DEC-141, Peter, 2026-11-12: agents make the design specs in parallel, as many at one time as possible, and he approves once, when all are complete. His words: "option 1 - they can all be created in a parallel - or as much in parallel as possible - I approve when all are completed".
 - Effect on row 13: no approval comes before the last spec, so the format of one spec must be exact before the first spec is drawn.
 
+### Row 13 — pending question
+- Pending question, 2026-11-12: what must one design spec hold? Options: "Twelve items (Recommended)": the nine of the kickoff prompt (anatomy and parts, variants, named sizes, states, tokens, slots, subcomponents, accessibility behaviour, motion) and three more: props and events with their values and defaults, including the style props of a layout component (DEC-131); the component in light and dark and in both reading directions (DEC-137, DEC-138); the behaviour with long content and in a narrow space. "Twelve items and usage guidance": also when to use the component and when not, which settles a part of IDEA-007#04. "The nine items of the prompt": the Lit build decides the rest for each component.
+- The agent's reasons: with DEC-141 no approval comes before the last spec, so the spec must leave nothing for the builder to decide alone; where the usage guidance is written belongs to IDEA-007#04.
+- The agent's choice for where each part sits in Figma, to state after the answer: variants, named sizes and states are properties of the component set; tokens are variables bound to its layers; parts are named layers, shown in one anatomy frame; all text (behaviour, accessibility, motion, props and events, content rules) is in the Specs document beside the component (DEC-118).
+
 ### Row 10 — partial
 - Settled by DEC-120: a token change reaches the repo when a browser agent or a person runs "Export modes"; no CI job reads token values on the Professional plan.
 - Source: DEC-120, decided by the agent on 2026-11-12 under Peter's delegation of the token route.
