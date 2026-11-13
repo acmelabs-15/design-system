@@ -47,6 +47,8 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
   - The main session checked two cells again on 2026-11-12 in the browser, and both match the result file: case 3 for B (the root counts 2 steps, 4 parts with no state) and case 2 for A with the repair off (0 steps, 19 parts with no state, no console message).
   - The prototype recommends nothing, and its result file has no question for Peter.
 - Row 05 — pending question, asked on 2026-11-12 through the question dialog, after all 14 results of the block were in: which architecture does the Lit core use? The question explains part and subcomponent, the three candidates and the observed results. Options: "A: context (Recommended)"; "B: slots"; "C: one element"; "Look at the prototype first". The main session recommends A, because it alone passed all eight cases and gives every subcomponent that the prompt asks for; its stated cost is the most code in each component and a repair that must always be installed. Peter closed the dialog on 2026-11-13 without an answer and sent his additional scope. The question stays pending.
+  - Asked again on 2026-11-13 in a new session, with the same four options. Peter answered "huh?" in the dialog. That is no choice: he did not follow the question. The agent explains it again in chat in plainer words, with one markup example, and asks again with plainer labels: "A: parts ask the root (Recommended)"; "B: parents tell children"; "C: one closed tag"; "Show me the prototype". The letters name the same three candidates.
+  - Answered in part on 2026-11-13, to the second ask: Peter made no choice and asked for research. "Row 05 — partial" below holds his words. No question on row 05 is pending.
 - Row 14 — resolved by RES-045 on 2026-11-12. Facts from it for row 15:
   - Chakra UI 3 writes the CSS of a responsive value in the browser, with Emotion, while React renders. That is CSS-in-JS, which DEC-131 rules out. So 1.0 can take Chakra's syntax and not its mechanism.
   - Radix Themes ships one static CSS file with a class for each token value at each breakpoint, 812,667 bytes. React only sets class names. A value outside the token list goes into an inline custom property.
@@ -58,6 +60,35 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Row 09 — wait: IDEA-001 reaches `done`.
 - Row 10 — wait: IDEA-002 resolves its rows 11 and 13. Row 09 is resolved by DEC-120. DEC-141: Peter approves the design specs once, when all are complete, so the build of the components starts after that approval.
 - Row 12 — wait: IDEA-002#22 decides the variations of Material Symbols. DEC-123 holds Peter's decisions that each icon is a component built with the Icon component, and that the Icon component renders SVG, not an icon font.
+
+### Row 05 — partial
+- Source: Peter's reply of 2026-11-13, typed into the question dialog. His words in full:
+
+  > I'm not totally sure what the answer to this question is. What's important here, I think, is that the core of this is built with lit web components. But I also want to later, or also make React version of the design system. React leans into composition.
+  >
+  > I'm not sure web components are exactly the same. I know they use slots. But I'm not sure how that would work with, for example, a common pattern in React that I like and that I'd like to see in the React version of this library is all of the subcomponents of a component are exported by the library.
+  >
+  > But there's also a wrapper component that composes those subcomponents. And that is used in the cases where customization doesn't need to happen. When customization needs to happen, the subcomponents are accessed so that they can be composed with something custom. I'm not sure how this works with web components and lit.
+  >
+  > This is something we should likely do research on. I'd like to see how the React design systems we're looking at compose their components. Let's see what lit standards are around this. It's unclear to me how much of this should be done in the idea phase versus the spec phase.
+
+- Settled: he makes no choice among A, B and C. He states the requirement of the prompt in his own words: the library exports all subcomponents of a component; a component that composes them serves "the cases where customization doesn't need to happen"; for a custom version a developer composes the subcomponents "with something custom". Conditions: none stated.
+- Asked for by him: research on how the React design systems of the reference set compose their components, and on the standards of Lit for this. Rows 20 and 21 hold it, and row 05 waits for both.
+- What the records already hold, so that the two rows do not repeat it:
+  - RES-042 has Chakra UI: the parts share state through a React context, over a state machine that knows no framework. The package has no convenience component for a component with parts.
+  - RES-043 has the mechanisms of Lit and Lit's own guidance: properties go down and events go up; a parent reads its slot; context is the documented way from a parent to its light DOM children when the parent cannot bind in a template. Its two examples from libraries, Material Web and Shoelace, both read the slot, which is candidate B.
+  - The prototype built the pattern that he describes on Lit with React 19: a convenience `Steps`, and `Steps.Root`, `Steps.Item` and the other subcomponents. It works in candidates A and B (case 8, Chrome only). The agent told him this in chat on 2026-11-13.
+- His open point: "It's unclear to me how much of this should be done in the idea phase versus the spec phase." The agent's placement, by the rule of DEC-147, which it told him:
+  - Idea phase: rows 20 and 21, and the choice of what a developer can do with the parts (each part an element of its own or not; a part at any depth below its root, or direct children only). Reason: the review of the parts (IDEA-001#09), the wrappers (IDEA-004) and the examples of the website (IDEA-007) build on that choice.
+  - Spec phase: the mechanism inside the chosen architecture, such as how a part finds its root and which setup a page needs. Reason: it settles how to build a decided thing. It becomes a deferred row when row 05 is decided.
+- Evidence for row 06: he describes the convenience component as a component "that composes those subcomponents". He does not say where it lives.
+- Term: he calls the convenience component "a wrapper component". The ideas use "wrapper" for the component of a framework package over a Lit element. In a message of the same day he says that the pattern has a name and sets the rule of DEC-148: a glossary term takes the standard name, and research finds it. So the agent assumes no name. Rows 20 and 21 record the names that the sources use. One sourced name is in the records: Chakra UI writes "open, compound components" for the parts and "closed components" for the ready-made form (RES-042). Until the results are in, the ideas keep "convenience component" and "subcomponent" as working words.
+- Added by him on the same day, in two messages (DEC-149): 1.0 follows the best practices of Lit, of web components, of design systems and of React as far as possible, and the core supports the best practices of web components and of React at the same time. His test: "folks using the lit version of this design system shouldn't be surprised at how the components are built and put together. Same for the React folks, solid folks, etc."
+  - It is the test for row 05 and for rows 06, 07, 11, 15 and 17.
+  - A fact for the next ask of row 05: the two sides differ in the records so far. The two Lit libraries of RES-043 read the slot (candidate B). Chakra UI shares state through context (candidate A, RES-042). Rows 20 and 21 show whether that holds across the reference systems and across the Lit libraries.
+  - The practices beyond composition are the deferred row 22.
+- Open: the choice of the architecture.
+- Next: run rows 20 and 21 in the next block of agent work, after his go. Then review both results with him in plain words, and ask row 05 again against the test of DEC-149.
 
 ### Settled by the prompt
 - Lit web components are the core implementation.
@@ -95,7 +126,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 01 | How does Chakra UI export a convenience component beside its subcomponents, and how do the subcomponents share state? | research | resolved | — | [RES-042](../research/RES-042-chakra-ui-composition-exports.md) |
 | 02 | Which mechanisms does Lit give for composition between a parent and its parts (slots, light DOM children, context, shadow parts), and what are the limits of each? | research | resolved | — | [RES-043](../research/RES-043-lit-composition-mechanisms.md) |
 | 04 | Must 1.0 render on the server? | interview | resolved | — | [DEC-127](../decisions/DEC-127-no-server-rendering-in-1-0.md) |
-| 05 | Which composition architecture does the Lit core use? | prototype | open | 01, 02, 04 | — |
+| 05 | Which composition architecture does the Lit core use? | prototype | open | 01, 02, 04, 20, 21 | — |
 | 06 | Where does the convenience component live: as a Lit element in the core, in the framework wrappers only, or as a snippet that the consumer copies into the project? | interview | open | 05 | — |
 | 07 | Which source gives the components their behaviour: state machine packages, ports of them, or our own logic? | interview | open | 05 | — |
 | 08 | How do the token files from IDEA-002 reach the styles of the components? | interview | open | 05, 10 | — |
@@ -108,6 +139,8 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 15 | Which mechanism do the style props of the layout components use in the Lit core? | interview | open | 14 | — |
 | 16 | Import the list of utilities and hooks from IDEA-001. | task | open | — | — |
 | 17 | In which form does the Lit core hold the logic of the utilities and hooks, and how does it export that logic for users of plain web components? | interview | open | 05, 16 | — |
+| 20 | How do shadcn/ui, Radix Primitives, Radix Themes and Geist let a developer compose a component from its parts: which parts does each export, does a component that composes the subcomponents exist beside them and where does it live, how do the parts share state, and how does a developer wrap or replace a part? Which names do these systems, React's documentation and wider React writing give to this pattern and to its two forms, and what do they state as best practice for it? RES-042 holds the same facts for Chakra UI. | research | open | — | — |
+| 21 | How do Lit libraries and other web component libraries in wide use build a component with parts: which mechanism links a parent and its parts (the parent reads its slot, context, events, or one closed element), what happens to a part inside a wrapper element, and does any library offer one component as a ready-made form and as a composed form? What do Lit's documentation, its maintainers and the published best practices for web components state for such components, and which names do they use? RES-043 holds the mechanisms and two examples. | research | open | — | — |
 
 ## Deferred rows
 Rows of the spec phase, by [the workspace rule](../agents/workspace.md#deferred-rows). They are not open and not on the frontier. Each one moves into the spec of this idea when its spec phase starts.
@@ -116,6 +149,7 @@ Rows of the spec phase, by [the workspace rule](../agents/workspace.md#deferred-
 |---|---|---|---|---|---|
 | 18 | Code Block: which API do other components have that render code and markdown as a stream and as static text: their props, their events, how they take a stream, and how they highlight code? Peter asks for this research before the design of ours. Source: his additional scope of 2026-11-13, item 1. | research | deferred | — | — |
 | 19 | Code Block: how are TanStack Markdown and TanStack Highlight built into the component, for streaming and for static rendering, in a Lit element that also works on a page with no build step? Source: the same item. | task | deferred | — | — |
+| 22 | Which published best practices for custom elements, for Lit and for a component library of each framework target apply to the core beyond composition: attributes and properties, events, forms, registration and loading, styling hooks and accessibility? Where do the practices of web components and of React conflict? The findings become a checklist for the core build. Deferred by the agent: it settles how to build the decided core, and rows 20 and 21 hold the practices for composition, which change what is built. Source: Peter, 2026-11-13, DEC-149. | research | deferred | — | — |
 
 ## Not yet specified
 These sharpen after row 05.

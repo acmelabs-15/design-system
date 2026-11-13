@@ -16,6 +16,10 @@ When your output names a domain concept, in a task title, a spec, a test name or
 
 A concept the glossary lacks is a signal: either you are inventing a word the project does not use, so reconsider, or there is a real gap, so note it for the domain-modeling skill.
 
+## Name a new term by its standard
+
+A new glossary term for a pattern or a concept takes the name that its field already uses, so that a developer who knows the field needs no translation. Look the name up at its sources: the platform specification, the framework's documentation, the reference systems. A name from memory is a candidate to check. The term is ready for the glossary when the record that settles it cites the source of the name. Peter set this rule on 2026-11-13 ([DEC-148](../decisions/DEC-148-glossary-terms-take-the-standard-name.md)).
+
 ## Flag a decision you contradict
 
 If your output contradicts a decision record, say so where the reader will see it, and say why it is worth reopening. Do not override it in silence.

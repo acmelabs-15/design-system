@@ -41,6 +41,8 @@ Source: [Peter's kickoff prompt](../design/v1-kickoff-prompt.md) of 2026-11-12 a
 - Since 2026-11-13 the work has ten ideas. Peter's additional scope adds IDEA-008 (Claude Design compatibility) and IDEA-009 (design skill for Figma), each with his words "Stub its idea file now", and IDEA-010 (CI/CD, deployment and build tooling), which is a proposal until he decides IDEA-010#01. These rules hold for all ten.
 - Work of the spec phase is a deferred row (DEC-147). [The workspace file](../agents/workspace.md#deferred-rows) holds the rule.
 - Peter, 2026-11-13: "Show me which ideas changed and any new ideas you propose, before interviewing on them." The agent showed him the changes in chat on 2026-11-13. No interview on a new row starts before he has seen them.
+- Peter, 2026-11-13 (DEC-148): a glossary term takes the standard name of its pattern or concept. When the name is not certain, research looks it up; the agent assumes no name. [Domain routing](../agents/domain.md) holds the rule.
+- Peter, 2026-11-13 (DEC-149): 1.0 follows the best practices of Lit, of web components, of design systems and of React as far as possible, and the core supports the best practices of web components and of React at the same time. A user of the Lit version, of the React version or of another framework's version is not surprised at how the components are built and put together.
 - Peter, 2026-11-13, asked whether brain holds a dependency graph between ideas. It does not in version 0.13.0: the header of an idea names no other idea, a "Blocked by" cell takes only rows of the same map, and `brain status` computes each idea alone. The ideas hold their links by hand, as "Import" task rows with a note on what each waits for. The agent offered one hand-kept table of row-to-row links in this file, and Peter answered "no". So no such table is made.
 
 ### Working state for all six ideas
@@ -67,9 +69,9 @@ State at the end of the session of 2026-11-13, which Peter ended to save context
   - "Documentation blocks" are the pieces of the website's own pages (IDEA-007, Notes).
   - IDEA-010 as an idea of its own (IDEA-010#01), and the agent's recommendation that the blocks get an idea of their own (IDEA-007#09).
 - Next, in this order:
-  1. Ask the pending question IDEA-003#05 again. IDEA-003, Notes, holds its text, its four options and the recommendation.
-  2. Ask for Peter's go for the next block of agent work. The go of 2026-11-12 covered the 14 agents only. Ready rows: the research rows IDEA-001#12, IDEA-005#10, IDEA-005#11, IDEA-006#09, IDEA-007#10, IDEA-008#01, IDEA-009#01 and IDEA-010#02; the listing task IDEA-010#04; and the trial IDEA-005#03. The test IDEA-004#03 follows his choice of the architecture and IDEA-004#02.
-  3. Continue the follow-up questions of the list under "Block of agent work" below, most important first, one at a time.
+  1. Done in a new session on 2026-11-13: the question IDEA-003#05 was asked twice. Peter made no choice. He asked for research and set two rules (DEC-148 and DEC-149). IDEA-003, Notes, "Row 05 — partial" holds his words. The research is IDEA-003 rows 20 and 21; after their results the agent reviews both with him and asks row 05 again.
+  2. Ask for Peter's go for the next block of agent work. The go of 2026-11-12 covered the 14 agents only. Ready rows, 12 in all: the research rows IDEA-001#12, IDEA-003#20, IDEA-003#21, IDEA-005#10, IDEA-005#11, IDEA-006#09, IDEA-007#10, IDEA-008#01, IDEA-009#01 and IDEA-010#02; the listing task IDEA-010#04; and the trial IDEA-005#03. The test IDEA-004#03 follows his choice of the architecture and IDEA-004#02.
+  3. Continue the follow-up questions of the list under "Block of agent work" below, most important first, one at a time. Questions 1 and 3 of that list wait for IDEA-003 rows 20 and 21. The next one is question 2, the design direction (IDEA-002#26).
 - The Notes of each idea hold the facts of each result of the block. A session reads a result file in full for the question in front of it.
 
 ### Additional scope of 2026-11-13
