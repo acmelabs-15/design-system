@@ -23,7 +23,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 
 ### Waits
 - Rows 06, 20, 26 and 28 — running since 2026-11-12, in the block of agent work that Peter approved. Each agent started without a name; its log records `claude-opus-5-5` and the effort `medium`. The list is in IDEA-001, Notes, "Block of agent work".
-  - Row 06: researcher agent `a278b8c98ca46fab4`, record RES-046.
+  - Row 06: done on 2026-11-12. Researcher agent `a278b8c98ca46fab4`, record RES-046.
   - Row 28: researcher agent `a51af336d2021a7fa`, record RES-049.
   - Row 20: done on 2026-11-12. Task agent `afaf8c600aefa4a34`, task record RES-048, scratch folder `.artifacts/v1/trial/IDEA-002-20/`.
   - Row 26: task agent `a1f8073e09f49bbcb` builds the prototype in `.artifacts/v1/prototype/IDEA-002-26/`, with `IDEA-002-26-progress.md` and `IDEA-002-26-result.md`. When the result is complete, the row is open again and waits for Peter's choice.
@@ -61,6 +61,16 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 ### Row 26 — ready, next for the agent
 - Every row that row 26 waited for is resolved: 04, 05, 24, 25 and 27.
 - Next: load brain's prototype skill and draw sample components in the candidate directions. The fixed inputs: Geist's exact values where a part comes from Geist (DEC-136); Google Sans Flex and Google Sans Code (DEC-128); light and dark, with custom themes (DEC-137); level AA and both reading directions (DEC-138); Material Symbols (DEC-123). The open parts: spacing, control heights, motion and focus ring, which Geist does not document; the text styles with the new typeface; each colour of Geist that fails level AA.
+
+### Row 06 — resolved
+- RES-046, 2026-11-12, from Figma's documentation, with no Figma call. Facts from it for row 07:
+  - A published library: a designer adds it to a file. A new version shows a badge in each file, and a person with edit access clicks Update. Nothing updates by itself on any plan.
+  - A designer of an outside team needs view access to the library file, which costs no seat. Figma documents a second way for one outside team, the connected folder; the Professional plan allows three.
+  - A custom plugin on the Professional plan can be published only to the Figma Community, for everyone, after one review by Figma. A private plugin needs Organization or Enterprise (RES-024).
+  - Components that a plugin draws into a file are local to that file and get no updates. A plugin can also insert the components of a published library by key; those update as library instances. So a plugin that stays in sync needs the published library too.
+  - A Community file gives a copy. A copy never gets an update.
+  - A brand of its own for an outside team: extended collections need Enterprise. On Professional a brand is another mode, another collection or another library. This bears on custom themes (DEC-137).
+  - Open, and no documentation settles it: how a designer of another team, with view access only, finds the library and adds it in a file of that team. A live test with a second Figma account settles it. It is under "Not yet specified".
 
 ### Row 12 — resolved
 - DEC-141, Peter, 2026-11-12: agents make the design specs in parallel, as many at one time as possible, and he approves once, when all are complete. His words: "option 1 - they can all be created in a parallel - or as much in parallel as possible - I approve when all are completed".
@@ -135,7 +145,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 03 | What is the visual starting point for 1.0: the 0.3.3 look, the look of one reference system, or a new design? | interview | superseded by 23 | — | — |
 | 04 | Which theme dimensions must the tokens carry (colour scheme, density, accent, custom themes)? | interview | resolved | — | [DEC-137](../decisions/DEC-137-theme-dimensions-light-dark-and-custom-themes.md) |
 | 05 | Which accessibility standard, reading directions and input modes do the specs target? | interview | resolved | — | [DEC-138](../decisions/DEC-138-accessibility-target-wcag-2-2-aa-both-directions.md) |
-| 06 | How do a published Figma library and a custom Figma plugin each give components to designers, and how does each stay in sync with new versions? | research | in-progress | 02 | — |
+| 06 | How do a published Figma library and a custom Figma plugin each give components to designers, and how does each stay in sync with new versions? | research | resolved | 02 | [RES-046](../research/RES-046-figma-designer-routes.md) |
 | 07 | Do designers get the system through a published library, a custom plugin, or both? | interview | open | 06 | — |
 | 08 | Which routes export tokens from Figma to the repo, and how does each handle change flow and versions? | research | resolved | 02 | [RES-026](../research/RES-026-figma-token-export-routes.md) |
 | 09 | Which token export route does 1.0 use? | interview | resolved | 08, 19 | [DEC-120](../decisions/DEC-120-token-export-route.md) |
@@ -160,6 +170,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 28 | How do other design systems bring token changes from Figma into their repo (a script, a plugin, a CI job or by hand), on which Figma plan, and how do they name token versions? | research | in-progress | — | — |
 
 ## Not yet specified
+- How a designer of another Professional team, with view access to the library file only, finds the library and adds it to a file of that team (RES-046, Follow-ups). It needs a live test with a second Figma account. It sharpens at row 07.
 - How many design specs the agents draw at one time. DEC-141 asks for as many as possible; the limits of the Figma MCP are not known (RES-025). The plan settles it.
 - Whether the design direction of row 26 needs one decision for each part of the look. It sharpens when the first samples are drawn.
 - The dependency graph of the design specs, which DEC-142 asks for. The plan builds it when IDEA-001#09 has decided the parts.
