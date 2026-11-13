@@ -21,6 +21,10 @@ The documentation website of 1.0 has a Blocks section for recipes (DEC-140, DEC-
 - App layouts, such as a dashboard, a sidebar layout, a login page and a signup page. shadcn/ui has 27 such blocks.
 - Charts, on a third-party chart engine.
 
+## Correction of 2026-11-13
+
+The sentence above that no reference system has page sections for marketing and content sites is wrong in one point. RES-067 found them in Chakra UI Pro, a paid site apart from the documentation of Chakra UI: 114 marketing blocks and 50 documentation blocks. The documentation of the five reference systems themselves has none. The decision of the four groups stands.
+
 ## Named with "maybe"
 
 - Data tables, with virtualization, that use TanStack packages.

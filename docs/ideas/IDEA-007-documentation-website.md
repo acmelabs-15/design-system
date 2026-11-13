@@ -67,8 +67,24 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - IDEA-005#06 asks which tools and records the MCP server serves, and IDEA-005#09 asks how an agent with no project gets the 1.0 guidance. Row 04 here is the other view of the same source.
 - IDEA-003#11: one HTML page uses 1.0 from a CDN with no build step. The website shows that way of use beside the framework packages.
 
+### Row 10 — resolved
+- RES-067, 2026-11-13, from the documentation and the registries of the systems. It holds each block by name.
+- Counts, for row 11:
+  - shadcn/ui: 21 patterns in AI Elements, 27 blocks for pages and layouts (1 dashboard, 16 sidebars, 5 login pages, 5 signup pages) and 70 chart blocks in 7 kinds of chart. It has no block for a marketing page.
+  - Chakra UI: no blocks in its documentation, and a chart package with documented examples. Chakra UI Pro, a paid site apart from it: 338 blocks in four groups (application 151, marketing 114, e-commerce 23, documentation 50), 5 of them AI blocks, and 7 free blocks. Its code is not public, so the record has the names and, for the AI blocks, what the preview images show.
+  - Radix Primitives and Geist: none. Radix Themes: no blocks section; three example pages (a dashboard, a shop, a music app) that exist only in the source of its website.
+- The AI blocks, for the group "agent interfaces": the record lists each of the 21 patterns of AI Elements with the components that it composes and the states that it shows. The steps of an agent inside one turn (reasoning, a tool call, a plan, a task, sources and others) are all built on the Trace component, so each step has one shape. A pattern is code on the page that the developer copies; there is no package.
+- How a block is given out: shadcn/ui copies a registry item with one command; Chakra UI Pro needs a paid subscription and an API key.
+- Against the four groups of DEC-146: agent interfaces, app layouts and charts have blocks in shadcn/ui and in Chakra UI Pro. Page sections for marketing exist only in Chakra UI Pro. The e-commerce blocks of Chakra UI Pro and two of the examples of Radix Themes fit none of the four groups.
+- For the deferred row 14 and the reading of "documentation blocks": Chakra UI Pro has a group named documentation with 50 blocks, the pieces of a documentation website: navbar, sidebar, header, code block, example preview, table of contents, parameter field, step, pagination and changelog. So "documentation blocks" is a group that another system has. It is evidence for the agent's reading and no confirmation by Peter.
+- A correction to DEC-146: its sentence that no reference system has page sections for marketing sites was wrong for Chakra UI Pro. The record now carries the correction. The decision of the four groups stands.
+- For "Which chart engine the chart blocks use" under "Not yet specified": the charts of shadcn/ui and the chart package of Chakra UI are both built on Recharts, a React library.
+- For IDEA-005#13: the page of AI Elements also offers a prompt for a coding agent.
+- All eight chat components of shadcn/ui are in the list of DEC-135. Two patterns share a name with a component of the list, File Tree and Message; IDEA-001, Notes, holds the point for the review of the parts.
+- Not confirmed by the record: what each block of Chakra UI Pro composes, the content of its four templates, and the chatbot template of shadcn/ui, which it did not read.
+
 ### Second block of agent work
-- Row 10 — running since 2026-11-13, in the second block of agent work (IDEA-001, Notes, "Second block of agent work"). Researcher agent `ab6e1ab009a6abe73`, started without a name on Peter's word "start the block"; its log records Opus 5.5 and the effort `medium`. Its record is found by its `from`. Its brief is `.artifacts/v1/briefs/IDEA-007-10.md` with `common.md`. It is the third start: two starts of the same day ended in outages of the Claude login, and their records were removed at Peter's request. Check the log again when the agent ends, before its record is read.
+- Row 10 — done on 2026-11-13: RES-067, from the researcher agent `ab6e1ab009a6abe73`, started without a name. Its log records Opus 5.5 and the effort `medium` on all 114 requests, checked after the agent ended. It was the third start of the row; two starts of the same day ended in outages of the Claude login.
 
 ## Map
 
@@ -83,7 +99,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 07 | Import the composition architecture from IDEA-003 and the framework targets from IDEA-004. | task | open | — | — |
 | 08 | Import the component list, names and parts from IDEA-001 and the format of a design spec from IDEA-002. | task | open | — | — |
 | 09 | Do the blocks and recipes get an idea of their own, or do they stay in this idea? | interview | open | — | — |
-| 10 | Which blocks and recipes do shadcn/ui, Radix (Primitives and Themes), Chakra UI and Geist have, and which AI components and AI blocks among them: for each, what it composes, which state and composition pattern it shows, and how the system gives it out? | research | in-progress | — | — |
+| 10 | Which blocks and recipes do shadcn/ui, Radix (Primitives and Themes), Chakra UI and Geist have, and which AI components and AI blocks among them: for each, what it composes, which state and composition pattern it shows, and how the system gives it out? | research | resolved | — | [RES-067](../research/RES-067-blocks-and-recipes-of-the-reference-systems.md) |
 | 11 | Which blocks does 1.0 have, by name, in each group of DEC-146? | interview | open | 10 | — |
 | 12 | Is Figma or code the source of truth of a block? | interview | open | — | — |
 | 13 | Where do the blocks live in the documentation, and where do the source files of a block live? | interview | open | — | — |

@@ -23,7 +23,7 @@ A decision: 1.0 gets a design skill for Figma or not, and in which form. If it d
 - This idea is a stub. Peter asked for it on 2026-11-13: "This is a new idea that needs research. Stub its idea file now." Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-13, item 11.
 - His words for the skill: "a skill, maybe called a design skill or a Figma skill, that knows every ACMElabs design system component and block in Figma, what each one is and how to use it, so that an agent connected to a Figma MCP can use them to build new Figma designs accurately."
 - The name of the skill is open; he gives "design skill" and "Figma skill" with "maybe".
-- No research has started. A research agent needs Peter's go, as the program rules say.
+- Row 01 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `a46b5cee5e1ed59e3`, started without a name on Opus 5.5 at the effort `medium`, when the second agent of the block ended. Its record is found by its `from`. Its brief is `.artifacts/v1/briefs/IDEA-009-01.md` with `common.md`. Check the log when the agent ends, before its record is read.
 
 ### Evidence from other ideas
 - RES-030 (IDEA-005#01): Figma ships its own skills as a plugin for each agent host, from the repository `figma/mcp-server-guide`, with no npm package.
@@ -35,7 +35,7 @@ A decision: 1.0 gets a design skill for Figma or not, and in which form. If it d
 
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
-| 01 | How do existing skills and guides teach an agent to build designs from a Figma library through a Figma MCP (Figma's own skills, Code Connect, the design system skills of other libraries), and what does each need from the library and from the agent host? | research | open | — | — |
+| 01 | How do existing skills and guides teach an agent to build designs from a Figma library through a Figma MCP (Figma's own skills, Code Connect, the design system skills of other libraries), and what does each need from the library and from the agent host? | research | in-progress | — | — |
 | 02 | In a trial with the Figma MCP: can an agent with a draft of the skill place the right components of a published library in a new design, with the right variants and variables, and where does it fail? | task | open | 01 | — |
 | 03 | Does 1.0 get a design skill for Figma, and in which form? | interview | open | 01, 02 | — |
 
