@@ -41,14 +41,14 @@ A spec for the repository of 1.0: its build tools, its checks in CI, its release
 - RES-047 (IDEA-007#02), for row 03: where ten design systems host their documentation websites.
 
 ### Second block of agent work
-- Row 02 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `ae59be64c4a05bad1`, started without a name; its log records Opus 5.5 and the effort `medium`. Its record is RES-064. It is the second start: the first agent, `aa556c58a7e16551c`, ended in the outage of the Claude login on 2026-11-13, and its record was removed at Peter's request.
+- Row 02 — not running. Two starts on 2026-11-13 ended in outages of the Claude login, and the records of both were removed at Peter's request (IDEA-001, Notes, "Second block of agent work"). No record exists for this row. It waits for Peter's explicit word to start the block again. Its brief is `.artifacts/v1/briefs/IDEA-010-02.md` with `common.md`; it runs on Opus 5.5 at the effort `medium`.
 
 ## Map
 
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
 | 01 | Is CI/CD, deployment and build tooling an idea of its own, which is this one, or a part of another idea? | interview | open | — | — |
-| 02 | What do shadcn/ui, Radix (Primitives and Themes), Chakra UI, Geist and TanStack use for CI/CD, deployment and build tools: the monorepo tool, the package manager, the bundler, the test runners and browsers in CI, caching, the release and publish flow and preview deployments, and how long do their pipelines take? | research | in-progress | — | — |
+| 02 | What do shadcn/ui, Radix (Primitives and Themes), Chakra UI, Geist and TanStack use for CI/CD, deployment and build tools: the monorepo tool, the package manager, the bundler, the test runners and browsers in CI, caching, the release and publish flow and preview deployments, and how long do their pipelines take? | research | open | — | — |
 | 03 | Which build tools, CI pipeline, release flow and deployment does 1.0 use? | interview | open | 02 | — |
 | 04 | List what the branch holds now, by area: code, packages, website, tools, CI, docs, research, specs, glossaries, agent context files and saved prompts, with the size of each area and what uses it. | task | open | — | — |
 | 05 | What survives the removal of the old system: for each area of the list, does it stay, go or move? | interview | open | 04 | — |
