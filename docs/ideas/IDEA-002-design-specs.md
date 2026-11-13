@@ -31,10 +31,6 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Peter, 2026-11-12, during row 19: "there should be a figma token you can use from 1password". The agent used it for the six REST reads of RES-028 only. Another use needs its own reason in the row that needs it.
 - Direction given on 2026-11-12: no Organization or Enterprise plan before rows 07 and 09 are decided. Not checked: how files move when a Professional team upgrades to Organization.
 
-### Row 03 — question pending
-- Asked on 2026-11-12 through the question dialog: where does the 1.0 look start? Options: the 0.3.3 look (recommended: Peter chose its parts one by one, no record says the look is the problem, and its token values exist in the repo); the look of one reference system; a new design with a design direction step first.
-- Evidence in the question: DEC-082 (Geist is the baseline of the 0.3.3 look), DEC-060 (Material Symbols icons), DEC-059 (Material motion), DEC-008 (blue accent), the Google Sans Flex fonts, and DEC-119 (outside teams and marketing sites are audiences).
-
 ### Row 10 — partial
 - Settled by DEC-120: a token change reaches the repo when a browser agent or a person runs "Export modes"; no CI job reads token values on the Professional plan.
 - Source: DEC-120, decided by the agent on 2026-11-12 under Peter's delegation of the token route.
@@ -72,6 +68,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 ### Conditions
 - Row 02 selected Figma (DEC-117), so rows 06 to 11 apply as written.
 - Row 18 put the whole spec in Figma with an agent-run pull (DEC-118). Row 13 now also decides where each part of a spec sits in Figma.
+- Row 03 made the 0.3.3 look the start (DEC-121). The icon set (DEC-060) and the motion system (DEC-059) of 0.3.3 are the starting point, so they are no open points of their own.
 
 ## Map
 
@@ -79,7 +76,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 |---|---|---|---|---|---|
 | 01 | What can the Figma MCP read and write today (components, variants, variables, libraries), and what are its limits? | research | resolved | — | [RES-023](../research/RES-023-figma-mcp-capabilities.md) |
 | 02 | Are the design specs made in Figma through the Figma MCP, or as spec documents in the repo? | interview | resolved | 01, 15, 16 | [DEC-117](../decisions/DEC-117-design-specs-in-figma.md) |
-| 03 | What is the visual starting point for 1.0: the 0.3.3 look, the look of one reference system, or a new design? | interview | open | — | — |
+| 03 | What is the visual starting point for 1.0: the 0.3.3 look, the look of one reference system, or a new design? | interview | resolved | — | [DEC-121](../decisions/DEC-121-visual-start-is-the-0-3-3-look.md) |
 | 04 | Which theme dimensions must the tokens carry (colour scheme, density, accent, custom themes)? | interview | open | — | — |
 | 05 | Which accessibility standard, reading directions and input modes do the specs target? | interview | open | — | — |
 | 06 | How do a published Figma library and a custom Figma plugin each give components to designers, and how does each stay in sync with new versions? | research | open | 02 | — |
@@ -100,7 +97,8 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 
 ## Not yet specified
 - The order and batch size of the component specs. The plan settles it.
-- The icon set and the motion system. They sharpen after row 03.
+- How the 0.3.3 token values and styles get into the first Figma library. The plan settles it.
+- How a component gets its design when the 0.3.3 look has no example of it (DEC-121). It sharpens with rows 12 and 13.
 - How a design spec records responsive behaviour.
 - The layout of the pulled Markdown files in the repo, and what starts a pull. They sharpen after row 13.
 

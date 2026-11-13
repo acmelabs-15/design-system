@@ -44,6 +44,7 @@ These records are evidence, not answers. Find them through the [decision index](
 - For row 04: content sites and outside teams often render pages on a server. This is evidence for the question, not Peter's answer.
 - For row 11: artifacts are often one HTML file that loads from a CDN, so 1.0 must work with no build step. DEC-119 states that need; row 11 decides the delivery.
 - DEC-118 (IDEA-002#18): each design spec reaches the repo as Markdown that an agent pulls from Figma. Row 10 imports that format.
+- RES-035 and RES-037 (IDEA-001#01), evidence for rows 01 and 06: the Chakra UI inventory marks 19 of 115 components as offered both as one ready-made component and as parts, 46 as parts only and 50 as one component.
 - RES-029 (IDEA-004#01), evidence for row 04: Preact's server renderer does not write complex property values into the HTML; they reach the element at hydration. React's rule for properties on the server is not confirmed yet.
 
 ## Map
