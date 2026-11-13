@@ -22,7 +22,7 @@ A spec for the MCP server and the consumer skills of 1.0: where they ship, what 
 - Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas).
 
 ### Waits
-- Row 01 — wait: Peter's go for the four sweeps. It runs through the `deep-research` workflow; see the waits in IDEA-001.
+- Row 01 — running since 2026-11-12, after Peter's go (IDEA-001, Notes). Record: RES-030. Workflow run `wf_8bcd09ce-64d`, task `wm5cabubv`, from the script `.artifacts/v1/research/deep-research-opus-medium.js`. Its first agent's log records `claude-opus-5-5` and the effort `medium`. The main session files the report in RES-030 when the run ends.
 
 ### Settled by the prompt
 - The direction to test: the MCP server and the skills ship inside the design system npm package, so their versions always match the installed components.
@@ -46,7 +46,7 @@ These records are evidence, not answers. Find them through the [decision index](
 
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
-| 01 | How do other libraries ship MCP servers and agent skills (inside the library package or apart), how do they install them into a consumer project, and how do agent hosts find them? | research | open | — | — |
+| 01 | How do other libraries ship MCP servers and agent skills (inside the library package or apart), how do they install them into a consumer project, and how do agent hosts find them? | research | in-progress | — | — |
 | 02 | How does release 0.3.3 ship its MCP server and consumer skills, and which limits do its records name? | research | open | — | — |
 | 03 | Does an `init` script from the package's `bin` install a working MCP server and skills into a consumer project? | task | open | 01, 02 | — |
 | 04 | Do the MCP server and the skills ship inside the design system package, or as separate packages? | interview | open | 01, 03 | — |

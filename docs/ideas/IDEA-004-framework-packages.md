@@ -22,7 +22,7 @@ A spec for the framework packages: the chosen targets, the way each wrapper is p
 - Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas).
 
 ### Waits
-- Row 01 — wait: Peter's go for the four sweeps. It runs through the `deep-research` workflow; see the waits in IDEA-001.
+- Row 01 — running since 2026-11-12, after Peter's go (IDEA-001, Notes). Record: RES-029. Workflow run `wf_737727d2-447`, task `w9wlqmzrx`, from the script `.artifacts/v1/research/deep-research-opus-medium.js`. Its first agent's log records `claude-opus-5-5` and the effort `medium`. The main session files the report in RES-029 when the run ends.
 - Row 02 — wait: IDEA-003#05 is resolved.
 
 ### Settled by the prompt
@@ -41,7 +41,7 @@ A spec for the framework packages: the chosen targets, the way each wrapper is p
 
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
-| 01 | For React, Preact, TanStack Redact and Solid: how does each handle custom elements, how do other libraries generate or write wrappers for it, and how do they test those wrappers? | research | open | — | — |
+| 01 | For React, Preact, TanStack Redact and Solid: how does each handle custom elements, how do other libraries generate or write wrappers for it, and how do they test those wrappers? | research | in-progress | — | — |
 | 02 | Import the composition architecture from IDEA-003. | task | open | — | — |
 | 03 | Does the React package run on Redact unchanged? | task | open | 01, 02 | — |
 | 04 | Which targets ship in 1.0? | interview | open | 01, 03 | — |

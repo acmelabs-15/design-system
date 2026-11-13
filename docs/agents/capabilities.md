@@ -43,4 +43,11 @@ Start every delegated agent that gathers evidence for a row this way. It covers 
 
 Peter chose this route on 2026-11-12 over a project setting, so no settings file sets these values. The background: on that day three named agents ran on Opus 5.5 at `xhigh`, because they took the effort that Peter's user settings save for that model. Claude Code's documentation gives the orders of precedence: https://code.claude.com/docs/en/sub-agents and https://code.claude.com/docs/en/model-config.
 
-Not checked yet: whether the built-in `deep-research` workflow lets its caller set the model and effort of its agents.
+### Workflows
+
+A workflow starts its own agents, so the same values apply to each of them (Peter, 2026-11-12).
+
+1. Set `model: "opus"` and `effort: "medium"` on every `agent()` call of the workflow script.
+2. After the start, confirm both values in the log of the first agent: `~/.claude/projects/<project>/<session>/subagents/workflows/<run ID>/agent-<id>.jsonl`. If either value is wrong, stop the run and tell Peter.
+3. The built-in `deep-research` workflow takes only the question and sets neither value, so its agents take the session's model and effort. Run the copy `.artifacts/v1/research/deep-research-opus-medium.js` with the question as `args`. The copy is scratch, outside git. When it is missing, make it again: take the script that a run of the built-in workflow saves under the session folder, and add the two values to each of its five `agent()` calls.
+4. One run of that script reads at most 15 sources and checks at most 25 claims. It fits a landscape question; it cannot list every item of a large set.

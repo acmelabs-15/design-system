@@ -22,7 +22,7 @@ A spec for the 1.0 devtools package: its base, its capabilities, and how it reac
 - Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas).
 
 ### Waits
-- Row 01 — wait: Peter's go for the four sweeps. It runs through the `deep-research` workflow; see the waits in IDEA-001.
+- Row 01 — running since 2026-11-12, after Peter's go (IDEA-001, Notes). Record: RES-031. Workflow run `wf_40354acd-051`, task `w76opab21`, from the script `.artifacts/v1/research/deep-research-opus-medium.js`. Its first agent's log records `claude-opus-5-5` and the effort `medium`. The main session files the report in RES-031 when the run ends.
 - Row 07 — wait: IDEA-003#05 and IDEA-004#04 are resolved.
 - Row 08 — wait: IDEA-002#09 is resolved.
 
@@ -38,7 +38,7 @@ A spec for the 1.0 devtools package: its base, its capabilities, and how it reac
 
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
-| 01 | What does TanStack Devtools offer for extension and for a fork, and which other bases for devtools exist? | research | open | — | — |
+| 01 | What does TanStack Devtools offer for extension and for a fork, and which other bases for devtools exist? | research | in-progress | — | — |
 | 02 | What does the 0.3.3 devtools package do, and which limits do its records name? | research | open | — | — |
 | 03 | Which capabilities must the first devtools release have beyond live prop switching and theming controls? | interview | open | — | — |
 | 04 | Is devtools built on TanStack Devtools (extended or forked), or built by us? | interview | open | 01, 02, 03 | — |
