@@ -68,7 +68,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - IDEA-003#11: one HTML page uses 1.0 from a CDN with no build step. The website shows that way of use beside the framework packages.
 
 ### Second block of agent work
-- Row 10 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `ac48c8f080a6593e2`, started without a name; its log records `claude-opus-5-5` and the effort `medium`. Its record is found by its `from`.
+- Row 10 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `a870c83a51dd4f18a`, started without a name; its log records Opus 5.5 and the effort `medium`. Its record is RES-060. It is the second start: the first agent, `ac48c8f080a6593e2`, ended in the outage of the Claude login on 2026-11-13, and its record was removed at Peter's request.
 
 ## Map
 

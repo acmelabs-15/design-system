@@ -63,8 +63,8 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Row 06 here and IDEA-007#04 are two views of one source of records. Decide them together.
 
 ### Second block of agent work
-- Row 10 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `af3791617d31baa3d`, started without a name; its log records `claude-opus-5-5` and the effort `medium`. Its record is found by its `from`.
-- Row 11 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `a21096afbdac601b0`, started without a name; its log records `claude-opus-5-5` and the effort `medium`. Its record is found by its `from`.
+- Row 10 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `a5a2f75079f78591f`, started without a name; its log records Opus 5.5 and the effort `medium`. Its record is RES-062. It is the second start: the first agent, `af3791617d31baa3d`, ended in the outage of the Claude login on 2026-11-13, and its record was removed at Peter's request.
+- Row 11 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `afba2456411f2609a`, started without a name; its log records Opus 5.5 and the effort `medium`. Its record is RES-058. It is the second start: the first agent, `a21096afbdac601b0`, ended in the outage of the Claude login on 2026-11-13, and its record was removed at Peter's request.
 
 ## Map
 

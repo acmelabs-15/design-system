@@ -41,7 +41,7 @@ A spec for the repository of 1.0: its build tools, its checks in CI, its release
 - RES-047 (IDEA-007#02), for row 03: where ten design systems host their documentation websites.
 
 ### Second block of agent work
-- Row 02 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `aa556c58a7e16551c`, started without a name; its log records `claude-opus-5-5` and the effort `medium`. Its record is found by its `from`.
+- Row 02 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `ae59be64c4a05bad1`, started without a name; its log records Opus 5.5 and the effort `medium`. Its record is RES-064. It is the second start: the first agent, `aa556c58a7e16551c`, ended in the outage of the Claude login on 2026-11-13, and its record was removed at Peter's request.
 
 ## Map
 

@@ -64,7 +64,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - DEC-145, Peter, 2026-11-12: the theming controls preview a custom theme and export it as a theme file. The export holds only a team's own values; RES-044 holds the facts.
 
 ### Second block of agent work
-- Row 09 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `a96e132160640b841`, started without a name; its log records `claude-opus-5-5` and the effort `medium`. Its record is found by its `from`.
+- Row 09 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `a3522f423f715c650`, started without a name; its log records Opus 5.5 and the effort `medium`. Its record is RES-063. It is the second start: the first agent, `a96e132160640b841`, ended in the outage of the Claude login on 2026-11-13, and its record was removed at Peter's request.
 
 ## Map
 

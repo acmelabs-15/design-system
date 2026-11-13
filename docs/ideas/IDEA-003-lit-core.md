@@ -120,8 +120,8 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - RES-029 (IDEA-004#01), collected for row 04 before DEC-127 resolved it: Preact's server renderer does not write complex property values into the HTML; they reach the element at hydration. React's rule for properties on the server is not confirmed yet.
 
 ### Second block of agent work
-- Row 20 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `ae81d7fa184fcddfd`, started without a name; its log records `claude-fable-5-2` and the effort `medium`. Its record is found by its `from`.
-- Row 21 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `a833e86824310cc58`, started without a name; its log records `claude-fable-5-2` and the effort `medium`. Its record is found by its `from`.
+- Row 20 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `a40638504be4719ee`, started without a name; its log records Fable 5.2 and the effort `high`. Its record is RES-061. It is the second start: the first agent, `ae81d7fa184fcddfd`, ended in the outage of the Claude login on 2026-11-13, and its record was removed at Peter's request.
+- Row 21 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `aea81f10d0d625566`, started without a name; its log records Fable 5.2 and the effort `high`. Its record is RES-065. It is the second start: the first agent, `a833e86824310cc58`, ended in the outage of the Claude login on 2026-11-13, and its record was removed at Peter's request.
 
 ## Map
 
