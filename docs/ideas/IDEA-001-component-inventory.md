@@ -74,6 +74,19 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
   13 and 14. IDEA-006#01: the two questions under "Next action" in RES-031. Each base is checked against the six capabilities of DEC-143 and the theme export of DEC-145.
 - The brief of a research agent is the one in interview-me's RESEARCH.md. No agent reads code or records of release 0.3.3 (DEC-125), and no agent recommends.
 - After the block: read each result in full, close its row, check all seven ideas, and bring Peter the follow-up questions, most important first: his choice of the architecture, his choice of the design direction, and his review of the parts. Then the second block: IDEA-004#03 and IDEA-005#03.
+- Check of all seven ideas on 2026-11-12, after the last result. Resolved by the block: IDEA-002 rows 06, 20 and 28; IDEA-003#14; IDEA-004#01; IDEA-005#01; IDEA-006#01; IDEA-007#02. The follow-up questions for Peter, most important first, one at a time:
+  1. IDEA-003#05, the composition architecture, from the prototype. Asked on 2026-11-12; the pending question is in IDEA-003, Notes.
+  2. IDEA-002#26, the design direction, from the prototype.
+  3. IDEA-001#09, the review of the parts, from the proposal; it follows the architecture.
+  4. IDEA-002#10, how token changes reach the repo, with the facts of RES-049. He has a partial answer there.
+  5. IDEA-002#11, the token files, with the facts of RES-048.
+  6. IDEA-002#07, library, plugin or both, with the facts of RES-046.
+  7. IDEA-003#15, the mechanism of the style props, with the facts of RES-045.
+  8. IDEA-006#04, the base of devtools, with the facts of RES-031.
+  9. IDEA-007#05, the site tool and the host, and IDEA-007#04, the source of the records, with the facts of RES-047.
+  10. His go for the second block: the trial IDEA-005#03, which is ready now, and the test IDEA-004#03, which needs his choice of the architecture first. The go of 2026-11-12 covers the 14 agents only.
+  11. The readings of the agent that he has not confirmed: in DEC-133 (Portal and Text With Copy Button are in; Choicebox, Form, Description and Scroller are out), in DEC-142 (the twelve items of a design spec) and in DEC-124 (a part name that all systems share needs no review); and the intent of IDEA-007.
+- Rows that still wait for another row and are no question yet: IDEA-002#22 (after row 26); IDEA-003 rows 06, 07, 08, 11 and 12 (after row 05) and 13; IDEA-004 rows 04 to 07; IDEA-005 rows 04 to 07 and 09 (after the trial); IDEA-006#05; IDEA-007#06.
 
 ### Settled by Peter outside a row
 - DEC-123, 2026-11-12: the list holds an Icon component. The icon library makes one component for each icon with it, from Material Symbols. The components for single icons are not entries of the list.
