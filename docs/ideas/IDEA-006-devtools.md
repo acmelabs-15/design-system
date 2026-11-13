@@ -26,6 +26,10 @@ A spec for the 1.0 devtools package: its base, its capabilities, and how it reac
 - Row 07 — wait: IDEA-003#05 and IDEA-004#04 are resolved.
 - Row 08 — ready: DEC-120 resolved IDEA-002#09 on 2026-11-12. The token files in the repo are Figma's exported DTCG files, and Figma stays the place where a token changes. Row 06 needs that fact.
 
+### Evidence from other ideas
+- DEC-137 (IDEA-002#04), for rows 03 and 06: the tokens carry light and dark, and custom themes with a team's own brand colour, typeface and corner radius. 1.0 has no density setting and no built-in accent choice. The theming controls work on these.
+- DEC-127 (IDEA-003#04): 1.0 does not render on the server.
+
 ### Settled by the prompt
 - One devtools package serves all the framework versions.
 - Its capabilities include live prop switching on a selected component, and theming controls.

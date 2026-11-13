@@ -47,10 +47,14 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 ### Row 27 — resolved
 - DEC-136, Peter, 2026-11-12: Geist's exact values go into the first Figma library, with no legal check. He selected this option against the agent's recommendation and with its cost in the option text. Row 26 decides what happens with the values that only the CSS of Vercel's site holds, and it checks Geist's text styles with Google Sans Flex.
 
-### Row 04 — pending question
-- Pending question, 2026-11-12, with more than one answer possible: which theme dimensions do the tokens carry? Options: "Light and dark (Recommended)"; "Custom themes (Recommended)": an outside team replaces the brand colour, the typeface and the corner radius with its own values; "Density": two or three densities for the whole interface; "Accent choice": a built-in choice among several accent colours. To choose none, he types "none".
-- Facts for the question, from RES-041: Geist has light and dark, and no setting for accent, density or radius. Radix Themes has light and dark, 26 accent colours, 6 grays, scaling from 90% to 110% and a radius setting. Chakra UI has light and dark and a colour palette for each component. shadcn/ui has light and dark, 7 base colours and one radius value. From DEC-119: outside teams bring their own brand. From RES-024: each dimension is one collection of variables in Figma with one mode for each value, and the Professional plan has a limit of modes for each collection.
-- The agent's reasons: all four styled systems have light and dark; DEC-119 needs custom themes; density and accent choice each multiply the values that every design spec must check for 145 components, and a custom theme already lets a team set its own brand colour.
+### Row 04 — resolved
+- DEC-137, Peter, 2026-11-12: the tokens carry light and dark, and custom themes. He selected both in the dialog and did not select density or accent choice.
+
+### Row 05 — pending question
+- Pending question, 2026-11-12: which accessibility target do the design specs have? The agent proposes one target with three parts: WCAG 2.2 at level AA; both reading directions, left-to-right and right-to-left; mouse, touch, keyboard and screen reader. Options: "AA, both directions (Recommended)"; "AA, left-to-right only"; "AAA contrast, both directions": as the first option, with the text contrast of level AAA.
+- Facts for the question: WCAG 2.2 level AA asks for a contrast of 4.5 to 1 for text and 3 to 1 for the parts of a control, and for a target of at least 24 by 24 CSS pixels. Level AAA asks for 7 to 1 for text. From RES-041: Geist claims "accessible text and icons" for steps 9 and 10 of each scale and states no ratio and no method; Radix Colors names its method (APCA) and guarantees its text steps; Chakra UI says that its animations play whatever the reduced-motion setting is.
+- A consequence that the question names: 1.0 takes Geist's exact values (DEC-136). Where a value of Geist fails the target, the value changes, so the target limits that decision.
+- The agent's reasons: level AA is the level that most laws and customers ask for; both directions cost little when every spec uses start and end from the first day, and much when they come later; the four input modes are what the four audiences of DEC-119 use.
 
 ### Row 10 — partial
 - Settled by DEC-120: a token change reaches the repo when a browser agent or a person runs "Export modes"; no CI job reads token values on the Professional plan.
@@ -104,7 +108,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 01 | What can the Figma MCP read and write today (components, variants, variables, libraries), and what are its limits? | research | resolved | — | [RES-023](../research/RES-023-figma-mcp-capabilities.md) |
 | 02 | Are the design specs made in Figma through the Figma MCP, or as spec documents in the repo? | interview | resolved | 01, 15, 16 | [DEC-117](../decisions/DEC-117-design-specs-in-figma.md) |
 | 03 | What is the visual starting point for 1.0: the 0.3.3 look, the look of one reference system, or a new design? | interview | superseded by 23 | — | — |
-| 04 | Which theme dimensions must the tokens carry (colour scheme, density, accent, custom themes)? | interview | open | — | — |
+| 04 | Which theme dimensions must the tokens carry (colour scheme, density, accent, custom themes)? | interview | resolved | — | [DEC-137](../decisions/DEC-137-theme-dimensions-light-dark-and-custom-themes.md) |
 | 05 | Which accessibility standard, reading directions and input modes do the specs target? | interview | open | — | — |
 | 06 | How do a published Figma library and a custom Figma plugin each give components to designers, and how does each stay in sync with new versions? | research | open | 02 | — |
 | 07 | Do designers get the system through a published library, a custom plugin, or both? | interview | open | 06 | — |
