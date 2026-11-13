@@ -34,6 +34,7 @@ A spec for the documentation website of 1.0: what it holds, where its records co
 ### Evidence from other ideas
 - DEC-119 (IDEA-001#03): 1.0 serves ACME Labs applications, AI-written artifacts, outside teams and marketing and content sites. The website speaks to all four.
 - DEC-133 to DEC-135 (IDEA-001 rows 07 and 08): the list holds 145 components with final names. The website has a page for each.
+- DEC-142 (IDEA-002#13), for row 04: the usage guidance of a component, which says when to use it and when not, is a spec of its own and no item of the design spec. Peter: "can also be multiple specs". Row 04 decides where that text is written.
 - DEC-118 (IDEA-002#18): each design spec reaches the repo as Markdown that an agent pulls from Figma. It is one possible source for row 04.
 - DEC-137 and DEC-138 (IDEA-002 rows 04 and 05): 1.0 has light and dark and custom themes, and it targets WCAG 2.2 level AA with both reading directions. The website shows these and must reach the same target itself.
 - IDEA-005#06 asks which tools and records the MCP server serves, and IDEA-005#09 asks how an agent with no project gets the 1.0 guidance. Row 04 here is the other view of the same source.

@@ -61,10 +61,11 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - DEC-141, Peter, 2026-11-12: agents make the design specs in parallel, as many at one time as possible, and he approves once, when all are complete. His words: "option 1 - they can all be created in a parallel - or as much in parallel as possible - I approve when all are completed".
 - Effect on row 13: no approval comes before the last spec, so the format of one spec must be exact before the first spec is drawn.
 
-### Row 13 — pending question
-- Pending question, 2026-11-12: what must one design spec hold? Options: "Twelve items (Recommended)": the nine of the kickoff prompt (anatomy and parts, variants, named sizes, states, tokens, slots, subcomponents, accessibility behaviour, motion) and three more: props and events with their values and defaults, including the style props of a layout component (DEC-131); the component in light and dark and in both reading directions (DEC-137, DEC-138); the behaviour with long content and in a narrow space. "Twelve items and usage guidance": also when to use the component and when not, which settles a part of IDEA-007#04. "The nine items of the prompt": the Lit build decides the rest for each component.
-- The agent's reasons: with DEC-141 no approval comes before the last spec, so the spec must leave nothing for the builder to decide alone; where the usage guidance is written belongs to IDEA-007#04.
-- The agent's choice for where each part sits in Figma, to state after the answer: variants, named sizes and states are properties of the component set; tokens are variables bound to its layers; parts are named layers, shown in one anatomy frame; all text (behaviour, accessibility, motion, props and events, content rules) is in the Specs document beside the component (DEC-118).
+### Row 13 — resolved
+- DEC-142, 2026-11-12. Peter's words: "can also be multiple specs - specs also have a deps graph so its clear when/what can be doen in parallele". He chose none of the three options. The record keeps apart what he decided (more than one spec is allowed; the specs name what they depend on) and what the agent chose and told him (the twelve items of one design spec, and where each sits in Figma).
+
+### Row 10 — pending question
+- Pending question, 2026-11-12: how does a token change reach the repo, and how is it versioned? The agent proposes one flow: Peter asks an agent; the agent runs "Export modes" in Figma through the browser, checks the difference and opens a pull request; Peter merges it; the tokens take the version of the package release and have no version of their own. Options: "Pull request, package version (Recommended)"; "Direct commit, package version": the agent commits the export to the working branch with no pull request; "Pull request, own token version": the token files carry a version number of their own.
 
 ### Row 10 — partial
 - Settled by DEC-120: a token change reaches the repo when a browser agent or a person runs "Export modes"; no CI job reads token values on the Professional plan.
@@ -127,7 +128,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 10 | How do token changes reach the repo (manual export, CI job or pull request), and how are they versioned? | interview | open | 09 | — |
 | 11 | Which token files does the pipeline hand to the Lit core and the framework packages? | interview | open | 09, 20 | — |
 | 12 | Who makes each design spec, and who approves it? | interview | resolved | 02 | [DEC-141](../decisions/DEC-141-agents-make-the-specs-in-parallel-one-approval.md) |
-| 13 | What must one design spec hold before a component can be built from it? | interview | open | 02, 18 | — |
+| 13 | What must one design spec hold before a component can be built from it? | interview | resolved | 02, 18 | [DEC-142](../decisions/DEC-142-design-spec-content-and-spec-dependencies.md) |
 | 14 | Import the final component list from IDEA-001. | task | open | — | — |
 | 15 | Which Figma plan and seat does each capability need (MCP use, variables and modes, library publishing, the Variables REST API, plugins), and what does each cost today? | research | resolved | — | [RES-024](../research/RES-024-figma-plans-and-prices.md) |
 | 16 | What does a live trial of one component made through the Figma MCP show: the number of calls, the manual cleanup, the errors, whether `use_figma` counts against the rate limit, and whether a Starter account can write to its own drafts? | task | resolved | 15 | [RES-025](../research/RES-025-figma-live-trial.md) |
@@ -146,7 +147,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 ## Not yet specified
 - How many design specs the agents draw at one time. DEC-141 asks for as many as possible; the limits of the Figma MCP are not known (RES-025). The plan settles it.
 - Whether the design direction of row 26 needs one decision for each part of the look. It sharpens when the first samples are drawn.
-- How a design spec records responsive behaviour.
+- The dependency graph of the design specs, which DEC-142 asks for. The plan builds it when IDEA-001#09 has decided the parts.
 - The layout of the pulled Markdown files in the repo, and what starts a pull. They sharpen after row 13.
 
 ## Out of scope
