@@ -62,9 +62,22 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - DEC-139, Peter, 2026-11-12: a seventh idea, IDEA-007, owns the documentation website, its pages, its examples, the blocks section and the records that this idea's MCP server also serves. Row 08 is resolved.
 - Row 06 here and IDEA-007#04 are two views of one source of records. Decide them together.
 
+### Row 11 — resolved
+- RES-066, 2026-11-13, from the documentation and the published code of Storybook 10.6.7 and 11.0.0-beta.2, the MCP Apps specification and the repositories of other servers. No server ran in the research.
+- Facts for row 12, tools that return rendered UI:
+  - The mechanism is MCP Apps, an extension of MCP that its specification marks stable since 2026-01-26. A tool names a `ui://` resource, which is one HTML page. The host shows that page in a sandboxed iframe and sends it the result of the tool.
+  - Storybook's `stories-preview` works this way. Its result holds only the addresses of the stories; the page loads each live story from the dev server on the developer's machine. So it needs a running Storybook.
+  - NVIDIA Elements, a design system of Lit web components, does it with no running server: the page holds the component bundle and renders the markup that the tool result carries. It has three such views: an example preview, an icon list and a token explorer.
+  - Host support differs. The community's list ticks Claude on the web, Claude Desktop, VS Code Copilot, ChatGPT and Cursor, among others. Claude Code has no tick, and Codex and Gemini CLI are not in the list. Row 14 checks those three.
+  - The specification requires a text result for each tool with a view, so a view is an addition for some hosts and replaces nothing.
+  - The other way to show UI is an image in the tool result, as Figma's `get_screenshot` does. For web components that needs a browser on the server's side.
+- The record has an assessment against the decisions of 1.0, kept apart from its facts, as Peter asked for "what makes sense for us". It chooses nothing. Its open points: which hosts the agents of our users run in; whether a headless browser in the MCP server counts as rendering on the server (DEC-127); whether a view loads the components from a CDN or holds them; whether the views show the examples of the website or render their own.
+- Facts for row 06, the tools of the server: Storybook's server has nine tools in three sets (development, documentation, tests). Its documentation tools need a components manifest, which a Storybook of web components does not get in 10.6. NVIDIA Elements' server has 17 tools and four prompts.
+- Evidence for row 09, an agent with no project: the view of NVIDIA Elements needs no project and no server, and the hosts where such agents often run are ticked for MCP Apps.
+
 ### Second block of agent work
 - Row 10 — running since 2026-11-13, in the second block of agent work (IDEA-001, Notes, "Second block of agent work"). Researcher agent `ae876dde1bf071a5a`, started without a name on Peter's word "start the block"; its log records Opus 5.5 and the effort `medium`. Its record is found by its `from`. Its brief is `.artifacts/v1/briefs/IDEA-005-10.md` with `common.md`. It is the third start: two starts of the same day ended in outages of the Claude login, and their records were removed at Peter's request. Check the log again when the agent ends, before its record is read.
-- Row 11 — running since 2026-11-13, in the second block of agent work (IDEA-001, Notes, "Second block of agent work"). Researcher agent `a390f05d09d1064c0`, started without a name on Peter's word "start the block"; its log records Opus 5.5 and the effort `medium`. Its record is found by its `from`. Its brief is `.artifacts/v1/briefs/IDEA-005-11.md` with `common.md`. It is the third start: two starts of the same day ended in outages of the Claude login, and their records were removed at Peter's request. Check the log again when the agent ends, before its record is read.
+- Row 11 — done on 2026-11-13: RES-066, from the researcher agent `a390f05d09d1064c0`, started without a name. Its log records Opus 5.5 and the effort `medium` on all 108 requests, checked after the agent ended. It was the third start of the row; two starts of the same day ended in outages of the Claude login.
 
 ## Map
 
@@ -79,11 +92,13 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 08 | Which idea owns the documentation website and its records? | interview | resolved | — | [DEC-139](../decisions/DEC-139-seventh-idea-owns-the-documentation-website.md) |
 | 09 | How does an agent that writes one HTML page, with no project and no package install, get the 1.0 guidance? | interview | open | 01, 04 | — |
 | 10 | Which skills do other design systems ship and what does each skill do, and which tools do their MCP servers expose and what does each tool do? RES-030 holds how they package and distribute them. | research | in-progress | — | — |
-| 11 | How do Storybook's skills and its MCP server work, and in particular its MCP tools that return rendered UI; who else returns rendered UI from an MCP tool, and how does that work? | research | in-progress | — | — |
-| 12 | Does the 1.0 MCP server have tools that return rendered UI? | interview | open | 04, 11 | — |
+| 11 | How do Storybook's skills and its MCP server work, and in particular its MCP tools that return rendered UI; who else returns rendered UI from an MCP tool, and how does that work? | research | resolved | — | [RES-066](../research/RES-066-storybook-mcp-and-rendered-ui-tools.md) |
+| 12 | Does the 1.0 MCP server have tools that return rendered UI? | interview | open | 04, 11, 14 | — |
 | 13 | Are the blocks exposed to agents through the MCP server, through a skill, or through both? | interview | open | 04 | — |
+| 14 | Do Claude Code, Codex and Gemini CLI show the view of a tool that uses MCP Apps: what does each host's own documentation say, and what does a test with a minimal server show? RES-066 found only that the community's list of hosts has no tick for them. | research | open | — | — |
 
 ## Not yet specified
+- Google's A2UI, a declarative format for UI that a Google post joins with MCP Apps. RES-066 saw it in a search result and did not read it. It sharpens at row 12, if a second mechanism beside MCP Apps matters then.
 - Which instructions file Claude Code reads at the start of a session: two libraries' guides disagree (RES-030, Follow-ups), and neither run read Claude Code's own documentation on it. It decides where `init` writes its block. Check it at its source when row 05 is next.
 - How `init` reaches a consumer who installs only a framework package. It sharpens after IDEA-004#07.
 - Maintainer skills for this repo, as distinct from consumer skills. Peter, 2026-11-12 (IDEA-002, Row 10 — partial): an internal skill that tells an agent how to bring the tokens in from Figma is acceptable for the work of the maintainers.

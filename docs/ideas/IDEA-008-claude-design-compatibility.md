@@ -22,14 +22,14 @@ A decision: what, if anything, 1.0 does to be compatible with Claude Design. If 
 - Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas). They hold for this idea too.
 - This idea is a stub. Peter asked for it on 2026-11-13: "This is a new idea that needs research. Stub its idea file now." Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-13, item 8.
 - His words for the research: "what, if anything, needs to be done to make the design system compatible with Claude Design."
-- No research has started. A research agent needs Peter's go, as the program rules say.
+- Row 01 — running since 2026-11-13, in the second block of agent work that Peter approved (IDEA-001, Notes, "Second block of agent work"). Researcher agent `a1bf78002111a302b`, started without a name on Opus 5.5 at the effort `medium`, when the first agent of the block ended. Its record is found by its `from`. Its brief is `.artifacts/v1/briefs/IDEA-008-01.md` with `common.md`. Check the log when the agent ends, before its record is read.
 - A start for row 01: Anthropic's own documentation of Claude Design. The Claude Code host of this session lists a tool named `DesignSync` and Artifact types for a design system (2026-11-13); neither is read for this idea yet.
 
 ## Map
 
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
-| 01 | What is Claude Design, what does it take from a design system (components, tokens, a design system file, an MCP server, skills), in which formats, and what does it need from a library of web components? | research | open | — | — |
+| 01 | What is Claude Design, what does it take from a design system (components, tokens, a design system file, an MCP server, skills), in which formats, and what does it need from a library of web components? | research | in-progress | — | — |
 | 02 | What, if anything, does 1.0 do to be compatible with Claude Design? | interview | open | 01 | — |
 
 ## Not yet specified
