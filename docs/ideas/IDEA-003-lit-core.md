@@ -23,7 +23,9 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 - Standing preference: before each architecture question, explain the Lit concept and the trade-off in plain terms. Peter has not used Lit before.
 
 ### Waits
-- Rows 05 and 14 — in the block of agent work that Peter approved on 2026-11-12. No agent has started. The list is in IDEA-001, Notes, "Block of agent work".
+- Rows 05 and 14 — running since 2026-11-12, in the block of agent work that Peter approved. Each agent started without a name; its log records `claude-opus-5-5` and the effort `medium`. The list is in IDEA-001, Notes, "Block of agent work".
+  - Row 05: task agent `afbdfc01151967238` builds the prototype in `.artifacts/v1/prototype/IDEA-003-05/`, with `IDEA-003-05-progress.md` and `IDEA-003-05-result.md`. When the result is complete, the row is open again and waits for Peter's choice.
+  - Row 14: researcher agent `aa4269e9b3b3956e9`, record RES-045.
 - Rows 01 and 02 — done on 2026-11-12: RES-042 from the researcher agent `ae3a841db00a620a6` and RES-043 from the researcher agent `a8a44290116cb20e5`. Both started without a name when DEC-127 resolved row 04; their logs record `claude-opus-5-5` and the effort `medium` on each request.
 - Row 05 — ready, next for the agent: explain the mechanisms of RES-043 to Peter in plain words, then build the prototype with brain's prototype skill. Peter chooses the architecture from it.
 - Row 14 — ready, not started: the agent starts it when the style props are the next topic. No decision on the frontier needs it yet.
@@ -66,7 +68,7 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 | 01 | How does Chakra UI export a convenience component beside its subcomponents, and how do the subcomponents share state? | research | resolved | — | [RES-042](../research/RES-042-chakra-ui-composition-exports.md) |
 | 02 | Which mechanisms does Lit give for composition between a parent and its parts (slots, light DOM children, context, shadow parts), and what are the limits of each? | research | resolved | — | [RES-043](../research/RES-043-lit-composition-mechanisms.md) |
 | 04 | Must 1.0 render on the server? | interview | resolved | — | [DEC-127](../decisions/DEC-127-no-server-rendering-in-1-0.md) |
-| 05 | Which composition architecture does the Lit core use? | prototype | open | 01, 02, 04 | — |
+| 05 | Which composition architecture does the Lit core use? | prototype | in-progress | 01, 02, 04 | — |
 | 06 | Where does the convenience component live: as a Lit element in the core, in the framework wrappers only, or as a snippet that the consumer copies into the project? | interview | open | 05 | — |
 | 07 | Which source gives the components their behaviour: state machine packages, ports of them, or our own logic? | interview | open | 05 | — |
 | 08 | How do the token files from IDEA-002 reach the styles of the components? | interview | open | 05, 10 | — |
@@ -75,7 +77,7 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 | 11 | Which delivery lets one HTML page use 1.0 from a CDN with no build step, and does it cover every component? | interview | open | 05 | — |
 | 12 | How does the icon library make one component for each icon from the Icon component, and how do the variations of an icon reach it? | interview | open | 05 | — |
 | 13 | How do the typefaces of 1.0 reach a page: font files in the package, a link to Google Fonts, or the consumer's own loading? | interview | open | 11 | — |
-| 14 | How do Chakra UI and Radix Themes turn style props with responsive values into CSS, and how can a custom element take a value for each breakpoint from an HTML attribute with no CSS-in-JS? | research | open | — | — |
+| 14 | How do Chakra UI and Radix Themes turn style props with responsive values into CSS, and how can a custom element take a value for each breakpoint from an HTML attribute with no CSS-in-JS? | research | in-progress | — | — |
 | 15 | Which mechanism do the style props of the layout components use in the Lit core? | interview | open | 14 | — |
 
 ## Not yet specified

@@ -30,7 +30,7 @@ A spec for the documentation website of 1.0: what it holds, where its records co
 - The section is named Blocks, by the agent's reading of his words "a blocks section in the docs". The glossary keeps Recipe as the word for the thing.
 
 ### Waits
-- Row 02 — in the block of agent work that Peter approved on 2026-11-12. No agent has started. The list is in IDEA-001, Notes, "Block of agent work".
+- Row 02 — running since 2026-11-12, in the block of agent work that Peter approved: researcher agent `a0832e1b4ed460aa0`, record RES-047. It started without a name; its log records `claude-opus-5-5` and the effort `medium`. The list is in IDEA-001, Notes, "Block of agent work".
 - Row 07 — wait: IDEA-003#05 and IDEA-004#04 are resolved.
 - Row 08 — wait: IDEA-001 reaches `done`, and IDEA-002 resolves its row 13.
 - Row 02 — ready, not started: the agent starts it when a decision of this idea is the next question. No decision on the frontier needs it yet.
@@ -53,7 +53,7 @@ A spec for the documentation website of 1.0: what it holds, where its records co
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
 | 01 | What does the website hold for each component, and what does it hold beside the component pages (guides, tokens and themes, blocks)? | interview | resolved | — | [DEC-144](../decisions/DEC-144-website-holds-the-full-set.md) |
-| 02 | How do other design systems with web components and several framework packages build their documentation websites: which site tools they use, how one page shows an example for each framework, how they hold a blocks section, and which TanStack packages (Table, Virtual, Form) work with Lit and with each framework target? | research | open | — | — |
+| 02 | How do other design systems with web components and several framework packages build their documentation websites: which site tools they use, how one page shows an example for each framework, how they hold a blocks section, and which TanStack packages (Table, Virtual, Form) work with Lit and with each framework target? | research | in-progress | — | — |
 | 03 | Which blocks does the Blocks section have in 1.0? | interview | resolved | 01 | [DEC-146](../decisions/DEC-146-blocks-section-has-four-groups.md) |
 | 04 | Where do the records of the website come from (component metadata, the design specs pulled from Figma, pages written by hand), and does the MCP server read the same source? | interview | open | 02 | — |
 | 05 | Which tool builds the website, and where is it published? | interview | open | 02 | — |

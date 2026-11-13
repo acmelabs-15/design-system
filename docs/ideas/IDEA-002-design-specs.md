@@ -22,7 +22,11 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Program rules: [IDEA-001, Program rules for all six ideas](IDEA-001-component-inventory.md#program-rules-for-all-six-ideas).
 
 ### Waits
-- Rows 06, 20, 26 and 28 — in the block of agent work that Peter approved on 2026-11-12. No agent has started. The list is in IDEA-001, Notes, "Block of agent work".
+- Rows 06, 20, 26 and 28 — running since 2026-11-12, in the block of agent work that Peter approved. Each agent started without a name; its log records `claude-opus-5-5` and the effort `medium`. The list is in IDEA-001, Notes, "Block of agent work".
+  - Row 06: researcher agent `a278b8c98ca46fab4`, record RES-046.
+  - Row 28: researcher agent `a51af336d2021a7fa`, record RES-049.
+  - Row 20: task agent `afaf8c600aefa4a34`, task record RES-048, scratch folder `.artifacts/v1/trial/IDEA-002-20/`.
+  - Row 26: task agent `a1f8073e09f49bbcb` builds the prototype in `.artifacts/v1/prototype/IDEA-002-26/`, with `IDEA-002-26-progress.md` and `IDEA-002-26-result.md`. When the result is complete, the row is open again and waits for Peter's choice.
 - Row 14 — wait: IDEA-001 reaches `done`.
 - Row 25 — done on 2026-11-12: RES-041, from the researcher agent `af48e18cec0f3b798`, started without a name; its log records `claude-opus-5-5` and the effort `medium` on each request.
 
@@ -124,7 +128,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 03 | What is the visual starting point for 1.0: the 0.3.3 look, the look of one reference system, or a new design? | interview | superseded by 23 | — | — |
 | 04 | Which theme dimensions must the tokens carry (colour scheme, density, accent, custom themes)? | interview | resolved | — | [DEC-137](../decisions/DEC-137-theme-dimensions-light-dark-and-custom-themes.md) |
 | 05 | Which accessibility standard, reading directions and input modes do the specs target? | interview | resolved | — | [DEC-138](../decisions/DEC-138-accessibility-target-wcag-2-2-aa-both-directions.md) |
-| 06 | How do a published Figma library and a custom Figma plugin each give components to designers, and how does each stay in sync with new versions? | research | open | 02 | — |
+| 06 | How do a published Figma library and a custom Figma plugin each give components to designers, and how does each stay in sync with new versions? | research | in-progress | 02 | — |
 | 07 | Do designers get the system through a published library, a custom plugin, or both? | interview | open | 06 | — |
 | 08 | Which routes export tokens from Figma to the repo, and how does each handle change flow and versions? | research | resolved | 02 | [RES-026](../research/RES-026-figma-token-export-routes.md) |
 | 09 | Which token export route does 1.0 use? | interview | resolved | 08, 19 | [DEC-120](../decisions/DEC-120-token-export-route.md) |
@@ -141,12 +145,12 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 21 | Which variations does Material Symbols have today (styles, fill, weight, grade, optical size), in which formats and under which license? | research | resolved | — | [RES-040](../research/RES-040-material-symbols-variations.md) |
 | 22 | Which variations of Material Symbols does 1.0 ship, and which of them can a consumer change on one icon? | interview | open | 21, 26 | — |
 | 23 | What is the visual starting point for 1.0: the look of one reference system, or a new design? | interview | resolved | — | [DEC-126](../decisions/DEC-126-visual-start-new-design-geist-first.md) |
-| 20 | Do Terrazzo and Style Dictionary read the files that "Export modes" writes, and what CSS does each write for two modes, an alias, a number with no unit, a string and a boolean? | task | open | 09 | — |
+| 20 | Do Terrazzo and Style Dictionary read the files that "Export modes" writes, and what CSS does each write for two modes, an alias, a number with no unit, a string and a boolean? | task | in-progress | 09 | — |
 | 24 | Which typefaces does 1.0 use for text and for code? | interview | resolved | — | [DEC-128](../decisions/DEC-128-typefaces-google-sans-flex-and-code.md) |
 | 25 | What do the five reference systems define for colour, type scale, shape, spacing and sizes, elevation and motion, what does Geist leave out, and what do Vercel's terms say about the reuse of Geist's values? | research | resolved | — | [RES-041](../research/RES-041-look-of-the-reference-systems.md) |
-| 26 | Which design direction does 1.0 take: for colour, type scale, shape, density and motion, what comes from Geist, what comes from another system and what is new? | prototype | open | 04, 05, 24, 25, 27 | — |
+| 26 | Which design direction does 1.0 take: for colour, type scale, shape, density and motion, what comes from Geist, what comes from another system and what is new? | prototype | in-progress | 04, 05, 24, 25, 27 | — |
 | 27 | Does 1.0 take Geist's exact values (colours, text styles, shadows), or its own values in a structure like Geist's, given that Vercel publishes no license for them? | interview | resolved | 25 | [DEC-136](../decisions/DEC-136-geist-exact-values-without-a-check.md) |
-| 28 | How do other design systems bring token changes from Figma into their repo (a script, a plugin, a CI job or by hand), on which Figma plan, and how do they name token versions? | research | open | — | — |
+| 28 | How do other design systems bring token changes from Figma into their repo (a script, a plugin, a CI job or by hand), on which Figma plan, and how do they name token versions? | research | in-progress | — | — |
 
 ## Not yet specified
 - How many design specs the agents draw at one time. DEC-141 asks for as many as possible; the limits of the Figma MCP are not known (RES-025). The plan settles it.
