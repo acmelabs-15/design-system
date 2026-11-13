@@ -31,6 +31,14 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Peter, 2026-11-12, during row 19: "there should be a figma token you can use from 1password". The agent used it for the six REST reads of RES-028 only. Another use needs its own reason in the row that needs it.
 - Direction given on 2026-11-12: no Organization or Enterprise plan before rows 07 and 09 are decided. Not checked: how files move when a Professional team upgrades to Organization.
 
+### Row 23 — partial, resume here
+- Question of 2026-11-12, after DEC-125: where does the 1.0 look start, with release 0.3.3 out? Options: a new design, with a design direction step first (recommended); the look of Geist; the look of shadcn/ui; the look of Radix Themes or Chakra UI.
+- Answer, Peter, 2026-11-12, typed into the question dialog: "I think a new design, there is a significant amount that I really like from Vercels geist that will probably win in most cases - but geist also leaves a lot of tihngs out that a lot of other design systems include - so i think option 1".
+- Second message, right after it: "Or maybe certain things should be based on geist or be pulled from geist and other things should be a new design? also this conversation has used up a lot of context - we should find a good place to stop so I can \"/clear\" and we can pick up where we left off".
+- Settled: 1.0 does not take the look of one system as a whole. It gets a new design. Geist is the reference that Peter likes most and that will win in most cases; other systems supply what Geist leaves out.
+- Open: his second message asks whether some things are taken from Geist and other things are designed new. The agent reads both messages as one direction: a new design that takes from Geist where Peter prefers Geist. He has not confirmed that reading, so no decision record exists yet and the row stays open.
+- Next: confirm the reading with one question. Then record the decision, and start the design direction step: for colour, type, shape, density and motion, decide what comes from Geist, what comes from another system and what is new.
+
 ### Row 10 — partial
 - Settled by DEC-120: a token change reaches the repo when a browser agent or a person runs "Export modes"; no CI job reads token values on the Professional plan.
 - Source: DEC-120, decided by the agent on 2026-11-12 under Peter's delegation of the token route.
