@@ -34,9 +34,6 @@ A spec for the framework packages: the chosen targets, the way each wrapper is p
 ### Evidence from other ideas
 - DEC-119 (IDEA-001#03): 1.0 serves ACME Labs applications, AI-written artifacts, outside teams and marketing and content sites. It is evidence for row 04: outside teams use more frameworks than one company does. It settles no target.
 
-### Agent choices
-- Row 03 can run first against the 0.3.3 React package as an early signal. The row resolves only with the 1.0 wrapper from the IDEA-003 prototype.
-
 ## Map
 
 | # | Question | Type | Status | Blocked by | Result |

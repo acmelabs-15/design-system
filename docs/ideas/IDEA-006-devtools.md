@@ -31,17 +31,13 @@ A spec for the 1.0 devtools package: its base, its capabilities, and how it reac
 - Its capabilities include live prop switching on a selected component, and theming controls.
 - The options to evaluate: TanStack Devtools (extend it, or fork it into something custom) against our own build. Research comes first.
 
-### Evidence from 0.3.3
-- DEC-026 builds the 0.3.3 inspector on TanStack Devtools. It is evidence, not an answer. Find it through the [decision index](../history/decision-index-0.3.md).
-
 ## Map
 
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
 | 01 | What does TanStack Devtools offer for extension and for a fork, and which other bases for devtools exist? | research | in-progress | — | — |
-| 02 | What does the 0.3.3 devtools package do, and which limits do its records name? | research | open | — | — |
 | 03 | Which capabilities must the first devtools release have beyond live prop switching and theming controls? | interview | open | — | — |
-| 04 | Is devtools built on TanStack Devtools (extended or forked), or built by us? | interview | open | 01, 02, 03 | — |
+| 04 | Is devtools built on TanStack Devtools (extended or forked), or built by us? | interview | open | 01, 03 | — |
 | 05 | Does devtools work on the custom elements for every framework, or through an adapter for each framework? | interview | open | 04, 07 | — |
 | 06 | Do the theming controls only preview token values, or do they also export changes? | interview | open | 03, 08 | — |
 | 07 | Import the composition architecture from IDEA-003 and the wrapper targets from IDEA-004. | task | open | — | — |
@@ -52,5 +48,6 @@ A spec for the 1.0 devtools package: its base, its capabilities, and how it reac
 - Whether devtools and the MCP server read component metadata from one source.
 
 ## Out of scope
+- Row 02, retired on 2026-11-12: "What does the 0.3.3 devtools package do, and which limits do its records name?" DEC-125 takes release 0.3.3 out as input.
 - The token pipeline (IDEA-002), the Lit core (IDEA-003) and the wrappers (IDEA-004).
 - The MCP server and the skills (IDEA-005).

@@ -1,6 +1,6 @@
 ---
 id: DEC-121
-status: accepted # proposed | accepted | superseded by DEC-NNN
+status: superseded by DEC-125 # proposed | accepted | superseded by DEC-NNN
 kind: decision # architecture exactly when all three adr-test answers are true
 adr-test:
   hard-to-reverse: false

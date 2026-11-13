@@ -33,7 +33,7 @@ Source: [Peter's kickoff prompt](../design/v1-kickoff-prompt.md) of 2026-11-12. 
 - Research starts only for the row in front of us, or for a big unknown that shapes the map. It gives no recommendation unless Peter asks. Its output goes to files with sources and dates.
 - Landscape sweeps use `deep-research`, the built-in workflow of Claude Code that `/deep-research` starts: IDEA-001#01, IDEA-004#01, IDEA-005#01 and IDEA-006#01. Narrow questions use brain research records.
 - How to start a delegated agent is in [the capabilities file](../agents/capabilities.md#sub-agents): without a name, on Opus 5.5 at medium effort, with a check of its log afterwards.
-- The 0.3.3 decision and research records are evidence for a question. They do not answer it.
+- Release 0.3.3, the current design system, is no input for 1.0 (DEC-125): not its code, its component list, its names, its look, or its decision and research records. Peter, 2026-11-12: "I think we shouldnt' take the current acmelabs design system into consideration at all for this"; and to the question how far that goes: "I think everything".
 - A question that belongs to a later idea goes into that idea's map as an open row.
 
 ### Working state for all six ideas
@@ -50,17 +50,14 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 - Other sessions: the branches `claude/ci-speed` and `claude/issue-12-strict-style-policy` have their own worktrees, and the `main` checkout holds uncommitted files. They change the system that 1.0 replaces. Leave them as they are.
 - The open maintenance issues of 0.3.3 stay in the local tracker, `.scratch/maintenance/issues/`.
 
-### Row 10 — running
-- Started on 2026-11-12: one brain researcher agent, without a name, on Opus 5.5 at medium effort; agent ID `ad94ad192eada27c8`. It claims its own record with the slug `names-for-the-tied-concepts`. Its survey set is fixed: the WAI-ARIA patterns, native HTML, Base UI, React Aria Components, MUI, Mantine, Ant Design, Ark UI, Headless UI, Fluent UI React, Carbon and Material Design 3.
-- The 11 ties of RES-037: Bleed or Inset; Resizable or Splitter; Item or Entity; Copy Button or Clipboard; Checkbox Cards or Checkbox Card; Radio Cards or Radio Card; Native Select or Select (Native); Input OTP, One-Time Password Field or Pin Input; Password Input or Password Toggle Field; Status or Status Dot; Direction Provider or Direction.
-- DEC-122: the agent surveys more sources for each tie and then puts each tie to Peter. Row 08 holds his decisions.
-
 ### Settled by Peter outside a row
 - DEC-123, 2026-11-12: the list holds an Icon component. The icon library makes one component for each icon with it, from Material Symbols. The components for single icons are not entries of the list.
 
-### Row 04 — evidence
-- RES-038: these 0.3.3 components have no matching concept in RES-037: App Bar, Disabled Wall, Flow Diagram, Icon Tile, Legend, Markdown, Sparkline, Table of Contents and Pill. Only two concepts that four or five reference systems have are absent from 0.3.3: Aspect Ratio and Popover.
-- RES-038: release 0.3.3 ships 184 public elements on 100 component pages, 17 recipes, and 4,135 icon elements.
+### Row 08 — ties to put to Peter
+- DEC-122: Peter decides each tie after the survey. RES-039 surveyed 12 more sources for the 11 ties.
+- One name leads in the survey: Splitter (3) over Resizable (0); Password Input (3) over Password Toggle Field (0); Copy Button (2) over Clipboard (1); Pin Input (2) over Input OTP (1) and One-Time Password Field (0); Native Select (2) over Select (Native) (0); Direction Provider (2) over Direction (0).
+- Still a tie after the survey: Bleed or Inset (0 to 0); Item or Entity (0 to 0); Status or Status Dot (0 to 0); Checkbox Cards or Checkbox Card, and Radio Cards or Radio Card (one source uses the singular, and one uses another name).
+- Next: put the ties to Peter when row 07 has decided which of these concepts are in the list.
 
 ### Row 07 — evidence
 - Peter, 2026-11-12, same reply: "shadcn includes ai components as well for example - none of the others do I don't think". The inventories agree in part: shadcn/ui lists eight chat components among its components and a separate catalog "AI Elements" with 21 patterns (RES-032). RES-037 shows which concepts only one system has. This is evidence for row 07; it puts no component in or out.
@@ -86,23 +83,23 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
 | 01 | Which component concepts do shadcn/ui, Radix Primitives, Radix Themes, Chakra UI and Geist have, what does each system call them, how does each split them into parts, and where do they disagree? | research | resolved | — | [RES-037](../research/RES-037-component-comparison-matrix.md) |
-| 02 | Which components, parts and recipes does release 0.3.3 ship, and which decision records chose their names? | research | resolved | — | [RES-038](../research/RES-038-components-of-release-0-3-3.md) |
 | 03 | Which products and users does 1.0 serve, and what does that rule in or out of the list? | interview | resolved | — | [DEC-119](../decisions/DEC-119-four-audiences-for-1-0.md) |
-| 04 | Can the list hold a component concept that none of the five reference columns has? | interview | open | 02, 03 | — |
+| 04 | Can the list hold a component concept that none of the five reference columns has? | interview | open | 03 | — |
 | 05 | When the reference systems disagree on a name, which rule picks the 1.0 name? | interview | resolved | 01 | [DEC-122](../decisions/DEC-122-name-rule-most-of-five.md) |
 | 06 | Which words name the pieces of a component (part, subcomponent, slot), and which shared part names apply across components? | interview | resolved | 01 | [DEC-124](../decisions/DEC-124-parts-reviewed-where-systems-disagree.md) |
 | 07 | Which component concepts from the matrix are in the 1.0 list? | interview | open | 01, 03, 04 | — |
 | 08 | What is the final name of each included component? | interview | open | 05, 07, 10 | — |
 | 09 | What is the final part composition of each included component? | interview | open | 06, 07 | — |
-| 10 | For the 11 concepts on which the five systems tie, which name do more sources use: the WAI-ARIA patterns and other widely used component libraries? | research | in-progress | 05 | — |
+| 10 | For the 11 concepts on which the five systems tie, which name do more sources use: the WAI-ARIA patterns and other widely used component libraries? | research | resolved | 05 | [RES-039](../research/RES-039-names-for-the-tied-concepts.md) |
 
 ## Not yet specified
 - The per-category rows for rows 07 to 09. The matrix sets the categories.
 - Whether recipes need their own inventory decisions. Icons are settled by DEC-123.
-- Which 0.3.3 glossary terms stay.
+- The glossary still holds the component names of release 0.3.3. Row 08 replaces them; until then they decide nothing for 1.0 (DEC-125).
 - Which audience wins when two audiences need different things from one component. It sharpens at row 07, with real cases.
 
 ## Out of scope
+- Row 02, retired on 2026-11-12: "Which components, parts and recipes does release 0.3.3 ship, and which decision records chose their names?" DEC-125 takes release 0.3.3 out as input. Its research record RES-038 was committed in 4a0242b5b and removed in the commit that records DEC-125.
 - Design specs: anatomy, variants, named sizes, states, tokens, accessibility behaviour and motion. IDEA-002 owns them.
 - How a part becomes a Lit element or a slot. IDEA-003 owns it.
 - Framework packages (IDEA-004), MCP and skills (IDEA-005) and devtools (IDEA-006).

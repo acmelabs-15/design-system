@@ -17,7 +17,6 @@ Peter stated three things about icons on 2026-11-12, outside a map row. 1.0 has 
 ## Consequences
 
 - The 1.0 component list holds Icon. The components for single icons are output of the icon library; they are not entries of the component list.
-- The source agrees with DEC-121 and with DEC-060 of release 0.3.3, which chose Material Symbols.
 - With SVG, 1.0 can ship only the variations of an icon that exist as SVG files or that code can derive. The variable font, with its continuous axes, is out.
 - IDEA-002#21 researches the variations of Material Symbols. IDEA-002#22 decides which of them 1.0 ships and which a consumer can change on one icon.
 - IDEA-003#12 decides how the library makes one component for each icon, after the composition architecture. The framework packages carry the icon components too; IDEA-004 holds that point.

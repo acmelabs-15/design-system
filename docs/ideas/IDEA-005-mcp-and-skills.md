@@ -29,14 +29,8 @@ A spec for the MCP server and the consumer skills of 1.0: where they ship, what 
 - An `init` script, exposed through the package.json `bin`, installs the MCP server and the skills into a consumer's project.
 - The alternative to evaluate is separate packages. Peter decides after the research.
 
-### Evidence from 0.3.3
-These records are evidence, not answers. Find them through the [decision index](../history/decision-index-0.3.md).
-
-- The MCP server is a separate package with an exact peer version of the core (DEC-027 and DEC-116).
-- Seven consumer skills ship in the core package, with TanStack Intent as their tooling (DEC-019 and DEC-048).
-
 ### Evidence from other ideas
-- DEC-119 (IDEA-001#03): AI-written artifacts are one of the four audiences of 1.0. Such an agent often has no consumer project, so an `init` script from the package cannot reach it. Row 09 asks how it gets the guidance. It is also evidence for row 07: release 0.3.3 ships a skill named `html-artifacts`.
+- DEC-119 (IDEA-001#03): AI-written artifacts are one of the four audiences of 1.0. Such an agent often has no consumer project, so an `init` script from the package cannot reach it. Row 09 asks how it gets the guidance.
 - DEC-118 (IDEA-002#18): each design spec reaches the repo as Markdown that an agent pulls from Figma. Row 06 decides whether the MCP server serves those records.
 
 - RES-030, evidence for row 09: Nuxt UI runs a hosted MCP server over HTTP, which needs no install in a project. Evidence for row 04: TanStack Intent and Storybook 10.6 ship skills with the installed package, so the skills match the installed version.
@@ -49,8 +43,7 @@ These records are evidence, not answers. Find them through the [decision index](
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
 | 01 | How do other libraries ship MCP servers and agent skills (inside the library package or apart), how do they install them into a consumer project, and how do agent hosts find them? | research | in-progress | — | — |
-| 02 | How does release 0.3.3 ship its MCP server and consumer skills, and which limits do its records name? | research | open | — | — |
-| 03 | Does an `init` script from the package's `bin` install a working MCP server and skills into a consumer project? | task | open | 01, 02 | — |
+| 03 | Does an `init` script from the package's `bin` install a working MCP server and skills into a consumer project? | task | open | 01 | — |
 | 04 | Do the MCP server and the skills ship inside the design system package, or as separate packages? | interview | open | 01, 03 | — |
 | 05 | What does `init` install, into which agent hosts, and how does it update on a new version? | interview | open | 04 | — |
 | 06 | Which tools and records does the 1.0 MCP server serve? | interview | open | 04 | — |
@@ -63,5 +56,6 @@ These records are evidence, not answers. Find them through the [decision index](
 - Maintainer skills for this repo, as distinct from consumer skills.
 
 ## Out of scope
+- Row 02, retired on 2026-11-12: "How does release 0.3.3 ship its MCP server and consumer skills, and which limits do its records name?" DEC-125 takes release 0.3.3 out as input.
 - Devtools (IDEA-006).
 - The components, their design, the Lit core and the wrappers that the server and skills describe (IDEA-001 to IDEA-004).

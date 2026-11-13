@@ -25,20 +25,11 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 ### Waits
 - Row 09 — wait: IDEA-001 reaches `done`.
 - Row 10 — wait: IDEA-002 resolves its rows 11 and 13. Row 09 is resolved by DEC-120.
-- Row 12 — wait: IDEA-002#22 decides the variations of Material Symbols. DEC-123 holds Peter's decisions that each icon is a component built with the Icon component, and that the Icon component renders SVG, not an icon font. Evidence from 0.3.3: DEC-046 (the shape of the icon element), DEC-096 (the shared icon library) and the generated icon entries that `docs/agents/repository.md` lists.
+- Row 12 — wait: IDEA-002#22 decides the variations of Material Symbols. DEC-123 holds Peter's decisions that each icon is a component built with the Icon component, and that the Icon component renders SVG, not an icon font.
 
 ### Settled by the prompt
 - Lit web components are the core implementation.
 - Every framework wrapper exports both the convenience component (for example `Stepper`) and every subcomponent (`Stepper.Root`, `Stepper.Item`, `Stepper.Indicator`), the way Chakra does.
-
-### Evidence from 0.3.3
-These records are evidence, not answers. Find them through the [decision index](../history/decision-index-0.3.md) and the [research index](../history/research-index-0.3.md).
-
-- DEC-092 excludes server rendering.
-- DEC-101 and DEC-114 keep element state in TanStack Store and port behaviour into Lit. DEC-115, on Zag packages through a Lit adapter, is superseded.
-- DEC-081 publishes React support as a separate package.
-- RES-015 reviews Lit practice. RES-019 covers the styling of slotted content.
-- DEC-010 gives release 0.3.3 a separate browser package for CDN delivery. It is evidence for row 11.
 
 ### Evidence from other ideas
 - DEC-119 (IDEA-001#03): 1.0 serves ACME Labs applications, AI-written artifacts, outside teams and marketing and content sites.
@@ -47,7 +38,6 @@ These records are evidence, not answers. Find them through the [decision index](
 - DEC-118 (IDEA-002#18): each design spec reaches the repo as Markdown that an agent pulls from Figma. Row 10 imports that format.
 - RES-035 and RES-037 (IDEA-001#01), evidence for rows 01 and 06: the Chakra UI inventory marks 19 of 115 components as offered both as one ready-made component and as parts, 46 as parts only and 50 as one component.
 - DEC-124 (IDEA-001#06), for rows 05 and 06: Peter decides the parts and the structure of each component by review, and he expects a mix of several systems. The architecture must not assume the structure of one reference system.
-- RES-038 (IDEA-001#02), evidence for row 12: release 0.3.3 already ships 4,135 icon elements, one for each icon.
 - RES-029 (IDEA-004#01), evidence for row 04: Preact's server renderer does not write complex property values into the HTML; they reach the element at hydration. React's rule for properties on the server is not confirmed yet.
 
 ## Map
@@ -56,11 +46,10 @@ These records are evidence, not answers. Find them through the [decision index](
 |---|---|---|---|---|---|
 | 01 | How does Chakra UI export a convenience component beside its subcomponents, and how do the subcomponents share state? | research | open | — | — |
 | 02 | Which mechanisms does Lit give for composition between a parent and its parts (slots, light DOM children, context, shadow parts), and what are the limits of each? | research | open | — | — |
-| 03 | How does the 0.3.3 core compose its components and build its React bridge, and which limits do its records name? | research | open | — | — |
 | 04 | Must 1.0 render on the server? | interview | open | — | — |
-| 05 | Which composition architecture does the Lit core use? | prototype | open | 01, 02, 03, 04 | — |
+| 05 | Which composition architecture does the Lit core use? | prototype | open | 01, 02, 04 | — |
 | 06 | Is the convenience component a Lit element in the core, or does it exist only in the framework wrappers? | interview | open | 05 | — |
-| 07 | Which source gives the components their behaviour: state machine packages, ports of them, or our own logic? | interview | open | 03, 05 | — |
+| 07 | Which source gives the components their behaviour: state machine packages, ports of them, or our own logic? | interview | open | 05 | — |
 | 08 | How do the token files from IDEA-002 reach the styles of the components? | interview | open | 05, 10 | — |
 | 09 | Import the final component list from IDEA-001. | task | open | — | — |
 | 10 | Import the design spec format and the token output from IDEA-002. | task | open | — | — |
@@ -76,6 +65,7 @@ These sharpen after row 05.
 - What replaces `docs/agents/verification.md` and `docs/agents/repository.md`, which describe the 0.3.3 code. Brain's place for a quality bar is `CONSTRAINTS.md`; package facts belong to the 1.0 specs.
 
 ## Out of scope
+- Row 03, retired on 2026-11-12: "How does the 0.3.3 core compose its components and build its React bridge, and which limits do its records name?" DEC-125 takes release 0.3.3 out as input.
 - Which components exist (IDEA-001) and how they look (IDEA-002).
 - Which wrapper targets ship, and how wrappers are generated and tested. IDEA-004 owns them. The prototype wrapper in row 05 proves the export shape only.
 - MCP and skills (IDEA-005) and devtools (IDEA-006).
