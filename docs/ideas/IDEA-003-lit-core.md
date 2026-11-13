@@ -24,10 +24,20 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 
 ### Waits
 - Rows 05 and 14 — running since 2026-11-12, in the block of agent work that Peter approved. Each agent started without a name; its log records `claude-opus-5-5` and the effort `medium`. The list is in IDEA-001, Notes, "Block of agent work".
-  - Row 05: task agent `afbdfc01151967238` builds the prototype in `.artifacts/v1/prototype/IDEA-003-05/`, with `IDEA-003-05-progress.md` and `IDEA-003-05-result.md`. When the result is complete, the row is open again and waits for Peter's choice.
+  - Row 05: the prototype is complete since 2026-11-12, and the row waits for Peter's choice. Task agent `afbdfc01151967238`; folder `.artifacts/v1/prototype/IDEA-003-05/` (scratch, outside git), with `IDEA-003-05-progress.md` and `IDEA-003-05-result.md`.
   - Row 14: done on 2026-11-12. Researcher agent `aa4269e9b3b3956e9`, record RES-045.
 - Rows 01 and 02 — done on 2026-11-12: RES-042 from the researcher agent `ae3a841db00a620a6` and RES-043 from the researcher agent `a8a44290116cb20e5`. Both started without a name when DEC-127 resolved row 04; their logs record `claude-opus-5-5` and the effort `medium` on each request.
-- Row 05 — ready, next for the agent: explain the mechanisms of RES-043 to Peter in plain words, then build the prototype with brain's prototype skill. Peter chooses the architecture from it.
+- Row 05 — the prototype is built; next: explain the mechanisms of RES-043 and the result to Peter in plain words, and ask for his choice. Open the page from the repo root with `python3 .artifacts/v1/prototype/IDEA-003-05/serve.py & sleep 1 && open http://localhost:4731/`. It needs the network, because Lit and React load from a CDN.
+  - What was built: one Steps component in three candidates over one logic module with no DOM access, and a React 19 wrapper for each. A: the parts are elements, and each part asks the root for the state through context. B: the parts are elements, and each parent reads its slot and hands the state to its parts. C: one element with all parts in its shadow DOM, styled through `::part`.
+  - Observed in Chrome 157, all 24 cells (8 cases by 3 candidates), with no console error in any cell:
+    - A works in all eight cases with its repair on. With the parts defined before the root and the repair off, it fails with no message: the root counts 0 steps, and 19 parts have no state.
+    - B fails when an element sits between a parent part and its child part: a `<div>` of the page author (case 3) and a wrapper of a React developer (case 8, custom composition). In case 3 the step numbers and the contents no longer match. It needs no repair for the order of definition.
+    - C loses a wrapped item (case 3). It cannot take an element of the developer between two parts (case 8). Its wrapper can export only `Steps.Root` and `Steps.Item`, so the composed form that the prompt asks for cannot be made.
+    - The same in all three: the keys and the accessibility tree (a tab list, tabs, a tab panel), right-to-left, a Steps inside another Steps, and an item added and removed.
+  - Size of each shell: A 225 lines, B 199, C 116, over a logic module of 72 lines.
+  - Limits: Chrome only; no screen reader and no touch; an outside label that points into C's shadow DOM was not tried; form participation was not tried.
+  - The main session checked two cells again on 2026-11-12 in the browser, and both match the result file: case 3 for B (the root counts 2 steps, 4 parts with no state) and case 2 for A with the repair off (0 steps, 19 parts with no state, no console message).
+  - The prototype recommends nothing, and its result file has no question for Peter.
 - Row 14 — resolved by RES-045 on 2026-11-12. Facts from it for row 15:
   - Chakra UI 3 writes the CSS of a responsive value in the browser, with Emotion, while React renders. That is CSS-in-JS, which DEC-131 rules out. So 1.0 can take Chakra's syntax and not its mechanism.
   - Radix Themes ships one static CSS file with a class for each token value at each breakpoint, 812,667 bytes. React only sets class names. A value outside the token list goes into an inline custom property.
@@ -75,7 +85,7 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 | 01 | How does Chakra UI export a convenience component beside its subcomponents, and how do the subcomponents share state? | research | resolved | — | [RES-042](../research/RES-042-chakra-ui-composition-exports.md) |
 | 02 | Which mechanisms does Lit give for composition between a parent and its parts (slots, light DOM children, context, shadow parts), and what are the limits of each? | research | resolved | — | [RES-043](../research/RES-043-lit-composition-mechanisms.md) |
 | 04 | Must 1.0 render on the server? | interview | resolved | — | [DEC-127](../decisions/DEC-127-no-server-rendering-in-1-0.md) |
-| 05 | Which composition architecture does the Lit core use? | prototype | in-progress | 01, 02, 04 | — |
+| 05 | Which composition architecture does the Lit core use? | prototype | open | 01, 02, 04 | — |
 | 06 | Where does the convenience component live: as a Lit element in the core, in the framework wrappers only, or as a snippet that the consumer copies into the project? | interview | open | 05 | — |
 | 07 | Which source gives the components their behaviour: state machine packages, ports of them, or our own logic? | interview | open | 05 | — |
 | 08 | How do the token files from IDEA-002 reach the styles of the components? | interview | open | 05, 10 | — |
