@@ -24,7 +24,7 @@ A spec for the Lit core build: the chosen composition architecture, with its dec
 
 ### Waits
 - Row 09 — wait: IDEA-001 reaches `done`.
-- Row 10 — wait: IDEA-002 resolves its rows 09, 11 and 13.
+- Row 10 — wait: IDEA-002 resolves its rows 11 and 13. Row 09 is resolved by DEC-120.
 
 ### Settled by the prompt
 - Lit web components are the core implementation.

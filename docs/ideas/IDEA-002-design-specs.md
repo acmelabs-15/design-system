@@ -31,13 +31,14 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 - Peter, 2026-11-12, during row 19: "there should be a figma token you can use from 1password". The agent used it for the six REST reads of RES-028 only. Another use needs its own reason in the row that needs it.
 - Direction given on 2026-11-12: no Organization or Enterprise plan before rows 07 and 09 are decided. Not checked: how files move when a Professional team upgrades to Organization.
 
-### Row 09 — delegated, not decided yet
-- Peter delegated the token route on 2026-11-12: "we want the Figma tokens to get pulled into the design system code base via whatever method makes the most sense. I think Figma has a couple different options for doing that."
-- Scope: the agent chooses the route after rows 08 and 19, records the decision, and tells Peter. It does not ask him again unless the choice needs a purchase or a higher plan.
-- Facts in RES-026: on the Professional plan no route reads variable values unattended. The routes that work there: a `use_figma` read script run by an agent, Figma's own "Export modes" JSON run by a person or a browser agent, a custom plugin, and plugins such as Tokens Studio (Team plan: 39 euros a month for each editor). The Variables REST API runs unattended and has an official GitHub example, but it needs Enterprise, which is outside the delegation.
-- Leaning, not a decision: an agent reads the variables through the MCP and writes files in the W3C design tokens format, version 2025.10; Terrazzo or Style Dictionary turns them into CSS custom properties and TypeScript. It costs nothing more, and the same route reads the spec content.
-- Both checks are done in RES-028. "Export modes" writes one DTCG 2025.10 file for each mode, with aliases as `{group.name}` references and Figma's IDs, scopes and code syntax in `$extensions`; a browser agent ran it with two clicks. A `use_figma` script reads the values for each mode in Figma's own JSON, about 345 bytes for each variable, so a large set needs several calls and a conversion to DTCG.
-- Not decided yet, and next for the agent: both candidate routes need an agent or a person. DEC-118 accepts an agent-run pull for the spec, so the delegation can now be used: choose between the native export and the `use_figma` read, record the decision, and tell Peter.
+### Row 10 — partial
+- Settled by DEC-120: a token change reaches the repo when a browser agent or a person runs "Export modes"; no CI job reads token values on the Professional plan.
+- Source: DEC-120, decided by the agent on 2026-11-12 under Peter's delegation of the token route.
+- Open: whether an export goes into the repo as a pull request or as a direct commit, who starts it, and how token versions are named.
+- Next: ask Peter about those three points when row 10 is the most important question.
+
+### Row 20 — next for the agent
+- A trial with the two exported archives of RES-028, in `.artifacts/v1/trial/IDEA-002-19/`. It needs no Figma call. Create its task record before the first step.
 
 ### Facts that shape later rows
 - RES-024: the Variables REST API needs the Enterprise plan. A private plugin needs Organization or Enterprise. A library can be published from Professional upward.
@@ -80,9 +81,9 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 06 | How do a published Figma library and a custom Figma plugin each give components to designers, and how does each stay in sync with new versions? | research | open | 02 | — |
 | 07 | Do designers get the system through a published library, a custom plugin, or both? | interview | open | 06 | — |
 | 08 | Which routes export tokens from Figma to the repo, and how does each handle change flow and versions? | research | resolved | 02 | [RES-026](../research/RES-026-figma-token-export-routes.md) |
-| 09 | Which token export route does 1.0 use? | interview | open | 08, 19 | — |
+| 09 | Which token export route does 1.0 use? | interview | resolved | 08, 19 | [DEC-120](../decisions/DEC-120-token-export-route.md) |
 | 10 | How do token changes reach the repo (manual export, CI job or pull request), and how are they versioned? | interview | open | 09 | — |
-| 11 | Which token files does the pipeline hand to the Lit core and the framework packages? | interview | open | 09 | — |
+| 11 | Which token files does the pipeline hand to the Lit core and the framework packages? | interview | open | 09, 20 | — |
 | 12 | Who makes each design spec, and who approves it? | interview | open | 02 | — |
 | 13 | What must one design spec hold before a component can be built from it? | interview | open | 02, 18 | — |
 | 14 | Import the final component list from IDEA-001. | task | open | — | — |
@@ -91,6 +92,7 @@ A spec for the design work: the chosen medium, the format of one design spec, th
 | 17 | Which routes can read the whole design spec of a component out of Figma into files in the repo, and what can each one read? | research | resolved | 02 | [RES-027](../research/RES-027-figma-spec-export-routes.md) |
 | 18 | Does Figma hold the whole design spec, with the Markdown in the repo generated by a pipeline, or do the behaviour parts live in documents written in the repo? | interview | resolved | 17 | [DEC-118](../decisions/DEC-118-spec-source-figma-agent-pull.md) |
 | 19 | What do live reads of the trial file return: the REST API with the access token, the MCP read tools, a `use_figma` read script for variables and for an embedded Spec, and the native "Export modes" file? | task | resolved | — | [RES-028](../research/RES-028-figma-live-reads.md) |
+| 20 | Do Terrazzo and Style Dictionary read the files that "Export modes" writes, and what CSS does each write for two modes, an alias, a number with no unit, a string and a boolean? | task | open | 09 | — |
 
 ## Not yet specified
 - The order and batch size of the component specs. The plan settles it.
