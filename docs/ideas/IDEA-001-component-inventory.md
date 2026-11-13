@@ -53,31 +53,15 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 ### Settled by Peter outside a row
 - DEC-123, 2026-11-12: the list holds an Icon component. The icon library makes one component for each icon with it, from Material Symbols. The components for single icons are not entries of the list.
 
-### Row 08 — ties to put to Peter
-- DEC-122: Peter decides each tie after the survey. RES-039 surveyed 12 more sources for the 11 ties.
-- One name leads in the survey: Splitter (3) over Resizable (0); Password Input (3) over Password Toggle Field (0); Copy Button (2) over Clipboard (1); Pin Input (2) over Input OTP (1) and One-Time Password Field (0); Native Select (2) over Select (Native) (0); Direction Provider (2) over Direction (0).
-- Still a tie after the survey: Bleed or Inset (0 to 0); Item or Entity (0 to 0); Status or Status Dot (0 to 0); Checkbox Cards or Checkbox Card, and Radio Cards or Radio Card (one source uses the singular, and one uses another name).
-- Next: put the ties to Peter when row 07 has decided which of these concepts are in the list.
-
 ### Row 07 — resolved
 - DEC-134 changed the list in one point on the same day: Progress Circle is no concept of its own. The list holds 145 concepts.
 - DEC-133 holds the list: 146 concepts in and 36 out, with Peter's answers, the reasons for out, and the readings of the agent that he saw and did not correct. DEC-130 and DEC-132 hold his two rules, and DEC-131 holds his words on the style props of the layout components.
 - How it ran: the agent proposed in or out for each of the 182 concepts, and Peter reviewed the proposal in three questions by category on 2026-11-12.
 - Reasons for out that Peter did not accept, for any later proposal: "a plain HTML element or CSS does the job" (DEC-130) and "other components can compose it" (DEC-132).
 
-### Row 08 — pending question
-- All ten concepts of the open ties are in the list (DEC-133). DEC-122 settles 15 other names by the rule; the concepts that one system has keep that system's name.
-- Pending question, 2026-11-12: does Peter accept eleven names? Five by the lead of the survey RES-039: Splitter, Password Input, Copy Button, Pin Input, Native Select. Five where the survey gives no lead, by the agent's proposal: Bleed, Item, Status, Checkbox Card, Radio Card. One from his own words: Circular Progress. Options: "Accept the eleven names (Recommended)"; "Other name in the open ties": Inset, Entity, Status Dot, Checkbox Cards and Radio Cards, with the other six as proposed. He can also type the names to change.
-- Answer, Peter, 2026-11-12, typed into the question dialog: "Mostly accept option 1 as is - what is a splitter and I want to make sure we ahve both a native and none native select - not circular progress, I think what most libs do is the progress can be linear or circular".
-- Settled: nine names are final: Password Input, Copy Button, Pin Input, Native Select, Bleed, Item, Status, Checkbox Card and Radio Card. Select and Native Select are both in the list, which is what he asks for. There is no component with the name Circular Progress: Progress is one component that is linear or circular (DEC-134).
-- Open: Splitter or Resizable. He asked what a splitter is, so he has not chosen that name.
-- Pending question, 2026-11-12: Splitter or Resizable, with the explanation of the component. Facts from RES-039: the WAI-ARIA Authoring Practices name the pattern "Window Splitter", "a moveable separator between two sections, or panes, of a window that enables users to change the relative size of the panes"; Mantine, Ant Design and Ark UI name the component Splitter; no surveyed source names it Resizable. Options: "Splitter (Recommended)"; "Resizable".
-- Next: ask that question. Then record the names in one decision record.
-- The agent's reasons for the five open ties: Bleed says what the component does, and "inset" is also a CSS property with another meaning; Item is the plain word, and Entity is a word of Geist alone; Status is shorter, and the component can hold a label beside its dot; Checkbox Card and Radio Card are singular like Card and Checkbox.
-
-### Row 08 — Peter's direct choices
-- Peter, 2026-11-12, in his answer on the rest of the list: "I think circlular progress and spinner are the same - prefer circular progress". The concept that joins Progress Circle and Spinner takes the name "circular progress". DEC-122 would give "Spinner", the name that most systems use, so this is his own choice against the rule. The exact form, "Circular Progress" or "Progress Circle", is open.
-- Direction Provider is out of the list (DEC-133), so its tie with Direction needs no answer.
+### Row 08 — resolved
+- DEC-135 holds the 145 final names, Peter's decisions on the ten ties and the names that the rule of DEC-122 gives. Resizable is his choice against the lead of the survey RES-039. DEC-134 holds his decision that Progress is one component, linear or circular.
+- The glossary has the names that he decided on 2026-11-12: Progress, Gauge, Toggle, Bleed, Pin Input, Password Input, Native Select, Checkbox Card and Radio Card, Status and Copy Button.
 
 ### Row 11 — partial
 - Settled: 1.0 does not give recipes out as components. Its documentation gets a blocks section, as shadcn/ui has one.
@@ -115,14 +99,14 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 | 05 | When the reference systems disagree on a name, which rule picks the 1.0 name? | interview | resolved | 01 | [DEC-122](../decisions/DEC-122-name-rule-most-of-five.md) |
 | 06 | Which words name the pieces of a component (part, subcomponent, slot), and which shared part names apply across components? | interview | resolved | 01 | [DEC-124](../decisions/DEC-124-parts-reviewed-where-systems-disagree.md) |
 | 07 | Which component concepts from the matrix are in the 1.0 list? | interview | resolved | 01, 03, 04 | [DEC-133](../decisions/DEC-133-component-list-146-concepts.md) |
-| 08 | What is the final name of each included component? | interview | open | 05, 07, 10 | — |
+| 08 | What is the final name of each included component? | interview | resolved | 05, 07, 10 | [DEC-135](../decisions/DEC-135-final-names-of-the-1-0-components.md) |
 | 09 | What is the final part composition of each included component? | interview | open | 06, 07 | — |
 | 10 | For the 11 concepts on which the five systems tie, which name do more sources use: the WAI-ARIA patterns and other widely used component libraries? | research | resolved | 05 | [RES-039](../research/RES-039-names-for-the-tied-concepts.md) |
 | 11 | Does 1.0 ship recipes, such as page sections, app layouts and charts, and which idea holds their list? | interview | open | 07 | — |
 
 ## Not yet specified
 - The per-category rows for rows 08 and 09. The matrix sets the categories. Row 07 runs in five batches (Notes).
-- The glossary still holds the component names of release 0.3.3. Row 08 replaces them; until then they decide nothing for 1.0 (DEC-125).
+- The glossary still holds entries of release 0.3.3 for components that are outside the 1.0 list, such as TOC, Relative Time, Flow Diagram, App Bar, HStack / VStack, Sparkline and Feedback, and for the parts of Resizable. They decide nothing for 1.0 (DEC-125). Row 09 and the end of the idea remove or replace them.
 - Which audience wins when two audiences need different things from one component. It sharpens at row 07, with real cases.
 
 ## Out of scope

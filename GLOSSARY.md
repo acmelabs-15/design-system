@@ -15,7 +15,7 @@ A shared building block from which other components and recipes are composed.
 _Avoid_: A second name for the same building block in each consuming component.
 
 **Recipe**:
-A documented arrangement of shared components for a particular use. A recipe can contain optional content and different sizes.
+A documented arrangement of shared components for a particular use. A recipe can contain optional content and different sizes. The library does not give a recipe out as a component.
 _Avoid_: Treating a recipe as a separate component; confusing this meaning with another system's style configuration called a recipe.
 
 **Part**:
@@ -78,6 +78,10 @@ _Avoid_: Alert as a synonym for absent content; treating missing content alone a
 A layout of adjacent panes whose relative sizes the user can change.
 _Avoid_: Splitter as a competing component name.
 
+**Bleed**:
+A layout helper that lets its content extend past the padding of its container.
+_Avoid_: Inset as a competing name.
+
 **Resizable Panel**:
 One pane of a Resizable layout, with its own content and size limits.
 _Avoid_: Panel as a general content surface; Card as a synonym for a resizable pane.
@@ -92,6 +96,22 @@ The pane whose size and name a Resize Handle represents.
 **Card**:
 A presentation container for related content and actions about one subject. It can have sections or serve as a link.
 _Avoid_: Panel or Link Card as competing names for the same surface; Entity as a synonym for Card.
+
+**Pin Input**:
+A row of single-character inputs for a short code, such as a one-time password.
+_Avoid_: Input OTP or One-Time Password Field as a competing name.
+
+**Password Input**:
+An input for a password, with a control that shows or hides the characters.
+_Avoid_: Password Toggle Field as a competing name.
+
+**Native Select**:
+The browser's own select control in the style of the design system. Select is the separate component with a custom list.
+_Avoid_: Select (Native) as a competing name; Select for the browser's control.
+
+**Checkbox Card / Radio Card**:
+A checkbox or a radio option presented as a card with room for more detail.
+_Avoid_: Checkbox Cards, Radio Cards or Choicebox as competing names.
 
 **Fieldset**:
 A group of related form controls identified by a shared label, with group help, errors or disabled state where applicable.
@@ -117,6 +137,14 @@ _Avoid_: Assuming all sidebar content is a menu, tree or selection control.
 Navigation to headings within the current document, with an indication of the current section.
 _Avoid_: Treating current location as a checked form value or as Tree View selection.
 
+**Status**:
+An indicator of the state of a process or a thing, with an optional label.
+_Avoid_: Status Dot as a competing name.
+
+**Copy Button**:
+A button that copies a given text to the clipboard and confirms the copy.
+_Avoid_: Clipboard as a competing name.
+
 **Stat**:
 A measurement with a label and optional unit, explanation and change information.
 _Avoid_: Tile as a competing name for a compact measurement; a separate Trend family for its change display.
@@ -130,7 +158,7 @@ An interactive hierarchy of expandable branches and leaf nodes, with coordinated
 _Avoid_: File Tree as the general concept; treating every indented navigation list as a Tree View.
 
 **Group**:
-A shared arrangement of related components with consistent presentation and applicable shared appearance defaults.
+A shared arrangement of related components with consistent presentation and applicable shared appearance defaults. It is visual only: it attaches and arranges components and owns no behaviour.
 _Avoid_: Treating visual grouping as selection or form ownership; assuming every component with Group in its name has this same purpose.
 
 **Toolbar**:
@@ -181,17 +209,13 @@ _Avoid_: A second name for decorative grid lines or crosses.
 A scrollable region with design-system scrollbar controls over normal browser scrolling.
 _Avoid_: Scroller as a competing component name; treating scrolling as ownership of content layout or virtualization.
 
-**Spinner**:
-An animated indication that work is running without a measured completion value.
-_Avoid_: Loading Dots as another loading component.
-
 **Progress**:
-The completion state of an ongoing task, which may be measured or not yet known.
-_Avoid_: Progress for a measurement such as storage usage.
+The completion state of an ongoing task, shown as a line or as a circle. With no value it indicates that work is running.
+_Avoid_: Spinner, Circular Progress or Loading Dots as a separate component; Progress for a measurement such as storage usage.
 
-**Meter**:
+**Gauge**:
 A display of a measured value within a meaningful range.
-_Avoid_: Gauge as a competing name; Meter for task completion or a fabricated value during loading.
+_Avoid_: Meter as a competing name; Gauge for task completion or a fabricated value during loading.
 
 **Relative Time**:
 A timestamp expressed in relation to the current time, such as “three minutes ago.”
@@ -219,13 +243,13 @@ _Avoid_: Topbar as a competing family; treating all header content as Toolbar co
 An attached set of radio choices representing one selected value.
 _Avoid_: Switch for this family; Tabs when no associated panels are controlled.
 
-**Toggle Button**:
+**Toggle**:
 A button with a persistent on/off pressed state.
-_Avoid_: Chip as a competing name for this capability; confusing pressed state with transient pointer pressing.
+_Avoid_: Toggle Button or Chip as a competing name; Toggle for a Switch; confusing pressed state with transient pointer pressing.
 
 **Switch**:
 A control that changes a binary setting between on and off.
-_Avoid_: Toggle as a competing component name; Switch for a segmented choice.
+_Avoid_: Toggle for this control; Switch for a segmented choice.
 
 ### Shared interface vocabulary
 
@@ -246,7 +270,7 @@ Highlighted identifies the option being navigated; selected identifies a chosen 
 _Avoid_: Active or chosen as competing names for these states.
 
 **Checked / Pressed**:
-Checked describes a checkbox or radio's value state; pressed describes a toggle button's persistent value state.
+Checked describes a checkbox or radio's value state; pressed describes a Toggle's persistent value state.
 _Avoid_: Equating persistent pressed state with temporary pointer activity.
 
 **Current / Focused**:
