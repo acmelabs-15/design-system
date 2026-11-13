@@ -59,7 +59,8 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 - Evidence from 0.3.3, not an answer: DEC-082 says to choose the more widely used name where reference systems disagree, and to record the survey.
 - Evidence from RES-037: where Geist's name differs from the other systems, the others mostly agree with each other, for example Dialog (Geist: Modal), Switch (Geist: Toggle), Hover Card (Geist: Context Card), Accordion (Geist: Collapse) and Alert (Geist: Note). The 0.3.3 glossary already avoids several of these Geist names.
 - Open: the exact rule. For example the name that most of the five systems use, or the name that the wider industry uses beyond the five.
-- Next: ask only about that rule, with the name disagreements of RES-037 as examples.
+- Numbers from RES-037: 78 concepts are in two systems or more; in 52 all systems use one name; in 26 the names differ. In 15 of the 26 one name is used by more systems than any other, and in 10 of those 15 Geist alone has its own name. 11 are ties.
+- Pending question, asked on 2026-11-12: which rule picks the name? Options: the name that most of the five systems use, with a wider survey for ties (recommended, because it settles 15 names from the matrix and matches the rule of DEC-082); a wider survey for all 26; Peter decides each name.
 
 ### Row 07 — evidence
 - Peter, 2026-11-12, same reply: "shadcn includes ai components as well for example - none of the others do I don't think". The inventories agree in part: shadcn/ui lists eight chat components among its components and a separate catalog "AI Elements" with 21 patterns (RES-032). RES-037 shows which concepts only one system has. This is evidence for row 07; it puts no component in or out.
