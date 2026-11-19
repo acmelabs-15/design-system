@@ -40,6 +40,7 @@ These maintenance issues do not become resolved merely because later checks pass
 - [Dependency disposition review](../.scratch/maintenance/issues/004-advisory-review-deadline.md): review is due 2026-11-20.
 - [Bun lockfile entries for bundled dependencies](../.scratch/maintenance/issues/006-bun-bundled-dependency-lock.md): Bun records versions it never installs; revisit with issue 004.
 - [Publication confirmation wait](../.scratch/maintenance/issues/007-publication-confirmation-wait.md): each release needs publish-job reruns while npm reviews uploads.
+- [Selection card alignment and state outlines](../.scratch/maintenance/issues/008-selection-card-alignment-and-state-outlines.md): Checkbox Card and Radio Card misalign start, end and indicator, and stack checked, invalid and disabled outlines. Peter selected the behavior on 2026-11-19; implementation is not yet scheduled.
 
 ## Runtime and authorization
 
