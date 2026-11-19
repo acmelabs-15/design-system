@@ -11,5 +11,6 @@ These issues preserve unresolved work from the released design system. The maint
 | [005: Registration-test timeout](005-registration-test-timeout.md) | needs-triage | Maintainer investigation |
 | [006: Bun lockfile entries for bundled dependencies](006-bun-bundled-dependency-lock.md) | needs-triage | Maintainer investigation |
 | [007: Publication confirmation wait](007-publication-confirmation-wait.md) | needs-triage | Maintainer investigation |
+| [008: Selection card alignment and state outlines](008-selection-card-alignment-and-state-outlines.md) | ready-for-agent | Agent implementation |
 
 Each issue owns its evidence and completion condition. [STATUS](../../../docs/STATUS.md) owns the active task. The [tracker adapter](../../../docs/agents/issue-tracker.md) supplies file conventions.
