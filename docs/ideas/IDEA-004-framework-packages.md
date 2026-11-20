@@ -31,7 +31,8 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Row 01, the two follow-up questions of RES-029 — in the block of agent work that Peter approved on 2026-11-12, as two single research agents and not as workflow runs. Question 1 (React 19 and Redact on the client) is answered in RES-029 since 2026-11-12, by the researcher agent `a250484f13dcbb03c`. Question 2 (how named libraries make and test their wrappers) runs since 2026-11-12 in the same record; its agent ID is in IDEA-001, Notes, "Block of agent work". The list is in IDEA-001, Notes, "Block of agent work".
 - Row 01 — running since 2026-11-12, after Peter's go (IDEA-001, Notes). Record: RES-029. Workflow run `wf_737727d2-447`, task `w9wlqmzrx`, from the script `.artifacts/v1/research/deep-research-opus-medium.js`. Its first agent's log records `claude-opus-5-5` and the effort `medium`. The run ended on 2026-11-12 with 104 agents and no error. RES-029 holds a partial answer: 14 findings on the runtimes and on TanStack Redact; nothing confirmed on how named libraries make and test their wrappers. Two narrower runs are named in RES-029, Next action. The agent holds these runs until the decision rows of this idea are next: the facts are about tools that change each month, and no decision that needs them is on the frontier. Peter can ask for them sooner.
 - Row 01 — scope: DEC-127 of 2026-11-12 takes server rendering out of 1.0. The two follow-up runs leave it out.
-- Row 02 — wait: IDEA-003#05 is resolved.
+- Row 02 — done on 2026-11-20 by the main session: RES-078. IDEA-003#05 is resolved by DEC-152: a part works at any depth below its root.
+- Row 03 — ready since 2026-11-20, and it waits for Peter's go. It is a test that an agent runs in scratch, and no go of his covers it: the go of 2026-11-12 covers 14 agents, and the go of 2026-11-13 covers 12 rows. RES-078 names the React wrapper of the prototype as its React package, and RES-029 names the six points that it must observe.
 
 ### Row 01 — resolved
 - RES-029 is answered since 2026-11-12: the sweep, then one research agent for each of its two follow-up questions (`a250484f13dcbb03c` and `a4717c5e0e713bd19`; both logs record `claude-opus-5-5` and the effort `medium`).
@@ -49,7 +50,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 
 ### Evidence from other ideas
 - Peter, 2026-11-13, in his reply to IDEA-003#05, for rows 04 and 05: "the core of this is built with lit web components. But I also want to later, or also make React version of the design system. React leans into composition." He wants the React package to export all subcomponents of a component and a convenience component that composes them. His words "later, or also" leave the time of the React package open; row 04 decides the targets of 1.0. IDEA-003, Notes, "Row 05 — partial" holds the reply in full.
-- IDEA-003#05 is open since that reply, and it waits for the research rows IDEA-003#20 and IDEA-003#21. So rows 02 and 03 here keep waiting.
+- IDEA-003#05 was open after that reply and waited for the research rows IDEA-003#20 and IDEA-003#21. It is resolved since 2026-11-20 by DEC-152, and row 02 here is done (RES-078).
 - DEC-149 (Peter, 2026-11-13), for rows 04, 05 and 06: a user of each framework is not surprised at how the components are built and put together. He names Lit, React and Solid users, with "etc." It is no decision on the targets of 1.0.
 - RES-077 (IDEA-005#03), for row 07: a consumer who installs only a package that depends on the design system package gets the `bin` of that package with npm and with Bun, and not with pnpm. So an `init` command of the core does not reach a pnpm user through a framework package alone.
 - RES-047 (IDEA-007#02), for rows 04 and 05: Web Awesome and Spectrum Web Components make their React wrappers with `@lit/react` from the Custom Elements Manifest. Web Awesome's documentation says that React 19 needs no wrapper, and it keeps its wrappers for React 18 and below. TanStack Virtual has no package for Preact; Table and Form have one for each of Lit, React, Preact and Solid.
@@ -64,7 +65,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
 | 01 | For React, Preact, TanStack Redact and Solid: how does each handle custom elements, how do other libraries generate or write wrappers for it, and how do they test those wrappers? | research | resolved | — | [RES-029](../research/RES-029-framework-wrapper-landscape.md) |
-| 02 | Import the composition architecture from IDEA-003. | task | open | — | — |
+| 02 | Import the composition architecture from IDEA-003. | task | resolved | — | [RES-078](../research/RES-078-framework-packages-import-of-the-composition-contract.md) |
 | 03 | Does the React package run on Redact unchanged? | task | open | 01, 02 | — |
 | 04 | Which targets ship in 1.0? | interview | open | 01, 03 | — |
 | 05 | Is each wrapper generated from component metadata or written by hand? | interview | open | 02, 04 | — |

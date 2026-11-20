@@ -55,7 +55,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 
 ### Waits
 - Row 02 — done on 2026-11-12, in the block of agent work that Peter approved: researcher agent `a0832e1b4ed460aa0`, record RES-047. It started without a name; its log records `claude-opus-5-5` and the effort `medium`. The list is in IDEA-001, Notes, "Block of agent work".
-- Row 07 — wait: IDEA-003#05 and IDEA-004#04 are resolved.
+- Row 07 — wait: IDEA-003#05 and IDEA-004#04 are resolved. IDEA-003#05 is resolved since 2026-11-20 by DEC-152; the row still waits for IDEA-004#04.
 - Row 08 — wait: IDEA-001 reaches `done`, and IDEA-002 resolves its row 13.
 
 ### Settled by Peter
