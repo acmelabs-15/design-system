@@ -49,6 +49,12 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Settled by Peter: "The documentation site itself gets designed in Figma first. That spec is then broken down into documentation blocks." The step is the deferred row 14. The agent's reading, not confirmed: the documentation blocks are the pieces of the website's own pages. Whether they are a fifth group of the Blocks section is open inside that row.
 - His words on the owner: "It may need its own idea; decide that with me." Row 09 holds that decision. Until then the rows stay here, because DEC-139 gives the blocks section to this idea. The work now reaches IDEA-002 (blocks in Figma), IDEA-005 (blocks for agents) and IDEA-009 (the design skill knows the blocks).
 
+### Row 09 — pending question
+- Asked on 2026-11-20 through the question dialog: do the blocks get an idea of their own, or do they stay in this idea? The question quotes his words "It may need its own idea; decide that with me." It names what the work touches: the list of the blocks, their design in Figma, their code for plain HTML and for each framework target, and how agents get them. It gives the size from the proposal for row 11, as the count of the proposal agent that the main session has not checked: 73 block concepts.
+- Options: "An idea of their own (Recommended)"; "They stay in the website idea".
+- The agent recommends an idea of their own. Reasons: the blocks are a body of work of their own that reaches four ideas (IDEA-002, IDEA-005, IDEA-007 and IDEA-009), and one owner makes their order clear; the website then owns only the section that shows them. Stated cost: one more idea and spec, and rows 10 to 13 of this idea move to it.
+- This row rests on no pending research.
+
 ### Review in Figma before the build
 - DEC-151, Peter, 2026-11-20: the whole of 1.0 is put together in Figma before anything is built, and he reviews it there with feedback. By the agent's reading in that record, the whole holds the design of this website (deferred row 14) and the recipes of the Blocks section (IDEA-002#30). So no page of the website is built before that review.
 - Evidence for row 12: each recipe of the Blocks section is in Figma before its code exists. That does not say which of the two is the source of truth afterwards.
