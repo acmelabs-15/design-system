@@ -113,6 +113,31 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Facts for IDEA-004#07 and for "How `init` reaches a consumer who installs only a framework package" under "Not yet specified": with only a package that depends on the first, npm and Bun make the `bin` available, and pnpm does not; `pnpm exec` fails with "Command not found".
 - Not observed, and in row 15: a real approval by a person in the dialog of each host (the trial wrote the hosts' state files in a scratch home folder); a session in which a model uses a skill and calls the tool; Cursor, VS Code Copilot and Devin. The trial agent asks whether Peter wants these before rows 04 and 05. The main session's reading: they do not separate the two options of row 04, because they hold for a package of its own too. They bear on row 05, so row 15 blocks row 05.
 
+### Row 04 — pending question
+- Asked on 2026-11-20 through the question dialog: do the MCP server and the skills ship inside the design system package, or as separate packages? The question gives the result of the trial RES-077: a pointer from the project to the installed package keeps the server and the skills at the version of the installed components, with no step after an update.
+- Options: "Inside the package (Recommended)"; "Separate packages".
+- The agent recommends inside the package. Reason: it is the direction of the kickoff prompt, and the trial shows that its reason holds. Stated costs: the package grows for each consumer, also for one with no coding agent; a host that takes only a copy of a skill needs `init` again after an update; and a pnpm user who installs only a framework package does not get the `init` command.
+- Not in this question: what `init` installs (row 05), and how an agent with no project gets the guidance (row 09).
+
+### Row 04 — partial
+- Source: Peter's reply of 2026-11-20, typed into the question dialog. His words in full:
+
+  > okay so i asked you to do research to validate our disagreement on the implemenation - no decision has been made - we're waiting for more information - /deep-research in regards to where the mcp and agent skills live - I actually am not sure about this either - I do not want to use tanstack intent - I'd like you to research this - this does not have to be design system package specific - I'd like for the research here to have a large sample size - we always look to tanstack - but I don't want ot use intent here and they almost certain use it - but every large framework/package/library adn their moms are providing skills and mcps framework/package/library - so like storybook, ag-grid, chakra-ui, and so on - please be comprehensive
+
+- The first part is about IDEA-003#06 and corrects the agent: no decision is made there. IDEA-003, Notes, "Row 06 — partial" holds it.
+- Settled for this idea: 1.0 does not use TanStack Intent (DEC-154). He gives no reason. Conditions: none stated.
+- Not settled: where the MCP server and the skills live. "I actually am not sure about this either". No question on row 04 is pending.
+- Asked for by him: research with `/deep-research` on where the MCP servers and the agent skills of large frameworks, packages and libraries live. His conditions for it: a large sample; not only design systems; comprehensive. His examples: Storybook, AG Grid, Chakra UI. Row 16 holds it, and row 04 waits for it.
+- What the records already hold, so that row 16 does not repeat it: RES-030 has how about twelve libraries ship and install, with the folders of each host; RES-070 has the skills and the tools of fifteen design systems; RES-077 has the trial of an `init` command. Row 16 widens the sample beyond them and beyond design systems.
+- For the next ask: do not ask him to decide this row before row 16 is resolved. He decides from wide evidence.
+
+### Row 16 — running
+- Started on 2026-11-20 by the main session, on Peter's words `/deep-research` in his reply to row 04. Record: RES-082, which the main session fills from the result of the run.
+- The run: `wf_48bdc7bd-7b0`, task `weew239hp`, from the script `.artifacts/v1/research/survey-by-subject.js` (scratch, outside git). The script is the `deep-research` workflow changed for a large sample, as Peter asked: the built-in script reads at most 15 sources and verifies at most 25 claims, and its run for IDEA-003#25 reached only six of twelve named systems. In the changed script four listers find projects by different routes, one agent researches each project from its primary sources, a second agent checks each record, a critic names notable projects that are missing, and one agent states the facts across all records.
+- Sample: a seed list of 74 projects, among them Storybook, AG Grid and Chakra UI, with frameworks, component libraries, data grids, build tools, test tools and backend libraries; the listers add more; the cap is 84, and the critic can add 8.
+- Each record has nine fields: the place of the MCP server, its detail, how it matches the installed version, the place of the guidance for agents, its detail, the install steps, the update, the tool that distributes the skills, and the reason that the maintainers state.
+- Each agent runs on Opus 5.5 at the effort `medium`, set on each call of the script. The go is Peter's own `/deep-research` with "large sample size" and "please be comprehensive"; the agent chose the changed script, by the precedent of IDEA-001#01.
+
 ### Row 14 — resolved
 - RES-080, 2026-11-20, from the documentation, the release notes and the source code of each host, and from a test with a minimal server in a scratch home folder with no sign-in. The researcher agent `a3eeac1a7a9fad48f` ran on Opus 5.5 at `medium` on all 134 requests, checked after it ended. The main session read the record in full.
 - Facts for row 12, tools that return rendered UI:
@@ -139,7 +164,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 |---|---|---|---|---|---|
 | 01 | How do other libraries ship MCP servers and agent skills (inside the library package or apart), how do they install them into a consumer project, and how do agent hosts find them? | research | resolved | — | [RES-030](../research/RES-030-mcp-and-skills-shipping-landscape.md) |
 | 03 | Does an `init` script from the package's `bin` install a working MCP server and skills into a consumer project? | task | resolved | 01 | [RES-077](../research/RES-077-init-script-trial.md) |
-| 04 | Do the MCP server and the skills ship inside the design system package, or as separate packages? | interview | open | 01, 03 | — |
+| 04 | Do the MCP server and the skills ship inside the design system package, or as separate packages? | interview | open | 01, 03, 16 | — |
 | 05 | What does `init` install, into which agent hosts, and how does it update on a new version? | interview | open | 04, 15 | — |
 | 06 | Which tools and records does the 1.0 MCP server serve? | interview | open | 04, 10 | — |
 | 07 | Which skills ship for consumers? | interview | open | 04, 10 | — |
@@ -151,6 +176,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 13 | Are the blocks exposed to agents through the MCP server, through a skill, or through both? | interview | open | 04 | — |
 | 14 | Do Claude Code, Codex and Gemini CLI show the view of a tool that uses MCP Apps: what does each host's own documentation say, and what does a test with a minimal server show? RES-066 found only that the community's list of hosts has no tick for them. | research | resolved | — | [RES-080](../research/RES-080-mcp-apps-views-in-three-agent-hosts.md) |
 | 15 | In the trial project of RES-077, with Peter at the keyboard: does each host work after a real approval in its own dialog, does a model in a session use a skill and call the tool, and what do Cursor and VS Code Copilot show? Only Peter can approve in a host's dialog and sign in, so this is a step that he runs; the main session gives him the checklist when row 05 is next. | task | open | 03 | — |
+| 16 | Where do the MCP servers and the agent skills of large frameworks, packages and libraries live, over a large sample that is not limited to design systems: inside the main package, in a package of their own, on a hosted server, in a repository or a marketplace of plugins; how does a consumer install each, and how does each stay at the version of the installed library? Peter asked for it with `/deep-research` on 2026-11-20 and named Storybook, AG Grid and Chakra UI as examples. RES-030 and RES-070 hold a smaller sample. | research | in-progress | — | — |
 
 ## Not yet specified
 - Google's A2UI, a declarative format for UI that a Google post joins with MCP Apps. RES-066 saw it in a search result and did not read it. It sharpens at row 12, if a second mechanism beside MCP Apps matters then.
