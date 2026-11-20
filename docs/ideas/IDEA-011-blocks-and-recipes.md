@@ -123,6 +123,7 @@ A spec for the blocks of 1.0: the list by name and group, what each block compos
 
 ### Evidence from other ideas
 - IDEA-005#13 asks whether the blocks reach an agent through the MCP server, through a skill or through both. It is free since DEC-160 and DEC-161 of 2026-11-20: the server is a documentation server with a search by intent, and the skills live in the main package. Rows 01 and 03 here give it the list of the blocks and the place of their source files.
+- DEC-168 (IDEA-004#04), Peter, 2026-11-20, for row 04: the framework targets of 1.0 are React, Redact and Preact. Solid is no target. Each block is written for plain HTML and for these targets (DEC-146); whether Redact and Preact need code of their own is open in IDEA-004 rows 05 and 07, so row 04 waits for them.
 
 ## Map
 

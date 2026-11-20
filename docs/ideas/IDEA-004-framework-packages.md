@@ -61,6 +61,16 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Facts for row 04: Redact is at 0.3.1, before 1.0, and reports itself as React "19.2.3". RES-029 predicted each difference from its source code; the test observed them.
 - Limits: Chrome only and headless; production builds; client rendering; each prop set once, with no update after the first render.
 
+### Row 04 — resolved
+- DEC-168, Peter, 2026-11-20: the targets of 1.0 are React, Redact and Preact. Solid is no target. Source: his reply to the dialog for row 04, typed: "react, redact and preact". He chose none of the options; the agent had recommended one React package that also runs on Redact, with no package for Preact.
+- Not settled by it: how many packages the three targets are. Rows 05 and 07 decide it, and the test of row 10 gives them the facts.
+- The agent's points on his answer, told to him in chat: no surveyed library ships a package for Preact, and no source tested a wrapper under Preact, so row 10 tests it; Solid users use the custom elements, and DEC-149 names them among the users who must not be surprised.
+
+### Row 10 — running
+- Added and started on 2026-11-20 by the main session, after DEC-168, because rows 05 and 07 are the next questions of this idea and need its facts. Peter's rule of the kickoff prompt, which he sent again that day: research settles facts, and it starts for the row in front of us.
+- Task record: RES-087. Scratch folder: `.artifacts/v1/trial/IDEA-004-10/`. Brief: `.artifacts/v1/briefs/common-task.md` and `.artifacts/v1/briefs/IDEA-004-10.md`.
+- Task agent `a923319e8aaf1ce1e`, started without a name, on Opus 5.5 at the effort `medium`: the row is a mechanical test by a fixed list of points (capabilities, guide of 2026-11-13). Check its log with `.artifacts/v1/briefs/agent-log-check.py` when it ends, before the record is read.
+
 ### Settled by the prompt
 - The candidate targets are React, Preact, TanStack Redact and possibly Solid.
 - The prompt describes Redact as a React-API-compatible runtime. RES-029 checked it: TanStack publishes `@tanstack/redact`, version 0.3.1 of 2026-11-04, before 1.0. Its repository claims "100% API compliancy", and its own compatibility pages list behaviour that it does not implement, mainly concurrency.
@@ -87,17 +97,18 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 01 | For React, Preact, TanStack Redact and Solid: how does each handle custom elements, how do other libraries generate or write wrappers for it, and how do they test those wrappers? | research | resolved | — | [RES-029](../research/RES-029-framework-wrapper-landscape.md) |
 | 02 | Import the composition architecture from IDEA-003. | task | resolved | — | [RES-078](../research/RES-078-framework-packages-import-of-the-composition-contract.md) |
 | 03 | Does the React package run on Redact unchanged? | task | resolved | 01, 02 | [RES-079](../research/RES-079-react-package-on-redact-test.md) |
-| 04 | Which targets ship in 1.0? | interview | open | 01, 03 | — |
-| 05 | Is each wrapper generated from component metadata or written by hand? | interview | open | 02, 04 | — |
+| 04 | Which targets ship in 1.0? | interview | resolved | 01, 03 | [DEC-168](../decisions/DEC-168-framework-targets-react-redact-and-preact.md) |
+| 05 | Is each wrapper generated from component metadata or written by hand? | interview | open | 02, 04, 10 | — |
 | 06 | How is each wrapper tested? | interview | open | 04, 05 | — |
-| 07 | Is each target its own npm package, or an entry of one package? | interview | open | 04 | — |
+| 07 | Is each target its own npm package, or an entry of one package? | interview | open | 04, 10 | — |
 | 08 | Import the list of utilities and hooks from IDEA-001 and the form of their export from IDEA-003. | task | open | — | — |
 | 09 | For each utility: does a framework package expose it as a hook, as a plain function, or as both? | interview | open | 04, 08 | — |
+| 10 | Does the React package run on Preact through `preact/compat`, and does a wrapper made with `createComponent` of `@lit/react` pass on React 19, on Redact and on Preact, at the eight points of RES-079? | task | in-progress | — | — |
 
 ## Not yet specified
-- Whether a framework package must load without an error in an app that renders its pages on a server, where the components then appear only in the browser. DEC-127 (IDEA-003#04) rules out server rendering itself and does not answer this point. It sharpens at row 04, with the targets.
-- Typed JSX for the custom elements in each target.
-- What the users of each target other than React expect from a component library: Preact, Solid and Redact. DEC-149 asks that no user of a framework is surprised. IDEA-003#20 covers React through the reference systems. It sharpens at row 04, when the targets are chosen.
+- Whether a framework package must load without an error in an app that renders its pages on a server, where the components then appear only in the browser. DEC-127 (IDEA-003#04) rules out server rendering itself and does not answer this point. Since DEC-168 the targets are React, Redact and Preact, and applications on them often render on a server. It sharpens at row 06, which decides the tests.
+- Typed JSX for the custom elements in each target, and for Solid, which is no target since DEC-168 and whose users use the custom elements.
+- What a Preact user expects from a component library beyond the React API. Since DEC-168 the targets are React, Redact and Preact; Redact users write React code. DEC-149 asks that no user of a framework is surprised. The test of row 10 shows whether React code runs on Preact; this point sharpens with its result.
 - How the components for single icons (DEC-123) reach each framework package. It sharpens after IDEA-003#12.
 
 ## Out of scope
