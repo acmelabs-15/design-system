@@ -39,6 +39,10 @@ A decision: 1.0 gets a design skill for Figma or not, and in which form. If it d
 - Failures that the sources name: a wrong variant; a detached instance; plain layers in place of a library instance; a wrong property key that fails with no message; an import that times out.
 - Row 02, the trial, is ready by the map, but it needs a library with more than one component, as "Not yet specified" says. It waits for the first Figma library of IDEA-002.
 
+### Order against the review in Figma
+- DEC-151, Peter, 2026-11-20: the work in Figma starts when the ideas are finished. Row 02 waits for the first Figma library of IDEA-002, which that work makes. So by its present wait this idea cannot finish before the work in Figma.
+- Two ways out: the trial uses a small library that is made only for the trial, or this idea finishes during the work in Figma. It is a question for Peter when row 02 is next.
+
 ### Evidence from other ideas
 - RES-030 (IDEA-005#01): Figma ships its own skills as a plugin for each agent host, from the repository `figma/mcp-server-guide`, with no npm package.
 - RES-046 (IDEA-002#06): components that an agent or a plugin draws into a file are local to that file and get no updates; instances of a published library, inserted by key, update as library instances. So the skill needs the published library.

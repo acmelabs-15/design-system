@@ -49,6 +49,10 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Settled by Peter: "The documentation site itself gets designed in Figma first. That spec is then broken down into documentation blocks." The step is the deferred row 14. The agent's reading, not confirmed: the documentation blocks are the pieces of the website's own pages. Whether they are a fifth group of the Blocks section is open inside that row.
 - His words on the owner: "It may need its own idea; decide that with me." Row 09 holds that decision. Until then the rows stay here, because DEC-139 gives the blocks section to this idea. The work now reaches IDEA-002 (blocks in Figma), IDEA-005 (blocks for agents) and IDEA-009 (the design skill knows the blocks).
 
+### Review in Figma before the build
+- DEC-151, Peter, 2026-11-20: the whole of 1.0 is put together in Figma before anything is built, and he reviews it there with feedback. By the agent's reading in that record, the whole holds the design of this website (deferred row 14) and the recipes of the Blocks section (IDEA-002#30). So no page of the website is built before that review.
+- Evidence for row 12: each recipe of the Blocks section is in Figma before its code exists. That does not say which of the two is the source of truth afterwards.
+
 ### Waits
 - Row 02 — done on 2026-11-12, in the block of agent work that Peter approved: researcher agent `a0832e1b4ed460aa0`, record RES-047. It started without a name; its log records `claude-opus-5-5` and the effort `medium`. The list is in IDEA-001, Notes, "Block of agent work".
 - Row 07 — wait: IDEA-003#05 and IDEA-004#04 are resolved.

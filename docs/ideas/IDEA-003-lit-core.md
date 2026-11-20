@@ -58,7 +58,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
   - Typed `attr()` and `if()` are not in every browser yet: `if()` is not in Firefox.
   - A React prop that is an object reaches a custom element as a property only when the element has that property; RES-029 holds React's exact rule, from React's source. Redact 0.3.1 writes each prop as an attribute (RES-029), so an object prop does not arrive there.
 - Row 09 — wait: IDEA-001 reaches `done`.
-- Row 10 — wait: IDEA-002 resolves its rows 11 and 13. Row 09 is resolved by DEC-120. DEC-141: Peter approves the design specs once, when all are complete, so the build of the components starts after that approval.
+- Row 10 — wait: IDEA-002 resolves its rows 11 and 13. Row 09 is resolved by DEC-120. DEC-141: Peter approves the design specs once, when all are complete, so the build of the components starts after that approval. DEC-151 (Peter, 2026-11-20): he reviews the whole of 1.0 in Figma and expects to give feedback, so no code of the core is written before that review is complete.
 - Row 12 — wait: IDEA-002#22 decides the variations of Material Symbols. DEC-123 holds Peter's decisions that each icon is a component built with the Icon component, and that the Icon component renders SVG, not an icon font.
 
 ### Row 05 — partial

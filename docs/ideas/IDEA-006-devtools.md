@@ -99,6 +99,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 
 ## Not yet specified
 - Whether a lint plugin, an editor extension and a tool for Figma are part of devtools or belong to another idea. RES-071 lists them as kinds of tooling that other systems ship. It sharpens at row 10, with Peter's choice of the capabilities. If he takes the Figma kind, the Figma tools of the systems that RES-071 did not check need a look first.
+- Whether the panel of devtools is designed in Figma before it is built, as part of the whole that Peter reviews there (DEC-151, 2026-11-20). No record puts the panel into Figma. It sharpens at row 04, with the base.
 - How devtools stays out of production bundles.
 - Whether devtools and the MCP server read component metadata from one source.
 

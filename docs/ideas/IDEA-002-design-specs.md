@@ -30,6 +30,12 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Item 1, evidence for the design spec of Code Block: it renders markdown as a stream and as static text, so its states include a stream that is not complete yet.
 - Items 8 and 11: IDEA-008 (Claude Design) and IDEA-009 (design skill for Figma) are new. Both can need the Figma library and the token output of this idea.
 
+### Review in Figma before the build
+- DEC-151, Peter, 2026-11-20: when the ideas are finished and before anything is built, the whole of 1.0 is put together in Figma, and he reviews it there. He expects to give feedback.
+- For this idea: the plan of its spec makes that whole. By the agent's reading in DEC-151, which he has not confirmed, it is the tokens as variables, the design spec of each of the 145 components, the recipes of the Blocks section (row 30) and the design of the documentation website (IDEA-007, deferred row 14).
+- It sharpens DEC-141: the one approval at the end is a review with changes after it. The build of 1.0 starts when those changes are made and he approves.
+- How the whole is put together for the review, how he gives feedback and how agents work it in is the deferred row 31.
+
 ### Waits
 - Rows 06, 20, 26 and 28 — running since 2026-11-12, in the block of agent work that Peter approved. Each agent started without a name; its log records `claude-opus-5-5` and the effort `medium`. The list is in IDEA-001, Notes, "Block of agent work".
   - Row 06: done on 2026-11-12. Researcher agent `a278b8c98ca46fab4`, record RES-046.
@@ -207,6 +213,7 @@ Rows of the spec phase, by [the workspace rule](../agents/workspace.md#deferred-
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
 | 29 | The build order in Figma: which reusable primitives and shared parts are made first, in which order do the components and the blocks follow from the dependency graph of DEC-142, and how many are made at one time? Peter, 2026-11-13: build Figma the way code is built, shared parts first and reused everywhere, in parallel as far as the graph allows, and not everything in parallel blindly. Source: his additional scope, item 4. | task | deferred | — | — |
+| 31 | The review in Figma: how is the whole of 1.0 put together in Figma for Peter's review (the files, the pages and their order), how does he give his feedback (comments in Figma or chat), and how do agents work the feedback in and show him what changed? Deferred by the agent: it settles how to carry out a decided step. Source: Peter, 2026-11-20, DEC-151. | task | deferred | — | — |
 
 ## Not yet specified
 - What "Export modes" writes for an alias to a variable in another collection, and whether it writes `com.figma.isOverride`. Other systems' exports hold both (RES-049, Follow-ups), and the trial export held neither (RES-048, Limits). It sharpens at row 11, when the first real collections exist.

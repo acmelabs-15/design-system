@@ -37,6 +37,7 @@ A spec for the repository of 1.0: its build tools, its checks in CI, its release
 ### Evidence from other ideas
 - IDEA-003, "Not yet specified": the package layout and the build tooling of the core, and what replaces `docs/agents/verification.md` and `docs/agents/repository.md`, which describe the 0.3.3 code. Row 03 and row 05 here bear on both.
 - IDEA-001, Notes, "Working state": no product check has run on `v1`; a verifier of the old layout still exists in `scripts/`. Other sessions hold branches that change the CI of the old system.
+- DEC-151 (Peter, 2026-11-20), for rows 03 and 06: nothing of 1.0 is built before his review of the whole in Figma. His words do not say whether the removal of the old system and the setup of the build tools and CI may run before that review. Row 06 asks it with the time of the removal.
 - RES-029 (IDEA-004#01), for row 03: how Stencil, Ionic and `@lit/react` test wrappers in CI, with their runners and browsers.
 - RES-047 (IDEA-007#02), for row 03: where ten design systems host their documentation websites.
 
