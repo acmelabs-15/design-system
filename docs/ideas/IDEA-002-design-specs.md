@@ -37,7 +37,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - How the whole is put together for the review, how he gives feedback and how agents work it in is the deferred row 31.
 
 ### Figma as the source for tokens and anatomy
-- Peter, 2026-11-20, in his reply to IDEA-011#02: he sees Figma as the source of truth "for tokens and the compound components parts anatomy", and he proposes a rule or a skill "that always points an ai to figma" for both. It agrees with the decisions of this idea: DEC-117, DEC-118, DEC-120 and DEC-142, and with DEC-158. The deferred row 33 holds the rule and the skill.
+- Peter, 2026-11-20, in his reply to IDEA-011#02: he sees Figma as the source of truth "for tokens and the compound components parts anatomy", and he proposes a rule or a skill "that always points an ai to figma" for both. It agrees with the decisions of this idea: DEC-117, DEC-118, DEC-120 and DEC-142, and with DEC-158. The deferred row 33 holds the rule and the skill. DEC-159 of the same day decides it, and it adds the structure of a block to the rule.
 - Facts for it from RES-083: the Figma MCP and the REST file endpoints read the structure of a component, its properties and its bound variables; behaviour and states do not come across as data; `figma-spec` reads and writes a spec document inside a Figma file, in open beta. The MCP reads at most 200 calls a day on the Professional plan, so the pulled copy in the repo is what an agent reads each day.
 
 ### Waits

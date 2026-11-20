@@ -69,6 +69,13 @@ A spec for the blocks of 1.0: the list by name and group, what each block compos
 - One correction that the agent gave him: the skills make both directions workable. "A piece of cake" is not shown yet. The limits of RES-083 stand, and only a trial or the first work in Figma shows how well it holds for 1.0.
 - Asked on 2026-11-20 through the question dialog: does the same rule hold for a block? Options: "Yes, the same rule for blocks (Recommended)"; "Yes, and prove it with a trial first"; "No, a block follows the code".
 
+### Row 02 — resolved
+- DEC-159, Peter, 2026-11-20: Figma is the source of truth for the structure of a block, by the same rule as for the tokens and for the anatomy of the compound components. He selected "Yes, the same rule for blocks (Recommended)" in the dialog, with no condition, after the research of rows 07 and 08 and three replies.
+- Behaviour and states are text in the design spec in Figma. A change starts in Figma, and an agent updates the code.
+- The rule and the maintainer skill that point an agent to Figma are IDEA-002, deferred row 33.
+- He chose the rule without the trial that the agent offered. The first real work in Figma is the proof that the tools hold.
+- The notes above on row 02 keep the history of the question.
+
 ### Row 06 — resolved
 - DEC-158, Peter, 2026-11-20: the word is Block. His definition: "Larger, ready-made sections of UI built from several different components. Also called patterns or recipes. Examples: login form, search bar, user profile card, dashboard sidebar." It is the fourth of his four levels; IDEA-003, Notes, "Row 24 — resolved" holds the others.
 - The glossary has Block in place of Recipe since that day. A block combines several different components; a composite component assembles its own compound components.
@@ -130,7 +137,7 @@ A spec for the blocks of 1.0: the list by name and group, what each block compos
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
 | 01 | Which blocks does 1.0 have, by name, in each group of DEC-146? | interview | open | — | — |
-| 02 | Is Figma or code the source of truth of a block? | interview | open | 07, 08 | — |
+| 02 | Is Figma or code the source of truth of a block? | interview | resolved | 07, 08 | [DEC-159](../decisions/DEC-159-figma-is-the-source-of-truth-for-tokens-anatomy-and-blocks.md) |
 | 03 | Where do the blocks live in the documentation, and where do the source files of a block live? | interview | open | — | — |
 | 04 | Import the framework targets from IDEA-004. Each block is written for plain HTML and for each target. | task | open | — | — |
 | 05 | Import the component list, names and parts from IDEA-001. A block composes those components. | task | open | — | — |
