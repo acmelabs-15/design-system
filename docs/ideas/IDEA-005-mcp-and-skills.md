@@ -113,6 +113,18 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Facts for IDEA-004#07 and for "How `init` reaches a consumer who installs only a framework package" under "Not yet specified": with only a package that depends on the first, npm and Bun make the `bin` available, and pnpm does not; `pnpm exec` fails with "Command not found".
 - Not observed, and in row 15: a real approval by a person in the dialog of each host (the trial wrote the hosts' state files in a scratch home folder); a session in which a model uses a skill and calls the tool; Cursor, VS Code Copilot and Devin. The trial agent asks whether Peter wants these before rows 04 and 05. The main session's reading: they do not separate the two options of row 04, because they hold for a package of its own too. They bear on row 05, so row 15 blocks row 05.
 
+### Row 14 — resolved
+- RES-080, 2026-11-20, from the documentation, the release notes and the source code of each host, and from a test with a minimal server in a scratch home folder with no sign-in. The researcher agent `a3eeac1a7a9fad48f` ran on Opus 5.5 at `medium` on all 134 requests, checked after it ended. The main session read the record in full.
+- Facts for row 12, tools that return rendered UI:
+  - None of the three shows a view in its terminal use: Claude Code 2.1.329, Codex CLI 0.154.0 and Gemini CLI 0.58.0. Each connected to the server and listed the tool. None declared MCP Apps to the server, and none read the `ui://` page.
+  - Claude Code's documentation names the rendering of such views only for Claude Desktop and claude.ai, and for an application that embeds Claude Code through the Agent SDK and renders the view itself.
+  - Codex passes the declaration on to the server only when a client with a window declares it. Its terminal paths do not.
+  - Gemini CLI has no mention of MCP Apps in its code, its documentation or its release notes.
+  - The specification gives the fall-back: a host with no views treats the tool as a normal tool, and a tool "MUST return meaningful content array even when UI is available". So a view adds something for some hosts and replaces nothing.
+- So for the coding agents in a terminal, a view does nothing today. It shows in the hosts that RES-066 lists as ticked, such as Claude on the web, Claude Desktop, VS Code Copilot, ChatGPT and Cursor.
+- Not confirmed: what each host gives back to the model for the tool call, because each run with a model stopped at the missing sign-in; the interactive terminal of each host, which was not run.
+- A follow-up of the record, and no row yet: whether the Code tab of Claude Desktop and Codex Desktop render a view from a local server. It matters only if row 12 turns on those two hosts.
+
 ### Third block of agent work
 - Row 14 — running since 2026-11-20, on Peter's go of that day (IDEA-001, Notes, "Third block of agent work"). Researcher agent `a3eeac1a7a9fad48f`, started without a name; its log records Opus 5.5 and the effort `medium` at the first check. It claims its own record; find it by `from: IDEA-005#14`. Its test server and logs go to `.artifacts/v1/trial/IDEA-005-14/`. Brief: `.artifacts/v1/briefs/IDEA-005-14.md`. Check the log again when the agent ends, before the record is read.
 
@@ -137,7 +149,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 11 | How do Storybook's skills and its MCP server work, and in particular its MCP tools that return rendered UI; who else returns rendered UI from an MCP tool, and how does that work? | research | resolved | — | [RES-066](../research/RES-066-storybook-mcp-and-rendered-ui-tools.md) |
 | 12 | Does the 1.0 MCP server have tools that return rendered UI? | interview | open | 04, 11, 14 | — |
 | 13 | Are the blocks exposed to agents through the MCP server, through a skill, or through both? | interview | open | 04 | — |
-| 14 | Do Claude Code, Codex and Gemini CLI show the view of a tool that uses MCP Apps: what does each host's own documentation say, and what does a test with a minimal server show? RES-066 found only that the community's list of hosts has no tick for them. | research | in-progress | — | — |
+| 14 | Do Claude Code, Codex and Gemini CLI show the view of a tool that uses MCP Apps: what does each host's own documentation say, and what does a test with a minimal server show? RES-066 found only that the community's list of hosts has no tick for them. | research | resolved | — | [RES-080](../research/RES-080-mcp-apps-views-in-three-agent-hosts.md) |
 | 15 | In the trial project of RES-077, with Peter at the keyboard: does each host work after a real approval in its own dialog, does a model in a session use a skill and call the tool, and what do Cursor and VS Code Copilot show? Only Peter can approve in a host's dialog and sign in, so this is a step that he runs; the main session gives him the checklist when row 05 is next. | task | open | 03 | — |
 
 ## Not yet specified

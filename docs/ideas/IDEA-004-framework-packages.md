@@ -46,6 +46,21 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Facts for row 06: Stencil and Ionic test their wrappers in a browser, in example applications; Ionic runs a React 18 and a React 19 application. `@lit/react` tests in three browsers against React 18.2. Web Awesome, Shoelace and Spectrum have no test of their wrappers.
 - Limits of the record: nothing is observed in a browser; refs, children and slots in Preact and Solid were not researched; two findings on Preact and Solid rest on a 2-1 vote and on older documentation; no source has a wrapper test under Preact or Solid, or a test of `@lit/react` under React 19.
 
+### Row 03 — resolved
+- RES-079, 2026-11-20: one application over Lit elements, built two times from the same code with Vite 8.3.8, on React 19.3.1 and on Redact 0.3.1, and read in a headless Chrome 157. The task agent `aa9c8a72082071875` ran on Opus 5.5 at `medium` on all 86 requests, checked after it ended. The main session read the record in full.
+- The answer to the row: no. The React package does not run on Redact 0.3.1 unchanged.
+- What differs on Redact, with the same wrappers:
+  - An array prop and an object prop arrive as attributes with the text `alpha,beta,gamma` and `[object Object]`, and the Lit property is then `null`, with no error. On React 19 they arrive as properties.
+  - A camelCase prop is written as a lower-case attribute. It reaches the property only where the default attribute name of Lit is the same.
+  - A handler for an event with a camelCase name is not called. A handler for an event with a dash in its name is called, and it gets an object that is no `Event`.
+  - `onChange` is called for a `change` event that does not bubble. On React 19 it is not called.
+  - The out-of-the-box form of Steps fails with a page error, because its `steps` list arrives as an attribute.
+- The same on both: a ref holds the element; children and `slot` attributes arrive as written; the composed form and a custom composition of Steps work, and the React state follows each step.
+- Facts for row 05: a changed wrapper passed each point on both runtimes. It assigns each prop that is no text as a property through a ref in `useLayoutEffect`, and it attaches each event with `addEventListener`. For Steps that was three added lines and one changed line. So one wrapper can serve React and Redact, and it is no thin wrapper that only passes props on.
+- Open for row 05: whether a wrapper made with `createComponent` of `@lit/react` passes the same points on Redact. The test did not use it.
+- Facts for row 04: Redact is at 0.3.1, before 1.0, and reports itself as React "19.2.3". RES-029 predicted each difference from its source code; the test observed them.
+- Limits: Chrome only and headless; production builds; client rendering; each prop set once, with no update after the first render.
+
 ### Settled by the prompt
 - The candidate targets are React, Preact, TanStack Redact and possibly Solid.
 - The prompt describes Redact as a React-API-compatible runtime. RES-029 checked it: TanStack publishes `@tanstack/redact`, version 0.3.1 of 2026-11-04, before 1.0. Its repository claims "100% API compliancy", and its own compatibility pages list behaviour that it does not implement, mainly concurrency.
@@ -70,7 +85,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 |---|---|---|---|---|---|
 | 01 | For React, Preact, TanStack Redact and Solid: how does each handle custom elements, how do other libraries generate or write wrappers for it, and how do they test those wrappers? | research | resolved | — | [RES-029](../research/RES-029-framework-wrapper-landscape.md) |
 | 02 | Import the composition architecture from IDEA-003. | task | resolved | — | [RES-078](../research/RES-078-framework-packages-import-of-the-composition-contract.md) |
-| 03 | Does the React package run on Redact unchanged? | task | in-progress | 01, 02 | — |
+| 03 | Does the React package run on Redact unchanged? | task | resolved | 01, 02 | [RES-079](../research/RES-079-react-package-on-redact-test.md) |
 | 04 | Which targets ship in 1.0? | interview | open | 01, 03 | — |
 | 05 | Is each wrapper generated from component metadata or written by hand? | interview | open | 02, 04 | — |
 | 06 | How is each wrapper tested? | interview | open | 04, 05 | — |
