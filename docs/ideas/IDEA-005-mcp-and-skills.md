@@ -261,10 +261,23 @@ He asked for each doubt, "even if it's just the smallest tiniest bit". The agent
 ### Row 20 — resolved
 - DEC-161, Peter, 2026-11-20: five forms. The managed block is on by default; source, his answer to the dialog for D3, the option "Yes, on by default (Recommended)". The plugin comes from a marketplace of our own and is thin; source, his answer to the dialog for D4, the option "A plugin from our own marketplace". The agent had recommended no plugin in 1.0.
 
-### Row 18 — pending
-- Asked on 2026-11-20 through the question dialog: is the command line tool of 1.0, which holds the MCP server and the command that writes the files, in the `bin` of the main package or in a package of its own?
-- Options: "In the main package (Recommended)"; "A package of its own".
-- The stated cost of the recommendation: no library of the 112 surveyed projects has its server only in its main library package; and with pnpm, a consumer who installs only a framework package does not get the command, so each framework package needs a small `bin` that passes the call on (RES-077, IDEA-004#07).
+### The whole map after his answer on row 18, 2026-11-20
+- His answer to the dialog for row 18: the option "In the main package (Recommended)". Conditions: none stated. DEC-165 holds it, as an architecture decision. It is the answer to the question of his kickoff prompt and of the old row 04: inside the design system package, and not a package of its own.
+- Closed by it, with his marks: row 18 (DEC-165); row 24 (DEC-166); row 23 (DEC-167).
+- Readings of the agent, told to him in chat:
+  - His ✅ for "the tool refreshes the files when it runs" is met by the MCP server: an agent host starts it in each session, and at its start it brings the block and the copied skills up to the installed version.
+  - His ✅ for "no step" at the install: after the first run of the command the server keeps the files up to date. A first install with no step is not in 1.0, because a script on install has his ❌.
+  - His ✅ for "inside the dev server": 1.0 has no dev server. A part in the consumer's dev server is a matter of the devtools, so it is a candidate for IDEA-006#10. Row 28 is retired; "Out of scope" holds it.
+- Row 05, which row 23 superseded, named row 15 in its "Blocked by" cell. The cell is empty now, because row 15 left the map.
+- Moved to the spec phase by the agent, as deferred rows: row 15, the check in the agent hosts with Peter at the keyboard, now with the real package and with the files for each host; row 29, the pass-on command for pnpm. Two points of "Not yet specified" went into them.
+- Parked behind the survey of row 26: row 13, the blocks for agents, because the tools for blocks are part of the list of tools; rows 06, 07, 12 and 09 as before.
+- Started: the research of row 27, because row 25 is now the next question of this idea. See "Row 27 — running".
+- Nothing in this idea is a question for Peter until row 26 or row 27 returns. The next question in the order of IDEA-001, "Next actions", is IDEA-004#04.
+
+### Row 27 — running
+- Started on 2026-11-20 by the main session, when row 25 became the next question of this idea. Researcher agent `a7c733c7a01ad8e6a`, started without a name, on Opus 5.5 at the effort `medium`: the row is a lookup of host facts with a small test (capabilities, guide of 2026-11-13). It claims its own record; find it by `from: IDEA-005#27`.
+- Brief: `.artifacts/v1/briefs/common.md` and `.artifacts/v1/briefs/IDEA-005-27.md`. Its test files go to `.artifacts/v1/trial/IDEA-005-27/`, with a scratch home folder for each host and no sign-in.
+- When it ends: check its log with `.artifacts/v1/briefs/agent-log-check.py`, read the record in full, then ask row 25.
 
 ### Row 26 — running
 - Started on 2026-11-20 by the main session, on Peter's words `/deep-research` and "fan out and do some broad/deep research" in his answer to D1. Record: RES-085, which the main session fills from the result of the run.
@@ -335,7 +348,7 @@ He asked for each doubt, "even if it's just the smallest tiniest bit". The agent
 | 01 | How do other libraries ship MCP servers and agent skills (inside the library package or apart), how do they install them into a consumer project, and how do agent hosts find them? | research | resolved | — | [RES-030](../research/RES-030-mcp-and-skills-shipping-landscape.md) |
 | 03 | Does an `init` script from the package's `bin` install a working MCP server and skills into a consumer project? | task | resolved | 01 | [RES-077](../research/RES-077-init-script-trial.md) |
 | 04 | Do the MCP server and the skills ship inside the design system package, or as separate packages? | interview | superseded by 18 | 01, 03, 16 | — |
-| 05 | What does `init` install, into which agent hosts, and how does it update on a new version? | interview | superseded by 23 | 15 | — |
+| 05 | What does `init` install, into which agent hosts, and how does it update on a new version? | interview | superseded by 23 | — | — |
 | 06 | Which tools and records does the 1.0 MCP server serve? | interview | open | 17, 10, 26 | — |
 | 07 | Which skills ship for consumers? | interview | open | 20, 10, 26 | — |
 | 08 | Which idea owns the documentation website and its records? | interview | resolved | — | [DEC-139](../decisions/DEC-139-seventh-idea-owns-the-documentation-website.md) |
@@ -343,30 +356,34 @@ He asked for each doubt, "even if it's just the smallest tiniest bit". The agent
 | 10 | Which skills do other design systems ship and what does each skill do, and which tools do their MCP servers expose and what does each tool do? RES-030 holds how they package and distribute them. | research | resolved | — | [RES-070](../research/RES-070-skills-and-mcp-tools-of-other-design-systems.md) |
 | 11 | How do Storybook's skills and its MCP server work, and in particular its MCP tools that return rendered UI; who else returns rendered UI from an MCP tool, and how does that work? | research | resolved | — | [RES-066](../research/RES-066-storybook-mcp-and-rendered-ui-tools.md) |
 | 12 | Does the 1.0 MCP server have tools that return rendered UI? | interview | open | 17, 11, 14, 26 | — |
-| 13 | Are the blocks exposed to agents through the MCP server, through a skill, or through both? | interview | open | 17, 20 | — |
+| 13 | Are the blocks exposed to agents through the MCP server, through a skill, or through both? | interview | open | 17, 20, 26 | — |
 | 14 | Do Claude Code, Codex and Gemini CLI show the view of a tool that uses MCP Apps: what does each host's own documentation say, and what does a test with a minimal server show? RES-066 found only that the community's list of hosts has no tick for them. | research | resolved | — | [RES-080](../research/RES-080-mcp-apps-views-in-three-agent-hosts.md) |
-| 15 | In the trial project of RES-077, with Peter at the keyboard: does each host work after a real approval in its own dialog, does a model in a session use a skill and call the tool, and what do Cursor and VS Code Copilot show? Only Peter can approve in a host's dialog and sign in, so this is a step that he runs; the main session gives him the checklist when row 05 is next. | task | open | 03 | — |
 | 16 | Where do the MCP servers and the agent skills of large frameworks, packages and libraries live, over a large sample that is not limited to design systems: inside the main package, in a package of their own, on a hosted server, in a repository or a marketplace of plugins; how does a consumer install each, and how does each stay at the version of the installed library? Peter asked for it with `/deep-research` on 2026-11-20 and named Storybook, AG Grid and Chakra UI as examples. RES-030 and RES-070 hold a smaller sample. | research | resolved | — | [RES-082](../research/RES-082-mcp-servers-and-skills-of-frameworks-and-libraries.md) |
 | 17 | Does 1.0 have an MCP server, and what is its job beside the guidance for coding agents? | interview | resolved | 16 | [DEC-160](../decisions/DEC-160-mcp-server-is-a-documentation-server.md) |
-| 18 | Where does the MCP server live? Settled by Peter's mark: it is a subcommand of the command line tool of 1.0. Open: is that tool in the `bin` of the main package, or is it a package of its own? Row 28 holds the dev server, and row 09 the hosted server. | interview | open | 17 | — |
+| 18 | Where does the MCP server live? Settled by Peter's mark: it is a subcommand of the command line tool of 1.0. Then asked: is that tool in the `bin` of the main package, or is it a package of its own? | interview | resolved | 17 | [DEC-165](../decisions/DEC-165-command-line-tool-and-server-in-the-main-package.md) |
 | 19 | Where does the guidance for coding agents live: the main package, a repository of skills, a plugin, a block in the instructions file of the consumer's project, the documentation site? | interview | resolved | 20 | [DEC-162](../decisions/DEC-162-where-the-guidance-lives.md) |
 | 20 | Which forms does the guidance for coding agents take: skills, a managed block in AGENTS.md or CLAUDE.md, documentation inside the package, llms.txt, a plugin? | interview | resolved | 16 | [DEC-161](../decisions/DEC-161-guidance-forms-skills-docs-block-llms-txt-and-plugin.md) |
 | 21 | How do the MCP server and the guidance stay at the version of the installed library? | interview | resolved | 18, 19 | [DEC-163](../decisions/DEC-163-server-and-guidance-stay-at-the-installed-version.md) |
 | 22 | How are the MCP server and the guidance distributed: npm, the `skills` command line tool, plugin marketplaces, an own command, a hosted address? | interview | resolved | 18, 19 | [DEC-164](../decisions/DEC-164-distribution-of-the-server-and-the-guidance.md) |
-| 23 | How does a consumer install the MCP server and the guidance, and which files does that write into the project? Settled by Peter's marks: the one command of 1.0, `npx skills add`, the host's own command or a file by hand for the server, and the install of the plugin. Open: the way with no step (row 28), and the files for each host. | interview | open | 22, 15, 28 | — |
-| 24 | How do the MCP server and the guidance get updated when the library is updated? Settled by Peter's marks: nothing to do where the guidance is in the installed package, a command that the developer runs again, an update of the plugin, and no script on install. Open: a refresh when a tool runs (row 28). | interview | open | 21, 22, 28 | — |
+| 23 | How does a consumer install the MCP server and the guidance, and which files does that write into the project? | interview | resolved | 22 | [DEC-167](../decisions/DEC-167-install-of-the-server-and-the-guidance.md) |
+| 24 | How do the MCP server and the guidance get updated when the library is updated? | interview | resolved | 21, 22 | [DEC-166](../decisions/DEC-166-update-of-the-server-and-the-guidance.md) |
 | 25 | Which agent hosts does 1.0 support for the MCP server and the guidance? Settled by Peter's marks: the own command names its hosts, and the `skills` tool reaches the hosts that it knows. Open: the names of the hosts, and which hosts get the plugin. | interview | open | 16, 27 | — |
 | 26 | For the frameworks, packages and libraries that provide an MCP server or agent skills: which tools does each server give to an agent and what does each tool do, and which skills does each project provide, as a complete list, and what does each skill do? Peter asked for it with `/deep-research` on 2026-11-20 and named Figma as an example with many skills. RES-070 holds this for fifteen design systems, and RES-082 holds a short detail for 112 projects. | research | in-progress | — | — |
-| 27 | Which agent hosts load a plugin from a marketplace that is a repository of ours, and not only from their official marketplace (Claude Code, Codex, Cursor, Gemini CLI, VS Code Copilot); what can a plugin of each host hold (skills, an entry for an MCP server, commands); can that entry start the server of the package that is installed in the open project; and what does each host do when the project holds the same skill and the same server entry too? For the plugin of DEC-161. | research | open | — | — |
-| 28 | Does 1.0 get a part that runs inside the consumer's dev server, such as a plugin for Vite: it would start the MCP server with the dev server, and it would refresh the files for the agent hosts on each start? Peter marked "inside the dev server" and "the tool refreshes the files when it runs" with ✅ on 2026-11-20; 1.0 is a library and has no dev server of its own. | interview | open | — | — |
+| 27 | Which agent hosts load a plugin from a marketplace that is a repository of ours, and not only from their official marketplace (Claude Code, Codex, Cursor, Gemini CLI, VS Code Copilot); what can a plugin of each host hold (skills, an entry for an MCP server, commands); can that entry start the server of the package that is installed in the open project; and what does each host do when the project holds the same skill and the same server entry too? For the plugin of DEC-161. | research | in-progress | — | — |
+
+## Deferred rows
+
+| # | Question | Type | Status | Blocked by | Result |
+|---|---|---|---|---|---|
+| 15 | The check in the agent hosts with the real package of 1.0 and Peter at the keyboard: does each host work after a real approval in its own dialog, does a model in a session use a skill and call a tool of the server, and what do Cursor and VS Code Copilot show? With it: the list of the files that the command writes for each host, and which instructions file each host reads at the start of a session, from the host's own documentation; two guides disagree for Claude Code (RES-030, Follow-ups). For DEC-167 and DEC-161. Source: the points that the trial RES-077 did not observe. Until 2026-11-20 this was an open row of the map. The agent moved it: the decisions on install, update and distribution are made, and the check tests how they are built. | task | deferred | — | — |
+| 29 | The pass-on command: how does a consumer who installs only a framework package reach the command of the main package with pnpm, which does not give the `bin` of a dependency (RES-077): a small `bin` in each framework package, or another way? It applies only if IDEA-004#07 makes the targets packages of their own. For DEC-165. Source: the cost that the question for row 18 named, 2026-11-20. | task | deferred | — | — |
 
 ## Not yet specified
 - Google's A2UI, a declarative format for UI that a Google post joins with MCP Apps. RES-066 saw it in a search result and did not read it. It sharpens at row 12, if a second mechanism beside MCP Apps matters then.
-- Which instructions file Claude Code reads at the start of a session: two libraries' guides disagree (RES-030, Follow-ups), and neither run read Claude Code's own documentation on it. It decides where `init` writes its block. Check it at its source when row 05 is next.
-- How `init` reaches a consumer who installs only a framework package. It sharpens after IDEA-004#07.
 - Maintainer skills for this repo, as distinct from consumer skills. Peter, 2026-11-12 (IDEA-002, Row 10 — partial): an internal skill that tells an agent how to bring the tokens in from Figma is acceptable for the work of the maintainers.
 
 ## Out of scope
+- Row 28, retired on 2026-11-20, one answer after the agent added it: "Does 1.0 get a part that runs inside the consumer's dev server, such as a plugin for Vite: it would start the MCP server with the dev server, and it would refresh the files for the agent hosts on each start?" Its two halves went to other places. The refresh is settled in DEC-166: the MCP server refreshes the files at its start. A part in the dev server is a candidate capability of the devtools, so IDEA-006#10 decides it; Peter's mark ✅ for "Inside the dev server of the installed package" is its source.
 - Row 02, retired on 2026-11-12: "How does release 0.3.3 ship its MCP server and consumer skills, and which limits do its records name?" DEC-125 takes release 0.3.3 out as input.
 - Devtools (IDEA-006).
 - The documentation website. IDEA-007 owns it (DEC-139).
