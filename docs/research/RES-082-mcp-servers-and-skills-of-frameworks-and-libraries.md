@@ -51,13 +51,11 @@ For IDEA-005#04: the common shape is a mix. The guidance for agents is inside or
 ### Decisions and their solutions, with the packages held in high regard
 Peter asked for this list on 2026-11-20, in his reply to IDEA-005#04: each decision on the MCP server and the skills, each solution, and which packages of a short list use it. The list of packages is his: AG Grid, Storybook, shadcn/ui, Stripe, Turborepo, Prisma, Next.js, Vite, Bun, Apollo Client, the Vercel AI SDK, Shopify and Figma. The main session added four: TanStack, because the project often looks to it; Playwright, for its stated choice of a command line tool with skills; and Ant Design and Web Awesome, the two design systems nearest to 1.0. Each cell comes from the checked record of that package in this survey. Decisions 2, 4, 5, 6, 7 and 8 are Peter's six; decisions 1, 3, 9 and 10 are added.
 
-#### 1. Does 1.0 have an MCP server, and what is its job beside the guidance? (added)
+#### 1. What is the job of the MCP server beside the guidance? (added)
 | Solution | Packages |
 |---|---|
 | A server for the documentation and the API of the library | AG Grid, shadcn/ui, Ant Design, Shopify, Bun, Apollo Client |
 | A server for the product or the running project | Next.js (runtime tools of the dev server), Storybook (the project's own stories and component documentation), Vite (devtools, experimental), Playwright (browser automation), Figma, Stripe, Prisma (account resources, with a search of the documentation) |
-| No server, guidance only | Turborepo, Vercel AI SDK, Web Awesome, TanStack |
-| Had a server and moved away from it | TanStack (removed its documentation server and replaced it by commands of its CLI), Shopify (removed MCP from its plugin, because skills and MCP overlap; its server package still exists), Playwright (recommends its CLI with skills over MCP for coding agents) |
 
 #### 2. Where does the MCP server live? (Peter's 2)
 | Solution | Packages |
@@ -66,8 +64,6 @@ Peter asked for this list on 2026-11-20, in his reply to IDEA-005#04: each decis
 | A subcommand of the project's command line tool | shadcn/ui (`shadcn mcp`), Ant Design (`antd mcp` in `@ant-design/cli`) |
 | Inside the dev server of the installed package | Next.js (`/_next/mcp` in `next dev`), Storybook (an addon package that runs in `storybook dev`), Vite (its devtools package, experimental) |
 | A hosted server | Stripe, Bun, Apollo Client, Prisma, Figma (also inside its desktop app) |
-| None | Turborepo, Vercel AI SDK, Web Awesome, TanStack |
-| A stand-alone server inside the main library package | No package of the list, and none of the 112 |
 
 #### 3. Which forms does the guidance take? (added)
 | Solution | Packages |
@@ -130,7 +126,6 @@ Most projects of the survey use several of these places: 88 of 112.
 | A command that the developer runs again | AG Grid (`npx skills update`), Storybook (`storybook upgrade`), Playwright (`playwright init-agents`) |
 | An update of the plugin | Stripe, Shopify, Figma |
 | The newest version on each start, through `npx` with `@latest` | shadcn/ui, Shopify, Playwright, Ant Design |
-| Never: written one time | Bun (its CLAUDE.md) |
 
 #### 9. Which agent hosts does 1.0 support? (added)
 | Solution | Packages |
@@ -147,6 +142,8 @@ The survey has no field for the hosts of each package; this table is read from t
 | A hosted MCP server | Stripe, Bun, Apollo Client, Prisma, Figma |
 | An llms.txt file or documentation by its address | Vite, Web Awesome, Bun |
 | A hosted catalog of skills | Stripe |
+
+Peter, 2026-11-20, on the first form of this list: "you don't need to include none or doesnt' do it anymore". So the tables hold only solutions that a package of the list uses today. The rows that were removed: for decision 1, the packages with no server (Turborepo, Vercel AI SDK, Web Awesome, TanStack) and the packages that moved away from a server (TanStack, Shopify in its plugin, Playwright in its advice); for decision 2, the same four with no server; for decision 8, Bun's file that is written one time. The Findings below keep those facts.
 
 Limits: a package can be in more than one cell of a decision. Each cell shortens the record of the package; the Findings below hold the longer text and the sources.
 
