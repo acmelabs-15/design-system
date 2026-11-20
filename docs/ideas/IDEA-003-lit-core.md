@@ -165,6 +165,18 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - What follows for 1.0, as the agent told him: fine granular parts as elements are a choice that 1.0 makes beyond most libraries of web components. An out-of-the-box element in the Lit core would be built on those part elements, as Mantine builds its `Modal` on its parts.
 - The question of row 06 is asked again after this answer.
 
+### Row 06 — resolved
+- Answer, Peter, 2026-11-20, typed into the question dialog, to the question "Does the Lit core also hold the out-of-the-box components?". His words in full:
+
+  > So if the figma design system components are built the right way, they will have a very clear anatomy that will define all of the highly composable granular parts for every component - even if webcomponents generally only export a singluar component - based on how you're describing their internals, they literally define the granular composable parts via a 'part' attribute, which then recieves a slot - so it sounds like webcomponents, even if we were not exporting these granular parts from the webcomponets lib - will be identifying the "parts" and creating slots for them - that sounds very similar to a react component that defines that 'part' or template for the part in a standalone component and instead of a slot it defines a 'child' for it - i mean you've just told me that the out-of-the-box component is what webomponent devs are expecting - so yes I think it makes sense to export both the out-of-the-box component so webcomponent devs can use the components like they'd expect to.
+
+- Settled, by DEC-157: the Lit core exports both, the granular parts and the out-of-the-box component. His reason: "so webcomponent devs can use the components like they'd expect to". Conditions: none stated. It came after the research of row 25 and after two answers to his questions on what libraries of web components export.
+- His picture, for the spec: the anatomy of a component in Figma defines its granular parts. In a web component each inner piece has a name through the `part` attribute and often a slot; in a React component the same piece is a component of its own that takes children.
+- One difference that the agent told him on 2026-11-20: a name in `part` gives a developer the style of that piece, and a slot gives its content. Neither lets the developer move, remove or replace the piece. The granular part elements of DEC-152 do.
+- What follows, as the agent's reading, for the spec to confirm: one anatomy names three things for each component, the part elements, the CSS parts of the out-of-the-box element and its slots.
+- Not decided here: which components get an out-of-the-box component (IDEA-001#09), the names for the glossary (row 24), and the mechanism inside (deferred row 23).
+- The notes above, from "Row 06 — pending question" to "Row 06 — partial, third reply", keep the history of the question.
+
 ### Row 25 — resolved
 - RES-081, 2026-11-20, from two runs. The second run surveyed 37 design systems and component libraries and one subject for the writing on the pattern; a second agent checked each record against the sources. Its 78 agents ran on Opus 5.5 at `medium`, checked in the logs after the run. It started before Peter's rule on `gh`. The main session read the groups, the facts across the records, the terms and the disagreements, and the records of Web Awesome, of GitHub Primer and of the writing. It reads the record of a single system when a later row needs it.
 - Facts for row 06. Peter's doubt is right: the earlier statement holds only for the sets of RES-072 and RES-069.
@@ -269,7 +281,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 02 | Which mechanisms does Lit give for composition between a parent and its parts (slots, light DOM children, context, shadow parts), and what are the limits of each? | research | resolved | — | [RES-043](../research/RES-043-lit-composition-mechanisms.md) |
 | 04 | Must 1.0 render on the server? | interview | resolved | — | [DEC-127](../decisions/DEC-127-no-server-rendering-in-1-0.md) |
 | 05 | Which composition architecture does the Lit core use? | prototype | resolved | 01, 02, 04, 20, 21 | [DEC-152](../decisions/DEC-152-a-part-works-at-any-depth-below-its-root.md) |
-| 06 | Where does the convenience component live: as a Lit element in the core, in the framework wrappers only, or as a snippet that the consumer copies into the project? | interview | open | 05, 25 | — |
+| 06 | Where does the convenience component live: as a Lit element in the core, in the framework wrappers only, or as a snippet that the consumer copies into the project? | interview | resolved | 05, 25 | [DEC-157](../decisions/DEC-157-lit-core-exports-out-of-the-box-components-and-parts.md) |
 | 07 | Which source gives the components their behaviour: state machine packages, ports of them, or our own logic? | interview | open | 05 | — |
 | 08 | How do the token files from IDEA-002 reach the styles of the components? | interview | open | 05, 10 | — |
 | 09 | Import the final component list from IDEA-001. | task | open | — | — |
