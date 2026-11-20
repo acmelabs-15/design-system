@@ -11,19 +11,27 @@ A reusable part of the design system with a defined purpose and a consistent int
 _Avoid_: Widget as a competing name for a component.
 
 **Primitive**:
-A shared building block from which other components and recipes are composed.
-_Avoid_: A second name for the same building block in each consuming component.
+One of the smallest standalone components, such as Button, Input, Text or Icon. It is used on its own and is not made of other parts of the design system.
+_Avoid_: Atom as a competing name; primitive for a low-level part of another component, which is one of its compound components.
 
-**Recipe**:
-A documented arrangement of shared components for a particular use. A recipe can contain optional content and different sizes. The library does not give a recipe out as a component; the documentation shows recipes in its Blocks section.
-_Avoid_: Block as a second name for a recipe outside the name of that section; treating a recipe as a separate component; confusing this meaning with another system's style configuration called a recipe.
+**Compound components**:
+The parts of one component, taken from its anatomy in Figma and composed by hand for full control, such as Avatar.Root, Avatar.Image and Avatar.Fallback. They share state through their outermost part, the root, which the Figma anatomy calls the container.
+_Avoid_: Granular parts or composable parts as competing names; primitives for these parts.
+
+**Composite component**:
+One ready-to-use component that assembles its own compound components into a default structure, such as Avatar or Select. A developer passes props and does not compose the parts.
+_Avoid_: Convenience component, out-of-the-box component, pre-composed component, closed component or wrapper component as competing names; composite component for a block, which combines several different components; confusing this meaning with the composite widget of WAI-ARIA, which a user moves through with the keys.
+
+**Block**:
+A larger ready-made section of UI that is built from several different components, such as a login form, a search bar or a dashboard sidebar. The library does not give a block out as a component; the documentation shows blocks in its Blocks section.
+_Avoid_: Recipe or pattern as competing names; treating a block as a separate component; composite component for a block.
 
 **Part**:
 A named piece of a component's anatomy, such as the root, the trigger, the content or an item.
 _Avoid_: Piece or element as competing names; slot for a part.
 
 **Subcomponent**:
-A part that the library offers as a component of its own, so that a developer can compose a custom version of the whole.
+One of the compound components of a component, as a developer imports and writes it, such as Select.Trigger.
 _Avoid_: Child component; part when the point is that a developer can use it alone.
 
 **Slot**:
