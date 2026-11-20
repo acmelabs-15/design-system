@@ -137,6 +137,27 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
   - The run reached six of the twelve named systems. No claim was verified for Ant Design, Fluent UI, the Atlassian Design System, Polaris, Primer, PrimeReact, Carbon Web Components, Base UI and React Aria Components.
 - Second run, in progress since 2026-11-20: `wf_0138b1bb-49b`, task `wxj7lo6iz`, from the script `.artifacts/v1/research/survey-by-subject.js` (scratch, outside git), which gives each system its own agent and a second agent that checks the record. It has 34 subjects: the systems that the first run did not reach, more systems for React, Vue and Angular, a check of the source code of Mantine and of Carbon React, and one subject for the name of the pattern in widely cited writing. A critic can add 6. Each record has eight fields. The main session adds the result to RES-081.
 
+### Row 06 — pending question, from the evidence of row 25
+- Asked on 2026-11-20 through the question dialog, after the facts of RES-081 in chat: for 1.0, where does the out-of-the-box component live? The question gives the counts of the survey, names Mantine's `Modal` as the clearest case, says that no system does it for every component and that it is rare among libraries of web components, and repeats his view before the research.
+- Options: "Same package, also in the Lit core (Recommended)"; "Same package, framework packages only"; "Parts only".
+- The agent recommends the first. Reasons: it is his view, and the survey supports it; one implementation serves plain HTML and each framework package; an AI-written page with no build step gets the short form (DEC-119). Stated cost: two public forms for those components, and almost no library of web components is a model for it.
+- Not in this question: which components get an out-of-the-box form. The review of the parts (IDEA-001#09) decides it for each component.
+
+### Row 06 — partial, second reply
+- Source: Peter's reply of 2026-11-20 to the question from the evidence, typed into the question dialog. His words in full:
+
+  > I really like the `Modal` with props, and `Modal.Root`, `Modal.Header` and `Modal.Body` on the same export design - I think the most important thing for the lit core package to provide are the highly composable granual component parts - as all of the other frameworks are going to need them to at the very least provide the highly composable granual parts exports but will then be able to create the wrappers as well - what are the web component design system libraries exporting?  The highly composable granual parts?
+
+- Not settled: he chose no option. No decision record exists for row 06.
+- His views, each before a decision: he likes the design of Mantine, with the component that props configure and its parts on the same export. The most important thing that the Lit core provides is the granular composable parts, because each framework package needs them for its own exports of the parts. The framework packages "will then be able to create the wrappers as well".
+- Evidence for the review of the parts (IDEA-001#09), on the grain: he wants "highly composable granual component parts" in the Lit core. RES-069 found that libraries of web components have few, coarse part elements.
+- His question, a fact that the records answer: what do the design system libraries of web components export, and is it the granular parts? The agent answered it in chat on 2026-11-20 from RES-069 and RES-081:
+  - Mostly not in the fine grain of React libraries. A library of web components exports one element for a component, with slots for its regions and CSS parts for its style, and child elements where a component has repeated items: a tab group with tabs and panels, an accordion with items, a select with options, a stepper with steps.
+  - A part element is coarse: the step of Web Awesome is one element with three slots and nine CSS parts, where the Steps of Chakra UI composes eight parts for one step (RES-069). The dialog of Web Awesome is one element with slots and has no part elements (RES-081).
+  - The exceptions have the shape of React's compound components: the newer components of Carbon Web Components, such as its tearsheet with eight elements that share state through context, and components of PatternFly Elements and of the Red Hat Design System (RES-069). The modal of Carbon Web Components is parts only (RES-081).
+  - So the usual element of a library of web components is close to an out-of-the-box component with slots. Fine granular parts are the unusual thing on that side, and the out-of-the-box component is the usual thing.
+- The remaining point, asked again on 2026-11-20 with these facts: does the Lit core hold only the granular parts, or also the out-of-the-box components?
+
 ### Row 25 — resolved
 - RES-081, 2026-11-20, from two runs. The second run surveyed 37 design systems and component libraries and one subject for the writing on the pattern; a second agent checked each record against the sources. Its 78 agents ran on Opus 5.5 at `medium`, checked in the logs after the run. It started before Peter's rule on `gh`. The main session read the groups, the facts across the records, the terms and the disagreements, and the records of Web Awesome, of GitHub Primer and of the writing. It reads the record of a single system when a later row needs it.
 - Facts for row 06. Peter's doubt is right: the earlier statement holds only for the sets of RES-072 and RES-069.
