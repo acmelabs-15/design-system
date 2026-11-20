@@ -24,13 +24,6 @@ A spec for the repository of 1.0: its build tools, its checks in CI, its release
 - His words for the research: "Research what the four reference systems and TanStack do for CI/CD, deployment and build tools, then put together a comprehensive plan."
 - No research has started. A research agent needs Peter's go, as the program rules say.
 
-### Row 01 — pending question
-- Asked on 2026-11-20 through the question dialog: is CI/CD, deployment and build tooling an idea of its own? The question quotes his words "probably its own idea; decide with me", and says that this stub also holds the clean start of the branch, and that its research and a proposal for its plan exist.
-- Options: "Yes, keep IDEA-010 (Recommended)"; "No, fold it into the Lit core idea".
-- The agent recommends to keep it. Reason: no other idea owns the repository, and the framework packages, the website and the MCP server depend on its tooling as the core does. Stated cost: one more spec to write and to plan.
-- This row rests on no pending research.
-- Answer, Peter, 2026-11-20, through that dialog: "Yes, keep IDEA-010 (Recommended)", with no condition and no note. The option read: "It stays one idea with its own spec for the repository: build tools, CI, release, deployment and the clean start. No other idea owns the repository, and the framework packages, the website and the MCP server depend on this tooling as the core does. Cost: one more spec to write and to plan." No question on row 01 is pending. DEC-155 holds the decision.
-
 ### Placed here by the agent
 - Item 10 of the additional scope, "Starting fresh": rows 04, 05 and 06. Reason: the removal changes the whole repository, its checks and its pipelines, and no other idea owns the repository. Peter asked for "a row in the right idea".
 - Item 9, the research on the root AGENTS.md, CLAUDE.md and README.md: the deferred row 07. Reason for this idea: the three files belong to the repository root. Reason for `deferred`: the files exist in any case, and the research settles how to write them, not what 1.0 holds.

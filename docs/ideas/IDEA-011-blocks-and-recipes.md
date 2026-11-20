@@ -42,11 +42,6 @@ A spec for the blocks of 1.0: the list by name and group, what each block compos
 - The agent's report, which the main session has not checked: 459 source items (shadcn/ui 118, Chakra UI Pro 338, Radix Themes 3) joined into 73 block concepts; 24 for agent interfaces, 18 for app layouts, 8 for charts, 20 for page sections, and 3 e-commerce concepts that no group fits. It proposes 68 in, with all 24 of the agent interfaces as must-have, and 4 out: Card Collection, Divider, Theme Showcase and Career. The two that Peter named with "maybe" are proposals of their own. The cost that it states: 104 versions of a block, times the count of framework targets.
 - The agent says that the file changed on disk after its last edit, most likely by its own script for three totals. The main session reads the file in full and checks the totals before the question goes to Peter. Peter then reviews the proposal by group, as he did for the components.
 
-### Row 02 — pending question, from the evidence of rows 07 and 08
-- Asked on 2026-11-20 through the question dialog, after the facts of RES-083 and RES-084 in chat: which side is the source of truth of a block? The question gives the counts of the 50 design systems, says that no system generates code from Figma, and names what the Figma MCP can and cannot carry.
-- Options: "Figma (Recommended)"; "Code, after the first build"; "Figma for the look, code for the behaviour".
-- The agent recommends Figma. Reasons: it is his leaning; the tokens and the design specs of the components already have Figma as their source (DEC-117, DEC-118); each block is in Figma before its code for his review (DEC-151); and the problem that maintainers state most, a Figma library that lags the code, comes from code as the source. Stated costs: each change of a block starts in Figma; no mechanism carries behaviour and states, so those are text in the design spec; and most systems that name a side name code.
-
 ### Row 02 — partial, second reply
 - Source: Peter's reply of 2026-11-20 to the question from the evidence, typed into the question dialog: "hmmm well I guess I'm still not totally sure - just looking at the figma website I just stumbled apon https://help.figma.com/hc/en-us/articles/39166810751895-Figma-skills-for-MCP#h_01KMK2P47H2V1GFBJDNH6496T2 which make it sound like these skills paired with teh mcp could potentially really be great?"
 - Not settled: he chose no option and is not sure. No decision record exists for row 02.
@@ -80,12 +75,6 @@ A spec for the blocks of 1.0: the list by name and group, what each block compos
 - DEC-158, Peter, 2026-11-20: the word is Block. His definition: "Larger, ready-made sections of UI built from several different components. Also called patterns or recipes. Examples: login form, search bar, user profile card, dashboard sidebar." It is the fourth of his four levels; IDEA-003, Notes, "Row 24 — resolved" holds the others.
 - The glossary has Block in place of Recipe since that day. A block combines several different components; a composite component assembles its own compound components.
 - The title of this idea keeps "Blocks and recipes", which are Peter's words of 2026-11-13.
-
-### Row 02 — pending question
-- Asked on 2026-11-20 through the question dialog: is Figma or code the source of truth of a block? The question gives the rule that holds for the components and the tokens: Figma is the source, and an agent pulls each design spec into the repo (DEC-117, DEC-118). It says that each block is in Figma before its code exists (DEC-151).
-- Options: "Figma (Recommended)"; "Code, after the first build"; "Each on its own".
-- The agent recommends Figma. Reason: one rule for the tokens, the components and the blocks, so a designer and a developer look at the same place for the truth. Stated cost: each change of a block starts in Figma, also a small one, and the behaviour that a drawing cannot show is text in the design spec.
-- This row rests on no pending research. No record holds what other systems do for the source of truth of their blocks.
 
 ### Row 02 — partial
 - Source: Peter's reply of 2026-11-20, typed into the question dialog. His words in full:

@@ -104,12 +104,6 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - For the review of the parts: "any depth" does not remove an ancestor that a part needs. The review names that ancestor for each part.
 - "Row 05 — partial" above and "Waits" keep the history of the question.
 
-### Row 06 — pending question
-- Asked on 2026-11-20 through the question dialog, after a short explanation in chat: where does the ready-made form of a component with parts live? The question shows one tag of the ready-made form as an example. It gives Peter the correction of RES-042 for the first time: the package of Chakra UI does not ship the ready-made form, its tool copies that code into the consumer's project; and no reference system and no surveyed library of web components ships both forms of one component in one package (RES-072, RES-069).
-- Options: "In the Lit core (Recommended)"; "In each framework package"; "As code that the consumer copies".
-- The agent recommends the Lit core. Reasons: one implementation serves plain HTML and each framework package; an AI-written page with no build step needs the short form most (DEC-119); it matches his words that the library has "a wrapper component that composes those subcomponents" and DEC-132. Stated cost: each component with parts has two public forms to design, test and document, and no other library is a model for it.
-- Not in this question: which components get a ready-made form. The review of the parts (IDEA-001#09) holds it for each component.
-
 ### Row 06 — partial
 - Source: Peter's reply of 2026-11-20, typed into the question dialog. His words in full:
 
@@ -136,12 +130,6 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
   - The name: the verified sources use no single name. Their terms are "compound components", "closed component composition", "pre-built compositions", "modal variants", "Composition over configuration" and "Progressive Disclosure".
   - The run reached six of the twelve named systems. No claim was verified for Ant Design, Fluent UI, the Atlassian Design System, Polaris, Primer, PrimeReact, Carbon Web Components, Base UI and React Aria Components.
 - Second run, in progress since 2026-11-20: `wf_0138b1bb-49b`, task `wxj7lo6iz`, from the script `.artifacts/v1/research/survey-by-subject.js` (scratch, outside git), which gives each system its own agent and a second agent that checks the record. It has 34 subjects: the systems that the first run did not reach, more systems for React, Vue and Angular, a check of the source code of Mantine and of Carbon React, and one subject for the name of the pattern in widely cited writing. A critic can add 6. Each record has eight fields. The main session adds the result to RES-081.
-
-### Row 06 — pending question, from the evidence of row 25
-- Asked on 2026-11-20 through the question dialog, after the facts of RES-081 in chat: for 1.0, where does the out-of-the-box component live? The question gives the counts of the survey, names Mantine's `Modal` as the clearest case, says that no system does it for every component and that it is rare among libraries of web components, and repeats his view before the research.
-- Options: "Same package, also in the Lit core (Recommended)"; "Same package, framework packages only"; "Parts only".
-- The agent recommends the first. Reasons: it is his view, and the survey supports it; one implementation serves plain HTML and each framework package; an AI-written page with no build step gets the short form (DEC-119). Stated cost: two public forms for those components, and almost no library of web components is a model for it.
-- Not in this question: which components get an out-of-the-box form. The review of the parts (IDEA-001#09) decides it for each component.
 
 ### Row 06 — partial, second reply
 - Source: Peter's reply of 2026-11-20 to the question from the evidence, typed into the question dialog. His words in full:
@@ -176,12 +164,6 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - What follows, as the agent's reading, for the spec to confirm: one anatomy names three things for each component, the part elements, the CSS parts of the out-of-the-box element and its slots.
 - Not decided here: which components get an out-of-the-box component (IDEA-001#09), the names for the glossary (row 24), and the mechanism inside (deferred row 23).
 - The notes above, from "Row 06 — pending question" to "Row 06 — partial, third reply", keep the history of the question.
-
-### Row 24 — pending question
-- Asked on 2026-11-20 through the question dialog, after DEC-157: which word does the glossary take for the out-of-the-box component? The question says that no source gives one standard name (RES-081), and it gives the systems that use each candidate.
-- Options: "Convenience component (Recommended)"; "Closed component"; "Out-of-the-box component"; "Wrapper component".
-- The agent recommends "convenience component". Reasons: it is the word of the kickoff prompt, React Bootstrap uses it, and it says what the thing is for. Stated cost: it is no standard term. The cost of "wrapper component", which MUI and shadcn/ui use: the records already use "wrapper" for a component of a framework package over a Lit element.
-- For the granular way the agent told him its choice by the rule of DEC-148, with no question: "compound component", which is the most used term in the sources (Mantine, HeroUI, PrimeVue, Kent C. Dodds, patterns.dev). The glossary keeps Part and Subcomponent for the pieces. He can correct it.
 
 ### Row 24 — partial
 - Source: Peter's reply of 2026-11-20 to the question on the word for the out-of-the-box component, typed into the question dialog. His words in full:
