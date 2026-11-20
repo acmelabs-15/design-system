@@ -121,6 +121,9 @@ A spec for the blocks of 1.0: the list by name and group, what each block compos
 - Row 04 — wait: IDEA-004#04 decides the framework targets.
 - Row 05 — wait: IDEA-001 reaches `done`.
 
+### Evidence from other ideas
+- IDEA-005#13 asks whether the blocks reach an agent through the MCP server, through a skill or through both. It is free since DEC-160 and DEC-161 of 2026-11-20: the server is a documentation server with a search by intent, and the skills live in the main package. Rows 01 and 03 here give it the list of the blocks and the place of their source files.
+
 ## Map
 
 | # | Question | Type | Status | Blocked by | Result |

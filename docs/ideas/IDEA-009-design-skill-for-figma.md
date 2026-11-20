@@ -47,6 +47,7 @@ A decision: 1.0 gets a design skill for Figma or not, and in which form. If it d
 - RES-030 (IDEA-005#01): Figma ships its own skills as a plugin for each agent host, from the repository `figma/mcp-server-guide`, with no npm package.
 - RES-046 (IDEA-002#06): components that an agent or a plugin draws into a file are local to that file and get no updates; instances of a published library, inserted by key, update as library instances. So the skill needs the published library.
 - RES-025 and RES-028 (IDEA-002 rows 16 and 19): a trial file with one component exists, and the Figma MCP wrote and read it.
+- DEC-161 (IDEA-005#20), Peter, 2026-11-20, for row 03: 1.0 has a thin plugin for agent hosts from a marketplace of our own, beside the skills in the main package. Both are possible homes for the design skill.
 - DEC-117 and DEC-118 (IDEA-002): the design specs of 1.0 are made in Figma, and each reaches the repo as Markdown that an agent pulls.
 
 ## Map

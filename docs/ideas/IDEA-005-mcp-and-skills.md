@@ -239,18 +239,32 @@ He asked for each doubt, "even if it's just the smallest tiniest bit". The agent
   - The failure at Highspot is that the agent does not know that the design system is there. A server alone does not repair it: MUI and Web Awesome report that agents do not call the server (RES-070). What repairs it is a text that the host always loads: the block in the instructions file, or the description of a skill. This supports the block of D3.
   - A search by intent in a server that runs on the developer's machine needs a way to rank: a model inside the package, or a search by words over a "use when" text and an "avoid when" text for each component. Row 06 decides it; row 26 asks how the servers of others search. The `why` and `avoid_when` texts are the usage guidance of DEC-142, so IDEA-007#04 is their source.
 
-### Row 20 — partial
-- Settled, the managed block: the command of 1.0 writes a short block into the AGENTS.md or CLAUDE.md of the consumer's project, on by default. Source: Peter's answer of 2026-11-20 to the dialog for D3; he chose the option "Yes, on by default (Recommended)". The option's words: the command writes the block unless the developer says no. Conditions: none stated. The question named the cost: the command changes a file that the developer owns, and the block has markers, so the command can update it or remove it.
-- The example block of the question, which shows the kind of text and is no final wording: "This project uses the ACME design system. Before you build UI, call the search tool of the acme MCP server. Use a design system component where one fits, not a local one."
-- Settled by his marks of the same day, with no doubt of the agent: skills, each with a SKILL.md file; documentation inside the package; llms.txt on the documentation site.
-- Open: the plugin, D4. It has his ✅ as a form and his ❌ for the marketplaces. The decision record of row 20 is written when D4 is answered, so that one record holds all forms.
-- Effects on other rows, for their records: row 19, the block is guidance that is written into the consumer's project, which had 🤔; row 23, the one command writes the block; row 24, the command updates the block when the developer runs it again.
-- Open, the second half of D3, for rows 23 and 24: "the tool writes or refreshes the files when it runs" has his ✅, and 1.0 has no tool that runs by itself.
+### The whole map after Peter's answers, 2026-11-20
+- His instruction, in a message of his own after his answer on the plugin. He pasted the interview rules of his kickoff prompt and wrote: "please ensure you're always doing thte following as defined by the interview-me skill (make sure to read all parts of the interview-me skill that are relevant to this)  accross all ideas, not just the one you're working in". The rules: the agent makes cheap and reversible choices itself and states them in chat; research settles facts; the agent asks only real decisions, one at a time; and after every answer it evaluates the whole tree of all ideas, visibly: close, merge, drop, add, compute the frontier, tell him in one or two lines.
+- What the agent had done wrong: it kept each of the ten rows open until it had asked each of its doubts in a dialog, also where his marks had settled the row and the doubt was a reading or a cheap choice.
+- Closed by his marks and his answers: row 17 (DEC-160), row 20 (DEC-161), row 19 (DEC-162), row 21 (DEC-163), row 22 (DEC-164).
+- Readings and choices of the agent, told to him in chat, with no row and no question:
+  - `npx skills add` gets the path in `node_modules`, not a repository (D7).
+  - No repository holds the content of the skills; the marketplace repository holds pointers only (D7).
+  - `npx` with `@latest` is out; the version as an argument keeps his ✅ and the spec decides how far it goes (D8).
+  - The skills folder sits where pnpm 12 finds it; 1.0 does not rely on that way (D9).
+  - His ❌ for "a hosted address" does not remove the llms.txt file of the documentation site (D5, first half).
+  - His five ways to install stand. The agent's note, and no question: each way is one more to document and to test for each host.
+- Rows with a settled part and an open part:
+  - Row 18: settled, the server is a subcommand of the command line tool of 1.0. Open, D6: that tool is in the `bin` of the main package, or it is a package of its own.
+  - Rows 23 and 24: settled by his marks, see the text of each row. Open: the way with no step and the refresh when a tool runs, which need a part of 1.0 that runs. Row 28 holds that question (D2 and the second half of D3). For row 23, the files for each host are facts of the hosts and no decision of his; row 15 checks them.
+  - Row 25: settled, the own command names its hosts, and the `skills` tool reaches the hosts that it knows. Open, D10: the names, and which hosts get the plugin. Row 27 finds the facts for the plugin.
+  - Row 09: settled, llms.txt on the documentation site (DEC-161); no hosted catalog of skills. Open, D5: a hosted MCP server too. His marks: 🤔 in decision 10, no mark in decision 2, ❌ for a hosted address in decision 6. It waits for row 26, because a view of MCP Apps shows in chat hosts, and a chat host on the web reaches a hosted server only; he likes MCP Apps and is "not sure exactly what for".
+- Added: row 27, research, not started; it starts when row 25 is next. Row 28, the question on the dev server.
+- The order of the questions for Peter: row 18; row 28; row 13; row 25, after row 27; then, after the survey of row 26, rows 06, 07, 12 and 09. Row 15 is his own check in the agent hosts.
 
-### Row 20 — pending, D4, the plugin
-- Asked on 2026-11-20 through the question dialog: a plugin has ✅ as a form, as an install and as an update, and ❌ for the marketplaces of the hosts and for the hosts with a marketplace. Which does he mean?
-- Options: "No plugin in 1.0 (Recommended)"; "A plugin from our own marketplace", as the brain plugin comes from the acmelabs marketplace, and thin, with pointers only; "Also the marketplaces of the hosts".
-- The stated cost of the recommendation: no install inside a host with one step, and no listing in a marketplace.
+### Row 20 — resolved
+- DEC-161, Peter, 2026-11-20: five forms. The managed block is on by default; source, his answer to the dialog for D3, the option "Yes, on by default (Recommended)". The plugin comes from a marketplace of our own and is thin; source, his answer to the dialog for D4, the option "A plugin from our own marketplace". The agent had recommended no plugin in 1.0.
+
+### Row 18 — pending
+- Asked on 2026-11-20 through the question dialog: is the command line tool of 1.0, which holds the MCP server and the command that writes the files, in the `bin` of the main package or in a package of its own?
+- Options: "In the main package (Recommended)"; "A package of its own".
+- The stated cost of the recommendation: no library of the 112 surveyed projects has its server only in its main library package; and with pnpm, a consumer who installs only a framework package does not get the command, so each framework package needs a small `bin` that passes the call on (RES-077, IDEA-004#07).
 
 ### Row 26 — running
 - Started on 2026-11-20 by the main session, on Peter's words `/deep-research` and "fan out and do some broad/deep research" in his answer to D1. Record: RES-085, which the main session fills from the result of the run.
@@ -325,7 +339,7 @@ He asked for each doubt, "even if it's just the smallest tiniest bit". The agent
 | 06 | Which tools and records does the 1.0 MCP server serve? | interview | open | 17, 10, 26 | — |
 | 07 | Which skills ship for consumers? | interview | open | 20, 10, 26 | — |
 | 08 | Which idea owns the documentation website and its records? | interview | resolved | — | [DEC-139](../decisions/DEC-139-seventh-idea-owns-the-documentation-website.md) |
-| 09 | How does an agent that writes one HTML page, with no project and no package install, get the 1.0 guidance? | interview | open | 01, 17 | — |
+| 09 | How does an agent that writes one HTML page, with no project and no package install, get the 1.0 guidance? Settled: it reads the llms.txt file of the documentation site (DEC-161). Open: does 1.0 also run a hosted MCP server for it? | interview | open | 01, 17, 26 | — |
 | 10 | Which skills do other design systems ship and what does each skill do, and which tools do their MCP servers expose and what does each tool do? RES-030 holds how they package and distribute them. | research | resolved | — | [RES-070](../research/RES-070-skills-and-mcp-tools-of-other-design-systems.md) |
 | 11 | How do Storybook's skills and its MCP server work, and in particular its MCP tools that return rendered UI; who else returns rendered UI from an MCP tool, and how does that work? | research | resolved | — | [RES-066](../research/RES-066-storybook-mcp-and-rendered-ui-tools.md) |
 | 12 | Does the 1.0 MCP server have tools that return rendered UI? | interview | open | 17, 11, 14, 26 | — |
@@ -334,15 +348,17 @@ He asked for each doubt, "even if it's just the smallest tiniest bit". The agent
 | 15 | In the trial project of RES-077, with Peter at the keyboard: does each host work after a real approval in its own dialog, does a model in a session use a skill and call the tool, and what do Cursor and VS Code Copilot show? Only Peter can approve in a host's dialog and sign in, so this is a step that he runs; the main session gives him the checklist when row 05 is next. | task | open | 03 | — |
 | 16 | Where do the MCP servers and the agent skills of large frameworks, packages and libraries live, over a large sample that is not limited to design systems: inside the main package, in a package of their own, on a hosted server, in a repository or a marketplace of plugins; how does a consumer install each, and how does each stay at the version of the installed library? Peter asked for it with `/deep-research` on 2026-11-20 and named Storybook, AG Grid and Chakra UI as examples. RES-030 and RES-070 hold a smaller sample. | research | resolved | — | [RES-082](../research/RES-082-mcp-servers-and-skills-of-frameworks-and-libraries.md) |
 | 17 | Does 1.0 have an MCP server, and what is its job beside the guidance for coding agents? | interview | resolved | 16 | [DEC-160](../decisions/DEC-160-mcp-server-is-a-documentation-server.md) |
-| 18 | Where does the MCP server live: a package of its own, the project's command line tool, the dev server, a hosted server, or the main package? | interview | open | 17 | — |
-| 19 | Where does the guidance for coding agents live: the main package, a repository of skills, a plugin, a block in the instructions file of the consumer's project, the documentation site? | interview | open | 20 | — |
-| 20 | Which forms does the guidance for coding agents take: skills, a managed block in AGENTS.md or CLAUDE.md, documentation inside the package, llms.txt, a plugin? | interview | open | 16 | — |
-| 21 | How do the MCP server and the guidance stay at the version of the installed library? | interview | open | 18, 19 | — |
-| 22 | How are the MCP server and the guidance distributed: npm, the `skills` command line tool, plugin marketplaces, an own command, a hosted address? | interview | open | 18, 19 | — |
-| 23 | How does a consumer install the MCP server and the guidance, and which files does that write into the project? | interview | open | 22, 15 | — |
-| 24 | How do the MCP server and the guidance get updated when the library is updated? | interview | open | 21, 22 | — |
-| 25 | Which agent hosts does 1.0 support for the MCP server and the guidance? | interview | open | 16 | — |
+| 18 | Where does the MCP server live? Settled by Peter's mark: it is a subcommand of the command line tool of 1.0. Open: is that tool in the `bin` of the main package, or is it a package of its own? Row 28 holds the dev server, and row 09 the hosted server. | interview | open | 17 | — |
+| 19 | Where does the guidance for coding agents live: the main package, a repository of skills, a plugin, a block in the instructions file of the consumer's project, the documentation site? | interview | resolved | 20 | [DEC-162](../decisions/DEC-162-where-the-guidance-lives.md) |
+| 20 | Which forms does the guidance for coding agents take: skills, a managed block in AGENTS.md or CLAUDE.md, documentation inside the package, llms.txt, a plugin? | interview | resolved | 16 | [DEC-161](../decisions/DEC-161-guidance-forms-skills-docs-block-llms-txt-and-plugin.md) |
+| 21 | How do the MCP server and the guidance stay at the version of the installed library? | interview | resolved | 18, 19 | [DEC-163](../decisions/DEC-163-server-and-guidance-stay-at-the-installed-version.md) |
+| 22 | How are the MCP server and the guidance distributed: npm, the `skills` command line tool, plugin marketplaces, an own command, a hosted address? | interview | resolved | 18, 19 | [DEC-164](../decisions/DEC-164-distribution-of-the-server-and-the-guidance.md) |
+| 23 | How does a consumer install the MCP server and the guidance, and which files does that write into the project? Settled by Peter's marks: the one command of 1.0, `npx skills add`, the host's own command or a file by hand for the server, and the install of the plugin. Open: the way with no step (row 28), and the files for each host. | interview | open | 22, 15, 28 | — |
+| 24 | How do the MCP server and the guidance get updated when the library is updated? Settled by Peter's marks: nothing to do where the guidance is in the installed package, a command that the developer runs again, an update of the plugin, and no script on install. Open: a refresh when a tool runs (row 28). | interview | open | 21, 22, 28 | — |
+| 25 | Which agent hosts does 1.0 support for the MCP server and the guidance? Settled by Peter's marks: the own command names its hosts, and the `skills` tool reaches the hosts that it knows. Open: the names of the hosts, and which hosts get the plugin. | interview | open | 16, 27 | — |
 | 26 | For the frameworks, packages and libraries that provide an MCP server or agent skills: which tools does each server give to an agent and what does each tool do, and which skills does each project provide, as a complete list, and what does each skill do? Peter asked for it with `/deep-research` on 2026-11-20 and named Figma as an example with many skills. RES-070 holds this for fifteen design systems, and RES-082 holds a short detail for 112 projects. | research | in-progress | — | — |
+| 27 | Which agent hosts load a plugin from a marketplace that is a repository of ours, and not only from their official marketplace (Claude Code, Codex, Cursor, Gemini CLI, VS Code Copilot); what can a plugin of each host hold (skills, an entry for an MCP server, commands); can that entry start the server of the package that is installed in the open project; and what does each host do when the project holds the same skill and the same server entry too? For the plugin of DEC-161. | research | open | — | — |
+| 28 | Does 1.0 get a part that runs inside the consumer's dev server, such as a plugin for Vite: it would start the MCP server with the dev server, and it would refresh the files for the agent hosts on each start? Peter marked "inside the dev server" and "the tool refreshes the files when it runs" with ✅ on 2026-11-20; 1.0 is a library and has no dev server of its own. | interview | open | — | — |
 
 ## Not yet specified
 - Google's A2UI, a declarative format for UI that a Google post joins with MCP Apps. RES-066 saw it in a search result and did not read it. It sharpens at row 12, if a second mechanism beside MCP Apps matters then.

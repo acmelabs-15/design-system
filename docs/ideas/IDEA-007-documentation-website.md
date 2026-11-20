@@ -72,6 +72,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - IDEA-003#11: one HTML page uses 1.0 from a CDN with no build step. The website shows that way of use beside the framework packages.
 - IDEA-005, Peter's reply of 2026-11-20 to all ten decisions, for row 04: he marks llms.txt on the documentation site with ✅, and documentation inside the package with ✅. So the website serves an llms.txt file, and the same documentation ships as files in the package. No decision record yet; IDEA-005, Notes, "The agent's doubts on his reply", D5, holds the open point.
 - DEC-160 (IDEA-005#17), Peter, 2026-11-20, for row 04: the MCP server of 1.0 is a documentation server with a search by intent. His example of a result has a `why` and an `avoid_when` for each component. So the records need, for each component, a text on when to use it and a text on when to avoid it; that is the usage guidance of DEC-142. The server and the website read the same records.
+- DEC-161 (IDEA-005#20), Peter, 2026-11-20: the guidance has five forms. Two of them come from the records of this idea: the documentation inside the package, and the llms.txt file on the documentation site. Row 04 is sharper for it, and the deferred row 15 holds the build step. For row 05: the tool that builds the website must also give the llms.txt file.
 
 ### Row 10 — resolved
 - RES-067, 2026-11-13, from the documentation and the registries of the systems. It holds each block by name.
@@ -104,7 +105,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 01 | What does the website hold for each component, and what does it hold beside the component pages (guides, tokens and themes, blocks)? | interview | resolved | — | [DEC-144](../decisions/DEC-144-website-holds-the-full-set.md) |
 | 02 | How do other design systems with web components and several framework packages build their documentation websites: which site tools they use, how one page shows an example for each framework, how they hold a blocks section, and which TanStack packages (Table, Virtual, Form) work with Lit and with each framework target? | research | resolved | — | [RES-047](../research/RES-047-documentation-websites-of-web-component-systems.md) |
 | 03 | Which blocks does the Blocks section have in 1.0? | interview | resolved | 01 | [DEC-146](../decisions/DEC-146-blocks-section-has-four-groups.md) |
-| 04 | Where do the records of the website come from (component metadata, the design specs pulled from Figma, pages written by hand), and does the MCP server read the same source? | interview | open | 02 | — |
+| 04 | Where do the records of the website come from (component metadata, the design specs pulled from Figma, pages written by hand)? Settled: the MCP server, the documentation files in the package and the llms.txt file read the same records (DEC-139, DEC-160, DEC-161). | interview | open | 02 | — |
 | 05 | Which tool builds the website, and where is it published? | interview | open | 02 | — |
 | 06 | How does a page show one example in plain HTML and in each framework package? | interview | open | 02, 07 | — |
 | 07 | Import the composition architecture from IDEA-003 and the framework targets from IDEA-004. | task | open | — | — |
@@ -118,6 +119,7 @@ Rows of the spec phase, by [the workspace rule](../agents/workspace.md#deferred-
 | # | Question | Type | Status | Blocked by | Result |
 |---|---|---|---|---|---|
 | 14 | Design the documentation website in Figma first, then break that design spec down into documentation blocks. Open inside this row: whether the documentation blocks are a fifth group of the Blocks section. Source: Peter's additional scope of 2026-11-13, item 2. | task | deferred | — | — |
+| 15 | One build step for four outputs: how are the website, the llms.txt file, the documentation files inside the package and the records of the MCP server made from the records of row 04: the format of each, the folder in the package, and the step in the build? For DEC-160 and DEC-161. Source: the evaluation of all maps after Peter's answers of 2026-11-20 in IDEA-005. | task | deferred | — | — |
 
 ## Not yet specified
 - Search, and a version switch for later releases.

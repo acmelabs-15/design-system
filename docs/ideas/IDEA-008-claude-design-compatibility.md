@@ -37,6 +37,9 @@ A decision: what, if anything, 1.0 does to be compatible with Claude Design. If 
 - Open after the record, and no source can close it: whether Claude Design can show custom elements; whether the React package of 1.0 satisfies `/design-sync`; what a chat import of a library with no React makes of it; whether a design can load a library from a CDN. Row 03 is the trial that can show it.
 - A source that the agent could not read: the host of the main session lists a tool named `DesignSync`. Its description says what the sync takes. Read it when row 03 or row 02 is next.
 
+### Evidence from other ideas
+- DEC-160 and DEC-161 (IDEA-005), Peter, 2026-11-20, for row 02: 1.0 has an MCP server for documentation with a search by intent, skills and documentation inside the package, an llms.txt file and a thin plugin. RES-074 holds what Claude Design takes from a design system.
+
 ## Map
 
 | # | Question | Type | Status | Blocked by | Result |
