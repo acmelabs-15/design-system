@@ -239,6 +239,19 @@ He asked for each doubt, "even if it's just the smallest tiniest bit". The agent
   - The failure at Highspot is that the agent does not know that the design system is there. A server alone does not repair it: MUI and Web Awesome report that agents do not call the server (RES-070). What repairs it is a text that the host always loads: the block in the instructions file, or the description of a skill. This supports the block of D3.
   - A search by intent in a server that runs on the developer's machine needs a way to rank: a model inside the package, or a search by words over a "use when" text and an "avoid when" text for each component. Row 06 decides it; row 26 asks how the servers of others search. The `why` and `avoid_when` texts are the usage guidance of DEC-142, so IDEA-007#04 is their source.
 
+### Row 20 — partial
+- Settled, the managed block: the command of 1.0 writes a short block into the AGENTS.md or CLAUDE.md of the consumer's project, on by default. Source: Peter's answer of 2026-11-20 to the dialog for D3; he chose the option "Yes, on by default (Recommended)". The option's words: the command writes the block unless the developer says no. Conditions: none stated. The question named the cost: the command changes a file that the developer owns, and the block has markers, so the command can update it or remove it.
+- The example block of the question, which shows the kind of text and is no final wording: "This project uses the ACME design system. Before you build UI, call the search tool of the acme MCP server. Use a design system component where one fits, not a local one."
+- Settled by his marks of the same day, with no doubt of the agent: skills, each with a SKILL.md file; documentation inside the package; llms.txt on the documentation site.
+- Open: the plugin, D4. It has his ✅ as a form and his ❌ for the marketplaces. The decision record of row 20 is written when D4 is answered, so that one record holds all forms.
+- Effects on other rows, for their records: row 19, the block is guidance that is written into the consumer's project, which had 🤔; row 23, the one command writes the block; row 24, the command updates the block when the developer runs it again.
+- Open, the second half of D3, for rows 23 and 24: "the tool writes or refreshes the files when it runs" has his ✅, and 1.0 has no tool that runs by itself.
+
+### Row 20 — pending, D4, the plugin
+- Asked on 2026-11-20 through the question dialog: a plugin has ✅ as a form, as an install and as an update, and ❌ for the marketplaces of the hosts and for the hosts with a marketplace. Which does he mean?
+- Options: "No plugin in 1.0 (Recommended)"; "A plugin from our own marketplace", as the brain plugin comes from the acmelabs marketplace, and thin, with pointers only; "Also the marketplaces of the hosts".
+- The stated cost of the recommendation: no install inside a host with one step, and no listing in a marketplace.
+
 ### Row 26 — running
 - Started on 2026-11-20 by the main session, on Peter's words `/deep-research` and "fan out and do some broad/deep research" in his answer to D1. Record: RES-085, which the main session fills from the result of the run.
 - The run: `wf_b8714394-203`, task `w3qkl5o9q`, from the script `.artifacts/v1/research/RES-085-survey.js` (scratch, outside git). It is `survey-by-subject.js` with the arguments written into it; `.artifacts/v1/research/RES-085-args.json` holds the arguments alone. It has no listers, and its critic can add 6 subjects.
