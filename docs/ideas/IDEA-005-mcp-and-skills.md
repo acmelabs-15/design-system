@@ -137,6 +137,28 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - The agent recommends the first. Reasons: it is the shape that most surveyed projects have; the guidance inside the package matches the installed version with no step after an update, as about 23 projects do; a server that reads the installed package gives the same match, as about 16 projects do; and a consumer with no coding agent does not carry the server. Stated costs: two packages to release, and one more step to install the server. DEC-154 rules out TanStack Intent in each option.
 - The kickoff prompt's direction is the second option. No surveyed project keeps its server only inside its main package; the trial RES-077 showed that it works.
 
+### Row 04 — third reply, and the map by Peter's list of decisions
+- Source: Peter's reply of 2026-11-20 to the question from the evidence of row 16, typed into the question dialog. He chose no option. His words: "I just read through the research document - lots of numbers, which is absolutely awesome - so it sounds like there are a handful of decisions that need to be made regarding skills and mcps - 1. How the mcp and skills stay at the version of the installed library. 2. Where the mcp server lives. 3. Where guidance for coding agents lives (this will almost certainly be "in several places"). 4. How the mcp and skills are installed. 5. How the mcp and skills get updated. 6. How the mcp and skills are distributed. If I left any decisions out or didn't accurate capture a decision please add it/update it - can you list all the decisions that need to be made, numbered - and then for each write down all of the respective solutions for each decision - then I'd like you to create a list of the the top idk 10-15 packages we hold in very high regard - I'm thinking like ag-grid, storybook, shadcn, stripe, turbo, prisma, next.js, vite, bun, apollo-client, vercel ai sdk, shopify, figma (if there any i didn't include in this list that you feel strongly should have been included please just add them) and with each of the solutions include which packages from taht list use which solution"
+- Not settled: no decision of the six. His one view: the guidance "will almost certainly be" in several places.
+- Done on 2026-11-20: the list is in RES-082, under "Decisions and their solutions, with the packages held in high regard". It has ten decisions: his six and four that the agent added (whether 1.0 has an MCP server at all and what its job is; which forms the guidance takes; which agent hosts; an agent with no project). It has his thirteen packages and four that the agent added: TanStack, Playwright, Ant Design and Web Awesome. The agent showed him the list in chat.
+- The map follows his list since that day. Row 04 held two of his decisions and is superseded by rows 18 and 19. Row 05 held three and is superseded by rows 23, 24 and 25.
+
+| Decision of the list | Row |
+|---|---|
+| 1. An MCP server at all, and its job | 17 |
+| 2. Where the MCP server lives | 18 |
+| 3. The forms of the guidance | 20 |
+| 4. Where the guidance lives | 19 |
+| 5. The version of the installed library | 21 |
+| 6. Distribution | 22 |
+| 7. Install | 23 |
+| 8. Update | 24 |
+| 9. Agent hosts | 25 |
+| 10. An agent with no project | 09 |
+
+- Rows 06, 07, 12 and 13 stay: what the server serves, which skills ship, rendered UI, and the blocks for agents. Their links now name rows 17 and 20.
+- Next: Peter reads the list. Then the agent asks the ten decisions one at a time, row 17 first, because rows 18, 21, 23 and 24 follow from it.
+
 ### Row 16 — resolved
 - RES-082, 2026-11-20: 112 projects, each record checked by a second agent. Its 183 agents ran on Opus 5.5 at `medium`, checked in the logs after the run; none ran `gh`. The main session read the facts across the records. It reads the record of a single project when a later row needs it.
 - Facts for row 04, inside the package or apart:
@@ -185,19 +207,28 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 |---|---|---|---|---|---|
 | 01 | How do other libraries ship MCP servers and agent skills (inside the library package or apart), how do they install them into a consumer project, and how do agent hosts find them? | research | resolved | — | [RES-030](../research/RES-030-mcp-and-skills-shipping-landscape.md) |
 | 03 | Does an `init` script from the package's `bin` install a working MCP server and skills into a consumer project? | task | resolved | 01 | [RES-077](../research/RES-077-init-script-trial.md) |
-| 04 | Do the MCP server and the skills ship inside the design system package, or as separate packages? | interview | open | 01, 03, 16 | — |
-| 05 | What does `init` install, into which agent hosts, and how does it update on a new version? | interview | open | 04, 15 | — |
-| 06 | Which tools and records does the 1.0 MCP server serve? | interview | open | 04, 10 | — |
-| 07 | Which skills ship for consumers? | interview | open | 04, 10 | — |
+| 04 | Do the MCP server and the skills ship inside the design system package, or as separate packages? | interview | superseded by 18 | 01, 03, 16 | — |
+| 05 | What does `init` install, into which agent hosts, and how does it update on a new version? | interview | superseded by 23 | 15 | — |
+| 06 | Which tools and records does the 1.0 MCP server serve? | interview | open | 17, 10 | — |
+| 07 | Which skills ship for consumers? | interview | open | 20, 10 | — |
 | 08 | Which idea owns the documentation website and its records? | interview | resolved | — | [DEC-139](../decisions/DEC-139-seventh-idea-owns-the-documentation-website.md) |
-| 09 | How does an agent that writes one HTML page, with no project and no package install, get the 1.0 guidance? | interview | open | 01, 04 | — |
+| 09 | How does an agent that writes one HTML page, with no project and no package install, get the 1.0 guidance? | interview | open | 01, 17 | — |
 | 10 | Which skills do other design systems ship and what does each skill do, and which tools do their MCP servers expose and what does each tool do? RES-030 holds how they package and distribute them. | research | resolved | — | [RES-070](../research/RES-070-skills-and-mcp-tools-of-other-design-systems.md) |
 | 11 | How do Storybook's skills and its MCP server work, and in particular its MCP tools that return rendered UI; who else returns rendered UI from an MCP tool, and how does that work? | research | resolved | — | [RES-066](../research/RES-066-storybook-mcp-and-rendered-ui-tools.md) |
-| 12 | Does the 1.0 MCP server have tools that return rendered UI? | interview | open | 04, 11, 14 | — |
-| 13 | Are the blocks exposed to agents through the MCP server, through a skill, or through both? | interview | open | 04 | — |
+| 12 | Does the 1.0 MCP server have tools that return rendered UI? | interview | open | 17, 11, 14 | — |
+| 13 | Are the blocks exposed to agents through the MCP server, through a skill, or through both? | interview | open | 17, 20 | — |
 | 14 | Do Claude Code, Codex and Gemini CLI show the view of a tool that uses MCP Apps: what does each host's own documentation say, and what does a test with a minimal server show? RES-066 found only that the community's list of hosts has no tick for them. | research | resolved | — | [RES-080](../research/RES-080-mcp-apps-views-in-three-agent-hosts.md) |
 | 15 | In the trial project of RES-077, with Peter at the keyboard: does each host work after a real approval in its own dialog, does a model in a session use a skill and call the tool, and what do Cursor and VS Code Copilot show? Only Peter can approve in a host's dialog and sign in, so this is a step that he runs; the main session gives him the checklist when row 05 is next. | task | open | 03 | — |
 | 16 | Where do the MCP servers and the agent skills of large frameworks, packages and libraries live, over a large sample that is not limited to design systems: inside the main package, in a package of their own, on a hosted server, in a repository or a marketplace of plugins; how does a consumer install each, and how does each stay at the version of the installed library? Peter asked for it with `/deep-research` on 2026-11-20 and named Storybook, AG Grid and Chakra UI as examples. RES-030 and RES-070 hold a smaller sample. | research | resolved | — | [RES-082](../research/RES-082-mcp-servers-and-skills-of-frameworks-and-libraries.md) |
+| 17 | Does 1.0 have an MCP server, and what is its job beside the guidance for coding agents? | interview | open | 16 | — |
+| 18 | Where does the MCP server live: a package of its own, the project's command line tool, the dev server, a hosted server, or the main package? | interview | open | 17 | — |
+| 19 | Where does the guidance for coding agents live: the main package, a repository of skills, a plugin, a block in the instructions file of the consumer's project, the documentation site? | interview | open | 20 | — |
+| 20 | Which forms does the guidance for coding agents take: skills, a managed block in AGENTS.md or CLAUDE.md, documentation inside the package, llms.txt, a plugin? | interview | open | 16 | — |
+| 21 | How do the MCP server and the guidance stay at the version of the installed library? | interview | open | 18, 19 | — |
+| 22 | How are the MCP server and the guidance distributed: npm, the `skills` command line tool, plugin marketplaces, an own command, a hosted address? | interview | open | 18, 19 | — |
+| 23 | How does a consumer install the MCP server and the guidance, and which files does that write into the project? | interview | open | 22, 15 | — |
+| 24 | How do the MCP server and the guidance get updated when the library is updated? | interview | open | 21, 22 | — |
+| 25 | Which agent hosts does 1.0 support for the MCP server and the guidance? | interview | open | 16 | — |
 
 ## Not yet specified
 - Google's A2UI, a declarative format for UI that a Google post joins with MCP Apps. RES-066 saw it in a search result and did not read it. It sharpens at row 12, if a second mechanism beside MCP Apps matters then.
