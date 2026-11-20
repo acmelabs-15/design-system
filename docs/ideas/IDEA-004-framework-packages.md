@@ -33,6 +33,10 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Row 01 — scope: DEC-127 of 2026-11-12 takes server rendering out of 1.0. The two follow-up runs leave it out.
 - Row 02 — done on 2026-11-20 by the main session: RES-078. IDEA-003#05 is resolved by DEC-152: a part works at any depth below its root.
 - Row 03 — ready since 2026-11-20, and it waits for Peter's go. It is a test that an agent runs in scratch, and no go of his covers it: the go of 2026-11-12 covers 14 agents, and the go of 2026-11-13 covers 12 rows. RES-078 names the React wrapper of the prototype as its React package, and RES-029 names the six points that it must observe.
+- Row 03 — running since 2026-11-20, in the third block of agent work, on Peter's go of that day (IDEA-001, Notes, "Third block of agent work"). Task agent `aa9c8a72082071875`, started without a name; its log records Opus 5.5 and the effort `medium` at the first check. Task record: RES-079. Scratch folder: `.artifacts/v1/trial/IDEA-004-03/`, with `IDEA-004-03-progress.md` and `IDEA-004-03-result.md`. Brief: `.artifacts/v1/briefs/IDEA-004-03.md`. Check the log again when the agent ends, before the record is read.
+  - First stop, 2026-11-20: the agent ended at its capability check with `outcome: blocked` in RES-079. The Chrome DevTools MCP did not answer `list_pages`: "The browser is already running for /Users/peterkloss/.cache/chrome-devtools-mcp/chrome-profile. Use --isolated to run multiple browser instances." Another Chrome process, started by another server of that MCP, holds the shared profile. The main session left that process and every configuration as they are.
+  - Changed input, 2026-11-20: the brief now names a scripted headless Chrome, the installed Chrome 157 with a user data directory in the scratch folder, driven by `puppeteer-core` or `playwright-core`. The main session sent that change to the same agent, which continues the same record. This is the agent's choice of a tool inside Peter's go; the test, its points and its limits are the same.
+  - For a later prototype or trial: the Chrome DevTools MCP is not reliable for a delegated agent on this machine while another session holds its profile. Prove it with `list_pages` before a brief names it.
 
 ### Row 01 — resolved
 - RES-029 is answered since 2026-11-12: the sweep, then one research agent for each of its two follow-up questions (`a250484f13dcbb03c` and `a4717c5e0e713bd19`; both logs record `claude-opus-5-5` and the effort `medium`).
@@ -66,7 +70,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 |---|---|---|---|---|---|
 | 01 | For React, Preact, TanStack Redact and Solid: how does each handle custom elements, how do other libraries generate or write wrappers for it, and how do they test those wrappers? | research | resolved | — | [RES-029](../research/RES-029-framework-wrapper-landscape.md) |
 | 02 | Import the composition architecture from IDEA-003. | task | resolved | — | [RES-078](../research/RES-078-framework-packages-import-of-the-composition-contract.md) |
-| 03 | Does the React package run on Redact unchanged? | task | open | 01, 02 | — |
+| 03 | Does the React package run on Redact unchanged? | task | in-progress | 01, 02 | — |
 | 04 | Which targets ship in 1.0? | interview | open | 01, 03 | — |
 | 05 | Is each wrapper generated from component metadata or written by hand? | interview | open | 02, 04 | — |
 | 06 | How is each wrapper tested? | interview | open | 04, 05 | — |

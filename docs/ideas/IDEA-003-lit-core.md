@@ -104,6 +104,12 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - For the review of the parts: "any depth" does not remove an ancestor that a part needs. The review names that ancestor for each part.
 - "Row 05 — partial" above and "Waits" keep the history of the question.
 
+### Row 06 — pending question
+- Asked on 2026-11-20 through the question dialog, after a short explanation in chat: where does the ready-made form of a component with parts live? The question shows one tag of the ready-made form as an example. It gives Peter the correction of RES-042 for the first time: the package of Chakra UI does not ship the ready-made form, its tool copies that code into the consumer's project; and no reference system and no surveyed library of web components ships both forms of one component in one package (RES-072, RES-069).
+- Options: "In the Lit core (Recommended)"; "In each framework package"; "As code that the consumer copies".
+- The agent recommends the Lit core. Reasons: one implementation serves plain HTML and each framework package; an AI-written page with no build step needs the short form most (DEC-119); it matches his words that the library has "a wrapper component that composes those subcomponents" and DEC-132. Stated cost: each component with parts has two public forms to design, test and document, and no other library is a model for it.
+- Not in this question: which components get a ready-made form. The review of the parts (IDEA-001#09) holds it for each component.
+
 ### Settled by the prompt
 - Lit web components are the core implementation.
 - Every framework wrapper exports both the convenience component (for example `Stepper`) and every subcomponent (`Stepper.Root`, `Stepper.Item`, `Stepper.Indicator`), the way Chakra does.

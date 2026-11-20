@@ -87,6 +87,9 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - All eight chat components of shadcn/ui are in the list of DEC-135. Two patterns share a name with a component of the list, File Tree and Message; IDEA-001, Notes, holds the point for the review of the parts.
 - Not confirmed by the record: what each block of Chakra UI Pro composes, the content of its four templates, and the chatbot template of shadcn/ui, which it did not read.
 
+### Third block of agent work
+- Row 11 — the proposal is in preparation since 2026-11-20, on Peter's go of that day (IDEA-001, Notes, "Third block of agent work"). Proposal agent `a0d46807d47234cb6`, started without a name; its log records Opus 5.5 and the effort `medium` at the first check. File: `.artifacts/v1/prep/IDEA-007-11/IDEA-007-11-result.md` (scratch, outside git). Brief: `.artifacts/v1/briefs/IDEA-007-11.md`. The row stays open: Peter decides after he has seen the proposal. Check the log again when the agent ends, before the file is read.
+
 ### Second block of agent work
 - Row 10 — done on 2026-11-13: RES-067, from the researcher agent `ab6e1ab009a6abe73`, started without a name. Its log records Opus 5.5 and the effort `medium` on all 114 requests, checked after the agent ended. It was the third start of the row; two starts of the same day ended in outages of the Claude login.
 

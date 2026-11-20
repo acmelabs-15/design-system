@@ -80,6 +80,9 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Evidence for DEC-145: Radix Themes' panel copies the theme as text; Material Theme Builder and PrimeTek's designer export a file.
 - Not confirmed by the record: whether the theme editors of Fluent UI and of Ant Design export a file; the Figma tools of most systems, which it did not check. "None found" rests on the searches and the pages that it read.
 
+### Third block of agent work
+- Row 10 — the proposal is in preparation since 2026-11-20, on Peter's go of that day (IDEA-001, Notes, "Third block of agent work"). Proposal agent `a26328983439ad47b`, started without a name; its log records Opus 5.5 and the effort `medium` at the first check. File: `.artifacts/v1/prep/IDEA-006-10/IDEA-006-10-result.md` (scratch, outside git). Brief: `.artifacts/v1/briefs/IDEA-006-10.md`. The row stays open: Peter decides after he has seen the proposal. Check the log again when the agent ends, before the file is read.
+
 ### Second block of agent work
 - Row 09 — done on 2026-11-13: RES-071, from the researcher agent `a032cbfd32335d65d`, started without a name. Its log records Opus 5.5 and the effort `medium` on all 170 requests, checked after the agent ended. It was the third start of the row; two starts of the same day ended in outages of the Claude login.
 

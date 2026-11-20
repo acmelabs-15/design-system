@@ -69,6 +69,9 @@ A spec for the repository of 1.0: its build tools, its checks in CI, its release
 - Limit: "what uses it" in the table is a search for names in files. It is no dependency graph.
 - The numbers are for one commit. To refresh them, run `areas.py` and then `uses.py` in the scratch folder.
 
+### Third block of agent work
+- Row 03 — the proposal for the plan is in preparation since 2026-11-20, on Peter's go of that day (IDEA-001, Notes, "Third block of agent work"). Proposal agent `ada4650b9691e2daa`, started without a name; its log records Fable 5.2 and the effort `high` at the first check. File: `.artifacts/v1/prep/IDEA-010-03/IDEA-010-03-result.md` (scratch, outside git). Brief: `.artifacts/v1/briefs/IDEA-010-03.md`, with twelve areas. The row stays open: Peter decides after he has seen the proposal. Check the log again when the agent ends, before the file is read.
+
 ### Second block of agent work
 - Row 04 — done on 2026-11-13: task record RES-076, from the task agent `a2dfef76d0234e4bb`, started without a name. Its log records Opus 5.5 and the effort `medium` on all 62 requests, checked after the agent ended. Its result file is `.artifacts/v1/task/IDEA-010-04/IDEA-010-04-result.md` (scratch, outside git), with the raw list and the two scripts that made it. The main session read the result file in full and checked it against git: the raw list holds each of the 70,498 tracked files of commit `e25f8dc96` once, with none missing and none extra.
 - Row 02 — done on 2026-11-13: RES-068, from the researcher agent `ae5fe8e4a588868c0`, started without a name. Its log records Opus 5.5 and the effort `medium` on all 140 requests, checked after the agent ended. It was the third start of the row; two starts of the same day ended in outages of the Claude login.
