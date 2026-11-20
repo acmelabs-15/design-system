@@ -121,7 +121,7 @@ Rows of the spec phase, by [the workspace rule](../agents/workspace.md#deferred-
 - Search, and a version switch for later releases.
 - A playground where a reader changes the props of a live component. It overlaps with devtools (IDEA-006): DEC-143 gives devtools live prop switching with prop inspection.
 - How a coding agent reads the website, for example through a text version of each page. It sharpens with IDEA-005#09.
-- The look of the website itself. It follows the design direction of IDEA-002#26.
+- The look of the website itself. It follows the design direction, which is DEC-153 since 2026-11-20: Geist's colours and materials with new values from stated rules. The design of the website is the deferred row 14.
 
 ## Out of scope
 - The component list, names and parts. IDEA-001 owns them.

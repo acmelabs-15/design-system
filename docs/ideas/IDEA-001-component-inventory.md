@@ -63,7 +63,7 @@ Carried over from `docs/STATUS.md` on 2026-11-12, when the workspace moved to br
 ### Next actions, 2026-11-13
 State at the end of the second session of 2026-11-13, which Peter ended to save context: "we've used a lot of this session's context - make any additional updates you need to make and provide me with the prompt I should provide to you after running "/clear"".
 
-- Session of 2026-11-20: a new session read the state and reported it to Peter. He then stated DEC-151, the review of the whole in Figma before the build; it answers no pending question and closes no row. It adds the deferred row IDEA-002#31. The agent showed him IDEA-003#05 again in chat, in a short form with one markup example, and asked what he wants clarified. He wrote "what is the question?", and the agent asked it again as one concrete case. He answered it: DEC-152, a part works at any depth below its root. The main session then resolved IDEA-004#02 with RES-078 and added IDEA-003#24, the names for the glossary, and the deferred row IDEA-003#23, the mechanism. One question is pending: IDEA-002#26, asked again on 2026-11-20. The order below holds with these changes: in item 1 the architecture is answered; in item 2 the group "Wait for the architecture" is free, except IDEA-003 rows 08, 12 and 17, which wait for other rows, and IDEA-004#03, which waits for Peter's go.
+- Session of 2026-11-20: a new session read the state and reported it to Peter. He then stated DEC-151, the review of the whole in Figma before the build; it answers no pending question and closes no row. It adds the deferred row IDEA-002#31. The agent showed him IDEA-003#05 again in chat, in a short form with one markup example, and asked what he wants clarified. He wrote "what is the question?", and the agent asked it again as one concrete case. He answered it: DEC-152, a part works at any depth below its root. The main session then resolved IDEA-004#02 with RES-078 and added IDEA-003#24, the names for the glossary, and the deferred row IDEA-003#23, the mechanism. He then answered IDEA-002#26, asked again on 2026-11-20 with the page open: DEC-153, variant 4 is the start for the look. It adds the deferred row IDEA-002#32 and frees IDEA-002#22. The order below holds with these changes: both questions of item 1 are answered; in item 2 the group "Wait for the architecture" is free, except IDEA-003 rows 08, 12 and 17, which wait for other rows, and IDEA-004#03, which waits for Peter's go. One question is pending: his go for a third block of agent work, under "Third block of agent work" below.
 - No agent runs. The second block of agent work is complete: all 12 rows are resolved. The working tree is clean, everything is pushed, and `brain check` reports no finding.
 - Next, in this order:
   1. Two questions are pending. Peter closed the dialog of each with the host's choice "clarify these questions", and he has not said what he wants to clarify. Ask him that first, in chat. Then ask each question again.
@@ -80,6 +80,18 @@ State at the end of the second session of 2026-11-13, which Peter ended to save 
 - If the Claude login fails while agents run: on 2026-11-13 Peter twice asked to remove what the agents wrote and to start again only on his word.
 - Tools in `.artifacts/v1/briefs/` (scratch, outside git): `mcp-proof.py` makes the one read-only call that proves the design system MCP, and `agent-log-check.py` prints the models and the efforts in the log of a delegated agent. The usage of each is at the top of its file.
 - The Notes of each idea hold the facts of each result. A session reads a record or a result file for the question in front of it.
+
+### Third block of agent work — asked on 2026-11-20
+- Pending question, asked on 2026-11-20 through the question dialog, after his answers to IDEA-003#05 and IDEA-002#26: his go for six agents, which run while he answers the questions that need no work of the agent. Options: "Go, all six (Recommended)"; "Go, the two tests only"; "Not yet". The question names the cost: six agent runs, each on Opus 5.5 or Fable 5.2 at medium or high effort (DEC-150). No agent starts before his answer.
+- The six:
+  1. IDEA-004#03, the test of the React package on Redact. A task agent, in scratch. RES-078 names its React package, and RES-029 the six points that it must observe.
+  2. IDEA-005#14, research: whether Claude Code, Codex and Gemini CLI show the view of a tool that uses MCP Apps.
+  3. The proposal for IDEA-001#13: in or out for each of the 80 utility and hook concepts of RES-073, by the rules of DEC-130 and DEC-132.
+  4. The proposal for IDEA-006#10: the capabilities of devtools, from the 41 candidates of RES-071.
+  5. The proposal for IDEA-007#11: the recipes of the Blocks section by name, from RES-067.
+  6. The proposal for IDEA-010#03: the plan for build tools, CI, release and deployment, from RES-068.
+- A proposal is for the interview and is no research record, as the proposal for the parts was. Each goes to a file under `.artifacts/v1/prep/`.
+- Not in the block: the trial IDEA-008#03, which uploads to his Claude account and starts only on his word, and the check IDEA-005#15, which he runs.
 
 ### Row 12 — resolved
 - RES-073, 2026-11-13, from the export files of the packages and the documentation of each system. For Geist it has only the names that the code samples of the documentation import, because Geist has no public package; that list cannot be shown to be complete.
