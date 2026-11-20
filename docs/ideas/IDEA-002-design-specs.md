@@ -214,7 +214,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 26 | Which design direction does 1.0 take: for colour, type scale, shape, density and motion, what comes from Geist, what comes from another system and what is new? | prototype | resolved | 04, 05, 24, 25, 27 | [DEC-153](../decisions/DEC-153-design-direction-new-values-with-stated-rules.md) |
 | 27 | Does 1.0 take Geist's exact values (colours, text styles, shadows), or its own values in a structure like Geist's, given that Vercel publishes no license for them? | interview | resolved | 25 | [DEC-136](../decisions/DEC-136-geist-exact-values-without-a-check.md) |
 | 28 | How do other design systems bring token changes from Figma into their repo (a script, a plugin, a CI job or by hand), on which Figma plan, and how do they name token versions? | research | resolved | — | [RES-049](../research/RES-049-figma-token-change-flow-in-other-systems.md) |
-| 30 | Import the list of the blocks from the idea that owns them, which is IDEA-007 on 2026-11-13. | task | open | — | — |
+| 30 | Import the list of the blocks from the idea that owns them, which is IDEA-011 since 2026-11-20 (DEC-156). | task | open | — | — |
 
 ## Deferred rows
 Rows of the spec phase, by [the workspace rule](../agents/workspace.md#deferred-rows). They are not open and not on the frontier. Each one moves into the spec of this idea when its spec phase starts.

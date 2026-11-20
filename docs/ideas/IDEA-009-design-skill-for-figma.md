@@ -65,5 +65,5 @@ A decision: 1.0 gets a design skill for Figma or not, and in which form. If it d
 ## Out of scope
 - The Figma library, the design specs and the tokens. IDEA-002 owns them.
 - How the consumer skills and the MCP server ship. IDEA-005 owns it.
-- Which blocks 1.0 has. IDEA-007 owns it.
+- Which blocks 1.0 has. IDEA-011 owns it since 2026-11-20 (DEC-156).
 - Claude Design. IDEA-008 owns it.

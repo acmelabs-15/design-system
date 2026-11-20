@@ -26,7 +26,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 
 - Item 5, his words: "Research how other design systems build their skills and MCPs: which skills they ship and what they do, which tools their MCPs expose and what they do, and how they package and distribute them." RES-030 answers the last part, how they package and distribute. Row 10 holds the first two parts.
 - Item 5, his words: "Study Storybook's skills and MCP, especially the MCP UI tools that return rendered UI. Find out who else does this, how it works, and what makes sense for us." Row 11 holds the research, and row 12 the decision. He asks for "what makes sense for us", so the record of row 11 can hold an assessment against the decisions of 1.0; it keeps that part apart from its facts.
-- Item 2, an open question that he wants to settle: are the blocks exposed "through the MCP, a skill, or both?" Row 13 holds it.
+- Item 2, an open question that he wants to settle: are the blocks exposed "through the MCP, a skill, or both?" Row 13 holds it. Since 2026-11-20 the blocks have an idea of their own, IDEA-011 (DEC-156); it owns their list, and row 13 stays here.
 - Item 11: the design skill for Figma is an idea of its own, IDEA-009.
 
 ### Waits

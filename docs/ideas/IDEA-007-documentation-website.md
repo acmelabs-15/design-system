@@ -9,7 +9,7 @@ result: # with status: done, the DEC-NNN or the commit SHA this idea produced
 - Outcome: a documentation website for 1.0 that replaces the website of release 0.3.3 at the merge, with a page for each component, examples for each way to use 1.0, and a blocks section for recipes.
 - User: Peter decides. Developers, designers and coding agents read the website. The MCP server of IDEA-005 serves the same records.
 - Why now: the merge replaces the docs, and none of the first six ideas owns the website (DEC-139).
-- Success: open, rows 04 and 05. A draft: Peter has chosen what the website holds, where its records come from and how it is built and published; the blocks of 1.0 are decided; a spec exists.
+- Success: open, rows 04 and 05. A draft: Peter has chosen what the website holds, where its records come from and how it is built and published; a spec exists. The blocks themselves are decided in IDEA-011 since 2026-11-20 (DEC-156).
 - Constraint: release 0.3.3, its website included, is no input (DEC-125). Research comes before each decision that rests on facts.
 - Out of scope: the component list, names and parts (IDEA-001), the design specs and tokens (IDEA-002), the Lit core (IDEA-003), the framework packages (IDEA-004), how the MCP server and the skills ship (IDEA-005) and devtools (IDEA-006).
 
@@ -54,6 +54,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Options: "An idea of their own (Recommended)"; "They stay in the website idea".
 - The agent recommends an idea of their own. Reasons: the blocks are a body of work of their own that reaches four ideas (IDEA-002, IDEA-005, IDEA-007 and IDEA-009), and one owner makes their order clear; the website then owns only the section that shows them. Stated cost: one more idea and spec, and rows 10 to 13 of this idea move to it.
 - This row rests on no pending research.
+- Answer, Peter, 2026-11-20, through that dialog: "An idea of their own (Recommended)", with no condition and no note. The option read: "A new idea owns the blocks: their list, their source of truth, where they live, and their own spec and plan. The website idea keeps only the section that shows them. One owner makes the order across the four ideas clear. Cost: one more idea and spec, and four rows move out of the website idea." No question on row 09 is pending. DEC-156 holds the decision, and IDEA-011 is the new idea.
 
 ### Review in Figma before the build
 - DEC-151, Peter, 2026-11-20: the whole of 1.0 is put together in Figma before anything is built, and he reviews it there with feedback. By the agent's reading in that record, the whole holds the design of this website (deferred row 14) and the recipes of the Blocks section (IDEA-002#30). So no page of the website is built before that review.
@@ -95,6 +96,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 
 ### Third block of agent work
 - Row 11 — the proposal is in preparation since 2026-11-20, on Peter's go of that day (IDEA-001, Notes, "Third block of agent work"). Proposal agent `a0d46807d47234cb6`, started without a name; its log records Opus 5.5 and the effort `medium` at the first check. File: `.artifacts/v1/prep/IDEA-007-11/IDEA-007-11-result.md` (scratch, outside git). Brief: `.artifacts/v1/briefs/IDEA-007-11.md`. The row stays open: Peter decides after he has seen the proposal. Check the log again when the agent ends, before the file is read.
+- Row 11 is IDEA-011#01 since 2026-11-20 (DEC-156); IDEA-011, Notes, holds the state of the proposal from here on.
 - Row 11 — the proposal is complete since 2026-11-20 (355 lines). The log records Opus 5.5 and the effort `medium` on all 24 requests, checked after the agent ended. The agent's report: 459 source items (shadcn/ui 118, Chakra UI Pro 338, Radix Themes 3) joined into 73 block concepts, each source item in one concept; 24 concepts for agent interfaces, 18 for app layouts, 8 for charts, 20 for page sections, and 3 e-commerce concepts that no group fits. It proposes 68 in, with all 24 of the agent interfaces as must-have, and 4 out: Card Collection, Divider, Theme Showcase and Career. The two that Peter named with "maybe" are proposals of their own. The cost that it states: 104 versions of a block, times the count of framework targets. The agent read no web page. It says that the file changed on disk after its last edit, most likely by its own script for three totals, and that it did not read it again. The main session has not read the file yet. It reads it in full and checks the totals before the question goes to Peter.
 
 ### Second block of agent work
@@ -112,11 +114,8 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 06 | How does a page show one example in plain HTML and in each framework package? | interview | open | 02, 07 | — |
 | 07 | Import the composition architecture from IDEA-003 and the framework targets from IDEA-004. | task | open | — | — |
 | 08 | Import the component list, names and parts from IDEA-001 and the format of a design spec from IDEA-002. | task | open | — | — |
-| 09 | Do the blocks and recipes get an idea of their own, or do they stay in this idea? | interview | open | — | — |
+| 09 | Do the blocks and recipes get an idea of their own, or do they stay in this idea? | interview | resolved | — | [DEC-156](../decisions/DEC-156-blocks-get-an-idea-of-their-own.md) |
 | 10 | Which blocks and recipes do shadcn/ui, Radix (Primitives and Themes), Chakra UI and Geist have, and which AI components and AI blocks among them: for each, what it composes, which state and composition pattern it shows, and how the system gives it out? | research | resolved | — | [RES-067](../research/RES-067-blocks-and-recipes-of-the-reference-systems.md) |
-| 11 | Which blocks does 1.0 have, by name, in each group of DEC-146? | interview | open | 10 | — |
-| 12 | Is Figma or code the source of truth of a block? | interview | open | — | — |
-| 13 | Where do the blocks live in the documentation, and where do the source files of a block live? | interview | open | — | — |
 
 ## Deferred rows
 Rows of the spec phase, by [the workspace rule](../agents/workspace.md#deferred-rows). They are not open and not on the frontier. Each one moves into the spec of this idea when its spec phase starts.
@@ -126,14 +125,15 @@ Rows of the spec phase, by [the workspace rule](../agents/workspace.md#deferred-
 | 14 | Design the documentation website in Figma first, then break that design spec down into documentation blocks. Open inside this row: whether the documentation blocks are a fifth group of the Blocks section. Source: Peter's additional scope of 2026-11-13, item 2. | task | deferred | — | — |
 
 ## Not yet specified
-- Whether the Blocks section also has data tables with virtualization and forms that use TanStack packages. Peter named both with "maybe" (DEC-146). Row 02 checks which TanStack packages work with Lit and with each framework target.
-- Which chart engine the chart blocks use.
 - Search, and a version switch for later releases.
 - A playground where a reader changes the props of a live component. It overlaps with devtools (IDEA-006): DEC-143 gives devtools live prop switching with prop inspection.
 - How a coding agent reads the website, for example through a text version of each page. It sharpens with IDEA-005#09.
 - The look of the website itself. It follows the design direction, which is DEC-153 since 2026-11-20: Geist's colours and materials with new values from stated rules. The design of the website is the deferred row 14.
 
 ## Out of scope
+- The list of the blocks and the blocks themselves. IDEA-011 owns them since 2026-11-20 (DEC-156). This idea keeps the section of the website that shows them.
+- Rows 11, 12 and 13, moved to IDEA-011 on 2026-11-20 by DEC-156. Row 11, "Which blocks does 1.0 have, by name, in each group of DEC-146?", is IDEA-011#01. Row 12, "Is Figma or code the source of truth of a block?", is IDEA-011#02. Row 13, "Where do the blocks live in the documentation, and where do the source files of a block live?", is IDEA-011#03. The Notes above on rows 11 to 13 keep their history; IDEA-011 holds their state.
+- Two points of "Not yet specified", moved to IDEA-011 on the same day: the two blocks that Peter named with "maybe", and the chart engine of the chart blocks.
 - The component list, names and parts. IDEA-001 owns them.
 - The design specs, the tokens and the look of the components. IDEA-002 owns them.
 - The Lit core (IDEA-003) and the framework packages (IDEA-004).
