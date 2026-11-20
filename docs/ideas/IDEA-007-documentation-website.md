@@ -71,6 +71,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - IDEA-005#06 asks which tools and records the MCP server serves, and IDEA-005#09 asks how an agent with no project gets the 1.0 guidance. Row 04 here is the other view of the same source.
 - IDEA-003#11: one HTML page uses 1.0 from a CDN with no build step. The website shows that way of use beside the framework packages.
 - IDEA-005, Peter's reply of 2026-11-20 to all ten decisions, for row 04: he marks llms.txt on the documentation site with ✅, and documentation inside the package with ✅. So the website serves an llms.txt file, and the same documentation ships as files in the package. No decision record yet; IDEA-005, Notes, "The agent's doubts on his reply", D5, holds the open point.
+- DEC-160 (IDEA-005#17), Peter, 2026-11-20, for row 04: the MCP server of 1.0 is a documentation server with a search by intent. His example of a result has a `why` and an `avoid_when` for each component. So the records need, for each component, a text on when to use it and a text on when to avoid it; that is the usage guidance of DEC-142. The server and the website read the same records.
 
 ### Row 10 — resolved
 - RES-067, 2026-11-13, from the documentation and the registries of the systems. It holds each block by name.
