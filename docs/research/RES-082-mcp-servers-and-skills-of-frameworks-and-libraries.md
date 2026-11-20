@@ -105,6 +105,7 @@ Most projects of the survey use several of these places: 88 of 112.
 | Plugin marketplaces of agent hosts | Stripe, Shopify, Figma, shadcn/ui (Cursor) |
 | The project's own command | Storybook, Prisma, Ant Design, Bun, Next.js, Turborepo, Stripe, Playwright, shadcn/ui (for the configuration of the server) |
 | TanStack Intent | TanStack; Apollo Client can be found through it. Out for 1.0 (DEC-154) |
+| The package manager links the skills that a package holds (pnpm 12) | Vercel AI SDK |
 | A hosted address | Stripe, Bun, Apollo Client, Prisma and Figma for the server; Vite for llms.txt |
 
 #### 7. How does a consumer install them? (Peter's 4)
@@ -144,6 +145,8 @@ The survey has no field for the hosts of each package; this table is read from t
 | A hosted catalog of skills | Stripe |
 
 Peter, 2026-11-20, on the first form of this list: "you don't need to include none or doesnt' do it anymore". So the tables hold only solutions that a package of the list uses today. The rows that were removed: for decision 1, the packages with no server (Turborepo, Vercel AI SDK, Web Awesome, TanStack) and the packages that moved away from a server (TanStack, Shopify in its plugin, Playwright in its advice); for decision 2, the same four with no server; for decision 8, Bun's file that is written one time. The Findings below keep those facts.
+
+How this list relates to "Facts across the records" below, which Peter asked on 2026-11-20: that part has no decision that this list lacks. Its parts are decisions 2, 4, 5 with 8, 6 and 7, which are Peter's six, because the survey asked for those fields. Decisions 1, 3, 9 and 10 are not parts of it; they come from the detail answers of the records and from rows of IDEA-005. Three things in that part are no decision: the count of projects with neither a server nor guidance, the reasons that maintainers state, and the lists of disagreements and of points that are not confirmed. One solution of that part was missing here and is added to decision 6: the package manager links the skills that a package holds.
 
 Limits: a package can be in more than one cell of a decision. Each cell shortens the record of the package; the Findings below hold the longer text and the sources.
 
