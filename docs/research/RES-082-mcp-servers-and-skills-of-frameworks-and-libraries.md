@@ -68,65 +68,65 @@ Peter asked for this list on 2026-11-20, in his reply to IDEA-005#04: each decis
 #### 3. Which forms does the guidance take? (added)
 | Solution | Packages |
 |---|---|
-| Skills, each with a SKILL.md file | AG Grid, Storybook, shadcn/ui, Stripe, Turborepo, Prisma, Next.js, Apollo Client, Vercel AI SDK, Shopify, Figma, TanStack, Playwright, Ant Design, Web Awesome |
-| Documentation inside the package | Next.js, Turborepo, Vercel AI SDK, Bun (in `bun-types`) |
-| A managed block in the project's AGENTS.md or CLAUDE.md | Next.js, Turborepo, Storybook, Bun, Ant Design (as an option of `antd setup`) |
-| An llms.txt file | Vite, Web Awesome |
-| A plugin for agent hosts | Stripe, Shopify, Figma, shadcn/ui (Cursor) |
+| Skills, each with a SKILL.md file | AG Grid, **Storybook**, **shadcn/ui**, **Stripe**, **Turborepo**, Prisma, **Next.js**, Apollo Client, **Vercel AI SDK**, **Shopify**, **Figma**, TanStack, Playwright, **Ant Design**, **Web Awesome** |
+| Documentation inside the package | **Next.js**, **Turborepo**, **Vercel AI SDK**, **Bun** (in `bun-types`) |
+| A managed block in the project's AGENTS.md or CLAUDE.md | **Next.js**, **Turborepo**, **Storybook**, **Bun**, **Ant Design** (as an option of `antd setup`) |
+| An llms.txt file | Vite, **Web Awesome** |
+| A plugin for agent hosts | **Stripe**, **Shopify**, **Figma**, **shadcn/ui** (Cursor) |
 
 Next.js states a reason for its forms: documentation that is always in the context did better in its evaluations than skills, and it keeps skills for workflows of several steps.
 
 #### 4. Where does the guidance live? (Peter's 3)
 | Solution | Packages |
 |---|---|
-| Inside the main package | Web Awesome (all of it), Turborepo (documentation), Next.js (documentation), Prisma 8 (skill), Vercel AI SDK (documentation and skill), Apollo Client (skill), TanStack (skills), Playwright (skills, in `playwright-core`) |
+| Inside the main package | **Web Awesome** (all of it), **Turborepo** (documentation), **Next.js** (documentation), **Prisma** 8 (skill), **Vercel AI SDK** (documentation and skill), **Apollo Client** (skill), TanStack (skills), Playwright (skills, in `playwright-core`) |
 | Inside the package of the project's command line tool | Ant Design |
-| A repository of skills, apart from the package | AG Grid, shadcn/ui, Shopify, Figma, Stripe, Storybook (short skills that call the installed CLI); as a second place: Turborepo, Next.js, Vercel AI SDK, Apollo Client |
-| Written into the consumer's project | Next.js, Turborepo, Storybook, Bun, Prisma (synced copies) |
-| The documentation site or a hosted catalog | Vite (llms.txt), Stripe (a catalog of skills), Web Awesome (llms.txt) |
+| A repository of skills, apart from the package | AG Grid, shadcn/ui, Shopify, Figma, **Stripe**, **Storybook** (short skills that call the installed CLI); as a second place: **Turborepo**, **Next.js**, **Vercel AI SDK**, **Apollo Client** |
+| Written into the consumer's project | **Next.js**, **Turborepo**, **Storybook**, Bun, **Prisma** (synced copies) |
+| The documentation site or a hosted catalog | Vite (llms.txt), **Stripe** (a catalog of skills), **Web Awesome** (llms.txt) |
 
 Most projects of the survey use several of these places: 88 of 112.
 
 #### 5. How do both stay at the version of the installed library? (Peter's 1)
 | Solution | Packages |
 |---|---|
-| Server: it reads the installed package or the project | AG Grid, Storybook, Next.js, Ant Design, Vite |
-| Server: it takes a version as an argument | AG Grid, Ant Design, Shopify (the version of the API) |
-| Server: its own version is pinned to the library | Storybook, Playwright |
-| Server: it serves the latest only | shadcn/ui, Stripe, Bun, Apollo Client, Prisma, Figma |
-| Guidance: it is in the installed package, or it points at it | Web Awesome, Turborepo, Next.js, Vercel AI SDK, TanStack, Apollo Client, Prisma, Playwright, Storybook (the skill prints its text from the installed CLI) |
-| Guidance: it comes from a repository at its newest state | AG Grid (its skill reads the version from package.json), shadcn/ui, Shopify, Figma, Stripe |
+| Server: it reads the installed package or the project | **AG Grid**, **Storybook**, **Next.js**, **Ant Design**, Vite |
+| Server: it takes a version as an argument | **AG Grid**, **Ant Design**, **Shopify** (the version of the API) |
+| Server: its own version is pinned to the library | **Storybook**, **Playwright** |
+| Server: it serves the latest only | **shadcn/ui**, **Stripe**, Bun, **Apollo Client**, **Prisma**, **Figma** |
+| Guidance: it is in the installed package, or it points at it | Web Awesome, Turborepo, **Next.js**, Vercel AI SDK, TanStack, **Apollo Client**, **Prisma**, **Playwright**, **Storybook** (the skill prints its text from the installed CLI) |
+| Guidance: it comes from a repository at its newest state | **AG Grid** (its skill reads the version from package.json), **shadcn/ui**, **Shopify**, **Figma**, **Stripe** |
 
 #### 6. How are they distributed? (Peter's 6)
 | Solution | Packages |
 |---|---|
-| npm, inside the library package | Web Awesome, Turborepo, Next.js, Prisma, Vercel AI SDK, Apollo Client, TanStack, Playwright |
-| The `skills` command line tool, `npx skills add` | AG Grid, shadcn/ui, Turborepo, Next.js, Vercel AI SDK, Apollo Client, Shopify, Ant Design, Web Awesome (from its path in node_modules), Storybook (its own CLI calls it) |
-| Plugin marketplaces of agent hosts | Stripe, Shopify, Figma, shadcn/ui (Cursor) |
-| The project's own command | Storybook, Prisma, Ant Design, Bun, Next.js, Turborepo, Stripe, Playwright, shadcn/ui (for the configuration of the server) |
-| TanStack Intent | TanStack; Apollo Client can be found through it. Out for 1.0 (DEC-154) |
-| The package manager links the skills that a package holds (pnpm 12) | Vercel AI SDK |
-| A hosted address | Stripe, Bun, Apollo Client, Prisma and Figma for the server; Vite for llms.txt |
+| npm, inside the library package | **Web Awesome**, **Turborepo**, **Next.js**, **Prisma**, **Vercel AI SDK**, **Apollo Client**, **TanStack**, **Playwright** |
+| The `skills` command line tool, `npx skills add` | AG Grid, **shadcn/ui**, **Turborepo**, **Next.js**, **Vercel AI SDK**, **Apollo Client**, **Shopify**, **Ant Design**, **Web Awesome** (from its path in node_modules), **Storybook** (its own CLI calls it) |
+| Plugin marketplaces of agent hosts | **Stripe**, **Shopify**, **Figma**, **shadcn/ui** (Cursor) |
+| The project's own command | **Storybook**, **Prisma**, **Ant Design**, **Bun**, **Next.js**, **Turborepo**, **Stripe**, **Playwright**, **shadcn/ui** (for the configuration of the server) |
+| TanStack Intent | **TanStack**; **Apollo Client** can be found through it. Out for 1.0 (DEC-154) |
+| The package manager links the skills that a package holds (pnpm 12) | **Vercel AI SDK** |
+| A hosted address | **Stripe**, **Bun**, **Apollo Client**, **Prisma** and **Figma** for the server; Vite for llms.txt |
 
 #### 7. How does a consumer install them? (Peter's 4)
 | Solution | Packages |
 |---|---|
-| One command of the project writes the files for the agent hosts | Ant Design (`antd setup`), Stripe (`stripe agent setup`), Prisma (`prisma init`), Storybook (`storybook add`), Playwright (`playwright init-skills`), shadcn/ui (`shadcn mcp init`), Bun (`bun init`) |
-| No step: the tool writes or refreshes the files when it runs | Next.js (`next dev` and `create-next-app`), Turborepo (`turbo`), Prisma (a script on install) |
-| `npx skills add` | AG Grid, shadcn/ui, Turborepo, Vercel AI SDK, Apollo Client, Web Awesome, Next.js |
-| The command of the agent host, or a configuration file by hand, for the server | AG Grid, Playwright, Shopify, Figma |
-| The install of a plugin | Stripe, Shopify, Figma |
-| Nothing to install | Vite (llms.txt by its address), Bun (the hosted server) |
+| One command of the project writes the files for the agent hosts | Ant Design (`antd setup`), **Stripe** (`stripe agent setup`), **Prisma** (`prisma init`), Storybook (`storybook add`), **Playwright** (`playwright init-skills`), **shadcn/ui** (`shadcn mcp init`), **Bun** (`bun init`) |
+| No step: the tool writes or refreshes the files when it runs | **Next.js** (`next dev` and `create-next-app`), **Turborepo** (`turbo`), **Prisma** (a script on install) |
+| `npx skills add` | **AG Grid**, **shadcn/ui**, **Turborepo**, Vercel AI SDK, Apollo Client, Web Awesome, **Next.js** |
+| The command of the agent host, or a configuration file by hand, for the server | **AG Grid**, **Playwright**, **Shopify**, **Figma** |
+| The install of a plugin | **Stripe**, **Shopify**, **Figma** |
+| Nothing to install | Vite (llms.txt by its address), **Bun** (the hosted server) |
 
 #### 8. How do they get updated? (Peter's 5)
 | Solution | Packages |
 |---|---|
-| Nothing to do, because the guidance is in the installed package | Web Awesome, Turborepo, Next.js, Vercel AI SDK, TanStack, Apollo Client |
+| Nothing to do, because the guidance is in the installed package | Web Awesome, **Turborepo**, **Next.js**, Vercel AI SDK, TanStack, Apollo Client |
 | A script that runs on install | Prisma |
-| The tool refreshes the files when it runs | Next.js, Turborepo |
-| A command that the developer runs again | AG Grid (`npx skills update`), Storybook (`storybook upgrade`), Playwright (`playwright init-agents`) |
-| An update of the plugin | Stripe, Shopify, Figma |
-| The newest version on each start, through `npx` with `@latest` | shadcn/ui, Shopify, Playwright, Ant Design |
+| The tool refreshes the files when it runs | **Next.js**, **Turborepo** |
+| A command that the developer runs again | AG Grid (`npx skills update`), Storybook (`storybook upgrade`), **Playwright** (`playwright init-agents`) |
+| An update of the plugin | Stripe, **Shopify**, Figma |
+| The newest version on each start, through `npx` with `@latest` | shadcn/ui, **Shopify**, **Playwright**, Ant Design |
 
 #### 9. Which agent hosts does 1.0 support? (added)
 | Solution | Packages |
@@ -140,15 +140,15 @@ The survey has no field for the hosts of each package; this table is read from t
 #### 10. How does an agent with no project get the guidance? (added)
 | Solution | Packages |
 |---|---|
-| A hosted MCP server | Stripe, Bun, Apollo Client, Prisma, Figma |
-| An llms.txt file or documentation by its address | Vite, Web Awesome, Bun |
-| A hosted catalog of skills | Stripe |
+| A hosted MCP server | **Stripe**, **Bun**, Apollo Client, Prisma, Figma |
+| An llms.txt file or documentation by its address | Vite, Web Awesome, **Bun** |
+| A hosted catalog of skills | **Stripe** |
 
 Peter, 2026-11-20, on the first form of this list: "you don't need to include none or doesnt' do it anymore". So the tables hold only solutions that a package of the list uses today. The rows that were removed: for decision 1, the packages with no server (Turborepo, Vercel AI SDK, Web Awesome, TanStack) and the packages that moved away from a server (TanStack, Shopify in its plugin, Playwright in its advice); for decision 2, the same four with no server; for decision 8, Bun's file that is written one time. The Findings below keep those facts.
 
 How this list relates to "Facts across the records" below, which Peter asked on 2026-11-20: that part has no decision that this list lacks. Its parts are decisions 2, 4, 5 with 8, 6 and 7, which are Peter's six, because the survey asked for those fields. Decisions 1, 3, 9 and 10 are not parts of it; they come from the detail answers of the records and from rows of IDEA-005. Three things in that part are no decision: the count of projects with neither a server nor guidance, the reasons that maintainers state, and the lists of disagreements and of points that are not confirmed. One solution of that part was missing here and is added to decision 6: the package manager links the skills that a package holds.
 
-Limits: a package can be in more than one cell of a decision. Each cell shortens the record of the package; the Findings below hold the longer text and the sources.
+Limits: a package can be in more than one cell of a decision. Since 2026-11-20, on Peter's word, the name of a package is bold in a decision where it is in two rows or more. Each cell shortens the record of the package; the Findings below hold the longer text and the sources.
 
 ### Facts across the records
 This part is the text of the last agent of the run, which states the facts across all records.
