@@ -149,6 +149,92 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Not asked: Peter closed the dialog for row 17 on 2026-11-20 before he answered, and wrote: "Sorry I'd still like you to do this for me - what I mean was I'd like to see an updated version of this taht doesn't include any of the packages that don't do the thing or no longer do the thing - only want to see the actual solutions". So he wanted the whole list again in its new form, and no question. The agent showed him the full list in chat. No question on row 17 is pending. He reads the list first; do not ask a decision of this idea before he says that he is ready.
 - The question that the agent had prepared for row 17, for the time when he is ready: what is the job of the MCP server of 1.0 beside the guidance? Options: "Tools that files cannot give (Recommended)"; "The documentation and the API of the library"; "Both". The agent recommends the first: the documentation is guidance inside the package, where it matches the installed version, and the server does what a file cannot do, which is a search over all records, a check of code that an agent wrote, and a rendered preview. Its evidence: the packages that changed most recently moved their documentation into the package (Next.js, Turborepo, Prisma, the Vercel AI SDK, Web Awesome); six of fifteen design systems have tools that check written code (RES-070); a rendered view shows in some hosts only (RES-080). Stated cost: an agent host with no skills and no files, which is an agent with no project, gets less from such a server; row 09 holds that case.
 
+### The pass through the ten decisions
+- Source: Peter's prompt at the start of a new session on 2026-11-20. His words: "Ask me the ten decisions of IDEA-005 one at a time, in the order of the list in RES-082, decision 1 first (row 17). For each one, show its solutions with the packages from the list, give your recommendation with its cost, and keep the question short with one concrete example." And: "After each answer, update the maps of all ideas, commit and push, and tell me in one or two lines what changed."
+- So he is ready, and the wait of the section above has ended. The order is the order of the table above: rows 17, 18, 20, 19, 21, 22, 23, 24, 25, 09.
+- Row 15, the check that Peter runs in the agent hosts, blocks row 23, which is decision 7. Give him the checklist before that question.
+- Glossary gap: `GLOSSARY.md` has no entry for the MCP server, a skill, the guidance for coding agents or an agent host. Add each term when a decision of this pass settles it (DEC-148).
+
+### Peter's reply to all ten decisions, 2026-11-20
+- Source: his reply to the dialog for row 17, typed. He chose no option of that dialog. He pasted the ten tables of RES-082 with a mark in front of each solution. His words before the tables: "Here are my answers to all 10 questions - 🤔 means I don't know/not sure - if there are any answers of mine that you disagree with in any amount, even if it's just the smallest tiniest bit of doubt, you must raise it to me".
+- His marks, in his order. "no mark" means that he left the cell empty. The packages of each solution are in RES-082.
+
+| Decision | Row | Solution | His mark |
+|---|---|---|---|
+| 1. Job of the server | 17 | A server for the documentation and the API of the library | 🤔 |
+| 1 | 17 | A server for the product or the running project | 🤔 |
+| 2. Where the server lives | 18 | A package of its own, started with `npx` | 🤔 |
+| 2 | 18 | A subcommand of the project's command line tool | ✅ |
+| 2 | 18 | Inside the dev server of the installed package | ✅ |
+| 2 | 18 | A hosted server | no mark |
+| 3. Forms of the guidance | 20 | Skills, each with a SKILL.md file | ✅ |
+| 3 | 20 | Documentation inside the package | ✅ |
+| 3 | 20 | A managed block in the project's AGENTS.md or CLAUDE.md | no mark |
+| 3 | 20 | A plugin for agent hosts | ✅ |
+| 4. Where the guidance lives | 19 | Inside the main package | ✅ |
+| 4 | 19 | A repository of skills, apart from the package | 🤔 |
+| 4 | 19 | Written into the consumer's project | 🤔 |
+| 4 | 19 | The documentation site or a hosted catalog | ✅, with his note "(llm.txt)" |
+| 5. The installed version | 21 | Server: it reads the installed package or the project | ✅ |
+| 5 | 21 | Server: it takes a version as an argument | ✅ |
+| 5 | 21 | Server: its own version is pinned to the library | ✅ |
+| 5 | 21 | Server: it serves the latest only | ❌ |
+| 5 | 21 | Guidance: it is in the installed package, or it points at it | ✅ |
+| 5 | 21 | Guidance: it comes from a repository at its newest state | ❌ |
+| 6. Distribution | 22 | npm, inside the library package | ✅ |
+| 6 | 22 | The `skills` command line tool, `npx skills add` | ✅ |
+| 6 | 22 | Plugin marketplaces of agent hosts | ❌ |
+| 6 | 22 | The project's own command | ✅ |
+| 6 | 22 | TanStack Intent | ❌ |
+| 6 | 22 | The package manager links the skills that a package holds (pnpm 12) | ❌ |
+| 6 | 22 | A hosted address | ❌ |
+| 7. Install | 23 | One command of the project writes the files for the agent hosts | ✅ |
+| 7 | 23 | No step: the tool writes or refreshes the files when it runs | ✅ |
+| 7 | 23 | `npx skills add` | ✅ |
+| 7 | 23 | The command of the agent host, or a configuration file by hand, for the server | ✅ |
+| 7 | 23 | The install of a plugin | ✅ |
+| 7 | 23 | Nothing to install | ❌ |
+| 8. Update | 24 | Nothing to do, because the guidance is in the installed package | ✅ |
+| 8 | 24 | A script that runs on install | ❌ |
+| 8 | 24 | The tool refreshes the files when it runs | ✅ |
+| 8 | 24 | A command that the developer runs again | ✅ |
+| 8 | 24 | An update of the plugin | ✅ |
+| 8 | 24 | The newest version on each start, through `npx` with `@latest` | 🤔 |
+| 9. Agent hosts | 25 | Named hosts in the project's own command | ✅ |
+| 9 | 25 | The hosts that the `skills` tool knows | ✅ |
+| 9 | 25 | The hosts that have a plugin marketplace | ❌ |
+| 10. An agent with no project | 09 | A hosted MCP server | 🤔 |
+| 10 | 09 | An llms.txt file or documentation by its address | 🤔 |
+| 10 | 09 | A hosted catalog of skills | ❌ |
+
+- Two rows of RES-082 are not in his tables, so they have no mark: for decision 3, "An llms.txt file"; for decision 4, "Inside the package of the project's command line tool". His note "(llm.txt)" in decision 4 names llms.txt on the documentation site.
+- No decision record yet. He asked the agent to raise each doubt first, so each row stays open until its doubts are answered. The agent's doubts and his replies are in the section below.
+
+### The agent's doubts on his reply, 2026-11-20
+He asked for each doubt, "even if it's just the smallest tiniest bit". The agent checked the facts in the records of RES-082 for Web Awesome, the Vercel AI SDK, Next.js, Turborepo, Ant Design, Prisma, Stripe and shadcn/ui, then showed him this list in chat. It asks them one at a time, D1 first. Each recommendation is the agent's proposal and no decision.
+
+- **D1, decision 1, row 17.** Both solutions have 🤔. His ✅ for documentation inside the package (decision 3) and for guidance in the installed package (decision 5) support the agent's recommendation, tools for the project: a documentation server would give the same content a second time.
+- **D2, decision 2, row 18.** ✅ for "inside the dev server". 1.0 is a library and has no dev server; Next.js, Storybook and Vite each own one. The equal for 1.0 is a plugin for the consumer's dev server, such as a Vite plugin, or the devtools of IDEA-006. Recommendation: one place, the subcommand of the command line tool; a part in the dev server is a question for IDEA-006.
+- **D3, decisions 3, 4, 7 and 8, rows 20, 19, 23 and 24.** ✅ for "the tool writes or refreshes the files when it runs", in 7 and in 8. What `next dev` and `turbo` write is the managed block in AGENTS.md (RES-082, records of Next.js and Turborepo). That block has no mark in decision 3, and "written into the consumer's project" has 🤔 in decision 4. And 1.0 has no tool that runs by itself. Recommendation: the block yes, short, as an option of the own command, and it points at the documentation in the installed package; a refresh on run no. Evidence for the block: the evaluations of Next.js, and the reports of MUI and Web Awesome that agents do not look. Cost of the block: the command changes a file that the developer owns.
+- **D4, decisions 3, 6, 7, 8 and 9.** A plugin has ✅ as a form, as an install and as an update, and ❌ as a distribution through marketplaces and for the hosts with a marketplace. Each package of his list with a plugin gives it through a marketplace: Stripe, Shopify, Figma, shadcn/ui. Recommendation: no plugin in 1.0, because a plugin has a version of its own and does not come from the installed library. Cost: no install with one step inside a host, and less discovery. Not checked: whether a host can load a plugin from a folder inside `node_modules` with no marketplace. Check it at the hosts' documentation if he keeps the plugin.
+- **D5, decisions 2, 4, 6, 7 and 10.** llms.txt on the documentation site has ✅ in decision 4. "A hosted address" has ❌ in decision 6 and "nothing to install" has ❌ in decision 7; both rows hold llms.txt by its address. A hosted server has no mark in decision 2 and 🤔 in decision 10. The agent's reading: llms.txt on the site is yes. Recommendation for decision 10: llms.txt, and no hosted MCP server in 1.0. Cost: an agent in a chat host with no project gets no tool, so no check and no preview.
+- **D6, decisions 2 and 4, row 18.** ✅ for a subcommand of the command line tool, 🤔 for a package of its own, and his table for decision 4 has no row for the package of the command line tool. Open: the command line tool is in the `bin` of the main package, or it is a package of its own as `@ant-design/cli`. Facts: no project of 112 has its server only in its main library package; the trial RES-077 showed that the `bin` of the main package works, and that pnpm does not give it through a framework package alone. Recommendation: the `bin` of the main package, which is the direction of the kickoff prompt. It is a close call. Cost: the main package holds the code of the tool, no surveyed library has this shape, and each framework package needs a `bin` that passes the call on (IDEA-004#07). This is the question of the old row 04.
+- **D7, decisions 4, 5, 6 and 7.** `npx skills add` has ✅, and guidance from a repository at its newest state has ❌. Both hold only when the command gets the path in `node_modules`, as Web Awesome documents it; its documentation says that the skills are then installed as symlinks. With a repository as the source the tool gives the newest state. So the 🤔 for a repository of skills gets the recommendation no. Cost: likely less discovery in the catalog of the `skills` tool. Second point: five ways to install have ✅, and each is a way to document and to test for each host. Recommendation: the own command is the main way; `npx skills add` with the path, and the host's command or a file by hand for the server, are the second ways in the documentation.
+- **D8, decisions 5 and 8.** A version as an argument has ✅, and `npx` with `@latest` has 🤔. A server in the installed package reads that package and has its version with no more work. A version argument does something only where no installed package exists, and the server then holds the records of other versions; the command line tool of Ant Design holds a snapshot for each minor version. `@latest` starts the newest server and not the installed one. Recommendation: neither in 1.0.
+- **D9, decision 6.** pnpm 12 has ❌. By the record of the Vercel AI SDK, pnpm 12 finds `skills/<name>/SKILL.md` in a package and links it after an approval. To be found costs only the place of the folder. Recommendation: keep ❌ as "1.0 does not rely on it", and put the skills in that folder. The source is a pull request, not documentation.
+- **D10, decision 9, row 25.** The marks give the way and not the names. Which hosts the own command names is open. RES-077 ran Claude Code, Codex and Gemini CLI; Cursor and VS Code Copilot wait for row 15.
+- No doubt, and still no decision record until the doubts of each row are answered: skills as a form; documentation inside the package; guidance inside the main package; llms.txt on the documentation site; the server never serves the latest only, and the guidance never comes from a repository at its newest state; the server reads the installed package; npm and the own command as distribution; one command of the project that writes the files; the host's command or a file by hand for the server; nothing to do on an update where the guidance is in the installed package; a command that the developer runs again; no script on install; no TanStack Intent; no hosted catalog of skills.
+
+### Row 17 — pending, second ask
+- Asked on 2026-11-20 through the question dialog, as D1: which job does the server get, now that his marks put the documentation into the installed package?
+- Options: "Tools for the project (Recommended)"; "Documentation and API"; "Both"; "Test it first", a trial with two small servers that shows which one makes an agent write correct code.
+
+### Row 17 — asked, and answered with the reply above
+- Asked on 2026-11-20 through the question dialog: which job does the MCP server of 1.0 have?
+- Options: "Tools for the project (Recommended)", the server does what a file cannot do, such as a check of written code and a rendered preview, and the documentation stays in the package; "Documentation and API"; "Both"; "No MCP server".
+- The stated cost of the recommendation: an agent with no project gets no documentation from the server, so row 09 must give it another way; 14 of 15 design systems have a documentation server (RES-070); a preview shows in some hosts only (RES-080).
+- His reply marks both solutions of decision 1 with 🤔. The job is not decided.
+
 ### Row 16 — resolved
 - RES-082, 2026-11-20: 112 projects, each record checked by a second agent. Its 183 agents ran on Opus 5.5 at `medium`, checked in the logs after the run; none ran `gh`. The main session read the facts across the records. It reads the record of a single project when a later row needs it.
 - Facts for row 04, inside the package or apart:

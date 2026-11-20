@@ -70,6 +70,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - DEC-137 and DEC-138 (IDEA-002 rows 04 and 05): 1.0 has light and dark and custom themes, and it targets WCAG 2.2 level AA with both reading directions. The website shows these and must reach the same target itself.
 - IDEA-005#06 asks which tools and records the MCP server serves, and IDEA-005#09 asks how an agent with no project gets the 1.0 guidance. Row 04 here is the other view of the same source.
 - IDEA-003#11: one HTML page uses 1.0 from a CDN with no build step. The website shows that way of use beside the framework packages.
+- IDEA-005, Peter's reply of 2026-11-20 to all ten decisions, for row 04: he marks llms.txt on the documentation site with ✅, and documentation inside the package with ✅. So the website serves an llms.txt file, and the same documentation ships as files in the package. No decision record yet; IDEA-005, Notes, "The agent's doubts on his reply", D5, holds the open point.
 
 ### Row 10 — resolved
 - RES-067, 2026-11-13, from the documentation and the registries of the systems. It holds each block by name.

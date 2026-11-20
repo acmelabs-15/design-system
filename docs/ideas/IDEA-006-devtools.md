@@ -51,6 +51,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 ### Evidence from other ideas
 - DEC-137 (IDEA-002#04), for rows 03 and 06: the tokens carry light and dark, and custom themes with a team's own brand colour, typeface and corner radius. 1.0 has no density setting and no built-in accent choice. The theming controls work on these.
 - DEC-127 (IDEA-003#04): 1.0 does not render on the server.
+- IDEA-005, Peter's reply of 2026-11-20 to all ten decisions: he marks "inside the dev server of the installed package" with ✅ as a place of the MCP server. 1.0 has no dev server, so the equal is a plugin for the consumer's dev server or a part of the devtools. Not decided; IDEA-005, Notes, "The agent's doubts on his reply", D2, holds the question. If he wants it, it becomes a row here.
 
 ### Settled by the prompt
 - One devtools package serves all the framework versions.
