@@ -131,6 +131,12 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - What the records already hold, so that row 16 does not repeat it: RES-030 has how about twelve libraries ship and install, with the folders of each host; RES-070 has the skills and the tools of fifteen design systems; RES-077 has the trial of an `init` command. Row 16 widens the sample beyond them and beyond design systems.
 - For the next ask: do not ask him to decide this row before row 16 is resolved. He decides from wide evidence.
 
+### Row 04 — pending question, from the evidence of row 16
+- Asked on 2026-11-20 through the question dialog, after the facts of RES-082 in chat: where do the MCP server and the guidance for agents of 1.0 live? The question gives the counts of the 112 projects.
+- Options: "Guidance in the package, server as a thin package of its own (Recommended)"; "Everything inside the package"; "Everything apart".
+- The agent recommends the first. Reasons: it is the shape that most surveyed projects have; the guidance inside the package matches the installed version with no step after an update, as about 23 projects do; a server that reads the installed package gives the same match, as about 16 projects do; and a consumer with no coding agent does not carry the server. Stated costs: two packages to release, and one more step to install the server. DEC-154 rules out TanStack Intent in each option.
+- The kickoff prompt's direction is the second option. No surveyed project keeps its server only inside its main package; the trial RES-077 showed that it works.
+
 ### Row 16 — resolved
 - RES-082, 2026-11-20: 112 projects, each record checked by a second agent. Its 183 agents ran on Opus 5.5 at `medium`, checked in the logs after the run; none ran `gh`. The main session read the facts across the records. It reads the record of a single project when a later row needs it.
 - Facts for row 04, inside the package or apart:
