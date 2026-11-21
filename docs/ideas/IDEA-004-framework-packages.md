@@ -66,7 +66,19 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 - Not settled by it: how many packages the three targets are. Rows 05 and 07 decide it, and the test of row 10 gives them the facts.
 - The agent's points on his answer, told to him in chat: no surveyed library ships a package for Preact, and no source tested a wrapper under Preact, so row 10 tests it; Solid users use the custom elements, and DEC-149 names them among the users who must not be surprised.
 
-### Row 10 — running
+### Row 10 — resolved
+- RES-087, 2026-11-20: the application of RES-079 on React 19.3.1, Redact 0.3.1 and Preact 11.2.0 through `preact/compat`, with three wrappers, read in a headless Chrome 157. The task agent `a923319e8aaf1ce1e` ran on Opus 5.5 at `medium` on all 89 requests, checked after it ended. The main session read the record.
+- The answer to the row: yes to both. The same React code runs on Preact through `preact/compat`, with no warning. A wrapper made with `createComponent` of `@lit/react` 1.0.8 passed points 1 to 7 on all three runtimes.
+- Facts for rows 05 and 07:
+  - The thin wrapper of RES-079 passes on Preact and fails on Redact, as before.
+  - The changed wrapper of RES-079 passes on all three.
+  - `createComponent` passes on all three. On Redact and on Preact it leaves an attribute `suppresshydrationwarning` on each element; one more wrapper layer removed it on all three.
+  - So one React package can serve React, Redact and Preact. A Preact user maps `react` to `preact/compat`, which `@preact/preset-vite` does by default.
+  - Each generated React wrapper of the five libraries in RES-029 is a call of `createComponent`, so a wrapper of that kind can be generated from metadata and still serve the three targets.
+- Limits: Chrome only and headless; production builds; rendering in the browser only, so hydration was not tested; the Steps classes for `createComponent` came from `customElements.get()`.
+- Rows 05 and 07 are free.
+
+### Row 10 — started
 - Added and started on 2026-11-20 by the main session, after DEC-168, because rows 05 and 07 are the next questions of this idea and need its facts. Peter's rule of the kickoff prompt, which he sent again that day: research settles facts, and it starts for the row in front of us.
 - Task record: RES-087. Scratch folder: `.artifacts/v1/trial/IDEA-004-10/`. Brief: `.artifacts/v1/briefs/common-task.md` and `.artifacts/v1/briefs/IDEA-004-10.md`.
 - Task agent `a923319e8aaf1ce1e`, started without a name, on Opus 5.5 at the effort `medium`: the row is a mechanical test by a fixed list of points (capabilities, guide of 2026-11-13). Check its log with `.artifacts/v1/briefs/agent-log-check.py` when it ends, before the record is read.
@@ -103,7 +115,7 @@ Source: [Peter's additional scope](../design/v1-additional-scope.md) of 2026-11-
 | 07 | Is each target its own npm package, or an entry of one package? | interview | open | 04, 10 | — |
 | 08 | Import the list of utilities and hooks from IDEA-001 and the form of their export from IDEA-003. | task | open | — | — |
 | 09 | For each utility: does a framework package expose it as a hook, as a plain function, or as both? | interview | open | 04, 08 | — |
-| 10 | Does the React package run on Preact through `preact/compat`, and does a wrapper made with `createComponent` of `@lit/react` pass on React 19, on Redact and on Preact, at the eight points of RES-079? | task | in-progress | — | — |
+| 10 | Does the React package run on Preact through `preact/compat`, and does a wrapper made with `createComponent` of `@lit/react` pass on React 19, on Redact and on Preact, at the eight points of RES-079? | task | resolved | — | [RES-087](../research/RES-087-react-package-on-preact-and-lit-react-wrapper-test.md) |
 
 ## Not yet specified
 - Whether a framework package must load without an error in an app that renders its pages on a server, where the components then appear only in the browser. DEC-127 (IDEA-003#04) rules out server rendering itself and does not answer this point. Since DEC-168 the targets are React, Redact and Preact, and applications on them often render on a server. It sharpens at row 06, which decides the tests.

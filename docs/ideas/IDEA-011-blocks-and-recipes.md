@@ -42,6 +42,16 @@ A spec for the blocks of 1.0: the list by name and group, what each block compos
 - The agent's report, which the main session has not checked: 459 source items (shadcn/ui 118, Chakra UI Pro 338, Radix Themes 3) joined into 73 block concepts; 24 for agent interfaces, 18 for app layouts, 8 for charts, 20 for page sections, and 3 e-commerce concepts that no group fits. It proposes 68 in, with all 24 of the agent interfaces as must-have, and 4 out: Card Collection, Divider, Theme Showcase and Career. The two that Peter named with "maybe" are proposals of their own. The cost that it states: 104 versions of a block, times the count of framework targets.
 - The agent says that the file changed on disk after its last edit, most likely by its own script for three totals. The main session reads the file in full and checks the totals before the question goes to Peter. Peter then reviews the proposal by group, as he did for the components.
 
+### Row 01 — the main session read the proposal, 2026-11-20
+- The main session read the proposal file in full and checked its sums by hand. They hold: 459 source items in 73 block concepts and the 2 "maybe" items; 68 in, 4 out, 3 that no group fits; 104 versions of a block, from 24, 28, 19 and 29 in the four groups and 4 for the "maybe" items. So the change on disk that its agent reported left no wrong total.
+- What is newer than the proposal: the framework targets are React, Redact and Preact (DEC-168), so each block is written for plain HTML and for React, and for Preact by the result of IDEA-004#10. The proposal's point on the Data Table holds now: TanStack Virtual has no package for Preact. Figma is the source of truth for the structure of a block (DEC-159). The word is Block (DEC-158); the proposal still says Recipe in two places.
+- How it goes to Peter: by group, one question for each group, as he did for the components. Choices of the agent, with no question: the names of the proposal stand, with its rule that a block never has the name of a component (Message Actions, Changed Files, Stat Section, Banner Section); the three "out" of group B and the one of group D are shown to him inside their group; which blocks are made first is a matter of the plan and no question of this row.
+
+### Row 01 — partial
+- Settled, group A, the agent interfaces: all 24 blocks of the proposal are in 1.0. Source: Peter's answer of 2026-11-20 to the dialog for group A; he chose the option "All 24 in (Recommended)". Conditions: none stated. The option's words: "The full list above. Cost: 24 blocks for each target. The plan can still make the 13 chat blocks first."
+- The 24, by the names of the proposal: Chat, Message Actions, Prompt Input, Model Selector, Suggestion, Prompt With Action, Reasoning, Chain of Thought, Tool, Confirmation, Sources, Inline Citation, Context, Plan, Task, Queue, Subagent, Checkpoint, Changed Files, Stack Trace, Terminal, Test Results, Code And Preview, Studio Playground.
+- Open: group B, the app layouts; group C, the charts; group D, the page sections; group E, the three e-commerce concepts that no group fits; and his two "maybe" items, Data Table and Form. One question for each. The decision record of row 01 is written when all groups are answered, so that one record holds the list.
+
 ### Row 02 — partial, second reply
 - Source: Peter's reply of 2026-11-20 to the question from the evidence, typed into the question dialog: "hmmm well I guess I'm still not totally sure - just looking at the figma website I just stumbled apon https://help.figma.com/hc/en-us/articles/39166810751895-Figma-skills-for-MCP#h_01KMK2P47H2V1GFBJDNH6496T2 which make it sound like these skills paired with teh mcp could potentially really be great?"
 - Not settled: he chose no option and is not sure. No decision record exists for row 02.
@@ -123,7 +133,7 @@ A spec for the blocks of 1.0: the list by name and group, what each block compos
 
 ### Evidence from other ideas
 - IDEA-005#13 asks whether the blocks reach an agent through the MCP server, through a skill or through both. It is free since DEC-160 and DEC-161 of 2026-11-20: the server is a documentation server with a search by intent, and the skills live in the main package. Rows 01 and 03 here give it the list of the blocks and the place of their source files.
-- DEC-168 (IDEA-004#04), Peter, 2026-11-20, for row 04: the framework targets of 1.0 are React, Redact and Preact. Solid is no target. Each block is written for plain HTML and for these targets (DEC-146); whether Redact and Preact need code of their own is open in IDEA-004 rows 05 and 07, so row 04 waits for them.
+- DEC-168 (IDEA-004#04), Peter, 2026-11-20, for row 04: the framework targets of 1.0 are React, Redact and Preact. Solid is no target. Each block is written for plain HTML and for these targets (DEC-146); whether Redact and Preact need code of their own is open in IDEA-004 rows 05 and 07, so row 04 waits for them. RES-087 (IDEA-004#10) of the same day: the same React code ran on React 19, on Redact and on Preact through `preact/compat`.
 
 ## Map
 
